@@ -35,7 +35,7 @@ SUBSYSTEM_DEF(input)
 			"Ctrl+O" = "looc",
 			"T" = "say_indicator",
 			"Ctrl+T" = "whisper",
-			"M" = "me",
+			"M" = "me_indicator",
 			"Ctrl+M" = "subtle",
 			"Back" = "\".winset \\\"input.text=\\\"\\\"\\\"\"", // This makes it so backspace can remove default inputs
 			"Any" = "\"KeyDown \[\[*\]\]\"",
