@@ -3364,10 +3364,15 @@
 /turf/open/floor/plasteel/white,
 /area/science/xenobiology)
 "kp" = (
-/obj/machinery/smartfridge/organ/preloaded{
-	pixel_y = 2
+/obj/effect/turf_decal/tile/blue,
+/obj/effect/turf_decal/tile/blue{
+	dir = 1
 	},
-/turf/closed/wall,
+/obj/machinery/smartfridge/organ/preloaded{
+	density = 0;
+	pixel_y = -32
+	},
+/turf/open/floor/plasteel/white,
 /area/medical/medbay/zone3)
 "kq" = (
 /obj/item/reagent_containers/glass/bucket,
@@ -46996,8 +47001,8 @@ IH
 nT
 ZC
 ZC
-ZC
 kp
+Xc
 Mn
 Yw
 WN
