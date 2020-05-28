@@ -1,9 +1,14 @@
 /datum/map_template/shuttle/sandcode
 	name = "Sandcode Base Shuttle Template"
-	prefix = "sandcode/_maps/shuttles/"
+	prefix = "_maps/shuttles/"
 	can_be_bought = FALSE
 
 /datum/map_template/shuttle/sandcode/satshuttle
-	port_id = "AIAccess_Sta"
+	port_id = "access"
 	name = "Sattelite Access Shuttle"
-	suffix = "AIAccess_Sta"
+	suffix = "smol"
+
+/datum/map_template/shuttle/arrival/smol
+	port_id = "arrival"
+	suffix = "smol"
+	name = "arrival shuttle (Smol)"
