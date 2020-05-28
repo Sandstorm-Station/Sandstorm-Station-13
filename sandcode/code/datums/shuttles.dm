@@ -4,6 +4,6 @@
 	can_be_bought = FALSE
 
 /datum/map_template/shuttle/sandcode/satshuttle
-	port_id = "sat_shuttle"
+	port_id = "AIAccess_Sta"
 	name = "Sattelite Access Shuttle"
-	suffix = "sat_access"
+	suffix = "AIAccess_Sta"
