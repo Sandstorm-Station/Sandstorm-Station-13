@@ -12,3 +12,8 @@
 	port_id = "arrival"
 	suffix = "smol"
 	name = "arrival shuttle (Smol)"
+
+/datum/map_template/shuttle/sandcode/permabrig
+	port_id = "axsbrig"
+	name = "Perma Brig Access Shuttle"
+	suffix = "smol"
