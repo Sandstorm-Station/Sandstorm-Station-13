@@ -172,6 +172,9 @@ GLOBAL_LIST(topic_status_cache)
 	log_runtime(GLOB.revdata.get_log_message())
 
 /world/Topic(T, addr, master, key)
+	if(config)
+		log_topic("\"[T]\", from:[addr], master:[master], key:[key]")
+
 	TGS_TOPIC	//redirect to server tools if necessary
 
 	if(!SSfail2topic)
@@ -190,9 +193,6 @@ GLOBAL_LIST(topic_status_cache)
 		if(I in input)
 			handler = topic_handlers[I]
 			break
-
-	if((!handler || initial(handler.log)) && config && CONFIG_GET(flag/log_world_topic))
-		log_topic("\"[T]\", from:[addr], master:[master], key:[key]")
 
 	if(!handler)
 		return
