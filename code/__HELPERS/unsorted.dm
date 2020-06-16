@@ -1577,27 +1577,23 @@ GLOBAL_DATUM_INIT(dview_mob, /mob/dview, new)
 //null - noop
 //empty string - use TgsTargetBroadcast with admin_only = FALSE
 //other string - use TgsChatBroadcast with the tag that matches config_setting, only works with TGS4, if using TGS3 the above method is used
-/proc/send2chat(message, config_setting)
-	if(config_setting == null)
-		return
-
-	UNTIL(GLOB.tgs_initialized)
-	if(!world.TgsAvailable())
+/proc/send2chat(message, channel_tag)
+	if(channel_tag == null || !world.TgsAvailable())
 		return
 
 	var/datum/tgs_version/version = world.TgsVersion()
-	if(config_setting == "" || version.suite == 3)
+	if(channel_tag == "" || version.suite == 3)
 		world.TgsTargetedChatBroadcast(message, FALSE)
 		return
 
 	var/list/channels_to_use = list()
 	for(var/I in world.TgsChatChannelInfo())
 		var/datum/tgs_chat_channel/channel = I
-		if(channel.tag == config_setting)
+		if(channel.tag == channel_tag)
 			channels_to_use += channel
 
 	if(channels_to_use.len)
-		world.TgsChatBroadcast()
+		world.TgsChatBroadcast(message, channels_to_use)
 
 //Checks to see if either the victim has a garlic necklace or garlic in their blood
 /proc/blood_sucking_checks(var/mob/living/carbon/target, check_neck, check_blood)
