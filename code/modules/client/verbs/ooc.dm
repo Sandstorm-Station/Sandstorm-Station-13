@@ -78,6 +78,11 @@ GLOBAL_VAR_INIT(normal_ooc_colour, "#002eb8")
 					to_chat(C, "<font color='[GLOB.OOC_COLOR]'><b><span class='prefix'>OOC:</span> <EM>[keyname]:</EM> <span class='message linkify'>[msg]</span></b></font>")
 				else
 					to_chat(C, "<span class='ooc'><span class='prefix'>OOC:</span> <EM>[keyname]:</EM> <span class='message linkify'>[msg]</span></span>")
+	if(holder.fakekey) //ooc relay - sandstorm
+		send2chat("**[holder.fakekey]/[key]:** [msg]", CONFIG_GET(string/discord_ooc_relay))
+	else
+		send2chat("**[key]:** [msg]", CONFIG_GET(string/discord_ooc_relay))
+
 
 /proc/toggle_ooc(toggle = null)
 	if(toggle != null) //if we're specifically en/disabling ooc
