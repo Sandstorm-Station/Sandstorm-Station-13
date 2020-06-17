@@ -675,6 +675,12 @@ Turf and target are separate in case you want to teleport some distance from a t
 		loc = loc.loc
 	return null
 
+//For objects that should embed, but make no sense being is_sharp or is_pointed()
+//e.g: rods
+GLOBAL_LIST_INIT(can_embed_types, typecacheof(list(
+	/obj/item/stack/rods,
+	/obj/item/pipe)))
+
 /*
 Checks if that loc and dir has an item on the wall
 */
@@ -1573,15 +1579,18 @@ GLOBAL_DATUM_INIT(dview_mob, /mob/dview, new)
 //other string - use TgsChatBroadcast with the tag that matches config_setting, only works with TGS4, if using TGS3 the above method is used
 /proc/send2chat(message, config_setting)
 	if(config_setting == null)
+		message_admins("Config_setting returned null. Message: ([message]) Config_setting: ([config_setting])")
 		return
 
 	UNTIL(GLOB.tgs_initialized)
 	if(!world.TgsAvailable())
+		message_admins("world.TgsAvailable returned false. Message: ([message]) Config_setting: ([config_setting])")
 		return
 
 	var/datum/tgs_version/version = world.TgsVersion()
 	if(config_setting == "" || version.suite == 3)
 		world.TgsTargetedChatBroadcast(message, FALSE)
+		message_admins("Config_setting and/or version.suite triggered. Message: ([message]) Config_setting: ([config_setting])")
 		return
 
 	var/list/channels_to_use = list()
@@ -1589,9 +1598,11 @@ GLOBAL_DATUM_INIT(dview_mob, /mob/dview, new)
 		var/datum/tgs_chat_channel/channel = I
 		if(channel.tag == config_setting)
 			channels_to_use += channel
+			message_admins("Worked, maybe? Message: ([message]) Config_setting: ([channels_to_use.Join(" | ")])")
 
 	if(channels_to_use.len)
 		world.TgsChatBroadcast()
+		message_admins("Channels_to_use.len passed succesfully. Message: ([message]) Config_setting: ([channels_to_use.Join(" | ")])")
 
 //Checks to see if either the victim has a garlic necklace or garlic in their blood
 /proc/blood_sucking_checks(var/mob/living/carbon/target, check_neck, check_blood)
