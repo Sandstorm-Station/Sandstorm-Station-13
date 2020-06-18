@@ -139,6 +139,7 @@
 	var/datum/tgs_api/api = TGS_READ_GLOBAL(tgs)
 	if(api)
 		api.ChatBroadcast(message, channels)
+		to_chat(world, "The message finally went through, Message: ([message]), Channels: ([channels.Join(" | ")])")
 
 /world/TgsTargetedChatBroadcast(message, admin_only)
 	var/datum/tgs_api/api = TGS_READ_GLOBAL(tgs)

@@ -80,10 +80,10 @@ GLOBAL_VAR_INIT(normal_ooc_colour, "#002eb8")
 					to_chat(C, "<span class='ooc'><span class='prefix'>OOC:</span> <EM>[keyname]:</EM> <span class='message linkify'>[msg]</span></span>")
 	if(holder.fakekey) //ooc relay - sandstorm
 		send2chat("**(OOC) [holder.fakekey]/[key]:** [msg]", CONFIG_GET(string/discord_ooc_relay))
-		message_admins("Fake key detected, [holder.fakekey]/[key] said [msg]")
+		to_chat(world, "Fake key detected, [holder.fakekey]/[key] said [msg]")
 	else
 		send2chat("**(OOC) [key]:** [msg]", CONFIG_GET(string/discord_ooc_relay))
-		message_admins("Real key detected, [key] said [msg]")
+		to_chat(world, "Real key detected, [key] said [msg]")
 
 
 /proc/toggle_ooc(toggle = null)
