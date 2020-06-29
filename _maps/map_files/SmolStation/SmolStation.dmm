@@ -306,6 +306,14 @@
 	},
 /turf/open/floor/plating,
 /area/bridge)
+"aQ" = (
+/obj/docking_port/stationary/random{
+	dir = 2;
+	id = "pod_lavaland4";
+	name = "lavaland"
+	},
+/turf/open/space/basic,
+/area/space)
 "aR" = (
 /obj/structure/cable/white{
 	icon_state = "4-8"
@@ -509,7 +517,7 @@
 /obj/docking_port/stationary{
 	dwidth = 3;
 	height = 5;
-	id = "smol";
+	id = "ai_station";
 	name = "Station Access";
 	roundstart_template = /datum/map_template/shuttle/sandcode/satshuttle;
 	width = 7
@@ -1038,7 +1046,7 @@
 	},
 /obj/effect/landmark/event_spawn,
 /turf/open/floor/plasteel/white,
-/area/science/lab)
+/area/science/xenobiology)
 "cq" = (
 /obj/machinery/atmospherics/pipe/simple/supply/hidden/layer1,
 /obj/machinery/atmospherics/pipe/simple/scrubbers/hidden/layer3,
@@ -1163,6 +1171,7 @@
 /area/teleporter)
 "cE" = (
 /obj/machinery/holopad,
+/obj/effect/landmark/event_spawn,
 /turf/open/floor/plasteel/dark,
 /area/ai_monitored/storage/eva)
 "cF" = (
@@ -1452,13 +1461,9 @@
 /turf/open/floor/plasteel/white,
 /area/science/xenobiology)
 "dm" = (
-/obj/effect/turf_decal/tile/purple,
-/obj/effect/turf_decal/tile/purple{
-	dir = 1
-	},
-/obj/effect/landmark/start/scientist,
-/turf/open/floor/plasteel/white,
-/area/science/lab)
+/obj/effect/landmark/loneopspawn,
+/turf/open/space/basic,
+/area/space)
 "dn" = (
 /obj/structure/disposalpipe/segment,
 /turf/open/floor/plasteel,
@@ -1892,11 +1897,9 @@
 /turf/open/floor/plating,
 /area/maintenance/central)
 "ef" = (
-/obj/structure/disposalpipe/segment{
-	dir = 4
-	},
-/turf/closed/wall/r_wall,
-/area/maintenance/central)
+/obj/effect/landmark/carpspawn,
+/turf/open/space/basic,
+/area/space)
 "eh" = (
 /obj/machinery/atmospherics/pipe/manifold/scrubbers/hidden/layer3,
 /obj/machinery/atmospherics/pipe/simple/supply/hidden/layer1{
@@ -1955,13 +1958,8 @@
 /turf/open/floor/plasteel/dark,
 /area/ai_monitored/storage/eva)
 "en" = (
-/obj/machinery/door/airlock/external{
-	name = "Escape Pod One"
-	},
-/turf/open/floor/plating,
-/area/hallway/primary/port/aft{
-	name = "Escape Pods"
-	})
+/turf/closed/wall/r_wall,
+/area/maintenance/starboard/fore)
 "eo" = (
 /obj/structure/window/reinforced{
 	dir = 1
@@ -2670,10 +2668,6 @@
 /turf/open/floor/carpet,
 /area/crew_quarters/dorms)
 "fI" = (
-/obj/machinery/atmospherics/components/unary/vent_pump/siphon/on{
-	external_pressure_bound = 120;
-	name = "server vent"
-	},
 /turf/open/floor/circuit/telecomms,
 /area/science/xenobiology)
 "fJ" = (
@@ -3282,13 +3276,11 @@
 /turf/open/floor/plasteel/checker,
 /area/engine/atmos)
 "gZ" = (
-/obj/machinery/door/airlock/external{
-	name = "Escape Pod Four"
+/obj/structure/cable/white{
+	icon_state = "1-2"
 	},
-/turf/open/floor/plating,
-/area/hallway/primary/port/aft{
-	name = "Escape Pods"
-	})
+/turf/closed/wall,
+/area/maintenance/starboard/fore)
 "hb" = (
 /obj/machinery/telecomms/server/presets/security,
 /turf/open/floor/circuit/telecomms/mainframe,
@@ -3708,17 +3700,6 @@
 	},
 /turf/open/floor/plasteel,
 /area/crew_quarters/dorms)
-"hQ" = (
-/obj/docking_port/stationary{
-	dir = 4;
-	dwidth = 1;
-	height = 4;
-	name = "escape pod loader";
-	roundstart_template = /datum/map_template/shuttle/escape_pod/default;
-	width = 3
-	},
-/turf/open/space/basic,
-/area/space)
 "hR" = (
 /obj/machinery/atmospherics/pipe/simple/scrubbers/hidden/layer3{
 	dir = 5
@@ -3950,7 +3931,7 @@
 	dir = 1
 	},
 /turf/closed/wall/r_wall,
-/area/engine/atmos)
+/area/maintenance/central)
 "io" = (
 /obj/effect/turf_decal/tile/brown{
 	dir = 1
@@ -4365,6 +4346,7 @@
 "jd" = (
 /obj/structure/bed,
 /obj/effect/spawner/lootdrop/bedsheet,
+/obj/effect/landmark/event_spawn,
 /turf/open/floor/wood,
 /area/crew_quarters/dorms)
 "je" = (
@@ -4897,7 +4879,6 @@
 /obj/structure/cable/white,
 /obj/machinery/power/apc{
 	areastring = "/area/science/xenobiology";
-	dir = 4;
 	name = "Xenobiology Lab APC";
 	pixel_y = -26
 	},
@@ -5092,7 +5073,9 @@
 	},
 /obj/machinery/atmospherics/pipe/simple/supply/hidden/layer1,
 /obj/machinery/atmospherics/pipe/simple/scrubbers/hidden/layer3,
-/obj/machinery/atmospherics/components/unary/thermomachine/freezer/on,
+/obj/machinery/atmospherics/components/unary/thermomachine/freezer/on{
+	dir = 1
+	},
 /turf/open/floor/plasteel/white,
 /area/medical/medbay/zone3)
 "kJ" = (
@@ -5255,6 +5238,7 @@
 	},
 /obj/machinery/power/apc{
 	areastring = "/area/medical/morgue";
+	dir = 1;
 	name = "Morgue APC";
 	pixel_y = 26
 	},
@@ -5695,6 +5679,16 @@
 	},
 /turf/open/floor/plasteel,
 /area/hallway/primary/fore)
+"mi" = (
+/obj/docking_port/stationary{
+	dwidth = 1;
+	height = 4;
+	name = "escape pod loader";
+	roundstart_template = /datum/map_template/shuttle/escape_pod/default;
+	width = 3
+	},
+/turf/open/space/basic,
+/area/space)
 "mj" = (
 /obj/effect/turf_decal/stripes/line{
 	dir = 1
@@ -5727,6 +5721,14 @@
 "ml" = (
 /turf/closed/wall/r_wall,
 /area/crew_quarters/heads/captain/private)
+"mn" = (
+/obj/machinery/door/airlock/external{
+	name = "Escape Pod Two"
+	},
+/turf/open/floor/plating,
+/area/hallway/primary/port/aft{
+	name = "Escape Pods"
+	})
 "mp" = (
 /obj/effect/turf_decal/tile/yellow{
 	dir = 1
@@ -6114,6 +6116,14 @@
 	},
 /turf/open/floor/circuit,
 /area/ai_monitored/turret_protected/ai)
+"ns" = (
+/obj/docking_port/stationary/random{
+	dir = 2;
+	id = "pod_lavaland3";
+	name = "lavaland"
+	},
+/turf/open/space/basic,
+/area/space)
 "nu" = (
 /obj/structure/cable/white{
 	icon_state = "2-8"
@@ -6311,7 +6321,7 @@
 /obj/item/storage/toolbox/emergency,
 /obj/machinery/power/apc{
 	areastring = "/area/storage/tools";
-	dir = 1;
+	dir = 4;
 	name = "Auxiliary Tool Storage APC";
 	pixel_x = 26
 	},
@@ -6344,6 +6354,7 @@
 	},
 /obj/machinery/light,
 /obj/machinery/smartfridge/organ/preloaded{
+	density = 0;
 	pixel_y = -32
 	},
 /turf/open/floor/plasteel/white,
@@ -7274,6 +7285,7 @@
 /obj/item/bedsheet/random{
 	pixel_x = 5
 	},
+/obj/effect/landmark/event_spawn,
 /turf/open/floor/carpet,
 /area/crew_quarters/dorms)
 "pL" = (
@@ -8014,6 +8026,7 @@
 	dir = 2;
 	dwidth = 2;
 	height = 5;
+	id = "perma_prison";
 	name = "Perma Dock";
 	width = 8
 	},
@@ -9405,6 +9418,7 @@
 /obj/machinery/atmospherics/pipe/simple/supply/hidden/layer1,
 /obj/machinery/power/apc{
 	areastring = "/area/crew_quarters/dorms";
+	dir = 8;
 	name = "Dormitory APC";
 	pixel_x = -25
 	},
@@ -9787,7 +9801,6 @@
 /obj/structure/cable,
 /obj/machinery/power/apc{
 	areastring = "/area/security/prison";
-	dir = 4;
 	name = "Perma Prison APC";
 	pixel_y = -24
 	},
@@ -10344,6 +10357,10 @@
 	dir = 8;
 	name = "science camera";
 	network = list("ss13","rd")
+	},
+/obj/machinery/atmospherics/components/unary/vent_pump/siphon/on{
+	external_pressure_bound = 120;
+	name = "server vent"
 	},
 /turf/open/floor/circuit/telecomms,
 /area/science/xenobiology)
@@ -11459,6 +11476,12 @@
 	},
 /turf/open/floor/plating,
 /area/maintenance/starboard/fore)
+"zs" = (
+/obj/effect/landmark/event_spawn,
+/turf/open/floor/plasteel,
+/area/hallway/primary/aft{
+	name = "Docking Bay"
+	})
 "zt" = (
 /obj/machinery/firealarm{
 	dir = 4;
@@ -11499,13 +11522,18 @@
 /turf/open/floor/plasteel,
 /area/engine/engineering)
 "zz" = (
-/obj/docking_port/stationary/random{
-	dir = 4;
-	id = "pod_lavaland4";
-	name = "lavaland"
+/obj/machinery/atmospherics/pipe/simple/supply/hidden/layer1{
+	dir = 4
 	},
-/turf/open/space/basic,
-/area/space/nearstation)
+/obj/machinery/atmospherics/pipe/simple/scrubbers/hidden/layer3{
+	dir = 4
+	},
+/obj/structure/disposalpipe/segment{
+	dir = 4
+	},
+/obj/machinery/holopad,
+/turf/open/floor/plasteel,
+/area/hallway/primary/fore)
 "zA" = (
 /obj/machinery/atmospherics/pipe/simple/supply/hidden/layer1{
 	dir = 5
@@ -11575,8 +11603,15 @@
 /turf/open/floor/plasteel,
 /area/hallway/primary/central)
 "zG" = (
-/turf/closed/wall,
-/area/crew_quarters/heads/hop)
+/obj/effect/turf_decal/tile/purple,
+/obj/effect/turf_decal/tile/purple{
+	dir = 1
+	},
+/obj/structure/cable/white{
+	icon_state = "4-8"
+	},
+/turf/open/floor/plasteel/white,
+/area/science/xenobiology)
 "zH" = (
 /obj/structure/pool/ladder{
 	dir = 1;
@@ -11623,11 +11658,12 @@
 /turf/open/floor/wood,
 /area/crew_quarters/bar)
 "zP" = (
-/obj/structure/cable/white{
-	icon_state = "2-4"
+/obj/machinery/door/airlock/maintenance{
+	name = "Medbay Maintenance";
+	req_access_txt = "5"
 	},
 /turf/open/floor/plating,
-/area/maintenance/starboard/fore)
+/area/medical/morgue)
 "zQ" = (
 /obj/structure/extinguisher_cabinet{
 	pixel_y = 26
@@ -11656,15 +11692,15 @@
 	name = "Starboard Bow Maintenance APC";
 	pixel_x = 26
 	},
-/obj/structure/cable/white{
-	icon_state = "0-8"
-	},
 /obj/item/clothing/head/kitty,
 /obj/item/clothing/under/costume/maid,
 /obj/item/clothing/mask/muzzle,
 /obj/item/restraints/handcuffs/fake,
 /obj/effect/decal/cleanable/blood/old,
 /obj/effect/decal/remains/human,
+/obj/structure/cable/white{
+	icon_state = "0-2"
+	},
 /turf/open/floor/plating,
 /area/maintenance/starboard/fore)
 "zT" = (
@@ -11728,13 +11764,11 @@
 /turf/open/floor/plasteel/dark,
 /area/aisat)
 "zZ" = (
-/obj/docking_port/stationary/random{
-	dir = 4;
-	id = "pod_lavaland1";
-	name = "lavaland"
+/obj/machinery/atmospherics/pipe/simple/general/hidden{
+	dir = 9
 	},
-/turf/open/space/basic,
-/area/space/nearstation)
+/turf/closed/wall/r_wall,
+/area/science/xenobiology)
 "Aa" = (
 /obj/structure/cable{
 	icon_state = "1-4"
@@ -11926,6 +11960,14 @@
 /obj/effect/landmark/start/research_director,
 /turf/open/floor/plasteel/dark,
 /area/science/research)
+"AA" = (
+/obj/machinery/door/airlock/external{
+	name = "Escape Pod Four"
+	},
+/turf/open/floor/plating,
+/area/hallway/primary/port/aft{
+	name = "Escape Pods"
+	})
 "AB" = (
 /turf/open/floor/plasteel,
 /area/crew_quarters/dorms)
@@ -12328,12 +12370,14 @@
 /turf/open/space/basic,
 /area/space)
 "Bv" = (
-/obj/structure/lattice,
-/obj/structure/disposalpipe/segment{
+/obj/structure/disposalpipe/trunk{
+	dir = 8
+	},
+/obj/structure/disposaloutlet{
 	dir = 4
 	},
-/turf/open/space/basic,
-/area/space/nearstation)
+/turf/open/floor/plating/airless,
+/area/maintenance/central)
 "Bw" = (
 /obj/effect/turf_decal/tile/blue,
 /obj/effect/turf_decal/tile/blue{
@@ -12769,13 +12813,8 @@
 /turf/open/floor/plating,
 /area/maintenance/central)
 "Cs" = (
-/obj/structure/disposalpipe/trunk{
-	dir = 8
-	},
-/obj/structure/disposaloutlet{
-	dir = 4
-	},
-/turf/open/floor/plating/airless,
+/obj/structure/grille,
+/turf/closed/wall/r_wall,
 /area/maintenance/central)
 "Ct" = (
 /obj/machinery/atmospherics/pipe/simple/scrubbers/hidden/layer3{
@@ -12955,14 +12994,6 @@
 	},
 /turf/open/floor/plasteel/dark,
 /area/ai_monitored/turret_protected/aisat_interior)
-"CJ" = (
-/obj/docking_port/stationary/random{
-	dir = 4;
-	id = "pod_lavaland3";
-	name = "lavaland"
-	},
-/turf/open/space/basic,
-/area/space/nearstation)
 "CK" = (
 /obj/machinery/atmospherics/pipe/simple/supply/hidden/layer1{
 	dir = 9
@@ -13449,7 +13480,7 @@
 	},
 /obj/machinery/power/apc/highcap/five_k{
 	areastring = "/area/crew_quarters/heads/hop";
-	dir = 1;
+	dir = 4;
 	name = "Head of Personnel Quarter's APC";
 	pixel_x = 25
 	},
@@ -13459,9 +13490,6 @@
 /turf/open/floor/plasteel/dark,
 /area/crew_quarters/heads/hop)
 "DF" = (
-/obj/structure/cable/white{
-	icon_state = "1-2"
-	},
 /obj/structure/falsewall,
 /turf/open/floor/plating,
 /area/maintenance/starboard/fore)
@@ -14202,12 +14230,14 @@
 /turf/open/floor/plasteel/dark,
 /area/security/brig)
 "Ff" = (
-/obj/machinery/atmospherics/pipe/simple/general/hidden{
-	dir = 9
+/obj/machinery/atmospherics/pipe/simple/cyan/visible{
+	dir = 4
 	},
+/obj/structure/grille,
 /turf/closed/wall/r_wall,
-/area/science/xenobiology)
+/area/maintenance/central)
 "Fg" = (
+/obj/structure/lattice,
 /turf/open/space/basic,
 /area/engine/engineering)
 "Fh" = (
@@ -14584,9 +14614,8 @@
 /obj/structure/cable/white{
 	icon_state = "2-8"
 	},
-/obj/machinery/light/floor,
 /obj/effect/landmark/observer_start,
-/obj/machinery/holopad,
+/obj/machinery/light/floor,
 /turf/open/floor/plasteel,
 /area/hallway/primary/fore)
 "FS" = (
@@ -14636,6 +14665,12 @@
 /obj/machinery/mineral/ore_redemption{
 	input_dir = 4;
 	output_dir = 8
+	},
+/obj/effect/turf_decal/stripes{
+	dir = 5
+	},
+/obj/effect/turf_decal/stripes{
+	dir = 10
 	},
 /turf/open/floor/plasteel,
 /area/quartermaster/storage)
@@ -14697,6 +14732,14 @@
 	},
 /turf/open/space,
 /area/space/nearstation)
+"Gf" = (
+/obj/machinery/door/airlock/external{
+	name = "Escape Pod Three"
+	},
+/turf/open/floor/plating,
+/area/hallway/primary/port/aft{
+	name = "Escape Pods"
+	})
 "Gg" = (
 /obj/effect/spawner/structure/window/reinforced,
 /obj/machinery/atmospherics/pipe/simple/scrubbers/hidden/layer3{
@@ -15227,6 +15270,10 @@
 	},
 /turf/open/floor/plasteel,
 /area/hallway/secondary/entry)
+"Hg" = (
+/obj/effect/landmark/event_spawn,
+/turf/open/floor/plasteel,
+/area/storage/primary)
 "Hj" = (
 /obj/effect/turf_decal/delivery,
 /obj/structure/disposalpipe/segment,
@@ -15326,7 +15373,7 @@
 	name = "2maintenance loot spawner"
 	},
 /obj/structure/cable/white{
-	icon_state = "1-2"
+	icon_state = "2-4"
 	},
 /turf/open/floor/plating,
 /area/maintenance/starboard/fore)
@@ -15512,6 +15559,9 @@
 "HV" = (
 /obj/structure/rack,
 /obj/item/gun/energy/pumpaction/toy,
+/obj/structure/cable/white{
+	icon_state = "1-8"
+	},
 /turf/open/floor/plating,
 /area/maintenance/starboard/fore)
 "HW" = (
@@ -15995,14 +16045,14 @@
 /turf/open/floor/plasteel/checker,
 /area/engine/atmos)
 "IY" = (
-/obj/machinery/door/airlock/maintenance{
-	name = "Maintenance Access";
-	req_access_txt = "12"
-	},
 /obj/machinery/atmospherics/pipe/simple/scrubbers/hidden/layer3,
 /obj/machinery/atmospherics/pipe/simple/supply/hidden/layer1,
 /obj/structure/cable/white{
 	icon_state = "1-2"
+	},
+/obj/machinery/door/airlock/maintenance{
+	name = "Medbay Maintenance";
+	req_access_txt = "12"
 	},
 /turf/open/floor/plating,
 /area/maintenance/fore)
@@ -16025,7 +16075,7 @@
 	req_access_txt = "24"
 	},
 /turf/open/floor/plating,
-/area/engine/atmos)
+/area/maintenance/central)
 "Jb" = (
 /obj/machinery/atmospherics/pipe/simple/cyan/visible{
 	dir = 4
@@ -16099,6 +16149,7 @@
 /obj/machinery/atmospherics/pipe/simple/supply/hidden/layer1{
 	dir = 6
 	},
+/obj/effect/landmark/event_spawn,
 /turf/open/floor/plasteel/dark,
 /area/teleporter)
 "Jj" = (
@@ -16438,13 +16489,18 @@
 /turf/open/floor/plasteel/white,
 /area/science/lab)
 "JX" = (
-/obj/machinery/door/airlock/external{
-	name = "Escape Pod Three"
+/obj/structure/lattice/catwalk,
+/obj/structure/cable{
+	icon_state = "1-8"
 	},
-/turf/open/floor/plating,
-/area/hallway/primary/port/aft{
-	name = "Escape Pods"
-	})
+/obj/structure/cable{
+	icon_state = "4-8"
+	},
+/obj/structure/cable{
+	icon_state = "1-4"
+	},
+/turf/open/space/basic,
+/area/security/prison)
 "JZ" = (
 /obj/effect/spawner/structure/window/reinforced,
 /obj/structure/cable/white{
@@ -17332,6 +17388,14 @@
 	},
 /turf/open/floor/plasteel/dark,
 /area/aisat)
+"LR" = (
+/obj/machinery/light{
+	dir = 1
+	},
+/turf/open/floor/plasteel,
+/area/hallway/primary/port/aft{
+	name = "Escape Pods"
+	})
 "LS" = (
 /obj/machinery/computer/upload/borg,
 /obj/effect/turf_decal/delivery,
@@ -17395,7 +17459,7 @@
 	},
 /obj/machinery/power/apc{
 	areastring = "/area/security/brig";
-	dir = 1;
+	dir = 4;
 	name = "Brig APC";
 	pixel_x = 25
 	},
@@ -17672,7 +17736,7 @@
 /obj/machinery/atmospherics/pipe/simple/yellow/visible,
 /obj/structure/grille,
 /turf/closed/wall/r_wall,
-/area/engine/atmos)
+/area/maintenance/central)
 "MI" = (
 /obj/effect/spawner/structure/window/reinforced,
 /obj/structure/cable/white,
@@ -17683,7 +17747,7 @@
 /area/security/brig)
 "MJ" = (
 /obj/machinery/door/airlock/maintenance{
-	name = "Medbaya Maintenance";
+	name = "Medbay Maintenance";
 	req_access_txt = "12"
 	},
 /obj/machinery/atmospherics/pipe/simple/supply/hidden/layer1{
@@ -17718,6 +17782,17 @@
 	},
 /turf/open/floor/plasteel/checker,
 /area/engine/atmos)
+"MM" = (
+/obj/docking_port/stationary{
+	dir = 2;
+	dwidth = 1;
+	height = 4;
+	name = "escape pod loader";
+	roundstart_template = /datum/map_template/shuttle/escape_pod/default;
+	width = 3
+	},
+/turf/open/space/basic,
+/area/space)
 "MN" = (
 /obj/effect/turf_decal/tile/red{
 	dir = 4
@@ -18019,13 +18094,18 @@
 /turf/open/floor/plasteel/white,
 /area/science/lab)
 "Nt" = (
-/obj/machinery/door/airlock/external{
-	name = "Escape Pod Two"
+/obj/structure/lattice/catwalk,
+/obj/structure/cable{
+	icon_state = "1-4"
 	},
-/turf/open/floor/plating,
-/area/hallway/primary/port/aft{
-	name = "Escape Pods"
-	})
+/obj/structure/cable{
+	icon_state = "4-8"
+	},
+/obj/structure/cable{
+	icon_state = "1-8"
+	},
+/turf/open/space/basic,
+/area/security/prison)
 "Nu" = (
 /obj/machinery/computer/security{
 	dir = 4
@@ -18795,10 +18875,12 @@
 	name = "Docking Bay"
 	})
 "Pn" = (
-/obj/structure/lattice,
-/obj/structure/grille,
-/turf/open/space/basic,
-/area/space)
+/obj/machinery/door/airlock/maintenance{
+	name = "Cargo Maintenance";
+	req_access_txt = "48"
+	},
+/turf/open/floor/plating,
+/area/quartermaster/storage)
 "Po" = (
 /obj/structure/chair/wood/normal{
 	dir = 1
@@ -19084,7 +19166,7 @@
 	},
 /obj/machinery/power/apc{
 	areastring = "/area/engine/atmos";
-	dir = 8;
+	dir = 1;
 	name = "Atmospherics APC";
 	pixel_y = 25
 	},
@@ -19215,7 +19297,7 @@
 /obj/docking_port/stationary{
 	dwidth = 3;
 	height = 5;
-	id = "smol";
+	id = "ai_sat";
 	name = "AI Access";
 	width = 7
 	},
@@ -19683,6 +19765,7 @@
 	dir = 4
 	},
 /obj/machinery/holopad,
+/obj/effect/landmark/event_spawn,
 /turf/open/floor/plasteel/dark,
 /area/security/brig)
 "Rq" = (
@@ -20770,6 +20853,7 @@
 	},
 /obj/machinery/power/apc{
 	areastring = "/area/storage/primary";
+	dir = 4;
 	name = "Primary Tool Storage APC";
 	pixel_x = 26
 	},
@@ -21039,7 +21123,7 @@
 /obj/effect/turf_decal/bot,
 /obj/machinery/power/apc/highcap/five_k{
 	areastring = "/area/hallway/secondary/entry";
-	dir = 1;
+	dir = 4;
 	name = "Arrivals APC";
 	pixel_x = 25
 	},
@@ -21292,8 +21376,14 @@
 /turf/open/floor/plasteel,
 /area/crew_quarters/bar)
 "UI" = (
-/turf/closed/wall/r_wall,
-/area/hallway/primary/central)
+/obj/structure/disposalpipe/segment{
+	dir = 4
+	},
+/obj/effect/landmark/event_spawn,
+/turf/open/floor/plasteel/yellowsiding{
+	dir = 1
+	},
+/area/crew_quarters/dorms)
 "UL" = (
 /obj/effect/spawner/structure/window/reinforced,
 /obj/structure/sign/warning/vacuum,
@@ -21339,6 +21429,7 @@
 	},
 /obj/machinery/atmospherics/pipe/simple/scrubbers/hidden/layer3,
 /obj/machinery/atmospherics/pipe/simple/supply/hidden/layer1,
+/obj/effect/landmark/event_spawn,
 /turf/open/floor/plasteel/dark,
 /area/security/brig)
 "US" = (
@@ -21374,6 +21465,7 @@
 	dir = 8;
 	dwidth = 2;
 	height = 5;
+	id = "perma_station";
 	name = "Station Dock";
 	roundstart_template = /datum/map_template/shuttle/sandcode/permabrig;
 	width = 8
@@ -21381,13 +21473,11 @@
 /turf/open/space/basic,
 /area/space)
 "UW" = (
-/obj/docking_port/stationary/random{
-	dir = 4;
-	id = "pod_lavaland2";
-	name = "lavaland"
-	},
-/turf/open/space/basic,
-/area/space/nearstation)
+/obj/effect/spawner/structure/window/reinforced,
+/turf/open/floor/plating,
+/area/hallway/primary/port/aft{
+	name = "Escape Pods"
+	})
 "UX" = (
 /obj/effect/turf_decal/tile/red,
 /obj/effect/turf_decal/tile/red{
@@ -21506,7 +21596,7 @@
 	icon_state = "0-8"
 	},
 /turf/open/floor/plating,
-/area/space/nearstation)
+/area/hallway/primary/central)
 "Vh" = (
 /obj/machinery/conveyor{
 	dir = 6;
@@ -22831,8 +22921,12 @@
 /turf/open/floor/plasteel/dark,
 /area/security/brig)
 "Yf" = (
-/turf/closed/wall,
-/area/hallway/primary/starboard/fore)
+/obj/docking_port/stationary/random{
+	id = "pod_lavaland1";
+	name = "lavaland"
+	},
+/turf/open/space/basic,
+/area/space)
 "Yg" = (
 /turf/closed/wall,
 /area/hallway/secondary/exit)
@@ -22960,7 +23054,7 @@
 	},
 /obj/machinery/atmospherics/pipe/simple/supply/hidden/layer1,
 /obj/machinery/atmospherics/pipe/simple/scrubbers/hidden/layer3,
-/obj/machinery/atmospherics/pipe/manifold4w/general,
+/obj/machinery/atmospherics/pipe/manifold4w/general/visible,
 /turf/open/floor/plasteel/white,
 /area/medical/medbay/zone3)
 "Yv" = (
@@ -23004,6 +23098,7 @@
 "YB" = (
 /obj/machinery/power/apc{
 	areastring = "/area/crew_quarters/bar";
+	dir = 1;
 	name = "Bar APC";
 	pixel_y = 24
 	},
@@ -23102,6 +23197,14 @@
 	},
 /turf/open/floor/plasteel/dark,
 /area/engine/atmos)
+"YL" = (
+/obj/machinery/door/airlock/external{
+	name = "Escape Pod One"
+	},
+/turf/open/floor/plating,
+/area/hallway/primary/port/aft{
+	name = "Escape Pods"
+	})
 "YM" = (
 /obj/structure/sign/poster/contraband/scum{
 	pixel_x = -32
@@ -23155,6 +23258,13 @@
 	dir = 1
 	},
 /area/hallway/secondary/exit)
+"YW" = (
+/obj/docking_port/stationary/random{
+	id = "pod_lavaland2";
+	name = "lavaland"
+	},
+/turf/open/space/basic,
+/area/space)
 "YX" = (
 /obj/machinery/door/airlock/external{
 	name = "External Docking Port"
@@ -23394,6 +23504,7 @@
 /obj/machinery/atmospherics/pipe/simple/supply/hidden/layer1{
 	dir = 6
 	},
+/obj/effect/landmark/event_spawn,
 /turf/open/floor/plasteel/dark,
 /area/gateway)
 "ZC" = (
@@ -23444,7 +23555,6 @@
 /obj/effect/turf_decal/tile/yellow,
 /obj/machinery/power/apc/highcap/fifteen_k{
 	areastring = "/area/engine/engineering";
-	dir = 1;
 	name = "Engineering APC";
 	pixel_y = -25
 	},
@@ -29349,8 +29459,8 @@ Ik
 Ik
 Ik
 Ik
-Pn
-Pn
+tE
+tE
 uk
 uk
 uk
@@ -29607,7 +29717,7 @@ pN
 uk
 pN
 uk
-Pn
+tE
 uk
 uk
 Rn
@@ -29864,7 +29974,7 @@ TB
 VJ
 vC
 uk
-Pn
+tE
 uk
 Rn
 mM
@@ -30121,7 +30231,7 @@ TB
 Gk
 vC
 uk
-Pn
+tE
 Rn
 mM
 GO
@@ -31405,7 +31515,7 @@ xl
 xl
 Ke
 xl
-mM
+JX
 lH
 cV
 Si
@@ -31662,7 +31772,7 @@ Uy
 Uy
 EF
 Uy
-lb
+Nt
 Yn
 cV
 Si
@@ -32932,7 +33042,7 @@ uk
 uk
 uk
 uk
-uk
+dm
 uk
 Ik
 pN
@@ -32948,7 +33058,7 @@ TB
 XR
 vC
 uk
-Pn
+tE
 YC
 lb
 Yp
@@ -33205,7 +33315,7 @@ TB
 tg
 vC
 uk
-Pn
+tE
 uk
 YC
 lb
@@ -33462,7 +33572,7 @@ pN
 uk
 pN
 uk
-Pn
+tE
 uk
 uk
 YC
@@ -33718,8 +33828,8 @@ WJ
 Ik
 Ik
 Ik
-Pn
-Pn
+tE
+tE
 uk
 uk
 uk
@@ -40674,7 +40784,7 @@ uk
 uk
 uk
 uk
-uk
+ef
 uk
 uk
 uk
@@ -40984,7 +41094,7 @@ uk
 uk
 uk
 uk
-uk
+ef
 uk
 uk
 uk
@@ -42939,7 +43049,7 @@ uk
 uk
 uk
 uk
-uk
+ef
 uk
 uk
 uk
@@ -43469,7 +43579,7 @@ uk
 uk
 uk
 uk
-uk
+dm
 uk
 uk
 uk
@@ -45079,7 +45189,7 @@ uk
 uk
 uk
 uk
-uk
+dm
 uk
 uk
 uk
@@ -47080,7 +47190,7 @@ uk
 uk
 uk
 uk
-uk
+ef
 uk
 uk
 uk
@@ -48821,7 +48931,7 @@ uk
 uk
 uk
 uk
-uk
+dm
 uk
 uk
 uk
@@ -51092,7 +51202,7 @@ uk
 uk
 uk
 uk
-uk
+ef
 uk
 uk
 uk
@@ -52976,7 +53086,7 @@ kZ
 No
 zc
 XE
-Sf
+zP
 Mn
 Yw
 WN
@@ -54155,7 +54265,7 @@ uk
 uk
 uk
 uk
-uk
+dm
 uk
 uk
 af
@@ -55876,7 +55986,7 @@ TT
 DG
 dn
 Kq
-dJ
+zs
 ph
 uk
 uk
@@ -56043,7 +56153,7 @@ LK
 Sv
 WM
 kt
-mg
+zz
 FR
 dZ
 yl
@@ -56166,7 +56276,7 @@ uk
 uk
 uk
 uk
-uk
+dm
 uk
 uk
 uk
@@ -56580,9 +56690,9 @@ JI
 SJ
 Qx
 Qx
-UI
+VY
 tQ
-Wd
+VY
 Wd
 Wd
 Wd
@@ -56596,7 +56706,7 @@ Wd
 Wd
 Wd
 Wd
-Wd
+VY
 La
 VY
 Nh
@@ -56836,10 +56946,10 @@ HM
 JI
 JI
 JI
-UI
-UI
+VY
+VY
 iY
-Wd
+VY
 kA
 Sh
 LU
@@ -56853,7 +56963,7 @@ NH
 EW
 YK
 VK
-Wd
+VY
 cb
 VY
 Od
@@ -56937,7 +57047,7 @@ uk
 uk
 uk
 uk
-uk
+ef
 uk
 uk
 uk
@@ -57096,7 +57206,7 @@ WN
 VY
 dM
 CK
-Wd
+VY
 PT
 Km
 Km
@@ -57110,7 +57220,7 @@ NH
 EW
 YK
 nz
-Wd
+VY
 IP
 VY
 Kk
@@ -57353,7 +57463,7 @@ WN
 VY
 iY
 MQ
-Wd
+VY
 bO
 WE
 cR
@@ -57382,8 +57492,8 @@ Sx
 Ud
 AW
 VR
-cJ
-Ud
+ZP
+Pn
 MQ
 NM
 db
@@ -57610,7 +57720,7 @@ WN
 VY
 IP
 MQ
-Wd
+VY
 ag
 aC
 oC
@@ -57650,7 +57760,7 @@ mP
 mP
 mP
 mP
-yk
+UI
 Mc
 NM
 NM
@@ -57664,7 +57774,7 @@ NN
 oI
 oI
 Fy
-oI
+Hg
 oI
 TE
 oI
@@ -57881,7 +57991,7 @@ xa
 hA
 KZ
 Ad
-Wd
+VY
 MQ
 VY
 fs
@@ -58108,12 +58218,12 @@ iT
 Ug
 HT
 uz
-Ug
+Wg
 co
-dm
-Ug
-Ug
-HT
+bx
+Wg
+Wg
+zG
 Wg
 jS
 Zr
@@ -58124,7 +58234,7 @@ WN
 VY
 ny
 MQ
-Wd
+VY
 IQ
 SE
 AR
@@ -58138,7 +58248,7 @@ HF
 hc
 HF
 JP
-Wd
+VY
 ID
 VY
 YE
@@ -58365,12 +58475,12 @@ iT
 gl
 mH
 yd
-Ug
-Ug
-Ug
-Ug
-Ug
-HT
+Wg
+Wg
+Wg
+Wg
+Wg
+zG
 Wg
 Wg
 Zr
@@ -58381,7 +58491,7 @@ WN
 VY
 qr
 MQ
-Wd
+VY
 EL
 Jm
 RJ
@@ -58395,7 +58505,7 @@ Vj
 Oq
 Sm
 Rz
-Wd
+VY
 MQ
 VY
 JR
@@ -58638,7 +58748,7 @@ WN
 VY
 Jb
 MQ
-Xt
+Cs
 DS
 Yz
 DS
@@ -58652,7 +58762,7 @@ Yz
 DS
 Yz
 DS
-Xt
+Cs
 KM
 pr
 ih
@@ -58895,7 +59005,7 @@ WN
 VY
 Jb
 MQ
-Xt
+Cs
 Mf
 Yz
 PS
@@ -59117,10 +59227,10 @@ fe
 he
 jZ
 lW
-oo
-oo
-oo
-zG
+en
+en
+en
+dP
 DE
 Hn
 MX
@@ -59167,7 +59277,7 @@ eD
 Xn
 Pq
 Xt
-Bv
+uk
 VY
 UA
 QY
@@ -59377,13 +59487,13 @@ uk
 dP
 rP
 wF
-oo
-oo
-oo
-oo
-oo
-Yf
-Yf
+en
+en
+en
+en
+en
+dP
+dP
 iB
 tt
 iB
@@ -59401,7 +59511,7 @@ QF
 QF
 Zr
 fI
-Ff
+HD
 HM
 dP
 WN
@@ -59409,7 +59519,7 @@ WN
 VY
 Jb
 MQ
-Xt
+Cs
 xz
 Xt
 zn
@@ -59424,7 +59534,7 @@ vz
 Xt
 PN
 Xt
-Bv
+uk
 VY
 eP
 Om
@@ -59634,7 +59744,7 @@ uk
 dP
 rR
 wJ
-zP
+pW
 DF
 Hu
 Ni
@@ -59658,7 +59768,7 @@ ms
 QF
 Zr
 wS
-Zr
+zZ
 HM
 dP
 WN
@@ -59666,7 +59776,7 @@ WN
 VY
 Jb
 MQ
-Xt
+Cs
 iP
 Xt
 qz
@@ -59681,12 +59791,12 @@ Sn
 Xt
 iK
 Xt
-Bv
+uk
 VY
 UA
 QY
-ZP
-ZP
+Sx
+Sx
 KU
 LL
 la
@@ -59892,7 +60002,7 @@ dP
 sc
 wN
 zS
-dP
+gZ
 HV
 pW
 pW
@@ -59923,22 +60033,22 @@ WN
 VY
 Jb
 MQ
+Cs
+Cs
+Cs
+Cs
+Cs
+Cs
+Cs
+Cs
+Ff
+Cs
+Cs
 Xt
 Xt
 Xt
 Xt
-Xt
-Xt
-Xt
-Xt
-gQ
-Xt
-Xt
-Xt
-Xt
-Xt
-Xt
-Bv
+uk
 VY
 ae
 pO
@@ -59973,16 +60083,16 @@ NM
 WN
 su
 su
-en
 su
 su
-Nt
 su
 su
-JX
+fm
+fm
 su
 su
-gZ
+su
+su
 su
 su
 su
@@ -60191,11 +60301,11 @@ kb
 bf
 MQ
 VY
-VY
-VY
-VY
-VY
-ef
+uk
+uk
+uk
+uk
+uk
 Js
 UA
 rh
@@ -60228,23 +60338,23 @@ qk
 qk
 NM
 WN
-su
-uk
-hQ
-uk
-uk
-hQ
-uk
-uk
-hQ
-uk
-uk
-hQ
-uk
-uk
-su
 WN
-WN
+uk
+uk
+uk
+uk
+UW
+fm
+fm
+UW
+uk
+uk
+uk
+uk
+uk
+uk
+uk
+uk
 uk
 uk
 uk
@@ -60406,12 +60516,12 @@ uk
 uk
 uk
 zU
-zU
-zU
-zU
-zU
-Yg
-Yg
+en
+en
+en
+en
+dP
+dP
 Ef
 rI
 Ef
@@ -60452,7 +60562,7 @@ uk
 uk
 uk
 uk
-Cs
+uk
 Jp
 kR
 Ia
@@ -60484,8 +60594,16 @@ Dl
 hw
 qk
 NM
-WN
-su
+uk
+uk
+uk
+uk
+uk
+uk
+UW
+fm
+fm
+UW
 uk
 uk
 uk
@@ -60493,14 +60611,6 @@ uk
 uk
 uk
 uk
-uk
-uk
-uk
-uk
-uk
-uk
-su
-WN
 uk
 uk
 uk
@@ -60741,21 +60851,21 @@ NM
 NM
 NM
 NM
-WN
-WN
+uk
+Yf
 uk
 uk
 uk
+mi
+YL
+fm
+fm
+Gf
+MM
 uk
 uk
 uk
-uk
-uk
-uk
-uk
-uk
-uk
-uk
+ns
 uk
 uk
 uk
@@ -61004,10 +61114,10 @@ uk
 uk
 uk
 uk
-uk
-uk
-uk
-uk
+UW
+fm
+fm
+UW
 uk
 uk
 uk
@@ -61258,16 +61368,16 @@ uk
 uk
 uk
 uk
-zZ
+uk
 uk
 uk
 UW
+fm
+fm
+UW
 uk
 uk
-CJ
 uk
-uk
-zz
 uk
 uk
 uk
@@ -61516,14 +61626,14 @@ uk
 uk
 uk
 uk
-uk
-uk
-uk
-uk
-uk
-uk
-uk
-uk
+su
+su
+su
+LR
+fm
+su
+su
+su
 uk
 uk
 uk
@@ -61775,10 +61885,10 @@ uk
 uk
 uk
 uk
-uk
-uk
-uk
-uk
+UW
+fm
+fm
+UW
 uk
 uk
 uk
@@ -62032,10 +62142,10 @@ uk
 uk
 uk
 uk
-uk
-uk
-uk
-uk
+UW
+fm
+fm
+UW
 uk
 uk
 uk
@@ -62284,20 +62394,20 @@ uk
 uk
 uk
 uk
+YW
 uk
 uk
 uk
+mi
+mn
+fm
+fm
+AA
+MM
 uk
 uk
 uk
-uk
-uk
-uk
-uk
-uk
-uk
-uk
-uk
+aQ
 uk
 uk
 uk
@@ -62546,10 +62656,10 @@ uk
 uk
 uk
 uk
-uk
-uk
-uk
-uk
+UW
+fm
+fm
+UW
 uk
 uk
 uk
@@ -62707,7 +62817,7 @@ uk
 uk
 uk
 uk
-uk
+ef
 uk
 uk
 uk
@@ -62803,10 +62913,10 @@ uk
 uk
 uk
 uk
-uk
-uk
-uk
-uk
+UW
+fm
+fm
+UW
 uk
 uk
 uk
@@ -62917,6 +63027,7 @@ uk
 uk
 uk
 uk
+ef
 uk
 uk
 uk
@@ -63059,11 +63170,10 @@ uk
 uk
 uk
 uk
-uk
-uk
-uk
-uk
-uk
+su
+UW
+UW
+su
 uk
 uk
 uk
@@ -66865,6 +66975,20 @@ uk
 uk
 uk
 uk
+ef
+uk
+uk
+uk
+uk
+uk
+uk
+uk
+uk
+uk
+uk
+uk
+uk
+dm
 uk
 uk
 uk
@@ -66896,21 +67020,7 @@ uk
 uk
 uk
 uk
-uk
-uk
-uk
-uk
-uk
-uk
-uk
-uk
-uk
-uk
-uk
-uk
-uk
-uk
-uk
+ef
 uk
 uk
 uk
@@ -68742,7 +68852,7 @@ uk
 uk
 uk
 uk
-uk
+ef
 uk
 uk
 uk
@@ -70996,7 +71106,7 @@ uk
 uk
 uk
 uk
-uk
+ef
 uk
 uk
 uk
@@ -72464,7 +72574,7 @@ uk
 uk
 uk
 uk
-uk
+ef
 uk
 uk
 uk

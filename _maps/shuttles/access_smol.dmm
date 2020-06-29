@@ -31,14 +31,17 @@
 	height = 5;
 	id = "smol";
 	name = "AI Satellite Access Shuttle";
+	preferred_direction = 4;
 	width = 7
 	},
+/obj/structure/fans/tiny,
 /turf/open/floor/mineral/titanium,
 /area/shuttle/custom{
 	name = "AI Access Shuttle"
 	})
 "u" = (
 /obj/machinery/door/airlock/titanium/glass,
+/obj/structure/fans/tiny,
 /turf/open/floor/mineral/titanium,
 /area/shuttle/custom{
 	name = "AI Access Shuttle"
@@ -56,7 +59,7 @@
 /obj/machinery/computer/shuttle{
 	dir = 8;
 	name = "AI Access Shuttle Console";
-	possible_destinations = "smol";
+	possible_destinations = "ai_sat;ai_station";
 	shuttleId = "smol"
 	},
 /turf/open/floor/mineral/titanium/blue,
