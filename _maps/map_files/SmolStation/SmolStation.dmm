@@ -5973,6 +5973,7 @@
 	})
 "lK" = (
 /obj/machinery/atmospherics/pipe/bluespace/layer1{
+	bluespace_network_name = "breathable";
 	dir = 1
 	},
 /turf/open/floor/plating,
@@ -14608,6 +14609,7 @@
 	pixel_x = 24
 	},
 /obj/machinery/atmospherics/pipe/bluespace/layer1{
+	bluespace_network_name = "breathable";
 	dir = 8;
 	on = 1
 	},
@@ -25215,6 +25217,7 @@
 /area/medical/medbay/zone3)
 "XX" = (
 /obj/machinery/atmospherics/pipe/bluespace/layer1{
+	bluespace_network_name = "breathable";
 	dir = 8;
 	on = 1
 	},
