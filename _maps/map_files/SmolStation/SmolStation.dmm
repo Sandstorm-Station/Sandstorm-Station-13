@@ -121,6 +121,12 @@
 	},
 /turf/open/floor/plasteel/airless/solarpanel,
 /area/aisat)
+"aq" = (
+/obj/machinery/vending/cola/random,
+/turf/open/floor/plasteel,
+/area/hallway/primary/aft{
+	name = "Docking Bay"
+	})
 "at" = (
 /obj/effect/turf_decal/tile/blue,
 /obj/effect/turf_decal/tile/blue{
@@ -139,10 +145,13 @@
 /turf/open/floor/plasteel/white,
 /area/medical/medbay/zone3)
 "aw" = (
-/obj/machinery/atmospherics/pipe/simple/general/visible,
-/obj/effect/spawner/structure/window/reinforced,
-/turf/open/floor/plating,
-/area/space)
+/obj/effect/turf_decal/tile/purple,
+/obj/effect/turf_decal/tile/purple{
+	dir = 1
+	},
+/obj/effect/turf_decal/stripes/corner,
+/turf/open/floor/plasteel/white,
+/area/science/lab)
 "ax" = (
 /obj/effect/turf_decal/stripes/line{
 	dir = 1
@@ -293,13 +302,19 @@
 /turf/closed/wall/r_wall,
 /area/bridge)
 "aN" = (
-/obj/effect/turf_decal/tile/neutral{
-	dir = 8
+/obj/effect/turf_decal/tile/purple,
+/obj/effect/turf_decal/tile/purple{
+	dir = 1
 	},
-/obj/machinery/atmospherics/pipe/simple/scrubbers/hidden/layer3,
-/obj/machinery/atmospherics/pipe/simple/supply/hidden/layer1,
-/turf/open/floor/plasteel/dark,
-/area/space)
+/obj/effect/turf_decal/stripes{
+	dir = 4
+	},
+/obj/structure/sign/warning/docking{
+	pixel_x = 32;
+	pixel_y = 32
+	},
+/turf/open/floor/plasteel/white,
+/area/science/lab)
 "aO" = (
 /obj/structure/cable{
 	icon_state = "4-8"
@@ -348,17 +363,6 @@
 	},
 /turf/open/floor/plasteel,
 /area/engine/engineering)
-"aS" = (
-/obj/machinery/computer/nanite_cloud_controller,
-/obj/effect/turf_decal/stripes{
-	dir = 8
-	},
-/obj/effect/turf_decal/stripes{
-	dir = 4
-	},
-/obj/effect/turf_decal/stripes,
-/turf/open/floor/plasteel/dark,
-/area/space)
 "aU" = (
 /obj/effect/turf_decal/tile/yellow,
 /obj/effect/turf_decal/tile/yellow{
@@ -585,57 +589,30 @@
 /obj/machinery/door/firedoor,
 /turf/open/floor/plasteel,
 /area/storage/primary)
-"bq" = (
-/obj/effect/turf_decal/tile/neutral{
-	dir = 8
-	},
-/obj/effect/turf_decal/tile/neutral{
-	dir = 4
-	},
-/obj/effect/turf_decal/tile/neutral{
-	dir = 1
-	},
-/obj/effect/turf_decal/tile/neutral,
-/obj/structure/table/glass,
-/obj/machinery/reagentgrinder{
-	pixel_y = 5
-	},
-/turf/open/floor/plasteel/dark,
-/area/space)
 "br" = (
-/obj/effect/turf_decal/tile/neutral,
-/obj/effect/turf_decal/tile/neutral{
-	dir = 4
-	},
-/obj/effect/turf_decal/tile/neutral{
-	dir = 1
-	},
 /obj/effect/turf_decal/tile/neutral{
 	dir = 8
 	},
-/obj/machinery/atmospherics/pipe/simple/scrubbers/hidden/layer3{
-	dir = 6
-	},
-/obj/machinery/atmospherics/pipe/simple/supply/hidden/layer1{
-	dir = 6
-	},
+/obj/effect/turf_decal/tile/neutral,
 /turf/open/floor/plasteel/dark,
-/area/space)
+/area/science/xenobiology{
+	name = "Science Outpost"
+	})
 "bs" = (
-/obj/effect/turf_decal/tile/neutral,
-/obj/effect/turf_decal/tile/neutral{
-	dir = 1
+/obj/structure/cable{
+	icon_state = "1-2"
 	},
-/obj/effect/turf_decal/tile/neutral{
+/obj/structure/cable{
+	icon_state = "1-8"
+	},
+/obj/structure/cable,
+/obj/machinery/power/terminal{
 	dir = 4
 	},
-/obj/effect/turf_decal/tile/neutral{
-	dir = 8
-	},
-/obj/machinery/atmospherics/pipe/simple/scrubbers/hidden/layer3,
-/obj/machinery/atmospherics/pipe/simple/supply/hidden/layer1,
-/turf/open/floor/plasteel/dark,
-/area/space)
+/turf/open/floor/plating,
+/area/science/xenobiology{
+	name = "Science Outpost"
+	})
 "bt" = (
 /obj/effect/turf_decal/tile/blue,
 /obj/effect/turf_decal/tile/blue{
@@ -784,9 +761,14 @@
 /turf/open/floor/plasteel/dark,
 /area/bridge)
 "bI" = (
-/obj/effect/spawner/structure/window/reinforced,
-/turf/open/floor/plating,
-/area/space)
+/obj/structure/lattice/catwalk,
+/obj/structure/cable{
+	icon_state = "4-8"
+	},
+/turf/open/space,
+/area/science/xenobiology{
+	name = "Science Outpost"
+	})
 "bJ" = (
 /obj/structure/particle_accelerator/particle_emitter/center{
 	dir = 8
@@ -836,19 +818,15 @@
 /turf/open/floor/plasteel/dark,
 /area/bridge)
 "bM" = (
-/obj/structure/table/reinforced,
-/obj/item/integrated_electronics/analyzer{
-	pixel_x = 10
-	},
-/obj/item/integrated_electronics/debugger,
-/obj/item/integrated_electronics/detailer{
-	pixel_x = -9
+/obj/effect/turf_decal/tile/purple,
+/obj/effect/turf_decal/tile/purple{
+	dir = 1
 	},
 /obj/effect/turf_decal/stripes{
-	dir = 8
+	dir = 4
 	},
-/turf/open/floor/plasteel/dark,
-/area/space)
+/turf/open/floor/plasteel/white,
+/area/science/lab)
 "bO" = (
 /obj/machinery/atmospherics/pipe/simple/green/visible{
 	dir = 6
@@ -901,6 +879,17 @@
 	},
 /turf/open/floor/plasteel/checker,
 /area/engine/atmos)
+"bR" = (
+/obj/machinery/atmospherics/pipe/simple/scrubbers/hidden/layer3{
+	dir = 5
+	},
+/obj/machinery/atmospherics/pipe/simple/supply/hidden/layer1{
+	dir = 6
+	},
+/turf/open/floor/plasteel/dark,
+/area/science/xenobiology{
+	name = "Science Outpost"
+	})
 "bS" = (
 /obj/machinery/gateway{
 	dir = 9
@@ -1055,11 +1044,19 @@
 /turf/open/floor/plasteel,
 /area/quartermaster/storage)
 "ce" = (
-/obj/machinery/atmospherics/components/unary/vent_pump/on/layer1{
-	dir = 4
+/obj/docking_port/stationary{
+	dir = 4;
+	dwidth = 3;
+	height = 5;
+	id = "sciout_station";
+	name = "Science Shuttle Dock";
+	roundstart_template = /datum/map_template/shuttle/sandcode/scioutpost;
+	width = 7
 	},
-/turf/open/floor/engine,
-/area/space)
+/turf/open/floor/plasteel/elevatorshaft{
+	name = "landing site"
+	},
+/area/science/lab)
 "cf" = (
 /obj/machinery/atmospherics/pipe/simple/scrubbers/hidden/layer3{
 	dir = 6
@@ -1386,21 +1383,14 @@
 /turf/open/floor/plasteel/dark,
 /area/bridge)
 "cO" = (
-/obj/machinery/atmospherics/pipe/manifold/general/visible{
-	dir = 8
+/obj/machinery/power/tracker,
+/obj/structure/cable{
+	icon_state = "0-2"
 	},
-/obj/effect/turf_decal/tile/neutral,
-/obj/effect/turf_decal/tile/neutral{
-	dir = 8
-	},
-/obj/effect/turf_decal/tile/neutral{
-	dir = 1
-	},
-/obj/effect/turf_decal/tile/neutral{
-	dir = 4
-	},
-/turf/open/floor/plasteel/dark,
-/area/space)
+/turf/open/floor/plasteel/airless/solarpanel,
+/area/science/xenobiology{
+	name = "Science Outpost"
+	})
 "cR" = (
 /obj/machinery/atmospherics/components/trinary/filter/atmos/n2o{
 	dir = 1
@@ -1445,6 +1435,16 @@
 /obj/effect/turf_decal/tile/brown,
 /turf/open/floor/plasteel,
 /area/quartermaster/storage)
+"cY" = (
+/obj/machinery/computer/shuttle{
+	name = "Science Outpost Shuttle Console";
+	possible_destinations = "sciout_station;sciout_dock";
+	shuttleId = "sciout_access"
+	},
+/turf/open/floor/plasteel/dark,
+/area/science/xenobiology{
+	name = "Science Outpost"
+	})
 "db" = (
 /obj/machinery/atmospherics/pipe/simple/supply/hidden/layer1{
 	dir = 4
@@ -1601,21 +1601,13 @@
 /turf/open/floor/plating,
 /area/maintenance/central)
 "dq" = (
-/obj/effect/turf_decal/tile/neutral,
-/obj/effect/turf_decal/tile/neutral{
-	dir = 1
-	},
-/obj/effect/turf_decal/tile/neutral{
-	dir = 4
-	},
-/obj/effect/turf_decal/tile/neutral{
+/obj/machinery/light{
 	dir = 8
 	},
-/obj/machinery/atmospherics/components/unary/vent_pump/on/layer1{
-	dir = 4
-	},
-/turf/open/floor/plasteel/dark,
-/area/space)
+/turf/open/floor/plating,
+/area/science/xenobiology{
+	name = "Science Outpost"
+	})
 "dr" = (
 /obj/effect/turf_decal/tile/bar{
 	dir = 1
@@ -1797,6 +1789,15 @@
 	},
 /turf/open/floor/plasteel/dark,
 /area/bridge)
+"dI" = (
+/obj/machinery/atmospherics/components/unary/vent_pump/siphon/on{
+	external_pressure_bound = 120;
+	name = "server vent"
+	},
+/turf/open/floor/circuit/telecomms,
+/area/science/xenobiology{
+	name = "Science Outpost"
+	})
 "dJ" = (
 /turf/open/floor/plasteel,
 /area/hallway/primary/aft{
@@ -1819,15 +1820,6 @@
 	},
 /turf/open/floor/plasteel/dark,
 /area/security/brig)
-"dL" = (
-/obj/machinery/atmospherics/pipe/simple/scrubbers/hidden/layer3{
-	dir = 10
-	},
-/obj/machinery/atmospherics/pipe/simple/supply/hidden/layer1{
-	dir = 6
-	},
-/turf/open/floor/plasteel/dark,
-/area/space)
 "dM" = (
 /obj/machinery/atmospherics/pipe/simple/supply/hidden/layer1{
 	dir = 6
@@ -2044,15 +2036,6 @@
 /obj/effect/landmark/carpspawn,
 /turf/open/space/basic,
 /area/space)
-"eg" = (
-/obj/machinery/atmospherics/pipe/simple/scrubbers/hidden/layer3{
-	dir = 5
-	},
-/obj/machinery/atmospherics/pipe/simple/supply/hidden/layer1{
-	dir = 6
-	},
-/turf/open/floor/plasteel/dark,
-/area/space)
 "eh" = (
 /obj/machinery/atmospherics/pipe/manifold/scrubbers/hidden/layer3,
 /obj/machinery/atmospherics/pipe/simple/supply/hidden/layer1{
@@ -2096,11 +2079,26 @@
 /turf/open/floor/plasteel,
 /area/engine/engineering)
 "el" = (
+/obj/effect/turf_decal/tile/neutral,
+/obj/effect/turf_decal/tile/neutral{
+	dir = 8
+	},
+/obj/effect/turf_decal/tile/neutral{
+	dir = 1
+	},
 /obj/effect/turf_decal/tile/neutral{
 	dir = 4
 	},
+/obj/machinery/camera{
+	c_tag = "Science Outpost - Central";
+	dir = 1;
+	name = "science camera";
+	network = list("ss13","rd")
+	},
 /turf/open/floor/plasteel/dark,
-/area/space)
+/area/science/xenobiology{
+	name = "Science Outpost"
+	})
 "em" = (
 /obj/structure/cable{
 	icon_state = "1-4"
@@ -2192,6 +2190,40 @@
 	},
 /turf/open/floor/plasteel,
 /area/hallway/secondary/entry)
+"eu" = (
+/obj/structure/table/glass,
+/obj/item/storage/box/beakers{
+	pixel_x = 2;
+	pixel_y = 7
+	},
+/obj/item/storage/box/syringes{
+	pixel_y = 5
+	},
+/obj/item/storage/box/monkeycubes{
+	pixel_x = 2;
+	pixel_y = -2
+	},
+/obj/item/storage/box/monkeycubes,
+/obj/effect/turf_decal/tile/neutral,
+/obj/effect/turf_decal/tile/neutral{
+	dir = 1
+	},
+/obj/effect/turf_decal/tile/neutral{
+	dir = 4
+	},
+/obj/effect/turf_decal/tile/neutral{
+	dir = 8
+	},
+/obj/effect/turf_decal/stripes{
+	dir = 4
+	},
+/obj/item/extinguisher{
+	pixel_x = -10
+	},
+/turf/open/floor/plasteel/dark,
+/area/science/xenobiology{
+	name = "Science Outpost"
+	})
 "ev" = (
 /obj/machinery/atmospherics/components/unary/vent_scrubber/on/layer3{
 	dir = 8
@@ -2225,16 +2257,20 @@
 "eA" = (
 /obj/effect/turf_decal/tile/neutral,
 /obj/effect/turf_decal/tile/neutral{
+	dir = 8
+	},
+/obj/effect/turf_decal/tile/neutral{
+	dir = 1
+	},
+/obj/effect/turf_decal/tile/neutral{
 	dir = 4
 	},
-/obj/machinery/atmospherics/pipe/simple/scrubbers/hidden/layer3{
-	dir = 4
-	},
-/obj/machinery/atmospherics/pipe/simple/supply/hidden/layer1{
-	dir = 4
-	},
+/obj/machinery/atmospherics/pipe/manifold/scrubbers/hidden/layer3,
+/obj/machinery/atmospherics/pipe/manifold/supply/hidden/layer1,
 /turf/open/floor/plasteel/dark,
-/area/space)
+/area/science/xenobiology{
+	name = "Science Outpost"
+	})
 "eB" = (
 /obj/structure/cable{
 	icon_state = "1-2"
@@ -2349,8 +2385,16 @@
 /turf/open/floor/plasteel/dark,
 /area/security/prison)
 "eM" = (
-/turf/closed/wall,
-/area/space)
+/obj/machinery/atmospherics/pipe/simple/scrubbers/hidden/layer3{
+	dir = 4
+	},
+/obj/machinery/atmospherics/pipe/simple/supply/hidden/layer1{
+	dir = 9
+	},
+/turf/open/floor/plasteel/dark,
+/area/science/xenobiology{
+	name = "Science Outpost"
+	})
 "eN" = (
 /obj/effect/turf_decal/tile/purple,
 /obj/effect/turf_decal/tile/purple{
@@ -2382,9 +2426,6 @@
 /turf/open/floor/plasteel/dark,
 /area/aisat)
 "eR" = (
-/obj/item/twohanded/required/kirbyplants{
-	icon_state = "plant-21"
-	},
 /obj/effect/turf_decal/tile/brown{
 	dir = 1
 	},
@@ -2409,14 +2450,13 @@
 /turf/open/floor/plasteel/dark,
 /area/teleporter)
 "eV" = (
-/obj/machinery/atmospherics/pipe/simple/general/visible,
-/obj/machinery/door/airlock/research/glass{
-	name = "Xenobiology Kill Room";
-	req_access_txt = "47"
+/obj/effect/turf_decal/tile/purple,
+/obj/effect/turf_decal/tile/purple{
+	dir = 1
 	},
-/obj/structure/fans/tiny,
-/turf/open/floor/plasteel/dark,
-/area/space)
+/obj/machinery/vending/coffee,
+/turf/open/floor/plasteel/white,
+/area/science/lab)
 "eW" = (
 /obj/structure/cable{
 	icon_state = "4-8"
@@ -2522,6 +2562,19 @@
 	},
 /turf/open/floor/plating,
 /area/aisat)
+"ff" = (
+/obj/machinery/door/window/brigdoor/southright{
+	name = "Creature Pen";
+	req_access_txt = "47"
+	},
+/obj/machinery/door/poddoor/preopen{
+	id = "xeno2";
+	name = "Creature Cell #2"
+	},
+/turf/open/floor/plasteel/dark,
+/area/science/xenobiology{
+	name = "Science Outpost"
+	})
 "fg" = (
 /obj/structure/window/reinforced,
 /obj/structure/window/reinforced{
@@ -2841,6 +2894,15 @@
 	},
 /turf/open/floor/carpet,
 /area/crew_quarters/dorms)
+"fI" = (
+/obj/machinery/atmospherics/components/unary/vent_scrubber/on/layer3,
+/obj/machinery/light{
+	dir = 1
+	},
+/turf/open/floor/plasteel/dark,
+/area/science/xenobiology{
+	name = "Science Outpost"
+	})
 "fJ" = (
 /obj/machinery/door/poddoor/shutters/preopen{
 	id = "hopline";
@@ -2851,38 +2913,6 @@
 	},
 /turf/open/floor/plasteel,
 /area/hallway/primary/starboard/fore)
-"fK" = (
-/obj/structure/table/glass,
-/obj/item/storage/box/beakers{
-	pixel_x = 2;
-	pixel_y = 7
-	},
-/obj/item/storage/box/syringes{
-	pixel_y = 5
-	},
-/obj/item/storage/box/monkeycubes{
-	pixel_x = 2;
-	pixel_y = -2
-	},
-/obj/item/storage/box/monkeycubes,
-/obj/effect/turf_decal/tile/neutral,
-/obj/effect/turf_decal/tile/neutral{
-	dir = 1
-	},
-/obj/effect/turf_decal/tile/neutral{
-	dir = 4
-	},
-/obj/effect/turf_decal/tile/neutral{
-	dir = 8
-	},
-/obj/effect/turf_decal/stripes{
-	dir = 4
-	},
-/obj/item/extinguisher{
-	pixel_x = -10
-	},
-/turf/open/floor/plasteel/dark,
-/area/space)
 "fM" = (
 /obj/machinery/atmospherics/pipe/simple/scrubbers/hidden/layer3{
 	dir = 4
@@ -2895,11 +2925,6 @@
 "fN" = (
 /obj/machinery/atmospherics/pipe/simple/supply/hidden/layer1{
 	dir = 4
-	},
-/obj/item/twohanded/required/kirbyplants{
-	icon_state = "plant-21";
-	pixel_x = -3;
-	pixel_y = 3
 	},
 /obj/effect/turf_decal/tile/neutral{
 	dir = 1
@@ -2914,19 +2939,6 @@
 /obj/machinery/atmospherics/components/unary/vent_scrubber/on/layer3,
 /turf/open/floor/plasteel/dark,
 /area/bridge)
-"fO" = (
-/obj/effect/turf_decal/tile/neutral,
-/obj/effect/turf_decal/tile/neutral{
-	dir = 8
-	},
-/obj/effect/turf_decal/tile/neutral{
-	dir = 1
-	},
-/obj/effect/turf_decal/tile/neutral{
-	dir = 4
-	},
-/turf/open/floor/plasteel/dark,
-/area/space)
 "fP" = (
 /obj/structure/reflector/single/anchored{
 	dir = 5
@@ -3206,15 +3218,6 @@
 	},
 /turf/open/floor/plasteel/dark,
 /area/security/brig)
-"gt" = (
-/obj/machinery/atmospherics/pipe/simple/scrubbers/hidden/layer3{
-	dir = 10
-	},
-/obj/machinery/atmospherics/pipe/simple/supply/hidden/layer1{
-	dir = 10
-	},
-/turf/open/floor/engine,
-/area/space)
 "gu" = (
 /obj/structure/cable{
 	icon_state = "1-2"
@@ -3263,30 +3266,30 @@
 /obj/structure/lattice,
 /turf/open/space,
 /area/space/nearstation)
-"gz" = (
-/turf/open/floor/plasteel/dark,
-/area/space)
 "gA" = (
-/obj/effect/turf_decal/tile/neutral{
-	dir = 8
+/obj/effect/turf_decal/tile/purple,
+/obj/effect/turf_decal/tile/purple{
+	dir = 1
 	},
-/turf/open/floor/plasteel/dark,
-/area/space)
+/obj/machinery/vending/snack,
+/turf/open/floor/plasteel/white,
+/area/science/lab)
 "gB" = (
-/obj/machinery/atmospherics/pipe/simple/scrubbers/hidden/layer3{
-	dir = 4
+/obj/effect/turf_decal/tile/purple,
+/obj/effect/turf_decal/tile/purple{
+	dir = 1
 	},
-/obj/machinery/atmospherics/pipe/simple/supply/hidden/layer1{
-	dir = 9
+/obj/machinery/computer/shuttle{
+	name = "Science Outpost Shuttle Console";
+	possible_destinations = "sciout_station;sciout_dock";
+	shuttleId = "sciout_access";
+	dir = 1
 	},
-/turf/open/floor/plasteel/dark,
-/area/space)
+/turf/open/floor/plasteel/white,
+/area/science/lab)
 "gC" = (
 /obj/machinery/atmospherics/pipe/manifold/supply/hidden/layer1{
 	dir = 1
-	},
-/obj/item/twohanded/required/kirbyplants{
-	icon_state = "plant-22"
 	},
 /obj/effect/turf_decal/tile/neutral{
 	dir = 1
@@ -3492,25 +3495,6 @@
 	},
 /turf/open/floor/engine,
 /area/engine/engineering)
-"gU" = (
-/obj/machinery/computer/camera_advanced/xenobio{
-	dir = 4
-	},
-/obj/effect/turf_decal/tile/neutral,
-/obj/effect/turf_decal/tile/neutral{
-	dir = 1
-	},
-/obj/effect/turf_decal/tile/neutral{
-	dir = 4
-	},
-/obj/effect/turf_decal/tile/neutral{
-	dir = 8
-	},
-/obj/effect/turf_decal/stripes{
-	dir = 6
-	},
-/turf/open/floor/plasteel/dark,
-/area/space)
 "gV" = (
 /turf/closed/wall/r_wall,
 /area/security/brig)
@@ -3615,24 +3599,14 @@
 /turf/open/floor/plasteel/dark,
 /area/security/brig)
 "hg" = (
-/obj/machinery/computer/camera_advanced/xenobio{
-	dir = 8
-	},
-/obj/effect/turf_decal/tile/neutral,
-/obj/effect/turf_decal/tile/neutral{
-	dir = 1
-	},
-/obj/effect/turf_decal/tile/neutral{
-	dir = 4
-	},
-/obj/effect/turf_decal/tile/neutral{
-	dir = 8
-	},
+/obj/machinery/computer/telescience,
 /obj/effect/turf_decal/stripes{
 	dir = 10
 	},
 /turf/open/floor/plasteel/dark,
-/area/space)
+/area/science/xenobiology{
+	name = "Science Outpost"
+	})
 "hh" = (
 /obj/structure/cable{
 	icon_state = "4-8"
@@ -3691,6 +3665,23 @@
 /obj/effect/turf_decal/tile/brown,
 /turf/open/floor/plasteel,
 /area/quartermaster/storage)
+"hn" = (
+/obj/machinery/processor/slime,
+/obj/effect/turf_decal/tile/neutral,
+/obj/effect/turf_decal/tile/neutral{
+	dir = 1
+	},
+/obj/effect/turf_decal/tile/neutral{
+	dir = 4
+	},
+/obj/effect/turf_decal/tile/neutral{
+	dir = 8
+	},
+/obj/effect/turf_decal/stripes/end,
+/turf/open/floor/plasteel/dark,
+/area/science/xenobiology{
+	name = "Science Outpost"
+	})
 "ho" = (
 /obj/structure/window/reinforced{
 	dir = 8
@@ -4001,11 +3992,16 @@
 /turf/open/floor/plasteel/dark,
 /area/bridge)
 "hO" = (
-/obj/structure/cable{
-	icon_state = "1-8"
+/obj/effect/turf_decal/tile/purple,
+/obj/effect/turf_decal/tile/purple{
+	dir = 1
 	},
-/turf/open/floor/plating,
-/area/space)
+/obj/machinery/light,
+/obj/effect/turf_decal/stripes{
+	dir = 4
+	},
+/turf/open/floor/plasteel/white,
+/area/science/lab)
 "hP" = (
 /obj/machinery/atmospherics/pipe/simple/scrubbers/hidden/layer3{
 	dir = 10
@@ -4082,24 +4078,32 @@
 /turf/open/floor/plasteel,
 /area/engine/engineering)
 "hW" = (
-/obj/machinery/atmospherics/pipe/simple/supply/hidden/layer1{
-	dir = 6
+/obj/structure/cable{
+	icon_state = "1-4"
 	},
-/turf/open/floor/plasteel/dark,
-/area/space)
+/obj/structure/cable{
+	icon_state = "2-4"
+	},
+/obj/structure/lattice/catwalk,
+/turf/open/space,
+/area/science/xenobiology{
+	name = "Science Outpost"
+	})
 "hX" = (
 /obj/structure/cable{
 	icon_state = "4-8"
 	},
 /obj/structure/cable{
-	icon_state = "2-8"
+	icon_state = "1-4"
 	},
 /obj/structure/cable{
-	icon_state = "1-8"
+	icon_state = "2-4"
 	},
 /obj/structure/lattice/catwalk,
 /turf/open/space,
-/area/space)
+/area/science/xenobiology{
+	name = "Science Outpost"
+	})
 "hY" = (
 /obj/structure/cable{
 	icon_state = "4-8"
@@ -4253,11 +4257,20 @@
 /turf/open/space,
 /area/space/nearstation)
 "ik" = (
-/obj/machinery/atmospherics/components/unary/vent_pump/on/layer1{
-	dir = 8
+/obj/structure/lattice/catwalk,
+/obj/structure/cable{
+	icon_state = "1-2"
 	},
-/turf/open/floor/plasteel/dark,
-/area/space)
+/obj/structure/cable{
+	icon_state = "2-4"
+	},
+/obj/structure/cable{
+	icon_state = "2-8"
+	},
+/turf/open/space/basic,
+/area/science/xenobiology{
+	name = "Science Outpost"
+	})
 "im" = (
 /obj/structure/closet/crate,
 /obj/item/radio/intercom{
@@ -4315,18 +4328,27 @@
 /turf/open/floor/plasteel/dark,
 /area/security/brig)
 "is" = (
-/obj/structure/window/reinforced,
-/obj/machinery/disposal/bin,
-/obj/structure/disposalpipe/trunk,
-/obj/effect/turf_decal/stripes{
-	dir = 5
+/obj/effect/turf_decal/tile/neutral,
+/obj/effect/turf_decal/tile/neutral{
+	dir = 8
 	},
-/obj/machinery/door/poddoor/preopen{
-	id = "xeno3";
-	name = "Creature Cell #3"
+/obj/effect/turf_decal/tile/neutral{
+	dir = 1
+	},
+/obj/effect/turf_decal/tile/neutral{
+	dir = 4
+	},
+/obj/machinery/button/door{
+	id = "xeno6";
+	name = "Containment Control";
+	pixel_x = 24;
+	pixel_y = -24;
+	req_access_txt = "55"
 	},
 /turf/open/floor/plasteel/dark,
-/area/space)
+/area/science/xenobiology{
+	name = "Science Outpost"
+	})
 "it" = (
 /obj/structure/cable{
 	icon_state = "4-8"
@@ -4481,6 +4503,19 @@
 	},
 /turf/open/floor/plasteel,
 /area/quartermaster/storage)
+"iI" = (
+/obj/machinery/door/window/brigdoor/southright{
+	name = "Creature Pen";
+	req_access_txt = "47"
+	},
+/obj/machinery/door/poddoor/preopen{
+	id = "xeno1";
+	name = "Creature Cell #1"
+	},
+/turf/open/floor/plasteel/dark,
+/area/science/xenobiology{
+	name = "Science Outpost"
+	})
 "iJ" = (
 /obj/effect/turf_decal/tile/red,
 /obj/effect/turf_decal/tile/red{
@@ -4950,14 +4985,17 @@
 /turf/open/floor/plasteel,
 /area/quartermaster/storage)
 "jC" = (
-/obj/machinery/door/airlock/research/glass{
-	name = "B.E.P.I.S. Chamber Access";
-	req_access_txt = "47"
+/obj/structure/cable{
+	icon_state = "2-8"
 	},
-/obj/machinery/atmospherics/pipe/simple/scrubbers/hidden/layer3,
-/obj/machinery/atmospherics/pipe/simple/supply/hidden/layer1,
-/turf/open/floor/engine,
-/area/space)
+/obj/structure/cable{
+	icon_state = "1-8"
+	},
+/obj/structure/lattice/catwalk,
+/turf/open/space,
+/area/science/xenobiology{
+	name = "Science Outpost"
+	})
 "jE" = (
 /obj/machinery/atmospherics/pipe/simple/green/visible{
 	dir = 4
@@ -4980,20 +5018,6 @@
 "jF" = (
 /turf/closed/wall/r_wall,
 /area/ai_monitored/turret_protected/ai)
-"jG" = (
-/obj/effect/turf_decal/tile/neutral{
-	dir = 8
-	},
-/obj/effect/turf_decal/tile/neutral{
-	dir = 4
-	},
-/obj/effect/turf_decal/tile/neutral{
-	dir = 1
-	},
-/obj/effect/turf_decal/tile/neutral,
-/obj/machinery/atmospherics/components/unary/vent_pump/on/layer1,
-/turf/open/floor/plasteel/dark,
-/area/space)
 "jH" = (
 /obj/machinery/power/smes{
 	charge = 5e+006
@@ -5271,6 +5295,27 @@
 	},
 /turf/open/floor/plasteel,
 /area/hallway/secondary/exit)
+"km" = (
+/obj/machinery/computer/camera_advanced/xenobio{
+	dir = 4
+	},
+/obj/effect/turf_decal/tile/neutral,
+/obj/effect/turf_decal/tile/neutral{
+	dir = 1
+	},
+/obj/effect/turf_decal/tile/neutral{
+	dir = 4
+	},
+/obj/effect/turf_decal/tile/neutral{
+	dir = 8
+	},
+/obj/effect/turf_decal/stripes{
+	dir = 6
+	},
+/turf/open/floor/plasteel/dark,
+/area/science/xenobiology{
+	name = "Science Outpost"
+	})
 "kn" = (
 /obj/structure/cable/white{
 	icon_state = "0-2"
@@ -5287,18 +5332,11 @@
 /turf/open/floor/plasteel/dark,
 /area/bridge)
 "kp" = (
-/obj/structure/window/reinforced,
-/obj/machinery/disposal/bin,
-/obj/structure/disposalpipe/trunk,
-/obj/effect/turf_decal/stripes{
-	dir = 5
+/obj/machinery/atmospherics/pipe/manifold/supply/hidden/layer1{
+	dir = 1
 	},
-/obj/machinery/door/poddoor/preopen{
-	id = "xeno6";
-	name = "Creature Cell #6"
-	},
-/turf/open/floor/plasteel/dark,
-/area/space)
+/turf/open/floor/plating,
+/area/maintenance/central)
 "kq" = (
 /obj/item/reagent_containers/glass/bucket,
 /obj/effect/turf_decal/tile/green{
@@ -5356,15 +5394,6 @@
 /obj/effect/landmark/start/station_engineer,
 /turf/open/floor/plasteel,
 /area/engine/engineering)
-"kw" = (
-/obj/effect/turf_decal/tile/neutral{
-	dir = 1
-	},
-/obj/effect/turf_decal/tile/neutral{
-	dir = 8
-	},
-/turf/open/floor/plasteel/dark,
-/area/space)
 "kx" = (
 /obj/effect/turf_decal/tile/neutral,
 /obj/effect/turf_decal/tile/neutral{
@@ -5415,29 +5444,19 @@
 	},
 /turf/open/floor/plasteel/dark,
 /area/ai_monitored/turret_protected/ai)
-"kC" = (
-/obj/effect/turf_decal/tile/neutral{
+"kD" = (
+/obj/machinery/vending/assist,
+/obj/effect/turf_decal/stripes{
 	dir = 8
 	},
-/obj/effect/turf_decal/tile/neutral{
-	dir = 4
+/obj/structure/sign/departments/science{
+	pixel_x = 32;
+	pixel_y = 32
 	},
-/obj/effect/turf_decal/tile/neutral{
-	dir = 1
-	},
-/obj/effect/turf_decal/tile/neutral,
 /turf/open/floor/plasteel/dark,
-/area/space)
-"kD" = (
-/obj/machinery/rnd/experimentor,
-/obj/machinery/atmospherics/pipe/simple/scrubbers/hidden/layer3{
-	dir = 6
-	},
-/obj/machinery/atmospherics/pipe/simple/supply/hidden/layer1{
-	dir = 5
-	},
-/turf/open/floor/engine,
-/area/space)
+/area/science/xenobiology{
+	name = "Science Outpost"
+	})
 "kE" = (
 /obj/structure/cable{
 	icon_state = "1-8"
@@ -5582,12 +5601,6 @@
 	},
 /turf/open/floor/plating,
 /area/maintenance/central)
-"kT" = (
-/obj/structure/table,
-/obj/item/storage/box/disks_nanite,
-/obj/item/storage/box/disks_nanite,
-/turf/open/floor/plasteel/dark,
-/area/space)
 "kU" = (
 /obj/effect/spawner/structure/window/reinforced,
 /obj/structure/sign/warning/electricshock{
@@ -5611,6 +5624,21 @@
 	},
 /turf/open/floor/plasteel/dark,
 /area/bridge)
+"kW" = (
+/obj/structure/window/reinforced,
+/obj/machinery/disposal/bin,
+/obj/structure/disposalpipe/trunk,
+/obj/effect/turf_decal/stripes{
+	dir = 5
+	},
+/obj/machinery/door/poddoor/preopen{
+	id = "xeno4";
+	name = "Creature Cell #4"
+	},
+/turf/open/floor/plasteel/dark,
+/area/science/xenobiology{
+	name = "Science Outpost"
+	})
 "kY" = (
 /obj/structure/bed,
 /obj/effect/turf_decal/tile/red{
@@ -5672,17 +5700,14 @@
 /turf/open/floor/plasteel,
 /area/hallway/primary/central)
 "ld" = (
-/obj/structure/chair/comfy/black{
-	dir = 1
-	},
-/obj/machinery/atmospherics/pipe/simple/scrubbers/hidden/layer3{
-	dir = 5
-	},
-/obj/machinery/atmospherics/pipe/simple/supply/hidden/layer1{
-	dir = 4
+/obj/effect/turf_decal/tile/neutral,
+/obj/effect/turf_decal/tile/neutral{
+	dir = 8
 	},
 /turf/open/floor/plasteel/dark,
-/area/space)
+/area/science/xenobiology{
+	name = "Science Outpost"
+	})
 "le" = (
 /obj/structure/disposalpipe/segment{
 	dir = 5
@@ -5760,9 +5785,20 @@
 /turf/open/floor/plasteel/dark,
 /area/teleporter)
 "lo" = (
-/obj/machinery/atmospherics/components/unary/vent_scrubber/on/layer3,
+/obj/effect/turf_decal/tile/neutral{
+	dir = 8
+	},
+/obj/effect/turf_decal/tile/neutral{
+	dir = 4
+	},
+/obj/effect/turf_decal/tile/neutral{
+	dir = 1
+	},
+/obj/effect/turf_decal/tile/neutral,
 /turf/open/floor/plasteel/dark,
-/area/space)
+/area/science/xenobiology{
+	name = "Science Outpost"
+	})
 "lp" = (
 /obj/machinery/door/firedoor,
 /obj/machinery/door/airlock/command/glass{
@@ -5890,6 +5926,12 @@
 /obj/effect/spawner/structure/window/reinforced,
 /turf/open/floor/plating,
 /area/security/brig)
+"lD" = (
+/mob/living/simple_animal/slime,
+/turf/open/floor/plasteel/dark,
+/area/science/xenobiology{
+	name = "Science Outpost"
+	})
 "lG" = (
 /obj/machinery/power/terminal{
 	dir = 1
@@ -5930,12 +5972,11 @@
 	name = "Docking Bay"
 	})
 "lK" = (
-/obj/structure/table,
-/obj/machinery/atmospherics/components/unary/vent_scrubber/on/layer3{
-	dir = 8
+/obj/machinery/atmospherics/pipe/bluespace/layer1{
+	dir = 1
 	},
-/turf/open/floor/plasteel/dark,
-/area/space)
+/turf/open/floor/plating,
+/area/maintenance/central)
 "lL" = (
 /obj/machinery/camera{
 	c_tag = "AI Chamber - Fore";
@@ -6004,6 +6045,21 @@
 	},
 /turf/open/floor/engine,
 /area/engine/engineering)
+"lU" = (
+/obj/structure/window/reinforced,
+/obj/machinery/disposal/bin,
+/obj/structure/disposalpipe/trunk,
+/obj/effect/turf_decal/stripes{
+	dir = 5
+	},
+/obj/machinery/door/poddoor/preopen{
+	id = "xeno5";
+	name = "Creature Cell #5"
+	},
+/turf/open/floor/plasteel/dark,
+/area/science/xenobiology{
+	name = "Science Outpost"
+	})
 "lW" = (
 /obj/effect/spawner/structure/window/reinforced,
 /obj/structure/cable,
@@ -6016,6 +6072,15 @@
 /obj/machinery/gulag_teleporter,
 /turf/open/floor/plasteel/dark,
 /area/security/brig)
+"lZ" = (
+/obj/structure/table,
+/obj/machinery/atmospherics/components/unary/vent_scrubber/on/layer3{
+	dir = 8
+	},
+/turf/open/floor/plasteel/dark,
+/area/science/xenobiology{
+	name = "Science Outpost"
+	})
 "ma" = (
 /obj/effect/turf_decal/tile/brown{
 	dir = 1
@@ -6165,24 +6230,17 @@
 /turf/open/floor/plasteel/dark,
 /area/security/brig)
 "mt" = (
-/obj/effect/turf_decal/tile/neutral,
 /obj/effect/turf_decal/tile/neutral{
 	dir = 8
 	},
 /obj/effect/turf_decal/tile/neutral{
-	dir = 1
-	},
-/obj/effect/turf_decal/tile/neutral{
 	dir = 4
 	},
-/obj/machinery/atmospherics/pipe/simple/scrubbers/hidden/layer3{
-	dir = 4
-	},
-/obj/machinery/atmospherics/pipe/simple/supply/hidden/layer1{
-	dir = 4
-	},
+/obj/effect/turf_decal/tile/neutral,
 /turf/open/floor/plasteel/dark,
-/area/space)
+/area/science/xenobiology{
+	name = "Science Outpost"
+	})
 "mu" = (
 /obj/effect/turf_decal/tile/red{
 	dir = 8
@@ -6214,6 +6272,27 @@
 	},
 /turf/open/floor/plasteel,
 /area/engine/engineering)
+"mA" = (
+/obj/machinery/atmospherics/pipe/simple/general/visible{
+	dir = 9
+	},
+/obj/effect/turf_decal/tile/neutral,
+/obj/effect/turf_decal/tile/neutral{
+	dir = 8
+	},
+/obj/effect/turf_decal/tile/neutral{
+	dir = 1
+	},
+/obj/effect/turf_decal/tile/neutral{
+	dir = 4
+	},
+/obj/machinery/light{
+	dir = 4
+	},
+/turf/open/floor/plasteel/dark,
+/area/science/xenobiology{
+	name = "Science Outpost"
+	})
 "mB" = (
 /obj/machinery/atmospherics/pipe/simple/supply/hidden/layer1,
 /obj/structure/cable{
@@ -6303,10 +6382,17 @@
 /turf/open/floor/plasteel/airless/solarpanel,
 /area/security/prison)
 "mJ" = (
-/obj/machinery/atmospherics/pipe/simple/scrubbers/hidden/layer3,
-/obj/machinery/atmospherics/pipe/simple/supply/hidden/layer1,
-/turf/open/floor/plating,
-/area/space)
+/obj/structure/lattice/catwalk,
+/obj/structure/cable{
+	icon_state = "1-2"
+	},
+/obj/structure/cable{
+	icon_state = "1-2"
+	},
+/turf/open/space/basic,
+/area/science/xenobiology{
+	name = "Science Outpost"
+	})
 "mK" = (
 /obj/structure/cable{
 	icon_state = "1-2"
@@ -6314,6 +6400,15 @@
 /obj/effect/landmark/event_spawn,
 /turf/open/floor/plasteel,
 /area/janitor)
+"mL" = (
+/obj/machinery/atmospherics/pipe/simple/scrubbers/hidden{
+	dir = 4;
+	piping_layer = 3
+	},
+/turf/closed/wall/r_wall,
+/area/science/xenobiology{
+	name = "Science Outpost"
+	})
 "mM" = (
 /obj/structure/lattice/catwalk,
 /obj/structure/cable{
@@ -6361,16 +6456,14 @@
 /turf/open/floor/plasteel,
 /area/hallway/primary/central)
 "mR" = (
-/obj/machinery/door/window/brigdoor/southright{
-	name = "Creature Pen";
-	req_access_txt = "47"
-	},
-/obj/machinery/door/poddoor/preopen{
-	id = "xeno6";
-	name = "Creature Cell #6"
+/obj/machinery/nanite_chamber,
+/obj/effect/turf_decal/stripes{
+	dir = 4
 	},
 /turf/open/floor/plasteel/dark,
-/area/space)
+/area/science/xenobiology{
+	name = "Science Outpost"
+	})
 "mS" = (
 /obj/effect/turf_decal/tile/red,
 /obj/effect/turf_decal/tile/red{
@@ -6390,6 +6483,21 @@
 	},
 /turf/open/floor/plasteel/dark,
 /area/security/brig)
+"mT" = (
+/obj/structure/window/reinforced,
+/obj/machinery/disposal/bin,
+/obj/structure/disposalpipe/trunk,
+/obj/effect/turf_decal/stripes{
+	dir = 5
+	},
+/obj/machinery/door/poddoor/preopen{
+	id = "xeno1";
+	name = "Creature Cell #1"
+	},
+/turf/open/floor/plasteel/dark,
+/area/science/xenobiology{
+	name = "Science Outpost"
+	})
 "mU" = (
 /obj/machinery/status_display/evac{
 	pixel_y = 32
@@ -6478,14 +6586,23 @@
 /turf/open/floor/plating,
 /area/maintenance/fore)
 "nc" = (
+/obj/machinery/computer/nanite_cloud_controller,
+/obj/effect/turf_decal/stripes{
+	dir = 8
+	},
+/obj/effect/turf_decal/stripes{
+	dir = 4
+	},
+/obj/effect/turf_decal/stripes,
 /obj/machinery/camera{
-	c_tag = "Science - Xenobiology East";
-	dir = 8;
+	c_tag = "Science Outpost - Nanite Laboratory";
 	name = "science camera";
 	network = list("ss13","rd")
 	},
 /turf/open/floor/plasteel/dark,
-/area/space)
+/area/science/xenobiology{
+	name = "Science Outpost"
+	})
 "nd" = (
 /obj/effect/turf_decal/stripes/line,
 /obj/effect/turf_decal/stripes/line{
@@ -6678,6 +6795,27 @@
 	},
 /turf/open/floor/plating,
 /area/maintenance/starboard/fore)
+"nD" = (
+/obj/machinery/computer/camera_advanced/xenobio{
+	dir = 8
+	},
+/obj/effect/turf_decal/tile/neutral,
+/obj/effect/turf_decal/tile/neutral{
+	dir = 1
+	},
+/obj/effect/turf_decal/tile/neutral{
+	dir = 4
+	},
+/obj/effect/turf_decal/tile/neutral{
+	dir = 8
+	},
+/obj/effect/turf_decal/stripes{
+	dir = 10
+	},
+/turf/open/floor/plasteel/dark,
+/area/science/xenobiology{
+	name = "Science Outpost"
+	})
 "nE" = (
 /obj/effect/turf_decal/tile/yellow{
 	dir = 1
@@ -6765,13 +6903,26 @@
 /turf/open/floor/plasteel/dark,
 /area/science/lab)
 "nN" = (
-/obj/structure/fans/tiny,
-/obj/machinery/door/airlock/external/glass{
-	name = "Science Outpost Dock";
-	req_access_txt = "47"
+/obj/effect/turf_decal/tile/neutral,
+/obj/effect/turf_decal/tile/neutral{
+	dir = 4
+	},
+/obj/effect/turf_decal/tile/neutral{
+	dir = 1
+	},
+/obj/effect/turf_decal/tile/neutral{
+	dir = 8
+	},
+/obj/machinery/atmospherics/pipe/simple/scrubbers/hidden/layer3{
+	dir = 6
+	},
+/obj/machinery/atmospherics/pipe/simple/supply/hidden/layer1{
+	dir = 6
 	},
 /turf/open/floor/plasteel/dark,
-/area/space)
+/area/science/xenobiology{
+	name = "Science Outpost"
+	})
 "nO" = (
 /obj/structure/closet/emcloset,
 /obj/machinery/light/small{
@@ -7018,9 +7169,6 @@
 	},
 /obj/structure/cable{
 	icon_state = "4-8"
-	},
-/obj/item/twohanded/required/kirbyplants{
-	icon_state = "plant-22"
 	},
 /obj/machinery/camera{
 	c_tag = "Captain's Quarters";
@@ -7367,14 +7515,11 @@
 /turf/open/floor/plasteel/dark,
 /area/security/brig)
 "oY" = (
-/obj/machinery/atmospherics/pipe/simple/scrubbers/hidden/layer3{
-	dir = 4
-	},
-/obj/machinery/atmospherics/pipe/simple/supply/hidden/layer1{
-	dir = 4
-	},
-/turf/open/floor/engine,
-/area/space)
+/obj/effect/spawner/structure/window/plasma/reinforced,
+/turf/open/floor/plating,
+/area/science/xenobiology{
+	name = "Science Outpost"
+	})
 "oZ" = (
 /obj/structure/table,
 /obj/item/assembly/signaler,
@@ -7588,19 +7733,19 @@
 /turf/closed/wall/r_wall,
 /area/quartermaster/storage)
 "ps" = (
-/obj/machinery/smartfridge/extract/preloaded,
-/obj/effect/turf_decal/tile/neutral,
-/obj/effect/turf_decal/tile/neutral{
-	dir = 1
-	},
-/obj/effect/turf_decal/tile/neutral{
-	dir = 4
-	},
 /obj/effect/turf_decal/tile/neutral{
 	dir = 8
 	},
+/obj/effect/turf_decal/tile/neutral{
+	dir = 1
+	},
+/obj/machinery/light{
+	dir = 1
+	},
 /turf/open/floor/plasteel/dark,
-/area/space)
+/area/science/xenobiology{
+	name = "Science Outpost"
+	})
 "pt" = (
 /obj/machinery/atmospherics/components/unary/vent_pump/on/layer1{
 	dir = 4
@@ -7663,6 +7808,21 @@
 	},
 /turf/open/floor/plasteel/dark,
 /area/ai_monitored/turret_protected/ai)
+"pz" = (
+/obj/structure/window/reinforced,
+/obj/machinery/disposal/bin,
+/obj/structure/disposalpipe/trunk,
+/obj/effect/turf_decal/stripes{
+	dir = 5
+	},
+/obj/machinery/door/poddoor/preopen{
+	id = "xeno3";
+	name = "Creature Cell #3"
+	},
+/turf/open/floor/plasteel/dark,
+/area/science/xenobiology{
+	name = "Science Outpost"
+	})
 "pA" = (
 /obj/machinery/vending/coffee,
 /obj/machinery/atmospherics/pipe/simple/supply/hidden/layer1{
@@ -7824,6 +7984,31 @@
 	},
 /turf/open/floor/plasteel,
 /area/quartermaster/storage)
+"pP" = (
+/obj/structure/window/reinforced,
+/obj/machinery/disposal/bin,
+/obj/structure/disposalpipe/trunk,
+/obj/effect/turf_decal/stripes{
+	dir = 5
+	},
+/obj/machinery/door/poddoor/preopen{
+	id = "xeno2";
+	name = "Creature Cell #2"
+	},
+/turf/open/floor/plasteel/dark,
+/area/science/xenobiology{
+	name = "Science Outpost"
+	})
+"pQ" = (
+/obj/machinery/atmospherics/components/unary/vent_pump/on{
+	external_pressure_bound = 140;
+	name = "server vent";
+	pressure_checks = 0
+	},
+/turf/open/floor/circuit/telecomms,
+/area/science/xenobiology{
+	name = "Science Outpost"
+	})
 "pS" = (
 /obj/machinery/atmospherics/pipe/simple/scrubbers/hidden/layer3{
 	dir = 5
@@ -7833,6 +8018,17 @@
 	},
 /turf/open/floor/wood,
 /area/crew_quarters/dorms)
+"pT" = (
+/obj/machinery/atmospherics/pipe/simple/scrubbers/hidden/layer3,
+/obj/machinery/atmospherics/pipe/simple/supply/hidden/layer1,
+/obj/machinery/door/airlock/maintenance{
+	name = "Maintenance";
+	req_access_txt = "47"
+	},
+/turf/open/floor/plating,
+/area/science/xenobiology{
+	name = "Science Outpost"
+	})
 "pV" = (
 /obj/effect/turf_decal/tile/blue,
 /obj/effect/turf_decal/tile/blue{
@@ -7906,21 +8102,20 @@
 /turf/open/floor/plasteel,
 /area/hallway/primary/central)
 "qe" = (
-/obj/effect/turf_decal/tile/neutral,
-/obj/effect/turf_decal/tile/neutral{
-	dir = 1
+/obj/structure/cable{
+	icon_state = "1-8"
 	},
-/obj/effect/turf_decal/tile/neutral{
-	dir = 4
+/obj/machinery/camera{
+	c_tag = "Science Outpost - Maintenance";
+	dir = 8;
+	name = "science camera";
+	network = list("ss13","rd")
 	},
-/obj/effect/turf_decal/tile/neutral{
-	dir = 8
-	},
-/obj/machinery/atmospherics/components/unary/vent_scrubber/on/layer3{
-	dir = 8
-	},
-/turf/open/floor/plasteel/dark,
-/area/space)
+/obj/structure/closet/toolcloset,
+/turf/open/floor/plating,
+/area/science/xenobiology{
+	name = "Science Outpost"
+	})
 "qf" = (
 /obj/structure/disposalpipe/segment{
 	dir = 4
@@ -7998,6 +8193,17 @@
 /obj/item/beacon,
 /turf/open/floor/carpet,
 /area/bridge)
+"qp" = (
+/obj/machinery/camera{
+	c_tag = "Science Outpost - Xenobiology West";
+	dir = 4;
+	name = "science camera";
+	network = list("ss13","rd")
+	},
+/turf/open/floor/plasteel/dark,
+/area/science/xenobiology{
+	name = "Science Outpost"
+	})
 "qq" = (
 /obj/structure/cable{
 	icon_state = "1-2"
@@ -8019,11 +8225,14 @@
 /turf/open/floor/plating,
 /area/maintenance/central)
 "qs" = (
-/obj/machinery/atmospherics/components/unary/vent_scrubber/on/layer3{
+/obj/machinery/nanite_chamber,
+/obj/effect/turf_decal/stripes{
 	dir = 8
 	},
-/turf/open/floor/engine,
-/area/space)
+/turf/open/floor/plasteel/dark,
+/area/science/xenobiology{
+	name = "Science Outpost"
+	})
 "qt" = (
 /obj/structure/cable/yellow{
 	icon_state = "2-8"
@@ -8206,11 +8415,21 @@
 	},
 /turf/open/floor/plasteel/dark,
 /area/bridge)
+"qG" = (
+/obj/machinery/telepad,
+/obj/effect/turf_decal/stripes{
+	dir = 6
+	},
+/turf/open/floor/plasteel/dark,
+/area/science/xenobiology{
+	name = "Science Outpost"
+	})
 "qI" = (
 /obj/machinery/camera{
 	c_tag = "Docking Bay - South West";
 	dir = 4
 	},
+/obj/machinery/vending/snack/random,
 /turf/open/floor/plasteel,
 /area/hallway/primary/aft{
 	name = "Docking Bay"
@@ -8223,20 +8442,20 @@
 	dir = 4
 	},
 /turf/open/floor/plasteel/dark,
-/area/space)
+/area/science/xenobiology{
+	name = "Science Outpost"
+	})
 "qK" = (
-/obj/structure/cable{
-	icon_state = "1-2"
+/obj/effect/turf_decal/stripes{
+	dir = 8
 	},
-/obj/structure/cable{
-	icon_state = "1-8"
+/obj/machinery/computer/nanite_chamber_control{
+	dir = 8
 	},
-/obj/structure/cable,
-/obj/machinery/power/terminal{
-	dir = 4
-	},
-/turf/open/floor/plating,
-/area/space)
+/turf/open/floor/plasteel/dark,
+/area/science/xenobiology{
+	name = "Science Outpost"
+	})
 "qL" = (
 /obj/effect/landmark/start/ai/secondary,
 /obj/item/radio/intercom{
@@ -8338,21 +8557,12 @@
 /turf/open/floor/plasteel/dark,
 /area/bridge)
 "qT" = (
-/obj/effect/turf_decal/tile/neutral,
-/obj/effect/turf_decal/tile/neutral{
-	dir = 1
-	},
-/obj/effect/turf_decal/tile/neutral{
-	dir = 4
-	},
-/obj/effect/turf_decal/tile/neutral{
-	dir = 8
-	},
-/obj/structure/chair/comfy/black{
-	dir = 4
-	},
+/obj/structure/table,
+/obj/item/book/manual/wiki/telescience,
 /turf/open/floor/plasteel/dark,
-/area/space)
+/area/science/xenobiology{
+	name = "Science Outpost"
+	})
 "qU" = (
 /obj/machinery/atmospherics/components/binary/pump{
 	dir = 1;
@@ -8648,12 +8858,23 @@
 /turf/open/floor/plasteel/dark,
 /area/security/prison)
 "rs" = (
-/obj/machinery/computer/rdconsole/experiment,
-/obj/machinery/atmospherics/pipe/simple/scrubbers/hidden/layer3{
+/obj/structure/table/reinforced,
+/obj/item/stack/sheet/metal/twenty{
+	amount = 25
+	},
+/obj/effect/turf_decal/stripes{
 	dir = 10
 	},
+/obj/machinery/light{
+	dir = 4
+	},
+/obj/item/book/manual/wiki/circuitry{
+	pixel_x = 5
+	},
 /turf/open/floor/plasteel/dark,
-/area/space)
+/area/science/xenobiology{
+	name = "Science Outpost"
+	})
 "rt" = (
 /obj/structure/cable{
 	icon_state = "2-4"
@@ -8810,12 +9031,15 @@
 /turf/open/floor/plasteel/white,
 /area/medical/medbay/zone3)
 "rL" = (
-/obj/machinery/nanite_chamber,
-/obj/effect/turf_decal/stripes{
-	dir = 8
+/obj/structure/cable,
+/obj/machinery/power/solar{
+	id = "auxsolareast";
+	name = "Port Auxiliary Solar Array"
 	},
-/turf/open/floor/plasteel/dark,
-/area/space)
+/turf/open/floor/plasteel/airless/solarpanel,
+/area/science/xenobiology{
+	name = "Science Outpost"
+	})
 "rM" = (
 /obj/machinery/atmospherics/pipe/simple/scrubbers/hidden/layer3,
 /obj/machinery/atmospherics/pipe/simple/supply/hidden/layer1,
@@ -8997,6 +9221,15 @@
 /obj/effect/landmark/xeno_spawn,
 /turf/open/floor/plating,
 /area/maintenance/fore)
+"sm" = (
+/obj/structure/disposalpipe/trunk{
+	dir = 1
+	},
+/obj/structure/disposaloutlet,
+/turf/open/floor/plasteel/dark,
+/area/science/xenobiology{
+	name = "Science Outpost"
+	})
 "sn" = (
 /obj/structure/window/reinforced{
 	dir = 8
@@ -9060,12 +9293,14 @@
 /turf/open/floor/plasteel/grimy,
 /area/crew_quarters/heads/captain/private)
 "st" = (
-/obj/effect/turf_decal/tile/neutral{
+/obj/machinery/nanite_programmer,
+/obj/effect/turf_decal/stripes{
 	dir = 4
 	},
-/obj/effect/turf_decal/tile/neutral,
 /turf/open/floor/plasteel/dark,
-/area/space)
+/area/science/xenobiology{
+	name = "Science Outpost"
+	})
 "su" = (
 /turf/closed/wall/r_wall,
 /area/hallway/primary/port/aft{
@@ -9210,12 +9445,13 @@
 /turf/open/floor/plasteel/grimy,
 /area/crew_quarters/heads/captain/private)
 "sI" = (
-/obj/machinery/vending/assist,
-/obj/effect/turf_decal/stripes{
+/obj/structure/chair/comfy/black{
 	dir = 8
 	},
 /turf/open/floor/plasteel/dark,
-/area/space)
+/area/science/xenobiology{
+	name = "Science Outpost"
+	})
 "sJ" = (
 /obj/machinery/atmospherics/pipe/simple/supply/hidden/layer1{
 	dir = 5
@@ -9271,13 +9507,6 @@
 	},
 /turf/open/floor/circuit,
 /area/ai_monitored/turret_protected/ai)
-"sN" = (
-/obj/machinery/nanite_programmer,
-/obj/effect/turf_decal/stripes{
-	dir = 8
-	},
-/turf/open/floor/plasteel/dark,
-/area/space)
 "sO" = (
 /obj/machinery/atmospherics/components/unary/outlet_injector/atmos/toxin_input{
 	dir = 8
@@ -9345,12 +9574,13 @@
 /turf/open/floor/plasteel/dark,
 /area/ai_monitored/storage/eva)
 "sU" = (
-/obj/structure/cable{
-	icon_state = "1-2"
+/obj/machinery/atmospherics/components/unary/vent_scrubber/on/layer3{
+	dir = 4
 	},
-/obj/machinery/atmospherics/pipe/layer_manifold,
-/turf/open/floor/plating,
-/area/space)
+/turf/open/floor/plasteel/dark,
+/area/science/xenobiology{
+	name = "Science Outpost"
+	})
 "sV" = (
 /obj/structure/cable{
 	icon_state = "4-8"
@@ -9363,12 +9593,16 @@
 /turf/open/floor/plasteel/dark,
 /area/bridge)
 "sW" = (
-/obj/machinery/telepad,
-/obj/effect/turf_decal/stripes{
+/obj/machinery/atmospherics/pipe/simple/scrubbers/hidden/layer3{
+	dir = 10
+	},
+/obj/machinery/atmospherics/pipe/simple/supply/hidden/layer1{
 	dir = 6
 	},
 /turf/open/floor/plasteel/dark,
-/area/space)
+/area/science/xenobiology{
+	name = "Science Outpost"
+	})
 "sX" = (
 /obj/structure/chair/stool/bar,
 /turf/open/floor/wood,
@@ -9525,33 +9759,24 @@
 /turf/open/floor/plasteel/dark,
 /area/ai_monitored/turret_protected/ai)
 "tp" = (
-/obj/effect/turf_decal/tile/neutral,
-/obj/effect/turf_decal/tile/neutral{
+/obj/machinery/atmospherics/components/unary/vent_pump/on/layer1{
 	dir = 8
 	},
-/obj/effect/turf_decal/tile/neutral{
-	dir = 1
-	},
-/obj/effect/turf_decal/tile/neutral{
-	dir = 4
-	},
-/obj/machinery/button/door{
-	id = "xeno7";
-	name = "Containment Control";
-	pixel_x = 24;
-	pixel_y = -24;
-	req_access_txt = "55"
-	},
 /turf/open/floor/plasteel/dark,
-/area/space)
+/area/science/xenobiology{
+	name = "Science Outpost"
+	})
 "tq" = (
 /turf/closed/wall,
 /area/storage/tools)
 "tr" = (
-/obj/machinery/atmospherics/pipe/simple/scrubbers/hidden/layer3,
-/obj/machinery/atmospherics/pipe/simple/supply/hidden/layer1,
+/obj/machinery/atmospherics/components/unary/vent_pump/on/layer1{
+	dir = 4
+	},
 /turf/open/floor/engine,
-/area/space)
+/area/science/xenobiology{
+	name = "Science Outpost"
+	})
 "ts" = (
 /obj/effect/turf_decal/stripes/line{
 	dir = 4
@@ -9786,21 +10011,6 @@
 /area/maintenance/central)
 "tR" = (
 /turf/open/space,
-/area/space)
-"tS" = (
-/obj/effect/turf_decal/tile/neutral,
-/obj/effect/turf_decal/tile/neutral{
-	dir = 8
-	},
-/obj/effect/turf_decal/tile/neutral{
-	dir = 1
-	},
-/obj/effect/turf_decal/tile/neutral{
-	dir = 4
-	},
-/obj/machinery/atmospherics/pipe/manifold/scrubbers/hidden/layer3,
-/obj/machinery/atmospherics/pipe/manifold/supply/hidden/layer1,
-/turf/open/floor/plasteel/dark,
 /area/space)
 "tT" = (
 /obj/structure/chair/comfy/brown{
@@ -10039,19 +10249,13 @@
 /turf/open/floor/plasteel/dark,
 /area/ai_monitored/turret_protected/ai)
 "uv" = (
-/obj/effect/turf_decal/tile/neutral,
-/obj/effect/turf_decal/tile/neutral{
-	dir = 1
-	},
-/obj/effect/turf_decal/tile/neutral{
-	dir = 4
-	},
-/obj/effect/turf_decal/tile/neutral{
+/obj/machinery/atmospherics/components/unary/vent_scrubber/on/layer3{
 	dir = 8
 	},
-/obj/machinery/vending/coffee,
-/turf/open/floor/plasteel/dark,
-/area/space)
+/turf/open/floor/engine,
+/area/science/xenobiology{
+	name = "Science Outpost"
+	})
 "uw" = (
 /obj/structure/sign/warning/radiation/rad_area{
 	pixel_x = 32
@@ -10080,26 +10284,18 @@
 	},
 /turf/open/floor/plasteel/white,
 /area/science/lab)
-"uA" = (
-/obj/machinery/atmospherics/pipe/simple/scrubbers/hidden/layer3,
-/obj/machinery/atmospherics/pipe/simple/supply/hidden/layer1,
-/turf/open/floor/plasteel/dark,
-/area/space)
 "uB" = (
-/obj/machinery/processor/slime,
-/obj/effect/turf_decal/tile/neutral,
-/obj/effect/turf_decal/tile/neutral{
-	dir = 1
-	},
-/obj/effect/turf_decal/tile/neutral{
-	dir = 4
-	},
 /obj/effect/turf_decal/tile/neutral{
 	dir = 8
 	},
-/obj/effect/turf_decal/stripes/end,
+/obj/effect/turf_decal/tile/neutral{
+	dir = 1
+	},
+/obj/effect/turf_decal/tile/neutral,
 /turf/open/floor/plasteel/dark,
-/area/space)
+/area/science/xenobiology{
+	name = "Science Outpost"
+	})
 "uC" = (
 /obj/machinery/atmospherics/pipe/simple/supply/hidden/layer1,
 /obj/machinery/power/apc{
@@ -10188,12 +10384,6 @@
 	},
 /turf/open/floor/plasteel,
 /area/hallway/primary/starboard/fore)
-"uJ" = (
-/obj/structure/window/reinforced{
-	dir = 8
-	},
-/turf/open/floor/plasteel/dark,
-/area/space)
 "uL" = (
 /obj/machinery/light/small{
 	dir = 4
@@ -10215,24 +10405,14 @@
 /turf/closed/wall/r_wall,
 /area/ai_monitored/turret_protected/aisat_interior)
 "uO" = (
-/obj/effect/turf_decal/tile/neutral{
+/obj/structure/table,
+/obj/machinery/atmospherics/components/unary/vent_pump/on/layer1{
 	dir = 8
 	},
-/obj/effect/turf_decal/tile/neutral{
-	dir = 4
-	},
-/obj/effect/turf_decal/tile/neutral{
-	dir = 1
-	},
-/obj/effect/turf_decal/tile/neutral,
-/obj/machinery/atmospherics/pipe/simple/scrubbers/hidden/layer3{
-	dir = 4
-	},
-/obj/machinery/atmospherics/pipe/simple/supply/hidden/layer1{
-	dir = 4
-	},
 /turf/open/floor/plasteel/dark,
-/area/space)
+/area/science/xenobiology{
+	name = "Science Outpost"
+	})
 "uP" = (
 /obj/machinery/atmospherics/pipe/simple/supply/hidden/layer1{
 	dir = 4
@@ -10257,19 +10437,9 @@
 /obj/effect/turf_decal/tile/purple{
 	dir = 1
 	},
+/obj/effect/turf_decal/tile/purple,
 /turf/open/floor/plasteel/white,
 /area/science/lab)
-"uS" = (
-/obj/machinery/door/window/brigdoor/southright{
-	name = "Creature Pen";
-	req_access_txt = "47"
-	},
-/obj/machinery/door/poddoor/preopen{
-	id = "xeno1";
-	name = "Creature Cell #1"
-	},
-/turf/open/floor/plasteel/dark,
-/area/space)
 "uT" = (
 /obj/effect/spawner/structure/window/reinforced,
 /obj/structure/cable{
@@ -10281,8 +10451,13 @@
 /turf/open/floor/plating,
 /area/security/prison)
 "uU" = (
-/turf/open/floor/plating,
-/area/space)
+/obj/structure/chair/comfy/black{
+	dir = 4
+	},
+/turf/open/floor/plasteel/dark,
+/area/science/xenobiology{
+	name = "Science Outpost"
+	})
 "uV" = (
 /obj/machinery/atmospherics/pipe/simple/scrubbers/hidden/layer3,
 /turf/closed/wall/r_wall,
@@ -10318,14 +10493,16 @@
 /turf/open/floor/plasteel/dark,
 /area/security/brig)
 "uY" = (
-/obj/machinery/door/poddoor/preopen{
-	id = "telelab";
-	name = "Test Chamber blast door"
+/obj/machinery/atmospherics/pipe/simple/supply/hidden/layer1{
+	dir = 6
 	},
-/obj/machinery/atmospherics/pipe/simple/scrubbers/hidden/layer3,
-/obj/machinery/atmospherics/pipe/simple/supply/hidden/layer1,
+/obj/machinery/atmospherics/pipe/simple/scrubbers/hidden/layer3{
+	dir = 6
+	},
 /turf/open/floor/engine,
-/area/space)
+/area/science/xenobiology{
+	name = "Science Outpost"
+	})
 "uZ" = (
 /obj/effect/turf_decal/tile/blue,
 /obj/effect/turf_decal/tile/blue{
@@ -10359,11 +10536,14 @@
 /turf/open/floor/plasteel/dark,
 /area/gateway)
 "vb" = (
-/obj/structure/chair/comfy/black{
+/obj/machinery/nanite_programmer,
+/obj/effect/turf_decal/stripes{
 	dir = 8
 	},
 /turf/open/floor/plasteel/dark,
-/area/space)
+/area/science/xenobiology{
+	name = "Science Outpost"
+	})
 "vc" = (
 /obj/machinery/door/airlock/highsecurity{
 	name = "AI Chamber";
@@ -10403,6 +10583,31 @@
 	},
 /turf/open/floor/plasteel/dark,
 /area/ai_monitored/turret_protected/aisat_interior)
+"ve" = (
+/obj/effect/turf_decal/tile/neutral{
+	dir = 8
+	},
+/obj/effect/turf_decal/tile/neutral,
+/obj/effect/turf_decal/tile/neutral{
+	dir = 4
+	},
+/obj/effect/turf_decal/tile/neutral{
+	dir = 1
+	},
+/obj/machinery/door/airlock/research{
+	name = "Research Outpost";
+	req_access_txt = "47"
+	},
+/obj/machinery/atmospherics/pipe/simple/scrubbers/hidden/layer3{
+	dir = 4
+	},
+/obj/machinery/atmospherics/pipe/simple/supply/hidden/layer1{
+	dir = 4
+	},
+/turf/open/floor/plasteel/dark,
+/area/science/xenobiology{
+	name = "Science Outpost"
+	})
 "vf" = (
 /obj/structure/cable{
 	icon_state = "2-4"
@@ -10485,14 +10690,17 @@
 /turf/open/floor/wood,
 /area/crew_quarters/bar)
 "vn" = (
-/obj/machinery/atmospherics/pipe/simple/supply/hidden/layer1{
-	dir = 9
+/obj/machinery/nanite_program_hub,
+/obj/effect/turf_decal/stripes{
+	dir = 6
 	},
-/obj/machinery/atmospherics/pipe/simple/scrubbers/hidden/layer3{
-	dir = 9
+/obj/machinery/light{
+	dir = 8
 	},
-/turf/open/floor/engine,
-/area/space)
+/turf/open/floor/plasteel/dark,
+/area/science/xenobiology{
+	name = "Science Outpost"
+	})
 "vo" = (
 /obj/machinery/atmospherics/pipe/manifold/scrubbers/hidden/layer3{
 	dir = 4
@@ -10550,6 +10758,14 @@
 	},
 /turf/open/floor/plasteel/dark,
 /area/security/prison)
+"vw" = (
+/obj/machinery/atmospherics/components/unary/outlet_injector/on{
+	dir = 8
+	},
+/turf/open/floor/plating/airless,
+/area/science/xenobiology{
+	name = "Science Outpost"
+	})
 "vy" = (
 /obj/machinery/atmospherics/pipe/manifold/supply/hidden/layer1,
 /obj/machinery/atmospherics/pipe/simple/scrubbers/hidden/layer3{
@@ -10633,32 +10849,6 @@
 	},
 /turf/open/floor/plasteel/white/corner,
 /area/hallway/secondary/exit)
-"vH" = (
-/obj/effect/turf_decal/tile/neutral,
-/obj/effect/turf_decal/tile/neutral{
-	dir = 8
-	},
-/obj/effect/turf_decal/tile/neutral{
-	dir = 1
-	},
-/obj/effect/turf_decal/tile/neutral{
-	dir = 4
-	},
-/obj/machinery/button/door{
-	id = "xeno1";
-	name = "Containment Control";
-	pixel_x = 24;
-	pixel_y = -24;
-	req_access_txt = "55"
-	},
-/obj/machinery/atmospherics/pipe/simple/scrubbers/hidden/layer3{
-	dir = 4
-	},
-/obj/machinery/atmospherics/pipe/simple/supply/hidden/layer1{
-	dir = 4
-	},
-/turf/open/floor/plasteel/dark,
-/area/space)
 "vJ" = (
 /obj/effect/turf_decal/tile/yellow{
 	dir = 1
@@ -10702,6 +10892,31 @@
 /obj/item/plant_analyzer,
 /turf/open/floor/grass,
 /area/security/prison)
+"vQ" = (
+/obj/effect/turf_decal/tile/neutral{
+	dir = 8
+	},
+/obj/effect/turf_decal/tile/neutral{
+	dir = 4
+	},
+/obj/effect/turf_decal/tile/neutral{
+	dir = 1
+	},
+/obj/effect/turf_decal/tile/neutral,
+/obj/machinery/door/airlock/research/glass{
+	name = "E.X.P.E.R.I.M.E.N.T.O.R. Laboratory";
+	req_access_txt = "47"
+	},
+/obj/machinery/atmospherics/pipe/simple/scrubbers/hidden/layer3{
+	dir = 4
+	},
+/obj/machinery/atmospherics/pipe/simple/supply/hidden/layer1{
+	dir = 4
+	},
+/turf/open/floor/plasteel/dark,
+/area/science/xenobiology{
+	name = "Science Outpost"
+	})
 "vR" = (
 /obj/machinery/status_display/ai{
 	pixel_y = 32
@@ -10826,6 +11041,16 @@
 	},
 /turf/open/floor/plasteel,
 /area/quartermaster/storage)
+"we" = (
+/obj/docking_port/stationary{
+	dir = 8;
+	dwidth = 7;
+	height = 5;
+	id = "sciout_dock";
+	name = "Science Outpost Shuttle Dock"
+	},
+/turf/open/space/basic,
+/area/space)
 "wf" = (
 /obj/structure/showcase/cyborg/old{
 	pixel_y = 20
@@ -10844,15 +11069,12 @@
 /turf/open/floor/plasteel/dark,
 /area/ai_monitored/turret_protected/aisat_interior)
 "wh" = (
-/obj/structure/cable{
-	icon_state = "1-8"
-	},
-/obj/machinery/atmospherics/pipe/simple/scrubbers/hidden/layer3{
-	dir = 6
-	},
+/obj/machinery/atmospherics/pipe/simple/scrubbers/hidden/layer3,
 /obj/machinery/atmospherics/pipe/simple/supply/hidden/layer1,
-/turf/open/floor/plating,
-/area/space)
+/turf/open/floor/plasteel/dark,
+/area/science/xenobiology{
+	name = "Science Outpost"
+	})
 "wi" = (
 /obj/structure/closet/secure_closet/personal,
 /obj/item/toy/poolnoodle/red,
@@ -10921,11 +11143,17 @@
 /turf/open/floor/plasteel/white,
 /area/science/lab)
 "ws" = (
-/obj/machinery/atmospherics/components/unary/vent_scrubber/on/layer3{
+/obj/machinery/nanite_program_hub,
+/obj/effect/turf_decal/stripes{
+	dir = 10
+	},
+/obj/machinery/light{
 	dir = 4
 	},
 /turf/open/floor/plasteel/dark,
-/area/space)
+/area/science/xenobiology{
+	name = "Science Outpost"
+	})
 "wt" = (
 /obj/machinery/atmospherics/components/unary/vent_scrubber/on/layer3{
 	dir = 8
@@ -11009,15 +11237,13 @@
 /turf/open/floor/plasteel/dark,
 /area/security/brig)
 "wC" = (
-/obj/machinery/power/smes/engineering,
-/obj/structure/cable{
-	icon_state = "0-2"
-	},
-/obj/structure/cable{
-	icon_state = "1-2"
-	},
-/turf/open/floor/plating,
-/area/space)
+/obj/structure/table,
+/obj/item/storage/box/disks_nanite,
+/obj/item/storage/box/disks_nanite,
+/turf/open/floor/plasteel/dark,
+/area/science/xenobiology{
+	name = "Science Outpost"
+	})
 "wD" = (
 /obj/structure/window/reinforced,
 /turf/open/space/basic,
@@ -11034,6 +11260,12 @@
 /obj/structure/reagent_dispensers/fueltank,
 /turf/open/floor/plating,
 /area/maintenance/starboard/fore)
+"wG" = (
+/obj/machinery/light,
+/turf/open/floor/plasteel/dark,
+/area/science/xenobiology{
+	name = "Science Outpost"
+	})
 "wH" = (
 /obj/machinery/conveyor_switch/oneway{
 	id = "packageSort2"
@@ -11139,12 +11371,22 @@
 /turf/open/floor/plating,
 /area/maintenance/fore)
 "wV" = (
-/obj/item/twohanded/required/kirbyplants{
-	icon_state = "plant-21"
-	},
 /obj/effect/turf_decal/bot,
 /turf/open/floor/plasteel,
 /area/hallway/secondary/exit)
+"wX" = (
+/obj/machinery/door/window/brigdoor/southright{
+	name = "Creature Pen";
+	req_access_txt = "47"
+	},
+/obj/machinery/door/poddoor/preopen{
+	id = "xeno6";
+	name = "Creature Cell #6"
+	},
+/turf/open/floor/plasteel/dark,
+/area/science/xenobiology{
+	name = "Science Outpost"
+	})
 "wY" = (
 /obj/machinery/power/grounding_rod,
 /obj/structure/cable/yellow{
@@ -11308,6 +11550,24 @@
 	},
 /turf/open/floor/plasteel/dark,
 /area/gateway)
+"xo" = (
+/obj/machinery/atmospherics/components/unary/thermomachine/freezer/on/coldroom{
+	dir = 8
+	},
+/obj/effect/turf_decal/tile/neutral,
+/obj/effect/turf_decal/tile/neutral{
+	dir = 8
+	},
+/obj/effect/turf_decal/tile/neutral{
+	dir = 1
+	},
+/obj/effect/turf_decal/tile/neutral{
+	dir = 4
+	},
+/turf/open/floor/plasteel/dark,
+/area/science/xenobiology{
+	name = "Science Outpost"
+	})
 "xp" = (
 /obj/structure/cable{
 	icon_state = "2-8"
@@ -11435,27 +11695,29 @@
 /area/crew_quarters/bar)
 "xD" = (
 /obj/effect/turf_decal/tile/neutral{
-	dir = 8
-	},
-/obj/effect/turf_decal/tile/neutral{
 	dir = 4
 	},
-/obj/effect/turf_decal/tile/neutral{
-	dir = 1
-	},
 /obj/effect/turf_decal/tile/neutral,
-/obj/structure/table/glass,
-/obj/item/stack/sheet/mineral/plasma{
-	amount = 5
-	},
-/obj/item/reagent_containers/glass/beaker/large,
-/obj/item/reagent_containers/dropper,
 /turf/open/floor/plasteel/dark,
-/area/space)
+/area/science/xenobiology{
+	name = "Science Outpost"
+	})
 "xE" = (
 /obj/structure/closet/firecloset,
 /turf/open/floor/plating,
 /area/maintenance/fore)
+"xF" = (
+/obj/effect/turf_decal/tile/neutral,
+/obj/machinery/camera{
+	c_tag = "Science Outpost - Dock";
+	dir = 8;
+	name = "science camera";
+	network = list("ss13","rd")
+	},
+/turf/open/floor/plasteel/dark,
+/area/science/xenobiology{
+	name = "Science Outpost"
+	})
 "xG" = (
 /obj/machinery/gateway{
 	dir = 1
@@ -11506,24 +11768,13 @@
 /turf/open/floor/plasteel/dark,
 /area/ai_monitored/turret_protected/aisat_interior)
 "xM" = (
-/obj/effect/turf_decal/tile/neutral,
-/obj/effect/turf_decal/tile/neutral{
-	dir = 1
+/obj/structure/cable{
+	icon_state = "2-4"
 	},
-/obj/effect/turf_decal/tile/neutral{
-	dir = 4
-	},
-/obj/effect/turf_decal/tile/neutral{
-	dir = 8
-	},
-/obj/machinery/atmospherics/pipe/manifold/scrubbers/hidden/layer3{
-	dir = 8
-	},
-/obj/machinery/atmospherics/pipe/manifold/supply/hidden/layer1{
-	dir = 4
-	},
-/turf/open/floor/plasteel/dark,
-/area/space)
+/turf/open/floor/plating,
+/area/science/xenobiology{
+	name = "Science Outpost"
+	})
 "xN" = (
 /obj/machinery/atmospherics/pipe/simple/supply/hidden/layer1,
 /turf/closed/wall/r_wall,
@@ -11578,14 +11829,15 @@
 /turf/open/floor/engine/vacuum,
 /area/engine/atmos)
 "xV" = (
-/obj/effect/turf_decal/tile/neutral,
 /obj/effect/turf_decal/tile/neutral{
-	dir = 4
+	dir = 8
 	},
-/obj/machinery/atmospherics/pipe/manifold/scrubbers/hidden/layer3,
-/obj/machinery/atmospherics/pipe/manifold/supply/hidden/layer1,
+/obj/machinery/atmospherics/pipe/simple/scrubbers/hidden/layer3,
+/obj/machinery/atmospherics/pipe/simple/supply/hidden/layer1,
 /turf/open/floor/plasteel/dark,
-/area/space)
+/area/science/xenobiology{
+	name = "Science Outpost"
+	})
 "xW" = (
 /obj/structure/cable{
 	icon_state = "4-8"
@@ -11628,12 +11880,14 @@
 /turf/open/floor/plasteel,
 /area/crew_quarters/dorms)
 "ya" = (
-/obj/structure/lattice/catwalk,
-/obj/structure/cable{
-	icon_state = "4-8"
-	},
-/turf/open/space,
-/area/space)
+/obj/structure/table,
+/obj/item/nanite_scanner,
+/obj/item/nanite_remote/comm,
+/obj/item/nanite_remote,
+/turf/open/floor/plasteel/dark,
+/area/science/xenobiology{
+	name = "Science Outpost"
+	})
 "yb" = (
 /obj/structure/cable{
 	icon_state = "1-4"
@@ -11804,15 +12058,6 @@
 	},
 /turf/open/floor/plasteel/dark,
 /area/bridge)
-"yq" = (
-/obj/machinery/camera{
-	c_tag = "Science - Xenobiology West";
-	dir = 4;
-	name = "science camera";
-	network = list("ss13","rd")
-	},
-/turf/open/floor/plasteel/dark,
-/area/space)
 "yr" = (
 /obj/effect/turf_decal/tile/red,
 /obj/effect/turf_decal/tile/red{
@@ -11902,8 +12147,17 @@
 /turf/open/floor/plasteel/dark,
 /area/aisat)
 "yC" = (
-/turf/closed/wall/r_wall,
-/area/space)
+/obj/structure/lattice/catwalk,
+/obj/structure/cable{
+	icon_state = "1-2"
+	},
+/obj/structure/cable{
+	icon_state = "2-4"
+	},
+/turf/open/space/basic,
+/area/science/xenobiology{
+	name = "Science Outpost"
+	})
 "yD" = (
 /obj/docking_port/stationary{
 	dir = 4;
@@ -11949,9 +12203,6 @@
 	},
 /turf/open/floor/plasteel,
 /area/hallway/primary/port/fore)
-"yJ" = (
-/turf/open/floor/engine,
-/area/space)
 "yK" = (
 /obj/machinery/ai_slipper{
 	uses = 10
@@ -12081,6 +12332,14 @@
 /obj/effect/turf_decal/tile/brown,
 /turf/open/floor/plasteel,
 /area/quartermaster/storage)
+"yU" = (
+/obj/machinery/atmospherics/pipe/layer_manifold{
+	dir = 4
+	},
+/turf/open/floor/plating,
+/area/science/xenobiology{
+	name = "Science Outpost"
+	})
 "yV" = (
 /obj/structure/window/reinforced,
 /obj/structure/window/reinforced{
@@ -12166,9 +12425,6 @@
 /turf/open/floor/plasteel/dark,
 /area/ai_monitored/storage/eva)
 "zb" = (
-/obj/structure/sign/departments/custodian{
-	pixel_y = 32
-	},
 /obj/structure/window/reinforced,
 /obj/structure/window/reinforced{
 	dir = 4
@@ -12357,6 +12613,24 @@
 /obj/effect/landmark/event_spawn,
 /turf/open/floor/wood,
 /area/crew_quarters/bar)
+"zu" = (
+/obj/effect/turf_decal/tile/neutral,
+/obj/effect/turf_decal/tile/neutral{
+	dir = 8
+	},
+/obj/effect/turf_decal/tile/neutral{
+	dir = 1
+	},
+/obj/effect/turf_decal/tile/neutral{
+	dir = 4
+	},
+/obj/machinery/atmospherics/components/unary/vent_scrubber/on/layer3{
+	dir = 1
+	},
+/turf/open/floor/plasteel/dark,
+/area/science/xenobiology{
+	name = "Science Outpost"
+	})
 "zv" = (
 /obj/structure/cable{
 	icon_state = "1-2"
@@ -12506,10 +12780,11 @@
 /turf/open/floor/plasteel,
 /area/hallway/secondary/exit)
 "zK" = (
-/obj/structure/lattice,
-/obj/structure/grille,
-/turf/open/space/basic,
-/area/space)
+/obj/effect/turf_decal/tile/neutral,
+/turf/open/floor/plasteel/dark,
+/area/science/xenobiology{
+	name = "Science Outpost"
+	})
 "zL" = (
 /obj/effect/turf_decal/tile/brown,
 /turf/open/floor/plasteel,
@@ -12620,11 +12895,6 @@
 	},
 /turf/open/floor/plasteel/dark,
 /area/ai_monitored/turret_protected/aisat_interior)
-"zZ" = (
-/obj/structure/grille,
-/obj/structure/lattice,
-/turf/open/space,
-/area/space)
 "Aa" = (
 /obj/structure/cable{
 	icon_state = "1-4"
@@ -12632,28 +12902,24 @@
 /turf/open/floor/plasteel/dark,
 /area/security/prison)
 "Ab" = (
-/obj/effect/turf_decal/tile/neutral{
-	dir = 8
-	},
 /obj/effect/turf_decal/tile/neutral,
 /obj/effect/turf_decal/tile/neutral{
-	dir = 4
+	dir = 8
 	},
 /obj/effect/turf_decal/tile/neutral{
 	dir = 1
 	},
-/obj/machinery/door/airlock/research{
-	name = "Research Outpost";
-	req_access_txt = "47"
-	},
-/obj/machinery/atmospherics/pipe/simple/scrubbers/hidden/layer3{
+/obj/effect/turf_decal/tile/neutral{
 	dir = 4
 	},
-/obj/machinery/atmospherics/pipe/simple/supply/hidden/layer1{
-	dir = 4
+/obj/machinery/atmospherics/pipe/manifold/scrubbers/hidden/layer3{
+	dir = 1
 	},
+/obj/machinery/atmospherics/pipe/manifold/supply/hidden/layer1,
 /turf/open/floor/plasteel/dark,
-/area/space)
+/area/science/xenobiology{
+	name = "Science Outpost"
+	})
 "Ac" = (
 /obj/effect/turf_decal/tile/brown{
 	dir = 1
@@ -12681,6 +12947,27 @@
 /obj/machinery/light,
 /turf/open/floor/plasteel/checker,
 /area/engine/atmos)
+"Ae" = (
+/obj/effect/turf_decal/tile/neutral{
+	dir = 8
+	},
+/obj/effect/turf_decal/tile/neutral{
+	dir = 4
+	},
+/obj/effect/turf_decal/tile/neutral{
+	dir = 1
+	},
+/obj/effect/turf_decal/tile/neutral,
+/obj/structure/table/glass,
+/obj/item/stack/sheet/mineral/plasma{
+	amount = 5
+	},
+/obj/item/reagent_containers/glass/beaker/large,
+/obj/item/reagent_containers/dropper,
+/turf/open/floor/plasteel/dark,
+/area/science/xenobiology{
+	name = "Science Outpost"
+	})
 "Af" = (
 /obj/machinery/door/airlock/external{
 	name = "Perma Prison Shuttle Airlock";
@@ -12712,13 +12999,16 @@
 /turf/open/floor/plasteel,
 /area/hallway/primary/central)
 "Aj" = (
-/obj/structure/table,
-/obj/item/book/manual/wiki/experimentor,
-/obj/machinery/atmospherics/components/unary/vent_scrubber/on/layer3{
-	dir = 4
+/obj/effect/turf_decal/tile/neutral{
+	dir = 1
+	},
+/obj/effect/turf_decal/tile/neutral{
+	dir = 8
 	},
 /turf/open/floor/plasteel/dark,
-/area/space)
+/area/science/xenobiology{
+	name = "Science Outpost"
+	})
 "Ak" = (
 /obj/effect/turf_decal/tile/red{
 	dir = 1
@@ -12789,20 +13079,17 @@
 /turf/open/floor/plasteel/dark,
 /area/security/brig)
 "Aq" = (
-/obj/effect/turf_decal/tile/neutral{
-	dir = 8
+/obj/structure/cable{
+	icon_state = "1-8"
 	},
-/obj/effect/turf_decal/tile/neutral{
-	dir = 4
+/obj/machinery/atmospherics/pipe/simple/scrubbers/hidden/layer3{
+	dir = 6
 	},
-/obj/effect/turf_decal/tile/neutral{
-	dir = 1
-	},
-/obj/effect/turf_decal/tile/neutral,
-/obj/machinery/atmospherics/pipe/simple/scrubbers/hidden/layer3,
 /obj/machinery/atmospherics/pipe/simple/supply/hidden/layer1,
-/turf/open/floor/plasteel/dark,
-/area/space)
+/turf/open/floor/plating,
+/area/science/xenobiology{
+	name = "Science Outpost"
+	})
 "As" = (
 /obj/machinery/atmospherics/pipe/simple/scrubbers/hidden/layer3,
 /obj/machinery/atmospherics/pipe/simple/supply/hidden/layer1{
@@ -12813,15 +13100,6 @@
 	},
 /turf/open/floor/plasteel/dark,
 /area/ai_monitored/turret_protected/aisat_interior)
-"At" = (
-/obj/machinery/atmospherics/pipe/simple/scrubbers/hidden/layer3{
-	dir = 4
-	},
-/obj/machinery/atmospherics/pipe/simple/supply/hidden/layer1{
-	dir = 4
-	},
-/turf/open/floor/plasteel/dark,
-/area/space)
 "Au" = (
 /obj/machinery/atmospherics/components/unary/vent_pump/on/layer1{
 	dir = 4
@@ -13201,15 +13479,16 @@
 	name = "Docking Bay"
 	})
 "Bj" = (
-/obj/structure/lattice/catwalk,
-/obj/structure/cable{
-	icon_state = "1-2"
+/obj/effect/turf_decal/tile/neutral,
+/obj/effect/turf_decal/tile/neutral{
+	dir = 8
 	},
-/obj/structure/cable{
-	icon_state = "2-4"
-	},
-/turf/open/space/basic,
-/area/space)
+/obj/machinery/atmospherics/pipe/simple/scrubbers/hidden/layer3,
+/obj/machinery/atmospherics/pipe/simple/supply/hidden/layer1,
+/turf/open/floor/plasteel/dark,
+/area/science/xenobiology{
+	name = "Science Outpost"
+	})
 "Bk" = (
 /obj/effect/turf_decal/tile/yellow{
 	dir = 1
@@ -13224,11 +13503,32 @@
 /turf/open/floor/plasteel,
 /area/engine/engineering)
 "Bl" = (
-/obj/machinery/atmospherics/components/unary/outlet_injector/on{
+/obj/effect/turf_decal/tile/neutral{
 	dir = 8
 	},
-/turf/open/floor/plating/airless,
-/area/space)
+/turf/open/floor/plasteel/dark,
+/area/science/xenobiology{
+	name = "Science Outpost"
+	})
+"Bn" = (
+/obj/effect/turf_decal/tile/neutral{
+	dir = 8
+	},
+/obj/effect/turf_decal/tile/neutral{
+	dir = 4
+	},
+/obj/effect/turf_decal/tile/neutral{
+	dir = 1
+	},
+/obj/effect/turf_decal/tile/neutral,
+/obj/structure/table/glass,
+/obj/machinery/reagentgrinder{
+	pixel_y = 5
+	},
+/turf/open/floor/plasteel/dark,
+/area/science/xenobiology{
+	name = "Science Outpost"
+	})
 "Bo" = (
 /obj/effect/turf_decal/tile/red,
 /obj/effect/turf_decal/tile/red{
@@ -13277,15 +13577,26 @@
 /turf/open/floor/plasteel/dark,
 /area/ai_monitored/turret_protected/aisat_interior)
 "Bt" = (
-/obj/structure/lattice/catwalk,
-/obj/structure/cable{
-	icon_state = "1-2"
+/obj/effect/turf_decal/tile/neutral{
+	dir = 8
 	},
-/obj/structure/cable{
-	icon_state = "1-2"
+/obj/effect/turf_decal/tile/neutral{
+	dir = 4
 	},
-/turf/open/space/basic,
-/area/space)
+/obj/effect/turf_decal/tile/neutral{
+	dir = 1
+	},
+/obj/effect/turf_decal/tile/neutral,
+/obj/machinery/door/airlock/research/glass{
+	name = "Nanite Laboratory";
+	req_access_txt = "47"
+	},
+/obj/machinery/atmospherics/pipe/simple/scrubbers/hidden/layer3,
+/obj/machinery/atmospherics/pipe/simple/supply/hidden/layer1,
+/turf/open/floor/plasteel/dark,
+/area/science/xenobiology{
+	name = "Science Outpost"
+	})
 "Bu" = (
 /obj/docking_port/stationary{
 	dir = 2;
@@ -13467,28 +13778,11 @@
 /turf/open/floor/plasteel/dark,
 /area/aisat)
 "BL" = (
-/obj/effect/turf_decal/tile/neutral{
-	dir = 8
-	},
-/obj/effect/turf_decal/tile/neutral{
-	dir = 4
-	},
-/obj/effect/turf_decal/tile/neutral{
-	dir = 1
-	},
-/obj/effect/turf_decal/tile/neutral,
-/obj/machinery/door/airlock/research/glass{
-	name = "B.E.P.I.S. Laboratory";
-	req_access_txt = "47"
-	},
-/obj/machinery/atmospherics/pipe/simple/scrubbers/hidden/layer3{
-	dir = 4
-	},
-/obj/machinery/atmospherics/pipe/simple/supply/hidden/layer1{
-	dir = 4
-	},
-/turf/open/floor/plasteel/dark,
-/area/space)
+/obj/machinery/atmospherics/components/unary/vent_pump/on/layer1,
+/turf/open/floor/engine,
+/area/science/xenobiology{
+	name = "Science Outpost"
+	})
 "BM" = (
 /obj/structure/cable{
 	icon_state = "2-8"
@@ -13545,14 +13839,16 @@
 /turf/open/space/basic,
 /area/space/nearstation)
 "BW" = (
-/obj/effect/turf_decal/stripes{
-	dir = 8
+/obj/machinery/camera{
+	c_tag = "Science Outpost - E.X.P.E.R.I.M.E.N.T.O.R.";
+	dir = 6;
+	name = "science camera";
+	network = list("ss13","rd")
 	},
-/obj/machinery/computer/nanite_chamber_control{
-	dir = 8
-	},
-/turf/open/floor/plasteel/dark,
-/area/space)
+/turf/open/floor/engine,
+/area/science/xenobiology{
+	name = "Science Outpost"
+	})
 "BX" = (
 /obj/machinery/light{
 	dir = 4
@@ -13568,21 +13864,25 @@
 /turf/open/floor/plasteel/dark,
 /area/teleporter)
 "BZ" = (
-/obj/machinery/atmospherics/pipe/simple/general/visible{
-	dir = 5
-	},
 /obj/effect/turf_decal/tile/neutral,
-/obj/effect/turf_decal/tile/neutral{
-	dir = 8
-	},
 /obj/effect/turf_decal/tile/neutral{
 	dir = 1
 	},
 /obj/effect/turf_decal/tile/neutral{
 	dir = 4
 	},
+/obj/effect/turf_decal/tile/neutral{
+	dir = 8
+	},
+/obj/machinery/vending/snack,
+/obj/structure/sign/departments/science{
+	pixel_x = -32;
+	pixel_y = 32
+	},
 /turf/open/floor/plasteel/dark,
-/area/space)
+/area/science/xenobiology{
+	name = "Science Outpost"
+	})
 "Ca" = (
 /obj/machinery/atmospherics/pipe/manifold/supply/hidden/layer1,
 /obj/machinery/atmospherics/pipe/manifold/scrubbers/hidden/layer3,
@@ -13625,6 +13925,21 @@
 /area/hallway/primary/port/aft{
 	name = "Escape Pods"
 	})
+"Ce" = (
+/obj/structure/cable{
+	icon_state = "0-4"
+	},
+/obj/machinery/power/apc{
+	dir = 8;
+	pixel_x = -26
+	},
+/obj/structure/table,
+/obj/item/stack/sheet/metal/fifty,
+/obj/item/storage/box/lights/mixed,
+/turf/open/floor/plating,
+/area/science/xenobiology{
+	name = "Science Outpost"
+	})
 "Cf" = (
 /obj/structure/window/reinforced{
 	dir = 1;
@@ -13655,12 +13970,20 @@
 /turf/open/floor/plasteel,
 /area/engine/engineering)
 "Ci" = (
-/obj/structure/table,
-/obj/item/nanite_scanner,
-/obj/item/nanite_remote/comm,
-/obj/item/nanite_remote,
+/obj/effect/turf_decal/tile/neutral,
+/obj/effect/turf_decal/tile/neutral{
+	dir = 1
+	},
+/obj/effect/turf_decal/tile/neutral{
+	dir = 4
+	},
+/obj/effect/turf_decal/tile/neutral{
+	dir = 8
+	},
 /turf/open/floor/plasteel/dark,
-/area/space)
+/area/science/xenobiology{
+	name = "Science Outpost"
+	})
 "Cj" = (
 /obj/structure/cable{
 	icon_state = "4-8"
@@ -13696,6 +14019,14 @@
 	},
 /turf/open/floor/plasteel/dark,
 /area/medical/morgue)
+"Cn" = (
+/obj/effect/turf_decal/tile/neutral{
+	dir = 4
+	},
+/turf/open/floor/plasteel/dark,
+/area/science/xenobiology{
+	name = "Science Outpost"
+	})
 "Co" = (
 /obj/machinery/atmospherics/pipe/simple/scrubbers/hidden/layer3,
 /obj/machinery/light{
@@ -13770,15 +14101,23 @@
 	name = "Docking Bay"
 	})
 "Cu" = (
-/obj/effect/turf_decal/tile/neutral{
+/obj/effect/turf_decal/stripes/corner{
 	dir = 8
+	},
+/obj/effect/turf_decal/tile/neutral,
+/obj/effect/turf_decal/tile/neutral{
+	dir = 1
 	},
 /obj/effect/turf_decal/tile/neutral{
 	dir = 4
 	},
-/obj/effect/turf_decal/tile/neutral,
+/obj/effect/turf_decal/tile/neutral{
+	dir = 8
+	},
 /turf/open/floor/plasteel/dark,
-/area/space)
+/area/science/xenobiology{
+	name = "Science Outpost"
+	})
 "Cv" = (
 /obj/machinery/airalarm{
 	dir = 4;
@@ -13931,28 +14270,13 @@
 /turf/open/floor/plasteel,
 /area/quartermaster/storage)
 "CF" = (
-/obj/effect/turf_decal/tile/neutral{
-	dir = 8
-	},
-/obj/effect/turf_decal/tile/neutral{
-	dir = 4
-	},
-/obj/effect/turf_decal/tile/neutral{
-	dir = 1
-	},
-/obj/effect/turf_decal/tile/neutral,
-/obj/machinery/door/airlock/research/glass{
-	name = "E.X.P.E.R.I.M.E.N.T.O.R. Laboratory";
-	req_access_txt = "47"
-	},
-/obj/machinery/atmospherics/pipe/simple/scrubbers/hidden/layer3{
-	dir = 4
-	},
 /obj/machinery/atmospherics/pipe/simple/supply/hidden/layer1{
-	dir = 4
+	dir = 6
 	},
 /turf/open/floor/plasteel/dark,
-/area/space)
+/area/science/xenobiology{
+	name = "Science Outpost"
+	})
 "CG" = (
 /obj/structure/cable{
 	icon_state = "4-8"
@@ -13979,18 +14303,27 @@
 /turf/open/floor/plasteel/dark,
 /area/ai_monitored/turret_protected/aisat_interior)
 "CJ" = (
-/obj/structure/window/reinforced,
-/obj/machinery/disposal/bin,
-/obj/structure/disposalpipe/trunk,
-/obj/effect/turf_decal/stripes{
-	dir = 5
+/obj/effect/turf_decal/tile/neutral,
+/obj/effect/turf_decal/tile/neutral{
+	dir = 8
 	},
-/obj/machinery/door/poddoor/preopen{
-	id = "xeno2";
-	name = "Creature Cell #2"
+/obj/effect/turf_decal/tile/neutral{
+	dir = 1
+	},
+/obj/effect/turf_decal/tile/neutral{
+	dir = 4
+	},
+/obj/machinery/button/door{
+	id = "xeno5";
+	name = "Containment Control";
+	pixel_x = 24;
+	pixel_y = -24;
+	req_access_txt = "55"
 	},
 /turf/open/floor/plasteel/dark,
-/area/space)
+/area/science/xenobiology{
+	name = "Science Outpost"
+	})
 "CK" = (
 /obj/machinery/atmospherics/pipe/simple/supply/hidden/layer1{
 	dir = 9
@@ -14080,18 +14413,27 @@
 /turf/open/floor/plasteel,
 /area/engine/engineering)
 "CT" = (
-/obj/structure/window/reinforced,
-/obj/machinery/disposal/bin,
-/obj/structure/disposalpipe/trunk,
-/obj/effect/turf_decal/stripes{
-	dir = 5
+/obj/effect/turf_decal/tile/neutral,
+/obj/effect/turf_decal/tile/neutral{
+	dir = 8
 	},
-/obj/machinery/door/poddoor/preopen{
-	id = "xeno4";
-	name = "Creature Cell #4"
+/obj/effect/turf_decal/tile/neutral{
+	dir = 1
+	},
+/obj/effect/turf_decal/tile/neutral{
+	dir = 4
+	},
+/obj/machinery/button/door{
+	id = "xeno7";
+	name = "Containment Control";
+	pixel_x = 24;
+	pixel_y = -24;
+	req_access_txt = "55"
 	},
 /turf/open/floor/plasteel/dark,
-/area/space)
+/area/science/xenobiology{
+	name = "Science Outpost"
+	})
 "CU" = (
 /obj/machinery/light{
 	dir = 1
@@ -14159,9 +14501,22 @@
 /turf/open/floor/plating,
 /area/security/brig)
 "Da" = (
+/obj/effect/turf_decal/tile/neutral{
+	dir = 8
+	},
+/obj/effect/turf_decal/tile/neutral{
+	dir = 4
+	},
+/obj/effect/turf_decal/tile/neutral{
+	dir = 1
+	},
 /obj/effect/turf_decal/tile/neutral,
+/obj/machinery/atmospherics/pipe/simple/scrubbers/hidden/layer3,
+/obj/machinery/atmospherics/pipe/simple/supply/hidden/layer1,
 /turf/open/floor/plasteel/dark,
-/area/space)
+/area/science/xenobiology{
+	name = "Science Outpost"
+	})
 "Db" = (
 /obj/structure/cable{
 	icon_state = "4-8"
@@ -14252,10 +14607,9 @@
 	dir = 8;
 	pixel_x = 24
 	},
-/obj/machinery/portable_atmospherics/canister/air,
-/obj/machinery/atmospherics/components/unary/portables_connector/visible/layer1{
+/obj/machinery/atmospherics/pipe/bluespace/layer1{
 	dir = 8;
-	name = "Auxiliary MiniSat Distribution Port"
+	on = 1
 	},
 /turf/open/floor/plasteel/dark,
 /area/ai_monitored/turret_protected/aisat_interior)
@@ -14315,18 +14669,16 @@
 /turf/open/floor/mineral/titanium/blue,
 /area/crew_quarters/dorms)
 "Dm" = (
-/obj/machinery/button/door{
-	id = "telelab";
-	name = "Test Chamber Blast Doors";
-	pixel_x = 25;
-	req_access_txt = "47";
-	pixel_y = 25
+/obj/machinery/door/airlock/research/glass{
+	name = "B.E.P.I.S. Chamber Access";
+	req_access_txt = "47"
 	},
-/obj/effect/turf_decal/tile/neutral,
 /obj/machinery/atmospherics/pipe/simple/scrubbers/hidden/layer3,
 /obj/machinery/atmospherics/pipe/simple/supply/hidden/layer1,
-/turf/open/floor/plasteel/dark,
-/area/space)
+/turf/open/floor/engine,
+/area/science/xenobiology{
+	name = "Science Outpost"
+	})
 "Dn" = (
 /obj/structure/window/reinforced{
 	dir = 1;
@@ -14443,25 +14795,25 @@
 /turf/open/floor/plasteel/dark,
 /area/crew_quarters/heads/hop)
 "Dz" = (
-/obj/effect/turf_decal/tile/neutral,
-/obj/effect/turf_decal/tile/neutral{
-	dir = 8
+/obj/effect/turf_decal/stripes{
+	dir = 1
 	},
+/obj/effect/turf_decal/tile/neutral,
 /obj/effect/turf_decal/tile/neutral{
 	dir = 1
 	},
 /obj/effect/turf_decal/tile/neutral{
 	dir = 4
 	},
-/obj/machinery/button/door{
-	id = "xeno5";
-	name = "Containment Control";
-	pixel_x = 24;
-	pixel_y = -24;
-	req_access_txt = "55"
+/obj/effect/turf_decal/tile/neutral{
+	dir = 8
 	},
+/obj/machinery/atmospherics/pipe/simple/scrubbers/hidden/layer3,
+/obj/machinery/atmospherics/pipe/simple/supply/hidden/layer1,
 /turf/open/floor/plasteel/dark,
-/area/space)
+/area/science/xenobiology{
+	name = "Science Outpost"
+	})
 "DA" = (
 /obj/docking_port/stationary{
 	dir = 4;
@@ -14593,26 +14945,6 @@
 	},
 /turf/open/floor/plasteel/dark,
 /area/science/lab)
-"DK" = (
-/obj/effect/turf_decal/tile/neutral,
-/obj/effect/turf_decal/tile/neutral{
-	dir = 8
-	},
-/obj/effect/turf_decal/tile/neutral{
-	dir = 1
-	},
-/obj/effect/turf_decal/tile/neutral{
-	dir = 4
-	},
-/obj/machinery/button/door{
-	id = "xeno3";
-	name = "Containment Control";
-	pixel_x = 24;
-	pixel_y = -24;
-	req_access_txt = "55"
-	},
-/turf/open/floor/plasteel/dark,
-/area/space)
 "DL" = (
 /obj/machinery/door/firedoor,
 /obj/machinery/door/airlock/command/glass{
@@ -14712,6 +15044,23 @@
 	},
 /turf/open/pool,
 /area/crew_quarters/dorms)
+"DV" = (
+/obj/effect/turf_decal/tile/neutral{
+	dir = 8
+	},
+/obj/effect/turf_decal/tile/neutral{
+	dir = 4
+	},
+/obj/effect/turf_decal/tile/neutral{
+	dir = 1
+	},
+/obj/effect/turf_decal/tile/neutral,
+/obj/machinery/atmospherics/pipe/manifold4w/scrubbers/hidden/layer3,
+/obj/machinery/atmospherics/pipe/manifold4w/supply/hidden/layer1,
+/turf/open/floor/plasteel/dark,
+/area/science/xenobiology{
+	name = "Science Outpost"
+	})
 "DW" = (
 /obj/machinery/atmospherics/components/unary/vent_scrubber/on/layer3{
 	dir = 4
@@ -14731,12 +15080,23 @@
 /turf/closed/wall/r_wall,
 /area/tcommsat/computer)
 "Ea" = (
-/obj/machinery/computer/telescience,
-/obj/effect/turf_decal/stripes{
-	dir = 10
+/obj/effect/turf_decal/stripes/corner{
+	dir = 4
+	},
+/obj/effect/turf_decal/tile/neutral,
+/obj/effect/turf_decal/tile/neutral{
+	dir = 1
+	},
+/obj/effect/turf_decal/tile/neutral{
+	dir = 4
+	},
+/obj/effect/turf_decal/tile/neutral{
+	dir = 8
 	},
 /turf/open/floor/plasteel/dark,
-/area/space)
+/area/science/xenobiology{
+	name = "Science Outpost"
+	})
 "Eb" = (
 /obj/machinery/door/airlock/hatch{
 	name = "Telecomms Control Room";
@@ -14974,11 +15334,27 @@
 /turf/open/floor/plasteel,
 /area/janitor)
 "Eu" = (
-/obj/machinery/atmospherics/components/unary/vent_pump/on/layer1{
+/obj/effect/turf_decal/tile/neutral,
+/obj/effect/turf_decal/tile/neutral{
+	dir = 8
+	},
+/obj/effect/turf_decal/tile/neutral{
 	dir = 1
 	},
+/obj/effect/turf_decal/tile/neutral{
+	dir = 4
+	},
+/obj/machinery/button/door{
+	id = "xeno3";
+	name = "Containment Control";
+	pixel_x = 24;
+	pixel_y = -24;
+	req_access_txt = "55"
+	},
 /turf/open/floor/plasteel/dark,
-/area/space)
+/area/science/xenobiology{
+	name = "Science Outpost"
+	})
 "Ev" = (
 /obj/structure/chair,
 /obj/machinery/firealarm{
@@ -15052,16 +15428,15 @@
 /turf/open/floor/plating,
 /area/maintenance/fore)
 "EC" = (
-/obj/machinery/door/window/brigdoor/southright{
-	name = "Creature Pen";
-	req_access_txt = "47"
+/obj/machinery/camera{
+	c_tag = "Science Outpost - B.E.P.I.S.";
+	name = "science camera";
+	network = list("ss13","rd")
 	},
-/obj/machinery/door/poddoor/preopen{
-	id = "xeno5";
-	name = "Creature Cell #5"
-	},
-/turf/open/floor/plasteel/dark,
-/area/space)
+/turf/open/floor/engine,
+/area/science/xenobiology{
+	name = "Science Outpost"
+	})
 "ED" = (
 /obj/effect/turf_decal/tile/yellow{
 	dir = 1
@@ -15093,9 +15468,6 @@
 /turf/open/space/basic,
 /area/security/prison)
 "EH" = (
-/obj/item/twohanded/required/kirbyplants{
-	icon_state = "plant-21"
-	},
 /obj/effect/turf_decal/bot,
 /obj/machinery/camera{
 	c_tag = "Arrivals";
@@ -15103,25 +15475,6 @@
 	},
 /turf/open/floor/plasteel,
 /area/hallway/secondary/entry)
-"EI" = (
-/obj/effect/turf_decal/tile/neutral,
-/obj/effect/turf_decal/tile/neutral{
-	dir = 8
-	},
-/obj/effect/turf_decal/tile/neutral{
-	dir = 1
-	},
-/obj/effect/turf_decal/tile/neutral{
-	dir = 4
-	},
-/obj/machinery/atmospherics/pipe/simple/scrubbers/hidden/layer3{
-	dir = 9
-	},
-/obj/machinery/atmospherics/pipe/simple/supply/hidden/layer1{
-	dir = 9
-	},
-/turf/open/floor/plasteel/dark,
-/area/space)
 "EJ" = (
 /turf/closed/wall/r_wall,
 /area/science/research)
@@ -15275,17 +15628,6 @@
 	},
 /turf/open/floor/plasteel/dark,
 /area/engine/atmos)
-"EX" = (
-/obj/machinery/door/window/brigdoor/southright{
-	name = "Creature Pen";
-	req_access_txt = "47"
-	},
-/obj/machinery/door/poddoor/preopen{
-	id = "xeno3";
-	name = "Creature Cell #3"
-	},
-/turf/open/floor/plasteel/dark,
-/area/space)
 "EY" = (
 /obj/effect/turf_decal/tile/blue,
 /obj/effect/turf_decal/tile/blue{
@@ -15323,12 +15665,17 @@
 	name = "Docking Bay"
 	})
 "Fb" = (
-/obj/machinery/atmospherics/pipe/simple/scrubbers/hidden{
-	dir = 4;
-	piping_layer = 3
+/obj/machinery/power/solar_control{
+	id = "sci_solars";
+	name = "Solars Controller"
 	},
-/turf/closed/wall/r_wall,
-/area/space)
+/obj/structure/cable{
+	icon_state = "0-4"
+	},
+/turf/open/floor/plating,
+/area/science/xenobiology{
+	name = "Science Outpost"
+	})
 "Fd" = (
 /obj/structure/cable{
 	icon_state = "1-2"
@@ -15408,11 +15755,14 @@
 /turf/open/floor/wood,
 /area/crew_quarters/heads/captain/private)
 "Fj" = (
-/obj/machinery/atmospherics/components/unary/portables_connector{
-	dir = 8
+/obj/machinery/power/smes/engineering,
+/obj/structure/cable{
+	icon_state = "0-2"
 	},
 /turf/open/floor/plating,
-/area/space)
+/area/science/xenobiology{
+	name = "Science Outpost"
+	})
 "Fk" = (
 /obj/machinery/chem_master,
 /obj/effect/turf_decal/stripes/corner{
@@ -15667,19 +16017,6 @@
 	},
 /turf/open/floor/plasteel/dark,
 /area/ai_monitored/nuke_storage)
-"FF" = (
-/obj/structure/window/reinforced,
-/obj/machinery/disposal/bin,
-/obj/structure/disposalpipe/trunk,
-/obj/effect/turf_decal/stripes{
-	dir = 5
-	},
-/obj/machinery/door/poddoor/preopen{
-	id = "xeno5";
-	name = "Creature Cell #5"
-	},
-/turf/open/floor/plasteel/dark,
-/area/space)
 "FG" = (
 /obj/structure/window/reinforced{
 	dir = 4
@@ -15912,17 +16249,40 @@
 	},
 /turf/open/floor/plating,
 /area/quartermaster/storage)
-"Gi" = (
-/obj/machinery/door/window/brigdoor/southright{
-	name = "Creature Pen";
-	req_access_txt = "47"
+"Gh" = (
+/obj/structure/cable{
+	icon_state = "1-2"
 	},
-/obj/machinery/door/poddoor/preopen{
-	id = "xeno4";
-	name = "Creature Cell #4"
+/obj/machinery/atmospherics/pipe/simple/scrubbers/hidden/layer3,
+/obj/machinery/atmospherics/pipe/simple/supply/hidden/layer1,
+/obj/structure/sign/departments/custodian{
+	pixel_x = -32;
+	pixel_y = 32
+	},
+/turf/open/floor/plating,
+/area/maintenance/central)
+"Gi" = (
+/obj/machinery/atmospherics/pipe/simple/general/visible{
+	dir = 5
+	},
+/obj/effect/turf_decal/tile/neutral,
+/obj/effect/turf_decal/tile/neutral{
+	dir = 8
+	},
+/obj/effect/turf_decal/tile/neutral{
+	dir = 1
+	},
+/obj/effect/turf_decal/tile/neutral{
+	dir = 4
+	},
+/obj/structure/sign/departments/xenobio{
+	pixel_x = 32;
+	pixel_y = -32
 	},
 /turf/open/floor/plasteel/dark,
-/area/space)
+/area/science/xenobiology{
+	name = "Science Outpost"
+	})
 "Gj" = (
 /obj/effect/turf_decal/tile/blue,
 /obj/effect/turf_decal/tile/blue{
@@ -16261,6 +16621,31 @@
 	},
 /turf/open/floor/plating,
 /area/security/prison)
+"GP" = (
+/obj/effect/turf_decal/tile/neutral{
+	dir = 8
+	},
+/obj/effect/turf_decal/tile/neutral{
+	dir = 4
+	},
+/obj/effect/turf_decal/tile/neutral{
+	dir = 1
+	},
+/obj/effect/turf_decal/tile/neutral,
+/obj/machinery/door/airlock/research/glass{
+	name = "B.E.P.I.S. Laboratory";
+	req_access_txt = "47"
+	},
+/obj/machinery/atmospherics/pipe/simple/scrubbers/hidden/layer3{
+	dir = 4
+	},
+/obj/machinery/atmospherics/pipe/simple/supply/hidden/layer1{
+	dir = 4
+	},
+/turf/open/floor/plasteel/dark,
+/area/science/xenobiology{
+	name = "Science Outpost"
+	})
 "GQ" = (
 /obj/machinery/atmospherics/components/unary/vent_scrubber/on/layer3{
 	dir = 8
@@ -16478,6 +16863,9 @@
 /turf/open/floor/plasteel,
 /area/storage/primary)
 "Hh" = (
+/obj/machinery/atmospherics/pipe/manifold/general/visible{
+	dir = 8
+	},
 /obj/effect/turf_decal/tile/neutral,
 /obj/effect/turf_decal/tile/neutral{
 	dir = 8
@@ -16488,24 +16876,22 @@
 /obj/effect/turf_decal/tile/neutral{
 	dir = 4
 	},
-/obj/machinery/button/door{
-	id = "xeno4";
-	name = "Containment Control";
-	pixel_x = 24;
-	pixel_y = -24;
-	req_access_txt = "55"
-	},
 /turf/open/floor/plasteel/dark,
-/area/space)
+/area/science/xenobiology{
+	name = "Science Outpost"
+	})
 "Hi" = (
-/obj/machinery/atmospherics/pipe/simple/supply/hidden/layer1{
-	dir = 6
-	},
+/obj/machinery/rnd/experimentor,
 /obj/machinery/atmospherics/pipe/simple/scrubbers/hidden/layer3{
 	dir = 6
 	},
+/obj/machinery/atmospherics/pipe/simple/supply/hidden/layer1{
+	dir = 5
+	},
 /turf/open/floor/engine,
-/area/space)
+/area/science/xenobiology{
+	name = "Science Outpost"
+	})
 "Hj" = (
 /obj/effect/turf_decal/delivery,
 /obj/structure/disposalpipe/segment,
@@ -16581,21 +16967,16 @@
 /turf/open/floor/engine,
 /area/engine/engineering)
 "Hr" = (
-/obj/machinery/atmospherics/components/unary/thermomachine/freezer/on/coldroom{
-	dir = 8
-	},
-/obj/effect/turf_decal/tile/neutral,
-/obj/effect/turf_decal/tile/neutral{
-	dir = 8
-	},
-/obj/effect/turf_decal/tile/neutral{
-	dir = 1
-	},
-/obj/effect/turf_decal/tile/neutral{
+/obj/machinery/atmospherics/pipe/simple/scrubbers/hidden/layer3{
 	dir = 4
 	},
-/turf/open/floor/plasteel/dark,
-/area/space)
+/obj/machinery/atmospherics/pipe/simple/supply/hidden/layer1{
+	dir = 4
+	},
+/turf/open/floor/engine,
+/area/science/xenobiology{
+	name = "Science Outpost"
+	})
 "Hs" = (
 /obj/effect/turf_decal/tile/green{
 	dir = 1
@@ -16615,6 +16996,14 @@
 /obj/structure/disposalpipe/segment,
 /turf/open/floor/plasteel,
 /area/hallway/primary/central)
+"Ht" = (
+/obj/structure/window/reinforced{
+	dir = 8
+	},
+/turf/open/floor/plasteel/dark,
+/area/science/xenobiology{
+	name = "Science Outpost"
+	})
 "Hu" = (
 /obj/effect/spawner/lootdrop/maintenance{
 	lootcount = 2;
@@ -16669,10 +17058,6 @@
 /area/hallway/primary/aft{
 	name = "Docking Bay"
 	})
-"HD" = (
-/obj/structure/lattice,
-/turf/open/space/basic,
-/area/space)
 "HE" = (
 /obj/effect/turf_decal/tile/brown{
 	dir = 1
@@ -16705,24 +17090,19 @@
 /obj/effect/turf_decal/tile/neutral,
 /turf/open/floor/plasteel/checker,
 /area/engine/atmos)
-"HG" = (
-/obj/structure/cable,
-/obj/machinery/power/solar{
-	id = "auxsolareast";
-	name = "Port Auxiliary Solar Array"
-	},
-/turf/open/floor/plasteel/airless/solarpanel,
-/area/space)
 "HH" = (
-/obj/structure/window/reinforced{
-	dir = 8
+/obj/machinery/door/window/brigdoor/southright{
+	name = "Creature Pen";
+	req_access_txt = "47"
 	},
-/obj/structure/disposalpipe/trunk{
-	dir = 1
+/obj/machinery/door/poddoor/preopen{
+	id = "xeno5";
+	name = "Creature Cell #5"
 	},
-/obj/structure/disposaloutlet,
 /turf/open/floor/plasteel/dark,
-/area/space)
+/area/science/xenobiology{
+	name = "Science Outpost"
+	})
 "HI" = (
 /turf/open/space,
 /area/space/nearstation)
@@ -16864,22 +17244,6 @@
 /obj/effect/spawner/structure/window/reinforced,
 /turf/open/floor/plating,
 /area/tcommsat/server)
-"Ic" = (
-/obj/effect/turf_decal/stripes/corner{
-	dir = 4
-	},
-/obj/effect/turf_decal/tile/neutral,
-/obj/effect/turf_decal/tile/neutral{
-	dir = 1
-	},
-/obj/effect/turf_decal/tile/neutral{
-	dir = 4
-	},
-/obj/effect/turf_decal/tile/neutral{
-	dir = 8
-	},
-/turf/open/floor/plasteel/dark,
-/area/space)
 "Id" = (
 /obj/structure/cable{
 	icon_state = "1-4"
@@ -16935,10 +17299,6 @@
 /obj/effect/turf_decal/tile/green,
 /turf/open/floor/plasteel,
 /area/crew_quarters/bar)
-"Ii" = (
-/obj/effect/spawner/structure/window/plasma/reinforced,
-/turf/open/floor/plating,
-/area/space)
 "Ij" = (
 /obj/structure/window/reinforced{
 	dir = 8
@@ -17076,10 +17436,16 @@
 /turf/open/floor/plasteel,
 /area/hallway/secondary/exit)
 "Iy" = (
-/obj/structure/lattice,
-/obj/structure/grille,
-/turf/open/space,
-/area/space)
+/obj/machinery/atmospherics/pipe/simple/scrubbers/hidden/layer3{
+	dir = 10
+	},
+/obj/machinery/atmospherics/pipe/simple/supply/hidden/layer1{
+	dir = 10
+	},
+/turf/open/floor/engine,
+/area/science/xenobiology{
+	name = "Science Outpost"
+	})
 "Iz" = (
 /obj/machinery/atmospherics/pipe/simple/supply/hidden/layer1,
 /obj/machinery/atmospherics/pipe/simple/scrubbers/hidden/layer3,
@@ -17098,20 +17464,6 @@
 	},
 /turf/open/floor/plasteel,
 /area/engine/engineering)
-"IB" = (
-/obj/effect/turf_decal/tile/neutral,
-/obj/effect/turf_decal/tile/neutral{
-	dir = 1
-	},
-/obj/effect/turf_decal/tile/neutral{
-	dir = 4
-	},
-/obj/effect/turf_decal/tile/neutral{
-	dir = 8
-	},
-/obj/machinery/vending/snack,
-/turf/open/floor/plasteel/dark,
-/area/space)
 "ID" = (
 /obj/effect/landmark/blobstart,
 /turf/open/floor/plating,
@@ -17125,12 +17477,21 @@
 /turf/open/floor/circuit/green/telecomms/mainframe,
 /area/tcommsat/server)
 "IF" = (
-/obj/machinery/nanite_program_hub,
-/obj/effect/turf_decal/stripes{
-	dir = 6
+/obj/effect/turf_decal/tile/neutral,
+/obj/effect/turf_decal/tile/neutral{
+	dir = 1
 	},
+/obj/effect/turf_decal/tile/neutral{
+	dir = 4
+	},
+/obj/effect/turf_decal/tile/neutral{
+	dir = 8
+	},
+/obj/machinery/vending/cola/red,
 /turf/open/floor/plasteel/dark,
-/area/space)
+/area/science/xenobiology{
+	name = "Science Outpost"
+	})
 "IG" = (
 /obj/machinery/atmospherics/pipe/simple/green/visible,
 /obj/effect/turf_decal/tile/yellow{
@@ -17159,6 +17520,22 @@
 "II" = (
 /turf/closed/wall/r_wall,
 /area/science/lab)
+"IJ" = (
+/obj/effect/turf_decal/tile/neutral{
+	dir = 8
+	},
+/obj/effect/turf_decal/tile/neutral{
+	dir = 4
+	},
+/obj/effect/turf_decal/tile/neutral{
+	dir = 1
+	},
+/obj/effect/turf_decal/tile/neutral,
+/obj/machinery/atmospherics/components/unary/vent_pump/on/layer1,
+/turf/open/floor/plasteel/dark,
+/area/science/xenobiology{
+	name = "Science Outpost"
+	})
 "IK" = (
 /obj/effect/turf_decal/tile/neutral{
 	dir = 1
@@ -17247,16 +17624,22 @@
 /turf/open/floor/plasteel/dark,
 /area/tcommsat/server)
 "IT" = (
+/obj/effect/turf_decal/tile/neutral,
 /obj/effect/turf_decal/tile/neutral{
 	dir = 1
 	},
 /obj/effect/turf_decal/tile/neutral{
+	dir = 4
+	},
+/obj/effect/turf_decal/tile/neutral{
 	dir = 8
 	},
-/obj/machinery/atmospherics/pipe/manifold/scrubbers/hidden/layer3,
-/obj/machinery/atmospherics/pipe/manifold/supply/hidden/layer1,
+/obj/machinery/atmospherics/pipe/simple/scrubbers/hidden/layer3,
+/obj/machinery/atmospherics/pipe/simple/supply/hidden/layer1,
 /turf/open/floor/plasteel/dark,
-/area/space)
+/area/science/xenobiology{
+	name = "Science Outpost"
+	})
 "IU" = (
 /obj/structure/chair{
 	dir = 8
@@ -17338,6 +17721,29 @@
 	},
 /turf/open/floor/plating,
 /area/maintenance/central)
+"Jc" = (
+/obj/effect/turf_decal/tile/neutral,
+/obj/effect/turf_decal/tile/neutral{
+	dir = 4
+	},
+/obj/machinery/atmospherics/pipe/simple/scrubbers/hidden/layer3{
+	dir = 4
+	},
+/obj/machinery/atmospherics/pipe/simple/supply/hidden/layer1{
+	dir = 4
+	},
+/obj/structure/sign/departments/science{
+	pixel_x = 32;
+	pixel_y = -32
+	},
+/obj/structure/sign/departments/science{
+	pixel_x = 32;
+	pixel_y = 32
+	},
+/turf/open/floor/plasteel/dark,
+/area/science/xenobiology{
+	name = "Science Outpost"
+	})
 "Jd" = (
 /obj/effect/turf_decal/tile/red,
 /obj/effect/turf_decal/tile/red{
@@ -17370,6 +17776,16 @@
 /obj/effect/turf_decal/tile/neutral,
 /turf/open/floor/plasteel/dark,
 /area/ai_monitored/storage/eva)
+"Jf" = (
+/obj/structure/fans/tiny,
+/obj/machinery/door/airlock/external/glass{
+	name = "Science Outpost Dock";
+	req_access_txt = "47"
+	},
+/turf/open/floor/plasteel/dark,
+/area/science/xenobiology{
+	name = "Science Outpost"
+	})
 "Jg" = (
 /obj/machinery/atmospherics/pipe/simple/scrubbers/hidden/layer3{
 	dir = 4
@@ -17448,21 +17864,17 @@
 /turf/open/floor/circuit/green/telecomms/mainframe,
 /area/tcommsat/server)
 "Jo" = (
-/obj/machinery/atmospherics/pipe/simple/general/visible{
-	dir = 9
+/obj/machinery/rnd/bepis,
+/obj/machinery/atmospherics/pipe/simple/supply/hidden/layer1{
+	dir = 10
 	},
-/obj/effect/turf_decal/tile/neutral,
-/obj/effect/turf_decal/tile/neutral{
-	dir = 8
+/obj/machinery/atmospherics/pipe/simple/scrubbers/hidden/layer3{
+	dir = 6
 	},
-/obj/effect/turf_decal/tile/neutral{
-	dir = 1
-	},
-/obj/effect/turf_decal/tile/neutral{
-	dir = 4
-	},
-/turf/open/floor/plasteel/dark,
-/area/space)
+/turf/open/floor/engine,
+/area/science/xenobiology{
+	name = "Science Outpost"
+	})
 "Jp" = (
 /obj/machinery/status_display/supply,
 /turf/closed/wall/r_wall,
@@ -17585,12 +17997,38 @@
 /turf/open/floor/plasteel/dark/telecomms,
 /area/tcommsat/server)
 "JF" = (
-/obj/structure/table,
-/obj/machinery/atmospherics/components/unary/vent_pump/on/layer1{
+/turf/open/floor/plating,
+/area/science/xenobiology{
+	name = "Science Outpost"
+	})
+"JG" = (
+/obj/effect/turf_decal/tile/neutral,
+/obj/effect/turf_decal/tile/neutral{
 	dir = 8
 	},
+/obj/effect/turf_decal/tile/neutral{
+	dir = 1
+	},
+/obj/effect/turf_decal/tile/neutral{
+	dir = 4
+	},
+/obj/machinery/button/door{
+	id = "xeno1";
+	name = "Containment Control";
+	pixel_x = 24;
+	pixel_y = -24;
+	req_access_txt = "55"
+	},
+/obj/machinery/atmospherics/pipe/simple/scrubbers/hidden/layer3{
+	dir = 4
+	},
+/obj/machinery/atmospherics/pipe/simple/supply/hidden/layer1{
+	dir = 4
+	},
 /turf/open/floor/plasteel/dark,
-/area/space)
+/area/science/xenobiology{
+	name = "Science Outpost"
+	})
 "JH" = (
 /mob/living/simple_animal/mouse/brown/Tom,
 /turf/open/floor/grass,
@@ -17733,19 +18171,6 @@
 	},
 /turf/open/floor/plasteel/white,
 /area/science/lab)
-"JW" = (
-/obj/effect/turf_decal/tile/neutral,
-/obj/effect/turf_decal/tile/neutral{
-	dir = 1
-	},
-/obj/effect/turf_decal/tile/neutral{
-	dir = 4
-	},
-/obj/effect/turf_decal/tile/neutral{
-	dir = 8
-	},
-/turf/open/floor/plasteel/dark,
-/area/space)
 "JX" = (
 /obj/structure/lattice/catwalk,
 /obj/structure/cable{
@@ -17760,20 +18185,16 @@
 /turf/open/space/basic,
 /area/security/prison)
 "JY" = (
-/obj/effect/turf_decal/tile/neutral{
-	dir = 8
+/obj/structure/cable{
+	icon_state = "1-2"
 	},
-/obj/effect/turf_decal/tile/neutral{
-	dir = 4
+/obj/machinery/atmospherics/pipe/simple/supply/hidden/layer1{
+	dir = 6
 	},
-/obj/effect/turf_decal/tile/neutral{
-	dir = 1
-	},
-/obj/effect/turf_decal/tile/neutral,
-/obj/machinery/atmospherics/pipe/manifold4w/scrubbers/hidden/layer3,
-/obj/machinery/atmospherics/pipe/manifold4w/supply/hidden/layer1,
-/turf/open/floor/plasteel/dark,
-/area/space)
+/turf/open/floor/plating,
+/area/science/xenobiology{
+	name = "Science Outpost"
+	})
 "JZ" = (
 /obj/structure/cable{
 	icon_state = "1-4"
@@ -17865,7 +18286,9 @@
 	dir = 4
 	},
 /turf/open/floor/plating,
-/area/space)
+/area/science/xenobiology{
+	name = "Science Outpost"
+	})
 "Ki" = (
 /obj/machinery/atmospherics/pipe/simple/supply/hidden/layer1{
 	dir = 4
@@ -17944,7 +18367,6 @@
 /turf/open/floor/plasteel/checker,
 /area/engine/atmos)
 "Ko" = (
-/obj/item/twohanded/required/kirbyplants/random,
 /turf/open/floor/carpet,
 /area/crew_quarters/heads/captain/private)
 "Kp" = (
@@ -18101,6 +18523,13 @@
 /obj/item/electronics/airlock,
 /turf/open/floor/plasteel,
 /area/storage/tools)
+"KH" = (
+/obj/machinery/atmospherics/pipe/simple/general/visible,
+/obj/effect/spawner/structure/window/reinforced,
+/turf/open/floor/plating,
+/area/science/xenobiology{
+	name = "Science Outpost"
+	})
 "KI" = (
 /obj/machinery/atmospherics/pipe/simple/supply/hidden/layer1{
 	dir = 4
@@ -18195,35 +18624,6 @@
 /obj/machinery/telecomms/bus/preset_three,
 /turf/open/floor/circuit/green/telecomms/mainframe,
 /area/tcommsat/server)
-"KS" = (
-/obj/structure/cable{
-	icon_state = "4-8"
-	},
-/obj/structure/cable{
-	icon_state = "1-4"
-	},
-/obj/structure/cable{
-	icon_state = "2-4"
-	},
-/obj/structure/lattice/catwalk,
-/turf/open/space,
-/area/space)
-"KT" = (
-/obj/effect/turf_decal/stripes/corner{
-	dir = 8
-	},
-/obj/effect/turf_decal/tile/neutral,
-/obj/effect/turf_decal/tile/neutral{
-	dir = 1
-	},
-/obj/effect/turf_decal/tile/neutral{
-	dir = 4
-	},
-/obj/effect/turf_decal/tile/neutral{
-	dir = 8
-	},
-/turf/open/floor/plasteel/dark,
-/area/space)
 "KU" = (
 /obj/machinery/conveyor{
 	dir = 5;
@@ -18301,18 +18701,17 @@
 /turf/open/floor/plating,
 /area/teleporter)
 "Lc" = (
-/obj/structure/window/reinforced,
-/obj/machinery/disposal/bin,
-/obj/structure/disposalpipe/trunk,
-/obj/effect/turf_decal/stripes{
-	dir = 5
+/obj/machinery/power/smes/engineering,
+/obj/structure/cable{
+	icon_state = "0-2"
 	},
-/obj/machinery/door/poddoor/preopen{
-	id = "xeno7";
-	name = "Creature Cell #7"
+/obj/structure/cable{
+	icon_state = "1-2"
 	},
-/turf/open/floor/plasteel/dark,
-/area/space)
+/turf/open/floor/plating,
+/area/science/xenobiology{
+	name = "Science Outpost"
+	})
 "Ld" = (
 /obj/effect/turf_decal/tile/blue,
 /obj/effect/turf_decal/tile/blue{
@@ -18420,18 +18819,27 @@
 /turf/open/floor/plasteel/dark,
 /area/ai_monitored/nuke_storage)
 "Lk" = (
-/obj/structure/window/reinforced,
-/obj/machinery/disposal/bin,
-/obj/structure/disposalpipe/trunk,
-/obj/effect/turf_decal/stripes{
-	dir = 5
+/obj/effect/turf_decal/tile/neutral,
+/obj/effect/turf_decal/tile/neutral{
+	dir = 8
 	},
-/obj/machinery/door/poddoor/preopen{
-	id = "xeno1";
-	name = "Creature Cell #1"
+/obj/effect/turf_decal/tile/neutral{
+	dir = 1
+	},
+/obj/effect/turf_decal/tile/neutral{
+	dir = 4
+	},
+/obj/machinery/button/door{
+	id = "xeno4";
+	name = "Containment Control";
+	pixel_x = 24;
+	pixel_y = -24;
+	req_access_txt = "55"
 	},
 /turf/open/floor/plasteel/dark,
-/area/space)
+/area/science/xenobiology{
+	name = "Science Outpost"
+	})
 "Ll" = (
 /obj/structure/extinguisher_cabinet{
 	pixel_x = -26
@@ -18576,15 +18984,13 @@
 /turf/open/floor/plating,
 /area/gateway)
 "Lz" = (
-/obj/machinery/rnd/bepis,
-/obj/machinery/atmospherics/pipe/simple/supply/hidden/layer1{
-	dir = 10
-	},
-/obj/machinery/atmospherics/pipe/simple/scrubbers/hidden/layer3{
-	dir = 6
+/obj/machinery/light{
+	dir = 8
 	},
 /turf/open/floor/engine,
-/area/space)
+/area/science/xenobiology{
+	name = "Science Outpost"
+	})
 "LA" = (
 /obj/machinery/teleport/station,
 /obj/machinery/light{
@@ -18826,12 +19232,13 @@
 /turf/open/floor/plasteel,
 /area/crew_quarters/dorms)
 "Md" = (
-/obj/machinery/power/tracker,
-/obj/structure/cable{
-	icon_state = "0-2"
+/obj/machinery/atmospherics/components/unary/vent_scrubber/on/layer3{
+	dir = 1
 	},
-/turf/open/floor/plasteel/airless/solarpanel,
-/area/space)
+/turf/open/floor/engine,
+/area/science/xenobiology{
+	name = "Science Outpost"
+	})
 "Me" = (
 /obj/machinery/atmospherics/pipe/simple/scrubbers/hidden/layer3{
 	dir = 5
@@ -18942,23 +19349,6 @@
 	},
 /turf/open/floor/plasteel/white,
 /area/science/lab)
-"Mu" = (
-/obj/effect/turf_decal/tile/neutral,
-/obj/effect/turf_decal/tile/neutral{
-	dir = 8
-	},
-/obj/effect/turf_decal/tile/neutral{
-	dir = 1
-	},
-/obj/effect/turf_decal/tile/neutral{
-	dir = 4
-	},
-/obj/machinery/atmospherics/pipe/manifold/scrubbers/hidden/layer3{
-	dir = 1
-	},
-/obj/machinery/atmospherics/pipe/manifold/supply/hidden/layer1,
-/turf/open/floor/plasteel/dark,
-/area/space)
 "Mv" = (
 /obj/machinery/shieldwallgen,
 /obj/effect/turf_decal/tile/neutral{
@@ -19245,42 +19635,11 @@
 /obj/structure/disposalpipe/segment{
 	dir = 10
 	},
+/obj/machinery/vending/coffee,
 /turf/open/floor/plasteel,
 /area/hallway/primary/aft{
 	name = "Docking Bay"
 	})
-"MZ" = (
-/obj/structure/table/glass,
-/obj/item/storage/box/beakers{
-	pixel_x = 2;
-	pixel_y = 7
-	},
-/obj/item/storage/box/syringes{
-	pixel_y = 5
-	},
-/obj/item/storage/box/monkeycubes{
-	pixel_x = 2;
-	pixel_y = -2
-	},
-/obj/item/storage/box/monkeycubes,
-/obj/effect/turf_decal/tile/neutral,
-/obj/effect/turf_decal/tile/neutral{
-	dir = 1
-	},
-/obj/effect/turf_decal/tile/neutral{
-	dir = 4
-	},
-/obj/effect/turf_decal/tile/neutral{
-	dir = 8
-	},
-/obj/effect/turf_decal/stripes{
-	dir = 8
-	},
-/obj/item/extinguisher{
-	pixel_x = 10
-	},
-/turf/open/floor/plasteel/dark,
-/area/space)
 "Na" = (
 /obj/effect/turf_decal/tile/purple,
 /obj/effect/turf_decal/tile/purple{
@@ -19320,16 +19679,12 @@
 /turf/open/floor/carpet,
 /area/crew_quarters/dorms)
 "Ne" = (
-/obj/machinery/door/window/brigdoor/southright{
-	name = "Creature Pen";
-	req_access_txt = "47"
-	},
-/obj/machinery/door/poddoor/preopen{
-	id = "xeno7";
-	name = "Creature Cell #7"
-	},
-/turf/open/floor/plasteel/dark,
-/area/space)
+/obj/machinery/atmospherics/pipe/simple/scrubbers/hidden/layer3,
+/obj/machinery/atmospherics/pipe/simple/supply/hidden/layer1,
+/turf/open/floor/engine,
+/area/science/xenobiology{
+	name = "Science Outpost"
+	})
 "Ng" = (
 /obj/structure/table/glass,
 /obj/item/folder{
@@ -19729,11 +20084,21 @@
 /turf/open/floor/plasteel,
 /area/hallway/primary/fore)
 "NV" = (
-/obj/machinery/atmospherics/components/unary/vent_scrubber/on/layer3{
-	dir = 1
+/obj/structure/table/reinforced,
+/obj/item/integrated_electronics/analyzer{
+	pixel_x = 10
 	},
-/turf/open/floor/engine,
-/area/space)
+/obj/item/integrated_electronics/debugger,
+/obj/item/integrated_electronics/detailer{
+	pixel_x = -9
+	},
+/obj/effect/turf_decal/stripes{
+	dir = 8
+	},
+/turf/open/floor/plasteel/dark,
+/area/science/xenobiology{
+	name = "Science Outpost"
+	})
 "NW" = (
 /obj/structure/table,
 /obj/item/wrench,
@@ -19767,15 +20132,6 @@
 /obj/structure/fans/tiny,
 /turf/open/floor/plasteel/dark,
 /area/security/brig)
-"Oa" = (
-/obj/effect/turf_decal/tile/neutral,
-/obj/effect/turf_decal/tile/neutral{
-	dir = 8
-	},
-/obj/machinery/atmospherics/pipe/simple/scrubbers/hidden/layer3,
-/obj/machinery/atmospherics/pipe/simple/supply/hidden/layer1,
-/turf/open/floor/plasteel/dark,
-/area/space)
 "Oc" = (
 /obj/machinery/hydroponics/constructable,
 /obj/effect/turf_decal/tile/green{
@@ -19943,27 +20299,38 @@
 /turf/open/floor/plasteel/dark,
 /area/ai_monitored/storage/eva)
 "Ou" = (
-/mob/living/simple_animal/slime,
 /turf/open/floor/plasteel/dark,
-/area/space)
+/area/science/xenobiology{
+	name = "Science Outpost"
+	})
 "Ov" = (
+/obj/structure/cable{
+	icon_state = "1-2"
+	},
+/obj/structure/fans/tiny,
+/obj/machinery/door/airlock/external/glass{
+	name = "Science Outpost Solars Access";
+	req_access_txt = "47"
+	},
+/turf/open/floor/plating,
+/area/science/xenobiology{
+	name = "Science Outpost"
+	})
+"Ow" = (
+/obj/structure/window/reinforced,
+/obj/machinery/disposal/bin,
+/obj/structure/disposalpipe/trunk,
 /obj/effect/turf_decal/stripes{
-	dir = 1
+	dir = 5
 	},
-/obj/effect/turf_decal/tile/neutral,
-/obj/effect/turf_decal/tile/neutral{
-	dir = 1
+/obj/machinery/door/poddoor/preopen{
+	id = "xeno6";
+	name = "Creature Cell #6"
 	},
-/obj/effect/turf_decal/tile/neutral{
-	dir = 4
-	},
-/obj/effect/turf_decal/tile/neutral{
-	dir = 8
-	},
-/obj/machinery/atmospherics/pipe/simple/scrubbers/hidden/layer3,
-/obj/machinery/atmospherics/pipe/simple/supply/hidden/layer1,
 /turf/open/floor/plasteel/dark,
-/area/space)
+/area/science/xenobiology{
+	name = "Science Outpost"
+	})
 "Ox" = (
 /obj/effect/turf_decal/tile/blue,
 /obj/effect/turf_decal/tile/blue{
@@ -20004,12 +20371,21 @@
 /turf/open/floor/engine/plasma,
 /area/engine/atmos)
 "OB" = (
+/obj/effect/turf_decal/tile/neutral,
+/obj/effect/turf_decal/tile/neutral{
+	dir = 1
+	},
+/obj/effect/turf_decal/tile/neutral{
+	dir = 4
+	},
 /obj/effect/turf_decal/tile/neutral{
 	dir = 8
 	},
-/obj/effect/turf_decal/tile/neutral,
+/obj/machinery/vending/coffee,
 /turf/open/floor/plasteel/dark,
-/area/space)
+/area/science/xenobiology{
+	name = "Science Outpost"
+	})
 "OC" = (
 /obj/machinery/blackbox_recorder,
 /turf/open/floor/circuit/telecomms/mainframe,
@@ -20144,12 +20520,19 @@
 /turf/open/floor/plasteel,
 /area/storage/primary)
 "OP" = (
-/obj/effect/turf_decal/tile/neutral,
+/obj/effect/turf_decal/tile/neutral{
+	dir = 1
+	},
 /obj/effect/turf_decal/tile/neutral{
 	dir = 8
 	},
+/obj/structure/chair/comfy/black{
+	dir = 4
+	},
 /turf/open/floor/plasteel/dark,
-/area/space)
+/area/science/xenobiology{
+	name = "Science Outpost"
+	})
 "OQ" = (
 /obj/structure/cable{
 	icon_state = "2-8"
@@ -20181,11 +20564,17 @@
 /turf/open/floor/plasteel,
 /area/hallway/secondary/exit)
 "OT" = (
-/obj/machinery/atmospherics/components/unary/vent_pump/on/layer1{
-	dir = 4
+/obj/effect/turf_decal/tile/neutral,
+/obj/effect/turf_decal/tile/neutral{
+	dir = 1
+	},
+/obj/effect/turf_decal/tile/neutral{
+	dir = 8
 	},
 /turf/open/floor/plasteel/dark,
-/area/space)
+/area/science/xenobiology{
+	name = "Science Outpost"
+	})
 "OU" = (
 /obj/effect/turf_decal/tile/neutral{
 	dir = 1
@@ -20241,25 +20630,10 @@
 /turf/open/space,
 /area/aisat)
 "OZ" = (
-/obj/machinery/monkey_recycler,
-/obj/effect/turf_decal/tile/neutral,
-/obj/effect/turf_decal/tile/neutral{
-	dir = 1
-	},
-/obj/effect/turf_decal/tile/neutral{
-	dir = 4
-	},
-/obj/effect/turf_decal/tile/neutral{
-	dir = 8
-	},
-/obj/effect/turf_decal/stripes{
-	dir = 8
-	},
-/obj/effect/turf_decal/stripes{
-	dir = 4
-	},
-/turf/open/floor/plasteel/dark,
-/area/space)
+/turf/closed/wall,
+/area/science/xenobiology{
+	name = "Science Outpost"
+	})
 "Pa" = (
 /obj/machinery/telecomms/server/presets/common,
 /turf/open/floor/circuit/telecomms/mainframe,
@@ -20300,6 +20674,43 @@
 "Pf" = (
 /turf/closed/wall,
 /area/hallway/secondary/entry)
+"Pg" = (
+/obj/structure/table/glass,
+/obj/item/storage/box/beakers{
+	pixel_x = 2;
+	pixel_y = 7
+	},
+/obj/item/storage/box/syringes{
+	pixel_y = 5
+	},
+/obj/item/storage/box/monkeycubes{
+	pixel_x = 2;
+	pixel_y = -2
+	},
+/obj/item/storage/box/monkeycubes,
+/obj/effect/turf_decal/tile/neutral,
+/obj/effect/turf_decal/tile/neutral{
+	dir = 1
+	},
+/obj/effect/turf_decal/tile/neutral{
+	dir = 4
+	},
+/obj/effect/turf_decal/tile/neutral{
+	dir = 8
+	},
+/obj/effect/turf_decal/stripes{
+	dir = 8
+	},
+/obj/item/extinguisher{
+	pixel_x = 10
+	},
+/obj/machinery/light{
+	dir = 1
+	},
+/turf/open/floor/plasteel/dark,
+/area/science/xenobiology{
+	name = "Science Outpost"
+	})
 "Ph" = (
 /obj/machinery/telecomms/server/presets/engineering,
 /turf/open/floor/circuit/telecomms/mainframe,
@@ -20308,6 +20719,14 @@
 /obj/machinery/telecomms/hub/preset,
 /turf/open/floor/circuit/green/telecomms/mainframe,
 /area/tcommsat/server)
+"Pj" = (
+/obj/machinery/atmospherics/components/unary/vent_pump/on/layer1{
+	dir = 1
+	},
+/turf/open/floor/plasteel/dark,
+/area/science/xenobiology{
+	name = "Science Outpost"
+	})
 "Pk" = (
 /obj/machinery/atmospherics/components/unary/vent_pump/on/layer1{
 	dir = 1
@@ -20338,11 +20757,20 @@
 /turf/open/floor/plating,
 /area/maintenance/fore)
 "Pp" = (
-/obj/structure/cable{
-	icon_state = "2-4"
+/obj/structure/table/reinforced,
+/obj/item/integrated_circuit_printer{
+	pixel_x = -5
 	},
-/turf/open/floor/plating,
-/area/space)
+/obj/item/integrated_electronics/wirer{
+	pixel_x = 10
+	},
+/obj/effect/turf_decal/stripes{
+	dir = 8
+	},
+/turf/open/floor/plasteel/dark,
+/area/science/xenobiology{
+	name = "Science Outpost"
+	})
 "Pq" = (
 /obj/machinery/atmospherics/components/unary/vent_pump/siphon/atmos/nitrogen_output{
 	dir = 1
@@ -20450,12 +20878,16 @@
 /turf/open/floor/circuit/telecomms/mainframe,
 /area/tcommsat/server)
 "PA" = (
-/obj/machinery/nanite_chamber,
-/obj/effect/turf_decal/stripes{
-	dir = 4
+/obj/machinery/atmospherics/pipe/simple/supply/hidden/layer1{
+	dir = 9
 	},
-/turf/open/floor/plasteel/dark,
-/area/space)
+/obj/machinery/atmospherics/pipe/simple/scrubbers/hidden/layer3{
+	dir = 9
+	},
+/turf/open/floor/engine,
+/area/science/xenobiology{
+	name = "Science Outpost"
+	})
 "PC" = (
 /obj/effect/turf_decal/tile/purple,
 /obj/effect/turf_decal/tile/purple{
@@ -20537,16 +20969,13 @@
 /turf/open/floor/plasteel,
 /area/quartermaster/storage)
 "PK" = (
-/obj/structure/cable{
-	icon_state = "1-2"
+/obj/machinery/light{
+	dir = 4
 	},
-/obj/structure/fans/tiny,
-/obj/machinery/door/airlock/external/glass{
-	name = "Science Outpost Solars Access";
-	req_access_txt = "47"
-	},
-/turf/open/floor/plating,
-/area/space)
+/turf/open/floor/engine,
+/area/science/xenobiology{
+	name = "Science Outpost"
+	})
 "PL" = (
 /obj/item/radio/intercom{
 	dir = 8;
@@ -20564,11 +20993,6 @@
 /obj/structure/table/wood,
 /obj/machinery/recharger{
 	pixel_x = 5
-	},
-/obj/item/twohanded/required/kirbyplants{
-	icon_state = "plant-15";
-	pixel_x = -6;
-	pixel_y = 12
 	},
 /obj/structure/disposalpipe/segment,
 /turf/open/floor/wood{
@@ -20594,10 +21018,6 @@
 /obj/machinery/air_sensor/atmos/nitrogen_tank,
 /turf/open/floor/engine/n2,
 /area/engine/atmos)
-"PO" = (
-/obj/structure/lattice,
-/turf/open/space,
-/area/space)
 "PP" = (
 /obj/machinery/conveyor{
 	dir = 10;
@@ -20625,11 +21045,16 @@
 /turf/open/floor/plasteel/checker,
 /area/engine/atmos)
 "PR" = (
-/obj/structure/cable{
-	icon_state = "0-4"
+/obj/machinery/door/poddoor/preopen{
+	id = "telelab";
+	name = "Test Chamber blast door"
 	},
-/turf/open/floor/plating,
-/area/space)
+/obj/machinery/atmospherics/pipe/simple/scrubbers/hidden/layer3,
+/obj/machinery/atmospherics/pipe/simple/supply/hidden/layer1,
+/turf/open/floor/engine,
+/area/science/xenobiology{
+	name = "Science Outpost"
+	})
 "PS" = (
 /obj/machinery/atmospherics/components/unary/outlet_injector/atmos/nitrous_input{
 	dir = 8
@@ -20669,23 +21094,25 @@
 /obj/effect/turf_decal/tile/green,
 /turf/open/floor/plasteel,
 /area/crew_quarters/bar)
+"PV" = (
+/obj/effect/turf_decal/tile/neutral{
+	dir = 1
+	},
+/obj/effect/turf_decal/tile/neutral{
+	dir = 8
+	},
+/obj/machinery/atmospherics/pipe/manifold/scrubbers/hidden/layer3,
+/obj/machinery/atmospherics/pipe/manifold/supply/hidden/layer1,
+/turf/open/floor/plasteel/dark,
+/area/science/xenobiology{
+	name = "Science Outpost"
+	})
 "PY" = (
 /obj/machinery/camera{
 	c_tag = "Dorms - North"
 	},
 /turf/open/floor/plasteel,
 /area/crew_quarters/dorms)
-"Qa" = (
-/obj/machinery/door/window/brigdoor/southright{
-	name = "Creature Pen";
-	req_access_txt = "47"
-	},
-/obj/machinery/door/poddoor/preopen{
-	id = "xeno2";
-	name = "Creature Cell #2"
-	},
-/turf/open/floor/plasteel/dark,
-/area/space)
 "Qb" = (
 /obj/structure/chair/comfy/beige,
 /obj/machinery/light{
@@ -20775,9 +21202,20 @@
 /turf/open/floor/plasteel/freezer,
 /area/maintenance/central)
 "Qj" = (
-/obj/machinery/atmospherics/components/unary/vent_pump/on/layer1,
-/turf/open/floor/engine,
-/area/space)
+/obj/effect/spawner/structure/window/reinforced,
+/turf/open/floor/plating,
+/area/science/xenobiology{
+	name = "Science Outpost"
+	})
+"Qk" = (
+/obj/structure/extinguisher_cabinet{
+	pixel_y = 26
+	},
+/obj/machinery/vending/coffee,
+/turf/open/floor/plasteel,
+/area/hallway/primary/aft{
+	name = "Docking Bay"
+	})
 "Ql" = (
 /obj/machinery/atmospherics/pipe/simple/cyan/visible,
 /turf/open/floor/plating,
@@ -20876,14 +21314,23 @@
 /turf/open/floor/plasteel,
 /area/crew_quarters/dorms)
 "Qv" = (
-/obj/structure/cable{
-	icon_state = "1-2"
+/obj/effect/turf_decal/tile/neutral,
+/obj/effect/turf_decal/tile/neutral{
+	dir = 1
 	},
-/obj/machinery/atmospherics/pipe/simple/supply/hidden{
-	dir = 6
+/obj/effect/turf_decal/tile/neutral{
+	dir = 4
 	},
-/turf/open/floor/plating,
-/area/space)
+/obj/effect/turf_decal/tile/neutral{
+	dir = 8
+	},
+/obj/machinery/light{
+	dir = 8
+	},
+/turf/open/floor/plasteel/dark,
+/area/science/xenobiology{
+	name = "Science Outpost"
+	})
 "Qw" = (
 /obj/effect/turf_decal/tile/purple,
 /obj/effect/turf_decal/tile/purple{
@@ -21080,15 +21527,23 @@
 /turf/open/floor/plasteel,
 /area/quartermaster/storage)
 "QS" = (
-/obj/structure/cable{
-	icon_state = "2-8"
+/obj/effect/turf_decal/tile/neutral,
+/obj/effect/turf_decal/tile/neutral{
+	dir = 1
 	},
-/obj/structure/cable{
-	icon_state = "1-8"
+/obj/effect/turf_decal/tile/neutral{
+	dir = 4
 	},
-/obj/structure/lattice/catwalk,
-/turf/open/space,
-/area/space)
+/obj/effect/turf_decal/tile/neutral{
+	dir = 8
+	},
+/obj/machinery/atmospherics/components/unary/vent_pump/on/layer1{
+	dir = 4
+	},
+/turf/open/floor/plasteel/dark,
+/area/science/xenobiology{
+	name = "Science Outpost"
+	})
 "QT" = (
 /obj/machinery/air_sensor/atmos/air_tank,
 /turf/open/floor/engine/air,
@@ -21180,6 +21635,28 @@
 /obj/machinery/telecomms/broadcaster/preset_left,
 /turf/open/floor/circuit/telecomms/mainframe,
 /area/tcommsat/server)
+"Rf" = (
+/obj/machinery/monkey_recycler,
+/obj/effect/turf_decal/tile/neutral,
+/obj/effect/turf_decal/tile/neutral{
+	dir = 1
+	},
+/obj/effect/turf_decal/tile/neutral{
+	dir = 4
+	},
+/obj/effect/turf_decal/tile/neutral{
+	dir = 8
+	},
+/obj/effect/turf_decal/stripes{
+	dir = 8
+	},
+/obj/effect/turf_decal/stripes{
+	dir = 4
+	},
+/turf/open/floor/plasteel/dark,
+/area/science/xenobiology{
+	name = "Science Outpost"
+	})
 "Rg" = (
 /obj/structure/cable{
 	icon_state = "1-2"
@@ -21300,24 +21777,14 @@
 /turf/open/space/basic,
 /area/space)
 "Rr" = (
-/obj/effect/turf_decal/tile/neutral{
-	dir = 8
+/obj/structure/lattice/catwalk,
+/obj/structure/cable{
+	icon_state = "1-2"
 	},
-/obj/effect/turf_decal/tile/neutral{
-	dir = 4
-	},
-/obj/effect/turf_decal/tile/neutral{
-	dir = 1
-	},
-/obj/effect/turf_decal/tile/neutral,
-/obj/machinery/door/airlock/research/glass{
-	name = "Nanite Laboratory";
-	req_access_txt = "47"
-	},
-/obj/machinery/atmospherics/pipe/simple/scrubbers/hidden/layer3,
-/obj/machinery/atmospherics/pipe/simple/supply/hidden/layer1,
-/turf/open/floor/plasteel/dark,
-/area/space)
+/turf/open/space/basic,
+/area/science/xenobiology{
+	name = "Science Outpost"
+	})
 "Rs" = (
 /obj/structure/closet/secure_closet/freezer/fridge,
 /turf/open/floor/plasteel/cafeteria,
@@ -21369,13 +21836,6 @@
 /obj/effect/turf_decal/tile/neutral{
 	dir = 4
 	},
-/obj/machinery/button/door{
-	id = "xeno2";
-	name = "Containment Control";
-	pixel_x = 24;
-	pixel_y = -24;
-	req_access_txt = "55"
-	},
 /obj/machinery/atmospherics/pipe/simple/scrubbers/hidden/layer3{
 	dir = 4
 	},
@@ -21383,7 +21843,9 @@
 	dir = 4
 	},
 /turf/open/floor/plasteel/dark,
-/area/space)
+/area/science/xenobiology{
+	name = "Science Outpost"
+	})
 "Ry" = (
 /obj/structure/disposalpipe/junction/flip{
 	dir = 4
@@ -21693,9 +22155,26 @@
 /turf/open/floor/mech_bay_recharge_floor,
 /area/science/lab)
 "RY" = (
-/obj/structure/grille,
-/turf/open/space,
-/area/space)
+/obj/effect/turf_decal/tile/neutral,
+/obj/effect/turf_decal/tile/neutral{
+	dir = 1
+	},
+/obj/effect/turf_decal/tile/neutral{
+	dir = 4
+	},
+/obj/effect/turf_decal/tile/neutral{
+	dir = 8
+	},
+/obj/machinery/atmospherics/pipe/manifold/scrubbers/hidden/layer3{
+	dir = 8
+	},
+/obj/machinery/atmospherics/pipe/manifold/supply/hidden/layer1{
+	dir = 4
+	},
+/turf/open/floor/plasteel/dark,
+/area/science/xenobiology{
+	name = "Science Outpost"
+	})
 "RZ" = (
 /obj/machinery/atmospherics/pipe/simple/scrubbers/hidden/layer3,
 /obj/effect/turf_decal/tile/neutral,
@@ -21818,6 +22297,17 @@
 "Si" = (
 /turf/open/floor/grass,
 /area/security/prison)
+"Sj" = (
+/obj/machinery/atmospherics/pipe/simple/general/visible,
+/obj/machinery/door/airlock/research/glass{
+	name = "Xenobiology Kill Room";
+	req_access_txt = "47"
+	},
+/obj/structure/fans/tiny,
+/turf/open/floor/plasteel/dark,
+/area/science/xenobiology{
+	name = "Science Outpost"
+	})
 "Sl" = (
 /obj/machinery/power/terminal{
 	dir = 4
@@ -21956,6 +22446,24 @@
 	},
 /turf/open/floor/plasteel,
 /area/quartermaster/storage)
+"Sz" = (
+/obj/effect/turf_decal/tile/neutral,
+/obj/effect/turf_decal/tile/neutral{
+	dir = 1
+	},
+/obj/effect/turf_decal/tile/neutral{
+	dir = 4
+	},
+/obj/effect/turf_decal/tile/neutral{
+	dir = 8
+	},
+/obj/structure/chair/comfy/black{
+	dir = 8
+	},
+/turf/open/floor/plasteel/dark,
+/area/science/xenobiology{
+	name = "Science Outpost"
+	})
 "SA" = (
 /obj/machinery/light/small,
 /obj/machinery/camera{
@@ -22113,6 +22621,21 @@
 	},
 /turf/open/floor/plating,
 /area/quartermaster/storage)
+"SO" = (
+/obj/structure/window/reinforced,
+/obj/machinery/disposal/bin,
+/obj/structure/disposalpipe/trunk,
+/obj/effect/turf_decal/stripes{
+	dir = 5
+	},
+/obj/machinery/door/poddoor/preopen{
+	id = "xeno7";
+	name = "Creature Cell #7"
+	},
+/turf/open/floor/plasteel/dark,
+/area/science/xenobiology{
+	name = "Science Outpost"
+	})
 "SP" = (
 /obj/machinery/atmospherics/pipe/simple/scrubbers/hidden/layer3{
 	dir = 5
@@ -22215,13 +22738,23 @@
 /turf/open/floor/circuit/telecomms/mainframe,
 /area/tcommsat/server)
 "SY" = (
-/obj/machinery/atmospherics/components/unary/vent_pump/on{
-	external_pressure_bound = 140;
-	name = "server vent";
-	pressure_checks = 0
+/obj/effect/turf_decal/tile/neutral,
+/obj/effect/turf_decal/tile/neutral{
+	dir = 1
 	},
-/turf/open/floor/circuit/telecomms,
-/area/space)
+/obj/effect/turf_decal/tile/neutral{
+	dir = 4
+	},
+/obj/effect/turf_decal/tile/neutral{
+	dir = 8
+	},
+/obj/machinery/atmospherics/components/unary/vent_scrubber/on/layer3{
+	dir = 8
+	},
+/turf/open/floor/plasteel/dark,
+/area/science/xenobiology{
+	name = "Science Outpost"
+	})
 "Ta" = (
 /obj/machinery/atmospherics/pipe/simple/scrubbers/hidden/layer3,
 /obj/structure/cable{
@@ -22262,6 +22795,24 @@
 /obj/structure/cable,
 /turf/open/floor/plating,
 /area/crew_quarters/heads/hop)
+"Te" = (
+/obj/effect/turf_decal/tile/neutral,
+/obj/effect/turf_decal/tile/neutral{
+	dir = 1
+	},
+/obj/effect/turf_decal/tile/neutral{
+	dir = 4
+	},
+/obj/effect/turf_decal/tile/neutral{
+	dir = 8
+	},
+/obj/structure/chair/comfy/black{
+	dir = 4
+	},
+/turf/open/floor/plasteel/dark,
+/area/science/xenobiology{
+	name = "Science Outpost"
+	})
 "Tf" = (
 /obj/effect/turf_decal/tile/purple,
 /obj/structure/table,
@@ -22338,6 +22889,19 @@
 /obj/effect/turf_decal/tile/yellow,
 /turf/open/floor/plasteel,
 /area/engine/engineering)
+"Tl" = (
+/obj/machinery/door/window/brigdoor/southright{
+	name = "Creature Pen";
+	req_access_txt = "47"
+	},
+/obj/machinery/door/poddoor/preopen{
+	id = "xeno3";
+	name = "Creature Cell #3"
+	},
+/turf/open/floor/plasteel/dark,
+/area/science/xenobiology{
+	name = "Science Outpost"
+	})
 "Tm" = (
 /obj/structure/table,
 /obj/item/stack/cable_coil{
@@ -22539,12 +23103,16 @@
 /turf/open/floor/plasteel,
 /area/crew_quarters/bar)
 "TH" = (
-/obj/machinery/nanite_programmer,
-/obj/effect/turf_decal/stripes{
-	dir = 4
+/obj/structure/table,
+/obj/item/storage/firstaid/regular,
+/obj/item/storage/firstaid/regular{
+	pixel_x = -3;
+	pixel_y = -3
 	},
-/turf/open/floor/plasteel/dark,
-/area/space)
+/turf/open/floor/plating,
+/area/science/xenobiology{
+	name = "Science Outpost"
+	})
 "TI" = (
 /obj/machinery/camera{
 	c_tag = "Escape Pods";
@@ -22625,21 +23193,24 @@
 /turf/open/floor/plasteel/dark,
 /area/aisat)
 "TS" = (
-/obj/effect/turf_decal/tile/neutral,
 /obj/effect/turf_decal/tile/neutral{
-	dir = 1
+	dir = 8
 	},
 /obj/effect/turf_decal/tile/neutral{
 	dir = 4
 	},
 /obj/effect/turf_decal/tile/neutral{
-	dir = 8
+	dir = 1
 	},
-/obj/structure/chair/comfy/black{
-	dir = 8
+/obj/effect/turf_decal/tile/neutral,
+/obj/structure/sign/departments/science{
+	pixel_x = 32;
+	pixel_y = 32
 	},
 /turf/open/floor/plasteel/dark,
-/area/space)
+/area/science/xenobiology{
+	name = "Science Outpost"
+	})
 "TT" = (
 /obj/structure/disposalpipe/segment,
 /turf/open/floor/plasteel,
@@ -22701,6 +23272,22 @@
 	},
 /turf/open/floor/plasteel,
 /area/hallway/secondary/entry)
+"TZ" = (
+/obj/machinery/smartfridge/extract/preloaded,
+/obj/effect/turf_decal/tile/neutral,
+/obj/effect/turf_decal/tile/neutral{
+	dir = 1
+	},
+/obj/effect/turf_decal/tile/neutral{
+	dir = 4
+	},
+/obj/effect/turf_decal/tile/neutral{
+	dir = 8
+	},
+/turf/open/floor/plasteel/dark,
+/area/science/xenobiology{
+	name = "Science Outpost"
+	})
 "Ua" = (
 /obj/structure/cable{
 	icon_state = "1-8"
@@ -22783,21 +23370,31 @@
 /turf/open/floor/plating,
 /area/hallway/secondary/exit)
 "Uk" = (
-/obj/structure/table/reinforced,
-/obj/item/stack/sheet/metal/twenty{
-	amount = 25
+/obj/structure/cable{
+	icon_state = "1-2"
 	},
-/obj/effect/turf_decal/stripes{
-	dir = 10
-	},
-/turf/open/floor/plasteel/dark,
-/area/space)
+/turf/open/floor/plating,
+/area/science/xenobiology{
+	name = "Science Outpost"
+	})
 "Um" = (
 /obj/effect/turf_decal/tile/brown{
 	dir = 4
 	},
 /turf/open/floor/plasteel,
 /area/hallway/primary/central)
+"Un" = (
+/obj/structure/window/reinforced{
+	dir = 8
+	},
+/obj/structure/disposalpipe/trunk{
+	dir = 1
+	},
+/obj/structure/disposaloutlet,
+/turf/open/floor/plasteel/dark,
+/area/science/xenobiology{
+	name = "Science Outpost"
+	})
 "Up" = (
 /obj/effect/turf_decal/tile/purple,
 /obj/effect/turf_decal/tile/purple{
@@ -22861,6 +23458,12 @@
 /area/hallway/primary/aft{
 	name = "Docking Bay"
 	})
+"Uw" = (
+/obj/machinery/vending/snack/random,
+/turf/open/floor/plasteel,
+/area/hallway/primary/aft{
+	name = "Docking Bay"
+	})
 "Uy" = (
 /obj/structure/lattice/catwalk,
 /obj/structure/cable{
@@ -22905,16 +23508,6 @@
 /obj/structure/chair,
 /turf/open/floor/plasteel,
 /area/quartermaster/storage)
-"UC" = (
-/obj/effect/turf_decal/tile/neutral,
-/obj/effect/turf_decal/tile/neutral{
-	dir = 1
-	},
-/obj/effect/turf_decal/tile/neutral{
-	dir = 8
-	},
-/turf/open/floor/plasteel/dark,
-/area/space)
 "UD" = (
 /obj/effect/spawner/structure/window/reinforced,
 /obj/machinery/atmospherics/pipe/simple/supply/hidden/layer1,
@@ -22970,6 +23563,17 @@
 	dir = 1
 	},
 /area/crew_quarters/dorms)
+"UK" = (
+/obj/machinery/camera{
+	c_tag = "Science Outpost - Xenobiology East";
+	dir = 8;
+	name = "science camera";
+	network = list("ss13","rd")
+	},
+/turf/open/floor/plasteel/dark,
+/area/science/xenobiology{
+	name = "Science Outpost"
+	})
 "UL" = (
 /obj/effect/spawner/structure/window/reinforced,
 /obj/structure/sign/warning/vacuum,
@@ -23095,10 +23699,11 @@
 /turf/open/floor/plasteel/dark,
 /area/security/brig)
 "UY" = (
-/obj/structure/table,
-/obj/item/book/manual/wiki/telescience,
-/turf/open/floor/plasteel/dark,
-/area/space)
+/obj/structure/closet/toolcloset,
+/turf/open/floor/plating,
+/area/science/xenobiology{
+	name = "Science Outpost"
+	})
 "UZ" = (
 /obj/effect/turf_decal/tile/red,
 /obj/effect/turf_decal/tile/red{
@@ -23120,12 +23725,15 @@
 /turf/open/floor/engine,
 /area/engine/engineering)
 "Vb" = (
-/obj/structure/lattice/catwalk,
-/obj/structure/cable{
-	icon_state = "1-2"
+/obj/structure/table,
+/obj/item/book/manual/wiki/experimentor,
+/obj/machinery/atmospherics/components/unary/vent_scrubber/on/layer3{
+	dir = 4
 	},
-/turf/open/space/basic,
-/area/space)
+/turf/open/floor/plasteel/dark,
+/area/science/xenobiology{
+	name = "Science Outpost"
+	})
 "Vc" = (
 /obj/docking_port/stationary{
 	dheight = 1;
@@ -23339,16 +23947,6 @@
 	},
 /turf/open/floor/plasteel,
 /area/hallway/secondary/entry)
-"Vv" = (
-/obj/effect/turf_decal/tile/neutral{
-	dir = 8
-	},
-/obj/effect/turf_decal/tile/neutral{
-	dir = 1
-	},
-/obj/effect/turf_decal/tile/neutral,
-/turf/open/floor/plasteel/dark,
-/area/space)
 "Vw" = (
 /obj/machinery/computer/communications{
 	dir = 1
@@ -23362,6 +23960,59 @@
 	},
 /turf/open/floor/carpet,
 /area/crew_quarters/heads/captain/private)
+"Vx" = (
+/obj/effect/turf_decal/tile/neutral,
+/obj/effect/turf_decal/tile/neutral{
+	dir = 8
+	},
+/obj/effect/turf_decal/tile/neutral{
+	dir = 1
+	},
+/obj/effect/turf_decal/tile/neutral{
+	dir = 4
+	},
+/obj/machinery/button/door{
+	id = "xeno2";
+	name = "Containment Control";
+	pixel_x = 24;
+	pixel_y = -24;
+	req_access_txt = "55"
+	},
+/obj/machinery/atmospherics/pipe/simple/scrubbers/hidden/layer3{
+	dir = 4
+	},
+/obj/machinery/atmospherics/pipe/simple/supply/hidden/layer1{
+	dir = 4
+	},
+/turf/open/floor/plasteel/dark,
+/area/science/xenobiology{
+	name = "Science Outpost"
+	})
+"Vy" = (
+/obj/effect/turf_decal/tile/neutral{
+	dir = 8
+	},
+/obj/effect/turf_decal/tile/neutral{
+	dir = 4
+	},
+/obj/effect/turf_decal/tile/neutral{
+	dir = 1
+	},
+/obj/effect/turf_decal/tile/neutral,
+/obj/machinery/atmospherics/pipe/simple/scrubbers/hidden/layer3{
+	dir = 4
+	},
+/obj/machinery/atmospherics/pipe/simple/supply/hidden/layer1{
+	dir = 4
+	},
+/obj/structure/sign/departments/science{
+	pixel_x = -32;
+	pixel_y = -32
+	},
+/turf/open/floor/plasteel/dark,
+/area/science/xenobiology{
+	name = "Science Outpost"
+	})
 "Vz" = (
 /obj/machinery/atmospherics/pipe/simple/scrubbers/hidden/layer3{
 	dir = 4
@@ -23442,18 +24093,14 @@
 /turf/open/floor/carpet,
 /area/crew_quarters/heads/captain/private)
 "VH" = (
-/obj/structure/lattice/catwalk,
-/obj/structure/cable{
-	icon_state = "1-2"
+/obj/machinery/computer/rdconsole/experiment,
+/obj/machinery/atmospherics/pipe/simple/scrubbers/hidden/layer3{
+	dir = 10
 	},
-/obj/structure/cable{
-	icon_state = "2-4"
-	},
-/obj/structure/cable{
-	icon_state = "2-8"
-	},
-/turf/open/space/basic,
-/area/space)
+/turf/open/floor/plasteel/dark,
+/area/science/xenobiology{
+	name = "Science Outpost"
+	})
 "VJ" = (
 /obj/structure/cable{
 	icon_state = "1-4"
@@ -23574,12 +24221,20 @@
 /turf/open/floor/plasteel/dark,
 /area/security/brig)
 "VX" = (
-/obj/machinery/power/smes/engineering,
-/obj/structure/cable{
-	icon_state = "0-2"
+/obj/machinery/button/door{
+	id = "telelab";
+	name = "Test Chamber Blast Doors";
+	pixel_x = 25;
+	req_access_txt = "47";
+	pixel_y = 25
 	},
-/turf/open/floor/plating,
-/area/space)
+/obj/effect/turf_decal/tile/neutral,
+/obj/machinery/atmospherics/pipe/simple/scrubbers/hidden/layer3,
+/obj/machinery/atmospherics/pipe/simple/supply/hidden/layer1,
+/turf/open/floor/plasteel/dark,
+/area/science/xenobiology{
+	name = "Science Outpost"
+	})
 "VY" = (
 /turf/closed/wall/r_wall,
 /area/maintenance/central)
@@ -23644,15 +24299,22 @@
 /turf/open/floor/plating,
 /area/security/brig)
 "Wg" = (
-/obj/structure/cable{
-	icon_state = "0-2"
+/obj/machinery/airalarm{
+	dir = 4;
+	pixel_x = -23
 	},
-/obj/machinery/power/solar{
-	id = "auxsolareast";
-	name = "Port Auxiliary Solar Array"
+/obj/structure/table,
+/obj/item/storage/toolbox/artistic{
+	icon_state = "yellow";
+	item_state = "toolbox_yellow";
+	name = "Cable Toolbox";
+	pixel_y = 6
 	},
-/turf/open/floor/plasteel/airless/solarpanel,
-/area/space)
+/obj/item/storage/toolbox/emergency,
+/turf/open/floor/plating,
+/area/science/xenobiology{
+	name = "Science Outpost"
+	})
 "Wh" = (
 /obj/effect/landmark/start/cargo_technician,
 /obj/effect/turf_decal/tile/brown,
@@ -23895,12 +24557,18 @@
 /turf/open/floor/plasteel/checker,
 /area/engine/atmos)
 "WI" = (
-/obj/structure/disposalpipe/trunk{
-	dir = 1
+/obj/machinery/door/window/brigdoor/southright{
+	name = "Creature Pen";
+	req_access_txt = "47"
 	},
-/obj/structure/disposaloutlet,
+/obj/machinery/door/poddoor/preopen{
+	id = "xeno4";
+	name = "Creature Cell #4"
+	},
 /turf/open/floor/plasteel/dark,
-/area/space)
+/area/science/xenobiology{
+	name = "Science Outpost"
+	})
 "WJ" = (
 /obj/structure/lattice,
 /obj/structure/grille,
@@ -23930,6 +24598,7 @@
 	c_tag = "Dockng Bay - South East";
 	dir = 8
 	},
+/obj/machinery/vending/snack/random,
 /turf/open/floor/plasteel,
 /area/hallway/primary/aft{
 	name = "Docking Bay"
@@ -24079,6 +24748,27 @@
 	},
 /turf/open/floor/plasteel,
 /area/engine/engineering)
+"WZ" = (
+/obj/effect/turf_decal/tile/neutral{
+	dir = 8
+	},
+/obj/effect/turf_decal/tile/neutral{
+	dir = 4
+	},
+/obj/effect/turf_decal/tile/neutral{
+	dir = 1
+	},
+/obj/effect/turf_decal/tile/neutral,
+/obj/machinery/atmospherics/pipe/simple/scrubbers/hidden/layer3{
+	dir = 4
+	},
+/obj/machinery/atmospherics/pipe/simple/supply/hidden/layer1{
+	dir = 4
+	},
+/turf/open/floor/plasteel/dark,
+/area/science/xenobiology{
+	name = "Science Outpost"
+	})
 "Xb" = (
 /obj/structure/window/reinforced{
 	dir = 1;
@@ -24272,16 +24962,6 @@
 /obj/effect/turf_decal/tile/brown,
 /turf/open/floor/plasteel,
 /area/quartermaster/storage)
-"Xz" = (
-/obj/structure/cable{
-	icon_state = "1-4"
-	},
-/obj/structure/cable{
-	icon_state = "2-4"
-	},
-/obj/structure/lattice/catwalk,
-/turf/open/space,
-/area/space)
 "XA" = (
 /obj/effect/turf_decal/bot,
 /turf/open/floor/plasteel,
@@ -24388,13 +25068,34 @@
 	},
 /turf/open/floor/engine/co2,
 /area/engine/atmos)
-"XL" = (
-/obj/machinery/nanite_program_hub,
-/obj/effect/turf_decal/stripes{
-	dir = 10
+"XK" = (
+/obj/machinery/door/window/brigdoor/southright{
+	name = "Creature Pen";
+	req_access_txt = "47"
+	},
+/obj/machinery/door/poddoor/preopen{
+	id = "xeno7";
+	name = "Creature Cell #7"
 	},
 /turf/open/floor/plasteel/dark,
-/area/space)
+/area/science/xenobiology{
+	name = "Science Outpost"
+	})
+"XL" = (
+/obj/structure/cable{
+	icon_state = "4-8"
+	},
+/obj/structure/cable{
+	icon_state = "2-8"
+	},
+/obj/structure/cable{
+	icon_state = "1-8"
+	},
+/obj/structure/lattice/catwalk,
+/turf/open/space,
+/area/science/xenobiology{
+	name = "Science Outpost"
+	})
 "XM" = (
 /obj/machinery/atmospherics/components/unary/vent_pump/on/layer1{
 	dir = 1
@@ -24408,19 +25109,10 @@
 /turf/open/floor/plasteel/dark,
 /area/security/brig)
 "XP" = (
-/obj/effect/turf_decal/tile/neutral,
-/obj/effect/turf_decal/tile/neutral{
-	dir = 1
-	},
-/obj/effect/turf_decal/tile/neutral{
-	dir = 4
-	},
-/obj/effect/turf_decal/tile/neutral{
-	dir = 8
-	},
-/obj/machinery/vending/cola/red,
-/turf/open/floor/plasteel/dark,
-/area/space)
+/turf/open/floor/engine,
+/area/science/xenobiology{
+	name = "Science Outpost"
+	})
 "XQ" = (
 /obj/structure/cable{
 	icon_state = "1-2"
@@ -24522,18 +25214,14 @@
 /turf/open/floor/plasteel/white,
 /area/medical/medbay/zone3)
 "XX" = (
-/obj/structure/table/reinforced,
-/obj/item/integrated_circuit_printer{
-	pixel_x = -5
+/obj/machinery/atmospherics/pipe/bluespace/layer1{
+	dir = 8;
+	on = 1
 	},
-/obj/item/integrated_electronics/wirer{
-	pixel_x = 10
-	},
-/obj/effect/turf_decal/stripes{
-	dir = 8
-	},
-/turf/open/floor/plasteel/dark,
-/area/space)
+/turf/open/floor/plating,
+/area/science/xenobiology{
+	name = "Science Outpost"
+	})
 "XY" = (
 /obj/effect/turf_decal/tile/yellow{
 	dir = 4
@@ -24565,12 +25253,13 @@
 /turf/open/floor/plasteel/dark,
 /area/aisat)
 "Ya" = (
-/obj/machinery/atmospherics/components/unary/vent_pump/siphon/on{
-	external_pressure_bound = 120;
-	name = "server vent"
+/obj/machinery/atmospherics/components/unary/vent_pump/on/layer1{
+	dir = 4
 	},
-/turf/open/floor/circuit/telecomms,
-/area/space)
+/turf/open/floor/plasteel/dark,
+/area/science/xenobiology{
+	name = "Science Outpost"
+	})
 "Yb" = (
 /obj/structure/chair/stool,
 /obj/machinery/atmospherics/pipe/simple/scrubbers/hidden/layer3{
@@ -24937,25 +25626,19 @@
 /turf/open/floor/plasteel/dark,
 /area/aisat)
 "YU" = (
-/obj/effect/turf_decal/tile/neutral,
-/obj/effect/turf_decal/tile/neutral{
-	dir = 8
-	},
-/obj/effect/turf_decal/tile/neutral{
+/obj/structure/chair/comfy/black{
 	dir = 1
 	},
-/obj/effect/turf_decal/tile/neutral{
+/obj/machinery/atmospherics/pipe/simple/scrubbers/hidden/layer3{
+	dir = 5
+	},
+/obj/machinery/atmospherics/pipe/simple/supply/hidden/layer1{
 	dir = 4
 	},
-/obj/machinery/button/door{
-	id = "xeno6";
-	name = "Containment Control";
-	pixel_x = 24;
-	pixel_y = -24;
-	req_access_txt = "55"
-	},
 /turf/open/floor/plasteel/dark,
-/area/space)
+/area/science/xenobiology{
+	name = "Science Outpost"
+	})
 "YV" = (
 /obj/effect/turf_decal/stripes/line{
 	dir = 4
@@ -25026,18 +25709,6 @@
 	},
 /turf/open/floor/plasteel,
 /area/engine/engineering)
-"Zc" = (
-/obj/effect/turf_decal/tile/neutral{
-	dir = 1
-	},
-/obj/effect/turf_decal/tile/neutral{
-	dir = 8
-	},
-/obj/structure/chair/comfy/black{
-	dir = 4
-	},
-/turf/open/floor/plasteel/dark,
-/area/space)
 "Ze" = (
 /obj/machinery/door/airlock/external{
 	name = "External Docking Port"
@@ -25147,13 +25818,14 @@
 /obj/effect/turf_decal/tile/neutral{
 	dir = 4
 	},
-/obj/machinery/atmospherics/components/unary/vent_scrubber/on/layer3{
-	dir = 1
-	},
 /turf/open/floor/plasteel/dark,
-/area/space)
+/area/science/xenobiology{
+	name = "Science Outpost"
+	})
 "Zr" = (
-/turf/open/floor/plating,
+/turf/open/floor/plasteel/elevatorshaft{
+	name = "landing site"
+	},
 /area/science/lab)
 "Zs" = (
 /obj/structure/cable/yellow{
@@ -25220,6 +25892,27 @@
 /obj/effect/turf_decal/tile/neutral,
 /turf/open/floor/plasteel,
 /area/hallway/secondary/entry)
+"Zy" = (
+/obj/effect/turf_decal/tile/neutral,
+/obj/effect/turf_decal/tile/neutral{
+	dir = 8
+	},
+/obj/effect/turf_decal/tile/neutral{
+	dir = 1
+	},
+/obj/effect/turf_decal/tile/neutral{
+	dir = 4
+	},
+/obj/machinery/atmospherics/pipe/simple/scrubbers/hidden/layer3{
+	dir = 9
+	},
+/obj/machinery/atmospherics/pipe/simple/supply/hidden/layer1{
+	dir = 9
+	},
+/turf/open/floor/plasteel/dark,
+/area/science/xenobiology{
+	name = "Science Outpost"
+	})
 "Zz" = (
 /obj/structure/cable{
 	icon_state = "1-2"
@@ -25237,11 +25930,16 @@
 /turf/open/floor/plasteel/dark,
 /area/gateway)
 "ZB" = (
-/obj/machinery/atmospherics/pipe/layer_manifold{
+/obj/machinery/atmospherics/pipe/simple/scrubbers/hidden/layer3{
 	dir = 4
 	},
-/turf/open/floor/plating,
-/area/space)
+/obj/machinery/atmospherics/pipe/simple/supply/hidden/layer1{
+	dir = 4
+	},
+/turf/open/floor/plasteel/dark,
+/area/science/xenobiology{
+	name = "Science Outpost"
+	})
 "ZC" = (
 /obj/effect/turf_decal/tile/blue,
 /obj/effect/turf_decal/tile/blue{
@@ -25314,24 +26012,21 @@
 /turf/open/floor/plasteel,
 /area/crew_quarters/bar)
 "ZJ" = (
-/obj/effect/turf_decal/tile/neutral{
-	dir = 8
-	},
-/obj/effect/turf_decal/tile/neutral{
-	dir = 1
-	},
-/turf/open/floor/plasteel/dark,
-/area/space)
+/turf/closed/wall/r_wall,
+/area/science/xenobiology{
+	name = "Science Outpost"
+	})
 "ZK" = (
-/obj/machinery/power/solar_control{
-	id = "sci_solars";
-	name = "Solars Controller"
+/obj/effect/turf_decal/tile/neutral,
+/obj/effect/turf_decal/tile/neutral{
+	dir = 4
 	},
-/obj/structure/cable{
-	icon_state = "0-4"
-	},
-/turf/open/floor/plating,
-/area/space)
+/obj/machinery/atmospherics/pipe/manifold/scrubbers/hidden/layer3,
+/obj/machinery/atmospherics/pipe/manifold/supply/hidden/layer1,
+/turf/open/floor/plasteel/dark,
+/area/science/xenobiology{
+	name = "Science Outpost"
+	})
 "ZL" = (
 /obj/machinery/atmospherics/pipe/simple/supply/hidden/layer1,
 /obj/machinery/atmospherics/pipe/simple/scrubbers/hidden/layer3,
@@ -25394,11 +26089,17 @@
 /turf/open/floor/plasteel/dark,
 /area/teleporter)
 "ZU" = (
-/obj/structure/chair/comfy/black{
-	dir = 4
+/obj/structure/cable{
+	icon_state = "0-2"
 	},
-/turf/open/floor/plasteel/dark,
-/area/space)
+/obj/machinery/power/solar{
+	id = "auxsolareast";
+	name = "Port Auxiliary Solar Array"
+	},
+/turf/open/floor/plasteel/airless/solarpanel,
+/area/science/xenobiology{
+	name = "Science Outpost"
+	})
 "ZV" = (
 /obj/machinery/atmospherics/pipe/simple/scrubbers/hidden/layer3,
 /obj/machinery/atmospherics/pipe/simple/supply/hidden/layer1,
@@ -53863,7 +54564,7 @@ vl
 vl
 vl
 YD
-FZ
+Gh
 FZ
 AX
 FZ
@@ -54413,7 +55114,7 @@ EA
 bV
 AV
 tm
-nS
+Qk
 dJ
 dJ
 dJ
@@ -54684,7 +55385,7 @@ Pm
 qa
 dJ
 dJ
-dJ
+aq
 FL
 uk
 uk
@@ -56740,7 +57441,7 @@ Em
 ec
 dJ
 dJ
-dJ
+Uw
 FL
 uk
 uk
@@ -56997,7 +57698,7 @@ Pm
 qa
 dJ
 dJ
-dJ
+aq
 FL
 uk
 uk
@@ -59053,7 +59754,7 @@ Me
 qa
 dJ
 dJ
-dJ
+aq
 FL
 uk
 uk
@@ -59310,7 +60011,7 @@ Ok
 ec
 dJ
 dJ
-dJ
+Uw
 FL
 uk
 uk
@@ -59481,15 +60182,15 @@ Ug
 Ug
 To
 Ug
-Ug
+eV
 II
 HM
 rP
 dP
 WN
 VY
-IP
-MQ
+kp
+lK
 VY
 ag
 aC
@@ -59738,14 +60439,14 @@ Ug
 Ug
 JV
 bx
-Ug
+gA
 II
 HM
 wF
 dP
 WN
 VY
-ny
+IP
 MQ
 Ja
 Yd
@@ -59995,7 +60696,7 @@ Ug
 Ug
 Ug
 Ug
-Ug
+gB
 II
 HM
 dP
@@ -60245,14 +60946,14 @@ iT
 gl
 mH
 yd
-Ug
-Ug
-Ug
-Ug
-Ug
-Ug
-Ug
-Ug
+aw
+aN
+bM
+bM
+bM
+bM
+bM
+hO
 II
 HM
 dP
@@ -60506,7 +61207,7 @@ II
 Zr
 Zr
 Zr
-Zr
+ce
 Zr
 Zr
 Zr
@@ -61366,7 +62067,7 @@ Me
 qa
 dJ
 dJ
-dJ
+aq
 FL
 uk
 uk
@@ -74417,7 +75118,7 @@ uk
 uk
 uk
 uk
-uk
+we
 uk
 uk
 uk
@@ -74672,11 +75373,11 @@ uk
 uk
 uk
 uk
-uk
-uk
-uk
-uk
-uk
+ZJ
+Qj
+Jf
+Qj
+ZJ
 uk
 uk
 uk
@@ -74929,11 +75630,11 @@ uk
 uk
 uk
 uk
-uk
-uk
-uk
-uk
-uk
+Qj
+cY
+Ou
+Ou
+Qj
 uk
 uk
 uk
@@ -75186,11 +75887,11 @@ uk
 uk
 uk
 uk
-uk
-uk
-uk
-uk
-uk
+Qj
+fI
+bR
+Pj
+Qj
 uk
 uk
 uk
@@ -75443,11 +76144,11 @@ uk
 uk
 uk
 uk
-uk
-uk
-uk
-uk
-uk
+Qj
+xF
+Jc
+Cn
+Qj
 uk
 uk
 uk
@@ -75690,24 +76391,24 @@ uk
 uk
 uk
 uk
-uk
-uk
-uk
-uk
-uk
-uk
-uk
-uk
-uk
-uk
-uk
-uk
-uk
-uk
-uk
-uk
-uk
-uk
+WN
+ZJ
+ZJ
+ZJ
+ZJ
+ZJ
+ZJ
+ZJ
+ZJ
+ZJ
+ZJ
+ZJ
+ve
+ZJ
+ZJ
+ZJ
+ZJ
+ZJ
 uk
 uk
 uk
@@ -75946,25 +76647,25 @@ uk
 uk
 uk
 uk
-uk
-uk
-uk
-uk
-uk
-uk
-uk
-uk
-uk
-uk
-uk
-uk
-uk
-uk
-uk
-uk
-uk
-uk
-uk
+WN
+WN
+ZJ
+XP
+XP
+Lz
+oY
+Vb
+Ya
+Qj
+eu
+km
+Ci
+Rx
+mT
+sm
+qp
+Ou
+ZJ
 uk
 uk
 uk
@@ -76202,26 +76903,26 @@ uk
 uk
 uk
 uk
+WN
+WN
 uk
-uk
-uk
-uk
-uk
-uk
-uk
-uk
-uk
-uk
-uk
-uk
-uk
-uk
-uk
-uk
-uk
-uk
-uk
-uk
+ZJ
+BL
+Hi
+Md
+oY
+VH
+YU
+Qj
+Ci
+Sz
+Ci
+JG
+iI
+Ou
+lD
+Ou
+ZJ
 uk
 uk
 uk
@@ -76458,27 +77159,27 @@ uk
 uk
 uk
 uk
-uk
-uk
-uk
-uk
-uk
-uk
-uk
-uk
-uk
-uk
-uk
-uk
-uk
-uk
-uk
-uk
-uk
-uk
-uk
-uk
-uk
+WN
+WN
+WN
+WN
+ZJ
+BW
+Hr
+XP
+oY
+Ou
+ZB
+Qj
+Rf
+TZ
+hn
+Rx
+OZ
+Ou
+Ou
+Ou
+ZJ
 uk
 uk
 uk
@@ -76714,28 +77415,28 @@ uk
 uk
 uk
 uk
+WN
+WN
 uk
-uk
-uk
-uk
-uk
-uk
-uk
-uk
-uk
-uk
-uk
-uk
-uk
-uk
-uk
-uk
-uk
-uk
-uk
-uk
-uk
-uk
+WN
+WN
+ZJ
+XP
+Iy
+Ne
+PR
+VX
+ZK
+Qj
+Ci
+Te
+Ci
+Rx
+pP
+Un
+Ht
+Ht
+ZJ
 uk
 uk
 uk
@@ -76969,30 +77670,30 @@ uk
 uk
 uk
 uk
-uk
-uk
-uk
-uk
-uk
-uk
-uk
-uk
-uk
-uk
-uk
-uk
-uk
-uk
-uk
-uk
-uk
-uk
-uk
-uk
-uk
-uk
-uk
-uk
+ZJ
+ZJ
+ZJ
+ZJ
+ZJ
+ZJ
+ZJ
+ZJ
+oY
+oY
+oY
+ZJ
+Qj
+vQ
+OZ
+Pg
+nD
+Ci
+Vx
+ff
+Ou
+lD
+wG
+ZJ
 uk
 uk
 uk
@@ -77226,30 +77927,30 @@ uk
 uk
 uk
 uk
-uk
-uk
-uk
-uk
-uk
-uk
-uk
-uk
-uk
-uk
-uk
-uk
-uk
-uk
-uk
-yC
-bI
+ZJ
+mR
+qJ
+st
+vn
+wC
+ya
+Qj
+BZ
+IF
+OB
+Qv
+Ci
+WZ
+OZ
+Qj
+Qj
 nN
-bI
-yC
-uk
-uk
-uk
-uk
+Zy
+OZ
+Ou
+Ou
+Ou
+ZJ
 uk
 uk
 uk
@@ -77483,30 +78184,30 @@ uk
 uk
 uk
 uk
-uk
-uk
-uk
-uk
-uk
-uk
-uk
-uk
-uk
-uk
-uk
-uk
-uk
-uk
-uk
-bI
-gz
-gz
-gz
-bI
-uk
-uk
-uk
-uk
+Qj
+Ou
+Ou
+sI
+Ou
+Ou
+Ou
+Qj
+Ci
+Ci
+Ci
+Ci
+Ci
+Vy
+lo
+Bn
+Ae
+Rx
+Zp
+pz
+Un
+Ht
+Ht
+ZJ
 uk
 uk
 uk
@@ -77740,30 +78441,30 @@ uk
 uk
 uk
 uk
-uk
-uk
-uk
-uk
-uk
-uk
-uk
-uk
-uk
-uk
-uk
-uk
-uk
-uk
-uk
-bI
+Qj
+Ou
+Ou
+sU
+Ou
+Ou
+zK
+Qj
+Cu
+Ci
+Ci
+QS
+Ci
+WZ
 lo
-eg
+lo
+lo
+Rx
 Eu
-bI
-uk
-uk
-uk
-uk
+Tl
+Ou
+Ou
+Ou
+ZJ
 uk
 uk
 uk
@@ -77997,30 +78698,30 @@ uk
 uk
 uk
 uk
-uk
-uk
-uk
-uk
-uk
-uk
-uk
-uk
-uk
-uk
-uk
-uk
-uk
-uk
-uk
-bI
+ZJ
+nc
+Ou
+sW
+wh
+wh
+Bj
+Bt
+Dz
+IT
+IT
+RY
+IT
+DV
+Da
+Da
 Da
 eA
 el
-bI
-uk
-uk
-uk
-uk
+OZ
+Ou
+Ou
+Ou
+ZJ
 uk
 uk
 uk
@@ -78254,30 +78955,30 @@ uk
 uk
 uk
 uk
-uk
-uk
-uk
-uk
-uk
-HD
-yC
-yC
-yC
-yC
-yC
-yC
-yC
-yC
-yC
-yC
-yC
+Qj
+Ou
+Ou
+tp
+Ou
+Ou
+Bl
+Qj
+Ea
+Ci
+Ci
+SY
+Ci
+WZ
+lo
+lo
+IJ
 Ab
-yC
-yC
-yC
-yC
-yC
-uk
+zu
+kW
+Un
+Ht
+Ht
+ZJ
 uk
 uk
 uk
@@ -78499,42 +79200,42 @@ uk
 uk
 uk
 uk
-uk
-uk
-uk
-uk
-uk
-uk
-uk
-uk
-uk
-uk
-uk
-uk
-uk
-uk
-uk
-uk
-HD
-HD
-yC
-yJ
-yJ
-yJ
-Ii
+Ik
+Ik
+Ik
+Ik
+Ik
+Ik
+Ik
+Ik
+Ik
+Ik
+WN
+WN
+Qj
+Ou
+Ou
+uU
+Ou
+Ou
+Ou
+Qj
+Aj
+Aj
+OP
 Aj
 OT
-bI
-fK
-gU
-JW
-mt
+WZ
+lo
+lo
+lo
+Rx
 Lk
 WI
-yq
-gz
-yC
-uk
+Ou
+Ou
+Ou
+ZJ
 uk
 uk
 uk
@@ -78756,42 +79457,42 @@ uk
 uk
 uk
 uk
+ij
+uk
+Bg
+uk
+Bg
+uk
+Bg
+uk
+Bg
 uk
 uk
-uk
-uk
-uk
-uk
-uk
-uk
-uk
-uk
-uk
-uk
-uk
-uk
-uk
-HD
-HD
-uk
-yC
+WN
+ZJ
+qs
+qK
+vb
+ws
+wC
+ya
 Qj
 kD
 NV
-Ii
+Pp
 rs
 ld
-bI
-JW
+WZ
+lo
 TS
-JW
-vH
-uS
-gz
+lo
+Rx
+Zp
+OZ
 Ou
-gz
-yC
-uk
+Ou
+Ou
+ZJ
 uk
 uk
 uk
@@ -79013,42 +79714,42 @@ uk
 uk
 uk
 uk
+ij
+uk
+ZU
+hW
+rL
+uk
+ZU
+hW
+rL
 uk
 uk
-uk
-uk
-uk
-uk
-uk
-uk
-uk
-uk
-uk
-uk
-uk
-uk
-HD
-HD
-HD
-HD
-yC
-yJ
+WN
+ZJ
+ZJ
+ZJ
+ZJ
+ZJ
+ZJ
+ZJ
+ZJ
 oY
-yJ
-Ii
-gz
-At
-bI
+oY
+oY
+ZJ
+Qj
+GP
 OZ
 ps
 uB
-mt
-eM
-gz
-gz
-gz
-yC
-uk
+Rx
+Zp
+lU
+Un
+Ht
+Ht
+ZJ
 uk
 uk
 uk
@@ -79270,42 +79971,42 @@ uk
 uk
 uk
 uk
+ij
+Bg
+ZU
+hX
+rL
+uk
+ZU
+hX
+rL
+uk
+uk
+WN
 uk
 uk
 uk
+WN
 uk
 uk
 uk
-uk
-uk
-uk
-uk
-uk
-uk
-uk
-HD
-HD
-uk
-HD
-HD
-yC
-yJ
-gt
+ZJ
+XP
 tr
 uY
 Dm
 xV
-bI
-JW
+PV
+Qj
 qT
-JW
-mt
+br
+Rx
 CJ
 HH
-uJ
-uJ
-yC
-uk
+Ou
+Ou
+Ou
+ZJ
 uk
 uk
 uk
@@ -79527,42 +80228,42 @@ uk
 uk
 uk
 uk
+ij
 uk
-uk
-uk
-uk
-uk
-uk
-uk
-uk
-uk
-uk
-uk
-yC
-yC
-yC
-yC
-yC
-yC
-yC
-yC
-Ii
-Ii
-Ii
-yC
-bI
+ZU
+hX
+rL
+Bg
+ZU
+hX
+rL
+Bg
+WN
+WN
+WN
+WN
+WN
+WN
+WN
+WN
+WN
+ZJ
+EC
+Jo
+PA
+oY
 CF
 eM
-MZ
+Qj
 hg
-JW
+br
 Rx
-Qa
-gz
+Zp
+OZ
 Ou
-gz
-yC
-uk
+Ou
+Ou
+ZJ
 uk
 uk
 uk
@@ -79784,42 +80485,42 @@ uk
 uk
 uk
 uk
+Bg
+Bg
+ZU
+hX
+rL
+uk
+ZU
+hX
+rL
+uk
+uk
+WN
 uk
 uk
 uk
+WN
 uk
 uk
 uk
-uk
-uk
-uk
-uk
-uk
-yC
-PA
-qJ
-TH
-IF
-kT
-Ci
-bI
-IB
+ZJ
 XP
 uv
-JW
-JW
+PK
+oY
 uO
-eM
-bI
-bI
+lZ
+Qj
+qG
 br
-EI
-eM
-gz
-gz
-gz
-yC
-uk
+Rx
+Zp
+Ow
+Un
+Ht
+Ht
+ZJ
 uk
 uk
 uk
@@ -80038,45 +80739,45 @@ uk
 uk
 uk
 uk
+tE
+tE
+tE
+Bg
+uk
+ZU
+hX
+rL
+uk
+ZU
+hX
+rL
+uk
+uk
+WN
 uk
 uk
 uk
+WN
 uk
 uk
 uk
-uk
-uk
-uk
-uk
-uk
-uk
-uk
-uk
-bI
-gz
-gz
-vb
-gz
-gz
-gz
-bI
-JW
-JW
-JW
-JW
-JW
-uO
-kC
-bq
+ZJ
+ZJ
+ZJ
+ZJ
+ZJ
+ZJ
+ZJ
+ZJ
 xD
 mt
-fO
+Rx
 is
-HH
-uJ
-uJ
-yC
-uk
+wX
+Ou
+Ou
+wG
+ZJ
 uk
 uk
 uk
@@ -80295,45 +80996,45 @@ uk
 uk
 uk
 uk
+tE
 uk
-uk
-uk
-uk
-uk
-uk
-uk
-uk
-uk
-uk
-uk
+WN
 uk
 uk
 uk
 bI
-gz
-gz
-ws
-gz
-gz
-Da
+uk
+uk
+uk
 bI
-KT
-JW
-JW
+uk
+uk
+uk
+WN
+uk
+uk
+uk
+WN
+uk
+uk
+uk
+ZJ
+Fb
+JF
 dq
-JW
-uO
-kC
-kC
-kC
-mt
-DK
-EX
-gz
-gz
-gz
-yC
-uk
+TH
+Wg
+Ce
+ZJ
+lo
+lo
+Rx
+Zp
+OZ
+Ou
+Ou
+Ou
+ZJ
 uk
 uk
 uk
@@ -80552,45 +81253,45 @@ uk
 uk
 uk
 uk
-uk
-uk
-uk
-uk
-uk
-uk
-uk
-uk
-uk
-uk
-uk
-uk
-uk
-uk
+tE
+WN
+cO
+Rr
+Rr
+Rr
+ik
+Rr
+Rr
+Rr
+ik
+Rr
+mJ
+Rr
 yC
-aS
-gz
-dL
-uA
-uA
-Oa
+Rr
+Rr
+Rr
+yC
+Rr
+Rr
 Rr
 Ov
 bs
-bs
+Kh
 xM
-bs
+Uk
 JY
 Aq
-Aq
-Aq
-tS
-fO
-eM
-gz
-gz
-gz
-yC
-uk
+pT
+Da
+Da
+Zy
+Zp
+SO
+Un
+Ht
+Ht
+ZJ
 uk
 uk
 uk
@@ -80809,45 +81510,45 @@ uk
 uk
 uk
 uk
+Ik
 uk
-uk
-uk
-uk
-uk
-uk
-uk
-uk
-uk
-uk
-uk
+Bg
 uk
 uk
 uk
 bI
-gz
-gz
-ik
-gz
-gz
-gA
+uk
+uk
+uk
 bI
-Ic
-JW
-JW
+uk
+uk
+uk
+bI
+uk
+uk
+uk
+bI
+uk
+uk
+uk
+ZJ
+Fj
+Lc
 qe
-JW
-uO
-kC
-kC
-jG
-Mu
+UY
+XX
+yU
+ZJ
+Qj
+Qj
 Zp
 CT
-HH
-uJ
-uJ
-yC
-uk
+XK
+Ou
+Ou
+Ou
+ZJ
 uk
 uk
 uk
@@ -81066,45 +81767,45 @@ uk
 uk
 uk
 uk
+Ik
+WJ
+Ik
+Bg
 uk
-uk
-zZ
-zZ
-zZ
-zZ
-zZ
-zZ
-zZ
-zZ
-zZ
-zZ
-HD
-HD
-bI
-gz
-gz
 ZU
-gz
-gz
-gz
-bI
-kw
-kw
-Zc
-kw
-UC
-uO
-kC
-kC
-kC
-mt
+XL
+rL
+uk
+ZU
+XL
+rL
+uk
+ZU
+XL
+rL
+uk
+ZU
+XL
+rL
+uk
+uk
+ZJ
+ZJ
+ZJ
+ZJ
+ZJ
+ZJ
+mL
+ZJ
+pQ
+Sj
 Hh
 Gi
-gz
-gz
-gz
-yC
-uk
+OZ
+Ou
+UK
+Ou
+ZJ
 uk
 uk
 uk
@@ -81325,43 +82026,43 @@ uk
 uk
 uk
 uk
-RY
 uk
-PO
-uk
-PO
-uk
-PO
-uk
-PO
-uk
-uk
-HD
-yC
-rL
-BW
-sN
+Bg
+Bg
+ZU
 XL
-kT
-Ci
-bI
-sI
-bM
-XX
-Uk
-OP
-uO
-kC
-kC
-kC
-mt
-fO
-eM
-gz
-gz
-gz
-yC
+rL
 uk
+ZU
+XL
+rL
+uk
+ZU
+XL
+rL
+uk
+ZU
+XL
+rL
+uk
+uk
+WN
+uk
+uk
+uk
+uk
+uk
+vw
+ZJ
+dI
+KH
+mA
+xo
+ZJ
+ZJ
+ZJ
+ZJ
+ZJ
 uk
 uk
 uk
@@ -81582,42 +82283,42 @@ uk
 uk
 uk
 uk
-RY
 uk
-Wg
-Xz
-HG
+Ik
 uk
-Wg
-Xz
-HG
-uk
-uk
-HD
-yC
-yC
-yC
-yC
-yC
-yC
-yC
-yC
-Ii
-Ii
-Ii
-yC
-bI
-BL
-eM
+ZU
+XL
+rL
+Bg
+ZU
+XL
+rL
+Bg
+ZU
+XL
+rL
+Bg
+ZU
+XL
+rL
+Bg
+WN
+WN
+WN
+WN
+WN
+WN
+WN
+WN
 ZJ
-Vv
-mt
-fO
-FF
-HH
-uJ
-uJ
-yC
+ZJ
+ZJ
+ZJ
+ZJ
+ZJ
+uk
+uk
+uk
 uk
 uk
 uk
@@ -81839,42 +82540,42 @@ uk
 uk
 uk
 uk
-RY
-PO
-Wg
-KS
-HG
 uk
-Wg
-KS
-HG
+Ik
+Bg
+ZU
+XL
+rL
+uk
+ZU
+XL
+rL
+uk
+ZU
+XL
+rL
+uk
+ZU
+XL
+rL
 uk
 uk
-HD
+tE
 uk
 uk
 uk
-HD
 uk
 uk
 uk
-yC
-yJ
-ce
-Hi
-jC
-aN
-IT
-bI
-UY
-OB
-mt
-Dz
-EC
-gz
-gz
-gz
-yC
+uk
+uk
+uk
+uk
+uk
+uk
+uk
+uk
+uk
 uk
 uk
 uk
@@ -82096,42 +82797,42 @@ uk
 uk
 uk
 uk
-RY
 uk
-Wg
-KS
-HG
-PO
-Wg
-KS
-HG
-PO
-HD
-HD
-HD
-HD
-HD
-HD
-HD
-HD
-HD
-yC
-yJ
-Lz
-vn
-Ii
-hW
-gB
-bI
-Ea
-OB
-mt
-fO
-eM
-gz
-gz
-gz
-yC
+Ik
+uk
+ZU
+jC
+rL
+uk
+ZU
+jC
+rL
+uk
+ZU
+jC
+rL
+uk
+ZU
+jC
+rL
+uk
+uk
+tE
+uk
+uk
+uk
+uk
+uk
+uk
+uk
+uk
+uk
+uk
+uk
+uk
+uk
+uk
+uk
 uk
 uk
 uk
@@ -82353,42 +83054,42 @@ uk
 uk
 uk
 uk
-PO
-PO
-Wg
-KS
-HG
 uk
-Wg
-KS
-HG
+Ik
+uk
+Bg
+uk
+Bg
+uk
+Bg
+uk
+Bg
+uk
+Bg
+uk
+Bg
+uk
+Bg
+uk
+Bg
 uk
 uk
-HD
+tE
 uk
 uk
 uk
-HD
 uk
 uk
 uk
-yC
-yJ
-qs
-yJ
-Ii
-JF
-lK
-bI
-sW
-OB
-mt
-fO
-kp
-HH
-uJ
-uJ
-yC
+uk
+uk
+uk
+uk
+uk
+uk
+uk
+uk
+uk
 uk
 uk
 uk
@@ -82607,45 +83308,45 @@ uk
 uk
 uk
 uk
-zK
-zK
-zK
-PO
-uk
-Wg
-KS
-HG
-uk
-Wg
-KS
-HG
-uk
-uk
-HD
 uk
 uk
 uk
-HD
+uk
+Ik
+Ik
+Ik
+Ik
+Ik
+WJ
+Ik
+Ik
+Ik
+WJ
+Ik
+Ik
+Ik
+WJ
+Ik
+Ik
+Ik
+WJ
+tE
+tE
 uk
 uk
 uk
-yC
-yC
-yC
-yC
-yC
-yC
-yC
-yC
-st
-Cu
-mt
-YU
-mR
-gz
-gz
-gz
-yC
+uk
+uk
+uk
+uk
+uk
+uk
+uk
+uk
+uk
+uk
+uk
+uk
 uk
 uk
 uk
@@ -82864,45 +83565,45 @@ uk
 uk
 uk
 uk
-zK
-uk
-HD
 uk
 uk
 uk
-ya
 uk
 uk
 uk
-ya
 uk
 uk
 uk
-HD
 uk
 uk
 uk
-HD
 uk
 uk
 uk
-yC
-ZK
-uU
-uU
-uU
-uU
-PR
-yC
-kC
-kC
-mt
-fO
-eM
-gz
-gz
-gz
-yC
+uk
+uk
+uk
+uk
+uk
+uk
+uk
+uk
+uk
+uk
+uk
+uk
+uk
+uk
+uk
+uk
+uk
+uk
+uk
+uk
+uk
+uk
+uk
+uk
 uk
 uk
 uk
@@ -83121,45 +83822,45 @@ uk
 uk
 uk
 uk
-zK
-HD
-Md
-Vb
-Vb
-Vb
-VH
-Vb
-Vb
-Vb
-VH
-Vb
-Bt
-Vb
-Bj
-Vb
-Vb
-Vb
-Bj
-Vb
-Vb
-Vb
-PK
-qK
-Kh
-Pp
-Qv
-sU
-wh
-mJ
-Aq
-Aq
-EI
-fO
-Lc
-HH
-uJ
-uJ
-yC
+uk
+uk
+uk
+uk
+uk
+uk
+uk
+uk
+uk
+uk
+uk
+uk
+uk
+uk
+uk
+uk
+uk
+uk
+uk
+uk
+uk
+uk
+uk
+uk
+uk
+uk
+uk
+uk
+uk
+uk
+uk
+uk
+uk
+uk
+uk
+uk
+uk
+uk
+uk
 uk
 uk
 uk
@@ -83378,45 +84079,45 @@ uk
 uk
 uk
 uk
-zZ
-uk
-PO
 uk
 uk
 uk
-ya
 uk
 uk
 uk
-ya
 uk
 uk
 uk
-ya
 uk
 uk
 uk
-ya
 uk
 uk
 uk
-yC
-VX
-wC
-hO
-Fj
-uU
-ZB
-yC
-bI
-bI
-fO
-tp
-Ne
-gz
-gz
-gz
-yC
+uk
+uk
+uk
+uk
+uk
+uk
+uk
+uk
+uk
+uk
+uk
+uk
+uk
+uk
+uk
+uk
+uk
+uk
+uk
+uk
+uk
+uk
+uk
+uk
 uk
 uk
 uk
@@ -83635,45 +84336,45 @@ uk
 uk
 uk
 uk
-zZ
-Iy
-zZ
-PO
-uk
-Wg
-hX
-HG
-uk
-Wg
-hX
-HG
-uk
-Wg
-hX
-HG
-uk
-Wg
-hX
-HG
 uk
 uk
-yC
-yC
-yC
-yC
-yC
-yC
-Fb
-yC
-SY
-eV
-cO
-BZ
-eM
-gz
-nc
-gz
-yC
+uk
+uk
+uk
+uk
+uk
+uk
+uk
+uk
+uk
+uk
+uk
+uk
+uk
+uk
+uk
+uk
+uk
+uk
+uk
+uk
+uk
+uk
+uk
+uk
+uk
+uk
+uk
+uk
+uk
+uk
+uk
+uk
+uk
+uk
+uk
+uk
+uk
 uk
 uk
 uk
@@ -83895,42 +84596,42 @@ uk
 uk
 uk
 uk
-PO
-PO
-Wg
-hX
-HG
-uk
-Wg
-hX
-HG
-uk
-Wg
-hX
-HG
-uk
-Wg
-hX
-HG
-uk
-uk
-HD
 uk
 uk
 uk
 uk
 uk
-Bl
-yC
-Ya
-aw
-Jo
-Hr
-yC
-yC
-yC
-yC
-yC
+uk
+uk
+uk
+uk
+uk
+uk
+uk
+uk
+uk
+uk
+uk
+uk
+uk
+uk
+uk
+uk
+uk
+uk
+uk
+uk
+uk
+uk
+uk
+uk
+uk
+uk
+uk
+uk
+uk
+uk
+uk
 uk
 uk
 uk
@@ -84152,38 +84853,38 @@ uk
 uk
 uk
 uk
-zZ
 uk
-Wg
-hX
-HG
-PO
-Wg
-hX
-HG
-PO
-Wg
-hX
-HG
-PO
-Wg
-hX
-HG
-PO
-HD
-HD
-HD
-HD
-HD
-HD
-HD
-HD
-yC
-yC
-yC
-yC
-yC
-yC
+uk
+uk
+uk
+uk
+uk
+uk
+uk
+uk
+uk
+uk
+uk
+uk
+uk
+uk
+uk
+uk
+uk
+uk
+uk
+uk
+uk
+uk
+uk
+uk
+uk
+uk
+uk
+uk
+uk
+uk
+uk
 uk
 uk
 uk
@@ -84409,26 +85110,26 @@ uk
 uk
 uk
 uk
-zZ
-PO
-Wg
-hX
-HG
-uk
-Wg
-hX
-HG
-uk
-Wg
-hX
-HG
-uk
-Wg
-hX
-HG
 uk
 uk
-zK
+uk
+uk
+uk
+uk
+uk
+uk
+uk
+uk
+uk
+uk
+uk
+uk
+uk
+uk
+uk
+uk
+uk
+uk
 uk
 uk
 uk
@@ -84666,26 +85367,26 @@ uk
 uk
 uk
 uk
-zZ
-uk
-Wg
-QS
-HG
-uk
-Wg
-QS
-HG
-uk
-Wg
-QS
-HG
-uk
-Wg
-QS
-HG
 uk
 uk
-zK
+uk
+uk
+uk
+uk
+uk
+uk
+uk
+uk
+uk
+uk
+uk
+uk
+uk
+uk
+uk
+uk
+uk
+uk
 uk
 uk
 uk
@@ -84923,26 +85624,26 @@ uk
 uk
 uk
 uk
-zZ
-uk
-PO
-uk
-PO
-uk
-PO
-uk
-PO
-uk
-PO
-uk
-PO
-uk
-PO
-uk
-PO
 uk
 uk
-zK
+uk
+uk
+uk
+uk
+uk
+uk
+uk
+uk
+uk
+uk
+uk
+uk
+uk
+uk
+uk
+uk
+uk
+uk
 uk
 uk
 uk
@@ -85180,26 +85881,26 @@ uk
 uk
 uk
 uk
-zZ
-zZ
-zZ
-zZ
-zZ
-Iy
-zZ
-zZ
-zZ
-Iy
-zZ
-zZ
-zZ
-Iy
-zZ
-zZ
-zZ
-Iy
-zK
-zK
+uk
+uk
+uk
+uk
+uk
+uk
+uk
+uk
+uk
+uk
+uk
+uk
+uk
+uk
+uk
+uk
+uk
+uk
+uk
+uk
 uk
 uk
 uk
