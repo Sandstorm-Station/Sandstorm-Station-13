@@ -14,11 +14,11 @@
 
 /datum/quirk/knows_sagaru
 	name = "Sagaru"
-	desc = "From heavy study or just being born in that Tal, you know the language Sagaru"
+	desc = "From heavy study or just being born in Tal, you know the language Sagaru"
 	value = 0
 	human_only = TRUE
 	gain_text = "<span class='danger'>You remember that you know Sagaru.</span>"
-	lose_text = null
+	lose_text = "<span class='danger'>You simply forgot how to speak Sagaru.</span>"
 	medical_record_text = null
 	mob_trait = TRAIT_KNOWSSAGARU
 
