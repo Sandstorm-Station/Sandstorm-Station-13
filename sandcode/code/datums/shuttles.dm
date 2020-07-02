@@ -17,3 +17,8 @@
 	port_id = "axsbrig"
 	name = "Perma Brig Access Shuttle"
 	suffix = "smol"
+
+/datum/map_template/shuttle/sandcode/scioutpost
+	port_id = "axsscioutpost"
+	name = "Science Outpost Access Shuttle"
+	suffix = "smol"
