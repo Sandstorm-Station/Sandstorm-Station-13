@@ -25,6 +25,9 @@
 	dir = 4
 	},
 /obj/effect/turf_decal/tile/neutral,
+/obj/machinery/light/small{
+	dir = 8
+	},
 /turf/open/floor/plasteel/dark,
 /area/shuttle/custom{
 	name = "Science Outpost Shuttle"
@@ -35,6 +38,9 @@
 	},
 /obj/effect/turf_decal/tile/neutral{
 	dir = 8
+	},
+/obj/machinery/light/small{
+	dir = 4
 	},
 /turf/open/floor/plasteel/dark,
 /area/shuttle/custom{
@@ -113,6 +119,9 @@
 	dir = 8
 	},
 /obj/structure/closet/emcloset/anchored,
+/obj/machinery/light/small{
+	dir = 8
+	},
 /turf/open/floor/plasteel/dark,
 /area/shuttle/custom{
 	name = "Science Outpost Shuttle"
@@ -159,6 +168,9 @@
 	},
 /obj/structure/closet/firecloset/full{
 	anchored = 1
+	},
+/obj/machinery/light/small{
+	dir = 4
 	},
 /turf/open/floor/plasteel/dark,
 /area/shuttle/custom{
