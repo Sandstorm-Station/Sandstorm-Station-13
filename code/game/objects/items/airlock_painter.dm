@@ -129,7 +129,7 @@
 
 /obj/item/airlock_painter/decal
 	name = "decal painter"
-	desc = "An airlock painter, reprogramed to use a different style of paint in order to apply decals for floor tiles as well, in addition to repainting doors. Decals break when the floor tiles are removed. Alt-Click to change design."
+	desc = "An airlock painter, reprogramed to use a different style of paint in order to apply decals for floor tiles as well, in addition to repainting doors. Decals break when the floor tiles are removed. Alt-Click or Ctrl-Click to change design."
 	icon = 'icons/obj/objects.dmi'
 	icon_state = "decal_sprayer"
 	item_state = "decalsprayer"
@@ -140,7 +140,8 @@
 	var/stored_decal_total = "warningline"
 	var/color_list = list("","red","white")
 	var/dir_list = list(1,2,4,8)
-	var/decal_list = list(list("Warning Line","warningline"),
+	var/decal_list = list(
+			list("Warning Line","warningline"),
 			list("Warning Line Corner","warninglinecorner"),
 			list("Caution Label","caution"),
 			list("Directional Arrows","arrows"),
@@ -166,6 +167,24 @@
 	. = ..()
 
 /obj/item/airlock_painter/decal/AltClick(mob/user)
+	. = ..()
+	var/decal_category = list(
+		"Decal" = image(icon = 'icons/turf/decals.dmi', icon_state = "[stored_decal]", dir = stored_dir),
+		"Color" = image(icon = 'icons/obj/crayons.dmi', icon_state = "crayonred"),
+		"Dir" = image(icon = 'icons/obj/device.dmi', icon_state = "pinonfar", dir = stored_dir)
+	)
+	var/cat_chosen = show_radial_menu(user,src,decal_category, custom_check = CALLBACK(src,.proc/check_menu,user), require_near = TRUE, tooltips = TRUE)
+	if(!check_menu(user))
+		return
+	switch(cat_chosen)
+		if("Decal")
+			choose_decal(user)
+		if("Color")
+			choose_color(user)
+		if("Dir")
+			choose_dir(user)
+
+/obj/item/airlock_painter/decal/CtrlClick(mob/user)
 	. = ..()
 	ui_interact(user)
 
