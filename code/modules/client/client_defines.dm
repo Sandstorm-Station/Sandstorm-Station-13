@@ -11,6 +11,9 @@
 	var/datum/click_intercept = null // Needs to implement InterceptClickOn(user,params,atom) proc
 	var/AI_Interact		= 0
 
+	/// Used to cache this client's bans to save on DB queries //sandstorm stuff, does the same as below
+	var/ban_cache = null
+
 	var/jobbancache = null //Used to cache this client's jobbans to save on DB queries
 	var/last_message	= "" //Contains the last message sent by this client - used to protect against copy-paste spamming.
 	var/last_message_count = 0 //contins a number of how many times a message identical to last_message was sent.

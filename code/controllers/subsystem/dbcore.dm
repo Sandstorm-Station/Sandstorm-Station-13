@@ -189,55 +189,60 @@ Delayed insert mode was removed in mysql 7 and only works with MyISAM type table
 	It was included because it is still supported in mariadb.
 	It does not work with duplicate_key and the mysql server ignores it in those cases
 */
-/datum/controller/subsystem/dbcore/proc/MassInsert(table, list/rows, duplicate_key = FALSE, ignore_errors = FALSE, delayed = FALSE, warn = FALSE, async = TRUE)
+/datum/controller/subsystem/dbcore/proc/MassInsert(table, list/rows, duplicate_key = FALSE, ignore_errors = FALSE, delayed = FALSE, warn = FALSE, async = TRUE, special_columns = null)
 	if (!table || !rows || !istype(rows))
 		return
+
+	// Prepare column list
 	var/list/columns = list()
-	var/list/sorted_rows = list()
-
+	var/list/has_question_mark = list()
 	for (var/list/row in rows)
-		var/list/sorted_row = list()
-		sorted_row.len = columns.len
 		for (var/column in row)
-			var/idx = columns[column]
-			if (!idx)
-				idx = columns.len + 1
-				columns[column] = idx
-				sorted_row.len = columns.len
+			columns[column] = "?"
+			has_question_mark[column] = TRUE
+	for (var/column in special_columns)
+		columns[column] = special_columns[column]
+		has_question_mark[column] = findtext(special_columns[column], "?")
 
-			sorted_row[idx] = row[column]
-		sorted_rows[++sorted_rows.len] = sorted_row
+	// Prepare SQL query full of placeholders
+	var/list/query_parts = list("INSERT")
+	if (delayed)
+		query_parts += " DELAYED"
+	if (ignore_errors)
+		query_parts += " IGNORE"
+	query_parts += " INTO "
+	query_parts += table
+	query_parts += "\n([columns.Join(", ")])\nVALUES"
+
+	var/list/arguments = list()
+	var/has_row = FALSE
+	for (var/list/row in rows)
+		if (has_row)
+			query_parts += ","
+		query_parts += "\n  ("
+		var/has_col = FALSE
+		for (var/column in columns)
+			if (has_col)
+				query_parts += ", "
+			if (has_question_mark[column])
+				var/name = "p[arguments.len]"
+				query_parts += replacetext(columns[column], "?", ":[name]")
+				arguments[name] = row[column]
+			else
+				query_parts += columns[column]
+			has_col = TRUE
+		query_parts += ")"
+		has_row = TRUE
 
 	if (duplicate_key == TRUE)
 		var/list/column_list = list()
 		for (var/column in columns)
 			column_list += "[column] = VALUES([column])"
-		duplicate_key = "ON DUPLICATE KEY UPDATE [column_list.Join(", ")]\n"
-	else if (duplicate_key == FALSE)
-		duplicate_key = null
+		query_parts += "\nON DUPLICATE KEY UPDATE [column_list.Join(", ")]"
+	else if (duplicate_key != FALSE)
+		query_parts += duplicate_key
 
-	if (ignore_errors)
-		ignore_errors = " IGNORE"
-	else
-		ignore_errors = null
-
-	if (delayed)
-		delayed = " DELAYED"
-	else
-		delayed = null
-
-	var/list/sqlrowlist = list()
-	var/len = columns.len
-	for (var/list/row in sorted_rows)
-		if (length(row) != len)
-			row.len = len
-		for (var/value in row)
-			if (value == null)
-				value = "NULL"
-		sqlrowlist += "([row.Join(", ")])"
-
-	sqlrowlist = "	[sqlrowlist.Join(",\n	")]"
-	var/datum/DBQuery/Query = NewQuery("INSERT[delayed][ignore_errors] INTO [table]\n([columns.Join(", ")])\nVALUES\n[sqlrowlist]\n[duplicate_key]")
+	var/datum/DBQuery/Query = NewQuery(query_parts.Join(), arguments)
 	if (warn)
 		. = Query.warn_execute(async)
 	else
