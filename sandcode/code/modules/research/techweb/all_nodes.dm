@@ -50,3 +50,7 @@
 /datum/techweb_node/adv_surgery/New()
 	design_ids += "autodoc"
 	. = ..()
+
+/datum/techweb_node/computer_board_gaming/New()
+	design_ids += "tetris"
+	. = ..()
