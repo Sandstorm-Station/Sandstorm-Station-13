@@ -40,7 +40,7 @@
 	category = list ("Teleportation Machinery")
 	departmental_flags = DEPARTMENTAL_FLAG_ENGINEERING | DEPARTMENTAL_FLAG_SCIENCE
 	
-	/datum/design/board/autodoc
+/datum/design/board/autodoc
 	name = "Machine Design (Autodoc)"
 	desc = "The circuit board for an Autodoc."
 	id = "autodoc"
