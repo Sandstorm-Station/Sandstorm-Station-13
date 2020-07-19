@@ -20,7 +20,7 @@
 /obj/item/gun/energy/kinetic_accelerator/premiumka/bdminer
 	name = "bloody accelerator"
 	desc = "A modded premium kinetic accelerator with an increased mod capacity as well as lesser cooldown."
-	icon = 'modular_skyrat/icons/obj/guns/energy.dmi'
+	icon = 'sandcode/icons/obj/guns/energy.dmi'
 	icon_state = "bdpka"
 	item_state = "kineticgun"
 	overheat_time = 14.5
