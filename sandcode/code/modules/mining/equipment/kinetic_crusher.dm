@@ -18,10 +18,10 @@
 	icon_state = "goldenskull"
 	denied_type = /obj/item/crusher_trophy/golden_skull
 
-/obj/item/crusher_trophy/legion_shard/effect_desc()
+/obj/item/crusher_trophy/golden_skull/effect_desc()
 	return "a kinetic crusher to make dead animals into friendly fauna, as well as turning corpses into legions"
 
-/obj/item/crusher_trophy/legion_shard/on_mark_detonation(mob/living/target, mob/living/user)
+/obj/item/crusher_trophy/golden_skull/on_mark_detonation(mob/living/target, mob/living/user)
 	if(target.stat == DEAD)
 		if(istype(target, /mob/living/simple_animal/hostile/asteroid))
 			var/mob/living/simple_animal/hostile/asteroid/L = target
@@ -33,7 +33,7 @@
 			user.visible_message("<span class='notice'>[user] revives [target] with [src], as a friendly fauna</span>")
 			playsound(src,'sound/effects/supermatter.ogg',50,1)
 
-/obj/item/crusher_trophy/legion_shard/on_melee_hit(mob/living/target, mob/living/user)
+/obj/item/crusher_trophy/golden_skull/on_melee_hit(mob/living/target, mob/living/user)
 	var/obj/item/kinetic_crusher/K = loc
 	var/is_wielded = TRUE
 	if(istype(loc))
@@ -290,11 +290,3 @@
 	. = ..()
 	if(.)
 		H.block_chance -= bonus_value
-
-//hierophant crusher nerf "but muh i deserve it after killing hierocunt" yes but its op fuck you you piece of shit
-/obj/effect/temp_visual/hierophant/wall/crusher
-	duration = 40 //this is more than enough time bro
-
-//watcher wing slight nerf
-/obj/item/crusher_trophy/watcher_wing
-	bonus_value = 5
