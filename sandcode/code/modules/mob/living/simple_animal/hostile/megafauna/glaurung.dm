@@ -35,7 +35,7 @@ Difficulty: Medium
 	attack_verb_continuous = "chomps"
 	attack_verb_simple = "chomp"
 	attack_sound = 'sound/magic/demon_attack1.ogg'
-	icon = 'icons/mob/lavaland/glaurung.dmi'
+	icon = 'sandcode/icons/mob/lavaland/glaurung.dmi'
 	icon_state = "glaurung"
 	icon_living = "glaurung"
 	icon_dead = "glaurung_dead"
