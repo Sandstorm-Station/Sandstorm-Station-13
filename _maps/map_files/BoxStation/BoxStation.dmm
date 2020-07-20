@@ -59663,6 +59663,9 @@
 "vsM" = (
 /obj/machinery/power/apc/auto_name/south,
 /obj/structure/cable,
+/obj/machinery/computer/cryopod_tele{
+	pixel_y = -37
+	},
 /turf/open/floor/carpet,
 /area/crew_quarters/cryopod)
 "vsT" = (
@@ -60065,9 +60068,7 @@
 /turf/open/floor/plasteel/showroomfloor,
 /area/security/main)
 "woR" = (
-/obj/machinery/cryopod{
-	dir = 1
-	},
+/obj/machinery/cryopod_tele,
 /turf/open/floor/carpet,
 /area/crew_quarters/cryopod)
 "wph" = (
@@ -90992,8 +90993,8 @@ atf
 dgz
 tqg
 ujF
-ujF
-ujF
+woR
+woR
 dgz
 aaa
 aJn
