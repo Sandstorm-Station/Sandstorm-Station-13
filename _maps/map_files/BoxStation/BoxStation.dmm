@@ -53756,6 +53756,10 @@
 	dir = 4
 	},
 /area/crew_quarters/fitness/pool)
+"ecM" = (
+/obj/machinery/light,
+/turf/open/floor/plasteel,
+/area/crew_quarters/fitness/pool)
 "edA" = (
 /obj/machinery/atmospherics/pipe/simple/scrubbers/hidden{
 	dir = 4
@@ -55737,6 +55741,9 @@
 	name = "Pool Shutters";
 	pixel_y = 24
 	},
+/obj/machinery/light{
+	dir = 1
+	},
 /turf/open/floor/plasteel,
 /area/crew_quarters/fitness/pool)
 "jRw" = (
@@ -56293,9 +56300,19 @@
 /obj/item/clothing/under/rank/civilian/lawyer/red,
 /turf/open/floor/plasteel,
 /area/crew_quarters/locker)
+"llk" = (
+/obj/machinery/atmospherics/pipe/simple/supply/hidden{
+	dir = 4
+	},
+/obj/machinery/light,
+/turf/open/floor/plasteel,
+/area/crew_quarters/fitness/pool)
 "lnk" = (
 /obj/item/radio/intercom{
 	pixel_y = 25
+	},
+/obj/machinery/light{
+	dir = 1
 	},
 /turf/open/floor/plasteel,
 /area/crew_quarters/fitness/pool)
@@ -59663,6 +59680,9 @@
 "vsM" = (
 /obj/machinery/power/apc/auto_name/south,
 /obj/structure/cable,
+/obj/machinery/computer/cryopod_tele{
+	pixel_y = -37
+	},
 /turf/open/floor/carpet,
 /area/crew_quarters/cryopod)
 "vsT" = (
@@ -60065,9 +60085,7 @@
 /turf/open/floor/plasteel/showroomfloor,
 /area/security/main)
 "woR" = (
-/obj/machinery/cryopod{
-	dir = 1
-	},
+/obj/machinery/cryopod_tele,
 /turf/open/floor/carpet,
 /area/crew_quarters/cryopod)
 "wph" = (
@@ -90992,8 +91010,8 @@ atf
 dgz
 tqg
 ujF
-ujF
-ujF
+woR
+woR
 dgz
 aaa
 aJn
@@ -97660,7 +97678,7 @@ con
 con
 fyS
 eVJ
-dqb
+ecM
 veS
 ahs
 sJI
@@ -98688,7 +98706,7 @@ con
 con
 fyS
 eVJ
-wHk
+llk
 aqu
 aro
 aro
