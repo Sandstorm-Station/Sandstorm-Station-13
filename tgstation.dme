@@ -3566,8 +3566,10 @@
 #include "sandcode\code\modules\mob\living\simple_animal\friendly\doges.dm"
 #include "sandcode\code\modules\mob\living\simple_animal\hostile\megafauna\drake.dm"
 #include "sandcode\code\modules\mob\living\simple_animal\hostile\megafauna\legion.dm"
+#include "sandcode\code\modules\mob\living\simple_animal\hostile\megafauna\rogueprocess.dm"
 #include "sandcode\code\modules\mob\living\simple_animal\hostile\megafauna\sand.dm"
 #include "sandcode\code\modules\mob\living\simple_animal\hostile\mining_mobs\imp.dm"
+#include "sandcode\code\modules\mob\living\simple_animal\hostile\mining_mobs\miningmobs.dm"
 #include "sandcode\code\modules\mob\living\simple_animal\hostile\mining_mobs\shamblingminer.dm"
 #include "sandcode\code\modules\mob\living\simple_animal\hostile\mining_mobs\elites\fanaticminer.dm"
 #include "sandcode\code\modules\mob\living\simple_animal\hostile\mining_mobs\elites\goliath_broodmother.dm"
@@ -3601,5 +3603,6 @@
 #include "sandcode\code\modules\telescience\telesci.dm"
 #include "sandcode\code\modules\telescience\telesci_computer.dm"
 #include "sandcode\code\modules\uplink\uplink_items.dm"
+#include "sandcode\code\modules\uplink\uplink_roles.dm"
 #include "sandcode\tools\Redirector\textprocs.dm"
 // END_INCLUDE
