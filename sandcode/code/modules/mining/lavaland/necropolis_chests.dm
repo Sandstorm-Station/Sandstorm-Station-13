@@ -100,10 +100,10 @@
 /obj/item/gun/ballistic/revolver/doublebarrel/super
 	burst_size = 1
 	actions_types = list(/datum/action/item_action/toggle_hook)
-	icon = 'modular_skyrat/icons/obj/guns/projectile.dmi'
+	icon = 'sandcode/icons/obj/guns/projectile.dmi'
 	icon_state = "heckgun"
-	lefthand_file = 'modular_skyrat/icons/mob/inhands/weapons/guns_lefthand.dmi'
-	righthand_file = 'modular_skyrat/icons/mob/inhands/weapons/guns_righthand.dmi'
+	lefthand_file = 'sandcode/icons/mob/inhands/weapons/guns_lefthand.dmi'
+	righthand_file = 'sandcode/icons/mob/inhands/weapons/guns_righthand.dmi'
 	item_state = "heckgun"
 	sharpness = IS_SHARP
 	force = 15
@@ -203,11 +203,11 @@
 /obj/item/crucible
 	name = "Crucible Sword"
 	desc = "Made from pure argent energy, this sword can cut through flesh like butter."
-	icon = 'modular_skyrat/icons/obj/1x2.dmi'
+	icon = 'sandcode/icons/obj/1x2.dmi'
 	icon_state = "crucible0"
 	var/icon_state_on = "crucible1"
-	lefthand_file = 'modular_skyrat/icons/mob/inhands/weapons/swords_lefthand.dmi'
-	righthand_file = 'modular_skyrat/icons/mob/inhands/weapons/swords_righthand.dmi'
+	lefthand_file = 'sandcode/icons/mob/inhands/weapons/swords_lefthand.dmi'
+	righthand_file = 'sandcode/icons/mob/inhands/weapons/swords_righthand.dmi'
 	item_state = "crucible0"
 	force = 3
 	throwforce = 5
@@ -739,7 +739,7 @@
 	self_recharge = 1
 	maxcharge = 1500 //only barely better than a normal power cell now
 	chargerate = 700 //good recharge time doe
-	icon = 'modular_skyrat/icons/obj/items_and_weapons.dmi'
+	icon = 'sandcode/icons/obj/items_and_weapons.dmi'
 	icon_state = "argentcell"
 	ratingdesc = FALSE
 	rating = 6

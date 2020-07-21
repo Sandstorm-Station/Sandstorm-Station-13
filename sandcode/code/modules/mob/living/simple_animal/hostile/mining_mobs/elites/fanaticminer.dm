@@ -233,7 +233,7 @@
 /obj/item/melee/diamondaxe
 	name = "Priest's Axe"
 	desc = "Used to be a diamond pickaxe, now there's no pick, just axe."
-	icon = 'modular_skyrat/icons/obj/lavaland/artefacts.dmi'
+	icon = 'sandcode/icons/obj/lavaland/artefacts.dmi'
 	icon_state = "diamondaxe"
 	lefthand_file = 'sandcode/icons/mob/inhands/weapons/axes_lefthand.dmi'
 	righthand_file = 'sandcode/icons/mob/inhands/weapons/axes_righthand.dmi'

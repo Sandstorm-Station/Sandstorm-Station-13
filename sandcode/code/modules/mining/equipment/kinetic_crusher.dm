@@ -453,7 +453,7 @@
 	//Dash through the target if possible (it was a furious bash after all)
 	if(target.CanPass(user, T))
 		walk_to(user, T, 0, 1, movespeed)
-		playsound(user, pick('sandcode/sound/sif/whoosh1.ogg', 'modular_skyrat/sound/sif/whoosh2.ogg', 'sandcode/sound/sif/whoosh3.ogg'), 300, 1)
+		playsound(user, pick('sandcode/sound/sif/whoosh1.ogg', 'sandcode/sound/sif/whoosh2.ogg', 'sandcode/sound/sif/whoosh3.ogg'), 300, 1)
 		new /obj/effect/temp_visual/decoy/fading(user.loc, user)
 	//Stop movement
 	walk(user, 0)
