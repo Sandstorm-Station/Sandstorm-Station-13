@@ -56,8 +56,8 @@
 				chosenlength = text2num(chosenlengthstring)
 				chosensong = songs[chosenlengthstring]
 				if(chosensong && !songend)
-					if(M.client.prefs.toggles & SOUND_AMBIENCE)
-						M.stop_sound_channel(CHANNEL_AMBIENCE)
+					if(M.client.prefs.toggles & SOUND_BOSS_MUSIC)
+						M.stop_sound_channel(CHANNEL_BOSSMUSIC)
 						songend = chosenlength + world.time
 						SEND_SOUND(M, chosensong) // so silence ambience will mute moosic for people who don't want that, or it just doesn't play at all if prefs disable it
 				if(!retaliated)

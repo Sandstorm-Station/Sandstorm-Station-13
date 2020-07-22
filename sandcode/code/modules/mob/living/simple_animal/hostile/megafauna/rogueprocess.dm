@@ -29,7 +29,7 @@
 	anger_modifier = 0
 	footstep_type = FOOTSTEP_MOB_HEAVY
 	mob_biotypes = MOB_ROBOTIC
-	songs = list("2930" = sound(file = 'sandcode/sound/ambience/mbrsystemshock.ogg', repeat = 0, wait = 0, volume = 100, channel = CHANNEL_AMBIENCE)) //System shock theme remix by Master Boot Record
+	songs = list("2930" = sound(file = 'sandcode/sound/ambience/mbrsystemshock.ogg', repeat = 0, wait = 0, volume = 100, channel = CHANNEL_BOSSMUSIC)) //System shock theme remix by Master Boot Record
 	var/special = FALSE
 	wander = FALSE
 	faction = list("mining", "boss")
