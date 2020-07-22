@@ -54,7 +54,7 @@
 	..()
 	var/datum/component/riding/D = LoadComponent(/datum/component/riding)
 	D.vehicle_move_delay = 1
-	D.allowed_turf_typecache = typecacheof(/turf/open)
+	D.allowed_turf_typecache = typecacheof(/turf/open) //thanks Bob for telling me it was on purpose
 	D.keytype = null
 
 /obj/vehicle/ridden/lavaboat/dragon/gladiator/AltClick(mob/user)
