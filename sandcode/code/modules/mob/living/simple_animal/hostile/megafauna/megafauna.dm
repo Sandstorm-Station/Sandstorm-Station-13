@@ -59,7 +59,7 @@
 					if(M.client.prefs.toggles & SOUND_BOSS_MUSIC)
 						M.stop_sound_channel(CHANNEL_BOSSMUSIC)
 						songend = chosenlength + world.time
-						SEND_SOUND(M, chosensong) // so silence ambience will mute moosic for people who don't want that, or it just doesn't play at all if prefs disable it
+						SEND_SOUND(M, chosensong) // so silence boss music will mute moosic for people who don't want that, or it just doesn't play at all if prefs disable it
 				if(!retaliated)
 					src.visible_message("<span class='userdanger'>[src] seems pretty pissed off at [M]!</span>")
 					retaliated = TRUE
@@ -70,8 +70,8 @@
 				enemies |= M
 				enemies |= M.occupant
 				var/mob/living/O = M.occupant
-				if(O.client.prefs.toggles & SOUND_AMBIENCE)
-					O.stop_sound_channel(CHANNEL_AMBIENCE)
+				if(O.client.prefs.toggles & SOUND_BOSS_MUSIC)
+					O.stop_sound_channel(CHANNEL_BOSSMUSIC)
 					songend = chosenlength + world.time
 					SEND_SOUND(O, chosensong)
 				if(!retaliated)
@@ -95,8 +95,8 @@
 		if(world.time >= songend)
 			for(var/mob/living/M in view(src, vision_range))
 				if(client)
-					if(M.client.prefs.toggles & SOUND_AMBIENCE)
-						M.stop_sound_channel(CHANNEL_AMBIENCE)
+					if(M.client.prefs.toggles & SOUND_BOSS_MUSIC)
+						M.stop_sound_channel(CHANNEL_BOSSMUSIC)
 						songend = chosenlength + world.time
 						SEND_SOUND(M, chosensong)
 	if(health <= glorythreshold && !glorykill && stat != DEAD)
@@ -116,7 +116,7 @@
 	else
 		for(var/mob/living/M in view(src, vision_range))
 			if(M.client)
-				M.stop_sound_channel(CHANNEL_AMBIENCE)
+				M.stop_sound_channel(CHANNEL_BOSSMUSIC)
 		animate(src, color = initial(color), time = 3)
 		desc = initial(desc)
 		var/datum/status_effect/crusher_damage/C = has_status_effect(STATUS_EFFECT_CRUSHERDAMAGETRACKING)
