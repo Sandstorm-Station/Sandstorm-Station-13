@@ -13,6 +13,7 @@
 /obj/structure/closet/crate/necropolis/gladiator/crusher/PopulateContents()
 	new /obj/item/shield/riot/tower/swat/gladiator(src)
 	new /obj/item/melee/zweihander(src)
+	new /obj/item/crusher_trophy/gladiator(src)
 
 /obj/item/shield/riot/tower/swat/gladiator
 	name = "\proper Gladiator's shield"
@@ -206,8 +207,8 @@
 	icon = 'sandcode/icons/obj/1x2.dmi'
 	icon_state = "crucible0"
 	var/icon_state_on = "crucible1"
-	lefthand_file = 'sandcode/icons/mob/inhands/weapons/swords_lefthand.dmi'
-	righthand_file = 'sandcode/icons/mob/inhands/weapons/swords_righthand.dmi'
+	lefthand_file = 'sandcode/icons/mob/inhands/weapons/crucible_lefthand.dmi'
+	righthand_file = 'sandcode/icons/mob/inhands/weapons/crucible_righthand.dmi'
 	item_state = "crucible0"
 	force = 3
 	throwforce = 5
