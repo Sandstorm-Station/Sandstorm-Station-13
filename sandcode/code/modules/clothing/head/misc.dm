@@ -33,6 +33,7 @@
 	desc = "And on the seventh day King Goat said there will be cabbage!"
 	mob_overlay_icon = 'sandcode/icons/mob/large-worn-icons/64x64/head.dmi'
 	mutantrace_variation = STYLE_NO_ANTHRO_ICON
+	icon = 'sandcode/icons/obj/clothing/hats.dmi'
 	icon_state = "goatpope"
 	item_state = "goatpope"
 	worn_x_dimension = 64
