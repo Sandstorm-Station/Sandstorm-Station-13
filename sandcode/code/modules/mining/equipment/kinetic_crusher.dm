@@ -19,11 +19,11 @@
 	denied_type = /obj/item/crusher_trophy/golden_skull
 
 /obj/item/crusher_trophy/golden_skull/effect_desc()
-	return "a kinetic crusher to make dead animals into friendly fauna, as well as turning corpses into legions"
+	return "a kinetic crusher to make dead animals into friendly fauna, as well as turning corpses into legions, if the user is on grab intent"
 
 /obj/item/crusher_trophy/golden_skull/on_mark_detonation(mob/living/target, mob/living/user)
 	if(target.stat == DEAD)
-		if(istype(target, /mob/living/simple_animal/hostile/asteroid))
+		if(istype(target, /mob/living/simple_animal/hostile/asteroid) && user.a_intent == INTENT_GRAB)
 			var/mob/living/simple_animal/hostile/asteroid/L = target
 			L.revive(full_heal = 1, admin_revive = 1)
 			L.attack_same = 0
