@@ -34,8 +34,12 @@
 	..(gibbed)
 
 /mob/living/simple_animal/hostile/asteroid/AltClick(mob/living/carbon/slayer)
-	if(slayer.canUseTopic(src, TRUE, FALSE, FALSE))
-		return
+	if(glorykill)
+		if(ranged)
+			if(ranged_cooldown >= world.time)
+				ranged_cooldown += 10
+			else
+				ranged_cooldown = 10 + world.time
 	if(glorykill)
 		if(do_after(slayer, 10, needhand = TRUE, target = src, progress = FALSE) && (stat != DEAD))
 			var/message
