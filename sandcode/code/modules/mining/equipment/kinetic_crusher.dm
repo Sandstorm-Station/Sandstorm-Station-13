@@ -39,7 +39,9 @@
 	if(istype(loc))
 		var/datum/component/two_handed/TH = K.GetComponent(/datum/component/two_handed)
 		is_wielded = TH.wielded
-	if(ishuman(target) && (target.stat == DEAD) && (is_wielded) && user.a_intent == INTENT_GRAB)
+	else
+		/mob/proc/is_holding_item_of_type()
+	if(ishuman(target) && (target.stat == DEAD) && (is_wielded) && user.a_intent == INTENT_GRAB || user.get_active_held_item(/obj/item/melee/zweihander) && ishuman(target) && (target.stat == DEAD) && user.a_intent == INTENT_GRAB)
 		var/confirm = input("Are you sure you want to turn [target] into a friendly legion?", "Legionification") in list("Yes", "No")
 		if(confirm == "Yes")
 			var/mob/living/carbon/human/H = target
