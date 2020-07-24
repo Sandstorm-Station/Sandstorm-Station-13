@@ -36,12 +36,12 @@
 /obj/item/crusher_trophy/golden_skull/on_melee_hit(mob/living/target, mob/living/user)
 	var/obj/item/kinetic_crusher/K = loc
 	var/is_wielded = TRUE
-	if(istype(loc))
+	if(istype(K))
 		var/datum/component/two_handed/TH = K.GetComponent(/datum/component/two_handed)
 		is_wielded = TH.wielded
 	else
-		/mob/proc/is_holding_item_of_type()
-	if(ishuman(target) && (target.stat == DEAD) && (is_wielded) && user.a_intent == INTENT_GRAB || user.get_active_held_item(/obj/item/melee/zweihander) && ishuman(target) && (target.stat == DEAD) && user.a_intent == INTENT_GRAB)
+		user.is_holding_item_of_type(/obj/item/melee/zweihander)
+	if(ishuman(target) && (target.stat == DEAD) && (is_wielded) && user.a_intent == INTENT_GRAB)
 		var/confirm = input("Are you sure you want to turn [target] into a friendly legion?", "Legionification") in list("Yes", "No")
 		if(confirm == "Yes")
 			var/mob/living/carbon/human/H = target
