@@ -644,7 +644,7 @@
 						TH.transfer_mob_blood_dna(src)
 
 /mob/living/carbon/human/makeTrail(turf/T)
-	if((NOBLOOD in dna.species.species_traits) || !bleed_rate || bleedsuppress)
+	if((NOBLOOD in dna.species.species_traits) || !is_bleeding() || bleedsuppress)
 		return
 	..()
 
@@ -810,7 +810,7 @@
 	else
 		throw_alert("gravity", /obj/screen/alert/weightless)
 	if(!override && !is_flying())
-		float(!has_gravity)
+		INVOKE_ASYNC(src, /atom/movable.proc/float, !has_gravity)
 
 /mob/living/float(on)
 	if(throwing)

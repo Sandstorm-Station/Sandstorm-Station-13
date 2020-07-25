@@ -233,6 +233,9 @@
 	INVOKE_ASYNC(RM, .proc/do_transform_animation)
 	if(RM.dogborg)
 		RM.dogborg_equip()
+		R.typing_indicator_state = /obj/effect/overlay/typing_indicator/machine/dogborg
+	else
+		R.typing_indicator_state = /obj/effect/overlay/typing_indicator/machine
 	R.maxHealth = borghealth
 	R.health = min(borghealth, R.health)
 	qdel(src)
@@ -325,7 +328,7 @@
 		/obj/item/crowbar/cyborg,
 		/obj/item/healthanalyzer,
 		/obj/item/reagent_containers/borghypo,
-		/obj/item/reagent_containers/glass/beaker/large,
+		/obj/item/weapon/gripper/medical,
 		/obj/item/reagent_containers/dropper,
 		/obj/item/reagent_containers/syringe,
 		/obj/item/surgical_drapes,
@@ -335,9 +338,11 @@
 		/obj/item/surgicaldrill,
 		/obj/item/scalpel,
 		/obj/item/circular_saw,
+		/obj/item/bonesetter,
 		/obj/item/roller/robo,
 		/obj/item/borg/cyborghug/medical,
 		/obj/item/stack/medical/gauze/cyborg,
+		/obj/item/stack/medical/bone_gel/cyborg,
 		/obj/item/organ_storage,
 		/obj/item/borg/lollipop,
 		/obj/item/sensor_device,
@@ -1058,6 +1063,8 @@
 		/obj/item/cautery,
 		/obj/item/surgicaldrill,
 		/obj/item/scalpel,
+		/obj/item/bonesetter,
+		/obj/item/stack/medical/bone_gel,
 		/obj/item/melee/transforming/energy/sword/cyborg/saw,
 		/obj/item/roller/robo,
 		/obj/item/card/emag,
