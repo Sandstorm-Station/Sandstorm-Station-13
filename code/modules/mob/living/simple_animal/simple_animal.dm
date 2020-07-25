@@ -350,9 +350,12 @@
 		return 1
 
 /mob/living/simple_animal/proc/drop_loot()
-	if(loot.len)
-		for(var/i in loot)
-			new i(loc)
+	if(loot == null)
+		return
+	else
+		if(loot.len)
+			for(var/i in loot)
+				new i(loc)
 
 /mob/living/simple_animal/death(gibbed)
 	movement_type &= ~FLYING
