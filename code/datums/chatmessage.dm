@@ -171,7 +171,7 @@
 
 	//dogborg check sandstorm thingy thing.
 	var/mob/living/silicon/robot/R = owner
-	if(owner == R) //without this it would check for module on every mob speaking, and you would NOT remove this unless you love runtimes
+	if(iscyborg(R)) //without this it would check for module on every mob speaking, and you would NOT remove this unless you love runtimes
 		if(R.module.dogborg == TRUE)
 			message.pixel_x = 16
 		else
