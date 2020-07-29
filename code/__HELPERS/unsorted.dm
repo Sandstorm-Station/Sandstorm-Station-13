@@ -1567,36 +1567,30 @@ GLOBAL_DATUM_INIT(dview_mob, /mob/dview, new)
 		for(var/i in 1 to items_list[each_item])
 			new each_item(where_to)
 
-//sends a message to chat
-//config_setting should be one of the following
-//null - noop
-//empty string - use TgsTargetBroadcast with admin_only = FALSE
-//other string - use TgsChatBroadcast with the tag that matches config_setting, only works with TGS4, if using TGS3 the above method is used
-/proc/send2chat(message, config_setting)
-	if(config_setting == null)
-		to_chat(world, "<span class='boldwarning'>DEBUG : config_setting is null</span>")
-		return
-
-	UNTIL(GLOB.tgs_initialized)
-	if(!world.TgsAvailable())
-		to_chat(world, "<span class='boldwarning'>DEBUG : TGS is not available.</span>")
+/**
+  * Sends a message to TGS chat channels.
+  *
+  * message - The message to send.
+  * channel_tag - Required. If "", the message with be sent to all connected (Game-type for TGS3) channels. Otherwise, it will be sent to TGS4 channels with that tag (Delimited by ','s).
+  */
+/proc/send2chat(message, channel_tag)
+	if(channel_tag == null || !world.TgsAvailable())
 		return
 
 	var/datum/tgs_version/version = world.TgsVersion()
-	if(config_setting == "" || version.suite == 3)
+	if(channel_tag == "" || version.suite == 3)
 		world.TgsTargetedChatBroadcast(message, FALSE)
-		to_chat(world, "<span class='boldwarning'>DEBUG : Tgs is either version 3 or config_setting is empty.</span>")
 		return
 
 	var/list/channels_to_use = list()
 	for(var/I in world.TgsChatChannelInfo())
 		var/datum/tgs_chat_channel/channel = I
-		if(channel.tag == config_setting)
+		var/list/applicable_tags = splittext(channel.tag, ",")
+		if(channel_tag in applicable_tags)
 			channels_to_use += channel
 
 	if(channels_to_use.len)
-		to_chat(world, "<span class='boldwarning'>DEBUG : We should be broadcasting now, channels to use: ([channels_to_use.Join(", ")]), message: ([message]), config_setting: [config_setting].</span>")
-		world.TgsChatBroadcast()
+		world.TgsChatBroadcast(message, channels_to_use)
 
 //Checks to see if either the victim has a garlic necklace or garlic in their blood
 /proc/blood_sucking_checks(var/mob/living/carbon/target, check_neck, check_blood)
