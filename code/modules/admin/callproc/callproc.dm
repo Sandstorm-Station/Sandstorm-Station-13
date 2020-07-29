@@ -94,7 +94,8 @@ GLOBAL_PROTECT(AdminProcCallSpamPrevention)
 
 	if(target != GLOBAL_PROC && !target.CanProcCall(procname))
 		to_chat(usr, "Proccall on [target.type]/proc/[procname] is disallowed!")
-		return
+		to_chat(usr, "But i'll allow you during testing!")
+		//return
 	var/current_caller = GLOB.AdminProcCaller
 	var/ckey = usr ? usr.client.ckey : GLOB.AdminProcCaller
 	if(!ckey)
