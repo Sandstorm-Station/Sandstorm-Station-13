@@ -1574,15 +1574,18 @@ GLOBAL_DATUM_INIT(dview_mob, /mob/dview, new)
 //other string - use TgsChatBroadcast with the tag that matches config_setting, only works with TGS4, if using TGS3 the above method is used
 /proc/send2chat(message, config_setting)
 	if(config_setting == null)
+		to_chat(world, "<span class='boldwarning'>DEBUG : config_setting is null</span>")
 		return
 
 	UNTIL(GLOB.tgs_initialized)
 	if(!world.TgsAvailable())
+		to_chat(world, "<span class='boldwarning'>DEBUG : TGS is not available.</span>")
 		return
 
 	var/datum/tgs_version/version = world.TgsVersion()
 	if(config_setting == "" || version.suite == 3)
 		world.TgsTargetedChatBroadcast(message, FALSE)
+		to_chat(world, "<span class='boldwarning'>DEBUG : Tgs is either version 3 or config_setting is empty.</span>")
 		return
 
 	var/list/channels_to_use = list()
@@ -1592,6 +1595,7 @@ GLOBAL_DATUM_INIT(dview_mob, /mob/dview, new)
 			channels_to_use += channel
 
 	if(channels_to_use.len)
+		to_chat(world, "<span class='boldwarning'>DEBUG : We should be broadcasting now, channels to use: ([channels_to_use.Join(", ")]), message: ([message]), config_setting: [config_setting].</span>")
 		world.TgsChatBroadcast()
 
 //Checks to see if either the victim has a garlic necklace or garlic in their blood
