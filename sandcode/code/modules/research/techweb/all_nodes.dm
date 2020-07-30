@@ -54,3 +54,7 @@
 /datum/techweb_node/computer_board_gaming/New()
 	design_ids += "tetris"
 	. = ..()
+
+/datum/techweb_node/nanite_smart/New()
+	design_ids += "signaler_nanites"
+	. = ..()
