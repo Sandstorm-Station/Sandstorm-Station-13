@@ -160,7 +160,7 @@
 	var/datum/admin_help/AH = admin_ticket_log(ckey, msg)
 
 	if(announceinirc)
-		send2irc("BAN ALERT","[a_key] applied a [bantype_str] on [bankey]")
+		send2adminchat("BAN ALERT","[a_key] applied a [bantype_str] on [bankey]")
 
 	if(kickbannedckey)
 		if(AH)

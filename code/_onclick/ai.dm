@@ -48,7 +48,7 @@
 		to_chat(src, "<span class='warning'>You're experiencing a bug. Reconnect immediately to fix it. Admins have been notified.</span>")
 		if(REALTIMEOFDAY >= chnotify + 9000)
 			chnotify = REALTIMEOFDAY
-			send2irc_adminless_only("NOCHEAT", message)
+			send2adminchat("NOCHEAT", message)
 		return
 
 	var/list/modifiers = params2list(params)

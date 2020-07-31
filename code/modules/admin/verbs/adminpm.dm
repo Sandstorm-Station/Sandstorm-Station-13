@@ -148,7 +148,7 @@
 		to_chat(src, "<span class='notice'>PM to-<b>Admins</b>: <span class='linkify'>[rawmsg]</span></span>")
 		var/datum/admin_help/AH = admin_ticket_log(src, "<font color='red'>Reply PM from-<b>[key_name(src, TRUE, TRUE)] to <i>IRC</i>: [keywordparsedmsg]</font>")
 		ircreplyamount--
-		send2irc("[AH ? "#[AH.id] " : ""]Reply: [ckey]", rawmsg)
+		send2chat("[AH ? "#[AH.id] " : ""]Reply: [ckey]", rawmsg)
 	else
 		if(recipient.holder)
 			if(holder)	//both are admins
