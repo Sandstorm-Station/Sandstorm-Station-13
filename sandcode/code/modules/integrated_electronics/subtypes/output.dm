@@ -122,20 +122,25 @@
 	var/icon/holo_base = null // Uncolored holographic icon.
 //	var/datum/beam/holo_beam = null // A visual effect, to make it easy to know where a hologram is coming from.
 	// It is commented out due to picking up the assembly killing the beam.
+	var/toggled = FALSE
+
+/obj/item/integrated_circuit/output/holographic_projector/Initialize()
+	START_PROCESSING(SSmachines, src)
+	. = ..()
 
 /obj/item/integrated_circuit/output/holographic_projector/Destroy()
 	destroy_hologram()
+	STOP_PROCESSING(SSmachines, src)
 	return ..()
 
+/obj/item/integrated_circuit/output/holographic_projector/process()
+	toggled = get_pin_data(IC_INPUT, 1)
+	if(!toggled)
+		destroy_hologram()
+
 /obj/item/integrated_circuit/output/holographic_projector/do_work()
-	var/toggled = get_pin_data(IC_INPUT, 1)
-
 	if(hologram) // Currently active.
-		if(!toggled) // Being turned off.
-			destroy_hologram()
-
-		else // Updating position/dir/etc.
-			update_hologram()
+		update_hologram()
 
 	else // Currently not active.
 		if(toggled) // We're gonna turn on.
@@ -185,23 +190,20 @@
 	var/atom/movable/AM = get_pin_data_as_type(IC_INPUT, 2, /atom/movable)
 	var/holo_color = get_pin_data(IC_INPUT, 3)
 
-	if(istype(AM) && assembly)
-		if(AM in view(get_turf(src))) // It must be able to 'see' the object it will copy.
-			hologram = new(src)
-			var/icon/holo_icon = getHologramIcon_Alt(getFlatIcon(AM), no_color = TRUE)
-		//	holo_icon.GrayScale() // So it looks better colored.
-			if(holo_color) // The color pin should ensure that it is a valid hex.
-				holo_icon.ColorTone(holo_color)
-			hologram.icon = holo_icon
-			hologram.name = "[AM.name] (Hologram)"
-			update_hologram()
+	if(istype(AM) && assembly) //Removed AM in view, it would be better if the ref "carries" image data
+		hologram = new(src)
+		var/icon/holo_icon = getHologramIcon_Alt(getFlatIcon(AM), no_color = TRUE)
+	//	holo_icon.GrayScale() // So it looks better colored.
+		if(holo_color) // The color pin should ensure that it is a valid hex.
+			holo_icon.ColorTone(holo_color)
+		hologram.icon = holo_icon
+		hologram.name = "[AM.name] (Hologram)"
+		update_hologram()
 
-	//		holo_beam = assembly.Beam(hologram, icon_state = "holo_beam", time = INFINITY, maxdistance = world.view)
-			power_draw_idle = 500
-			return TRUE
+//		holo_beam = assembly.Beam(hologram, icon_state = "holo_beam", time = INFINITY, maxdistance = world.view)
+		power_draw_idle = 500
+		return TRUE
 	return FALSE
-
-
 
 /obj/item/integrated_circuit/output/holographic_projector/proc/destroy_hologram()
 	QDEL_NULL(hologram)
