@@ -199,7 +199,7 @@
 			holo_icon.ColorTone(holo_color)
 		hologram.icon = holo_icon
 		hologram.name = "[AM.name] (Hologram)"
-		hologram.desc = src.desc
+		hologram.desc = src.loc.desc
 		update_hologram()
 
 //		holo_beam = assembly.Beam(hologram, icon_state = "holo_beam", time = INFINITY, maxdistance = world.view)
