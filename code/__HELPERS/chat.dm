@@ -57,6 +57,6 @@ In TGS3 it will always be sent to all connected designated game chats.
 	message = replacetext(replacetext(message, "\proper", ""), "\improper", "")
 	world.TgsTargetedChatBroadcast("[category] | [message]", TRUE)
 
-/verb/bepis(text as msg)
-	send2chat(message, "")
+/verb/bepis(msg as text)
+	send2chat("[msg]", "")
 	
