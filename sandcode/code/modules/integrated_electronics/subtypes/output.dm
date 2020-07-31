@@ -123,6 +123,7 @@
 //	var/datum/beam/holo_beam = null // A visual effect, to make it easy to know where a hologram is coming from.
 	// It is commented out due to picking up the assembly killing the beam.
 	var/toggled = FALSE
+	var/use_power = null //it's literally just so there's no runtimes (i am NOT removing the processing from machines, SSobj is too slow)
 
 /obj/item/integrated_circuit/output/holographic_projector/Initialize()
 	START_PROCESSING(SSmachines, src)
@@ -198,6 +199,7 @@
 			holo_icon.ColorTone(holo_color)
 		hologram.icon = holo_icon
 		hologram.name = "[AM.name] (Hologram)"
+		hologram.desc = src.desc
 		update_hologram()
 
 //		holo_beam = assembly.Beam(hologram, icon_state = "holo_beam", time = INFINITY, maxdistance = world.view)

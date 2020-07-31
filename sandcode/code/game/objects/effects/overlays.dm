@@ -1,6 +1,5 @@
 //Circuit hologram
 
 /obj/effect/overlay/holographic
-	mouse_opacity = FALSE
+	mouse_opacity = TRUE
 	anchored = TRUE
-	plane = FLY_LAYER
