@@ -11,9 +11,6 @@
 	set category = "Vore"
 	set desc = "Allows you to eat someone."
 
-	if(!(T.client))
-		to_chat(src, "<span class='warning'>[T] is ssd, better not bother them.</span>")
-		return
 	if(!CHECK_BITFIELD(T.vore_flags,DEVOURABLE))
 		to_chat(src, "<span class='warning'>System error: Unauthorized operation.</span>")
 		return
