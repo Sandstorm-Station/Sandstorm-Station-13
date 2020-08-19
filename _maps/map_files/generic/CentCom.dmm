@@ -4505,6 +4505,12 @@
 	icon_state = "alien15"
 	},
 /area/abductor_ship)
+"lm" = (
+/turf/closed/indestructible/abductor{
+	icon_state = "alien3";
+	opacity = 0
+	},
+/area/bluespace_locker)
 "ln" = (
 /obj/machinery/light,
 /obj/effect/turf_decal/tile/brown,
@@ -6427,6 +6433,12 @@
 /obj/effect/turf_decal/tile/brown,
 /turf/open/floor/plasteel,
 /area/centcom/supplypod/loading/two)
+"oV" = (
+/turf/closed/indestructible/abductor{
+	icon_state = "alien17";
+	opacity = 0
+	},
+/area/bluespace_locker)
 "oX" = (
 /obj/structure/bookcase/random,
 /obj/machinery/light{
@@ -7904,6 +7916,12 @@
 	},
 /turf/open/floor/plating,
 /area/syndicate_mothership)
+"sd" = (
+/turf/closed/indestructible/abductor{
+	icon_state = "alien4";
+	opacity = 0
+	},
+/area/bluespace_locker)
 "sf" = (
 /obj/machinery/vending/wallmed{
 	name = "Emergency NanoMed";
@@ -7928,6 +7946,12 @@
 	},
 /turf/open/floor/plasteel,
 /area/syndicate_mothership)
+"so" = (
+/turf/closed/indestructible/abductor{
+	icon_state = "alien14";
+	opacity = 0
+	},
+/area/bluespace_locker)
 "sq" = (
 /obj/machinery/computer/shuttle/white_ship{
 	dir = 4
@@ -9733,6 +9757,13 @@
 /obj/effect/turf_decal/delivery,
 /turf/open/floor/plasteel,
 /area/centcom/supplypod/loading/three)
+"wk" = (
+/obj/structure/closet/bluespace/internal,
+/turf/open/indestructible{
+	icon = 'icons/turf/walls.dmi';
+	icon_state = "alien22"
+	},
+/area/bluespace_locker)
 "wl" = (
 /obj/structure/table/wood,
 /obj/item/paicard,
@@ -9997,6 +10028,18 @@
 /obj/item/toy/cards/deck,
 /turf/open/floor/carpet,
 /area/wizard_station)
+"wS" = (
+/turf/closed/indestructible/abductor{
+	icon_state = "alien6";
+	opacity = 0
+	},
+/area/bluespace_locker)
+"wT" = (
+/turf/closed/indestructible/abductor{
+	icon_state = "alien2";
+	opacity = 0
+	},
+/area/bluespace_locker)
 "wX" = (
 /obj/effect/turf_decal/tile/bar,
 /obj/effect/turf_decal/tile/bar{
@@ -10228,6 +10271,12 @@
 /obj/machinery/light,
 /turf/open/floor/carpet,
 /area/wizard_station)
+"xB" = (
+/turf/closed/indestructible/abductor{
+	icon_state = "alien16";
+	opacity = 0
+	},
+/area/bluespace_locker)
 "xG" = (
 /obj/structure/closet/syndicate/personal,
 /obj/effect/turf_decal/stripes/line{
@@ -10628,6 +10677,12 @@
 	},
 /turf/open/floor/plating,
 /area/syndicate_mothership)
+"yR" = (
+/turf/closed/indestructible/abductor{
+	icon_state = "alien11";
+	opacity = 0
+	},
+/area/bluespace_locker)
 "yS" = (
 /obj/machinery/door/airlock/wood{
 	id_tag = "Ninja7";
@@ -10740,6 +10795,9 @@
 	},
 /turf/open/floor/plasteel/dark,
 /area/centcom/ferry)
+"zc" = (
+/turf/open/space/bluespace_locker_mirage,
+/area/bluespace_locker)
 "zd" = (
 /obj/item/kirbyplants{
 	icon_state = "plant-22"
@@ -12062,6 +12120,13 @@
 	},
 /turf/open/floor/engine/cult,
 /area/wizard_station)
+"Cj" = (
+/obj/machinery/light/small{
+	brightness = 3;
+	dir = 8
+	},
+/turf/open/floor/plasteel/dark,
+/area/bluespace_locker)
 "Cp" = (
 /obj/structure/statue/uranium/nuke,
 /turf/open/floor/plating/asteroid/snow/airless,
@@ -12752,6 +12817,12 @@
 	},
 /turf/open/floor/plasteel/dark,
 /area/centcom/control)
+"Dw" = (
+/turf/closed/indestructible/abductor{
+	icon_state = "alien10";
+	opacity = 0
+	},
+/area/bluespace_locker)
 "Dx" = (
 /obj/machinery/light,
 /obj/effect/turf_decal/tile/neutral{
@@ -13495,6 +13566,9 @@
 	},
 /turf/open/indestructible/hotelwood,
 /area/centcom/holding)
+"Fd" = (
+/turf/open/floor/plasteel/dark,
+/area/bluespace_locker)
 "Fg" = (
 /obj/structure/flora/grass/brown,
 /obj/effect/light_emitter,
@@ -14017,6 +14091,12 @@
 	},
 /turf/open/floor/plasteel/dark,
 /area/syndicate_mothership)
+"GB" = (
+/turf/closed/indestructible/abductor{
+	icon_state = "alien8";
+	opacity = 0
+	},
+/area/bluespace_locker)
 "GC" = (
 /obj/structure/table,
 /obj/structure/bedsheetbin,
@@ -15898,6 +15978,12 @@
 	},
 /turf/open/space/basic,
 /area/space)
+"Km" = (
+/turf/closed/indestructible/abductor{
+	icon_state = "alien23";
+	opacity = 0
+	},
+/area/bluespace_locker)
 "Kn" = (
 /obj/structure/bookcase/random,
 /obj/effect/turf_decal/tile/neutral{
@@ -16774,10 +16860,21 @@
 	smooth = 1
 	},
 /area/centcom/holding)
+"Ne" = (
+/turf/closed/indestructible/abductor{
+	icon_state = "alien7";
+	opacity = 0
+	},
+/area/bluespace_locker)
 "Nf" = (
 /obj/machinery/autolathe/toy,
 /turf/open/indestructible/hotelwood,
 /area/centcom/holding)
+"Ng" = (
+/turf/closed/indestructible/abductor{
+	opacity = 0
+	},
+/area/bluespace_locker)
 "Ni" = (
 /obj/structure/table/reinforced,
 /obj/item/clipboard,
@@ -16933,6 +17030,12 @@
 "Of" = (
 /turf/open/floor/carpet/red,
 /area/centcom/holding)
+"Og" = (
+/turf/closed/indestructible/abductor{
+	icon_state = "alien5";
+	opacity = 0
+	},
+/area/bluespace_locker)
 "Oh" = (
 /obj/effect/turf_decal/stripes/line{
 	dir = 1
@@ -17066,6 +17169,12 @@
 /obj/item/storage/box/handcuffs,
 /turf/open/floor/mineral/plastitanium/red,
 /area/centcom/evac)
+"OP" = (
+/turf/closed/indestructible/abductor{
+	icon_state = "alien21";
+	opacity = 0
+	},
+/area/bluespace_locker)
 "OS" = (
 /obj/structure/mecha_wreckage/mauler,
 /turf/open/floor/plasteel/dark,
@@ -17179,6 +17288,12 @@
 "PD" = (
 /turf/open/floor/plasteel/cafeteria,
 /area/syndicate_mothership)
+"PF" = (
+/turf/closed/indestructible/abductor{
+	icon_state = "alien12";
+	opacity = 0
+	},
+/area/bluespace_locker)
 "PG" = (
 /obj/structure/table/reinforced,
 /obj/item/camera,
@@ -17554,6 +17669,12 @@
 /obj/item/tank/internals/plasmaman/belt/full,
 /turf/open/indestructible/hotelwood,
 /area/centcom/holding)
+"Rp" = (
+/turf/closed/indestructible/abductor{
+	icon_state = "alien18";
+	opacity = 0
+	},
+/area/bluespace_locker)
 "Rq" = (
 /obj/machinery/light{
 	dir = 1;
@@ -17647,6 +17768,12 @@
 	},
 /turf/open/indestructible/hotelwood,
 /area/centcom/holding)
+"RT" = (
+/obj/machinery/light/small{
+	dir = 4
+	},
+/turf/open/floor/plasteel/dark,
+/area/bluespace_locker)
 "RX" = (
 /obj/structure/chair/comfy/brown{
 	color = "#596479"
@@ -17755,6 +17882,12 @@
 /obj/item/mop,
 /turf/open/floor/plasteel/freezer,
 /area/syndicate_mothership)
+"SE" = (
+/turf/closed/indestructible/abductor{
+	icon_state = "alien24";
+	opacity = 0
+	},
+/area/bluespace_locker)
 "SF" = (
 /obj/effect/turf_decal/tile/brown{
 	dir = 1
@@ -17905,6 +18038,10 @@
 /obj/structure/window/reinforced/fulltile,
 /turf/open/indestructible/hotelwood,
 /area/centcom/holding)
+"Tv" = (
+/obj/effect/landmark/bluespace_locker_origin,
+/turf/open/floor/plasteel/dark,
+/area/bluespace_locker)
 "Tw" = (
 /obj/structure/closet{
 	anchored = 1;
@@ -18673,6 +18810,12 @@
 /obj/structure/table/wood/fancy/royalblue,
 /turf/open/indestructible/hotelwood,
 /area/centcom/holding)
+"Xx" = (
+/turf/closed/indestructible/abductor{
+	icon_state = "alien15";
+	opacity = 0
+	},
+/area/bluespace_locker)
 "Xy" = (
 /obj/machinery/door/airlock/external{
 	name = "Ferry Airlock"
@@ -18685,6 +18828,12 @@
 	},
 /turf/open/floor/plasteel,
 /area/centcom/ferry)
+"XA" = (
+/turf/closed/indestructible/abductor{
+	icon_state = "alien13";
+	opacity = 0
+	},
+/area/bluespace_locker)
 "XD" = (
 /obj/machinery/button/door{
 	id = "Ninja4";
@@ -18702,6 +18851,12 @@
 	},
 /turf/open/floor/plasteel,
 /area/syndicate_mothership)
+"XH" = (
+/turf/closed/indestructible/abductor{
+	icon_state = "alien19";
+	opacity = 0
+	},
+/area/bluespace_locker)
 "XL" = (
 /obj/machinery/door/airlock/wood,
 /turf/open/floor/wood,
@@ -18712,6 +18867,12 @@
 	},
 /turf/open/indestructible/hotelwood,
 /area/centcom/holding)
+"XO" = (
+/turf/closed/indestructible/abductor{
+	icon_state = "alien20";
+	opacity = 0
+	},
+/area/bluespace_locker)
 "XS" = (
 /obj/structure/closet/secure_closet/hydroponics{
 	locked = 0
@@ -18940,6 +19101,12 @@
 /obj/machinery/light,
 /turf/open/floor/plasteel/dark,
 /area/syndicate_mothership)
+"Zt" = (
+/turf/closed/indestructible/abductor{
+	icon_state = "alien9";
+	opacity = 0
+	},
+/area/bluespace_locker)
 "Zw" = (
 /obj/structure/bed,
 /obj/item/bedsheet/syndie,
@@ -78003,32 +78170,32 @@ fU
 fV
 ab
 aa
-aa
-aa
-aa
-aa
-aa
-aa
-aa
-aa
-aa
-aa
-aa
-aa
-aa
-aa
-aa
-aa
-aa
-aa
-aa
-aa
-aa
-aa
-aa
-aa
-aa
-aa
+zc
+zc
+zc
+zc
+zc
+zc
+zc
+zc
+zc
+zc
+zc
+zc
+zc
+zc
+zc
+zc
+zc
+zc
+zc
+zc
+zc
+zc
+zc
+zc
+zc
+zc
 aa
 aa
 aa
@@ -78260,32 +78427,32 @@ ab
 ab
 ab
 aa
-aa
-aa
-aa
-aa
-aa
-aa
-aa
-aa
-aa
-aa
-aa
-aa
-aa
-aa
-aa
-aa
-aa
-aa
-aa
-aa
-aa
-aa
-aa
-aa
-aa
-aa
+zc
+zc
+zc
+zc
+zc
+zc
+zc
+zc
+zc
+zc
+zc
+zc
+zc
+zc
+zc
+zc
+zc
+zc
+zc
+zc
+zc
+zc
+zc
+zc
+zc
+zc
 aa
 aa
 aa
@@ -78517,32 +78684,32 @@ fF
 ab
 aa
 aa
-aa
-aa
-aa
-aa
-aa
-aa
-aa
-aa
-aa
-aa
-aa
-aa
-aa
-aa
-aa
-aa
-aa
-aa
-aa
-aa
-aa
-aa
-aa
-aa
-aa
-aa
+zc
+zc
+zc
+zc
+zc
+zc
+zc
+zc
+zc
+zc
+zc
+zc
+zc
+zc
+zc
+zc
+zc
+zc
+zc
+zc
+zc
+zc
+zc
+zc
+zc
+zc
 aa
 aa
 aa
@@ -78774,32 +78941,32 @@ fz
 ab
 aa
 aa
-aa
-aa
-aa
-aa
-aa
-aa
-aa
-aa
-aa
-aa
-aa
-aa
-aa
-aa
-aa
-aa
-aa
-aa
-aa
-aa
-aa
-aa
-aa
-aa
-aa
-aa
+zc
+zc
+zc
+zc
+zc
+zc
+zc
+zc
+zc
+zc
+zc
+zc
+zc
+zc
+zc
+zc
+zc
+zc
+zc
+zc
+zc
+zc
+zc
+zc
+zc
+zc
 aa
 aa
 aa
@@ -79031,32 +79198,32 @@ fA
 ab
 aa
 aa
-aa
-aa
-aa
-aa
-aa
-aa
-aa
-aa
-aa
-aa
-aa
-aa
-aa
-aa
-aa
-aa
-aa
-aa
-aa
-aa
-aa
-aa
-aa
-aa
-aa
-aa
+zc
+zc
+zc
+zc
+zc
+zc
+zc
+zc
+zc
+zc
+zc
+zc
+zc
+zc
+zc
+zc
+zc
+zc
+zc
+zc
+zc
+zc
+zc
+zc
+zc
+zc
 aa
 aa
 aa
@@ -79288,32 +79455,32 @@ fz
 ab
 aa
 aa
-aa
-aa
-aa
-aa
-aa
-aa
-aa
-aa
-aa
-aa
-aa
-aa
-aa
-aa
-aa
-aa
-aa
-aa
-aa
-aa
-aa
-aa
-aa
-aa
-aa
-aa
+zc
+zc
+zc
+zc
+zc
+zc
+zc
+zc
+zc
+zc
+zc
+zc
+zc
+zc
+zc
+zc
+zc
+zc
+zc
+zc
+zc
+zc
+zc
+zc
+zc
+zc
 aa
 aa
 aa
@@ -79545,32 +79712,32 @@ fz
 ab
 aa
 aa
-aa
-aa
-aa
-aa
-aa
-aa
-aa
-aa
-aa
-aa
-aa
-aa
-aa
-aa
-aa
-aa
-aa
-aa
-aa
-aa
-aa
-aa
-aa
-aa
-aa
-aa
+zc
+zc
+zc
+zc
+zc
+zc
+zc
+zc
+zc
+zc
+zc
+zc
+zc
+zc
+zc
+zc
+zc
+zc
+zc
+zc
+zc
+zc
+zc
+zc
+zc
+zc
 aa
 aa
 aa
@@ -79802,32 +79969,32 @@ fz
 ab
 aa
 aa
-aa
-aa
-aa
-aa
-aa
-aa
-aa
-aa
-aa
-aa
-aa
-aa
-aa
-aa
-aa
-aa
-aa
-aa
-aa
-aa
-aa
-aa
-aa
-aa
-aa
-aa
+zc
+zc
+zc
+zc
+zc
+zc
+zc
+zc
+zc
+zc
+zc
+zc
+zc
+zc
+zc
+zc
+zc
+zc
+zc
+zc
+zc
+zc
+zc
+zc
+zc
+zc
 aa
 aa
 aa
@@ -80059,32 +80226,32 @@ fz
 ab
 aa
 aa
-aa
-aa
-aa
-aa
-aa
-aa
-aa
-aa
-aa
-aa
-aa
-aa
-aa
-aa
-aa
-aa
-aa
-aa
-aa
-aa
-aa
-aa
-aa
-aa
-aa
-aa
+zc
+zc
+zc
+zc
+zc
+zc
+zc
+zc
+zc
+zc
+zc
+zc
+zc
+zc
+zc
+zc
+zc
+zc
+zc
+zc
+zc
+zc
+zc
+zc
+zc
+zc
 aa
 aa
 aa
@@ -80316,32 +80483,32 @@ fz
 ab
 aa
 aa
-aa
-aa
-aa
-aa
-aa
-aa
-aa
-aa
-aa
-aa
-aa
-aa
-aa
-aa
-aa
-aa
-aa
-aa
-aa
-aa
-aa
-aa
-aa
-aa
-aa
-aa
+zc
+zc
+zc
+zc
+zc
+zc
+zc
+zc
+zc
+zc
+zc
+xB
+so
+PF
+Dw
+wS
+zc
+zc
+zc
+zc
+zc
+zc
+zc
+zc
+zc
+zc
 aa
 aa
 aa
@@ -80573,32 +80740,32 @@ fz
 ab
 aa
 aa
-aa
-aa
-aa
-aa
-aa
-aa
-aa
-aa
-aa
-aa
-aa
-aa
-aa
-aa
-aa
-aa
-aa
-aa
-aa
-aa
-aa
-aa
-aa
-aa
-aa
-aa
+zc
+zc
+zc
+zc
+zc
+zc
+zc
+zc
+zc
+zc
+XO
+oV
+Fd
+Cj
+Fd
+Ne
+Ng
+zc
+zc
+zc
+zc
+zc
+zc
+zc
+zc
+zc
 aa
 aa
 aa
@@ -80830,32 +80997,32 @@ fz
 ab
 aa
 aa
-aa
-aa
-aa
-aa
-aa
-aa
-aa
-aa
-aa
-aa
-aa
-aa
-aa
-aa
-aa
-aa
-aa
-aa
-aa
-aa
-aa
-aa
-aa
-aa
-aa
-aa
+zc
+zc
+zc
+zc
+zc
+zc
+zc
+zc
+zc
+zc
+OP
+Fd
+Fd
+Fd
+Fd
+Fd
+wT
+zc
+zc
+zc
+zc
+zc
+zc
+zc
+zc
+zc
 aa
 aa
 aa
@@ -81087,32 +81254,32 @@ fz
 ab
 aa
 aa
-aa
-aa
-aa
-aa
-aa
-aa
-aa
-aa
-aa
-aa
-aa
-aa
-aa
-aa
-aa
-aa
-aa
-aa
-aa
-aa
-aa
-aa
-aa
-aa
-aa
-aa
+zc
+zc
+zc
+zc
+zc
+zc
+zc
+zc
+zc
+zc
+wk
+Fd
+Fd
+Tv
+Fd
+Fd
+lm
+zc
+zc
+zc
+zc
+zc
+zc
+zc
+zc
+zc
 aa
 aa
 aa
@@ -81344,32 +81511,32 @@ fz
 ab
 aa
 aa
-aa
-aa
-aa
-aa
-aa
-aa
-aa
-aa
-aa
-aa
-aa
-aa
-aa
-aa
-aa
-aa
-aa
-aa
-aa
-aa
-aa
-aa
-aa
-aa
-aa
-aa
+zc
+zc
+zc
+zc
+zc
+zc
+zc
+zc
+zc
+zc
+Km
+Fd
+Fd
+Fd
+Fd
+Fd
+sd
+zc
+zc
+zc
+zc
+zc
+zc
+zc
+zc
+zc
 aa
 aa
 aa
@@ -81601,32 +81768,32 @@ fA
 ab
 aa
 aa
-aa
-aa
-aa
-aa
-aa
-aa
-aa
-aa
-aa
-aa
-aa
-aa
-aa
-aa
-aa
-aa
-aa
-aa
-aa
-aa
-aa
-aa
-aa
-aa
-aa
-aa
+zc
+zc
+zc
+zc
+zc
+zc
+zc
+zc
+zc
+zc
+SE
+Rp
+Fd
+RT
+Fd
+GB
+Og
+zc
+zc
+zc
+zc
+zc
+zc
+zc
+zc
+zc
 aa
 aa
 aa
@@ -81858,32 +82025,32 @@ fz
 ab
 aa
 aa
-aa
-aa
-aa
-aa
-aa
-aa
-aa
-aa
-aa
-aa
-aa
-aa
-aa
-aa
-aa
-aa
-aa
-aa
-aa
-aa
-aa
-aa
-aa
-aa
-aa
-aa
+zc
+zc
+zc
+zc
+zc
+zc
+zc
+zc
+zc
+zc
+zc
+XH
+Xx
+XA
+yR
+Zt
+zc
+zc
+zc
+zc
+zc
+zc
+zc
+zc
+zc
+zc
 aa
 aa
 aa
@@ -82115,32 +82282,32 @@ fF
 ab
 aa
 aa
-aa
-aa
-aa
-aa
-aa
-aa
-aa
-aa
-aa
-aa
-aa
-aa
-aa
-aa
-aa
-aa
-aa
-aa
-aa
-aa
-aa
-aa
-aa
-aa
-aa
-aa
+zc
+zc
+zc
+zc
+zc
+zc
+zc
+zc
+zc
+zc
+zc
+zc
+zc
+zc
+zc
+zc
+zc
+zc
+zc
+zc
+zc
+zc
+zc
+zc
+zc
+zc
 aa
 aa
 aa
@@ -82372,32 +82539,32 @@ ab
 ab
 ab
 aa
-aa
-aa
-aa
-aa
-aa
-aa
-aa
-aa
-aa
-aa
-aa
-aa
-aa
-aa
-aa
-aa
-aa
-aa
-aa
-aa
-aa
-aa
-aa
-aa
-aa
-aa
+zc
+zc
+zc
+zc
+zc
+zc
+zc
+zc
+zc
+zc
+zc
+zc
+zc
+zc
+zc
+zc
+zc
+zc
+zc
+zc
+zc
+zc
+zc
+zc
+zc
+zc
 aa
 aa
 aa
@@ -82629,32 +82796,32 @@ fU
 fW
 ab
 aa
-aa
-aa
-aa
-aa
-aa
-aa
-aa
-aa
-aa
-aa
-aa
-aa
-aa
-aa
-aa
-aa
-aa
-aa
-aa
-aa
-aa
-aa
-aa
-aa
-aa
-aa
+zc
+zc
+zc
+zc
+zc
+zc
+zc
+zc
+zc
+zc
+zc
+zc
+zc
+zc
+zc
+zc
+zc
+zc
+zc
+zc
+zc
+zc
+zc
+zc
+zc
+zc
 aa
 aa
 aa
@@ -82886,32 +83053,32 @@ fU
 fW
 ab
 aa
-aa
-aa
-aa
-aa
-aa
-aa
-aa
-aa
-aa
-aa
-aa
-aa
-aa
-aa
-aa
-aa
-aa
-aa
-aa
-aa
-aa
-aa
-aa
-aa
-aa
-aa
+zc
+zc
+zc
+zc
+zc
+zc
+zc
+zc
+zc
+zc
+zc
+zc
+zc
+zc
+zc
+zc
+zc
+zc
+zc
+zc
+zc
+zc
+zc
+zc
+zc
+zc
 aa
 aa
 aa
@@ -83143,32 +83310,32 @@ fU
 fW
 ab
 aa
-aa
-aa
-aa
-aa
-aa
-aa
-aa
-aa
-aa
-aa
-aa
-aa
-aa
-aa
-aa
-aa
-aa
-aa
-aa
-aa
-aa
-aa
-aa
-aa
-aa
-aa
+zc
+zc
+zc
+zc
+zc
+zc
+zc
+zc
+zc
+zc
+zc
+zc
+zc
+zc
+zc
+zc
+zc
+zc
+zc
+zc
+zc
+zc
+zc
+zc
+zc
+zc
 aa
 aa
 aa
@@ -83400,32 +83567,32 @@ fU
 fW
 ab
 aa
-aa
-aa
-aa
-aa
-aa
-aa
-aa
-aa
-aa
-aa
-aa
-aa
-aa
-aa
-aa
-aa
-aa
-aa
-aa
-aa
-aa
-aa
-aa
-aa
-aa
-aa
+zc
+zc
+zc
+zc
+zc
+zc
+zc
+zc
+zc
+zc
+zc
+zc
+zc
+zc
+zc
+zc
+zc
+zc
+zc
+zc
+zc
+zc
+zc
+zc
+zc
+zc
 aa
 aa
 aa
@@ -83657,32 +83824,32 @@ fU
 fW
 ab
 aa
-aa
-aa
-aa
-aa
-aa
-aa
-aa
-aa
-aa
-aa
-aa
-aa
-aa
-aa
-aa
-aa
-aa
-aa
-aa
-aa
-aa
-aa
-aa
-aa
-aa
-aa
+zc
+zc
+zc
+zc
+zc
+zc
+zc
+zc
+zc
+zc
+zc
+zc
+zc
+zc
+zc
+zc
+zc
+zc
+zc
+zc
+zc
+zc
+zc
+zc
+zc
+zc
 aa
 aa
 aa
@@ -83914,32 +84081,32 @@ ab
 ab
 ab
 aa
-aa
-aa
-aa
-aa
-aa
-aa
-aa
-aa
-aa
-aa
-aa
-aa
-aa
-aa
-aa
-aa
-aa
-aa
-aa
-aa
-aa
-aa
-aa
-aa
-aa
-aa
+zc
+zc
+zc
+zc
+zc
+zc
+zc
+zc
+zc
+zc
+zc
+zc
+zc
+zc
+zc
+zc
+zc
+zc
+zc
+zc
+zc
+zc
+zc
+zc
+zc
+zc
 aa
 aa
 aa
@@ -84171,32 +84338,32 @@ ab
 aa
 aa
 aa
-aa
-aa
-aa
-aa
-aa
-aa
-aa
-aa
-aa
-aa
-aa
-aa
-aa
-aa
-aa
-aa
-aa
-aa
-aa
-aa
-aa
-aa
-aa
-aa
-aa
-aa
+zc
+zc
+zc
+zc
+zc
+zc
+zc
+zc
+zc
+zc
+zc
+zc
+zc
+zc
+zc
+zc
+zc
+zc
+zc
+zc
+zc
+zc
+zc
+zc
+zc
+zc
 aa
 aa
 aa
