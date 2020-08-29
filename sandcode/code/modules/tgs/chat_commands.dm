@@ -13,3 +13,13 @@
 
 /datum/tgs_chat_command/awho/Run(datum/tgs_chat_user/sender, params)
 	return tgsadminwho()
+
+/datum/tgs_chat_command/restart
+	name = "restart"
+	help_text = "Forces a restart on the server"
+	admin_only = TRUE
+
+/datum/tgs_chat_command/restart/Run(datum/tgs_chat_user/sender)
+	to_chat(world, "Server restart - [sender.friendly_name]")
+	world.TgsEndProcess()
+	return "Restarting."
