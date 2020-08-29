@@ -20,6 +20,6 @@
 	admin_only = TRUE
 
 /datum/tgs_chat_command/restart/Run(datum/tgs_chat_user/sender)
-	to_chat(world, "Server restart - [sender.friendly_name]")
-	world.TgsEndProcess()
+	to_chat(world, "<span class='boldwarning'>Server restart - Initialized by [sender.friendly_name]</span>")
 	return "Restarting."
+	world.TgsEndProcess()
