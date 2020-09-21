@@ -239,9 +239,9 @@
 					D.adjust_money(-points_lost)
 		// me fail arithmetic, me brian hurt
 		playsound(src, 'sound/machines/buzz-sigh.ogg', 30, 1)
-		if(difficulty == "Easy") // me fail arithmetic, me brian hurt
-			to_chat(user,"<span class='warning'>You feel lightheaded after failing such an easy question...</span>")
-			LM.adjustOrganLoss(ORGAN_SLOT_BRAIN, 10)
+		if(difficulty == "Easy") // me fail arithmetic, me brian hurt //nice one, brain damage for it, very cool.
+			to_chat(user,"<span class='warning'>You feel sad after failing such an easy question...</span>")
+			SEND_SIGNAL(LM, COMSIG_ADD_MOOD_EVENT, "failed_easy", /datum/mood_event/failed_easy)
 		return
 	
 	// Award points for a correct answer.

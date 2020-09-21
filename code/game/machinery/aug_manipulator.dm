@@ -16,7 +16,6 @@
 		. += "<span class='notice'>Alt-click to eject the limb.</span>"
 
 /obj/machinery/aug_manipulator/Initialize()
-	. = ..()
 	initial_icon_state = initial(icon_state)
 	return ..()
 
