@@ -41,7 +41,6 @@
 		/obj/item/stock_parts/manipulator = 5,
 		/obj/item/stock_parts/scanning_module = 5,
 		/obj/item/stack/ore/bluespace_crystal = 5)
-	needs_anchored = FALSE
 
 /obj/item/circuitboard/machine/telecomms/message_server
 	name = "Message Server (Machine Board)"
@@ -50,3 +49,11 @@
 		/obj/item/stock_parts/manipulator = 2,
 		/obj/item/stack/cable_coil = 1,
 		/obj/item/stock_parts/subspace/filter = 1)
+
+/obj/item/circuitboard/machine/aug_manipulator
+	name = "Augment Manipulator (Machine Board)"
+	build_path = /obj/machinery/aug_manipulator
+
+/obj/item/circuitboard/machine/pdapainter
+	name = "PDA painter (Machine Board)"
+	build_path = /obj/machinery/pdapainter

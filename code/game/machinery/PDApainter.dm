@@ -101,7 +101,7 @@
 	else
 		return ..()
 
-/obj/machinery/pdapainter/deconstruct(disassembled = TRUE)
+/obj/machinery/aug_manipulator/obj_break(damage_flag)
 	if(!(flags_1 & NODECONSTRUCT_1))
 		if(!(stat & BROKEN))
 			stat |= BROKEN

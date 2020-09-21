@@ -74,3 +74,11 @@
 	build_path = /obj/item/circuitboard/machine/spaceship_navigation_beacon
 	category = list("Misc. Machinery")
 	departmental_flags = DEPARTMENTAL_FLAG_SCIENCE | DEPARTMENTAL_FLAG_ENGINEERING
+
+/datum/design/board/pdapainter
+	name = "Machine Design (PDA painter)"
+	desc = "The circuit board for a pda painter"
+	id = "pdapaint"
+	build_path = /obj/item/circuitboard/machine/pdapainter
+	category = list("Misc. Machinery")
+	departmental_flags = DEPARTMENTAL_FLAG_SERVICE
