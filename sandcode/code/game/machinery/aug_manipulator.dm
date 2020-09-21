@@ -1,7 +1,7 @@
 /obj/machinery/aug_manipulator
 	circuit = /obj/item/circuitboard/machine/aug_manipulator
 
-/obj/machinery/aug_manipulator/Initialize() //aug_manipulator code is so stupid that i sincerely can't make out why it doesn't just work normally 
+/obj/machinery/aug_manipulator/New() //aug_manipulator code is so stupid that i sincerely can't make out why it doesn't just work normally 
 	. = ..()								//in any case if you figure out how to make it just work normally, have a go at it.
 	if(!component_parts)
 		circuit = null
