@@ -591,6 +591,10 @@
 		if(wear_suit.flags_inv & HIDESHOES)
 			LAZYOR(., SLOT_SHOES)
 			LAZYOR(., SLOT_W_SOCKS)
+	if(w_uniform)
+		if(underwear_hidden())
+			LAZYOR(., SLOT_W_SHIRT)
+			LAZYOR(., SLOT_W_UNDERWEAR)
 
 /mob/living/carbon/human/assess_threat(judgement_criteria, lasercolor = "", datum/callback/weaponcheck=null)
 	if(judgement_criteria & JUDGE_EMAGGED)

@@ -1,9 +1,12 @@
 /obj/machinery/vending/clothing/New(loc, ...)
 	. = ..()
 	products[/obj/item/clothing/head/wig] = 5
-	for(var/datum/gear/G in typesof(/datum/gear/underwear))
+	for(var/P in typesof(/datum/gear/underwear))
+		var/datum/gear/G = P
 		products[initial(G.path)] = 5
-	for(var/datum/gear/G in typesof(/datum/gear/shirt))
+	for(var/P in typesof(/datum/gear/shirt))
+		var/datum/gear/G = P
 		products[initial(G.path)] = 5
-	for(var/datum/gear/G in typesof(/datum/gear/socks))
+	for(var/P in typesof(/datum/gear/socks))
+		var/datum/gear/G = P
 		products[initial(G.path)] = 5
