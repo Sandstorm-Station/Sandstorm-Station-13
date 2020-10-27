@@ -35,3 +35,8 @@ GLOBAL_LIST_EMPTY(tile_reskin_lists)
 	if(!QDELETED(choice)) // Tile could have merged with stuff on the ground. The user will have to pick it up if so.
 		user.put_in_active_hand(choice)
 	qdel(src)
+
+/obj/item/stack/tile/examine(mob/user)
+	. = ..()
+	if(tile_reskin_types)
+		. += "<span class='notice'>These kinds of tiles can be re-skinned! Use it on hand to reskin.</span>"
