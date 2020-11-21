@@ -104,3 +104,32 @@
 	time = 70
 	subcategory = CAT_TOOL
 	category = CAT_MISC
+	
+/datum/crafting_recipe/bin
+	name = "Matter Bin"
+	result = /obj/item/stock_parts/matter_bin
+	reqs = list(/obj/item/stack/sheet/metal = 3)
+	tools = list(TOOL_WIRECUTTER, TOOL_WELDER)
+	time = 70
+	subcategory = CAT_TOOL
+	category = CAT_MISC
+	
+/datum/crafting_recipe/manipulator
+	name = "Micro Manipulator"
+	result = /obj/item/stock_parts/manipulator
+	reqs = list(obj/item/stack/sheet/metal = 1,
+				/obj/item/stack/cable_coil = 5)
+	tools = list(TOOL_SCREWDRIVER, TOOL_WIRECUTTER, TOOL_WELDER)
+	time = 70
+	subcategory = CAT_TOOL
+	category = CAT_MISC
+	
+	/datum/crafting_recipe/slime_core
+	name = "Slime Core"
+	result = /obj/item/slime_extract/grey
+	reqs = list(/datum/reagent/toxin/slimejelly = 100, 
+				/datum/reagent/toxin/plasma = 20)
+	tools = list(TOOL_WELDER)
+	time = 100
+	subcategory = CAT_TOOL
+	category = CAT_MISC
