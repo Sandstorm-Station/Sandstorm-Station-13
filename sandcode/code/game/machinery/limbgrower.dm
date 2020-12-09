@@ -170,15 +170,23 @@
 	var/obj/item/bodypart/limb
 	var/datum/species/selected = stored_species[selected_category]
 	limb = new buildpath(loc)
-	limb.icon = selected.icon_limbs
-	// Set this limb up using the species name and body zone
-	limb.icon_state = "[selected.limbs_id]_[limb.body_zone]"
-	if((limb.body_zone in ORGAN_BODYPARTS) && selected.sexes)
-		limb.icon_state += "[pick("_m", "_f")]"
+	limb.base_bp_icon = selected.icon_limbs || DEFAULT_BODYPART_ICON_ORGANIC
+	limb.species_id = selected.limbs_id
+	limb.color_src = (MUTCOLORS in selected.species_traits ? MUTCOLORS : (selected.use_skintones ? SKINTONE : FALSE))
+	limb.should_draw_gender = (selected.sexes && (limb.body_zone in ORGAN_BODYPARTS))
+	limb.update_limb(TRUE)
+	limb.update_icon_dropped()
 	limb.name = "\improper synthetic [lowertext(selected.name)] [limb.name]"
 	limb.desc = "A synthetic [selected_category] limb that will morph on its first use in surgery. This one is for the [parse_zone(limb.body_zone)]."
-	limb.species_id = selected_category
-	limb.update_icon_dropped()
+	for(var/obj/item/bodypart/BP in limb)
+		BP.base_bp_icon = selected.icon_limbs || DEFAULT_BODYPART_ICON_ORGANIC
+		BP.species_id = selected.limbs_id
+		BP.color_src = (MUTCOLORS in selected.species_traits ? MUTCOLORS : (selected.use_skintones ? SKINTONE : FALSE))
+		BP.should_draw_gender = (selected.sexes && (limb.body_zone in ORGAN_BODYPARTS))
+		BP.update_limb(TRUE)
+		BP.update_icon_dropped()
+		BP.name = "\improper synthetic [lowertext(selected.name)] [limb.name]"
+		BP.desc = "A synthetic [selected_category] limb that will morph on its first use in surgery. This one is for the [parse_zone(limb.body_zone)]."
 
 /obj/machinery/limbgrower/proc/build_genital(buildpath)
 	//i needed to create a way to customize gene tools using dna
@@ -320,3 +328,33 @@
 				dna_disk = null
 			else
 				to_chat(user, "<span class='warning'>\The [src] has doesn't have a disk on it!")
+
+//Defines some vars that makes limbs appears, TO-DO: define every single species.
+
+/datum/species/human
+	limbs_id = SPECIES_HUMAN
+	icon_limbs = 'icons/mob/human_parts_greyscale.dmi'
+
+/datum/species/lizard
+	limbs_id = SPECIES_LIZARD
+	icon_limbs = 'icons/mob/human_parts_greyscale.dmi'
+
+/datum/species/mammal
+	limbs_id = SPECIES_MAMMAL
+	icon_limbs = 'icons/mob/human_parts_greyscale.dmi'
+
+/datum/species/insect
+	limbs_id = SPECIES_INSECT
+	icon_limbs = 'icons/mob/human_parts_greyscale.dmi'
+
+/datum/species/fly
+	limbs_id = SPECIES_FLY
+	icon_limbs = 'icons/mob/human_parts.dmi'
+
+/datum/species/plasmaman
+	limbs_id = SPECIES_PLASMAMAN
+	icon_limbs = 'icons/mob/human_parts.dmi'
+
+/datum/species/xeno
+	limbs_id = SPECIES_XENOHYBRID
+	icon_limbs = 'icons/mob/human_parts_greyscale.dmi'
