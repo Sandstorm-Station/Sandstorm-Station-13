@@ -59,7 +59,7 @@
 
 	user.log_message(msg, LOG_EMOTE)
 	//msg = "<b>[user]</b> " + msg //SKYRAT CHANGE
-	var/dchatmsg = "<b>[user]</b> " + msg //SKYRAT CHANGE
+	var/dchatmsg = "<span class='emote'><b>[user]</b> [msg]</span>" //SKYRAT CHANGE
 
 	for(var/mob/M in GLOB.dead_mob_list)
 		if(!M.client || isnewplayer(M))
@@ -152,7 +152,7 @@
 	var/sound //Sound to play when emote is called
 	var/vary = FALSE	//used for the honk borg emote
 	var/volume = 50
-	mob_type_allowed_typecache = list(/mob/living/brain, /mob/living/silicon)
+	mob_type_allowed_typecache = list(/mob/living/brain, /mob/living/silicon, /mob/camera/aiEye)
 
 /datum/emote/sound/run_emote(mob/user, params)
 	. = ..()
