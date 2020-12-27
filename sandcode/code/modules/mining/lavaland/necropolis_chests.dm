@@ -633,6 +633,9 @@
 		if(34)
 			new /obj/item/clothing/accessory/lavawalk(src)
 			return list(/obj/item/clothing/accessory/lavawalk)
+		if(35)
+			new /obj/item/gun/energy/kinetic_accelerator/premiumka/ashenka(src)
+			return list(/obj/item/gun/energy/kinetic_accelerator/premiumka/ashenka)
 
 /obj/item/gun/magic/staff/locker/trashy
 	max_charges = 1
