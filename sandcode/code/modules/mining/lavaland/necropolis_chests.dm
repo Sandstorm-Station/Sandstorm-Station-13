@@ -518,7 +518,7 @@
 
 //normal chests
 /obj/structure/closet/crate/necropolis/tendril/PopulateContents()
-	var/loot = rand(1,34)
+	var/loot = rand(1,35)
 	new /obj/item/stock_parts/cell/high/plus/argent(src)
 	switch(loot)
 		if(1)
