@@ -77,41 +77,6 @@
 	slot_flags = ITEM_SLOT_FEET | ITEM_SLOT_HEAD | ITEM_SLOT_ID | ITEM_SLOT_BACK | ITEM_SLOT_NECK
 	w_class = null //handled by their size
 
-/obj/item/clothing/head/mob_holder/micro/Initialize(mapload, mob/living/M, _worn_state, alt_worn, lh_icon, rh_icon)
-	. = ..()
-
-	if(M)
-		M.setDir(SOUTH)
-		held_mob = M
-		M.forceMove(src)
-		appearance = M.appearance
-		name = M.name
-		desc = M.desc
-		assimilate(M)
-
-	if(alt_worn)
-		mob_overlay_icon = alt_worn
-	if(_worn_state)
-		item_state = _worn_state
-		icon_state = _worn_state
-	if(lh_icon)
-		lefthand_file = lh_icon
-	if(rh_icon)
-		righthand_file = rh_icon
-
-/obj/item/clothing/head/mob_holder/micro/Destroy()
-	if(held_mob)
-		release()
-	return ..()
-
-/obj/item/clothing/head/mob_holder/micro/dropped()
-	..()
-	if(isturf(loc))//don't release on soft-drops
-		release()
-
-/obj/item/clothing/head/mob_holder/micro/relaymove(mob/user)
-	return
-
 //TODO: add a timer to escape someone's grip dependant on size diff
 /obj/item/clothing/head/mob_holder/micro/container_resist(mob/living/user)
 	if(user.incapacitated())
@@ -128,31 +93,6 @@
 		return
 	visible_message("<span class='warning'>[src] escapes [L]!")
 	release()
-
-/obj/item/clothing/head/mob_holder/micro/assume_air(datum/gas_mixture/env)
-	var/atom/location = loc
-	if(!loc)
-		return //null
-	var/turf/T = get_turf(loc)
-	while(location != T)
-		location = location.loc
-		if(ismob(location))
-			return location.loc.assume_air(env)
-	return location.assume_air(env)
-
-/obj/item/clothing/head/mob_holder/micro/remove_air(amount)
-	var/atom/location = loc
-	if(!loc)
-		return //null
-	var/turf/T = get_turf(loc)
-	while(location != T)
-		location = location.loc
-		if(ismob(location))
-			return location.loc.remove_air(amount)
-	return location.remove_air(amount)
-
-/obj/item/clothing/head/mob_holder/micro/examine(mob/user)
-	return held_mob?.examine(user) || ..()
 
 /obj/item/clothing/head/mob_holder/micro/MouseDrop(mob/M as mob)
 	..()
@@ -185,5 +125,4 @@
 			M.help_shake_act(user)
 
 /obj/item/clothing/head/mob_holder/micro/attacked_by(obj/item/I, mob/living/user)
-	for(var/mob/living/carbon/human/M in contents)
-		M.attacked_by(I, user)
+	return held_mob?.attacked_by(I, user) || ..()
