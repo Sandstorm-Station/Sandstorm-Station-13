@@ -1,3 +1,10 @@
+/mob/living/carbon/human/Crossed(atom/movable/AM)
+	. = ..()
+	//Hyper Change - Step on people
+	var/mob/living/carbon/human/H = AM
+	if(istype(H) && lying && H.a_intent != INTENT_HELP)
+		H.handle_micro_bump_other(src)
+
 /mob/living/carbon/human/Topic(href, href_list)
 	. = ..()
 	if(href_list["skyrat_ooc_notes"])
