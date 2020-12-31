@@ -76,9 +76,8 @@
 	icon_state = ""
 	slot_flags = ITEM_SLOT_FEET | ITEM_SLOT_HEAD | ITEM_SLOT_ID | ITEM_SLOT_BACK | ITEM_SLOT_NECK
 	w_class = null //handled by their size
-	can_head = TRUE
 
-/obj/item/clothing/head/mob_holder/micro/Initialize(mapload, mob/living/M, _worn_state, alt_worn, lh_icon, rh_icon, _can_head_override = FALSE)
+/obj/item/clothing/head/mob_holder/micro/Initialize(mapload, mob/living/M, _worn_state, alt_worn, lh_icon, rh_icon)
 	. = ..()
 
 	if(M)
@@ -90,8 +89,6 @@
 		desc = M.desc
 		assimilate(M)
 
-	if(_can_head_override)
-		can_head = _can_head_override
 	if(alt_worn)
 		mob_overlay_icon = alt_worn
 	if(_worn_state)
