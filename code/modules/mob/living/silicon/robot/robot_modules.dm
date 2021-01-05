@@ -154,14 +154,19 @@
 	if(istype(src, /obj/item/robot_module/engineering))
 		I.icon_state = "decompiler"
 	if(istype(src, /obj/item/robot_module/security))
-		I.icon_state = "sleeperb"
+		//I.icon_state = "sleeperb"
+		var/obj/item/dogborg/sleeper/K9/J = new(src) // Basically functional
+		basic_modules += J
 	if(istype(src, /obj/item/robot_module/medical))
-		I.icon_state = "sleeper"
+		//I.icon_state = "sleeper"
+		var/obj/item/dogborg/sleeper/J = new(src) // Basically functional
+		basic_modules += J
 	if(istype(src, /obj/item/robot_module/butler))
 		I.icon_state = "servicer"
 		if(cyborg_base_icon == "scrubpup")
 			I.icon_state = "compactor"
-	basic_modules += I
+	if(!(istype(src, /obj/item/robot_module/security) || istype(src, /obj/item/robot_module/medical)))
+		basic_modules += I
 	rebuild_modules()
 
 /obj/item/robot_module/proc/remove_module(obj/item/I, delete_after)
