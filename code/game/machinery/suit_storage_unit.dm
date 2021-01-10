@@ -10,6 +10,7 @@
 	var/obj/item/clothing/suit/space/suit = null
 	var/obj/item/clothing/head/helmet/space/helmet = null
 	var/obj/item/clothing/mask/mask = null
+	var/obj/item/clothing/shoes/shoes = null
 	var/obj/item/storage = null
 								// if you add more storage slots, update cook() to clear their radiation too.
 
@@ -19,6 +20,8 @@
 	var/helmet_type = null
 	/// What type of breathmask the unit starts with when spawned.
 	var/mask_type = null
+	/// What type of shoes the unit starts with when spawned.
+	var/shoes_type = null
 	/// What type of additional item the unit starts with when spawned.
 	var/storage_type = null
 
@@ -58,12 +61,12 @@
 /obj/machinery/suit_storage_unit/engine
 	suit_type = /obj/item/clothing/suit/space/hardsuit/engine
 	mask_type = /obj/item/clothing/mask/breath
-	storage_type= /obj/item/clothing/shoes/magboots
+	shoes_type= /obj/item/clothing/shoes/magboots
 
 /obj/machinery/suit_storage_unit/ce
 	suit_type = /obj/item/clothing/suit/space/hardsuit/engine/elite
 	mask_type = /obj/item/clothing/mask/breath
-	storage_type= /obj/item/clothing/shoes/magboots/advance
+	shoes_type= /obj/item/clothing/shoes/magboots/advance
 
 /obj/machinery/suit_storage_unit/security
 	suit_type = /obj/item/clothing/suit/space/hardsuit/security
@@ -146,6 +149,8 @@
 		helmet = new helmet_type(src)
 	if(mask_type)
 		mask = new mask_type(src)
+	if(shoes_type)
+		shoes = new shoes_type(src)
 	if(storage_type)
 		storage = new storage_type(src)
 	update_icon()
@@ -154,6 +159,7 @@
 	QDEL_NULL(suit)
 	QDEL_NULL(helmet)
 	QDEL_NULL(mask)
+	QDEL_NULL(shoes)
 	QDEL_NULL(storage)
 	return ..()
 
@@ -193,6 +199,7 @@
 	helmet = null
 	suit = null
 	mask = null
+	shoes = null
 	storage = null
 	occupant = null
 
@@ -211,6 +218,7 @@
 			"suit" = create_silhouette_of(/obj/item/clothing/suit/space/eva),
 			"helmet" = create_silhouette_of(/obj/item/clothing/head/helmet/space/eva),
 			"mask" = create_silhouette_of(/obj/item/clothing/mask/breath),
+			"shoes" = create_silhouette_of(/obj/item/clothing/shoes/magboots),
 			"storage" = create_silhouette_of(/obj/item/tank/internals/oxygen),
 		)
 
@@ -263,7 +271,7 @@
 		if ("disinfect")
 			if (occupant && safeties)
 				return
-			else if (!helmet && !mask && !suit && !storage && !occupant)
+			else if (!helmet && !mask && !suit && !shoes && !storage && !occupant)
 				return
 			else
 				if (occupant)
@@ -313,7 +321,7 @@
 	if(!is_operational())
 		to_chat(user, "<span class='warning'>The unit is not operational!</span>")
 		return
-	if(occupant || helmet || suit || storage)
+	if(occupant || helmet || suit || shoes || storage)
 		to_chat(user, "<span class='warning'>It's too cluttered inside to fit in!</span>")
 		return
 
@@ -323,7 +331,7 @@
 		target.visible_message("<span class='warning'>[user] starts shoving [target] into [src]!</span>", "<span class='userdanger'>[user] starts shoving you into [src]!</span>")
 
 	if(do_mob(user, target, 30))
-		if(occupant || helmet || suit || storage)
+		if(occupant || helmet || suit || shoes || storage)
 			return
 		if(target == user)
 			user.visible_message("<span class='warning'>[user] slips into [src] and closes the door behind [user.p_them()]!</span>", "<span class=notice'>You slip into [src]'s cramped space and shut its door.</span>")
@@ -369,6 +377,8 @@
 			qdel(suit) // Delete everything but the occupant.
 			mask = null
 			qdel(mask)
+			shoes = null
+			qdel(shoes)
 			storage = null
 			qdel(storage)
 			// The wires get damaged too.
@@ -390,6 +400,9 @@
 			if(mask)
 				things_to_clear += mask
 				things_to_clear += mask.GetAllContents()
+			if(shoes)
+				things_to_clear += shoes
+				things_to_clear += shoes.GetAllContents()
 			if(storage)
 				things_to_clear += storage
 				things_to_clear += storage.GetAllContents()
@@ -481,6 +494,13 @@
 			if(!user.transferItemToLoc(I, src))
 				return
 			mask = I
+		else if(istype(I, /obj/item/clothing/shoes))
+			if(shoes)
+				to_chat(user, "<span class='warning'>The unit already contains some shoes!</span>")
+				return
+			if(!user.transferItemToLoc(I, src))
+				return
+			shoes = I
 		else
 			if(storage)
 				to_chat(user, "<span class='warning'>The auxiliary storage compartment is full!</span>")
