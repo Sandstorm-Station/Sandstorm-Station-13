@@ -68,26 +68,6 @@
 	var/mob/living/silicon/robot/R = usr
 	R.uneq_active()
 
-/obj/screen/robot/lamp
-	name = "headlamp"
-	icon_state = "lamp0"
-
-/obj/screen/robot/lamp/Click()
-	if(..())
-		return
-	var/mob/living/silicon/robot/R = usr
-	R.control_headlamp()
-
-/obj/screen/robot/thrusters
-	name = "ion thrusters"
-	icon_state = "ionpulse0"
-
-/obj/screen/robot/thrusters/Click()
-	if(..())
-		return
-	var/mob/living/silicon/robot/R = usr
-	R.toggle_ionpulse()
-
 /obj/screen/robot/sensors
 	name = "Sensor Augmentation"
 	icon_state = "cyborg_sensor"
@@ -148,36 +128,36 @@
 
 //End of module select
 
+	using = new /obj/screen/robot/lamp()
+	using.screen_loc = ui_borg_lamp
+	using.hud = src
+	static_inventory += using
+	mymobR.lampButton = using
+	var/obj/screen/robot/lamp/lampscreen = using
+	lampscreen.robot = mymobR
+
 //Photography stuff
 	using = new /obj/screen/ai/image_take()
 	using.screen_loc = ui_borg_camera
 	using.hud = src
 	static_inventory += using
 
-	using = new /obj/screen/ai/image_view()
-	using.screen_loc = ui_borg_album
+//Borg Integrated Tablet
+	using = new /obj/screen/robot/modPC()
+	using.screen_loc = ui_borg_tablet
 	using.hud = src
 	static_inventory += using
+	mymobR.interfaceButton = using
+	if(mymobR.modularInterface)
+		using.vis_contents += mymobR.modularInterface
+	var/obj/screen/robot/modPC/tabletbutton = using
+	tabletbutton.robot = mymobR
 
-//Sec/Med HUDs
-	using = new /obj/screen/robot/sensors()
-	using.screen_loc = ui_borg_sensor
+//Alerts
+	using = new /obj/screen/robot/alerts()
+	using.screen_loc = ui_borg_alerts
 	using.hud = src
 	static_inventory += using
-
-//Headlamp control
-	using = new /obj/screen/robot/lamp()
-	using.screen_loc = ui_borg_lamp
-	using.hud = src
-	static_inventory += using
-	mymobR.lamp_button = using
-
-//Thrusters
-	using = new /obj/screen/robot/thrusters()
-	using.screen_loc = ui_borg_thrusters
-	using.hud = src
-	static_inventory += using
-	mymobR.thruster_button = using
 
 //Intent
 	action_intent = new /obj/screen/act_intent/robot()
