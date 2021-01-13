@@ -56,6 +56,7 @@
 	data["printerTonerMax"] = borgo.tonermax //It's a variable, might as well use it
 	data["thrustersInstalled"] = borgo.ionpulse //If we have a thruster uprade
 	data["thrustersStatus"] = "[borgo.ionpulse_on?"ACTIVE":"DISABLED"]" //Feedback for thruster status
+	data["lampPowerUse"] = clamp((borgo.lamp_enabled * borgo.lamp_intensity),1,borgo.cell.charge)
 
 	//DEBUG -- Cover, TRUE for locked
 	data["cover"] = "[borgo.locked? "LOCKED":"UNLOCKED"]"

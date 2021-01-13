@@ -28,8 +28,8 @@ export const NtosRobotactContent = (props, context) => {
     maxcharge,
     integrity,
     lampIntensity,
+    lampPowerUse,
     cover,
-    set_module,
     locomotion,
     wireModule,
     wireCamera,
@@ -137,7 +137,7 @@ export const NtosRobotactContent = (props, context) => {
                   onChange={(e, value) => act('lampIntensity', {
                     ref: value,
                   })} />
-                Lamp power usage: {lampIntensity/2} watts
+                Lamp power usage: {lampPowerUse} watts
               </Section>
             </Flex.Item>
             <Flex.Item
