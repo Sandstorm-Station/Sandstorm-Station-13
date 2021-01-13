@@ -8,6 +8,7 @@
 	cell = new /obj/item/stock_parts/cell/infinite(src, 30000)
 	laws = new /datum/ai_laws/roleplay()
 	//You aren't allowed to unlock, not sorry
+	//Moved to tgui\packages\tgui\interfaces\NtosRobotact.js:181
 	//This part is because the camera stays in the list, so we'll just do a check
 	if(!QDELETED(builtInCamera))
 		QDEL_NULL(builtInCamera)
