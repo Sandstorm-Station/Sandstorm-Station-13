@@ -24,14 +24,6 @@
 	category = list("initial", "Electronics")
 	departmental_flags = DEPARTMENTAL_FLAG_SERVICE | DEPARTMENTAL_FLAG_ENGINEERING
 
-/datum/design/board/spaceship_navigation_beacon
-	name = "Machine Design (Bluespace Navigation Gigabeacon)"
-	desc = "The circuit board for a Bluespace Navigation Gigabeacon."
-	id = "spaceship_navigation_beacon"
-	build_path = /obj/item/circuitboard/machine/spaceship_navigation_beacon
-	category = list ("Teleportation Machinery")
-	departmental_flags = DEPARTMENTAL_FLAG_ENGINEERING | DEPARTMENTAL_FLAG_SCIENCE
-	
 /datum/design/board/autodoc
 	name = "Machine Design (Autodoc)"
 	desc = "The circuit board for an Autodoc."
@@ -65,12 +57,3 @@
 	build_path = /obj/item/circuitboard/machine/bluespace_miner
 	category = list("Misc. Machinery")
 	departmental_flags = DEPARTMENTAL_FLAG_SCIENCE | DEPARTMENTAL_FLAG_CARGO | DEPARTMENTAL_FLAG_ENGINEERING
-
-//Spaceship beacon
-/datum/design/board/spaceship_navigation_beacon
-	name = "Machine Design (Bluespace Navigation Gigabeacon)"
-	desc = "Allows the creation of a beacon that you can fly to with your ship."
-	id = "shuttle_beacon"
-	build_path = /obj/item/circuitboard/machine/spaceship_navigation_beacon
-	category = list("Misc. Machinery")
-	departmental_flags = DEPARTMENTAL_FLAG_SCIENCE | DEPARTMENTAL_FLAG_ENGINEERING

@@ -43,6 +43,6 @@
 	design_ids += "signaler_nanites"
 	. = ..()
 
-/datum/techweb_node/basic_shuttle_tech/New()
-	design_ids += "shuttle_beacon"
+/datum/techweb_node/engineering/New()
+	design_ids += "upgraded_welder"
 	. = ..()
