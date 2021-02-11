@@ -17,7 +17,7 @@
 //Proc to check if underwear is hidden, removed socks to make separate proc.
 /mob/living/carbon/human/proc/underwear_hidden()
 	for(var/obj/item/I in list(w_uniform, wear_suit))
-		if(istype(I) && ((I.body_parts_covered & CHEST|GROIN) || (I.flags_inv & HIDEUNDERWEAR))) //Using body_parts_covered because obviously there was a better way to do it
+		if(istype(I) && ((I.body_parts_covered & CHEST) || (I.body_parts_covered & GROIN) || (I.flags_inv & HIDEUNDERWEAR))) //Using body_parts_covered because obviously there was a better way to do it
 			return TRUE
 	return FALSE
 
