@@ -155,9 +155,6 @@ GLOBAL_VAR_INIT(embedpocalypse, FALSE) // if true, all items will be able to emb
 
 	var/canMouseDown = FALSE
 
-	//SKYRAT CHANGE
-	var/hide_underwear_examine = FALSE
-	//and no, i'm not taking self-equip delays, period.
 
 /obj/item/Initialize()
 
@@ -471,6 +468,10 @@ GLOBAL_VAR_INIT(embedpocalypse, FALSE) // if true, all items will be able to emb
 				melee_attack_chain(usr, over)
 			usr.FlushCurrentAction()
 			return TRUE //returning TRUE as a "is this overridden?" flag
+	if(isrevenant(usr))
+		if(RevenantThrow(over, usr, src))
+			return
+
 	if(!Adjacent(usr) || !over.Adjacent(usr))
 		return // should stop you from dragging through windows
 
@@ -953,6 +954,10 @@ GLOBAL_VAR_INIT(embedpocalypse, FALSE) // if true, all items will be able to emb
 // Returns a numeric value for sorting items used as parts in machines, so they can be replaced by the rped
 /obj/item/proc/get_part_rating()
 	return 0
+
+//Can this item be given to people?
+/obj/item/proc/can_give()
+	return TRUE
 
 /obj/item/doMove(atom/destination)
 	if (ismob(loc))

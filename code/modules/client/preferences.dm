@@ -107,11 +107,10 @@ GLOBAL_LIST_EMPTY(preferences_datums)
 	var/vorepref = "Ask"
 	var/extremepref = "No" //This is for extreme shit, maybe even literal shit, better to keep it on no by default
 	var/extremeharm = "No" //If "extreme content" is enabled, this option serves as a toggle for the related interactions to cause damage or not
-	var/language = ""
+	var/list/language = list()
 	var/see_chat_emotes = TRUE
 	var/enable_personal_chat_color = FALSE
 	var/personal_chat_color = "#ffffff"
-	var/list/color_gear = list()
 	//SKYRAT CHANGES END
 	var/underwear = "Nude"				//underwear type
 	var/undie_color = "FFFFFF"
@@ -232,6 +231,8 @@ GLOBAL_LIST_EMPTY(preferences_datums)
 
 	var/hide_ckey = FALSE //pref for hiding if your ckey shows round-end or not
 
+	var/list/tcg_cards = list()
+
 /datum/preferences/New(client/C)
 	parent = C
 
@@ -337,7 +338,8 @@ GLOBAL_LIST_EMPTY(preferences_datums)
 
 			//SKYRAT EDIT - additional language
 			dat += "<b>Additional Language</b><br>"
-			dat += "<a href='?_src_=prefs;preference=language;task=menu'>[language ? language : "None"]</a></center><br>"
+			var/list/languages_sorted = sortList(language)
+			dat += "<a href='?_src_=prefs;preference=language;task=menu'>[language.len ? languages_sorted.Join(", ") : "None"]</a></center><br>"
 			//
 			dat += "<b>Custom job preferences:</b><BR>"
 			dat += "<a href='?_src_=prefs;preference=ai_core_icon;task=input'><b>Preferred AI Core Display:</b> [preferred_ai_core_display]</a><br>"
@@ -936,19 +938,23 @@ GLOBAL_LIST_EMPTY(preferences_datums)
 							continue
 						var/class_link = ""
 						var/list/loadout_item = has_loadout_gear(loadout_slot, "[gear.type]")
-						var/extra_color_data = ""
+						var/extra_loadout_data = ""
 						if(loadout_item)
 							class_link = "style='white-space:normal;' class='linkOn' href='?_src_=prefs;preference=gear;toggle_gear_path=[html_encode(name)];toggle_gear=0'"
 							if(gear.loadout_flags & LOADOUT_CAN_COLOR_POLYCHROMIC)
-								extra_color_data += "<BR><a href='?_src_=prefs;preference=gear;loadout_color_polychromic=1;loadout_gear_name=[html_encode(gear.name)];'>Color</a>"
+								extra_loadout_data += "<BR><a href='?_src_=prefs;preference=gear;loadout_color_polychromic=1;loadout_gear_name=[html_encode(gear.name)];'>Color</a>"
 								for(var/loadout_color in loadout_item[LOADOUT_COLOR])
-									extra_color_data += "<span style='border: 1px solid #161616; background-color: [loadout_color];'>&nbsp;&nbsp;&nbsp;</span>"
+									extra_loadout_data += "<span style='border: 1px solid #161616; background-color: [loadout_color];'>&nbsp;&nbsp;&nbsp;</span>"
 							else
 								var/loadout_color_non_poly = "#FFFFFF"
 								if(length(loadout_item[LOADOUT_COLOR]))
 									loadout_color_non_poly = loadout_item[LOADOUT_COLOR][1]
-								extra_color_data += "<BR><a href='?_src_=prefs;preference=gear;loadout_color=1;loadout_gear_name=[html_encode(gear.name)];'>Color</a>"
-								extra_color_data += "<span style='border: 1px solid #161616; background-color: [loadout_color_non_poly];'>&nbsp;&nbsp;&nbsp;</span>"
+								extra_loadout_data += "<BR><a href='?_src_=prefs;preference=gear;loadout_color=1;loadout_gear_name=[html_encode(gear.name)];'>Color</a>"
+								extra_loadout_data += "<span style='border: 1px solid #161616; background-color: [loadout_color_non_poly];'>&nbsp;&nbsp;&nbsp;</span>"
+							if(gear.loadout_flags & LOADOUT_CAN_NAME)
+								extra_loadout_data += "<BR><a href='?_src_=prefs;preference=gear;loadout_rename=1;loadout_gear_name=[html_encode(gear.name)];'>Name</a> [loadout_item[LOADOUT_CUSTOM_NAME] ? loadout_item[LOADOUT_CUSTOM_NAME] : "N/A"]"
+							if(gear.loadout_flags & LOADOUT_CAN_DESCRIPTION)
+								extra_loadout_data += "<BR><a href='?_src_=prefs;preference=gear;loadout_redescribe=1;loadout_gear_name=[html_encode(gear.name)];'>Description</a>"
 						else if((gear_points - gear.cost) < 0)
 							class_link = "style='white-space:normal;' class='linkOff'"
 						else if(donoritem)
@@ -957,7 +963,7 @@ GLOBAL_LIST_EMPTY(preferences_datums)
 							class_link = "style='white-space:normal;' href='?_src_=prefs;preference=gear;toggle_gear_path=[html_encode(name)];toggle_gear=1'"
 						else
 							class_link = "style='white-space:normal;background:#eb2e2e;' class='linkOff'"
-						dat += "<tr style='vertical-align:top;'><td width=15%><a [class_link]>[name]</a>[extra_color_data]</td>"
+						dat += "<tr style='vertical-align:top;'><td width=15%><a [class_link]>[name]</a>[extra_loadout_data]</td>"
 						dat += "<td width = 5% style='vertical-align:top'>[gear.cost]</td><td>"
 						if(islist(gear.restricted_roles))
 							if(gear.restricted_roles.len)
@@ -970,14 +976,15 @@ GLOBAL_LIST_EMPTY(preferences_datums)
 									dat += gear.restricted_roles.Join(";")
 									dat += "</font>"
 						if(!istype(gear, /datum/gear/unlockable))
-							dat += "</td><td><font size=2><i>[gear.description]</i></font></td></tr>"
+							// the below line essentially means "if the loadout item is picked by the user and has a custom description, give it the custom description, otherwise give it the default description"
+							dat += "</td><td><font size=2><i>[loadout_item ? (loadout_item[LOADOUT_CUSTOM_DESCRIPTION] ? loadout_item[LOADOUT_CUSTOM_DESCRIPTION] : gear.description) : gear.description]</i></font></td></tr>"
 						else
 							//we add the user's progress to the description assuming they have progress
 							var/datum/gear/unlockable/unlockable = gear
 							var/progress_made = unlockable_loadout_data[unlockable.progress_key]
 							if(!progress_made)
 								progress_made = 0
-							dat += "</td><td><font size=2><i>[gear.description] Progress: [min(progress_made, unlockable.progress_required)]/[unlockable.progress_required]</i></font></td></tr>"
+							dat += "</td><td><font size=2><i>[loadout_item ? (loadout_item[LOADOUT_CUSTOM_DESCRIPTION] ? loadout_item[LOADOUT_CUSTOM_DESCRIPTION] : gear.description) : gear.description] Progress: [min(progress_made, unlockable.progress_required)]/[unlockable.progress_required]</i></font></td></tr>"
 
 					dat += "</table>"
 		if(4) // Content preferences
@@ -1383,48 +1390,6 @@ GLOBAL_LIST_EMPTY(preferences_datums)
 		if(SSquirks.quirk_points[q] > 0)
 			.++
 
-//SKYRAT EDIT - extra language
-/datum/preferences/proc/SetLanguage(mob/user)
-	var/list/dat = list()
-	dat += "<center><b>Choose an Additional Language</b></center><br>"
-	dat += "<center>Do note, however, than you can only have one chosen language.</center><br>"
-	dat += "<center>If you want no additional language at all, simply remove the currently chosen language.</center><br>"
-	dat += "<hr>"
-	if(SSlanguage && SSlanguage.languages_by_name.len)
-		for(var/V in SSlanguage.languages_by_name)
-			var/datum/language/L = SSlanguage.languages_by_name[V]
-			if(!L)
-				return
-			var/language_name = initial(L.name)
-			var/restricted = FALSE
-			var/has_language = FALSE
-			if(L.restricted)
-				restricted = TRUE
-			if(language_name == language)
-				has_language = TRUE
-			var/font_color = "#4682B4"
-			var/nullify = ""
-			if(restricted && !(language_name in pref_species.languagewhitelist))
-				var/quirklanguagefound = FALSE
-				for(var/datum/quirk/Q in all_quirks)
-					if(language_name in Q.languagewhitelist)
-						quirklanguagefound = TRUE
-				if(!quirklanguagefound)
-					continue
-			else
-				dat += "<b><font color='[font_color]'>[language_name]:</font></b> [initial(L.desc)]"
-				dat += "<a href='?_src_=prefs;preference=language;task=update;language=[has_language ? nullify : language_name]'>[has_language ? "Remove" : "Choose"]</a><br>"
-	else
-		dat += "<center><b>The language subsystem hasn't fully loaded yet! Please wait a bit and try again.</b></center><br>"
-	dat += "<hr>"
-	dat += "<center><a href='?_src_=prefs;preference=language;task=close'>Done</a></center>"
-
-	var/datum/browser/popup = new(user, "mob_occupation", "<div align='center'>Language Preference</div>", 900, 600) //no reason not to reuse the occupation window, as it's cleaner that way
-	popup.set_window_options("can_close=0")
-	popup.set_content(dat.Join())
-	popup.open(FALSE)
-//
-
 /datum/preferences/Topic(href, href_list, hsrc)			//yeah, gotta do this I guess..
 	. = ..()
 	if(href_list["close"])
@@ -1518,7 +1483,7 @@ GLOBAL_LIST_EMPTY(preferences_datums)
 			else
 				SetQuirks(user)
 		return TRUE
-	//SKYRAT CHANGE - only language pref
+//SKYRAT CHANGE - only language pref
 	else if(href_list["preference"] == "language")
 		switch(href_list["task"])
 			if("close")
@@ -1526,11 +1491,14 @@ GLOBAL_LIST_EMPTY(preferences_datums)
 				ShowChoices(user)
 			if("update")
 				var/lang = href_list["language"]
-				if(SSlanguage.languages_by_name[lang] || lang == "")
-					language = lang
+				if(SSlanguage.languages_by_name[lang])
+					toggle_language(lang)
 					SetLanguage(user)
 				else
 					SetLanguage(user)
+			if("reset")
+				language = list()
+				SetLanguage(user)
 			else
 				SetLanguage(user)
 		return TRUE
@@ -2892,7 +2860,9 @@ GLOBAL_LIST_EMPTY(preferences_datums)
 						loadout_data["SAVE_[loadout_slot]"] += list(new_loadout_data) //double packed because it does the union of the CONTENTS of the lists
 					else
 						loadout_data["SAVE_[loadout_slot]"] = list(new_loadout_data) //double packed because you somehow had no save slot in your loadout?
-		if(href_list["loadout_color"])
+
+		if(href_list["loadout_color"] || href_list["loadout_color_polychromic"] || href_list["loadout_rename"] || href_list["loadout_redescribe"])
+			//if the gear doesn't exist, or they don't have it, ignore the request
 			var/name = html_decode(href_list["loadout_gear_name"])
 			var/datum/gear/G = GLOB.loadout_items[gear_category][gear_subcategory][name]
 			if(!G)
@@ -2900,29 +2870,44 @@ GLOBAL_LIST_EMPTY(preferences_datums)
 			var/user_gear = has_loadout_gear(loadout_slot, "[G.type]")
 			if(!user_gear)
 				return
-			if(!length(user_gear[LOADOUT_COLOR]))
-				user_gear[LOADOUT_COLOR] = list("#FFFFFF")
-			var/current_color = user_gear[LOADOUT_COLOR][1]
-			var/new_color = input(user, "Polychromic options", "Choose Color", current_color) as color|null
-			user_gear[LOADOUT_COLOR][1] = sanitize_hexcolor(new_color, 6, TRUE, current_color)
-		if(href_list["loadout_color_polychromic"])
-			var/name = html_decode(href_list["loadout_gear_name"])
-			var/datum/gear/G = GLOB.loadout_items[gear_category][gear_subcategory][name]
-			if(!G)
-				return
-			var/user_gear = has_loadout_gear(loadout_slot, "[G.type]")
-			if(!user_gear)
-				return
-			var/list/color_options = list()
-			for(var/i=1, i<=length(G.loadout_initial_colors), i++)
-				color_options += "Color [i]"
-			var/color_to_change = input(user, "Polychromic options", "Recolor [name]") as null|anything in color_options
-			if(color_to_change)
-				var/color_index = text2num(copytext(color_to_change, 7))
-				var/current_color = user_gear[LOADOUT_COLOR][color_index]
-				var/new_color = input(user, "Polychromic options", "Choose [color_to_change] Color", current_color) as color|null
-				if(new_color)
-					user_gear[LOADOUT_COLOR][color_index] = sanitize_hexcolor(new_color, 6, TRUE, current_color)
+
+			//possible requests: recolor, recolor (polychromic), rename, redescribe
+			//always make sure the gear allows said request before proceeding
+
+			//non-poly coloring can only be done by non-poly items
+			if(href_list["loadout_color"] && !(G.loadout_flags & LOADOUT_CAN_COLOR_POLYCHROMIC))
+				if(!length(user_gear[LOADOUT_COLOR]))
+					user_gear[LOADOUT_COLOR] = list("#FFFFFF")
+				var/current_color = user_gear[LOADOUT_COLOR][1]
+				var/new_color = input(user, "Polychromic options", "Choose Color", current_color) as color|null
+				user_gear[LOADOUT_COLOR][1] = sanitize_hexcolor(new_color, 6, TRUE, current_color)
+
+			//poly coloring can only be done by poly items
+			if(href_list["loadout_color_polychromic"] && (G.loadout_flags & LOADOUT_CAN_COLOR_POLYCHROMIC))
+				var/list/color_options = list()
+				for(var/i=1, i<=length(G.loadout_initial_colors), i++)
+					color_options += "Color [i]"
+				var/color_to_change = input(user, "Polychromic options", "Recolor [name]") as null|anything in color_options
+				if(color_to_change)
+					var/color_index = text2num(copytext(color_to_change, 7))
+					var/current_color = user_gear[LOADOUT_COLOR][color_index]
+					var/new_color = input(user, "Polychromic options", "Choose [color_to_change] Color", current_color) as color|null
+					if(new_color)
+						user_gear[LOADOUT_COLOR][color_index] = sanitize_hexcolor(new_color, 6, TRUE, current_color)
+
+			//both renaming and redescribing strip the input to stop html injection
+
+			//renaming is only allowed if it has the flag for it
+			if(href_list["loadout_rename"] && (G.loadout_flags & LOADOUT_CAN_NAME))
+				var/new_name = stripped_input(user, "Enter new name for item. Maximum [MAX_NAME_LEN] characters.", "Loadout Item Naming", null,  MAX_NAME_LEN)
+				if(new_name)
+					user_gear[LOADOUT_CUSTOM_NAME] = new_name
+
+			//redescribing is only allowed if it has the flag for it
+			if(href_list["loadout_redescribe"] && (G.loadout_flags & LOADOUT_CAN_DESCRIPTION)) //redescribe isnt a real word but i can't think of the right term to use
+				var/new_description = stripped_input(user, "Enter new description for item. Maximum 500 characters.", "Loadout Item Redescribing", null, 500)
+				if(new_description)
+					user_gear[LOADOUT_CUSTOM_DESCRIPTION] = new_description
 
 	ShowChoices(user)
 	return 1
