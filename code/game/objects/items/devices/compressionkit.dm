@@ -88,6 +88,20 @@
 				to_chat(user, "<span class='notice'>You successfully compress [target]! The compressor now has [charges] charges.</span>")
 		else
 			to_chat(user, "<span class='notice'>Anomalous error. Summon a coder.</span>")
+	if(istype(target, /mob/living/carbon/human))
+		var/mob/living/carbon/human/victim = target
+		playsound(get_turf(src), 'sound/weapons/flash.ogg', 50, 1)
+		user.visible_message("<span class='warning'>[user] is preparing to shrink [victim] with their bluespace compression kit!</span>", "<span class='notice'>You prepare to shrink [victim] with your bluespace compression kit!</span>", runechat_popup = TRUE, rune_msg = "is preparing to shrink [victim] with their bluespace compression kit!")
+		if(do_mob(user, victim, 40) && charges > 0 && victim.dna.features["body_size"] > RESIZE_A_TINYMICRO)
+			user.visible_message("<span class='warning'>[user] has shrunk [victim]!</span>", "<span class='notice'>You shrunk [victim]!", runechat_popup = TRUE, rune_msg = "has shrunk [victim]!")
+			playsound(get_turf(src), 'sound/weapons/emitter2.ogg', 50, 1)
+			sparks()
+			flash_lighting_fx(3, 3, LIGHT_COLOR_CYAN)
+			charges -= 1
+			var/old_size = victim.dna.features["body_size"]
+			victim.dna.features["body_size"] -= 0.2
+			victim.dna.update_body_size(old_size)
+			return
 
 /obj/item/compressionkit/attackby(obj/item/I, mob/user, params)
 	..()
