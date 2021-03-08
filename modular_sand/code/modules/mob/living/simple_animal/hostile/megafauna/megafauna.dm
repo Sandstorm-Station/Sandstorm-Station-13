@@ -110,7 +110,7 @@
 	desc += "<br><b>[src] is staggered and can be glory killed!</b>"
 	animate(src, color = "#00FFFF", time = 5)
 
-/mob/living/simple_animal/hostile/megafauna/death()
+/mob/living/simple_animal/hostile/megafauna/death(gibbed, list/force_grant)
 	if(health > 0)
 		return
 	else
@@ -119,18 +119,18 @@
 				M.stop_sound_channel(CHANNEL_JUKEBOX)
 		animate(src, color = initial(color), time = 3)
 		desc = initial(desc)
-		var/datum/status_effect/crusher_damage/C = has_status_effect(STATUS_EFFECT_CRUSHERDAMAGETRACKING)
+		var/datum/status_effect/crusher_damage/crusher_dmg = has_status_effect(STATUS_EFFECT_CRUSHERDAMAGETRACKING)
 		var/crusher_kill = FALSE
-		if(C && crusher_loot && C.total_damage >= maxHealth * 0.6)
+		if(crusher_dmg && crusher_loot && crusher_dmg.total_damage >= maxHealth * 0.6)
 			spawn_crusher_loot()
 			crusher_kill = TRUE
-		if(!(flags_1 & ADMIN_SPAWNED_1))
+		if(true_spawn && !(flags_1 & ADMIN_SPAWNED_1))
 			var/tab = "megafauna_kills"
 			if(crusher_kill)
 				tab = "megafauna_kills_crusher"
-			SSblackbox.record_feedback("tally", tab, 1, "[initial(name)]")
 			if(!elimination)	//used so the achievment only occurs for the last legion to die.
-				grant_achievement(medal_type, score_type, crusher_kill)
+				grant_achievement(achievement_type, score_achievement_type, crusher_kill, force_grant)
+				SSblackbox.record_feedback("tally", tab, 1, "[initial(name)]")
 		return ..()
 
 /mob/living/simple_animal/hostile/megafauna/AltClick(mob/living/carbon/slayer)

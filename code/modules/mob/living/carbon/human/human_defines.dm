@@ -83,6 +83,7 @@
 	var/lastpuke = 0
 	var/account_id
 	var/last_fire_update
+	var/hardcore_survival_score = 0
 
 /// Unarmed parry data for human
 /datum/block_parry_data/unarmed/human

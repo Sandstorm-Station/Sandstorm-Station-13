@@ -52,8 +52,6 @@ Difficulty: Medium
 	loot = list(/obj/structure/closet/crate/necropolis/glaurung)
 	butcher_results = list(/obj/item/stack/ore/diamond = 5, /obj/item/stack/sheet/sinew = 5, /obj/item/stack/sheet/bone = 30)
 	guaranteed_butcher_results = list(/obj/item/stack/sheet/animalhide/ashdrake = 10)
-	medal_type = BOSS_MEDAL_DRAKE
-	score_type = DRAKE_SCORE
 	deathmessage = "collapses into a pile of bones, its flesh sloughing away."
 	death_sound = 'sound/magic/demon_dies.ogg'
 	songs = null
