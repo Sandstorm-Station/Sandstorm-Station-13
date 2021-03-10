@@ -31,3 +31,9 @@ MAX_STUPOR_HYPNO_DURATION 12000
 ## Maxmimum amount of languages someone can pick
 ## -1 means infinite and 0 disables it
 #MAX_LANGUAGES
+
+## Force Gamemode ##
+## Disallows roundstart gamemode voting if not null or commented
+## Just input the gamemode lowercase in there, the thing will take a simple string for it
+## Invalid gamemodes will default extended, have fun.
+#FORCE_GAMEMODE
