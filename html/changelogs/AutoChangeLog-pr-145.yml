@@ -1,0 +1,6 @@
+author: SandPoot
+delete-after: true
+changes:
+  - bugfix: No more infinite unable to start rounds, if it happens the game should
+      force to start extended.
+  - config: Voting can now be disabled to allow for a single gamemode type.
