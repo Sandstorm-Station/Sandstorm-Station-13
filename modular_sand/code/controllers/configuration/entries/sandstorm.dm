@@ -12,3 +12,6 @@
 /datum/config_entry/number/max_languages
 	config_entry_value = 1
 	min_val = -1
+
+/datum/config_entry/string/force_gamemode
+	config_entry_value = null

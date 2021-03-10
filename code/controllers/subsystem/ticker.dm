@@ -179,7 +179,10 @@ SUBSYSTEM_DEF(ticker)
 				timeLeft = 0
 
 			if(!modevoted)
-				send_gamemode_vote()
+				if(!CONFIG_GET(string/force_gamemode))
+					send_gamemode_vote()
+				else
+					force_gamemode(CONFIG_GET(string/force_gamemode))
 			//countdown
 			if(timeLeft < 0)
 				return
@@ -238,12 +241,14 @@ SUBSYSTEM_DEF(ticker)
 				var/datum/game_mode/smode = config.pick_mode(GLOB.secret_force_mode)
 				if(!smode.can_start())
 					message_admins("<span class='notice'>Unable to force secret [GLOB.secret_force_mode]. [smode.required_players] players and [smode.required_enemies] eligible antagonists needed.</span>")
+					force_gamemode("extended")
 				else
 					mode = smode
 
 		if(!mode)
 			if(!runnable_modes.len)
 				to_chat(world, "<B>Unable to choose playable game mode.</B> Reverting to pre-game lobby.")
+				force_gamemode("extended")
 				return 0
 			mode = pickweight(runnable_modes)
 			if(!mode)	//too few roundtypes all run too recently
@@ -256,6 +261,7 @@ SUBSYSTEM_DEF(ticker)
 			qdel(mode)
 			mode = null
 			SSjob.ResetOccupations()
+			force_gamemode("extended")
 			return 0
 
 	CHECK_TICK
@@ -274,6 +280,7 @@ SUBSYSTEM_DEF(ticker)
 			QDEL_NULL(mode)
 			to_chat(world, "<B>Error setting up [GLOB.master_mode].</B> Reverting to pre-game lobby.")
 			SSjob.ResetOccupations()
+			force_gamemode("extended")
 			return 0
 	else
 		message_admins("<span class='notice'>DEBUG: Bypassing prestart checks...</span>")
