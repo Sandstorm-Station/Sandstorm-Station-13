@@ -1,2 +1,2 @@
 @call tools\build\build
-@pause
+rem @pause do not pause me you piece of crap

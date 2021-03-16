@@ -32,7 +32,7 @@
 	)
 	icon_state = "buggy"
 	default_priority = 94
-	restricted = TRUE
+	restricted = FALSE
 
 /datum/language/modular_sand/calcic
 	name = "Calcic"
@@ -53,7 +53,7 @@
 	)
 	icon_state = "calcic"
 	default_priority = 89
-	restricted = TRUE
+	restricted = FALSE
 
 /datum/language/modular_sand/dunmeri
 	name = "Dunmeri"
@@ -96,7 +96,7 @@
 	)
 	icon_state = "moffic"
 	default_priority = 93
-	restricted = TRUE
+	restricted = FALSE
 
 /datum/language/modular_sand/neokanji
 	name = "Neo-Kanji"

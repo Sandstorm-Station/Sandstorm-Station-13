@@ -22,12 +22,13 @@
 	var/list/scramble_cache = list()
 	var/default_priority = 0          // the language that an atom knows with the highest "default_priority" is selected by default.
 
-	// if you are seeing someone speak popcorn language, then something is wrong.
-	var/icon = 'icons/misc/language.dmi'
-	var/icon_state = "popcorn"
 	//SKYRAT CHANGE - is this language available on the character setup? Set to true if not.
 	var/restricted = TRUE
 	//
+
+	// if you are seeing someone speak popcorn language, then something is wrong.
+	var/icon = 'icons/misc/language.dmi'
+	var/icon_state = "popcorn"
 
 /datum/language/proc/display_icon(atom/movable/hearer)
 	var/understands = hearer.has_language(src.type)

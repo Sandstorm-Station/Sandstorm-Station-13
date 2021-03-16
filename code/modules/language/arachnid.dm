@@ -10,7 +10,7 @@
 
 	icon_state = "arachnid"
 	//SKYRAT CHANGE - language restriction
-	restricted = TRUE
+	restricted = FALSE
 	//
 
 /datum/language/arachnid/scramble(input)

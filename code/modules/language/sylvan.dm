@@ -16,3 +16,6 @@
 	)
 	icon_state = "plant"
 	default_priority = 90
+	//SKYRAT CHANGE - language restriction
+	restricted = FALSE
+	//

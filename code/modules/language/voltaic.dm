@@ -12,3 +12,6 @@
 	)
 	icon_state = "volt"
 	default_priority = 90
+	//SKYRAT CHANGE - language restriction
+	restricted = FALSE
+	//
