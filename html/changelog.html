@@ -5,7 +5,7 @@
   <link rel="stylesheet" type="text/css" href="changelog.css">
   <base target="_blank" />
   <script type='text/javascript'>
-
+  
 	function changeText(tagID, newText, linkTagID){
 		var tag = document.getElementById(tagID);
 		tag.innerHTML = newText;
@@ -13,8 +13,8 @@
 		linkTag.removeAttribute("href");
 		linkTag.removeAttribute("onclick");
 	}
-
-  </script>
+	
+  </script>  
 <meta http-equiv="Content-Type" content="text/html; charset=utf-8">
 </head>
 
@@ -24,7 +24,7 @@
 	<tr>
 		<td valign='top'>
 			<div align='center'><font size='3'><b>Traditional Games Space Station 13</b></font></div>
-
+			
 			<p><div align='center'><font size='3'><a href="https://citadel-station.net/forum/index.php">Forum</a> | <a href="https://citadel-station.net/wiki/index.php?title=Main_Page">Wiki</a> | <a href="https://github.com/Citadel-Station-13/Citadel-Station-13">Source</a></font></div></p>
 			</td>
 	</tr>
@@ -42,13 +42,25 @@
 </table>
 
 		<!--
-
-		TO ADD AN ENTRY, ADD AND MAINTAIN YOUR OWN changelog/USERNAME.yml FILE.
-
+		
+		TO ADD AN ENTRY, ADD AND MAINTAIN YOUR OWN changelog/USERNAME.yml FILE. 
+		
 		*** DO NOT FUCK WITH THIS FILE OR YOU WILL CAUSE MERGE CONFLICTS. ***
-
+		
 		-->
 		<div class="commit sansserif">
+
+			<h2 class="date">17 March 2021</h2>
+			<h3 class="author">KeRSedChaplain updated:</h3>
+			<ul class="changes bgimages16">
+				<li class="rscadd">Added three new rites, and makes soul vessels obtainable</li>
+				<li class="bugfix">fixes clockwork guardians inheriting marauders blocking</li>
+				<li class="soundadd">added sounds for the ratvar end sequence, voiced by @dzahlus</li>
+			</ul>
+			<h3 class="author">timothyteakettle updated:</h3>
+			<ul class="changes bgimages16">
+				<li class="rscadd">speech panel added to main menu customization</li>
+			</ul>
 
 			<h2 class="date">16 March 2021</h2>
 			<h3 class="author">GrayRachnid updated:</h3>
@@ -1180,25 +1192,6 @@
 			<h3 class="author">zeroisthebiggay updated:</h3>
 			<ul class="changes bgimages16">
 				<li class="imageadd">fuck the r*d cr*ss</li>
-			</ul>
-
-			<h2 class="date">13 January 2021</h2>
-			<h3 class="author">BlueWildrose updated:</h3>
-			<ul class="changes bgimages16">
-				<li class="bugfix">Fixes noodle size appearance for 12+ inch members.</li>
-			</ul>
-			<h3 class="author">Drulikar updated:</h3>
-			<ul class="changes bgimages16">
-				<li class="tweak">Changed Hypnotic Stupor quirk to only reapply a trance after a minimum amount of time from a previous hypnosis</li>
-				<li class="bugfix">Hypnosis phrase should now be properly escaped for regex (e.g. dangling parentheses)</li>
-				<li class="config">Added configs for Hypnotic Stupor quirk tweaks (defaults on with a minimum hypnosis duration between 10 and 20 minutes)</li>
-			</ul>
-
-			<h2 class="date">12 January 2021</h2>
-			<h3 class="author">SandPoot updated:</h3>
-			<ul class="changes bgimages16">
-				<li class="bugfix">Fixes people who do not know any language speaking.</li>
-				<li class="bugfix">Fixes borgs having their speech misplaced for others and vice-versa.</li>
 			</ul>
 		</div>
 
