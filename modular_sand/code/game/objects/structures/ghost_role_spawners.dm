@@ -39,3 +39,5 @@
 		to_chat(new_spawn,"<span class='boldwarning'>Ghosting is free!</span>")
 		var/datum/action/toggle_dead_chat_mob/D = new(new_spawn)
 		D.Grant(new_spawn)
+		var/datum/action/disguise/disguise_action = new(new_spawn)
+		disguise_action.Grant(new_spawn)
