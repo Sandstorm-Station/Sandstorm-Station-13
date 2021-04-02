@@ -53,6 +53,7 @@ IMPORTANT FACTORS TO CONSIDER WHILE BALANCING
 	var/list/ghosts = list()
 	var/pollStarted = FALSE
 	var/startHunger
+	var/startThirst
 	impure_chem 			= /datum/reagent/impure/SDGFtox
 	inverse_chem_val 		= 0.5
 	inverse_chem		= /datum/reagent/impure/SDZF
@@ -66,6 +67,7 @@ IMPORTANT FACTORS TO CONSIDER WHILE BALANCING
 	switch(current_cycle)
 		if(1)
 			startHunger = M.nutrition
+			startThirst = M.thirst
 			if(pollStarted == FALSE)
 				pollStarted = TRUE
 				ghosts = pollGhostCandidates("Do you want to play as [M]'s SDGF clone? (Don't ERP without permission from the original, and respect their character.)", ignore_category = POLL_IGNORE_CLONE)
@@ -136,12 +138,14 @@ IMPORTANT FACTORS TO CONSIDER WHILE BALANCING
 				playerClone =  TRUE
 				M.action_cooldown_mod = 1
 				M.adjust_nutrition(-500)
+				M.adjust_thirst(-500)
 
 				//Damage the clone
 				SM.blood_volume = (BLOOD_VOLUME_NORMAL*SM.blood_ratio)/2
 				SM.adjustCloneLoss(60, 0)
 				SM.setOrganLoss(ORGAN_SLOT_BRAIN, 40)
 				SM.set_nutrition(startHunger/2)
+				SM.set_thisrt(startThirst/2)
 
 				//Transfer remaining reagent to clone. I think around 30u will make a healthy clone, otherwise they'll have clone damage, blood loss, brain damage and hunger.
 				SM.reagents.add_reagent(/datum/reagent/fermi/SDGFheal, volume)
