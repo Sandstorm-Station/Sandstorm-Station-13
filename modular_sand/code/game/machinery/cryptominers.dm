@@ -70,7 +70,8 @@
 
 /obj/machinery/cryptominer/examine(mob/user)
 	. = ..()
-	. += "<span class='notice'>A little screen on the machine reads: Currently the linked bank account is [pay_me.account_holder ? "[pay_me.account_holder]'s" : "<span class='boldwarning'>ERROR</span>"]."
+	if(in_range(user, src) || isobserver(user))
+		. += "<span class='notice'>A little screen on the machine reads: Currently the linked bank account is [pay_me.account_holder ? "[pay_me.account_holder]'s" : "<span class='boldwarning'>ERROR</span>"]."
 	. += "Modify the destination of the credits using your id on it while it is inactive and has it's panel open."
 	. += "Alt-Click to reset to the Cargo budget.</span>"
 
