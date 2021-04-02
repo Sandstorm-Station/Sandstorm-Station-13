@@ -68,8 +68,7 @@
 	. = ..()
 	. += "<span class='notice'>A little screen on the machine reads: Currently the linked bank account is [pay_me.account_holder ? "[pay_me.account_holder]'s" : "<span class='boldwarning'>ERROR</span>"]."
 	. += "Modify the destination of the credits using your id on it while it is inactive and has it's panel open."
-	. += "Alt-Click to reset to the Cargo budget."
-	. += "</span>"
+	. += "Alt-Click to reset to the Cargo budget.</span>"
 
 /obj/machinery/cryptominer/process()
 	var/turf/T = get_turf(src)
