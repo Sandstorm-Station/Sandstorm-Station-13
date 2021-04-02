@@ -56,13 +56,17 @@
 				to_chat(user, "<span class='warning'>ERROR: No bank account found.</span>")
 				return
 			to_chat(user, "<span class='notice'>You link [W] to \the [src].</span>")
+			say("Now using [pay_me.account_holder ? "[pay_me.account_holder]'s" : "<span class='boldwarning'>ERROR</span>"] account."
 			pay_me = CARD.registered_account
 			return
 
 /obj/machinery/cryptominer/AltClick(mob/user)
+	user.visible_message("<span class='warning'>begins resetting \the [src].</span>",
+					"<span class='warning'>You begin resetting \the [src].</span>",
+					runechat_popup = TRUE)
 	if(do_after(user, 5 SECONDS, target = src))
 		pay_me = SSeconomy.get_dep_account(ACCOUNT_CAR)
-		to_chat(user, "<span class='notice'>You have successfully reset the machine to use the Cargo budget.")
+		say("Now using [pay_me.account_holder]'s account.")
 
 /obj/machinery/cryptominer/examine(mob/user)
 	. = ..()
