@@ -287,11 +287,11 @@
 #define OFFSET_HAIR		"hair"
 #define OFFSET_FHAIR	"fhair"
 #define OFFSET_MUTPARTS	"mutantparts"
-//skyrat edit	
-#define OFFSET_UNDERWEAR "underwear"	
-#define	OFFSET_SOCKS "socks"	
-#define OFFSET_SHIRT "shirt"	
-#define OFFSET_WRISTS "wrist"	
+//skyrat edit
+#define OFFSET_UNDERWEAR "underwear"
+#define	OFFSET_SOCKS "socks"
+#define OFFSET_SHIRT "shirt"
+#define OFFSET_WRISTS "wrist"
 //
 
 // MINOR TWEAKS/MISC
@@ -304,8 +304,9 @@
 #define POCKET_STRIP_DELAY		40	// time taken (in deciseconds) to search somebody's pockets
 #define DOOR_CRUSH_DAMAGE		15	// the amount of damage that airlocks deal when they crush you
 
-#define	HUNGER_FACTOR			 0.1	// factor at which mob nutrition decreases
-#define	ETHEREAL_CHARGE_FACTOR	 0.08	// factor at which ethereal's charge decreases
+#define	HUNGER_FACTOR			 0.06	// factor at which mob nutrition decreases
+#define THIRST_FACTOR			 0.06	// factor at which mob thirst increases
+#define	ETHEREAL_CHARGE_FACTOR	 0.06	// factor at which ethereal's charge decreases
 #define	REAGENTS_METABOLISM		 0.4	// How many units of reagent are consumed per tick, by default.
 #define REAGENTS_EFFECT_MULTIPLIER (REAGENTS_METABOLISM / 0.4)	// By defining the effect multiplier this way, it'll exactly adjust all effects according to how they originally were with the 0.4 metabolism
 

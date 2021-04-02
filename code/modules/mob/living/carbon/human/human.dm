@@ -95,6 +95,7 @@
 			. += "Unique Identity: [dna.unique_enzymes]"
 			. += "Overall Status: [stat > 1 ? "dead" : "[health]% healthy"]"
 			. += "Nutrition Status: [nutrition]"
+			. += "Hydration Status: [thirst]"
 			. += "Oxygen Loss: [getOxyLoss()]"
 			. += "Toxin Levels: [getToxLoss()]"
 			. += "Burn Severity: [getFireLoss()]"

@@ -172,7 +172,7 @@
 
 //End gas alerts
 
-
+/*
 /obj/screen/alert/fat
 	name = "Fat"
 	desc = "You ate too much food, lardass. Run around the station and lose some weight."
@@ -183,10 +183,23 @@
 	desc = "Some food would be good right about now."
 	icon_state = "hungry"
 
+/obj/screen/alert/thirsty
+	name = "Thirsty"
+	desc = "Some water would be good right about now."
+	icon = 'modular_sand/icons/mob/screen_alert.dmi'
+	icon_state = "thirsty"
+
 /obj/screen/alert/starving
 	name = "Starving"
 	desc = "You're severely malnourished. The hunger pains make moving around a chore."
 	icon_state = "starving"
+
+/obj/screen/alert/dehydrated
+	name = "Dehydrated"
+	desc = "You're severely dehydrated."
+	icon = 'modular_sand/icons/mob/screen_alert.dmi'
+	icon_state = "dehydrated"
+*/
 
 /obj/screen/alert/gross
 	name = "Grossed out."

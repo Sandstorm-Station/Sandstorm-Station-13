@@ -127,7 +127,7 @@ IMPORTANT FACTORS TO CONSIDER WHILE BALANCING
 					else
 						to_chat(SM, "<span class='userdanger'>While you find your newfound existence strange, you share the same memories as [M.real_name]. However, You find yourself indifferent to the goals you previously had, and take more interest in your newfound independence, but still have an indescribable care for the safety of your original.</span>")
 					log_reagent("FERMICHEM: [SM] ckey: [SM.key]'s is not bound by [M] ckey [M.key]'s will, and is free to determine their own goals, while respecting and acting as their origin.")
-	
+
 				to_chat(SM, "<span class='warning'>You feel a strange sensation building in your mind as you realise there's two of you. Before you get a chance to think about it, you suddenly split from your old body, and find yourself face to face with your original, a perfect clone of your origin.</span>")
 				SM.client?.change_view(CONFIG_GET(string/default_view))
 				to_chat(M, "<span class='warning'>You feel a strange sensation building in your mind as you realise there's two of you. Before you get a chance to think about it, a mass splits from you, and find yourself face to face with yourself.</span>")
@@ -313,6 +313,7 @@ IMPORTANT FACTORS TO CONSIDER WHILE BALANCING
 	M.adjustCloneLoss(-2, 0)
 	M.setOrganLoss(ORGAN_SLOT_BRAIN, -1)
 	M.adjust_nutrition(10)
+	M.adjust_thirst(10)
 	..()
 
 //Unobtainable, used if SDGF is impure but not too impure

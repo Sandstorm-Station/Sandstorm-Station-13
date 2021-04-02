@@ -167,6 +167,7 @@
 			setSanity(sanity+0.4, maximum=SANITY_AMAZING)
 
 	HandleNutrition(owner)
+	HandleThirst(owner)
 
 /datum/component/mood/proc/setSanity(amount, minimum=SANITY_INSANE, maximum=SANITY_NEUTRAL)//I'm sure bunging this in here will have no negative repercussions.
 	var/mob/living/master = parent

@@ -1552,7 +1552,7 @@ GLOBAL_LIST_EMPTY(roundstart_race_names)
 			else
 				H.remove_movespeed_modifier(/datum/movespeed_modifier/hunger)
 
-	switch(H.nutrition)
+/*	switch(H.nutrition)
 		if(NUTRITION_LEVEL_FULL to INFINITY)
 			H.throw_alert("nutrition", /obj/screen/alert/fat)
 		if(NUTRITION_LEVEL_HUNGRY to NUTRITION_LEVEL_FULL)
@@ -1561,6 +1561,7 @@ GLOBAL_LIST_EMPTY(roundstart_race_names)
 			H.throw_alert("nutrition", /obj/screen/alert/hungry)
 		if(0 to NUTRITION_LEVEL_STARVING)
 			H.throw_alert("nutrition", /obj/screen/alert/starving)
+*/
 
 /datum/species/proc/update_health_hud(mob/living/carbon/human/H)
 	return 0

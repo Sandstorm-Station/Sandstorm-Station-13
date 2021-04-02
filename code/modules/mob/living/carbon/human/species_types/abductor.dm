@@ -4,7 +4,7 @@
 	say_mod = "gibbers"
 	sexes = FALSE
 	species_traits = list(NOBLOOD,NOEYES,NOGENITALS,NOAROUSAL,HAS_FLESH,HAS_BONE)
-	inherent_traits = list(TRAIT_VIRUSIMMUNE,TRAIT_CHUNKYFINGERS,TRAIT_NOHUNGER,TRAIT_NOBREATH)
+	inherent_traits = list(TRAIT_VIRUSIMMUNE,TRAIT_CHUNKYFINGERS,TRAIT_NOHUNGER,TRAIT_NOTHIRST,TRAIT_NOBREATH)
 	mutanttongue = /obj/item/organ/tongue/abductor
 	species_category = SPECIES_CATEGORY_ALIEN
 	ass_image = 'icons/ass/assgrey.png'
