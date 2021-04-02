@@ -8,10 +8,32 @@
 	layer = BELOW_OBJ_LAYER
 	var/list/ore_rates = list(/datum/material/iron = 0.3, /datum/material/glass = 0.3, /datum/material/plasma = 0.1,  /datum/material/silver = 0.1, /datum/material/gold = 0.05, /datum/material/titanium = 0.05, /datum/material/uranium = 0.05, /datum/material/diamond = 0.02)
 	var/datum/component/remote_materials/materials
+	var/multiplier = 0 //Multiplier by tier, has been made fair and everything
 
 /obj/machinery/mineral/bluespace_miner/Initialize(mapload)
 	. = ..()
 	materials = AddComponent(/datum/component/remote_materials, "bsm", mapload)
+
+/obj/machinery/mineral/bluespace_miner/examine(mob/user)
+	. = ..()
+	if(in_range(user, src) || isobserver(user))
+		. += "<span class='notice'>A small screen on the machine reads, \"Efficiency at [multiplier * 100]%\"</span>"
+		if(multiplier >= 5)
+			. += "<span class='notice'>Bluespace generation is active.</span>"
+
+/obj/machinery/mineral/bluespace_miner/RefreshParts()
+	multiplier = 0
+	var/stock_amt = 0
+	for(var/obj/item/stock_parts/L in component_parts)
+		if(!istype(L))
+			continue
+		multiplier += L.rating
+		stock_amt++
+	multiplier /= stock_amt
+	if(multiplier >= 5)
+		ore_rates += list(/datum/material/bluespace = 0.01)
+	else
+		ore_rates -= ore_rates["bluespace crystal"]
 
 /obj/machinery/mineral/bluespace_miner/Destroy()
 	materials = null
@@ -38,9 +60,9 @@
 	if(!mat_container || panel_open || !powered())
 		return
 	var/datum/material/ore = pick(ore_rates)
-	mat_container.bsm_insert((ore_rates[ore] * 1000), ore)
+	mat_container.bsm_insert(((ore_rates[ore] * 1000) * multiplier), ore)
 
-/datum/component/material_container/proc/bsm_insert(amt, var/datum/material/mat)
+/datum/component/material_container/proc/bsm_insert(amt, datum/material/mat)
 	if(!istype(mat))
 		mat = SSmaterials.GetMaterialRef(mat)
 	if(amt > 0 && has_space(amt))
