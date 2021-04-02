@@ -4,7 +4,7 @@
 
 /obj/structure/closet/secure_closet/hop/PopulateContents()
 	..()
-	new /obj/item/card/id/departmental_budget/ser(src)
+	new /obj/item/card/id/departmental_budget/srv(src)
 
 /obj/structure/closet/secure_closet/hos/PopulateContents()
 	..()
