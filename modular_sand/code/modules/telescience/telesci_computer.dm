@@ -6,7 +6,7 @@
 	circuit = /obj/item/circuitboard/computer/telesci_console
 	var/sending = 1
 	var/obj/machinery/telepad/telepad
-	var/temp_msg = "Telescience control console initialized.<BR>Welcome."
+	var/temp_msg = "Telescience control console initialized.\nWelcome."
 
 	// VARIABLES //
 	var/teles_left	// How many teleports left until it becomes uncalibrated
@@ -89,7 +89,57 @@
 		return
 	interact(user)
 
+/obj/machinery/computer/telescience/ui_interact(mob/user, datum/tgui/ui)
+	ui = SStgui.try_update_ui(user, src, ui)
+	if(!ui)
+		ui = new(user, src, "Telesci")
+		ui.open()
+
+/obj/machinery/computer/telescience/ui_data(mob/user)
+	var/list/data = list()
+	data["telepad"] = telepad ? TRUE : FALSE
+	data["inserted_gps"] = inserted_gps ? TRUE : FALSE
+	data["temp_msg"] = temp_msg
+	data["rotation"] = rotation
+	data["angle"] = angle
+	data["power"] = power
+	data["z_coord"] = z_co
+	data["last_tele_data"] = last_tele_data ? "Source Location: ([last_tele_data.src_x], [last_tele_data.src_y])\nTime: [round(last_tele_data.time, 0.1)] secs" : null
+
+	return data
+
+/obj/machinery/computer/telescience/ui_act(action, params)
+	if(..())
+		return
+	switch(action)
+		if("eject_gps")
+			if(inserted_gps)
+				inserted_gps.loc = loc
+				inserted_gps = null
+		if("setRotation")
+			rotation = round(params["ref"], 0.01)
+		if("setAngle")
+			angle = round(params["ref"], 0.1)
+		if("setPower")
+			power = round(params["ref"], 1)
+		if("setSector")
+			z_co = round(params["ref"], 1)
+		if("send")
+			sending = TRUE
+			teleport(usr)
+		if("receive")
+			sending = FALSE
+			teleport(usr)
+		if("recalibrate")
+			recalibrate()
+			sparks()
+			temp_msg = "NOTICE:\nCalibration successful."
+		if("eject")
+			eject()
+			temp_msg = "NOTICE:\nBluespace crystals ejected."
+
 /obj/machinery/computer/telescience/interact(mob/user)
+	ui_interact(user)
 	var/t
 	if(!telepad)
 		in_use = 0     //Yeah so if you deconstruct teleporter while its in the process of shooting it wont disable the console
@@ -108,7 +158,7 @@
 		t += "<div class='statusDisplay'>"
 
 		for(var/i = 1; i <= power_options.len; i++)
-			if(crystals.len + telepad.efficiency  < i)
+			if(crystals.len + telepad.efficiency < i)
 				t += "<span class='linkOff'>[power_options[i]]</span>"
 				continue
 			if(power == power_options[i])
@@ -149,11 +199,11 @@
 /obj/machinery/computer/telescience/proc/doteleport(mob/user)
 
 	if(teleport_cooldown > world.time)
-		temp_msg = "Telepad is recharging power.<BR>Please wait [round((teleport_cooldown - world.time) / 10)] seconds."
+		temp_msg = "Telepad is recharging power.\nPlease wait [round((teleport_cooldown - world.time) / 10)] seconds."
 		return
 
 	if(teleporting)
-		temp_msg = "Telepad is in use.<BR>Please wait."
+		temp_msg = "Telepad is in use.\nPlease wait."
 		return
 
 	if(telepad)
@@ -178,7 +228,7 @@
 			playsound(telepad.loc, 'sound/weapons/flash.ogg', 25, 1)
 			// Wait depending on the time the projectile took to get there
 			teleporting = 1
-			temp_msg = "Powering up bluespace crystals.<BR>Please wait."
+			temp_msg = "Powering up bluespace crystals.\nPlease wait."
 
 
 		spawn(round(proj_data.time) * 10) // in seconds
@@ -195,9 +245,9 @@
 
 			do_sparks(5, TRUE, get_turf(telepad))
 
-			temp_msg = "Teleport successful.<BR>"
+			temp_msg = "Teleport successful.\n"
 			if(teles_left < 10)
-				temp_msg += "<BR>Calibration required soon."
+				temp_msg += "Calibration required soon."
 			else
 				temp_msg += "Data printed below."
 
@@ -260,25 +310,25 @@
 
 /obj/machinery/computer/telescience/proc/teleport(mob/user)
 	if(rotation == null || angle == null || z_co == null)
-		temp_msg = "ERROR!<BR>Set a angle, rotation and sector."
+		temp_msg = "ERROR!\nSet a angle, rotation and sector."
 		return
 	if(power <= 0)
 		telefail()
-		temp_msg = "ERROR!<BR>No power selected!"
+		temp_msg = "ERROR!\nNo power selected!"
 		return
 	if(angle < 1 || angle > 90)
 		telefail()
-		temp_msg = "ERROR!<BR>Elevation is less than 1 or greater than 90."
+		temp_msg = "ERROR!\nElevation is less than 1 or greater than 90."
 		return
 	if(z_co == 1 /*Centcom*/ || z_co == 6 /*City of Cogs*/ || z_co < 1 || z_co > 13 /*Space max*/)
 		telefail()
-		temp_msg = "ERROR! Sector is outside known time and space!"
+		temp_msg = "ERROR!\nSector is outside known time and space!"
 		return
 	if(teles_left > 0)
 		doteleport(user)
 	else
 		telefail()
-		temp_msg = "ERROR!<BR>Calibration required."
+		temp_msg = "ERROR!\nCalibration required."
 		return
 	return
 
@@ -339,11 +389,11 @@
 	if(href_list["recal"])
 		recalibrate()
 		sparks()
-		temp_msg = "NOTICE:<BR>Calibration successful."
+		temp_msg = "NOTICE:\nCalibration successful."
 
 	if(href_list["eject"])
 		eject()
-		temp_msg = "NOTICE:<BR>Bluespace crystals ejected."
+		temp_msg = "NOTICE:\nBluespace crystals ejected."
 
 	updateDialog()
 
