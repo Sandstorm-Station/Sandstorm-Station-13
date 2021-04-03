@@ -57,6 +57,8 @@
 			if(satiety > 80)
 				nutrition_ratio *= 1.25
 			adjust_nutrition(-nutrition_ratio * HUNGER_FACTOR)
+			if(!HAS_TRAIT(src, TRAIT_NOTHIRST))
+				adjust_thirst(-thirst * THIRST_FACTOR)
 			blood_volume = min(BLOOD_VOLUME_NORMAL, blood_volume + 0.5 * nutrition_ratio)
 
 		//Effects of bloodloss

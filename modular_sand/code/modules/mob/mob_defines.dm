@@ -1,4 +1,5 @@
 /mob
+	var/thirst = NUTRITION_LEVEL_START_MIN // randomised in Initialize
 	///Cursor icon used when holding shift over things
 	var/examine_cursor_icon = 'modular_sand/icons/effects/mouse_pointers/examine.dmi'
 	var/combat_cursor_icon = 'modular_sand/icons/effects/mouse_pointers/combat.dmi'
