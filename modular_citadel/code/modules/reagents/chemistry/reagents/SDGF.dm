@@ -145,7 +145,7 @@ IMPORTANT FACTORS TO CONSIDER WHILE BALANCING
 				SM.adjustCloneLoss(60, 0)
 				SM.setOrganLoss(ORGAN_SLOT_BRAIN, 40)
 				SM.set_nutrition(startHunger/2)
-				SM.set_thisrt(startThirst/2)
+				SM.set_thirst(startThirst/2)
 
 				//Transfer remaining reagent to clone. I think around 30u will make a healthy clone, otherwise they'll have clone damage, blood loss, brain damage and hunger.
 				SM.reagents.add_reagent(/datum/reagent/fermi/SDGFheal, volume)
