@@ -287,7 +287,7 @@
 		else
 			msg += "[t_He] [t_is] quite chubby.\n"
 	if(thirst < THIRST_LEVEL_PARCHED - 50)
-		msg += "[t_He] [t_is] dehydrated.\n"
+		msg += "[t_He] [t_is] parched.\n"
 	switch(disgust)
 		if(DISGUST_LEVEL_GROSS to DISGUST_LEVEL_VERYGROSS)
 			msg += "[t_He] look[p_s()] a bit grossed out.\n"
