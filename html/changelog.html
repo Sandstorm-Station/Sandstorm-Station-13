@@ -5,7 +5,7 @@
   <link rel="stylesheet" type="text/css" href="changelog.css">
   <base target="_blank" />
   <script type='text/javascript'>
-
+  
 	function changeText(tagID, newText, linkTagID){
 		var tag = document.getElementById(tagID);
 		tag.innerHTML = newText;
@@ -13,8 +13,8 @@
 		linkTag.removeAttribute("href");
 		linkTag.removeAttribute("onclick");
 	}
-
-  </script>
+	
+  </script>  
 <meta http-equiv="Content-Type" content="text/html; charset=utf-8">
 </head>
 
@@ -24,7 +24,7 @@
 	<tr>
 		<td valign='top'>
 			<div align='center'><font size='3'><b>Traditional Games Space Station 13</b></font></div>
-
+			
 			<p><div align='center'><font size='3'><a href="https://citadel-station.net/forum/index.php">Forum</a> | <a href="https://citadel-station.net/wiki/index.php?title=Main_Page">Wiki</a> | <a href="https://github.com/Citadel-Station-13/Citadel-Station-13">Source</a></font></div></p>
 			</td>
 	</tr>
@@ -42,21 +42,35 @@
 </table>
 
 		<!--
-
-		TO ADD AN ENTRY, ADD AND MAINTAIN YOUR OWN changelog/USERNAME.yml FILE.
-
+		
+		TO ADD AN ENTRY, ADD AND MAINTAIN YOUR OWN changelog/USERNAME.yml FILE. 
+		
 		*** DO NOT FUCK WITH THIS FILE OR YOU WILL CAUSE MERGE CONFLICTS. ***
-
+		
 		-->
 		<div class="commit sansserif">
 
-			<h2 class="date">04 April 2021</h2>
+			<h2 class="date">06 April 2021</h2>
+			<h3 class="author">DeltaFire15 updated:</h3>
+			<ul class="changes bgimages16">
+				<li class="bugfix">The wood plank cargo pack no longer is named incorrectly.</li>
+			</ul>
+			<h3 class="author">Putnam3145 updated:</h3>
+			<ul class="changes bgimages16">
+				<li class="bugfix">forced climax doesn't do a climax-with</li>
+			</ul>
 			<h3 class="author">SandPoot updated:</h3>
 			<ul class="changes bgimages16">
-				<li class="rscadd">Added thirst, go get hydrated.</li>
-				<li class="rscadd">Added constant hunger/thirst displays to the hud.</li>
-				<li class="rscdel">Removed temporary hunger/fat displays.</li>
-				<li class="tweak">Tweaked hunger and thirst to go down slower.</li>
+				<li class="bugfix">Reverts locker/crate behavior for attacking it with an item while closed (use any intent other than help to bash it).</li>
+				<li class="bugfix">Laptop interactions are no longer weird and now you can drag it to yourself to pick it up. tweak: Ctrl+Shift-Click to toggle laptops open/closed. tweak: More examine info for laptops.</li>
+				<li class="bugfix">Lockers/Crates can now be deconstructed the right way respecting the cutting_tool (even if it's not one of the default interactions).</li>
+				<li class="rscdel">Dragging the laptop into itself shouldn't do anything anymore (kind of pointless and hard to do).</li>
+			</ul>
+
+			<h2 class="date">04 April 2021</h2>
+			<h3 class="author">Hatterhat updated:</h3>
+			<ul class="changes bgimages16">
+				<li class="balance">After a sudden crash in the tower-cap log slash wooden plank economy, NanoTrasen has decided to stop selling tower-cap logs to Cargo.</li>
 			</ul>
 
 			<h2 class="date">03 April 2021</h2>
@@ -67,22 +81,6 @@
 				<li class="spellcheck">Fixed a small thing on cryptomining deactivation, the symbol (*) already indicated that it is the machine, no need to say it's name again.</li>
 				<li class="tweak">Stock part tiers now matter for the bluespace miner, PRODUCE MORE!</li>
 				<li class="tweak">Cryptominers "small screen" can only be looked at up close.</li>
-			</ul>
-			<h3 class="author">Hatterhat updated:</h3>
-			<ul class="changes bgimages16">
-				<li class="balance">After a sudden crash in the tower-cap log slash wooden plank economy, NanoTrasen has decided to stop selling tower-cap logs to Cargo.</li>
-			</ul>
-
-			<h2 class="date">03 April 2021</h2>
-			<h3 class="author">BlueWildrose updated:</h3>
-			<ul class="changes bgimages16">
-				<li class="bugfix">The hydroponics pet bee, Bumbles no longer has a number besides their name.</li>
-			</ul>
-			<h3 class="author">Putnam3145 updated:</h3>
-			<ul class="changes bgimages16">
-				<li class="rscdel">"Destroy all nanotrasen cloning machines" objective is gone</li>
-				<li class="code_imp">Removed all the commented-out sabotage objectives (we can just get them from history)</li>
-				<li class="rscadd">Observe verb logging</li>
 			</ul>
 
 			<h2 class="date">02 April 2021</h2>
@@ -960,13 +958,6 @@
 			<h3 class="author">Hatterhat updated:</h3>
 			<ul class="changes bgimages16">
 				<li class="bugfix">The green energy sabre's sprite now respects proper handedness.</li>
-			</ul>
-
-			<h2 class="date">02 February 2021</h2>
-			<h3 class="author">silicons updated:</h3>
-			<ul class="changes bgimages16">
-				<li class="rscadd">pais can now be carried around piggybacking/fireman</li>
-				<li class="balance">Meth and Nuka Cola once again, speed you up.</li>
 			</ul>
 		</div>
 
