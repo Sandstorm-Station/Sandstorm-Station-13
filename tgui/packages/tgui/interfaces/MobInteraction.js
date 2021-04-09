@@ -22,34 +22,34 @@ export const MobInteraction = (props, context) => {
           <BlockQuote>
             You...<br />
             {selfAttributes.map(attribute => (
-              <div>
-              {attribute}<br />
+              <div key={attribute}>
+                {attribute}<br />
               </div>
             ))}
           </BlockQuote>
           {!isTargetSelf ? (
-            <BlockQuote>
+              <BlockQuote>
             They...<br />
-            {theirAttributes.map(attribute => (
-              <div>
-              {attribute}<br />
-              </div>
-            ))}
+              {theirAttributes.map(attribute => (
+                <div key={attribute}>
+                  {attribute}<br />
+                </div>
+              ))}
             </BlockQuote>
-            ) : (null)}
+          ) : (null)}
         </Section>
         {interactions.length ? (
-        <Section>
-          <Flex direction="column">
-          {interactions.map(interaction => (
-            <Button
-              key={interaction[1]}
-              content={interaction[1]}
-              color={interaction[2] == 2 ? "red" : interaction[2] ? "pink" : "default"}
-              onClick={() => act(interaction[0])} />
-          ))}
-          </Flex>
-        </Section>
+          <Section>
+            <Flex direction="column">
+              {interactions.map(interaction => (
+                <Button
+                  key={interaction[1]}
+                  content={interaction[1]}
+                  color={interaction[2] === 2 ? "red" : interaction[2] ? "pink" : "default"}
+                  onClick={() => act(interaction[0])} />
+              ))}
+            </Flex>
+          </Section>
         ) : (null)}
       </Window.Content>
     </Window>
