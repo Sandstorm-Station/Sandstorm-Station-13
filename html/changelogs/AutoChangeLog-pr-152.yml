@@ -1,0 +1,8 @@
+author: SandPoot
+delete-after: true
+changes:
+  - rscadd: Interactions now use tgui.
+  - rscdel: Old ui for interactions.
+  - refactor: A bunch of small changes there so stuff doesn't break.
+  - rscdel: Comments out "do_fucking_animation"
+  - bugfix: Self interactions only appear when openning the menu for yourself.
