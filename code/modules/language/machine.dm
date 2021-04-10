@@ -11,9 +11,9 @@
 	space_chance = 10
 	default_priority = 90
 	//SKYRAT CHANGE - language restriction
-	restricted = TRUE
+	restricted = FALSE
 	//
-	
+
 	icon_state = "eal"
 
 /datum/language/machine/get_random_name()
