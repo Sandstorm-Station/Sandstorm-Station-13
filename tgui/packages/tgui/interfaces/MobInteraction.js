@@ -28,7 +28,7 @@ export const MobInteraction = (props, context) => {
             ))}
           </BlockQuote>
           {!isTargetSelf ? (
-            <BlockQuote>
+              <BlockQuote>
             They...<br />
               {theirAttributes.map(attribute => (
                 <div key={attribute}>
