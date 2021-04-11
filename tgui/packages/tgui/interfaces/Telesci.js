@@ -1,6 +1,6 @@
 import { map } from 'common/collections';
 import { useBackend } from '../backend';
-import { Box, Blink, Button, Flex, LabeledList, Section, NumberInput } from '../components';
+import { Box, Blink, Button, NumberInput, Section, Slider } from '../components';
 import { Window } from '../layouts';
 
 export const Telesci = (props, context) => {
@@ -12,60 +12,60 @@ export const Telesci = (props, context) => {
     rotation,
     angle,
     z_coord,
-    last_tele_data,
     power_possible,
+    crystals,
   } = data;
+  const last_tele_data = data.last_tele_data || [];
   return (
     <Window
-      width={360}
-      height={620}>
+      width={300}
+      height={550}>
       <Window.Content>
         <Section>
           {!telepad && (
+            <Box backgroundColor="#4972a1" p="2px">
             <Box color="bad" backgroundColor="black">
               No telepad located.<br />
               Please add telepad data.<Blink>▍</Blink>
             </Box>
+            </Box>
           ) || (
             <Section>
-                <Button
-                  content="Eject GPS"
-                  disabled={!inserted_gps}
-                  onClick={() => act('eject_gps')} />
-                <Box color="green" backgroundColor="black">
+                <Box backgroundColor="#4972a1" p="2px">
+                <Box color="green" backgroundColor="black" pb="15px">
                   {temp_msg.map(message => (
                     <div>
                     {message}
                     </div>
                   ))}
                 </Box>
+                </Box>
                 <Section title="Set Bearing">
-                <NumberInput
-                    key="rotationValue"
-                    width="65px"
-                    unit="°"
-                    value={rotation}
-                    step={1}
-                    stepPixelSize={25}
-                    minValue={-900}
-                    maxValue={900}
-                    onDrag={(e, value) => act('setRotation', {
-                      ref: value,
-                    })} />
+                <Slider
+                  key="rotationValue"
+                  unit="°"
+                  value={rotation}
+                  step={1}
+                  stepPixelSize={25}
+                  minValue={-900}
+                  maxValue={900}
+                  onDrag={(e, value) => act('setRotation', {
+                    ref: value
+                  })}
+                  />
                 </Section>
                 <Section title="Set Elevation">
-                <NumberInput
-                      key="angleValue"
-                      width="65px"
-                      unit="°"
-                      value={angle}
-                      step={1}
-                      stepPixelSize={25}
-                      minValue={1}
-                      maxValue={9999}
-                      onDrag={(e, value) => act('setAngle', {
-                        ref: value,
-                      })} />
+                <Slider
+                  key="angleValue"
+                  unit="°"
+                  value={angle}
+                  step={1}
+                  stepPixelSize={25}
+                  minValue={1}
+                  maxValue={90}
+                  onDrag={(e, value) => act('setAngle', {
+                    ref: value,
+                  })} />
                 </Section>
                 <Section title="Set Power">
                 {power_possible.map(power_choice => (
@@ -79,40 +79,55 @@ export const Telesci = (props, context) => {
                 ))}
                 </Section>
                 <Section title="Set Sector">
-                <NumberInput
-                        key="sectorValue"
-                        width="65px"
-                        unit=""
-                        value={z_coord}
-                        step={1}
-                        stepPixelSize={25}
-                        minValue={1}
-                        maxValue={10}
-                        onDrag={(e, value) => act('setSector', {
-                          ref: value,
-                        })} />
+                <Slider
+                  key="sectorValue"
+                  unit=""
+                  value={z_coord}
+                  step={1}
+                  stepPixelSize={25}
+                  minValue={1}
+                  maxValue={10}
+                  onDrag={(e, value) => act('setSector', {
+                    ref: value,
+                  })} />
                 </Section>
                 <Section title="Extra Functions">
                     <Button
                       content="Send"
+                      icon="paper-plane"
                       onClick={() => act('send')}
                     />
                     <Button
                       content="Receive"
+                      icon="undo"
                       onClick={() => act('receive')}
-                    />
+                    /><br />
                     <Button
                       content="Recalibrate Crystals"
+                      icon="sync"
                       onClick={() => act('recalibrate')}
-                    />
+                    /><br />
                     <Button
                       content="Eject Crystals"
+                      icon="eject"
+                      disabled={!crystals}
                       onClick={() => act('eject')}
                     />
+                    <Button
+                      content="Eject GPS"
+                      icon="eject"
+                      disabled={!inserted_gps}
+                      onClick={() => act('eject_gps')} />
                 </Section>
-                <Box color="green" backgroundColor="black">
+                <Box backgroundColor="#4972a1" p="2px">
+                <Box color="green" backgroundColor="black" pb="15px">
                   Last teleportation data:<br />
-                  {last_tele_data.length ? last_tele_data : "No teleport data found."}<br />
+                  {last_tele_data.length ? last_tele_data.map(line => (
+                    <div>
+                      {line}<br />
+                    </div>
+                  )) : "No teleport data found."}
+                </Box>
                 </Box>
             </Section>
           )}
