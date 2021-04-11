@@ -74,6 +74,7 @@ var/list/interactions
 
 	if(user.last_interaction_time < world.time)
 		return TRUE
+
 	if(action_check)
 		return FALSE
 	else
