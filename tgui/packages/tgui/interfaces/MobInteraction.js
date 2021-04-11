@@ -47,7 +47,8 @@ export const MobInteraction = (props, context) => {
                   content={interaction[1]}
                   color={interaction[2] === 2 ? "red" : interaction[2] ? "pink" : "default"}
                   onClick={() => act('interact', {
-                    interaction: interaction[0]})} />
+                    interaction: interaction[0]
+                  })} />
               ))}
             </Flex>
           </Section>
