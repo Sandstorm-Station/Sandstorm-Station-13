@@ -1,5 +1,6 @@
+import { map } from 'common/collections';
 import { useBackend } from '../backend';
-import { Box, Button, LabeledList, Section, NumberInput } from '../components';
+import { Box, Blink, Button, Flex, LabeledList, Section, NumberInput } from '../components';
 import { Window } from '../layouts';
 
 export const Telesci = (props, context) => {
@@ -10,35 +11,35 @@ export const Telesci = (props, context) => {
     temp_msg,
     rotation,
     angle,
-    power,
     z_coord,
     last_tele_data,
+    power_possible,
   } = data;
   return (
     <Window
       width={360}
       height={620}>
       <Window.Content>
-        <Section title="Telepad Control Console">
+        <Section>
           {!telepad && (
-            <Box color="bad" textAlign="center" backgroundColor="black">
+            <Box color="bad" backgroundColor="black">
               No telepad located.<br />
-              Please add telepad data.
+              Please add telepad data.<Blink>▍</Blink>
             </Box>
           ) || (
-            <LabeledList>
-              <LabeledList.Item label="GPS">
+            <Section>
                 <Button
                   content="Eject GPS"
                   disabled={!inserted_gps}
                   onClick={() => act('eject_gps')} />
-              </LabeledList.Item>
-              <LabeledList.Item label="Info">
-                <Box>
-                  {temp_msg}
+                <Box color="green" backgroundColor="black">
+                  {temp_msg.map(message => (
+                    <div>
+                    {message}
+                    </div>
+                  ))}
                 </Box>
-              </LabeledList.Item>
-              <LabeledList.Item label="Set Bearing">
+                <Section title="Set Bearing">
                 <NumberInput
                     key="rotationValue"
                     width="65px"
@@ -51,8 +52,8 @@ export const Telesci = (props, context) => {
                     onDrag={(e, value) => act('setRotation', {
                       ref: value,
                     })} />
-              </LabeledList.Item>
-              <LabeledList.Item label="Set Elevation">
+                </Section>
+                <Section title="Set Elevation">
                 <NumberInput
                       key="angleValue"
                       width="65px"
@@ -65,22 +66,19 @@ export const Telesci = (props, context) => {
                       onDrag={(e, value) => act('setAngle', {
                         ref: value,
                       })} />
-              </LabeledList.Item>
-              <LabeledList.Item label="Set Power">
-                <NumberInput
-                        key="powerValue"
-                        width="65px"
-                        unit="kW"
-                        value={power}
-                        step={5}
-                        stepPixelSize={25}
-                        minValue={5}
-                        maxValue={100}
-                        onDrag={(e, value) => act('setPower', {
-                          ref: value,
-                        })} />
-              </LabeledList.Item>
-              <LabeledList.Item label="Set Sector">
+                </Section>
+                <Section title="Set Power">
+                {power_possible.map(power_choice => (
+                  <Button
+                    content={power_choice[0]}
+                    color={power_choice[1] === 2 ? "green" : power_choice[1] ? "default" : "red"}
+                    onClick={() => act('set_power', {
+                      power: power_choice[0]
+                    })}
+                   />
+                ))}
+                </Section>
+                <Section title="Set Sector">
                 <NumberInput
                         key="sectorValue"
                         width="65px"
@@ -93,41 +91,30 @@ export const Telesci = (props, context) => {
                         onDrag={(e, value) => act('setSector', {
                           ref: value,
                         })} />
-              </LabeledList.Item>
-              <LabeledList.Item label="Extra Functions">
-                <Section>
-                  <Section.Item>
+                </Section>
+                <Section title="Extra Functions">
                     <Button
                       content="Send"
                       onClick={() => act('send')}
                     />
-                  </Section.Item>
-                  <Section.Item>
                     <Button
                       content="Receive"
                       onClick={() => act('receive')}
                     />
-                  </Section.Item>
-                  <Section.Item>
                     <Button
                       content="Recalibrate Crystals"
                       onClick={() => act('recalibrate')}
                     />
-                  </Section.Item>
-                  <Section.Item>
                     <Button
                       content="Eject Crystals"
                       onClick={() => act('eject')}
                     />
-                  </Section.Item>
                 </Section>
-              </LabeledList.Item>
-              <LabeledList.Item label="Last Teleport Data">
-                <Box>
-                  {last_tele_data ? last_tele_data : "No teleport data found."}
+                <Box color="green" backgroundColor="black">
+                  Last teleportation data:<br />
+                  {last_tele_data.length ? last_tele_data : "No teleport data found."}<br />
                 </Box>
-              </LabeledList.Item>
-            </LabeledList>
+            </Section>
           )}
         </Section>
       </Window.Content>
