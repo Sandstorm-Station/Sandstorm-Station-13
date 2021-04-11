@@ -69,6 +69,7 @@ export const Telesci = (props, context) => {
               <Section title="Set Power">
                 {power_possible.map(power_choice => (
                   <Button
+                    key={power_choice[0]}
                     content={power_choice[0]}
                     color={power_choice[1] === 2 ? "green" : power_choice[1] ? "default" : "red"}
                     onClick={() => act('set_power', {
