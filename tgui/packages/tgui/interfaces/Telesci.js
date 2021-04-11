@@ -24,14 +24,14 @@ export const Telesci = (props, context) => {
         <Section>
           {!telepad && (
             <Box backgroundColor="#4972a1" p="2px">
-            <Box color="bad" backgroundColor="black">
-              No telepad located.<br />
-              Please add telepad data.<Blink>▍</Blink>
-            </Box>
+              <Box color="bad" backgroundColor="black">
+                No telepad located.<br />
+                Please add telepad data.<Blink>▍</Blink>
+              </Box>
             </Box>
           ) || (
             <Section>
-                <Box backgroundColor="#4972a1" p="2px">
+              <Box backgroundColor="#4972a1" p="2px">
                 <Box color="green" backgroundColor="black" pb="15px">
                   {temp_msg.map(message => (
                     <div>
@@ -39,95 +39,93 @@ export const Telesci = (props, context) => {
                     </div>
                   ))}
                 </Box>
-                </Box>
+              </Box>
                 <Section title="Set Bearing">
-                <Slider
-                  key="rotationValue"
-                  unit="°"
-                  value={rotation}
-                  step={1}
-                  stepPixelSize={25}
-                  minValue={-900}
-                  maxValue={900}
-                  onDrag={(e, value) => act('setRotation', {
-                    ref: value
-                  })}
-                  />
+                  <Slider
+                    key="rotationValue"
+                    unit="°"
+                    value={rotation}
+                    step={1}
+                    stepPixelSize={25}
+                    minValue={-900}
+                    maxValue={900}
+                    onDrag={(e, value) => act('setRotation', {
+                      ref: value
+                    })} />
                 </Section>
                 <Section title="Set Elevation">
-                <Slider
-                  key="angleValue"
-                  unit="°"
-                  value={angle}
-                  step={1}
-                  stepPixelSize={25}
-                  minValue={1}
-                  maxValue={90}
-                  onDrag={(e, value) => act('setAngle', {
-                    ref: value,
-                  })} />
+                  <Slider
+                    key="angleValue"
+                    unit="°"
+                    value={angle}
+                    step={1}
+                    stepPixelSize={25}
+                    minValue={1}
+                    maxValue={90}
+                    onDrag={(e, value) => act('setAngle', {
+                      ref: value,
+                    })} />
                 </Section>
                 <Section title="Set Power">
-                {power_possible.map(power_choice => (
-                  <Button
-                    content={power_choice[0]}
-                    color={power_choice[1] === 2 ? "green" : power_choice[1] ? "default" : "red"}
-                    onClick={() => act('set_power', {
-                      power: power_choice[0]
-                    })}
-                   />
-                ))}
+                  {power_possible.map(power_choice => (
+                    <Button
+                      content={power_choice[0]}
+                      color={power_choice[1] === 2 ? "green" : power_choice[1] ? "default" : "red"}
+                      onClick={() => act('set_power', {
+                        power: power_choice[0]
+                      })} />
+                  ))}
                 </Section>
                 <Section title="Set Sector">
-                <Slider
-                  key="sectorValue"
-                  unit=""
-                  value={z_coord}
-                  step={1}
-                  stepPixelSize={25}
-                  minValue={1}
-                  maxValue={10}
-                  onDrag={(e, value) => act('setSector', {
-                    ref: value,
-                  })} />
+                  <Slider
+                    key="sectorValue"
+                    unit=""
+                    value={z_coord}
+                    step={1}
+                    stepPixelSize={25}
+                    minValue={1}
+                    maxValue={10}
+                    onDrag={(e, value) => act('setSector', {
+                      ref: value,
+                    })} />
                 </Section>
                 <Section title="Extra Functions">
-                    <Button
-                      content="Send"
-                      icon="paper-plane"
-                      onClick={() => act('send')}
-                    />
-                    <Button
-                      content="Receive"
-                      icon="undo"
-                      onClick={() => act('receive')}
-                    /><br />
-                    <Button
-                      content="Recalibrate Crystals"
-                      icon="sync"
-                      onClick={() => act('recalibrate')}
-                    /><br />
-                    <Button
-                      content="Eject Crystals"
-                      icon="eject"
-                      disabled={!crystals}
-                      onClick={() => act('eject')}
-                    />
-                    <Button
-                      content="Eject GPS"
-                      icon="eject"
-                      disabled={!inserted_gps}
-                      onClick={() => act('eject_gps')} />
+                  <Button
+                    content="Send"
+                    icon="paper-plane"
+                    onClick={() => act('send')}
+                  />
+                  <Button
+                    content="Receive"
+                    icon="undo"
+                    onClick={() => act('receive')}
+                  /><br />
+                  <Button
+                    content="Recalibrate Crystals"
+                    icon="sync"
+                    onClick={() => act('recalibrate')}
+                  /><br />
+                  <Button
+                    content="Eject Crystals"
+                    icon="eject"
+                    disabled={!crystals}
+                    onClick={() => act('eject')}
+                  />
+                  <Button
+                    content="Eject GPS"
+                    icon="eject"
+                    disabled={!inserted_gps}
+                    onClick={() => act('eject_gps')} />
                 </Section>
                 <Box backgroundColor="#4972a1" p="2px">
-                <Box color="green" backgroundColor="black" pb="15px">
-                  Last teleportation data:<br />
-                  {last_tele_data.length ? last_tele_data.map(line => (
-                    <div>
-                      {line}<br />
-                    </div>
-                  )) : "No teleport data found."}
-                </Box>
+                  <Box color="green" backgroundColor="black" pb="15px">
+                    Last teleportation data:<br />
+                    {last_tele_data.length ? last_tele_data.map(line => (
+                      <div>
+                        {line}<br />
+                      </div>
+                    )) : "No teleport data found."}
+                  </Box>
                 </Box>
             </Section>
           )}
