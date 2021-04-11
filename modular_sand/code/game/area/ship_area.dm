@@ -39,7 +39,6 @@
 	icon_state = "ship_maint"
 	has_gravity = STANDARD_GRAVITY
 	ambientsounds = MAINTENANCE
-	valid_territory = FALSE
 
 /area/ship/maint/north
 	name = "Ship Maint North"

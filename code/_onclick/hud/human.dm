@@ -388,6 +388,14 @@
 	throw_icon.hud = src
 	hotkeybuttons += throw_icon
 
+	hunger = new /obj/screen/hunger()
+	hunger.hud = src
+	infodisplay += hunger
+
+	thirst = new /obj/screen/thirst()
+	thirst.hud = src
+	infodisplay += thirst
+
 	internals = new /obj/screen/internals()
 	internals.hud = src
 	infodisplay += internals

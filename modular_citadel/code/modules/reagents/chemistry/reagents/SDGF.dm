@@ -53,6 +53,7 @@ IMPORTANT FACTORS TO CONSIDER WHILE BALANCING
 	var/list/ghosts = list()
 	var/pollStarted = FALSE
 	var/startHunger
+	var/startThirst
 	impure_chem 			= /datum/reagent/impure/SDGFtox
 	inverse_chem_val 		= 0.5
 	inverse_chem		= /datum/reagent/impure/SDZF
@@ -66,6 +67,7 @@ IMPORTANT FACTORS TO CONSIDER WHILE BALANCING
 	switch(current_cycle)
 		if(1)
 			startHunger = M.nutrition
+			startThirst = M.thirst
 			if(pollStarted == FALSE)
 				pollStarted = TRUE
 				ghosts = pollGhostCandidates("Do you want to play as [M]'s SDGF clone? (Don't ERP without permission from the original, and respect their character.)", ignore_category = POLL_IGNORE_CLONE)
@@ -127,7 +129,7 @@ IMPORTANT FACTORS TO CONSIDER WHILE BALANCING
 					else
 						to_chat(SM, "<span class='userdanger'>While you find your newfound existence strange, you share the same memories as [M.real_name]. However, You find yourself indifferent to the goals you previously had, and take more interest in your newfound independence, but still have an indescribable care for the safety of your original.</span>")
 					log_reagent("FERMICHEM: [SM] ckey: [SM.key]'s is not bound by [M] ckey [M.key]'s will, and is free to determine their own goals, while respecting and acting as their origin.")
-	
+
 				to_chat(SM, "<span class='warning'>You feel a strange sensation building in your mind as you realise there's two of you. Before you get a chance to think about it, you suddenly split from your old body, and find yourself face to face with your original, a perfect clone of your origin.</span>")
 				SM.client?.change_view(CONFIG_GET(string/default_view))
 				to_chat(M, "<span class='warning'>You feel a strange sensation building in your mind as you realise there's two of you. Before you get a chance to think about it, a mass splits from you, and find yourself face to face with yourself.</span>")
@@ -136,12 +138,14 @@ IMPORTANT FACTORS TO CONSIDER WHILE BALANCING
 				playerClone =  TRUE
 				M.action_cooldown_mod = 1
 				M.adjust_nutrition(-500)
+				M.adjust_thirst(-500)
 
 				//Damage the clone
 				SM.blood_volume = (BLOOD_VOLUME_NORMAL*SM.blood_ratio)/2
 				SM.adjustCloneLoss(60, 0)
 				SM.setOrganLoss(ORGAN_SLOT_BRAIN, 40)
 				SM.set_nutrition(startHunger/2)
+				SM.set_thirst(startThirst/2)
 
 				//Transfer remaining reagent to clone. I think around 30u will make a healthy clone, otherwise they'll have clone damage, blood loss, brain damage and hunger.
 				SM.reagents.add_reagent(/datum/reagent/fermi/SDGFheal, volume)
@@ -313,6 +317,7 @@ IMPORTANT FACTORS TO CONSIDER WHILE BALANCING
 	M.adjustCloneLoss(-2, 0)
 	M.setOrganLoss(ORGAN_SLOT_BRAIN, -1)
 	M.adjust_nutrition(10)
+	M.adjust_thirst(10)
 	..()
 
 //Unobtainable, used if SDGF is impure but not too impure

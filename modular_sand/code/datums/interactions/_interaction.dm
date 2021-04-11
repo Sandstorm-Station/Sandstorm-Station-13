@@ -6,6 +6,7 @@
 **I removed ERP and replaced it with handholding. Nothing of worth was lost. - Vic
 **Fuck you, Vic. ERP is back. - TT
 **>using var/ on everything, also TRUE
+**"TGUIzes" the panel because yes - SandPoot
 ***********************************/
 
 
@@ -20,12 +21,10 @@ var/list/interactions
 			interactions[I.command] = I
 
 /mob/living/proc/list_interaction_attributes()
-	var/dat = ""
+	var/dat = list()
 	if(has_hands())
 		dat += "...have hands."
 	if(has_mouth())
-		if(dat != "")
-			dat += "<br>"
 		dat += "...have a mouth, which is [mouth_is_free() ? "uncovered" : "covered"]."
 	return dat
 
@@ -49,11 +48,13 @@ var/list/interactions
 
 	var/user_is_target = FALSE //Boolean. Pretty self explanatory.
 
-/datum/interaction/proc/evaluate_user(mob/living/user, silent = TRUE)
+//Action check added because please stop deleting my buttons.
+/datum/interaction/proc/evaluate_user(mob/living/user, silent = TRUE, action_check = TRUE)
 	if(user.get_refraction_dif())
 		if(!silent) //bye spam
 			to_chat(user, "<span class='warning'>You're still exhausted from the last time. You need to wait [DisplayTimeText(user.get_refraction_dif(), TRUE)] until you can do that!</span>")
-		return FALSE
+		if(action_check)
+			return FALSE
 
 	if(require_user_mouth)
 		if(!user.has_mouth() && !issilicon(user)) //Again, silicons do not have the required parts normally.
@@ -73,7 +74,11 @@ var/list/interactions
 
 	if(user.last_interaction_time < world.time)
 		return TRUE
-	return FALSE
+
+	if(action_check)
+		return FALSE
+	else
+		return TRUE
 
 /datum/interaction/proc/evaluate_target(mob/living/user, mob/living/target, silent = TRUE)
 	if(!user_is_target)
@@ -99,17 +104,6 @@ var/list/interactions
 		return FALSE
 
 	return TRUE
-
-/datum/interaction/proc/get_action_link_for(mob/living/user, mob/living/target)
-	return "<a HREF='byond://?src=[REF(src)];action=1;action_user=[REF(user)];action_target=[REF(target)]'>[description]</a><br>"
-
-/datum/interaction/Topic(href, href_list)
-	if(..())
-		return TRUE
-	if(href_list["action"])
-		do_action(locate(href_list["action_user"]), locate(href_list["action_target"]))
-		return TRUE
-	return FALSE
 
 /datum/interaction/proc/do_action(mob/living/user, mob/living/target)
 	if(!user_is_target)

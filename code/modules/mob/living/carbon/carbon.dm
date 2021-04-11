@@ -865,6 +865,7 @@
 		update_mobility()
 	update_damage_hud()
 	update_health_hud()
+	update_hunger_and_thirst_hud()
 	med_hud_set_status()
 
 //called when we get cuffed/uncuffed

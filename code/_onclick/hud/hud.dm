@@ -85,6 +85,9 @@ GLOBAL_LIST_INIT(modular_ui_styles, list(
 	var/obj/screen/healthdoll
 	var/obj/screen/internals
 
+	var/obj/screen/hunger
+	var/obj/screen/thirst
+
 	// subtypes can override this to force a specific UI style
 	var/ui_style
 
@@ -131,6 +134,10 @@ GLOBAL_LIST_INIT(modular_ui_styles, list(
 	healths = null
 	healthdoll = null
 	internals = null
+
+	hunger = null
+	thirst = null
+
 	lingchemdisplay = null
 	devilsouldisplay = null
 	lingstingdisplay = null
@@ -179,7 +186,7 @@ GLOBAL_LIST_INIT(modular_ui_styles, list(
 			//skyrat edit
 			if(extra_inventory.len && screenmob.hud_used && screenmob.hud_used.extra_shown)
 				screenmob.client.screen += extra_inventory
-			//			
+			//
 			if(hotkeybuttons.len && !hotkey_ui_hidden)
 				screenmob.client.screen += hotkeybuttons
 			if(infodisplay.len)
@@ -199,7 +206,7 @@ GLOBAL_LIST_INIT(modular_ui_styles, list(
 			//skyrat edit
 			if(extra_inventory.len)
 				screenmob.client.screen -= extra_inventory
-			//				
+			//
 			if(hotkeybuttons.len)
 				screenmob.client.screen -= hotkeybuttons
 			if(infodisplay.len)
@@ -223,7 +230,7 @@ GLOBAL_LIST_INIT(modular_ui_styles, list(
 			//skyrat edit
 			if(extra_inventory.len)
 				screenmob.client.screen -= extra_inventory
-			//				
+			//
 			if(hotkeybuttons.len)
 				screenmob.client.screen -= hotkeybuttons
 			if(infodisplay.len)

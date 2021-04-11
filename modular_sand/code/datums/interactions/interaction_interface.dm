@@ -1,31 +1,18 @@
 /mob/proc/try_interaction()
 	return
 
-/*
-/mob/living/carbon/human/MouseDrop(var/mob/living/carbon/human/dropped_on, mob/living/carbon/human/user as mob)
-	if(src != dropped_on && !src.restrained())
-		try_interaction(dropped_on)
-		return
-	return ..()
-*/
-
-/mob/living/MouseDrop_T(mob/M as mob, mob/living/user as mob)
-	. = ..()
-	if(M == src || src == usr || M != usr)
-		return
-	if(usr.restrained())
-		return
-
-	user.try_interaction(src)
-
 /mob/living/verb/interact_with()
 	set name = "Interact With"
 	set desc = "Perform an interaction with someone."
 	set category = "IC"
 	set src in view()
 
-	if(!usr.restrained())
-		usr.try_interaction(src)
+	if(!mind.interaction_holder)
+		mind.interaction_holder = new(src)
+	if(!mind.interaction_holder.self)
+		mind.interaction_holder.self = usr
+	mind.interaction_holder.target = src
+	mind.interaction_holder.ui_interact(usr)
 
 /mob/living/silicon/robot/verb/toggle_gender() //Change to add silicon genderchanges. Experimental.
 	set category = "IC"
@@ -35,50 +22,85 @@
 	if(stat != CONSCIOUS)
 		to_chat(usr, "<span class='warning'>You cannot toggle your gender while unconcious!</span>")
 		return
-		
-	var/choice = alert(src, "Select Gender.", "Gender", "Both", "Male", "Female")
+
+	var/choice = alert(usr, "Select Gender.", "Gender", "Both", "Male", "Female")
 	switch(choice)
 		if("Both")
-			src.has_penis = TRUE
-			src.has_vagina = TRUE
+			has_penis = TRUE
+			has_vagina = TRUE
 		if("Male")
-			src.has_penis = TRUE
-			src.has_vagina = FALSE
+			has_penis = TRUE
+			has_vagina = FALSE
 		if("Female")
-			src.has_penis = FALSE
-			src.has_vagina = TRUE
+			has_penis = FALSE
+			has_vagina = TRUE
 
-/mob/living/try_interaction(mob/living/partner)
-	var/dat
-	if(partner != src)
-		dat = "<B><HR><FONT size=3>Interacting with \the [partner]...</FONT></B><HR>"
-	else
-		dat = "<B><HR><FONT size=3>Interacting with yourself...</FONT></B><HR>"
+#define INTERACTION_NORMAL 0
+#define INTERACTION_LEWD 1
+#define INTERACTION_EXTREME 2
 
-	dat += "You...<br>[list_interaction_attributes(src)]<hr>"
-	if(partner != src)
-		dat += "They...<br>[partner.list_interaction_attributes(src)]<hr>"
+/datum/mind
+	var/datum/interaction_menu/interaction_holder
+
+/datum/mind/New(key)
+	. = ..()
+	interaction_holder = new(src)
+
+/datum/interaction_menu
+	var/mob/living/self
+	var/mob/living/target
+
+/datum/interaction_menu/ui_state(mob/user)
+	return GLOB.conscious_state
+
+/datum/interaction_menu/ui_interact(mob/user, datum/tgui/ui)
+	ui = SStgui.try_update_ui(user, src, ui)
+	if(!ui)
+		ui = new(user, src, "MobInteraction", "Interactions")
+		ui.open()
+
+/datum/interaction_menu/ui_data(mob/user)
+	var/list/data = list()
+	data["isTargetSelf"] = target == self
+	data["interactingWith"] = target != self ? "Interacting with \the [target]..." : "Interacting with yourself..."
+	data["selfAttributes"] = self.list_interaction_attributes(self)
+	if(target != self)
+		data["theirAttributes"] = target.list_interaction_attributes(self)
 
 	make_interactions()
+	var/list/sent_interactions = list()
 	for(var/interaction_key in interactions)
 		var/datum/interaction/I = interactions[interaction_key]
-		if(I.evaluate_user(src) && I.evaluate_target(src, partner))
-			dat += I.get_action_link_for(src, partner)
+		if(I.evaluate_user(self, action_check = FALSE) && I.evaluate_target(self, target))
+			if(I.user_is_target == TRUE && target != self)
+				continue
+			var/list/interaction = list()
+			interaction += I.command
+			interaction += I.description
+			if(istype(I, /datum/interaction/lewd))
+				var/datum/interaction/lewd/O = I
+				if(O.extreme)
+					interaction += INTERACTION_EXTREME
+				else
+					interaction += INTERACTION_LEWD
+			else
+				interaction += INTERACTION_NORMAL
+			sent_interactions += list(interaction)
+	data["interactions"] = sent_interactions
 
-	var/datum/browser/popup = new(usr, "interactions", "Interactions", 340, 480)
-	popup.set_content(dat)
-	popup.open()
+	return data
 
-/*
-/atom/movable/attack_hand(mob/living/carbon/human/user)
-	. = ..()
-	if(can_buckle && buckled_mob)
-		if(user_unbuckle_mob(user))
-			return 1
+/datum/interaction_menu/ui_act(action, params)
+	if(..())
+		return
+	switch(action)
+		if("interact")
+			for(var/i in interactions)
+				var/datum/interaction/o = interactions[i]
+				if(o.command == params["interaction"])
+					o.do_action(self, target)
+					return TRUE
 
-/atom/movable/MouseDrop_T(mob/living/carbon/human/M, mob/living/carbon/human/user)
-	. = ..()
-	if(can_buckle && istype(M) && !buckled_mob)
-		if(user_buckle_mob(M, user))
-			return 1
-*/
+#undef INTERACTION_NORMAL
+#undef INTERACTION_LEWD
+#undef INTERACTION_EXTREME

@@ -15,6 +15,11 @@
 	var/midtemp = T0C // 273K equals 32F or 0C
 	var/maxtemp = 500 // 500K equals approximately 440F or 226C
 	var/heatingPower = 40000
+	var/datum/bank_account/pay_me = null
+
+/obj/machinery/cryptominer/Initialize()
+	. = ..()
+	pay_me = SSeconomy.get_dep_account(ACCOUNT_CAR)
 
 /obj/machinery/cryptominer/update_icon()
 	. = ..()
@@ -40,6 +45,35 @@
 		return
 	if(default_unfasten_wrench(user, W))
 		return
+	if(!mining && panel_open && user.a_intent == INTENT_HELP)
+		var/item_is_id = W.GetID()
+		if(item_is_id)
+			var/obj/item/card/id/CARD = W
+			if(CARD.bank_support != ID_FREE_BANK_ACCOUNT)
+				to_chat(user, "<span class='warning'>This ID has no banking support whatsover, must be an older model...</span>")
+				return
+			if(!CARD.registered_account)
+				to_chat(user, "<span class='warning'>ERROR: No bank account found.</span>")
+				return
+			to_chat(user, "<span class='notice'>You link [W] to \the [src].</span>")
+			say("Now using [pay_me.account_holder ? "[pay_me.account_holder]'s" : "<span class='boldwarning'>ERROR</span>"] account.")
+			pay_me = CARD.registered_account
+			return
+
+/obj/machinery/cryptominer/AltClick(mob/user)
+	user.visible_message("<span class='warning'>begins resetting \the [src].</span>",
+					"<span class='warning'>You begin resetting \the [src].</span>",
+					runechat_popup = TRUE)
+	if(do_after(user, 5 SECONDS, target = src))
+		pay_me = SSeconomy.get_dep_account(ACCOUNT_CAR)
+		say("Now using [pay_me.account_holder]'s account.")
+
+/obj/machinery/cryptominer/examine(mob/user)
+	. = ..()
+	if(in_range(user, src) || isobserver(user))
+		. += "<span class='notice'>A little screen on the machine reads: Currently the linked bank account is [pay_me.account_holder ? "[pay_me.account_holder]'s" : "<span class='boldwarning'>ERROR</span>"]."
+	. += "Modify the destination of the credits using your id on it while it is inactive and has it's panel open."
+	. += "Alt-Click to reset to the Cargo budget.</span>"
 
 /obj/machinery/cryptominer/process()
 	var/turf/T = get_turf(src)
@@ -73,9 +107,8 @@
 
 /obj/machinery/cryptominer/proc/produce_points(number)
 	playsound(loc, 'sound/machines/ping.ogg', 50, TRUE, -1)
-	var/datum/bank_account/D = SSeconomy.get_dep_account(ACCOUNT_CAR)
-	if(D)
-		D.adjust_money(FLOOR(miningpoints * number,1))
+	if(pay_me)
+		pay_me.adjust_money(FLOOR(miningpoints * number,1))
 
 /obj/machinery/cryptominer/proc/produce_heat()
 	atmos_spawn_air("co2=10;TEMP=2000")
@@ -87,7 +120,7 @@
 		return FALSE
 	if(mining)
 		set_mining(FALSE)
-		visible_message("<span class='warning'>[src] slowly comes to a halt.</span>",
+		visible_message("<span class='warning'>slowly comes to a halt.</span>",
 						"<span class='warning'>You turn off [src].</span>",
 						runechat_popup = TRUE)
 		return

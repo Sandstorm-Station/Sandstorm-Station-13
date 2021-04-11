@@ -88,3 +88,5 @@
 /mob/proc/update_inv_ears_extra()
 	return
 //
+/mob/proc/update_antag_overlays()
+	return
