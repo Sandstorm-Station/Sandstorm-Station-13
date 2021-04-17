@@ -214,6 +214,7 @@
 
 	//skyrat edit
 	dat += "<tr><td><B>Underwear Section:</B></td></tr>"
+	var/shirt_hidden = undershirt_hidden()
 	var/undies_hidden = underwear_hidden()
 	var/socks_hidden = socks_hidden()
 	if((SLOT_W_UNDERWEAR in obscured) || undies_hidden)
@@ -224,7 +225,7 @@
 		dat += "<tr><td><font color=grey>&nbsp;&#8627;<B>Socks:</B></font></td><td><font color=grey>Obscured</font></td></tr>"
 	else
 		dat += "<tr><td>&nbsp;&#8627;<B>Socks:</B></td><td><A href='?src=[REF(src)];item=[SLOT_W_SOCKS]'>[(w_socks && !(w_socks.item_flags & ABSTRACT)) ? w_socks : "<font color=grey>Empty</font>"]</A></td></tr>"
-	if((SLOT_W_SHIRT in obscured) || undies_hidden)
+	if((SLOT_W_SHIRT in obscured) || shirt_hidden)
 		dat += "<tr><td><font color=grey>&nbsp;&#8627;<B>Shirt:</B></font></td><td><font color=grey>Obscured</font></td></tr>"
 	else
 		dat += "<tr><td>&nbsp;&#8627;<B>Shirt:</B></td><td><A href='?src=[REF(src)];item=[SLOT_W_SHIRT]'>[(w_shirt && !(w_shirt.item_flags & ABSTRACT)) ? w_shirt : "<font color=grey>Empty</font>"]</A></td></tr>"
@@ -599,8 +600,9 @@
 			LAZYOR(., SLOT_W_SOCKS)
 	if(w_uniform)
 		if(underwear_hidden())
-			LAZYOR(., SLOT_W_SHIRT)
 			LAZYOR(., SLOT_W_UNDERWEAR)
+		if(undershirt_hidden())
+			LAZYOR(., SLOT_W_SHIRT)
 	if(shoes)
 		if(socks_hidden())
 			LAZYOR(., SLOT_W_SOCKS)

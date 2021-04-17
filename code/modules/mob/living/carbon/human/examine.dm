@@ -33,13 +33,14 @@
 		. += "[t_He] [t_is] a [dna.custom_species ? dna.custom_species : dna.species.name]!"
 
 	//Underwear
+	var/shirt_hidden = undershirt_hidden()
 	var/undies_hidden = underwear_hidden()
 	var/socks_hidden = socks_hidden()
 	if(w_underwear && !undies_hidden)
 		. += "[t_He] [t_is] wearing [w_underwear.get_examine_string(user)]."
 	if(w_socks && !socks_hidden)
 		. += "[t_He] [t_is] wearing [w_socks.get_examine_string(user)]."
-	if(w_shirt && !undies_hidden)
+	if(w_shirt && !shirt_hidden)
 		. += "[t_He] [t_is] wearing [w_shirt.get_examine_string(user)]."
 	//Wrist slot because you're epic
 	if(wrists && !(SLOT_WRISTS in obscured))
