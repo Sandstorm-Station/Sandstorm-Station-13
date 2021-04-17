@@ -10,7 +10,7 @@
 	block_priority = BLOCK_PRIORITY_UNDERWEAR
 	slot_flags = ITEM_SLOT_UNDERWEAR
 	armor = list("melee" = 0, "bullet" = 0, "laser" = 0,"energy" = 0, "bomb" = 0, "bio" = 0, "rad" = 0, "fire" = 0, "acid" = 0)
-	mutantrace_variation = NONE
+	mutantrace_variation = STYLE_DIGITIGRADE
 	var/under_type = /obj/item/clothing/underwear //i don't know what i'm gonna use this for
 	var/fitted = FEMALE_UNIFORM_TOP
 
