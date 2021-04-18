@@ -114,12 +114,28 @@
 		return
 	//Full list of exposable genitals created
 	var/obj/item/organ/genital/picked_organ
-	picked_organ = input(src, "Choose which genitalia to expose/hide", "Expose/Hide genitals") as null|anything in genital_list
+	picked_organ = input(src, "Choose which genitalia to expose/hide", "Expose/Hide genitals") as null|anything in genital_list + list("anus")
 	if(picked_organ && (picked_organ in internal_organs))
 		var/picked_visibility = input(src, "Choose visibility setting", "Expose/Hide genitals") as null|anything in GLOB.genitals_visibility_toggles
 		if(picked_visibility && picked_organ && (picked_organ in internal_organs))
 			picked_organ.toggle_visibility(picked_visibility)
+
+	if(picked_organ == "anus")
+		var/picked_visibility = input(src, "Chose visibility setting", "Expose/Hide genitals") as null|anything in list("Always visible", "Hidden by underwear", "Always hidden")
+		anus_toggle_visibility(picked_visibility)
 	return
+
+/mob/living/carbon/proc/anus_toggle_visibility(visibility)
+	switch(visibility)
+		if("Always visible")
+			anus_exposed = TRUE
+			log_message("Exposed their anus", LOG_EMOTE)
+		if("Hidden by underwear")
+			anus_exposed = FALSE
+			log_message("Hid their anus under underwear", LOG_EMOTE)
+		else
+			anus_exposed = -1
+			log_message("Hid their anus completely", LOG_EMOTE)
 
 /mob/living/carbon/verb/toggle_arousal_state()
 	set category = "IC"

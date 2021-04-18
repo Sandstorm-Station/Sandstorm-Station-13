@@ -10,20 +10,27 @@
 	block_priority = BLOCK_PRIORITY_UNDERWEAR
 	slot_flags = ITEM_SLOT_UNDERWEAR
 	armor = list("melee" = 0, "bullet" = 0, "laser" = 0,"energy" = 0, "bomb" = 0, "bio" = 0, "rad" = 0, "fire" = 0, "acid" = 0)
-	mutantrace_variation = NONE
+	mutantrace_variation = STYLE_DIGITIGRADE
 	var/under_type = /obj/item/clothing/underwear //i don't know what i'm gonna use this for
 	var/fitted = FEMALE_UNIFORM_TOP
 
-//Proc to check if underwear is hidden, removed socks to make separate proc.
-/mob/living/carbon/human/proc/underwear_hidden()
+///Proc to check if undershirt is hidden.
+/mob/living/carbon/human/proc/undershirt_hidden()
 	for(var/obj/item/I in list(w_uniform, wear_suit))
-		if(istype(I) && ((I.body_parts_covered & CHEST) || (I.body_parts_covered & GROIN) || (I.flags_inv & HIDEUNDERWEAR))) //Using body_parts_covered because obviously there was a better way to do it
+		if(istype(I) && ((I.body_parts_covered & CHEST) || (I.flags_inv & HIDEUNDERWEAR)))
 			return TRUE
 	return FALSE
 
-//Only the shoes and feet covering suits can hide socks, the above proc was stupid.
+///Proc to check if underwear is hidden.
+/mob/living/carbon/human/proc/underwear_hidden()
+	for(var/obj/item/I in list(w_uniform, wear_suit))
+		if(istype(I) && ((I.body_parts_covered & GROIN) || (I.flags_inv & HIDEUNDERWEAR)))
+			return TRUE
+	return FALSE
+
+///Proc to check if socks are hidden.
 /mob/living/carbon/human/proc/socks_hidden()
 	for(var/obj/item/I in list(shoes, wear_suit))
-		if(istype(I) && ((I.body_parts_covered & FEET) || (I.flags_inv & HIDEUNDERWEAR)))  //Using body_parts_covered because obviously there was a better way to do it
+		if(istype(I) && ((I.body_parts_covered & FEET) || (I.flags_inv & HIDEUNDERWEAR)))
 			return TRUE
 	return FALSE
