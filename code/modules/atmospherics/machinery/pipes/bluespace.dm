@@ -9,7 +9,7 @@ GLOBAL_LIST_EMPTY(bluespace_pipe_networks)
 	initialize_directions = SOUTH
 	device_type = UNARY
 	can_buckle = FALSE
-	construction_type = /obj/item/pipe/bluespace
+	construction_type = /obj/item/pipe/bluespace/directional
 	var/bluespace_network_name
 
 /obj/machinery/atmospherics/pipe/bluespace/New()

@@ -57,7 +57,7 @@
 				chosensong = songs[chosenlengthstring]
 				if(chosensong && !songend)
 					if(M?.client?.prefs?.toggles & SOUND_MEGAFAUNA)
-						M.stop_sound_channel(CHANNEL_JUKEBOX)
+						M.stop_sound_channel(CHANNEL_BOSSMUSIC)
 						songend = chosenlength + world.time
 						SEND_SOUND(M, chosensong) // so silence boss music will mute moosic for people who don't want that, or it just doesn't play at all if prefs disable it
 				if(!retaliated)
@@ -71,7 +71,7 @@
 				enemies |= M.occupant
 				var/mob/living/O = M.occupant
 				if(O?.client?.prefs?.toggles & SOUND_MEGAFAUNA)
-					O.stop_sound_channel(CHANNEL_JUKEBOX)
+					O.stop_sound_channel(CHANNEL_BOSSMUSIC)
 					songend = chosenlength + world.time
 					SEND_SOUND(O, chosensong)
 				if(!retaliated)
@@ -96,7 +96,7 @@
 			for(var/mob/living/M in view(src, vision_range))
 				if(client)
 					if(M?.client?.prefs?.toggles & SOUND_MEGAFAUNA)
-						M.stop_sound_channel(CHANNEL_JUKEBOX)
+						M.stop_sound_channel(CHANNEL_BOSSMUSIC)
 						songend = chosenlength + world.time
 						SEND_SOUND(M, chosensong)
 	if(health <= glorythreshold && !glorykill && stat != DEAD)
@@ -116,7 +116,7 @@
 	else
 		for(var/mob/living/M in view(src, vision_range))
 			if(M?.client?.prefs?.toggles & SOUND_MEGAFAUNA)
-				M.stop_sound_channel(CHANNEL_JUKEBOX)
+				M.stop_sound_channel(CHANNEL_BOSSMUSIC)
 		animate(src, color = initial(color), time = 3)
 		desc = initial(desc)
 		var/datum/status_effect/crusher_damage/crusher_dmg = has_status_effect(STATUS_EFFECT_CRUSHERDAMAGETRACKING)
@@ -175,6 +175,6 @@
 	if(!is_station_level(z) || client) //NPC monsters won't heal while on station
 		adjustBruteLoss(-L.maxHealth/2)
 	if(L?.client?.prefs?.toggles & SOUND_MEGAFAUNA)
-		L.stop_sound_channel(CHANNEL_JUKEBOX)
+		L.stop_sound_channel(CHANNEL_BOSSMUSIC)
 	L.gib()
 	..()

@@ -29,7 +29,7 @@
 	anger_modifier = 0
 	footstep_type = FOOTSTEP_MOB_HEAVY
 	mob_biotypes = MOB_ROBOTIC
-	songs = list("2930" = sound(file = 'modular_sand/sound/ambience/mbrsystemshock.ogg', repeat = 0, wait = 0, volume = 70, channel = CHANNEL_JUKEBOX)) //System shock theme remix by Master Boot Record
+	songs = list("2930" = sound(file = 'modular_sand/sound/ambience/mbrsystemshock.ogg', repeat = 0, wait = 0, volume = 70, channel = CHANNEL_BOSSMUSIC)) //System shock theme remix by Master Boot Record
 	var/special = FALSE
 	wander = FALSE
 	faction = list("mining", "boss")
@@ -123,7 +123,7 @@
 							INVOKE_ASYNC(src, .proc/plasmaburst, target)
 					animate(src, color = initial(color), time = 3)
 					special = FALSE
-				else 
+				else
 					var/turf/up = locate(x, y + 10, z)
 					var/turf/down = locate(x, y - 10, z)
 					var/turf/left = locate(x - 10, y, z)
@@ -204,7 +204,7 @@
 		X.preparePixelProjectile(target, startloc)
 		X.firer = src
 		X.original = target
-		X.fire(otherangle)		
+		X.fire(otherangle)
 		var/obj/item/projectile/Y = new /obj/item/projectile/plasma/rogue(startloc)
 		playsound(src, 'sound/weapons/laser.ogg', 100, TRUE)
 		Y.preparePixelProjectile(target, startloc)
