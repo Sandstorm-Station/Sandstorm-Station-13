@@ -17,6 +17,9 @@
 	if(!user.transferItemToLoc(src, get_turf(O)))
 		return
 	var/obj/machinery/computer/custom_shuttle/link_comp = O
+	if(link_comb.smooth_sailing)
+		to_chat(usr, "<span class='notice'>The shuttle is already sailing smoothly!</span>")
+		return
 	link_comp.smooth_sailing = TRUE
 	playsound(src, 'sound/machines/terminal_insert_disc.ogg', 50, 0)
 	to_chat(usr, "<span class='notice'>You insert the disk into the flight computer, allowing you to not be thrown around like a ragdoll when launching.</span>")
