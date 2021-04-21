@@ -204,7 +204,10 @@
 	linkedShuttle.count_engines()
 	linkedShuttle.hyperspace_sound(HYPERSPACE_WARMUP)
 	var/throwForce = clamp((calculated_speed / 2) - 5, 0, 10)
-	linkedShuttle.movement_force = list("KNOCKDOWN" = calculated_speed > 5 ? 3 : 0, "THROW" = throwForce)
+	if(smooth_sailing)
+		linkedShuttle.movement_force = list("KNOCKDOWN" = 0, "THROW" = 0)
+	else
+		linkedShuttle.movement_force = list("KNOCKDOWN" = calculated_speed > 5 ? 3 : 0, "THROW" = throwForce)
 	if(!(targetLocation in params2list(possible_destinations)))
 		log_admin("[usr] attempted to launch a shuttle that has been affected by href dock exploit on [src] with target location \"[targetLocation]\"")
 		message_admins("[usr] attempted to launch a shuttle that has been affected by href dock exploit on [src] with target location \"[targetLocation]\"")
