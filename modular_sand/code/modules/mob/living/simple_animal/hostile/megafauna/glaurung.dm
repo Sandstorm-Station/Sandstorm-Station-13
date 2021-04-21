@@ -64,23 +64,6 @@ Difficulty: Medium
 	. = ..()
 	internal = new/obj/item/gps/internal/glaurung(src)
 
-
-/mob/living/simple_animal/hostile/megafauna/dragon/glaurung/proc/line_target(offset, range, atom/at = target)
-	if(!at)
-		return
-	var/angle = ATAN2(at.x - src.x, at.y - src.y) + offset
-	var/turf/T = get_turf(src)
-	for(var/i in 1 to range)
-		var/turf/check = locate(src.x + cos(angle) * i, src.y + sin(angle) * i, src.z)
-		if(!check)
-			break
-		T = check
-	return (getline(src, T) - get_turf(src))
-
-/mob/living/simple_animal/hostile/megafauna/dragon/glaurung/proc/fire_line(var/list/turfs)
-	sleep(0)
-	dragon_fire_line(src, turfs)
-
 /mob/living/simple_animal/hostile/megafauna/dragon/glaurung/proc/fire_stream(var/atom/at = target)
 	playsound(get_turf(src),'sound/magic/fireball.ogg', 200, TRUE)
 	sleep(0)
@@ -95,10 +78,7 @@ Difficulty: Medium
 	ranged_cooldown = world.time + ranged_cooldown_time
 	fire_stream()
 
-/mob/living/simple_animal/hostile/megafauna/dragon/glaurung/triple_swoop()
-	return null
-
-/mob/living/simple_animal/hostile/megafauna/dragon/glaurung/swoop_attack(fire_rain, atom/movable/manual_target, swoop_duration = 40)
+/mob/living/simple_animal/hostile/megafauna/dragon/glaurung/swoop_attack(lava_arena, atom/movable/manual_target, swoop_duration = 40)
 	return null
 
 /mob/living/simple_animal/hostile/megafauna/dragon/glaurung/AltClickOn(atom/movable/A)
