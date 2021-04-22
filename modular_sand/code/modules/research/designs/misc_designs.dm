@@ -29,3 +29,13 @@
 	build_path = /obj/item/organ/cyberimp/arm/surgery/advanced
 	category = list("Misc", "Medical Designs")
 	departmental_flags = DEPARTMENTAL_FLAG_MEDICAL
+
+/datum/design/shuttle_smoothsail_upgrade
+	name = "Shuttle Smooth Sailing Upgrade"
+	desc = "A disk that allows for steadier movement without the need of raw force to move. (Makes shuttles not throw stuff around)"
+	id = "disk_shuttle_smoothsail"
+	build_type = PROTOLATHE
+	materials = list(/datum/material/iron = 1000, /datum/material/glass = 1000)
+	build_path = /obj/item/shuttle_smoothsail
+	category = list("Equipment")
+	departmental_flags = DEPARTMENTAL_FLAG_SCIENCE | DEPARTMENTAL_FLAG_ENGINEERING

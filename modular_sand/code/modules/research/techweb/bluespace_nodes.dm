@@ -42,3 +42,7 @@
 	prereq_ids = list("practical_bluespace", "adv_mining")
 	design_ids = list("bluespace_miner")
 	research_costs = list(TECHWEB_POINT_TYPE_GENERIC = 7500)
+
+/datum/techweb_node/shuttle_route_upgrade_hyper/New()
+	design_ids += "disk_shuttle_smoothsail"
+	. = ..()
