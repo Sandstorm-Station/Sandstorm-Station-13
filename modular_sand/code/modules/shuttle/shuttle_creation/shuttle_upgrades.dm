@@ -16,7 +16,7 @@
 	if(!user.transferItemToLoc(src, get_turf(O)))
 		return
 	var/obj/machinery/computer/custom_shuttle/link_comp = O
-	if(link_comb.smooth_sailing)
+	if(link_comp.smooth_sailing)
 		to_chat(usr, "<span class='notice'>The shuttle is already sailing smoothly!</span>")
 		return
 	link_comp.smooth_sailing = TRUE
