@@ -1,7 +1,6 @@
 /obj/item/shuttle_smoothsail
 	name = "shuttle smooth sailing upgrade"
-	desc = "Used on a shuttle control console to make rides less jarring, which means you won't be getting thrown around the place\n
-	You won't even need to sit!"
+	desc = "Used on a shuttle control console to make rides less jarring, which means you won't be getting thrown around the place.\n You won't even need to sit!"
 	icon = 'icons/obj/module.dmi'
 	icon_state = "holodisk"
 	throw_speed = 1
