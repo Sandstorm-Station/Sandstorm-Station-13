@@ -33,8 +33,8 @@
 		return
 
 	if(user.client)
-		var/datum/asset/assets = get_asset_datum(/datum/asset/simple/tetris)
-		assets.send(user)
+		var/datum/asset/simple/assets = get_asset_datum(/datum/asset/simple/tetris)
+		assets.send(user.client)
 
 	var/dat = {"
 	<!DOCTYPE HTML PUBLIC '-//W3C//DTD HTML 4.01 Transitional//EN'>
