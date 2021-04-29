@@ -1,4 +1,5 @@
 /datum/asset/simple/tetris
+	keep_local_name = TRUE
 	assets = list(
 		"tetris_0.gif"		= 'modular_sand/icons/tetris/tetris_0.gif',
 		"tetris_1.gif"		= 'modular_sand/icons/tetris/tetris_1.gif',
