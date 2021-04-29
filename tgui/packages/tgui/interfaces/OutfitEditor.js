@@ -97,9 +97,6 @@ export const OutfitEditor = (props, context) => {
               <OutfitSlot name="Left Pocket" icon="envelope-open-o" iconRot={180} slot="l_pocket" />
             </Stack>
             <Stack mb={2}>
-
-            </Stack>
-            <Stack mb={2}>
               <OutfitSlot name="Socks" icon="socks" slot="socks" />
             </Stack>
             <Stack mb={2}>
