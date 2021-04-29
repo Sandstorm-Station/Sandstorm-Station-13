@@ -134,7 +134,7 @@
 	icon_state = "decal_sprayer"
 	item_state = "decalsprayer"
 	custom_materials = list(/datum/material/iron=2000, /datum/material/glass=500)
-	var/stored_dir = 1
+	var/stored_dir = 2
 	var/stored_color = ""
 	var/stored_decal = "warningline"
 	var/stored_decal_total = "warningline"
@@ -158,7 +158,7 @@
 		to_chat(user, "<span class='notice'>You need to get closer!</span>")
 		return
 	if(use_paint(user) && isturf(F))
-		F.AddElement(/datum/element/decal, 'icons/turf/decals.dmi', stored_decal_total, turn(stored_dir, -dir2angle(F.dir)), CLEAN_STRONG, color, null, null, alpha)
+		F.AddElement(/datum/element/decal, 'icons/turf/decals.dmi', stored_decal_total, stored_dir, CLEAN_STRONG, color, null, null, alpha)
 
 /obj/item/airlock_painter/decal/attack_self(mob/user)
 	if((ink) && (ink.charges >= 1))
@@ -166,23 +166,9 @@
 		return
 	. = ..()
 
-/obj/item/airlock_painter/decal/AltClick(mob/user) //sandstorm change - everything that makes this work is on same path to this but on modular_sand
+/obj/item/airlock_painter/decal/AltClick(mob/user)
 	. = ..()
-	var/decal_category = list(
-		"Decal" = image(icon = 'icons/turf/decals.dmi', icon_state = "[stored_decal]", dir = turn(stored_dir, 180)),
-		"Color" = image(icon = 'icons/obj/crayons.dmi', icon_state = "crayonred"),
-		"Dir" = image(icon = 'icons/obj/device.dmi', icon_state = "pinonfar", dir = turn(stored_dir, 180))
-	)
-	var/cat_chosen = show_radial_menu(user,src,decal_category, custom_check = CALLBACK(src,.proc/check_menu,user), require_near = TRUE, tooltips = TRUE)
-	if(!check_menu(user))
-		return
-	switch(cat_chosen)
-		if("Decal")
-			choose_decal(user)
-		if("Color")
-			choose_color(user)
-		if("Dir")
-			choose_dir(user)
+	ui_interact(user)
 
 /obj/item/airlock_painter/decal/Initialize()
 	. = ..()
@@ -195,6 +181,11 @@
 	stored_decal_total = "[stored_decal][yellow_fix][stored_color]"
 	return
 
+/obj/item/airlock_painter/decal/ui_assets(mob/user)
+	return list(
+		get_asset_datum(/datum/asset/spritesheet/decals)
+	)
+
 /obj/item/airlock_painter/decal/ui_interact(mob/user, datum/tgui/ui)
 	ui = SStgui.try_update_ui(user, src, ui)
 	if(!ui)
@@ -204,6 +195,7 @@
 /obj/item/airlock_painter/decal/ui_data(mob/user)
 	var/list/data = list()
 	data["decal_direction"] = stored_dir
+	data["decal_dir_text"] = dir2text(stored_dir)
 	data["decal_color"] = stored_color
 	data["decal_style"] = stored_decal
 	data["decal_list"] = list()
