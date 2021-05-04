@@ -13235,7 +13235,7 @@
 	dir = 4
 	},
 /turf/open/floor/plasteel,
-/area/hallway/secondary/service)
+/area/maintenance/port/fore)
 "aYA" = (
 /obj/structure/cable/white{
 	icon_state = "4-8"
@@ -33530,7 +33530,7 @@
 	dir = 1
 	},
 /turf/open/floor/plasteel,
-/area/security/range)
+/area/maintenance/starboard)
 "cqi" = (
 /obj/structure/cable/white,
 /obj/effect/spawner/structure/window/reinforced,
@@ -49123,7 +49123,7 @@
 	icon_state = "1-2"
 	},
 /turf/open/floor/plasteel,
-/area/science/misc_lab)
+/area/maintenance/port)
 "dhU" = (
 /obj/structure/sign/nanotrasen,
 /turf/closed/wall/r_wall,
@@ -71560,6 +71560,9 @@
 	},
 /turf/open/floor/plasteel/dark,
 /area/command/heads_quarters/hos)
+"emZ" = (
+/turf/closed/wall,
+/area/hallway/primary/port)
 "enl" = (
 /obj/machinery/atmospherics/pipe/simple/supply/hidden,
 /obj/effect/turf_decal/stripes/corner,
@@ -106542,7 +106545,7 @@
 	dir = 1
 	},
 /turf/open/floor/plasteel,
-/area/commons/dorms)
+/area/maintenance/starboard)
 "qtk" = (
 /obj/structure/table/wood,
 /obj/item/reagent_containers/food/drinks/soda_cans/dr_gibb,
@@ -156519,7 +156522,7 @@ pzz
 kRu
 iio
 aMN
-alf
+emZ
 bqm
 bsp
 bug
@@ -156776,7 +156779,7 @@ vgS
 xnz
 iio
 aMO
-alf
+emZ
 bqn
 bsq
 buh
@@ -157033,7 +157036,7 @@ lNq
 skw
 iio
 aMN
-alf
+emZ
 bqo
 bsr
 fzc

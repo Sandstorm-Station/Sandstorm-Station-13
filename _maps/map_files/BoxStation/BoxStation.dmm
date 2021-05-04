@@ -25965,7 +25965,7 @@
 /area/medical/paramedic)
 "bkd" = (
 /obj/machinery/camera{
-	c_tag = "Medbay Morgue";
+	c_tag = "Paramedic Disbatch";
 	dir = 8;
 	network = list("ss13","medbay")
 	},
@@ -26368,7 +26368,7 @@
 	req_access_txt = "6"
 	},
 /turf/open/floor/plasteel/dark,
-/area/medical/morgue)
+/area/maintenance/department/medical/morgue)
 "blb" = (
 /obj/machinery/door/airlock/command{
 	name = "Captain's Quarters";
@@ -33983,12 +33983,12 @@
 	},
 /obj/machinery/bloodbankgen,
 /obj/machinery/camera{
-	c_tag = "Medbay Recovery Room";
+	c_tag = "Medbay Surgery Storage";
 	dir = 6;
 	network = list("ss13","medbay")
 	},
 /turf/open/floor/plasteel/white,
-/area/medical/medbay/central)
+/area/medical/storage)
 "bCD" = (
 /obj/machinery/computer/operating,
 /turf/open/floor/plasteel/white/side,
@@ -34363,17 +34363,23 @@
 /area/engineering/storage/tech)
 "bDA" = (
 /obj/structure/disposalpipe/segment,
-/obj/machinery/atmospherics/pipe/simple/supply/hidden{
-	dir = 4
+/obj/structure/cable{
+	icon_state = "4-8"
+	},
+/obj/machinery/atmospherics/pipe/manifold/supply/hidden{
+	dir = 1
 	},
 /turf/open/floor/plasteel/white,
-/area/medical/medbay/central)
+/area/medical/storage)
 "bDB" = (
 /obj/machinery/atmospherics/pipe/simple/supply/hidden{
 	dir = 4
 	},
 /obj/structure/cable{
 	icon_state = "1-4"
+	},
+/obj/structure/cable{
+	icon_state = "4-8"
 	},
 /turf/open/floor/plasteel/white/side{
 	dir = 4
@@ -35127,7 +35133,7 @@
 	dir = 4
 	},
 /turf/closed/wall,
-/area/medical/medbay/central)
+/area/medical/storage)
 "bFn" = (
 /obj/structure/disposalpipe/segment{
 	dir = 5
@@ -35139,12 +35145,12 @@
 /obj/structure/disposalpipe/segment{
 	dir = 10
 	},
-/obj/machinery/light/small{
-	dir = 1
-	},
 /obj/effect/decal/cleanable/blood/old,
+/obj/machinery/airalarm{
+	pixel_y = 23
+	},
 /turf/open/floor/plasteel/white,
-/area/medical/medbay/central)
+/area/medical/storage)
 "bFp" = (
 /obj/structure/closet/crate/freezer,
 /obj/item/reagent_containers/blood/random,
@@ -35171,8 +35177,11 @@
 	dir = 8;
 	sortType = 6
 	},
+/obj/machinery/light/small{
+	dir = 1
+	},
 /turf/open/floor/plasteel/white,
-/area/medical/medbay/central)
+/area/medical/storage)
 "bFq" = (
 /obj/machinery/atmospherics/pipe/simple/supply/hidden,
 /obj/effect/turf_decal/tile/yellow,
@@ -35196,8 +35205,11 @@
 /obj/structure/disposalpipe/segment,
 /obj/structure/closet/crate/freezer/surplus_limbs,
 /obj/item/reagent_containers/glass/beaker/synthflesh,
+/obj/machinery/atmospherics/components/unary/vent_pump/on{
+	dir = 1
+	},
 /turf/open/floor/plasteel/white,
-/area/medical/medbay/central)
+/area/medical/storage)
 "bFu" = (
 /obj/machinery/atmospherics/pipe/simple/supply/hidden{
 	dir = 4
@@ -35231,8 +35243,9 @@
 "bFx" = (
 /obj/structure/disposalpipe/segment,
 /obj/machinery/limbgrower,
+/obj/machinery/atmospherics/components/unary/vent_scrubber/on,
 /turf/open/floor/plasteel/white,
-/area/medical/medbay/central)
+/area/medical/storage)
 "bFy" = (
 /obj/machinery/atmospherics/components/unary/vent_pump/on{
 	dir = 1
@@ -35818,7 +35831,7 @@
 	dir = 4
 	},
 /turf/closed/wall,
-/area/medical/medbay/central)
+/area/medical/storage)
 "bGR" = (
 /obj/structure/table,
 /obj/item/storage/belt/medical{
@@ -35869,11 +35882,9 @@
 /area/medical/medbay/central)
 "bGW" = (
 /obj/structure/disposalpipe/segment,
-/obj/machinery/atmospherics/pipe/manifold/scrubbers/hidden{
-	dir = 1
-	},
+/obj/machinery/atmospherics/pipe/manifold4w/scrubbers,
 /turf/closed/wall,
-/area/medical/medbay/central)
+/area/medical/storage)
 "bGX" = (
 /obj/machinery/light{
 	dir = 8
@@ -37022,7 +37033,7 @@
 	dir = 9
 	},
 /turf/closed/wall,
-/area/medical/medbay/central)
+/area/medical/storage)
 "bJB" = (
 /obj/machinery/atmospherics/pipe/manifold4w/scrubbers,
 /turf/open/floor/plasteel,
@@ -52331,7 +52342,7 @@
 	dir = 4
 	},
 /turf/open/floor/plating,
-/area/science/robotics/mechbay)
+/area/maintenance/department/medical/morgue)
 "cHF" = (
 /obj/machinery/button/door{
 	id = "Skynet_launch";
@@ -54452,7 +54463,7 @@
 "fvk" = (
 /obj/structure/disposalpipe/segment,
 /turf/closed/wall,
-/area/medical/medbay/central)
+/area/medical/storage)
 "fvY" = (
 /obj/machinery/computer/cryopod{
 	pixel_y = 26
@@ -55793,6 +55804,9 @@
 	req_access_txt = "45"
 	},
 /obj/machinery/door/firedoor,
+/obj/structure/cable{
+	icon_state = "4-8"
+	},
 /turf/open/floor/plasteel,
 /area/medical/surgery)
 "iVJ" = (
@@ -60469,6 +60483,9 @@
 /obj/effect/spawner/structure/window/reinforced,
 /turf/open/floor/plating,
 /area/engineering/atmos)
+"tBV" = (
+/turf/closed/wall,
+/area/medical/storage)
 "tCa" = (
 /obj/structure/table/wood,
 /obj/item/instrument/guitar{
@@ -61076,8 +61093,17 @@
 	dir = 4
 	},
 /obj/structure/disposalpipe/segment,
+/obj/machinery/power/apc{
+	areastring = "/area/medical/storage";
+	name = "Medbay Surgery Storage";
+	pixel_x = 1;
+	pixel_y = -24
+	},
+/obj/structure/cable{
+	icon_state = "0-4"
+	},
 /turf/open/floor/plasteel/white,
-/area/medical/medbay/central)
+/area/medical/storage)
 "uFZ" = (
 /obj/structure/closet/emcloset,
 /obj/effect/turf_decal/stripes/line{
@@ -61403,6 +61429,16 @@
 /obj/structure/pool/Lboard,
 /turf/open/pool,
 /area/commons/fitness/pool)
+"voZ" = (
+/obj/structure/disposalpipe/segment,
+/obj/machinery/atmospherics/pipe/simple/supply/hidden{
+	dir = 4
+	},
+/obj/structure/cable{
+	icon_state = "4-8"
+	},
+/turf/open/floor/plasteel/white,
+/area/medical/storage)
 "vpY" = (
 /obj/structure/closet/lasertag/blue,
 /obj/item/clothing/under/misc/pj/blue,
@@ -95305,10 +95341,10 @@ aJq
 bHt
 bBz
 bzs
-bof
+tBV
 bFm
 bGI
-bof
+tBV
 cBD
 bKD
 bLO
@@ -95562,7 +95598,7 @@ bwu
 kPj
 bBB
 eBX
-bof
+tBV
 bFp
 uFV
 fvk
@@ -95819,7 +95855,7 @@ aJq
 bAj
 aJq
 aKG
-bof
+tBV
 bFo
 bDA
 bFt
@@ -96076,9 +96112,9 @@ byX
 aXh
 bmE
 bCA
-bof
+tBV
 bCC
-bDA
+voZ
 bFx
 bGW
 bKI
