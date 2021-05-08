@@ -107,7 +107,6 @@ GLOBAL_LIST_EMPTY(preferences_datums)
 	var/gender = MALE					//gender of character (well duh)
 	var/age = 30						//age of character
 	//SKYRAT CHANGES BEGIN
-	var/skyrat_ooc_notes = ""
 	var/erppref = "Ask"
 	var/nonconpref = "Ask"
 	var/vorepref = "Ask"
@@ -402,7 +401,7 @@ GLOBAL_LIST_EMPTY(preferences_datums)
 			else
 				dat += "[TextPreview(features["silicon_flavor_text"])]...<BR>"
 			dat += "<h2>OOC notes</h2>"
-			/*dat += "<a href='?_src_=prefs;preference=ooc_notes;task=input'><b>Set OOC notes</b></a><br>"
+			dat += "<a href='?_src_=prefs;preference=ooc_notes;task=input'><b>Set OOC notes</b></a><br>"
 			var/ooc_notes_len = length(features["ooc_notes"])
 			if(ooc_notes_len <= 40)
 				if(!ooc_notes_len)
@@ -411,9 +410,7 @@ GLOBAL_LIST_EMPTY(preferences_datums)
 					dat += "[features["ooc_notes"]]<BR>"
 			else
 				dat += "[TextPreview(features["ooc_notes"])]...<BR>"
-			*/
 			//SKYRAT EDIT
-			dat += 	"<a href='?_src_=prefs;preference=skyrat_ooc_notes;task=input'>Set OOC Notes</a><br>"
 			dat += 	"ERP : <a href='?_src_=prefs;preference=erp_pref'>[erppref]</a><br>"
 			dat += 	"Non-Con : <a href='?_src_=prefs;preference=noncon_pref'>[nonconpref]</a><br>"
 			dat += 	"Vore : <a href='?_src_=prefs;preference=vore_pref'>[vorepref]</a><br>"
@@ -1688,17 +1685,10 @@ GLOBAL_LIST_EMPTY(preferences_datums)
 					if(!isnull(msg))
 						features["silicon_flavor_text"] = strip_html_simple(msg, MAX_FLAVOR_LEN, TRUE) //Skyrat edit, uses strip_html_simple()
 
-				//SKYRAT CHANGES
-				if("skyrat_ooc_notes")
-					var/msg = input(usr, "Set your OOC Notes", "OOC Notes", skyrat_ooc_notes) as message|null
-					if(msg)
-						skyrat_ooc_notes = strip_html_simple(msg, MAX_FLAVOR_LEN, TRUE)
-
-				/* Skyrat changes - do nothing here because we dont use this and this may be exploited
 				if("ooc_notes")
 					var/msg = stripped_multiline_input(usr, "Set always-visible OOC notes related to content preferences. THIS IS NOT FOR CHARACTER DESCRIPTIONS!", "OOC notes", html_decode(features["ooc_notes"]), MAX_FLAVOR_LEN, TRUE)
 					if(!isnull(msg))
-						features["ooc_notes"] = msg*/
+						features["ooc_notes"] = msg
 
 				if("hide_ckey")
 					hide_ckey = !hide_ckey

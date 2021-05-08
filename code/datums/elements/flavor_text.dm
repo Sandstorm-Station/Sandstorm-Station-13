@@ -90,7 +90,13 @@ GLOBAL_LIST_EMPTY(mobs_with_editable_flavor_text) //et tu, hacky code
 		var/mob/living/L = target
 		var/text = texts_by_atom[target]
 		if(text)
-			usr << browse("<HTML><HEAD><meta http-equiv='Content-Type' content='text/html; charset=UTF-8'><TITLE>[isliving(target) ? L.get_visible_name() : target.name]</TITLE></HEAD><BODY><TT>[replacetext(texts_by_atom[target], "\n", "<BR>")]</TT></BODY></HTML>", "window=[isliving(target) ? L.get_visible_name() : target.name];size=500x200")
+			var/content
+			if(flavor_name == "OOC Notes")
+				content += "[L]'s OOC Notes: <br> <b>ERP:</b> [L.client.prefs.erppref] <b>| Non-Con:</b> [L.client.prefs.nonconpref] <b>| Vore:</b> [L.client.prefs.vorepref]\n"
+				if(L.client.prefs.extremepref == "Yes")
+					content += "<br><b>Extreme content:</b> [L.client.prefs.extremepref] <b>| <b>Extreme content harm:</b> [L.client.prefs.extremeharm]\n"
+			content += text
+			usr << browse("<HTML><HEAD><meta http-equiv='Content-Type' content='text/html; charset=UTF-8'><TITLE>[isliving(target) ? L.get_visible_name() : target.name]</TITLE></HEAD><BODY><TT>[replacetext(content, "\n", "<BR>")]</TT></BODY></HTML>", "window=[isliving(target) ? L.get_visible_name() : target.name];size=500x200")
 			onclose(usr, "[target.name]")
 		return TRUE
 

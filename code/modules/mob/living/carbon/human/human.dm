@@ -47,7 +47,7 @@
 	AddComponent(/datum/component/combat_mode)
 	AddElement(/datum/element/flavor_text/carbon, _name = "Flavor Text", _save_key = "flavor_text")
 	AddElement(/datum/element/flavor_text/carbon/temporary, "", "Set Pose (Temporary Flavor Text)", "This should be used only for things pertaining to the current round!", _save_key = null)
-	//AddElement(/datum/element/flavor_text, _name = "OOC Notes", _addendum = "Put information on ERP/vore/lewd-related preferences here. THIS SHOULD NOT CONTAIN REGULAR FLAVORTEXT!!", _always_show = TRUE, _save_key = "ooc_notes", _examine_no_preview = TRUE) //Skyrat change - we have our own OOC notes
+	AddElement(/datum/element/flavor_text, _name = "OOC Notes", _addendum = "Put information on ERP/vore/lewd-related preferences here. THIS SHOULD NOT CONTAIN REGULAR FLAVORTEXT!!", _always_show = TRUE, _save_key = "ooc_notes", _examine_no_preview = TRUE)
 
 /mob/living/carbon/human/Destroy()
 	QDEL_NULL(physiology)
@@ -1136,6 +1136,17 @@
 /mob/living/carbon/human/species/Initialize()
 	. = ..()
 	set_species(race)
+
+/mob/living/carbon/human/get_tooltip_data()
+	var/t_He = p_they(TRUE)
+	var/t_is = p_are()
+	. = list()
+	var/skipface = (wear_mask && (wear_mask.flags_inv & HIDEFACE)) || (head && (head.flags_inv & HIDEFACE))
+	if(skipface || get_visible_name() == "Unknown")
+		. += "You can't make out what species they are."
+	else
+		. += "[t_He] [t_is] a [dna.custom_species ? dna.custom_species : dna.species.name]"
+	SEND_SIGNAL(src, COMSIG_PARENT_EXAMINE, usr, .)
 
 /mob/living/carbon/human/species/abductor
 	race = /datum/species/abductor

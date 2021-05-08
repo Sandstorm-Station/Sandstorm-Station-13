@@ -26,8 +26,6 @@
 				if(!(alt_titles_preferences[job.title] in job.alt_titles))
 					alt_titles_preferences.Remove(job.title)
 
-	skyrat_ooc_notes = sanitize_text(S["skyrat_ooc_notes"])
-	skyrat_ooc_notes = strip_html_simple(skyrat_ooc_notes, MAX_FLAVOR_LEN, TRUE)
 	erppref = sanitize_text(S["erp_pref"], "Ask")
 	if(!length(erppref)) erppref = "Ask"
 	nonconpref = sanitize_text(S["noncon_pref"], "Ask")
@@ -42,11 +40,6 @@
 		extremeharm = "No"
 	enable_personal_chat_color	= sanitize_integer(enable_personal_chat_color, 0, 1, initial(enable_personal_chat_color))
 	personal_chat_color	= sanitize_hexcolor(personal_chat_color, 6, 1, "#FFFFFF")
-	//Moves over the previous OOC notes to our ooc notes
-	if(length(features["ooc_notes"]) > length(skyrat_ooc_notes))
-		skyrat_ooc_notes = features["ooc_notes"]
-		features["ooc_notes"] = ""
-	//END OF SKYRAT CHANGES
 
 /datum/preferences/proc/cit_character_pref_save(savefile/S)
 	//ipcs
@@ -71,7 +64,6 @@
 	WRITE_FILE(S["silicon_feature_flavor_text"], features["silicon_flavor_text"])
 
 	//skyrat stuff
-	WRITE_FILE(S["skyrat_ooc_notes"], skyrat_ooc_notes)
 	WRITE_FILE(S["erp_pref"], erppref)
 	WRITE_FILE(S["noncon_pref"], nonconpref)
 	WRITE_FILE(S["vore_pref"], vorepref)
