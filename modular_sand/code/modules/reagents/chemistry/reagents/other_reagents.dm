@@ -1,5 +1,5 @@
 /datum/reagent/water
-	hydration = 5 * REAGENTS_METABOLISM
+	hydration = 10 * REAGENTS_METABOLISM
 
 /datum/reagent/dragon_blood
 	name = "Dragon blood"
