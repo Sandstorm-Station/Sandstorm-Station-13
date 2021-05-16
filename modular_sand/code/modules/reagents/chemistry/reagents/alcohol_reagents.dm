@@ -1,2 +1,2 @@
 /datum/reagent/consumable/ethanol
-	hydration = 1 * REAGENTS_METABOLISM
+	hydration = 2 * REAGENTS_METABOLISM
