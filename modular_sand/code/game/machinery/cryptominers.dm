@@ -48,7 +48,7 @@
 	if(!mining && panel_open && user.a_intent == INTENT_HELP)
 		var/item_is_id = W.GetID()
 		if(item_is_id)
-			var/obj/item/card/id/CARD = W
+			var/obj/item/card/id/CARD = item_is_id
 			if(CARD.bank_support != ID_FREE_BANK_ACCOUNT)
 				to_chat(user, "<span class='warning'>This ID has no banking support whatsover, must be an older model...</span>")
 				return
