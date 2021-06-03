@@ -1,4 +1,4 @@
-/datum/sprite_accessory/body_markings/colorbelly
+/datum/sprite_accessory/mam_body_markings/colorbelly
 	name = "Coloured Belly"
 	color_src = MATRIXED
 	icon_state = "colorbelly"
