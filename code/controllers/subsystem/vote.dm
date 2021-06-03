@@ -548,7 +548,7 @@ SUBSYSTEM_DEF(vote)
 			choice_statclicks[choice] = "[i]"
 		//
 		for(var/c in GLOB.clients)
-			SEND_SOUND(c, sound('sound/misc/server-ready.ogg'))
+			SEND_SOUND(c, sound('sound/misc/votestart.ogg'))
 			var/client/C = c
 			var/datum/action/vote/V = new
 			if(question)
