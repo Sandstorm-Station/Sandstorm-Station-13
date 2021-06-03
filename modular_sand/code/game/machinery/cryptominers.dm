@@ -46,16 +46,16 @@
 	if(default_unfasten_wrench(user, W))
 		return
 	if(!mining && panel_open && user.a_intent == INTENT_HELP)
-		var/item_is_id = W.GetID()
-		if(item_is_id)
-			var/obj/item/card/id/CARD = W
+		var/id_card = W.GetID()
+		if(id_card)
+			var/obj/item/card/id/CARD = id_card
 			if(CARD.bank_support != ID_FREE_BANK_ACCOUNT)
 				to_chat(user, "<span class='warning'>This ID has no banking support whatsover, must be an older model...</span>")
 				return
 			if(!CARD.registered_account)
 				to_chat(user, "<span class='warning'>ERROR: No bank account found.</span>")
 				return
-			to_chat(user, "<span class='notice'>You link [W] to \the [src].</span>")
+			to_chat(user, "<span class='notice'>You link \the [CARD] to \the [src].</span>")
 			say("Now using [pay_me.account_holder ? "[pay_me.account_holder]'s" : "<span class='boldwarning'>ERROR</span>"] account.")
 			pay_me = CARD.registered_account
 			return
