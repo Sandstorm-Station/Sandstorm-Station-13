@@ -90,15 +90,15 @@
 	if(patient)
 		to_chat(user, "<span class='warning'>Your [src.name] is already occupied.</span>")
 		return
-		
+
 	if (!CHECK_BITFIELD(target.vore_flags,DEVOURABLE))
 		to_chat(user, "The target registers an error code. Unable to insert into [src.name].")
 		return
-	
+
 	var/voracious = TRUE
 	if(!target.client || !(target.client.prefs.cit_toggles & MEDIHOUND_SLEEPER) || !hound.client || !(hound.client.prefs.cit_toggles & MEDIHOUND_SLEEPER))
 		voracious = FALSE
-	
+
 	user.visible_message("<span class='warning'>[hound.name] is carefully inserting [target.name] into their [src.name].</span>", "<span class='notice'>You start placing [target] into your [src.name]...</span>")
 	if(do_after (user, 100, target = target) && !target.buckled && !target.anchored && !patient)
 		if(!in_range(src, target)) //Proximity is probably old news by now, do a new check.
@@ -132,16 +132,16 @@
 	if(!hound)
 		go_out(user)
 		return
-		
+
 	if(user.a_intent == INTENT_HELP)
 		user.visible_message("<span class='warning'>[user] gently rubs the flexible confines.</span>", \
 			"<span class='notice'>You gently rub [hound.name]'s flexible confines.</span>")
 		return
-		
+
 	var/voracious = TRUE
 	if(!user.client || !(user.client.prefs.cit_toggles & MEDIHOUND_SLEEPER) || !hound.client || !(hound.client.prefs.cit_toggles & MEDIHOUND_SLEEPER))
 		voracious = FALSE
-		
+
 	if(prob(escape_chance) && !escape_pending)
 		user.visible_message("<span class='notice'>You see [voracious ? "[user] struggling against the expanded material of [hound]'s gut!" : "and hear [user] pounding against something inside of [hound]'s [src.name]!"]</span>", \
 			"<span class='notice'>[voracious ? "You start struggling inside of [src.name]'s tight, flexible confines," : "You start pounding against the metallic walls of [src.name],"] managing to trigger a hidden emergency release... (this will take about [DisplayTimeText(breakout_time)].)</span>", \
@@ -319,7 +319,7 @@
 				hound.sleeper_nv = TRUE
 			else
 				hound.sleeper_nv = FALSE
-			
+
 			//Update icon and return new patient
 			hound.update_icons()
 			return
@@ -406,7 +406,7 @@
 		escape_pending = FALSE
 		to_chat(hound, "<span class='notice'>Your [src.name] clicks as its self-cleaning cycle ends. NOTE: Foreign objects are still detected. Resume self-cleaning?</span>")
 		playsound(loc, 'sound/machines/click.ogg', 50, 1)
-		
+
 	if(!contents || length(contents) == 0)
 		//Belly is entirely empty
 		to_chat(hound, "<span class='notice'>Your [src.name] chimes as it completes its self-cleaning cycle.</span>")
@@ -452,7 +452,7 @@
 	hound.cell.use(inject_cost) //-750 charge per injection
 	//var/units = round(patient.reagents.get_reagent_amount(chem))
 	to_chat(hound, "<span class='notice'>Injecting [inject_amount] unit\s of [chem] into occupant.</span>") //If they were immersed, the reagents wouldn't leave with them.
-	
+
 /obj/item/dogborg/sleeper/proc/chem_allowed(chem)
 	if(!patient || !patient.reagents)
 		return
@@ -488,25 +488,25 @@
 	if(patient)
 		to_chat(user, "<span class='warning'>Your [src.name] is already occupied.</span>")
 		return
-		
+
 	if(!CHECK_BITFIELD(target.vore_flags,DEVOURABLE))
 		to_chat(user, "The target registers an error code. Unable to insert into [src.name].")
 		return
-		
+
 	var/voracious = TRUE
 	if(!target.client || !(target.client.prefs.cit_toggles & MEDIHOUND_SLEEPER) || !hound.client || !(hound.client.prefs.cit_toggles & MEDIHOUND_SLEEPER))
 		voracious = FALSE
-		
+
 	user.visible_message("<span class='warning'>[hound.name] is ingesting [target] into their [src.name].</span>", "<span class='notice'>You start ingesting [target] into your [src.name]...</span>")
 	if(do_after(user, 30, target = target) && !patient && !target.buckled)
-		
+
 		//if(patient)
 			//to_chat(user,"<span class='warning'>Your [src.name] is already occupied.</span>")
 			//return
 		//if(target.buckled)
 			//to_chat(user,"<span class='warning'>[target] is buckled and can not be put into your [src.name].</span>")
 			//return
-		
+
 		target.forceMove(src)
 		target.reset_perspective(src)
 		update_gut(hound)

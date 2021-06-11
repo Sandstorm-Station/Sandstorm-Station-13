@@ -192,13 +192,10 @@
 	scheduled_destruction = world.time + (lifespan - CHAT_MESSAGE_EOL_FADE)
 	enter_subsystem()
 
-	//dogborg check sandstorm thingy thing.
 	var/mob/living/silicon/robot/R = target
-	if(iscyborg(R)) //without this it would check for module on every mob speaking, and you would NOT remove this unless you love runtimes
-		if(R.module.dogborg == TRUE || R.dogborg == TRUE) //BOYS, WHAT THE HELL, GREAT INCONSISTENCY!
+	if(iscyborg(R))
+		if(R.module.dogborg == TRUE || R.dogborg == TRUE) //I hate whoever that thought that putting two types of dogborg that don't even sync up properly was good
 			message.pixel_x = 16
-		else
-			message.pixel_x = 0
 
 /**
   * Applies final animations to overlay CHAT_MESSAGE_EOL_FADE deciseconds prior to message deletion
