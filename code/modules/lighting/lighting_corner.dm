@@ -59,7 +59,20 @@
 	if(T)
 		SET_DIAGONAL(T, turn(((T.x > x) ? EAST : WEST) | ((T.y > y) ? NORTH : SOUTH), 180))
 
-	update_active()
+/datum/lighting_corner/proc/save_master(turf/master, dir)
+	switch (dir)
+		if (NORTHEAST)
+			master_NE = master
+			master.lighting_corner_SW = src
+		if (SOUTHEAST)
+			master_SE = master
+			master.lighting_corner_NW = src
+		if (SOUTHWEST)
+			master_SW = master
+			master.lighting_corner_NE = src
+		if (NORTHWEST)
+			master_NW = master
+			master.lighting_corner_SE = src
 
 #undef SET_DIAGONAL
 
@@ -87,13 +100,13 @@
 	var/lum_r = src.lum_r
 	var/lum_g = src.lum_g
 	var/lum_b = src.lum_b
-	var/mx = max(lum_r, lum_g, lum_b) // Scale it so one of them is the strongest lum, if it is above 1.
+	var/largest_color_luminosity = max(lum_r, lum_g, lum_b) // Scale it so one of them is the strongest lum, if it is above 1.
 	. = 1 // factor
-	if (mx > 1)
-		. = 1 / mx
+	if (largest_color_luminosity > 1)
+		. = 1 / largest_color_luminosity
 
 	#if LIGHTING_SOFT_THRESHOLD != 0
-	else if (mx < LIGHTING_SOFT_THRESHOLD)
+	else if (largest_color_luminosity < LIGHTING_SOFT_THRESHOLD)
 		. = 0 // 0 means soft lighting.
 
 	cache_r  = round(lum_r * ., LIGHTING_ROUND_VALUE) || LIGHTING_SOFT_THRESHOLD
