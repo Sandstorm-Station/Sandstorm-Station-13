@@ -9,7 +9,7 @@
 /proc/flick_emote_popup_on_mob(mob/M, state, time)
 	var/obj/effect/overlay/emote_popup/I = new
 	I.icon_state = state
-	M.vis_contents += I
+	M.add_overlay(I) //screw it, using vis_contents stack and never get removed from the list despite being deleted
 	animate(I, alpha = 255, time = 5, easing = BOUNCE_EASING, pixel_y = 10)
 	QDEL_IN_CLIENT_TIME(I, time)
 
