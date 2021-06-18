@@ -9,9 +9,13 @@
 /proc/flick_emote_popup_on_mob(mob/M, state, time)
 	var/obj/effect/overlay/emote_popup/I = new
 	I.icon_state = state
-	M.add_overlay(I) //screw it, using vis_contents stack and never get removed from the list despite being deleted
+	M.vis_contents += I
 	animate(I, alpha = 255, time = 5, easing = BOUNCE_EASING, pixel_y = 10)
-	QDEL_IN_CLIENT_TIME(I, time)
+	addtimer(CALLBACK(GLOBAL_PROC, /proc/finish_flick, M, I), time, TIMER_STOPPABLE | TIMER_CLIENT_TIME)
+
+/proc/finish_flick(mob/M, I)
+	M.vis_contents -= I
+	qdel(I)
 
 /datum/emote/living/peep
 	key = "peep"
