@@ -11,7 +11,11 @@
 	I.icon_state = state
 	M.vis_contents += I
 	animate(I, alpha = 255, time = 5, easing = BOUNCE_EASING, pixel_y = 10)
-	QDEL_IN_CLIENT_TIME(I, time)
+	addtimer(CALLBACK(GLOBAL_PROC, /proc/finish_flick, M, I), time, TIMER_STOPPABLE | TIMER_CLIENT_TIME)
+
+/proc/finish_flick(mob/M, I)
+	M.vis_contents -= I
+	qdel(I)
 
 /datum/emote/living/peep
 	key = "peep"
