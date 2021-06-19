@@ -73,6 +73,9 @@
 /// CIT TESTS
 #include "character_saving.dm"
 
+/// SANDSTORM TESTS
+#include "interactions.dm" //No regrets
+
 #undef TEST_ASSERT
 #undef TEST_ASSERT_EQUAL
 #undef TEST_ASSERT_NOTEQUAL

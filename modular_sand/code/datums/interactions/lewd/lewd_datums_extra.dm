@@ -36,7 +36,7 @@
 
 /datum/interaction/lewd/finger_self/display_interaction(mob/living/carbon/human/user)
 	user.do_fingering_self(user)
-	
+
 /datum/interaction/lewd/titgrope_self
 	command = "titgrope_self"
 	description = "Grope your own breasts."
