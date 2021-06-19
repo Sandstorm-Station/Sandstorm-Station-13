@@ -136,7 +136,7 @@
 				else
 					modifier = 1
 			target.reagents.add_reagent(/datum/reagent/consumable/milk, rand(1,2 * modifier))
-		
+
 	if(user.a_intent == INTENT_HARM)
 		user.visible_message(
 				pick("<font color=purple>\The <b>[user]</b> bites \the <b>[target]</b>'s [pick("nipple", "nipples")].</font>",
@@ -156,7 +156,7 @@
 				else
 					modifier = 1
 			target.reagents.add_reagent(/datum/reagent/consumable/milk, rand(1,3 * modifier)) //aggressive sucking leads to high rewards
-	
+
 	if(user.a_intent == INTENT_GRAB)
 		user.visible_message(
 				pick("<font color=purple>\The <b>[user]</b> sucks \the <b>[target]</b>'s [pick("nipple", "nipples")] intently.</font>",
@@ -207,7 +207,7 @@
 							"<font color=purple>\The <b>[target]</b> squirms away from \the <b>[user]</b>'s mouth.</font>",
 							"<font color=purple>\The <b>[target]</b> slides back from \the <b>[user]</b>'s mouth.</font>",
 							"<font color=purple>\The <b>[target]</b> thrusts their bare chest forward into \the <b>[user]</b>'s mouth.</font>"))
-				else 
+				else
 					user.visible_message(
 						pick("<font color=purple>\The <b>[target]</b> twists playfully against the restraints.</font>",
 							"<font color=purple>\The <b>[target]</b> squirms away from \the <b>[user]</b>'s mouth.</font>",
