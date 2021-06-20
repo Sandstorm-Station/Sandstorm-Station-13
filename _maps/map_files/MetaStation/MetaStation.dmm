@@ -44876,6 +44876,14 @@
 /obj/machinery/atmospherics/pipe/manifold/scrubbers/hidden{
 	dir = 1
 	},
+/obj/effect/turf_decal/stripes/line{
+	dir = 8
+	},
+/obj/machinery/door/window/northleft{
+	dir = 8;
+	name = "Containment Pen #6";
+	req_access_txt = "55"
+	},
 /turf/open/floor/plasteel,
 /area/science/xenobiology)
 "cTg" = (

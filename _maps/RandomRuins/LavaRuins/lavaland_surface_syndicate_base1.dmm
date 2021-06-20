@@ -139,9 +139,6 @@
 "ap" = (
 /turf/closed/indestructible/opshuttle,
 /area/ruin/unpowered/syndicate_lava_base/testlab)
-"aq" = (
-/turf/open/floor/engine,
-/area/lavaland/surface/outdoors)
 "ar" = (
 /obj/machinery/atmospherics/pipe/manifold/supply/hidden{
 	dir = 1
@@ -6622,9 +6619,9 @@
 /area/ruin/unpowered/syndicate_lava_base/arrivals)
 "YK" = (
 /obj/machinery/atmospherics/components/unary/outlet_injector/layer3{
+	dir = 8;
 	id = "syndie_lavaland_tox_in";
-	piping_layer = 3;
-	dir = 8
+	piping_layer = 3
 	},
 /turf/open/floor/engine/plasma,
 /area/ruin/unpowered/syndicate_lava_base/engineering)
@@ -8597,7 +8594,7 @@ aZ
 aZ
 OP
 ae
-aq
+ab
 az
 as
 as
