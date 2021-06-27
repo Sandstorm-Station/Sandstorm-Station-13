@@ -24,7 +24,7 @@
 		return
 
 	var/datum/gas_mixture/oxy = new
-	oxy.adjust_moles(/datum/gas/oxygen, (yield + 6)*7*0.02) // this process is only being called about 2/7 as much as corpses so this is 12-32 times a corpses
+	oxy.adjust_moles(GAS_O2, (yield + 6)*7*0.02) // this process is only being called about 2/7 as much as corpses so this is 12-32 times a corpses
 	oxy.return_temperature(T20C) // without this the room would eventually freeze and miasma mining would be easier
 	T.assume_air(oxy)
 	T.air_update_turf()
@@ -52,7 +52,7 @@
 		return
 
 	var/datum/gas_mixture/nitro = new
-	nitro.adjust_moles(/datum/gas/nitrogen, (yield + 6)*7*0.02) // this process is only being called about 2/7 as much as corpses so this is 12-32 times a corpses
+	nitro.adjust_moles(GAS_N2, (yield + 6)*7*0.02) // this process is only being called about 2/7 as much as corpses so this is 12-32 times a corpses
 	nitro.return_temperature(T20C) // without this the room would eventually freeze and miasma mining would be easier
 	T.assume_air(nitro)
 	T.air_update_turf()
@@ -80,7 +80,7 @@
 		return
 
 	var/datum/gas_mixture/plas = new
-	plas.adjust_moles(/datum/gas/plasma, (yield + 6)*7*0.02) // this process is only being called about 2/7 as much as corpses so this is 12-32 times a corpses
+	plas.adjust_moles(GAS_PLASMA, (yield + 6)*7*0.02) // this process is only being called about 2/7 as much as corpses so this is 12-32 times a corpses
 	plas.return_temperature(T20C) // without this the room would eventually freeze and miasma mining would be easier
 	T.assume_air(plas)
 	T.air_update_turf()
