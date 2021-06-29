@@ -11,10 +11,3 @@
 	icon = 'modular_sand/icons/obj/plushes.dmi'
 	icon_state = "secdrake"
 	item_state = "secdrake"
-
-// solving missing sprite plushies
-
-/obj/item/toy/plush/sergal
-	icon = 'modular_sand/icons/obj/plushes.dmi'
-	icon_state = "jadek"
-	item_state = "jadek"
