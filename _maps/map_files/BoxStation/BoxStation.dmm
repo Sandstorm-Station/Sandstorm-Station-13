@@ -25314,8 +25314,7 @@
 	dir = 4
 	},
 /obj/machinery/posialert{
-	pixel_x = 30;
-	pixel_y = -2
+	pixel_x = 32
 	},
 /turf/open/floor/plasteel/white,
 /area/science/robotics/lab)
@@ -54016,16 +54015,6 @@
 /obj/structure/closet/secure_closet/personal/cabinet,
 /turf/open/floor/carpet,
 /area/commons/dorms)
-"eTl" = (
-/obj/effect/mapping_helpers/airlock/cyclelink_helper{
-	dir = 1
-	},
-/obj/machinery/door/airlock/external{
-	name = "Port Docking Bay 1"
-	},
-/obj/structure/fans/tiny,
-/turf/open/floor/plating,
-/area/hallway/secondary/entry)
 "eUy" = (
 /obj/machinery/door/airlock{
 	name = "Starboard Emergency Storage"
@@ -54859,6 +54848,18 @@
 /obj/structure/lattice/catwalk,
 /turf/open/space/basic,
 /area/space/nearstation)
+"gJA" = (
+/obj/machinery/conveyor{
+	dir = 8;
+	id = "QMLoad"
+	},
+/obj/machinery/door/poddoor{
+	id = "QMLoaddoor";
+	name = "supply dock loading door"
+	},
+/obj/structure/fans/tiny,
+/turf/open/floor/plating,
+/area/cargo/storage)
 "gJN" = (
 /obj/structure/rack,
 /obj/item/book/manual/wiki/engineering_singulo_tesla,
@@ -55932,6 +55933,16 @@
 	},
 /turf/open/floor/plating,
 /area/maintenance/port/fore)
+"jqd" = (
+/obj/effect/mapping_helpers/airlock/cyclelink_helper{
+	dir = 1
+	},
+/obj/machinery/door/airlock/external{
+	name = "Port Docking Bay 1"
+	},
+/obj/structure/fans/tiny,
+/turf/open/floor/plating,
+/area/hallway/secondary/entry)
 "jqv" = (
 /obj/structure/chair/wood/normal{
 	dir = 1
@@ -58139,6 +58150,18 @@
 	},
 /turf/open/floor/plasteel,
 /area/commons/fitness/pool)
+"ojC" = (
+/obj/machinery/conveyor{
+	dir = 4;
+	id = "QMLoad2"
+	},
+/obj/machinery/door/poddoor{
+	id = "QMLoaddoor2";
+	name = "supply dock loading door"
+	},
+/obj/structure/fans/tiny,
+/turf/open/floor/plating,
+/area/cargo/storage)
 "okK" = (
 /obj/machinery/light/small{
 	dir = 8
@@ -58910,6 +58933,14 @@
 /obj/machinery/atmospherics/pipe/simple/supply/hidden,
 /turf/open/floor/plasteel,
 /area/hallway/primary/port)
+"pOo" = (
+/obj/effect/mapping_helpers/airlock/cyclelink_helper,
+/obj/machinery/door/airlock/external{
+	name = "Port Docking Bay 1"
+	},
+/obj/structure/fans/tiny,
+/turf/open/floor/plating,
+/area/hallway/secondary/entry)
 "pPi" = (
 /obj/machinery/atmospherics/pipe/simple/scrubbers/hidden{
 	dir = 4
@@ -58996,14 +59027,6 @@
 	icon_state = "wood-broken2"
 	},
 /area/maintenance/port/fore)
-"pXu" = (
-/obj/machinery/door/airlock/external{
-	name = "Solar Maintenance";
-	req_access_txt = "10; 13"
-	},
-/obj/structure/fans/tiny,
-/turf/open/floor/plating,
-/area/maintenance/aft)
 "pXG" = (
 /obj/structure/table/wood,
 /obj/item/candle{
@@ -59465,14 +59488,6 @@
 /obj/machinery/atmospherics/pipe/simple/supply/hidden,
 /turf/open/floor/plasteel,
 /area/security/processing)
-"rjG" = (
-/obj/effect/mapping_helpers/airlock/cyclelink_helper,
-/obj/machinery/door/airlock/external{
-	name = "Port Docking Bay 1"
-	},
-/obj/structure/fans/tiny,
-/turf/open/floor/plating,
-/area/hallway/secondary/entry)
 "rmN" = (
 /obj/machinery/atmospherics/pipe/simple/supply/hidden{
 	dir = 6
@@ -59572,6 +59587,10 @@
 	},
 /turf/open/floor/plasteel,
 /area/engineering/gravity_generator)
+"rty" = (
+/mob/living/simple_animal/pet/dog/cheems,
+/turf/open/floor/plasteel,
+/area/cargo/storage)
 "rtC" = (
 /obj/effect/decal/cleanable/blood/old,
 /turf/open/floor/plating,
@@ -59634,6 +59653,14 @@
 	},
 /turf/open/floor/plasteel,
 /area/commons/fitness)
+"ryN" = (
+/obj/machinery/door/airlock/external{
+	name = "Solar Maintenance";
+	req_access_txt = "10; 13"
+	},
+/obj/structure/fans/tiny,
+/turf/open/floor/plating,
+/area/maintenance/aft)
 "rAR" = (
 /obj/machinery/atmospherics/pipe/manifold/supply/hidden{
 	dir = 1
@@ -60411,18 +60438,6 @@
 	},
 /turf/open/floor/plasteel,
 /area/security/courtroom)
-"trQ" = (
-/obj/machinery/conveyor{
-	dir = 8;
-	id = "QMLoad"
-	},
-/obj/machinery/door/poddoor{
-	id = "QMLoaddoor";
-	name = "supply dock loading door"
-	},
-/obj/structure/fans/tiny,
-/turf/open/floor/plating,
-/area/cargo/storage)
 "tsq" = (
 /obj/structure/cable/white{
 	icon_state = "0-4"
@@ -60879,10 +60894,6 @@
 /obj/item/toy/poolnoodle/red,
 /turf/open/floor/plasteel,
 /area/commons/fitness/pool)
-"unb" = (
-/mob/living/simple_animal/pet/dog/cheems,
-/turf/open/floor/plasteel,
-/area/cargo/storage)
 "unA" = (
 /obj/machinery/light{
 	dir = 8
@@ -62514,18 +62525,6 @@
 /obj/item/clothing/under/color/rainbow,
 /turf/open/floor/plating,
 /area/maintenance/port/fore)
-"xGI" = (
-/obj/machinery/conveyor{
-	dir = 4;
-	id = "QMLoad2"
-	},
-/obj/machinery/door/poddoor{
-	id = "QMLoaddoor2";
-	name = "supply dock loading door"
-	},
-/obj/structure/fans/tiny,
-/turf/open/floor/plating,
-/area/cargo/storage)
 "xGQ" = (
 /obj/structure/sign/plaques/golden{
 	pixel_y = 32
@@ -72459,7 +72458,7 @@ awZ
 ayl
 azy
 auP
-eTl
+jqd
 aaa
 aaa
 aaa
@@ -72467,7 +72466,7 @@ aaa
 aaa
 aaa
 aaa
-rjG
+pOo
 auP
 cIh
 ayl
@@ -74258,7 +74257,7 @@ axh
 aIK
 azy
 auP
-eTl
+jqd
 aaa
 aaa
 aaa
@@ -74266,7 +74265,7 @@ aaa
 aaa
 aaa
 aaa
-rjG
+pOo
 auP
 cIh
 ayl
@@ -80456,11 +80455,11 @@ aPz
 aaa
 aaa
 boI
-xGI
+ojC
 brJ
 boI
 brJ
-trQ
+gJA
 boI
 aaa
 aaa
@@ -83282,8 +83281,8 @@ xBw
 bjr
 ama
 bmh
-unb
 bjr
+rty
 bjr
 bjr
 bjr
@@ -104657,7 +104656,7 @@ czY
 cNW
 bAw
 bAw
-pXu
+ryN
 aag
 gJi
 aaa
