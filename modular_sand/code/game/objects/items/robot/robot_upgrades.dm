@@ -3,7 +3,7 @@
 	desc = "An experimental welding tool replacement for the engineering module's standard welding tool."
 	icon_state = "cyborg_upgrade3"
 	require_module = 1
-	module_type = list(/obj/item/robot_module/engineering)
+	module_type = BORG_MODULE_ENGINEERING
 
 /obj/item/borg/upgrade/xwelding/action(mob/living/silicon/robot/R, user = usr)
 	. = ..()
@@ -38,7 +38,7 @@
 	desc = "An upgrade that allows cyborgs the ability to use plasma and assorted plasma products."
 	icon_state = "cyborg_upgrade3"
 	require_module = 1
-	module_type = list(/obj/item/robot_module/engineering)
+	module_type = BORG_MODULE_ENGINEERING
 */
 
 /* Shit doesnt work, do it later
@@ -68,7 +68,7 @@
 	desc = "A bluespace RPD replacement for the engineering module's standard RPD."
 	icon_state = "cyborg_upgrade3"
 	require_module = 1
-	module_type = list(/obj/item/robot_module/engineering)
+	module_type = BORG_MODULE_ENGINEERING
 
 /obj/item/borg/upgrade/bsrpd/action(mob/living/silicon/robot/R, user = usr)
 	. = ..()
@@ -103,7 +103,7 @@
 	desc = "A premium kinetic accelerator replacement for the mining module's standard kinetic accelerator."
 	icon_state = "cyborg_upgrade3"
 	require_module = 1
-	module_type = list(/obj/item/robot_module/miner)
+	module_type = BORG_MODULE_MINER
 
 /obj/item/borg/upgrade/premiumka/action(mob/living/silicon/robot/R, user = usr)
 	. = ..()

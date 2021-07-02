@@ -44,7 +44,7 @@
 	category = list("Cyborg Upgrade Modules")
 
 /datum/design/borg_upgrade_shrink
-	name = "Cyborg Upgrade (shrink)"
+	name = "Cyborg Upgrade (Shrink)"
 	id = "borg_upgrade_shrink"
 	build_type = MECHFAB
 	build_path = /obj/item/borg/upgrade/shrink
