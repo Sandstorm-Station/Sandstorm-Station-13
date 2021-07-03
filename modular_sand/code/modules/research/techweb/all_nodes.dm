@@ -46,3 +46,7 @@
 /datum/techweb_node/engineering/New()
 	design_ids += "upgraded_welder"
 	. = ..()
+
+/datum/techweb_node/base/New()
+	design_ids += "dropper"
+	. = ..()
