@@ -80,10 +80,6 @@
 		/datum/reagent/toxin
 	)
 
-	var/list/upgrade_reagents4 = list(
-		/datum/reagent/toxin/slimejelly
-	)
-
 	var/list/emagged_reagents = list(
 		/datum/reagent/drug/space_drugs,
 		/datum/reagent/toxin/plasma,
@@ -625,11 +621,6 @@
 		/datum/reagent/consumable/nothing,
 		/datum/reagent/consumable/peachjuice
 	)
-	upgrade_reagents4 = list(
-		/datum/reagent/toxin/teapowder,
-		/datum/reagent/consumable/bungojuice,
-		/datum/reagent/consumable/caramel
-	)
 	emagged_reagents = list(
 		/datum/reagent/toxin/mindbreaker,
 		/datum/reagent/toxin/staminatoxin,
@@ -688,7 +679,6 @@
 	)
 	upgrade_reagents2 = null
 	upgrade_reagents3 = null
-	upgrade_reagents4 = null
 	emagged_reagents = list(
 		/datum/reagent/consumable/ethanol/alexander,
 		/datum/reagent/consumable/clownstears,
@@ -892,9 +882,6 @@
 	)
 	upgrade_reagents3 = list(
 		/datum/reagent/medicine/mine_salve
-	)
-	upgrade_reagents4 = list(
-		/datum/reagent/blood
 	)
 	emagged_reagents = list(
 		/datum/reagent/drug/space_drugs,
