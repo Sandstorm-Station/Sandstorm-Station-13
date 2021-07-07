@@ -2494,7 +2494,7 @@ GLOBAL_LIST_EMPTY(roundstart_race_names)
 
 	if(flying_species && H.movement_type & FLYING)
 		ToggleFlight(H)
-		flyslip(H)
+		INVOKE_ASYNC(src, .proc/flyslip, H)
 
 	. = stunmod * H.physiology.stun_mod * amount
 
