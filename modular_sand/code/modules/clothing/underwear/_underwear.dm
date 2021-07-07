@@ -14,6 +14,10 @@
 	var/under_type = /obj/item/clothing/underwear //i don't know what i'm gonna use this for
 	var/fitted = FEMALE_UNIFORM_TOP
 
+/obj/item/clothing/underwear/Move()
+	..()
+	setDir(SOUTH) //should prevent underwear from facing any direction but south while on the floor, uses same code as pipes, PLEASE, THIS IS A BAD SOLUTION, SOMEONE MAKE ME UNDERWEAR SPRITES ASAP
+
 ///Proc to check if undershirt is hidden.
 /mob/living/carbon/human/proc/undershirt_hidden()
 	for(var/obj/item/I in list(w_uniform, wear_suit))
