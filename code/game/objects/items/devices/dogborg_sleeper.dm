@@ -315,8 +315,9 @@
 				hound.sleeper_g = 1
 				patient_laststat = patient.stat
 
-			if(!patient.client || !(patient.client.prefs.cit_toggles & MEDIHOUND_SLEEPER) || !hound.client || !(hound.client.prefs.cit_toggles & MEDIHOUND_SLEEPER))
-				hound.sleeper_nv = TRUE
+			if(hound.module.sleeper_overlay == "msleeper")
+				if(!patient.client || !(patient.client.prefs.cit_toggles & MEDIHOUND_SLEEPER) || !hound.client || !(hound.client.prefs.cit_toggles & MEDIHOUND_SLEEPER))
+					hound.sleeper_nv = TRUE
 			else
 				hound.sleeper_nv = FALSE
 
