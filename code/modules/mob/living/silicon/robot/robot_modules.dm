@@ -184,7 +184,7 @@
 			I.icon_state = "decompiler"
 		if(istype(src, /obj/item/robot_module/butler))
 			I.icon_state = "servicer"
-			if(cyborg_base_icon == "scrubpup")
+			if(cyborg_base_icon in list("scrubpup", "drakejanit"))
 				I.icon_state = "compactor"
 
 	basic_modules += I
