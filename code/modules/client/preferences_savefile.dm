@@ -835,6 +835,7 @@ SAVEFILE UPDATING/VERSIONING - 'Simplified', or rather, more coder-friendly ~Car
 
 	S["vore_flags"]						>> vore_flags
 	S["vore_taste"]						>> vore_taste
+	S["vore_smell"]						>> vore_smell
 	var/char_vr_path = "[vr_path]/character_[default_slot]_v2.json"
 	if(fexists(char_vr_path))
 		var/list/json_from_file = json_decode(file2text(char_vr_path))
@@ -1007,6 +1008,7 @@ SAVEFILE UPDATING/VERSIONING - 'Simplified', or rather, more coder-friendly ~Car
 
 	vore_flags						= sanitize_integer(vore_flags, 0, MAX_VORE_FLAG, 0)
 	vore_taste						= copytext(vore_taste, 1, MAX_TASTE_LEN)
+	vore_smell						= copytext(vore_smell, 1, MAX_TASTE_LEN)
 	belly_prefs 					= SANITIZE_LIST(belly_prefs)
 
 	cit_character_pref_load(S)
@@ -1162,6 +1164,7 @@ SAVEFILE UPDATING/VERSIONING - 'Simplified', or rather, more coder-friendly ~Car
 
 	WRITE_FILE(S["vore_flags"]			, vore_flags)
 	WRITE_FILE(S["vore_taste"]			, vore_taste)
+	WRITE_FILE(S["vore_smell"]			, vore_smell)
 	var/char_vr_path = "[vr_path]/character_[default_slot]_v2.json"
 	var/belly_prefs_json = safe_json_encode(list("belly_prefs" = belly_prefs))
 	if(fexists(char_vr_path))
