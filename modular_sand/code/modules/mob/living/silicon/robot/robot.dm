@@ -1,5 +1,4 @@
 /mob/living/silicon/robot
-	speed = 0.2
 	var/hasShrunk = FALSE
 
 /mob/living/silicon/robot/modules/roleplay

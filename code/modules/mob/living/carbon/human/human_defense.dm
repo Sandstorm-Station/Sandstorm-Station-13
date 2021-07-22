@@ -714,6 +714,19 @@
 				if(0 to NUTRITION_LEVEL_STARVING)
 					to_send += "<span class='danger'>You're starving!</span>\n"
 
+			switch(thirst)
+				if(THIRST_LEVEL_FULL to INFINITY)
+					to_send += "<span class='info'>You're completely full of water!</span>\n"
+				if(THIRST_LEVEL_QUENCHED to THIRST_LEVEL_FULL)
+					to_send += "<span class='info'>You're hydrated.</span>\n"
+				if(THIRST_LEVEL_BIT_THIRSTY to THIRST_LEVEL_QUENCHED)
+					to_send += "<span class='info'>You're not thirsty.</span>\n"
+				if(THIRST_LEVEL_THIRSTY to THIRST_LEVEL_BIT_THIRSTY)
+					to_send += "<span class='info'>You could use a drink to quench your thirst.</span>\n"
+				if(THIRST_LEVEL_PARCHED to THIRST_LEVEL_THIRSTY)
+					to_send += "<span class='danger'>You feel quite thirsty!</span>\n"
+				if(0 to THIRST_LEVEL_PARCHED)
+					to_send += "<span class='danger'>You're parched!</span>\n"
 
 			//TODO: Convert these messages into vague messages, thereby encouraging actual dignosis.
 			//Compiles then shows the list of damaged organs and broken organs
