@@ -78,7 +78,7 @@
 	for(var/mob/living/simple_animal/hostile/asteroid/elite/candy/C in view(15))
 		candylist += C
 	if(candylist.len)
-		close()
+		INVOKE_ASYNC(src, /obj/machinery/door/airlock/titanium/doomed/locked.proc/close)
 		addtimer(CALLBACK(src, .proc/bolt), 5)
 
 /obj/machinery/door/airlock/titanium/doomed/locked/process()
