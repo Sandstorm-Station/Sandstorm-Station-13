@@ -75,7 +75,6 @@
 
 /obj/item/robot_module/engineering/Initialize()
 	basic_modules += /obj/item/pen
-	basic_modules += /obj/item/electronics/airlock
 	basic_modules += /obj/item/stack/sheet/plasmaglass/cyborg
 	basic_modules += /obj/item/stack/sheet/plasmarglass/cyborg
 	basic_modules += /obj/item/stack/sheet/plasteel/cyborg
@@ -99,7 +98,7 @@
 	recharge_rate = 0
 
 /obj/item/robot_module/syndicatejack
-	name = "Syndicate" 
+	name = "Syndicate"
 	basic_modules = list(
 		/obj/item/assembly/flash/cyborg,
 		/obj/item/borg/sight/thermal,
