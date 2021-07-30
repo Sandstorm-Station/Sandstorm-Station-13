@@ -49221,6 +49221,10 @@
 	c_tag = "Robotics Lab";
 	dir = 4
 	},
+/obj/machinery/posialert{
+	pixel_x = -31;
+	pixel_y = -2
+	},
 /turf/open/floor/plasteel/dark/side{
 	dir = 8
 	},
@@ -71397,6 +71401,11 @@
 /area/engineering/atmos)
 "xxP" = (
 /turf/closed/wall,
+/area/cargo/storage)
+"xyF" = (
+/obj/effect/turf_decal/bot,
+/mob/living/simple_animal/pet/dog/cheems,
+/turf/open/floor/plasteel,
 /area/cargo/storage)
 "xCy" = (
 /obj/machinery/atmospherics/pipe/simple/violet/visible{
@@ -119113,7 +119122,7 @@ bff
 bfC
 bQZ
 bhK
-bkn
+xyF
 cnw
 bkn
 bhK

@@ -5707,7 +5707,6 @@
 /area/medical/medbay/central)
 "akC" = (
 /obj/machinery/door/airlock/maintenance,
-/obj/structure/fans/tiny/invisible,
 /obj/structure/barricade/wooden/crude/snow{
 	max_integrity = 15;
 	obj_integrity = 15
@@ -5715,6 +5714,7 @@
 /obj/structure/cable{
 	icon_state = "1-2"
 	},
+/obj/structure/fans/tiny,
 /turf/open/floor/plating,
 /area/maintenance/bar)
 "akD" = (
@@ -15726,6 +15726,7 @@
 	name = "Solar Maintenance";
 	req_access_txt = "10; 13"
 	},
+/obj/structure/fans/tiny,
 /turf/open/floor/plating,
 /area/maintenance/solars/port/aft)
 "cRX" = (
@@ -15855,6 +15856,7 @@
 /obj/structure/cable{
 	icon_state = "1-2"
 	},
+/obj/structure/fans/tiny,
 /turf/open/floor/plating,
 /area/maintenance/solars/starboard/aft)
 "cUs" = (
@@ -17035,6 +17037,7 @@
 "dIj" = (
 /obj/structure/disposalpipe/segment,
 /obj/structure/mineral_door/woodrustic,
+/obj/structure/fans/tiny,
 /turf/open/floor/plating,
 /area/icemoon/surface/outdoors)
 "dJb" = (
@@ -18329,11 +18332,11 @@
 /obj/structure/cable{
 	icon_state = "1-2"
 	},
-/obj/structure/fans/tiny/invisible,
 /obj/structure/barricade/wooden/crude/snow{
 	max_integrity = 15;
 	obj_integrity = 15
 	},
+/obj/structure/fans/tiny,
 /turf/open/floor/plating,
 /area/maintenance/bar)
 "eDu" = (
@@ -20517,6 +20520,7 @@
 	name = "Solar Maintenance";
 	req_access_txt = "10; 13"
 	},
+/obj/structure/fans/tiny,
 /turf/open/floor/plating,
 /area/maintenance/solars/starboard/aft)
 "fUX" = (
@@ -29652,6 +29656,7 @@
 /area/security/office)
 "lXk" = (
 /obj/structure/mineral_door/woodrustic,
+/obj/structure/fans/tiny,
 /turf/open/floor/plating,
 /area/icemoon/surface/outdoors)
 "lXR" = (
@@ -40035,6 +40040,7 @@
 	name = "Solar Maintenance";
 	req_access_txt = "10; 13"
 	},
+/obj/structure/fans/tiny,
 /turf/open/floor/plating,
 /area/maintenance/solars/starboard/fore)
 "sFh" = (
@@ -41057,6 +41063,7 @@
 	name = "Starboard Bow Solar Access";
 	req_access_txt = "10"
 	},
+/obj/structure/fans/tiny,
 /turf/open/floor/plating,
 /area/maintenance/solars/starboard/fore)
 "tlk" = (
@@ -46131,6 +46138,7 @@
 "wnX" = (
 /obj/machinery/atmospherics/pipe/simple/supply/visible,
 /obj/structure/mineral_door/woodrustic,
+/obj/structure/fans/tiny,
 /turf/open/floor/plating,
 /area/icemoon/surface/outdoors)
 "won" = (
@@ -47806,6 +47814,7 @@
 /obj/structure/cable{
 	icon_state = "4-8"
 	},
+/obj/structure/fans/tiny,
 /turf/open/floor/plating,
 /area/maintenance/solars/port/aft)
 "xDS" = (

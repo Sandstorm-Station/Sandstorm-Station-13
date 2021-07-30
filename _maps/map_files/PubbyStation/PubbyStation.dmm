@@ -7406,7 +7406,6 @@
 /obj/effect/mapping_helpers/airlock/cyclelink_helper{
 	dir = 4
 	},
-/obj/structure/fans/tiny,
 /turf/open/floor/plasteel/dark,
 /area/security/brig)
 "arj" = (
@@ -9359,7 +9358,6 @@
 /obj/machinery/door/airlock/external{
 	name = "Labor Camp Shuttle Airlock"
 	},
-/obj/structure/fans/tiny,
 /turf/open/floor/plasteel/dark,
 /area/security/brig)
 "avr" = (
@@ -21799,6 +21797,7 @@
 /obj/effect/turf_decal/tile/brown{
 	dir = 4
 	},
+/mob/living/simple_animal/pet/dog/cheems,
 /turf/open/floor/plasteel,
 /area/cargo/office)
 "aYs" = (
@@ -27219,6 +27218,10 @@
 /obj/effect/turf_decal/tile/neutral{
 	dir = 8
 	},
+/obj/machinery/posialert{
+	pixel_x = -30;
+	pixel_y = -2
+	},
 /turf/open/floor/plasteel/dark,
 /area/science/robotics/lab)
 "blF" = (
@@ -27331,9 +27334,6 @@
 	},
 /obj/effect/turf_decal/tile/neutral{
 	dir = 8
-	},
-/obj/machinery/posialert{
-	pixel_y = 26
 	},
 /turf/open/floor/plasteel/dark,
 /area/science/robotics/lab)
@@ -46760,15 +46760,6 @@
 	},
 /turf/open/floor/plating,
 /area/engineering/main)
-"cda" = (
-/obj/structure/reflector/single/anchored{
-	dir = 10
-	},
-/obj/machinery/light/small{
-	dir = 1
-	},
-/turf/open/floor/plating,
-/area/engineering/main)
 "cdc" = (
 /obj/effect/turf_decal/stripes/line{
 	dir = 8
@@ -57544,6 +57535,16 @@
 	},
 /turf/open/floor/plating,
 /area/maintenance/solars/starboard)
+"mvr" = (
+/obj/effect/mapping_helpers/airlock/cyclelink_helper{
+	dir = 1
+	},
+/obj/machinery/door/airlock/external{
+	name = "Port Docking Bay 1"
+	},
+/obj/structure/fans/tiny,
+/turf/open/floor/plating,
+/area/hallway/secondary/entry)
 "mwg" = (
 /obj/structure/closet/crate{
 	icon_state = "crateopen"
@@ -57712,6 +57713,15 @@
 	},
 /turf/open/floor/plasteel/white,
 /area/science/xenobiology)
+"mQB" = (
+/obj/structure/cable{
+	icon_state = "0-8"
+	},
+/obj/machinery/light/small{
+	dir = 1
+	},
+/turf/open/floor/plating,
+/area/engineering/main)
 "mSc" = (
 /obj/machinery/space_heater,
 /turf/open/floor/plating,
@@ -57849,14 +57859,6 @@
 /obj/machinery/atmospherics/pipe/simple/scrubbers/hidden,
 /turf/open/floor/plasteel/dark,
 /area/service/chapel/office)
-"nkX" = (
-/obj/effect/mapping_helpers/airlock/cyclelink_helper,
-/obj/machinery/door/airlock/external{
-	name = "Port Docking Bay 1"
-	},
-/obj/structure/fans/tiny,
-/turf/open/floor/plating,
-/area/hallway/secondary/entry)
 "nnh" = (
 /obj/structure/chair{
 	dir = 8
@@ -58307,6 +58309,14 @@
 	},
 /turf/open/floor/plating,
 /area/maintenance/department/engine)
+"onf" = (
+/obj/effect/mapping_helpers/airlock/cyclelink_helper,
+/obj/machinery/door/airlock/external{
+	name = "Port Docking Bay 1"
+	},
+/obj/structure/fans/tiny,
+/turf/open/floor/plating,
+/area/hallway/secondary/entry)
 "onX" = (
 /obj/machinery/door/firedoor,
 /obj/machinery/door/airlock/public/glass{
@@ -58787,6 +58797,18 @@
 	},
 /turf/open/floor/plating/airless,
 /area/engineering/main)
+"pbh" = (
+/obj/machinery/door/poddoor{
+	id = "QMLoaddoor2";
+	name = "supply dock loading door"
+	},
+/obj/machinery/conveyor{
+	dir = 8;
+	id = "QMLoad2"
+	},
+/obj/structure/fans/tiny,
+/turf/open/floor/plating,
+/area/cargo/storage)
 "pbm" = (
 /obj/machinery/door/airlock/external{
 	name = "Pod Docking Bay"
@@ -59041,12 +59063,6 @@
 /obj/structure/lattice/catwalk,
 /turf/open/space/basic,
 /area/space/nearstation)
-"pCo" = (
-/obj/machinery/light/small{
-	dir = 1
-	},
-/turf/open/floor/plating,
-/area/engineering/main)
 "pDP" = (
 /obj/machinery/vending/assist,
 /obj/effect/turf_decal/tile/neutral{
@@ -59124,6 +59140,19 @@
 /obj/structure/closet/crate,
 /turf/open/floor/plating,
 /area/maintenance/department/cargo)
+"pKU" = (
+/obj/machinery/power/emitter/anchored{
+	dir = 8;
+	state = 2
+	},
+/obj/structure/cable{
+	icon_state = "0-4"
+	},
+/obj/machinery/light/small{
+	dir = 1
+	},
+/turf/open/floor/plating,
+/area/engineering/main)
 "pMG" = (
 /obj/effect/turf_decal/tile/green{
 	dir = 8
@@ -59154,14 +59183,6 @@
 	},
 /turf/open/floor/plasteel/dark,
 /area/science/mixing)
-"pNU" = (
-/obj/effect/mapping_helpers/airlock/cyclelink_helper{
-	dir = 4
-	},
-/obj/machinery/door/airlock/external,
-/obj/structure/fans/tiny,
-/turf/open/floor/plating,
-/area/service/chapel/main/monastery)
 "pOr" = (
 /obj/machinery/atmospherics/pipe/simple/supply/hidden{
 	dir = 4
@@ -60456,16 +60477,6 @@
 	},
 /turf/open/floor/plating,
 /area/security/execution/transfer)
-"sPJ" = (
-/obj/effect/mapping_helpers/airlock/cyclelink_helper{
-	dir = 1
-	},
-/obj/machinery/door/airlock/external{
-	name = "Port Docking Bay 1"
-	},
-/obj/structure/fans/tiny,
-/turf/open/floor/plating,
-/area/hallway/secondary/entry)
 "sQt" = (
 /obj/machinery/door/airlock/external{
 	name = "Supply Dock Airlock";
@@ -61319,6 +61330,18 @@
 /obj/effect/turf_decal/delivery,
 /turf/open/floor/plasteel,
 /area/construction/mining/aux_base)
+"uHz" = (
+/obj/machinery/door/poddoor{
+	id = "QMLoaddoor";
+	name = "supply dock loading door"
+	},
+/obj/machinery/conveyor{
+	dir = 4;
+	id = "QMLoad"
+	},
+/obj/structure/fans/tiny,
+/turf/open/floor/plating,
+/area/cargo/storage)
 "uHG" = (
 /obj/structure/cable{
 	icon_state = "1-4"
@@ -61490,6 +61513,14 @@
 	},
 /turf/open/floor/plasteel/dark,
 /area/science/mixing)
+"vfU" = (
+/obj/effect/mapping_helpers/airlock/cyclelink_helper{
+	dir = 4
+	},
+/obj/machinery/door/airlock/external,
+/obj/structure/fans/tiny,
+/turf/open/floor/plating,
+/area/service/chapel/main/monastery)
 "vgp" = (
 /obj/machinery/door/firedoor,
 /obj/effect/mapping_helpers/airlock/cyclelink_helper{
@@ -61910,6 +61941,12 @@
 "wcs" = (
 /turf/open/floor/plasteel/dark,
 /area/engineering/main)
+"wcE" = (
+/obj/structure/reflector/single/anchored{
+	dir = 10
+	},
+/turf/open/floor/plating,
+/area/engineering/main)
 "wdx" = (
 /obj/machinery/atmospherics/pipe/simple/supply/hidden{
 	dir = 6
@@ -61955,18 +61992,6 @@
 	},
 /turf/open/floor/engine,
 /area/engineering/main)
-"who" = (
-/obj/machinery/door/poddoor{
-	id = "QMLoaddoor";
-	name = "supply dock loading door"
-	},
-/obj/machinery/conveyor{
-	dir = 4;
-	id = "QMLoad"
-	},
-/obj/structure/fans/tiny,
-/turf/open/floor/plating,
-/area/cargo/storage)
 "wig" = (
 /obj/machinery/vending/cigarette,
 /turf/open/floor/plating{
@@ -62819,18 +62844,6 @@
 	icon_state = "panelscorched"
 	},
 /area/maintenance/department/chapel/monastery)
-"xZB" = (
-/obj/machinery/door/poddoor{
-	id = "QMLoaddoor2";
-	name = "supply dock loading door"
-	},
-/obj/machinery/conveyor{
-	dir = 8;
-	id = "QMLoad2"
-	},
-/obj/structure/fans/tiny,
-/turf/open/floor/plating,
-/area/cargo/storage)
 "ybX" = (
 /obj/structure/table,
 /obj/effect/spawner/lootdrop/maintenance,
@@ -73866,7 +73879,7 @@ aaa
 cfN
 cfN
 fIT
-pNU
+vfU
 fIT
 cfN
 aaa
@@ -81766,14 +81779,14 @@ aZy
 baK
 bbQ
 bcX
-sPJ
+mvr
 aaa
 aaa
 aaa
 aaa
 aaa
 aaa
-nkX
+onf
 bcX
 bdV
 baK
@@ -83308,14 +83321,14 @@ aZA
 baN
 bbQ
 bcX
-sPJ
+mvr
 aaa
 aaa
 aaa
 aaa
 aaa
 aaa
-nkX
+onf
 bcX
 bdV
 bnp
@@ -93894,8 +93907,8 @@ bYT
 bZB
 caq
 cbk
-aac
-ccY
+bXk
+mQB
 cdT
 ccY
 cbX
@@ -94408,8 +94421,8 @@ bYV
 bZA
 cam
 ccW
-bXk
-cda
+aac
+wcE
 wcs
 wcs
 wcs
@@ -94922,8 +94935,8 @@ bYX
 bZA
 cam
 lfx
-bXk
-pCo
+aac
+cbX
 wcs
 wcs
 wcs
@@ -95436,8 +95449,8 @@ wjm
 bZF
 cbm
 mgz
-aac
-oHa
+bXk
+pKU
 oHa
 eWi
 cbX
@@ -104885,11 +104898,11 @@ aaa
 aaa
 aaa
 aLg
-who
+uHz
 sQt
 aPd
 sQt
-xZB
+pbh
 aLg
 aaa
 aaa

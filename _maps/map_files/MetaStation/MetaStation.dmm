@@ -16127,6 +16127,10 @@
 	},
 /turf/open/floor/plasteel/dark,
 /area/ai_monitored/turret_protected/ai)
+"bit" = (
+/mob/living/simple_animal/pet/dog/cheems,
+/turf/open/floor/plasteel,
+/area/cargo/storage)
 "biu" = (
 /obj/machinery/atmospherics/pipe/simple/supply/hidden,
 /obj/machinery/door/firedoor,
@@ -37820,6 +37824,9 @@
 	network = list("ss13","rd")
 	},
 /obj/effect/turf_decal/delivery,
+/obj/machinery/posialert{
+	pixel_y = 24
+	},
 /turf/open/floor/plasteel,
 /area/science/robotics/lab)
 "cDh" = (
@@ -101390,7 +101397,7 @@ mIE
 tHz
 mIE
 mIE
-mIE
+bit
 ifM
 mIE
 nwc
