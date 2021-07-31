@@ -1607,6 +1607,4 @@ GLOBAL_LIST_INIT(vox_sounds_male, list("," = 'sound/vox/_comma.ogg',
 "zone" = 'sound/vox/zone.ogg',
 "zulu" = 'sound/vox/zulu.ogg',))
 
-
 #endif
-
