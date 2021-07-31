@@ -147,7 +147,7 @@
 
 	word = lowertext(word)
 
-	if( (GLOB.vox_sounds[word] && voxType == "female") || (GLOB.vox_sounds_male[word] && voxType == "male") || (GLOB.vox_sounds[word] && voxType == "military"))
+	if( (GLOB.vox_sounds[word] && voxType == "female") || (GLOB.vox_sounds_male[word] && voxType == "male") || (GLOB.vox_sounds_military[word] && voxType == "military"))
 
 		var/sound_file
 
