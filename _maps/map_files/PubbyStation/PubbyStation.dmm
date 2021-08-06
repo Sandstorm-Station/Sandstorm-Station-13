@@ -3941,7 +3941,6 @@
 /obj/effect/turf_decal/stripes/line{
 	dir = 9
 	},
-/obj/structure/fans/tiny,
 /turf/open/floor/plating,
 /area/maintenance/department/crew_quarters/dorms)
 "ajy" = (
@@ -3951,7 +3950,6 @@
 /obj/effect/turf_decal/stripes/line{
 	dir = 1
 	},
-/obj/structure/fans/tiny,
 /turf/open/floor/plating,
 /area/maintenance/department/crew_quarters/dorms)
 "ajz" = (
@@ -3961,7 +3959,6 @@
 /obj/effect/turf_decal/stripes/line{
 	dir = 5
 	},
-/obj/structure/fans/tiny,
 /turf/open/floor/plating,
 /area/maintenance/department/crew_quarters/dorms)
 "ajA" = (
@@ -4727,7 +4724,6 @@
 /obj/effect/turf_decal/stripes/line{
 	dir = 10
 	},
-/obj/structure/fans/tiny,
 /turf/open/floor/plating,
 /area/maintenance/department/crew_quarters/dorms)
 "alg" = (
@@ -4735,7 +4731,6 @@
 	id = "supplybridge"
 	},
 /obj/effect/turf_decal/stripes/line,
-/obj/structure/fans/tiny,
 /turf/open/floor/plating,
 /area/maintenance/department/crew_quarters/dorms)
 "alh" = (
@@ -4745,7 +4740,6 @@
 /obj/effect/turf_decal/stripes/line{
 	dir = 6
 	},
-/obj/structure/fans/tiny,
 /turf/open/floor/plating,
 /area/maintenance/department/crew_quarters/dorms)
 "ali" = (
@@ -7406,6 +7400,7 @@
 /obj/effect/mapping_helpers/airlock/cyclelink_helper{
 	dir = 4
 	},
+/obj/structure/fans/tiny,
 /turf/open/floor/plasteel/dark,
 /area/security/brig)
 "arj" = (
@@ -9358,6 +9353,7 @@
 /obj/machinery/door/airlock/external{
 	name = "Labor Camp Shuttle Airlock"
 	},
+/obj/structure/fans/tiny,
 /turf/open/floor/plasteel/dark,
 /area/security/brig)
 "avr" = (
@@ -21797,7 +21793,6 @@
 /obj/effect/turf_decal/tile/brown{
 	dir = 4
 	},
-/mob/living/simple_animal/pet/dog/cheems,
 /turf/open/floor/plasteel,
 /area/cargo/office)
 "aYs" = (
@@ -27218,10 +27213,6 @@
 /obj/effect/turf_decal/tile/neutral{
 	dir = 8
 	},
-/obj/machinery/posialert{
-	pixel_x = -30;
-	pixel_y = -2
-	},
 /turf/open/floor/plasteel/dark,
 /area/science/robotics/lab)
 "blF" = (
@@ -27334,6 +27325,9 @@
 	},
 /obj/effect/turf_decal/tile/neutral{
 	dir = 8
+	},
+/obj/machinery/posialert{
+	pixel_y = 26
 	},
 /turf/open/floor/plasteel/dark,
 /area/science/robotics/lab)
@@ -29632,7 +29626,9 @@
 	},
 /obj/machinery/atmospherics/pipe/simple/cyan/hidden,
 /obj/effect/turf_decal/tile/neutral,
-/turf/open/floor/plasteel,
+/turf/open/floor/plasteel/yellowsiding{
+	dir = 8
+	},
 /area/hallway/secondary/entry)
 "bqT" = (
 /obj/structure/flora/grass/jungle/b,
@@ -30319,7 +30315,9 @@
 	},
 /obj/machinery/atmospherics/pipe/simple/cyan/hidden,
 /obj/effect/turf_decal/tile/neutral,
-/turf/open/floor/plasteel,
+/turf/open/floor/plasteel/yellowsiding{
+	dir = 8
+	},
 /area/hallway/secondary/entry)
 "bsn" = (
 /obj/structure/girder,
@@ -30985,7 +30983,9 @@
 	dir = 8
 	},
 /obj/effect/turf_decal/tile/neutral,
-/turf/open/floor/plasteel,
+/turf/open/floor/plasteel/yellowsiding{
+	dir = 8
+	},
 /area/hallway/secondary/entry)
 "btO" = (
 /obj/structure/cable{
@@ -48762,7 +48762,6 @@
 /obj/structure/cable{
 	icon_state = "1-2"
 	},
-/obj/structure/fans/tiny,
 /turf/open/floor/plating,
 /area/tcommsat/computer)
 "clB" = (
@@ -53202,14 +53201,7 @@
 /turf/open/floor/plating,
 /area/maintenance/department/security/brig)
 "deJ" = (
-/obj/effect/turf_decal/stripes/line{
-	dir = 8
-	},
-/obj/structure/table,
-/obj/item/gps/mining{
-	gpstag = "MINE_PUB"
-	},
-/turf/open/floor/plasteel,
+/turf/open/floor/plasteel/yellowsiding/corner,
 /area/hallway/secondary/entry)
 "dgg" = (
 /obj/structure/disposalpipe/segment{
@@ -54084,6 +54076,14 @@
 /obj/item/stack/cable_coil/cut/random,
 /turf/open/floor/plating,
 /area/maintenance/department/cargo)
+"fdm" = (
+/obj/effect/mapping_helpers/airlock/cyclelink_helper,
+/obj/machinery/door/airlock/external{
+	name = "Port Docking Bay 1"
+	},
+/obj/structure/fans/tiny,
+/turf/open/floor/plating,
+/area/hallway/secondary/entry)
 "fdQ" = (
 /obj/structure/disposalpipe/segment{
 	dir = 4
@@ -54736,6 +54736,10 @@
 /obj/machinery/portable_atmospherics/pump,
 /turf/open/floor/plasteel,
 /area/engineering/main)
+"goB" = (
+/mob/living/simple_animal/pet/dog/cheems,
+/turf/open/floor/plasteel,
+/area/cargo/office)
 "gpC" = (
 /obj/structure/chair,
 /obj/machinery/light{
@@ -56283,6 +56287,10 @@
 	},
 /turf/open/floor/plating,
 /area/maintenance/department/science)
+"jEZ" = (
+/obj/machinery/atmospherics/pipe/simple/scrubbers/hidden,
+/turf/open/floor/plasteel/yellowsiding,
+/area/hallway/secondary/entry)
 "jFw" = (
 /obj/effect/spawner/lootdrop/maintenance,
 /obj/machinery/atmospherics/pipe/simple/supply/hidden{
@@ -56562,6 +56570,15 @@
 	},
 /turf/open/floor/plating,
 /area/maintenance/department/engine)
+"kuS" = (
+/obj/effect/turf_decal/stripes/line{
+	dir = 8
+	},
+/obj/machinery/computer/shuttle/mining/common{
+	dir = 4
+	},
+/turf/open/floor/plasteel,
+/area/hallway/secondary/entry)
 "kvj" = (
 /obj/effect/turf_decal/tile/neutral{
 	dir = 1
@@ -57015,6 +57032,18 @@
 	},
 /turf/open/floor/engine,
 /area/engineering/main)
+"lnW" = (
+/obj/machinery/door/poddoor{
+	id = "QMLoaddoor";
+	name = "supply dock loading door"
+	},
+/obj/machinery/conveyor{
+	dir = 4;
+	id = "QMLoad"
+	},
+/obj/structure/fans/tiny,
+/turf/open/floor/plating,
+/area/cargo/storage)
 "loz" = (
 /obj/structure/closet/radiation,
 /obj/effect/turf_decal/tile/yellow{
@@ -57543,16 +57572,6 @@
 	},
 /turf/open/floor/plating,
 /area/maintenance/solars/starboard)
-"mvr" = (
-/obj/effect/mapping_helpers/airlock/cyclelink_helper{
-	dir = 1
-	},
-/obj/machinery/door/airlock/external{
-	name = "Port Docking Bay 1"
-	},
-/obj/structure/fans/tiny,
-/turf/open/floor/plating,
-/area/hallway/secondary/entry)
 "mwg" = (
 /obj/structure/closet/crate{
 	icon_state = "crateopen"
@@ -57686,8 +57705,11 @@
 /turf/open/space/basic,
 /area/space/nearstation)
 "mJR" = (
+/turf/open/water/decorative,
+/area/hallway/secondary/entry)
 "mKc" = (
 /obj/structure/bookcase/random/nonfiction,
+/turf/open/floor/plasteel/dark,
 /area/service/library/lounge)
 "mKk" = (
 /obj/structure/cable{
@@ -58317,14 +58339,6 @@
 	},
 /turf/open/floor/plating,
 /area/maintenance/department/engine)
-"onf" = (
-/obj/effect/mapping_helpers/airlock/cyclelink_helper,
-/obj/machinery/door/airlock/external{
-	name = "Port Docking Bay 1"
-	},
-/obj/structure/fans/tiny,
-/turf/open/floor/plating,
-/area/hallway/secondary/entry)
 "onX" = (
 /obj/machinery/door/firedoor,
 /obj/machinery/door/airlock/public/glass{
@@ -58395,12 +58409,15 @@
 /turf/open/floor/plasteel/dark,
 /area/science/xenobiology)
 "osY" = (
+/obj/structure/flora/ausbushes/reedbush{
+	pixel_x = -2;
 	pixel_y = 13
 	},
 /turf/open/water/decorative,
 /area/hallway/secondary/entry)
 "ous" = (
 /obj/effect/turf_decal/stripes/line,
+/obj/machinery/button/door{
 	desc = "A remote control-switch for secure storage.";
 	id = "Secure Storage";
 	name = "Engineering Secure Storage";
@@ -58809,18 +58826,6 @@
 	},
 /turf/open/floor/plating/airless,
 /area/engineering/main)
-"pbh" = (
-/obj/machinery/door/poddoor{
-	id = "QMLoaddoor2";
-	name = "supply dock loading door"
-	},
-/obj/machinery/conveyor{
-	dir = 8;
-	id = "QMLoad2"
-	},
-/obj/structure/fans/tiny,
-/turf/open/floor/plating,
-/area/cargo/storage)
 "pbm" = (
 /obj/machinery/door/airlock/external{
 	name = "Pod Docking Bay"
@@ -59009,6 +59014,14 @@
 /obj/structure/sign/warning/fire,
 /turf/closed/wall/r_wall,
 /area/engineering/supermatter)
+"pvc" = (
+/obj/effect/mapping_helpers/airlock/cyclelink_helper{
+	dir = 4
+	},
+/obj/machinery/door/airlock/external,
+/obj/structure/fans/tiny,
+/turf/open/floor/plating,
+/area/service/chapel/main/monastery)
 "pvK" = (
 /obj/machinery/atmospherics/pipe/simple/supply/hidden,
 /obj/structure/cable{
@@ -59543,6 +59556,12 @@
 	},
 /turf/open/floor/plasteel,
 /area/engineering/main)
+"qFw" = (
+/obj/machinery/atmospherics/pipe/simple/scrubbers/hidden,
+/turf/open/floor/plasteel/yellowsiding{
+	dir = 1
+	},
+/area/hallway/secondary/entry)
 "qGu" = (
 /obj/machinery/atmospherics/pipe/simple/supply/hidden{
 	dir = 4
@@ -60077,6 +60096,13 @@
 	icon_state = "platingdmg3"
 	},
 /area/maintenance/department/science)
+"rGY" = (
+/obj/machinery/atmospherics/pipe/simple/cyan/hidden,
+/obj/effect/turf_decal/tile/neutral,
+/turf/open/floor/plasteel/yellowsiding/corner{
+	dir = 8
+	},
+/area/hallway/secondary/entry)
 "rHA" = (
 /turf/open/floor/plasteel,
 /area/construction/mining/aux_base)
@@ -60179,6 +60205,18 @@
 	},
 /turf/open/floor/plasteel,
 /area/engineering/main)
+"rWz" = (
+/obj/machinery/door/poddoor{
+	id = "QMLoaddoor2";
+	name = "supply dock loading door"
+	},
+/obj/machinery/conveyor{
+	dir = 8;
+	id = "QMLoad2"
+	},
+/obj/structure/fans/tiny,
+/turf/open/floor/plating,
+/area/cargo/storage)
 "rWE" = (
 /obj/effect/spawner/structure/window/reinforced,
 /turf/open/floor/plating,
@@ -60458,7 +60496,9 @@
 	dir = 8
 	},
 /obj/structure/table,
-/obj/item/flashlight,
+/obj/item/gps/mining{
+	gpstag = "MINE_PUB"
+	},
 /turf/open/floor/plasteel,
 /area/hallway/secondary/entry)
 "sJp" = (
@@ -60502,6 +60542,9 @@
 	},
 /turf/open/floor/plating,
 /area/security/execution/transfer)
+"sPh" = (
+/turf/open/floor/plasteel/yellowsiding,
+/area/hallway/secondary/entry)
 "sQt" = (
 /obj/machinery/door/airlock/external{
 	name = "Supply Dock Airlock";
@@ -61193,12 +61236,18 @@
 /turf/open/space/basic,
 /area/space/nearstation)
 "upz" = (
+/turf/open/floor/plasteel/yellowsiding{
+	dir = 4
+	},
+/area/hallway/secondary/entry)
 "upX" = (
 /obj/machinery/atmospherics/pipe/simple/scrubbers/hidden,
 /turf/open/water/decorative,
 /area/hallway/secondary/entry)
 "uqJ" = (
 /obj/effect/spawner/structure/window/reinforced,
+/obj/structure/cable,
+/turf/open/floor/plating,
 /area/security/execution/transfer)
 "urP" = (
 /obj/effect/turf_decal/stripes/line{
@@ -61358,18 +61407,6 @@
 /obj/effect/turf_decal/delivery,
 /turf/open/floor/plasteel,
 /area/construction/mining/aux_base)
-"uHz" = (
-/obj/machinery/door/poddoor{
-	id = "QMLoaddoor";
-	name = "supply dock loading door"
-	},
-/obj/machinery/conveyor{
-	dir = 4;
-	id = "QMLoad"
-	},
-/obj/structure/fans/tiny,
-/turf/open/floor/plating,
-/area/cargo/storage)
 "uHG" = (
 /obj/structure/cable{
 	icon_state = "1-4"
@@ -61498,6 +61535,11 @@
 	},
 /turf/open/floor/plating,
 /area/maintenance/solars/starboard)
+"uXL" = (
+/turf/open/floor/plasteel/yellowsiding{
+	dir = 1
+	},
+/area/hallway/secondary/entry)
 "uZb" = (
 /obj/structure/lattice,
 /obj/structure/window/reinforced{
@@ -61541,14 +61583,6 @@
 	},
 /turf/open/floor/plasteel/dark,
 /area/science/mixing)
-"vfU" = (
-/obj/effect/mapping_helpers/airlock/cyclelink_helper{
-	dir = 4
-	},
-/obj/machinery/door/airlock/external,
-/obj/structure/fans/tiny,
-/turf/open/floor/plating,
-/area/service/chapel/main/monastery)
 "vgp" = (
 /obj/machinery/door/firedoor,
 /obj/effect/mapping_helpers/airlock/cyclelink_helper{
@@ -61826,6 +61860,11 @@
 /obj/structure/fans/tiny,
 /turf/open/floor/plating,
 /area/maintenance/department/science)
+"vIa" = (
+/turf/open/floor/plasteel/yellowsiding/corner{
+	dir = 4
+	},
+/area/hallway/secondary/entry)
 "vIc" = (
 /obj/structure/cable{
 	icon_state = "2-4"
@@ -62020,6 +62059,13 @@
 	},
 /turf/open/floor/engine,
 /area/engineering/main)
+"whP" = (
+/obj/machinery/atmospherics/pipe/simple/cyan/hidden,
+/obj/effect/turf_decal/tile/neutral,
+/turf/open/floor/plasteel/yellowsiding/corner{
+	dir = 1
+	},
+/area/hallway/secondary/entry)
 "wig" = (
 /obj/machinery/vending/cigarette,
 /turf/open/floor/plating{
@@ -62052,15 +62098,14 @@
 /turf/open/floor/plasteel,
 /area/engineering/main)
 "wjQ" = (
-/obj/machinery/computer/shuttle/mining/common{
-	dir = 4
-	},
 /obj/machinery/light{
 	dir = 8
 	},
 /obj/effect/turf_decal/stripes/line{
 	dir = 8
 	},
+/obj/structure/table,
+/obj/item/flashlight,
 /turf/open/floor/plasteel,
 /area/hallway/secondary/entry)
 "wkZ" = (
@@ -62351,13 +62396,19 @@
 /turf/open/floor/plating,
 /area/maintenance/department/security/brig)
 "wSX" = (
+/obj/structure/flora/junglebush/large{
+	pixel_x = -15;
 	pixel_y = -4
+	},
+/obj/structure/flora/rock/pile,
 /turf/open/water/decorative,
 /area/hallway/secondary/entry)
 "wTD" = (
 /obj/structure/table/wood,
 /obj/item/folder/red,
+/obj/item/folder/red,
 /obj/item/clothing/glasses/sunglasses,
+/obj/item/radio/intercom{
 	name = "Station Intercom (General)";
 	pixel_x = 27
 	},
@@ -62874,6 +62925,16 @@
 	icon_state = "panelscorched"
 	},
 /area/maintenance/department/chapel/monastery)
+"xZQ" = (
+/obj/effect/mapping_helpers/airlock/cyclelink_helper{
+	dir = 1
+	},
+/obj/machinery/door/airlock/external{
+	name = "Port Docking Bay 1"
+	},
+/obj/structure/fans/tiny,
+/turf/open/floor/plating,
+/area/hallway/secondary/entry)
 "ybX" = (
 /obj/structure/table,
 /obj/effect/spawner/lootdrop/maintenance,
@@ -73909,7 +73970,7 @@ aaa
 cfN
 cfN
 fIT
-vfU
+pvc
 fIT
 cfN
 aaa
@@ -81809,14 +81870,14 @@ aZy
 baK
 bbQ
 bcX
-mvr
+xZQ
 aaa
 aaa
 aaa
 aaa
 aaa
 aaa
-onf
+fdm
 bcX
 bdV
 baK
@@ -83351,23 +83412,23 @@ aZA
 baN
 bbQ
 bcX
-mvr
+xZQ
 aaa
 aaa
 aaa
 aaa
 aaa
 aaa
-onf
+fdm
 bcX
 bdV
 bnp
 baK
 pEH
-deJ
+pEH
 sIK
 wjQ
-pEH
+kuS
 bbR
 aZx
 aaa
@@ -83620,11 +83681,11 @@ aZx
 jzz
 bnp
 baK
-baK
-baK
-baK
-baK
-baK
+deJ
+upz
+upz
+upz
+vIa
 baK
 aZx
 aaa
@@ -83877,11 +83938,11 @@ bbR
 bbR
 bnp
 baK
-baK
-baK
-baK
-baK
-baK
+sPh
+osY
+mJR
+mJR
+uXL
 baK
 aZx
 aZx
@@ -84134,11 +84195,11 @@ baK
 baK
 bnq
 baM
-baK
-baK
-baK
-baK
-baK
+sPh
+mJR
+wSX
+mJR
+uXL
 baK
 bxY
 bzz
@@ -84391,11 +84452,11 @@ bbT
 bbT
 bnr
 bop
-bbT
-bbT
-bbT
-bbT
-bbT
+jEZ
+qUD
+upX
+daQ
+qFw
 bbT
 bxZ
 bzA
@@ -84648,11 +84709,11 @@ bkT
 bfY
 bns
 bfY
-bfY
+rGY
 bqS
 bsm
 btN
-bfY
+whP
 bfY
 bya
 bzB
@@ -100051,7 +100112,7 @@ aVp
 aWu
 aXu
 aYq
-aPY
+goB
 bav
 aLf
 aFi
@@ -104928,11 +104989,11 @@ aaa
 aaa
 aaa
 aLg
-uHz
+lnW
 sQt
 aPd
 sQt
-pbh
+rWz
 aLg
 aaa
 aaa
