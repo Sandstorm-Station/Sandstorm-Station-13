@@ -4,7 +4,7 @@
 	//- floor_tile is now a path, and not a tile obj
 	name = "floor"
 	icon = 'icons/turf/floors.dmi'
-	var/base_icon_state = "floor"				//sandstorm change - tile floofing
+	base_icon_state = "floor"				//sandstorm change - tile floofing
 	baseturfs = /turf/open/floor/plating
 	dirt_buildup_allowed = TRUE
 
