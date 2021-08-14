@@ -36,10 +36,10 @@
 /obj/item/grown/attackby(obj/item/O, mob/user, params)
 	..()
 	if (istype(O, /obj/item/plant_analyzer))
-		var/msg = "<span class='info'>*---------*\n This is \a <span class='name'>[src]</span>\n"
+		var/msg = "<div class='infobox'><span class='info'>This is [icon2html(src, user)] \a <span class='name'>[src]</span>\n"
 		if(seed)
 			msg += seed.get_analyzer_text()
-		msg += "</span>"
+		msg += "</span></div>"
 		to_chat(usr, msg)
 		return
 
