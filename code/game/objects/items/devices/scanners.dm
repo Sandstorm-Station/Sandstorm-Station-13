@@ -145,7 +145,7 @@ GENETICS SCANNER
 		mob_status = "<span class='alert'><b>Deceased</b></span>"
 		oxy_loss = max(rand(1, 40), oxy_loss, (300 - (tox_loss + fire_loss + brute_loss))) // Random oxygen loss
 
-	var/msg = "<span class='info'>*---------*\nAnalyzing results for [M]:\n\tOverall status: [mob_status]"
+	var/msg = "<div class='infobox'><span class='info'>Analyzing results for [M]:\n\tOverall status: [mob_status]</span>"
 
 	// Damage descriptions
 	if(brute_loss > 10)
@@ -168,9 +168,6 @@ GENETICS SCANNER
 		var/mob/living/carbon/human/H = M
 		if(advanced && H.has_dna())
 			msg += "\n\t<span class='info'>Genetic Stability: [H.dna.stability]%.</span>"
-
-	to_chat(user, msg)
-	msg = ""
 
 	// Body part damage report
 	var/list/dmgreport = list()
@@ -196,8 +193,9 @@ GENETICS SCANNER
 								<td><font color='red'>[(org.brute_dam > 0) ? "[org.brute_dam]" : "0"]</font></td>\
 								<td><font color='orange'>[(org.burn_dam > 0) ? "[org.burn_dam]" : "0"]</font></td></tr>"
 			dmgreport += "</table>"
-			to_chat(user, dmgreport.Join())
+			msg += "\n[dmgreport.Join()]"
 
+	msg += "\n"
 
 	//Organ damages report
 	var/heart_ded = FALSE
@@ -451,14 +449,14 @@ GENETICS SCANNER
 		if(cyberimp_detect)
 			msg += "<span class='notice'>Detected cybernetic modifications:</span>\n"
 			msg += "<span class='notice'>[cyberimp_detect]</span>\n"
-	msg += "<span class='notice'>*---------*</span>"
+	msg += "</div>"
 	to_chat(user, msg)
 	SEND_SIGNAL(M, COMSIG_NANITE_SCAN, user, FALSE)
 
 /proc/chemscan(mob/living/user, mob/living/M)
 	if(istype(M))
 		if(M.reagents)
-			var/msg = "<span class='info'>*---------*\n"
+			var/msg = "<div class='infobox'><span class='info'>"
 			if(M.reagents.reagent_list.len)
 				var/list/datum/reagent/reagents = list()
 				for(var/datum/reagent/R in M.reagents.reagent_list)
@@ -496,7 +494,7 @@ GENETICS SCANNER
 					if(95 to INFINITY)
 						msg += "<span class='danger'>Subject contains a extremely dangerous amount of toxic isomers.</span>\n"
 
-			msg += "*---------*</span>"
+			msg += "</span></div>"
 			to_chat(user, msg)
 
 /obj/item/healthanalyzer/verb/toggle_mode()
@@ -823,8 +821,7 @@ GENETICS SCANNER
 	slime_scan(T, user)
 
 /proc/slime_scan(mob/living/simple_animal/slime/T, mob/living/user)
-	to_chat(user, "========================")
-	to_chat(user, "<b>Slime scan results:</b>")
+	to_chat(user, "<div class='infobox'><b>Slime scan results:</b>")
 	to_chat(user, "<span class='notice'>[T.colour] [T.is_adult ? "adult" : "baby"] slime</span>")
 	to_chat(user, "Nutrition: [T.nutrition]/[T.get_max_nutrition()]")
 	if (T.nutrition < T.get_starve_nutrition())
@@ -852,7 +849,7 @@ GENETICS SCANNER
 	if(T.effectmod)
 		to_chat(user, "<span class='notice'>Core mutation in progress: [T.effectmod]</span>")
 		to_chat(user, "<span class = 'notice'>Progress in core mutation: [T.applied] / [SLIME_EXTRACT_CROSSING_REQUIRED]</span>")
-	to_chat(user, "========================")
+	to_chat(user, "</div>")
 
 
 /obj/item/nanite_scanner

@@ -30,6 +30,7 @@ export const MESSAGE_TYPE_DEADCHAT = 'deadchat';
 export const MESSAGE_TYPE_OOC = 'ooc';
 export const MESSAGE_TYPE_ADMINPM = 'adminpm';
 export const MESSAGE_TYPE_COMBAT = 'combat';
+export const MESSAGE_TYPE_LEWD = 'lewd';
 export const MESSAGE_TYPE_ADMINCHAT = 'adminchat';
 export const MESSAGE_TYPE_MODCHAT = 'modchat';
 export const MESSAGE_TYPE_EVENTCHAT = 'eventchat';
@@ -64,7 +65,7 @@ export const MESSAGE_TYPES = [
     type: MESSAGE_TYPE_INFO,
     name: 'Info',
     description: 'Non-urgent messages from the game and items',
-    selector: '.notice:not(.pm), .adminnotice, .info, .sinister, .cult, .infoplain',
+    selector: '.notice:not(.pm), .adminnotice, .infobox, .info, .sinister, .cult, .infoplain',
   },
   {
     type: MESSAGE_TYPE_WARNING,
@@ -109,7 +110,7 @@ export const MESSAGE_TYPES = [
     selector: '.danger',
   },
   {
-    type: 'lovetype',
+    type: MESSAGE_TYPE_LEWD,
     name: 'Lewd messages',
     description: 'You came!',
     selector: '.userlove, .love',
