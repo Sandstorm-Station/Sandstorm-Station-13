@@ -821,35 +821,36 @@ GENETICS SCANNER
 	slime_scan(T, user)
 
 /proc/slime_scan(mob/living/simple_animal/slime/T, mob/living/user)
-	to_chat(user, "<div class='infobox'><b>Slime scan results:</b>")
-	to_chat(user, "<span class='notice'>[T.colour] [T.is_adult ? "adult" : "baby"] slime</span>")
-	to_chat(user, "Nutrition: [T.nutrition]/[T.get_max_nutrition()]")
+	var/output = "<div class='infobox'><b>Slime scan results:</b>"
+	output += "\n<span class='notice'>[T.colour] [T.is_adult ? "adult" : "baby"] slime</span>"
+	output += "\nNutrition: [T.nutrition]/[T.get_max_nutrition()]"
 	if (T.nutrition < T.get_starve_nutrition())
-		to_chat(user, "<span class='warning'>Warning: slime is starving!</span>")
+		output += "\n<span class='warning'>Warning: slime is starving!</span>"
 	else if (T.nutrition < T.get_hunger_nutrition())
-		to_chat(user, "<span class='warning'>Warning: slime is hungry</span>")
-	to_chat(user, "Electric change strength: [T.powerlevel]")
-	to_chat(user, "Health: [round(T.health/T.maxHealth,0.01)*100]%")
+		output += "\n<span class='warning'>Warning: slime is hungry</span>"
+	output += "\nElectric change strength: [T.powerlevel]"
+	output += "\nHealth: [round(T.health/T.maxHealth,0.01)*100]%"
 	if (T.slime_mutation[4] == T.colour)
-		to_chat(user, "This slime does not evolve any further.")
+		output += "\nThis slime does not evolve any further."
 	else
 		if (T.slime_mutation[3] == T.slime_mutation[4])
 			if (T.slime_mutation[2] == T.slime_mutation[1])
-				to_chat(user, "Possible mutation: [T.slime_mutation[3]]")
-				to_chat(user, "Genetic destability: [T.mutation_chance/2] % chance of mutation on splitting")
+				output += "\nPossible mutation: [T.slime_mutation[3]]"
+				output += "\nGenetic destability: [T.mutation_chance/2] % chance of mutation on splitting"
 			else
-				to_chat(user, "Possible mutations: [T.slime_mutation[1]], [T.slime_mutation[2]], [T.slime_mutation[3]] (x2)")
-				to_chat(user, "Genetic destability: [T.mutation_chance] % chance of mutation on splitting")
+				output += "\nPossible mutations: [T.slime_mutation[1]], [T.slime_mutation[2]], [T.slime_mutation[3]] (x2)"
+				output += "\nGenetic destability: [T.mutation_chance] % chance of mutation on splitting"
 		else
-			to_chat(user, "Possible mutations: [T.slime_mutation[1]], [T.slime_mutation[2]], [T.slime_mutation[3]], [T.slime_mutation[4]]")
-			to_chat(user, "Genetic destability: [T.mutation_chance] % chance of mutation on splitting")
+			output += "\nPossible mutations: [T.slime_mutation[1]], [T.slime_mutation[2]], [T.slime_mutation[3]], [T.slime_mutation[4]]"
+			output += "\nGenetic destability: [T.mutation_chance] % chance of mutation on splitting"
 	if (T.cores > 1)
-		to_chat(user, "Multiple cores detected")
-	to_chat(user, "Growth progress: [T.amount_grown]/[SLIME_EVOLUTION_THRESHOLD]")
+		output += "\nMultiple cores detected"
+	output += "\nGrowth progress: [T.amount_grown]/[SLIME_EVOLUTION_THRESHOLD]"
 	if(T.effectmod)
-		to_chat(user, "<span class='notice'>Core mutation in progress: [T.effectmod]</span>")
-		to_chat(user, "<span class = 'notice'>Progress in core mutation: [T.applied] / [SLIME_EXTRACT_CROSSING_REQUIRED]</span>")
-	to_chat(user, "</div>")
+		output += "\n<span class='notice'>Core mutation in progress: [T.effectmod]</span>"
+		output += "\n<span class = 'notice'>Progress in core mutation: [T.applied] / [SLIME_EXTRACT_CROSSING_REQUIRED]</span>"
+
+	to_chat(user, "[output]</div>")
 
 
 /obj/item/nanite_scanner
