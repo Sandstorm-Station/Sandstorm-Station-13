@@ -1,3 +1,4 @@
+/* Might get deleted, conflicts with other recipes
 /datum/chemical_reaction/silicon_dioxide
 	name = "silicon dioxide"
 	id = "silicon_dioxide"
@@ -19,7 +20,7 @@
 	var/location = get_turf(holder.my_atom)
 	for(var/i in 1 to multiplier)
 		new /obj/item/stack/ore/iron(location)
-
+*/
 /datum/chemical_reaction/anomaly
 	name = "flux anomaly"
 	id = "flux_anomaly"
