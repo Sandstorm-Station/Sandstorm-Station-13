@@ -52,6 +52,14 @@
 	construction_time = 120
 	category = list("Cyborg Upgrade Modules")
 
+/datum/design/borg_upgrade_shuttlemaking
+	name = "Cyborg Upgrade (Rapid Shuttle Designator)"
+	id = "borg_upgrade_shuttlemaking"
+	build_type = MECHFAB
+	build_path = /obj/item/borg/upgrade/shuttlemaking
+	materials = list(/datum/material/iron=6000, /datum/material/titanium=3750, /datum/material/bluespace=3750) //75% cost of the non-borg counterpart, balanced? i don't know
+	construction_time = 120 //Try to make it take longer just in case
+	category = list("Cyborg Upgrade Modules")
 
 ///Power Armor
 /datum/design/powerarmor_skeleton
