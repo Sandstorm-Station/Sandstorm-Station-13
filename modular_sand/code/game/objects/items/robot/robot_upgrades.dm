@@ -2,8 +2,9 @@
 	name = "engineering cyborg experimental welding tool"
 	desc = "An experimental welding tool replacement for the engineering module's standard welding tool."
 	icon_state = "cyborg_upgrade3"
-	require_module = 1
-	module_type = BORG_MODULE_ENGINEERING
+	require_module = TRUE
+	module_type = list(/obj/item/robot_module/engineering)
+	module_flags = BORG_MODULE_ENGINEERING
 
 /obj/item/borg/upgrade/xwelding/action(mob/living/silicon/robot/R, user = usr)
 	. = ..()
@@ -38,7 +39,8 @@
 	desc = "An upgrade that allows cyborgs the ability to use plasma and assorted plasma products."
 	icon_state = "cyborg_upgrade3"
 	require_module = 1
-	module_type = BORG_MODULE_ENGINEERING
+	module_type = list(/obj/item/robot_module/engineering)
+	module_flags = BORG_MODULE_ENGINEERING
 */
 
 /* Shit doesnt work, do it later
@@ -67,8 +69,9 @@
 	name = "engineering cyborg bluespace RPD"
 	desc = "A bluespace RPD replacement for the engineering module's standard RPD."
 	icon_state = "cyborg_upgrade3"
-	require_module = 1
-	module_type = BORG_MODULE_ENGINEERING
+	require_module = TRUE
+	module_type = list(/obj/item/robot_module/engineering)
+	module_flags = BORG_MODULE_ENGINEERING
 
 /obj/item/borg/upgrade/bsrpd/action(mob/living/silicon/robot/R, user = usr)
 	. = ..()
@@ -102,8 +105,9 @@
 	name = "mining cyborg premium KA"
 	desc = "A premium kinetic accelerator replacement for the mining module's standard kinetic accelerator."
 	icon_state = "cyborg_upgrade3"
-	require_module = 1
-	module_type = BORG_MODULE_MINER
+	require_module = TRUE
+	module_type = list(/obj/item/robot_module/miner)
+	module_flags = BORG_MODULE_MINER
 
 /obj/item/borg/upgrade/premiumka/action(mob/living/silicon/robot/R, user = usr)
 	. = ..()
@@ -216,3 +220,31 @@
 /obj/item/borg/upgrade/transform/syndicatejack/action(mob/living/silicon/robot/R, user = usr)
     if(R.emagged)
         return ..()
+
+/obj/item/borg/upgrade/shuttlemaking
+	name = "engineering cyborg rapid shuttle designator"
+	desc = "A device used to define the area required for custom ships. Uses bluespace crystals to create bluespace-capable ships.\n\
+			It appears to be a rough adaptation for cyborgs."
+	icon_state = "cyborg_upgrade5"
+	require_module = TRUE
+	module_type = list(/obj/item/robot_module/engineering)
+	module_flags = BORG_MODULE_ENGINEERING
+
+/obj/item/borg/upgrade/shuttlemaking/action(mob/living/silicon/robot/R, user = usr)
+	. = ..()
+	if(.)
+		var/obj/item/shuttle_creator/shuttle_maker = locate() in R
+		if(!shuttle_maker)
+			shuttle_maker = locate() in R.module
+		if(shuttle_maker)
+			to_chat(user, "<span class='warning'>This unit is already equipped with a rapid shuttle designator module.</span>")
+			return FALSE
+		shuttle_maker = new(R.module)
+		R.module.basic_modules += shuttle_maker
+		R.module.add_module(shuttle_maker, FALSE, TRUE)
+
+/obj/item/borg/upgrade/shuttlemaking/deactivate(mob/living/silicon/robot/R, user = usr)
+	. = ..()
+	if (.)
+		for(var/obj/item/shuttle_creator/shuttle_maker in R.module)
+			R.module.remove_module(shuttle_maker, TRUE)

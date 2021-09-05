@@ -1,8 +1,3 @@
-/datum/techweb_node/bluespace_portal/New()
-	design_ids += "borg_upgrade_bsrpd"
-	design_ids += "bsrpd"
-	. = ..()
-
 /datum/techweb_node/cryptominer
 	id = "cryptominer"
 	display_name = "Cryptocurrency Mining"
@@ -45,4 +40,13 @@
 
 /datum/techweb_node/shuttle_route_upgrade_hyper/New()
 	design_ids += "disk_shuttle_smoothsail"
+	. = ..()
+
+/datum/techweb_node/bluespace_portal/New()
+	design_ids += "borg_upgrade_bsrpd"
+	design_ids += "bsrpd"
+	. = ..()
+
+/datum/techweb_node/basic_shuttle_tech/New()
+	design_ids += "borg_upgrade_shuttlemaking"
 	. = ..()
