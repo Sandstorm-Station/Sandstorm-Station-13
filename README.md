@@ -1,7 +1,7 @@
 ## Sandstorm Station 13
 Based and maintained from Citadel Station 13, which is based and maintained from /tg/station.
 
-![CI Suite](https://github.com/Sandstorm-Station/Sandstorm-Station-13/workflows/CI%20Suite/badge.svg)
+[![CI Suite](https://github.com/Sandstorm-Station/Sandstorm-Station-13/workflows/CI%20Suite/badge.svg)](https://github.com/Sandstorm-Station/Sandstorm-Station-13//actions?query=workflow%3A%22CI+Suite%22)
 [![Percentage of issues still open](http://isitmaintained.com/badge/open/Sandstorm-Station/Sandstorm-Station-13.svg)](http://isitmaintained.com/project/Sandstorm-Station/Sandstorm-Station-13 "Percentage of issues still open")
 [![Average time to resolve an issue](http://isitmaintained.com/badge/resolution/Sandstorm-Station/Sandstorm-Station-13.svg)](http://isitmaintained.com/project/Sandstorm-Station/Sandstorm-Station-13 "Average time to resolve an issue")
 
@@ -103,6 +103,14 @@ place should work fine), copy your /config and /data folders back into the new
 install, overwriting when prompted except if we've specified otherwise, and
 recompile the game.  Once you start the server up again, you should be running
 the new version.
+
+## :exclamation: How to compile :exclamation:
+
+On **2021-01-04** we have changed the way to compile the codebase.
+
+Find `Build.cmd` in this folder, and double click it to initiate the build. It consists of multiple steps and might take around 1-5 minutes to compile. If it closes, it means it has finished its job. You can then setup the server normally by opening `tgstation.dmb` in DreamDaemon.
+
+**Building tgstation in DreamMaker directly is now deprecated and might produce errors**, such as `'tgui.bundle.js': cannot find file`.
 
 ## HOSTING
 
