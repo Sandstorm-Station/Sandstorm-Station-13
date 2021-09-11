@@ -1,2 +1,4 @@
-@call tools\build\build
-rem @pause do not pause me you piece of crap
+@echo off
+call "%~dp0\tools\build\build.bat" %*
+rem pause
+rem pausing is just annoying, don't

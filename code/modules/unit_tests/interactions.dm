@@ -1,6 +1,6 @@
 /datum/unit_test/interactions/Run()
 	make_interactions()
-	if(!GLOB.interactions)
+	if(!GLOB.interactions || !length(GLOB.interactions))
 		Fail("make_interactions() was called but GLOB.interactions is empty.")
 	var/list/check_duplicates = list()
 	for(var/datum/interaction/interaction in GLOB.interactions)
