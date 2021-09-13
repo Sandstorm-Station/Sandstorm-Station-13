@@ -445,6 +445,7 @@
 /obj/structure/cable{
 	icon_state = "1-2"
 	},
+/obj/effect/landmark/start/prisoner,
 /turf/open/floor/plasteel,
 /area/security/prison)
 "abr" = (
@@ -63068,6 +63069,11 @@
 	},
 /turf/open/space/basic,
 /area/space)
+"cZI" = (
+/obj/effect/decal/cleanable/dirt,
+/obj/effect/landmark/start/prisoner,
+/turf/open/floor/plasteel,
+/area/security/prison)
 "dcB" = (
 /obj/effect/turf_decal/trimline/neutral/filled/line{
 	dir = 4
@@ -112475,7 +112481,7 @@ agJ
 ahA
 ady
 bPZ
-adx
+cZI
 adx
 ama
 aNh
@@ -113503,7 +113509,7 @@ afg
 agM
 ady
 ajM
-adx
+cZI
 adx
 asb
 baj
@@ -115302,7 +115308,7 @@ amN
 agQ
 ady
 aiu
-adx
+cZI
 adx
 amc
 beg

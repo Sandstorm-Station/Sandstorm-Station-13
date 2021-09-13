@@ -9967,6 +9967,7 @@
 /area/security/prison)
 "axk" = (
 /obj/item/storage/pill_bottle/penis_enlargement,
+/obj/effect/landmark/start/prisoner,
 /turf/open/floor/plasteel/freezer,
 /area/security/prison)
 "axl" = (
@@ -71034,6 +71035,11 @@
 /obj/machinery/atmospherics/pipe/simple/violet/visible,
 /turf/open/floor/plasteel,
 /area/engineering/atmos)
+"kTm" = (
+/obj/effect/decal/cleanable/dirt,
+/obj/effect/landmark/start/prisoner,
+/turf/open/floor/plating,
+/area/security/prison)
 "lcD" = (
 /obj/machinery/atmospherics/components/unary/thermomachine/freezer{
 	dir = 1
@@ -71107,6 +71113,11 @@
 /obj/machinery/atmospherics/pipe/simple/orange/hidden,
 /turf/open/floor/plasteel,
 /area/tcommsat/computer)
+"mTf" = (
+/obj/effect/decal/cleanable/dirt,
+/obj/effect/landmark/start/prisoner,
+/turf/open/floor/plasteel,
+/area/security/prison)
 "nvn" = (
 /obj/machinery/atmospherics/components/unary/vent_scrubber/on{
 	dir = 1
@@ -95913,7 +95924,7 @@ adE
 aew
 afG
 agP
-agP
+kTm
 aiL
 ajT
 anu
@@ -95928,7 +95939,7 @@ aHT
 aJt
 aJN
 aQg
-akv
+mTf
 aew
 ayU
 aSQ
@@ -96429,7 +96440,7 @@ afY
 agP
 agP
 aiL
-akv
+mTf
 anw
 akv
 akv
