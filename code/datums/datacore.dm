@@ -106,10 +106,11 @@
 	for(var/datum/data/record/t in GLOB.data_core.general)
 		var/name = t.fields["name"]
 		var/rank = t.fields["rank"]
+		var/department_check = GetJobName(t.fields["rank"])
 		var/has_department = FALSE
 		for(var/department in departments)
 			var/list/jobs = departments[department]
-			if(rank in jobs)
+			if(department_check in jobs)
 				if(!manifest_out[department])
 					manifest_out[department] = list()
 				manifest_out[department] += list(list(
@@ -154,29 +155,30 @@
 	for(var/datum/data/record/t in GLOB.data_core.general)
 		var/name = t.fields["name"]
 		var/rank = t.fields["rank"]
+		var/department_check = GetJobName(t.fields["rank"])
 		var/department = 0
-		if(rank in GLOB.command_positions)
+		if(department_check in GLOB.command_positions)
 			heads[name] = rank
 			department = 1
-		if(rank in GLOB.security_positions)
+		if(department_check in GLOB.security_positions)
 			sec[name] = rank
 			department = 1
-		if(rank in GLOB.engineering_positions)
+		if(department_check in GLOB.engineering_positions)
 			eng[name] = rank
 			department = 1
-		if(rank in GLOB.medical_positions)
+		if(department_check in GLOB.medical_positions)
 			med[name] = rank
 			department = 1
-		if(rank in GLOB.science_positions)
+		if(department_check in GLOB.science_positions)
 			sci[name] = rank
 			department = 1
-		if(rank in GLOB.supply_positions)
+		if(department_check in GLOB.supply_positions)
 			sup[name] = rank
 			department = 1
-		if(rank in GLOB.civilian_positions)
+		if(department_check in GLOB.civilian_positions)
 			civ[name] = rank
 			department = 1
-		if(rank in GLOB.nonhuman_positions)
+		if(department_check in GLOB.nonhuman_positions)
 			bot[name] = rank
 			department = 1
 		if(!department && !(name in heads))
