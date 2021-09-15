@@ -67,7 +67,7 @@ GLOBAL_LIST_EMPTY(mobs_with_editable_flavor_text) //et tu, hacky code
 				examine_list += "...?"
 			return
 	var/text = texts_by_atom[target]
-	if(!text)
+	if(!text && !(flavor_name == "OOC Notes"))
 		return
 	if(examine_no_preview)
 		examine_list += "<span class='notice'><a href='?src=[REF(src)];show_flavor=[REF(target)]'>\[[flavor_name]\]</a></span>"
@@ -89,7 +89,7 @@ GLOBAL_LIST_EMPTY(mobs_with_editable_flavor_text) //et tu, hacky code
 		var/atom/target = locate(href_list["show_flavor"])
 		var/mob/living/L = target
 		var/text = texts_by_atom[target]
-		if(text)
+		if(text || (flavor_name == "OOC Notes"))
 			var/content
 			if(flavor_name == "OOC Notes")
 				content += "[L]'s OOC Notes: <br> <b>ERP:</b> [L.client.prefs.erppref] <b>| Non-Con:</b> [L.client.prefs.nonconpref] <b>| Vore:</b> [L.client.prefs.vorepref]\n"
