@@ -197,7 +197,7 @@
 /obj/item/dogborg/sleeper/ui_interact(mob/user, datum/tgui/ui)
 	ui = SStgui.try_update_ui(user, src, ui)
 	if(!ui)
-		ui = new(user, src, "DogborgSleeper", name)
+		ui = new(user, src, "DogborgSleeper", name) //refused to change to sleeper because it lacks vore content
 		ui.open()
 
 /obj/item/dogborg/sleeper/ui_data()
