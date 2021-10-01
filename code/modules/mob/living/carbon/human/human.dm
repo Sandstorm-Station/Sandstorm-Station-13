@@ -11,7 +11,7 @@
 	add_verb(src, /mob/living/carbon/human/verb/underwear_toggle)
 	add_verb(src, /mob/living/verb/subtle)
 	add_verb(src, /mob/living/verb/subtler)
-	add_verb(src, /mob/living/proc/surrender) //Skyrat change
+	add_verb(src, /mob/living/proc/surrender) // Sandstorm change
 	//initialize limbs first
 	create_bodyparts()
 
@@ -147,7 +147,7 @@
 	else
 		dat += "<tr><td><B>Eyes:</B></td><td><A href='?src=[REF(src)];item=[SLOT_GLASSES]'>[(glasses && !(glasses.item_flags & ABSTRACT))	? glasses : "<font color=grey>Empty</font>"]</A></td></tr>"
 
-	//skyrat edit
+	// Sandstorm edit
 	if(SLOT_EARS_LEFT in obscured)
 		dat += "<tr><td><font color=grey><B>Left ear:</B></font></td><td><font color=grey>Obscured</font></td></tr>"
 	else
@@ -181,6 +181,14 @@
 		if(shoes && shoes.can_be_tied && shoes.tied != SHOES_KNOTTED)
 			dat += "&nbsp;<A href='?src=[REF(src)];shoes=[SLOT_SHOES]'>[shoes.tied ? "Untie shoes" : "Knot shoes"]</A>"
 
+	// Sandstorm edit
+	var/socks_hidden = socks_hidden()
+	if((SLOT_W_SOCKS in obscured) || socks_hidden)
+		dat += "<tr><td><font color=grey>&nbsp;&#8627;<B>Socks:</B></font></td><td><font color=grey>Obscured</font></td></tr>"
+	else
+		dat += "<tr><td>&nbsp;&#8627;<B>Socks:</B></td><td><A href='?src=[REF(src)];item=[SLOT_W_SOCKS]'>[(w_socks && !(w_socks.item_flags & ABSTRACT)) ? w_socks : "<font color=grey>Empty</font>"]</A></td></tr>"
+	//
+
 		dat += "</td></tr>"
 
 	if(SLOT_GLOVES in obscured)
@@ -188,7 +196,7 @@
 	else
 		dat += "<tr><td><B>Gloves:</B></td><td><A href='?src=[REF(src)];item=[SLOT_GLOVES]'>[(gloves && !(gloves.item_flags & ABSTRACT))		? gloves	: "<font color=grey>Empty</font>"]</A></td></tr>"
 
-	//skyrat edit
+	// Sandstorm edit
 	if(SLOT_WRISTS in obscured)
 		dat += "<tr><td><font color=grey><B>Wrists:</B></font></td><td><font color=grey>Obscured</font></td></tr>"
 	else
@@ -213,19 +221,13 @@
 		dat += "&nbsp;<A href='?src=[REF(src)];pockets=right'>[(r_store && !(r_store.item_flags & ABSTRACT)) ? "Right (Full)" : "<font color=grey>Right (Empty)</font>"]</A></td></tr>"
 		dat += "<tr><td>&nbsp;&#8627;<B>ID:</B></td><td><A href='?src=[REF(src)];item=[SLOT_WEAR_ID]'>[(wear_id && !(wear_id.item_flags & ABSTRACT)) ? wear_id : "<font color=grey>Empty</font>"]</A></td></tr>"
 
-	//skyrat edit
-	dat += "<tr><td><B>Underwear Section:</B></td></tr>"
+	// Sandstorm edit
 	var/shirt_hidden = undershirt_hidden()
 	var/undies_hidden = underwear_hidden()
-	var/socks_hidden = socks_hidden()
 	if((SLOT_W_UNDERWEAR in obscured) || undies_hidden)
 		dat += "<tr><td><font color=grey>&nbsp;&#8627;<B>Underwear:</B></font></td><td><font color=grey>Obscured</font></td></tr>"
 	else
 		dat += "<tr><td>&nbsp;&#8627;<B>Underwear:</B></td><td><A href='?src=[REF(src)];item=[SLOT_W_UNDERWEAR]'>[(w_underwear && !(w_underwear.item_flags & ABSTRACT)) ? w_underwear : "<font color=grey>Empty</font>"]</A></td></tr>"
-	if((SLOT_W_SOCKS in obscured) || socks_hidden)
-		dat += "<tr><td><font color=grey>&nbsp;&#8627;<B>Socks:</B></font></td><td><font color=grey>Obscured</font></td></tr>"
-	else
-		dat += "<tr><td>&nbsp;&#8627;<B>Socks:</B></td><td><A href='?src=[REF(src)];item=[SLOT_W_SOCKS]'>[(w_socks && !(w_socks.item_flags & ABSTRACT)) ? w_socks : "<font color=grey>Empty</font>"]</A></td></tr>"
 	if((SLOT_W_SHIRT in obscured) || shirt_hidden)
 		dat += "<tr><td><font color=grey>&nbsp;&#8627;<B>Shirt:</B></font></td><td><font color=grey>Obscured</font></td></tr>"
 	else
