@@ -1,5 +1,5 @@
 /datum/species/proc/handle_thirst(mob/living/carbon/human/H)
-	if(HAS_TRAIT(src, TRAIT_NOTHIRST))
+	if(HAS_TRAIT(H, TRAIT_NOTHIRST))
 		return
 
 	//Put more things here if you plan on adding more things. I know this proc is a bit empty at the moment
