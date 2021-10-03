@@ -1208,6 +1208,7 @@
 /obj/structure/stone_tile{
 	dir = 1
 	},
+/mob/living/simple_animal/hostile/megafauna/gladiator,
 /turf/open/floor/plating/asteroid/basalt/lava_land_surface,
 /area/lavaland/surface/outdoors)
 "mG" = (
@@ -1978,13 +1979,6 @@
 /obj/structure/stone_tile,
 /turf/open/indestructible/boss,
 /area/ruin/unpowered/ash_walkers)
-"DQ" = (
-/obj/structure/stone_tile{
-	dir = 4
-	},
-/obj/item/book/granter/crafting_recipe/bone_bow,
-/turf/open/floor/plating/asteroid/basalt/lava_land_surface,
-/area/lavaland/surface/outdoors)
 "Ef" = (
 /obj/structure/stone_tile/block/cracked,
 /turf/open/lava/smooth{
@@ -2081,11 +2075,6 @@
 	},
 /turf/open/floor/plating/asteroid/basalt/lava_land_surface,
 /area/ruin/unpowered/ash_walkers)
-"IJ" = (
-/obj/structure/stone_tile/slab/cracked,
-/mob/living/simple_animal/hostile/megafauna/gladiator,
-/turf/open/floor/plating/asteroid/basalt/lava_land_surface,
-/area/lavaland/surface/outdoors)
 "Jq" = (
 /obj/structure/stone_tile/slab/cracked,
 /obj/effect/decal/cleanable/blood,
@@ -2311,7 +2300,6 @@
 	},
 /obj/structure/table/wood,
 /obj/item/kitchen/knife/combat/bone,
-/obj/item/book/granter/crafting_recipe/bone_bow,
 /turf/open/indestructible/boss,
 /area/ruin/unpowered/ash_walkers)
 "TN" = (
@@ -2406,7 +2394,6 @@
 /area/ruin/unpowered/ash_walkers)
 "WA" = (
 /obj/structure/stone_tile/block/cracked,
-/obj/item/book/granter/crafting_recipe/bone_bow,
 /turf/open/floor/plating/asteroid/basalt/lava_land_surface,
 /area/ruin/unpowered/ash_walkers)
 "WL" = (
@@ -34953,7 +34940,7 @@ ma
 lq
 mk
 mn
-IJ
+kR
 mF
 ab
 mG
@@ -57301,7 +57288,7 @@ jS
 jS
 KV
 ab
-DQ
+jx
 aa
 aa
 ab
