@@ -26,11 +26,11 @@
 		/datum/language/vampiric,
 		/datum/language/dwarf,
 		/datum/language/signlanguage,
+		/datum/language/neokanji,
 		/datum/language/machine, //Skyrat change - adds machine language
 		/datum/language/modular_sand/calcic, //Skyrat change - plasmaman language
 		/datum/language/modular_sand/dunmeri, //Skyrat change - dunmer language
 		/datum/language/modular_sand/moffic, //Skyrat change - insect language
-		/datum/language/modular_sand/neokanji, //Skyrat change - generally asian language
 		/datum/language/modular_sand/shadowtongue, //Skyrat change - shadowpeople language
 		/datum/language/modular_sand/solcommon, //Skyrat change - sol common blah blah
 		/datum/language/modular_sand/technorussian, //Skyrat change - russian stereotype language
@@ -262,7 +262,8 @@
 		/datum/language/beachbum,
 		/datum/language/aphasia,
 		/datum/language/sylvan,
-		/datum/language/voltaic
+		/datum/language/voltaic,
+		/datum/language/neokanji,
 	))
 
 /obj/item/organ/tongue/ethereal/Initialize(mapload)

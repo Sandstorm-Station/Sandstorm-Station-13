@@ -312,27 +312,27 @@ Key procs
 
 /datum/language_holder/synthetic
 	understood_languages = list(/datum/language/common = list(LANGUAGE_ATOM),
-							/datum/language/machine = list(LANGUAGE_ATOM),
-							/datum/language/draconic = list(LANGUAGE_ATOM),
-							// SKYRAT EDIT - additional languages
-							/datum/language/modular_sand/solcommon = list(LANGUAGE_ATOM),
-							/datum/language/modular_sand/technorussian = list(LANGUAGE_ATOM),
-							/datum/language/modular_sand/neokanji = list(LANGUAGE_ATOM),
-							/datum/language/modular_sand/dunmeri = list(LANGUAGE_ATOM),
-							/datum/language/modular_sand/sergal = list(LANGUAGE_ATOM),
-							/datum/language/slime = list(LANGUAGE_ATOM),
-							/datum/language/dwarf = list(LANGUAGE_ATOM))
+								/datum/language/machine = list(LANGUAGE_ATOM),
+								/datum/language/draconic = list(LANGUAGE_ATOM),
+								/datum/language/slime = list(LANGUAGE_ATOM),
+								/datum/language/dwarf = list(LANGUAGE_ATOM),
+								/datum/language/neokanji = list(LANGUAGE_ATOM)
+								// SKYRAT EDIT - additional languages
+								/datum/language/modular_sand/solcommon = list(LANGUAGE_ATOM),
+								/datum/language/modular_sand/technorussian = list(LANGUAGE_ATOM),
+								/datum/language/modular_sand/dunmeri = list(LANGUAGE_ATOM),
+								/datum/language/modular_sand/sergal = list(LANGUAGE_ATOM)
 	spoken_languages = list(/datum/language/common = list(LANGUAGE_ATOM),
 							/datum/language/machine = list(LANGUAGE_ATOM),
 							/datum/language/draconic = list(LANGUAGE_ATOM),
+							/datum/language/slime = list(LANGUAGE_ATOM),
+							/datum/language/dwarf = list(LANGUAGE_ATOM),
+							/datum/language/neokanji = list(LANGUAGE_ATOM)
 							// SKYRAT EDIT - additional languages
 							/datum/language/modular_sand/solcommon = list(LANGUAGE_ATOM),
 							/datum/language/modular_sand/technorussian = list(LANGUAGE_ATOM),
-							/datum/language/modular_sand/neokanji = list(LANGUAGE_ATOM),
 							/datum/language/modular_sand/dunmeri = list(LANGUAGE_ATOM),
-							/datum/language/modular_sand/sergal = list(LANGUAGE_ATOM),
-							/datum/language/slime = list(LANGUAGE_ATOM),
-							/datum/language/dwarf = list(LANGUAGE_ATOM))
+							/datum/language/modular_sand/sergal = list(LANGUAGE_ATOM))
 
 /datum/language_holder/venus
 	understood_languages = list(/datum/language/common = list(LANGUAGE_ATOM),
