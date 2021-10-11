@@ -8,8 +8,8 @@
 /datum/config_entry/string/wikiurltg
 	config_entry_value = "http://www.tgstation13.org/wiki"
 
-/datum/config_entry/string/forumurl
-	config_entry_value = "http://tgstation13.org/phpBB/index.php"
+/datum/config_entry/string/discordurl
+	config_entry_value = "http://discord.gg"
 
 /datum/config_entry/string/rulesurl
 	config_entry_value = "http://www.tgstation13.org/wiki/Rules"

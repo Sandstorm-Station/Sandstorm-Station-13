@@ -179,7 +179,10 @@ SUBSYSTEM_DEF(ticker)
 				timeLeft = 0
 
 			if(!modevoted)
-				send_gamemode_vote()
+				if(!CONFIG_GET(string/force_gamemode))
+					send_gamemode_vote()
+				else
+					force_gamemode(CONFIG_GET(string/force_gamemode))
 			//countdown
 			if(timeLeft < 0)
 				return
@@ -234,6 +237,7 @@ SUBSYSTEM_DEF(ticker)
 		qdel(mode)
 		mode = null
 		SSjob.ResetOccupations()
+		force_gamemode("extended")
 		return 0
 
 	CHECK_TICK
@@ -252,6 +256,7 @@ SUBSYSTEM_DEF(ticker)
 			QDEL_NULL(mode)
 			to_chat(world, "<B>Error setting up [GLOB.master_mode].</B> Reverting to pre-game lobby.")
 			SSjob.ResetOccupations()
+			force_gamemode("extended")
 			return 0
 	else
 		message_admins("<span class='notice'>DEBUG: Bypassing prestart checks...</span>")
@@ -314,6 +319,8 @@ SUBSYSTEM_DEF(ticker)
 	var/list/adm = get_admin_counts()
 	var/list/allmins = adm["present"]
 	send2adminchat("Server", "Round [GLOB.round_id ? "#[GLOB.round_id]:" : "of"] [hide_mode ? "secret":"[mode.name]"] has started[allmins.len ? ".":" with no active admins online!"]")
+	if(CONFIG_GET(string/new_round_ping))
+		send2chat("<@&[CONFIG_GET(string/new_round_ping)]> | A new round has started on [SSmapping.config.map_name]!", CONFIG_GET(string/chat_announce_new_game))
 	setup_done = TRUE
 
 	for(var/i in GLOB.start_landmarks_list)
@@ -380,6 +387,10 @@ SUBSYSTEM_DEF(ticker)
 				SSjob.EquipRank(N, player.mind.assigned_role, 0)
 				if(CONFIG_GET(flag/roundstart_traits) && ishuman(N.new_character))
 					SSquirks.AssignQuirks(N.new_character, N.client, TRUE, TRUE, SSjob.GetJob(player.mind.assigned_role), FALSE, N)
+				//skyrat change
+				if(ishuman(N.new_character))
+					SSlanguage.AssignLanguage(N.new_character, N.client)
+				//
 			N.client.prefs.post_copy_to(player)
 		CHECK_TICK
 	if(captainless)

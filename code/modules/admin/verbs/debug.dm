@@ -501,6 +501,9 @@
 	if (outfits[dresscode])
 		dresscode = outfits[dresscode]
 
+	if(dresscode == "Cancel")
+		return FALSE // Sandstorm change
+
 	if (dresscode == "As Job...")
 		var/list/job_paths = subtypesof(/datum/outfit/job)
 		var/list/job_outfits = list()

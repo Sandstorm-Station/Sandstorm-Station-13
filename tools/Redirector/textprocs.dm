@@ -33,12 +33,12 @@
 ///Prefix checking
 /proc/dd_hasprefix(text, prefix)
 	var/start = 1
-	var/end = lentext(prefix) + 1
+	var/end = length(prefix) + 1
 	return findtext(text, prefix, start, end)
 
 /proc/dd_hasPrefix(text, prefix)
 	var/start = 1
-	var/end = lentext(prefix) + 1
+	var/end = length(prefix) + 1
 	return findtextEx(text, prefix, start, end)
 
 
@@ -55,8 +55,8 @@
 
 /// Turning text into lists
 /proc/dd_text2list(text, separator)
-	var/textlength      = lentext(text)
-	var/separatorlength = lentext(separator)
+	var/textlength      = length(text)
+	var/separatorlength = length(separator)
 	var/list/textList   = new /list()
 	var/searchPosition  = 1
 	var/findPosition    = 1
@@ -75,8 +75,8 @@
 				return textList
 
 /proc/dd_text2List(text, separator)
-	var/textlength      = lentext(text)
-	var/separatorlength = lentext(separator)
+	var/textlength      = length(text)
+	var/separatorlength = length(separator)
 	var/list/textList   = new /list()
 	var/searchPosition  = 1
 	var/findPosition    = 1

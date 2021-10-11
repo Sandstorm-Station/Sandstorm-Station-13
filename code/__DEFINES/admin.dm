@@ -83,6 +83,7 @@
 #define ADMIN_PUNISHMENT_FRY "Fry"
 #define ADMIN_PUNISHMENT_PERFORATE ":B:erforate"
 #define ADMIN_PUNISHMENT_CLUWNE "Cluwne"
+#define ADMIN_PUNISHMENT_GOODBYE "Their final message" //sandstorm
 
 #define AHELP_ACTIVE 1
 #define AHELP_CLOSED 2

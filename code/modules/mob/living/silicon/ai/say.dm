@@ -101,7 +101,7 @@
 
 	last_announcement = message
 
-	var/voxType = input(src, "Male or female VOX?", "VOX-gender") in list("male", "female")
+	var/voxType = input(src, "Which VOX to use?", "VOX-type") in list("male", "female", "military")
 
 	if(!message || announcing_vox > world.time)
 		return
@@ -128,6 +128,8 @@
 			incorrect_words += word
 		if(!GLOB.vox_sounds_male[word] && voxType == "male")
 			incorrect_words += word
+		if(!GLOB.vox_sounds_military[word] && voxType == "military")
+			incorrect_words += word
 
 	if(incorrect_words.len)
 		to_chat(src, "<span class='notice'>These words are not available on the announcement system: [english_list(incorrect_words)].</span>")
@@ -145,12 +147,14 @@
 
 	word = lowertext(word)
 
-	if( (GLOB.vox_sounds[word] && voxType == "female") || (GLOB.vox_sounds_male[word] && voxType == "male") )
+	if( (GLOB.vox_sounds[word] && voxType == "female") || (GLOB.vox_sounds_male[word] && voxType == "male") || (GLOB.vox_sounds_military[word] && voxType == "military"))
 
 		var/sound_file
 
 		if(voxType == "female")
 			sound_file = GLOB.vox_sounds[word]
+		else if (voxType == "military")
+			sound_file = GLOB.vox_sounds_military[word]
 		else
 			sound_file = GLOB.vox_sounds_male[word]
 		var/sound/voice = sound(sound_file, wait = 1, channel = CHANNEL_VOX)

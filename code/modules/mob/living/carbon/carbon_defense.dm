@@ -346,18 +346,23 @@
 		return
 
 	var/embeds = FALSE
+	var/output = null
 	for(var/X in bodyparts)
 		var/obj/item/bodypart/LB = X
 		for(var/obj/item/I in LB.embedded_objects)
 			if(!embeds)
 				embeds = TRUE
 				// this way, we only visibly try to examine ourselves if we have something embedded, otherwise we'll still hug ourselves :)
-				visible_message("<span class='notice'>[src] examines [p_them()]self.</span>", \
-					"<span class='notice'>You check yourself for shrapnel.</span>")
+				visible_message("<span class='notice'>[src] examines [p_them()]self.</span>", "")
+				output += "<span class='notice'>You check yourself for shrapnel.</span>"
 			if(I.isEmbedHarmless())
-				to_chat(src, "\t <a href='?src=[REF(src)];embedded_object=[REF(I)];embedded_limb=[REF(LB)]' class='warning'>There is \a [I] stuck to your [LB.name]!</a>")
+				output += "\n\t <a href='?src=[REF(src)];embedded_object=[REF(I)];embedded_limb=[REF(LB)]' class='warning'>There is \a [I] stuck to your [LB.name]!</a>"
 			else
-				to_chat(src, "\t <a href='?src=[REF(src)];embedded_object=[REF(I)];embedded_limb=[REF(LB)]' class='warning'>There is \a [I] embedded in your [LB.name]!</a>")
+				output += "\n\t <a href='?src=[REF(src)];embedded_object=[REF(I)];embedded_limb=[REF(LB)]' class='warning'>There is \a [I] embedded in your [LB.name]!</a>"
+
+	if(output)
+		output += "</div>"
+		to_chat(src, output)
 
 	return embeds
 

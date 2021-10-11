@@ -863,6 +863,19 @@ Traitors and the like can also be revived with the previous role mostly intact.
 		message_admins("Admin [key_name_admin(usr)] has disabled random events.")
 	SSblackbox.record_feedback("nested tally", "admin_toggle", 1, list("Toggle Random Events", "[new_are ? "Enabled" : "Disabled"]")) //If you are copy-pasting this, ensure the 2nd parameter is unique to the new proc!
 
+/client/proc/admin_enable_disk_inactive_msg()
+	set category = "Server"
+	set name = "Toggle nuke disk stationary admin logging"
+	set desc = "Toggles nuke disk stationary admin logs for all admins"
+	var/current_state = !CONFIG_GET(flag/admin_disk_inactive_msg)
+	CONFIG_SET(flag/admin_disk_inactive_msg, current_state)
+	if(current_state)
+		to_chat(usr, "Inactive disk admin logging enabled")
+		message_admins("Admin [key_name_admin(usr)] has enabled inactive disk admin logging")
+	else
+		to_chat(usr, "Inactive disk admin logging disabled")
+		message_admins("Admin [key_name_admin(usr)] has disabled inactive disk admin logging")
+	SSblackbox.record_feedback("nested tally", "admin_toggle", 1, list("Toggle nuke disk stationary admin logging", "[current_state ? "Enabled" : "Disabled"]"))
 
 /client/proc/admin_change_sec_level()
 	set category = "Admin.Events"
@@ -1336,7 +1349,8 @@ Traitors and the like can also be revived with the previous role mostly intact.
 		ADMIN_PUNISHMENT_CRACK,
 		ADMIN_PUNISHMENT_BLEED,
 		ADMIN_PUNISHMENT_SCARIFY,
-		ADMIN_PUNISHMENT_CLUWNE)
+		ADMIN_PUNISHMENT_CLUWNE,
+		ADMIN_PUNISHMENT_GOODBYE)
 
 	var/punishment = input("Choose a punishment", "DIVINE SMITING") as null|anything in punishment_list
 
@@ -1507,6 +1521,13 @@ Traitors and the like can also be revived with the previous role mostly intact.
 				to_chat(usr,"<span class='warning'>This must be used on a carbon mob.</span>")
 				return
 			target.cluwneify()
+		if(ADMIN_PUNISHMENT_GOODBYE) //sandstorm punish :) it starts here
+			var/mob/living/C = target
+			if(C.stat == DEAD)
+				to_chat(usr, "<span class='warning'>[C] is dead!")
+				return
+			else
+				C.pregoodbye(C) //sandstorm punish and ends here.
 
 	punish_log(target, punishment)
 

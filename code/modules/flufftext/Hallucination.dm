@@ -699,7 +699,8 @@ GLOBAL_LIST_INIT(hallucination_list, list(
 		if(target.client)
 			target.client.images |= speech_overlay
 			sleep(30)
-			target.client.images.Remove(speech_overlay)
+			if (target.client)
+				target.client.images.Remove(speech_overlay)
 		var/spans = list(person.speech_span)
 		if (target.client?.prefs.chat_on_map)
 			target.create_chat_message(person, understood_language, chosen, spans, 0)
@@ -947,11 +948,12 @@ GLOBAL_LIST_INIT(hallucination_list, list(
 			target.throw_alert(alert_type, /atom/movable/screen/alert/too_much_co2, override = TRUE)
 		if("too_much_tox")
 			target.throw_alert(alert_type, /atom/movable/screen/alert/too_much_tox, override = TRUE)
-		if("nutrition")
+/*		if("nutrition")
 			if(prob(50))
 				target.throw_alert(alert_type, /atom/movable/screen/alert/fat, override = TRUE)
 			else
 				target.throw_alert(alert_type, /atom/movable/screen/alert/starving, override = TRUE)
+*/
 		if("gravity")
 			target.throw_alert(alert_type, /atom/movable/screen/alert/weightless, override = TRUE)
 		if("fire")

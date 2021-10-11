@@ -24,6 +24,7 @@
 	coldmod = 6   // = 3x cold damage
 	heatmod = 0.5 // = 1/4x heat damage
 	burnmod = 0.5 // = 1/2x generic burn damage
+	languagewhitelist = list("Slime") //Skyrat change - species language whitelist
 	species_language_holder = /datum/language_holder/jelly
 
 	tail_type = "mam_tail"

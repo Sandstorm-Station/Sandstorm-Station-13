@@ -34,6 +34,20 @@
 /mob/proc/update_inv_w_uniform()
 	return
 
+//skyrat edit
+/mob/proc/update_inv_w_underwear()
+	return
+
+/mob/proc/update_inv_w_socks()
+	return
+
+/mob/proc/update_inv_w_shirt()
+	return
+
+/mob/proc/update_inv_wrists()
+	return
+//
+
 /mob/proc/update_inv_belt()
 	return
 
@@ -67,8 +81,12 @@
 /mob/proc/update_inv_pockets()
 	return
 
+//skyrat edit
 /mob/proc/update_inv_ears()
 	return
 
+/mob/proc/update_inv_ears_extra()
+	return
+//
 /mob/proc/update_antag_overlays()
 	return

@@ -34,6 +34,7 @@
 		var/datum/atom_hud/alternate_appearance/AA = v
 		AA.onNewMob(src)
 	set_nutrition(rand(NUTRITION_LEVEL_START_MIN, NUTRITION_LEVEL_START_MAX))
+	set_thirst(rand(THIRST_LEVEL_START_MIN, THIRST_LEVEL_START_MAX))
 	. = ..()
 	update_config_movespeed()
 	update_movespeed(TRUE)
@@ -127,7 +128,7 @@
   * * target_message (optional) is what the target mob will see e.g. "[src] does something to you!"
   * * omni (optional) if TRUE, will show to users no matter what.
   */
-/atom/proc/visible_message(message, self_message, blind_message, vision_distance = DEFAULT_MESSAGE_RANGE, ignored_mobs, mob/target, target_message, omni = FALSE)
+/atom/proc/visible_message(message, self_message, blind_message, vision_distance = DEFAULT_MESSAGE_RANGE, ignored_mobs, mob/target, target_message, omni = FALSE, runechat_popup, rune_msg)
 	var/turf/T = get_turf(src)
 	if(!T)
 		return
@@ -169,16 +170,22 @@
 			msg = blind_message
 		if(!msg)
 			continue
-		M.show_message(msg, MSG_VISUAL,blind_message, MSG_AUDIBLE)
+		if(runechat_popup && M.client?.prefs.chat_on_map && (M.client.prefs.see_chat_non_mob || ismob(src)) && M.client.prefs.see_chat_emotes) //SKYRAT CHANGE
+			M.create_chat_message(src, null, rune_msg ? rune_msg : msg, list("emote", "italics"), null) //Skyrat change
+		M.show_message(msg, MSG_VISUAL, blind_message, MSG_AUDIBLE) //SKYRAT CHANGE
 
 ///Adds the functionality to self_message.
-/mob/visible_message(message, self_message, blind_message, vision_distance = DEFAULT_MESSAGE_RANGE, list/ignored_mobs, mob/target, target_message, omni = FALSE)
+/mob/visible_message(message, self_message, blind_message, vision_distance = DEFAULT_MESSAGE_RANGE, list/ignored_mobs, mob/target, target_message, omni = FALSE, runechat_popup, rune_msg)
 	. = ..()
 	if(self_message && target != src)
 		if(!omni)
 			show_message(self_message, MSG_VISUAL, blind_message, MSG_AUDIBLE)
+			if(runechat_popup && client?.prefs.chat_on_map && client.prefs.see_chat_emotes) //SKYRAT CHANGE
+				create_chat_message(src, null, rune_msg ? rune_msg : self_message, list("emote", "italics"), null) //Skyrat change
 		else
 			show_message(self_message)
+			if(runechat_popup && client?.prefs.chat_on_map && client.prefs.see_chat_emotes) //SKYRAT CHANGE
+				create_chat_message(src, null, rune_msg ? rune_msg : self_message, list("emote", "italics"), null) //Skyrat change
 
 /**
   * Show a message to all mobs in earshot of this atom
@@ -191,7 +198,7 @@
   * * hearing_distance (optional) is the range, how many tiles away the message can be heard.
   * * ignored_mobs (optional) doesn't show any message to any given mob in the list.
   */
-/atom/proc/audible_message(message, deaf_message, hearing_distance = DEFAULT_MESSAGE_RANGE, self_message, ignored_mobs)
+/atom/proc/audible_message(message, deaf_message, hearing_distance = DEFAULT_MESSAGE_RANGE, self_message, ignored_mobs, runechat_popup, rune_msg) //SKYRAT CHANGE
 	var/turf/T = get_turf(src)
 	if(!T)
 		return
@@ -202,7 +209,9 @@
 	if(self_message)
 		hearers -= src
 	for(var/mob/M in hearers)
-		M.show_message(message, MSG_AUDIBLE, deaf_message, MSG_VISUAL)
+		if(runechat_popup && M.client?.prefs.chat_on_map && (M.client.prefs.see_chat_non_mob || ismob(src)) && M.client.prefs.see_chat_emotes) //SKYRAT CHANGE
+			M.create_chat_message(src, null, rune_msg ? rune_msg : message, list("emote", "italics"), null) //Skyrat change
+		M.show_message(message, MSG_AUDIBLE, deaf_message, MSG_VISUAL) //SKYRAT CHANGE
 
 /**
   * Show a message to all mobs in earshot of this one
@@ -216,9 +225,11 @@
   * * hearing_distance (optional) is the range, how many tiles away the message can be heard.
   * * ignored_mobs (optional) doesn't show any message to any given mob in the list.
   */
-/mob/audible_message(message, deaf_message, hearing_distance = DEFAULT_MESSAGE_RANGE, self_message, list/ignored_mobs)
+/mob/audible_message(message, deaf_message, hearing_distance = DEFAULT_MESSAGE_RANGE, self_message, list/ignored_mobs, runechat_popup, rune_msg) //SKYRAT CHANGE
 	. = ..()
 	if(self_message)
+		if(runechat_popup && client?.prefs.chat_on_map && client.prefs.see_chat_emotes) //SKYRAT CHANGE
+			create_chat_message(src, null, rune_msg ? rune_msg : self_message, list("emote", "italics"), null) //Skyrat change
 		show_message(self_message, MSG_AUDIBLE, deaf_message, MSG_VISUAL)
 
 /mob/proc/get_item_by_slot(slot_id)
@@ -370,10 +381,19 @@
 			var/msg = "<span class='smallnotice'>[src] makes eye contact with you.</span>"
 			addtimer(CALLBACK(GLOBAL_PROC, .proc/to_chat, examined_mob, msg), 3)
 
-//same as above
-//note: ghosts can point, this is intended
-//visible_message will handle invisibility properly
-//overridden here and in /mob/dead/observer for different point span classes and sanity checks
+/**
+  * Point at an atom
+  *
+  * mob verbs are faster than object verbs. See
+  * [this byond forum post](https://secure.byond.com/forum/?post=1326139&page=2#comment8198716)
+  * for why this isn't atom/verb/pointed()
+  *
+  * note: ghosts can point, this is intended
+  *
+  * visible_message will handle invisibility properly
+  *
+  * overridden here and in /mob/dead/observer for different point span classes and sanity checks
+  */
 /mob/verb/pointed(atom/A as mob|obj|turf in fov_view())
 	set name = "Point To"
 	set category = "Object"
@@ -383,12 +403,15 @@
 	if(istype(A, /obj/effect/temp_visual/point))
 		return FALSE
 
-	var/tile = get_turf(A)
+	var/turf/tile = get_turf(A)
 	if (!tile)
 		return FALSE
 
-	new /obj/effect/temp_visual/point(A,invisibility)
+	var/turf/our_tile = get_turf(src)
+	var/obj/visual = new /obj/effect/temp_visual/point(our_tile, invisibility)
+	animate(visual, pixel_x = (tile.x - our_tile.x) * world.icon_size + A.pixel_x, pixel_y = (tile.y - our_tile.y) * world.icon_size + A.pixel_y, time = 1.7, easing = EASE_OUT)
 	SEND_SIGNAL(src, COMSIG_MOB_POINTED, A)
+
 	return TRUE
 
 /mob/proc/can_resist()
@@ -653,7 +676,7 @@ GLOBAL_VAR_INIT(exploit_warn_spam_prevention, 0)
 	set hidden = TRUE
 	if(!canface())
 		return FALSE
-	if(pixel_x <= 16)
+	if(pixel_x <= 32)
 		pixel_x++
 		is_shifted = TRUE
 
@@ -661,7 +684,7 @@ GLOBAL_VAR_INIT(exploit_warn_spam_prevention, 0)
 	set hidden = TRUE
 	if(!canface())
 		return FALSE
-	if(pixel_x >= -16)
+	if(pixel_x >= -32)
 		pixel_x--
 		is_shifted = TRUE
 
@@ -669,7 +692,7 @@ GLOBAL_VAR_INIT(exploit_warn_spam_prevention, 0)
 	set hidden = TRUE
 	if(!canface())
 		return FALSE
-	if(pixel_y <= 16)
+	if(pixel_y <= 32)
 		pixel_y++
 		is_shifted = TRUE
 
@@ -677,7 +700,7 @@ GLOBAL_VAR_INIT(exploit_warn_spam_prevention, 0)
 	set hidden = TRUE
 	if(!canface())
 		return FALSE
-	if(pixel_y >= -16)
+	if(pixel_y >= -32)
 		pixel_y--
 		is_shifted = TRUE
 
@@ -891,7 +914,15 @@ GLOBAL_VAR_INIT(exploit_warn_spam_prevention, 0)
 	if (!client)
 		return
 	client.mouse_pointer_icon = initial(client.mouse_pointer_icon)
-	if (ismecha(loc))
+	if(pull_cursor_icon && client.keys_held["Ctrl"])
+		client.mouse_pointer_icon = pull_cursor_icon
+	else if(throw_cursor_icon && in_throw_mode != 0)
+		client.mouse_pointer_icon = throw_cursor_icon
+	else if(combat_cursor_icon && SEND_SIGNAL(usr, COMSIG_COMBAT_MODE_CHECK, COMBAT_MODE_ACTIVE))
+		client.mouse_pointer_icon = combat_cursor_icon
+	else if(examine_cursor_icon && client.keys_held["Shift"]) //mouse shit is hardcoded, make this non hard-coded once we make mouse modifiers bindable
+		client.mouse_pointer_icon = examine_cursor_icon
+	else if (ismecha(loc))
 		var/obj/mecha/M = loc
 		if(M.mouse_pointer)
 			client.mouse_pointer_icon = M.mouse_pointer

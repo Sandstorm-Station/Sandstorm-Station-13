@@ -56,8 +56,8 @@ GLOBAL_LIST_EMPTY(mobs_with_editable_flavor_text) //et tu, hacky code
 			remove_verb(M, /mob/proc/manage_flavor_tests)
 
 /datum/element/flavor_text/proc/show_flavor(atom/target, mob/user, list/examine_list)
+	var/mob/living/L = target
 	if(!always_show && isliving(target))
-		var/mob/living/L = target
 		var/unknown = L.get_visible_name() == "Unknown"
 		if(!unknown && iscarbon(target))
 			var/mob/living/carbon/C = L
@@ -67,7 +67,7 @@ GLOBAL_LIST_EMPTY(mobs_with_editable_flavor_text) //et tu, hacky code
 				examine_list += "...?"
 			return
 	var/text = texts_by_atom[target]
-	if(!text)
+	if(!text && !(flavor_name == "OOC Notes" && L.client))
 		return
 	if(examine_no_preview)
 		examine_list += "<span class='notice'><a href='?src=[REF(src)];show_flavor=[REF(target)]'>\[[flavor_name]\]</a></span>"
@@ -89,8 +89,14 @@ GLOBAL_LIST_EMPTY(mobs_with_editable_flavor_text) //et tu, hacky code
 		var/atom/target = locate(href_list["show_flavor"])
 		var/mob/living/L = target
 		var/text = texts_by_atom[target]
-		if(text)
-			usr << browse("<HTML><HEAD><meta http-equiv='Content-Type' content='text/html; charset=UTF-8'><TITLE>[isliving(target) ? L.get_visible_name() : target.name]</TITLE></HEAD><BODY><TT>[replacetext(texts_by_atom[target], "\n", "<BR>")]</TT></BODY></HTML>", "window=[isliving(target) ? L.get_visible_name() : target.name];size=500x200")
+		if(text || (flavor_name == "OOC Notes") && L.client)
+			var/content
+			if(flavor_name == "OOC Notes")
+				content += "[L]'s OOC Notes: <br> <b>ERP:</b> [L.client.prefs.erppref] <b>| Non-Con:</b> [L.client.prefs.nonconpref] <b>| Vore:</b> [L.client.prefs.vorepref]\n"
+				if(L.client.prefs.extremepref == "Yes")
+					content += "<br><b>Extreme content:</b> [L.client.prefs.extremepref] <b>| <b>Extreme content harm:</b> [L.client.prefs.extremeharm]\n"
+			content += text
+			usr << browse("<HTML><HEAD><meta http-equiv='Content-Type' content='text/html; charset=UTF-8'><TITLE>[isliving(target) ? L.get_visible_name() : target.name]</TITLE></HEAD><BODY><TT>[replacetext(content, "\n", "<BR>")]</TT></BODY></HTML>", "window=[isliving(target) ? L.get_visible_name() : target.name];size=500x200")
 			onclose(usr, "[target.name]")
 		return TRUE
 

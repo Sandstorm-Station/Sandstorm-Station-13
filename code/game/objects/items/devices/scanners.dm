@@ -145,7 +145,7 @@ GENETICS SCANNER
 		mob_status = "<span class='alert'><b>Deceased</b></span>"
 		oxy_loss = max(rand(1, 40), oxy_loss, (300 - (tox_loss + fire_loss + brute_loss))) // Random oxygen loss
 
-	var/msg = "<span class='info'>*---------*\nAnalyzing results for [M]:\n\tOverall status: [mob_status]"
+	var/msg = "<div class='infobox'><span class='info'>Analyzing results for [M]:\n\tOverall status: [mob_status]</span>"
 
 	// Damage descriptions
 	if(brute_loss > 10)
@@ -168,9 +168,6 @@ GENETICS SCANNER
 		var/mob/living/carbon/human/H = M
 		if(advanced && H.has_dna())
 			msg += "\n\t<span class='info'>Genetic Stability: [H.dna.stability]%.</span>"
-
-	to_chat(user, msg)
-	msg = ""
 
 	// Body part damage report
 	var/list/dmgreport = list()
@@ -196,8 +193,9 @@ GENETICS SCANNER
 								<td><font color='red'>[(org.brute_dam > 0) ? "[org.brute_dam]" : "0"]</font></td>\
 								<td><font color='orange'>[(org.burn_dam > 0) ? "[org.burn_dam]" : "0"]</font></td></tr>"
 			dmgreport += "</table>"
-			to_chat(user, dmgreport.Join())
+			msg += "\n[dmgreport.Join()]"
 
+	msg += "\n"
 
 	//Organ damages report
 	var/heart_ded = FALSE
@@ -380,6 +378,8 @@ GENETICS SCANNER
 			mutant = TRUE
 		else if (S.mutantstomach != initial(S.mutantstomach))
 			mutant = TRUE
+		else if (S.flying_species != initial(S.flying_species))
+			mutant = TRUE
 
 		msg += "\t<span class='info'>Reported Species: [H.spec_trait_examine_font()][H.dna.custom_species ? H.dna.custom_species : S.name]</font></span>\n"
 		msg += "\t<span class='info'>Base Species: [H.spec_trait_examine_font()][S.name]</font></span>\n"
@@ -449,14 +449,14 @@ GENETICS SCANNER
 		if(cyberimp_detect)
 			msg += "<span class='notice'>Detected cybernetic modifications:</span>\n"
 			msg += "<span class='notice'>[cyberimp_detect]</span>\n"
-	msg += "<span class='notice'>*---------*</span>"
+	msg += "</div>"
 	to_chat(user, msg)
 	SEND_SIGNAL(M, COMSIG_NANITE_SCAN, user, FALSE)
 
 /proc/chemscan(mob/living/user, mob/living/M)
 	if(istype(M))
 		if(M.reagents)
-			var/msg = "<span class='info'>*---------*\n"
+			var/msg = "<div class='infobox'><span class='info'>"
 			if(M.reagents.reagent_list.len)
 				var/list/datum/reagent/reagents = list()
 				for(var/datum/reagent/R in M.reagents.reagent_list)
@@ -494,7 +494,7 @@ GENETICS SCANNER
 					if(95 to INFINITY)
 						msg += "<span class='danger'>Subject contains a extremely dangerous amount of toxic isomers.</span>\n"
 
-			msg += "*---------*</span>"
+			msg += "</span></div>"
 			to_chat(user, msg)
 
 /obj/item/healthanalyzer/verb/toggle_mode()
@@ -821,36 +821,36 @@ GENETICS SCANNER
 	slime_scan(T, user)
 
 /proc/slime_scan(mob/living/simple_animal/slime/T, mob/living/user)
-	to_chat(user, "========================")
-	to_chat(user, "<b>Slime scan results:</b>")
-	to_chat(user, "<span class='notice'>[T.colour] [T.is_adult ? "adult" : "baby"] slime</span>")
-	to_chat(user, "Nutrition: [T.nutrition]/[T.get_max_nutrition()]")
+	var/output = "<div class='infobox'><b>Slime scan results:</b>"
+	output += "\n<span class='notice'>[T.colour] [T.is_adult ? "adult" : "baby"] slime</span>"
+	output += "\nNutrition: [T.nutrition]/[T.get_max_nutrition()]"
 	if (T.nutrition < T.get_starve_nutrition())
-		to_chat(user, "<span class='warning'>Warning: slime is starving!</span>")
+		output += "\n<span class='warning'>Warning: slime is starving!</span>"
 	else if (T.nutrition < T.get_hunger_nutrition())
-		to_chat(user, "<span class='warning'>Warning: slime is hungry</span>")
-	to_chat(user, "Electric change strength: [T.powerlevel]")
-	to_chat(user, "Health: [round(T.health/T.maxHealth,0.01)*100]%")
+		output += "\n<span class='warning'>Warning: slime is hungry</span>"
+	output += "\nElectric change strength: [T.powerlevel]"
+	output += "\nHealth: [round(T.health/T.maxHealth,0.01)*100]%"
 	if (T.slime_mutation[4] == T.colour)
-		to_chat(user, "This slime does not evolve any further.")
+		output += "\nThis slime does not evolve any further."
 	else
 		if (T.slime_mutation[3] == T.slime_mutation[4])
 			if (T.slime_mutation[2] == T.slime_mutation[1])
-				to_chat(user, "Possible mutation: [T.slime_mutation[3]]")
-				to_chat(user, "Genetic destability: [T.mutation_chance/2] % chance of mutation on splitting")
+				output += "\nPossible mutation: [T.slime_mutation[3]]"
+				output += "\nGenetic destability: [T.mutation_chance/2] % chance of mutation on splitting"
 			else
-				to_chat(user, "Possible mutations: [T.slime_mutation[1]], [T.slime_mutation[2]], [T.slime_mutation[3]] (x2)")
-				to_chat(user, "Genetic destability: [T.mutation_chance] % chance of mutation on splitting")
+				output += "\nPossible mutations: [T.slime_mutation[1]], [T.slime_mutation[2]], [T.slime_mutation[3]] (x2)"
+				output += "\nGenetic destability: [T.mutation_chance] % chance of mutation on splitting"
 		else
-			to_chat(user, "Possible mutations: [T.slime_mutation[1]], [T.slime_mutation[2]], [T.slime_mutation[3]], [T.slime_mutation[4]]")
-			to_chat(user, "Genetic destability: [T.mutation_chance] % chance of mutation on splitting")
+			output += "\nPossible mutations: [T.slime_mutation[1]], [T.slime_mutation[2]], [T.slime_mutation[3]], [T.slime_mutation[4]]"
+			output += "\nGenetic destability: [T.mutation_chance] % chance of mutation on splitting"
 	if (T.cores > 1)
-		to_chat(user, "Multiple cores detected")
-	to_chat(user, "Growth progress: [T.amount_grown]/[SLIME_EVOLUTION_THRESHOLD]")
+		output += "\nMultiple cores detected"
+	output += "\nGrowth progress: [T.amount_grown]/[SLIME_EVOLUTION_THRESHOLD]"
 	if(T.effectmod)
-		to_chat(user, "<span class='notice'>Core mutation in progress: [T.effectmod]</span>")
-		to_chat(user, "<span class = 'notice'>Progress in core mutation: [T.applied] / [SLIME_EXTRACT_CROSSING_REQUIRED]</span>")
-	to_chat(user, "========================")
+		output += "\n<span class='notice'>Core mutation in progress: [T.effectmod]</span>"
+		output += "\n<span class = 'notice'>Progress in core mutation: [T.applied] / [SLIME_EXTRACT_CROSSING_REQUIRED]</span>"
+
+	to_chat(user, "[output]</div>")
 
 
 /obj/item/nanite_scanner

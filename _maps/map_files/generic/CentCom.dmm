@@ -10524,10 +10524,6 @@
 	},
 /turf/open/floor/plasteel,
 /area/centcom/control)
-"yl" = (
-/obj/machinery/gear_painter,
-/turf/open/indestructible/hotelwood,
-/area/centcom/holding)
 "yn" = (
 /obj/effect/spawner/structure/window/reinforced,
 /obj/structure/sign/warning/vacuum,
@@ -17649,9 +17645,7 @@
 /turf/open/indestructible/hotelwood,
 /area/centcom/holding)
 "QM" = (
-/obj/effect/mob_spawn/human/ghostcafe{
-	dir = 8
-	},
+/obj/effect/mob_spawn/human/ghostcafe,
 /turf/open/indestructible/hotelwood,
 /area/centcom/holding)
 "QN" = (
@@ -18050,6 +18044,10 @@
 "TD" = (
 /obj/structure/table/wood,
 /obj/machinery/computer/libraryconsole/bookmanagement,
+/turf/open/indestructible/hotelwood,
+/area/centcom/holding)
+"TE" = (
+/obj/effect/mob_spawn/robot/ghostcafe,
 /turf/open/indestructible/hotelwood,
 /area/centcom/holding)
 "TF" = (
@@ -43996,7 +43994,7 @@ NS
 Nd
 ZL
 NS
-yl
+NS
 Nd
 CU
 NS
@@ -48092,7 +48090,7 @@ NS
 GY
 NT
 TS
-QM
+NS
 ta
 NT
 vt
@@ -48348,9 +48346,9 @@ Nd
 Nd
 Nd
 Nd
-Nd
-Nd
-Nd
+QM
+NS
+TE
 Nd
 Nd
 Nd
@@ -48604,10 +48602,10 @@ aa
 aa
 aa
 aa
-aa
-aa
-aa
-aa
+Nd
+Nd
+Nd
+Nd
 Nd
 Zv
 VA

@@ -104,11 +104,21 @@
 	///ID of the slot containing a gas tank
 	var/internals_slot = null
 
+	//skyrat edit
+	///Slot for underwear like boxers and panties
+	var/underwear = null
+	///Slot for socks, yes, the thing that usually goes before your shoes
+	var/socks = null
+	///Slot for the undershirt (which is quite a foreign concept to me) or bras
+	var/shirt = null
+	///Slot for the opposite ear.
+	var/ears_extra = null
+	///Slot for the part of your arms that isn't quite hands yet.
+	var/wrists = null
+	//
+
 	/// Should the toggle helmet proc be called on the helmet during equip
 	var/toggle_helmet = TRUE
-
-	/// Any undershirt. While on humans it is a string, here we use paths to stay consistent with the rest of the equips.
-	var/datum/sprite_accessory/undershirt = null
 
 /**
  * Called at the start of the equip proc
@@ -171,15 +181,25 @@
 	if(neck)
 		H.equip_to_slot_or_del(new neck(H), SLOT_NECK, TRUE)
 	if(ears)
-		H.equip_to_slot_or_del(new ears(H), SLOT_EARS, TRUE)
+		H.equip_to_slot_or_del(new ears(H), SLOT_EARS_LEFT, TRUE) //sandstorm edit
 	if(glasses)
 		H.equip_to_slot_or_del(new glasses(H), SLOT_GLASSES, TRUE)
 	if(id)
 		H.equip_to_slot_or_del(new id(H), SLOT_WEAR_ID, TRUE)
 	if(suit_store)
 		H.equip_to_slot_or_del(new suit_store(H), SLOT_S_STORE, TRUE)
-	if(undershirt)
-		H.undershirt = initial(undershirt.name)
+	//skyrat edit
+	if(ears_extra)
+		H.equip_to_slot_or_del(new ears_extra(H), SLOT_EARS_RIGHT, TRUE)
+	if(underwear)
+		H.equip_to_slot_or_del(new underwear(H), SLOT_W_UNDERWEAR, TRUE)
+	if(socks)
+		H.equip_to_slot_or_del(new socks(H), SLOT_W_SOCKS, TRUE)
+	if(shirt)
+		H.equip_to_slot_or_del(new shirt(H), SLOT_W_SHIRT, TRUE)
+	if(wrists)
+		H.equip_to_slot_or_del(new wrists(H), SLOT_WRISTS, TRUE)
+	//
 
 	if(accessory)
 		var/obj/item/clothing/under/U = H.w_uniform
@@ -262,6 +282,17 @@
 		H.shoes.add_fingerprint(H, ignoregloves = TRUE)
 	if(H.gloves)
 		H.gloves.add_fingerprint(H, ignoregloves = TRUE)
+	//skyrat edit
+	if(H.wrists)
+		H.wrists.add_fingerprint(H, ignoregloves = TRUE)
+	if(H.w_socks)
+		H.w_socks.add_fingerprint(H, ignoregloves = TRUE)
+	if(H.w_underwear)
+		H.w_underwear.add_fingerprint(H, ignoregloves = TRUE)
+	if(H.w_shirt)
+		H.w_shirt.add_fingerprint(H, ignoregloves = TRUE)
+	if(H.ears_extra)
+		H.ears_extra.add_fingerprint(H, ignoregloves = TRUE)
 	if(H.ears)
 		H.ears.add_fingerprint(H, ignoregloves = TRUE)
 	if(H.glasses)
@@ -282,7 +313,7 @@
 
 /// Return a list of all the types that are required to disguise as this outfit type
 /datum/outfit/proc/get_chameleon_disguise_info()
-	var/list/types = list(uniform, suit, back, belt, gloves, shoes, head, mask, neck, ears, glasses, id, l_pocket, r_pocket, suit_store, r_hand, l_hand)
+	var/list/types = list(uniform, underwear, socks, shirt, ears_extra, suit, back, belt, gloves, wrists, shoes, head, mask, neck, ears, glasses, id, l_pocket, r_pocket, suit_store, r_hand, l_hand) //skyrat edit
 	types += chameleon_extras
 	listclearnulls(types)
 	return types
@@ -315,6 +346,11 @@
 	.["box"] = box
 	.["implants"] = implants
 	.["accessory"] = accessory
+	.["underwear"] = underwear
+	.["socks"] = socks
+	.["shirt"] = shirt
+	.["ears_extra"] = ears_extra
+	.["wrists"] = wrists
 
 /// Copy most vars from another outfit to this one
 /datum/outfit/proc/copy_from(datum/outfit/target)
@@ -342,6 +378,11 @@
 	box = target.box
 	implants = target.implants
 	accessory = target.accessory
+	underwear = target.underwear
+	socks = target.socks
+	shirt = target.shirt
+	ears_extra = target.ears_extra
+	wrists = target.wrists
 
 /// Prompt the passed in mob client to download this outfit as a json blob
 /datum/outfit/proc/save_to_file(mob/admin)
@@ -376,6 +417,11 @@
 	r_hand = text2path(outfit_data["r_hand"])
 	l_hand = text2path(outfit_data["l_hand"])
 	internals_slot = outfit_data["internals_slot"]
+	underwear = outfit_data["underwear"]
+	socks = outfit_data["socks"]
+	shirt = outfit_data["shirt"]
+	ears_extra = outfit_data["ears_extra"]
+	wrists = outfit_data["wrists"]
 	var/list/backpack = outfit_data["backpack_contents"]
 	backpack_contents = list()
 	for(var/item in backpack)

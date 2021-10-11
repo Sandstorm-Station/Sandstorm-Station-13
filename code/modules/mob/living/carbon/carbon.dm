@@ -84,7 +84,7 @@
 
 /mob/living/carbon/attackby(obj/item/I, mob/user, params)
 	if(lying && surgeries.len)
-		if(user != src && (user.a_intent == INTENT_HELP || user.a_intent == INTENT_DISARM))
+		if(user.a_intent == INTENT_HELP || user.a_intent == INTENT_DISARM)
 			for(var/datum/surgery/S in surgeries)
 				if(S.next_step(user,user.a_intent))
 					return STOP_ATTACK_PROC_CHAIN
@@ -156,6 +156,7 @@
 
 /mob/living/carbon/throw_item(atom/target)
 	throw_mode_off()
+	update_mouse_pointer()
 	if(!target || !isturf(loc))
 		return
 	if(istype(target, /atom/movable/screen))
@@ -881,6 +882,7 @@
 		update_mobility()
 	update_damage_hud()
 	update_health_hud()
+	update_hunger_and_thirst_hud()
 	med_hud_set_status()
 
 //called when we get cuffed/uncuffed
@@ -1194,7 +1196,8 @@
 		if(head.flags_inv & HIDEEYES)
 			LAZYOR(., SLOT_GLASSES)
 		if(head.flags_inv & HIDEEARS)
-			LAZYOR(., SLOT_EARS)
+			LAZYOR(., SLOT_EARS_LEFT)
+			LAZYOR(., SLOT_EARS_RIGHT)
 
 	if(wear_mask)
 		if(wear_mask.flags_inv & HIDEEYES)

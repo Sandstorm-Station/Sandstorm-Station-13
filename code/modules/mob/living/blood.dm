@@ -63,6 +63,21 @@
 					nutrition_ratio *= 1.25
 				adjust_nutrition(-nutrition_ratio * HUNGER_FACTOR)
 				blood_volume = min(BLOOD_VOLUME_NORMAL, blood_volume + 0.5 * nutrition_ratio)
+			var/thirst_ratio = 0
+			if(!HAS_TRAIT(src, TRAIT_NOTHIRST))
+				switch(thirst)
+					if(0 to THIRST_LEVEL_PARCHED)
+						thirst_ratio = 0.2
+					if(THIRST_LEVEL_PARCHED to THIRST_LEVEL_THIRSTY)
+						thirst_ratio = 0.4
+					if(THIRST_LEVEL_THIRSTY to THIRST_LEVEL_BIT_THIRSTY)
+						thirst_ratio = 0.6
+					if(THIRST_LEVEL_BIT_THIRSTY to THIRST_LEVEL_QUENCHED)
+						thirst_ratio = 0.8
+					else
+						thirst_ratio = 1
+				adjust_thirst(-thirst_ratio * THIRST_FACTOR)
+				blood_volume = min(BLOOD_VOLUME_NORMAL, blood_volume + 0.5 * thirst_ratio)
 
 		//Effects of bloodloss
 		var/word = pick("dizzy","woozy","faint")

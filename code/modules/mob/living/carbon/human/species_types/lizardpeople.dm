@@ -24,11 +24,13 @@
 	disliked_food = GRAIN | DAIRY
 	liked_food = GROSS | MEAT
 	inert_mutation = FIREBREATH
+	languagewhitelist = list("Draconic") //Skyrat change - species language whitelist
 	species_language_holder = /datum/language_holder/lizard
 
 	tail_type = "tail_lizard"
 	wagging_type = "waggingtail_lizard"
 	species_category = SPECIES_CATEGORY_LIZARD
+	wings_icon = "Dragon"
 
 	ass_image = 'icons/ass/asslizard.png'
 

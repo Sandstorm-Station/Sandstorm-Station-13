@@ -293,6 +293,7 @@
 /obj/effect/turf_decal/stripes/line{
 	dir = 1
 	},
+/obj/structure/fans/tiny,
 /turf/open/floor/plasteel,
 /area/construction/mining/aux_base)
 "abI" = (
@@ -1031,6 +1032,7 @@
 /obj/effect/turf_decal/stripes/line{
 	dir = 4
 	},
+/obj/structure/fans/tiny,
 /turf/open/floor/plasteel,
 /area/hallway/secondary/entry)
 "aeb" = (
@@ -2224,6 +2226,7 @@
 /obj/effect/turf_decal/stripes/line{
 	dir = 4
 	},
+/obj/structure/fans/tiny,
 /turf/open/floor/plasteel,
 /area/hallway/secondary/entry)
 "aiB" = (
@@ -13713,8 +13716,8 @@
 	},
 /turf/open/floor/plating{
 	initial_gas_mix = "o2=0.01;n2=0.01";
-	luminosity = 2;
-	initial_temperature = 2.7
+	initial_temperature = 2.7;
+	luminosity = 2
 	},
 /area/security/prison)
 "ban" = (
@@ -14376,8 +14379,8 @@
 	},
 /turf/open/floor/plating{
 	initial_gas_mix = "o2=0.01;n2=0.01";
-	luminosity = 2;
-	initial_temperature = 2.7
+	initial_temperature = 2.7;
+	luminosity = 2
 	},
 /area/security/prison)
 "bdo" = (
@@ -17987,6 +17990,7 @@
 /obj/effect/turf_decal/stripes/line{
 	dir = 4
 	},
+/obj/structure/fans/tiny,
 /turf/open/floor/plasteel,
 /area/security/execution/transfer)
 "buA" = (
@@ -19284,6 +19288,7 @@
 /obj/effect/turf_decal/stripes/line{
 	dir = 4
 	},
+/obj/structure/fans/tiny,
 /turf/open/floor/plasteel,
 /area/security/execution/transfer)
 "bAf" = (
@@ -19582,6 +19587,7 @@
 /obj/effect/turf_decal/stripes/line{
 	dir = 4
 	},
+/obj/structure/fans/tiny,
 /turf/open/floor/plasteel,
 /area/maintenance/solars/starboard/fore)
 "bAM" = (
@@ -19601,6 +19607,7 @@
 /obj/effect/turf_decal/stripes/line{
 	dir = 4
 	},
+/obj/structure/fans/tiny,
 /turf/open/floor/plasteel,
 /area/maintenance/solars/port/fore)
 "bAN" = (
@@ -19613,6 +19620,7 @@
 /obj/effect/turf_decal/stripes/line{
 	dir = 1
 	},
+/obj/structure/fans/tiny,
 /turf/open/floor/plating,
 /area/security/prison)
 "bBg" = (
@@ -36456,6 +36464,20 @@
 	},
 /turf/open/floor/plasteel/dark/corner,
 /area/maintenance/port)
+"cGd" = (
+/obj/effect/turf_decal/tile/neutral{
+	dir = 1
+	},
+/obj/effect/turf_decal/tile/neutral,
+/obj/effect/turf_decal/tile/neutral{
+	dir = 4
+	},
+/obj/effect/turf_decal/tile/neutral{
+	dir = 8
+	},
+/obj/machinery/cryopod/tele,
+/turf/open/floor/plasteel/dark,
+/area/commons/locker)
 "cGe" = (
 /obj/effect/decal/cleanable/dirt,
 /obj/effect/turf_decal/tile/neutral{
@@ -61458,6 +61480,9 @@
 	dir = 4
 	},
 /obj/effect/turf_decal/bot,
+/obj/machinery/posialert{
+	pixel_y = -31
+	},
 /turf/open/floor/plasteel,
 /area/science/robotics/lab)
 "dIO" = (
@@ -64067,6 +64092,7 @@
 /obj/effect/turf_decal/stripes/line{
 	dir = 4
 	},
+/obj/structure/fans/tiny,
 /turf/open/floor/plasteel,
 /area/maintenance/port/aft)
 "dOb" = (
@@ -68307,6 +68333,7 @@
 /obj/effect/turf_decal/stripes/line{
 	dir = 4
 	},
+/obj/structure/fans/tiny,
 /turf/open/floor/plasteel,
 /area/hallway/secondary/exit/departure_lounge)
 "dYP" = (
@@ -70767,6 +70794,7 @@
 /obj/effect/turf_decal/stripes/line{
 	dir = 4
 	},
+/obj/structure/fans/tiny,
 /turf/open/floor/plasteel,
 /area/security/checkpoint/escape)
 "eeW" = (
@@ -71186,6 +71214,7 @@
 /obj/effect/turf_decal/stripes/line{
 	dir = 1
 	},
+/obj/structure/fans/tiny,
 /turf/open/floor/plasteel,
 /area/hallway/secondary/exit/departure_lounge)
 "egE" = (
@@ -71224,9 +71253,6 @@
 /obj/machinery/atmospherics/pipe/simple/supply/hidden{
 	dir = 4
 	},
-/obj/structure/cable/white{
-	icon_state = "1-2"
-	},
 /obj/effect/turf_decal/tile/neutral{
 	dir = 1
 	},
@@ -71236,6 +71262,9 @@
 	},
 /obj/effect/turf_decal/tile/neutral{
 	dir = 8
+	},
+/obj/structure/cable/white{
+	icon_state = "2-4"
 	},
 /turf/open/floor/plasteel,
 /area/commons/locker)
@@ -73880,6 +73909,9 @@
 /obj/effect/turf_decal/tile/neutral{
 	dir = 8
 	},
+/obj/structure/cable/white{
+	icon_state = "4-8"
+	},
 /turf/open/floor/plasteel,
 /area/commons/locker)
 "feY" = (
@@ -74236,6 +74268,7 @@
 /obj/effect/turf_decal/tile/neutral{
 	dir = 8
 	},
+/obj/structure/fans/tiny,
 /turf/open/floor/plasteel/dark,
 /area/engineering/transit_tube)
 "fkR" = (
@@ -80119,6 +80152,7 @@
 /obj/effect/turf_decal/stripes/line{
 	dir = 1
 	},
+/obj/structure/fans/tiny,
 /turf/open/floor/plasteel,
 /area/engineering/gravity_generator)
 "hoe" = (
@@ -85344,6 +85378,7 @@
 /obj/effect/turf_decal/stripes/line{
 	dir = 4
 	},
+/obj/structure/fans/tiny,
 /turf/open/floor/plasteel,
 /area/cargo/miningoffice)
 "iRm" = (
@@ -85486,6 +85521,7 @@
 /obj/effect/turf_decal/stripes/line{
 	dir = 4
 	},
+/obj/structure/fans/tiny,
 /turf/open/floor/plasteel,
 /area/maintenance/solars/port/aft)
 "iUq" = (
@@ -85721,6 +85757,7 @@
 /obj/effect/turf_decal/stripes/line{
 	dir = 4
 	},
+/obj/structure/fans/tiny,
 /turf/open/floor/plasteel,
 /area/cargo/storage)
 "iZJ" = (
@@ -86535,6 +86572,7 @@
 /obj/effect/turf_decal/stripes/line{
 	dir = 4
 	},
+/obj/structure/fans/tiny,
 /turf/open/floor/plasteel,
 /area/engineering/main)
 "jqb" = (
@@ -93296,6 +93334,7 @@
 	id = "cargoload";
 	name = "supply dock loading door"
 	},
+/obj/structure/fans/tiny,
 /turf/open/floor/plating,
 /area/cargo/storage)
 "lHJ" = (
@@ -97161,6 +97200,7 @@
 /obj/effect/turf_decal/stripes/line{
 	dir = 4
 	},
+/obj/structure/fans/tiny,
 /turf/open/floor/plasteel,
 /area/engineering/main)
 "mWZ" = (
@@ -98324,10 +98364,7 @@
 /obj/effect/turf_decal/tile/neutral{
 	dir = 8
 	},
-/obj/machinery/cryopod{
-	dir = 8
-	},
-/turf/open/floor/plasteel/dark,
+/turf/closed/wall,
 /area/commons/locker)
 "ntB" = (
 /obj/effect/turf_decal/stripes/line,
@@ -98645,6 +98682,23 @@
 	},
 /turf/open/floor/plasteel/dark,
 /area/commons/locker)
+"nzS" = (
+/obj/effect/decal/cleanable/dirt,
+/obj/effect/mapping_helpers/airlock/cyclelink_helper{
+	dir = 8
+	},
+/obj/machinery/door/airlock/external{
+	name = "External Docking Port"
+	},
+/obj/effect/turf_decal/stripes/line{
+	dir = 8
+	},
+/obj/effect/turf_decal/stripes/line{
+	dir = 4
+	},
+/obj/structure/fans/tiny,
+/turf/open/floor/plasteel,
+/area/hallway/secondary/entry)
 "nzY" = (
 /obj/effect/decal/cleanable/dirt,
 /obj/machinery/atmospherics/pipe/simple/scrubbers/hidden,
@@ -98712,6 +98766,7 @@
 /obj/effect/turf_decal/tile/neutral{
 	dir = 8
 	},
+/mob/living/simple_animal/pet/dog/cheems,
 /turf/open/floor/plasteel,
 /area/cargo/qm)
 "nAr" = (
@@ -100334,9 +100389,6 @@
 /area/command/heads_quarters/hop)
 "odr" = (
 /obj/machinery/atmospherics/pipe/simple/scrubbers/hidden,
-/obj/structure/cable/white{
-	icon_state = "2-4"
-	},
 /obj/effect/turf_decal/tile/neutral{
 	dir = 1
 	},
@@ -105896,6 +105948,22 @@
 	},
 /turf/open/floor/plasteel,
 /area/service/bar/atrium)
+"pYQ" = (
+/obj/effect/turf_decal/tile/neutral{
+	dir = 1
+	},
+/obj/effect/turf_decal/tile/neutral{
+	dir = 4
+	},
+/obj/effect/turf_decal/tile/neutral{
+	dir = 8
+	},
+/obj/effect/turf_decal/tile/neutral,
+/obj/machinery/cryopod{
+	dir = 8
+	},
+/turf/open/floor/plasteel/dark,
+/area/commons/locker)
 "pYX" = (
 /obj/machinery/hydroponics/soil,
 /obj/item/seeds/tea,
@@ -111790,22 +111858,18 @@
 /turf/open/floor/plasteel,
 /area/engineering/atmospherics_engine)
 "sgB" = (
-/obj/structure/disposalpipe/segment,
-/obj/structure/cable/white{
-	icon_state = "4-8"
-	},
-/obj/effect/turf_decal/tile/neutral{
-	dir = 1
-	},
-/obj/effect/turf_decal/tile/neutral,
-/obj/effect/turf_decal/tile/neutral{
-	dir = 4
-	},
-/obj/effect/turf_decal/tile/neutral{
+/obj/effect/turf_decal/stripes/line{
 	dir = 8
 	},
+/obj/effect/turf_decal/stripes/line{
+	dir = 4
+	},
+/obj/machinery/door/airlock/external{
+	name = "External Docking Port"
+	},
+/obj/structure/fans/tiny,
 /turf/open/floor/plasteel,
-/area/commons/locker)
+/area/hallway/secondary/entry)
 "shq" = (
 /obj/machinery/atmospherics/components/unary/vent_scrubber/on{
 	dir = 4
@@ -115351,19 +115415,21 @@
 /turf/open/floor/plasteel/dark,
 /area/engineering/transit_tube)
 "tqO" = (
-/obj/structure/cable/white{
-	icon_state = "0-8"
+/obj/effect/mapping_helpers/airlock/cyclelink_helper{
+	dir = 8
 	},
-/obj/machinery/power/apc{
-	areastring = "/area/commons/locker";
-	dir = 4;
-	name = "Lockerroom APC";
-	pixel_x = 24
+/obj/machinery/door/airlock/external{
+	name = "External Docking Port"
 	},
-/obj/machinery/atmospherics/pipe/simple/supply/hidden,
-/obj/effect/turf_decal/tile/neutral,
+/obj/effect/turf_decal/stripes/line{
+	dir = 8
+	},
+/obj/effect/turf_decal/stripes/line{
+	dir = 4
+	},
+/obj/structure/fans/tiny,
 /turf/open/floor/plasteel,
-/area/commons/locker)
+/area/hallway/secondary/entry)
 "tqR" = (
 /obj/item/flashlight/seclite,
 /turf/open/floor/wood{
@@ -115594,6 +115660,22 @@
 	},
 /turf/open/floor/plasteel/dark,
 /area/security/detectives_office)
+"tuA" = (
+/obj/effect/mapping_helpers/airlock/cyclelink_helper{
+	dir = 4
+	},
+/obj/machinery/door/airlock/external{
+	name = "External Docking Port"
+	},
+/obj/effect/turf_decal/stripes/line{
+	dir = 8
+	},
+/obj/effect/turf_decal/stripes/line{
+	dir = 4
+	},
+/obj/structure/fans/tiny,
+/turf/open/floor/plasteel,
+/area/hallway/secondary/entry)
 "tuF" = (
 /obj/structure/filingcabinet/chestdrawer,
 /obj/structure/disposalpipe/segment{
@@ -116357,6 +116439,15 @@
 	dir = 4
 	},
 /obj/effect/turf_decal/tile/neutral,
+/obj/structure/cable/white{
+	icon_state = "4-8"
+	},
+/obj/machinery/power/apc{
+	areastring = "/area/commons/locker";
+	dir = 4;
+	name = "Lockerroom APC";
+	pixel_x = 24
+	},
 /turf/open/floor/plasteel,
 /area/commons/locker)
 "tHR" = (
@@ -116569,6 +116660,7 @@
 /obj/effect/turf_decal/stripes/line{
 	dir = 4
 	},
+/obj/structure/fans/tiny,
 /turf/open/floor/plasteel,
 /area/maintenance/solars/starboard/aft)
 "tNb" = (
@@ -117640,6 +117732,7 @@
 	id = "cargounload";
 	name = "supply dock unloading door"
 	},
+/obj/structure/fans/tiny,
 /turf/open/floor/plating,
 /area/cargo/storage)
 "ueh" = (
@@ -128668,6 +128761,7 @@
 /obj/effect/turf_decal/stripes/line{
 	dir = 4
 	},
+/obj/structure/fans/tiny,
 /turf/open/floor/plasteel,
 /area/maintenance/port)
 "yjh" = (
@@ -161283,7 +161377,7 @@ hZh
 hZh
 hZh
 naC
-mVW
+sgB
 kmz
 mVW
 acb
@@ -164390,7 +164484,7 @@ aad
 aad
 aad
 aaO
-aee
+tuA
 aaO
 aad
 aad
@@ -166439,14 +166533,14 @@ aad
 aad
 aad
 aaO
-aec
+tqO
 aaO
 aad
 aaa
 aaa
 aad
 aaO
-aej
+nzS
 aaO
 aad
 aad
@@ -178357,7 +178451,7 @@ fVM
 gsZ
 ppb
 tkf
-sgB
+ixa
 feX
 ixa
 oxz
@@ -178614,7 +178708,7 @@ kkf
 lbP
 aIR
 kbk
-tqO
+kbk
 tHJ
 kbk
 mTU
@@ -178871,11 +178965,11 @@ cuC
 nzI
 lDD
 wbn
-xvh
+pYQ
 ntq
-ntq
-ntq
-ntq
+cGd
+cGd
+cGd
 xvh
 pCo
 wlK

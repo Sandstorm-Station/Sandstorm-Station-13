@@ -16,7 +16,6 @@
 			with these cards."
 	item = /obj/item/card/id/syndicate
 	cost = 2
-	illegal_tech = FALSE
 
 /datum/uplink_item/stealthy_tools/ai_detector
 	name = "Artificial Intelligence Detector"

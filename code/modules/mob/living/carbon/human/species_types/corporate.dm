@@ -15,7 +15,7 @@
 	attack_sound = 'sound/weapons/resonator_blast.ogg'
 	blacklisted = TRUE
 	species_traits = list(NOBLOOD,EYECOLOR,NOGENITALS)
-	inherent_traits = list(TRAIT_RADIMMUNE,TRAIT_VIRUSIMMUNE,TRAIT_PIERCEIMMUNE,TRAIT_NODISMEMBER,TRAIT_NOLIMBDISABLE,TRAIT_NOHUNGER)
+	inherent_traits = list(TRAIT_RADIMMUNE,TRAIT_VIRUSIMMUNE,TRAIT_PIERCEIMMUNE,TRAIT_NODISMEMBER,TRAIT_NOLIMBDISABLE,TRAIT_NOHUNGER,TRAIT_NOTHIRST)
 	sexes = 0
 	gib_types = /obj/effect/gibspawner/robot
 	species_category = SPECIES_CATEGORY_ROBOT

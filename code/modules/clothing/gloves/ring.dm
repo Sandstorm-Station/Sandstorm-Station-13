@@ -1,4 +1,4 @@
-/obj/item/clothing/gloves/ring
+/* /obj/item/clothing/gloves/ring
 	name = "gold ring"
 	desc = "A tiny gold ring, sized to wrap around a finger."
 	gender = NEUTER
@@ -39,3 +39,5 @@
 	obj_flags = UNIQUE_RENAME
 	icon_state = "ringsilver"
 	item_state = "sring"
+
+*/

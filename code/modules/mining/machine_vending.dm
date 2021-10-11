@@ -76,6 +76,7 @@
 		new /datum/data/mining_equipment("Premium Accelerator",			/obj/item/gun/energy/kinetic_accelerator/premiumka,					8000),
 		new /datum/data/mining_equipment("Kinetic Glaive Kit",			/obj/item/storage/backpack/duffelbag/mining/glaivekit,				2250),
 		new /datum/data/mining_equipment("Survival Dagger",				/obj/item/kitchen/knife/combat/survival/knuckledagger,				550),
+		new /datum/data/mining_equipment("Kinetic Destroyer",			/obj/item/kinetic_crusher/premiumcrusher,							12000), //boop
 		)
 
 /datum/data/mining_equipment

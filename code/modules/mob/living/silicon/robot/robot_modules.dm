@@ -92,7 +92,7 @@
 
 	return new storage_type(src)
 
-/obj/item/robot_module/proc/add_module(obj/item/I, nonstandard, requires_rebuild)
+/* /obj/item/robot_module/proc/add_module(obj/item/I, nonstandard, requires_rebuild)
 	rad_flags |= RAD_NO_CONTAMINATE
 	if(istype(I, /obj/item/stack))
 		var/obj/item/stack/S = I
@@ -141,25 +141,52 @@
 	if(requires_rebuild)
 		rebuild_modules()
 	return I
+*/ //replaced by the one in modular_sand
 
-//Adds flavoursome dogborg items to dogborg variants without mechanical benefits
+//Adds flavoursome dogborg items to dogborg variants optionally without mechanical benefits
 /obj/item/robot_module/proc/dogborg_equip()
 	has_snowflake_deadsprite = TRUE
 	cyborg_pixel_offset = -16
 	hat_offset = INFINITY
 	basic_modules += new /obj/item/dogborg_nose(src)
 	basic_modules += new /obj/item/dogborg_tongue(src)
-	var/obj/item/dogborg/sleeper/K9/flavour/I = new(src)
-	if(istype(src, /obj/item/robot_module/engineering))
-		I.icon_state = "decompiler"
-	if(istype(src, /obj/item/robot_module/security))
-		I.icon_state = "sleeperb"
-	if(istype(src, /obj/item/robot_module/medical))
-		I.icon_state = "sleeper"
-	if(istype(src, /obj/item/robot_module/butler))
-		I.icon_state = "servicer"
-		if(cyborg_base_icon == "scrubpup")
-			I.icon_state = "compactor"
+
+	var/obj/item/dogborg/sleeper/I = /obj/item/dogborg/sleeper
+
+	var/mechanics = CONFIG_GET(flag/enable_dogborg_sleepers)
+	if (mechanics)
+		// Normal sleepers
+		if(istype(src, /obj/item/robot_module/security))
+			I = new /obj/item/dogborg/sleeper/K9(src)
+
+		if(istype(src, /obj/item/robot_module/medical))
+			I = new /obj/item/dogborg/sleeper(src)
+
+		// "Unimplemented sleepers"
+		if(istype(src, /obj/item/robot_module/engineering))
+			I = new /obj/item/dogborg/sleeper/compactor(src)
+			I.icon_state = "decompiler"
+		if(istype(src, /obj/item/robot_module/butler))
+			I = new /obj/item/dogborg/sleeper/compactor(src)
+			I.icon_state = "servicer"
+			if(cyborg_base_icon in list("scrubpup", "drakejanit"))
+				I.icon_state = "compactor"
+	else
+		I = new /obj/item/dogborg/sleeper/K9/flavour(src) //If mechanics is a no-no, revert to flavour
+		// Recreational sleepers
+		if(istype(src, /obj/item/robot_module/security))
+			I.icon_state = "sleeperb"
+		if(istype(src, /obj/item/robot_module/medical))
+			I.icon_state = "sleeper"
+
+		// Unimplemented sleepers
+		if(istype(src, /obj/item/robot_module/engineering))
+			I.icon_state = "decompiler"
+		if(istype(src, /obj/item/robot_module/butler))
+			I.icon_state = "servicer"
+			if(cyborg_base_icon in list("scrubpup", "drakejanit"))
+				I.icon_state = "compactor"
+
 	basic_modules += I
 	rebuild_modules()
 
@@ -365,7 +392,8 @@
 		"Sleek" = image(icon = 'modular_citadel/icons/mob/robots.dmi', icon_state = "sleekmed"),
 		"Marina" = image(icon = 'modular_citadel/icons/mob/robots.dmi', icon_state = "marinamed"),
 		"Eyebot" = image(icon = 'modular_citadel/icons/mob/robots.dmi', icon_state = "eyebotmed"),
-		"Heavy" = image(icon = 'modular_citadel/icons/mob/robots.dmi', icon_state = "heavymed")
+		"Heavy" = image(icon = 'modular_citadel/icons/mob/robots.dmi', icon_state = "heavymed"),
+		"Drake" = image(icon = 'modular_sand/icons/mob/cyborg/drakemech.dmi', icon_state = "drakemedbox")
 		)
 		var/list/L = list("Medihound" = "medihound", "Medihound Dark" = "medihounddark", "Vale" = "valemed")
 		for(var/a in L)
@@ -426,6 +454,13 @@
 			moduleselect_icon = "medihound"
 			moduleselect_alternate_icon = 'modular_citadel/icons/ui/screen_cyborg.dmi'
 			dogborg = TRUE
+		if("Drake") // Dergborg brought to you by Navier#1236 | Skyrat | Commissioned Artist: deviantart.com/mizartz
+			cyborg_base_icon = "drakemed"
+			cyborg_icon_override = 'modular_sand/icons/mob/cyborg/drakemech.dmi'
+			sleeper_overlay = "drakemedsleeper"
+			moduleselect_icon = "medihound"
+			moduleselect_alternate_icon = 'modular_citadel/icons/ui/screen_cyborg.dmi'
+			dogborg = TRUE
 		else
 			return FALSE
 	return ..()
@@ -482,7 +517,8 @@
 		"Can" = image(icon = 'modular_citadel/icons/mob/robots.dmi', icon_state = "caneng"),
 		"Marina" = image(icon = 'modular_citadel/icons/mob/robots.dmi', icon_state = "marinaeng"),
 		"Spider" = image(icon = 'modular_citadel/icons/mob/robots.dmi', icon_state = "spidereng"),
-		"Heavy" = image(icon = 'modular_citadel/icons/mob/robots.dmi', icon_state = "heavyeng")
+		"Heavy" = image(icon = 'modular_citadel/icons/mob/robots.dmi', icon_state = "heavyeng"),
+		"Drake" = image(icon = 'modular_sand/icons/mob/cyborg/drakemech.dmi', icon_state = "drakeengbox")
 		)
 		var/list/L = list("Pup Dozer" = "pupdozer", "Vale" = "valeeng")
 		for(var/a in L)
@@ -540,6 +576,11 @@
 			cyborg_icon_override = 'modular_citadel/icons/mob/widerobot.dmi'
 			sleeper_overlay = "alinasleeper"
 			dogborg = TRUE
+		if("Drake") // Dergborg brought to you by Navier#1236 | Skyrat | Commissioned Artist: deviantart.com/mizartz
+			cyborg_base_icon = "drakeeng"
+			cyborg_icon_override = 'modular_sand/icons/mob/cyborg/drakemech.dmi'
+			sleeper_overlay = "drakesecsleeper"
+			dogborg = TRUE
 		else
 			return FALSE
 	return ..()
@@ -578,7 +619,8 @@
 		"Can" = image(icon = 'modular_citadel/icons/mob/robots.dmi', icon_state = "cansec"),
 		"Marina" = image(icon = 'modular_citadel/icons/mob/robots.dmi', icon_state = "marinasec"),
 		"Spider" = image(icon = 'modular_citadel/icons/mob/robots.dmi', icon_state = "spidersec"),
-		"Heavy" = image(icon = 'modular_citadel/icons/mob/robots.dmi', icon_state = "heavysec")
+		"Heavy" = image(icon = 'modular_citadel/icons/mob/robots.dmi', icon_state = "heavysec"),
+		"Drake" = image(icon = 'modular_sand/icons/mob/cyborg/drakemech.dmi', icon_state = "drakesecbox")
 		)
 		var/list/L = list("K9" = "k9", "Vale" = "valesec", "K9 Dark" = "k9dark")
 		for(var/a in L)
@@ -634,6 +676,11 @@
 			sleeper_overlay = "valesecsleeper"
 			cyborg_icon_override = 'modular_citadel/icons/mob/widerobot.dmi'
 			dogborg = TRUE
+		if("Drake") // Dergborg brought to you by Navier#1236 | Skyrat | Commissioned Artist: deviantart.com/mizartz
+			cyborg_base_icon = "drakesec"
+			sleeper_overlay = "drakesecsleeper"
+			cyborg_icon_override = 'modular_sand/icons/mob/cyborg/drakemech.dmi'
+			dogborg = TRUE
 		else
 			return FALSE
 	return ..()
@@ -677,7 +724,8 @@
 	var/static/list/peace_icons = sortList(list(
 		"Default" = image(icon = 'icons/mob/robots.dmi', icon_state = "peace"),
 		"Borgi" = image(icon = 'modular_citadel/icons/mob/robots.dmi', icon_state = "borgi"),
-		"Spider" = image(icon = 'modular_citadel/icons/mob/robots.dmi', icon_state = "whitespider")
+		"Spider" = image(icon = 'modular_citadel/icons/mob/robots.dmi', icon_state = "whitespider"),
+		"Drake" = image(icon = 'modular_sand/icons/mob/cyborg/drakemech.dmi', icon_state = "drakepeacebox")
 		))
 	var/peace_borg_icon = show_radial_menu(R, R , peace_icons, custom_check = CALLBACK(src, .proc/check_menu, R), radius = 42, require_near = TRUE)
 	switch(peace_borg_icon)
@@ -693,6 +741,11 @@
 			hat_offset = INFINITY
 			cyborg_icon_override = 'modular_citadel/icons/mob/robots.dmi'
 			has_snowflake_deadsprite = TRUE
+		if("Drake")
+			cyborg_base_icon = "drakepeace"
+			sleeper_overlay = "drakepeacesleeper"
+			cyborg_icon_override = 'modular_sand/icons/mob/cyborg/drakemech.dmi'
+			dogborg = TRUE
 		else
 			return FALSE
 	return ..()
@@ -831,7 +884,8 @@
 		"(Janitor) Marina" = image(icon = 'modular_citadel/icons/mob/robots.dmi', icon_state = "marinajan"),
 		"(Janitor) Sleek" = image(icon = 'modular_citadel/icons/mob/robots.dmi', icon_state = "sleekjan"),
 		"(Janitor) Can" = image(icon = 'modular_citadel/icons/mob/robots.dmi', icon_state = "canjan"),
-		"(Janitor) Heavy" = image(icon = 'modular_citadel/icons/mob/robots.dmi', icon_state = "heavyjan")
+		"(Janitor) Heavy" = image(icon = 'modular_citadel/icons/mob/robots.dmi', icon_state = "heavyjan"),
+		"(Janitor) Drake" = image(icon = 'modular_sand/icons/mob/cyborg/drakemech.dmi', icon_state = "drakejanitbox")
 		)
 		var/list/L = list("(Service) DarkK9" = "k50", "(Service) Vale" = "valeserv", "(Service) ValeDark" = "valeservdark",
 						"(Janitor) Scrubpuppy" = "scrubpup")
@@ -903,6 +957,11 @@
 			cyborg_icon_override = 'modular_citadel/icons/mob/widerobot.dmi'
 			sleeper_overlay = "jsleeper"
 			dogborg = TRUE
+		if("(Janitor) Drake") // Dergborg brought to you by Navier#1236 | Skyrat | Commissioned Artist: deviantart.com/mizartz
+			cyborg_base_icon = "drakejanit"
+			cyborg_icon_override = 'modular_sand/icons/mob/cyborg/drakemech.dmi'
+			sleeper_overlay = "drakesecsleeper"
+			dogborg = TRUE
 		else
 			return FALSE
 	return ..()
@@ -949,7 +1008,8 @@
 		"Sleek" = image(icon = 'modular_citadel/icons/mob/robots.dmi', icon_state = "sleekmin"),
 		"Marina" = image(icon = 'modular_citadel/icons/mob/robots.dmi', icon_state = "marinamin"),
 		"Can" = image(icon = 'modular_citadel/icons/mob/robots.dmi', icon_state = "canmin"),
-		"Heavy" = image(icon = 'modular_citadel/icons/mob/robots.dmi', icon_state = "heavymin")
+		"Heavy" = image(icon = 'modular_citadel/icons/mob/robots.dmi', icon_state = "heavymin"),
+		"Drake" = image(icon = 'modular_sand/icons/mob/cyborg/drakemech.dmi', icon_state = "drakeminebox")
 		)
 		var/list/L = list("Blade" = "blade", "Vale" = "valemine")
 		for(var/a in L)
@@ -992,6 +1052,11 @@
 			cyborg_base_icon = "valemine"
 			cyborg_icon_override = 'modular_citadel/icons/mob/widerobot.dmi'
 			sleeper_overlay = "valeminesleeper"
+			dogborg = TRUE
+		if("Drake") // Dergborg brought to you by Navier#1236 | Skyrat | Commissioned Artist: deviantart.com/mizartz
+			cyborg_base_icon = "drakemine"
+			cyborg_icon_override = 'modular_sand/icons/mob/cyborg/drakemech.dmi'
+			sleeper_overlay = "drakeminesleeper"
 			dogborg = TRUE
 		else
 			return FALSE
@@ -1086,8 +1151,7 @@
 		/obj/item/destTagger/borg,
 		/obj/item/stack/cable_coil/cyborg,
 		/obj/item/pinpointer/syndicate_cyborg,
-		/obj/item/borg_chameleon,
-		)
+		/obj/item/borg_chameleon)
 
 	ratvar_modules = list(
 	/obj/item/clockwork/slab/cyborg/engineer,

@@ -965,6 +965,21 @@
 				if(NUTRITION_LEVEL_FULL to INFINITY)
 					speaktrigger += "I'm fat... "
 
+			//thirst
+			switch(H.thirst)
+				if(0 to THIRST_LEVEL_PARCHED)
+					speaktrigger += "I'm dry and I need water! "
+				if(THIRST_LEVEL_PARCHED to THIRST_LEVEL_THIRSTY)
+					speaktrigger += "I'm so thirsty... "
+				if(THIRST_LEVEL_THIRSTY to THIRST_LEVEL_BIT_THIRSTY)
+					speaktrigger += "I'm thirsty, "
+				if(THIRST_LEVEL_BIT_THIRSTY to THIRST_LEVEL_QUENCHED)
+					speaktrigger += "I'm quenched, "
+				if(THIRST_LEVEL_QUENCHED to THIRST_LEVEL_FULL)
+					speaktrigger += "I've been drinking water properly, "
+				if(THIRST_LEVEL_FULL to INFINITY)
+					speaktrigger += "I've got a belly full of water! "
+
 			//health
 			switch(H.health)
 				if(100 to INFINITY)

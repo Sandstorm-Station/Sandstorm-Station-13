@@ -359,4 +359,3 @@
 
 	assembly.forceMove(loc)
 	return assembly
-

@@ -189,6 +189,17 @@
 		if("r_pocket")
 			choose_any_item(slot)
 
+		if("ears_extra")
+			options = typesof(/obj/item/radio/headset)
+		if("wrists")
+			options = typesof(/obj/item/clothing/wrists)
+		if("shirt")
+			options = typesof(/obj/item/clothing/underwear/shirt)
+		if("underwear")
+			options = typesof(/obj/item/clothing/underwear/briefs)
+		if("socks")
+			options = typesof(/obj/item/clothing/underwear/socks)
+
 	if(length(options))
 		set_item(slot, tgui_input_list(owner, "Choose an item", OUTFIT_EDITOR_NAME, options))
 

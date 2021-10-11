@@ -2616,6 +2616,7 @@
 	icon_state = "1-2"
 	},
 /obj/structure/disposalpipe/segment,
+/obj/structure/fans/tiny,
 /turf/open/floor/plasteel/dark,
 /area/maintenance/starboard/fore)
 "aeM" = (
@@ -9673,6 +9674,7 @@
 	dir = 4
 	},
 /obj/effect/decal/cleanable/dirt,
+/obj/structure/fans/tiny,
 /turf/open/floor/plating,
 /area/maintenance/solars/port/fore)
 "aqq" = (
@@ -12481,6 +12483,7 @@
 /obj/effect/mapping_helpers/airlock/cyclelink_helper{
 	dir = 8
 	},
+/obj/structure/fans/tiny,
 /turf/open/floor/plating,
 /area/maintenance/solars/starboard/fore)
 "auO" = (
@@ -40530,6 +40533,7 @@
 /obj/machinery/atmospherics/pipe/simple/general/hidden{
 	dir = 8
 	},
+/obj/structure/fans/tiny,
 /turf/open/floor/plasteel/dark,
 /area/cargo/miningoffice)
 "bnm" = (
@@ -49727,6 +49731,7 @@
 	name = "Toxins Launcher Bay Door"
 	},
 /obj/effect/turf_decal/delivery,
+/obj/structure/fans/tiny,
 /turf/open/floor/plasteel/dark,
 /area/maintenance/starboard)
 "bBY" = (
@@ -53907,6 +53912,7 @@
 	dir = 8
 	},
 /obj/effect/decal/cleanable/dirt,
+/obj/structure/fans/tiny,
 /turf/open/floor/plasteel/dark,
 /area/cargo/storage)
 "bIR" = (
@@ -57356,6 +57362,7 @@
 /obj/effect/mapping_helpers/airlock/cyclelink_helper{
 	dir = 8
 	},
+/obj/structure/fans/tiny,
 /turf/open/floor/plasteel/dark,
 /area/cargo/storage)
 "bOh" = (
@@ -60345,6 +60352,7 @@
 /obj/effect/mapping_helpers/airlock/cyclelink_helper{
 	dir = 8
 	},
+/obj/structure/fans/tiny,
 /turf/open/floor/plasteel/dark,
 /area/hallway/secondary/exit/departure_lounge)
 "bSN" = (
@@ -63079,6 +63087,7 @@
 /obj/effect/mapping_helpers/airlock/cyclelink_helper{
 	dir = 8
 	},
+/obj/structure/fans/tiny,
 /turf/open/floor/plasteel/dark,
 /area/hallway/secondary/exit/departure_lounge)
 "bXf" = (
@@ -64776,6 +64785,7 @@
 /obj/structure/cable{
 	icon_state = "1-2"
 	},
+/obj/structure/fans/tiny,
 /turf/open/floor/plasteel/dark,
 /area/maintenance/fore)
 "bZH" = (
@@ -64906,6 +64916,7 @@
 /obj/structure/cable{
 	icon_state = "1-2"
 	},
+/obj/structure/fans/tiny,
 /turf/open/floor/plasteel/dark,
 /area/security/prison)
 "bZQ" = (
@@ -68579,6 +68590,7 @@
 /obj/structure/cable{
 	icon_state = "1-2"
 	},
+/obj/structure/fans/tiny,
 /turf/open/floor/plasteel/dark,
 /area/ai_monitored/turret_protected/aisat/atmos)
 "cgl" = (
@@ -69698,6 +69710,7 @@
 	dir = 4
 	},
 /obj/effect/decal/cleanable/dirt,
+/obj/structure/fans/tiny,
 /turf/open/floor/plating,
 /area/maintenance/solars/port/aft)
 "chW" = (
@@ -69801,6 +69814,7 @@
 /obj/structure/cable{
 	icon_state = "1-2"
 	},
+/obj/structure/fans/tiny,
 /turf/open/floor/plasteel/dark,
 /area/maintenance/port)
 "cig" = (
@@ -70610,6 +70624,7 @@
 /obj/effect/mapping_helpers/airlock/cyclelink_helper{
 	dir = 4
 	},
+/obj/structure/fans/tiny,
 /turf/open/floor/plasteel/dark,
 /area/engineering/atmos)
 "cjn" = (
@@ -74725,6 +74740,7 @@
 /obj/effect/mapping_helpers/airlock/cyclelink_helper{
 	dir = 4
 	},
+/obj/structure/fans/tiny,
 /turf/open/floor/plasteel/dark,
 /area/maintenance/port/aft)
 "cqO" = (
@@ -77664,6 +77680,7 @@
 /obj/effect/mapping_helpers/airlock/cyclelink_helper{
 	dir = 8
 	},
+/obj/structure/fans/tiny,
 /turf/open/floor/plating,
 /area/maintenance/solars/starboard/aft)
 "cwc" = (
@@ -78386,6 +78403,7 @@
 /obj/structure/cable{
 	icon_state = "1-2"
 	},
+/obj/structure/fans/tiny,
 /turf/open/floor/plasteel/dark,
 /area/maintenance/disposal)
 "cxq" = (
@@ -78407,6 +78425,7 @@
 /obj/effect/mapping_helpers/airlock/cyclelink_helper{
 	dir = 1
 	},
+/obj/structure/fans/tiny,
 /turf/open/floor/plasteel/dark,
 /area/security/processing)
 "cxt" = (
@@ -78447,6 +78466,7 @@
 /obj/effect/mapping_helpers/airlock/cyclelink_helper{
 	dir = 1
 	},
+/obj/structure/fans/tiny,
 /turf/open/floor/plasteel/dark,
 /area/security/processing)
 "cxB" = (
@@ -84446,6 +84466,7 @@
 /obj/effect/mapping_helpers/airlock/cyclelink_helper{
 	dir = 1
 	},
+/obj/structure/fans/tiny,
 /turf/open/floor/plasteel/dark,
 /area/hallway/secondary/entry)
 "cTF" = (
@@ -84481,6 +84502,10 @@
 	},
 /turf/open/floor/plasteel/dark,
 /area/security/prison)
+"cXX" = (
+/obj/machinery/cryopod/tele,
+/turf/open/floor/plasteel/showroomfloor,
+/area/commons/locker)
 "cZm" = (
 /turf/closed/wall/rust,
 /area/security/prison)
@@ -84799,6 +84824,19 @@
 	},
 /turf/open/floor/engine,
 /area/science/xenobiology)
+"isf" = (
+/obj/machinery/door/poddoor{
+	id = "QMLoaddoor";
+	name = "Supply Dock Loading Door"
+	},
+/obj/machinery/conveyor{
+	dir = 8;
+	id = "QMLoad";
+	name = "off ramp"
+	},
+/obj/structure/fans/tiny,
+/turf/open/floor/plating,
+/area/cargo/storage)
 "iBL" = (
 /obj/machinery/camera{
 	c_tag = "Laser Room Starboard";
@@ -85088,6 +85126,15 @@
 	},
 /turf/open/floor/wood,
 /area/commons/vacant_room/office)
+"kBx" = (
+/obj/machinery/door/poddoor{
+	id = "chapelgun";
+	name = "Chapel Launcher Door"
+	},
+/obj/effect/turf_decal/delivery,
+/obj/structure/fans/tiny,
+/turf/open/floor/plasteel/dark,
+/area/service/chapel/office)
 "kIJ" = (
 /turf/open/floor/wood{
 	icon_state = "wood-broken7"
@@ -85143,6 +85190,7 @@
 /obj/effect/mapping_helpers/airlock/cyclelink_helper{
 	dir = 8
 	},
+/obj/structure/fans/tiny,
 /turf/open/floor/plasteel/dark,
 /area/maintenance/starboard)
 "lKu" = (
@@ -85438,6 +85486,19 @@
 /obj/structure/lattice/catwalk,
 /turf/open/floor/plating/airless,
 /area/hallway/secondary/entry)
+"rRG" = (
+/obj/machinery/door/poddoor{
+	id = "QMLoaddoor2";
+	name = "Supply Dock Loading Door"
+	},
+/obj/machinery/conveyor{
+	dir = 4;
+	id = "QMLoad2";
+	name = "on ramp"
+	},
+/obj/structure/fans/tiny,
+/turf/open/floor/plating,
+/area/cargo/storage)
 "swG" = (
 /obj/item/reagent_containers/food/drinks/drinkingglass{
 	pixel_x = 4;
@@ -107636,7 +107697,7 @@ aaa
 aaa
 aaa
 acK
-cyA
+kBx
 cuQ
 cxY
 cyA
@@ -108710,7 +108771,7 @@ cec
 bIV
 cbr
 cxv
-cxv
+cXX
 bIV
 afB
 cou
@@ -126952,11 +127013,11 @@ acK
 acK
 bUG
 blE
-bkN
+isf
 bIQ
 bll
 bOg
-blH
+rRG
 blE
 bUG
 acK

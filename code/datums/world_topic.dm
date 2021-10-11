@@ -252,22 +252,22 @@
 		var/name = R.fields["name"]
 		var/rank = R.fields["rank"]
 		var/real_rank = rank // make_list_rank(R.fields["real_rank"])
-		if(real_rank in GLOB.security_positions)
+		if(GetJobName(real_rank) in GLOB.security_positions)
 			security[name] = rank
-		else if(real_rank in GLOB.engineering_positions)
+		else if(GetJobName(real_rank) in GLOB.engineering_positions)
 			engineering[name] = rank
-		else if(real_rank in GLOB.medical_positions)
+		else if(GetJobName(real_rank) in GLOB.medical_positions)
 			medical[name] = rank
-		else if(real_rank in GLOB.science_positions)
+		else if(GetJobName(real_rank) in GLOB.science_positions)
 			science[name] = rank
-		else if(real_rank in GLOB.supply_positions)
+		else if(GetJobName(real_rank) in GLOB.supply_positions)
 			cargo[name] = rank
-		else if(real_rank in GLOB.civilian_positions)
+		else if(GetJobName(real_rank) in GLOB.civilian_positions)
 			civilian[name] = rank
 		else
 			misc[name] = rank
 		// mixed departments, /datum/department when
-		if(real_rank in GLOB.command_positions)
+		if(GetJobName(real_rank) in GLOB.command_positions)
 			command[name] = rank
 
 	. = list()

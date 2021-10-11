@@ -3222,6 +3222,7 @@
 /obj/machinery/light/small{
 	dir = 4
 	},
+/obj/effect/mapping_helpers/no_lava,
 /turf/open/floor/plating{
 	baseturfs = /turf/open/lava/smooth/lava_land_surface;
 	initial_gas_mix = "o2=14;n2=23;TEMP=300"
@@ -4527,6 +4528,7 @@
 	dir = 4
 	},
 /obj/effect/decal/cleanable/dirt,
+/obj/effect/mapping_helpers/no_lava,
 /turf/open/floor/plating{
 	baseturfs = /turf/open/lava/smooth/lava_land_surface;
 	initial_gas_mix = "o2=14;n2=23;TEMP=300"
@@ -6352,6 +6354,11 @@
 /obj/structure/table/reinforced,
 /obj/item/paper_bin,
 /obj/item/pen,
+/obj/item/paper{
+	desc = "This looks very important, i should read it before tampering with the computer.";
+	info = "DO NOT FUCKING MODIFY THE FUCKING KEY OR MESS WITH MESSAGES YOU IDIOTS, THE POINT OF US GOING SO FAR TO GET THE KEY IS SO YOU CAN FUCKING UNDERSTAND WHAT'S HAPPENING THERE!";
+	name = "IMPORTANT NOTE - PDA SYSTEM"
+	},
 /turf/open/floor/plasteel/dark,
 /area/ruin/lavaland/unpowered/syndicate_lava_base/telecomms)
 "ox" = (

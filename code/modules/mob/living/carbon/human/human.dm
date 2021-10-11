@@ -11,6 +11,7 @@
 	add_verb(src, /mob/living/carbon/human/verb/underwear_toggle)
 	add_verb(src, /mob/living/verb/subtle)
 	add_verb(src, /mob/living/verb/subtler)
+	add_verb(src, /mob/living/proc/surrender) // Sandstorm change
 	//initialize limbs first
 	create_bodyparts()
 
@@ -46,7 +47,7 @@
 	AddComponent(/datum/component/combat_mode)
 	AddElement(/datum/element/flavor_text/carbon, _name = "Flavor Text", _save_key = "flavor_text")
 	AddElement(/datum/element/flavor_text/carbon/temporary, "", "Set Pose (Temporary Flavor Text)", "This should be used only for things pertaining to the current round!", _save_key = null)
-	AddElement(/datum/element/flavor_text, _name = "OOC Notes", _addendum = "Put information on ERP/vore/lewd-related preferences here. THIS SHOULD NOT CONTAIN REGULAR FLAVORTEXT!!", _always_show = TRUE, _save_key = "ooc_notes", _examine_no_preview = TRUE)
+	AddElement(/datum/element/flavor_text, _name = "OOC Notes", _addendum = "Put information on ERP/vore/lewd-related preferences here. THIS SHOULD NOT CONTAIN REGULAR FLAVORTEXT!!", _save_key = "ooc_notes", _examine_no_preview = TRUE)
 
 /mob/living/carbon/human/Destroy()
 	QDEL_NULL(physiology)
@@ -96,6 +97,7 @@
 			. += "Unique Identity: [dna.unique_enzymes]"
 			. += "Overall Status: [stat > 1 ? "dead" : "[health]% healthy"]"
 			. += "Nutrition Status: [nutrition]"
+			. += "Hydration Status: [thirst]"
 			. += "Oxygen Loss: [getOxyLoss()]"
 			. += "Toxin Levels: [getToxLoss()]"
 			. += "Burn Severity: [getFireLoss()]"
@@ -145,10 +147,17 @@
 	else
 		dat += "<tr><td><B>Eyes:</B></td><td><A href='?src=[REF(src)];item=[SLOT_GLASSES]'>[(glasses && !(glasses.item_flags & ABSTRACT))	? glasses : "<font color=grey>Empty</font>"]</A></td></tr>"
 
-	if(SLOT_EARS in obscured)
-		dat += "<tr><td><font color=grey><B>Ears:</B></font></td><td><font color=grey>Obscured</font></td></tr>"
+	// Sandstorm edit
+	if(SLOT_EARS_LEFT in obscured)
+		dat += "<tr><td><font color=grey><B>Left ear:</B></font></td><td><font color=grey>Obscured</font></td></tr>"
 	else
-		dat += "<tr><td><B>Ears:</B></td><td><A href='?src=[REF(src)];item=[SLOT_EARS]'>[(ears && !(ears.item_flags & ABSTRACT))		? ears		: "<font color=grey>Empty</font>"]</A></td></tr>"
+		dat += "<tr><td><B>Left ear:</B></td><td><A href='?src=[REF(src)];item=[SLOT_EARS_LEFT]'>[(ears && !(ears.item_flags & ABSTRACT))		? ears		: "<font color=grey>Empty</font>"]</A></td></tr>"
+
+	if(SLOT_EARS_RIGHT in obscured)
+		dat += "<tr><td><font color=grey><B>Right ear:</B></font></td><td><font color=grey>Obscured</font></td></tr>"
+	else
+		dat += "<tr><td><B>Right ear:</B></td><td><A href='?src=[REF(src)];item=[SLOT_EARS_RIGHT]'>[(ears_extra && !(ears_extra.item_flags & ABSTRACT))		? ears_extra		: "<font color=grey>Empty</font>"]</A></td></tr>"
+	//
 
 	dat += "<tr><td>&nbsp;</td></tr>"
 
@@ -172,12 +181,27 @@
 		if(shoes && shoes.can_be_tied && shoes.tied != SHOES_KNOTTED)
 			dat += "&nbsp;<A href='?src=[REF(src)];shoes=[SLOT_SHOES]'>[shoes.tied ? "Untie shoes" : "Knot shoes"]</A>"
 
+	// Sandstorm edit
+	var/socks_hidden = socks_hidden()
+	if((SLOT_W_SOCKS in obscured) || socks_hidden)
+		dat += "<tr><td><font color=grey>&nbsp;&#8627;<B>Socks:</B></font></td><td><font color=grey>Obscured</font></td></tr>"
+	else
+		dat += "<tr><td>&nbsp;&#8627;<B>Socks:</B></td><td><A href='?src=[REF(src)];item=[SLOT_W_SOCKS]'>[(w_socks && !(w_socks.item_flags & ABSTRACT)) ? w_socks : "<font color=grey>Empty</font>"]</A></td></tr>"
+	//
+
 		dat += "</td></tr>"
 
 	if(SLOT_GLOVES in obscured)
 		dat += "<tr><td><font color=grey><B>Gloves:</B></font></td><td><font color=grey>Obscured</font></td></tr>"
 	else
 		dat += "<tr><td><B>Gloves:</B></td><td><A href='?src=[REF(src)];item=[SLOT_GLOVES]'>[(gloves && !(gloves.item_flags & ABSTRACT))		? gloves	: "<font color=grey>Empty</font>"]</A></td></tr>"
+
+	// Sandstorm edit
+	if(SLOT_WRISTS in obscured)
+		dat += "<tr><td><font color=grey><B>Wrists:</B></font></td><td><font color=grey>Obscured</font></td></tr>"
+	else
+		dat += "<tr><td><B>Wrists:</B></td><td><A href='?src=[REF(src)];item=[SLOT_WRISTS]'>[(wrists && !(wrists.item_flags & ABSTRACT)) ? wrists : "<font color=grey>Empty</font>"]</A></td></tr>"
+	//
 
 	if(SLOT_W_UNIFORM in obscured)
 		dat += "<tr><td><font color=grey><B>Uniform:</B></font></td><td><font color=grey>Obscured</font></td></tr>"
@@ -196,6 +220,19 @@
 		dat += "<tr><td>&nbsp;&#8627;<B>Pockets:</B></td><td><A href='?src=[REF(src)];pockets=left'>[(l_store && !(l_store.item_flags & ABSTRACT)) ? "Left (Full)" : "<font color=grey>Left (Empty)</font>"]</A>"
 		dat += "&nbsp;<A href='?src=[REF(src)];pockets=right'>[(r_store && !(r_store.item_flags & ABSTRACT)) ? "Right (Full)" : "<font color=grey>Right (Empty)</font>"]</A></td></tr>"
 		dat += "<tr><td>&nbsp;&#8627;<B>ID:</B></td><td><A href='?src=[REF(src)];item=[SLOT_WEAR_ID]'>[(wear_id && !(wear_id.item_flags & ABSTRACT)) ? wear_id : "<font color=grey>Empty</font>"]</A></td></tr>"
+
+	// Sandstorm edit
+	var/shirt_hidden = undershirt_hidden()
+	var/undies_hidden = underwear_hidden()
+	if((SLOT_W_UNDERWEAR in obscured) || undies_hidden)
+		dat += "<tr><td><font color=grey>&nbsp;&#8627;<B>Underwear:</B></font></td><td><font color=grey>Obscured</font></td></tr>"
+	else
+		dat += "<tr><td>&nbsp;&#8627;<B>Underwear:</B></td><td><A href='?src=[REF(src)];item=[SLOT_W_UNDERWEAR]'>[(w_underwear && !(w_underwear.item_flags & ABSTRACT)) ? w_underwear : "<font color=grey>Empty</font>"]</A></td></tr>"
+	if((SLOT_W_SHIRT in obscured) || shirt_hidden)
+		dat += "<tr><td><font color=grey>&nbsp;&#8627;<B>Shirt:</B></font></td><td><font color=grey>Obscured</font></td></tr>"
+	else
+		dat += "<tr><td>&nbsp;&#8627;<B>Shirt:</B></td><td><A href='?src=[REF(src)];item=[SLOT_W_SHIRT]'>[(w_shirt && !(w_shirt.item_flags & ABSTRACT)) ? w_shirt : "<font color=grey>Empty</font>"]</A></td></tr>"
+	//
 
 	if(handcuffed)
 		dat += "<tr><td><B>Handcuffed:</B> <A href='?src=[REF(src)];item=[SLOT_HANDCUFFED]'>Remove</A></td></tr>"
@@ -518,6 +555,13 @@
 											return
 							to_chat(usr, "<span class='warning'>Unable to locate a data core entry for this person.</span>")
 
+	if(href_list["lookitem"]) //It's for the show item at modular_sand/code/modules/mob/living/carbon/show.dm
+		var/obj/item/I = locate(href_list["lookitem"])
+		if(I in view(4))
+			src.examinate(I)
+		else
+			to_chat(usr, "<span class='warning'>You need to get closer to examine that!</span>")
+
 /mob/living/carbon/human/proc/canUseHUD()
 	return CHECK_MOBILITY(src, MOBILITY_UI)
 
@@ -549,10 +593,22 @@
 	if(wear_suit)
 		if(wear_suit.flags_inv & HIDEGLOVES)
 			LAZYOR(., SLOT_GLOVES)
+			LAZYOR(., SLOT_WRISTS)
 		if(wear_suit.flags_inv & HIDEJUMPSUIT)
 			LAZYOR(., SLOT_W_UNIFORM)
+			LAZYOR(., SLOT_W_SHIRT)
+			LAZYOR(., SLOT_W_UNDERWEAR)
 		if(wear_suit.flags_inv & HIDESHOES)
 			LAZYOR(., SLOT_SHOES)
+			LAZYOR(., SLOT_W_SOCKS)
+	if(w_uniform)
+		if(underwear_hidden())
+			LAZYOR(., SLOT_W_UNDERWEAR)
+		if(undershirt_hidden())
+			LAZYOR(., SLOT_W_SHIRT)
+	if(shoes)
+		if(socks_hidden())
+			LAZYOR(., SLOT_W_SOCKS)
 
 /mob/living/carbon/human/assess_threat(judgement_criteria, lasercolor = "", datum/callback/weaponcheck=null)
 	if(judgement_criteria & JUDGE_EMAGGED)
@@ -1123,9 +1179,6 @@
 
 /mob/living/carbon/human/species/android
 	race = /datum/species/android
-
-/mob/living/carbon/human/species/angel
-	race = /datum/species/angel
 
 /mob/living/carbon/human/species/corporate
 	race = /datum/species/corporate

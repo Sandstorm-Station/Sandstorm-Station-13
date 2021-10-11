@@ -14,7 +14,7 @@
 	w_class = WEIGHT_CLASS_SMALL
 	var/mode = WIRE
 
-/obj/item/integrated_electronics/wirer/update_icon_state()
+/obj/item/integrated_electronics/wirer/update_icon()
 	icon_state = "wirer-[mode]"
 
 /obj/item/integrated_electronics/wirer/wire(var/datum/integrated_io/io, mob/user)

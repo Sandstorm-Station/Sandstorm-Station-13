@@ -73,7 +73,6 @@
 	w_class = WEIGHT_CLASS_BULKY
 	resistance_flags = INDESTRUCTIBLE | LAVA_PROOF | FIRE_PROOF | ACID_PROOF
 
-
 // The message server itself.
 /obj/machinery/telecomms/message_server
 	icon = 'icons/obj/machines/research.dmi'
@@ -84,6 +83,8 @@
 	use_power = IDLE_POWER_USE
 	idle_power_usage = 10
 	active_power_usage = 100
+	// SKYRAT EDIT: Adds a circuit for the message server.
+	circuit = /obj/item/circuitboard/machine/telecomms/message_server
 
 	id = "Messaging Server"
 	network = "tcommsat"

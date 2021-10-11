@@ -963,6 +963,7 @@
 	duration = 300
 	tick_interval = 10
 	examine_text = "<span class='warning'>SUBJECTPRONOUN seems slow and unfocused.</span>"
+	var/is_stupor = FALSE
 	var/stun = TRUE
 	alert_type = /atom/movable/screen/alert/status_effect/trance
 
@@ -987,9 +988,10 @@
 	"<span class='warning'>[pick("You feel your thoughts slow down...", "You suddenly feel extremely dizzy...", "You feel like you're in the middle of a dream...","You feel incredibly relaxed...")]</span>")
 	return TRUE
 
-/datum/status_effect/trance/on_creation(mob/living/new_owner, _duration, _stun = TRUE)
+/datum/status_effect/trance/on_creation(mob/living/new_owner, _duration, _stun = TRUE, _is_stupor = FALSE)
 	duration = _duration
 	stun = _stun
+	is_stupor = _is_stupor
 	return ..()
 
 /datum/status_effect/trance/on_remove()
@@ -1006,9 +1008,16 @@
 	if(hearing_args[HEARING_SPEAKER] == owner)
 		return
 	var/mob/living/carbon/C = owner
-	var/hypnomsg = uncostumize_say(hearing_args[HEARING_RAW_MESSAGE], hearing_args[HEARING_MESSAGE_MODE])
+	if (is_stupor) // Record when a hypnosis is applied
+		var/mob/living/carbon/human/H = owner
+		var/list/traumas = H.get_traumas()
+		for(var/X in traumas)
+			var/datum/brain_trauma/BT = X
+			if (istype(BT, /datum/brain_trauma/severe/hypnotic_stupor))
+				var/datum/brain_trauma/severe/hypnotic_stupor/T = BT
+				T.on_hypnosis()
 	C.cure_trauma_type(/datum/brain_trauma/hypnosis, TRAUMA_RESILIENCE_SURGERY) //clear previous hypnosis
-	addtimer(CALLBACK(C, /mob/living/carbon.proc/gain_trauma, /datum/brain_trauma/hypnosis, TRAUMA_RESILIENCE_SURGERY, hypnomsg), 10)
+	addtimer(CALLBACK(C, /mob/living/carbon.proc/gain_trauma, /datum/brain_trauma/hypnosis, TRAUMA_RESILIENCE_SURGERY, hearing_args[HEARING_RAW_MESSAGE]), 10)
 	addtimer(CALLBACK(C, /mob/living.proc/Stun, 60, TRUE, TRUE), 15) //Take some time to think about it
 	qdel(src)
 

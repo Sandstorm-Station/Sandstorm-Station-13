@@ -3,7 +3,7 @@
 	id = SPECIES_DULLAHAN
 	default_color = "FFFFFF"
 	species_traits = list(EYECOLOR,HAIR,FACEHAIR,LIPS,HAS_FLESH,HAS_BONE)
-	inherent_traits = list(TRAIT_NOHUNGER,TRAIT_NOBREATH)
+	inherent_traits = list(TRAIT_NOHUNGER,TRAIT_NOTHIRST,TRAIT_NOBREATH)
 	mutant_bodyparts = list("tail_human" = "None", "ears" = "None", "deco_wings" = "None")
 	use_skintones = USE_SKINTONES_GRAYSCALE_CUSTOM
 	mutant_brain = /obj/item/organ/brain/dullahan

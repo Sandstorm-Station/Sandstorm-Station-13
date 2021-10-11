@@ -80,9 +80,9 @@
 #define ui_iclothing "WEST:6,SOUTH+1:7"
 #define ui_oclothing "WEST+1:8,SOUTH+1:7"
 #define ui_gloves "WEST+2:10,SOUTH+1:7"
-#define ui_glasses "WEST:6,SOUTH+3:11"
+#define ui_glasses "WEST+2:10,SOUTH+2:9" //skyrat edit
 #define ui_mask "WEST+1:8,SOUTH+2:9"
-#define ui_ears "WEST+2:10,SOUTH+2:9"
+#define ui_ears "WEST+2:10,SOUTH+3:11" //skyrat edit
 #define ui_neck "WEST:6,SOUTH+2:9"
 #define ui_head "WEST+1:8,SOUTH+3:11"
 
@@ -166,6 +166,15 @@
 // #define ui_pai_pda_log "SOUTH:6,WEST+10"
 // #define ui_pai_take_picture "SOUTH:6,WEST+12"
 // #define ui_pai_view_images "SOUTH:6,WEST+13"
+
+//skyrat slots
+#define ui_inventory_extra "WEST:6,SOUTH+3:11"
+#define ui_boxers "WEST:6,SOUTH+4:13"
+#define ui_socks "WEST:6,SOUTH+5:15"
+#define ui_shirt "WEST:6,SOUTH+6:17"
+#define ui_ears_extra "WEST+2:10,SOUTH+4:13"
+#define ui_wrists "WEST+1:8,SOUTH+4:13"
+//
 
 //Ghosts
 #define ui_ghost_jumptomob "SOUTH:6,CENTER-3:24"

@@ -50,6 +50,7 @@
 		if(G.genital_flags & GENITAL_CAN_AROUSE && !G.aroused_state && prob(abs(strength)*G.sensitivity * arousal_rate))
 			G.set_aroused_state(enabling,cause)
 			G.update_appearance()
+			update_body(TRUE)
 			if(G.aroused_state)
 				genit_list += G
 	return genit_list
@@ -77,6 +78,12 @@
 		R.trans_to(target, R.total_volume * (spill ? G.fluid_transfer_factor : 1))
 	G.last_orgasmed = world.time
 	R.clear_reagents()
+	//skyrat edit - chock i am going to beat you to death
+	//this is not a joke i am actually going to break your
+	//ribcage
+	if(!Process_Spacemove(turn(dir, 180)))
+		newtonian_move(turn(dir, 180))
+	//
 
 /mob/living/carbon/human/proc/mob_climax_outside(obj/item/organ/genital/G, mb_time = 30) //This is used for forced orgasms and other hands-free climaxes
 	var/datum/reagents/fluid_source = G.climaxable(src, TRUE)
@@ -196,7 +203,8 @@
 	return TRUE
 
 //Here's the main proc itself
-/mob/living/carbon/human/proc/mob_climax(forced_climax=FALSE,cause = "") //Forced is instead of the other proc, makes you cum if you have the tools for it, ignoring restraints
+//skyrat edit - forced partner and spillage
+/mob/living/carbon/human/proc/mob_climax(forced_climax=FALSE,cause = "", var/mob/living/forced_partner = null, var/forced_spillage = TRUE) //Forced is instead of the other proc, makes you cum if you have the tools for it, ignoring restraints
 	set waitfor = FALSE
 	if(mb_cd_timer > world.time)
 		if(!forced_climax) //Don't spam the message to the victim if forced to come too fast

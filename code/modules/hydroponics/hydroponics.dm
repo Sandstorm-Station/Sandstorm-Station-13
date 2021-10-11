@@ -548,28 +548,29 @@
 
 	else if(istype(O, /obj/item/plant_analyzer))
 		var/obj/item/plant_analyzer/P_analyzer = O
+		var/msg = "<div class='infobox'>"
 		if(myseed)
 			if(P_analyzer.scan_mode == PLANT_SCANMODE_STATS)
-				to_chat(user, "*** <B>[myseed.plantname]</B> ***" )
-				to_chat(user, "- Plant Age: <span class='notice'>[age]</span>")
+				msg += "*** <B>[myseed.plantname]</B> ***"
+				msg += "\n- Plant Age: <span class='notice'>[age]</span>"
 				var/list/text_string = myseed.get_analyzer_text()
 				if(text_string)
-					to_chat(user, text_string)
-					to_chat(user, "*---------*")
+					msg += "\n[text_string]"
 			if(myseed.reagents_add && P_analyzer.scan_mode == PLANT_SCANMODE_CHEMICALS)
-				to_chat(user, "- <B>Plant Reagents</B> -")
-				to_chat(user, "*---------*")
+				msg += "\n- <B>Plant Reagents</B> -"
+				msg += "\n*---------*"
 				for(var/datum/plant_gene/reagent/G in myseed.genes)
-					to_chat(user, "<span class='notice'>- [G.get_name()] -</span>")
-				to_chat(user, "*---------*")
+					msg += "\n<span class='notice'>- [G.get_name()] -</span>"
+				msg += "\n*---------*"
 		else
-			to_chat(user, "<B>No plant found.</B>")
-		to_chat(user, "- Weed level: <span class='notice'>[weedlevel] / 10</span>")
-		to_chat(user, "- Pest level: <span class='notice'>[pestlevel] / 10</span>")
-		to_chat(user, "- Toxicity level: <span class='notice'>[toxic] / 100</span>")
-		to_chat(user, "- Water level: <span class='notice'>[waterlevel] / [maxwater]</span>")
-		to_chat(user, "- Nutrition level: <span class='notice'>[reagents.total_volume] / [maxnutri]</span>")
-		to_chat(user, "")
+			msg += "<B>No plant found.</B>"
+		msg += "\n- Weed level: <span class='notice'>[weedlevel] / 10</span>"
+		msg += "\n- Pest level: <span class='notice'>[pestlevel] / 10</span>"
+		msg += "\n- Toxicity level: <span class='notice'>[toxic] / 100</span>"
+		msg += "\n- Water level: <span class='notice'>[waterlevel] / [maxwater]</span>"
+		msg += "\n- Nutrition level: <span class='notice'>[reagents.total_volume] / [maxnutri]</span>"
+		msg += "</div>"
+		to_chat(user, msg)
 		return
 
 	else if(istype(O, /obj/item/cultivator))

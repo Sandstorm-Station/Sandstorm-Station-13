@@ -56,6 +56,13 @@
 	var/obj/item/l_store = null
 	var/obj/item/s_store = null
 
+	//skyrat slots
+	var/obj/item/w_underwear = null
+	var/obj/item/w_socks = null
+	var/obj/item/w_shirt = null
+	var/obj/item/ears_extra = null
+	var/obj/item/wrists = null
+	//
 	/// When an braindead player has their equipment fiddled with, we log that info here for when they come back so they know who took their ID while they were DC'd for 30 seconds
 	var/list/afk_thefts
 
@@ -85,8 +92,6 @@
 	var/hardcore_survival_score = 0
 
 	tooltips = TRUE
-
-	var/additional_language //the additional language this human can speak from their preference selection
 
 /// Unarmed parry data for human
 /datum/block_parry_data/unarmed/human

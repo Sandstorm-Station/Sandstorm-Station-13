@@ -5,7 +5,7 @@
 	sexes = 0
 	meat = /obj/item/stack/sheet/mineral/plasma
 	species_traits = list(NOBLOOD,NOTRANSSTING,NOGENITALS,HAS_BONE)
-	inherent_traits = list(TRAIT_RESISTCOLD,TRAIT_RADIMMUNE,TRAIT_NOHUNGER,TRAIT_CALCIUM_HEALER)
+	inherent_traits = list(TRAIT_RESISTCOLD,TRAIT_RADIMMUNE,TRAIT_NOHUNGER,TRAIT_NOTHIRST,TRAIT_CALCIUM_HEALER)
 	inherent_biotypes = MOB_HUMANOID|MOB_MINERAL
 	mutantlungs = /obj/item/organ/lungs/plasmaman
 	mutanttongue = /obj/item/organ/tongue/bone/plasmaman
@@ -21,6 +21,7 @@
 	disliked_food = FRUIT
 	liked_food = VEGETABLES
 	outfit_important_for_life = /datum/outfit/plasmaman
+	languagewhitelist = list("Calcic") //Skyrat change - species language whitelist
 
 	species_category = SPECIES_CATEGORY_SKELETON
 

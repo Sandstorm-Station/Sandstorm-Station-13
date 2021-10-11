@@ -102,6 +102,9 @@
 /// CIT TESTS
 #include "character_saving.dm"
 
+/// SANDSTORM TESTS
+#include "interactions.dm" //No regrets
+
 #ifdef REFERENCE_TRACKING //Don't try and parse this file if ref tracking isn't turned on. IE: don't parse ref tracking please mr linter
 #include "find_reference_sanity.dm"
 #endif

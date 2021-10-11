@@ -103,6 +103,8 @@
 		upgrade_reagents2 = sortList(upgrade_reagents2, /proc/cmp_reagents_asc)
 	if(upgrade_reagents3)
 		upgrade_reagents3 = sortList(upgrade_reagents3, /proc/cmp_reagents_asc)
+	if(upgrade_reagents4)
+		upgrade_reagents4 = sortList(upgrade_reagents4, /proc/cmp_reagents_asc)
 	dispensable_reagents = sortList(dispensable_reagents, /proc/cmp_reagents_asc)
 	create_reagents(200, NO_REACT)
 	update_icon()
@@ -469,6 +471,8 @@
 			dispensable_reagents |= upgrade_reagents2
 		if(M.rating > 3)
 			dispensable_reagents |= upgrade_reagents3
+		if(M.rating > 4)
+			dispensable_reagents |= upgrade_reagents4
 		switch(M.rating)
 			if(-INFINITY to 1)
 				dispenceUnit = 5
@@ -879,7 +883,6 @@
 	upgrade_reagents3 = list(
 		/datum/reagent/medicine/mine_salve
 	)
-
 	emagged_reagents = list(
 		/datum/reagent/drug/space_drugs,
 		/datum/reagent/toxin/carpotoxin,

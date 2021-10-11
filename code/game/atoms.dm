@@ -103,6 +103,11 @@
 	/// A luminescence-shifted value of the last color calculated for chatmessage overlays
 	var/chat_color_darkened
 
+	//skyrat edit - custom examine icon
+	var/examine_icon
+	var/examine_icon_state
+	//
+
 	///Used for changing icon states for different base sprites.
 	var/base_icon_state
 
@@ -483,8 +488,10 @@
 		. = override.Join("")
 
 ///Generate the full examine string of this atom (including icon for goonchat)
+//skyrat change - custom examine icons
 /atom/proc/get_examine_string(mob/user, thats = FALSE)
-	return "[icon2html(src, user)] [thats? "That's ":""][get_examine_name(user)]"
+	return "[icon2html(examine_icon ? examine_icon : src, user, examine_icon_state ? examine_icon_state : icon_state)] [thats? "That's ":""][get_examine_name(user)]"
+//end changes (yeah the whole proc was modified)
 
 /atom/proc/examine(mob/user)
 	. = list("[get_examine_string(user, TRUE)].")
@@ -782,6 +789,20 @@
 	else if(w_uniform)
 		w_uniform.add_blood_DNA(blood_dna, diseases)
 		update_inv_w_uniform()
+	//skyrat edit
+	else if(w_underwear)
+		w_underwear.add_blood_DNA(blood_dna, diseases)
+		update_inv_w_underwear()
+	else if(w_socks)
+		w_socks.add_blood_DNA(blood_dna, diseases)
+		update_inv_w_socks()
+	else if(w_shirt)
+		w_shirt.add_blood_DNA(blood_dna, diseases)
+		update_inv_w_shirt()
+	else if(wrists)
+		wrists.add_blood_DNA(blood_dna, diseases)
+		update_inv_wrists()
+	//
 	if(gloves)
 		var/obj/item/clothing/gloves/G = gloves
 		G.add_blood_DNA(blood_dna, diseases)
