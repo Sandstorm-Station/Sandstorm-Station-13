@@ -23,3 +23,4 @@
 					"san","tiao", "wan","xiong", "men")
 	icon_state = "neokanji"
 	restricted = FALSE
+	
