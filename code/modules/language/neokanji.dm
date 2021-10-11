@@ -9,7 +9,6 @@
 	space_chance = 40
 	default_priority = 94
 	flags = TONGUELESS_SPEECH
-	chooseable_roundstart = TRUE
 	syllables = list("ka", "ki", "ku", "ke", "ko", "ta",
 					"chi", "tsu", "te", "to", "sa", "shi",
 					"su", "se", "so", "na","ni","nu","ne",
