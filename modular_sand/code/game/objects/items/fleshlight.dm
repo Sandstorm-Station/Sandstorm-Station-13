@@ -247,7 +247,9 @@
 	else
 		..() //just allows people to hit it with other objects, if they so wished.
 
-/obj/item/clothing/underwear/briefs/panties/portalpanties/mob_can_equip(mob/living/M, slot, disable_warning)
+/obj/item/clothing/underwear/briefs/panties/portalpanties/mob_can_equip(mob/living/M, slot)
+	if(!..())
+		return FALSE
 	if(ishuman(M))
 		switch(targetting)
 			if("vagina")
@@ -258,7 +260,7 @@
 				if(!M.has_anus(REQUIRE_EXPOSED))
 					to_chat(M, "<span class='warning'>The anus is covered or there is none!</span>")
 					return FALSE
-	return ..()
+	return TRUE
 
 /obj/item/clothing/underwear/briefs/panties/portalpanties/equipped(mob/user, slot)
 	. = ..()
