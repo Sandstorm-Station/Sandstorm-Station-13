@@ -31,7 +31,7 @@
 		return ..()
 
 /obj/item/dildo/attack_self(mob/living/carbon/human/user as mob)
-	hole = CUM_TARGET_VAGINA ? CUM_TARGET_ANUS : CUM_TARGET_VAGINA
+	hole = hole == CUM_TARGET_VAGINA ? CUM_TARGET_ANUS : CUM_TARGET_VAGINA
 	to_chat(user, "<span class='notice'>Now targetting \the [hole].</span>")
 
 //begin redds code
