@@ -3,22 +3,27 @@
 	var/hole = CUM_TARGET_VAGINA
 
 /obj/item/dildo/attack(mob/living/carbon/human/M, mob/living/carbon/human/user)
+	var/possessive_verb = user.p_their()
 	var/message = ""
-	if(istype(M, /mob/living/carbon/human) && user.zone_selected == BODY_ZONE_PRECISE_GROIN && M.is_bottomless())
-		if(M.client && M.client.prefs)
-			if(M.client.prefs.toggles & VERB_CONSENT)
-				if(hole == CUM_TARGET_VAGINA && M.has_vagina())
-					message = (user == M) ? pick("fucks their own pussy with \the [src]","shoves \the [src] into their pussy", "jams \the [src] into their pussy") : pick("fucks [M] right in the pussy with \the [src]", "jams \the [src] right into [M]'s pussy")
-				else if(hole == CUM_TARGET_ANUS && M.has_anus())
-					message = (user == M) ? pick("fucks their own ass with \the [src]","shoves \the [src] into their ass", "jams \the [src] into their ass") : pick("fucks [M]'s asshole with \the [src]", "jams \the [src] into [M]'s ass")
-	else if(istype(M, /mob/living/carbon/human) && user.zone_selected == BODY_ZONE_PRECISE_MOUTH && M.mouth_is_free())
-		if(M.client && M.client.prefs)
-			if(M.client.prefs.toggles & VERB_CONSENT)
-				if(M.has_mouth())
-					message = (user == M) ? pick("fucks their own mouth with \the [src]", "shoves \the [src] into their mouth", "jams \the [src] into their mouth") : pick("fucks [M]'s mouth with \the [src]", "jams \the [src] into [M]'s mouth")
+	var/lust_amt = 0
+	if(ishuman(M) && (M?.client?.prefs?.toggles & VERB_CONSENT))
+		switch(user.zone_selected)
+			if(BODY_ZONE_PRECISE_GROIN)
+				switch(hole)
+					if(CUM_TARGET_VAGINA)
+						if(M.has_vagina(REQUIRE_EXPOSED))
+							message = (user == M) ? pick("fucks [possessive_verb] own pussy with \the [src]","shoves \the [src] into [possessive_verb] pussy", "jams \the [src] into [possessive_verb] pussy") : pick("fucks [M] right in the pussy with \the [src]", "jams \the [src] right into [M]'s pussy")
+							lust_amt = NORMAL_LUST
+					if(CUM_TARGET_ANUS)
+						if(M.has_anus(REQUIRE_EXPOSED))
+							message = (user == M) ? pick("fucks [possessive_verb] own ass with \the [src]","shoves \the [src] into [possessive_verb] ass", "jams \the [src] into [possessive_verb] ass") : pick("fucks [M]'s asshole with \the [src]", "jams \the [src] into [M]'s ass")
+							lust_amt = NORMAL_LUST
+			if(BODY_ZONE_PRECISE_MOUTH)
+				if(M.has_mouth() && !M.is_mouth_covered())
+					message = (user == M) ? pick("fucks [possessive_verb] own mouth with \the [src]", "shoves \the [src] into [possessive_verb] mouth", "jams \the [src] into [possessive_verb] mouth") : pick("fucks [M]'s mouth with \the [src]", "jams \the [src] into [M]'s mouth")
 	if(message)
 		user.visible_message("<font color=purple>[user] [message].</font>")
-		M.handle_post_sex(5, null, user)
+		M.handle_post_sex(lust_amt, null, user)
 		playsound(loc, pick('modular_sand/sound/interactions/bang4.ogg',
 							'modular_sand/sound/interactions/bang5.ogg',
 							'modular_sand/sound/interactions/bang6.ogg'), 70, 1, -1)
@@ -26,10 +31,7 @@
 		return ..()
 
 /obj/item/dildo/attack_self(mob/living/carbon/human/user as mob)
-	if(hole == CUM_TARGET_VAGINA)
-		hole = CUM_TARGET_ANUS
-	else
-		hole = CUM_TARGET_VAGINA
+	hole = hole == CUM_TARGET_VAGINA ? CUM_TARGET_ANUS : CUM_TARGET_VAGINA
 	to_chat(user, "<span class='notice'>Now targetting \the [hole].</span>")
 
 //begin redds code
