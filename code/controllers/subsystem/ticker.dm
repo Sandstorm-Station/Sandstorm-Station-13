@@ -230,7 +230,7 @@ SUBSYSTEM_DEF(ticker)
 /datum/controller/subsystem/ticker/proc/setup()
 	to_chat(world, "<span class='boldannounce'>Starting game...</span>")
 	var/init_start = world.timeofday
-	GLOB.master_mode = "dynamic"
+	// GLOB.master_mode = "dynamic" // NEVER LET THIS RUN, IT WILL ALWAYS FORCE DYNAMIC
 	mode = config.pick_mode(GLOB.master_mode)
 	if(!mode.can_start())
 		to_chat(world, "<B>Unable to start [mode.name].</B> Not enough players, [mode.required_players] players and [mode.required_enemies] eligible antagonists needed. Reverting to pre-game lobby.")
