@@ -13,9 +13,6 @@
 	config_entry_value = 1
 	min_val = -1
 
-/datum/config_entry/string/force_gamemode
-	config_entry_value = null
-
 /datum/config_entry/flag/enable_dogborg_sleepers	// enable normal dogborg sleepers (otherwise recreational)
 
 /datum/config_entry/flag/limit_stupor_trances	// enable limits to hypnotic stupor
