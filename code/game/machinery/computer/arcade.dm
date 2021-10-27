@@ -82,10 +82,9 @@ GLOBAL_LIST_INIT(arcade_prize_pool, list(
 	// If it's a generic arcade machine, pick a random arcade
 	// circuit board for it and make the new machine
 	if(!circuit)
-		var/list/gameodds = list(/obj/item/circuitboard/computer/arcade/battle = 33,
-								/obj/item/circuitboard/computer/arcade/orion_trail = 33,
-								/obj/item/circuitboard/computer/arcade/minesweeper = 33,
-								/obj/item/circuitboard/computer/arcade/tetris = 33,	//Sandstorm change
+		var/list/gameodds = list(/obj/item/circuitboard/computer/arcade/battle = 50,
+								/obj/item/circuitboard/computer/arcade/orion_trail = 50,
+								/obj/item/circuitboard/computer/arcade/tetris = 50,	//Sandstorm change
 								/obj/item/circuitboard/computer/arcade/amputation = 2)
 		var/thegame = pickweight(gameodds)
 		var/obj/item/circuitboard/CB = new thegame()
