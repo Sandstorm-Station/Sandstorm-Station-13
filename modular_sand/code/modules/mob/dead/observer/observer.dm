@@ -13,10 +13,10 @@
 		outfits["Show All"] = "Show All"
 
 		var/dresscode
-		var/teleport_option = alert("How would you like to be spawned in?","IC Quick Spawn","Bluespace","Pod", "Cancel")
+		var/teleport_option = tgui_alert(user, "How would you like to be spawned in?","IC Quick Spawn",list("Bluespace","Pod", "Cancel"))
 		if (teleport_option == "Cancel")
 			return
-		var/character_option = alert("Which character?","IC Quick Spawn","Selected Character","Randomly Created", "Cancel")
+		var/character_option = tgui_alert(user, "Which character?","IC Quick Spawn",list("Selected Character","Randomly Created", "Cancel"))
 		if (character_option == "Cancel")
 			return
 		var/initial_outfits = input("Select outfit", "Quick Dress") as null|anything in outfits
@@ -27,10 +27,10 @@
 			dresscode = client.robust_dress_shop()
 			if (!dresscode)
 				return
-		else 
-			dresscode = outfits[initial_outfits] 
+		else
+			dresscode = outfits[initial_outfits]
 
-		var/grant_spell = alert("Do you want to give them the power to return? Not recommended for non-admins.","Give power?","Yes","No", "Cancel")
+		var/grant_spell = tgui_alert(user, "Do you want to give them the power to return? Not recommended for non-admins.","Give power?",list("Yes","No", "Cancel"))
 		if(grant_spell == "Cancel")
 			return
 
@@ -57,7 +57,7 @@
 
 		if(grant_spell != "No")
 			spawned_player.mind.AddSpell(new /obj/effect/proc_holder/spell/self/return_back, FALSE)
-		
+
 		if(dresscode != "Naked")
 			spawned_player.equipOutfit(dresscode)
 
@@ -79,7 +79,7 @@
 
 				spawned_player.forceMove(empty_pod)
 
-				new /obj/effect/pod_landingzone(current_turf, empty_pod)			
+				new /obj/effect/pod_landingzone(current_turf, empty_pod)
 
 //This is more of a hacky fix for performance due to rune-chat
 /mob/dead/observer/proc/HearNoPopup(message, atom/movable/speaker, message_language, raw_message, radio_freq, list/spans, message_mode, atom/movable/source)

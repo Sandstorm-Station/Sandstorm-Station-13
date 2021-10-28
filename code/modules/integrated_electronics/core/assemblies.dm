@@ -34,7 +34,6 @@
 	var/creator // circuit creator if any
 	var/static/next_assembly_id = 0
 	var/sealed = FALSE
-	var/datum/weakref/idlock = null
 
 	hud_possible = list(DIAG_STAT_HUD, DIAG_BATT_HUD, DIAG_TRACK_HUD, DIAG_CIRCUIT_HUD) //diagnostic hud overlays
 	max_integrity = 50
@@ -391,7 +390,7 @@
 
 		// Adjust the position
 		if(href_list["change_pos"])
-			var/new_pos = max(input(usr,"Write the new number","New position") as num,1)
+			var/new_pos = max(tgui_input_num(usr,"Write the new number","New position"),1)
 
 			if(new_pos > assembly_components.len)
 				new_pos = assembly_components.len
@@ -425,7 +424,7 @@
 	if(!check_interactivity(M))
 		return
 
-	var/input = reject_bad_name(input("What do you want to name this?", "Rename", src.name) as null|text, TRUE)
+	var/input = reject_bad_name(tgui_input_text(usr, "What do you want to name this?", "Rename", src.name), TRUE)
 	if(!check_interactivity(M))
 		return
 	if(src && input)
@@ -619,27 +618,6 @@
 	if(can_anchor && default_unfasten_wrench(user, I, 20))
 		return
 
-	// ID-Lock part: check if we have an id-lock and only lock if we're not trying to get values from it, to prevent accidents
-	if(istype(I, /obj/item/integrated_electronics/debugger))
-		var/obj/item/integrated_electronics/debugger/debugger = I
-		if(debugger.idlock)
-			// check if unlocked to lock
-			if(!idlock)
-				idlock = debugger.idlock
-				to_chat(user,"<span class='notice'>You lock \the [src].</span>")
-
-			//if locked, unlock if ids match
-			else
-				if(idlock.resolve() == debugger.idlock.resolve())
-					idlock = null
-					to_chat(user,"<span class='notice'>You unlock \the [src].</span>")
-
-				else
-					to_chat(user,"<span class='notice'>The scanned ID doesn't match with \the [src]'s lock.</span>")
-
-			debugger.idlock = null
-			return
-
 	if(istype(I, /obj/item/integrated_circuit))
 		if(!user.canUnEquip(I))
 			return FALSE
@@ -706,7 +684,7 @@
 			if(input_selection.len == 1)
 				choice = input_selection[input_selection[1]]
 			else
-				var/selection = input(user, "Where do you want to insert that item?", "Interaction") as null|anything in input_selection
+				var/selection = tgui_input_list(user, "Where do you want to insert that item?", "Interaction", input_selection)
 				if(!check_interactivity(user))
 					return ..()
 				if(selection)
@@ -748,7 +726,7 @@
 		if(input_selection.len ==1)
 			choice = input_selection[input_selection[1]]
 		else
-			var/selection = input(user, "What do you want to interact with?", "Interaction") as null|anything in input_selection
+			var/selection = tgui_input_list(user, "What do you want to interact with?", "Interaction", input_selection)
 			if(!check_interactivity(user))
 				return
 			if(selection)

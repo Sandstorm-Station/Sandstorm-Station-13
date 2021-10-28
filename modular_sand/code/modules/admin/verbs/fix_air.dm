@@ -9,7 +9,7 @@
 		return
 
 	if(check_rights(R_ADMIN, TRUE))
-		var/range = input("Enter range:", "Num", 2) as num
+		var/range = tgui_input_num(src, "Enter range:", "Num", 2)
 		message_admins("[key_name_admin(usr)] fixed air with range [range] at [ADMIN_VERBOSEJMP(T)]")
 		log_game("[key_name_admin(usr)] fixed air with range [range] at [AREACOORD(T)]")
 		var/datum/gas_mixture/GM = new

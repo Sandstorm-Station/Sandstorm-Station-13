@@ -11,10 +11,9 @@
 	var/accepting_refs = FALSE
 	var/copy_values = FALSE
 	var/copy_id = FALSE
-	var/datum/weakref/idlock = null
 
 /obj/item/integrated_electronics/debugger/attack_self(mob/user)
-	var/type_to_use = input("Please choose a type to use.","[src] type setting") as null|anything in list("string","number","ref","copy","null","id lock")
+	var/type_to_use = tgui_input_list(user, "Please choose a type to use.","[src] type setting", list("string","number","ref","copy","null"))
 	if(!user.IsAdvancedToolUser())
 		return
 
@@ -31,8 +30,7 @@
 		if("number")
 			accepting_refs = FALSE
 			copy_values = FALSE
-			copy_id = FALSE
-			new_data = input(user, "Now type in a number.","[src] number writing") as null|num
+			new_data = tgui_input_num(user, "Now type in a number.","[src] number writing")
 			if(isnum(new_data) && user.IsAdvancedToolUser())
 				data_to_write = new_data
 				to_chat(user, "<span class='notice'>You set \the [src]'s memory to [new_data].</span>")
@@ -67,18 +65,6 @@
 		to_chat(user, "<span class='notice'>You set \the [src]'s memory to a reference to [target.name] \[Ref\].  The ref scanner is \
 		now off.</span>")
 		accepting_refs = FALSE
-
-	else if(copy_id && proximity)
-		if(istype(target,/obj/item/card/id))
-			idlock = WEAKREF(target)
-			to_chat(user, "<span class='notice'>You set \the [src]'s card memory to [target.name].  The id card scanner is \
-			now off.</span>")
-
-		else
-			to_chat(user, "<span class='notice'>You turn the id card scanner is off.</span>")
-
-		copy_id = FALSE
-		return
 
 /obj/item/integrated_electronics/debugger/proc/write_data(var/datum/integrated_io/io, mob/user)
 	//If the pin can take data:

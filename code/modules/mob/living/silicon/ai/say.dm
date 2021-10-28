@@ -97,11 +97,11 @@
 		to_chat(src, "<span class='notice'>Please wait [DisplayTimeText(announcing_vox - world.time)].</span>")
 		return
 
-	var/message = input(src, "WARNING: Misuse of this verb can result in you being job banned. More help is available in 'Announcement Help'", "Announcement", src.last_announcement) as text
+	var/message = tgui_input_text(src, "WARNING: Misuse of this verb can result in you being job banned. More help is available in 'Announcement Help'", "Announcement", src.last_announcement)
 
 	last_announcement = message
 
-	var/voxType = input(src, "Which VOX to use?", "VOX-type") in list("male", "female", "military")
+	var/voxType = tgui_input_list(src, "Which VOX to use?", "VOX-type", list("male", "female", "military"))
 
 	if(!message || announcing_vox > world.time)
 		return

@@ -56,7 +56,7 @@
 			var/addnum_2 = rand(1, 500)
 			var/question = "What is [addnum_1] + [addnum_2]?"
 			var/solution = addnum_1 + addnum_2
-			var/answer = input(user, question, "Math Problem") as null|num
+			var/answer = tgui_input_num(user, question, "Math Problem")
 			if(isnull(answer)) // User hit the cancel button
 				return
 			if(answer == solution)
@@ -66,7 +66,7 @@
 			var/subnum_2 = rand(-100, 200)
 			var/question = "What is [subnum_1] - [subnum_2]?"
 			var/solution = subnum_1 - subnum_2
-			var/answer = input(user, question, "Math Problem") as null|num
+			var/answer = tgui_input_num(user, question, "Math Problem")
 			if(isnull(answer)) // User hit the cancel button
 				return
 			if(answer == solution)
@@ -76,7 +76,7 @@
 			var/multnum_2 = rand(-250, 500)
 			var/question = "What is [multnum_1] * [multnum_2]?"
 			var/solution = multnum_1 * multnum_2
-			var/answer = input(user, question, "Math Problem") as null|num
+			var/answer = tgui_input_num(user, question, "Math Problem")
 			if(isnull(answer)) // User hit the cancel button
 				return
 			if(answer == solution)
@@ -88,7 +88,7 @@
 			var/divnum_1 = rand(-50, 50) * divnum_2 // Nice numbers only.
 			var/question = "What is [divnum_1] / [divnum_2]? Rounded the answer down if applicable."
 			var/solution = round(divnum_1 / divnum_2)
-			var/answer = input(user, question, "Math Problem") as null|num
+			var/answer = tgui_input_num(user, question, "Math Problem")
 			if(isnull(answer)) // User hit the cancel button
 				return
 			if(answer == solution)
@@ -103,7 +103,7 @@
 				solution = round(sqrt(abs(expnum_1)))
 			else
 				solution = round(expnum_1 ** expnum_2)
-			var/answer = input(user, question, "Math Problem") as null|num
+			var/answer = tgui_input_num(user, question, "Math Problem")
 			if(isnull(answer)) // User hit the cancel button
 				return
 			if(answer == solution)
@@ -116,7 +116,7 @@
 			var/num_c = rand(-10, 10)
 			var/question = "[num_a]x + [num_b] = [num_c]. Solve for x."
 			var/solution = (num_c - num_b)/num_a
-			var/answer = input(user, question, "Math Problem") as null|num
+			var/answer = tgui_input_num(user, question, "Math Problem")
 			if(isnull(answer)) // User hit the cancel button
 				return
 			if(answer == solution)
@@ -135,7 +135,7 @@
 				var/num_c = rand(1, 10)
 				var/question = "[num_a]/([num_b]x) = [num_c]. Solve for x. Round down if applicable."
 				solution = round(num_a / (num_b * num_c))
-				answer = input(user, question, "Math Problem") as null|num
+				answer = tgui_input_num(user, question, "Math Problem")
 			else
 				// (a-x)/b = x/c ----> x=ac/(b+c), b+c and b*c may not be 0
 				var/num_a = rand(-50, 50)
@@ -143,7 +143,7 @@
 				var/num_c = rand(1, 10)
 				var/question = "([num_a]-x)/[num_b] = x/[num_c]. Solve for x. Round down if applicable."
 				solution = round((num_a * num_c)/(num_b + num_c))
-				answer = input(user, question, "Math Problem") as null|num
+				answer = tgui_input_num(user, question, "Math Problem")
 			if(isnull(answer)) // User hit the cancel button
 				return
 			if(answer == solution)
@@ -168,7 +168,7 @@
 
 			// Answering part
 			var/question = "[num_a]x^2 + [num_b]x + [num_c] = 0. Solve for x, give any real solution. Fill in 0 for no real solutions. Answers are rounded down. (-0.25 becomes -1)"
-			var/answer = input(user, question, "Math Problem") as null|num
+			var/answer = tgui_input_num(user, question, "Math Problem")
 			if(isnull(answer)) // User hit the cancel button
 				return
 			if(answer == solution1 || answer == solution2)
@@ -188,12 +188,12 @@
 			var/answer
 			if(prob(50)) // 50% chance to ask for x, or y
 				question = "Given the lines y=[num_a]x+[num_b] and y=[num_c]x+[num_d], what is the x-value of their intersection point? Rounded down if applicable."
-				answer = input(user, question, "Math Problem") as null|num
+				answer = tgui_input_num(user, question, "Math Problem")
 				if(answer == x_intersect)
 					correct = TRUE
 			else
 				question = "Given the lines y=[num_a]x+[num_b] and y=[num_c]x+[num_d], what is the y-value of their intersection point? Rounded down if applicable."
-				answer = input(user, question, "Math Problem") as null|num
+				answer = tgui_input_num(user, question, "Math Problem")
 				if(answer == y_intersect)
 					correct = TRUE
 			if(isnull(answer)) // User hit the cancel button
