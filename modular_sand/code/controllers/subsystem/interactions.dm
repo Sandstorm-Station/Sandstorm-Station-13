@@ -10,10 +10,10 @@ SUBSYSTEM_DEF(interactions)
 
 /// Makes the interactions, they're also a global list because having it as a list and just hanging around there is stupid
 /datum/controller/subsystem/interactions/proc/make_interactions()
-	if(!SSinteractions.interactions || !length(SSinteractions.interactions))
-		SSinteractions.interactions = list()
+	if(!interactions || !length(interactions))
+		interactions = list()
 		for(var/itype in subtypesof(/datum/interaction))
 			var/datum/interaction/I = new itype()
-			SSinteractions.interactions[I.command] = I
+			interactions[I.command] = I
 	else
 		message_admins("make_interactions() called with interactions already made!")
