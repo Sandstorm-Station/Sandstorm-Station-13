@@ -113,7 +113,7 @@ export const MESSAGE_TYPES = [
     type: MESSAGE_TYPE_LEWD,
     name: 'Lewd messages',
     description: 'You came!',
-    selector: '.userlove, .love',
+    selector: '.userlove, .love, .lewd',
   },
   {
     type: MESSAGE_TYPE_UNKNOWN,

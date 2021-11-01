@@ -60,7 +60,7 @@
 					message = (user == M) ? pick("pumps [src] on [possessive_verb] penis") : pick("pumps \the [src] on [M]'s penis")
 					lust_amt = NORMAL_LUST
 	if(message)
-		user.visible_message("<font color=purple>[user] [message].</font>")
+		user.visible_message("<span class='lewd'>[user] [message].</span>")
 		M.handle_post_sex(lust_amt, null, user)
 		playlewdinteractionsound(loc, pick('modular_sand/sound/interactions/bang4.ogg',
 							'modular_sand/sound/interactions/bang5.ogg',
@@ -104,12 +104,14 @@
 /obj/item/portallight/attack(mob/living/carbon/human/M, mob/living/carbon/human/user)
 	var/message = ""
 	var/lust_amt = 0
+	var/arouse_only_target = FALSE
 	if(ishuman(M) && (M?.client?.prefs?.toggles & VERB_CONSENT) && useable) // I promise all those checks are worth it!
 		switch(user.zone_selected)
 			if(BODY_ZONE_PRECISE_GROIN)
 				if(M.has_penis(REQUIRE_EXPOSED))
 					message = (user == M) ? pick("fucks into [src]") : pick("forces [M] to fuck into [src]")
 					lust_amt = NORMAL_LUST
+					arouse_only_target = TRUE
 			if(BODY_ZONE_PRECISE_MOUTH)
 				if(M.has_mouth() && !M.is_mouth_covered())
 					message = (user == M) ? pick("licks into [src]") : pick("forces [M] to lick into [src]")
@@ -135,8 +137,9 @@
 	if(message)
 		var/mob/living/carbon/human/portal_target = ishuman(portalunderwear.loc) && portalunderwear.current_equipped_slot == SLOT_W_UNDERWEAR ? portalunderwear.loc : null
 		if(portal_target && (portal_target?.client?.prefs.toggles & VERB_CONSENT))
-			user.visible_message("<font color=purple>[user] [message].</font>")
-			M.handle_post_sex(lust_amt, null, user)
+			user.visible_message("<span class='lewd'>[user] [message].</span>")
+			if(!arouse_only_target)
+				M.handle_post_sex(lust_amt, null, user)
 			switch(user.zone_selected)
 				if(BODY_ZONE_PRECISE_GROIN)
 					playlewdinteractionsound(loc, pick('modular_sand/sound/interactions/bang4.ogg',
@@ -153,7 +156,7 @@
 			if(M != user)
 				message = replacetext(message, "[M]", "someone")
 			message = replacetext(message, "[src]", "your [targeted]")
-			to_chat(portal_target, "<font color=purple>You feel something on your panties, it [message].</font>")
+			to_chat(portal_target, "<span class='lewd'>You feel something on your panties, it [message].</span>")
 			portal_target.handle_post_sex(lust_amt, null, M)
 			portal_target.do_jitter_animation() //make your partner shake too!
 		else
