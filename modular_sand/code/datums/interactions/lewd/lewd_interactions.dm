@@ -280,7 +280,7 @@
 					return FALSE
 
 		if(require_ooc_consent)
-			if(user.client && user.client.prefs.toggles & VERB_CONSENT)
+			if((!user.ckey) || (user.client && user.client.prefs.toggles & VERB_CONSENT))
 				return TRUE
 		if(action_check)
 			return FALSE
