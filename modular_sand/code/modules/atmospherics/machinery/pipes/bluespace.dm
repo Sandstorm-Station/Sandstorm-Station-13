@@ -1,7 +1,7 @@
 /obj/machinery/atmospherics/pipe/bluespace/attackby(obj/item/W, mob/user, params)
 	var/old_net = bluespace_network_name
 	if(W.tool_behaviour == TOOL_MULTITOOL)
-		var/new_name = tgui_input_text(user, "Enter identifier for bluespace pipe network", "bluespace pipe", bluespace_network_name)
+		var/new_name = input(user, "Enter identifier for bluespace pipe network", "bluespace pipe", bluespace_network_name) as text|null
 		if(!isnull(new_name))
 			bluespace_network_name = new_name
 			update_net(old_net)

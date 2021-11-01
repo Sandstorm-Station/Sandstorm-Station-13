@@ -29,7 +29,7 @@
 			var/loss = HUNGER_FACTOR/10
 			if(m_intent == MOVE_INTENT_RUN)
 				loss *= 2
-			adjust_nutrition(loss)
+			adjust_nutrition(-loss)
 
 		if(HAS_TRAIT(src, TRAIT_NOTHIRST))
 			set_thirst(THIRST_LEVEL_BIT_THIRSTY - 1)

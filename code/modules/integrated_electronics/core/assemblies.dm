@@ -390,7 +390,7 @@
 
 		// Adjust the position
 		if(href_list["change_pos"])
-			var/new_pos = max(tgui_input_num(usr,"Write the new number","New position"),1)
+			var/new_pos = max(input(usr,"Write the new number","New position") as num,1)
 
 			if(new_pos > assembly_components.len)
 				new_pos = assembly_components.len
@@ -424,7 +424,7 @@
 	if(!check_interactivity(M))
 		return
 
-	var/input = reject_bad_name(tgui_input_text(usr, "What do you want to name this?", "Rename", src.name), TRUE)
+	var/input = reject_bad_name(input("What do you want to name this?", "Rename", src.name) as null|text, TRUE)
 	if(!check_interactivity(M))
 		return
 	if(src && input)
@@ -684,7 +684,7 @@
 			if(input_selection.len == 1)
 				choice = input_selection[input_selection[1]]
 			else
-				var/selection = tgui_input_list(user, "Where do you want to insert that item?", "Interaction", input_selection)
+				var/selection = input(user, "Where do you want to insert that item?", "Interaction") as null|anything in input_selection
 				if(!check_interactivity(user))
 					return ..()
 				if(selection)
@@ -726,7 +726,7 @@
 		if(input_selection.len ==1)
 			choice = input_selection[input_selection[1]]
 		else
-			var/selection = tgui_input_list(user, "What do you want to interact with?", "Interaction", input_selection)
+			var/selection = input(user, "What do you want to interact with?", "Interaction") as null|anything in input_selection
 			if(!check_interactivity(user))
 				return
 			if(selection)
