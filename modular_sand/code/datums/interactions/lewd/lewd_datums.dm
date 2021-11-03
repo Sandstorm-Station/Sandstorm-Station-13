@@ -39,6 +39,7 @@
 /datum/interaction/lewd/titgrope
 	command = "titgrope"
 	description = "Grope their breasts."
+	require_user_hands = TRUE
 	require_target_breasts = REQUIRE_ANY
 	write_log_user = "groped"
 	write_log_target = "was groped by"
@@ -299,7 +300,7 @@
 /datum/interaction/lewd/finger
 	command = "finger"
 	description = "Finger their pussy."
-	require_user_hands = REQUIRE_ANY
+	require_user_hands = TRUE
 	require_target_vagina = REQUIRE_EXPOSED
 	interaction_sound = null
 	user_not_tired = TRUE
@@ -312,7 +313,7 @@
 	command = "fingerm"
 	description = "Finger their ass."
 	interaction_sound = null
-	require_user_hands = REQUIRE_ANY
+	require_user_hands = TRUE
 	require_target_anus = REQUIRE_EXPOSED
 	user_not_tired = TRUE
 	max_distance = 1
