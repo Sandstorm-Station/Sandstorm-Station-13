@@ -117,6 +117,7 @@
 				if(M.has_mouth() && !M.is_mouth_covered())
 					message = (user == M) ? pick("licks into [src]") : pick("forces [M] to lick into [src]")
 					lust_amt = NORMAL_LUST
+					arouse_only_target = TRUE
 			if(BODY_ZONE_R_ARM)
 				if(M.has_hand(REQUIRE_ANY))
 					var/can_interact = FALSE
