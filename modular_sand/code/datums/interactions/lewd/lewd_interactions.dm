@@ -523,14 +523,15 @@
 	var/dat = ..()
 	if(get_refraction_dif())
 		dat += "...are sexually exhausted for the time being."
-	if(a_intent == INTENT_HELP)
-		dat += "...are acting gentle."
-	else if (a_intent == INTENT_DISARM)
-		dat += "...are acting playful."
-	else if (a_intent == INTENT_GRAB)
-		dat += "...are acting rough."
-	else if(a_intent == INTENT_HARM)
-		dat += "...are fighting anyone who comes near."
+	switch(a_intent)
+		if(INTENT_HELP)
+			dat += "...are acting gentle."
+		if(INTENT_DISARM)
+			dat += "...are acting playful."
+		if(INTENT_GRAB)
+			dat += "...are acting rough."
+		if(INTENT_HARM)
+			dat += "...are fighting anyone who comes near."
 	//Here comes the fucking weird shit.
 	if(client)
 		var/client/cli = client
@@ -552,7 +553,7 @@
 				else
 					dat += "...have covered eyes."
 	//
-	if(is_topless()  && is_bottomless())
+	if(is_topless() && is_bottomless())
 		dat += "...are naked."
 	else
 		if((is_topless() && !is_bottomless()) || (!is_topless() && is_bottomless()))
