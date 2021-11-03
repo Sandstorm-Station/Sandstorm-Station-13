@@ -106,6 +106,7 @@
 	var/arouse_only_target = FALSE
 	var/obj/item/organ/genital/penis/P
 	var/obj/item/organ/genital/vagina/V
+	var/target
 	if(ishuman(M) && (M?.client?.prefs?.toggles & VERB_CONSENT) && useable) // I promise all those checks are worth it!
 		switch(user.zone_selected)
 			if(BODY_ZONE_PRECISE_GROIN)
@@ -113,11 +114,13 @@
 					message = (user == M) ? pick("fucks into [src]") : pick("forces [M] to fuck into [src]")
 					lust_amt = NORMAL_LUST
 					P = M.getorganslot(ORGAN_SLOT_PENIS)
+					target = P
 			if(BODY_ZONE_PRECISE_MOUTH)
 				if(M.has_mouth() && !M.is_mouth_covered())
 					message = (user == M) ? pick("licks into [src]") : pick("forces [M] to lick into [src]")
 					lust_amt = NORMAL_LUST
 					arouse_only_target = TRUE
+					target = "mouth"
 			if(BODY_ZONE_R_ARM)
 				if(M.has_hand(REQUIRE_ANY))
 					var/can_interact = FALSE
@@ -127,6 +130,7 @@
 						message = (user == M) ? pick("touches softly against [src]") : pick("forces [M]'s finger on [src]")
 						lust_amt = NORMAL_LUST
 						arouse_only_target = TRUE
+						target = "hand"
 			if(BODY_ZONE_L_ARM)
 				if(M.has_hand(REQUIRE_ANY))
 					var/can_interact = FALSE
@@ -136,6 +140,7 @@
 						message = (user == M) ? pick("touches softly against [src]") : pick("forces [M]'s finger on [src]")
 						lust_amt = NORMAL_LUST
 						arouse_only_target = TRUE
+						target = "hand"
 	if(!useable)
 		to_chat(user, "<span class='notice'>It seems the device has failed or your partner is not wearing their device.</span>")
 	if(message)
@@ -168,9 +173,9 @@
 			if(portal_target.handle_post_sex(lust_amt, null, null))
 				switch(portalunderwear.targetting)
 					if("vagina")
-						to_chat(M, "<span class='userlove'>You feel the [V] squirt over your penis!</span>")
+						to_chat(M, "<span class='userlove'>You feel \the [V] squirt over your [target]!</span>")
 					if("anus")
-						to_chat(M, "<span class='userlove'>You feel the anus constrict on your penis!</span>")
+						to_chat(M, "<span class='userlove'>You feel the anus constrict on your [target]!</span>")
 			portal_target.do_jitter_animation() //make your partner shake too!
 		else
 			user.visible_message("<span class='warning'>\The [src] beeps and does not let [M] through.</span>")
