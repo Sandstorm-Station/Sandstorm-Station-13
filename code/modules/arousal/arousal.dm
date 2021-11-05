@@ -56,7 +56,7 @@
 	return genit_list
 
 /obj/item/organ/genital/proc/climaxable(mob/living/carbon/human/H, silent = FALSE) //returns the fluid source (ergo reagents holder) if found.
-	if(CHECK_BITFIELD(genital_flags, GENITAL_FUID_PRODUCTION))
+	if((genital_flags & GENITAL_FUID_PRODUCTION))
 		. = reagents
 	else
 		if(linked_organ)
@@ -131,7 +131,7 @@
 	var/list/worn_stuff = get_equipped_items()
 
 	for(var/obj/item/organ/genital/G in internal_organs)
-		if(CHECK_BITFIELD(G.genital_flags, CAN_CLIMAX_WITH) && G.is_exposed(worn_stuff)) //filter out what you can't masturbate with
+		if((G.genital_flags & CAN_CLIMAX_WITH) && G.is_exposed(worn_stuff)) //filter out what you can't masturbate with
 			LAZYADD(genitals_list, G)
 	if(LAZYLEN(genitals_list))
 		var/obj/item/organ/genital/ret_organ = input(src, "with what?", "Climax", null) as null|obj in genitals_list
@@ -220,7 +220,7 @@
 	if(forced_climax) //Something forced us to cum, this is not a masturbation thing and does not progress to the other checks
 		log_message("was forced to climax by [cause]",LOG_EMOTE)
 		for(var/obj/item/organ/genital/G in internal_organs)
-			if(!CHECK_BITFIELD(G.genital_flags, CAN_CLIMAX_WITH)) //Skip things like wombs and testicles
+			if(!(G.genital_flags & CAN_CLIMAX_WITH)) //Skip things like wombs and testicles
 				continue
 			var/mob/living/partner
 			var/check_target
