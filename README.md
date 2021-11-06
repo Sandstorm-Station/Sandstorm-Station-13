@@ -1,5 +1,5 @@
-## Sandstorm Station 13
-Based and maintained from Citadel Station 13, which is based and maintained from /tg/station.
+## S.P.L.U.R.T. Station 13
+Based and maintained from Sandstorm Station 13, which is based and maintained from Citadel, which is based and mantained from /tg/station. (yup)
 
 [![CI Suite](https://github.com/Sandstorm-Station/Sandstorm-Station-13/workflows/CI%20Suite/badge.svg)](https://github.com/Sandstorm-Station/Sandstorm-Station-13//actions?query=workflow%3A%22CI+Suite%22)
 [![Percentage of issues still open](http://isitmaintained.com/badge/open/Sandstorm-Station/Sandstorm-Station-13.svg)](http://isitmaintained.com/project/Sandstorm-Station/Sandstorm-Station-13 "Percentage of issues still open")
@@ -24,9 +24,14 @@ Based and maintained from Citadel Station 13, which is based and maintained from
 * **Ban Appeals:** <http://citadel-station.net/forum/forumdisplay.php?fid=8>
 * **Discord:**  <https://discord.gg/E6SQuhz>
 
-**Sandstorm Station Information**
+**Sandstorm Station (upstream) Information**
 * **Code:** <https://github.com/SandPoot/Sandstorm-Station-13>
 * **Discord:**  <https://discord.gg/4vuEeFw3mS> (updated 20/07/2021)
+
+**S.P.L.U.R.T. Station Information**
+* **Code: https://github.com/Mosley1f/S.P.L.U.R.T-Station-13**
+* **Discord:** https://discord.gg/qMYnYcfErE
+* **Ko-fi:** (in progress)
 
 ## DOWNLOADING
 
