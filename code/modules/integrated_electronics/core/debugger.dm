@@ -50,12 +50,6 @@
 			data_to_write = null
 			copy_values = FALSE
 			to_chat(user, "<span class='notice'>You set \the [src]'s memory to absolutely nothing.</span>")
-		if("id lock")
-			accepting_refs = FALSE
-			copy_values = FALSE
-			copy_id = TRUE
-			to_chat(user, "<span class='notice'>You turn \the [src]'s id card scanner on. Use your own card \
-			to store the identity and id-lock an assembly.</span>")
 
 /obj/item/integrated_electronics/debugger/afterattack(atom/target, mob/living/user, proximity)
 	. = ..()

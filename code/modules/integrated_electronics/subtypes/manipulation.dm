@@ -74,7 +74,7 @@
 	if(istype(TR))
 		switch(get_pin_data(IC_INPUT, 2))
 			if(0)
-				var/list/harvest_output = TR.attack_hand()
+				var/list/harvest_output = TR.myseed.harvest_userless()
 				for(var/i in 1 to length(harvest_output))
 					harvest_output[i] = WEAKREF(harvest_output[i])
 
