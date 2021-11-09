@@ -31,7 +31,7 @@ Based and maintained from Sandstorm Station 13, which is based and maintained fr
 **S.P.L.U.R.T. Station Information**
 * **Code: https://github.com/Mosley1f/S.P.L.U.R.T-Station-13**
 * **Discord:** https://discord.gg/qMYnYcfErE
-* **Ko-fi:** (in progress)
+* **Ko-fi:** https://ko-fi.com/splurt
 
 ## DOWNLOADING
 
