@@ -365,14 +365,6 @@
 /obj/machinery/door/firedoor,
 /turf/open/floor/plasteel,
 /area/hallway/primary/central)
-"aQ" = (
-/obj/machinery/door/airlock/hatch{
-	name = "Telecomms Control Room";
-	req_one_access_txt = "19; 61"
-	},
-/obj/structure/fans/tiny,
-/turf/open/floor/plating/airless,
-/area/tcommsat/chamber)
 "aR" = (
 /obj/item/electropack/shockcollar,
 /obj/item/assembly/signaler,
@@ -3202,6 +3194,12 @@
 	},
 /turf/open/floor/plasteel,
 /area/service/hydroponics/garden/monastery)
+"iA" = (
+/obj/structure/cable{
+	icon_state = "1-2"
+	},
+/turf/open/floor/plating/airless,
+/area/tcommsat/chamber)
 "iC" = (
 /obj/effect/turf_decal/tile/neutral{
 	dir = 1
@@ -5605,6 +5603,12 @@
 	},
 /turf/open/floor/plating,
 /area/maintenance/solars/starboard)
+"ox" = (
+/obj/structure/cable{
+	icon_state = "1-2"
+	},
+/turf/open/floor/plating/airless,
+/area/space/nearstation)
 "oy" = (
 /obj/structure/railing{
 	dir = 4;
@@ -7717,12 +7721,6 @@
 /obj/machinery/atmospherics/pipe/simple/scrubbers/hidden/layer3,
 /turf/open/floor/carpet/blue,
 /area/commons/vacant_room/office)
-"tS" = (
-/obj/structure/cable{
-	icon_state = "0-2"
-	},
-/turf/open/floor/plating/airless,
-/area/tcommsat/chamber)
 "tT" = (
 /obj/structure/cable{
 	icon_state = "1-2"
@@ -8007,7 +8005,9 @@
 /obj/machinery/light{
 	dir = 4
 	},
-/obj/machinery/cryopod/tele,
+/obj/machinery/cryopod{
+	dir = 8
+	},
 /turf/open/floor/plasteel/dark,
 /area/commons/dorms)
 "uM" = (
@@ -8771,6 +8771,17 @@
 	},
 /turf/open/space/basic,
 /area/solars/starboard/fore)
+"wN" = (
+/obj/machinery/door/airlock/hatch{
+	name = "Telecomms Control Room";
+	req_one_access_txt = "19; 61"
+	},
+/obj/structure/cable{
+	icon_state = "1-2"
+	},
+/obj/structure/fans/tiny,
+/turf/open/floor/plating/airless,
+/area/tcommsat/chamber)
 "wO" = (
 /obj/machinery/airalarm/directional/south,
 /obj/structure/flora/ausbushes/grassybush,
@@ -12854,13 +12865,6 @@
 	},
 /turf/open/floor/wood,
 /area/commons/vacant_room/office)
-"Hj" = (
-/obj/machinery/newscaster{
-	pixel_x = -30
-	},
-/obj/machinery/cryopod/tele,
-/turf/open/floor/plasteel/dark,
-/area/commons/dorms)
 "Hl" = (
 /obj/effect/turf_decal/trimline/green/filled/line{
 	dir = 1
@@ -14706,6 +14710,15 @@
 	},
 /turf/open/floor/plasteel,
 /area/commons/fitness/recreation)
+"LG" = (
+/obj/structure/cable{
+	icon_state = "4-8"
+	},
+/obj/structure/cable{
+	icon_state = "2-4"
+	},
+/turf/open/floor/plating/airless,
+/area/space/nearstation)
 "LH" = (
 /obj/structure/cable{
 	icon_state = "4-8"
@@ -15583,6 +15596,10 @@
 	},
 /turf/open/floor/grass,
 /area/service/hydroponics/garden/monastery)
+"NW" = (
+/obj/machinery/cryopod/tele,
+/turf/open/floor/plasteel/dark,
+/area/commons/dorms)
 "NX" = (
 /obj/machinery/atmospherics/components/unary/vent_pump/on/layer1{
 	dir = 1
@@ -17169,6 +17186,13 @@
 "RU" = (
 /turf/closed/wall,
 /area/command/gateway)
+"RV" = (
+/obj/machinery/newscaster{
+	pixel_x = -30
+	},
+/obj/machinery/cryopod/tele,
+/turf/open/floor/plasteel/dark,
+/area/commons/dorms)
 "RW" = (
 /obj/effect/turf_decal/tile/blue{
 	dir = 1
@@ -19354,10 +19378,6 @@
 /obj/structure/sign/warning/electricshock,
 /turf/closed/wall/r_wall,
 /area/maintenance/solars/starboard/fore)
-"Xz" = (
-/obj/machinery/cryopod/tele,
-/turf/open/floor/plasteel/dark,
-/area/commons/dorms)
 "XA" = (
 /obj/effect/turf_decal/tile/neutral{
 	dir = 8
@@ -37254,11 +37274,11 @@ lQ
 Yv
 Yv
 Yv
-dh
-Yv
-Yv
-aQ
-tS
+LG
+ox
+ox
+wN
+iA
 kF
 Gq
 LC
@@ -61943,13 +61963,13 @@ qo
 sq
 uX
 Sz
+RV
+NW
+NW
+XJ
+lE
 yL
 lE
-lE
-XJ
-Xz
-Hj
-Xz
 gs
 Vl
 Vl
@@ -62971,13 +62991,13 @@ Fo
 pW
 uX
 Sz
-Sc
-Sc
-Sc
+NW
+NW
+NW
 Nt
 uL
-Xz
-Xz
+Sc
+Sc
 gs
 wu
 iv
