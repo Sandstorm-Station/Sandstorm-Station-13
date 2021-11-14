@@ -52,7 +52,6 @@
 	cost = 10
 	allow_duplicates = FALSE
 
-/* we've our own
 /datum/map_template/ruin/lavaland/ash_walker
 	name = "Ash Walker Nest"
 	id = "ash-walker"
@@ -61,7 +60,6 @@
 	suffix = "lavaland_surface_ash_walker1.dmm"
 	cost = 20
 	allow_duplicates = FALSE
-*/
 
 /datum/map_template/ruin/lavaland/syndicate_base
 	name = "Syndicate Lava Base"
