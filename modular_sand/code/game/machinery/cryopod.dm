@@ -2,7 +2,7 @@
 /obj/machinery/cryopod/tele
 	name = "CentCom Teleporter"
 	desc = "Suited for everyone who wishes to leave the station and go back to CentCom.\n<span class='notice'>This is not for actually getting into CentCom, you will leave the round.</span>"
-	icon = 'icons/obj/machines/implantchair.dmi'
+	icon = 'modular_sand/icons/obj/machines/implantchair.dmi'
 	icon_state = "implantchair_open"
 	tele = TRUE
 
