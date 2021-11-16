@@ -189,14 +189,6 @@
 	begin_day = 22
 	begin_month = APRIL
 
-/datum/holiday/lesbianvisibility
-	name = "Lesbian Visibility Day"
-	begin_day = 26
-	begin_month = APRIL
-
-/datum/holiday/lesbianvisibility/greet()
-	return "Today is Lesbian Visibility Day!"
-
 /datum/holiday/labor
 	name = "Labor Day"
 	begin_day = 1
@@ -300,14 +292,6 @@
 /datum/holiday/programmers/getStationPrefix()
 	return pick("span>","DEBUG: ","null","/list","EVENT PREFIX NOT FOUND") //Portability
 
-/datum/holiday/bivisibility
-	name = "Bisexual Visibility Day"
-	begin_day = 23
-	begin_month = SEPTEMBER
-
-/datum/holiday/bivisibility/greet()
-	return "Today is Bisexual Visibility Day!"
-
 /datum/holiday/questions
 	name = "Stupid-Questions Day"
 	begin_day = 28
@@ -330,21 +314,11 @@
 	begin_month = OCTOBER
 	drone_hat = /obj/item/clothing/head/papersack/smiley
 
-/datum/holiday/comingoutday
-	name = "Coming Out Day"
-	begin_day = 11
-	begin_month = OCTOBER
-
 /datum/holiday/boss
 	name = "Boss' Day"
 	begin_day = 16
 	begin_month = OCTOBER
 	drone_hat = /obj/item/clothing/head/that
-
-/datum/holiday/intersexawareness
-	name = "Intersex Awareness Day"
-	begin_day = 26
-	begin_month = OCTOBER
 
 /datum/holiday/intersexawareness/greet()
 	return "Today is Intersex Awareness Day! It has been [text2num(time2text(world.timeofday, "YYYY")) - 1996] years since the first public protest speaking out against the human rights issues faced by intersex people."
@@ -372,11 +346,6 @@
 /datum/holiday/jacqueen/greet()
 	return "Jacqueline the great Pumpqueen has come to visit!"
 
-/datum/holiday/vegan
-	name = "Vegan Day"
-	begin_day = 1
-	begin_month = NOVEMBER
-
 /datum/holiday/kindness
 	name = "Kindness Day"
 	begin_day = 13
@@ -388,23 +357,6 @@
 	begin_month = NOVEMBER
 	drone_hat = /obj/item/reagent_containers/food/snacks/grown/moonflower
 
-/datum/holiday/transawareness
-	name = "Transgender Awareness Week"
-	begin_day = 13
-	begin_month = NOVEMBER
-	end_day = 19
-
-/datum/holiday/transawareness/greet()
-	return "This week is Transgender Awareness Week!"
-
-/datum/holiday/transremembrance
-	name = "Transgender Day of Remembrance"
-	begin_day = 20
-	begin_month = NOVEMBER
-
-/datum/holiday/transremembrance/greet()
-	return "Today is the Transgender Day of Remembrance."
-
 /datum/holiday/hello
 	name = "Saying-'Hello' Day"
 	begin_day = 21
@@ -413,10 +365,6 @@
 /datum/holiday/hello/greet()
 	return "[pick(list("Aloha", "Bonjour", "Hello", "Hi", "Greetings", "Salutations", "Bienvenidos", "Hola", "Howdy", "Ni hao", "Guten Tag", "Konnichiwa", "G'day cunt"))]! " + ..()
 
-/datum/holiday/human_rights
-	name = "Human-Rights Day"
-	begin_day = 10
-	begin_month = DECEMBER
 
 /datum/holiday/monkey
 	name = "Monkey Day"
@@ -478,15 +426,6 @@
 	begin_month = JUNE
 	begin_weekday = SUNDAY
 
-/datum/holiday/pride
-	name = PRIDE_MONTH
-	begin_day = 1
-	begin_month = JUNE
-	end_day = 30
-
-/datum/holiday/pride/getStationPrefix()
-	return pick("Pride", "Gay", "Bi", "Trans", "Lesbian", "Ace", "Aro", "Agender", pick("Enby", "Enbie"), "Pan", "Intersex", "Demi", "Poly", "Closeted", "Genderfluid")
-
 /datum/holiday/stonewall
 	name = "Stonewall Riots Anniversary"
 	begin_day = 28
@@ -515,37 +454,11 @@
 /datum/holiday/moth/getStationPrefix()
 	return pick("Mothball","Lepidopteran","Lightbulb","Moth","Giant Atlas","Twin-spotted Sphynx","Madagascan Sunset","Luna","Death's Head","Emperor Gum","Polyphenus","Oleander Hawk","Io","Rosy Maple","Cecropia","Noctuidae","Giant Leopard","Dysphania Militaris","Garden Tiger")
 
-/datum/holiday/ramadan
-	name = "Start of Ramadan"
-
 /*
 
-For anyone who stumbles on this some time in the future: this was calibrated to 2017
-Calculated based on the start and end of Ramadan in 2000 (First year of the Gregorian Calendar supported by BYOND)
-This is going to be accurate for at least a decade, likely a lot longer
-Since the date fluctuates, it may be inaccurate one year and then accurate for several after
-Inaccuracies will never be by more than one day for at least a hundred years
-Finds the number of days since the day in 2000 and gets the modulo of that and the average length of a Muslim year since the first one (622 AD, Gregorian)
-Since Ramadan is an entire month that lasts 29.5 days on average, the start and end are holidays and are calculated from the two dates in 2000
+This used to be a comment about ramadan but it got deleted because we don't preach false religions here. Long Live the One True God.
 
 */
-
-/datum/holiday/ramadan/shouldCelebrate(dd, mm, yy, ww, ddd)
-	if (round(((world.realtime - 285984000) / 864000) % 354.373435326843) == 0)
-		return TRUE
-	return FALSE
-
-/datum/holiday/ramadan/getStationPrefix()
-	return pick("Harm","Halaal","Jihad","Muslim")
-
-/datum/holiday/ramadan/end
-	name = "End of Ramadan"
-
-/datum/holiday/ramadan/end/shouldCelebrate(dd, mm, yy, ww, ddd)
-	if (round(((world.realtime - 312768000) / 864000) % 354.373435326843) == 0)
-		return TRUE
-	return FALSE
-
 /datum/holiday/doomsday
 	name = "Mayan Doomsday Anniversary"
 	begin_day = 21
