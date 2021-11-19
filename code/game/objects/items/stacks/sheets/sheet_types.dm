@@ -701,7 +701,7 @@ GLOBAL_LIST_INIT(bronze_recipes, list ( \
 	new/datum/stack_recipe("bronze hat", /obj/item/clothing/head/bronze), \
 	new/datum/stack_recipe("bronze suit", /obj/item/clothing/suit/bronze), \
 	new/datum/stack_recipe("bronze boots", /obj/item/clothing/shoes/bronze), \
-	new/datum/stack_recipe("cog plant", /obj/item/kirbyplants/brass), 15, time = 50, on_floor = TRUE), \
+	new/datum/stack_recipe("cog plant", /obj/item/kirbyplants/brass, 15, time = 50, on_floor = TRUE), \
 	new/datum/stack_recipe("bronze uniform", /obj/item/clothing/under/misc/cog), \
 	new/datum/stack_recipe("bronze jumpskirt", /obj/item/clothing/under/misc/cog/jumpskirt), \
 	null,
