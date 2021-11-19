@@ -6,7 +6,7 @@
 
 /obj/item/kirbyplants/plasma
 	name = "plasma plant"
-	desc = "Wow, thats very dangerous to have an plasma plant here, right?"
+	desc = "Wow, it's very dangerous to have a plasma plant here, right?"
 	icon = 'modular_sand/icons/obj/flora/plants.dmi'
 	icon_state = "plant-02"
 
