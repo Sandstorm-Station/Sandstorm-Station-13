@@ -298,7 +298,7 @@ Difficulty: Medium
 		..()
 
 //Immune to explosions when spinning or charging
-/mob/living/simple_animal/hostile/megafauna/sif/ex_act(severity, target)
+/mob/living/simple_animal/hostile/megafauna/sif/ex_act(severity, target, origin)
 	return 0
 
 //stop spinning if you lose the target

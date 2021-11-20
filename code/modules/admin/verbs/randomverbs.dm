@@ -1613,7 +1613,7 @@ Traitors and the like can also be revived with the previous role mostly intact.
 	light_range = 2
 	duration = 9
 
-/obj/effect/temp_visual/target/ex_act()
+/obj/effect/temp_visual/target/ex_act(severity, target, origin)
 	return
 
 /obj/effect/temp_visual/target/Initialize(mapload, list/flame_hit)

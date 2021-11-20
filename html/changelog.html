@@ -5,7 +5,7 @@
   <link rel="stylesheet" type="text/css" href="changelog.css">
   <base target="_blank" />
   <script type='text/javascript'>
-  
+
 	function changeText(tagID, newText, linkTagID){
 		var tag = document.getElementById(tagID);
 		tag.innerHTML = newText;
@@ -13,8 +13,8 @@
 		linkTag.removeAttribute("href");
 		linkTag.removeAttribute("onclick");
 	}
-	
-  </script>  
+
+  </script>
 <meta http-equiv="Content-Type" content="text/html; charset=utf-8">
 </head>
 
@@ -24,7 +24,7 @@
 	<tr>
 		<td valign='top'>
 			<div align='center'><font size='3'><b>Traditional Games Space Station 13</b></font></div>
-			
+
 			<p><div align='center'><font size='3'><a href="https://citadel-station.net/forum/index.php">Forum</a> | <a href="https://citadel-station.net/wiki/index.php?title=Main_Page">Wiki</a> | <a href="https://github.com/Citadel-Station-13/Citadel-Station-13">Source</a></font></div></p>
 			</td>
 	</tr>
@@ -42,18 +42,83 @@
 </table>
 
 		<!--
-		
-		TO ADD AN ENTRY, ADD AND MAINTAIN YOUR OWN changelog/USERNAME.yml FILE. 
-		
+
+		TO ADD AN ENTRY, ADD AND MAINTAIN YOUR OWN changelog/USERNAME.yml FILE.
+
 		*** DO NOT FUCK WITH THIS FILE OR YOU WILL CAUSE MERGE CONFLICTS. ***
-		
+
 		-->
 		<div class="commit sansserif">
+
+			<h2 class="date">20 November 2021</h2>
+			<h3 class="author">Dexxiol updated:</h3>
+			<ul class="changes bgimages16">
+				<li class="rscadd">Added brass uniform, jumpskirt and plant.</li>
+				<li class="rscadd">For bonus, added plasma plant which is uncraftable for now.</li>
+			</ul>
+			<h3 class="author">SandPoot updated:</h3>
+			<ul class="changes bgimages16">
+				<li class="bugfix">Fixes hydro duplication glitch.</li>
+			</ul>
+
+			<h2 class="date">19 November 2021</h2>
+			<h3 class="author">SandPoot updated:</h3>
+			<ul class="changes bgimages16">
+				<li class="bugfix">Picking speech color should make sense now.</li>
+				<li class="bugfix">Acid will disappear when not existant.</li>
+				<li class="code_imp">Updates component Destroy code, might result in less component related runtimes.</li>
+			</ul>
+
+			<h3 class="author">shellspeed1 updated:</h3>
+			<ul class="changes bgimages16">
+				<li class="rscadd">An experimental smart dart repeater rifle has been added by NT. It accepts both a large and small hypovials and uses it to fill the smart darts it synthesizes. It can hold 6 smart darts and makes a new one every 20 seconds.  To research it, grab the medical weaponry node. tweak: Reagent gun renamed to reagent repeater</li>
+				<li class="balance">reagent repeater now holds 6 syringes.</li>
+				<li class="balance">Reagent repeater and smart dart repeater rifle start with 4 syringes instead of a full clip.</li>
+				<li class="balance">reagent repeater synthesizes a new syringe every 20 seconds. tweak: smart dart guns now use the syringe gun as an inhands sprite.</li>
+			</ul>
+
+			<h2 class="date">18 November 2021</h2>
+			<h3 class="author">DeltaFire15 updated:</h3>
+			<ul class="changes bgimages16">
+				<li class="bugfix">Devastation level explosions no longer delete your organs after gibbing you.</li>
+				<li class="code_imp">Adjusted all overrides of ex_act() and contents_explosion() to take account of current args for them.</li>
+				<li class="code_imp">Reebe can now be loaded via a proc. tweak: The clockwork relay in reebe is now indestructible and not deconstrutible to avoid some issues.</li>
+			</ul>
+			<h3 class="author">Putnam3145 updated:</h3>
+			<ul class="changes bgimages16">
+				<li class="bugfix">Regal rat can no longer keep spawning stuff while dead</li>
+			</ul>
+			<h3 class="author">SandPoot updated:</h3>
+			<ul class="changes bgimages16">
+				<li class="rscadd">Lust tolerance and sexual potency are now prefs.</li>
+				<li class="tweak">No more refractory period.</li>
+				<li class="bugfix">Fixes some stuff with self interactions.</li>
+				<li class="sounddel">No more loud slapping on frotting.</li>
+				<li class="rscadd">When your statpanel doesn't load, you'll get a message with a button to fix it.</li>
+				<li class="bugfix">The fix chat message button now works.</li>
+			</ul>
+			<h3 class="author">keronshb updated:</h3>
+			<ul class="changes bgimages16">
+				<li class="rscadd">Ball</li>
+				<li class="rscadd">Spookystation Map</li>
+				<li class="rscadd">Tree chopping/Grass cutting</li>
+				<li class="rscadd">Vectorcars</li>
+			</ul>
 
 			<h2 class="date">17 November 2021</h2>
 			<h3 class="author">Dexxiol updated:</h3>
 			<ul class="changes bgimages16">
 				<li class="imageadd">Resprited the centcom teleporter</li>
+			</ul>
+
+			<h2 class="date">16 November 2021</h2>
+			<h3 class="author">Putnam3145 updated:</h3>
+			<ul class="changes bgimages16">
+				<li class="bugfix">Lavaland can no longer go below 281 kelvins</li>
+			</ul>
+			<h3 class="author">TripleShades updated:</h3>
+			<ul class="changes bgimages16">
+				<li class="bugfix">(Pubby) Engineering security checkpoint no longer has a duplicate records console</li>
 			</ul>
 
 			<h2 class="date">14 November 2021</h2>
@@ -455,25 +520,6 @@
 				<li class="rscdel">old tips</li>
 				<li class="imageadd">all medipens get inhands</li>
 				<li class="rscadd">some more brainhurt lines</li>
-			</ul>
-
-			<h2 class="date">18 September 2021</h2>
-			<h3 class="author">kiwedespars updated:</h3>
-			<ul class="changes bgimages16">
-				<li class="balance">blacklisted morphine and haloperidol from dart guns</li>
-			</ul>
-
-			<h2 class="date">17 September 2021</h2>
-			<h3 class="author">DeltaFire15 updated:</h3>
-			<ul class="changes bgimages16">
-				<li class="bugfix">Techweb hidden nodes should now show less weird behavior.</li>
-			</ul>
-
-			<h2 class="date">16 September 2021</h2>
-			<h3 class="author">SandPoot updated:</h3>
-			<ul class="changes bgimages16">
-				<li class="tweak">Makes it so ooc notes always appear (just so people can see your erp prefs) even if empty, the only exception is having your face covered.</li>
-				<li class="bugfix">You should no longer always see people's flavor texts (if they were visible) while they are masked or something, didn't really notice anything before but just to make sure.</li>
 			</ul>
 		</div>
 

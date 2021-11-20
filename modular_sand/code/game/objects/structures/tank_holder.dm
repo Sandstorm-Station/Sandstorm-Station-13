@@ -74,9 +74,9 @@
 		after_detach_tank()
 	return ..()
 
-/obj/structure/tank_holder/contents_explosion(severity, target)
+/obj/structure/tank_holder/contents_explosion(severity, target, origin)
 	if(tank)
-		tank.ex_act(severity, target)
+		tank.ex_act(severity, target, origin)
 
 /// Call this after taking the tank from contents in order to update references, icon
 /// and density.

@@ -66,7 +66,7 @@ Difficulty: Insanely Hard
 	glorythreshold = 50
 	crusher_loot = list(/obj/item/crusher_trophy/king_goat)
 
-/mob/living/simple_animal/hostile/megafauna/king/ex_act(severity, target)
+/mob/living/simple_animal/hostile/megafauna/king/ex_act(severity, target, origin)
 	switch (severity)
 		if (1)
 			adjustBruteLoss(100)
