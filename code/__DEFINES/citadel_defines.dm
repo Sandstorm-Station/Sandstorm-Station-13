@@ -11,8 +11,9 @@
 #define TESTICLES_LAYER_INDEX	3
 #define GENITAL_LAYER_INDEX		4
 #define PENIS_LAYER_INDEX		5
+#define BREASTS_LAYER_INDEX		6
 
-#define GENITAL_LAYER_INDEX_LENGTH 5 //keep it updated with each new index added, thanks.
+#define GENITAL_LAYER_INDEX_LENGTH 6 //keep it updated with each new index added, thanks.
 
 //genital flags
 #define GENITAL_BLACKLISTED		(1<<0) //for genitals that shouldn't be added to GLOB.genitals_list.
@@ -44,9 +45,12 @@
 
 #define DEF_BALLS_SHAPE		"Single"
 
+//SPLURT change, support for more sizes
 #define BALLS_SIZE_MIN		1
 #define BALLS_SIZE_DEF		2
-#define BALLS_SIZE_MAX		3
+#define BALLS_SIZE_2		3
+#define BALLS_SIZE_3		4
+#define BALLS_SIZE_MAX		5
 
 #define CUM_RATE			2 // units per 10 seconds
 #define CUM_RATE_MULT		1

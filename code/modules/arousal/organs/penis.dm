@@ -46,8 +46,10 @@
 			new_size = 2
 		if(12 to 36) //If massive
 			new_size = 3
-		if(37 to INFINITY) //If comical
-			new_size = 4 //no new sprites for anything larger yet
+		if(37 to 48) //If comical
+			new_size = 4 //no new sprites for anything larger yet //Now there is :3
+		if(49 to INFINITY)
+			new_size = 5
 
 	if(linked_organ)
 		linked_organ.size = clamp(size + new_size, BALLS_SIZE_MIN, BALLS_SIZE_MAX)
