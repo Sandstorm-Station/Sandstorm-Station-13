@@ -75,25 +75,26 @@
 		H.reagents.remove_reagent(type, 5)
 		B.Insert(H)
 
-	B.modify_size(0.05)
+	B.modify_size(0.1)
 	return ..()
 
 /datum/reagent/fermi/breast_enlarger/overdose_process(mob/living/carbon/M) //Turns you into a female if male and ODing, doesn't touch nonbinary and object genders.
 	if(!(M.client?.prefs.cit_toggles & FORCED_FEM))
 		return ..()
 
-	var/obj/item/organ/genital/penis/P = M.getorganslot(ORGAN_SLOT_PENIS)
-	var/obj/item/organ/genital/testicles/T = M.getorganslot(ORGAN_SLOT_TESTICLES)
+	//var/obj/item/organ/genital/penis/P = M.getorganslot(ORGAN_SLOT_PENIS)
+	//var/obj/item/organ/genital/testicles/T = M.getorganslot(ORGAN_SLOT_TESTICLES)
 	var/obj/item/organ/genital/vagina/V = M.getorganslot(ORGAN_SLOT_VAGINA)
 	var/obj/item/organ/genital/womb/W = M.getorganslot(ORGAN_SLOT_WOMB)
 
-	if(M.gender == MALE)
+	//SPLURT change //It won't have negative effects on masculine organs nor cahnge your gender
+	/*if(M.gender == MALE)
 		M.set_gender(FEMALE)
 
 	if(P)
 		P.modify_size(-0.05)
 	if(T)
-		qdel(T)
+		qdel(T)*/
 	if(!V)
 		V = new
 		V.Insert(M)
@@ -193,8 +194,18 @@
 	var/mob/living/carbon/human/H = M
 	if(!(H.client?.prefs.cit_toggles & PENIS_ENLARGEMENT))
 		return ..()
+
+	var/obj/item/organ/genital/testicles/T = H.getorganslot(ORGAN_SLOT_TESTICLES) //Hyper Change, testicles come first so the dick isn't hidden behind the testicles layer
 	var/obj/item/organ/genital/penis/P = H.getorganslot(ORGAN_SLOT_PENIS)
 	//otherwise proceed as normal
+
+	if(!T)//Hyper change// Adds testicles if there are none.
+
+		T = new
+		T.size = BALLS_SIZE_MIN
+		to_chat(H, "<span class='warning'>Your groin feels warm, as you feel two sensitive orbs taking shape below.</b></span>")
+		T.Insert(H)
+
 	if(!P)//They do have a preponderance for escapism, or so I've heard.
 
 		P = new
@@ -214,12 +225,14 @@
 	if(!(M.client?.prefs.cit_toggles & FORCED_MASC))
 		return..()
 
-	var/obj/item/organ/genital/breasts/B = M.getorganslot(ORGAN_SLOT_BREASTS)
-	var/obj/item/organ/genital/testicles/T = M.getorganslot(ORGAN_SLOT_TESTICLES)
-	var/obj/item/organ/genital/vagina/V = M.getorganslot(ORGAN_SLOT_VAGINA)
-	var/obj/item/organ/genital/womb/W = M.getorganslot(ORGAN_SLOT_WOMB)
+	//SPLURT change no negative effects. Will probably make it instead just grow faster later
 
-	if(M.gender == FEMALE)
+	//var/obj/item/organ/genital/breasts/B = M.getorganslot(ORGAN_SLOT_BREASTS)
+	var/obj/item/organ/genital/testicles/T = M.getorganslot(ORGAN_SLOT_TESTICLES)
+	//var/obj/item/organ/genital/vagina/V = M.getorganslot(ORGAN_SLOT_VAGINA)
+	//var/obj/item/organ/genital/womb/W = M.getorganslot(ORGAN_SLOT_WOMB)
+
+	/*if(M.gender == FEMALE)
 		M.set_gender(MALE)
 
 	if(B)
@@ -227,7 +240,7 @@
 	if(M.getorganslot(ORGAN_SLOT_VAGINA))
 		qdel(V)
 	if(W)
-		qdel(W)
+		qdel(W)*/
 	if(!T)
 		T = new
 		T.Insert(M)

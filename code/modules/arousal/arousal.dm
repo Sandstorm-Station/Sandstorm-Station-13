@@ -109,6 +109,9 @@
 	if(spillage)
 		to_chat(src,"<span class='userlove'>You orgasm with [L], spilling out of them, using your [G.name].</span>")
 		to_chat(L,"<span class='userlove'>[src] climaxes with you, overflowing and spilling, using [p_their()] [G.name]!</span>")
+		var/mob/living/carbon/human/H = L
+		if(H)
+			H.cumdrip_rate += rand(5,10)
 	else //knots and other non-spilling orgasms
 		to_chat(src,"<span class='userlove'>You climax with [L], your [G.name] spilling nothing.</span>")
 		to_chat(L,"<span class='userlove'>[src] climaxes with you, [p_their()] [G.name] spilling nothing!</span>")

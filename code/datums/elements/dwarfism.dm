@@ -18,8 +18,10 @@
 	var/mob/living/L = target
 	if(L.lying != 0)
 		L.transform = L.transform.Scale(SHORT, 1)
+		L.transform = L.transform.Translate(16*(SHORT-1), 0) //Makes sure you stand on the tile no matter the size - sand
 	else
 		L.transform = L.transform.Scale(1, SHORT)
+		L.transform = L.transform.Translate(0, 16*(SHORT-1)) //Makes sure you stand on the tile no matter the size - sand
 	attached_targets[target] = comsig_target
 	RegisterSignal(target, comsig, .proc/check_loss) //Second arg of the signal will be checked against the comsig_target.
 
@@ -33,8 +35,10 @@
 		return
 	if(L.lying != 0)
 		L.transform = L.transform.Scale(TALL, 1)
+		L.transform = L.transform.Translate(16*(TALL-1), 0) //Makes sure you stand on the tile no matter the size - sand
 	else
 		L.transform = L.transform.Scale(1, TALL)
+		L.transform = L.transform.Translate(0, 16*(TALL-1)) //Makes sure you stand on the tile no matter the size - sand
 	UnregisterSignal(L, comsig)
 	attached_targets -= L
 

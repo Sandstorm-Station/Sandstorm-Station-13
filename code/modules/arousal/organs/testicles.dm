@@ -33,8 +33,12 @@
 			size_name = "average"
 		if(BALLS_SIZE_DEF)
 			size_name = "enlarged"
-		if(BALLS_SIZE_MAX)
+		if(BALLS_SIZE_2)
 			size_name = "engorged"
+		if(BALLS_SIZE_3)
+			size_name = "massive"
+		if(BALLS_SIZE_MAX)
+			size_name = pick(list("gigantic", "ginormous", "humongous", "unfathomably immense"))
 		else
 			size_name = "nonexistant"
 

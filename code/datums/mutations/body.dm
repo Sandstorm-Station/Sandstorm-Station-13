@@ -341,16 +341,18 @@
 	if(..())
 		return
 	ADD_TRAIT(owner, TRAIT_GIANT, GENETIC_MUTATION)
-	owner.resize = 1.25
-	owner.update_transform()
+	var/old_size = owner.dna?.features["body_size"]
+	owner.dna?.features["body_size"] *= 1.25
+	owner.dna.update_body_size(old_size)
 	owner.visible_message("<span class='danger'>[owner] suddenly grows!</span>", "<span class='notice'>Everything around you seems to shrink..</span>")
 
 /datum/mutation/human/gigantism/on_losing(mob/living/carbon/human/owner)
 	if(..())
 		return
 	REMOVE_TRAIT(owner, TRAIT_GIANT, GENETIC_MUTATION)
-	owner.resize = 0.8
-	owner.update_transform()
+	var/old_size = owner.dna.features["body_size"]
+	owner.dna.features["body_size"] *= 0.8
+	owner.dna.update_body_size(old_size)
 	owner.visible_message("<span class='danger'>[owner] suddenly shrinks!</span>", "<span class='notice'>Everything around you seems to grow..</span>")
 
 /datum/mutation/human/spastic
