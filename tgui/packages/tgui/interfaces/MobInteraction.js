@@ -181,7 +181,6 @@ const ContentPreferencesTab = (props, context) => {
     penis_enlargement,
     never_hypno,
     no_aphro,
-    no_ass_slap,
     no_auto_wag,
   } = data;
   return (
@@ -320,14 +319,6 @@ const ContentPreferencesTab = (props, context) => {
         selected={no_aphro}
         onClick={() => act('pref', {
           pref: 'no_aphro',
-        })}
-      />
-      <Button
-        content="Ass slapping"
-        icon={no_ass_slap ? "toggle-on" : "toggle-off"}
-        selected={no_ass_slap}
-        onClick={() => act('pref', {
-          pref: 'no_ass_slap',
         })}
       />
       <Button
