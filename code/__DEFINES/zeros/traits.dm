@@ -3,3 +3,4 @@
 #define TRAIT_CURSED_BLOOD "cursed_blood" //Yo dawg I heard you like bloodborne references so I put a
 #define TRAIT_HEADPAT_SLUT "headpat_slut"
 #define TRAIT_DISTANT "headpat_hater"
+#define TRAIT_NO_CLONE "no_clone"
