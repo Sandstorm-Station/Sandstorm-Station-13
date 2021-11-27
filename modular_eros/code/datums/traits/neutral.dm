@@ -48,3 +48,19 @@
 	mob_trait = TRAIT_HEADPAT_SLUT
 	value = 0
 	medical_record_text = "Patient seems overly affectionate."
+
+/datum/quirk/in_heat
+	name = "In Heat"
+	desc = "Your system burns with the desire to be bred. Satisfying your lust will make you happy, but ignoring it may cause you to become sad and needy."
+	value = 0
+	mob_trait = TRAIT_IN_HEAT
+	gain_text = "<span class='notice'>You body burns with the desire to be bred.</span>"
+	lose_text = "<span class='notice'>You feel more in control of your body and thoughts.</span>"
+
+/datum/quirk/heat
+	name = "Estrus Detection"
+	desc = "You have a animalistic sense of detecting if someone is in heat."
+	value = 0
+	mob_trait = TRAIT_HEAT_DETECT
+	gain_text = "<span class='notice'>You feel your senses adjust, allowing a animalistic sense of others' fertility.</span>"
+	lose_text = "<span class='notice'>You feel your sense of others' fertility fade.</span>"

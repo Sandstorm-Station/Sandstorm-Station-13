@@ -894,6 +894,8 @@
 		. += dna.species.check_weakness(weapon, attacker)
 
 /mob/living/carbon/human/is_literate()
+	if(HAS_TRAIT(src, TRAIT_ILLITERATE))
+		return FALSE
 	return TRUE
 
 /mob/living/carbon/human/update_gravity(has_gravity,override = 0)
