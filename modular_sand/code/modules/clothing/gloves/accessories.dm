@@ -9,6 +9,10 @@
 	icon_state = "ringgold"
 	item_state = "gring"
 	strip_delay = 40
+	var/transfer_prints = FALSE
+	var/transfer_blood = 0
+	var/strip_mod = 1
+	var/strip_silence = FALSE
 
 /obj/item/clothing/accessory/ring/suicide_act(mob/living/carbon/user)
 	user.visible_message("<span class='suicide'>\[user] is putting the [src] in [user.p_their()] mouth! It looks like [user] is trying to choke on the [src]!</span>")
@@ -16,6 +20,9 @@
 
 /obj/item/clothing/accessory/ring/attack_self(mob/user)
 	user.visible_message("<span class='warning'>\The [user] gets down on one knee, presenting \the [src].</span>","<span class='warning'>You get down on one knee, presenting \the [src].</span>")
+
+/obj/item/clothing/accessory/ring/proc/Touch(atom/A, proximity)
+	return FALSE // return TRUE to cancel attack_hand()
 
 /obj/item/clothing/accessory/ring/diamond
 	name = "diamond ring"
