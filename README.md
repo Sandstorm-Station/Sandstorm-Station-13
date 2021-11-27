@@ -29,7 +29,7 @@ Based and maintained from Sandstorm Station 13, which is based and maintained fr
 * **Discord:**  <https://discord.gg/4vuEeFw3mS> (updated 20/07/2021)
 
 **S.P.L.U.R.T. Station Information**
-* **Code: https://github.com/Mosley1f/S.P.L.U.R.T-Station-13**
+* **Code:** https://github.com/SPLURT-Station/S.P.L.U.R.T-Station-13
 * **Discord:** https://discord.gg/qMYnYcfErE
 * **Ko-fi:** https://ko-fi.com/splurt
 
