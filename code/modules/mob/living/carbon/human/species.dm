@@ -1815,7 +1815,7 @@ GLOBAL_LIST_EMPTY(roundstart_race_names)
 		user.do_attack_animation(target, ATTACK_EFFECT_ASS_SLAP)
 		if(HAS_TRAIT(target, TRAIT_STEEL_ASS))
 			var/hit_zone = (user.held_index_to_dir(user.active_hand_index) == "l" ? "l_":"r_") + "arm"
-			user.adjustBruteLoss(10, affected_zone = hit_zone)
+			user.adjustStaminaLoss(50)
 			user.visible_message(\
 				"<span class='danger'>\The [user] slaps \the [target]'s ass, but their hand bounces off like they hit metal!</span>",\
 				"<span class='danger'>You slap [user == target ? "your" : "\the [target]'s"] ass, but feel an intense amount of pain as you realise their buns are harder than steel!</span>",\

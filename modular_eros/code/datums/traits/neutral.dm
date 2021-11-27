@@ -98,5 +98,5 @@
 		var/datum/species/species = H.dna.species
 		if(initial(species.liked_food) & MEAT)
 			species.liked_food |= MEAT
-		if(!initial(species.disliked_food) & MEAT)
+		if(initial(species.disliked_food) & ~MEAT)
 			species.disliked_food &= ~MEAT
