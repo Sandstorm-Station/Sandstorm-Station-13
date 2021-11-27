@@ -105,11 +105,9 @@
 	name = "Extra productive genitals"
 	desc = "Your lower bits produce more and hold more than normal."
 	value = 0
-	category = CATEGORY_SEXUAL
-	mob_trait = TRAIT_CUM_PLUS
 	gain_text = "<span class='notice'>You feel pressure in your groin.</span>"
 	lose_text = "<span class='notice'>You feel a weight lifted from your groin.</span>"
-	medical_record_text = "Patient has greatly increased production of sexual fluids"
+	medical_record_text = "Patient has greatly increased production of sexual fluids."
 
 /datum/quirk/cum_plus/add()
 	var/mob/living/carbon/M = quirk_holder
