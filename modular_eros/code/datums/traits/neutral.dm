@@ -34,3 +34,17 @@
 	gain_text = "<span class='notice'>A curse from a land where men return as beasts runs deep in your blood.</span>"
 	lose_text = "<span class='notice'>You feel the weight of the curse in your blood finally gone.</span>"
 	medical_record_text = "Patient suffers from an unknown type of aversion to holy reagents. Keep them away from a chaplain."
+
+/datum/quirk/headpat_hater
+	name = "Distant"
+	desc = "You don't seem to show much care for being touched. Whether it's because you're reserved or due to self control, you won't wag your tail outside of your own control should you possess one."
+	mob_trait = TRAIT_DISTANT
+	value = 0
+	medical_record_text = "Patient cares little with or dislikes being touched."
+
+/datum/quirk/headpat_slut
+	name = "Headpat Slut"
+	desc = "You like headpats, alot, maybe even a little bit too much. Headpats give you a bigger mood boost and cause arousal"
+	mob_trait = TRAIT_HEADPAT_SLUT
+	value = 0
+	medical_record_text = "Patient seems overly affectionate."
