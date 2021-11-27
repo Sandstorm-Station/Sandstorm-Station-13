@@ -6979,7 +6979,6 @@
 /obj/effect/turf_decal/tile/blue{
 	dir = 8
 	},
-/obj/structure/bedsheetbin/color,
 /turf/open/floor/plasteel/cafeteria,
 /area/commons/dorms)
 "ash" = (
@@ -48310,6 +48309,7 @@
 /obj/effect/turf_decal/tile/blue{
 	dir = 8
 	},
+/obj/structure/bedsheetbin/color,
 /turf/open/floor/plasteel/cafeteria,
 /area/commons/dorms)
 "coe" = (
@@ -50549,6 +50549,9 @@
 	name = "Station Intercom (General)";
 	pixel_y = 26
 	},
+/obj/structure/sign/painting/library{
+	pixel_x = -32
+	},
 /turf/open/floor/plasteel/dark,
 /area/service/library/lounge)
 "cww" = (
@@ -50643,6 +50646,9 @@
 /obj/structure/table/wood,
 /obj/item/folder/yellow,
 /obj/item/pen,
+/obj/structure/sign/painting/library{
+	pixel_x = -32
+	},
 /turf/open/floor/plasteel/dark,
 /area/service/library/lounge)
 "cxb" = (
@@ -51506,6 +51512,12 @@
 	icon_state = "platingdmg3"
 	},
 /area/maintenance/department/security/brig)
+"cHB" = (
+/obj/structure/sign/painting/library{
+	pixel_y = -32
+	},
+/turf/open/floor/plasteel/dark,
+/area/service/library)
 "cHS" = (
 /obj/structure/cable{
 	icon_state = "1-2"
@@ -55628,6 +55640,9 @@
 /obj/structure/chair/wood/normal{
 	dir = 1
 	},
+/obj/structure/sign/painting/library{
+	pixel_x = -32
+	},
 /turf/open/floor/plasteel/dark,
 /area/service/library/lounge)
 "jXA" = (
@@ -55847,6 +55862,12 @@
 	},
 /turf/open/floor/plating,
 /area/maintenance/solars/port)
+"kro" = (
+/obj/structure/sign/painting/library{
+	pixel_x = -32
+	},
+/turf/open/floor/plasteel/dark,
+/area/service/library)
 "krU" = (
 /obj/structure/chair{
 	dir = 4
@@ -56510,6 +56531,12 @@
 /obj/structure/closet/crate/bin,
 /turf/open/floor/carpet,
 /area/service/chapel/office)
+"lzT" = (
+/obj/structure/sign/painting/library{
+	pixel_y = 32
+	},
+/turf/open/floor/plasteel/dark,
+/area/service/library)
 "lAf" = (
 /obj/machinery/light/small{
 	dir = 1
@@ -58078,6 +58105,9 @@
 "nYC" = (
 /obj/structure/cable{
 	icon_state = "2-8"
+	},
+/obj/structure/sign/painting/library{
+	pixel_y = 32
 	},
 /turf/open/floor/plasteel/dark,
 /area/service/library)
@@ -60391,6 +60421,9 @@
 "rSE" = (
 /obj/machinery/light/small{
 	dir = 4
+	},
+/obj/structure/sign/painting/library{
+	pixel_x = 32
 	},
 /turf/open/floor/plasteel/dark,
 /area/service/library/lounge)
@@ -81246,11 +81279,11 @@ aht
 aht
 cjp
 cjp
-ckH
+lzT
 cyZ
 ckH
-ckH
-ckH
+kro
+kro
 ckH
 czI
 ckH
@@ -81511,7 +81544,7 @@ mXJ
 mXJ
 czM
 ckH
-ckH
+cHB
 cjp
 cjp
 cyU
@@ -83824,7 +83857,7 @@ ckH
 ckH
 rzm
 ckH
-ckH
+cHB
 cjp
 cjp
 cyU
