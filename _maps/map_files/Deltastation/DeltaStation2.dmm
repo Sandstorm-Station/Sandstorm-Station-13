@@ -36425,8 +36425,8 @@
 /turf/open/floor/plating,
 /area/maintenance/port)
 "cEA" = (
-/obj/effect/turf_decal/vg_decals/atmos/carbon_dioxide,
-/turf/open/floor/engine/co2,
+/obj/effect/turf_decal/vg_decals/atmos/air,
+/turf/open/floor/engine/air,
 /area/engineering/atmos)
 "cFF" = (
 /turf/open/floor/engine{
@@ -43312,6 +43312,7 @@
 /obj/effect/turf_decal/tile/blue{
 	dir = 8
 	},
+/obj/item/kirbyplants/random,
 /turf/open/floor/plasteel/white,
 /area/medical/storage)
 "cWx" = (
@@ -75568,7 +75569,6 @@
 	name = "medbay camera";
 	network = list("ss13","medbay")
 	},
-/obj/item/kirbyplants/random,
 /obj/effect/turf_decal/tile/neutral,
 /obj/effect/turf_decal/tile/neutral{
 	dir = 4
@@ -81110,6 +81110,7 @@
 /obj/machinery/light/small{
 	dir = 8
 	},
+/obj/machinery/atmospherics/miner/toxins,
 /turf/open/floor/engine/plasma,
 /area/engineering/atmos)
 "hEm" = (
@@ -92190,7 +92191,7 @@
 /turf/closed/wall,
 /area/commons/storage/primary)
 "lkg" = (
-/obj/machinery/atmospherics/miner/toxins,
+/obj/effect/turf_decal/vg_decals/atmos/plasma,
 /turf/open/floor/engine/plasma,
 /area/engineering/atmos)
 "lkF" = (
@@ -93751,7 +93752,7 @@
 /turf/open/floor/plasteel,
 /area/engineering/main)
 "lNq" = (
-/obj/machinery/atmospherics/miner/nitrogen,
+/obj/effect/turf_decal/vg_decals/atmos/nitrogen,
 /turf/open/floor/engine/n2,
 /area/engineering/atmos)
 "lNA" = (
@@ -95106,8 +95107,8 @@
 /turf/open/floor/plasteel/dark,
 /area/engineering/atmos)
 "mmq" = (
-/obj/effect/turf_decal/vg_decals/atmos/nitrogen,
-/turf/open/floor/engine/n2,
+/obj/effect/turf_decal/vg_decals/atmos/mix,
+/turf/open/floor/engine/vacuum,
 /area/engineering/atmos)
 "mmC" = (
 /obj/structure/cable/white{
@@ -95580,6 +95581,7 @@
 /obj/machinery/light/small{
 	dir = 8
 	},
+/obj/machinery/atmospherics/miner/n2o,
 /turf/open/floor/engine/n2o,
 /area/engineering/atmos)
 "mwH" = (
@@ -98674,6 +98676,7 @@
 /obj/machinery/light/small{
 	dir = 8
 	},
+/obj/machinery/atmospherics/miner/carbon_dioxide,
 /turf/open/floor/engine/co2,
 /area/engineering/atmos)
 "nzv" = (
@@ -100620,7 +100623,7 @@
 /turf/open/floor/plasteel/dark,
 /area/service/library)
 "ohX" = (
-/obj/machinery/atmospherics/miner/carbon_dioxide,
+/obj/effect/turf_decal/vg_decals/atmos/carbon_dioxide,
 /turf/open/floor/engine/co2,
 /area/engineering/atmos)
 "ohZ" = (
@@ -102657,7 +102660,7 @@
 /turf/open/floor/plasteel,
 /area/engineering/break_room)
 "oTt" = (
-/obj/machinery/atmospherics/miner/n2o,
+/obj/effect/turf_decal/vg_decals/atmos/nitrous_oxide,
 /turf/open/floor/engine/n2o,
 /area/engineering/atmos)
 "oTJ" = (
@@ -106089,7 +106092,6 @@
 	dir = 1;
 	name = "atmospherics camera"
 	},
-/obj/effect/turf_decal/vg_decals/atmos/mix,
 /turf/open/floor/engine/vacuum,
 /area/engineering/atmos)
 "qbJ" = (
@@ -106137,10 +106139,6 @@
 	dir = 6
 	},
 /turf/open/floor/plating,
-/area/engineering/atmos)
-"qcm" = (
-/obj/effect/turf_decal/vg_decals/atmos/plasma,
-/turf/open/floor/engine/plasma,
 /area/engineering/atmos)
 "qcW" = (
 /obj/machinery/firealarm{
@@ -108338,10 +108336,6 @@
 	},
 /turf/open/floor/plasteel,
 /area/engineering/atmospherics_engine)
-"qYy" = (
-/obj/effect/turf_decal/vg_decals/atmos/oxygen,
-/turf/open/floor/engine/o2,
-/area/engineering/atmos)
 "qYD" = (
 /obj/machinery/atmospherics/pipe/simple/yellow/visible{
 	dir = 9
@@ -110022,10 +110016,6 @@
 	dir = 6
 	},
 /area/science/circuit)
-"rCx" = (
-/obj/effect/turf_decal/vg_decals/atmos/nitrous_oxide,
-/turf/open/floor/engine/n2o,
-/area/engineering/atmos)
 "rCK" = (
 /obj/machinery/button/door{
 	id = "teleporterhubshutters";
@@ -116222,10 +116212,6 @@
 	},
 /turf/open/floor/plasteel/dark,
 /area/ai_monitored/aisat/exterior)
-"tBF" = (
-/obj/effect/turf_decal/vg_decals/atmos/air,
-/turf/open/floor/engine/air,
-/area/engineering/atmos)
 "tBH" = (
 /obj/machinery/door/airlock/atmos/glass/critical{
 	heat_proof = 1;
@@ -117247,7 +117233,7 @@
 /turf/open/floor/plasteel,
 /area/cargo/storage)
 "tWb" = (
-/obj/machinery/atmospherics/miner/oxygen,
+/obj/effect/turf_decal/vg_decals/atmos/oxygen,
 /turf/open/floor/engine/o2,
 /area/engineering/atmos)
 "tWi" = (
@@ -118687,6 +118673,7 @@
 /obj/machinery/light/small{
 	dir = 4
 	},
+/obj/machinery/atmospherics/miner/oxygen,
 /turf/open/floor/engine/o2,
 /area/engineering/atmos)
 "uuL" = (
@@ -125421,6 +125408,7 @@
 /obj/machinery/light/small{
 	dir = 4
 	},
+/obj/machinery/atmospherics/miner/nitrogen,
 /turf/open/floor/engine/n2,
 /area/engineering/atmos)
 "wXR" = (
@@ -150204,18 +150192,18 @@ aSQ
 iio
 iMu
 ohX
-cEA
+hFW
 iio
 sEM
 lkg
-qcm
+kRS
 iio
 rUo
 oTt
-rCx
+lbI
 iio
 kcG
-kcG
+mmq
 qbG
 iio
 aad
@@ -157654,16 +157642,16 @@ aaa
 aad
 iio
 wTN
+cEA
 lEq
-tBF
 iio
 wjw
 tWb
-qYy
+sCm
 iio
 eFu
 lNq
-mmq
+skw
 iio
 aMN
 emZ
