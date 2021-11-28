@@ -63,18 +63,20 @@
 	icon_state = "woodenbarricade"
 	bar_material = WOOD
 	var/drop_amount = 3
+	var/plank_type = /obj/item/stack/sheet/mineral/wood
+	var/wall_type = /turf/closed/wall/mineral/wood/nonmetal
 
 /obj/structure/barricade/wooden/attackby(obj/item/I, mob/user)
-	if(istype(I,/obj/item/stack/sheet/mineral/wood))
-		var/obj/item/stack/sheet/mineral/wood/W = I
+	if(istype(I, plank_type))
+		var/obj/item/stack/sheet/W = I
 		if(W.amount < 5)
-			to_chat(user, "<span class='warning'>You need at least five wooden planks to make a wall!</span>")
+			to_chat(user, "<span class='warning'>You need at least five planks to make a wall!</span>")
 			return
 		to_chat(user, "<span class='notice'>You start adding [I] to [src]...</span>")
 		if(do_after(user, 50, target=src))
 			W.use(5)
 			var/turf/T = get_turf(src)
-			T.PlaceOnTop(/turf/closed/wall/mineral/wood/nonmetal)
+			T.PlaceOnTop(wall_type)
 			qdel(src)
 		return
 	return ..()
@@ -94,7 +96,7 @@
 	max_integrity = 75
 
 /obj/structure/barricade/wooden/make_debris()
-	new /obj/item/stack/sheet/mineral/wood(get_turf(src), drop_amount)
+	new plank_type(get_turf(src), drop_amount)
 
 
 /obj/structure/barricade/sandbags
