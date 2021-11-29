@@ -59,7 +59,7 @@ var/const/RESIZE_A_TINYMICRO = (RESIZE_TINY + RESIZE_MICRO) / 2
 //Stepping on disarm intent -- TO DO, OPTIMIZE ALL OF THIS SHIT
 /mob/living/proc/handle_micro_bump_other(var/mob/living/carbon/tmob)
 	ASSERT(isliving(tmob))
-	if(ishuman(src))
+	if(ishuman(src) && tmob.has_dna())
 		var/mob/living/carbon/human/H = src
 
 		if(tmob.pulledby == H)

@@ -1813,7 +1813,20 @@ GLOBAL_LIST_EMPTY(roundstart_race_names)
 			return FALSE
 		if(!user.UseStaminaBuffer(3, warn = TRUE))
 			return FALSE
+
+		playsound(target.loc, 'sound/weapons/slap.ogg', 50, 1, -1)
 		user.do_attack_animation(target, ATTACK_EFFECT_ASS_SLAP)
+		if(HAS_TRAIT(target, TRAIT_STEEL_ASS))
+			user.adjustStaminaLoss(50)
+			user.visible_message(\
+				"<span class='danger'>\The [user] slaps \the [target]'s ass, but their hand bounces off like they hit metal!</span>",\
+				"<span class='danger'>You slap [user == target ? "your" : "\the [target]'s"] ass, but feel an intense amount of pain as you realise their buns are harder than steel!</span>",\
+				"You hear a slap."
+			)
+			playsound(target.loc, 'sound/weapons/tap.ogg', 50, 1, -1)
+			user.emote("scream")
+			return FALSE
+
 		target.adjust_arousal(20,"masochism", maso = TRUE)
 		if (ishuman(target) && HAS_TRAIT(target, TRAIT_MASO) && target.has_dna() && prob(10))
 			target.mob_climax(forced_climax=TRUE, cause = "masochism")
