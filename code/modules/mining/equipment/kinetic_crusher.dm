@@ -41,7 +41,7 @@
 
 /obj/item/kinetic_crusher/ComponentInitialize()
 	. = ..()
-	AddComponent(/datum/component/butchering, 110, 40)
+	AddComponent(/datum/component/butchering, 110, 55)
 	AddComponent(/datum/component/two_handed, force_unwielded=0, force_wielded=20)
 
 /obj/item/kinetic_crusher/Destroy()

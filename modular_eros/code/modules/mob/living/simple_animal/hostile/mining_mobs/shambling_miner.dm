@@ -15,5 +15,5 @@
 
 /obj/item/kinetic_crusher/rusted/Initialize()
 	. = ..()
-	AddComponent(/datum/component/butchering, 160, 25) //no lol
+	AddComponent(/datum/component/butchering, 160, 35) //no lol
 	AddComponent(/datum/component/two_handed, force_unwielded=0, force_wielded=15)
