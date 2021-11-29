@@ -49,6 +49,7 @@
 	icon = 'modular_eros/icons/obj/flora/lavaland.dmi'
 	icon_state = "tallgrass1bb"
 	gender = PLURAL
+	layer = ABOVE_MOB_LAYER
 
 /obj/structure/flora/grass/red/Initialize()
 	icon_state = "tallgrass[rand(1, 4)]bb"
