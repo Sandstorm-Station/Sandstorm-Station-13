@@ -47,4 +47,4 @@
 	move_resist = MOVE_RESIST_DEFAULT
 	pull_force = PULL_FORCE_DEFAULT
 	if(prob(15))
-		new /obj/item/kinetic_crusher(src.loc)
+		new /obj/item/kinetic_crusher/rusted(src.loc)
