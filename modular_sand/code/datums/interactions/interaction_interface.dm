@@ -154,6 +154,7 @@
 		data["penis_enlargement"] = CHECK_BITFIELD(prefs.cit_toggles, PENIS_ENLARGEMENT)
 		data["never_hypno"] = 		!CHECK_BITFIELD(prefs.cit_toggles, NEVER_HYPNO)
 		data["no_aphro"] = 			!CHECK_BITFIELD(prefs.cit_toggles, NO_APHRO)
+		data["no_ass_slap"] = 		!CHECK_BITFIELD(prefs.cit_toggles, NO_ASS_SLAP)
 		data["no_auto_wag"] = 		!CHECK_BITFIELD(prefs.cit_toggles, NO_AUTO_WAG)
 
 	return data
@@ -265,6 +266,8 @@
 					TOGGLE_BITFIELD(prefs.cit_toggles, NEVER_HYPNO)
 				if("no_aphro")
 					TOGGLE_BITFIELD(prefs.cit_toggles, NO_APHRO)
+				if("no_ass_slap")
+					TOGGLE_BITFIELD(prefs.cit_toggles, NO_ASS_SLAP)
 				if("no_auto_wag")
 					TOGGLE_BITFIELD(prefs.cit_toggles, NO_AUTO_WAG)
 				else

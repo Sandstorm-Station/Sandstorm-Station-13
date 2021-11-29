@@ -1152,6 +1152,7 @@ GLOBAL_LIST_EMPTY(preferences_datums)
 			dat += "<b>Butt Enlargement:</b> <a href='?_src_=prefs;preference=butt_enlargement'>[(cit_toggles & BUTT_ENLARGEMENT) ? "Allowed" : "Disallowed"]</a><br>"
 			dat += "<b>Hypno:</b> <a href='?_src_=prefs;preference=never_hypno'>[(cit_toggles & NEVER_HYPNO) ? "Disallowed" : "Allowed"]</a><br>"
 			dat += "<b>Aphrodisiacs:</b> <a href='?_src_=prefs;preference=aphro'>[(cit_toggles & NO_APHRO) ? "Disallowed" : "Allowed"]</a><br>"
+			dat += "<b>Ass Slapping:</b> <a href='?_src_=prefs;preference=ass_slap'>[(cit_toggles & NO_ASS_SLAP) ? "Disallowed" : "Allowed"]</a><br>"
 			//SKYRAT EDIT
 			dat += 	"<b>Extreme ERP verbs :</b> <a href='?_src_=prefs;preference=extremepref'>[extremepref]</a><br>" // https://youtu.be/0YrU9ASVw6w
 			if(extremepref != "No")
@@ -3082,6 +3083,9 @@ GLOBAL_LIST_EMPTY(preferences_datums)
 
 				if("aphro")
 					cit_toggles ^= NO_APHRO
+
+				if("ass_slap")
+					cit_toggles ^= NO_ASS_SLAP
 
 				if("bimbo")
 					cit_toggles ^= BIMBOFICATION

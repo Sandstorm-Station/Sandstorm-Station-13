@@ -104,12 +104,13 @@
 #define HYPNO				(1<<7)
 #define NEVER_HYPNO			(1<<8)
 #define NO_APHRO			(1<<9)
-#define BIMBOFICATION		(1<<10)
-#define NO_AUTO_WAG			(1<<11)
-#define GENITAL_EXAMINE		(1<<12)
-#define VORE_EXAMINE		(1<<13)
-#define TRASH_FORCEFEED		(1<<14)
-#define BUTT_ENLARGEMENT	(1<<15)
+#define NO_ASS_SLAP			(1<<10)
+#define BIMBOFICATION		(1<<11)
+#define NO_AUTO_WAG			(1<<12)
+#define GENITAL_EXAMINE		(1<<13)
+#define VORE_EXAMINE		(1<<14)
+#define TRASH_FORCEFEED		(1<<15)
+#define BUTT_ENLARGEMENT	(1<<16)
 //Note: reminder, if you're a coder adding more bitflags here in the event we add more horny things, the maximum is (1<<23).
 #define TOGGLES_CITADEL 0
 
