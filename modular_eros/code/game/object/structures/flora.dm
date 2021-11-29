@@ -51,5 +51,5 @@
 	gender = PLURAL
 
 /obj/structure/flora/grass/red/Initialize()
-	. = ..()
 	icon_state = "tallgrass[rand(1, 4)]bb"
+	return ..()

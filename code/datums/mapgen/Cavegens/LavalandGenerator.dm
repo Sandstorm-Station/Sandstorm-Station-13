@@ -17,7 +17,7 @@
 		/obj/structure/flora/ash/tall_shroom = 2,\
 		/obj/structure/flora/tree/shadow = 3, \
 		/obj/structure/flora/tree/mushroom = 3, \
-		/obj/structure/flora/grass/red = 2 \
+		/obj/structure/flora/grass/red = 3 \
 		)
 	feature_spawn_list = list(/obj/structure/geyser/random = 1)
 
