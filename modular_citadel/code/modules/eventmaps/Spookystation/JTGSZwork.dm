@@ -1103,7 +1103,7 @@ GLOBAL_LIST_INIT(hay_recipes, list ( \
 														*/
 //Shitty bed
 /obj/structure/bed/badhaybed
-	name = "low-quality hay Bed"
+	name = "low-quality hay bed"
 	desc = "It looks like someone hastily put this together, even if the builder didn't."
 	icon = 'modular_citadel/code/modules/eventmaps/Spookystation/iconfile32.dmi'
 	icon_state = "shitty_hay_bed"
