@@ -1,4 +1,4 @@
-//I LIED, THIS FILE IS FOR THE CRUSHER!!
+//THIS FILE IS FOR THE CRUSHER!!
 
 /obj/item/kinetic_crusher/rusted
 	name = "rusted proto-kinetic crusher"
