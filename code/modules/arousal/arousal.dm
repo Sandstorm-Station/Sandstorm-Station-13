@@ -103,14 +103,14 @@
 		return
 	if(mb_time) //Skip warning if this is an instant climax.
 		to_chat(src,"<span class='userlove'>You're about to climax [(Lgen) ? "in [L]'s [Lgen.name]" : "with [L]"]!</span>")
-		to_chat(L,"<span class='userlove'>[src] is about to climax [(Lgen) ? "in your [Lgen.name]!" : "with you!"]</span>")
+		to_chat(L,"<span class='userlove'>[src] is about to climax [(Lgen) ? "in your [Lgen.name]" : "with you"]!</span>")
 		if(!do_after(src, mb_time, target = src) || !in_range(src, L) || !G.climaxable(src, TRUE))
 			return
 	if(spillage)
 		to_chat(src,"<span class='userlove'>You orgasm with [L], spilling out of [(Lgen) ? "[L.p_their()] [Lgen.name]" : "[L.p_them()]"], using your [G.name].</span>")
 		to_chat(L,"<span class='userlove'>[src] climaxes [(Lgen) ? "in your [Lgen.name]" : "with you"], overflowing and spilling, using [p_their()] [G.name]!</span>")
 	else //knots and other non-spilling orgasms
-		to_chat(src,"<span class='userlove'>You climax with [(Lgen) ? "in [L]'s [Lgen.name]" : "with [L]"], your [G.name] spilling nothing.</span>")
+		to_chat(src,"<span class='userlove'>You climax [(Lgen) ? "in [L]'s [Lgen.name]" : "with [L]"], your [G.name] spilling nothing.</span>")
 		to_chat(L,"<span class='userlove'>[src] climaxes [(Lgen) ? "in your [Lgen.name]" : "with you"], [p_their()] [G.name] spilling nothing!</span>")
 	SEND_SIGNAL(L, COMSIG_ADD_MOOD_EVENT, "orgasm", /datum/mood_event/orgasm)
 	do_climax(fluid_source, spillage ? loc : L, G, spillage)
@@ -293,14 +293,14 @@
 		if("Climax with partner")
 			//We need no hands, we can be restrained and so on, so let's pick an organ
 			var/obj/item/organ/genital/picked_organ = pick_climax_genitals()
-			var/obj/item/organ/genital/picked_cumdump = null
+			var/obj/item/organ/genital/picked_target = null
 			if(picked_organ)
 				var/mob/living/partner = pick_partner() //Get someone
 				if(partner)
-					picked_cumdump = pick_receiving_organ(partner)
+					picked_target = pick_receiving_organ(partner)
 					var/spillage = input(src, "Would your fluids spill outside?", "Choose overflowing option", "Yes") as null|anything in list("Yes", "No")
 					if(spillage && in_range(src, partner))
-						mob_climax_partner(picked_organ, partner, spillage == "Yes" ? TRUE : FALSE, Lgen = picked_cumdump)
+						mob_climax_partner(picked_organ, partner, spillage == "Yes" ? TRUE : FALSE, Lgen = picked_target)
 		if("Fill container")
 			//We'll need hands and no restraints.
 			if(!available_rosie_palms(FALSE, /obj/item/reagent_containers))
