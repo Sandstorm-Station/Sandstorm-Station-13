@@ -34,7 +34,9 @@
 				/obj/item/storage/pill_bottle/butt_enlargement = 10,
 				/obj/item/reagent_containers/glass/bottle/crocin = 10,
 				/obj/item/reagent_containers/glass/bottle/camphor = 5,
-				/obj/item/storage/daki = 4
+				/obj/item/storage/daki = 4,
+				/obj/item/clothing/head/helmet/space/deprivation_helmet = 5,
+				/obj/item/clothing/under/misc/latex_catsuit = 1
 				)
 	contraband = list(
 				/obj/item/clothing/neck/petcollar/locked = 2,
