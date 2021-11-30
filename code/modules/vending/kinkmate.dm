@@ -36,6 +36,7 @@
 				/obj/item/reagent_containers/glass/bottle/camphor = 5,
 				/obj/item/storage/daki = 4,
 				/obj/item/clothing/head/helmet/space/deprivation_helmet = 5,
+				/obj/item/clothing/neck/mind_collar = 3,
 				//obj/item/clothing/under/misc/latex_catsuit = 1
 				)
 	contraband = list(
