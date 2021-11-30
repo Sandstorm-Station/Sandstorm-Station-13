@@ -867,6 +867,12 @@ GLOBAL_LIST_EMPTY(roundstart_race_names)
 				standing += MA
 	*/
 
+	//Hyper nail paint
+	if(H.nail_style)
+		var/mutable_appearance/nail_overlay = mutable_appearance('modular_eros/icons/mobs/nails.dmi', "nails", -HANDS_PART_LAYER)
+		nail_overlay.color = H.nail_color
+		standing += nail_overlay
+
 	if(standing.len)
 		H.overlays_standing[BODY_LAYER] = standing
 
