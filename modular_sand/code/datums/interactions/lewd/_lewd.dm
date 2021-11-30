@@ -19,6 +19,8 @@
 #define NORMAL_LUST 10
 #define LOW_LUST 1
 
+#define MIN_DEFAULT_LUST 0
+
 #define REQUIRE_NONE 0
 #define REQUIRE_EXPOSED 1
 #define REQUIRE_UNEXPOSED 2
