@@ -48,7 +48,7 @@
 				/obj/item/clothing/under/costume/jabroni = 2,
 				/obj/item/clothing/gloves/evening/black = 2,
 				/obj/item/dildo/flared/huge = 3,
-				//obj/item/clothing/glasses/hypno = 10
+				/obj/item/clothing/glasses/hypno = 10
 				)
 	premium = list(
 				/obj/item/clothing/accessory/skullcodpiece/fake = 3,
