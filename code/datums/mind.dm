@@ -490,6 +490,7 @@
 				/datum/objective/download,
 				/datum/objective/nuclear,
 				/datum/objective/absorb,
+				/datum/objective/rescue_prisoner,
 				/datum/objective/custom
 			)
 
