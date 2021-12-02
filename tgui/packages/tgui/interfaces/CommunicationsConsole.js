@@ -1,7 +1,7 @@
 import { sortBy } from "common/collections";
 import { capitalize } from "common/string";
 import { useBackend, useLocalState } from "../backend";
-import { Blink, Box, Button, Dimmer, Flex, Icon, Input, Modal, Section, TextArea } from "../components";
+import { Blink, Box, Button, Dimmer, Flex, Stack, Icon, Input, Modal, Section, TextArea, LabeledList } from "../components";
 import { Window } from "../layouts";
 import { sanitizeText } from "../sanitize";
 
@@ -317,6 +317,7 @@ export const PageMain = (props, context) => {
     shuttleCanEvacOrFailReason,
     shuttleLastCalled,
     shuttleRecallable,
+    availableSlaves,
   } = data;
 
   const [callingShuttle, setCallingShuttle] = useLocalState(
@@ -471,6 +472,56 @@ export const PageMain = (props, context) => {
           />}
         </Flex>
       </Section>
+
+      {availableSlaves && (
+        <Section title="Buy Slaves">
+          <Stack
+            justify="space-between">
+            <Stack.Item
+              align="center">
+              John Smith
+            </Stack.Item>
+            <Stack.Item>
+              <Button
+                icon="shopping-cart"
+                content="1000"
+                onClick={() => act("makePriorityAnnouncement")} />
+            </Stack.Item>
+          </Stack>
+
+          <Stack
+            justify="space-between"
+            align="center">
+            <Stack.Item>
+              <Box>
+                Tkyohamtka Retkhohoobaaashnn
+              </Box>
+            </Stack.Item>
+            <Stack.Item>
+              <Button
+                icon="shopping-cart"
+                content="3000"
+                onClick={() => act("makePriorityAnnouncement")} />
+            </Stack.Item>
+          </Stack>
+
+          <Stack
+            justify="space-between"
+            align="center">
+            <Stack.Item>
+              <Box>
+                Abbytha Kushanka
+              </Box>
+            </Stack.Item>
+            <Stack.Item>
+              <Button
+                icon="shopping-cart"
+                content="2000"
+                onClick={() => act("makePriorityAnnouncement")} />
+            </Stack.Item>
+          </Stack>
+        </Section>
+      )}
 
       {!!canMessageAssociates && messagingAssociates && <MessageModal
         label={`Message to transmit to ${emagged ? "[ABNORMAL ROUTING COORDINATES]" : "CentCom"} via quantum entanglement`}

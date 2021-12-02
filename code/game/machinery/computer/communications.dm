@@ -376,6 +376,7 @@
 				data["authorizeName"] = authorize_name
 				data["canLogOut"] = !issilicon(user)
 				data["shuttleCanEvacOrFailReason"] = SSshuttle.canEvac(user, TRUE)
+				data["availableSlaves"] = TRUE // GLOB.tracked_slaves
 
 				if (authenticated_as_non_silicon_captain(user))
 					data["canRequestNuke"] = TRUE

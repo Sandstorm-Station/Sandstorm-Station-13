@@ -113,6 +113,14 @@
 				else
 					message_admins("[key_name_admin(usr)] tried to create a nuke team. Unfortunately, there were not enough candidates available.")
 					log_admin("[key_name(usr)] failed to create a nuke team.")
+			if("slaver")
+				message_admins("[key_name(usr)] is creating a slaver trader crew...")
+				if(src.makeSlaverTeam())
+					message_admins("[key_name(usr)] created a slave trader crew.")
+					log_admin("[key_name(usr)] created a slave trader crew.")
+				else
+					message_admins("[key_name_admin(usr)] tried to create a slave trader crew. Unfortunately, there were not enough candidates available.")
+					log_admin("[key_name(usr)] failed to create a slave trader crew.")
 			if("ninja")
 				message_admins("[key_name(usr)] spawned a ninja.")
 				log_admin("[key_name(usr)] spawned a ninja.")

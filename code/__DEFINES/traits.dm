@@ -335,6 +335,7 @@
 #define DOMAIN_TRAIT "domain"
 #define NUKEOP_TRAIT "nuke-op"
 #define CLOWNOP_TRAIT "clown-op"
+#define SLAVER_TRAIT "slaver"
 #define MEGAFAUNA_TRAIT "megafauna"
 #define DEATHSQUAD_TRAIT "deathsquad"
 #define SLIMEPUDDLE_TRAIT "slimepuddle"

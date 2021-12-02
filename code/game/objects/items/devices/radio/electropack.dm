@@ -202,3 +202,21 @@
 	if(action == "power") // DO. NOT.
 		return FALSE
 	return ..()
+
+/obj/item/electropack/shockcollar/slave
+	name = "slave collar"
+	desc = "A reinforced metal collar. This one has a shock element and tracker installed."
+	var/static/lastID = 0;
+	var/collarID
+	var/bought = FALSE
+
+/obj/item/electropack/shockcollar/slave/Initialize()
+	. = ..()
+	collarID = ++lastID
+	GLOB.tracked_slaves += src
+	priority_announce("New pack", sender_override = "Beep Beep upgate")
+
+/obj/item/electropack/shockcollar/slave/Destroy()
+	. = ..()
+	GLOB.tracked_slaves -= src
+	priority_announce("pack deleted", sender_override = "Beep Beep upgate")

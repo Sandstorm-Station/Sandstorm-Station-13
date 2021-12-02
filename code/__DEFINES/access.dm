@@ -83,6 +83,7 @@
 	//The Syndicate
 #define ACCESS_SYNDICATE 150//General Syndicate Access. Includes Syndicate mechs and ruins.
 #define ACCESS_SYNDICATE_LEADER 151//Nuke Op Leader Access
+#define ACCESS_SLAVER 152 //Slaver traders
 
 	//Away Missions or Ruins
 	/*For generic away-mission/ruin access. Why would normal crew have access to a long-abandoned derelict

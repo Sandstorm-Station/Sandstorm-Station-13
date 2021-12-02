@@ -234,6 +234,12 @@
 		remove_antag_datum(nuke.type)
 		special_role = null
 
+/datum/mind/proc/remove_slaver()
+	var/datum/antagonist/slaver/slaver = has_antag_datum(/datum/antagonist/slaver,TRUE)
+	if(slaver)
+		remove_antag_datum(slaver.type)
+		special_role = null
+
 /datum/mind/proc/remove_wizard()
 	remove_antag_datum(/datum/antagonist/wizard)
 	special_role = null
@@ -263,6 +269,7 @@
 	remove_changeling()
 	remove_traitor()
 	remove_nukeop()
+	remove_slaver()
 	remove_wizard()
 	remove_cultist()
 	remove_rev()
@@ -366,6 +373,13 @@
 		N.send_to_spawnpoint = FALSE
 		N.nukeop_outfit = null
 		add_antag_datum(N,converter.nuke_team)
+
+	else if(is_slaver(creator))
+		var/datum/antagonist/slaver/converter = creator.mind.has_antag_datum(/datum/antagonist/slaver,TRUE)
+		var/datum/antagonist/slaver/S = new()
+		S.send_to_spawnpoint = FALSE
+		S.slaver_outfit = null
+		add_antag_datum(S,converter.slaver_team)
 
 
 	enslaved_to = creator
