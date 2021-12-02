@@ -54,3 +54,26 @@
 /obj/structure/flora/grass/red/Initialize()
 	icon_state = "tallgrass[rand(1, 4)]bb"
 	return ..()
+
+
+/obj/effect/spawner/grass_spawner
+	name = "grass spawner"
+	var/spawned_grass = /obj/structure/flora/grass
+
+/obj/effect/spawner/grass_spawner/New()
+	var/range = 2
+	while(1==1)
+		if(prob(90))
+			break
+		range++
+	for(var/turf/T in view(range))
+		if(!isopenturf(T) || locate(spawned_grass) in T)
+			continue
+		if(get_dist(T, src) == range && prob(60))
+			continue
+		new spawned_grass(T)
+	qdel(src)
+
+/obj/effect/spawner/grass_spawner/red
+	name = "redgrass spawner"
+	spawned_grass = /obj/structure/flora/grass/red

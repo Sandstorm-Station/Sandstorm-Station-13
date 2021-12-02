@@ -32,6 +32,7 @@
 					/obj/item/clothing/under/rank/security/officer/util = 5,
 					/obj/item/clothing/under/rank/security/officer/blueshirt/seccorp = 5)
 	premium = list(/obj/item/clothing/under/rank/security/officer/formal = 5,
+					/obj/item/clothing/shoes/jackboots/tall = 5,
 					/obj/item/clothing/head/beret/sec/navyofficer = 5)
 	refill_canister = /obj/item/vending_refill/wardrobe/sec_wardrobe
 	payment_department = ACCOUNT_SEC
@@ -104,6 +105,7 @@
 					/obj/item/clothing/under/rank/medical/paramedic/light = 5,
 					/obj/item/clothing/under/rank/medical/paramedic/skirt = 5,
 					/obj/item/clothing/under/rank/medical/paramedic/skirt/light = 5,
+					/obj/item/clothing/under/sexynursesuit = 5,
 					/obj/item/clothing/suit/toggle/labcoat = 5,
 					/obj/item/clothing/suit/toggle/labcoat/paramedic = 5,
 					/obj/item/clothing/suit/toggle/labcoat/emt = 5,
