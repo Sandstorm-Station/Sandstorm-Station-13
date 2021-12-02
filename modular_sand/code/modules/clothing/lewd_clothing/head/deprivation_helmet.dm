@@ -8,6 +8,8 @@
 	armor = list("melee" = 0, "bullet" = 0, "laser" = 0,"energy" = 0, "bomb" = 0, "bio" = 25, "rad" = 0, "fire" = 20, "acid" = 15, "wound" = 0)
 	icon = 'modular_sand/icons/obj/clothing/lewd_clothes/head/lewd_hats.dmi'
 	mob_overlay_icon = 'modular_sand/icons/mob/clothing/lewd_clothing/head/lewd_hats.dmi'
+	anthro_mob_worn_overlay = 'modular_sand/icons/mob/clothing/lewd_clothing/head/lewd_hats.dmi'
+	mutantrace_variation = STYLE_MUZZLE
 	lefthand_file = 'modular_sand/icons/mob/inhands/lewd_items/lewd_inhand_left.dmi'
 	righthand_file = 'modular_sand/icons/mob/inhands/lewd_items/lewd_inhand_right.dmi'
 	flags_inv = HIDEMASK|HIDEEARS|HIDEEYES|HIDEFACE|HIDEHAIR|HIDESNOUT|HIDEFACIALHAIR
@@ -18,6 +20,7 @@
 	var/earmuffs = FALSE
 	var/prevent_vision = FALSE
 	var/color_changed = FALSE
+	var/seamless = FALSE
 
 	var/static/list/helmet_designs
 	actions_types = list(/datum/action/item_action/toggle_vision,
@@ -180,7 +183,18 @@
 	icon_state = "[initial(icon_state)]_[current_helmet_color]"
 	item_state = "[initial(icon_state)]_[current_helmet_color]"
 
-//Apply the effects
+//Lock
+/obj/item/clothing/head/helmet/space/deprivation_helmet/attackby(/obj/item/helm, mob/user, params)
+	var/obj/item/key/latex/pii = helm
+	if(istype(pii, /obj/item/key/latex))
+		if(seamless != FALSE)
+			to_chat(user, "<span class='warning'>The latches suddenly relax!</span>")
+			seamless = FALSE
+		else
+			to_chat(user, "<span class='warning'>The latches suddenly tighten!</span>")
+			seamless = TRUE
+	return
+
 /obj/item/clothing/head/helmet/space/deprivation_helmet/equipped(mob/living/carbon/human/user, slot)
 	. = ..()
 	if(slot != SLOT_HEAD)
@@ -196,7 +210,6 @@
 	if(prevent_vision == TRUE)
 		user.become_blind("deprivation_helmet_[REF(src)]")
 		to_chat(user, span_purple("The helmet is blocking your vision! You can't make out anything on the other side..."))
-
 
 //Here goes code that heals the wearer after unequipping helmet
 /obj/item/clothing/head/helmet/space/deprivation_helmet/dropped(mob/living/carbon/human/user)
@@ -219,4 +232,12 @@
 			to_chat(user, span_purple("Finally you can hear the world around you once more."))
 		if(prevent_vision == TRUE)
 			to_chat(user, span_purple("The helmet no longer restricts your vision."))
+
+/obj/item/clothing/head/helmet/space/deprivation_helmet/attack_hand(mob/living/carbon/human/user)
+	if(iscarbon(user) && seamless && (user.get_item_by_slot(SLOT_HEAD) == src))
+		to_chat(user, span_purple(pick("You roam your hands around the helmet for some sort of release!",
+									"You find it impossible to leverage your fingers underneath the helmet",
+									"The durable material seems to reflect your pointless force.")))
+		return
+	. = ..()
 
