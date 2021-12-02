@@ -1,15 +1,19 @@
+//Hyper stuff
 /datum/gear/shoes/footwraps
-	name = "Cloth Footwraps"
+	name = "Cloth Footwraps (Hyper)"
 	path= /obj/item/clothing/shoes/footwraps
 
 /datum/gear/shoes/workboots/toeless
-	name = "Toeless Work Boots"
+	name = "Toeless Work Boots (Hyper)"
 	path = /obj/item/clothing/shoes/workboots/toeless
 
 /datum/gear/shoes/jackboots/toeless
-	name = "Toeless Jackboots"
+	name = "Toeless Jackboots (Hyper)"
 	path = /obj/item/clothing/shoes/jackboots/toeless
 
 /datum/gear/shoes/jackboots/tall
-	name = "Tall Jackboots"
+	name = "Tall Jackboots (Hyper)"
 	path = /obj/item/clothing/shoes/jackboots/tall
+/datum/gear/highheels
+	name = "High Heels (hyper)"
+	path = /obj/item/clothing/shoes/highheels

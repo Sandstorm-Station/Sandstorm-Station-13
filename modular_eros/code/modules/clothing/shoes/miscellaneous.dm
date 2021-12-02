@@ -22,6 +22,10 @@
 	mob_overlay_icon = 'modular_eros/icons/mob/clothing/shoes.dmi'
 	anthro_mob_worn_overlay = 'modular_eros/icons/mob/clothing/shoes_digi.dmi'
 
+/obj/item/clothing/shoes/jackboots/tall/Initialize()
+	. = ..()
+	AddComponent(/datum/component/squeak, list('modular_eros/sound/effects/footstep/highheel1.ogg' = 1,'modular_eros/sound/effects/footstep/highheel2.ogg' = 1), 20)
+
 /obj/item/clothing/shoes/workboots/toeless
 	name = "toe-less workboots"
 	desc = "A pair of toeless work boots designed for use in industrial settings. Modified for species whose toes have claws."
