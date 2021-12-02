@@ -29,7 +29,8 @@
 	name = "sexy nurse outfit"
 	desc = "A very revealing nurse's outfit. Not very sanitary. Does it even count as clothing?"
 	icon = 'modular_eros/icons/obj/clothing/uniforms.dmi'
-	icon_state = "sexy_nurse_suit"
+	icon_state = "sexynursesuit"
+	mob_overlay_icon = 'modular_eros/icons/mobs/suits.dmi'
 	can_adjust = FALSE
 	mutantrace_variation = NONE
 
