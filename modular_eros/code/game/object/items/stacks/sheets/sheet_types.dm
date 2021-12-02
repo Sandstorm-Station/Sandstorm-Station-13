@@ -24,6 +24,7 @@ GLOBAL_LIST_INIT(shadow_wood_recipes, list ( \
 	merge_type = /obj/item/stack/sheet/mineral/wood/shadow
 	novariants = TRUE
 	grind_results = list(/datum/reagent/carbon = 20)
+	walltype = /turf/closed/wall/mineral/wood/shadow
 
 /obj/item/stack/sheet/mineral/wood/shadow/Initialize(mapload, new_amount, merge = TRUE)
 	. = ..()
@@ -53,6 +54,7 @@ GLOBAL_LIST_INIT(mush_wood_recipes, list ( \
 	merge_type = /obj/item/stack/sheet/mineral/wood/mushroom
 	novariants = TRUE
 	grind_results = list(/datum/reagent/carbon = 20)
+	walltype = /turf/closed/wall/mineral/wood/mushroom
 
 /obj/item/stack/sheet/mineral/wood/mushroom/Initialize(mapload, new_amount, merge = TRUE)
 	recipes = GLOB.mush_wood_recipes
