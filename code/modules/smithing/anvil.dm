@@ -68,7 +68,7 @@
 	RECIPE_HALBERD = /obj/item/smithing/halberdhead,
 	RECIPE_GLAIVE = /obj/item/smithing/glaivehead,
 	RECIPE_PIKE = /obj/item/smithing/pikehead,
-	RECIPE_STUNDIL = modular_eros/obj/item/smithing/stundild)
+	RECIPE_STUNDIL = /obj/item/smithing/stundild)
 
 /obj/structure/anvil/Initialize()
 	..()
