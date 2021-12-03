@@ -40,7 +40,13 @@
 				/obj/item/clothing/gloves/latexsleeves = 3,
 				/obj/item/reagent_containers/glass/bottle/crocin = 10,
 				/obj/item/reagent_containers/glass/bottle/camphor = 5,
-				/obj/item/storage/daki = 4
+				/obj/item/storage/daki = 4,
+				/obj/item/clothing/head/helmet/space/deprivation_helmet = 5,
+				/obj/item/clothing/under/misc/latex_catsuit = 10,
+				/obj/item/clothing/shoes/latex_socks = 10,
+				/obj/item/clothing/shoes/latexheels = 10,
+				/obj/item/clothing/shoes/dominaheels = 10,
+				/obj/item/clothing/gloves/latex_gloves = 10
 				)
 	contraband = list(
 				/obj/item/clothing/neck/petcollar/locked = 2,
@@ -51,10 +57,15 @@
 				/obj/item/clothing/under/misc/stripper/mankini = 2,
 				/obj/item/clothing/under/costume/jabroni = 2,
 				/obj/item/clothing/gloves/evening/black = 2,
+        //Lewd-Clothes
+				/obj/item/dildo/flared/huge = 3,
+				/obj/item/clothing/glasses/hypno = 3,
+				/obj/item/clothing/neck/mind_collar = 3,
+				/obj/item/key/latex = 3,
 				/obj/item/clothing/head/dominatrixcap = 3,
 				/obj/item/mesmetron = 3,
 				/obj/item/dildo/flared/huge = 3
-				)
+        )
 	premium = list(
 				/obj/item/clothing/accessory/skullcodpiece/fake = 3,
 				/obj/item/reagent_containers/glass/bottle/hexacrocin = 10,
