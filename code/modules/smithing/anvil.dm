@@ -67,7 +67,7 @@
 	RECIPE_KATANA = /obj/item/smithing/katanablade,
 	RECIPE_HALBERD = /obj/item/smithing/halberdhead,
 	RECIPE_GLAIVE = /obj/item/smithing/glaivehead,
-	RECIPE_PIKE = /obj/item/smithing/pikehead)
+	RECIPE_PIKE = /obj/item/smithing/pikehead,
 	RECIPE_STUNDIL = /obj/item/smithing/stundild)
 
 /obj/structure/anvil/Initialize()
