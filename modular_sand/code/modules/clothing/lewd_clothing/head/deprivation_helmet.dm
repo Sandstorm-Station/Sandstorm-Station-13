@@ -183,18 +183,6 @@
 	icon_state = "[initial(icon_state)]_[current_helmet_color]"
 	item_state = "[initial(icon_state)]_[current_helmet_color]"
 
-//Lock
-/obj/item/clothing/head/helmet/space/deprivation_helmet/attackby(/obj/item/helm, mob/user, params)
-	var/obj/item/key/latex/pii = helm
-	if(istype(pii, /obj/item/key/latex))
-		if(seamless != FALSE)
-			to_chat(user, "<span class='warning'>The latches suddenly relax!</span>")
-			seamless = FALSE
-		else
-			to_chat(user, "<span class='warning'>The latches suddenly tighten!</span>")
-			seamless = TRUE
-	return
-
 /obj/item/clothing/head/helmet/space/deprivation_helmet/equipped(mob/living/carbon/human/user, slot)
 	. = ..()
 	if(slot != SLOT_HEAD)
@@ -241,3 +229,12 @@
 		return
 	. = ..()
 
+/obj/item/clothing/head/helmet/space/deprivation_helmet/attackby(obj/item/K, mob/user, params)
+	if(istype(K, /obj/item/key/latex))
+		if(seamless != FALSE)
+			to_chat(user, span_warning("The latches suddenly loosen"))
+			seamless = FALSE
+		else
+			to_chat(user, span_warning("The latches suddenly tighten!"))
+			seamless = TRUE
+	return

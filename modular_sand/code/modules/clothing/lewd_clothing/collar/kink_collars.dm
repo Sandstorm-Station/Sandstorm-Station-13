@@ -36,6 +36,7 @@
 	var/obj/item/mind_controller/remote = null
 	pocket_storage_component_path = /datum/component/storage/concrete/pockets/small/collar/mind_collar
 	var/emoting = "Shivers"
+	var/seamless = FALSE
 
 /obj/item/clothing/neck/mind_collar/Initialize()
 	. = ..()
@@ -52,3 +53,21 @@
 		remote.collar = null
 		remote = null
 	return ..()
+/obj/item/clothing/neck/mind_collar/attack_hand(mob/living/carbon/human/user)
+	var/mob/living/carbon/human/C = user
+	if(iscarbon(user) && seamless && (user.get_item_by_slot(SLOT_NECK)))
+		to_chat(C, span_purple(pick("You can't seem to find the release latch for the collar!",
+									"The collar refuses to budge while you tug at it.",
+									"Your hands uselessly roam along the strange device.")))
+		return
+	. = ..()
+
+/obj/item/clothing/neck/mind_collar/attackby(obj/item/K, mob/user, params)
+	if(istype(K, /obj/item/key/latex))
+		if(seamless != FALSE)
+			to_chat(user, span_warning("The collar latches loosen!"))
+			seamless = FALSE
+		else
+			to_chat(user, span_warning("The collar latches tighten!"))
+			seamless = TRUE
+	return

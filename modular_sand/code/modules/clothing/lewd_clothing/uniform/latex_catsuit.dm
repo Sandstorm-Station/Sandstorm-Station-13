@@ -8,21 +8,10 @@
 	anthro_mob_worn_overlay = 'modular_sand/icons/mob/clothing/lewd_clothing/uniform/lewd_uniform-digi.dmi'
 	lefthand_file = 'modular_sand/icons/mob/inhands/lewd_items/lewd_inhand_left.dmi'
 	righthand_file = 'modular_sand/icons/mob/inhands/lewd_items/lewd_inhand_right.dmi'
-	//equip_sound = 'modular_skyrat/modules/modular_items/lewd_items/sounds/latex.ogg'
 	can_adjust = FALSE
 	strip_delay = 80
 	mutantrace_variation = STYLE_DIGITIGRADE|STYLE_ALL_TAURIC
 	var/seamless = FALSE
-//Lock
-/obj/item/clothing/under/misc/latex_catsuit/attackby(/obj/item/suit, mob/living/carbon/human/user, params)
-	if(istype(suit, /obj/item/key/latex))
-		if(seamless != FALSE)
-			to_chat(user, "<span class='warning'>The suit seems to relax!</span>")
-			seamless = FALSE
-		else
-			to_chat(user, "<span class='warning'>The suit suddenly tightens!</span>")
-			seamless = TRUE
-	return
 
 /obj/item/clothing/under/misc/latex_catsuit/attack_hand(mob/living/carbon/human/user)
 	var/mob/living/carbon/human/C = user
@@ -83,3 +72,13 @@
 		C.apply_overlay(BODY_BEHIND_LAYER)
 		C.apply_overlay(BODY_FRONT_LAYER)
 	C.regenerate_icons() //Just in case
+
+/obj/item/clothing/under/misc/latex_catsuit/attackby(obj/item/K, mob/user, params)
+	if(istype(K, /obj/item/key/latex))
+		if(seamless != FALSE)
+			to_chat(user, span_warning("The suit suddenly loosens!"))
+			seamless = FALSE
+		else
+			to_chat(user, span_warning("The suit suddenly tighten!"))
+			seamless = TRUE
+	return
