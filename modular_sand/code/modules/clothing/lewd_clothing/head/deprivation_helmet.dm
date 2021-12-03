@@ -229,6 +229,8 @@
 		return
 	. = ..()
 
+/obj/item/clothing/head/helmet/space/deprivation_helmet/MouseDrop(atom/over_object)
+
 /obj/item/clothing/head/helmet/space/deprivation_helmet/attackby(obj/item/K, mob/user, params)
 	if(istype(K, /obj/item/key/latex))
 		if(seamless != FALSE)

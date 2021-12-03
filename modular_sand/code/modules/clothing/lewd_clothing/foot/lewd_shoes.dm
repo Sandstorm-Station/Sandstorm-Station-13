@@ -27,6 +27,9 @@
 			if(!do_after(C, 40, target = src))
 				return
 	. = ..()
+
+/obj/item/clothing/shoes/latexheels/MouseDrop(atom/over_object)
+
 /obj/item/clothing/shoes/latexheels/attackby(obj/item/K, mob/user, params)
 	if(istype(K, /obj/item/key/latex))
 		if(seamless != FALSE)

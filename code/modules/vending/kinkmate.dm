@@ -54,7 +54,7 @@
 				/obj/item/dildo/flared/huge = 3,
 				/obj/item/clothing/glasses/hypno = 3,
 				/obj/item/clothing/neck/mind_collar = 3,
-				/obj/item/key/latex = 3
+				/obj/item/key/latex = 5
 				)
 	premium = list(
 				/obj/item/clothing/accessory/skullcodpiece/fake = 3,
