@@ -49,7 +49,7 @@
 			if(!prey.dropItemToGround(W))
 				qdel(W)
 		var/datum/antagonist/antag = prey.mind?.has_antag_datum(/datum/antagonist/ashwalker)
-		if((linked_objective in antag?.objectives) && (prey.key || prey.get_ghost(FALSE, TRUE))) //special interactions for dead lava lizards with ghosts attached
+		if(antag && (linked_objective in antag.objectives) && (prey.key || prey.get_ghost(FALSE, TRUE))) //special interactions for dead lava lizards with ghosts attached
 			visible_message("<span class='warning'>Serrated tendrils carefully pull [prey] to [src], absorbing the body and creating it anew.</span>")
 			var/datum/mind/deadmind
 			if(prey.key)

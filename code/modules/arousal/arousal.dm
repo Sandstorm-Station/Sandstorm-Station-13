@@ -97,24 +97,24 @@
 	to_chat(src,"<span class='userlove'>You climax[isturf(loc) ? " onto [loc]" : ""] with your [G.name].</span>")
 	do_climax(fluid_source, loc, G)
 
-/mob/living/carbon/human/proc/mob_climax_partner(obj/item/organ/genital/G, mob/living/L, spillage = TRUE, mb_time = 30) //Used for climaxing with any living thing
+/mob/living/carbon/human/proc/mob_climax_partner(obj/item/organ/genital/G, mob/living/L, spillage = TRUE, mb_time = 30, obj/item/organ/genital/Lgen = null) //Used for climaxing with any living thing
 	var/datum/reagents/fluid_source = G.climaxable(src)
 	if(!fluid_source)
 		return
 	if(mb_time) //Skip warning if this is an instant climax.
-		to_chat(src,"<span class='userlove'>You're about to climax with [L]!</span>")
-		to_chat(L,"<span class='userlove'>[src] is about to climax with you!</span>")
+		to_chat(src,"<span class='userlove'>You're about to climax [(Lgen) ? "in [L]'s [Lgen.name]" : "with [L]"]!</span>")
+		to_chat(L,"<span class='userlove'>[src] is about to climax [(Lgen) ? "in your [Lgen.name]" : "with you"]!</span>")
 		if(!do_after(src, mb_time, target = src) || !in_range(src, L) || !G.climaxable(src, TRUE))
 			return
 	if(spillage)
-		to_chat(src,"<span class='userlove'>You orgasm with [L], spilling out of them, using your [G.name].</span>")
-		to_chat(L,"<span class='userlove'>[src] climaxes with you, overflowing and spilling, using [p_their()] [G.name]!</span>")
+		to_chat(src,"<span class='userlove'>You orgasm with [L], spilling out of [(Lgen) ? "[L.p_their()] [Lgen.name]" : "[L.p_them()]"], using your [G.name].</span>")
+		to_chat(L,"<span class='userlove'>[src] climaxes [(Lgen) ? "in your [Lgen.name]" : "with you"], overflowing and spilling, using [p_their()] [G.name]!</span>")
 		var/mob/living/carbon/human/H = L
 		if(H)
 			H.cumdrip_rate += rand(5,10)
 	else //knots and other non-spilling orgasms
-		to_chat(src,"<span class='userlove'>You climax with [L], your [G.name] spilling nothing.</span>")
-		to_chat(L,"<span class='userlove'>[src] climaxes with you, [p_their()] [G.name] spilling nothing!</span>")
+		to_chat(src,"<span class='userlove'>You climax [(Lgen) ? "in [L]'s [Lgen.name]" : "with [L]"], your [G.name] spilling nothing.</span>")
+		to_chat(L,"<span class='userlove'>[src] climaxes [(Lgen) ? "in your [Lgen.name]" : "with you"], [p_their()] [G.name] spilling nothing!</span>")
 	SEND_SIGNAL(L, COMSIG_ADD_MOOD_EVENT, "orgasm", /datum/mood_event/orgasm)
 	do_climax(fluid_source, spillage ? loc : L, G, spillage)
 
@@ -128,6 +128,19 @@
 			return
 	to_chat(src,"<span class='userlove'>You used your [G.name] to fill [container].</span>")
 	do_climax(fluid_source, container, G, FALSE)
+
+/mob/living/carbon/human/proc/pick_receiving_organ(mob/living/L)
+	if (!iscarbon(L))
+		return
+	var/mob/living/carbon/C = L
+	var/list/receivers_list
+	var/list/other_worn = C.get_equipped_items()
+	for(var/obj/item/organ/genital/G in C.internal_organs)
+		if((G.genital_flags & CAN_CUM_INTO) && G.is_exposed(other_worn)) //filter out what you can't cum into
+			LAZYADD(receivers_list, G)
+	if(LAZYLEN(receivers_list))
+		var/obj/item/organ/genital/ret_organ = input(src, "in what hole?", "Climax", null) as null|obj in receivers_list
+		return ret_organ
 
 /mob/living/carbon/human/proc/pick_climax_genitals(silent = FALSE)
 	var/list/genitals_list
@@ -283,12 +296,14 @@
 		if("Climax with partner")
 			//We need no hands, we can be restrained and so on, so let's pick an organ
 			var/obj/item/organ/genital/picked_organ = pick_climax_genitals()
+			var/obj/item/organ/genital/picked_target = null
 			if(picked_organ)
 				var/mob/living/partner = pick_partner() //Get someone
 				if(partner)
+					picked_target = pick_receiving_organ(partner)
 					var/spillage = input(src, "Would your fluids spill outside?", "Choose overflowing option", "Yes") as null|anything in list("Yes", "No")
 					if(spillage && in_range(src, partner))
-						mob_climax_partner(picked_organ, partner, spillage == "Yes" ? TRUE : FALSE)
+						mob_climax_partner(picked_organ, partner, spillage == "Yes" ? TRUE : FALSE, Lgen = picked_target)
 		if("Fill container")
 			//We'll need hands and no restraints.
 			if(!available_rosie_palms(FALSE, /obj/item/reagent_containers))

@@ -11,6 +11,8 @@
 	pixel_x = -16
 	layer = FLY_LAYER
 	var/log_amount = 10
+	var/spawned_wood = /obj/item/grown/log/tree
+	var/spawned_stump = /obj/structure/flora/stump
 
 /obj/structure/flora/tree/attackby(obj/item/W, mob/user, params)
 	if(log_amount && (!(flags_1 & NODECONSTRUCT_1)))
@@ -22,9 +24,9 @@
 				user.visible_message("<span class='notice'>[user] fells [src] with the [W].</span>","<span class='notice'>You fell [src] with the [W].</span>", "You hear the sound of a tree falling.")
 				playsound(get_turf(src), 'sound/effects/meteorimpact.ogg', 100 , 0, 0)
 				for(var/i=1 to log_amount)
-					new /obj/item/grown/log/tree(get_turf(src))
+					new spawned_wood(get_turf(src))
 
-				var/obj/structure/flora/stump/S = new(loc)
+				var/obj/structure/flora/stump/S = new spawned_stump(loc)
 				S.name = "[name] stump"
 
 				qdel(src)
@@ -39,12 +41,13 @@
 	icon_state = "tree_stump"
 	density = FALSE
 	pixel_x = -16
+	var/wood_type = /obj/item/grown/log/tree
 
 /obj/structure/flora/stump/attackby(obj/item/W, mob/user, params)
 	if((W.tool_behaviour == TOOL_SHOVEL) && params)
 		playsound(src, 'sound/effects/shovel_dig.ogg', 50, 1)
 		if(do_after(user, 20))
-			new /obj/item/grown/log/tree(get_turf(src))
+			new wood_type(get_turf(src))
 			user.visible_message("[user] digs up [src].", "<span class='notice'>You dig up [src].</span>")
 			qdel(src)
 	else
