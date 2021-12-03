@@ -14,6 +14,7 @@
 #define RECIPE_WAKI "dfsf" //draw  fold shrink fold
 #define RECIPE_SCIMITAR "dfb" //draw fold bend
 #define RECIPE_SABRE "ddsf" //draw draw shrink fold
+#define RECIPE_STUNDIL "dudsd" //draw upset draw shrink draw
 #define RECIPE_RAPIER "sdfd" //shrink draw  fold draw
 #define RECIPE_BROADSWORD "dfuf" //draw fold upset fold
 #define RECIPE_ZWEIHANDER "udfsf" //upset draw fold shrink fold
@@ -67,6 +68,7 @@
 	RECIPE_HALBERD = /obj/item/smithing/halberdhead,
 	RECIPE_GLAIVE = /obj/item/smithing/glaivehead,
 	RECIPE_PIKE = /obj/item/smithing/pikehead)
+	RECIPE_STUNDIL = /obj/item/smithing/stundild)
 
 /obj/structure/anvil/Initialize()
 	..()
