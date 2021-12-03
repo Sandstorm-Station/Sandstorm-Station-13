@@ -1,4 +1,4 @@
-/obj/item/melee/baton/stunsword/smithed
+modular_eros/obj/item/melee/baton/stunsword/smithed
 	name = "stundildo"
 	desc = "A forged club, shaped like a dildo. The venous pattern consists of many electrified wires, and the steel scrotum contains battery connectors. It has a comfortable grip!"
 	icon = 'modular_eros/icons/obj/items_and_weapons.dmi'
