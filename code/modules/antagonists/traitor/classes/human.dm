@@ -55,6 +55,11 @@
 			download_objective.owner = T.owner
 			download_objective.gen_amount_goal()
 			T.add_objective(download_objective)
+		else if(prob(30) && GLOB.roundstart_prisoners.len)
+			var/datum/objective/rescue_prisoner/rescue = new
+			rescue.owner = T.owner
+			rescue.find_target()
+			T.add_objective(rescue)
 		else if(prob(40)) // cum. not counting download: 40%.
 			var/datum/objective/steal/steal_objective = new
 			steal_objective.owner = T.owner

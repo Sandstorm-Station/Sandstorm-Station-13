@@ -569,7 +569,7 @@
 								 */
 
 /obj/machinery/grandfatherclock
-	name = "Grandfather Clock"
+	name = "grandfather clock"
 	desc = "Keeps track of the time with its dials."
 	icon = 'modular_citadel/code/modules/eventmaps/Spookystation/clock32x49.dmi'
 	icon_state = "grandfathermk4right"
@@ -715,7 +715,7 @@
 
 /obj/structure/flora/tree/spookytimexl
 	name = "tall dead tree"
-	desc = "It's a tree. Useful for combustion and/or construction. This ones quite tall"
+	desc = "It's a tree. Useful for combustion and/or construction. This one's quite tall."
 	icon = 'modular_citadel/code/modules/eventmaps/Spookystation/talltree128.dmi'
 	icon_state = "tree_1"
 	log_amount = 12
@@ -729,7 +729,7 @@
 
 /obj/structure/flora/tree/spookybranch
 	name = "fallen branch"
-	desc = "A branch from a tree"
+	desc = "A branch from a tree."
 	icon = 'modular_citadel/code/modules/eventmaps/Spookystation/iconfile32.dmi'
 	icon_state = "branch_1"
 	log_amount = 1
@@ -743,7 +743,7 @@
 
 /obj/structure/flora/tree/spookylog
 	name = "fallen tree"
-	desc = "A tree, that turned horizontal after it died"
+	desc = "A tree, that turned horizontal after it died."
 	icon = 'modular_citadel/code/modules/eventmaps/Spookystation/iconfile32.dmi'
 	icon_state = "timber"
 	log_amount = 5
@@ -1054,9 +1054,9 @@
 																							*/
 
 GLOBAL_LIST_INIT(hay_recipes, list ( \
-	new/datum/stack_recipe("Rice Hat", /obj/item/clothing/head/rice_hat, 4, time = 5, one_per_turf = 0, on_floor = 0), \
-	new/datum/stack_recipe("Hay Bed", /obj/structure/bed/badhaybed, 4, time = 15, one_per_turf = 1, on_floor = 0), \
-	new/datum/stack_recipe("Wicker Basket", /obj/structure/closet/crate/awfulwickerbasket, 5, time = 40, one_per_turf = 0, on_floor = 1), \
+	new/datum/stack_recipe("rice hat", /obj/item/clothing/head/rice_hat, 4, time = 5, one_per_turf = 0, on_floor = 0), \
+	new/datum/stack_recipe("hay bed", /obj/structure/bed/badhaybed, 4, time = 15, one_per_turf = 1, on_floor = 0), \
+	new/datum/stack_recipe("wicker basket", /obj/structure/closet/crate/awfulwickerbasket, 5, time = 40, one_per_turf = 0, on_floor = 1), \
 ))
 //Thanks Gomble
 /obj/item/stack/sheet/hay
@@ -1103,7 +1103,7 @@ GLOBAL_LIST_INIT(hay_recipes, list ( \
 														*/
 //Shitty bed
 /obj/structure/bed/badhaybed
-	name = "Low-quality Hay Bed"
+	name = "low-quality hay bed"
 	desc = "It looks like someone hastily put this together, even if the builder didn't."
 	icon = 'modular_citadel/code/modules/eventmaps/Spookystation/iconfile32.dmi'
 	icon_state = "shitty_hay_bed"
@@ -1118,7 +1118,7 @@ GLOBAL_LIST_INIT(hay_recipes, list ( \
 
 //Awful Wicker Basket
 /obj/structure/closet/crate/awfulwickerbasket
-	name = "Low-quality Wicker Basket"
+	name = "low-quality wicker basket"
 	desc = "A handmade wicker basket, you don't know why it looks like this. But you probably don't like it."
 	icon = 'modular_citadel/code/modules/eventmaps/Spookystation/iconfile32.dmi'
 	icon_state = "shitty_basket" //yes, there is no space on crates so the other state is shitty_basketopen

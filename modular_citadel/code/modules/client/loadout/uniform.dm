@@ -421,7 +421,7 @@
 	path = /obj/item/clothing/under/rank/engineering/engineer/mechanic
 	subcategory = LOADOUT_SUBCATEGORY_UNIFORM_JOBS
 
-/datum/gear/unifrom/grey/med/red
+/datum/gear/uniform/grey/med/red
 	name = "Red Paramedic's Uniform"
 	path = /obj/item/clothing/under/rank/medical/paramedic/red
 	subcategory = LOADOUT_SUBCATEGORY_UNIFORM_JOBS
