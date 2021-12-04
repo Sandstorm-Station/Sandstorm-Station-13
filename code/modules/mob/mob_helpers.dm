@@ -586,10 +586,10 @@ It's fairly easy to fix if dealing with single letters but not so much with comp
 /mob/proc/checkloadappearance()
 	var/mob/living/carbon/human/H = src
 	//This will be where the person gets to select their appearance instead of the random character
-	if (H.canloadappearance)
+	if (H.canloadappearance == TRUE)
 		SEND_SOUND(H, 'sound/misc/server-ready.ogg')
 		to_chat(H, "<span class='boldannounce'>This ghost role allows you to select your loaded character's appearance.</span>")
-		if(alert(H, "Would you like to load your currently loaded character's appearance?", "Yes", "No") == "Yes")
+		if(alert(H, "Would you like to load your currently loaded character's appearance?", "Warning", "Yes", "No") == "Yes")
 			if(alert(H, "You should only load a character that has not currently died in the round. Do you accept this?", "Warning", "Yes", "No") == "Yes")
 				H.client.prefs.copy_to(H)
 				H.real_name = H.client.prefs.real_name
