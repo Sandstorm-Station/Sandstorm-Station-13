@@ -43,7 +43,8 @@ Nothing else in the console has ID requirements.
 	var/disk_slot_selected
 	var/searchstring = ""
 	var/searchtype = ""
-	var/ui_mode = RDCONSOLE_UI_MODE_NORMAL
+	//var/ui_mode = RDCONSOLE_UI_MODE_NORMAL
+	var/ui_mode = RDCONSOLE_UI_MODE_EXPERT
 
 	var/research_control = TRUE
 
@@ -227,7 +228,8 @@ Nothing else in the console has ID requirements.
 	l += "Available points: <BR>[techweb_point_display_rdconsole(stored_research.research_points, stored_research.last_bitcoins)]"
 	l += "Security protocols: [obj_flags & EMAGGED ? "<font color='red'>Disabled</font>" : "<font color='green'>Enabled</font>"]"
 	l += "<a href='?src=[REF(src)];switch_screen=[RDSCREEN_MENU]'>Main Menu</a> | <a href='?src=[REF(src)];switch_screen=[back]'>Back</a></div>[RDSCREEN_NOBREAK]"
-	l += "[ui_mode == 1? "<span class='linkOn'>Normal View</span>" : "<a href='?src=[REF(src)];ui_mode=1'>Normal View</a>"] | [ui_mode == 2? "<span class='linkOn'>Expert View</span>" : "<a href='?src=[REF(src)];ui_mode=2'>Expert View</a>"] | [ui_mode == 3? "<span class='linkOn'>List View</span>" : "<a href='?src=[REF(src)];ui_mode=3'>List View</a>"]"
+	//l += "[ui_mode == 1? "<span class='linkOn'>Normal View</span>" : "<a href='?src=[REF(src)];ui_mode=1'>Normal View</a>"] | [ui_mode == 2? "<span class='linkOn'>Expert View</span>" : "<a href='?src=[REF(src)];ui_mode=2'>Expert View</a>"] | [ui_mode == 3? "<span class='linkOn'>List View</span>" : "<a href='?src=[REF(src)];ui_mode=3'>List View</a>"]" // Small fix
+	l += "[ui_mode == 2? "<span class='linkOn'>Expert View</span>" : "<a href='?src=[REF(src)];ui_mode=2'>Expert View</a>"] | [ui_mode == 3? "<span class='linkOn'>List View</span>" : "<a href='?src=[REF(src)];ui_mode=3'>List View</a>"]"
 	return l
 
 /obj/machinery/computer/rdconsole/proc/ui_main_menu()
