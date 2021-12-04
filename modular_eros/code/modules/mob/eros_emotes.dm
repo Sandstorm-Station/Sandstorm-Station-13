@@ -160,3 +160,27 @@
 	message = "caws!"
 	sound = 'modular_eros/sound/voice/caw.ogg'
 
+/datum/emote/living/burp/run_emote(mob/user, params, type_override, intentional)
+	. = ..()
+	var/list/burp_noises = list(
+		'modular_eros/sound/voice/burps/belch1.ogg','modular_eros/sound/voice/burps/belch2.ogg','modular_eros/sound/voice/burps/belch3.ogg','modular_eros/sound/voice/burps/belch4.ogg',
+		'modular_eros/sound/voice/burps/belch5.ogg','modular_eros/sound/voice/burps/belch6.ogg','modular_eros/sound/voice/burps/belch7.ogg','modular_eros/sound/voice/burps/belch8.ogg',
+		'modular_eros/sound/voice/burps/belch9.ogg','modular_eros/sound/voice/burps/belch10.ogg','modular_eros/sound/voice/burps/belch11.ogg','modular_eros/sound/voice/burps/belch12.ogg',
+		'modular_eros/sound/voice/burps/belch13.ogg','modular_eros/sound/voice/burps/belch14.ogg','modular_eros/sound/voice/burps/belch15.ogg'
+	)
+	if(.)
+		playsound(user, pick(burp_noises), 50, 1)
+
+/datum/emote/living/bleat
+	key = "bleat"
+	key_third_person = "bleats loudly"
+	message = "bleats loudly!"
+	emote_type = EMOTE_AUDIBLE
+
+/datum/emote/living/bleat/run_emote(mob/living/user, params)
+	if(ishuman(user))
+		if(user.nextsoundemote >= world.time)
+			return
+		user.nextsoundemote = world.time + 7
+		playsound(user, 'modular_eros/sound/voice/bleat.ogg', 50, 1, -1)
+	. = ..()
