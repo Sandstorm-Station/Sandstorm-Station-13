@@ -55,6 +55,12 @@
 /area/shuttle/syndicate/airlock
 	name = "Syndicate Infiltrator Airlock"
 
+////////////////////////////Slave Trader Shuttle////////////////////////////
+
+/area/shuttle/slaveship
+	name = "Slave Trader Shuttle"
+	canSmoothWithAreas = /area/shuttle/slaveship
+
 ////////////////////////////Pirate Shuttle////////////////////////////
 
 /area/shuttle/pirate

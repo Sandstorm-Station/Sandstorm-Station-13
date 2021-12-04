@@ -2,15 +2,18 @@ import { map, sortBy } from 'common/collections';
 import { flow } from 'common/fp';
 import { vecLength, vecSubtract } from 'common/vector';
 import { shallowDiffers } from '../../common/react';
-import { useBackend } from '../backend';
-import { Box, Button, Icon, LabeledList, Section, Table, Flex, Stack } from '../components';
+import { useBackend, useSharedState } from '../backend';
+import { Box, Button, Icon, LabeledList, Section, Table, Flex, Stack, Tabs, NoticeBox, Fragment } from '../components';
 import { Window } from '../layouts';
+import { GenericUplink } from './Uplink';
 
 const coordsToVec = coords => map(parseFloat)(coords.split(', '));
 
 export const SlaveConsole = (props, context) => {
   const { act, data } = useBackend(context);
+  const [tab, setTab] = useSharedState(context, 'tab', 1);
   const {
+    credits,
     currentCoords,
   } = data;
   const slaves = flow([
@@ -34,163 +37,175 @@ export const SlaveConsole = (props, context) => {
       height={700}
       resizable>
       <Window.Content scrollable>
-        <Section title="Funds">
-          <Box fontSize="18px">
-            12345
-          </Box>
-        </Section>
-
-        <Section title="Funds">
-          <Box>
-            12345
-          </Box>
-        </Section>
-
-        <Section title="Funds">
-          12345
-        </Section>
-
         <Section title="Functions">
           <Flex direction="column">
             <Button
               icon="bullhorn"
-              content="Make Priority Announcement"
+              content="Message Station"
               onClick={() => act("makePriorityAnnouncement")}
-            />
-            <Button
-              icon="shopping-cart"
-              content="Purchase Supplies"
-              onClick={() => act("purchaseSupplies")}
             />
           </Flex>
         </Section>
 
-        <Section title="Slaves">
-          <Stack
-            justify="space-between">
-            {slaves.map(slave => (
-              <Stack.Item
-                key={slave.name + slave.coords + slave.index}>
-                <Flex>
-                  <Flex.Item>
-                    {slave.name}
-                  </Flex.Item>
-
-                  <Flex.Item>
-                    {slave.degrees !== undefined && (
-                      <Icon
-                        mr={1}
-                        size={1.2}
-                        name="arrow-up"
-                        rotation={slave.degrees} />
-                    )}
-                    {slave.dist !== undefined && (
-                      slave.dist + 'm'
-                    )}
-                    <Button
-                      icon="dollar-sign"
-                      content="1000"
-                      onClick={() => act("makePriorityAnnouncement")} />
-                  </Flex.Item>
-                </Flex>
-              </Stack.Item>
-            ))}
-          </Stack>
+        <Section>
+          <Flex direction="column">
+            <Button
+              icon="bullhorn"
+              content="Message Station"
+              onClick={() => act("makePriorityAnnouncement")}
+            />
+          </Flex>
         </Section>
 
-        <Section title="Slaves Table">
-          <Table>
-            {slaves.map(slave => (
-              <Table.Row
-                key={slave.name + slave.coords + slave.index}
-                className="candystripe">
+        <Tabs>
+          <Tabs.Tab
+            icon="link"
+            lineHeight="23px"
+            selected={tab === 1}
+            onClick={() => setTab(1)}>
+            Slave Management
+          </Tabs.Tab>
+          <Tabs.Tab
+            icon="shopping-cart"
+            lineHeight="23px"
+            selected={tab === 2}
+            onClick={() => setTab(2)}>
+            Supplies
+          </Tabs.Tab>
+        </Tabs>
+        {tab === 1 && (
+          <SlavePanel
+            slaves={slaves} />
+        )}
+        {tab === 2 && (
+          <SupplyPanel
+            credits={credits} />
+        )}
 
-                <Table.Cell bold color="label">
-                  {slave.name}
-                </Table.Cell>
-
-                <Table.Cell
-                  collapsing>
-                  {slave.degrees !== undefined && (
-                    <Icon
-                      mr={1}
-                      size={1.2}
-                      name="arrow-up"
-                      rotation={slave.degrees} />
-                  )}
-                  {slave.dist !== undefined && (
-                    slave.dist + 'm'
-                  )}
-                </Table.Cell>
-
-                <Table.Cell
-                  collapsing>
-                  <Button
-                    icon="dollar-sign"
-                    content="1000"
-                    onClick={() => act("makePriorityAnnouncement")} />
-                </Table.Cell>
-
-                <Table.Cell
-                  collapsing>
-                  <Button
-                    icon="dollar-sign"
-                    content="1000 advanced"
-                    onClick={() => act('toggleBought', {
-                      id: slave.id,
-                    })} />
-                </Table.Cell>
-
-              </Table.Row>
-            ))}
-          </Table>
-        </Section>
-
-        <Section title="Slaves Table">
-          <Table>
-            {slaves.map(slave => (
-              <Table.Row
-                key={slave.name + slave.coords + slave.index}
-                className="candystripe">
-
-                <Table.Cell bold color="label">
-                  {slave.name}
-                </Table.Cell>
-
-                <Table.Cell>
-                  {slave.degrees !== undefined && (
-                    <Icon
-                      mr={1}
-                      size={1.2}
-                      name="arrow-up"
-                      rotation={slave.degrees} />
-                  )}
-                  {slave.dist !== undefined && (
-                    slave.dist + 'm'
-                  )}
-                </Table.Cell>
-
-                <Table.Cell>
-                  <Button
-                    icon="dollar-sign"
-                    content="1000"
-                    onClick={() => act("makePriorityAnnouncement")} />
-                </Table.Cell>
-
-                <Table.Cell>
-                  <Button
-                    icon="dollar-sign"
-                    content="1000 advanced"
-                    onClick={() => act('toggleBought', {
-                      id: slave.id,
-                    })} />
-                </Table.Cell>
-
-              </Table.Row>
-            ))}
-          </Table>
-        </Section>
       </Window.Content>
     </Window>
+  );
+};
+
+const SlavePanel = (props, context) => {
+  const { slaves } = props;
+  const { act, data } = useBackend(context);
+  if (!slaves.length) {
+    return (
+      <NoticeBox>
+        No slaves detected in hideout
+      </NoticeBox>
+    );
+  }
+  return slaves.map(slave => {
+    return (
+      <Section
+        key={slave.id}
+        title={slave.name}
+        buttons={(
+          <Fragment>
+            <Button
+              icon="dolly"
+              content="Export"
+              color="good"
+              disabled={!slave.bought || !slave.inexportbay}
+              tooltip="Send the slave back to the station. First the ransom must be paid by the station, and the slave must be in the export bay."
+              onClick={() => act('export', {
+                id: slave.id,
+              })} />
+            <Button
+              icon="bolt"
+              color="average"
+              content="Shock"
+              disabled={slave.dist === undefined || slave.shockcooldown}
+              onClick={() => act('shock', {
+                id: slave.id,
+              })} />
+            <Button.Confirm
+              icon="unlock"
+              content="Release"
+              color="bad"
+              disabled={slave.dist === undefined}
+              tooltip="Remove the slave's collar.        "
+              onClick={() => act('release', {
+                id: slave.id,
+              })} />
+          </Fragment>
+        )}>
+        <LabeledList>
+          <LabeledList.Item
+            label="State"
+            color={slave.statstate}>
+            {slave.stat}
+          </LabeledList.Item>
+          <LabeledList.Item
+            label="Location">
+            {slave.degrees !== undefined && (
+              <Icon
+                mr={1}
+                size={1.2}
+                name="arrow-up"
+                rotation={slave.degrees} />
+            )}
+            {slave.dist !== undefined && (
+              slave.dist + 'm'
+            )}
+            {slave.degrees === undefined && (
+              <Box color="bad">
+                Out of range
+              </Box>
+            )}
+          </LabeledList.Item>
+          <LabeledList.Item label="Price">
+            {!slave.price && (
+              <Button
+                icon="pencil-alt"
+                content="Set price"
+                tooltip="The station will have to pay this to get the slave back. (1000 - 10000)"
+                onClick={() => act('setPrice', {
+                  id: slave.id,
+                })} />
+            )}
+            {!!slave.price && (
+              <Box>
+                {slave.price}cr
+              </Box>
+            )}
+          </LabeledList.Item>
+          <LabeledList.Item
+            label="Ransom"
+            color={!slave.price
+              ? "bad"
+              : !slave.bought
+                ? 'average'
+                : 'good'}
+          >
+            {!slave.price
+              ? "Set the price"
+              : !slave.bought
+                ? 'Awaiting payment from station'
+                : 'Paid; Ready for export'}
+          </LabeledList.Item>
+        </LabeledList>
+      </Section>
+    );
+  });
+};
+
+const SupplyPanel = (props, context) => {
+  const { credits } = props;
+  return (
+    <Fragment>
+      {/* <Section
+        fontSize="18px">
+        Budget: <b>1234</b> credits
+      </Section> */}
+      <GenericUplink
+        currencyAmount={credits}
+        currencySymbol="Credits" />
+      <Section>
+        Weh
+      </Section>
+    </Fragment>
   );
 };

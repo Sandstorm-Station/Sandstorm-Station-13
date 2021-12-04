@@ -7,6 +7,24 @@
 	resistance_flags = INDESTRUCTIBLE | LAVA_PROOF | FIRE_PROOF | ACID_PROOF
 	req_access = list(ACCESS_SLAVER)
 	light_color = LIGHT_COLOR_RED
+	var/selected_cat
+	/// Dictates if the compact mode of the interface is on or off
+	var/compact_mode = FALSE
+	/// Possible gear to be dispensed
+	var/list/possible_gear
+
+/obj/machinery/computer/slavery/Initialize(mapload)
+	. = ..()
+	possible_gear = get_slaver_gear()
+
+/obj/machinery/computer/slavery/proc/get_slaver_gear()
+	var/list/filtered_modules = list()
+	for(var/path in GLOB.slaver_gear)
+		var/datum/slaver_gear/SG = new path
+		if(!filtered_modules[SG.category])
+			filtered_modules[SG.category] = list()
+		filtered_modules[SG.category][SG] = SG
+	return filtered_modules
 
 // /obj/machinery/computer/slavery/ui_interact(mob/user)
 // 	. = ..()
@@ -43,12 +61,33 @@
 		ui = new(user, src, "SlaveConsole", name)
 		ui.open()
 
-/obj/machinery/computer/slavery/ui_data(mob/user)
+/obj/machinery/computer/slavery/ui_static_data(mob/user)
 	var/list/data = list()
+	data["categories"] = list()
+	for(var/category in possible_gear)
+		var/list/cat = list(
+			"name" = category,
+			"items" = (category == selected_cat ? list() : null))
+		for(var/gear in possible_gear[category])
+			var/datum/slaver_gear/AG = possible_gear[category][gear]
+			cat["items"] += list(list(
+				"name" = AG.name,
+				"cost" = AG.cost,
+				"desc" = AG.description,
+			))
+		data["categories"] += list(cat)
 
 	var/turf/curr = get_turf(src)
 	data["currentCoords"] = "[curr.x], [curr.y], [curr.z]"
 
+	return data
+
+
+/obj/machinery/computer/slavery/ui_data(mob/user)
+	var/list/data = list()
+
+	data["credits"] = GLOB.slavers_credits_balance
+	data["compactMode"] = compact_mode
 	var/list/slaves = list()
 	data["slaves"] = list()
 
@@ -59,18 +98,44 @@
 
 		var/mob/living/L = C.loc
 		var/turf/pos = get_turf(L)
-		if(!pos || pos.z != curr.z || C == L.get_item_by_slot(SLOT_NECK))
+		if(!pos || C != L.get_item_by_slot(SLOT_NECK))
 			continue
 
 		var/list/slave = list()
-		slave["id"] = C.collarID
-		priority_announce("Getting collar ID first: [C.GetID()] end.", sender_override = "toggleBought")
+		slave["id"] = REF(C)// C.collarID
 		slave["name"] = L.real_name
+		slave["price"] = C.price
 		slave["bought"] = C.bought
+		slave["shockcooldown"] = C.shock_cooldown;
+		slave["inexportbay"] = FALSE
 
-		slave["coords"] = "[pos.x], [pos.y], [pos.z]"
-		slave["dist"] = max(get_dist(curr, pos), 0) //Distance between the machine and slave turfs
-		slave["degrees"] = round(Get_Angle(curr, pos)) //0-360 degree directional bearing, for more precision.
+		var/turf/curr = get_turf(src)
+		if(pos.z == curr.z) //Distance/Direction calculations for same z-level only
+			slave["coords"] = "[pos.x], [pos.y], [pos.z]"
+			slave["dist"] = max(get_dist(curr, pos), 0) //Distance between the machine and slave turfs
+			slave["degrees"] = round(Get_Angle(curr, pos)) //0-360 degree directional bearing, for more precision.
+
+			var/area/A = get_area(get_turf(L))
+			if (istype(A, /area/slavers/export))
+				slave["inexportbay"] = TRUE
+
+			switch(L.stat)
+				if(CONSCIOUS)
+					slave["stat"] = "Conscious"
+					slave["statstate"] = "good"
+				if(SOFT_CRIT)
+					slave["stat"] = "Conscious"
+					slave["statstate"] = "average"
+				if(UNCONSCIOUS)
+					slave["stat"] = "Unconscious"
+					slave["statstate"] = "average"
+				if(DEAD)
+					slave["stat"] = "Dead"
+					slave["statstate"] = "bad"
+		else
+			slave["stat"] = "Unknown"
+			slave["statstate"] = "grey"
+
 		slaves += list(slave) //Add this slave to the list of slaves
 	data["slaves"] = slaves
 	return data
@@ -79,9 +144,23 @@
 	if(..())
 		return
 
+	var/collarID = params["id"]
+	var/obj/item/electropack/shockcollar/slave/collar
+
+	if(collarID)
+		for(var/tracked_slave in GLOB.tracked_slaves)
+			var/obj/item/electropack/shockcollar/slave/C = tracked_slave
+			if (REF(C) == collarID)
+				collar = C;
+				break
+
 	switch(action)
+
+
 		if ("makePriorityAnnouncement")
-			priority_announce("Announcement.", sender_override = "Beep Beep upgate")
+			// priority_announce("Announcement.", sender_override = "Beep Beep upgate")
+			var/datum/bank_account/bank = SSeconomy.get_dep_account(ACCOUNT_CAR)
+			priority_announce("Station credits: [bank.account_balance], Deposit: [GLOB.slavers_credits_deposits], Balance: [GLOB.slavers_credits_balance], Total: [GLOB.slavers_credits_total]", sender_override = "Bank status")
 			// var/is_ai = issilicon(user)
 			// if(!SScommunications.can_announce(user, is_ai))
 			// 	to_chat(user, "<span class='alert'>Intercomms recharging. Please stand by.</span>")
@@ -100,18 +179,100 @@
 		if("purchaseSupplies")
 			priority_announce("Purchase Supplies.", sender_override = "Beep Beep upgate")
 
-		if("toggleBought")
-			var/boughtID = text2num(params["id"])
-			priority_announce("Collar ID is: [boughtID] end.", sender_override = "toggleBought")
+		if("setPrice")
+			var/newPrice = input(usr, "The station will need to pay this to get the slave back. (1000 - 10000)", "Set slave price", 4000) as num
+			if(!newPrice)
+				priority_announce("New price empty.", sender_override = "Set price")
 
-			for(var/tracked_slave in GLOB.tracked_slaves)
-				var/obj/item/electropack/shockcollar/slave/C = tracked_slave
-				if (C.collarID == boughtID)
-					if (!isliving(C.loc))
-						priority_announce("Not living location", sender_override = "toggleBought")
-						continue;
+			newPrice = clamp(round(newPrice), 1000, 10000)
+			collar.price = newPrice
 
-					var/mob/living/L = C.loc
-					priority_announce("Slave ckey is: [L.ckey] end.", sender_override = "toggleBought")
+		if("export")
+			// var/area/curr = get_area(get_turf(collar.loc))
 
+		// if (istype(curr, /area/slavers/export))
+			// priority_announce("EXPORTING...", sender_override = "Set price")
+			// var/area/thearea  = /area/slavers/export
 
+			// if(!curr)
+			// 	priority_announce("No area found", sender_override = "Set price")
+			// 	return
+
+			// var/list/L = list()
+			// for(var/turf/T in get_area_turfs(curr.type))
+			// 	L+=T
+			// if(!L || !L.len)
+			// 	say("Error: No destination found.")
+			// 	return
+
+			// var/slaver_crew_name = /datum/antagonist/slaver.get_team().slaver_crew_name
+			// var/datum/antagonist/slaver.get_team()
+			// priority_announce("The [GLOB.slavers_team_name]", sender_override = "Set price")
+
+			// var/datum/bank_account/bank = SSeconomy.get_dep_account(ACCOUNT_CAR)
+			// if(bank)
+			// 	bank.adjust_money(-1000)
+			GLOB.slavers_credits_deposits -= collar.price
+			GLOB.slavers_credits_balance += collar.price
+			GLOB.slavers_credits_total += collar.price
+			GLOB.slavers_slaves_sold++
+
+			var/datum/effect_system/spark_spread/s = new /datum/effect_system/spark_spread
+			s.set_up(3, 1, collar.loc)
+			s.start()
+
+			playsound(get_turf(src.loc), 'sound/effects/bamf.ogg', 50, 1)
+			visible_message("<span class='notice'>[collar.loc] vanishes into the droppod.</span>", \
+			"<span class='notice'>You are taken by the droppod.</span>")
+
+			var/area/pod_storage_area = locate(/area/centcom/supplypod/podStorage) in GLOB.sortedAreas
+			var/mob/living/M = collar.loc
+			// var/slaver_crew_name = /datum/antagonist/slaver.get_team().slaver_crew_name
+			priority_announce("[M.real_name] has been returned to the station.", sender_override = "[GLOB.slavers_team_name] Transmission")
+			var/obj/structure/closet/supplypod/centcompod/exportPod = new(pick(get_area_turfs(pod_storage_area)))
+			var/obj/effect/landmark/observer_start/dropzone = locate(/obj/effect/landmark/observer_start) in GLOB.landmarks_list
+			M.forceMove(exportPod) //and forceMove any atom/moveable into the supplypod
+			new /obj/effect/pod_landingzone(dropzone.loc, exportPod) //Then, create the DPTarget effect, which will eventually forceMove the temp_pod to it's location
+
+			qdel(collar)
+		// else
+		// 	priority_announce("Nope", sender_override = "Set price")
+
+		if("shock")
+			var/datum/signal/signal = new /datum/signal
+			signal.data["code"] = -1
+			collar.receive_signal(signal)
+
+		if("release")
+			qdel(collar)
+
+		if("compact_toggle")
+			compact_mode = !compact_mode
+			return TRUE
+
+		if("select")
+			selected_cat = params["category"]
+			return TRUE
+
+		if("buy")
+			var/item_name = params["name"]
+			var/list/buyable_items = list()
+			for(var/category in possible_gear)
+				buyable_items += possible_gear[category]
+			for(var/key in buyable_items)
+				var/datum/slaver_gear/SG = buyable_items[key]
+				if(SG.name == item_name)
+					Dispense(SG.build_path, SG.cost)
+					return TRUE
+
+/obj/machinery/computer/slavery/proc/Dispense(item,cost=1)
+	if(GLOB.slavers_credits_balance >= cost)
+		GLOB.slavers_credits_balance -= cost
+		say("Incoming supply!")
+		var/drop_location = loc
+		// if(pad)
+		// 	flick("alien-pad", pad)
+		// 	drop_location = pad.loc
+		new item(drop_location)
+	else
+		say("Insufficent credits!")

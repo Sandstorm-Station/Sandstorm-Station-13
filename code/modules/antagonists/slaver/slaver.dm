@@ -1,3 +1,9 @@
+GLOBAL_VAR_INIT(slavers_team_name, "Slave Traders")
+GLOBAL_VAR_INIT(slavers_credits_deposits, 0)
+GLOBAL_VAR_INIT(slavers_credits_balance, 2000)
+GLOBAL_VAR_INIT(slavers_credits_total, 0)
+GLOBAL_VAR_INIT(slavers_slaves_sold, 0)
+
 /datum/antagonist/slaver
 	name = "Slave Trader"
 	roundend_category = "slaver"
@@ -33,13 +39,11 @@
 		return
 	var/mob/living/carbon/human/H = owner.current
 
-	//H.set_species(/datum/species/human) //Plasamen burn up otherwise, and lizards are vulnerable to asimov AIs
-
 	H.equipOutfit(slaver_outfit)
 	return TRUE
 
 /datum/antagonist/slaver/greet()
-	owner.current.playsound_local(get_turf(owner.current), 'sound/ambience/antag/ops.ogg',100,0)
+	owner.current.playsound_local(get_turf(owner.current), 'sound/ambience/antag/slavers.ogg',100,0)
 	to_chat(owner, "<span class='notice'>You are a slave trader!</span>")
 	owner.announce_objectives()
 
@@ -80,7 +84,7 @@
 	slaver_outfit = /datum/outfit/slaver/leader
 
 /datum/antagonist/slaver/leader/greet()
-	owner.current.playsound_local(get_turf(owner.current), 'sound/ambience/antag/ops.ogg',100,0)
+	owner.current.playsound_local(get_turf(owner.current), 'sound/ambience/antag/slavers.ogg',100,0)
 	to_chat(owner, "<B>You are the Slave Master for this collection job. You are responsible for organising your team and your ID is the only one who can open the launch bay doors.</B>")
 	to_chat(owner, "<B>If you feel you are not up to this task, give your ID to another slaver.</B>")
 	owner.announce_objectives()
@@ -88,11 +92,11 @@
 
 
 /datum/antagonist/slaver/leader/proc/slavers_name_assign()
-	slaver_team.slaver_crew_name = ask_name()
+	GLOB.slavers_team_name = ask_name()
 	// priority_announce("Message test 123 123 Message test 123 123 Message test 123 123 Message test 123 123 Message test 123 123.", sender_override = "Hail from the [slaver_team.slaver_crew_name]")
 
 /datum/antagonist/slaver/leader/proc/ask_name()
-	var/defaultname = slaver_team.slaver_crew_name
+	var/defaultname = GLOB.slavers_team_name
 	var/newname = stripped_input(owner.current, "You are the slave master. Please choose a name for your crew.", "Crew name", defaultname)
 	if (!newname)
 		newname = defaultname
@@ -104,7 +108,7 @@
 	return capitalize(newname)
 
 /datum/team/slavers
-	var/slaver_crew_name = "Slave Traders"
+	// var/slaver_crew_name = "Slave Traders"
 	var/core_objective = /datum/objective/slaver
 
 /datum/team/slavers/proc/update_objectives()
@@ -113,65 +117,30 @@
 		O.team = src
 		objectives += O
 
-/datum/team/pirate/roundend_report()
-	var/list/parts = list()
-
-	parts += "<span class='header'>Space Pirates were:</span>"
-
-	var/all_dead = TRUE
-	for(var/datum/mind/M in members)
-		if(considered_alive(M))
-			all_dead = FALSE
-	parts += printplayerlist(members)
-
-	parts += "Loot stolen: "
-	var/datum/objective/loot/L = locate() in objectives
-	parts += L.loot_listing()
-	parts += "Total loot value : [L.get_loot_value()]/[L.target_value] credits"
-
-	if(L.check_completion() && !all_dead)
-		parts += "<span class='greentext big'>The pirate crew was successful!</span>"
-	else
-		parts += "<span class='redtext big'>The pirate crew has failed.</span>"
-
-	return "<div class='panel redborder'>[parts.Join("<br>")]</div>"
-
 /datum/team/slavers/roundend_report()
 	var/list/parts = list()
-	parts += "<span class='header'>[slaver_crew_name] Crew:</span>"
+	parts += "<span class='header'>Slave Traders:</span>"
 
-	var/text = "<br><span class='header'>The syndicate operatives were:</span>"
-	var/purchases = ""
-	var/TC_uses = 0
-	LAZYINITLIST(GLOB.uplink_purchase_logs_by_key)
-	for(var/I in members)
-		var/datum/mind/syndicate = I
-		var/datum/uplink_purchase_log/H = GLOB.uplink_purchase_logs_by_key[syndicate.key]
-		if(H)
-			TC_uses += H.total_spent
-			purchases += H.generate_render(show_key = FALSE)
+	var/text = "<br><span class='header'>The crew were:</span>"
+	var/slavesSold = GLOB.slavers_slaves_sold
+	var/slavesUnsold = GLOB.tracked_slaves.len
+	var/earnedMoney = GLOB.slavers_credits_total
+
 	text += printplayerlist(members)
 	text += "<br>"
-	text += "(Syndicates used [TC_uses] TC) [purchases]"
+	text += "Slaves sold: [slavesSold]"
+	text += "Slaves not sold: [slavesUnsold]"
+	text += "Total money earned: [earnedMoney]"
+
+	var/datum/objective/slaver/O = locate() in objectives
+	if(O.check_completion())
+		parts += "<span class='greentext big'>The slaver crew were successful!</span>"
+	else
+		parts += "<span class='redtext big'>The slaver crew have failed.</span>"
 
 	parts += text
 
 	return "<div class='panel redborder'>[parts.Join("<br>")]</div>"
 
-/datum/team/slavers/antag_listing_name()
-	if(slaver_crew_name)
-		return "[slaver_crew_name] Syndico"
-	else
-		return "Syndicaa"
-
-/datum/team/slavers/is_gamemode_hero()
-	return SSticker.mode.name == "slave hunters"
-
 /proc/is_slaver(mob/M)
 	return M && istype(M) && M.mind && M.mind.has_antag_datum(/datum/antagonist/slaver)
-
-// /datum/round_event_control/operative
-// 	name = "Slave Traders"
-// 	typepath = /datum/round_event/ghost_role/slavers
-// 	weight = 0 //Admin only
-// 	max_occurrences = 1

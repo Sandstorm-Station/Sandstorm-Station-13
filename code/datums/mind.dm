@@ -374,14 +374,6 @@
 		N.nukeop_outfit = null
 		add_antag_datum(N,converter.nuke_team)
 
-	else if(is_slaver(creator))
-		var/datum/antagonist/slaver/converter = creator.mind.has_antag_datum(/datum/antagonist/slaver,TRUE)
-		var/datum/antagonist/slaver/S = new()
-		S.send_to_spawnpoint = FALSE
-		S.slaver_outfit = null
-		add_antag_datum(S,converter.slaver_team)
-
-
 	enslaved_to = creator
 
 	current.faction |= creator.faction

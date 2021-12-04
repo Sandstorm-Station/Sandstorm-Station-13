@@ -146,6 +146,8 @@
 	custom_materials = list(/datum/material/iron = 5000, /datum/material/glass = 2000)
 
 	var/tagname = null
+	var/shockStrength = 100
+	var/shockCooldown = 100
 
 /datum/design/electropack/shockcollar
 	name = "Shockcollar"
@@ -172,7 +174,7 @@
 		if(shock_cooldown == TRUE)
 			return
 		shock_cooldown = TRUE
-		addtimer(VARSET_CALLBACK(src, shock_cooldown, FALSE), 100)
+		addtimer(VARSET_CALLBACK(src, shock_cooldown, FALSE), shockCooldown)
 		step(L, pick(GLOB.cardinals))
 
 		to_chat(L, "<span class='danger'>You feel a sharp shock from the collar!</span>")
@@ -180,7 +182,7 @@
 		s.set_up(3, 1, L)
 		s.start()
 
-		L.DefaultCombatKnockdown(100)
+		L.DefaultCombatKnockdown(shockStrength)
 
 	if(master)
 		master.receive_signal()
@@ -206,17 +208,36 @@
 /obj/item/electropack/shockcollar/slave
 	name = "slave collar"
 	desc = "A reinforced metal collar. This one has a shock element and tracker installed."
-	var/static/lastID = 0;
-	var/collarID
+
+	var/price = 0
 	var/bought = FALSE
+	shockStrength = 400
+	shockCooldown = 200
+	code = -1
+	frequency = -1
 
 /obj/item/electropack/shockcollar/slave/Initialize()
-	. = ..()
-	collarID = ++lastID
 	GLOB.tracked_slaves += src
-	priority_announce("New pack", sender_override = "Beep Beep upgate")
+	. = ..()
+
 
 /obj/item/electropack/shockcollar/slave/Destroy()
-	. = ..()
+	visible_message("<span class='notice'>The [src] detaches from [src.loc]'s neck.</span>", \
+		"<span class='notice'>The [src] detaches from your neck.</span>")
+	playsound(get_turf(src.loc), 'sound/machines/terminal_eject_disc.ogg', 50, 1)
 	GLOB.tracked_slaves -= src
-	priority_announce("pack deleted", sender_override = "Beep Beep upgate")
+	. = ..()
+
+// Don't let user change frequency.
+/obj/item/electropack/shockcollar/slave/attack_self(mob/living/user)
+	return
+
+// Once equipped, do not let anyone take it off
+/obj/item/electropack/shockcollar/slave/equipped(mob/user, slot)
+	. = ..()
+
+	if(isliving(user))
+		var/mob/living/M = user
+		if(src == M.get_item_by_slot(SLOT_NECK))
+			playsound(get_turf(M), 'sound/machines/triple_beep.ogg', 50, 1)
+			ADD_TRAIT(src, TRAIT_NODROP, CLOTHING_TRAIT)

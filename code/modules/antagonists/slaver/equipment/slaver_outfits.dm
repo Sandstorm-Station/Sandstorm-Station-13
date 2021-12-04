@@ -2,36 +2,24 @@
 	name = "Slave Trader - Basic"
 
 	uniform = /obj/item/clothing/under/syndicate
-	shoes = /obj/item/clothing/shoes/combat
-	gloves = /obj/item/clothing/gloves/combat
-	back = /obj/item/storage/backpack
+	shoes = /obj/item/clothing/shoes/jackboots
+	gloves = /obj/item/clothing/gloves/color/black
+	back = /obj/item/storage/backpack/satchel
 	ears = /obj/item/radio/headset/syndicate/alt
-	id = /obj/item/card/id/syndicate
+	id = /obj/item/card/id/slaver
 	belt = /obj/item/gun/ballistic/automatic/pistol
-	backpack_contents = list(/obj/item/storage/box/survival/syndie=1,\
+	backpack_contents = list(/obj/item/storage/box/survival,\
 		/obj/item/kitchen/knife/combat/survival)
-
-	var/tc = 25
-	var/command_radio = FALSE
-	var/uplink_type = /obj/item/uplink/nuclear
-
 
 /datum/outfit/slaver/leader
 	name = "Slave Master - Basic"
-	id = /obj/item/card/id/syndicate/nuke_leader
+	id = /obj/item/card/id/slaver
 	gloves = /obj/item/clothing/gloves/krav_maga/combatglovesplus
-	command_radio = TRUE
 
 /datum/outfit/slaver/post_equip(mob/living/carbon/human/H, visualsOnly = FALSE, client/preference_source)
 	var/obj/item/radio/R = H.ears
 	R.set_frequency(FREQ_SYNDICATE)
 	R.freqlock = TRUE
-	if(command_radio)
-		R.command = TRUE
-
-	if(tc)
-		var/obj/item/U = new uplink_type(H, H.key, tc)
-		H.equip_to_slot_or_del(U, SLOT_IN_BACKPACK)
 
 	var/obj/item/implant/weapons_auth/W = new
 	W.implant(H)

@@ -1,7 +1,7 @@
 import { sortBy } from "common/collections";
 import { capitalize } from "common/string";
 import { useBackend, useLocalState } from "../backend";
-import { Blink, Box, Button, Dimmer, Flex, Stack, Icon, Input, Modal, Section, TextArea, LabeledList } from "../components";
+import { Blink, Box, Button, Dimmer, Flex, Stack, Icon, Input, Modal, Section, TextArea, Table, Fragment } from "../components";
 import { Window } from "../layouts";
 import { sanitizeText } from "../sanitize";
 
@@ -317,7 +317,8 @@ export const PageMain = (props, context) => {
     shuttleCanEvacOrFailReason,
     shuttleLastCalled,
     shuttleRecallable,
-    availableSlaves,
+    cargocredits,
+    slaves,
   } = data;
 
   const [callingShuttle, setCallingShuttle] = useLocalState(
@@ -473,54 +474,52 @@ export const PageMain = (props, context) => {
         </Flex>
       </Section>
 
-      {availableSlaves && (
-        <Section title="Buy Slaves">
-          <Stack
-            justify="space-between">
-            <Stack.Item
-              align="center">
-              John Smith
-            </Stack.Item>
-            <Stack.Item>
-              <Button
-                icon="shopping-cart"
-                content="1000"
-                onClick={() => act("makePriorityAnnouncement")} />
-            </Stack.Item>
-          </Stack>
+      {!!slaves.length && (
+        <Fragment>
+          <Section>
+            Cargo credits: {cargocredits}cr
+          </Section>
+          <Section title="Buy Slaves">
+            <Box>
+              {"The credits will only be sent once the slave is delivered back to the station."}
+            </Box>
+            <Table>
+              {slaves.map(slave => (
+                <Table.Row
+                  key={slave.name + slave.coords + slave.index}
+                  className="candystripe">
 
-          <Stack
-            justify="space-between"
-            align="center">
-            <Stack.Item>
-              <Box>
-                Tkyohamtka Retkhohoobaaashnn
-              </Box>
-            </Stack.Item>
-            <Stack.Item>
-              <Button
-                icon="shopping-cart"
-                content="3000"
-                onClick={() => act("makePriorityAnnouncement")} />
-            </Stack.Item>
-          </Stack>
+                  <Table.Cell bold color="label">
+                    {slave.name}
+                  </Table.Cell>
 
-          <Stack
-            justify="space-between"
-            align="center">
-            <Stack.Item>
-              <Box>
-                Abbytha Kushanka
-              </Box>
-            </Stack.Item>
-            <Stack.Item>
-              <Button
-                icon="shopping-cart"
-                content="2000"
-                onClick={() => act("makePriorityAnnouncement")} />
-            </Stack.Item>
-          </Stack>
-        </Section>
+                  <Table.Cell
+                    collapsing
+                    color="label"
+                    textAlign="right">
+                    {slave.bought
+                      ? "Ransom paid"
+                      : ""}
+                  </Table.Cell>
+
+                  <Table.Cell
+                    collapsing
+                    align="right">
+                    <Button
+                      icon={slave.bought ? "times" : ""}
+                      disabled={slave.cannotafford}
+                      content={slave.bought ? "Cancel" : slave.price + "cr"}
+                      color={slave.bought ? "bad" : "default"}
+                      onClick={() => act('toggleBought', {
+                        id: slave.id,
+                      })} />
+                  </Table.Cell>
+
+                </Table.Row>
+              ))}
+            </Table>
+          </Section>
+        </Fragment>
       )}
 
       {!!canMessageAssociates && messagingAssociates && <MessageModal

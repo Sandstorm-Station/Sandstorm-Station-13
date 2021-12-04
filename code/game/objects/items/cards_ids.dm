@@ -544,6 +544,12 @@
 	assignment = "Syndicate Overlord"
 	access = list(ACCESS_SYNDICATE)
 
+/obj/item/card/id/slaver
+	name = "\improper Slaver Trader ID"
+	desc = "A cheap ID used by slave traders."
+	icon_state = "retro"
+	access = list(ACCESS_MAINT_TUNNELS, ACCESS_SLAVER)
+
 /obj/item/card/id/no_banking
 	bank_support = ID_NO_BANK_ACCOUNT
 
