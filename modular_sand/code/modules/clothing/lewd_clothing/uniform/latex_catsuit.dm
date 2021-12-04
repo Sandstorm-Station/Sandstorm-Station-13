@@ -73,6 +73,8 @@
 		C.apply_overlay(BODY_FRONT_LAYER)
 	C.regenerate_icons() //Just in case
 
+/obj/item/clothing/under/misc/latex_catsuit/MouseDrop(atom/over_object)
+
 /obj/item/clothing/under/misc/latex_catsuit/attackby(obj/item/K, mob/user, params)
 	if(istype(K, /obj/item/key/latex))
 		if(seamless != FALSE)
