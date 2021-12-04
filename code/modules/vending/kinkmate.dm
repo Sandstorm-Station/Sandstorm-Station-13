@@ -23,7 +23,7 @@
 				/obj/item/clothing/under/misc/stripper/green = 3,
 				/obj/item/clothing/under/dress/corset = 3,
 				/obj/item/clothing/under/latex/half = 3,
-				/obj/item/clothing/under/latex = 3,
+				//redundent /obj/item/clothing/under/latex = 3,
 				/obj/item/clothing/under/misc/gear_harness = 10,
 				/obj/item/dildo/custom = 5,
 				/obj/item/electropack/shockcollar = 3,
@@ -61,11 +61,12 @@
 				/obj/item/dildo/flared/huge = 3,
 				/obj/item/clothing/glasses/hypno = 3,
 				/obj/item/clothing/neck/mind_collar = 3,
-				/obj/item/key/latex = 3,
+				/obj/item/key/latex = 5,
 				/obj/item/clothing/head/dominatrixcap = 3,
 				/obj/item/mesmetron = 3,
 				/obj/item/dildo/flared/huge = 3
         )
+
 	premium = list(
 				/obj/item/clothing/accessory/skullcodpiece/fake = 3,
 				/obj/item/reagent_containers/glass/bottle/hexacrocin = 10,

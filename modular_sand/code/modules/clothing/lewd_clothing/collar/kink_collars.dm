@@ -61,6 +61,7 @@
 									"Your hands uselessly roam along the strange device.")))
 		return
 	. = ..()
+/obj/item/clothing/neck/mind_collar/MouseDrop(atom/over_object)
 
 /obj/item/clothing/neck/mind_collar/attackby(obj/item/K, mob/user, params)
 	if(istype(K, /obj/item/key/latex))
