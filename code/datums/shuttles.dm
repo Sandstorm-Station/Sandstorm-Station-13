@@ -153,10 +153,6 @@
 	port_id = "infiltrator"
 	can_be_bought = FALSE
 
-/datum/map_template/shuttle/slaveship
-	port_id = "slaveship"
-	can_be_bought = FALSE
-
 /datum/map_template/shuttle/aux_base
 	port_id = "aux_base"
 	can_be_bought = FALSE
@@ -615,10 +611,6 @@
 /datum/map_template/shuttle/infiltrator/basic
 	suffix = "basic"
 	name = "basic syndicate infiltrator"
-
-/datum/map_template/shuttle/slaveship/basic
-	suffix = "basic"
-	name = "basic slaveship"
 
 // /datum/map_template/shuttle/infiltrator/advanced
 // 	suffix = "advanced"

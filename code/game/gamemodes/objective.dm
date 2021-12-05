@@ -557,15 +557,6 @@ If not set, defaults to check_completion instead. Set it. It's used by cryo.
 		return TRUE
 	return FALSE
 
-/datum/objective/slaver
-	name = "slave trading"
-	explanation_text = "Earn 30,000 credits through slave trading."
-
-/datum/objective/slaver/check_completion()
-	// if(SSticker && SSticker.mode && SSticker.mode.station_was_nuked)
-	// 	return TRUE
-	return TRUE
-
 GLOBAL_LIST_EMPTY(possible_items)
 /datum/objective/steal
 	name = "steal"

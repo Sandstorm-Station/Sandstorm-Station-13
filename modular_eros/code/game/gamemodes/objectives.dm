@@ -15,3 +15,10 @@
 
 /datum/objective/protect_object/check_completion()
 	return !QDELETED(protect_target)
+
+/datum/objective/slaver
+	name = "slave trading"
+	explanation_text = "Earn 30,000 credits through slave trading."
+
+// /datum/objective/slaver/check_completion()
+// 	return TRUE

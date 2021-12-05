@@ -88,6 +88,9 @@
 	},
 /turf/open/floor/plasteel/dark,
 /area/shuttle/slaveship)
+"ct" = (
+/turf/open/floor/plating,
+/area/shuttle/slaveship)
 "cy" = (
 /obj/structure/shuttle/engine/propulsion/left,
 /turf/open/floor/plating,
@@ -325,7 +328,7 @@
 	dir = 4
 	},
 /obj/effect/turf_decal/tile/red,
-/turf/open/floor/plasteel/dark,
+/turf/open/floor/plating,
 /area/shuttle/slaveship)
 "uZ" = (
 /obj/machinery/light{
@@ -459,7 +462,7 @@
 /obj/effect/turf_decal/tile/red{
 	dir = 8
 	},
-/turf/open/floor/plasteel/dark,
+/turf/open/floor/plating,
 /area/shuttle/slaveship)
 "Ey" = (
 /turf/closed/wall/r_wall/syndicate/nodiagonal,
@@ -525,7 +528,7 @@
 	dir = 8
 	},
 /obj/structure/bed/matress,
-/turf/open/floor/plasteel/dark,
+/turf/open/floor/plating,
 /area/shuttle/slaveship)
 "JG" = (
 /obj/effect/decal/cleanable/blood,
@@ -538,7 +541,7 @@
 /obj/machinery/light{
 	dir = 1
 	},
-/turf/open/floor/plasteel/dark,
+/turf/open/floor/plating,
 /area/shuttle/slaveship)
 "Lr" = (
 /obj/effect/turf_decal/tile/neutral,
@@ -557,7 +560,7 @@
 	dir = 1
 	},
 /obj/effect/turf_decal/tile/red,
-/turf/open/floor/plasteel/dark,
+/turf/open/floor/plating,
 /area/shuttle/slaveship)
 "MJ" = (
 /turf/template_noop,
@@ -674,7 +677,7 @@
 	},
 /obj/effect/turf_decal/tile/red,
 /obj/machinery/light,
-/turf/open/floor/plasteel/dark,
+/turf/open/floor/plating,
 /area/shuttle/slaveship)
 "UL" = (
 /obj/effect/turf_decal/tile/red{
@@ -685,7 +688,13 @@
 	},
 /obj/effect/turf_decal/tile/red,
 /obj/structure/bed/matress,
-/turf/open/floor/plasteel/dark,
+/turf/open/floor/plating,
+/area/shuttle/slaveship)
+"Vy" = (
+/obj/machinery/door/airlock/hatch{
+	req_access_txt = "152"
+	},
+/turf/open/floor/plating,
 /area/shuttle/slaveship)
 "VS" = (
 /obj/structure/table/reinforced,
@@ -759,7 +768,7 @@
 	dir = 8
 	},
 /obj/effect/turf_decal/tile/red,
-/turf/open/floor/plasteel/dark,
+/turf/open/floor/plating,
 /area/shuttle/slaveship)
 "XN" = (
 /obj/structure/shuttle/engine/heater,
@@ -861,8 +870,8 @@ Fm
 Cd
 ax
 JG
-aA
-aA
+ct
+ct
 Uv
 XN
 zT
@@ -885,7 +894,7 @@ aA
 CM
 ax
 LG
-aA
+ct
 uy
 UL
 XN
@@ -909,7 +918,7 @@ aA
 FG
 ax
 Wk
-gZ
+Vy
 Wk
 Wk
 Ey

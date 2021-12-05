@@ -34,36 +34,7 @@
 		filtered_modules[SG.category][SG] = SG
 	return filtered_modules
 
-// /obj/machinery/computer/slavery/ui_interact(mob/user)
-// 	. = ..()
-// 	var/dat = ""
-// 	dat += "<a href='byond://?src=[REF(src)];scan=1'>Refresh.</a><BR>"
-// 	dat += "[storedcrystals] telecrystals are available for distribution. <BR>"
-// 	dat += "<BR><BR>"
-
-// 	dat += "<HR>Slaves<BR>"
-// 	for(var/obj/item/electropack/shockcollar/slave/S in GLOB.tracked_slaves)
-// 		if(!isliving(loc))
-// 			continue
-// 		Tr = get_turf(T.imp_in)
-// 		if((Tr) && (Tr.z != src.z))
-// 			continue//Out of range
-
-// 		var/loc_display = "Unknown"
-// 		var/mob/living/M = T.imp_in
-// 		if(is_station_level(Tr.z) && !isspaceturf(M.loc))
-// 			var/turf/mob_loc = get_turf(M)
-// 			loc_display = mob_loc.loc
-
-// 		dat += "ID: [T.imp_in.name] | Location: [loc_display]<BR>"
-// 		dat += "<A href='?src=[REF(src)];warn=[REF(T)]'>(<font class='bad'><i>Message Holder</i></font>)</A> |<BR>"
-// 		dat += "********************************<BR>"
-// 	dat += "<HR><A href='?src=[REF(src)];lock=1'>{Log Out}</A>"
-
 /obj/machinery/computer/slavery/ui_interact(mob/user, datum/tgui/ui)
-	// priority_announce("Message test 123 123 Message test 123 123 Message test 123 123 Message test 123 123 Message test 123 123.", sender_override = "Hail from the [slaver_team.slaver_crew_name]")
-	// if(!GLOB.bounties_list.len)
-	// 	setup_bounties()
 	ui = SStgui.try_update_ui(user, src, ui)
 	if(!ui)
 		ui = new(user, src, "SlaveConsole", name)
@@ -110,7 +81,7 @@
 			continue
 
 		var/list/slave = list()
-		slave["id"] = REF(C)// C.collarID
+		slave["id"] = REF(C)
 		slave["name"] = L.real_name
 		slave["price"] = C.price
 		slave["bought"] = C.bought
@@ -182,7 +153,6 @@
 
 			input = user.treat_message(input) //Adds slurs and so on. Someone should make this use languages too.
 			priority_announce(input, sender_override = "[GLOB.slavers_team_name] Transmission")
-			deadchat_broadcast(" sent a transmission to the station from <span class='name'>[get_area_name(usr, TRUE)]</span>.", "<span class='name'>[user.real_name]</span>", user)
 			GLOB.slavers_last_announcement = world.time
 
 		if("setPrice")

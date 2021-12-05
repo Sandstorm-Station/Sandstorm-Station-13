@@ -45,7 +45,7 @@ GLOBAL_VAR_INIT(slavers_last_announcement, 0)
 
 /datum/antagonist/slaver/greet()
 	owner.assigned_role = ROLE_SLAVER
-	owner.current.playsound_local(get_turf(owner.current), 'sound/ambience/antag/slavers.ogg',100,0)
+	owner.current.playsound_local(get_turf(owner.current), 'modular_eros/sound/ambience/antag/slavers.ogg',100,0)
 	to_chat(owner, "<span class='notice'>You are a slave trader!</span>")
 	owner.announce_objectives()
 
@@ -87,7 +87,7 @@ GLOBAL_VAR_INIT(slavers_last_announcement, 0)
 
 /datum/antagonist/slaver/leader/greet()
 	owner.assigned_role = ROLE_SLAVER_LEADER
-	owner.current.playsound_local(get_turf(owner.current), 'sound/ambience/antag/slavers.ogg',100,0)
+	owner.current.playsound_local(get_turf(owner.current), 'modular_eros/sound/ambience/antag/slavers.ogg',100,0)
 	to_chat(owner, "<B>You are the Slave Master for this collection job. You are responsible for organising your team and your ID is the only one who can open the launch bay doors.</B>")
 	to_chat(owner, "<B>If you feel you are not up to this task, give your ID to another slaver.</B>")
 	owner.announce_objectives()
