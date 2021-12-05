@@ -266,6 +266,35 @@
 /obj/effect/mob_spawn/human/hermit/special(mob/living/carbon/human/new_spawn)
 	ADD_TRAIT(new_spawn,TRAIT_EXEMPT_HEALTH_EVENTS,GHOSTROLE_TRAIT)
 
+//Portable dangerous-environment sleepers: Spawns in exposed to ash storms shelter.
+//Characters in this role could have been conscious for a long time, surviving on the planet. They may also know Draconic language by contacting with ashwalkers.
+/obj/effect/mob_spawn/human/wandering_hermit
+	name = "portable dangerous-environment sleeper"
+	desc = "The glass is slightly cracked, but there is still air inside. You can see somebody inside. They seems to be sleeping deeply."
+	job_description = "Wandering Hermit"
+	icon = 'icons/obj/lavaland/spawners.dmi'
+	icon_state = "cryostasis_sleeper"
+	roundstart = FALSE
+	death = FALSE
+	random = TRUE
+	mob_species = /datum/species/human
+	mob_name = "a wandering hermit"
+	short_desc = "You are a hermit abandoned by fate."
+	flavour_text = "You've survived weeks in this hellish place. Maybe you want to live here with ash tribe or return to civilisation. \
+	Only you know how you got to this planetoid, whether this place in which you woke up was one of your shelters, or you just stumbled upon it."
+	canloadappearance = TRUE
+
+/obj/effect/mob_spawn/human/wandering_hermit/Destroy()
+	var/obj/structure/fluff/empty_sleeper/S = new(drop_location())
+	S.setDir(dir)
+	return ..()
+
+/obj/effect/mob_spawn/human/wandering_hermit/special(mob/living/carbon/human/new_spawn)
+	ADD_TRAIT(new_spawn,TRAIT_EXEMPT_HEALTH_EVENTS,GHOSTROLE_TRAIT)
+	new_spawn.language_holder.understood_languages += /datum/language/draconic
+	new_spawn.language_holder.spoken_languages += /datum/language/draconic
+
+
 //Broken rejuvenation pod: Spawns in animal hospitals in lavaland. Ghosts become disoriented interns and are advised to search for help.
 /obj/effect/mob_spawn/human/doctor/alive/lavaland
 	name = "broken rejuvenation pod"
