@@ -34,3 +34,4 @@
 /obj/structure/bed/matress/New()
 	..()
 	icon_state = "mattress[rand(0,6)]"
+	
