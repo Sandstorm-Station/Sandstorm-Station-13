@@ -77,6 +77,10 @@
 "aA" = (
 /turf/open/lava/smooth/lava_land_surface,
 /area/template_noop)
+"aE" = (
+/obj/structure/furnace,
+/turf/open/floor/plating/asteroid/basalt/lava_land_surface,
+/area/ruin/lavaland/unpowered/ash_walkers)
 "aJ" = (
 /obj/structure/stone_tile/block{
 	dir = 4
@@ -191,6 +195,10 @@
 /obj/item/hemostat/ashwalker{
 	pixel_x = -4
 	},
+/turf/open/floor/plating/asteroid/basalt/lava_land_surface,
+/area/ruin/lavaland/unpowered/ash_walkers)
+"eP" = (
+/obj/structure/anvil/obtainable/basalt,
 /turf/open/floor/plating/asteroid/basalt/lava_land_surface,
 /area/ruin/lavaland/unpowered/ash_walkers)
 "eZ" = (
@@ -793,7 +801,7 @@
 /turf/open/floor/plating/asteroid/basalt/lava_land_surface,
 /area/lavaland/surface/outdoors)
 "li" = (
-/obj/structure/table/wood/shadow,
+/obj/structure/table/wood/mushroom,
 /turf/open/floor/plating/asteroid/basalt/lava_land_surface,
 /area/ruin/lavaland/unpowered/ash_walkers)
 "lj" = (
@@ -929,7 +937,7 @@
 /turf/open/lava/smooth/lava_land_surface,
 /area/lavaland/surface/outdoors)
 "lJ" = (
-/obj/structure/table/wood/shadow,
+/obj/structure/table/wood/mushroom,
 /obj/item/fireaxe/boneaxe,
 /turf/open/floor/plating/asteroid/basalt/lava_land_surface,
 /area/ruin/lavaland/unpowered/ash_walkers)
@@ -1029,7 +1037,7 @@
 /turf/open/floor/plating/asteroid/basalt/lava_land_surface,
 /area/lavaland/surface/outdoors)
 "mo" = (
-/obj/structure/table/wood/shadow,
+/obj/structure/table/wood/mushroom,
 /obj/item/clothing/suit/armor/bone,
 /turf/open/floor/plating/asteroid/basalt/lava_land_surface,
 /area/ruin/lavaland/unpowered/ash_walkers)
@@ -1389,7 +1397,7 @@
 /turf/open/indestructible/boss,
 /area/lavaland/surface/outdoors)
 "nI" = (
-/obj/structure/table/wood/shadow,
+/obj/structure/table/wood/mushroom,
 /obj/item/storage/belt/mining/primitive,
 /obj/item/clothing/head/helmet/roman/legionnaire,
 /turf/open/floor/plating/asteroid/basalt/lava_land_surface,
@@ -1472,7 +1480,7 @@
 /turf/open/floor/plating/asteroid/basalt/lava_land_surface,
 /area/lavaland/surface/outdoors)
 "td" = (
-/obj/structure/table/wood/shadow,
+/obj/structure/table/wood/mushroom,
 /obj/item/storage/backpack/satchel/bone{
 	pixel_y = 6
 	},
@@ -1512,7 +1520,7 @@
 /turf/open/floor/plating/asteroid/basalt/lava_land_surface,
 /area/ruin/lavaland/unpowered/ash_walkers)
 "uT" = (
-/obj/structure/table/wood/shadow,
+/obj/structure/table/wood/mushroom,
 /obj/item/kitchen/knife/combat/bone,
 /obj/item/kitchen/knife/combat/bone{
 	pixel_y = 4
@@ -1538,6 +1546,10 @@
 /obj/item/spear/bonespear{
 	pixel_x = 6
 	},
+/turf/open/floor/plating/asteroid/basalt/lava_land_surface,
+/area/ruin/lavaland/unpowered/ash_walkers)
+"wb" = (
+/obj/structure/curtain/goliath,
 /turf/open/floor/plating/asteroid/basalt/lava_land_surface,
 /area/ruin/lavaland/unpowered/ash_walkers)
 "wF" = (
@@ -1602,7 +1614,7 @@
 /turf/open/floor/plating/asteroid/basalt/lava_land_surface,
 /area/ruin/lavaland/unpowered/ash_walkers)
 "BG" = (
-/obj/structure/table/wood/shadow,
+/obj/structure/table/wood/mushroom,
 /obj/item/clothing/under/costume/gladiator/ash_walker{
 	pixel_x = 6;
 	pixel_y = 6
@@ -1624,7 +1636,7 @@
 /turf/open/floor/plating/asteroid/basalt/lava_land_surface,
 /area/ruin/lavaland/unpowered/ash_walkers)
 "Do" = (
-/obj/structure/table/wood/shadow,
+/obj/structure/table/wood/mushroom,
 /obj/item/clothing/under/costume/gladiator/ash_walker{
 	pixel_x = -6;
 	pixel_y = 6
@@ -1652,7 +1664,7 @@
 /turf/open/floor/plating/asteroid/basalt/lava_land_surface,
 /area/ruin/lavaland/unpowered/ash_walkers)
 "Ej" = (
-/obj/structure/table/wood/shadow,
+/obj/structure/table/wood/mushroom,
 /obj/item/clothing/head/helmet/gladiator{
 	pixel_x = -2;
 	pixel_y = -2
@@ -1710,7 +1722,7 @@
 /turf/open/lava/smooth/lava_land_surface,
 /area/ruin/lavaland/unpowered/ash_walkers)
 "Ih" = (
-/obj/structure/table/wood/shadow,
+/obj/structure/table/wood/mushroom,
 /obj/item/spear/bonespear,
 /obj/item/spear/bonespear{
 	pixel_x = 6
@@ -1721,7 +1733,7 @@
 /turf/open/floor/plating/asteroid/basalt/lava_land_surface,
 /area/ruin/lavaland/unpowered/ash_walkers)
 "Ir" = (
-/obj/structure/table/wood/shadow,
+/obj/structure/table/wood/mushroom,
 /obj/item/spear/bonespear{
 	pixel_x = -12
 	},
@@ -1771,10 +1783,10 @@
 	pixel_x = 8;
 	pixel_y = -1
 	},
-/obj/structure/closet/crate/wooden,
 /obj/item/clothing/suit/armor/bone{
 	pixel_y = -2
 	},
+/obj/structure/closet/crate/wooden/shadow,
 /turf/open/floor/plating/asteroid/basalt/lava_land_surface,
 /area/ruin/lavaland/unpowered/ash_walkers)
 "KP" = (
@@ -1825,8 +1837,18 @@
 	},
 /turf/open/floor/plating/asteroid/basalt/lava_land_surface,
 /area/ruin/lavaland/unpowered/ash_walkers)
+"On" = (
+/obj/item/melee/smith/hammer,
+/turf/open/floor/plating/asteroid/basalt/lava_land_surface,
+/area/ruin/lavaland/unpowered/ash_walkers)
 "Oo" = (
 /obj/machinery/smartfridge/drying_rack,
+/turf/open/floor/plating/asteroid/basalt/lava_land_surface,
+/area/ruin/lavaland/unpowered/ash_walkers)
+"PT" = (
+/obj/item/reagent_containers/glass/bucket/wood{
+	pixel_x = -15
+	},
 /turf/open/floor/plating/asteroid/basalt/lava_land_surface,
 /area/ruin/lavaland/unpowered/ash_walkers)
 "Qc" = (
@@ -1925,6 +1947,39 @@
 	},
 /obj/structure/stone_tile/surrounding_tile/burnt,
 /turf/open/lava/smooth/lava_land_surface,
+/area/ruin/lavaland/unpowered/ash_walkers)
+"Ty" = (
+/obj/item/clothing/under/costume/loincloth{
+	pixel_x = -9;
+	pixel_y = -4
+	},
+/obj/item/clothing/under/costume/loincloth{
+	pixel_x = -6
+	},
+/obj/item/clothing/under/costume/loincloth{
+	pixel_x = -3;
+	pixel_y = 4
+	},
+/obj/item/clothing/under/costume/loincloth{
+	pixel_y = -6
+	},
+/obj/item/clothing/under/costume/loincloth{
+	pixel_x = 3
+	},
+/obj/item/clothing/under/costume/loincloth{
+	pixel_x = 7;
+	pixel_y = 6
+	},
+/obj/structure/closet/crate/wooden/mushroom,
+/obj/item/clothing/under/costume/loincloth{
+	pixel_x = 8;
+	pixel_y = -7
+	},
+/obj/item/clothing/under/costume/loincloth{
+	pixel_x = 11;
+	pixel_y = -3
+	},
+/turf/open/floor/plating/asteroid/basalt/lava_land_surface,
 /area/ruin/lavaland/unpowered/ash_walkers)
 "TA" = (
 /obj/structure/stone_tile/block/cracked,
@@ -5457,7 +5512,7 @@ cH
 VG
 VG
 VG
-VG
+wb
 VG
 VG
 VG
@@ -57331,7 +57386,7 @@ aa
 aa
 aa
 XS
-VG
+vB
 VG
 VG
 VG
@@ -57588,7 +57643,7 @@ aa
 aa
 aa
 VG
-VG
+PT
 VG
 VG
 VG
@@ -57844,7 +57899,7 @@ aa
 aa
 aa
 aa
-VG
+aE
 VG
 VG
 VG
@@ -58358,7 +58413,7 @@ aa
 aa
 aa
 aa
-VG
+eP
 VG
 VG
 VG
@@ -58873,7 +58928,7 @@ aa
 aa
 aa
 VG
-VG
+On
 VG
 XS
 XS
@@ -65042,7 +65097,7 @@ aa
 aa
 aa
 aa
-VG
+Ty
 VG
 BG
 XS

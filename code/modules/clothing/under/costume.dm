@@ -113,6 +113,7 @@
 
 /obj/item/clothing/under/costume/gladiator/ash_walker
 	desc = "This gladiator uniform appears to be covered in ash and fairly dated."
+	armor = list("melee" = 25, "bullet" = 5, "laser" = 0, "energy" = 0, "bomb" = 10, "bio" = 10, "rad" = 0, "fire" = 70, "acid" = 50)
 	has_sensor = NO_SENSORS
 
 /obj/item/clothing/under/costume/maid
@@ -282,7 +283,7 @@
 	can_adjust = FALSE
 	fitted = FEMALE_UNIFORM_TOP
 	mutantrace_variation = STYLE_DIGITIGRADE|STYLE_NO_ANTHRO_ICON
-	
+
 
 /obj/item/clothing/under/costume/qipao/white
 	name = "White Qipao"

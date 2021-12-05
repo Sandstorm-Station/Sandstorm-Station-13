@@ -24,7 +24,7 @@
 				user.visible_message("<span class='notice'>[user] fells [src] with the [W].</span>","<span class='notice'>You fell [src] with the [W].</span>", "You hear the sound of a tree falling.")
 				playsound(get_turf(src), 'sound/effects/meteorimpact.ogg', 100 , 0, 0)
 				for(var/i=1 to log_amount)
-					new /obj/item/grown/log/tree(get_turf(src))
+					new spawned_wood(get_turf(src))
 
 				var/obj/structure/flora/stump/S = new spawned_stump(loc)
 				S.name = "[name] stump"

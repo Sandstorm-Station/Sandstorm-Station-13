@@ -90,13 +90,13 @@ GLOBAL_LIST_EMPTY(electrochromatic_window_lookup)
 	. = ..()
 	if(direct)
 		setDir(direct)
-	
+
 	if(extra_reinforced && anchored)
 		state = PRWINDOW_SECURE
 
 	else if(reinf && anchored)
 		state = WINDOW_SCREWED_TO_FRAME
-	
+
 
 	if(mapload && electrochromatic_id && electrochromatic_id[1] == "!")
 		electrochromatic_id = SSmapping.get_obfuscated_id(electrochromatic_id)
@@ -695,7 +695,21 @@ GLOBAL_LIST_EMPTY(electrochromatic_window_lookup)
 	fulltile = TRUE
 	flags_1 = PREVENT_CLICK_UNDER_1
 	smooth = SMOOTH_TRUE
-	canSmoothWith = list(/obj/structure/window/fulltile, /obj/structure/window/reinforced/fulltile, /obj/structure/window/reinforced/tinted/fulltile, /obj/structure/window/plasma/fulltile, /obj/structure/window/plasma/reinforced/fulltile)
+	canSmoothWith = list(
+		/turf/closed/wall,
+		/turf/closed/wall/r_wall,
+		/obj/structure/falsewall,
+		/obj/structure/falsewall/brass,
+		/obj/structure/falsewall/reinforced,
+		/turf/closed/wall/rust,
+		/turf/closed/wall/r_wall/rust,
+		/turf/closed/wall/clockwork,
+		/obj/structure/window/fulltile,
+		/obj/structure/window/reinforced/fulltile,
+		/obj/structure/window/reinforced/tinted/fulltile,
+		/obj/structure/window/plasma/fulltile,
+		/obj/structure/window/plasma/reinforced/fulltile
+		)
 	glass_amount = 2
 
 /obj/structure/window/fulltile/unanchored
@@ -709,7 +723,21 @@ GLOBAL_LIST_EMPTY(electrochromatic_window_lookup)
 	fulltile = TRUE
 	flags_1 = PREVENT_CLICK_UNDER_1
 	smooth = SMOOTH_TRUE
-	canSmoothWith = list(/obj/structure/window/fulltile, /obj/structure/window/reinforced/fulltile, /obj/structure/window/reinforced/tinted/fulltile, /obj/structure/window/plasma/fulltile, /obj/structure/window/plasma/reinforced/fulltile)
+	canSmoothWith = list(
+		/turf/closed/wall,
+		/turf/closed/wall/r_wall,
+		/obj/structure/falsewall,
+		/obj/structure/falsewall/brass,
+		/obj/structure/falsewall/reinforced,
+		/turf/closed/wall/rust,
+		/turf/closed/wall/r_wall/rust,
+		/turf/closed/wall/clockwork,
+		/obj/structure/window/fulltile,
+		/obj/structure/window/reinforced/fulltile,
+		/obj/structure/window/reinforced/tinted/fulltile,
+		/obj/structure/window/plasma/fulltile,
+		/obj/structure/window/plasma/reinforced/fulltile
+		)
 	glass_amount = 2
 
 /obj/structure/window/plasma/fulltile/unanchored
@@ -737,7 +765,21 @@ GLOBAL_LIST_EMPTY(electrochromatic_window_lookup)
 	fulltile = TRUE
 	flags_1 = PREVENT_CLICK_UNDER_1
 	smooth = SMOOTH_TRUE
-	canSmoothWith = list(/obj/structure/window/fulltile, /obj/structure/window/reinforced/fulltile, /obj/structure/window/reinforced/tinted/fulltile, /obj/structure/window/plasma/fulltile, /obj/structure/window/plasma/reinforced/fulltile)
+	canSmoothWith = list(
+		/turf/closed/wall,
+		/turf/closed/wall/r_wall,
+		/obj/structure/falsewall,
+		/obj/structure/falsewall/brass,
+		/obj/structure/falsewall/reinforced,
+		/turf/closed/wall/rust,
+		/turf/closed/wall/r_wall/rust,
+		/turf/closed/wall/clockwork,
+		/obj/structure/window/fulltile,
+		/obj/structure/window/reinforced/fulltile,
+		/obj/structure/window/reinforced/tinted/fulltile,
+		/obj/structure/window/plasma/fulltile,
+		/obj/structure/window/plasma/reinforced/fulltile
+		)
 	level = 3
 	glass_amount = 2
 
@@ -751,7 +793,21 @@ GLOBAL_LIST_EMPTY(electrochromatic_window_lookup)
 	fulltile = TRUE
 	flags_1 = PREVENT_CLICK_UNDER_1
 	smooth = SMOOTH_TRUE
-	canSmoothWith = list(/obj/structure/window/fulltile, /obj/structure/window/reinforced/fulltile, /obj/structure/window/reinforced/tinted/fulltile, /obj/structure/window/plasma/fulltile, /obj/structure/window/plasma/reinforced/fulltile)
+	canSmoothWith = list(
+		/turf/closed/wall,
+		/turf/closed/wall/r_wall,
+		/obj/structure/falsewall,
+		/obj/structure/falsewall/brass,
+		/obj/structure/falsewall/reinforced,
+		/turf/closed/wall/rust,
+		/turf/closed/wall/r_wall/rust,
+		/turf/closed/wall/clockwork,
+		/obj/structure/window/fulltile,
+		/obj/structure/window/reinforced/fulltile,
+		/obj/structure/window/reinforced/tinted/fulltile,
+		/obj/structure/window/plasma/fulltile,
+		/obj/structure/window/plasma/reinforced/fulltile
+		)
 	level = 3
 	glass_amount = 2
 
