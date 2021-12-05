@@ -559,7 +559,7 @@ If not set, defaults to check_completion instead. Set it. It's used by cryo.
 
 /datum/objective/slaver
 	name = "slave trading"
-	explanation_text = "Earn 20,000 credits through slave trading."
+	explanation_text = "Earn 30,000 credits through slave trading."
 
 /datum/objective/slaver/check_completion()
 	// if(SSticker && SSticker.mode && SSticker.mode.station_was_nuked)

@@ -1,7 +1,7 @@
 import { sortBy } from "common/collections";
 import { capitalize } from "common/string";
 import { useBackend, useLocalState } from "../backend";
-import { Blink, Box, Button, Dimmer, Flex, Stack, Icon, Input, Modal, Section, TextArea, Table, Fragment } from "../components";
+import { Blink, Box, Button, Dimmer, Flex, Icon, Input, Modal, Section, TextArea, Table, LabeledList } from "../components";
 import { Window } from "../layouts";
 import { sanitizeText } from "../sanitize";
 
@@ -475,49 +475,54 @@ export const PageMain = (props, context) => {
       </Section>
 
       {!!slaves.length && (
-        <Fragment>
-          <Section>
-            <box><b>Cargo credits: {cargocredits}cr</b></box>
-            <box>{"The credits will only be sent once the slave is delivered back to the station."}</box>
-          </Section>
-          <Section title="Buy Slaves">
-            <Table>
-              {slaves.map(slave => (
-                <Table.Row
-                  key={slave.name + slave.coords + slave.index}
-                  className="candystripe">
+        <Section title="Buy Slaves">
+          <LabeledList>
+            <LabeledList.Item
+              label="Cargo credits">
+              {cargocredits}cr
+            </LabeledList.Item>
+            <LabeledList.Item
+              label="Info">
+              {"The credits will only be sent once the slave is delivered back to the station."}
+            </LabeledList.Item>
+          </LabeledList>
 
-                  <Table.Cell bold color="label">
-                    {slave.name}
-                  </Table.Cell>
+          <Table>
+            {slaves.map(slave => (
+              <Table.Row
+                key={slave.name + slave.coords + slave.index}
+                className="candystripe">
 
-                  <Table.Cell
-                    collapsing
-                    color="label"
-                    textAlign="right">
-                    {slave.bought
-                      ? "Ransom paid"
-                      : ""}
-                  </Table.Cell>
+                <Table.Cell bold color="label">
+                  {slave.name}
+                </Table.Cell>
 
-                  <Table.Cell
-                    collapsing
-                    align="right">
-                    <Button
-                      icon={slave.bought ? "times" : ""}
-                      disabled={slave.cannotafford}
-                      content={slave.bought ? "Cancel" : slave.price + "cr"}
-                      color={slave.bought ? "bad" : "default"}
-                      onClick={() => act('toggleBought', {
-                        id: slave.id,
-                      })} />
-                  </Table.Cell>
+                <Table.Cell
+                  collapsing
+                  color="label"
+                  textAlign="right">
+                  {slave.bought
+                    ? "Ransom paid"
+                    : ""}
+                </Table.Cell>
 
-                </Table.Row>
-              ))}
-            </Table>
-          </Section>
-        </Fragment>
+                <Table.Cell
+                  collapsing
+                  align="right">
+                  <Button
+                    icon={slave.bought ? "times" : ""}
+                    disabled={slave.cannotafford}
+                    content={slave.bought ? "Cancel" : slave.price + "cr"}
+                    color={slave.bought ? "bad" : "default"}
+                    onClick={() => act('toggleBought', {
+                      id: slave.id,
+                    })} />
+                </Table.Cell>
+
+              </Table.Row>
+            ))}
+          </Table>
+        </Section>
       )}
 
       {!!canMessageAssociates && messagingAssociates && <MessageModal

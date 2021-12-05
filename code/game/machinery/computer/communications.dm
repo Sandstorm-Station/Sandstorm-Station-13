@@ -353,10 +353,17 @@
 							bank.adjust_money(C.price)
 							GLOB.slavers_credits_deposits -= C.price
 							C.bought = FALSE
+
+							for(var/obj/machinery/computer/slavery/tracked_slave_console in GLOB.tracked_slave_consoles)
+								tracked_slave_console.radioAnnounce("The station has recalled the ransom funds for [C.loc.name]")
+
 						} else {
 							bank.adjust_money(-C.price)
 							GLOB.slavers_credits_deposits += C.price
 							C.bought = TRUE
+
+							for(var/obj/machinery/computer/slavery/tracked_slave_console in GLOB.tracked_slave_consoles)
+								tracked_slave_console.radioAnnounce("The station has paid the ransom funds for [C.loc.name]")
 						}
 					break
 

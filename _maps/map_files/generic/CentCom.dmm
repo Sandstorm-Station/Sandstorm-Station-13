@@ -10556,12 +10556,6 @@
 	},
 /turf/open/floor/plasteel/dark,
 /area/slavers)
-"xD" = (
-/obj/structure/closet,
-/obj/effect/turf_decal/bot,
-/obj/machinery/computer/communications,
-/turf/open/floor/plasteel/dark,
-/area/slavers)
 "xG" = (
 /obj/structure/closet/syndicate/personal,
 /obj/effect/turf_decal/stripes/line{
@@ -17394,7 +17388,7 @@
 	name = "skeletal minibar"
 	},
 /obj/machinery/chem_dispenser/drinks/beer{
-	dir = 8
+	dir = 1
 	},
 /turf/open/floor/wood,
 /area/slavers)
@@ -20173,6 +20167,12 @@
 /obj/machinery/computer/slavery{
 	dir = 4
 	},
+/obj/effect/turf_decal/tile/red{
+	dir = 1
+	},
+/obj/effect/turf_decal/tile/red{
+	dir = 8
+	},
 /turf/open/floor/plasteel/dark,
 /area/slavers)
 "Zc" = (
@@ -20224,7 +20224,7 @@
 	name = "skeletal minibar"
 	},
 /obj/machinery/chem_dispenser/drinks{
-	dir = 8
+	dir = 1
 	},
 /turf/open/floor/wood,
 /area/slavers)
@@ -78476,7 +78476,7 @@ Zm
 Zm
 MY
 sm
-xD
+Ml
 VZ
 tk
 WZ

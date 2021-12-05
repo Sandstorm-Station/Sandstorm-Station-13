@@ -1,8 +1,9 @@
 GLOBAL_VAR_INIT(slavers_team_name, "Slave Traders")
 GLOBAL_VAR_INIT(slavers_credits_deposits, 0)
-GLOBAL_VAR_INIT(slavers_credits_balance, 2000)
+GLOBAL_VAR_INIT(slavers_credits_balance, 7000)
 GLOBAL_VAR_INIT(slavers_credits_total, 0)
 GLOBAL_VAR_INIT(slavers_slaves_sold, 0)
+GLOBAL_VAR_INIT(slavers_last_announcement, 0)
 
 /datum/antagonist/slaver
 	name = "Slave Trader"
@@ -13,7 +14,7 @@ GLOBAL_VAR_INIT(slavers_slaves_sold, 0)
 	threat = 7
 	show_to_ghosts = TRUE
 	var/datum/team/slavers/slaver_team = new /datum/team/slavers
-	var/send_to_spawnpoint = TRUE //Should the user be moved to default spawnpoint.
+	// var/send_to_spawnpoint = TRUE //Should the user be moved to default spawnpoint.
 	var/slaver_outfit = /datum/outfit/slaver
 
 /datum/antagonist/slaver/proc/update_slaver_icons_added(mob/living/M)
@@ -43,16 +44,17 @@ GLOBAL_VAR_INIT(slavers_slaves_sold, 0)
 	return TRUE
 
 /datum/antagonist/slaver/greet()
+	owner.assigned_role = ROLE_SLAVER
 	owner.current.playsound_local(get_turf(owner.current), 'sound/ambience/antag/slavers.ogg',100,0)
 	to_chat(owner, "<span class='notice'>You are a slave trader!</span>")
 	owner.announce_objectives()
+
 
 /datum/antagonist/slaver/on_gain()
 	forge_objectives()
 	. = ..()
 	equip_slaver()
-	if(send_to_spawnpoint)
-		move_to_spawnpoint()
+	move_to_spawnpoint()
 
 /datum/antagonist/slaver/get_team()
 	return slaver_team
@@ -84,6 +86,7 @@ GLOBAL_VAR_INIT(slavers_slaves_sold, 0)
 	slaver_outfit = /datum/outfit/slaver/leader
 
 /datum/antagonist/slaver/leader/greet()
+	owner.assigned_role = ROLE_SLAVER_LEADER
 	owner.current.playsound_local(get_turf(owner.current), 'sound/ambience/antag/slavers.ogg',100,0)
 	to_chat(owner, "<B>You are the Slave Master for this collection job. You are responsible for organising your team and your ID is the only one who can open the launch bay doors.</B>")
 	to_chat(owner, "<B>If you feel you are not up to this task, give your ID to another slaver.</B>")
@@ -123,20 +126,30 @@ GLOBAL_VAR_INIT(slavers_slaves_sold, 0)
 
 	var/text = "<br><span class='header'>The crew were:</span>"
 	var/slavesSold = GLOB.slavers_slaves_sold
-	var/slavesUnsold = GLOB.tracked_slaves.len
 	var/earnedMoney = GLOB.slavers_credits_total
+	var/slavesUnsold = 0
 
+	var/all_dead = TRUE
+	for(var/datum/mind/M in members)
+		if(considered_alive(M))
+			all_dead = FALSE
+
+	for(var/obj/item/electropack/shockcollar/slave/collar in GLOB.tracked_slaves)
+		if (isliving(collar.loc))
+			slavesUnsold++
+
+	text += "<br>"
 	text += printplayerlist(members)
 	text += "<br>"
-	text += "Slaves sold: [slavesSold]"
-	text += "Slaves not sold: [slavesUnsold]"
-	text += "Total money earned: [earnedMoney]"
+	text += "<b>Slaves sold:</b> [slavesSold]<br>"
+	text += "<b>Slaves not sold:</b> [slavesUnsold]<br>"
+	text += "<b>Total money earned:</b> [earnedMoney]cr (needed at least 30,000cr)"
 
-	var/datum/objective/slaver/O = locate() in objectives
-	if(O.check_completion())
-		parts += "<span class='greentext big'>The slaver crew were successful!</span>"
+	// var/datum/objective/slaver/O = locate() in objectives
+	if(GLOB.slavers_credits_total >= 30000 && !all_dead)
+		parts += "<span class='greentext'>The slaver crew were successful!</span>"
 	else
-		parts += "<span class='redtext big'>The slaver crew have failed.</span>"
+		parts += "<span class='redtext'>The slaver crew have failed.</span>"
 
 	parts += text
 

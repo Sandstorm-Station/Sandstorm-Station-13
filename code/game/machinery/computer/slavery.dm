@@ -7,6 +7,7 @@
 	resistance_flags = INDESTRUCTIBLE | LAVA_PROOF | FIRE_PROOF | ACID_PROOF
 	req_access = list(ACCESS_SLAVER)
 	light_color = LIGHT_COLOR_RED
+	var/obj/item/radio/headset/radio
 	var/selected_cat
 	/// Dictates if the compact mode of the interface is on or off
 	var/compact_mode = FALSE
@@ -15,7 +16,14 @@
 
 /obj/machinery/computer/slavery/Initialize(mapload)
 	. = ..()
+	GLOB.tracked_slave_consoles += src
 	possible_gear = get_slaver_gear()
+	radio = new /obj/item/radio/headset/syndicate(src)
+
+/obj/machinery/computer/slavery/Destroy()
+	GLOB.tracked_slave_consoles -= src
+	QDEL_NULL(radio)
+	..()
 
 /obj/machinery/computer/slavery/proc/get_slaver_gear()
 	var/list/filtered_modules = list()
@@ -144,6 +152,8 @@
 	if(..())
 		return
 
+	playsound(src, "terminal_type", 25, 0)
+
 	var/collarID = params["id"]
 	var/obj/item/electropack/shockcollar/slave/collar
 
@@ -155,63 +165,37 @@
 				break
 
 	switch(action)
-
-
 		if ("makePriorityAnnouncement")
-			// priority_announce("Announcement.", sender_override = "Beep Beep upgate")
-			var/datum/bank_account/bank = SSeconomy.get_dep_account(ACCOUNT_CAR)
-			priority_announce("Station credits: [bank.account_balance], Deposit: [GLOB.slavers_credits_deposits], Balance: [GLOB.slavers_credits_balance], Total: [GLOB.slavers_credits_total]", sender_override = "Bank status")
-			// var/is_ai = issilicon(user)
-			// if(!SScommunications.can_announce(user, is_ai))
-			// 	to_chat(user, "<span class='alert'>Intercomms recharging. Please stand by.</span>")
-			// 	return
-			// var/input = stripped_input(user, "Please choose a message to announce to the station crew.", "What?")
-			// if(!input || !user.canUseTopic(src, !issilicon(usr)))
-			// 	return
-			// if(!(user.can_speak())) //No more cheating, mime/random mute guy!
-			// 	input = "..."
-			// 	to_chat(user, "<span class='warning'>You find yourself unable to speak.</span>")
-			// else
-			// 	input = user.treat_message(input) //Adds slurs and so on. Someone should make this use languages too.
-			// SScommunications.make_announcement(user, is_ai, input)
-			// deadchat_broadcast(" made a priority announcement from <span class='name'>[get_area_name(usr, TRUE)]</span>.", "<span class='name'>[user.real_name]</span>", user)
+			if (world.time < GLOB.slavers_last_announcement + 300)
+				say("Intercomms recharging. Please stand by.")
+				return
 
-		if("purchaseSupplies")
-			priority_announce("Purchase Supplies.", sender_override = "Beep Beep upgate")
+			var/mob/living/user = usr
+
+			var/input = stripped_input(user, "Please choose a message to announce to the station crew.", "What?")
+
+			if(!input || !user.canUseTopic(src, !issilicon(usr)))
+				return
+			if(!(user.can_speak())) //No more cheating, mime/random mute guy!
+				to_chat(user, "<span class='warning'>You find yourself unable to speak.</span>")
+				return
+
+			input = user.treat_message(input) //Adds slurs and so on. Someone should make this use languages too.
+			priority_announce(input, sender_override = "[GLOB.slavers_team_name] Transmission")
+			deadchat_broadcast(" sent a transmission to the station from <span class='name'>[get_area_name(usr, TRUE)]</span>.", "<span class='name'>[user.real_name]</span>", user)
+			GLOB.slavers_last_announcement = world.time
 
 		if("setPrice")
-			var/newPrice = input(usr, "The station will need to pay this to get the slave back.", "Set slave price", 4000) as num
+			var/newPrice = input(usr, "The station will need to pay this to get the slave back.", "Set slave price", 5000) as num
 			if(!newPrice)
-				priority_announce("New price empty.", sender_override = "Set price")
+				return
 
 			newPrice = clamp(round(newPrice), 1, 1000000)
 			collar.price = newPrice
+			var/mob/living/M = collar.loc
+			priority_announce("[M.real_name] has been captured. Send us [newPrice]cr to get them back!.", sender_override = "[GLOB.slavers_team_name] Transmission")
 
 		if("export")
-			// var/area/curr = get_area(get_turf(collar.loc))
-
-		// if (istype(curr, /area/slavers/export))
-			// priority_announce("EXPORTING...", sender_override = "Set price")
-			// var/area/thearea  = /area/slavers/export
-
-			// if(!curr)
-			// 	priority_announce("No area found", sender_override = "Set price")
-			// 	return
-
-			// var/list/L = list()
-			// for(var/turf/T in get_area_turfs(curr.type))
-			// 	L+=T
-			// if(!L || !L.len)
-			// 	say("Error: No destination found.")
-			// 	return
-
-			// var/slaver_crew_name = /datum/antagonist/slaver.get_team().slaver_crew_name
-			// var/datum/antagonist/slaver.get_team()
-			// priority_announce("The [GLOB.slavers_team_name]", sender_override = "Set price")
-
-			// var/datum/bank_account/bank = SSeconomy.get_dep_account(ACCOUNT_CAR)
-			// if(bank)
-			// 	bank.adjust_money(-1000)
 			GLOB.slavers_credits_deposits -= collar.price
 			GLOB.slavers_credits_balance += collar.price
 			GLOB.slavers_credits_total += collar.price
@@ -219,9 +203,6 @@
 
 
 			new /obj/effect/temp_visual/dir_setting/ninja(get_turf(collar.loc), collar.loc.dir)
-			// var/datum/effect_system/spark_spread/s = new /datum/effect_system/spark_spread
-			// s.set_up(3, 1, collar.loc)
-			// s.start()
 
 			playsound(get_turf(src.loc), 'sound/effects/bamf.ogg', 50, 1)
 			visible_message("<span class='notice'>[collar.loc] vanishes into the droppod.</span>", \
@@ -230,16 +211,14 @@
 			var/area/pod_storage_area = locate(/area/centcom/supplypod/podStorage) in GLOB.sortedAreas
 			var/mob/living/M = collar.loc
 
-			priority_announce("[M.real_name] has been returned to the station.", sender_override = "[GLOB.slavers_team_name] Transmission")
+			priority_announce("[M.real_name] has been returned to the station for [collar.price]cr.", sender_override = "[GLOB.slavers_team_name] Transmission")
 			var/obj/structure/closet/supplypod/centcompod/exportPod = new(pick(get_area_turfs(pod_storage_area)))
 			var/obj/effect/landmark/observer_start/dropzone = locate(/obj/effect/landmark/observer_start) in GLOB.landmarks_list
-			M.forceMove(exportPod) //and forceMove any atom/moveable into the supplypod
+			M.forceMove(exportPod)
 
-			new /obj/effect/pod_landingzone(dropzone.loc, exportPod) //Then, create the DPTarget effect, which will eventually forceMove the temp_pod to it's location
+			new /obj/effect/pod_landingzone(dropzone.loc, exportPod)
 
 			qdel(collar)
-		// else
-		// 	priority_announce("Nope", sender_override = "Set price")
 
 		if("shock")
 			var/datum/signal/signal = new /datum/signal
@@ -270,15 +249,15 @@
 						return
 
 					GLOB.slavers_credits_balance -= SG.cost
-					say("Supplies inbound!")
+					radioAnnounce("Supplies inbound: [SG.name]")
 
 					addtimer(CALLBACK(src, .proc/dropSupplies, SG.build_path), rand(4,8) * 10)
-					// dropSupplies(SG.build_path)
 
 					return TRUE
 
 
-
+/obj/machinery/computer/slavery/proc/radioAnnounce(message)
+	radio.talk_into(src, message, RADIO_CHANNEL_SYNDICATE)
 
 /obj/machinery/computer/slavery/proc/dropSupplies(item)
 
@@ -294,15 +273,5 @@
 	var/area/pod_storage_area = locate(/area/centcom/supplypod/podStorage) in GLOB.sortedAreas
 	var/obj/structure/closet/supplypod/centcompod/exportPod = new(pick(get_area_turfs(pod_storage_area)))
 
-	// imp_in.forceMove(pick(L))
 	new item(exportPod)
-
-
-	// var/mob/living/M = collar.loc
-
-
-	// var/obj/effect/landmark/observer_start/dropzone = locate(/obj/effect/landmark/observer_start) in GLOB.landmarks_list
-	// M.forceMove(exportPod) //and forceMove any atom/moveable into the supplypod
-	new /obj/effect/pod_landingzone(drop_location, exportPod) //Then, create the DPTarget effect, which will eventually forceMove the temp_pod to it's location
-
-	// Find References(exportPod)
+	new /obj/effect/pod_landingzone(drop_location, exportPod)

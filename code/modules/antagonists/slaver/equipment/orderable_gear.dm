@@ -20,7 +20,7 @@ GLOBAL_LIST_INIT(slaver_gear, subtypesof(/datum/slaver_gear))
 	id = "slave_collar"
 	build_path = /obj/item/storage/box/slave_collars
 	category = "Slaving"
-	cost = 2//000
+	cost = 3000
 
 /datum/slaver_gear/jammers
 	name = "Radio Jammers"
@@ -28,7 +28,7 @@ GLOBAL_LIST_INIT(slaver_gear, subtypesof(/datum/slaver_gear))
 	id = "jammers"
 	build_path = /obj/item/storage/box/jammers
 	category = "Slaving"
-	cost = 3//000
+	cost = 4000
 
 /datum/slaver_gear/gloves
 	name = "Combat Krav Maga Gloves"
@@ -36,7 +36,7 @@ GLOBAL_LIST_INIT(slaver_gear, subtypesof(/datum/slaver_gear))
 	id = "gloves"
 	build_path = /obj/item/storage/box/krav_gloves
 	category = "Slaving"
-	cost = 6//000
+	cost = 7000
 
 /datum/slaver_gear/pens
 	name = "Sleepy Pens"
@@ -44,7 +44,7 @@ GLOBAL_LIST_INIT(slaver_gear, subtypesof(/datum/slaver_gear))
 	id = "pens"
 	build_path = /obj/item/storage/box/pens
 	category = "Slaving"
-	cost = 3//000
+	cost = 3500
 
 /datum/slaver_gear/codespeak
 	name = "Codespeak Manual"
@@ -52,7 +52,7 @@ GLOBAL_LIST_INIT(slaver_gear, subtypesof(/datum/slaver_gear))
 	id = "codespeak"
 	build_path = /obj/item/codespeak_manual/unlimited
 	category = "Slaving"
-	cost = 3//000
+	cost = 3000
 
 /datum/slaver_gear/slaver_gear
 	name = "Slaver Gear"
@@ -60,7 +60,7 @@ GLOBAL_LIST_INIT(slaver_gear, subtypesof(/datum/slaver_gear))
 	id = "slaver_gear"
 	build_path = /obj/structure/closet/crate/slaver_loadout
 	category = "Slaving"
-	cost = 3//000
+	cost = 3500
 
 /datum/slaver_gear/emag
 	name = "Cryptographic Sequencer"
@@ -68,7 +68,7 @@ GLOBAL_LIST_INIT(slaver_gear, subtypesof(/datum/slaver_gear))
 	id = "emag"
 	build_path = /obj/item/card/emag
 	category = "Advanced"
-	cost = 4//000
+	cost = 5500
 
 /datum/slaver_gear/implant_teleport
 	name = "Emergency Teleport Implants"
@@ -76,7 +76,7 @@ GLOBAL_LIST_INIT(slaver_gear, subtypesof(/datum/slaver_gear))
 	id = "implant_teleport"
 	build_path = /obj/item/storage/box/slaver_teleport
 	category = "Advanced"
-	cost = 12//000
+	cost = 15000
 
 /datum/slaver_gear/hardsuits
 	name = "Combat Hardsuits"
@@ -84,7 +84,7 @@ GLOBAL_LIST_INIT(slaver_gear, subtypesof(/datum/slaver_gear))
 	id = "hardsuits"
 	build_path = /obj/structure/closet/crate/slaver_hardsuits
 	category = "Advanced"
-	cost = 8//000
+	cost = 10000
 
 /datum/slaver_gear/medic
 	name = "Medic Kit"
@@ -92,7 +92,7 @@ GLOBAL_LIST_INIT(slaver_gear, subtypesof(/datum/slaver_gear))
 	id = "implant_teleport"
 	build_path = /obj/item/storage/firstaid/tactical/slaver
 	category = "Advanced"
-	cost = 8//000
+	cost = 8500
 
 /datum/slaver_gear/marksman
 	name = "Marksman Kit"
@@ -100,7 +100,7 @@ GLOBAL_LIST_INIT(slaver_gear, subtypesof(/datum/slaver_gear))
 	id = "marksman"
 	build_path = /obj/structure/closet/crate/slaver_marksman
 	category = "Advanced"
-	cost = 15//000
+	cost = 17500
 
 /datum/slaver_gear/mech
 	name = "Gygax 'Riot-Control' Exosuit"
@@ -108,7 +108,7 @@ GLOBAL_LIST_INIT(slaver_gear, subtypesof(/datum/slaver_gear))
 	id = "mech"
 	build_path = /obj/structure/closet/crate/slaver_mech
 	category = "Mech"
-	cost = 35//000
+	cost = 45000
 
 /datum/slaver_gear/mech_ammo
 	name = "Gygax Exosuit Ammo"
@@ -116,4 +116,4 @@ GLOBAL_LIST_INIT(slaver_gear, subtypesof(/datum/slaver_gear))
 	id = "mech_ammo"
 	build_path = /obj/structure/closet/crate/slaver_mech_ammo
 	category = "Mech"
-	cost = 15//000
+	cost = 17000

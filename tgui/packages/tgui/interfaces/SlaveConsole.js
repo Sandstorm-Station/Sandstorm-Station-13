@@ -1,9 +1,8 @@
 import { map, sortBy } from 'common/collections';
 import { flow } from 'common/fp';
 import { vecLength, vecSubtract } from 'common/vector';
-import { shallowDiffers } from '../../common/react';
 import { useBackend, useSharedState } from '../backend';
-import { Box, Button, Icon, LabeledList, Section, Table, Flex, Stack, Tabs, NoticeBox, Fragment } from '../components';
+import { Box, Button, Icon, LabeledList, Section, Flex, Tabs, NoticeBox, Fragment } from '../components';
 import { Window } from '../layouts';
 import { GenericUplink } from './Uplink';
 
@@ -37,21 +36,11 @@ export const SlaveConsole = (props, context) => {
       height={700}
       resizable>
       <Window.Content scrollable>
-        <Section title="Functions">
-          <Flex direction="column">
-            <Button
-              icon="bullhorn"
-              content="Message Station"
-              onClick={() => act("makePriorityAnnouncement")}
-            />
-          </Flex>
-        </Section>
-
         <Section>
           <Flex direction="column">
             <Button
               icon="bullhorn"
-              content="Message Station"
+              content="Send transmission to the station"
               onClick={() => act("makePriorityAnnouncement")}
             />
           </Flex>

@@ -10,6 +10,7 @@
 #define ROLE_TRAITOR				"traitor"
 #define ROLE_OPERATIVE				"operative"
 #define ROLE_SLAVER					"slaver"
+#define ROLE_SLAVER_LEADER			"slave master"
 #define ROLE_CHANGELING				"changeling"
 #define ROLE_WIZARD					"wizard"
 #define ROLE_MALF					"malf AI"

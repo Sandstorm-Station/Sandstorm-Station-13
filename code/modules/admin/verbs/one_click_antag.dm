@@ -261,7 +261,7 @@
 //	return 1
 
 /datum/admins/proc/makeSlaverTeam()
-	var/list/mob/candidates = pollGhostCandidates("Do you wish to be considered for the slave trader crew entering the sector?", ROLE_SLAVER)
+	var/list/mob/candidates = pollGhostCandidates("Do you wish to be considered for the slave trader crew?", ROLE_SLAVER)
 	var/list/mob/chosen = list()
 	var/mob/theghost = null
 
