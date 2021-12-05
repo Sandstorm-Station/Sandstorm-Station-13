@@ -133,6 +133,7 @@
 			M.mind.assigned_role = assignedrole
 		special(M, name)
 		MM.name = M.real_name
+		M.checkloadappearance()
 	if(uses > 0)
 		uses--
 	if(!permanent && !uses)
@@ -177,6 +178,7 @@
 	var/hair_style
 	var/facial_hair_style
 	var/skin_tone
+	var/canloadappearance = FALSE
 
 /obj/effect/mob_spawn/human/Initialize()
 	if(ispath(outfit))
@@ -228,6 +230,10 @@
 			var/obj/item/clothing/under/C = H.w_uniform
 			if(istype(C))
 				C.sensor_mode = NO_SENSORS
+	if(canloadappearance)
+		H.canloadappearance = TRUE
+	else
+		H.canloadappearance = FALSE
 
 	var/obj/item/card/id/W = H.wear_id
 	if(W)
@@ -410,6 +416,7 @@
 	flavour_text = "Time to mix drinks and change lives. Smoking space drugs makes it easier to understand your patrons' odd dialect."
 	assignedrole = "Space Bartender"
 	id_job = "Bartender"
+	canloadappearance = TRUE
 
 /datum/outfit/spacebartender
 	name = "Space Bartender"
@@ -422,6 +429,7 @@
 
 /obj/effect/mob_spawn/human/beach
 	outfit = /datum/outfit/beachbum
+	canloadappearance = TRUE
 
 /obj/effect/mob_spawn/human/beach/alive
 	death = FALSE
