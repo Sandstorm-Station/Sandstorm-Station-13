@@ -266,7 +266,7 @@
 	var/mob/theghost = null
 
 	if(candidates.len)
-		var/numslavers = 5
+		var/numslavers = 4
 		var/slavercount = 0
 
 		for(var/i = 0, i<numslavers,i++)
