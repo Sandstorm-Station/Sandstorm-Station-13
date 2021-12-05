@@ -477,12 +477,10 @@ export const PageMain = (props, context) => {
       {!!slaves.length && (
         <Fragment>
           <Section>
-            Cargo credits: {cargocredits}cr
+            <box><b>Cargo credits: {cargocredits}cr</b></box>
+            <box>{"The credits will only be sent once the slave is delivered back to the station."}</box>
           </Section>
           <Section title="Buy Slaves">
-            <Box>
-              {"The credits will only be sent once the slave is delivered back to the station."}
-            </Box>
             <Table>
               {slaves.map(slave => (
                 <Table.Row

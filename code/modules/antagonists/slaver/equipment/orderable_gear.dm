@@ -16,74 +16,104 @@ GLOBAL_LIST_INIT(slaver_gear, subtypesof(/datum/slaver_gear))
 
 /datum/slaver_gear/slave_collars
 	name = "Slave Collars"
-	description = "Slave collar x 3"
+	description = "Slave collar x 3."
 	id = "slave_collar"
-	build_path = /obj/item/electropack/shockcollar/slave
-	category = "Third catti"
-	cost = 100
+	build_path = /obj/item/storage/box/slave_collars
+	category = "Slaving"
+	cost = 2//000
 
-/datum/slaver_gear/agent_helmet
-	name = "Agent Helmet"
-	description = "Abduct with style - spiky style. Prevents digital tracking."
-	id = "agent_helmet"
-	build_path = /obj/item/clothing/head/helmet/abductor
+/datum/slaver_gear/jammers
+	name = "Radio Jammers"
+	description = "Radio jammer x 3."
+	id = "jammers"
+	build_path = /obj/item/storage/box/jammers
+	category = "Slaving"
+	cost = 3//000
 
-/datum/slaver_gear/agent_vest
-	name = "Agent Vest"
-	description = "A vest outfitted with advanced stealth technology. It has two modes - combat and stealth."
-	id = "agent_vest"
-	build_path = /obj/item/clothing/suit/armor/abductor/vest
+/datum/slaver_gear/gloves
+	name = "Combat Krav Maga Gloves"
+	description = "Shock and fire-resistant gloves that also teach krav maga x 3."
+	id = "gloves"
+	build_path = /obj/item/storage/box/krav_gloves
+	category = "Slaving"
+	cost = 6//000
 
-/datum/slaver_gear/radio_silencer
-	name = "Radio Silencer"
-	description = "A compact device used to shut down communications equipment."
-	id = "radio_silencer"
-	build_path = /obj/item/abductor/silencer
+/datum/slaver_gear/pens
+	name = "Sleepy Pens"
+	description = "Pen that injects sleep-inducing chemicals x 7."
+	id = "pens"
+	build_path = /obj/item/storage/box/pens
+	category = "Slaving"
+	cost = 3//000
 
-/datum/slaver_gear/science_tool
-	name = "Science Tool"
-	description = "A dual-mode tool for retrieving specimens and scanning appearances. Scanning can be done through cameras."
-	id = "science_tool"
-	build_path = /obj/item/abductor/gizmo
+/datum/slaver_gear/codespeak
+	name = "Codespeak Manual"
+	description = "A handy book that teaches the user how to speak in code. Useful to stop eavesdropping! This one has unlimited uses."
+	id = "codespeak"
+	build_path = /obj/item/codespeak_manual/unlimited
+	category = "Slaving"
+	cost = 3//000
 
-/datum/slaver_gear/advanced_baton
-	name = "Advanced Baton"
-	description = "A quad-mode baton used for incapacitation and restraining of specimens."
-	id = "advanced_baton"
-	cost = 2
-	build_path = /obj/item/abductor/baton //does not exist?
+/datum/slaver_gear/slaver_gear
+	name = "Slaver Gear"
+	description = "A set of standard-issue slave trader items. The same you would find in your personal locker."
+	id = "slaver_gear"
+	build_path = /obj/structure/closet/crate/slaver_loadout
+	category = "Slaving"
+	cost = 3//000
 
-/datum/slaver_gear/superlingual_matrix
-	name = "Superlingual Matrix"
-	description = "A mysterious structure that allows for instant communication between users. Pretty impressive until you need to eat something."
-	id = "superlingual_matrix"
-	build_path = /obj/item/organ/tongue/abductor
-	category = "Advanced Gear"
+/datum/slaver_gear/emag
+	name = "Cryptographic Sequencer"
+	description = "A card capable of instantly hacking open most doors."
+	id = "emag"
+	build_path = /obj/item/card/emag
+	category = "Advanced"
+	cost = 4//000
 
-/datum/slaver_gear/mental_interface
-	name = "Mental Interface Device"
-	description = "A dual-mode tool for directly communicating with sentient brains. It can be used to send a direct message to a target, \
-				or to send a command to a test subject with a charged gland."
-	id = "mental_interface"
-	cost = 2
-	build_path = /obj/item/abductor/mind_device
-	category = "Advanced Gear"
+/datum/slaver_gear/implant_teleport
+	name = "Emergency Teleport Implants"
+	description = "Emergency teleport implant x 2."
+	id = "implant_teleport"
+	build_path = /obj/item/storage/box/slaver_teleport
+	category = "Advanced"
+	cost = 12//000
 
-/datum/slaver_gear/reagent_synthesizer
-	name = "Reagent Synthesizer"
-	description = "Synthesizes a variety of reagents using proto-matter."
-	id = "reagent_synthesizer"
-	cost = 2
-	build_path = /obj/item/abductor_machine_beacon/chem_dispenser
-	category = "Advanced Gear"
+/datum/slaver_gear/hardsuits
+	name = "Combat Hardsuits"
+	description = "Military suit supplied by our Syndicate sponsors x 2."
+	id = "hardsuits"
+	build_path = /obj/structure/closet/crate/slaver_hardsuits
+	category = "Advanced"
+	cost = 8//000
 
-/*
-/datum/slaver_gear/shrink_ray
-	name = "Shrink Ray Blaster"
-	description = "This is a piece of frightening alien tech that enhances the magnetic pull of atoms in a localized space to temporarily make an object shrink. \
-				That or it's just space magic. Either way, it shrinks stuff."
-	id = "shrink_ray"
-	cost = 2
-	build_path = /obj/item/gun/energy/shrink_ray
-	category = "Advanced Gear"
-*/
+/datum/slaver_gear/medic
+	name = "Medic Kit"
+	description = "Advanced medical supplies for field medics."
+	id = "implant_teleport"
+	build_path = /obj/item/storage/firstaid/tactical/slaver
+	category = "Advanced"
+	cost = 8//000
+
+/datum/slaver_gear/marksman
+	name = "Marksman Kit"
+	description = ".50 cal sniper rifle with sleep-inducing rounds."
+	id = "marksman"
+	build_path = /obj/structure/closet/crate/slaver_marksman
+	category = "Advanced"
+	cost = 15//000
+
+/datum/slaver_gear/mech
+	name = "Gygax 'Riot-Control' Exosuit"
+	description = "A lightweight, agile mecha. This one comes with a taser cannon, clusterbang launcher and breaching missiles. Must be self-assembled."
+	id = "mech"
+	build_path = /obj/structure/closet/crate/slaver_mech
+	category = "Mech"
+	cost = 35//000
+
+/datum/slaver_gear/mech_ammo
+	name = "Gygax Exosuit Ammo"
+	description = "A shipment of ammo for the Gygax 'Riot-Control' Exosuit. Clusterbang x 3, breaching missile x 6."
+	id = "mech_ammo"
+	build_path = /obj/structure/closet/crate/slaver_mech_ammo
+	category = "Mech"
+	cost = 15//000

@@ -180,11 +180,11 @@
 			priority_announce("Purchase Supplies.", sender_override = "Beep Beep upgate")
 
 		if("setPrice")
-			var/newPrice = input(usr, "The station will need to pay this to get the slave back. (1000 - 10000)", "Set slave price", 4000) as num
+			var/newPrice = input(usr, "The station will need to pay this to get the slave back.", "Set slave price", 4000) as num
 			if(!newPrice)
 				priority_announce("New price empty.", sender_override = "Set price")
 
-			newPrice = clamp(round(newPrice), 1000, 10000)
+			newPrice = clamp(round(newPrice), 1, 1000000)
 			collar.price = newPrice
 
 		if("export")
@@ -217,9 +217,11 @@
 			GLOB.slavers_credits_total += collar.price
 			GLOB.slavers_slaves_sold++
 
-			var/datum/effect_system/spark_spread/s = new /datum/effect_system/spark_spread
-			s.set_up(3, 1, collar.loc)
-			s.start()
+
+			new /obj/effect/temp_visual/dir_setting/ninja(get_turf(collar.loc), collar.loc.dir)
+			// var/datum/effect_system/spark_spread/s = new /datum/effect_system/spark_spread
+			// s.set_up(3, 1, collar.loc)
+			// s.start()
 
 			playsound(get_turf(src.loc), 'sound/effects/bamf.ogg', 50, 1)
 			visible_message("<span class='notice'>[collar.loc] vanishes into the droppod.</span>", \
@@ -227,11 +229,12 @@
 
 			var/area/pod_storage_area = locate(/area/centcom/supplypod/podStorage) in GLOB.sortedAreas
 			var/mob/living/M = collar.loc
-			// var/slaver_crew_name = /datum/antagonist/slaver.get_team().slaver_crew_name
+
 			priority_announce("[M.real_name] has been returned to the station.", sender_override = "[GLOB.slavers_team_name] Transmission")
 			var/obj/structure/closet/supplypod/centcompod/exportPod = new(pick(get_area_turfs(pod_storage_area)))
 			var/obj/effect/landmark/observer_start/dropzone = locate(/obj/effect/landmark/observer_start) in GLOB.landmarks_list
 			M.forceMove(exportPod) //and forceMove any atom/moveable into the supplypod
+
 			new /obj/effect/pod_landingzone(dropzone.loc, exportPod) //Then, create the DPTarget effect, which will eventually forceMove the temp_pod to it's location
 
 			qdel(collar)
@@ -262,17 +265,44 @@
 			for(var/key in buyable_items)
 				var/datum/slaver_gear/SG = buyable_items[key]
 				if(SG.name == item_name)
-					Dispense(SG.build_path, SG.cost)
+					if(GLOB.slavers_credits_balance < SG.cost)
+						say("Insufficent credits!")
+						return
+
+					GLOB.slavers_credits_balance -= SG.cost
+					say("Supplies inbound!")
+
+					addtimer(CALLBACK(src, .proc/dropSupplies, SG.build_path), rand(4,8) * 10)
+					// dropSupplies(SG.build_path)
+
 					return TRUE
 
-/obj/machinery/computer/slavery/proc/Dispense(item,cost=1)
-	if(GLOB.slavers_credits_balance >= cost)
-		GLOB.slavers_credits_balance -= cost
-		say("Incoming supply!")
-		var/drop_location = loc
-		// if(pad)
-		// 	flick("alien-pad", pad)
-		// 	drop_location = pad.loc
-		new item(drop_location)
-	else
-		say("Insufficent credits!")
+
+
+
+/obj/machinery/computer/slavery/proc/dropSupplies(item)
+
+	// Pick random drop location somewhere in the export zone.
+	var/list/L = list()
+	for(var/turf/T in get_area_turfs(/area/slavers/export))
+		L+=T
+	if(!L || !L.len)
+		to_chat(usr, "No dropzone available.")
+		return
+	var/drop_location = pick(L)
+
+	var/area/pod_storage_area = locate(/area/centcom/supplypod/podStorage) in GLOB.sortedAreas
+	var/obj/structure/closet/supplypod/centcompod/exportPod = new(pick(get_area_turfs(pod_storage_area)))
+
+	// imp_in.forceMove(pick(L))
+	new item(exportPod)
+
+
+	// var/mob/living/M = collar.loc
+
+
+	// var/obj/effect/landmark/observer_start/dropzone = locate(/obj/effect/landmark/observer_start) in GLOB.landmarks_list
+	// M.forceMove(exportPod) //and forceMove any atom/moveable into the supplypod
+	new /obj/effect/pod_landingzone(drop_location, exportPod) //Then, create the DPTarget effect, which will eventually forceMove the temp_pod to it's location
+
+	// Find References(exportPod)

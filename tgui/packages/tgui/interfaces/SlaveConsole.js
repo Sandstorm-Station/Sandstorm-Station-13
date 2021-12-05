@@ -161,7 +161,7 @@ const SlavePanel = (props, context) => {
               <Button
                 icon="pencil-alt"
                 content="Set price"
-                tooltip="The station will have to pay this to get the slave back. (1000 - 10000)"
+                tooltip="The station will have to pay this to get the slave back."
                 onClick={() => act('setPrice', {
                   id: slave.id,
                 })} />
@@ -195,17 +195,8 @@ const SlavePanel = (props, context) => {
 const SupplyPanel = (props, context) => {
   const { credits } = props;
   return (
-    <Fragment>
-      {/* <Section
-        fontSize="18px">
-        Budget: <b>1234</b> credits
-      </Section> */}
-      <GenericUplink
-        currencyAmount={credits}
-        currencySymbol="Credits" />
-      <Section>
-        Weh
-      </Section>
-    </Fragment>
+    <GenericUplink
+      currencyAmount={credits}
+      currencySymbol="Credits" />
   );
 };

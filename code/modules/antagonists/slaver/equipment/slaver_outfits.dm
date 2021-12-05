@@ -1,19 +1,19 @@
 /datum/outfit/slaver
-	name = "Slave Trader - Basic"
+	name = "Slave Trader"
 
 	uniform = /obj/item/clothing/under/syndicate
-	shoes = /obj/item/clothing/shoes/jackboots
+	shoes = /obj/item/clothing/shoes/workboots
 	gloves = /obj/item/clothing/gloves/color/black
-	back = /obj/item/storage/backpack/satchel
-	ears = /obj/item/radio/headset/syndicate/alt
+	back = /obj/item/storage/backpack
+	ears = /obj/item/radio/headset/syndicate
 	id = /obj/item/card/id/slaver
-	belt = /obj/item/gun/ballistic/automatic/pistol
 	backpack_contents = list(/obj/item/storage/box/survival,\
 		/obj/item/kitchen/knife/combat/survival)
 
 /datum/outfit/slaver/leader
-	name = "Slave Master - Basic"
-	id = /obj/item/card/id/slaver
+	name = "Slave Master"
+
+	id = /obj/item/card/id/slaver/leader
 	gloves = /obj/item/clothing/gloves/krav_maga/combatglovesplus
 
 /datum/outfit/slaver/post_equip(mob/living/carbon/human/H, visualsOnly = FALSE, client/preference_source)
@@ -21,9 +21,5 @@
 	R.set_frequency(FREQ_SYNDICATE)
 	R.freqlock = TRUE
 
-	var/obj/item/implant/weapons_auth/W = new
-	W.implant(H)
-	var/obj/item/implant/explosive/E = new
-	E.implant(H)
 	H.faction |= ROLE_SLAVER
 	H.update_icons()
