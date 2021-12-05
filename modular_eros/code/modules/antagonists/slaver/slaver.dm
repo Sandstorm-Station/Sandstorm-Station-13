@@ -96,7 +96,6 @@ GLOBAL_VAR_INIT(slavers_last_announcement, 0)
 
 /datum/antagonist/slaver/leader/proc/slavers_name_assign()
 	GLOB.slavers_team_name = ask_name()
-	// priority_announce("Message test 123 123 Message test 123 123 Message test 123 123 Message test 123 123 Message test 123 123.", sender_override = "Hail from the [slaver_team.slaver_crew_name]")
 
 /datum/antagonist/slaver/leader/proc/ask_name()
 	var/defaultname = GLOB.slavers_team_name
@@ -111,7 +110,6 @@ GLOBAL_VAR_INIT(slavers_last_announcement, 0)
 	return capitalize(newname)
 
 /datum/team/slavers
-	// var/slaver_crew_name = "Slave Traders"
 	var/core_objective = /datum/objective/slaver
 
 /datum/team/slavers/proc/update_objectives()

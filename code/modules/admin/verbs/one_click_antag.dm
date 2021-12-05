@@ -293,8 +293,6 @@
 			if(!leader_chosen)
 				leader_chosen = TRUE
 				new_character.mind.add_antag_datum(/datum/antagonist/slaver/leader)
-				// var/datum/antagonist/slaver/S = new_character.mind.add_antag_datum(/datum/antagonist/slaver/leader)
-				// slaver_team = S.slaver_team
 			else
 				new_character.mind.add_antag_datum(/datum/antagonist/slaver,slaver_team)
 		return 1
