@@ -39,6 +39,8 @@
 #define ROLE_GANG					"gangster"
 #define ROLE_BLOODSUCKER			"bloodsucker"
 #define ROLE_SPACE_DRAGON			"Space Dragon"
+#define ROLE_SLAVER					"slaver"
+#define ROLE_SLAVER_LEADER			"slave master"
 //#define ROLE_MONSTERHUNTER			"monster hunter" Disabled for now
 #define ROLE_GHOSTCAFE				"ghostcafe"
 #define ROLE_MINOR_ANTAG			"minorantag"
@@ -55,6 +57,7 @@ GLOBAL_LIST_INIT(special_roles, list(
 	ROLE_TRAITOR = /datum/game_mode/traitor,
 	ROLE_BROTHER = /datum/game_mode/traitor/bros,
 	ROLE_OPERATIVE = /datum/game_mode/nuclear,
+	ROLE_SLAVER,
 	ROLE_CHANGELING = /datum/game_mode/changeling,
 	ROLE_WIZARD = /datum/game_mode/wizard,
 	ROLE_MALF,

@@ -1,7 +1,7 @@
 import { sortBy } from "common/collections";
 import { capitalize } from "common/string";
 import { useBackend, useLocalState } from "../backend";
-import { Blink, Box, Button, Dimmer, Flex, Icon, Input, Modal, Section, TextArea } from "../components";
+import { Blink, Box, Button, Dimmer, Flex, Icon, Input, Modal, Section, TextArea, Table, LabeledList } from "../components";
 import { Window } from "../layouts";
 import { sanitizeText } from "../sanitize";
 
@@ -317,6 +317,8 @@ export const PageMain = (props, context) => {
     shuttleCanEvacOrFailReason,
     shuttleLastCalled,
     shuttleRecallable,
+    cargocredits,
+    slaves,
   } = data;
 
   const [callingShuttle, setCallingShuttle] = useLocalState(
@@ -471,6 +473,57 @@ export const PageMain = (props, context) => {
           />}
         </Flex>
       </Section>
+
+      {!!slaves.length && (
+        <Section title="Buy Slaves">
+          <LabeledList>
+            <LabeledList.Item
+              label="Cargo credits">
+              {cargocredits}cr
+            </LabeledList.Item>
+            <LabeledList.Item
+              label="Info">
+              {"The credits will only be sent once the slave is delivered back to the station."}
+            </LabeledList.Item>
+          </LabeledList>
+
+          <Table>
+            {slaves.map(slave => (
+              <Table.Row
+                key={slave.name + slave.coords + slave.index}
+                className="candystripe">
+
+                <Table.Cell bold color="label">
+                  {slave.name}
+                </Table.Cell>
+
+                <Table.Cell
+                  collapsing
+                  color="label"
+                  textAlign="right">
+                  {slave.bought
+                    ? "Ransom paid"
+                    : ""}
+                </Table.Cell>
+
+                <Table.Cell
+                  collapsing
+                  align="right">
+                  <Button
+                    icon={slave.bought ? "times" : ""}
+                    disabled={slave.cannotafford}
+                    content={slave.bought ? "Cancel" : slave.price + "cr"}
+                    color={slave.bought ? "bad" : "default"}
+                    onClick={() => act('toggleBought', {
+                      id: slave.id,
+                    })} />
+                </Table.Cell>
+
+              </Table.Row>
+            ))}
+          </Table>
+        </Section>
+      )}
 
       {!!canMessageAssociates && messagingAssociates && <MessageModal
         label={`Message to transmit to ${emagged ? "[ABNORMAL ROUTING COORDINATES]" : "CentCom"} via quantum entanglement`}

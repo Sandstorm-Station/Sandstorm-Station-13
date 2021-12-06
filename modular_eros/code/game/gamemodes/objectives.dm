@@ -16,7 +16,6 @@
 /datum/objective/protect_object/check_completion()
 	return !QDELETED(protect_target)
 
-
 /datum/objective/rescue_prisoner
 	name = "rescue prisoner"
 
@@ -28,6 +27,10 @@
 	target = rescue_target.mind
 	return target
 
-
 /datum/objective/rescue_prisoner/check_completion()
 	return considered_escaped(target)
+
+/datum/objective/slaver
+	name = "slave trading"
+	explanation_text = "Earn 30,000 credits through slave trading."
+	

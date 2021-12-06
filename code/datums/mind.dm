@@ -263,6 +263,7 @@
 	remove_changeling()
 	remove_traitor()
 	remove_nukeop()
+	remove_slaver()
 	remove_wizard()
 	remove_cultist()
 	remove_rev()
@@ -366,7 +367,6 @@
 		N.send_to_spawnpoint = FALSE
 		N.nukeop_outfit = null
 		add_antag_datum(N,converter.nuke_team)
-
 
 	enslaved_to = creator
 
