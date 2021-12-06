@@ -57,6 +57,17 @@
 /obj/item/stack/cable_coil/cut,
 /turf/open/floor/plasteel,
 /area/lavaland/surface/outdoors)
+"fi" = (
+/obj/structure/cable{
+	icon_state = "1-2"
+	},
+/obj/item/stock_parts/cell,
+/turf/open/floor/plating/asteroid/basalt/lava_land_surface,
+/area/lavaland/surface/outdoors)
+"gd" = (
+/obj/structure/frame/machine,
+/turf/open/floor/plating/asteroid/basalt/lava_land_surface,
+/area/lavaland/surface/outdoors)
 "ha" = (
 /turf/open/floor/plating/asteroid/basalt/lava_land_surface,
 /area/lavaland/surface/outdoors)
@@ -67,6 +78,10 @@
 /obj/structure/cable{
 	icon_state = "2-8"
 	},
+/turf/open/floor/plasteel,
+/area/lavaland/surface/outdoors)
+"ir" = (
+/obj/item/stock_parts/cell,
 /turf/open/floor/plasteel,
 /area/lavaland/surface/outdoors)
 "jO" = (
@@ -81,6 +96,10 @@
 	dir = 4
 	},
 /obj/item/stack/sheet/mineral/plasma,
+/turf/open/floor/plating/asteroid/basalt/lava_land_surface,
+/area/lavaland/surface/outdoors)
+"lC" = (
+/obj/item/stock_parts/cell,
 /turf/open/floor/plating/asteroid/basalt/lava_land_surface,
 /area/lavaland/surface/outdoors)
 "mp" = (
@@ -134,7 +153,7 @@
 /turf/open/floor/plasteel,
 /area/lavaland/surface/outdoors)
 "wd" = (
-/obj/structure/frame,
+/obj/structure/frame/machine,
 /turf/open/floor/plasteel,
 /area/lavaland/surface/outdoors)
 "wj" = (
@@ -244,16 +263,18 @@
 /turf/open/floor/plating/asteroid/basalt/lava_land_surface,
 /area/lavaland/surface/outdoors)
 "Kl" = (
-/obj/structure/frame,
 /obj/item/circuitboard/machine/pacman,
 /obj/structure/cable{
 	icon_state = "0-2"
 	},
+/obj/structure/frame/machine,
+/obj/item/stock_parts/micro_laser/high,
+/obj/item/stock_parts/matter_bin/adv,
 /turf/open/floor/plasteel,
 /area/lavaland/surface/outdoors)
 "Ku" = (
 /obj/item/wallframe/apc,
-/obj/structure/frame,
+/obj/structure/frame/machine,
 /turf/open/floor/plasteel,
 /area/lavaland/surface/outdoors)
 "KS" = (
@@ -317,6 +338,11 @@
 	icon_state = "0-4"
 	},
 /obj/item/stack/cable_coil/cut,
+/turf/open/floor/plating/asteroid/basalt/lava_land_surface,
+/area/lavaland/surface/outdoors)
+"Tu" = (
+/obj/structure/cable,
+/obj/item/stock_parts/capacitor/adv,
 /turf/open/floor/plating/asteroid/basalt/lava_land_surface,
 /area/lavaland/surface/outdoors)
 "UD" = (
@@ -464,7 +490,7 @@ QQ
 Qn
 Qn
 ch
-Nq
+ir
 QN
 CX
 Pm
@@ -576,8 +602,8 @@ ha
 mp
 nu
 KS
-KS
-GU
+fi
+Tu
 dV
 ch
 Qn
@@ -652,7 +678,7 @@ ch
 Yl
 ch
 Pm
-ha
+lC
 Nq
 Pm
 Qn
@@ -668,8 +694,8 @@ ig
 rp
 GU
 Br
-aI
-aI
+gd
+gd
 ha
 ha
 ch
