@@ -1075,9 +1075,9 @@
 	usesound = 'sound/weapons/drill.ogg'
 	hitsound = 'sound/weapons/drill.ogg'
 	attack_verb = list("drilled")
-	var/digrange = 7
 	var/cooldowntime = 50
 	var/cooldown = 0
+	var/digrange = 7
 	var/range = 7
 
 /obj/item/rogue/ComponentInitialize()
