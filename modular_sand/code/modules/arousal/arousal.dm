@@ -12,8 +12,6 @@
 		return ret_organ
 
 /mob/living/proc/receive_climax(mob/living/partner, obj/item/organ/genital/receiver = null, obj/item/organ/genital/source_gen, spill = TRUE)
-	set_lust(0)
-	SEND_SIGNAL(src, COMSIG_ADD_MOOD_EVENT, "orgasm", /datum/mood_event/orgasm)
 	if(!ishuman(src))
 		return
 	var/mob/living/carbon/human/h_self = src
