@@ -9,7 +9,7 @@
 	name = "Fat-Fingered"
 	desc = "Due to the shape of your hands, width of your fingers or just not having fingers at all, you're unable to fire the majority of guns."
 	value = -2
-	mob_trait = TRAIT_NOGUNS
+	mob_trait = TRAIT_CHUNKYFINGERS
 	gain_text = "<span class='notice'>Your fingers feel.. thick.</span>"
 	lose_text = "<span class='notice'>Your fingers feel normal again.</span>"
 
