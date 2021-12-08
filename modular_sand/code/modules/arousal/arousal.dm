@@ -1,4 +1,4 @@
-/mob/living/carbon/human/proc/pick_receiving_organ(mob/living/L)
+/mob/living/carbon/human/proc/pick_receiving_organ(mob/living/L, title = "Climax")
 	if (!iscarbon(L))
 		return
 	var/mob/living/carbon/C = L
@@ -8,7 +8,7 @@
 		if((G.genital_flags & CAN_CUM_INTO) && G.is_exposed(other_worn)) //filter out what you can't cum into
 			LAZYADD(receivers_list, G)
 	if(LAZYLEN(receivers_list))
-		var/obj/item/organ/genital/ret_organ = input(src, "in what hole?", "Climax", null) as null|obj in receivers_list
+		var/obj/item/organ/genital/ret_organ = input(src, "in what hole?", title, null) as null|obj in receivers_list
 		return ret_organ
 
 /mob/living/proc/receive_climax(mob/living/partner, obj/item/organ/genital/receiver = null, obj/item/organ/genital/source_gen, spill = TRUE)
