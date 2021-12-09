@@ -29641,19 +29641,6 @@
 	},
 /turf/open/floor/plasteel,
 /area/science/robotics/lab)
-"bta" = (
-/obj/item/retractor,
-/obj/item/hemostat,
-/obj/structure/window/reinforced{
-	dir = 8;
-	layer = 2.9
-	},
-/obj/structure/table,
-/obj/effect/turf_decal/stripes/line{
-	dir = 8
-	},
-/turf/open/floor/plasteel/white,
-/area/science/robotics/lab)
 "btb" = (
 /obj/structure/table/optable{
 	name = "Robotics Operating Table"
@@ -51758,6 +51745,20 @@
 "deJ" = (
 /turf/open/floor/plasteel/yellowsiding/corner,
 /area/hallway/secondary/entry)
+"dfw" = (
+/obj/item/retractor,
+/obj/item/hemostat,
+/obj/structure/window/reinforced{
+	dir = 8;
+	layer = 2.9
+	},
+/obj/structure/table,
+/obj/effect/turf_decal/stripes/line{
+	dir = 8
+	},
+/obj/item/cautery,
+/turf/open/floor/plasteel/white,
+/area/science/robotics/lab)
 "dgg" = (
 /obj/structure/disposalpipe/segment{
 	dir = 6
@@ -54928,10 +54929,6 @@
 /obj/item/storage/box/lights/mixed,
 /turf/open/floor/plating,
 /area/maintenance/department/engine)
-"iET" = (
-/obj/item/hilbertshotel/ghostdojo,
-/turf/open/floor/plasteel,
-/area/hallway/secondary/entry)
 "iEU" = (
 /obj/effect/spawner/lootdrop/keg,
 /turf/open/floor/plating,
@@ -62286,6 +62283,10 @@
 	},
 /turf/open/floor/plasteel,
 /area/engineering/main)
+"vjf" = (
+/obj/item/hilbertshotel/ghostdojo,
+/turf/open/floor/plasteel,
+/area/hallway/secondary/entry)
 "vjD" = (
 /obj/structure/chair/stool,
 /obj/machinery/power/terminal{
@@ -83779,7 +83780,7 @@ aaa
 aaa
 aZx
 bkR
-iET
+vjf
 baL
 bon
 aZx
@@ -101260,7 +101261,7 @@ bnQ
 bnQ
 bqi
 brz
-bta
+dfw
 bkt
 bvH
 bxq
