@@ -6,16 +6,6 @@
 	RegisterSignal(target, COMSIG_CLICK_ALT, .proc/mob_try_pickup_micro, TRUE)
 	RegisterSignal(target, COMSIG_MICRO_PICKUP_FEET, .proc/mob_pickup_micro_feet)
 
-	addtimer(CALLBACK(src, .proc/check_mob_holder, target), 1) //I'll give you some time to leave
-
-/datum/element/mob_holder/micro/proc/check_mob_holder(mob/target)
-	if(!target.comp_lookup["alt_click"])
-		return
-	for(var/datum/element/mob_holder/item in target.comp_lookup["alt_click"]) //stupid way to do it but GetElement does not work for this
-		if(item?.type == /datum/element/mob_holder)
-			Detach(target)
-			break
-
 /datum/element/mob_holder/micro/Detach(datum/source, force)
 	. = ..()
 	UnregisterSignal(source, COMSIG_MICRO_PICKUP_FEET)

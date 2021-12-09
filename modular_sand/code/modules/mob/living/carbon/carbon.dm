@@ -26,10 +26,6 @@
 			if(0 to THIRST_LEVEL_PARCHED)
 				hud_used.thirst.icon_state = "hydration4"
 
-/mob/living/carbon/ComponentInitialize()
-	. = ..()
-	AddElement(/datum/element/mob_holder/micro, "micro")
-
 //It's here so it doesn't make a big mess on randomverbs.dm,
 //also because of this you can proccall it, why would you if you have smite?
 /mob/living/proc/pregoodbye(C)
