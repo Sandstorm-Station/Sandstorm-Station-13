@@ -14,6 +14,6 @@
 /datum/gear/shoes/jackboots/tall
 	name = "Tall Jackboots (Hyper)"
 	path = /obj/item/clothing/shoes/jackboots/tall
-/datum/gear/highheels
+/datum/gear/shoes/highheels
 	name = "High Heels (hyper)"
 	path = /obj/item/clothing/shoes/highheels
