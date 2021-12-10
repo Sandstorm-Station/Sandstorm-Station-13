@@ -215,7 +215,6 @@
 	var/list/cock_names = list("rod", "bitchbreaker", "cock", "penis", "schlong")
 	var/obj/item/organ/genital/penis/P
 	var/s_His = p_their()
-	var/t_His = user.p_their()
 	var/t_He = user.p_they()
 	if(src == user)
 		P = getorganslot(ORGAN_SLOT_PENIS)
@@ -245,3 +244,37 @@
 			new /obj/item/clothing/head/condom(user.loc)
 		else
 			to_chat(src, "<span class='warning'>[t_He] needs a condom for that!<span>")
+
+/mob/living/carbon/human/proc/remove_sounding(mob/living/carbon/human/user)
+	var/list/cock_names = list("rod", "bitchbreaker", "cock", "penis", "schlong")
+	var/obj/item/organ/genital/penis/P
+	var/s_His = p_their()
+	var/t_He = user.p_they()
+	if(src == user)
+		P = getorganslot(ORGAN_SLOT_PENIS)
+		if(P.sounding)
+			visible_message(message = "<span class='lewd'><b>\The [src]</b> slides the sounding rod out of [s_His] [pick(cock_names)]</span>",
+			self_message = "<span class='lewd'>You feel the sounding rod slide off your [pick(cock_names)]'s urethra</span>",
+			ignored_mobs = get_unconsenting()
+			)
+			P.sounding = FALSE
+			new /obj/item/sounding/used_sounding(loc)
+		else
+			to_chat(src, "<span class='warning'>You need a sounding rod for that!</span>")
+	else
+		P = user.getorganslot(ORGAN_SLOT_PENIS)
+		if(P.sounding)
+			user.visible_message(message = "<span class='lewd'><b>\The [src]</b> tries to remove the sounding rod from [user]'s [pick(cock_names)]",
+			self_message = "<span class='lewd'><b>\The [src]</b> gently takes your [pick(cock_names)] and starts sliding the sounding rod out of its urethra</span>",
+			ignored_mobs = get_unconsenting()
+			)
+			if(!do_mob(src, user, 4 SECONDS))
+				return
+			user.visible_message(message = "<span class='lewd'><b>\The [src]</b> slides the sounding rod out of [user]'s [pick(cock_names)]!</span>",
+			self_message = "<span class='lewd'>You feel your urethra relax and throb as [src]'s warm hand slides the sounding rod out of your [pick(cock_names)]</span>",
+			ignored_mobs = get_unconsenting()
+			)
+			P.sounding = FALSE
+			new /obj/item/sounding/used_sounding(user.loc)
+		else
+			to_chat(src, "<span class='warning'>[t_He] needs a sounding rod for that!<span>")

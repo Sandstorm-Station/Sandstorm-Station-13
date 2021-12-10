@@ -80,6 +80,7 @@ obj/item/condom/update_icon()
 	armor = list("melee" = 0, "bullet" = 0, "laser" = 0, "energy" = 0, "bomb" = 0, "bio" = 5, "rad" = 0, "fire" = 0, "acid" = 0)
 
 
+/* Handled on lewd interactions
 /mob/living/carbon/human/proc/removecondom()
 
 	var/obj/item/organ/genital/penis/P = getorganslot("penis")
@@ -88,6 +89,7 @@ obj/item/condom/update_icon()
 		P.condom = FALSE
 		/*P.colourtint = ""
 		update_genitals()*/
+*/
 
 /obj/item/condom/filled
 	name 				= "filled condom"
@@ -115,7 +117,8 @@ obj/item/condom/update_icon()
 	C.loc = loc
 	return C
 
-	/*var/obj/item/condom/filled/C = new
+	/*
+	var/obj/item/condom/filled/C = new
 	P.linked_organ.reagents.trans_to(C, P.linked_organ.reagents.total_volume)
 	C.loc = loc
 	P.condom = FALSE
@@ -124,4 +127,5 @@ obj/item/condom/update_icon()
 	C.update_icon()
 	to_chat(src, "<span class='love'>The condom bubbles outwards and fills with your cum.</span>")
 	SEND_SIGNAL(src, COMSIG_ADD_MOOD_EVENT, "orgasm", /datum/mood_event/orgasm)
-	setArousalLoss(0)*/
+	setArousalLoss(0)
+	*/

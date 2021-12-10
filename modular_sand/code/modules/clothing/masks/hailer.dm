@@ -1,7 +1,7 @@
 /obj/item/clothing/mask/gas/sechailer/slut
 	name = "slutcurity hailer"
 	desc = "A modified Security gas mask designed for softer apprehension, now with a hot pink paintjob!"
-	icon = 'icons/obj/clothing/masks.dmi'
+	icon = 'modular_sand/icons/obj/clothing/masks.dmi'
 	icon_state = "sluthailer"
 	aggressiveness = 0 //can't have your pets being mean!
 	actions_types = list(/datum/action/item_action/halt)

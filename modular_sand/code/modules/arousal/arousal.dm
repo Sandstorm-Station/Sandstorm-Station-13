@@ -35,3 +35,16 @@
 						var/obj/item/organ/genital/breasts/B = h_self.getorganslot(ORGAN_SLOT_BREASTS)
 						if(B)
 							B.fluid_rate *= 2
+
+/mob/living/carbon/human/do_climax(datum/reagents/R, atom/target, obj/item/organ/genital/G, spill)
+	if(!G)
+		return
+
+	if(istype(G, /obj/item/organ/genital/penis))
+		var/obj/item/organ/genital/penis/bepis = G
+		if(bepis.sounding)
+			spill = TRUE
+			to_chat(src, "<span class='userlove'>You feel your sounding rod being pushed out of your cockhole with the burst of jizz!</span>")
+			bepis.sounding = FALSE
+			new /obj/item/sounding/used_sounding(loc)
+	. = ..()
