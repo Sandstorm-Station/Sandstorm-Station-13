@@ -4,7 +4,7 @@
 /obj/item/electropack/vibrator
 	name = "remote vibrator"
 	desc = "A remote device that can deliver pleasure at a fair. It has three intensities that can be set by twisting the base."
-	icon = 'modular_eros/icons/obj/vibrator.dmi'
+	icon = 'modular_sand/icons/obj/vibrator.dmi'
 	icon_state = "vibe"
 	item_state = "vibe"
 	w_class = WEIGHT_CLASS_SMALL
@@ -39,12 +39,6 @@ Code:
 	user << browse(dat, "window=radio")
 	onclose(user, "radio")
 	return
-
-/obj/item/electropack/shockcollar/security
-	name = "security shock collar"
-	desc = "A reinforced security collar. It has two electrodes that press against the neck, for disobedient pets."
-	icon_state = "shockseccollar"
-	item_state = "shockseccollar"
 
 /obj/item/electropack/vibrator/attack_self(mob/user)
 	if(!istype(user))
@@ -121,7 +115,7 @@ Code:
 
 			var/intencity = 6*mode
 			U.handle_post_sex(intencity, null, src) //give pleasure
-			playsound(U.loc, 'modular_eros/sound/lewd/vibrate.ogg', (intencity+5), 1, -1) //vibe intencity scaled up abit for sound
+			playsound(U.loc, 'modular_sand/sound/lewd/vibrate.ogg', (intencity+5), 1, -1) //vibe intencity scaled up abit for sound
 
 
 			switch(mode)
@@ -140,7 +134,7 @@ Code:
 
 
 
-	playsound(src, 'modular_eros/sound/lewd/vibrate.ogg', 40, 1, -1)
+	playsound(src, 'modular_sand/sound/lewd/vibrate.ogg', 40, 1, -1)
 	if(style == "long") //haha vibrator go brrrrrrr
 		icon_state = "vibing"
 
