@@ -88,14 +88,14 @@ GLOBAL_LIST_INIT(pred_release_sounds, list(
 		"Pred Escape" = 'sound/vore/pred/escape.ogg',
 		"Splatter" = 'sound/effects/splat.ogg',
 		//Extreme SPLURT degeneracy starts here
-		"Fart" = 'modular_eros/sound/voice/farts/fart.ogg',
-		"Fart 1" = 'modular_eros/sound/voice/farts/fart1.ogg',
-		"Fart 2" = 'modular_eros/sound/voice/farts/fart2.ogg',
-		"Fart 3" = 'modular_eros/sound/voice/farts/fart3.ogg',
-		"Fart 4" = 'modular_eros/sound/voice/farts/fart4.ogg',
-		"Fart 5" = 'modular_eros/sound/voice/farts/fart5.ogg',
-		"Fart 6" = 'modular_eros/sound/voice/farts/fart6.ogg',
-		"Fart 7" = 'modular_eros/sound/voice/farts/fart7.ogg',
+		"Fart" = 'modular_splurt/sound/voice/farts/fart.ogg',
+		"Fart 1" = 'modular_splurt/sound/voice/farts/fart1.ogg',
+		"Fart 2" = 'modular_splurt/sound/voice/farts/fart2.ogg',
+		"Fart 3" = 'modular_splurt/sound/voice/farts/fart3.ogg',
+		"Fart 4" = 'modular_splurt/sound/voice/farts/fart4.ogg',
+		"Fart 5" = 'modular_splurt/sound/voice/farts/fart5.ogg',
+		"Fart 6" = 'modular_splurt/sound/voice/farts/fart6.ogg',
+		"Fart 7" = 'modular_splurt/sound/voice/farts/fart7.ogg',
 		"None" = null
 		))
 
@@ -109,13 +109,13 @@ GLOBAL_LIST_INIT(prey_release_sounds, list(
 		"Pred Escape" = 'sound/vore/prey/escape.ogg',
 		"Splatter" = 'sound/effects/splat.ogg',
 		//Extreme SPLURT degeneracy starts here
-		"Fart" = 'modular_eros/sound/voice/farts/fart.ogg',
-		"Fart 1" = 'modular_eros/sound/voice/farts/fart1.ogg',
-		"Fart 2" = 'modular_eros/sound/voice/farts/fart2.ogg',
-		"Fart 3" = 'modular_eros/sound/voice/farts/fart3.ogg',
-		"Fart 4" = 'modular_eros/sound/voice/farts/fart4.ogg',
-		"Fart 5" = 'modular_eros/sound/voice/farts/fart5.ogg',
-		"Fart 6" = 'modular_eros/sound/voice/farts/fart6.ogg',
-		"Fart 7" = 'modular_eros/sound/voice/farts/fart7.ogg',
+		"Fart" = 'modular_splurt/sound/voice/farts/fart.ogg',
+		"Fart 1" = 'modular_splurt/sound/voice/farts/fart1.ogg',
+		"Fart 2" = 'modular_splurt/sound/voice/farts/fart2.ogg',
+		"Fart 3" = 'modular_splurt/sound/voice/farts/fart3.ogg',
+		"Fart 4" = 'modular_splurt/sound/voice/farts/fart4.ogg',
+		"Fart 5" = 'modular_splurt/sound/voice/farts/fart5.ogg',
+		"Fart 6" = 'modular_splurt/sound/voice/farts/fart6.ogg',
+		"Fart 7" = 'modular_splurt/sound/voice/farts/fart7.ogg',
 		"None" = null
 		))
