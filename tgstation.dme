@@ -3929,6 +3929,8 @@
 #include "modular_sand\code\datums\interactions\lewd\lewd_interactions.dm"
 #include "modular_sand\code\datums\interactions\lewd\lewd_species.dm"
 #include "modular_sand\code\datums\interactions\lewd\objects.dm"
+#include "modular_eros\code\game\object\items\weaponry\melee.dm" //Why its here? Because cant get CUM_TARGET and another lewd code
+//Maybe we need replace all EROS #include stuff in end?
 #include "modular_sand\code\datums\mood_events\generic_negative_events.dm"
 #include "modular_sand\code\datums\mood_events\needs_events.dm"
 #include "modular_sand\code\datums\mutations\combined.dm"
