@@ -1,0 +1,8 @@
+author: SandPoot
+delete-after: true
+changes:
+  - rscadd: Dressers now have storage.
+  - rscadd: Roundstart dressers start with 5 of each underwear type.
+  - refactor: Stuff who have rustle_sound as FALSE will never produce any rustle sound
+      anymore.
+  - soundadd: Funny minecraft barrel sounds.
