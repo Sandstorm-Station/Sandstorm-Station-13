@@ -257,7 +257,6 @@
 	write_log_user = "gave head to"
 	write_log_target = "was given head by"
 	interaction_sound = null
-	user_not_tired = TRUE
 	max_distance = 1
 
 /datum/interaction/lewd/oral/display_interaction(mob/living/carbon/human/user, mob/living/carbon/human/target)
@@ -268,7 +267,6 @@
 	description = "Suck them off."
 	require_target_vagina = REQUIRE_NONE
 	require_target_penis = REQUIRE_EXPOSED
-	target_not_tired = TRUE
 
 /datum/interaction/lewd/oral/blowjob/display_interaction(mob/living/carbon/human/user, mob/living/carbon/human/target)
 	user.do_oral(target, "penis")
@@ -281,7 +279,6 @@
 	write_log_user = "fucked"
 	write_log_target = "was fucked by"
 	interaction_sound = null
-	user_not_tired = TRUE
 	max_distance = 1
 
 /datum/interaction/lewd/fuck/display_interaction(mob/living/carbon/human/user, mob/living/carbon/human/target)
@@ -292,7 +289,6 @@
 	description = "Fuck their ass."
 	require_target_vagina = REQUIRE_NONE
 	require_target_anus = REQUIRE_EXPOSED
-	user_not_tired = TRUE
 
 /datum/interaction/lewd/fuck/anal/display_interaction(mob/living/carbon/human/user, mob/living/carbon/human/target)
 	user.do_anal(target)
@@ -303,7 +299,6 @@
 	require_user_hands = TRUE
 	require_target_vagina = REQUIRE_EXPOSED
 	interaction_sound = null
-	user_not_tired = TRUE
 	max_distance = 1
 
 /datum/interaction/lewd/finger/display_interaction(mob/living/carbon/human/user, mob/living/carbon/human/target)
@@ -315,7 +310,6 @@
 	interaction_sound = null
 	require_user_hands = TRUE
 	require_target_anus = REQUIRE_EXPOSED
-	user_not_tired = TRUE
 	max_distance = 1
 
 /datum/interaction/lewd/fingerass/display_interaction(mob/living/carbon/human/user, mob/living/carbon/human/target)
@@ -327,7 +321,6 @@
 	description = "Fuck their mouth."
 	interaction_sound = null
 	require_target_mouth = TRUE
-	user_not_tired = TRUE
 	require_user_penis = REQUIRE_EXPOSED
 	max_distance = 1
 
@@ -340,7 +333,6 @@
 	interaction_sound = null
 	require_user_penis = REQUIRE_EXPOSED
 	require_target_mouth = TRUE
-	user_not_tired = TRUE
 	max_distance = 1
 
 /datum/interaction/lewd/throatfuck/display_interaction(mob/living/carbon/human/user, mob/living/carbon/human/target)
@@ -352,7 +344,6 @@
 	interaction_sound = null
 	require_user_hands = TRUE
 	require_target_penis = REQUIRE_EXPOSED
-	target_not_tired = TRUE
 	max_distance = 1
 
 /datum/interaction/lewd/handjob/display_interaction(mob/living/carbon/human/user, mob/living/carbon/human/target)
@@ -363,7 +354,6 @@
 	description = "Fuck their breasts."
 	interaction_sound = null
 	require_user_penis = REQUIRE_EXPOSED
-	user_not_tired = TRUE
 	require_target_breasts = REQUIRE_EXPOSED
 	max_distance = 1
 
@@ -376,8 +366,6 @@
 	interaction_sound = null
 	require_user_vagina = REQUIRE_EXPOSED
 	require_target_penis = REQUIRE_EXPOSED
-	user_not_tired = TRUE
-	target_not_tired = TRUE
 	max_distance = 1
 
 /datum/interaction/lewd/mount/display_interaction(mob/living/carbon/human/user, mob/living/carbon/human/target)
@@ -389,8 +377,6 @@
 	interaction_sound = null
 	require_user_anus = REQUIRE_EXPOSED
 	require_target_penis = REQUIRE_EXPOSED
-	user_not_tired = TRUE
-	target_not_tired = TRUE
 	max_distance = 1
 
 /datum/interaction/lewd/mountass/display_interaction(mob/living/carbon/human/user, mob/living/carbon/human/target)
@@ -402,7 +388,6 @@
 	interaction_sound = null
 	require_target_vagina = REQUIRE_EXPOSED
 	require_user_vagina = REQUIRE_EXPOSED
-	user_not_tired = TRUE
 	max_distance = 1
 
 /datum/interaction/lewd/tribadism/display_interaction(mob/living/carbon/human/user, mob/living/carbon/human/target)
@@ -414,7 +399,6 @@
 	interaction_sound = null
 	require_user_mouth = TRUE
 	require_target_anus = REQUIRE_EXPOSED
-	user_not_tired = TRUE
 	max_distance = 1
 
 /datum/interaction/lewd/rimjob/display_interaction(mob/living/carbon/human/user, mob/living/carbon/human/target)
@@ -426,7 +410,6 @@
 	interaction_sound = null
 	require_target_mouth = TRUE
 	require_user_anus = REQUIRE_EXPOSED
-	user_not_tired = TRUE
 	max_distance = 1
 
 /datum/interaction/lewd/mountface/display_interaction(mob/living/carbon/human/user, mob/living/carbon/human/target)
@@ -475,7 +458,6 @@
 	require_target_num_feet = 1
 	require_target_feet = REQUIRE_ANY
 	require_user_penis = REQUIRE_EXPOSED
-	user_not_tired = TRUE
 	max_distance = 1
 
 /datum/interaction/lewd/footfuck/display_interaction(mob/living/carbon/human/user, mob/living/carbon/human/target)
@@ -496,7 +478,6 @@
 	require_user_num_feet = 1
 	require_user_feet = REQUIRE_ANY
 	require_target_penis = REQUIRE_EXPOSED
-	target_not_tired = TRUE
 	max_distance = 1
 
 /datum/interaction/lewd/footjob/display_interaction(mob/living/carbon/human/user, mob/living/carbon/human/target)
@@ -526,7 +507,6 @@
 	require_user_bottomless = TRUE
 	require_target_mouth = TRUE
 	interaction_sound = null
-	user_not_tired = TRUE
 	write_log_user = "thigh-trapped"
 	write_log_target = "was smothered by"
 

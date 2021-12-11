@@ -135,6 +135,7 @@
 	subcategory = CAT_TOOL
 	category = CAT_MISCELLANEOUS
 
+/*
 //Hyper stuff
 //Bouquets
 /datum/crafting_recipe/mixedbouquet
@@ -162,3 +163,4 @@
 	result = /obj/item/bouquet/rose
 	reqs = list(/obj/item/grown/rose = 6)
 	category = CAT_MISCELLANEOUS
+*/

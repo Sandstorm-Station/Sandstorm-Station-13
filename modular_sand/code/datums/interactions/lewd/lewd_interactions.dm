@@ -12,8 +12,8 @@
 	write_log_user = "ass-slapped"
 	write_log_target = "was ass-slapped by"
 
-	var/user_not_tired
-	var/target_not_tired
+	var/user_not_tired = FALSE
+	var/target_not_tired = FALSE
 	//Avoid using these!
 	//Should only really use in case there are no related organs
 	//but you want the target or user to be topless/bottomless.
@@ -70,13 +70,11 @@
 
 /datum/interaction/lewd/evaluate_user(mob/living/user, silent = TRUE, action_check = TRUE)
 	if(..(user, silent, action_check))
-		/* Temporarily closed
 		if(user_not_tired && user.get_refraction_dif())
 			if(!silent) //bye spam
 				to_chat(user, "<span class='warning'>You're still exhausted from the last time. You need to wait [DisplayTimeText(user.get_refraction_dif(), TRUE)] until you can do that!</span>")
 			if(action_check)
 				return FALSE
-		*/
 
 		if(require_user_bottomless && !user.is_bottomless())
 			if(!silent)
@@ -483,7 +481,7 @@
 
 		if(require_target_bottomless && !target.is_bottomless())
 			if(!silent)
-				to_chat(user, "<span class='warning'>Their clothes are in the way.</span>")
+				to_chat(user, "<span class='warning'>Their pants are in the way.</span>")
 			return FALSE
 
 		if(require_target_topless && !target.is_topless())
@@ -498,11 +496,6 @@
 					if(!silent)
 						to_chat(user, "<span class='warning'>For some reason, you don't want to do this to [target].</span>")
 					return FALSE
-
-		if(require_target_bottomless && !target.is_bottomless())
-			if(!silent)
-				to_chat(user, "<span class='warning'>Their pants are in the way.</span>")
-			return FALSE
 
 		if(require_ooc_consent)
 			if((!target.ckey) || (target.client && target.client.prefs.toggles & VERB_CONSENT)) //sneaky change, let hell go through earth
