@@ -442,7 +442,7 @@
 
 /mob/living/proc/has_belly(var/nintendo = REQUIRE_ANY)
 	var/mob/living/carbon/C = src
-	if(has_butt && !istype(C))
+	if(has_belly && !istype(C))
 		return TRUE
 	if(istype(C))
 		var/obj/item/organ/genital/peepee = C.getorganslot(ORGAN_SLOT_BELLY)

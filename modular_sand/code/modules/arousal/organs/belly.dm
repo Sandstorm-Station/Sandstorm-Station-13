@@ -95,4 +95,5 @@
 		color = "#[D.features["belly_color"]]"
 	size = D.features["belly_size"]
 	prev_size = size
+	size_cached = size
 	toggle_visibility(D.features["belly_visibility"], FALSE)

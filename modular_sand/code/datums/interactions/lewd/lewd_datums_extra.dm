@@ -168,3 +168,18 @@
 
 /datum/interaction/lewd/remove_other_sounding/display_interaction(mob/living/carbon/human/user, mob/living/carbon/human/target)
 	user.remove_sounding(target)
+
+/datum/interaction/lewd/deflate_belly
+	command = "deflate_belly"
+	description = "Deflate belly"
+	require_user_belly = REQUIRE_EXPOSED
+	interaction_sound = null
+	max_distance = 0
+	user_is_target = TRUE
+	write_log_user = "deflated their belly"
+	write_log_target = null
+
+/datum/interaction/lewd/deflate_belly/display_interaction(mob/living/carbon/user)
+	var/obj/item/organ/genital/belly/gut = user.getorganslot(ORGAN_SLOT_BELLY)
+	if(gut)
+		gut.modify_size(-1)
