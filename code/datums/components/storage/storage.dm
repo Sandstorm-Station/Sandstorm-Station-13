@@ -374,7 +374,8 @@
 		if(check_locked(null, M, TRUE))
 			return FALSE
 		if(dump_destination.storage_contents_dump_act(src, M))
-			playsound(A, "rustle", 50, 1, -5)
+			if(rustle_sound)
+				playsound(A, "rustle", 50, 1, -5)
 			A.do_squish(0.8, 1.2)
 			return TRUE
 	return FALSE
@@ -443,7 +444,8 @@
 				return
 			if(A.loc != M)
 				return
-			playsound(A, "rustle", 50, 1, -5)
+			if(rustle_sound)
+				playsound(A, "rustle", 50, 1, -5)
 			A.do_jiggle()
 			if(istype(over_object, /atom/movable/screen/inventory/hand))
 				var/atom/movable/screen/inventory/hand/H = over_object
