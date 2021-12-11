@@ -134,9 +134,9 @@
 	if(ishuman(src))
 		var/mob/living/carbon/human/validmob = src
 		if(validmob?.dna?.features["taur"] == "Naga" || validmob?.dna?.features["taur"] == "Tentacle")
-			visible_message("<span class='notice'>[validmob] bounds over [validmob]'s tail.</span>", "<span class='notice'>You jump over [target]'s thick tail.</span>")
+			visible_message("<span class='notice'>[validmob] bounds over [target]'s tail.</span>", "<span class='notice'>You jump over [target]'s thick tail.</span>")
 		else
-			visible_message("<span class='notice'>[validmob] runs between [validmob]'s legs.</span>", "<span class='notice'>You run between [target]'s legs.</span>")
+			visible_message("<span class='notice'>[validmob] runs between [target]'s legs.</span>", "<span class='notice'>You run between [target]'s legs.</span>")
 
 //Proc for scaling stamina damage on size difference
 /mob/living/carbon/proc/sizediffStamLoss(mob/living/carbon/target)
