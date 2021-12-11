@@ -3,7 +3,6 @@
 	description = "Rub your penis against theirs"
 	require_user_penis = REQUIRE_EXPOSED
 	require_target_penis = REQUIRE_EXPOSED
-	user_not_tired = TRUE
 	max_distance = 1
 	write_log_user = "frotted"
 	write_log_target = "was frotted by"
@@ -22,7 +21,6 @@
 	interaction_sound = null
 	require_user_hands = TRUE
 	require_user_penis = REQUIRE_EXPOSED
-	user_not_tired = TRUE
 	user_is_target = TRUE
 	max_distance = 0
 	write_log_user = "jerked off"
@@ -37,7 +35,6 @@
 	interaction_sound = null
 	require_user_hands = TRUE
 	require_user_anus = REQUIRE_EXPOSED
-	user_not_tired = TRUE
 	user_is_target = TRUE
 	max_distance = 0
 	write_log_user = "fingered self"
@@ -52,7 +49,6 @@
 	require_user_hands = TRUE
 	require_user_vagina = REQUIRE_EXPOSED
 	interaction_sound = null
-	user_not_tired = TRUE
 	user_is_target = TRUE
 	max_distance = 0
 	write_log_user = "fingered own pussy"
