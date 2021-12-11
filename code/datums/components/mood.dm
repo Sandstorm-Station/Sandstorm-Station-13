@@ -140,6 +140,7 @@
 			screen_obj.icon_state = "mood_entrance"
 		else
 			screen_obj.icon_state = "mood[mood_level]"
+		screen_obj_sanity.icon_state = "sanity[sanity_level]" // Sandstorm sanity vis
 
 /datum/component/mood/process() //Called on SSobj process
 	if(QDELETED(parent)) // workaround to an obnoxious sneaky periodical runtime.
@@ -241,7 +242,7 @@
 			free_maluses += malus
 			malus = null
 
-	//update_mood_icon()
+	update_mood_icon() // Sandstorm uncommented
 
 /datum/component/mood/proc/setInsanityEffect(newval)//More code so that the previous proc works
 	if(newval == insanity_effect)
@@ -299,7 +300,9 @@
 	var/mob/living/owner = parent
 	var/datum/hud/hud = owner.hud_used
 	screen_obj = new
+	screen_obj_sanity = new // Sandstorm sanity
 	hud.infodisplay += screen_obj
+	hud.infodisplay += screen_obj_sanity // Sandstorm sanity
 	RegisterSignal(hud, COMSIG_PARENT_QDELETING, .proc/unmodify_hud)
 	RegisterSignal(screen_obj, COMSIG_CLICK, .proc/hud_click)
 
@@ -310,7 +313,9 @@
 	var/datum/hud/hud = owner.hud_used
 	if(hud && hud.infodisplay)
 		hud.infodisplay -= screen_obj
+		hud.infodisplay -= screen_obj_sanity // Sandstorm sanity
 	QDEL_NULL(screen_obj)
+	QDEL_NULL(screen_obj_sanity) // Sandstorm sanity
 
 /datum/component/mood/proc/hud_click(datum/source, location, control, params, mob/user)
 	print_mood(user)

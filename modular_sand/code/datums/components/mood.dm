@@ -1,3 +1,6 @@
+/datum/component/mood
+	var/atom/movable/screen/sanity/screen_obj_sanity
+
 /datum/component/mood/proc/HandleThirst(mob/living/L)
 	if(HAS_TRAIT(L, TRAIT_NOTHIRST))
 		return FALSE //no mood events for thirst
