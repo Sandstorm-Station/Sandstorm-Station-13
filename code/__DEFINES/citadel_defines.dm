@@ -71,6 +71,10 @@
 #define BUTT_SIZE_DEF		1
 #define BUTT_SIZE_MAX		5  //butt genitals are special in that they have caps. if there's the event there's even bigger butt sprites, raise this number.
 
+#define BELLY_SIZE_MIN		0
+#define BELLY_SIZE_DEF		1
+#define BELLY_SIZE_MAX		7
+
 //visibility toggles defines to avoid errors typos code errors.
 #define GEN_VISIBLE_ALWAYS "Always visible"
 #define GEN_VISIBLE_NO_CLOTHES "Hidden by clothes"
@@ -112,6 +116,7 @@
 #define VORE_EXAMINE		(1<<14)
 #define TRASH_FORCEFEED		(1<<15)
 #define BUTT_ENLARGEMENT	(1<<16)
+#define BELLY_INFLATION		(1<<17)
 //Note: reminder, if you're a coder adding more bitflags here in the event we add more horny things, the maximum is (1<<23).
 #define TOGGLES_CITADEL 0
 

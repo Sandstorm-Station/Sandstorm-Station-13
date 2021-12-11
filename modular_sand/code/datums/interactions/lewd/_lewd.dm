@@ -65,6 +65,8 @@
 	var/has_vagina = FALSE
 	var/has_anus = TRUE
 	var/has_breasts = FALSE
+	var/has_butt = FALSE
+	var/has_belly = FALSE
 	var/anus_exposed = FALSE
 	var/last_partner
 	var/last_orifice
@@ -410,6 +412,54 @@
 						return FALSE
 					else
 						return TRUE
+				else
+					return TRUE
+	return FALSE
+
+/mob/living/proc/has_butt(var/nintendo = REQUIRE_ANY)
+	var/mob/living/carbon/C = src
+	if(has_butt && !istype(C))
+		return TRUE
+	if(istype(C))
+		var/obj/item/organ/genital/peepee = C.getorganslot(ORGAN_SLOT_BUTT)
+		if(peepee)
+			switch(nintendo)
+				if(REQUIRE_ANY)
+					return TRUE
+				if(REQUIRE_EXPOSED)
+					if(peepee.is_exposed())
+						return TRUE
+					else
+						return FALSE
+				if(REQUIRE_UNEXPOSED)
+					if(!peepee.is_exposed())
+						return TRUE
+					else
+						return FALSE
+				else
+					return TRUE
+	return FALSE
+
+/mob/living/proc/has_belly(var/nintendo = REQUIRE_ANY)
+	var/mob/living/carbon/C = src
+	if(has_butt && !istype(C))
+		return TRUE
+	if(istype(C))
+		var/obj/item/organ/genital/peepee = C.getorganslot(ORGAN_SLOT_BELLY)
+		if(peepee)
+			switch(nintendo)
+				if(REQUIRE_ANY)
+					return TRUE
+				if(REQUIRE_EXPOSED)
+					if(peepee.is_exposed())
+						return TRUE
+					else
+						return FALSE
+				if(REQUIRE_UNEXPOSED)
+					if(!peepee.is_exposed())
+						return TRUE
+					else
+						return FALSE
 				else
 					return TRUE
 	return FALSE
