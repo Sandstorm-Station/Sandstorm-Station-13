@@ -6,6 +6,7 @@
 #define CUM_TARGET_BREASTS "breasts"
 #define CUM_TARGET_FEET "feet"
 #define CUM_TARGET_PENIS "penis"
+#define CUM_TARGET_BELLY "belly"
 //Weird defines go here
 #define CUM_TARGET_EARS "ears"
 #define CUM_TARGET_EYES "eyes"
@@ -556,6 +557,13 @@
 							message = "cums onto \the <b>[partner]</b>'s breasts."
 						else
 							message = "cums on \the <b>[partner]</b>'s chest and neck."
+					if(CUM_TARGET_BELLY)
+						if(partner.has_belly(REQUIRE_EXPOSED))
+							message = "cums into the <b>[partner]</b>'s navel, [pick(list("making it into a massive pond of jizz", "[p_their()] spunk drooling out of it"))]."
+							if(partner_carbon_check)
+								target_gen = c_partner.getorganslot(ORGAN_SLOT_VAGINA)
+						else
+							message = "cums on the <b>[partner]</b>'s midsection."
 					if(NUTS_TO_FACE)
 						if(partner.has_mouth() && partner.mouth_is_free())
 							message = "vigorously ruts their nutsack into \the <b>[partner]</b>'s mouth before shooting their thick, sticky jizz all over their eyes and hair."
@@ -636,6 +644,13 @@
 							message = "squirts onto \the <b>[partner]</b>'s breasts."
 						else
 							message = "squirts on \the <b>[partner]</b>'s chest and neck."
+					if(CUM_TARGET_BELLY)
+						if(partner.has_belly(REQUIRE_EXPOSED))
+							message = "cums into the <b>[partner]</b>'s navel, [pick(list("making it into a massive pond of jizz", "[p_their()] spunk drooling out of it"))]."
+							if(partner_carbon_check)
+								target_gen = c_partner.getorganslot(ORGAN_SLOT_BELLY)
+						else
+							message = "cums on the <b>[partner]</b>'s midsection."
 					if(NUTS_TO_FACE)
 						if(partner.has_mouth() && partner.mouth_is_free())
 							message = "vigorously ruts their clit into \the <b>[partner]</b>'s mouth before shooting their femcum all over their eyes and hair."
@@ -1604,6 +1619,25 @@
 						'modular_sand/sound/interactions/foot_wet2.ogg'), 70, 1, -1)
 	visible_message(message = "<span class='lewd'><b>\The [src]</b> [message]</span>", ignored_mobs = get_unconsenting())
 	partner.handle_post_sex(NORMAL_LUST, CUM_TARGET_FEET, src)
+
+/mob/living/proc/do_bellyfuck(mob/living/partner)
+	var/message
+
+	if(is_fucking(partner, CUM_TARGET_BELLY))
+		message = "[pick(
+			"pounds \the <b>[partner]</b>'s belly.",
+			"shoves their dick deep into \the <b>[partner]</b>'s soft tummy",
+			"thrusts in and out of \the <b>[partner]</b>'s navel.",
+			"goes balls deep into \the <b>[partner]</b>'s gut over and over again.")]"
+	else
+		message = "pulls his cock up and slides it into \the <b>[partner]</b>'s receiving navel."
+		set_is_fucking(partner, CUM_TARGET_BELLY, getorganslot(ORGAN_SLOT_PENIS) ? getorganslot(ORGAN_SLOT_PENIS) : null)
+
+	playlewdinteractionsound(loc, pick('modular_sand/sound/interactions/champ1.ogg',
+						'modular_sand/sound/interactions/champ2.ogg'), 50, 1, -1)
+	visible_message(message = "<span class='lewd'><b>\The [src]</b> [message]</span>", ignored_mobs = get_unconsenting())
+	handle_post_sex(NORMAL_LUST, CUM_TARGET_BELLY, partner)
+	//partner.handle_post_sex(NORMAL_LUST, null, src) //don't think we need it fo dis one
 
 /mob/living/proc/get_shoes(var/singular = FALSE)
 	var/obj/A = get_item_by_slot(SLOT_SHOES)
