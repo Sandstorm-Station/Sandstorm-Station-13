@@ -183,3 +183,15 @@
 	var/obj/item/organ/genital/belly/gut = user.getorganslot(ORGAN_SLOT_BELLY)
 	if(gut)
 		gut.modify_size(-1)
+
+/datum/interaction/lewd/nuzzle_belly
+	command = "nuzzle_belly"
+	description = "Nuzzle belly"
+	require_target_belly = REQUIRE_EXPOSED
+	interaction_sound = null
+	max_distance = 1
+	write_log_target = "got their belly nuzzled by"
+	write_log_user = null
+
+/datum/interaction/lewd/nuzzle_belly/display_interaction(mob/living/user, mob/living/target)
+	user.nuzzle_belly(target)

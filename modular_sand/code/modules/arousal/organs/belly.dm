@@ -40,16 +40,16 @@
 	if(size < 0)//I don't actually know what round() does to negative numbers, so to be safe!!fixed
 		if(owner)
 			to_chat(owner, "<span class='warning'>You feel your [pick(belly_names)] go completely flat.</span>")
-		//QDEL_IN(src, 1) //Nah why
+		QDEL_IN(src, 1)
 		return
 
 	if(owner) //Because byond doesn't count from 0, I have to do this.
 		var/mob/living/carbon/human/H = owner
 		var/r_prev_size = round(prev_size)
 		if (rounded_size > r_prev_size)
-			to_chat(H, "<span class='warning'>Your guts [pick("swell up to", "gurgle into", "expand into", "plump up into", "grow eagerly into", "fatten up into")] a larger pair.</span>")
+			to_chat(H, "<span class='warning'>Your guts [pick("swell up to", "gurgle into", "expand into", "plump up into", "grow eagerly into", "fatten up into", "distend into")] a larger midsection.</span>")
 		else if (rounded_size < r_prev_size)
-			to_chat(H, "<span class='warning'>Your guts [pick("shrink down to", "decrease into", "wobble down into", "diminish into", "deflate into", "contracts into")] a smaller pair.</span>")
+			to_chat(H, "<span class='warning'>Your guts [pick("shrink down to", "decrease into", "wobble down into", "diminish into", "deflate into", "contracts into")] a smaller midsection.</span>")
 
 /obj/item/organ/genital/belly/update_appearance()
 	var/lowershape = lowertext(shape)
