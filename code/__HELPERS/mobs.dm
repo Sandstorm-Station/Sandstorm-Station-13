@@ -92,6 +92,8 @@
 		init_sprite_accessory_subtypes(/datum/sprite_accessory/breasts, GLOB.breasts_shapes_list)
 	if(!GLOB.butt_shapes_list.len)
 		init_sprite_accessory_subtypes(/datum/sprite_accessory/butt, GLOB.butt_shapes_list)
+	if(!GLOB.belly_shapes_list.len)
+		init_sprite_accessory_subtypes(/datum/sprite_accessory/belly, GLOB.belly_shapes_list)
 	if(!GLOB.ipc_screens_list.len)
 		init_sprite_accessory_subtypes(/datum/sprite_accessory/screen, GLOB.ipc_screens_list)
 	if(!GLOB.ipc_antennas_list.len)
@@ -211,6 +213,11 @@
 		"has_butt"			= FALSE,
 		"butt_size"			= BUTT_SIZE_DEF,
 		"butt_color"		= pick("FFFFFF","7F7F7F", "7FFF7F", "7F7FFF", "FF7F7F", "7FFFFF", "FF7FFF", "FFFF7F"),
+		//Hyper's belly stuffs
+		"has_belly" 		= FALSE,
+		"belly_size"		= 1,
+		"belly_color" 		= pick("FFFFFF","7F7F7F", "7FFF7F", "7F7FFF", "FF7F7F", "7FFFFF", "FF7FFF", "FFFF7F"),
+
 
 
 		"balls_visibility"	= GEN_VISIBLE_NO_UNDIES,
@@ -218,6 +225,7 @@
 		"cock_visibility"	= GEN_VISIBLE_NO_UNDIES,
 		"vag_visibility"	= GEN_VISIBLE_NO_UNDIES,
 		"butt_visibility"	= GEN_VISIBLE_NO_UNDIES,
+		"belly_visibility"	= GEN_VISIBLE_NO_UNDIES,
 		"ipc_screen"		= snowflake_ipc_antenna_list ? pick(snowflake_ipc_antenna_list) : "None",
 		"ipc_antenna"		= "None",
 		"flavor_text"		= "",

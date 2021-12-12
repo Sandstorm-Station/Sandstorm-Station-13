@@ -293,6 +293,15 @@
 /datum/interaction/lewd/fuck/anal/display_interaction(mob/living/carbon/human/user, mob/living/carbon/human/target)
 	user.do_anal(target)
 
+/datum/interaction/lewd/fuck/belly
+	command = "fuckbelly"
+	description = "Fuck their belly."
+	require_target_vagina = REQUIRE_NONE
+	require_target_belly = REQUIRE_EXPOSED
+
+/datum/interaction/lewd/fuck/belly/display_interaction(mob/living/carbon/human/user, mob/living/carbon/human/target)
+	user.do_bellyfuck(target)
+
 /datum/interaction/lewd/finger
 	command = "finger"
 	description = "Finger their pussy."

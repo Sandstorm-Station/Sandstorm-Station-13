@@ -278,3 +278,17 @@
 			new /obj/item/sounding/used_sounding(user.loc)
 		else
 			to_chat(src, "<span class='warning'>[t_He] needs a sounding rod for that!<span>")
+
+/mob/living/proc/nuzzle_belly(mob/living/target)
+	var/message
+	var/u_His = p_their()
+	var/list/belly_names = list("stomach", "belly", "gut", "midsection", "rolls")
+	var/list/nuzzles = list(
+		"rubs [u_His] face all accross [target]'s [pick(belly_names)]",
+		"nuzzles [target]'s [pick(belly_names)][pick(list(" lovingly", ""))]",
+		"shoves [u_His] face into [target]'s [pick(belly_names)] and gives it kisses all over",
+		"licks right into [target]'s [pick(list("belly button", "navel"))]"
+		)
+
+	message = "<span class='lewd'><b>\The [src]</b> [pick(nuzzles)]. </span>"
+	visible_message(message, ignored_mobs = get_unconsenting())
