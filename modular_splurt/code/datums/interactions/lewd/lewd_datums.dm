@@ -10,12 +10,11 @@
 	require_user_anus = REQUIRE_EXPOSED
 	max_distance = 1
 	interaction_sound = null
-	user_is_target = TRUE //for testing
 	write_log_target = "got facefarted by"
 	write_log_user = null
 
-/datum/interaction/lewd/unholy/do_facefart/display_interaction(mob/living/user)
-	user.do_facefart(user)
+/datum/interaction/lewd/unholy/do_facefart/display_interaction(mob/living/user, mob/living/target)
+	user.do_facefart(target)
 
 /datum/interaction/lewd/unholy/do_crotchfart
 	command = "do_crotchfart"
@@ -23,12 +22,11 @@
 	require_user_anus = REQUIRE_EXPOSED
 	max_distance = 1
 	interaction_sound = null
-	user_is_target = TRUE //for testing
 	write_log_target = "got crotchfarted by"
 	write_log_user = null
 
-/datum/interaction/lewd/unholy/do_crotchfart/display_interaction(mob/living/user)
-	user.do_crotchfart(user)
+/datum/interaction/lewd/unholy/do_crotchfart/display_interaction(mob/living/user, mob/living/target)
+	user.do_crotchfart(target)
 
 /datum/interaction/lewd/unholy/do_fartfuck
 	command = "do_fartfuck"
