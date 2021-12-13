@@ -1,11 +1,11 @@
-/mob/living/carbon/human/proc/pick_receiving_organ(mob/living/L, title = "Climax")
+/mob/living/carbon/human/proc/pick_receiving_organ(mob/living/L, flag = CAN_CUM_INTO, title = "Climax")
 	if (!iscarbon(L))
 		return
 	var/mob/living/carbon/C = L
 	var/list/receivers_list
 	var/list/other_worn = C.get_equipped_items()
 	for(var/obj/item/organ/genital/G in C.internal_organs)
-		if((G.genital_flags & CAN_CUM_INTO) && G.is_exposed(other_worn)) //filter out what you can't cum into
+		if((G.genital_flags & flag) && G.is_exposed(other_worn)) //filter out what you can't cum into
 			LAZYADD(receivers_list, G)
 	if(LAZYLEN(receivers_list))
 		var/obj/item/organ/genital/ret_organ = input(src, "in what hole?", title, null) as null|obj in receivers_list

@@ -1,2 +1,2 @@
 /obj/item/organ/genital
-	var/obj/item/equipment
+	var/list/obj/item/equipment = list()

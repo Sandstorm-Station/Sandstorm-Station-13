@@ -32,6 +32,8 @@
 	if(!length(nonconpref)) nonconpref = "Ask"
 	vorepref = sanitize_text(S["vore_pref"], "Ask")
 	if(!length(vorepref)) vorepref = "Ask"
+	unholypref = sanitize_text(S["unholypref"], "No") //I AM MENTAL I AM MAD I AM INSANE
+	if(!length(unholypref)) unholypref = "No"
 	extremepref = sanitize_text(S["extremepref"], "No") //god has forsaken me
 	if(!length(extremepref))
 		extremepref = "No"
@@ -69,6 +71,7 @@
 	WRITE_FILE(S["erp_pref"], erppref)
 	WRITE_FILE(S["noncon_pref"], nonconpref)
 	WRITE_FILE(S["vore_pref"], vorepref)
+	WRITE_FILE(S["unholypref"], unholypref)
 	WRITE_FILE(S["extremepref"], extremepref)
 	WRITE_FILE(S["extremeharm"], extremeharm)
 	WRITE_FILE(S["enable_personal_chat_color"], enable_personal_chat_color)

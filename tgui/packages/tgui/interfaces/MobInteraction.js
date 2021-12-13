@@ -115,6 +115,7 @@ const CharacterPrefsTab = (props, context) => {
     erp_pref,
     noncon_pref,
     vore_pref,
+    unholy_pref,
     extreme_pref,
     extreme_harm,
   } = data;
@@ -140,6 +141,13 @@ const CharacterPrefsTab = (props, context) => {
         color={vore_pref === 2 ? "yellow" : vore_pref === 1 ? "green" : "red"}
         onClick={() => act('char_pref', {
           char_pref: 'vore_pref',
+        })} />
+      <Button
+        content="Unholy ERP verbs"
+        icon={unholy_pref === 2 ? "question" : unholy_pref === 1 ? "check" : "times"}
+        color={unholy_pref === 2 ? "yellow" : unholy_pref === 1 ? "green" : "red"}
+        onClick={() => act('char_pref', {
+          char_pref: 'unholy_pref',
         })} />
       <Button
         content="Extreme ERP verbs"

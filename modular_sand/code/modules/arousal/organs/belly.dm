@@ -16,6 +16,7 @@
 	var/prev_size //former size value, to allow update_size() to early return should be there no significant changes.
 	var/sent_full_message	= TRUE //defaults to 1 since they're full to start
 	//var/inflatable			= FALSE //For inflation connoisseurs //This is handled with the BELLY_INFLATION cit toggle now
+	layer_index = BELLY_LAYER_INDEX
 
 
 /obj/item/organ/genital/belly/on_life()

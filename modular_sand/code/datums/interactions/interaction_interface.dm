@@ -133,6 +133,7 @@
 		data["erp_pref"] = 			prefs.erppref == "Ask" ? 2 : prefs.erppref == "Yes" ? 1 : 0
 		data["noncon_pref"] = 		prefs.nonconpref == "Ask" ? 2 : prefs.nonconpref == "Yes" ? 1 : 0
 		data["vore_pref"] = 		prefs.vorepref == "Ask" ? 2 : prefs.vorepref == "Yes" ? 1 : 0
+		data["unholy_pref"] =		prefs.vorepref == "Ask" ? 2 : prefs.unholypref == "Yes" ? 1 : 0
 		data["extreme_pref"] = 		prefs.extremepref == "Ask" ? 2 : prefs.extremepref == "Yes" ? 1 : 0
 		data["extreme_harm"] = 		prefs.extremeharm == "Yes" ? 1 : 0
 
@@ -212,6 +213,14 @@
 							prefs.vorepref = "No"
 						if("No")
 							prefs.vorepref = "Yes"
+				if("unholy_pref")
+					switch(prefs.unholypref)
+						if("Yes")
+							prefs.unholypref = "Ask"
+						if("Ask")
+							prefs.unholypref = "No"
+						if("No")
+							prefs.unholypref = "Yes"
 				if("extreme_pref")
 					switch(prefs.extremepref)
 						if("Yes")

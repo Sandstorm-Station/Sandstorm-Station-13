@@ -64,30 +64,31 @@ Code:
 	var/obj/item/organ/genital/picked_organ
 	var/mob/living/carbon/human/S = user
 	var/mob/living/carbon/human/T = C
-	picked_organ = S.pick_receiving_organ(T, "Vibrator")
+	picked_organ = S.pick_receiving_organ(T, HAS_EQUIPMENT, "Vibrator")
 	if(picked_organ)
 		C.visible_message("<span class='warning'>[user] is trying to attach [src] to [T]!</span>",\
 						"<span class='warning'>[user] is trying to put [src] on you!</span>")
 		if(!do_mob(user, C, 5 SECONDS))//warn them and have a delay of 5 seconds to apply.
 			return
 
-		if(style == "long" && !(picked_organ.name == "vagina")) //long vibrators dont fit on anything but vaginas, but small ones fit everywhere
+		if(style == "long" && !(picked_organ.type == /obj/item/organ/genital/vagina)) //long vibrators dont fit on anything but vaginas, but small ones fit everywhere
 			to_chat(user, "<span class='warning'>[src] is too big to fit there, use a smaller version.</span>")
 			return
 
-		if(!picked_organ.equipment)
+		if(!picked_organ.equipment[GENITAL_EQUIPMENT_VIBRATOR])
 			if(!(style == "long"))
 				to_chat(user, "<span class='love'>You attach [src] to [T]'s [picked_organ.name].</span>")
 			else
 				to_chat(user, "<span class='love'>You insert [src] into [T]'s [picked_organ.name].</span>")
 		else
-			to_chat(user, "<span class='notice'>They already have a [picked_organ.equipment.name] there.</span>")
+			to_chat(user, "<span class='notice'>They already have a [picked_organ.equipment[GENITAL_EQUIPMENT_VIBRATOR].name] there.</span>")
 			return
 
 		if(!user.transferItemToLoc(src, picked_organ)) //check if you can put it in
 			return
-		src.inside = TRUE
-		picked_organ.equipment = src
+		inside = TRUE
+		picked_organ.equipment[GENITAL_EQUIPMENT_VIBRATOR] = src
+		to_chat(user, "<span class='warning'>Done <b>Done</b></span>") //Will delete after testing
 
 	else
 		to_chat(user, "<span class='notice'>You don't see anywhere to attach this.</span>")
@@ -107,8 +108,8 @@ Code:
 		var/mob/living/carbon/U = G.owner
 
 		if(G)
-			switch(G.name) //just being fancy
-				if("breasts")
+			switch(G.type) //just being fancy
+				if(/obj/item/organ/genital/breasts)
 					to_chat(U, "<span class='love'>[src] vibrates against your nipples!</span>")
 				else
 					to_chat(U, "<span class='love'>[src] vibrates against your [G.name]!</span>")
