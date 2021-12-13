@@ -11,9 +11,10 @@
 #define TESTICLES_LAYER_INDEX	3
 #define GENITAL_LAYER_INDEX		4
 #define PENIS_LAYER_INDEX		5
-#define BREASTS_LAYER_INDEX		6
+#define BELLY_LAYER_INDEX		6
+#define BREASTS_LAYER_INDEX		7
 
-#define GENITAL_LAYER_INDEX_LENGTH 6 //keep it updated with each new index added, thanks.
+#define GENITAL_LAYER_INDEX_LENGTH 7 //keep it updated with each new index added, thanks.
 
 //genital flags
 #define GENITAL_BLACKLISTED		(1<<0) //for genitals that shouldn't be added to GLOB.genitals_list.
@@ -29,6 +30,7 @@
 #define UPDATE_OWNER_APPEARANCE	(1<<10)
 #define GENITAL_CAN_TAUR		(1<<11)
 #define CAN_CUM_INTO 			(1<<12) //Sandstorm change
+#define HAS_EQUIPMENT			(1<<13) //nother sandstorm change
 
 
 #define DEF_VAGINA_SHAPE	"Human"

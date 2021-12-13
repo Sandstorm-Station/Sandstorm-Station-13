@@ -83,14 +83,14 @@
 		T.air_update_turf()
 		*/
 
-		var/delay = 300 + rand(0, 150)
+		var/delay = 3 SECONDS
 		user.fart_cooldown = TRUE
 		addtimer(CALLBACK(GLOBAL_PROC, .proc/_fart_renew_msg, user), delay)
 
 /proc/_fart_renew_msg(mob/living/user)
 	if(QDELETED(user))
 		return
-	to_chat(user, "<span class='notice'>Your ass feels full, again.</span>")
+	//to_chat(user, "<span class='notice'>Your ass feels full, again.</span>") //full o shit you mean
 	user.fart_cooldown = 0
 
 // Hyperstation Emotes
