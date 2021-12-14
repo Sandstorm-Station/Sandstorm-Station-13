@@ -12,7 +12,7 @@
 	fluid_id = /datum/reagent/consumable/milk
 	fluid_rate = MILK_RATE
 	shape = DEF_BREASTS_SHAPE
-	genital_flags = CAN_MASTURBATE_WITH|CAN_CLIMAX_WITH|GENITAL_FUID_PRODUCTION|GENITAL_CAN_AROUSE|UPDATE_OWNER_APPEARANCE|GENITAL_UNDIES_HIDDEN|CAN_CUM_INTO
+	genital_flags = CAN_MASTURBATE_WITH|CAN_CLIMAX_WITH|GENITAL_FUID_PRODUCTION|GENITAL_CAN_AROUSE|UPDATE_OWNER_APPEARANCE|GENITAL_UNDIES_HIDDEN|CAN_CUM_INTO|HAS_EQUIPMENT
 	masturbation_verb = "massage"
 	arousal_verb = "Your breasts start feeling sensitive"
 	unarousal_verb = "Your breasts no longer feel sensitive"

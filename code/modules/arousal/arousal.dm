@@ -74,10 +74,10 @@
 	if(!target || !R)
 		return
 	var/turfing = isturf(target)
-	var/condomning = FALSE
+	var/condomning
 	if(istype(G, /obj/item/organ/genital/penis))
 		var/obj/item/organ/genital/penis/P = G
-		condomning = P.condom
+		condomning = P.equipment[GENITAL_EQUIPEMENT_CONDOM]
 	G.generate_fluid(R)
 	log_message("Climaxed using [G] with [target]", LOG_EMOTE)
 	if(condomning)

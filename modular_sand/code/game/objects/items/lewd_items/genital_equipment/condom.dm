@@ -1,19 +1,21 @@
 //Made by quotefox
 //Really needs some work, mainly because condoms should be a container for semen, but I dont know how that works yet. Feel free to improve upon.
 
-/obj/item/condom //TODO: fucking fix whatever the shit this it
+/obj/item/genital_equipment/condom //TODO: fucking fix whatever the shit this it
 	name 				= "condom"
 	desc 				= "Dont be silly, cover your willy!"
 	icon 				= 'modular_sand/icons/obj/condom.dmi'
 	throwforce			= 0
 	icon_state 			= "b_condom_wrapped"
-	var/unwrapped			= 0
-	w_class = WEIGHT_CLASS_TINY
-obj/item/condom/Initialize()
+	equipment_slot		= GENITAL_EQUIPEMENT_CONDOM
+	var/unwrapped		= 0
+	w_class 			= WEIGHT_CLASS_TINY
+
+/obj/item/genital_equipment/condom/Initialize()
 	create_reagents(300, DRAWABLE|NO_REACT)
 	..()
 
-obj/item/condom/update_icon()
+/obj/item/genital_equipment/condom/update_icon()
 	switch(reagents.total_volume)
 		if(0 to 49)
 			icon_state = "b_condom_inflated"
@@ -25,7 +27,7 @@ obj/item/condom/update_icon()
 			icon_state = "b_condom_inflated_huge"
 	..()
 
-/obj/item/condom/attack_self(mob/user) //Unwrap The Condom in hands
+/obj/item/genital_equipment/condom/attack_self(mob/user) //Unwrap The Condom in hands
 	if(!istype(user))
 		return
 	if(isliving(user))
@@ -42,31 +44,32 @@ obj/item/condom/update_icon()
 //			playsound(user, 'sound/lewd/latex.ogg', 50, 1, -1)
 //			return
 
-/obj/item/condom/attack(mob/living/carbon/C, mob/living/user) //apply the johnny on another person or yourself
+/obj/item/genital_equipment/condom/attack(mob/living/carbon/C, mob/living/user) //apply the johnny on another person or yourself
 
 	if(unwrapped == 0 )
 		to_chat(user, "<span class='notice'>You must remove the condom from the package first!</span>")
 		return
-	var/obj/item/organ/genital/penis/P
-	if(C.has_penis(REQUIRE_EXPOSED))
-		P = C.getorganslot(ORGAN_SLOT_PENIS)
-		if(P.condom)
-			to_chat(user, "<span class='notice'>They already have a condom on!</span>")
+	var/obj/item/organ/genital/penis/P = C.getorganslot(ORGAN_SLOT_PENIS)
+	if(C.has_penis(REQUIRE_EXPOSED) && (P?.genital_flags & HAS_EQUIPMENT))
+		if(P.equipment[GENITAL_EQUIPEMENT_CONDOM])
+			to_chat(user, "<span class='notice'>\The [C] already has condom on!</span>")
 			return
 		if(isliving(C) && isliving(user) && unwrapped == 1)
-			C.visible_message("<span class='warning'>[user] is trying to put a condom on [C]!</span>",\
-						"<span class='warning'>[user] is trying to put a condom on you!</span>")
+			C.visible_message("<span class='warning'>\The <b>[user]</b> is trying to put a condom on \the <b>[C]</b>!</span>",\
+						"<span class='warning'>\The <b>[user]</b> is trying to put a condom on you!</span>")
 		if(!do_mob(user, C, 4 SECONDS))	//if Failed to put the condom on
+			return
+		if(!user.transferItemToLoc(src, P)) //check if you can put it in
 			return
 		//var/mob/living/carbon/human/L = C
 		playsound(C, 'modular_sand/sound/lewd/latex.ogg', 50, 1, -1)
-		P.condom = TRUE //apply condom
-		/*P.colourtint = "87ceeb" //We'll do this later
+		P.equipment[GENITAL_EQUIPEMENT_CONDOM] = src //apply condom
+		/*
+		P.colourtint = "87ceeb" //We'll do this later
 		if(L)
 			L.update_genitals() // apply the colour!
 		*/
 		to_chat(C, "<span class='userlove'>Your penis feels more safe!</span>")
-		qdel(src)
 
 		return
 	to_chat(user, "<span class='notice'>You can't find anywhere to put the condom on.</span>") //Trying to put it on something without/or with a hidden
@@ -91,18 +94,18 @@ obj/item/condom/update_icon()
 		update_genitals()*/
 */
 
-/obj/item/condom/filled
+/obj/item/genital_equipment/condom/filled
 	name 				= "filled condom"
 	icon_state 			= "b_condom_inflated"
 	unwrapped			= 2
 	w_class = WEIGHT_CLASS_TINY
 
-/obj/item/condom/filled/throw_impact(atom/hit_atom)
+/obj/item/genital_equipment/condom/filled/throw_impact(atom/hit_atom)
 	. = ..()
 	if(!.) //if we're not being caught
 		splat(hit_atom)
 
-/obj/item/condom/filled/proc/splat(atom/movable/hit_atom)
+/obj/item/genital_equipment/condom/filled/proc/splat(atom/movable/hit_atom)
 	if(isliving(loc))
 		return
 	var/turf/T = get_turf(hit_atom)
@@ -110,15 +113,23 @@ obj/item/condom/update_icon()
 	playsound(T, "sound/misc/splort", 50, TRUE)
 	qdel(src)
 
+/obj/item/genital_equipment/condom/genital_remove_proccess(obj/item/organ/genital/G)
+	if(!G.equipment[GENITAL_EQUIPEMENT_CONDOM])
+		return
+	new /obj/item/clothing/head/condom(owner.loc)
+	G.equipment.Remove(GENITAL_EQUIPEMENT_CONDOM)
+	. = ..()
+	qdel(src)
+
 /mob/living/carbon/human/proc/condomclimax()
-	var/obj/item/condom/filled/C = new
+	var/obj/item/genital_equipment/condom/filled/C = new
 	var/obj/item/organ/genital/penis/P = getorganslot(ORGAN_SLOT_PENIS)
-	P.condom = FALSE
+	P.equipment.Remove(GENITAL_EQUIPEMENT_CONDOM)
 	C.loc = loc
 	return C
 
 	/*
-	var/obj/item/condom/filled/C = new
+	var/obj/item/genital_equipment/condom/filled/C = new
 	P.linked_organ.reagents.trans_to(C, P.linked_organ.reagents.total_volume)
 	C.loc = loc
 	P.condom = FALSE

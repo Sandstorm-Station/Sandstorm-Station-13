@@ -10,7 +10,7 @@
 	var/size_name 			= "flat"
 	var/statuscheck			= FALSE
 	shape					= "Pair" //Name doesn't matter unless we get more belly shapes
-	genital_flags 			= UPDATE_OWNER_APPEARANCE | GENITAL_UNDIES_HIDDEN | CAN_CUM_INTO
+	genital_flags 			= UPDATE_OWNER_APPEARANCE | GENITAL_UNDIES_HIDDEN | CAN_CUM_INTO | HAS_EQUIPMENT
 	masturbation_verb 		= "massage"
 	var/size_cached			= 0
 	var/prev_size //former size value, to allow update_size() to early return should be there no significant changes.
