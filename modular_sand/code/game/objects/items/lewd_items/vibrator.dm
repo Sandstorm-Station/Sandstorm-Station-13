@@ -9,6 +9,7 @@
 	item_state = "vibe"
 	w_class = WEIGHT_CLASS_SMALL
 	slot_flags = ITEM_SLOT_DENYPOCKET   //no more pocket shockers
+	var/equipment_slot = GENITAL_EQUIPMENT_VIBRATOR
 	var/mode = 1
 	var/style = "long"
 	var/inside = FALSE
@@ -64,10 +65,10 @@ Code:
 	var/obj/item/organ/genital/picked_organ
 	var/mob/living/carbon/human/S = user
 	var/mob/living/carbon/human/T = C
-	picked_organ = S.pick_receiving_organ(T, HAS_EQUIPMENT, "Vibrator")
+	picked_organ = S.pick_receiving_organ(T, HAS_EQUIPMENT, "Vibrator", "Where are you putting it in?")
 	if(picked_organ)
-		C.visible_message("<span class='warning'>[user] is trying to attach [src] to [T]!</span>",\
-						"<span class='warning'>[user] is trying to put [src] on you!</span>")
+		C.visible_message("<span class='warning'><b>\The [user]</b> is trying to attach [src] to <b>\The [T]</b>!</span>",\
+						"<span class='warning'><b>\The [user]</b> is trying to put [src] on you!</span>")
 		if(!do_mob(user, C, 5 SECONDS))//warn them and have a delay of 5 seconds to apply.
 			return
 
@@ -77,15 +78,16 @@ Code:
 
 		if(!picked_organ.equipment[GENITAL_EQUIPMENT_VIBRATOR])
 			if(!(style == "long"))
-				to_chat(user, "<span class='love'>You attach [src] to [T]'s [picked_organ.name].</span>")
+				to_chat(user, "<span class='love'>You attach [src] to <b>\The [T]</b>'s [picked_organ.name].</span>")
 			else
-				to_chat(user, "<span class='love'>You insert [src] into [T]'s [picked_organ.name].</span>")
+				to_chat(user, "<span class='love'>You insert [src] into <b>\The <b>[T]</b>'s [picked_organ.name].</span>")
 		else
 			to_chat(user, "<span class='notice'>They already have a [picked_organ.equipment[GENITAL_EQUIPMENT_VIBRATOR].name] there.</span>")
 			return
 
 		if(!user.transferItemToLoc(src, picked_organ)) //check if you can put it in
 			return
+		playsound(C, 'modular_sand/sound/lewd/champ_fingering.ogg', 50, 1, -1)
 		inside = TRUE
 		picked_organ.equipment[GENITAL_EQUIPMENT_VIBRATOR] = src
 		to_chat(user, "<span class='warning'>Done <b>Done</b></span>") //Will delete after testing

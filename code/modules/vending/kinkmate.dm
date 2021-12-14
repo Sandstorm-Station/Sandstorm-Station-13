@@ -5,7 +5,7 @@
 	product_slogans = "Kinky!;Sexy!;Check me out, big boy!"
 	vend_reply = "Have fun, you shameless pervert!"
 	products = list(
-				/obj/item/condom = 10,
+				/obj/item/genital_equipment/condom = 10,
 				/obj/item/clothing/head/maid = 5,
 				/obj/item/clothing/under/costume/maid = 5,
 				/obj/item/clothing/under/rank/civilian/janitor/maid = 5,

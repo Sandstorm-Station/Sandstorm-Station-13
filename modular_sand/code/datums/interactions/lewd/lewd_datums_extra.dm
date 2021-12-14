@@ -114,7 +114,7 @@
 
 /datum/interaction/lewd/titgrope_self/display_interaction(mob/living/carbon/human/user)
 	user.do_titgrope_self(user)
-
+/*
 /datum/interaction/lewd/remove_self_condom
 	command = "remove_self_condom"
 	description = "Remove your condom"
@@ -168,6 +168,38 @@
 
 /datum/interaction/lewd/remove_other_sounding/display_interaction(mob/living/carbon/human/user, mob/living/carbon/human/target)
 	user.remove_sounding(target)
+*/
+
+/datum/interaction/lewd/remove_self_equipment
+	command = "remove_self_equipment"
+	description = "Remove your genital's equipment"
+	require_user_hands = TRUE
+	interaction_sound = null
+	max_distance = 0
+	user_is_target = TRUE
+	write_log_user = "messed with their genital equipment"
+	write_log_target = null
+	user_is_target = TRUE
+
+/datum/interaction/lewd/remove_self_equipment/display_interaction(mob/living/user)
+	if(!iscarbon(user))
+		to_chat(user, "<span class='warning'>You don't seem like someone who'd use cock equipment my dude</span>")
+		return
+	user.remove_equipment(user)
+
+/datum/interaction/lewd/remove_other_equipment
+	command = "remove_other_equipment"
+	description = "Remove their genital's equipment"
+	require_user_hands = TRUE
+	interaction_sound = null
+	max_distance = 1
+	write_log_user = null
+	write_log_target = "got their genital's equipment edited by"
+
+/datum/interaction/lewd/remove_other_equipment/display_interaction(mob/living/user, mob/living/target)
+	if(!iscarbon(target))
+		to_chat(user, "<span class='warning'>[target.p_they()] don't look like someone who'd use balls equipment</span>")
+	user.remove_equipment(target)
 
 /datum/interaction/lewd/deflate_belly
 	command = "deflate_belly"

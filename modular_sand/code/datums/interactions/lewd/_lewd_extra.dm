@@ -210,25 +210,22 @@
 	visible_message(message = "<span class='lewd'><b>\The [src]</b> [message]</span>", ignored_mobs = get_unconsenting())
 	playlewdinteractionsound(loc, 'modular_sand/sound/interactions/squelch1.ogg', 50, 1, -1)
 	user.handle_post_sex(NORMAL_LUST, CUM_TARGET_HAND, src)
-
-/mob/living/carbon/human/proc/remove_condom(mob/living/carbon/human/user)
+/*
+/mob/living/proc/remove_condom(mob/living/carbon/user)
 	var/list/cock_names = list("rod", "bitchbreaker", "cock", "penis", "schlong")
-	var/obj/item/organ/genital/penis/P
 	var/s_His = p_their()
 	var/t_He = user.p_they()
 	if(src == user)
-		P = getorganslot(ORGAN_SLOT_PENIS)
-		if(P.condom)
-			visible_message(message = "<span class='lewd'><b>\The [src]</b> slides the condom out of [s_His] [pick(cock_names)]</span>",
+		if(P.equipment[GENITAL_EQUIPEMENT_CONDOM])
+			user.visible_message(message = "<span class='lewd'><b>\The [user]</b> slides the condom out of [s_His] [pick(cock_names)]</span>",
 			self_message = "<span class='lewd'>You feel the condom slide off your [pick(cock_names)]</span>",
 			ignored_mobs = get_unconsenting()
 			)
-			P.condom = FALSE
-			new /obj/item/clothing/head/condom(src.loc)
+			P.equipment.Remove(GENITAL_EQUIPEMENT_CONDOM)
+			new /obj/item/clothing/head/condom(user.loc)
 		else
 			to_chat(src, "<span class='warning'>You need a condom for that!</span>")
 	else
-		P = user.getorganslot(ORGAN_SLOT_PENIS)
 		if(P.condom)
 			user.visible_message(message = "<span class='lewd'><b>\The [src]</b> tries to remove the condom off of [user]'s [pick(cock_names)]",
 			self_message = "<span class='lewd'><b>\The [src]</b> gently takes your [pick(cock_names)] and starts sliding the condom off of it</span>",
@@ -244,8 +241,24 @@
 			new /obj/item/clothing/head/condom(user.loc)
 		else
 			to_chat(src, "<span class='warning'>[t_He] needs a condom for that!<span>")
+*/
+/*
+/obj/item/organ/genital/proc/remove_sounding(mob/living/carbon/remover)
+	if(!equipment[GENITAL_EQUIPMENT_SOUNDING])
+		to_chat(remover, "<span class='warning'>There doesn't seem to be a sounding rod in here</span>")
+		return
 
-/mob/living/carbon/human/proc/remove_sounding(mob/living/carbon/human/user)
+	if(remover == owner)
+		owner.visible_message(message = "<span class='lewd'><b>\The [owner]</b> slides the sounding rod out of [owner.p_their()] [name]</span>",
+		self_message = "<span class='lewd'>You feel the sounding rod slide out of your [name]</span>",
+		ignored_mobs = get_unconsenting()
+		)
+	else
+
+
+
+
+/mob/living/carbon/proc/remove_sounding(mob/living/carbon/human/user)
 	var/list/cock_names = list("rod", "bitchbreaker", "cock", "penis", "schlong")
 	var/obj/item/organ/genital/penis/P
 	var/s_His = p_their()
@@ -258,7 +271,7 @@
 			ignored_mobs = get_unconsenting()
 			)
 			P.sounding = FALSE
-			new /obj/item/sounding/used_sounding(loc)
+			new /obj/item/genital_equipment/sounding/used_sounding(loc)
 		else
 			to_chat(src, "<span class='warning'>You need a sounding rod for that!</span>")
 	else
@@ -275,9 +288,23 @@
 			ignored_mobs = get_unconsenting()
 			)
 			P.sounding = FALSE
-			new /obj/item/sounding/used_sounding(user.loc)
+			new /obj/item/genital_equipment/sounding/used_sounding(user.loc)
 		else
 			to_chat(src, "<span class='warning'>[t_He] needs a sounding rod for that!<span>")
+*/
+
+/mob/living/proc/remove_equipment(mob/living/carbon/target)
+	var/obj/item/organ/genital/holder = pick_receiving_organ(target, HAS_EQUIPMENT, "Remove equipment", "What genital?")
+	if(!holder)
+		to_chat(src, "<span class='warning'> You need exposed genitals!</b>")
+		return
+	if(!LAZYLEN(holder.equipment))
+		to_chat(src, "<span class='warning'>You'll have to put something in it first, since it seems to be clean</span>")
+		return
+
+	var/obj/item/gimme = input(src, "What do you want to remove?", "Remove equipment", null) as null|anything in holder.equipment
+	if(gimme)
+		holder.remove_equipment(src, gimme)
 
 /mob/living/proc/nuzzle_belly(mob/living/target)
 	var/message
