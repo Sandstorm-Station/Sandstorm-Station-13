@@ -89,7 +89,10 @@
 	write_log_target = "got shat in the face by"
 	write_log_user = null
 
-/datum/interaction/lewd/unholy/do_crotchshit
+/datum/interaction/lewd/unholy/do_faceshit/display_interaction(mob/living/user, mob/living/target)
+	user.do_faceshit(target)
+
+/datum/interaction/lewd/unholy/do_crotchshit/
 	command = "do_crotchshit"
 	description = "Shit on their crotch"
 	require_user_anus = REQUIRE_EXPOSED
@@ -97,6 +100,9 @@
 	interaction_sound = null
 	write_log_target = "got shat on the croch by"
 	write_log_user = null
+
+/datum/interaction/lewd/unholy/do_crotchshit/display_interaction(mob/living/user, mob/living/target)
+	user.do_crotchshit(target)
 
 /datum/interaction/lewd/unholy/do_shitfuck
 	command = "do_shitfuck"
@@ -106,3 +112,6 @@
 	max_distance = 1
 	interaction_sound = null
 	write_log_target = "got shitfucked by"
+
+/datum/interaction/lewd/unholy/do_shitfuck/display_interaction(mob/living/user, mob/living/target)
+	user.do_shitfuck(target)
