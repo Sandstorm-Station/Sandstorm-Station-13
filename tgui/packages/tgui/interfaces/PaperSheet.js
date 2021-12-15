@@ -50,6 +50,10 @@ const textWidth = (text, font, fontsize) => {
   } else {
     return 0;
   }
+  /*
+  const width = ctx.measureText(text).width;
+  return width;
+  */
 };
 
 const setFontinText = (text, font, color, bold=false) => {

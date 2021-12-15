@@ -360,7 +360,7 @@
 
 /obj/machinery/shower/proc/wash_obj(obj/O)
 	if(!O)
-		return;
+		return
 	. = SEND_SIGNAL(O, COMSIG_COMPONENT_CLEAN_ACT, CLEAN_WEAK)
 	. = O.clean_blood()
 	O.remove_atom_colour(WASHABLE_COLOUR_PRIORITY)
