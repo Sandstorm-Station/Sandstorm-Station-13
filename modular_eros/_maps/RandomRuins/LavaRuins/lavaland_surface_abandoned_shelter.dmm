@@ -3,10 +3,6 @@
 /obj/item/wallframe/airalarm,
 /turf/open/floor/plasteel,
 /area/lavaland/surface/outdoors)
-"aI" = (
-/obj/structure/frame,
-/turf/open/floor/plating/asteroid/basalt/lava_land_surface,
-/area/lavaland/surface/outdoors)
 "bp" = (
 /obj/structure/cable{
 	icon_state = "1-8"
@@ -146,6 +142,9 @@
 /area/lavaland/surface/outdoors)
 "ue" = (
 /obj/machinery/ore_silo,
+/obj/item/stack/sheet/mineral/diamond{
+	amount = 5
+	},
 /turf/open/floor/plasteel,
 /area/lavaland/surface/outdoors)
 "uP" = (
@@ -638,7 +637,7 @@ ER
 We
 ha
 ch
-aI
+gd
 kA
 FZ
 ch

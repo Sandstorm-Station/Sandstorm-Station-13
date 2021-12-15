@@ -230,10 +230,6 @@
 			var/obj/item/clothing/under/C = H.w_uniform
 			if(istype(C))
 				C.sensor_mode = NO_SENSORS
-	if(canloadappearance)
-		H.canloadappearance = TRUE
-	else
-		H.canloadappearance = FALSE
 
 	var/obj/item/card/id/W = H.wear_id
 	if(W)
@@ -251,7 +247,11 @@
 			W.assignment = id_job
 		W.registered_name = H.real_name
 		W.update_label()
-
+	if (canloadappearance)
+		H.canloadappearance = TRUE
+	else
+		H.canloadappearance = FALSE
+		
 //Instant version - use when spawning corpses during runtime
 /obj/effect/mob_spawn/human/corpse
 	roundstart = FALSE
