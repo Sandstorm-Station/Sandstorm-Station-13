@@ -133,6 +133,7 @@
 		data["erp_pref"] = 			prefs.erppref == "Ask" ? 2 : prefs.erppref == "Yes" ? 1 : 0
 		data["noncon_pref"] = 		prefs.nonconpref == "Ask" ? 2 : prefs.nonconpref == "Yes" ? 1 : 0
 		data["vore_pref"] = 		prefs.vorepref == "Ask" ? 2 : prefs.vorepref == "Yes" ? 1 : 0
+		data["unholy_pref"] =		prefs.vorepref == "Ask" ? 2 : prefs.unholypref == "Yes" ? 1 : 0
 		data["extreme_pref"] = 		prefs.extremepref == "Ask" ? 2 : prefs.extremepref == "Yes" ? 1 : 0
 		data["extreme_harm"] = 		prefs.extremeharm == "Yes" ? 1 : 0
 
@@ -152,6 +153,8 @@
 		data["bimbofication"] = 	CHECK_BITFIELD(prefs.cit_toggles, BIMBOFICATION)
 		data["breast_enlargement"] = CHECK_BITFIELD(prefs.cit_toggles, BREAST_ENLARGEMENT)
 		data["penis_enlargement"] = CHECK_BITFIELD(prefs.cit_toggles, PENIS_ENLARGEMENT)
+		data["butt_enlargement"] = 	CHECK_BITFIELD(prefs.cit_toggles, BUTT_ENLARGEMENT)
+		data["belly_inflation"] = CHECK_BITFIELD(prefs.cit_toggles, BELLY_INFLATION)
 		data["never_hypno"] = 		!CHECK_BITFIELD(prefs.cit_toggles, NEVER_HYPNO)
 		data["no_aphro"] = 			!CHECK_BITFIELD(prefs.cit_toggles, NO_APHRO)
 		data["no_ass_slap"] = 		!CHECK_BITFIELD(prefs.cit_toggles, NO_ASS_SLAP)
@@ -210,6 +213,14 @@
 							prefs.vorepref = "No"
 						if("No")
 							prefs.vorepref = "Yes"
+				if("unholy_pref")
+					switch(prefs.unholypref)
+						if("Yes")
+							prefs.unholypref = "Ask"
+						if("Ask")
+							prefs.unholypref = "No"
+						if("No")
+							prefs.unholypref = "Yes"
 				if("extreme_pref")
 					switch(prefs.extremepref)
 						if("Yes")
@@ -262,6 +273,10 @@
 					TOGGLE_BITFIELD(prefs.cit_toggles, BREAST_ENLARGEMENT)
 				if("penis_enlargement")
 					TOGGLE_BITFIELD(prefs.cit_toggles, PENIS_ENLARGEMENT)
+				if("butt_enlargement")
+					TOGGLE_BITFIELD(prefs.cit_toggles, BUTT_ENLARGEMENT)
+				if("belly_inflation")
+					TOGGLE_BITFIELD(prefs.cit_toggles, BELLY_INFLATION)
 				if("never_hypno")
 					TOGGLE_BITFIELD(prefs.cit_toggles, NEVER_HYPNO)
 				if("no_aphro")

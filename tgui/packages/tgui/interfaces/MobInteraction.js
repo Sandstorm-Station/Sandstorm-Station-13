@@ -115,6 +115,7 @@ const CharacterPrefsTab = (props, context) => {
     erp_pref,
     noncon_pref,
     vore_pref,
+    unholy_pref,
     extreme_pref,
     extreme_harm,
   } = data;
@@ -140,6 +141,13 @@ const CharacterPrefsTab = (props, context) => {
         color={vore_pref === 2 ? "yellow" : vore_pref === 1 ? "green" : "red"}
         onClick={() => act('char_pref', {
           char_pref: 'vore_pref',
+        })} />
+      <Button
+        content="Unholy ERP verbs"
+        icon={unholy_pref === 2 ? "question" : unholy_pref === 1 ? "check" : "times"}
+        color={unholy_pref === 2 ? "yellow" : unholy_pref === 1 ? "green" : "red"}
+        onClick={() => act('char_pref', {
+          char_pref: 'unholy_pref',
         })} />
       <Button
         content="Extreme ERP verbs"
@@ -179,6 +187,8 @@ const ContentPreferencesTab = (props, context) => {
     bimbofication,
     breast_enlargement,
     penis_enlargement,
+    butt_enlargement,
+    belly_inflation,
     never_hypno,
     no_aphro,
     no_ass_slap,
@@ -304,6 +314,22 @@ const ContentPreferencesTab = (props, context) => {
         selected={penis_enlargement}
         onClick={() => act('pref', {
           pref: 'penis_enlargement',
+        })}
+      />
+      <Button
+        content="Butt enlargement"
+        icon={butt_enlargement ? "toggle-on" : "toggle-off"}
+        selected={butt_enlargement}
+        onClick={() => act('pref', {
+          pref: 'butt_enlargement',
+        })}
+      />
+      <Button
+        content="Belly inflation"
+        icon={belly_inflation ? "toggle-on" : "toggle-off"}
+        selected={belly_inflation}
+        onClick={() => act('pref', {
+          pref: 'belly_inflation',
         })}
       />
       <Button
