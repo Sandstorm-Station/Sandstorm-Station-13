@@ -40,3 +40,8 @@
 /datum/sprite_accessory/horns/short
 	name = "Short"
 	icon_state = "short"
+
+/datum/sprite_accessory/horns/demon
+	name = "Demon"
+	icon_state = "demon"
+
