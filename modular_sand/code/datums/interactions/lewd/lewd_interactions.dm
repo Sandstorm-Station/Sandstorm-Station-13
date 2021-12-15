@@ -12,8 +12,8 @@
 	write_log_user = "ass-slapped"
 	write_log_target = "was ass-slapped by"
 
-	var/user_not_tired
-	var/target_not_tired
+	var/user_not_tired = FALSE
+	var/target_not_tired = FALSE
 	//Avoid using these!
 	//Should only really use in case there are no related organs
 	//but you want the target or user to be topless/bottomless.
@@ -38,6 +38,7 @@
 	var/require_user_breasts
 	var/require_user_feet
 	var/require_user_balls
+	var/require_user_belly
 
 	//Different from the others above. Use the number of required feet.
 	var/require_user_num_feet
@@ -49,6 +50,7 @@
 	var/require_target_breasts
 	var/require_target_feet
 	var/require_target_balls
+	var/require_target_belly
 
 	var/require_target_num_feet
 
@@ -70,13 +72,11 @@
 
 /datum/interaction/lewd/evaluate_user(mob/living/user, silent = TRUE, action_check = TRUE)
 	if(..(user, silent, action_check))
-		/* Temporarily closed
 		if(user_not_tired && user.get_refraction_dif())
 			if(!silent) //bye spam
 				to_chat(user, "<span class='warning'>You're still exhausted from the last time. You need to wait [DisplayTimeText(user.get_refraction_dif(), TRUE)] until you can do that!</span>")
 			if(action_check)
 				return FALSE
-		*/
 
 		if(require_user_bottomless && !user.is_bottomless())
 			if(!silent)
@@ -178,6 +178,24 @@
 							to_chat(user, "<span class='warning'>Your breasts need to be unexposed.</span>")
 						return FALSE
 
+		if(require_user_belly)
+			switch(require_user_belly)
+				if(REQUIRE_EXPOSED)
+					if(!user.has_belly(REQUIRE_EXPOSED))
+						if(!silent)
+							to_chat(user, "<span class='warning'>Your belly needs to be exposed.</span>")
+						return FALSE
+				if(REQUIRE_ANY)
+					if(!user.has_belly(REQUIRE_ANY))
+						if(!silent)
+							to_chat(user, "<span class='warning'>Your belly seems to be too flat for that.</span>")
+						return FALSE
+				if(REQUIRE_UNEXPOSED)
+					if(!user.has_belly(REQUIRE_UNEXPOSED))
+						if(!silent)
+							to_chat(user, "<span class='warning'>Your belly needs to be unexposed.</span>")
+						return FALSE
+
 		if(require_user_feet)
 			switch(require_user_feet)
 				if(REQUIRE_EXPOSED)
@@ -272,6 +290,14 @@
 						if(!silent)
 							to_chat(user, "<span class='warning'>Your earsockets need to be unexposed.</span>")
 						return FALSE
+
+		if(unholy)
+			var/client/cli = user.client
+			if(cli)
+				if(cli.prefs.unholypref == "No")
+					if(!silent)
+						to_chat(user, "<span class='warning'>That's way too much for you.</span>")
+					return FALSE
 
 		if(extreme)
 			var/client/cli = user.client
@@ -386,6 +412,23 @@
 							to_chat(user, "<span class='warning'>Their breasts need to be unexposed.</span>")
 						return FALSE
 
+		if(require_target_belly)
+			switch(require_target_belly)
+				if(REQUIRE_EXPOSED)
+					if(!target.has_belly(REQUIRE_EXPOSED))
+						if(!silent)
+							to_chat(user, "<span class='warning'>Their belly needs to be exposed.</span>")
+				if(REQUIRE_ANY)
+					if(!target.has_belly(REQUIRE_ANY))
+						if(!silent)
+							to_chat(user, "<span class='warning'>Their belly seems to be too flat for that.</span>")
+						return FALSE
+				if(REQUIRE_UNEXPOSED)
+					if(!target.has_belly(REQUIRE_UNEXPOSED))
+						if(!silent)
+							to_chat(user, "<span class='warning'>Their belly needs to be unexposed.</span>")
+						return FALSE
+
 		if(require_target_feet)
 			switch(require_target_feet)
 				if(REQUIRE_EXPOSED)
@@ -483,13 +526,21 @@
 
 		if(require_target_bottomless && !target.is_bottomless())
 			if(!silent)
-				to_chat(user, "<span class='warning'>Their clothes are in the way.</span>")
+				to_chat(user, "<span class='warning'>Their pants are in the way.</span>")
 			return FALSE
 
 		if(require_target_topless && !target.is_topless())
 			if(!silent)
 				to_chat(user, "<span class='warning'>Their clothes are in the way.</span>")
 			return FALSE
+
+		if(unholy)
+			var/client/cli = target.client
+			if(cli)
+				if(target.client.prefs.unholypref == "No")
+					if(!silent)
+						to_chat(user, "<span class='warning'>For some reason, you don't want to do this to [target].</span>")
+					return FALSE
 
 		if(extreme)
 			var/client/cli = target.client
@@ -498,11 +549,6 @@
 					if(!silent)
 						to_chat(user, "<span class='warning'>For some reason, you don't want to do this to [target].</span>")
 					return FALSE
-
-		if(require_target_bottomless && !target.is_bottomless())
-			if(!silent)
-				to_chat(user, "<span class='warning'>Their pants are in the way.</span>")
-			return FALSE
 
 		if(require_ooc_consent)
 			if((!target.ckey) || (target.client && target.client.prefs.toggles & VERB_CONSENT)) //sneaky change, let hell go through earth
@@ -572,6 +618,8 @@
 		dat += "...have a vagina."
 	if(has_anus(REQUIRE_EXPOSED))
 		dat += "...have an anus."
+	if(has_belly(REQUIRE_EXPOSED))
+		dat += "...have a belly"
 	if(has_feet(REQUIRE_EXPOSED))
 		switch(has_feet(REQUIRE_EXPOSED))
 			if(2)

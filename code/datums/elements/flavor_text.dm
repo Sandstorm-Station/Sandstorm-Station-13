@@ -92,7 +92,11 @@ GLOBAL_LIST_EMPTY(mobs_with_editable_flavor_text) //et tu, hacky code
 		if(text || (flavor_name == "OOC Notes") && L.client)
 			var/content
 			if(flavor_name == "OOC Notes")
-				content += "[L]'s OOC Notes: <br> <b>ERP:</b> [L.client.prefs.erppref] <b>| Non-Con:</b> [L.client.prefs.nonconpref] <b>| Vore:</b> [L.client.prefs.vorepref]\n"
+				content += "[L]'s OOC Notes: <br> <b>ERP:</b> [L.client.prefs.erppref] <b>| Non-Con:</b> [L.client.prefs.nonconpref] <b>| Vore:</b> [L.client.prefs.vorepref]"
+				if(L.client.prefs.unholypref == "Yes")
+					content += " <b>| Unholy:</b> [L.client.prefs.unholypref]\n"
+				else
+					content += "\n"
 				if(L.client.prefs.extremepref == "Yes")
 					content += "<br><b>Extreme content:</b> [L.client.prefs.extremepref] <b>| <b>Extreme content harm:</b> [L.client.prefs.extremeharm]\n"
 			content += text

@@ -43484,7 +43484,7 @@
 	},
 /obj/structure/curtain,
 /obj/structure/window/spawner/north,
-/obj/structure/sign/poster/official/no_erp{
+/obj/structure/sign/poster/contraband/yes_erp{
 	pixel_x = 32
 	},
 /obj/effect/turf_decal/bot,
@@ -43719,6 +43719,10 @@
 	},
 /turf/open/floor/plasteel,
 /area/engineering/atmos)
+"qTh" = (
+/obj/structure/dresser,
+/turf/open/floor/plasteel,
+/area/security/prison)
 "qUQ" = (
 /obj/structure/table/reinforced,
 /obj/item/reagent_containers/food/drinks/shaker,
@@ -81995,7 +81999,7 @@ acH
 abR
 afh
 azi
-agG
+qTh
 aiS
 acH
 aAw
@@ -82509,7 +82513,7 @@ acH
 abT
 azi
 azi
-aep
+agG
 ajQ
 acH
 aAU

@@ -127,6 +127,8 @@
   * * target (optional) is the other mob involved with the visible message. For example, the attacker in many combat messages.
   * * target_message (optional) is what the target mob will see e.g. "[src] does something to you!"
   * * omni (optional) if TRUE, will show to users no matter what.
+  * * runechat_popup (optional) if TRUE, will display a runechat popup using rune_msg if set otherwise it will use message and self_message accordingly.
+  * * rune_msg (optional) is the message to display in the runechat popup.
   */
 /atom/proc/visible_message(message, self_message, blind_message, vision_distance = DEFAULT_MESSAGE_RANGE, ignored_mobs, mob/target, target_message, omni = FALSE, runechat_popup, rune_msg)
 	var/turf/T = get_turf(src)
@@ -197,6 +199,8 @@
   * * deaf_message (optional) is what deaf people will see.
   * * hearing_distance (optional) is the range, how many tiles away the message can be heard.
   * * ignored_mobs (optional) doesn't show any message to any given mob in the list.
+  * * runechat_popup (optional) if TRUE, will display a runechat popup using rune_msg if set otherwise it will use message and self_message accordingly.
+  * * rune_msg (optional) is the message to display in the runechat popup.
   */
 /atom/proc/audible_message(message, deaf_message, hearing_distance = DEFAULT_MESSAGE_RANGE, self_message, ignored_mobs, runechat_popup, rune_msg) //SKYRAT CHANGE
 	var/turf/T = get_turf(src)
