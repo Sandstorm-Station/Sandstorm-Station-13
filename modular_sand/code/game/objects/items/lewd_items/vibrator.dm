@@ -106,7 +106,9 @@ Code:
 	last = world.time + 3 SECONDS //lets stop spam.
 
 	if(inside)
-		var/obj/item/organ/genital/G = src.loc
+		if(!istype(loc, /obj/item/organ/genital))
+			return
+		var/obj/item/organ/genital/G = loc
 		var/mob/living/carbon/U = G.owner
 
 		if(G)
