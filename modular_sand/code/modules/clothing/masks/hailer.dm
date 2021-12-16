@@ -9,7 +9,7 @@
 	aggressiveness = 0 //can't have your pets being mean!
 	actions_types = list(/datum/action/item_action/halt)
 
-/obj/item/clothing/mask/gas/sechailer/slut(atom/over_object)
+/obj/item/clothing/mask/gas/sechailer/slut/MouseDrop(atom/over_object)
 
 /obj/item/clothing/mask/gas/sechailer/slut/attack_hand(mob/user)
 	if(iscarbon(user))
