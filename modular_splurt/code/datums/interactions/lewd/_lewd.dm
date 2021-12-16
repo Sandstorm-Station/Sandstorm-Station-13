@@ -1,3 +1,65 @@
+/mob/living/proc/do_breastsmother(mob/living/target)
+	var/message
+	var/u_His = p_their()
+	var/titties = list("breasts", "boobs", "milkers", "milktanks", "boobers", "titties", "tits", "tatas", "mammaries")
+	var/list/lines = list(
+		"squishes <b>[target]</b>'s face [pick(list("in between", "with"))] [u_His] [pick(titties)]",
+		"presses [u_His] [pick(titties)] into \the <b>[target]</b>'s face",
+		"shoves \the <b>[target]</b>'s whole head into [u_His] cleavage"
+		)
+
+	message = "<span class='lewd'>\The <b>[src]</b> [pick(lines)]</span>"
+	visible_message(message, ignored_mobs = get_unconsenting())
+	playlewdinteractionsound(loc, pick('modular_sand/sound/interactions/bang1.ogg',
+						'modular_sand/sound/interactions/bang2.ogg',
+						'modular_sand/sound/interactions/bang3.ogg'), 70, 1, -1)
+
+/mob/living/proc/lick_sweat(mob/living/target)
+	var/message
+	var/t_His = target.p_their()
+	var/list/lines = list("licks \the <b>[target]</b>'s sweat off [t_His] body",
+							"slurps the salty sweat running through <b>[target]</b>'s skin",
+							"has a nice taste of \the <b>[target]</b>'s drenched body",
+							"takes a whiff of \the <b>[target]</b>'s musk and drinks [t_His] warm sweat")
+
+	message = "<span class='lewd'>\The <b>[src]</b> [pick(lines)]"
+	visible_message(message, ignored_mobs = get_unconsenting())
+	playlewdinteractionsound(loc, 'modular_sand/sound/interactions/champ_fingering.ogg', 50, 1, -1)
+
+/mob/living/proc/smother_armpit(mob/living/target)
+	var/message
+	var/u_His = p_their()
+	var/list/musk = list("musky ", "sweaty ", "damp ", "smelly ", "")
+	var/list/lines = list(
+		"shoves \the <b>[target]</b>'s face in [u_His] [pick(musk)] armpit",
+		"squeezes \the <b>[target]</b>'s nose under [u_His] [pick(musk)] pit",
+		"makes sure to squeeze \the <b>[target]</b>'s face well under [u_His] [pick(musk)] armpit and let them take a whiff"
+		)
+
+	message = "<span class='lewd'>\The <b>[src]</b> [pick(lines)]"
+	visible_message(message, ignored_mobs = get_unconsenting())
+	playlewdinteractionsound(loc, pick(
+		'modular_sand/sound/interactions/squelch1.ogg',
+		'modular_sand/sound/interactions/squelch2.ogg',
+		'modular_sand/sound/interactions/squelch3.ogg'), 50, 1, -1)
+
+/mob/living/proc/lick_armpit(mob/living/target)
+	var/message
+	var/u_His = p_their()
+	var/list/musk = list("musky ", "sweaty ", "damp ", "smelly ", "")
+	var/list/lines = list(
+		"shoves [u_His] nose deep into \the <b>[target]</b>'s armpit, giving it a big [pick(list("whiff", "lick", "nuzzle"))].",
+		"presses [u_His] face under \the <b>[target]</b>'s [pick(musk)] pit, [pick(list("tasting and lapping it all over", "sniffing its scent"))]",
+		"goes face deep into \the <b>[target]</b> [pick(musk)] armpit, worshipping it with [u_His] tongue and nose"
+	)
+
+	message = "<span class='lewd'>\The <b>[src]</b> [pick(lines)]</span>"
+	visible_message(message, ignored_mobs = get_unconsenting())
+	playlewdinteractionsound(loc, pick(
+		'modular_sand/sound/interactions/squelch1.ogg',
+		'modular_sand/sound/interactions/squelch2.ogg',
+		'modular_sand/sound/interactions/squelch3.ogg'), 50, 1, -1)
+
 ////////////////////////////////////////////////////////////////////////////////////////////////////////
 ///////// 									U N H O L Y										   /////////
 ////////////////////////////////////////////////////////////////////////////////////////////////////////
@@ -180,6 +242,43 @@
 
 	message = "<span class='lewd'>\The <b>[src]</b> [pick(hell)]"
 	visible_message(message, ignored_mobs = get_unconsenting(unholy = TRUE))
-	playlewdinteractionsound(loc, pick(GLOB.brap_noises), 50, 1, -1)
+	playlewdinteractionsound(loc, pick(GLOB.brap_noises), 70, 1, -1)
+	playlewdinteractionsound(loc, pick('modular_sand/sound/interactions/bang1.ogg',
+						'modular_sand/sound/interactions/bang2.ogg',
+						'modular_sand/sound/interactions/bang3.ogg',
+						'modular_sand/sound/interactions/bang4.ogg',
+						'modular_sand/sound/interactions/bang5.ogg',
+						'modular_sand/sound/interactions/bang6.ogg'), 70, 1, -1)
 	handle_post_sex(NORMAL_LUST, CUM_TARGET_ANUS, target)
 	target.handle_post_sex(NORMAL_LUST, null, src)
+
+/mob/living/proc/piss_over(mob/living/target)
+	var/message
+	var/u_His = p_their()
+	var/list/hell = list(
+		"relieves [u_His] bladder all over \the <b>[target]</b>[pick(list("", "'s body"))]",
+		"starts coating all of \the <b>[target]</b>'s body in warm piss",
+		"lets out a moan of relief as yellow rain starts pouring over \the <b>[target]</b>"
+	)
+
+	message = "<span class='lewd'>\The <b>[src]</b> [pick(hell)]</span>"
+	visible_message(message, ignored_mobs = get_unconsenting(unholy = TRUE))
+	if(get_lust() < 10)
+		add_lust(10)
+
+/mob/living/carbon/proc/piss_mouth(mob/living/target)
+	var/message
+	var/pee_pee = (has_penis(REQUIRE_EXPOSED) ? getorganslot(ORGAN_SLOT_PENIS) : (has_vagina(REQUIRE_EXPOSED) ? getorganslot(ORGAN_SLOT_VAGINA) : null))
+	var/u_His = p_their()
+	var/t_Him = target.p_them()
+	var/list/hell = list(
+		"relieves [u_His] bladder inside \the <b>[target]</b>'s mouth [pick(list("filling it with [pick(list("warm", "salty"))] yellow goodness", "making [t_Him] taste all of that piss"))]",
+		"coats the back of \the <b>[target]</b>'s throat with [u_His] golden treat",
+		"lets out a moan of relief as yellow rain starts pouring in between \the <b>[target]</b>'s lips"
+	)
+
+	message = "<span class='lewd'>\The <b>[src]</b> [pick(hell)]</span>"
+	visible_message(message, ignored_mobs = get_unconsenting(unholy = TRUE))
+	if(!is_fucking(target, CUM_TARGET_MOUTH))
+		set_is_fucking(target, CUM_TARGET_MOUTH, pee_pee)
+	handle_post_sex(NORMAL_LUST, CUM_TARGET_MOUTH, target)

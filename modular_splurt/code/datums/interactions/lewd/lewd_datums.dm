@@ -1,4 +1,3 @@
-/* TODO: Finish these tomorrow
 /datum/interaction/lewd/do_breastsmother
 	command = "do_breastsmother"
 	description = "Smother them in your breasts"
@@ -7,6 +6,9 @@
 	interaction_sound = null
 	write_log_target = "got breast smothered by"
 	write_log_user = null
+
+/datum/interaction/lewd/do_breastsmother/display_interaction(mob/living/user, mob/living/target)
+	user.do_breastsmother(target)
 
 /datum/interaction/lewd/lick_sweat
 	command = "lick_sweat"
@@ -17,14 +19,19 @@
 	write_log_target = "got their sweat licked by"
 	write_log_user = "licked sweat"
 
+/datum/interaction/lewd/lick_sweat/display_interaction(mob/living/user, mob/living/target)
+	user.lick_sweat(target)
+
 /datum/interaction/lewd/smother_armpit
 	command = "smother_armpit"
 	description = "Press your armpit against their face"
-	require_target_mouth = TRUE
 	max_distance = 1
 	interaction_sound = null
 	write_log_target = "Got armpit smothered by"
-	wtrite_log_user = "Smothered someone in their armpit"
+	write_log_user = "Smothered someone in their armpit"
+
+/datum/interaction/lewd/smother_armpit/display_interaction(mob/living/user, mob/living/target)
+	user.smother_armpit(target)
 
 /datum/interaction/lewd/lick_armpit
 	command = "lick_armpit"
@@ -32,9 +39,11 @@
 	require_user_mouth = TRUE
 	max_distance = 1
 	interaction_sound = null
-	write_log_target = "Got their armpit licked by"
+	write_log_target = "Got dem armpit ate by"
 	write_log_user = "ate some armpit"
-*/
+
+/datum/interaction/lewd/lick_armpit/display_interaction(mob/living/user, mob/living/target)
+	user.lick_armpit(target)
 
 ////////////////////////////////////////////////////////////////////////////////////////////////////////
 ///////// 									U N H O L Y										   /////////
@@ -115,3 +124,30 @@
 
 /datum/interaction/lewd/unholy/do_shitfuck/display_interaction(mob/living/user, mob/living/target)
 	user.do_shitfuck(target)
+
+/datum/interaction/lewd/unholy/piss_over
+	command = "piss_over"
+	description = "Piss all over them"
+	require_user_bottomless = TRUE
+	max_distance = 1
+	interaction_sound = null
+	write_log_target = "got pissed all over by"
+
+/datum/interaction/lewd/unholy/piss_over/display_interaction(mob/living/user, mob/living/target)
+	user.piss_over(target)
+
+/datum/interaction/lewd/unholy/piss_mouth
+	command = "piss_mouth"
+	description = "Piss inside their mouth"
+	max_distance = 1
+	interaction_sound = null
+	require_user_bottomless = TRUE
+	require_target_mouth = TRUE
+	write_log_user = "pissed in someone's mouth"
+	write_log_target = "got their mouth filled with piss by"
+
+/datum/interaction/lewd/unholy/piss_mouth/display_interaction(mob/living/carbon/user, mob/living/target)
+	if(!istype(user))
+		to_chat(user, "<span class='warning'>Erm, you may wanna be a carbon entity fo dat</span>")
+		return
+	user.piss_mouth(target)

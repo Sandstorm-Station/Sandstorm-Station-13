@@ -6,5 +6,6 @@ GLOBAL_LIST_INIT(brap_noises, list(
 			'modular_splurt/sound/voice/farts/fart4.ogg',
 			'modular_splurt/sound/voice/farts/fart5.ogg',
 			'modular_splurt/sound/voice/farts/fart6.ogg',
-			'modular_splurt/sound/voice/farts/fart7.ogg'
+			'modular_splurt/sound/voice/farts/fart7.ogg',
+			'modular_splurt/sound/voice/farts/fart8.ogg'
 			))
