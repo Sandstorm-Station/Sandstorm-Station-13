@@ -133,7 +133,7 @@
 		data["erp_pref"] = 			prefs.erppref == "Ask" ? 2 : prefs.erppref == "Yes" ? 1 : 0
 		data["noncon_pref"] = 		prefs.nonconpref == "Ask" ? 2 : prefs.nonconpref == "Yes" ? 1 : 0
 		data["vore_pref"] = 		prefs.vorepref == "Ask" ? 2 : prefs.vorepref == "Yes" ? 1 : 0
-		data["unholy_pref"] =		prefs.unholypref == "Ask" ? 2 : prefs.unholypref == "Yes" ? 1 : 0
+		data["unholy_pref"] =		prefs.unholypref == "Ask" ? 2 : prefs.unholypref == "Yes" ? 1 : 0 //yup
 		data["extreme_pref"] = 		prefs.extremepref == "Ask" ? 2 : prefs.extremepref == "Yes" ? 1 : 0
 		data["extreme_harm"] = 		prefs.extremeharm == "Yes" ? 1 : 0
 
