@@ -2,4 +2,3 @@
 /datum/gear/suit/neetsuit
 	subcategory = LOADOUT_SUBCATEGORY_SUIT_GENERAL
 	restricted_roles = list()
-
