@@ -2056,7 +2056,7 @@ GLOBAL_LIST_EMPTY(preferences_datums)
 						eye_type = pref_species.eye_type
 
 				if("custom_species")
-					var/new_species = reject_bad_name(input(user, "Choose your species subtype, if unique. This will show up on examinations and health scans. Do not abuse this:", "Character Preference", custom_species) as null|text)
+					var/new_species = reject_bad_name(input(user, "Choose your species subtype, if unique. This will show up on examinations and health scans. Do not abuse this:", "Character Preference", custom_species) as null|text, TRUE)
 					if(new_species)
 						custom_species = new_species
 					else
