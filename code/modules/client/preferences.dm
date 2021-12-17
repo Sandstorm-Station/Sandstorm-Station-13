@@ -2326,13 +2326,13 @@ GLOBAL_LIST_EMPTY(preferences_datums)
 
 				//Genital code
 				if("lust_tolerance")
-					var/lust_tol = input(user, "Set how long you can last without climaxing. \n(75 = minimum, 200 = maximum.)", "Character Preference", lust_tolerance) as num
-					if(clamp(lust_tol, 75, 200))
-						lust_tolerance = lust_tol
+					var/lust_tol = input(user, "Set how long you can last without climaxing. \n(75 = minimum, 200 = maximum.)", "Character Preference", lust_tolerance) as num|null
+					if(lust_tol)
+						lust_tolerance = clamp(lust_tol, 75, 200)
 				if("sexual_potency")
-					var/sexual_pot = input(user, "Set your sexual potency. \n(10 = minimum, 25 = maximum.)", "Character Preference", sexual_potency) as num
-					if(clamp(sexual_pot, 10, 25))
-						sexual_potency = sexual_pot
+					var/sexual_pot = input(user, "Set your sexual potency. \n(10 = minimum, 25 = maximum.)", "Character Preference", sexual_potency) as num|null
+					if(sexual_pot)
+						sexual_potency = clamp(sexual_pot, 10, 25)
 
 				if("cock_color")
 					var/new_cockcolor = input(user, "Penis color:", "Character Preference","#"+features["cock_color"]) as color|null
