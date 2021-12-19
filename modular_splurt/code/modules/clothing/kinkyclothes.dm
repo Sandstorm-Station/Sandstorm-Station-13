@@ -1,6 +1,6 @@
 //From Hyper
 /obj/item/clothing/gloves/latexsleeves
-	name = "latex sleeves (Hyper)"
+	name = "latex sleeves"
 	desc = "A pair of shiny latex sleeves that covers ones arms."
 	icon_state = "latex"
 	item_state = "latex"
@@ -9,13 +9,13 @@
 	mutantrace_variation = NONE
 
 /obj/item/clothing/gloves/latexsleeves/security
-	name = "security sleeves (Hyper)"
+	name = "security sleeves"
 	desc = "A pair of latex sleeves, with a band of red above the elbows denoting that the wearer is part of the security team."
 	icon_state = "latexsec"
 	item_state = "latexsec"
 
 /obj/item/clothing/head/dominatrixcap
-	name = "dominatrix cap (Hyper)"
+	name = "dominatrix cap"
 	desc = "A sign of authority, over the body."
 	icon_state = "dominatrix"
 	item_state = "dominatrix"
@@ -24,7 +24,7 @@
 	mutantrace_variation = NONE
 
 /obj/item/clothing/shoes/highheels
-	name = "high heels (Hyper)"
+	name = "high heels"
 	desc = "They make the wearer appear taller, and more noisey!"
 	icon_state = "highheels"
 	item_state = "highheels"
@@ -38,7 +38,7 @@
 //the classic click clack
 
 /obj/item/clothing/neck/stole
-	name = "white boa (Hyper)"
+	name = "white boa"
 	desc = "Fluffy neck wear to keep you warm, and attract others."
 	icon = 'modular_splurt/icons/obj/clothing/neck.dmi'
 	w_class = WEIGHT_CLASS_SMALL
@@ -55,7 +55,7 @@
 	color = "#3d3d3d"
 
 /obj/item/clothing/suit/fluffyhalfcrop
-	name = "fluffy half-crop jacket (Hyper)"
+	name = "fluffy half-crop jacket"
 	desc = "A fluffy synthetic fur half-cropped jacket, less about warmth, more about style!"
 	icon_state = "fluffy"
 	item_state = "fluffy"
@@ -66,7 +66,7 @@
 	mutantrace_variation = NONE
 
 /obj/item/clothing/under/centcomdress
-	name = "Centcom Dress Uniform (Hyper)"
+	name = "Centcom Dress Uniform"
 	desc = "A stylish yet revealing dress uniform worn in extravagent black and gold, worthy of those who sit around and watch cameras all day in an office."
 	icon = 'modular_splurt/icons/obj/clothing/suits.dmi'
 	icon_state = "ccdress"
@@ -82,7 +82,7 @@
 	armor = list("melee" = 60, "bullet" = 80, "laser" = 80, "energy" = 90, "bomb" = 50, "bio" = 100, "rad" = 50, "fire" = 50, "acid" = 50)
 
 /obj/item/clothing/under/centcomdressvk
-	name = "Virginkiller Centcom Dress Uniform (Hyper)"
+	name = "Virginkiller Centcom Dress Uniform"
 	desc = "This black and gold beauty does not help paperwork get done, it seems."
 	icon = 'modular_splurt/icons/obj/clothing/suits.dmi'
 	icon_state = "ccdressvk"
