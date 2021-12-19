@@ -102,7 +102,7 @@
 
 /datum/sprite_accessory/snouts/mam_snouts/synthliz/synthlizspectre
 	name = "Synthetic Lizard - Spectre"
-
+	icon = 'modular_splurt/icons/mob/synthliz_snouts.dmi'
 	icon_state = "synthlizspectre"
 	color_src = MATRIXED
 	matrixed_sections = MATRIX_ALL
