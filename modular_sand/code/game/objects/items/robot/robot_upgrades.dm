@@ -160,13 +160,15 @@
 			R.SetLockdown(0)
 		R.anchored = FALSE
 		R.mob_transforming = FALSE
-		R.transform = R.transform.Scale(1.25, 1.25)
+		R.transform = R.transform.Scale(2, 2)
+		R.pixel_y += 16
 		R.hasExpanded = TRUE
 
 /obj/item/borg/upgrade/expand/deactivate(mob/living/silicon/robot/R, user = usr)
 	. = ..()
 	if (.)
-		R.transform = R.transform.Scale(0.8, 0.8)
+		R.transform = R.transform.Scale(0.5, 0.5)
+		R.pixel_y -= 16
 		R.hasExpanded = FALSE
 
 /obj/item/borg/upgrade/shrink
