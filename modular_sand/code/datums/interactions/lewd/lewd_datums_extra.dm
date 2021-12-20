@@ -218,7 +218,7 @@
 
 /datum/interaction/lewd/nuzzle_belly
 	command = "nuzzle_belly"
-	description = "Nuzzle belly"
+	description = "Nuzzle their belly"
 	require_target_belly = REQUIRE_EXPOSED
 	interaction_sound = null
 	max_distance = 1

@@ -418,6 +418,7 @@
 					if(!target.has_belly(REQUIRE_EXPOSED))
 						if(!silent)
 							to_chat(user, "<span class='warning'>Their belly needs to be exposed.</span>")
+						return FALSE
 				if(REQUIRE_ANY)
 					if(!target.has_belly(REQUIRE_ANY))
 						if(!silent)
