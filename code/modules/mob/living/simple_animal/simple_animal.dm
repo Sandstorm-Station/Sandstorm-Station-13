@@ -484,6 +484,7 @@
 	if(resize != RESIZE_DEFAULT_SIZE)
 		changed++
 		ntransform.Scale(resize)
+		ntransform.Translate(0, 16*(resize-1)) //Makes sure you stand on the tile no matter the size - sand
 		resize = RESIZE_DEFAULT_SIZE
 
 	if(changed)

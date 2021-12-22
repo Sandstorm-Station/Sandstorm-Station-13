@@ -160,31 +160,19 @@
 			R.SetLockdown(0)
 		R.anchored = FALSE
 		R.mob_transforming = FALSE
-		R.resize = ExpandSize/100
-		R.update_transform()
+		R.update_size(2)
 		R.hasExpanded = TRUE
-
-/obj/item/borg/upgrade/expand/attack_self(mob/user)
-	if(src && !user.incapacitated() && in_range(user,src))
-		ExpandSize = input(user,"Choose the size of expanding (101-250)","Expander size setting") as null|num
-		if(src && ExpandSize && !user.incapacitated() && in_range(user,src))
-			sanitize_integer(ExpandSize, 101, 250, 200) //sanitize_integer won't work!
-			if(!(101 <= ExpandSize && ExpandSize <= 250) || !isnum(ExpandSize) || ExpandSize == null)
-				ExpandSize = 200
-			to_chat(user, "<span class='notice'>Expand set to [ExpandSize] %.</span>")
-			return ExpandSize
 
 /obj/item/borg/upgrade/expand/deactivate(mob/living/silicon/robot/R, user = usr)
 	. = ..()
-	if (. && R.hasExpanded)
-		R.transform = null
+	if (.)
+		R.update_size(1)
 		R.hasExpanded = FALSE
 
 /obj/item/borg/upgrade/shrink
 	name = "borg shrinker"
 	desc = "A cyborg resizer, it makes a cyborg small."
 	icon_state = "cyborg_upgrade3"
-	var/ShrinkSize = 50
 
 /obj/item/borg/upgrade/shrink/action(mob/living/silicon/robot/R, user = usr)
 	. = ..()
@@ -213,24 +201,13 @@
 			R.SetLockdown(0)
 		R.anchored = FALSE
 		R.mob_transforming = FALSE
-		R.resize = ShrinkSize/100
-		R.update_transform()
+		R.update_size(0.75)
 		R.hasShrunk = TRUE
-
-/obj/item/borg/upgrade/shrink/attack_self(mob/user)
-	if(src && !user.incapacitated() && in_range(user,src))
-		ShrinkSize = input(user,"Choose the size of shrinking (50-99)","Shrinker size setting") as null|num
-		if(src && ShrinkSize && !user.incapacitated() && in_range(user,src))
-			sanitize_integer(ShrinkSize, 50, 99, 50) //sanitize_integer won't work!
-			if(!(50 <= ShrinkSize && ShrinkSize <= 99) || !isnum(ShrinkSize) || ShrinkSize == null)
-				ShrinkSize = 50
-			to_chat(user, "<span class='notice'>Shrink set to [ShrinkSize] %.</span>")
-			return ShrinkSize
 
 /obj/item/borg/upgrade/shrink/deactivate(mob/living/silicon/robot/R, user = usr)
 	. = ..()
-	if (. && R.hasShrunk)
-		R.transform = null
+	if (.)
+		R.update_size(1)
 		R.hasShrunk = FALSE
 
 /obj/item/borg/upgrade/transform/syndicatejack
