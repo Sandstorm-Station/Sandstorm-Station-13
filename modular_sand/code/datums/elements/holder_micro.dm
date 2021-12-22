@@ -35,7 +35,8 @@
 		return FALSE
 	if(!ishuman(user) || !user.Adjacent(source) || user.incapacitated())
 		return FALSE
-	if(abs(get_size(user)/get_size(source)) < 2.0 )
+	//if(abs(get_size(user)/get_size(source)) < 2.0)
+	if(abs(get_size(source)/get_size(user)) > CONFIG_GET(number/max_pick_ratio))
 		to_chat(user, "<span class='warning'>They're too big to pick up!</span>")
 		return FALSE
 	if(user.get_active_held_item())

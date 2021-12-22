@@ -24,3 +24,8 @@
 /datum/config_entry/number/max_stupor_hypno_duration	//Maximum random duration to maintain hypnosis from hypnotic stupor
 	config_entry_value = 12000
 	min_val = 10
+
+/datum/config_entry/number/max_pick_ratio 	//Maximum ratio between pick target/picker user
+	config_entry_value = 0.5
+	min_val = 0
+	integer = FALSE
