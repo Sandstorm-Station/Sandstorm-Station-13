@@ -160,15 +160,13 @@
 			R.SetLockdown(0)
 		R.anchored = FALSE
 		R.mob_transforming = FALSE
-		R.transform = R.transform.Scale(2, 2)
-		R.pixel_y += 16
+		R.update_size(2)
 		R.hasExpanded = TRUE
 
 /obj/item/borg/upgrade/expand/deactivate(mob/living/silicon/robot/R, user = usr)
 	. = ..()
 	if (.)
-		R.transform = R.transform.Scale(0.5, 0.5)
-		R.pixel_y -= 16
+		R.update_size(1)
 		R.hasExpanded = FALSE
 
 /obj/item/borg/upgrade/shrink
@@ -204,13 +202,13 @@
 			R.SetLockdown(0)
 		R.anchored = FALSE
 		R.mob_transforming = FALSE
-		R.transform = R.transform.Scale(0.75, 0.75)
+		R.update_size(0.75)
 		R.hasShrunk = TRUE
 
 /obj/item/borg/upgrade/shrink/deactivate(mob/living/silicon/robot/R, user = usr)
 	. = ..()
 	if (.)
-		R.transform = R.transform.Scale((4/3), (4/3))
+		R.update_size(1)
 		R.hasShrunk = FALSE
 
 /obj/item/borg/upgrade/transform/syndicatejack
