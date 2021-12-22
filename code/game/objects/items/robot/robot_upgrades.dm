@@ -561,7 +561,6 @@ as performing this in action() will cause the upgrade to end up in the borg inst
 	name = "borg expander"
 	desc = "A cyborg resizer, it makes a cyborg huge."
 	icon_state = "cyborg_upgrade3"
-	var/ExpandSize = 200
 
 /* moved to modular_sand
 /obj/item/borg/upgrade/expand/action(mob/living/silicon/robot/R, user = usr)
