@@ -980,7 +980,6 @@
 
 	if (hasExpanded)
 		resize = 0.5
-		pixel_y -= 16
 		hasExpanded = FALSE
 		update_transform()
 	logevent("Chassis configuration has been reset.")
