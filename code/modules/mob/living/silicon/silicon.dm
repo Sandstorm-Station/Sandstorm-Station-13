@@ -418,6 +418,7 @@
 	if(resize != RESIZE_DEFAULT_SIZE)
 		changed++
 		ntransform.Scale(resize)
+		ntransform.Translate(0, 16*(resize-1))
 		resize = RESIZE_DEFAULT_SIZE
 
 	if(changed)
