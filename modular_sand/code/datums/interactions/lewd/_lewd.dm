@@ -25,8 +25,8 @@
 #define REQUIRE_ANY 3
 
 /*--------------------------------------------------
-  -------------------MOB STUFF----------------------
-  --------------------------------------------------
+-------------------MOB STUFF----------------------
+--------------------------------------------------
 */
 //I'm sorry, lewd should not have mob procs such as life() and such in it. //NO SHIT IT SHOULDNT I REMOVED THEM
 
@@ -70,15 +70,15 @@
 	var/last_orifice
 	var/obj/item/organ/last_genital
 	var/lastmoan
-	var/sexual_potency =  15
+	var/sexual_potency = 15
 	var/lust_tolerance = 100
 	var/lastlusttime = 0
 	var/lust = 0
 	var/multiorgasms = 1
 	var/refractory_period = 0
 	var/last_interaction_time = 0
-	var/datum/interaction/lewd/last_lewd_datum //Recording our last lewd datum allows us to do stuff like custom cum messages.
-											   //Yes i feel like an idiot writing this.
+	var/datum/interaction/lewd/last_lewd_datum	//Recording our last lewd datum allows us to do stuff like custom cum messages.
+												//Yes i feel like an idiot writing this.
 	var/cleartimer //Timer for clearing the "last_lewd_datum". This prevents some oddities.
 
 /mob/living/proc/clear_lewd_datum()
@@ -87,7 +87,7 @@
 
 /mob/living/Initialize()
 	. = ..()
-	sexual_potency =  rand(10,25)
+	sexual_potency =rand(10,25)
 	lust_tolerance = rand(75,200)
 
 /mob/living/proc/get_lust_tolerance()
@@ -1138,7 +1138,7 @@
 
 	if(is_fucking(partner, CUM_TARGET_THROAT))
 		message = "[pick(
-			"brutally shoves [u_His] cock into  \the <b>[partner]</b>'s throat to make [t_Him] gag.",
+			"brutally shoves [u_His] cock into \the <b>[partner]</b>'s throat to make [t_Him] gag.",
 			"chokes \the <b>[partner]</b> on [u_His] dick, going in balls deep.",
 			"slams in and out of \the <b>[partner]</b>'s mouth, [u_His] balls slapping off [t_His] face.")]"
 		if(rand(3))
