@@ -340,6 +340,31 @@
 				log_game("[key_name(usr)] enabled emergency maintenance access.")
 				message_admins("[ADMIN_LOOKUPFLW(usr)] enabled emergency maintenance access.")
 				deadchat_broadcast(" enabled emergency maintenance access at <span class='name'>[get_area_name(usr, TRUE)]</span>.", "<span class='name'>[usr.real_name]</span>", usr)
+		if("toggleBought")
+			var/boughtID = params["id"]
+
+			for(var/tracked_slave in GLOB.tracked_slaves)
+				var/obj/item/electropack/shockcollar/slave/C = tracked_slave
+				if (REF(C) == boughtID)
+
+					var/datum/bank_account/bank = SSeconomy.get_dep_account(ACCOUNT_CAR)
+					if(bank)
+						if(C.bought)
+							bank.adjust_money(C.price)
+							GLOB.slavers_credits_deposits -= C.price
+							C.bought = FALSE
+
+							for(var/obj/machinery/computer/slavery/tracked_slave_console in GLOB.tracked_slave_consoles)
+								tracked_slave_console.radioAnnounce("The station has recalled the ransom funds for [C.loc.name]")
+
+						else
+							bank.adjust_money(-C.price)
+							GLOB.slavers_credits_deposits += C.price
+							C.bought = TRUE
+
+							for(var/obj/machinery/computer/slavery/tracked_slave_console in GLOB.tracked_slave_consoles)
+								tracked_slave_console.radioAnnounce("The station has paid the ransom funds for [C.loc.name]")
+					break
 
 /obj/machinery/computer/communications/ui_data(mob/user)
 	var/list/data = list(
@@ -376,6 +401,35 @@
 				data["authorizeName"] = authorize_name
 				data["canLogOut"] = !issilicon(user)
 				data["shuttleCanEvacOrFailReason"] = SSshuttle.canEvac(user, TRUE)
+
+				var/list/slaves = list()
+				data["slaves"] = list()
+				var/datum/bank_account/bank = SSeconomy.get_dep_account(ACCOUNT_CAR)
+				data["cargocredits"] = bank.account_balance
+
+				for(var/tracked_slave in GLOB.tracked_slaves)
+					var/obj/item/electropack/shockcollar/slave/C = tracked_slave
+					if (!C.price || !isliving(C.loc))
+						continue;
+
+					var/mob/living/L = C.loc
+					var/turf/pos = get_turf(L)
+					if(!pos || C != L.get_item_by_slot(SLOT_NECK))
+						continue
+
+					var/list/slave = list()
+					slave["id"] = REF(C)
+					slave["name"] = L.real_name
+					slave["bought"] = C.bought
+					slave["price"] = C.price
+
+					if(bank && !C.bought && bank.account_balance < C.price)
+						slave["cannotafford"] = TRUE
+					else
+						slave["cannotafford"] = FALSE
+
+					slaves += list(slave) //Add this slave to the list of slaves
+				data["slaves"] = slaves
 
 				if (authenticated_as_non_silicon_captain(user))
 					data["canRequestNuke"] = TRUE

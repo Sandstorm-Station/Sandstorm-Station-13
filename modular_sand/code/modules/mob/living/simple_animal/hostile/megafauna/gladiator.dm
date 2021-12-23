@@ -107,13 +107,13 @@ They deal 35 brute (armor is considered).
 	if(ishuman(target))
 		var/mob/living/carbon/human/H = target
 		var/datum/species/Hspecies = H.dna.species
-		if(Hspecies.id == "ashlizard")
+		if(Hspecies.id == SPECIES_ASHWALKER_EAST)
 			var/list/messages = list("I am sorry, tribesssmate. I cannot let you through.",\
 									"Pleassse leave, walker.",\
 									"The necropolisss must be protected even from it'ss servants. Pleassse retreat.")
 			say(message = pick(messages), language = /datum/language/draconic)
 			introduced |= H
-		else if(Hspecies.id == "lizard")
+		else if(Hspecies.id == "lizard" || Hspecies.id == SPECIES_ASHWALKER_WEST)
 			var/list/messages = list("Thisss isss not the time nor place to be. Leave.",\
 									"Go back where you came from. I am sssafeguarding thisss sssacred place.",\
 									"You ssshould not be here. Turn.",\

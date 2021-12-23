@@ -75,6 +75,7 @@
 					/obj/item/clothing/accessory/suitjacket/navy = 2,
 					/obj/item/clothing/accessory/suitjacket/burgundy = 2,
 					/obj/item/clothing/accessory/suitjacket/checkered = 2,
+					/obj/item/clothing/suit/fluffyhalfcrop = 3,
 					/obj/item/clothing/suit/jacket/miljacket = 5,
 					/obj/item/clothing/suit/jacket/urbanjacket/polychromic = 5,
 					/obj/item/clothing/under/suit/white_on_white/skirt = 2,

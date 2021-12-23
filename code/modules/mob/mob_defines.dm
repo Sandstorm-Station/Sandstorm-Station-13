@@ -142,6 +142,8 @@
 
 	var/registered_z
 
+	var/canloadappearance = FALSE
+
 	var/list/alerts = list() // contains /atom/movable/screen/alert only // On /mob so clientless mobs will throw alerts properly
 	var/list/screens = list()
 	var/list/client_colours = list()

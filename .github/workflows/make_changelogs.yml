@@ -7,7 +7,7 @@ on:
 jobs:
   MakeCL:
     runs-on: ubuntu-latest
-    if: github.repository == 'Sandstorm-Station/Sandstorm-Station-13' && !contains(github.event.head_commit.message, '[ci skip]')
+    if: github.repository == 'SPLURT-Station/S.P.L.U.R.T-Station-13' && !contains(github.event.head_commit.message, '[ci skip]')
     steps:
       - name: Checkout
         uses: actions/checkout@v1
@@ -25,6 +25,6 @@ jobs:
         env:
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }} #Use this instead if you have unprotected branches
           #GITHUB_TOKEN: ${{ secrets.CL_TOKEN }}
-          GIT_EMAIL: "65441914+Sandstorm-Station@users.noreply.github.com"
-          GIT_NAME: "Sandstorm Bot"
+          GIT_EMAIL: "SPLURT-Station@users.noreply.github.com"
+          GIT_NAME: "SPLURT Bot"
         run: python tools/changelog/generate_cl.py

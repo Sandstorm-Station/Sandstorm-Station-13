@@ -149,7 +149,7 @@
 			message_admins("Blocked [src] from new player panel because age gate could not access player database flags.")
 			return FALSE
 
-		if(!(client.prefs.db_flags & DB_FLAG_AGE_CONFIRMATION_INCOMPLETE)) //completed? Skip
+		if(client.prefs.db_flags & DB_FLAG_AGE_CONFIRMATION_COMPLETE) //completed? Skip
 			return TRUE
 
 		var/age_verification = age_gate()

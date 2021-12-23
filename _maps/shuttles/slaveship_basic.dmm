@@ -1,0 +1,1167 @@
+//MAP CONVERTED BY dmm2tgm.py THIS HEADER COMMENT PREVENTS RECONVERSION, DO NOT REMOVE
+"af" = (
+/obj/machinery/computer/camera_advanced/shuttle_docker/slaver,
+/obj/effect/turf_decal/tile/neutral{
+	dir = 1
+	},
+/obj/effect/turf_decal/tile/neutral{
+	dir = 4
+	},
+/turf/open/floor/plasteel/dark,
+/area/shuttle/slaveship)
+"ak" = (
+/obj/machinery/computer/shuttle/slaver,
+/obj/effect/turf_decal/tile/neutral{
+	dir = 1
+	},
+/obj/effect/turf_decal/tile/neutral{
+	dir = 4
+	},
+/turf/open/floor/plasteel/dark,
+/area/shuttle/slaveship)
+"ax" = (
+/turf/closed/wall/r_wall/syndicate,
+/area/shuttle/slaveship)
+"ay" = (
+/obj/machinery/computer/camera_advanced/syndie,
+/obj/effect/turf_decal/tile/neutral{
+	dir = 1
+	},
+/obj/effect/turf_decal/tile/neutral{
+	dir = 4
+	},
+/turf/open/floor/plasteel/dark,
+/area/shuttle/slaveship)
+"aA" = (
+/turf/open/floor/plasteel/dark,
+/area/shuttle/slaveship)
+"bj" = (
+/obj/structure/chair/comfy/shuttle{
+	dir = 4
+	},
+/turf/open/floor/plasteel/dark,
+/area/shuttle/slaveship)
+"bK" = (
+/obj/effect/turf_decal/tile/neutral,
+/obj/effect/turf_decal/tile/neutral{
+	dir = 8
+	},
+/obj/effect/turf_decal/tile/neutral{
+	dir = 1
+	},
+/turf/open/floor/plasteel/dark,
+/area/shuttle/slaveship)
+"bN" = (
+/obj/effect/turf_decal/tile/neutral,
+/obj/machinery/light,
+/obj/effect/turf_decal/tile/neutral{
+	dir = 8
+	},
+/turf/open/floor/plasteel/dark,
+/area/shuttle/slaveship)
+"bP" = (
+/obj/machinery/computer/med_data/syndie,
+/obj/effect/turf_decal/tile/neutral{
+	dir = 8
+	},
+/obj/effect/turf_decal/tile/neutral{
+	dir = 1
+	},
+/obj/effect/turf_decal/tile/neutral{
+	dir = 4
+	},
+/turf/open/floor/plasteel/dark,
+/area/shuttle/slaveship)
+"bV" = (
+/obj/effect/turf_decal/tile/neutral{
+	dir = 8
+	},
+/obj/effect/turf_decal/tile/neutral{
+	dir = 1
+	},
+/turf/open/floor/plasteel/dark,
+/area/shuttle/slaveship)
+"cc" = (
+/obj/effect/turf_decal/tile/neutral,
+/obj/effect/turf_decal/tile/neutral{
+	dir = 8
+	},
+/turf/open/floor/plasteel/dark,
+/area/shuttle/slaveship)
+"ct" = (
+/turf/open/floor/plating,
+/area/shuttle/slaveship)
+"cy" = (
+/obj/structure/shuttle/engine/propulsion/left,
+/turf/open/floor/plating,
+/area/shuttle/slaveship)
+"cO" = (
+/obj/effect/turf_decal/tile/neutral,
+/obj/effect/turf_decal/tile/neutral{
+	dir = 8
+	},
+/obj/machinery/button/door{
+	id = "slaveshipshutters";
+	name = "Cockpit Shutter Control";
+	pixel_y = -26
+	},
+/turf/open/floor/plasteel/dark,
+/area/shuttle/slaveship)
+"ev" = (
+/obj/effect/turf_decal/tile/brown,
+/obj/effect/turf_decal/tile/brown{
+	dir = 8
+	},
+/turf/open/floor/mineral/plastitanium/red,
+/area/shuttle/slaveship)
+"fI" = (
+/obj/effect/turf_decal/tile/neutral,
+/obj/effect/turf_decal/tile/neutral{
+	dir = 8
+	},
+/obj/effect/turf_decal/tile/neutral{
+	dir = 4
+	},
+/obj/structure/table/reinforced,
+/obj/item/radio,
+/obj/item/radio,
+/obj/item/radio,
+/turf/open/floor/plasteel/dark,
+/area/shuttle/slaveship)
+"gc" = (
+/obj/machinery/light{
+	dir = 1
+	},
+/turf/open/floor/mech_bay_recharge_floor,
+/area/shuttle/slaveship)
+"gZ" = (
+/obj/machinery/door/airlock/hatch{
+	req_access_txt = "152"
+	},
+/turf/open/floor/plasteel/dark,
+/area/shuttle/slaveship)
+"hR" = (
+/obj/effect/turf_decal/tile/blue{
+	dir = 4
+	},
+/obj/effect/turf_decal/tile/blue{
+	dir = 1
+	},
+/turf/open/floor/plasteel/dark,
+/area/shuttle/slaveship)
+"iP" = (
+/obj/item/storage/firstaid/regular{
+	pixel_x = 3;
+	pixel_y = 3
+	},
+/obj/structure/table/reinforced,
+/obj/effect/turf_decal/tile/blue{
+	dir = 4
+	},
+/obj/effect/turf_decal/tile/blue{
+	dir = 8
+	},
+/obj/effect/turf_decal/tile/blue{
+	dir = 1
+	},
+/obj/item/storage/firstaid/o2,
+/obj/item/storage/firstaid/toxin{
+	pixel_x = -3;
+	pixel_y = -3
+	},
+/turf/open/floor/plasteel/dark,
+/area/shuttle/slaveship)
+"kG" = (
+/obj/item/reagent_containers/glass/bottle/epinephrine{
+	pixel_x = 6
+	},
+/obj/item/reagent_containers/glass/bottle/charcoal{
+	pixel_x = -3
+	},
+/obj/item/reagent_containers/glass/bottle/epinephrine{
+	pixel_x = -3;
+	pixel_y = 8
+	},
+/obj/item/reagent_containers/glass/bottle/charcoal{
+	pixel_x = 6;
+	pixel_y = 8
+	},
+/obj/item/reagent_containers/syringe/epinephrine{
+	pixel_x = 3;
+	pixel_y = -2
+	},
+/obj/item/reagent_containers/syringe/epinephrine{
+	pixel_x = 2;
+	pixel_y = 8
+	},
+/obj/structure/table/reinforced,
+/obj/effect/turf_decal/bot_white,
+/obj/item/stack/medical/mesh,
+/obj/item/stack/medical/gauze,
+/obj/item/stack/medical/suture,
+/obj/effect/turf_decal/tile/blue{
+	dir = 8
+	},
+/obj/effect/turf_decal/tile/blue{
+	dir = 1
+	},
+/turf/open/floor/plasteel/dark,
+/area/shuttle/slaveship)
+"le" = (
+/obj/structure/bed/roller,
+/obj/effect/turf_decal/tile/blue{
+	dir = 4
+	},
+/obj/effect/turf_decal/tile/blue,
+/turf/open/floor/plasteel/dark,
+/area/shuttle/slaveship)
+"mA" = (
+/obj/machinery/sleeper{
+	dir = 8
+	},
+/obj/effect/turf_decal/tile/blue{
+	dir = 4
+	},
+/obj/effect/turf_decal/tile/blue{
+	dir = 1
+	},
+/obj/effect/turf_decal/tile/blue,
+/turf/open/floor/plasteel/dark,
+/area/shuttle/slaveship)
+"ph" = (
+/obj/item/storage/firstaid/regular{
+	pixel_x = 3;
+	pixel_y = 3
+	},
+/obj/item/storage/firstaid/fire,
+/obj/structure/table/reinforced,
+/obj/effect/turf_decal/tile/blue{
+	dir = 8
+	},
+/obj/effect/turf_decal/tile/blue{
+	dir = 1
+	},
+/obj/effect/turf_decal/tile/blue,
+/obj/item/storage/firstaid/brute{
+	pixel_x = -3;
+	pixel_y = -3
+	},
+/turf/open/floor/plasteel/dark,
+/area/shuttle/slaveship)
+"pj" = (
+/obj/structure/grille,
+/obj/structure/window/plastitanium,
+/obj/machinery/door/poddoor/shutters{
+	id = "slaveshipshutters";
+	name = "blast shutters"
+	},
+/turf/open/floor/plating,
+/area/shuttle/slaveship)
+"pl" = (
+/obj/machinery/light,
+/turf/open/floor/plasteel/dark,
+/area/shuttle/slaveship)
+"po" = (
+/obj/structure/table/reinforced,
+/obj/item/clothing/mask/muzzle,
+/obj/item/clothing/glasses/sunglasses/blindfold{
+	pixel_y = 4
+	},
+/turf/open/floor/plasteel/dark,
+/area/shuttle/slaveship)
+"qc" = (
+/obj/machinery/sleeper{
+	dir = 8
+	},
+/obj/effect/turf_decal/tile/blue{
+	dir = 4
+	},
+/obj/effect/turf_decal/tile/blue{
+	dir = 8
+	},
+/obj/effect/turf_decal/tile/blue,
+/turf/open/floor/plasteel/dark,
+/area/shuttle/slaveship)
+"qT" = (
+/obj/machinery/light{
+	dir = 8
+	},
+/turf/open/floor/plasteel/dark,
+/area/shuttle/slaveship)
+"rc" = (
+/obj/machinery/light{
+	dir = 4
+	},
+/turf/open/floor/plasteel/dark,
+/area/shuttle/slaveship)
+"sn" = (
+/obj/effect/turf_decal/tile/neutral{
+	dir = 1
+	},
+/obj/effect/turf_decal/tile/neutral{
+	dir = 4
+	},
+/obj/machinery/light{
+	dir = 1
+	},
+/turf/open/floor/plasteel/dark,
+/area/shuttle/slaveship)
+"sv" = (
+/obj/structure/chair/comfy/shuttle{
+	dir = 1
+	},
+/turf/open/floor/plasteel/dark,
+/area/shuttle/slaveship)
+"um" = (
+/obj/effect/turf_decal/tile/neutral,
+/obj/effect/turf_decal/tile/neutral{
+	dir = 1
+	},
+/obj/effect/turf_decal/tile/neutral{
+	dir = 4
+	},
+/obj/machinery/portable_atmospherics/canister/oxygen,
+/turf/open/floor/plasteel/dark,
+/area/shuttle/slaveship)
+"uy" = (
+/obj/effect/turf_decal/tile/red{
+	dir = 4
+	},
+/obj/effect/turf_decal/tile/red,
+/turf/open/floor/plating,
+/area/shuttle/slaveship)
+"uZ" = (
+/obj/machinery/light{
+	dir = 1
+	},
+/obj/structure/chair/comfy/shuttle,
+/obj/effect/turf_decal/bot_white,
+/turf/open/floor/plasteel/dark,
+/area/shuttle/slaveship)
+"vV" = (
+/obj/machinery/computer/crew/syndie,
+/obj/effect/turf_decal/tile/neutral{
+	dir = 1
+	},
+/obj/effect/turf_decal/tile/neutral{
+	dir = 4
+	},
+/turf/open/floor/plasteel/dark,
+/area/shuttle/slaveship)
+"wl" = (
+/obj/structure/table/reinforced,
+/obj/machinery/recharger,
+/turf/open/floor/plasteel/dark,
+/area/shuttle/slaveship)
+"xr" = (
+/obj/effect/turf_decal/tile/neutral{
+	dir = 8
+	},
+/obj/effect/turf_decal/tile/neutral{
+	dir = 1
+	},
+/obj/structure/tank_dispenser/oxygen,
+/turf/open/floor/mineral/plastitanium,
+/area/shuttle/slaveship)
+"xX" = (
+/obj/effect/turf_decal/tile/neutral,
+/obj/effect/turf_decal/tile/neutral{
+	dir = 4
+	},
+/turf/open/floor/plasteel/dark,
+/area/shuttle/slaveship)
+"yJ" = (
+/obj/effect/turf_decal/tile/neutral{
+	dir = 8
+	},
+/obj/effect/turf_decal/tile/neutral{
+	dir = 1
+	},
+/obj/effect/turf_decal/tile/neutral{
+	dir = 4
+	},
+/obj/machinery/suit_storage_unit/mining/eva,
+/turf/open/floor/mineral/plastitanium,
+/area/shuttle/slaveship)
+"zI" = (
+/obj/machinery/door/poddoor{
+	id = "slaveshipdoor"
+	},
+/obj/machinery/button/door{
+	id = "slaveshipdoor";
+	name = "external door control";
+	pixel_y = 26;
+	req_access_txt = "152"
+	},
+/obj/docking_port/mobile{
+	dheight = 1;
+	dir = 8;
+	dwidth = 10;
+	height = 15;
+	hidden = 1;
+	id = "slaver";
+	movement_force = list("KNOCKDOWN" = 0, "THROW" = 0);
+	name = "slaveship";
+	port_direction = 4;
+	width = 22
+	},
+/turf/open/floor/plating,
+/area/shuttle/slaveship)
+"zT" = (
+/obj/structure/shuttle/engine/propulsion,
+/turf/open/floor/plating,
+/area/shuttle/slaveship)
+"Aw" = (
+/obj/machinery/door/window/westright,
+/obj/effect/turf_decal/tile/yellow{
+	dir = 1
+	},
+/obj/effect/turf_decal/tile/yellow{
+	dir = 8
+	},
+/turf/open/floor/plasteel/dark,
+/area/shuttle/slaveship)
+"Cd" = (
+/obj/effect/turf_decal/tile/neutral,
+/obj/effect/turf_decal/tile/neutral{
+	dir = 8
+	},
+/obj/effect/turf_decal/tile/neutral{
+	dir = 1
+	},
+/obj/machinery/suit_storage_unit/mining/eva,
+/turf/open/floor/mineral/plastitanium,
+/area/shuttle/slaveship)
+"Cj" = (
+/obj/effect/turf_decal/stripes/line{
+	dir = 9
+	},
+/turf/open/floor/mineral/plastitanium/red,
+/area/shuttle/slaveship)
+"CM" = (
+/obj/effect/turf_decal/tile/neutral,
+/obj/effect/turf_decal/tile/neutral{
+	dir = 8
+	},
+/obj/machinery/light,
+/turf/open/floor/plasteel/dark,
+/area/shuttle/slaveship)
+"Dj" = (
+/obj/effect/turf_decal/caution/stand_clear/white{
+	dir = 8
+	},
+/obj/effect/turf_decal/stripes/line{
+	dir = 8
+	},
+/turf/open/floor/mineral/plastitanium/red,
+/area/shuttle/slaveship)
+"DB" = (
+/obj/effect/turf_decal/tile/red{
+	dir = 1
+	},
+/obj/effect/turf_decal/tile/red{
+	dir = 8
+	},
+/turf/open/floor/plating,
+/area/shuttle/slaveship)
+"Ey" = (
+/turf/closed/wall/r_wall/syndicate/nodiagonal,
+/area/shuttle/slaveship)
+"Fm" = (
+/obj/effect/turf_decal/tile/neutral{
+	dir = 8
+	},
+/obj/effect/turf_decal/tile/neutral{
+	dir = 1
+	},
+/obj/machinery/suit_storage_unit/mining/eva,
+/turf/open/floor/mineral/plastitanium,
+/area/shuttle/slaveship)
+"FG" = (
+/obj/effect/turf_decal/tile/neutral,
+/obj/effect/turf_decal/tile/neutral{
+	dir = 8
+	},
+/obj/effect/turf_decal/tile/neutral{
+	dir = 4
+	},
+/obj/structure/rack,
+/turf/open/floor/plasteel/dark,
+/area/shuttle/slaveship)
+"Gj" = (
+/obj/structure/chair/comfy/shuttle{
+	dir = 1
+	},
+/obj/effect/turf_decal/bot_white,
+/turf/open/floor/plasteel/dark,
+/area/shuttle/slaveship)
+"Go" = (
+/obj/effect/turf_decal/tile/neutral,
+/obj/effect/turf_decal/tile/neutral{
+	dir = 4
+	},
+/obj/structure/table/reinforced,
+/turf/open/floor/plasteel/dark,
+/area/shuttle/slaveship)
+"GC" = (
+/obj/effect/turf_decal/stripes/line{
+	dir = 10
+	},
+/turf/open/floor/mineral/plastitanium/red,
+/area/shuttle/slaveship)
+"GG" = (
+/obj/machinery/light,
+/obj/structure/chair/comfy/shuttle{
+	dir = 1
+	},
+/obj/effect/turf_decal/bot_white,
+/turf/open/floor/plasteel/dark,
+/area/shuttle/slaveship)
+"Iw" = (
+/obj/effect/turf_decal/tile/red{
+	dir = 4
+	},
+/obj/effect/turf_decal/tile/red{
+	dir = 1
+	},
+/obj/effect/turf_decal/tile/red{
+	dir = 8
+	},
+/obj/structure/bed/matress,
+/turf/open/floor/plating,
+/area/shuttle/slaveship)
+"JG" = (
+/obj/effect/decal/cleanable/blood,
+/obj/effect/turf_decal/tile/red{
+	dir = 4
+	},
+/obj/effect/turf_decal/tile/red{
+	dir = 1
+	},
+/obj/machinery/light{
+	dir = 1
+	},
+/turf/open/floor/plating,
+/area/shuttle/slaveship)
+"Lr" = (
+/obj/effect/turf_decal/tile/neutral,
+/obj/machinery/light,
+/obj/effect/turf_decal/tile/neutral{
+	dir = 8
+	},
+/obj/structure/table/reinforced,
+/turf/open/floor/plasteel/dark,
+/area/shuttle/slaveship)
+"LG" = (
+/obj/effect/turf_decal/tile/red{
+	dir = 4
+	},
+/obj/effect/turf_decal/tile/red{
+	dir = 1
+	},
+/obj/effect/turf_decal/tile/red,
+/turf/open/floor/plating,
+/area/shuttle/slaveship)
+"MJ" = (
+/turf/template_noop,
+/area/template_noop)
+"Pl" = (
+/obj/structure/table/reinforced,
+/obj/item/storage/box/handcuffs{
+	pixel_x = 3;
+	pixel_y = 3
+	},
+/obj/item/storage/box/handcuffs,
+/turf/open/floor/plasteel/dark,
+/area/shuttle/slaveship)
+"Qd" = (
+/obj/machinery/computer/mech_bay_power_console,
+/obj/effect/turf_decal/tile/yellow{
+	dir = 1
+	},
+/obj/effect/turf_decal/tile/yellow{
+	dir = 4
+	},
+/turf/open/floor/plasteel/dark,
+/area/shuttle/slaveship)
+"Qz" = (
+/obj/effect/turf_decal/tile/neutral{
+	dir = 1
+	},
+/obj/effect/turf_decal/tile/neutral{
+	dir = 4
+	},
+/obj/structure/table/reinforced,
+/turf/open/floor/plasteel/dark,
+/area/shuttle/slaveship)
+"Rv" = (
+/obj/structure/window/reinforced{
+	dir = 8
+	},
+/obj/machinery/recharge_station,
+/obj/effect/turf_decal/tile/yellow{
+	dir = 1
+	},
+/obj/effect/turf_decal/tile/yellow{
+	dir = 8
+	},
+/obj/effect/turf_decal/tile/yellow{
+	dir = 4
+	},
+/turf/open/floor/plasteel/dark,
+/area/shuttle/slaveship)
+"RD" = (
+/obj/effect/turf_decal/tile/yellow,
+/obj/effect/turf_decal/tile/yellow{
+	dir = 1
+	},
+/obj/effect/turf_decal/tile/yellow{
+	dir = 4
+	},
+/obj/machinery/mech_bay_recharge_port{
+	dir = 8
+	},
+/turf/open/floor/plasteel/dark,
+/area/shuttle/slaveship)
+"RL" = (
+/obj/effect/turf_decal/tile/yellow{
+	dir = 1
+	},
+/obj/effect/turf_decal/tile/yellow{
+	dir = 4
+	},
+/obj/effect/turf_decal/bot,
+/obj/structure/reagent_dispensers/watertank,
+/turf/open/floor/plasteel/dark,
+/area/shuttle/slaveship)
+"Sv" = (
+/obj/effect/turf_decal/tile/yellow{
+	dir = 1
+	},
+/obj/effect/turf_decal/tile/yellow{
+	dir = 4
+	},
+/obj/effect/turf_decal/delivery,
+/obj/structure/reagent_dispensers/fueltank,
+/turf/open/floor/plasteel/dark,
+/area/shuttle/slaveship)
+"Sw" = (
+/obj/effect/decal/cleanable/oil,
+/turf/open/floor/plasteel/dark,
+/area/shuttle/slaveship)
+"TF" = (
+/obj/effect/turf_decal/tile/brown{
+	dir = 1
+	},
+/obj/effect/turf_decal/tile/brown{
+	dir = 4
+	},
+/turf/open/floor/mineral/plastitanium/red,
+/area/shuttle/slaveship)
+"Uo" = (
+/obj/effect/turf_decal/tile/neutral,
+/obj/effect/turf_decal/tile/neutral{
+	dir = 1
+	},
+/obj/effect/turf_decal/tile/neutral{
+	dir = 4
+	},
+/obj/structure/table/reinforced,
+/obj/item/clipboard,
+/obj/item/folder/red,
+/turf/open/floor/plasteel/dark,
+/area/shuttle/slaveship)
+"Uv" = (
+/obj/effect/turf_decal/tile/red{
+	dir = 8
+	},
+/obj/effect/turf_decal/tile/red,
+/obj/machinery/light,
+/turf/open/floor/plating,
+/area/shuttle/slaveship)
+"UL" = (
+/obj/effect/turf_decal/tile/red{
+	dir = 4
+	},
+/obj/effect/turf_decal/tile/red{
+	dir = 8
+	},
+/obj/effect/turf_decal/tile/red,
+/obj/structure/bed/matress,
+/turf/open/floor/plating,
+/area/shuttle/slaveship)
+"Vy" = (
+/obj/machinery/door/airlock/hatch{
+	req_access_txt = "152"
+	},
+/turf/open/floor/plating,
+/area/shuttle/slaveship)
+"VS" = (
+/obj/structure/table/reinforced,
+/obj/item/storage/toolbox/mechanical,
+/obj/item/storage/toolbox/electrical{
+	pixel_x = 4;
+	pixel_y = 4
+	},
+/obj/structure/window/reinforced{
+	dir = 8
+	},
+/obj/effect/turf_decal/tile/yellow,
+/obj/effect/turf_decal/tile/yellow{
+	dir = 8
+	},
+/obj/effect/turf_decal/tile/yellow{
+	dir = 1
+	},
+/obj/item/multitool,
+/turf/open/floor/plasteel/dark,
+/area/shuttle/slaveship)
+"VW" = (
+/obj/structure/table/reinforced,
+/obj/item/stock_parts/cell/high,
+/obj/item/stock_parts/cell/high,
+/obj/effect/turf_decal/tile/yellow,
+/obj/effect/turf_decal/tile/yellow{
+	dir = 8
+	},
+/obj/item/extinguisher/mini{
+	pixel_x = 4
+	},
+/obj/item/clothing/head/welding,
+/turf/open/floor/plasteel/dark,
+/area/shuttle/slaveship)
+"Wi" = (
+/obj/structure/table/reinforced,
+/obj/item/clothing/gloves/combat,
+/obj/effect/turf_decal/tile/yellow,
+/obj/effect/turf_decal/tile/yellow{
+	dir = 8
+	},
+/obj/machinery/light,
+/obj/item/flashlight/seclite,
+/obj/item/flashlight/seclite{
+	pixel_x = 2;
+	pixel_y = 4
+	},
+/turf/open/floor/plasteel/dark,
+/area/shuttle/slaveship)
+"Wk" = (
+/obj/structure/window/plastitanium,
+/obj/structure/grille,
+/turf/open/floor/plating,
+/area/shuttle/slaveship)
+"WK" = (
+/obj/structure/chair/comfy/shuttle,
+/obj/effect/turf_decal/bot_white,
+/turf/open/floor/plasteel/dark,
+/area/shuttle/slaveship)
+"Xl" = (
+/turf/open/floor/mineral/plastitanium/red,
+/area/shuttle/slaveship)
+"XG" = (
+/obj/structure/bed/matress,
+/obj/effect/decal/cleanable/blood,
+/obj/effect/turf_decal/tile/red{
+	dir = 1
+	},
+/obj/effect/turf_decal/tile/red{
+	dir = 8
+	},
+/obj/effect/turf_decal/tile/red,
+/turf/open/floor/plating,
+/area/shuttle/slaveship)
+"XN" = (
+/obj/structure/shuttle/engine/heater,
+/obj/effect/spawner/structure/window/plastitanium/pirate,
+/obj/structure/window/reinforced/tinted{
+	layer = 3.1
+	},
+/turf/open/floor/plating/airless,
+/area/shuttle/slaveship)
+"Yh" = (
+/obj/structure/table/reinforced,
+/obj/effect/turf_decal/tile/yellow,
+/obj/effect/turf_decal/tile/yellow{
+	dir = 8
+	},
+/obj/effect/turf_decal/tile/yellow{
+	dir = 4
+	},
+/obj/item/pickaxe,
+/obj/item/storage/bag/ore,
+/obj/item/pickaxe,
+/turf/open/floor/plasteel/dark,
+/area/shuttle/slaveship)
+"ZZ" = (
+/obj/structure/window/reinforced{
+	dir = 8
+	},
+/obj/effect/turf_decal/tile/yellow{
+	dir = 8
+	},
+/obj/effect/turf_decal/tile/yellow{
+	dir = 1
+	},
+/turf/open/floor/plasteel/dark,
+/area/shuttle/slaveship)
+
+(1,1,1) = {"
+MJ
+MJ
+MJ
+MJ
+MJ
+MJ
+MJ
+MJ
+MJ
+MJ
+MJ
+MJ
+MJ
+MJ
+ax
+ax
+ax
+ax
+ax
+ax
+MJ
+MJ
+"}
+(2,1,1) = {"
+MJ
+MJ
+MJ
+MJ
+MJ
+MJ
+MJ
+MJ
+ax
+ax
+ax
+ax
+ax
+ax
+ax
+Iw
+DB
+DB
+XG
+XN
+cy
+MJ
+"}
+(3,1,1) = {"
+MJ
+MJ
+MJ
+MJ
+MJ
+MJ
+MJ
+MJ
+ax
+yJ
+Fm
+xr
+Fm
+Cd
+ax
+JG
+ct
+ct
+Uv
+XN
+zT
+MJ
+"}
+(4,1,1) = {"
+ax
+ax
+ax
+ax
+ax
+MJ
+MJ
+MJ
+ax
+sn
+aA
+aA
+aA
+CM
+ax
+LG
+ct
+uy
+UL
+XN
+cy
+MJ
+"}
+(5,1,1) = {"
+ax
+bP
+bV
+bK
+ax
+ax
+ax
+ax
+ax
+um
+aA
+xX
+aA
+FG
+ax
+Wk
+Vy
+Wk
+Wk
+Ey
+ax
+MJ
+"}
+(6,1,1) = {"
+pj
+vV
+sv
+bN
+ax
+iP
+kG
+ph
+ax
+ax
+gZ
+Wk
+gZ
+ax
+Ey
+aA
+aA
+aA
+aA
+Pl
+XN
+cy
+"}
+(7,1,1) = {"
+pj
+af
+aA
+cc
+ax
+hR
+aA
+aA
+aA
+qT
+aA
+aA
+aA
+qT
+gZ
+aA
+Xl
+Xl
+aA
+po
+XN
+cy
+"}
+(8,1,1) = {"
+pj
+ak
+sv
+aA
+gZ
+aA
+Xl
+Xl
+Xl
+Xl
+Xl
+Xl
+Xl
+aA
+Wk
+aA
+ev
+TF
+aA
+pl
+XN
+zT
+"}
+(9,1,1) = {"
+pj
+ay
+aA
+cO
+ax
+hR
+aA
+aA
+aA
+rc
+aA
+aA
+aA
+rc
+gZ
+aA
+Xl
+Xl
+aA
+wl
+XN
+cy
+"}
+(10,1,1) = {"
+pj
+Qz
+bj
+Lr
+ax
+mA
+le
+qc
+ax
+ax
+gZ
+Wk
+gZ
+ax
+Ey
+aA
+aA
+aA
+aA
+wl
+XN
+zT
+"}
+(11,1,1) = {"
+ax
+Uo
+Go
+fI
+ax
+ax
+ax
+ax
+ax
+WK
+aA
+aA
+aA
+Gj
+ax
+Rv
+Aw
+ZZ
+VS
+Ey
+ax
+MJ
+"}
+(12,1,1) = {"
+ax
+ax
+ax
+ax
+ax
+MJ
+MJ
+MJ
+ax
+uZ
+aA
+aA
+aA
+GG
+ax
+Qd
+aA
+aA
+VW
+XN
+cy
+MJ
+"}
+(13,1,1) = {"
+MJ
+MJ
+MJ
+MJ
+MJ
+MJ
+MJ
+MJ
+ax
+WK
+Cj
+Dj
+GC
+Gj
+ax
+gc
+Sw
+aA
+Wi
+XN
+cy
+MJ
+"}
+(14,1,1) = {"
+MJ
+MJ
+MJ
+MJ
+MJ
+MJ
+MJ
+MJ
+ax
+ax
+ax
+zI
+ax
+ax
+ax
+RD
+RL
+Sv
+Yh
+XN
+zT
+MJ
+"}
+(15,1,1) = {"
+MJ
+MJ
+MJ
+MJ
+MJ
+MJ
+MJ
+MJ
+MJ
+MJ
+MJ
+MJ
+MJ
+MJ
+ax
+ax
+ax
+ax
+ax
+ax
+MJ
+MJ
+"}

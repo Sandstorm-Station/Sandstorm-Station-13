@@ -22,6 +22,9 @@
 		create_objectives()
 	if(move_to_lair)
 		send_to_lair()
+	var/mob/living/carbon/human/H = owner.current
+	H.canloadappearance = TRUE
+	H.checkloadappearance()
 	. = ..()
 	if(allow_rename)
 		rename_wizard()

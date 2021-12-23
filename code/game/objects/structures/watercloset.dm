@@ -174,9 +174,17 @@
 	var/exposed = 0 // can you currently put an item inside
 	var/obj/item/hiddenitem = null // what's in the urinal
 
-/obj/structure/urinal/New()
-	..()
+/obj/structure/urinal/Initialize(no_shit = FALSE)
+	. = ..()
+	if(!no_shit && prob(1))
+		new /obj/structure/urinal/shit(loc, dir)
+		qdel(src)
+		return
 	hiddenitem = new /obj/item/reagent_containers/food/urinalcake
+
+/obj/structure/urinal/Destroy()
+	QDEL_NULL(hiddenitem)
+	return ..()
 
 /obj/structure/urinal/on_attack_hand(mob/user, act_intent = user.a_intent, unarmed_attack_flags)
 	if(user.pulling && user.a_intent == INTENT_GRAB && isliving(user.pulling))
@@ -351,7 +359,7 @@
 			wash_obj(AM)
 
 /obj/machinery/shower/proc/wash_obj(obj/O)
-	if(!O) 
+	if(!O)
 		return
 	. = SEND_SIGNAL(O, COMSIG_COMPONENT_CLEAN_ACT, CLEAN_WEAK)
 	. = O.clean_blood()
@@ -747,7 +755,7 @@
 	name = "curtain"
 	desc = "Contains less than 1% mercury."
 	icon = 'icons/obj/watercloset.dmi'
-	icon_state = "open"
+	icon_state = "curtain"
 	color = "#ACD1E9" //Default color, didn't bother hardcoding other colors, mappers can and should easily change it.
 	alpha = 200 //Mappers can also just set this to 255 if they want curtains that can't be seen through <- No longer necessary unless you don't want to see through it no matter what.
 	layer = SIGN_LAYER
@@ -755,7 +763,11 @@
 	max_integrity = 25 //This makes cloth shower curtains as durable as a directional glass window. 300 integrity buildable shower curtains as a cover mechanic is a meta I don't want to see.
 	opacity = 0
 	density = FALSE
-	var/open = TRUE
+	var/open = FALSE
+
+/obj/structure/curtain/Initialize()
+	. = ..()
+	toggle()
 
 /obj/structure/curtain/proc/toggle()
 	open = !open
@@ -763,14 +775,14 @@
 
 /obj/structure/curtain/update_icon_state()
 	if(!open)
-		icon_state = "closed"
+		icon_state = "[initial(icon_state)]_closed"
 		layer = WALL_OBJ_LAYER
 		density = TRUE
 		open = FALSE
 		opacity = TRUE
 
 	else
-		icon_state = "open"
+		icon_state = "[initial(icon_state)]_open"
 		layer = SIGN_LAYER
 		density = FALSE
 		open = TRUE

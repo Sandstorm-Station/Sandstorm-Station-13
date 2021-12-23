@@ -142,7 +142,83 @@ GLOBAL_LIST_EMPTY(preferences_datums)
 	var/eye_type = DEFAULT_EYES_TYPE	//Eye type
 	var/split_eye_colors = FALSE
 	var/datum/species/pref_species = new /datum/species/human()	//Mutant race
-	var/list/features = list("mcolor" = "FFFFFF", "mcolor2" = "FFFFFF", "mcolor3" = "FFFFFF", "tail_lizard" = "Smooth", "tail_human" = "None", "snout" = "Round", "horns" = "None", "horns_color" = "85615a", "ears" = "None", "wings" = "None", "wings_color" = "FFF", "frills" = "None", "deco_wings" = "None", "spines" = "None", "legs" = "Plantigrade", "insect_wings" = "Plain", "insect_fluff" = "None", "insect_markings" = "None", "arachnid_legs" = "Plain", "arachnid_spinneret" = "Plain", "arachnid_mandibles" = "Plain", "mam_body_markings" = list(), "mam_ears" = "None", "mam_snouts" = "None", "mam_tail" = "None", "mam_tail_animated" = "None", "xenodorsal" = "Standard", "xenohead" = "Standard", "xenotail" = "Xenomorph Tail", "taur" = "None", "genitals_use_skintone" = FALSE, "has_cock" = FALSE, "cock_shape" = DEF_COCK_SHAPE, "cock_length" = COCK_SIZE_DEF, "cock_diameter_ratio" = COCK_DIAMETER_RATIO_DEF, "cock_color" = "ffffff", "cock_taur" = FALSE, "has_balls" = FALSE, "balls_color" = "ffffff", "balls_shape" = DEF_BALLS_SHAPE, "balls_size" = BALLS_SIZE_DEF, "balls_cum_rate" = CUM_RATE, "balls_cum_mult" = CUM_RATE_MULT, "balls_efficiency" = CUM_EFFICIENCY, "has_breasts" = FALSE, "breasts_color" = "ffffff", "breasts_size" = BREASTS_SIZE_DEF, "breasts_shape" = DEF_BREASTS_SHAPE, "breasts_producing" = FALSE, "has_vag" = FALSE, "vag_shape" = DEF_VAGINA_SHAPE, "vag_color" = "ffffff", "has_womb" = FALSE, "balls_visibility"	= GEN_VISIBLE_NO_UNDIES, "breasts_visibility"= GEN_VISIBLE_NO_UNDIES, "cock_visibility"	= GEN_VISIBLE_NO_UNDIES, "vag_visibility"	= GEN_VISIBLE_NO_UNDIES, "ipc_screen" = "Sunburst", "ipc_antenna" = "None", "flavor_text" = "", "silicon_flavor_text" = "", "ooc_notes" = "", "meat_type" = "Mammalian", "body_model" = MALE, "body_size" = RESIZE_DEFAULT_SIZE, "color_scheme" = OLD_CHARACTER_COLORING)
+	var/list/features = list(
+"mcolor" = "FFFFFF",
+"mcolor2" = "FFFFFF",
+"mcolor3" = "FFFFFF",
+"tail_lizard" = "Smooth",
+"tail_human" = "None",
+"snout" = "Round",
+"horns" = "None",
+"horns_color" = "85615a",
+"ears" = "None",
+"wings" = "None",
+"wings_color" = "FFF",
+"frills" = "None",
+"deco_wings" = "None",
+"spines" = "None",
+"legs" = "Plantigrade",
+"insect_wings" = "Plain",
+"insect_fluff" = "None",
+"insect_markings" = "None",
+"arachnid_legs" = "Plain",
+"arachnid_spinneret" = "Plain",
+"arachnid_mandibles" = "Plain",
+"mam_body_markings" = list(),
+"mam_ears" = "None",
+"mam_snouts" = "None",
+"mam_tail" = "None",
+"mam_tail_animated" = "None",
+"xenodorsal" = "Standard",
+"xenohead" = "Standard",
+"xenotail" = "Xenomorph Tail",
+"taur" = "None",
+"genitals_use_skintone" = FALSE,
+"has_cock" = FALSE,
+"cock_shape" = DEF_COCK_SHAPE,
+"cock_length" = COCK_SIZE_DEF,
+"cock_diameter_ratio" = COCK_DIAMETER_RATIO_DEF,
+"cock_color" = "ffffff",
+"cock_taur" = FALSE,
+"has_balls" = FALSE,
+"balls_color" = "ffffff",
+"balls_shape" = DEF_BALLS_SHAPE,
+"balls_size" = BALLS_SIZE_DEF,
+"balls_cum_rate" = CUM_RATE,
+"balls_cum_mult" = CUM_RATE_MULT,
+"balls_efficiency" = CUM_EFFICIENCY,
+"has_breasts" = FALSE,
+"breasts_color" = "ffffff",
+"breasts_size" = BREASTS_SIZE_DEF,
+"breasts_shape" = DEF_BREASTS_SHAPE,
+"breasts_producing" = FALSE,
+"has_vag" = FALSE,
+"vag_shape" = DEF_VAGINA_SHAPE,
+"vag_color" = "ffffff",
+"has_womb" = FALSE,
+"has_butt" = FALSE,
+"butt_color" = "ffffff",
+"butt_size" = BUTT_SIZE_DEF,
+"has_belly" = FALSE,
+"belly_color" = "ffffff",
+"belly_size" = BELLY_SIZE_DEF,
+"balls_visibility"  = GEN_VISIBLE_NO_UNDIES,
+"breasts_visibility"= GEN_VISIBLE_NO_UNDIES,
+"cock_visibility" = GEN_VISIBLE_NO_UNDIES,
+"vag_visibility"   = GEN_VISIBLE_NO_UNDIES,
+"butt_visibility" = GEN_VISIBLE_NO_UNDIES,
+"belly_visibility" = GEN_VISIBLE_NO_UNDIES,
+"ipc_screen" = "Sunburst",
+"ipc_antenna" = "None",
+"flavor_text" = "",
+"silicon_flavor_text" = "",
+"ooc_notes" = "",
+"meat_type" = "Mammalian",
+"body_model" = MALE,
+"body_size" = RESIZE_DEFAULT_SIZE,
+"color_scheme" = OLD_CHARACTER_COLORING
+)
+
 
 	var/custom_speech_verb = "default" //if your say_mod is to be something other than your races
 	var/custom_tongue = "default" //if your tongue is to be something other than your races
@@ -746,6 +822,7 @@ GLOBAL_LIST_EMPTY(preferences_datums)
 						else
 							dat += "<b>Testicles Color:</b></a><BR>"
 							dat += "<span style='border: 1px solid #161616; background-color: #[features["balls_color"]];'>&nbsp;&nbsp;&nbsp;</span> <a href='?_src_=prefs;preference=balls_color;task=input'>#[features["balls_color"]]</a><br>"
+						dat += "<b>Testicles Shape:</b> <a style='display:block;width:120px' href='?_src_=prefs;preference=balls_shape;task=input'>[features["balls_shape"]]</a>"
 						dat += "<b>Testicles Visibility:</b><a style='display:block;width:100px' href='?_src_=prefs;preference=balls_visibility;task=input'>[features["balls_visibility"]]</a>"
 				dat += APPEARANCE_CATEGORY_COLUMN
 				dat += "<h3>Vagina</h3>"
@@ -775,6 +852,32 @@ GLOBAL_LIST_EMPTY(preferences_datums)
 					dat += "<b>Breasts Shape:</b><a style='display:block;width:50px' href='?_src_=prefs;preference=breasts_shape;task=input'>[features["breasts_shape"]]</a>"
 					dat += "<b>Breasts Visibility:</b><a style='display:block;width:100px' href='?_src_=prefs;preference=breasts_visibility;task=input'>[features["breasts_visibility"]]</a>"
 					dat += "<b>Lactates:</b><a style='display:block;width:50px' href='?_src_=prefs;preference=breasts_producing'>[features["breasts_producing"] == TRUE ? "Yes" : "No"]</a>"
+				dat += "</td>"
+				dat += APPEARANCE_CATEGORY_COLUMN
+				dat += "<h3>Butt</h3>"
+				dat += "<a style='display:block;width:50px' href='?_src_=prefs;preference=has_butt'>[features["has_butt"] == TRUE ? "Yes" : "No"]</a>"
+				if(features["has_butt"])
+					if(pref_species.use_skintones && features["genitals_use_skintone"] == TRUE)
+						dat += "<b>Color:</b></a><BR>"
+						dat += "<span style='border: 1px solid #161616; background-color: [SKINTONE2HEX(skin_tone)];'>&nbsp;&nbsp;&nbsp;</span>(Skin tone overriding)<br>"
+					else
+						dat += "<b>Color:</b></a><BR>"
+						dat += "<span style='border: 1px solid #161616; background-color: #[features["butt_color"]];'>&nbsp;&nbsp;&nbsp;</span> <a href='?_src_=prefs;preference=butt_color;task=input'>Change</a><br>"
+					dat += "<b>Butt Size:</b><a style='display:block;width:50px' href='?_src_=prefs;preference=butt_size;task=input'>[features["butt_size"]]</a>"
+					dat += "<b>Butt Visibility:</b><a style='display:block;width:100px' href='?_src_=prefs;preference=butt_visibility;task=input'>[features["butt_visibility"]]</a>"
+				dat += "</td>"
+				dat += APPEARANCE_CATEGORY_COLUMN
+				dat += "<h3>Belly</h3>"
+				dat += "<a style='display:block;width:50px' href='?_src_=prefs;preference=has_belly'>[features["has_belly"] == TRUE ? "Yes" : "No"]</a>"
+				if(features["has_belly"])
+					if(pref_species.use_skintones && features["genitals_use_skintone"] == TRUE)
+						dat += "<b>Color:</b></a><BR>"
+						dat += "<span style='border: 1px solid #161616; background-color: [SKINTONE2HEX(skin_tone)];'>&nbsp;&nbsp;&nbsp;</span>(Skin tone overriding)<br>"
+					else
+						dat += "<b>Color:</b></a><BR>"
+						dat += "<span style='border: 1px solid #161616; background-color: #[features["belly_color"]];'>&nbsp;&nbsp;&nbsp;</span> <a href='?_src_=prefs;preference=belly_color;task=input'>Change</a><br>"
+					dat += "<b>Belly Size:</b><a style='display:block;width:50px' href='?_src_=prefs;preference=belly_size;task=input'>[features["belly_size"]]</a>"
+					dat += "<b>Belly Visibility:</b><a style='display:block;width:100px' href='?_src_=prefs;preference=belly_visibility;task=input'>[features["belly_visibility"]]</a>"
 				dat += "</td>"
 			dat += "</td>"
 			dat += "</tr></table>"
@@ -1135,9 +1238,14 @@ GLOBAL_LIST_EMPTY(preferences_datums)
 			dat += "<h2>Other content prefs</h2>"
 			dat += "<b>Breast Enlargement:</b> <a href='?_src_=prefs;preference=breast_enlargement'>[(cit_toggles & BREAST_ENLARGEMENT) ? "Allowed" : "Disallowed"]</a><br>"
 			dat += "<b>Penis Enlargement:</b> <a href='?_src_=prefs;preference=penis_enlargement'>[(cit_toggles & PENIS_ENLARGEMENT) ? "Allowed" : "Disallowed"]</a><br>"
+			dat += "<b>Butt Enlargement:</b> <a href='?_src_=prefs;preference=butt_enlargement'>[(cit_toggles & BUTT_ENLARGEMENT) ? "Allowed" : "Disallowed"]</a><br>"
+			dat += "<b>Belly Inflation:</b> <a href='?_src_=prefs;preference=belly_inflation'>[(cit_toggles & BELLY_INFLATION) ? "Allowed" : "Disallowed"]</a><br>"
 			dat += "<b>Hypno:</b> <a href='?_src_=prefs;preference=never_hypno'>[(cit_toggles & NEVER_HYPNO) ? "Disallowed" : "Allowed"]</a><br>"
 			dat += "<b>Aphrodisiacs:</b> <a href='?_src_=prefs;preference=aphro'>[(cit_toggles & NO_APHRO) ? "Disallowed" : "Allowed"]</a><br>"
 			dat += "<b>Ass Slapping:</b> <a href='?_src_=prefs;preference=ass_slap'>[(cit_toggles & NO_ASS_SLAP) ? "Disallowed" : "Allowed"]</a><br>"
+			//SPLURT EDIT
+			dat += "<b>Unholy ERP verbs :</b> <a href='?_src_=prefs;preference=unholypref'>[unholypref]</a><br>" //https://www.youtube.com/watch?v=OHKARc-GObU
+			//END OF SPLURT EDIT
 			//SKYRAT EDIT
 			dat += 	"<b>Extreme ERP verbs :</b> <a href='?_src_=prefs;preference=extremepref'>[extremepref]</a><br>" // https://youtu.be/0YrU9ASVw6w
 			if(extremepref != "No")
@@ -1742,7 +1850,7 @@ GLOBAL_LIST_EMPTY(preferences_datums)
 				if("name")
 					var/new_name = input(user, "Choose your character's name:", "Character Preference")  as text|null
 					if(new_name)
-						new_name = reject_bad_name(new_name)
+						new_name = reject_bad_name(new_name, TRUE)
 						if(new_name)
 							real_name = new_name
 						else
@@ -1948,7 +2056,7 @@ GLOBAL_LIST_EMPTY(preferences_datums)
 						eye_type = pref_species.eye_type
 
 				if("custom_species")
-					var/new_species = reject_bad_name(input(user, "Choose your species subtype, if unique. This will show up on examinations and health scans. Do not abuse this:", "Character Preference", custom_species) as null|text)
+					var/new_species = reject_bad_name(input(user, "Choose your species subtype, if unique. This will show up on examinations and health scans. Do not abuse this:", "Character Preference", custom_species) as null|text, TRUE)
 					if(new_species)
 						custom_species = new_species
 					else
@@ -2385,6 +2493,12 @@ GLOBAL_LIST_EMPTY(preferences_datums)
 						else
 							to_chat(user,"<span class='danger'>Invalid color. Your color is not bright enough.</span>")
 
+				if("balls_shape")
+					var/new_shape
+					new_shape = input(user, "Testicle Shape", "Character Preference") as null|anything in GLOB.balls_shapes_list
+					if(new_shape)
+						features["balls_shape"] = new_shape
+
 				if("balls_visibility")
 					var/n_vis = input(user, "Testicles Visibility", "Character Preference") as null|anything in CONFIG_GET(keyed_list/safe_visibility_toggles)
 					if(n_vis)
@@ -2438,6 +2552,52 @@ GLOBAL_LIST_EMPTY(preferences_datums)
 					var/n_vis = input(user, "Vagina Visibility", "Character Preference") as null|anything in CONFIG_GET(keyed_list/safe_visibility_toggles)
 					if(n_vis)
 						features["vag_visibility"] = n_vis
+
+				if("belly_color")
+					var/new_bellycolor = input(user, "Belly Color:", "Character Preference", "#"+features["belly_color"]) as color|null
+					if(new_bellycolor)
+						var/temp_hsv = RGBtoHSV(new_bellycolor)
+						if(new_bellycolor == "#000000")
+							features["belly_color"] = pref_species.default_color
+						else if(ReadHSV(temp_hsv)[3] >= ReadHSV(MINIMUM_MUTANT_COLOR)[3])
+							features["belly_color"] = sanitize_hexcolor(new_bellycolor, 6)
+						else
+							to_chat(user,"<span class='danger'>Invalid color. Your color is not bright enough.</span>")
+
+				if("butt_color")
+					var/new_buttcolor = input(user, "Butt color:", "Character Preference","#"+features["butt_color"]) as color|null
+					if(new_buttcolor)
+						var/temp_hsv = RGBtoHSV(new_buttcolor)
+						if(new_buttcolor == "#000000")
+							features["butt_color"] = pref_species.default_color
+						else if(ReadHSV(temp_hsv)[3] >= ReadHSV(MINIMUM_MUTANT_COLOR)[3])
+							features["butt_color"] = sanitize_hexcolor(new_buttcolor, 6)
+						else
+							to_chat(user,"<span class='danger'>Invalid color. Your color is not bright enough.</span>")
+
+				if("belly_size")
+					var/min_belly = CONFIG_GET(number/belly_min_size_prefs)
+					var/max_belly = CONFIG_GET(number/belly_max_size_prefs)
+					var/new_bellysize = input(user, "Belly size :\n([min_belly]-[max_belly])", "Character Preference") as num|null
+					if(new_bellysize)
+						features["belly_size"] = clamp(new_bellysize, min_belly, max_belly)
+
+				if("butt_size")
+					var/min_B = CONFIG_GET(number/butt_min_size_prefs)
+					var/max_B = CONFIG_GET(number/butt_max_size_prefs)
+					var/new_length = input(user, "Butt size:\n([min_B]-[max_B])", "Character Preference") as num|null
+					if(new_length)
+						features["butt_size"] = clamp(round(new_length), min_B, max_B)
+
+				if("butt_visibility")
+					var/n_vis = input(user, "Butt Visibility", "Character Preference") as null|anything in CONFIG_GET(keyed_list/safe_visibility_toggles)
+					if(n_vis)
+						features["butt_visibility"] = n_vis
+
+				if("belly_visibility")
+					var/n_vis = input(user, "Belly Visibility", "Character Preference") as null|anything in CONFIG_GET(keyed_list/safe_visibility_toggles)
+					if(n_vis)
+						features["belly_visibility"] = n_vis
 
 				if("ooccolor")
 					var/new_ooccolor = input(user, "Choose your OOC colour:", "Game Preference",ooccolor) as color|null
@@ -2554,7 +2714,7 @@ GLOBAL_LIST_EMPTY(preferences_datums)
 					gender = chosengender
 
 				if("body_size")
-					var/new_body_size = input(user, "Choose your desired sprite size: ([CONFIG_GET(number/body_size_min)]-[CONFIG_GET(number/body_size_max)]%)\nWarning: This may make your character look distorted. Additionally, any size under 100% takes a 10% maximum health penalty", "Character Preference", features["body_size"]*100) as num|null
+					var/new_body_size = input(user, "Choose your desired sprite size: ([CONFIG_GET(number/body_size_min)*100]-[CONFIG_GET(number/body_size_max)*100]%)\nWarning: This may make your character look distorted. Additionally, any size under 100% takes a 10% maximum health penalty", "Character Preference", features["body_size"]*100) as num|null
 					if(new_body_size)
 						features["body_size"] = clamp(new_body_size * 0.01, CONFIG_GET(number/body_size_min), CONFIG_GET(number/body_size_max))
 
@@ -2687,6 +2847,10 @@ GLOBAL_LIST_EMPTY(preferences_datums)
 					features["has_cock"] = !features["has_cock"]
 					if(features["has_cock"] == FALSE)
 						features["has_balls"] = FALSE
+				if("has_belly")
+					features["has_belly"] = !features["has_belly"]
+					if(features["has_belly"] == FALSE)
+						features["belly_size"] = 1
 				if("has_balls")
 					features["has_balls"] = !features["has_balls"]
 				if("has_breasts")
@@ -2701,6 +2865,8 @@ GLOBAL_LIST_EMPTY(preferences_datums)
 						features["has_womb"] = FALSE
 				if("has_womb")
 					features["has_womb"] = !features["has_womb"]
+				if("has_butt")
+					features["has_butt"] = !features["has_butt"]
 				if("widescreenpref")
 					widescreenpref = !widescreenpref
 					user.client.view_size.setDefault(getScreenSize(widescreenpref))
@@ -2777,6 +2943,14 @@ GLOBAL_LIST_EMPTY(preferences_datums)
 							vorepref = "No"
 						if("No")
 							vorepref = "Yes"
+				if("unholypref") //...
+					switch(unholypref)
+						if("Yes")
+							unholypref = "Ask"
+						if("Ask")
+							unholypref = "No"
+						if("No")
+							unholypref = "Yes"
 				//Skyrat edit - *someone* offered me actual money for this shit
 				if("extremepref") //i hate myself for doing this
 					switch(extremepref) //why the fuck did this need to use cycling instead of input from a list
@@ -3019,6 +3193,12 @@ GLOBAL_LIST_EMPTY(preferences_datums)
 
 				if("penis_enlargement")
 					cit_toggles ^= PENIS_ENLARGEMENT
+
+				if("butt_enlargement")
+					cit_toggles ^= BUTT_ENLARGEMENT
+
+				if("belly_inflation")
+					cit_toggles ^= BELLY_INFLATION
 
 				if("feminization")
 					cit_toggles ^= FORCED_FEM

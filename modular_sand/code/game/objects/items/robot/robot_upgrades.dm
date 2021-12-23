@@ -160,7 +160,7 @@
 			R.SetLockdown(0)
 		R.anchored = FALSE
 		R.mob_transforming = FALSE
-		R.update_size(1.25)
+		R.update_size(2)
 		R.hasExpanded = TRUE
 
 /obj/item/borg/upgrade/expand/deactivate(mob/living/silicon/robot/R, user = usr)

@@ -180,6 +180,7 @@
 /obj/machinery/atmospherics/pipe/simple/scrubbers/hidden{
 	dir = 4
 	},
+/obj/structure/dresser,
 /turf/open/floor/plasteel,
 /area/security/prison/cells)
 "aaz" = (
@@ -66466,6 +66467,12 @@
 	},
 /turf/open/floor/plasteel/dark,
 /area/security/range)
+"xlg" = (
+/obj/item/hilbertshotel/ghostdojo{
+	pixel_y = 16
+	},
+/turf/open/floor/carpet,
+/area/hallway/secondary/entry)
 "xlX" = (
 /obj/structure/table/reinforced,
 /obj/machinery/atmospherics/pipe/simple/scrubbers/hidden{
@@ -80880,7 +80887,7 @@ aIM
 aKk
 aLz
 aNe
-aNe
+xlg
 aLz
 aQo
 aSb

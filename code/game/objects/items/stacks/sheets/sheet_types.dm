@@ -183,6 +183,7 @@ GLOBAL_LIST_INIT(plasteel_recipes, list ( \
 	new/datum/stack_recipe("AI core", /obj/structure/AIcore, 4, time = 50, one_per_turf = TRUE), \
 	new/datum/stack_recipe("bomb assembly", /obj/machinery/syndicatebomb/empty, 10, time = 50), \
 	new/datum/stack_recipe("plasteel keg", /obj/structure/custom_keg, 10, time = 50), \
+	new/datum/stack_recipe("pressure tank", /obj/machinery/atmospherics/components/unary/tank, 15, time = 60, one_per_turf = TRUE, on_floor = TRUE), \
 	new/datum/stack_recipe("micro powered fan assembly", /obj/machinery/fan_assembly, 5, time = 50, one_per_turf = TRUE, on_floor = TRUE), \
 	new /datum/stack_recipe_list("crates", list( \
 		new /datum/stack_recipe("gray crate", /obj/structure/closet/crate, 5, time = 50, one_per_turf = 1, on_floor = 1), \
@@ -382,6 +383,9 @@ GLOBAL_LIST_INIT(bamboo_recipes, list ( \
 GLOBAL_LIST_INIT(cloth_recipes, list ( \
 	new/datum/stack_recipe("grey jumpsuit", /obj/item/clothing/under/color/grey, 3), \
 	new/datum/stack_recipe("black shoes", /obj/item/clothing/shoes/sneakers/black, 2), \
+	new/datum/stack_recipe("cloth footwraps", /obj/item/clothing/shoes/footwraps, 2), \
+	new/datum/stack_recipe("loincloth", /obj/item/clothing/under/costume/loincloth/cloth, 2), \
+	new/datum/stack_recipe("tunic", /obj/item/clothing/under/tunic, 3), \
 	null, \
 	new/datum/stack_recipe("backpack", /obj/item/storage/backpack, 4), \
 	new/datum/stack_recipe("duffel bag", /obj/item/storage/backpack/duffelbag, 6), \
@@ -411,8 +415,7 @@ GLOBAL_LIST_INIT(cloth_recipes, list ( \
 	null, \
 	new/datum/stack_recipe("19x19 canvas", /obj/item/canvas/nineteenXnineteen, 3), \
 	new/datum/stack_recipe("23x19 canvas", /obj/item/canvas/twentythreeXnineteen, 4), \
-	new/datum/stack_recipe("23x23 canvas", /obj/item/canvas/twentythreeXtwentythree, 5), \
-	new/datum/stack_recipe("loincloth", /obj/item/clothing/under/costume/loincloth/cloth, 2), \
+	new/datum/stack_recipe("23x23 canvas", /obj/item/canvas/twentythreeXtwentythree, 5) \
 	))
 
 /obj/item/stack/sheet/cloth
@@ -770,7 +773,9 @@ GLOBAL_LIST_INIT(bone_recipes, list(
 	new /datum/stack_recipe("Bone Dagger", /obj/item/kitchen/knife/combat/bone, 2, time = 20), \
 	new /datum/stack_recipe("Skull Helmet", /obj/item/clothing/head/helmet/skull, 4, time = 30), \
 	new /datum/stack_recipe("Bone Armor", /obj/item/clothing/suit/armor/bone, 6, time = 30),\
-	new /datum/stack_recipe("Processable Bone", /obj/item/ingot/bone, 2, time = 20)))
+	new /datum/stack_recipe("Processable Bone", /obj/item/ingot/bone, 2, time = 20),\
+	new /datum/stack_recipe("Bone Statue", /obj/structure/statue/boney, time = 40)\
+))
 
 /obj/item/stack/sheet/bone
 	name = "bones"

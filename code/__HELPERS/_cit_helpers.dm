@@ -56,8 +56,11 @@ GLOBAL_LIST_EMPTY(ipc_antennas_list)
 GLOBAL_LIST_EMPTY(genitals_list)
 GLOBAL_LIST_EMPTY(cock_shapes_list)
 GLOBAL_LIST_EMPTY(balls_shapes_list)
+GLOBAL_LIST_EMPTY(butt_shapes_list)
 GLOBAL_LIST_EMPTY(breasts_shapes_list)
 GLOBAL_LIST_EMPTY(vagina_shapes_list)
+GLOBAL_LIST_EMPTY(belly_shapes_list)
+
 //longcat memes.
 GLOBAL_LIST_INIT(dick_nouns, list("phallus", "willy", "dick", "prick", "member", "tool", "gentleman's organ", "cock", "wang", "knob", "dong", "joystick", "pecker", "johnson", "weenie", "tadger", "schlong", "thirsty ferret", "One eyed trouser trout", "Ding dong", "ankle spanker", "Pork sword", "engine cranker", "Harry hot dog", "Davy Crockett", "Kidney cracker", "Heat seeking moisture missile", "Giggle stick", "love whistle", "Tube steak", "Uncle Dick", "Purple helmet warrior"))
 
@@ -124,7 +127,12 @@ GLOBAL_VAR_INIT(miscreants_allowed, FALSE)
 	if(getorganslot(ORGAN_SLOT_BREASTS))
 		return TRUE
 	return FALSE
-*/
+
+
+/mob/living/carbon/proc/has_butt()
+	if(getorganslot(ORGAN_SLOT_BUTT))
+		return TRUE
+	return FALSE*/
 
 /mob/living/carbon/proc/is_groin_exposed(list/L)
 	if(!L)
@@ -159,7 +167,11 @@ GLOBAL_VAR_INIT(miscreants_allowed, FALSE)
 		if(H.gender == MALE)
 			H.give_genital(/obj/item/organ/genital/penis)
 			H.give_genital(/obj/item/organ/genital/testicles)
+			H.give_genital(/obj/item/organ/genital/butt)
+			H.give_genital(/obj/item/organ/genital/belly)
 		else
 			H.give_genital(/obj/item/organ/genital/vagina)
 			H.give_genital(/obj/item/organ/genital/womb)
 			H.give_genital(/obj/item/organ/genital/breasts)
+			H.give_genital(/obj/item/organ/genital/butt)
+			H.give_genital(/obj/item/organ/genital/belly)

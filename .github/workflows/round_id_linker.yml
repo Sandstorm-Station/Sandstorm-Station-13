@@ -7,6 +7,6 @@ jobs:
   link_rounds:
     runs-on: ubuntu-20.04
     steps:
-    - uses: Sandstorm-Station/round_linker@master #notice: fork the round linkies from tg!!
+    - uses: SPLURT-Station/round_linker@master #notice: fork the round linkies from tg!!
       with:
         repo-token: ${{ secrets.GITHUB_TOKEN }}

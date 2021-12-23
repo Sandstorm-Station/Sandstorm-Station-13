@@ -9,7 +9,7 @@
 	arousal_verb = "Your balls ache a little"
 	unarousal_verb = "Your balls finally stop aching, again"
 	linked_organ_slot = ORGAN_SLOT_PENIS
-	genital_flags = CAN_MASTURBATE_WITH|MASTURBATE_LINKED_ORGAN|GENITAL_FUID_PRODUCTION|UPDATE_OWNER_APPEARANCE|GENITAL_UNDIES_HIDDEN
+	genital_flags = CAN_MASTURBATE_WITH|MASTURBATE_LINKED_ORGAN|GENITAL_FUID_PRODUCTION|UPDATE_OWNER_APPEARANCE|GENITAL_UNDIES_HIDDEN|CAN_CUM_INTO|HAS_EQUIPMENT
 	var/size_name = "average"
 	shape = DEF_BALLS_SHAPE
 	fluid_id = /datum/reagent/consumable/semen
@@ -33,8 +33,12 @@
 			size_name = "average"
 		if(BALLS_SIZE_DEF)
 			size_name = "enlarged"
-		if(BALLS_SIZE_MAX)
+		if(BALLS_SIZE_2)
 			size_name = "engorged"
+		if(BALLS_SIZE_3)
+			size_name = "massive"
+		if(BALLS_SIZE_MAX)
+			size_name = pick(list("gigantic", "ginormous", "humongous", "unfathomably immense"))
 		else
 			size_name = "nonexistant"
 

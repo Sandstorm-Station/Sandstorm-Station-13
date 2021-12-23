@@ -867,6 +867,12 @@ GLOBAL_LIST_EMPTY(roundstart_race_names)
 				standing += MA
 	*/
 
+	//Hyper nail paint
+	if(H.nail_style)
+		var/mutable_appearance/nail_overlay = mutable_appearance('modular_splurt/icons/mobs/nails.dmi', "nails", -HANDS_PART_LAYER)
+		nail_overlay.color = H.nail_color
+		standing += nail_overlay
+
 	if(standing.len)
 		H.overlays_standing[BODY_LAYER] = standing
 
@@ -1813,7 +1819,20 @@ GLOBAL_LIST_EMPTY(roundstart_race_names)
 			return FALSE
 		if(!user.UseStaminaBuffer(3, warn = TRUE))
 			return FALSE
+
+		playsound(target.loc, 'sound/weapons/slap.ogg', 50, 1, -1)
 		user.do_attack_animation(target, ATTACK_EFFECT_ASS_SLAP)
+		if(HAS_TRAIT(target, TRAIT_STEEL_ASS))
+			user.adjustStaminaLoss(50)
+			user.visible_message(\
+				"<span class='danger'>\The [user] slaps \the [target]'s ass, but their hand bounces off like they hit metal!</span>",\
+				"<span class='danger'>You slap [user == target ? "your" : "\the [target]'s"] ass, but feel an intense amount of pain as you realise their buns are harder than steel!</span>",\
+				"You hear a slap."
+			)
+			playsound(target.loc, 'sound/weapons/tap.ogg', 50, 1, -1)
+			user.emote("scream")
+			return FALSE
+
 		target.adjust_arousal(20,"masochism", maso = TRUE)
 		if (ishuman(target) && HAS_TRAIT(target, TRAIT_MASO) && target.has_dna() && prob(10))
 			target.mob_climax(forced_climax=TRUE, cause = "masochism")
@@ -2248,6 +2267,9 @@ GLOBAL_LIST_EMPTY(roundstart_race_names)
 		if(BRAIN)
 			var/damage_amount = forced ? damage : damage * hit_percent * H.physiology.brain_mod
 			H.adjustOrganLoss(ORGAN_SLOT_BRAIN, damage_amount)
+		if(LUST_DAMAGE)
+			var/damage_amount = forced ? damage : damage * hit_percent * H.get_lust_tolerance() / 100
+			H.handle_post_sex(damage_amount, null, null)
 	return 1
 
 /datum/species/proc/on_hit(obj/item/projectile/P, mob/living/carbon/human/H)

@@ -1,3 +1,5 @@
+<!-- FILLING OUT THIS FORM PROPERLY AND ADDING A PROPER CHANGELOG SECTION IS **NECESSARY** FOR PULL REQUESTS. IF THE INFORMATION IS NOT PROVIDED YOUR PR WILL NOT BE CONSIDERED FOR MERGING -->
+
 <!-- Write **BELOW** The Headers and **ABOVE** The comments else it may not be viewable. -->
 <!-- You can view Contributing.MD for a detailed description of the pull request process. -->
 
