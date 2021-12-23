@@ -977,7 +977,6 @@
 	shown_robot_modules = FALSE
 	if(hud_used)
 		hud_used.update_robot_modules_display()
-	transform = null
 	logevent("Chassis configuration has been reset.")
 	module.transform_to(/obj/item/robot_module)
 
