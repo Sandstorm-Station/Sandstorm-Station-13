@@ -146,7 +146,7 @@
 			return FALSE
 
 		if(ExpandSize <= 0)
-				ExpandSize = 200
+			ExpandSize = 200
 
 		R.mob_transforming = TRUE
 		var/prev_locked_down = R.locked_down
@@ -192,7 +192,7 @@
 			return FALSE
 
 		if(ShrinkSize == 0)
-				ShrinkSize = 50
+			ShrinkSize = 50
 
 		R.mob_transforming = TRUE
 		var/prev_locked_down = R.locked_down
