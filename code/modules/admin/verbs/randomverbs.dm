@@ -1722,7 +1722,7 @@ Traitors and the like can also be revived with the previous role mostly intact.
 					if(!source)
 						return
 			REMOVE_TRAIT(D,chosen_trait,source)
-
+/*
 /client/proc/spawn_floor_cluwne()
 	set category = "Admin.Fun"
 	set name = "Unleash Floor Cluwne"
@@ -1742,3 +1742,4 @@ Traitors and the like can also be revived with the previous role mostly intact.
 		new /mob/living/simple_animal/hostile/floor_cluwne(T)
 	log_admin("[key_name(usr)] spawned floor cluwne.")
 	message_admins("[key_name(usr)] spawned floor cluwne.")
+*/
