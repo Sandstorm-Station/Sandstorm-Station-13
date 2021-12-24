@@ -166,6 +166,7 @@
 					/obj/item/clothing/suit/apron/purple_bartender = 4,
 					/obj/item/clothing/under/rank/civilian/bartender/purple = 4,
 
+					/* Commenting out until next Christmas or made automatic
 					/obj/item/clothing/accessory/sweater/uglyxmas = 3,
 					/obj/item/clothing/under/costume/christmas = 3,
 					/obj/item/clothing/under/costume/christmas/green = 3,
@@ -179,7 +180,7 @@
 					/obj/item/clothing/shoes/winterboots/christmasbootsr = 3,
 					/obj/item/clothing/shoes/winterboots/christmasbootsg = 3,
 					/obj/item/clothing/shoes/winterboots/santaboots = 3,
-
+					*/
 					/obj/item/clothing/head/cowboyhat = 3,
 					/obj/item/clothing/head/cowboyhat/black = 3,
 					/obj/item/clothing/head/cowboyhat/white = 3,

@@ -153,6 +153,7 @@
 	subcategory = LOADOUT_SUBCATEGORY_HEAD_JOBS
 	restricted_roles = list("Assistant")
 
+/*Commenting out Until next Christmas or made automatic
 /datum/gear/santahatr
 	name = "Red Santa Hat"
 	category = SLOT_HEAD
@@ -162,6 +163,7 @@
 	name = "Green Santa Hat"
 	category = SLOT_HEAD
 	path = /obj/item/clothing/head/christmashatg
+*/
 
 //Cowboy Stuff
 /datum/gear/head/cowboyhat
