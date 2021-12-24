@@ -186,11 +186,13 @@ GLOBAL_LIST_EMPTY(preferences_datums)
 "balls_size" = BALLS_SIZE_DEF,
 "balls_cum_rate" = CUM_RATE,
 "balls_cum_mult" = CUM_RATE_MULT,
+"balls_fluid" = /datum/reagent/consumable/semen,
 "balls_efficiency" = CUM_EFFICIENCY,
 "has_breasts" = FALSE,
 "breasts_color" = "ffffff",
 "breasts_size" = BREASTS_SIZE_DEF,
 "breasts_shape" = DEF_BREASTS_SHAPE,
+"breasts_fluid" = /datum/reagent/consumable/milk,
 "breasts_producing" = FALSE,
 "has_vag" = FALSE,
 "vag_shape" = DEF_VAGINA_SHAPE,
@@ -824,6 +826,21 @@ GLOBAL_LIST_EMPTY(preferences_datums)
 							dat += "<span style='border: 1px solid #161616; background-color: #[features["balls_color"]];'>&nbsp;&nbsp;&nbsp;</span> <a href='?_src_=prefs;preference=balls_color;task=input'>#[features["balls_color"]]</a><br>"
 						dat += "<b>Testicles Shape:</b> <a style='display:block;width:120px' href='?_src_=prefs;preference=balls_shape;task=input'>[features["balls_shape"]]</a>"
 						dat += "<b>Testicles Visibility:</b><a style='display:block;width:100px' href='?_src_=prefs;preference=balls_visibility;task=input'>[features["balls_visibility"]]</a>"
+						dat += "<b>Produces:</b>"
+						switch(features["balls_fluid"])
+							if(/datum/reagent/consumable/milk)
+								dat += "<a style='display:block;width:50px' href='?_src_=prefs;preference=balls_fluid;task=input'>Milk</a>"
+							if(/datum/reagent/water)
+								dat += "<a style='display:block;width:50px' href='?_src_=prefs;preference=balls_fluid;task=input'>Water</a>"
+							if(/datum/reagent/consumable/semen)
+								dat += "<a style='display:block;width:50px' href='?_src_=prefs;preference=balls_fluid;task=input'>Semen</a>"
+							if(/datum/reagent/consumable/femcum)
+								dat += "<a style='display:block;width:50px' href='?_src_=prefs;preference=balls_fluid;task=input'>Femcum</a>"
+							if(/datum/reagent/consumable/alienhoney)
+								dat += "<a style='display:block;width:50px' href='?_src_=prefs;preference=balls_fluid;task=input'>Honey</a>"
+							else
+								dat += "<a style='display:block;width:50px' href='?_src_=prefs;preference=balls_fluid;task=input'>Nothing?</a>"
+				dat += "</td>"
 				dat += APPEARANCE_CATEGORY_COLUMN
 				dat += "<h3>Vagina</h3>"
 				dat += "<a style='display:block;width:50px' href='?_src_=prefs;preference=has_vag'>[features["has_vag"] == TRUE ? "Yes" : "No"]</a>"
@@ -852,6 +869,23 @@ GLOBAL_LIST_EMPTY(preferences_datums)
 					dat += "<b>Breasts Shape:</b><a style='display:block;width:50px' href='?_src_=prefs;preference=breasts_shape;task=input'>[features["breasts_shape"]]</a>"
 					dat += "<b>Breasts Visibility:</b><a style='display:block;width:100px' href='?_src_=prefs;preference=breasts_visibility;task=input'>[features["breasts_visibility"]]</a>"
 					dat += "<b>Lactates:</b><a style='display:block;width:50px' href='?_src_=prefs;preference=breasts_producing'>[features["breasts_producing"] == TRUE ? "Yes" : "No"]</a>"
+					if(features["breasts_producing"] == TRUE)
+						dat += "<b>Produces:</b>"
+						switch(features["breasts_fluid"])
+							if(/datum/reagent/consumable/milk)
+								dat += "<a style='display:block;width:50px' href='?_src_=prefs;preference=breasts_fluid;task=input'>Milk</a>"
+							if(/datum/reagent/water)
+								dat += "<a style='display:block;width:50px' href='?_src_=prefs;preference=breasts_fluid;task=input'>Water</a>"
+							if(/datum/reagent/consumable/semen)
+								dat += "<a style='display:block;width:50px' href='?_src_=prefs;preference=breasts_fluid;task=input'>Semen</a>"
+							if(/datum/reagent/consumable/femcum)
+								dat += "<a style='display:block;width:50px' href='?_src_=prefs;preference=breasts_fluid;task=input'>Femcum</a>"
+							if(/datum/reagent/consumable/alienhoney)
+								dat += "<a style='display:block;width:50px' href='?_src_=prefs;preference=breasts_fluid;task=input'>Honey</a>"
+							else
+								dat += "<a style='display:block;width:50px' href='?_src_=prefs;preference=breasts_fluid;task=input'>Nothing?</a>"
+							//This else is a safeguard for errors, and if it happened, they wouldn't be able to change this pref,
+							//DO NOT REMOVE IT UNLESS YOU HAVE A GOOD IDEA
 				dat += "</td>"
 				dat += APPEARANCE_CATEGORY_COLUMN
 				dat += "<h3>Butt</h3>"
@@ -2504,6 +2538,21 @@ GLOBAL_LIST_EMPTY(preferences_datums)
 					if(n_vis)
 						features["balls_visibility"] = n_vis
 
+				if("balls_fluid")
+					var/new_fluid
+					new_fluid = input(user, "Balls Fluid", "Character Preference") as null|anything in GLOB.genital_fluids_list
+					switch(new_fluid)
+						if("Milk")
+							features["balls_fluid"] = /datum/reagent/consumable/milk
+						if("Water")
+							features["balls_fluid"] = /datum/reagent/water
+						if("Semen")
+							features["balls_fluid"] = /datum/reagent/consumable/semen
+						if("Femcum")
+							features["balls_fluid"] = /datum/reagent/consumable/femcum
+						if("Honey")
+							features["balls_fluid"] = /datum/reagent/consumable/alienhoney
+
 				if("breasts_size")
 					var/new_size = input(user, "Breast Size", "Character Preference") as null|anything in CONFIG_GET(keyed_list/breasts_cups_prefs)
 					if(new_size)
@@ -2530,6 +2579,21 @@ GLOBAL_LIST_EMPTY(preferences_datums)
 					var/n_vis = input(user, "Breasts Visibility", "Character Preference") as null|anything in CONFIG_GET(keyed_list/safe_visibility_toggles)
 					if(n_vis)
 						features["breasts_visibility"] = n_vis
+
+				if("breasts_fluid")
+					var/new_shape
+					new_shape = input(user, "Breast Fluid", "Character Preference") as null|anything in GLOB.genital_fluids_list
+					switch(new_shape)
+						if("Milk")
+							features["breasts_fluid"] = /datum/reagent/consumable/milk
+						if("Water")
+							features["breasts_fluid"] = /datum/reagent/water
+						if("Semen")
+							features["breasts_fluid"] = /datum/reagent/consumable/semen
+						if("Femcum")
+							features["breasts_fluid"] = /datum/reagent/consumable/femcum
+						if("Honey")
+							features["breasts_fluid"] = /datum/reagent/consumable/alienhoney
 
 				if("vag_shape")
 					var/new_shape
