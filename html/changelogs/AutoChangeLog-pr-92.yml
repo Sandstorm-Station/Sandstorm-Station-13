@@ -1,7 +1,0 @@
-author: Kamatii
-delete-after: true
-changes:
-  - bugfix: fixed update_transform for silicon, they now resize properly and stay
-      on floor
-  - rscadd: in-hand use borg expander and shrinker to give custom size, then insert
-      to apply the resize, reset the to get the default size back
