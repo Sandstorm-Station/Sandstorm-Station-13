@@ -60,7 +60,7 @@
 
 /datum/interaction/lewd/breastfuckself
 	command = "breastfuckself"
-	description = "Fuck your breast"
+	description = "Fuck your breasts"
 	interaction_sound = null
 	require_user_penis = REQUIRE_EXPOSED
 	require_user_breasts = REQUIRE_EXPOSED
