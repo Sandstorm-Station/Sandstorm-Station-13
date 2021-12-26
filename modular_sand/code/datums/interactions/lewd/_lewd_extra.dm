@@ -154,7 +154,7 @@
 			"thrusts into [t_His] tits.",
 			"grabs [t_His] breasts together and presses their dick between them.")]"
 	else
-		message = "pushes [t_His]breasts together and presses their dick between them."
+		message = "pushes [t_His] breasts together and presses their dick between them."
 		set_is_fucking(user, CUM_TARGET_BREASTS, getorganslot(ORGAN_SLOT_PENIS) ? getorganslot(ORGAN_SLOT_PENIS) : null)
 
 	playlewdinteractionsound(loc, pick('modular_sand/sound/interactions/bang1.ogg',
