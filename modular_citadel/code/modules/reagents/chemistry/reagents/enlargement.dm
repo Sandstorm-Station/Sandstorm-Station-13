@@ -197,8 +197,18 @@
 	var/mob/living/carbon/human/H = M
 	if(!(H.client?.prefs.cit_toggles & PENIS_ENLARGEMENT))
 		return ..()
+
+	var/obj/item/organ/genital/testicles/T = H.getorganslot(ORGAN_SLOT_TESTICLES) //Hyper Change, testicles come first so the dick isn't hidden behind the testicles layer
 	var/obj/item/organ/genital/penis/P = H.getorganslot(ORGAN_SLOT_PENIS)
 	//otherwise proceed as normal
+
+	if(!T)//Hyper change// Adds testicles if there are none.
+
+		T = new
+		T.size = BALLS_SIZE_MIN
+		to_chat(H, "<span class='warning'>Your groin feels warm, as you feel two sensitive orbs taking shape below.</b></span>")
+		T.Insert(H)
+
 	if(!P)//They do have a preponderance for escapism, or so I've heard.
 
 		P = new

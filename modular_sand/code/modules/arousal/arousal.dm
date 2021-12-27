@@ -1,3 +1,8 @@
+/mob/living/carbon/human/do_climax(datum/reagents/R, atom/target, obj/item/organ/genital/G, spill) //Now I know how to modularize it :D
+	. = ..()
+	set_lust(0)
+	SEND_SIGNAL(src, COMSIG_ADD_MOOD_EVENT, "orgasm", /datum/mood_event/orgasm)
+
 /mob/living/carbon/human/proc/pick_receiving_organ(mob/living/L)
 	if (!iscarbon(L))
 		return

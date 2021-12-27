@@ -8,6 +8,50 @@
 	handle_post_sex(NORMAL_LUST, CUM_TARGET_PENIS, target)
 	target.handle_post_sex(NORMAL_LUST, CUM_TARGET_PENIS, src)
 
+/mob/living/proc/do_breastfeed(mob/living/target)
+	var/message
+	var/u_His = p_their()
+	var/u_He = p_they()
+	var/t_His = target.p_their()
+	var/obj/item/organ/genital/breasts/milkers = getorganslot(ORGAN_SLOT_BREASTS)
+	var/milktype = milkers?.fluid_id
+	var/modifier
+	var/list/lines
+
+	if(!milkers || !milktype)
+		return
+	var/datum/reagent/b_fluid = new milktype
+
+	if(target == src)
+		lines = list(
+			"brings [u_His] own milktanks to [u_His] mouth and sucks deeply into them",
+			"takes a big sip of [u_His] own fresh [b_fluid.name]",
+			"fills [u_His] own mouth with a big gulp of [u_His] warm [b_fluid.name]"
+		)
+	else
+		lines = list(
+			"pushes [u_His] breasts against \the <b>[target]</b>'s mouth, squirting [u_His] warm [b_fluid.name] into [t_His] mouth",
+			"fills \the <b>[target]</b>'s mouth with warm, sweet [b_fluid.name] as [u_He] squeezes [u_His] boobs, panting",
+			"lets a large stream of [u_His] own abundant [b_fluid.name] coat the back of \the <b>[target]</b>'s throat"
+		)
+
+	message = "<span class='lewd'>\The <b>[src]</b> [pick(lines)]</span>"
+	visible_message(message, ignored_mobs = get_unconsenting())
+	playlewdinteractionsound(src, pick('modular_sand/sound/interactions/oral1.ogg',
+						'modular_sand/sound/interactions/oral2.ogg'), 70, 1, -1)
+
+	switch(milkers.size)
+		if("c" || "d" || "e")
+			modifier = 2
+		if("f" || "g" || "h")
+			modifier = 3
+		else
+			if(milkers.size in milkers.breast_values)
+				modifier = clamp(milkers.breast_values[milkers.size] - 5, 0, INFINITY)
+			else
+				modifier = 1
+	target.reagents.add_reagent(milktype, rand(1,3 * modifier))
+
 /mob/living/proc/do_jackoff(mob/living/user)
 	var/message
 	var/t_His = p_their()
