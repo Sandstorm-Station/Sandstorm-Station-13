@@ -69,7 +69,7 @@
 	message = pick(fart_emotes)
 	. = ..()
 	if(.)
-		playsound(user, pick(GLOB.brap_noises), 50, 1)
+		playlewdinteractionsound(user, pick(GLOB.brap_noises), 50, 1, ignored_mobs = user.get_unconsenting(unholy = TRUE)) //Rip brap trolling
 		var/delay = 3 SECONDS
 		user.fart_cooldown = TRUE
 		addtimer(CALLBACK(GLOBAL_PROC, .proc/_fart_renew_msg, user), delay)
