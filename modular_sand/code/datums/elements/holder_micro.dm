@@ -11,7 +11,7 @@
 	UnregisterSignal(source, COMSIG_MICRO_PICKUP_FEET)
 
 /datum/element/mob_holder/micro/on_examine(mob/living/source, mob/user, list/examine_list)
-	if(ishuman(user) && !istype(source.loc, /obj/item/clothing/head/mob_holder) && (abs(get_size(user)/get_size(source)) >= 2.0))
+	if(ishuman(user) && !istype(source.loc, /obj/item/clothing/head/mob_holder) && (abs(get_size(source)/get_size(user)) <= CONFIG_GET(number/max_pick_ratio)))
 		examine_list += "<span class='notice'>Looks like [source.p_they(FALSE)] can be picked up using <b>Alt+Click and grab intent</b>!</span>"
 
 /datum/element/mob_holder/micro/proc/mob_pickup_micro(mob/living/source, mob/user)
@@ -35,7 +35,8 @@
 		return FALSE
 	if(!ishuman(user) || !user.Adjacent(source) || user.incapacitated())
 		return FALSE
-	if(abs(get_size(user)/get_size(source)) < 2.0 )
+	//if(abs(get_size(user)/get_size(source)) < 2.0)
+	if(abs(get_size(source)/get_size(user)) > CONFIG_GET(number/max_pick_ratio))
 		to_chat(user, "<span class='warning'>They're too big to pick up!</span>")
 		return FALSE
 	if(user.get_active_held_item())
