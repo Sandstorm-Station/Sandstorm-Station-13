@@ -14,7 +14,7 @@
 
 /// Allows "cyborg" players to change gender at will
 /mob/living/silicon/robot/verb/toggle_gender()
-	set category = "IC"
+	set category = "Robot Commands"
 	set name = "Set Gender"
 	set desc = "Allows you to set your gender."
 
@@ -57,6 +57,15 @@
 	if(!ui)
 		ui = new(user, src, "MobInteraction", "Interactions")
 		ui.open()
+
+/proc/pref_to_num(pref)
+	switch(pref)
+		if("Yes")
+			return 1
+		if("Ask")
+			return 2
+		else
+			return 0
 
 /datum/interaction_menu/ui_data(mob/user)
 	//Getting player
@@ -110,6 +119,7 @@
 			else
 				visibility = "Hidden by clothes"
 			genital_entry["visibility"] = visibility
+			genital_entry["possible_choices"] = GLOB.genitals_visibility_toggles
 			genitals += list(genital_entry)
 	if(iscarbon(self))
 		var/simulated_ass = list()
@@ -124,17 +134,18 @@
 			else
 				visibility = "Always hidden"
 		simulated_ass["visibility"] = visibility
+		simulated_ass["possible_choices"] = GLOB.genitals_visibility_toggles - GEN_VISIBLE_NO_CLOTHES
 		genitals += list(simulated_ass)
 	data["genitals"] = genitals
 
 	var/datum/preferences/prefs = usr?.client.prefs
 	if(prefs)
 	//Getting char prefs
-		data["erp_pref"] = 			prefs.erppref == "Ask" ? 2 : prefs.erppref == "Yes" ? 1 : 0
-		data["noncon_pref"] = 		prefs.nonconpref == "Ask" ? 2 : prefs.nonconpref == "Yes" ? 1 : 0
-		data["vore_pref"] = 		prefs.vorepref == "Ask" ? 2 : prefs.vorepref == "Yes" ? 1 : 0
-		data["extreme_pref"] = 		prefs.extremepref == "Ask" ? 2 : prefs.extremepref == "Yes" ? 1 : 0
-		data["extreme_harm"] = 		prefs.extremeharm == "Yes" ? 1 : 0
+		data["erp_pref"] = 			pref_to_num(prefs.erppref)
+		data["noncon_pref"] = 		pref_to_num(prefs.nonconpref)
+		data["vore_pref"] = 		pref_to_num(prefs.vorepref)
+		data["extreme_pref"] = 		pref_to_num(prefs.extremepref)
+		data["extreme_harm"] = 		pref_to_num(prefs.extremeharm)
 
 	//Getting preferences
 		data["verb_consent"] = 		CHECK_BITFIELD(prefs.toggles, VERB_CONSENT)
@@ -159,6 +170,15 @@
 
 	return data
 
+/proc/num_to_pref(num)
+	switch(num)
+		if(1)
+			return "Yes"
+		if(2)
+			return "Ask"
+		else
+			return "No"
+
 /datum/interaction_menu/ui_act(action, params)
 	if(..())
 		return
@@ -172,59 +192,45 @@
 		if("genital")
 			var/mob/living/carbon/self = usr
 			if(params["genital"] == "anus")
-				var/picked_visibility = tgui_input_list(usr, "Chose visibility setting", "Expose/Hide genitals", GLOB.genitals_visibility_toggles - GEN_VISIBLE_NO_CLOTHES)
-				self.anus_toggle_visibility(picked_visibility)
+				self.anus_toggle_visibility(params["visibility"])
 				return TRUE
 			var/obj/item/organ/genital/genital = locate(params["genital"], self.internal_organs)
 			if(genital && (genital in self.internal_organs))
-				var/picked_visibility = tgui_input_list(usr, "Choose visibility setting", "Expose/Hide genitals", GLOB.genitals_visibility_toggles)
-				if(picked_visibility && genital && (genital in self.internal_organs))
-					genital.toggle_visibility(picked_visibility)
-					return TRUE
+				genital.toggle_visibility(params["visibility"])
+				return TRUE
 			else
 				return FALSE
 		if("char_pref")
 			var/datum/preferences/prefs = usr.client.prefs
+			var/value = num_to_pref(params["value"])
 			switch(params["char_pref"])
 				if("erp_pref")
-					switch(prefs.erppref)
-						if("Yes")
-							prefs.erppref = "Ask"
-						if("Ask")
-							prefs.erppref = "No"
-						if("No")
-							prefs.erppref = "Yes"
+					if(prefs.erppref == value)
+						return FALSE
+					else
+						prefs.erppref = value
 				if("noncon_pref")
-					switch(prefs.nonconpref)
-						if("Yes")
-							prefs.nonconpref = "Ask"
-						if("Ask")
-							prefs.nonconpref = "No"
-						if("No")
-							prefs.nonconpref = "Yes"
+					if(prefs.nonconpref == value)
+						return FALSE
+					else
+						prefs.nonconpref = value
 				if("vore_pref")
-					switch(prefs.vorepref)
-						if("Yes")
-							prefs.vorepref = "Ask"
-						if("Ask")
-							prefs.vorepref = "No"
-						if("No")
-							prefs.vorepref = "Yes"
+					if(prefs.vorepref == value)
+						return FALSE
+					else
+						prefs.vorepref = value
 				if("extreme_pref")
-					switch(prefs.extremepref)
-						if("Yes")
-							prefs.extremepref = "Ask"
-						if("Ask")
-							prefs.extremepref = "No"
+					if(prefs.extremepref == value)
+						return FALSE
+					else
+						prefs.extremepref = value
+						if(prefs.extremepref == "No")
 							prefs.extremeharm = "No"
-						if("No")
-							prefs.extremepref = "Yes"
 				if("extreme_harm")
-					switch(prefs.extremeharm)
-						if("Yes")
-							prefs.extremeharm = "No"
-						if("No")
-							prefs.extremeharm = "Yes"
+					if(prefs.extremeharm == value)
+						return FALSE
+					else
+						prefs.extremeharm = value
 				else
 					return FALSE
 			prefs.save_character()

@@ -1,6 +1,6 @@
 import { map } from 'common/collections';
 import { useBackend, useLocalState } from '../backend';
-import { Button, Section, BlockQuote, Flex, Tabs } from '../components';
+import { BlockQuote, Button, Flex, LabeledList, Section, Tabs } from '../components';
 import { Window } from '../layouts';
 
 export const MobInteraction = (props, context) => {
@@ -89,21 +89,36 @@ const InteractionsTab = (props, context) => {
   );
 };
 
+const ModeToIcon = {
+  "Always visible": "eye",
+  "Hidden by clothes": "tshirt",
+  "Hidden by underwear": "low-vision",
+  "Always hidden": "eye-slash",
+};
+
 const GenitalVisibilityTab = (props, context) => {
   const { act, data } = useBackend(context);
   const genitals = data.genitals || [];
   return (
     genitals.length ? (
       <Flex direction="column">
-        {genitals.map(genital => (
-          <Button
-            key={genital['key']}
-            content={genital['name'] + " = " + genital["visibility"]}
-            icon={genital['visibility'] === "Always visible" ? "eye" : "eye-slash"}
-            onClick={() => act('genital', {
-              genital: genital['key'],
-            })} />
-        ))}
+        <LabeledList>
+          {genitals.map(genital => (
+            <LabeledList.Item key={genital['key']} label={genital['name']}>
+              {genital.possible_choices.map(choice => (
+                <Button
+                  key={choice}
+                  tooltip={choice}
+                  icon={ModeToIcon[choice]}
+                  color={genital.visibility === choice ? "green" : "default"}
+                  onClick={() => act('genital', {
+                    genital: genital['key'],
+                    visibility: choice,
+                  })} />
+              ))}
+            </LabeledList.Item>
+          ))}
+        </LabeledList>
       </Flex>
     ) : ("You don't seem to have any genitals... Or any that you could modify")
   );
@@ -120,43 +135,118 @@ const CharacterPrefsTab = (props, context) => {
   } = data;
   return (
     <Flex direction="column">
-      <Button
-        content="ERP"
-        icon={erp_pref === 2 ? "question" : erp_pref === 1 ? "check" : "times"}
-        color={erp_pref === 2 ? "yellow" : erp_pref === 1 ? "green" : "red"}
-        onClick={() => act('char_pref', {
-          char_pref: 'erp_pref',
-        })} />
-      <Button
-        content="Non-Con"
-        icon={noncon_pref === 2 ? "question" : noncon_pref === 1 ? "check" : "times"}
-        color={noncon_pref === 2 ? "yellow" : noncon_pref === 1 ? "green" : "red"}
-        onClick={() => act('char_pref', {
-          char_pref: 'noncon_pref',
-        })} />
-      <Button
-        content="Vore"
-        icon={vore_pref === 2 ? "question" : vore_pref === 1 ? "check" : "times"}
-        color={vore_pref === 2 ? "yellow" : vore_pref === 1 ? "green" : "red"}
-        onClick={() => act('char_pref', {
-          char_pref: 'vore_pref',
-        })} />
-      <Button
-        content="Extreme ERP verbs"
-        icon={extreme_pref === 2 ? "question" : extreme_pref === 1 ? "check" : "times"}
-        color={extreme_pref === 2 ? "yellow" : extreme_pref === 1 ? "green" : "red"}
-        onClick={() => act('char_pref', {
-          char_pref: 'extreme_pref',
-        })} />
-      {extreme_pref ? (
-        <Button
-          content="Harmful ERP verbs"
-          icon={extreme_harm ? "toggle-on" : "toggle-off"}
-          color={extreme_harm ? "red" : "orange"}
-          onClick={() => act('char_pref', {
-            char_pref: 'extreme_harm',
-          })} />
-      ) : (null)}
+      <LabeledList>
+        <LabeledList.Item label="ERP Preference">
+          <Button
+            icon={"check"}
+            color={erp_pref === 1 ? "green" : "default"}
+            onClick={() => act('char_pref', {
+              char_pref: 'erp_pref',
+              value: 1,
+            })} />
+          <Button
+            icon={"question"}
+            color={erp_pref === 2 ? "yellow" : "default"}
+            onClick={() => act('char_pref', {
+              char_pref: 'erp_pref',
+              value: 2,
+            })} />
+          <Button
+            icon={"times"}
+            color={erp_pref === 0 ? "red" : "default"}
+            onClick={() => act('char_pref', {
+              char_pref: 'erp_pref',
+              value: 0,
+            })} />
+        </LabeledList.Item>
+        <LabeledList.Item label="Noncon Preference">
+          <Button
+            icon={"check"}
+            color={noncon_pref === 1 ? "green" : "default"}
+            onClick={() => act('char_pref', {
+              char_pref: 'noncon_pref',
+              value: 1,
+            })} />
+          <Button
+            icon={"question"}
+            color={noncon_pref === 2 ? "yellow" : "default"}
+            onClick={() => act('char_pref', {
+              char_pref: 'noncon_pref',
+              value: 2,
+            })} />
+          <Button
+            icon={"times"}
+            color={noncon_pref === 0 ? "red" : "default"}
+            onClick={() => act('char_pref', {
+              char_pref: 'noncon_pref',
+              value: 0,
+            })} />
+        </LabeledList.Item>
+        <LabeledList.Item label="Vore Preference">
+          <Button
+            icon={"check"}
+            color={vore_pref === 1 ? "green" : "default"}
+            onClick={() => act('char_pref', {
+              char_pref: 'vore_pref',
+              value: 1,
+            })} />
+          <Button
+            icon={"question"}
+            color={vore_pref === 2 ? "yellow" : "default"}
+            onClick={() => act('char_pref', {
+              char_pref: 'vore_pref',
+              value: 2,
+            })} />
+          <Button
+            icon={"times"}
+            color={vore_pref === 0 ? "red" : "default"}
+            onClick={() => act('char_pref', {
+              char_pref: 'vore_pref',
+              value: 0,
+            })} />
+        </LabeledList.Item>
+        <LabeledList.Item label="Extreme Preference">
+          <Button
+            icon={"check"}
+            color={extreme_pref === 1 ? "green" : "default"}
+            onClick={() => act('char_pref', {
+              char_pref: 'extreme_pref',
+              value: 1,
+            })} />
+          <Button
+            icon={"question"}
+            color={extreme_pref === 2 ? "yellow" : "default"}
+            onClick={() => act('char_pref', {
+              char_pref: 'extreme_pref',
+              value: 2,
+            })} />
+          <Button
+            icon={"times"}
+            color={extreme_pref === 0 ? "red" : "default"}
+            onClick={() => act('char_pref', {
+              char_pref: 'extreme_pref',
+              value: 0,
+            })} />
+        </LabeledList.Item>
+        {extreme_pref ? (
+          <LabeledList.Item label="Extreme Harm">
+            <Button
+              icon={"check"}
+              color={extreme_harm === 1 ? "green" : "default"}
+              onClick={() => act('char_pref', {
+                char_pref: 'extreme_harm',
+                value: 1,
+              })} />
+            <Button
+              icon={"times"}
+              color={extreme_harm === 0 ? "red" : "default"}
+              onClick={() => act('char_pref', {
+                char_pref: 'extreme_harm',
+                value: 0,
+              })} />
+          </LabeledList.Item>
+        ) : (null)}
+      </LabeledList>
     </Flex>
   );
 };
