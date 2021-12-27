@@ -130,13 +130,13 @@
 					modifier = 2
 				if("f" || "g" || "h")
 					modifier = 3
-				if("i")
-					modifier = 4
-				if("j")
-					modifier = 5
 				else
-					modifier = 1
-			target.reagents.add_reagent(/datum/reagent/consumable/milk, rand(1,2 * modifier))
+					if(B.size in B.breast_values)
+						modifier = clamp(B.breast_values[B.size] - 5, 0, INFINITY)
+					else
+						modifier = 1
+			if(B.fluid_id)
+				user.reagents.add_reagent(B.fluid_id, rand(1,2 * modifier))
 
 	if(user.a_intent == INTENT_HARM)
 		user.visible_message(
@@ -150,13 +150,13 @@
 					modifier = 2
 				if("f" || "g" || "h")
 					modifier = 3
-				if("i")
-					modifier = 4
-				if("j")
-					modifier = 5
 				else
-					modifier = 1
-			target.reagents.add_reagent(/datum/reagent/consumable/milk, rand(1,3 * modifier)) //aggressive sucking leads to high rewards
+					if(B.size in B.breast_values)
+						modifier = clamp(B.breast_values[B.size] - 5, 0, INFINITY)
+					else
+						modifier = 1
+			if(B.fluid_id)
+				user.reagents.add_reagent(B.fluid_id, rand(1,3 * modifier)) //aggressive sucking leads to high rewards
 
 	if(user.a_intent == INTENT_GRAB)
 		user.visible_message(
@@ -171,13 +171,13 @@
 					modifier = 2
 				if("f" || "g" || "h")
 					modifier = 3
-				if("i")
-					modifier = 4
-				if("j")
-					modifier = 5
 				else
-					modifier = 1
-			target.reagents.add_reagent(/datum/reagent/consumable/milk, rand(1,3 * modifier)) //aggressive sucking leads to high rewards
+					if(B.size in B.breast_values)
+						modifier = clamp(B.breast_values[B.size] - 5, 0, INFINITY)
+					else
+						modifier = 1
+			if(B.fluid_id)
+				user.reagents.add_reagent(B.fluid_id, rand(1,3 * modifier)) //aggressive sucking leads to high rewards
 
 	if(prob(5 + target.get_lust()))
 		if(target.a_intent == INTENT_HELP)
