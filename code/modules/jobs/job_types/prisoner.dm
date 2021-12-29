@@ -7,7 +7,7 @@
 	total_positions = 0
 	spawn_positions = 0
 	supervisors = "the security team"
-
+	custom_spawn_text = "<font color='red' size='4'><b>If you join the shift as a Prisoner, you MUST go directly to Security to be allowed into the Permabrig, and you may NOT attempt a break out without ahelping unless your life is in immediate danger.</b></font>"
 	outfit = /datum/outfit/job/prisoner
 	plasma_outfit = /datum/outfit/plasmaman/prisoner
 
