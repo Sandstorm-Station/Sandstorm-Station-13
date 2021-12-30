@@ -35,14 +35,14 @@
 		return
 
 	if(!M.pulledby)
+		if(!M.buckled && !M.density)
+			M.forceMove(src.loc)
+
 		start_pulling(M, supress_message = TRUE)
 		log_combat(src, M, "grabbed")
 		M.visible_message("<span class='warning'>[src] violently grabs [M]!</span>", \
 			"<span class='userdanger'>[src] violently grabs you!</span>")
 		setGrabState(GRAB_NECK) //Instant neck grab
-
-		if(!M.buckled && !M.density)
-			M.Move(get_turf(src))
 
 		return
 
@@ -164,7 +164,10 @@
 	refractory_period = world.time + rand(150, 250) // Sex cooldown
 	set_lust(100) // Nuts at 400
 
-	sleep(20)
+	addtimer(CALLBACK(src, .proc/slap, M), 15)
+
+
+/mob/living/simple_animal/hostile/deathclaw/funclaw/proc/slap(mob/living/M)
 	playsound(loc, "modular_sand/sound/interactions/slap.ogg", 70, 1, -1)
 	visible_message("<span class='danger'>\The [src]</b> slaps \the [M] right on the ass!</span>", \
 			"<span class='userdanger'>\The [src]</b> slaps \the [M] right on the ass!</span>", null, COMBAT_MESSAGE_RANGE)
