@@ -424,10 +424,10 @@ Icons, maybe?
 	UnregisterSignal(mobhook_leash_freepet, COMSIG_MOVABLE_MOVED)
 	leash_pet.add_movespeed_modifier(MOVESPEED_ID_LEASH)
 
-/datum/crafting_recipe/leash
+/*/datum/crafting_recipe/leash
 	name = "Leash"
 	result = /obj/item/leash
 	time = 40
 	reqs = list(/obj/item/stack/sheet/metal = 1,
 				/obj/item/stack/sheet/cloth = 3)
-	category = CAT_MISCELLANEOUS
+	category = CAT_MISCELLANEOUS*/
