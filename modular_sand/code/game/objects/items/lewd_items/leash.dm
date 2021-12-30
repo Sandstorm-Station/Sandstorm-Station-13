@@ -1,5 +1,3 @@
-/* Procs from this file will straight up brak everything for some reason, you're free to try and fix it if you want
-
 //Jay Sparrow
 //TODO
 /*
@@ -90,7 +88,7 @@ Icons, maybe?
 	var/leash_location[3] //Three digit list for us to store coordinates later
 
 //Called when someone is clicked with the leash
-/obj/item/leash/attack(mob/living/carbon/C, mob/living/user) //C is the target, user is the one with the leash
+/obj/item/leash/attack(mob/living/carbon/C, mob/living/user, attackchain_flags, damage_multiplier) //C is the target, user is the one with the leash
 	if(C.has_status_effect(/datum/status_effect/leash_pet)) //If the pet is already leashed, do not leash them. For the love of god.
 		to_chat(user, "<span class='notice'>[C] has already been leashed.</span>")
 		return
@@ -379,14 +377,17 @@ Icons, maybe?
 
 //The proc below in question is the one causing all the errors apparently
 
-/obj/item/leash/dropped() //Drop the leash, and the leash effects stop
+/obj/item/leash/dropped(mob/user, silent)
+	 //Drop the leash, and the leash effects stop
 	. = ..()
 	if(leash_pet == "null") //There is no pet. Stop this silliness
 		return
 	if(leash_master == "null")
 		return
 	//Dropping procs any time the leash changes slots. So, we will wait a tick and see if the leash was actually dropped
-	sleep(1)
+	addtimer(CALLBACK(src, .proc/drop_effects, user, silent), 1)
+
+/obj/item/leash/proc/drop_effects(mob/user, silent)
 	if(leash_master.is_holding_item_of_type(/obj/item/leash) || istype(leash_master.get_item_by_slot(SLOT_BELT), /obj/item/leash))
 		return  //Dom still has the leash as it turns out. Cancel the proc.
 	for(var/mob/viewing in viewers(leash_master, null))
@@ -405,7 +406,9 @@ Icons, maybe?
 	. = ..()
 	if(leash_used == 0) //Don't apply statuses with a fresh leash. Keeps things clean on the backend.
 		return
-	sleep(2)
+	addtimer(CALLBACK(src, .proc/equip_effects, user), 2)
+
+/obj/item/leash/proc/equip_effects(mob/user)
 	if(leash_pet == "null")
 		return
 	leash_master = user
@@ -428,5 +431,3 @@ Icons, maybe?
 	reqs = list(/obj/item/stack/sheet/metal = 1,
 				/obj/item/stack/sheet/cloth = 3)
 	category = CAT_MISCELLANEOUS
-
-*/

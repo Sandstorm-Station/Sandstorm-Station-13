@@ -49,8 +49,8 @@
 				/obj/item/clothing/shoes/dominaheels = 10,
 				/obj/item/clothing/gloves/latex_gloves = 10,
 				/obj/item/electropack/vibrator/small = 2,
-				/obj/item/electropack/vibrator = 2
-				///obj/item/leash = 3
+				/obj/item/electropack/vibrator = 2,
+				/obj/item/leash = 3
 				)
 	contraband = list(
 				/obj/item/clothing/neck/petcollar/locked = 2,
