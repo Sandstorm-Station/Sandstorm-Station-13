@@ -277,7 +277,7 @@
 	else
 		..() //just allows people to hit it with other objects, if they so wished.
 
-/obj/item/clothing/underwear/briefs/panties/portalpanties/mob_can_equip(mob/living/M, slot)
+/obj/item/clothing/underwear/briefs/panties/portalpanties/mob_can_equip(mob/living/M, slot, disable_warning, bypass_equip_delay_self)
 	if(!..())
 		return FALSE
 	if(ishuman(M))
