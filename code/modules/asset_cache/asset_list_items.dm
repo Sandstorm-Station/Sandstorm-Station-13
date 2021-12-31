@@ -562,6 +562,13 @@
 		"inventory-back.png" = 'icons/UI_Icons/inventory/back.png',
 		"inventory-pocket.png" = 'icons/UI_Icons/inventory/pocket.png',
 		"inventory-collar.png" = 'icons/UI_Icons/inventory/collar.png',
+
+		///Sandstorm content
+		"inventory-ears_extra.png" = 'modular_sand/icons/UI_Icons/inventory/ears_extra.png',
+		"inventory-underwear.png" = 'modular_sand/icons/UI_Icons/inventory/underwear.png',
+		"inventory-socks.png" = 'modular_sand/icons/UI_Icons/inventory/socks.png',
+		"inventory-undershirt.png" = 'modular_sand/icons/UI_Icons/inventory/undershirt.png',
+		"inventory-wrists.png" = 'modular_sand/icons/UI_Icons/inventory/wrists.png',
 	)
 
 /// Removes all non-alphanumerics from the text, keep in mind this can lead to id conflicts

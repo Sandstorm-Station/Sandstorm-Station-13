@@ -8,7 +8,7 @@ import { Window } from "../layouts";
 const ROWS = 5;
 const COLUMNS = 6;
 
-const ROWS_LONG = 4;
+const ROWS_LONG = 7;
 const COLUMNS_LONG = 11;
 
 const BUTTON_DIMENSIONS = "50px";
@@ -93,6 +93,13 @@ const SLOTS: Record<
     additionalComponent?: JSX.Element;
   }
 > = {
+
+  undershirt: {
+    displayName: "shirt",
+    gridSpot: getGridSpotKey([0, 0]),
+    image: "inventory-undershirt.png",
+  },
+
   eyes: {
     displayName: "eyewear",
     gridSpot: getGridSpotKey([0, 1]),
@@ -103,6 +110,18 @@ const SLOTS: Record<
     displayName: "headwear",
     gridSpot: getGridSpotKey([0, 2]),
     image: "inventory-head.png",
+  },
+
+  ears_extra: {
+    displayName: "right ear",
+    gridSpot: getGridSpotKey([0, 3]),
+    image: "inventory-ears_extra.png",
+  },
+
+  socks: {
+    displayName: "socks",
+    gridSpot: getGridSpotKey([1, 0]),
+    image: "inventory-socks.png",
   },
 
   neck: {
@@ -124,7 +143,7 @@ const SLOTS: Record<
   },
 
   ears: {
-    displayName: "earwear",
+    displayName: "left ear",
     gridSpot: getGridSpotKey([1, 3]),
     image: "inventory-ears.png",
   },
@@ -143,6 +162,12 @@ const SLOTS: Record<
   legcuffs: {
     displayName: "legcuffs",
     gridSpot: getGridSpotKey([1, 5]),
+  },
+
+  underwear: {
+    displayName: "underwear",
+    gridSpot: getGridSpotKey([2, 0]),
+    image: "inventory-underwear.png",
   },
 
   jumpsuit: {
@@ -183,6 +208,12 @@ const SLOTS: Record<
     image: "inventory-shoes.png",
   },
 
+  wrists: {
+    displayName: "wrists",
+    gridSpot: getGridSpotKey([3, 3]),
+    image: "inventory-wrists.png",
+  },
+
   suit_storage: {
     displayName: "suit storage item",
     gridSpot: getGridSpotKey([4, 0]),
@@ -218,6 +249,7 @@ const SLOTS: Record<
     gridSpot: getGridSpotKey([4, 5]),
     image: "inventory-pocket.png",
   },
+
 };
 
 const SLOTS_LONG: Record<
@@ -229,131 +261,163 @@ const SLOTS_LONG: Record<
     additionalComponent?: JSX.Element;
   }
 > = {
-  eyes: {
-    displayName: "eyewear",
+
+  undershirt: {
+    displayName: "shirt",
     gridSpot: getGridSpotKey([0, 0]),
-    image: "inventory-glasses.png",
+    image: "inventory-undershirt.png",
+  },
+
+  socks: {
+    displayName: "socks",
+    gridSpot: getGridSpotKey([1, 0]),
+    image: "inventory-socks.png",
+  },
+
+  underwear: {
+    displayName: "underwear",
+    gridSpot: getGridSpotKey([2, 0]),
+    image: "inventory-underwear.png",
+  },
+
+  wrists: {
+    displayName: "wrists",
+    gridSpot: getGridSpotKey([2, 1]),
+    image: "inventory-wrists.png",
+  },
+
+  ears_extra: {
+    displayName: "right ear",
+    gridSpot: getGridSpotKey([2, 2]),
+    image: "inventory-ears_extra.png",
   },
 
   head: {
     displayName: "headwear",
-    gridSpot: getGridSpotKey([0, 1]),
+    gridSpot: getGridSpotKey([3, 1]),
     image: "inventory-head.png",
-  },
-
-  neck: {
-    displayName: "neckwear",
-    gridSpot: getGridSpotKey([1, 0]),
-    image: "inventory-neck.png",
-  },
-
-  mask: {
-    displayName: "mask",
-    gridSpot: getGridSpotKey([1, 1]),
-    image: "inventory-mask.png",
   },
 
   corgi_collar: {
     displayName: "collar",
-    gridSpot: getGridSpotKey([1, 1]),
+    gridSpot: getGridSpotKey([3, 1]),
     image: "inventory-collar.png",
   },
 
   ears: {
-    displayName: "earwear",
-    gridSpot: getGridSpotKey([1, 2]),
+    displayName: "left ear",
+    gridSpot: getGridSpotKey([3, 2]),
     image: "inventory-ears.png",
   },
 
   parrot_headset: {
     displayName: "headset",
-    gridSpot: getGridSpotKey([1, 2]),
+    gridSpot: getGridSpotKey([3, 2]),
     image: "inventory-ears.png",
+  },
+
+  neck: {
+    displayName: "neckwear",
+    gridSpot: getGridSpotKey([4, 0]),
+    image: "inventory-neck.png",
+  },
+
+  mask: {
+    displayName: "mask",
+    gridSpot: getGridSpotKey([4, 1]),
+    image: "inventory-mask.png",
+  },
+
+  eyes: {
+    displayName: "eyewear",
+    gridSpot: getGridSpotKey([4, 2]),
+    image: "inventory-glasses.png",
   },
 
   jumpsuit: {
     displayName: "uniform",
-    gridSpot: getGridSpotKey([2, 0]),
+    gridSpot: getGridSpotKey([5, 0]),
     image: "inventory-uniform.png",
   },
 
   suit: {
     displayName: "suit",
-    gridSpot: getGridSpotKey([2, 1]),
+    gridSpot: getGridSpotKey([5, 1]),
     image: "inventory-suit.png",
   },
 
   gloves: {
     displayName: "gloves",
-    gridSpot: getGridSpotKey([2, 2]),
+    gridSpot: getGridSpotKey([5, 2]),
     image: "inventory-gloves.png",
   },
 
   handcuffs: {
     displayName: "handcuffs",
-    gridSpot: getGridSpotKey([2, 8]),
+    gridSpot: getGridSpotKey([5, 8]),
   },
 
   shoes: {
     displayName: "shoes",
-    gridSpot: getGridSpotKey([3, 1]),
+    gridSpot: getGridSpotKey([6, 1]),
     image: "inventory-shoes.png",
   },
 
   legcuffs: {
     displayName: "legcuffs",
-    gridSpot: getGridSpotKey([3, 2]),
+    gridSpot: getGridSpotKey([6, 2]),
   },
 
   suit_storage: {
     displayName: "suit storage item",
-    gridSpot: getGridSpotKey([3, 3]),
+    gridSpot: getGridSpotKey([6, 3]),
     image: "inventory-suit_storage.png",
   },
 
   id: {
     displayName: "ID",
-    gridSpot: getGridSpotKey([3, 4]),
+    gridSpot: getGridSpotKey([6, 4]),
     image: "inventory-id.png",
   },
 
   belt: {
     displayName: "belt",
-    gridSpot: getGridSpotKey([3, 5]),
+    gridSpot: getGridSpotKey([6, 5]),
     image: "inventory-belt.png",
   },
 
   back: {
     displayName: "backpack",
-    gridSpot: getGridSpotKey([3, 6]),
+    gridSpot: getGridSpotKey([6, 6]),
     image: "inventory-back.png",
   },
 
   right_hand: {
     displayName: "right hand",
-    gridSpot: getGridSpotKey([3, 7]),
+    gridSpot: getGridSpotKey([6, 7]),
     image: "inventory-hand_r.png",
     additionalComponent: <CornerText align="left">R</CornerText>,
   },
 
   left_hand: {
     displayName: "left hand",
-    gridSpot: getGridSpotKey([3, 8]),
+    gridSpot: getGridSpotKey([6, 8]),
     image: "inventory-hand_l.png",
     additionalComponent: <CornerText align="right">L</CornerText>,
   },
 
   left_pocket: {
     displayName: "left pocket",
-    gridSpot: getGridSpotKey([3, 9]),
+    gridSpot: getGridSpotKey([6, 9]),
     image: "inventory-pocket.png",
   },
 
   right_pocket: {
     displayName: "right pocket",
-    gridSpot: getGridSpotKey([3, 10]),
+    gridSpot: getGridSpotKey([6, 10]),
     image: "inventory-pocket.png",
   },
+
 };
 
 enum ObscuringLevel {
@@ -414,7 +478,7 @@ export const StripMenu = (props, context) => {
     <Window
       title={`Stripping ${data.name}`}
       width={data.long_strip_menu ? 620 : 400}
-      height={data.long_strip_menu ? 300 : 400}>
+      height={data.long_strip_menu ? 470 : 360}>
       <Window.Content>
         <Stack fill vertical>
           {range(0, data.long_strip_menu ? ROWS_LONG : ROWS).map(row => (
