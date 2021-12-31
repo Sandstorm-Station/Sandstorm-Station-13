@@ -247,6 +247,8 @@
 
 			else if(href_list["vir"])
 				var/type = href_list["vir"]
+				if(!ispath(type, /datum/disease))
+					return
 				var/datum/disease/Dis = new type(FALSE)
 				var/AfS = ""
 				for(var/mob/M in Dis.viable_mobtypes)
