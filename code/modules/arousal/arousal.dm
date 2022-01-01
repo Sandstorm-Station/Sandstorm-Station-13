@@ -65,10 +65,6 @@
 		to_chat(H, "<span class='warning'>Your [name] is unable to produce it's own fluids, it's missing the organs for it.</span>")
 
 /mob/living/carbon/human/proc/do_climax(datum/reagents/R, atom/target, obj/item/organ/genital/G, spill = TRUE)
-	//Sandstorm edit
-	set_lust(0)
-	SEND_SIGNAL(src, COMSIG_ADD_MOOD_EVENT, "orgasm", /datum/mood_event/orgasm)
-	//Sandstorm edit
 	if(!G)
 		return
 	if(!target || !R)

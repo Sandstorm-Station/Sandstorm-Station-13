@@ -25,7 +25,7 @@ obj/item/storage/belt/slut/ComponentInitialize()
 		/obj/item/clothing/gloves,
 		/obj/item/restraints/legcuffs/bola,
 		/obj/item/dildo,
-		///obj/item/leash, //This breaks shit
+		/obj/item/leash,
 		/obj/item/genital_equipment/condom,
 		/obj/item/bdsm_whip,
 		/obj/item/clothing/mask/gas/sechailer/slut

@@ -60,6 +60,59 @@
 		'modular_sand/sound/interactions/squelch2.ogg',
 		'modular_sand/sound/interactions/squelch3.ogg'), 50, 1, -1)
 
+/mob/living/proc/do_boobjob(mob/living/target)
+	var/message
+	var/u_His = p_their()
+	var/list/tiddies = list("breasts", "boobs", "honkers", "tatas", "tiddies", "milktanks", "mammaries", "milk bags", "boobers", "boobies")
+	var/list/lines
+
+	if(target.is_fucking(src, CUM_TARGET_BREASTS))
+		lines = list(
+			"slides [u_His] [pick(tiddies)], up and down through \the <b>[target]</b>'s throbbing cock",
+			"squeezes [u_His] [pick(tiddies)] through all of \the <b>[target]</b>'s lenght",
+			"jerks \the <b>[target]</b> off lustfully with [u_His] supple [pick(tiddies)]"
+		)
+	else
+		lines = list(
+			"clamps [u_His] [pick(tiddies)] around \the <b>[target]</b>'s throbbing cock, wrapping it in their sheer warmth",
+			"envelops \the <b>[target]</b>'s hard member with [u_His] soft [pick(tiddies)], giving it a tight and sloshing squeeze",
+			"lets [u_His] [pick(tiddies)] fall into \the <b>[target]</b>'s fat cock, smothering it in [u_His] cleavage"
+		)
+		target.set_is_fucking(src, CUM_TARGET_BREASTS, getorganslot(ORGAN_SLOT_PENIS))
+
+	message = "<span class='lewd'>\The <b>[src]</b> [pick(lines)]</span>"
+	visible_message(message, ignored_mobs = get_unconsenting())
+	playlewdinteractionsound(loc, pick('modular_sand/sound/interactions/bang1.ogg',
+						'modular_sand/sound/interactions/bang2.ogg',
+						'modular_sand/sound/interactions/bang3.ogg'), 70, 1, -1)
+	target.handle_post_sex(NORMAL_LUST, CUM_TARGET_BREASTS, src)
+
+/mob/living/proc/lick_nuts(mob/living/target)
+	var/message
+	var/u_His = p_their()
+	var/t_His = target.p_their()
+	var/lust_increase = 1
+	var/list/balls = list("balls", "nuts", "[pick(list("cum", "spunk", "nut", "jizz", "seed"))] [pick(list("orbs", "spheres", "tanks", "holders"))]")
+	var/list/lines
+
+	if(target.is_fucking(src, NUTS_TO_FACE))
+		lines = list(
+			"worships \the <b>[target]</b>'s [pick(balls)] with [u_His] tongue",
+			"takes a huff of \the <b>[target]</b>'s heavy ball musk and proceeds to lap the sweat off [t_His] [pick(balls)]",
+			"plants smooches all over \the <b>[target]</b>'s heavy [pick(balls)], tasting [t_His] nutsack and massaging it with [u_His] lips"
+		)
+	else
+		lines = list(
+			"opens [u_His] maw and proceeds to bring \the <b>[target]</b>'s [pick(balls)] right in",
+			"uses [u_His] tongue to fit \the <b>[target]</b>'s balls in [u_His] mouth, deeply huffing their scent",
+			"willingly lets \the <b>[target]</b>'s [pick(balls)] fall into and fill [u_His] mouth, lustfully sucking into them"
+		)
+		target.set_is_fucking(src, NUTS_TO_FACE, getorganslot(ORGAN_SLOT_PENIS))
+
+	message = "<span class='lewd'>\The <b>[src]</b> [pick(lines)]"
+	visible_message(message, ignored_mobs = get_unconsenting())
+	target.handle_post_sex(lust_increase, CUM_TARGET_MOUTH, src)
+
 ////////////////////////////////////////////////////////////////////////////////////////////////////////
 ///////// 									U N H O L Y										   /////////
 ////////////////////////////////////////////////////////////////////////////////////////////////////////
@@ -89,7 +142,7 @@
 
 	message = "<span class='lewd'>\The <b>[src]</b>[pick(hell)]</span>"
 	visible_message(message, ignored_mobs = get_unconsenting(unholy = TRUE))
-	playlewdinteractionsound(loc, pick(GLOB.brap_noises), 50, 1, -1)
+	playlewdinteractionsound(loc, pick(GLOB.brap_noises), 50, 1, -1, ignored_mobs = get_unconsenting(unholy = TRUE))
 	if(!is_fucking(target, GRINDING_FACE_WITH_ANUS))
 		set_is_fucking(target, GRINDING_FACE_WITH_ANUS, null)
 	handle_post_sex(LOW_LUST, null, src)
@@ -118,7 +171,7 @@
 
 	message = "<span class='lewd'>\The <b>[src]</b>[pick(hell)]"
 	visible_message(message, ignored_mobs = get_unconsenting(unholy = TRUE))
-	playlewdinteractionsound(loc, pick(GLOB.brap_noises), 50, 1, -1)
+	playlewdinteractionsound(loc, pick(GLOB.brap_noises), 50, 1, -1, ignored_mobs = get_unconsenting(unholy = TRUE))
 	if(!target.is_fucking(src, CUM_TARGET_ANUS))
 		target.set_is_fucking(src, CUM_TARGET_ANUS, target.has_penis(REQUIRE_EXPOSED) ? target.getorganslot(ORGAN_SLOT_PENIS) : (target.has_vagina(REQUIRE_EXPOSED) ? target.getorganslot(ORGAN_SLOT_VAGINA) : null))
 	target.handle_post_sex(NORMAL_LUST, CUM_TARGET_ANUS, src)
@@ -134,7 +187,7 @@
 
 	var/list/asscheeks = list("asscheeks", "buttcheeks", "ass buns", "booty pillows", "dumptruck spheres", "[pick(list("jiggly", "bouncy", "wobbly"))] buttocks")
 	var/list/ass = list("ass", "butt", "dumptruck", "tush", "badonk", "booty", "rump")
-	var/jiggle = "[u_His] [pick(asscheeks)] [pick(list("jiggle", "bounce", "bounce around", "wobble"))] like crazy!"
+	var/jiggle = "[t_His] [pick(asscheeks)] [pick(list("jiggle", "bounce", "bounce around", "wobble"))] like crazy!"
 	var/list/stank = list("rancid", "pungent", "rotten", "boiling hot", "wet", "nose-burning", "heavy", "dense", "thick", "stinky", "stenchy", "warm")
 	var/list/stankhole = list("stinky", "dirty", "gassy", "brapping", "noisy", "quaking", "musky")
 	var/list/braps = list(
@@ -159,7 +212,13 @@
 
 	message = "<span class='lewd'>\The <b>[src]</b> [pick(hell)]"
 	visible_message(message, ignored_mobs = get_unconsenting(unholy = TRUE))
-	playlewdinteractionsound(loc, pick(GLOB.brap_noises), 50, 1, -1)
+	playlewdinteractionsound(loc, pick(GLOB.brap_noises), 50, 1, -1, ignored_mobs = get_unconsenting(unholy = TRUE))
+	playlewdinteractionsound(loc, pick('modular_sand/sound/interactions/bang1.ogg',
+						'modular_sand/sound/interactions/bang2.ogg',
+						'modular_sand/sound/interactions/bang3.ogg',
+						'modular_sand/sound/interactions/bang4.ogg',
+						'modular_sand/sound/interactions/bang5.ogg',
+						'modular_sand/sound/interactions/bang6.ogg'), 70, 1, -1)
 	handle_post_sex(NORMAL_LUST, CUM_TARGET_ANUS, target)
 	target.handle_post_sex(NORMAL_LUST, null, src)
 
@@ -182,7 +241,7 @@
 
 	message = "<span class='lewd'>\The <b>[src]</b> [pick(hell)]</span>"
 	visible_message(message, ignored_mobs = get_unconsenting(unholy = TRUE))
-	playlewdinteractionsound(loc, pick(GLOB.brap_noises), 50, 1, -1)
+	playlewdinteractionsound(loc, pick(GLOB.brap_noises), 50, 1, -1, ignored_mobs = get_unconsenting(unholy = TRUE))
 	if(!is_fucking(target, GRINDING_FACE_WITH_ANUS))
 		set_is_fucking(target, GRINDING_FACE_WITH_ANUS, null)
 	handle_post_sex(LOW_LUST, null, src)
@@ -192,7 +251,7 @@
 	var/t_His = target.p_their()
 	var/u_His = p_their()
 
-	var/obj/item/organ/genital/brap_catcher = target.has_penis(REQUIRE_EXPOSED) && target.has_vagina(REQUIRE_EXPOSED) ? pick(list(target.getorganslot(ORGAN_SLOT_PENIS), target.getorganslot(ORGAN_SLOT_VAGINA))) : (target.has_penis(REQUIRE_EXPOSED) ? target.getorganslot(ORGAN_SLOT_PENIS) : (target.has_vagina(REQUIRE_EXPOSED) ? target.getorganslot(ORGAN_SLOT_VAGINA) : null))
+	var/obj/item/organ/genital/brap_catcher = (target.has_penis(REQUIRE_EXPOSED) ? target.getorganslot(ORGAN_SLOT_PENIS) : (target.has_vagina(REQUIRE_EXPOSED) ? target.getorganslot(ORGAN_SLOT_VAGINA) : null))
 	var/list/asscheeks = list("asscheeks", "buttcheeks", "ass buns", "booty pillows", "dumptruck spheres", "[pick(list("jiggly", "bouncy", "wobbly"))] buttocks")
 	var/list/ass = list("ass", "butt", "dumptruck", "tush", "badonk", "booty", "rump")
 	var/jiggle = "[u_His] [pick(asscheeks)] [pick(list("jiggle", "bounce", "bounce around", "wobble"))] like crazy!"
@@ -207,9 +266,9 @@
 
 	message = "<span class='lewd'>\The <b>[src]</b>[pick(hell)]"
 	visible_message(message, ignored_mobs = get_unconsenting(unholy = TRUE))
-	playlewdinteractionsound(loc, pick(GLOB.brap_noises), 50, 1, -1)
+	playlewdinteractionsound(loc, pick(GLOB.brap_noises), 50, 1, -1, ignored_mobs = get_unconsenting(unholy = TRUE))
 	if(!target.is_fucking(src, CUM_TARGET_ANUS))
-		target.set_is_fucking(src, CUM_TARGET_ANUS, target.has_penis(REQUIRE_EXPOSED) ? target.getorganslot(ORGAN_SLOT_PENIS) : (target.has_vagina(REQUIRE_EXPOSED) ? target.getorganslot(ORGAN_SLOT_VAGINA) : null))
+		target.set_is_fucking(src, CUM_TARGET_ANUS, brap_catcher)
 	target.handle_post_sex(NORMAL_LUST, CUM_TARGET_ANUS, src)
 	handle_post_sex(NORMAL_LUST, null, target)
 
@@ -223,7 +282,7 @@
 	var/list/hell
 	var/list/asscheeks = list("asscheeks", "buttcheeks", "ass buns", "booty pillows", "dumptruck spheres", "[pick(list("jiggly", "bouncy", "wobbly"))] buttocks")
 	var/list/ass = list("ass", "butt", "dumptruck", "tush", "badonk", "booty", "rump")
-	var/jiggle = "[u_His] [pick(asscheeks)] [pick(list("jiggle", "bounce", "bounce around", "wobble"))] like crazy!"
+	var/jiggle = "[t_His] [pick(asscheeks)] [pick(list("jiggle", "bounce", "bounce around", "wobble"))] like crazy!"
 	var/list/stank = list("rancid", "pungent", "rotten", "boiling hot", "wet", "nose-burning", "heavy", "dense", "thick", "stinky", "stenchy", "warm")
 	var/list/stankhole = list("stinky", "dirty", "gassy", "shitting", "noisy", "quaking", "musky", "messy", "shitcaked", "nasty")
 
@@ -241,7 +300,7 @@
 		set_is_fucking(target, CUM_TARGET_ANUS, getorganslot(ORGAN_SLOT_PENIS) ? getorganslot(ORGAN_SLOT_PENIS) : null)
 
 	message = "<span class='lewd'>\The <b>[src]</b> [pick(hell)]"
-	visible_message(message, ignored_mobs = get_unconsenting(unholy = TRUE))
+	visible_message(message, ignored_mobs = get_unconsenting(unholy = TRUE), ignored_mobs = get_unconsenting(unholy = TRUE))
 	playlewdinteractionsound(loc, pick(GLOB.brap_noises), 70, 1, -1)
 	playlewdinteractionsound(loc, pick('modular_sand/sound/interactions/bang1.ogg',
 						'modular_sand/sound/interactions/bang2.ogg',

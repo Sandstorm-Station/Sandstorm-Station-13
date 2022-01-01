@@ -11,6 +11,19 @@
 /datum/interaction/lewd/frotting/display_interaction(mob/living/user, mob/living/target)
 	user.do_frot(target)
 
+/datum/interaction/lewd/do_breastfeed
+	command = "do_breastfeed"
+	description = "Breastfeed them"
+	require_user_breasts = REQUIRE_EXPOSED
+	require_target_mouth = TRUE
+	max_distance = 1
+	write_log_user = "breastfed"
+	write_log_target = "was breastfed by"
+	interaction_sound = null
+
+/datum/interaction/lewd/do_breastfeed/display_interaction(mob/living/user, mob/living/target)
+	user.do_breastfeed(target)
+
 /**
  * Self Interactions!
  */
@@ -60,7 +73,7 @@
 
 /datum/interaction/lewd/breastfuckself
 	command = "breastfuckself"
-	description = "Fuck your breast"
+	description = "Fuck your breasts"
 	interaction_sound = null
 	require_user_penis = REQUIRE_EXPOSED
 	require_user_breasts = REQUIRE_EXPOSED
@@ -114,6 +127,21 @@
 
 /datum/interaction/lewd/titgrope_self/display_interaction(mob/living/carbon/human/user)
 	user.do_titgrope_self(user)
+
+/datum/interaction/lewd/self_nipsuck
+	command = "self_nipsuck"
+	description = "Suck your own nips."
+	require_user_breasts = REQUIRE_EXPOSED
+	require_user_mouth = TRUE
+	user_is_target = TRUE
+	interaction_sound = null
+	max_distance = 0
+	write_log_user = "sucked their own nips"
+	write_log_target = null
+
+/datum/interaction/lewd/self_nipsuck/display_interaction(mob/living/user, mob/living/target)
+	user.do_breastfeed(user)
+
 /*
 /datum/interaction/lewd/remove_self_condom
 	command = "remove_self_condom"

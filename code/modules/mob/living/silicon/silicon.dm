@@ -412,18 +412,6 @@
 	src << browse(dat, "window=airoster")
 	onclose(src, "airoster")
 
-/mob/living/silicon/update_transform()
-	var/matrix/ntransform = matrix(transform) //aka transform.Copy()
-	var/changed = 0
-	if(resize != RESIZE_DEFAULT_SIZE)
-		changed++
-		ntransform.Scale(resize)
-		resize = RESIZE_DEFAULT_SIZE
-
-	if(changed)
-		animate(src, transform = ntransform, time = 2,easing = EASE_IN|EASE_OUT)
-	return ..()
-
 /mob/living/silicon/is_literate()
 	return 1
 

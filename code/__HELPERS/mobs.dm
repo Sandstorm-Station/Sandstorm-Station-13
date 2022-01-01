@@ -217,6 +217,7 @@
 		"has_belly" 		= FALSE,
 		"belly_size"		= 1,
 		"belly_color" 		= pick("FFFFFF","7F7F7F", "7FFF7F", "7F7FFF", "FF7F7F", "7FFFFF", "FF7FFF", "FFFF7F"),
+		//Hyper's belly stuff
 
 
 
@@ -226,6 +227,9 @@
 		"vag_visibility"	= GEN_VISIBLE_NO_UNDIES,
 		"butt_visibility"	= GEN_VISIBLE_NO_UNDIES,
 		"belly_visibility"	= GEN_VISIBLE_NO_UNDIES,
+		//Hyper's custom fluids
+		"balls_fluid"		= /datum/reagent/consumable/semen,
+		"breasts_fluid"		= /datum/reagent/consumable/milk,
 		"ipc_screen"		= snowflake_ipc_antenna_list ? pick(snowflake_ipc_antenna_list) : "None",
 		"ipc_antenna"		= "None",
 		"flavor_text"		= "",
@@ -473,6 +477,18 @@ GLOBAL_LIST_EMPTY(species_datums)
 	REMOVE_TRAIT(L, TRAIT_PASSTABLE, source)
 	if(!HAS_TRAIT(L, TRAIT_PASSTABLE))
 		L.pass_flags &= ~PASSTABLE
+
+/proc/dance_rotate(atom/movable/AM, datum/callback/callperrotate, set_original_dir=FALSE)
+	set waitfor = FALSE
+	var/originaldir = AM.dir
+	for(var/i in list(NORTH,SOUTH,EAST,WEST,EAST,SOUTH,NORTH,SOUTH,EAST,WEST,EAST,SOUTH))
+		if(!AM)
+			return
+		AM.setDir(i)
+		callperrotate?.Invoke()
+		sleep(1)
+	if(set_original_dir)
+		AM.setDir(originaldir)
 
 /// Gets the client of the mob, allowing for mocking of the client.
 /// You only need to use this if you know you're going to be mocking clients somewhere else.

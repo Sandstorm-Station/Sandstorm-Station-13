@@ -90,7 +90,8 @@
 						update_inv_shoes()
 				//End bloody footprints
 
-				S.step_action()
+				if(istype(S))
+					S.step_action()
 	if(movement_type & GROUND)
 		dirt_buildup()
 

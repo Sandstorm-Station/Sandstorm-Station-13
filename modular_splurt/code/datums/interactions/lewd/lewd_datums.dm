@@ -45,6 +45,32 @@
 /datum/interaction/lewd/lick_armpit/display_interaction(mob/living/user, mob/living/target)
 	user.lick_armpit(target)
 
+/datum/interaction/lewd/do_boobjob
+	command = "do_boobjob"
+	description = "Give them a boobjob"
+	require_user_breasts = REQUIRE_EXPOSED
+	require_user_penis = REQUIRE_EXPOSED
+	interaction_sound = null
+	max_distance = 1
+	write_log_target = "Got a boobjob from"
+	write_log_user = null
+
+/datum/interaction/lewd/do_boobjob/display_interaction(mob/living/user, mob/living/target)
+	user.do_boobjob(target)
+
+/datum/interaction/lewd/lick_nuts
+	command = "lick_nuts"
+	description = "Lick their balls"
+	require_user_mouth = TRUE
+	require_target_balls = REQUIRE_EXPOSED
+	interaction_sound = null
+	max_distance = 1
+	write_log_target = "Got their nuts sucked by"
+	write_log_user = null
+
+/datum/interaction/lewd/lick_nuts/display_interaction(mob/living/user, mob/living/target)
+	user.lick_nuts(target)
+
 ////////////////////////////////////////////////////////////////////////////////////////////////////////
 ///////// 									U N H O L Y										   /////////
 ////////////////////////////////////////////////////////////////////////////////////////////////////////

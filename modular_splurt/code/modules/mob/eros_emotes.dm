@@ -67,22 +67,9 @@
 		"farts. It might have been the Citizen Kane of farts."
 	)
 	message = pick(fart_emotes)
-	message = replacetext(message, "%OWNER", "[user]")
 	. = ..()
 	if(.)
-		playsound(user, pick(GLOB.brap_noises), 50, 1)
-
-		//Iunno about this one yet chief
-		/*
-		var/turf/open/T = get_turf(user)
-		var/datum/gas_mixture/stank = new
-		var/list/cached_gases = stank.gases
-		cached_gases[/datum/gas/miasma] += 7*MIASMA_CORPSE_MOLES //eh.
-		stank.temperature = T20C // without this the room would eventually freeze and miasma mining would be easier
-		T.assume_air(stank)
-		T.air_update_turf()
-		*/
-
+		playlewdinteractionsound(user, pick(GLOB.brap_noises), 50, 1, ignored_mobs = user.get_unconsenting(unholy = TRUE)) //Rip brap trolling
 		var/delay = 3 SECONDS
 		user.fart_cooldown = TRUE
 		addtimer(CALLBACK(GLOBAL_PROC, .proc/_fart_renew_msg, user), delay)
