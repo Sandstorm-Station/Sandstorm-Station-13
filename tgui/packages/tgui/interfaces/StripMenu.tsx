@@ -8,6 +8,9 @@ import { Window } from "../layouts";
 const ROWS = 5;
 const COLUMNS = 6;
 
+const ROWS_LONG = 7;
+const COLUMNS_LONG = 11;
+
 const BUTTON_DIMENSIONS = "50px";
 
 type GridSpotKey = string;
@@ -71,6 +74,14 @@ const ALTERNATE_ACTIONS: Record<string, AlternateAction> = {
     icon: "tshirt",
     text: "Adjust jumpsuit",
   },
+  enable_helmet: {
+    icon: "toggle-off",
+    text: "Extend helmet",
+  },
+  disable_helmet: {
+    icon: "toggle-on",
+    text: "Retract helmet",
+  },
 };
 
 const SLOTS: Record<
@@ -82,6 +93,13 @@ const SLOTS: Record<
     additionalComponent?: JSX.Element;
   }
 > = {
+
+  undershirt: {
+    displayName: "shirt",
+    gridSpot: getGridSpotKey([0, 0]),
+    image: "inventory-undershirt.png",
+  },
+
   eyes: {
     displayName: "eyewear",
     gridSpot: getGridSpotKey([0, 1]),
@@ -92,6 +110,18 @@ const SLOTS: Record<
     displayName: "headwear",
     gridSpot: getGridSpotKey([0, 2]),
     image: "inventory-head.png",
+  },
+
+  ears_extra: {
+    displayName: "right ear",
+    gridSpot: getGridSpotKey([0, 3]),
+    image: "inventory-ears_extra.png",
+  },
+
+  socks: {
+    displayName: "socks",
+    gridSpot: getGridSpotKey([1, 0]),
+    image: "inventory-socks.png",
   },
 
   neck: {
@@ -113,7 +143,7 @@ const SLOTS: Record<
   },
 
   ears: {
-    displayName: "earwear",
+    displayName: "left ear",
     gridSpot: getGridSpotKey([1, 3]),
     image: "inventory-ears.png",
   },
@@ -132,6 +162,12 @@ const SLOTS: Record<
   legcuffs: {
     displayName: "legcuffs",
     gridSpot: getGridSpotKey([1, 5]),
+  },
+
+  underwear: {
+    displayName: "underwear",
+    gridSpot: getGridSpotKey([2, 0]),
+    image: "inventory-underwear.png",
   },
 
   jumpsuit: {
@@ -172,6 +208,12 @@ const SLOTS: Record<
     image: "inventory-shoes.png",
   },
 
+  wrists: {
+    displayName: "wrists",
+    gridSpot: getGridSpotKey([3, 3]),
+    image: "inventory-wrists.png",
+  },
+
   suit_storage: {
     displayName: "suit storage item",
     gridSpot: getGridSpotKey([4, 0]),
@@ -207,6 +249,175 @@ const SLOTS: Record<
     gridSpot: getGridSpotKey([4, 5]),
     image: "inventory-pocket.png",
   },
+
+};
+
+const SLOTS_LONG: Record<
+  string,
+  {
+    displayName: string;
+    gridSpot: GridSpotKey;
+    image?: string;
+    additionalComponent?: JSX.Element;
+  }
+> = {
+
+  undershirt: {
+    displayName: "shirt",
+    gridSpot: getGridSpotKey([0, 0]),
+    image: "inventory-undershirt.png",
+  },
+
+  socks: {
+    displayName: "socks",
+    gridSpot: getGridSpotKey([1, 0]),
+    image: "inventory-socks.png",
+  },
+
+  underwear: {
+    displayName: "underwear",
+    gridSpot: getGridSpotKey([2, 0]),
+    image: "inventory-underwear.png",
+  },
+
+  wrists: {
+    displayName: "wrists",
+    gridSpot: getGridSpotKey([2, 1]),
+    image: "inventory-wrists.png",
+  },
+
+  ears_extra: {
+    displayName: "right ear",
+    gridSpot: getGridSpotKey([2, 2]),
+    image: "inventory-ears_extra.png",
+  },
+
+  head: {
+    displayName: "headwear",
+    gridSpot: getGridSpotKey([3, 1]),
+    image: "inventory-head.png",
+  },
+
+  corgi_collar: {
+    displayName: "collar",
+    gridSpot: getGridSpotKey([3, 1]),
+    image: "inventory-collar.png",
+  },
+
+  ears: {
+    displayName: "left ear",
+    gridSpot: getGridSpotKey([3, 2]),
+    image: "inventory-ears.png",
+  },
+
+  parrot_headset: {
+    displayName: "headset",
+    gridSpot: getGridSpotKey([3, 2]),
+    image: "inventory-ears.png",
+  },
+
+  neck: {
+    displayName: "neckwear",
+    gridSpot: getGridSpotKey([4, 0]),
+    image: "inventory-neck.png",
+  },
+
+  mask: {
+    displayName: "mask",
+    gridSpot: getGridSpotKey([4, 1]),
+    image: "inventory-mask.png",
+  },
+
+  eyes: {
+    displayName: "eyewear",
+    gridSpot: getGridSpotKey([4, 2]),
+    image: "inventory-glasses.png",
+  },
+
+  jumpsuit: {
+    displayName: "uniform",
+    gridSpot: getGridSpotKey([5, 0]),
+    image: "inventory-uniform.png",
+  },
+
+  suit: {
+    displayName: "suit",
+    gridSpot: getGridSpotKey([5, 1]),
+    image: "inventory-suit.png",
+  },
+
+  gloves: {
+    displayName: "gloves",
+    gridSpot: getGridSpotKey([5, 2]),
+    image: "inventory-gloves.png",
+  },
+
+  handcuffs: {
+    displayName: "handcuffs",
+    gridSpot: getGridSpotKey([5, 8]),
+  },
+
+  shoes: {
+    displayName: "shoes",
+    gridSpot: getGridSpotKey([6, 1]),
+    image: "inventory-shoes.png",
+  },
+
+  legcuffs: {
+    displayName: "legcuffs",
+    gridSpot: getGridSpotKey([6, 2]),
+  },
+
+  suit_storage: {
+    displayName: "suit storage item",
+    gridSpot: getGridSpotKey([6, 3]),
+    image: "inventory-suit_storage.png",
+  },
+
+  id: {
+    displayName: "ID",
+    gridSpot: getGridSpotKey([6, 4]),
+    image: "inventory-id.png",
+  },
+
+  belt: {
+    displayName: "belt",
+    gridSpot: getGridSpotKey([6, 5]),
+    image: "inventory-belt.png",
+  },
+
+  back: {
+    displayName: "backpack",
+    gridSpot: getGridSpotKey([6, 6]),
+    image: "inventory-back.png",
+  },
+
+  right_hand: {
+    displayName: "right hand",
+    gridSpot: getGridSpotKey([6, 7]),
+    image: "inventory-hand_r.png",
+    additionalComponent: <CornerText align="left">R</CornerText>,
+  },
+
+  left_hand: {
+    displayName: "left hand",
+    gridSpot: getGridSpotKey([6, 8]),
+    image: "inventory-hand_l.png",
+    additionalComponent: <CornerText align="right">L</CornerText>,
+  },
+
+  left_pocket: {
+    displayName: "left pocket",
+    gridSpot: getGridSpotKey([6, 9]),
+    image: "inventory-pocket.png",
+  },
+
+  right_pocket: {
+    displayName: "right pocket",
+    gridSpot: getGridSpotKey([6, 10]),
+    image: "inventory-pocket.png",
+  },
+
 };
 
 enum ObscuringLevel {
@@ -246,24 +457,35 @@ type StripMenuItem =
 type StripMenuData = {
   items: Record<keyof typeof SLOTS, StripMenuItem>;
   name: string;
+  long_strip_menu: boolean;
 };
 
 export const StripMenu = (props, context) => {
   const { act, data } = useBackend<StripMenuData>(context);
 
   const gridSpots = new Map<GridSpotKey, string>();
-  for (const key of Object.keys(data.items)) {
-    gridSpots.set(SLOTS[key].gridSpot, key);
+  if (data.long_strip_menu) {
+    for (const key of Object.keys(data.items)) {
+      gridSpots.set(SLOTS_LONG[key].gridSpot, key);
+    }
+  } else {
+    for (const key of Object.keys(data.items)) {
+      gridSpots.set(SLOTS[key].gridSpot, key);
+    }
   }
 
   return (
-    <Window title={`Stripping ${data.name}`} width={400} height={400}>
+    <Window
+      title={`Stripping ${data.name}`}
+      width={data.long_strip_menu ? 620 : 400}
+      height={data.long_strip_menu ? 470 : 360}>
       <Window.Content>
         <Stack fill vertical>
-          {range(0, ROWS).map(row => (
+          {range(0, data.long_strip_menu ? ROWS_LONG : ROWS).map(row => (
             <Stack.Item key={row}>
               <Stack fill>
-                {range(0, COLUMNS).map(column => {
+                {range(0, data.long_strip_menu ? COLUMNS_LONG
+                  : COLUMNS).map(column => {
                   const key = getGridSpotKey([row, column]);
                   const keyAtSpot = gridSpots.get(key);
 
@@ -290,7 +512,9 @@ export const StripMenu = (props, context) => {
                   if (item === null) {
                     tooltip = slot.displayName;
                   } else if ("name" in item) {
-                    alternateAction = ALTERNATE_ACTIONS[item.alternate];
+                    if (item.alternate) {
+                      alternateAction = ALTERNATE_ACTIONS[item.alternate];
+                    }
 
                     content = (
                       <Box
@@ -364,17 +588,9 @@ export const StripMenu = (props, context) => {
                           {slot.image && (
                             <Box
                               as="img"
+                              className="centered-image"
                               src={resolveAsset(slot.image)}
                               opacity={0.7}
-                              style={{
-                                position: "absolute",
-                                width: "32px",
-                                height: "32px",
-                                left: "50%",
-                                top: "50%",
-                                transform:
-                                  "translateX(-50%) translateY(-50%) scale(0.8)",
-                              }}
                             />
                           )}
 

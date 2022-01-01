@@ -103,7 +103,7 @@
 		return
 	var/mob/living/carbon/human/O = held_mob
 	if(istype(O))
-		O.show_inv(usr)
+		O.MouseDrop(usr)
 
 /obj/item/clothing/head/mob_holder/micro/attack_self(mob/living/user)
 	if(!user.CheckActionCooldown())

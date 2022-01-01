@@ -277,18 +277,19 @@
 	else
 		..() //just allows people to hit it with other objects, if they so wished.
 
-/obj/item/clothing/underwear/briefs/panties/portalpanties/mob_can_equip(mob/living/M, slot)
+/obj/item/clothing/underwear/briefs/panties/portalpanties/mob_can_equip(M, equipper, slot, disable_warning, bypass_equip_delay_self)
 	if(!..())
 		return FALSE
 	if(ishuman(M))
+		var/mob/living/carbon/human/human = M
 		switch(targetting)
 			if("vagina")
-				if(!M.has_vagina(REQUIRE_EXPOSED))
-					to_chat(M, "<span class='warning'>The vagina is covered or there is none!</span>")
+				if(!human.has_vagina(REQUIRE_EXPOSED))
+					to_chat(human, "<span class='warning'>The vagina is covered or there is none!</span>")
 					return FALSE
 			if("anus")
-				if(!M.has_anus(REQUIRE_EXPOSED))
-					to_chat(M, "<span class='warning'>The anus is covered or there is none!</span>")
+				if(!human.has_anus(REQUIRE_EXPOSED))
+					to_chat(human, "<span class='warning'>The anus is covered or there is none!</span>")
 					return FALSE
 	return TRUE
 
