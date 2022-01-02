@@ -8,7 +8,6 @@
 	deathclaw_mode = "rape"
 
 /mob/living/simple_animal/hostile/deathclaw/funclaw/gentle
-	name = "Gentle Deathclaw"
 	desc = "A massive, reptilian creature with powerful muscles, razor-sharp claws, and aggression to match. This one has the bedroom eyes.."
 	deathclaw_mode = "gentle"
 
@@ -20,19 +19,26 @@
 /mob/living/simple_animal/hostile/deathclaw/funclaw/AttackingTarget()
 	var/mob/living/M = target
 
-	// Gentleclaws do nothing if: on sex cooldown OR partner has no consented
-	if (deathclaw_mode == "gentle" && get_refraction_dif() > 0 || deathclaw_mode == "gentle" && M.client.prefs.nonconpref != "Yes")
-		return
+	var/onLewdCooldown = FALSE
+	var/wantsNoncon = FALSE
 
-	// We do NOT lewd and instead ATTACK if:
-	// Do not lewd animals
-	// Do not lewd players which aren't playing
-	// Do not lewd non-consenting players
-	// If in rape mode, hurt the victim first
-	// If in abomination mode, hurt the victim first
-	if(!ishuman(M) || !M.client || M.client.prefs.nonconpref != "Yes" || (deathclaw_mode == "rape" && M.health > 60) || (deathclaw_mode == "abomination" && M.health > 60))
-		..() // Normal murderous mode
-		return
+	if(get_refraction_dif() > 0)
+		onLewdCooldown = TRUE
+
+	if(M.client && M.client.prefs.nonconpref == "Yes")
+		wantsNoncon = TRUE
+
+	switch(deathclaw_mode)
+		if("gentle")
+			if(onLewdCooldown || !wantsNoncon)
+				return // Do nothing
+		if("abomination")
+			if(onLewdCooldown || !wantsNoncon)
+				return // Do nothing
+		if("rape")
+			if(onLewdCooldown || !wantsNoncon || M.health > 60)
+				..() // Attack target
+				return
 
 	if(!M.pulledby)
 		if(!M.buckled && !M.density)
@@ -56,9 +62,14 @@
 			pickNewHole(M)
 		change_target_hole_cooldown = world.time + 100
 
+
 	do_lewd_action(M)
-	sleep(rand(8, 12))
-	do_lewd_action(M)
+	addtimer(CALLBACK(src, .proc/do_lewd_action, M), rand(8, 12))
+
+	// Regular sex has an extra action per tick to seem less slow and robotic
+	if(deathclaw_mode != "abomination" || M.client.prefs.unholypref != "Yes")
+		addtimer(CALLBACK(src, .proc/do_lewd_action, M), rand(12, 16))
+
 
 /mob/living/simple_animal/hostile/deathclaw/funclaw/proc/pickNewHole(mob/living/M)
 	switch(rand(2))
@@ -75,6 +86,9 @@
 /mob/living/simple_animal/hostile/deathclaw/funclaw/proc/do_lewd_action(mob/living/M)
 	if(get_refraction_dif() > 0)
 		return
+
+	if(rand(1,7) == 7)
+		playsound(loc, "modular_splurt/sound/lewd/deathclaw_grunt[rand(1, 5)].ogg", 70, 1, -1)
 
 	switch(chosen_hole)
 		if(CUM_TARGET_ANUS)
@@ -155,14 +169,15 @@
 	if(deathclaw_mode == "abomination" && M.client.prefs.unholypref == "Yes")
 		message = "cums all over [M]'s body"
 
+	M.reagents.add_reagent(/datum/reagent/consumable/semen, 30)
+	new /obj/effect/decal/cleanable/semen(loc)
 	playsound(loc, "modular_splurt/sound/lewd/deathclaw[rand(1, 2)].ogg", 70, 1, -1)
 	visible_message("<font color=purple><b>\The [src]</b> [message]</font>")
 	shake_camera(M, 6, 1)
 	set_is_fucking(null ,null)
 
-
-	refractory_period = world.time + rand(150, 250) // Sex cooldown
-	set_lust(100) // Nuts at 400
+	refractory_period = world.time + rand(100, 150) // Sex cooldown
+	set_lust(0) // Nuts at 400
 
 	addtimer(CALLBACK(src, .proc/slap, M), 15)
 

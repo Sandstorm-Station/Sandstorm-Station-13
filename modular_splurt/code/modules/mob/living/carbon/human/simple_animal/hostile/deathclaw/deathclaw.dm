@@ -33,6 +33,8 @@
 	unsuitable_atmos_damage = 5
 	gold_core_spawnable = HOSTILE_SPAWN
 	var/charging = FALSE
+	has_penis = TRUE
+	has_butt = TRUE
 
 	//**deathclaw_mode**
 	// Hostile: Normal deathclaw murder machine
