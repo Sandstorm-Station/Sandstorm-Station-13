@@ -51,7 +51,7 @@
 	user_not_tired = TRUE
 	user_is_target = TRUE
 	max_distance = 0
-	write_log_user = "was given head by yourself"
+	write_log_user = "sucked off"
 	write_log_target = null
 
 /datum/interaction/lewd/oral/selfsuck/display_interaction(mob/living/carbon/human/user)
@@ -65,7 +65,7 @@
 	user_not_tired = TRUE
 	user_is_target = TRUE
 	max_distance = 0
-	write_log_user = "Сunni herself off"
+	write_log_user = "Сunni off"
 	write_log_target = null
 
 /datum/interaction/lewd/oral/suckvagself/display_interaction(mob/living/carbon/human/user)
@@ -80,7 +80,7 @@
 	user_not_tired = TRUE
 	user_is_target = TRUE
 	max_distance = 0
-	write_log_user = "Breastfuck herself"
+	write_log_user = "Breastfucked"
 	write_log_target = null
 
 /datum/interaction/lewd/breastfuckself/display_interaction(mob/living/carbon/human/user)
@@ -94,7 +94,7 @@
 	require_user_anus = REQUIRE_EXPOSED
 	user_is_target = TRUE
 	max_distance = 0
-	write_log_user = "fingered self"
+	write_log_user = "fingered"
 	write_log_target = null
 
 /datum/interaction/lewd/fingerass_self/display_interaction(mob/living/carbon/human/user)
@@ -108,7 +108,7 @@
 	interaction_sound = null
 	user_is_target = TRUE
 	max_distance = 0
-	write_log_user = "fingered own pussy"
+	write_log_user = "fingered the pussy of"
 	write_log_target = null
 
 /datum/interaction/lewd/finger_self/display_interaction(mob/living/carbon/human/user)

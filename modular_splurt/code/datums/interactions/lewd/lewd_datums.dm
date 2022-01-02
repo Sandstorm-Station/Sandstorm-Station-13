@@ -5,7 +5,7 @@
 	max_distance = 1
 	interaction_sound = null
 	write_log_target = "got breast smothered by"
-	write_log_user = null
+	write_log_user = "breast smothered"
 
 /datum/interaction/lewd/do_breastsmother/display_interaction(mob/living/user, mob/living/target)
 	user.do_breastsmother(target)
@@ -17,7 +17,7 @@
 	max_distance = 1
 	interaction_sound = null
 	write_log_target = "got their sweat licked by"
-	write_log_user = "licked sweat"
+	write_log_user = "licked the sweat of"
 
 /datum/interaction/lewd/lick_sweat/display_interaction(mob/living/user, mob/living/target)
 	user.lick_sweat(target)
@@ -28,7 +28,7 @@
 	max_distance = 1
 	interaction_sound = null
 	write_log_target = "Got armpit smothered by"
-	write_log_user = "Smothered someone in their armpit"
+	write_log_user = "Smothered in their armpit"
 
 /datum/interaction/lewd/smother_armpit/display_interaction(mob/living/user, mob/living/target)
 	user.smother_armpit(target)
@@ -40,7 +40,7 @@
 	max_distance = 1
 	interaction_sound = null
 	write_log_target = "Got dem armpit ate by"
-	write_log_user = "ate some armpit"
+	write_log_user = "ate the armpit of"
 
 /datum/interaction/lewd/lick_armpit/display_interaction(mob/living/user, mob/living/target)
 	user.lick_armpit(target)
@@ -53,7 +53,7 @@
 	interaction_sound = null
 	max_distance = 1
 	write_log_target = "Got a boobjob from"
-	write_log_user = null
+	write_log_user = "gave a boobjob to"
 
 /datum/interaction/lewd/do_boobjob/display_interaction(mob/living/user, mob/living/target)
 	user.do_boobjob(target)
@@ -66,7 +66,7 @@
 	interaction_sound = null
 	max_distance = 1
 	write_log_target = "Got their nuts sucked by"
-	write_log_user = null
+	write_log_user = "sucked the nuts of"
 
 /datum/interaction/lewd/lick_nuts/display_interaction(mob/living/user, mob/living/target)
 	user.lick_nuts(target)
@@ -85,7 +85,7 @@
 	max_distance = 1
 	interaction_sound = null
 	write_log_target = "got facefarted by"
-	write_log_user = null
+	write_log_user = "farted on the face of"
 
 /datum/interaction/lewd/unholy/do_facefart/display_interaction(mob/living/user, mob/living/target)
 	user.do_facefart(target)
@@ -97,7 +97,7 @@
 	max_distance = 1
 	interaction_sound = null
 	write_log_target = "got crotchfarted by"
-	write_log_user = null
+	write_log_user = "farted on the crotch of"
 
 /datum/interaction/lewd/unholy/do_crotchfart/display_interaction(mob/living/user, mob/living/target)
 	user.do_crotchfart(target)
@@ -110,7 +110,7 @@
 	max_distance = 1
 	interaction_sound = null
 	write_log_target = "got fartfucked by"
-	write_log_user = null
+	write_log_user = "fartfucked"
 
 /datum/interaction/lewd/unholy/do_fartfuck/display_interaction(mob/living/user, mob/living/target)
 	user.do_fartfuck(target)
@@ -122,7 +122,7 @@
 	max_distance = 1
 	interaction_sound = null
 	write_log_target = "got shat in the face by"
-	write_log_user = null
+	write_log_user = "shat in the face of"
 
 /datum/interaction/lewd/unholy/do_faceshit/display_interaction(mob/living/user, mob/living/target)
 	user.do_faceshit(target)
@@ -134,7 +134,7 @@
 	max_distance = 1
 	interaction_sound = null
 	write_log_target = "got shat on the croch by"
-	write_log_user = null
+	write_log_user = "shat on the crotch of"
 
 /datum/interaction/lewd/unholy/do_crotchshit/display_interaction(mob/living/user, mob/living/target)
 	user.do_crotchshit(target)
@@ -147,6 +147,7 @@
 	max_distance = 1
 	interaction_sound = null
 	write_log_target = "got shitfucked by"
+	write_log_user = "shitfucked"
 
 /datum/interaction/lewd/unholy/do_shitfuck/display_interaction(mob/living/user, mob/living/target)
 	user.do_shitfuck(target)
@@ -158,6 +159,7 @@
 	max_distance = 1
 	interaction_sound = null
 	write_log_target = "got pissed all over by"
+	write_log_user = "pissed on"
 
 /datum/interaction/lewd/unholy/piss_over/display_interaction(mob/living/user, mob/living/target)
 	user.piss_over(target)
