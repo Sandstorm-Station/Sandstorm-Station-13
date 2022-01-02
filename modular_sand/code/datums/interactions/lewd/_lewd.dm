@@ -1208,11 +1208,16 @@
 			"brutally shoves [u_His] cock into \the <b>[partner]</b>'s throat to make [t_Him] gag.",
 			"chokes \the <b>[partner]</b> on [u_His] dick, going in balls deep.",
 			"slams in and out of \the <b>[partner]</b>'s mouth, [u_His] balls slapping off [t_His] face.")]"
-		if(rand(3))
+		if(rand(0, 1) == 1)
 			partner.emote("chokes on \The [src]")
-			if(prob(1) && istype(partner, /mob/living))
-				var/mob/living/H = partner
-				H.adjustOxyLoss(5)
+		if(istype(partner, /mob/living))
+			var/mob/living/H = partner
+			var/statBefore = H.stat
+			H.adjustOxyLoss(3)
+
+			if(H.stat == UNCONSCIOUS && statBefore != UNCONSCIOUS)
+				visible_message(message = "<font color=red><b>\The <b>[partner]</b></b> passes out on <b>\The [src]</b>'s cock.</span>", ignored_mobs = get_unconsenting())
+
 		if(partner.a_intent == INTENT_HARM)
 			// adjustBruteLoss(5)
 			retaliation_message = pick(
