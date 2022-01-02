@@ -1354,7 +1354,13 @@ Traitors and the like can also be revived with the previous role mostly intact.
 		ADMIN_PUNISHMENT_BLEED,
 		ADMIN_PUNISHMENT_SCARIFY,
 		ADMIN_PUNISHMENT_CLUWNE,
-		ADMIN_PUNISHMENT_GOODBYE)
+		ADMIN_PUNISHMENT_GOODBYE,
+		ADMIN_PUNISHMENT_TABLETIDESTATIONWIDE,
+		ADMIN_PUNISHMENT_FAKEBWOINK,
+		ADMIN_PUNISHMENT_NUGGET,
+		ADMIN_PUNISHMENT_BREADIFY,
+		ADMIN_PUNISHMENT_BOOKIFY,
+		ADMIN_PUNISHMENT_BONK)
 
 	var/punishment = input("Choose a punishment", "DIVINE SMITING") as null|anything in punishment_list
 
@@ -1363,6 +1369,9 @@ Traitors and the like can also be revived with the previous role mostly intact.
 
 	switch(punishment)
 		if(ADMIN_PUNISHMENT_LIGHTNING)
+			if(prob(75))
+				playsound(target, 'modular_splurt/sound/misc/NOW.ogg', 75, FALSE)
+				sleep(4 SECONDS)
 			var/turf/T = get_step(get_step(target, NORTH), NORTH)
 			T.Beam(target, icon_state="lightning[rand(1,12)]", time = 5)
 			target.adjustFireLoss(75)
@@ -1532,6 +1541,51 @@ Traitors and the like can also be revived with the previous role mostly intact.
 				return
 			else
 				C.pregoodbye(C) //sandstorm punish and ends here.
+		if(ADMIN_PUNISHMENT_TABLETIDESTATIONWIDE) //SPLURT punishments start here
+			priority_announce(html_decode("[target] has brought the wrath of the gods upon themselves and is now being tableslammed across the station. Please stand by."), null, 'sound/misc/announce.ogg', "CentCom")
+			var/list/areas = list()
+			for(var/area/A in world)
+				if(A.z == SSmapping.station_start)
+					areas += A
+			SEND_SOUND(target, sound('modular_splurt/sound/misc/slamofthenorthstar.ogg',volume=60))
+			for(var/area/A in areas)
+				for(var/obj/structure/table/T in A)
+					T.tablepush(target, target)
+					sleep(1)
+		if(ADMIN_PUNISHMENT_FAKEBWOINK)
+			SEND_SOUND(target, 'sound/effects/adminhelp.ogg')
+		if(ADMIN_PUNISHMENT_NUGGET)
+			if (!iscarbon(target))
+				return
+			var/mob/living/carbon/carbon_target = target
+			var/timer = 2 SECONDS
+			for (var/_limb in carbon_target.bodyparts)
+				var/obj/item/bodypart/limb = _limb
+				if (limb.body_part == HEAD || limb.body_part == CHEST)
+					continue
+				addtimer(CALLBACK(limb, /obj/item/bodypart/.proc/dismember), timer)
+				addtimer(CALLBACK(GLOBAL_PROC, .proc/playsound, carbon_target, 'modular_splurt/sound/effects/cartoon_pop.ogg', 70), timer)
+				addtimer(CALLBACK(carbon_target, /mob/living/.proc/spin, 4, 1), timer - 0.4 SECONDS)
+				timer += 2 SECONDS
+		if(ADMIN_PUNISHMENT_BREADIFY)
+			#define BREADIFY_TIME (5 SECONDS)
+			var/mutable_appearance/bread_appearance = mutable_appearance('icons/obj/food/burgerbread.dmi', "bread")
+			var/mutable_appearance/transform_scanline = mutable_appearance('modular_splurt/icons/effects/effects.dmi', "transform_effect")
+			target.transformation_animation(bread_appearance, time = BREADIFY_TIME, transform_overlay=transform_scanline, reset_after=TRUE)
+			addtimer(CALLBACK(GLOBAL_PROC, .proc/breadify, target), BREADIFY_TIME)
+			#undef BREADIFY_TIME
+		if(ADMIN_PUNISHMENT_BOOKIFY)
+			#define BOOKIFY_TIME (2 SECONDS)
+			var/mutable_appearance/book_appearance = mutable_appearance('icons/obj/library.dmi', "book")
+			var/mutable_appearance/transform_scanline = mutable_appearance('modular_splurt/icons/effects/effects.dmi', "transform_effect")
+			target.transformation_animation(book_appearance, time = BOOKIFY_TIME, transform_overlay=transform_scanline, reset_after=TRUE)
+			addtimer(CALLBACK(GLOBAL_PROC, .proc/bookify, target), BOOKIFY_TIME)
+			playsound(target, 'modular_splurt/sound/misc/bookify.ogg', 60, 1)
+			#undef BOOKIFY_TIME
+		if(ADMIN_PUNISHMENT_BONK)
+			playsound(target, 'modular_splurt/sound/misc/bonk.ogg', 100, 1)
+			target.AddElement(/datum/element/squish, 60 SECONDS)
+			to_chat(target, "<span class='warning big'>Bonk.</span>")
 
 	punish_log(target, punishment)
 

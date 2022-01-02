@@ -710,6 +710,16 @@ SUBSYSTEM_DEF(ticker)
 	update_everything_flag_in_db()
 	if(!round_end_sound)
 		round_end_sound = pick(\
+		'modular_splurt/sound/roundend/dotheballsgo.ogg',
+		'modular_splurt/sound/roundend/filledwith.ogg',
+		'modular_splurt/sound/roundend/iknowwhat.ogg',
+		'modular_splurt/sound/roundend/lottawords.ogg',
+		'modular_splurt/sound/roundend/pissesonme.ogg',
+		'modular_splurt/sound/roundend/theballsgothard.ogg',
+		'modular_splurt/sound/roundend/iwishtherewassomethingmore.ogg',
+		'modular_splurt/sound/roundend/likeisaid.ogg',
+		'modular_splurt/sound/roundend/whatarottenwaytodie.ogg',
+		'modular_splurt/sound/roundend/whatashame.ogg',
 		'sound/roundend/newroundsexy.ogg',
 		'sound/roundend/apcdestroyed.ogg',
 		'sound/roundend/seeyoulaterokay.ogg',
