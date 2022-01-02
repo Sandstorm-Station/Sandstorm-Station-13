@@ -169,8 +169,10 @@
 	if(deathclaw_mode == "abomination" && M.client.prefs.unholypref == "Yes")
 		message = "cums all over [M]'s body"
 
-	M.reagents.add_reagent(/datum/reagent/consumable/semen, 30)
+	if(istype(M, /mob/living/carbon))
+		M.reagents.add_reagent(/datum/reagent/consumable/semen, 30)
 	new /obj/effect/decal/cleanable/semen(loc)
+
 	playsound(loc, "modular_splurt/sound/lewd/deathclaw[rand(1, 2)].ogg", 70, 1, -1)
 	visible_message("<font color=purple><b>\The [src]</b> [message]</font>")
 	shake_camera(M, 6, 1)
