@@ -5392,6 +5392,7 @@
 /area/maintenance/disposal)
 "ann" = (
 /obj/effect/landmark/event_spawn,
+/obj/item/hilbertshotel/ghostdojo,
 /turf/open/floor/goonplaque{
 	desc = "It reads 'In honor of spacemen past, whose work allowed this station to find its new home. The fact that you stand on a station originally built light years away is a definitive representation of the ingenuity of the human spirit.' Beneath this is the image of a spaceman rocketing upwards by means of what appears to be a match and flatulence."
 	},
@@ -8263,7 +8264,7 @@
 	dir = 4
 	},
 /obj/item/bikehorn/rubberducky,
-/obj/structure/sign/poster/contraband/yes_erpp{
+/obj/structure/sign/poster/contraband/yes_erp{
 	pixel_y = 32
 	},
 /turf/open/floor/plasteel/freezer,
@@ -36761,7 +36762,7 @@
 /obj/machinery/light/small{
 	dir = 4
 	},
-/obj/item/storage/box/engineer{
+/obj/item/storage/box/survival/engineer{
 	pixel_y = 4
 	},
 /turf/open/floor/plasteel,
@@ -42358,6 +42359,7 @@
 /obj/machinery/atmospherics/pipe/simple/orange/hidden{
 	dir = 8
 	},
+/obj/item/hilbertshotel/ghostdojo,
 /turf/open/floor/plasteel,
 /area/hallway/secondary/exit/departure_lounge)
 "bOi" = (
