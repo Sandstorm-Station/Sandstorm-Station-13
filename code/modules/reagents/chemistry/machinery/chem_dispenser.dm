@@ -94,6 +94,7 @@
 
 /obj/machinery/chem_dispenser/Initialize()
 	. = ..()
+	message_admins("A reagent dispensor at [ADMIN_VERBOSEJMP(src)]")
 	dispensable_reagents = sortList(dispensable_reagents, /proc/cmp_reagents_asc)
 	if(emagged_reagents)
 		emagged_reagents = sortList(emagged_reagents, /proc/cmp_reagents_asc)
