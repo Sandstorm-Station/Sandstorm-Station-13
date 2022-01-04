@@ -47,6 +47,10 @@
 	path = /obj/item/toy/fluff/tennis_poly/tri/squeak
 	cost = 6
 
+/datum/gear/backpack/leash
+	name = "leash"
+	path = /obj/item/leash
+
 /datum/gear/backpack/bone
 	name = "Polychromic Bone"
 	path = /obj/item/toy/fluff/bone_poly
