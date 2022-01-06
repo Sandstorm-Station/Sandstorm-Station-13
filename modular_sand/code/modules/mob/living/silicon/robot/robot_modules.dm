@@ -152,6 +152,8 @@
 		"Saboteur" = image(icon = 'icons/mob/robots.dmi', icon_state = "synd_engi"),
 		"Medical" = image(icon = 'icons/mob/robots.dmi', icon_state = "synd_medical"),
 		"Assault" = image(icon = 'icons/mob/robots.dmi', icon_state = "synd_sec"),
+		"BootyNukie" = image(icon = 'modular_splurt/icons/mob/robots.dmi', icon_state = "bootynukie"), // SPLURT Addon (Hyper Port)
+		"BootyGorlex" = image(icon = 'modular_splurt/icons/mob/robots.dmi', icon_state = "bootygorlex") // SPLURT Addon (Hyper Port)
 		))
 	var/syndiejack_icon = show_radial_menu(R, R , syndicatejack_icons, custom_check = CALLBACK(src, .proc/check_menu, R), radius = 42, require_near = TRUE)
 	switch(syndiejack_icon)
@@ -164,6 +166,12 @@
 		if("Assault")
 			cyborg_base_icon = "synd_sec"
 			cyborg_icon_override = 'icons/mob/robots.dmi'
+		if("BootyNukie") // SPLURT Addon (Hyper Port)
+			cyborg_base_icon = "bootynukie"
+			cyborg_icon_override = 'modular_splurt/icons/mob/robots.dmi'
+		if("BootyGorlex") // SPLURT Addon (Hyper Port)
+			cyborg_base_icon = "bootygorlex"
+			cyborg_icon_override = 'modular_splurt/icons/mob/robots.dmi'
 		else
 			return FALSE
 	return ..()
