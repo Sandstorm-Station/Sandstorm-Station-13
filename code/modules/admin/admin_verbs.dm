@@ -141,6 +141,7 @@ GLOBAL_PROTECT(admin_verbs_server)
 	/client/proc/forcerandomrotate,
 	/client/proc/adminchangemap,
 	/client/proc/panicbunker,
+	/client/proc/discordbunker, // SPLURT
 	// /client/proc/toggle_interviews,
 	/client/proc/toggle_hub,
 	/client/proc/toggle_cdn
@@ -270,6 +271,7 @@ GLOBAL_LIST_INIT(admin_verbs_hideable, list(
 	/proc/release,
 	/client/proc/reload_admins,
 	/client/proc/panicbunker,
+	/client/proc/discordbunker, // SPLURT
 	/client/proc/addbunkerbypass,		//CIT
 	/client/proc/revokebunkerbypass,	//CIT
 	// /client/proc/toggle_interviews,
