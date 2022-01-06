@@ -190,6 +190,14 @@
 			ui.set_autoupdate(FALSE) //to not ruin the immersion by constantly changing the fake chemicals
 		ui.open()
 
+		var/turf/T = get_turf(src)
+		var/client/client = user.client
+		if (CONFIG_GET(flag/use_exp_tracking) && client && client.get_exp_living(TRUE) < 480) // Player with less than 8 hours playtime is using this machine.
+			if(client.next_chem_grief_warning < world.time)
+				client.next_chem_grief_warning = world.time + 9000 // Wait 15 minutes before alerting admins again
+				message_admins("<span class='adminhelp'>ANTI-GRIEF:</span> New player [ADMIN_LOOKUPFLW(user)] is using \a [src] at [ADMIN_VERBOSEJMP(T)].")
+				client.used_chem_dispenser = TRUE
+
 /obj/machinery/chem_dispenser/ui_data(mob/user)
 	var/data = list()
 	data["amount"] = amount
