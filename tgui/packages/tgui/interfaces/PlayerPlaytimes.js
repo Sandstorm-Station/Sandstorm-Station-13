@@ -28,27 +28,15 @@ export const PlayerPlaytimes = (props, context) => {
                   onClick={() => act('observe', {
                     ckey: client.ckey,
                   })} />
-                {!!client.warning_valve && (
+
+                {client.flags.map(flag => (
                   <Button
-                    icon="bomb"
+                    key={flag.icon}
+                    icon={flag.icon}
                     color="average"
-                    tooltip="This player touched a Transfer Valve."
+                    tooltip={flag.tooltip}
                   />
-                )}
-                {!!client.warning_chem && (
-                  <Button
-                    icon="flask"
-                    color="average"
-                    tooltip="This player used a Chem Dispenser."
-                  />
-                )}
-                {!!client.warning_canister && (
-                  <Button
-                    icon="spray-can"
-                    color="average"
-                    tooltip="This player touched a gas canister."
-                  />
-                )}
+                ))}
               </LabeledList.Item>
             ))}
           </LabeledList>

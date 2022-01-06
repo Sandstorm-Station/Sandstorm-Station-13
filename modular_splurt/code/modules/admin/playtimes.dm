@@ -3,9 +3,11 @@
 	var/next_valve_grief_warning = 0
 	var/next_chem_grief_warning = 0
 	var/next_canister_grief_warning = 0
+	var/next_ied_grief_warning = 0
 	var/touched_transfer_valve = FALSE
 	var/used_chem_dispenser = FALSE
 	var/touched_canister = FALSE
+	var/crafted_ied = FALSE
 
 /client/proc/cmd_player_playtimes()
 	set category = "Admin"
@@ -41,9 +43,7 @@
 		client["ckey"] = C.ckey
 		client["playtime"] = C.get_exp_living(TRUE)
 		client["playtime_hours"] = C.get_exp_living()
-		client["warning_valve"] = C.touched_transfer_valve
-		client["warning_chem"] = C.used_chem_dispenser
-		client["warning_canister"] = C.touched_canister
+		client["flags"] = check_flags(C)
 
 		var/name = C.ckey
 		var/mob/M = C.mob
@@ -61,6 +61,35 @@
 	clients = sortList(clients, /proc/cmp_playtime)
 	data["clients"] = clients
 	return data
+
+/datum/player_playtime/proc/check_flags(client/C)
+	var/list/flags = list()
+
+	if (C.touched_transfer_valve)
+		var/list/flag = list()
+		flag["icon"] = "bomb"
+		flag["tooltip"] = "This player touched a Transfer Valve."
+		flags += list(flag)
+
+	if (C.used_chem_dispenser)
+		var/list/flag = list()
+		flag["icon"] = "flask"
+		flag["tooltip"] = "This player used a Chem Dispenser."
+		flags += list(flag)
+
+	if (C.touched_canister)
+		var/list/flag = list()
+		flag["icon"] = "spray-can"
+		flag["tooltip"] = "This player touched a gas canister."
+		flags += list(flag)
+
+	if (C.crafted_ied)
+		var/list/flag = list()
+		flag["icon"] = "hammer"
+		flag["tooltip"] = "This player crafted an IED."
+		flags += list(flag)
+
+	return flags
 
 /datum/player_playtime/ui_act(action, params)
 	if(..())
