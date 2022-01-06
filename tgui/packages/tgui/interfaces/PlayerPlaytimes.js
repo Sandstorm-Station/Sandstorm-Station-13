@@ -24,9 +24,31 @@ export const PlayerPlaytimes = (props, context) => {
                 <Button
                   icon={client.observer ? "ghost" : ""}
                   content={client.name}
+                  disabled={!client.ingame}
                   onClick={() => act('observe', {
                     ckey: client.ckey,
                   })} />
+                {!!client.warning_valve && (
+                  <Button
+                    icon="bomb"
+                    color="average"
+                    tooltip="This player touched a Transfer Valve."
+                  />
+                )}
+                {!!client.warning_chem && (
+                  <Button
+                    icon="flask"
+                    color="average"
+                    tooltip="This player used a Chem Dispenser."
+                  />
+                )}
+                {!!client.warning_canister && (
+                  <Button
+                    icon="spray-can"
+                    color="average"
+                    tooltip="This player touched a gas canister."
+                  />
+                )}
               </LabeledList.Item>
             ))}
           </LabeledList>

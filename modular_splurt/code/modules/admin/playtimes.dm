@@ -1,5 +1,11 @@
 /client
 	var/datum/player_playtime/playtime_menu
+	var/next_valve_grief_warning = 0
+	var/next_chem_grief_warning = 0
+	var/next_canister_grief_warning = 0
+	var/touched_transfer_valve = FALSE
+	var/used_chem_dispenser = FALSE
+	var/touched_canister = FALSE
 
 /client/proc/cmd_player_playtimes()
 	set category = "Admin"
@@ -35,6 +41,9 @@
 		client["ckey"] = C.ckey
 		client["playtime"] = C.get_exp_living(TRUE)
 		client["playtime_hours"] = C.get_exp_living()
+		client["warning_valve"] = C.touched_transfer_valve
+		client["warning_chem"] = C.used_chem_dispenser
+		client["warning_canister"] = C.touched_canister
 
 		var/name = C.ckey
 		var/mob/M = C.mob
@@ -43,6 +52,7 @@
 				client["observer"] = TRUE
 
 			if(M.real_name)
+				client["ingame"] = TRUE
 				name += (" (" + M.real_name + ")")
 		client["name"] = name
 
