@@ -194,9 +194,10 @@
 		var/client/client = user.client
 		if (CONFIG_GET(flag/use_exp_tracking) && client && client.get_exp_living(TRUE) < 480) // Player with less than 8 hours playtime is using this machine.
 			if(client.next_chem_grief_warning < world.time)
-				client.next_chem_grief_warning = world.time + 9000 // Wait 15 minutes before alerting admins again
-				message_admins("<span class='adminhelp'>ANTI-GRIEF:</span> New player [ADMIN_LOOKUPFLW(user)] is using \a [src] at [ADMIN_VERBOSEJMP(T)].")
-				client.used_chem_dispenser = TRUE
+				if(!istype(src, /obj/machinery/chem_dispenser/drinks) && !istype(src, /obj/machinery/chem_dispenser/mutagen) && !istype(src, /obj/machinery/chem_dispenser/mutagensaltpeter) && !istype(src, /obj/machinery/chem_dispenser/abductor)) // These types aren't used for grief
+					client.next_chem_grief_warning = world.time + 9000 // Wait 15 minutes before alerting admins again
+					message_admins("<span class='adminhelp'>ANTI-GRIEF:</span> New player [ADMIN_LOOKUPFLW(user)] used \a [src] at [ADMIN_VERBOSEJMP(T)].")
+					client.used_chem_dispenser = TRUE
 
 /obj/machinery/chem_dispenser/ui_data(mob/user)
 	var/data = list()
