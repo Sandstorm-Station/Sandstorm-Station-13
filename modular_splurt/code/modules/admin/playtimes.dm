@@ -86,7 +86,7 @@
 	if (C.crafted_ied)
 		var/list/flag = list()
 		flag["icon"] = "hammer"
-		flag["tooltip"] = "This player crafted an IED."
+		flag["tooltip"] = "This player crafted an IED or Molotov."
 		flags += list(flag)
 
 	return flags
