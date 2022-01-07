@@ -6,6 +6,8 @@
 		return
 	if(!client)
 		return
+	if(client?.ckey in GLOB.discord_passthrough)
+		return ..()
 
 	var/player_id = SSdiscord.lookup_id(client?.ckey)
 
