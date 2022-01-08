@@ -24,3 +24,5 @@
 /datum/config_entry/number/max_stupor_hypno_duration	//Maximum random duration to maintain hypnosis from hypnotic stupor
 	config_entry_value = 12000
 	min_val = 10
+
+/datum/config_entry/flag/reveal_everything // On Round end, reveal roles and ghosts
