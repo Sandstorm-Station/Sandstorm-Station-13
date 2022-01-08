@@ -244,10 +244,11 @@
 	CHECK_TICK
 
 	// Add AntagHUD to everyone, see who was really evil the whole time!
-	for(var/datum/atom_hud/antag/H in GLOB.huds)
-		for(var/m in GLOB.player_list)
-			var/mob/M = m
-			H.add_hud_to(M)
+	if(CONFIG_GET(flag/reveal_everything))
+		for(var/datum/atom_hud/antag/H in GLOB.huds)
+			for(var/m in GLOB.player_list)
+				var/mob/M = m
+				H.add_hud_to(M)
 
 	CHECK_TICK
 
@@ -271,7 +272,8 @@
 	CHECK_TICK
 
 	// handle_hearts()
-	set_observer_default_invisibility(0, "<span class='warning'>The round is over! You are now visible to the living.</span>")
+	if(CONFIG_GET(flag/reveal_everything))
+		set_observer_default_invisibility(0, "<span class='warning'>The round is over! You are now visible to the living.</span>")
 
 	CHECK_TICK
 
