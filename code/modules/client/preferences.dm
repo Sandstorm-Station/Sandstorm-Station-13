@@ -1281,11 +1281,14 @@ GLOBAL_LIST_EMPTY(preferences_datums)
 			dat += "<b>Aphrodisiacs:</b> <a href='?_src_=prefs;preference=aphro'>[(cit_toggles & NO_APHRO) ? "Disallowed" : "Allowed"]</a><br>"
 			dat += "<b>Ass Slapping:</b> <a href='?_src_=prefs;preference=ass_slap'>[(cit_toggles & NO_ASS_SLAP) ? "Disallowed" : "Allowed"]</a><br>"
 			//SPLURT EDIT
+			dat += "<span style='border-radius: 2px;border:1px dotted white;' title='Enables verbs involving farts, shit and piss.'>?</span> "
 			dat += "<b>Unholy ERP verbs :</b> <a href='?_src_=prefs;preference=unholypref'>[unholypref]</a><br>" //https://www.youtube.com/watch?v=OHKARc-GObU
 			//END OF SPLURT EDIT
 			//SKYRAT EDIT
+			dat += "<span style='border-radius: 2px;border:1px dotted white;' title='Enables verbs involving ear/brain fucking.'>?</span> "
 			dat += 	"<b>Extreme ERP verbs :</b> <a href='?_src_=prefs;preference=extremepref'>[extremepref]</a><br>" // https://youtu.be/0YrU9ASVw6w
 			if(extremepref != "No")
+				dat += "<span style='border-radius: 2px;border:1px dotted white;' title='Enables in-game damage from extreme verbs.'>?</span> "
 				dat += "<b><span style='color: #e60000;'>Harmful ERP verbs :</b> <a href='?_src_=prefs;preference=extremeharm'>[extremeharm]</a><br>"
 			//END OF SKYRAT EDIT
 			dat += "<b>Automatic Wagging:</b> <a href='?_src_=prefs;preference=auto_wag'>[(cit_toggles & NO_AUTO_WAG) ? "Disabled" : "Enabled"]</a><br>"
