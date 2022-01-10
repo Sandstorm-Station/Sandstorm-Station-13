@@ -410,6 +410,16 @@
 				else
 					result.forceMove(user.drop_location())
 				to_chat(user, "<span class='notice'>[TR.name] constructed.</span>")
+
+				if (istype(result, /obj/item/grenade/iedcasing) || istype(result, /obj/item/reagent_containers/food/drinks/bottle/molotov))
+					var/client/client = user.client
+					if (CONFIG_GET(flag/use_exp_tracking) && client && client.get_exp_living(TRUE) < 480) // Player with less than 8 hours playtime is making an IED or molotov cocktail.
+						if(client.next_ied_grief_warning < world.time)
+							var/turf/T = get_turf(user)
+							client.next_ied_grief_warning = world.time + 15 MINUTES // Wait 15 minutes before alerting admins again
+							message_admins("<span class='adminhelp'>ANTI-GRIEF:</span> New player [ADMIN_LOOKUPFLW(user)] has crafted an IED or Molotov at [ADMIN_VERBOSEJMP(T)].")
+							client.crafted_ied = TRUE
+
 			else
 				to_chat(user, "<span class='warning'>Construction failed[result]</span>")
 			busy = FALSE

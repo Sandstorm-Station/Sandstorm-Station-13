@@ -86,6 +86,8 @@ GLOBAL_PROTECT(admin_verbs_admin)
 	/client/proc/admin_cmd_remove_ghost_respawn_timer,	//CIT
 	/client/proc/addbunkerbypass,		//CIT
 	/client/proc/revokebunkerbypass,	//CIT
+	/client/proc/adddiscordbypass,		//SPLURT
+	/client/proc/revokediscordbypass,	//SPLURT
 	/datum/admins/proc/open_borgopanel
 	)
 GLOBAL_LIST_INIT(admin_verbs_ban, list(/client/proc/unban_panel, /client/proc/DB_ban_panel, /client/proc/stickybanpanel))
@@ -274,6 +276,8 @@ GLOBAL_LIST_INIT(admin_verbs_hideable, list(
 	/client/proc/discordbunker, // SPLURT
 	/client/proc/addbunkerbypass,		//CIT
 	/client/proc/revokebunkerbypass,	//CIT
+	/client/proc/adddiscordbypass,		//SPLURT
+	/client/proc/revokediscordbypass,	//SPLURT
 	// /client/proc/toggle_interviews,
 	/client/proc/admin_change_sec_level,
 	/client/proc/toggle_nuke,

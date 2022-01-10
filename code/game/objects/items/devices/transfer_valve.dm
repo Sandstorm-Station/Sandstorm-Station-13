@@ -82,11 +82,11 @@
 /obj/item/transfer_valve/on_attack_hand(mob/living/user)//Triggers mousetraps
 	. = ..()
 
-	var/turf/T = get_turf(src)
 	var/client/client = user.client
 	if (CONFIG_GET(flag/use_exp_tracking) && client && client.get_exp_living(TRUE) < 480) // Player with less than 8 hours playtime has touched a bomb valve.
 		if(client.next_valve_grief_warning < world.time)
-			client.next_valve_grief_warning = world.time + 9000 // Wait 15 minutes before alerting admins again
+			var/turf/T = get_turf(src)
+			client.next_valve_grief_warning = world.time + 15 MINUTES // Wait 15 minutes before alerting admins again
 			message_admins("<span class='adminhelp'>ANTI-GRIEF:</span> New player [ADMIN_LOOKUPFLW(user)] touched \a [src] at [ADMIN_VERBOSEJMP(T)].")
 			client.touched_transfer_valve = TRUE
 
