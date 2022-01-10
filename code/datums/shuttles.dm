@@ -584,6 +584,12 @@
 	description = "A blast from the past! This recreation of the Nanotrasen Emergency Shuttle Port features the same focus on seating as the original, but on a slightly longer frame to better accommodate modern shuttle docks."
 	credit_cost = 750
 
+/datum/map_template/shuttle/emergency/vault
+	suffix = "vault"
+	name = "The Vault"
+	description = "An evacuation ship formerly used by NT SOCOM Divisions, it's long since been outclassed, de-milled, and cast aside as an evacuation ship for when a shuttle is in very, very plausible danger. It's not the best, but almost nothing can make it worse."
+	credit_cost = 10000
+
 /datum/map_template/shuttle/arrival/box
 	suffix = "box"
 	name = "arrival shuttle (Box)"
