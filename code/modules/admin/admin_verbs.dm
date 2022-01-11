@@ -205,6 +205,7 @@ GLOBAL_PROTECT(admin_verbs_debug)
 #endif
 	// /client/proc/check_timer_sources,
 	/client/proc/toggle_cdn,
+	/client/proc/discordnulls,
 	/client/proc/generate_wikichem_list //DO NOT PRESS UNLESS YOU WANT SUPERLAG
 	)
 GLOBAL_LIST_INIT(admin_verbs_possess, list(/proc/possess, /proc/release))
