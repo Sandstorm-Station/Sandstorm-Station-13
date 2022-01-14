@@ -24,7 +24,7 @@
 		return ..()
 	if(isobj(target))
 		var/obj/hit_object = target
-		hit_object.take_damage(80, BRUTE, sound_effect = FALSE, armour_penetration = 100)
+		hit_object.take_damage(80, BRUTE)
 	else if(isclosedturf(target))
 		damage -= max(damage - 30, 10) //lose extra momentum from busting through a wall
 		if(!isindestructiblewall(target))
