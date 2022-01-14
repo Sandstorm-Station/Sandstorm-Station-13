@@ -55,3 +55,23 @@
 			bepis.equipment.Remove(GENITAL_EQUIPMENT_SOUNDING)
 			new /obj/item/genital_equipment/sounding/used_sounding(loc)
 	. = ..()
+
+/mob/living/carbon/human/mob_fill_container(obj/item/organ/genital/G, obj/item/reagent_containers/container, mb_time, obj/item/milking_machine/M)
+	if(!M)
+		return ..()
+
+	var/datum/reagents/fluid_source = G.climaxable(src)
+	if(!fluid_source)
+		return
+	var/main_fluid = lowertext(fluid_source.get_master_reagent_name())
+	if(mb_time)
+		visible_message("<span class='love'>You hear a strong suction sound coming from the [M.name] on [src]'s [G.name].</span>", \
+							"<span class='userlove'>The [M.name] pumps faster, trying to get you over the edge.</span>", \
+							"<span class='userlove'>Something vacuums your [G.name] with a quiet but powerfull vrrrr.</span>")
+		if(!do_after(src, mb_time, target = src) || !in_range(src, container) || !G.climaxable(src, TRUE))
+			return
+	visible_message("<span class='love'>[src] twitches as [p_their()] [main_fluid] trickles into [container].</span>", \
+								"<span class='userlove'>[M] sucks out all the [main_fluid] you had been saving up into [container].</span>", \
+								"<span class='userlove'>You feel a vacuum sucking on your [G.name] as you climax</span>")
+	do_climax(fluid_source, container, G, FALSE)
+
