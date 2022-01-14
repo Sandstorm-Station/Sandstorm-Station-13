@@ -1,5 +1,5 @@
 /obj/item/milking_machine
-	icon = 'modular_splurt/icons/obj/milking_machine.dmi'
+	icon = 'modular_sand/icons/obj/milking_machine.dmi'
 	name = "milking machine"
 	icon_state = "Off"
 	item_state = "Off"
