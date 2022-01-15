@@ -1,0 +1,8 @@
+author: jbox144
+delete-after: true
+changes:
+  - bugfix: Fixed the offset door bug on hilbert's hotel. Rather, the wall was actually
+      the problematic part. So I guess the wall is fixed.
+  - rscadd: Added 4 more glasses to the kitchen in hilbert's hotel.
+  - tweak: Changed the scrubbers in hilbert's hotel to use layer 3, instead of being
+      var edited to layer 3
