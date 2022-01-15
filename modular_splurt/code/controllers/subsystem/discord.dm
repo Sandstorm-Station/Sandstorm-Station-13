@@ -273,3 +273,29 @@ SUBSYSTEM_DEF(discord)
 
 	//Make sure we clean up the query
 	qdel(query_get_discord_link_record)
+
+/**
+ * Delete NULL discord IDs in the database
+ *
+ * This will look for rows where discord_id is NULL and delete them.
+ *
+ * Hopefully will help fix the errors where people verify but are unable to enter the game
+ *
+ */
+
+/datum/controller/subsystem/discord/proc/delete_nulls()
+	var/query = "DELETE FROM [format_table_name("discord_links")] WHERE discord_id IS NULL"
+	var/datum/db_query/query_delete_nulls = SSdbcore.NewQuery(
+		query
+	)
+	if(!query_delete_nulls.Execute())
+		subsystem_log("There was an error while deleting NULL IDs")
+		message_admins(span_warning("There was an error while deleting NULL IDs, please delete them manually using the Delete Null Discords verb"))
+		send2adminchat("Discord Subsystem", "There was an error while deleting NULL IDs, please delete them manually using `!tgs discordnulls`")
+		return FALSE
+
+	return TRUE
+
+/datum/controller/subsystem/discord/Initialize(start_timeofday)
+	. = ..()
+	delete_nulls()

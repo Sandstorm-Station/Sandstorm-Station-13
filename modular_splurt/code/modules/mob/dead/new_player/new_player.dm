@@ -15,11 +15,11 @@
 		var/tready = text2num(href_list["ready"])
 		if(tready != PLAYER_NOT_READY && !player_id)
 			ready = PLAYER_NOT_READY
-			to_chat(src, span_warning("You must link your discord account to your ckey in order to join the game. Join our <a style=\"color: #ff00ff;\" href=\"[CONFIG_GET(string/discordurl)]\">discord</a> and use the \"[CONFIG_GET(string/discordbotcommandprefix)]verify\" command [CONFIG_GET(string/verification_channel) ? "as indicated in #[CONFIG_GET(string/verification_channel)] " : ""]. It won't take you more than two minutes :)"))
+			to_chat(src, span_warning("You must link your discord account to your ckey in order to join the game. Join our <a style=\"color: #ff00ff;\" href=\"[CONFIG_GET(string/discordurl)]\">discord</a> and use the \"[CONFIG_GET(string/discordbotcommandprefix)]verify\" command [CONFIG_GET(string/verification_channel) ? "as indicated in #[CONFIG_GET(string/verification_channel)] " : ""]. It won't take you more than two minutes :)<br>Ahelp or ask staff in the discord if this is an error."))
 			return
 	if(href_list["late_join"] || href_list["SelectedJob"] || href_list["JoinAsGhostRole"])
 		if(!player_id)
-			to_chat(src, span_warning("You must link your discord account to your ckey in order to join the game. Join our <a style=\"color: #ff00ff;\" href=\"[CONFIG_GET(string/discordurl)]\">discord</a> and use the \"[CONFIG_GET(string/discordbotcommandprefix)]verify\" command [CONFIG_GET(string/verification_channel) ? "as indicated in #[CONFIG_GET(string/verification_channel)] " : ""]. It won't take you more than two minutes :)"))
+			to_chat(src, span_warning("You must link your discord account to your ckey in order to join the game. Join our <a style=\"color: #ff00ff;\" href=\"[CONFIG_GET(string/discordurl)]\">discord</a> and use the \"[CONFIG_GET(string/discordbotcommandprefix)]verify\" command [CONFIG_GET(string/verification_channel) ? "as indicated in #[CONFIG_GET(string/verification_channel)] " : ""]. It won't take you more than two minutes :)<br>Ahelp or ask staff in the discord if this is an error."))
 			return
 
 	. = ..()
