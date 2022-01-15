@@ -91,6 +91,7 @@
 			target.clean_blood()
 			SEND_SIGNAL(target, COMSIG_COMPONENT_CLEAN_ACT, CLEAN_MEDIUM)
 			target.wash_cream()
+			target.wash_cum() //sandstorm edit
 	return
 
 
