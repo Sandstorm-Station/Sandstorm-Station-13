@@ -588,7 +588,7 @@
 	suffix = "vault"
 	name = "The Vault"
 	description = "An evacuation ship formerly used by NT SOCOM Divisions, it's long since been outclassed, de-milled, and cast aside as an evacuation ship for when a shuttle is in very, very plausible danger. It's not the best, but almost nothing can make it worse."
-	credit_cost = 7500
+	credit_cost = 8000
 	admin_notes = "Built with a lot of fans and RWalls to resist bombing and atmospheric attacks. Might be a bit large for certain stations."
 
 /datum/map_template/shuttle/arrival/box
