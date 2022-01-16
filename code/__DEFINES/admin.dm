@@ -18,6 +18,7 @@
 #define BANTYPE_ADMIN_PERMA	7
 #define BANTYPE_ADMIN_TEMP	8
 #define BANTYPE_ANY_JOB		9 //used to remove jobbans
+#define BANTYPE_PACIFIST    10 //makes a person spawn with pacifist. splurt change.
 
 //Admin Permissions
 #define R_BUILDMODE		(1<<0)

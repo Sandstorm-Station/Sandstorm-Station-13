@@ -260,6 +260,11 @@
 					to_chat(usr, "Not enough parameters (Requires ckey, severity, reason and duration).")
 					return
 				banjob = null
+			if(BANTYPE_PACIFIST)
+				if(!banckey || !banreason || !banduration || !banseverity)
+					to_chat(usr, "Not enough parameters (Requires ckey, severity, reason and duration).")
+					return
+				banjob = null
 
 		var/mob/playermob
 
