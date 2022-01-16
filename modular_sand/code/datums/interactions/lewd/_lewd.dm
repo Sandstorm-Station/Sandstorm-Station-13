@@ -895,7 +895,6 @@
 			else
 				H.mob_climax(TRUE, "sex", partner, !cumin, target_gen)
 	set_lust(0)
-	SEND_SIGNAL(src, COMSIG_MOB_CAME, target_orifice, partner)
 
 /mob/living/proc/is_fucking(mob/living/partner, orifice)
 	if(partner == last_partner && orifice == last_orifice)
