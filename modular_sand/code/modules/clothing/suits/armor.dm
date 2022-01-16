@@ -6,7 +6,6 @@
 	mutantrace_variation = NONE
 	icon_state = "armorstripper"
 	item_state = "armorstripper"
-	mutantrace_variation = NONE
 	armor = list("melee" = 15, "bullet" = 10, "laser" = 10, "energy" = 0, "bomb" = 0, "bio" = 0, "rad" = 0, "fire" = 0, "acid" = 0)
 	dog_fashion = null
 
