@@ -117,9 +117,9 @@
 		return
 
 	if(write_log_user)
-		user.log_message("[write_log_user] [target]", LOG_ATTACK)
+		user.log_message("[write_log_user] [target]", INDIVIDUAL_ATTACK_LOG)
 	if(write_log_target)
-		target.log_message("[write_log_target] [user]", LOG_ATTACK)
+		target.log_message("[write_log_target] [user]", INDIVIDUAL_ATTACK_LOG)
 
 	display_interaction(user, target)
 	post_interaction(user, target)
