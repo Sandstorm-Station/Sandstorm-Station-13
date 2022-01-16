@@ -34,3 +34,13 @@
 	log_admin("[sender.friendly_name] has removed [params] from the current round's discord bypass list.")
 	message_admins("[sender.friendly_name] has removed [params] from the current round's discord bypass list.")
 	return "[params] has been removed from the current round's discord bypass list."
+
+/datum/tgs_chat_command/discordnulls
+	name = "discordnulls"
+	help_text = "Deletes all rows in the database where discord_id is NULL."
+	admin_only = TRUE
+
+/datum/tgs_chat_command/discordnulls/Run(datum/tgs_chat_user/sender, params)
+	log_admin("[sender.friendly_name] has attempted to delete the NULLs from the discord database.")
+	message_admins("[sender.friendly_name] has attempted to delete the NULLs from the discord database.")
+	return "[SSdiscord.delete_nulls() ? "NULL rows deleted successfully" : "There was a problem while deleting NULLs"]"
