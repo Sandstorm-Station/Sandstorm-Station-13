@@ -134,7 +134,7 @@
 			return
 	to_chat(src,"<span class='userlove'>You used your [G.name] to fill [container].</span>")
 	message_admins("[src] used their [G.name] to fill [container].")
-	do_climax(fluid_source, container, G, FALSE, cover = TRUE)
+	do_climax(fluid_source, container, G, FALSE)
 
 /mob/living/carbon/human/proc/pick_climax_genitals(silent = FALSE)
 	var/list/genitals_list
@@ -276,7 +276,7 @@
 		return
 
 	//Ok, now we check what they want to do.
-	var/choice = input(src, "Select sexual activity", "Sexual activity:") as null|anything in list("Climax alone","Climax with partner", "Climax over partner", "Fill container")
+	var/choice = input(src, "Select sexual activity", "Sexual activity:") as null|anything in list("Climax alone","Climax with partner", "Fill container")
 	if(!choice)
 		return
 
@@ -310,14 +310,6 @@
 				var/obj/item/reagent_containers/fluid_container = pick_climax_container()
 				if(fluid_container && available_rosie_palms(TRUE, /obj/item/reagent_containers))
 					mob_fill_container(picked_organ, fluid_container)
-		if("Climax over partner")
-			//We need no hands, we can be restrained and so on, so let's pick an organ
-			var/obj/item/organ/genital/picked_organ = pick_climax_genitals()
-			if(picked_organ)
-				var/mob/living/partner = pick_partner() //Get someone
-				if(partner)
-					mob_climax_over(picked_organ, partner, TRUE)
-
 	mb_cd_timer = world.time + mb_cd_length
 
 /mob/living/carbon/human/verb/climax_verb()
