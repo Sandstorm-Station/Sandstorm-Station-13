@@ -68,11 +68,8 @@
 /turf/closed/indestructible/hotelwall,
 /area/hilbertshotel)
 "fv" = (
-/obj/machinery/atmospherics/components/unary/outlet_injector/on{
-	piping_layer = 3;
-	pixel_y = 5
-	},
 /obj/structure/lattice,
+/obj/machinery/atmospherics/components/unary/outlet_injector/on/layer3,
 /turf/open/space/bluespace,
 /area/hilbertshotel)
 "fF" = (
@@ -88,9 +85,8 @@
 /turf/closed/indestructible/hotelwall,
 /area/hilbertshotel)
 "hk" = (
-/obj/machinery/atmospherics/components/unary/vent_scrubber/on{
-	dir = 8;
-	piping_layer = 3
+/obj/machinery/atmospherics/components/unary/vent_scrubber/on/layer3{
+	dir = 8
 	},
 /turf/open/floor/carpet,
 /area/hilbertshotel)
@@ -191,6 +187,21 @@
 "re" = (
 /obj/structure/table/reinforced,
 /obj/item/reagent_containers/food/drinks/drinkingglass,
+/obj/item/reagent_containers/food/drinks/drinkingglass{
+	pixel_x = -2;
+	pixel_y = 4
+	},
+/obj/item/reagent_containers/food/drinks/drinkingglass{
+	pixel_y = 7
+	},
+/obj/item/reagent_containers/food/drinks/drinkingglass{
+	pixel_x = 5;
+	pixel_y = 4
+	},
+/obj/item/reagent_containers/food/drinks/drinkingglass{
+	pixel_x = -5;
+	pixel_y = 5
+	},
 /turf/open/floor/plasteel/cafeteria,
 /area/hilbertshotel)
 "su" = (
@@ -249,9 +260,8 @@
 /turf/open/floor/plasteel/cafeteria,
 /area/hilbertshotel)
 "zr" = (
-/obj/machinery/atmospherics/components/unary/vent_scrubber/on{
-	dir = 4;
-	piping_layer = 3
+/obj/machinery/atmospherics/components/unary/vent_scrubber/on/layer3{
+	dir = 4
 	},
 /turf/open/indestructible/hotelwood,
 /area/hilbertshotel)
@@ -445,9 +455,8 @@
 /turf/open/indestructible/hotelwood,
 /area/hilbertshotel)
 "RP" = (
-/obj/machinery/atmospherics/components/unary/vent_scrubber/on{
-	dir = 1;
-	piping_layer = 3
+/obj/machinery/atmospherics/components/unary/vent_scrubber/on/layer3{
+	dir = 1
 	},
 /turf/open/indestructible/hoteltile,
 /area/hilbertshotel)
