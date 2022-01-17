@@ -1,5 +1,0 @@
-/mob/living/carbon/attack_tk(mob/living/carbon/owner)
-	if(owner.CheckActionCooldown(CLICK_CD_MELEE) && owner.a_intent == INTENT_HELP)
-		src.help_shake_act(owner)
-		owner.DelayNextAction()
-	. = ..()
