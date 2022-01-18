@@ -19,11 +19,12 @@
 	var/tier = 1
 	var/configured = FALSE
 	var/point_type = POINT_TYPE_SCIENCE
+	var/max_repeat_usage = 3
 
 /obj/machinery/research_table/examine(mob/user)
 	. = ..()
 	if(configured)
-		. += "<span class='notice'>The same person can be used up to [2 * tier] time\s.</span>"
+		. += "<span class='notice'>The same person can be used up to [max_repeat_usage * tier] time\s.</span>"
 	switch(point_type)
 		if(POINT_TYPE_SCIENCE)
 			. += "<span class='notice'>The table is set to generate science points.</span>"
@@ -127,7 +128,7 @@
 	if((buckled_mob.last_partner && buckled_mob.last_partner == buckled_mob) || buckled_mob == partner)
 		say("Failed to get any data from the subject, two are needed for the experiment!")
 		return
-	if(users[buckled_mob.name] > (2 * tier))
+	if(users[buckled_mob.name] > (max_repeat_usage * tier))
 		say("There is already too much data from this subject.")
 		return
 	users[buckled_mob.name] += 1
