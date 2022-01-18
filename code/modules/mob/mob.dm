@@ -495,6 +495,11 @@
 	new_mob.ckey = ckey
 	if(send_signal)
 		SEND_SIGNAL(src, COMSIG_MOB_KEY_CHANGE, new_mob, src)
+	//splurt changeh
+	if(jobban_isbanned(new_mob, "pacifist"))
+		REMOVE_TRAIT(src, TRAIT_PACIFISM, "pacification ban")
+		ADD_TRAIT(new_mob, TRAIT_PACIFISM, "pacification ban")
+	//
 	return TRUE
 
 /mob/verb/cancel_camera()

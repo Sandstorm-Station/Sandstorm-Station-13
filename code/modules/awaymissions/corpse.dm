@@ -111,6 +111,11 @@
 
 	if(ckey)
 		M.ckey = ckey
+		//splurt change
+		if(jobban_isbanned(M, "pacifist")) //do you love repeat code? i sure do
+			to_chat(M, "<span class='cult'>You are pacification banned. Pacifist has been force applied.</span>")
+			ADD_TRAIT(M, TRAIT_PACIFISM, "pacification ban")
+		//
 		if(show_flavour)
 			var/output_message = "<span class='big bold'>[short_desc]</span>"
 			if(flavour_text != "")
@@ -251,7 +256,7 @@
 		H.canloadappearance = TRUE
 	else
 		H.canloadappearance = FALSE
-		
+
 //Instant version - use when spawning corpses during runtime
 /obj/effect/mob_spawn/human/corpse
 	roundstart = FALSE

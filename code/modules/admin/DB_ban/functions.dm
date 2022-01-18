@@ -51,6 +51,9 @@
 			announceinirc = 1
 			blockselfban = 1
 			kickbannedckey = 1
+		if(BANTYPE_PACIFIST)
+			bantype_str = "PACIFICATION_BAN"
+			bantype_pass = 1
 	if( !bantype_pass )
 		return
 	if( !istext(reason) )
@@ -167,6 +170,10 @@
 
 	if(announceinirc)
 		send2adminchat("BAN ALERT","[a_key] applied a [bantype_str] on [bankey]")
+	//splurt edit
+	if(((bantype_str == "PACIFICATION_BAN") || (job == "pacifist")) && banned_client.mob)
+		ADD_TRAIT(banned_client.mob, TRAIT_PACIFISM, "pacification ban")
+	//
 
 	if(kickbannedckey)
 		if(AH)
@@ -207,6 +214,9 @@
 				bantype_pass = 1
 			if(BANTYPE_ANY_JOB)
 				bantype_str = "ANYJOB"
+				bantype_pass = 1
+			if(BANTYPE_PACIFIST)
+				bantype_str = "PACIFICATION_BAN"
 				bantype_pass = 1
 		if( !bantype_pass )
 			return
@@ -547,7 +557,7 @@
 					typedesc = "<b>ADMIN PERMABAN</b>"
 				if("ADMIN_TEMPBAN")
 					typedesc = "<b>ADMIN TEMPBAN</b><br><font size='2'>([duration] minutes [(unbanned) ? "" : "(<a href=\"byond://?src=[REF(src)];[HrefToken()];dbbanedit=duration;dbbanid=[banid]\">Edit</a>))"]<br>Expires [expiration]</font>"
-				if("PACIFICATION BAN")
+				if("PACIFICATION_BAN")
 					typedesc = "<b>PACIFICATION BAN</b><br><font size='2'>([duration] minutes [(unbanned) ? "" : "(<a href=\"byond://?src=[REF(src)];[HrefToken()];dbbanedit=duration;dbbanid=[banid]\">Edit</a>))"]<br>Expires [expiration]</font>"
 
 			output += "<tr bgcolor='[dcolor]'>"
