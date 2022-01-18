@@ -148,11 +148,8 @@
 
 	SEND_SIGNAL(src, COMSIG_MIND_TRANSFER, new_character, old_character)
 	SEND_SIGNAL(new_character, COMSIG_MOB_ON_NEW_MIND)
-//splurt change - i'm putting it here so i don't have to worry about early returns
-	if(jobban_isbanned(new_character, "pacifist")) //also kinda need the ref to old char
-		var/mob/OC = old_character //yeah.
-		REMOVE_TRAIT(OC, TRAIT_PACIFISM, "pacification ban")
-		ADD_TRAIT(new_character, TRAIT_PACIFISM, "pacification ban")
+//splurt change
+	INVOKE_ASYNC(GLOBAL_PROC, .proc/_paci_check, new_character, old_character)
 //end change
 
 /datum/mind/proc/store_memory(new_text)
