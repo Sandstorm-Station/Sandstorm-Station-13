@@ -24,15 +24,15 @@
 	. = ..()
 	if(configured)
 		. += "<span class='notice'>The same person can be used up to [2 * tier] time\s.</span>"
-	if(!configured && !panel_open)
-		. += "<span class='notice'>It's not configured yet, you could use a <b>multitool</b> to configure it.</span>"
-	if(panel_open)
-		. += "<span class='notice'>The panel is <b>screwed</b> open.</span>"
 	switch(point_type)
 		if(POINT_TYPE_SCIENCE)
 			. += "<span class='notice'>The table is set to generate science points.</span>"
 		else
 			. += "<span class='notice'>The table is set to generate money for cargo.</span>"
+	if(!configured && !panel_open)
+		. += "<span class='notice'>It's not configured yet, you could use a <b>multitool</b> to configure it.</span>"
+	if(panel_open)
+		. += "<span class='notice'>The panel is <b>screwed</b> open.</span>"
 
 /obj/machinery/research_table/multitool_act(mob/living/user, obj/item/I)
 	if(user.a_intent == INTENT_HELP)
