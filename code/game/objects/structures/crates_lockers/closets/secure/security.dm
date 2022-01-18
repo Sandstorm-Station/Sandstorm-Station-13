@@ -11,6 +11,7 @@
 	new /obj/item/clothing/head/crown/fancy(src)
 	new /obj/item/cartridge/captain(src)
 	new /obj/item/storage/box/silver_ids(src)
+	new /obj/item/storage/secure/briefcase/cap_e45_pack(src)
 	new /obj/item/radio/headset/heads/captain/alt(src)
 	new /obj/item/radio/headset/heads/captain(src)
 	new /obj/item/storage/belt/sabre(src)
