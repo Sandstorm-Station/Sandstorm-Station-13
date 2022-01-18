@@ -32,7 +32,7 @@
 	if(!configured && !panel_open)
 		. += "<span class='notice'>It's not configured yet, you could use a <b>multitool</b> to configure it.</span>"
 	if(panel_open)
-		. += "<span class='notice'>The panel is <b>screwed</b> open.</span>"
+		. += "<span class='notice'>The panel is <b>screwed</b> open and you could change generation type with a <b>multitool</b>.</span>"
 
 /obj/machinery/research_table/multitool_act(mob/living/user, obj/item/I)
 	if(user.a_intent == INTENT_HELP)
