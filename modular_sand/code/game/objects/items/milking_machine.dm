@@ -104,7 +104,7 @@
 		if(prob(30)) //30% chance to make them moan.
 			H.emote("moan")
 
-		H.add_lust(20) //make the target more aroused. (same ammount as the fleshlight)
+		H.add_lust(20 + rand(0, 50)) //make the target more aroused. (same ammount as the fleshlight)
 		if (H.get_lust() >= H.get_lust_tolerance()*3 && ishuman(H) && H.has_dna())
 			H.mob_fill_container(G, inserted_item, milking_speed, src) //make them cum if they are over the edge.
 			H.do_jitter_animation()

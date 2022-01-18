@@ -77,6 +77,7 @@
 								"<span class='userlove'>[M] sucks out all the [main_fluid] you had been saving up into [container].</span>", \
 								"<span class='userlove'>You feel a vacuum sucking on your [G.name] as you climax</span>")
 	do_climax(fluid_source, container, G, FALSE, cover = TRUE)
+	emote("moan")
 
 /mob/living/carbon/human/proc/mob_climax_over(obj/item/organ/genital/G, mob/living/L, spillage = TRUE, mb_time = 30)
 	var/datum/reagents/fluid_source = G.climaxable(src)
