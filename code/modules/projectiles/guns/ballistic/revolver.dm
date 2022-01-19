@@ -95,26 +95,19 @@
 						"Soulless" = "revolveroldflip",
 						"Soul" = "revolverold")
 
-//Code to handle the Detective's weapons
-
-
 /obj/item/gun/ballistic/revolver/detective
 	name = "\improper .38 Mars Special"
 	desc = "A cheap Martian knock-off of a classic law enforcement firearm. Uses .38-special rounds."
 	icon_state = "detective"
 	mag_type = /obj/item/ammo_box/magazine/internal/cylinder/rev38
-	var/list/safe_calibers
 	obj_flags = UNIQUE_RENAME
 	unique_reskin = list("Default" = "detective",
-						"Fitz Special" = "detective_fitz",
-						"Police Positive Special" = "detective_police",
-						"Blued Steel" = "detective_blued",
-						"Stainless Steel" = "detective_stainless",
-						"Gold Trim" = "detective_gold",
 						"Leopard Spots" = "detective_leopard",
+						"Black Panther" = "detective_panther",
+						"Gold Trim" = "detective_gold",
 						"The Peacemaker" = "detective_peacemaker",
-						"Black Panther" = "detective_panther"
 						)
+	var/list/safe_calibers
 
 /obj/item/gun/ballistic/revolver/detective/Initialize()
 	. = ..()
@@ -316,9 +309,6 @@
 		var/obj/item/melee/transforming/energy/W = A
 		if(W.active)
 			sawoff(user)
-
-/obj/item/gun/ballistic/automatic/pistol/doublebarrel/update_icon_state()
-	icon_state = "[initial(icon_state)][chambered ? "" : "_broke"]"
 
 /obj/item/gun/ballistic/revolver/doublebarrel/attack_self(mob/living/user)
 	var/num_unloaded = 0

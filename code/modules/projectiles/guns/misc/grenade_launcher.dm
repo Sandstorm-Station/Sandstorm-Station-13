@@ -1,6 +1,6 @@
 /obj/item/gun/grenadelauncher
-	name = "Riot grenade launcher"
-	desc = "A greande launcher deisgn for riot control. You can load full size grenades down the muzzle!"
+	name = "grenade launcher"
+	desc = "A terrible, terrible thing. It's really awful!"
 	icon = 'icons/obj/guns/projectile.dmi'
 	icon_state = "riotgun"
 	item_state = "riotgun"
@@ -9,7 +9,7 @@
 	throw_range = 7
 	force = 5
 	var/list/grenades = new/list()
-	var/max_grenades = 1
+	var/max_grenades = 3
 	custom_materials = list(/datum/material/iron=2000)
 
 /obj/item/gun/grenadelauncher/examine(mob/user)
