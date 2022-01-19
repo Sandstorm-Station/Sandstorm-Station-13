@@ -1,7 +1,7 @@
 /datum/quirk/sheltered
 	name = "Sheltered"
 	desc = "You never learned galactic common."
-	value = -3
+	value = 0
 	mob_trait = TRAIT_SHELTERED
 	gain_text = "<span class='danger'>You do not understand galactic common.</span>"
 	lose_text = "<span class='notice'>You start to put together what people are saying in galactic common.</span>"
