@@ -182,3 +182,15 @@
 	else
 		message = "makes a very loud noise."
 	. = ..()
+
+/datum/emote/living/monkeytwerk
+	key = "twerk"
+	key_third_person = "twerk"
+	message = "shakes it harder than James Russle himself!"
+	emote_type = EMOTE_AUDIBLE
+	muzzle_ignore = TRUE
+	restraint_check = FALSE
+
+/datum/emote/living/monkeytwerk/run_emote(mob/user, params, type_override, intentional)
+	. = ..()
+	playsound(user, 'modular_splurt/sound/misc/monkey_twerk.ogg', 50, 1)

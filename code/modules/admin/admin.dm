@@ -103,6 +103,11 @@
 		body+= "<A href='?_src_=holder;[HrefToken()];jobban3=emote;jobban4=[rm]'>Emoteban</A> | "
 	if(QDELETED(M) || QDELETED(usr))
 		return
+	if(jobban_isbanned(M, "pacifist"))
+		body+= "<A href='?_src_=holder;[HrefToken()];jobban3=pacifist;jobban4=[rm]'><font color=red>PacifistBan</font></A> | "
+	else
+		body+= "<A href='?_src_=holder;[HrefToken()];jobban3=pacifist;jobban4=[rm]'>PacifistBan</A> | "
+
 
 	body += "<A href='?_src_=holder;[HrefToken()];showmessageckey=[M.ckey]'>Notes | Messages | Watchlist</A> "
 	if(M.client)
