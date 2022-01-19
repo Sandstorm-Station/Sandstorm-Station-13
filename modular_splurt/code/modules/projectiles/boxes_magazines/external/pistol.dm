@@ -34,6 +34,7 @@
 
 /obj/item/ammo_box/magazine/e45
 	name = "Enforcer magazine (.45 Rubber)"
+	icon = 'modular_splurt/icons/obj/ammo.dmi'
 	icon_state = "enforcer-8"
 	ammo_type = /obj/item/ammo_casing/c45
 	caliber = ".45"

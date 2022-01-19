@@ -1,3 +1,9 @@
+/obj/item/gun/ballistic/revolver/doublebarrel
+	icon = 'modular_splurt/icons/obj/guns/projectile.dmi'
+
+/obj/item/gun/ballistic/revolver/detective
+	icon = 'modular_splurt/icons/obj/guns/projectile.dmi'
+
 /obj/item/gun/ballistic/revolver/detective/Initialize()
 	var/list/extra_reskin = list(
 						"Fitz Special" = "detective_fitz",
