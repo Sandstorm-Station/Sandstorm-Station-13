@@ -4,4 +4,4 @@
 		/obj/item/ammo_box/magazine/e45/taser = 10
 	)
 	LAZYADD(products, extra_products)
-   . = ..()
+	. = ..()

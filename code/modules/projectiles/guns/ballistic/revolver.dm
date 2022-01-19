@@ -105,7 +105,7 @@
 						"Leopard Spots" = "detective_leopard",
 						"Black Panther" = "detective_panther",
 						"Gold Trim" = "detective_gold",
-						"The Peacemaker" = "detective_peacemaker",
+						"The Peacemaker" = "detective_peacemaker"
 						)
 	var/list/safe_calibers
 
