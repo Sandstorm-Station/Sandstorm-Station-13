@@ -1,3 +1,51 @@
+/datum/crafting_recipe/rnd_board
+	name = "RnD Console Board"
+	result = /obj/item/circuitboard/computer/rdconsole
+	reqs = list(/obj/item/stack/sheet/metal = 1,
+				/obj/item/stack/sheet/mineral/gold = 2,
+				/obj/item/stack/sheet/mineral/uranium = 1,
+				/obj/item/stack/sheet/mineral/plasma = 1,
+				/obj/item/stack/cable_coil = 5)
+	tools = list(TOOL_SCREWDRIVER, TOOL_WIRECUTTER, TOOL_WELDER)
+	time = 40
+	subcategory = CAT_TOOL
+	category = CAT_MISCELLANEOUS
+
+/datum/crafting_recipe/protolathe
+	name = "Protolathe Board"
+	result = /obj/item/circuitboard/machine/protolathe
+	reqs = list(/obj/item/stack/sheet/metal = 1,
+				/obj/item/stack/sheet/mineral/gold = 2,
+				/obj/item/stack/sheet/mineral/uranium = 1,
+				/obj/item/stack/cable_coil = 5)
+	tools = list(TOOL_SCREWDRIVER, TOOL_WIRECUTTER, TOOL_WELDER)
+	time = 20
+	subcategory = CAT_TOOL
+	category = CAT_MISCELLANEOUS
+
+/datum/crafting_recipe/circuit_imprinter
+	name = "Circuit Imprinter"
+	result = /obj/item/circuitboard/machine/circuit_imprinter
+	reqs = list(/obj/item/stack/sheet/metal = 1,
+				/obj/item/stack/sheet/mineral/gold = 2,
+				/obj/item/stack/sheet/mineral/uranium = 1,
+				/obj/item/stack/cable_coil = 5)
+	tools = list(TOOL_SCREWDRIVER, TOOL_WIRECUTTER, TOOL_WELDER)
+	time = 20
+	subcategory = CAT_TOOL
+	category = CAT_MISCELLANEOUS
+
+/datum/crafting_recipe/autolathe
+	name = "Autolathe Board"
+	result = /obj/item/circuitboard/machine/autolathe
+	reqs = list(/obj/item/stack/sheet/metal = 1,
+				/obj/item/stack/sheet/mineral/gold = 1,
+				/obj/item/stack/cable_coil = 20)
+	tools = list(TOOL_SCREWDRIVER, TOOL_WIRECUTTER, TOOL_WELDER)
+	time = 20
+	subcategory = CAT_TOOL
+	category = CAT_MISCELLANEOUS
+
 /datum/crafting_recipe/crowbar
 	name = "Makeshift Crowbar"
 	result = /obj/item/crowbar/makeshift
@@ -87,32 +135,8 @@
 	subcategory = CAT_TOOL
 	category = CAT_MISCELLANEOUS
 
-//Milking machines
-/datum/crafting_recipe/milking_machine
-	name = "Milking Machine"
-	result = /obj/item/milking_machine
-	reqs = list(
-		/obj/item/stack/cable_coil = 5,
-		/obj/item/stack/rods = 2,
-		/obj/item/stack/sheet/cardboard = 1,
-		/obj/item/reagent_containers/glass/beaker = 2,
-		/obj/item/stock_parts/manipulator = 1
-	)
-	tools = list(TOOL_WELDER, TOOL_SCREWDRIVER, TOOL_WIRECUTTER)
-	subcategory = CAT_MISCELLANEOUS
-	category = CAT_MISCELLANEOUS
-
-/datum/crafting_recipe/milking_machine/penis
-	name = "Cock Milker"
-	result = /obj/item/milking_machine/penis
-	reqs = list(
-		/obj/item/stack/cable_coil = 5,
-		/obj/item/stack/rods = 1,
-		/obj/item/stack/sheet/cardboard = 1,
-		/obj/item/reagent_containers/glass/beaker/large = 1,
-		/obj/item/stock_parts/manipulator = 1
-	)
-
+/*
+//Hyper stuff
 //Bouquets
 /datum/crafting_recipe/mixedbouquet
 	name = "Mixed bouquet"
@@ -121,25 +145,22 @@
 				/obj/item/grown/sunflower = 2,
 				/obj/item/reagent_containers/food/snacks/grown/poppy/geranium = 2)
 	category = CAT_MISCELLANEOUS
-	subcategory = CAT_MISCELLANEOUS
 
 /datum/crafting_recipe/sunbouquet
 	name = "Sunflower bouquet"
 	result = /obj/item/bouquet/sunflower
 	reqs = list(/obj/item/grown/sunflower = 6)
 	category = CAT_MISCELLANEOUS
-	subcategory = CAT_MISCELLANEOUS
 
 /datum/crafting_recipe/poppybouquet
 	name = "Poppy bouquet"
 	result = /obj/item/bouquet/poppy
 	reqs = list (/obj/item/reagent_containers/food/snacks/grown/poppy = 6)
 	category = CAT_MISCELLANEOUS
-	subcategory = CAT_MISCELLANEOUS
 
 /datum/crafting_recipe/rosebouquet
 	name = "Rose bouquet"
 	result = /obj/item/bouquet/rose
 	reqs = list(/obj/item/grown/rose = 6)
 	category = CAT_MISCELLANEOUS
-	subcategory = CAT_MISCELLANEOUS
+*/

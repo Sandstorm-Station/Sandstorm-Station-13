@@ -292,10 +292,8 @@ SUBSYSTEM_DEF(discord)
 		subsystem_log("There was an error while deleting NULL IDs")
 		message_admins(span_warning("There was an error while deleting NULL IDs, please delete them manually using the Delete Null Discords verb"))
 		send2adminchat("Discord Subsystem", "There was an error while deleting NULL IDs, please delete them manually using `!tgs discordnulls`")
-		qdel(query_delete_nulls)
 		return FALSE
 
-	qdel(query_delete_nulls)
 	return TRUE
 
 /datum/controller/subsystem/discord/Initialize(start_timeofday)

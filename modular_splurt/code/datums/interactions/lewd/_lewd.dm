@@ -212,8 +212,8 @@
 
 	message = "<span class='lewd'>\The <b>[src]</b> [pick(hell)]"
 	visible_message(message, ignored_mobs = get_unconsenting(unholy = TRUE))
-	playlewdinteractionsound(target.loc, pick(GLOB.brap_noises), 50, 1, -1, ignored_mobs = get_unconsenting(unholy = TRUE))
-	playlewdinteractionsound(target.loc, pick('modular_sand/sound/interactions/bang1.ogg',
+	playlewdinteractionsound(loc, pick(GLOB.brap_noises), 50, 1, -1, ignored_mobs = get_unconsenting(unholy = TRUE))
+	playlewdinteractionsound(loc, pick('modular_sand/sound/interactions/bang1.ogg',
 						'modular_sand/sound/interactions/bang2.ogg',
 						'modular_sand/sound/interactions/bang3.ogg',
 						'modular_sand/sound/interactions/bang4.ogg',
@@ -301,8 +301,8 @@
 
 	message = "<span class='lewd'>\The <b>[src]</b> [pick(hell)]"
 	visible_message(message, ignored_mobs = get_unconsenting(unholy = TRUE), ignored_mobs = get_unconsenting(unholy = TRUE))
-	playlewdinteractionsound(target.loc, pick(GLOB.brap_noises), 70, 1, -1)
-	playlewdinteractionsound(target.loc, pick('modular_sand/sound/interactions/bang1.ogg',
+	playlewdinteractionsound(loc, pick(GLOB.brap_noises), 70, 1, -1)
+	playlewdinteractionsound(loc, pick('modular_sand/sound/interactions/bang1.ogg',
 						'modular_sand/sound/interactions/bang2.ogg',
 						'modular_sand/sound/interactions/bang3.ogg',
 						'modular_sand/sound/interactions/bang4.ogg',

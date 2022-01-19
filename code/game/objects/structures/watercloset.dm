@@ -549,7 +549,6 @@
 			H.lip_style = null //Washes off lipstick
 			H.lip_color = initial(H.lip_color)
 			H.wash_cream()
-			H.wash_cum() //sandstorm edit
 			H.regenerate_icons()
 		user.drowsyness = max(user.drowsyness - rand(2,3), 0) //Washing your face wakes you up if you're falling asleep
 	else
@@ -623,7 +622,6 @@
 		busy = FALSE
 		SEND_SIGNAL(O, COMSIG_COMPONENT_CLEAN_ACT, CLEAN_WEAK)
 		O.clean_blood()
-		O.wash_cum() //sandstorm edit
 		var/datum/component/acid/acid = O.GetComponent(/datum/component/acid)
 		if(acid)
 			acid.level = 0

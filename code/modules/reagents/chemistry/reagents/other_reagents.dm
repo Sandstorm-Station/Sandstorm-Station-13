@@ -1332,7 +1332,6 @@
 			O.remove_atom_colour(WASHABLE_COLOUR_PRIORITY)
 			SEND_SIGNAL(O, COMSIG_COMPONENT_CLEAN_ACT, CLEAN_WEAK)
 			O.clean_blood()
-			O.wash_cum() //sandstorm edit
 
 /datum/reagent/space_cleaner/reaction_turf(turf/T, reac_volume)
 	..()
@@ -1340,7 +1339,6 @@
 		T.remove_atom_colour(WASHABLE_COLOUR_PRIORITY)
 		SEND_SIGNAL(T, COMSIG_COMPONENT_CLEAN_ACT, CLEAN_WEAK)
 		T.clean_blood()
-		T.wash_cum() //sandstorm edit
 		for(var/obj/effect/decal/cleanable/C in T)
 			qdel(C)
 
@@ -1383,7 +1381,6 @@
 					if(H.shoes.clean_blood())
 						H.update_inv_shoes()
 				H.wash_cream()
-				H.wash_cum() //sandstorm edit
 			SEND_SIGNAL(M, COMSIG_COMPONENT_CLEAN_ACT, CLEAN_WEAK)
 			M.clean_blood()
 
