@@ -2,3 +2,7 @@
 	config_entry_value = 0.5
 	min_val = 0
 	integer = FALSE
+
+/datum/config_entry/number/sex_table_multiplier
+	config_entry_value = 50
+	min_val = 0
