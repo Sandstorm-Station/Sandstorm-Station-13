@@ -495,7 +495,16 @@
 	new_mob.ckey = ckey
 	if(send_signal)
 		SEND_SIGNAL(src, COMSIG_MOB_KEY_CHANGE, new_mob, src)
+	//splurt changeh
+	INVOKE_ASYNC(GLOBAL_PROC, .proc/_paci_check, new_mob, src)
+	//
 	return TRUE
+
+/proc/_paci_check(mob/new_mob, mob/old_mob)
+	if(jobban_isbanned(new_mob, "pacifist"))
+		if(!QDELETED(old_mob))
+			REMOVE_TRAIT(old_mob, TRAIT_PACIFISM, "pacification ban")
+		ADD_TRAIT(new_mob, TRAIT_PACIFISM, "pacification ban")
 
 /mob/verb/cancel_camera()
 	set name = "Cancel Camera View"
