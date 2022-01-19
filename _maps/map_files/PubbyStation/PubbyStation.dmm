@@ -24638,6 +24638,9 @@
 /obj/structure/cable{
 	icon_state = "1-2"
 	},
+/obj/item/hilbertshotel/ghostdojo{
+	pixel_y = -16
+	},
 /turf/open/floor/carpet,
 /area/commons/lounge)
 "bhI" = (
@@ -54899,10 +54902,6 @@
 /obj/item/storage/box/lights/mixed,
 /turf/open/floor/plating,
 /area/maintenance/department/engine)
-"iET" = (
-/obj/item/hilbertshotel/ghostdojo,
-/turf/open/floor/plasteel,
-/area/hallway/secondary/entry)
 "iEU" = (
 /obj/effect/spawner/lootdrop/keg,
 /turf/open/floor/plating,
@@ -83785,7 +83784,7 @@ aaa
 aaa
 aZx
 bkR
-iET
+baK
 baL
 bon
 aZx

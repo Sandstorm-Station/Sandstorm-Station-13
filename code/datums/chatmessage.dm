@@ -14,6 +14,8 @@
 #define CHAT_MESSAGE_WIDTH			96
 /// Max length of chat message in characters
 #define CHAT_MESSAGE_MAX_LENGTH		110
+/// The dimensions of the chat message icons
+#define CHAT_MESSAGE_ICON_SIZE 9
 /// Maximum precision of float before rounding errors occur (in this context)
 #define CHAT_LAYER_Z_STEP			0.0001
 /// The number of z-layer 'slices' usable by the chat message layering
@@ -53,10 +55,11 @@
   * * text - The text content of the overlay
   * * target - The target atom to display the overlay at
   * * owner - The mob that owns this overlay, only this mob will be able to view it
+  * * language - The language this message was spoken in
   * * extra_classes - Extra classes to apply to the span that holds the text
   * * lifespan - The lifespan of the message in deciseconds
   */
-/datum/chatmessage/New(text, atom/target, mob/owner, list/extra_classes = list(), lifespan = CHAT_MESSAGE_LIFESPAN)
+/datum/chatmessage/New(text, atom/target, mob/owner, datum/language/language, list/extra_classes = list(), lifespan = CHAT_MESSAGE_LIFESPAN)
 	. = ..()
 	if (!istype(target))
 		CRASH("Invalid target given for chatmessage")
@@ -64,7 +67,7 @@
 		stack_trace("/datum/chatmessage created with [isnull(owner) ? "null" : "invalid"] mob owner")
 		qdel(src)
 		return
-	INVOKE_ASYNC(src, .proc/generate_image, text, target, owner, extra_classes, lifespan)
+	INVOKE_ASYNC(src, .proc/generate_image, text, target, owner, language, extra_classes, lifespan)
 
 /datum/chatmessage/Destroy()
 	if (owned_by)
@@ -90,10 +93,14 @@
   * * text - The text content of the overlay
   * * target - The target atom to display the overlay at
   * * owner - The mob that owns this overlay, only this mob will be able to view it
+  * * language - The language this message was spoken in
   * * extra_classes - Extra classes to apply to the span that holds the text
   * * lifespan - The lifespan of the message in deciseconds
   */
-/datum/chatmessage/proc/generate_image(text, atom/target, mob/owner, list/extra_classes, lifespan)
+/datum/chatmessage/proc/generate_image(text, atom/target, mob/owner, datum/language/language, list/extra_classes, lifespan)
+	/// Cached icons to show what language the user is speaking
+	var/static/list/language_icons
+
 	// Register client who owns this message
 	owned_by = owner.client
 	if(!owned_by)
@@ -136,19 +143,32 @@
 	if (!ismob(target))
 		extra_classes |= "small"
 
-	//Skyrat changes
+	var/list/prefixes
+
 	// Append radio icon if from a virtual speaker
-	if (extra_classes.Find("emote"))
-		var/image/r_icon = image('modular_sand/icons/UI_Icons/chat/chat_icons.dmi', icon_state = "emote")
-		text =  "\icon[r_icon]&nbsp;" + text
-	else if (extra_classes.Find("virtual-speaker"))
-		var/image/r_icon = image('modular_sand/icons/UI_Icons/chat/chat_icons.dmi', icon_state = "radio")
-		text =  "\icon[r_icon]&nbsp;" + text
-	//End of skyrat changes
+	if (extra_classes.Find("virtual-speaker"))
+		var/image/r_icon = image('icons/ui_icons/chat/chat_icons.dmi', icon_state = "radio")
+		LAZYADD(prefixes, "\icon[r_icon]")
+	else if (extra_classes.Find("emote"))
+		var/image/r_icon = image('icons/ui_icons/chat/chat_icons.dmi', icon_state = "emote")
+		LAZYADD(prefixes, "\icon[r_icon]")
+
+	// Append language icon if the language uses one
+	var/datum/language/language_instance = GLOB.language_datum_instances[language]
+	if (language_instance?.display_icon(owner))
+		var/icon/language_icon = LAZYACCESS(language_icons, language)
+		if (isnull(language_icon))
+			language_icon = icon(language_instance.icon, icon_state = language_instance.icon_state)
+			language_icon.Scale(CHAT_MESSAGE_ICON_SIZE, CHAT_MESSAGE_ICON_SIZE)
+			LAZYSET(language_icons, language, language_icon)
+		LAZYADD(prefixes, "\icon[language_icon]")
+
+	text = "[prefixes?.Join("&nbsp;")][text]"
 
 	// We dim italicized text to make it more distinguishable from regular text
 	var/tgt_color = extra_classes.Find("italics") ? target.chat_color_darkened : target.chat_color
 
+	// Approximate text height
 	var/complete_text = "<span class='center maptext [extra_classes.Join(" ")]' style='color: [tgt_color]'>[owner.say_emphasis(text)]</span>"
 	var/mheight = WXH_TO_HEIGHT(owned_by.MeasureText(complete_text, null, CHAT_MESSAGE_WIDTH))
 	approx_lines = max(1, mheight / CHAT_MESSAGE_APPROX_LHEIGHT)
@@ -236,11 +256,11 @@
 	//Skyrat changes
 	if(!message_language && (lang_treat(speaker, message_language, raw_message, spans, null, TRUE) == "makes a strange sound.") && !("emote" in spans))
 		var/nospeak = "makes a strange sound."
-		new /datum/chatmessage(nospeak, speaker, src, list("emote", "italics"))
+		new /datum/chatmessage(nospeak, speaker, src, message_language, list("emote", "italics"))
 	else if(message_language)
-		new /datum/chatmessage(lang_treat(speaker, message_language, raw_message, spans, null, TRUE), speaker, src, spans)
+		new /datum/chatmessage(lang_treat(speaker, message_language, raw_message, spans, null, TRUE), speaker, src, message_language, spans)
 	else
-		new /datum/chatmessage(raw_message, speaker, src, spans)
+		new /datum/chatmessage(raw_message, speaker, src, message_language, spans)
 	//End of skyrat changes
 
 // Tweak these defines to change the available color ranges

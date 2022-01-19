@@ -511,7 +511,7 @@
 	var/u_His = p_their()
 	var/u_He = p_they()
 	var/u_S = p_s()
-	var/t_His = partner.p_their()
+	var/t_His = partner?.p_their()
 	var/cumin = FALSE
 	var/partner_carbon_check = FALSE
 	var/obj/item/organ/genital/target_gen = null
@@ -895,6 +895,7 @@
 			else
 				H.mob_climax(TRUE, "sex", partner, !cumin, target_gen)
 	set_lust(0)
+	SEND_SIGNAL(src, COMSIG_MOB_CAME, target_orifice, partner)
 
 /mob/living/proc/is_fucking(mob/living/partner, orifice)
 	if(partner == last_partner && orifice == last_orifice)
