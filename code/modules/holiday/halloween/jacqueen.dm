@@ -131,7 +131,7 @@
 /mob/living/simple_animal/jacq/proc/jacqrunes(message, mob/living/carbon/C) //Displays speechtext over Jacq for the user only.
 	var/atom/hearer = C
 	var/list/spans = list("spooky")
-	new /datum/chatmessage(message, src, hearer, spans)
+	new /datum/chatmessage(message, src, hearer, extra_classes = spans)
 
 
 /mob/living/simple_animal/jacq/proc/poof()
