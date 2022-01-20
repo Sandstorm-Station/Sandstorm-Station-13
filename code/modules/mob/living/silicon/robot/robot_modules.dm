@@ -399,6 +399,7 @@
 		"Arachne" = image(icon = 'modular_splurt/icons/mob/robots.dmi', icon_state = "arachne"), // SPLURT Addon (Skyrat Port)
 		"Insekt" = image(icon = 'modular_splurt/icons/mob/robots.dmi', icon_state = "insekt-Med"), // SPLURT Addon (Skyrat Port)
 		"Gibbs" = image(icon = 'modular_splurt/icons/mob/robots.dmi', icon_state = "gibbs"), // SPLURT Addon (Skyrat Port)
+		"RoboMaid" = image(icon = 'modular_splurt/icons/mob/robots.dmi', icon_state = "robomaid_med"), // SPLURT Addon (Old Skyrat Port)
 		"Qualified Doctor" = image(icon = 'modular_splurt/icons/mob/robots.dmi', icon_state = "qualified_doctor"), // SPLURT Addon (Hyper Port)
 		"BootyF" = image(icon = 'modular_splurt/icons/mob/robots.dmi', icon_state = "bootymedical"), // SPLURT Addon (Hyper Port)
 		"BootyM" = image(icon = 'modular_splurt/icons/mob/robots.dmi', icon_state = "bootymedicalM"), // SPLURT Addon (Hyper Port)
@@ -459,6 +460,10 @@
 			hat_offset = 3
 		if("Gibbs") // SPLURT Addon (Skyrat Port)
 			cyborg_base_icon = "gibbs"
+			cyborg_icon_override = 'modular_splurt/icons/mob/robots.dmi'
+			hat_offset = 3
+		if("RoboMaid") // SPLURT Addon (Old Skyrat Port)
+			cyborg_base_icon = "robomaid_med"
 			cyborg_icon_override = 'modular_splurt/icons/mob/robots.dmi'
 			hat_offset = 3
 		if("Qualified Doctor") // SPLURT Addon (Hyper Port)
@@ -587,6 +592,7 @@
 		"Conagher" = image(icon = 'modular_splurt/icons/mob/robots.dmi', icon_state = "conagher"), // SPLURT Addon (Skyrat Port)
 		"Eyebot" = image(icon = 'modular_splurt/icons/mob/robots.dmi', icon_state = "eyeboteng"), // SPLURT Addon (Skyrat Port)
 		"Wide" = image(icon = 'modular_splurt/icons/mob/robots.dmi', icon_state = "wide-engi"), // SPLURT Addon (Skyrat Port)
+		"RoboMaid" = image(icon = 'modular_splurt/icons/mob/robots.dmi', icon_state = "robomaid_eng"), // SPLURT Addon (Old Skyrat Port)
 		"BootyF" = image(icon = 'modular_splurt/icons/mob/robots.dmi', icon_state = "bootyengineer"), // SPLURT Addon (Hyper Port)
 		"BootyM" = image(icon = 'modular_splurt/icons/mob/robots.dmi', icon_state = "bootyengineerM"), // SPLURT Addon (Hyper Port)
 		"BootyS" = image(icon = 'modular_splurt/icons/mob/robots.dmi', icon_state = "bootyengineerS"), // SPLURT Addon (Hyper Port)
@@ -658,6 +664,10 @@
 			hat_offset = 3
 		if("Wide") // SPLURT Addon (Skyrat Port)
 			cyborg_base_icon = "wide-engi"
+			cyborg_icon_override = 'modular_splurt/icons/mob/robots.dmi'
+			hat_offset = 3
+		if("RoboMaid") // SPLURT Addon (Old Skyrat Port)
+			cyborg_base_icon = "robomaid_eng"
 			cyborg_icon_override = 'modular_splurt/icons/mob/robots.dmi'
 			hat_offset = 3
 		if("BootyF") // SPLURT Addon (Hyper Port)
@@ -758,6 +768,7 @@
 		"Woody" = image(icon = 'modular_splurt/icons/mob/robots.dmi', icon_state = "woody"), // SPLURT Addon (Skyrat Port)
 		"Eyebot" = image(icon = 'modular_splurt/icons/mob/robots.dmi', icon_state = "eyebotsec"), // SPLURT Addon (Skyrat Port)
 		"Insekt" = image(icon = 'modular_splurt/icons/mob/robots.dmi', icon_state = "insekt-Sec"), // SPLURT Addon (Skyrat Port)
+		"RoboMaid" = image(icon = 'modular_splurt/icons/mob/robots.dmi', icon_state = "robomaid_sec"), // SPLURT Addon (Old Skyrat Port)
 		"BootyF" = image(icon = 'modular_splurt/icons/mob/robots.dmi', icon_state = "bootysecurity"), // SPLURT Addon (Hyper Port)
 		"BootyM" = image(icon = 'modular_splurt/icons/mob/robots.dmi', icon_state = "bootysecurityM"), // SPLURT Addon (Hyper Port)
 		"BootyS" = image(icon = 'modular_splurt/icons/mob/robots.dmi', icon_state = "bootysecurityS"), // SPLURT Addon (Hyper Port)
@@ -820,6 +831,10 @@
 			hat_offset = 3
 		if("Insekt") // SPLURT Addon (Skyrat Port)
 			cyborg_base_icon = "insekt-Sec"
+			cyborg_icon_override = 'modular_splurt/icons/mob/robots.dmi'
+			hat_offset = 3
+		if("RoboMaid") // SPLURT Addon (Old Skyrat Port)
+			cyborg_base_icon = "robomaid_sec"
 			cyborg_icon_override = 'modular_splurt/icons/mob/robots.dmi'
 			hat_offset = 3
 		if("BootyF") // SPLURT Addon (Hyper Port)
@@ -1138,6 +1153,7 @@
 		"(Janitor) Insekt" = image(icon = 'modular_splurt/icons/mob/robots.dmi', icon_state = "insekt-Sci"), // SPLURT Addon (Skyrat Port)
 		"(Janitor) Wide" = image(icon = 'modular_splurt/icons/mob/robots.dmi', icon_state = "wide-jani"), // SPLURT Addon (Skyrat Port)
 		"(Janitor) Spider" = image(icon = 'modular_splurt/icons/mob/robots.dmi', icon_state = "spidersci"), // SPLURT Addon (Skyrat Port)
+		"(Janitor) RoboMaid" = image(icon = 'modular_splurt/icons/mob/robots.dmi', icon_state = "robomaid_jan"), // SPLURT Addon (Old Skyrat Port)
 		"(Janitor) BootyF" = image(icon = 'modular_splurt/icons/mob/robots.dmi', icon_state = "bootyjanitor"), // SPLURT Addon (Hyper Port)
 		"(Janitor) BootyM" = image(icon = 'modular_splurt/icons/mob/robots.dmi', icon_state = "bootyjanitorM"), // SPLURT Addon (Hyper Port)
 		"(Janitor) BootyS" = image(icon = 'modular_splurt/icons/mob/robots.dmi', icon_state = "bootyjanitorS"), // SPLURT Addon (Hyper Port)
@@ -1284,6 +1300,10 @@
 			cyborg_base_icon = "spidersci"
 			cyborg_icon_override = 'modular_splurt/icons/mob/robots.dmi'
 			hat_offset = 3
+		if("(Janitor) RoboMaid") // SPLURT Addon (Old Skyrat Port)
+			cyborg_base_icon = "robomaid_jan"
+			cyborg_icon_override = 'modular_splurt/icons/mob/robots.dmi'
+			hat_offset = 3
 		if("(Janitor) BootyF") // SPLURT Addon (Hyper Port)
 			cyborg_base_icon = "bootyjanitor"
 			cyborg_icon_override = 'modular_splurt/icons/mob/robots.dmi'
@@ -1368,6 +1388,7 @@
 		"Zoomba" = image(icon = 'modular_splurt/icons/mob/robots.dmi', icon_state = "zoomba_miner"), // SPLURT Addon (Skyrat Port)
 		"Ishimura" = image(icon = 'modular_splurt/icons/mob/robots.dmi', icon_state = "ishimura"), // SPLURT Addon (Skyrat Port)
 		"Mining Drone" = image(icon = 'modular_splurt/icons/mob/robots.dmi', icon_state = "miningdrone"), // SPLURT Addon (Skyrat Port)
+		"RoboMaid" = image(icon = 'modular_splurt/icons/mob/robots.dmi', icon_state = "robomaid_miner"), // SPLURT Addon (Old Skyrat Port)
 		"BootyF" = image(icon = 'modular_splurt/icons/mob/robots.dmi', icon_state = "bootyminer"), // SPLURT Addon (Hyper Port)
 		"BootyM" = image(icon = 'modular_splurt/icons/mob/robots.dmi', icon_state = "bootyminerM"), // SPLURT Addon (Hyper Port)
 		"BootyS" = image(icon = 'modular_splurt/icons/mob/robots.dmi', icon_state = "bootyminerS"), // SPLURT Addon (Hyper Port)
@@ -1426,6 +1447,10 @@
 			hat_offset = 3
 		if("Mining Drone") // SPLURT Addon (Skyrat Port)
 			cyborg_base_icon = "miningdrone"
+			cyborg_icon_override = 'modular_splurt/icons/mob/robots.dmi'
+			hat_offset = 3
+		if("Robomaid") // SPLURT Addon (Old Skyrat Port)
+			cyborg_base_icon = "robomaid_miner"
 			cyborg_icon_override = 'modular_splurt/icons/mob/robots.dmi'
 			hat_offset = 3
 		if("BootyF") // SPLURT Addon (Hyper Port)

@@ -196,6 +196,7 @@
 		"Heavy" = image(icon = 'modular_splurt/icons/mob/robots.dmi', icon_state = "syndieheavy"), // SPLURT Addon (Skyrat Port)
 		"Spider" = image(icon = 'modular_splurt/icons/mob/robots.dmi', icon_state = "spidersyndi"), // SPLURT Addon (Skyrat Port)
 		"Chesty" = image(icon = 'modular_splurt/icons/mob/robots.dmi', icon_state = "chesty"), // SPLURT Addon (Skyrat Port)
+		"RoboMaid" = image(icon = 'modular_splurt/icons/mob/robots.dmi', icon_state = "robomaid_synd"), // SPLURT Addon (Old Skyrat Port)
 		"BootyNukie" = image(icon = 'modular_splurt/icons/mob/robots.dmi', icon_state = "bootynukie"), // SPLURT Addon (Hyper Port)
 		"BootyGorlex" = image(icon = 'modular_splurt/icons/mob/robots.dmi', icon_state = "bootygorlex") // SPLURT Addon (Hyper Port)
 		))
@@ -221,6 +222,9 @@
 			cyborg_icon_override = 'modular_splurt/icons/mob/robots.dmi'
 		if("Chesty") // SPLURT Addon (Skyrat Port)
 			cyborg_base_icon = "chesty"
+			cyborg_icon_override = 'modular_splurt/icons/mob/robots.dmi'
+		if("RoboMaid") // SPLURT Addon (Old Skyrat Port)
+			cyborg_base_icon = "robomaid_synd"
 			cyborg_icon_override = 'modular_splurt/icons/mob/robots.dmi'
 		if("BootyNukie") // SPLURT Addon (Hyper Port)
 			cyborg_base_icon = "bootynukie"

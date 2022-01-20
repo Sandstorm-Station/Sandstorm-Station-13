@@ -10,6 +10,7 @@
 			"Marina" = image(icon = 'modular_splurt/icons/mob/robots.dmi', icon_state = "marinasd"),
 			"Heavy" = image(icon = 'modular_splurt/icons/mob/robots.dmi', icon_state = "heavysd"),
 			"Eyebot" = image(icon = 'modular_splurt/icons/mob/robots.dmi', icon_state = "eyebotsd"),
+			"RoboMaid" = image(icon = 'modular_splurt/icons/mob/robots.dmi', icon_state = "robomaid_sd"),
 			"BootyF" = image(icon = 'modular_splurt/icons/mob/robots.dmi', icon_state = "bootystandard"),
 			"BootyM" = image(icon = 'modular_splurt/icons/mob/robots.dmi', icon_state = "bootystandardM"),
 			"BootyS" = image(icon = 'modular_splurt/icons/mob/robots.dmi', icon_state = "bootystandardS")
@@ -45,6 +46,10 @@
 			hat_offset = 3
 		if("Eyebot")
 			cyborg_base_icon = "eyebotsd"
+			cyborg_icon_override = 'modular_splurt/icons/mob/robots.dmi'
+			hat_offset = 3
+		if("RoboMaid")
+			cyborg_base_icon = "robomaid_sd"
 			cyborg_icon_override = 'modular_splurt/icons/mob/robots.dmi'
 			hat_offset = 3
 		if("BootyF")
