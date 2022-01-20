@@ -404,6 +404,7 @@
 		"BootyM" = image(icon = 'modular_splurt/icons/mob/robots.dmi', icon_state = "bootymedicalM"), // SPLURT Addon (Hyper Port)
 		"BootyS" = image(icon = 'modular_splurt/icons/mob/robots.dmi', icon_state = "bootymedicalS"), // SPLURT Addon (Hyper Port)
 		"Haydee" = image(icon = 'modular_splurt/icons/mob/robots.dmi', icon_state = "haydeemedical"), // SPLURT Addon (Hyper Port)
+		"Borgi" = image(icon = 'modular_splurt/icons/mob/widerobot.dmi', icon_state = "borgi-medi-b"), // SPLURT Adoon (Skyrat Port)
 		"Drake" = image(icon = 'modular_sand/icons/mob/cyborg/drakemech.dmi', icon_state = "drakemedbox")
 		)
 		var/list/L = list("Medihound" = "medihound", "Medihound Dark" = "medihounddark", "Vale" = "valemed")
@@ -509,6 +510,13 @@
 			moduleselect_icon = "medihound"
 			moduleselect_alternate_icon = 'modular_citadel/icons/ui/screen_cyborg.dmi'
 			dogborg = TRUE
+		if("Borgi") // SPLURT Addon (Skyrat Port)
+			cyborg_base_icon = "borgi-medi"
+			cyborg_icon_override = 'modular_splurt/icons/mob/widerobot.dmi'
+			sleeper_overlay = "borgi-medi-sleeper"
+			moduleselect_icon = "medihound"
+			moduleselect_alternate_icon = 'modular_citadel/icons/ui/screen_cyborg.dmi'
+			dogborg = TRUE
 		if("Drake") // Dergborg brought to you by Navier#1236 | Skyrat | Commissioned Artist: deviantart.com/mizartz
 			cyborg_base_icon = "drakemed"
 			cyborg_icon_override = 'modular_sand/icons/mob/cyborg/drakemech.dmi'
@@ -582,6 +590,10 @@
 		"BootyF" = image(icon = 'modular_splurt/icons/mob/robots.dmi', icon_state = "bootyengineer"), // SPLURT Addon (Hyper Port)
 		"BootyM" = image(icon = 'modular_splurt/icons/mob/robots.dmi', icon_state = "bootyengineerM"), // SPLURT Addon (Hyper Port)
 		"BootyS" = image(icon = 'modular_splurt/icons/mob/robots.dmi', icon_state = "bootyengineerS"), // SPLURT Addon (Hyper Port)
+		"Borgi" = image(icon = 'modular_splurt/icons/mob/widerobot.dmi', icon_state = "borgi-eng-b"), // SPLURT Adoon (Skyrat Port)
+		"Engihound" = image(icon = 'modular_splurt/icons/mob/widerobot.dmi', icon_state = "engihound-b"), // SPLURT Adoon (Skyrat Port)
+		"Engihound Dark" = image(icon = 'modular_splurt/icons/mob/widerobot.dmi', icon_state = "engihounddark-b"), // SPLURT Adoon (Skyrat Port)
+		"Otie" = image(icon = 'modular_splurt/icons/mob/widerobot.dmi', icon_state = "otiee-b"), // SPLURT Adoon (Skyrat Port)
 		"Drake" = image(icon = 'modular_sand/icons/mob/cyborg/drakemech.dmi', icon_state = "drakeengbox")
 		)
 		var/list/L = list("Pup Dozer" = "pupdozer", "Vale" = "valeeng")
@@ -676,6 +688,26 @@
 			cyborg_icon_override = 'modular_citadel/icons/mob/widerobot.dmi'
 			sleeper_overlay = "alinasleeper"
 			dogborg = TRUE
+		if("Borgi") // SPLURT Addon (Skyrat Port)
+			cyborg_base_icon = "borgi-eng"
+			cyborg_icon_override = 'modular_splurt/icons/mob/widerobot.dmi'
+			sleeper_overlay = "borgi-eng-sleeper"
+			dogborg = TRUE
+		if("Engihound") // SPLURT Addon (Skyrat Port)
+			cyborg_base_icon = "engihound"
+			cyborg_icon_override = 'modular_splurt/icons/mob/widerobot.dmi'
+			sleeper_overlay = "engihoundsleeper"
+			dogborg = TRUE
+		if("Engihound Dark") // SPLURT Addon (Skyrat Port)
+			cyborg_base_icon = "engihounddark"
+			cyborg_icon_override = 'modular_splurt/icons/mob/widerobot.dmi'
+			sleeper_overlay = "engihounddarksleeper"
+			dogborg = TRUE
+		if("Otie") // SPLURT Addon (Skyrat Port)
+			cyborg_base_icon = "otiee"
+			cyborg_icon_override = 'modular_splurt/icons/mob/widerobot.dmi'
+			sleeper_overlay = "otieesleeper"
+			dogborg = TRUE
 		if("Drake") // Dergborg brought to you by Navier#1236 | Skyrat | Commissioned Artist: deviantart.com/mizartz
 			cyborg_base_icon = "drakeeng"
 			cyborg_icon_override = 'modular_sand/icons/mob/cyborg/drakemech.dmi'
@@ -729,6 +761,8 @@
 		"BootyF" = image(icon = 'modular_splurt/icons/mob/robots.dmi', icon_state = "bootysecurity"), // SPLURT Addon (Hyper Port)
 		"BootyM" = image(icon = 'modular_splurt/icons/mob/robots.dmi', icon_state = "bootysecurityM"), // SPLURT Addon (Hyper Port)
 		"BootyS" = image(icon = 'modular_splurt/icons/mob/robots.dmi', icon_state = "bootysecurityS"), // SPLURT Addon (Hyper Port)
+		"Borgi" = image(icon = 'modular_splurt/icons/mob/widerobot.dmi', icon_state = "borgi-sec-b"), // SPLURT Adoon (Skyrat Port)
+		"Otie" = image(icon = 'modular_splurt/icons/mob/widerobot.dmi', icon_state = "oties-b"), // SPLURT Adoon (Skyrat Port)
 		"Drake" = image(icon = 'modular_sand/icons/mob/cyborg/drakemech.dmi', icon_state = "drakesecbox")
 		)
 		var/list/L = list("K9" = "k9", "Vale" = "valesec", "K9 Dark" = "k9dark")
@@ -821,6 +855,16 @@
 			sleeper_overlay = "valesecsleeper"
 			cyborg_icon_override = 'modular_citadel/icons/mob/widerobot.dmi'
 			dogborg = TRUE
+		if("Borgi") // SPLURT Addon (Skyrat Port)
+			cyborg_base_icon = "borgi-sec"
+			cyborg_icon_override = 'modular_splurt/icons/mob/widerobot.dmi'
+			sleeper_overlay = "borgi-sec-sleeper"
+			dogborg = TRUE
+		if("Otie") // SPLURT Addon (Skyrat Port)
+			cyborg_base_icon = "oties"
+			cyborg_icon_override = 'modular_splurt/icons/mob/widerobot.dmi'
+			sleeper_overlay = "otiessleeper"
+			dogborg = TRUE
 		if("Drake") // Dergborg brought to you by Navier#1236 | Skyrat | Commissioned Artist: deviantart.com/mizartz
 			cyborg_base_icon = "drakesec"
 			sleeper_overlay = "drakesecsleeper"
@@ -878,6 +922,7 @@
 		"BootyF" = image(icon = 'modular_splurt/icons/mob/robots.dmi', icon_state = "bootypeace"), // SPLURT Addon (Hyper Port)
 		"BootyM" = image(icon = 'modular_splurt/icons/mob/robots.dmi', icon_state = "bootypeaceM"), // SPLURT Addon (Hyper Port)
 		"BootyS" = image(icon = 'modular_splurt/icons/mob/robots.dmi', icon_state = "bootypeaceS"), // SPLURT Addon (Hyper Port)
+		"Vale" = image(icon = 'modular_splurt/icons/mob/widerobot.dmi', icon_state = "valepeace-b"), // SPLURT Adoon (Skyrat Port)
 		"Drake" = image(icon = 'modular_sand/icons/mob/cyborg/drakemech.dmi', icon_state = "drakepeacebox")
 		))
 	var/peace_borg_icon = show_radial_menu(R, R , peace_icons, custom_check = CALLBACK(src, .proc/check_menu, R), radius = 42, require_near = TRUE)
@@ -926,6 +971,11 @@
 			hat_offset = INFINITY
 			cyborg_icon_override = 'modular_citadel/icons/mob/robots.dmi'
 			has_snowflake_deadsprite = TRUE
+		if("Vale") // SPLURT Addon (Skyrat Port)
+			cyborg_base_icon = "valepeace"
+			cyborg_icon_override = 'modular_splurt/icons/mob/widerobot.dmi'
+			sleeper_overlay = "valepeacesleeper"
+			dogborg = TRUE
 		if("Drake")
 			cyborg_base_icon = "drakepeace"
 			sleeper_overlay = "drakepeacesleeper"
@@ -1073,6 +1123,8 @@
 		"(Service) BootyF" = image(icon = 'modular_splurt/icons/mob/robots.dmi', icon_state = "bootyservice"), // SPLURT Addon (Hyper Port)
 		"(Service) BootyM" = image(icon = 'modular_splurt/icons/mob/robots.dmi', icon_state = "bootyserviceM"), // SPLURT Addon (Hyper Port)
 		"(Service) BootyS" = image(icon = 'modular_splurt/icons/mob/robots.dmi', icon_state = "bootyserviceS"), // SPLURT Addon (Hyper Port)
+		"(Service) K69" = image(icon = 'modular_splurt/icons/mob/widerobot.dmi', icon_state = "k69-b"), // SPLURT Addon (Skyrat Port) // The Cursed One
+		"(Service) Borgi" = image(icon = 'modular_splurt/icons/mob/widerobot.dmi', icon_state = "borgi-serv-b"), // SPLURT Addon (Skyrat Port)
 		"(Janitor) Default" = image(icon = 'icons/mob/robots.dmi', icon_state = "janitor"),
 		"(Janitor) Marina" = image(icon = 'modular_citadel/icons/mob/robots.dmi', icon_state = "marinajan"),
 		"(Janitor) Sleek" = image(icon = 'modular_citadel/icons/mob/robots.dmi', icon_state = "sleekjan"),
@@ -1089,6 +1141,8 @@
 		"(Janitor) BootyF" = image(icon = 'modular_splurt/icons/mob/robots.dmi', icon_state = "bootyjanitor"), // SPLURT Addon (Hyper Port)
 		"(Janitor) BootyM" = image(icon = 'modular_splurt/icons/mob/robots.dmi', icon_state = "bootyjanitorM"), // SPLURT Addon (Hyper Port)
 		"(Janitor) BootyS" = image(icon = 'modular_splurt/icons/mob/robots.dmi', icon_state = "bootyjanitorS"), // SPLURT Addon (Hyper Port)
+		"(Janitor) Borgi" = image(icon = 'modular_splurt/icons/mob/widerobot.dmi', icon_state = "borgi-jani-b"), // SPLURT Addon (Skyrat Port)
+		"(Janitor) Otie" = image(icon = 'modular_splurt/icons/mob/widerobot.dmi', icon_state = "otiej-b"), // SPLURT Addon (Skyrat Port)
 		"(Janitor) Drake" = image(icon = 'modular_sand/icons/mob/cyborg/drakemech.dmi', icon_state = "drakejanitbox")
 		)
 		var/list/L = list("(Service) DarkK9" = "k50", "(Service) Vale" = "valeserv", "(Service) ValeDark" = "valeservdark",
@@ -1174,6 +1228,16 @@
 			cyborg_icon_override = 'modular_citadel/icons/mob/widerobot.dmi'
 			sleeper_overlay = "valeservsleeper"
 			dogborg = TRUE
+		if("(Service) K69") // SPLURT Addon (Skyrat Port)
+			cyborg_base_icon = "k69"
+			cyborg_icon_override = 'modular_splurt/icons/mob/widerobot.dmi'
+			sleeper_overlay = "ksleeper"
+			dogborg = TRUE
+		if("(Service) Borgi") // SPLURT Addon (Skyrat Port)
+			cyborg_base_icon = "borgi-serv"
+			cyborg_icon_override = 'modular_splurt/icons/mob/widerobot.dmi'
+			sleeper_overlay = "borgi-sleeper"
+			dogborg = TRUE
 		if("(Janitor) Default")
 			cyborg_base_icon = "janitor"
 		if("(Janitor) Marina")
@@ -1237,6 +1301,16 @@
 			cyborg_icon_override = 'modular_citadel/icons/mob/widerobot.dmi'
 			sleeper_overlay = "jsleeper"
 			dogborg = TRUE
+		if("(Janitor) Borgi") // SPLURT Addon (Skyrat Port)
+			cyborg_base_icon = "borgi-jani"
+			cyborg_icon_override = 'modular_splurt/icons/mob/widerobot.dmi'
+			sleeper_overlay = "borgi-jani-sleeper"
+			dogborg = TRUE
+		if("(Janitor) Otie") // SPLURT Addon (Skyrat Port)
+			cyborg_base_icon = "otiej"
+			cyborg_icon_override = 'modular_splurt/icons/mob/widerobot.dmi'
+			sleeper_overlay = "otiejsleeper"
+			dogborg = TRUE
 		if("(Janitor) Drake") // Dergborg brought to you by Navier#1236 | Skyrat | Commissioned Artist: deviantart.com/mizartz
 			cyborg_base_icon = "drakejanit"
 			cyborg_icon_override = 'modular_sand/icons/mob/cyborg/drakemech.dmi'
@@ -1297,6 +1371,9 @@
 		"BootyF" = image(icon = 'modular_splurt/icons/mob/robots.dmi', icon_state = "bootyminer"), // SPLURT Addon (Hyper Port)
 		"BootyM" = image(icon = 'modular_splurt/icons/mob/robots.dmi', icon_state = "bootyminerM"), // SPLURT Addon (Hyper Port)
 		"BootyS" = image(icon = 'modular_splurt/icons/mob/robots.dmi', icon_state = "bootyminerS"), // SPLURT Addon (Hyper Port)
+		"Cargohound" = image(icon = 'modular_splurt/icons/mob/widerobot.dmi', icon_state = "cargohound-b"), // SPLURT Adoon (Skyrat Port)
+		"Cargohound Dark" = image(icon = 'modular_splurt/icons/mob/widerobot.dmi', icon_state = "cargohounddark-b"), // SPLURT Adoon (Skyrat Port)
+		"Otie" = image(icon = 'modular_splurt/icons/mob/widerobot.dmi', icon_state = "otiec-b"), // SPLURT Adoon (Skyrat Port)
 		"Drake" = image(icon = 'modular_sand/icons/mob/cyborg/drakemech.dmi', icon_state = "drakeminebox")
 		)
 		var/list/L = list("Blade" = "blade", "Vale" = "valemine")
@@ -1372,6 +1449,21 @@
 			cyborg_base_icon = "valemine"
 			cyborg_icon_override = 'modular_citadel/icons/mob/widerobot.dmi'
 			sleeper_overlay = "valeminesleeper"
+			dogborg = TRUE
+		if("Cargohound") // SPLURT Addon (Skyrat Port)
+			cyborg_base_icon = "cargohound"
+			cyborg_icon_override = 'modular_splurt/icons/mob/widerobot.dmi'
+			sleeper_overlay = "cargohound-sleeper"
+			dogborg = TRUE
+		if("Cargohound Dark") // SPLURT Addon (Skyrat Port)
+			cyborg_base_icon = "cargohounddark"
+			cyborg_icon_override = 'modular_splurt/icons/mob/widerobot.dmi'
+			sleeper_overlay = "cargohounddark-sleeper"
+			dogborg = TRUE
+		if("Otie") // SPLURT Addon (Skyrat Port)
+			cyborg_base_icon = "otiec"
+			cyborg_icon_override = 'modular_splurt/icons/mob/widerobot.dmi'
+			sleeper_overlay = "otiecsleeper"
 			dogborg = TRUE
 		if("Drake") // Dergborg brought to you by Navier#1236 | Skyrat | Commissioned Artist: deviantart.com/mizartz
 			cyborg_base_icon = "drakemine"
