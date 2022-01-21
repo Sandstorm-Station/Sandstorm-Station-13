@@ -774,6 +774,7 @@
 		"BootyS" = image(icon = 'modular_splurt/icons/mob/robots.dmi', icon_state = "bootysecurityS"), // SPLURT Addon (Hyper Port)
 		"Borgi" = image(icon = 'modular_splurt/icons/mob/widerobot.dmi', icon_state = "borgi-sec-b"), // SPLURT Adoon (Skyrat Port)
 		"Otie" = image(icon = 'modular_splurt/icons/mob/widerobot.dmi', icon_state = "oties-b"), // SPLURT Adoon (Skyrat Port)
+		"Blade" = image(icon = 'modular_splurt/icons/mob/widerobot.dmi', icon_state = "bladesec-b"), // SPLURT Adoon
 		"Drake" = image(icon = 'modular_sand/icons/mob/cyborg/drakemech.dmi', icon_state = "drakesecbox")
 		)
 		var/list/L = list("K9" = "k9", "Vale" = "valesec", "K9 Dark" = "k9dark")
@@ -879,6 +880,11 @@
 			cyborg_base_icon = "oties"
 			cyborg_icon_override = 'modular_splurt/icons/mob/widerobot.dmi'
 			sleeper_overlay = "otiessleeper"
+			dogborg = TRUE
+		if("Blade") // SPLURT Addon
+			cyborg_base_icon = "bladesec"
+			cyborg_icon_override = 'modular_splurt/icons/mob/widerobot.dmi'
+			sleeper_overlay = "bladesecsleeper"
 			dogborg = TRUE
 		if("Drake") // Dergborg brought to you by Navier#1236 | Skyrat | Commissioned Artist: deviantart.com/mizartz
 			cyborg_base_icon = "drakesec"
