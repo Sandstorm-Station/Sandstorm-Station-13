@@ -14,7 +14,8 @@
 		/obj/structure/flora/ash/cap_shroom = 2 , \
 		/obj/structure/flora/ash/stem_shroom = 2 , \
 		/obj/structure/flora/ash/cacti = 1, \
-		/obj/structure/flora/ash/tall_shroom = 2,\
+		/obj/structure/flora/ash/tall_shroom = 2, \
+		/obj/structure/flora/ashtree = 1, \
 		/obj/structure/flora/tree/shadow = 3, \
 		/obj/structure/flora/tree/mushroom = 3, \
 		/obj/structure/flora/grass/red = 3 \
