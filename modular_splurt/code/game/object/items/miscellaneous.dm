@@ -70,3 +70,7 @@
 		return 1
 	else
 		user << "The hailer is fried. You can't even fit the sequencer into the input slot."
+
+
+/obj/item/disk/data
+	max_mutations = 15
