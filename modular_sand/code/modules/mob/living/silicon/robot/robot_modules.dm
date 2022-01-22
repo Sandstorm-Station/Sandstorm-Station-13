@@ -183,7 +183,6 @@
 	cyborg_base_icon = "synd_engi"
 	moduleselect_icon = "malf"
 	magpulsing = TRUE
-	added_channels = list(RADIO_CHANNEL_SYNDICATE = 1) //Skyrat change // Probably already handled by other code when spawned with pre-set module, but w/e
 	hat_offset = INFINITY
 	canDispose = TRUE
 

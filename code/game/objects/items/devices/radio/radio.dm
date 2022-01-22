@@ -37,7 +37,6 @@
 	var/independent = FALSE  // If true, can say/hear on the special CentCom channel.
 	var/syndie = FALSE  // If true, hears all well-known channels automatically, and can say/hear on the Syndicate channel.
 	var/list/channels = list()  // Map from name (see communications.dm) to on/off. First entry is current department (:h).
-	var/list/extra_channels = list() //Skyrat change //Allows indivudal channels, used for borgs
 	var/list/secure_radio_connections
 
 	var/const/FREQ_LISTENING = 1
