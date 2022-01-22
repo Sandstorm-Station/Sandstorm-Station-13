@@ -42,3 +42,33 @@
 	mob_overlay_icon = 'modular_splurt/icons/mob/clothing/uniform.dmi'
 	can_adjust = FALSE
 	mutantrace_variation = NONE
+
+/obj/item/clothing/under/rank/security/skirt/slut
+	name = "slutty security jumpskirt"
+	desc = "A \"\"\"tactical\"\"\" security jumpsuit with the legs replaced by a skirt. No matter how you adjust it, it always feels a little too small."
+	icon = 'modular_splurt/icons/obj/clothing/uniforms.dmi'
+	icon_state = "secslutskirt"
+	item_state = "secslutskirt"
+	armor = list("melee" = 10, "bullet" = 0, "laser" = 0,"energy" = 0, "bomb" = 0, "bio" = 0, "rad" = 0, "fire" = 30, "acid" = 30, "wound" = 10)
+	can_adjust = FALSE
+	mob_overlay_icon = 'modular_splurt/icons/mob/clothing/uniform.dmi'
+	mutantrace_variation = NONE
+
+/obj/item/clothing/under/rank/security/skirt/slut/pink
+	desc = "A \"\"\"tactical\"\"\" security jumpsuit with the legs replaced by a skirt. No matter how you adjust it, it always feels a little too small. This one seems to have an experimental color scheme."
+	icon = 'modular_splurt/icons/obj/clothing/uniforms.dmi'
+	icon_state = "secslutskirtpink"
+	item_state = "secslutskirtpink"
+	can_adjust = FALSE
+	mob_overlay_icon = 'modular_splurt/icons/mob/clothing/uniform.dmi'
+	mutantrace_variation = NONE
+
+/obj/item/clothing/under/rank/security/stripper
+	name = "security stripper outfit"
+	desc = "This can't be dress code compliant, can it?"
+	icon = 'modular_splurt/icons/obj/clothing/uniforms.dmi'
+	icon_state = "secstripper"
+	item_state = "secstripper"
+	can_adjust = FALSE
+	mob_overlay_icon = 'modular_splurt/icons/mob/clothing/uniform.dmi'
+	mutantrace_variation = NONE
