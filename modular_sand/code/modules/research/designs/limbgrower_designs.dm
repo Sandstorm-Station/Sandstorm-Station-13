@@ -2,7 +2,7 @@
 	name = "Belly"
 	id = "belly"
 	research_icon_state = "belly_pair_5"
-	research_icon = 'modular_sand/icons/obj/genitals/belly.dmi'
+	research_icon = 'modular_sand/icons/obj/genitals/belly_onmob.dmi'
 	build_type = LIMBGROWER
 	reagents_list = list(/datum/reagent/medicine/synthflesh = 25)
 	build_path = /obj/item/organ/genital/belly

@@ -3,11 +3,11 @@
 	desc = "A shiny uniform that fits snugly to the skin."
 	icon_state = "latex_catsuit_female"
 	item_state = "latex_catsuit"
-	icon = 'modular_sand/icons/obj/clothing/lewd_clothes/uniform/lewd_uniform.dmi'
-	mob_overlay_icon = 'modular_sand/icons/mob/clothing/lewd_clothing/uniform/lewd_uniform.dmi'
-	anthro_mob_worn_overlay = 'modular_sand/icons/mob/clothing/lewd_clothing/uniform/lewd_uniform-digi.dmi'
-	lefthand_file = 'modular_sand/icons/mob/inhands/lewd_items/lewd_inhand_left.dmi'
-	righthand_file = 'modular_sand/icons/mob/inhands/lewd_items/lewd_inhand_right.dmi'
+	icon = 'modular_splurt/icons/obj/clothing/lewd_clothes/uniform/lewd_uniform.dmi'
+	mob_overlay_icon = 'modular_splurt/icons/mob/clothing/lewd_clothing/uniform/lewd_uniform.dmi'
+	anthro_mob_worn_overlay = 'modular_splurt/icons/mob/clothing/lewd_clothing/uniform/lewd_uniform-digi.dmi'
+	lefthand_file = 'modular_splurt/icons/mob/inhands/lewd_items/lewd_inhand_left.dmi'
+	righthand_file = 'modular_splurt/icons/mob/inhands/lewd_items/lewd_inhand_right.dmi'
 	can_adjust = FALSE
 	strip_delay = 80
 	mutantrace_variation = STYLE_DIGITIGRADE|STYLE_ALL_TAURIC
@@ -50,14 +50,14 @@
 		variation_flag |= src.mutantrace_variation & T.taur_mode || src.mutantrace_variation & T.alt_taur_mode
 		switch(variation_flag)
 			if(STYLE_HOOF_TAURIC)
-				mob_overlay_icon = 'modular_sand/icons/mob/clothing/lewd_clothing/uniform/lewd_uniform-hoof.dmi'
-				//anthro_mob_worn_overlay = 'modular_sand/icons/mob/clothing/lewd_clothing/uniform/lewd_uniform-hoof.dmi'
+				mob_overlay_icon = 'modular_splurt/icons/mob/clothing/lewd_clothing/uniform/lewd_uniform-hoof.dmi'
+				//anthro_mob_worn_overlay = 'modular_splurt/icons/mob/clothing/lewd_clothing/uniform/lewd_uniform-hoof.dmi'
 			if(STYLE_SNEK_TAURIC)
-				mob_overlay_icon = 'modular_sand/icons/mob/clothing/lewd_clothing/uniform/lewd_uniform-snake.dmi'
-				//anthro_mob_worn_overlay = 'modular_sand/icons/mob/clothing/lewd_clothing/uniform/lewd_uniform-snake.dmi'
+				mob_overlay_icon = 'modular_splurt/icons/mob/clothing/lewd_clothing/uniform/lewd_uniform-snake.dmi'
+				//anthro_mob_worn_overlay = 'modular_splurt/icons/mob/clothing/lewd_clothing/uniform/lewd_uniform-snake.dmi'
 			if(STYLE_PAW_TAURIC)
-				mob_overlay_icon = 'modular_sand/icons/mob/clothing/lewd_clothing/uniform/lewd_uniform-paw.dmi'
-				//anthro_mob_worn_overlay = 'modular_sand/icons/mob/clothing/lewd_clothing/uniform/lewd_uniform-paw.dmi'
+				mob_overlay_icon = 'modular_splurt/icons/mob/clothing/lewd_clothing/uniform/lewd_uniform-paw.dmi'
+				//anthro_mob_worn_overlay = 'modular_splurt/icons/mob/clothing/lewd_clothing/uniform/lewd_uniform-paw.dmi'
 
 		worn_x_dimension = 64 //To fix the offset
 		worn_y_dimension = 32
