@@ -2,7 +2,7 @@
 	projectile_type = /obj/item/projectile/bullet/c45/hydra
 
 /obj/item/ammo_casing/c45/taser
-	projectile_type = /obj/item/projectile/bullet/c45/taser
+	projectile_type = /obj/item/projectile/energy/electrode/security
 
 /obj/item/ammo_casing/c45/trac
 	projectile_type = /obj/item/projectile/bullet/c45/trac

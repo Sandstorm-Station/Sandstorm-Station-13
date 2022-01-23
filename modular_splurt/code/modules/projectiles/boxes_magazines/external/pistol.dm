@@ -48,7 +48,7 @@
 /obj/item/ammo_box/magazine/e45/lethal
 	name = "Enforcer magazine (.45 Lethal)"
 	desc = "A Mk. 58 magazine. Loaded with lethal rounds."
-	ammo_type = /obj/item/ammo_casing/c45
+	ammo_type = /obj/item/ammo_casing/c45/lethal
 
 /obj/item/ammo_box/magazine/e45/hydra
 	name = "Enforcer magazine (.45 Hydra}"
