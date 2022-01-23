@@ -1,7 +1,7 @@
 /datum/design/belly
 	name = "Belly"
 	id = "belly"
-	research_icon_state = "belly_pair_5"
+	research_icon_state = "preview_goingtohellonepixelatatime"
 	research_icon = 'modular_sand/icons/obj/genitals/belly_onmob.dmi'
 	build_type = LIMBGROWER
 	reagents_list = list(/datum/reagent/medicine/synthflesh = 25)

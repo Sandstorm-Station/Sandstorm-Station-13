@@ -1,9 +1,9 @@
 /obj/item/clothing/mask/gas/sechailer/slut
 	name = "slutcurity hailer"
 	desc = "A modified Security gas mask designed for softer apprehension, now with a hot pink paintjob!"
-	icon = 'modular_splurt/icons/obj/clothing/masks.dmi'
-	mob_overlay_icon = 'modular_splurt/icons/mob/clothing/lewd_clothing/head/lewd_masks.dmi'
-	anthro_mob_worn_overlay = 'modular_splurt/icons/mob/clothing/lewd_clothing/head/lewd_masks-digi.dmi'
+	icon = 'modular_sand/icons/obj/clothing/masks.dmi'
+	mob_overlay_icon = 'modular_sand/icons/mob/clothing/lewd_clothing/head/lewd_masks.dmi'
+	anthro_mob_worn_overlay = 'modular_sand/icons/mob/clothing/lewd_clothing/head/lewd_masks-digi.dmi'
 	icon_state = "sluthailer"
 	item_state = "sluthailer"
 	aggressiveness = 0 //can't have your pets being mean!
