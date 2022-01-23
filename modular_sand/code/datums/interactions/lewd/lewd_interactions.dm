@@ -38,6 +38,7 @@
 	var/require_user_breasts
 	var/require_user_feet
 	var/require_user_balls
+	var/require_user_belly
 
 	//Different from the others above. Use the number of required feet.
 	var/require_user_num_feet
@@ -49,6 +50,7 @@
 	var/require_target_breasts
 	var/require_target_feet
 	var/require_target_balls
+	var/require_target_belly
 
 	var/require_target_num_feet
 
@@ -174,6 +176,24 @@
 					if(!user.has_breasts(REQUIRE_UNEXPOSED))
 						if(!silent)
 							to_chat(user, "<span class='warning'>Your breasts need to be unexposed.</span>")
+						return FALSE
+
+		if(require_user_belly)
+			switch(require_user_belly)
+				if(REQUIRE_EXPOSED)
+					if(!user.has_belly(REQUIRE_EXPOSED))
+						if(!silent)
+							to_chat(user, "<span class='warning'>Your belly needs to be exposed.</span>")
+						return FALSE
+				if(REQUIRE_ANY)
+					if(!user.has_belly(REQUIRE_ANY))
+						if(!silent)
+							to_chat(user, "<span class='warning'>Your belly seems to be too flat for that.</span>")
+						return FALSE
+				if(REQUIRE_UNEXPOSED)
+					if(!user.has_belly(REQUIRE_UNEXPOSED))
+						if(!silent)
+							to_chat(user, "<span class='warning'>Your belly needs to be unexposed.</span>")
 						return FALSE
 
 		if(require_user_feet)
@@ -384,6 +404,24 @@
 							to_chat(user, "<span class='warning'>Their breasts need to be unexposed.</span>")
 						return FALSE
 
+		if(require_target_belly)
+			switch(require_target_belly)
+				if(REQUIRE_EXPOSED)
+					if(!target.has_belly(REQUIRE_EXPOSED))
+						if(!silent)
+							to_chat(user, "<span class='warning'>Their belly needs to be exposed.</span>")
+						return FALSE
+				if(REQUIRE_ANY)
+					if(!target.has_belly(REQUIRE_ANY))
+						if(!silent)
+							to_chat(user, "<span class='warning'>Their belly seems to be too flat for that.</span>")
+						return FALSE
+				if(REQUIRE_UNEXPOSED)
+					if(!target.has_belly(REQUIRE_UNEXPOSED))
+						if(!silent)
+							to_chat(user, "<span class='warning'>Their belly needs to be unexposed.</span>")
+						return FALSE
+
 		if(require_target_feet)
 			switch(require_target_feet)
 				if(REQUIRE_EXPOSED)
@@ -565,6 +603,8 @@
 		dat += "...have a vagina."
 	if(has_anus(REQUIRE_EXPOSED))
 		dat += "...have an anus."
+	if(has_belly(REQUIRE_EXPOSED))
+		dat += "...have a belly"
 	if(has_feet(REQUIRE_EXPOSED))
 		switch(has_feet(REQUIRE_EXPOSED))
 			if(2)

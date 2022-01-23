@@ -289,9 +289,22 @@
 	description = "Fuck their ass."
 	require_target_vagina = REQUIRE_NONE
 	require_target_anus = REQUIRE_EXPOSED
+	write_log_user = "ass fucked"
+	write_log_target = "was ass fucked by"
 
 /datum/interaction/lewd/fuck/anal/display_interaction(mob/living/carbon/human/user, mob/living/carbon/human/target)
 	user.do_anal(target)
+
+/datum/interaction/lewd/fuck/belly
+	command = "fuckbelly"
+	description = "Fuck their belly."
+	require_target_vagina = REQUIRE_NONE
+	require_target_belly = REQUIRE_EXPOSED
+	write_log_user = "belly fucked"
+	write_log_target = "was belly fucked by"
+
+/datum/interaction/lewd/fuck/belly/display_interaction(mob/living/carbon/human/user, mob/living/carbon/human/target)
+	user.do_bellyfuck(target)
 
 /datum/interaction/lewd/finger
 	command = "finger"
@@ -300,6 +313,8 @@
 	require_target_vagina = REQUIRE_EXPOSED
 	interaction_sound = null
 	max_distance = 1
+	write_log_user = "pussy fingered"
+	write_log_target = "was fingered in the pussy by"
 
 /datum/interaction/lewd/finger/display_interaction(mob/living/carbon/human/user, mob/living/carbon/human/target)
 	user.do_fingering(target)
@@ -311,6 +326,8 @@
 	require_user_hands = TRUE
 	require_target_anus = REQUIRE_EXPOSED
 	max_distance = 1
+	write_log_user = "ass fingered"
+	write_log_target = "was fingered in the ass by"
 
 /datum/interaction/lewd/fingerass/display_interaction(mob/living/carbon/human/user, mob/living/carbon/human/target)
 	user.do_fingerass(target)
@@ -323,6 +340,8 @@
 	require_target_mouth = TRUE
 	require_user_penis = REQUIRE_EXPOSED
 	max_distance = 1
+	write_log_user = "facefucked"
+	write_log_target = "was facefucked by"
 
 /datum/interaction/lewd/facefuck/display_interaction(mob/living/carbon/human/user, mob/living/carbon/human/target)
 	user.do_facefuck(target)
@@ -334,6 +353,8 @@
 	require_user_penis = REQUIRE_EXPOSED
 	require_target_mouth = TRUE
 	max_distance = 1
+	write_log_user = "throatfucked"
+	write_log_target = "was throatfucked by"
 
 /datum/interaction/lewd/throatfuck/display_interaction(mob/living/carbon/human/user, mob/living/carbon/human/target)
 	user.do_throatfuck(target)
@@ -345,6 +366,8 @@
 	require_user_hands = TRUE
 	require_target_penis = REQUIRE_EXPOSED
 	max_distance = 1
+	write_log_user = "tugged off"
+	write_log_target = "got a handjob from"
 
 /datum/interaction/lewd/handjob/display_interaction(mob/living/carbon/human/user, mob/living/carbon/human/target)
 	user.do_handjob(target)
@@ -356,6 +379,8 @@
 	require_user_penis = REQUIRE_EXPOSED
 	require_target_breasts = REQUIRE_EXPOSED
 	max_distance = 1
+	write_log_user = "breastfucked"
+	write_log_target = "was breastfucked by"
 
 /datum/interaction/lewd/breastfuck/display_interaction(mob/living/carbon/human/user, mob/living/carbon/human/target)
 	user.do_breastfuck(target)
@@ -367,6 +392,8 @@
 	require_user_vagina = REQUIRE_EXPOSED
 	require_target_penis = REQUIRE_EXPOSED
 	max_distance = 1
+	write_log_user = "pussy-mounted"
+	write_log_target = "was pussy-mounted by"
 
 /datum/interaction/lewd/mount/display_interaction(mob/living/carbon/human/user, mob/living/carbon/human/target)
 	user.do_mount(target)
@@ -378,6 +405,8 @@
 	require_user_anus = REQUIRE_EXPOSED
 	require_target_penis = REQUIRE_EXPOSED
 	max_distance = 1
+	write_log_user = "ass-mounted"
+	write_log_target = "was ass-mounted by"
 
 /datum/interaction/lewd/mountass/display_interaction(mob/living/carbon/human/user, mob/living/carbon/human/target)
 	user.do_mountass(target)
@@ -389,6 +418,8 @@
 	require_target_vagina = REQUIRE_EXPOSED
 	require_user_vagina = REQUIRE_EXPOSED
 	max_distance = 1
+	write_log_user = "pussy-rubbed"
+	write_log_target = "was pussy-rubbed by"
 
 /datum/interaction/lewd/tribadism/display_interaction(mob/living/carbon/human/user, mob/living/carbon/human/target)
 	user.do_tribadism(target)
@@ -400,6 +431,8 @@
 	require_user_mouth = TRUE
 	require_target_anus = REQUIRE_EXPOSED
 	max_distance = 1
+	write_log_user = "ass licked"
+	write_log_target = "was ass licked by"
 
 /datum/interaction/lewd/rimjob/display_interaction(mob/living/carbon/human/user, mob/living/carbon/human/target)
 	user.do_rimjob(target)
@@ -411,6 +444,8 @@
 	require_target_mouth = TRUE
 	require_user_anus = REQUIRE_EXPOSED
 	max_distance = 1
+	write_log_user = "face-sat"
+	write_log_target = "was face-sat by"
 
 /datum/interaction/lewd/mountface/display_interaction(mob/living/carbon/human/user, mob/living/carbon/human/target)
 	user.do_mountface(target)
@@ -423,6 +458,9 @@
 	require_target_feet = REQUIRE_ANY
 	require_target_num_feet = 1
 	max_distance = 1
+	write_log_user = "licked the feet of"
+	write_log_target = "got their feet licked by"
+
 
 /datum/interaction/lewd/lickfeet/display_interaction(mob/living/carbon/human/user, mob/living/carbon/human/target)
 	user.do_lickfeet(target)
@@ -435,6 +473,8 @@
 	require_user_num_feet = 1
 	require_user_feet = REQUIRE_ANY
 	max_distance = 1
+	write_log_user = "put their feet in the face of"
+	write_log_target = "got feet in their face from"
 
 /datum/interaction/lewd/grindface/display_interaction(mob/living/carbon/human/user, mob/living/carbon/human/target)
 	user.do_grindface(target)
@@ -447,6 +487,8 @@
 	require_user_num_feet = 1
 	require_user_feet = REQUIRE_ANY
 	max_distance = 1
+	write_log_user = "put their feet in the mouth of"
+	write_log_target = "got feet in their mouth from"
 
 /datum/interaction/lewd/grindmouth/display_interaction(mob/living/carbon/human/user, mob/living/carbon/human/target)
 	user.do_grindmouth(target)
@@ -459,6 +501,8 @@
 	require_target_feet = REQUIRE_ANY
 	require_user_penis = REQUIRE_EXPOSED
 	max_distance = 1
+	write_log_user = "rubbed their cock on the foot of"
+	write_log_target = "got cock rubbed on their feet from"
 
 /datum/interaction/lewd/footfuck/display_interaction(mob/living/carbon/human/user, mob/living/carbon/human/target)
 	user.do_footfuck(target)
@@ -479,6 +523,8 @@
 	require_user_feet = REQUIRE_ANY
 	require_target_penis = REQUIRE_EXPOSED
 	max_distance = 1
+	write_log_user = "gave a footjob to"
+	write_log_target = "got a footjob from"
 
 /datum/interaction/lewd/footjob/display_interaction(mob/living/carbon/human/user, mob/living/carbon/human/target)
 	user.do_footjob(target)
@@ -496,6 +542,8 @@
 	description = "Rub their vagina with your foot."
 	require_target_vagina = REQUIRE_EXPOSED
 	require_target_penis = REQUIRE_NONE
+	write_log_user = "footfucked the vagina of"
+	write_log_target = "got their pussy fucked by the foot of"
 
 /datum/interaction/lewd/footjob/vagina/display_interaction(mob/living/carbon/human/user, mob/living/carbon/human/target)
 	user.do_footjob_v(target)

@@ -103,6 +103,8 @@
 
 	// Register client who owns this message
 	owned_by = owner.client
+	if(!owned_by)
+		return
 	RegisterSignal(owned_by, COMSIG_PARENT_QDELETING, .proc/on_parent_qdel)
 
 	// Clip message
