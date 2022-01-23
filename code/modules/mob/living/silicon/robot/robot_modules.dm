@@ -263,6 +263,10 @@
 		R.typing_indicator_state = /obj/effect/overlay/typing_indicator/machine/dogborg
 	else
 		R.typing_indicator_state = /obj/effect/overlay/typing_indicator/machine
+	//Skyrat change start
+	R.radio.extra_channels = RM.added_channels
+	R.radio.recalculateChannels()
+	//Skyrat change stop
 	R.maxHealth = borghealth
 	R.health = min(borghealth, R.health)
 	qdel(src)
