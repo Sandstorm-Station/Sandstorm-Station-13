@@ -5,8 +5,8 @@
 	icon_state = "latexgloves"
 	item_state = "latexgloves"
 	w_class = WEIGHT_CLASS_SMALL
-	icon = 'modular_sand/icons/obj/clothing/lewd_clothes/gloves/lewd_gloves.dmi'
-	mob_overlay_icon = 'modular_sand/icons/mob/clothing/lewd_clothing/gloves/lewd_gloves.dmi'
+	icon = 'modular_splurt/icons/obj/clothing/lewd_clothes/gloves/lewd_gloves.dmi'
+	mob_overlay_icon = 'modular_splurt/icons/mob/clothing/lewd_clothing/gloves/lewd_gloves.dmi'
 	var/seamless = FALSE
 
 

@@ -12,8 +12,13 @@
 /datum/gear/uniform/latex
 	name = "Full latex jumpsuit"
 	path = /obj/item/clothing/under/latex
-	cost = 1 */ 
+	cost = 1 */
 
+/*
 /datum/gear/latex/uniform/half
 	name = "Latex bodysuit"
 	path = /obj/item/clothing/under/latex/half
+*/
+/datum/gear/uniform/latex
+	name = "Latex Catsuit"
+	path = /obj/item/clothing/under/misc/latex_catsuit

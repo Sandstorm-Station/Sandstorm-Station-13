@@ -35,13 +35,6 @@
 	/obj/item/reagent_containers/food/snacks/sugarcookie,
 	/obj/item/key/collar))
 
-/datum/component/storage/concrete/pockets/small/collar/mind_collar/Initialize()
-	. = ..()
-	can_hold = typecacheof(list(
-	/obj/item/reagent_containers/food/snacks/cookie,
-	/obj/item/reagent_containers/food/snacks/sugarcookie,
-	/obj/item/mind_controller))
-
 /datum/component/storage/concrete/pockets/tiny
 	max_items = 1
 	max_w_class = WEIGHT_CLASS_TINY

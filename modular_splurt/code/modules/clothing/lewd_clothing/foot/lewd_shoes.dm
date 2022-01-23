@@ -4,9 +4,9 @@
 	desc = "Your feet hurt just looking at them."
 	icon_state = "latexheels"
 	item_state = "latexheels"
-	icon = 'modular_sand/icons/obj/clothing/lewd_clothes/foot/lewd_shoes.dmi'
-	mob_overlay_icon = 'modular_sand/icons/mob/clothing/lewd_clothing/feet/lewd_shoes.dmi'
-	anthro_mob_worn_overlay = 'modular_sand/icons/mob/clothing/lewd_clothing/feet/lewd_shoes_digi.dmi'
+	icon = 'modular_splurt/icons/obj/clothing/lewd_clothes/foot/lewd_shoes.dmi'
+	mob_overlay_icon = 'modular_splurt/icons/mob/clothing/lewd_clothing/feet/lewd_shoes.dmi'
+	anthro_mob_worn_overlay = 'modular_splurt/icons/mob/clothing/lewd_clothing/feet/lewd_shoes_digi.dmi'
 	can_be_tied = FALSE
 	slowdown = 3
 	strip_delay = 120
@@ -42,7 +42,7 @@
 
 /obj/item/clothing/shoes/latexheels/Initialize()
 	. = ..()
-	AddComponent(/datum/component/squeak, list('modular_sand/sound/lewd/highheel1.ogg' = 1,'modular_sand/sound/lewd/highheel2.ogg' = 1), 70)
+	AddComponent(/datum/component/squeak, list('modular_splurt/sound/lewd/highheel1.ogg' = 1,'modular_splurt/sound/lewd/highheel2.ogg' = 1), 70)
 
 /////////////////
 ///Latex socks///
@@ -53,9 +53,9 @@
 	desc = "A pair of shiny, form fitting socks made out of a durable material."
 	icon_state = "latexsocks"
 	item_state = "latexsocks"
-	icon = 'modular_sand/icons/obj/clothing/lewd_clothes/foot/lewd_shoes.dmi'
-	mob_overlay_icon = 'modular_sand/icons/mob/clothing/lewd_clothing/feet/lewd_shoes.dmi'
-	anthro_mob_worn_overlay = 'modular_sand/icons/mob/clothing/lewd_clothing/feet/lewd_shoes_digi.dmi'
+	icon = 'modular_splurt/icons/obj/clothing/lewd_clothes/foot/lewd_shoes.dmi'
+	mob_overlay_icon = 'modular_splurt/icons/mob/clothing/lewd_clothing/feet/lewd_shoes.dmi'
+	anthro_mob_worn_overlay = 'modular_splurt/icons/mob/clothing/lewd_clothing/feet/lewd_shoes_digi.dmi'
 	w_class = WEIGHT_CLASS_SMALL
 
 //start processing
@@ -74,9 +74,9 @@
 	desc = "A pair of aesthetically pleasing heels."
 	icon_state = "dominaheels"
 	item_state = "dominaheels"
-	icon = 'modular_sand/icons/obj/clothing/lewd_clothes/foot/lewd_shoes.dmi'
-	mob_overlay_icon = 'modular_sand/icons/mob/clothing/lewd_clothing/feet/lewd_shoes.dmi'
-	anthro_mob_worn_overlay = 'modular_sand/icons/mob/clothing/lewd_clothing/feet/lewd_shoes_digi.dmi'
+	icon = 'modular_splurt/icons/obj/clothing/lewd_clothes/foot/lewd_shoes.dmi'
+	mob_overlay_icon = 'modular_splurt/icons/mob/clothing/lewd_clothing/feet/lewd_shoes.dmi'
+	anthro_mob_worn_overlay = 'modular_splurt/icons/mob/clothing/lewd_clothing/feet/lewd_shoes_digi.dmi'
 	equip_delay_other = 60
 	strip_delay = 60
 	slowdown = 1
@@ -92,4 +92,4 @@
 //to make sound when we walking in this
 /obj/item/clothing/shoes/dominaheels/Initialize()
 	. = ..()
-	AddComponent(/datum/component/squeak, list('modular_sand/sound/lewd/highheel1.ogg' = 1,'modular_sand/sound/lewd/highheel2.ogg' = 1), 70)
+	AddComponent(/datum/component/squeak, list('modular_splurt/sound/lewd/highheel1.ogg' = 1,'modular_splurt/sound/lewd/highheel2.ogg' = 1), 70)

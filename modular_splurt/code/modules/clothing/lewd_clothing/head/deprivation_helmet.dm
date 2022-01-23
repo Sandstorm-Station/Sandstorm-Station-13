@@ -6,12 +6,12 @@
 	icon_state = "dephelmet"
 	item_state = "dephelmet"
 	armor = list("melee" = 0, "bullet" = 0, "laser" = 0,"energy" = 0, "bomb" = 0, "bio" = 25, "rad" = 0, "fire" = 20, "acid" = 15, "wound" = 0)
-	icon = 'modular_sand/icons/obj/clothing/lewd_clothes/head/lewd_hats.dmi'
-	mob_overlay_icon = 'modular_sand/icons/mob/clothing/lewd_clothing/head/lewd_hats.dmi'
-	anthro_mob_worn_overlay = 'modular_sand/icons/mob/clothing/lewd_clothing/head/lewd_hats.dmi'
+	icon = 'modular_splurt/icons/obj/clothing/lewd_clothes/head/lewd_hats.dmi'
+	mob_overlay_icon = 'modular_splurt/icons/mob/clothing/lewd_clothing/head/lewd_hats.dmi'
+	anthro_mob_worn_overlay = 'modular_splurt/icons/mob/clothing/lewd_clothing/head/lewd_hats.dmi'
 	mutantrace_variation = STYLE_MUZZLE
-	lefthand_file = 'modular_sand/icons/mob/inhands/lewd_items/lewd_inhand_left.dmi'
-	righthand_file = 'modular_sand/icons/mob/inhands/lewd_items/lewd_inhand_right.dmi'
+	lefthand_file = 'modular_splurt/icons/mob/inhands/lewd_items/lewd_inhand_left.dmi'
+	righthand_file = 'modular_splurt/icons/mob/inhands/lewd_items/lewd_inhand_right.dmi'
 	flags_inv = HIDEMASK|HIDEEARS|HIDEEYES|HIDEFACE|HIDEHAIR|HIDESNOUT|HIDEFACIALHAIR
 	flags_cover = HEADCOVERSEYES | HEADCOVERSMOUTH
 	var/current_helmet_color = "pink"
@@ -152,13 +152,13 @@
 	for(M in src.actions)
 		if(istype(M, /datum/action/item_action/toggle_vision))
 			M.button_icon_state = "[current_helmet_color]_blind"
-			M.icon_icon = 'modular_sand/icons/mob/actions/lewd_actions/lewd_icons.dmi'
+			M.icon_icon = 'modular_splurt/icons/mob/actions/lewd_actions/lewd_icons.dmi'
 		if(istype(M, /datum/action/item_action/toggle_hearing))
 			M.button_icon_state = "[current_helmet_color]_deaf"
-			M.icon_icon = 'modular_sand/icons/mob/actions/lewd_actions/lewd_icons.dmi'
+			M.icon_icon = 'modular_splurt/icons/mob/actions/lewd_actions/lewd_icons.dmi'
 		if(istype(M, /datum/action/item_action/toggle_speech))
 			M.button_icon_state = "[current_helmet_color]_mute"
-			M.icon_icon = 'modular_sand/icons/mob/actions/lewd_actions/lewd_icons.dmi'
+			M.icon_icon = 'modular_splurt/icons/mob/actions/lewd_actions/lewd_icons.dmi'
 	update_icon()
 
 //to check if we can change helmet's model

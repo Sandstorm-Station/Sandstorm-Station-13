@@ -8,9 +8,9 @@
 /obj/item/mind_controller
 	name = "mind controller"
 	desc = "A small remote for sending basic emotion patterns to a collar."
-	icon = 'modular_sand/icons/obj/lewd_items/lewd_items.dmi'
-	lefthand_file = 'modular_sand/icons/mob/inhands/lewd_items/lewd_inhand_left.dmi'
-	righthand_file = 'modular_sand/icons/mob/inhands/lewd_items/lewd_inhand_right.dmi'
+	icon = 'modular_splurt/icons/obj/lewd_items/lewd_items.dmi'
+	lefthand_file = 'modular_splurt/icons/mob/inhands/lewd_items/lewd_inhand_left.dmi'
+	righthand_file = 'modular_splurt/icons/mob/inhands/lewd_items/lewd_inhand_right.dmi'
 	icon_state = "mindcontroller"
 	item_state = "mindcontroller"
 	var/obj/item/clothing/neck/mind_collar/collar = null
@@ -29,8 +29,8 @@
 /obj/item/clothing/neck/mind_collar
 	name = "mind collar"
 	desc = "A tight collar. It has some strange high-tech emitters on the side."
-	icon = 'modular_sand/icons/obj/clothing/lewd_clothes/neck/lewd_neck.dmi'
-	mob_overlay_icon = 'modular_sand/icons/mob/clothing/lewd_clothing/neck/lewd_neck.dmi'
+	icon = 'modular_splurt/icons/obj/clothing/lewd_clothes/neck/lewd_neck.dmi'
+	mob_overlay_icon = 'modular_splurt/icons/mob/clothing/lewd_clothing/neck/lewd_neck.dmi'
 	icon_state = "mindcollar"
 	item_state = "mindcollar"
 	var/obj/item/mind_controller/remote = null
