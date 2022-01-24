@@ -57,3 +57,10 @@
 /obj/item/projectile/bullet/c45_cleaning
 	sharpness = SHARP_EDGED
 
+/obj/item/projectile/energy/electrode/c45
+	tase_duration = 40
+	knockdown = 15
+	stamina = 15
+	knockdown_stamoverride = 10
+	knockdown_stam_max = 60
+	strong_tase = FALSE
