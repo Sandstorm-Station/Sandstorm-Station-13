@@ -8,7 +8,9 @@
 		/obj/item/clothing/gloves/latex_gloves = 10,
 		/obj/item/electropack/vibrator/small = 2,
 		/obj/item/electropack/vibrator = 2,
-		/obj/item/leash = 3
+		/obj/item/leash = 3,
+		/obj/item/milking_machine = 5,
+		/obj/item/milking_machine/penis = 5
 	)
 	var/list/extra_contraband = list(
 		//Lewd-Clothes
