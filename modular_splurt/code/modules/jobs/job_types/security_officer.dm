@@ -12,4 +12,4 @@
 
 /datum/outfit/job/hos/New()
     . = ..()
-    backpack_contents += list(/obj/item/device/hailer)
+    backpack_contents += list(/obj/item/device/hailer, /obj/item/storage/secure/briefcase/permits)
