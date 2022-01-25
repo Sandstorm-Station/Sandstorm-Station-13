@@ -52,11 +52,11 @@
 	contains = list(/obj/item/ammo_box/magazine/e45/lethal,
 					/obj/item/ammo_box/magazine/e45/hydra,
 					/obj/item/ammo_box/magazine/e45/hotshot,
-					/obj/item/ammo_box/magazine/e45/ion,
+					/obj/item/ammo_box/magazine/e45/hydra,
 					/obj/item/ammo_box/magazine/e45/lethal,
 					/obj/item/ammo_box/magazine/e45/hydra,
 					/obj/item/ammo_box/magazine/e45/hotshot,
-					/obj/item/ammo_box/magazine/e45/ion,
+					/obj/item/ammo_box/magazine/e45/hotshot,
 					/obj/item/ammo_box/magazine/e45/lethal,
 					/obj/item/ammo_box/magazine/e45/hydra)
 	crate_name = "pistol ammo crate"
@@ -85,11 +85,11 @@
 	contains = list(/obj/item/ammo_box/magazine/m45/lethal,
 					/obj/item/ammo_box/magazine/m45/hydra,
 					/obj/item/ammo_box/magazine/m45/hotshot,
-					/obj/item/ammo_box/magazine/m45/ion,
+					/obj/item/ammo_box/magazine/m45/hydra,
 					/obj/item/ammo_box/magazine/m45/lethal,
 					/obj/item/ammo_box/magazine/m45/hydra,
 					/obj/item/ammo_box/magazine/m45/hotshot,
-					/obj/item/ammo_box/magazine/m45/ion,
+					/obj/item/ammo_box/magazine/m45/hotshot,
 					/obj/item/ammo_box/magazine/m45/lethal,
 					/obj/item/ammo_box/magazine/m45/hydra)
 	crate_name = "pistol ammo crate"
