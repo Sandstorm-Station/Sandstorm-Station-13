@@ -101,10 +101,6 @@
 		src.name += " ([new_name])"
 		desc += " It belongs to [new_name]."
 
-/obj/item/clothing/accessory/permit/emag_act(var/remaining_charges, var/mob/user)
-	to_chat(user, "You reset the naming locks on [src]!")
-	owner = 0
-
 /obj/item/clothing/accessory/permit/head
 	name = "Heads of staff weapon permit"
 	desc = "A card indicating that the Head of staff is allowed to carry a weapon."
