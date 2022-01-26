@@ -14,7 +14,9 @@ export const CryopodConsole = (props, context) => {
         <Stack vertical fill>
           <Stack.Item>
             <Section title={welcomeTitle}>
-              This device will store your things until they're needed again.
+              {
+                "This device will store your things until they're needed again."
+              }
             </Section>
           </Stack.Item>
           <Stack.Item grow>
