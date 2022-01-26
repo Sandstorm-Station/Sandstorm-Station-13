@@ -265,7 +265,7 @@
 
 /obj/machinery/shower/Initialize()
 	. = ..()
-	soundloop = new(list(src), FALSE)
+	soundloop = new(src, FALSE)
 
 /obj/machinery/shower/Destroy()
 	QDEL_NULL(soundloop)
