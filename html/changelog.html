@@ -1,11 +1,11 @@
 <!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
 <html>
 <head>
-  <title>Citadel Station 13 Changelog</title>
+  <title>S.P.L.U.R.T. Station 13 Changelog</title>
   <link rel="stylesheet" type="text/css" href="changelog.css">
   <base target="_blank" />
   <script type='text/javascript'>
-  
+
 	function changeText(tagID, newText, linkTagID){
 		var tag = document.getElementById(tagID);
 		tag.innerHTML = newText;
@@ -13,8 +13,8 @@
 		linkTag.removeAttribute("href");
 		linkTag.removeAttribute("onclick");
 	}
-	
-  </script>  
+
+  </script>
 <meta http-equiv="Content-Type" content="text/html; charset=utf-8">
 </head>
 
@@ -24,8 +24,8 @@
 	<tr>
 		<td valign='top'>
 			<div align='center'><font size='3'><b>Traditional Games Space Station 13</b></font></div>
-			
-			<p><div align='center'><font size='3'><a href="https://citadel-station.net/forum/index.php">Forum</a> | <a href="https://citadel-station.net/wiki/index.php?title=Main_Page">Wiki</a> | <a href="https://github.com/Citadel-Station-13/Citadel-Station-13">Source</a></font></div></p>
+
+			<p><div align='center'><font size='3'><a href="https://discord.gg/vykusqyggk">Discord</a> | <a href="https://citadel-station.net/wiki/index.php?title=Main_Page">Wiki</a> | <a href="https://github.com/SPLURT-Station/S.P.L.U.R.T-Station-13">Source</a></font></div></p>
 			</td>
 	</tr>
 </table>
@@ -34,23 +34,30 @@
 	<tr>
 		<td valign='top'>
 			<font size='2'><b>Thanks to:</b> /tg/station, Baystation 12, /vg/station, NTstation, CDK Station devs, FacepunchStation, GoonStation devs, the original SpaceStation developers and Invisty for the title image.<br> Also a thanks to anybody who has contributed.</font>
-			<font size='2' color='red'><b><br>Have a bug to report?</b> Visit our <a href="https://github.com/Citadel-Station-13/Citadel-Station-13/issues">Issue Tracker</a>.<br></font>
-			<font size='2'>Please ensure that the bug has not already been reported, <u><a href="https://github.com/Citadel-Station-13/Citadel-Station-13/issues"><b> use the template provided here!</b></a></u>.</font>
-			<font size='2'><b>Currently Active GitHub contributor list:</b> <a href='https://github.com/Citadel-Station-13/Citadel-Station-13/graphs/contributors'>-Click Here-</a><br></font>
+			<font size='2' color='red'><b><br>Have a bug to report?</b> Visit our <a href="https://github.com/SPLURT-Station/S.P.L.U.R.T-Station-13/issues">Issue Tracker</a>.<br></font>
+			<font size='2'>Please ensure that the bug has not already been reported, <u><a href="https://github.com/SPLURT-Station/S.P.L.U.R.T-Station-13/issues"><b> use the template provided here!</b></a></u>.</font>
+			<font size='2'><b>Currently Active GitHub contributor list:</b> <a href='https://github.com/SPLURT-Station/S.P.L.U.R.T-Station-13/graphs/contributors'>-Click Here-</a><br></font>
 		</td>
 	</tr>
 </table>
 
 		<!--
-		
-		TO ADD AN ENTRY, ADD AND MAINTAIN YOUR OWN changelog/USERNAME.yml FILE. 
-		
+
+		TO ADD AN ENTRY, ADD AND MAINTAIN YOUR OWN changelog/USERNAME.yml FILE.
+
 		*** DO NOT FUCK WITH THIS FILE OR YOU WILL CAUSE MERGE CONFLICTS. ***
-		
+
 		-->
 		<div class="commit sansserif">
 
 			<h2 class="date">26 January 2022</h2>
+			<h3 class="author">LetterN updated:</h3>
+			<ul class="changes bgimages16">
+				<li class="rscadd">Antag info panel using tgui for selected antags</li>
+				<li class="code_imp">TGUI hardsync</li>
+				<li class="code_imp">TIMER_DELETE_ME flag for timers</li>
+				<li class="code_imp">wiremod backend (DO NOT ENABLE, FOLLOWUP PR WILL ADD WIREMOD) tweak: Cryo DOES NOT store the items, instead only drops it as soon as the person "fully cryo" tweak: Changes on how uplink works. Purchases are now only based on if said uplink has the right flag to purchase an item, rather than using a list to whitelist/blacklist specific gamemodes for it. Also, the purchase items handles poplocking by themselves now.</li>
+			</ul>
 			<h3 class="author">radar651 updated:</h3>
 			<ul class="changes bgimages16">
 				<li class="rscadd">Added .45 caliber to be printed from tech fabs in 20 round boxes. .45 caliber tech shells in magazines are also available from the tech fab.</li>
@@ -62,6 +69,12 @@
 			<h3 class="author">BongaTheProto updated:</h3>
 			<ul class="changes bgimages16">
 				<li class="tweak">Milking machines can now be found in kinkmates</li>
+			</ul>
+			<h3 class="author">Putnam3145 updated:</h3>
+			<ul class="changes bgimages16">
+				<li class="bugfix">Artificial zeolite now has a taste</li>
+				<li class="spellcheck">"Zeolites" has been renamed to "zeolite" ("a beaker of zeolites" is like "a beaker of woods")</li>
+				<li class="spellcheck">Various taste descriptors have had their end punctuation removed</li>
 			</ul>
 
 			<h2 class="date">24 January 2022</h2>
@@ -76,20 +89,6 @@
 			<h3 class="author">radar651 updated:</h3>
 			<ul class="changes bgimages16">
 				<li class="balance">Makes .45 taser not hurt anyone at all. Its completely non-lethal.</li>
-			<h3 class="author">LetterN updated:</h3>
-			<ul class="changes bgimages16">
-				<li class="rscadd">Antag info panel using tgui for selected antags</li>
-				<li class="code_imp">TGUI hardsync</li>
-				<li class="code_imp">TIMER_DELETE_ME flag for timers</li>
-				<li class="code_imp">wiremod backend (DO NOT ENABLE, FOLLOWUP PR WILL ADD WIREMOD) tweak: Cryo DOES NOT store the items, instead only drops it as soon as the person "fully cryo" tweak: Changes on how uplink works. Purchases are now only based on if said uplink has the right flag to purchase an item, rather than using a list to whitelist/blacklist specific gamemodes for it. Also, the purchase items handles poplocking by themselves now.</li>
-			</ul>
-
-			<h2 class="date">25 January 2022</h2>
-			<h3 class="author">Putnam3145 updated:</h3>
-			<ul class="changes bgimages16">
-				<li class="bugfix">Artificial zeolite now has a taste</li>
-				<li class="spellcheck">"Zeolites" has been renamed to "zeolite" ("a beaker of zeolites" is like "a beaker of woods")</li>
-				<li class="spellcheck">Various taste descriptors have had their end punctuation removed</li>
 			</ul>
 
 			<h2 class="date">23 January 2022</h2>
