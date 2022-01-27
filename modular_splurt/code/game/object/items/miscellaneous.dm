@@ -85,17 +85,19 @@
 	mob_overlay_icon = 'icons/mob/clothing/accessories.dmi'
 	w_class = WEIGHT_CLASS_TINY
 	resistance_flags = FIRE_PROOF
+	var/access = null
 	var/owner = 0	//To prevent people from just renaming the thing if they steal it
 
 /obj/item/clothing/accessory/permit/attack_self(mob/user as mob)
-	if(isliving(user))
-		if(!owner)
-			set_name(user.name)
-			to_chat(user, "[src] registers your name.")
-		else
-			to_chat(user, "[src] already has an owner!")
+    if(isliving(user))
+        if(!owner)
+            set_name(user.name)
+            to_chat(user, "[src] registers your name.")
+            access += list(ACCESS_WEAPONS)
+        else
+            to_chat(user, "[src] already has an owner!")
 
-/obj/item/clothing/accessory/permit/proc/set_name(var/new_name)
+/obj/item/clothing/accessory/permit/proc/set_name(new_name)
 	owner = 1
 	if(new_name)
 		src.name += " ([new_name])"
