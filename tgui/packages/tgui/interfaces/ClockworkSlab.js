@@ -46,7 +46,7 @@ export const ClockworkSlab = (props, context) => {
   const testSearch = createSearch(searchText, script => {
     return script.name + script.descname;
   });
-  
+
   let bucketOfScriptures = [];
   // merge it, no need to throw a var.
 
@@ -54,10 +54,10 @@ export const ClockworkSlab = (props, context) => {
     // Flatten all categories and apply search to it
     // truthy because WE DO NOT WANT TO RETURN THIS!
     && !!map((v, k) => {
-        bucketOfScriptures = bucketOfScriptures.concat(v);
-      })(scripture)
+      bucketOfScriptures = bucketOfScriptures.concat(v);
+    })(scripture)
     && bucketOfScriptures.filter(testSearch)
-        .filter((item, i) => i < MAX_SEARCH_RESULTS)
+      .filter((item, i) => i < MAX_SEARCH_RESULTS)
     // Return the default one
     || scripture[tab]
     || null; // this is nullable, it's recommended that you null it.
