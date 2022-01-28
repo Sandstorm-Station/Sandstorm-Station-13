@@ -10,7 +10,10 @@
 		/obj/item/electropack/vibrator = 2,
 		/obj/item/leash = 3,
 		/obj/item/milking_machine = 5,
-		/obj/item/milking_machine/penis = 5
+		/obj/item/milking_machine/penis = 5,
+		/obj/item/clothing/neck/petcollar/spike = 5,
+		/obj/item/clothing/neck/petcollar/holo = 5,
+		/obj/item/clothing/neck/petcollar/casino = 5
 	)
 	var/list/extra_contraband = list(
 		//Lewd-Clothes
@@ -20,7 +23,8 @@
 		/obj/item/key/latex = 5,
 		/obj/item/clothing/head/dominatrixcap = 3,
 		/obj/item/mesmetron = 3,
-		/obj/item/dildo/flared/huge = 3
+		/obj/item/dildo/flared/huge = 3,
+		/obj/item/clothing/neck/petcollar/locked/holo = 2
 	)
 	LAZYADD(products, extra_products)
 	LAZYADD(contraband, extra_contraband)
