@@ -12,7 +12,7 @@
 
 /datum/outfit/job/hop/New()
 	. = ..()
-	accessory += list(/obj/item/clothing/accessory/permit/head)
+	accessory = /obj/item/clothing/accessory/permit/head
 
 /datum/outfit/job/rd/New()
 	. = ..()
