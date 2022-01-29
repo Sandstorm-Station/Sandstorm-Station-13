@@ -92,6 +92,12 @@
 	},
 /turf/open/floor/plasteel/dark,
 /area/shuttle/slaveship)
+"ce" = (
+/obj/machinery/porta_turret/slaver{
+	dir = 5
+	},
+/turf/closed/wall/r_wall/syndicate,
+/area/shuttle/slaveship)
 "ct" = (
 /turf/open/floor/plating,
 /area/shuttle/slaveship)
@@ -117,6 +123,12 @@
 	dir = 8
 	},
 /turf/open/floor/mineral/plastitanium/red,
+/area/shuttle/slaveship)
+"ez" = (
+/obj/machinery/porta_turret/slaver{
+	dir = 10
+	},
+/turf/closed/wall/r_wall/syndicate,
 /area/shuttle/slaveship)
 "fI" = (
 /obj/effect/turf_decal/tile/neutral,
@@ -316,12 +328,6 @@
 	},
 /turf/open/floor/plasteel/dark,
 /area/shuttle/slaveship)
-"tc" = (
-/obj/machinery/porta_turret/slaver{
-	dir = 10
-	},
-/turf/closed/wall/r_wall/syndicate,
-/area/shuttle/slaveship)
 "um" = (
 /obj/effect/turf_decal/tile/neutral,
 /obj/effect/turf_decal/tile/neutral{
@@ -432,18 +438,6 @@
 	},
 /turf/open/floor/plasteel/dark,
 /area/shuttle/slaveship)
-"Bt" = (
-/obj/machinery/porta_turret/slaver{
-	dir = 9
-	},
-/turf/closed/wall/r_wall/syndicate,
-/area/shuttle/slaveship)
-"BQ" = (
-/obj/machinery/porta_turret/slaver{
-	dir = 5
-	},
-/turf/closed/wall/r_wall/syndicate,
-/area/shuttle/slaveship)
 "Cd" = (
 /obj/effect/turf_decal/tile/neutral,
 /obj/effect/turf_decal/tile/neutral{
@@ -489,6 +483,12 @@
 /area/shuttle/slaveship)
 "Ey" = (
 /turf/closed/wall/r_wall/syndicate/nodiagonal,
+/area/shuttle/slaveship)
+"ET" = (
+/obj/machinery/porta_turret/slaver{
+	dir = 9
+	},
+/turf/closed/wall/r_wall/syndicate,
 /area/shuttle/slaveship)
 "Fm" = (
 /obj/effect/turf_decal/tile/neutral{
@@ -681,6 +681,12 @@
 	},
 /turf/open/floor/mineral/plastitanium/red,
 /area/shuttle/slaveship)
+"Uc" = (
+/obj/machinery/porta_turret/slaver{
+	dir = 6
+	},
+/turf/closed/wall/r_wall/syndicate,
+/area/shuttle/slaveship)
 "Uo" = (
 /obj/effect/turf_decal/tile/neutral,
 /obj/effect/turf_decal/tile/neutral{
@@ -815,12 +821,6 @@
 /obj/item/pickaxe,
 /turf/open/floor/plasteel/dark,
 /area/shuttle/slaveship)
-"YG" = (
-/obj/machinery/porta_turret/slaver{
-	dir = 6
-	},
-/turf/closed/wall/r_wall/syndicate,
-/area/shuttle/slaveship)
 "ZZ" = (
 /obj/structure/window/reinforced{
 	dir = 8
@@ -854,7 +854,7 @@ ax
 ax
 ax
 ax
-tc
+ez
 MJ
 MJ
 "}
@@ -867,7 +867,7 @@ MJ
 MJ
 MJ
 MJ
-Bt
+ET
 ax
 ax
 ax
@@ -907,7 +907,7 @@ zT
 MJ
 "}
 (4,1,1) = {"
-Bt
+ET
 ax
 ax
 ax
@@ -1099,7 +1099,7 @@ ax
 MJ
 "}
 (12,1,1) = {"
-BQ
+ce
 ax
 ax
 ax
@@ -1155,7 +1155,7 @@ MJ
 MJ
 MJ
 MJ
-BQ
+ce
 ax
 ax
 zI
@@ -1190,7 +1190,7 @@ ax
 ax
 ax
 ax
-YG
+Uc
 MJ
 MJ
 "}

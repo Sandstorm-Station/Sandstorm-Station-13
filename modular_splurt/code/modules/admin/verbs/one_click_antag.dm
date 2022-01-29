@@ -34,6 +34,8 @@
 				new_character.mind.add_antag_datum(/datum/antagonist/slaver/leader)
 			else
 				new_character.mind.add_antag_datum(/datum/antagonist/slaver,slaver_team)
+
+		priority_announce("Unidentified ship detected near the station.", "Enemy communication intercepted. Security level elevated.", "intercept")
 		return 1
 	else
 		return 0

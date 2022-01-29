@@ -1,6 +1,5 @@
 GLOBAL_VAR_INIT(slavers_team_name, "Slave Traders")
-GLOBAL_VAR_INIT(slavers_credits_deposits, 0)
-GLOBAL_VAR_INIT(slavers_credits_balance, 7000)
+GLOBAL_VAR_INIT(slavers_credits_balance, 4000)
 GLOBAL_VAR_INIT(slavers_credits_total, 0)
 GLOBAL_VAR_INIT(slavers_slaves_sold, 0)
 GLOBAL_VAR_INIT(slavers_last_announcement, 0)
@@ -14,8 +13,8 @@ GLOBAL_VAR_INIT(slavers_last_announcement, 0)
 	threat = 7
 	show_to_ghosts = TRUE
 	var/datum/team/slavers/slaver_team = new /datum/team/slavers
-	// var/send_to_spawnpoint = TRUE //Should the user be moved to default spawnpoint.
 	var/slaver_outfit = /datum/outfit/slaver
+	var/send_to_spawnpoint = TRUE //Should the user be moved to default spawnpoint.
 
 /datum/antagonist/slaver/proc/update_slaver_icons_added(mob/living/M)
 	var/datum/atom_hud/antag/slaverhud = GLOB.huds[ANTAG_HUD_SLAVER]
@@ -54,7 +53,8 @@ GLOBAL_VAR_INIT(slavers_last_announcement, 0)
 	forge_objectives()
 	. = ..()
 	equip_slaver()
-	move_to_spawnpoint()
+	if(send_to_spawnpoint)
+		move_to_spawnpoint()
 
 /datum/antagonist/slaver/get_team()
 	return slaver_team
@@ -69,6 +69,7 @@ GLOBAL_VAR_INIT(slavers_last_announcement, 0)
 	owner.current.forceMove(pick(GLOB.slaver_leader_start))
 
 /datum/antagonist/slaver/admin_add(datum/mind/new_owner,mob/admin)
+	send_to_spawnpoint = FALSE
 	new_owner.assigned_role = ROLE_SLAVER
 	new_owner.add_antag_datum(src)
 	message_admins("[key_name_admin(admin)] has slaver'd [new_owner.current].")

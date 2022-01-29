@@ -12,6 +12,8 @@ export const SlaveConsole = (props, context) => {
   const { act, data } = useBackend(context);
   const [tab, setTab] = useSharedState(context, 'tab', 1);
   const {
+    intercomrecharging,
+    cargocredits,
     credits,
     currentCoords,
   } = data;
@@ -34,16 +36,30 @@ export const SlaveConsole = (props, context) => {
       title="Slave Management System"
       width={470}
       height={700}
+      theme="syndicate"
       resizable>
       <Window.Content scrollable>
-        <Section>
-          <Flex direction="column">
+        <Section
+          title="Management"
+          buttons={(
             <Button
               icon="bullhorn"
-              content="Send transmission to the station"
+              content="Message Station"
+              disabled={intercomrecharging}
               onClick={() => act("makePriorityAnnouncement")}
             />
-          </Flex>
+          )}>
+
+          <LabeledList>
+            <LabeledList.Item
+              label="Our credits">
+              {credits}cr
+            </LabeledList.Item>
+            <LabeledList.Item
+              label="Station credits">
+              {cargocredits}cr
+            </LabeledList.Item>
+          </LabeledList>
         </Section>
 
         <Tabs>
@@ -146,20 +162,21 @@ const SlavePanel = (props, context) => {
             )}
           </LabeledList.Item>
           <LabeledList.Item label="Price">
-            {!slave.price && (
+            <Fragment>
               <Button
                 icon="pencil-alt"
-                content="Set price"
-                tooltip="The station will have to pay this to get the slave back."
+                content={slave.price ? slave.price + "cr" : "Set price"}
+                tooltip="The station will need to pay this."
+                disabled={slave.pricechangecooldown > 0 || slave.bought}
                 onClick={() => act('setPrice', {
                   id: slave.id,
                 })} />
-            )}
-            {!!slave.price && (
-              <Box>
-                {slave.price}cr
-              </Box>
-            )}
+              {(slave.pricechangecooldown > 0 && !slave.bought) && (
+                <Box>
+                  (Can be changed in {slave.pricechangecooldown} seconds)
+                </Box>
+              )}
+            </Fragment>
           </LabeledList.Item>
           <LabeledList.Item
             label="Ransom"
@@ -186,6 +203,6 @@ const SupplyPanel = (props, context) => {
   return (
     <GenericUplink
       currencyAmount={credits}
-      currencySymbol="Credits" />
+      currencySymbol="cr" />
   );
 };
