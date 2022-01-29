@@ -71,6 +71,19 @@
 /datum/interaction/lewd/lick_nuts/display_interaction(mob/living/user, mob/living/target)
 	user.lick_nuts(target)
 
+/datum/interaction/lewd/fuck_cock
+	command = "fuck_cock"
+	description = "Penetrate their cock"
+	require_user_penis = REQUIRE_EXPOSED
+	require_target_penis = REQUIRE_EXPOSED
+	interaction_sound = null
+	max_distance = 1
+	write_log_target = "Got their cock fucked by"
+	write_log_user = "Fucked the cock of"
+
+/datum/interaction/lewd/fuck_cock/display_interaction(mob/living/user, mob/living/target)
+	user.do_cockfuck(target)
+
 ////////////////////////////////////////////////////////////////////////////////////////////////////////
 ///////// 									U N H O L Y										   /////////
 ////////////////////////////////////////////////////////////////////////////////////////////////////////

@@ -113,6 +113,41 @@
 	visible_message(message, ignored_mobs = get_unconsenting())
 	target.handle_post_sex(lust_increase, CUM_TARGET_MOUTH, src)
 
+/mob/living/proc/do_cockfuck(mob/living/target)
+	var/message
+	var/u_His = p_their()
+	var/t_His = target.p_their()
+	var/list/cock = GLOB.dick_nouns
+	var/list/lines
+	var/list/noises = list(
+		'modular_sand/sound/interactions/bang1.ogg',
+		'modular_sand/sound/interactions/bang2.ogg',
+		'modular_sand/sound/interactions/bang3.ogg',
+		'modular_sand/sound/interactions/bang4.ogg',
+		'modular_sand/sound/interactions/bang5.ogg',
+		'modular_sand/sound/interactions/bang6.ogg',
+	)
+
+	if(is_fucking(target, CUM_TARGET_PENIS))
+		lines = list(
+			"humps right into \the <b>[target]</b>'s [pick(cock)], stretiching it as their balls slam together",
+			"slides [u_His] [pick(cock)] all the way down \the <b>[target]</b>'s own throbbing [pick(cock)], [t_His] urethra is so tight!",
+			"rams [u_His] [pick(cock)] back and forth through \the <b>[target]</b>'s urethra, giving it a very nice fucking"
+		)
+	else
+		lines = list(
+			"'s tip gently smooches \the <b>[target]</b>'s, right before forcing its way right down [t_His] dickhole",
+			"grinds [u_His] tip against \the <b>[target]</b>'s [pick(cock)], only to slide [u_His] whole [pick(cock)] all the way down to [t_His] base",
+			"makes \the <b>[target]</b>'s fat [pick(cock)] stretch and throb as the size of [u_His] [pick(cock)] makes its way right in"
+		)
+		set_is_fucking(target, CUM_TARGET_PENIS, getorganslot(ORGAN_SLOT_PENIS))
+
+	message = "<span class='lewd'>\The <b>[src]</b> [pick(lines)]"
+	visible_message(message, ignored_mobs = get_unconsenting())
+	playlewdinteractionsound(src, pick(noises), 70, 1, -1)
+	handle_post_sex(NORMAL_LUST, CUM_TARGET_PENIS, target)
+	target.handle_post_sex(NORMAL_LUST, CUM_TARGET_PENIS, src)
+
 ////////////////////////////////////////////////////////////////////////////////////////////////////////
 ///////// 									U N H O L Y										   /////////
 ////////////////////////////////////////////////////////////////////////////////////////////////////////
