@@ -66,3 +66,31 @@
 	new /obj/item/ammo_box/magazine/e45/ion(src)
 	new /obj/item/ammo_box/magazine/e45/taser(src)
 	new /obj/item/ammo_box/magazine/e45/taser(src)
+
+
+/obj/item/storage/secure/briefcase/permits
+	name = "\improper \'Weapon\' permits case"
+	desc = "A storage case for weapon permits. Keep this secure!"
+
+
+/obj/item/storage/secure/briefcase/permits/PopulateContents()
+	new /obj/item/clothing/accessory/permit(src)
+	new /obj/item/clothing/accessory/permit(src)
+	new /obj/item/clothing/accessory/permit(src)
+	new /obj/item/clothing/accessory/permit(src)
+	new /obj/item/clothing/accessory/permit(src)
+	new /obj/item/clothing/accessory/permit(src)
+	new /obj/item/clothing/accessory/permit(src)
+	new /obj/item/clothing/accessory/permit(src)
+	new /obj/item/clothing/accessory/permit(src)
+	new /obj/item/clothing/accessory/permit(src)
+	new /obj/item/clothing/accessory/permit(src)
+	new /obj/item/clothing/accessory/permit(src)
+	new /obj/item/clothing/accessory/permit(src)
+	new /obj/item/clothing/accessory/permit(src)
+	new /obj/item/clothing/accessory/permit(src)
+	new /obj/item/clothing/accessory/permit(src)
+	new /obj/item/clothing/accessory/permit(src)
+	new /obj/item/clothing/accessory/permit(src)
+	new /obj/item/clothing/accessory/permit(src)
+	new /obj/item/clothing/accessory/permit(src)

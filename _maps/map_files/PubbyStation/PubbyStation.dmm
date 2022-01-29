@@ -846,6 +846,34 @@
 /obj/effect/landmark/xmastree,
 /turf/open/floor/grass,
 /area/service/hydroponics/garden/monastery)
+"aca" = (
+/obj/structure/table/wood,
+/obj/item/phone,
+/obj/item/storage/secure/briefcase/permits,
+/turf/open/floor/carpet,
+/area/command/heads_quarters/hos)
+"acb" = (
+/obj/machinery/status_display/evac{
+	pixel_y = 32
+	},
+/obj/item/folder/yellow{
+	pixel_y = 4
+	},
+/obj/structure/table/glass,
+/obj/machinery/light{
+	dir = 1;
+	light_color = "#e8eaff"
+	},
+/obj/item/pen,
+/obj/effect/turf_decal/tile/blue{
+	dir = 1
+	},
+/obj/effect/turf_decal/tile/blue{
+	dir = 4
+	},
+/obj/item/storage/secure/briefcase/permits,
+/turf/open/floor/plasteel/dark,
+/area/command/bridge)
 "acc" = (
 /obj/effect/turf_decal/stripes/line{
 	dir = 4
@@ -1924,6 +1952,11 @@
 /obj/item/seeds/poppy,
 /turf/open/floor/plasteel/dark,
 /area/security/prison)
+"aeI" = (
+/obj/structure/table/wood,
+/obj/item/storage/secure/briefcase/permits,
+/turf/open/floor/carpet,
+/area/command/heads_quarters/captain)
 "aeJ" = (
 /obj/machinery/atmospherics/pipe/manifold/scrubbers/hidden{
 	dir = 8
@@ -1994,6 +2027,16 @@
 	},
 /turf/open/floor/plating,
 /area/ai_monitored/turret_protected/AIsatextAS)
+"aeT" = (
+/obj/structure/table/wood,
+/obj/item/flashlight/lamp/green,
+/obj/item/storage/secure/safe{
+	pixel_x = -22;
+	pixel_y = 4
+	},
+/obj/item/storage/secure/briefcase/permits,
+/turf/open/floor/wood,
+/area/command/heads_quarters/hop)
 "aeU" = (
 /obj/machinery/holopad,
 /turf/open/floor/plasteel/dark,
@@ -3780,11 +3823,6 @@
 /obj/structure/cable{
 	icon_state = "1-2"
 	},
-/turf/open/floor/carpet,
-/area/command/heads_quarters/hos)
-"ajX" = (
-/obj/structure/table/wood,
-/obj/item/phone,
 /turf/open/floor/carpet,
 /area/command/heads_quarters/hos)
 "ajY" = (
@@ -6688,27 +6726,6 @@
 	dir = 1
 	},
 /obj/effect/turf_decal/tile/green{
-	dir = 4
-	},
-/turf/open/floor/plasteel/dark,
-/area/command/bridge)
-"arK" = (
-/obj/machinery/status_display/evac{
-	pixel_y = 32
-	},
-/obj/item/folder/yellow{
-	pixel_y = 4
-	},
-/obj/structure/table/glass,
-/obj/machinery/light{
-	dir = 1;
-	light_color = "#e8eaff"
-	},
-/obj/item/pen,
-/obj/effect/turf_decal/tile/blue{
-	dir = 1
-	},
-/obj/effect/turf_decal/tile/blue{
 	dir = 4
 	},
 /turf/open/floor/plasteel/dark,
@@ -10385,10 +10402,6 @@
 	},
 /turf/open/floor/carpet,
 /area/command/heads_quarters/captain)
-"aAx" = (
-/obj/structure/table/wood,
-/turf/open/floor/carpet,
-/area/command/heads_quarters/captain)
 "aAy" = (
 /obj/structure/table/wood,
 /obj/item/folder/blue,
@@ -10823,15 +10836,6 @@
 	},
 /turf/open/floor/plasteel/dark,
 /area/command/bridge)
-"aBz" = (
-/obj/structure/table/wood,
-/obj/item/flashlight/lamp/green,
-/obj/item/storage/secure/safe{
-	pixel_x = -22;
-	pixel_y = 4
-	},
-/turf/open/floor/wood,
-/area/command/heads_quarters/hop)
 "aBA" = (
 /obj/machinery/computer/security/telescreen/vault{
 	pixel_y = 30
@@ -89125,7 +89129,7 @@ anR
 aiq
 axC
 ajo
-ajX
+aca
 ckD
 cnV
 aow
@@ -92484,7 +92488,7 @@ avP
 awW
 axV
 azb
-aAx
+aeI
 aBo
 aCB
 aDF
@@ -94275,7 +94279,7 @@ aht
 aht
 abI
 aqJ
-arK
+acb
 asS
 atT
 auR
@@ -96854,7 +96858,7 @@ lQQ
 ayf
 lQQ
 aAF
-aBz
+aeT
 aCP
 aDR
 aEL

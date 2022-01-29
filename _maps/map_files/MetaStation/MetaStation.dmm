@@ -63,6 +63,12 @@
 	},
 /turf/open/floor/plasteel/dark,
 /area/ai_monitored/security/armory)
+"aae" = (
+/obj/structure/table/wood,
+/obj/item/stamp/hos,
+/obj/item/storage/secure/briefcase/permits,
+/turf/open/floor/carpet,
+/area/command/heads_quarters/hos)
 "aaf" = (
 /obj/structure/lattice,
 /turf/open/space,
@@ -72,6 +78,27 @@
 /obj/structure/lattice,
 /turf/open/space,
 /area/space/nearstation)
+"aah" = (
+/obj/item/folder/red{
+	pixel_y = 3
+	},
+/obj/structure/cable/yellow{
+	icon_state = "1-2"
+	},
+/obj/machinery/light{
+	dir = 4
+	},
+/obj/structure/table/glass,
+/obj/item/folder/red{
+	pixel_y = 3
+	},
+/obj/effect/turf_decal/tile/red,
+/obj/effect/turf_decal/tile/red{
+	dir = 4
+	},
+/obj/item/storage/secure/briefcase/permits,
+/turf/open/floor/plasteel/dark,
+/area/command/bridge)
 "aai" = (
 /obj/structure/grille/broken,
 /obj/structure/lattice,
@@ -81,6 +108,37 @@
 /obj/structure/grille,
 /turf/open/space,
 /area/space/nearstation)
+"aak" = (
+/obj/structure/table/wood,
+/obj/item/folder/blue,
+/obj/machinery/door/window{
+	base_state = "right";
+	icon_state = "right";
+	name = "Captain's Desk";
+	req_access_txt = "20"
+	},
+/obj/machinery/atmospherics/pipe/simple/supply/hidden,
+/obj/structure/disposalpipe/segment,
+/obj/item/stamp/captain,
+/obj/item/storage/secure/briefcase/permits,
+/turf/open/floor/wood,
+/area/command/heads_quarters/captain/private)
+"aal" = (
+/obj/machinery/camera{
+	c_tag = "Head of Personnel's Office";
+	dir = 1
+	},
+/obj/structure/table/wood,
+/obj/item/storage/box/PDAs{
+	pixel_x = 4;
+	pixel_y = 4
+	},
+/obj/item/storage/box/silver_ids,
+/obj/item/storage/box/ids,
+/obj/machinery/light,
+/obj/item/storage/secure/briefcase/permits,
+/turf/open/floor/wood,
+/area/command/heads_quarters/hop)
 "aav" = (
 /turf/open/space,
 /area/space/station_ruins)
@@ -19878,21 +19936,6 @@
 	},
 /turf/open/floor/plasteel,
 /area/hallway/primary/central)
-"bBW" = (
-/obj/machinery/camera{
-	c_tag = "Head of Personnel's Office";
-	dir = 1
-	},
-/obj/structure/table/wood,
-/obj/item/storage/box/PDAs{
-	pixel_x = 4;
-	pixel_y = 4
-	},
-/obj/item/storage/box/silver_ids,
-/obj/item/storage/box/ids,
-/obj/machinery/light,
-/turf/open/floor/wood,
-/area/command/heads_quarters/hop)
 "bCe" = (
 /obj/machinery/atmospherics/components/unary/portables_connector/visible{
 	dir = 4
@@ -54375,20 +54418,6 @@
 /obj/effect/spawner/structure/window,
 /turf/open/floor/plating,
 /area/service/hydroponics)
-"gMC" = (
-/obj/structure/table/wood,
-/obj/item/folder/blue,
-/obj/machinery/door/window{
-	base_state = "right";
-	icon_state = "right";
-	name = "Captain's Desk";
-	req_access_txt = "20"
-	},
-/obj/machinery/atmospherics/pipe/simple/supply/hidden,
-/obj/structure/disposalpipe/segment,
-/obj/item/stamp/captain,
-/turf/open/floor/wood,
-/area/command/heads_quarters/captain/private)
 "gMW" = (
 /obj/machinery/disposal/bin,
 /obj/structure/disposalpipe/trunk{
@@ -57354,26 +57383,6 @@
 "iwy" = (
 /obj/structure/bookcase,
 /turf/open/floor/wood,
-/area/command/bridge)
-"iwY" = (
-/obj/item/folder/red{
-	pixel_y = 3
-	},
-/obj/structure/cable/yellow{
-	icon_state = "1-2"
-	},
-/obj/machinery/light{
-	dir = 4
-	},
-/obj/structure/table/glass,
-/obj/item/folder/red{
-	pixel_y = 3
-	},
-/obj/effect/turf_decal/tile/red,
-/obj/effect/turf_decal/tile/red{
-	dir = 4
-	},
-/turf/open/floor/plasteel/dark,
 /area/command/bridge)
 "ixc" = (
 /obj/structure/disposalpipe/segment{
@@ -75243,11 +75252,6 @@
 	},
 /turf/closed/wall,
 /area/command/bridge)
-"slA" = (
-/obj/structure/table/wood,
-/obj/item/stamp/hos,
-/turf/open/floor/carpet,
-/area/command/heads_quarters/hos)
 "smm" = (
 /obj/machinery/shower{
 	dir = 4
@@ -110049,7 +110053,7 @@ pBK
 pBK
 poT
 nSn
-bBW
+aal
 pBK
 bzN
 bBB
@@ -114668,7 +114672,7 @@ bci
 aaf
 myk
 xeF
-iwY
+aah
 pJi
 sKT
 uGy
@@ -116425,7 +116429,7 @@ aaf
 fmY
 pHm
 uHd
-slA
+aae
 wcl
 eQY
 gWb
@@ -116729,7 +116733,7 @@ xrJ
 vCg
 eAW
 fcg
-gMC
+aak
 hVY
 oxr
 ffN

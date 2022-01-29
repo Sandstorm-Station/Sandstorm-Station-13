@@ -65,6 +65,33 @@
 	},
 /turf/open/floor/plasteel,
 /area/security/office)
+"aai" = (
+/obj/structure/table/wood,
+/obj/item/folder/red,
+/obj/item/stamp/hos,
+/obj/item/storage/secure/briefcase/permits,
+/turf/open/floor/carpet,
+/area/command/heads_quarters/hos)
+"aaj" = (
+/obj/structure/table/reinforced,
+/obj/item/storage/fancy/donut_box,
+/obj/item/storage/secure/briefcase/permits,
+/turf/open/floor/plasteel,
+/area/command/bridge)
+"aak" = (
+/obj/structure/table/wood,
+/obj/item/folder/blue,
+/obj/item/stamp/captain,
+/obj/machinery/atmospherics/pipe/simple/supply/hidden,
+/obj/item/storage/secure/briefcase/permits,
+/turf/open/floor/wood,
+/area/command/heads_quarters/captain)
+"aal" = (
+/obj/structure/table,
+/obj/machinery/recharger,
+/obj/item/storage/secure/briefcase/permits,
+/turf/open/floor/plasteel,
+/area/command/heads_quarters/hop)
 "aam" = (
 /obj/effect/turf_decal/tile/green{
 	dir = 8
@@ -1265,12 +1292,6 @@
 /obj/machinery/atmospherics/pipe/simple/supply/hidden,
 /turf/open/floor/plasteel/dark,
 /area/security/office)
-"acQ" = (
-/obj/structure/table/wood,
-/obj/item/folder/red,
-/obj/item/stamp/hos,
-/turf/open/floor/carpet,
-/area/command/heads_quarters/hos)
 "acR" = (
 /obj/machinery/atmospherics/pipe/simple/supply/hidden,
 /obj/effect/spawner/structure/window/reinforced,
@@ -18255,11 +18276,6 @@
 	},
 /turf/open/floor/plasteel,
 /area/command/bridge)
-"aSE" = (
-/obj/structure/table/reinforced,
-/obj/item/storage/fancy/donut_box,
-/turf/open/floor/plasteel,
-/area/command/bridge)
 "aSF" = (
 /obj/effect/turf_decal/tile/bar,
 /obj/effect/turf_decal/tile/bar{
@@ -23254,13 +23270,6 @@
 /obj/structure/table/wood,
 /obj/item/hand_tele,
 /obj/machinery/atmospherics/pipe/simple/scrubbers/hidden,
-/turf/open/floor/wood,
-/area/command/heads_quarters/captain)
-"bfB" = (
-/obj/structure/table/wood,
-/obj/item/folder/blue,
-/obj/item/stamp/captain,
-/obj/machinery/atmospherics/pipe/simple/supply/hidden,
 /turf/open/floor/wood,
 /area/command/heads_quarters/captain)
 "bfC" = (
@@ -30233,11 +30242,6 @@
 /obj/machinery/atmospherics/components/unary/vent_pump/on{
 	dir = 4
 	},
-/turf/open/floor/plasteel,
-/area/command/heads_quarters/hop)
-"bwk" = (
-/obj/structure/table,
-/obj/machinery/recharger,
 /turf/open/floor/plasteel,
 /area/command/heads_quarters/hop)
 "bwl" = (
@@ -93760,7 +93764,7 @@ bqB
 unQ
 btD
 buO
-bwk
+aal
 bmr
 aLY
 cBw
@@ -97336,7 +97340,7 @@ aJq
 aOE
 aPX
 aRs
-aSE
+aaj
 aUc
 aVm
 aWY
@@ -97860,7 +97864,7 @@ baf
 bdk
 mRQ
 bek
-bfB
+aak
 vde
 bdk
 bjF
@@ -99603,7 +99607,7 @@ aaf
 aaL
 adO
 acr
-acQ
+aai
 adn
 agw
 abq

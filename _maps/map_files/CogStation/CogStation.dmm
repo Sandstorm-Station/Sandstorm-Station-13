@@ -1325,6 +1325,17 @@
 "adi" = (
 /turf/open/floor/plasteel,
 /area/commons/lounge)
+"adj" = (
+/obj/structure/table/reinforced,
+/obj/machinery/airalarm{
+	dir = 1;
+	pixel_y = -22
+	},
+/obj/item/folder/red,
+/obj/item/stamp/hos,
+/obj/item/storage/secure/briefcase/permits,
+/turf/open/floor/plasteel/grimy,
+/area/command/heads_quarters/hos)
 "adk" = (
 /obj/structure/disposalpipe/segment{
 	dir = 5
@@ -1470,6 +1481,15 @@
 /obj/machinery/syndicatebomb/training,
 /turf/open/floor/plasteel,
 /area/security/brig)
+"adF" = (
+/obj/structure/table/wood,
+/obj/item/storage/fancy/donut_box,
+/obj/machinery/atmospherics/components/unary/vent_pump/on{
+	dir = 1
+	},
+/obj/item/storage/secure/briefcase/permits,
+/turf/open/floor/carpet/royalblue,
+/area/command/bridge)
 "adG" = (
 /obj/machinery/mass_driver/pressure_plate{
 	id = "hydro_in"
@@ -1598,6 +1618,22 @@
 	},
 /turf/open/floor/plasteel/dark,
 /area/science/observatory)
+"adY" = (
+/obj/structure/table/wood,
+/obj/machinery/recharger,
+/obj/structure/cable{
+	icon_state = "2-4"
+	},
+/obj/machinery/button/door{
+	id = "capblast";
+	name = "Window Blast Door Control";
+	pixel_x = -6;
+	pixel_y = -3;
+	req_access_txt = "19"
+	},
+/obj/item/storage/secure/briefcase/permits,
+/turf/open/floor/carpet/blue,
+/area/command/heads_quarters/captain)
 "adZ" = (
 /turf/open/floor/plating,
 /area/tcommsat/computer)
@@ -1761,6 +1797,12 @@
 	},
 /turf/open/floor/plasteel,
 /area/hallway/secondary/entry)
+"aeu" = (
+/obj/structure/table/wood,
+/obj/item/flashlight/lamp,
+/obj/item/storage/secure/briefcase/permits,
+/turf/open/floor/carpet/green,
+/area/command/heads_quarters/hop)
 "aev" = (
 /obj/machinery/atmospherics/pipe/simple/general/visible{
 	dir = 9
@@ -15496,16 +15538,6 @@
 	},
 /turf/open/floor/plasteel,
 /area/security/office)
-"aIr" = (
-/obj/structure/table/reinforced,
-/obj/machinery/airalarm{
-	dir = 1;
-	pixel_y = -22
-	},
-/obj/item/folder/red,
-/obj/item/stamp/hos,
-/turf/open/floor/plasteel/grimy,
-/area/command/heads_quarters/hos)
 "aIs" = (
 /obj/machinery/light{
 	dir = 4;
@@ -16677,14 +16709,6 @@
 	},
 /turf/open/floor/plasteel,
 /area/hallway/primary/port/fore)
-"aKE" = (
-/obj/structure/table/wood,
-/obj/item/storage/fancy/donut_box,
-/obj/machinery/atmospherics/components/unary/vent_pump/on{
-	dir = 1
-	},
-/turf/open/floor/carpet/royalblue,
-/area/command/bridge)
 "aKF" = (
 /obj/machinery/door/firedoor,
 /obj/machinery/door/airlock/command{
@@ -21221,11 +21245,6 @@
 /obj/machinery/atmospherics/pipe/simple/orange/hidden,
 /turf/open/floor/plasteel,
 /area/commons/locker)
-"aUB" = (
-/obj/structure/table/wood,
-/obj/item/flashlight/lamp,
-/turf/open/floor/carpet/green,
-/area/command/heads_quarters/hop)
 "aUC" = (
 /obj/machinery/atmospherics/pipe/simple/orange/hidden{
 	dir = 8
@@ -33253,21 +33272,6 @@
 /obj/machinery/atmospherics/pipe/simple/orange/hidden,
 /turf/open/floor/plating,
 /area/maintenance/department/chapel)
-"buM" = (
-/obj/structure/table/wood,
-/obj/machinery/recharger,
-/obj/structure/cable{
-	icon_state = "2-4"
-	},
-/obj/machinery/button/door{
-	id = "capblast";
-	name = "Window Blast Door Control";
-	pixel_x = -6;
-	pixel_y = -3;
-	req_access_txt = "19"
-	},
-/turf/open/floor/carpet/blue,
-/area/command/heads_quarters/captain)
 "buN" = (
 /obj/structure/disposalpipe/segment,
 /obj/machinery/atmospherics/pipe/simple/cyan/hidden,
@@ -90044,7 +90048,7 @@ cQQ
 aHF
 aIH
 aJz
-aKE
+adF
 aLI
 aMX
 aIE
@@ -91079,7 +91083,7 @@ aSW
 aHM
 biF
 aQW
-buM
+adY
 bAX
 bEN
 bOL
@@ -92365,7 +92369,7 @@ aNR
 bly
 bjF
 byd
-aUB
+aeu
 bKK
 aaa
 bdg
@@ -93125,7 +93129,7 @@ aZT
 aGv
 bLp
 bEV
-aIr
+adj
 aFj
 aOs
 aIP

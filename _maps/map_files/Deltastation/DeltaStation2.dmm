@@ -15,6 +15,55 @@
 /obj/structure/lattice,
 /turf/open/space,
 /area/space/nearstation)
+"aae" = (
+/obj/structure/table/wood,
+/obj/structure/cable/white{
+	icon_state = "4-8"
+	},
+/obj/item/folder/red,
+/obj/item/stamp/hos,
+/obj/structure/disposalpipe/segment{
+	dir = 4
+	},
+/obj/structure/cable/white{
+	icon_state = "2-8"
+	},
+/obj/structure/cable/white{
+	icon_state = "1-8"
+	},
+/obj/item/storage/secure/briefcase/permits,
+/turf/open/floor/plasteel/grimy,
+/area/command/heads_quarters/hos)
+"aaf" = (
+/obj/structure/table/reinforced,
+/obj/machinery/light{
+	dir = 4
+	},
+/obj/item/wrench,
+/obj/item/assembly/timer,
+/obj/item/assembly/signaler,
+/obj/effect/turf_decal/tile/yellow{
+	dir = 4
+	},
+/obj/item/storage/secure/briefcase/permits,
+/turf/open/floor/plasteel/dark,
+/area/command/bridge)
+"aag" = (
+/obj/structure/table/wood,
+/obj/item/storage/fancy/donut_box,
+/obj/item/storage/secure/briefcase/permits,
+/turf/open/floor/plasteel/grimy,
+/area/command/heads_quarters/captain)
+"aah" = (
+/obj/structure/table/wood,
+/obj/machinery/recharger,
+/obj/machinery/newscaster{
+	pixel_x = 32
+	},
+/obj/machinery/atmospherics/pipe/simple/scrubbers/hidden,
+/obj/item/storage/secure/briefcase/permits,
+/turf/open/floor/wood,
+/area/command/heads_quarters/hop)
 "aar" = (
 /obj/machinery/atmospherics/pipe/simple/scrubbers/hidden,
 /obj/effect/turf_decal/tile/neutral{
@@ -87346,15 +87395,6 @@
 	heat_capacity = 1e+006
 	},
 /area/commons/locker)
-"jBm" = (
-/obj/structure/table/wood,
-/obj/machinery/recharger,
-/obj/machinery/newscaster{
-	pixel_x = 32
-	},
-/obj/machinery/atmospherics/pipe/simple/scrubbers/hidden,
-/turf/open/floor/wood,
-/area/command/heads_quarters/hop)
 "jBx" = (
 /obj/machinery/atmospherics/pipe/simple/scrubbers/hidden{
 	dir = 4
@@ -90500,24 +90540,6 @@
 /obj/effect/turf_decal/bot,
 /turf/open/floor/plasteel,
 /area/service/hydroponics)
-"kCc" = (
-/obj/structure/table/wood,
-/obj/structure/cable/white{
-	icon_state = "4-8"
-	},
-/obj/item/folder/red,
-/obj/item/stamp/hos,
-/obj/structure/disposalpipe/segment{
-	dir = 4
-	},
-/obj/structure/cable/white{
-	icon_state = "2-8"
-	},
-/obj/structure/cable/white{
-	icon_state = "1-8"
-	},
-/turf/open/floor/plasteel/grimy,
-/area/command/heads_quarters/hos)
 "kCj" = (
 /obj/machinery/door/poddoor/shutters{
 	id = "evashutters";
@@ -117734,19 +117756,6 @@
 	},
 /turf/open/floor/plasteel,
 /area/commons/locker)
-"udG" = (
-/obj/structure/table/reinforced,
-/obj/machinery/light{
-	dir = 4
-	},
-/obj/item/wrench,
-/obj/item/assembly/timer,
-/obj/item/assembly/signaler,
-/obj/effect/turf_decal/tile/yellow{
-	dir = 4
-	},
-/turf/open/floor/plasteel/dark,
-/area/command/bridge)
 "udJ" = (
 /obj/effect/decal/cleanable/dirt,
 /obj/machinery/atmospherics/pipe/simple/scrubbers/visible{
@@ -122369,11 +122378,6 @@
 /obj/effect/turf_decal/delivery,
 /turf/open/floor/plasteel,
 /area/cargo/miningoffice)
-"vUv" = (
-/obj/structure/table/wood,
-/obj/item/storage/fancy/donut_box,
-/turf/open/floor/plasteel/grimy,
-/area/command/heads_quarters/captain)
 "vVx" = (
 /obj/effect/turf_decal/tile/yellow{
 	dir = 4
@@ -165904,7 +165908,7 @@ xFw
 haQ
 fFZ
 lvC
-jBm
+aah
 gXP
 iBI
 gfo
@@ -169227,7 +169231,7 @@ buq
 aaa
 vzr
 rkQ
-udG
+aaf
 uAg
 xHY
 oEz
@@ -171290,7 +171294,7 @@ nUj
 fkl
 hDk
 ppc
-vUv
+aag
 jRl
 idi
 hDk
@@ -184126,7 +184130,7 @@ wNr
 tbd
 smD
 uTY
-kCc
+aae
 uTc
 uKG
 qOF

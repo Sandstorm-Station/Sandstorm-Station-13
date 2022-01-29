@@ -739,6 +739,20 @@
 	},
 /turf/open/floor/plasteel,
 /area/science/mixing)
+"acd" = (
+/obj/structure/table/wood,
+/obj/item/phone{
+	desc = "Supposedly a direct line to Nanotrasen Central Command. It's not even plugged in.";
+	pixel_x = -3;
+	pixel_y = 3
+	},
+/obj/item/cigbutt/cigarbutt{
+	pixel_x = 5;
+	pixel_y = -1
+	},
+/obj/item/storage/secure/briefcase/permits,
+/turf/open/floor/carpet,
+/area/command/heads_quarters/hos)
 "ace" = (
 /obj/effect/turf_decal/stripes/line{
 	dir = 1
@@ -15294,19 +15308,6 @@
 	},
 /obj/structure/cable{
 	icon_state = "1-2"
-	},
-/turf/open/floor/carpet,
-/area/command/heads_quarters/hos)
-"aBy" = (
-/obj/structure/table/wood,
-/obj/item/phone{
-	desc = "Supposedly a direct line to Nanotrasen Central Command. It's not even plugged in.";
-	pixel_x = -3;
-	pixel_y = 3
-	},
-/obj/item/cigbutt/cigarbutt{
-	pixel_x = 5;
-	pixel_y = -1
 	},
 /turf/open/floor/carpet,
 /area/command/heads_quarters/hos)
@@ -118937,7 +118938,7 @@ axF
 ayp
 azs
 cJu
-aBy
+acd
 aCu
 ayj
 aDX
