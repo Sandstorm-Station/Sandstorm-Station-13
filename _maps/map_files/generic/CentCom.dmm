@@ -12034,12 +12034,6 @@
 /obj/item/reagent_containers/food/snacks/meat/slab/xeno,
 /turf/open/floor/grass,
 /area/wizard_station)
-"Bk" = (
-/obj/structure/bed/double{
-	dir = 1
-	},
-/turf/open/floor/plating,
-/area/slavers)
 "Bl" = (
 /obj/machinery/mech_bay_recharge_port,
 /turf/open/floor/plating,
@@ -18158,6 +18152,7 @@
 /obj/item/clothing/glasses/sunglasses/blindfold{
 	pixel_y = 4
 	},
+/obj/item/card/id/slaver,
 /obj/item/clothing/mask/muzzle,
 /turf/open/floor/plasteel,
 /area/slavers)
@@ -18212,6 +18207,10 @@
 	},
 /turf/open/indestructible/boss/air,
 /area/centcom/holding)
+"PB" = (
+/obj/machinery/research_table/slaver,
+/turf/open/floor/plating,
+/area/slavers)
 "PC" = (
 /obj/effect/turf_decal/stripes/white/line{
 	dir = 1
@@ -19584,8 +19583,7 @@
 /area/centcom/evac)
 "Vg" = (
 /obj/machinery/door/airlock/centcom{
-	name = "Storage";
-	req_access_txt = "152"
+	name = "Storage"
 	},
 /turf/open/floor/plasteel,
 /area/slavers)
@@ -19934,6 +19932,7 @@
 "WB" = (
 /obj/structure/mopbucket,
 /obj/item/mop,
+/obj/item/reagent_containers/glass/bucket,
 /turf/open/floor/plasteel/freezer,
 /area/slavers)
 "WC" = (
@@ -81651,7 +81650,7 @@ AC
 sm
 sm
 CV
-Bk
+CV
 CV
 sm
 ZD
@@ -81908,7 +81907,7 @@ Zm
 UR
 sm
 RT
-CV
+PB
 Tb
 sm
 vs

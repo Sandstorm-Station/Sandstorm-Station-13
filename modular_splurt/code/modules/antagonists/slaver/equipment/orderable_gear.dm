@@ -65,7 +65,7 @@ GLOBAL_LIST_INIT(slaver_gear, subtypesof(/datum/slaver_gear))
 
 /datum/slaver_gear/policing
 	name = "Policing Kit"
-	description = "Strobe shield x 1. Strobe replacement bulbs x 2. Stunbaton x 1. Box of handcuffs x 1."
+	description = "Strobe shield x 1. Strobe replacement bulbs x 2. Stunbaton x 1. Box of handcuffs x 1. Electrostaff x 1."
 	id = "policing"
 	build_path = /obj/structure/closet/crate/policing_shipment
 	category = "Slaving"

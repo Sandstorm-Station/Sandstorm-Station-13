@@ -140,3 +140,4 @@
 	new /obj/item/assembly/flash/handheld(src)
 	new /obj/item/melee/baton/loaded(src)
 	new /obj/item/storage/box/handcuffs(src)
+	new /obj/item/electrostaff(src)

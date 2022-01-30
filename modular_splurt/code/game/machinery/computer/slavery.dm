@@ -184,7 +184,7 @@
 			collar.setPrice(newPrice)
 
 		if("export")
-			GLOB.slavers_credits_balance += collar.price
+			editBalance(collar.price)
 			GLOB.slavers_credits_total += collar.price
 			GLOB.slavers_slaves_sold++
 
@@ -238,7 +238,7 @@
 						say("Insufficent credits!")
 						return
 
-					GLOB.slavers_credits_balance -= SG.cost
+					editBalance(-SG.cost)
 					radioAnnounce("Supplies inbound: [SG.name]")
 
 					addtimer(CALLBACK(src, .proc/dropSupplies, SG.build_path), rand(4,8) * 10)
@@ -265,3 +265,6 @@
 
 	new item(exportPod)
 	new /obj/effect/pod_landingzone(drop_location, exportPod)
+
+/obj/machinery/computer/slavery/proc/editBalance(ammount)
+	GLOB.slavers_credits_balance += ammount
