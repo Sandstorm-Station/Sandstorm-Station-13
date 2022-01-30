@@ -9,7 +9,6 @@
 /atom/movable/screen
 	name = ""
 	icon = 'icons/mob/screen_gen.dmi'
-	layer = HUD_LAYER
 	plane = HUD_PLANE
 	animate_movement = SLIDE_STEPS
 	speech_span = SPAN_ROBOT
@@ -144,12 +143,12 @@
 
 /atom/movable/screen/inventory/MouseEntered(location, control, params)
 	. = ..()
-	add_overlays()
+//	add_overlays()
 
 /atom/movable/screen/inventory/MouseExited()
 	..()
-	cut_overlay(object_overlay)
-	QDEL_NULL(object_overlay)
+//	cut_overlay(object_overlay)
+//	QDEL_NULL(object_overlay)
 
 /atom/movable/screen/inventory/update_icon_state()
 	if(!icon_empty)
