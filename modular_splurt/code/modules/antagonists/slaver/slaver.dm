@@ -48,6 +48,10 @@ GLOBAL_VAR_INIT(slavers_last_announcement, 0)
 	to_chat(owner, "<B>You are a Slave Trader!</B>")
 	spawnText()
 
+	var/mob/living/carbon/human/H = owner.current
+	if(istype(H))
+		H.set_antag_target_indicator() // Hide consent of this player, they are an antag and can't be a target
+
 /datum/antagonist/slaver/on_gain()
 	forge_objectives()
 	. = ..()
@@ -81,8 +85,16 @@ GLOBAL_VAR_INIT(slavers_last_announcement, 0)
 	send_to_spawnpoint = FALSE
 	new_owner.assigned_role = ROLE_SLAVER
 	new_owner.add_antag_datum(src)
+
 	message_admins("[key_name_admin(admin)] has slaver'd [new_owner.current].")
 	log_admin("[key_name(admin)] has slaver'd [new_owner.current].")
+
+/datum/antagonist/slaver/admin_remove(mob/user)
+	var/datum/mind/player = owner
+	. = ..()
+	var/mob/living/carbon/human/H = player.current
+	if(istype(H))
+		H.set_antag_target_indicator() // Update consent HUD
 
 /datum/antagonist/slaver/get_admin_commands()
 	. = ..()
@@ -100,6 +112,11 @@ GLOBAL_VAR_INIT(slavers_last_announcement, 0)
 	owner.current.playsound_local(get_turf(owner.current), 'modular_splurt/sound/ambience/antag/slavers.ogg',100,0)
 	to_chat(owner, "<B>You are the Slave Master!</B>")
 	spawnText()
+
+	var/mob/living/carbon/human/H = owner.current
+	if(istype(H))
+		H.set_antag_target_indicator() // Hide consent of this player, they are an antag and can't be a target
+
 	addtimer(CALLBACK(src, .proc/slavers_name_assign), 1)
 
 /datum/antagonist/slaver/proc/spawnText()

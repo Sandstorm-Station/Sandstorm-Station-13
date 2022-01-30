@@ -627,10 +627,9 @@ SAVEFILE UPDATING/VERSIONING - 'Simplified', or rather, more coder-friendly ~Car
 	// Splurt
 	WRITE_FILE(S["be_victim"], be_victim)
 
-	if(parent.mob)
-		var/mob/living/carbon/human/H = parent.mob
-		if (istype(H))
-			H.set_antag_target_indicator() // Update consent HUD
+	var/mob/living/carbon/human/H = parent.mob
+	if(istype(H))
+		H.set_antag_target_indicator() // Update consent HUD
 	//
 
 	//SKYRAT CHANGES BEGIN

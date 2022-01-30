@@ -76,9 +76,6 @@
 			var/mob/camera/aiEye/E = V
 			E.update_ai_detect_hud()
 
-/datum/atom_hud/data/human/antagtarget
-	hud_icons = list(ANTAGTARGET_HUD)
-
 /* MED/SEC/DIAG HUD HOOKS */
 
 /*
@@ -295,30 +292,6 @@
 					holder.icon_state = "huddischarged"
 					return
 	holder.icon_state = null
-
-/***********************************************
- Mob's target prefs
-************************************************/
-
-/mob/living/carbon/human/proc/set_antag_target_indicator()
-	var/image/holder = hud_list[ANTAGTARGET_HUD]
-	var/icon/I = icon(icon, icon_state, dir)
-	holder.pixel_y = I.Height() - world.icon_size
-
-	if(client && client.prefs)
-		if(client.prefs.be_victim)
-			switch(client.prefs.be_victim)
-				if(BEVICTIM_NO)
-					holder.icon_state = "hudtarget-no"
-					return
-				if(BEVICTIM_YES)
-					holder.icon_state = "hudtarget-yes"
-					return
-
-		holder.icon_state = "hudtarget-ask"
-		return
-
-	holder.icon_state = null // No client / prefs, show nothing
 
 /***********************************************
  Diagnostic HUDs!
