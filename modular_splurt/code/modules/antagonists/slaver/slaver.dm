@@ -48,13 +48,22 @@ GLOBAL_VAR_INIT(slavers_last_announcement, 0)
 	to_chat(owner, "<span class='notice'>You are a slave trader!</span>")
 	owner.announce_objectives()
 
-
 /datum/antagonist/slaver/on_gain()
 	forge_objectives()
 	. = ..()
 	equip_slaver()
 	if(send_to_spawnpoint)
 		move_to_spawnpoint()
+
+	// Can see what players consent to being a victim
+	var/datum/atom_hud/H = GLOB.huds[DATA_HUD_ANTAGTARGET]
+	H.add_hud_to(owner.current)
+
+// Lose antag status
+/datum/antagonist/slaver/farewell()
+	// Can no longer see what players consent to being a victim
+	var/datum/atom_hud/H = GLOB.huds[DATA_HUD_ANTAGTARGET]
+	H.remove_hud_from(owner.current)
 
 /datum/antagonist/slaver/get_team()
 	return slaver_team

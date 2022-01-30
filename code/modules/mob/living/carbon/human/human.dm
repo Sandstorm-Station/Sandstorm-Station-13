@@ -63,8 +63,11 @@
 	sec_hud_set_ID()
 	sec_hud_set_implants()
 	sec_hud_set_security_status()
+	set_antag_target_indicator()
+	priority_announce("hudupdate PRE", sender_override = "aaaaa")
 	//...and display them.
 	add_to_all_human_data_huds()
+	priority_announce("hudupdate POST", sender_override = "aaaaa")
 
 /mob/living/carbon/human/get_status_tab_items()
 	. = ..()
