@@ -98,3 +98,8 @@
 #define CHAOS_MED "Medium"
 #define CHAOS_HIGH "High"
 #define CHAOS_MAX "Maximum"
+
+// 'Be Victim' consent options for preferences panel / antag target HUD
+#define BEVICTIM_NO "No"
+#define BEVICTIM_ASK "Ask"
+#define BEVICTIM_YES "Yes"
