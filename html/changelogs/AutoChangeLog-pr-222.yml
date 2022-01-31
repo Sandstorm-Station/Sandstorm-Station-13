@@ -1,0 +1,7 @@
+author: SandPoot
+delete-after: true
+changes:
+  - rscadd: Admins have a special shiny button to end the round ic.
+  - bugfix: No longer calling CHECK_TICKs for no reason.
+  - config: If reveal everything is false, ghosts can no longer speak to the living
+      when the round ends.
