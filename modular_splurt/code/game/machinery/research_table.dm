@@ -20,6 +20,7 @@
 	var/configured = FALSE
 	var/point_type = POINT_TYPE_SCIENCE
 	var/max_repeat_usage = 3
+	var/slaver_mode = FALSE
 
 /obj/machinery/research_table/examine(mob/user)
 	. = ..()
@@ -37,7 +38,7 @@
 
 /obj/machinery/research_table/multitool_act(mob/living/user, obj/item/I)
 	if(user.a_intent == INTENT_HELP)
-		if(panel_open)
+		if(panel_open && !slaver_mode) // Do not let slaver version switch to science mode, they should only generate credits.
 			user.visible_message("<span class='notice'>[user] begins changing the generation type on \the [src].</span>", "<span class='notice'>You begin changing the generation type on \the [src].</span>")
 			if(do_after(user, 5 SECONDS, TRUE, src))
 				point_type = point_type == POINT_TYPE_SCIENCE ? POINT_TYPE_CARGO : POINT_TYPE_SCIENCE
@@ -145,15 +146,22 @@
 		if(POINT_TYPE_SCIENCE)
 			SSresearch.science_tech.add_point_list(list(TECHWEB_POINT_TYPE_GENERIC = points_awarded))
 		else
-			var/datum/bank_account/D = SSeconomy.get_dep_account(ACCOUNT_CAR)
-			if(D)
-				D.adjust_money(points_awarded)
+			if(slaver_mode) // Slaver version generates money for the slavers instead.
+				GLOB.slavers_credits_balance += points_awarded
+			else
+				var/datum/bank_account/D = SSeconomy.get_dep_account(ACCOUNT_CAR)
+				if(D)
+					D.adjust_money(points_awarded)
 	if(points_awarded)
 		var/add_s = points_awarded == 1 ? "" : "s"
 		say("Obtained [points_awarded] [point_type == POINT_TYPE_SCIENCE ? "point" : "credit"][add_s] from the session.")
 	else
 		say("Obtained no [point_type == POINT_TYPE_SCIENCE ? "points" : "credits"] from the session.") // Probably has no genitals at all
 	playsound(src, 'sound/machines/chime.ogg', 30, 1)
+
+/obj/machinery/research_table/slaver
+	slaver_mode = TRUE
+	point_type = POINT_TYPE_CARGO
 
 #undef POINT_TYPE_CARGO
 #undef POINT_TYPE_SCIENCE

@@ -1,6 +1,5 @@
 GLOBAL_VAR_INIT(slavers_team_name, "Slave Traders")
-GLOBAL_VAR_INIT(slavers_credits_deposits, 0)
-GLOBAL_VAR_INIT(slavers_credits_balance, 7000)
+GLOBAL_VAR_INIT(slavers_credits_balance, 4000)
 GLOBAL_VAR_INIT(slavers_credits_total, 0)
 GLOBAL_VAR_INIT(slavers_slaves_sold, 0)
 GLOBAL_VAR_INIT(slavers_last_announcement, 0)
@@ -14,8 +13,8 @@ GLOBAL_VAR_INIT(slavers_last_announcement, 0)
 	threat = 7
 	show_to_ghosts = TRUE
 	var/datum/team/slavers/slaver_team = new /datum/team/slavers
-	// var/send_to_spawnpoint = TRUE //Should the user be moved to default spawnpoint.
 	var/slaver_outfit = /datum/outfit/slaver
+	var/send_to_spawnpoint = TRUE //Should the user be moved to default spawnpoint.
 
 /datum/antagonist/slaver/proc/update_slaver_icons_added(mob/living/M)
 	var/datum/atom_hud/antag/slaverhud = GLOB.huds[ANTAG_HUD_SLAVER]
@@ -46,15 +45,29 @@ GLOBAL_VAR_INIT(slavers_last_announcement, 0)
 /datum/antagonist/slaver/greet()
 	owner.assigned_role = ROLE_SLAVER
 	owner.current.playsound_local(get_turf(owner.current), 'modular_splurt/sound/ambience/antag/slavers.ogg',100,0)
-	to_chat(owner, "<span class='notice'>You are a slave trader!</span>")
-	owner.announce_objectives()
+	to_chat(owner, "<B>You are a Slave Trader!</B>")
+	spawnText()
 
+	var/mob/living/carbon/human/H = owner.current
+	if(istype(H))
+		H.set_antag_target_indicator() // Hide consent of this player, they are an antag and can't be a target
 
 /datum/antagonist/slaver/on_gain()
 	forge_objectives()
 	. = ..()
 	equip_slaver()
-	move_to_spawnpoint()
+	if(send_to_spawnpoint)
+		move_to_spawnpoint()
+
+	// Can see what players consent to being a victim
+	var/datum/atom_hud/H = GLOB.huds[DATA_HUD_ANTAGTARGET]
+	H.add_hud_to(owner.current)
+
+// Lose antag status
+/datum/antagonist/slaver/farewell()
+	// Can no longer see what players consent to being a victim
+	var/datum/atom_hud/H = GLOB.huds[DATA_HUD_ANTAGTARGET]
+	H.remove_hud_from(owner.current)
 
 /datum/antagonist/slaver/get_team()
 	return slaver_team
@@ -69,10 +82,19 @@ GLOBAL_VAR_INIT(slavers_last_announcement, 0)
 	owner.current.forceMove(pick(GLOB.slaver_leader_start))
 
 /datum/antagonist/slaver/admin_add(datum/mind/new_owner,mob/admin)
+	send_to_spawnpoint = FALSE
 	new_owner.assigned_role = ROLE_SLAVER
 	new_owner.add_antag_datum(src)
+
 	message_admins("[key_name_admin(admin)] has slaver'd [new_owner.current].")
 	log_admin("[key_name(admin)] has slaver'd [new_owner.current].")
+
+/datum/antagonist/slaver/admin_remove(mob/user)
+	var/datum/mind/player = owner
+	. = ..()
+	var/mob/living/carbon/human/H = player.current
+	if(istype(H))
+		H.set_antag_target_indicator() // Update consent HUD
 
 /datum/antagonist/slaver/get_admin_commands()
 	. = ..()
@@ -88,11 +110,20 @@ GLOBAL_VAR_INIT(slavers_last_announcement, 0)
 /datum/antagonist/slaver/leader/greet()
 	owner.assigned_role = ROLE_SLAVER_LEADER
 	owner.current.playsound_local(get_turf(owner.current), 'modular_splurt/sound/ambience/antag/slavers.ogg',100,0)
-	to_chat(owner, "<B>You are the Slave Master for this collection job. You are responsible for organising your team and your ID is the only one who can open the launch bay doors.</B>")
-	to_chat(owner, "<B>If you feel you are not up to this task, give your ID to another slaver.</B>")
-	owner.announce_objectives()
+	to_chat(owner, "<B>You are the Slave Master!</B>")
+	spawnText()
+
+	var/mob/living/carbon/human/H = owner.current
+	if(istype(H))
+		H.set_antag_target_indicator() // Hide consent of this player, they are an antag and can't be a target
+
 	addtimer(CALLBACK(src, .proc/slavers_name_assign), 1)
 
+/datum/antagonist/slaver/proc/spawnText()
+	to_chat(owner, "<br><B>You are tasked with infiltrating the station and kidnapping members of the crew. Once brought back to the hideout, they can be collared and priced using the console.</B>")
+	to_chat(owner, "<B>The station can choose whether to pay the ransom, and if they do, you can take the slave to the green floor and use the console to 'export' them back, where the ransom will then be paid to your crew to buy new gear. Make sure you give all of the slave's items back before exporting them.</B>")
+	to_chat(owner, "<br><B><span class='adminhelp'>Important:</span> This role does NOT mean you can break server rules. Additionally to avoid round removing people, you can <span class='adminnotice'>only kidnap crew who consent OOC</span>.</B>")
+	to_chat(owner, "<B>You have a special HUD that shows consent for each player at the bottom right of their sprite. A tick means you can kidnap them. A cross means do not. A question mark means ask first.</B>")
 
 /datum/antagonist/slaver/leader/proc/slavers_name_assign()
 	GLOB.slavers_team_name = ask_name()

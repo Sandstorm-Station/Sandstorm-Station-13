@@ -79,6 +79,10 @@
 /obj/effect/turf_decal/tile/neutral{
 	dir = 1
 	},
+/obj/machinery/turretid{
+	pixel_x = -32;
+	req_access = null
+	},
 /turf/open/floor/plasteel/dark,
 /area/shuttle/slaveship)
 "cc" = (
@@ -312,6 +316,12 @@
 	},
 /turf/open/floor/plasteel/dark,
 /area/shuttle/slaveship)
+"tc" = (
+/obj/machinery/porta_turret/slaver{
+	dir = 10
+	},
+/turf/closed/wall/r_wall/syndicate,
+/area/shuttle/slaveship)
 "um" = (
 /obj/effect/turf_decal/tile/neutral,
 /obj/effect/turf_decal/tile/neutral{
@@ -405,6 +415,7 @@
 	port_direction = 4;
 	width = 22
 	},
+/obj/structure/fans/tiny,
 /turf/open/floor/plating,
 /area/shuttle/slaveship)
 "zT" = (
@@ -420,6 +431,18 @@
 	dir = 8
 	},
 /turf/open/floor/plasteel/dark,
+/area/shuttle/slaveship)
+"Bt" = (
+/obj/machinery/porta_turret/slaver{
+	dir = 9
+	},
+/turf/closed/wall/r_wall/syndicate,
+/area/shuttle/slaveship)
+"BQ" = (
+/obj/machinery/porta_turret/slaver{
+	dir = 5
+	},
+/turf/closed/wall/r_wall/syndicate,
 /area/shuttle/slaveship)
 "Cd" = (
 /obj/effect/turf_decal/tile/neutral,
@@ -792,6 +815,12 @@
 /obj/item/pickaxe,
 /turf/open/floor/plasteel/dark,
 /area/shuttle/slaveship)
+"YG" = (
+/obj/machinery/porta_turret/slaver{
+	dir = 6
+	},
+/turf/closed/wall/r_wall/syndicate,
+/area/shuttle/slaveship)
 "ZZ" = (
 /obj/structure/window/reinforced{
 	dir = 8
@@ -825,7 +854,7 @@ ax
 ax
 ax
 ax
-ax
+tc
 MJ
 MJ
 "}
@@ -838,7 +867,7 @@ MJ
 MJ
 MJ
 MJ
-ax
+Bt
 ax
 ax
 ax
@@ -878,7 +907,7 @@ zT
 MJ
 "}
 (4,1,1) = {"
-ax
+Bt
 ax
 ax
 ax
@@ -1070,7 +1099,7 @@ ax
 MJ
 "}
 (12,1,1) = {"
-ax
+BQ
 ax
 ax
 ax
@@ -1126,7 +1155,7 @@ MJ
 MJ
 MJ
 MJ
-ax
+BQ
 ax
 ax
 zI
@@ -1161,7 +1190,7 @@ ax
 ax
 ax
 ax
-ax
+YG
 MJ
 MJ
 "}

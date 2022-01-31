@@ -352,25 +352,23 @@
 
 			for(var/tracked_slave in GLOB.tracked_slaves)
 				var/obj/item/electropack/shockcollar/slave/C = tracked_slave
-				if (REF(C) == boughtID)
+				if (REF(C) == boughtID) // Get collar
 
 					var/datum/bank_account/bank = SSeconomy.get_dep_account(ACCOUNT_CAR)
 					if(bank)
 						if(C.bought)
 							bank.adjust_money(C.price)
-							GLOB.slavers_credits_deposits -= C.price
-							C.bought = FALSE
+							C.setBought(FALSE)
 
 							for(var/obj/machinery/computer/slavery/tracked_slave_console in GLOB.tracked_slave_consoles)
-								tracked_slave_console.radioAnnounce("The station has recalled the ransom funds for [C.loc.name]")
+								tracked_slave_console.radioAnnounce("The station has recalled the ransom funds for [C.loc.name].")
 
 						else
 							bank.adjust_money(-C.price)
-							GLOB.slavers_credits_deposits += C.price
-							C.bought = TRUE
+							C.setBought(TRUE)
 
 							for(var/obj/machinery/computer/slavery/tracked_slave_console in GLOB.tracked_slave_consoles)
-								tracked_slave_console.radioAnnounce("The station has paid the ransom funds for [C.loc.name]")
+								tracked_slave_console.radioAnnounce("The station has paid the ransom funds for [C.loc.name].")
 					break
 
 /obj/machinery/computer/communications/ui_data(mob/user)
@@ -444,10 +442,17 @@
 					slave["bought"] = C.bought
 					slave["price"] = C.price
 
-					if(bank && !C.bought && bank.account_balance < C.price)
-						slave["cannotafford"] = TRUE
-					else
-						slave["cannotafford"] = FALSE
+					var/canToggleRansom = FALSE
+					var/ransomFeedback = ""
+					var/ransomChangeCooldown = C.nextRansomChange - world.time
+
+					if(ransomChangeCooldown > 0) // On cooldown.
+						ransomFeedback += " (can undo in [round(ransomChangeCooldown / 10)])"
+					else if (C.bought || (bank && bank.account_balance >= C.price)) // Slave already bought
+						canToggleRansom = TRUE
+
+					slave["cantoggleransom"] = canToggleRansom
+					slave["toggleransomfeedback"] = ransomFeedback
 
 					slaves += list(slave) //Add this slave to the list of slaves
 				data["slaves"] = slaves

@@ -65,6 +65,13 @@
 /obj/machinery/computer/slavery/ui_data(mob/user)
 	var/list/data = list()
 
+	if (world.time < GLOB.slavers_last_announcement + 300)
+		data["intercomrecharging"] = TRUE
+	else
+		data["intercomrecharging"] = FALSE
+
+	var/datum/bank_account/bank = SSeconomy.get_dep_account(ACCOUNT_CAR)
+	data["cargocredits"] = bank.account_balance
 	data["credits"] = GLOB.slavers_credits_balance
 	data["compactMode"] = compact_mode
 	var/list/slaves = list()
@@ -84,6 +91,7 @@
 		slave["id"] = REF(C)
 		slave["name"] = L.real_name
 		slave["price"] = C.price
+		slave["pricechangecooldown"] = round((C.nextPriceChange - world.time) / 10)
 		slave["bought"] = C.bought
 		slave["shockcooldown"] = C.shock_cooldown;
 		slave["inexportbay"] = FALSE
@@ -156,18 +164,27 @@
 			GLOB.slavers_last_announcement = world.time
 
 		if("setPrice")
-			var/newPrice = input(usr, "The station will need to pay this to get the slave back.", "Set slave price", 5000) as num
-			if(!newPrice)
+			var/newPrice = input(usr, "The station will need to pay this to get the slave back.", "Set slave price", collar.price) as num
+			if(!newPrice) // Blank input
+				return
+
+			if (collar.bought) // The slave has already been pair for as we try to change the price
+				say("The station has already paid the ransom, we can't change the price now!")
+				return
+
+			if (collar.nextPriceChange - world.time > 0) // Another user changed it already just now
+				say("The price has already changed recently. Please wait [round((collar.nextPriceChange - world.time) / 10)] seconds.")
 				return
 
 			newPrice = clamp(round(newPrice), 1, 1000000)
-			collar.price = newPrice
-			var/mob/living/M = collar.loc
-			priority_announce("[M.real_name] has been captured. Send us [newPrice]cr to get them back!.", sender_override = "[GLOB.slavers_team_name] Transmission")
+
+			if (newPrice == collar.price) // New price is same as the old price
+				return
+
+			collar.setPrice(newPrice)
 
 		if("export")
-			GLOB.slavers_credits_deposits -= collar.price
-			GLOB.slavers_credits_balance += collar.price
+			editBalance(collar.price)
 			GLOB.slavers_credits_total += collar.price
 			GLOB.slavers_slaves_sold++
 
@@ -196,6 +213,9 @@
 			collar.receive_signal(signal)
 
 		if("release")
+			var/datum/bank_account/bank = SSeconomy.get_dep_account(ACCOUNT_CAR)
+			if (collar.bought && bank) // If the slave was paid for by the station, but we removed their slave collar for some reason, we return the money to the station.
+				bank.adjust_money(collar.price)
 			qdel(collar)
 
 		if("compact_toggle")
@@ -218,7 +238,7 @@
 						say("Insufficent credits!")
 						return
 
-					GLOB.slavers_credits_balance -= SG.cost
+					editBalance(-SG.cost)
 					radioAnnounce("Supplies inbound: [SG.name]")
 
 					addtimer(CALLBACK(src, .proc/dropSupplies, SG.build_path), rand(4,8) * 10)
@@ -245,3 +265,6 @@
 
 	new item(exportPod)
 	new /obj/effect/pod_landingzone(drop_location, exportPod)
+
+/obj/machinery/computer/slavery/proc/editBalance(ammount)
+	GLOB.slavers_credits_balance += ammount

@@ -24,6 +24,7 @@
 /obj/structure/closet/crate/slaver_marksman/PopulateContents()
 	new /obj/item/ammo_box/magazine/sniper_rounds/soporific(src)
 	new /obj/item/ammo_box/magazine/sniper_rounds/soporific(src)
+	new /obj/item/ammo_box/magazine/sniper_rounds/soporific(src)
 	new /obj/item/gun/ballistic/automatic/sniper_rifle/sleepy(src)
 	new /obj/item/suppressor/specialoffer(src)
 
@@ -95,3 +96,48 @@
 /obj/structure/closet/crate/slaver_mech_ammo/PopulateContents()
 	new /obj/item/mecha_ammo/missiles_br(src)
 	new /obj/item/mecha_ammo/clusterbang(src)
+
+/obj/item/storage/box/syndie_kit/sleeper
+	name = "boxed chemical kit"
+
+// /obj/item/storage/box/syndie_kit/sleeper/ComponentInitialize()
+// 	. = ..()
+// 	var/datum/component/storage/STR = GetComponent(/datum/component/storage)
+// 	STR.max_items = 7
+
+/obj/item/storage/box/syndie_kit/sleeper/PopulateContents()
+	new /obj/item/reagent_containers/glass/bottle/mutetoxin(src)
+	new /obj/item/reagent_containers/glass/bottle/mutetoxin(src)
+	new /obj/item/reagent_containers/glass/bottle/mutetoxin(src)
+	new /obj/item/reagent_containers/glass/bottle/chloralhydrate(src)
+	new /obj/item/reagent_containers/glass/bottle/chloralhydrate(src)
+	new /obj/item/reagent_containers/glass/bottle/chloralhydrate(src)
+	new /obj/item/reagent_containers/syringe(src)
+
+/obj/item/storage/box/syndie_kit/x4
+	name = "boxed X4 charges"
+
+/obj/item/storage/box/syndie_kit/x4/PopulateContents()
+	new /obj/item/grenade/plastic/x4(src)
+	new /obj/item/grenade/plastic/x4(src)
+	new /obj/item/grenade/plastic/x4(src)
+
+/obj/structure/closet/crate/l6saw_shipment
+	name = "L6 saw shipment"
+
+/obj/structure/closet/crate/l6saw_shipment/PopulateContents()
+	new /obj/item/gun/ballistic/automatic/l6_saw/toy/unrestricted/riot(src)
+	new /obj/item/ammo_box/magazine/toy/m762/riot(src)
+	new /obj/item/ammo_box/foambox/riot(src)
+	new /obj/item/ammo_box/foambox/riot(src)
+
+/obj/structure/closet/crate/policing_shipment
+	name = "policing shipment"
+
+/obj/structure/closet/crate/policing_shipment/PopulateContents()
+	new /obj/item/shield/riot/flash(src)
+	new /obj/item/assembly/flash/handheld(src)
+	new /obj/item/assembly/flash/handheld(src)
+	new /obj/item/melee/baton/loaded(src)
+	new /obj/item/storage/box/handcuffs(src)
+	new /obj/item/electrostaff(src)

@@ -94,6 +94,7 @@ GLOBAL_LIST_EMPTY(preferences_datums)
 	var/allow_midround_antag = 1
 	var/preferred_map = null
 	var/preferred_chaos = null
+	var/be_victim = null
 	var/pda_style = MONO
 	var/pda_color = "#808000"
 	var/pda_skin = PDA_SKIN_ALT
@@ -1051,7 +1052,11 @@ GLOBAL_LIST_EMPTY(preferences_datums)
 			else
 				p_chaos = preferred_chaos
 			dat += "<b>Preferred Chaos Amount:</b> <a href='?_src_=prefs;preference=preferred_chaos;task=input'>[p_chaos]</a><br>"
+
+			dat += "<h2>Splurt Preferences</h2>"
+			dat += "<b>Be Antagonist Victim:</b> <a href='?_src_=prefs;preference=be_victim;task=input'>[be_victim ? be_victim : BEVICTIM_ASK]</a><br>"
 			dat += "<br>"
+
 			dat += "</td>"
 			dat += "</tr></table>"
 			if(unlock_content)
@@ -2725,6 +2730,9 @@ GLOBAL_LIST_EMPTY(preferences_datums)
 				if ("preferred_chaos")
 					var/pickedchaos = input(user, "Choose your preferred level of chaos. This will help with dynamic threat level ratings.", "Character Preference") as null|anything in list(CHAOS_NONE,CHAOS_LOW,CHAOS_MED,CHAOS_HIGH,CHAOS_MAX)
 					preferred_chaos = pickedchaos
+				if ("be_victim")
+					var/pickedvictim = input(user, "Are you ok with antagonists interacting with you (e.g. kidnapping)? ERP consent is seperate: This setting does NOT mean they are allowed to rape you.", "Antag Victim Consent") as null|anything in list(BEVICTIM_NO,BEVICTIM_ASK,BEVICTIM_YES)
+					be_victim = pickedvictim
 				if ("clientfps")
 					var/desiredfps = input(user, "Choose your desired fps. (0 = synced with server tick rate (currently:[world.fps]))", "Character Preference", clientfps)  as null|num
 					if (!isnull(desiredfps))

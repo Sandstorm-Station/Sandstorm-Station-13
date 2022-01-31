@@ -438,7 +438,10 @@ SAVEFILE UPDATING/VERSIONING - 'Simplified', or rather, more coder-friendly ~Car
 	S["cit_toggles"]		>> cit_toggles
 	S["preferred_chaos"]	>> preferred_chaos
 	S["auto_ooc"]			>> auto_ooc
-	S["no_tetris_storage"]		>> no_tetris_storage
+	S["no_tetris_storage"]	>> no_tetris_storage
+
+	// Splurt
+	S["be_victim"]			>> be_victim
 
 	//favorite outfits
 	S["favorite_outfits"]	>> favorite_outfits
@@ -620,6 +623,14 @@ SAVEFILE UPDATING/VERSIONING - 'Simplified', or rather, more coder-friendly ~Car
 	WRITE_FILE(S["preferred_chaos"], preferred_chaos)
 	WRITE_FILE(S["auto_ooc"], auto_ooc)
 	WRITE_FILE(S["no_tetris_storage"], no_tetris_storage)
+
+	// Splurt
+	WRITE_FILE(S["be_victim"], be_victim)
+
+	var/mob/living/carbon/human/H = parent.mob
+	if(istype(H))
+		H.set_antag_target_indicator() // Update consent HUD
+	//
 
 	//SKYRAT CHANGES BEGIN
 	WRITE_FILE(S["see_chat_emotes"], see_chat_emotes)

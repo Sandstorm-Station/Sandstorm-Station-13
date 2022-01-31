@@ -507,9 +507,9 @@ const PageMain = (props, context) => {
                   collapsing
                   color="label"
                   textAlign="right">
-                  {slave.bought
-                    ? "Ransom paid"
-                    : ""}
+                  {slave.toggleransomfeedback}
+                  {/* {slave.bought ? `${slave.cantoggleransom ?
+                    "Ransom paid" : "Ransom paid"}` : ""} */}
                 </Table.Cell>
 
                 <Table.Cell
@@ -517,7 +517,7 @@ const PageMain = (props, context) => {
                   align="right">
                   <Button
                     icon={slave.bought ? "times" : ""}
-                    disabled={slave.cannotafford}
+                    disabled={!slave.cantoggleransom}
                     content={slave.bought ? "Cancel" : slave.price + "cr"}
                     color={slave.bought ? "bad" : "default"}
                     onClick={() => act('toggleBought', {
