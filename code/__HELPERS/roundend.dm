@@ -249,8 +249,7 @@
 			for(var/m in GLOB.player_list)
 				var/mob/M = m
 				H.add_hud_to(M)
-
-	CHECK_TICK
+		CHECK_TICK
 
 	//Set news report and mode result
 	mode.set_round_result()
@@ -274,8 +273,7 @@
 	// handle_hearts()
 	if(CONFIG_GET(flag/reveal_everything))
 		set_observer_default_invisibility(0, "<span class='warning'>The round is over! You are now visible to the living.</span>")
-
-	CHECK_TICK
+		CHECK_TICK
 
 	//These need update to actually reflect the real antagonists
 	//Print a list of antagonists to the server log
