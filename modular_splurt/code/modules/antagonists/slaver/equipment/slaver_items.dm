@@ -1,3 +1,51 @@
+/obj/item/slaver
+	icon = 'icons/obj/abductor.dmi'
+	lefthand_file = 'icons/mob/inhands/antag/abductor_lefthand.dmi'
+	righthand_file = 'icons/mob/inhands/antag/abductor_righthand.dmi'
+
+/obj/item/slaver/gizmo
+	name = "Collection tool"
+	desc = "A short-range teleportation device. Use on another creature to instantly beam them to your ship."
+	icon_state = "silencer"
+	item_state = "gizmo"
+
+/obj/item/slaver/gizmo/attack(mob/living/M, mob/user)
+	var/datum/antagonist/slaver/S = locate() in user.mind.antag_datums
+	if(!S) // Is not a slaver antag.
+		to_chat(user, "<span class='warning'>You aren't sure how to use this tech!</span>")
+		return
+
+	if(user == M)
+		to_chat(user, "<span class='warning'>You can't teleport yourself!</span>")
+		return
+
+	// Find a location to teleport to
+	var/list/turf/L = list()
+	for(var/turf/T in get_area_turfs(/area/shuttle/slaveship/brig))
+		L+=T
+	if(!L || !L.len)
+		to_chat(user, "Error: No slaveship detected (Tell a coder!).")
+		return
+	var/turf/teleportDestination = pick(L)
+	var/turf/mobLocation = get_turf(M)
+
+	// Check we are in range of the destination
+	if(!mobLocation || mobLocation.z != teleportDestination.z)
+		to_chat(user, "<span class='warning'>The mothership is out of range, you need to be on the same z-level!</span>")
+		return
+
+	user.visible_message("<span class='notice'>[user] begins scanning [M] with \the [src].</span>", "<span class='notice'>You begin scanning [M] with \the [src].</span>")
+	if(do_mob(user, M, 15 SECONDS))
+		// Teleport!
+		playsound(get_turf(M.loc), 'sound/magic/blink.ogg', 50, 1)
+		M.visible_message("<span class='notice'>[M] vanishes from sight!</span>", \
+					"<span class='notice'>You feel a rush of energy as you are beamed to the slaver mothership!</span>")
+		new /obj/effect/temp_visual/dir_setting/ninja(get_turf(M), M.dir)
+		M.forceMove(teleportDestination)
+	else
+		to_chat(user, "<span class='warning'>You need to stand still and uninterrupted for 15 seconds!</span>")
+
+// Buyable gear kits at the slaver console
 /obj/item/storage/box/slaver_teleport
 	name = "boxed emergency teleport implants (x2)"
 
@@ -18,10 +66,10 @@
 	new /obj/item/electropack/shockcollar/slave(src)
 	new /obj/item/electropack/shockcollar/slave(src)
 
-/obj/structure/closet/crate/slaver_marksman
+/obj/item/storage/backpack/duffelbag/syndie/slaver_marksman
 	name = "marksman gear shipment"
 
-/obj/structure/closet/crate/slaver_marksman/PopulateContents()
+/obj/item/storage/backpack/duffelbag/syndie/slaver_marksman/PopulateContents()
 	new /obj/item/ammo_box/magazine/sniper_rounds/soporific(src)
 	new /obj/item/ammo_box/magazine/sniper_rounds/soporific(src)
 	new /obj/item/ammo_box/magazine/sniper_rounds/soporific(src)
@@ -56,54 +104,40 @@
 	new /obj/item/clothing/gloves/krav_maga/combatglovesplus(src)
 	new /obj/item/clothing/gloves/krav_maga/combatglovesplus(src)
 
-/obj/structure/closet/crate/slaver_hardsuits
+/obj/item/storage/backpack/duffelbag/syndie/slaver_hardsuits
 	name = "combat hardsuits"
 
-/obj/structure/closet/crate/slaver_hardsuits/PopulateContents()
+/obj/item/storage/backpack/duffelbag/syndie/slaver_hardsuits/PopulateContents()
 	new /obj/item/clothing/suit/space/hardsuit/syndi(src)
 	new /obj/item/clothing/suit/space/hardsuit/syndi(src)
 
-/obj/structure/closet/crate/slaver_mech
-	name = "mech parts"
+/obj/item/storage/backpack/duffelbag/syndie/smg_rubber
+	name = "SMG kit (rubber)"
 
-/obj/structure/closet/crate/slaver_mech/PopulateContents()
-	new /obj/item/mecha_parts/mecha_equipment/weapon/ballistic/launcher/flashbang/clusterbang(src)
-	new /obj/item/mecha_parts/mecha_equipment/weapon/ballistic/missile_rack/breaching(src)
-	new /obj/item/mecha_parts/mecha_equipment/weapon/energy/taser(src)
+/obj/item/storage/backpack/duffelbag/syndie/smg_rubber/PopulateContents()
+	new /obj/item/gun/ballistic/automatic/wt550/wtrubber(src)
+	new /obj/item/ammo_box/magazine/wt550m9/wtrubber(src)
+	new /obj/item/ammo_box/magazine/wt550m9/wtrubber(src)
+	new /obj/item/ammo_box/magazine/wt550m9/wtrubber(src)
 
-	new /obj/item/mecha_parts/part/gygax_armor(src)
-	new /obj/item/stack/sheet/metal/five(src)
+/obj/item/storage/backpack/duffelbag/syndie/smg
+	name = "SMG kit"
 
-	new /obj/item/stock_parts/cell/bluespace(src)
-	new /obj/item/stock_parts/capacitor/quadratic(src)
-	new /obj/item/stock_parts/scanning_module/triphasic(src)
+/obj/item/storage/backpack/duffelbag/syndie/smg/PopulateContents()
+	new /obj/item/gun/ballistic/automatic/wt550(src)
+	new /obj/item/ammo_box/magazine/wt550m9(src)
+	new /obj/item/ammo_box/magazine/wt550m9(src)
+	new /obj/item/ammo_box/magazine/wt550m9(src)
 
-	new /obj/item/circuitboard/mecha/gygax/peripherals(src)
-	new /obj/item/circuitboard/mecha/gygax/targeting(src)
-	new /obj/item/circuitboard/mecha/gygax/main(src)
+/obj/item/storage/backpack/duffelbag/syndie/ion
+	name = "Ion carbine kit"
 
-	new /obj/item/mecha_parts/part/gygax_torso(src)
-	new /obj/item/mecha_parts/part/gygax_head(src)
-	new /obj/item/mecha_parts/part/gygax_left_arm(src)
-	new /obj/item/mecha_parts/part/gygax_right_arm(src)
-	new /obj/item/mecha_parts/part/gygax_left_leg(src)
-	new /obj/item/mecha_parts/part/gygax_right_leg(src)
-	new /obj/item/mecha_parts/chassis/gygax(src)
-
-/obj/structure/closet/crate/slaver_mech_ammo
-	name = "mech ammo"
-
-/obj/structure/closet/crate/slaver_mech_ammo/PopulateContents()
-	new /obj/item/mecha_ammo/missiles_br(src)
-	new /obj/item/mecha_ammo/clusterbang(src)
+/obj/item/storage/backpack/duffelbag/syndie/ion/PopulateContents()
+	new /obj/item/gun/energy/ionrifle/carbine/with_pin(src)
+	new /obj/item/gun/energy/ionrifle/carbine/with_pin(src)
 
 /obj/item/storage/box/syndie_kit/sleeper
 	name = "boxed chemical kit"
-
-// /obj/item/storage/box/syndie_kit/sleeper/ComponentInitialize()
-// 	. = ..()
-// 	var/datum/component/storage/STR = GetComponent(/datum/component/storage)
-// 	STR.max_items = 7
 
 /obj/item/storage/box/syndie_kit/sleeper/PopulateContents()
 	new /obj/item/reagent_containers/glass/bottle/mutetoxin(src)
@@ -122,19 +156,19 @@
 	new /obj/item/grenade/plastic/x4(src)
 	new /obj/item/grenade/plastic/x4(src)
 
-/obj/structure/closet/crate/l6saw_shipment
+/obj/item/storage/backpack/duffelbag/syndie/l6saw_shipment
 	name = "L6 saw shipment"
 
-/obj/structure/closet/crate/l6saw_shipment/PopulateContents()
+/obj/item/storage/backpack/duffelbag/syndie/l6saw_shipment/PopulateContents()
 	new /obj/item/gun/ballistic/automatic/l6_saw/toy/unrestricted/riot(src)
 	new /obj/item/ammo_box/magazine/toy/m762/riot(src)
 	new /obj/item/ammo_box/foambox/riot(src)
 	new /obj/item/ammo_box/foambox/riot(src)
 
-/obj/structure/closet/crate/policing_shipment
+/obj/item/storage/backpack/duffelbag/syndie/policing_shipment
 	name = "policing shipment"
 
-/obj/structure/closet/crate/policing_shipment/PopulateContents()
+/obj/item/storage/backpack/duffelbag/syndie/policing_shipment/PopulateContents()
 	new /obj/item/shield/riot/flash(src)
 	new /obj/item/assembly/flash/handheld(src)
 	new /obj/item/assembly/flash/handheld(src)

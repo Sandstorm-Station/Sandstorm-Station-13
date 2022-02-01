@@ -6853,6 +6853,12 @@
 	},
 /turf/open/floor/plasteel/dark,
 /area/centcom/supplypod)
+"pA" = (
+/obj/machinery/light/small{
+	dir = 8
+	},
+/turf/open/floor/plating,
+/area/slavers)
 "pB" = (
 /obj/machinery/light{
 	dir = 1
@@ -6879,6 +6885,12 @@
 	name = "door"
 	},
 /turf/open/floor/plasteel,
+/area/slavers)
+"pF" = (
+/obj/structure/sign/poster/contraband/yes_erp{
+	pixel_y = 32
+	},
+/turf/open/floor/plasteel/freezer,
 /area/slavers)
 "pG" = (
 /obj/machinery/biogenerator,
@@ -7435,6 +7447,12 @@
 	},
 /turf/open/floor/plating,
 /area/syndicate_mothership)
+"qL" = (
+/obj/structure/sign/poster/official/obey{
+	pixel_x = -32
+	},
+/turf/open/floor/plasteel,
+/area/slavers)
 "qP" = (
 /obj/structure/bed/matress,
 /turf/open/floor/plating,
@@ -8088,6 +8106,7 @@
 /area/syndicate_mothership)
 "sj" = (
 /obj/machinery/vending/assist,
+/obj/effect/decal/cleanable/cobweb,
 /turf/open/floor/plasteel,
 /area/slavers)
 "sk" = (
@@ -12388,6 +12407,9 @@
 "BT" = (
 /obj/effect/turf_decal/stripes/corner{
 	dir = 1
+	},
+/obj/structure/sign/poster/contraband/lizard{
+	pixel_x = -32
 	},
 /turf/open/floor/plasteel,
 /area/slavers)
@@ -18036,6 +18058,15 @@
 	},
 /turf/open/floor/mineral/titanium/blue,
 /area/centcom/holding)
+"OP" = (
+/obj/machinery/light/small{
+	dir = 4
+	},
+/obj/structure/sign/poster/contraband/lusty_xenomorph{
+	pixel_x = 32
+	},
+/turf/open/floor/plating,
+/area/slavers)
 "OQ" = (
 /obj/structure/table,
 /obj/item/reagent_containers/rag/towel/syndicate,
@@ -18767,11 +18798,9 @@
 	},
 /turf/open/indestructible/hotelwood,
 /area/centcom/holding)
-"RT" = (
-/obj/machinery/light/small{
-	dir = 1
-	},
-/turf/open/floor/plating,
+"RV" = (
+/obj/effect/decal/cleanable/oil,
+/turf/open/floor/plasteel,
 /area/slavers)
 "RW" = (
 /obj/effect/turf_decal/stripes/white/line,
@@ -19037,6 +19066,12 @@
 	},
 /turf/open/indestructible/hotelwood,
 /area/centcom/holding)
+"SX" = (
+/obj/structure/sign/poster/contraband/bountyhunters{
+	pixel_y = 32
+	},
+/turf/open/floor/plasteel,
+/area/slavers)
 "SY" = (
 /obj/structure/table/wood,
 /turf/open/indestructible/hotelwood,
@@ -19050,10 +19085,6 @@
 	dir = 1
 	},
 /turf/open/floor/plasteel/dark,
-/area/slavers)
-"Tb" = (
-/obj/machinery/light/small,
-/turf/open/floor/plating,
 /area/slavers)
 "Td" = (
 /obj/structure/fireplace,
@@ -19227,6 +19258,7 @@
 /obj/effect/turf_decal/tile/blue{
 	dir = 8
 	},
+/obj/effect/decal/cleanable/dirt,
 /turf/open/floor/plasteel/dark,
 /area/slavers)
 "TM" = (
@@ -19281,6 +19313,12 @@
 /obj/item/reagent_containers/glass/beaker,
 /turf/open/floor/plasteel/cafeteria,
 /area/centcom/holding)
+"TW" = (
+/obj/structure/sign/poster/contraband/syndicate_recruitment{
+	pixel_y = 32
+	},
+/turf/open/floor/wood,
+/area/slavers)
 "TY" = (
 /obj/structure/bedsheetbin/color,
 /turf/open/indestructible/hotelwood,
@@ -19831,6 +19869,15 @@
 	},
 /turf/open/floor/plasteel,
 /area/centcom/evac)
+"Wd" = (
+/obj/machinery/light/small{
+	dir = 4
+	},
+/obj/effect/decal/cleanable/cobweb{
+	icon_state = "cobweb2"
+	},
+/turf/open/floor/plating,
+/area/slavers)
 "We" = (
 /obj/machinery/vending/coffee,
 /turf/open/indestructible/hotelwood,
@@ -19876,10 +19923,7 @@
 /area/syndicate_mothership)
 "Wk" = (
 /obj/structure/table,
-/obj/item/paper{
-	info = "Kidnap crew, attach a slave collar around their neck, set a price with the computer, wait for the station to pay the ransom, put slave in the green area and 'export' them with the computer";
-	name = "dummies guide to the slave trade"
-	},
+/obj/machinery/recharger,
 /turf/open/floor/plasteel/dark,
 /area/slavers)
 "Wn" = (
@@ -20206,6 +20250,16 @@
 	},
 /turf/open/floor/plasteel,
 /area/syndicate_mothership)
+"XF" = (
+/obj/structure/toilet{
+	dir = 4
+	},
+/obj/machinery/light/small{
+	dir = 1
+	},
+/obj/effect/decal/cleanable/semen,
+/turf/open/floor/plasteel/freezer,
+/area/slavers)
 "XI" = (
 /obj/effect/turf_decal/stripes/line{
 	dir = 8
@@ -20591,6 +20645,7 @@
 /obj/effect/turf_decal/tile/red{
 	dir = 1
 	},
+/obj/effect/decal/cleanable/dirt,
 /turf/open/floor/plasteel/dark,
 /area/slavers)
 "Zv" = (
@@ -79324,7 +79379,7 @@ aa
 sm
 QZ
 Zm
-Zm
+RV
 Rj
 sm
 FY
@@ -79579,7 +79634,7 @@ aa
 aa
 aa
 sm
-Zm
+SX
 Zm
 Zm
 Zm
@@ -80620,7 +80675,7 @@ PC
 Qf
 RW
 sm
-RB
+TW
 RB
 RB
 RB
@@ -81650,7 +81705,7 @@ AC
 sm
 sm
 CV
-CV
+pA
 CV
 sm
 ZD
@@ -81906,9 +81961,9 @@ Zm
 Zm
 UR
 sm
-RT
 PB
-Tb
+CV
+PB
 sm
 vs
 ZD
@@ -82932,7 +82987,7 @@ Zm
 Zm
 Zm
 Zm
-Zm
+qL
 ZE
 Zm
 Zm
@@ -83435,7 +83490,7 @@ aa
 aa
 aa
 sm
-AF
+XF
 sm
 AF
 sm
@@ -83696,7 +83751,7 @@ Rd
 sm
 Rd
 sm
-Yj
+pF
 Yj
 Yj
 sm
@@ -83957,13 +84012,13 @@ Yj
 Yj
 Lk
 sm
-TK
+OP
 qP
 sm
 TK
 qP
 sm
-TK
+Wd
 qP
 sm
 Co
