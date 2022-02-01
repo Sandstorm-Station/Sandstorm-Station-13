@@ -4,8 +4,10 @@
 	default_color = "FFFFFF"
 	species_traits = list(EYECOLOR,HAIR,FACEHAIR,LIPS,HAS_FLESH,HAS_BONE)
 	inherent_traits = list(TRAIT_NOHUNGER,TRAIT_NOTHIRST,TRAIT_NOBREATH)
-	mutant_bodyparts = list("tail_human" = "None", "ears" = "None", "deco_wings" = "None")
+	mutant_bodyparts = list("mcolor" = "FFFFFF","mcolor2" = "FFFFFF","mcolor3" = "FFFFFF", "mam_snouts" = "None", "mam_tail" = "None", "mam_ears" = "None", "deco_wings" = "None",
+						 "mam_body_markings" = list(), "taur" = "None", "horns" = "None", "legs" = "Plantigrade", "meat_type" = "Mammalian")
 	use_skintones = USE_SKINTONES_GRAYSCALE_CUSTOM
+	allowed_limb_ids = list("mammal","aquatic","avian","insect","apid","moth","moth_not_greyscale")
 	mutant_brain = /obj/item/organ/brain/dullahan
 	mutanteyes = /obj/item/organ/eyes/dullahan
 	mutanttongue = /obj/item/organ/tongue/dullahan
@@ -83,6 +85,7 @@
 
 /obj/item/organ/tongue/dullahan
 	zone = "abstract"
+	initial_accents = list()
 	accents = list(/datum/accent/dullahan)
 
 /obj/item/organ/ears/dullahan
