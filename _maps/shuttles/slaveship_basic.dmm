@@ -110,6 +110,9 @@
 /area/shuttle/slaveship)
 "le" = (
 /obj/structure/bed/roller,
+/obj/machinery/defibrillator_mount/loaded{
+	pixel_x = 28
+	},
 /turf/open/floor/plasteel/dark,
 /area/shuttle/slaveship)
 "ph" = (
