@@ -79,7 +79,7 @@
 	icon = 'modular_splurt/icons/mob/mam_tails.dmi'
 	matrixed_sections = MATRIX_RED
 
-/datum/sprite_accessory/tails_animated/mam_tails_animated
+/datum/sprite_accessory/tails_animated/mam_tails_animated/shorthawk
 	name = "Hawk - Short"
 	icon_state = "shorthawk"
 	icon = 'modular_splurt/icons/mob/mam_tails.dmi'
