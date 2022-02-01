@@ -4,6 +4,6 @@
 	icon = 'modular_sand/icons/obj/clothing/suits.dmi'
 	icon_state = "duster"
 	item_state = "duster"
-	mob_overlay_icon = "modular_sand/icons/mob/clothing/suit.dmi"
+	mob_overlay_icon = 'modular_sand/icons/mob/clothing/suit.dmi'
 	body_parts_covered = CHEST|GROIN|ARMS|LEGS
 	cold_protection = CHEST|GROIN|ARMS|LEGS
