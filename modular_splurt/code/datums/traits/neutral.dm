@@ -57,6 +57,78 @@
 	gain_text = "<span class='notice'>You body burns with the desire to be bred.</span>"
 	lose_text = "<span class='notice'>You feel more in control of your body and thoughts.</span>"
 
+/datum/quirk/Hypnotic_gaze
+	name = "Hypnotic Gaze"
+	desc = "Be it through mysterious patterns, flickering colors or a glint of the eye, prolonged eye contact with others will place the target into a highly suggestible Hypnotic trance."
+	value = 0
+	mob_trait = TRAIT_HYPNOTIC_GAZE
+	gain_text = "<span class='notice'>Your eyes glimmer Hypnotically..</span>"
+	lose_text = "<span class='notice'>Your eyes return to normal.</span>"
+	medical_record_text = "Prolonged exposure to Patient's eyes exhibits soporific effects."
+
+/datum/quirk/Hypnotic_gaze/on_spawn()
+	var/mob/living/carbon/human/Hypno_eyes = quirk_holder
+	var/datum/action/innate/Hypnotize/spell = new
+	spell.Grant(Hypno_eyes)
+	spell.owner = Hypno_eyes
+
+/datum/action/innate/Hypnotize
+	name = "Hypnotize"
+	desc = "Stare deeply into someone's eyes, drawing them into a hypnotic slumber."
+	button_icon_state = "ling_pheromone"
+	icon_icon = 'icons/mob/actions/actions_changeling.dmi'
+	background_icon_state = "bg_alien"
+
+/datum/action/innate/Hypnotize/Activate()
+	var/mob/living/carbon/human/H = owner
+	if(!H.pulling || !isliving(H.pulling) || H.grab_state < GRAB_AGGRESSIVE)
+		to_chat(H, "<span class='warning'>You need to aggressively grab someone to hypnotize them!</span>")
+		return
+
+	var/mob/living/target = H.pulling
+
+	to_chat(H, "<span class='notice'>You stare deeply into [target]'s eyes...</span>")
+	to_chat(target, "<span class='warning'>[H] stares Intensely into your eyes...</span>")
+	if(do_after(H, 60, target = target))
+		if(H.pulling !=target || H.grab_state < GRAB_AGGRESSIVE)
+			return
+
+	var/response = alert(target, "Do you wish to fall into a hypnotic sleep?(This will allow [H] to issue hypnotic suggestions)", "Hypnosis", "Yes", "No")
+
+	if(response == "Yes")
+		target.visible_message("<span class='warning>[target] falls into a deep slumber!</span>", "<span class = 'danger'>Your eyelids gently shut as you fall into a deep slumber. All you can hear is [H]'s voice as you commit to following all of their suggestions</span>")
+
+		target.SetSleeping(1200)
+		target.drowsyness = max(target.drowsyness, 40)
+		return
+
+	//no
+	target.visible_message("<span class='warning'>[target]'s attention breaks, despite your attempts to hypnotize them! They clearly don't want this</span>", "<span class ='warning'>Your concentration breaks as you realise you have no interest in following [H]'s words!</span>")
+
+
+	if(!target.IsSleeping())
+		to_chat(H, "[target] is awake and no longer under hypnosis!")
+		target = null
+		return
+
+	response = alert(H, "Would you like to release your subject or give them a suggestion?", "Hypnosis", "Suggestion", "Release")
+	if(response == "Suggestion")
+		if(get_dist(H, target) > 1)
+			to_chat(H, "You must stand in whisper range of [target].")
+			return
+
+		var/text = input("What would you like to suggest?", "Hypnotic suggestion", null, null)
+		text = sanitize(text)
+		if(!text)
+			return
+
+		to_chat(H, "You whisper your suggestion in a smooth calming voice to [target]")
+		to_chat(target, "<span class='hypnophrase'>...[text]...</span>")
+		return
+	//release
+	target.visible_message("<span class='warning'>[target] wakes up from their deep slumber!</span>", "<span class = 'danger'>Your Your eyelids gently open as you see [H]'s face staring back at you</span>")
+	target.SetSleeping(0)
+	target = null
 /datum/quirk/heat
 	name = "Estrus Detection"
 	desc = "You have a animalistic sense of detecting if someone is in heat."
