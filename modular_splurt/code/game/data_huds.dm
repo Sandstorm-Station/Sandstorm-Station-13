@@ -20,7 +20,7 @@
 		return
 
 	var/datum/antagonist/slaver/S = locate() in H.mind.antag_datums
-	if(S) // Is a slave antag. Slavers do not need to see eachother's consent prefs.
+	if(S) // Is a slaver antag. Slavers do not need to see eachother's consent prefs.
 		holder.icon_state = null
 		return
 

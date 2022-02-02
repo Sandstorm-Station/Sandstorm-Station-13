@@ -67,7 +67,7 @@ GLOBAL_LIST_INIT(slaver_gear, subtypesof(/datum/slaver_gear))
 	name = "Policing Kit"
 	description = "Strobe shield x 1. Strobe replacement bulbs x 2. Stunbaton x 1. Box of handcuffs x 1. Electrostaff x 1."
 	id = "policing"
-	build_path = /obj/structure/closet/crate/policing_shipment
+	build_path = /obj/item/storage/backpack/duffelbag/syndie/policing_shipment
 	category = "Slaving"
 	cost = 2000
 
@@ -107,7 +107,7 @@ GLOBAL_LIST_INIT(slaver_gear, subtypesof(/datum/slaver_gear))
 	name = "Combat Hardsuits"
 	description = "Military suit supplied by our Syndicate sponsors x 2."
 	id = "hardsuits"
-	build_path = /obj/structure/closet/crate/slaver_hardsuits
+	build_path = /obj/item/storage/backpack/duffelbag/syndie/slaver_hardsuits
 	category = "Advanced"
 	cost = 4500
 
@@ -115,7 +115,7 @@ GLOBAL_LIST_INIT(slaver_gear, subtypesof(/datum/slaver_gear))
 	name = "Riot Kit"
 	description = "Toy L6 SAW with riot darts."
 	id = "riot"
-	build_path = /obj/structure/closet/crate/l6saw_shipment
+	build_path = /obj/item/storage/backpack/duffelbag/syndie/l6saw_shipment
 	category = "Advanced"
 	cost = 2000
 
@@ -137,26 +137,138 @@ GLOBAL_LIST_INIT(slaver_gear, subtypesof(/datum/slaver_gear))
 	category = "Advanced"
 	cost = 2500
 
+/datum/slaver_gear/smg
+	name = "SMG Kit"
+	description = "WT-550 Semi-Automatic SMG. Spare magazine x 3."
+	id = "smg"
+	build_path = /obj/item/storage/backpack/duffelbag/syndie/smg
+	category = "Firearms"
+	cost = 5000
+
+/datum/slaver_gear/smg_rubber
+	name = "SMG Kit (rubber)"
+	description = "WT-550 Semi-Automatic SMG with rubber munitions. Spare magazine x 3."
+	id = "smg_rubber"
+	build_path = /obj/item/storage/backpack/duffelbag/syndie/smg_rubber
+	category = "Firearms"
+	cost = 3000
+
+/datum/slaver_gear/ion
+	name = "Ion carbines"
+	description = "Ion carbine x 2."
+	id = "ion"
+	build_path = /obj/item/storage/backpack/duffelbag/syndie/ion
+	category = "Firearms"
+	cost = 3000
+
 /datum/slaver_gear/marksman
 	name = "Marksman Kit"
 	description = ".50 cal sniper rifle with sleep-inducing rounds."
 	id = "marksman"
-	build_path = /obj/structure/closet/crate/slaver_marksman
-	category = "Advanced"
+	build_path = /obj/item/storage/backpack/duffelbag/syndie/slaver_marksman
+	category = "Firearms"
 	cost = 10000
 
 /datum/slaver_gear/mech
 	name = "Gygax 'Riot-Control' Exosuit"
-	description = "A lightweight, agile mecha. This one comes with a taser cannon, clusterbang launcher and breaching missiles. Must be self-assembled."
+	description = "A lightweight, agile mecha. Weapons sold separately."
 	id = "mech"
-	build_path = /obj/structure/closet/crate/slaver_mech
+	build_path = /obj/mecha/combat/gygax
 	category = "Mech"
-	cost = 40000
+	cost = 30000
 
-/datum/slaver_gear/mech_ammo
-	name = "Gygax Exosuit Ammo"
-	description = "A shipment of ammo for the Gygax 'Riot-Control' Exosuit. Clusterbang x 3, breaching missile x 6."
-	id = "mech_ammo"
-	build_path = /obj/structure/closet/crate/slaver_mech_ammo
+/datum/slaver_gear/mech_taser
+	name = "PBT \"Pacifier\" Mounted Taser"
+	description = "Shoots non-lethal stunning electrodes."
+	id = "mech_taser"
+	build_path = /obj/item/mecha_parts/mecha_equipment/weapon/energy/taser
 	category = "Mech"
-	cost = 10000
+	cost = 3000
+
+/datum/slaver_gear/mech_ion
+	name = "MKIV Ion Heavy Cannon"
+	description = "Shoots technology-disabling ion beams. Don't catch yourself in the blast!"
+	id = "mech_ion"
+	build_path = /obj/item/mecha_parts/mecha_equipment/weapon/energy/ion
+	category = "Mech"
+	cost = 3000
+
+/datum/slaver_gear/mech_shotgun
+	name = "LBX AC 10 \"Scattershot\""
+	description = "Shoots a spread of pellets."
+	id = "mech_shotgun"
+	build_path = /obj/item/mecha_parts/mecha_equipment/weapon/ballistic/scattershot
+	category = "Mech"
+	cost = 3000
+
+/datum/slaver_gear/mech_shotgun_ammo
+	name = "LBX AC 10 \"Scattershot\" Ammo"
+	description = "Buckshot for the LBX AC 10 \"Scattershot\" x 40."
+	id = "mech_shotgun_ammo"
+	build_path = /obj/item/mecha_ammo/scattershot
+	category = "Mech"
+	cost = 1000
+
+/datum/slaver_gear/mech_lmg
+	name = "Ultra AC 2"
+	description = "Shoots a rapid, three shot burst."
+	id = "mech_lmg"
+	build_path = /obj/item/mecha_parts/mecha_equipment/weapon/ballistic/lmg
+	category = "Mech"
+	cost = 3000
+
+/datum/slaver_gear/mech_lmg_ammo
+	name = "Ultra AC 2 Ammo"
+	description = "Rounds for the Ultra AC 2 x 300."
+	id = "mech_lmg_ammo"
+	build_path = /obj/item/mecha_ammo/lmg
+	category = "Mech"
+	cost = 1000
+
+/datum/slaver_gear/mech_laser
+	name = "CH-LC \"Solaris\" Laser Cannon"
+	description = "Shoots heavy lasers."
+	id = "mech_laser"
+	build_path = /obj/item/mecha_parts/mecha_equipment/weapon/energy/laser/heavy
+	category = "Mech"
+	cost = 3000
+
+/datum/slaver_gear/mech_missiles
+	name = "BRM-6 Missile Rack"
+	description = "Launches low-explosive breaching missiles designed to explode only when striking a sturdy target."
+	id = "mech_missiles"
+	build_path = /obj/item/mecha_parts/mecha_equipment/weapon/ballistic/missile_rack/breaching
+	category = "Mech"
+	cost = 1500
+
+/datum/slaver_gear/mech_missiles_ammo
+	name = "BRM-6 Missile Rack Ammo"
+	description = "Missiles for the BRM-6 missile rack x 6."
+	id = "mech_missiles_ammo"
+	build_path = /obj/item/mecha_ammo/missiles_br
+	category = "Mech"
+	cost = 500
+
+/datum/slaver_gear/mech_cluster
+	name = "SOB-3 Grenade Launcher"
+	description = "Launches primed clusterbangs. You monster."
+	id = "mech_cluster"
+	build_path = /obj/item/mecha_parts/mecha_equipment/weapon/ballistic/launcher/flashbang/clusterbang
+	category = "Mech"
+	cost = 3000
+
+/datum/slaver_gear/mech_cluster_ammo
+	name = "SOB-3 Grenade Launcher Ammo"
+	description = "Grenades for the SOB-3 grenade launcher x 3"
+	id = "mech_cluster_ammo"
+	build_path = /obj/item/mecha_ammo/clusterbang
+	category = "Mech"
+	cost = 1000
+
+/datum/slaver_gear/mech_repair
+	name = "Exosuit Repair Droid"
+	description = "An automated repair droid for exosuits. Scans for damage and repairs it. Can fix almost all types of external or internal damage."
+	id = "mech_repair"
+	build_path = /obj/item/mecha_parts/mecha_equipment/repair_droid
+	category = "Mech"
+	cost = 1500

@@ -18,6 +18,7 @@
 	new /obj/item/melee/classic_baton/telescopic(src)
 	new /obj/item/reagent_containers/hypospray/medipen/survival(src)
 	new /obj/item/pen/sleepy(src)
+	new /obj/item/slaver/gizmo(src)
 
 //Copy of above in crate version
 /obj/structure/closet/crate/slaver_loadout
@@ -38,3 +39,4 @@
 	new /obj/item/melee/classic_baton/telescopic(src)
 	new /obj/item/reagent_containers/hypospray/medipen/survival(src)
 	new /obj/item/pen/sleepy(src)
+	new /obj/item/slaver/gizmo(src)
