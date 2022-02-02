@@ -169,9 +169,7 @@
 /turf/open/floor/plasteel,
 /area/lavaland/surface/outdoors)
 "wF" = (
-/obj/item/stack/sheet/mineral/uranium{
-	amount = 2
-	},
+/obj/item/circuitboard/machine/mining_equipment_vendor/golem,
 /turf/open/floor/plating/asteroid/basalt/lava_land_surface,
 /area/lavaland/surface/outdoors)
 "yv" = (
@@ -211,7 +209,7 @@
 /area/lavaland/surface/outdoors)
 "CV" = (
 /obj/machinery/door/airlock/external/glass,
-/turf/template_noop,
+/turf/open/floor/plasteel,
 /area/lavaland/surface/outdoors)
 "CX" = (
 /obj/effect/mob_spawn/human/wandering_hermit,
@@ -241,6 +239,11 @@
 /area/lavaland/surface/outdoors)
 "GU" = (
 /obj/structure/cable,
+/turf/open/floor/plating/asteroid/basalt/lava_land_surface,
+/area/lavaland/surface/outdoors)
+"HK" = (
+/obj/structure/frame/machine,
+/obj/item/circuitboard/machine/autolathe,
 /turf/open/floor/plating/asteroid/basalt/lava_land_surface,
 /area/lavaland/surface/outdoors)
 "II" = (
@@ -362,9 +365,7 @@
 /turf/open/floor/plasteel,
 /area/lavaland/surface/outdoors)
 "VT" = (
-/obj/item/stack/sheet/mineral/gold{
-	amount = 5
-	},
+/obj/item/card/id/mining,
 /turf/open/floor/plating/asteroid/basalt/lava_land_surface,
 /area/lavaland/surface/outdoors)
 "We" = (
@@ -656,7 +657,7 @@ bv
 Yt
 Pm
 rR
-ha
+VT
 pE
 Pm
 Br
@@ -693,7 +694,7 @@ ig
 rp
 GU
 Br
-gd
+HK
 gd
 ha
 ha
@@ -723,7 +724,7 @@ QQ
 QQ
 QQ
 ch
-ha
+wF
 ZP
 Nq
 ch
@@ -778,7 +779,7 @@ QQ
 ha
 ha
 Cj
-VT
+ha
 Dr
 Qn
 Qn
@@ -796,7 +797,7 @@ ha
 Qn
 Pm
 ha
-wF
+ha
 Dr
 Qn
 Qn
