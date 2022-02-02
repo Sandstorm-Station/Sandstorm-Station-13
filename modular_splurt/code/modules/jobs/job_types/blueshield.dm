@@ -80,3 +80,11 @@
 /obj/effect/landmark/start/blueshield
 	name = "Blueshield"
 	icon_state = "Security Officer"
+
+/area/command/blueshieldoffice
+	name = "Blueshield's Office"
+	icon_state = "bridge"
+
+/area/command/blueshielquarters
+	name = "Blueshield's Quarters"
+	icon_state = "bridge"

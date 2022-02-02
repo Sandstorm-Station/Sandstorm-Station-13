@@ -5631,9 +5631,7 @@
 	dir = 8
 	},
 /turf/closed/wall,
-/area/command/bridge{
-	name = "Blueshield's Office"
-	})
+/area/command/blueshielquarters)
 "aoH" = (
 /obj/structure/lattice,
 /obj/structure/grille,
@@ -7507,9 +7505,7 @@
 /area/commons/fitness/recreation)
 "atp" = (
 /turf/closed/wall,
-/area/command/bridge{
-	name = "Blueshield's Office"
-	})
+/area/command/blueshieldoffice)
 "atv" = (
 /obj/machinery/door/window/brigdoor/security/cell{
 	id = "Cell 3";
@@ -41298,9 +41294,7 @@
 	},
 /obj/item/pen,
 /turf/open/floor/carpet,
-/area/command/bridge{
-	name = "Blueshield's Office"
-	})
+/area/command/blueshieldoffice)
 "bSh" = (
 /obj/machinery/atmospherics/components/binary/pump{
 	dir = 8;
@@ -51608,9 +51602,7 @@
 	dir = 4
 	},
 /turf/open/floor/carpet,
-/area/command/bridge{
-	name = "Blueshield's Office"
-	})
+/area/command/blueshieldoffice)
 "cOp" = (
 /obj/item/clothing/mask/gas,
 /obj/item/clothing/mask/gas,
@@ -51715,9 +51707,7 @@
 	dir = 4
 	},
 /turf/closed/wall,
-/area/command/bridge{
-	name = "Blueshield's Office"
-	})
+/area/command/blueshielquarters)
 "cTI" = (
 /obj/item/wirecutters,
 /obj/effect/spawner/lootdrop/maintenance,
@@ -52428,9 +52418,7 @@
 	dir = 8
 	},
 /turf/open/floor/carpet,
-/area/command/bridge{
-	name = "Blueshield's Office"
-	})
+/area/command/blueshielquarters)
 "egu" = (
 /obj/structure/bookcase/random/religion,
 /turf/open/floor/plasteel/dark,
@@ -52692,9 +52680,7 @@
 	dir = 5
 	},
 /turf/open/floor/wood,
-/area/command/bridge{
-	name = "Blueshield's Office"
-	})
+/area/command/blueshieldoffice)
 "eKC" = (
 /obj/machinery/door/airlock/grunge{
 	name = "Library"
@@ -53222,9 +53208,7 @@
 	dir = 4
 	},
 /turf/open/floor/plasteel/white,
-/area/command/bridge{
-	name = "Blueshield's Office"
-	})
+/area/command/blueshielquarters)
 "fFv" = (
 /obj/machinery/atmospherics/pipe/simple/scrubbers/hidden,
 /obj/machinery/firealarm{
@@ -53423,9 +53407,7 @@
 	pixel_y = 4
 	},
 /turf/open/floor/wood,
-/area/command/bridge{
-	name = "Blueshield's Office"
-	})
+/area/command/blueshieldoffice)
 "gdS" = (
 /obj/machinery/airalarm{
 	dir = 8;
@@ -53435,17 +53417,13 @@
 	dir = 8
 	},
 /turf/open/floor/carpet,
-/area/command/bridge{
-	name = "Blueshield's Office"
-	})
+/area/command/blueshieldoffice)
 "geb" = (
 /obj/machinery/light{
 	dir = 8
 	},
 /turf/open/floor/wood,
-/area/command/bridge{
-	name = "Blueshield's Office"
-	})
+/area/command/blueshielquarters)
 "geL" = (
 /obj/machinery/atmospherics/pipe/manifold/scrubbers/hidden{
 	dir = 4
@@ -53814,9 +53792,7 @@
 	dir = 4
 	},
 /turf/open/floor/carpet,
-/area/command/bridge{
-	name = "Blueshield's Office"
-	})
+/area/command/blueshieldoffice)
 "gDZ" = (
 /obj/effect/turf_decal/box/corners{
 	dir = 1
@@ -54096,9 +54072,7 @@
 	dir = 9
 	},
 /turf/open/floor/wood,
-/area/command/bridge{
-	name = "Blueshield's Office"
-	})
+/area/command/blueshielquarters)
 "gXZ" = (
 /obj/machinery/atmospherics/pipe/simple/scrubbers/hidden,
 /obj/machinery/camera{
@@ -54625,9 +54599,7 @@
 /area/maintenance/department/science)
 "hTR" = (
 /turf/open/floor/wood,
-/area/command/bridge{
-	name = "Blueshield's Office"
-	})
+/area/command/blueshieldoffice)
 "hUt" = (
 /obj/structure/closet/crate{
 	icon_state = "crateopen"
@@ -54725,9 +54697,7 @@
 	pixel_x = 28
 	},
 /turf/open/floor/carpet,
-/area/command/bridge{
-	name = "Blueshield's Office"
-	})
+/area/command/blueshielquarters)
 "igB" = (
 /obj/machinery/camera{
 	c_tag = "Turbine Chamber";
@@ -54987,9 +54957,7 @@
 	dir = 1
 	},
 /turf/open/floor/plasteel/white,
-/area/command/bridge{
-	name = "Blueshield's Office"
-	})
+/area/command/blueshielquarters)
 "izB" = (
 /obj/machinery/door/airlock/external{
 	name = "Escape Pod"
@@ -55646,6 +55614,9 @@
 /obj/machinery/atmospherics/pipe/simple/scrubbers/hidden,
 /turf/open/floor/plasteel/yellowsiding,
 /area/hallway/secondary/entry)
+"jFu" = (
+/turf/open/floor/wood,
+/area/command/blueshielquarters)
 "jFw" = (
 /obj/effect/spawner/lootdrop/maintenance,
 /obj/machinery/atmospherics/pipe/simple/supply/hidden{
@@ -55695,9 +55666,7 @@
 	},
 /obj/machinery/door/firedoor,
 /turf/open/floor/carpet,
-/area/command/bridge{
-	name = "Blueshield's Office"
-	})
+/area/command/blueshielquarters)
 "jOB" = (
 /turf/open/floor/plating,
 /area/commons/storage/emergency/starboard)
@@ -56072,9 +56041,7 @@
 	dir = 8
 	},
 /turf/open/floor/plasteel/white,
-/area/command/bridge{
-	name = "Blueshield's Office"
-	})
+/area/command/blueshielquarters)
 "kuS" = (
 /obj/effect/turf_decal/stripes/line{
 	dir = 8
@@ -57279,9 +57246,7 @@
 	pixel_x = -22
 	},
 /turf/open/floor/carpet,
-/area/command/bridge{
-	name = "Blueshield's Office"
-	})
+/area/command/blueshielquarters)
 "mqS" = (
 /obj/structure/cable{
 	icon_state = "1-2"
@@ -57388,6 +57353,9 @@
 /obj/structure/cable/yellow,
 /turf/open/floor/plating,
 /area/tcommsat/computer)
+"mxY" = (
+/turf/closed/wall,
+/area/command/blueshielquarters)
 "myu" = (
 /obj/machinery/door/poddoor/preopen{
 	id = "bridge blast";
@@ -57677,9 +57645,7 @@
 /area/maintenance/disposal/incinerator)
 "nbX" = (
 /turf/open/floor/carpet,
-/area/command/bridge{
-	name = "Blueshield's Office"
-	})
+/area/command/blueshieldoffice)
 "ncm" = (
 /obj/machinery/atmospherics/pipe/simple/cyan/visible{
 	dir = 4
@@ -57815,9 +57781,7 @@
 	dir = 6
 	},
 /turf/closed/wall,
-/area/command/bridge{
-	name = "Blueshield's Office"
-	})
+/area/command/blueshielquarters)
 "nqu" = (
 /obj/machinery/atmospherics/pipe/heat_exchanging/simple{
 	dir = 10
@@ -57918,9 +57882,7 @@
 	pixel_y = -24
 	},
 /turf/open/floor/wood,
-/area/command/bridge{
-	name = "Blueshield's Office"
-	})
+/area/command/blueshieldoffice)
 "nxf" = (
 /obj/machinery/light/small{
 	dir = 4
@@ -57961,9 +57923,7 @@
 	dir = 4
 	},
 /turf/closed/wall,
-/area/command/bridge{
-	name = "Blueshield's Office"
-	})
+/area/command/blueshielquarters)
 "nzD" = (
 /obj/machinery/atmospherics/pipe/simple/supply/hidden{
 	dir = 6
@@ -58248,9 +58208,7 @@
 	dir = 1
 	},
 /turf/open/floor/carpet,
-/area/command/bridge{
-	name = "Blueshield's Office"
-	})
+/area/command/blueshielquarters)
 "nQc" = (
 /obj/structure/table,
 /obj/item/stack/sheet/metal/fifty,
@@ -58645,9 +58603,7 @@
 	icon_state = "4-8"
 	},
 /turf/open/floor/wood,
-/area/command/bridge{
-	name = "Blueshield's Office"
-	})
+/area/command/blueshieldoffice)
 "ozO" = (
 /obj/machinery/door/airlock/maintenance,
 /obj/structure/disposalpipe/segment,
@@ -58797,9 +58753,7 @@
 "oJf" = (
 /obj/machinery/atmospherics/pipe/simple/scrubbers/hidden,
 /turf/closed/wall,
-/area/command/bridge{
-	name = "Blueshield's Office"
-	})
+/area/command/blueshielquarters)
 "oKa" = (
 /obj/structure/rack,
 /obj/effect/spawner/lootdrop/maintenance{
@@ -59395,9 +59349,7 @@
 	dir = 4
 	},
 /turf/open/floor/wood,
-/area/command/bridge{
-	name = "Blueshield's Office"
-	})
+/area/command/blueshieldoffice)
 "pBD" = (
 /obj/structure/cable{
 	icon_state = "0-8"
@@ -59520,9 +59472,7 @@
 	icon_state = "0-8"
 	},
 /turf/open/floor/wood,
-/area/command/bridge{
-	name = "Blueshield's Office"
-	})
+/area/command/blueshieldoffice)
 "pGe" = (
 /obj/structure/chair{
 	dir = 1
@@ -59621,6 +59571,9 @@
 	},
 /turf/closed/wall/r_wall,
 /area/medical/virology)
+"pRr" = (
+/turf/open/floor/carpet,
+/area/command/blueshielquarters)
 "pRz" = (
 /obj/machinery/atmospherics/components/unary/vent_pump/on,
 /obj/effect/turf_decal/tile/red{
@@ -60033,9 +59986,7 @@
 	dir = 8
 	},
 /turf/open/floor/wood,
-/area/command/bridge{
-	name = "Blueshield's Office"
-	})
+/area/command/blueshieldoffice)
 "qEN" = (
 /obj/machinery/rnd/production/techfab/department/service,
 /obj/structure/window/reinforced{
@@ -60465,9 +60416,7 @@
 	dir = 9
 	},
 /turf/closed/wall,
-/area/command/bridge{
-	name = "Blueshield's Office"
-	})
+/area/command/blueshielquarters)
 "rnj" = (
 /obj/machinery/door/airlock/command{
 	name = "Blueshield's Quarters";
@@ -60475,9 +60424,7 @@
 	},
 /obj/machinery/door/firedoor,
 /turf/open/floor/wood,
-/area/command/bridge{
-	name = "Blueshield's Office"
-	})
+/area/command/blueshielquarters)
 "rnr" = (
 /obj/machinery/atmospherics/pipe/simple/scrubbers/hidden{
 	dir = 10
@@ -61092,9 +61039,7 @@
 /obj/structure/filingcabinet/chestdrawer,
 /obj/machinery/light,
 /turf/open/floor/wood,
-/area/command/bridge{
-	name = "Blueshield's Office"
-	})
+/area/command/blueshieldoffice)
 "syn" = (
 /obj/machinery/atmospherics/pipe/simple/scrubbers/hidden,
 /turf/closed/wall/mineral/iron,
@@ -61288,9 +61233,7 @@
 /obj/machinery/atmospherics/pipe/simple/supply/hidden,
 /obj/item/flashlight/lamp/green,
 /turf/open/floor/carpet,
-/area/command/bridge{
-	name = "Blueshield's Office"
-	})
+/area/command/blueshieldoffice)
 "sUP" = (
 /obj/machinery/atmospherics/pipe/manifold/scrubbers/hidden{
 	dir = 8
@@ -61615,9 +61558,7 @@
 /obj/item/bedsheet/blue/double,
 /obj/structure/bed/double,
 /turf/open/floor/carpet,
-/area/command/bridge{
-	name = "Blueshield's Office"
-	})
+/area/command/blueshielquarters)
 "ttS" = (
 /obj/structure/chair/stool,
 /obj/effect/turf_decal/tile/green,
@@ -61922,9 +61863,7 @@
 	dir = 10
 	},
 /turf/open/floor/wood,
-/area/command/bridge{
-	name = "Blueshield's Office"
-	})
+/area/command/blueshieldoffice)
 "tYu" = (
 /obj/item/reagent_containers/food/snacks/donut,
 /turf/open/floor/plating{
@@ -61971,9 +61910,7 @@
 "udp" = (
 /obj/machinery/photocopier,
 /turf/open/floor/wood,
-/area/command/bridge{
-	name = "Blueshield's Office"
-	})
+/area/command/blueshieldoffice)
 "uek" = (
 /obj/structure/rack,
 /obj/effect/spawner/lootdrop/maintenance{
@@ -62252,9 +62189,7 @@
 	},
 /obj/structure/closet/secure_closet/blueshield,
 /turf/open/floor/carpet,
-/area/command/bridge{
-	name = "Blueshield's Office"
-	})
+/area/command/blueshielquarters)
 "uwb" = (
 /obj/machinery/atmospherics/pipe/manifold/general/visible{
 	dir = 1
@@ -62315,9 +62250,7 @@
 	pixel_x = -29
 	},
 /turf/open/floor/wood,
-/area/command/bridge{
-	name = "Blueshield's Office"
-	})
+/area/command/blueshieldoffice)
 "uzh" = (
 /obj/effect/decal/cleanable/dirt,
 /obj/machinery/door/airlock/engineering/glass/critical{
@@ -62878,9 +62811,7 @@
 /obj/item/export/bottle/whiskey,
 /obj/item/reagent_containers/food/drinks/flask,
 /turf/open/floor/carpet,
-/area/command/bridge{
-	name = "Blueshield's Office"
-	})
+/area/command/blueshielquarters)
 "vuP" = (
 /obj/machinery/atmospherics/components/unary/vent_scrubber/on{
 	dir = 4
@@ -63058,9 +62989,7 @@
 	dir = 8
 	},
 /turf/open/floor/wood,
-/area/command/bridge{
-	name = "Blueshield's Office"
-	})
+/area/command/blueshieldoffice)
 "vOw" = (
 /obj/machinery/atmospherics/components/unary/vent_pump/on{
 	dir = 1
@@ -63179,9 +63108,7 @@
 	dir = 8
 	},
 /turf/open/floor/carpet,
-/area/command/bridge{
-	name = "Blueshield's Office"
-	})
+/area/command/blueshieldoffice)
 "vTL" = (
 /obj/machinery/vending/tool,
 /obj/effect/turf_decal/tile/neutral{
@@ -63313,9 +63240,7 @@
 	},
 /obj/machinery/atmospherics/pipe/simple/supply/hidden,
 /turf/open/floor/wood,
-/area/command/bridge{
-	name = "Blueshield's Office"
-	})
+/area/command/blueshieldoffice)
 "wfO" = (
 /mob/living/simple_animal/hostile/retaliate/poison/snake,
 /turf/open/floor/plating,
@@ -64359,9 +64284,7 @@
 "xLE" = (
 /obj/machinery/atmospherics/pipe/simple/scrubbers/hidden,
 /turf/open/floor/wood,
-/area/command/bridge{
-	name = "Blueshield's Office"
-	})
+/area/command/blueshieldoffice)
 "xLL" = (
 /turf/closed/wall,
 /area/maintenance/solars/port)
@@ -108871,9 +108794,9 @@ atp
 npO
 oJf
 rnf
-atp
-atn
-atn
+mxY
+mxY
+mxY
 avm
 avm
 avm
@@ -109130,7 +109053,7 @@ uvY
 mqQ
 efW
 vue
-atp
+mxY
 mZE
 aaa
 aaa
@@ -109384,10 +109307,10 @@ xLE
 xLE
 cSV
 nPI
-nbX
+pRr
 ier
 ttf
-atp
+mxY
 aaa
 aaa
 aaa
@@ -109639,12 +109562,12 @@ tYe
 eKq
 hTR
 nwA
-atp
+mxY
 nzh
 jMp
-atp
-atp
-atp
+mxY
+mxY
+mxY
 aaa
 aaa
 aaa
@@ -109898,10 +109821,10 @@ sSp
 qEq
 wfy
 gXB
-hTR
+jFu
 geb
-hTR
-atp
+jFu
+mxY
 aaa
 aaa
 aaa
@@ -110154,11 +110077,11 @@ vTF
 nbX
 vMQ
 sxR
-atp
-atp
+mxY
+mxY
 rnj
-atp
-atp
+mxY
+mxY
 aaa
 aaa
 aaa
@@ -110411,11 +110334,11 @@ gDY
 gdS
 hTR
 udp
-atp
+mxY
 ktt
 fDd
 izp
-atp
+mxY
 abN
 aaa
 aaa
@@ -110668,11 +110591,11 @@ atp
 atp
 atp
 atp
-atp
-atp
-atp
-atp
-atp
+mxY
+mxY
+mxY
+mxY
+mxY
 aaa
 aaa
 aaa
