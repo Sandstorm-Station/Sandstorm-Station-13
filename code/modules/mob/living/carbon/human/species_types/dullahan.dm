@@ -83,7 +83,6 @@
 
 /obj/item/organ/tongue/dullahan
 	zone = "abstract"
-	initial_accents = list(/datum/accent/dullahan)
 	accents = list(/datum/accent/dullahan)
 
 /obj/item/organ/ears/dullahan
