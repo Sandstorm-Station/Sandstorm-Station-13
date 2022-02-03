@@ -44,4 +44,5 @@
 	new /obj/item/clothing/under/rank/blueshield(src)
 	new /obj/item/clothing/under/rank/blueshield/skirt(src)
 	new /obj/item/clothing/head/helmet/blueshirt(src)
-	new /obj/item/storage/belt/security(src)
+	new /obj/item/storage/belt/security/full(src)
+	new /obj/item/clothing/mask/gas/sechailer/swat(src)

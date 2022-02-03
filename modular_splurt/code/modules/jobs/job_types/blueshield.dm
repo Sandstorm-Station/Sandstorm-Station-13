@@ -70,6 +70,7 @@
 	item_state = "com_headset_alt"
 	keyslot = new /obj/item/encryptionkey/headset_blueshield
 	bowman = TRUE
+	command = TRUE
 
 
 /obj/item/encryptionkey/headset_blueshield
