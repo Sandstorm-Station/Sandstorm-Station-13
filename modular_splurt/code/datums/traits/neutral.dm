@@ -59,7 +59,7 @@
 
 /datum/quirk/Hypnotic_gaze
 	name = "Hypnotic Gaze"
-	desc = "Be it through mysterious patterns, flickering colors or a glint of the eye, prolonged eye contact with others will place the target into a highly suggestible Hypnotic trance."
+	desc = "Be it through mysterious patterns, flickering colors or a glint of the eye, prolonged eye contact with others will place the T into a highly suggestible Hypnotic trance."
 	value = 0
 	mob_trait = TRAIT_HYPNOTIC_GAZE
 	gain_text = "<span class='notice'>Your eyes glimmer Hypnotically..</span>"
@@ -74,10 +74,12 @@
 
 /datum/action/innate/Hypnotize
 	name = "Hypnotize"
-	desc = "Stare deeply into someone's eyes, drawing them into a hypnotic slumber."
+	desc = "Stare deeply into someone's eyes, drawing them into a hypnotic slumber. Activate again to issue suggestions."
 	button_icon_state = "ling_pheromone"
 	icon_icon = 'icons/mob/actions/actions_changeling.dmi'
 	background_icon_state = "bg_alien"
+	var/mob/living/carbon/T //hypnosis target
+	var/mob/living/carbon/human/H //Person with the quirk
 
 /datum/action/innate/Hypnotize/Activate()
 	var/mob/living/carbon/human/H = owner
@@ -85,46 +87,50 @@
 		to_chat(H, "<span class='warning'>You need to aggressively grab someone to hypnotize them!</span>")
 		return
 
-	var/mob/living/target = H.pulling
+	var/mob/living/carbon/T = H.pulling
 
-	if(target.IsSleeping())
-		to_chat(H, "You can't hypnotize [target] whilst they're asleep!")
+	if(T.IsSleeping())
+		to_chat(H, "You can't hypnotize [T] whilst they're asleep!")
 		return
 
-	to_chat(H, "<span class='notice'>You stare deeply into [target]'s eyes...</span>")
-	to_chat(target, "<span class='warning'>[H] stares Intensely into your eyes...</span>")
-	if(!do_mob(H, target, 12 SECONDS))
+	to_chat(H, "<span class='notice'>You stare deeply into [T]'s eyes...</span>")
+	to_chat(T, "<span class='warning'>[H] stares Intensely into your eyes...</span>")
+	if(!do_mob(H, T, 12 SECONDS))
 		return
 
-	if(H.pulling !=target || H.grab_state < GRAB_AGGRESSIVE)
+	if(H.pulling !=T || H.grab_state < GRAB_AGGRESSIVE)
 		return
 
 	if(!(H in view(1, H.loc)))
 		return
 
-	var/response = alert(target, "Do you wish to fall into a hypnotic sleep?(This will allow [H] to issue hypnotic suggestions)", "Hypnosis", "Yes", "No")
+	var/response = alert(T, "Do you wish to fall into a hypnotic sleep?(This will allow [H] to issue hypnotic suggestions)", "Hypnosis", "Yes", "No")
 
 	if(response == "Yes")
-		target.visible_message("<span class='warning>[target] falls into a deep slumber!</span>", "<span class = 'danger'>Your eyelids gently shut as you fall into a deep slumber. All you can hear is [H]'s voice as you commit to following all of their suggestions</span>")
+		T.visible_message("<span class='warning>[T] falls into a deep slumber!</span>", "<span class = 'danger'>Your eyelids gently shut as you fall into a deep slumber. All you can hear is [H]'s voice as you commit to following all of their suggestions</span>")
 
-		target.SetSleeping(1200)
-		target.drowsyness = max(target.drowsyness, 40)
-		subject = target
+		T.SetSleeping(1200)
+		T.drowsyness = max(T.drowsyness, 40)
+		T = T
 		return
 
 	//no
-	target.visible_message("<span class='warning'>[target]'s attention breaks, despite your attempts to hypnotize them! They clearly don't want this</span>", "<span class ='warning'>Your concentration breaks as you realise you have no interest in following [H]'s words!</span>")
+	T.visible_message("<span class='warning'>[T]'s attention breaks, despite your attempts to hypnotize them! They clearly don't want this</span>", "<span class ='warning'>Your concentration breaks as you realise you have no interest in following [H]'s words!</span>")
 
 
-	if(!target.IsSleeping())
-		to_chat(H, "[target] is awake and no longer under hypnosis!")
-		target = null
+/datum/action/innate/Hypnotize/Activate()
+	if(H.pulling !=T || H.grab_state < GRAB_AGGRESSIVE)
 		return
 
-	response = alert(H, "Would you like to release your subject or give them a suggestion?", "Hypnosis", "Suggestion", "Release")
+	if(!T.IsSleeping())
+		to_chat(H, "[T] is awake and no longer under hypnosis!")
+		T = null
+		return
+
+	var/response = alert(H, "Would you like to release your subject or give them a suggestion?", "Hypnosis", "Suggestion", "Release")
 	if(response == "Suggestion")
-		if(get_dist(H, target) > 1)
-			to_chat(H, "You must stand in whisper range of [target].")
+		if(get_dist(H, T) > 1)
+			to_chat(H, "You must stand in whisper range of [T].")
 			return
 
 		var/text = input("What would you like to suggest?", "Hypnotic suggestion", null, null)
@@ -132,13 +138,13 @@
 		if(!text)
 			return
 
-		to_chat(H, "You whisper your suggestion in a smooth calming voice to [target]")
-		to_chat(target, "<span class='hypnophrase'>...[text]...</span>")
+		to_chat(H, "You whisper your suggestion in a smooth calming voice to [T]")
+		to_chat(T, "<span class='hypnophrase'>...[text]...</span>")
 		return
 	//release
-	target.visible_message("<span class='warning'>[target] wakes up from their deep slumber!</span>", "<span class = 'danger'>Your Your eyelids gently open as you see [H]'s face staring back at you</span>")
-	target.SetSleeping(0)
-	target = null
+	T.visible_message("<span class='warning'>[T] wakes up from their deep slumber!</span>", "<span class = 'danger'>Your Your eyelids gently open as you see [H]'s face staring back at you</span>")
+	T.SetSleeping(0)
+	T = null
 /datum/quirk/heat
 	name = "Estrus Detection"
 	desc = "You have a animalistic sense of detecting if someone is in heat."
