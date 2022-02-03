@@ -198,7 +198,7 @@
 			var/area/pod_storage_area = locate(/area/centcom/supplypod/podStorage) in GLOB.sortedAreas
 			var/mob/living/M = collar.loc
 
-			priority_announce("[M.real_name] has been returned to the station for [collar.price]cr.", sender_override = "[GLOB.slavers_team_name] Transmission")
+			priority_announce("[M.real_name] has been returned to the station for [collar.price] credits.", sender_override = "[GLOB.slavers_team_name] Transmission")
 			var/obj/structure/closet/supplypod/centcompod/exportPod = new(pick(get_area_turfs(pod_storage_area)))
 			var/obj/effect/landmark/observer_start/dropzone = locate(/obj/effect/landmark/observer_start) in GLOB.landmarks_list
 			M.forceMove(exportPod)

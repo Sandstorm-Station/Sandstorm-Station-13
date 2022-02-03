@@ -2,9 +2,10 @@ import { map, sortBy } from 'common/collections';
 import { flow } from 'common/fp';
 import { vecLength, vecSubtract } from 'common/vector';
 import { useBackend, useSharedState } from '../backend';
-import { Box, Button, Icon, LabeledList, Section, Flex, Tabs, NoticeBox, Fragment } from '../components';
+import { Box, Button, Icon, LabeledList, Section, Tabs, NoticeBox, Fragment } from '../components';
 import { Window } from '../layouts';
 import { GenericUplink } from './Uplink';
+import { formatMoney } from '../format';
 
 const coordsToVec = coords => map(parseFloat)(coords.split(', '));
 
@@ -53,11 +54,11 @@ export const SlaveConsole = (props, context) => {
           <LabeledList>
             <LabeledList.Item
               label="Our credits">
-              {credits}cr
+              {formatMoney(credits, null, true)}cr
             </LabeledList.Item>
             <LabeledList.Item
               label="Station credits">
-              {cargocredits}cr
+              {formatMoney(cargocredits, null, true)}cr
             </LabeledList.Item>
           </LabeledList>
         </Section>
@@ -165,7 +166,7 @@ const SlavePanel = (props, context) => {
             <Fragment>
               <Button
                 icon="pencil-alt"
-                content={slave.price ? slave.price + "cr" : "Set price"}
+                content={slave.price ? formatMoney(slave.price, null, true) + "cr" : "Set price"}
                 tooltip="The station will need to pay this."
                 disabled={slave.pricechangecooldown > 0 || slave.bought}
                 onClick={() => act('setPrice', {

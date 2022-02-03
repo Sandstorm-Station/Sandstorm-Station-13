@@ -4,7 +4,7 @@
 	righthand_file = 'icons/mob/inhands/antag/abductor_righthand.dmi'
 
 /obj/item/slaver/gizmo
-	name = "Collection tool"
+	name = "\improper collection tool"
 	desc = "A short-range teleportation device. Use on another creature to instantly beam them to your ship."
 	icon_state = "silencer"
 	item_state = "gizmo"
@@ -34,7 +34,7 @@
 		to_chat(user, "<span class='warning'>The mothership is out of range, you need to be on the same z-level!</span>")
 		return
 
-	user.visible_message("<span class='notice'>[user] begins scanning [M] with \the [src].</span>", "<span class='notice'>You begin scanning [M] with \the [src].</span>")
+	user.visible_message("<span class='notice'>[user] begins scanning [M] with [src].</span>", "<span class='notice'>You begin scanning [M] with [src].</span>")
 	if(do_mob(user, M, 15 SECONDS))
 		// Teleport!
 		playsound(get_turf(M.loc), 'sound/magic/blink.ogg', 50, 1)
@@ -111,6 +111,20 @@
 	new /obj/item/clothing/suit/space/hardsuit/syndi(src)
 	new /obj/item/clothing/suit/space/hardsuit/syndi(src)
 
+/obj/item/storage/backpack/duffelbag/syndie/disablers
+	name = "disablers"
+
+/obj/item/storage/backpack/duffelbag/syndie/disablers/PopulateContents()
+	new /obj/item/gun/energy/disabler(src)
+	new /obj/item/gun/energy/disabler(src)
+
+/obj/item/storage/backpack/duffelbag/syndie/energy
+	name = "energy weapons"
+
+/obj/item/storage/backpack/duffelbag/syndie/energy/PopulateContents()
+	new /obj/item/gun/energy/e_gun(src)
+	new /obj/item/gun/energy/e_gun(src)
+
 /obj/item/storage/backpack/duffelbag/syndie/smg_rubber
 	name = "SMG kit (rubber)"
 
@@ -175,3 +189,8 @@
 	new /obj/item/melee/baton/loaded(src)
 	new /obj/item/storage/box/handcuffs(src)
 	new /obj/item/electrostaff(src)
+
+// A chameleon kit that anybody can use, with a generic name.
+/obj/item/storage/box/syndie_kit/chameleon/ghostcafe/generic
+	name = "chameleon kit"
+	desc = "Now you don't have to steal your mom's clothes anymore."

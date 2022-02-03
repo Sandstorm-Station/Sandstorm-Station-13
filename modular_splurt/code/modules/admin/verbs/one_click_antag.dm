@@ -29,13 +29,13 @@
 		var/datum/team/slavers/slaver_team
 		for(var/mob/c in chosen)
 			var/mob/living/carbon/human/new_character=makeBody(c)
-			if(!leader_chosen)
+			if(!leader_chosen && !GLOB.slavers_spawned) // If we have no leader, pick one. Second check means only pick a leader if no previous slaver team has spawned, avoiding multiple leaders.
 				leader_chosen = TRUE
 				new_character.mind.add_antag_datum(/datum/antagonist/slaver/leader)
 			else
 				new_character.mind.add_antag_datum(/datum/antagonist/slaver,slaver_team)
 
-		priority_announce("Unidentified ship detected near the station.", "Enemy communication intercepted. Security level elevated.", "intercept")
+		GLOB.slavers_spawned = TRUE
 		return 1
 	else
 		return 0

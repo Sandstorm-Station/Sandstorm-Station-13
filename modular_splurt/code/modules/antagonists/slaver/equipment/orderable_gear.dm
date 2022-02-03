@@ -59,7 +59,7 @@ GLOBAL_LIST_INIT(slaver_gear, subtypesof(/datum/slaver_gear))
 	description = "A set of items that contain chameleon technology allowing you to disguise as pretty much anything on the station, and more! \
 			Due to budget cuts, the shoes don't provide protection against slipping."
 	id = "chameleon"
-	build_path = /obj/item/storage/box/syndie_kit/chameleon
+	build_path = /obj/item/storage/box/syndie_kit/chameleon/ghostcafe/generic
 	category = "Slaving"
 	cost = 1000
 
@@ -69,7 +69,7 @@ GLOBAL_LIST_INIT(slaver_gear, subtypesof(/datum/slaver_gear))
 	id = "policing"
 	build_path = /obj/item/storage/backpack/duffelbag/syndie/policing_shipment
 	category = "Slaving"
-	cost = 2000
+	cost = 3000
 
 /datum/slaver_gear/slaver_gear
 	name = "Slaver Gear"
@@ -77,7 +77,7 @@ GLOBAL_LIST_INIT(slaver_gear, subtypesof(/datum/slaver_gear))
 	id = "slaver_gear"
 	build_path = /obj/structure/closet/crate/slaver_loadout
 	category = "Slaving"
-	cost = 750
+	cost = 1000
 
 /datum/slaver_gear/x4
 	name = "X4 charges"
@@ -85,7 +85,7 @@ GLOBAL_LIST_INIT(slaver_gear, subtypesof(/datum/slaver_gear))
 	id = "x4"
 	build_path = /obj/item/storage/box/syndie_kit/x4
 	category = "Advanced"
-	cost = 1250
+	cost = 2500
 
 /datum/slaver_gear/emag
 	name = "Cryptographic Sequencer"
@@ -93,15 +93,7 @@ GLOBAL_LIST_INIT(slaver_gear, subtypesof(/datum/slaver_gear))
 	id = "emag"
 	build_path = /obj/item/card/emag
 	category = "Advanced"
-	cost = 3000
-
-/datum/slaver_gear/implant_teleport
-	name = "Emergency Teleport Implants"
-	description = "Emergency teleport implant x 2."
-	id = "implant_teleport"
-	build_path = /obj/item/storage/box/slaver_teleport
-	category = "Advanced"
-	cost = 7000
+	cost = 6000
 
 /datum/slaver_gear/hardsuits
 	name = "Combat Hardsuits"
@@ -109,7 +101,7 @@ GLOBAL_LIST_INIT(slaver_gear, subtypesof(/datum/slaver_gear))
 	id = "hardsuits"
 	build_path = /obj/item/storage/backpack/duffelbag/syndie/slaver_hardsuits
 	category = "Advanced"
-	cost = 4500
+	cost = 10000
 
 /datum/slaver_gear/riot
 	name = "Riot Kit"
@@ -117,7 +109,7 @@ GLOBAL_LIST_INIT(slaver_gear, subtypesof(/datum/slaver_gear))
 	id = "riot"
 	build_path = /obj/item/storage/backpack/duffelbag/syndie/l6saw_shipment
 	category = "Advanced"
-	cost = 2000
+	cost = 4000
 
 /datum/slaver_gear/medic
 	name = "Medic Kit"
@@ -125,7 +117,7 @@ GLOBAL_LIST_INIT(slaver_gear, subtypesof(/datum/slaver_gear))
 	id = "implant_teleport"
 	build_path = /obj/item/storage/firstaid/tactical/slaver
 	category = "Advanced"
-	cost = 2500
+	cost = 3500
 
 /datum/slaver_gear/chems
 	name = "Bio Kit"
@@ -135,7 +127,23 @@ GLOBAL_LIST_INIT(slaver_gear, subtypesof(/datum/slaver_gear))
 	id = "chems"
 	build_path = /obj/item/storage/backpack/duffelbag/syndie/med/sleeperbundle
 	category = "Advanced"
-	cost = 2500
+	cost = 5500
+
+/datum/slaver_gear/disablers
+	name = "Disablers"
+	description = "An energy weapon that exhausts organic targets, weakening them until they collapse x 2"
+	id = "disablers"
+	build_path = /obj/item/storage/backpack/duffelbag/syndie/disablers
+	category = "Firearms"
+	cost = 5000
+
+/datum/slaver_gear/energy
+	name = "Energy Weapons"
+	description = "A basic hybrid energy gun with two settings: disable and kill x 2"
+	id = "energy"
+	build_path = /obj/item/storage/backpack/duffelbag/syndie/energy
+	category = "Firearms"
+	cost = 12000
 
 /datum/slaver_gear/smg
 	name = "SMG Kit"
@@ -143,7 +151,7 @@ GLOBAL_LIST_INIT(slaver_gear, subtypesof(/datum/slaver_gear))
 	id = "smg"
 	build_path = /obj/item/storage/backpack/duffelbag/syndie/smg
 	category = "Firearms"
-	cost = 5000
+	cost = 15000
 
 /datum/slaver_gear/smg_rubber
 	name = "SMG Kit (rubber)"
@@ -151,7 +159,7 @@ GLOBAL_LIST_INIT(slaver_gear, subtypesof(/datum/slaver_gear))
 	id = "smg_rubber"
 	build_path = /obj/item/storage/backpack/duffelbag/syndie/smg_rubber
 	category = "Firearms"
-	cost = 3000
+	cost = 10000
 
 /datum/slaver_gear/ion
 	name = "Ion carbines"
@@ -159,7 +167,7 @@ GLOBAL_LIST_INIT(slaver_gear, subtypesof(/datum/slaver_gear))
 	id = "ion"
 	build_path = /obj/item/storage/backpack/duffelbag/syndie/ion
 	category = "Firearms"
-	cost = 3000
+	cost = 7500
 
 /datum/slaver_gear/marksman
 	name = "Marksman Kit"
@@ -167,15 +175,39 @@ GLOBAL_LIST_INIT(slaver_gear, subtypesof(/datum/slaver_gear))
 	id = "marksman"
 	build_path = /obj/item/storage/backpack/duffelbag/syndie/slaver_marksman
 	category = "Firearms"
+	cost = 40000
+
+/datum/slaver_gear/freedom
+	name = "Freedom Implant"
+	description = "An implant that instantly releases you from handcuffs."
+	id = "freedom"
+	build_path = /obj/item/storage/box/syndie_kit/imp_freedom
+	category = "Implants"
+	cost = 4000
+
+/datum/slaver_gear/xray
+	name = "X-Ray Implant"
+	description = "An implant that lets you see through solid walls."
+	id = "xray"
+	build_path = /obj/item/autosurgeon/xray_eyes
+	category = "Implants"
 	cost = 10000
+
+/datum/slaver_gear/implant_teleport
+	name = "Emergency Teleport Implants"
+	description = "Emergency teleport implant x 2."
+	id = "implant_teleport"
+	build_path = /obj/item/storage/box/slaver_teleport
+	category = "Implants"
+	cost = 15000
 
 /datum/slaver_gear/mech
 	name = "Gygax 'Riot-Control' Exosuit"
 	description = "A lightweight, agile mecha. Weapons sold separately."
 	id = "mech"
-	build_path = /obj/mecha/combat/gygax
+	build_path = /obj/mecha/combat/gygax/bluespace
 	category = "Mech"
-	cost = 30000
+	cost = 50000
 
 /datum/slaver_gear/mech_taser
 	name = "PBT \"Pacifier\" Mounted Taser"

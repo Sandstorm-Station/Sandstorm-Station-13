@@ -32,5 +32,5 @@
 
 /datum/objective/slaver
 	name = "slave trading"
-	explanation_text = "Earn 30,000 credits through slave trading."
-	
+	explanation_text = "Earn 200,000 credits through slave trading."
+
