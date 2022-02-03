@@ -77,7 +77,7 @@
 	name = "brig physician outfit"
 	desc = "The uniform of the Brig Physician. Do know harm."
 	icon = 'modular_splurt/icons/obj/clothing/uniforms.dmi'
-	mob_overlay_icon = 'modular_splurt/icons/mobs/uniforms.dmi'
+	mob_overlay_icon = 'modular_splurt/icons/mob/clothing/uniform.dmi'
 	icon_state = "brigphys"
 	item_state = "brigphys"
 	armor = list("melee" = 10, "bullet" = 0, "laser" = 0,"energy" = 0, "bomb" = 0, "bio" = 10, "rad" = 0, "fire" = 20, "acid" = 30, "wound" = 10)
@@ -98,7 +98,7 @@
 	name = "blueshield outfit"
 	desc = "The uniform of the Blueshield. It makes you feel protected"
 	icon = 'modular_splurt/icons/obj/clothing/uniforms.dmi'
-	mob_overlay_icon = 'modular_splurt/icons/mobs/uniforms.dmi'
+	mob_overlay_icon = 'modular_splurt/icons/mob/clothing/uniform.dmi'
 	icon_state = "blueshield"
 	item_state = "blueshield"
 	armor = list("melee" = 10, "bullet" = 5, "laser" = 5,"energy" = 5, "bomb" = 0, "bio" = 0, "rad" = 0, "fire" = 20, "acid" = 30, "wound" = 10)
