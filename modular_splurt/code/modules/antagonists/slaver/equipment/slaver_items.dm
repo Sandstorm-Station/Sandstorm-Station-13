@@ -8,6 +8,7 @@
 	desc = "A short-range teleportation device. Use on another creature to instantly beam them to your ship."
 	icon_state = "silencer"
 	item_state = "gizmo"
+	w_class = WEIGHT_CLASS_SMALL
 
 /obj/item/slaver/gizmo/attack(mob/living/M, mob/user)
 	var/datum/antagonist/slaver/S = locate() in user.mind.antag_datums
