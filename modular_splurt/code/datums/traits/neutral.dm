@@ -134,7 +134,7 @@
 	T.visible_message("<span class='warning'>[T] wakes up from their deep slumber!</span>", "<span class ='danger'>Your eyelids gently open as you see [H]'s face staring back at you</span>")
 	T.SetSleeping(0)
 	T = null
-		return
+	return
 /datum/quirk/heat
 	name = "Estrus Detection"
 	desc = "You have a animalistic sense of detecting if someone is in heat."
