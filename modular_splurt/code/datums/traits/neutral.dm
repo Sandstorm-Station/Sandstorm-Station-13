@@ -74,7 +74,7 @@
 
 /datum/action/innate/Hypnotize
 	name = "Hypnotize"
-	desc = "Stare deeply into someone's eyes, drawing them into a hypnotic slumber. Activate again to issue suggestions."
+	desc = "Stare deeply into someone's eyes, drawing them into a hypnotic slumber."
 	button_icon_state = "ling_pheromone"
 	icon_icon = 'icons/mob/actions/actions_changeling.dmi'
 	background_icon_state = "bg_alien"
@@ -127,14 +127,18 @@
 
 			to_chat(H, "You whisper your suggestion in a smooth calming voice to [T]")
 			to_chat(T, "<span class='hypnophrase'>...[text]...</span>")
+
+			T.visible_message("<span class='warning'>[T] wakes up from their deep slumber!</span>", "<span class ='danger'>Your eyelids gently open as you see [H]'s face staring back at you</span>")
+			T.SetSleeping(0)
+			T = null
+			return
+
+		if(response2 == "Release")
+			T.SetSleeping(0)
 			return
 	else
 		T.visible_message("<span class='warning'>[T]'s attention breaks, despite your attempts to hypnotize them! They clearly don't want this</span>", "<span class ='warning'>Your concentration breaks as you realise you have no interest in following [H]'s words!</span>")
-	//Return
-	T.visible_message("<span class='warning'>[T] wakes up from their deep slumber!</span>", "<span class ='danger'>Your eyelids gently open as you see [H]'s face staring back at you</span>")
-	T.SetSleeping(0)
-	T = null
-	return
+		return
 /datum/quirk/heat
 	name = "Estrus Detection"
 	desc = "You have a animalistic sense of detecting if someone is in heat."
