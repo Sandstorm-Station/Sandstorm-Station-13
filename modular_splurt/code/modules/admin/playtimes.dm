@@ -4,10 +4,12 @@
 	var/next_chem_grief_warning = 0
 	var/next_canister_grief_warning = 0
 	var/next_ied_grief_warning = 0
+	var/next_circuit_grief_warning = 0
 	var/touched_transfer_valve = FALSE
 	var/used_chem_dispenser = FALSE
 	var/touched_canister = FALSE
 	var/crafted_ied = FALSE
+	var/touched_circuit = FALSE
 
 /client/proc/cmd_player_playtimes()
 	set category = "Admin"
@@ -87,6 +89,12 @@
 		var/list/flag = list()
 		flag["icon"] = "hammer"
 		flag["tooltip"] = "This player crafted an IED or Molotov."
+		flags += list(flag)
+
+	if (C.touched_circuit)
+		var/list/flag = list()
+		flag["icon"] = "code-branch"
+		flag["tooltip"] = "This player touched a circuit printer."
 		flags += list(flag)
 
 	return flags
