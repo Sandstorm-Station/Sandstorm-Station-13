@@ -81,10 +81,6 @@
 	var/mob/living/carbon/T //hypnosis target
 	var/mob/living/carbon/human/H //Person with the quirk
 
-//how do you give the suggestion?
-//an alert?
-//yeah, normally you'd click the watch to give it, but this doesn't have that
-//if you look at mesmetron.dm a lot of the latter half of this is pulled from there
 /datum/action/innate/Hypnotize/Activate()
 	var/mob/living/carbon/human/H = owner
 
@@ -134,7 +130,7 @@
 			return
 	else
 		T.visible_message("<span class='warning'>[T]'s attention breaks, despite your attempts to hypnotize them! They clearly don't want this</span>", "<span class ='warning'>Your concentration breaks as you realise you have no interest in following [H]'s words!</span>")
-	//tgstation.dme
+	//Return
 	T.visible_message("<span class='warning'>[T] wakes up from their deep slumber!</span>", "<span class ='danger'>Your eyelids gently open as you see [H]'s face staring back at you</span>")
 	T.SetSleeping(0)
 	T = null
