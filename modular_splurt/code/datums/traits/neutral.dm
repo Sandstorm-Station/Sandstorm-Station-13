@@ -87,11 +87,20 @@
 
 	var/mob/living/target = H.pulling
 
+	if(target.IsSleeping())
+		to_chat(H, "You can't hypnotize [target] whilst they're asleep!")
+		return
+
 	to_chat(H, "<span class='notice'>You stare deeply into [target]'s eyes...</span>")
 	to_chat(target, "<span class='warning'>[H] stares Intensely into your eyes...</span>")
-	if(do_after(H, 60, target = target))
-		if(H.pulling !=target || H.grab_state < GRAB_AGGRESSIVE)
-			return
+	if(!do_mob(H, target, 12 SECONDS))
+		return
+
+	if(H.pulling !=target || H.grab_state < GRAB_AGGRESSIVE)
+		return
+
+	if(!(H in view(1, H.loc)))
+		return
 
 	var/response = alert(target, "Do you wish to fall into a hypnotic sleep?(This will allow [H] to issue hypnotic suggestions)", "Hypnosis", "Yes", "No")
 
@@ -100,6 +109,7 @@
 
 		target.SetSleeping(1200)
 		target.drowsyness = max(target.drowsyness, 40)
+		subject = target
 		return
 
 	//no
