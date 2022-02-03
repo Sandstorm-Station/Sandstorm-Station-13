@@ -81,8 +81,13 @@
 	var/mob/living/carbon/T //hypnosis target
 	var/mob/living/carbon/human/H //Person with the quirk
 
+//how do you give the suggestion?
+//an alert?
+//yeah, normally you'd click the watch to give it, but this doesn't have that
+//if you look at mesmetron.dm a lot of the latter half of this is pulled from there
 /datum/action/innate/Hypnotize/Activate()
 	var/mob/living/carbon/human/H = owner
+
 	if(!H.pulling || !isliving(H.pulling) || H.grab_state < GRAB_AGGRESSIVE)
 		to_chat(H, "<span class='warning'>You need to aggressively grab someone to hypnotize them!</span>")
 		return
@@ -111,40 +116,29 @@
 
 		T.SetSleeping(1200)
 		T.drowsyness = max(T.drowsyness, 40)
-		T = T
-		return
+		T = H.pulling
+		var/response2 = alert(H, "Would you like to release your subject or give them a suggestion?", "Hypnosis", "Suggestion", "Release")
 
-	//no
-	T.visible_message("<span class='warning'>[T]'s attention breaks, despite your attempts to hypnotize them! They clearly don't want this</span>", "<span class ='warning'>Your concentration breaks as you realise you have no interest in following [H]'s words!</span>")
+		if(response2 == "Suggestion")
+			if(get_dist(H, T) > 1)
+				to_chat(H, "You must stand in whisper range of [T].")
+				return
 
+			var/text = input("What would you like to suggest?", "Hypnotic suggestion", null, null)
+			text = sanitize(text)
+			if(!text)
+				return
 
-/datum/action/innate/Hypnotize/Activate()
-	if(H.pulling !=T || H.grab_state < GRAB_AGGRESSIVE)
-		return
-
-	if(!T.IsSleeping())
-		to_chat(H, "[T] is awake and no longer under hypnosis!")
-		T = null
-		return
-
-	var/response = alert(H, "Would you like to release your subject or give them a suggestion?", "Hypnosis", "Suggestion", "Release")
-	if(response == "Suggestion")
-		if(get_dist(H, T) > 1)
-			to_chat(H, "You must stand in whisper range of [T].")
+			to_chat(H, "You whisper your suggestion in a smooth calming voice to [T]")
+			to_chat(T, "<span class='hypnophrase'>...[text]...</span>")
 			return
-
-		var/text = input("What would you like to suggest?", "Hypnotic suggestion", null, null)
-		text = sanitize(text)
-		if(!text)
-			return
-
-		to_chat(H, "You whisper your suggestion in a smooth calming voice to [T]")
-		to_chat(T, "<span class='hypnophrase'>...[text]...</span>")
-		return
-	//release
-	T.visible_message("<span class='warning'>[T] wakes up from their deep slumber!</span>", "<span class = 'danger'>Your Your eyelids gently open as you see [H]'s face staring back at you</span>")
+	else
+		T.visible_message("<span class='warning'>[T]'s attention breaks, despite your attempts to hypnotize them! They clearly don't want this</span>", "<span class ='warning'>Your concentration breaks as you realise you have no interest in following [H]'s words!</span>")
+	//tgstation.dme
+	T.visible_message("<span class='warning'>[T] wakes up from their deep slumber!</span>", "<span class ='danger'>Your eyelids gently open as you see [H]'s face staring back at you</span>")
 	T.SetSleeping(0)
 	T = null
+		return
 /datum/quirk/heat
 	name = "Estrus Detection"
 	desc = "You have a animalistic sense of detecting if someone is in heat."
