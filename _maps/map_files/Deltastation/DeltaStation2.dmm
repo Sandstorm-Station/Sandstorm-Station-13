@@ -101703,7 +101703,7 @@
 	icon_state = "0-2"
 	},
 /obj/item/reagent_containers/food/drinks/flask,
-/obj/item/export/bottle/whiskey,
+/obj/item/reagent_containers/food/drinks/bottle/whiskey,
 /turf/open/floor/wood,
 /area/command/blueshieldoffice)
 "oAk" = (
@@ -108905,11 +108905,11 @@
 /obj/structure/cable/white{
 	icon_state = "4-8"
 	},
-/obj/machinery/atmospherics/components/unary/vent_scrubber/on{
-	dir = 8
-	},
 /obj/machinery/atmospherics/pipe/simple/supply/hidden{
 	dir = 4
+	},
+/obj/machinery/atmospherics/components/unary/vent_scrubber/on{
+	dir = 8
 	},
 /turf/open/floor/wood,
 /area/command/blueshieldoffice)
