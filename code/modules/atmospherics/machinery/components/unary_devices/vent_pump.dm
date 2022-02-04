@@ -92,6 +92,8 @@
 		on = FALSE
 	if(!on || welded)
 		return
+	if (!loc)
+		return
 
 	var/datum/gas_mixture/air_contents = airs[1]
 	var/datum/gas_mixture/environment = loc.return_air()
