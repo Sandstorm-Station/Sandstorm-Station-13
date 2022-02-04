@@ -14,7 +14,7 @@
 			if(0 to NUTRITION_LEVEL_STARVING)
 				hud_used.hunger.icon_state = "nutrition4"
 	if(hud_used.thirst)
-		switch(src.thirst)
+		switch(get_thirst(src))
 			if(THIRST_LEVEL_FULL to INFINITY)
 				hud_used.thirst.icon_state = "hydration0"
 			if(THIRST_LEVEL_QUENCHED to THIRST_LEVEL_FULL)

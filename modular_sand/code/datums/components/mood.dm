@@ -6,7 +6,7 @@
 		return FALSE //no mood events for thirst
 	if(L.thirst >= THIRST_LEVEL_THRESHOLD)
 		L.set_thirst(clamp(L.thirst, 0, THIRST_LEVEL_THRESHOLD))
-	switch(L.thirst)
+	switch(get_thirst(L))
 		if(THIRST_LEVEL_QUENCHED to INFINITY)
 			add_event(null, "thirst", /datum/mood_event/quenched)
 		if(THIRST_LEVEL_THIRSTY to THIRST_LEVEL_QUENCHED)
