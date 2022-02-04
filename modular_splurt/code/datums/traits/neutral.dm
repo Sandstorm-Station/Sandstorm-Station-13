@@ -137,7 +137,7 @@
 			T.SetSleeping(0)
 			return
 	else
-		T.visible_message("<span class='warning'>[T]'s attention breaks, despite your attempts to hypnotize them! They clearly don't want this</span>", "<span class ='warning'>Your concentration breaks as you realise you have no interest in following [H]'s words!</span>")
+		T.visible_message("<span class='warning'>[T]'s attention breaks, despite the attempt to hypnotize them! They clearly don't want this</span>", "<span class ='warning'>Your concentration breaks as you realise you have no interest in following [H]'s words!</span>")
 		return
 /datum/quirk/heat
 	name = "Estrus Detection"
