@@ -67,7 +67,7 @@ IMPORTANT FACTORS TO CONSIDER WHILE BALANCING
 	switch(current_cycle)
 		if(1)
 			startHunger = M.nutrition
-			startThirst = M.thirst
+			startThirst = get_thirst(M)
 			if(pollStarted == FALSE)
 				pollStarted = TRUE
 				ghosts = pollGhostCandidates("Do you want to play as [M]'s SDGF clone? (Don't ERP without permission from the original, and respect their character.)", ignore_category = POLL_IGNORE_CLONE)
