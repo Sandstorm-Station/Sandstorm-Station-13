@@ -13,7 +13,7 @@
 	considered_combat_role = TRUE //Brigger then shit yes it is
 	exp_type_department = EXP_TYPE_COMMAND
 	alt_titles = list("Command Security", "Command Guard", "Command Bodyguard", "Blueshit")
-
+	custom_spawn_text = "<font color='red' size='4'><b> YOU ARE NOT PART OF COMMAND. YOU WILL NEVER BE PART OF COMMAND. YOU ARE NOT PART OF CENTRAL COMMAND. IF YOU ACT LIKE YOU ARE, YOU WILL NEVER PLAY BLUESHIELD EVER AGAIN.</b></font>"
 
 	outfit = /datum/outfit/job/blueshield
 	plasma_outfit = /datum/outfit/plasmaman/blueshield
