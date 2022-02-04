@@ -27,6 +27,7 @@
 		/datum/language/dwarf,
 		/datum/language/signlanguage,
 		/datum/language/neokanji,
+		/datum/language/sylvan,
 		/datum/language/machine, //Skyrat change - adds machine language
 		/datum/language/modular_sand/calcic, //Skyrat change - plasmaman language
 		/datum/language/modular_sand/dunmeri, //Skyrat change - dunmer language
