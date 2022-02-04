@@ -10,6 +10,7 @@
 	var/touched_canister = FALSE
 	var/crafted_ied = FALSE
 	var/touched_circuit = FALSE
+	var/uses_vpn = FALSE
 
 /client/proc/cmd_player_playtimes()
 	set category = "Admin"
@@ -95,6 +96,12 @@
 		var/list/flag = list()
 		flag["icon"] = "code-branch"
 		flag["tooltip"] = "This player touched a circuit printer."
+		flags += list(flag)
+
+	if(C.uses_vpn)
+		var/list/flag = list()
+		flag["icon"] = "wifi"
+		flag["tooltip"] = "This player is [round(C.ip_intel*100, 0.01)]% likely to be using a Proxy/VPN"
 		flags += list(flag)
 
 	return flags
