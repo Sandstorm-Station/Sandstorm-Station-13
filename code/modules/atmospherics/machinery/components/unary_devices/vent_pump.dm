@@ -92,11 +92,12 @@
 		on = FALSE
 	if(!on || welded)
 		return
-	if (!loc)
-		return
 
 	var/datum/gas_mixture/air_contents = airs[1]
 	var/datum/gas_mixture/environment = loc.return_air()
+	if (!environment)
+		return
+
 	var/environment_pressure = environment.return_pressure()
 
 	if(pump_direction & RELEASING) // internal -> external
