@@ -36,53 +36,73 @@
 /obj/structure/lavaland/ash_walker/deconstruct(disassembled)
 	new /obj/item/assembly/signaler/anomaly (get_step(loc, pick(GLOB.alldirs)))
 	new /obj/effect/collapse(loc)
+	return ..()
 
 /obj/structure/lavaland/ash_walker/process()
 	consume()
 	spawn_mob()
 
 /obj/structure/lavaland/ash_walker/proc/consume()
-	for(var/mob/living/prey in view(src, 1)) //Only for corpse right next to/on same tile
-		if(!prey.stat)
-			continue
-		for(var/obj/item/W in prey)
-			if(!prey.dropItemToGround(W))
-				qdel(W)
-		var/datum/antagonist/antag = prey.mind?.has_antag_datum(/datum/antagonist/ashwalker)
-		if(antag && (linked_objective in antag.objectives) && (prey.key || prey.get_ghost(FALSE, TRUE))) //special interactions for dead lava lizards with ghosts attached
-			visible_message("<span class='warning'>Serrated tendrils carefully pull [prey] to [src], absorbing the body and creating it anew.</span>")
-			var/datum/mind/deadmind
-			if(prey.key)
-				deadmind = prey.mind
+	for(var/mob/living/H in view(src, 1)) //Only for corpse right next to/on same tile
+		if(H.stat)
+			for(var/obj/item/W in H)
+				if(!H.dropItemToGround(W))
+					qdel(W)
+			if(issilicon(H)) //no advantage to sacrificing borgs...
+				H.gib()
+				visible_message(span_notice("Serrated tendrils eagerly pull [H] apart, but find nothing of interest."))
+				return
+
+			if(H.mind?.has_antag_datum(/datum/antagonist/ashwalker) && (H.key || H.get_ghost(FALSE, TRUE))) //special interactions for dead lava lizards with ghosts attached
+				visible_message(span_warning("Serrated tendrils carefully pull [H] to [src], absorbing the body and creating it anew."))
+				var/datum/mind/deadmind
+				if(H.key)
+					deadmind = H
+				else
+					deadmind = H.get_ghost(FALSE, TRUE)
+				to_chat(deadmind, "Your body has been returned to the nest. You are being remade anew, and will awaken shortly. </br><b>Your memories will remain intact in your new body, as your soul is being salvaged</b>")
+				SEND_SOUND(deadmind, sound('sound/magic/enter_blood.ogg',volume=100))
+				addtimer(CALLBACK(src, .proc/remake_walker, H.mind, H.real_name), 20 SECONDS)
+				new /obj/effect/gibspawner/generic(get_turf(H))
+				qdel(H)
+				return
+
+			if(ismegafauna(H))
+				meat_counter += 20
 			else
-				deadmind = prey.get_ghost(FALSE, TRUE)
-			to_chat(deadmind, "Your body has been returned to the nest. You are being remade anew, and will awaken shortly. </br><b>Your memories will remain intact in your new body, as your soul is being salvaged.</b>")
-			SEND_SOUND(deadmind, sound('sound/magic/enter_blood.ogg',volume=100))
-			new /obj/effect/gibspawner/generic(get_turf(prey))
-			var/oldgender = prey.gender
-			var/oldname = prey.real_name
-			addtimer(CALLBACK(src, .proc/remake_walker, oldname, oldgender, deadmind), 20 SECONDS)
-			qdel(prey)
-
-			continue
-		playsound(get_turf(src),'sound/magic/demon_consume.ogg', 100, 1)
-		if(issilicon(prey)) //no advantage to sacrificing borgs...
-			visible_message("<span class='notice'>Serrated tendrils eagerly pull [prey] apart, but find nothing of interest.</span>")
-			prey.gib()
+				meat_counter++
+			visible_message(span_warning("Serrated tendrils eagerly pull [H] to [src], tearing the body apart as its blood seeps over the eggs."))
+			playsound(get_turf(src),'sound/magic/demon_consume.ogg', 100, TRUE)
+			var/deliverykey = H.fingerprintslast //key of whoever brought the body
+			var/mob/living/deliverymob = get_mob_by_key(deliverykey) //mob of said key
+			//there is a 40% chance that the Lava Lizard unlocks their respawn with each sacrifice
+			if(deliverymob && (deliverymob.mind?.has_antag_datum(/datum/antagonist/ashwalker)) && (deliverykey in ashies.players_spawned) && (prob(40)))
+				to_chat(deliverymob, span_warning("<b>The Necropolis is pleased with your sacrifice. You feel confident your existence after death is secure.</b>"))
+				ashies.players_spawned -= deliverykey
+			H.gib()
 			obj_integrity = min(obj_integrity + max_integrity*0.05,max_integrity)//restores 5% hp of tendril
-			continue
-		visible_message("<span class='warning'>Serrated tendrils eagerly pull [prey] to [src], tearing the body apart as its blood seeps over the eggs.</span>")
+			for(var/mob/living/L in view(src, 5))
+				if(L.mind?.has_antag_datum(/datum/antagonist/ashwalker))
+					SEND_SIGNAL(L, COMSIG_ADD_MOOD_EVENT, "headspear", /datum/mood_event/sacrifice_good)
+				else
+					SEND_SIGNAL(L, COMSIG_ADD_MOOD_EVENT, "headspear", /datum/mood_event/sacrifice_bad)
 
-		if(ismegafauna(prey))
-			meat_counter += 20
-		else
-			meat_counter++
-		prey.gib()
-		obj_integrity = min(obj_integrity + max_integrity*0.05,max_integrity)//restores 5% hp of tendril
+/obj/structure/lavaland/ash_walker/proc/remake_walker(datum/mind/oldmind, oldname)
+	var/mob/living/carbon/human/M = new /mob/living/carbon/human(get_step(loc, pick(GLOB.alldirs)))
+	M.set_species(/datum/species/lizard/ashwalker)
+	M.real_name = oldname
+	M.underwear = "Nude"
+	M.undershirt = "Nude"
+	M.socks = "Nude"
+	M.update_body()
+	M.remove_language(/datum/language/common)
+	oldmind.transfer_to(M)
+	M.mind.grab_ghost()
+	to_chat(M, "<b>You have been pulled back from beyond the grave, with a new body and renewed purpose. Glory to the Necropolis!</b>")
+	playsound(get_turf(M),'sound/magic/exit_blood.ogg', 100, TRUE)
 
 /obj/structure/lavaland/ash_walker/proc/spawn_mob()
-	if(meat_counter < ASH_WALKER_SPAWN_THRESHOLD)
-		return
-	new spawned_obj(get_step(loc, pick(GLOB.alldirs)), ashies, linked_objective)
-	visible_message("<span class='danger'>One of the eggs swells to an unnatural size and tumbles free. It's ready to hatch!</span>")
-	meat_counter -= ASH_WALKER_SPAWN_THRESHOLD
+	if(meat_counter >= ASH_WALKER_SPAWN_THRESHOLD)
+		new /obj/effect/mob_spawn/human/ash_walker(get_step(loc, pick(GLOB.alldirs)), ashies)
+		visible_message("<span class='danger'>One of the eggs swells to an unnatural size and tumbles free. It's ready to hatch!</span>")
+		meat_counter -= ASH_WALKER_SPAWN_THRESHOLD
