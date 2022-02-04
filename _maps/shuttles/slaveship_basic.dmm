@@ -129,12 +129,11 @@
 /turf/open/floor/plasteel/dark,
 /area/shuttle/slaveship)
 "pj" = (
-/obj/structure/grille,
-/obj/structure/window/plastitanium,
 /obj/machinery/door/poddoor/shutters{
 	id = "slaveshipshutters";
 	name = "blast shutters"
 	},
+/obj/effect/spawner/structure/window/plastitanium,
 /turf/open/floor/plating,
 /area/shuttle/slaveship)
 "pl" = (
@@ -396,8 +395,7 @@
 /turf/open/floor/plasteel/dark,
 /area/shuttle/slaveship)
 "Wk" = (
-/obj/structure/window/plastitanium,
-/obj/structure/grille,
+/obj/effect/spawner/structure/window/plastitanium,
 /turf/open/floor/plating,
 /area/shuttle/slaveship)
 "WK" = (
@@ -433,6 +431,12 @@
 	},
 /turf/closed/wall/r_wall/syndicate,
 /area/shuttle/slaveship)
+"ZR" = (
+/obj/structure/sign/poster/official/obey{
+	pixel_x = -32
+	},
+/turf/open/floor/plating,
+/area/shuttle/slaveship/brig)
 "ZZ" = (
 /obj/structure/window/reinforced{
 	dir = 8
@@ -482,7 +486,7 @@ ax
 ax
 UL
 DB
-DB
+ZR
 XG
 XN
 cy

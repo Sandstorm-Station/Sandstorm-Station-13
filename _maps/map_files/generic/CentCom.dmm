@@ -15911,7 +15911,7 @@
 /turf/open/floor/plasteel,
 /area/tdome/arena)
 "IO" = (
-/obj/effect/spawner/structure/window/reinforced,
+/obj/effect/spawner/structure/window/plastitanium,
 /turf/open/floor/plating,
 /area/slavers)
 "IP" = (
@@ -16498,6 +16498,10 @@
 	dir = 4
 	},
 /turf/open/floor/plasteel/freezer,
+/area/slavers)
+"Ke" = (
+/obj/machinery/computer/arcade/tetris,
+/turf/open/floor/plasteel,
 /area/slavers)
 "Kf" = (
 /obj/effect/turf_decal/stripes/white/line{
@@ -17781,6 +17785,11 @@
 /obj/structure/chair/stool,
 /turf/open/floor/plasteel,
 /area/slavers)
+"NI" = (
+/obj/structure/flora/tree/pine,
+/obj/item/disk/nuclear/fake,
+/turf/open/floor/plating/asteroid/snow/airless,
+/area/slavers)
 "NJ" = (
 /obj/machinery/door/airlock/centcom{
 	name = "Kitchen";
@@ -18179,11 +18188,13 @@
 /area/centcom/holding)
 "Pq" = (
 /obj/structure/rack,
+/obj/item/card/id/syndicate/slaver,
 /obj/item/clothing/suit/straight_jacket,
 /obj/item/clothing/glasses/sunglasses/blindfold{
 	pixel_y = 4
 	},
-/obj/item/card/id/slaver,
+/obj/item/card/id/syndicate/slaver,
+/obj/item/card/id/syndicate/slaver,
 /obj/item/clothing/mask/muzzle,
 /turf/open/floor/plasteel,
 /area/slavers)
@@ -18636,10 +18647,10 @@
 /turf/open/floor/holofloor,
 /area/holodeck/rec_center/basketball)
 "QY" = (
-/obj/machinery/computer/arcade/battle,
 /obj/machinery/light{
 	dir = 1
 	},
+/obj/machinery/computer/arcade/orion_trail,
 /turf/open/floor/plasteel,
 /area/slavers)
 "QZ" = (
@@ -19491,6 +19502,23 @@
 	},
 /turf/open/floor/wood,
 /area/centcom/holding)
+"UK" = (
+/obj/effect/turf_decal/tile/red{
+	dir = 4
+	},
+/obj/effect/turf_decal/tile/red,
+/obj/machinery/light{
+	dir = 4
+	},
+/obj/machinery/power/apc{
+	cell_type = /obj/item/stock_parts/cell/infinite;
+	dir = 4;
+	name = "Slaver Hideout APC";
+	pixel_x = 26;
+	start_charge = 100
+	},
+/turf/open/floor/plasteel/dark,
+/area/slavers)
 "UL" = (
 /obj/effect/turf_decal/tile/brown,
 /obj/effect/turf_decal/tile/brown{
@@ -78096,7 +78124,7 @@ Ox
 Ox
 Ox
 Ox
-Qc
+UK
 Ox
 Ox
 hH
@@ -80667,7 +80695,7 @@ BT
 XI
 XI
 Wg
-Sm
+Im
 Zm
 Zm
 Zm
@@ -81181,7 +81209,7 @@ Ud
 Xn
 Xn
 Wg
-Sm
+Ke
 Zm
 Zm
 Zm
@@ -81438,7 +81466,7 @@ sm
 UM
 xK
 Wg
-Im
+Sm
 Zm
 Zm
 Zm
@@ -82740,7 +82768,7 @@ ZD
 Ol
 ZD
 ZD
-Ol
+NI
 XS
 aa
 aa

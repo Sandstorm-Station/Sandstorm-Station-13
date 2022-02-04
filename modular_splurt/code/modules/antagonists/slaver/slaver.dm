@@ -1,4 +1,5 @@
 GLOBAL_VAR_INIT(slavers_team_name, "Slave Traders")
+GLOBAL_VAR_INIT(slavers_spawned, FALSE)
 GLOBAL_VAR_INIT(slavers_credits_balance, 4000)
 GLOBAL_VAR_INIT(slavers_credits_total, 0)
 GLOBAL_VAR_INIT(slavers_slaves_sold, 0)
@@ -122,7 +123,7 @@ GLOBAL_VAR_INIT(slavers_last_announcement, 0)
 /datum/antagonist/slaver/proc/spawnText()
 	to_chat(owner, "<br><B>You are tasked with infiltrating the station and kidnapping members of the crew. Once brought back to the hideout, they can be collared and priced using the console.</B>")
 	to_chat(owner, "<B>The station can choose whether to pay the ransom, and if they do, you can take the slave to the green floor and use the console to 'export' them back, where the ransom will then be paid to your crew to buy new gear. Make sure you give all of the slave's items back before exporting them.</B>")
-	to_chat(owner, "<br><B><span class='adminhelp'>Important:</span> This role does NOT mean you can break server rules. Additionally to avoid round removing people, you can <span class='adminnotice'>only kidnap crew who consent OOC</span>.</B>")
+	to_chat(owner, "<br><B><span class='adminhelp'>Important:</span> This role does NOT mean you can break server rules. Additionally to avoid round removing people, you can <span class='adminnotice'>only kidnap crew who consent OOC</span> or attack you.</B>")
 	to_chat(owner, "<B>You have a special HUD that shows consent for each player at the bottom right of their sprite. A tick means you can kidnap them. A cross means do not. A question mark means ask first.</B>")
 
 /datum/antagonist/slaver/leader/proc/slavers_name_assign()
@@ -172,10 +173,10 @@ GLOBAL_VAR_INIT(slavers_last_announcement, 0)
 	text += "<br>"
 	text += "<b>Slaves sold:</b> [slavesSold]<br>"
 	text += "<b>Slaves not sold:</b> [slavesUnsold]<br>"
-	text += "<b>Total money earned:</b> [earnedMoney]cr (needed at least 30,000cr)"
+	text += "<b>Total money earned:</b> [earnedMoney]cr (needed at least 200,000cr)"
 
 	// var/datum/objective/slaver/O = locate() in objectives
-	if(GLOB.slavers_credits_total >= 30000 && !all_dead)
+	if(GLOB.slavers_credits_total >= 200000 && !all_dead)
 		parts += "<span class='greentext'>The slaver crew were successful!</span>"
 	else
 		parts += "<span class='redtext'>The slaver crew have failed.</span>"
