@@ -98,7 +98,9 @@
 	if (!environment)
 		return
 
-	var/environment_pressure = environment.return_pressure()
+	var/environment_pressure = environment?.return_pressure()
+	if(!environment_pressure)
+		return
 
 	if(pump_direction & RELEASING) // internal -> external
 		var/pressure_delta = 10000
