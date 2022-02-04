@@ -966,7 +966,7 @@
 					speaktrigger += "I'm fat... "
 
 			//thirst
-			switch(H.thirst)
+			switch(get_thirst(H))
 				if(0 to THIRST_LEVEL_PARCHED)
 					speaktrigger += "I'm dry and I need water! "
 				if(THIRST_LEVEL_PARCHED to THIRST_LEVEL_THIRSTY)
