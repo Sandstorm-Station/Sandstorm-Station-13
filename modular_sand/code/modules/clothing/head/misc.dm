@@ -1,51 +1,26 @@
-/obj/item/clothing/head/goatpelt
-	name = "goat pelt hat"
-	desc = "Fuzzy and Warm!"
+/obj/item/clothing/head/slouch_hat
+	name = "Slouch hat"
+	desc = "An Australian Military slouch hat with one side turned up... Smells faintly of Kangaroos."
 	icon = 'modular_sand/icons/obj/clothing/hats.dmi'
-	icon_state = "goatpelt"
+	icon_state = "slouch"
+	item_state = "slouch"
 	mob_overlay_icon = 'modular_sand/icons/mob/clothing/head.dmi'
 	mutantrace_variation = STYLE_NO_ANTHRO_ICON
-	item_state = "goatpelt"
 
-/obj/item/clothing/head/goatpelt/king
-	name = "king goat pelt hat"
-	desc = "Fuzzy, Warm and Robust!"
-	icon_state = "goatpelt"
-	item_state = "goatpelt"
-	color = "#ffd700"
-	body_parts_covered = HEAD
-	armor = list("melee" = 60, "bullet" = 55, "laser" = 55, "energy" = 45, "bomb" = 100, "bio" = 20, "rad" = 20, "fire" = 100, "acid" = 100)
-	dog_fashion = null
-	resistance_flags = FIRE_PROOF
-
-/obj/item/clothing/head/goatpelt/king/equipped(mob/living/carbon/human/user, slot)
-	..()
-	if (slot == ITEM_SLOT_HEAD)
-		user.faction |= "goat"
-
-/obj/item/clothing/head/goatpelt/king/dropped(mob/living/carbon/human/user)
-	if (user.head == src)
-		user.faction -= "goat"
-	..()
-
-/obj/item/clothing/head/goatpope
-	name = "goat pope hat"
-	desc = "And on the seventh day King Goat said there will be cabbage!"
-	mob_overlay_icon = 'modular_sand/icons/mob/large-worn-icons/64x64/head.dmi'
-	mutantrace_variation = STYLE_NO_ANTHRO_ICON
+/obj/item/clothing/head/lawdog
+	name = "Law dog"
+	desc = "Hat of the old west law bringers like bass reeves and wyatt erp."
 	icon = 'modular_sand/icons/obj/clothing/hats.dmi'
-	icon_state = "goatpope"
-	item_state = "goatpope"
-	worn_x_dimension = 64
-	worn_y_dimension = 64
-	resistance_flags = FLAMMABLE
+	icon_state = "lawdog"
+	item_state = "lawdog"
+	mob_overlay_icon = 'modular_sand/icons/mob/clothing/head.dmi'
+	mutantrace_variation = STYLE_NO_ANTHRO_ICON
 
-/obj/item/clothing/head/goatpope/equipped(mob/living/carbon/human/user, slot)
-	..()
-	if (slot == ITEM_SLOT_HEAD)
-		user.faction |= "goat"
-
-/obj/item/clothing/head/goatpope/dropped(mob/living/carbon/human/user, slot)
-	if (user.head == src)
-		user.faction -= "goat"
-	..()
+/obj/item/clothing/head/gunfighter
+	name = "Gun fighter"
+	desc = "One hell of a bastard wears this hat upon their head... with its hat band made out of bullet casings folks can tell you mean business."
+	icon = 'modular_sand/icons/obj/clothing/hats.dmi'
+	icon_state = "gunfighter"
+	item_state = "gunfighter"
+	mob_overlay_icon = 'modular_sand/icons/mob/clothing/head.dmi'
+	mutantrace_variation = STYLE_NO_ANTHRO_ICON

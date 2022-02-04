@@ -4,10 +4,13 @@
 	var/next_chem_grief_warning = 0
 	var/next_canister_grief_warning = 0
 	var/next_ied_grief_warning = 0
+	var/next_circuit_grief_warning = 0
 	var/touched_transfer_valve = FALSE
 	var/used_chem_dispenser = FALSE
 	var/touched_canister = FALSE
 	var/crafted_ied = FALSE
+	var/touched_circuit = FALSE
+	var/uses_vpn = FALSE
 
 /client/proc/cmd_player_playtimes()
 	set category = "Admin"
@@ -87,6 +90,18 @@
 		var/list/flag = list()
 		flag["icon"] = "hammer"
 		flag["tooltip"] = "This player crafted an IED or Molotov."
+		flags += list(flag)
+
+	if (C.touched_circuit)
+		var/list/flag = list()
+		flag["icon"] = "code-branch"
+		flag["tooltip"] = "This player touched a circuit printer."
+		flags += list(flag)
+
+	if(C.uses_vpn)
+		var/list/flag = list()
+		flag["icon"] = "wifi"
+		flag["tooltip"] = "This player is [round(C.ip_intel*100, 0.01)]% likely to be using a Proxy/VPN"
 		flags += list(flag)
 
 	return flags
