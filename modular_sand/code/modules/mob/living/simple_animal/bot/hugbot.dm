@@ -84,65 +84,54 @@
 	text_dehack = "You rewire [name]'s manipulator pressure sensors."
 	text_dehack_fail = "[name] seems damaged and does not respond to reprogramming!"
 
-/mob/living/simple_animal/bot/hugbot/get_controls(mob/user)
-	var/dat
-	dat += hack(user)
-	dat += showpai(user)
-	dat += "<TT><B>Hugging Unit Controls v2.0</B></TT><BR><BR>"
-	dat += "Status: <A href='?src=[REF(src)];power=1'>[on ? "On" : "Off"]</A><BR>"
-	dat += "Maintenance panel panel is [open ? "opened" : "closed"]<BR>"
-	dat += "Behaviour controls are [locked ? "locked" : "unlocked"]<hr>"
+// Variables sent to TGUI
+/mob/living/simple_animal/bot/hugbot/ui_data(mob/user)
+	var/list/data = ..()
 	if(!locked || issilicon(user) || IsAdminGhost(user))
-		dat += "Maximum sanity: "
-		dat += "<a href='?src=[REF(src)];adj_sanity=-10'>-</a> "
-		dat += "[max_sanity] "
-		dat += "<a href='?src=[REF(src)];adj_sanity=10'>+</a> "
-		dat += "<br>"
-		dat += "Operating mode: "
+		data["custom_controls"]["maximum_sanity"] = max_sanity
 		switch(zone_selected)
-			if(BODY_ZONE_CHEST)
-				dat += "<a href='?src=[REF(src)];op_mode=[BODY_ZONE_HEAD]'>Hug</a>"
 			if(BODY_ZONE_HEAD)
-				dat += "<a href='?src=[REF(src)];op_mode=[BODY_ZONE_PRECISE_MOUTH]'>Pat</a>"
+				data["custom_controls"]["mode_selected"] = BODY_ZONE_HEAD
 			if(BODY_ZONE_PRECISE_MOUTH)
-				dat += "<a href='?src=[REF(src)];op_mode=[BODY_ZONE_CHEST]'>Boop</a>"
-		dat += "<br>"
-		dat += "The speaker switch is [shut_up ? "off" : "on"]. <a href='?src=[REF(src)];togglevoice=[1]'>Toggle</a><br>"
-		dat += "Patrol Station: <a href='?src=[REF(src)];operation=patrol'>[auto_patrol ? "Yes" : "No"]</a><br>"
-		dat += "Stationary Mode: <a href='?src=[REF(src)];stationary=1'>[stationary_mode ? "Yes" : "No"]</a><br><hr>"
-	if(open || IsAdminGhost(user))
-		dat += "There is an exposed pink wire which is <a href='?src=[REF(src)];tania_mode=1'>[tania_mode ? "Cut" : "Intact"]</a><br>"
+				data["custom_controls"]["mode_selected"] = BODY_ZONE_PRECISE_MOUTH
+			else
+				data["custom_controls"]["mode_selected"] = BODY_ZONE_CHEST
+		data["custom_controls"]["speaker"] = !shut_up
+		data["custom_controls"]["stationary_mode"] = stationary_mode
+		if(open || IsAdminGhost(user))
+			data["custom_controls"]["tania_mode"] = tania_mode
+	return data
 
-	return dat
+// Actions received from TGUI
+/mob/living/simple_animal/bot/hugbot/ui_act(action, params)
+	. = ..()
+	if(. || !hasSiliconAccessInArea(usr) && !IsAdminGhost(usr) && !(bot_core.allowed(usr) || !locked))
+		return TRUE
+	switch(action)
+		if("maximum_sanity")
+			var/adjust_num = round(text2num(params["amount"]))
+			max_sanity = adjust_num
+			if(max_sanity < SANITY_CRAZY)
+				max_sanity = SANITY_CRAZY
+			if(max_sanity > SANITY_GREAT)
+				max_sanity = SANITY_GREAT
 
-/mob/living/simple_animal/bot/hugbot/Topic(href, href_list)
-	if(..())
-		return 1
+		if("op_mode")
+			var/static/operation_modes = list("Hug" = BODY_ZONE_CHEST,"Pat" = BODY_ZONE_HEAD,"Boop" = BODY_ZONE_PRECISE_MOUTH)
+			var/target = input("Select operating mode:") as null|anything in operation_modes
+			if(target)
+				zone_selected = operation_modes[target]
 
-	if(href_list["adj_sanity"])
-		var/adjust_num = text2num(href_list["adj_sanity"])
-		max_sanity += adjust_num
-		if(max_sanity < SANITY_CRAZY)
-			max_sanity = SANITY_CRAZY
-		if(max_sanity > SANITY_GREAT)
-			max_sanity = SANITY_GREAT
+		if("speaker")
+			shut_up = !shut_up
 
-	if(href_list["op_mode"])
-		mode = href_list["op_mode"]
-		zone_selected = mode
+		if("tania_mode")
+			tania_mode = !tania_mode
 
-	else if(href_list["togglevoice"])
-		shut_up = !shut_up
-
-	else if(href_list["tania_mode"])
-		tania_mode = !tania_mode
-
-	else if(href_list["stationary"])
-		stationary_mode = !stationary_mode
-		path = list()
-		update_icon()
-
-	update_controls()
+		if("stationary_mode")
+			stationary_mode = !stationary_mode
+			path = list()
+			update_appearance()
 	return
 
 /mob/living/simple_animal/bot/hugbot/attackby(obj/item/W as obj, mob/user as mob, params)
