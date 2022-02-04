@@ -60,7 +60,7 @@
 
 	if(user.nutrition < NUTRITION_LEVEL_WELL_FED)
 		user.adjust_nutrition(target.nutrition, NUTRITION_LEVEL_WELL_FED)
-	if(user.thirst < THIRST_LEVEL_QUENCHED)
+	if(get_thirst(user) < THIRST_LEVEL_QUENCHED)
 		user.adjust_thirst(target.thirst, THIRST_LEVEL_QUENCHED)
 
 	// Absorb a lizard, speak Draconic.
