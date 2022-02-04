@@ -59,7 +59,7 @@
 
 /datum/quirk/Hypnotic_gaze
 	name = "Hypnotic Gaze"
-	desc = "Be it through mysterious patterns, flickering colors or a glint of the eye, prolonged eye contact with others will place the T into a highly suggestible Hypnotic trance."
+	desc = "Be it through mysterious patterns, flickering colors or a glint of the eye, prolonged eye contact with others will place the Target into a highly suggestible Hypnotic trance."
 	value = 0
 	mob_trait = TRAIT_HYPNOTIC_GAZE
 	gain_text = "<span class='notice'>Your eyes glimmer Hypnotically..</span>"
