@@ -28,6 +28,7 @@
 	new /obj/item/radio/headset/headset_brigdoc(src)
 	new /obj/item/radio/headset/headset_brigdoc/alt(src)
 	new /obj/item/flashlight/seclite(src)
+	new /obj/item/clothing/head/brigdoc(src)
 
 /obj/structure/closet/secure_closet/blueshield
 	name = "blueshield's locker"
@@ -46,3 +47,4 @@
 	new /obj/item/clothing/head/helmet/blueshirt(src)
 	new /obj/item/storage/belt/security/full(src)
 	new /obj/item/clothing/mask/gas/sechailer/swat(src)
+	new /obj/item/clothing/head/blueshield(src)
