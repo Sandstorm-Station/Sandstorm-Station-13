@@ -1,0 +1,240 @@
+2020-12-03:
+  MrJWhit:
+  - tweak: Increased christmas event from 22th to 27th to 10th to 27th
+2020-12-05:
+  Acer202:
+  - bugfix: Main mining shuttle should no longer look at the public mining shuttle
+      and attempt to dock ontop of it. Monastery shuttle should now function again.
+  shellspeed1:
+  - rscadd: Construction bags have been added, use them to carry all sorts of construction
+      bits.
+  - rscadd: A recipe has been added to cloth stacks to make material and construction
+      bags.
+  - balance: Material bags and construction bags are now available in engineering
+      lockers.
+2020-12-07:
+  DeltaFire15:
+  - tweak: Medibots now ignore people they cannot help due to their biology.
+  - bugfix: get_damaged_bodyparts() is no longer broken.
+  - bugfix: Fixes the tail entwine messages displaying incorrectly.
+  ZombieTsar:
+  - rscadd: leather to imp butcher drops
+  - rscadd: plasma ore to imp drops
+2020-12-10:
+  DeltaFire15:
+  - tweak: Abductors now can use experimental organ replacement surgery on robots
+      / synthetics.
+  - bugfix: Objectives are no longer very broken.
+  Linzolle:
+  - bugfix: lizard snouts are no longer *slightly* lighter than they are supposed
+      to be.
+  SandPoot:
+  - refactor: Completely comments the original limb grower for the new one.
+  - rscadd: The limb grower can now make more stuff.
+2020-12-12:
+  Arturlang:
+  - bugfix: Handles more edge cases with construct soul returning
+  EdgeLordExe, MoonFalcon:
+  - balance: Ported a bunch of heretic-related tweaks and changes from tg
+  Putnam3145:
+  - bugfix: Emotes can properly be filtered for in TGUI.
+  keronshb:
+  - bugfix: Fixes Reflective Blobs
+  timothyteakettle:
+  - bugfix: custom eyes and tongues now properly carry across cloning
+2020-12-13:
+  EmeraldSundisk:
+  - bugfix: Fixes the conveyor belt issues in Delta Station's cargo wing
+  - rscdel: Removes some of the dirt around the affected area (presumably they would
+      have cleaned it up while working on it)
+  - rscadd: Adds a floor light to fix the "dark spot" cargo had
+  Linzolle:
+  - bugfix: entertainment monitors no longer invisible
+  - rscadd: entertainment monitors now light up and display text when motion is detected
+      in thunderdome
+  MrJWhit:
+  - rscadd: ''
+  - tweak: Added the ability for cargo to buy a large welding tank
+  - imageadd: Tweaked large tank reagent sprites to /tg/'s
+  qwertyquerty:
+  - bugfix: Flash the screen on climax
+  timothyteakettle:
+  - rscadd: loadout now has save slot support and colour choosing/saving for polychromic
+      items
+2020-12-15:
+  Hatterhat:
+  - tweak: Exosuits sold on the Supply shuttle no longer leave wreckages.
+  MrJWhit:
+  - tweak: Updates our dark gygax sprites to /tg/'s
+  - tweak: Updated meat icons
+  - tweak: Donut boxes show what's inside of them now
+  - tweak: Updated jukebox sprite.
+  - rscadd: Adds a goose bar sign
+  SandPoot:
+  - bugfix: The teleporter no longer "cryos" you (it will display the correct message
+      on radio).
+  - bugfix: Fix unit testing.
+  The Grinch:
+  - rscdel: infinite presents from hilbert hotel
+  keronshb:
+  - rscadd: Adds more room to northwest maint
+  - rscadd: Adds a bridge between Atmos and the Turbine.
+  silicons:
+  - tweak: text formatting now uses one character instead of two around the text to
+      emphasize.
+  - balance: shoving yourself up now costs 50% more
+  - tweak: nanite resistances tweaked
+  - rscadd: new nanite programs added for locking the user out from being modified
+      by consoles or antivirals.
+  - balance: dna melt drops all items being destroying you
+  - balance: stamina crit is only removed when at or under 100 stamina, rather than
+      140. stamina crit threshold is still at 140.
+  - tweak: luxury shuttle no longer has noteleport
+  timothyteakettle:
+  - rscadd: all gas masks (but welding + glass) can be alt clicked to show/hide identity
+  - tweak: custom holoforms are now accessible through an action instead of through
+      verbs
+  - tweak: AI holoforms can now emote
+  - rscadd: improvements to the automatic age gate
+2020-12-20:
+  Hatterhat:
+  - tweak: RPEDs now drop their lowest part tier first when quick-emptied (used inhand).
+  MrJWhit:
+  - tweak: Replaced engineering fuel tank with a large fuel tank
+  - tweak: Changed access to sec suit storage from armory access in every map to other
+      security access
+  - bugfix: Effects can no longer trigger landmines
+  Putnam3145:
+  - tweak: You can now exit polycircuit input
+  - bugfix: Polycircuits now check for range
+  silicons:
+  - bugfix: keybinds generate anti-collision bindings where necessary automatically
+      now
+  timothyteakettle:
+  - bugfix: circuits get pin data proc is sanitized when text is returned as data
+2020-12-21:
+  BlackMajor:
+  - tweak: Cyborg hypospray no longer injects if it means OD'ing while on help intent.
+  BlueWildrose:
+  - balance: The traitor AI can no longer activate the doomsday device while carded.
+  DeltaFire15:
+  - tweak: AIs now only have to kill people once instead of permanently.
+  Putnam3145:
+  - tweak: Gear harness now covers nothing.
+  SandPoot:
+  - refactor: Changes the limb grower a lot.
+  - bugfix: '"Limb" costs on limbgrower are actually displayed like it was meant to
+      all along.'
+  keronshb:
+  - rscadd: Adds a reduced stamina buffer for SCarp users
+  - rscadd: Gives SCarp users a better parry
+  - rscadd: Adds the SCarp bundle which includes a bo staff
+  - rscadd: Lets Carp costumes carry Bo Staffs
+  - balance: reduces the stamina damage of scarp slightly
+  - balance: reduced the blockchance of the bo staff
+  - rscadd: Re-adds the Clown Car to the clown uplink
+  - balance: 15 >16 TC cost
+  - balance: bonks on external airlocks
+  silicons:
+  - rscadd: colormates
+  - tweak: command headsets are 120% instead of 160%
+  - bugfix: no more emote italics
+  - bugfix: ninja gloves no longer hardstun
+  - balance: ninja gloves now cost half as much to use to compensate
+2020-12-23:
+  Arturlang:
+  - bugfix: Fixes the mint machine's UI
+  - bugfix: Bloodsuckers tresspass ability can no longer work while they are not awake.
+  DeltaFire15:
+  - bugfix: Bloodcult stunhands now work against clockies like they were supposed
+      to instead of hardstunning.
+  Hatterhat:
+  - bugfix: The survival dagger light on the sprite now actually turns on and off.
+  - balance: The survival dagger in the glaive kit that can also be bought by itself
+      is now better at butchering things.
+  MrJWhit:
+  - tweak: Christmas starts on the 18th now
+  Putnam3145:
+  - tweak: Grab bag works as advertised.
+  - balance: Xeno threat in dynamic tripled.
+  Trilbyspaceclone:
+  - tweak: Zeolites now use gold rather then uranium for catalyst
+  - tweak: Zeolites are not as hard to make ph wise
+  - tweak: Making Zeolites heats up the beaker less allowing for better control
+  Xantholne:
+  - bugfix: Twin Sword Sheaths have an equipment icon and icon when worn now and make
+      a sound when sheathed/unsheathed
+  Yakumo Chen:
+  - balance: Slime Jelly is no longer obtainable from slimepeople. Go ask Xenobio
+  kiwedespars:
+  - balance: balanced bone gauntlets.
+  raspy-on-osu:
+  - tweak: windoor open length
+  silicons:
+  - rscadd: pugilists can now parry
+  - tweak: anyone new to the server is lucky enough to have their sprint default to
+      toggle instead of hold
+  - rscadd: players can now respawn/return to lobby as a ghost after a 15 minute (default)
+      delay and rejoin on another character with some/many restrictions
+  - rscadd: cryo now preserves everything
+  timothyteakettle:
+  - bugfix: you can now only entwine tails with people who have a tail
+2020-12-26:
+  DeltaFire15:
+  - bugfix: Self-fueling weldingtools recharge fuel properly again.
+  - bugfix: Brass welders now actually recharge faster than experimental ones.
+  SandPoot:
+  - rscadd: Added Tank holders from tg! (make some with rods!)
+  - rscadd: Added Generic gas tanks, they could have anything and the people won't
+      know!
+  - tweak: Tweaked emergency double tanks to have slightly more volume.
+  silicons:
+  - bugfix: dullahans enabled
+  timothyteakettle:
+  - bugfix: apids render now
+2020-12-27:
+  SandPoot:
+  - rscadd: Added floor light deconstruction! attack the floor with your small light
+      fixture assembly!
+  - tweak: Makes so deconstructing floor lights use their own sprite, literally has
+      no mechanical change.
+  ZombieTsar:
+  - rscadd: Droppers to biobag white list
+  - rscadd: Stabilized slime cores to biobags white list
+2020-12-29:
+  BlueWildrose:
+  - tweak: Nyctophobia quirk now has some light lag compensation.
+  - rscadd: PubbyStation now has two Christmas Tree spawners.
+  DeltaFire15:
+  - tweak: Instant summons can no longer do wacky stuff with disposals (and nukes).
+  - balance: Fleshmend, Anatomic Panacea and bloodsucker healing now work for Synths
+      / IPCs.
+  ERP mains:
+  - rscadd: Subtler Around Table is now a verb
+  Hatterhat:
+  - rscadd: Apparently someone started shoving golem vendor boards into every liberator's
+      legacy. How odd!
+  HeroWithYay:
+  - bugfix: Changed description of Necrotizing Fasciitis symptom.
+  Putnam3145:
+  - balance: Regen coma now puts into a coma even from crit or while unconscious.
+  - bugfix: Regen coma now properly weakens while asleep.
+  Sonic121x:
+  - rscadd: alarm ert hardsuit sprite for naga and canine
+  - tweak: adjust the naga ert hardsuit to cover the hand
+  - bugfix: cydonia hardsuit helmet
+  keronshb:
+  - bugfix: Allows Energy Bola to be caught
+  - balance: This also allows them to be dropped/picked up.
+  silicons:
+  - bugfix: things in DEATHCOMA do not deathgasp on death
+  - tweak: Meth and changeling adrenals no longer ignore all slowdowns, rather damage
+      slowdowns.
+  - bugfix: Magrifle ammo no longer glows.
+  - tweak: temperature slowdown divisor nerfed to 35 from 20.
+  - rscadd: set-pose has been added
+  - tweak: temporary flavor text renamed to set pose, fully visible in examine
+  timothyteakettle:
+  - tweak: slime puddles are no longer layered down one layer
+  - tweak: you cannot tackle with two paralysed arms
+  - tweak: tackling with a single paralysed arm lowers your tackle roll by 2

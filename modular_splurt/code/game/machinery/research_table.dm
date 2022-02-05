@@ -162,6 +162,7 @@
 /obj/machinery/research_table/slaver
 	slaver_mode = TRUE
 	point_type = POINT_TYPE_CARGO
+	configured = TRUE
 
 #undef POINT_TYPE_CARGO
 #undef POINT_TYPE_SCIENCE

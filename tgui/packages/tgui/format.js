@@ -73,7 +73,7 @@ export const formatPower = (value, minBase1000 = 0) => {
   return formatSiUnit(value, minBase1000, 'W');
 };
 
-export const formatMoney = (value, precision = 0) => {
+export const formatMoney = (value, precision = 0, addCommas = false) => {
   if (!Number.isFinite(value)) {
     return value;
   }
@@ -92,8 +92,11 @@ export const formatMoney = (value, precision = 0) => {
   let result = '';
   for (let i = 0; i < length; i++) {
     if (i > 0 && i < indexOfPoint && (indexOfPoint - i) % 3 === 0) {
-      // Thin space
-      result += '\u2009';
+      if (addCommas) {
+        result += '\u002C'; // Comma
+      } else {
+        result += '\u2009'; // Thin space
+      }
     }
     result += fixed.charAt(i);
   }

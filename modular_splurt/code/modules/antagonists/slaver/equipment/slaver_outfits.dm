@@ -6,14 +6,14 @@
 	gloves = /obj/item/clothing/gloves/color/black
 	back = /obj/item/storage/backpack
 	ears = /obj/item/radio/headset/syndicate
-	id = /obj/item/card/id/slaver
+	id = /obj/item/card/id/syndicate/slaver
 	backpack_contents = list(/obj/item/storage/box/survival,\
 		/obj/item/kitchen/knife/combat/survival)
 
 /datum/outfit/slaver/leader
 	name = "Slave Master"
 
-	id = /obj/item/card/id/slaver/leader
+	id = /obj/item/card/id/syndicate/slaver/leader
 	gloves = /obj/item/clothing/gloves/krav_maga/combatglovesplus
 
 /datum/outfit/slaver/post_equip(mob/living/carbon/human/H, visualsOnly = FALSE, client/preference_source)

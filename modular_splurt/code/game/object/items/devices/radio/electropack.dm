@@ -40,12 +40,12 @@
 
 /obj/item/electropack/shockcollar/slave/proc/setPrice(newPrice)
 	var/mob/living/M = loc
-	var/announceMessage = "[M.real_name] has been captured. Send us [newPrice]cr with your communications console to get them back!"
+	var/announceMessage = "[M.real_name] has been captured. Send us [newPrice] credits with your communications console to get them back!"
 	if (price) // If price has already been set once, we are just changing it
 		if (newPrice > price) // Price has increased
-			announceMessage = "[M.real_name]'s ransom has increased to [newPrice]cr."
+			announceMessage = "[M.real_name]'s ransom has increased to [newPrice] credits."
 		else // Price has decreased
-			announceMessage = "[M.real_name]'s ransom has decreased to [newPrice]cr."
+			announceMessage = "[M.real_name]'s ransom has decreased to [newPrice] credits."
 
 
 	price = newPrice

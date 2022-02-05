@@ -77,8 +77,3 @@
 /datum/gear/backpack/nailpolish_purple
 	name = "Purple Nail Polish"
 	path = /obj/item/nailpolish/purple
-
-/datum/gear/backpack/weaponpermit
-	name = "Weapon Permit"
-	path = /obj/item/clothing/accessory/permit 
-	cost = 3

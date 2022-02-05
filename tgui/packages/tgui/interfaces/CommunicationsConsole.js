@@ -4,6 +4,7 @@ import { useBackend, useLocalState } from "../backend";
 import { Blink, Box, Button, Dimmer, Flex, Icon, Input, Modal, Section, TextArea, Table, LabeledList } from "../components";
 import { Window } from "../layouts";
 import { sanitizeText } from "../sanitize";
+import { formatMoney } from '../format';
 
 const STATE_BUYING_SHUTTLE = "buying_shuttle";
 const STATE_CHANGING_STATUS = "changing_status";
@@ -485,7 +486,7 @@ const PageMain = (props, context) => {
           <LabeledList>
             <LabeledList.Item
               label="Cargo credits">
-              {cargocredits}cr
+              {formatMoney(cargocredits, null, true)}cr
             </LabeledList.Item>
             <LabeledList.Item
               label="Info">
@@ -508,8 +509,6 @@ const PageMain = (props, context) => {
                   color="label"
                   textAlign="right">
                   {slave.toggleransomfeedback}
-                  {/* {slave.bought ? `${slave.cantoggleransom ?
-                    "Ransom paid" : "Ransom paid"}` : ""} */}
                 </Table.Cell>
 
                 <Table.Cell
@@ -518,7 +517,7 @@ const PageMain = (props, context) => {
                   <Button
                     icon={slave.bought ? "times" : ""}
                     disabled={!slave.cantoggleransom}
-                    content={slave.bought ? "Cancel" : slave.price + "cr"}
+                    content={slave.bought ? "Cancel" : formatMoney(slave.price, null, true) + "cr"}
                     color={slave.bought ? "bad" : "default"}
                     onClick={() => act('toggleBought', {
                       id: slave.id,

@@ -1,0 +1,291 @@
+2021-12-01:
+  BongaTheProto:
+  - rscadd: lipsticks in loadout
+  - rscadd: nail polish
+  - rscadd: deer tail
+  - tweak: you can now select a partner's genital to cum into
+  DeltaFire15:
+  - balance: Pellets now care about block woundwise
+  - balance: Pellet wound-bonus no longer stacks for the final calculation
+  - balance: Embeds no longer bypass full blocking.
+  - bugfix: Shields now work properly against unarmed / mob attacks.
+2021-12-02:
+  DeltaFire15:
+  - balance: Synthetics gained quasi-immunity to most chemicals, excluding some core
+      medical chems and a few specific disruptive ones.
+  - rscadd: Health analyzer, ChemMaster and chemical analyzer interactions with the
+      chemical processing flag system.
+  - bugfix: System Cleaner should now always update health as opposed to before.
+  - balance: system cleaner is now twice as effective.
+2021-12-03:
+  BongaTheProto:
+  - rscadd: kinky clothes
+  - rscadd: Mesmetron
+  - rscadd: some items I forgor
+  - rscadd: stripper poles (idk where to put them yet)
+  - bugfix: fixed the icons null forgot to add
+  NullFag:
+  - rscadd: lavaland stuff idk
+  - rscadd: random shitty urinals
+  - rscadd: footwraps
+  - rscadd: jackboots/toeless
+  - rscadd: jackboots/tall
+  - rscadd: workboots/toeless
+  - rscadd: tunic
+  - rscadd: a couple latex suits
+  - rscadd: sexynursesuit
+  - rscadd: lumberjack suit
+  TripleShades:
+  - rscadd: (Pubby) Holopad to surgery viewing area
+2021-12-04:
+  DrNukesky:
+  - rscadd: Added Manly Anvil in game
+  - rscadd: Added stundildo. Can be crafted with anvil
+  - imageadd: added images of stundildo
+  TheSarkazmus:
+  - bugfix: Fixed nonstandard eye sprites
+  syndishork:
+  - rscadd: Ports kink gear from skyrat
+  - rscadd: Ports the hypno goggles. This is NOT an alternative to brainwashing surgery
+      or the interrogation chamber.
+2021-12-05:
+  Arturlang:
+  - rscadd: You can now put in LaTeX equations in TGUI paper if you insert them between
+      two $ dollar signs
+  BongaTheProto:
+  - soundadd: Burping has noises now
+  - rscadd: bleat emote + sound
+  - rscadd: yeen hair and snout
+  - rscadd: kitsune mask
+  DeltaFire15:
+  - bugfix: Fireman carry no longer drops the carried person if passing over a prone
+      individual.
+2021-12-06:
+  DrNukesky:
+  - soundadd: Intense moaning
+  dragonbird13:
+  - rscadd: New location - Abandoned Shelter
+  - rscadd: New lavaland ghostrole - Wandering Hermit
+  - bugfix: Fixed missing second language when player loaded appearance for ghostrole
+  - rscadd: Ghostroles will spawn your character from preferences!
+2021-12-07:
+  DrNukesky:
+  - rscadd: Added self suck interactions
+  dragonbird13:
+  - imageadd: Retexture of male spunk.
+  - rscadd: Added PACMAN stock parts and three batteries + fixed machine frames (it
+      was just uninteractable frames)
+2021-12-08:
+  BongaTheProto:
+  - tweak: cleanbot now cleans semendrips
+  - imageadd: vape icons for snouts
+  - bugfix: fixed vapes not working well on snouts
+  - rscadd: cumdrip
+  - rscadd: pregnancy
+  - rscadd: receive_climax() proc to handle the individual receiving the nut
+  - bugfix: fixed rouge drill not having a digrange var
+  NullFag:
+  - bugfix: fixes some runtimes, probably
+  - rscadd: Hilbert's hotel in every map
+  - rscadd: an analyzer in rd's locker
+  - bugfix: fixed bug
+  - rscadd: bone statues ig
+  - rscadd: spider eyes for character creation
+2021-12-09:
+  DeltaFire15:
+  - bugfix: Linters should no longer scream.
+  Linzolle:
+  - bugfix: it now only snows on festivestation instead of every map
+  - bugfix: rain now triggers properly on spookystation
+  TripleShades:
+  - rscadd: (Pubby) Gives Robotic's Lab Surgery a cautery
+  keronshb:
+  - rscadd: Lets dynamic pick clock cultists midround
+  timothyteakettle:
+  - bugfix: being fat no longer makes you slower when floating
+2021-12-10:
+  BongaTheProto:
+  - tweak: dorms are protected from rads now
+  NullFag:
+  - balance: removed nullcrates from cargo
+  SandPoot:
+  - rscadd: Size gun for admemes.
+  - rscadd: Size affecting chemicals, be extra careful with them.
+  - balance: If 2 times bigger than someone, step on them.
+  - code_imp: A lot of stuff, some helpers and etc.
+  - tweak: Pick up small people.
+  - tweak: When choosing your size the input box will fetch the configs to know which
+      is the max and min sizes.
+2021-12-11:
+  BongaTheProto:
+  - bugfix: fixed crashing runtimes in the bloody shoes procs with the new size system
+  - rscadd: Added vibrators
+  - rscadd: added condoms
+  - rscadd: added sounding rods
+  - rscadd: added a lot of slutcurity stuff (still a lot more to come)
+  - rscadd: some hyper hairs
+  - bugfix: fixed high heels not appearing in the loadout
+  - imageadd: We have new emojis :3
+  - soundadd: do NOT look at the available release sounds for vore bellies, worst
+      mistake of my life!
+  - bugfix: fixes part of the shoe errors
+  - code_imp: renamed modular_eros > modular_splurt so it's now under sandstorm
+  SandPoot:
+  - bugfix: Borg speech is now centralized even inside lockers or something like that.
+  bunny232:
+  - bugfix: Cold blooded critters won't worry too much about the air around them being
+      too hot even though their body temperature is the same as it.
+  - balance: The warm pool is no longer nearly boiling and the cool pool no longer
+      goes below 0C.
+  dragonbird13:
+  - rscadd: New interesting feature for baseball bat (Alt-Click inhand)
+2021-12-12:
+  BongaTheProto:
+  - bugfix: the crafting menu should be working now
+  DeltaFire15:
+  - bugfix: Linters should no longer complain about afterattack sleeps.
+  Floyd / Qustinnus (sprites by Mickyan):
+  - bugfix: sanity can now reach its highest level
+  - imageadd: Adds HUD icons for sanity
+  SandPoot:
+  - rscadd: Dressers now have storage.
+  - rscadd: Roundstart dressers start with 5 of each underwear type.
+  - refactor: Stuff who have rustle_sound as FALSE will never produce any rustle sound
+      anymore.
+  - soundadd: Funny minecraft barrel sounds.
+2021-12-13:
+  BongaTheProto:
+  - rscadd: adds belly genitals
+  - rscadd: adds reagents for belly expansion
+  - rscadd: recipe for denbu draft
+  - rscadd: belly inflation prefs in the content tab
+  Putnam3145:
+  - bugfix: Per-minute science output fixed
+2021-12-14:
+  NotRanged:
+  - rscadd: Added two verbs to the IC tab that change your mob's 'layer' (sprite background/foreground
+      priority) slightly.
+2021-12-15:
+  BongaTheProto:
+  - bugfix: fixed vibrators
+  - rscadd: uh
+  lolman65:
+  - rscadd: Added new thing
+2021-12-16:
+  BongaTheProto:
+  - bugfix: now it checks if a paper's content is null rather than runtiming
+  - bugfix: fixes shower null objects
+  - tweak: You can now buckle yourself to seats 1 turf away
+  dragonbird13:
+  - bugfix: small code fix
+  lolman65:
+  - rscadd: Added demon horns
+2021-12-17:
+  BongaTheProto:
+  - imageadd: added some tails from hyper
+  Curiosity:
+  - bugfix: Fixes the slut hailer
+  - bugfix: Hopefully taur sprites for the latex catsuit works now
+  DeltaFire15:
+  - bugfix: The time for admins to cancel events is 30 seconds again.
+  SandPoot:
+  - bugfix: Fixes assembly holders.
+2021-12-18:
+  Anonymous:
+  - rscadd: You can get N.E.E.T. gear (labeled as D.A.B. for SS13) from clothesmate.
+  - tweak: D.A.B. gear in loadout is no longer restricted to assistants.
+  Yawet330:
+  - rscadd: Ported my own content from Skyrat, hydra shit
+2021-12-20:
+  Anonymous:
+  - imageadd: I humbly submit a toast to local captain, for successfully managing
+      buying Emergency Rum Party for 20th time, so he may get himself drunk while
+      leaving the station. Congratulations, cap. Enjoy your whiskey. <b>(Filling glass
+      with semen or femcum now turns it into chalice of cum)</b>
+  BongaTheProto:
+  - imageadd: new cool sprites for synths
+  - imageadd: temp server icon
+  - imageadd: more cool emokkis (you guys can look at the emoji files for the names
+      and use them in chat y'know)
+2021-12-21:
+  Kamatii:
+  - bugfix: gave the borg expander and borg reset codes a pixel_y += 16 and pixel_y
+      -= 16, temporary fix
+  ShizCalev:
+  - bugfix: Fixed an issue where you were able to remove flashlights/bayonets that
+      were supposed to be permanently attached to a gun.
+  - bugfix: Fixed an issue where you were unable to remove flashlights & bayonets
+      from certain weapons.
+  - bugfix: Fixed a potential issue where adding a flashlight to your helmet would've
+      caused you to lose other action buttons.
+  - bugfix: 'Fixed a issue where guns with multiple action buttons would break all
+      but one of those action buttons. tweak: If you have both a bayonet and a flashlight
+      attached to your gun, you''ll now be given a prompt on which you''d like to
+      remove when using a screwdriver on it. tweak: Hacking a firing pin out of a
+      gun is no longer done via a crafting menu - you can now do it by simply holding
+      the gun in your hand and clicking it with a welder/screwdriver/wirecutters.'
+2021-12-23:
+  BongaTheProto:
+  - tweak: now old interactions use the pronoun procs
+  - rscadd: Added extra food biogenerator designs
+  Putnam3145:
+  - bugfix: Atmos group processing heuristic no longer does opposite of intent
+2021-12-24:
+  John-Dang:
+  - tweak: Whiteship has cult archives, forge, several runed metal, ritual dagger,
+      several pylons, two shades and four constructs added, with some maint loot spawners
+      reduced and slight edits to interior and exterior hull.
+  athena413:
+  - tweak: kinkmate restock crate now is cheaper, contains another resupply, and also
+      is no longer contraband
+2021-12-25:
+  BongaTheProto:
+  - rscdel: deleted floor cluwnes
+  - rscadd: Custom genital fluids are back!
+  - rscadd: Added the bluespace reactor thingy
+  Kamatii:
+  - bugfix: fixed update_transform for silicon, they now resize properly and stay
+      on floor
+  - rscadd: in-hand use borg expander and shrinker to give custom size, then insert
+      to apply the resize, reset the to get the default size back
+2021-12-27:
+  BongaTheProto:
+  - rscadd: ball licking and boobjob interactions
+  - balance: meteors _should_ be only admin spawnable now
+  - balance: floor cluwnes have been removed entirely
+  - bugfix: fixed some lewd armor not showing the icon
+  - spellcheck: Fixed a couple lewd verbs' text
+  retardee:
+  - tweak: MY LIGHTBULB REMOVAL!!!!!!
+2021-12-28:
+  BongaTheProto:
+  - config: made he maximum ratio for picking up people a config
+  - rscadd: Breastfeeding interactions
+  - bugfix: Now you actually drink milk when sucking someone's nips (in case they
+      have lactating breasts)
+  - bugfix: fixed exactly one (1) mob holder related runtime
+  - tweak: Now the penis enlarger will give you balls
+  - code_imp: you can now add ignored_mobs for lewd interaction sounds
+  - code_imp: Modularized previous changes to do_climax
+  - sounddel: Now you can't hear brap noises if you set unholy to "No"
+  SandPoot:
+  - tweak: Set-Gender for borgs was moved to Robot Commands tab on the statpanel.
+  - tweak: Beautified some ui on the interaction menu.
+2021-12-29:
+  TripleShades:
+  - rscadd: (Festive Station) Fixes
+  - rscadd: 'Readds the cold to Festive Station tweak: (Festive Station) Fixes'
+  - rscadd: (Pubby) Cautery??? I think this is leftover but nobody has touched Pubby
+      since me so it's fine probably
+2021-12-30:
+  Refined1:
+  - rscadd: Rule flavour texts for each command role upon joining the server.
+2021-12-31:
+  BongaTheProto:
+  - rscadd: leashes!!!! they can be crafted and taken from kinkmates and slutbelts
+  Crowbar764:
+  - rscadd: Deathclaws
+  - rscadd: Funclaws
+  SandPoot:
+  - bugfix: You also no longer get every animation sprite and direction sprite of
+      items on the menus.
