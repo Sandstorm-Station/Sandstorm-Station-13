@@ -86,7 +86,7 @@
 	alt_covers_chest = TRUE
 	sensor_mode = SENSOR_COORDS
 	sensor_flags = NONE
-	anthro_mob_worn_overlay = 'modular_splurt/icons/mob/clothing/uniform-digi.dmi'
+	anthro_mob_worn_overlay = 'modular_splurt/icons/mob/clothing/uniform_digi.dmi'
 	mutantrace_variation = STYLE_DIGITIGRADE|STYLE_ALL_TAURIC
 
 /obj/item/clothing/under/rank/brigdoc/skirt
@@ -109,7 +109,7 @@
 	alt_covers_chest = TRUE
 	sensor_mode = SENSOR_COORDS
 	sensor_flags = NONE
-	anthro_mob_worn_overlay = 'modular_splurt/icons/mob/clothing/uniform-digi.dmi'
+	anthro_mob_worn_overlay = 'modular_splurt/icons/mob/clothing/uniform_digi.dmi'
 	mutantrace_variation = STYLE_DIGITIGRADE|STYLE_ALL_TAURIC
 
 
