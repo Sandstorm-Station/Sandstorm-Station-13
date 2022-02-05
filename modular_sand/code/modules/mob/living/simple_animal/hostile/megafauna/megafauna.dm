@@ -6,11 +6,6 @@
 	var/list/glorymessagespkabayonet = list() //SAME AS ABOVE BUT WITH A HONKING KNIFE ON THE FUCKING THING
 	var/gloryhealth = 200
 	var/glorythreshold = 100
-	var/list/songs = list()
-	var/sound/chosensong
-	var/chosenlength
-	var/chosenlengthstring
-	var/songend
 	var/retaliated = FALSE
 	var/retaliatedcooldowntime = 6000
 	var/retaliatedcooldown
@@ -52,14 +47,6 @@
 			var/mob/living/M = A
 			if((faction_check_mob(M) && attack_same) || (!faction_check_mob(M)) || (!ismegafauna(M)))
 				enemies |= M
-				chosenlengthstring = pick(songs)
-				chosenlength = text2num(chosenlengthstring)
-				chosensong = songs[chosenlengthstring]
-				if(chosensong && !songend)
-					if(M?.client?.prefs?.toggles & SOUND_MEGAFAUNA)
-						M.stop_sound_channel(CHANNEL_BOSSMUSIC)
-						songend = chosenlength + world.time
-						SEND_SOUND(M, chosensong) // so silence boss music will mute moosic for people who don't want that, or it just doesn't play at all if prefs disable it
 				if(!retaliated)
 					src.visible_message("<span class='userdanger'>[src] seems pretty pissed off at [M]!</span>")
 					retaliated = TRUE
@@ -69,11 +56,6 @@
 			if(M.occupant && M.occupant.client)
 				enemies |= M
 				enemies |= M.occupant
-				var/mob/living/O = M.occupant
-				if(O?.client?.prefs?.toggles & SOUND_MEGAFAUNA)
-					O.stop_sound_channel(CHANNEL_BOSSMUSIC)
-					songend = chosenlength + world.time
-					SEND_SOUND(O, chosensong)
 				if(!retaliated)
 					src.visible_message("<span class='userdanger'>[src] seems pretty pissed off at [M]!</span>")
 					retaliated = TRUE
@@ -91,14 +73,6 @@
 
 /mob/living/simple_animal/hostile/megafauna/Life()
 	..()
-	if(songend)
-		if(world.time >= songend)
-			for(var/mob/living/M in view(src, vision_range))
-				if(client)
-					if(M?.client?.prefs?.toggles & SOUND_MEGAFAUNA)
-						M.stop_sound_channel(CHANNEL_BOSSMUSIC)
-						songend = chosenlength + world.time
-						SEND_SOUND(M, chosensong)
 	if(health <= glorythreshold && !glorykill && stat != DEAD)
 		glorykill = TRUE
 		glory()
@@ -114,9 +88,6 @@
 	if(health > 0)
 		return
 	else
-		for(var/mob/living/M in view(src, vision_range))
-			if(M?.client?.prefs?.toggles & SOUND_MEGAFAUNA)
-				M.stop_sound_channel(CHANNEL_BOSSMUSIC)
 		animate(src, color = initial(color), time = 3)
 		desc = initial(desc)
 		var/datum/status_effect/crusher_damage/crusher_dmg = has_status_effect(STATUS_EFFECT_CRUSHERDAMAGETRACKING)
@@ -174,7 +145,5 @@
 		"<span class='userdanger'>You feast on [L], restoring your health!</span>")
 	if(!is_station_level(z) || client) //NPC monsters won't heal while on station
 		adjustBruteLoss(-L.maxHealth/2)
-	if(L?.client?.prefs?.toggles & SOUND_MEGAFAUNA)
-		L.stop_sound_channel(CHANNEL_BOSSMUSIC)
 	L.gib()
 	..()

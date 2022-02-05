@@ -96,8 +96,6 @@ Difficulty: Insanely Hard
 	var/sound_id = "goat"
 	var/special_attacks = 0
 	var/list/rangers = list()
-	var/current_song = 'modular_sand/sound/ambience/Visager-Battle.ogg'
-	var/current_song_length = 1200
 	stun_chance = 7
 
 /mob/living/simple_animal/hostile/megafauna/king/phase2/Initialize()
@@ -225,15 +223,6 @@ Difficulty: Insanely Hard
 	spellscast = 0
 	maxHealth = 750
 	revive(TRUE)
-	current_song = 'modular_sand/sound/ambience/Visager-Miniboss_Fight.ogg'
-	current_song_length = 1759
-	var/sound/song_played = sound(current_song)
-	for(var/mob/M in rangers)
-		if(!M.client || !(M.client.prefs.toggles & SOUND_MEGAFAUNA))
-			continue
-		M.stop_sound_channel(CHANNEL_BOSSMUSIC)
-		rangers[M] = world.time + current_song_length
-		M.playsound_local(null, null, 30, channel = CHANNEL_BOSSMUSIC, S = song_played)
 	stun_chance = 10
 	update_icon()
 	visible_message("<span class='cult'>\The [src]' wounds close with a flash, and when he emerges, he's even larger than before!</span>")
@@ -252,28 +241,6 @@ Difficulty: Insanely Hard
 
 /mob/living/simple_animal/hostile/megafauna/king/phase2/Life()
 	. = ..()
-	if(stat != DEAD)
-		var/sound/song_played = sound(current_song)
-
-		for(var/mob/M in range(10, src))
-			if(!M.client || !(M.client.prefs.toggles & SOUND_MEGAFAUNA))
-				continue
-			if(!(M in rangers) || world.time > rangers[M])
-				M.stop_sound_channel(CHANNEL_BOSSMUSIC)
-				rangers[M] = world.time + current_song_length
-				M.playsound_local(null, null, 30, channel = CHANNEL_BOSSMUSIC, S = song_played)
-		for(var/mob/L in rangers)
-			if(get_dist(src, L) > 10)
-				rangers -= L
-				if(!L || !L.client)
-					continue
-				L.stop_sound_channel(CHANNEL_BOSSMUSIC)
-	else
-		for(var/mob/L in rangers)
-			rangers -= L
-			if(!L || !L.client)
-				continue
-			L.stop_sound_channel(CHANNEL_BOSSMUSIC)
 	if(move_to_delay < 3)
 		move_to_delay += 0.2
 	if(!phase3 && ((health <= 150 && spellscast == 5) || stat == DEAD)) //begin phase 3, reset spell limit and heal
