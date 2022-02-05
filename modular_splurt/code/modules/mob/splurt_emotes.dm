@@ -211,3 +211,132 @@
 		return
 	user.nextsoundemote = world.time + 7
 	playsound(user, 'modular_splurt/sound/voice/bruh.ogg', 50, 1, -1)
+
+/datum/emote/living/bababooey
+	key = "bababooey"
+	key_third_person = "bababooeys"
+	message = "spews bababooey."
+	emote_type = EMOTE_AUDIBLE
+	muzzle_ignore = FALSE
+
+/datum/emote/living/bababooey/run_emote(mob/living/user, params)
+	if(!(. = ..()))
+		return
+	if(user.nextsoundemote >= world.time)
+		return
+	if(user.is_muzzled())
+		user.nextsoundemote = world.time + 7
+		playsound(user, 'modular_splurt/sound/voice/bababooey/ffff.ogg', 50, 1, -1)
+		return
+	user.nextsoundemote = world.time + 7
+	playsound(user, pick('modular_splurt/sound/voice/bababooey/bababooey.ogg', 'modular_splurt/sound/voice/bababooey/bababooey2.ogg'), 50, 1, -1)
+
+/datum/emote/living/babafooey
+	key = "babafooey"
+	key_third_person = "babafooeys"
+	message = "spews babafooey."
+	emote_type = EMOTE_AUDIBLE
+	muzzle_ignore = FALSE
+
+/datum/emote/living/babafooey/run_emote(mob/living/user, params)
+	if(!(. = ..()))
+		return
+	if(user.nextsoundemote >= world.time)
+		return
+	if(user.is_muzzled())
+		user.nextsoundemote = world.time + 7
+		playsound(user, 'modular_splurt/sound/voice/bababooey/ffff.ogg', 50, 1, -1)
+		return
+	user.nextsoundemote = world.time + 7
+	playsound(user, 'modular_splurt/sound/voice/bababooey/babafooey.ogg', 50, 1, -1)
+
+/datum/emote/living/fafafooey
+	key = "fafafooey"
+	key_third_person = "fafafooeys"
+	message = "spews fafafooey."
+	emote_type = EMOTE_AUDIBLE
+	muzzle_ignore = FALSE
+
+/datum/emote/living/fafafooey/run_emote(mob/living/user, params)
+	if(!(. = ..()))
+		return
+	if(user.nextsoundemote >= world.time)
+		return
+	if(user.is_muzzled())
+		user.nextsoundemote = world.time + 7
+		playsound(user, 'modular_splurt/sound/voice/bababooey/ffff.ogg', 50, 1, -1)
+		return
+	user.nextsoundemote = world.time + 7
+	playsound(user, pick('modular_splurt/sound/voice/bababooey/fafafooey.ogg', 'modular_splurt/sound/voice/bababooey/fafafooey2.ogg', 'modular_splurt/sound/voice/bababooey/fafafooey3.ogg'), 50, 1, -1)
+
+/datum/emote/living/fafafoggy
+	key = "fafafoggy"
+	key_third_person = "fafafoggys"
+	message = "spews fafafoggy."
+	emote_type = EMOTE_AUDIBLE
+	muzzle_ignore = FALSE
+
+/datum/emote/living/fafafoggy/run_emote(mob/living/user, params)
+	if(!(. = ..()))
+		return
+	if(user.nextsoundemote >= world.time)
+		return
+	if(user.is_muzzled())
+		user.nextsoundemote = world.time + 7
+		playsound(user, 'modular_splurt/sound/voice/bababooey/ffff.ogg', 50, 1, -1)
+		return
+	user.nextsoundemote = world.time + 7
+	playsound(user, pick('modular_splurt/sound/voice/bababooey/fafafoggy.ogg', 'modular_splurt/sound/voice/bababooey/fafafoggy2.ogg'), 50, 1, -1)
+
+/datum/emote/living/hohohoy
+	key = "hohohoy"
+	key_third_person = "hohohoys"
+	message = "spews hohohoy."
+	emote_type = EMOTE_AUDIBLE
+	muzzle_ignore = FALSE
+
+/datum/emote/living/hohohoy/run_emote(mob/living/user, params)
+	if(!(. = ..()))
+		return
+	if(user.nextsoundemote >= world.time)
+		return
+	if(user.is_muzzled())
+		user.nextsoundemote = world.time + 7
+		playsound(user, 'modular_splurt/sound/voice/bababooey/ffff.ogg', 50, 1, -1)
+		return
+	user.nextsoundemote = world.time + 7
+	playsound(user, 'modular_splurt/sound/voice/bababooey/hohohoy.ogg', 50, 1, -1)
+
+/datum/emote/living/ffff
+	key = "ffff"
+	key_third_person = "ffffs"
+	message = "spews something softly."
+	emote_type = EMOTE_AUDIBLE
+	muzzle_ignore = TRUE
+
+/datum/emote/living/ffff/run_emote(mob/living/user, params)
+	if(!(. = ..()))
+		return
+	if(user.nextsoundemote >= world.time)
+		return
+	user.nextsoundemote = world.time + 7
+	playsound(user, 'modular_splurt/sound/voice/bababooey/ffff.ogg', 50, 1, -1)
+
+/datum/emote/living/fafafail
+	key = "fafafail"
+	key_third_person = "fafafails"
+	message = "spews something unintelligible."
+	emote_type = EMOTE_AUDIBLE
+	muzzle_ignore = FALSE
+
+/datum/emote/living/fafafail/run_emote(mob/living/user, params)
+	if(!(. = ..()))
+		return
+	if(user.nextsoundemote >= world.time)
+		return
+	if(user.is_muzzled())
+		user.nextsoundemote = world.time + 7
+		playsound(user, 'modular_splurt/sound/voice/bababooey/ffff.ogg', 50, 1, -1)
+		return
+	user.nextsoundemote = world.time + 7
+	playsound(user, 'modular_splurt/sound/voice/bababooey/ffffhvh.ogg', 50, 1, -1)
