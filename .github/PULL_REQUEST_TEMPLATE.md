@@ -3,9 +3,10 @@
 <!-- Write **BELOW** The Headers and **ABOVE** The comments else it may not be viewable. -->
 <!-- You can view Contributing.MD for a detailed description of the pull request process. -->
 
-## About The Pull Request
+# About The Pull Request
 
 <!-- Describe The Pull Request. Please be sure every change is documented or this can delay review and even discourage maintainers from merging your PR! -->
+<!-- If your PR is related to one of our discord suggestions, please add the number of this suggestion to this section. Or if you may, the message link of said suggestion-->
 
 ## Why It's Good For The Game
 
@@ -16,6 +17,7 @@
 <!-- Just say if it is a port of something and link the original pr/commit/whatever. -->
 
 ## Changelog
+
 :cl:
 add: Added new things
 add: Added more things
