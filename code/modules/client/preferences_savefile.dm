@@ -442,7 +442,7 @@ SAVEFILE UPDATING/VERSIONING - 'Simplified', or rather, more coder-friendly ~Car
 
 	// Splurt
 	S["be_victim"]			>> be_victim
-
+	S["disable_combat_cursor"]		>> disable_combat_cursor
 	//favorite outfits
 	S["favorite_outfits"]	>> favorite_outfits
 
@@ -626,6 +626,7 @@ SAVEFILE UPDATING/VERSIONING - 'Simplified', or rather, more coder-friendly ~Car
 
 	// Splurt
 	WRITE_FILE(S["be_victim"], be_victim)
+	WRITE_FILE(S["disable_combat_cursor"], disable_combat_cursor)
 
 	var/mob/living/carbon/human/H = parent.mob
 	if(istype(H))
