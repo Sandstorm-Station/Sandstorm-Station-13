@@ -11,6 +11,7 @@
 
 	// Why this would ever be unset, who knows
 	var/prefix = CONFIG_GET(string/discordbotcommandprefix)
+	var/command = CONFIG_GET(string/verification_command)
 	if(!prefix)
 		to_chat(src, span_warning("This feature is disabled."))
 
@@ -28,7 +29,7 @@
 		// Will generate one if an expired one doesn't exist already, otherwise will grab existing token
 		var/one_time_token = SSdiscord.get_or_generate_one_time_token_for_ckey(ckey)
 		SSdiscord.reverify_cache[usr.ckey] = one_time_token
-		message = "Your one time token is: \"[one_time_token]\". You can now verify yourself in discord by using the command <span class='warning'>\"[prefix]verify [one_time_token]\"</span>"
+		message = "Your one time token is: \"[one_time_token]\". You can now verify yourself in discord by using the command <span class='warning'>\"[prefix][command] [one_time_token]\"</span>"
 
 	//Now give them a browse window so they can't miss whatever we told them
 	var/datum/browser/window = new/datum/browser(usr, "discordverification", "Discord verification")

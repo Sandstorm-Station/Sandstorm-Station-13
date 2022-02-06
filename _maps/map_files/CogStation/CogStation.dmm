@@ -10862,6 +10862,7 @@
 /obj/effect/turf_decal/tile/red{
 	dir = 1
 	},
+/obj/effect/landmark/start/brigdoc,
 /turf/open/floor/plasteel,
 /area/security/brig)
 "ayX" = (
@@ -10949,6 +10950,7 @@
 /obj/effect/turf_decal/tile/red{
 	dir = 1
 	},
+/obj/structure/closet/secure_closet/brigdoc,
 /turf/open/floor/plasteel,
 /area/security/brig)
 "azg" = (
@@ -18943,6 +18945,7 @@
 	},
 /obj/structure/disposalpipe/segment,
 /obj/machinery/atmospherics/pipe/simple/orange/hidden,
+/obj/structure/closet/secure_closet/blueshield,
 /turf/open/floor/plasteel,
 /area/command/bridge)
 "aPv" = (
@@ -70858,6 +70861,10 @@
 	},
 /turf/open/space/basic,
 /area/space/nearstation)
+"ffr" = (
+/obj/effect/landmark/start/blueshield,
+/turf/open/floor/plasteel,
+/area/command/bridge)
 "fgS" = (
 /obj/machinery/atmospherics/pipe/simple/green/visible{
 	dir = 4
@@ -91072,7 +91079,7 @@ urj
 cbX
 aGq
 aGX
-aHM
+ffr
 aHM
 aIP
 aJB
