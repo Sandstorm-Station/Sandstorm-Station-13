@@ -913,7 +913,8 @@ GLOBAL_VAR_INIT(exploit_warn_spam_prevention, 0)
 	else if(throw_cursor_icon && in_throw_mode != 0)
 		client.mouse_pointer_icon = throw_cursor_icon
 	else if(combat_cursor_icon && SEND_SIGNAL(usr, COMSIG_COMBAT_MODE_CHECK, COMBAT_MODE_ACTIVE))
-		client.mouse_pointer_icon = combat_cursor_icon
+		if(!client.prefs || !client.prefs.disable_combat_cursor) // Don't show the combat cursor for people who have it disabled in prefs.
+			client.mouse_pointer_icon = combat_cursor_icon
 	else if(examine_cursor_icon && client.keys_held["Shift"]) //mouse shit is hardcoded, make this non hard-coded once we make mouse modifiers bindable
 		client.mouse_pointer_icon = examine_cursor_icon
 	else if (ismecha(loc))
