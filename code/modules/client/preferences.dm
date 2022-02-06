@@ -95,6 +95,7 @@ GLOBAL_LIST_EMPTY(preferences_datums)
 	var/preferred_map = null
 	var/preferred_chaos = null
 	var/be_victim = null
+	var/disable_combat_cursor = FALSE
 	var/pda_style = MONO
 	var/pda_color = "#808000"
 	var/pda_skin = PDA_SKIN_ALT
@@ -1052,6 +1053,7 @@ GLOBAL_LIST_EMPTY(preferences_datums)
 
 			dat += "<h2>Splurt Preferences</h2>"
 			dat += "<b>Be Antagonist Victim:</b> <a href='?_src_=prefs;preference=be_victim;task=input'>[be_victim ? be_victim : BEVICTIM_ASK]</a><br>"
+			dat += "<b>Disable combat mode cursor:</b> <a href='?_src_=prefs;preference=disable_combat_cursor'>[disable_combat_cursor?"Yes":"No"]</a><br>"
 			dat += "<br>"
 
 			dat += "</td>"
@@ -2913,6 +2915,8 @@ GLOBAL_LIST_EMPTY(preferences_datums)
 									to_chat(user, "<span class='danger'>Invalid color. Your color is not bright enough.</span>")
 		else
 			switch(href_list["preference"])
+				if("disable_combat_cursor")
+					disable_combat_cursor = !disable_combat_cursor
 				//CITADEL PREFERENCES EDIT - I can't figure out how to modularize these, so they have to go here. :c -Pooj
 				if("genital_colour")
 					features["genitals_use_skintone"] = !features["genitals_use_skintone"]
