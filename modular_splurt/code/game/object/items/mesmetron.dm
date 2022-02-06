@@ -28,6 +28,9 @@
 	if(!(user in view(1, loc)))
 		return
 
+	if((!(H.client?.prefs.cit_toggles & HYPNO)))
+		return
+
 	var/response = alert(H, "Do you wish to fall into a hypnotic sleep? (This will allow [user] to issue hypnotic suggestions)", "Hypnosis", "Yes", "No")
 
 	if(response == "Yes")
