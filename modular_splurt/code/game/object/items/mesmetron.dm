@@ -28,6 +28,9 @@
 	if(!(user in view(1, loc)))
 		return
 
+	if((!(H.client?.prefs.cit_toggles & HYPNO)))
+		return
+
 	var/response = alert(H, "Do you wish to fall into a hypnotic sleep? (This will allow [user] to issue hypnotic suggestions)", "Hypnosis", "Yes", "No")
 
 	if(response == "Yes")
@@ -55,12 +58,19 @@
 		return
 
 	var/response = alert(user, "Would you like to release your subject or give them a suggestion?", "Mesmetron", "Suggestion", "Release")
+	if(!subject)
+		to_chat(user, "Your victim's mind has wandered, you should try again.")
+		return
+
 	if(response == "Suggestion")
 		if(get_dist(user, subject) > 1)
 			to_chat(user, "You must stand in whisper range of [subject].")
 			return
 
 		text = input("What would you like to suggest?", "Hypnotic suggestion", null, null)
+		if(!subject)
+			to_chat(user, "Your victim's mind has wandered, you should try again.")
+			return
 		text = sanitize(text)
 		if(!text)
 			return
@@ -69,6 +79,7 @@
 		to_chat(subject, "<span class='hypnophrase'>...[text]...</span>")
 		return
 	//Release
+
 	subject.visible_message("<span class='warning'>[subject] wakes up from their deep slumber!</span>", "<span class ='danger'>Your eyelids gently open as you see [user]'s face staring back at you</span>")
 	subject.SetSleeping(0)
 	subject = null

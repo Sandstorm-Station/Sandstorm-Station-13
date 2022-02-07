@@ -76,6 +76,8 @@
  * return bool - TRUE if a new pooled window is opened, FALSE in all other situations including if a new pooled window didn't open because one already exists.
  */
 /datum/tgui/proc/open()
+	if(!user)
+		return FALSE
 	if(!user.client)
 		return FALSE
 	if(window)
