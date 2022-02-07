@@ -235,7 +235,6 @@
 	else
 		return returned
 
-
 /**
   * Callback called by a timer to end an associative-list-indexed cooldown.
   *
