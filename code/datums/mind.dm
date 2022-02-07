@@ -591,6 +591,8 @@ GLOBAL_LIST(objective_choices)
 		/datum/objective/download,
 		/datum/objective/nuclear,
 		/datum/objective/absorb,
+		/datum/objective/rescue_prisoner,
+		/datum/objective/custom
 		)
 
 	for(var/t in allowed_types)
@@ -1401,35 +1403,16 @@ GLOBAL_LIST(objective_choices)
 						else
 							target_antag = target
 
-			var/list/allowed_types = list(
-				/datum/objective/assassinate,
-				/datum/objective/assassinate/once,
-				/datum/objective/maroon,
-				/datum/objective/debrain,
-				/datum/objective/protect,
-				/datum/objective/destroy,
-				/datum/objective/hijack,
-				/datum/objective/escape,
-				/datum/objective/survive,
-				/datum/objective/martyr,
-				/datum/objective/steal,
-				/datum/objective/download,
-				/datum/objective/nuclear,
-				/datum/objective/absorb,
-				/datum/objective/rescue_prisoner,
-				/datum/objective/custom
-			)
+//ambition start
+		if(!GLOB.objective_choices)
+			populate_objective_choices()
 
-			for(var/T in allowed_types)
-				var/datum/objective/X = T
-				choices[initial(X.name)] = T
+		if(old_objective && GLOB.objective_choices[old_objective.name])
+			def_value = old_objective.name
 
-		if(old_objective)
-			if(old_objective.name in choices)
-				def_value = old_objective.name
+		var/selected_type = input("Select objective type:", "Objective type", def_value) as null|anything in GLOB.objective_choices
+		selected_type = GLOB.objective_choices[selected_type]
 
-		var/selected_type = input("Select objective type:", "Objective type", def_value) as null|anything in choices
-		selected_type = choices[selected_type]
 		if (!selected_type)
 			return
 
