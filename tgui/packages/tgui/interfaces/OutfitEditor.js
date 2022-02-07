@@ -7,8 +7,8 @@ export const OutfitEditor = (props, context) => {
   const { outfit, saveable, dummy64 } = data;
   return (
     <Window
-      width={380}
-      height={600}>
+      width={600}
+      height={870}>
       <Window.Content>
         <Box
           as="img"
@@ -44,11 +44,11 @@ export const OutfitEditor = (props, context) => {
                   color="transparent"
                   icon="info"
                   tooltip="Ctrl-click a button to select *any* item instead of what will probably fit in that slot."
-                  tooltipPosition="bottom-left" />
+                  tooltipPosition="bottom-start" />
                 <Button
                   icon="code"
                   tooltip="Edit this outfit on a VV window"
-                  tooltipPosition="bottom-left"
+                  tooltipPosition="bottom-start"
                   onClick={() => act("vv")} />
                 <Button
                   color={!saveable && "bad"}
@@ -56,25 +56,28 @@ export const OutfitEditor = (props, context) => {
                   tooltip={saveable
                     ? "Save this outfit to the custom outfit list"
                     : "Remove this outfit from the custom outfit list"}
-                  tooltipPosition="bottom-left"
+                  tooltipPosition="bottom-start"
                   onClick={() => act(saveable ? "save" : "delete")} />
               </Stack.Item>
             </Stack>
           }>
           <Box textAlign="center">
             <Stack mb={2}>
+              <OutfitSlot name="Right Ear" icon="headphones-alt" slot="ears_extra" />
               <OutfitSlot name="Headgear" icon="hard-hat" slot="head" />
+              <OutfitSlot name="Left Ear" icon="headphones-alt" slot="ears" />
+            </Stack>
+            <Stack mb={2}>
+              <OutfitSlot name="Mask" icon="theater-masks" slot="mask" />
               <OutfitSlot name="Glasses" icon="glasses" slot="glasses" />
-              <OutfitSlot name="Ears" icon="headphones-alt" slot="ears" />
             </Stack>
             <Stack mb={2}>
               <OutfitSlot name="Neck" icon="stethoscope" slot="neck" />
-              <OutfitSlot name="Mask" icon="theater-masks" slot="mask" />
             </Stack>
             <Stack mb={2}>
-              <OutfitSlot name="Uniform" icon="tshirt" slot="uniform" />
-              <OutfitSlot name="Suit" icon="user-tie" slot="suit" />
-              <OutfitSlot name="Gloves" icon="mitten" slot="gloves" />
+              <OutfitSlot name="Suit" icon="user-astronaut" slot="suit" />
+              <OutfitSlot name="Uniform" icon="user-tie" slot="uniform" />
+              <OutfitSlot name="Shirt" icon="tshirt" slot="shirt" />
             </Stack>
             <Stack mb={2}>
               <OutfitSlot name="Suit Storage" icon="briefcase-medical" slot="suit_store" />
@@ -82,14 +85,22 @@ export const OutfitEditor = (props, context) => {
               <OutfitSlot name="ID" icon="id-card-o" slot="id" />
             </Stack>
             <Stack mb={2}>
-              <OutfitSlot name="Belt" icon="band-aid" slot="belt" />
-              <OutfitSlot name="Left Hand" icon="hand-paper" slot="l_hand" />
               <OutfitSlot name="Right Hand" icon="hand-paper" slot="r_hand" />
+              <OutfitSlot name="Wrists" icon="hands" slot="wrists" />
+              <OutfitSlot name="Gloves" icon="mitten" slot="gloves" />
+              <OutfitSlot name="Left Hand" icon="hand-paper" slot="l_hand" />
             </Stack>
             <Stack mb={2}>
-              <OutfitSlot name="Shoes" icon="socks" slot="shoes" />
-              <OutfitSlot name="Left Pocket" icon="envelope-open-o" iconRot={180} slot="l_pocket" />
               <OutfitSlot name="Right Pocket" icon="envelope-open-o" iconRot={180} slot="r_pocket" />
+              <OutfitSlot name="Underwear" icon="baby" slot="underwear" />
+              <OutfitSlot name="Belt" icon="band-aid" slot="belt" />
+              <OutfitSlot name="Left Pocket" icon="envelope-open-o" iconRot={180} slot="l_pocket" />
+            </Stack>
+            <Stack mb={2}>
+              <OutfitSlot name="Socks" icon="socks" slot="socks" />
+            </Stack>
+            <Stack mb={2}>
+              <OutfitSlot name="Shoes" icon="shoe-prints" slot="shoes" />
             </Stack>
           </Box>
         </Section>

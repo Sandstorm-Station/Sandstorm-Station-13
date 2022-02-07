@@ -56,8 +56,11 @@ GLOBAL_LIST_EMPTY(ipc_antennas_list)
 GLOBAL_LIST_EMPTY(genitals_list)
 GLOBAL_LIST_EMPTY(cock_shapes_list)
 GLOBAL_LIST_EMPTY(balls_shapes_list)
+GLOBAL_LIST_EMPTY(butt_shapes_list)
 GLOBAL_LIST_EMPTY(breasts_shapes_list)
 GLOBAL_LIST_EMPTY(vagina_shapes_list)
+GLOBAL_LIST_EMPTY(belly_shapes_list)
+
 //longcat memes.
 GLOBAL_LIST_INIT(dick_nouns, list("phallus", "willy", "dick", "prick", "member", "tool", "gentleman's organ", "cock", "wang", "knob", "dong", "joystick", "pecker", "johnson", "weenie", "tadger", "schlong", "thirsty ferret", "One eyed trouser trout", "Ding dong", "ankle spanker", "Pork sword", "engine cranker", "Harry hot dog", "Davy Crockett", "Kidney cracker", "Heat seeking moisture missile", "Giggle stick", "love whistle", "Tube steak", "Uncle Dick", "Purple helmet warrior"))
 
@@ -102,34 +105,41 @@ GLOBAL_VAR_INIT(miscreants_allowed, FALSE)
 		if(!src.holder)	return
 		message_admins("[key_name_admin(usr)] manually reloaded mentors")
 
-/mob/living/carbon/proc/has_penis()
+/*pretty much everything got moved to modular_skyrat (interactions)
+/mob/living/carbon/has_penis() // Skyrat Change
 	var/obj/item/organ/genital/G = getorganslot(ORGAN_SLOT_PENIS)
 	if(G && istype(G, /obj/item/organ/genital/penis))
 		return TRUE
 	return FALSE
 
-/mob/living/carbon/proc/has_balls()
+/mob/living/carbon/proc/has_balls() // Skyrat Change
 	var/obj/item/organ/genital/G = getorganslot(ORGAN_SLOT_TESTICLES)
 	if(G && istype(G, /obj/item/organ/genital/testicles))
 		return TRUE
 	return FALSE
 
-/mob/living/carbon/proc/has_vagina()
+/mob/living/carbon/has_vagina() // Skyrat Change
 	if(getorganslot(ORGAN_SLOT_VAGINA))
 		return TRUE
 	return FALSE
 
-/mob/living/carbon/proc/has_breasts()
+/mob/living/carbon/has_breasts() // Skyrat Change
 	if(getorganslot(ORGAN_SLOT_BREASTS))
 		return TRUE
 	return FALSE
+
+
+/mob/living/carbon/proc/has_butt()
+	if(getorganslot(ORGAN_SLOT_BUTT))
+		return TRUE
+	return FALSE*/
 
 /mob/living/carbon/proc/is_groin_exposed(list/L)
 	if(!L)
 		L = get_equipped_items()
 	for(var/A in L)
 		var/obj/item/I = A
-		if(I.body_parts_covered & GROIN)
+		if(istype(I) && (I.body_parts_covered & GROIN))
 			return FALSE
 	return TRUE
 
@@ -157,7 +167,11 @@ GLOBAL_VAR_INIT(miscreants_allowed, FALSE)
 		if(H.gender == MALE)
 			H.give_genital(/obj/item/organ/genital/penis)
 			H.give_genital(/obj/item/organ/genital/testicles)
+			H.give_genital(/obj/item/organ/genital/butt)
+			H.give_genital(/obj/item/organ/genital/belly)
 		else
 			H.give_genital(/obj/item/organ/genital/vagina)
 			H.give_genital(/obj/item/organ/genital/womb)
 			H.give_genital(/obj/item/organ/genital/breasts)
+			H.give_genital(/obj/item/organ/genital/butt)
+			H.give_genital(/obj/item/organ/genital/belly)

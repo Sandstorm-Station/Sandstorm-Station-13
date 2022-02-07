@@ -34,6 +34,10 @@
 	block_damage_absorption = 5
 	block_resting_stamina_penalty_multiplier = 2
 	block_projectile_mitigation = 75
+	block_damage_absorption_override = list(
+		TEXT_ATTACK_TYPE_TACKLE = INFINITY,
+		TEXT_ATTACK_TYPE_THROWN = 10
+	)
 
 /obj/item/shield/examine(mob/user)
 	. = ..()
@@ -74,7 +78,7 @@
 	animate(effect, alpha = 0, pixel_x = px * 1.5, pixel_y = py * 1.5, time = 3, flags = ANIMATION_PARALLEL | ANIMATION_RELATIVE)
 
 /obj/item/shield/proc/bash_target(mob/living/user, mob/living/target, bashdir, harmful)
-	if(!(target.status_flags & CANKNOCKDOWN) || HAS_TRAIT(src, TRAIT_STUNIMMUNE))	// should probably add stun absorption check at some point I guess..
+	if(!(HAS_TRAIT(target, CANKNOCKDOWN)) || HAS_TRAIT(target, TRAIT_STUNIMMUNE))	// should probably add stun absorption check at some point I guess..
 		// unified stun absorption system when lol
 		target.visible_message("<span class='warning'>[user] slams [target] with [src], but [target] doesn't falter!</span>", "<span class='userdanger'>[user] slams you with [src], but it barely fazes you!</span>")
 		return FALSE
@@ -120,8 +124,6 @@
 	return TRUE
 
 /obj/item/shield/proc/user_shieldbash(mob/living/user, atom/target, harmful)
-	if(!SEND_SIGNAL(user, COMSIG_COMBAT_MODE_CHECK, COMBAT_MODE_ACTIVE)) //Combat mode has to be enabled for shield bashing
-		return FALSE
 	if(!(shield_flags & SHIELD_CAN_BASH))
 		to_chat(user, "<span class='warning'>[src] can't be used to shield bash!</span>")
 		return FALSE
@@ -172,11 +174,11 @@
 /obj/item/shield/run_block(mob/living/owner, atom/object, damage, attack_text, attack_type, armour_penetration, mob/attacker, def_zone, final_block_chance, list/block_return)
 	if(ismovable(object))
 		var/atom/movable/AM = object
-		if(CHECK_BITFIELD(shield_flags, SHIELD_TRANSPARENT) && (AM.pass_flags & PASSGLASS))
+		if((shield_flags & SHIELD_TRANSPARENT) && (AM.pass_flags & PASSGLASS))
 			return BLOCK_NONE
-	if(CHECK_BITFIELD(shield_flags, SHIELD_NO_RANGED) && (attack_type & ATTACK_TYPE_PROJECTILE))
+	if((shield_flags & SHIELD_NO_RANGED) && (attack_type & ATTACK_TYPE_PROJECTILE))
 		return BLOCK_NONE
-	if(CHECK_BITFIELD(shield_flags, SHIELD_NO_MELEE) && (attack_type & ATTACK_TYPE_MELEE))
+	if((shield_flags & SHIELD_NO_MELEE) && (attack_type & ATTACK_TYPE_MELEE))
 		return BLOCK_NONE
 	if(attack_type & ATTACK_TYPE_THROWN)
 		final_block_chance += 30
@@ -245,38 +247,44 @@
 	var/final_damage = damage
 
 	if(attack_type & ATTACK_TYPE_MELEE)
-		var/obj/hittingthing = object
-		if(hittingthing.damtype == BURN)
-			if(CHECK_BITFIELD(shield_flags, SHIELD_ENERGY_WEAK))
-				final_damage *= 2
-			else if(CHECK_BITFIELD(shield_flags, SHIELD_ENERGY_STRONG))
-				final_damage *= 0.5
+		if(istype(object, /obj))	//Assumption: non-object attackers are a meleeing mob. Therefore: Assuming physical attack in this case.
+			var/obj/hittingthing = object
+			if(hittingthing.damtype == BURN)
+				if((shield_flags & SHIELD_ENERGY_WEAK))
+					final_damage *= 2
+				else if((shield_flags & SHIELD_ENERGY_STRONG))
+					final_damage *= 0.5
 
-		if(hittingthing.damtype == BRUTE)
-			if(CHECK_BITFIELD(shield_flags, SHIELD_KINETIC_WEAK))
-				final_damage *= 2
-			else if(CHECK_BITFIELD(shield_flags, SHIELD_KINETIC_STRONG))
-				final_damage *= 0.5
+			if(hittingthing.damtype == BRUTE)
+				if((shield_flags & SHIELD_KINETIC_WEAK))
+					final_damage *= 2
+				else if((shield_flags & SHIELD_KINETIC_STRONG))
+					final_damage *= 0.5
 
-		if(hittingthing.damtype == STAMINA || hittingthing.damtype == TOX || hittingthing.damtype == CLONE || hittingthing.damtype == BRAIN || hittingthing.damtype == OXY)
-			final_damage = 0
+			if(hittingthing.damtype == STAMINA || hittingthing.damtype == TOX || hittingthing.damtype == CLONE || hittingthing.damtype == BRAIN || hittingthing.damtype == OXY)
+				final_damage = 0
+		else
+			if((shield_flags & SHIELD_KINETIC_WEAK))
+				final_damage *= 2
+			else if((shield_flags & SHIELD_KINETIC_STRONG))
+				final_damage *= 0.5
 
 	if(attack_type & ATTACK_TYPE_PROJECTILE)
 		var/obj/item/projectile/shootingthing = object
 		if(is_energy_reflectable_projectile(shootingthing))
-			if(CHECK_BITFIELD(shield_flags, SHIELD_ENERGY_WEAK))
+			if((shield_flags & SHIELD_ENERGY_WEAK))
 				final_damage *= 2
-			else if(CHECK_BITFIELD(shield_flags, SHIELD_ENERGY_STRONG))
+			else if((shield_flags & SHIELD_ENERGY_STRONG))
 				final_damage *= 0.5
 
 		if(!is_energy_reflectable_projectile(object))
-			if(CHECK_BITFIELD(shield_flags, SHIELD_KINETIC_WEAK))
+			if((shield_flags & SHIELD_KINETIC_WEAK))
 				final_damage *= 2
-			else if(CHECK_BITFIELD(shield_flags, SHIELD_KINETIC_STRONG))
+			else if((shield_flags & SHIELD_KINETIC_STRONG))
 				final_damage *= 0.5
 
 		if(shootingthing.damage_type == STAMINA)
-			if(CHECK_BITFIELD(shield_flags, SHIELD_DISABLER_DISRUPTED))
+			if((shield_flags & SHIELD_DISABLER_DISRUPTED))
 				final_damage *= 3 //disablers melt these kinds of shields. Really meant more for holoshields.
 			else
 				final_damage = 0
@@ -376,10 +384,9 @@
 
 /obj/item/shield/riot/flash/on_shield_block(mob/living/owner, atom/object, damage, attack_text, attack_type, armour_penetration, mob/attacker, def_zone, final_block_chance, list/block_return)
 	. = ..()
-	if (. && !embedded_flash.crit_fail)
+	if (. && damage && !embedded_flash.crit_fail)
 		embedded_flash.activate()
 		update_icon()
-
 
 /obj/item/shield/riot/flash/attackby(obj/item/W, mob/user)
 	if(istype(W, /obj/item/assembly/flash/handheld))
@@ -547,7 +554,7 @@
 	force = 3
 	throwforce = 3
 	throw_speed = 3
-	var/base_icon_state = "eshield" // [base_icon_state]1 for expanded, [base_icon_state]0 for contracted
+	base_icon_state = "eshield" // [base_icon_state]1 for expanded, [base_icon_state]0 for contracted
 	var/on_force = 10
 	var/on_throwforce = 8
 	var/on_throw_speed = 2
@@ -564,7 +571,7 @@
 		return BLOCK_SUCCESS | BLOCK_REDIRECTED | BLOCK_SHOULD_REDIRECT
 	return ..()
 
-/obj/item/shield/energy/active_block(mob/living/owner, atom/object, damage, attack_text, attack_type, armour_penetration, mob/attacker, def_zone, final_block_chance, list/block_return, override_direction)
+/obj/item/shield/energy/directional_block(mob/living/owner, atom/object, damage, attack_text, attack_type, armour_penetration, mob/attacker, def_zone, final_block_chance, list/block_return, override_direction)
 	if((attack_type & ATTACK_TYPE_PROJECTILE) && is_energy_reflectable_projectile(object))
 		block_return[BLOCK_RETURN_REDIRECT_METHOD] = REDIRECT_METHOD_DEFLECT
 		return BLOCK_SUCCESS | BLOCK_REDIRECTED | BLOCK_SHOULD_REDIRECT

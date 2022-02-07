@@ -54,6 +54,8 @@
 	assemblytype = /obj/structure/door_assembly
 	normalspeed = 1
 	explosion_block = 1
+	wave_explosion_block = EXPLOSION_BLOCK_WALL
+	wave_explosion_multiply = EXPLOSION_DAMPEN_WALL
 	hud_possible = list(DIAG_AIRLOCK_HUD)
 
 	interaction_flags_machine = INTERACT_MACHINE_WIRES_IF_OPEN | INTERACT_MACHINE_ALLOW_SILICON | INTERACT_MACHINE_OPEN_SILICON | INTERACT_MACHINE_REQUIRES_SILICON | INTERACT_MACHINE_OPEN
@@ -100,6 +102,9 @@
 	rad_insulation = RAD_MEDIUM_INSULATION
 
 	var/static/list/airlock_overlays = list()
+	
+	/// sigh
+	var/unelectrify_timerid
 
 /obj/machinery/door/airlock/Initialize()
 	. = ..()
@@ -686,7 +691,7 @@
 		else
 			. += "It looks very robust."
 
-	if(hasSiliconAccessInArea(user) && (!stat & BROKEN))
+	if(hasSiliconAccessInArea(user) && !(stat & BROKEN))
 		. += "<span class='notice'>Shift-click [src] to [ density ? "open" : "close"] it.</span>"
 		. += "<span class='notice'>Ctrl-click [src] to [ locked ? "raise" : "drop"] its bolts.</span>"
 		. += "<span class='notice'>Alt-click [src] to [ secondsElectrified ? "un-electrify" : "permanently electrify"] it.</span>"
@@ -788,21 +793,6 @@
 		to_chat(user, "<span class='warning'>Wires are protected!</span>")
 		return WIRE_INTERACTION_FAIL
 	return ..()
-
-/obj/machinery/door/airlock/proc/electrified_loop()
-	while (secondsElectrified > NOT_ELECTRIFIED)
-		sleep(10)
-		if(QDELETED(src))
-			return
-
-		secondsElectrified--
-		updateDialog()
-	// This is to protect against changing to permanent, mid loop.
-	if(secondsElectrified == NOT_ELECTRIFIED)
-		set_electrified(NOT_ELECTRIFIED)
-	else
-		set_electrified(ELECTRIFIED_PERMANENT)
-	updateDialog()
 
 /obj/machinery/door/airlock/Topic(href, href_list, var/nowindow = 0)
 	// If you add an if(..()) check you must first remove the var/nowindow parameter.
@@ -1363,11 +1353,18 @@
 		wires.cut_all()
 		update_icon()
 
+/obj/machinery/door/airlock/proc/remove_electrify()
+	secondsElectrified = NOT_ELECTRIFIED
+	unelectrify_timerid = null
+
 /obj/machinery/door/airlock/proc/set_electrified(seconds, mob/user)
 	secondsElectrified = seconds
+	if(unelectrify_timerid)
+		deltimer(unelectrify_timerid)
+		unelectrify_timerid = null
+	if(secondsElectrified != ELECTRIFIED_PERMANENT)
+		unelectrify_timerid = addtimer(CALLBACK(src, .proc/remove_electrify), secondsElectrified SECONDS, TIMER_STOPPABLE)
 	diag_hud_set_electrified()
-	if(secondsElectrified > NOT_ELECTRIFIED)
-		INVOKE_ASYNC(src, .proc/electrified_loop)
 
 	if(user)
 		var/message

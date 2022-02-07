@@ -338,7 +338,7 @@ em {
   font-weight: bold;
 }
 
-.say, .emote, .infoplain {
+.say, .emote, .infoplain, .oocplain, .warningplain {
 }
 
 .deadsay {
@@ -356,6 +356,9 @@ em {
 .binarysay a:active, .binarysay a:visited {
   color: #88ff88;
 }
+
+/* RADIO COLORS */
+/* IF YOU CHANGE THIS KEEP IT IN SYNC WITH TGUI CONSTANTS */
 
 .radio {
   color: #1ecc43;
@@ -407,6 +410,14 @@ em {
 
 .blueteamradio {
   color: #3434fd;
+}
+
+.greenteamradio {
+  color: #34fd34;
+}
+
+.yellowteamradio {
+  color: #fdfd34;
 }
 
 .yell {
@@ -556,6 +567,10 @@ em {
   text-shadow: 0 0 6px #994449;
 }
 
+.lewd {
+  color: #800080;
+}
+
 .cult {
   color: #973e3b;
 }
@@ -687,7 +702,7 @@ em {
 .large_brass {
   color: #BE8700;
   font-size: 185%;
- }
+}
 
 .big_brass {
   color: #BE8700;
@@ -991,6 +1006,18 @@ em {
 .icon {
   height: 1em;
   width: auto;
+}
+
+.bigicon {
+  font-size: 2.5em;
+}
+
+.infobox {
+  border: 1px ridge #383243;
+  background: rgba(40, 40, 60, 0.5);
+  margin: 2px 8px;
+  padding: 8px 12px;
+  max-width: 550px;
 }
 
 .memo {

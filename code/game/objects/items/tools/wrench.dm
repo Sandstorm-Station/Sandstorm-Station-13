@@ -44,6 +44,13 @@
 /obj/item/wrench/brass/family
 	toolspeed = 1
 
+/obj/item/wrench/ashwalker
+	name = "bone wrench"
+	desc = "A shoddy wrench made out of bent bones and sinew."
+	icon = 'icons/obj/mining.dmi'
+	icon_state = "wrench_bone"
+	toolspeed = 0.75
+
 /obj/item/wrench/bronze
 	name = "bronze plated wrench"
 	desc = "A bronze plated wrench."
@@ -63,8 +70,8 @@
 	desc = "A simple powered hand drill. It's fitted with a bolt bit."
 	icon_state = "drill_bolt"
 	item_state = "drill"
-	lefthand_file = 'icons/mob/inhands/equipment/tools_lefthand.dmi'
-	righthand_file = 'icons/mob/inhands/equipment/tools_righthand.dmi'
+	lefthand_file = 'modular_sand/icons/mob/inhands/equipment/tools_lefthand.dmi'
+	righthand_file = 'modular_sand/icons/mob/inhands/equipment/tools_righthand.dmi'
 	usesound = 'sound/items/drill_use.ogg'
 	custom_materials = list(/datum/material/iron=150,/datum/material/silver=50,/datum/material/titanium=25)
  //done for balance reasons, making them high value for research, but harder to get

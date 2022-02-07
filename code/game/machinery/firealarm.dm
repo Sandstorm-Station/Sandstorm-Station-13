@@ -36,6 +36,10 @@
 	var/last_alarm = 0
 	var/area/myarea = null
 
+	var/alarm_active = FALSE
+	var/wire_override = FALSE
+	var/button_wire_cut = FALSE
+
 /obj/machinery/firealarm/Initialize(mapload, dir, building)
 	. = ..()
 	if(dir)
@@ -49,8 +53,14 @@
 	myarea = get_base_area(src)
 	LAZYADD(myarea.firealarms, src)
 
+	wires = new /datum/wires/firealarm(src)
+
 /obj/machinery/firealarm/Destroy()
 	LAZYREMOVE(myarea.firealarms, src)
+
+	qdel(wires)
+	wires = null
+
 	return ..()
 
 /obj/machinery/firealarm/power_change()
@@ -79,23 +89,33 @@
 
 	if(is_station_level(z))
 		. += "fire_[GLOB.security_level]"
-		SSvis_overlays.add_vis_overlay(src, icon, "fire_[GLOB.security_level]", EMISSIVE_LAYER, EMISSIVE_PLANE, dir)
+		. += mutable_appearance(icon, "fire_[GLOB.security_level]")
+		. += emissive_appearance(icon, "fire_[GLOB.security_level]")
 	else
 		. += "fire_[SEC_LEVEL_GREEN]"
-		SSvis_overlays.add_vis_overlay(src, icon, "fire_[SEC_LEVEL_GREEN]", EMISSIVE_LAYER, EMISSIVE_PLANE, dir)
+		. += mutable_appearance(icon, "fire_[SEC_LEVEL_GREEN]")
+		. += emissive_appearance(icon, "fire_[SEC_LEVEL_GREEN]")
 
 	var/area/A = src.loc
 	A = A.loc
 
 	if(!detecting || !A.fire)
 		. += "fire_off"
-		SSvis_overlays.add_vis_overlay(src, icon, "fire_off", EMISSIVE_LAYER, EMISSIVE_PLANE, dir)
+		. += mutable_appearance(icon, "fire_off")
+		. += emissive_appearance(icon, "fire_off")
 	else if(obj_flags & EMAGGED)
 		. += "fire_emagged"
-		SSvis_overlays.add_vis_overlay(src, icon, "fire_emagged", EMISSIVE_LAYER, EMISSIVE_PLANE, dir)
+		. += mutable_appearance(icon, "fire_emagged")
+		. += emissive_appearance(icon, "fire_emagged")
 	else
 		. += "fire_on"
-		SSvis_overlays.add_vis_overlay(src, icon, "fire_on", EMISSIVE_LAYER, EMISSIVE_PLANE, dir)
+		. += mutable_appearance(icon, "fire_on")
+		. += emissive_appearance(icon, "fire_on")
+
+	if(!panel_open && detecting) //It just looks horrible with the panel open
+		. += "fire_detected"
+		. += mutable_appearance(icon, "fire_detected")
+		. += emissive_appearance(icon, "fire_detected") //Pain
 
 /obj/machinery/firealarm/emp_act(severity)
 	. = ..()
@@ -133,6 +153,8 @@
 	if(user)
 		log_game("[user] triggered a fire alarm at [COORD(src)]")
 
+	alarm_active = TRUE
+
 /obj/machinery/firealarm/proc/reset(mob/user)
 	if(!is_operational())
 		return
@@ -141,12 +163,16 @@
 	if(user)
 		log_game("[user] reset a fire alarm at [COORD(src)]")
 
+	alarm_active = FALSE
+
 /obj/machinery/firealarm/on_attack_hand(mob/user, act_intent = user.a_intent, unarmed_attack_flags)
 	if(buildstage != 2)
 		return ..()
 	add_fingerprint(user)
 	var/area/A = get_base_area(src)
-	if(A.fire)
+	if(wire_override || button_wire_cut)
+		to_chat(user, "<span class='warning'>The fire alarm doesn't respond!</span>")
+	else if(A.fire)
 		reset(user)
 	else
 		alarm(user)
@@ -169,6 +195,10 @@
 
 	if(panel_open)
 
+		if(panel_open && is_wire_tool(W) && user.a_intent == INTENT_HELP)
+			wires.interact(user)
+			return
+
 		if((W.tool_behaviour == TOOL_WELDER) && user.a_intent == INTENT_HELP)
 			if(obj_integrity < max_integrity)
 				if(!W.tool_start_check(user, amount=0))
@@ -184,19 +214,18 @@
 
 		switch(buildstage)
 			if(2)
-				if(W.tool_behaviour == TOOL_MULTITOOL)
-					detecting = !detecting
-					if (src.detecting)
-						user.visible_message("[user] has reconnected [src]'s detecting unit!", "<span class='notice'>You reconnect [src]'s detecting unit.</span>")
-					else
-						user.visible_message("[user] has disconnected [src]'s detecting unit!", "<span class='notice'>You disconnect [src]'s detecting unit.</span>")
-					return
-
-				else if(W.tool_behaviour == TOOL_WIRECUTTER)
+				if(W.tool_behaviour == TOOL_WIRECUTTER && !(user.a_intent == INTENT_HELP))
 					buildstage = 1
 					W.play_tool_sound(src)
 					new /obj/item/stack/cable_coil(user.loc, 5)
 					to_chat(user, "<span class='notice'>You cut the wires from \the [src].</span>")
+
+					alarm_active = FALSE
+					wire_override = FALSE
+					button_wire_cut = FALSE
+					qdel(wires)
+					wires = null
+
 					update_icon()
 					return
 				else if(W.force) //hit and turn it on
@@ -212,6 +241,9 @@
 					else
 						buildstage = 2
 						to_chat(user, "<span class='notice'>You wire \the [src].</span>")
+
+						wires = new /datum/wires/firealarm(src)
+
 						update_icon()
 					return
 

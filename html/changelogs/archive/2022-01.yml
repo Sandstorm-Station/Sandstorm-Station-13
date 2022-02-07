@@ -1,0 +1,267 @@
+2022-01-02:
+  PowerfulBacon:
+  - bugfix: href exploit
+2022-01-03:
+  BongaTheProto:
+  - rscadd: added hilbert's hotel to some maps that didn't have it
+  - rscadd: added the smites from hyper
+  - soundadd: now the lightning smite is very funnyf
+  - soundadd: more roundend sounds from hypre
+  - bugfix: removed the previous RD patch **(EXPERIMENTAL)**
+  DeltaFire15:
+  - admin: Station names now require admin approval instead of autoaccepting.
+  Putnam3145:
+  - bugfix: Bluespace pipes
+  TripleShades:
+  - rscadd: '(Meta) Floodlight to Atmospherics tweak: (Meta) Atmospherics Entryway
+      layout change tweak: (Meta) Atmospherics Monitoring room layout tweak tweak:
+      (Meta) Atmospherics Supply Line room airlock location change'
+  - bugfix: (Meta) Incinerator Access airlock now has the correct access
+2022-01-04:
+  Crowbar764:
+  - rscadd: More sounds to deathclaw lewds
+  - rscadd: Semen decal and reagents added
+  - tweak: Exiled deathclaws don't attack now, only lewd
+  - tweak: Speeds up sex to make it more realistic
+  - tweak: Should make player-controlled deathclaws be able to use verbs
+  - tweak: Throat fucking now actually does (noticeable) oxy damage
+  - bugfix: Erp verb logging (for admins) should now be accurate.
+  Hatterhat:
+  - imageadd: Jumpboots now have a mining sprite. Alt-click, as usual, to change 'em.
+  MrJWhit:
+  - rscadd: Adds pipes to the SM to make omega better
+  - bugfix: Various omega fixes
+  Putnam3145:
+  - rscadd: Hydrogen gas (no way to get yet)
+  - rscadd: Gas groups, such as...
+  - rscadd: Chemical gases, starting with ethanol, bromine, diethylamine, ammonia,
+      phlogiston
+  - rscadd: Bromine gas (can make it by tossing hot bromine on the ground OR by burning
+      methyl bromide)
+  - rscadd: Ammonia gas (toss hot ammonia on the ground OR burn diethylamine)
+  - rscdel: 'Snowflake trit/plasma fires fires tweak: Generic fires are now more accurate
+      energy-wise tweak: Water vapor condensation no longer happens below 40 C tweak:
+      Methyl bromide now burns properly'
+  - balance: Massive fusion nerf
+  - balance: Due to the removal of snowflake trit fires, trit fires are much, much
+      less hot
+  - balance: 'Due to the previous, bombs are now easier to reach 50,000 points on
+      (2 : 1 plasma : oxy at 160 kelvins cold side should be fine)'
+2022-01-06:
+  Crowbar764:
+  - tweak: 'Admin stuff: Playtime tracker uses TGUI now'
+2022-01-07:
+  BongaTheProto:
+  - rscadd: Added the base for tg redbot integration and discord subsystems
+  - rscadd: Added the verify discord and notify ooc verbs
+  - tweak: Revamps the whole notify tgs command
+  - server: added a toggleable "Discord Bunker"
+  - admin: Added a "Toggle Discord Bunker" verb to the Server tab
+  Crowbar764:
+  - rscadd: More admin grief warnings
+  - rscadd: Admin grief warnings
+  - bugfix: Grief alarm fix
+  MrJWhit:
+  - rscadd: Adds an airlock between atmos and engineering on omega.
+2022-01-08:
+  Anonymous:
+  - imageadd: Bootyborgs for each available (so far) module, per request.
+  - imageadd: Three medibots in one!
+  BongaTheProto:
+  - admin: Added the add and revoke discord bypass verbs in order to let in people
+      without verification when dbubker on
+  - admin: Added tgs commands that do the same as the revoke and add bypass verbs
+  - admin: Added a tgs command for removing someone from the panic bunker bypass
+2022-01-09:
+  Yoichi.boy:
+  - bugfix: Hilbert's shouldn't suddenly run out of air from now on
+2022-01-10:
+  Linzolle:
+  - bugfix: bloodsplatter effects no longer white in certain cases
+  - bugfix: the blood in the BDM ruin is no longer white
+  Putnam3145:
+  - bugfix: Alcohol works again
+  solarbearcub:
+  - rscadd: explanations for unholy verb, extreme verb and harmful verb toggles in
+      preferences.
+2022-01-12:
+  AyyRobotics:
+  - rscadd: Added "The Vault" Emergency Shuttle for 7500 Credits.
+  BongaTheProto:
+  - rscadd: New status support for redbot
+  - server: Delete Discord Nulls verb and tgs command to clear nulls from the database
+  - config: mammal_synthetic and dullahan are now toggleable species. Idk who removed
+      them
+2022-01-13:
+  SandPoot:
+  - rscadd: Runechat messages will now also display the icon (of the language).
+2022-01-14:
+  Putnam3145:
+  - admin: More logging for bad ERP reagent mechanics
+  - balance: Made supernova rad storms less strong, slightly more common (but less
+      spammy)
+2022-01-16:
+  BongaTheProto:
+  - rscadd: Milking machines
+  - rscadd: Pleasuremaws
+  - rscadd: dogborg stuff cit erased
+  - rscadd: cum over
+  SandPoot:
+  - rscadd: Added a Sex Research Table, when you wanna help doing your stuff.
+  jbox144:
+  - tweak: Added the ability to TK hug people!
+  - bugfix: Fixed the offset door bug on hilbert's hotel. Rather, the wall was actually
+      the problematic part. So I guess the wall is fixed.
+  - rscadd: Added 4 more glasses to the kitchen in hilbert's hotel.
+  - tweak: Changed the scrubbers in hilbert's hotel to use layer 3, instead of being
+      var edited to layer 3
+2022-01-17:
+  AyyRobotics:
+  - rscadd: Added an improved version of The Vault shuttle.
+2022-01-20:
+  NullFag:
+  - admin: adds paci bans
+  - rscadd: adds kanon
+  SandPoot:
+  - rscadd: Tier of the research table allows someone to be used more times.
+  - rscadd: Research table can be used for cargo money.
+  - rscadd: Hella examination text for the research table, hopefully you won't get
+      confused anymore, hopefully.
+  - config: There's a config for the multiplier of the research table, try balancing
+      it!
+  - bugfix: Fixed some bugs with the research table.
+  - tweak: The research table can also be deconstructed!
+2022-01-21:
+  radar651:
+  - rscadd: Mk. 58 Enforcer .45 has been ported.
+  - rscadd: Added a gun light to the M1911, the Enforcer can take it as well
+  - rscadd: Super Shorty Riot gun to cargo ordering console
+  - rscadd: Riot Shotguns and Riot Grenade Launchers are now able to be purchased
+      from cargo.
+  - rscadd: Several types of .45 ammo can be bought through cargo without hacking
+      the lathe.
+  - rscadd: A spawn beacon into Sec Officer's backpack to choose their side arm just
+      like the big boss. They can chose from a Enforcer, M1911 or a Hybrid Taser.
+  - rscadd: A gold Enforcer to the Captain's locker
+  - rscadd: A red enforcer to the HOS's selectable sidearms.
+  - rscdel: Sec officers no longer spawn with a Hybrid taser in their slot
+  - balance: Lowered the count of the Riot gun from 3 to 1 grenade.
+  - imageadd: Added in new sprites for the Detective's revolver, ported from TG. There
+      is now a larger selection to choose from.
+  - imageadd: New sprites for the Bartender's double barrel shotgun
+  - imageadd: New sprite for the Riot gun, ported from TG
+  - imageadd: Enforcer and magazines ported from Paradise.
+  - spellcheck: A spelling mistake in the Combat shotgun crate description. Butchshot
+      is now Buckshot to reflect better what ammo it comes with.
+2022-01-22:
+  Anonymous:
+  - imageadd: Added a bit more borg selections. Includes zoombas and robomaids!
+  - imageadd: Added a bit more dogborg selections. Plus otieborgs and borgis.
+  - rscadd: Polychromatic boatcloak. Basically, a short-ish cloak.
+  - rscadd: Command Boatcloak. This one isn't as short, though.
+  NopemanMcHalt:
+  - imageadd: Security version of Bladeborg.
+  radar651:
+  - rscadd: Ported the handheld sechailer
+  - rscadd: added the hailer to all secjob spawns and the secvend
+  - soundadd: added halt.ogg to the sound files
+  - imageadd: added device.dm and voice0 icon
+2022-01-23:
+  DeltaFire15:
+  - balance: Synths no longer take direct damage from low blood. They will however
+      suffer from lower cooling efficiency and be in danger of overheating.
+  - balance: The temperature system of synths is now simillar to the coldblooded trait,
+      though depending on environment and coolant level, with access to short bursts
+      of direct control via active cooling.
+  - balance: Synths no longer breathe. If in crit, they meltdown and suffer burn damage
+      over time.
+  - balance: Synths are now immune to low pressure, resistant to low temp, and vulnerable
+      to high temp.
+  - balance: Synths no longer process oxyloss and temperature adjustment chemicals.
+  - balance: 'Nanogel is now printable at med- / scilathes and mechfabs after researching
+      the Advanced Robotics node. It does need a bit of diamond though. tweak: All
+      Synthetics now use blood type S'
+  - rscadd: Atmospheric Flux event
+  - balance: A lot more fluids can be used for replica pods
+  Trilbyspaceclone:
+  - rscadd: New type of flora to lava land, an Ash Tree, can be harvested for coal
+      or if lucky used to gather honey. Just use a container!
+  Uso15:
+  - rscadd: Added Slutcurity/Security Stripper uniforms to SecVend machines
+  radar651:
+  - tweak: Upped Max Mutations from 6 to 15.
+2022-01-24:
+  Anonymous (feat. radar651):
+  - tweak: Borgs will now get access to department radio upon transforming into respected
+      module (e.g. security and peacekeeper modules - security channel).
+  BongaTheProto:
+  - code_imp: Moved lewd skyrat items to the modular_splurt folder
+  radar651:
+  - balance: Makes .45 taser not hurt anyone at all. Its completely non-lethal.
+2022-01-25:
+  BongaTheProto:
+  - tweak: Milking machines can now be found in kinkmates
+  Putnam3145:
+  - bugfix: Artificial zeolite now has a taste
+  - spellcheck: '"Zeolites" has been renamed to "zeolite" ("a beaker of zeolites"
+      is like "a beaker of woods")'
+  - spellcheck: Various taste descriptors have had their end punctuation removed
+2022-01-26:
+  LetterN:
+  - rscadd: Antag info panel using tgui for selected antags
+  - code_imp: TGUI hardsync
+  - code_imp: TIMER_DELETE_ME flag for timers
+  - code_imp: 'wiremod backend (DO NOT ENABLE, FOLLOWUP PR WILL ADD WIREMOD) tweak:
+      Cryo DOES NOT store the items, instead only drops it as soon as the person "fully
+      cryo" tweak: Changes on how uplink works. Purchases are now only based on if
+      said uplink has the right flag to purchase an item, rather than using a list
+      to whitelist/blacklist specific gamemodes for it. Also, the purchase items handles
+      poplocking by themselves now.'
+  radar651:
+  - rscadd: Added .45 caliber to be printed from tech fabs in 20 round boxes. .45
+      caliber tech shells in magazines are also available from the tech fab.
+  - rscdel: Removed .45 Ion from cargo crates
+  - imageadd: New .45 caliber boxes in Green, Orange, Yellow, Red and Cyan variegates
+      for different ammo types.
+2022-01-28:
+  DeltaFire15:
+  - rscdel: genital fluids are once again not valid for pod cloning, nor do the decals
+      have dna (I hate the fact I had to PR this because the original got merged with
+      this still present) (reverted for Sandstorm)
+  SpiWat:
+  - spellcheck: fixed a typo, I hope
+2022-01-29:
+  Arturlang:
+  - bugfix: Fixes Papers not working due to a dependency updated.
+  BongaTheProto:
+  - rscadd: Added Holocollars, spiked collars, handmade collars, and casino collars,
+      also in kinkmates and other vendors!
+  - imageadd: New avian character customization sprites for birbs (yay)
+2022-01-30:
+  BongaTheProto:
+  - rscadd: added urethral penetration interactions
+  radar651:
+  - rscadd: Adds in Weapon Permits, they even fit to your jumpsuit.
+  - rscadd: Heads of Staff, Minus the Captain and HOS, spawn with a weapon permit.
+      The Bartender also spawns with one
+  - rscadd: Captain, HOS and HOP spawn with a case of 20 weapon permits for distribution.
+  - imageadd: added in permit, compermit and barpermit
+2022-01-31:
+  BongaTheProto:
+  - bugfix: Hilbert's hotel atmos system shouldn't runtime anymore
+  SandPoot:
+  - rscadd: Admins have a special shiny button to end the round ic.
+  - bugfix: No longer calling CHECK_TICKs for no reason.
+  - config: If reveal everything is false, ghosts can no longer speak to the living
+      when the round ends.
+  - rscadd: Added an outline color theme for liteweb. (used when you don't pick a
+      color)
+  - bugfix: You can once again see your previews for picking target bodyparts on your
+      hud.
+  - bugfix: Stuff on your other ear is no longer fire-proof.
+  - bugfix: Your items no longer go invisble if you cycle through hud modes or reconnect
+      into the game.
+  SandPoot and The Last Hosea2:
+  - rscadd: Added new clothing items including hats, some shoes and a duster! They're
+      available on the loadout and vendors.
+  - rscdel: Deletes file duplicates that were in the wrong place.

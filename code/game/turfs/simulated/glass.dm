@@ -45,7 +45,7 @@
 	desc = "Do jump on it, it can take it."
 	icon = 'icons/turf/floors/reinf_glass.dmi'
 	icon_state = "floor_glass"
-	// base_icon_state = "reinf_glass"
+	base_icon_state = "reinf_glass"
 
 // /turf/open/floor/glass/reinforced/setup_broken_states()
 // 	return list("reinf_glass-damaged1", "reinf_glass-damaged2", "reinf_glass-damaged3")

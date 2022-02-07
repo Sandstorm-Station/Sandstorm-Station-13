@@ -723,13 +723,14 @@
 	inputs = list(
 		"target NTNet addresses"= IC_PINTYPE_STRING,
 		"data to send"			= IC_PINTYPE_STRING,
-		"secondary text"		= IC_PINTYPE_STRING
+		"secondary text"		= IC_PINTYPE_STRING,
+		"passkey"				= IC_PINTYPE_STRING
 		)
 	outputs = list(
 		"address received"			= IC_PINTYPE_STRING,
 		"data received"				= IC_PINTYPE_STRING,
 		"secondary text received"	= IC_PINTYPE_STRING,
-		"passkey"					= IC_PINTYPE_STRING,
+		"passkey received"			= IC_PINTYPE_STRING,
 		"is_broadcast"				= IC_PINTYPE_BOOLEAN
 		)
 	activators = list("send data" = IC_PINTYPE_PULSE_IN, "on data received" = IC_PINTYPE_PULSE_OUT)
@@ -749,10 +750,11 @@
 	var/target_address = get_pin_data(IC_INPUT, 1)
 	var/message = get_pin_data(IC_INPUT, 2)
 	var/text = get_pin_data(IC_INPUT, 3)
+	var/passkey = get_pin_data(IC_INPUT, 4)
 
 	var/datum/netdata/data = new
 	data.recipient_ids = splittext(target_address, ";")
-	data.standard_format_data(message, text, assembly ? strtohex(XorEncrypt(json_encode(assembly.access_card.access), SScircuit.cipherkey)) : null)
+	data.standard_format_data(message, text, passkey)
 	ntnet_send(data)
 
 /obj/item/integrated_circuit/input/ntnet_receive(datum/netdata/data)
@@ -778,8 +780,9 @@
 	inputs = list(
 		"target NTNet addresses"= IC_PINTYPE_STRING,
 		"data"					= IC_PINTYPE_LIST,
+		"passkey"				= IC_PINTYPE_STRING,
 		)
-	outputs = list("received data" = IC_PINTYPE_LIST, "is_broadcast" = IC_PINTYPE_BOOLEAN)
+	outputs = list("received data" = IC_PINTYPE_LIST, "is_broadcast" = IC_PINTYPE_BOOLEAN, "received passkey" = IC_PINTYPE_STRING)
 	activators = list("send data" = IC_PINTYPE_PULSE_IN, "on data received" = IC_PINTYPE_PULSE_OUT)
 	spawn_flags = IC_SPAWN_DEFAULT|IC_SPAWN_RESEARCH
 	action_flags = IC_ACTION_LONG_RANGE
@@ -796,17 +799,19 @@
 /obj/item/integrated_circuit/input/ntnet_advanced/do_work()
 	var/target_address = get_pin_data(IC_INPUT, 1)
 	var/list/message = get_pin_data(IC_INPUT, 2)
+	var/passkey = get_pin_data(IC_INPUT, 3)
 	if(!islist(message))
 		message = list()
 	var/datum/netdata/data = new
 	data.recipient_ids = splittext(target_address, ";")
 	data.data = message
-	data.passkey = assembly.access_card.access
+	data.passkey = passkey
 	ntnet_send(data)
 
 /obj/item/integrated_circuit/input/ntnet_advanced/ntnet_receive(datum/netdata/data)
 	set_pin_data(IC_OUTPUT, 1, data.data)
 	set_pin_data(IC_OUTPUT, 2, data.broadcast)
+	set_pin_data(IC_OUTPUT, 3, data.passkey)
 	push_data()
 	activate_pin(2)
 
@@ -847,11 +852,11 @@
 	The first activation pin is always pulsed when the circuit hears someone talk, while the second one \
 	is only triggered if it hears someone speaking a language other than Galactic Common."
 	icon_state = "recorder"
-	complexity = 8
+	complexity = 4 //cuts complexity in half, you'll need to use a ref to string for the name
 	inputs = list()
 	flags_1 = CONDUCT_1 | HEAR_1
 	outputs = list(
-	"speaker" = IC_PINTYPE_STRING,
+	"speaker" = IC_PINTYPE_REF,
 	"message" = IC_PINTYPE_STRING
 	)
 	activators = list("on message received" = IC_PINTYPE_PULSE_OUT, "on translation" = IC_PINTYPE_PULSE_OUT)
@@ -865,7 +870,7 @@
 		if(raw_message)
 			if(message_langs != get_selected_language())
 				translated = TRUE
-		set_pin_data(IC_OUTPUT, 1, speaker.GetVoice())
+		set_pin_data(IC_OUTPUT, 1, speaker)
 		set_pin_data(IC_OUTPUT, 2, raw_message)
 
 	push_data()
@@ -1163,7 +1168,7 @@
 	var/list/gas_names = list()
 	var/list/gas_amounts = list()
 	for(var/id in air_contents.get_gases())
-		var/name = GLOB.meta_gas_names[id]
+		var/name = GLOB.gas_data.names[id]
 		var/amt = round(air_contents.get_moles(id), 0.001)
 		gas_names.Add(name)
 		gas_amounts.Add(amt)

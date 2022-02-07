@@ -211,8 +211,8 @@ for further reading, please see: https://github.com/tgstation/tgstation/pull/301
 			"<span class='userdanger'>YOU FEEL THE POWER OF VALHALLA FLOWING THROUGH YOU! <i>THERE CAN BE ONLY ONE!!!</i></span>")
 			user.update_icons()
 			new_name = "GORE-DRENCHED CLAYMORE OF [pick("THE WHIMSICAL SLAUGHTER", "A THOUSAND SLAUGHTERED CATTLE", "GLORY AND VALHALLA", "ANNIHILATION", "OBLITERATION")]"
-			icon_state = "claymore_valhalla"
-			item_state = "cultblade"
+			icon_state = "claymore_gold"
+			item_state = "claymore_gold"
 			remove_atom_colour(ADMIN_COLOUR_PRIORITY)
 
 	name = new_name
@@ -332,6 +332,12 @@ for further reading, please see: https://github.com/tgstation/tgstation/pull/301
 	bare_wound_bonus = 0
 	wound_bonus = 0
 
+/obj/item/melee/bokken/on_active_parry(mob/living/owner, atom/object, damage, attack_text, attack_type, armour_penetration, mob/attacker, def_zone, list/block_return, parry_efficiency, parry_time)
+	. = ..()
+	if(!istype(object, /obj/item/melee/bokken))
+		// no counterattack.
+		block_return[BLOCK_RETURN_FORCE_NO_PARRY_COUNTERATTACK] = TRUE
+
 /datum/block_parry_data/bokken // fucked up parry data, emphasizing quicker, shorter parries
 	parry_stamina_cost = 10 // be wise about when you parry, though, else you won't be able to fight enough to make it count
 	parry_time_windup = 0
@@ -358,7 +364,6 @@ for further reading, please see: https://github.com/tgstation/tgstation/pull/301
 	parry_time_perfect = 2.5 // however...
 	parry_time_perfect_leeway = 2 // the entire time, the parry is perfect
 	parry_failed_stagger_duration = 1 SECONDS
-	parry_failed_clickcd_duration = 1 SECONDS // more forgiving punishments for missed parries
 	// still, don't fucking miss your parries or you're down stamina and staggered to shit
 
 /datum/block_parry_data/bokken/quick_parry/proj
@@ -475,7 +480,6 @@ for further reading, please see: https://github.com/tgstation/tgstation/pull/301
 	parry_time_perfect = 1
 	parry_time_perfect_leeway = 1
 	parry_failed_stagger_duration = 1 SECONDS
-	parry_failed_clickcd_duration = 1 SECONDS
 
 /datum/block_parry_data/bokken/waki/quick_parry/proj
 	parry_efficiency_perfect_override = list()
@@ -611,9 +615,9 @@ for further reading, please see: https://github.com/tgstation/tgstation/pull/301
 	name = "throwing star"
 	desc = "An ancient weapon still used to this day, due to its ease of lodging itself into its victim's body parts."
 	icon_state = "throwingstar"
-	item_state = "eshield0"
-	lefthand_file = 'icons/mob/inhands/equipment/shields_lefthand.dmi'
-	righthand_file = 'icons/mob/inhands/equipment/shields_righthand.dmi'
+	item_state = "throwingstar"
+	lefthand_file = 'icons/mob/inhands/weapons/swords_lefthand.dmi'
+	righthand_file = 'icons/mob/inhands/weapons/swords_righthand.dmi'
 	force = 2
 	throwforce = 10 //10 + 2 (WEIGHT_CLASS_SMALL) * 4 (EMBEDDED_IMPACT_PAIN_MULTIPLIER) = 18 damage on hit due to guaranteed embedding
 	throw_speed = 4
@@ -626,8 +630,10 @@ for further reading, please see: https://github.com/tgstation/tgstation/pull/301
 	resistance_flags = FIRE_PROOF
 
 /obj/item/throwing_star/stamina
-	name = "shock throwing star"
+	name = "energy throwing star"
 	desc = "An aerodynamic disc designed to cause excruciating pain when stuck inside fleeing targets, hopefully without causing fatal harm."
+	icon_state = "energystar"
+	item_state = "energystar"
 	throwforce = 5
 	embedding = list("pain_chance" = 5, "embed_chance" = 100, "fall_chance" = 0, "jostle_chance" = 10, "pain_stam_pct" = 0.8, "jostle_pain_mult" = 3)
 
@@ -964,6 +970,8 @@ for further reading, please see: https://github.com/tgstation/tgstation/pull/301
 		homerun_ready = 1
 	..()
 
+//EROS REMOVE modular_splurt\code\game\object\items\weaponry\melee
+/*
 /obj/item/melee/baseball_bat/attack(mob/living/target, mob/living/user)
 	. = ..()
 	if(HAS_TRAIT(user, TRAIT_PACIFISM))
@@ -979,7 +987,8 @@ for further reading, please see: https://github.com/tgstation/tgstation/pull/301
 	else if(!target.anchored)
 		var/whack_speed = (prob(60) ? 1 : 4)
 		target.throw_at(throw_target, rand(1, 2), whack_speed, user) // sorry friends, 7 speed batting caused wounds to absolutely delete whoever you knocked your target into (and said target)
-
+*/
+//END EROS REMOVE
 /obj/item/melee/baseball_bat/ablative
 	name = "metal baseball bat"
 	desc = "This bat is made of highly reflective, highly armored material."

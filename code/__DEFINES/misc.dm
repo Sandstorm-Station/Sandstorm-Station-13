@@ -9,6 +9,9 @@
 #define TEXT_EAST			"[EAST]"
 #define TEXT_WEST			"[WEST]"
 
+/// yeah yeah i'm a lazy asshole who can't debug yeah yeah
+#define DEBUG_LINE message_admins("DEBUG: [__FILE__] [__LINE__] executing!")
+
 /// world.icon_size
 #define PIXELS 32
 
@@ -30,24 +33,31 @@ Will print: "/mob/living/carbon/human/death" (you can optionally embed it in a s
 
 //Human Overlays Indexes/////////
 //LOTS OF CIT CHANGES HERE. BE CAREFUL WHEN UPSTREAM ADDS MORE LAYERS
-#define MUTATIONS_LAYER			34		//mutations. Tk headglows, cold resistance glow, etc
-#define ANTAG_LAYER 			33		//stuff for things like cultism indicators (clock cult glow, cultist red halos, whatever else new that comes up)
-#define GENITALS_BEHIND_LAYER	32		//Some genitalia needs to be behind everything, such as with taurs (Taurs use body_behind_layer
-#define BODY_BEHIND_LAYER		31		//certain mutantrace features (tail when looking south) that must appear behind the body parts
-#define BODYPARTS_LAYER			30		//Initially "AUGMENTS", this was repurposed to be a catch-all bodyparts flag
-#define MARKING_LAYER			29		//Matrixed body markings because clashing with snouts?
-#define BODY_ADJ_LAYER			28		//certain mutantrace features (snout, body markings) that must appear above the body parts
-#define GENITALS_FRONT_LAYER	27		//Draws some genitalia above clothes and the TAUR body if need be.
-#define BODY_LAYER				26		//underwear, undershirts, socks, eyes, lips(makeup)
-#define BODY_ADJ_UPPER_LAYER	25
-#define FRONT_MUTATIONS_LAYER	24		//mutations that should appear above body, body_adj and bodyparts layer (e.g. laser eyes)
-#define DAMAGE_LAYER			23		//damage indicators (cuts and burns)
-#define UNIFORM_LAYER			22
-#define ID_LAYER				21
-#define HANDS_PART_LAYER		20
-#define SHOES_LAYER				19
-#define GLOVES_LAYER			18
-#define EARS_LAYER				17
+#define MUTATIONS_LAYER			41		//mutations. Tk headglows, cold resistance glow, etc
+#define ANTAG_LAYER 			40		//stuff for things like cultism indicators (clock cult glow, cultist red halos, whatever else new that comes up)
+#define GENITALS_BEHIND_LAYER	39		//Some genitalia needs to be behind everything, such as with taurs (Taurs use body_behind_layer
+#define BODY_BEHIND_LAYER		38		//certain mutantrace features (tail when looking south) that must appear behind the body parts
+#define BODYPARTS_LAYER			37		//Initially "AUGMENTS", this was repurposed to be a catch-all bodyparts flag
+#define MARKING_LAYER			36		//Matrixed body markings because clashing with snouts?
+#define BODY_ADJ_LAYER			35		//certain mutantrace features (snout, body markings) that must appear above the body parts
+#define GENITALS_FRONT_LAYER	34		//Draws some genitalia above clothes and the TAUR body if need be.
+#define BODY_LAYER				33		//underwear, undershirts, socks, eyes, lips(makeup)
+#define BODY_ADJ_UPPER_LAYER	32
+#define FRONT_MUTATIONS_LAYER	31		//mutations that should appear above body, body_adj and bodyparts layer (e.g. laser eyes)
+#define UNDERWEAR_LAYER			30
+#define SOCKS_LAYER				29
+#define SHIRT_LAYER				28
+#define UNIFORM_LAYER			27
+#define ID_LAYER				26
+#define HANDS_PART_LAYER		25
+#define DAMAGE_LAYER			24		//damage indicators (cuts and burns)
+#define LOWER_MEDICINE_LAYER	23		//Medicine, like gauze and tourniquets
+#define MEDICINE_LAYER			22		//Medicine, like gauze and tourniquets
+#define SHOES_LAYER				21
+#define GLOVES_LAYER			20
+#define WRISTS_LAYER			19
+#define EAR_RIGHT_LAYER			18
+#define EAR_LEFT_LAYER			17
 #define SUIT_LAYER				16
 #define GENITALS_EXPOSED_LAYER	15
 #define GLASSES_LAYER			14
@@ -64,7 +74,7 @@ Will print: "/mob/living/carbon/human/death" (you can optionally embed it in a s
 #define HANDS_LAYER				3
 #define BODY_FRONT_LAYER		2
 #define FIRE_LAYER				1		//If you're on fire
-#define TOTAL_LAYERS			34		//KEEP THIS UP-TO-DATE OR SHIT WILL BREAK ;_;
+#define TOTAL_LAYERS			41		//KEEP THIS UP-TO-DATE OR SHIT WILL BREAK ;_;
 
 //Human Overlay Index Shortcuts for alternate_worn_layer, layers
 //Because I *KNOW* somebody will think layer+1 means "above"
@@ -320,6 +330,7 @@ GLOBAL_LIST_INIT(pda_reskins, list(PDA_SKIN_CLASSIC = 'icons/obj/pda.dmi', PDA_S
 #define FIRST_DIAG_STEP 1
 #define SECOND_DIAG_STEP 2
 
+#define DEADCHAT_ANNOUNCEMENT "announcement"
 #define DEADCHAT_ARRIVALRATTLE "arrivalrattle"
 #define DEADCHAT_DEATHRATTLE "deathrattle"
 #define DEADCHAT_REGULAR "regular-deadchat"
@@ -515,6 +526,7 @@ GLOBAL_LIST_INIT(pda_reskins, list(PDA_SKIN_CLASSIC = 'icons/obj/pda.dmi', PDA_S
 
 #define VOMIT_TOXIC 1
 #define VOMIT_PURPLE 2
+#define VOMIT_NANITE 3
 
 // possible bitflag return values of intercept_zImpact(atom/movable/AM, levels = 1) calls
 #define FALL_INTERCEPTED		(1<<0) //Stops the movable from falling further and crashing on the ground
@@ -563,3 +575,5 @@ GLOBAL_LIST_INIT(pda_reskins, list(PDA_SKIN_CLASSIC = 'icons/obj/pda.dmi', PDA_S
 #define SHOES_KNOTTED 2
 
 #define WANTED_FILE "wanted_message.json"
+
+#define UTF8HEADER "<meta http-equiv='Content-Type' content='text/html; charset=UTF-8' /><meta http-equiv='X-UA-Compatible' content='IE=edge' />" //I WOULD LOVE TO DEFINE THIS IN MODULAR_SAND BUT FREAKING CODE DOESN'T GET IT THEN

@@ -1,10 +1,9 @@
-//DON'T FORGET TO CHANGE THE REFILL SIZE IF YOU CHANGE THE MACHINE'S CONTENTS!
 /obj/machinery/vending/clothing
 	name = "ClothesMate" //renamed to make the slogan rhyme
 	desc = "A vending machine for clothing."
 	icon_state = "clothes"
 	icon_deny = "clothes-deny"
-	product_slogans = "Dress for success!;Prepare to look swagalicious!;Look at all this free swag!;Why leave style up to fate? Use the ClothesMate!"
+	product_slogans = "Dress for success!;Prepare to look swagalicious!;Look at all this swag!;Why leave style up to fate? Use the ClothesMate!"
 	vend_reply = "Thank you for using the ClothesMate!"
 	products = list(/obj/item/clothing/head/that = 4,
 					/obj/item/clothing/head/fedora = 3,
@@ -15,13 +14,13 @@
 					/obj/item/clothing/glasses/monocle = 3,
 					/obj/item/clothing/suit/jacket = 4,
 					/obj/item/clothing/suit/jacket/flannel = 4,
-					/obj/item/clothing/suit/jacket/flannel/red = 4,
-					/obj/item/clothing/suit/jacket/flannel/aqua = 4,
-					/obj/item/clothing/suit/jacket/flannel/brown = 4,
+					/obj/item/clothing/suit/toggle/jacket/flannel/red = 4,
+					/obj/item/clothing/suit/toggle/jacket/flannel/aqua = 4,
+					/obj/item/clothing/suit/toggle/jacket/flannel/brown = 4,
 					/obj/item/clothing/suit/jacket/puffer/vest = 4,
 					/obj/item/clothing/suit/jacket/puffer = 4,
 					/obj/item/clothing/suit/hooded/cloak/david = 4,
-					/obj/item/clothing/neck/cancloak/polychromic = 4,
+					/obj/item/clothing/neck/cloak/cancloak/polychromic = 4,
 					/obj/item/clothing/suit/bomber = 5,
 					/obj/item/clothing/under/suit/turtle/teal = 3,
 					/obj/item/clothing/under/suit/turtle/grey = 3,
@@ -52,6 +51,7 @@
 					/obj/item/clothing/accessory/turtleneck/tactifool = 2,
 					/obj/item/clothing/accessory/turtleneck/tactifool/green = 2,
 					/obj/item/clothing/accessory/turtleneck/tactifool/blue = 2,
+					/obj/item/clothing/accessory/sleevecrop = 2,
 					/obj/item/clothing/under/sweater = 3,
 					/obj/item/clothing/under/sweater/black = 3,
 					/obj/item/clothing/under/sweater/purple = 3,
@@ -74,6 +74,7 @@
 					/obj/item/clothing/accessory/suitjacket/navy = 2,
 					/obj/item/clothing/accessory/suitjacket/burgundy = 2,
 					/obj/item/clothing/accessory/suitjacket/checkered = 2,
+					/obj/item/clothing/suit/fluffyhalfcrop = 3,
 					/obj/item/clothing/suit/jacket/miljacket = 5,
 					/obj/item/clothing/suit/jacket/urbanjacket/polychromic = 5,
 					/obj/item/clothing/under/suit/white_on_white/skirt = 2,
@@ -191,7 +192,8 @@
 					/obj/item/clothing/under/costume/cheongsam = 3,
 					/obj/item/clothing/under/costume/cheongsam/white = 3,
 					/obj/item/clothing/under/costume/cheongsam/red = 3,
-					/obj/item/storage/backpack/snail = 3)
+					/obj/item/storage/backpack/snail = 3,
+					/obj/item/umbrella = 5)
 	contraband = list(/obj/item/clothing/accessory/turtleneck/tactifool/syndicate = 3,
 					/obj/item/clothing/under/syndicate/tacticool = 3,
 					/obj/item/clothing/under/syndicate/tacticool/skirt = 3,
@@ -212,15 +214,29 @@
 					/obj/item/clothing/suit/jacket/leather/overcoat = 4,
 					/obj/item/clothing/under/pants/mustangjeans = 3,
 					/obj/item/clothing/neck/necklace/dope = 5,
+					/obj/item/clothing/under/costume/swagoutfit = 5,
+					/obj/item/clothing/shoes/swagshoes = 5,
 					/obj/item/clothing/suit/jacket/letterman_nanotrasen = 5,
 					/obj/item/clothing/under/misc/corporateuniform = 5,
 					/obj/item/clothing/suit/hooded/wintercoat/polychromic = 5,
 					/obj/item/clothing/suit/toggle/wbreakpoly/polychromic = 5,
-					/obj/item/clothing/shoes/sneakers/poly/polychromic = 10)
+					/obj/item/clothing/shoes/sneakers/poly/polychromic = 10,
+					/obj/item/clothing/suit/toggle/jacket/fancytrench = 4,
+					/obj/item/clothing/suit/toggle/jacket/greenjacket = 4,
+					/obj/item/clothing/suit/jacket/gentlecoat = 4,
+					/obj/item/clothing/suit/jacket/gothicshirtcross = 4,
+					/obj/item/clothing/suit/jacket/gothicshirt = 4,
+					/obj/item/clothing/suit/jacket/gothiccoat = 4,
+					/obj/item/clothing/suit/jacket/heartcoat = 4,
+					/obj/item/clothing/suit/jacket/purplehoodie = 4,
+					/obj/item/clothing/suit/jacket/bluehoodie = 4,
+					/obj/item/clothing/suit/toggle/jacket/whitehoodie = 4)
 	refill_canister = /obj/item/vending_refill/clothing
-	default_price = PRICE_CHEAP
+	default_price = PRICE_CHEAP //Default of
 	extra_price = PRICE_BELOW_NORMAL
 	payment_department = NO_FREEBIES
+	light_mask = "wardrobe-light-mask"
+	light_color = LIGHT_COLOR_ELECTRIC_GREEN
 
 /obj/machinery/vending/clothing/canLoadItem(obj/item/I,mob/user)
 	return (I.type in products)

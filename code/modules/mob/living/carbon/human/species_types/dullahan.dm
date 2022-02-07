@@ -3,7 +3,7 @@
 	id = SPECIES_DULLAHAN
 	default_color = "FFFFFF"
 	species_traits = list(EYECOLOR,HAIR,FACEHAIR,LIPS,HAS_FLESH,HAS_BONE)
-	inherent_traits = list(TRAIT_NOHUNGER,TRAIT_NOBREATH)
+	inherent_traits = list(TRAIT_NOHUNGER,TRAIT_NOTHIRST,TRAIT_NOBREATH)
 	mutant_bodyparts = list("tail_human" = "None", "ears" = "None", "deco_wings" = "None")
 	use_skintones = USE_SKINTONES_GRAYSCALE_CUSTOM
 	mutant_brain = /obj/item/organ/brain/dullahan
@@ -31,7 +31,7 @@
 
 /datum/species/dullahan/on_species_gain(mob/living/carbon/human/H, datum/species/old_species)
 	. = ..()
-	DISABLE_BITFIELD(H.flags_1, HEAR_1)
+	H.flags_1 &= ~(HEAR_1)
 	var/obj/item/bodypart/head/head = H.get_bodypart(BODY_ZONE_HEAD)
 	if(head)
 		if(pumpkin)//Pumpkinhead!
@@ -49,7 +49,7 @@
 				OA.Trigger()
 
 /datum/species/dullahan/on_species_loss(mob/living/carbon/human/H)
-	ENABLE_BITFIELD(H.flags_1, HEAR_1)
+	H.flags_1 |= HEAR_1
 	H.reset_perspective(H)
 	if(myhead)
 		var/obj/item/dullahan_relay/DR = myhead

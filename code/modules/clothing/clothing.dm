@@ -21,8 +21,6 @@
 	var/active_sound = null
 	var/toggle_cooldown = null
 	var/cooldown = 0
-	var/obj/item/flashlight/F = null
-	var/can_flashlight = 0
 
 	var/blocks_shove_knockdown = FALSE //Whether wearing the clothing item blocks the ability for shove to knock down.
 
@@ -67,7 +65,7 @@
 
 /obj/item/clothing/Initialize()
 	. = ..()
-	if(CHECK_BITFIELD(clothing_flags, VOICEBOX_TOGGLABLE))
+	if((clothing_flags & VOICEBOX_TOGGLABLE))
 		actions_types += /datum/action/item_action/toggle_voice_box
 	if(ispath(pocket_storage_component_path))
 		LoadComponent(pocket_storage_component_path)
@@ -79,8 +77,8 @@
 	if(ismecha(M.loc)) // stops inventory actions in a mech
 		return
 
-	if(!. && !M.incapacitated() && loc == M && istype(over_object, /obj/screen/inventory/hand))
-		var/obj/screen/inventory/hand/H = over_object
+	if(!. && !M.incapacitated() && loc == M && istype(over_object, /atom/movable/screen/inventory/hand))
+		var/atom/movable/screen/inventory/hand/H = over_object
 		if(M.putItemFromInventoryInHandIfPossible(src, H.held_index))
 			add_fingerprint(usr)
 
@@ -445,7 +443,7 @@ BLIND     // can't see anything
 		..()
 
 //Species-restricted clothing check. - Thanks Oraclestation, BS13, /vg/station etc.
-/obj/item/clothing/mob_can_equip(mob/M, slot, disable_warning = TRUE)
+/obj/item/clothing/mob_can_equip(M, equipper, slot, disable_warning = TRUE, bypass_equip_delay_self)
 
 	//if we can't equip the item anyway, don't bother with species_restricted (also cuts down on spam)
 	if(!..())

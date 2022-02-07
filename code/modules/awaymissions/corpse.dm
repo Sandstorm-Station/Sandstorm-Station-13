@@ -33,6 +33,10 @@
 	var/ghost_usable = TRUE
 	var/skip_reentry_check = FALSE //Skips the ghost role blacklist time for people who ghost/suicide/cryo
 
+///override this to add special spawn conditions to a ghost role
+/obj/effect/mob_spawn/proc/allow_spawn(mob/user, silent = FALSE)
+	return TRUE
+	
 //ATTACK GHOST IGNORING PARENT RETURN VALUE
 /obj/effect/mob_spawn/attack_ghost(mob/user, latejoinercalling)
 	if(!SSticker.HasRoundStarted() || !loc || !ghost_usable)
@@ -42,6 +46,8 @@
 		return
 	if(jobban_isbanned(user, banType))
 		to_chat(user, "<span class='warning'>You are jobanned!</span>")
+		return
+	if(!allow_spawn(user, silent = FALSE))
 		return
 	if(QDELETED(src) || QDELETED(user))
 		return
@@ -111,6 +117,11 @@
 
 	if(ckey)
 		M.ckey = ckey
+		//splurt change
+		if(jobban_isbanned(M, "pacifist")) //do you love repeat code? i sure do
+			to_chat(M, "<span class='cult'>You are pacification banned. Pacifist has been force applied.</span>")
+			ADD_TRAIT(M, TRAIT_PACIFISM, "pacification ban")
+		//
 		if(show_flavour)
 			var/output_message = "<span class='big bold'>[short_desc]</span>"
 			if(flavour_text != "")
@@ -133,6 +144,7 @@
 			M.mind.assigned_role = assignedrole
 		special(M, name)
 		MM.name = M.real_name
+		M.checkloadappearance()
 	if(uses > 0)
 		uses--
 	if(!permanent && !uses)
@@ -177,6 +189,7 @@
 	var/hair_style
 	var/facial_hair_style
 	var/skin_tone
+	var/canloadappearance = FALSE
 
 /obj/effect/mob_spawn/human/Initialize()
 	if(ispath(outfit))
@@ -245,6 +258,10 @@
 			W.assignment = id_job
 		W.registered_name = H.real_name
 		W.update_label()
+	if (canloadappearance)
+		H.canloadappearance = TRUE
+	else
+		H.canloadappearance = FALSE
 
 //Instant version - use when spawning corpses during runtime
 /obj/effect/mob_spawn/human/corpse
@@ -410,6 +427,7 @@
 	flavour_text = "Time to mix drinks and change lives. Smoking space drugs makes it easier to understand your patrons' odd dialect."
 	assignedrole = "Space Bartender"
 	id_job = "Bartender"
+	canloadappearance = TRUE
 
 /datum/outfit/spacebartender
 	name = "Space Bartender"
@@ -422,6 +440,7 @@
 
 /obj/effect/mob_spawn/human/beach
 	outfit = /datum/outfit/beachbum
+	canloadappearance = TRUE
 
 /obj/effect/mob_spawn/human/beach/alive
 	death = FALSE

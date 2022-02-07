@@ -270,7 +270,7 @@
 	var/range_light = 17
 	var/range_flame = 17
 
-/obj/item/bombcore/ex_act(severity, target) // Little boom can chain a big boom.
+/obj/item/bombcore/ex_act(severity, target, origin) // Little boom can chain a big boom.
 	detonate()
 
 
@@ -288,6 +288,7 @@
 	qdel(src)
 
 /obj/item/bombcore/proc/defuse()
+	set waitfor = FALSE
 //Note: 	Because of how var/defused is used you shouldn't override this UNLESS you intend to set the var to 0 or
 //			otherwise remove the core/reset the wires before the end of defuse(). It will repeatedly be called otherwise.
 

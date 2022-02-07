@@ -70,33 +70,53 @@
 
 				//Bloody footprints
 				var/turf/T = get_turf(src)
-				if(S.bloody_shoes && S.bloody_shoes[S.blood_state])
-					var/obj/effect/decal/cleanable/blood/footprints/oldFP = locate(/obj/effect/decal/cleanable/blood/footprints) in T
-					if(oldFP && (oldFP.blood_state == S.blood_state && oldFP.color == S.last_blood_color))
-						return
-					S.bloody_shoes[S.blood_state] = max(0, S.bloody_shoes[S.blood_state] - BLOOD_LOSS_PER_STEP)
-					var/obj/effect/decal/cleanable/blood/footprints/FP = new /obj/effect/decal/cleanable/blood/footprints(T)
-					FP.blood_state = S.blood_state
-					FP.entered_dirs |= dir
-					FP.bloodiness = S.bloody_shoes[S.blood_state]
-					if(S.last_bloodtype)
-						FP.blood_DNA[S.last_blood_DNA] = S.last_bloodtype
-						if(!FP.blood_DNA["color"])
-							FP.blood_DNA["color"] = S.last_blood_color
-						else
-							FP.blood_DNA["color"] = BlendRGB(FP.blood_DNA["color"], S.last_blood_color)
-					FP.update_icon()
-					update_inv_shoes()
+				if(istype(S))
+					if(S.bloody_shoes && S.bloody_shoes[S.blood_state])
+						var/obj/effect/decal/cleanable/blood/footprints/oldFP = locate(/obj/effect/decal/cleanable/blood/footprints) in T
+						if(oldFP && (oldFP.blood_state == S.blood_state && oldFP.color == S.last_blood_color))
+							return
+						S.bloody_shoes[S.blood_state] = max(0, S.bloody_shoes[S.blood_state] - BLOOD_LOSS_PER_STEP)
+						var/obj/effect/decal/cleanable/blood/footprints/FP = new /obj/effect/decal/cleanable/blood/footprints(T)
+						FP.blood_state = S.blood_state
+						FP.entered_dirs |= dir
+						FP.bloodiness = S.bloody_shoes[S.blood_state]
+						if(S.last_bloodtype)
+							FP.blood_DNA[S.last_blood_DNA] = S.last_bloodtype
+							if(!FP.blood_DNA["color"])
+								FP.blood_DNA["color"] = S.last_blood_color
+							else
+								FP.blood_DNA["color"] = BlendRGB(FP.blood_DNA["color"], S.last_blood_color)
+						FP.update_icon()
+						update_inv_shoes()
 				//End bloody footprints
 
-				S.step_action()
+				if(istype(S))
+					S.step_action()
+	if(movement_type & GROUND)
+		dirt_buildup()
 
 /mob/living/carbon/human/Process_Spacemove(movement_dir = 0) //Temporary laziness thing. Will change to handles by species reee.
 	if(dna.species.space_move(src))
 		return TRUE
 	return ..()
 
-/mob/living/carbon/human/dirt_buildup(strength)
+/mob/living/carbon/human/proc/dirt_buildup(strength = 1)
 	if(!shoes || !(shoes.body_parts_covered & FEET))
 		return	// barefoot advantage
-	return ..()
+	var/turf/open/T = loc
+	if(!istype(T) || !T.dirt_buildup_allowed)
+		return
+	var/area/A = T.loc
+	if(!A.dirt_buildup_allowed)
+		return
+	var/multiplier = CONFIG_GET(number/turf_dirty_multiplier)
+	strength *= multiplier
+	var/obj/effect/decal/cleanable/dirt/D = locate() in T
+	if(D)
+		D.dirty(strength)
+	else
+		T.dirtyness += strength
+		if(T.dirtyness >= (isnull(T.dirt_spawn_threshold)? CONFIG_GET(number/turf_dirt_threshold) : T.dirt_spawn_threshold))
+			D = new /obj/effect/decal/cleanable/dirt(T)
+			D.dirty(T.dirt_spawn_threshold - T.dirtyness)
+			T.dirtyness = 0		// reset.

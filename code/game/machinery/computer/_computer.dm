@@ -17,11 +17,7 @@
 
 /obj/machinery/computer/Initialize(mapload, obj/item/circuitboard/C)
 	. = ..()
-
 	power_change()
-
-/obj/machinery/computer/Destroy()
-	. = ..()
 
 /obj/machinery/computer/process()
 	if(stat & (NOPOWER|BROKEN))
@@ -57,8 +53,8 @@
 	var/overlay_state = icon_screen
 	if(stat & BROKEN)
 		overlay_state = "[icon_state]_broken"
-	SSvis_overlays.add_vis_overlay(src, icon, overlay_state, layer, plane, dir)
-	SSvis_overlays.add_vis_overlay(src, icon, overlay_state, EMISSIVE_LAYER, EMISSIVE_PLANE, dir, alpha=128)
+	. += mutable_appearance(icon, overlay_state)
+	. += emissive_appearance(icon, overlay_state)
 
 /obj/machinery/computer/power_change()
 	..()
@@ -119,6 +115,9 @@
 			A.circuit = circuit
 			// Circuit removal code is handled in /obj/machinery/Exited()
 			circuit.forceMove(A)
+			// no it's not 4head the circuit's in nullspace which means this won't be called!!
+			circuit = null
+			component_parts -= circuit
 			A.set_anchored(TRUE)
 			if(stat & BROKEN)
 				if(user)

@@ -79,7 +79,7 @@
 		target = null
 		return
 	return ..()
-
+/*
 /mob/living/simple_animal/hostile/megafauna/death(gibbed, list/force_grant)
 	if(health > 0)
 		return
@@ -96,6 +96,7 @@
 			grant_achievement(achievement_type, score_achievement_type, crusher_kill, force_grant)
 			SSblackbox.record_feedback("tally", tab, 1, "[initial(name)]")
 	return ..()
+*/
 
 /mob/living/simple_animal/hostile/megafauna/proc/spawn_crusher_loot()
 	loot = crusher_loot
@@ -122,7 +123,7 @@
 			if(!client && ranged && ranged_cooldown <= world.time)
 				OpenFire()
 			if(L.Adjacent(src) && (L.stat != CONSCIOUS))
-				if(vore_active && CHECK_BITFIELD(L.vore_flags,DEVOURABLE))
+				if(vore_active && (L.vore_flags & DEVOURABLE))
 					vore_attack(src,L,src)
 					LoseTarget()
 		else
@@ -138,7 +139,7 @@
 		adjustBruteLoss(-L.maxHealth/2)
 	L.gib()
 
-/mob/living/simple_animal/hostile/megafauna/ex_act(severity, target)
+/mob/living/simple_animal/hostile/megafauna/ex_act(severity, target, origin)
 	switch (severity)
 		if (EXPLODE_DEVASTATE)
 			adjustBruteLoss(250)
@@ -148,6 +149,9 @@
 
 		if(EXPLODE_LIGHT)
 			adjustBruteLoss(50)
+
+/mob/living/simple_animal/hostile/megafauna/wave_ex_act(power, datum/wave_explosion/explosion, dir)
+	adjustBruteLoss(EXPLOSION_POWER_STANDARD_SCALE_MOB_DAMAGE(power, explosion.mob_damage_mod) / 2)
 
 /// Sets the next time the megafauna can use a melee or ranged attack, in deciseconds
 /mob/living/simple_animal/hostile/megafauna/proc/SetRecoveryTime(buffer_time, ranged_buffer_time)

@@ -18,4 +18,6 @@
 	)
 	icon_state = "lizard"
 	default_priority = 90
-	chooseable_roundstart = TRUE
+	//SKYRAT CHANGE - language restriction
+	restricted = FALSE
+	//

@@ -54,6 +54,9 @@
 /obj/machinery/atmospherics/pipe/remove_air(amount)
 	return parent.air.remove(amount)
 
+/obj/machinery/atmospherics/pipe/remove_air_ratio(ratio)
+	return parent.air.remove_ratio(ratio)
+
 /obj/machinery/atmospherics/pipe/attackby(obj/item/W, mob/user, params)
 	if(istype(W, /obj/item/pipe_meter))
 		var/obj/item/pipe_meter/meter = W
@@ -71,6 +74,9 @@
 
 /obj/machinery/atmospherics/pipe/setPipenet(datum/pipeline/P)
 	parent = P
+
+/obj/machinery/atmospherics/pipe/zap_act(power, zap_flags)
+	return 0 // they're not really machines in the normal sense, probably shouldn't explode
 
 /obj/machinery/atmospherics/pipe/Destroy()
 	QDEL_NULL(parent)

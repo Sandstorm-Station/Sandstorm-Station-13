@@ -39,49 +39,71 @@
 		return
 
 	if(bodytemperature >= TCRYO && !(HAS_TRAIT(src, TRAIT_HUSK))) //cryosleep or husked people do not pump the blood.
-
-		//Blood regeneration if there is some space
-		if(blood_volume < BLOOD_VOLUME_NORMAL && !HAS_TRAIT(src, TRAIT_NOHUNGER))
+		if(integrating_blood > 0)
+			var/blood_integrated = max(integrating_blood - 1, 0)
+			var/blood_diff = integrating_blood - blood_integrated
+			integrating_blood = blood_integrated
+			if(blood_volume < BLOOD_VOLUME_MAXIMUM)
+				blood_volume += blood_diff
+		if(blood_volume < BLOOD_VOLUME_NORMAL)
 			var/nutrition_ratio = 0
-			switch(nutrition)
-				if(0 to NUTRITION_LEVEL_STARVING)
-					nutrition_ratio = 0.2
-				if(NUTRITION_LEVEL_STARVING to NUTRITION_LEVEL_HUNGRY)
-					nutrition_ratio = 0.4
-				if(NUTRITION_LEVEL_HUNGRY to NUTRITION_LEVEL_FED)
-					nutrition_ratio = 0.6
-				if(NUTRITION_LEVEL_FED to NUTRITION_LEVEL_WELL_FED)
-					nutrition_ratio = 0.8
-				else
-					nutrition_ratio = 1
-			if(satiety > 80)
-				nutrition_ratio *= 1.25
-			adjust_nutrition(-nutrition_ratio * HUNGER_FACTOR)
-			blood_volume = min(BLOOD_VOLUME_NORMAL, blood_volume + 0.5 * nutrition_ratio)
+			if(!HAS_TRAIT(src, TRAIT_NOHUNGER))
+				switch(nutrition)
+					if(0 to NUTRITION_LEVEL_STARVING)
+						nutrition_ratio = 0.2
+					if(NUTRITION_LEVEL_STARVING to NUTRITION_LEVEL_HUNGRY)
+						nutrition_ratio = 0.4
+					if(NUTRITION_LEVEL_HUNGRY to NUTRITION_LEVEL_FED)
+						nutrition_ratio = 0.6
+					if(NUTRITION_LEVEL_FED to NUTRITION_LEVEL_WELL_FED)
+						nutrition_ratio = 0.8
+					else
+						nutrition_ratio = 1
+				if(satiety > 80)
+					nutrition_ratio *= 1.25
+				adjust_nutrition(-nutrition_ratio * HUNGER_FACTOR)
+				blood_volume = min(BLOOD_VOLUME_NORMAL, blood_volume + 0.5 * nutrition_ratio)
+			var/thirst_ratio = 0
+			if(!HAS_TRAIT(src, TRAIT_NOTHIRST))
+				switch(thirst)
+					if(0 to THIRST_LEVEL_PARCHED)
+						thirst_ratio = 0.2
+					if(THIRST_LEVEL_PARCHED to THIRST_LEVEL_THIRSTY)
+						thirst_ratio = 0.4
+					if(THIRST_LEVEL_THIRSTY to THIRST_LEVEL_BIT_THIRSTY)
+						thirst_ratio = 0.6
+					if(THIRST_LEVEL_BIT_THIRSTY to THIRST_LEVEL_QUENCHED)
+						thirst_ratio = 0.8
+					else
+						thirst_ratio = 1
+				adjust_thirst(-thirst_ratio * THIRST_FACTOR)
+				blood_volume = min(BLOOD_VOLUME_NORMAL, blood_volume + 0.5 * thirst_ratio)
 
 		//Effects of bloodloss
-		var/word = pick("dizzy","woozy","faint")
-		switch(blood_volume)
-			if(BLOOD_VOLUME_MAXIMUM to BLOOD_VOLUME_EXCESS)
-				if(prob(10))
-					to_chat(src, "<span class='warning'>You feel terribly bloated.</span>")
-			if(BLOOD_VOLUME_OKAY to BLOOD_VOLUME_SAFE)
-				if(prob(5))
-					to_chat(src, "<span class='warning'>You feel [word].</span>")
-				adjustOxyLoss(round((BLOOD_VOLUME_NORMAL - blood_volume) * 0.01, 1))
-			if(BLOOD_VOLUME_BAD to BLOOD_VOLUME_OKAY)
-				adjustOxyLoss(round((BLOOD_VOLUME_NORMAL - blood_volume) * 0.02, 1))
-				if(prob(5))
-					blur_eyes(6)
-					to_chat(src, "<span class='warning'>You feel very [word].</span>")
-			if(BLOOD_VOLUME_SURVIVE to BLOOD_VOLUME_BAD)
-				adjustOxyLoss(5)
-				if(prob(15))
-					Unconscious(rand(20,60))
-					to_chat(src, "<span class='warning'>You feel extremely [word].</span>")
-			if(-INFINITY to BLOOD_VOLUME_SURVIVE)
-				if(!HAS_TRAIT(src, TRAIT_NODEATH))
-					death()
+		if(!HAS_TRAIT(src, TRAIT_ROBOTIC_ORGANISM))	//Synths are immune to direct consequences of bloodloss, instead suffering penalties to heat exchange.
+			var/word = pick("dizzy","woozy","faint")
+			var/blood_effect_volume = blood_volume + integrating_blood
+			switch(blood_effect_volume)
+				if(BLOOD_VOLUME_MAXIMUM to BLOOD_VOLUME_EXCESS)
+					if(prob(10))
+						to_chat(src, "<span class='warning'>You feel terribly bloated.</span>")
+				if(BLOOD_VOLUME_OKAY to BLOOD_VOLUME_SAFE)
+					if(prob(5))
+						to_chat(src, "<span class='warning'>You feel [word].</span>")
+					adjustOxyLoss(round((BLOOD_VOLUME_NORMAL - blood_volume) * 0.01, 1))
+				if(BLOOD_VOLUME_BAD to BLOOD_VOLUME_OKAY)
+					adjustOxyLoss(round((BLOOD_VOLUME_NORMAL - blood_volume) * 0.02, 1))
+					if(prob(5))
+						blur_eyes(6)
+						to_chat(src, "<span class='warning'>You feel very [word].</span>")
+				if(BLOOD_VOLUME_SURVIVE to BLOOD_VOLUME_BAD)
+					adjustOxyLoss(5)
+					if(prob(15))
+						Unconscious(rand(20,60))
+						to_chat(src, "<span class='warning'>You feel extremely [word].</span>")
+				if(-INFINITY to BLOOD_VOLUME_SURVIVE)
+					if(!HAS_TRAIT(src, TRAIT_NODEATH))
+						death()
 
 		var/temp_bleed = 0
 		//Bleeding out
@@ -94,14 +116,22 @@
 			bleed(temp_bleed)
 
 //Makes a blood drop, leaking amt units of blood from the mob
-/mob/living/carbon/proc/bleed(amt)
-	if(blood_volume)
+/mob/living/carbon/proc/bleed(amt, force)
+	var/bled = FALSE //Have we bled amnt?
+	if(blood_volume > amt || force && blood_volume)
 		blood_volume = max(blood_volume - amt, 0)
-		if(isturf(src.loc)) //Blood loss still happens in locker, floor stays clean
-			if(amt >= 10)
-				add_splatter_floor(src.loc)
-			else
-				add_splatter_floor(src.loc, 1)
+		bled = TRUE
+	if(integrating_blood > amt || force && integrating_blood)
+		integrating_blood = max(integrating_blood - amt, 0)
+		bled = TRUE
+	if(!bled && !force) //If we are already cycling back through, don't do this again
+		bleed(amt, TRUE) //we cycle back through to try to bleed SOMETHING, not neccesarily the required amount
+		return
+	if(isturf(src.loc)) //Blood loss still happens in locker, floor stays clean
+		if(amt >= 10)
+			add_splatter_floor(src.loc)
+		else
+			add_splatter_floor(src.loc, TRUE)
 
 /mob/living/carbon/human/bleed(amt)
 	amt *= physiology.bleed_mod
@@ -114,6 +144,7 @@
 
 /mob/living/proc/restore_blood()
 	blood_volume = initial(blood_volume)
+	integrating_blood = 0
 
 /mob/living/carbon/restore_blood()
 	blood_volume = (BLOOD_VOLUME_NORMAL * blood_ratio)
@@ -141,7 +172,7 @@
 
 	blood_volume -= amount
 
-	var/list/blood_data = get_blood_data(blood_id)
+	var/list/blood_data = get_blood_data()
 
 	if(iscarbon(AM))
 		var/mob/living/carbon/C = AM
@@ -162,54 +193,53 @@
 	return TRUE
 
 
-/mob/living/proc/get_blood_data(blood_id)
+/mob/living/proc/get_blood_data()
 	return
 
-/mob/living/carbon/get_blood_data(blood_id)
-	if(blood_id == /datum/reagent/blood || /datum/reagent/blood/jellyblood) //actual blood reagent
-		var/blood_data = list()
-		//set the blood data
-		blood_data["donor"] = src
-		blood_data["viruses"] = list()
+/mob/living/carbon/get_blood_data()
+	var/blood_data = list()
+	//set the blood data
+	blood_data["donor"] = src
+	blood_data["viruses"] = list()
 
-		for(var/thing in diseases)
-			var/datum/disease/D = thing
-			blood_data["viruses"] += D.Copy()
+	for(var/thing in diseases)
+		var/datum/disease/D = thing
+		blood_data["viruses"] += D.Copy()
 
-		blood_data["blood_DNA"] = dna.unique_enzymes
-		blood_data["bloodcolor"] = dna.species.exotic_blood_color
-		if(disease_resistances && disease_resistances.len)
-			blood_data["resistances"] = disease_resistances.Copy()
-		var/list/temp_chem = list()
-		for(var/datum/reagent/R in reagents.reagent_list)
-			temp_chem[R.type] = R.volume
-		blood_data["trace_chem"] = list2params(temp_chem)
-		if(mind)
-			blood_data["mind"] = mind
-		else if(last_mind)
-			blood_data["mind"] = last_mind
-		if(ckey)
-			blood_data["ckey"] = ckey
-		else if(last_mind)
-			blood_data["ckey"] = ckey(last_mind.key)
+	blood_data["blood_DNA"] = dna.unique_enzymes
+	blood_data["bloodcolor"] = dna.species.exotic_blood_color
+	if(disease_resistances && disease_resistances.len)
+		blood_data["resistances"] = disease_resistances.Copy()
+	var/list/temp_chem = list()
+	for(var/datum/reagent/R in reagents.reagent_list)
+		temp_chem[R.type] = R.volume
+	blood_data["trace_chem"] = list2params(temp_chem)
+	if(mind)
+		blood_data["mind"] = mind
+	else if(last_mind)
+		blood_data["mind"] = last_mind
+	if(ckey)
+		blood_data["ckey"] = ckey
+	else if(last_mind)
+		blood_data["ckey"] = ckey(last_mind.key)
 
-		if(!suiciding)
-			blood_data["cloneable"] = 1
-		blood_data["blood_type"] = dna.blood_type
-		blood_data["gender"] = gender
-		blood_data["real_name"] = real_name
-		blood_data["features"] = dna.features
-		blood_data["factions"] = faction
-		blood_data["quirks"] = list()
-		for(var/V in roundstart_quirks)
-			var/datum/quirk/T = V
-			blood_data["quirks"] += T.type
-		blood_data["changeling_loudness"] = 0
-		if(mind)
-			var/datum/antagonist/changeling/ling = mind.has_antag_datum(/datum/antagonist/changeling)
-			if(istype(ling))
-				blood_data["changeling_loudness"] = ling.loudfactor
-		return blood_data
+	if(!suiciding)
+		blood_data["cloneable"] = 1
+	blood_data["blood_type"] = dna.blood_type
+	blood_data["gender"] = gender
+	blood_data["real_name"] = real_name
+	blood_data["features"] = dna.features
+	blood_data["factions"] = faction
+	blood_data["quirks"] = list()
+	for(var/V in roundstart_quirks)
+		var/datum/quirk/T = V
+		blood_data["quirks"] += T.type
+	blood_data["changeling_loudness"] = 0
+	if(mind)
+		var/datum/antagonist/changeling/ling = mind.has_antag_datum(/datum/antagonist/changeling)
+		if(istype(ling))
+			blood_data["changeling_loudness"] = ling.loudfactor
+	return blood_data
 
 //get the id of the substance this mob use as blood.
 /mob/proc/get_blood_id()
@@ -368,10 +398,17 @@
 		return
 	blood_ratio = 1
 
-/mob/living/proc/AdjustBloodVol(var/value)
+/mob/living/proc/AdjustBloodVol(value)
 	if(blood_ratio == value)
 		return
 	blood_ratio = value
 	if(ishuman(src))
 		var/mob/living/carbon/human/H = src
 		H.handle_blood()
+
+/mob/living/proc/adjust_integration_blood(value, remove_actual_blood, force)
+    if(integrating_blood +  value < 0 && remove_actual_blood)
+        blood_volume += value + integrating_blood
+        blood_volume = max(blood_volume, 0)
+    integrating_blood += value
+    integrating_blood = clamp(integrating_blood, 0, force ? INFINITY : (BLOOD_VOLUME_MAXIMUM - (integrating_blood + blood_volume)))

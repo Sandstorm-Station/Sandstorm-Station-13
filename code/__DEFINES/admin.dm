@@ -18,6 +18,7 @@
 #define BANTYPE_ADMIN_PERMA	7
 #define BANTYPE_ADMIN_TEMP	8
 #define BANTYPE_ANY_JOB		9 //used to remove jobbans
+#define BANTYPE_PACIFIST    10 //makes a person spawn with pacifist. splurt change.
 
 //Admin Permissions
 #define R_BUILDMODE		(1<<0)
@@ -86,6 +87,8 @@
 #define ADMIN_PUNISHMENT_PICKLE "Pickle-ify"
 #define ADMIN_PUNISHMENT_FRY "Fry"
 #define ADMIN_PUNISHMENT_PERFORATE ":B:erforate"
+#define ADMIN_PUNISHMENT_CLUWNE "Cluwne"
+#define ADMIN_PUNISHMENT_GOODBYE "Their final message" //sandstorm
 
 #define AHELP_ACTIVE 1
 #define AHELP_CLOSED 2
@@ -98,3 +101,6 @@
 
 #define STICKYBAN_DB_CACHE_TIME 10 SECONDS
 #define STICKYBAN_ROGUE_CHECK_TIME 5
+
+/// for asay pings, this is the index in the return list for [/proc/check_admin_pings] that contains the message modified with underlines for the spotted names
+#define ADMINSAY_PING_UNDERLINE_NAME_INDEX "!underlined_names"

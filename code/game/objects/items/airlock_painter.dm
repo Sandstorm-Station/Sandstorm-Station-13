@@ -140,7 +140,8 @@
 	var/stored_decal_total = "warningline"
 	var/color_list = list("","red","white")
 	var/dir_list = list(1,2,4,8)
-	var/decal_list = list(list("Warning Line","warningline"),
+	var/decal_list = list(
+			list("Warning Line","warningline"),
 			list("Warning Line Corner","warninglinecorner"),
 			list("Caution Label","caution"),
 			list("Directional Arrows","arrows"),

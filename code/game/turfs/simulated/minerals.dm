@@ -14,8 +14,8 @@
 	density = TRUE
 	blocks_air = TRUE
 	layer = EDGED_TURF_LAYER
+	initial_temperature = 293.15
 	// base_icon_state = "smoothrocks"
-	temperature = TCMB
 	var/smooth_icon = 'icons/turf/smoothrocks.dmi'
 	var/environment_type = "asteroid"
 	var/turf/open/floor/plating/turf_type = /turf/open/floor/plating/asteroid/airless
@@ -171,7 +171,7 @@
 /turf/closed/mineral/acid_melt()
 	ScrapeAway()
 
-/turf/closed/mineral/ex_act(severity, target)
+/turf/closed/mineral/ex_act(severity, target, origin)
 	..()
 	switch(severity)
 		if(3)
@@ -661,7 +661,7 @@
 /turf/closed/mineral/strong/acid_melt()
 	return
 
-/turf/closed/mineral/strong/ex_act(severity, target)
+/turf/closed/mineral/strong/ex_act(severity, target, origin)
 	return
 
 #undef MINING_MESSAGE_COOLDOWN

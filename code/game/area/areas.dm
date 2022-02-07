@@ -13,7 +13,7 @@
 	mouse_opacity = MOUSE_OPACITY_TRANSPARENT
 	invisibility = INVISIBILITY_LIGHTING
 
-	var/area_flags = VALID_TERRITORY | BLOBS_ALLOWED | UNIQUE_AREA
+	var/area_flags = VALID_TERRITORY | BLOBS_ALLOWED | UNIQUE_AREA | CULT_PERMITTED
 
 	var/fire = null
 	///Whether there is an atmos alarm in this area
@@ -319,38 +319,38 @@ GLOBAL_LIST_EMPTY(teleportlocs)
  *
  * Sends to all ai players, alert consoles, drones and alarm monitor programs in the world
  */
-/area/proc/poweralert(state, obj/source)
+/area/proc/poweralert(set_alarm, obj/source)
 	if (area_flags & NO_ALERTS)
 		return
-	if (state != poweralm)
-		poweralm = state
+	if (set_alarm != poweralm)
+		poweralm = set_alarm
 		if(istype(source))	//Only report power alarms on the z-level where the source is located.
 			for (var/item in GLOB.silicon_mobs)
 				var/mob/living/silicon/aiPlayer = item
-				if (state == 1)
-					aiPlayer.cancelAlarm("Power", src, source)
-				else
+				if (set_alarm)
 					aiPlayer.triggerAlarm("Power", src, cameras, source)
+				else
+					aiPlayer.cancelAlarm("Power", src, source)
 
 			for (var/item in GLOB.alert_consoles)
 				var/obj/machinery/computer/station_alert/a = item
-				if(state == 1)
-					a.cancelAlarm("Power", src, source)
-				else
+				if (set_alarm)
 					a.triggerAlarm("Power", src, cameras, source)
+				else
+					a.cancelAlarm("Power", src, source)
 
 			for (var/item in GLOB.drones_list)
 				var/mob/living/simple_animal/drone/D = item
-				if(state == 1)
-					D.cancelAlarm("Power", src, source)
-				else
+				if (set_alarm)
 					D.triggerAlarm("Power", src, cameras, source)
+				else
+					D.cancelAlarm("Power", src, source)
 			for(var/item in GLOB.alarmdisplay)
 				var/datum/computer_file/program/alarm_monitor/p = item
-				if(state == 1)
-					p.cancelAlarm("Power", src, source)
-				else
+				if (set_alarm)
 					p.triggerAlarm("Power", src, cameras, source)
+				else
+					p.cancelAlarm("Power", src, source)
 
 /area/proc/atmosalert(danger_level, obj/source)
 	if (area_flags & NO_ALERTS)
@@ -553,7 +553,7 @@ GLOBAL_LIST_EMPTY(teleportlocs)
 			A.power_equip = power_equip
 			A.power_environ = power_environ
 			INVOKE_ASYNC(A, .proc/power_change)
-	update_icon()
+	update_appearance()
 
 /area/proc/usage(chan)
 	switch(chan)

@@ -23,7 +23,7 @@
 		return
 
 	var/obj/item/organ/lungs/lungs = owner.getorganslot(ORGAN_SLOT_LUNGS)
-	if((!lungs && !HAS_TRAIT(owner, TRAIT_NOBREATH)) || (lungs && (istype(lungs, /obj/item/organ/lungs/cybernetic))))
+	if((!lungs && (HAS_TRAIT_FROM(owner, TRAIT_AUXILIARY_LUNGS, SPECIES_TRAIT) || !HAS_TRAIT(owner, TRAIT_NOBREATH))) || (lungs && (istype(lungs, /obj/item/organ/lungs/cybernetic))))
 		replace_lungs(lungs)
 		return
 
@@ -144,7 +144,7 @@
 	owner.Stun(15)
 	owner.adjustToxLoss(-15, TRUE, TRUE)
 
-	owner.blood_volume = min(BLOOD_VOLUME_NORMAL, owner.blood_volume + 20)
+	owner.adjust_integration_blood(20)
 	if(owner.blood_volume < BLOOD_VOLUME_NORMAL)
 		keep_going = TRUE
 

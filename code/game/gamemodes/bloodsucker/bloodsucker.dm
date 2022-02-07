@@ -7,7 +7,7 @@
 
 	// LISTS //
 	var/list/vassal_allowed_antags = list(/datum/antagonist/brother, /datum/antagonist/traitor, /datum/antagonist/traitor/internal_affairs, /datum/antagonist/survivalist, \
-										  /datum/antagonist/rev, /datum/antagonist/nukeop, /datum/antagonist/pirate, /datum/antagonist/cult, /datum/antagonist/abductee, /datum/antagonist/valentine, /datum/antagonist/heartbreaker,)
+										  /datum/antagonist/rev, /datum/antagonist/nukeop, /datum/antagonist/slaver, /datum/antagonist/pirate, /datum/antagonist/cult, /datum/antagonist/abductee, /datum/antagonist/valentine, /datum/antagonist/heartbreaker,)
 	// The antags you're allowed to be if turning Vassal.
 
 /proc/AmBloodsucker(mob/living/M, falseIfInDisguise = FALSE)
@@ -25,7 +25,7 @@
 	antag_flag = ROLE_BLOODSUCKER
 	false_report_weight = 1
 	chaos = 4
-	restricted_jobs = list("AI","Cyborg")
+	restricted_jobs = list("Prisoner", "AI","Cyborg")
 	protected_jobs = list("Chaplain", "Security Officer", "Warden", "Detective", "Head of Security", "Captain", "Head of Personnel", "Chief Engineer", "Chief Medical Officer", "Research Director", "Quartermaster")
 	required_players = 20
 	required_enemies = 2

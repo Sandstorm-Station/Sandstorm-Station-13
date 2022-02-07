@@ -79,8 +79,17 @@
 	if(attached_device)
 		attached_device.Crossed(AM)
 
-/obj/item/transfer_valve/on_attack_hand()//Triggers mousetraps
+/obj/item/transfer_valve/on_attack_hand(mob/living/user)//Triggers mousetraps
 	. = ..()
+
+	var/client/client = user.client
+	if (CONFIG_GET(flag/use_exp_tracking) && client && client.get_exp_living(TRUE) < 480) // Player with less than 8 hours playtime has touched a bomb valve.
+		if(client.next_valve_grief_warning < world.time)
+			var/turf/T = get_turf(src)
+			client.next_valve_grief_warning = world.time + 15 MINUTES // Wait 15 minutes before alerting admins again
+			message_admins("<span class='adminhelp'>ANTI-GRIEF:</span> New player [ADMIN_LOOKUPFLW(user)] touched \a [src] at [ADMIN_VERBOSEJMP(T)].")
+			client.touched_transfer_valve = TRUE
+
 	if(.)
 		return
 	if(attached_device)
@@ -172,20 +181,15 @@
 		if(!target_self)
 			target.set_volume(target.return_volume() + tank_two.volume)
 		target.set_volume(target.return_volume() + tank_one.air_contents.return_volume())
-	var/datum/gas_mixture/temp
-	temp = tank_one.air_contents.remove_ratio(1)
-	target.merge(temp)
+	tank_one.air_contents.transfer_ratio_to(target, 1)
 	if(!target_self)
-		temp = tank_two.air_contents.remove_ratio(1)
-		target.merge(temp)
+		tank_two.air_contents.transfer_ratio_to(target, 1)
 
 /obj/item/transfer_valve/proc/split_gases()
 	if (!valve_open || !tank_one || !tank_two)
 		return
 	var/ratio1 = tank_one.air_contents.return_volume()/tank_two.air_contents.return_volume()
-	var/datum/gas_mixture/temp
-	temp = tank_two.air_contents.remove_ratio(ratio1)
-	tank_one.air_contents.merge(temp)
+	tank_two.air_contents.transfer_ratio_to(tank_one.air_contents, ratio1)
 	tank_two.air_contents.set_volume(tank_two.air_contents.return_volume() - tank_one.air_contents.return_volume())
 
 /*

@@ -10,4 +10,6 @@
 	default_priority = 70
 
 	icon_state = "slime"
-	chooseable_roundstart = TRUE
+	//SKYRAT CHANGE - language restriction
+	restricted = FALSE
+	//

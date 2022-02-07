@@ -22,7 +22,9 @@
 	var/list/scramble_cache = list()
 	var/default_priority = 0          // the language that an atom knows with the highest "default_priority" is selected by default.
 
-	var/chooseable_roundstart = FALSE // can we pick it from the customization menu as an additional language?
+	//SKYRAT CHANGE - is this language available on the character setup? Set to true if not.
+	var/restricted = TRUE
+	//
 
 	// if you are seeing someone speak popcorn language, then something is wrong.
 	var/icon = 'icons/misc/language.dmi'

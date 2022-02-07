@@ -110,6 +110,15 @@
 					to_chat(user, "<span class='notice'>You add reinforced glass to the floor.</span>")
 				return
 	else if(istype(C, /obj/item/stack/tile))
+		//sandstorm edit
+		if(istype(src, /turf/open/floor/plating/asteroid))
+			var/obj/item/stack/tile/plasteel/W = C
+			if(!W.use(1))
+				return
+			ChangeTurf(/turf/open/floor/plating, flags = CHANGETURF_INHERIT_AIR)
+			playsound(src, 'sound/weapons/genhit.ogg', 50, 1)
+			return
+		//sandstorm edit
 		if(!broken && !burnt)
 			for(var/obj/O in src)
 				if(O.level == 1) //ex. pipes laid underneath a tile
@@ -195,7 +204,7 @@
 		return TRUE
 	return FALSE
 
-/turf/open/floor/plating/foam/ex_act()
+/turf/open/floor/plating/foam/ex_act(severity, target, origin)
 	..()
 	ScrapeAway(flags = CHANGETURF_INHERIT_AIR)
 

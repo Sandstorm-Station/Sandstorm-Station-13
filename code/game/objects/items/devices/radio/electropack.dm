@@ -146,6 +146,8 @@
 	custom_materials = list(/datum/material/iron = 5000, /datum/material/glass = 2000)
 
 	var/tagname = null
+	var/shockStrength = 100
+	var/shockCooldown = 100
 
 /datum/design/electropack/shockcollar
 	name = "Shockcollar"
@@ -172,7 +174,7 @@
 		if(shock_cooldown == TRUE)
 			return
 		shock_cooldown = TRUE
-		addtimer(VARSET_CALLBACK(src, shock_cooldown, FALSE), 100)
+		addtimer(VARSET_CALLBACK(src, shock_cooldown, FALSE), shockCooldown)
 		step(L, pick(GLOB.cardinals))
 
 		to_chat(L, "<span class='danger'>You feel a sharp shock from the collar!</span>")
@@ -180,7 +182,7 @@
 		s.set_up(3, 1, L)
 		s.start()
 
-		L.DefaultCombatKnockdown(100)
+		L.DefaultCombatKnockdown(shockStrength)
 
 	if(master)
 		master.receive_signal()

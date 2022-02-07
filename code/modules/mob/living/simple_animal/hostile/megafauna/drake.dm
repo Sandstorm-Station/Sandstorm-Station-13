@@ -48,6 +48,7 @@ Difficulty: Medium
 	icon_state = "dragon"
 	icon_living = "dragon"
 	icon_dead = "dragon_dead"
+	health_doll_icon = "dragon"
 	friendly_verb_continuous = "stares down"
 	friendly_verb_simple = "stare down"
 	speak_emote = list("roars")
@@ -78,7 +79,7 @@ Difficulty: Medium
 	. = ..()
 	internal = new/obj/item/gps/internal/dragon(src)
 
-/mob/living/simple_animal/hostile/megafauna/dragon/ex_act(severity, target)
+/mob/living/simple_animal/hostile/megafauna/dragon/ex_act(severity, target, origin)
 	if(severity == 3)
 		return
 	..()
@@ -88,7 +89,7 @@ Difficulty: Medium
 		return FALSE
 	return ..()
 
-/mob/living/simple_animal/hostile/megafauna/dragon/visible_message(message, self_message, blind_message, vision_distance = DEFAULT_MESSAGE_RANGE, list/ignored_mobs, mob/target, target_message, omni = FALSE)
+/mob/living/simple_animal/hostile/megafauna/dragon/visible_message(message, self_message, blind_message, vision_distance = DEFAULT_MESSAGE_RANGE, list/ignored_mobs, mob/target, target_message, omni = FALSE, runechat_popup, rune_msg)
 	if(swooping & SWOOP_INVULNERABLE) //to suppress attack messages without overriding every single proc that could send a message saying we got hit
 		return
 	return ..()
@@ -386,7 +387,7 @@ Difficulty: Medium
 	light_range = 2
 	duration = 13
 
-/obj/effect/temp_visual/lava_warning/ex_act()
+/obj/effect/temp_visual/lava_warning/ex_act(severity, target, origin)
 	return
 
 /obj/effect/temp_visual/lava_warning/Initialize(mapload, var/reset_time = 10)

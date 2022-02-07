@@ -33,8 +33,7 @@
 
 /obj/item/integrated_circuit_printer/Initialize()
 	. = ..()
-	var/datum/component/material_container/materials = AddComponent(/datum/component/material_container, list(/datum/material/iron), MINERAL_MATERIAL_AMOUNT * 25, TRUE, list(/obj/item/stack, /obj/item/integrated_circuit, /obj/item/electronic_assembly))
-	materials.precise_insertion = TRUE
+	AddComponent(/datum/component/material_container, list(/datum/material/iron), MINERAL_MATERIAL_AMOUNT * 25, TRUE, list(/obj/item/stack, /obj/item/integrated_circuit, /obj/item/electronic_assembly))
 
 /obj/item/integrated_circuit_printer/proc/print_program(mob/user)
 	if(!cloning)
@@ -108,8 +107,16 @@
 	interact(user)
 
 /obj/item/integrated_circuit_printer/interact(mob/user)
-	if(!(in_range(src, user) || hasSiliconAccessInArea(user)))
+	if(!(in_range(src, user) || issilicon(user)))
 		return
+
+	var/client/client = user.client
+	if (CONFIG_GET(flag/use_exp_tracking) && client && client.get_exp_living(TRUE) < 480) // Player with less than 8 hours playtime is using this machine.
+		if(client.next_circuit_grief_warning < world.time)
+			var/turf/T = get_turf(src)
+			client.next_circuit_grief_warning = world.time + 15 MINUTES // Wait 15 minutes before alerting admins again
+			message_admins("<span class='adminhelp'>ANTI-GRIEF:</span> New player [ADMIN_LOOKUPFLW(user)] has touched \a [src] at [ADMIN_VERBOSEJMP(T)].")
+			client.touched_circuit = TRUE
 
 	if(isnull(current_category))
 		current_category = SScircuit.circuit_fabricator_recipe_list[1]
@@ -136,7 +143,7 @@
 	if((can_clone && CONFIG_GET(flag/ic_printing)) || debug)
 		HTML += "Here you can load script for your assembly.<br>"
 		if(!cloning)
-			HTML += " <A href='?src=[REF(src)];print=load'>{Load Program}</a> "
+			HTML += " <A href='?src=[REF(src)];print=load'>Load Program</a> "
 		else
 			HTML += " Load Program"
 		if(!program)
@@ -150,9 +157,9 @@
 	HTML += "Categories:"
 	for(var/category in SScircuit.circuit_fabricator_recipe_list)
 		if(category != current_category)
-			HTML += " <a href='?src=[REF(src)];category=[category]'>\[[category]\]</a> "
+			HTML += " <a href='?src=[REF(src)];category=[category]'>[category]</a> "
 		else // Bold the button if it's already selected.
-			HTML += " <b>\[[category]\]</b> "
+			HTML += " <b>[category]</b> "
 	HTML += "<hr>"
 	HTML += "<center><h4>[current_category]</h4></center>"
 

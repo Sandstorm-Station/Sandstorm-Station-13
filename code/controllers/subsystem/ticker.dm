@@ -71,6 +71,9 @@ SUBSYSTEM_DEF(ticker)
 	var/station_integrity = 100				// stored at roundend for use in some antag goals
 	var/emergency_reason
 
+	/// If the gamemode fails to be run too many times, we swap to a preset gamemode, this should give admins time to set their preferred one
+	var/emergency_swap = 0
+
 /datum/controller/subsystem/ticker/Initialize(timeofday)
 	load_mode()
 
@@ -179,7 +182,11 @@ SUBSYSTEM_DEF(ticker)
 				timeLeft = 0
 
 			if(!modevoted)
-				send_gamemode_vote()
+				var/forcemode = CONFIG_GET(string/force_gamemode)
+				if(forcemode)
+					force_gamemode(forcemode)
+				if(!forcemode || (GLOB.master_mode == "dynamic" && CONFIG_GET(flag/dynamic_voting)))
+					send_gamemode_vote()
 			//countdown
 			if(timeLeft < 0)
 				return
@@ -227,36 +234,16 @@ SUBSYSTEM_DEF(ticker)
 /datum/controller/subsystem/ticker/proc/setup()
 	to_chat(world, "<span class='boldannounce'>Starting game...</span>")
 	var/init_start = world.timeofday
-		//Create and announce mode
-	var/list/datum/game_mode/runnable_modes
-	if(GLOB.master_mode == "random" || GLOB.master_mode == "secret")
-		runnable_modes = config.get_runnable_modes()
-
-		if(GLOB.master_mode == "secret")
-			hide_mode = 1
-			if(GLOB.secret_force_mode != "secret")
-				var/datum/game_mode/smode = config.pick_mode(GLOB.secret_force_mode)
-				if(!smode.can_start())
-					message_admins("<span class='notice'>Unable to force secret [GLOB.secret_force_mode]. [smode.required_players] players and [smode.required_enemies] eligible antagonists needed.</span>")
-				else
-					mode = smode
-
-		if(!mode)
-			if(!runnable_modes.len)
-				to_chat(world, "<B>Unable to choose playable game mode.</B> Reverting to pre-game lobby.")
-				return 0
-			mode = pickweight(runnable_modes)
-			if(!mode)	//too few roundtypes all run too recently
-				mode = pick(runnable_modes)
-
-	else
-		mode = config.pick_mode(GLOB.master_mode)
-		if(!mode.can_start())
-			to_chat(world, "<B>Unable to start [mode.name].</B> Not enough players, [mode.required_players] players and [mode.required_enemies] eligible antagonists needed. Reverting to pre-game lobby.")
-			qdel(mode)
-			mode = null
-			SSjob.ResetOccupations()
-			return 0
+	if(emergency_swap >= 10)
+		force_gamemode("extended")	// If everything fails extended does not have hard requirements for starting, could be changed if needed.
+	mode = config.pick_mode(GLOB.master_mode)
+	if(!mode.can_start())
+		to_chat(world, "<B>Unable to start [mode.name].</B> Not enough players, [mode.required_players] players and [mode.required_enemies] eligible antagonists needed. Reverting to pre-game lobby.")
+		qdel(mode)
+		mode = null
+		SSjob.ResetOccupations()
+		emergency_swap++
+		return 0
 
 	CHECK_TICK
 	//Configure mode and assign player to special mode stuff
@@ -274,6 +261,7 @@ SUBSYSTEM_DEF(ticker)
 			QDEL_NULL(mode)
 			to_chat(world, "<B>Error setting up [GLOB.master_mode].</B> Reverting to pre-game lobby.")
 			SSjob.ResetOccupations()
+			emergency_swap++
 			return 0
 	else
 		message_admins("<span class='notice'>DEBUG: Bypassing prestart checks...</span>")
@@ -327,6 +315,19 @@ SUBSYSTEM_DEF(ticker)
 
 	return TRUE
 
+/datum/controller/subsystem/ticker/proc/force_gamemode(gamemode)
+	if(gamemode)
+		if(!modevoted)
+			modevoted = TRUE
+		if(gamemode in config.modes)
+			GLOB.master_mode = gamemode
+			SSticker.save_mode(gamemode)
+			message_admins("The gamemode has been set to [gamemode].")
+		else
+			GLOB.master_mode = "extended"
+			SSticker.save_mode("extended")
+			message_admins("force_gamemode proc received an invalid gamemode, defaulting to extended.")
+
 /datum/controller/subsystem/ticker/proc/PostSetup()
 	set waitfor = FALSE
 	mode.post_setup()
@@ -336,6 +337,8 @@ SUBSYSTEM_DEF(ticker)
 	var/list/adm = get_admin_counts()
 	var/list/allmins = adm["present"]
 	send2adminchat("Server", "Round [GLOB.round_id ? "#[GLOB.round_id]:" : "of"] [hide_mode ? "secret":"[mode.name]"] has started[allmins.len ? ".":" with no active admins online!"]")
+	if(CONFIG_GET(string/new_round_ping))
+		send2chat("<@&[CONFIG_GET(string/new_round_ping)]> | A new round has started on [SSmapping.config.map_name]!", CONFIG_GET(string/chat_announce_new_game))
 	setup_done = TRUE
 
 	for(var/i in GLOB.start_landmarks_list)
@@ -402,6 +405,10 @@ SUBSYSTEM_DEF(ticker)
 				SSjob.EquipRank(N, player.mind.assigned_role, 0)
 				if(CONFIG_GET(flag/roundstart_traits) && ishuman(N.new_character))
 					SSquirks.AssignQuirks(N.new_character, N.client, TRUE, TRUE, SSjob.GetJob(player.mind.assigned_role), FALSE, N)
+				//skyrat change
+				if(ishuman(N.new_character))
+					SSlanguage.AssignLanguage(N.new_character, N.client)
+				//
 			N.client.prefs.post_copy_to(player)
 		CHECK_TICK
 	if(captainless)
@@ -421,7 +428,7 @@ SUBSYSTEM_DEF(ticker)
 				if (living.client.prefs && living.client.prefs.auto_ooc)
 					if (living.client.prefs.chat_toggles & CHAT_OOC)
 						living.client.prefs.chat_toggles ^= CHAT_OOC
-				var/obj/screen/splash/S = new(living.client, TRUE)
+				var/atom/movable/screen/splash/S = new(living.client, TRUE)
 				S.Fade(TRUE)
 				living.client.init_verbs()
 			livings += living
@@ -642,7 +649,7 @@ SUBSYSTEM_DEF(ticker)
 	if(mode)
 		GLOB.master_mode = mode
 	else
-		GLOB.master_mode = "extended"
+		GLOB.master_mode = GLOB.dynamic_forced_extended
 	log_game("Saved mode is '[GLOB.master_mode]'")
 
 /datum/controller/subsystem/ticker/proc/save_mode(the_mode)
@@ -703,6 +710,16 @@ SUBSYSTEM_DEF(ticker)
 	update_everything_flag_in_db()
 	if(!round_end_sound)
 		round_end_sound = pick(\
+		'modular_splurt/sound/roundend/dotheballsgo.ogg',
+		'modular_splurt/sound/roundend/filledwith.ogg',
+		'modular_splurt/sound/roundend/iknowwhat.ogg',
+		'modular_splurt/sound/roundend/lottawords.ogg',
+		'modular_splurt/sound/roundend/pissesonme.ogg',
+		'modular_splurt/sound/roundend/theballsgothard.ogg',
+		'modular_splurt/sound/roundend/iwishtherewassomethingmore.ogg',
+		'modular_splurt/sound/roundend/likeisaid.ogg',
+		'modular_splurt/sound/roundend/whatarottenwaytodie.ogg',
+		'modular_splurt/sound/roundend/whatashame.ogg',
 		'sound/roundend/newroundsexy.ogg',
 		'sound/roundend/apcdestroyed.ogg',
 		'sound/roundend/seeyoulaterokay.ogg',
@@ -713,7 +730,8 @@ SUBSYSTEM_DEF(ticker)
 		'sound/roundend/disappointed.ogg',
 		'sound/roundend/gondolabridge.ogg',
 		'sound/roundend/haveabeautifultime.ogg',
-		'sound/roundend/CitadelStationHasSeenBetterDays.ogg'\
+		'sound/roundend/CitadelStationHasSeenBetterDays.ogg',
+		'sound/roundend/approachingbaystation.ogg'\
 		)
 
 	SEND_SOUND(world, sound(round_end_sound))

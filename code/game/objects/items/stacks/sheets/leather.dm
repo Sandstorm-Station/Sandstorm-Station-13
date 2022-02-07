@@ -13,6 +13,7 @@
 
 GLOBAL_LIST_INIT(human_recipes, list( \
 	new/datum/stack_recipe("bloated human costume", /obj/item/clothing/suit/hooded/bloated_human, 5), \
+	new/datum/stack_recipe("human skin hat", /obj/item/clothing/head/human_leather, 1), \
 	))
 
 /obj/item/stack/sheet/animalhide/human/get_main_recipes()
@@ -161,6 +162,8 @@ GLOBAL_LIST_INIT(leather_recipes, list ( \
 	new/datum/stack_recipe("leather jacket", /obj/item/clothing/suit/jacket/leather, 7), \
 	new/datum/stack_recipe("leather shoes", /obj/item/clothing/shoes/laceup, 2), \
 	new/datum/stack_recipe("leather overcoat", /obj/item/clothing/suit/jacket/leather/overcoat, 10), \
+	new/datum/stack_recipe("gear harness", /obj/item/clothing/under/misc/gear_harness, 6), \
+	new/datum/stack_recipe("loincloth", /obj/item/clothing/under/costume/loincloth, 2), \
 ))
 
 /obj/item/stack/sheet/leather/get_main_recipes()

@@ -69,5 +69,8 @@
 /obj/machinery/door/password/emp_act(severity)
 	return
 
-/obj/machinery/door/password/ex_act(severity, target)
+/obj/machinery/door/password/ex_act(severity, target, origin)
 	return
+
+/obj/machinery/door/password/wave_ex_act(power, datum/wave_explosion/explosion, dir)
+	return 0		//no.

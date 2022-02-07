@@ -13,7 +13,7 @@
 		if(HAS_TRAIT(L, TRAIT_PROSOPAGNOSIA))
 			obscure_name = TRUE
 
-	. = list("<span class='info'>*---------*\nThis is <EM>[!obscure_name ? name : "Unknown"]</EM>!")
+	. = list("<div class='infobox'><span class='info'>This is <EM>[!obscure_name ? name : "Unknown"]</EM>!")
 
 	var/vampDesc = ReturnVampExamine(user) // Vamps recognize the names of other vamps.
 	var/vassDesc = ReturnVassalExamine(user) // Vassals recognize each other's marks.
@@ -28,7 +28,22 @@
 	if(skipface || get_visible_name() == "Unknown")
 		. += "You can't make out what species they are."
 	else
-		. += "[t_He] [t_is] a [dna.custom_species ? dna.custom_species : dna.species.name]!"
+		. += "[t_He] [t_is] a [spec_trait_examine_font()][dna.custom_species ? dna.custom_species : dna.species.name]</font>!"
+
+	//Underwear
+	var/shirt_hidden = undershirt_hidden()
+	var/undies_hidden = underwear_hidden()
+	var/socks_hidden = socks_hidden()
+	if(w_underwear && !undies_hidden)
+		. += "[t_He] [t_is] wearing [w_underwear.get_examine_string(user)]."
+	if(w_socks && !socks_hidden)
+		. += "[t_He] [t_is] wearing [w_socks.get_examine_string(user)]."
+	if(w_shirt && !shirt_hidden)
+		. += "[t_He] [t_is] wearing [w_shirt.get_examine_string(user)]."
+	//Wrist slot because you're epic
+	if(wrists && !(SLOT_WRISTS in obscured))
+		. += "[t_He] [t_is] wearing [wrists.get_examine_string(user)]."
+	//End of skyrat changes
 
 	//uniform
 	if(w_uniform && !(SLOT_W_UNIFORM in obscured))
@@ -36,15 +51,28 @@
 		var/accessory_msg
 		if(istype(w_uniform, /obj/item/clothing/under))
 			var/obj/item/clothing/under/U = w_uniform
-			if(U.attached_accessory && !(U.attached_accessory.flags_inv & HIDEACCESSORY) && !(U.flags_inv & HIDEACCESSORY))
-				accessory_msg += " with [icon2html(U.attached_accessory, user)] \a [U.attached_accessory]"
+			if(length(U.attached_accessories) && !(U.flags_inv & HIDEACCESSORY))
+				var/list/weehoo = list()
+				var/dumb_icons = ""
+				for(var/obj/item/clothing/accessory/attached_accessory in U.attached_accessories)
+					if(!(attached_accessory.flags_inv & HIDEACCESSORY))
+						weehoo += "\a [attached_accessory]"
+						dumb_icons = "[dumb_icons][icon2html(attached_accessory, user)]"
+				if(length(weehoo))
+					accessory_msg += " with [dumb_icons]"
+					if(length(U.attached_accessories) >= 2)
+						accessory_msg += jointext(weehoo, ", ", 1, length(weehoo) - 1)
+						accessory_msg += " and [weehoo[length(weehoo)]]"
+					else
+						accessory_msg += weehoo[1]
+
 
 		. += "[t_He] [t_is] wearing [w_uniform.get_examine_string(user)][accessory_msg]."
 	//head
-	if(head && !(head.item_flags & EXAMINE_SKIP))
+	if(head && !(head.obj_flags & EXAMINE_SKIP))
 		. += "[t_He] [t_is] wearing [head.get_examine_string(user)] on [t_his] head."
 	//suit/armor
-	if(wear_suit && !(wear_suit.item_flags & EXAMINE_SKIP))
+	if(wear_suit && !(wear_suit.obj_flags & EXAMINE_SKIP))
 		. += "[t_He] [t_is] wearing [wear_suit.get_examine_string(user)]."
 		//suit/armor storage
 		if(s_store && !(SLOT_S_STORE in obscured))
@@ -100,8 +128,18 @@
 				. += "<b><font color=orange>[t_His] eyes are flickering a bright yellow!</font></b>"
 
 	//ears
-	if(ears && !(SLOT_EARS in obscured))
-		. += "[t_He] [t_has] [ears.get_examine_string(user)] on [t_his] ears."
+	if(ears && !(SLOT_EARS_LEFT in obscured)) //skyrat edit
+		. += "[t_He] [t_has] [ears.get_examine_string(user)] on [t_his] left ear."
+
+	//skyrat edit - extra ear slot haha
+	if(ears_extra && !(SLOT_EARS_RIGHT in obscured))
+		. += "[t_He] [t_has] [ears_extra.get_examine_string(user)] on [t_his] right ear."
+
+	//wearing two ear items makes you look like an idiot
+	if((istype(ears, /obj/item/radio/headset) && !(SLOT_EARS_LEFT in obscured)) && (istype(ears_extra, /obj/item/radio/headset) && !(SLOT_EARS_RIGHT in obscured)))
+		. += "<span class='warning'>[t_He] looks quite tacky wearing both \an [ears.name] and \an [ears_extra.name] on [t_his] head.</span>"
+
+	//
 
 	//ID
 	if(wear_id)
@@ -112,12 +150,22 @@
 	if(!isnull(effects_exam))
 		. += effects_exam
 
+	//Approximate character height based on current sprite scale
+	var/dispSize = round(12*get_size(src)) // gets the character's sprite size percent and converts it to the nearest half foot
+	if(dispSize % 2) // returns 1 or 0. 1 meaning the height is not exact and the code below will execute, 0 meaning the height is exact and the else will trigger.
+		dispSize = dispSize - 1 //makes it even
+		dispSize = dispSize / 2 //rounds it out
+		. += "[t_He] appears to be around [dispSize] and a half feet tall."
+	else
+		dispSize = dispSize / 2
+		. += "[t_He] appears to be around [dispSize] feet tall."
+
 	//CIT CHANGES START HERE - adds genital details to examine text
-	if(LAZYLEN(internal_organs) && CHECK_BITFIELD(user.client?.prefs.cit_toggles, GENITAL_EXAMINE))
+	if(LAZYLEN(internal_organs) && (user.client?.prefs.cit_toggles & GENITAL_EXAMINE))
 		for(var/obj/item/organ/genital/dicc in internal_organs)
 			if(istype(dicc) && dicc.is_exposed())
 				. += "[dicc.desc]"
-	if(CHECK_BITFIELD(user.client?.prefs.cit_toggles, VORE_EXAMINE))
+	if(user.client?.prefs.cit_toggles & VORE_EXAMINE)
 		var/cursed_stuff = attempt_vr(src,"examine_bellies",args) //vore Code
 		if(cursed_stuff)
 			. += cursed_stuff
@@ -150,6 +198,12 @@
 	var/temp = getBruteLoss() //no need to calculate each of these twice
 
 	var/list/msg = list()
+
+	if(client && client.prefs) // Skyrat Change
+		if(client.prefs.toggles & VERB_CONSENT) // Skyrat Change
+			. += "[t_His] player has allowed lewd verbs." // Skyrat Change
+		else // Skyrat Change
+			. += "[t_His] player has not allowed lewd verbs." // Skyrat Change
 
 	var/list/missing = list(BODY_ZONE_HEAD, BODY_ZONE_CHEST, BODY_ZONE_L_ARM, BODY_ZONE_R_ARM, BODY_ZONE_L_LEG, BODY_ZONE_R_LEG)
 	var/list/disabled = list()
@@ -241,6 +295,8 @@
 			msg += "[t_He] [t_is] plump and delicious looking - Like a fat little piggy. A tasty piggy.\n"
 		else
 			msg += "[t_He] [t_is] quite chubby.\n"
+	if(thirst < THIRST_LEVEL_PARCHED - 50)
+		msg += "[t_He] [t_is] parched.\n"
 	switch(disgust)
 		if(DISGUST_LEVEL_GROSS to DISGUST_LEVEL_VERYGROSS)
 			msg += "[t_He] look[p_s()] a bit grossed out.\n"
@@ -249,16 +305,17 @@
 		if(DISGUST_LEVEL_DISGUSTED to INFINITY)
 			msg += "[t_He] look[p_s()] extremely disgusted.\n"
 
-	var/apparent_blood_volume = blood_volume
-	if(dna.species.use_skintones && skin_tone == "albino")
-		apparent_blood_volume -= 150 // enough to knock you down one tier
-	switch(apparent_blood_volume)
-		if(BLOOD_VOLUME_OKAY to BLOOD_VOLUME_SAFE)
-			msg += "[t_He] [t_has] pale skin.\n"
-		if(BLOOD_VOLUME_BAD to BLOOD_VOLUME_OKAY)
-			msg += "<b>[t_He] look[p_s()] like pale death.</b>\n"
-		if(-INFINITY to BLOOD_VOLUME_BAD)
-			msg += "<span class='deadsay'><b>[t_He] resemble[p_s()] a crushed, empty juice pouch.</b></span>\n"
+	if(!HAS_TRAIT(src, TRAIT_ROBOTIC_ORGANISM))
+		var/apparent_blood_volume = blood_volume
+		if(dna.species.use_skintones && skin_tone == "albino")
+			apparent_blood_volume -= 150 // enough to knock you down one tier
+		switch(apparent_blood_volume)
+			if(BLOOD_VOLUME_OKAY to BLOOD_VOLUME_SAFE)
+				msg += "[t_He] [t_has] pale skin.\n"
+			if(BLOOD_VOLUME_BAD to BLOOD_VOLUME_OKAY)
+				msg += "<b>[t_He] look[p_s()] like pale death.</b>\n"
+			if(-INFINITY to BLOOD_VOLUME_BAD)
+				msg += "<span class='deadsay'><b>[t_He] resemble[p_s()] a crushed, empty juice pouch.</b></span>\n"
 
 	if(bleedsuppress)
 		msg += "[t_He] [t_is] embued with a power that defies bleeding.\n" // only statues and highlander sword can cause this so whatever
@@ -349,7 +406,7 @@
 	var/obj/item/organ/vocal_cords/Vc = user.getorganslot(ORGAN_SLOT_VOICE)
 	if(Vc)
 		if(istype(Vc, /obj/item/organ/vocal_cords/velvet))
-			if(client.prefs.cit_toggles & HYPNO)
+			if(client?.prefs.cit_toggles & HYPNO)
 				msg += "<span class='velvet'><i>You feel your chords resonate looking at them.</i></span>\n"
 
 
@@ -365,7 +422,7 @@
 			if(!key)
 				msg += "<span class='deadsay'>[t_He] [t_is] totally catatonic. The stresses of life in deep-space must have been too much for [t_him]. Any recovery is unlikely.</span>\n"
 			else if(!client)
-				msg += "[t_He] [t_has] a blank, absent-minded stare and appears completely unresponsive to anything. [t_He] may snap out of it soon.\n"
+				msg += "[t_He] [t_has] a blank, absent-minded stare and [t_has] been completely unresponsive to anything for [round(((world.time - lastclienttime) / (1 MINUTES)), 1)] minutes. [t_He] may snap out of it soon.\n" //SKYRAT CHANGE - ssd indicator
 
 		if(digitalcamo)
 			msg += "[t_He] [t_is] moving [t_his] body in an unnatural and blatantly inhuman manner.\n"
@@ -388,6 +445,10 @@
 
 	if (length(msg))
 		. += "<span class='warning'>[msg.Join("")]</span>"
+
+	if(HAS_TRAIT(src, TRAIT_IN_HEAT) && (HAS_TRAIT(user, TRAIT_HEAT_DETECT) || src == user))
+		. += ""
+		. += "<span class='love'>[t_He] [t_is] currently in [gender == MALE ? "rut" : "heat"].</span>"
 
 	var/trait_exam = common_trait_examine()
 	if (!isnull(trait_exam))
@@ -443,7 +504,7 @@
 
 	SEND_SIGNAL(src, COMSIG_PARENT_EXAMINE, user, .) //This also handles flavor texts now
 
-	. += "*---------*</span>"
+	. += "</div>"
 
 /mob/living/proc/status_effect_examines(pronoun_replacement) //You can include this in any mob's examine() to show the examine texts of status effects!
 	var/list/dat = list()

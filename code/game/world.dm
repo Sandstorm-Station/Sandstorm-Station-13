@@ -2,51 +2,23 @@
 
 GLOBAL_VAR(restart_counter)
 
-GLOBAL_VAR_INIT(tgs_initialized, FALSE)
-
 GLOBAL_VAR(topic_status_lastcache)
 GLOBAL_LIST(topic_status_cache)
 
-/**
- * World creation
- *
- * Here is where a round itself is actually begun and setup.
- * * db connection setup
- * * config loaded from files
- * * loads admins
- * * Sets up the dynamic menu system
- * * and most importantly, calls initialize on the master subsystem, starting the game loop that causes the rest of the game to begin processing and setting up
- *
- *
- * Nothing happens until something moves. ~Albert Einstein
- *
- * For clarity, this proc gets triggered later in the initialization pipeline, it is not the first thing to happen, as it might seem.
- *
- * Initialization Pipeline:
- *		Global vars are new()'ed, (including config, glob, and the master controller will also new and preinit all subsystems when it gets new()ed)
- *		Compiled in maps are loaded (mainly centcom). all areas/turfs/objs/mobs(ATOMs) in these maps will be new()ed
- *		world/New() (You are here)
- *		Once world/New() returns, client's can connect.
- *		1 second sleep
- *		Master Controller initialization.
- *		Subsystem initialization.
- *			Non-compiled-in maps are maploaded, all atoms are new()ed
- *			All atoms in both compiled and uncompiled maps are initialized()
- */
+//This happens after the Master subsystem new(s) (it's a global datum)
+//So subsystems globals exist, but are not initialised
+
 /world/New()
-	if (fexists(EXTOOLS))
-		call(EXTOOLS, "maptick_initialize")()
-#ifdef EXTOOLS_LOGGING
-		call(EXTOOLS, "init_logging")()
-	else
-		CRASH("[EXTOOLS] does not exist!")
-#endif
-	enable_debugger()
-#ifdef REFERENCE_TRACKING
+	var/debug_server = world.GetConfig("env", "AUXTOOLS_DEBUG_DLL")
+	if (debug_server)
+		call(debug_server, "auxtools_init")()
+		enable_debugging()
+	AUXTOOLS_CHECK(AUXMOS)
+#ifdef EXTOOLS_REFERENCE_TRACKING
 	enable_reference_tracking()
 #endif
-
 	world.Profile(PROFILE_START)
+	log_world("World loaded at [TIME_STAMP("hh:mm:ss", FALSE)]!")
 
 	GLOB.config_error_log = GLOB.world_manifest_log = GLOB.world_pda_log = GLOB.world_job_debug_log = GLOB.sql_error_log = GLOB.world_href_log = GLOB.world_runtime_log = GLOB.world_attack_log = GLOB.world_game_log = "data/logs/config_error.[GUID()].log" //temporary file used to record errors with loading config, moved to log directory once logging is set bl
 
@@ -102,7 +74,6 @@ GLOBAL_LIST(topic_status_cache)
 /world/proc/InitTgs()
 	TgsNew(new /datum/tgs_event_handler/impl, TGS_SECURITY_TRUSTED)
 	GLOB.revdata.load_tgs_info()
-	GLOB.tgs_initialized = TRUE
 
 /world/proc/HandleTestRun()
 	//trigger things to run the whole process
@@ -140,6 +111,7 @@ GLOBAL_LIST(topic_status_cache)
 		GLOB.picture_log_directory = "data/picture_logs/[override_dir]"
 
 	GLOB.world_game_log = "[GLOB.log_directory]/game.log"
+	GLOB.world_suspicious_login_log = "[GLOB.log_directory]/suspicious_logins.log"
 	GLOB.world_virus_log = "[GLOB.log_directory]/virus.log"
 	GLOB.world_asset_log = "[GLOB.log_directory]/asset.log"
 	GLOB.world_attack_log = "[GLOB.log_directory]/attack.log"
@@ -181,7 +153,8 @@ GLOBAL_LIST(topic_status_cache)
 	start_log(GLOB.world_crafting_log)
 	start_log(GLOB.click_log)
 
-	GLOB.changelog_hash = md5('html/changelog.html') //for telling if the changelog has changed recently
+	var/latest_changelog = file("[global.config.directory]/../html/changelogs/archive/" + time2text(world.timeofday, "YYYY-MM") + ".yml")
+	GLOB.changelog_hash = fexists(latest_changelog) ? md5(latest_changelog) : 0 //for telling if the changelog has changed recently
 	if(fexists(GLOB.config_error_log))
 		fcopy(GLOB.config_error_log, "[GLOB.log_directory]/config_error.log")
 		fdel(GLOB.config_error_log)
@@ -298,10 +271,15 @@ GLOBAL_LIST(topic_status_cache)
 
 	log_world("World rebooted at [TIME_STAMP("hh:mm:ss", FALSE)]")
 	shutdown_logging() // Past this point, no logging procs can be used, at risk of data loss.
+	AUXTOOLS_SHUTDOWN(AUXMOS)
 	..()
 
 /world/Del()
 	shutdown_logging() // makes sure the thread is closed before end, else we terminate
+	AUXTOOLS_SHUTDOWN(AUXMOS)
+	var/debug_server = world.GetConfig("env", "AUXTOOLS_DEBUG_DLL")
+	if (debug_server)
+		call(debug_server, "auxtools_shutdown")()
 	..()
 
 /world/proc/update_status()
@@ -329,8 +307,8 @@ GLOBAL_LIST(topic_status_cache)
 
 	s += "<b>[station_name()]</b>";
 	s += " ("
-	s += "<a href=\"https://citadel-station.net/home\">" //Change this to wherever you want the hub to link to.
-	s += "Citadel"  //Replace this with something else. Or ever better, delete it and uncomment the game version.
+	s += "<a href=\"[CONFIG_GET(string/discordurl)]\">" //Go to the config file, no longer changed here!
+	s += "[(CONFIG_GET(string/server_display_name) ? CONFIG_GET(string/server_display_name) : "SPLURT")]"  //Default to us if unchanged ¯\_(ツ)_/¯
 	s += "</a>"
 	s += ")\]" //CIT CHANGE - encloses the server title in brackets to make the hub entry fancier
 	s += "<br>[CONFIG_GET(string/servertagline)]<br>" //CIT CHANGE - adds a tagline!
@@ -378,7 +356,7 @@ GLOBAL_LIST(topic_status_cache)
 	SSidlenpcpool.MaxZChanged()
 	world.refresh_atmos_grid()
 
-/// Extools atmos
+/// Auxtools atmos
 /world/proc/refresh_atmos_grid()
 
 /world/proc/change_fps(new_value = 20)

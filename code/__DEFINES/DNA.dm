@@ -53,6 +53,7 @@
 #define GELADIKINESIS		/datum/mutation/human/geladikinesis
 #define CRYOKINESIS /datum/mutation/human/cryokinesis
 #define SPIDER_WEB	/datum/mutation/human/webbing
+#define CLUWNEMUT   /datum/mutation/human/cluwne
 
 #define UI_CHANGED "ui changed"
 #define UE_CHANGED "ue changed"
@@ -178,6 +179,8 @@
 #define ORGAN_SLOT_VAGINA "vagina"
 #define ORGAN_SLOT_TESTICLES "testicles"
 #define ORGAN_SLOT_BREASTS "breasts"
+#define ORGAN_SLOT_BUTT "butt"
+#define ORGAN_SLOT_BELLY "belly"
 
 ////organ defines
 #define STANDARD_ORGAN_THRESHOLD 	100

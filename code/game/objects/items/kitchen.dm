@@ -100,6 +100,42 @@
 						"<span class='suicide'>[user] is slitting [user.p_their()] stomach open with the [src.name]! It looks like [user.p_theyre()] trying to commit seppuku.</span>"))
 	return (BRUTELOSS)
 
+/obj/item/kitchen/efink
+	name = "E-Fink"
+	icon_state = "efink"
+	desc = "The E-Fink is a product by Mending Solutions Inc. Unfortunately it can only mend sliced meat, fruits and dough back to their original state. Unbutchering is not possible."
+	flags_1 = CONDUCT_1
+	force = 10
+	w_class = WEIGHT_CLASS_SMALL
+	throwforce = 10
+	hitsound = 'sound/weapons/bladesliceb.ogg'
+	throw_speed = 3
+	throw_range = 6
+	custom_materials = list(/datum/material/iron=12000)
+	attack_verb = list("slashed", "stabbed", "sliced", "torn", "ripped", "diced", "cut")
+	sharpness = SHARP_POINTY
+	armor = list("melee" = 0, "bullet" = 0, "laser" = 0, "energy" = 0, "bomb" = 0, "bio" = 0, "rad" = 0, "fire" = 50, "acid" = 50)
+	var/bayonet = FALSE	//Can this be attached to a gun?
+	wound_bonus = -5
+	bare_wound_bonus = 10
+	custom_price = PRICE_NORMAL
+
+/obj/item/kitchen/efink/Initialize()
+	. = ..()
+	AddComponent(/datum/component/butchering, 80 - force, 100, force - 10) //bonus chance increases depending on force
+
+/obj/item/kitchen/efink/attack(mob/living/carbon/M, mob/living/carbon/user)
+	if(user.zone_selected == BODY_ZONE_PRECISE_EYES)
+		return eyestab(M,user)
+	else
+		return ..()
+
+/obj/item/kitchen/efink/suicide_act(mob/user)
+	user.visible_message(pick("<span class='suicide'>[user] is slitting [user.p_their()] wrists with the [src.name]! It looks like [user.p_theyre()] trying to commit suicide.</span>", \
+						"<span class='suicide'>[user] is slitting [user.p_their()] throat with the [src.name]! It looks like [user.p_theyre()] trying to commit suicide.</span>", \
+						"<span class='suicide'>[user] is slitting [user.p_their()] stomach open with the [src.name]! It looks like [user.p_theyre()] trying to commit seppuku.</span>"))
+	return (BRUTELOSS)
+
 /obj/item/kitchen/knife/ritual
 	name = "ritual knife"
 	desc = "The unearthly energies that once powered this blade are now dormant."
@@ -219,18 +255,31 @@
 	icon_state = "knife"
 	desc = "A cyborg-mounted plasteel knife. Extremely sharp and durable."
 
-/obj/item/kitchen/knife/carrotshiv
+/obj/item/kitchen/knife/shiv
+	name = "glass shiv"
+	icon = 'icons/obj/shards.dmi'
+	icon_state = "shiv"
+	item_state = "shiv"
+	lefthand_file = 'icons/mob/inhands/weapons/swords_lefthand.dmi'
+	righthand_file = 'icons/mob/inhands/weapons/swords_righthand.dmi'
+	desc = "A makeshift glass shiv."
+	force = 8
+	throwforce = 12//fuck git
+	attack_verb = list("shanked", "shivved")
+	armor = list("melee" = 0, "bullet" = 0, "laser" = 0, "energy" = 0, "bomb" = 0, "bio" = 0, "rad" = 0, "fire" = 0, "acid" = 0)
+	custom_materials = list(/datum/material/glass=400)
+
+/obj/item/kitchen/knife/shiv/carrot
 	name = "carrot shiv"
 	icon_state = "carrotshiv"
 	item_state = "carrotshiv"
-	lefthand_file = 'icons/mob/inhands/weapons/swords_lefthand.dmi'
-	righthand_file = 'icons/mob/inhands/weapons/swords_righthand.dmi'
+	icon = 'icons/obj/kitchen.dmi'
 	desc = "Unlike other carrots, you should probably keep this far away from your eyes."
-	force = 8
-	throwforce = 12//fuck git
 	custom_materials = null
-	attack_verb = list("shanked", "shivved")
-	armor = list("melee" = 0, "bullet" = 0, "laser" = 0, "energy" = 0, "bomb" = 0, "bio" = 0, "rad" = 0, "fire" = 0, "acid" = 0)
+
+/obj/item/kitchen/knife/shiv/carrot/suicide_act(mob/living/carbon/user)
+	user.visible_message("<span class='suicide'>[user] forcefully drives \the [src] into [user.p_their()] eye! It looks like [user.p_theyre()] trying to commit suicide!</span>")
+	return BRUTELOSS
 
 /obj/item/kitchen/rollingpin
 	name = "rolling pin"
@@ -248,6 +297,24 @@
 /obj/item/kitchen/rollingpin/suicide_act(mob/living/carbon/user)
 	user.visible_message("<span class='suicide'>[user] begins flattening [user.p_their()] head with \the [src]! It looks like [user.p_theyre()] trying to commit suicide!</span>")
 	return BRUTELOSS
+
+/obj/item/kitchen/unrollingpin
+	name = "unrolling pin"
+	desc = "For when you accidentally flattened something."
+	icon_state = "unrolling_pin"
+	force = 8
+	throwforce = 5
+	throw_speed = 3
+	throw_range = 7
+	w_class = WEIGHT_CLASS_NORMAL
+	custom_materials = list(/datum/material/wood = MINERAL_MATERIAL_AMOUNT * 1.5)
+	attack_verb = list("bashed", "battered", "bludgeoned", "thrashed", "whacked")
+	custom_price = PRICE_ALMOST_CHEAP
+
+/obj/item/kitchen/unrollingpin/suicide_act(mob/living/carbon/user)
+	user.visible_message("<span class='suicide'>[user] begins unflattening [user.p_their()] head with \the [src]! It looks like [user.p_theyre()] trying to commit suicide!</span>")
+	return BRUTELOSS
+
 /* Trays  moved to /obj/item/storage/bag */
 
 /obj/item/kitchen/knife/scimitar

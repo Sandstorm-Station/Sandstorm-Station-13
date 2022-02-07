@@ -34,6 +34,9 @@
 	var/last_move = 0
 	var/area			= null
 
+	/// Timers are now handled by clients, not by doing a mess on the item and multiple people overwriting a single timer on the object, have fun.
+	var/tip_timer = null
+
 	/// Last time we Click()ed. No clicking twice in one tick!
 	var/last_click = 0
 
@@ -60,7 +63,7 @@
 
 	preload_rsc = PRELOAD_RSC
 
-	var/obj/screen/click_catcher/void
+	var/atom/movable/screen/click_catcher/void
 
 	//These two vars are used to make a special mouse cursor, with a unique icon for clicking
 	var/mouse_up_icon = null
@@ -88,7 +91,7 @@
 
 	var/datum/player_details/player_details //these persist between logins/logouts during the same round.
 
-	var/list/char_render_holders			//Should only be a key-value list of north/south/east/west = obj/screen.
+	var/list/char_render_holders			//Should only be a key-value list of north/south/east/west = atom/movable/screen.
 
 	/// Last time they used fix macros
 	var/last_macro_fix = 0
@@ -168,7 +171,7 @@
 	 * Assoc list with all the active maps - when a screen obj is added to
 	 * a map, it's put in here as well.
 	 *
-	 * Format: list(<mapname> = list(/obj/screen))
+	 * Format: list(<mapname> = list(/atom/movable/screen))
 	 */
 	var/list/screen_maps = list()
 
@@ -183,3 +186,10 @@
 	//world.time of when the crew manifest can be accessed
 	var/crew_manifest_delay
 
+	/// Should go in persistent round player data sometime. This tracks what items have already warned the user on pickup that they can block/parry.
+	var/list/block_parry_hinted = list()
+	/// moused over objects, currently capped at 7. this is awful, and should be replaced with a component to track it using signals for parrying at some point.
+	var/list/moused_over_objects = list()
+
+	/// AFK tracking
+	var/last_activity = 0

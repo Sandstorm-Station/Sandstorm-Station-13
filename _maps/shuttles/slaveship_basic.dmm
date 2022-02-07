@@ -1,0 +1,806 @@
+//MAP CONVERTED BY dmm2tgm.py THIS HEADER COMMENT PREVENTS RECONVERSION, DO NOT REMOVE
+"af" = (
+/obj/machinery/computer/camera_advanced/shuttle_docker/slaver,
+/turf/open/floor/plasteel/dark,
+/area/shuttle/slaveship)
+"ak" = (
+/obj/machinery/computer/shuttle/slaver,
+/turf/open/floor/plasteel/dark,
+/area/shuttle/slaveship)
+"ax" = (
+/turf/closed/wall/r_wall/syndicate,
+/area/shuttle/slaveship)
+"ay" = (
+/obj/machinery/computer/camera_advanced/syndie,
+/turf/open/floor/plasteel/dark,
+/area/shuttle/slaveship)
+"aA" = (
+/turf/open/floor/plasteel/dark,
+/area/shuttle/slaveship)
+"bj" = (
+/obj/structure/chair/comfy/shuttle{
+	dir = 4
+	},
+/turf/open/floor/plasteel/dark,
+/area/shuttle/slaveship)
+"bP" = (
+/obj/machinery/computer/med_data/syndie,
+/turf/open/floor/plasteel/dark,
+/area/shuttle/slaveship)
+"bV" = (
+/obj/machinery/turretid{
+	pixel_x = -32;
+	req_access = null
+	},
+/turf/open/floor/plasteel/dark,
+/area/shuttle/slaveship)
+"cy" = (
+/obj/structure/shuttle/engine/propulsion/left,
+/turf/open/floor/plating,
+/area/shuttle/slaveship)
+"cO" = (
+/obj/machinery/button/door{
+	id = "slaveshipshutters";
+	name = "Cockpit Shutter Control";
+	pixel_y = -26
+	},
+/turf/open/floor/plasteel/dark,
+/area/shuttle/slaveship)
+"fI" = (
+/obj/structure/table/reinforced,
+/obj/item/radio,
+/obj/item/radio,
+/obj/item/radio,
+/turf/open/floor/plasteel/dark,
+/area/shuttle/slaveship)
+"gc" = (
+/obj/machinery/light{
+	dir = 1
+	},
+/turf/open/floor/mech_bay_recharge_floor,
+/area/shuttle/slaveship)
+"gZ" = (
+/obj/machinery/door/airlock/hatch{
+	req_access_txt = "152"
+	},
+/turf/open/floor/plasteel/dark,
+/area/shuttle/slaveship)
+"iP" = (
+/obj/item/storage/firstaid/regular{
+	pixel_x = 3;
+	pixel_y = 3
+	},
+/obj/structure/table/reinforced,
+/obj/item/storage/firstaid/o2,
+/obj/item/storage/firstaid/toxin{
+	pixel_x = -3;
+	pixel_y = -3
+	},
+/turf/open/floor/plasteel/dark,
+/area/shuttle/slaveship)
+"kG" = (
+/obj/item/reagent_containers/glass/bottle/epinephrine{
+	pixel_x = 6
+	},
+/obj/item/reagent_containers/glass/bottle/charcoal{
+	pixel_x = -3
+	},
+/obj/item/reagent_containers/glass/bottle/epinephrine{
+	pixel_x = -3;
+	pixel_y = 8
+	},
+/obj/item/reagent_containers/glass/bottle/charcoal{
+	pixel_x = 6;
+	pixel_y = 8
+	},
+/obj/item/reagent_containers/syringe/epinephrine{
+	pixel_x = 3;
+	pixel_y = -2
+	},
+/obj/item/reagent_containers/syringe/epinephrine{
+	pixel_x = 2;
+	pixel_y = 8
+	},
+/obj/structure/table/reinforced,
+/obj/effect/turf_decal/bot_white,
+/obj/item/stack/medical/mesh,
+/obj/item/stack/medical/gauze,
+/obj/item/stack/medical/suture,
+/turf/open/floor/plasteel/dark,
+/area/shuttle/slaveship)
+"le" = (
+/obj/structure/bed/roller,
+/obj/machinery/defibrillator_mount/loaded{
+	pixel_x = 28
+	},
+/turf/open/floor/plasteel/dark,
+/area/shuttle/slaveship)
+"ph" = (
+/obj/item/storage/firstaid/regular{
+	pixel_x = 3;
+	pixel_y = 3
+	},
+/obj/item/storage/firstaid/fire,
+/obj/structure/table/reinforced,
+/obj/item/storage/firstaid/brute{
+	pixel_x = -3;
+	pixel_y = -3
+	},
+/turf/open/floor/plasteel/dark,
+/area/shuttle/slaveship)
+"pj" = (
+/obj/machinery/door/poddoor/shutters{
+	id = "slaveshipshutters";
+	name = "blast shutters"
+	},
+/obj/effect/spawner/structure/window/plastitanium,
+/turf/open/floor/plating,
+/area/shuttle/slaveship)
+"pl" = (
+/obj/machinery/light,
+/turf/open/floor/plasteel/dark,
+/area/shuttle/slaveship)
+"po" = (
+/obj/structure/table/reinforced,
+/obj/item/clothing/mask/muzzle,
+/obj/item/clothing/glasses/sunglasses/blindfold{
+	pixel_y = 4
+	},
+/turf/open/floor/plasteel/dark,
+/area/shuttle/slaveship)
+"qc" = (
+/obj/machinery/sleeper{
+	dir = 8
+	},
+/turf/open/floor/plasteel/dark,
+/area/shuttle/slaveship)
+"qT" = (
+/obj/machinery/light{
+	dir = 8
+	},
+/turf/open/floor/plasteel/dark,
+/area/shuttle/slaveship)
+"rc" = (
+/obj/machinery/light{
+	dir = 4
+	},
+/turf/open/floor/plasteel/dark,
+/area/shuttle/slaveship)
+"sn" = (
+/obj/machinery/light{
+	dir = 1
+	},
+/turf/open/floor/plasteel/dark,
+/area/shuttle/slaveship)
+"sv" = (
+/obj/structure/chair/comfy/shuttle{
+	dir = 1
+	},
+/turf/open/floor/plasteel/dark,
+/area/shuttle/slaveship)
+"tc" = (
+/obj/machinery/porta_turret/slaver{
+	dir = 10
+	},
+/turf/closed/wall/r_wall/syndicate,
+/area/shuttle/slaveship)
+"um" = (
+/obj/machinery/portable_atmospherics/canister/oxygen,
+/turf/open/floor/plasteel/dark,
+/area/shuttle/slaveship)
+"uZ" = (
+/obj/machinery/light{
+	dir = 1
+	},
+/obj/structure/chair/comfy/shuttle,
+/turf/open/floor/plasteel/dark,
+/area/shuttle/slaveship)
+"vV" = (
+/obj/machinery/computer/crew/syndie,
+/turf/open/floor/plasteel/dark,
+/area/shuttle/slaveship)
+"wl" = (
+/obj/structure/table/reinforced,
+/obj/machinery/recharger,
+/turf/open/floor/plasteel/dark,
+/area/shuttle/slaveship)
+"xr" = (
+/obj/structure/tank_dispenser/oxygen,
+/turf/open/floor/mineral/plastitanium,
+/area/shuttle/slaveship)
+"yH" = (
+/obj/structure/table/reinforced,
+/obj/machinery/recharger,
+/obj/item/gun/energy/ionrifle,
+/turf/open/floor/plasteel/dark,
+/area/shuttle/slaveship)
+"zI" = (
+/obj/machinery/door/poddoor{
+	id = "slaveshipdoor"
+	},
+/obj/machinery/button/door{
+	id = "slaveshipdoor";
+	name = "external door control";
+	pixel_y = 26;
+	req_access_txt = "152"
+	},
+/obj/docking_port/mobile{
+	dheight = 1;
+	dir = 8;
+	dwidth = 10;
+	height = 15;
+	hidden = 1;
+	id = "slaver";
+	movement_force = list("KNOCKDOWN" = 0, "THROW" = 0);
+	name = "slaveship";
+	port_direction = 4;
+	width = 22
+	},
+/obj/structure/fans/tiny,
+/turf/open/floor/plating,
+/area/shuttle/slaveship)
+"zT" = (
+/obj/structure/shuttle/engine/propulsion,
+/turf/open/floor/plating,
+/area/shuttle/slaveship)
+"Aw" = (
+/obj/machinery/door/window/westright,
+/turf/open/floor/plasteel/dark,
+/area/shuttle/slaveship)
+"Bt" = (
+/obj/machinery/porta_turret/slaver{
+	dir = 9
+	},
+/turf/closed/wall/r_wall/syndicate,
+/area/shuttle/slaveship)
+"BQ" = (
+/obj/machinery/porta_turret/slaver{
+	dir = 5
+	},
+/turf/closed/wall/r_wall/syndicate,
+/area/shuttle/slaveship)
+"Cd" = (
+/obj/machinery/suit_storage_unit/mining/eva,
+/turf/open/floor/mineral/plastitanium,
+/area/shuttle/slaveship)
+"DB" = (
+/turf/open/floor/plating,
+/area/shuttle/slaveship/brig)
+"Ey" = (
+/turf/closed/wall/r_wall/syndicate/nodiagonal,
+/area/shuttle/slaveship)
+"FG" = (
+/obj/structure/rack,
+/turf/open/floor/plasteel/dark,
+/area/shuttle/slaveship)
+"Go" = (
+/obj/structure/table/reinforced,
+/turf/open/floor/plasteel/dark,
+/area/shuttle/slaveship)
+"GG" = (
+/obj/machinery/light,
+/obj/structure/chair/comfy/shuttle{
+	dir = 1
+	},
+/turf/open/floor/plasteel/dark,
+/area/shuttle/slaveship)
+"JG" = (
+/obj/effect/decal/cleanable/blood,
+/obj/machinery/light{
+	dir = 1
+	},
+/turf/open/floor/plating,
+/area/shuttle/slaveship/brig)
+"Lr" = (
+/obj/machinery/light,
+/obj/structure/table/reinforced,
+/turf/open/floor/plasteel/dark,
+/area/shuttle/slaveship)
+"MJ" = (
+/turf/template_noop,
+/area/template_noop)
+"Pl" = (
+/obj/structure/table/reinforced,
+/obj/item/storage/box/handcuffs{
+	pixel_x = 3;
+	pixel_y = 3
+	},
+/obj/item/storage/box/handcuffs,
+/turf/open/floor/plasteel/dark,
+/area/shuttle/slaveship)
+"Qd" = (
+/obj/machinery/computer/mech_bay_power_console,
+/turf/open/floor/plasteel/dark,
+/area/shuttle/slaveship)
+"Rv" = (
+/obj/structure/window/reinforced{
+	dir = 8
+	},
+/obj/machinery/recharge_station,
+/obj/effect/turf_decal/tile/yellow{
+	dir = 8
+	},
+/turf/open/floor/plasteel/dark,
+/area/shuttle/slaveship)
+"RD" = (
+/obj/machinery/mech_bay_recharge_port{
+	dir = 8
+	},
+/turf/open/floor/plasteel/dark,
+/area/shuttle/slaveship)
+"RL" = (
+/obj/structure/reagent_dispensers/watertank,
+/turf/open/floor/plasteel/dark,
+/area/shuttle/slaveship)
+"Sv" = (
+/obj/structure/reagent_dispensers/fueltank,
+/turf/open/floor/plasteel/dark,
+/area/shuttle/slaveship)
+"Sw" = (
+/obj/effect/decal/cleanable/oil,
+/turf/open/floor/plasteel/dark,
+/area/shuttle/slaveship)
+"Uo" = (
+/obj/structure/table/reinforced,
+/obj/item/clipboard,
+/obj/item/folder/red,
+/turf/open/floor/plasteel/dark,
+/area/shuttle/slaveship)
+"Uv" = (
+/obj/machinery/light,
+/turf/open/floor/plating,
+/area/shuttle/slaveship/brig)
+"UL" = (
+/obj/structure/bed/matress,
+/turf/open/floor/plating,
+/area/shuttle/slaveship/brig)
+"Vy" = (
+/obj/machinery/door/airlock/hatch{
+	req_access_txt = "152"
+	},
+/turf/open/floor/plating,
+/area/shuttle/slaveship)
+"VS" = (
+/obj/structure/table/reinforced,
+/obj/item/storage/toolbox/mechanical,
+/obj/item/storage/toolbox/electrical{
+	pixel_x = 4;
+	pixel_y = 4
+	},
+/obj/structure/window/reinforced{
+	dir = 8
+	},
+/obj/item/multitool,
+/turf/open/floor/plasteel/dark,
+/area/shuttle/slaveship)
+"VW" = (
+/obj/structure/table/reinforced,
+/obj/item/stock_parts/cell/high,
+/obj/item/stock_parts/cell/high,
+/obj/item/extinguisher/mini{
+	pixel_x = 4
+	},
+/obj/item/clothing/head/welding,
+/turf/open/floor/plasteel/dark,
+/area/shuttle/slaveship)
+"Wi" = (
+/obj/structure/table/reinforced,
+/obj/item/clothing/gloves/combat,
+/obj/machinery/light,
+/obj/item/flashlight/seclite,
+/obj/item/flashlight/seclite{
+	pixel_x = 2;
+	pixel_y = 4
+	},
+/turf/open/floor/plasteel/dark,
+/area/shuttle/slaveship)
+"Wk" = (
+/obj/effect/spawner/structure/window/plastitanium,
+/turf/open/floor/plating,
+/area/shuttle/slaveship)
+"WK" = (
+/obj/structure/chair/comfy/shuttle,
+/turf/open/floor/plasteel/dark,
+/area/shuttle/slaveship)
+"Xl" = (
+/turf/open/floor/mineral/plastitanium/red,
+/area/shuttle/slaveship)
+"XG" = (
+/obj/structure/bed/matress,
+/obj/effect/decal/cleanable/blood,
+/turf/open/floor/plating,
+/area/shuttle/slaveship/brig)
+"XN" = (
+/obj/structure/shuttle/engine/heater,
+/obj/effect/spawner/structure/window/plastitanium/pirate,
+/obj/structure/window/reinforced/tinted{
+	layer = 3.1
+	},
+/turf/open/floor/plating/airless,
+/area/shuttle/slaveship)
+"Yh" = (
+/obj/structure/table/reinforced,
+/obj/item/pickaxe,
+/obj/item/storage/bag/ore,
+/obj/item/pickaxe,
+/turf/open/floor/plasteel/dark,
+/area/shuttle/slaveship)
+"YG" = (
+/obj/machinery/porta_turret/slaver{
+	dir = 6
+	},
+/turf/closed/wall/r_wall/syndicate,
+/area/shuttle/slaveship)
+"ZR" = (
+/obj/structure/sign/poster/official/obey{
+	pixel_x = -32
+	},
+/turf/open/floor/plating,
+/area/shuttle/slaveship/brig)
+"ZZ" = (
+/obj/structure/window/reinforced{
+	dir = 8
+	},
+/turf/open/floor/plasteel/dark,
+/area/shuttle/slaveship)
+
+(1,1,1) = {"
+MJ
+MJ
+MJ
+MJ
+MJ
+MJ
+MJ
+MJ
+MJ
+MJ
+MJ
+MJ
+MJ
+MJ
+ax
+ax
+ax
+ax
+ax
+tc
+MJ
+MJ
+"}
+(2,1,1) = {"
+MJ
+MJ
+MJ
+MJ
+MJ
+MJ
+MJ
+MJ
+Bt
+ax
+ax
+ax
+ax
+ax
+ax
+UL
+DB
+ZR
+XG
+XN
+cy
+MJ
+"}
+(3,1,1) = {"
+MJ
+MJ
+MJ
+MJ
+MJ
+MJ
+MJ
+MJ
+ax
+Cd
+Cd
+xr
+Cd
+Cd
+ax
+JG
+DB
+DB
+Uv
+XN
+zT
+MJ
+"}
+(4,1,1) = {"
+Bt
+ax
+ax
+ax
+ax
+MJ
+MJ
+MJ
+ax
+sn
+aA
+aA
+aA
+pl
+ax
+DB
+DB
+DB
+UL
+XN
+cy
+MJ
+"}
+(5,1,1) = {"
+ax
+bP
+bV
+aA
+ax
+ax
+ax
+ax
+ax
+um
+aA
+aA
+aA
+FG
+ax
+Wk
+Vy
+Wk
+Wk
+Ey
+ax
+MJ
+"}
+(6,1,1) = {"
+pj
+vV
+sv
+pl
+ax
+iP
+kG
+ph
+ax
+ax
+gZ
+Wk
+gZ
+ax
+Ey
+aA
+aA
+aA
+aA
+Pl
+XN
+cy
+"}
+(7,1,1) = {"
+pj
+af
+aA
+aA
+ax
+aA
+aA
+aA
+aA
+qT
+aA
+aA
+aA
+qT
+gZ
+aA
+Xl
+Xl
+aA
+po
+XN
+cy
+"}
+(8,1,1) = {"
+pj
+ak
+sv
+aA
+gZ
+aA
+Xl
+Xl
+Xl
+Xl
+Xl
+Xl
+Xl
+aA
+Wk
+aA
+Xl
+Xl
+aA
+pl
+XN
+zT
+"}
+(9,1,1) = {"
+pj
+ay
+aA
+cO
+ax
+aA
+aA
+aA
+aA
+rc
+aA
+aA
+aA
+rc
+gZ
+aA
+Xl
+Xl
+aA
+yH
+XN
+cy
+"}
+(10,1,1) = {"
+pj
+Go
+bj
+Lr
+ax
+qc
+le
+qc
+ax
+ax
+gZ
+Wk
+gZ
+ax
+Ey
+aA
+aA
+aA
+aA
+wl
+XN
+zT
+"}
+(11,1,1) = {"
+ax
+Uo
+Go
+fI
+ax
+ax
+ax
+ax
+ax
+WK
+aA
+aA
+aA
+sv
+ax
+Rv
+Aw
+ZZ
+VS
+Ey
+ax
+MJ
+"}
+(12,1,1) = {"
+BQ
+ax
+ax
+ax
+ax
+MJ
+MJ
+MJ
+ax
+uZ
+aA
+aA
+aA
+GG
+ax
+Qd
+aA
+aA
+VW
+XN
+cy
+MJ
+"}
+(13,1,1) = {"
+MJ
+MJ
+MJ
+MJ
+MJ
+MJ
+MJ
+MJ
+ax
+WK
+Xl
+Xl
+Xl
+sv
+ax
+gc
+Sw
+aA
+Wi
+XN
+cy
+MJ
+"}
+(14,1,1) = {"
+MJ
+MJ
+MJ
+MJ
+MJ
+MJ
+MJ
+MJ
+BQ
+ax
+ax
+zI
+ax
+ax
+ax
+RD
+RL
+Sv
+Yh
+XN
+zT
+MJ
+"}
+(15,1,1) = {"
+MJ
+MJ
+MJ
+MJ
+MJ
+MJ
+MJ
+MJ
+MJ
+MJ
+MJ
+MJ
+MJ
+MJ
+ax
+ax
+ax
+ax
+ax
+YG
+MJ
+MJ
+"}

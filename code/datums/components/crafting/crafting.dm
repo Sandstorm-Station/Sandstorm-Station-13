@@ -4,7 +4,11 @@
 
 /datum/component/personal_crafting/proc/create_mob_button(mob/user, client/CL)
 	var/datum/hud/H = user.hud_used
-	var/obj/screen/craft/C = new()
+	for(var/huds in H.static_inventory)
+		if(istype(huds, /atom/movable/screen/craft))
+			return
+	//We don't want to be stacking multiple crafting huds on relogs
+	var/atom/movable/screen/craft/C = new()
 	C.icon = H.ui_style
 	H.static_inventory += C
 	CL.screen += C
@@ -20,7 +24,7 @@
 					CAT_AMMO,
 				),
 				CAT_ROBOT = CAT_NONE,
-				CAT_MISC = list(
+				CAT_MISCELLANEOUS = list(
 					CAT_MISCELLANEOUS,
 					CAT_TOOL,
 					CAT_FURNITURE,
@@ -319,7 +323,7 @@
 		Deletion.Cut(Deletion.len)
 		qdel(DL)
 
-/datum/component/personal_crafting/proc/component_ui_interact(obj/screen/craft/image, location, control, params, user)
+/datum/component/personal_crafting/proc/component_ui_interact(atom/movable/screen/craft/image, location, control, params, user)
 	if(user == parent)
 		ui_interact(user)
 
@@ -406,6 +410,16 @@
 				else
 					result.forceMove(user.drop_location())
 				to_chat(user, "<span class='notice'>[TR.name] constructed.</span>")
+
+				if (istype(result, /obj/item/grenade/iedcasing) || istype(result, /obj/item/reagent_containers/food/drinks/bottle/molotov))
+					var/client/client = user.client
+					if (CONFIG_GET(flag/use_exp_tracking) && client && client.get_exp_living(TRUE) < 480) // Player with less than 8 hours playtime is making an IED or molotov cocktail.
+						if(client.next_ied_grief_warning < world.time)
+							var/turf/T = get_turf(user)
+							client.next_ied_grief_warning = world.time + 15 MINUTES // Wait 15 minutes before alerting admins again
+							message_admins("<span class='adminhelp'>ANTI-GRIEF:</span> New player [ADMIN_LOOKUPFLW(user)] has crafted an IED or Molotov at [ADMIN_VERBOSEJMP(T)].")
+							client.crafted_ied = TRUE
+
 			else
 				to_chat(user, "<span class='warning'>Construction failed[result]</span>")
 			busy = FALSE

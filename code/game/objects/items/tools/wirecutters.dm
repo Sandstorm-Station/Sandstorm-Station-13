@@ -23,13 +23,13 @@
 	armor = list("melee" = 0, "bullet" = 0, "laser" = 0, "energy" = 0, "bomb" = 0, "bio" = 0, "rad" = 0, "fire" = 50, "acid" = 30)
 	var/random_color = TRUE
 	var/static/list/wirecutter_colors = list(
-		"blue" = "#1861d5",
-		"red" = "#951710",
-		"pink" = "#d5188d",
-		"brown" = "#a05212",
-		"green" = "#0e7f1b",
-		"cyan" = "#18a2d5",
-		"yellow" = "#d58c18"
+		"blue" = rgb(24, 97, 213),
+		"red" = rgb(255, 0, 0),
+		"pink" = rgb(213, 24, 141),
+		"brown" = rgb(160, 82, 18),
+		"green" = rgb(14, 127, 27),
+		"cyan" = rgb(24, 162, 213),
+		"yellow" = rgb(255, 165, 0)
 	)
 
 
@@ -48,6 +48,23 @@
 	var/mutable_appearance/base_overlay = mutable_appearance(icon, "cutters_cutty_thingy")
 	base_overlay.appearance_flags = RESET_COLOR
 	. += base_overlay
+
+/obj/item/wirecutters/worn_overlays(isinhands = FALSE, icon_file, used_state, style_flags = NONE)
+	. = ..()
+	if(isinhands && random_color)
+		var/mutable_appearance/M = mutable_appearance(icon_file, "cutters_cutty_thingy")
+		M.appearance_flags = RESET_COLOR
+		. += M
+
+/obj/item/wirecutters/get_belt_overlay()
+	if(random_color)
+		var/mutable_appearance/body = mutable_appearance('icons/obj/clothing/belt_overlays.dmi', "cutters")
+		var/mutable_appearance/head = mutable_appearance('icons/obj/clothing/belt_overlays.dmi', "cutters_cutty_thingy")
+		body.color = color
+		head.add_overlay(body)
+		return head
+	else
+		return mutable_appearance('icons/obj/clothing/belt_overlays.dmi', icon_state)
 
 /obj/item/wirecutters/attack(mob/living/carbon/C, mob/user)
 	if(istype(C) && C.handcuffed && istype(C.handcuffed, /obj/item/restraints/handcuffs/cable))
@@ -72,6 +89,14 @@
 
 /obj/item/wirecutters/brass/family
 	toolspeed = 1
+
+/obj/item/wirecutters/ashwalker
+	name = "bone wirecutters"
+	desc = "Rudimentary wirecutters made out of sharpened bones and sinew."
+	icon = 'icons/obj/mining.dmi'
+	icon_state = "cutters_bone"
+	toolspeed = 0.75
+	random_color = FALSE
 
 /obj/item/wirecutters/bronze
 	name = "bronze plated wirecutters"
@@ -101,8 +126,10 @@
 	desc = "A set of jaws of life, compressed through the magic of science. It's fitted with a cutting head."
 	icon_state = "jaws_cutter"
 	item_state = "jawsoflife"
-
+	lefthand_file = 'modular_sand/icons/mob/inhands/equipment/tools_lefthand.dmi'
+	righthand_file = 'modular_sand/icons/mob/inhands/equipment/tools_righthand.dmi'
 	custom_materials = list(/datum/material/iron=150,/datum/material/silver=50,/datum/material/titanium=25)
+
 	usesound = 'sound/items/jaws_cut.ogg'
 	toolspeed = 0.25
 	random_color = FALSE

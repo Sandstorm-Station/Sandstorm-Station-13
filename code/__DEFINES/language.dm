@@ -24,4 +24,8 @@
 #define LANGUAGE_STONER			"stoner"
 #define LANGUAGE_VASSAL			"vassal"
 #define LANGUAGE_VOICECHANGE	"voicechange"
-#define LANGUAGE_MULTILINGUAL	"multilingual"
+//#define LANGUAGE_MULTILINGUAL	"multilingual"
+
+//SKYRAT LANGUAGES
+#define LANGUAGE_ADDITIONAL		"additional"
+#define LANGUAGE_NINJA			"ninja"

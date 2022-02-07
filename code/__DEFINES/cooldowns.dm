@@ -31,6 +31,12 @@
 #define COOLDOWN_OBJECTIVES	"objectives"
 #define COOLDOWN_OBJ_ADMIN_PING	"obj_admin_ping"
 
+//car cooldowns
+#define COOLDOWN_CAR_HONK "car_honk"
+
+//clown car cooldowns
+#define COOLDOWN_CLOWNCAR_RANDOMNESS "clown_car_randomness"
+
 //TIMER COOLDOWN MACROS
 
 #define COMSIG_CD_STOP(cd_index) "cooldown_[cd_index]"

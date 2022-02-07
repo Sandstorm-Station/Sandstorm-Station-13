@@ -41,6 +41,13 @@
 /obj/item/crowbar/brass/family
 	toolspeed = 1
 
+/obj/item/crowbar/ashwalker
+	name = "bone crowbar"
+	desc = "A rudimentary crowbar made of bones."
+	icon = 'icons/obj/mining.dmi'
+	icon_state = "crowbar_bone"
+	toolspeed = 0.75
+
 /obj/item/crowbar/bronze
 	name = "bronze plated crowbar"
 	desc = "A bronze plated crowbar."
@@ -67,6 +74,12 @@
 	item_state = "crowbar"
 	toolspeed = 0.5
 
+/obj/item/crowbar/large/heavy
+	name = "heavy crowbar"
+	desc = "It's a big crowbar. It doesn't fit in your pockets, because it's big. It feels oddly heavy.."
+	force = 20
+	icon_state = "crowbar_powergame"
+
 /obj/item/crowbar/cyborg
 	name = "hydraulic crowbar"
 	desc = "A hydraulic prying tool, compact but powerful. Designed to replace crowbar in construction cyborgs."
@@ -81,8 +94,8 @@
 	desc = "A set of jaws of life, compressed through the magic of science. It's fitted with a prying head."
 	icon_state = "jaws_pry"
 	item_state = "jawsoflife"
-	lefthand_file = 'icons/mob/inhands/equipment/tools_lefthand.dmi'
-	righthand_file = 'icons/mob/inhands/equipment/tools_righthand.dmi'
+	lefthand_file = 'modular_sand/icons/mob/inhands/equipment/tools_lefthand.dmi'
+	righthand_file = 'modular_sand/icons/mob/inhands/equipment/tools_righthand.dmi'
 	custom_materials = list(/datum/material/iron=150,/datum/material/silver=50,/datum/material/titanium=25)
 
 	usesound = 'sound/items/jaws_pry.ogg'

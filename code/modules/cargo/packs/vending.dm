@@ -52,7 +52,7 @@
 	desc = "Packs of tools waiting to be used for repairing. Contains a tool and engineering vending machine refill. Requires CE access."
 	cost = 5500 //Powerfull
 	access = ACCESS_CE
-	contains = list(/obj/item/vending_refill/tool,
+	contains = list(/obj/item/vending_refill/youtool,
 					/obj/item/vending_refill/engivend)
 	crate_name = "engineering supply crate"
 	crate_type = /obj/structure/closet/crate/secure/engineering
@@ -76,10 +76,10 @@
 
 /datum/supply_pack/vending/kinkmate
 	name = "Kinkmate Supply and Construction Kit"
-	desc = "A fun way to spend the shift. Contains unmentionable desires."
-	cost = 2000
-	contraband = TRUE
-	contains = list(/obj/item/vending_refill/kink)
+	desc = "A fun way to spend the shift. Contains 2 packages of unmentionable desires."
+	cost = 1200
+	contains = list(/obj/item/vending_refill/kink,
+					/obj/item/vending_refill/kink)
 	crate_name = "Kinkmate construction kit"
 
 /datum/supply_pack/vending/barkbox

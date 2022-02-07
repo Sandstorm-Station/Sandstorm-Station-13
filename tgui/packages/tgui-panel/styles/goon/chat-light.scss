@@ -356,7 +356,7 @@ em {
   font-weight: bold;
 }
 
-.say, .emote, .infoplain {
+.say, .emote, .infoplain, .oocplain, .warningplain {
 }
 
 .deadsay {
@@ -428,6 +428,14 @@ em {
 
 .blueteamradio {
   color: #0000ff;
+}
+
+.greenteamradio {
+  color: #00ff00;
+}
+
+.yellowteamradio {
+  color: #d1ba22;
 }
 
 .yell {
@@ -582,6 +590,7 @@ h1.alert, h2.alert {
   color: #14a833;
 }
 
+/* hornichems */
 .userlove {
   color: #FF1493;
   font-style: italic;
@@ -593,6 +602,10 @@ h1.alert, h2.alert {
   color: #ff006a;
   font-style: italic;
   text-shadow: 0 0 6px #ff6d6d;
+}
+
+.lewd {
+  color: #800080;
 }
 
 .cult {
@@ -1030,6 +1043,18 @@ h1.alert, h2.alert {
 .icon {
   height: 1em;
   width: auto;
+}
+
+.bigicon {
+  font-size: 2.5em;
+}
+
+.infobox {
+  border: 1px ridge #383243;
+  background: rgba(40, 40, 60, 0.5);
+  margin: 2px 8px;
+  padding: 8px 12px;
+  max-width: 550px;
 }
 
 .memo {

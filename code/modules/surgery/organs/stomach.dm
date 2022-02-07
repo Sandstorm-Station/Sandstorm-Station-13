@@ -24,6 +24,7 @@
 		var/mob/living/carbon/human/H = owner
 		if(.)
 			H.dna.species.handle_digestion(H)
+			H.dna.species.handle_thirst(H)
 		handle_disgust(H)
 
 	if(!damage)
@@ -62,13 +63,13 @@
 			H.clear_alert("disgust")
 			SEND_SIGNAL(H, COMSIG_CLEAR_MOOD_EVENT, "disgust")
 		if(DISGUST_LEVEL_GROSS to DISGUST_LEVEL_VERYGROSS)
-			H.throw_alert("disgust", /obj/screen/alert/gross)
+			H.throw_alert("disgust", /atom/movable/screen/alert/gross)
 			SEND_SIGNAL(H, COMSIG_ADD_MOOD_EVENT, "disgust", /datum/mood_event/gross)
 		if(DISGUST_LEVEL_VERYGROSS to DISGUST_LEVEL_DISGUSTED)
-			H.throw_alert("disgust", /obj/screen/alert/verygross)
+			H.throw_alert("disgust", /atom/movable/screen/alert/verygross)
 			SEND_SIGNAL(H, COMSIG_ADD_MOOD_EVENT, "disgust", /datum/mood_event/verygross)
 		if(DISGUST_LEVEL_DISGUSTED to INFINITY)
-			H.throw_alert("disgust", /obj/screen/alert/disgusted)
+			H.throw_alert("disgust", /atom/movable/screen/alert/disgusted)
 			SEND_SIGNAL(H, COMSIG_ADD_MOOD_EVENT, "disgust", /datum/mood_event/disgusted)
 
 /obj/item/organ/stomach/Remove(special = FALSE)
@@ -136,11 +137,11 @@
 	if(!owner || . & EMP_PROTECT_SELF)
 		return
 	switch(severity)
-		if(1)
-			owner.nutrition = min(owner.nutrition - 50, 0)
+		if(1 to 50)
+			owner.nutrition = max(owner.nutrition - 50, 0)
 			to_chat(owner, "<span class='warning'>Alert: Detected severe battery discharge!</span>")
-		if(2)
-			owner.nutrition = min(owner.nutrition - 100, 0)
+		if(50 to INFINITY)
+			owner.nutrition = max(owner.nutrition - 100, 0)
 			to_chat(owner, "<span class='warning'>Alert: Minor battery discharge!</span>")
 
 /obj/item/organ/stomach/ethereal

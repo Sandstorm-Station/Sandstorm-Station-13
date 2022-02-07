@@ -367,7 +367,7 @@
 /obj/item/storage/fancy/cigarettes/derringer/AltClick(mob/living/carbon/user)
 	if(!istype(user) || !user.canUseTopic(src, BE_CLOSE, ismonkey(user)))
 		return
-	var/obj/item/W = (locate(/obj/item/ammo_casing/a357) in contents) || (locate(/obj/item/clothing/mask/cigarette) in contents) || locate(/obj/item/ammo_casing/g4570) //Easy access smokes and bullets
+	var/obj/item/W = (locate(/obj/item/ammo_casing/a357) in contents) || (locate(/obj/item/clothing/mask/cigarette) in contents) ||(locate(/obj/item/gun/ballistic/derringer) in contents) || (locate(/obj/item/ammo_casing/c38) in contents) || locate(/obj/item/ammo_casing/g4570) in contents//Easy access smokes and bullets
 	if(W && contents.len > 0)
 		SEND_SIGNAL(src, COMSIG_TRY_STORAGE_TAKE, W, user)
 		user.put_in_hands(W)
@@ -378,6 +378,7 @@
 
 /obj/item/storage/fancy/cigarettes/derringer/PopulateContents()
 	new spawn_type(src)
+	new /obj/item/ammo_casing/a357(src)
 	new /obj/item/ammo_casing/a357(src)
 	new /obj/item/ammo_casing/a357(src)
 	new /obj/item/ammo_casing/a357(src)
@@ -404,6 +405,7 @@
 	new /obj/item/ammo_casing/g4570(src)
 	new /obj/item/ammo_casing/g4570(src)
 	new /obj/item/ammo_casing/g4570(src)
+	new /obj/item/ammo_casing/g4570(src)
 	new /obj/item/clothing/mask/cigarette/xeno(src)
 
 //For Cargomen, looking for a good deal on arms, with no quarrels as to where they're from.
@@ -415,6 +417,7 @@
 
 /obj/item/storage/fancy/cigarettes/derringer/smuggled/PopulateContents()
 	new spawn_type(src)
+	new /obj/item/ammo_casing/c38/lethal(src)
 	new /obj/item/ammo_casing/c38/lethal(src)
 	new /obj/item/ammo_casing/c38/lethal(src)
 	new /obj/item/ammo_casing/c38/lethal(src)
@@ -543,21 +546,20 @@
 	icon_state = "gold ringbox"
 	icon_type = "gold ring"
 	w_class = WEIGHT_CLASS_TINY
-	spawn_type = /obj/item/clothing/gloves/ring
+	spawn_type = /obj/item/clothing/accessory/ring
 
 /obj/item/storage/fancy/ringbox/ComponentInitialize()
 	. = ..()
 	var/datum/component/storage/STR = GetComponent(/datum/component/storage)
 	STR.max_items = 1
-	STR.can_hold = typecacheof(list(/obj/item/clothing/gloves/ring))
+	STR.can_hold = typecacheof(list(/obj/item/clothing/accessory/ring))
 
 /obj/item/storage/fancy/ringbox/diamond
 	icon_state = "diamond ringbox"
 	icon_type = "diamond ring"
-	spawn_type = /obj/item/clothing/gloves/ring/diamond
+	spawn_type = /obj/item/clothing/accessory/ring/diamond
 
 /obj/item/storage/fancy/ringbox/silver
 	icon_state = "silver ringbox"
 	icon_type = "silver ring"
-	spawn_type = /obj/item/clothing/gloves/ring/silver
-
+	spawn_type = /obj/item/clothing/accessory/ring/silver

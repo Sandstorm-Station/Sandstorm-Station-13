@@ -287,6 +287,12 @@
 #define OFFSET_HAIR		"hair"
 #define OFFSET_FHAIR	"fhair"
 #define OFFSET_MUTPARTS	"mutantparts"
+//skyrat edit
+#define OFFSET_UNDERWEAR "underwear"
+#define	OFFSET_SOCKS "socks"
+#define OFFSET_SHIRT "shirt"
+#define OFFSET_WRISTS "wrist"
+//
 
 // MINOR TWEAKS/MISC
 #define AGE_MIN					18	// youngest a character can be // CITADEL EDIT - 17 --> 18
@@ -295,11 +301,12 @@
 #define APPRENTICE_AGE_MIN		29	// youngest an apprentice can be
 #define SHOES_SLOWDOWN			 0	// How much shoes slow you down by default. Negative values speed you up
 #define SHOES_SPEED_SLIGHT	SHOES_SLOWDOWN - 1 // slightest speed boost to movement
-#define POCKET_STRIP_DELAY		40	// time taken (in deciseconds) to search somebody's pockets
+#define POCKET_STRIP_DELAY (4 SECONDS) //time taken to search somebody's pockets
 #define DOOR_CRUSH_DAMAGE		15	// the amount of damage that airlocks deal when they crush you
 
-#define	HUNGER_FACTOR			 0.1	// factor at which mob nutrition decreases
-#define	ETHEREAL_CHARGE_FACTOR	 0.08	// factor at which ethereal's charge decreases
+#define	HUNGER_FACTOR			 0.06	// factor at which mob nutrition decreases
+#define THIRST_FACTOR			 0.06	// factor at which mob thirst increases
+#define	ETHEREAL_CHARGE_FACTOR	 0.06	// factor at which ethereal's charge decreases
 #define	REAGENTS_METABOLISM		 0.4	// How many units of reagent are consumed per tick, by default.
 #define REAGENTS_EFFECT_MULTIPLIER (REAGENTS_METABOLISM / 0.4)	// By defining the effect multiplier this way, it'll exactly adjust all effects according to how they originally were with the 0.4 metabolism
 
@@ -343,3 +350,17 @@
 
 ///Define for spawning megafauna instead of a mob for cave gen
 #define SPAWN_MEGAFAUNA "bluh bluh huge boss"
+
+// / Breathing types. Lungs can access either by these or by a string, which will be considered a gas ID.
+#define BREATH_OXY		/datum/breathing_class/oxygen
+#define BREATH_PLASMA	/datum/breathing_class/plasma
+
+//Gremlins
+#define NPC_TAMPER_ACT_FORGET 1 //Don't try to tamper with this again
+#define NPC_TAMPER_ACT_NOMSG  2 //Don't produce a visible message
+
+//Game mode list indexes
+#define CURRENT_LIVING_PLAYERS	"living_players_list"
+#define CURRENT_LIVING_ANTAGS	"living_antags_list"
+#define CURRENT_DEAD_PLAYERS	"dead_players_list"
+#define CURRENT_OBSERVERS		"current_observers_list"

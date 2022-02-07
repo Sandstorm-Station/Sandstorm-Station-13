@@ -57,7 +57,7 @@
 		if(!M.client || isnewplayer(M))
 			continue
 		var/T = get_turf(src)
-		if(M.stat == DEAD && M.client && (M.client.prefs.chat_toggles & CHAT_GHOSTSIGHT) && !(M in viewers(T, null)))
+		if(M.stat == DEAD && M.client && (M.client.prefs.chat_toggles & CHAT_GHOSTSIGHT) && !(M in viewers(T, null)) && (user.client)) //SKYRAT CHANGE - only user controlled mobs show their emotes to all-seeing ghosts, to reduce chat spam
 			M.show_message(message)
 
 	user.visible_message(message = message, self_message = message, vision_distance = 1, omni = TRUE)
@@ -144,33 +144,14 @@
 	message = "<span class='emote'><b>[user]</b> <i>[user.say_emphasis(message)]</i></span>"
 
 	var/list/show_to = list()
-	var/list/processing = list()
-	var/safety = 25
+	var/list/processed = list()
 	for(var/obj/structure/table/T in range(user, 1))
-		processing |= T
-	for(var/i = 1; i <= processing.len; ++i)
-		var/obj/structure/table/T = processing[i]
-		if(safety-- <= 0)
-			to_chat(user, "Table scan aborted early, some people might have not received the message (max 25)")
-			break
-		if(get_dist(T, user) > 7)
-			continue		// nah
-		processing |= T
-		for(var/mob/living/M in range(T, 1))		// no ghosts/cameramobs
-			show_to |= M
-		var/obj/structure/table/other
-		other = locate() in get_step(T, NORTH)
-		if(other)
-			processing |= other
-		other = locate() in get_step(T, SOUTH)
-		if(other)
-			processing |= other
-		other = locate() in get_step(T, WEST)
-		if(other)
-			processing |= other
-		other = locate() in get_step(T, EAST)
-		if(other)
-			processing |= other
+		if(processed[T])
+			continue
+		for(var/obj/structure/table/T2 in T.connected_floodfill(25))
+			processed[T2] = TRUE
+			for(var/mob/living/L in range(T2, 1))
+				show_to |= L
 
 	for(var/i in show_to)
 		var/mob/M = i

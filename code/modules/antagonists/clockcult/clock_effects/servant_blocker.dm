@@ -29,7 +29,7 @@
 			return
 	return TRUE
 
-/obj/effect/clockwork/servant_blocker/BlockSuperconductivity()
+/obj/effect/clockwork/servant_blocker/BlockThermalConductivity()
 	return TRUE
 
 /obj/effect/clockwork/servant_blocker/singularity_act()
@@ -38,7 +38,7 @@
 /obj/effect/clockwork/servant_blocker/singularity_pull()
 	return
 
-/obj/effect/clockwork/servant_blocker/ex_act(severity, target)
+/obj/effect/clockwork/servant_blocker/ex_act(severity, target, origin)
 	return
 
 /obj/effect/clockwork/servant_blocker/safe_throw_at()

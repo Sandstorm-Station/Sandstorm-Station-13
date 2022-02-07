@@ -1,15 +1,23 @@
+<!-- FILLING OUT THIS FORM PROPERLY AND ADDING A PROPER CHANGELOG SECTION IS **NECESSARY** FOR PULL REQUESTS. IF THE INFORMATION IS NOT PROVIDED YOUR PR WILL NOT BE CONSIDERED FOR MERGING -->
+
 <!-- Write **BELOW** The Headers and **ABOVE** The comments else it may not be viewable. -->
 <!-- You can view Contributing.MD for a detailed description of the pull request process. -->
 
-## About The Pull Request
+# About The Pull Request
 
 <!-- Describe The Pull Request. Please be sure every change is documented or this can delay review and even discourage maintainers from merging your PR! -->
+<!-- If your PR is related to one of our discord suggestions, please add the number of this suggestion to this section. Or if you may, the message link of said suggestion-->
 
 ## Why It's Good For The Game
 
 <!-- Please add a short description of why you think these changes would benefit the game. If you can't justify it in words, it might not be worth adding. -->
 
+## A Port?
+
+<!-- Just say if it is a port of something and link the original pr/commit/whatever. -->
+
 ## Changelog
+
 :cl:
 add: Added new things
 add: Added more things

@@ -14,12 +14,12 @@
 #define CHAT_MESSAGE_WIDTH			96
 /// Max length of chat message in characters
 #define CHAT_MESSAGE_MAX_LENGTH		110
+/// The dimensions of the chat message icons
+#define CHAT_MESSAGE_ICON_SIZE 9
 /// Maximum precision of float before rounding errors occur (in this context)
 #define CHAT_LAYER_Z_STEP			0.0001
 /// The number of z-layer 'slices' usable by the chat message layering
 #define CHAT_LAYER_MAX_Z			(CHAT_LAYER_MAX - CHAT_LAYER) / CHAT_LAYER_Z_STEP
-/// Macro from Lummox used to get height from a MeasureText proc
-#define WXH_TO_HEIGHT(x)			text2num(copytext(x, findtextEx(x, "x") + 1))
 
 /**
   * # Chat Message Overlay
@@ -53,10 +53,11 @@
   * * text - The text content of the overlay
   * * target - The target atom to display the overlay at
   * * owner - The mob that owns this overlay, only this mob will be able to view it
+  * * language - The language this message was spoken in
   * * extra_classes - Extra classes to apply to the span that holds the text
   * * lifespan - The lifespan of the message in deciseconds
   */
-/datum/chatmessage/New(text, atom/target, mob/owner, list/extra_classes = list(), lifespan = CHAT_MESSAGE_LIFESPAN)
+/datum/chatmessage/New(text, atom/target, mob/owner, datum/language/language, list/extra_classes = list(), lifespan = CHAT_MESSAGE_LIFESPAN)
 	. = ..()
 	if (!istype(target))
 		CRASH("Invalid target given for chatmessage")
@@ -64,7 +65,7 @@
 		stack_trace("/datum/chatmessage created with [isnull(owner) ? "null" : "invalid"] mob owner")
 		qdel(src)
 		return
-	INVOKE_ASYNC(src, .proc/generate_image, text, target, owner, extra_classes, lifespan)
+	INVOKE_ASYNC(src, .proc/generate_image, text, target, owner, language, extra_classes, lifespan)
 
 /datum/chatmessage/Destroy()
 	if (owned_by)
@@ -90,12 +91,18 @@
   * * text - The text content of the overlay
   * * target - The target atom to display the overlay at
   * * owner - The mob that owns this overlay, only this mob will be able to view it
+  * * language - The language this message was spoken in
   * * extra_classes - Extra classes to apply to the span that holds the text
   * * lifespan - The lifespan of the message in deciseconds
   */
-/datum/chatmessage/proc/generate_image(text, atom/target, mob/owner, list/extra_classes, lifespan)
+/datum/chatmessage/proc/generate_image(text, atom/target, mob/owner, datum/language/language, list/extra_classes, lifespan)
+	/// Cached icons to show what language the user is speaking
+	var/static/list/language_icons
+
 	// Register client who owns this message
 	owned_by = owner.client
+	if(!owned_by)
+		return
 	RegisterSignal(owned_by, COMSIG_PARENT_QDELETING, .proc/on_parent_qdel)
 
 	// Clip message
@@ -103,11 +110,22 @@
 	if (length_char(text) > maxlen)
 		text = copytext_char(text, 1, maxlen + 1) + "..." // BYOND index moment
 
+	//SKYRAT CHANGES BEGIND
 	// Calculate target color if not already present
 	if (!target.chat_color || target.chat_color_name != target.name)
-		target.chat_color = colorize_string(target.name)
-		target.chat_color_darkened = colorize_string(target.name, 0.85, 0.85)
+		var/mob/M = target
+		if(GLOB.runechat_color_names[target.name])
+			target.chat_color = GLOB.runechat_color_names[target.name]
+		else if (ismob(target) && M.client?.prefs?.enable_personal_chat_color && M.name == M.real_name && M.name == M.client.prefs.real_name)
+			var/per_color = M.client.prefs.personal_chat_color
+			GLOB.runechat_color_names[target.name] = per_color
+			target.chat_color = per_color
+		else
+			target.chat_color = colorize_string(target.name)
+
+		target.chat_color_darkened = color_shift(target.chat_color, 0.85, 0.85)
 		target.chat_color_name = target.name
+	//SKYRAT CHANGES END
 
 	// Get rid of any URL schemes that might cause BYOND to automatically wrap something in an anchor tag
 	var/static/regex/url_scheme = new(@"[A-Za-z][A-Za-z0-9+-\.]*:\/\/", "g")
@@ -123,14 +141,32 @@
 	if (!ismob(target))
 		extra_classes |= "small"
 
+	var/list/prefixes
+
 	// Append radio icon if from a virtual speaker
 	if (extra_classes.Find("virtual-speaker"))
-		var/image/r_icon = image('icons/UI_Icons/chat/chat_icons.dmi', icon_state = "radio")
-		text =  "\icon[r_icon]&nbsp;" + text
+		var/image/r_icon = image('icons/ui_icons/chat/chat_icons.dmi', icon_state = "radio")
+		LAZYADD(prefixes, "\icon[r_icon]")
+	else if (extra_classes.Find("emote"))
+		var/image/r_icon = image('icons/ui_icons/chat/chat_icons.dmi', icon_state = "emote")
+		LAZYADD(prefixes, "\icon[r_icon]")
+
+	// Append language icon if the language uses one
+	var/datum/language/language_instance = GLOB.language_datum_instances[language]
+	if (language_instance?.display_icon(owner))
+		var/icon/language_icon = LAZYACCESS(language_icons, language)
+		if (isnull(language_icon))
+			language_icon = icon(language_instance.icon, icon_state = language_instance.icon_state)
+			language_icon.Scale(CHAT_MESSAGE_ICON_SIZE, CHAT_MESSAGE_ICON_SIZE)
+			LAZYSET(language_icons, language, language_icon)
+		LAZYADD(prefixes, "\icon[language_icon]")
+
+	text = "[prefixes?.Join("&nbsp;")][text]"
 
 	// We dim italicized text to make it more distinguishable from regular text
 	var/tgt_color = extra_classes.Find("italics") ? target.chat_color_darkened : target.chat_color
 
+	// Approximate text height
 	var/complete_text = "<span class='center maptext [extra_classes.Join(" ")]' style='color: [tgt_color]'>[owner.say_emphasis(text)]</span>"
 	var/mheight = WXH_TO_HEIGHT(owned_by.MeasureText(complete_text, null, CHAT_MESSAGE_WIDTH))
 	approx_lines = max(1, mheight / CHAT_MESSAGE_APPROX_LHEIGHT)
@@ -165,7 +201,7 @@
 	message.maptext_width = CHAT_MESSAGE_WIDTH
 	message.maptext_height = mheight
 	message.maptext_x = (CHAT_MESSAGE_WIDTH - owner.bound_width) * -0.5
-	message.maptext = complete_text
+	message.maptext = MAPTEXT(complete_text)
 
 	// View the message
 	LAZYADDASSOC(owned_by.seen_messages, message_loc, src)
@@ -175,6 +211,11 @@
 	// Register with the runechat SS to handle EOL and destruction
 	scheduled_destruction = world.time + (lifespan - CHAT_MESSAGE_EOL_FADE)
 	enter_subsystem()
+
+	var/mob/living/silicon/robot/R = target
+	if(iscyborg(R))
+		if((R.module.dogborg == TRUE || R.dogborg == TRUE) && isturf(R.loc)) //I hate whoever that thought that putting two types of dogborg that don't even sync up properly was good
+			message.pixel_x = 16
 
 /**
   * Applies final animations to overlay CHAT_MESSAGE_EOL_FADE deciseconds prior to message deletion
@@ -210,10 +251,15 @@
 	// Ignore virtual speaker (most often radio messages) from ourself
 	if (originalSpeaker != src && speaker == src)
 		return
-
-	// Display visual above source
-	new /datum/chatmessage(lang_treat(speaker, message_language, raw_message, spans, null, TRUE), speaker, src, spans)
-
+	//Skyrat changes
+	if(!message_language && (lang_treat(speaker, message_language, raw_message, spans, null, TRUE) == "makes a strange sound.") && !("emote" in spans))
+		var/nospeak = "makes a strange sound."
+		new /datum/chatmessage(nospeak, speaker, src, message_language, list("emote", "italics"))
+	else if(message_language)
+		new /datum/chatmessage(lang_treat(speaker, message_language, raw_message, spans, null, TRUE), speaker, src, message_language, spans)
+	else
+		new /datum/chatmessage(raw_message, speaker, src, message_language, spans)
+	//End of skyrat changes
 
 // Tweak these defines to change the available color ranges
 #define CM_COLOR_SAT_MIN	0.6
@@ -253,16 +299,32 @@
 	x = (x + m) * 255
 	c = (c + m) * 255
 	m *= 255
+	//Skyrat changes begin
+	var/final_val
 	switch(h_int)
 		if(0)
-			return "#[num2hex(c, 2)][num2hex(x, 2)][num2hex(m, 2)]"
+			final_val = "#[num2hex(c, 2)][num2hex(x, 2)][num2hex(m, 2)]"
 		if(1)
-			return "#[num2hex(x, 2)][num2hex(c, 2)][num2hex(m, 2)]"
+			final_val = "#[num2hex(x, 2)][num2hex(c, 2)][num2hex(m, 2)]"
 		if(2)
-			return "#[num2hex(m, 2)][num2hex(c, 2)][num2hex(x, 2)]"
+			final_val = "#[num2hex(m, 2)][num2hex(c, 2)][num2hex(x, 2)]"
 		if(3)
-			return "#[num2hex(m, 2)][num2hex(x, 2)][num2hex(c, 2)]"
+			final_val = "#[num2hex(m, 2)][num2hex(x, 2)][num2hex(c, 2)]"
 		if(4)
-			return "#[num2hex(x, 2)][num2hex(m, 2)][num2hex(c, 2)]"
+			final_val = "#[num2hex(x, 2)][num2hex(m, 2)][num2hex(c, 2)]"
 		if(5)
-			return "#[num2hex(c, 2)][num2hex(m, 2)][num2hex(x, 2)]"
+			final_val = "#[num2hex(c, 2)][num2hex(m, 2)][num2hex(x, 2)]"
+
+	GLOB.runechat_color_names[name] = final_val
+	return final_val
+	//End of skyrat changes
+
+//Skyrat changes begin
+/datum/chatmessage/proc/color_shift(color, sat_shift = 1, lum_shift = 1)
+	var/list/HSL = rgb2hsl(hex2num(copytext(color, 2, 4)), hex2num(copytext(color, 4, 6)), hex2num(copytext(color, 6, 8)))
+	HSL[2] = HSL[2] * sat_shift
+	HSL[3] = HSL[3] * lum_shift
+	var/list/RGB = hsl2rgb(arglist(HSL))
+	return "#[num2hex(RGB[1],2)][num2hex(RGB[2],2)][num2hex(RGB[3],2)]"
+
+//End of skyrat changes

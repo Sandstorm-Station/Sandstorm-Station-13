@@ -1,0 +1,9 @@
+## Max micro pick up ratio ##
+## The maximum size ratio between someone who's being picked up and whoever's picking them up ##
+## Eg. If set to 0.5, whoever's being picked up shall be 50% or less the size of their partner or they won't be picked up ##
+## Defaults to 0.5 if unset, 0 to disable picking up others as a whole ##
+#MAX_PICK_RATIO 0.5
+
+## Multiplier for the points earned on a sex table ##
+## Setting it to 0 obviously just makes it generate no points at all. ##
+#SEX_TABLE_MULTIPLIER 50

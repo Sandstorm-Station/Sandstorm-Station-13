@@ -12,6 +12,8 @@
 #define ROBOTICIST		(1<<8)
 #define AI_JF			(1<<9)
 #define CYBORG			(1<<10)
+#define BRIGDOC			(1<<11)
+#define BLUESHIELD		(1<<12)
 
 
 #define MEDSCI			(1<<1)
@@ -42,6 +44,7 @@
 #define CLOWN			(1<<11)
 #define MIME			(1<<12)
 #define ASSISTANT		(1<<13)
+#define PRISONER		(1<<14)
 
 #define JOB_AVAILABLE 0
 #define JOB_UNAVAILABLE_GENERIC 1
@@ -89,3 +92,6 @@
 #define JOB_DISPLAY_ORDER_WARDEN 31
 #define JOB_DISPLAY_ORDER_DETECTIVE 32
 #define JOB_DISPLAY_ORDER_SECURITY_OFFICER 33
+#define JOB_DISPLAY_ORDER_BRIG_PHYSICIAN 34
+#define JOB_DISPLAY_ORDER_BLUESHIELD 35
+#define JOB_DISPLAY_ORDER_PRISONER 36

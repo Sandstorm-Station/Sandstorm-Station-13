@@ -1,6 +1,6 @@
 /datum/species/lizard
 	// Reptilian humanoids with scaled skin and tails.
-	name = "Anthromorphic Lizard"
+	name = "Anthropomorphic Lizard"
 	id = SPECIES_LIZARD
 	say_mod = "hisses"
 	default_color = "00FF00"
@@ -11,7 +11,7 @@
 	coldmod = 1.5
 	heatmod = 0.67
 	mutant_bodyparts = list("mcolor" = "0F0", "mcolor2" = "0F0", "mcolor3" = "0F0", "tail_lizard" = "Smooth", "mam_snouts" = "Round",
-							 "horns" = "None", "frills" = "None", "spines" = "None", "body_markings" = "None",
+							 "horns" = "None", "frills" = "None", "spines" = "None", "mam_body_markings" = list(),
 							  "legs" = "Digitigrade", "taur" = "None", "deco_wings" = "None")
 	attack_verb = "slash"
 	attack_sound = 'sound/weapons/slash.ogg'
@@ -24,11 +24,13 @@
 	disliked_food = GRAIN | DAIRY
 	liked_food = GROSS | MEAT
 	inert_mutation = FIREBREATH
+	languagewhitelist = list("Draconic") //Skyrat change - species language whitelist
 	species_language_holder = /datum/language_holder/lizard
 
 	tail_type = "tail_lizard"
 	wagging_type = "waggingtail_lizard"
 	species_category = SPECIES_CATEGORY_LIZARD
+	wings_icon = "Dragon"
 
 	ass_image = 'icons/ass/asslizard.png'
 
@@ -58,10 +60,13 @@
 	brutemod = 0.9
 	species_language_holder = /datum/language_holder/lizard/ash
 
+
+#define HEAT_CYCLE_LENGTH 32
+#define HEAT_CYCLE_OFFSET 11
+
 /datum/species/lizard/ashwalker/on_species_gain(mob/living/carbon/human/C, datum/species/old_species)
 	if((C.dna.features["spines"] != "None" ) && (C.dna.features["tail_lizard"] == "None")) //tbh, it's kinda ugly for them not to have a tail yet have floating spines
 		C.dna.features["tail_lizard"] = "Smooth"
-		C.update_body()
 	if(C.dna.features["legs"] != "Digitigrade")
 		C.dna.features["legs"] = "Digitigrade"
 		for(var/obj/item/bodypart/leggie in C.bodyparts)
@@ -69,5 +74,31 @@
 				leggie.update_limb(FALSE, C)
 	if(C.dna.features["mam_snouts"] != "Sharp")
 		C.dna.features["mam_snouts"] = "Sharp"
-		C.update_body()
+	C.dna.features["mcolor2"] = C.dna.features["mcolor"] //for no funne rainbows
+	C.dna.features["mcolor3"] = C.dna.features["mcolor"]
+	ADD_TRAIT(C, TRAIT_HEAT_DETECT, SPECIES_TRAIT)
+	var/temp = text2num(GLOB.round_id)
+	var/tempish = ((temp + (HEAT_CYCLE_OFFSET + 2)) % HEAT_CYCLE_LENGTH)
+	if(tempish <= 2 && tempish >= 0)
+		to_chat(C, "<span class='userlove'>It's this time again.. Your loins lay restless as they await a potential mate.</span>")
+		ADD_TRAIT(C, TRAIT_IN_HEAT, SPECIES_TRAIT)
+
+	if(C.gender == MALE)
+		C.dna.features["has_cock"] = TRUE
+		C.dna.features["has_balls"] = TRUE
+		C.dna.features["cock_color"] = "A50021"
+		C.dna.features["cock_girth"] = 0.78 + (0.02 * rand(-4, prob(10) ? 5 : 1)) //chance for a bigger pleasure
+		C.dna.features["cock_shape"] = "Tapered"
+		C.dna.features["cock_length"] = 0.5 + rand(4, prob(10) ? 9 : 6) + rand()
+		C.dna.features["balls_shape"] = "Hidden"
+	else
+		C.dna.features["has_vag"] = TRUE
+		C.dna.features["has_womb"] = TRUE
+		C.dna.features["vag_color"] = C.dna.features["mcolor"]
+		C.dna.features["vag_shape"] = "Cloaca"
+	C.give_genitals(1)
+	C.update_body()
 	return ..()
+
+#undef HEAT_CYCLE_LENGTH
+#undef HEAT_CYCLE_OFFSET

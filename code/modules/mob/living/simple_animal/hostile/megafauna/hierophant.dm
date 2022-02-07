@@ -44,6 +44,7 @@ Difficulty: Normal
 	attack_sound = 'sound/weapons/sonic_jackhammer.ogg'
 	icon_state = "hierophant"
 	icon_living = "hierophant"
+	health_doll_icon = "hierophant"
 	friendly_verb_continuous = "stares down"
 	friendly_verb_simple = "stare down"
 	icon = 'icons/mob/lavaland/hierophant_new.dmi'
@@ -363,7 +364,7 @@ Difficulty: Normal
 	var/turf/T = get_turf(victim)
 	if(!istype(victim) || victim.stat == DEAD || !T || arena_cooldown > world.time)
 		return
-	if((istype(get_area(T), /area/ruin/unpowered/hierophant) || istype(get_area(src), /area/ruin/unpowered/hierophant)) && victim != src)
+	if((istype(get_area(T), /area/ruin/lavaland/unpowered/hierophant) || istype(get_area(src), /area/ruin/lavaland/unpowered/hierophant)) && victim != src)
 		return
 	arena_cooldown = world.time + initial(arena_cooldown)
 	for(var/d in GLOB.cardinals)
@@ -673,7 +674,7 @@ Difficulty: Normal
 	layer = LOW_OBJ_LAYER
 	anchored = TRUE
 
-/obj/effect/hierophant/ex_act()
+/obj/effect/hierophant/ex_act(severity, target, origin)
 	return
 
 /obj/effect/hierophant/attackby(obj/item/I, mob/user, params)

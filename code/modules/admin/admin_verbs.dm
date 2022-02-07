@@ -19,8 +19,8 @@ GLOBAL_PROTECT(admin_verbs_default)
 	/client/proc/cmd_admin_pm_panel,		/*admin-pm list*/
 	/client/proc/stop_sounds,
 	/client/proc/mark_datum_mapview,
-	/client/proc/debugstatpanel
-	// /client/proc/fix_air				/*resets air in designated radius to its default atmos composition*/
+	/client/proc/debugstatpanel,
+	/client/proc/fix_air				/*resets air in designated radius to its default atmos composition*/
 	)
 GLOBAL_LIST_INIT(admin_verbs_admin, world.AVerbsAdmin())
 GLOBAL_PROTECT(admin_verbs_admin)
@@ -60,6 +60,7 @@ GLOBAL_PROTECT(admin_verbs_admin)
 	/client/proc/jumptokey,				/*allows us to jump to the location of a mob with a certain ckey*/
 	/client/proc/jumptomob,				/*allows us to jump to a specific mob*/
 	/client/proc/jumptoturf,			/*allows us to jump to a specific turf*/
+	/client/proc/admin_end_shift,		/*allows us to end the shift properly, also logs it*/
 	/client/proc/admin_call_shuttle,	/*allows us to call the emergency shuttle*/
 	/client/proc/admin_cancel_shuttle,	/*allows us to cancel the emergency shuttle, sending it back to centcom*/
 	// /client/proc/admin_disable_shuttle, /*allows us to disable the emergency shuttle admin-wise so that it cannot be called*/
@@ -71,7 +72,7 @@ GLOBAL_PROTECT(admin_verbs_admin)
 	/client/proc/cmd_admin_man_up_global, //CIT CHANGE - ditto
 	/client/proc/cmd_admin_create_centcom_report,
 	/client/proc/cmd_change_command_name,
-	/client/proc/cmd_admin_check_player_exp, /* shows players by playtime */
+	/client/proc/cmd_player_playtimes, /* shows players by playtime */
 	/client/proc/toggle_combo_hud, // toggle display of the combination pizza antag and taco sci/med/eng hud
 	/client/proc/toggle_AI_interact, /*toggle admin ability to interact with machines as an AI*/
 	/datum/admins/proc/open_shuttlepanel, /* Opens shuttle manipulator UI */
@@ -86,6 +87,8 @@ GLOBAL_PROTECT(admin_verbs_admin)
 	/client/proc/admin_cmd_remove_ghost_respawn_timer,	//CIT
 	/client/proc/addbunkerbypass,		//CIT
 	/client/proc/revokebunkerbypass,	//CIT
+	/client/proc/adddiscordbypass,		//SPLURT
+	/client/proc/revokediscordbypass,	//SPLURT
 	/datum/admins/proc/open_borgopanel
 	)
 GLOBAL_LIST_INIT(admin_verbs_ban, list(/client/proc/unban_panel, /client/proc/DB_ban_panel, /client/proc/stickybanpanel))
@@ -96,6 +99,7 @@ GLOBAL_LIST_INIT(admin_verbs_fun, list(
 	/client/proc/cmd_select_equipment,
 	/client/proc/cmd_admin_gib_self,
 	/client/proc/drop_bomb,
+	/client/proc/drop_wave_explosion,
 	/client/proc/set_dynex_scale,
 	/client/proc/drop_dynex_bomb,
 	/client/proc/cinematic,
@@ -115,6 +119,7 @@ GLOBAL_LIST_INIT(admin_verbs_fun, list(
 	/client/proc/show_tip,
 	/client/proc/smite,
 	/client/proc/admin_away,
+	// /client/proc/spawn_floor_cluwne,
 	/client/proc/cmd_admin_toggle_fov,		//CIT CHANGE - FOV
 	/client/proc/roll_dices					//CIT CHANGE - Adds dice verb
 	))
@@ -133,13 +138,13 @@ GLOBAL_PROTECT(admin_verbs_server)
 	/client/proc/everyone_random,
 	/datum/admins/proc/toggleAI,
 	/datum/admins/proc/toggleMulticam,		//CIT
-	/datum/admins/proc/toggledynamicvote,	//CIT
 	/client/proc/cmd_admin_delete,		/*delete an instance/object/mob/etc*/
 	/client/proc/cmd_debug_del_all,
 	/client/proc/toggle_random_events,
 	/client/proc/forcerandomrotate,
 	/client/proc/adminchangemap,
 	/client/proc/panicbunker,
+	/client/proc/discordbunker, // SPLURT
 	// /client/proc/toggle_interviews,
 	/client/proc/toggle_hub,
 	/client/proc/toggle_cdn
@@ -188,16 +193,20 @@ GLOBAL_PROTECT(admin_verbs_debug)
 	// /client/proc/validate_cards,
 	// /client/proc/test_cardpack_distribution,
 	// /client/proc/print_cards,
-	// #ifdef TESTING
+	#ifdef TESTING
 	// /client/proc/check_missing_sprites,
-	// #endif
+	// /client/proc/export_dynamic_json,
+	/client/proc/run_dynamic_simulations,
+	#endif
 	/datum/admins/proc/create_or_modify_area,
-#ifdef REFERENCE_TRACKING
+	/datum/admins/proc/fixcorruption,
+#ifdef EXTOOLS_REFERENCE_TRACKING
 	/datum/admins/proc/view_refs,
 	/datum/admins/proc/view_del_failures,
 #endif
 	// /client/proc/check_timer_sources,
 	/client/proc/toggle_cdn,
+	/client/proc/discordnulls,
 	/client/proc/generate_wikichem_list //DO NOT PRESS UNLESS YOU WANT SUPERLAG
 	)
 GLOBAL_LIST_INIT(admin_verbs_possess, list(/proc/possess, /proc/release))
@@ -224,6 +233,7 @@ GLOBAL_LIST_INIT(admin_verbs_hideable, list(
 	/client/proc/cmd_admin_headset_message,
 	/client/proc/cmd_admin_check_contents,
 	/datum/admins/proc/access_news_network,
+	/client/proc/admin_end_shift,
 	/client/proc/admin_call_shuttle,
 	/client/proc/admin_cancel_shuttle,
 	/client/proc/cmd_admin_direct_narrate,
@@ -266,8 +276,11 @@ GLOBAL_LIST_INIT(admin_verbs_hideable, list(
 	/proc/release,
 	/client/proc/reload_admins,
 	/client/proc/panicbunker,
+	/client/proc/discordbunker, // SPLURT
 	/client/proc/addbunkerbypass,		//CIT
 	/client/proc/revokebunkerbypass,	//CIT
+	/client/proc/adddiscordbypass,		//SPLURT
+	/client/proc/revokediscordbypass,	//SPLURT
 	// /client/proc/toggle_interviews,
 	/client/proc/admin_change_sec_level,
 	/client/proc/toggle_nuke,
@@ -549,6 +562,51 @@ GLOBAL_PROTECT(admin_verbs_hideable)
 	message_admins("[ADMIN_LOOKUPFLW(usr)] creating an admin explosion at [epicenter.loc].")
 	log_admin("[key_name(usr)] created an admin explosion at [epicenter.loc].")
 	SSblackbox.record_feedback("tally", "admin_verb", 1, "Drop Bomb") //If you are copy-pasting this, ensure the 2nd parameter is unique to the new proc!
+
+/client/proc/drop_wave_explosion()
+	set category = "Special Verbs"
+	set name = "Drop Wave Explosion"
+	set desc = "Cause an explosive shockwave at your location."
+
+	var/power = input(src, "Wave initial power", "Power", 50) as num|null
+	if(isnull(power))
+		return
+	var/falloff = input(src, "Wave innate falloff factor", "Falloff", EXPLOSION_DEFAULT_FALLOFF_MULTIPLY) as num|null
+	if(isnull(falloff))
+		return
+	falloff = max(0, falloff)
+	if(falloff > 1)
+		to_chat(src, "<span class='danger'>Aborting: Falloff cannot be higher tahn 1.")
+		return
+	var/constant = input(src, "Wave innate falloff constant", "Constant", EXPLOSION_DEFAULT_FALLOFF_SUBTRACT) as num|null
+	if(isnull(constant))
+		return
+	if(constant < 0)
+		to_chat(src, "<span class='danger'>Aborting: Falloff constant cannot be less than 0.")
+		return
+	var/fire = input(src, "Probability per tile of fire?", "Fire Probability", 0) as num|null
+	if(isnull(fire))
+		return
+	var/speed = input(src, "Speed in ticks to wait between cycles? 0 for fast as possible", "Wait", 0) as num|null
+	if(isnull(speed))
+		return
+	var/block_resistance = input(src, "DANGEROUS: Block resistance? USE 1 IF YOU DO NOT KNOW WHAT YOU ARE DOING.", "Block Negation", 1) as num|null
+	if(isnull(block_resistance))
+		return
+	block_resistance = max(0, block_resistance)
+	if(power > 500)
+		var/sure = alert(src, "Explosion power is extremely high. Are you absolutely sure?", "Uhh...", "No", "Yes")
+		if(sure != "Yes")
+			return
+	// point of no return
+	var/turf/target = get_turf(mob)
+	if(!target)
+		to_chat(src, "<span class='danger'>Cannot proceed. Not on turf.</span>")
+		return
+	message_admins("[ADMIN_LOOKUPFLW(usr)] creating an admin explosion at [target.loc].")
+	log_admin("[key_name(usr)] created an admin explosion at [target.loc].")
+	SSblackbox.record_feedback("tally", "admin_verb", 1, "Drop Wave Explosion") //If you are copy-pasting this, ensure the 2nd parameter is unique to the new proc!
+	wave_explosion(target, power, falloff, constant, null, fire, speed = speed, block_resistance = block_resistance)
 
 /client/proc/drop_dynex_bomb()
 	set category = "Admin.Fun"

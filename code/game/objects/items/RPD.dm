@@ -191,7 +191,7 @@ GLOBAL_LIST_INIT(fluid_duct_recipes, list(
 
 /datum/pipe_info/plumbing/multilayer //exists as identifier so we can see the difference between multi_layer and just ducts properly later on
 
-
+// SKYRAT CHANGE: Made BSRPD into a subtype of RPD, additionally made it work at range.
 /obj/item/pipe_dispenser
 	name = "Rapid Piping Device (RPD)"
 	desc = "A device used to rapidly pipe things."
@@ -230,6 +230,8 @@ GLOBAL_LIST_INIT(fluid_duct_recipes, list(
 	var/mode = BUILD_MODE | DESTROY_MODE | WRENCH_MODE
 	var/static/datum/pipe_info/first_plumbing
 	var/locked = FALSE //wheter we can change categories. Useful for the plumber
+
+	var/has_bluespace_pipe = FALSE // Skyrat
 
 /obj/item/pipe_dispenser/New()
 	. = ..()
@@ -288,7 +290,10 @@ GLOBAL_LIST_INIT(fluid_duct_recipes, list(
 	var/list/recipes
 	switch(category)
 		if(ATMOS_CATEGORY)
-			recipes = GLOB.atmos_pipe_recipes
+			if(has_bluespace_pipe) // stupid skyrat edit
+				recipes = GLOB.bsatmos_pipe_recipes
+			else
+				recipes = GLOB.atmos_pipe_recipes
 		if(DISPOSALS_CATEGORY)
 			recipes = GLOB.disposal_pipe_recipes
 		if(TRANSIT_CATEGORY)
@@ -336,7 +341,10 @@ GLOBAL_LIST_INIT(fluid_duct_recipes, list(
 		if("pipe_type")
 			var/static/list/recipes
 			if(!recipes)
-				recipes = GLOB.disposal_pipe_recipes + GLOB.atmos_pipe_recipes + GLOB.transit_tube_recipes
+				if(has_bluespace_pipe) // skyrat hack
+					recipes = GLOB.disposal_pipe_recipes + GLOB.bsatmos_pipe_recipes + GLOB.transit_tube_recipes
+				else
+					recipes = GLOB.disposal_pipe_recipes + GLOB.atmos_pipe_recipes + GLOB.transit_tube_recipes
 			recipe = recipes[params["category"]][text2num(params["pipe_type"])]
 			p_dir = NORTH
 		if("setdir")

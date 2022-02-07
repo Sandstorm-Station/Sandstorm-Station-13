@@ -383,7 +383,7 @@
 	. = ..()
 
 /obj/item/stack/medical/mesh/on_attack_hand(mob/user, act_intent = user.a_intent, unarmed_attack_flags)
-	if(!is_open & user.get_inactive_held_item() == src)
+	if(!is_open && (user.get_inactive_held_item() == src))
 		to_chat(user, "<span class='warning'>You need to open [src] first.</span>")
 		return
 	. = ..()
@@ -488,6 +488,9 @@
 	icon_state = "nanogel"
 	var/being_applied = FALSE	//No doafter stacking.
 
+/obj/item/stack/medical/nanogel/one
+	amount = 1
+	
 /obj/item/stack/medical/nanogel/try_heal(mob/living/M, mob/user, silent = FALSE)
 	if(being_applied)
 		to_chat(user, "<span class='warning'>You are already applying [src]!</span>")

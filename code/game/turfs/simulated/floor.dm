@@ -4,6 +4,7 @@
 	//- floor_tile is now a path, and not a tile obj
 	name = "floor"
 	icon = 'icons/turf/floors.dmi'
+	base_icon_state = "floor"				//sandstorm change - tile floofing
 	baseturfs = /turf/open/floor/plating
 	dirt_buildup_allowed = TRUE
 
@@ -12,18 +13,32 @@
 	clawfootstep = FOOTSTEP_HARD_CLAW
 	heavyfootstep = FOOTSTEP_GENERIC_HEAVY
 
+	/// Minimum explosion power to break tile
+	var/explosion_power_break_tile = EXPLOSION_POWER_FLOOR_TILE_BREAK
+	/// Minimum explosion power to break turf
+	var/explosion_power_break_turf = EXPLOSION_POWER_FLOOR_TURF_BREAK
+	//// Minimum explosion power to scrape away the floor
+	var/explosion_power_turf_scrape = EXPLOSION_POWER_FLOOR_TURF_SCRAPE
+	//// Shielded turfs are completely protected from anything under this
+	var/explosion_power_protect_shielded = EXPLOSION_POWER_FLOOR_SHIELDED_IMMUNITY
+	/// Starting from here, there's a chance for this to break
+	var/explosion_power_minimum_chance_break = EXPLOSION_POWER_FLOOR_MINIMUM_TURF_BREAK
+	/// Starting from here, +20% chance to break turf.
+	var/explosion_power_break_turf_bonus = EXPLOSION_POWER_FLOOR_TURF_BREAK_BONUS
+
 	var/icon_regular_floor = "floor" //used to remember what icon the tile should have by default
 	var/icon_plating = "plating"
-	thermal_conductivity = 0.004
+	thermal_conductivity = 0.04
 	heat_capacity = 10000
 	intact = 1
+	tiled_dirt = TRUE							//included - tile floofing
+
 	var/broken = 0
 	var/burnt = 0
 	var/floor_tile = null //tile that this floor drops
 	var/list/broken_states
 	var/list/burnt_states
 
-	tiled_dirt = TRUE
 
 /turf/open/floor/Initialize(mapload)
 	if (!broken_states)
@@ -36,30 +51,10 @@
 	if(!burnt && burnt_states && (icon_state in burnt_states))
 		burnt = TRUE
 	. = ..()
-	//This is so damaged or burnt tiles or platings don't get remembered as the default tile
-	var/static/list/icons_to_ignore_at_floor_init = list("foam_plating", "plating","light_on","light_on_flicker1","light_on_flicker2",
-					"light_on_clicker3","light_on_clicker4","light_on_clicker5",
-					"light_on_broken","light_off","wall_thermite","grass", "sand",
-					"asteroid","asteroid_dug",
-					"asteroid0","asteroid1","asteroid2","asteroid3","asteroid4",
-					"asteroid5","asteroid6","asteroid7","asteroid8","asteroid9","asteroid10","asteroid11","asteroid12",
-					"basalt","basalt_dug",
-					"basalt0","basalt1","basalt2","basalt3","basalt4",
-					"basalt5","basalt6","basalt7","basalt8","basalt9","basalt10","basalt11","basalt12",
-					"oldburning","light-on-r","light-on-y","light-on-g","light-on-b", "wood", "carpetsymbol", "carpetstar",
-					"carpetcorner", "carpetside", "carpet", "arcade", "ironsand1", "ironsand2", "ironsand3", "ironsand4", "ironsand5",
-					"ironsand6", "ironsand7", "ironsand8", "ironsand9", "ironsand10", "ironsand11",
-					"ironsand12", "ironsand13", "ironsand14", "ironsand15",
-					"snow", "snow0", "snow1", "snow2", "snow3", "snow4", "snow5", "snow6", "snow7", "snow8", "snow9", "snow10", "snow11", "snow12", "snow-ice", "snow_dug",
-					"unsmooth", "smooth", "1-i", "2-i", "3-i", "4-i", "1-n", "2-n", "3-s", "4-s", "1-w", "2-e", "3-w", "4-e", "1-nw", "2-ne", "3-sw", "4-se", "1-f", "2-f", "3-f", "4-f")
-	if(broken || burnt || (icon_state in icons_to_ignore_at_floor_init)) //so damaged/burned tiles or plating icons aren't saved as the default
-		icon_regular_floor = "floor"
-	else
-		icon_regular_floor = icon_state
 	if(mapload && prob(66)) // 2/3 instead of 1/3 (default)
 		MakeDirty()
 
-/turf/open/floor/ex_act(severity, target)
+/turf/open/floor/ex_act(severity, target, origin)
 	var/shielded = is_shielded()
 	..()
 	if(severity != 1 && shielded && target != src)
@@ -97,6 +92,48 @@
 			if (prob(50))
 				src.break_tile()
 				src.hotspot_expose(1000,CELL_VOLUME)
+
+/turf/open/floor/wave_ex_act(power, datum/wave_explosion/explosion, dir)
+	var/shielded = is_shielded()
+	. = ..()
+	if(shielded)
+		if(power < explosion_power_protect_shielded)
+			return
+		else
+			power -= explosion_power_protect_shielded
+	hotspot_expose(1000, CELL_VOLUME)
+	if(power < explosion_power_break_tile)
+		return
+	if(power < explosion_power_minimum_chance_break)
+		if(prob(33 + ((explosion_power_break_turf - power) / (explosion_power_break_turf - explosion_power_break_tile))))
+			break_tile()
+		return
+	if((power < explosion_power_turf_scrape) && ((power >= explosion_power_break_turf) || prob((1 - ((explosion_power_break_turf - power) / (explosion_power_break_turf - explosion_power_minimum_chance_break))) * 100 + ((power > explosion_power_break_turf_bonus)? 20 : 0))))
+		switch(pick(1, 2;75, 3))
+			if(1)
+				if(!length(baseturfs) || !ispath(baseturfs[baseturfs.len-1], /turf/open/floor))
+					ScrapeAway(flags = CHANGETURF_INHERIT_AIR)
+					ReplaceWithLattice()
+				else
+					ScrapeAway(2, flags = CHANGETURF_INHERIT_AIR)
+				if(prob(33))
+					new /obj/item/stack/sheet/metal(src)
+				return
+			if(2)
+				ScrapeAway(2, flags = CHANGETURF_INHERIT_AIR)
+				return
+			if(3)
+				if(prob(80))
+					ScrapeAway(flags = CHANGETURF_INHERIT_AIR)
+					return
+				else
+					break_tile()
+				hotspot_expose(1000,CELL_VOLUME)
+				if(prob(33))
+					new /obj/item/stack/sheet/metal(src)
+	if(power >= explosion_power_turf_scrape)
+		ScrapeAway(2, flags = CHANGETURF_INHERIT_AIR)
+		return
 
 /turf/open/floor/is_shielded()
 	for(var/obj/structure/A in contents)
@@ -148,10 +185,8 @@
 		return ..() //fucking turfs switch the fucking src of the fucking running procs
 	if(!ispath(path, /turf/open/floor))
 		return ..()
-	var/old_icon = icon_regular_floor
 	var/old_dir = dir
 	var/turf/open/floor/W = ..()
-	W.icon_regular_floor = old_icon
 	W.setDir(old_dir)
 	W.update_icon()
 	return W

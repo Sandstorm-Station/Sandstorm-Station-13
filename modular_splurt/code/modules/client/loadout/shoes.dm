@@ -1,0 +1,31 @@
+//Hyper stuff
+/datum/gear/shoes/footwraps
+	name = "Cloth Footwraps"
+	path= /obj/item/clothing/shoes/footwraps
+
+/datum/gear/shoes/workboots/toeless
+	name = "Toeless Work Boots"
+	path = /obj/item/clothing/shoes/workboots/toeless
+
+/datum/gear/shoes/jackboots/toeless
+	name = "Toeless Jackboots"
+	path = /obj/item/clothing/shoes/jackboots/toeless
+
+/datum/gear/shoes/jackboots/tall
+	name = "Tall Jackboots"
+	path = /obj/item/clothing/shoes/jackboots/tall
+/datum/gear/shoes/highheels
+	name = "High Heels"
+	path = /obj/item/clothing/shoes/highheels
+
+/datum/gear/shoes/latex
+	name = "Latex Socks"
+	path = /obj/item/clothing/shoes/latex_socks
+
+/datum/gear/shoes/latex/heels
+	name = "Latex Heels"
+	path = /obj/item/clothing/shoes/latexheels
+
+/datum/gear/shoes/latex/dominant
+	name = "Dominant Heels"
+	path = /obj/item/clothing/shoes/dominaheels

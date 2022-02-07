@@ -669,7 +669,7 @@
 	id = "clockwork golem servant"
 	species_traits = list(NOBLOOD,NO_UNDERWEAR,NOEYES,NOSTOMACH,NOLIVER,NOGENITALS,NOAROUSAL,NOTRANSSTING,ROBOTIC_LIMBS,HAS_BONE)
 	inherent_biotypes = MOB_ROBOTIC|MOB_HUMANOID
-	inherent_traits = list(TRAIT_RESISTHEAT,TRAIT_NOBREATH,TRAIT_RESISTCOLD,TRAIT_NOHUNGER,TRAIT_RESISTHIGHPRESSURE,TRAIT_RESISTLOWPRESSURE,TRAIT_NOFIRE,TRAIT_RADIMMUNE,TRAIT_PIERCEIMMUNE,TRAIT_NODISMEMBER)
+	inherent_traits = list(TRAIT_RESISTHEAT,TRAIT_NOBREATH,TRAIT_RESISTCOLD,TRAIT_NOHUNGER,TRAIT_NOTHIRST,TRAIT_RESISTHIGHPRESSURE,TRAIT_RESISTLOWPRESSURE,TRAIT_NOFIRE,TRAIT_RADIMMUNE,TRAIT_PIERCEIMMUNE,TRAIT_NODISMEMBER)
 	inherent_biotypes = MOB_ROBOTIC|MOB_HUMANOID
 	armor = 15 //Balance reasons make this armor weak
 	no_equip = list()
@@ -807,11 +807,11 @@
 
 /datum/species/golem/plastic/on_species_gain(mob/living/carbon/C, datum/species/old_species)
 	. = ..()
-	C.AddElement(/datum/element/ventcrawling, given_tier = VENTCRAWLER_ALWAYS)
+	C.AddElement(/datum/element/ventcrawling, given_tier = VENTCRAWLER_NUDE)
 
 /datum/species/golem/plastic/on_species_loss(mob/living/carbon/C)
 	. = ..()
-	C.RemoveElement(/datum/element/ventcrawling, given_tier = VENTCRAWLER_ALWAYS)
+	C.RemoveElement(/datum/element/ventcrawling, given_tier = VENTCRAWLER_NUDE)
 
 /datum/species/golem/bronze
 	name = "Bronze Golem"

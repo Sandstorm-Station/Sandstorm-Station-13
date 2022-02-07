@@ -127,7 +127,7 @@
 		to_chat(user, "<span class='danger'>Throwing [pushed_mob] onto the table might hurt them!</span>")
 		return
 	var/added_passtable = FALSE
-	if(!pushed_mob.pass_flags & PASSTABLE)
+	if(!(pushed_mob.pass_flags & PASSTABLE))
 		added_passtable = TRUE
 		pushed_mob.pass_flags |= PASSTABLE
 	pushed_mob.Move(src.loc)
@@ -173,13 +173,13 @@
 
 /obj/structure/table/attackby(obj/item/I, mob/user, params)
 	if(!(flags_1 & NODECONSTRUCT_1))
-		if(I.tool_behaviour == TOOL_SCREWDRIVER && deconstruction_ready)
+		if(I.tool_behaviour == TOOL_SCREWDRIVER && deconstruction_ready && !(user.a_intent == INTENT_HELP))
 			to_chat(user, "<span class='notice'>You start disassembling [src]...</span>")
 			if(I.use_tool(src, user, 20, volume=50))
 				deconstruct(TRUE)
 			return
 
-		if(I.tool_behaviour == TOOL_WRENCH && deconstruction_ready)
+		if(I.tool_behaviour == TOOL_WRENCH && deconstruction_ready && !(user.a_intent == INTENT_HELP))
 			to_chat(user, "<span class='notice'>You start deconstructing [src]...</span>")
 			if(I.use_tool(src, user, 40, volume=50))
 				playsound(src.loc, 'sound/items/deconstruct.ogg', 50, 1)
@@ -242,6 +242,32 @@
 		else
 			new framestack(T, framestackamount)
 	qdel(src)
+
+
+/**
+ * Gets all connected tables
+ * Cardinals only
+ */
+/obj/structure/table/proc/connected_floodfill(max = 25)
+	. = list()
+	connected_floodfill_internal(., list())
+
+/obj/structure/table/proc/connected_floodfill_internal(list/out = list(), list/processed = list())
+	if(processed[src])
+		return
+	processed[src] = TRUE
+	out += src
+	var/obj/structure/table/other
+#define RUN_TABLE(dir) \
+	other = locate(/obj/structure/table) in get_step(src, dir); \
+	if(other) { \
+		other.connected_floodfill_internal(out, processed); \
+	}
+	RUN_TABLE(NORTH)
+	RUN_TABLE(SOUTH)
+	RUN_TABLE(EAST)
+	RUN_TABLE(WEST)
+#undef RUN_TABLE
 
 /obj/structure/table/greyscale
 	icon = 'icons/obj/smooth_structures/table_greyscale.dmi'
@@ -541,7 +567,7 @@
 	return "<span class='notice'>The top cover is firmly <b>welded</b> on.</span>"
 
 /obj/structure/table/reinforced/attackby(obj/item/W, mob/user, params)
-	if(W.tool_behaviour == TOOL_WELDER)
+	if(W.tool_behaviour == TOOL_WELDER && !(user.a_intent == INTENT_HELP))
 		if(!W.tool_start_check(user, amount=0))
 			return
 

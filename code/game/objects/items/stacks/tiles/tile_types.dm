@@ -9,9 +9,11 @@
 	throw_speed = 3
 	throw_range = 7
 	max_amount = 60
+	novariants = TRUE									//sandstorm change - tile floofing
+	/// What type of turf does this tile produce.		//included - tile floofing
 	var/turf_type = null
+	/// Determines certain welder interactions.			//included - tile floofing
 	var/mineralType = null
-	novariants = TRUE
 	var/human_maxHealth = 100
 
 /obj/item/stack/tile/Initialize(mapload, amount)
@@ -555,3 +557,10 @@
 	color = "#92661A"
 	turf_type = /turf/open/floor/bronze
 	custom_materials = list(/datum/material/bronze = 250)
+
+/obj/item/stack/tile/catwalk
+	name = "catwalk tile"
+	singular_name = "catwalk floor tile"
+	desc = "Flooring that shows its contents underneath. Engineers love it!"
+	icon_state = "catwalk_tile"
+	turf_type = /turf/open/floor/plating/catwalk_floor

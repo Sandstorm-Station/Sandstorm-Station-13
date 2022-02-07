@@ -465,6 +465,10 @@ Traitors and the like can also be revived with the previous role mostly intact.
 			new_character.forceMove(pick(GLOB.nukeop_start))
 			var/datum/antagonist/nukeop/N = new_character.mind.has_antag_datum(/datum/antagonist/nukeop,TRUE)
 			N.equip_op()
+		if(ROLE_SLAVER)
+			new_character.forceMove(pick(GLOB.slaver_start))
+			var/datum/antagonist/slaver/S = new_character.mind.has_antag_datum(/datum/antagonist/slaver,TRUE)
+			S.equip_slaver()
 		if(ROLE_NINJA)
 			var/list/ninja_spawn = list()
 			for(var/obj/effect/landmark/carpspawn/L in GLOB.landmarks_list)
@@ -570,6 +574,26 @@ Traitors and the like can also be revived with the previous role mostly intact.
 	log_admin("[key_name(src)] has created a command report: [input]")
 	message_admins("[key_name_admin(src)] has created a command report")
 	SSblackbox.record_feedback("tally", "admin_verb", 1, "Create Command Report") //If you are copy-pasting this, ensure the 2nd parameter is unique to the new proc!
+
+/client/proc/cmd_admin_make_priority_announcement()
+	set category = "Admin.Events"
+	set name = "Make Priority Announcement"
+
+	if(!check_rights(R_ADMIN))
+		return
+
+	var/input = input(usr, "Enter a priority announcement. Ensure it makes sense IC.", "What?", "") as message|null
+	if(!input)
+		return
+
+	var/title = input(src, "What should the title be?", "What?","") as text|null
+
+	var/special_name = input(src, "Who is making the announcement?", "Who?", "") as text|null
+	priority_announce(input, title, sender_override = special_name)
+
+	log_admin("[key_name(src)] has sent a priority announcement: [input]")
+	message_admins("[key_name_admin(src)] has made a priority announcement")
+	SSblackbox.record_feedback("tally", "admin_verb", 1, "Make Priority Announcement") //If you are copy-pasting this, ensure the 2nd parameter is unique to the new proc!
 
 /client/proc/cmd_change_command_name()
 	set category = "Admin.Events"
@@ -843,6 +867,19 @@ Traitors and the like can also be revived with the previous role mostly intact.
 		message_admins("Admin [key_name_admin(usr)] has disabled random events.")
 	SSblackbox.record_feedback("nested tally", "admin_toggle", 1, list("Toggle Random Events", "[new_are ? "Enabled" : "Disabled"]")) //If you are copy-pasting this, ensure the 2nd parameter is unique to the new proc!
 
+/client/proc/admin_enable_disk_inactive_msg()
+	set category = "Server"
+	set name = "Toggle nuke disk stationary admin logging"
+	set desc = "Toggles nuke disk stationary admin logs for all admins"
+	var/current_state = !CONFIG_GET(flag/admin_disk_inactive_msg)
+	CONFIG_SET(flag/admin_disk_inactive_msg, current_state)
+	if(current_state)
+		to_chat(usr, "Inactive disk admin logging enabled")
+		message_admins("Admin [key_name_admin(usr)] has enabled inactive disk admin logging")
+	else
+		to_chat(usr, "Inactive disk admin logging disabled")
+		message_admins("Admin [key_name_admin(usr)] has disabled inactive disk admin logging")
+	SSblackbox.record_feedback("nested tally", "admin_toggle", 1, list("Toggle nuke disk stationary admin logging", "[current_state ? "Enabled" : "Disabled"]"))
 
 /client/proc/admin_change_sec_level()
 	set category = "Admin.Events"
@@ -1064,7 +1101,7 @@ Traitors and the like can also be revived with the previous role mostly intact.
 
 	var/adding_hud = !has_antag_hud()
 
-	for(var/hudtype in list(DATA_HUD_SECURITY_ADVANCED, DATA_HUD_MEDICAL_ADVANCED, DATA_HUD_DIAGNOSTIC_ADVANCED)) // add data huds
+	for(var/hudtype in list(DATA_HUD_SECURITY_ADVANCED, DATA_HUD_MEDICAL_ADVANCED, DATA_HUD_DIAGNOSTIC_ADVANCED, DATA_HUD_ANTAGTARGET)) // add data huds
 		var/datum/atom_hud/H = GLOB.huds[hudtype]
 		(adding_hud) ? H.add_hud_to(usr) : H.remove_hud_from(usr)
 	for(var/datum/atom_hud/antag/H in GLOB.huds) // add antag huds
@@ -1313,9 +1350,17 @@ Traitors and the like can also be revived with the previous role mostly intact.
 		ADMIN_PUNISHMENT_SHOES,
 		ADMIN_PUNISHMENT_PICKLE,
 		ADMIN_PUNISHMENT_FRY,
-    ADMIN_PUNISHMENT_CRACK,
-    ADMIN_PUNISHMENT_BLEED,
-    ADMIN_PUNISHMENT_SCARIFY)
+		ADMIN_PUNISHMENT_CRACK,
+		ADMIN_PUNISHMENT_BLEED,
+		ADMIN_PUNISHMENT_SCARIFY,
+		ADMIN_PUNISHMENT_CLUWNE,
+		ADMIN_PUNISHMENT_GOODBYE,
+		ADMIN_PUNISHMENT_TABLETIDESTATIONWIDE,
+		ADMIN_PUNISHMENT_FAKEBWOINK,
+		ADMIN_PUNISHMENT_NUGGET,
+		ADMIN_PUNISHMENT_BREADIFY,
+		ADMIN_PUNISHMENT_BOOKIFY,
+		ADMIN_PUNISHMENT_BONK)
 
 	var/punishment = input("Choose a punishment", "DIVINE SMITING") as null|anything in punishment_list
 
@@ -1324,6 +1369,9 @@ Traitors and the like can also be revived with the previous role mostly intact.
 
 	switch(punishment)
 		if(ADMIN_PUNISHMENT_LIGHTNING)
+			if(prob(75))
+				playsound(target, 'modular_splurt/sound/misc/NOW.ogg', 75, FALSE)
+				sleep(4 SECONDS)
 			var/turf/T = get_step(get_step(target, NORTH), NORTH)
 			T.Beam(target, icon_state="lightning[rand(1,12)]", time = 5)
 			target.adjustFireLoss(75)
@@ -1481,6 +1529,63 @@ Traitors and the like can also be revived with the previous role mostly intact.
 				to_chat(usr,"<span class='warning'>[C] does not have knottable shoes!</span>")
 				return
 			sick_kicks.adjust_laces(SHOES_KNOTTED)
+		if(ADMIN_PUNISHMENT_CLUWNE)
+			if(!iscarbon(target))
+				to_chat(usr,"<span class='warning'>This must be used on a carbon mob.</span>")
+				return
+			target.cluwneify()
+		if(ADMIN_PUNISHMENT_GOODBYE) //sandstorm punish :) it starts here
+			var/mob/living/C = target
+			if(C.stat == DEAD)
+				to_chat(usr, "<span class='warning'>[C] is dead!")
+				return
+			else
+				C.pregoodbye(C) //sandstorm punish and ends here.
+		if(ADMIN_PUNISHMENT_TABLETIDESTATIONWIDE) //SPLURT punishments start here
+			priority_announce(html_decode("[target] has brought the wrath of the gods upon themselves and is now being tableslammed across the station. Please stand by."), null, 'sound/misc/announce.ogg', "CentCom")
+			var/list/areas = list()
+			for(var/area/A in world)
+				if(A.z == SSmapping.station_start)
+					areas += A
+			SEND_SOUND(target, sound('modular_splurt/sound/misc/slamofthenorthstar.ogg',volume=60))
+			for(var/area/A in areas)
+				for(var/obj/structure/table/T in A)
+					T.tablepush(target, target)
+					sleep(1)
+		if(ADMIN_PUNISHMENT_FAKEBWOINK)
+			SEND_SOUND(target, 'sound/effects/adminhelp.ogg')
+		if(ADMIN_PUNISHMENT_NUGGET)
+			if (!iscarbon(target))
+				return
+			var/mob/living/carbon/carbon_target = target
+			var/timer = 2 SECONDS
+			for (var/_limb in carbon_target.bodyparts)
+				var/obj/item/bodypart/limb = _limb
+				if (limb.body_part == HEAD || limb.body_part == CHEST)
+					continue
+				addtimer(CALLBACK(limb, /obj/item/bodypart/.proc/dismember), timer)
+				addtimer(CALLBACK(GLOBAL_PROC, .proc/playsound, carbon_target, 'modular_splurt/sound/effects/cartoon_pop.ogg', 70), timer)
+				addtimer(CALLBACK(carbon_target, /mob/living/.proc/spin, 4, 1), timer - 0.4 SECONDS)
+				timer += 2 SECONDS
+		if(ADMIN_PUNISHMENT_BREADIFY)
+			#define BREADIFY_TIME (5 SECONDS)
+			var/mutable_appearance/bread_appearance = mutable_appearance('icons/obj/food/burgerbread.dmi', "bread")
+			var/mutable_appearance/transform_scanline = mutable_appearance('modular_splurt/icons/effects/effects.dmi', "transform_effect")
+			target.transformation_animation(bread_appearance, time = BREADIFY_TIME, transform_overlay=transform_scanline, reset_after=TRUE)
+			addtimer(CALLBACK(GLOBAL_PROC, .proc/breadify, target), BREADIFY_TIME)
+			#undef BREADIFY_TIME
+		if(ADMIN_PUNISHMENT_BOOKIFY)
+			#define BOOKIFY_TIME (2 SECONDS)
+			var/mutable_appearance/book_appearance = mutable_appearance('icons/obj/library.dmi', "book")
+			var/mutable_appearance/transform_scanline = mutable_appearance('modular_splurt/icons/effects/effects.dmi', "transform_effect")
+			target.transformation_animation(book_appearance, time = BOOKIFY_TIME, transform_overlay=transform_scanline, reset_after=TRUE)
+			addtimer(CALLBACK(GLOBAL_PROC, .proc/bookify, target), BOOKIFY_TIME)
+			playsound(target, 'modular_splurt/sound/misc/bookify.ogg', 60, 1)
+			#undef BOOKIFY_TIME
+		if(ADMIN_PUNISHMENT_BONK)
+			playsound(target, 'modular_splurt/sound/misc/bonk.ogg', 100, 1)
+			target.AddElement(/datum/element/squish, 60 SECONDS)
+			to_chat(target, "<span class='warning big'>Bonk.</span>")
 
 	punish_log(target, punishment)
 
@@ -1528,23 +1633,6 @@ Traitors and the like can also be revived with the previous role mostly intact.
 	log_game("[key_name(usr)] triggered a CentCom recall, with the message of: [message]")
 	SSshuttle.centcom_recall(SSshuttle.emergency.timer, message)
 
-/client/proc/cmd_admin_check_player_exp()	//Allows admins to determine who the newer players are.
-	set category = "Admin"
-	set name = "Player Playtime"
-	if(!check_rights(R_ADMIN))
-		return
-
-	if(!CONFIG_GET(flag/use_exp_tracking))
-		to_chat(usr, "<span class='warning'>Tracking is disabled in the server configuration file.</span>")
-		return
-
-	var/list/msg = list()
-	msg += "<html><head><meta http-equiv='Content-Type' content='text/html; charset=UTF-8'><title>Playtime Report</title></head><body>Playtime:<BR><UL>"
-	for(var/client/C in GLOB.clients)
-		msg += "<LI> - [key_name_admin(C)]: <A href='?_src_=holder;[HrefToken()];getplaytimewindow=[REF(C.mob)]'>" + C.get_exp_living() + "</a></LI>"
-	msg += "</UL></BODY></HTML>"
-	src << browse(msg.Join(), "window=Player_playtime_check")
-
 /obj/effect/temp_visual/fireball
 	icon = 'icons/obj/wizard.dmi'
 	icon_state = "fireball"
@@ -1566,7 +1654,7 @@ Traitors and the like can also be revived with the previous role mostly intact.
 	light_range = 2
 	duration = 9
 
-/obj/effect/temp_visual/target/ex_act()
+/obj/effect/temp_visual/target/ex_act(severity, target, origin)
 	return
 
 /obj/effect/temp_visual/target/Initialize(mapload, list/flame_hit)
@@ -1671,3 +1759,24 @@ Traitors and the like can also be revived with the previous role mostly intact.
 					if(!source)
 						return
 			REMOVE_TRAIT(D,chosen_trait,source)
+/*
+/client/proc/spawn_floor_cluwne()
+	set category = "Admin.Fun"
+	set name = "Unleash Floor Cluwne"
+	set desc = "Pick a specific target or just let it select randomly and spawn the floor cluwne mob on the station. Be warned: spawning more than one may cause issues!"
+	var/target
+
+	if(!check_rights(R_FUN))
+		return
+
+	var/turf/T = get_turf(usr)
+	target = input("Any specific target in mind? Please note only live, non cluwned, human targets are valid.", "Target", target) as null|anything in GLOB.player_list
+	if(target && ishuman(target))
+		var/mob/living/carbon/human/H = target
+		var/mob/living/simple_animal/hostile/floor_cluwne/FC = new /mob/living/simple_animal/hostile/floor_cluwne(T)
+		FC.Acquire_Victim(H)
+	else
+		new /mob/living/simple_animal/hostile/floor_cluwne(T)
+	log_admin("[key_name(usr)] spawned floor cluwne.")
+	message_admins("[key_name(usr)] spawned floor cluwne.")
+*/

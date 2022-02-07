@@ -21,7 +21,7 @@
 
 /mob/dead/new_player/Initialize()
 	if(client && SSticker.state == GAME_STATE_STARTUP)
-		var/obj/screen/splash/S = new(client, TRUE, TRUE)
+		var/atom/movable/screen/splash/S = new(client, TRUE, TRUE)
 		S.Fade(TRUE)
 
 	if(length(GLOB.newplayer_start))
@@ -32,6 +32,13 @@
 	ComponentInitialize()
 
 	. = ..()
+
+	GLOB.new_player_list += src
+
+/mob/dead/new_player/Destroy()
+	GLOB.new_player_list -= src
+
+	return ..()
 
 /mob/dead/new_player/prepare_huds()
 	return
@@ -142,7 +149,7 @@
 			message_admins("Blocked [src] from new player panel because age gate could not access player database flags.")
 			return FALSE
 
-		if(!(client.prefs.db_flags & DB_FLAG_AGE_CONFIRMATION_INCOMPLETE)) //completed? Skip
+		if(client.prefs.db_flags & DB_FLAG_AGE_CONFIRMATION_COMPLETE) //completed? Skip
 			return TRUE
 
 		var/age_verification = age_gate()
@@ -391,7 +398,7 @@
 				var/id_max = text2num(href_list["maxid"])
 
 				if( (id_max - id_min) > 100 )	//Basic exploit prevention
-					                            //(protip, this stops no exploits)
+												//(protip, this stops no exploits)
 					to_chat(usr, "The option ID difference is too big. Please contact administration or the database admin.")
 					return
 
@@ -567,7 +574,7 @@
 	if(job && !job.override_latejoin_spawn(character))
 		SSjob.SendToLateJoin(character)
 		if(!arrivals_docked)
-			var/obj/screen/splash/Spl = new(character.client, TRUE)
+			var/atom/movable/screen/splash/Spl = new(character.client, TRUE)
 			Spl.Fade(TRUE)
 			character.playsound_local(get_turf(character), 'sound/voice/ApproachingTG.ogg', 25)
 
@@ -617,6 +624,9 @@
 
 	if(humanc && CONFIG_GET(flag/roundstart_traits))
 		SSquirks.AssignQuirks(humanc, humanc.client, TRUE, FALSE, job, FALSE)
+	//skyrat change
+	if(humanc)
+		SSlanguage.AssignLanguage(humanc, humanc.client, TRUE, FALSE, job, FALSE)
 
 	log_manifest(character.mind.key,character.mind,character,latejoin = TRUE)
 
@@ -670,10 +680,15 @@
 				var/command_bold = ""
 				if(job in GLOB.command_positions)
 					command_bold = " command"
+				//SKYRAT CHANGES
+				var/jobline = "[job_datum.title] ([job_datum.current_positions])"
 				if(job_datum in SSjob.prioritized_jobs)
-					dept_dat += "<a class='job[command_bold]' style='display:block;width:170px'  href='byond://?src=[REF(src)];SelectedJob=[job_datum.title]'><span class='priority'>[job_datum.title] ([job_datum.current_positions])</span></a>"
-				else
-					dept_dat += "<a class='job[command_bold]' style='display:block;width:170px' href='byond://?src=[REF(src)];SelectedJob=[job_datum.title]'>[job_datum.title] ([job_datum.current_positions])</a>"
+					jobline = "<span class='priority'>[jobline]</span>"
+				if(client && client.prefs && client.prefs.alt_titles_preferences[job_datum.title])
+					jobline = "[jobline]<br><span style='color:#BBBBBB; font-style: italic;'>(as [client.prefs.alt_titles_preferences[job_datum.title]])</span>"
+				jobline = "<a class='job[command_bold]' style='display:block;width:170px' href='byond://?src=[REF(src)];SelectedJob=[job_datum.title]'>[jobline]</a>"
+				dept_dat += jobline
+				//END OF SKYRAT CHANGES
 		if(!dept_dat.len)
 			dept_dat += "<span class='nopositions'>No positions open.</span>"
 		dat += jointext(dept_dat, "")
@@ -775,6 +790,11 @@
 	. = new_character
 	if(.)
 		new_character.key = key		//Manually transfer the key to log them in
+		//splurt change
+		if(jobban_isbanned(new_character, "pacifist"))
+			to_chat(new_character, "<span class='cult'>You are pacification banned. Pacifist has been force applied.</span>")
+			ADD_TRAIT(new_character, TRAIT_PACIFISM, "pacification ban")
+		//
 		new_character.stop_sound_channel(CHANNEL_LOBBYMUSIC)
 		new_character = null
 		qdel(src)

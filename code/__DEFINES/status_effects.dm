@@ -65,6 +65,8 @@
 /// Blocks sprint
 #define STATUS_EFFECT_STAGGERED /datum/status_effect/staggered
 
+#define STATUS_EFFECT_TASED_WEAK_NODMG /datum/status_effect/electrode/no_damage     // no damage
+
 #define STATUS_EFFECT_TASED_WEAK /datum/status_effect/electrode				//not as crippling, just slows down
 
 #define STATUS_EFFECT_TASED /datum/status_effect/electrode/no_combat_mode //the affected has been tased, preventing fine muscle control
@@ -105,8 +107,6 @@
 
 #define STATUS_EFFECT_FAKE_VIRUS /datum/status_effect/fake_virus //gives you fluff messages for cough, sneeze, headache, etc but without an actual virus
 
-#define STATUS_EFFECT_NO_COMBAT_MODE /datum/status_effect/no_combat_mode //Wont allow combat mode and will disable it
-
 #define STATUS_EFFECT_STASIS /datum/status_effect/grouped/stasis //Halts biological functions like bleeding, chemical processing, blood regeneration, walking, etc
 
 #define STATUS_EFFECT_MESMERIZE /datum/status_effect/mesmerize //Just reskinned no_combat_mode
@@ -118,6 +118,8 @@
 #define STATUS_EFFECT_AMOK /datum/status_effect/amok //Makes the target automatically strike out at adjecent non-heretics.
 
 #define STATUS_EFFECT_CLOUDSTRUCK /datum/status_effect/cloudstruck //blinds and applies an overlay.
+
+#define STATUS_EFFECT_GAUNTLET_CONC /datum/status_effect/cgau_conc // it's a slowdown that really should only be applying to large simplemobs
 
 /// shoves inflict this to indicate the next shove while this is in effect should disarm guns
 #define STATUS_EFFECT_OFF_BALANCE /datum/status_effect/off_balance

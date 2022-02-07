@@ -13,7 +13,7 @@
 	var/mood_modifier = 1 //Modifier to allow certain mobs to be less affected by moodlets
 	var/list/datum/mood_event/mood_events = list()
 	var/insanity_effect = 0 //is the owner being punished for low mood? If so, how much?
-	var/obj/screen/mood/screen_obj
+	var/atom/movable/screen/mood/screen_obj
 	var/datum/skill_modifier/bad_mood/malus
 	var/datum/skill_modifier/great_mood/bonus
 	var/static/malus_id = 0
@@ -50,7 +50,7 @@
 	STOP_PROCESSING(SSobj, src)
 
 /datum/component/mood/proc/print_mood(mob/user)
-	var/msg = "<span class='info'>*---------*\n<EM>Your current mood</EM>\n"
+	var/msg = "<div class='infobox'><span class='info'><EM>Your current mood</EM></span>\n"
 	msg += "<span class='notice'>My mental status: </span>" //Long term
 	switch(sanity)
 		if(SANITY_GREAT to INFINITY)
@@ -94,6 +94,7 @@
 			msg += event.description
 	else
 		msg += "<span class='nicegreen'>I don't have much of a reaction to anything right now.<span>\n"
+	msg += "</div>"
 	to_chat(user || parent, msg)
 
 ///Called after moodevent/s have been added/removed.
@@ -139,6 +140,7 @@
 			screen_obj.icon_state = "mood_entrance"
 		else
 			screen_obj.icon_state = "mood[mood_level]"
+		screen_obj_sanity.icon_state = "sanity[sanity_level]" // Sandstorm sanity vis
 
 /datum/component/mood/process() //Called on SSobj process
 	if(QDELETED(parent)) // workaround to an obnoxious sneaky periodical runtime.
@@ -167,6 +169,7 @@
 			setSanity(sanity+0.4, maximum=SANITY_AMAZING)
 
 	HandleNutrition(owner)
+	HandleThirst(owner)
 
 /datum/component/mood/proc/setSanity(amount, minimum=SANITY_INSANE, maximum=SANITY_NEUTRAL)//I'm sure bunging this in here will have no negative repercussions.
 	var/mob/living/master = parent
@@ -239,7 +242,7 @@
 			free_maluses += malus
 			malus = null
 
-	//update_mood_icon()
+	update_mood_icon() // Sandstorm uncommented
 
 /datum/component/mood/proc/setInsanityEffect(newval)//More code so that the previous proc works
 	if(newval == insanity_effect)
@@ -297,7 +300,9 @@
 	var/mob/living/owner = parent
 	var/datum/hud/hud = owner.hud_used
 	screen_obj = new
+	screen_obj_sanity = new // Sandstorm sanity
 	hud.infodisplay += screen_obj
+	hud.infodisplay += screen_obj_sanity // Sandstorm sanity
 	RegisterSignal(hud, COMSIG_PARENT_QDELETING, .proc/unmodify_hud)
 	RegisterSignal(screen_obj, COMSIG_CLICK, .proc/hud_click)
 
@@ -308,7 +313,9 @@
 	var/datum/hud/hud = owner.hud_used
 	if(hud && hud.infodisplay)
 		hud.infodisplay -= screen_obj
+		hud.infodisplay -= screen_obj_sanity // Sandstorm sanity
 	QDEL_NULL(screen_obj)
+	QDEL_NULL(screen_obj_sanity) // Sandstorm sanity
 
 /datum/component/mood/proc/hud_click(datum/source, location, control, params, mob/user)
 	print_mood(user)
@@ -324,7 +331,7 @@
 			add_event(null, "nutrition", /datum/mood_event/fat)
 		if(NUTRITION_LEVEL_WELL_FED to NUTRITION_LEVEL_FULL)
 			add_event(null, "nutrition", /datum/mood_event/wellfed)
-		if( NUTRITION_LEVEL_FED to NUTRITION_LEVEL_WELL_FED)
+		if(NUTRITION_LEVEL_FED to NUTRITION_LEVEL_WELL_FED)
 			add_event(null, "nutrition", /datum/mood_event/fed)
 		if(NUTRITION_LEVEL_HUNGRY to NUTRITION_LEVEL_FED)
 			clear_event(null, "nutrition")

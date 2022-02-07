@@ -199,9 +199,10 @@
 //NEEDS ON_MOB_DEAD()
 
 /datum/reagent/fermi/zeolites
-	name = "Artificial Zeolites"
+	name = "Artificial Zeolite"
 	description = "Lab made Zeolite, used to clear radiation from people and items alike! Splashing just a small amount(5u) onto any item can clear away large amounts of contamination, as long as its purity is at least 0.7."
 	pH = 8
+	taste_description = "chalky metal"
 	color = "#FFDADA"
 	metabolization_rate = 8 * REAGENTS_METABOLISM //Metabolizes fast but heals a lot! Lasts far longer if more pure.
 	value = REAGENT_VALUE_RARE //Relatively hard to make now, might be fine with VERY_RARE instead depending on feedback.
@@ -217,6 +218,6 @@
 
 /datum/reagent/fermi/zeolites/reaction_obj(obj/O, reac_volume)
 	var/datum/component/radioactive/contamination = O.GetComponent(/datum/component/radioactive)
-	if(contamination && reac_volume >= 5 && purity >= 0.7) //you need at least 0.7 purity to instantly purge all contam on an object.
+	if(contamination && purity >= 0.7) //you need at least 0.7 purity to instantly purge all contam on an object.
 		qdel(contamination)
-		return
+	..()

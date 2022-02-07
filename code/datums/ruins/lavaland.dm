@@ -35,6 +35,14 @@
 	cost = 10
 	allow_duplicates = FALSE
 
+/datum/map_template/ruin/lavaland/library
+	name = "Lavaland Library"
+	id = "llibrary"
+	description = "A once grand library, now lost to the confines of lavaland."
+	suffix = "lavaland_surface_library.dmm"
+	cost = 5
+	allow_duplicates = FALSE
+
 /datum/map_template/ruin/lavaland/seed_vault
 	name = "Seed Vault"
 	id = "seed-vault"
@@ -44,6 +52,7 @@
 	cost = 10
 	allow_duplicates = FALSE
 
+/* we've our own
 /datum/map_template/ruin/lavaland/ash_walker
 	name = "Ash Walker Nest"
 	id = "ash-walker"
@@ -52,6 +61,7 @@
 	suffix = "lavaland_surface_ash_walker1.dmm"
 	cost = 20
 	allow_duplicates = FALSE
+*/
 
 /datum/map_template/ruin/lavaland/syndicate_base
 	name = "Syndicate Lava Base"
@@ -77,6 +87,20 @@
 	description = "Rats with cancer do not live very long. And the ones that wake up from cryostasis seem to commit suicide out of boredom."
 	cost = 5
 	suffix = "lavaland_surface_animal_hospital.dmm"
+	allow_duplicates = FALSE
+
+/datum/map_template/ruin/lavaland/hotsprings
+	name = "Hot Springs"
+	id = "lhotsprings"
+	description = "Just relax and take a dip! Lavaland's finest hot springs await!"
+	suffix = "lavaland_surface_hotsprings.dmm"
+
+/datum/map_template/ruin/lavaland/engioutpost
+	name = "Engineer Outpost"
+	id = "lengioutpost"
+	description = "Blown up by an unfortunate accident."
+	suffix = "lavaland_surface_engioutpost.dmm"
+	cost = 10
 	allow_duplicates = FALSE
 
 /datum/map_template/ruin/lavaland/sin
@@ -115,6 +139,24 @@
 	suffix = "lavaland_surface_sloth.dmm"
 	// Generates nothing but atmos runtimes and salt
 
+/datum/map_template/ruin/lavaland/sin/lust
+	name = "Ruin of Lust"
+	id = "llust"
+	description = "Not exactly what you expected."
+	suffix = "lavaland_surface_lust.dmm"
+
+/datum/map_template/ruin/lavaland/sin/wrath
+	name = "Ruin of Wrath"
+	id = "lwrath"
+	description = "You'll fight and fight and just keep fighting."
+	suffix = "lavaland_surface_wrath.dmm"
+
+/datum/map_template/ruin/lavaland/bathhouse
+	name = "Bath House"
+	id = "lbathhouse"
+	description = "A taste of paradise, locked in the hell of Lavaland."
+	suffix = "lavaland_surface_bathhouse.dmm"
+
 /datum/map_template/ruin/lavaland/ratvar
 	name = "Dead God"
 	id = "ratvar"
@@ -132,26 +174,28 @@
 
 /datum/map_template/ruin/lavaland/blood_drunk_miner
 	name = "Blood-Drunk Miner"
-	id = "blooddrunk"
-	description = "A strange arrangement of stone tiles and an insane, beastly miner contemplating them."
-	suffix = "lavaland_surface_blooddrunk1.dmm"
+	description = "An insane, beastly miner contemplating stone tiles..."
 	always_place = TRUE
-	allow_duplicates = FALSE //will only spawn one variant of the ruin
-
-/datum/map_template/ruin/lavaland/blood_drunk_miner/guidance
-	name = "Blood-Drunk Miner (Guidance)"
-	suffix = "lavaland_surface_blooddrunk2.dmm"
-
-/datum/map_template/ruin/lavaland/blood_drunk_miner/hunter
-	name = "Blood-Drunk Miner (Hunter)"
-	suffix = "lavaland_surface_blooddrunk3.dmm"
+	allow_duplicates = FALSE
+	id = "blooddrunk"
+/datum/map_template/ruin/lavaland/blood_drunk_miner/New()
+	if(prob(25))
+		suffix = "lavaland_surface_blooddrunk1.dmm"
+	else if(prob(34))
+		suffix = "lavaland_surface_blooddrunk2.dmm"
+	else if(prob(50))
+		suffix = "lavaland_surface_blooddrunk3.dmm"
+	else
+		suffix = "lavaland_surface_mining_site.dmm"
+	. = ..()
 
 /datum/map_template/ruin/lavaland/ufo_crash
 	name = "UFO Crash"
 	id = "ufo-crash"
 	description = "Turns out that keeping your abductees unconscious is really important. Who knew?"
 	suffix = "lavaland_surface_ufo_crash.dmm"
-	cost = 5
+	always_place = TRUE
+	allow_duplicates = FALSE //sandstorm changy thing, always spawn.
 
 /* Replaced with Alien Nest Ruins
 /datum/map_template/ruin/lavaland/xeno_nest

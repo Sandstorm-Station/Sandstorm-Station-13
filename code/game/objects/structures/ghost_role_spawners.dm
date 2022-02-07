@@ -1,5 +1,5 @@
 //Objects that spawn ghosts in as a certain role when they click on it, i.e. away mission bartenders.
-
+#define spawnOverride TRUE
 //Preserved terrarium/seed vault: Spawns in seed vault structures in lavaland. Ghosts become plantpeople and are advised to begin growing plants in the room near them.
 /obj/effect/mob_spawn/human/seed_vault
 	name = "preserved terrarium"
@@ -36,6 +36,44 @@
 
 //Ash walker eggs: Spawns in ash walker dens in lavaland. Ghosts become unbreathing lizards that worship the Necropolis and are advised to retrieve corpses to create more ash walkers.
 
+/obj/structure/ash_walker_eggshell
+	name = "ash walker egg"
+	desc = "A man-sized yellow egg, spawned from some unfathomable creature. A humanoid silhouette lurks within. The egg shell looks resistant to temperature but otherwise rather brittle."
+	icon = 'icons/mob/lavaland/lavaland_monsters.dmi'
+	icon_state = "large_egg"
+	resistance_flags = LAVA_PROOF | FIRE_PROOF | FREEZE_PROOF
+	max_integrity = 80
+	var/obj/effect/mob_spawn/human/ash_walker/egg
+
+/obj/structure/ash_walker_eggshell/play_attack_sound(damage_amount, damage_type = BRUTE, damage_flag = 0) //lifted from xeno eggs
+	switch(damage_type)
+		if(BRUTE)
+			if(damage_amount)
+				playsound(loc, 'sound/effects/attackblob.ogg', 100, TRUE)
+			else
+				playsound(src, 'sound/weapons/tap.ogg', 50, TRUE)
+		if(BURN)
+			if(damage_amount)
+				playsound(loc, 'sound/items/welder.ogg', 100, TRUE)
+
+/obj/structure/ash_walker_eggshell/attack_ghost(mob/user) //Pass on ghost clicks to the mob spawner
+	if(egg)
+		egg.attack_ghost(user)
+	. = ..()
+
+/obj/structure/ash_walker_eggshell/Destroy()
+	if(!egg)
+		return ..()
+	var/mob/living/carbon/human/yolk = new /mob/living/carbon/human/(get_turf(src))
+	yolk.fully_replace_character_name(null,random_unique_lizard_name(gender))
+	yolk.set_species(/datum/species/lizard/ashwalker)
+	yolk.underwear = "Nude"
+	yolk.equipOutfit(/datum/outfit/ashwalker)//this is an authentic mess we're making
+	yolk.update_body()
+	yolk.gib()
+	QDEL_NULL(egg)
+	return ..()
+
 /obj/effect/mob_spawn/human/ash_walker
 	name = "ash walker egg"
 	desc = "A man-sized yellow egg, spawned from some unfathomable creature. A humanoid silhouette lurks within."
@@ -44,7 +82,6 @@
 	icon = 'icons/mob/lavaland/lavaland_monsters.dmi'
 	icon_state = "large_egg"
 	mob_species = /datum/species/lizard/ashwalker
-	outfit = /datum/outfit/ashwalker
 	roundstart = FALSE
 	death = FALSE
 	anchored = FALSE
@@ -55,22 +92,29 @@
 	You have seen lights in the distance... they foreshadow the arrival of outsiders to your domain. \
 	Ensure your nest remains protected at all costs."
 	assignedrole = "Ash Walker"
+	var/datum/team/ashwalkers/team
+	var/obj/structure/ash_walker_eggshell/eggshell
+
+/obj/effect/mob_spawn/human/ash_walker/Destroy()
+	eggshell = null
+	return ..()
+
+/obj/effect/mob_spawn/human/ash_walker/allow_spawn(mob/user, silent = FALSE)
+	if(!(user.key in team.players_spawned) || spawnOverride)//one per person unless you get a bonus spawn
+		return TRUE
+	to_chat(user, span_warning("<b>You have exhausted your usefulness to the Necropolis</b>."))
+	return FALSE
 
 /obj/effect/mob_spawn/human/ash_walker/special(mob/living/new_spawn)
 	new_spawn.real_name = random_unique_lizard_name(gender)
 	if(is_mining_level(z))
 		to_chat(new_spawn, "<b>Drag the corpses of men and beasts to your nest. It will absorb them to create more of your kind. Glory to the Necropolis!</b>")
 		to_chat(new_spawn, "<b>You can expand the weather proof area provided by your shelters by using the 'New Area' key near the bottom right of your HUD.</b>")
+		to_chat(new_spawn, "<b>Dragging injured ashwalkers to the tentacle or using the sleep verb next to it youself causes the body to remade whole after a short delay!</b>")
 	else
 		to_chat(new_spawn, "<span class='userdanger'>You have been born outside of your natural home! Whether you decide to return home, or make due with your new home is your own decision.</span>")
 
 //Ash walkers on birth understand how to make bone bows, bone arrows and ashen arrows
-
-	new_spawn.mind.teach_crafting_recipe(/datum/crafting_recipe/bone_arrow)
-	new_spawn.mind.teach_crafting_recipe(/datum/crafting_recipe/bone_bow)
-	new_spawn.mind.teach_crafting_recipe(/datum/crafting_recipe/ashen_arrow)
-	new_spawn.mind.teach_crafting_recipe(/datum/crafting_recipe/quiver)
-	new_spawn.mind.teach_crafting_recipe(/datum/crafting_recipe/bow_tablet)
 
 	if(ishuman(new_spawn))
 		var/mob/living/carbon/human/H = new_spawn
@@ -78,10 +122,18 @@
 		H.undershirt = "Nude"
 		H.socks = "Nude"
 		H.update_body()
+		new_spawn.mind.add_antag_datum(/datum/antagonist/ashwalker, team)
+		team.players_spawned += (new_spawn.key)
+		eggshell.egg = null
+		QDEL_NULL(eggshell)
 
-/obj/effect/mob_spawn/human/ash_walker/Initialize(mapload)
+/obj/effect/mob_spawn/human/ash_walker/Initialize(mapload, datum/team/ashwalkers/ashteam)
 	. = ..()
 	var/area/A = get_area(src)
+	team = ashteam
+	eggshell = new /obj/structure/ash_walker_eggshell(get_turf(loc))
+	eggshell.egg = src
+	src.forceMove(eggshell)
 	if(A)
 		notify_ghosts("An ash walker egg is ready to hatch in \the [A.name].", source = src, action=NOTIFY_ATTACK, flashwindow = FALSE, ignore_key = POLL_IGNORE_ASHWALKER, ignore_dnr_observers = TRUE)
 
@@ -230,6 +282,7 @@
 	the hostile creatures, and the ash drakes swooping down from the cloudless skies, all you can wish for is the feel of soft grass between your toes and \
 	the fresh air of Earth. These thoughts are dispelled by yet another recollection of how you got here... "
 	assignedrole = "Hermit"
+	canloadappearance = TRUE
 
 /obj/effect/mob_spawn/human/hermit/Initialize(mapload)
 	. = ..()
@@ -282,6 +335,7 @@
 	you see them right now. So where is \
 	everyone? Where did they go? What happened to the hospital? And is that <i>smoke</i> you smell? You need to find someone else. Maybe they c	everyone's gone. One of the cats scratched you just a few minutes ago. That's why you were in the pod - to heal the scratch. The scabs are still fresh; an tell you what happened."
 	assignedrole = "Translocated Vet"
+	canloadappearance = TRUE
 
 /obj/effect/mob_spawn/human/doctor/alive/lavaland/Destroy()
 	var/obj/structure/fluff/empty_sleeper/S = new(drop_location())
@@ -303,6 +357,7 @@
 	though fate has other plans for you."
 	flavour_text = "Good. It seems as though your ship crashed. You remember that you were convicted of "
 	assignedrole = "Escaped Prisoner"
+	canloadappearance = TRUE
 
 /obj/effect/mob_spawn/human/prisoner_transport/special(mob/living/L)
 	L.real_name = "NTP #LL-0[rand(111,999)]" //Nanotrasen Prisoner #Lavaland-(numbers)
@@ -344,6 +399,7 @@
 	flavour_text = "You are a staff member of a top-of-the-line space hotel! Cater to guests and make sure the manager doesn't fire you."
 	important_info = "DON'T leave the hotel"
 	assignedrole = "Hotel Staff"
+	canloadappearance = TRUE
 
 /datum/outfit/hotelstaff
 	name = "Hotel Staff"
@@ -444,6 +500,7 @@
 	icon_state = "sleeper_s"
 	outfit = /datum/outfit/syndicate_empty
 	assignedrole = "Space Syndicate"	//I know this is really dumb, but Syndicate operative is nuke ops
+	canloadappearance = TRUE
 
 /datum/outfit/syndicate_empty
 	name = "Syndicate Operative Empty"
@@ -464,6 +521,7 @@
 	flavour_text = "Your job is to follow your captain's orders, maintain the ship, and keep the engine running. If you are not familiar with how the supermatter engine functions: do not attempt to start it."
 	important_info = "The armory is not a candy store, and your role is not to assault the station directly, leave that work to the assault operatives."
 	outfit = /datum/outfit/syndicate_empty/SBC
+	canloadappearance = TRUE
 
 /datum/outfit/syndicate_empty/SBC
 	name = "Syndicate Battlecruiser Ship Operative"
@@ -495,6 +553,7 @@
 	important_info = "As the captain, this whole operation falls on your shoulders. You do not need to nuke the station, causing sufficient damage and preventing your ship from being destroyed will be enough."
 	outfit = /datum/outfit/syndicate_empty/SBC/assault/captain
 	id_access_list = list(150,151)
+	canloadappearance = TRUE
 
 /datum/outfit/syndicate_empty/SBC/assault/captain
 	name = "Syndicate Battlecruiser Captain"
@@ -530,6 +589,7 @@
 	l_pocket = /obj/item/assembly/flash/handheld
 	job_description = "Oldstation Crew"
 	assignedrole = "Ancient Crew"
+	canloadappearance = TRUE
 
 /obj/effect/mob_spawn/human/oldsec/Destroy()
 	new/obj/structure/showcase/machinery/oldpod/used(drop_location())
@@ -557,6 +617,7 @@
 	gloves = /obj/item/clothing/gloves/color/fyellow/old
 	l_pocket = /obj/item/tank/internals/emergency_oxygen
 	assignedrole = "Ancient Crew"
+	canloadappearance = TRUE
 
 /obj/effect/mob_spawn/human/oldeng/Destroy()
 	new/obj/structure/showcase/machinery/oldpod/used(drop_location())
@@ -583,6 +644,7 @@
 	l_pocket = /obj/item/stack/medical/suture
 	assignedrole = "Ancient Crew"
 	job_description = "Oldstation Crew"
+	canloadappearance = TRUE
 
 /obj/effect/mob_spawn/human/oldsci/Destroy()
 	new/obj/structure/showcase/machinery/oldpod/used(drop_location())
@@ -607,6 +669,7 @@
 	flavour_text = "The station refused to pay for your protection, protect the ship, siphon the credits from the station and raid it for even more loot."
 	assignedrole = "Space Pirate"
 	var/rank = "Mate"
+	canloadappearance = TRUE
 
 /obj/effect/mob_spawn/human/pirate/on_attack_hand(mob/living/user, act_intent = user.a_intent, unarmed_attack_flags)
 	. = ..()
@@ -634,9 +697,9 @@
 			log_game("[key_name(user)] has successfully pried open [src] and disabled a space pirate spawner.")
 			W.play_tool_sound(src)
 			playsound(src.loc, 'modular_citadel/sound/voice/scream_skeleton.ogg', 50, 1, 4, 1.2)
-			if(rank == "Captain") 
+			if(rank == "Captain")
 				new /obj/effect/mob_spawn/human/pirate/corpse/captain(get_turf(src))
-			else 
+			else
 				new /obj/effect/mob_spawn/human/pirate/corpse(get_turf(src))
 			qdel(src)
 	else
@@ -806,6 +869,13 @@
 
 /datum/outfit/ghostcafe/pre_equip(mob/living/carbon/human/H, visualsOnly = FALSE, client/preference_source)
 	..()
+	if (isplasmaman(H))
+		head = /obj/item/clothing/head/helmet/space/plasmaman
+		uniform = /obj/item/clothing/under/plasmaman
+		l_hand= /obj/item/tank/internals/plasmaman/belt/full
+		mask = /obj/item/clothing/mask/breath
+		return
+
 	var/suited = !preference_source || preference_source.prefs.jumpsuit_style == PREF_SUIT
 	if (CONFIG_GET(flag/grey_assistants))
 		uniform = suited ? /obj/item/clothing/under/color/grey : /obj/item/clothing/under/color/jumpskirt/grey
@@ -814,6 +884,10 @@
 			uniform = suited ? /obj/item/clothing/under/color/rainbow : /obj/item/clothing/under/color/jumpskirt/rainbow
 		else
 			uniform = suited ? /obj/item/clothing/under/color/random : /obj/item/clothing/under/color/jumpskirt/random
+
+/datum/outfit/ghostcafe/post_equip(mob/living/carbon/human/H, visualsOnly = FALSE, client/preference_source)
+	H.internal = H.get_item_for_held_index(1)
+	H.update_internals_hud_icon(1)
 
 /obj/item/storage/box/syndie_kit/chameleon/ghostcafe
 	name = "ghost cafe costuming kit"

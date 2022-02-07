@@ -301,6 +301,18 @@
 					if(!features["breasts_producing"])
 						boobs.genital_flags &= ~(GENITAL_FUID_PRODUCTION|CAN_CLIMAX_WITH|CAN_MASTURBATE_WITH)
 					boobs.update()
+			if(/obj/item/organ/genital/butt)
+				var/obj/item/organ/genital/butt/ass = new(loc)
+				if(features["has_butt"])
+					ass.color = sanitize_hexcolor(features["butt_color"], 6, TRUE)
+					ass.size = features["butt_size"]
+					ass.update()
+			if(/obj/item/organ/genital/belly)
+				var/obj/item/organ/genital/belly/gut = new(loc)
+				if(features["has_belly"])
+					gut.color = sanitize_hexcolor(features["belly_color"], 6, TRUE)
+					gut.size = features["belly_size"]
+					gut.update()
 			else
 				new built_typepath(loc)
 	else

@@ -123,7 +123,7 @@ GLOBAL_VAR_INIT(observer_default_invisibility, INVISIBILITY_OBSERVER)
 
 	animate(src, pixel_y = 2, time = 10, loop = -1)
 
-	GLOB.dead_mob_list += src
+	add_to_dead_mob_list()
 
 	for(var/v in GLOB.active_alternate_appearances)
 		if(!v)
@@ -136,6 +136,11 @@ GLOBAL_VAR_INIT(observer_default_invisibility, INVISIBILITY_OBSERVER)
 	grant_all_languages()
 	show_data_huds()
 	data_huds_on = 1
+
+	// Skyrat change START
+	RegisterSignal(src, COMSIG_CLICK_CTRL_SHIFT, .proc/on_click_ctrl_shift)
+	RegisterSignal(src, COMSIG_CLICK_CTRL, .proc/on_click_ctrl)
+	// Skyrat change END
 
 /mob/dead/observer/get_photo_description(obj/item/camera/camera)
 	if(!invisibility || camera.see_ghosts)
@@ -176,7 +181,7 @@ GLOBAL_VAR_INIT(observer_default_invisibility, INVISIBILITY_OBSERVER)
  * Hair will always update its dir, so if your sprite has no dirs the haircut will go all over the place.
  * |- Ricotez
  */
-/mob/dead/observer/update_icon(new_form)
+/mob/dead/observer/update_icon(updates=ALL, new_form=null)
 	. = ..()
 	if(client) //We update our preferences in case they changed right before update_icon was called.
 		ghost_accs = client.prefs.ghost_accs
@@ -284,7 +289,7 @@ Works together with spawning an observer, noted above.
 			P.respawn_time_of_death = world.time
 			P.respawn_did_cryo = cryo
 	transfer_ckey(ghost, FALSE)
-	ghost.client.init_verbs()
+	ghost.client?.init_verbs()
 	if(penalize)
 		var/penalty = CONFIG_GET(number/suicide_reenter_round_timer) MINUTES
 		var/roundstart_quit_limit = CONFIG_GET(number/roundstart_suicide_time_limit) MINUTES
@@ -447,7 +452,7 @@ This is the proc mobs get to turn into a ghost. Forked from ghostize due to comp
 	if(message)
 		to_chat(src, "<span class='ghostalert'>[message]</span>")
 		if(source)
-			var/obj/screen/alert/A = throw_alert("[REF(source)]_notify_cloning", /obj/screen/alert/notify_cloning)
+			var/atom/movable/screen/alert/A = throw_alert("[REF(source)]_notify_cloning", /atom/movable/screen/alert/notify_cloning)
 			if(A)
 				if(client && client.prefs && client.prefs.UI_style)
 					A.icon = ui_style2icon(client.prefs.UI_style)
@@ -925,6 +930,7 @@ This is the proc mobs get to turn into a ghost. Forked from ghostize due to comp
 	set name = "Signup for Mafia"
 	set desc = "Sign up for a game of Mafia to pass the time while dead."
 	mafia_signup()
+
 /mob/dead/observer/proc/mafia_signup()
 	if(!client)
 		return
@@ -936,9 +942,12 @@ This is the proc mobs get to turn into a ghost. Forked from ghostize due to comp
 		game = create_mafia_game("mafia")
 	game.ui_interact(usr)
 
+// Skyrat change - moved to modular/signals.
+/*
 /mob/dead/observer/CtrlShiftClick(mob/user)
 	if(isobserver(user) && check_rights(R_SPAWN))
 		change_mob_type( /mob/living/carbon/human , null, null, TRUE) //always delmob, ghosts shouldn't be left lingering
+*/
 
 /mob/dead/observer/examine(mob/user)
 	. = ..()

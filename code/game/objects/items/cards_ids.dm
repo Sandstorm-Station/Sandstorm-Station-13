@@ -391,9 +391,9 @@
 	if(!uses_overlays)
 		return
 	cached_flat_icon = null
-	var/job = assignment ? ckey(GetJobName()) : null
-	if(registered_name == "Captain")
-		job = "captain"
+	var/job = assignment ? ckey(get_job_name()) : null
+	job = replacetext(job, " ", "")
+	job = lowertext(job)
 	if(registered_name && registered_name != "Captain")
 		. += mutable_appearance(icon, "assigned")
 	if(job)
@@ -552,6 +552,9 @@
 
 /obj/item/card/id/syndicate/locked_banking
 	bank_support = ID_LOCKED_BANK_ACCOUNT
+
+/obj/item/card/id/pirate
+	access = list(ACCESS_SYNDICATE)
 
 /obj/item/card/id/captains_spare
 	name = "captain's spare ID"

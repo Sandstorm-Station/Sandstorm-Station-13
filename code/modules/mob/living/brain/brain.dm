@@ -43,8 +43,11 @@
 /mob/living/brain/update_mobility()
 	return ((mobility_flags = (container?.in_contents_of(/obj/mecha)? MOBILITY_FLAGS_DEFAULT : NONE)))
 
-/mob/living/brain/ex_act() //you cant blow up brainmobs because it makes transfer_to() freak out when borgs blow up.
+/mob/living/brain/ex_act(severity, target, origin) //you cant blow up brainmobs because it makes transfer_to() freak out when borgs blow up.
 	return
+
+/mob/living/brain/wave_ex_act(power, datum/wave_explosion/explosion, dir)
+	return power
 
 /mob/living/brain/blob_act(obj/structure/blob/B)
 	return

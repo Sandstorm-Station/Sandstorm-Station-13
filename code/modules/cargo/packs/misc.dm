@@ -174,8 +174,8 @@
 					/obj/item/circuitboard/computer/arcade/battle,
 					/obj/item/circuitboard/computer/arcade/orion_trail,
 					/obj/item/circuitboard/computer/arcade/orion_trail,
-					/obj/item/circuitboard/computer/arcade/minesweeper,
-					/obj/item/circuitboard/computer/arcade/minesweeper,
+					/obj/item/circuitboard/computer/arcade/tetris,
+					/obj/item/circuitboard/computer/arcade/tetris,
 					/obj/item/circuitboard/computer/slot_machine,
 					/obj/item/circuitboard/computer/slot_machine,
 					/obj/item/circuitboard/computer/slot_machine,
@@ -370,7 +370,7 @@
 //////////////////////////////////////////////////////////////////////////////
 
 /datum/supply_pack/misc/carpet
-	crate_type = /obj/structure/closet/secure_closet/goodies
+	crate_type = /obj/structure/closet/secure_closet/cargo
 	name = "Classic Carpet Single-Pack"
 	desc = "Plasteel floor tiles getting on your nerves? This 50 units stack of extra soft carpet will tie any room together."
 	cost = 200
@@ -466,7 +466,8 @@
 					/obj/item/restraints/handcuffs/fake/kinky,
 					/obj/item/clothing/head/kitty/genuine, // Why its illegal
 					/obj/item/clothing/head/kitty/genuine,
-					/obj/item/storage/pill_bottle/penis_enlargement)
+					/obj/item/storage/pill_bottle/penis_enlargement,
+					/obj/structure/reagent_dispensers/keg/aphro)
 	crate_name = "lewd kit"
 	crate_type = /obj/structure/closet/crate
 

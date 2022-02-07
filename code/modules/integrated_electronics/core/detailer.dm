@@ -26,7 +26,7 @@
 		"light blue" = COLOR_ASSEMBLY_LBLUE,
 		"blue" = COLOR_ASSEMBLY_BLUE,
 		"purple" = COLOR_ASSEMBLY_PURPLE,
-		"pink" = COLOR_ASSEMBLY_PINK,
+		"pink" = LIGHT_COLOR_PINK,
 		"custom" = COLOR_ASSEMBLY_WHITE
 		)
 
@@ -34,10 +34,11 @@
 	.=..()
 	update_icon()
 
-/obj/item/integrated_electronics/detailer/update_overlays()
-	. = ..()
-	. += mutable_appearance('icons/obj/assemblies/electronic_tools.dmi', "detailer-color", color = detail_color)
-
+/obj/item/integrated_electronics/detailer/update_icon()
+	cut_overlays()
+	var/mutable_appearance/detail_overlay = mutable_appearance('icons/obj/assemblies/electronic_tools.dmi', "detailer-color")
+	detail_overlay.color = detail_color
+	add_overlay(detail_overlay)
 
 /obj/item/integrated_electronics/detailer/attack_self(mob/user)
 	var/color_choice = input(user, "Select color.", "Assembly Detailer") as null|anything in color_list

@@ -8,17 +8,22 @@
 #define DM_UNABSORB "Un-absorb"
 
 #define DIGESTABLE 		(1<<0)
-#define SHOW_VORE_PREFS (1<<1)
-#define DEVOURABLE		(1<<2)
-#define FEEDING			(1<<3)
-#define NO_VORE			(1<<4)
-#define OPEN_PANEL		(1<<5)
-#define ABSORBED		(1<<6)
-#define VORE_INIT		(1<<7)
-#define VOREPREF_INIT	(1<<8)
-#define LICKABLE		(1<<9)
+#define DEVOURABLE		(1<<1)
+#define FEEDING			(1<<2)
+#define NO_VORE			(1<<3)
+#define ABSORBED		(1<<4)
+#define VORE_INIT		(1<<5)
+#define VOREPREF_INIT	(1<<6)
+#define LICKABLE		(1<<7)
+/// Can be smelled?
+#define SMELLABLE		(1<<8)
+/// Can get absorbed?
+#define ABSORBABLE		(1<<9)
+/// Can get simplemob vored?
+#define MOBVORE			(1<<10)
 
-#define MAX_VORE_FLAG	(1<<10)-1 // change this whenever you add a vore flag, must be largest vore flag*2-1
+/// Change this whenever you add a vore flag, must be largest vore flag*2-1
+#define MAX_VORE_FLAG	(1<<11)-1
 
 #define isbelly(A) istype(A, /obj/belly)
 
@@ -50,6 +55,30 @@ GLOBAL_LIST_INIT(pred_vore_sounds, list(
 		"Rustle 3 (cloth)"	= 'sound/effects/rustle3.ogg',
 		"Rustle 4 (cloth)"	= 'sound/effects/rustle4.ogg',
 		"Rustle 5 (cloth)"	= 'sound/effects/rustle5.ogg',
+		//Extreme SPLURT degeneracy starts here
+		"Fart" = 'modular_splurt/sound/voice/farts/fart.ogg',
+		"Fart 1" = 'modular_splurt/sound/voice/farts/fart1.ogg',
+		"Fart 2" = 'modular_splurt/sound/voice/farts/fart2.ogg',
+		"Fart 3" = 'modular_splurt/sound/voice/farts/fart3.ogg',
+		"Fart 4" = 'modular_splurt/sound/voice/farts/fart4.ogg',
+		"Fart 5" = 'modular_splurt/sound/voice/farts/fart5.ogg',
+		"Fart 6" = 'modular_splurt/sound/voice/farts/fart6.ogg',
+		"Fart 7" = 'modular_splurt/sound/voice/farts/fart7.ogg',
+		"Burp 1" = 'modular_splurt/sound/voice/burps/belch1.ogg',
+		"Burp 2" = 'modular_splurt/sound/voice/burps/belch2.ogg',
+		"Burp 3" = 'modular_splurt/sound/voice/burps/belch3.ogg',
+		"Burp 4" = 'modular_splurt/sound/voice/burps/belch4.ogg',
+		"Burp 5" = 'modular_splurt/sound/voice/burps/belch5.ogg',
+		"Burp 6" = 'modular_splurt/sound/voice/burps/belch6.ogg',
+		"Burp 7" = 'modular_splurt/sound/voice/burps/belch7.ogg',
+		"Burp 8" = 'modular_splurt/sound/voice/burps/belch8.ogg',
+		"Burp 9" = 'modular_splurt/sound/voice/burps/belch9.ogg',
+		"Burp 10" = 'modular_splurt/sound/voice/burps/belch10.ogg',
+		"Burp 11" = 'modular_splurt/sound/voice/burps/belch11.ogg',
+		"Burp 12" = 'modular_splurt/sound/voice/burps/belch12.ogg',
+		"Burp 13" = 'modular_splurt/sound/voice/burps/belch13.ogg',
+		"Burp 14" = 'modular_splurt/sound/voice/burps/belch14.ogg',
+		"Burp 15" = 'modular_splurt/sound/voice/burps/belch15.ogg',
 		"None" = null
 		))
 
@@ -70,6 +99,30 @@ GLOBAL_LIST_INIT(prey_vore_sounds, list(
 		"Rustle 3 (cloth)"	= 'sound/effects/rustle3.ogg',
 		"Rustle 4 (cloth)"	= 'sound/effects/rustle4.ogg',
 		"Rustle 5 (cloth)"	= 'sound/effects/rustle5.ogg',
+		//Extreme SPLURT degeneracy starts here
+		"Fart" = 'modular_splurt/sound/voice/farts/fart.ogg',
+		"Fart 1" = 'modular_splurt/sound/voice/farts/fart1.ogg',
+		"Fart 2" = 'modular_splurt/sound/voice/farts/fart2.ogg',
+		"Fart 3" = 'modular_splurt/sound/voice/farts/fart3.ogg',
+		"Fart 4" = 'modular_splurt/sound/voice/farts/fart4.ogg',
+		"Fart 5" = 'modular_splurt/sound/voice/farts/fart5.ogg',
+		"Fart 6" = 'modular_splurt/sound/voice/farts/fart6.ogg',
+		"Fart 7" = 'modular_splurt/sound/voice/farts/fart7.ogg',
+		"Burp 1" = 'modular_splurt/sound/voice/burps/belch1.ogg',
+		"Burp 2" = 'modular_splurt/sound/voice/burps/belch2.ogg',
+		"Burp 3" = 'modular_splurt/sound/voice/burps/belch3.ogg',
+		"Burp 4" = 'modular_splurt/sound/voice/burps/belch4.ogg',
+		"Burp 5" = 'modular_splurt/sound/voice/burps/belch5.ogg',
+		"Burp 6" = 'modular_splurt/sound/voice/burps/belch6.ogg',
+		"Burp 7" = 'modular_splurt/sound/voice/burps/belch7.ogg',
+		"Burp 8" = 'modular_splurt/sound/voice/burps/belch8.ogg',
+		"Burp 9" = 'modular_splurt/sound/voice/burps/belch9.ogg',
+		"Burp 10" = 'modular_splurt/sound/voice/burps/belch10.ogg',
+		"Burp 11" = 'modular_splurt/sound/voice/burps/belch11.ogg',
+		"Burp 12" = 'modular_splurt/sound/voice/burps/belch12.ogg',
+		"Burp 13" = 'modular_splurt/sound/voice/burps/belch13.ogg',
+		"Burp 14" = 'modular_splurt/sound/voice/burps/belch14.ogg',
+		"Burp 15" = 'modular_splurt/sound/voice/burps/belch15.ogg',
 		"None" = null
 		))
 
@@ -82,6 +135,31 @@ GLOBAL_LIST_INIT(pred_release_sounds, list(
 		"Stomach Move" = 'sound/vore/pred/stomachmove.ogg',
 		"Pred Escape" = 'sound/vore/pred/escape.ogg',
 		"Splatter" = 'sound/effects/splat.ogg',
+		//Extreme SPLURT degeneracy starts here
+		"Fart" = 'modular_splurt/sound/voice/farts/fart.ogg',
+		"Fart 1" = 'modular_splurt/sound/voice/farts/fart1.ogg',
+		"Fart 2" = 'modular_splurt/sound/voice/farts/fart2.ogg',
+		"Fart 3" = 'modular_splurt/sound/voice/farts/fart3.ogg',
+		"Fart 4" = 'modular_splurt/sound/voice/farts/fart4.ogg',
+		"Fart 5" = 'modular_splurt/sound/voice/farts/fart5.ogg',
+		"Fart 6" = 'modular_splurt/sound/voice/farts/fart6.ogg',
+		"Fart 7" = 'modular_splurt/sound/voice/farts/fart7.ogg',
+		"Fart 8" = 'modular_splurt/sound/voice/farts/fart8.ogg',
+		"Burp 1" = 'modular_splurt/sound/voice/burps/belch1.ogg',
+		"Burp 2" = 'modular_splurt/sound/voice/burps/belch2.ogg',
+		"Burp 3" = 'modular_splurt/sound/voice/burps/belch3.ogg',
+		"Burp 4" = 'modular_splurt/sound/voice/burps/belch4.ogg',
+		"Burp 5" = 'modular_splurt/sound/voice/burps/belch5.ogg',
+		"Burp 6" = 'modular_splurt/sound/voice/burps/belch6.ogg',
+		"Burp 7" = 'modular_splurt/sound/voice/burps/belch7.ogg',
+		"Burp 8" = 'modular_splurt/sound/voice/burps/belch8.ogg',
+		"Burp 9" = 'modular_splurt/sound/voice/burps/belch9.ogg',
+		"Burp 10" = 'modular_splurt/sound/voice/burps/belch10.ogg',
+		"Burp 11" = 'modular_splurt/sound/voice/burps/belch11.ogg',
+		"Burp 12" = 'modular_splurt/sound/voice/burps/belch12.ogg',
+		"Burp 13" = 'modular_splurt/sound/voice/burps/belch13.ogg',
+		"Burp 14" = 'modular_splurt/sound/voice/burps/belch14.ogg',
+		"Burp 15" = 'modular_splurt/sound/voice/burps/belch15.ogg',
 		"None" = null
 		))
 
@@ -94,5 +172,30 @@ GLOBAL_LIST_INIT(prey_release_sounds, list(
 		"Stomach Move" = 'sound/vore/prey/stomachmove.ogg',
 		"Pred Escape" = 'sound/vore/prey/escape.ogg',
 		"Splatter" = 'sound/effects/splat.ogg',
+		//Extreme SPLURT degeneracy starts here
+		"Fart" = 'modular_splurt/sound/voice/farts/fart.ogg',
+		"Fart 1" = 'modular_splurt/sound/voice/farts/fart1.ogg',
+		"Fart 2" = 'modular_splurt/sound/voice/farts/fart2.ogg',
+		"Fart 3" = 'modular_splurt/sound/voice/farts/fart3.ogg',
+		"Fart 4" = 'modular_splurt/sound/voice/farts/fart4.ogg',
+		"Fart 5" = 'modular_splurt/sound/voice/farts/fart5.ogg',
+		"Fart 6" = 'modular_splurt/sound/voice/farts/fart6.ogg',
+		"Fart 7" = 'modular_splurt/sound/voice/farts/fart7.ogg',
+		"Fart 8" = 'modular_splurt/sound/voice/farts/fart8.ogg',
+		"Burp 1" = 'modular_splurt/sound/voice/burps/belch1.ogg',
+		"Burp 2" = 'modular_splurt/sound/voice/burps/belch2.ogg',
+		"Burp 3" = 'modular_splurt/sound/voice/burps/belch3.ogg',
+		"Burp 4" = 'modular_splurt/sound/voice/burps/belch4.ogg',
+		"Burp 5" = 'modular_splurt/sound/voice/burps/belch5.ogg',
+		"Burp 6" = 'modular_splurt/sound/voice/burps/belch6.ogg',
+		"Burp 7" = 'modular_splurt/sound/voice/burps/belch7.ogg',
+		"Burp 8" = 'modular_splurt/sound/voice/burps/belch8.ogg',
+		"Burp 9" = 'modular_splurt/sound/voice/burps/belch9.ogg',
+		"Burp 10" = 'modular_splurt/sound/voice/burps/belch10.ogg',
+		"Burp 11" = 'modular_splurt/sound/voice/burps/belch11.ogg',
+		"Burp 12" = 'modular_splurt/sound/voice/burps/belch12.ogg',
+		"Burp 13" = 'modular_splurt/sound/voice/burps/belch13.ogg',
+		"Burp 14" = 'modular_splurt/sound/voice/burps/belch14.ogg',
+		"Burp 15" = 'modular_splurt/sound/voice/burps/belch15.ogg',
 		"None" = null
 		))

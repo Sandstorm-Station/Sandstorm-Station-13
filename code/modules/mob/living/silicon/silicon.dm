@@ -15,7 +15,6 @@
 	speech_span = SPAN_ROBOT
 	deathsound = 'sound/voice/borg_deathsound.ogg'
 	flags_1 = PREVENT_CONTENTS_EXPLOSION_1 | HEAR_1
-	vore_flags = NO_VORE
 
 	var/datum/ai_laws/laws = null//Now... THEY ALL CAN ALL HAVE LAWS
 	var/last_lawchange_announce = 0
@@ -48,6 +47,8 @@
 	var/hack_software = FALSE //Will be able to use hacking actions
 	var/interaction_range = 7			//wireless control range
 
+	typing_indicator_state = /obj/effect/overlay/typing_indicator/machine
+
 /mob/living/silicon/Initialize()
 	. = ..()
 	GLOB.silicon_mobs += src
@@ -60,8 +61,8 @@
 /mob/living/silicon/ComponentInitialize()
 	. = ..()
 	AddElement(/datum/element/flavor_text, _name = "Silicon Flavor Text", _save_key = "silicon_flavor_text")
-	AddElement(/datum/element/flavor_text, "", "Temporary Flavor Text", "This should be used only for things pertaining to the current round!")
-	AddElement(/datum/element/flavor_text, _name = "OOC Notes", _addendum = "Put information on ERP/vore/lewd-related preferences here. THIS SHOULD NOT CONTAIN REGULAR FLAVORTEXT!!", _always_show = TRUE, _save_key = "ooc_notes", _examine_no_preview = TRUE)
+	AddElement(/datum/element/flavor_text, "", "Temporary Flavor Text", "This should be used only for things pertaining to the current round!", _save_key = null)
+	AddElement(/datum/element/flavor_text, _name = "OOC Notes", _addendum = "Put information on ERP/vore/lewd-related preferences here. THIS SHOULD NOT CONTAIN REGULAR FLAVORTEXT!!", _save_key = "ooc_notes", _examine_no_preview = TRUE)
 
 /mob/living/silicon/med_hud_set_health()
 	return //we use a different hud
@@ -76,7 +77,7 @@
 	GLOB.silicon_mobs -= src
 	return ..()
 
-/mob/living/silicon/contents_explosion(severity, target)
+/mob/living/silicon/contents_explosion(severity, target, origin)
 	return
 
 /mob/living/silicon/proc/cancelAlarm()
@@ -410,18 +411,6 @@
 
 	src << browse(dat, "window=airoster")
 	onclose(src, "airoster")
-
-/mob/living/silicon/update_transform()
-	var/matrix/ntransform = matrix(transform) //aka transform.Copy()
-	var/changed = 0
-	if(resize != RESIZE_DEFAULT_SIZE)
-		changed++
-		ntransform.Scale(resize)
-		resize = RESIZE_DEFAULT_SIZE
-
-	if(changed)
-		animate(src, transform = ntransform, time = 2,easing = EASE_IN|EASE_OUT)
-	return ..()
 
 /mob/living/silicon/is_literate()
 	return 1

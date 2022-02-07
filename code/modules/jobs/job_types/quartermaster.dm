@@ -16,6 +16,7 @@
 	exp_type = EXP_TYPE_CREW
 	exp_type_department = EXP_TYPE_SUPPLY
 	considered_combat_role = TRUE
+	custom_spawn_text = "<font color='red'> No Cargonia without Admin Permission. Work with other departments to fulfill orders. Sell off excess amounts of metals and various empty crates as necessary. Keep track of your Shaft Miners by occasionally checking in with them via comms. Don't be stupid and try collecting taxes. You are fifth in line to be Acting Captain.</font>"
 
 	outfit = /datum/outfit/job/quartermaster
 
@@ -25,7 +26,7 @@
 	minimal_access = list(ACCESS_MAINT_TUNNELS, ACCESS_MAILSORTING, ACCESS_CARGO, ACCESS_CARGO_BOT, ACCESS_QM, ACCESS_MINING,
 					ACCESS_MINING_STATION, ACCESS_MINERAL_STOREROOM, ACCESS_KEYCARD_AUTH, ACCESS_RC_ANNOUNCE,
 					ACCESS_SEC_DOORS, ACCESS_HEADS)
-	paycheck = PAYCHECK_HARD //They can already buy stuff using cargo budget, don't give em a command-level paycheck.
+	paycheck = PAYCHECK_HARD //They can already buy stuff using cargo budget, don't give em a command-level paycheck.	//alright i'll agree to that -qweq
 	paycheck_department = ACCOUNT_CAR
 
 	display_order = JOB_DISPLAY_ORDER_QUARTERMASTER

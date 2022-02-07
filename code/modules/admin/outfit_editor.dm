@@ -55,7 +55,7 @@
 			"name" = initial(item.name),
 			"desc" = initial(item.desc),
 			// at this point initializing the item is probably faster tbh
-			"sprite" = icon2base64(icon(initial(item.icon), initial(item.icon_state))),
+			"sprite" = icon2base64(icon(initial(item.icon), initial(item.icon_state), SOUTH, 1)),
 		)
 
 	return data
@@ -188,6 +188,17 @@
 			options = typesof(/obj/item/clothing/shoes)
 		if("r_pocket")
 			choose_any_item(slot)
+
+		if("ears_extra")
+			options = typesof(/obj/item/radio/headset)
+		if("wrists")
+			options = typesof(/obj/item/clothing/wrists)
+		if("shirt")
+			options = typesof(/obj/item/clothing/underwear/shirt)
+		if("underwear")
+			options = typesof(/obj/item/clothing/underwear/briefs)
+		if("socks")
+			options = typesof(/obj/item/clothing/underwear/socks)
 
 	if(length(options))
 		set_item(slot, tgui_input_list(owner, "Choose an item", OUTFIT_EDITOR_NAME, options))

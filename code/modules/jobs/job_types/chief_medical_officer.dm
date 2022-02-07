@@ -16,7 +16,7 @@
 	exp_type = EXP_TYPE_CREW
 	exp_type_department = EXP_TYPE_MEDICAL
 	considered_combat_role = TRUE
-
+	custom_spawn_text = "<font color='red'>Keep the Fridge stocked with Medicine. Have SOME competency at performing surgeries. Ensure that if a Virus breaks out, that you or the Virologist handles creating a vaccine. You are Fourth in line to be Acting Captain.</font>"
 	outfit = /datum/outfit/job/cmo
 	plasma_outfit = /datum/outfit/plasmaman/cmo
 

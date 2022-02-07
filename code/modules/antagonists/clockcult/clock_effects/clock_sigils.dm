@@ -36,7 +36,7 @@
 		return TRUE
 	. = ..()
 
-/obj/effect/clockwork/sigil/ex_act(severity)
+/obj/effect/clockwork/sigil/ex_act(severity, target, origin)
 	visible_message("<span class='warning'>[src] scatters into thousands of particles.</span>")
 	qdel(src)
 
@@ -110,6 +110,19 @@
 	var/delete_on_finish = TRUE
 	sigil_name = "Sigil of Submission"
 	var/glow_type = /obj/effect/temp_visual/ratvar/sigil/submission
+
+/obj/effect/clockwork/sigil/submission/Crossed(atom/movable/AM)
+	. = ..()
+	if(istype(AM, /obj/item/aicard))
+		var/obj/item/aicard/cardy = AM
+		if(!cardy.AI)
+			return
+		var/mob/living/silicon/ai/aiconvert = cardy.AI
+		if(aiconvert.stat > stat_affected)
+			return
+		if(is_servant_of_ratvar(aiconvert) || !(aiconvert.mind || aiconvert.has_status_effect(STATUS_EFFECT_SIGILMARK)))
+			return
+		sigil_effects(aiconvert)
 
 /obj/effect/clockwork/sigil/submission/sigil_effects(mob/living/L)
 	var/turf/T = get_turf(src)
@@ -191,7 +204,7 @@
 	. = ..()
 	update_icon()
 
-/obj/effect/clockwork/sigil/transmission/ex_act(severity)
+/obj/effect/clockwork/sigil/transmission/ex_act(severity, target, origin)
 	if(severity == 3)
 		adjust_clockwork_power(500) //Light explosions charge the network!
 		visible_message("<span class='warning'>[src] flares a brilliant orange!</span>")
@@ -225,18 +238,22 @@
 	return ..()
 
 /obj/effect/clockwork/sigil/transmission/process()
-    var/power_drained = 0
-    var/power_mod = 0.005
-    for(var/t in spiral_range_turfs(SIGIL_ACCESS_RANGE, src))
-        var/turf/T = t
-        for(var/M in T)
-            var/atom/movable/A = M
-            power_drained += A.power_drain(TRUE)
+	do_process()
 
-        CHECK_TICK
+/obj/effect/clockwork/sigil/transmission/proc/do_process()
+	set waitfor = FALSE
+	var/power_drained = 0
+	var/power_mod = 0.005
+	for(var/t in spiral_range_turfs(SIGIL_ACCESS_RANGE, src))
+		var/turf/T = t
+		for(var/M in T)
+			var/atom/movable/A = M
+			power_drained += A.power_drain(TRUE)
 
-    adjust_clockwork_power(power_drained * power_mod * 15)
-    new /obj/effect/temp_visual/ratvar/sigil/transmission(loc, 1 + (power_drained * 0.0035))
+		CHECK_TICK
+
+	adjust_clockwork_power(power_drained * power_mod * 15)
+	new /obj/effect/temp_visual/ratvar/sigil/transmission(loc, 1 + (power_drained * 0.0035))
 
 /obj/effect/clockwork/sigil/transmission/proc/charge_cyborg(mob/living/silicon/robot/cyborg)
 	if(!cyborg_checks(cyborg))

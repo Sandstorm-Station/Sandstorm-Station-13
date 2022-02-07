@@ -15,6 +15,8 @@
 #define DISABLE_DEATHRATTLE		(1<<12)
 #define DISABLE_ARRIVALRATTLE	(1<<13)
 #define COMBOHUD_LIGHTING		(1<<14)
+#define VERB_CONSENT			(1<<15) // Skyrat - ERP Mechanic Addition
+#define LEWD_VERB_SOUNDS		(1<<16) // Skyrat - ERP Mechanic Addition
 
 #define TOGGLES_DEFAULT (SOUND_ADMINHELP|SOUND_MIDI|SOUND_AMBIENCE|SOUND_LOBBY|MEMBER_PUBLIC|INTENT_STYLE|MIDROUND_ANTAG|SOUND_INSTRUMENTS|SOUND_SHIP_AMBIENCE|SOUND_PRAYERS|SOUND_ANNOUNCEMENTS)
 
@@ -95,3 +97,8 @@
 #define CHAOS_MED "Medium"
 #define CHAOS_HIGH "High"
 #define CHAOS_MAX "Maximum"
+
+// 'Be Victim' consent options for preferences panel / antag target HUD
+#define BEVICTIM_NO "No"
+#define BEVICTIM_ASK "Ask"
+#define BEVICTIM_YES "Yes"

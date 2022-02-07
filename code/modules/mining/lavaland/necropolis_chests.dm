@@ -61,37 +61,32 @@
 			new /obj/item/guardiancreator(src)
 
 /obj/structure/closet/crate/necropolis/tendril/weapon_armor/PopulateContents()
-	var/loot = rand(1,11)
+	var/loot = rand(1,10)
 	switch(loot)
 		if(1)
 			new /obj/item/clothing/suit/space/hardsuit/cult(src)
 		if(2)
 			new /obj/item/katana/lavaland(src)
 		if(3)
-			if(prob(50))
-				new /obj/item/disk/design_disk/modkit_disc/resonator_blast(src)
-			else
-				new /obj/item/disk/design_disk/modkit_disc/rapid_repeater(src)
-		if(4)
 			new /obj/item/clothing/suit/space/hardsuit/ert/paranormal/beserker/old(src)
-		if(5)
+		if(4)
 			new /obj/item/nullrod/scythe/talking(src)
-		if(6)
+		if(5)
 			new /obj/item/nullrod/armblade(src)
-		if(7)
+		if(6)
 			new /obj/item/reagent_containers/food/drinks/bottle/holywater/hell(src)
 			new /obj/item/clothing/suit/space/hardsuit/ert/paranormal/inquisitor/old(src)
-		if(8)
+		if(7)
 			new /obj/item/grenade/clusterbuster/inferno(src)
-		if(9)
+		if(8)
 			new /obj/item/gun/magic/wand/book/shock(src)
-		if(10)
+		if(9)
 			new /obj/item/gun/magic/wand/book/page(src)
-		if(11)
+		if(10)
 			new /obj/item/gun/magic/wand/book/spark(src)
 
 /obj/structure/closet/crate/necropolis/tendril/misc/PopulateContents()
-	var/loot = rand(1,14)
+	var/loot = rand(1,12)
 	switch(loot)
 		if(1)
 			new /obj/item/shared_storage/red(src)
@@ -106,31 +101,21 @@
 		if(6)
 			new /obj/item/jacobs_ladder(src)
 		if(7)
-			if(prob(50))
-				new /obj/item/disk/design_disk/modkit_disc/mob_and_turf_aoe(src)
-			else
-				new /obj/item/disk/design_disk/modkit_disc/bounty(src)
-		if(8)
 			new /obj/item/wisp_lantern(src)
-		if(9)
+		if(8)
 			new /obj/item/pickaxe/rosegold(src)
-		if(10)
+		if(9)
 			new /obj/item/bedsheet/cosmos(src)
 			new /obj/item/melee/skateboard/hoverboard(src)
-		if(11)
+		if(10)
 			new /obj/item/disk/tech_disk/illegal(src)
-		if(12)
+		if(11)
 			new /obj/item/clothing/suit/space/hardsuit/cult(src)
-		if(13)
+		if(12)
 			new /obj/item/katana/lavaland(src)
-		if(14)
-			if(prob(50))
-				new /obj/item/disk/design_disk/modkit_disc/resonator_blast(src)
-			else
-				new /obj/item/disk/design_disk/modkit_disc/rapid_repeater(src)
 
 /obj/structure/closet/crate/necropolis/tendril/all/PopulateContents()
-	var/loot = rand(1,29)
+	var/loot = rand(1,28)
 	switch(loot)
 		if(1)
 			new /obj/item/shared_storage/red(src)
@@ -145,56 +130,51 @@
 		if(6)
 			new /obj/item/jacobs_ladder(src)
 		if(7)
-			if(prob(50))
-				new /obj/item/disk/design_disk/modkit_disc/mob_and_turf_aoe(src)
-			else
-				new /obj/item/disk/design_disk/modkit_disc/bounty(src)
-		if(8)
 			new /obj/item/wisp_lantern(src)
-		if(9)
+		if(8)
 			new /obj/item/pickaxe/rosegold(src)
-		if(10)
+		if(9)
 			new /obj/item/bedsheet/cosmos(src)
 			new /obj/item/melee/skateboard/hoverboard(src)
-		if(11)
+		if(10)
 			new /obj/item/disk/tech_disk/illegal(src)
-		if(12)
+		if(11)
 			new /obj/item/clothing/suit/space/hardsuit/ert/paranormal/beserker/old(src)
-		if(13)
+		if(12)
 			new /obj/item/nullrod/scythe/talking(src)
-		if(14)
+		if(13)
 			new /obj/item/nullrod/armblade(src)
-		if(15)
+		if(14)
 			new /obj/item/reagent_containers/food/drinks/bottle/holywater/hell(src)
 			new /obj/item/clothing/suit/space/hardsuit/ert/paranormal/inquisitor/old(src)
-		if(16)
+		if(15)
 			new /obj/item/grenade/clusterbuster/inferno(src)
-		if(17)
+		if(16)
 			new /obj/item/gun/magic/wand/book/shock(src)
-		if(18)
+		if(17)
 			new /obj/item/gun/magic/wand/book/page(src)
-		if(19)
+		if(18)
 			new /obj/item/gun/magic/wand/book/spark(src)
-		if(20)
+		if(19)
 			new /obj/item/soulstone/anybody(src)
-		if(21)
+		if(20)
 			new /obj/item/rod_of_asclepius(src)
-		if(22)
+		if(21)
 			new /obj/item/organ/heart/cursed/wizard(src)
-		if(23)
+		if(22)
 			new /obj/item/book/granter/spell/summonitem(src)
-		if(24)
+		if(23)
 			new /obj/item/borg/upgrade/modkit/lifesteal(src)
 			new /obj/item/bedsheet/cult(src)
-		if(25)
+		if(24)
 			new /obj/item/clothing/neck/necklace/memento_mori(src)
-		if(26)
+		if(25)
 			new /obj/item/warp_cube/red(src)
-		if(27)
+		if(26)
 			new /obj/item/immortality_talisman(src)
-		if(28)
+		if(27)
 			new /obj/item/gun/magic/wand/book/healing(src)
-		if(29)
+		if(28)
 			new /obj/item/guardiancreator(src)
 
 //KA modkit design discs
@@ -266,6 +246,8 @@
 	desc = "A wooden rod about the size of your forearm with a snake carved around it, winding it's way up the sides of the rod. Something about it seems to inspire in you the responsibilty and duty to help others."
 	icon = 'icons/obj/lavaland/artefacts.dmi'
 	icon_state = "asclepius_dormant"
+	lefthand_file = 'icons/mob/inhands/weapons/staves_lefthand.dmi'
+	righthand_file = 'icons/mob/inhands/weapons/staves_righthand.dmi'
 	var/activated = FALSE
 	var/usedHand
 
@@ -345,7 +327,7 @@
 		ADD_TRAIT(user, TRAIT_NODEATH, "memento_mori")
 		ADD_TRAIT(user, TRAIT_NOHARDCRIT, "memento_mori")
 		ADD_TRAIT(user, TRAIT_NOCRITDAMAGE, "memento_mori")
-		icon_state = "memento_mori_active"
+		icon_state = "[initial(icon_state)]_active" //modular_sand edit
 		active_owner = user
 
 /obj/item/clothing/neck/necklace/memento_mori/proc/mori()
@@ -502,7 +484,7 @@
 	mouse_opacity = MOUSE_OPACITY_TRANSPARENT
 	anchored = TRUE
 
-/obj/effect/warp_cube/ex_act(severity, target)
+/obj/effect/warp_cube/ex_act(severity, target, origin)
 	return
 
 //Meat Hook
@@ -625,7 +607,7 @@
 /obj/effect/immortality_talisman/attackby()
 	return
 
-/obj/effect/immortality_talisman/ex_act()
+/obj/effect/immortality_talisman/ex_act(severity, target, origin)
 	return
 
 /obj/effect/immortality_talisman/singularity_pull()
@@ -712,17 +694,23 @@
 
 /datum/reagent/flightpotion/reaction_mob(mob/living/M, method=TOUCH, reac_volume, show_message = 1)
 	if(iscarbon(M) && M.stat != DEAD)
-		if(!ishumanbasic(M) || reac_volume < 5) // implying xenohumans are holy
+		var/mob/living/carbon/C = M
+		var/holycheck = ishumanbasic(C)
+		if(!(holycheck || islizard(C)) || reac_volume < 5) // implying xenohumans are holy //as with all things,
 			if(method == INGEST && show_message)
-				to_chat(M, "<span class='notice'><i>You feel nothing but a terrible aftertaste.</i></span>")
+				to_chat(C, "<span class='notice'><i>You feel nothing but a terrible aftertaste.</i></span>")
 			return ..()
 
-		to_chat(M, "<span class='userdanger'>A terrible pain travels down your back as wings burst out!</span>")
-		M.set_species(/datum/species/angel)
-		playsound(M.loc, 'sound/items/poster_ripped.ogg', 50, 1, -1)
-		M.adjustBruteLoss(20)
-		M.emote("scream")
+		to_chat(C, "<span class='userdanger'>A terrible pain travels down your back as wings burst out!</span>")
+		C.dna.species.GiveSpeciesFlight(C)
+		if(holycheck)
+			to_chat(C, "<span class='notice'>You feel blessed!</span>")
+			ADD_TRAIT(C, TRAIT_HOLY, SPECIES_TRAIT)
+		playsound(C.loc, 'sound/items/poster_ripped.ogg', 50, TRUE, -1)
+		C.adjustBruteLoss(20)
+		C.emote("scream")
 	..()
+
 
 
 /obj/item/jacobs_ladder
@@ -994,7 +982,6 @@
 			H.dna.features["wings"] = "None"
 			H.dna.features["frills"] = "None"
 			H.dna.features["spines"] = "Long"
-			H.dna.features["body_markings"] = "Dark Tiger Body"
 			H.dna.features["legs"] = "Digitigrade"
 			H.dna.features["taur_body"] = "None"
 			H.left_eye_color = "fee5a3"

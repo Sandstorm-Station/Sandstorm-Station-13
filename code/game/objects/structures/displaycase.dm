@@ -222,12 +222,12 @@
 	else
 		return ..()
 
-//The captains display case requiring specops ID access is intentional.
+//The captains display case requiring specops ID access is intentional. "that was a joke, totally useless, everyone broke it anyways, atleast the captain can have his OWN THING -- sandstorm edit"
 //The lab cage and captains display case do not spawn with electronics, which is why req_access is needed.
 /obj/structure/displaycase/captain
 	alert = TRUE
 	start_showpiece_type = /obj/item/gun/energy/laser/captain
-	req_access = list(ACCESS_CENT_SPECOPS)
+	req_access = list(ACCESS_CAPTAIN)
 
 /obj/structure/displaycase/labcage
 	name = "lab cage"
@@ -397,7 +397,7 @@
 		data["owner_name"] = payments_acc.account_holder
 	if(showpiece)
 		data["product_name"] = capitalize(showpiece.name)
-		var/base64 = icon2base64(icon(showpiece.icon, showpiece.icon_state))
+		var/base64 = icon2base64(icon(showpiece.icon, showpiece.icon_state, SOUTH, 1))
 		data["product_icon"] = base64
 	data["registered"] = register
 	data["product_cost"] = sale_price

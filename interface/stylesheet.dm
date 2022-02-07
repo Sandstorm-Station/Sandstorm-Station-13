@@ -94,6 +94,8 @@ h1.alert, h2.alert		{color: #000000;}
 .suicide				{color: #ff5050;	font-style: italic;}
 .green					{color: #03ff39;}
 .nicegreen				{color: #14a833;}
+.userlove				{color: #FF1493;	font-style: italic; font-weight: bold;	text-shadow: 0 0 6px #ff6dbc;}
+.love					{color: #ff006a;	font-style: italic;	text-shadow: 0 0 6px #ff6d6d;}
 .shadowling				{color: #3b2769;}
 .cult					{color: #960000;}
 .cultlarge				{color: #960000;	font-weight: bold;	font-size: 3;}
@@ -195,6 +197,13 @@ h1.alert, h2.alert		{color: #000000;}
 }
 
 .icon					{height: 1em;	width: auto;}
+.infobox {
+    border: 1px ridge #383243;
+	background: rgba(40, 40, 60, 0.5);
+	margin: 2px 8px;
+	padding: 8px 12px;
+	max-width: 550px;
+}
 
 .memo					{color: #638500;	text-align: center;}
 .memoedit				{text-align: center;	font-size: 2;}

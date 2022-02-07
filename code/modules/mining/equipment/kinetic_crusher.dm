@@ -41,7 +41,7 @@
 
 /obj/item/kinetic_crusher/ComponentInitialize()
 	. = ..()
-	AddComponent(/datum/component/butchering, 60, 110) //technically it's huge and bulky, but this provides an incentive to use it
+	AddComponent(/datum/component/butchering, 110, 55)
 	AddComponent(/datum/component/two_handed, force_unwielded=0, force_wielded=20)
 
 /obj/item/kinetic_crusher/Destroy()
@@ -184,6 +184,7 @@
 	icon_state = "crusher-glaive"
 	item_state = "crusher0-glaive"
 	block_parry_data = /datum/block_parry_data/crusherglaive
+	obj_flags = UNIQUE_RENAME
 	//ideas: altclick that lets you pummel people with the handguard/handle?
 	//parrying functionality?
 
@@ -196,7 +197,6 @@
 	parry_imperfect_falloff_percent = 20
 	parry_efficiency_to_counterattack = 100 // perfect parry or you're cringe
 	parry_failed_stagger_duration = 1.5 SECONDS // a good time to reconsider your actions...
-	parry_failed_clickcd_duration = 1.5 SECONDS // or your failures
 
 /obj/item/kinetic_crusher/glaive/on_active_parry(mob/living/owner, atom/object, damage, attack_text, attack_type, armour_penetration, mob/attacker, def_zone, list/block_return, parry_efficiency, parry_time) // if you're dumb enough to go for a parry...
 	var/turf/proj_turf = owner.loc // destabilizer bolt, ignoring cooldown
@@ -228,6 +228,48 @@
 
 /obj/item/kinetic_crusher/glaive/update_icon_state()
 	item_state = "crusher[wielded]-glaive" // this is not icon_state and not supported by 2hcomponent
+
+/obj/item/kinetic_crusher/glaive/bone
+	name = "necropolis bone glaive"
+	desc = "Tribals trying to immitate technology have spent a long time to somehow assemble bits and pieces to work together just like the real thing. \
+	Although it does take a lot of effort and luck to create, it was a success."
+	icon_state = "crusher-bone"
+	item_state = "crusher0-bone"
+
+/obj/item/kinetic_crusher/glaive/bone/update_icon_state()
+	item_state = "crusher[wielded]-bone"
+
+/obj/item/kinetic_crusher/glaive/gauntlets
+	name = "proto-kinetic gauntlets"
+	desc = "A pair of scaled-down proto-kinetic crusher destabilizer modules shoved into gauntlets and greaves, often used by \
+	those who wish to spit in the eyes of God. Sacrifices outright damage for \
+	a reliance on backstabs and the ability to give fauna concussions on a parry."
+	attack_verb = list("pummeled", "punched", "jabbed", "hammer-fisted", "uppercut", "slammed")
+	hitsound = 'sound/weapons/resonator_blast.ogg'
+	sharpness = SHARP_NONE // use your survival dagger or smth
+	icon_state = "crusher-hands"
+	item_state = "crusher0-fist"
+	unique_reskin = list("Gauntlets" = "crusher-hands",
+						"Fingerless" = "crusher-hands-bare")
+	detonation_damage = 45 // 60 on wield, compared to normal crusher's 70
+	backstab_bonus = 70 // 130 on backstab though
+
+/obj/item/kinetic_crusher/glaive/gauntlets/ComponentInitialize()
+	. = ..()
+	AddComponent(/datum/component/two_handed, force_unwielded=0, force_wielded=15)
+
+/obj/item/kinetic_crusher/glaive/gauntlets/active_parry_reflex_counter(mob/living/owner, atom/object, damage, attack_text, attack_type, armour_penetration, mob/attacker, def_zone, list/return_list, parry_efficiency, list/effect_text)
+	. = ..()
+	if(isliving(attacker))
+		var/mob/living/liv_atk = attacker
+		if(liv_atk.mob_size >= MOB_SIZE_LARGE && !ismegafauna(liv_atk))
+			liv_atk.apply_status_effect(STATUS_EFFECT_GAUNTLET_CONC)
+
+/obj/item/kinetic_crusher/glaive/gauntlets/update_icon_state()
+	if(current_skin == "Fingerless")
+		item_state = "crusher[wielded]-fistbare"
+	else
+		item_state = "crusher[wielded]-fist"
 
 //destablizing force
 /obj/item/projectile/destabilizer
@@ -276,12 +318,6 @@
 
 /obj/item/crusher_trophy/proc/effect_desc()
 	return "errors"
-
-/obj/item/crusher_trophy/attackby(obj/item/A, mob/living/user)
-	if(istype(A, /obj/item/kinetic_crusher))
-		add_to(A, user)
-	else
-		..()
 
 /obj/item/crusher_trophy/proc/add_to(obj/item/kinetic_crusher/H, mob/living/user)
 	for(var/t in H.trophies)

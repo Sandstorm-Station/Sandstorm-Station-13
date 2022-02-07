@@ -68,6 +68,7 @@
 	var/unconvertable = FALSE
 	var/late_joiner = FALSE
 
+
 	var/force_escaped = FALSE  // Set by Into The Sunset command of the shuttle manipulator
 	var/list/learned_recipes //List of learned recipe TYPES.
 
@@ -82,6 +83,8 @@
 	///What character we spawned in as- either at roundstart or latejoin, so we know for persistent scars if we ended as the same person or not
 	var/mob/original_character
 
+	/// A lazy list of statuses to add next to this mind in the traitor panel
+	var/list/special_statuses
 
 /datum/mind/New(var/key)
 	skill_holder = new(src)
@@ -150,12 +153,15 @@
 	if(isliving(new_character)) //New humans and such are by default enabled arousal. Let's always use the new mind's prefs.
 		var/mob/living/L = new_character
 		if(L.client?.prefs && L.client.prefs.auto_ooc && L.client.prefs.chat_toggles & CHAT_OOC)
-			DISABLE_BITFIELD(L.client.prefs.chat_toggles,CHAT_OOC)
+			L.client.prefs.chat_toggles &= ~(CHAT_OOC)
 
 	hide_ckey = current.client?.prefs?.hide_ckey
 
 	SEND_SIGNAL(src, COMSIG_MIND_TRANSFER, new_character, old_character)
 	SEND_SIGNAL(new_character, COMSIG_MOB_ON_NEW_MIND)
+//splurt change
+	INVOKE_ASYNC(GLOBAL_PROC, .proc/_paci_check, new_character, old_character)
+//end change
 
 /datum/mind/proc/store_memory(new_text)
 	if((length_char(memory) + length_char(new_text)) <= MAX_MESSAGE_LEN)
@@ -289,16 +295,23 @@
 	remove_changeling()
 	remove_traitor()
 	remove_nukeop()
+	remove_slaver()
 	remove_wizard()
 	remove_cultist()
 	remove_rev()
 	SSticker.mode.update_cult_icons_removed(src)
 
-/datum/mind/proc/equip_traitor(datum/traitor_class/traitor_class, silent = FALSE, datum/antagonist/uplink_owner)
+/**
+ * ## give_uplink
+ *
+ * A mind proc for giving anyone an uplink.
+ * arguments:
+ * * silent: if this should send a message to the mind getting the uplink. traitors do not use this silence, but the silence var on their antag datum.
+ * * antag_datum: the antag datum of the uplink owner, for storing it in antag memory. optional!
+ */
+/datum/mind/proc/equip_traitor(silent = FALSE, datum/antagonist/antag_datum)
 	if(!current)
 		return
-	if(!traitor_class)
-		traitor_class = GLOB.traitor_classes[TRAITOR_HUMAN]
 	var/mob/living/carbon/human/traitor_mob = current
 	if (!istype(traitor_mob))
 		return
@@ -312,16 +325,9 @@
 		P = locate() in PDA
 	if (!P) // If we couldn't find a pen in the PDA, or we didn't even have a PDA, do it the old way
 		P = locate() in all_contents
-		if(!P) // I do not have a pen.
-			var/obj/item/pen/inowhaveapen
-			if(istype(traitor_mob.back,/obj/item/storage)) //ok buddy you better have a backpack!
-				inowhaveapen = new /obj/item/pen(traitor_mob.back)
-			else
-				inowhaveapen = new /obj/item/pen(traitor_mob.loc)
-				traitor_mob.put_in_hands(inowhaveapen) // I hope you don't have arms and your traitor pen gets stolen for all this trouble you've caused.
-			P = inowhaveapen
 
 	var/obj/item/uplink_loc
+	var/implant = FALSE
 
 	if(traitor_mob.client && traitor_mob.client.prefs)
 		switch(traitor_mob.client.prefs.uplink_spawn_loc)
@@ -339,33 +345,38 @@
 					uplink_loc = P
 			if(UPLINK_PEN)
 				uplink_loc = P
-				if(!uplink_loc)
-					uplink_loc = PDA
-				if(!uplink_loc)
-					uplink_loc = R
+			if(UPLINK_IMPLANT)
+				implant = TRUE
 
-	if (!uplink_loc)
-		if(!silent)
-			to_chat(traitor_mob, "Unfortunately, [traitor_class.employer] wasn't able to get you an Uplink.")
-		. = 0
-	else
-		. = uplink_loc
-		var/datum/component/uplink/U = uplink_loc.AddComponent(/datum/component/uplink, traitor_mob.key,traitor_class)
-		if(!U)
-			CRASH("Uplink creation failed.")
-		U.setup_unlock_code()
-		if(!silent)
-			if(uplink_loc == R)
-				to_chat(traitor_mob, "[traitor_class.employer] has cunningly disguised a Syndicate Uplink as your [R.name]. Simply dial the frequency [format_frequency(U.unlock_code)] to unlock its hidden features.")
-			else if(uplink_loc == PDA)
-				to_chat(traitor_mob, "[traitor_class.employer] has cunningly disguised a Syndicate Uplink as your [PDA.name]. Simply enter the code \"[U.unlock_code]\" into the ringtone select to unlock its hidden features.")
-			else if(uplink_loc == P)
-				to_chat(traitor_mob, "[traitor_class.employer] has cunningly disguised a Syndicate Uplink as your [P.name]. Simply twist the top of the pen [U.unlock_code] from its starting position to unlock its hidden features.")
+	if(!uplink_loc) // We've looked everywhere, let's just implant you
+		implant = TRUE
 
-		if(uplink_owner)
-			uplink_owner.antag_memory += U.unlock_note + "<br>"
-		else
-			traitor_mob.mind.store_memory(U.unlock_note)
+	if(implant)
+		var/obj/item/implant/uplink/starting/new_implant = new(traitor_mob)
+		new_implant.implant(traitor_mob, null, silent = TRUE)
+		if(!silent)
+			to_chat(traitor_mob, span_boldnotice("Your Syndicate Uplink has been cunningly implanted in you, for a small TC fee. Simply trigger the uplink to access it."))
+		return new_implant
+
+	. = uplink_loc
+	var/unlock_text
+	var/datum/component/uplink/new_uplink = uplink_loc.AddComponent(/datum/component/uplink, traitor_mob.key)
+	if(!new_uplink)
+		CRASH("Uplink creation failed.")
+	new_uplink.setup_unlock_code()
+	if(uplink_loc == R)
+		unlock_text = "Your Uplink is cunningly disguised as your [R.name]. Simply dial the frequency [format_frequency(new_uplink.unlock_code)] to unlock its hidden features."
+	else if(uplink_loc == PDA)
+		unlock_text = "Your Uplink is cunningly disguised as your [PDA.name]. Simply enter the code \"[new_uplink.unlock_code]\" into the ringtone select to unlock its hidden features."
+	else if(uplink_loc == P)
+		unlock_text = "Your Uplink is cunningly disguised as your [P.name]. Simply twist the top of the pen [english_list(new_uplink.unlock_code)] from its starting position to unlock its hidden features."
+	new_uplink.unlock_text = unlock_text
+	if(!silent)
+		to_chat(traitor_mob, span_boldnotice(unlock_text))
+	if(!antag_datum)
+		traitor_mob.mind.store_memory(new_uplink.unlock_note)
+		return
+	antag_datum.antag_memory += new_uplink.unlock_note + "<br>"
 
 //Link a new mobs mind to the creator of said mob. They will join any team they are currently on, and will only switch teams when their creator does.
 
@@ -392,7 +403,6 @@
 		N.send_to_spawnpoint = FALSE
 		N.nukeop_outfit = null
 		add_antag_datum(N,converter.nuke_team)
-
 
 	enslaved_to = creator
 
@@ -1391,16 +1401,35 @@ GLOBAL_LIST(objective_choices)
 						else
 							target_antag = target
 
-//ambition start
-		if(!GLOB.objective_choices)
-			populate_objective_choices()
+			var/list/allowed_types = list(
+				/datum/objective/assassinate,
+				/datum/objective/assassinate/once,
+				/datum/objective/maroon,
+				/datum/objective/debrain,
+				/datum/objective/protect,
+				/datum/objective/destroy,
+				/datum/objective/hijack,
+				/datum/objective/escape,
+				/datum/objective/survive,
+				/datum/objective/martyr,
+				/datum/objective/steal,
+				/datum/objective/download,
+				/datum/objective/nuclear,
+				/datum/objective/absorb,
+				/datum/objective/rescue_prisoner,
+				/datum/objective/custom
+			)
 
-		if(old_objective && GLOB.objective_choices[old_objective.name])
-			def_value = old_objective.name
+			for(var/T in allowed_types)
+				var/datum/objective/X = T
+				choices[initial(X.name)] = T
 
-		var/selected_type = input("Select objective type:", "Objective type", def_value) as null|anything in GLOB.objective_choices
-		selected_type = GLOB.objective_choices[selected_type]
-//ambition end
+		if(old_objective)
+			if(old_objective.name in choices)
+				def_value = old_objective.name
+
+		var/selected_type = input("Select objective type:", "Objective type", def_value) as null|anything in choices
+		selected_type = choices[selected_type]
 		if (!selected_type)
 			return
 

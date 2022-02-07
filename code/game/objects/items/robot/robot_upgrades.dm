@@ -90,7 +90,7 @@ as performing this in action() will cause the upgrade to end up in the borg inst
 			to_chat(user, "<span class='notice'>There's no room for another VTEC unit!</span>")
 			return FALSE
 
-		//R.speed = -2 // Gotta go fast.
+		//R.vtec = -2 // Gotta go fast.
         //Citadel change - makes vtecs give an ability rather than reducing the borg's speed instantly
 		VC = new /obj/effect/proc_holder/silicon/cyborg/vtecControl
 		R.AddAbility(VC)
@@ -100,7 +100,7 @@ as performing this in action() will cause the upgrade to end up in the borg inst
 	. = ..()
 	if (.)
 		R.RemoveAbility(VC)
-		R.speed = initial(R.speed)
+		R.vtec = initial(R.vtec)
 		R.cansprint = 1
 
 /obj/item/borg/upgrade/disablercooler
@@ -457,6 +457,10 @@ as performing this in action() will cause the upgrade to end up in the borg inst
 	desc = "An upgrade to a cyborg's hypospray, allowing it to \
 		pierce armor and thick material."
 	icon_state = "cyborg_upgrade3"
+	module_type = list(/obj/item/robot_module/medical,
+		/obj/item/robot_module/syndicate_medical)
+	var/list/additional_reagents = list()
+	module_flags = BORG_MODULE_MEDICAL
 
 /obj/item/borg/upgrade/piercing_hypospray/action(mob/living/silicon/robot/R, user = usr)
 	. = ..()
@@ -514,6 +518,7 @@ as performing this in action() will cause the upgrade to end up in the borg inst
 	module_type = list(
 		/obj/item/robot_module/medical,
 		/obj/item/robot_module/syndicate_medical)
+	module_flags = BORG_MODULE_MEDICAL
 
 /obj/item/borg/upgrade/advhealth/action(mob/living/silicon/robot/R, user = usr)
 	. = ..()
@@ -557,6 +562,7 @@ as performing this in action() will cause the upgrade to end up in the borg inst
 	desc = "A cyborg resizer, it makes a cyborg huge."
 	icon_state = "cyborg_upgrade3"
 
+/* moved to modular_sand
 /obj/item/borg/upgrade/expand/action(mob/living/silicon/robot/R, user = usr)
 	. = ..()
 	if(.)
@@ -590,6 +596,7 @@ as performing this in action() will cause the upgrade to end up in the borg inst
 		R.resize = 0.5
 		R.hasExpanded = FALSE
 		R.update_transform()
+*/
 
 /obj/item/borg/upgrade/rped
 	name = "engineering cyborg BSRPED"
@@ -681,7 +688,7 @@ as performing this in action() will cause the upgrade to end up in the borg inst
 	action_icon_state = "Chevron_State_0"
 
 	var/currentState = 0
-	var/maxReduction = 1
+	var/maxReduction = 0.5
 
 
 /obj/effect/proc_holder/silicon/cyborg/vtecControl/Trigger(mob/living/silicon/robot/user)
@@ -690,11 +697,11 @@ as performing this in action() will cause the upgrade to end up in the borg inst
 	if(istype(user))
 		switch(currentState)
 			if (0)
-				user.speed = initial(user.speed)
+				user.vtec = initial(user.vtec)
 			if (1)
-				user.speed = initial(user.speed) - maxReduction * 0.5
+				user.vtec = initial(user.vtec) - maxReduction * 0.5
 			if (2)
-				user.speed = initial(user.speed) - maxReduction * 1
+				user.vtec = initial(user.vtec) - maxReduction * 1
 
 	action.button_icon_state = "Chevron_State_[currentState]"
 	action.UpdateButtonIcon()

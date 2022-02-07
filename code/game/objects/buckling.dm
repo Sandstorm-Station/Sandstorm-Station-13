@@ -44,7 +44,7 @@
 	if(!istype(M))
 		return FALSE
 
-	if(check_loc && M.loc != loc)
+	if(check_loc && M.loc != loc && !(M.Adjacent(src) || src.Adjacent(M)))
 		return FALSE
 
 	if((!can_buckle && !force) || M.buckled || (buckled_mobs.len >= max_buckled_mobs) || (buckle_requires_restraints && !M.restrained()) || M == src)
@@ -65,7 +65,8 @@
 			var/mob/living/L = M.pulledby
 			L.reset_pull_offsets(M, TRUE)
 
-	if(!check_loc && M.loc != loc)
+	// if(!check_loc && M.loc != loc)
+	if(M.loc != loc)
 		M.forceMove(loc)
 
 	M.buckling = null
@@ -73,7 +74,7 @@
 	M.setDir(dir)
 	buckled_mobs |= M
 	M.update_mobility()
-	M.throw_alert("buckled", /obj/screen/alert/restrained/buckled)
+	M.throw_alert("buckled", /atom/movable/screen/alert/restrained/buckled)
 	post_buckle_mob(M)
 
 	SEND_SIGNAL(src, COMSIG_MOVABLE_BUCKLE, M, force)

@@ -5,7 +5,6 @@
 	viable_mobtypes = list(/mob/living/carbon/human)
 	mutable = FALSE
 	var/mob/camera/disease/overmind
-	infectable_biotypes = MOB_ORGANIC|MOB_ROBOTIC
 
 /datum/disease/advance/sentient_disease/New()
 	..()

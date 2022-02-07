@@ -24,7 +24,7 @@
 	if(!d_type || !def_zone)
 		return 0
 	var/protection = 0
-	var/list/body_parts = list(head, wear_mask, wear_suit, w_uniform, back, gloves, shoes, belt, s_store, glasses, ears, wear_id, wear_neck) //Everything but pockets. Pockets are l_store and r_store. (if pockets were allowed, putting something armored, gloves or hats for example, would double up on the armor)
+	var/list/body_parts = list(head, wear_mask, wear_suit, w_uniform, w_underwear, w_socks, w_shirt, back, gloves, wrists, shoes, belt, s_store, glasses, ears, ears_extra, wear_id, wear_neck) //Everything but pockets. Pockets are l_store and r_store. (if pockets were allowed, putting something armored, gloves or hats for example, would double up on the armor) //skyrat edit
 	for(var/bp in body_parts)
 		if(!bp)
 			continue
@@ -319,7 +319,10 @@
 					var/atom/A = I
 					if(!QDELETED(A))
 						A.ex_act(severity)
-				gib()
+				if(istype(origin, /datum/explosion))
+					gib(was_explosion = origin)
+				else
+					gib()
 				return
 			else
 				brute_loss = 500
@@ -409,10 +412,11 @@
 		return
 	var/informed = FALSE
 	if(isrobotic(src))
-		apply_status_effect(/datum/status_effect/no_combat_mode/robotic_emp, severity / 20)
+		apply_status_effect(/datum/status_effect/robotic_emp, severity / 20)
 	severity *= 0.5
 	var/do_not_stun = FALSE
 	if(HAS_TRAIT(src, TRAIT_ROBOTIC_ORGANISM))
+		hud_used?.coolant_display.jam(round(severity / 10, 1))	//Messes up the cooling system readout.
 		severity *= 0.5 //Robotpeople take less limb damage, but instead suffer system corruption (see carbon emp_act)
 		do_not_stun = TRUE
 	for(var/obj/item/bodypart/L in src.bodyparts)
@@ -588,9 +592,9 @@
 					to_chat(src, "<span class='notice'>You succesfuly remove the durathread strand.</span>")
 					remove_status_effect(STATUS_EFFECT_CHOKINGSTRAND)
 				return
-			var/to_send = ""
-			visible_message("[src] examines [p_them()]self.", \
-				"<span class='notice'>You check yourself for injuries.</span>")
+			var/to_send = "<div class='infobox'>"
+			visible_message("[src] examines [p_them()]self.", "")
+			to_send += "<span class='notice'>You check yourself for injuries.</span>\n"
 
 			var/list/missing = list(BODY_ZONE_HEAD, BODY_ZONE_CHEST, BODY_ZONE_L_ARM, BODY_ZONE_R_ARM, BODY_ZONE_L_LEG, BODY_ZONE_R_LEG)
 			for(var/X in bodyparts)
@@ -649,13 +653,13 @@
 							msg = "\t <span class='warning'><b>Your [LB.name] is suffering [W.a_or_from] [lowertext(W.name)]!</b></span>"
 						if(WOUND_SEVERITY_CRITICAL)
 							msg = "\t <span class='warning'><b>Your [LB.name] is suffering [W.a_or_from] [lowertext(W.name)]!!</b></span>"
-					to_chat(src, msg)
+					to_send += "\n[msg]"
 
 				for(var/obj/item/I in LB.embedded_objects)
 					if(I.isEmbedHarmless())
-						to_chat(src, "\t <a href='?src=[REF(src)];embedded_object=[REF(I)];embedded_limb=[REF(LB)]' class='warning'>There is \a [I] stuck to your [LB.name]!</a>")
+						to_send += "\n\t <a href='?src=[REF(src)];embedded_object=[REF(I)];embedded_limb=[REF(LB)]' class='warning'>There is \a [I] stuck to your [LB.name]!</a>"
 					else
-						to_chat(src, "\t <a href='?src=[REF(src)];embedded_object=[REF(I)];embedded_limb=[REF(LB)]' class='warning'>There is \a [I] embedded in your [LB.name]!</a>")
+						to_send += "\n\t <a href='?src=[REF(src)];embedded_object=[REF(I)];embedded_limb=[REF(LB)]' class='warning'>There is \a [I] embedded in your [LB.name]!</a>"
 
 			for(var/t in missing)
 				to_send += "<span class='boldannounce'>Your [parse_zone(t)] is missing!</span>\n"
@@ -678,7 +682,7 @@
 							bleed_text += " [BP.name],"
 						bleed_text += " and [bleeding_limbs[num_bleeds].name]"
 				bleed_text += "!</span>"
-				to_chat(src, bleed_text)
+				to_send += "\n[bleed_text]"
 			if(getStaminaLoss())
 				if(getStaminaLoss() > 30)
 					to_send += "<span class='info'>You're completely exhausted.</span>\n"
@@ -714,6 +718,19 @@
 				if(0 to NUTRITION_LEVEL_STARVING)
 					to_send += "<span class='danger'>You're starving!</span>\n"
 
+			switch(thirst)
+				if(THIRST_LEVEL_FULL to INFINITY)
+					to_send += "<span class='info'>You're completely full of water!</span>\n"
+				if(THIRST_LEVEL_QUENCHED to THIRST_LEVEL_FULL)
+					to_send += "<span class='info'>You're hydrated.</span>\n"
+				if(THIRST_LEVEL_BIT_THIRSTY to THIRST_LEVEL_QUENCHED)
+					to_send += "<span class='info'>You're not thirsty.</span>\n"
+				if(THIRST_LEVEL_THIRSTY to THIRST_LEVEL_BIT_THIRSTY)
+					to_send += "<span class='info'>You could use a drink to quench your thirst.</span>\n"
+				if(THIRST_LEVEL_PARCHED to THIRST_LEVEL_THIRSTY)
+					to_send += "<span class='danger'>You feel quite thirsty!</span>\n"
+				if(0 to THIRST_LEVEL_PARCHED)
+					to_send += "<span class='danger'>You're parched!</span>\n"
 
 			//TODO: Convert these messages into vague messages, thereby encouraging actual dignosis.
 			//Compiles then shows the list of damaged organs and broken organs
@@ -746,7 +763,7 @@
 				//Put the items in that list into a string of text
 				for(var/B in broken)
 					broken_message += B
-				to_chat(src, "<span class='warning'> Your [broken_message] [broken_plural ? "are" : "is"] non-functional!</span>")
+				to_send += "\n<span class='warning'> Your [broken_message] [broken_plural ? "are" : "is"] non-functional!</span>"
 			if(damaged.len)
 				if(damaged.len > 1)
 					damaged.Insert(damaged.len, "and ")
@@ -757,11 +774,12 @@
 						damaged_plural = TRUE
 				for(var/D in damaged)
 					damaged_message += D
-				to_chat(src, "<span class='info'>Your [damaged_message] [damaged_plural ? "are" : "is"] hurt.</span>")
+				to_send += "\n<span class='info'>Your [damaged_message] [damaged_plural ? "are" : "is"] hurt.</span>"
 
 			if(roundstart_quirks.len)
 				to_send += "<span class='notice'>You have these quirks: [get_trait_string()].</span>\n"
 
+			to_send += "</div>"
 			to_chat(src, to_send)
 		else
 			if(wear_suit)
@@ -775,8 +793,8 @@
 	if(stat == DEAD || stat == UNCONSCIOUS)
 		return
 
-	visible_message("<span class='notice'>[src] examines [p_them()]self.</span>", \
-		"<span class='notice'>You check yourself for injuries.</span>")
+	visible_message("<span class='notice'>[src] examines [p_them()]self.</span>", "")
+	var/output = "<div class='infobox'><span class='notice'>You check yourself for injuries.</span>"
 
 	var/list/missing = list(BODY_ZONE_HEAD, BODY_ZONE_CHEST, BODY_ZONE_L_ARM, BODY_ZONE_R_ARM, BODY_ZONE_L_LEG, BODY_ZONE_R_LEG)
 
@@ -832,7 +850,7 @@
 				isdisabled += " but otherwise "
 			else
 				isdisabled += " and "
-		to_chat(src, "\t <span class='[no_damage ? "notice" : "warning"]'>Your [LB.name][isdisabled][self_aware ? " has " : " is "][status].</span>")
+		output += "\n\t <span class='[no_damage ? "notice" : "warning"]'>Your [LB.name][isdisabled][self_aware ? " has " : " is "][status].</span>"
 
 		for(var/thing in LB.wounds)
 			var/datum/wound/W = thing
@@ -846,14 +864,15 @@
 					msg = "\t <span class='warning'><b>Your [LB.name] is suffering [W.a_or_from] [lowertext(W.name)]!</b></span>"
 				if(WOUND_SEVERITY_CRITICAL)
 					msg = "\t <span class='warning'><b>Your [LB.name] is suffering [W.a_or_from] [lowertext(W.name)]!!</b></span>"
-			to_chat(src, msg)
+			output += "\n[msg]"
 
 		for(var/obj/item/I in LB.embedded_objects)
 			if(I.isEmbedHarmless())
-				to_chat(src, "\t <a href='?src=[REF(src)];embedded_object=[REF(I)];embedded_limb=[REF(LB)]' class='warning'>There is \a [I] stuck to your [LB.name]!</a>")
+				output += "\n\t <a href='?src=[REF(src)];embedded_object=[REF(I)];embedded_limb=[REF(LB)]' class='warning'>There is \a [I] stuck to your [LB.name]!</a>"
 			else
-				to_chat(src, "\t <a href='?src=[REF(src)];embedded_object=[REF(I)];embedded_limb=[REF(LB)]' class='warning'>There is \a [I] embedded in your [LB.name]!</a>")
-
+				output += "\n\t <a href='?src=[REF(src)];embedded_object=[REF(I)];embedded_limb=[REF(LB)]' class='warning'>There is \a [I] embedded in your [LB.name]!</a>"
+	output += "</div>"
+	to_chat(src, output)
 
 /mob/living/carbon/human/damage_clothes(damage_amount, damage_type = BRUTE, damage_flag = 0, def_zone)
 	if(damage_type != BRUTE && damage_type != BURN)

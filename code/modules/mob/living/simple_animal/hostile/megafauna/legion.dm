@@ -26,6 +26,7 @@ SHITCODE AHEAD. BE ADVISED. Also comment extravaganza
 	spacewalk = TRUE
 	icon_state = "mega_legion"
 	icon_living = "mega_legion"
+	health_doll_icon = "mega_legion"
 	desc = "One of many."
 	icon = 'icons/mob/lavaland/96x96megafauna.dmi'
 	attack_verb_continuous = "chomps"
@@ -198,7 +199,7 @@ SHITCODE AHEAD. BE ADVISED. Also comment extravaganza
 			last_legion = FALSE
 			break
 	if(last_legion)
-		loot = list(/obj/item/staff/storm)
+		loot = list(/obj/structure/closet/crate/necropolis/legion/hard)
 		elimination = FALSE
 	else if(prob(20)) //20% chance for sick lootz.
 		loot = list(/obj/structure/closet/crate/necropolis/tendril/all)

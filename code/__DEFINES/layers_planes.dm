@@ -64,8 +64,9 @@
 #define GAS_PIPE_VISIBLE_LAYER 2.47
 #define GAS_FILTER_LAYER 2.48
 #define GAS_PUMP_LAYER 2.49
-
 #define LOW_OBJ_LAYER 2.5
+///catwalk overlay of /turf/open/floor/plating/plating_catwalk
+#define CATWALK_LAYER 2.51
 #define LOW_SIGIL_LAYER 2.52
 #define SIGIL_LAYER 2.54
 #define HIGH_SIGIL_LAYER 2.56
@@ -124,15 +125,19 @@
 
 #define EMISSIVE_PLANE 13
 #define EMISSIVE_LAYER 13
-#define EMISSIVE_RENDER_TARGET "*EMISSIVE_PLANE"
 
 #define EMISSIVE_UNBLOCKABLE_PLANE 14
 #define EMISSIVE_UNBLOCKABLE_LAYER 14
+#define EMISSIVE_LAYER_UNBLOCKABLE 14
 #define EMISSIVE_UNBLOCKABLE_RENDER_TARGET "*EMISSIVE_UNBLOCKABLE_PLANE"
+#define EMISSIVE_RENDER_TARGET "*EMISSIVE_PLANE"
 
 #define LIGHTING_PLANE 15
 #define LIGHTING_LAYER 15
 #define LIGHTING_RENDER_TARGET "LIGHT_PLANE"
+
+#define O_LIGHTING_VISUAL_PLANE 110
+#define O_LIGHTING_VISUAL_RENDER_TARGET "O_LIGHT_VISUAL_PLANE"
 
 #define RAD_TEXT_LAYER 15.1
 
@@ -147,6 +152,10 @@
 #define CAMERA_STATIC_PLANE 19
 #define CAMERA_STATIC_LAYER 19
 #define CAMERA_STATIC_RENDER_TARGET "CAMERA_STATIC_PLANE"
+
+/// Plane for balloon text (text that fades up)
+/// It's over lighting and every other crap because this is nearly as important as hud content and only visible to the user.
+#define BALLOON_CHAT_PLANE 20
 
 //HUD layer defines
 

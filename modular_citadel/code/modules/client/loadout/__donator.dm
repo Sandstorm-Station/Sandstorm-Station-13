@@ -550,7 +550,32 @@
 	ckeywhitelist = list("sneka")
 
 /datum/gear/donator/smaiden
-	name = "Shrine Maiden"
-	slot = SLOT_WEAR_SUIT
-	path = /obj/item/clothing/suit/smaiden
+	name = "shrine maiden outfit"
+	slot = SLOT_W_UNIFORM
+	path = /obj/item/clothing/under/smaiden
 	ckeywhitelist = list("ultimarifox")
+
+/datum/gear/donator/mgasmask
+	name = "Military Gas Mask"
+	slot = SLOT_IN_BACKPACK
+	path = /obj/item/clothing/mask/gas/military
+	ckeywhitelist = list("unclebourbon")
+
+/datum/gear/donator/clownmask
+	name = "Clown Mask"
+	path = SLOT_WEAR_MASK
+	path = /obj/item/clothing/mask/gas/clown_hat
+	ckeywhitelist = list("djkouta")
+
+/datum/gear/donator/spacehoodie
+	name = "Space Hoodie"
+	path = SLOT_WEAR_SUIT
+	path = /obj/item/clothing/suit/spacehoodie
+	ckeywhitelist = list("bidlink2")
+
+/datum/gear/donator/pokerchips
+	name = "pokerchip set"
+	slot = SLOT_IN_BACKPACK
+	path = /obj/item/storage/box/pockerchips
+	ckeywhitelist = list("greed2323")
+

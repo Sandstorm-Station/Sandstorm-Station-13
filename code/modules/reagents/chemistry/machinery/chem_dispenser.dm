@@ -103,6 +103,8 @@
 		upgrade_reagents2 = sortList(upgrade_reagents2, /proc/cmp_reagents_asc)
 	if(upgrade_reagents3)
 		upgrade_reagents3 = sortList(upgrade_reagents3, /proc/cmp_reagents_asc)
+	if(upgrade_reagents4)
+		upgrade_reagents4 = sortList(upgrade_reagents4, /proc/cmp_reagents_asc)
 	dispensable_reagents = sortList(dispensable_reagents, /proc/cmp_reagents_asc)
 	create_reagents(200, NO_REACT)
 	update_icon()
@@ -165,14 +167,14 @@
 	obj_flags |= EMAGGED
 	return TRUE
 
-/obj/machinery/chem_dispenser/ex_act(severity, target)
+/obj/machinery/chem_dispenser/ex_act(severity, target, origin)
 	if(severity < 3)
 		..()
 
-/obj/machinery/chem_dispenser/contents_explosion(severity, target)
+/obj/machinery/chem_dispenser/contents_explosion(severity, target, origin)
 	..()
 	if(beaker)
-		beaker.ex_act(severity, target)
+		beaker.ex_act(severity, target, origin)
 
 /obj/machinery/chem_dispenser/Exited(atom/movable/A, atom/newloc)
 	. = ..()
@@ -187,6 +189,15 @@
 		if(user.hallucinating())
 			ui.set_autoupdate(FALSE) //to not ruin the immersion by constantly changing the fake chemicals
 		ui.open()
+
+		var/client/client = user.client
+		if (CONFIG_GET(flag/use_exp_tracking) && client && client.get_exp_living(TRUE) < 480) // Player with less than 8 hours playtime is using this machine.
+			if(client.next_chem_grief_warning < world.time)
+				if(!istype(src, /obj/machinery/chem_dispenser/drinks) && !istype(src, /obj/machinery/chem_dispenser/mutagen) && !istype(src, /obj/machinery/chem_dispenser/mutagensaltpeter) && !istype(src, /obj/machinery/chem_dispenser/abductor)) // These types aren't used for grief
+					var/turf/T = get_turf(src)
+					client.next_chem_grief_warning = world.time + 15 MINUTES // Wait 15 minutes before alerting admins again
+					message_admins("<span class='adminhelp'>ANTI-GRIEF:</span> New player [ADMIN_LOOKUPFLW(user)] used \a [src] at [ADMIN_VERBOSEJMP(T)].")
+					client.used_chem_dispenser = TRUE
 
 /obj/machinery/chem_dispenser/ui_data(mob/user)
 	var/data = list()
@@ -469,6 +480,8 @@
 			dispensable_reagents |= upgrade_reagents2
 		if(M.rating > 3)
 			dispensable_reagents |= upgrade_reagents3
+		if(M.rating > 4)
+			dispensable_reagents |= upgrade_reagents4
 		switch(M.rating)
 			if(-INFINITY to 1)
 				dispenceUnit = 5
@@ -879,7 +892,6 @@
 	upgrade_reagents3 = list(
 		/datum/reagent/medicine/mine_salve
 	)
-
 	emagged_reagents = list(
 		/datum/reagent/drug/space_drugs,
 		/datum/reagent/toxin/carpotoxin,

@@ -73,7 +73,7 @@ export const formatPower = (value, minBase1000 = 0) => {
   return formatSiUnit(value, minBase1000, 'W');
 };
 
-export const formatMoney = (value, precision = 0) => {
+export const formatMoney = (value, precision = 0, addCommas = false) => {
   if (!Number.isFinite(value)) {
     return value;
   }
@@ -92,8 +92,11 @@ export const formatMoney = (value, precision = 0) => {
   let result = '';
   for (let i = 0; i < length; i++) {
     if (i > 0 && i < indexOfPoint && (indexOfPoint - i) % 3 === 0) {
-      // Thin space
-      result += '\u2009';
+      if (addCommas) {
+        result += '\u002C'; // Comma
+      } else {
+        result += '\u2009'; // Thin space
+      }
     }
     result += fixed.charAt(i);
   }
@@ -105,7 +108,7 @@ export const formatMoney = (value, precision = 0) => {
  */
 export const formatDb = value => {
   const db = 20 * Math.log(value) / Math.log(10);
-  const sign = db >= 0 ? '+' : db < 0 ? '–' : '';
+  const sign = db >= 0 ? '+' : '–';
   let formatted = Math.abs(db);
   if (formatted === Infinity) {
     formatted = 'Inf';
@@ -168,4 +171,31 @@ export const formatSiBaseTenUnit = (
     + ' ' + symbol + ' ' + unit
   );
   return finalString.trim();
+};
+
+/**
+ * Formats decisecond count into HH::MM::SS display by default
+ * "short" format does not pad and adds hms suffixes
+ */
+export const formatTime = (val, formatType) => {
+  // THERE IS AS YET INSUFFICIENT DATA FOR A MEANINGFUL ANSWER
+  // HH:MM:SS
+  // 00:02:13
+  const seconds = toFixed(Math.floor((val/10) % 60));
+  const minutes = toFixed(Math.floor((val/(10*60)) % 60));
+  const hours = toFixed(Math.floor((val/(10*60*60)) % 24));
+  switch (formatType) {
+    case "short": {
+      const hours_truncated = hours > 0 ? `${hours}h` : "";
+      const minutes_truncated = minutes > 0 ? `${minutes}m` : "";
+      const seconds_truncated = seconds > 0 ? `${seconds}s` : "";
+      return `${hours_truncated}${minutes_truncated}${seconds_truncated}`;
+    }
+    default: {
+      const seconds_padded = seconds.padStart(2, "0");
+      const minutes_padded = minutes.padStart(2, "0");
+      const hours_padded = hours.padStart(2, "0");
+      return `${hours_padded}:${minutes_padded}:${seconds_padded}`;
+    }
+  }
 };
