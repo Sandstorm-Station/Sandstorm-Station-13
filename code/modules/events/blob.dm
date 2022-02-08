@@ -4,7 +4,7 @@
 	weight = 3
 	max_occurrences = 1
 
-	earliest_start = 40 MINUTES
+	earliest_start = 60 MINUTES
 	min_players = 35
 	dynamic_should_hijack = TRUE
 
