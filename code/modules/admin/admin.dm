@@ -133,6 +133,10 @@
 	body += "<A href='?_src_=holder;[HrefToken()];subtlemessage=[REF(M)]'>Subtle message</A> | "
 	// body += "<A href='?_src_=holder;[HrefToken()];playsoundto=[REF(M)]'>Play sound to</A> | "
 	body += "<A href='?_src_=holder;[HrefToken()];languagemenu=[REF(M)]'>Language Menu</A>"
+//ambition start
+	if(M.mind)
+		body += " | <A href='?_src_=holder;[HrefToken()];ObjectiveRequest=[REF(M.mind)]'>Objective-Ambition Menu</A>"
+//ambition end
 
 	if (M.client)
 		if(!isnewplayer(M))
