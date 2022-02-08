@@ -34,13 +34,13 @@
   CoreFlare:
   - rscadd: Humanity is... Ok. Blood is fuel. IPCs have wings.
   DeltaFire15:
-  - balance: The Space Adaptation mutation when applied to Synthetics now nullifies
-      the penalty for passive cooling if in low-pressure environments.
   - balance: Stabilized orange extracts can only cool by -5 degrees per tick base
       instead of by as much as the difference is.
   - balance: "Stabilized orange extracts only have halved cooling effects on Synthetics\
       \ (2.5 per status tick / 5 per life), but also cool them towards ~-100\xB0C\
       \ instead of base bodytemp."
+  - balance: The Space Adaptation mutation when applied to Synthetics now nullifies
+      the penalty for passive cooling if in low-pressure environments.
   LiteralMushroom:
   - rscadd: Slimes can have wings now.
   SakuraOran:
@@ -54,13 +54,17 @@
       life when they sacrifice to the tendril.
   - bugfix: fixed mobs not dropping guaranteed_butcher_results when gibbed
   SandPoot:
-  - rscadd: Adds a keybinding where you can cancel actions.
-  - bugfix: You can once again see your previews for picking target bodyparts on your
-      hud.
+  - qol: Changing a reagent container's transfer amount will now give you feedback
+      in the form of text on the container itself.
   - rscadd: 'TGUI autolathe tweak: You can now input a custom amount to print(hard
       limit at 50 or maximum stack size) tweak: Can now search and change categories
       while the autolathe is busy, line up those designs!'
+  - bugfix: You can once again see your previews for picking target bodyparts on your
+      hud.
   - refactor: Converted the changelog popup to TGUI
+  - rscadd: Adds a keybinding where you can cancel actions.
+  - rscadd: Made a cool UI for the custom shuttles.
+  - bugfix: Removes "Convert Lineendings" git action.
   - rscadd: All of your favorite simple bot friends aboard the station now have a
       much better interface in TGUI
   - qol: You can now lock and unlock bots, including their maintenance hatches, via
@@ -97,3 +101,5 @@
   Uso15:
   - rscadd: Added final preference check before Hypnotic Gaze triggers on the target.
   - bugfix: Fixed Mesmetron not checking for Hypno preferences on use
+  silicons:
+  - refactor: clickcatchers, parallax
