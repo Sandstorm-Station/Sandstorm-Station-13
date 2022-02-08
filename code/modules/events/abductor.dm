@@ -1,9 +1,10 @@
 /datum/round_event_control/abductor
 	name = "Abductors"
 	typepath = /datum/round_event/ghost_role/abductor
-	weight = 10
+	weight = 3
 	max_occurrences = 1
 	min_players = 30
+	earliest_start = 30 MINUTES
 	dynamic_should_hijack = TRUE
 
 /datum/round_event/ghost_role/abductor

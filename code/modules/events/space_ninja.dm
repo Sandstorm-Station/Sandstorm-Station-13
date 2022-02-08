@@ -2,8 +2,8 @@
 	name = "Spawn Space Ninja"
 	typepath = /datum/round_event/ghost_role/space_ninja
 	max_occurrences = 1
-	weight = 10
-	earliest_start = 20 MINUTES
+	weight = 3
+	earliest_start = 30 MINUTES
 	min_players = 15
 	dynamic_should_hijack = TRUE
 
