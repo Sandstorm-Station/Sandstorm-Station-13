@@ -33067,6 +33067,7 @@
 /obj/structure/disposalpipe/segment{
 	dir = 6
 	},
+/obj/machinery/bloodbankgen,
 /obj/machinery/camera{
 	c_tag = "Medbay Surgery Storage";
 	dir = 6;
@@ -33155,22 +33156,6 @@
 	},
 /obj/item/storage/box/rxglasses,
 /obj/item/hand_labeler,
-/obj/item/reagent_containers/glass/bottle/morphine{
-	pixel_x = 8;
-	pixel_y = -3
-	},
-/obj/item/storage/box/beakers{
-	pixel_x = 2;
-	pixel_y = 2
-	},
-/obj/item/reagent_containers/syringe{
-	pixel_x = 6;
-	pixel_y = -3
-	},
-/obj/item/reagent_containers/glass/bottle/epinephrine{
-	pixel_x = 7;
-	pixel_y = -3
-	},
 /turf/open/floor/plasteel/white,
 /area/medical/medbay/central)
 "bCR" = (
@@ -34339,6 +34324,7 @@
 /area/medical/medbay/central)
 "bFx" = (
 /obj/structure/disposalpipe/segment,
+/obj/machinery/limbgrower,
 /obj/machinery/atmospherics/components/unary/vent_scrubber/on,
 /turf/open/floor/plasteel/white,
 /area/medical/storage)
@@ -35521,7 +35507,6 @@
 /obj/item/hand_labeler,
 /obj/item/stack/packageWrap,
 /obj/item/stack/packageWrap,
-/obj/item/storage/box/syringes,
 /turf/open/floor/plasteel/white,
 /area/medical/medbay/central)
 "bIk" = (
@@ -61305,12 +61290,29 @@
 /turf/open/floor/plasteel,
 /area/security/prison/upper)
 "pHl" = (
+/obj/structure/table,
+/obj/item/storage/box/beakers{
+	pixel_x = 2;
+	pixel_y = 2
+	},
+/obj/item/storage/box/syringes,
+/obj/item/reagent_containers/glass/bottle/epinephrine{
+	pixel_x = 7;
+	pixel_y = -3
+	},
+/obj/item/reagent_containers/glass/bottle/morphine{
+	pixel_x = 8;
+	pixel_y = -3
+	},
+/obj/item/reagent_containers/syringe{
+	pixel_x = 6;
+	pixel_y = -3
+	},
 /obj/item/radio/intercom{
 	frequency = 1485;
 	name = "Station Intercom (Medbay)";
 	pixel_x = 30
 	},
-/obj/machinery/bloodbankgen,
 /turf/open/floor/plasteel/white,
 /area/medical/medbay/central)
 "pHt" = (
@@ -65393,13 +65395,6 @@
 	},
 /turf/open/floor/wood,
 /area/maintenance/bar)
-"vAg" = (
-/obj/machinery/atmospherics/pipe/simple/supply/hidden{
-	dir = 4
-	},
-/obj/machinery/limbgrower,
-/turf/open/floor/plasteel/white,
-/area/medical/medbay/central)
 "vAl" = (
 /obj/machinery/atmospherics/components/unary/vent_pump/on,
 /obj/machinery/camera{
@@ -103624,7 +103619,7 @@ bof
 bof
 bzW
 bqQ
-vAg
+bCR
 bGR
 bIj
 bJC
