@@ -28,6 +28,7 @@
 	color = "#0f0"
 	overdose_threshold = 30
 	gas = GAS_COPIUM
+	value = REAGENT_VALUE_GLORIOUS
 
 /datum/reagent/drug/copium/on_mob_life(mob/living/carbon/M)
 	. = ..()
@@ -51,3 +52,15 @@
 		H.adjust_disgust(20)
 		to_chat(H, "<span class='warning'>I can't stand it anymore!</span>")
 	..()
+
+/datum/reagent/drug/copium/reaction_obj(obj/O, volume)
+	if ((!O) || (!volume))
+		return 0
+	var/temp = holder ? holder.chem_temp : T20C
+	O.atmos_spawn_air("copium=[volume];TEMP=[temp]")
+
+/datum/reagent/drug/reaction_turf(turf/open/T, volume)
+	if (istype(T))
+		var/temp = holder ? holder.chem_temp : T20C
+		T.atmos_spawn_air("copium=[volume];TEMP=[temp]")
+	return

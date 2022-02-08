@@ -288,7 +288,6 @@
 #define GAS_AMMONIA				"ammonia"
 #define GAS_FLUORINE			"fluorine"
 #define GAS_ETHANOL				"ethanol"
-#define GAS_COPIUM				"copium"			// SPLURT change
 
 #define GAS_GROUP_CHEMICALS		"Chemicals"
 
