@@ -53,3 +53,8 @@
       you get hydrated faster.
   - balance: Also for this reason the buffs to hydration have been reverted and tweaked.
   - bugfix: Drinks (/datum/reagent/consumable) now can actually make you hydrated!
+2022-02-08:
+  SandPoot:
+  - qol: Changing a reagent container's transfer amount will now give you feedback
+      in the form of text on the container itself.
+  - bugfix: Removes "Convert Lineendings" git action.
