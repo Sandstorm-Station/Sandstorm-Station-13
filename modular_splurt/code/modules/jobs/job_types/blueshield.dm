@@ -54,7 +54,7 @@
 
 	implants = list(/obj/item/implant/mindshield)
 
-	chameleon_extras = list(/obj/item/storage/firstaid/regular)
+	chameleon_extras = list(/obj/item/storage/firstaid/regular, /obj/item/choice_beacon/bsbaton)
 
 /datum/outfit/plasmaman/blueshield
 	name = "Blueshield"
