@@ -93,7 +93,7 @@
 ///Subtype of CQC. Only used for the Blueshit.
 /datum/martial_art/cqc/blueshield
 	name = "Close Quarters Combat, Blueshield edition"
-	var/list/valid_areas = list(/area/command/bridge, /area/heads_quaters/captain, /area/heads_quaters/captain/private)
+	var/list/valid_areas = list(/area/command/bridge, /area/command/heads_quaters/captain, /area/command/heads_quaters/captain/private)
 
 ///Prevents use if the Blueshit  is not on the bridge or the captain'soffice .
 /datum/martial_art/cqc/blueshield/can_use(mob/living/owner) //this is used to make Bluehsield CQC only work in bridge
