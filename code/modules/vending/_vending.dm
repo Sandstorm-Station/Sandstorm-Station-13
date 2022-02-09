@@ -473,6 +473,7 @@ GLOBAL_LIST_EMPTY(vending_products)
 					tilt(user)
 				if(91 to 100)
 					tilt(user, crit=TRUE)
+				else
 
 /obj/machinery/vending/proc/freebie(mob/fatty, freebies)
 	visible_message(span_notice("[src] yields [freebies > 1 ? "several free goodies" : "a free goody"]!"))

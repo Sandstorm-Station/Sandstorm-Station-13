@@ -224,6 +224,7 @@
 				else
 					to_chat(owner, "<span class='userdanger'>You feel your heart lurching in your chest...</span>")
 					owner.adjustOxyLoss(8)
+		else
 
 /datum/brain_trauma/severe/discoordination
 	name = "Discoordination"
@@ -265,7 +266,7 @@
 	var/min_hypno_duration = 6000
 	var/max_hypno_duration = 12000
 	var/hypno_duration = -1 // 0 or some world time limits, whereas -1 has old behavior
-	
+
 /datum/brain_trauma/severe/hypnotic_stupor/on_gain()
 	..()
 	min_hypno_duration = CONFIG_GET(number/min_stupor_hypno_duration) // 6000
@@ -281,7 +282,7 @@
 	if(prob(1) && !owner.has_status_effect(/datum/status_effect/trance))
 		if (world.time > hypno_duration) // Only re-trance every so often
 			owner.apply_status_effect(/datum/status_effect/trance, rand(100,300), FALSE, hypno_duration > -1)
-			
+
 /datum/brain_trauma/severe/hypnotic_stupor/proc/on_hypnosis()
 	if (hypno_duration > -1)
 		hypno_duration = world.time + rand(min_hypno_duration, max_hypno_duration)
