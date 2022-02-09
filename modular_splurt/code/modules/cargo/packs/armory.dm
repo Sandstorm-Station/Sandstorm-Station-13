@@ -61,39 +61,6 @@
 					/obj/item/ammo_box/magazine/e45/hydra)
 	crate_name = "pistol ammo crate"
 
-
-/datum/supply_pack/security/armory/m45ammo
-	name = "M1911 Non-lethal Ammo Crate"
-	desc = "Contains 10 8-round magazines for the M1911. Requires Armory access to open."
-	cost = 900
-	contains = list(/obj/item/ammo_box/magazine/m45,
-					/obj/item/ammo_box/magazine/m45/taser,
-					/obj/item/ammo_box/magazine/m45/trac,
-					/obj/item/ammo_box/magazine/m45,
-					/obj/item/ammo_box/magazine/m45/taser,
-					/obj/item/ammo_box/magazine/m45/trac,
-					/obj/item/ammo_box/magazine/m45,
-					/obj/item/ammo_box/magazine/m45/taser,
-					/obj/item/ammo_box/magazine/m45/trac,
-					/obj/item/ammo_box/magazine/m45)
-	crate_name = "pistol ammo crate"
-
-/datum/supply_pack/security/armory/m45ammolethal
-	name = "M1911 Lethal Ammo Crate"
-	desc = "Contains 10 8-round magazines for the M1911. Requires Armory access to open."
-	cost = 1200
-	contains = list(/obj/item/ammo_box/magazine/m45/lethal,
-					/obj/item/ammo_box/magazine/m45/hydra,
-					/obj/item/ammo_box/magazine/m45/hotshot,
-					/obj/item/ammo_box/magazine/m45/hydra,
-					/obj/item/ammo_box/magazine/m45/lethal,
-					/obj/item/ammo_box/magazine/m45/hydra,
-					/obj/item/ammo_box/magazine/m45/hotshot,
-					/obj/item/ammo_box/magazine/m45/hotshot,
-					/obj/item/ammo_box/magazine/m45/lethal,
-					/obj/item/ammo_box/magazine/m45/hydra)
-	crate_name = "pistol ammo crate"
-
 /datum/supply_pack/security/armory/riotgun
 	name = "Riot Gun Crate"
 	desc = "Contains 3 Riot Grenade launchers. Requires Armory access to open."

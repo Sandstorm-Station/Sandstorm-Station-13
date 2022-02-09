@@ -37,3 +37,107 @@
 	)
 	category = CAT_WEAPONRY
 	subcategory = CAT_AMMO
+
+/datum/crafting_recipe/hudsunsecaviators
+	name = "Security HUD Aviators"
+	result = /obj/item/clothing/glasses/hud/security/sunglasses/aviators
+	time = 20
+	tools = list(TOOL_SCREWDRIVER, TOOL_WIRECUTTER)
+	parts = list(/obj/item/clothing/glasses/hud/security/sunglasses = 1,
+					/obj/item/clothing/glasses/aviators = 1)
+	reqs = list(/obj/item/clothing/glasses/hud/security/sunglasses = 1,
+				/obj/item/clothing/glasses/aviators = 1,
+				/obj/item/stack/cable_coil = 5)
+	category = CAT_CLOTHING
+
+/datum/crafting_recipe/hudsunsecavviatorsremoval
+	name = "Security HUD Aviators removal"
+	result = /obj/item/clothing/glasses/aviators
+	time = 20
+	tools = list(TOOL_SCREWDRIVER, TOOL_WIRECUTTER)
+	reqs = list(/obj/item/clothing/glasses/hud/security/sunglasses/aviators = 1)
+	category = CAT_CLOTHING
+
+/datum/crafting_recipe/hudsunsecaviatorsper
+	name = "Prescription Security HUD Aviators"
+	result = /obj/item/clothing/glasses/hud/security/sunglasses/aviators/prescription
+	time = 20
+	tools = list(TOOL_SCREWDRIVER)
+	parts = list(/obj/item/clothing/glasses/hud/security/sunglasses/aviators = 1,
+				/obj/item/clothing/glasses/regular = 1)
+	reqs = list(/obj/item/clothing/glasses/hud/security/sunglasses/aviators = 1,
+				/obj/item/clothing/glasses/regular = 1)
+	category = CAT_CLOTHING
+
+/datum/crafting_recipe/hudsunmedaviators
+	name = "Medical HUD Aviators"
+	result = /obj/item/clothing/glasses/hud/health/sunglasses/aviators
+	time = 20
+	tools = list(TOOL_SCREWDRIVER, TOOL_WIRECUTTER)
+	parts = list(/obj/item/clothing/glasses/hud/health/sunglasses = 1,
+				/obj/item/clothing/glasses/aviators = 1)
+	reqs = list(/obj/item/clothing/glasses/hud/health/sunglasses = 1,
+				/obj/item/clothing/glasses/aviators = 1,
+				/obj/item/stack/cable_coil = 5)
+	category = CAT_CLOTHING
+
+/datum/crafting_recipe/hudsunmedaviatorsper
+	name = "Prescription Medical HUD Aviators"
+	result = /obj/item/clothing/glasses/hud/health/sunglasses/aviators/prescription
+	time = 20
+	tools = list(TOOL_SCREWDRIVER)
+	parts = list(/obj/item/clothing/glasses/hud/health/sunglasses/aviators = 1,
+				/obj/item/clothing/glasses/regular = 1)
+	reqs = list(/obj/item/clothing/glasses/hud/health/sunglasses/aviators = 1,
+				/obj/item/clothing/glasses/regular = 1)
+	category = CAT_CLOTHING
+
+/datum/crafting_recipe/hudsunmedaviatorsremoval
+	name = "Medical HUD Aviators removal"
+	result = /obj/item/clothing/glasses/aviators
+	time = 20
+	tools = list(TOOL_SCREWDRIVER, TOOL_WIRECUTTER)
+	reqs = list(/obj/item/clothing/glasses/hud/health/sunglasses/aviators = 1)
+	category = CAT_CLOTHING
+
+/datum/crafting_recipe/hudblueaviators
+	name = "Blueshield HUD Aviators"
+	result = /obj/item/clothing/glasses/hud/blueshield/aviators
+	time = 20
+	tools = list(TOOL_SCREWDRIVER, TOOL_WIRECUTTER)
+	parts = list(/obj/item/clothing/glasses/hud/blueshield = 1,
+				/obj/item/clothing/glasses/aviators = 1)
+	reqs = list(/obj/item/clothing/glasses/hud/blueshield = 1,
+				/obj/item/clothing/glasses/aviators = 1,
+				/obj/item/stack/cable_coil = 5)
+	category = CAT_CLOTHING
+
+/datum/crafting_recipe/hudblueaviatorsremoval
+	name = "Blueshield HUD Aviators removal"
+	result = /obj/item/clothing/glasses/aviators
+	time = 20
+	tools = list(TOOL_SCREWDRIVER, TOOL_WIRECUTTER)
+	reqs = list(/obj/item/clothing/glasses/hud/blueshield/aviators = 1)
+	category = CAT_CLOTHING
+
+/datum/crafting_recipe/hudblueaviatorsper
+	name = "Prescription Blueshield HUD Aviators"
+	result = /obj/item/clothing/glasses/hud/blueshield/aviators/prescription
+	time = 20
+	tools = list(TOOL_SCREWDRIVER)
+	parts = list(/obj/item/clothing/glasses/hud/blueshield/aviators = 1,
+				/obj/item/clothing/glasses/regular = 1)
+	reqs = list(/obj/item/clothing/glasses/hud/blueshield/aviators = 1,
+				/obj/item/clothing/glasses/regular = 1)
+	category = CAT_CLOTHING
+
+/datum/crafting_recipe/hudblueper
+	name = "Prescription Blueshield HUD"
+	result = /obj/item/clothing/glasses/hud/blueshield/prescription
+	time = 20
+	tools = list(TOOL_SCREWDRIVER)
+	parts = list(/obj/item/clothing/glasses/hud/blueshield = 1,
+				/obj/item/clothing/glasses/regular = 1)
+	reqs = list(/obj/item/clothing/glasses/hud/blueshield = 1,
+				/obj/item/clothing/glasses/regular = 1)
+	category = CAT_CLOTHING

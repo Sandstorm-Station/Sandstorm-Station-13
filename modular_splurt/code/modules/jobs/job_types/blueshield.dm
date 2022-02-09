@@ -37,15 +37,15 @@
 	belt = /obj/item/pda/security
 	ears = /obj/item/radio/headset/headset_blueshield
 	uniform = /obj/item/clothing/under/rank/blueshield
-	head = /obj/item/clothing/head/helmet/blueshirt
-	gloves = /obj/item/clothing/gloves/color/black
-	glasses = /obj/item/clothing/glasses/hud/health/sunglasses
+	head = /obj/item/clothing/head/helmet/blueshirt/blueshield
+	gloves = /obj/item/clothing/gloves/tackler
+	glasses = /obj/item/clothing/glasses/hud/blueshield
 	suit = /obj/item/clothing/suit/armor/vest/bluesheid
 	shoes = /obj/item/clothing/shoes/jackboots
-	suit_store = /obj/item/gun/energy/e_gun // want to replace with something more custom later
+	suit_store = /obj/item/kitchen/knife/combat
 	l_pocket = /obj/item/restraints/handcuffs
 	r_pocket = /obj/item/assembly/flash/handheld
-	backpack_contents = list(/obj/item/storage/firstaid/regular, /obj/item/melee/classic_baton/telescopic)
+	backpack_contents = list(/obj/item/storage/firstaid/regular)
 
 	backpack = /obj/item/storage/backpack/security
 	satchel = /obj/item/storage/backpack/satchel/sec
@@ -89,3 +89,22 @@
 /area/command/blueshielquarters
 	name = "Blueshield's Quarters"
 	icon_state = "bridge"
+
+///Subtype of CQC. Only used for the Blueshit.
+/datum/martial_art/cqc/blueshield
+	name = "Close Quarters Combat, Blueshield edition"
+	var/list/valid_areas = list(/area/service/bridge, area/heads_quaters/captain, area/heads_quaters/captain/private)
+
+///Prevents use if the Blueshit  is not on the bridge or the captain'soffice .
+/datum/martial_art/cqc/blueshield/can_use(mob/living/owner) //this is used to make Bluehsield CQC only work in bridge
+	if(!is_type_in_list(get_area(owner), valid_areas))
+		return FALSE
+	return ..()
+
+
+/datum/outfit/job/blueshield/post_equip(mob/living/carbon/human/H, visualsOnly = FALSE, client/preference_source)
+	..()
+	if(visualsOnly)
+		return
+	var/datum/martial_art/cqc/blueshield/justablue = new
+	justablue.teach(H)
