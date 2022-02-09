@@ -26,11 +26,11 @@
 	alt_titles = list("Firefighter", "Life Support Specialist", "Disposals Technician")
 
 /datum/job/engineer
-	alt_titles = list("Maintenance Technician", "Engine Technician", "Electrician", "Structural Engineer", "Mechanic",  "Station Architect", "Hazardous Material Operator") // "Mechanic" is also same for Roboticist.
+	alt_titles = list("Maintenance Technician", "Engine Technician", "Electrician", "Structural Engineer", "Station Architect", "Hazardous Material Operator")
 
 //Service
 /datum/job/assistant
-	alt_titles = list("Civilian", "Visitor", "Businessman", "Trader", "Entertainer", "Intern", "Morale Officer", "Stripper", "Off-Duty", "Escort", "Tourist", "Clerk") // "Entertainer" is also same for clown.
+	alt_titles = list("Civilian", "Visitor", "Businessman", "Trader", "Entertainer", "Intern", "Morale Officer", "Stripper", "Off-Duty", "Escort", "Tourist", "Clerk", "Blacksmith")
 
 /datum/job/bartender
 	alt_titles = list("Barista", "Mixologist", "Sommelier", "Bar Owner", "Barmaid", "Expediter")
@@ -39,7 +39,7 @@
 	alt_titles = list("Cult Leader", "Bishop", "Priest", "Priestess", "Prior", "Monk", "Nun", "Counselor")
 
 /datum/job/clown //The most useless role in the game, delet this
-	alt_titles = list("Entertainer", "Jester", "Comedian") // "Entertainer" is also same for assistant.
+	alt_titles = list("Jester", "Comedian")
 
 /datum/job/cook
 	alt_titles = list("Culinary Artist", "Butcher", "Nutritionist", "Chef", "Chef de partie", "Poissonier")
@@ -98,4 +98,4 @@
 	alt_titles = list("Shipping Specialist", "Delivery Manager", "Deliveries Officer", "Mail Man", "Mail Woman", "Mailroom Technician", "Logistics Technician")
 
 /datum/job/mining
-	alt_titles = list("Explorer", "Exotic Ore Miner", "Digger", "Hunter") // Add "Fauna Hunters"?
+	alt_titles = list("Explorer", "Exotic Ore Miner", "Digger", "Hunter")
