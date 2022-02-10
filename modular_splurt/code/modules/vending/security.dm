@@ -50,4 +50,5 @@
 	new /obj/item/clothing/head/blueshield(src)
 	new /obj/item/clothing/under/rank/blueshield/formal(src)
 	new /obj/item/grenade/flashbang(src)
+	new /obj/item/choice_beacon/bsbaton(src)
 
