@@ -19,7 +19,7 @@
 	name = "brig physician's locker"
 	req_access = list(ACCESS_MEDICAL)
 	icon_state = "brigdoc"
-	icon = 'icons/obj/closet.dmi'
+	icon = 'modular_splurt/icons/obj/closet.dmi'
 
 /obj/structure/closet/secure_closet/brigdoc/PopulateContents()
 	..()
@@ -35,7 +35,7 @@
 	name = "blueshield's locker"
 	req_access = list(ACCESS_HEADS)
 	icon_state = "bs"
-	icon = 'icons/obj/closet.dmi'
+	icon = 'modular_splurt/icons/obj/closet.dmi'
 
 /obj/structure/closet/secure_closet/blueshield/PopulateContents()
 	..()
