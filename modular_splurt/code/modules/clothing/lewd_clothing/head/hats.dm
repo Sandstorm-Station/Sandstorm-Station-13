@@ -24,8 +24,8 @@
 /obj/item/clothing/head/blueshield/officercap
 	name = "blueshield officer cap"
 	desc = "A officer cap of the Blueshield. It makes you feel more important then you acutally are."
-	icon_state = "beret_blueshield"
-	item_state = "beret_blueshield"
+	icon_state = "blueshieldcap"
+	item_state = "blueshieldcap"
 
 /obj/item/clothing/head/brigdoc
 	name = "brig physician beret"
