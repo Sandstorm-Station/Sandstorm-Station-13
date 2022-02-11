@@ -146,6 +146,7 @@
 /mob/living/simple_animal/bot/hugbot/attack_hand(mob/living/carbon/human/H)
 	if(H.a_intent == INTENT_DISARM && mode != BOT_TIPPED)
 		H.visible_message("<span class='danger'>[H] begins tipping over [src].</span>", "<span class='warning'>You begin tipping over [src]...</span>")
+		balloon_alert(H, "tipping over")
 
 		if(world.time > last_tipping_action_voice + 15 SECONDS)
 			last_tipping_action_voice = world.time // message for tipping happens when we start interacting, message for righting comes after finishing
@@ -159,6 +160,7 @@
 
 	else if(H.a_intent == INTENT_HELP && mode == BOT_TIPPED)
 		H.visible_message("<span class='notice'>[H] begins righting [src].</span>", "<span class='notice'>You begin righting [src]...</span>")
+		balloon_alert(H, "righting")
 		if(do_after(H, 3 SECONDS, target=src))
 			set_right(H)
 	else
@@ -437,6 +439,7 @@
 /mob/living/simple_animal/bot/hugbot/proc/tip_over(mob/user)
 	mobility_flags &= ~MOBILITY_MOVE
 	user.visible_message("<span class='danger'>[user] tips over [src]!</span>", "<span class='danger'>You tip [src] over!</span>")
+	balloon_alert(user, "tipped over")
 	mode = BOT_TIPPED
 	tipper_name = user.name // Skyrat fix
 	var/matrix/mat = transform
@@ -447,6 +450,7 @@
 	var/list/messagevoice
 	if(user)
 		user.visible_message("<span class='notice'>[user] sets [src] right-side up!</span>", "<span class='green'>You set [src] right-side up!</span>")
+		balloon_alert(user, "set right")
 		if(user.name == tipper_name)
 			messagevoice = list("I forgive you." = 'sound/voice/medbot/forgive.ogg')
 		else
