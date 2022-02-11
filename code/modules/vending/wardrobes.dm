@@ -491,7 +491,6 @@
 					/obj/item/clothing/suit/det_suit/forensicsred/long = 1,
 					/obj/item/clothing/suit/det_suit/forensicsblue = 1,
 					/obj/item/clothing/suit/det_suit/forensicsblue/long = 1,
-					/obj/item/clothing/suit/det_suit/lanyard = 1,
 					/obj/item/clothing/head/fedora = 2,
 					/obj/item/clothing/gloves/color/black = 2,
 					/obj/item/clothing/gloves/color/latex = 2,

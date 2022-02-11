@@ -139,11 +139,6 @@
 	item_state = "forensics_blue_long"
 	mutantrace_variation = STYLE_DIGITIGRADE
 
-/obj/item/clothing/suit/det_suit/lanyard
-	desc = "An 18th-century multi-purpose trenchcoat. This one has a lanyard around the neck."
-	icon_state = "detective_lanyard"
-	item_state = "detective_lanyard"
-
 //Engineering
 /obj/item/clothing/suit/hazardvest
 	name = "hazard vest"
