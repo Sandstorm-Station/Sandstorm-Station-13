@@ -1,6 +1,7 @@
 /obj/item/gun/ballistic/automatic/pistol/luger
 	name = "Luger P08"
-	desc = "A non-easily concealable handgun modified to use 10mm bullets. Agents with this are trying to show off, and will probably die."
+	desc = "A non-easily concealable handgun modified to use 10mm bullets. Agents with this are trying to show off, and will probably die.\
+			\nCannot be suppressed!"
 	icon_state = "luger"
 	item_state = "luger"
 	w_class = WEIGHT_CLASS_NORMAL
@@ -10,6 +11,6 @@
 	actions_types = list()
 	icon = 'modular_sand/icons/obj/guns/projectile.dmi'
 	spawnwithmagazine = FALSE
-	var/can_supress = FALSE
+	can_suppress = FALSE
 
 //Note for the future, i didn't know this gun already existed in the code, may be deleted eventually.
