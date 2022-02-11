@@ -35,34 +35,42 @@
 		return FALSE
 	if(!ishuman(user) || !user.Adjacent(source) || user.incapacitated())
 		return FALSE
+	if(source == user)
+		to_chat(user, "<span class='warning'>You can't pick yourself up.</span>")
+		source.balloon_alert(user, "cannot pick yourself!")
+		return FALSE
 	if(abs(get_size(user)/get_size(source)) < 2.0 )
 		to_chat(user, "<span class='warning'>They're too big to pick up!</span>")
+		source.balloon_alert(user, "too big to pick up!")
 		return FALSE
 	if(user.get_active_held_item())
 		to_chat(user, "<span class='warning'>Your hands are full!</span>")
+		source.balloon_alert(user, "hands are full!")
 		return FALSE
 	if(source.buckled)
 		to_chat(user, "<span class='warning'>[source] is buckled to something!</span>")
-		return FALSE
-	if(source == user)
-		to_chat(user, "<span class='warning'>You can't pick yourself up.</span>")
+		source.balloon_alert(user, "buckled to something!")
 		return FALSE
 	source.visible_message("<span class='warning'>[user] starts picking up [source].</span>", \
 					"<span class='userdanger'>[user] starts picking you up!</span>")
+	source.balloon_alert(user, "picking up")
 	var/p = abs(get_size(source)/get_size(user) * 40) //Scale how fast the pickup will be depending on size difference
 	if(!do_after(user, p, target = source))
 		return FALSE
 
 	if(user.get_active_held_item())
 		to_chat(user, "<span class='warning'>Your hands are full!</span>")
+		source.balloon_alert(user, "hands full!")
 		return FALSE
 	if(source.buckled)
 		to_chat(user, "<span class='warning'>[source] is buckled to something!</span>")
+		source.balloon_alert(user, "buckled!")
 		return FALSE
 
-	source.visible_message("<span class='warning'>[user] picks up [source]!</span>", \
-					"<span class='userdanger'>[user] picks you up!</span>")
-	to_chat(user, "<span class='notice'>You pick [source] up.</span>")
+	source.visible_message("<span class='warning'>[user] picks up [source]!</span>",
+					"<span class='userdanger'>[user] picks you up!</span>",
+					target = user,
+					target_message = "<span class='notice'>You pick [source] up.</span>")
 	source.drop_all_held_items()
 	mob_pickup_micro(source, user)
 	return TRUE
