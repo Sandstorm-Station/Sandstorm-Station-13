@@ -29,9 +29,9 @@
 
 /obj/item/gun/ballistic/automatic/pistol/enforcer/update_icon_state()
 	if(current_skin)
-		icon_state = "[unique_reskin[current_skin]][chambered ? "" : "-e"]
+		icon_state = "[unique_reskin[current_skin]][chambered ? "" : "-e"]"
 	else
-		icon_state = "[initial(icon_state)][chambered ? "" : "-e"]
+		icon_state = "[initial(icon_state)][chambered ? "" : "-e"]"
 
 /obj/item/gun/ballistic/automatic/pistol/enforcer/nomag
 	spawnwithmagazine = FALSE
