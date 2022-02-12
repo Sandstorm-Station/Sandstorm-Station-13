@@ -75,8 +75,8 @@
 /datum/action/innate/Hypnotize
 	name = "Hypnotize"
 	desc = "Stare deeply into someone's eyes, drawing them into a hypnotic slumber."
-	button_icon_state = "ling_pheromone"
-	icon_icon = 'icons/mob/actions/actions_changeling.dmi'
+	button_icon_state = "Hypno_eye"
+	icon_icon = 'modular_splurt/icons/mob/actions/lewd_actions/lewd_icons.dmi'
 	background_icon_state = "bg_alien"
 	var/mob/living/carbon/T //hypnosis target
 	var/mob/living/carbon/human/H //Person with the quirk
