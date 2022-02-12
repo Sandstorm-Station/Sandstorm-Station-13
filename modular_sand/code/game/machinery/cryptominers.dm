@@ -61,9 +61,9 @@
 			return
 
 /obj/machinery/cryptominer/AltClick(mob/user)
-	user.visible_message("<span class='warning'>begins resetting \the [src].</span>",
-					"<span class='warning'>You begin resetting \the [src].</span>",
-					runechat_popup = TRUE)
+	user.visible_message("<span class='warning'>[user] begins resetting \the [src].</span>",
+					"<span class='warning'>You begin resetting \the [src].</span>")
+	balloon_alert(user, "resetting")
 	if(do_after(user, 5 SECONDS, target = src))
 		pay_me = SSeconomy.get_dep_account(ACCOUNT_CAR)
 		say("Now using [pay_me.account_holder]'s account.")
@@ -117,13 +117,15 @@
 	. = ..()
 	if(!is_operational())
 		to_chat(user, "<span class='warning'>[src] has to be on to do this!</span>")
+		balloon_alert(user, "no power!")
 		return FALSE
 	if(mining)
 		set_mining(FALSE)
-		visible_message("<span class='warning'>slowly comes to a halt.</span>",
-						"<span class='warning'>You turn off [src].</span>",
-						runechat_popup = TRUE)
+		visible_message("<span class='warning'>[src] slowly comes to a halt.</span>",
+						"<span class='warning'>You turn off [src].</span>")
+		balloon_alert(user, "turned off")
 		return
+	balloon_alert(user, "turned on")
 	set_mining(TRUE)
 
 /obj/machinery/cryptominer/proc/set_mining(new_value)
