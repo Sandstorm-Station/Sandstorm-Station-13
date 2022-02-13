@@ -126,7 +126,7 @@
 	growthstages = 3
 	genes = list(/datum/plant_gene/trait/plant_type/fungal_metabolism)
 	growing_icon = 'icons/obj/hydroponics/growing_mushrooms.dmi'
-	mutatelist = list(/obj/item/seeds/plump/walkingmushroom)
+	//mutatelist = list(/obj/item/seeds/plump/walkingmushroom)
 	reagents_add = list(/datum/reagent/consumable/nutriment/vitamin = 0.04, /datum/reagent/consumable/nutriment = 0.1)
 
 /obj/item/reagent_containers/food/snacks/grown/mushroom/plumphelmet
@@ -136,7 +136,7 @@
 	icon_state = "plumphelmet"
 	filling_color = "#9370DB"
 	distill_reagent = /datum/reagent/consumable/ethanol/manly_dorf
-
+/*
 // Walking Mushroom
 /obj/item/seeds/plump/walkingmushroom
 	name = "pack of walking mushroom mycelium"
@@ -174,6 +174,7 @@
 	M.health = M.maxHealth
 	qdel(src)
 	to_chat(user, "<span class='notice'>You plant the walking mushroom.</span>")
+*/
 
 
 // Chanterelle
