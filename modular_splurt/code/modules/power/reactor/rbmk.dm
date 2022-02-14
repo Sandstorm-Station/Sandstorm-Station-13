@@ -987,10 +987,10 @@ The reactor CHEWS through moderator. It does not do this slowly. Be very careful
 	icon_state = "sealant"
 	w_class = 1
 
-/area/engine/engineering/reactor_core
+/area/engineering/main/reactor_core
 	name = "Nuclear Reactor Core"
 
-/area/engine/engineering/reactor_control
+/area/engineering/main/reactor_control
 	name = "Reactor Control Room"
 
 

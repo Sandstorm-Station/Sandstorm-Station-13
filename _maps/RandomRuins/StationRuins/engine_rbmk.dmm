@@ -58,11 +58,11 @@
 /area/space/nearstation)
 "aak" = (
 /turf/closed/wall/r_wall,
-/area/engine/engineering/reactor_control)
+/area/engineering/main/reactor_control)
 "aal" = (
 /obj/machinery/atmospherics/pipe/simple/purple/visible,
 /turf/closed/wall/r_wall,
-/area/engine/engineering/reactor_control)
+/area/engineering/main/reactor_control)
 "aam" = (
 /obj/structure/lattice,
 /obj/structure/grille,
@@ -75,7 +75,7 @@
 /obj/effect/spawner/structure/window/reinforced,
 /obj/machinery/door/firedoor,
 /turf/open/floor/plating,
-/area/engine/atmos)
+/area/engineering/atmos)
 "aao" = (
 /obj/machinery/atmospherics/pipe/manifold/scrubbers/hidden/layer3{
 	dir = 1
@@ -83,13 +83,13 @@
 /obj/effect/spawner/structure/window/reinforced,
 /obj/machinery/door/firedoor,
 /turf/open/floor/plating,
-/area/engine/atmos)
+/area/engineering/atmos)
 "aap" = (
 /obj/machinery/atmospherics/pipe/simple/scrubbers/hidden/layer3{
 	dir = 4
 	},
 /turf/closed/wall/r_wall,
-/area/engine/engineering/reactor_control)
+/area/engineering/main/reactor_control)
 "aaq" = (
 /obj/structure/closet/radiation,
 /obj/effect/turf_decal/delivery,
@@ -101,7 +101,7 @@
 	dir = 9
 	},
 /turf/open/floor/plasteel/dark,
-/area/engine/engineering/reactor_control)
+/area/engineering/main/reactor_control)
 "aar" = (
 /obj/structure/closet/radiation,
 /obj/effect/turf_decal/delivery,
@@ -120,7 +120,7 @@
 	dir = 1
 	},
 /turf/open/floor/plasteel/dark,
-/area/engine/engineering/reactor_control)
+/area/engineering/main/reactor_control)
 "aas" = (
 /obj/structure/closet/emcloset,
 /obj/machinery/atmospherics/pipe/simple/scrubbers/hidden/layer3{
@@ -133,7 +133,7 @@
 	dir = 5
 	},
 /turf/open/floor/plasteel/dark,
-/area/engine/engineering/reactor_control)
+/area/engineering/main/reactor_control)
 "aat" = (
 /obj/structure/closet/firecloset,
 /obj/effect/turf_decal/stripes/line{
@@ -143,7 +143,7 @@
 	dir = 4
 	},
 /turf/open/floor/plasteel/dark,
-/area/engine/engineering/reactor_control)
+/area/engineering/main/reactor_control)
 "aau" = (
 /obj/machinery/atmospherics/pipe/manifold/scrubbers/hidden/layer3{
 	dir = 1
@@ -161,7 +161,7 @@
 	layer = 1
 	},
 /turf/open/floor/plasteel/dark,
-/area/engine/engineering/reactor_control)
+/area/engineering/main/reactor_control)
 "aav" = (
 /obj/machinery/atmospherics/pipe/simple/scrubbers/hidden/layer3{
 	dir = 10
@@ -175,7 +175,7 @@
 	dir = 1
 	},
 /turf/open/floor/plasteel/dark,
-/area/engine/engineering/reactor_control)
+/area/engineering/main/reactor_control)
 "aaw" = (
 /obj/machinery/airalarm{
 	pixel_y = 22
@@ -188,7 +188,7 @@
 	},
 /obj/machinery/atmospherics/pipe/simple/purple/visible,
 /turf/open/floor/plasteel/dark,
-/area/engine/engineering/reactor_control)
+/area/engineering/main/reactor_control)
 "aax" = (
 /obj/structure/table,
 /obj/machinery/computer/reactor/control_rods,
@@ -196,14 +196,14 @@
 	dir = 1
 	},
 /turf/open/floor/plasteel/dark,
-/area/engine/engineering/reactor_control)
+/area/engineering/main/reactor_control)
 "aay" = (
 /obj/machinery/modular_computer/console/preset/engineering,
 /obj/effect/turf_decal/stripes/line{
 	dir = 1
 	},
 /turf/open/floor/plasteel/dark,
-/area/engine/engineering/reactor_control)
+/area/engineering/main/reactor_control)
 "aaz" = (
 /obj/effect/turf_decal/stripes/line{
 	dir = 5
@@ -211,7 +211,7 @@
 /obj/structure/table,
 /obj/item/toy/figure/ce,
 /turf/open/floor/plasteel/dark,
-/area/engine/engineering/reactor_control)
+/area/engineering/main/reactor_control)
 "aaA" = (
 /obj/structure/lattice,
 /turf/open/space/basic,
@@ -221,7 +221,7 @@
 	icon_state = "4-8"
 	},
 /turf/open/floor/plasteel/dark,
-/area/engine/atmos)
+/area/engineering/atmos)
 "aaC" = (
 /obj/machinery/light/small{
 	dir = 1
@@ -230,14 +230,14 @@
 	icon_state = "4-8"
 	},
 /turf/open/floor/plasteel/dark,
-/area/engine/atmos)
+/area/engineering/atmos)
 "aaD" = (
 /obj/machinery/atmospherics/pipe/simple/scrubbers/hidden/layer3,
 /obj/structure/cable/yellow{
 	icon_state = "4-8"
 	},
 /turf/open/floor/plasteel/dark,
-/area/engine/atmos)
+/area/engineering/atmos)
 "aaE" = (
 /obj/machinery/door/airlock/engineering{
 	name = "Reactor Control";
@@ -262,7 +262,7 @@
 	icon_state = "4-8"
 	},
 /turf/open/floor/plasteel/dark,
-/area/engine/engineering/reactor_control)
+/area/engineering/main/reactor_control)
 "aaF" = (
 /obj/machinery/atmospherics/components/unary/vent_scrubber/on/layer3{
 	dir = 1
@@ -274,13 +274,13 @@
 	dir = 8
 	},
 /turf/open/floor/plasteel/dark,
-/area/engine/engineering/reactor_control)
+/area/engineering/main/reactor_control)
 "aaG" = (
 /obj/structure/cable/yellow{
 	icon_state = "4-8"
 	},
 /turf/open/floor/plasteel/dark,
-/area/engine/engineering/reactor_control)
+/area/engineering/main/reactor_control)
 "aaI" = (
 /obj/machinery/atmospherics/components/unary/vent_pump/on/layer1,
 /obj/structure/cable/yellow{
@@ -290,7 +290,7 @@
 	dir = 4
 	},
 /turf/open/floor/plasteel/dark,
-/area/engine/engineering/reactor_control)
+/area/engineering/main/reactor_control)
 "aaK" = (
 /obj/machinery/door/airlock/engineering{
 	name = "Reactor Control";
@@ -315,7 +315,7 @@
 	icon_state = "4-8"
 	},
 /turf/open/floor/plasteel/dark,
-/area/engine/engineering/reactor_control)
+/area/engineering/main/reactor_control)
 "aaL" = (
 /obj/structure/cable/yellow{
 	icon_state = "4-8"
@@ -324,7 +324,7 @@
 	dir = 8
 	},
 /turf/open/floor/plasteel/dark,
-/area/engine/engineering/reactor_control)
+/area/engineering/main/reactor_control)
 "aaN" = (
 /obj/machinery/atmospherics/components/unary/vent_scrubber/on/layer3{
 	dir = 1
@@ -337,7 +337,7 @@
 	},
 /obj/machinery/atmospherics/pipe/simple/purple/visible,
 /turf/open/floor/carpet/royalblack,
-/area/engine/engineering/reactor_control)
+/area/engineering/main/reactor_control)
 "aaO" = (
 /obj/machinery/atmospherics/pipe/simple/scrubbers/hidden/layer3{
 	dir = 1
@@ -349,27 +349,27 @@
 	icon_state = "4-8"
 	},
 /turf/open/floor/carpet/royalblack,
-/area/engine/engineering/reactor_control)
+/area/engineering/main/reactor_control)
 "aaP" = (
 /obj/structure/cable/yellow{
 	icon_state = "4-8"
 	},
 /obj/machinery/atmospherics/pipe/simple/purple/visible,
 /turf/open/floor/carpet/royalblack,
-/area/engine/engineering/reactor_control)
+/area/engineering/main/reactor_control)
 "aaR" = (
 /obj/structure/cable/yellow{
 	icon_state = "4-8"
 	},
 /obj/structure/chair/office/light,
 /turf/open/floor/carpet/royalblack,
-/area/engine/engineering/reactor_control)
+/area/engineering/main/reactor_control)
 "aaT" = (
 /obj/structure/cable/yellow{
 	icon_state = "4-8"
 	},
 /turf/open/floor/carpet/royalblack,
-/area/engine/engineering/reactor_control)
+/area/engineering/main/reactor_control)
 "aaU" = (
 /obj/item/radio/intercom{
 	pixel_x = 26
@@ -381,45 +381,45 @@
 	dir = 4
 	},
 /turf/open/floor/plasteel/dark,
-/area/engine/engineering/reactor_control)
+/area/engineering/main/reactor_control)
 "aaV" = (
 /obj/machinery/atmospherics/pipe/simple/supply/hidden/layer1{
 	dir = 4
 	},
 /obj/effect/spawner/structure/window/reinforced,
 /turf/open/floor/plating,
-/area/engine/atmos)
+/area/engineering/atmos)
 "aaW" = (
 /obj/machinery/atmospherics/pipe/simple/supply/hidden/layer1{
 	dir = 4
 	},
 /turf/closed/wall/r_wall,
-/area/engine/atmos)
+/area/engineering/atmos)
 "aaY" = (
 /obj/machinery/atmospherics/pipe/manifold/supply/hidden/layer1{
 	dir = 1
 	},
 /turf/closed/wall/r_wall,
-/area/engine/atmos)
+/area/engineering/atmos)
 "aaZ" = (
 /obj/machinery/atmospherics/pipe/simple/supply/hidden/layer1{
 	dir = 4
 	},
 /turf/open/floor/plasteel/dark,
-/area/engine/atmos)
+/area/engineering/atmos)
 "abe" = (
 /obj/machinery/atmospherics/pipe/simple/scrubbers/hidden/layer3,
 /obj/machinery/atmospherics/pipe/simple/supply/hidden/layer1{
 	dir = 4
 	},
 /turf/closed/wall/r_wall,
-/area/engine/atmos)
+/area/engineering/atmos)
 "abf" = (
 /obj/machinery/atmospherics/pipe/simple/supply/hidden/layer1{
 	dir = 4
 	},
 /turf/closed/wall/r_wall,
-/area/engine/engineering/reactor_control)
+/area/engineering/main/reactor_control)
 "abg" = (
 /obj/machinery/shower{
 	dir = 4
@@ -431,7 +431,7 @@
 	dir = 10
 	},
 /turf/open/floor/noslip,
-/area/engine/engineering/reactor_control)
+/area/engineering/main/reactor_control)
 "abh" = (
 /obj/machinery/atmospherics/pipe/simple/supply/hidden/layer1{
 	dir = 4
@@ -439,7 +439,7 @@
 /obj/machinery/light/small,
 /obj/effect/turf_decal/stripes/line,
 /turf/open/floor/noslip,
-/area/engine/engineering/reactor_control)
+/area/engineering/main/reactor_control)
 "abi" = (
 /obj/item/radio/intercom{
 	pixel_x = 27
@@ -452,13 +452,13 @@
 	dir = 6
 	},
 /turf/open/floor/noslip,
-/area/engine/engineering/reactor_control)
+/area/engineering/main/reactor_control)
 "abj" = (
 /obj/machinery/atmospherics/pipe/manifold/supply/hidden/layer1{
 	dir = 1
 	},
 /turf/closed/wall/r_wall,
-/area/engine/engineering/reactor_control)
+/area/engineering/main/reactor_control)
 "abk" = (
 /obj/machinery/atmospherics/pipe/simple/supply/hidden/layer1{
 	dir = 4
@@ -470,7 +470,7 @@
 	pixel_x = -25
 	},
 /turf/open/floor/plasteel/dark,
-/area/engine/engineering/reactor_control)
+/area/engineering/main/reactor_control)
 "abl" = (
 /obj/machinery/atmospherics/pipe/simple/supply/hidden/layer1{
 	dir = 4
@@ -483,7 +483,7 @@
 	name = "Atmospherics to Reactor"
 	},
 /turf/open/floor/plasteel/dark,
-/area/engine/engineering/reactor_control)
+/area/engineering/main/reactor_control)
 "abm" = (
 /obj/machinery/atmospherics/pipe/simple/scrubbers/hidden/layer3{
 	dir = 1
@@ -493,7 +493,7 @@
 	},
 /obj/effect/turf_decal/stripes/line,
 /turf/open/floor/plasteel/dark,
-/area/engine/engineering/reactor_control)
+/area/engineering/main/reactor_control)
 "abn" = (
 /obj/machinery/atmospherics/pipe/simple/supply/hidden/layer1{
 	dir = 4
@@ -503,7 +503,7 @@
 	name = "Atmospherics to Moderator"
 	},
 /turf/open/floor/plasteel/dark,
-/area/engine/engineering/reactor_control)
+/area/engineering/main/reactor_control)
 "abq" = (
 /obj/machinery/atmospherics/pipe/simple/supply/hidden/layer1{
 	dir = 4
@@ -514,7 +514,7 @@
 	},
 /obj/effect/turf_decal/stripes/line,
 /turf/open/floor/plasteel/dark,
-/area/engine/engineering/reactor_control)
+/area/engineering/main/reactor_control)
 "abr" = (
 /obj/machinery/atmospherics/components/unary/vent_pump/on/layer1{
 	dir = 8
@@ -526,7 +526,7 @@
 	},
 /obj/effect/turf_decal/stripes/line,
 /turf/open/floor/plasteel/dark,
-/area/engine/engineering/reactor_control)
+/area/engineering/main/reactor_control)
 "abs" = (
 /obj/machinery/power/apc/auto_name/east{
 	pixel_x = 24
@@ -536,7 +536,7 @@
 	dir = 6
 	},
 /turf/open/floor/plasteel/dark,
-/area/engine/engineering/reactor_control)
+/area/engineering/main/reactor_control)
 "abt" = (
 /obj/structure/lattice,
 /turf/open/space,
@@ -545,24 +545,24 @@
 /obj/machinery/atmospherics/pipe/simple/supply/hidden/layer1,
 /obj/effect/spawner/structure/window/reinforced,
 /turf/open/floor/plating,
-/area/engine/atmos)
+/area/engineering/atmos)
 "abv" = (
 /obj/machinery/light/small{
 	dir = 4
 	},
 /turf/open/floor/plasteel/dark,
-/area/engine/atmos)
+/area/engineering/atmos)
 "abw" = (
 /obj/machinery/atmospherics/pipe/simple/scrubbers/hidden/layer3,
 /obj/effect/spawner/structure/window/reinforced,
 /turf/open/floor/plating,
-/area/engine/atmos)
+/area/engineering/atmos)
 "abA" = (
 /obj/structure/cable/white{
 	icon_state = "2-4"
 	},
 /turf/closed/wall/r_wall,
-/area/engine/engineering/reactor_control)
+/area/engineering/main/reactor_control)
 "abB" = (
 /obj/structure/cable/white{
 	icon_state = "2-4"
@@ -571,21 +571,21 @@
 	icon_state = "4-8"
 	},
 /turf/closed/wall/r_wall,
-/area/engine/engineering/reactor_control)
+/area/engineering/main/reactor_control)
 "abC" = (
 /obj/machinery/atmospherics/pipe/simple/supply/hidden/layer1,
 /obj/structure/cable/white{
 	icon_state = "4-8"
 	},
 /turf/closed/wall/r_wall,
-/area/engine/engineering/reactor_control)
+/area/engineering/main/reactor_control)
 "abD" = (
 /obj/effect/spawner/structure/window/plasma/reinforced,
 /obj/structure/cable/white{
 	icon_state = "4-8"
 	},
 /turf/open/floor/plating,
-/area/engine/engineering/reactor_control)
+/area/engineering/main/reactor_control)
 "abE" = (
 /obj/machinery/door/airlock/engineering{
 	name = "Reactor Core";
@@ -607,27 +607,27 @@
 	icon_state = "1-2"
 	},
 /turf/open/floor/plasteel/dark,
-/area/engine/engineering/reactor_control)
+/area/engineering/main/reactor_control)
 "abI" = (
 /obj/effect/spawner/structure/window/plasma/reinforced,
 /obj/machinery/atmospherics/pipe/simple/scrubbers/hidden/layer3{
 	dir = 1
 	},
 /turf/open/floor/plating,
-/area/engine/engineering/reactor_control)
+/area/engineering/main/reactor_control)
 "abJ" = (
 /obj/machinery/meter,
 /obj/machinery/atmospherics/pipe/simple/brown/visible,
 /turf/closed/wall/r_wall,
-/area/engine/engineering/reactor_control)
+/area/engineering/main/reactor_control)
 "abK" = (
 /obj/effect/spawner/structure/window/plasma/reinforced,
 /turf/open/floor/plating,
-/area/engine/engineering/reactor_control)
+/area/engineering/main/reactor_control)
 "abL" = (
 /obj/machinery/atmospherics/pipe/simple/supply/hidden/layer1,
 /turf/closed/wall/r_wall,
-/area/engine/atmos)
+/area/engineering/atmos)
 "abM" = (
 /obj/machinery/door/airlock/external{
 	name = "Atmospherics External Airlock";
@@ -635,14 +635,14 @@
 	},
 /obj/effect/mapping_helpers/airlock/cyclelink_helper,
 /turf/open/floor/plating,
-/area/engine/atmos)
+/area/engineering/atmos)
 "abN" = (
 /obj/machinery/atmospherics/pipe/simple/scrubbers/hidden/layer3,
 /turf/closed/wall/r_wall,
-/area/engine/atmos)
+/area/engineering/atmos)
 "abO" = (
 /turf/closed/wall/r_wall,
-/area/engine/engineering/reactor_core)
+/area/engineering/main/reactor_core)
 "abP" = (
 /obj/machinery/power/smes/engineering,
 /obj/structure/cable/white,
@@ -653,7 +653,7 @@
 	dir = 9
 	},
 /turf/open/floor/engine,
-/area/engine/engineering/reactor_core)
+/area/engineering/main/reactor_core)
 "abQ" = (
 /obj/machinery/power/smes/engineering,
 /obj/structure/cable/white,
@@ -661,7 +661,7 @@
 	dir = 1
 	},
 /turf/open/floor/engine,
-/area/engine/engineering/reactor_core)
+/area/engineering/main/reactor_core)
 "abR" = (
 /obj/machinery/atmospherics/pipe/simple/supply/hidden/layer1,
 /obj/structure/closet/secure_closet/engineering_welding,
@@ -672,13 +672,13 @@
 	pixel_y = 22
 	},
 /turf/open/floor/engine,
-/area/engine/engineering/reactor_core)
+/area/engineering/main/reactor_core)
 "abS" = (
 /obj/effect/turf_decal/stripes/line{
 	dir = 1
 	},
 /turf/open/floor/engine,
-/area/engine/engineering/reactor_core)
+/area/engineering/main/reactor_core)
 "abT" = (
 /obj/effect/turf_decal/stripes/line{
 	dir = 1
@@ -688,7 +688,7 @@
 	icon_state = "1-2"
 	},
 /turf/open/floor/engine,
-/area/engine/engineering/reactor_core)
+/area/engineering/main/reactor_core)
 "abU" = (
 /obj/machinery/atmospherics/pipe/simple/scrubbers/hidden/layer3{
 	dir = 5
@@ -697,7 +697,7 @@
 	dir = 1
 	},
 /turf/open/floor/engine,
-/area/engine/engineering/reactor_core)
+/area/engineering/main/reactor_core)
 "abX" = (
 /obj/machinery/atmospherics/pipe/simple/scrubbers/hidden/layer3{
 	dir = 4
@@ -710,7 +710,7 @@
 	dir = 8
 	},
 /turf/open/floor/engine,
-/area/engine/engineering/reactor_core)
+/area/engineering/main/reactor_core)
 "abY" = (
 /obj/machinery/atmospherics/pipe/simple/scrubbers/hidden/layer3{
 	dir = 4
@@ -729,7 +729,7 @@
 	icon_state = "0-2"
 	},
 /turf/open/floor/engine,
-/area/engine/engineering/reactor_core)
+/area/engineering/main/reactor_core)
 "abZ" = (
 /obj/machinery/atmospherics/pipe/simple/scrubbers/hidden/layer3{
 	dir = 10
@@ -742,7 +742,7 @@
 	},
 /obj/machinery/portable_atmospherics/canister/toxins,
 /turf/open/floor/engine,
-/area/engine/engineering/reactor_core)
+/area/engineering/main/reactor_core)
 "aca" = (
 /obj/structure/table/reinforced,
 /obj/machinery/light{
@@ -760,7 +760,7 @@
 	pixel_y = 12
 	},
 /turf/open/floor/engine,
-/area/engine/engineering/reactor_core)
+/area/engineering/main/reactor_core)
 "acd" = (
 /obj/structure/lattice,
 /obj/structure/grille/broken,
@@ -772,7 +772,7 @@
 	dir = 6
 	},
 /turf/closed/wall/r_wall,
-/area/engine/atmos)
+/area/engineering/atmos)
 "ack" = (
 /obj/machinery/light/small{
 	dir = 4
@@ -782,28 +782,28 @@
 	dir = 4
 	},
 /turf/open/floor/plating,
-/area/engine/atmos)
+/area/engineering/atmos)
 "acl" = (
 /obj/machinery/atmospherics/pipe/simple/scrubbers/hidden/layer3,
 /obj/machinery/atmospherics/pipe/simple/scrubbers/hidden{
 	dir = 10
 	},
 /turf/closed/wall/r_wall,
-/area/engine/atmos)
+/area/engineering/atmos)
 "acp" = (
 /obj/structure/grille/broken,
 /obj/machinery/atmospherics/components/unary/outlet_injector/atmos/engine_waste{
 	dir = 4
 	},
 /turf/open/floor/plating/airless,
-/area/engine/engineering/reactor_core)
+/area/engineering/main/reactor_core)
 "acq" = (
 /obj/machinery/atmospherics/pipe/simple/scrubbers/visible{
 	dir = 4
 	},
 /obj/effect/spawner/structure/window/plasma/reinforced,
 /turf/open/floor/engine,
-/area/engine/engineering/reactor_core)
+/area/engineering/main/reactor_core)
 "acr" = (
 /obj/machinery/atmospherics/pipe/simple/scrubbers/visible{
 	dir = 4
@@ -818,7 +818,7 @@
 	dir = 8
 	},
 /turf/open/floor/engine,
-/area/engine/engineering/reactor_core)
+/area/engineering/main/reactor_core)
 "acw" = (
 /obj/machinery/atmospherics/pipe/simple/scrubbers/visible{
 	dir = 4
@@ -830,7 +830,7 @@
 	icon_state = "0-2"
 	},
 /turf/open/floor/engine,
-/area/engine/engineering/reactor_core)
+/area/engineering/main/reactor_core)
 "acx" = (
 /obj/machinery/power/terminal{
 	dir = 1
@@ -842,21 +842,21 @@
 	dir = 4
 	},
 /turf/open/floor/engine,
-/area/engine/engineering/reactor_core)
+/area/engineering/main/reactor_core)
 "acz" = (
 /obj/machinery/atmospherics/pipe/simple/supply/hidden/layer1,
 /obj/machinery/atmospherics/pipe/simple/scrubbers/visible{
 	dir = 4
 	},
 /turf/open/floor/engine,
-/area/engine/engineering/reactor_core)
+/area/engineering/main/reactor_core)
 "acD" = (
 /obj/machinery/atmospherics/components/binary/valve/digital{
 	dir = 4;
 	name = "Emergency Coolant Purge"
 	},
 /turf/open/floor/engine,
-/area/engine/engineering/reactor_core)
+/area/engineering/main/reactor_core)
 "acE" = (
 /obj/machinery/atmospherics/pipe/manifold/scrubbers/visible{
 	dir = 4
@@ -865,13 +865,13 @@
 	icon_state = "1-4"
 	},
 /turf/open/floor/engine,
-/area/engine/engineering/reactor_core)
+/area/engineering/main/reactor_core)
 "acH" = (
 /obj/structure/cable/white{
 	icon_state = "4-8"
 	},
 /turf/open/floor/engine,
-/area/engine/engineering/reactor_core)
+/area/engineering/main/reactor_core)
 "acM" = (
 /obj/machinery/meter,
 /obj/machinery/atmospherics/pipe/manifold/brown/visible{
@@ -881,7 +881,7 @@
 	icon_state = "4-8"
 	},
 /turf/open/floor/engine,
-/area/engine/engineering/reactor_core)
+/area/engineering/main/reactor_core)
 "acP" = (
 /obj/machinery/atmospherics/components/binary/valve/digital{
 	dir = 4;
@@ -891,40 +891,40 @@
 	icon_state = "1-8"
 	},
 /turf/open/floor/engine,
-/area/engine/engineering/reactor_core)
+/area/engineering/main/reactor_core)
 "acQ" = (
 /obj/machinery/atmospherics/pipe/simple/scrubbers/hidden/layer3,
 /obj/machinery/atmospherics/pipe/simple/brown/visible{
 	dir = 8
 	},
 /turf/open/floor/engine,
-/area/engine/engineering/reactor_core)
+/area/engineering/main/reactor_core)
 "acR" = (
 /obj/machinery/atmospherics/pipe/simple/brown/visible{
 	dir = 8
 	},
 /turf/open/floor/engine,
-/area/engine/engineering/reactor_core)
+/area/engineering/main/reactor_core)
 "acS" = (
 /obj/effect/spawner/structure/window/plasma/reinforced,
 /obj/machinery/atmospherics/pipe/simple/brown/visible{
 	dir = 8
 	},
 /turf/open/floor/engine,
-/area/engine/engineering/reactor_core)
+/area/engineering/main/reactor_core)
 "acT" = (
 /obj/machinery/atmospherics/components/unary/outlet_injector/atmos/engine_waste{
 	dir = 8
 	},
 /turf/open/floor/plating/airless,
-/area/engine/engineering/reactor_core)
+/area/engineering/main/reactor_core)
 "acU" = (
 /turf/closed/wall/r_wall,
-/area/engine/atmos)
+/area/engineering/atmos)
 "acW" = (
 /obj/machinery/atmospherics/pipe/layer_manifold,
 /turf/closed/wall/r_wall,
-/area/engine/atmos)
+/area/engineering/atmos)
 "adb" = (
 /obj/machinery/door/airlock/external{
 	name = "Atmospherics External Airlock";
@@ -934,7 +934,7 @@
 	dir = 1
 	},
 /turf/open/floor/plating,
-/area/engine/atmos)
+/area/engineering/atmos)
 "ade" = (
 /obj/structure/grille,
 /obj/structure/lattice,
@@ -948,7 +948,7 @@
 	dir = 8
 	},
 /turf/open/floor/engine,
-/area/engine/engineering/reactor_core)
+/area/engineering/main/reactor_core)
 "adi" = (
 /obj/structure/cable/yellow{
 	icon_state = "1-4"
@@ -960,7 +960,7 @@
 	icon_state = "4-8"
 	},
 /turf/open/floor/engine,
-/area/engine/engineering/reactor_core)
+/area/engineering/main/reactor_core)
 "adj" = (
 /obj/machinery/pool/filter{
 	pixel_y = -18
@@ -975,7 +975,7 @@
 	icon_state = "4-8"
 	},
 /turf/open/floor/engine,
-/area/engine/engineering/reactor_core)
+/area/engineering/main/reactor_core)
 "adl" = (
 /obj/machinery/atmospherics/components/unary/vent_pump/on/layer1{
 	dir = 1
@@ -984,14 +984,14 @@
 	icon_state = "4-8"
 	},
 /turf/open/floor/engine,
-/area/engine/engineering/reactor_core)
+/area/engineering/main/reactor_core)
 "ads" = (
 /obj/machinery/pool/controller,
 /obj/structure/cable/yellow{
 	icon_state = "4-8"
 	},
 /turf/open/floor/engine,
-/area/engine/engineering/reactor_core)
+/area/engineering/main/reactor_core)
 "adt" = (
 /obj/effect/turf_decal/stripes/corner,
 /obj/machinery/atmospherics/pipe/simple/scrubbers/visible,
@@ -999,14 +999,14 @@
 	icon_state = "4-8"
 	},
 /turf/open/floor/engine,
-/area/engine/engineering/reactor_core)
+/area/engineering/main/reactor_core)
 "adu" = (
 /obj/effect/turf_decal/stripes/line,
 /obj/structure/cable/yellow{
 	icon_state = "4-8"
 	},
 /turf/open/floor/engine,
-/area/engine/engineering/reactor_core)
+/area/engineering/main/reactor_core)
 "adw" = (
 /obj/machinery/atmospherics/components/binary/pump{
 	name = "Moderators to Reactor"
@@ -1016,11 +1016,11 @@
 	icon_state = "2-8"
 	},
 /turf/open/floor/engine,
-/area/engine/engineering/reactor_core)
+/area/engineering/main/reactor_core)
 "adx" = (
 /obj/effect/turf_decal/stripes/line,
 /turf/open/floor/engine,
-/area/engine/engineering/reactor_core)
+/area/engineering/main/reactor_core)
 "ady" = (
 /obj/machinery/atmospherics/components/unary/vent_scrubber/on/layer3{
 	dir = 1
@@ -1029,15 +1029,15 @@
 	dir = 8
 	},
 /turf/open/floor/engine,
-/area/engine/engineering/reactor_core)
+/area/engineering/main/reactor_core)
 "adD" = (
 /obj/machinery/atmospherics/components/unary/portables_connector,
 /obj/machinery/portable_atmospherics/canister/nitrogen,
 /turf/open/floor/engine,
-/area/engine/engineering/reactor_core)
+/area/engineering/main/reactor_core)
 "adE" = (
 /turf/open/floor/engine/vacuum,
-/area/engine/atmos)
+/area/engineering/atmos)
 "adF" = (
 /obj/structure/grille/broken,
 /obj/structure/lattice,
@@ -1046,19 +1046,19 @@
 "adG" = (
 /obj/effect/spawner/structure/window/plasma/reinforced,
 /turf/open/floor/engine,
-/area/engine/engineering/reactor_core)
+/area/engineering/main/reactor_core)
 "adH" = (
 /obj/effect/turf_decal/stripes/line{
 	dir = 8
 	},
 /turf/open/floor/engine,
-/area/engine/engineering/reactor_core)
+/area/engineering/main/reactor_core)
 "adY" = (
 /obj/effect/turf_decal/stripes/line{
 	dir = 9
 	},
 /turf/open/pool,
-/area/engine/engineering/reactor_core)
+/area/engineering/main/reactor_core)
 "adZ" = (
 /obj/item/fuel_rod,
 /obj/effect/turf_decal/stripes/line{
@@ -1069,55 +1069,55 @@
 	pixel_y = 17
 	},
 /turf/open/pool,
-/area/engine/engineering/reactor_core)
+/area/engineering/main/reactor_core)
 "aea" = (
 /obj/item/fuel_rod,
 /obj/effect/turf_decal/stripes/line{
 	dir = 5
 	},
 /turf/open/pool,
-/area/engine/engineering/reactor_core)
+/area/engineering/main/reactor_core)
 "aeb" = (
 /obj/effect/turf_decal/stripes/line{
 	dir = 4
 	},
 /obj/machinery/atmospherics/pipe/simple/scrubbers/visible,
 /turf/open/floor/engine,
-/area/engine/engineering/reactor_core)
+/area/engineering/main/reactor_core)
 "aec" = (
 /turf/open/floor/engine,
-/area/engine/engineering/reactor_core)
+/area/engineering/main/reactor_core)
 "aed" = (
 /obj/machinery/atmospherics/pipe/simple/purple/visible,
 /obj/structure/cable/yellow{
 	icon_state = "1-2"
 	},
 /turf/open/floor/engine,
-/area/engine/engineering/reactor_core)
+/area/engineering/main/reactor_core)
 "aee" = (
 /obj/machinery/atmospherics/components/binary/pump{
 	name = "Coolent to Reactor"
 	},
 /turf/open/floor/engine,
-/area/engine/engineering/reactor_core)
+/area/engineering/main/reactor_core)
 "aef" = (
 /obj/effect/turf_decal/stripes/line{
 	dir = 8
 	},
 /turf/open/pool,
-/area/engine/engineering/reactor_core)
+/area/engineering/main/reactor_core)
 "aeg" = (
 /obj/machinery/pool/drain,
 /obj/item/fuel_rod,
 /turf/open/pool,
-/area/engine/engineering/reactor_core)
+/area/engineering/main/reactor_core)
 "aeh" = (
 /obj/item/fuel_rod,
 /obj/effect/turf_decal/stripes/line{
 	dir = 4
 	},
 /turf/open/pool,
-/area/engine/engineering/reactor_core)
+/area/engineering/main/reactor_core)
 "aei" = (
 /obj/effect/turf_decal/stripes/line{
 	dir = 4
@@ -1127,24 +1127,24 @@
 	},
 /obj/machinery/meter,
 /turf/open/floor/engine,
-/area/engine/engineering/reactor_core)
+/area/engineering/main/reactor_core)
 "aeq" = (
 /obj/machinery/atmospherics/pipe/simple/scrubbers/visible{
 	dir = 4
 	},
 /turf/open/floor/engine,
-/area/engine/engineering/reactor_core)
+/area/engineering/main/reactor_core)
 "aer" = (
 /obj/structure/cable/yellow,
 /obj/machinery/atmospherics/components/trinary/nuclear_reactor/preset,
 /turf/open/floor/engine,
-/area/engine/engineering/reactor_core)
+/area/engineering/main/reactor_core)
 "aes" = (
 /obj/machinery/atmospherics/pipe/simple/cyan/visible{
 	dir = 4
 	},
 /turf/open/floor/engine,
-/area/engine/engineering/reactor_core)
+/area/engineering/main/reactor_core)
 "aet" = (
 /obj/effect/turf_decal/stripes/line{
 	dir = 8
@@ -1154,57 +1154,57 @@
 	},
 /obj/machinery/meter,
 /turf/open/floor/engine,
-/area/engine/engineering/reactor_core)
+/area/engineering/main/reactor_core)
 "aeu" = (
 /obj/machinery/atmospherics/pipe/simple/cyan/visible{
 	dir = 9
 	},
 /turf/open/floor/engine,
-/area/engine/engineering/reactor_core)
+/area/engineering/main/reactor_core)
 "aev" = (
 /obj/effect/turf_decal/stripes/line,
 /obj/effect/turf_decal/stripes/line{
 	dir = 8
 	},
 /turf/open/floor/engine,
-/area/engine/engineering/reactor_core)
+/area/engineering/main/reactor_core)
 "aew" = (
 /obj/effect/turf_decal/stripes/corner{
 	dir = 8
 	},
 /turf/open/floor/engine,
-/area/engine/engineering/reactor_core)
+/area/engineering/main/reactor_core)
 "aex" = (
 /obj/effect/turf_decal/stripes/line{
 	dir = 10
 	},
 /turf/open/pool,
-/area/engine/engineering/reactor_core)
+/area/engineering/main/reactor_core)
 "aey" = (
 /obj/item/fuel_rod,
 /obj/effect/turf_decal/stripes/line,
 /turf/open/pool,
-/area/engine/engineering/reactor_core)
+/area/engineering/main/reactor_core)
 "aez" = (
 /obj/item/fuel_rod,
 /obj/effect/turf_decal/stripes/line{
 	dir = 6
 	},
 /turf/open/pool,
-/area/engine/engineering/reactor_core)
+/area/engineering/main/reactor_core)
 "aeA" = (
 /obj/effect/turf_decal/stripes/line{
 	dir = 8
 	},
 /obj/machinery/atmospherics/pipe/simple/cyan/visible,
 /turf/open/floor/engine,
-/area/engine/engineering/reactor_core)
+/area/engineering/main/reactor_core)
 "aeF" = (
 /obj/machinery/door/poddoor{
 	id = "au_nuclear_vent"
 	},
 /turf/open/space/basic,
-/area/engine/engineering/reactor_core)
+/area/engineering/main/reactor_core)
 "aeH" = (
 /obj/machinery/portable_atmospherics/canister/oxygen,
 /obj/machinery/camera/autoname{
@@ -1214,14 +1214,14 @@
 	dir = 8
 	},
 /turf/open/floor/engine,
-/area/engine/engineering/reactor_core)
+/area/engineering/main/reactor_core)
 "aeU" = (
 /obj/effect/turf_decal/stripes/corner{
 	dir = 4
 	},
 /obj/machinery/atmospherics/pipe/simple/scrubbers/visible,
 /turf/open/floor/engine,
-/area/engine/engineering/reactor_core)
+/area/engineering/main/reactor_core)
 "afc" = (
 /obj/effect/turf_decal/stripes/line{
 	dir = 1
@@ -1230,7 +1230,7 @@
 	dir = 6
 	},
 /turf/open/floor/engine,
-/area/engine/engineering/reactor_core)
+/area/engineering/main/reactor_core)
 "afe" = (
 /obj/effect/turf_decal/stripes/line{
 	dir = 1
@@ -1239,7 +1239,7 @@
 	dir = 4
 	},
 /turf/open/floor/engine,
-/area/engine/engineering/reactor_core)
+/area/engineering/main/reactor_core)
 "afi" = (
 /obj/effect/turf_decal/stripes/corner{
 	dir = 1
@@ -1248,14 +1248,14 @@
 	dir = 9
 	},
 /turf/open/floor/engine,
-/area/engine/engineering/reactor_core)
+/area/engineering/main/reactor_core)
 "afn" = (
 /obj/machinery/portable_atmospherics/canister/toxins,
 /obj/effect/turf_decal/stripes/line{
 	dir = 10
 	},
 /turf/open/floor/engine,
-/area/engine/engineering/reactor_core)
+/area/engineering/main/reactor_core)
 "afo" = (
 /obj/effect/turf_decal/stripes/line{
 	dir = 8
@@ -1263,14 +1263,14 @@
 /obj/machinery/light,
 /obj/effect/turf_decal/stripes/line,
 /turf/open/floor/engine,
-/area/engine/engineering/reactor_core)
+/area/engineering/main/reactor_core)
 "afp" = (
 /obj/machinery/atmospherics/components/binary/pump{
 	name = "Reactor to Cooling Loop"
 	},
 /obj/effect/turf_decal/stripes/line,
 /turf/open/floor/engine,
-/area/engine/engineering/reactor_core)
+/area/engineering/main/reactor_core)
 "afq" = (
 /obj/machinery/atmospherics/components/binary/pump{
 	dir = 1;
@@ -1278,14 +1278,14 @@
 	},
 /obj/effect/turf_decal/stripes/line,
 /turf/open/floor/engine,
-/area/engine/engineering/reactor_core)
+/area/engineering/main/reactor_core)
 "afr" = (
 /obj/machinery/light,
 /obj/machinery/portable_atmospherics/canister/carbon_dioxide,
 /obj/effect/turf_decal/box,
 /obj/effect/turf_decal/stripes/line,
 /turf/open/floor/engine,
-/area/engine/engineering/reactor_core)
+/area/engineering/main/reactor_core)
 "afs" = (
 /obj/structure/grille,
 /obj/structure/lattice,
@@ -1296,7 +1296,7 @@
 /obj/effect/spawner/structure/window/plasma/reinforced,
 /obj/machinery/atmospherics/pipe/layer_manifold,
 /turf/open/floor/engine,
-/area/engine/engineering/reactor_core)
+/area/engineering/main/reactor_core)
 "afA" = (
 /obj/structure/lattice,
 /obj/structure/lattice,
