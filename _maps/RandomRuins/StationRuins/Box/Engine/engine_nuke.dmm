@@ -1087,7 +1087,7 @@
 /area/engineering/main)
 "Me" = (
 /obj/machinery/button/door{
-	id = rbmkshut;
+	id = "rbmkshut";
 	name = "Nuclear Blast Door Control";
 	pixel_y = -24;
 	req_access_txt = "10"
@@ -1274,7 +1274,7 @@
 /area/engineering/main)
 "Sx" = (
 /obj/machinery/door/poddoor{
-	id = rbmkshut
+	id = "rbmkshut"
 	},
 /obj/machinery/atmospherics/pipe/simple/scrubbers/hidden{
 	dir = 4
