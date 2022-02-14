@@ -5,15 +5,12 @@
 
 /obj/item/storage/secure/briefcase/hos/hos_e45_pack/PopulateContents()
 	new /obj/item/gun/ballistic/automatic/pistol/enforcerred(src)
-	new /obj/item/ammo_box/magazine/e45/trac(src)
-	new /obj/item/ammo_box/magazine/e45/hydra(src)
-	new /obj/item/ammo_box/magazine/e45/lethal(src)
 	new /obj/item/ammo_box/magazine/e45/lethal(src)
 	new /obj/item/ammo_box/magazine/e45/lethal(src)
 	new /obj/item/ammo_box/magazine/e45(src)
 	new /obj/item/ammo_box/magazine/e45(src)
-	new /obj/item/ammo_box/magazine/e45/hotshot(src)
-	new /obj/item/ammo_box/magazine/e45/ion(src)
+	new /obj/item/ammo_box/magazine/e45(src)
+	new /obj/item/ammo_box/magazine/e45/taser(src)
 	new /obj/item/ammo_box/magazine/e45/taser(src)
 	new /obj/item/ammo_box/magazine/e45/taser(src)
 
@@ -71,17 +68,15 @@
 
 /obj/item/storage/secure/briefcase/cap_e45_pack/PopulateContents()
 	new /obj/item/gun/ballistic/automatic/pistol/enforcergold(src)
-	new /obj/item/ammo_box/magazine/e45/trac(src)
-	new /obj/item/ammo_box/magazine/e45/hydra(src)
-	new /obj/item/ammo_box/magazine/e45/lethal(src)
 	new /obj/item/ammo_box/magazine/e45/lethal(src)
 	new /obj/item/ammo_box/magazine/e45/lethal(src)
 	new /obj/item/ammo_box/magazine/e45(src)
 	new /obj/item/ammo_box/magazine/e45(src)
-	new /obj/item/ammo_box/magazine/e45/hotshot(src)
-	new /obj/item/ammo_box/magazine/e45/ion(src)
+	new /obj/item/ammo_box/magazine/e45(src)
 	new /obj/item/ammo_box/magazine/e45/taser(src)
 	new /obj/item/ammo_box/magazine/e45/taser(src)
+	new /obj/item/ammo_box/magazine/e45/taser(src)
+
 
 
 /obj/item/storage/secure/briefcase/permits
