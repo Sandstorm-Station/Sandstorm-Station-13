@@ -3,28 +3,30 @@
 	desc = "Returns you to the slave hideout (single use)."
 	icon = 'icons/obj/abductor.dmi'
 	icon_state = "implant"
-	activated = 1
-	var/obj/machinery/abductor/pad/home
 
 /obj/item/implant/slaver/activate()
 	. = ..()
 
-	playsound(get_turf(imp_in.loc), 'sound/magic/blink.ogg', 50, 1)
-	imp_in.visible_message("<span class='notice'>[imp_in] vanishes from sight!</span>", \
-				"<span class='notice'>You activate the [src], sending you to the slaver mothership!</span>")
-	new /obj/effect/temp_visual/dir_setting/ninja(get_turf(imp_in), imp_in.dir)
+	imp_in.visible_message("<span class='notice'>[imp_in] begins fiddling with a subtle bump on their arm.</span>", "<span class='notice'>You prepare to teleport.</span>")
+	if(do_mob(imp_in, imp_in, 5 SECONDS, ignorehelditem = TRUE))
+		playsound(get_turf(imp_in.loc), 'sound/magic/blink.ogg', 50, 1)
+		imp_in.visible_message("<span class='notice'>[imp_in] vanishes from sight!</span>", \
+					"<span class='notice'>You activate [src], sending you to the slaver mothership!</span>")
+		new /obj/effect/temp_visual/dir_setting/ninja(get_turf(imp_in), imp_in.dir)
 
-	var/list/L = list()
-	for(var/turf/T in get_area_turfs(/area/slavers/export))
-		L+=T
+		var/list/L = list()
+		for(var/turf/T in get_area_turfs(/area/slavers/export))
+			L+=T
 
-	if(!L || !L.len)
-		to_chat(usr, "No area available.")
-		return
+		if(!L || !L.len)
+			to_chat(usr, "No area available.")
+			return
 
-	imp_in.forceMove(pick(L))
+		imp_in.forceMove(pick(L))
 
-	qdel(src)
+		qdel(src)
+	else
+		to_chat(imp_in, "<span class='warning'>You need to stand still and uninterrupted for 5 seconds!</span>")
 
 /obj/item/implant/slaver/get_data()
 	var/dat = {"<b>Implant Specifications:</b><BR>
