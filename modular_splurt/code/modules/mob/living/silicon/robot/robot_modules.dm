@@ -158,16 +158,6 @@
 			hat_offset = 3
 	return ..()
 
-// /obj/item/robot_module/saboteur/slaver
-// 	name = "Slaver Infiltrator"
-
-// /obj/item/robot_module/saboteur/slaver/Initialize()
-// 	var/list/extra_tools = list(
-// 		/obj/item/slaver/gizmo
-// 	)
-// 	LAZYADD(basic_modules, extra_tools)
-// 	. = ..()
-
 /obj/item/robot_module/syndicate_medical/slaver
 	name = "Slaver Medical Combat"
 

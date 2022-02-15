@@ -178,24 +178,17 @@ GLOBAL_LIST_INIT(slaver_gear, subtypesof(/datum/slaver_gear))
 
 /datum/slaver_gear/borg_generic
 	name = "Cyborg (Generic)"
-	description = "A hacked cyborg similar to a standard issue station model."
+	description = "A hacked cyborg, capable of using any module."
 	build_path = /obj/item/antag_spawner/slaver_borg
 	category = "Mech"
 	cost = 50000
 
 /datum/slaver_gear/borg_medical
 	name = "Cyborg (Medical)"
-	description = "A hacked medical combat cyborg."
+	description = "A hacked medical combat cyborg, outfitted with a regenerative beam-gun and more powerful healing chemical."
 	build_path = /obj/item/antag_spawner/slaver_borg/medical
 	category = "Mech"
-	cost = 75000
-
-// /datum/slaver_gear/borg_saboteur
-// 	name = "Cyborg (Saboteur)"
-// 	description = "A hacked engineering saboteur cyborg."
-// 	build_path = /obj/item/antag_spawner/slaver_borg/saboteur
-// 	category = "Mech"
-// 	cost = 75000
+	cost = 50000
 
 /datum/slaver_gear/mech
 	name = "Gygax 'Riot-Control' Exosuit"
