@@ -201,6 +201,16 @@
 			collar.nextRecruitChance = world.time + 10 MINUTES // 10 minutes before we can ask again
 			var/recruitResponse = tgui_alert(M, "It has been 15 minutes and your station has not paid your ransom. The slavers are offering for you to join their side.", "Recruitment Offer", list("Accept", "Maybe later", "Decline"))
 			switch(recruitResponse)
+				if ("Accept")
+					radioAnnounce("[M.real_name] has accepted the offer to join our cause!")
+					var/datum/antagonist/slaver/antag_datum = new
+					antag_datum.send_to_spawnpoint = FALSE
+					antag_datum.equip_outfit = FALSE
+					M.mind.add_antag_datum(antag_datum)
+					message_admins("[key_name_admin(M)] has been recruited as a slaver.")
+					log_admin("[key_name(M)] has been recruited as a slaver.")
+					qdel(collar)
+					return
 				if ("Maybe later")
 					radioAnnounce("[M.real_name] has declined the offer to join our cause for now.")
 					return
@@ -209,15 +219,7 @@
 					collar.nextRecruitChance = INFINITY
 					return
 
-			radioAnnounce("[M.real_name] has accepted the offer to join our cause!")
-			var/datum/antagonist/slaver/antag_datum = new
-			antag_datum.send_to_spawnpoint = FALSE
-			antag_datum.equip_outfit = FALSE
-			M.mind.add_antag_datum(antag_datum)
-			message_admins("[key_name_admin(M)] has been recruited as a slaver.")
-			log_admin("[key_name(M)] has been recruited as a slaver.")
-
-			qdel(collar)
+			collar.nextRecruitChance = 0 // If the popup box closes a strange way such as a disconnect, do nothing and re-enable the chance to open it again
 
 		if("export")
 			editBalance(collar.price)
