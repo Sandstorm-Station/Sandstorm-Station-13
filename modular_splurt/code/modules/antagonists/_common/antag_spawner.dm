@@ -5,13 +5,14 @@
 	icon = 'icons/obj/device.dmi'
 	icon_state = "locator"
 	var/borg_to_spawn
+	var/next_attempt_allowed // For some reason none of these antag spawners have an anti-spam mechanic. I'll add one here.
 
 /obj/item/antag_spawner/slaver_borg/medical
-	name = "slaver medical teleporter"
+	name = "slaver medical cyborg teleporter"
 	borg_to_spawn = "Medical"
 
 /obj/item/antag_spawner/slaver_borg/saboteur
-	name = "slaver saboteur teleporter"
+	name = "slaver saboteur cyborg teleporter"
 	borg_to_spawn = "Saboteur"
 
 /obj/item/antag_spawner/slaver_borg/proc/check_usability(mob/user)
@@ -25,11 +26,17 @@
 	if (!istype(A, /area/slavers))
 		to_chat(user, "<span class='warning'>[src] is out of range! It can only be used at your hideout!</span>")
 		return FALSE
+
 	return TRUE
 
 /obj/item/antag_spawner/slaver_borg/attack_self(mob/user)
 	if(!(check_usability(user)))
 		return
+
+	if(!(next_attempt_allowed < world.time))
+		to_chat(user, "<span class='warning'>A request has already been sent! Wait 1 minute.</span>")
+		return
+	next_attempt_allowed = world.time + 1 MINUTES
 
 	to_chat(user, "<span class='notice'>You activate [src] and wait for confirmation.</span>")
 	var/list/borg_candidates = pollGhostCandidates("Do you want to play as a slaver [lowertext(borg_to_spawn)] cyborg?", ROLE_SLAVER, null, ROLE_SLAVER, 150, POLL_IGNORE_SLAVER)
@@ -58,11 +65,7 @@
 		else
 			R = new /mob/living/silicon/robot/modules/slaver(T)
 
-	var/brainfirstname = pick(GLOB.first_names_male)
-	if(prob(50))
-		brainfirstname = pick(GLOB.first_names_female)
-	var/brainopslastname = pick(GLOB.last_names)
-	var/brainopsname = "[brainfirstname] [brainopslastname]"
+	var/brainopsname = C.prefs.real_name
 
 	R.mmi.name = "Man-Machine Interface: [brainopsname]"
 	R.mmi.brain.name = "[brainopsname]'s brain"

@@ -2,13 +2,14 @@
 	name = "slave collar"
 	desc = "A reinforced metal collar. This one has a shock element and tracker installed."
 
-	var/price = 0 // The ransom amount
+	var/price // The ransom amount
 	var/bought = FALSE // Has the station paid the ransom
 	var/station_rank
-	var/nextPriceChange = 0 // Last time the price was changed
-	var/nextRansomChange = 0 // Last time the ransom was paid / cancelled
+	var/nextPriceChange // Last time the price was changed
+	var/nextRansomChange // Last time the ransom was paid / cancelled
+	var/nextRecruitChance = INFINITY // Next time the slave can get the option to join the slavers
 	shockStrength = 400
-	shockCooldown = 200
+	shockCooldown = 20 SECONDS
 	code = -1
 	frequency = -1
 
@@ -58,12 +59,14 @@
 			announceMessage = "[M.real_name]'s ransom has increased to [newPrice] credits."
 		else // Price has decreased
 			announceMessage = "[M.real_name]'s ransom has decreased to [newPrice] credits."
+	else
+		nextRecruitChance = world.time + 15 MINUTES // Our first time setting the price, now we begin the countdown for when this slave can be recruited
 
 	price = newPrice
-	nextPriceChange = world.time + 3000 // Cannot be changed again for 5 minutes
+	nextPriceChange = world.time + 5 MINUTES // Cannot be changed again for 5 minutes
 	priority_announce(announceMessage, sender_override = GLOB.slavers_team_name)
 
 
 /obj/item/electropack/shockcollar/slave/proc/setBought(isBought)
 	bought = isBought
-	nextRansomChange = world.time + 1200 // Cannot be changed again for 2 minutes
+	nextRansomChange = world.time + 5 MINUTES // Cannot be changed again for 5 minutes

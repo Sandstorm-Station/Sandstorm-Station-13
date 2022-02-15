@@ -62,6 +62,7 @@ GLOBAL_LIST_INIT(slavers_ransom_values, list(
 	var/static/datum/team/slavers/slaver_team = new /datum/team/slavers
 	var/slaver_outfit = /datum/outfit/slaver
 	var/send_to_spawnpoint = TRUE //Should the user be moved to default spawnpoint.
+	var/equip_outfit = TRUE
 
 /datum/antagonist/slaver/proc/update_slaver_icons_added(mob/living/M)
 	var/datum/atom_hud/antag/slaverhud = GLOB.huds[ANTAG_HUD_SLAVER]
@@ -102,7 +103,8 @@ GLOBAL_LIST_INIT(slavers_ransom_values, list(
 /datum/antagonist/slaver/on_gain()
 	forge_objectives()
 	. = ..()
-	equip_slaver()
+	if(equip_outfit)
+		equip_slaver()
 	if(send_to_spawnpoint)
 		move_to_spawnpoint()
 
@@ -130,7 +132,6 @@ GLOBAL_LIST_INIT(slavers_ransom_values, list(
 
 /datum/antagonist/slaver/admin_add(datum/mind/new_owner,mob/admin)
 	send_to_spawnpoint = FALSE
-	new_owner.assigned_role = ROLE_SLAVER
 	new_owner.add_antag_datum(src)
 
 	message_admins("[key_name_admin(admin)] has slaver'd [new_owner.current].")

@@ -37,7 +37,7 @@ export const SlaveConsole = (props, context) => {
   return (
     <Window
       title="Slave Management System"
-      width={470}
+      width={520}
       height={700}
       theme="syndicate"
       resizable>
@@ -123,6 +123,17 @@ const SlavePanel = (props, context) => {
         title={slave.name}
         buttons={(
           <Fragment>
+            <Button
+              icon="handshake"
+              content="Recruit"
+              color="blue"
+              disabled={slave.dist === undefined
+                || !slave.can_recruit
+                || slave.bought}
+              tooltip="After 15 minutes, unsold slaves can get the offer to join our cause."
+              onClick={() => act('recruit', {
+                id: slave.id,
+              })} />
             <Button
               icon="dolly"
               content="Export"

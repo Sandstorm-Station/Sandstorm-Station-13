@@ -942,6 +942,11 @@
 			dat += "<td width='20%'><a href='?src=[REF(src)];[HrefToken()];jobban3=bloodsucker;jobban4=[REF(M)]'><font color=red>Bloodsucker</font></a></td>"
 		else
 			dat += "<td width='20%'><a href='?src=[REF(src)];[HrefToken()];jobban3=bloodsucker;jobban4=[REF(M)]'>Bloodsucker</a></td>"
+		//Slave Trader
+		if(jobban_isbanned(M, ROLE_SLAVER) || isbanned_dept)
+			dat += "<td width='20%'><a href='?src=[REF(src)];[HrefToken()];jobban3=slaver;jobban4=[REF(M)]'><font color=red>Slaver</font></a></td>"
+		else
+			dat += "<td width='20%'><a href='?src=[REF(src)];[HrefToken()];jobban3=slaver;jobban4=[REF(M)]'>Slaver</a></td>"
 
 
 	//Other Roles (black)

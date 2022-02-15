@@ -97,14 +97,17 @@
 		slave["price"] = C.price
 		slave["price_change_cooldown"] = round((C.nextPriceChange - world.time) / 10)
 		slave["bought"] = C.bought
-		slave["shock_cooldown"] = C.shock_cooldown;
-		slave["in_export_bay"] = FALSE
 
 		var/turf/curr = get_turf(src)
 		if(pos.z == curr.z) //Distance/Direction calculations for same z-level only
 			slave["coords"] = "[pos.x], [pos.y], [pos.z]"
 			slave["dist"] = max(get_dist(curr, pos), 0) //Distance between the machine and slave turfs
 			slave["degrees"] = round(Get_Angle(curr, pos)) //0-360 degree directional bearing, for more precision.
+
+			slave["shock_cooldown"] = C.shock_cooldown
+
+			if (C.nextRecruitChance < world.time)
+				slave["can_recruit"] = TRUE
 
 			var/area/A = get_area(get_turf(L))
 			if (istype(A, /area/slavers/export))
@@ -186,6 +189,35 @@
 				return
 
 			collar.setPrice(newPrice)
+
+		if("recruit")
+			var/mob/living/M = collar.loc
+
+			if(QDELETED(M) || jobban_isbanned(M, ROLE_SLAVER) || jobban_isbanned(M, ROLE_SYNDICATE))
+				radioAnnounce("[M.real_name] has failed the background check and cannot join our cause.")
+				collar.nextRecruitChance = INFINITY
+				return
+
+			collar.nextRecruitChance = world.time + 10 MINUTES // 10 minutes before we can ask again
+			var/recruitResponse = tgui_alert(M, "It has been 15 minutes and your station has not paid your ransom. The slavers are offering for you to join their side.", "Recruitment Offer", list("Accept", "Maybe later", "Decline"))
+			switch(recruitResponse)
+				if ("Maybe later")
+					radioAnnounce("[M.real_name] has declined the offer to join our cause for now.")
+					return
+				if ("Decline")
+					radioAnnounce("[M.real_name] has refused the offer to join our cause.")
+					collar.nextRecruitChance = INFINITY
+					return
+
+			radioAnnounce("[M.real_name] has accepted the offer to join our cause!")
+			var/datum/antagonist/slaver/antag_datum = new
+			antag_datum.send_to_spawnpoint = FALSE
+			antag_datum.equip_outfit = FALSE
+			M.mind.add_antag_datum(antag_datum)
+			message_admins("[key_name_admin(M)] has been recruited as a slaver.")
+			log_admin("[key_name(M)] has been recruited as a slaver.")
+
+			qdel(collar)
 
 		if("export")
 			editBalance(collar.price)
