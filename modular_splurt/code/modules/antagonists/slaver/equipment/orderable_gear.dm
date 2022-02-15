@@ -190,12 +190,12 @@ GLOBAL_LIST_INIT(slaver_gear, subtypesof(/datum/slaver_gear))
 	category = "Mech"
 	cost = 75000
 
-/datum/slaver_gear/borg_saboteur
-	name = "Cyborg (Saboteur)"
-	description = "A hacked engineering saboteur cyborg."
-	build_path = /obj/item/antag_spawner/slaver_borg/saboteur
-	category = "Mech"
-	cost = 75000
+// /datum/slaver_gear/borg_saboteur
+// 	name = "Cyborg (Saboteur)"
+// 	description = "A hacked engineering saboteur cyborg."
+// 	build_path = /obj/item/antag_spawner/slaver_borg/saboteur
+// 	category = "Mech"
+// 	cost = 75000
 
 /datum/slaver_gear/mech
 	name = "Gygax 'Riot-Control' Exosuit"

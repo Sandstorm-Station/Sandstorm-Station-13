@@ -11,9 +11,9 @@
 	name = "slaver medical cyborg teleporter"
 	borg_to_spawn = "Medical"
 
-/obj/item/antag_spawner/slaver_borg/saboteur
-	name = "slaver saboteur cyborg teleporter"
-	borg_to_spawn = "Saboteur"
+// /obj/item/antag_spawner/slaver_borg/saboteur
+// 	name = "slaver saboteur cyborg teleporter"
+// 	borg_to_spawn = "Saboteur"
 
 /obj/item/antag_spawner/slaver_borg/proc/check_usability(mob/user)
 	if(used)
@@ -60,8 +60,8 @@
 	switch(borg_to_spawn)
 		if("Medical")
 			R = new /mob/living/silicon/robot/modules/syndicate/slaver/medical(T)
-		if("Saboteur")
-			R = new /mob/living/silicon/robot/modules/syndicate/slaver/saboteur(T)
+		// if("Saboteur")
+		// 	R = new /mob/living/silicon/robot/modules/syndicate/slaver/saboteur(T)
 		else
 			R = new /mob/living/silicon/robot/modules/slaver(T)
 
