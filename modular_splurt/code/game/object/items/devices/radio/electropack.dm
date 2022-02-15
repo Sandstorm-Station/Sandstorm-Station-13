@@ -4,6 +4,7 @@
 
 	var/price = 0 // The ransom amount
 	var/bought = FALSE // Has the station paid the ransom
+	var/station_rank
 	var/nextPriceChange = 0 // Last time the price was changed
 	var/nextRansomChange = 0 // Last time the ransom was paid / cancelled
 	shockStrength = 400
@@ -38,19 +39,29 @@
 			playsound(get_turf(M), 'sound/machines/triple_beep.ogg', 50, 1)
 			ADD_TRAIT(src, TRAIT_NODROP, CLOTHING_TRAIT)
 
+			var/automatic_ransom_value = GLOB.slavers_ransom_values[M.job]
+			if (automatic_ransom_value)
+				station_rank = M.job
+				setPrice(automatic_ransom_value)
+
+
 /obj/item/electropack/shockcollar/slave/proc/setPrice(newPrice)
 	var/mob/living/M = loc
-	var/announceMessage = "[M.real_name] has been captured. Send us [newPrice] credits with your communications console to get them back!"
+
+	var/slaveJobText = ""
+	if (station_rank)
+		slaveJobText = " ([station_rank])"
+
+	var/announceMessage = "[M.real_name][slaveJobText] has been captured. Send us [newPrice] credits with your communications console to get them back!"
 	if (price) // If price has already been set once, we are just changing it
 		if (newPrice > price) // Price has increased
 			announceMessage = "[M.real_name]'s ransom has increased to [newPrice] credits."
 		else // Price has decreased
 			announceMessage = "[M.real_name]'s ransom has decreased to [newPrice] credits."
 
-
 	price = newPrice
 	nextPriceChange = world.time + 3000 // Cannot be changed again for 5 minutes
-	priority_announce(announceMessage, sender_override = "[GLOB.slavers_team_name] Transmission")
+	priority_announce(announceMessage, sender_override = GLOB.slavers_team_name)
 
 
 /obj/item/electropack/shockcollar/slave/proc/setBought(isBought)

@@ -1,7 +1,7 @@
 import { sortBy } from "common/collections";
 import { capitalize } from "common/string";
 import { useBackend, useLocalState } from "../backend";
-import { Blink, Box, Button, Dimmer, Flex, Icon, Input, Modal, Section, TextArea, Table, LabeledList } from "../components";
+import { Blink, Box, Button, Dimmer, Flex, Icon, Input, Modal, Section, TextArea, LabeledList } from "../components";
 import { Window } from "../layouts";
 import { sanitizeText } from "../sanitize";
 import { formatMoney } from '../format';
@@ -494,26 +494,32 @@ const PageMain = (props, context) => {
             </LabeledList.Item>
           </LabeledList>
 
-          <Table>
+          <Flex
+            direction="column"
+            pt="1rem">
             {slaves.map(slave => (
-              <Table.Row
+              <Flex
                 key={slave.name + slave.coords + slave.index}
-                className="candystripe">
+                className="candystripe"
+                align="center"
+                p=".5rem">
 
-                <Table.Cell bold color="label">
+                <Flex.Item
+                  bold
+                  grow
+                  color="label">
                   {slave.name}
-                </Table.Cell>
+                </Flex.Item>
 
-                <Table.Cell
-                  collapsing
-                  color="label"
-                  textAlign="right">
+                <Flex.Item>
                   {slave.toggleransomfeedback}
-                </Table.Cell>
+                </Flex.Item>
 
-                <Table.Cell
+                <Flex.Item
                   collapsing
-                  align="right">
+                  align="right"
+                  pl=".5rem"
+                >
                   <Button
                     icon={slave.bought ? "times" : ""}
                     disabled={!slave.cantoggleransom}
@@ -522,11 +528,11 @@ const PageMain = (props, context) => {
                     onClick={() => act('toggleBought', {
                       id: slave.id,
                     })} />
-                </Table.Cell>
+                </Flex.Item>
 
-              </Table.Row>
+              </Flex>
             ))}
-          </Table>
+          </Flex>
         </Section>
       )}
 
