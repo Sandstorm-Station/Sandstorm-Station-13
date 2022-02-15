@@ -108,7 +108,7 @@
 
 			var/area/A = get_area(get_turf(L))
 			if (istype(A, /area/slavers/export))
-				slave["inexportbay"] = TRUE
+				slave["in_export_bay"] = TRUE
 
 			switch(L.stat)
 				if(CONSCIOUS)
