@@ -22,3 +22,8 @@
 /datum/gear/uniform/latex
 	name = "Latex Catsuit"
 	path = /obj/item/clothing/under/misc/latex_catsuit
+
+// Suggestion #151
+/datum/gear/uniform/waiter
+	name = "waiter's outfit"
+	path = /obj/item/clothing/under/suit/waiter

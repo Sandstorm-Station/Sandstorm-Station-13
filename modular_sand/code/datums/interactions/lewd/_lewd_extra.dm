@@ -41,9 +41,9 @@
 						'modular_sand/sound/interactions/oral2.ogg'), 70, 1, -1)
 
 	switch(milkers.size)
-		if("c" || "d" || "e")
+		if("c", "d", "e")
 			modifier = 2
-		if("f" || "g" || "h")
+		if("f", "g", "h")
 			modifier = 3
 		else
 			if(milkers.size in milkers.breast_values)
