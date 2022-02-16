@@ -214,11 +214,13 @@ Difficulty: Medium
 		switch(rand(0,100))
 			if(0 to 1)
 				passed = 1
+			else
 
 	if(enraged)
 		switch(rand(0,100))
 			if(0 to 5)
 				passed = 1
+			else
 
 	if(passed == 1)
 		visible_message("<span class='danger'>[src] dodged the projectile!</span>", "<span class='userdanger'>You dodge the projectile!</span>")
