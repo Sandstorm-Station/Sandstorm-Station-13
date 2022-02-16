@@ -82,19 +82,18 @@
 	if(!(M.client?.prefs.cit_toggles & FORCED_FEM))
 		return ..()
 
-	//var/obj/item/organ/genital/penis/P = M.getorganslot(ORGAN_SLOT_PENIS)
-	//var/obj/item/organ/genital/testicles/T = M.getorganslot(ORGAN_SLOT_TESTICLES)
+	var/obj/item/organ/genital/penis/P = M.getorganslot(ORGAN_SLOT_PENIS)
+	var/obj/item/organ/genital/testicles/T = M.getorganslot(ORGAN_SLOT_TESTICLES)
 	var/obj/item/organ/genital/vagina/V = M.getorganslot(ORGAN_SLOT_VAGINA)
 	var/obj/item/organ/genital/womb/W = M.getorganslot(ORGAN_SLOT_WOMB)
 
-	//SPLURT change //It won't have negative effects on masculine organs nor cahnge your gender
-	/*if(M.gender == MALE)
+	if(M.gender == MALE)
 		M.set_gender(FEMALE)
 
 	if(P)
 		P.modify_size(-0.05)
-	if(T)
-		qdel(T)*/
+	if(T && (!P || P.size <= 0))
+		qdel(T)
 	if(!V)
 		V = new
 		V.Insert(M)
@@ -229,22 +228,20 @@
 	if(!(M.client?.prefs.cit_toggles & FORCED_MASC))
 		return..()
 
-	//SPLURT change no negative effects. Will probably make it instead just grow faster later
-
-	//var/obj/item/organ/genital/breasts/B = M.getorganslot(ORGAN_SLOT_BREASTS)
+	var/obj/item/organ/genital/breasts/B = M.getorganslot(ORGAN_SLOT_BREASTS)
 	var/obj/item/organ/genital/testicles/T = M.getorganslot(ORGAN_SLOT_TESTICLES)
-	//var/obj/item/organ/genital/vagina/V = M.getorganslot(ORGAN_SLOT_VAGINA)
-	//var/obj/item/organ/genital/womb/W = M.getorganslot(ORGAN_SLOT_WOMB)
+	var/obj/item/organ/genital/vagina/V = M.getorganslot(ORGAN_SLOT_VAGINA)
+	var/obj/item/organ/genital/womb/W = M.getorganslot(ORGAN_SLOT_WOMB)
 
-	/*if(M.gender == FEMALE)
+	if(M.gender == FEMALE)
 		M.set_gender(MALE)
 
 	if(B)
 		B.modify_size(-0.05)
-	if(M.getorganslot(ORGAN_SLOT_VAGINA))
+	if(V && (!B || B.cached_size <= 0))
 		qdel(V)
-	if(W)
-		qdel(W)*/
+	if(W && (!B || B.size <= 0))
+		qdel(W)
 	if(!T)
 		T = new
 		T.Insert(M)
