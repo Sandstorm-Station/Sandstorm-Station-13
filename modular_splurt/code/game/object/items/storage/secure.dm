@@ -4,16 +4,13 @@
 
 
 /obj/item/storage/secure/briefcase/hos/hos_e45_pack/PopulateContents()
-	new /obj/item/gun/ballistic/automatic/pistol/Enforcer/red(src)
-	new /obj/item/ammo_box/magazine/e45/trac(src)
-	new /obj/item/ammo_box/magazine/e45/hydra(src)
-	new /obj/item/ammo_box/magazine/e45/lethal(src)
+	new /obj/item/gun/ballistic/automatic/pistol/enforcerred(src)
 	new /obj/item/ammo_box/magazine/e45/lethal(src)
 	new /obj/item/ammo_box/magazine/e45/lethal(src)
 	new /obj/item/ammo_box/magazine/e45(src)
 	new /obj/item/ammo_box/magazine/e45(src)
-	new /obj/item/ammo_box/magazine/e45/hotshot(src)
-	new /obj/item/ammo_box/magazine/e45/ion(src)
+	new /obj/item/ammo_box/magazine/e45(src)
+	new /obj/item/ammo_box/magazine/e45/taser(src)
 	new /obj/item/ammo_box/magazine/e45/taser(src)
 	new /obj/item/ammo_box/magazine/e45/taser(src)
 
@@ -26,25 +23,41 @@
 /obj/item/storage/secure/briefcase/cop/advtaser_box/PopulateContents()
 	new /obj/item/gun/energy/e_gun/advtaser(src)
 
-/obj/item/storage/secure/briefcase/cop/m45_box
-	name = "\improper M1911 gun box"
-	desc = "A storage case for a M1911 Hand gun. Mah two world wars!"
-
-/obj/item/storage/secure/briefcase/cop/m45_box/PopulateContents()
-	new /obj/item/gun/ballistic/automatic/pistol/m1911/no_mag(src)
-	new /obj/item/ammo_box/magazine/m45/taser(src)
-	new /obj/item/ammo_box/magazine/m45/taser(src)
-	new /obj/item/ammo_box/magazine/m45/taser(src)
-
 /obj/item/storage/secure/briefcase/cop/e45_box
 	name = "\improper Enforcer handgun box"
 	desc = "A storage case for a Mk. 58 Enforcer. Peace through power!"
 
 /obj/item/storage/secure/briefcase/cop/e45_box/PopulateContents()
-	new /obj/item/gun/ballistic/automatic/pistol/Enforcer/nomag(src)
+	new /obj/item/gun/ballistic/automatic/pistol/enforcer/nomag(src)
 	new /obj/item/ammo_box/magazine/e45/taser(src)
 	new /obj/item/ammo_box/magazine/e45/taser(src)
 	new /obj/item/ammo_box/magazine/e45/taser(src)
+
+//Blueshield melee options
+
+/obj/item/storage/secure/briefcase/bsbaton/stunbaton
+	name = "\improper Stun Baton box"
+	desc = "A storage case for a high-tech Stun baton. Pick up that can."
+
+/obj/item/storage/secure/briefcase/bsbaton/stunbaton/PopulateContents()
+	new  /obj/item/melee/baton(src)
+	new /obj/item/storage/belt/security/full(src)
+
+/obj/item/storage/secure/briefcase/bsbaton/stunsword
+	name = "\improper Stun Sword box"
+	desc = "A storage case for a high-tech Stun sword. The ninjas will fear you."
+
+/obj/item/storage/secure/briefcase/bsbaton/stunsword/PopulateContents()
+	new /obj/item/storage/belt/sabre/secbelt(src)
+	new /obj/item/stock_parts/cell/high/plus(src)
+
+/obj/item/storage/secure/briefcase/bsbaton/tele
+	name = "\improper APS Baton Box"
+	desc = "A storage case for a Telescopic Baton. Poke them with a stick!"
+
+/obj/item/storage/secure/briefcase/bsbaton/tele/PopulateContents()
+	new /obj/item/melee/classic_baton/telescopic(src)
+	new /obj/item/storage/belt/security(src)
 
 // Captain's gunbox
 
@@ -54,18 +67,16 @@
 
 
 /obj/item/storage/secure/briefcase/cap_e45_pack/PopulateContents()
-	new /obj/item/gun/ballistic/automatic/pistol/Enforcer/gold(src)
-	new /obj/item/ammo_box/magazine/e45/trac(src)
-	new /obj/item/ammo_box/magazine/e45/hydra(src)
-	new /obj/item/ammo_box/magazine/e45/lethal(src)
+	new /obj/item/gun/ballistic/automatic/pistol/enforcergold(src)
 	new /obj/item/ammo_box/magazine/e45/lethal(src)
 	new /obj/item/ammo_box/magazine/e45/lethal(src)
 	new /obj/item/ammo_box/magazine/e45(src)
 	new /obj/item/ammo_box/magazine/e45(src)
-	new /obj/item/ammo_box/magazine/e45/hotshot(src)
-	new /obj/item/ammo_box/magazine/e45/ion(src)
+	new /obj/item/ammo_box/magazine/e45(src)
 	new /obj/item/ammo_box/magazine/e45/taser(src)
 	new /obj/item/ammo_box/magazine/e45/taser(src)
+	new /obj/item/ammo_box/magazine/e45/taser(src)
+
 
 
 /obj/item/storage/secure/briefcase/permits

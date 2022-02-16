@@ -112,6 +112,12 @@
 	anthro_mob_worn_overlay = 'modular_splurt/icons/mob/clothing/uniform_digi.dmi'
 	mutantrace_variation = STYLE_DIGITIGRADE|STYLE_ALL_TAURIC
 
+/obj/item/clothing/under/rank/blueshield/formal
+	name = "blueshield formal outfit"
+	desc = "The formal uniform of the Blueshield. It makes you feel protected while looking great."
+	icon_state = "blueformal"
+	item_state = "blueformal"
+
 
 /obj/item/clothing/under/rank/blueshield/skirt
 	name = "blueshield skirt"
