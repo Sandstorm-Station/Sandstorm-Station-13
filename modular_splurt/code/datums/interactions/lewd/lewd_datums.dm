@@ -1,3 +1,32 @@
+//Sandstorm edits
+
+/datum/interaction/lewd/titgrope/display_interaction(mob/living/carbon/human/user, mob/living/carbon/human/target)
+	. = ..()
+	var/datum/job/clowncheck = SSjob.GetJob(target.job)
+	if(!istype(clowncheck, /datum/job/clown))
+		return
+
+	var/list/honks = list(
+		"\The <b>[target]</b>'s honkers produce a loud squeak!",
+		"\The <b>[user]</b>'s grope squeezes a honk out of \the <b>[target]</b>'s [pick(GLOB.breast_nouns + "honkers")]!"
+	)
+	target.visible_message("<span class='lewd'>[pick(honks)]</span>")
+	playlewdinteractionsound(target, 'sound/items/bikehorn.ogg', 50, 1, -1)
+
+/mob/living/do_titgrope_self(mob/living/user)
+	. = ..()
+	var/datum/job/clowncheck = SSjob.GetJob(job)
+	if(!istype(clowncheck, /datum/job/clown))
+		return
+
+	var/u_His = p_their()
+	var/list/honks = list(
+		"\The <b>[src]</b>'s honkers produce a loud squeak!",
+		"\The <b>[src]</b>'s grope squeezes a honk out of [u_His] own [pick(GLOB.breast_nouns + "honkers")]!"
+	)
+	visible_message("<span class='lewd'>[pick(honks)]</span>")
+	playlewdinteractionsound(src, 'sound/items/bikehorn.ogg', 50, 1, -1)
+
 /datum/interaction/lewd/do_breastsmother
 	command = "do_breastsmother"
 	description = "Smother them in your breasts"
