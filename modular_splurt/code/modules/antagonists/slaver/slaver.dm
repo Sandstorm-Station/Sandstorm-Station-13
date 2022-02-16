@@ -15,13 +15,13 @@ GLOBAL_LIST_INIT(slavers_ransom_values, list(
 	"Research Director" 		= 80000,
 	"Chief Medical Officer" 	= 80000,
 	"Blueshield" 				= 30000,
-	"Quartermaster" 			= 10000,
 
 	"Warden" 					= 30000,
 	"Brig Physician" 			= 20000,
 	"Security Officer" 			= 20000,
 	"Detective" 				= 20000,
 
+	"Quartermaster" 			= 10000,
 	"Cargo Technician" 			= SLAVER_STANDARD_RANSOM,
 	"Shaft Miner"				= SLAVER_STANDARD_RANSOM,
 	"Assistant" 				= SLAVER_STANDARD_RANSOM,
