@@ -1,4 +1,4 @@
-#define isclown(x) (_isclown(x))
+#define isclownjob(x) (_isclownjob(x))
 // Hyperstation Stuff
 #define iswendigo(A) (istype(A, /mob/living/carbon/wendigo))
 
