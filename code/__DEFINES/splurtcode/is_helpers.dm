@@ -1,3 +1,4 @@
+#define isclown(x) (_isclown(x))
 // Hyperstation Stuff
 #define iswendigo(A) (istype(A, /mob/living/carbon/wendigo))
 

@@ -1,32 +1,347 @@
 //Sandstorm edits
 
+/datum/interaction/lewd/display_interaction(mob/living/user, mob/living/target)
+	. = ..()
+	if(!(isclown(target) && command == "assslap"))
+		return
+
+	if(prob(50))
+		target.visible_message("<span class='lewd'>\The <b>[target]</b>'s ass honks!</span>")
+
+	playlewdinteractionsound(target, 'sound/items/bikehorn.ogg', 40, 1, -1)
+
 /datum/interaction/lewd/titgrope/display_interaction(mob/living/carbon/human/user, mob/living/carbon/human/target)
 	. = ..()
-	var/datum/job/clowncheck = SSjob.GetJob(target.job)
-	if(!istype(clowncheck, /datum/job/clown))
+	if(!isclown(target))
 		return
 
 	var/list/honks = list(
 		"\The <b>[target]</b>'s honkers produce a loud squeak!",
 		"\The <b>[user]</b>'s grope squeezes a honk out of \the <b>[target]</b>'s [pick(GLOB.breast_nouns + "honkers")]!"
 	)
-	target.visible_message("<span class='lewd'>[pick(honks)]</span>")
-	playlewdinteractionsound(target, 'sound/items/bikehorn.ogg', 50, 1, -1)
+	if(prob(50))
+		target.visible_message("<span class='lewd'>[pick(honks)]</span>")
 
-/mob/living/do_titgrope_self(mob/living/user)
+	playlewdinteractionsound(target, 'sound/items/bikehorn.ogg', 40, 1, -1)
+
+/datum/interaction/lewd/oral/display_interaction(mob/living/carbon/human/user, mob/living/carbon/human/target)
 	. = ..()
-	var/datum/job/clowncheck = SSjob.GetJob(job)
-	if(!istype(clowncheck, /datum/job/clown))
+	if(!isclown(target))
 		return
 
-	var/u_His = p_their()
-	var/list/honks = list(
-		"\The <b>[src]</b>'s honkers produce a loud squeak!",
-		"\The <b>[src]</b>'s grope squeezes a honk out of [u_His] own [pick(GLOB.breast_nouns + "honkers")]!"
-	)
-	visible_message("<span class='lewd'>[pick(honks)]</span>")
-	playlewdinteractionsound(src, 'sound/items/bikehorn.ogg', 50, 1, -1)
+	if(prob(50))
+		target.visible_message("<span class='lewd'>\The <b>[target]</b>'s clussy honks[pick(" loudly", "")]!</span>")
 
+	playlewdinteractionsound(target, 'sound/items/bikehorn.ogg', 40, 1, -1)
+
+/datum/interaction/lewd/oral/blowjob/display_interaction(mob/living/carbon/human/user, mob/living/carbon/human/target)
+	. = ..()
+	if(!isclown(target))
+		return
+
+	if(prob(50))
+		target.visible_message("<span class='lewd'>\The <b>[target]</b>'s cock honks[pick(" loudly", "")]!</span>")
+
+	playlewdinteractionsound(target, 'sound/items/bikehorn.ogg', 40, 1, -1)
+
+/datum/interaction/lewd/fuck/display_interaction(mob/living/carbon/human/user, mob/living/carbon/human/target)
+	. = ..()
+	if(!(isclown(target) || isclown(user)))
+		return
+
+	if(prob(50) && isclown(target))
+		target.visible_message("<span class='lewd'>\The <b>[target]</b>'s clussy honks[pick(" loudly", "")]!</span>")
+
+	playlewdinteractionsound(target, 'sound/items/bikehorn.ogg', 40, 1, -1)
+
+/datum/interaction/lewd/fuck/anal/display_interaction(mob/living/carbon/human/user, mob/living/carbon/human/target)
+	. = ..()
+	if(!(isclown(target) || isclown(user)))
+		return
+
+	if(prob(50) && isclown(target))
+		target.visible_message("<span class='lewd'>\The <b>[target]</b>'s fun hole honks[pick(" loudly", "")]!</span>")
+
+	playlewdinteractionsound(target, 'sound/items/bikehorn.ogg', 40, 1, -1)
+
+/datum/interaction/lewd/fuck/belly/display_interaction(mob/living/carbon/human/user, mob/living/carbon/human/target)
+	. = ..()
+	if(!(isclown(target) || isclown(user)))
+		return
+
+	if(prob(50) && isclown(target))
+		target.visible_message("<span class='lewd'>\The <b>[target]</b>'s belly button honks[pick(" loudly", "")]!</span>")
+
+	playlewdinteractionsound(target, 'sound/items/bikehorn.ogg', 40, 1, -1)
+
+/datum/interaction/lewd/finger/display_interaction(mob/living/carbon/human/user, mob/living/carbon/human/target)
+	. = ..()
+	if(!isclown(target))
+		return
+
+	if(prob(50))
+		target.visible_message("<span class='lewd'>\The <b>[target]</b>'s clussy honks[pick(" loudly", "")]!</span>")
+
+	playlewdinteractionsound(target, 'sound/items/bikehorn.ogg', 40, 1, -1)
+
+/datum/interaction/lewd/fingerass/display_interaction(mob/living/carbon/human/user, mob/living/carbon/human/target)
+	. = ..()
+	if(!isclown(target))
+		return
+
+	if(prob(50))
+		target.visible_message("<span class='lewd'>\The <b>[target]</b>'s fun hole honks[pick(" loudly", "")]!</span>")
+
+	playlewdinteractionsound(target, 'sound/items/bikehorn.ogg', 40, 1, -1)
+
+/datum/interaction/lewd/facefuck/display_interaction(mob/living/carbon/human/user, mob/living/carbon/human/target)
+	. = ..()
+	if(!isclown(user))
+		return
+
+	if(prob(50))
+		user.visible_message("<span class='lewd'>\The <b>[user]</b>'s [pick(GLOB.dick_nouns)] honks[pick(" loudly", "")]!</span>")
+
+	playlewdinteractionsound(user, 'sound/items/bikehorn.ogg', 40, 1, -1)
+
+/datum/interaction/lewd/throatfuck/display_interaction(mob/living/carbon/human/user, mob/living/carbon/human/target)
+	. = ..()
+	if(!isclown(user))
+		return
+
+	if(prob(50))
+		user.visible_message("<span class='lewd'>\The <b>[user]</b>'s [pick(GLOB.dick_nouns)] honks[pick(" loudly", "")]!</span>")
+
+	playlewdinteractionsound(user, 'sound/items/bikehorn.ogg', 40, 1, -1)
+
+/datum/interaction/lewd/handjob/display_interaction(mob/living/carbon/human/user, mob/living/carbon/human/target)
+	. = ..()
+	if(!isclown(target))
+		return
+
+	if(prob(50))
+		user.visible_message("<span class='lewd'>\The <b>[user]</b>'s [pick(GLOB.dick_nouns)] honks[pick(" loudly", "")]!</span>")
+
+	playlewdinteractionsound(user, 'sound/items/bikehorn.ogg', 40, 1, -1)
+
+/datum/interaction/lewd/breastfuck/display_interaction(mob/living/carbon/human/user, mob/living/carbon/human/target)
+	. = ..()
+	if(!(isclown(target) || isclown(user)))
+		return
+
+	if(prob(50) && isclown(target))
+		target.visible_message("<span class='lewd'>\The <b>[target]</b>'s [pick(GLOB.breast_nouns + "honkers")] honk[pick(" loudly", "")]!</span>")
+
+	playlewdinteractionsound(target, 'sound/items/bikehorn.ogg', 40, 1, -1)
+
+/datum/interaction/lewd/mount/display_interaction(mob/living/carbon/human/user, mob/living/carbon/human/target)
+	. = ..()
+	if(!(isclown(target) || isclown(user)))
+		return
+
+	if(prob(50) && isclown(user))
+		user.visible_message("<span class='lewd'>\The <b>[user]</b>'s clussy honks[pick(" loudly", "")]!</span>")
+
+	playlewdinteractionsound(user, 'sound/items/bikehorn.ogg', 40, 1, -1)
+
+/datum/interaction/lewd/mountass/display_interaction(mob/living/carbon/human/user, mob/living/carbon/human/target)
+	. = ..()
+	if(!(isclown(target) || isclown(user)))
+		return
+
+	if(prob(50) && isclown(user))
+		target.visible_message("<span class='lewd'>\The <b>[user]</b>'s fun hole honks[pick(" loudly", "")]!</span>")
+
+	playlewdinteractionsound(user, 'sound/items/bikehorn.ogg', 40, 1, -1)
+
+/datum/interaction/lewd/mountface/display_interaction(mob/living/carbon/human/user, mob/living/carbon/human/target)
+	. = ..()
+	if(!isclown(user))
+		return
+
+	if(prob(50))
+		user.visible_message("<span class='lewd'>\The <b>[user]</b>'s fun hole honks[pick(" loudly", "")]!</span>")
+
+	playlewdinteractionsound(user, 'sound/items/bikehorn.ogg', 40, 1, -1)
+
+/datum/interaction/lewd/footfuck/display_interaction(mob/living/carbon/human/user, mob/living/carbon/human/target)
+	. = ..()
+	if(!isclown(user))
+		return
+
+	if(prob(50))
+		user.visible_message("<span class='lewd'>\The <b>[user]</b>'s [pick(GLOB.dick_nouns)] honks[pick(" loudly", "")]!</span>")
+
+	playlewdinteractionsound(user, 'sound/items/bikehorn.ogg', 40, 1, -1)
+
+/datum/interaction/lewd/footfuck/double/display_interaction(mob/living/carbon/human/user, mob/living/carbon/human/target)
+	. = ..()
+	if(!isclown(user))
+		return
+
+	if(prob(50))
+		user.visible_message("<span class='lewd'>\The <b>[user]</b>'s [pick(GLOB.dick_nouns)] honks[pick(" loudly", "")]!</span>")
+
+	playlewdinteractionsound(user, 'sound/items/bikehorn.ogg', 40, 1, -1)
+
+/datum/interaction/lewd/footjob/display_interaction(mob/living/carbon/human/user, mob/living/carbon/human/target)
+	. = ..()
+	if(!isclown(target))
+		return
+
+	if(prob(50))
+		target.visible_message("<span class='lewd'>\The <b>[target]</b>'s [pick(GLOB.dick_nouns)] honks[pick(" loudly", "")]!</span>")
+
+	playlewdinteractionsound(target, 'sound/items/bikehorn.ogg', 40, 1, -1)
+
+/datum/interaction/lewd/footjob/double/display_interaction(mob/living/carbon/human/user, mob/living/carbon/human/target)
+	. = ..()
+	if(!isclown(target))
+		return
+
+	if(prob(50))
+		target.visible_message("<span class='lewd'>\The <b>[target]</b>'s [pick(GLOB.dick_nouns)] honks[pick(" loudly", "")]!</span>")
+
+	playlewdinteractionsound(target, 'sound/items/bikehorn.ogg', 40, 1, -1)
+
+/datum/interaction/lewd/nuts/display_interaction(mob/living/carbon/human/user, mob/living/carbon/human/target)
+	. = ..()
+	if(!isclown(user))
+		return
+
+	if(prob(50))
+		user.visible_message("<span class='lewd'>\The <b>[user]</b>'s balls honk[pick(" loudly", "")]!</span>")
+
+	playlewdinteractionsound(user, 'sound/items/bikehorn.ogg', 40, 1, -1)
+
+/datum/interaction/lewd/nut_smack/display_interaction(mob/living/user, mob/living/target)
+	. = ..()
+	if(!(isclown(target) && command == "smack_nuts"))
+		return
+
+	if(prob(50))
+		target.visible_message("<span class='lewd'>\The <b>[target]</b>'s balls honk[pick(" loudly", "")]!</span>")
+
+	playlewdinteractionsound(target, 'sound/items/bikehorn.ogg', 40, 1, -1)
+
+/datum/interaction/lewd/earfuck/display_interaction(mob/living/carbon/human/user, mob/living/carbon/human/target)
+	. = ..()
+	if(!isclown(user))
+		return
+
+	if(prob(50))
+		user.visible_message("<span class='lewd'>\The <b>[user]</b>'s [pick(GLOB.dick_nouns)] honks[pick(" loudly", "")]!</span>")
+
+	playlewdinteractionsound(user, 'sound/items/bikehorn.ogg', 40, 1, -1)
+
+/datum/interaction/lewd/eyefuck/display_interaction(mob/living/carbon/human/user, mob/living/carbon/human/target)
+	. = ..()
+	if(!isclown(user))
+		return
+
+	if(prob(50))
+		user.visible_message("<span class='lewd'>\The <b>[user]</b>'s [pick(GLOB.dick_nouns)] honks[pick(" loudly", "")]!</span>")
+
+	playlewdinteractionsound(user, 'sound/items/bikehorn.ogg', 40, 1, -1)
+
+/datum/interaction/lewd/frotting/display_interaction(mob/living/user, mob/living/target)
+	. = ..()
+	if(!(isclown(target) || isclown(user)))
+		return
+
+	playlewdinteractionsound(user, 'sound/items/bikehorn.ogg', 40, 1, -1)
+
+/datum/interaction/lewd/do_breastfeed/display_interaction(mob/living/user, mob/living/target)
+	. = ..()
+	if(!isclown(user))
+		return
+
+	if(prob(50))
+		user.visible_message("<span class='lewd'>\The <b>[user]</b>'s [pick(GLOB.breast_nouns + "honkers")] honk[pick(" loudly", "")]!</span>")
+
+	playlewdinteractionsound(user, 'sound/items/bikehorn.ogg', 40, 1, -1)
+
+/datum/interaction/lewd/jack/display_interaction(mob/living/carbon/human/user)
+	. = ..()
+	if(!isclown(user))
+		return
+
+	if(prob(50))
+		user.visible_message("<span class='lewd'>\The <b>[user]</b>'s [pick(GLOB.dick_nouns)] honks[pick(" loudly", "")]!</span>")
+
+	playlewdinteractionsound(user, 'sound/items/bikehorn.ogg', 40, 1, -1)
+
+/datum/interaction/lewd/oral/selfsuck/display_interaction(mob/living/carbon/human/user)
+	. = ..()
+	if(!isclown(user))
+		return
+
+	if(prob(50))
+		user.visible_message("<span class='lewd'>\The <b>[user]</b>'s [pick(GLOB.dick_nouns)] honks[pick(" loudly", "")]!</span>")
+
+	playlewdinteractionsound(user, 'sound/items/bikehorn.ogg', 40, 1, -1)
+
+/datum/interaction/lewd/breastfuckself/display_interaction(mob/living/carbon/human/user)
+	. = ..()
+	if(!isclown(user))
+		return
+
+	if(prob(50))
+		user.visible_message("<span class='lewd'>\The <b>[user]</b>'s [pick(GLOB.breast_nouns + "honkers")] honk[pick(" loudly", "")]!</span>")
+
+	playlewdinteractionsound(user, 'sound/items/bikehorn.ogg', 40, 1, -1)
+
+/datum/interaction/lewd/fingerass_self/display_interaction(mob/living/carbon/human/user)
+	. = ..()
+	if(!isclown(user))
+		return
+
+	if(prob(50))
+		user.visible_message("<span class='lewd'>\The <b>[user]</b>'s fun hole honks[pick(" loudly", "")]!</span>")
+
+	playlewdinteractionsound(user, 'sound/items/bikehorn.ogg', 40, 1, -1)
+
+/datum/interaction/lewd/finger_self/display_interaction(mob/living/carbon/human/user)
+	. = ..()
+	if(!isclown(user))
+		return
+
+	if(prob(50))
+		user.visible_message("<span class='lewd'>\The <b>[user]</b>'s clussy honks[pick(" loudly", "")]!</span>")
+
+	playlewdinteractionsound(user, 'sound/items/bikehorn.ogg', 40, 1, -1)
+
+/datum/interaction/lewd/titgrope_self/display_interaction(mob/living/carbon/human/user)
+	. = ..()
+	if(!isclown(user))
+		return
+
+	var/u_His = user.p_their()
+	var/list/honks = list(
+		"\The <b>[user]</b>'s honkers produce a loud squeak!",
+		"\The <b>[user]</b>'s grope squeezes a honk out of [u_His] own [pick(GLOB.breast_nouns + "honkers")]!"
+	)
+	if(prob(50))
+		user.visible_message("<span class='lewd'>[pick(honks)]</span>")
+
+	playlewdinteractionsound(user, 'sound/items/bikehorn.ogg', 40, 1, -1)
+
+/datum/interaction/lewd/self_nipsuck/display_interaction(mob/living/user, mob/living/target)
+	. = ..()
+	if(!isclown(user))
+		return
+
+	var/u_His = user.p_their()
+	var/list/honks = list(
+		"\The <b>[user]</b>'s honkers produce a loud squeak!",
+		"\The <b>[user]</b>'s suck squeezes a honk out of [u_His] own [pick(GLOB.breast_nouns + "honkers")]!"
+	)
+	if(prob(50))
+		user.visible_message("<span class='lewd'>[pick(honks)]</span>")
+
+	playlewdinteractionsound(user, 'sound/items/bikehorn.ogg', 40, 1, -1)
+
+//Own stuff
 /datum/interaction/lewd/do_breastsmother
 	command = "do_breastsmother"
 	description = "Smother them in your breasts"
@@ -38,6 +353,14 @@
 
 /datum/interaction/lewd/do_breastsmother/display_interaction(mob/living/user, mob/living/target)
 	user.do_breastsmother(target)
+
+	if(!isclown(user))
+		return
+
+	if(prob(50))
+		user.visible_message("<span class='lewd'>\The <b>[user]</b>'s [pick(GLOB.breast_nouns + "honkers")] honk[pick(" loudly", "")]!</span>")
+
+	playlewdinteractionsound(user, 'sound/items/bikehorn.ogg', 40, 1, -1)
 
 /datum/interaction/lewd/lick_sweat
 	command = "lick_sweat"
@@ -87,6 +410,14 @@
 /datum/interaction/lewd/do_boobjob/display_interaction(mob/living/user, mob/living/target)
 	user.do_boobjob(target)
 
+	if(!isclown(user))
+		return
+
+	if(prob(50))
+		user.visible_message("<span class='lewd'>\The <b>[user]</b>'s [pick(GLOB.breast_nouns + "honkers")] honk[pick(" loudly", "")]!</span>")
+
+	playlewdinteractionsound(user, 'sound/items/bikehorn.ogg', 40, 1, -1)
+
 /datum/interaction/lewd/lick_nuts
 	command = "lick_nuts"
 	description = "Lick their balls"
@@ -100,6 +431,16 @@
 /datum/interaction/lewd/lick_nuts/display_interaction(mob/living/user, mob/living/target)
 	user.lick_nuts(target)
 
+/datum/interaction/lewd/grope_ass
+	command = "grope_ass"
+	description = "Grope their ass"
+	simple_message = "USER gropes TARGET's ass!"
+	require_user_hands = TRUE
+	max_distance = 1
+	interaction_sound = null
+	write_log_target = "Got their ass groped by"
+	write_log_target = "ass-groped"
+
 /datum/interaction/lewd/fuck_cock
 	command = "fuck_cock"
 	description = "Penetrate their cock"
@@ -112,6 +453,11 @@
 
 /datum/interaction/lewd/fuck_cock/display_interaction(mob/living/user, mob/living/target)
 	user.do_cockfuck(target)
+
+	if(!(isclown(target) || isclown(user)))
+		return
+
+	playlewdinteractionsound(user, 'sound/items/bikehorn.ogg', 40, 1, -1)
 
 ////////////////////////////////////////////////////////////////////////////////////////////////////////
 ///////// 									U N H O L Y										   /////////
@@ -157,6 +503,14 @@
 /datum/interaction/lewd/unholy/do_fartfuck/display_interaction(mob/living/user, mob/living/target)
 	user.do_fartfuck(target)
 
+	if(!(isclown(target) || isclown(user)))
+		return
+
+	if(prob(50) && isclown(target))
+		target.visible_message("<span class='lewd'>\The <b>[target]</b>'s fun hole honks[pick(" loudly", "")]!</span>")
+
+	playlewdinteractionsound(target, 'sound/items/bikehorn.ogg', 40, 1, -1)
+
 /datum/interaction/lewd/unholy/do_faceshit
 	command = "do_faceshit"
 	description = "Shit on their face"
@@ -193,6 +547,14 @@
 
 /datum/interaction/lewd/unholy/do_shitfuck/display_interaction(mob/living/user, mob/living/target)
 	user.do_shitfuck(target)
+
+	if(!(isclown(target) || isclown(user)))
+		return
+
+	if(prob(50) && isclown(target))
+		target.visible_message("<span class='lewd'>\The <b>[target]</b>'s fun hole honks[pick(" loudly", "")]!</span>")
+
+	playlewdinteractionsound(target, 'sound/items/bikehorn.ogg', 40, 1, -1)
 
 /datum/interaction/lewd/unholy/piss_over
 	command = "piss_over"
