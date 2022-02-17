@@ -6,8 +6,10 @@
 	desc = "Used to work with viruses."
 	density = TRUE
 	icon = 'icons/obj/chemical.dmi'
-	icon_state = "mixer0"
-	use_power = TRUE
+	icon_state = "pandemic0"
+	icon_keyboard = null
+	base_icon_state = "pandemic"
+	use_power = IDLE_POWER_USE
 	idle_power_usage = 20
 	resistance_flags = ACID_PROOF
 	circuit = /obj/item/circuitboard/computer/pandemic
@@ -128,9 +130,9 @@
 
 /obj/machinery/computer/pandemic/update_icon_state()
 	if(stat & BROKEN)
-		icon_state = (beaker ? "mixer1_b" : "mixer0_b")
+		icon_state = (beaker ? "pandemic1_b" : "pandemic0_b")
 	else
-		icon_state = "mixer[(beaker) ? "1" : "0"][powered() ? "" : "_nopower"]"
+		icon_state = "pandemic[(beaker) ? "1" : "0"][powered() ? "" : "_nopower"]"
 
 /obj/machinery/computer/pandemic/update_overlays()
 	. = ..()
