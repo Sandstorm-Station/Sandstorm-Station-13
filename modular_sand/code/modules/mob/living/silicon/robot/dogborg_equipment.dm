@@ -280,12 +280,16 @@ SLEEPER CODE IS IN game/objects/items/devices/dogborg_sleeper.dm !
 
 //Defibs
 
-/obj/item/twohanded/shockpaddles/cyborg/hound
+/obj/item/shockpaddles/cyborg/hound
 	name = "Paws of Life"
 	desc = "MediHound specific shock paws."
 	icon = 'modular_sand/icons/mob/dogborg.dmi'
 	icon_state = "defibpaddles0"
 	item_state = "defibpaddles0"
+
+/obj/item/shockpaddles/cyborg/hound/ComponentInitialize()
+	. = ..()
+	AddComponent(/datum/component/two_handed)
 
 // Pounce stuff for K-9
 

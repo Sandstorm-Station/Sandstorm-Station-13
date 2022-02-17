@@ -79,7 +79,7 @@
 		/obj/item/storage/bag/borgdelivery,
 		/obj/item/analyzer/nose,
 		/obj/item/soap/tongue,
-		/obj/item/twohanded/shockpaddles/cyborg/hound
+		/obj/item/shockpaddles/cyborg/hound
 	)
 	LAZYADD(basic_modules, extra)
 	. = ..()
