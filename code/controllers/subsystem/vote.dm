@@ -439,7 +439,7 @@ SUBSYSTEM_DEF(vote)
 					if(!istype(targetmap))
 						continue
 					/* SPLURT change */
-					if(targetmap.map_name == SSmapping.config.map_name)	// Second now because I did a stupid with types
+					if(CONFIG_GET(flag/no_repeats) && targetmap.map_name == SSmapping.config.map_name)	// Second now because I did a stupid with types
 						continue
 					/* END SPLURT change */
 					if(!targetmap.voteweight)
