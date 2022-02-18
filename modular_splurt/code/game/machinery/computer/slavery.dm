@@ -1,3 +1,5 @@
+#define ANNOUNCEMENT_COOLDOWN 6 MINUTES
+
 /obj/machinery/computer/slavery
 	name = "\improper slave management console"
 	desc = "Used to track and manage collared slaves. The limited range reaches only as far as the hideout perimeter."
@@ -8,6 +10,7 @@
 	req_access = list(ACCESS_SLAVER)
 	light_color = LIGHT_COLOR_RED
 	var/obj/item/radio/headset/radio
+	var/last_announcement
 	var/selected_cat
 	/// Dictates if the compact mode of the interface is on or off
 	var/compact_mode = FALSE
@@ -42,6 +45,10 @@
 
 /obj/machinery/computer/slavery/ui_static_data(mob/user)
 	var/list/data = list()
+
+	var/turf/curr = get_turf(src)
+	data["currentCoords"] = "[curr.x], [curr.y], [curr.z]"
+	data["value_table"] = GLOB.slavers_ransom_values
 	data["categories"] = list()
 	for(var/category in possible_gear)
 		var/list/cat = list(
@@ -56,22 +63,18 @@
 			))
 		data["categories"] += list(cat)
 
-	var/turf/curr = get_turf(src)
-	data["currentCoords"] = "[curr.x], [curr.y], [curr.z]"
-
 	return data
-
 
 /obj/machinery/computer/slavery/ui_data(mob/user)
 	var/list/data = list()
 
-	if (world.time < GLOB.slavers_last_announcement + 300)
+	if (world.time < last_announcement + ANNOUNCEMENT_COOLDOWN)
 		data["intercomrecharging"] = TRUE
 	else
 		data["intercomrecharging"] = FALSE
 
 	var/datum/bank_account/bank = SSeconomy.get_dep_account(ACCOUNT_CAR)
-	data["cargocredits"] = bank.account_balance
+	data["cargo_credits"] = bank.account_balance
 	data["credits"] = GLOB.slavers_credits_balance
 	data["compactMode"] = compact_mode
 	var/list/slaves = list()
@@ -90,11 +93,10 @@
 		var/list/slave = list()
 		slave["id"] = REF(C)
 		slave["name"] = L.real_name
+		slave["station_rank"] = C.station_rank
 		slave["price"] = C.price
-		slave["pricechangecooldown"] = round((C.nextPriceChange - world.time) / 10)
+		slave["price_change_cooldown"] = round((C.nextPriceChange - world.time) / 10)
 		slave["bought"] = C.bought
-		slave["shockcooldown"] = C.shock_cooldown;
-		slave["inexportbay"] = FALSE
 
 		var/turf/curr = get_turf(src)
 		if(pos.z == curr.z) //Distance/Direction calculations for same z-level only
@@ -102,9 +104,14 @@
 			slave["dist"] = max(get_dist(curr, pos), 0) //Distance between the machine and slave turfs
 			slave["degrees"] = round(Get_Angle(curr, pos)) //0-360 degree directional bearing, for more precision.
 
+			slave["shock_cooldown"] = C.shock_cooldown
+
+			if (C.nextRecruitChance < world.time)
+				slave["can_recruit"] = TRUE
+
 			var/area/A = get_area(get_turf(L))
 			if (istype(A, /area/slavers/export))
-				slave["inexportbay"] = TRUE
+				slave["in_export_bay"] = TRUE
 
 			switch(L.stat)
 				if(CONSCIOUS)
@@ -145,7 +152,7 @@
 
 	switch(action)
 		if ("makePriorityAnnouncement")
-			if (world.time < GLOB.slavers_last_announcement + 300)
+			if (world.time < last_announcement + ANNOUNCEMENT_COOLDOWN)
 				say("Intercomms recharging. Please stand by.")
 				return
 
@@ -160,8 +167,8 @@
 				return
 
 			input = user.treat_message(input) //Adds slurs and so on. Someone should make this use languages too.
-			priority_announce(input, sender_override = "[GLOB.slavers_team_name] Transmission")
-			GLOB.slavers_last_announcement = world.time
+			priority_announce(input, sender_override = GLOB.slavers_team_name)
+			last_announcement = world.time
 
 		if("setPrice")
 			var/newPrice = input(usr, "The station will need to pay this to get the slave back.", "Set slave price", collar.price) as num
@@ -183,6 +190,37 @@
 
 			collar.setPrice(newPrice)
 
+		if("recruit")
+			var/mob/living/M = collar.loc
+
+			if(QDELETED(M) || jobban_isbanned(M, ROLE_SLAVER) || jobban_isbanned(M, ROLE_SYNDICATE))
+				radioAnnounce("[M.real_name] has failed the background check and cannot join our cause.")
+				collar.nextRecruitChance = INFINITY
+				return
+
+			collar.nextRecruitChance = world.time + 10 MINUTES // 10 minutes before we can ask again
+			var/recruitResponse = tgui_alert(M, "It has been 15 minutes and your station has not paid your ransom. The slavers are offering for you to join their side.", "Recruitment Offer", list("Accept", "Maybe later", "Decline"))
+			switch(recruitResponse)
+				if ("Accept")
+					radioAnnounce("[M.real_name] has accepted the offer to join our cause!")
+					var/datum/antagonist/slaver/antag_datum = new
+					antag_datum.send_to_spawnpoint = FALSE
+					antag_datum.equip_outfit = FALSE
+					M.mind.add_antag_datum(antag_datum)
+					message_admins("[key_name_admin(M)] has been recruited as a slaver.")
+					log_admin("[key_name(M)] has been recruited as a slaver.")
+					qdel(collar)
+					return
+				if ("Maybe later")
+					radioAnnounce("[M.real_name] has declined the offer to join our cause for now.")
+					return
+				if ("Decline")
+					radioAnnounce("[M.real_name] has refused the offer to join our cause.")
+					collar.nextRecruitChance = INFINITY
+					return
+
+			collar.nextRecruitChance = 0 // If the popup box closes a strange way such as a disconnect, do nothing and re-enable the chance to open it again
+
 		if("export")
 			editBalance(collar.price)
 			GLOB.slavers_credits_total += collar.price
@@ -198,7 +236,7 @@
 			var/area/pod_storage_area = locate(/area/centcom/supplypod/podStorage) in GLOB.sortedAreas
 			var/mob/living/M = collar.loc
 
-			priority_announce("[M.real_name] has been returned to the station for [collar.price] credits.", sender_override = "[GLOB.slavers_team_name] Transmission")
+			priority_announce("[M.real_name] has been returned to the station for [collar.price] credits.", sender_override = GLOB.slavers_team_name)
 			var/obj/structure/closet/supplypod/centcompod/exportPod = new(pick(get_area_turfs(pod_storage_area)))
 			var/obj/effect/landmark/observer_start/dropzone = locate(/obj/effect/landmark/observer_start) in GLOB.landmarks_list
 			M.forceMove(exportPod)
@@ -241,7 +279,7 @@
 					editBalance(-SG.cost)
 					radioAnnounce("Supplies inbound: [SG.name]")
 
-					addtimer(CALLBACK(src, .proc/dropSupplies, SG.build_path), rand(4,8) * 10)
+					addtimer(CALLBACK(src, .proc/dropSupplies, SG.build_path), rand(3,6) * 10)
 
 					return TRUE
 
@@ -268,3 +306,5 @@
 
 /obj/machinery/computer/slavery/proc/editBalance(ammount)
 	GLOB.slavers_credits_balance += ammount
+
+#undef ANNOUNCEMENT_COOLDOWN

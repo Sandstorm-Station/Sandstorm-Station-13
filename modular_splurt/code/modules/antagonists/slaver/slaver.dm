@@ -1,9 +1,55 @@
 GLOBAL_VAR_INIT(slavers_team_name, "Slave Traders")
 GLOBAL_VAR_INIT(slavers_spawned, FALSE)
-GLOBAL_VAR_INIT(slavers_credits_balance, 4000)
+GLOBAL_VAR_INIT(slavers_credits_balance, 5000)
 GLOBAL_VAR_INIT(slavers_credits_total, 0)
 GLOBAL_VAR_INIT(slavers_slaves_sold, 0)
-GLOBAL_VAR_INIT(slavers_last_announcement, 0)
+
+#define SLAVER_STANDARD_RANSOM 7500
+
+/// Price table for when trying to set slave prices automatically
+GLOBAL_LIST_INIT(slavers_ransom_values, list(
+	"Captain" 					= 175000,
+	"Head of Personnel" 		= 125000,
+	"Head of Security" 			= 100000,
+	"Chief Engineer" 			= 80000,
+	"Research Director" 		= 80000,
+	"Chief Medical Officer" 	= 80000,
+	"Blueshield" 				= 30000,
+
+	"Warden" 					= 30000,
+	"Brig Physician" 			= 20000,
+	"Security Officer" 			= 20000,
+	"Detective" 				= 20000,
+
+	"Quartermaster" 			= 10000,
+	"Cargo Technician" 			= SLAVER_STANDARD_RANSOM,
+	"Shaft Miner"				= SLAVER_STANDARD_RANSOM,
+	"Assistant" 				= SLAVER_STANDARD_RANSOM,
+	"Bartender"					= SLAVER_STANDARD_RANSOM,
+	"Cook"						= SLAVER_STANDARD_RANSOM,
+	"Botanist"					= SLAVER_STANDARD_RANSOM,
+	"Janitor"					= SLAVER_STANDARD_RANSOM,
+	"Clown"						= SLAVER_STANDARD_RANSOM,
+	"Mime"						= SLAVER_STANDARD_RANSOM,
+	"Curator"					= SLAVER_STANDARD_RANSOM,
+	"Lawyer"					= SLAVER_STANDARD_RANSOM,
+	"Chaplain"					= SLAVER_STANDARD_RANSOM,
+	"Station Engineer"			= SLAVER_STANDARD_RANSOM,
+	"Atmospheric Technician"	= SLAVER_STANDARD_RANSOM,
+	"Medical Doctor" 			= SLAVER_STANDARD_RANSOM,
+	"Paramedic" 				= SLAVER_STANDARD_RANSOM,
+	"Chemist"					= SLAVER_STANDARD_RANSOM,
+	"Virologist"				= SLAVER_STANDARD_RANSOM,
+	"Geneticist"				= SLAVER_STANDARD_RANSOM,
+	"Scientist"					= SLAVER_STANDARD_RANSOM,
+	"Roboticist"				= SLAVER_STANDARD_RANSOM,
+	"Prisoner"					= SLAVER_STANDARD_RANSOM,
+	"Curator"					= SLAVER_STANDARD_RANSOM,
+	"Lawyer"					= SLAVER_STANDARD_RANSOM,
+	"Chaplain"					= SLAVER_STANDARD_RANSOM,
+))
+
+#undef SLAVER_STANDARD_RANSOM
 
 /datum/antagonist/slaver
 	name = "Slave Trader"
@@ -13,9 +59,10 @@ GLOBAL_VAR_INIT(slavers_last_announcement, 0)
 	antag_moodlet = /datum/mood_event/focused
 	threat = 7
 	show_to_ghosts = TRUE
-	var/datum/team/slavers/slaver_team = new /datum/team/slavers
+	var/static/datum/team/slavers/slaver_team = new /datum/team/slavers
 	var/slaver_outfit = /datum/outfit/slaver
 	var/send_to_spawnpoint = TRUE //Should the user be moved to default spawnpoint.
+	var/equip_outfit = TRUE
 
 /datum/antagonist/slaver/proc/update_slaver_icons_added(mob/living/M)
 	var/datum/atom_hud/antag/slaverhud = GLOB.huds[ANTAG_HUD_SLAVER]
@@ -56,7 +103,8 @@ GLOBAL_VAR_INIT(slavers_last_announcement, 0)
 /datum/antagonist/slaver/on_gain()
 	forge_objectives()
 	. = ..()
-	equip_slaver()
+	if(equip_outfit)
+		equip_slaver()
 	if(send_to_spawnpoint)
 		move_to_spawnpoint()
 
@@ -84,7 +132,6 @@ GLOBAL_VAR_INIT(slavers_last_announcement, 0)
 
 /datum/antagonist/slaver/admin_add(datum/mind/new_owner,mob/admin)
 	send_to_spawnpoint = FALSE
-	new_owner.assigned_role = ROLE_SLAVER
 	new_owner.add_antag_datum(src)
 
 	message_admins("[key_name_admin(admin)] has slaver'd [new_owner.current].")

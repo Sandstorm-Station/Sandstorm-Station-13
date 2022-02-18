@@ -2,7 +2,7 @@ import { map, sortBy } from 'common/collections';
 import { flow } from 'common/fp';
 import { vecLength, vecSubtract } from 'common/vector';
 import { useBackend, useSharedState } from '../backend';
-import { Box, Button, Icon, LabeledList, Section, Tabs, NoticeBox, Fragment } from '../components';
+import { Box, Button, Icon, LabeledList, Section, Tabs, Flex, NoticeBox, Fragment } from '../components';
 import { Window } from '../layouts';
 import { GenericUplink } from './Uplink';
 import { formatMoney } from '../format';
@@ -14,10 +14,12 @@ export const SlaveConsole = (props, context) => {
   const [tab, setTab] = useSharedState(context, 'tab', 1);
   const {
     intercomrecharging,
-    cargocredits,
+    cargo_credits,
     credits,
     currentCoords,
+    value_table,
   } = data;
+
   const slaves = flow([
     map((slave, index) => {
       // Calculate distance to the target. BYOND distance is capped to 127,
@@ -35,7 +37,7 @@ export const SlaveConsole = (props, context) => {
   return (
     <Window
       title="Slave Management System"
-      width={470}
+      width={520}
       height={700}
       theme="syndicate"
       resizable>
@@ -58,7 +60,7 @@ export const SlaveConsole = (props, context) => {
             </LabeledList.Item>
             <LabeledList.Item
               label="Station credits">
-              {formatMoney(cargocredits, null, true)}cr
+              {formatMoney(cargo_credits, null, true)}cr
             </LabeledList.Item>
           </LabeledList>
         </Section>
@@ -78,6 +80,13 @@ export const SlaveConsole = (props, context) => {
             onClick={() => setTab(2)}>
             Supplies
           </Tabs.Tab>
+          <Tabs.Tab
+            icon="list"
+            lineHeight="23px"
+            selected={tab === 3}
+            onClick={() => setTab(3)}>
+            Ransom Table
+          </Tabs.Tab>
         </Tabs>
         {tab === 1 && (
           <SlavePanel
@@ -86,6 +95,10 @@ export const SlaveConsole = (props, context) => {
         {tab === 2 && (
           <SupplyPanel
             credits={credits} />
+        )}
+        {tab === 3 && (
+          <RansomPanel
+            value_table={value_table} />
         )}
 
       </Window.Content>
@@ -98,7 +111,7 @@ const SlavePanel = (props, context) => {
   const { act, data } = useBackend(context);
   if (!slaves.length) {
     return (
-      <NoticeBox>
+      <NoticeBox danger>
         No slaves detected in hideout
       </NoticeBox>
     );
@@ -111,10 +124,21 @@ const SlavePanel = (props, context) => {
         buttons={(
           <Fragment>
             <Button
+              icon="handshake"
+              content="Recruit"
+              color="blue"
+              disabled={slave.dist === undefined
+                || !slave.can_recruit
+                || slave.bought}
+              tooltip="After 15 minutes, unsold slaves can get the offer to join our cause."
+              onClick={() => act('recruit', {
+                id: slave.id,
+              })} />
+            <Button
               icon="dolly"
               content="Export"
               color="good"
-              disabled={!slave.bought || !slave.inexportbay}
+              disabled={!slave.bought || !slave.in_export_bay}
               tooltip="Send the slave back to the station. First the ransom must be paid by the station, and the slave must be in the export bay."
               onClick={() => act('export', {
                 id: slave.id,
@@ -123,7 +147,7 @@ const SlavePanel = (props, context) => {
               icon="bolt"
               color="average"
               content="Shock"
-              disabled={slave.dist === undefined || slave.shockcooldown}
+              disabled={slave.dist === undefined || slave.shock_cooldown}
               onClick={() => act('shock', {
                 id: slave.id,
               })} />
@@ -132,7 +156,8 @@ const SlavePanel = (props, context) => {
               content="Release"
               color="bad"
               disabled={slave.dist === undefined}
-              tooltip="Remove the slave's collar.        "
+              tooltip="Remove the slave's collar."
+              tooltipPosition="bottom-end"
               onClick={() => act('release', {
                 id: slave.id,
               })} />
@@ -163,21 +188,26 @@ const SlavePanel = (props, context) => {
             )}
           </LabeledList.Item>
           <LabeledList.Item label="Price">
-            <Fragment>
-              <Button
-                icon="pencil-alt"
-                content={slave.price ? formatMoney(slave.price, null, true) + "cr" : "Set price"}
-                tooltip="The station will need to pay this."
-                disabled={slave.pricechangecooldown > 0 || slave.bought}
-                onClick={() => act('setPrice', {
-                  id: slave.id,
-                })} />
-              {(slave.pricechangecooldown > 0 && !slave.bought) && (
-                <Box>
-                  (Can be changed in {slave.pricechangecooldown} seconds)
-                </Box>
-              )}
-            </Fragment>
+            {(!slave.station_rank) && (
+              <Fragment>
+                <Button
+                  icon="pencil-alt"
+                  content={slave.price ? formatMoney(slave.price, null, true) + "cr" : "Set price"}
+                  tooltip="The station will need to pay this."
+                  disabled={slave.price_change_cooldown > 0 || slave.bought}
+                  onClick={() => act('setPrice', {
+                    id: slave.id,
+                  })} />
+                {(slave.price_change_cooldown > 0 && !slave.bought) && (
+                  <Box>
+                    (Can be changed in {slave.price_change_cooldown} seconds)
+                  </Box>
+                )}
+              </Fragment>
+            )}
+            {(slave.station_rank) && (
+              formatMoney(slave.price, null, true) + "cr (" + slave.station_rank + ")"
+            )}
           </LabeledList.Item>
           <LabeledList.Item
             label="Ransom"
@@ -205,5 +235,48 @@ const SupplyPanel = (props, context) => {
     <GenericUplink
       currencyAmount={credits}
       currencySymbol="cr" />
+  );
+};
+
+const RansomPanel = (props, context) => {
+  const value_table = props.value_table;
+
+  let value_table_converted = [];
+
+  for (const property in value_table) {
+    value_table_converted.push({
+      rank: `${property}`,
+      value: value_table[property],
+    });
+  }
+
+  return (
+    <Fragment>
+      <NoticeBox danger>
+        Prices are set automatically for the following ranks:
+      </NoticeBox>
+      <Flex
+        direction="column">
+        {value_table_converted.map(rank_value => {
+          return (
+            <Flex
+              key={0}
+              className="candystripe"
+              justify="space-between"
+              px="1rem"
+              py=".5rem"
+            >
+              <Flex.Item
+                bold>
+                {rank_value.rank}
+              </Flex.Item>
+              <Flex.Item>
+                {formatMoney(rank_value.value, null, true)}cr
+              </Flex.Item>
+            </Flex>
+          );
+        })}
+      </Flex>
+    </Fragment>
   );
 };
