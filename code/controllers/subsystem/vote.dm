@@ -438,6 +438,10 @@ SUBSYSTEM_DEF(vote)
 					var/datum/map_config/targetmap = config.maplist[M]
 					if(!istype(targetmap))
 						continue
+					/* SPLURT change */
+					if(targetmap.map_name == SSmapping.config.map_name)	// Second now because I did a stupid with types
+						continue
+					/* END SPLURT change */
 					if(!targetmap.voteweight)
 						continue
 					if((targetmap.config_min_users && players < targetmap.config_min_users) || (targetmap.config_max_users && players > targetmap.config_max_users))
