@@ -65,6 +65,7 @@
 
 /mob/living
 	var/has_penis = FALSE
+	var/has_balls = FALSE
 	var/has_vagina = FALSE
 	var/has_anus = TRUE
 	var/has_breasts = FALSE
@@ -165,6 +166,8 @@
 
 /mob/living/proc/has_balls(var/nintendo = REQUIRE_ANY)
 	var/mob/living/carbon/C = src
+	if(has_balls && !istype(C))
+		return TRUE
 	if(istype(C))
 		var/obj/item/organ/genital/peepee = C.getorganslot(ORGAN_SLOT_TESTICLES)
 		if(peepee)

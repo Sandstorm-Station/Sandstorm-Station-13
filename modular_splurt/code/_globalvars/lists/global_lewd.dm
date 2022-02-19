@@ -9,3 +9,5 @@ GLOBAL_LIST_INIT(brap_noises, list(
 			'modular_splurt/sound/voice/farts/fart7.ogg',
 			'modular_splurt/sound/voice/farts/fart8.ogg'
 			))
+
+GLOBAL_LIST_INIT(breast_nouns, list("breasts", "boobs", "honkers", "tatas", "tiddies", "milktanks", "mammaries", "milk bags", "boobers", "boobies")) //Yeah I need help coming up with better names

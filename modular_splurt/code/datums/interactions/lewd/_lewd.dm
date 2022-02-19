@@ -1,10 +1,9 @@
 /mob/living/proc/do_breastsmother(mob/living/target)
 	var/message
 	var/u_His = p_their()
-	var/titties = list("breasts", "boobs", "milkers", "milktanks", "boobers", "titties", "tits", "tatas", "mammaries")
 	var/list/lines = list(
-		"squishes <b>[target]</b>'s face [pick(list("in between", "with"))] [u_His] [pick(titties)]",
-		"presses [u_His] [pick(titties)] into \the <b>[target]</b>'s face",
+		"squishes <b>[target]</b>'s face [pick(list("in between", "with"))] [u_His] [pick(GLOB.breast_nouns)]",
+		"presses [u_His] [pick(GLOB.breast_nouns)] into \the <b>[target]</b>'s face",
 		"shoves \the <b>[target]</b>'s whole head into [u_His] cleavage"
 		)
 
@@ -63,20 +62,19 @@
 /mob/living/proc/do_boobjob(mob/living/target)
 	var/message
 	var/u_His = p_their()
-	var/list/tiddies = list("breasts", "boobs", "honkers", "tatas", "tiddies", "milktanks", "mammaries", "milk bags", "boobers", "boobies")
 	var/list/lines
 
 	if(target.is_fucking(src, CUM_TARGET_BREASTS))
 		lines = list(
-			"slides [u_His] [pick(tiddies)], up and down through \the <b>[target]</b>'s throbbing cock",
-			"squeezes [u_His] [pick(tiddies)] through all of \the <b>[target]</b>'s lenght",
-			"jerks \the <b>[target]</b> off lustfully with [u_His] supple [pick(tiddies)]"
+			"slides [u_His] [pick(GLOB.breast_nouns)], up and down through \the <b>[target]</b>'s throbbing cock",
+			"squeezes [u_His] [pick(GLOB.breast_nouns)] through all of \the <b>[target]</b>'s lenght",
+			"jerks \the <b>[target]</b> off lustfully with [u_His] supple [pick(GLOB.breast_nouns)]"
 		)
 	else
 		lines = list(
-			"clamps [u_His] [pick(tiddies)] around \the <b>[target]</b>'s throbbing cock, wrapping it in their sheer warmth",
-			"envelops \the <b>[target]</b>'s hard member with [u_His] soft [pick(tiddies)], giving it a tight and sloshing squeeze",
-			"lets [u_His] [pick(tiddies)] fall into \the <b>[target]</b>'s fat cock, smothering it in [u_His] cleavage"
+			"clamps [u_His] [pick(GLOB.breast_nouns)] around \the <b>[target]</b>'s throbbing cock, wrapping it in their sheer warmth",
+			"envelops \the <b>[target]</b>'s hard member with [u_His] soft [pick(GLOB.breast_nouns)], giving it a tight and sloshing squeeze",
+			"lets [u_His] [pick(GLOB.breast_nouns)] fall into \the <b>[target]</b>'s fat cock, smothering it in [u_His] cleavage"
 		)
 		target.set_is_fucking(src, CUM_TARGET_BREASTS, getorganslot(ORGAN_SLOT_PENIS))
 

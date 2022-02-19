@@ -157,3 +157,13 @@
 			cyborg_icon_override = 'modular_splurt/icons/mob/robots.dmi'
 			hat_offset = 3
 	return ..()
+
+/obj/item/robot_module/syndicate_medical/slaver
+	name = "Slaver Medical Combat"
+
+/obj/item/robot_module/syndicate_medical/slaver/Initialize()
+	var/list/extra_tools = list(
+		/obj/item/slaver/gizmo
+	)
+	LAZYADD(basic_modules, extra_tools)
+	. = ..()
