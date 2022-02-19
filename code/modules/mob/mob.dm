@@ -19,6 +19,7 @@
 	initialize_actionspeed()
 	init_rendering()
 	hook_vr("mob_new",list(src))
+	create_player_panel()
 
 /mob/Destroy()//This makes sure that mobs with clients/keys are not just deleted from the game.
 	remove_from_mob_list()
@@ -36,6 +37,7 @@
 			observe.reset_perspective(null)
 	dispose_rendering()
 	qdel(hud_used)
+	QDEL_NULL(mob_panel)
 	for(var/cc in client_colours)
 		qdel(cc)
 	client_colours = null
@@ -57,6 +59,11 @@
 				var/image/I = image('icons/mob/hud.dmi', src, "")
 				I.appearance_flags = RESET_COLOR|RESET_TRANSFORM
 				hud_list[hud] = I
+
+/mob/proc/create_player_panel()
+	QDEL_NULL(mob_panel)
+
+	mob_panel = new(src)
 
 /mob/proc/Cell()
 	set category = "Admin"
@@ -959,6 +966,7 @@ GLOBAL_VAR_INIT(exploit_warn_spam_prevention, 0)
 		if(!check_rights(NONE))
 			return
 		usr.client.holder.show_player_panel(src)
+		// usr.client.holder.show_player_panel2(src)
 	if(href_list[VV_HK_GODMODE])
 		if(!check_rights(R_ADMIN))
 			return

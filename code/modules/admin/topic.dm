@@ -1798,7 +1798,8 @@
 
 	else if(href_list["adminplayeropts"])
 		var/mob/M = locate(href_list["adminplayeropts"])
-		show_player_panel(M)
+		// show_player_panel(M)
+		show_player_panel2(M)
 
 	else if(href_list["adminplayerobservefollow"])
 		if(!isobserver(usr) && !check_rights(R_ADMIN))
@@ -2025,21 +2026,22 @@
 			return
 
 		var/mob/M = locate(href_list["CentComReply"])
-		usr.client.admin_headset_message(M, RADIO_CHANNEL_CENTCOM)
+		usr.client.cmd_admin_subtle_message(M, RADIO_CHANNEL_CENTCOM)
 
 	else if(href_list["SyndicateReply"])
 		if(!check_rights(R_ADMIN))
 			return
 
 		var/mob/M = locate(href_list["SyndicateReply"])
-		usr.client.admin_headset_message(M, RADIO_CHANNEL_SYNDICATE)
+		usr.client.cmd_admin_subtle_message(M, RADIO_CHANNEL_SYNDICATE)
 
 	else if(href_list["HeadsetMessage"])
 		if(!check_rights(R_ADMIN))
 			return
 
 		var/mob/M = locate(href_list["HeadsetMessage"])
-		usr.client.admin_headset_message(M)
+		usr.client.cmd_admin_subtle_message(M)
+
 //ambition start
 	else if(href_list["ObjectiveRequest"])
 		if(!check_rights(R_ADMIN))
@@ -2098,6 +2100,8 @@
 	else if(href_list["subtlemessage"])
 		if(!check_rights(R_ADMIN))
 			return
+
+		priority_announce("what is this")
 
 		var/mob/M = locate(href_list["subtlemessage"])
 		usr.client.cmd_admin_subtle_message(M)
@@ -2730,7 +2734,8 @@
 		var/mob/M = locate(href_list["mob"]) in GLOB.mob_list
 		var/client/C = M.client
 		usr.client.cmd_admin_mod_antag_rep(C, href_list["modantagrep"])
-		show_player_panel(M)
+		// show_player_panel(M)
+		show_player_panel2(M)
 
 	else if(href_list["slowquery"])
 		if(!check_rights(R_ADMIN))

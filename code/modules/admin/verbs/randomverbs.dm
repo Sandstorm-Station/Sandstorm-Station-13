@@ -19,67 +19,51 @@
 	admin_ticket_log(M, msg)
 	SSblackbox.record_feedback("tally", "admin_verb", 1, "Drop Everything") //If you are copy-pasting this, ensure the 2nd parameter is unique to the new proc!
 
-/client/proc/cmd_admin_subtle_message(mob/M in GLOB.mob_list)
-	set category = "Admin.Events"
+/client/proc/cmd_admin_subtle_message(mob/M in GLOB.mob_list, sender = null)
+	set category = null
 	set name = "Subtle Message"
 
 	if(!ismob(M))
+		priority_announce("no mob!")
 		return
 	if(!check_rights(R_ADMIN))
-		return
-
-	message_admins("[key_name_admin(src)] has started answering [ADMIN_LOOKUPFLW(M)]'s prayer.")
-	var/msg = input("Message:", text("Subtle PM to [M.key]")) as text|null
-
-	if (!msg)
-		message_admins("[key_name_admin(src)] decided not to answer [ADMIN_LOOKUPFLW(M)]'s prayer")
-		return
-	if(usr)
-		if (usr.client)
-			if(usr.client.holder)
-				to_chat(M, "<i>You hear a voice in your head... <b>[msg]</i></b>")
-
-	log_admin("SubtlePM: [key_name(usr)] -> [key_name(M)] : [msg]")
-	msg = "<span class='adminnotice'><b> SubtleMessage: [key_name_admin(usr)] -> [key_name_admin(M)] :</b> [msg]</span>"
-	message_admins(msg)
-	admin_ticket_log(M, msg)
-	SSblackbox.record_feedback("tally", "admin_verb", 1, "Subtle Message") //If you are copy-pasting this, ensure the 2nd parameter is unique to the new proc!
-
-/client/proc/cmd_admin_headset_message(mob/M in GLOB.mob_list)
-	set category = "Admin.Events"
-	set name = "Headset Message"
-
-	admin_headset_message(M)
-
-/client/proc/admin_headset_message(mob/M in GLOB.mob_list, sender = null)
-	var/mob/living/carbon/human/H = M
-
-	if(!check_rights(R_ADMIN))
-		return
-
-	if(!istype(H))
-		to_chat(usr, "This can only be used on instances of type /mob/living/carbon/human")
-		return
-	if(!istype(H.ears, /obj/item/radio/headset))
-		to_chat(usr, "The person you are trying to contact is not wearing a headset.")
+		priority_announce("no admin!")
 		return
 
 	if (!sender)
-		sender = input("Who is the message from?", "Sender") as null|anything in list(RADIO_CHANNEL_CENTCOM,RADIO_CHANNEL_SYNDICATE)
-		if(!sender)
+		var/list/subtle_message_options = list("Voice in head", RADIO_CHANNEL_CENTCOM, RADIO_CHANNEL_SYNDICATE)
+		sender = tgui_input_list(usr, "Choose the method of subtle messaging", "Subtle Message", subtle_message_options)
+		if (!sender)
+			priority_announce("no sender!")
 			return
 
-	message_admins("[key_name_admin(src)] has started answering [key_name_admin(H)]'s [sender] request.")
-	var/input = input("Please enter a message to reply to [key_name(H)] via their headset.","Outgoing message from [sender]", "") as text|null
-	if(!input)
-		message_admins("[key_name_admin(src)] decided not to answer [key_name_admin(H)]'s [sender] request.")
+	message_admins("[key_name_admin(src)] has started answering [ADMIN_LOOKUPFLW(M)]'s prayer / faction PM.")
+	var/msg = input("Contents of the message", text("Subtle PM to [M.key]")) as text
+	if (!msg)
+		message_admins("[key_name_admin(src)] decided not to answer [ADMIN_LOOKUPFLW(M)]'s prayer / faction PM.")
 		return
 
-	log_directed_talk(mob, H, input, LOG_ADMIN, "reply")
-	message_admins("[key_name_admin(src)] replied to [key_name_admin(H)]'s [sender] message with: \"[input]\"")
-	to_chat(H, "You hear something crackle in your ears for a moment before a voice speaks.  \"Please stand by for a message from [sender == "Syndicate" ? "your benefactor" : "Central Command"].  Message as follows[sender == "Syndicate" ? ", agent." : ":"] <span class='bold'>[input].</span> Message ends.\"")
+	if (sender == "Voice in head")
+		to_chat(M, "<i>You hear a voice in your head... <b>[msg]</i></b>")
+	else
+		var/mob/living/carbon/human/H = M
 
-	SSblackbox.record_feedback("tally", "admin_verb", 1, "Headset Message") //If you are copy-pasting this, ensure the 2nd parameter is unique to the new proc!
+		if(!istype(H))
+			to_chat(usr, "The person you are trying to contact is not human. Unsent message: [msg]")
+			return
+
+		if(!istype(H.ears, /obj/item/radio/headset))
+			to_chat(usr, "The person you are trying to contact is not wearing a headset. Unsent message: [msg]")
+			return
+
+		to_chat(H, "You hear something crackle in your ears for a moment before a voice speaks.  \"Please stand by for a message from [sender == RADIO_CHANNEL_SYNDICATE ? "your benefactor" : "Central Command"].  Message as follows[sender == RADIO_CHANNEL_SYNDICATE ? ", agent." : ":"] <span class='bold'>[msg].</span> Message ends.\"")
+
+
+	log_admin("SubtlePM ([sender]): [key_name(usr)] -> [key_name(M)] : [msg]")
+	msg = "<span class='adminnotice'><b> SubtleMessage ([sender]): [key_name_admin(usr)] -> [key_name_admin(M)] :</b> [msg]</span>"
+	message_admins(msg)
+	admin_ticket_log(M, msg)
+	SSblackbox.record_feedback("tally", "admin_verb", 1, "Subtle Message") //If you are copy-pasting this, ensure the 2nd parameter is unique to the new proc!
 
 /client/proc/cmd_admin_mod_antag_rep(client/C in GLOB.clients, var/operation)
 	set category = "Special Verbs"
@@ -1336,7 +1320,8 @@ Traitors and the like can also be revived with the previous role mostly intact.
 	if(!check_rights(R_ADMIN) || !check_rights(R_FUN))
 		return
 
-	var/list/punishment_list = list(ADMIN_PUNISHMENT_PIE,
+	var/list/punishment_list = list(
+		ADMIN_PUNISHMENT_PIE,
 		ADMIN_PUNISHMENT_CUSTOM_PIE,
 		ADMIN_PUNISHMENT_FIREBALL,
 		ADMIN_PUNISHMENT_LIGHTNING,
@@ -1362,7 +1347,7 @@ Traitors and the like can also be revived with the previous role mostly intact.
 		ADMIN_PUNISHMENT_BOOKIFY,
 		ADMIN_PUNISHMENT_BONK)
 
-	var/punishment = input("Choose a punishment", "DIVINE SMITING") as null|anything in punishment_list
+	var/punishment = tgui_input_list(usr, "Choose a punishment", "Divine Smiting", punishment_list)
 
 	if(QDELETED(target) || !punishment)
 		return
