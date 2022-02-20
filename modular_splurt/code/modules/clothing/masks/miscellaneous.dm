@@ -147,13 +147,12 @@
 	item_state = "gas_mopp"
 	icon_state = "gas_mopp"
 	armor = list("melee" = 10, "bullet" = 5, "laser" = 10,"energy" = 10, "bomb" = 10, "bio" = 100, "rad" = 100, "fire" = 40, "acid" = 100)
-	actions_types = list(/datum/action/item_action/halt)
 
 /obj/item/clothing/mask/gas/cbrn/mopp/advance
 	name = "advance MOPP gas mask"
 	desc = "Mission Oriented Protective Posture. A heavy duty gas mask design to be worn in hazardus combat enviorments. Acutally works like a gas mask as well as can be connected to intenral air supply. Used by Centcom Staff and ERT teams."
 	armor = list("melee" = 20, "bullet" = 10, "laser" = 20,"energy" = 20, "bomb" = 20, "bio" = 110, "rad" = 110, "fire" = 50, "acid" = 110)
-	actions_types = list(/datum/action/item_action/halt)
+
 
 
 //research nods

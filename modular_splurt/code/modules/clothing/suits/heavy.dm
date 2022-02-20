@@ -205,7 +205,7 @@
 	id = "cbrn_med"
 	build_type = PROTOLATHE
 	materials = list(/datum/material/plastic = 600, /datum/material/uranium = 100, /datum/material/iron = 600)
-	build_path = /obj/item/clothing/suit/med
+	build_path = /obj/item/clothing/suit/cbrn/medical
 	category = list("Equipment")
 	departmental_flags = DEPARTMENTAL_FLAG_MEDICAL
 
