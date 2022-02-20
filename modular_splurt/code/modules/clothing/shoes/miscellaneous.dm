@@ -70,7 +70,7 @@
 /datum/design/cbrn/moppboots
 	name = "MOPP Boots"
 	desc = "A pair MOPP boots"
-	id = "mopp_mask"
+	id = "mopp_boots"
 	build_type = PROTOLATHE
 	materials = list(/datum/material/plastic = 200, /datum/material/uranium = 50, /datum/material/iron = 200)
 	build_path = /obj/item/clothing/shoes/jackboots/cbrn/mopp

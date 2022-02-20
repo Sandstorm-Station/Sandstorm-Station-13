@@ -54,7 +54,7 @@
 /datum/design/cbrn/mopphood
 	name = "MOPP Hood"
 	desc = "A MOPP hood with an intergreted helmet"
-	id = "mopp_mask"
+	id = "mopp_hood"
 	build_type = PROTOLATHE
 	materials = list(/datum/material/plastic = 200, /datum/material/uranium = 50, /datum/material/iron = 200)
 	build_path = /obj/item/clothing/head/helmet/cbrn/mopp
