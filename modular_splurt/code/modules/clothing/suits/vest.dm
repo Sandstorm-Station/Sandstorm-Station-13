@@ -9,7 +9,7 @@
 	allowed = list(/obj/item/flashlight, /obj/item/tank/internals/emergency_oxygen, /obj/item/tank/internals/plasmaman, /obj/item/scalpel, /obj/item/surgical_drapes, /obj/item/cautery, /obj/item/hemostat, /obj/item/retractor, /obj/item/analyzer,/obj/item/stack/medical, /obj/item/dnainjector, /obj/item/reagent_containers/dropper, /obj/item/reagent_containers/syringe, /obj/item/reagent_containers/hypospray, /obj/item/hypospray/mkii, /obj/item/healthanalyzer, /obj/item/flashlight/pen, /obj/item/reagent_containers/glass/bottle, /obj/item/reagent_containers/glass/beaker, /obj/item/reagent_containers/pill, /obj/item/storage/pill_bottle, /obj/item/paper, /obj/item/melee/classic_baton/telescopic, /obj/item/soap, /obj/item/sensor_device)
 
 /obj/item/clothing/suit/armor/vest/bluesheid
-	name = "bluesheid armored vest"
+	name = "bluesheild armored vest"
 	desc = "A lightweight vest with a bluesheid on it."
 	icon = 'modular_splurt/icons/obj/clothing/suits.dmi'
 	mob_overlay_icon = 'modular_splurt/icons/mobs/suits.dmi'
@@ -19,7 +19,7 @@
 	mutantrace_variation = STYLE_DIGITIGRADE|STYLE_NO_ANTHRO_ICON
 
 /obj/item/clothing/suit/armor/vest/bluesheid/coat
-	name = "bluesheid armored coat"
+	name = "bluesheild armored coat"
 	desc = "A fastional piece of armored style."
 	icon_state = "blueshieldcoat"
 	item_state = "blueshieldcoat"
