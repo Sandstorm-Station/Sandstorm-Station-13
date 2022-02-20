@@ -62,7 +62,8 @@ export const PlayerPanel2 = (props, context) => {
   const [pageIndex, setPageIndex] = useLocalState(context, 'pageIndex', 0);
   const [canModifyCkey, setModifyCkey] = useLocalState(context, 'canModifyCkey', false);
   const PageComponent = PAGES[pageIndex].component();
-  const { mob_name, mob_type, client_key, client_ckey, client_rank } = data;
+  const { mob_name, mob_type, client_key, client_ckey, client_rank,
+    playtimes_enabled, playtime } = data;
 
   return (
     <Window
@@ -108,7 +109,8 @@ export const PlayerPanel2 = (props, context) => {
                   minWidth="11rem" textAlign="center"
                   ml=".5rem"
                   icon="window-restore"
-                  content="View Playtimes"
+                  content={playtimes_enabled ? playtime : "Playtimes"}
+                  disabled={!playtimes_enabled}
                   onClick={() => act("access_playtimes")}
                 />
               </Flex.Item>
@@ -178,7 +180,7 @@ export const PlayerPanel2 = (props, context) => {
 const GeneralActions = (props, context) => {
   const { act, data } = useBackend(context);
 
-  const { is_type_mob_living, is_frozen, is_slept, client_key } = data;
+  const { client_key, is_type_mob_living } = data;
   return (
     <Section fill>
       <Section level={2} title="Damage">
@@ -191,14 +193,16 @@ const GeneralActions = (props, context) => {
             icon="heart"
             color="green"
             content="Rejuvenate"
+            disabled={!is_type_mob_living}
             onClick={() => act("heal")}
           />
           <Button
             width="100%"
-            icon="skull-crossbones"
+            icon="bolt"
             color="average"
             content="Smite"
             confirmColor="average"
+            disabled={!is_type_mob_living}
             onClick={() => act("smite")}
           />
           <Button.Confirm
@@ -208,7 +212,7 @@ const GeneralActions = (props, context) => {
             color="bad"
             content="Make Ghost"
             confirmColor="bad"
-            disabled={!client_key}
+            disabled={!client_key || !is_type_mob_living}
             onClick={() => act("ghost")}
           />
         </Flex>
@@ -245,22 +249,6 @@ const GeneralActions = (props, context) => {
           align="right"
           grow={1}
         >
-          <Button.Checkbox
-            width="100%"
-            content="Toggle Frozen"
-            checked={is_frozen}
-            color={is_frozen ? "good" : "bad"}
-            disabled={!is_type_mob_living}
-            onClick={() => act("freeze")}
-          />
-          <Button.Checkbox
-            width="100%"
-            content="Toggle Sleeping"
-            checked={is_slept}
-            color={is_slept ? "good" : "bad"}
-            disabled={!is_type_mob_living}
-            onClick={() => act("sleep")}
-          />
           <Button.Confirm
             width="100%"
             height="100%"
@@ -305,35 +293,103 @@ const GeneralActions = (props, context) => {
 
 const PunishmentActions = (props, context) => {
   const { act, data } = useBackend(context);
-  const { glob_mute_bits, client_muted } = data;
+  const { client_key, is_type_mob_living, is_frozen, is_slept,
+    glob_mute_bits, client_muted } = data;
   return (
     <Section fill>
-      <Section level={2} title="Banishment">
+      <Section level={2} title="Contain">
         <Flex
           align="right"
           grow={1}
         >
-          <Button.Confirm
+          <Button.Checkbox
             width="100%"
-            icon="gavel"
-            color="red"
-            content="Ban"
-            onClick={() => act("mob_ban")}
+            content="Freeze"
+            checked={is_frozen}
+            color={is_frozen ? "average" : ""}
+            disabled={!is_type_mob_living}
+            onClick={() => act("freeze")}
+          />
+          <Button.Checkbox
+            width="100%"
+            content="Sleep"
+            checked={is_slept}
+            color={is_slept ? "average" : ""}
+            disabled={!is_type_mob_living}
+            onClick={() => act("sleep")}
           />
           <Button.Confirm
             width="100%"
-            icon="gavel"
-            color="red"
-            content="EORG Ban"
-            onClick={() => act("mob_eorg_ban")}
+            content="Admin Prison"
+            icon="share"
+            color="bad"
+            disabled={!is_type_mob_living}
+            onClick={() => act("prison")}
           />
-          <Button
+          <Button.Confirm
             width="100%"
             height="100%"
             icon="ban"
             color="red"
-            content="Job-ban"
-            onClick={() => act("mob_jobban")}
+            content="Kick"
+            onClick={() => act("kick")}
+          />
+        </Flex>
+      </Section>
+
+      <Section level={2} title="Ban">
+        <Flex
+          align="right"
+          grow={1}
+        >
+          <Button
+            width="100%"
+            icon="gavel"
+            color="red"
+            content="Ban"
+            onClick={() => act("ban")}
+          />
+          <Button
+            width="100%"
+            icon="gavel"
+            color="red"
+            content="Job Ban"
+            onClick={() => act("job_ban")}
+          />
+          <Button
+            width="100%"
+            height="100%"
+            icon="gavel"
+            color="red"
+            content="Pacify Ban"
+            onClick={() => act("pacify_ban")}
+          />
+        </Flex>
+        <Flex
+          align="right"
+          grow={1}
+        >
+          <Button
+            width="100%"
+            icon="gavel"
+            color="red"
+            content="OOC Ban"
+            onClick={() => act("identity_ban")}
+          />
+          <Button
+            width="100%"
+            icon="gavel"
+            color="red"
+            content="Emote Ban"
+            onClick={() => act("emote_ban")}
+          />
+          <Button
+            width="100%"
+            height="100%"
+            icon="gavel"
+            color="red"
+            content="Identity Ban"
+            onClick={() => act("identity_ban")}
           />
         </Flex>
       </Section>
@@ -366,34 +422,11 @@ const PunishmentActions = (props, context) => {
               width="100%"
               height="100%"
               checked={isMuted}
-              color={isMuted? "good" : "bad"}
+              color={isMuted? "bad" : ""}
               content={bit.name}
               onClick={() => act("mute", { "mute_flag": !isMuted? client_muted | bit.bitflag : client_muted & ~bit.bitflag })}
             />);
           }) }
-        </Flex>
-      </Section>
-
-      <Section level={2} title="Xenomorph Name">
-        <Flex
-          align="right"
-          grow={1}
-        >
-          <Button
-            width="100%"
-            icon="clipboard-list"
-            color="average"
-            content="Xeno name reset"
-            onClick={() => act("reset_xeno_name")}
-          />
-          <Button
-            width="100%"
-            height="100%"
-            icon="clipboard-list"
-            color="bad"
-            content="Xeno name ban"
-            onClick={() => act("ban_xeno_name")}
-          />
         </Flex>
       </Section>
     </Section>

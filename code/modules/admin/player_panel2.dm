@@ -80,8 +80,10 @@ GLOBAL_LIST_INIT(mute_bits, list(
 /datum/player_panel/ui_static_data()
 	. = list()
 
-	if(CONFIG_GET(flag/use_exp_tracking))
-		.["playtimes_enabled"] = TRUE
+	if(targetMob.client)
+		if(CONFIG_GET(flag/use_exp_tracking))
+			.["playtimes_enabled"] = TRUE
+			.["playtime"] = targetMob.client.get_exp_living()
 
 /datum/player_panel/ui_act(action, params, datum/tgui/ui)
 	if(..())
@@ -92,7 +94,7 @@ GLOBAL_LIST_INIT(mute_bits, list(
 	to_chat(admin, "Easdasdasdadmin!")
 
 	if (!check_rights(R_ADMIN))
-		message_admins("<span class='adminhelp'>WARNING: NON-ADMIN [ADMIN_LOOKUPFLW(user)] ACCESSING ADMIN PANEL. WARN Casper#3044.</span>")
+		message_admins("<span class='adminhelp'>WARNING: NON-ADMIN [ADMIN_LOOKUPFLW(admin)] ACCESSING ADMIN PANEL. WARN Casper#3044.</span>")
 		to_chat(admin, "Error: you are not an admin!")
 		return
 
@@ -189,6 +191,27 @@ GLOBAL_LIST_INIT(mute_bits, list(
 
 		if ("force_emote")
 			targetMob.emote("me", EMOTE_VISIBLE, params["to_emote"])
+
+		if ("prison")
+			if(isAI(targetMob))
+				to_chat(usr, "This cannot be used on instances of type /mob/living/silicon/ai.")
+				return
+
+			targetMob.forceMove(pick(GLOB.prisonwarp))
+			to_chat(targetMob, "<span class='adminnotice'>You have been sent to Prison!</span>")
+
+			log_admin("[key_name(admin)] has sent [key_name(targetMob)] to Prison!")
+			message_admins("[key_name_admin(admin)] has sent [key_name_admin(targetMob)] to Prison!")
+
+		if ("kick")
+			// Kick(targetMob)
+
+		if ("ban")
+			// NewBan(targetMob)
+
+		if ("job_ban")
+			if(targetMob.client)
+				admin.holder.show_jobban_panel(targetMob.client)
 
 		if ("mute")
 			if(!targetMob.client)
