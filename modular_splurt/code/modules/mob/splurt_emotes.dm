@@ -58,7 +58,7 @@
 		"farts egregiously.",
 		"farts voraciously.",
 		"farts cantankerously.",
-		"fart in they own mouth. A shameful %OWNER.",
+		"fart in they own mouth. A shameful \the <b>[user]</b>",
 		"breaks wind noisily!",
 		"releases gas with the power of the gods! The very station trembles!!",
 		"<B><span style='color:red'>f</span><span style='color:blue'>a</span>r<span style='color:red'>t</span><span style='color:blue'>s</span>!</B>",
@@ -69,7 +69,7 @@
 	message = pick(fart_emotes)
 	. = ..()
 	if(.)
-		playlewdinteractionsound(user, pick(GLOB.brap_noises), 50, 1, ignored_mobs = user.get_unconsenting(unholy = TRUE)) //Rip brap trolling
+		playsound(user, pick(GLOB.brap_noises), 50, 1, -1)
 		var/delay = 3 SECONDS
 		user.fart_cooldown = TRUE
 		addtimer(CALLBACK(GLOBAL_PROC, .proc/_fart_renew_msg, user), delay)
