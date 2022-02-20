@@ -24,8 +24,8 @@
 	if(user.fart_cooldown)
 		to_chat(user, "<span class='warning'>You try your hardest, but no shart comes out.</span>")
 		return
-	var/static/list/fart_emotes = list( //cope goonies
-		"lets out a girly little 'toot' from their butt.",
+	var/list/fart_emotes = list( //cope goonies
+		"lets out a girly little 'toot' from [user.p_their()] butt.",
 		"farts loudly!",
 		"lets one rip!",
 		"farts! It sounds wet and smells like rotten eggs.",
@@ -33,11 +33,11 @@
 		"farted! It smells like something died.",
 		"farts like a muppet!",
 		"defiles the station's air supply.",
-		"farts a ten second long fart.",
+		"farts for a whole ten seconds.",
 		"groans and moans, farting like the world depended on it.",
 		"breaks wind!",
-		"expels intestinal gas through the anus.",
-		"release an audible discharge of intestinal gas.",
+		"expels intestinal gas through [user.p_their()] anus.",
+		"releases an audible discharge of intestinal gas.",
 		"is a farting motherfucker!!!",
 		"suffers from flatulence!",
 		"releases flatus.",
@@ -58,15 +58,17 @@
 		"farts egregiously.",
 		"farts voraciously.",
 		"farts cantankerously.",
-		"fart in they own mouth. A shameful \the <b>[user]</b>",
+		"farts in [user.p_their()] own mouth. A shameful \the <b>[user]</b>.",
 		"breaks wind noisily!",
 		"releases gas with the power of the gods! The very station trembles!!",
 		"<B><span style='color:red'>f</span><span style='color:blue'>a</span>r<span style='color:red'>t</span><span style='color:blue'>s</span>!</B>",
-		"laughs! Their breath smells like a fart.",
+		"laughs! [user.p_their(TRUE)] breath smells like a fart.",
 		"farts, and as such, blob cannot evoulate.",
 		"farts. It might have been the Citizen Kane of farts."
 	)
-	message = pick(fart_emotes)
+	var/new_message = pick(fart_emotes)
+	//new_message = replacetext(new_message, "%OWNER", "\the [user]")
+	message = new_message
 	. = ..()
 	if(.)
 		playsound(user, pick(GLOB.brap_noises), 50, 1, -1)
