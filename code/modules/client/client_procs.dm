@@ -519,7 +519,6 @@ GLOBAL_LIST_INIT(blacklisted_builds, list(
 	log_access("Logout: [key_name(src)]")
 	GLOB.ahelp_tickets.ClientLogout(src)
 	SSserver_maint.UpdateHubStatus()
-	QDEL_NULL(jobban_panel)
 	if(credits)
 		QDEL_LIST(credits)
 	if(holder)

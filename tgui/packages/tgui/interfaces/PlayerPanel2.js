@@ -1,6 +1,6 @@
 import { Fragment } from "inferno";
 import { useBackend, useLocalState } from '../backend';
-import { Input, Button, Flex, Section, Tabs, Box, Dropdown, Slider, Tooltip } from '../components';
+import { Input, Button, Flex, Section, Tabs, Box, NoticeBox, Collapsible, Dropdown, Slider, Tooltip } from '../components';
 import { Window } from '../layouts';
 
 const PAGES = [
@@ -13,6 +13,15 @@ const PAGES = [
   {
     title: 'Punish',
     component: () => PunishmentActions,
+    color: "red",
+    icon: "gavel",
+    canAccess: data => {
+      return data.client_ckey;
+    },
+  },
+  {
+    title: 'Job Bans',
+    component: () => Jobbans,
     color: "red",
     icon: "gavel",
     canAccess: data => {
@@ -60,9 +69,8 @@ const PAGES = [
 export const PlayerPanel2 = (props, context) => {
   const { act, data } = useBackend(context);
   const [pageIndex, setPageIndex] = useLocalState(context, 'pageIndex', 0);
-  const [canModifyCkey, setModifyCkey] = useLocalState(context, 'canModifyCkey', false);
-  // const PageComponent = PAGES[pageIndex].component();
-  const [tab, setTab] = useLocalState(context, 'tab', 0);
+  const PageComponent = PAGES[pageIndex].component();
+
   const { mob_name, mob_type, client_key, client_ckey, client_rank,
     playtimes_enabled, playtime } = data;
 
@@ -145,7 +153,7 @@ export const PlayerPanel2 = (props, context) => {
           <Flex.Item>
             <Section fitted>
               <Tabs vertical>
-                {/* {PAGES.map((page, i) => {
+                {PAGES.map((page, i) => {
                   if (page.canAccess && !page.canAccess(data)) {
                     return;
                   }
@@ -160,51 +168,13 @@ export const PlayerPanel2 = (props, context) => {
                       {page.title}
                     </Tabs.Tab>
                   );
-                })} */}
-                <Tabs.Tab
-                  color="red"
-                  selected={tab === 0}
-                  icon="bolt"
-                  onClick={() => setTab(0)}>
-                  Tab title
-                </Tabs.Tab>
-                <Tabs.Tab
-                  color="red"
-                  selected={tab === 1}
-                  icon="bolt"
-                  onClick={() => setTab(1)}>
-                  Tab title
-                </Tabs.Tab>
-                <Tabs.Tab
-                  color="red"
-                  selected={tab === 2}
-                  icon="bolt"
-                  onClick={() => setTab(2)}>
-                  Tab title
-                </Tabs.Tab>
+                })}
               </Tabs>
-
 
             </Section>
           </Flex.Item>
-          <Flex.Item
-            // position="relative"
-            grow
-            // basis={0}
-            ml={1}
-          >
-
-            {tab === 0 && (
-              <GeneralActions
-              />
-            )}
-            {tab === 1 && (
-              <PunishmentActions />
-            )}
-            {tab === 2 && (
-              <Jobbans />
-            )}
-            {/* <PageComponent /> */}
+          <Flex.Item grow>
+            <PageComponent />
           </Flex.Item>
         </Flex>
       </Window.Content>
@@ -214,34 +184,23 @@ export const PlayerPanel2 = (props, context) => {
 
 const Jobbans = (props, context) => {
   const { act, data } = useBackend(context);
-  const [tab2, setTab2] = useLocalState(context, 'tab2', 0);
-  const { client_key, is_type_mob_living } = data;
+  const [jobbanTab, setJobbanTab] = useLocalState(context, 'jobbanTab', 0);
+  const { client_key, is_type_mob_living, roles } = data;
   return (
     <Flex>
       <Flex.Item>
         <Section fitted>
           <Tabs vertical>
-            <Tabs.Tab
-              color="red"
-              selected={tab2 === 0}
-              icon="bolt"
-              onClick={() => setTab2(0)}>
-              Tab title
-            </Tabs.Tab>
-            <Tabs.Tab
-              color="red"
-              selected={tab2 === 1}
-              icon="bolt"
-              onClick={() => setTab2(1)}>
-              Tab title
-            </Tabs.Tab>
-            <Tabs.Tab
-              color="red"
-              selected={tab2 === 2}
-              icon="bolt"
-              onClick={() => setTab2(2)}>
-              Tab title
-            </Tabs.Tab>
+            {roles.map((role_category, i) => { return (
+              <Tabs.Tab
+                key={role_category.category_name}
+                color={role_category.category_color}
+                py=".5rem"
+                selected={jobbanTab === i}
+                onClick={() => setJobbanTab(i)}>
+                {role_category.category_name}
+              </Tabs.Tab>
+            ); })}
           </Tabs>
         </Section>
       </Flex.Item>
@@ -255,42 +214,87 @@ const Jobbans = (props, context) => {
 
 const Joban2 = (props, context) => {
   const { act, data } = useBackend(context);
-
-  const { client_key, is_type_mob_living } = data;
+  const [jobbanTab] = useLocalState(context, 'jobbanTab', 0);
+  const { roles, is_antag_banned } = data;
   return (
     <Section fill>
-      <Section level={2} title="Damsage">
-        <Flex
-          align="right"
-          grow={1}
-        >
-          <Button
-            width="100%"
-            icon="heart"
-            color="green"
-            content="Rejuvenate"
-            disabled={!is_type_mob_living}
-            onClick={() => act("heal")}
-          />
-          <Button
-            width="100%"
-            icon="bolt"
-            color="average"
-            content="Smite"
-            confirmColor="average"
-            disabled={!is_type_mob_living}
-            onClick={() => act("smite")}
-          />
-          <Button.Confirm
-            width="100%"
-            height="100%" // weird ass bug here, so height set to 100%
-            icon="ghost"
-            color="bad"
-            content="Make Ghost"
-            confirmColor="bad"
-            disabled={!client_key || !is_type_mob_living}
-            onClick={() => act("ghost")}
-          />
+      <Section
+        title={roles[jobbanTab].category_name}
+        buttons={(
+          <Fragment>
+            <Button
+              content="Ban All"
+              color="bad"
+              icon="lock"
+              minWidth="8rem"
+              textAlign="center"
+              onClick={() => act("job_ban", {
+                selected_role: roles[jobbanTab].category_name,
+                is_category: true,
+                want_to_ban: true,
+              })} />
+            <Button
+              content="Unban All"
+              color="good"
+              icon="lock-open"
+              minWidth="8rem"
+              textAlign="center"
+              onClick={() => act("job_ban", {
+                selected_role: roles[jobbanTab].category_name,
+                is_category: true,
+              })} />
+          </Fragment>
+        )}
+      >
+        <Flex wrap="wrap" justify="space-between">
+          {roles[jobbanTab].category_name === "Antagonists" && (
+            <NoticeBox
+              width="100%"
+              danger={is_antag_banned ? true : false}
+            >
+              <Flex justify="space-between" align="center">
+                <Flex.Item width="100%">
+                  This player is {is_antag_banned ? "" : "not"} antagonist banned
+                </Flex.Item>
+                <Flex.Item>
+                  <Button
+                    align="right"
+                    ml=".5rem"
+                    px="2rem"
+                    py=".5rem"
+                    color={is_antag_banned ? "orange" : ""}
+                    content={is_antag_banned ? "Unban" : "Ban"}
+                    onClick={() => act("job_ban", {
+                      selected_role: "Syndicate",
+                      want_to_ban: (is_antag_banned ? false : true),
+                    })}
+                  />
+                </Flex.Item>
+              </Flex>
+            </NoticeBox>
+          )}
+
+          {roles[jobbanTab].category_roles.map((role) => { return (
+            <Flex.Item
+              key={0}
+              width="49%"
+            >
+
+              <Button
+                width="100%"
+                py=".5rem"
+                mb=".5rem"
+                icon={role.ban_reason ? "lock" : "lock-open"}
+                color={role.ban_reason ? "bad" : "transparent"}
+                tooltip={role.ban_reason ? role.ban_reason : ""}
+                content={role.name}
+                onClick={() => act("job_ban", {
+                  selected_role: role.name,
+                  want_to_ban: (role.ban_reason ? false : true),
+                })} />
+            </Flex.Item>
+          ); })}
+
         </Flex>
       </Section>
     </Section>
