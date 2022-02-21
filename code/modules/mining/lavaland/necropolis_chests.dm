@@ -327,7 +327,7 @@
 		ADD_TRAIT(user, TRAIT_NODEATH, "memento_mori")
 		ADD_TRAIT(user, TRAIT_NOHARDCRIT, "memento_mori")
 		ADD_TRAIT(user, TRAIT_NOCRITDAMAGE, "memento_mori")
-		icon_state = "[initial(icon_state)]_active" //modular_sand edit
+		icon_state = "memento_mori_active"
 		active_owner = user
 
 /obj/item/clothing/neck/necklace/memento_mori/proc/mori()
@@ -695,22 +695,20 @@
 /datum/reagent/flightpotion/reaction_mob(mob/living/M, method=TOUCH, reac_volume, show_message = 1)
 	if(iscarbon(M) && M.stat != DEAD)
 		var/mob/living/carbon/C = M
-		var/holycheck = ishumanbasic(C)
-		if(!(holycheck || islizard(C)) || reac_volume < 5) // implying xenohumans are holy //as with all things,
+		if(reac_volume < 5)
 			if(method == INGEST && show_message)
 				to_chat(C, "<span class='notice'><i>You feel nothing but a terrible aftertaste.</i></span>")
 			return ..()
-
-		to_chat(C, "<span class='userdanger'>A terrible pain travels down your back as wings burst out!</span>")
-		C.dna.species.GiveSpeciesFlight(C)
-		if(holycheck)
-			to_chat(C, "<span class='notice'>You feel blessed!</span>")
-			ADD_TRAIT(C, TRAIT_HOLY, SPECIES_TRAIT)
+		var/has_wings = (C.dna.species.mutant_bodyparts["deco_wings"] && C.dna.features["deco_wings"] != "None" || C.dna.species.mutant_bodyparts["insect_wings"] && C.dna.features["insect_wings"] != "None")
+		var/has_functional_wings = (C.dna.species.mutant_bodyparts["wings"] != null)
+		to_chat(C, "<span class='userdanger'>A terrible pain travels down your back as [has_wings || has_functional_wings ? "your wings transform" : "wings burst out"]!</span>")
+		C.dna.species.GiveSpeciesFlight(C, has_functional_wings ? TRUE : FALSE) //give them the full list of wing choices if this is their second flight potion
+		to_chat(C, "<span class='notice'>You feel blessed!</span>")
+		ADD_TRAIT(C, TRAIT_HOLY, SPECIES_TRAIT) //implying anyone is truly holy in a setting where people throw tantrums when things aren't violent
 		playsound(C.loc, 'sound/items/poster_ripped.ogg', 50, TRUE, -1)
 		C.adjustBruteLoss(20)
 		C.emote("scream")
 	..()
-
 
 
 /obj/item/jacobs_ladder

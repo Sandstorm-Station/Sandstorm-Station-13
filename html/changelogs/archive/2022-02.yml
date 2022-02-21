@@ -215,6 +215,11 @@
   jupyterkat:
   - refactor: switched equalization method to katmos
 2022-02-21:
+  BlueWildrose and tralezab, Wjohnston, Mey Ha Zah, ArcaneDefense, Jack7D1, Papaporo, Sheits & Mqiib from TG and Yog:
+  - rscadd: TG wing port - All species can now use flight potions and grow wings.
+      Your wing sprite will be based off of what wings you have on your character,
+      or otherwise what species you are if you have no wings.
+  - bugfix: Jellypeople did not call the species parent proc on spec_life. Fixed.
   Putnam3145:
   - bugfix: Default features on linux auxmos compile now formatted correctly
   - bugfix: reinforced plasma glass windows are buildable
