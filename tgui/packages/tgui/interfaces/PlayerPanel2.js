@@ -61,7 +61,8 @@ export const PlayerPanel2 = (props, context) => {
   const { act, data } = useBackend(context);
   const [pageIndex, setPageIndex] = useLocalState(context, 'pageIndex', 0);
   const [canModifyCkey, setModifyCkey] = useLocalState(context, 'canModifyCkey', false);
-  const PageComponent = PAGES[pageIndex].component();
+  // const PageComponent = PAGES[pageIndex].component();
+  const [tab, setTab] = useLocalState(context, 'tab', 0);
   const { mob_name, mob_type, client_key, client_ckey, client_rank,
     playtimes_enabled, playtime } = data;
 
@@ -144,7 +145,7 @@ export const PlayerPanel2 = (props, context) => {
           <Flex.Item>
             <Section fitted>
               <Tabs vertical>
-                {PAGES.map((page, i) => {
+                {/* {PAGES.map((page, i) => {
                   if (page.canAccess && !page.canAccess(data)) {
                     return;
                   }
@@ -159,21 +160,140 @@ export const PlayerPanel2 = (props, context) => {
                       {page.title}
                     </Tabs.Tab>
                   );
-                })}
+                })} */}
+                <Tabs.Tab
+                  color="red"
+                  selected={tab === 0}
+                  icon="bolt"
+                  onClick={() => setTab(0)}>
+                  Tab title
+                </Tabs.Tab>
+                <Tabs.Tab
+                  color="red"
+                  selected={tab === 1}
+                  icon="bolt"
+                  onClick={() => setTab(1)}>
+                  Tab title
+                </Tabs.Tab>
+                <Tabs.Tab
+                  color="red"
+                  selected={tab === 2}
+                  icon="bolt"
+                  onClick={() => setTab(2)}>
+                  Tab title
+                </Tabs.Tab>
               </Tabs>
+
+
             </Section>
           </Flex.Item>
           <Flex.Item
-            position="relative"
+            // position="relative"
             grow
-            basis={0}
+            // basis={0}
             ml={1}
           >
-            <PageComponent />
+
+            {tab === 0 && (
+              <GeneralActions
+              />
+            )}
+            {tab === 1 && (
+              <PunishmentActions />
+            )}
+            {tab === 2 && (
+              <Jobbans />
+            )}
+            {/* <PageComponent /> */}
           </Flex.Item>
         </Flex>
       </Window.Content>
     </Window>
+  );
+};
+
+const Jobbans = (props, context) => {
+  const { act, data } = useBackend(context);
+  const [tab2, setTab2] = useLocalState(context, 'tab2', 0);
+  const { client_key, is_type_mob_living } = data;
+  return (
+    <Flex>
+      <Flex.Item>
+        <Section fitted>
+          <Tabs vertical>
+            <Tabs.Tab
+              color="red"
+              selected={tab2 === 0}
+              icon="bolt"
+              onClick={() => setTab2(0)}>
+              Tab title
+            </Tabs.Tab>
+            <Tabs.Tab
+              color="red"
+              selected={tab2 === 1}
+              icon="bolt"
+              onClick={() => setTab2(1)}>
+              Tab title
+            </Tabs.Tab>
+            <Tabs.Tab
+              color="red"
+              selected={tab2 === 2}
+              icon="bolt"
+              onClick={() => setTab2(2)}>
+              Tab title
+            </Tabs.Tab>
+          </Tabs>
+        </Section>
+      </Flex.Item>
+
+      <Flex.Item grow>
+        <Joban2 />
+      </Flex.Item>
+    </Flex>
+  );
+};
+
+const Joban2 = (props, context) => {
+  const { act, data } = useBackend(context);
+
+  const { client_key, is_type_mob_living } = data;
+  return (
+    <Section fill>
+      <Section level={2} title="Damsage">
+        <Flex
+          align="right"
+          grow={1}
+        >
+          <Button
+            width="100%"
+            icon="heart"
+            color="green"
+            content="Rejuvenate"
+            disabled={!is_type_mob_living}
+            onClick={() => act("heal")}
+          />
+          <Button
+            width="100%"
+            icon="bolt"
+            color="average"
+            content="Smite"
+            confirmColor="average"
+            disabled={!is_type_mob_living}
+            onClick={() => act("smite")}
+          />
+          <Button.Confirm
+            width="100%"
+            height="100%" // weird ass bug here, so height set to 100%
+            icon="ghost"
+            color="bad"
+            content="Make Ghost"
+            confirmColor="bad"
+            disabled={!client_key || !is_type_mob_living}
+            onClick={() => act("ghost")}
+          />
+        </Flex>
+      </Section>
+    </Section>
   );
 };
 
