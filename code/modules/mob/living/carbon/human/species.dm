@@ -235,11 +235,6 @@ GLOBAL_LIST_EMPTY(roundstart_race_names)
 	///For custom overrides for species ass images
 	var/icon/ass_image
 
-	//modular_sand tg port, very special
-	var/flying_species = FALSE //is a flying species, just a check for some things
-	var/datum/action/innate/flight/fly //the actual flying ability given to flying species
-	var/wings_icon = "Angel" //the icon used for the wings
-
 ///////////
 // PROCS //
 ///////////
