@@ -5,4 +5,6 @@
 	else
 		fluid_id = initial(fluid_id)
 	. = ..()
+	fluid_max_volume += (cached_size - breast_values[initial(size)])*2.5
+	fluid_rate += (cached_size - breast_values[initial(size)])/10
 
