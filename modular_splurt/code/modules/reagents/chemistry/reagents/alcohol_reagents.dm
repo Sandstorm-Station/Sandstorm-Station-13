@@ -47,7 +47,7 @@
 			M.say(message)
 		if(80 to 100)
 			M.adjustOrganLoss(ORGAN_SLOT_LIVER, 5)
-			M.adjustOrganLoss(ORGAN_SLOT_BRAIN, 15) // it's cough syrup what'd you expect?
+			M.adjustOrganLoss(ORGAN_SLOT_BRAIN, 5) // it's cough syrup what'd you expect?
 		if(100 to INFINITY)
 			if(!M.undergoing_cardiac_arrest() && M.can_heartattack() && prob(1))
 				M.set_heartattack(TRUE)
