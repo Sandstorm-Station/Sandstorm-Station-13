@@ -49,6 +49,8 @@
 			M.adjustOrganLoss(ORGAN_SLOT_LIVER, 1)
 			M.adjustOrganLoss(ORGAN_SLOT_BRAIN, 1) // it's cough syrup what'd you expect?
 		if(100 to INFINITY)
+			M.adjustOrganLoss(ORGAN_SLOT_LIVER, 2)
+			M.adjustOrganLoss(ORGAN_SLOT_BRAIN, 2)
 			if(!M.undergoing_cardiac_arrest() && M.can_heartattack() && prob(1))
 				M.set_heartattack(TRUE)
 				if(M.stat == CONSCIOUS)
