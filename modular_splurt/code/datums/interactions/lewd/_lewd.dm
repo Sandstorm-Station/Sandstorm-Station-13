@@ -1,3 +1,137 @@
+#define CUM_TARGET_NIPPLE "nipple"
+#define CUM_TARGET_URETHRA "urethra"
+
+/mob/living/cum(mob/living/partner, target_orifice)
+	var/message
+	var/u_His = p_their()
+	var/u_He = p_they()
+	var/u_S = p_s()
+	var/t_His = partner?.p_their()
+	var/cumin = FALSE
+	var/partner_carbon_check = FALSE
+	var/obj/item/organ/genital/target_gen
+	var/mob/living/carbon/c_partner
+	var/cum_the_II = FALSE //If the cumming interaction is fully handled here or goes back to ..()
+	//Carbon checks
+	if(iscarbon(partner))
+		c_partner = partner
+		partner_carbon_check = TRUE
+
+	if(src != partner)
+		if(!last_genital)
+			if(has_penis())
+				if(!istype(partner))
+					target_orifice = null
+				switch(target_orifice)
+					if(CUM_TARGET_NIPPLE)
+						cum_the_II = TRUE
+						cumin = TRUE
+						if(partner.has_breasts())
+							message = "cums iside \the <b>[partner]</b>'s nipple!."
+							target_gen = partner.getorganslot(ORGAN_SLOT_BREASTS)
+						else
+							message = "cums on \the <b>[partner]</b>'s chest and neck."
+							if(partner.client?.prefs.cit_toggles & BREAST_ENLARGEMENT)
+								target_gen = new /obj/item/organ/genital/breasts
+								target_gen.Insert(partner)
+
+						if(target_gen)
+							target_gen.climax_modify_size(src, getorganslot(ORGAN_SLOT_PENIS))
+					if(CUM_TARGET_URETHRA)
+						cum_the_II = TRUE
+						cumin = TRUE
+						message = "cums down \the <b>[partner]</b>'s [pick(GLOB.dick_nouns + list("[pick("cock", "dick")]hole", "urethra"))]!"
+						target_gen = partner.getorganslot(ORGAN_SLOT_PENIS)
+						target_gen.climax_modify_size(src, getorganslot(ORGAN_SLOT_PENIS))
+					if(CUM_TARGET_MOUTH, CUM_TARGET_THROAT, CUM_TARGET_VAGINA, CUM_TARGET_BELLY, CUM_TARGET_ANUS)
+						if(partner.client?.prefs.cit_toggles & BELLY_INFLATION)
+							var/obj/item/organ/genital/belly/gut = partner.getorganslot(ORGAN_SLOT_BELLY)
+							if(!gut)
+								gut = new
+								gut.Insert(partner)
+							gut.climax_modify_size(src, getorganslot(ORGAN_SLOT_PENIS), target_orifice)
+						else if((partner.client?.prefs.cit_toggles & BUTT_ENLARGEMENT) && target_orifice == CUM_TARGET_ANUS)
+							var/obj/item/organ/genital/butt/ass = partner.getorganslot(ORGAN_SLOT_BUTT)
+							if(!ass)
+								ass = new
+								ass.Insert(partner)
+							ass.climax_modify_size(src, getorganslot(ORGAN_SLOT_PENIS))
+		else
+			switch(last_genital.type)
+				if(/obj/item/organ/genital/penis)
+					if(!istype(partner))
+						target_orifice = null
+					switch(target_orifice)
+						if(CUM_TARGET_NIPPLE)
+							cumin = TRUE
+							cum_the_II = TRUE
+							if(partner.has_breasts())
+								message = "cums iside \the <b>[partner]</b>'s nipple!."
+								target_gen = partner.getorganslot(ORGAN_SLOT_BREASTS)
+							else
+								message = "cums on \the <b>[partner]</b>'s chest and neck."
+								if(partner.client?.prefs.cit_toggles & BREAST_ENLARGEMENT)
+									target_gen = new /obj/item/organ/genital/breasts
+									target_gen.Insert(partner)
+
+							if(target_gen)
+								target_gen.climax_modify_size(src, last_genital)
+						if(CUM_TARGET_URETHRA)
+							cum_the_II = TRUE
+							cumin = TRUE
+							message = "cums down \the <b>[partner]</b>'s [pick(GLOB.dick_nouns + list("[pick("cock", "dick")]hole", "urethra"))]!"
+							target_gen = partner.getorganslot(ORGAN_SLOT_PENIS)
+							target_gen.climax_modify_size(src, last_genital)
+						if(CUM_TARGET_MOUTH, CUM_TARGET_THROAT, CUM_TARGET_VAGINA, CUM_TARGET_BELLY, CUM_TARGET_ANUS)
+							if(partner.client?.prefs.cit_toggles & BELLY_INFLATION)
+								var/obj/item/organ/genital/belly/gut = partner.getorganslot(ORGAN_SLOT_BELLY)
+								if(!gut)
+									gut = new
+									gut.Insert(partner)
+								gut.climax_modify_size(src, last_genital, target_orifice)
+							else if((partner.client?.prefs.cit_toggles & BUTT_ENLARGEMENT) && target_orifice == CUM_TARGET_ANUS)
+								var/obj/item/organ/genital/butt/ass = partner.getorganslot(ORGAN_SLOT_BUTT)
+								if(!ass)
+									ass = new
+									ass.Insert(partner)
+								ass.climax_modify_size(src, last_genital)
+	if(!cum_the_II)
+		return ..()
+	if(gender == MALE)
+		playlewdinteractionsound(loc, pick('modular_sand/sound/interactions/final_m1.ogg',
+							'modular_sand/sound/interactions/final_m2.ogg',
+							'modular_sand/sound/interactions/final_m3.ogg',
+							'modular_sand/sound/interactions/final_m4.ogg',
+							'modular_sand/sound/interactions/final_m5.ogg'), 90, 1, 0)
+	else if(gender == FEMALE)
+		playlewdinteractionsound(loc, pick('modular_sand/sound/interactions/final_f1.ogg',
+							'modular_sand/sound/interactions/final_f2.ogg',
+							'modular_sand/sound/interactions/final_f3.ogg'), 70, 1, 0)
+	else
+		playlewdinteractionsound(loc, pick('modular_sand/sound/interactions/final_f1.ogg',
+							'modular_sand/sound/interactions/final_f2.ogg',
+							'modular_sand/sound/interactions/final_f3.ogg'), 70, 1, 0)
+	visible_message(message = "<span class='userlove'><b>\The [src]</b> [message]</span>", ignored_mobs = get_unconsenting())
+	multiorgasms += 1
+
+	if(multiorgasms > (get_sexual_potency() * 0.34)) //AAAAA, WE DONT WANT NEGATIVES HERE, RE
+		refractory_period = world.time + rand(300, 900) - get_sexual_potency()//sex cooldown
+		// set_drugginess(rand(20, 30))
+	else
+		refractory_period = world.time + rand(300, 900) - get_sexual_potency()
+		// set_drugginess(rand(5, 10))
+	if(multiorgasms < get_sexual_potency())
+		if(ishuman(src))
+			var/mob/living/carbon/human/H = src
+			if(!partner)
+				H.mob_climax(TRUE, "masturbation", "none")
+			else
+				H.mob_climax(TRUE, "sex", partner, !cumin, target_gen)
+	set_lust(0)
+	SEND_SIGNAL(src, COMSIG_MOB_CAME, target_orifice, partner)
+
+// Interaction Procs
+
 /mob/living/proc/do_breastsmother(mob/living/target)
 	var/message
 	var/u_His = p_their()
@@ -90,7 +224,7 @@
 	var/u_His = p_their()
 	var/t_His = target.p_their()
 	var/lust_increase = 1
-	var/list/balls = list("balls", "nuts", "[pick(list("cum", "spunk", "nut", "jizz", "seed"))] [pick(list("orbs", "spheres", "tanks", "holders"))]")
+	var/list/balls = list("balls", "nuts", "[pick(list("cum", "spunk", "nut", "jizz", "seed"))] [pick(list("orbs", "spheres", "tanks", "holders", "churners"))]")
 	var/list/lines
 
 	if(target.is_fucking(src, NUTS_TO_FACE))
@@ -126,7 +260,7 @@
 		'modular_sand/sound/interactions/bang6.ogg',
 	)
 
-	if(is_fucking(target, CUM_TARGET_PENIS))
+	if(is_fucking(target, CUM_TARGET_URETHRA))
 		lines = list(
 			"humps right into \the <b>[target]</b>'s [pick(cock)], stretiching it as their balls slam together",
 			"slides [u_His] [pick(cock)] all the way down \the <b>[target]</b>'s own throbbing [pick(cock)], [t_His] urethra is so tight!",
@@ -138,13 +272,13 @@
 			"grinds [u_His] tip against \the <b>[target]</b>'s [pick(cock)], only to slide [u_His] whole [pick(cock)] all the way down to [t_His] base",
 			"makes \the <b>[target]</b>'s fat [pick(cock)] stretch and throb as the size of [u_His] [pick(cock)] makes its way right in"
 		)
-		set_is_fucking(target, CUM_TARGET_PENIS, getorganslot(ORGAN_SLOT_PENIS))
+		set_is_fucking(target, CUM_TARGET_URETHRA, getorganslot(ORGAN_SLOT_PENIS))
 
 	message = "<span class='lewd'>\The <b>[src]</b> [pick(lines)]"
 	visible_message(message, ignored_mobs = get_unconsenting())
 	playlewdinteractionsound(src, pick(noises), 70, 1, -1)
-	handle_post_sex(NORMAL_LUST, CUM_TARGET_PENIS, target)
-	target.handle_post_sex(NORMAL_LUST, CUM_TARGET_PENIS, src)
+	handle_post_sex(NORMAL_LUST, CUM_TARGET_URETHRA, target)
+	target.handle_post_sex(NORMAL_LUST, CUM_TARGET_URETHRA, src)
 
 ////////////////////////////////////////////////////////////////////////////////////////////////////////
 ///////// 									U N H O L Y										   /////////
