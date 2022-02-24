@@ -6156,6 +6156,9 @@
 /turf/closed/wall/r_wall,
 /area/command/heads_quarters/cmo)
 "ajH" = (
+/obj/machinery/door/window/eastleft{
+	req_access_txt = "48;50"
+	},
 /obj/structure/plasticflaps/opaque,
 /obj/effect/turf_decal/delivery,
 /turf/open/floor/plasteel,
@@ -10524,6 +10527,7 @@
 	dir = 1
 	},
 /obj/effect/turf_decal/stripes/line,
+/obj/structure/closet/secure_closet/contraband/armory,
 /turf/open/floor/plasteel,
 /area/security/brig)
 "aqC" = (
@@ -20158,17 +20162,21 @@
 /turf/open/floor/plasteel,
 /area/engineering/main)
 "aFB" = (
-/obj/effect/turf_decal/delivery,
-/obj/machinery/airalarm{
-	pixel_y = 24
-	},
 /obj/machinery/camera{
 	c_tag = "Starboard Bow Solar";
 	network = list("ss13","engine")
 	},
+/obj/machinery/power/solar_control{
+	id = "forestarboard";
+	name = "Starboard Bow Solar Control"
+	},
+/obj/structure/cable{
+	icon_state = "0-8"
+	},
 /obj/structure/cable{
 	icon_state = "4-8"
 	},
+/obj/effect/turf_decal/bot,
 /turf/open/floor/plating,
 /area/maintenance/solars/starboard/fore)
 "aFC" = (
@@ -23301,7 +23309,7 @@
 	icon_state = "1-2"
 	},
 /obj/machinery/atmospherics/pipe/simple/supply/hidden,
-/turf/open/space/basic,
+/turf/open/floor/plating,
 /area/maintenance/port/aft)
 "aKo" = (
 /obj/structure/lattice,
@@ -24245,13 +24253,10 @@
 /turf/open/floor/plasteel,
 /area/engineering/gravity_generator)
 "aLL" = (
-/obj/effect/turf_decal/box,
-/obj/structure/cable{
-	icon_state = "0-4"
-	},
-/obj/machinery/power/tracker,
-/turf/open/floor/plasteel/airless/solarpanel,
-/area/solars/port/aft)
+/obj/structure/grille,
+/obj/structure/lattice,
+/turf/open/space/basic,
+/area/space/nearstation)
 "aLM" = (
 /obj/structure/cable/white{
 	icon_state = "1-2"
@@ -32803,7 +32808,6 @@
 	pixel_x = -32;
 	pixel_y = 32
 	},
-/obj/effect/turf_decal/delivery,
 /obj/structure/cable{
 	icon_state = "4-8"
 	},
@@ -32816,6 +32820,7 @@
 /obj/structure/cable{
 	icon_state = "4-8"
 	},
+/obj/effect/turf_decal/caution,
 /turf/open/floor/plasteel,
 /area/maintenance/solars/port/aft)
 "bal" = (
@@ -33363,13 +33368,13 @@
 /turf/open/floor/plating,
 /area/maintenance/port/aft)
 "bbf" = (
-/obj/machinery/power/smes,
 /obj/machinery/camera{
 	c_tag = "Port Quarter Solar";
 	dir = 4;
 	network = list("ss13","engine")
 	},
-/obj/structure/cable{
+/obj/machinery/power/smes,
+/obj/structure/cable/white{
 	icon_state = "0-4"
 	},
 /turf/open/floor/plating,
@@ -33384,6 +33389,9 @@
 	icon_state = "1-4"
 	},
 /obj/machinery/atmospherics/pipe/simple/supply/hidden,
+/obj/structure/cable/white{
+	icon_state = "4-8"
+	},
 /turf/open/floor/plating,
 /area/maintenance/solars/port/aft)
 "bbi" = (
@@ -33394,10 +33402,7 @@
 	pixel_x = 24
 	},
 /obj/structure/cable/white{
-	icon_state = "2-8"
-	},
-/obj/structure/cable/white{
-	icon_state = "0-2"
+	icon_state = "0-8"
 	},
 /turf/open/floor/plating,
 /area/maintenance/solars/port/aft)
@@ -33486,10 +33491,10 @@
 /obj/machinery/power/terminal{
 	dir = 1
 	},
-/obj/effect/turf_decal/delivery,
-/obj/structure/cable/white{
+/obj/structure/cable{
 	icon_state = "0-4"
 	},
+/obj/effect/turf_decal/delivery,
 /turf/open/floor/plating,
 /area/maintenance/solars/port/aft)
 "bbp" = (
@@ -33836,9 +33841,15 @@
 /area/solars/starboard/fore)
 "bbR" = (
 /obj/machinery/light/small,
-/obj/structure/cable/white{
-	icon_state = "1-8"
+/obj/machinery/power/solar_control{
+	dir = 8;
+	id = "aftport";
+	name = "Port Quarter Solar Control"
 	},
+/obj/structure/cable{
+	icon_state = "0-8"
+	},
+/obj/effect/turf_decal/bot,
 /turf/open/floor/plating,
 /area/maintenance/solars/port/aft)
 "bbS" = (
@@ -33886,7 +33897,6 @@
 /turf/open/floor/plating/airless,
 /area/solars/starboard/fore)
 "bbZ" = (
-/obj/effect/turf_decal/delivery,
 /obj/machinery/atmospherics/pipe/simple/supply/hidden{
 	dir = 6
 	},
@@ -33896,6 +33906,7 @@
 /obj/machinery/light/small{
 	dir = 8
 	},
+/obj/effect/turf_decal/caution,
 /turf/open/floor/plasteel,
 /area/maintenance/solars/starboard/fore)
 "bca" = (
@@ -33907,7 +33918,6 @@
 	dir = 8
 	},
 /obj/effect/landmark/xeno_spawn,
-/obj/effect/turf_decal/delivery,
 /obj/structure/cable{
 	icon_state = "4-8"
 	},
@@ -34324,25 +34334,19 @@
 /turf/open/floor/plating,
 /area/maintenance/solars/starboard/fore)
 "bcJ" = (
-/obj/structure/cable{
-	icon_state = "0-8"
-	},
-/obj/effect/turf_decal/box,
-/obj/machinery/power/tracker,
-/turf/open/floor/plasteel/airless/solarpanel,
-/area/solars/starboard/fore)
+/obj/structure/lattice,
+/obj/structure/grille,
+/obj/structure/lattice,
+/turf/open/space/basic,
+/area/space/nearstation)
 "bcK" = (
-/obj/machinery/power/solar_control{
-	id = "forestarboard";
-	name = "Starboard Bow Solar Control"
-	},
-/obj/effect/turf_decal/bot,
 /obj/machinery/power/terminal{
 	dir = 4
 	},
 /obj/structure/cable{
 	icon_state = "0-8"
 	},
+/obj/effect/turf_decal/delivery,
 /turf/open/floor/plating,
 /area/maintenance/solars/starboard/fore)
 "bcL" = (
@@ -34405,6 +34409,10 @@
 "bcR" = (
 /obj/structure/cable/white{
 	icon_state = "1-8"
+	},
+/obj/machinery/airalarm{
+	dir = 1;
+	pixel_y = -22
 	},
 /turf/open/floor/plating,
 /area/maintenance/solars/starboard/fore)
@@ -34895,14 +34903,11 @@
 /turf/open/floor/plating/airless,
 /area/solars/starboard/fore)
 "bdC" = (
-/obj/machinery/power/solar_control{
-	id = "aftport";
-	name = "Port Quarter Solar Control"
-	},
-/obj/effect/turf_decal/bot,
-/obj/structure/cable,
 /obj/structure/cable{
-	icon_state = "1-8"
+	icon_state = "1-2"
+	},
+/obj/structure/cable/white{
+	icon_state = "4-8"
 	},
 /turf/open/floor/plating,
 /area/maintenance/solars/port/aft)
@@ -34932,16 +34937,16 @@
 	},
 /area/command/heads_quarters/rd)
 "bdE" = (
-/obj/machinery/power/apc{
-	areastring = "/area/maintenance/solars/starboard/fore";
-	name = "Starboard Bow Solar APC";
-	pixel_y = -26
-	},
 /obj/structure/cable/white{
 	icon_state = "4-8"
 	},
 /obj/structure/cable/white{
 	icon_state = "0-8"
+	},
+/obj/machinery/power/apc{
+	areastring = "/area/maintenance/solars/starboard/fore";
+	name = "Starboard Bow Solar APC";
+	pixel_y = -26
 	},
 /turf/open/floor/plating,
 /area/maintenance/solars/starboard/fore)
@@ -34969,7 +34974,7 @@
 	dir = 1;
 	pixel_y = -22
 	},
-/obj/structure/cable/white{
+/obj/structure/cable{
 	icon_state = "4-8"
 	},
 /turf/open/floor/plating,
@@ -36814,8 +36819,11 @@
 /turf/open/floor/engine,
 /area/maintenance/disposal/incinerator)
 "bgk" = (
-/obj/structure/cable/white{
-	icon_state = "4-8"
+/obj/structure/cable{
+	icon_state = "1-8"
+	},
+/obj/structure/cable{
+	icon_state = "1-4"
 	},
 /turf/open/floor/plating,
 /area/maintenance/solars/port/aft)
@@ -40906,6 +40914,10 @@
 	},
 /turf/closed/wall/r_wall,
 /area/science/mixing)
+"eDE" = (
+/obj/effect/landmark/carpspawn,
+/turf/open/space/basic,
+/area/space/station_ruins)
 "eOg" = (
 /obj/structure/closet/crate{
 	icon_state = "crateopen"
@@ -47315,6 +47327,14 @@
 /obj/item/pickaxe,
 /turf/open/floor/plating,
 /area/engineering/atmos)
+"uBW" = (
+/obj/structure/cable{
+	icon_state = "0-8"
+	},
+/obj/effect/turf_decal/box,
+/obj/machinery/power/tracker,
+/turf/open/floor/plasteel/airless/solarpanel,
+/area/solars/starboard/fore)
 "uCY" = (
 /turf/open/pool,
 /area/maintenance/starboard/aft)
@@ -47693,6 +47713,14 @@
 "vMb" = (
 /turf/open/floor/engine/n2o,
 /area/engineering/atmos)
+"vPH" = (
+/obj/effect/turf_decal/box,
+/obj/machinery/power/tracker,
+/obj/structure/cable{
+	icon_state = "0-4"
+	},
+/turf/open/floor/plasteel/airless/solarpanel,
+/area/solars/port/aft)
 "vPZ" = (
 /obj/machinery/atmospherics/components/unary/portables_connector/visible{
 	dir = 8
@@ -47821,6 +47849,13 @@
 	},
 /turf/open/floor/plasteel/dark,
 /area/command/bridge)
+"wle" = (
+/obj/structure/lattice/catwalk,
+/obj/structure/cable{
+	icon_state = "4-8"
+	},
+/turf/open/space/basic,
+/area/solars/starboard/fore)
 "wqL" = (
 /obj/machinery/atmospherics/pipe/simple/yellow/visible{
 	dir = 4
@@ -71115,7 +71150,7 @@ jFP
 jFP
 jFP
 jFP
-jFP
+eDE
 jFP
 jFP
 jFP
@@ -71627,23 +71662,23 @@ jFP
 jFP
 jFP
 jFP
-jFP
-jFP
-jFP
-jFP
-jFP
-jFP
-jFP
-jFP
-jFP
-jFP
-jFP
-jFP
-jFP
-jFP
-jFP
-jFP
-jFP
+aaa
+aaa
+aaa
+aaa
+aaa
+aaa
+aaa
+aaa
+aaa
+aaa
+aaa
+aaa
+aaa
+aaa
+aaa
+aaa
+aaa
 jFP
 jFP
 jFP
@@ -71884,23 +71919,23 @@ jFP
 jFP
 jFP
 jFP
-jFP
-jFP
-jFP
-jFP
-jFP
-jFP
-jFP
-jFP
-jFP
-jFP
-jFP
-jFP
-jFP
-jFP
-jFP
-jFP
-jFP
+aaa
+aaa
+aaa
+aaa
+aaa
+aaa
+aaa
+aaa
+aaa
+aaa
+aaa
+aaa
+aaa
+aaa
+aaa
+aaa
+aaa
 jFP
 jFP
 jFP
@@ -72141,23 +72176,23 @@ jFP
 jFP
 jFP
 jFP
-jFP
-jFP
-jFP
-jFP
-jFP
-jFP
-jFP
-jFP
-jFP
-jFP
-jFP
-jFP
-jFP
-jFP
-jFP
-jFP
-jFP
+aaa
+aaa
+aaa
+aaa
+aaa
+aaa
+aaa
+aaa
+aaa
+aaa
+aaa
+aaa
+aaa
+aaa
+aaa
+aaa
+aaa
 jFP
 jFP
 jFP
@@ -72398,23 +72433,23 @@ jFP
 jFP
 jFP
 jFP
-jFP
-jFP
-jFP
-jFP
-jFP
-jFP
-jFP
-jFP
-jFP
-jFP
-jFP
-jFP
-jFP
-jFP
-jFP
-jFP
-jFP
+aaa
+aaa
+fMP
+sdX
+aLL
+aLL
+aLL
+sdX
+vPH
+sdX
+aLL
+aLL
+aLL
+sdX
+aLL
+aaa
+aaa
 jFP
 jFP
 jFP
@@ -72655,23 +72690,23 @@ jFP
 jFP
 jFP
 jFP
-jFP
-jFP
-jFP
-jFP
-jFP
-jFP
-jFP
-jFP
-jFP
-jFP
-jFP
-jFP
-jFP
-jFP
-jFP
-jFP
-jFP
+aaa
+aaa
+fMP
+aaa
+aaa
+aaa
+aaa
+aaa
+aMH
+aaa
+aaa
+aaa
+aaa
+aaa
+aLL
+aaa
+aaa
 jFP
 jFP
 jFP
@@ -72912,21 +72947,21 @@ jFP
 jFP
 jFP
 jFP
-jFP
 aaa
 aaa
+fMP
 aaa
+aKr
+aKr
+aKr
+aKr
+aMI
+aKr
+aKr
+aKr
+aKr
 aaa
-aaa
-aaa
-aaa
-aaa
-aaa
-aaa
-aaa
-aaa
-aaa
-aaa
+aLL
 aaa
 aaa
 jFP
@@ -73169,21 +73204,21 @@ jFP
 jFP
 jFP
 jFP
-jFP
 aaa
 aaa
-aaa
-aab
-aaa
-aaa
-aaa
-aaa
-aaa
-aaa
-aaa
-aaa
-aaa
-aaa
+sdX
+sdX
+aKB
+aLz
+aLz
+aLz
+aMQ
+bar
+bar
+bar
+bbS
+sdX
+sdX
 aaa
 aaa
 jFP
@@ -73428,19 +73463,19 @@ aaa
 aaa
 aaa
 aaa
-pZU
-sdX
-pZU
-pZU
-pZU
-sdX
 aLL
-sdX
-pZU
-pZU
-pZU
-sdX
-pZU
+aaa
+aKF
+aKF
+aKF
+aKF
+aMH
+aKF
+aKF
+aKF
+aKF
+aaa
+bcJ
 aaa
 aaa
 jFP
@@ -73685,13 +73720,13 @@ aaa
 aaa
 aaa
 aaa
-pZU
+aLL
 aaa
 aaa
 aaa
 aaa
 aaa
-aMH
+aZS
 aaa
 aaa
 aaa
@@ -96754,7 +96789,7 @@ aaa
 aaa
 aaa
 aaa
-pZU
+sdX
 aaa
 aaa
 aaa
@@ -96766,7 +96801,7 @@ aaa
 aaa
 aaa
 aaa
-pZU
+sdX
 aaa
 aaa
 aaa
@@ -97011,7 +97046,7 @@ aaa
 aaa
 aaa
 aaa
-sdX
+aLL
 aaa
 abL
 abL
@@ -97023,7 +97058,7 @@ abL
 abL
 abL
 aaa
-sdX
+pZU
 aaa
 aaa
 aaa
@@ -97268,7 +97303,7 @@ jFP
 aaa
 aaa
 aaa
-pZU
+aLL
 sdX
 abM
 bbQ
@@ -97525,13 +97560,13 @@ jFP
 aaa
 aaa
 aaa
-pZU
+aLL
 aaa
 acu
 acu
 acu
 acu
-aef
+wle
 acu
 acu
 acu
@@ -97782,19 +97817,19 @@ jFP
 aaa
 aaa
 aaa
-pZU
+sdX
 aaa
 aaa
 aaa
 aaa
 aaa
-adt
+aef
 aaa
 aaa
 aaa
 aaa
 aaa
-pZU
+sdX
 aaa
 aaa
 aaa
@@ -98039,19 +98074,19 @@ jFP
 aaa
 aaa
 aaa
-sdX
-sdX
-pZU
-pZU
-pZU
-sdX
 bcJ
-sdX
+aaa
+abL
+abL
+abL
+abL
+adt
+abL
+abL
+abL
+abL
+aaa
 pZU
-pZU
-pZU
-sdX
-sdX
 aaa
 aaa
 aaa
@@ -98296,19 +98331,19 @@ jFP
 aaa
 aaa
 aaa
-aaa
-aaa
-aaa
-aaa
-aaa
-aaa
-aaa
-aaa
-aaa
-aaa
-aaa
-aaa
-aaa
+aLL
+sdX
+abM
+bbQ
+bbQ
+bbQ
+adM
+bbV
+bbV
+bbV
+bcD
+sdX
+pZU
 aaa
 aaa
 aaa
@@ -98553,19 +98588,19 @@ jFP
 aaa
 aaa
 aaa
+pZU
 aaa
+acu
+acu
+acu
+acu
+aef
+acu
+acu
+acu
+acu
 aaa
-aaa
-aaa
-aaa
-aaa
-aaa
-aaa
-aaa
-aaa
-aaa
-aaa
-aaa
+pZU
 aaa
 aaa
 aaa
@@ -98810,19 +98845,19 @@ jFP
 aaa
 aaa
 aaa
+pZU
 aaa
 aaa
 aaa
 aaa
 aaa
+adt
 aaa
 aaa
 aaa
 aaa
 aaa
-aaa
-aaa
-aaa
+pZU
 aaa
 aaa
 aaa
@@ -99067,19 +99102,19 @@ jFP
 aaa
 aaa
 aaa
-aaa
-aaa
-aaa
-aaa
-aaa
-aaa
-aaa
-aaa
-aaa
-aaa
-aaa
-aaa
-aaa
+pZU
+sdX
+pZU
+pZU
+pZU
+sdX
+uBW
+sdX
+pZU
+pZU
+pZU
+sdX
+pZU
 aaa
 aaa
 aaa
@@ -99579,23 +99614,23 @@ jFP
 jFP
 jFP
 jFP
-jFP
-jFP
-jFP
-jFP
-jFP
-jFP
-jFP
-jFP
-jFP
-jFP
-jFP
-jFP
-jFP
-jFP
-jFP
-jFP
-jFP
+aaa
+aaa
+aaa
+aaa
+aaa
+aaa
+aaa
+aaa
+aaa
+aaa
+aaa
+aaa
+aaa
+aaa
+aaa
+aaa
+aaa
 jFP
 jFP
 jFP
@@ -99836,23 +99871,23 @@ jFP
 jFP
 jFP
 jFP
-jFP
-jFP
-jFP
-jFP
-jFP
-jFP
-jFP
-jFP
-jFP
-jFP
-jFP
-jFP
-jFP
-jFP
-jFP
-jFP
-jFP
+aaa
+aaa
+aaa
+aaa
+aaa
+aaa
+aaa
+aaa
+aaa
+aaa
+aaa
+aaa
+aaa
+aaa
+aaa
+aaa
+aaa
 jFP
 jFP
 jFP
