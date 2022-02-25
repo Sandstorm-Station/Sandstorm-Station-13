@@ -17,6 +17,7 @@
 	languagewhitelist = list("Shadowtongue") //Skyrat change - species language whitelist
 
 	species_category = SPECIES_CATEGORY_SHADOW
+	wings_icons = SPECIES_WINGS_SKELETAL //not sure what's more spooky for these guys - skeleton or dragon?
 
 /datum/species/shadow/on_species_gain(mob/living/carbon/C, datum/species/old_species)
 	. = ..()
