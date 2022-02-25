@@ -86,3 +86,12 @@
     /obj/item/ammo_box/magazine/e45/taser)
 	crate_name = "captain's .45"
 	crate_type = /obj/structure/closet/crate/secure/weapon
+
+/datum/supply_pack/security/armory/enfrocer
+	name = "Enforcer pistol crate"
+	desc = "Contains 3 Enforcer handguns. Requires Armory access to open."
+	cost = 3500
+	contains = list(/obj/item/gun/ballistic/automatic/pistol/enforcer,
+					/obj/item/gun/ballistic/automatic/pistol/enforcer,
+					/obj/item/gun/ballistic/automatic/pistol/enforcer)
+	crate_name = "enfocer pistol crate"
