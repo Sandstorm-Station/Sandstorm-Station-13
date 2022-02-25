@@ -291,14 +291,6 @@
 							to_chat(user, "<span class='warning'>Your earsockets need to be unexposed.</span>")
 						return FALSE
 
-		if(unholy)
-			var/client/cli = user.client
-			if(cli)
-				if(cli.prefs.unholypref == "No")
-					if(!silent)
-						to_chat(user, "<span class='warning'>That's way too much for you.</span>")
-					return FALSE
-
 		if(extreme)
 			var/client/cli = user.client
 			if(cli)
@@ -534,14 +526,6 @@
 			if(!silent)
 				to_chat(user, "<span class='warning'>Their clothes are in the way.</span>")
 			return FALSE
-
-		if(unholy)
-			var/client/cli = target.client
-			if(cli)
-				if(target.client.prefs.unholypref == "No")
-					if(!silent)
-						to_chat(user, "<span class='warning'>For some reason, you don't want to do this to [target].</span>")
-					return FALSE
 
 		if(extreme)
 			var/client/cli = target.client
