@@ -52,8 +52,7 @@ GLOBAL_LIST_INIT(jobban_panel_data, list(
 			ROLE_LAVALAND,
 			ROLE_GHOSTCAFE,
 			ROLE_SENTIENCE,
-			ROLE_MIND_TRANSFER,
-			ROLE_RESPAWN
+			ROLE_MIND_TRANSFER
 			)
 	),
 	list(
@@ -74,12 +73,22 @@ GLOBAL_LIST_INIT(jobban_panel_data, list(
 			ROLE_BLOODSUCKER,
 			ROLE_SLAVER
 			)
+	),
+	list(
+		"name" = "Other",
+		"color" = "red",
+		"roles" = list(
+		"pacifist",
+		"appearance",
+		"emote",
+		"OOC",
+		ROLE_RESPAWN
+		)
 	)
 ))
 
 // notbannedlist is just a list of strings of the job titles you want to ban.
 /datum/admins/proc/Jobban(mob/M, list/notbannedlist)
-	to_chat(M, "ban start")
 	if (!check_rights(R_BAN))
 		to_chat(usr, "Error: You do not have sufficient admin rights to ban players.")
 		return
@@ -144,7 +153,6 @@ GLOBAL_LIST_INIT(jobban_panel_data, list(
 			to_chat(M, "<span class='boldannounce'><BIG>You have been [((msg == "ooc") || (msg == "appearance") || (msg == "pacifist")) ? "banned" : "jobbanned"] by [usr.client.key] from: [msg == "pacifist" ? "using violence" : msg].</BIG></span>")
 			to_chat(M, "<span class='boldannounce'>The reason is: [reason]</span>")
 			to_chat(M, "<span class='danger'>This jobban can be lifted only upon request.</span>")
-	to_chat(M, "ban end")
 
 // notbannedlist is just a list of strings of the job titles you want to unban.
 /datum/admins/proc/UnJobban(mob/M, list/bannedlist)
@@ -156,7 +164,7 @@ GLOBAL_LIST_INIT(jobban_panel_data, list(
 	var/msg
 	for(var/job in bannedlist)
 		var/reason = jobban_isbanned(M, job)
-		if (tgui_alert(usr, "Job: '[job]' Reason: '[reason]'", "Un-Jobban This Player?", list("Yes", "No")) == "Yes")
+		if (tgui_alert(usr, "Job: '[job]' Ban reason: '[reason]'", "Un-Jobban This Player?", list("Yes", "No")) == "Yes")
 			ban_unban_log_save("[key_name(usr)] unjobbanned [key_name(M)] from [job]")
 			log_admin_private("[key_name(usr)] unbanned [key_name(M)] from [job]")
 			DB_ban_unban(M.ckey, BANTYPE_ANY_JOB, job)

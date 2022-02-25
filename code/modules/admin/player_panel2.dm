@@ -2,8 +2,16 @@ GLOBAL_LIST_INIT(mute_bits, list(
 	list(name = "IC", bitflag = MUTE_IC),
 	list(name = "OOC", bitflag = MUTE_OOC),
 	list(name = "Pray", bitflag = MUTE_PRAY),
-	list(name = "Adminhelp", bitflag = MUTE_ADMINHELP),
+	list(name = "Ahelp", bitflag = MUTE_ADMINHELP),
 	list(name = "Deadchat", bitflag = MUTE_DEADCHAT)
+))
+
+GLOBAL_LIST_INIT(pp_limbs, list(
+	"Head" 		= BODY_ZONE_HEAD,
+	"Left leg" 	= BODY_ZONE_L_LEG,
+	"Right leg" = BODY_ZONE_R_LEG,
+	"Left arm" 	= BODY_ZONE_L_ARM,
+	"Right arm" = BODY_ZONE_R_ARM
 ))
 
 /datum/admins/proc/show_player_panel2(mob/M)
@@ -29,17 +37,25 @@ GLOBAL_LIST_INIT(mute_bits, list(
 	var/mob/targetMob
 	var/client/targetClient
 	var/list/roleStatus // A list of each role and whether they are banned or not for this player.
-	var/isAntagBanned
+	var/antagBanReason
+	var/activeRoleBans
+	var/mobSize // Because aparently there is no variable that tracks this on the mob??
 
 /datum/player_panel/New(mob/target)
 	. = ..()
 	targetMob = target
 
+	var/mob/living/L = targetMob
+	if (istype(L))
+		mobSize = L.mob_size
+
 /datum/player_panel/Destroy(force, ...)
 	targetMob = null
 	targetClient = null
 	roleStatus = null
-	isAntagBanned = null
+	antagBanReason = null
+	activeRoleBans = null
+	mobSize = null
 
 	SStgui.close_uis(src)
 	return ..()
@@ -58,18 +74,18 @@ GLOBAL_LIST_INIT(mute_bits, list(
 
 /datum/player_panel/ui_data(mob/user)
 	. = list()
-	.["mob_name"] = targetMob.name
+	.["mob_name"] = targetMob.real_name
 	.["current_permissions"] = user.client?.holder?.rank.rights
-
 	.["mob_type"] = targetMob.type
-
-	.["glob_mute_bits"] = GLOB.mute_bits
+	.["godmode"] = targetMob.status_flags & GODMODE
 
 	var/mob/living/L = targetMob
 	if (istype(L))
 		.["is_type_mob_living"] = TRUE
 		.["is_frozen"] = L.admin_frozen
 		.["is_slept"] = L.admin_sleeping
+		.["is_type_mob_human"] = ishuman(L)
+		.["mob_scale"] = mobSize
 
 	if(targetMob.client)
 		targetClient = targetMob.client
@@ -77,22 +93,36 @@ GLOBAL_LIST_INIT(mute_bits, list(
 		.["client_muted"] = targetClient.prefs.muted
 		.["client_rank"] = targetClient.holder ? targetClient.holder.rank : "Player"
 
-
 		if (!roleStatus)
 			updateJobbanStatus()
 		.["roles"] = roleStatus
-		.["is_antag_banned"] = isAntagBanned
+		.["antag_ban_reason"] = antagBanReason
+		.["active_role_ban_count"] = activeRoleBans
 
 	else
 		targetClient = null
 		roleStatus = null
-		isAntagBanned = null
+		antagBanReason = null
 		.["client_ckey"] = null
 
 /datum/player_panel/ui_static_data()
 	. = list()
 
+	.["transformables"] = GLOB.pp_transformables
+	.["glob_limbs"] = GLOB.pp_limbs
+	.["glob_mute_bits"] = GLOB.mute_bits
+	.["current_time"] = time2text(world.timeofday, "YYYY-MM-DD hh:mm:ss")
+
 	if(targetMob.client)
+		var/byond_version = "Unknown"
+		if(targetClient.byond_version)
+			byond_version = "[targetClient.byond_version].[targetClient.byond_build ? targetClient.byond_build : "xxx"]"
+		.["data_byond_version"] = byond_version
+		.["data_player_join_date"] = targetClient.player_join_date
+		.["data_account_join_date"] = targetClient.account_join_date
+		.["data_related_cid"] = targetClient.related_accounts_cid
+		.["data_related_ip"] = targetClient.related_accounts_ip
+
 		if(CONFIG_GET(flag/use_exp_tracking))
 			.["playtimes_enabled"] = TRUE
 			.["playtime"] = targetMob.client.get_exp_living()
@@ -101,7 +131,7 @@ GLOBAL_LIST_INIT(mute_bits, list(
 	if(..())
 		return
 
-	var/client/admin = ui.user.client
+	var/client/admin = usr.client
 
 	if (!check_rights(R_ADMIN))
 		message_admins("<span class='adminhelp'>WARNING: NON-ADMIN [ADMIN_LOOKUPFLW(admin)] ACCESSING ADMIN PANEL. WARN Casper#3044.</span>")
@@ -151,6 +181,7 @@ GLOBAL_LIST_INIT(mute_bits, list(
 				message_admins("[key_name_admin(admin)] ejected [key_name_admin(targetMob)] from their body.")
 				to_chat(targetMob, "<span class='danger'>An admin has ejected you from your body.</span>")
 				targetMob.ghostize(FALSE)
+				targetMob.mind.key = null
 
 		if ("smite")
 			admin.smite(targetMob)
@@ -196,6 +227,16 @@ GLOBAL_LIST_INIT(mute_bits, list(
 				var/datum/preferences/P = GLOB.preferences_datums[NP.ckey]
 				P.respawn_restrictions_active = FALSE
 
+		if ("select_equipment")
+			admin.cmd_select_equipment(targetMob)
+
+		if ("strip")
+			for(var/obj/item/I in targetMob)
+				targetMob.dropItemToGround(I, TRUE) //The TRUE forces all items to drop, since this is an admin undress.
+
+		if ("cryo")
+			cryoMob(targetMob, effects = TRUE)
+
 		if ("force_say")
 			targetMob.say(params["to_say"], forced="admin")
 
@@ -214,10 +255,20 @@ GLOBAL_LIST_INIT(mute_bits, list(
 			message_admins("[key_name_admin(admin)] has sent [key_name_admin(targetMob)] to Prison!")
 
 		if ("kick")
-			// Kick(targetMob)
+			admin.holder.kick(targetMob)
 
 		if ("ban")
-			// NewBan(targetMob)
+			admin.holder.newBan(targetMob)
+
+		if ("sticky_ban")
+			var/list/ban_settings = list()
+			if(targetMob.client)
+				ban_settings["ckey"] = targetMob.ckey
+			admin.holder.stickyban("add", ban_settings)
+
+		if ("notes")
+			if (targetMob.client)
+				browse_messages(target_ckey = targetMob.ckey)
 
 		if ("job_ban")
 			if(targetMob.client)
@@ -229,6 +280,117 @@ GLOBAL_LIST_INIT(mute_bits, list(
 
 			targetMob.client.prefs.muted = text2num(params["mute_flag"])
 			log_admin("[key_name(admin)] set the mute flags for [key_name(targetMob)] to [targetMob.client.prefs.muted].")
+
+		if ("mute_all")
+			if(!targetMob.client)
+				return
+
+			for(var/bit in GLOB.mute_bits)
+				targetMob.client.prefs.muted |= bit["bitflag"]
+
+			log_admin("[key_name(admin)] mass-muted [key_name(targetMob)].")
+
+		if ("unmute_all")
+			if(!targetMob.client)
+				return
+
+			for(var/bit in GLOB.mute_bits)
+				targetMob.client.prefs.muted &= ~bit["bitflag"]
+
+			log_admin("[key_name(admin)] mass-unmuted [key_name(targetMob)].")
+
+		if ("related_accounts")
+			if(targetMob.client)
+				var/related_accounts
+				if (params["related_thing"] == "CID")
+					related_accounts = targetMob.client.related_accounts_cid
+				else
+					related_accounts = targetMob.client.related_accounts_ip
+
+				related_accounts = splittext(related_accounts, ", ")
+
+				var/list/dat = list("Related accounts by [params["related_thing"]]:")
+				dat += related_accounts
+				usr << browse(dat.Join("<br>"), "window=related_[targetMob.client];size=420x300")
+
+		if ("transform")
+			var/choice = params["newType"]
+			if (choice == "/mob/living")
+				choice = tgui_input_list(usr, "What should this mob transform into", "Mob Transform", subtypesof(choice))
+				if (!choice)
+					return
+
+			admin.holder.transformMob(targetMob, admin.mob, choice, params["newTypeName"])
+
+		if ("toggle_godmode")
+			admin.cmd_admin_godmode(targetMob)
+
+		if ("spell")
+			admin.toggle_spell(targetMob)
+
+		if ("martial_art")
+			admin.teach_martial_art(targetMob)
+
+		if ("quirk")
+			admin.toggle_quirk(targetMob)
+
+		if ("species")
+			admin.set_species(targetMob)
+
+		if ("limb")
+			if(!params["limbs"] || !ishuman(targetMob))
+				return
+
+			var/mob/living/carbon/human/H = targetMob
+
+			for(var/limb in params["limbs"])
+				to_chat(usr, limb)
+				if (!limb)
+					continue
+
+				to_chat(usr, "passed")
+				if (params["delimb_mode"])
+					var/obj/item/bodypart/L = H.get_bodypart(limb)
+					if (!L)
+						continue
+					L.dismember(harmless = TRUE)
+					playsound(H, 'modular_splurt/sound/effects/cartoon_pop.ogg', 70)
+				else
+					H.regenerate_limb(limb)
+
+		if ("scale")
+			var/mob/living/L = targetMob
+			if(!isnull(params["new_scale"]) && istype(L))
+				L.vv_edit_var("resize", params["new_scale"])
+				mobSize = params["new_scale"]
+
+		if ("explode")
+			var/power = text2num(params["power"])
+
+			var/turf/T = get_turf(usr)
+			message_admins("[ADMIN_LOOKUPFLW(usr)] created an admin explosion at [ADMIN_VERBOSEJMP(T)].")
+			log_admin("[key_name(usr)] created an admin explosion at [usr.loc].")
+
+			explosion(usr, power / 3, power / 2, power, power, ignorecap = TRUE)
+
+		if ("narrate")
+			var/list/stylesRaw = params["classes"]
+
+			var/styles = ""
+			for(var/style in stylesRaw)
+				styles += "[style]:[stylesRaw[style]];"
+
+			if (params["mode_global"])
+				to_chat(world, "<span style='[styles]'>[params["message"]]</span>")
+				log_admin("GlobalNarrate: [key_name(usr)] : [params["message"]]")
+				message_admins("<span class='adminnotice'>[key_name_admin(usr)] Sent a global narrate</span>")
+			else
+				for(var/mob/M in view(params["range"], usr))
+					to_chat(M, "<span style='[styles]'>[params["message"]]</span>")
+
+				log_admin("LocalNarrate: [key_name(usr)] at [AREACOORD(usr)]: [params["message"]]")
+				message_admins("<span class='adminnotice'><b> LocalNarrate: [key_name_admin(usr)] at [ADMIN_VERBOSEJMP(usr)]:</b> [params["message"]]<BR></span>")
+
 
 // process_banlist: Gets all jobs in a job category
 // Input:
@@ -272,11 +434,12 @@ GLOBAL_LIST_INIT(mute_bits, list(
 		else
 			usr.client.holder.UnJobban(targetClient.mob, jobs_to_set_trimmed)
 
-		updateJobbanStatus() // Update TGUI data to reflect new ban statuses
+	updateJobbanStatus() // Update TGUI data to reflect new ban statuses
 
 // Updates the jobban status of this client's jobban panel.
 /datum/player_panel/proc/updateJobbanStatus()
 	var/list/roles = list()
+	var/active_role_bans = 0
 
 	for(var/list/role_category in GLOB.jobban_panel_data) // For every department / antag category
 		var/list/category_roles = list()
@@ -290,11 +453,12 @@ GLOBAL_LIST_INIT(mute_bits, list(
 			var/reason = jobban_isbanned(targetMob, role)
 			if(reason)
 				roles_instance["ban_reason"] = reason
+				active_role_bans++
 
 			category_roles["category_roles"] += list(roles_instance)
 
 		roles += list(category_roles)
 
 	roleStatus = roles
-
-	isAntagBanned = jobban_isbanned(targetMob, ROLE_SYNDICATE)
+	antagBanReason = jobban_isbanned(targetMob, ROLE_SYNDICATE)
+	activeRoleBans = active_role_bans
