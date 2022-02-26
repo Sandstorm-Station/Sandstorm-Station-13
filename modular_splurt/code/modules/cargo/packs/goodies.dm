@@ -54,7 +54,7 @@
 	name = "Varmint Rifle Single-Pack"
 	desc = "Contains a parts kit to assemble a varmint rifle."
 	cost = 600
-	contains = list(/obj/item/gunpart/riflevarmintsotck, /obj/item/gunpart/riflevarmintbarrel, /obj/item/ammo_casing/c22lr)
+	contains = list(/obj/item/gunpart/riflevarmintsotck, /obj/item/gunpart/riflevarmintbarrel, /obj/item/ammo_box/c22lr)
 
 /datum/supply_pack/goody/huntingrifle_single
 	name = "Hunting Rifle Single-Pack"
@@ -94,6 +94,18 @@
 
 /datum/supply_pack/goody/pistol45_single
 	name = ".45 Pistol Single-Pack"
-	desc = "Contains a pre-assembled .45 caliber M1911. Comes with .45 Rubber"
+	desc = "Contains a pre-assembled .45 caliber M1911. Comes with .45 Rubber."
 	cost = 900
 	contains = list(/obj/item/gun/ballistic/automatic/pistol/m1911/no_mag, /obj/item/ammo_box/magazine/m45/rubber= 3)
+
+/datum/supply_pack/goody/laserantique_single
+	name = "Antique Laser Pistol Single-Pack"
+	desc = "Contains a pre-assembled Antique Laser pistol, not unlike the Captain's."
+	cost = 1000
+	contains = list(/obj/item/gun/energy/laser/antique)
+
+/datum/supply_pack/goody/lasercivlian_single
+	name = "Civilian Energy Pistol Single-Pack"
+	desc = "Contains a parts kit to assemble a civlian energy pistol."
+	cost = 800
+	contains = list(/obj/item/gunpart/civilianlaserframe, /obj/item/gunpart/civilianlaserbarrel)
