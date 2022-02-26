@@ -535,7 +535,7 @@ const GeneralActions = (props, context) => {
           <Button.Confirm
             width="100%"
             icon="ghost"
-            content="Make Ghost"
+            content="Eject Ghost"
             confirmColor="bad"
             disabled={!client_ckey || !mob_type.includes("/mob/living")}
             onClick={() => act("ghost")}

@@ -20,9 +20,6 @@
 	/// Fullscreen objects
 	var/list/fullscreens = list()
 
-	// Admin player panel for this mob
-	var/datum/player_panel/mob_panel
-
 	/// What receives our keyboard input. src by default.
 	var/datum/focus
 

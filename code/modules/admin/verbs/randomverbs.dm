@@ -19,10 +19,13 @@
 	admin_ticket_log(M, msg)
 	SSblackbox.record_feedback("tally", "admin_verb", 1, "Drop Everything") //If you are copy-pasting this, ensure the 2nd parameter is unique to the new proc!
 
-/client/proc/cmd_admin_subtle_message(mob/M in GLOB.mob_list, sender = null)
+/client/proc/cmd_admin_subtle_message(mob/M in GLOB.mob_list)
 	set category = "Admin.Events"
 	set name = "Subtle Message"
 
+	cmd_admin_subtle_headset_message(M)
+
+/client/proc/cmd_admin_subtle_headset_message(mob/M, sender = null)
 	if(!ismob(M))
 		return
 	if(!check_rights(R_ADMIN))

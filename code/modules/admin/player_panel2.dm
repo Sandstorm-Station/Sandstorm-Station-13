@@ -168,7 +168,7 @@ GLOBAL_LIST_INIT(pp_limbs, list(
 			admin.cmd_admin_pm_context(targetMob)
 
 		if ("subtle_message")
-			admin.cmd_admin_subtle_message(targetMob)
+			admin.cmd_admin_subtle_headset_message(targetMob)
 
 		if ("set_name")
 			targetMob.vv_auto_rename(params["name"])
@@ -420,9 +420,6 @@ GLOBAL_LIST_INIT(pp_limbs, list(
 			H.open_language_menu(usr)
 
 		if ("ambitions")
-			// if (!targetMob.client)
-			// 	return
-
 			var/datum/mind/requesting_mind = targetMob.mind
 			if(!istype(requesting_mind) || QDELETED(requesting_mind))
 				to_chat(usr, "<span class='warning'>This mind reference is no longer valid. It has probably since been destroyed.</span>")

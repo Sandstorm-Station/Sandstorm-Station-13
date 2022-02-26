@@ -2027,21 +2027,14 @@
 			return
 
 		var/mob/M = locate(href_list["CentComReply"])
-		usr.client.cmd_admin_subtle_message(M, RADIO_CHANNEL_CENTCOM)
+		usr.client.cmd_admin_subtle_headset_message(M, RADIO_CHANNEL_CENTCOM)
 
 	else if(href_list["SyndicateReply"])
 		if(!check_rights(R_ADMIN))
 			return
 
 		var/mob/M = locate(href_list["SyndicateReply"])
-		usr.client.cmd_admin_subtle_message(M, RADIO_CHANNEL_SYNDICATE)
-
-	else if(href_list["HeadsetMessage"])
-		if(!check_rights(R_ADMIN))
-			return
-
-		var/mob/M = locate(href_list["HeadsetMessage"])
-		usr.client.cmd_admin_subtle_message(M)
+		usr.client.cmd_admin_subtle_headset_message(M, RADIO_CHANNEL_SYNDICATE)
 
 //ambition start
 	else if(href_list["ObjectiveRequest"])
@@ -2103,7 +2096,7 @@
 			return
 
 		var/mob/M = locate(href_list["subtlemessage"])
-		usr.client.cmd_admin_subtle_message(M)
+		usr.client.cmd_admin_subtle_headset_message(M)
 
 	else if(href_list["individuallog"])
 		if(!check_rights(R_ADMIN))

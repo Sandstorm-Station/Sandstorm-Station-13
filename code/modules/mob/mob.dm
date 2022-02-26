@@ -60,10 +60,6 @@
 				I.appearance_flags = RESET_COLOR|RESET_TRANSFORM
 				hud_list[hud] = I
 
-/mob/proc/create_player_panel()
-	QDEL_NULL(mob_panel)
-	mob_panel = new(src)
-
 /mob/proc/Cell()
 	set category = "Admin"
 	set hidden = 1

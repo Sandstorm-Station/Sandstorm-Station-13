@@ -20,3 +20,7 @@
 		if(S.type == spelltype)
 			return TRUE
 	return FALSE
+
+/mob/proc/create_player_panel()
+	QDEL_NULL(mob_panel)
+	mob_panel = new(src)
