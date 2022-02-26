@@ -141,14 +141,3 @@
 					/obj/item/gun/energy/civilian)
 	crate_name = "Civilian Energy Pistols"
 	crate_type = /obj/structure/closet/crate/secure/weapon
-
-/datum/supply_pack/misc/antiquelasers
-	name = "Antique Lasers Pistols"
-	desc = "A pack of antique laser pistols. Who would actually rely on these old things?"
-	access = ACCESS_QM
-	cost = 2800
-	contains = list(/obj/item/gun/energy/laser/antique,
-					/obj/item/gun/energy/laser/antique,
-					/obj/item/gun/energy/laser/antique)
-	crate_name = "Antique Lasers Pistols"
-	crate_type = /obj/structure/closet/crate/secure/weapon

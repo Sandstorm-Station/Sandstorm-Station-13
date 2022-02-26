@@ -1,13 +1,3 @@
-/obj/item/gun/energy/laser/antique
-	name = "antique laser gun"
-	icon_state = "caplaser"
-	item_state = "caplaser"
-	desc = "This is an antique laser gun. All craftsmanship is of the highest quality. It is decorated with assistant leather and chrome. The object menaces with spikes of energy."
-	force = 10
-	ammo_x_offset = 3
-	selfcharge = EGUN_SELFCHARGE
-	resistance_flags = NONE
-
 /obj/item/gun/energy/civilian
 	name = "civlian energy pistol"
 	desc = "A cheap energy pistol produced by Wattz and Hertz. Has no external ammo indicator. It looks easily modfiable"

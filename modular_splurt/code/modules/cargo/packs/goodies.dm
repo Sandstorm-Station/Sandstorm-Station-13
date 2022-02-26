@@ -98,12 +98,6 @@
 	cost = 900
 	contains = list(/obj/item/gun/ballistic/automatic/pistol/m1911/no_mag, /obj/item/ammo_box/magazine/m45/rubber= 3)
 
-/datum/supply_pack/goody/laserantique_single
-	name = "Antique Laser Pistol Single-Pack"
-	desc = "Contains a pre-assembled Antique Laser pistol, not unlike the Captain's."
-	cost = 1000
-	contains = list(/obj/item/gun/energy/laser/antique)
-
 /datum/supply_pack/goody/lasercivlian_single
 	name = "Civilian Energy Pistol Single-Pack"
 	desc = "Contains a parts kit to assemble a civlian energy pistol."
