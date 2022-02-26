@@ -75,16 +75,15 @@ GLOBAL_LIST_INIT(pp_limbs, list(
 /datum/player_panel/ui_data(mob/user)
 	. = list()
 	.["mob_name"] = targetMob.real_name
-	.["current_permissions"] = user.client?.holder?.rank.rights
+	// .["current_permissions"] = user.client?.holder?.rank.rights
 	.["mob_type"] = targetMob.type
+	.["admin_mob_type"] = user.client?.mob.type
 	.["godmode"] = targetMob.status_flags & GODMODE
 
 	var/mob/living/L = targetMob
 	if (istype(L))
-		.["is_type_mob_living"] = TRUE
 		.["is_frozen"] = L.admin_frozen
 		.["is_slept"] = L.admin_sleeping
-		.["is_type_mob_human"] = ishuman(L)
 		.["mob_scale"] = mobSize
 
 	if(targetMob.client)
@@ -113,7 +112,9 @@ GLOBAL_LIST_INIT(pp_limbs, list(
 	.["glob_mute_bits"] = GLOB.mute_bits
 	.["current_time"] = time2text(world.timeofday, "YYYY-MM-DD hh:mm:ss")
 
-	if(targetMob.client)
+	.["initial_scale"] = 1
+
+	if(targetClient)
 		var/byond_version = "Unknown"
 		if(targetClient.byond_version)
 			byond_version = "[targetClient.byond_version].[targetClient.byond_build ? targetClient.byond_build : "xxx"]"
@@ -122,6 +123,8 @@ GLOBAL_LIST_INIT(pp_limbs, list(
 		.["data_account_join_date"] = targetClient.account_join_date
 		.["data_related_cid"] = targetClient.related_accounts_cid
 		.["data_related_ip"] = targetClient.related_accounts_ip
+
+		.["initial_scale"] = targetClient.prefs.features["body_size"]
 
 		if(CONFIG_GET(flag/use_exp_tracking))
 			.["playtimes_enabled"] = TRUE
@@ -180,8 +183,23 @@ GLOBAL_LIST_INIT(pp_limbs, list(
 				log_admin("[key_name(admin)] ejected [key_name(targetMob)] from their body.")
 				message_admins("[key_name_admin(admin)] ejected [key_name_admin(targetMob)] from their body.")
 				to_chat(targetMob, "<span class='danger'>An admin has ejected you from your body.</span>")
-				targetMob.ghostize(FALSE)
+				targetMob.ghostize(FALSE, penalize = TRUE, voluntary = TRUE)
 				targetMob.mind.key = null
+
+		if ("offer_control")
+			offer_control(targetMob)
+
+		if ("take_control")
+			if(targetMob.ckey)
+				var/mob/dead/observer/ghost = new/mob/dead/observer(get_turf(targetMob), targetMob)
+				ghost.ckey = targetMob.ckey
+
+			message_admins("<span class='adminnotice'>[key_name_admin(usr)] assumed direct control of [targetMob].</span>")
+			log_admin("[key_name(usr)] assumed direct control of [targetMob].")
+			var/mob/adminmob = admin.mob
+			adminmob.transfer_ckey(targetMob, send_signal = FALSE)
+			if(isobserver(adminmob))
+				qdel(adminmob)
 
 		if ("smite")
 			admin.smite(targetMob)
@@ -366,12 +384,17 @@ GLOBAL_LIST_INIT(pp_limbs, list(
 
 		if ("explode")
 			var/power = text2num(params["power"])
+			var/empMode = text2num(params["emp_mode"])
+
 
 			var/turf/T = get_turf(usr)
-			message_admins("[ADMIN_LOOKUPFLW(usr)] created an admin explosion at [ADMIN_VERBOSEJMP(T)].")
-			log_admin("[key_name(usr)] created an admin explosion at [usr.loc].")
+			message_admins("[ADMIN_LOOKUPFLW(usr)] created an admin [empMode ? "EMP" : "explosion"] at [ADMIN_VERBOSEJMP(T)].")
+			log_admin("[key_name(usr)] created an admin [empMode ? "EMP" : "explosion"] at [usr.loc].")
 
-			explosion(usr, power / 3, power / 2, power, power, ignorecap = TRUE)
+			if (empMode)
+				empulse_using_range(usr, power, TRUE)
+			else
+				explosion(usr, power / 3, power / 2, power, power, ignorecap = TRUE)
 
 		if ("narrate")
 			var/list/stylesRaw = params["classes"]
@@ -391,6 +414,22 @@ GLOBAL_LIST_INIT(pp_limbs, list(
 				log_admin("LocalNarrate: [key_name(usr)] at [AREACOORD(usr)]: [params["message"]]")
 				message_admins("<span class='adminnotice'><b> LocalNarrate: [key_name_admin(usr)] at [ADMIN_VERBOSEJMP(usr)]:</b> [params["message"]]<BR></span>")
 
+		if ("languages")
+			var/datum/language_holder/H = targetMob.get_language_holder()
+			H.open_language_menu(usr)
+
+		if ("ambitions")
+			// if (!targetMob.client)
+			// 	return
+
+			var/datum/mind/requesting_mind = targetMob.mind
+			if(!istype(requesting_mind) || QDELETED(requesting_mind))
+				to_chat(usr, "<span class='warning'>This mind reference is no longer valid. It has probably since been destroyed.</span>")
+				return
+			requesting_mind.do_edit_objectives_ambitions()
+
+		if ("traitor_panel")
+			admin.holder.show_traitor_panel(targetMob)
 
 // process_banlist: Gets all jobs in a job category
 // Input:

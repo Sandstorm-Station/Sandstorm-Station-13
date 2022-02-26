@@ -59,7 +59,7 @@ GLOBAL_LIST_INIT(pp_transformables, list(
 			),
 		list(
 			name = "Legion",
-			key = /mob/living/simple_animal/hostile/asteroid/elite/legionnaire
+			key = /mob/living/simple_animal/hostile/asteroid/hivelord/legion
 			),
 		list(
 			name = "Blood-Drunk Miner",
@@ -70,16 +70,12 @@ GLOBAL_LIST_INIT(pp_transformables, list(
 			key = /mob/living/simple_animal/hostile/megafauna/gladiator
 			),
 		list(
-			name = "Rough Process",
-			key = /mob/living/simple_animal/hostile/megafauna/rogueprocess
-			),
-		list(
 			name = "Dragon",
 			key = /mob/living/simple_animal/hostile/megafauna/dragon
 			),
 		list(
 			name = "Legion Hivelord",
-			key = /mob/living/simple_animal/hostile/asteroid/hivelord/legion
+			key = /mob/living/simple_animal/hostile/asteroid/elite/legionnaire
 			)
 		)
 	),

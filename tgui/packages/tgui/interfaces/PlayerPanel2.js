@@ -50,20 +50,11 @@ const PAGES = [
     icon: "laugh",
   },
   {
-    title: 'aaaaaa',
-    component: () => FunActions,
+    title: 'Other',
+    component: () => AntagActions,
     color: "blue",
-    icon: "laugh",
+    icon: "crosshairs",
   },
-  // {
-  //   title: 'Antag',
-  //   component: () => AntagActions,
-  //   color: "blue",
-  //   icon: "crosshairs",
-  //   canAccess: data => {
-  //     return (data.is_type_mob_human || data.is_xeno);
-  //   },
-  // },
 ];
 
 export const PlayerPanel2 = (props, context) => {
@@ -130,7 +121,6 @@ export const PlayerPanel2 = (props, context) => {
               <Flex.Item width="80px" color="label">Client:</Flex.Item>
               <Flex.Item grow={1}>{client_ckey}</Flex.Item>
 
-
               <Flex.Item align="right">
                 <Button
                   minWidth="11rem" textAlign="center"
@@ -184,8 +174,8 @@ export const PlayerPanel2 = (props, context) => {
 
 const PhysicalActions = (props, context) => {
   const { act, data } = useBackend(context);
-  const [mobScale, setMobScale] = useLocalState(context, 'mobScale', 1);
-  const { glob_limbs, godmode, mob_type } = data;
+  const { glob_limbs, godmode, mob_type, initial_scale } = data;
+  const [mobScale, setMobScale] = useLocalState(context, 'mobScale', initial_scale);
   const limbs = Object.keys(glob_limbs);
   const limb_flags = limbs.map((_, i) => (1<<i));
   const [delimbOption, setDelimbOption] = useLocalState(context, "delimb_flags", 0);
@@ -278,7 +268,16 @@ const PhysicalActions = (props, context) => {
           />
         </Flex>
       </Section>
-      <Section title={"Scale"}>
+      <Section title="Scale" buttons={
+        <Button
+          icon="sync"
+          content="Reset"
+          onClick={() => {
+            setMobScale(initial_scale);
+            act("scale", { new_scale: initial_scale });
+          }}
+        />
+      }>
         <Flex
           mt={1}
         >
@@ -443,7 +442,7 @@ const FeatureBans = (props, context) => {
 
 const GeneralActions = (props, context) => {
   const { act, data } = useBackend(context);
-  const { client_ckey, is_type_mob_living, is_type_mob_human, mob_type } = data;
+  const { client_ckey, mob_type, admin_mob_type } = data;
   return (
     <Section>
       <Section title="Damage">
@@ -453,27 +452,18 @@ const GeneralActions = (props, context) => {
             icon="heart"
             color="green"
             content="Rejuvenate"
-            disabled={!is_type_mob_living}
+            disabled={!mob_type.includes("/mob/living")}
             onClick={() => act("heal")}
           />
           <Button
             width="100%"
+            height="100%"
             icon="bolt"
             color="orange"
             content="Smite"
             confirmColor="average"
-            disabled={!is_type_mob_living}
+            disabled={!mob_type.includes("/mob/living")}
             onClick={() => act("smite")}
-          />
-          <Button.Confirm
-            width="100%"
-            height="100%" // weird ass bug here, so height set to 100%
-            icon="ghost"
-            color="bad"
-            content="Make Ghost"
-            confirmColor="bad"
-            disabled={!client_ckey || !is_type_mob_living}
-            onClick={() => act("ghost")}
           />
         </Flex>
       </Section>
@@ -507,7 +497,7 @@ const GeneralActions = (props, context) => {
             width="100%"
             content="Select Equipment"
             icon="user-tie"
-            disabled={!is_type_mob_human}
+            disabled={!mob_type.includes("/mob/living/carbon/human")}
             onClick={() => act("select_equipment")}
           />
           <Button.Confirm
@@ -515,7 +505,7 @@ const GeneralActions = (props, context) => {
             icon="trash-alt"
             width="100%"
             height="100%"
-            disabled={!is_type_mob_human}
+            disabled={!mob_type.includes("/mob/living/carbon/human")}
             onClick={() => act("strip")}
           />
         </Flex>
@@ -525,7 +515,7 @@ const GeneralActions = (props, context) => {
             icon="snowflake"
             width="100%"
             color="orange"
-            disabled={!is_type_mob_human}
+            disabled={!mob_type.includes("/mob/living/carbon/human")}
             onClick={() => act("cryo")}
           />
           <Button.Confirm
@@ -534,9 +524,37 @@ const GeneralActions = (props, context) => {
             content="Send To Lobby"
             color="orange"
             icon="undo"
-            disabled={mob_type !== "/mob/dead/observer"}
+            disabled={!mob_type.includes("/mob/dead/observer")}
             tooltip={mob_type !== "/mob/dead/observer" ? "Can only be used on ghosts" : ""}
             onClick={() => act("lobby")}
+          />
+        </Flex>
+      </Section>
+      <Section title="Control">
+        <Flex>
+          <Button.Confirm
+            width="100%"
+            icon="ghost"
+            content="Make Ghost"
+            confirmColor="bad"
+            disabled={!client_ckey || !mob_type.includes("/mob/living")}
+            onClick={() => act("ghost")}
+          />
+          <Button.Confirm
+            width="100%"
+            content="Take Control"
+            confirmColor="bad"
+            disabled={mob_type.includes("/mob/dead/observer") && admin_mob_type.includes("/mob/dead/observer")}
+            onClick={() => act("take_control")}
+          />
+          <Button.Confirm
+            width="100%"
+            height="100%" // weird ass bug here, so height set to 100%
+            icon="ghost"
+            content="Offer Control"
+            tooltip="Offers control to ghosts"
+            disabled={!mob_type.includes("/mob/living")}
+            onClick={() => act("offer_control")}
           />
         </Flex>
       </Section>
@@ -546,7 +564,7 @@ const GeneralActions = (props, context) => {
 
 const PunishmentActions = (props, context) => {
   const { act, data } = useBackend(context);
-  const { is_type_mob_living, is_frozen, is_slept, glob_mute_bits,
+  const { mob_type, is_frozen, is_slept, glob_mute_bits,
     client_muted, data_related_cid, data_related_ip, data_byond_version,
     data_player_join_date, data_account_join_date, active_role_ban_count,
     current_time } = data;
@@ -568,7 +586,7 @@ const PunishmentActions = (props, context) => {
             content="Freeze"
             color={is_frozen ? "orange" : ""}
             icon={is_frozen ? 'check-square-o' : 'square-o'}
-            disabled={!is_type_mob_living}
+            disabled={!mob_type.includes("/mob/living")}
             onClick={() => act("freeze")}
           />
           <Button
@@ -576,7 +594,7 @@ const PunishmentActions = (props, context) => {
             content="Sleep"
             color={is_slept ? "orange" : ""}
             icon={is_slept ? 'check-square-o' : 'square-o'}
-            disabled={!is_type_mob_living}
+            disabled={!mob_type.includes("/mob/living")}
             onClick={() => act("sleep")}
           />
           <Button.Confirm
@@ -585,7 +603,7 @@ const PunishmentActions = (props, context) => {
             content="Admin Prison"
             icon="share"
             color="bad"
-            disabled={!is_type_mob_living}
+            disabled={!mob_type.includes("/mob/living")}
             onClick={() => act("prison")}
           />
         </Flex>
@@ -735,9 +753,9 @@ const TransformActions = (props, context) => {
 };
 
 const FunActions = (props, context) => {
-  const { act, data } = useBackend(context);
-  const { glob_span } = data;
+  const { act } = useBackend(context);
   const [lockExplode, setLockExplode] = useLocalState(context, "explode_lock_toggle", true);
+  const [empMode, setEmpMode] = useLocalState(context, "empMode", false);
   const [expPower, setExpPower] = useLocalState(context, "exp_power", 8);
   const [narrateSize, setNarrateSize] = useLocalState(context, "narrateSize", 1);
   const [narrateMessage, setNarrateMessage] = useLocalState(context, "narrateMessage", "");
@@ -763,13 +781,20 @@ const FunActions = (props, context) => {
       </NoticeBox>
 
       <Section title="Explosion" buttons={(
-        <Button
-          ml={1}
-          icon={lockExplode? "lock" : "lock-open"}
-          content={lockExplode? "Locked" : "Unlocked"}
-          onClick={() => setLockExplode(!lockExplode)}
-          color={lockExplode? "good" : "bad"}
-        />
+        <Fragment>
+          <Button.Checkbox
+            checked={empMode}
+            color="transparent"
+            content="EMP Mode"
+            onClick={() => setEmpMode(!empMode)}
+          />
+          <Button
+            icon={lockExplode? "lock" : "lock-open"}
+            content={lockExplode? "Locked" : "Unlocked"}
+            onClick={() => setLockExplode(!lockExplode)}
+            color={lockExplode? "green" : "bad"}
+          />
+        </Fragment>
       )}>
         <Flex
           align="right"
@@ -782,7 +807,7 @@ const FunActions = (props, context) => {
               height="100%"
               color="red"
               disabled={lockExplode}
-              onClick={() => act("explode", { power: expPower })}
+              onClick={() => act("explode", { power: expPower, emp_mode: empMode })}
             >
               <Box height="100%" pt={2} pb={2} textAlign="center">Detonate</Box>
             </Button>
@@ -795,11 +820,11 @@ const FunActions = (props, context) => {
               unit="Range"
               value={expPower}
               stepPixelSize={15}
-              onChange={(e, value) => setExpPower(value)}
+              onDrag={(e, value) => setExpPower(value)}
               ranges={{
-                good: [0, 8],
-                average: [8, 15],
-                bad: [15, 30],
+                green: [0, 8],
+                orange: [8, 15],
+                red: [15, 30],
               }}
               minValue={1}
               maxValue={30}
@@ -921,88 +946,38 @@ const FunActions = (props, context) => {
   );
 };
 
-// const AntagActions = (props, context) => {
-//   const { act, data } = useBackend(context);
-//   const { glob_hives, is_xeno, is_type_mob_human } = data;
+const AntagActions = (props, context) => {
+  const { act, data } = useBackend(context);
+  const { mob_type } = data;
 
-//   const [selectedHivenumber, setHivenumber] = useLocalState(context, "selected_hivenumber", Object.keys(glob_hives)[0]);
-//   return (
-//     <Section fill>
-//       {!!is_type_mob_human && (
-//         <Section level={2} title="Mutiny">
-//           <Flex
-//             align="right"
-//             grow={1}
-//           >
-//             <Button
-//               height="100%"
-//               width="100%"
-//               icon="chess-pawn"
-//               color="orange"
-//               disabled={!hasPermission(data, "make_mutineer")}
-//               onClick={() => act("make_mutineer")}
-//               content="Make Mutineer"
-//             />
-//             <Button
-//               height="100%"
-//               width="100%"
-//               icon="crown"
-//               color="orange"
-//               disabled={!hasPermission(data, "make_mutineer")}
-//               onClick={() => act("make_mutineer", { leader: true })}
-//               content="Make Mutineering Leader"
-//             />
-//           </Flex>
-//         </Section>
-//       )}
-//       <Section level={2} title="Xenomorph" buttons={
-//         <Dropdown
-//           width={12}
-//           color="purple"
-//           selected={selectedHivenumber}
-//           options={Object.keys(glob_hives)}
-//           onSelected={value => setHivenumber(value)}
-//         />
-//       }>
-//         <Flex
-//           align="right"
-//           grow={1}
-//           mt={1}
-//         >
-//           {!!is_type_mob_human && (
-//             <Fragment>
-//               <Button
-//                 height="100%"
-//                 width="100%"
-//                 icon="chess-pawn"
-//                 color="purple"
-//                 disabled={!hasPermission(data, "make_cultist")}
-//                 onClick={() => act("make_cultist", { hivenumber: glob_hives[selectedHivenumber] })}
-//                 content="Make Xeno Cultist"
-//               />
-//               <Button
-//                 height="100%"
-//                 width="100%"
-//                 icon="crown"
-//                 color="purple"
-//                 disabled={!hasPermission(data, "make_cultist")}
-//                 onClick={() => act("make_cultist", { leader: true, hivenumber: glob_hives[selectedHivenumber] })}
-//                 content="Make Xeno Cultist Leader"
-//               />
-//             </Fragment>
-//           )}
-//           {!!is_xeno && (
-//             <Button
-//               height="100%"
-//               width="100%"
-//               icon="random"
-//               content="Change Hivenumber"
-//               color="purple"
-//               onClick={() => act("xeno_change_hivenumber", { hivenumber: glob_hives[selectedHivenumber] })}
-//             />
-//           )}
-//         </Flex>
-//       </Section>
-//     </Section>
-//   );
-// };
+  return (
+    <Section fill>
+      <Section title="Miscellaneous Features">
+        <Button
+          width="100%"
+          content="Traitor Panel"
+          p=".5rem"
+          mb=".5rem"
+          textAlign="center"
+          onClick={(e) => act("traitor_panel")}
+        />
+        <Button
+          width="100%"
+          content="Languages"
+          p=".5rem"
+          mb=".5rem"
+          textAlign="center"
+          disabled={!mob_type.includes("/mob/living")}
+          onClick={(e) => act("languages")}
+        />
+        <Button
+          width="100%"
+          content="Objectives / Ambitions"
+          p=".5rem"
+          textAlign="center"
+          onClick={(e) => act("ambitions")}
+        />
+      </Section>
+    </Section>
+  );
+};

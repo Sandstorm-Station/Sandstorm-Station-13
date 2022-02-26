@@ -19,9 +19,13 @@
 	admin_ticket_log(M, msg)
 	SSblackbox.record_feedback("tally", "admin_verb", 1, "Drop Everything") //If you are copy-pasting this, ensure the 2nd parameter is unique to the new proc!
 
-/client/proc/cmd_admin_subtle_message(mob/M in GLOB.mob_list, sender = null)
-	set category = null
+/client/proc/cmd_admin_subtle_message(mob/M in GLOB.mob_list) //, sender = null)
+	set category = "Admin.Events"
 	set name = "Subtle Message"
+
+	var/sender = null
+
+	priority_announce("AAAAAAAAAAAAAAAAAAAAAAA")
 
 	if(!ismob(M))
 		priority_announce("no mob!")
@@ -31,6 +35,7 @@
 		return
 
 	if (!sender)
+		priority_announce("lol")
 		var/list/subtle_message_options = list("Voice in head", RADIO_CHANNEL_CENTCOM, RADIO_CHANNEL_SYNDICATE)
 		sender = tgui_input_list(usr, "Choose the method of subtle messaging", "Subtle Message", subtle_message_options)
 		if (!sender)

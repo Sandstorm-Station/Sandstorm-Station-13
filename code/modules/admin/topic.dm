@@ -2103,7 +2103,7 @@
 		if(!check_rights(R_ADMIN))
 			return
 
-		priority_announce("what is this")
+		priority_announce("DIGDUG - OLD PP SM VERB")
 
 		var/mob/M = locate(href_list["subtlemessage"])
 		usr.client.cmd_admin_subtle_message(M)
