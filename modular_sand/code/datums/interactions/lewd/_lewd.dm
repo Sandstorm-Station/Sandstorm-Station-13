@@ -1743,15 +1743,13 @@
 		moan()
 	return FALSE
 
-/mob/living/proc/get_unconsenting(var/extreme = FALSE, var/list/ignored_mobs, var/unholy = FALSE)
+/mob/living/proc/get_unconsenting(var/extreme = FALSE, var/list/ignored_mobs)
 	var/list/nope = list()
 	nope += ignored_mobs
 	for(var/mob/M in range(7, src))
 		if(M.client)
 			var/client/cli = M.client
 			if(!(cli.prefs.toggles & VERB_CONSENT)) //Note: This probably could do with a specific preference
-				nope += M
-			else if(unholy && (cli.prefs.unholypref == "No"))
 				nope += M
 			else if(extreme && (cli.prefs.extremepref == "No"))
 				nope += M

@@ -119,6 +119,8 @@
 
 /datum/quirk/libido/remove()
 	var/mob/living/carbon/human/H = quirk_holder
+	if(!H)
+		return
 	H.arousal_rate = initial(H.arousal_rate)
 
 /datum/quirk/alcohol_intolerance
