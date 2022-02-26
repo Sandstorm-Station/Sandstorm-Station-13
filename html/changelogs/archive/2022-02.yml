@@ -198,3 +198,126 @@
   - bugfix: Fixes a couple dogborg items
   Crowbar764:
   - bugfix: Lavaland syndie base no-gravity spot fixed
+2022-02-19:
+  BongaTheProto:
+  - rscadd: Now clowns will honk when they perform certain lewd interactions
+  - tweak: you now only need to wait 7 days instead of a month to play dogborg
+  Crowbar764:
+  - rscadd: Adds slaver borgs
+  - tweak: Makes slave prices automatically set in most cases
+  - rscadd: Unbought slaves can join the slaver team after 15 minutes.
+  - balance: Nerfs slaver teleport implant by requiring a 5 second channelling
+  PurpleFenn:
+  - tweak: Removed the ability to vote for the same map over and over. It's too OP.
+  timothyteakettle:
+  - rscadd: polychromic clown outfit and mask
+2022-02-20:
+  jupyterkat:
+  - refactor: switched equalization method to katmos
+2022-02-21:
+  BlueWildrose and tralezab, Wjohnston, Mey Ha Zah, ArcaneDefense, Jack7D1, Papaporo, Sheits & Mqiib from TG and Yog:
+  - rscadd: TG wing port - All species can now use flight potions and grow wings.
+      Your wing sprite will be based off of what wings you have on your character,
+      or otherwise what species you are if you have no wings.
+  - bugfix: Jellypeople did not call the species parent proc on spec_life. Fixed.
+  Putnam3145:
+  - bugfix: Default features on linux auxmos compile now formatted correctly
+  - bugfix: reinforced plasma glass windows are buildable
+  TripleShades:
+  - rscadd: '[Omega] Gateway shutter button'
+  - rscadd: '[Omega] Signs to the airlocks that lead to space that say SPACE'
+  - rscadd: '[Omega] Air Alarm for the Turbine itself'
+  - rscadd: '[Omega] SMES Unit for the Turbine itself'
+  - rscadd: '[Omega] Firelock to Robotics airlock'
+  - rscadd: '[Omega] Captain''s Office now has a hand teleporter and medal box'
+  - rscadd: '[Omega] Screwdriver to Chemistry'
+  - rscadd: '[Omega] Space Cleaner bottle to Medbay'
+  - rscadd: '[Omega] Limb Grower and Spare Limb Crate to Surgery'
+  - rscadd: '[Omega] Kinkmate in Dorms'
+  - rscadd: '[Omega] Lightbulb fixture to Secure Tech Storage'
+  - rscadd: '[Omega] Armsky is now in the Armoury'
+  - rscdel: '[Omega] Extra automated announcement machine'
+  - rscdel: '[Omega] Wall inside of southwest Solar Array window'
+  - rscdel: '[Omega] Wall inside library maint airlock'
+  - rscdel: '[Omega] Duplicate Robotics airlock tweak: [Omega] HoS gun now spawns
+      in HoS locker instead of Captain''s locker tweak: [Omega] Both Solar Arrays
+      now have more windows tweak: [Omega] PACMAN moved out from behind a Command
+      airlock in Engineering tweak: [Omega] A few cameras so that they''re not sitting
+      improperly on windows tweak: [Omega] Medbay Surgery now has a surgical duffel
+      instead of strewn about tools tweak: [Omega] Security Cell 1 is now properly
+      named and has a bed instead of a chair tweak: [Omega] Toxins scrubber piping
+      now goes through a wall tweak: [Omega] Robotics trash can is now moved to the
+      small hallway between Robotics and Toxins tweak: [Omega] Maint Pool drain moved
+      down a tile so it''s easier to retrieve lost items'
+  - bugfix: '[Omega] Lawyer Office access'
+  - bugfix: '[Omega] Both Solar Arrays are now wired up to power the station properly'
+  - bugfix: '[Omega] Wire leading to the single Supermatter Emitter should now be
+      properly connected and not diagonal'
+  - bugfix: '[Omega] Gateway Maint airlock access'
+  - bugfix: '[Omega] Toxins Launch not being connected to the main air supply'
+  - bugfix: '[Omega] Toxins Mix Chamber no longer starts bolted'
+  - bugfix: '[Omega] Missing pipe above Security leading into Perma'
+  - bugfix: '[Omega] Secure Tech Storage now properly has an area'
+  frontline03:
+  - rscadd: Added walls to the incin to prevent access
+  - rscdel: Removed airlock to incin
+2022-02-22:
+  BongaTheProto:
+  - rscadd: Adds boowomp emote
+  - rscadd: Adds a tgs command to check the time dilation (!tgs tidi)
+  radar651:
+  - rscadd: A note to the Captain's locker
+  - rscdel: Removed the Captain's enforcer from the Captain's locker
+  - tweak: Moved the Captain's enforcer to the Cargo ordering system like the Captain's
+      Pen. Can be bought for 6k.
+2022-02-23:
+  SandPoot:
+  - bugfix: You know the training targets? You can grab them again now with your own
+      hands, instead of using telekinesis.
+  TripleShades:
+  - rscadd: '[Omega] Trash chute to space in Virology'
+  - rscadd: '[Omega] Trash chute to space in Xenobiology'
+  - rscadd: '[Omega] Airlock leading out to Supermatter cooling pipeline'
+  - rscadd: '[Omega] Two more air pumps to Toxins'
+  - rscadd: '[Omega] Robotics circuitry printer'
+  - rscadd: '[Omega] Windoor to Cargo delivery flaps'
+  - rscdel: '[Omega] Backdoor to Gravity Generator'
+  - rscdel: '[Omega] Bunched up cameras tweak: [Omega] Pipes leading to the Incinerator
+      burn chamber are now black tweak: [Omega] Gravity Generator airlocks are now
+      accessible by engineers tweak: [Omega] Chapel mass driver and mass driver bulkhead
+      are now controlled by one button instead of two'
+  - bugfix: '[Omega] Lawyer''s carpet is no longer airless'
+2022-02-25:
+  TripleShades:
+  - rscadd: '[Omega] Additional Solar Panels to both existing arrays'
+  - rscadd: '[Omega] Floor tile underneath library maint airlock'
+  - rscadd: '[Omega] Contraband locker to Armoury'
+  - bugfix: '[Omega] Solar Array SMES Units actually connect to the grid properly
+      now'
+  timothyteakettle:
+  - rscadd: adds snake coiling
+2022-02-26:
+  BongaTheProto:
+  - rscadd: New swaos emote
+  - bugfix: Lewd verbs will actually count for the target's feet when needed
+  The-Sun-In-Splendour:
+  - tweak: the cyborg advanced plasma cutter is now under mining instead of "general"
+  - rscadd: 'Lean. Made of: salbutamol, Pwr Game and sugar !!! MORE THAN 50 UNITS
+      WILL PROBABLY KILL YOU !!!'
+  - spellcheck: Fixed a typo upon consuming panty dropper.
+  frontline03:
+  - bugfix: Pipes area fixed
+  radar651:
+  - rscadd: CBRN gear, which includes department and civi suits, boots, gloves, mask
+      and hoods
+  - rscadd: MOPP gear, which includes suits, boots, gloves, mask and hoods
+  - rscadd: Advance MOPP gear for Central and ERT use. This stuff is better than the
+      researchable ones.
+  - rscadd: Advance MOPP gear lockers that are locked with Centcom access, currently
+      only spawnable by searching mopp.
+  - rscadd: Double oxygen and Double plasmaman tanks
+  - rscadd: Research nods for CBRN and MOPP Gear
+  - spellcheck: Fixed some spelling mistakes with Blueshield equipment and the CMO
+      not being able to spawn with aviators due to a spelling mistake
+  - imageadd: A crap ton of icons for the CBRN and MOPP gear, including gloves, suits,
+      boots, mask and tanks.

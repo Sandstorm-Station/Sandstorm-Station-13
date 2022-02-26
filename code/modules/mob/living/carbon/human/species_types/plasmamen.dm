@@ -24,6 +24,7 @@
 	languagewhitelist = list("Calcic") //Skyrat change - species language whitelist
 
 	species_category = SPECIES_CATEGORY_SKELETON
+	wings_icons = SPECIES_WINGS_SKELETAL
 
 	ass_image = 'icons/ass/assplasma.png'
 

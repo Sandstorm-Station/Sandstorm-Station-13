@@ -146,6 +146,15 @@ GLOBAL_LIST_EMPTY(roundstart_race_names)
 	/// A path to an outfit that is important for species life e.g. plasmaman outfit
 	var/datum/outfit/outfit_important_for_life
 
+	///Is this species a flying species? Used as an easy check for some things
+	var/flying_species = FALSE
+	///The actual flying ability given to flying species
+	var/datum/action/innate/flight/fly
+	///Current wings icon
+	var/wings_icon = "Angel"
+	//Dictates which wing icons are allowed for a given species. If count is >1 a radial menu is used to choose between all icons in list
+	var/list/wings_icons = SPECIES_WINGS_ANGEL
+
 	///Species-only traits. Can be found in [code/__DEFINES/DNA.dm]
 	var/list/species_traits = list(HAS_FLESH,HAS_BONE) //by default they can scar and have bones/flesh unless set to something else
 	///Generic traits tied to having the species.
@@ -225,11 +234,6 @@ GLOBAL_LIST_EMPTY(roundstart_race_names)
 
 	///For custom overrides for species ass images
 	var/icon/ass_image
-
-	//modular_sand tg port, very special
-	var/flying_species = FALSE //is a flying species, just a check for some things
-	var/datum/action/innate/flight/fly //the actual flying ability given to flying species
-	var/wings_icon = "Angel" //the icon used for the wings
 
 ///////////
 // PROCS //
@@ -506,6 +510,10 @@ GLOBAL_LIST_EMPTY(roundstart_race_names)
 		for(var/datum/disease/A in C.diseases)
 			A.cure(FALSE)
 
+	if(flying_species && isnull(fly))
+		fly = new
+		fly.Grant(C)
+
 	if(ishuman(C))
 		var/mob/living/carbon/human/H = C
 		if(NOGENITALS in H.dna.species.species_traits)
@@ -586,27 +594,21 @@ GLOBAL_LIST_EMPTY(roundstart_race_names)
 		if(F)
 			qdel(F)
 
-	//sandstorm code start -- tg port wings
 	if(flying_species)
-		fly.Remove(C)
-		QDEL_NULL(fly)
 		if(C.movement_type & FLYING)
 			ToggleFlight(C)
+		fly.Remove(C)
+		QDEL_NULL(fly)
 	if(C.dna && C.dna.species && (C.dna.features["wings"] == wings_icon))
 		if("wings" in C.dna.species.mutant_bodyparts)
 			C.dna.species.mutant_bodyparts -= "wings"
 		C.dna.features["wings"] = "None"
 		C.update_body()
-	//sandstorm code end -- tg port wings
 
 	if(ROBOTIC_LIMBS in species_traits)
 		for(var/obj/item/bodypart/B in C.bodyparts)
 			B.change_bodypart_status(initial(B.status), FALSE, TRUE)
 
-	if((TRAIT_ROBOTIC_ORGANISM in inherent_traits) && C.hud_used)
-		C.hud_used.coolant_display.clear()
-
-	SEND_SIGNAL(C, COMSIG_SPECIES_LOSS, src)
 
 // shamelessly inspired by antag_datum.remove_blacklisted_quirks()
 /datum/species/proc/remove_blacklisted_quirks(mob/living/carbon/C)
@@ -919,6 +921,22 @@ GLOBAL_LIST_EMPTY(roundstart_race_names)
 		return
 
 	var/tauric = mutant_bodyparts["taur"] && H.dna.features["taur"] && H.dna.features["taur"] != "None"
+
+	// stuff for adding/removing the coiling ability if you have a taur part
+	// if another action is ever based on mutant parts we should probably make a system for it so it's all done in one proc with less overhead
+	var/datum/action/found_action
+
+	for(var/datum/action/A in H.actions)
+		if(A.type == /datum/action/innate/ability/coiling)
+			found_action = A
+
+	if(found_action && (!tauric || (H.dna.features["taur"] != "Naga" && H.dna.features["taur"] != "Naga (coiled)")))
+		found_action.Remove(H)
+
+	if(!found_action && tauric && H.dna.features["taur"] == "Naga")
+		found_action = new /datum/action/innate/ability/coiling()
+		found_action.Grant(H)
+
 
 	for(var/mutant_part in mutant_bodyparts)
 		var/reference_list = GLOB.mutant_reference_list[mutant_part]
@@ -1234,6 +1252,8 @@ GLOBAL_LIST_EMPTY(roundstart_race_names)
 		return move_trail */
 
 /datum/species/proc/spec_life(mob/living/carbon/human/H)
+	if(flying_species) //turns off flight automatically if they can't.
+		HandleFlight(H)
 	if(HAS_TRAIT(H, TRAIT_NOBREATH))
 		H.setOxyLoss(0)
 		H.losebreath = 0
@@ -1244,11 +1264,6 @@ GLOBAL_LIST_EMPTY(roundstart_race_names)
 				H.adjustBruteLoss(1)
 			else
 				H.adjustFireLoss(1) //Robots melt instead of taking brute.
-
-	//sandstorm code start -- tg port wings
-	if(flying_species)
-		HandleFlight(H)
-	//sandstorm code end -- tg port wings
 
 /datum/species/proc/spec_death(gibbed, mob/living/carbon/human/H)
 	if(H)
@@ -2562,10 +2577,13 @@ GLOBAL_LIST_EMPTY(roundstart_race_names)
 	return
 
 ////////////
-//  Stun  //
+//	Stun  //
 ////////////
 
 /datum/species/proc/spec_stun(mob/living/carbon/human/H,amount)
+	if(flying_species && H.movement_type & FLYING)
+		ToggleFlight(H,0)
+		flyslip(H)
 	if(H)
 		stop_wagging_tail(H)
 
@@ -2622,20 +2640,53 @@ GLOBAL_LIST_EMPTY(roundstart_race_names)
 				mutant_bodyparts -= "waggingspines"
 			H.update_body()
 
-
 ///////////////
 //FLIGHT SHIT//
 ///////////////
 
-/datum/species/proc/GiveSpeciesFlight(mob/living/carbon/human/H)
-	if(flying_species) //species that already have flying traits should not work with this proc
-		return
+/datum/species/proc/GiveSpeciesFlight(mob/living/carbon/human/H, all_wings = FALSE)
+	if(flying_species) //grant them the choice of all wings if they don't have them
+		all_wings = TRUE
 	flying_species = TRUE
+	//CITADEL CHANGE: check if they already have wings, and "evolve" them based off of the wings they have. If they have none, use their species wings basis.
+	var/list/wingslist
+	if(all_wings) //give them the full list of wing choices to pick from, typically if they drink a second flight potion
+		wingslist = SPECIES_WINGS_ALL
+	else
+		//why the fuck do we have two different wing types anyways? they're literally almost both using the same wing shit too.
+		var/datum/sprite_accessory/deco_wings/D = GLOB.deco_wings_list[H.dna.features["deco_wings"]]
+		var/datum/sprite_accessory/insect_wings/I = GLOB.insect_wings_list[H.dna.features["insect_wings"]]
+		if(mutant_bodyparts["deco_wings"] && D?.upgrade_to.len) //species check to see if they were allowed to have deco wings
+			wingslist = D.upgrade_to
+		else if(mutant_bodyparts["insect_wings"] && I?.upgrade_to.len) //species check to see if they were allowed to have insect wings
+			wingslist = I.upgrade_to
+		else
+			wingslist = wings_icons
+
+	if(wingslist.len > 1)
+		if(!H.client)
+			wings_icon = pick(wingslist)
+		else
+			var/list/wings = list()
+			for(var/W in wingslist)
+				var/datum/sprite_accessory/S = GLOB.wings_list[W]	//Gets the datum for every wing this species has, then prompts user with a radial menu
+				var/image/img = image(icon = 'icons/mob/wings_functional.dmi', icon_state = "m_wingsopen_[S.icon_state]_BEHIND")	//Process the HUD elements
+				img.transform *= 0.5
+				img.pixel_x = -32
+				if(wings[S.name])
+					stack_trace("Different wing types with repeated names. Please fix as this may cause issues.")
+				else
+					wings[S.name] = img
+			wings_icon = show_radial_menu(H, H, wings, tooltips = TRUE)
+			if(!wings_icon)
+				wings_icon = pick(wings_icons)
+	else
+		wings_icon = wingslist[1]
 	if(isnull(fly))
 		fly = new
 		fly.Grant(H)
 	if(H.dna.features["wings"] != wings_icon)
-		mutant_bodyparts |= "wings"
+		mutant_bodyparts["wings"] = wings_icon
 		H.dna.features["wings"] = wings_icon
 		H.update_body()
 
@@ -2652,12 +2703,11 @@ GLOBAL_LIST_EMPTY(roundstart_race_names)
 	if(H.stat || !(H.mobility_flags & MOBILITY_STAND))
 		return FALSE
 	if(H.wear_suit && ((H.wear_suit.flags_inv & HIDEJUMPSUIT) && (!H.wear_suit.species_exception || !is_type_in_list(src, H.wear_suit.species_exception))))	//Jumpsuits have tail holes, so it makes sense they have wing holes too
-		to_chat(H, "Your suit blocks your wings from extending!")
+		to_chat(H, "<span class='warning'>Your suit blocks your wings from extending!</span>")
 		return FALSE
 	var/turf/T = get_turf(H)
 	if(!T)
 		return FALSE
-
 	var/datum/gas_mixture/environment = T.return_air()
 	if(environment && !(environment.return_pressure() > 30))
 		to_chat(H, "<span class='warning'>The atmosphere is too thin for you to fly!</span>")
@@ -2669,16 +2719,11 @@ GLOBAL_LIST_EMPTY(roundstart_race_names)
 	var/obj/buckled_obj
 	if(H.buckled)
 		buckled_obj = H.buckled
-
 	to_chat(H, "<span class='notice'>Your wings spazz out and launch you!</span>")
-
 	playsound(H.loc, 'sound/misc/slip.ogg', 50, TRUE, -3)
-
 	for(var/obj/item/I in H.held_items)
 		H.accident(I)
-
 	var/olddir = H.dir
-
 	H.stop_pulling()
 	if(buckled_obj)
 		buckled_obj.unbuckle_mob(H)
@@ -2689,7 +2734,7 @@ GLOBAL_LIST_EMPTY(roundstart_race_names)
 
 //UNSAFE PROC, should only be called through the Activate or other sources that check for CanFly
 /datum/species/proc/ToggleFlight(mob/living/carbon/human/H)
-	if(!(H.movement_type & FLYING))
+	if(!(H.movement_type & FLYING) && CanFly(H))
 		stunmod *= 2
 		speedmod -= 0.35
 		H.setMovetype(H.movement_type | FLYING)
@@ -2704,7 +2749,6 @@ GLOBAL_LIST_EMPTY(roundstart_race_names)
 		override_float = FALSE
 		H.pass_flags &= ~PASSTABLE
 		H.CloseWings()
-	update_species_slowdown(H)
 
 /datum/action/innate/flight
 	name = "Toggle Flight"
