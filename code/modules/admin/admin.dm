@@ -16,6 +16,11 @@
 	set name = "Show Player Panel"
 	set desc="Edit player (respawn, ban, heal, etc)"
 
+	// Based on client setting, use modern TGUI player panel instead
+	if(usr.client.prefs.use_new_playerpanel)
+		usr.client.holder.show_player_panel2(M)
+		return
+
 	if(!check_rights())
 		return
 

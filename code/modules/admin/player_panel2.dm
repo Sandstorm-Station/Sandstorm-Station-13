@@ -144,7 +144,6 @@ GLOBAL_LIST_INIT(pp_limbs, list(
 	switch(action)
 		if ("edit_rank")
 			if (!targetMob.client?.ckey)
-				priority_announce("failed client ckey check")
 				return
 
 			var/list/context = list()
@@ -156,7 +155,6 @@ GLOBAL_LIST_INIT(pp_limbs, list(
 			else
 				context["editrights"] = "add"
 
-			priority_announce("sending...")
 			admin.holder.edit_rights_topic(context)
 
 		if ("access_variables")
@@ -183,23 +181,28 @@ GLOBAL_LIST_INIT(pp_limbs, list(
 				log_admin("[key_name(admin)] ejected [key_name(targetMob)] from their body.")
 				message_admins("[key_name_admin(admin)] ejected [key_name_admin(targetMob)] from their body.")
 				to_chat(targetMob, "<span class='danger'>An admin has ejected you from your body.</span>")
-				targetMob.ghostize(FALSE, penalize = TRUE, voluntary = TRUE)
-				targetMob.mind.key = null
+				targetMob.ghostize(FALSE)
 
 		if ("offer_control")
 			offer_control(targetMob)
 
 		if ("take_control")
-			if(targetMob.ckey)
-				var/mob/dead/observer/ghost = new/mob/dead/observer(get_turf(targetMob), targetMob)
-				ghost.ckey = targetMob.ckey
+			var/mob/adminMob = admin.mob
 
-			message_admins("<span class='adminnotice'>[key_name_admin(usr)] assumed direct control of [targetMob].</span>")
-			log_admin("[key_name(usr)] assumed direct control of [targetMob].")
-			var/mob/adminmob = admin.mob
-			adminmob.transfer_ckey(targetMob, send_signal = FALSE)
-			if(isobserver(adminmob))
-				qdel(adminmob)
+			// Disassociates observer mind from the body mind
+			if(targetMob.client)
+				targetMob.ghostize(FALSE)
+			else
+				for(var/mob/dead/observer/ghost in GLOB.dead_mob_list)
+					if(targetMob.mind == ghost.mind)
+						ghost.mind = null
+
+			targetMob.ckey = adminMob.ckey
+			qdel(adminMob)
+
+			message_admins("<span class='adminnotice'>[key_name_admin(usr)] took control of [targetMob].</span>")
+			log_admin("[key_name(usr)] took control of [targetMob].")
+			addtimer(CALLBACK(targetMob.mob_panel, /datum.proc/ui_interact, targetMob), 0.1 SECONDS)
 
 		if ("smite")
 			admin.smite(targetMob)
@@ -362,11 +365,9 @@ GLOBAL_LIST_INIT(pp_limbs, list(
 			var/mob/living/carbon/human/H = targetMob
 
 			for(var/limb in params["limbs"])
-				to_chat(usr, limb)
 				if (!limb)
 					continue
 
-				to_chat(usr, "passed")
 				if (params["delimb_mode"])
 					var/obj/item/bodypart/L = H.get_bodypart(limb)
 					if (!L)

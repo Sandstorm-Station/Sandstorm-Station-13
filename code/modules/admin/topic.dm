@@ -1800,8 +1800,7 @@
 
 	else if(href_list["adminplayeropts"])
 		var/mob/M = locate(href_list["adminplayeropts"])
-		// show_player_panel(M)
-		show_player_panel2(M)
+		show_player_panel(M)
 
 	else if(href_list["adminplayerobservefollow"])
 		if(!isobserver(usr) && !check_rights(R_ADMIN))
@@ -2102,8 +2101,6 @@
 	else if(href_list["subtlemessage"])
 		if(!check_rights(R_ADMIN))
 			return
-
-		priority_announce("DIGDUG - OLD PP SM VERB")
 
 		var/mob/M = locate(href_list["subtlemessage"])
 		usr.client.cmd_admin_subtle_message(M)
@@ -2736,8 +2733,7 @@
 		var/mob/M = locate(href_list["mob"]) in GLOB.mob_list
 		var/client/C = M.client
 		usr.client.cmd_admin_mod_antag_rep(C, href_list["modantagrep"])
-		// show_player_panel(M)
-		show_player_panel2(M)
+		show_player_panel(M)
 
 	else if(href_list["slowquery"])
 		if(!check_rights(R_ADMIN))

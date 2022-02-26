@@ -62,7 +62,6 @@
 
 /mob/proc/create_player_panel()
 	QDEL_NULL(mob_panel)
-
 	mob_panel = new(src)
 
 /mob/proc/Cell()
@@ -966,7 +965,6 @@ GLOBAL_VAR_INIT(exploit_warn_spam_prevention, 0)
 		if(!check_rights(NONE))
 			return
 		usr.client.holder.show_player_panel(src)
-		// usr.client.holder.show_player_panel2(src)
 	if(href_list[VV_HK_GODMODE])
 		if(!check_rights(R_ADMIN))
 			return

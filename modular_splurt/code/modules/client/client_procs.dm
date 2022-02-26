@@ -38,15 +38,12 @@
 		var/spell_name = initial(spell.name)
 		options[M.has_spell(spell) ? "[spell_name] (Remove)" : "[spell_name] (Add)"] = spell
 
-	to_chat(usr, "List length: [options.len]")
-
 	var/spell_to_modify = tgui_input_list(usr, "Choose spell to add/remove", "Mob Spells", options) // input(usr, "Choose quirk to add/remove","Quirk Mod") as null|anything in options
 
 	if(QDELETED(M))
 		to_chat(usr, "Mob doesn't exist anymore")
 		return
 
-	to_chat(usr, "Option selected to modify: [spell_to_modify]")
 	if(spell_to_modify)
 		if(spell_to_modify == "Clear")
 			if (!M.mind)
@@ -56,17 +53,13 @@
 		else
 			var/T = options[spell_to_modify]
 			if(M.has_spell(T))
-				to_chat(usr, "Attempted to remove...")
 				M.mind.RemoveSpell(T)
 			else
-				to_chat(usr, "Attempted to add...")
 				if (M.mind)
 					M.mind.AddSpell(new T)
 				else
 					M.AddSpell(new T)
 					message_admins("<span class='danger'>Spells given to mindless mobs will not be transferred in mindswap or cloning!</span>")
-
-	to_chat(usr, "END")
 
 /client/proc/teach_martial_art(mob/living/carbon/C)
 	if (!istype(C))

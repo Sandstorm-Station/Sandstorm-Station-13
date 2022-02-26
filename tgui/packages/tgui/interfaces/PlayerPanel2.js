@@ -51,7 +51,7 @@ const PAGES = [
   },
   {
     title: 'Other',
-    component: () => AntagActions,
+    component: () => OtherActions,
     color: "blue",
     icon: "crosshairs",
   },
@@ -544,7 +544,7 @@ const GeneralActions = (props, context) => {
             width="100%"
             content="Take Control"
             confirmColor="bad"
-            disabled={mob_type.includes("/mob/dead/observer") && admin_mob_type.includes("/mob/dead/observer")}
+            disabled={mob_type.includes("/mob/dead/observer") || !admin_mob_type.includes("/mob/dead/observer")}
             onClick={() => act("take_control")}
           />
           <Button.Confirm
@@ -754,20 +754,37 @@ const TransformActions = (props, context) => {
 
 const FunActions = (props, context) => {
   const { act } = useBackend(context);
+
+  const colours = {
+    'White': '#a4bad6',
+    'Dark': '#42474D',
+    'Red': '#c51e1e',
+    'Red Bright': '#FF0000',
+    'Velvet': '#660015',
+    'Green': '#059223',
+    'Blue': '#6685f5',
+    'Purple': '#800080',
+    'Purple Dark': '#5000A0',
+    'Narsie': '#973e3b',
+    'Ratvar': '#BE8700',
+  };
+
   const [lockExplode, setLockExplode] = useLocalState(context, "explode_lock_toggle", true);
   const [empMode, setEmpMode] = useLocalState(context, "empMode", false);
   const [expPower, setExpPower] = useLocalState(context, "exp_power", 8);
   const [narrateSize, setNarrateSize] = useLocalState(context, "narrateSize", 1);
   const [narrateMessage, setNarrateMessage] = useLocalState(context, "narrateMessage", "");
-  const [narrateColour, setNarrateColour] = useLocalState(context, "narrateColour", "White");
+  const [narrateColour, setNarrateColour] = useLocalState(context, "narrateColour", Object.keys(colours)[0]);
   const [narrateFont, setNarrateFont] = useLocalState(context, "narrateFont", "Verdana");
   const [narrateBold, setNarrateBold] = useLocalState(context, "narrateBold", false);
   const [narrateItalic, setNarrateItalic] = useLocalState(context, "narrateItalic", false);
   const [narrateGlobal, setNarrateGlobal] = useLocalState(context, "narrateGlobal", false);
   const [narrateRange, setNarrateRange] = useLocalState(context, "narrateRange", 7);
 
+
+
   const narrateStyles = {
-    'color': narrateColour,
+    'color': colours[narrateColour],
     'font-size': narrateSize + 'rem',
     'font-weight': (narrateBold ? 'bold' : ''),
     'font-family': narrateFont,
@@ -851,8 +868,9 @@ const FunActions = (props, context) => {
                   <Dropdown
                     width="calc(100% - 1rem)"
                     displayText={narrateColour}
-                    options={["White", "Red", "Green", "Blue"]}
-                    onSelected={(value) => setNarrateColour(value)} />
+                    options={Object.keys(colours)}
+                    onSelected={(value) => setNarrateColour(value)}
+                  />
                 </LabeledList.Item>
                 <LabeledList.Item label="Font">
                   <Dropdown
@@ -946,9 +964,9 @@ const FunActions = (props, context) => {
   );
 };
 
-const AntagActions = (props, context) => {
+const OtherActions = (props, context) => {
   const { act, data } = useBackend(context);
-  const { mob_type } = data;
+  const { mob_type, client_ckey } = data;
 
   return (
     <Section fill>
@@ -959,6 +977,7 @@ const AntagActions = (props, context) => {
           p=".5rem"
           mb=".5rem"
           textAlign="center"
+          disabled={!client_ckey}
           onClick={(e) => act("traitor_panel")}
         />
         <Button
@@ -975,6 +994,7 @@ const AntagActions = (props, context) => {
           content="Objectives / Ambitions"
           p=".5rem"
           textAlign="center"
+          disabled={!client_ckey}
           onClick={(e) => act("ambitions")}
         />
       </Section>
