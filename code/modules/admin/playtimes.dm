@@ -20,6 +20,7 @@
 		client["ckey"] = C.ckey
 		client["playtime"] = C.get_exp_living(TRUE)
 		client["playtime_hours"] = C.get_exp_living()
+		client["flags"] = check_flags(C)
 
 		var/mob/M = C.mob
 		client["observer"] = isobserver(M)

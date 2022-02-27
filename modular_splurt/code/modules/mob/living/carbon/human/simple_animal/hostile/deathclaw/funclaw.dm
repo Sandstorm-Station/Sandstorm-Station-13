@@ -92,9 +92,9 @@
 
 	switch(chosen_hole)
 		if(CUM_TARGET_ANUS)
-			if(tearSlot(M, SLOT_WEAR_SUIT))
+			if(tearSlot(M, ITEM_SLOT_OCLOTHING))
 				return
-			if(tearSlot(M, SLOT_W_UNIFORM))
+			if(tearSlot(M, ITEM_SLOT_ICLOTHING))
 				return
 
 			// Abomination deathclaws do other stuff instead
@@ -108,9 +108,9 @@
 				do_anal(M)
 
 		if(CUM_TARGET_VAGINA)
-			if(tearSlot(M, SLOT_WEAR_SUIT))
+			if(tearSlot(M, ITEM_SLOT_OCLOTHING))
 				return
-			if(tearSlot(M, SLOT_W_UNIFORM))
+			if(tearSlot(M, ITEM_SLOT_ICLOTHING))
 				return
 
 			// Abomination deathclaws do other stuff instead
@@ -121,9 +121,9 @@
 				do_vaginal(M)
 
 		if(CUM_TARGET_THROAT)
-			if(tearSlot(M, SLOT_HEAD))
+			if(tearSlot(M, ITEM_SLOT_HEAD))
 				return
-			if(tearSlot(M, SLOT_WEAR_MASK))
+			if(tearSlot(M, ITEM_SLOT_MASK))
 				return
 
 			// Abomination deathclaws do other stuff instead
