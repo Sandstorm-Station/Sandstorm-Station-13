@@ -19,7 +19,6 @@
 	initialize_actionspeed()
 	init_rendering()
 	hook_vr("mob_new",list(src))
-	create_player_panel()
 
 /mob/Destroy()//This makes sure that mobs with clients/keys are not just deleted from the game.
 	remove_from_mob_list()
@@ -37,7 +36,6 @@
 			observe.reset_perspective(null)
 	dispose_rendering()
 	qdel(hud_used)
-	QDEL_NULL(mob_panel)
 	for(var/cc in client_colours)
 		qdel(cc)
 	client_colours = null
