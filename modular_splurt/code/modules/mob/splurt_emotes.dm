@@ -1,3 +1,13 @@
+/datum/emote/living/audio_emote/laugh/run_emote(mob/user, params)
+	. = ..()
+	if(. && iscarbon(user))
+		var/mob/living/carbon/C = user
+		if(!iscatperson(C) && !isinsect(C) && !isjellyperson(C) && !ishumanbasic(C))
+			if(user.gender == FEMALE)
+				playsound(C, 'sound/voice/human/womanlaugh.ogg', 50, 1)
+			else
+				playsound(C, pick('sound/voice/human/manlaugh1.ogg', 'sound/voice/human/manlaugh2.ogg'), 50, 1)
+
 // SPLURT emotes
 /datum/emote/living/tilt
 	key = "tilt"
