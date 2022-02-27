@@ -571,7 +571,7 @@
 		var/client/ucli = LM.client
 		if(cli.prefs.extremepref != "No")
 			if(!ucli || (ucli.prefs.extremepref != "No"))
-				if(!get_item_by_slot(ITEM_SLOT_EARS))
+				if(!get_item_by_slot(ITEM_SLOT_EARS_LEFT) && !get_item_by_slot(ITEM_SLOT_EARS_RIGHT))
 					if(has_ears())
 						dat += "...have unprotected ears."
 					else
