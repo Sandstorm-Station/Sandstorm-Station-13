@@ -1,6 +1,6 @@
 //Command
 /datum/job/captain
-	alt_titles = list("Station Director", "Station Commander", "Station Overseer", "Colony Overseer", "Stationmaster", "Commissar")
+	alt_titles = list("Station Director", "Station Commander", "Station Overseer", "Colony Overseer", "Stationmaster", "Commissar", "Senator")
 
 /datum/job/chief_engineer
 	alt_titles = list("Senior Engineer", "Head Engineer", "Construction Coordinator", "Project Manager", "Power Plant Director")
