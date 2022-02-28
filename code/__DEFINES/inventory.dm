@@ -44,20 +44,20 @@
 #define ITEM_SLOT_RPOCKET (1<<17)
 // -- Sandstorm edit --
 /// Underwear slot
-#define ITEM_SLOT_UNDERWEAR (1<<17)
+#define ITEM_SLOT_UNDERWEAR (1<<18)
 /// Socks slot
-#define ITEM_SLOT_SOCKS (1<<18)
+#define ITEM_SLOT_SOCKS (1<<19)
 /// Shirt slot
-#define ITEM_SLOT_SHIRT (1<<19)
+#define ITEM_SLOT_SHIRT (1<<20)
 /// Right ear slot
-#define ITEM_SLOT_EARS_RIGHT (1<<20)
+#define ITEM_SLOT_EARS_RIGHT (1<<21)
 /// Wrist slot
-#define ITEM_SLOT_WRISTS (1<<21)
+#define ITEM_SLOT_WRISTS (1<<22)
 // -- End edit --
 /// Handcuff slot
-#define ITEM_SLOT_HANDCUFFED (1<<22)
+#define ITEM_SLOT_HANDCUFFED (1<<23)
 /// Legcuff slot (bolas, beartraps)
-#define ITEM_SLOT_LEGCUFFED (1<<23)
+#define ITEM_SLOT_LEGCUFFED (1<<24)
 
 /// Total amount of slots
 #define SLOTS_AMT 25 // Keep this up to date!
