@@ -69,7 +69,7 @@
 	contains = list(/obj/item/gunpart/shotgunstock, /obj/item/gunpart/shotgunbarrelsawn, /obj/item/storage/box/rubbershot)
 
 /datum/supply_pack/goody/dbshotgun_single
-	name = "Sawn-off Double Barrel Shotgun Single-Pack"
+	name = "Double Barrel Shotgun Single-Pack"
 	desc = "Contains a parts kit to assemble a double barrel shotgun."
 	cost = 700
 	contains = list(/obj/item/gunpart/shotgunstock, /obj/item/gunpart/shotgunbarrel, /obj/item/storage/box/rubbershot)
