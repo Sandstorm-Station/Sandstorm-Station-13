@@ -291,6 +291,13 @@ GLOBAL_LIST_INIT(pp_limbs, list(
 			if (targetMob.client)
 				browse_messages(target_ckey = targetMob.ckey)
 
+		if ("logs")
+			var/source = LOGSRC_MOB
+			if (targetMob.client)
+				source = LOGSRC_CLIENT
+
+			show_individual_logging_panel(targetMob, source)
+
 		if ("job_ban")
 			if(targetMob.client)
 				process_banlist(params["selected_role"], params["is_category"], params["want_to_ban"])
