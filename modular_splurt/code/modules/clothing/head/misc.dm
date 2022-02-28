@@ -60,3 +60,15 @@
 	build_path = /obj/item/clothing/head/helmet/cbrn/mopp
 	category = list("Armor")
 	departmental_flags = DEPARTMENTAL_FLAG_SECURITY
+
+/obj/item/clothing/head/bridgeofficer
+	name = "blueshield beret"
+	desc = "The robust beret for the Blueshield. It has a blueshield on the front of it."
+	icon_state = "bridgeseccap"
+	item_state = "bridgeseccap"
+	icon = 'modular_splurt/icons/obj/clothing/head.dmi'
+	mob_overlay_icon = 'modular_splurt/icons/mobs/head.dmi'
+	armor = list("melee" = 0, "bullet" = 0, "laser" = 0, "energy" = 0, "bomb" = 0, "bio" = 0, "rad" = 0, "fire" = 0, "acid" = 0)
+	strip_delay = 25
+	dynamic_hair_suffix = ""
+	dog_fashion = null

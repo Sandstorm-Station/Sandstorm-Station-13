@@ -126,3 +126,25 @@
 	item_state = "blueshieldf"
 	mutantrace_variation = STYLE_DIGITIGRADE|STYLE_NO_ANTHRO_ICON
 
+/obj/item/clothing/under/rank/bridgeofficer
+	name = "bridge officer outfit"
+	desc = "The uniform of a bridge officer. It makes you feel extremly importnant, even if you are not."
+	icon = 'modular_splurt/icons/obj/clothing/uniforms.dmi'
+	mob_overlay_icon = 'modular_splurt/icons/mob/clothing/uniform.dmi'
+	icon_state = "bridgesec"
+	item_state = "bridgesec"
+	armor = list("melee" = 0, "bullet" = 0, "laser" = 5,"energy" = 5, "bomb" = 0, "bio" = 0, "rad" = 0, "fire" = 0, "acid" = 0, "wound" = 0)
+	can_adjust = FALSE
+	strip_delay = 25
+	alt_covers_chest = TRUE
+	sensor_mode = SENSOR_COORDS
+	sensor_flags = NONE
+	anthro_mob_worn_overlay = 'modular_splurt/icons/mob/clothing/uniform_digi.dmi'
+	mutantrace_variation = STYLE_DIGITIGRADE|STYLE_ALL_TAURIC
+
+
+/obj/item/clothing/under/rank/bridgeofficer/skirt
+	name = "bridge officer skirt"
+	icon_state = "bridgesecf"
+	item_state = "bridgesecf"
+	mutantrace_variation = STYLE_DIGITIGRADE|STYLE_NO_ANTHRO_ICON
