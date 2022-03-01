@@ -58,8 +58,8 @@
 /datum/outfit/plasmaman/brigdoc
 	name = "Brig Physician"
 
-	head = /obj/item/clothing/head/helmet/space/plasmaman/security
-	uniform = /obj/item/clothing/under/plasmaman/security
+	head = /obj/item/clothing/head/helmet/space/plasmaman/medical
+	uniform = /obj/item/clothing/under/plasmaman/medical
 	ears = /obj/item/radio/headset/headset_brigdoc
 
 /obj/item/radio/headset/headset_brigdoc

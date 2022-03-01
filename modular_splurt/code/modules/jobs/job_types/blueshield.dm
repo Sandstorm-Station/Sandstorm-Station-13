@@ -4,6 +4,7 @@
 	department_head = list("Central Command")
 	department_flag = ENGSEC
 	faction = "Station"
+	head_announce = list(RADIO_CHANNEL_COMMAND)
 	supervisors = "central command"
 	total_positions = 1
 	spawn_positions = 1
@@ -60,8 +61,8 @@
 /datum/outfit/plasmaman/blueshield
 	name = "Blueshield"
 
-	head = /obj/item/clothing/head/helmet/space/plasmaman/security/hos //need to make custom sprites for the plasmaman
-	uniform = /obj/item/clothing/under/plasmaman/security/hos
+	head = /obj/item/clothing/head/helmet/space/plasmaman/security/blueshield //Ported the ones from fucking Skyrat
+	uniform = /obj/item/clothing/under/plasmaman/security/blueshield
 	ears = /obj/item/radio/headset/headset_blueshield
 
 /obj/item/radio/headset/headset_blueshield

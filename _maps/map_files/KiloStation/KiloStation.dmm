@@ -2453,6 +2453,7 @@
 /obj/item/radio/intercom{
 	pixel_x = -28
 	},
+/obj/item/storage/backpack/duffelbag/sec/surgery,
 /turf/open/floor/plasteel/dark,
 /area/security/warden)
 "aeu" = (
@@ -6361,6 +6362,8 @@
 	dir = 4;
 	pixel_x = -23
 	},
+/obj/item/clothing/suit/brigdoc/armor,
+/obj/item/clothing/head/helmet/brigdoc,
 /turf/open/floor/plasteel/dark,
 /area/ai_monitored/security/armory)
 "akW" = (
@@ -12470,6 +12473,7 @@
 /obj/machinery/atmospherics/components/unary/vent_scrubber/on/layer1{
 	dir = 8
 	},
+/obj/effect/landmark/start/blueshield,
 /turf/open/floor/plasteel,
 /area/command/bridge)
 "auN" = (
@@ -13135,6 +13139,7 @@
 /obj/machinery/atmospherics/pipe/simple/scrubbers/hidden/layer1{
 	dir = 9
 	},
+/obj/machinery/vending/wardrobe/bridgeofficer_wardrobe,
 /turf/open/floor/plasteel,
 /area/command/bridge)
 "avS" = (
@@ -13327,6 +13332,7 @@
 /area/maintenance/fore)
 "awg" = (
 /obj/structure/chair/office,
+/obj/effect/landmark/start/bridgeofficer,
 /turf/open/floor/plasteel/dark,
 /area/command/bridge)
 "awh" = (
@@ -17113,9 +17119,11 @@
 /obj/machinery/door/firedoor,
 /obj/machinery/atmospherics/pipe/simple/scrubbers/hidden/layer1,
 /obj/machinery/atmospherics/pipe/simple/supply/hidden,
-/obj/machinery/door/airlock/medical/glass{
-	name = "Infirmary"
+/obj/machinery/door/airlock/security/glass{
+	name = "Brig Infirmary";
+	req_access_txt = "2, 71"
 	},
+/obj/effect/mapping_helpers/airlock/cyclelink_helper,
 /turf/open/floor/plasteel/dark,
 /area/security/warden)
 "aCw" = (
@@ -18983,9 +18991,12 @@
 /area/medical/genetics/cloning)
 "aFu" = (
 /obj/machinery/door/firedoor,
-/obj/machinery/door/airlock/medical/glass{
-	name = "Infirmary";
-	req_access_txt = "63"
+/obj/machinery/door/airlock/security/glass{
+	name = "Brig Infirmary";
+	req_access_txt = "2, 71"
+	},
+/obj/effect/mapping_helpers/airlock/cyclelink_helper{
+	dir = 1
 	},
 /turf/open/floor/plasteel/dark,
 /area/security/office)
@@ -39566,6 +39577,7 @@
 /obj/structure/chair/office{
 	dir = 8
 	},
+/obj/effect/landmark/start/bridgeofficer,
 /turf/open/floor/plasteel/dark,
 /area/command/bridge)
 "blN" = (
@@ -44897,6 +44909,7 @@
 /obj/structure/cable{
 	icon_state = "1-4"
 	},
+/obj/structure/closet/secure_closet/bridgesec,
 /turf/open/floor/plasteel,
 /area/command/bridge)
 "bul" = (
@@ -44964,6 +44977,7 @@
 /obj/item/radio/intercom{
 	pixel_y = -28
 	},
+/obj/structure/closet/secure_closet/blueshield,
 /turf/open/floor/plasteel,
 /area/command/bridge)
 "bus" = (
@@ -51128,6 +51142,9 @@
 	dir = 4
 	},
 /obj/effect/turf_decal/tile/neutral,
+/obj/item/clothing/suit/toggle/armor/hop/hop_formal,
+/obj/item/clothing/under/rank/civilian/head_of_personnel/parade/female,
+/obj/item/clothing/under/rank/civilian/head_of_personnel/parade,
 /turf/open/floor/plasteel/dark,
 /area/command/heads_quarters/hop)
 "bEk" = (
@@ -62246,16 +62263,15 @@
 /turf/open/floor/plasteel/dark,
 /area/security/warden)
 "bVR" = (
-/obj/structure/bodycontainer/morgue,
 /obj/effect/turf_decal/tile/neutral,
 /obj/effect/turf_decal/tile/neutral{
 	dir = 4
 	},
-/obj/effect/turf_decal/delivery,
 /obj/machinery/airalarm{
 	dir = 4;
 	pixel_x = -23
 	},
+/obj/structure/closet/secure_closet/brigdoc,
 /turf/open/floor/plasteel/dark,
 /area/security/warden)
 "bVS" = (
@@ -68627,13 +68643,13 @@
 /turf/open/floor/plasteel,
 /area/security/office)
 "cgp" = (
-/obj/structure/closet/secure_closet/hos,
 /obj/effect/turf_decal/tile/neutral{
 	dir = 4
 	},
 /obj/effect/turf_decal/tile/neutral{
 	dir = 1
 	},
+/obj/structure/closet/secure_closet/hosnew,
 /turf/open/floor/plasteel,
 /area/command/heads_quarters/hos)
 "cgq" = (
@@ -84532,6 +84548,20 @@
 	},
 /turf/open/floor/plasteel/dark,
 /area/command/heads_quarters/rd)
+"dGQ" = (
+/obj/effect/turf_decal/tile/neutral{
+	dir = 8
+	},
+/obj/effect/turf_decal/tile/neutral,
+/obj/machinery/atmospherics/pipe/simple/scrubbers/hidden/layer1{
+	dir = 8
+	},
+/obj/structure/cable{
+	icon_state = "4-8"
+	},
+/obj/machinery/vending/wardrobe/hos_wardrobe,
+/turf/open/floor/plasteel/dark,
+/area/command/heads_quarters/hos)
 "dMc" = (
 /obj/structure/table/reinforced,
 /obj/item/integrated_circuit_printer,
@@ -85286,6 +85316,11 @@
 "nNA" = (
 /turf/closed/wall/rust,
 /area/command/bridge)
+"nNE" = (
+/obj/machinery/atmospherics/pipe/simple/supply/hidden,
+/obj/effect/landmark/start/brigdoc,
+/turf/open/floor/plasteel/showroomfloor,
+/area/security/warden)
 "nXu" = (
 /obj/structure/cable{
 	icon_state = "4-8"
@@ -85655,6 +85690,10 @@
 /obj/machinery/atmospherics/components/unary/vent_pump/on,
 /turf/open/floor/wood,
 /area/commons/vacant_room/office)
+"wLv" = (
+/obj/machinery/vending/wardrobe/blueshield_wardrobe,
+/turf/open/floor/plasteel,
+/area/command/bridge)
 "xqv" = (
 /obj/structure/table/wood,
 /obj/item/reagent_containers/food/drinks/drinkingglass{
@@ -104925,7 +104964,7 @@ bXp
 bNa
 aCv
 bRw
-cnB
+nNE
 cnB
 bVS
 aFu
@@ -105452,7 +105491,7 @@ ccO
 cdU
 cfj
 akx
-akS
+dGQ
 cmm
 alM
 amf
@@ -116472,7 +116511,7 @@ aqG
 bsE
 arY
 auM
-bsE
+wLv
 byt
 afT
 atj

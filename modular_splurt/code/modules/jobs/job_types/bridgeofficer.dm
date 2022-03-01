@@ -1,12 +1,11 @@
 /datum/job/bridgeofficer
-	title = "Bridge Officer"
+	title = "Bridge Officer" // A courpse shared the same name as was causing issiues
 	flag = BRDIGEOFF //Wanted to use BO but.. that broke the blob. Woops
 	department_head = list("Captain", "Head of Personnel")
 	department_flag = ENGSEC
-	head_announce = list(RADIO_CHANNEL_SERVICE)
 	faction = "Station"
-	total_positions = 1
-	spawn_positions = 1
+	total_positions = 2
+	spawn_positions = 2
 	supervisors = "The captain and the head of personnel"
 	selection_color = "#aac1ee"
 	req_admin_notify = 0
@@ -16,25 +15,20 @@
 	exp_type_department = EXP_TYPE_SERVICE
 	considered_combat_role = FALSE
 	outfit = /datum/outfit/job/bridgeofficer
-	plasma_outfit = /datum/outfit/plasmaman/hop
+	plasma_outfit = /datum/outfit/plasmaman/bridgeofficer
 	custom_spawn_text = "<font color='red'>Bridge Officer: You are here to assist the bridge staff with whatever they need. You have very limited access. You are not Secuirty and you are not in the line of secceustion. You have no power, listen to the Captain and the HOP.</font>"
-	access = list(ACCESS_KITCHEN, ACCESS_HEADS, ACCESS_MAINT_TUNNELS, ACCESS_BAR, ACCESS_VAULT,
-						ACCESS_RC_ANNOUNCE, ACCESS_KEYCARD_AUTH)
-	minimal_access = list(ACCESS_KITCHEN, ACCESS_HEADS, ACCESS_MAINT_TUNNELS, ACCESS_BAR, ACCESS_VAULT,
-						ACCESS_RC_ANNOUNCE, ACCESS_KEYCARD_AUTH)
+	access = list( ACCESS_HEADS, ACCESS_MAINT_TUNNELS, ACCESS_BRIDGE_OFFICER)
+	minimal_access = list(ACCESS_HEADS, ACCESS_MAINT_TUNNELS, ACCESS_BRIDGE_OFFICER)
 	paycheck = PAYCHECK_MEDIUM
 	paycheck_department = ACCOUNT_CIV
-	alt_titles = list("Command Secretary", "Command Officer", "Bridge Secretary")
+	alt_titles = list("Command Secretary", "Command Officer", "Bridge Secretary", "Ensign", "Bridge Bitch")
 	display_order = JOB_DISPLAY_ORDER_BO
-
 	blacklisted_quirks = list(/datum/quirk/mute, /datum/quirk/brainproblems, /datum/quirk/prosopagnosia, /datum/quirk/insanity)
 	threat = 1
-
 
 /datum/outfit/job/bridgeofficer
 	name = "Bridge Officer"
 	jobtype = /datum/job/bridgeofficer
-
 	id = /obj/item/card/id/silver
 	belt = /obj/item/clipboard
 	ears = /obj/item/radio/headset/headset_bo
@@ -42,11 +36,16 @@
 	head = /obj/item/clothing/head/bridgeofficer
 	gloves = /obj/item/clothing/gloves/color/black
 	glasses = /obj/item/clothing/glasses/sunglasses
-	suit = /obj/item/clothing/suit/armor/vest/bluesheid
-	shoes = /obj/item/clothing/shoes/sneakers
-	l_pocket = /obj/item/pda/heads/hop
-	r_pocket = /obj/item/reagent_containers/spray/pepper
-	backpack_contents = list(/obj/item/modular_computer/tablet/preset/advanced = 1)
+	shoes = /obj/item/clothing/shoes/sneakers/brown
+	l_pocket = /obj/item/pda
+	backpack_contents = list(/obj/item/modular_computer/tablet/preset/cheap = 1)
+
+/datum/outfit/plasmaman/bridgeofficer
+	name = "Bridge Officer Plasmaman"
+
+	head = /obj/item/clothing/head/helmet/space/plasmaman
+	uniform = /obj/item/clothing/under/plasmaman
+	ears = /obj/item/radio/headset/headset_bo
 
 /obj/item/radio/headset/headset_bo
 	name = "bridge officer headset"
@@ -56,11 +55,18 @@
 	keyslot = new /obj/item/encryptionkey/headset_bo
 	command = TRUE
 
+/obj/item/radio/headset/headset_bo/bowman
+	name = "bridge officer bowman headset"
+	desc = "This is used by bridge officers. It protects from flashbangs"
+	icon_state = "com_headset_alt"
+	item_state = "com_headset_alt"
+	bowman = TRUE
+
 /obj/item/encryptionkey/headset_bo
 	name = "bridge officer radio encryption key"
 	icon_state = "com_cypherkey"
 	channels = list(RADIO_CHANNEL_COMMAND = 1)
 
-/obj/effect/landmark/start/blueshield
+/obj/effect/landmark/start/bridgeofficer
 	name = "Bridge Officer"
 	icon_state = "Head of Personnel"

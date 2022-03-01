@@ -43,6 +43,24 @@
 	can_adjust = FALSE
 	mutantrace_variation = NONE
 
+/obj/item/clothing/under/bunnysuit
+	name = "bunny outfit"
+	desc = "A simple black bunnt outfit."
+	icon = 'modular_splurt/icons/obj/clothing/uniforms.dmi'
+	mob_overlay_icon = 'modular_splurt/icons/mob/clothing/uniform.dmi'
+	icon_state = "bunnysuit"
+	can_adjust = FALSE
+	mutantrace_variation = STYLE_DIGITIGRADE|STYLE_NO_ANTHRO_ICON
+	body_parts_covered = CHEST|GROIN
+
+/obj/item/clothing/under/bunnysuit/white
+	name = "white bunny outfit"
+	desc = "A simple white bunnt outfit."
+	icon = 'modular_splurt/icons/obj/clothing/uniforms.dmi'
+	mob_overlay_icon = 'modular_splurt/icons/mob/clothing/uniform.dmi'
+	icon_state = "whitebunnysuit"
+	body_parts_covered = CHEST|GROIN|ARMS
+
 /obj/item/clothing/under/rank/security/skirt/slut
 	name = "slutty security jumpskirt"
 	desc = "A \"\"\"tactical\"\"\" security jumpsuit with the legs replaced by a skirt. No matter how you adjust it, it always feels a little too small."
@@ -118,6 +136,11 @@
 	icon_state = "blueformal"
 	item_state = "blueformal"
 
+/obj/item/clothing/under/rank/blueshield/formal/skirt
+	name = "blueshield formal skirt"
+	desc = "The formal uniform of the Blueshield. It makes you feel protected while looking great. A lot better than the stuffy pants."
+	icon_state = "blueshieldskirt"
+	item_state = "blueshieldskirt"
 
 /obj/item/clothing/under/rank/blueshield/skirt
 	name = "blueshield skirt"
@@ -125,6 +148,24 @@
 	icon_state = "blueshieldf"
 	item_state = "blueshieldf"
 	mutantrace_variation = STYLE_DIGITIGRADE|STYLE_NO_ANTHRO_ICON
+
+/obj/item/clothing/under/plasmaman/security/blueshield
+	name = "security plasma envirosuit"
+	desc = "A slick black and blue  plasmaman containment suit designed for the Blueshield."
+	icon_state = "bs_envirosuit"
+	item_state = "bs_envirosuit"
+	icon = 'modular_splurt/icons/obj/clothing/uniforms.dmi'
+	mob_overlay_icon = 'modular_splurt/icons/mob/clothing/uniform.dmi'
+	armor = list("melee" = 10, "bullet" = 5, "laser" = 5,"energy" = 5, "bomb" = 0, "bio" = 0, "rad" = 0, "fire" = 20, "acid" = 30, "wound" = 10)
+
+/obj/item/clothing/head/helmet/space/plasmaman/security/blueshield
+	name = "head of security's plasma envirosuit helmet"
+	desc = "A plasmaman containment helmet designed for the Bluesheidl, manacing black with blue stripes."
+	icon_state = "bs_envirohelm"
+	item_state = "bs_envirohelm"
+	icon = 'modular_splurt/icons/obj/clothing/head.dmi'
+	mob_overlay_icon = 'modular_splurt/icons/mobs/head.dmi'
+	armor = list("melee" = 40, "bullet" = 30, "laser" = 25, "energy" = 10, "bomb" = 25, "bio" = 10, "rad" = 0, "fire" = 50, "acid" = 60)
 
 /obj/item/clothing/under/rank/bridgeofficer
 	name = "bridge officer outfit"
@@ -141,7 +182,6 @@
 	sensor_flags = NONE
 	anthro_mob_worn_overlay = 'modular_splurt/icons/mob/clothing/uniform_digi.dmi'
 	mutantrace_variation = STYLE_DIGITIGRADE|STYLE_ALL_TAURIC
-
 
 /obj/item/clothing/under/rank/bridgeofficer/skirt
 	name = "bridge officer skirt"
