@@ -70,7 +70,7 @@
 					/obj/item/gun/grenadelauncher)
 	crate_name = "riot gun crate"
 
-/datum/supply_pack/security/armory/enfrocer
+/datum/supply_pack/security/armory/enforcer
 	name = "Enforcer pistol crate"
 	desc = "Contains 3 Enforcer handguns. Requires Armory access to open."
 	cost = 3500
@@ -78,3 +78,19 @@
 					/obj/item/gun/ballistic/automatic/pistol/enforcer,
 					/obj/item/gun/ballistic/automatic/pistol/enforcer)
 	crate_name = "enfocer pistol crate"
+
+/datum/supply_pack/security/armory/cap_e45 // I am mad I even have to do this. -Radar Fuckers keep exploting this, moved it to the armory section
+	name = "Captain's Enforcer .45"
+	desc = "A gold handgun meant for the Captain."
+	access = ACCESS_CAPTAIN
+	cost = 6000
+	contains = list(/obj/item/gun/ballistic/automatic/pistol/enforcergold,
+    /obj/item/ammo_box/magazine/e45/lethal,
+    /obj/item/ammo_box/magazine/e45/lethal,
+    /obj/item/ammo_box/magazine/e45,
+    /obj/item/ammo_box/magazine/e45,
+    /obj/item/ammo_box/magazine/e45,
+    /obj/item/ammo_box/magazine/e45/taser,
+    /obj/item/ammo_box/magazine/e45/taser,
+    /obj/item/ammo_box/magazine/e45/taser)
+	crate_name = "captain's .45"

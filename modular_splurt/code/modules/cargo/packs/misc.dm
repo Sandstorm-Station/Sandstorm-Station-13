@@ -1,20 +1,3 @@
-/datum/supply_pack/misc/cap_e45 // I am mad I even have to do this. -Radar
-	name = "Captain's Enforcer .45"
-	desc = "A gold handgun meant for the Captain."
-	access = ACCESS_CAPTAIN
-	cost = 6000
-	contains = list(/obj/item/gun/ballistic/automatic/pistol/enforcergold,
-    /obj/item/ammo_box/magazine/e45/lethal,
-    /obj/item/ammo_box/magazine/e45/lethal,
-    /obj/item/ammo_box/magazine/e45,
-    /obj/item/ammo_box/magazine/e45,
-    /obj/item/ammo_box/magazine/e45,
-    /obj/item/ammo_box/magazine/e45/taser,
-    /obj/item/ammo_box/magazine/e45/taser,
-    /obj/item/ammo_box/magazine/e45/taser)
-	crate_name = "captain's .45"
-	crate_type = /obj/structure/closet/crate/secure/weapon
-
 /datum/supply_pack/misc/m1911s
 	name = "M1911s"
 	desc = "A pack of 3 M1911s with 9 mags of rubber."

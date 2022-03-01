@@ -1,6 +1,6 @@
 /obj/item/gun/energy/civilian
-	name = "civlian energy pistol"
-	desc = "A cheap energy pistol produced by Wattz and Hertz. Has no external ammo indicator. It looks easily modfiable"
+	name = "civilian energy pistol"
+	desc = "A cheap energy pistol produced by Wattz and Hertz. Has no external ammo indicator. It looks easily modifiable"
 	icon = 'modular_splurt/icons/obj/guns/energy.dmi'
 	icon_state = "wattz1000"
 	item_state = "caplaser"
@@ -12,13 +12,13 @@
 	can_flashlight = 0
 
 /obj/item/gun/energy/civilian/lethal
-	name = "moddfied civlian energy pistol"
+	name = "moddfied civilian energy pistol"
 	desc = "A cheap energy pistol produced by Wattz and Hertz. Has no external ammo indicator. It has been modded to shoot lethal lasers, somehow."
 	icon_state = "magnetowattz"
 	ammo_type = list(/obj/item/ammo_casing/energy/laser)
 
 /obj/item/gunpart/civilianlaserframe
-	name = "civlian energy pistol frame"
+	name = "civilian energy pistol frame"
 	desc = "a civilian energy pistol frame"
 	icon_state = "wattz1000frame"
 
