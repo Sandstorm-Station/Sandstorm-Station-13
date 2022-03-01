@@ -2385,6 +2385,8 @@ GLOBAL_LIST_EMPTY(preferences_datums)
 							var/datum/sprite_accessory/S = instance
 							if(!show_mismatched_markings && S.recommended_species && !S.recommended_species.Find(pref_species.id))
 								continue
+							if(S.ignore)
+								continue
 							if((!S.ckeys_allowed) || (S.ckeys_allowed.Find(user.client.ckey)))
 								snowflake_taur_list[S.name] = path
 					var/new_taur
