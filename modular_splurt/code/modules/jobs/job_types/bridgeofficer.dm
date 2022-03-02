@@ -17,11 +17,11 @@
 	outfit = /datum/outfit/job/bridgeofficer
 	plasma_outfit = /datum/outfit/plasmaman/bridgeofficer
 	custom_spawn_text = "<font color='red'>Bridge Officer: You are here to assist the bridge staff with whatever they need. You have very limited access. You are not Secuirty and you are not in the line of secceustion. You have no power, listen to the Captain and the HOP.</font>"
-	access = list( ACCESS_HEADS, ACCESS_MAINT_TUNNELS, ACCESS_BRIDGE_OFFICER)
-	minimal_access = list(ACCESS_HEADS, ACCESS_MAINT_TUNNELS, ACCESS_BRIDGE_OFFICER)
+	access = list( ACCESS_HEADS, ACCESS_MAINT_TUNNELS, ACCESS_BRIDGE_OFFICER, ACCESS_RC_ANNOUNCE, ACCESS_KEYCARD_AUTH)
+	minimal_access = list(ACCESS_HEADS, ACCESS_MAINT_TUNNELS, ACCESS_BRIDGE_OFFICER, ACCESS_RC_ANNOUNCE, ACCESS_KEYCARD_AUTH)
 	paycheck = PAYCHECK_MEDIUM
 	paycheck_department = ACCOUNT_CIV
-	alt_titles = list("Command Secretary", "Command Officer", "Bridge Secretary", "Ensign", "Bridge Bitch")
+	alt_titles = list("Command Secretary", "Command Officer", "Bridge Secretary", "Ensign", "Bridge Bitch", "Bridge Advisor")
 	display_order = JOB_DISPLAY_ORDER_BO
 	blacklisted_quirks = list(/datum/quirk/mute, /datum/quirk/brainproblems, /datum/quirk/prosopagnosia, /datum/quirk/insanity)
 	threat = 1
