@@ -57,6 +57,7 @@
 	vend_reply = "Thank you for using the BlueDrobe!"
 	products = list(/obj/item/clothing/under/rank/bridgeofficer = 2,
 					/obj/item/clothing/under/rank/bridgeofficer/skirt = 2,
+					/obj/item/clothing/under/rank/bridgeofficer/formal = 2,
 					/obj/item/clothing/head/bridgeofficer = 2,
 					/obj/item/clothing/head/bridgeofficer/beret = 2,
 					/obj/item/clothing/suit/toggle/brigdesec = 2,

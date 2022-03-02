@@ -20,6 +20,7 @@
 	desc = "A generic blue beret for the back ground officer"
 	icon_state = "beret_bridgesec"
 	item_state = "beret_bridgesec"
+	mob_overlay_icon = 'modular_splurt/icons/mob/clothing/head.dmi'
 
 /obj/item/clothing/head/press_helmet
 	name = "press helmet"

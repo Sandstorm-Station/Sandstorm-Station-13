@@ -6,7 +6,7 @@
 	icon_state = "hop_parade_male"
 	item_state = "hop_parade_male"
 	can_adjust = FALSE
-	mutantrace_variation = STYLE_DIGITIGRADE|STYLE_ALL_TAURIC
+	mutantrace_variation = STYLE_DIGITIGRADE|STYLE_NO_ANTHRO_ICON
 
 /obj/item/clothing/under/rank/civilian/head_of_personnel/parade/female
 	name = "head of personnel's parade uniform"

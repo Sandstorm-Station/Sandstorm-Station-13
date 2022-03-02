@@ -188,3 +188,11 @@
 	icon_state = "bridgesecf"
 	item_state = "bridgesecf"
 	mutantrace_variation = STYLE_DIGITIGRADE|STYLE_NO_ANTHRO_ICON
+
+/obj/item/clothing/under/rank/bridgeofficer/formal
+	name = "bridge officer formal outfit"
+	desc = "The uniform of a bridge officer. Its a formal varaint."
+	icon = 'modular_splurt/icons/obj/clothing/uniforms.dmi'
+	mob_overlay_icon = 'modular_splurt/icons/mob/clothing/uniform.dmi'
+	icon_state = "bridgesecformal"
+	item_state = "bridgesecformal"
