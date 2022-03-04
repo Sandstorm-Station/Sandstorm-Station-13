@@ -32,7 +32,7 @@
 	path = /obj/item/clothing/underwear/briefs/boxers/usa
 
 /datum/gear/underwear/boxers/commie
-	name = "Heart Boxers"
+	name = "Commie Boxers"
 	path = /obj/item/clothing/underwear/briefs/boxers/commie
 
 /datum/gear/underwear/boxers/striped
