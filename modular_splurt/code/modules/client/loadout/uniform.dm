@@ -27,3 +27,12 @@
 /datum/gear/uniform/waiter
 	name = "waiter's outfit"
 	path = /obj/item/clothing/under/suit/waiter
+
+/datum/gear/uniform/bunnysuit
+	name = "bunny outfit"
+	path = /obj/item/clothing/under/bunnysuit
+
+/datum/gear/uniform/bunnysuitwhite
+	name = "white bunny outfit"
+	path = /obj/item/clothing/under/bunnysuit/white
+
