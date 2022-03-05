@@ -838,7 +838,7 @@ GLOBAL_LIST_EMPTY(preferences_datums)
 								dat += "<a style='display:block;width:50px' href='?_src_=prefs;preference=balls_fluid;task=input'>Water</a>"
 							if(/datum/reagent/consumable/semen)
 								dat += "<a style='display:block;width:50px' href='?_src_=prefs;preference=balls_fluid;task=input'>Semen</a>"
-							if(/datum/reagent/consumable/femcum)
+							if(/datum/reagent/consumable/semen/femcum)
 								dat += "<a style='display:block;width:50px' href='?_src_=prefs;preference=balls_fluid;task=input'>Femcum</a>"
 							if(/datum/reagent/consumable/alienhoney)
 								dat += "<a style='display:block;width:50px' href='?_src_=prefs;preference=balls_fluid;task=input'>Honey</a>"
@@ -882,7 +882,7 @@ GLOBAL_LIST_EMPTY(preferences_datums)
 								dat += "<a style='display:block;width:50px' href='?_src_=prefs;preference=breasts_fluid;task=input'>Water</a>"
 							if(/datum/reagent/consumable/semen)
 								dat += "<a style='display:block;width:50px' href='?_src_=prefs;preference=breasts_fluid;task=input'>Semen</a>"
-							if(/datum/reagent/consumable/femcum)
+							if(/datum/reagent/consumable/semen/femcum)
 								dat += "<a style='display:block;width:50px' href='?_src_=prefs;preference=breasts_fluid;task=input'>Femcum</a>"
 							if(/datum/reagent/consumable/alienhoney)
 								dat += "<a style='display:block;width:50px' href='?_src_=prefs;preference=breasts_fluid;task=input'>Honey</a>"
@@ -2561,7 +2561,7 @@ GLOBAL_LIST_EMPTY(preferences_datums)
 						if("Semen")
 							features["balls_fluid"] = /datum/reagent/consumable/semen
 						if("Femcum")
-							features["balls_fluid"] = /datum/reagent/consumable/femcum
+							features["balls_fluid"] = /datum/reagent/consumable/semen/femcum
 						if("Honey")
 							features["balls_fluid"] = /datum/reagent/consumable/alienhoney
 
@@ -2603,7 +2603,7 @@ GLOBAL_LIST_EMPTY(preferences_datums)
 						if("Semen")
 							features["breasts_fluid"] = /datum/reagent/consumable/semen
 						if("Femcum")
-							features["breasts_fluid"] = /datum/reagent/consumable/femcum
+							features["breasts_fluid"] = /datum/reagent/consumable/semen/femcum
 						if("Honey")
 							features["breasts_fluid"] = /datum/reagent/consumable/alienhoney
 
