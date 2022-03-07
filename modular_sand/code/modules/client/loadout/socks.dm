@@ -2,8 +2,7 @@
 	name = "Socks"
 	category = LOADOUT_CATEGORY_GENERAL_UNDER
 	subcategory = LOADOUT_SUBCATEGORY_SOCKS
-	slot = SLOT_W_SOCKS
-	has_colors = TRUE
+	slot = ITEM_SLOT_SOCKS
 	path = /obj/item/clothing/underwear/socks
 	cost = 0
 
