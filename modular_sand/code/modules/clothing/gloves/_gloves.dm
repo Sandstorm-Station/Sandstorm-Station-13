@@ -1,9 +1,9 @@
 /obj/item/clothing/gloves
 	var/dummy_thick = FALSE // is able to hold accessories on its item
-	// Sandstorm edit - Removed the old attached accessory system. We use a list of accessories instead.
+	//SKYRAT EDIT - Removed the old attached accessory system. We use a list of accessories instead.
 	var/list/obj/item/clothing/accessory/ring/attached_accessories = list()
 	var/max_accessories = 1
-	// Sandstorm edit END
+	//SKYRAT EDIT END
 	var/mutable_appearance/accessory_overlay
 
 /obj/item/clothing/gloves/worn_overlays(isinhands = FALSE, icon_file, used_state, style_flags = NONE)
@@ -20,30 +20,30 @@
 	. = ..()
 	if(!istype(user) || !user.canUseTopic(src, BE_CLOSE, ismonkey(user)))
 		return
-	if(length(attached_accessories)) // Sandstorm edit
+	if(length(attached_accessories)) //SKYRAT EDIT
 		remove_accessory(user)
 
 /obj/item/clothing/gloves/equipped(mob/user, slot)
 	..()
 
-	// Sandstorm edit
+	//SKYRAT EDIT
 	for(var/obj/item/clothing/accessory/ring/attached_accessory in attached_accessories)
-		if(attached_accessory && slot != ITEM_SLOT_HANDS && ishuman(user))
+		if(attached_accessory && slot != SLOT_HANDS && ishuman(user))
 			var/mob/living/carbon/human/H = user
 			attached_accessory.on_uniform_equip(src, user)
 			if(attached_accessory.above_suit)
 				H.update_inv_wear_suit()
-	// Sandstorm edit END
+	//SKYRAT EDIT END
 
 /obj/item/clothing/gloves/dropped(mob/user)
-	// Sandstorm edit
+	//SKYRAT EDIT
 	for(var/obj/item/clothing/accessory/ring/attached_accessory in attached_accessories)
 		attached_accessory.on_uniform_dropped(src, user)
 		if(ishuman(user))
 			var/mob/living/carbon/human/H = user
 			if(attached_accessory.above_suit)
 				H.update_inv_wear_suit()
-	// Sandstorm edit END
+	//SKYRAT EDIT END
 	..()
 
 /obj/item/clothing/gloves/proc/attach_accessory(obj/item/I, mob/user, notifyAttach = 1)
@@ -70,14 +70,14 @@
 			if((flags_inv & HIDEACCESSORY) || (A.flags_inv & HIDEACCESSORY))
 				return TRUE
 
-			// Sandstorm edit
+			//SKYRAT EDIT
 			accessory_overlay = mutable_appearance(I.mob_overlay_icon, I.item_state)
 			for(var/obj/item/clothing/accessory/ring/attached_accessory in attached_accessories)
 				var/mutable_appearance/Y = mutable_appearance(attached_accessory.mob_overlay_icon, attached_accessory.icon_state, ABOVE_HUD_LAYER)
 				Y.alpha = attached_accessory.alpha
 				Y.color = attached_accessory.color
 				accessory_overlay.add_overlay(Y)
-			// Sandstorm edit END
+			//SKYRAT EDIT END
 
 			if(ishuman(loc))
 				var/mob/living/carbon/human/H = loc
@@ -91,10 +91,10 @@
 	if(!can_use(user))
 		return
 
-	// Sandstorm edit
+	//SKYRAT EDIT
 	if(length(attached_accessories))
 		var/obj/item/clothing/accessory/ring/A = attached_accessories[length(attached_accessories)]
-	// Sandstorm edit END
+	//SKYRAT EDIT END
 		A.detach(src, user)
 		if(user.put_in_hands(A))
 			to_chat(user, "<span class='notice'>You detach [A] from [src].</span>")

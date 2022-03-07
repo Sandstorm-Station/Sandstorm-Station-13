@@ -3655,7 +3655,7 @@
 /area/security/checkpoint)
 "alB" = (
 /obj/structure/table/reinforced,
-/obj/item/book/manual/splurt_space_law,
+/obj/item/book/manual/wiki/security_space_law,
 /obj/item/radio,
 /obj/structure/reagent_dispensers/peppertank{
 	pixel_x = 32
@@ -8806,7 +8806,7 @@
 	pixel_x = -32
 	},
 /obj/structure/table/reinforced,
-/obj/item/book/manual/splurt_space_law,
+/obj/item/book/manual/wiki/security_space_law,
 /obj/item/radio,
 /obj/machinery/button/door{
 	desc = "A remote control switch.";
@@ -15596,7 +15596,6 @@
 /obj/effect/turf_decal/tile/red{
 	dir = 8
 	},
-/obj/item/storage/backpack/duffelbag/sec/surgery,
 /turf/open/floor/plasteel/white,
 /area/security/brig)
 "bkl" = (
@@ -15622,16 +15621,15 @@
 /obj/structure/cable/white{
 	icon_state = "1-8"
 	},
+/obj/machinery/door/airlock/medical/glass{
+	name = "Infirmary"
+	},
 /obj/machinery/atmospherics/pipe/simple/supply/hidden{
 	dir = 4
 	},
 /obj/effect/turf_decal/tile/red,
 /obj/effect/turf_decal/tile/red{
 	dir = 4
-	},
-/obj/machinery/door/airlock/security/glass{
-	name = "Brig Infirmary";
-	req_access_txt = "2, 71"
 	},
 /turf/open/floor/plasteel/white,
 /area/security/brig)
@@ -18903,7 +18901,7 @@
 	dir = 1
 	},
 /obj/item/folder/red,
-/obj/item/book/manual/splurt_space_law,
+/obj/item/book/manual/wiki/security_space_law,
 /obj/effect/turf_decal/tile/red{
 	dir = 1
 	},
@@ -21230,7 +21228,7 @@
 /obj/structure/cable/white{
 	icon_state = "1-8"
 	},
-/obj/item/book/manual/splurt_space_law,
+/obj/item/book/manual/wiki/security_space_law,
 /obj/item/camera/detective,
 /obj/effect/turf_decal/tile/neutral{
 	dir = 1
@@ -25835,7 +25833,7 @@
 	dir = 8;
 	pixel_x = 24
 	},
-/obj/item/book/manual/splurt_space_law,
+/obj/item/book/manual/wiki/security_space_law,
 /obj/item/radio,
 /obj/effect/turf_decal/tile/red,
 /obj/effect/turf_decal/tile/red{
@@ -28463,8 +28461,6 @@
 /obj/effect/turf_decal/tile/neutral{
 	dir = 8
 	},
-/obj/item/clothing/suit/brigdoc/armor,
-/obj/item/clothing/head/helmet/brigdoc,
 /turf/open/floor/plasteel/dark,
 /area/ai_monitored/security/armory)
 "cbM" = (
@@ -32047,7 +32043,7 @@
 /obj/structure/rack,
 /obj/effect/decal/cleanable/dirt,
 /obj/item/crowbar/red,
-/obj/item/book/manual/splurt_space_law,
+/obj/item/book/manual/wiki/security_space_law,
 /obj/effect/spawner/lootdrop/maintenance,
 /turf/open/floor/plating,
 /area/maintenance/starboard)
@@ -36954,7 +36950,7 @@
 /obj/machinery/door/firedoor,
 /obj/machinery/door/airlock/command{
 	name = "Blueshield's Quarters";
-	req_access_txt = "72"
+	req_access_txt = "19"
 	},
 /turf/open/floor/wood,
 /area/command/blueshielquarters)
@@ -40079,7 +40075,7 @@
 /area/security/checkpoint/science/research)
 "cQG" = (
 /obj/structure/table/reinforced,
-/obj/item/book/manual/splurt_space_law,
+/obj/item/book/manual/wiki/security_space_law,
 /obj/item/radio,
 /obj/machinery/status_display/ai{
 	pixel_y = 32
@@ -41306,7 +41302,7 @@
 	pixel_x = -32
 	},
 /obj/structure/table/reinforced,
-/obj/item/book/manual/splurt_space_law,
+/obj/item/book/manual/wiki/security_space_law,
 /obj/item/radio,
 /obj/machinery/button/door{
 	desc = "A remote control switch for the medbay foyer.";
@@ -52861,7 +52857,7 @@
 /obj/machinery/door/firedoor,
 /obj/machinery/door/airlock/command{
 	name = "Blueshield's Quarters";
-	req_access_txt = "72"
+	req_access_txt = "19"
 	},
 /turf/open/floor/plasteel/white,
 /area/command/blueshielquarters)
@@ -59838,7 +59834,7 @@
 "dFx" = (
 /obj/structure/table/wood,
 /obj/item/crowbar/red,
-/obj/item/book/manual/splurt_space_law{
+/obj/item/book/manual/wiki/security_space_law{
 	pixel_x = 3;
 	pixel_y = 3
 	},
@@ -76284,7 +76280,7 @@
 	dir = 8
 	},
 /obj/structure/cable/white{
-	icon_state = "4-8"
+	icon_state = "0-4"
 	},
 /turf/open/floor/plasteel/dark,
 /area/ai_monitored/aisat/exterior)
@@ -77362,7 +77358,6 @@
 	dir = 1
 	},
 /obj/structure/disposalpipe/segment,
-/obj/effect/landmark/start/bridgeofficer,
 /turf/open/floor/carpet,
 /area/command/meeting_room/council)
 "glG" = (
@@ -77911,9 +77906,6 @@
 /obj/structure/closet/secure_closet/hop,
 /obj/item/clothing/suit/ianshirt,
 /obj/item/bedsheet/ian,
-/obj/item/clothing/suit/toggle/armor/hop/hop_formal,
-/obj/item/clothing/under/rank/civilian/head_of_personnel/parade,
-/obj/item/clothing/under/rank/civilian/head_of_personnel/parade/female,
 /turf/open/floor/plasteel/grimy,
 /area/command/heads_quarters/hop)
 "gyR" = (
@@ -79714,7 +79706,8 @@
 /turf/open/floor/plasteel/cafeteria,
 /area/engineering/atmos)
 "hfd" = (
-/obj/structure/closet/secure_closet/bridgesec,
+/obj/structure/table/wood,
+/obj/item/paicard,
 /turf/open/floor/wood,
 /area/command/meeting_room/council)
 "hfm" = (
@@ -79794,9 +79787,6 @@
 	},
 /obj/effect/turf_decal/tile/neutral{
 	dir = 8
-	},
-/obj/structure/cable/white{
-	icon_state = "1-2"
 	},
 /turf/open/floor/plasteel/dark,
 /area/ai_monitored/aisat/exterior)
@@ -80570,6 +80560,9 @@
 /obj/structure/cable/white{
 	icon_state = "1-4"
 	},
+/obj/machinery/atmospherics/pipe/simple/scrubbers/hidden{
+	dir = 5
+	},
 /obj/machinery/atmospherics/pipe/simple/supply/hidden{
 	dir = 4
 	},
@@ -80850,11 +80843,11 @@
 /obj/effect/turf_decal/stripes/line{
 	dir = 4
 	},
-/obj/machinery/door/firedoor,
 /obj/machinery/door/airlock/maintenance{
 	name = "Blueshield's Office Maintenance";
-	req_access_txt = "72"
+	req_access_txt = "19"
 	},
+/obj/machinery/door/firedoor,
 /turf/open/floor/plasteel,
 /area/command/blueshieldoffice)
 "hyt" = (
@@ -82374,6 +82367,7 @@
 /turf/open/floor/plasteel,
 /area/hallway/primary/central)
 "hVz" = (
+/obj/item/kirbyplants/random,
 /obj/effect/turf_decal/tile/neutral{
 	dir = 1
 	},
@@ -82384,7 +82378,6 @@
 /obj/effect/turf_decal/tile/neutral{
 	dir = 8
 	},
-/obj/machinery/vending/wardrobe/bridgeofficer_wardrobe,
 /turf/open/floor/plasteel/dark,
 /area/command/meeting_room/council)
 "hVA" = (
@@ -84000,7 +83993,7 @@
 "iuq" = (
 /obj/structure/table/wood,
 /obj/item/storage/secure/briefcase,
-/obj/item/book/manual/splurt_space_law,
+/obj/item/book/manual/wiki/security_space_law,
 /obj/effect/turf_decal/tile/neutral{
 	dir = 1
 	},
@@ -85052,9 +85045,6 @@
 /obj/effect/turf_decal/tile/neutral{
 	dir = 8
 	},
-/obj/structure/cable/white{
-	icon_state = "2-4"
-	},
 /turf/open/floor/plasteel/dark,
 /area/ai_monitored/aisat/exterior)
 "iLR" = (
@@ -85538,29 +85528,6 @@
 /obj/effect/turf_decal/delivery,
 /turf/open/floor/plasteel,
 /area/service/hydroponics)
-"iSH" = (
-/obj/structure/window/reinforced{
-	dir = 4
-	},
-/obj/structure/window/reinforced{
-	dir = 8
-	},
-/obj/machinery/atmospherics/pipe/simple/supply/hidden,
-/obj/effect/turf_decal/tile/neutral{
-	dir = 1
-	},
-/obj/effect/turf_decal/tile/neutral,
-/obj/effect/turf_decal/tile/neutral{
-	dir = 4
-	},
-/obj/effect/turf_decal/tile/neutral{
-	dir = 8
-	},
-/obj/structure/cable/white{
-	icon_state = "1-2"
-	},
-/turf/open/floor/plasteel/dark,
-/area/ai_monitored/aisat/exterior)
 "iSM" = (
 /obj/structure/reagent_dispensers/watertank,
 /obj/machinery/status_display/evac{
@@ -91094,9 +91061,7 @@
 /obj/structure/cable/white{
 	icon_state = "1-2"
 	},
-/obj/machinery/atmospherics/pipe/simple/scrubbers/hidden{
-	dir = 5
-	},
+/obj/machinery/atmospherics/pipe/simple/scrubbers/hidden,
 /turf/open/floor/wood,
 /area/command/blueshieldoffice)
 "kND" = (
@@ -97667,10 +97632,13 @@
 /turf/open/floor/plasteel,
 /area/engineering/atmos)
 "ned" = (
+/obj/structure/closet/secure_closet/hos,
+/obj/item/clothing/head/HoS/beret,
+/obj/item/clothing/suit/armor/hos/trenchcoat,
+/obj/item/clothing/under/rank/security/head_of_security/grey,
 /obj/effect/turf_decal/stripes/line{
 	dir = 9
 	},
-/obj/machinery/vending/wardrobe/hos_wardrobe,
 /turf/open/floor/plasteel,
 /area/command/heads_quarters/hos)
 "nef" = (
@@ -100157,7 +100125,6 @@
 	},
 /obj/structure/table/wood,
 /obj/item/flashlight/lamp,
-/obj/item/paicard,
 /turf/open/floor/wood,
 /area/command/meeting_room/council)
 "nWn" = (
@@ -105303,7 +105270,7 @@
 /area/cargo/sorting)
 "pLx" = (
 /obj/structure/table/reinforced,
-/obj/item/book/manual/splurt_space_law,
+/obj/item/book/manual/wiki/security_space_law,
 /obj/item/taperecorder,
 /obj/machinery/atmospherics/pipe/manifold/scrubbers/hidden{
 	dir = 1
@@ -108629,9 +108596,6 @@
 /obj/effect/turf_decal/tile/neutral{
 	dir = 8
 	},
-/obj/structure/cable/white{
-	icon_state = "1-2"
-	},
 /turf/open/floor/plasteel/dark,
 /area/ai_monitored/aisat/exterior)
 "rbH" = (
@@ -108938,6 +108902,12 @@
 /turf/open/floor/plasteel/dark,
 /area/service/chapel/office)
 "rhk" = (
+/obj/structure/cable/white{
+	icon_state = "4-8"
+	},
+/obj/machinery/atmospherics/pipe/simple/supply/hidden{
+	dir = 4
+	},
 /obj/machinery/atmospherics/components/unary/vent_scrubber/on{
 	dir = 8
 	},
@@ -109214,8 +109184,8 @@
 /area/commons/dorms)
 "rmn" = (
 /obj/structure/table/wood,
-/obj/item/book/manual/splurt_space_law,
-/obj/item/book/manual/splurt_space_law,
+/obj/item/book/manual/wiki/security_space_law,
+/obj/item/book/manual/wiki/security_space_law,
 /obj/item/taperecorder{
 	pixel_x = 3
 	},
@@ -118894,9 +118864,6 @@
 /obj/effect/turf_decal/tile/neutral{
 	dir = 8
 	},
-/obj/structure/cable/white{
-	icon_state = "1-8"
-	},
 /turf/open/floor/plasteel/dark,
 /area/ai_monitored/aisat/exterior)
 "uxB" = (
@@ -119449,7 +119416,6 @@
 /obj/effect/turf_decal/stripes/line{
 	dir = 1
 	},
-/obj/structure/closet/secure_closet/hosnew,
 /turf/open/floor/plasteel,
 /area/command/heads_quarters/hos)
 "uIT" = (
@@ -120714,7 +120680,6 @@
 	dir = 4
 	},
 /obj/structure/disposalpipe/segment,
-/obj/effect/landmark/start/bridgeofficer,
 /turf/open/floor/carpet,
 /area/command/meeting_room/council)
 "vib" = (
@@ -120905,7 +120870,6 @@
 /obj/structure/extinguisher_cabinet{
 	pixel_x = -26
 	},
-/obj/machinery/vending/wardrobe/blueshield_wardrobe,
 /turf/open/floor/wood,
 /area/command/blueshielquarters)
 "vmb" = (
@@ -124155,7 +124119,7 @@
 "wyD" = (
 /obj/structure/table/wood,
 /obj/item/folder/red,
-/obj/item/book/manual/splurt_space_law,
+/obj/item/book/manual/wiki/security_space_law,
 /turf/open/floor/wood,
 /area/command/meeting_room/council)
 "wyE" = (
@@ -125682,11 +125646,11 @@
 /area/service/lawoffice)
 "xbT" = (
 /obj/machinery/atmospherics/pipe/simple/supply/hidden,
-/obj/machinery/door/firedoor,
 /obj/machinery/door/airlock/command/glass{
 	name = "Blueshield";
-	req_access_txt = "72"
+	req_access_txt = "19"
 	},
+/obj/machinery/door/firedoor,
 /turf/open/floor/plasteel,
 /area/command/blueshieldoffice)
 "xcf" = (
@@ -140581,7 +140545,7 @@ bkE
 ivC
 iLK
 rbG
-iSH
+gxc
 hgA
 uxh
 fHK
@@ -163912,8 +163876,8 @@ ajZ
 igs
 fzF
 wLv
+flJ
 rhk
-nDx
 flJ
 lPU
 avv

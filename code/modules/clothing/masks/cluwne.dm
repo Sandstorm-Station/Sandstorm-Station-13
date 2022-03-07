@@ -55,7 +55,7 @@
 	. = ..()
 	if(!ishuman(user))
 		return
-	if(slot == ITEM_SLOT_MASK)
+	if(slot == SLOT_WEAR_MASK)
 		var/mob/living/carbon/human/H = user
 		H.dna.add_mutation(CLUWNEMUT)
 	return
@@ -88,7 +88,7 @@
 	if(!ishuman(user))
 		return
 	var/mob/living/carbon/human/H = user
-	if(slot == ITEM_SLOT_MASK)
+	if(slot == SLOT_WEAR_MASK)
 		if(is_cursed && can_cluwne) //logic predetermined
 			log_admin("[key_name(H)] was made into a cluwne by [src]")
 			message_admins("[key_name(H)] got cluwned by [src]")

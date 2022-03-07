@@ -151,11 +151,11 @@
 /obj/item/reagent_containers/rag/towel/equipped(mob/living/user, slot)
 	. = ..()
 	switch(slot)
-		if(ITEM_SLOT_BELT)
+		if(SLOT_BELT)
 			body_parts_covered = GROIN|LEGS
-		if(ITEM_SLOT_OCLOTHING)
+		if(SLOT_WEAR_SUIT)
 			body_parts_covered = CHEST|GROIN|LEGS
-		if(ITEM_SLOT_HEAD)
+		if(SLOT_HEAD)
 			body_parts_covered = HEAD
 			flags_inv = HIDEHAIR
 

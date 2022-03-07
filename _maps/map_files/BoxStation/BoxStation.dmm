@@ -803,7 +803,7 @@
 /turf/open/floor/plating,
 /area/command/heads_quarters/hos)
 "abU" = (
-/obj/item/book/manual/splurt_space_law,
+/obj/item/book/manual/wiki/security_space_law,
 /obj/structure/table/wood,
 /obj/structure/cable{
 	icon_state = "1-2"
@@ -2589,8 +2589,8 @@
 /obj/item/storage/secure/safe/HoS{
 	pixel_x = 35
 	},
+/obj/structure/closet/secure_closet/hos,
 /obj/effect/turf_decal/bot,
-/obj/structure/closet/secure_closet/hosnew,
 /turf/open/floor/plasteel/dark,
 /area/command/heads_quarters/hos)
 "afu" = (
@@ -3065,8 +3065,8 @@
 /area/security/brig)
 "agp" = (
 /obj/structure/table,
-/obj/item/book/manual/splurt_space_law,
-/obj/item/book/manual/splurt_space_law,
+/obj/item/book/manual/wiki/security_space_law,
+/obj/item/book/manual/wiki/security_space_law,
 /turf/open/floor/plasteel,
 /area/security/brig)
 "agq" = (
@@ -3124,7 +3124,6 @@
 	name = "HoS Office Shutters";
 	pixel_y = -25
 	},
-/obj/machinery/vending/wardrobe/hos_wardrobe,
 /turf/open/floor/plasteel/dark,
 /area/command/heads_quarters/hos)
 "agx" = (
@@ -3348,7 +3347,7 @@
 "agO" = (
 /obj/machinery/door/airlock/security/glass{
 	name = "Brig Infirmary";
-	req_access_txt = "71"
+	req_access_txt = "2"
 	},
 /obj/effect/mapping_helpers/airlock/cyclelink_helper,
 /obj/machinery/door/firedoor,
@@ -3525,8 +3524,8 @@
 /area/security/office)
 "ahd" = (
 /obj/structure/table,
-/obj/item/book/manual/splurt_space_law,
-/obj/item/book/manual/splurt_space_law,
+/obj/item/book/manual/wiki/security_space_law,
+/obj/item/book/manual/wiki/security_space_law,
 /obj/machinery/atmospherics/pipe/simple/supply/hidden,
 /turf/open/floor/plasteel,
 /area/security/office)
@@ -4802,7 +4801,7 @@
 /obj/machinery/door/firedoor,
 /obj/machinery/door/airlock/command{
 	name = "Blueshield's Quarters";
-	req_access_txt = "72"
+	req_access_txt = "19"
 	},
 /turf/open/floor/carpet,
 /area/command/blueshielquarters)
@@ -4923,7 +4922,7 @@
 /obj/machinery/atmospherics/components/unary/vent_pump/on{
 	dir = 8
 	},
-/obj/machinery/vending/wardrobe/blueshield_wardrobe,
+/obj/structure/closet/secure_closet/blueshield,
 /turf/open/floor/carpet,
 /area/command/blueshielquarters)
 "aju" = (
@@ -5181,7 +5180,7 @@
 /area/security/courtroom)
 "ajQ" = (
 /obj/structure/table/wood,
-/obj/item/book/manual/splurt_space_law,
+/obj/item/book/manual/wiki/security_space_law,
 /obj/effect/turf_decal/tile/neutral{
 	dir = 1
 	},
@@ -7389,7 +7388,7 @@
 /area/security/courtroom)
 "aoH" = (
 /obj/structure/table,
-/obj/item/book/manual/splurt_space_law{
+/obj/item/book/manual/wiki/security_space_law{
 	pixel_x = -3;
 	pixel_y = 5
 	},
@@ -7554,9 +7553,9 @@
 /obj/machinery/door/firedoor,
 /obj/machinery/door/airlock/command/glass{
 	name = "Blueshield";
-	req_access_txt = "72"
+	req_access_txt = "19"
 	},
-/turf/open/floor/carpet,
+/turf/open/floor/plating,
 /area/command/blueshieldoffice)
 "apf" = (
 /obj/structure/disposalpipe/segment,
@@ -8400,8 +8399,8 @@
 /area/service/lawoffice)
 "arb" = (
 /obj/structure/table/wood,
-/obj/item/book/manual/splurt_space_law,
-/obj/item/book/manual/splurt_space_law,
+/obj/item/book/manual/wiki/security_space_law,
+/obj/item/book/manual/wiki/security_space_law,
 /obj/item/pen/red,
 /turf/open/floor/wood,
 /area/service/lawoffice)
@@ -21792,7 +21791,6 @@
 	dir = 8
 	},
 /obj/machinery/atmospherics/pipe/simple/scrubbers/hidden,
-/obj/effect/landmark/start/bridgeofficer,
 /turf/open/floor/carpet,
 /area/command/meeting_room)
 "bbD" = (
@@ -21863,7 +21861,7 @@
 /turf/open/floor/mineral/titanium/blue,
 /area/commons/toilet/locker)
 "bbM" = (
-/obj/item/book/manual/splurt_space_law,
+/obj/item/book/manual/wiki/security_space_law,
 /obj/structure/table/wood,
 /turf/open/floor/carpet,
 /area/command/meeting_room)
@@ -23809,7 +23807,7 @@
 	pixel_y = 26;
 	req_access_txt = "5"
 	},
-/obj/item/book/manual/splurt_space_law,
+/obj/item/book/manual/wiki/security_space_law,
 /obj/effect/turf_decal/tile/red{
 	dir = 1
 	},
@@ -27799,7 +27797,6 @@
 	},
 /obj/structure/disposalpipe/segment,
 /obj/machinery/atmospherics/pipe/simple/supply/hidden,
-/obj/machinery/photocopier,
 /turf/open/floor/plasteel,
 /area/command/heads_quarters/hop)
 "bqD" = (
@@ -30225,9 +30222,6 @@
 	dir = 8
 	},
 /obj/item/clothing/suit/ianshirt,
-/obj/item/clothing/under/rank/civilian/head_of_personnel/parade/female,
-/obj/item/clothing/under/rank/civilian/head_of_personnel/parade,
-/obj/item/clothing/suit/toggle/armor/hop/hop_formal,
 /turf/open/floor/plasteel,
 /area/command/heads_quarters/hop)
 "bwj" = (
@@ -30782,7 +30776,7 @@
 /turf/open/floor/plasteel,
 /area/security/checkpoint/supply)
 "bxD" = (
-/obj/item/book/manual/splurt_space_law,
+/obj/item/book/manual/wiki/security_space_law,
 /obj/structure/table,
 /obj/effect/turf_decal/tile/red{
 	dir = 1
@@ -32182,7 +32176,7 @@
 /area/security/checkpoint/science)
 "bAH" = (
 /obj/structure/table,
-/obj/item/book/manual/splurt_space_law,
+/obj/item/book/manual/wiki/security_space_law,
 /obj/effect/turf_decal/tile/red,
 /obj/effect/turf_decal/tile/red{
 	dir = 4
@@ -39444,9 +39438,6 @@
 /obj/effect/turf_decal/stripes/line{
 	dir = 8
 	},
-/obj/structure/cable{
-	icon_state = "4-8"
-	},
 /turf/open/floor/plasteel,
 /area/tcommsat/computer)
 "bSe" = (
@@ -39904,7 +39895,7 @@
 /area/security/checkpoint/engineering)
 "bTH" = (
 /obj/structure/table,
-/obj/item/book/manual/splurt_space_law,
+/obj/item/book/manual/wiki/security_space_law,
 /obj/machinery/atmospherics/pipe/manifold/scrubbers/hidden,
 /obj/effect/turf_decal/tile/red,
 /obj/effect/turf_decal/tile/red{
@@ -39915,9 +39906,6 @@
 "bTI" = (
 /obj/machinery/atmospherics/pipe/simple/scrubbers/hidden,
 /obj/machinery/holopad/secure,
-/obj/structure/cable{
-	icon_state = "1-2"
-	},
 /turf/open/floor/plasteel,
 /area/tcommsat/computer)
 "bTJ" = (
@@ -40246,9 +40234,6 @@
 	dir = 4
 	},
 /obj/machinery/atmospherics/pipe/simple/scrubbers/hidden,
-/obj/structure/cable{
-	icon_state = "1-2"
-	},
 /turf/open/floor/plasteel,
 /area/tcommsat/computer)
 "bUz" = (
@@ -40944,9 +40929,6 @@
 /area/science/misc_lab)
 "bWs" = (
 /obj/machinery/atmospherics/pipe/manifold/scrubbers/hidden,
-/obj/structure/cable{
-	icon_state = "1-4"
-	},
 /turf/open/floor/plasteel,
 /area/tcommsat/computer)
 "bWt" = (
@@ -40966,17 +40948,11 @@
 /obj/machinery/atmospherics/pipe/simple/scrubbers/hidden{
 	dir = 4
 	},
-/obj/structure/cable{
-	icon_state = "4-8"
-	},
 /turf/open/floor/plasteel,
 /area/tcommsat/computer)
 "bWv" = (
 /obj/machinery/atmospherics/pipe/simple/scrubbers/hidden{
 	dir = 4
-	},
-/obj/structure/cable{
-	icon_state = "4-8"
 	},
 /turf/open/floor/plasteel,
 /area/tcommsat/computer)
@@ -41066,9 +41042,6 @@
 /obj/machinery/atmospherics/pipe/manifold/scrubbers/hidden{
 	dir = 1
 	},
-/obj/structure/cable{
-	icon_state = "2-8"
-	},
 /turf/open/floor/plasteel,
 /area/hallway/primary/aft)
 "bWK" = (
@@ -41080,9 +41053,6 @@
 	},
 /obj/effect/turf_decal/tile/yellow{
 	dir = 8
-	},
-/obj/structure/cable{
-	icon_state = "4-8"
 	},
 /turf/open/floor/plasteel,
 /area/hallway/primary/aft)
@@ -41807,9 +41777,6 @@
 /area/hallway/primary/aft)
 "bYF" = (
 /obj/machinery/atmospherics/pipe/simple/scrubbers/hidden,
-/obj/structure/cable{
-	icon_state = "2-8"
-	},
 /turf/open/floor/plasteel,
 /area/tcommsat/computer)
 "bYG" = (
@@ -42451,9 +42418,6 @@
 /obj/effect/turf_decal/tile/neutral{
 	dir = 8
 	},
-/obj/structure/cable{
-	icon_state = "4-8"
-	},
 /turf/open/floor/plasteel/dark,
 /area/tcommsat/computer)
 "can" = (
@@ -42474,9 +42438,6 @@
 /obj/effect/turf_decal/tile/neutral{
 	dir = 8
 	},
-/obj/structure/cable{
-	icon_state = "4-8"
-	},
 /turf/open/floor/plasteel/dark,
 /area/tcommsat/computer)
 "cao" = (
@@ -42489,9 +42450,6 @@
 	},
 /obj/effect/turf_decal/tile/neutral{
 	dir = 8
-	},
-/obj/structure/cable{
-	icon_state = "4-8"
 	},
 /turf/open/floor/plasteel/dark,
 /area/tcommsat/computer)
@@ -52084,9 +52042,6 @@
 /obj/machinery/power/terminal{
 	dir = 1
 	},
-/obj/structure/cable{
-	icon_state = "0-4"
-	},
 /turf/open/floor/plasteel/dark/telecomms,
 /area/tcommsat/server)
 "cSL" = (
@@ -53186,9 +53141,9 @@
 /obj/machinery/door/firedoor,
 /obj/machinery/door/airlock/maintenance{
 	name = "Blueshield's Office Maintenance";
-	req_access_txt = "72"
+	req_access_txt = "19"
 	},
-/turf/open/floor/carpet,
+/turf/open/floor/plating,
 /area/command/blueshieldoffice)
 "eiB" = (
 /obj/machinery/atmospherics/pipe/manifold/scrubbers/hidden{
@@ -53726,7 +53681,7 @@
 /area/maintenance/fore/secondary)
 "eOu" = (
 /obj/structure/table/wood,
-/obj/item/book/manual/splurt_space_law,
+/obj/item/book/manual/wiki/security_space_law,
 /obj/item/coin/plasma,
 /turf/open/floor/wood,
 /area/command/heads_quarters/captain)
@@ -54951,7 +54906,7 @@
 /obj/machinery/airalarm{
 	pixel_y = 23
 	},
-/obj/structure/closet/secure_closet/blueshield,
+/obj/structure/dresser,
 /turf/open/floor/carpet,
 /area/command/blueshielquarters)
 "gnf" = (
@@ -55374,10 +55329,6 @@
 	},
 /turf/closed/wall/r_wall,
 /area/engineering/gravity_generator)
-"gUV" = (
-/obj/structure/closet/secure_closet/bridgesec,
-/turf/open/floor/wood,
-/area/command/meeting_room)
 "gVc" = (
 /obj/machinery/vending/sustenance,
 /obj/effect/decal/cleanable/dirt,
@@ -58288,13 +58239,6 @@
 	},
 /turf/open/floor/plasteel,
 /area/commons/dorms)
-"lhj" = (
-/obj/structure/chair/comfy/black{
-	dir = 4
-	},
-/obj/effect/landmark/start/bridgeofficer,
-/turf/open/floor/carpet,
-/area/command/meeting_room)
 "lht" = (
 /obj/effect/decal/cleanable/dirt,
 /obj/structure/cable{
@@ -58910,8 +58854,9 @@
 /area/maintenance/starboard/aft)
 "lZn" = (
 /obj/machinery/door/airlock/security/glass{
+	id_tag = null;
 	name = "Brig Infirmary";
-	req_access_txt = "2, 71"
+	req_access_txt = "2"
 	},
 /obj/effect/mapping_helpers/airlock/cyclelink_helper{
 	dir = 1
@@ -59347,7 +59292,6 @@
 /obj/machinery/light{
 	dir = 4
 	},
-/obj/machinery/vending/wardrobe/bridgeofficer_wardrobe,
 /turf/open/floor/wood,
 /area/command/meeting_room)
 "mwN" = (
@@ -62846,23 +62790,6 @@
 /obj/machinery/status_display/evac,
 /turf/closed/wall,
 /area/ai_monitored/command/storage/eva)
-"rOj" = (
-/obj/effect/turf_decal/tile/neutral{
-	dir = 1
-	},
-/obj/effect/turf_decal/tile/neutral{
-	dir = 8
-	},
-/obj/effect/turf_decal/tile/neutral{
-	dir = 4
-	},
-/obj/effect/turf_decal/tile/neutral,
-/obj/effect/turf_decal/bot,
-/obj/structure/rack,
-/obj/item/clothing/suit/brigdoc/armor,
-/obj/item/clothing/head/helmet/brigdoc,
-/turf/open/floor/plasteel/dark,
-/area/ai_monitored/security/armory)
 "rQJ" = (
 /obj/machinery/light/small{
 	dir = 8
@@ -63155,12 +63082,6 @@
 	},
 /turf/open/floor/plating,
 /area/maintenance/fore)
-"spC" = (
-/obj/structure/cable{
-	icon_state = "1-8"
-	},
-/turf/open/floor/plasteel/dark/telecomms,
-/area/tcommsat/server)
 "spR" = (
 /obj/machinery/atmospherics/pipe/heat_exchanging/simple{
 	dir = 4
@@ -65391,7 +65312,7 @@
 /obj/item/book/manual/wiki/experimentor,
 /obj/item/book/manual/wiki/research_and_development,
 /obj/item/book/manual/wiki/robotics_cyborgs,
-/obj/item/book/manual/splurt_space_law,
+/obj/item/book/manual/wiki/security_space_law,
 /obj/item/book/manual/wiki/medicine,
 /obj/item/book/manual/wiki/medical_cloning,
 /obj/item/book/manual/wiki/infections,
@@ -92682,7 +92603,7 @@ bXz
 bYA
 bZn
 cah
-bZo
+bWB
 ccf
 cdc
 cdZ
@@ -92939,7 +92860,7 @@ bXC
 bXC
 bZp
 cak
-bZo
+bWB
 bWB
 bWB
 cec
@@ -93196,7 +93117,7 @@ bXB
 bYC
 bZo
 bWB
-bZo
+bWB
 cch
 cde
 ceb
@@ -93412,7 +93333,7 @@ aYp
 aZM
 aZz
 baI
-lhj
+bda
 bda
 bca
 bgJ
@@ -93452,8 +93373,8 @@ bWG
 bXD
 bYz
 cSE
-bZn
-spC
+bWB
+bYz
 bYz
 cdf
 ced
@@ -94700,7 +94621,7 @@ bcc
 bdd
 cVs
 mwj
-gUV
+bbX
 bif
 aZM
 aZM
@@ -96963,7 +96884,7 @@ agU
 ahp
 ahY
 afd
-rOj
+afd
 ahB
 aiq
 ajb

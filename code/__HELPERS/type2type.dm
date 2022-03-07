@@ -412,25 +412,25 @@
 
 /proc/slot2body_zone(slot)
 	switch(slot)
-		if(ITEM_SLOT_BACK, ITEM_SLOT_OCLOTHING, ITEM_SLOT_ICLOTHING, ITEM_SLOT_BELT, ITEM_SLOT_ID)
+		if(SLOT_BACK, SLOT_WEAR_SUIT, SLOT_W_UNIFORM, SLOT_BELT, SLOT_WEAR_ID)
 			return BODY_ZONE_CHEST
 
-		if(ITEM_SLOT_GLOVES, ITEM_SLOT_HANDS, ITEM_SLOT_HANDCUFFED, ITEM_SLOT_WRISTS) // Sandstorm edit
+		if(SLOT_GLOVES, SLOT_HANDS, SLOT_HANDCUFFED, SLOT_WRISTS) //SKYRAT EDIT
 			return pick(BODY_ZONE_PRECISE_L_HAND, BODY_ZONE_PRECISE_R_HAND)
 
-		if(ITEM_SLOT_HEAD, ITEM_SLOT_NECK, ITEM_SLOT_NECK, ITEM_SLOT_EARS)
+		if(SLOT_HEAD, SLOT_NECK, SLOT_NECK, SLOT_EARS_LEFT, SLOT_EARS_RIGHT) //skyrat edit
 			return BODY_ZONE_HEAD
 
-		if(ITEM_SLOT_MASK)
+		if(SLOT_WEAR_MASK)
 			return BODY_ZONE_PRECISE_MOUTH
 
-		if(ITEM_SLOT_EYES)
+		if(SLOT_GLASSES)
 			return BODY_ZONE_PRECISE_EYES
 
-		if(ITEM_SLOT_FEET)
+		if(SLOT_SHOES)
 			return pick(BODY_ZONE_PRECISE_R_FOOT, BODY_ZONE_PRECISE_L_FOOT)
 
-		if(ITEM_SLOT_LEGCUFFED)
+		if(SLOT_LEGCUFFED)
 			return pick(BODY_ZONE_L_LEG, BODY_ZONE_R_LEG)
 
 //adapted from http://www.tannerhelland.com/4435/convert-temperature-rgb-algorithm-code/
@@ -652,43 +652,43 @@
 
 /proc/slot_to_string(slot)
 	switch(slot)
-		if(ITEM_SLOT_BACK)
+		if(SLOT_BACK)
 			return "Backpack"
-		if(ITEM_SLOT_MASK)
+		if(SLOT_WEAR_MASK)
 			return "Mask"
-		if(ITEM_SLOT_HANDS)
+		if(SLOT_HANDS)
 			return "Hands"
-		if(ITEM_SLOT_BELT)
+		if(SLOT_BELT)
 			return "Belt"
-		// Sandstorm edit
-		if(ITEM_SLOT_EARS_LEFT)
+		//skyrat edit
+		if(SLOT_EARS_LEFT)
 			return "Left ear"
-		if(ITEM_SLOT_EARS_RIGHT)
+		if(SLOT_EARS_RIGHT)
 			return "Right ear"
-		if(ITEM_SLOT_UNDERWEAR)
+		if(SLOT_W_UNDERWEAR)
 			return "Underwear"
-		if(ITEM_SLOT_SOCKS)
+		if(SLOT_W_SOCKS)
 			return "Socks"
-		if(ITEM_SLOT_SHIRT)
+		if(SLOT_W_SHIRT)
 			return "Shirt"
-		if(ITEM_SLOT_WRISTS)
+		if(SLOT_WRISTS)
 			return "Wrist"
 		//
-		if(ITEM_SLOT_EYES)
+		if(SLOT_GLASSES)
 			return "Glasses"
-		if(ITEM_SLOT_GLOVES)
+		if(SLOT_GLOVES)
 			return "Gloves"
-		if(ITEM_SLOT_NECK)
+		if(SLOT_NECK)
 			return "Neck"
-		if(ITEM_SLOT_HEAD)
+		if(SLOT_HEAD)
 			return "Head"
-		if(ITEM_SLOT_FEET)
+		if(SLOT_SHOES)
 			return "Shoes"
-		if(ITEM_SLOT_OCLOTHING)
+		if(SLOT_WEAR_SUIT)
 			return "Suit"
-		if(ITEM_SLOT_ICLOTHING)
+		if(SLOT_W_UNIFORM)
 			return "Uniform"
-		if(ITEM_SLOT_BACKPACK)
+		if(SLOT_IN_BACKPACK)
 			return "In backpack"
 
 /proc/tg_ui_icon_to_cit_ui(ui_style)

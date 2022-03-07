@@ -1,7 +1,7 @@
 /datum/gear/suit
 	category = LOADOUT_CATEGORY_SUIT
 	subcategory = LOADOUT_SUBCATEGORY_SUIT_GENERAL
-	slot = ITEM_SLOT_OCLOTHING
+	slot = SLOT_WEAR_SUIT
 
 /datum/gear/suit/poncho
 	name = "Poncho"

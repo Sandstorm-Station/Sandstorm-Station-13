@@ -140,6 +140,3 @@ GLOBAL_VAR_INIT(cmp_field, "name")
 
 /proc/cmp_typepaths_asc(A, B)
 	return sorttext("[B]","[A]")
-
-/proc/cmp_playtime(list/A, list/B)
-	return A["playtime"] - B["playtime"]
