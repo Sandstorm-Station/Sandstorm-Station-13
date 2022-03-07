@@ -11,7 +11,4 @@
 	icon_state = "direction_dorm"
 
 /obj/structure/sign/directions/bar
-	name = "bar"
-	desc = "A direction sign, pointing out which way the bar is"
 	icon = 'modular_splurt/icons/obj/decals.dmi'
-	icon_state = "direction_bar"
