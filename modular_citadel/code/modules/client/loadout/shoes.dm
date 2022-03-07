@@ -1,6 +1,6 @@
 /datum/gear/shoes
 	category = LOADOUT_CATEGORY_SHOES
-	slot = ITEM_SLOT_FEET
+	slot = SLOT_SHOES
 
 /datum/gear/shoes/laceup
 	name = "Laceup shoes"

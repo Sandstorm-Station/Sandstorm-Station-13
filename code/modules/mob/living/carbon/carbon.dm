@@ -262,7 +262,7 @@
 		// too soon.
 		var/buckle_cd = 600
 		if(handcuffed)
-			var/obj/item/restraints/O = src.get_item_by_slot(ITEM_SLOT_HANDCUFFED)
+			var/obj/item/restraints/O = src.get_item_by_slot(SLOT_HANDCUFFED)
 			buckle_cd = O.breakouttime
 		MarkResistTime()
 		visible_message("<span class='warning'>[src] attempts to unbuckle [p_them()]self!</span>", \
@@ -1139,16 +1139,16 @@
 /mob/living/carbon/check_obscured_slots()
 	if(head)
 		if(head.flags_inv & HIDEMASK)
-			LAZYOR(., ITEM_SLOT_MASK)
+			LAZYOR(., SLOT_WEAR_MASK)
 		if(head.flags_inv & HIDEEYES)
-			LAZYOR(., ITEM_SLOT_EYES)
+			LAZYOR(., SLOT_GLASSES)
 		if(head.flags_inv & HIDEEARS)
-			LAZYOR(., ITEM_SLOT_EARS_LEFT)
-			LAZYOR(., ITEM_SLOT_EARS_RIGHT)
+			LAZYOR(., SLOT_EARS_LEFT)
+			LAZYOR(., SLOT_EARS_RIGHT)
 
 	if(wear_mask)
 		if(wear_mask.flags_inv & HIDEEYES)
-			LAZYOR(., ITEM_SLOT_EYES)
+			LAZYOR(., SLOT_GLASSES)
 
 // if any of our bodyparts are bleeding
 /mob/living/carbon/proc/is_bleeding()

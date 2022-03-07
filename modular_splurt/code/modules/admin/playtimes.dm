@@ -12,8 +12,6 @@
 	var/touched_circuit = FALSE
 	var/uses_vpn = FALSE
 
-//Most of this data is now unused except for the flags
-/*
 /client/proc/cmd_player_playtimes()
 	set category = "Admin"
 	set name = "Player Playtimes"
@@ -66,7 +64,6 @@
 	clients = sortList(clients, /proc/cmp_playtime)
 	data["clients"] = clients
 	return data
-*/
 
 /datum/player_playtime/proc/check_flags(client/C)
 	var/list/flags = list()
@@ -108,7 +105,7 @@
 		flags += list(flag)
 
 	return flags
-/*
+
 /datum/player_playtime/ui_act(action, params)
 	if(..())
 		return
@@ -128,4 +125,3 @@
 				return
 			var/mob/dead/observer/A = C.mob
 			A.ManualFollow(target)
-*/

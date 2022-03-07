@@ -42,15 +42,15 @@ GLOBAL_LIST_INIT(strippable_human_items, create_strippable_list(list(
 
 /datum/strippable_item/mob_item_slot/eyes
 	key = STRIPPABLE_ITEM_EYES
-	item_slot = ITEM_SLOT_EYES
+	item_slot = SLOT_GLASSES
 
 /datum/strippable_item/mob_item_slot/ears
 	key = STRIPPABLE_ITEM_EARS
-	item_slot = ITEM_SLOT_EARS_LEFT
+	item_slot = SLOT_EARS_LEFT
 
 /datum/strippable_item/mob_item_slot/jumpsuit
 	key = STRIPPABLE_ITEM_JUMPSUIT
-	item_slot = ITEM_SLOT_ICLOTHING
+	item_slot = SLOT_W_UNIFORM
 
 /datum/strippable_item/mob_item_slot/jumpsuit/get_alternate_action(atom/source, mob/user)
 	if(..() == FALSE)
@@ -82,7 +82,7 @@ GLOBAL_LIST_INIT(strippable_human_items, create_strippable_list(list(
 
 /datum/strippable_item/mob_item_slot/suit
 	key = STRIPPABLE_ITEM_SUIT
-	item_slot = ITEM_SLOT_OCLOTHING
+	item_slot = SLOT_WEAR_SUIT
 
 /datum/strippable_item/mob_item_slot/suit/get_alternate_action(atom/source, mob/user)
 	if(..() == FALSE)
@@ -115,11 +115,11 @@ GLOBAL_LIST_INIT(strippable_human_items, create_strippable_list(list(
 
 /datum/strippable_item/mob_item_slot/gloves
 	key = STRIPPABLE_ITEM_GLOVES
-	item_slot = ITEM_SLOT_GLOVES
+	item_slot = SLOT_GLOVES
 
 /datum/strippable_item/mob_item_slot/feet
 	key = STRIPPABLE_ITEM_FEET
-	item_slot = ITEM_SLOT_FEET
+	item_slot = SLOT_SHOES
 
 /datum/strippable_item/mob_item_slot/feet/get_alternate_action(atom/source, mob/user)
 	if(..() == FALSE)
@@ -148,7 +148,7 @@ GLOBAL_LIST_INIT(strippable_human_items, create_strippable_list(list(
 
 /datum/strippable_item/mob_item_slot/suit_storage
 	key = STRIPPABLE_ITEM_SUIT_STORAGE
-	item_slot = ITEM_SLOT_SUITSTORE
+	item_slot = SLOT_S_STORE
 
 /datum/strippable_item/mob_item_slot/suit_storage/get_alternate_action(atom/source, mob/user)
 	if(..() == FALSE)
@@ -162,11 +162,11 @@ GLOBAL_LIST_INIT(strippable_human_items, create_strippable_list(list(
 
 /datum/strippable_item/mob_item_slot/id
 	key = STRIPPABLE_ITEM_ID
-	item_slot = ITEM_SLOT_ID
+	item_slot = SLOT_WEAR_ID
 
 /datum/strippable_item/mob_item_slot/belt
 	key = STRIPPABLE_ITEM_BELT
-	item_slot = ITEM_SLOT_BELT
+	item_slot = SLOT_BELT
 
 /datum/strippable_item/mob_item_slot/belt/get_alternate_action(atom/source, mob/user)
 	if(..() == FALSE)
@@ -219,12 +219,12 @@ GLOBAL_LIST_INIT(strippable_human_items, create_strippable_list(list(
 
 /datum/strippable_item/mob_item_slot/pocket/left
 	key = STRIPPABLE_ITEM_LPOCKET
-	item_slot = ITEM_SLOT_LPOCKET
+	item_slot = SLOT_L_STORE
 	pocket_side = "left"
 
 /datum/strippable_item/mob_item_slot/pocket/right
 	key = STRIPPABLE_ITEM_RPOCKET
-	item_slot = ITEM_SLOT_RPOCKET
+	item_slot = SLOT_R_STORE
 	pocket_side = "right"
 
 /proc/get_strippable_alternate_action_internals(obj/item/item, atom/source)

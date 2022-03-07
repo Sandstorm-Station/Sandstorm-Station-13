@@ -25,9 +25,10 @@
 		to_chat(usr, "<span class='warning'>You seem to be selecting a mob that doesn't exist anymore.</span>", confidential = TRUE)
 		return
 
-//ambition start
+//SKYRAT CHANGES BEGIN
 	var/list/body = list("<html><head><meta http-equiv='Content-Type' content='text/html; charset=UTF-8'><title>Options for [M.key]</title></head>")
-//ambition end
+//SKYRAT CHANGES END
+
 	body += "<body>Options panel for <b>[M]</b>"
 	if(M.client)
 		body += " played by <b>[M.client]</b> "
@@ -217,11 +218,12 @@
 	body += "<br>"
 	body += "</body></html>"
 
-//ambition start
+//SKYRAT CHANGES BEGIN
 	var/datum/browser/popup = new(usr, "adminplayeropts-[REF(M)]", "Player Panel", nwidth = 550, nheight = 515)
 	popup.set_content(body.Join())
 	popup.open()
-//ambition end
+//SKYRAT CHANGES END
+
 	SSblackbox.record_feedback("tally", "admin_verb", 1, "Player Panel") //If you are copy-pasting this, ensure the 2nd parameter is unique to the new proc!
 
 

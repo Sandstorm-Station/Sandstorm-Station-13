@@ -292,7 +292,7 @@ ROUNDSTART_RACES synthliz
 ROUNDSTART_RACES plasmaman
 #ROUNDSTART_RACES shadow
 ROUNDSTART_RACES felinid
-#ROUNDSTART_RACES dwarf
+ROUNDSTART_RACES dwarf
 ROUNDSTART_RACES ethereal
 
 ## Races that are better than humans in some ways, but worse in others
@@ -483,7 +483,6 @@ BOX_RANDOM_ENGINE Box TEG,3
 BOX_RANDOM_ENGINE Box Empty,0
 BOX_RANDOM_ENGINE Box Antimatter,1
 BOX_RANDOM_ENGINE Box P.A.C.M.A.N,1
-BOX_RANDOM_ENGINE Box RBMK,1
 
 
 ## Whether the suicide verb is allowed.

@@ -122,13 +122,11 @@
 
 /obj/item/crusher_trophy/blaster_tubes/mask/add_to(obj/item/kinetic_crusher/H, mob/living/user)
 	. = ..()
-	if(.)
-		H.force += bonus_value
+	H.force += bonus_value
 
 /obj/item/crusher_trophy/blaster_tubes/mask/remove_from(obj/item/kinetic_crusher/H, mob/living/user)
 	. = ..()
-	if(.)
-		H.force -= bonus_value
+	H.force -= bonus_value
 
 //lava imp
 /obj/item/crusher_trophy/blaster_tubes/impskull
@@ -253,8 +251,8 @@
 	. = ..()
 	if(.)
 		var/datum/component/two_handed/TH = H.GetComponent(/datum/component/two_handed)
-		H.charge_time += 12
-		TH.force_wielded += 15
+		H.charge_time += 15
+		TH.force_wielded += 12
 
 //hierophant crusher small changes
 /obj/item/crusher_trophy/vortex_talisman
@@ -444,7 +442,7 @@
 	var/dir = get_dir(user, chargeturf)//get direction
 	var/turf/T = get_ranged_target_turf(chargeturf,dir,range)//get final dash turf
 	if(!T) //the final dash turf was out of range - we settle for the target turf instead
-		T = chargeturf
+		T = chargeturf 
 	playsound(user, pick('modular_sand/sound/sif/whoosh1.ogg', 'modular_sand/sound/sif/whoosh2.ogg', 'modular_sand/sound/sif/whoosh3.ogg'), 300, 1)
 	new /obj/effect/temp_visual/decoy/fading(user.loc, user)
 	//Stop movement

@@ -1,7 +1,7 @@
 /datum/gear/neck
 	category = LOADOUT_CATEGORY_NECK
 	subcategory = LOADOUT_SUBCATEGORY_NECK_GENERAL
-	slot = ITEM_SLOT_NECK
+	slot = SLOT_NECK
 
 /datum/gear/neck/bluetie
 	name = "Blue tie"
