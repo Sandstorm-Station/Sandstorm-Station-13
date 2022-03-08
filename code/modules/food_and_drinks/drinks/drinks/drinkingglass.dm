@@ -15,12 +15,16 @@
 
 /obj/item/reagent_containers/food/drinks/drinkingglass/on_reagent_change(changetype)
 	cut_overlays()
+
+	icon = initial(icon)		// FUCK.
+
 	if(reagents.reagent_list.len)
 		var/datum/reagent/R = reagents.get_master_reagent()
 		if(!renamedByPlayer)
 			name = R.glass_name
 			desc = R.glass_desc
-		R.glass_icon ? (icon = R.glass_icon) : (icon = initial(icon))
+		if(R.glass_icon)
+			icon = R.glass_icon
 		if(R.glass_icon_state)
 			icon_state = R.glass_icon_state
 		else
@@ -53,6 +57,8 @@
 /obj/item/reagent_containers/food/drinks/drinkingglass/shotglass/on_reagent_change(changetype)
 	cut_overlays()
 
+	icon = initial(icon)	// FUCK.
+
 	gulp_size = max(round(reagents.total_volume / 15), 15)
 
 	if (reagents.reagent_list.len > 0)
@@ -60,7 +66,8 @@
 		name = "filled shot glass"
 		desc = "The challenge is not taking as many as you can, but guessing what it is before you pass out."
 
-		largest_reagent.shot_glass_icon ? (icon = largest_reagent.shot_glass_icon) : (icon = initial(icon))
+		if(largest_reagent.shot_glass_icon)
+			icon = largest_reagent.shot_glass_icon
 		if(largest_reagent.shot_glass_icon_state)
 			icon_state = largest_reagent.shot_glass_icon_state
 		else
