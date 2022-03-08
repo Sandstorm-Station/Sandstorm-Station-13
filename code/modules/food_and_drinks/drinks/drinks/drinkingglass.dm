@@ -20,8 +20,7 @@
 		if(!renamedByPlayer)
 			name = R.glass_name
 			desc = R.glass_desc
-		if(R.glass_icon)
-			icon = R.glass_icon
+		R.glass_icon ? (icon = R.glass_icon) : (icon = initial(icon))
 		if(R.glass_icon_state)
 			icon_state = R.glass_icon_state
 		else
@@ -62,8 +61,7 @@
 		name = "filled shot glass"
 		desc = "The challenge is not taking as many as you can, but guessing what it is before you pass out."
 
-		if(largest_reagent.shot_glass_icon)
-			icon = largest_reagent.shot_glass_icon
+		largest_reagent.shot_glass_icon ? (icon = largest_reagent.shot_glass_icon) : (icon = initial(icon))
 		if(largest_reagent.shot_glass_icon_state)
 			icon_state = largest_reagent.shot_glass_icon_state
 		else
