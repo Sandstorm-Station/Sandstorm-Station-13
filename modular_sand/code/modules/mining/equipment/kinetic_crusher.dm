@@ -125,7 +125,7 @@
 	switch(var_name)
 		if(NAMEOF(src, bonus_value))
 			if(istype(loc, /obj/item/kinetic_crusher))
-				var/datum/component/two_handed/TH = H.GetComponent(/datum/component/two_handed)
+				var/datum/component/two_handed/TH = loc.GetComponent(/datum/component/two_handed)
 				TH.force_wielded -= bonus_value
 				TH.force_wielded += var_value
 	. = ..()
