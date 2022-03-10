@@ -102,7 +102,7 @@
 	desc = "It really doesn't seem like it could be worn. Suitable as a crusher trophy."
 	icon = 'modular_sand/icons/obj/lavaland/artefacts.dmi'
 	icon_state = "miner_mask"
-	bonus_value = 10
+	bonus_value = 5 //SPLURT edit, Original: 10
 	denied_type = /obj/item/crusher_trophy/blaster_tubes/mask
 
 /obj/item/crusher_trophy/blaster_tubes/mask/effect_desc()
