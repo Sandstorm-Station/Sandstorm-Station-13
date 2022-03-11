@@ -30,9 +30,6 @@ const PAGES = [
     component: () => PunishmentActions,
     color: "red",
     icon: "gavel",
-    canAccess: data => {
-      return data.client_ckey;
-    },
   },
   {
     title: 'Feature Bans',
@@ -564,21 +561,34 @@ const GeneralActions = (props, context) => {
 
 const PunishmentActions = (props, context) => {
   const { act, data } = useBackend(context);
-  const { mob_type, is_frozen, is_slept, glob_mute_bits,
+  const { client_ckey, mob_type, is_frozen, is_slept, glob_mute_bits,
     client_muted, data_related_cid, data_related_ip, data_byond_version,
     data_player_join_date, data_account_join_date, active_role_ban_count,
     current_time } = data;
   return (
     <Section>
-      <Button
-        width="100%"
-        py=".5rem"
-        icon="clipboard-list"
-        color="orange"
-        content="Check Notes"
-        textAlign="center"
-        onClick={() => act("notes")}
-      />
+      <Flex>
+        <Button
+          width="50%"
+          py=".5rem"
+          icon="clipboard-list"
+          color="orange"
+          content="Notes"
+          textAlign="center"
+          disabled={!client_ckey}
+          onClick={() => act("notes")}
+        />
+        <Button
+          width="50%"
+          height="100%"
+          py=".5rem"
+          icon="clipboard-list"
+          color="orange"
+          content="Logs"
+          textAlign="center"
+          onClick={() => act("logs")}
+        />
+      </Flex>
       <Section title="Contain">
         <Flex>
           <Button
@@ -616,6 +626,7 @@ const PunishmentActions = (props, context) => {
             icon="ban"
             color="red"
             content="Kick"
+            disabled={!client_ckey}
             onClick={() => act("kick")}
           />
           <Button
@@ -623,6 +634,7 @@ const PunishmentActions = (props, context) => {
             icon="gavel"
             color="red"
             content="Ban"
+            disabled={!client_ckey}
             onClick={() => act("ban")}
           />
           <Button
@@ -631,6 +643,7 @@ const PunishmentActions = (props, context) => {
             icon="gavel"
             color="red"
             content="Sticky Ban"
+            disabled={!client_ckey}
             onClick={() => act("sticky_ban")}
           />
         </Flex>
@@ -642,12 +655,14 @@ const PunishmentActions = (props, context) => {
             icon="lock-open"
             color="green"
             content="Unmute All"
+            disabled={!client_ckey}
             onClick={() => act("unmute_all")}
           />
           <Button
             icon="lock"
             color="red"
             content="Mute All"
+            disabled={!client_ckey}
             onClick={() => act("mute_all")}
           />
         </Fragment>
@@ -663,6 +678,7 @@ const PunishmentActions = (props, context) => {
                 icon={isMuted ? 'check-square-o' : 'square-o'}
                 color={isMuted? "bad" : ""}
                 content={bit.name}
+                disabled={!client_ckey}
                 onClick={() => act("mute", { "mute_flag": !isMuted? client_muted | bit.bitflag : client_muted & ~bit.bitflag })}
               />
             );
@@ -699,6 +715,7 @@ const PunishmentActions = (props, context) => {
           width="100%"
           color="orange"
           content="Details"
+          disabled={!client_ckey}
         >
           <LabeledList >
             <LabeledList.Item label="NOW" color="label">{current_time}</LabeledList.Item>
