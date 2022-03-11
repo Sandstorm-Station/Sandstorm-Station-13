@@ -120,15 +120,27 @@
 	new /obj/effect/temp_visual/kinetic_blast(target)
 	playsound(target.loc, 'sound/weapons/kenetic_accel.ogg', 60, 0)
 
+// I'm gonna be honest, i cannot trust admins to be smart about it.
+/obj/item/crusher_trophy/blaster_tubes/mask/vv_edit_var(var_name, var_value)
+	switch(var_name)
+		if(NAMEOF(src, bonus_value))
+			if(istype(loc, /obj/item/kinetic_crusher))
+				var/datum/component/two_handed/TH = loc.GetComponent(/datum/component/two_handed)
+				TH.force_wielded -= bonus_value
+				TH.force_wielded += var_value
+	. = ..()
+
 /obj/item/crusher_trophy/blaster_tubes/mask/add_to(obj/item/kinetic_crusher/H, mob/living/user)
 	. = ..()
 	if(.)
-		H.force += bonus_value
+		var/datum/component/two_handed/TH = H.GetComponent(/datum/component/two_handed)
+		TH.force_wielded += bonus_value
 
 /obj/item/crusher_trophy/blaster_tubes/mask/remove_from(obj/item/kinetic_crusher/H, mob/living/user)
 	. = ..()
 	if(.)
-		H.force -= bonus_value
+		var/datum/component/two_handed/TH = H.GetComponent(/datum/component/two_handed)
+		TH.force_wielded -= bonus_value
 
 //lava imp
 /obj/item/crusher_trophy/blaster_tubes/impskull
