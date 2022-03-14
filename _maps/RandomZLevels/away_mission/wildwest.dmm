@@ -2133,6 +2133,12 @@
 	icon_state = "ironsand1"
 	},
 /area/awaymission/wildwest/mines)
+"ni" = (
+/obj/structure/cable{
+	icon_state = "1-8"
+	},
+/turf/open/floor/plating,
+/area/awaymission/wildwest/refine)
 "pD" = (
 /obj/machinery/door/airlock/external,
 /obj/effect/mapping_helpers/airlock/cyclelink_helper,
@@ -2154,12 +2160,18 @@
 /area/awaymission/wildwest/gov)
 "IQ" = (
 /obj/structure/cable{
-	icon_state = "1-8"
+	icon_state = "0-2"
+	},
+/obj/structure/cable{
+	icon_state = "1-2"
 	},
 /turf/open/floor/plating,
 /area/awaymission/wildwest/refine)
 "IV" = (
 /obj/machinery/gateway/away,
+/obj/structure/cable{
+	icon_state = "0-2"
+	},
 /turf/open/floor/plating,
 /area/awaymission/wildwest/refine)
 "Kh" = (
@@ -2174,6 +2186,7 @@
 /obj/item/stack/sheet/mineral/plasma{
 	amount = 30
 	},
+/obj/item/wrench,
 /turf/open/floor/plating,
 /area/awaymission/wildwest/refine)
 "PR" = (
@@ -2199,10 +2212,10 @@
 	},
 /area/awaymission/wildwest/gov)
 "Vs" = (
+/obj/structure/closet/crate,
 /obj/structure/cable{
-	icon_state = "0-2"
+	icon_state = "4-8"
 	},
-/obj/machinery/power/apc/auto_name/north,
 /turf/open/floor/plating,
 /area/awaymission/wildwest/refine)
 "Yq" = (
@@ -30379,8 +30392,8 @@ aG
 aG
 aG
 aW
-Vs
-IQ
+bc
+PR
 bc
 bc
 bc
@@ -30637,7 +30650,7 @@ aG
 aG
 aW
 bc
-bc
+PR
 bc
 bc
 bh
@@ -30894,7 +30907,7 @@ aG
 aG
 aW
 bh
-bc
+PR
 bn
 bc
 bc
@@ -31151,7 +31164,7 @@ aG
 aG
 aW
 bc
-bc
+PR
 bc
 bc
 bc
@@ -31408,7 +31421,7 @@ aW
 aW
 aW
 bc
-bc
+PR
 bc
 bc
 bc
@@ -31665,7 +31678,7 @@ aW
 bb
 bc
 bc
-bo
+Vs
 bc
 bc
 bc
@@ -31921,8 +31934,8 @@ aW
 bh
 bc
 IV
-bc
-bc
+IQ
+ni
 bc
 bh
 aW
