@@ -5186,7 +5186,7 @@
 "rMm" = (/obj/machinery/camera{c_tag = "Xenobiology Lab - Pen #1"; dir = 1; network = list("ss13","rd","xeno")},/obj/machinery/light{light_color = "#d1dfff"},/turf/open/floor/engine,/area/science/xenobiology)
 "rMv" = (/obj/machinery/atmospherics/pipe/manifold/scrubbers/hidden,/turf/open/floor/plasteel/white,/area/science)
 "rMz" = (/turf/open/floor/plasteel/dark,/area/security/checkpoint/engineering)
-"rME" = (/obj/machinery/atmospherics/pipe/simple/supply/hidden{dir = 4},/obj/structure/cable{icon_state = "0-4"},/obj/machinery/power/apc/auto_name/north,/turf/open/floor/plasteel/dark,/area/hallway/secondary/service)
+"rME" = (/obj/machinery/atmospherics/pipe/simple/supply/hidden{dir = 4},/obj/structure/cable{icon_state = "0-4"},/obj/machinery/power/apc{areastring = "/area/service/bar"; dir = 1; name = "Bar APC"; pixel_y = 24},/turf/open/floor/plasteel/dark,/area/hallway/secondary/service)
 "rMF" = (/obj/effect/spawner/structure/window/reinforced,/obj/machinery/atmospherics/pipe/simple/brown/hidden,/obj/machinery/door/poddoor/shutters/preopen{id = "MuseumFire"; name = "Museum Lavaland Shutters"},/turf/open/floor/plating,/area/service/library/artgallery{name = "Museum Exhibits"})
 "rMH" = (/obj/structure/disposalpipe/segment{dir = 5},/obj/machinery/atmospherics/pipe/simple/scrubbers/hidden{dir = 5},/turf/open/floor/plasteel/dark,/area/hallway/secondary/service)
 "rNj" = (/obj/structure/table/glass,/obj/item/slime_scanner,/obj/item/clothing/mask/gas,/obj/item/clothing/glasses/science,/obj/structure/cable{icon_state = "1-2"},/obj/effect/turf_decal/tile/purple,/obj/effect/turf_decal/tile/green{dir = 8},/obj/effect/turf_decal/tile/green{dir = 4},/obj/effect/turf_decal/tile/purple{dir = 1},/turf/open/floor/plasteel/white,/area/science/xenobiology)
