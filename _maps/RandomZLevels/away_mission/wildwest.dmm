@@ -2138,6 +2138,13 @@
 /obj/effect/mapping_helpers/airlock/cyclelink_helper,
 /turf/open/floor/plasteel,
 /area/awaymission/wildwest/refine)
+"Ah" = (
+/obj/structure/cable{
+	icon_state = "0-2"
+	},
+/obj/machinery/power/port_gen/pacman,
+/turf/open/floor/plating,
+/area/awaymission/wildwest/refine)
 "Gh" = (
 /obj/machinery/door/airlock/external,
 /obj/effect/mapping_helpers/airlock/cyclelink_helper{
@@ -2145,12 +2152,35 @@
 	},
 /turf/open/floor/grass,
 /area/awaymission/wildwest/gov)
+"IQ" = (
+/obj/structure/cable{
+	icon_state = "1-8"
+	},
+/turf/open/floor/plating,
+/area/awaymission/wildwest/refine)
+"IV" = (
+/obj/machinery/gateway/away,
+/turf/open/floor/plating,
+/area/awaymission/wildwest/refine)
 "Kh" = (
 /obj/machinery/door/airlock/external,
 /obj/effect/mapping_helpers/airlock/cyclelink_helper{
 	dir = 1
 	},
 /turf/open/floor/plasteel,
+/area/awaymission/wildwest/refine)
+"OZ" = (
+/obj/structure/closet/crate,
+/obj/item/stack/sheet/mineral/plasma{
+	amount = 30
+	},
+/turf/open/floor/plating,
+/area/awaymission/wildwest/refine)
+"PR" = (
+/obj/structure/cable{
+	icon_state = "4-8"
+	},
+/turf/open/floor/plating,
 /area/awaymission/wildwest/refine)
 "RN" = (
 /obj/machinery/door/airlock/external,
@@ -2168,6 +2198,19 @@
 	icon_state = "ironsand1"
 	},
 /area/awaymission/wildwest/gov)
+"Vs" = (
+/obj/structure/cable{
+	icon_state = "0-2"
+	},
+/obj/machinery/power/apc/auto_name/north,
+/turf/open/floor/plating,
+/area/awaymission/wildwest/refine)
+"Yq" = (
+/obj/structure/cable{
+	icon_state = "1-4"
+	},
+/turf/open/floor/plating,
+/area/awaymission/wildwest/refine)
 
 (1,1,1) = {"
 aa
@@ -29822,8 +29865,8 @@ aG
 aG
 aG
 aW
-bc
-bc
+Ah
+Yq
 bh
 bc
 bc
@@ -30079,8 +30122,8 @@ aG
 aG
 aG
 aW
-bo
-bc
+OZ
+PR
 bc
 bc
 bc
@@ -30336,8 +30379,8 @@ aG
 aG
 aG
 aW
-bc
-bc
+Vs
+IQ
 bc
 bc
 bc
@@ -31877,7 +31920,7 @@ aW
 aW
 bh
 bc
-bc
+IV
 bc
 bc
 bc
