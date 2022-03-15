@@ -6,3 +6,6 @@
 
 /area/service/hydroponics/enclosure
     name = "Penguin Enclosure"
+
+/area/engineering/break_room/atmos
+	name = "Atmospherics Break Room"
