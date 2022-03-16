@@ -14291,7 +14291,7 @@
 	dir = 1
 	},
 /mob/living/simple_animal/pet/gondola{
-	health = 1080;
+	health = 1090;
 	name = "Gary";
 	real_name = "commandola"
 	},
@@ -18411,6 +18411,7 @@
 	dir = 4
 	},
 /obj/machinery/atmospherics/components/unary/vent_scrubber/on,
+/obj/effect/landmark/start/scientist,
 /turf/open/floor/engine,
 /area/science/storage)
 "gNa" = (
@@ -20343,6 +20344,12 @@
 	},
 /turf/open/floor/plasteel,
 /area/security/prison/visit)
+"hyc" = (
+/obj/machinery/atmospherics/pipe/simple/supply/hidden,
+/obj/structure/disposalpipe/segment,
+/obj/effect/landmark/start/scientist,
+/turf/open/floor/plasteel/white,
+/area/science)
 "hye" = (
 /obj/machinery/atmospherics/pipe/simple/scrubbers/hidden{
 	dir = 4
@@ -20508,6 +20515,7 @@
 /obj/structure/disposalpipe/segment{
 	dir = 4
 	},
+/obj/effect/landmark/start/scientist,
 /turf/open/floor/plasteel/white/side{
 	dir = 1
 	},
@@ -22502,6 +22510,15 @@
 	},
 /turf/open/floor/plasteel/airless/solarpanel,
 /area/solars/port/aft)
+"ikJ" = (
+/obj/structure/cable{
+	icon_state = "1-2"
+	},
+/obj/structure/disposalpipe/segment{
+	dir = 6
+	},
+/turf/open/floor/plasteel,
+/area/hallway/secondary/civilian)
 "ikS" = (
 /obj/effect/spawner/structure/window/reinforced,
 /obj/machinery/atmospherics/pipe/simple/scrubbers/hidden,
@@ -22611,6 +22628,7 @@
 /obj/structure/cable{
 	icon_state = "1-2"
 	},
+/obj/effect/landmark/start/scientist,
 /turf/open/floor/plasteel/white,
 /area/science)
 "inP" = (
@@ -25345,6 +25363,13 @@
 	},
 /turf/open/floor/plasteel/airless/solarpanel,
 /area/solars/port/fore)
+"jrO" = (
+/obj/structure/cable{
+	icon_state = "1-2"
+	},
+/obj/effect/landmark/start/scientist,
+/turf/open/floor/plasteel/white,
+/area/science/xenobiology)
 "jrS" = (
 /obj/item/cartridge/virus/mime,
 /obj/machinery/atmospherics/components/unary/vent_scrubber/on{
@@ -26636,6 +26661,9 @@
 	dir = 4
 	},
 /obj/machinery/disposal/bin,
+/obj/structure/disposalpipe/trunk{
+	dir = 8
+	},
 /turf/open/floor/plasteel,
 /area/hallway/secondary/civilian)
 "jRO" = (
@@ -28516,6 +28544,7 @@
 	c_tag = "Starboard Primary Hallway - Atmospherics";
 	dir = 8
 	},
+/obj/structure/disposalpipe/segment,
 /turf/open/floor/plasteel,
 /area/hallway/primary/starboard)
 "kFb" = (
@@ -29139,8 +29168,8 @@
 /obj/structure/cable{
 	icon_state = "1-4"
 	},
-/obj/structure/disposalpipe/segment{
-	dir = 6
+/obj/structure/disposalpipe/junction/yjunction{
+	dir = 4
 	},
 /turf/open/floor/plasteel,
 /area/hallway/primary/starboard)
@@ -30521,6 +30550,20 @@
 /obj/structure/closet/toolcloset,
 /turf/open/floor/plasteel,
 /area/commons/storage/auxiliary)
+"lrC" = (
+/obj/machinery/atmospherics/pipe/simple/scrubbers/hidden,
+/obj/structure/cable{
+	icon_state = "4-8"
+	},
+/obj/structure/cable{
+	icon_state = "1-8"
+	},
+/obj/structure/cable{
+	icon_state = "2-8"
+	},
+/obj/effect/landmark/start/scientist,
+/turf/open/floor/plasteel,
+/area/science/xenobiology)
 "lrM" = (
 /obj/structure/chair/stool{
 	pixel_y = 8
@@ -32528,6 +32571,7 @@
 /obj/effect/turf_decal/stripes/line{
 	dir = 1
 	},
+/obj/effect/landmark/start/scientist,
 /turf/open/floor/plasteel/white,
 /area/science/explab)
 "mcA" = (
@@ -50418,10 +50462,6 @@
 	},
 /area/service/theater)
 "sIG" = (
-/obj/effect/turf_decal/tile/blue,
-/obj/effect/turf_decal/tile/blue{
-	dir = 8
-	},
 /obj/structure/chair/office/dark{
 	dir = 1
 	},
@@ -55859,6 +55899,7 @@
 /obj/machinery/atmospherics/pipe/simple/scrubbers/hidden{
 	dir = 10
 	},
+/obj/effect/landmark/start/scientist,
 /turf/open/floor/plasteel/white,
 /area/science/lab)
 "uEo" = (
@@ -57037,6 +57078,7 @@
 /obj/machinery/atmospherics/pipe/simple/supply/hidden{
 	dir = 4
 	},
+/obj/effect/landmark/start/scientist,
 /turf/open/floor/plasteel/white,
 /area/science/lab)
 "vdO" = (
@@ -59295,16 +59337,6 @@
 	},
 /turf/open/floor/plasteel,
 /area/command/heads_quarters/ce)
-"vPV" = (
-/obj/effect/turf_decal/tile/blue,
-/obj/effect/turf_decal/tile/blue{
-	dir = 8
-	},
-/obj/effect/turf_decal/tile/blue{
-	dir = 4
-	},
-/turf/open/floor/carpet,
-/area/medical/psychology)
 "vQa" = (
 /obj/structure/cable{
 	icon_state = "1-2"
@@ -63153,6 +63185,7 @@
 /obj/machinery/atmospherics/components/unary/vent_scrubber/on{
 	dir = 1
 	},
+/obj/effect/landmark/start/scientist,
 /turf/open/floor/plasteel/white,
 /area/science)
 "xcZ" = (
@@ -64333,6 +64366,15 @@
 	},
 /turf/open/floor/plating,
 /area/engineering/main)
+"xAe" = (
+/obj/structure/extinguisher_cabinet{
+	pixel_y = -31
+	},
+/obj/structure/disposalpipe/segment{
+	dir = 4
+	},
+/turf/open/floor/plasteel,
+/area/hallway/secondary/civilian)
 "xAq" = (
 /obj/structure/window/fulltile,
 /obj/effect/turf_decal/tile/blue{
@@ -66500,6 +66542,10 @@
 /obj/machinery/hydroponics/constructable,
 /turf/open/floor/plasteel/dark,
 /area/service/hydroponics)
+"yhd" = (
+/obj/effect/landmark/start/scientist,
+/turf/open/floor/plasteel/white,
+/area/science/explab)
 "yhg" = (
 /obj/structure/table,
 /obj/item/book/manual/wiki/robotics_cyborgs{
@@ -99044,7 +99090,7 @@ iJU
 vjq
 vjq
 odd
-vPV
+vjq
 vjF
 xUV
 wMd
@@ -101093,7 +101139,7 @@ oyr
 wwW
 xAO
 wwW
-wwW
+hyc
 wwW
 aLT
 wwW
@@ -101103,7 +101149,7 @@ fkP
 qDA
 lJk
 ujp
-ujp
+jrO
 rDK
 dwD
 qFb
@@ -104188,7 +104234,7 @@ xzp
 ewk
 onq
 wNE
-aBU
+lrC
 sSw
 jfZ
 vLm
@@ -108789,7 +108835,7 @@ wCj
 twc
 xBJ
 ycJ
-pdt
+yhd
 pdt
 xJG
 cei
@@ -110809,8 +110855,8 @@ gvz
 bsd
 gvz
 gvz
-gvz
-gvz
+ikJ
+huJ
 kED
 kPO
 cVM
@@ -111066,7 +111112,7 @@ bif
 vYv
 vYv
 bif
-gDI
+xAe
 vYv
 vYv
 kQH
@@ -111323,7 +111369,7 @@ kAn
 vYv
 jhn
 bif
-bif
+lpH
 klx
 vYv
 kRj
