@@ -11583,6 +11583,9 @@
 "ezk" = (
 /obj/structure/table,
 /obj/item/paper/pamphlet/ruin/spacehotel,
+/obj/machinery/light{
+	dir = 1
+	},
 /turf/open/floor/plasteel,
 /area/commons/dorms)
 "ezl" = (
@@ -45429,10 +45432,6 @@
 	},
 /turf/open/floor/engine,
 /area/engineering/main)
-"rAm" = (
-/obj/item/hilbertshotel/ghostdojo,
-/turf/open/floor/plasteel,
-/area/hallway/primary/central)
 "rAo" = (
 /obj/structure/table,
 /obj/item/weaponcrafting/string,
@@ -95550,7 +95549,7 @@ tGd
 xmJ
 ppw
 sNi
-rAm
+xmJ
 xmJ
 tGd
 xzv
@@ -119142,7 +119141,7 @@ wxP
 wxP
 vXM
 bLC
-bLC
+xKb
 rRf
 dld
 vUO
