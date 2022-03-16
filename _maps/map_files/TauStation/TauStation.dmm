@@ -14169,7 +14169,7 @@
 	dir = 1
 	},
 /mob/living/simple_animal/pet/gondola{
-	health = 1050;
+	health = 1070;
 	name = "Gary";
 	real_name = "commandola"
 	},
@@ -20474,6 +20474,14 @@
 	},
 /turf/open/floor/plating,
 /area/command/bridge)
+"hBL" = (
+/obj/effect/spawner/structure/window/reinforced,
+/obj/machinery/door/poddoor{
+	id = "Pengshield";
+	name = "Penguin Shielding Array"
+	},
+/turf/open/floor/plating,
+/area/hallway/secondary/entry)
 "hBN" = (
 /obj/effect/spawner/structure/window/reinforced,
 /obj/structure/cable{
@@ -28067,6 +28075,18 @@
 	},
 /turf/open/floor/wood/wood_large,
 /area/command/heads_quarters/hop)
+"kzA" = (
+/obj/machinery/atmospherics/pipe/simple/supply/hidden{
+	dir = 4
+	},
+/obj/machinery/button/door{
+	id = "Pengshield";
+	name = "Arrivals Shutters";
+	pixel_x = 2;
+	pixel_y = -26
+	},
+/turf/open/floor/plasteel,
+/area/hallway/secondary/entry)
 "kzE" = (
 /obj/structure/cable{
 	icon_state = "1-2"
@@ -97038,7 +97058,7 @@ qWA
 lIv
 pTX
 vpL
-nsE
+kzA
 tXq
 roA
 iCl
@@ -97553,7 +97573,7 @@ lIv
 lgG
 vpL
 nsE
-xpC
+hBL
 fza
 fza
 fza
@@ -97810,7 +97830,7 @@ lIv
 pTX
 vpL
 nsE
-xpC
+hBL
 fza
 fza
 fza
@@ -98067,7 +98087,7 @@ lIv
 pTX
 vpL
 nsE
-xpC
+hBL
 fza
 fza
 fza
@@ -98324,7 +98344,7 @@ lIv
 pTX
 vpL
 nsE
-xpC
+hBL
 fza
 pzz
 fza
@@ -98581,7 +98601,7 @@ lIv
 uoT
 vpL
 nsE
-xpC
+hBL
 fza
 fza
 fza
@@ -98838,7 +98858,7 @@ epz
 pvs
 vpL
 nsE
-xpC
+hBL
 fza
 fza
 fza
@@ -99095,7 +99115,7 @@ vpL
 vpL
 vpL
 nsE
-xpC
+hBL
 fza
 fza
 fza
