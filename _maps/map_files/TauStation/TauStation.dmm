@@ -7139,6 +7139,9 @@
 /area/science)
 "cNI" = (
 /obj/machinery/washing_machine,
+/obj/machinery/light/small{
+	dir = 1
+	},
 /turf/open/floor/plasteel/white/side{
 	dir = 9
 	},
@@ -8825,6 +8828,9 @@
 /area/engineering/main)
 "duo" = (
 /obj/machinery/washing_machine,
+/obj/machinery/light/small{
+	dir = 1
+	},
 /turf/open/floor/plasteel/white/side{
 	dir = 5
 	},
@@ -13870,7 +13876,7 @@
 	dir = 1
 	},
 /mob/living/simple_animal/pet/gondola{
-	health = 1000;
+	health = 1010;
 	name = "Gary";
 	real_name = "commandola"
 	},
@@ -27413,6 +27419,9 @@
 /area/maintenance/department/science)
 "kxv" = (
 /obj/machinery/atmospherics/components/unary/vent_scrubber/on,
+/obj/machinery/light{
+	dir = 4
+	},
 /turf/open/floor/plasteel/dark,
 /area/ai_monitored/command/nuke_storage)
 "kxK" = (
