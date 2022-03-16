@@ -7989,7 +7989,7 @@
 /area/maintenance/port/aft)
 "cYT" = (
 /obj/machinery/air_sensor/atmos/toxin_tank,
-/turf/open/floor/engine/n2o,
+/turf/open/floor/engine/plasma,
 /area/engineering/atmos)
 "cZo" = (
 /obj/machinery/firealarm{
@@ -11067,7 +11067,7 @@
 /obj/machinery/atmospherics/components/unary/vent_pump/siphon/atmos/toxin_output{
 	dir = 8
 	},
-/turf/open/floor/engine/n2o,
+/turf/open/floor/engine/plasma,
 /area/engineering/atmos)
 "efp" = (
 /obj/machinery/cryopod{
@@ -11374,7 +11374,7 @@
 /area/maintenance/disposal/incinerator)
 "emw" = (
 /obj/machinery/air_sensor/atmos/nitrous_tank,
-/turf/open/floor/engine/plasma,
+/turf/open/floor/engine/n2o,
 /area/engineering/atmos)
 "emE" = (
 /obj/machinery/atmospherics/pipe/simple/scrubbers/hidden,
@@ -12933,6 +12933,7 @@
 /obj/machinery/light{
 	dir = 1
 	},
+/obj/machinery/space_heater,
 /turf/open/floor/plasteel,
 /area/engineering/main)
 "eQk" = (
@@ -19331,7 +19332,7 @@
 /obj/machinery/light/small{
 	dir = 4
 	},
-/turf/open/floor/engine/plasma,
+/turf/open/floor/engine/n2o,
 /area/engineering/atmos)
 "hiw" = (
 /obj/machinery/atmospherics/pipe/simple/supply/hidden{
@@ -21389,7 +21390,7 @@
 /obj/machinery/portable_atmospherics/canister/nitrous_oxide{
 	valve_open = 1
 	},
-/turf/open/floor/engine/plasma,
+/turf/open/floor/engine/n2o,
 /area/engineering/atmos)
 "hSG" = (
 /obj/machinery/power/apc/auto_name/north,
@@ -23286,6 +23287,7 @@
 /obj/effect/turf_decal/tile/yellow{
 	dir = 8
 	},
+/obj/machinery/space_heater,
 /turf/open/floor/plasteel,
 /area/engineering/atmos)
 "iFp" = (
@@ -27302,7 +27304,7 @@
 /obj/machinery/atmospherics/components/unary/vent_pump/siphon/atmos/nitrous_output{
 	dir = 8
 	},
-/turf/open/floor/engine/plasma,
+/turf/open/floor/engine/n2o,
 /area/engineering/atmos)
 "knC" = (
 /turf/open/floor/plasteel,
@@ -30286,6 +30288,7 @@
 /obj/effect/turf_decal/tile/yellow{
 	dir = 8
 	},
+/obj/machinery/space_heater,
 /turf/open/floor/plasteel,
 /area/engineering/atmos)
 "lrZ" = (
@@ -34861,7 +34864,7 @@
 /obj/machinery/atmospherics/components/unary/outlet_injector/atmos/nitrous_input{
 	dir = 8
 	},
-/turf/open/floor/engine/plasma,
+/turf/open/floor/engine/n2o,
 /area/engineering/atmos)
 "mVW" = (
 /obj/structure/cable{
@@ -38260,7 +38263,7 @@
 	dir = 4
 	},
 /obj/effect/landmark/xeno_spawn,
-/turf/open/floor/engine/n2o,
+/turf/open/floor/engine/plasma,
 /area/engineering/atmos)
 "ojo" = (
 /obj/effect/spawner/lootdrop/stock_parts,
@@ -40787,6 +40790,7 @@
 /obj/machinery/airalarm{
 	pixel_y = 23
 	},
+/obj/machinery/space_heater,
 /turf/open/floor/plasteel,
 /area/engineering/main)
 "pkY" = (
@@ -44439,7 +44443,7 @@
 /obj/machinery/atmospherics/components/unary/outlet_injector/atmos/toxin_input{
 	dir = 8
 	},
-/turf/open/floor/engine/n2o,
+/turf/open/floor/engine/plasma,
 /area/engineering/atmos)
 "qFW" = (
 /obj/structure/cable{
@@ -44744,7 +44748,7 @@
 "qMW" = (
 /obj/machinery/atmospherics/miner/toxins,
 /obj/machinery/portable_atmospherics/canister/toxins,
-/turf/open/floor/engine/n2o,
+/turf/open/floor/engine/plasma,
 /area/engineering/atmos)
 "qNc" = (
 /turf/open/floor/carpet/black,
@@ -49581,6 +49585,20 @@
 /obj/item/kitchen/rollingpin,
 /turf/open/floor/plasteel/dark,
 /area/hallway/secondary/service)
+"sCi" = (
+/obj/machinery/atmospherics/pipe/simple/supply/visible{
+	dir = 8
+	},
+/obj/structure/cable{
+	icon_state = "4-8"
+	},
+/obj/machinery/camera{
+	c_tag = "Atmospherics - Distro Loop";
+	dir = 1
+	},
+/obj/machinery/space_heater,
+/turf/open/floor/plasteel/dark,
+/area/engineering/atmos)
 "sCl" = (
 /obj/effect/spawner/structure/window/reinforced,
 /turf/open/floor/plating,
@@ -58385,7 +58403,7 @@
 	c_tag = "Atmospherics Tank - N2O";
 	dir = 8
 	},
-/turf/open/floor/engine/plasma,
+/turf/open/floor/engine/n2o,
 /area/engineering/atmos)
 "vHF" = (
 /obj/machinery/computer/security/telescreen/entertainment{
@@ -62605,7 +62623,7 @@
 	c_tag = "Atmospherics Tank - Toxins";
 	dir = 8
 	},
-/turf/open/floor/engine/n2o,
+/turf/open/floor/engine/plasma,
 /area/engineering/atmos)
 "xcj" = (
 /obj/structure/closet/crate/freezer,
@@ -84958,7 +84976,7 @@ lRU
 dAv
 lfy
 swo
-adl
+sCi
 xUL
 mjz
 upf
@@ -87257,13 +87275,13 @@ gAH
 wNc
 gAH
 moy
-rQO
+bus
 qMW
-rQO
+bus
 moy
-bus
+rQO
 hSF
-bus
+rQO
 moy
 xIr
 xIr
@@ -87514,11 +87532,11 @@ gAH
 iIL
 lId
 moy
-rQO
+bus
 oiX
 xcf
 moy
-bus
+rQO
 his
 vHo
 moy
