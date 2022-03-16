@@ -13409,6 +13409,9 @@
 /obj/structure/toilet/secret/low_loot{
 	dir = 4
 	},
+/obj/machinery/light/small{
+	dir = 4
+	},
 /turf/open/floor/plasteel/freezer,
 /area/commons/toilet)
 "fdd" = (
@@ -13420,6 +13423,9 @@
 	specialfunctions = 4
 	},
 /obj/structure/toilet/secret/low_loot{
+	dir = 8
+	},
+/obj/machinery/light/small{
 	dir = 8
 	},
 /turf/open/floor/plasteel/freezer,
@@ -13877,7 +13883,7 @@
 	dir = 1
 	},
 /mob/living/simple_animal/pet/gondola{
-	health = 1030;
+	health = 1040;
 	name = "Gary";
 	real_name = "commandola"
 	},
@@ -15262,6 +15268,9 @@
 /area/construction/mining/aux_base)
 "fMS" = (
 /obj/machinery/recharge_station,
+/obj/machinery/light/small{
+	dir = 1
+	},
 /turf/open/floor/plasteel/freezer,
 /area/commons/toilet)
 "fNk" = (
@@ -15273,6 +15282,9 @@
 	specialfunctions = 4
 	},
 /obj/structure/toilet/secret/low_loot{
+	dir = 4
+	},
+/obj/machinery/light/small{
 	dir = 4
 	},
 /turf/open/floor/plasteel/freezer,
@@ -15314,6 +15326,9 @@
 	specialfunctions = 4
 	},
 /obj/structure/toilet/secret/low_loot{
+	dir = 8
+	},
+/obj/machinery/light/small{
 	dir = 8
 	},
 /turf/open/floor/plasteel/freezer,
@@ -37741,7 +37756,7 @@
 /obj/structure/window{
 	dir = 1
 	},
-/turf/open/floor/spooktime/beach/coasts/watercoastN,
+/turf/open/floor/spooktime/beach/coasts/watercoastS,
 /area/maintenance/fore)
 "olS" = (
 /obj/structure/chair/wood/normal,
