@@ -14291,7 +14291,7 @@
 	dir = 1
 	},
 /mob/living/simple_animal/pet/gondola{
-	health = 1090;
+	health = 1100;
 	name = "Gary";
 	real_name = "commandola"
 	},
@@ -51547,8 +51547,9 @@
 /area/engineering/supermatter)
 "tgp" = (
 /obj/structure/table/reinforced,
-/obj/item/wrench,
 /obj/item/analyzer,
+/obj/item/pipe_dispenser,
+/obj/item/wrench,
 /obj/machinery/atmospherics/pipe/simple/scrubbers/hidden,
 /obj/structure/sign/warning/nosmoking{
 	pixel_y = -32
