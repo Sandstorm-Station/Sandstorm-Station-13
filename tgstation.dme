@@ -15,6 +15,7 @@
 
 // BEGIN_INCLUDE
 #include "_maps\_basemap.dm"
+#include "_maps\taustation.dm"
 #include "_maps\map_files\FestiveBall\doorButtonOrganizer.dm"
 #include "code\_compile_options.dm"
 #include "code\world.dm"
@@ -160,9 +161,9 @@
 #include "code\__DEFINES\rendering\parallax.dm"
 #include "code\__DEFINES\research\anomalies.dm"
 #include "code\__DEFINES\research\stock_parts.dm"
+#include "code\__DEFINES\sandcode\chat.dm"
 #include "code\__DEFINES\sandcode\cit_defines.dm"
 #include "code\__DEFINES\sandcode\genital_defines.dm"
-#include "code\__DEFINES\sandcode\chat.dm"
 #include "code\__DEFINES\sandcode\language.dm"
 #include "code\__DEFINES\sandcode\loadout.dm"
 #include "code\__DEFINES\sandcode\medical_defines.dm"

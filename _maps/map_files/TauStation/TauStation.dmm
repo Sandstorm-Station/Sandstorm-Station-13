@@ -17229,7 +17229,7 @@
 /turf/open/floor/plasteel/white,
 /area/medical/medbay/central)
 "gHF" = (
-/obj/structure/sign/poster/official/no_erp{
+/obj/structure/sign/poster/contraband/yes_erp{
 	pixel_x = 32
 	},
 /obj/machinery/atmospherics/pipe/simple/supply/hidden,
@@ -21889,7 +21889,7 @@
 /turf/open/floor/plasteel,
 /area/hallway/secondary/exit/departure_lounge)
 "ito" = (
-/obj/structure/sign/poster/official/no_erp{
+/obj/structure/sign/poster/contraband/yes_erp{
 	pixel_x = -32
 	},
 /obj/structure/flora/ausbushes/ppflowers,
@@ -23020,7 +23020,7 @@
 /turf/open/floor/plasteel,
 /area/security/prison/cells)
 "iQh" = (
-/obj/structure/sign/poster/official/no_erp{
+/obj/structure/sign/poster/contraband/yes_erp{
 	pixel_x = 32
 	},
 /turf/open/floor/plasteel,
@@ -25046,7 +25046,7 @@
 	c_tag = "Pool East";
 	dir = 8
 	},
-/obj/structure/sign/poster/official/no_erp{
+/obj/structure/sign/poster/contraband/yes_erp{
 	pixel_x = 32
 	},
 /obj/effect/turf_decal/tile/blue{
@@ -29572,7 +29572,7 @@
 	id = "papersplease";
 	name = "security shutters"
 	},
-/obj/structure/sign/poster/official/no_erp{
+/obj/structure/sign/poster/contraband/yes_erp{
 	pixel_x = -32
 	},
 /turf/open/floor/plasteel,
@@ -36279,7 +36279,7 @@
 	dir = 1
 	},
 /obj/structure/window/spawner/west,
-/obj/structure/sign/poster/official/no_erp{
+/obj/structure/sign/poster/contraband/yes_erp{
 	pixel_x = 32
 	},
 /turf/open/floor/plasteel/freezer,
@@ -45309,6 +45309,10 @@
 	},
 /turf/open/floor/engine,
 /area/engineering/main)
+"rAm" = (
+/obj/item/hilbertshotel/ghostdojo,
+/turf/open/floor/plasteel,
+/area/hallway/primary/central)
 "rAo" = (
 /obj/structure/table,
 /obj/item/weaponcrafting/string,
@@ -95358,7 +95362,7 @@ tGd
 xmJ
 ppw
 sNi
-xmJ
+rAm
 xmJ
 tGd
 xzv
