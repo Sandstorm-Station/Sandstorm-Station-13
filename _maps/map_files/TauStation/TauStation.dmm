@@ -14411,7 +14411,7 @@
 	dir = 1
 	},
 /mob/living/simple_animal/pet/gondola{
-	health = 1170;
+	health = 1190;
 	name = "Gary";
 	real_name = "commandola"
 	},
@@ -16147,6 +16147,10 @@
 /obj/item/gun/ballistic/shotgun/riot{
 	pixel_x = 3;
 	pixel_y = -3
+	},
+/obj/machinery/camera/motion{
+	c_tag = "Armory Motion Sensor";
+	dir = 4
 	},
 /turf/open/floor/engine,
 /area/ai_monitored/security/armory)
@@ -23712,6 +23716,18 @@
 	},
 /turf/open/floor/plasteel/freezer,
 /area/commons/fitness/locker_room)
+"iGC" = (
+/obj/structure/cable{
+	icon_state = "2-8"
+	},
+/obj/structure/cable{
+	icon_state = "4-8"
+	},
+/obj/machinery/atmospherics/components/unary/vent_pump/on{
+	dir = 8
+	},
+/turf/open/floor/carpet,
+/area/command/heads_quarters/hos)
 "iGI" = (
 /obj/machinery/atmospherics/pipe/simple/scrubbers/hidden{
 	dir = 4
@@ -25611,6 +25627,9 @@
 /obj/machinery/atmospherics/pipe/simple/supply/hidden{
 	dir = 4
 	},
+/obj/machinery/door/poddoor/preopen{
+	id = "hos"
+	},
 /turf/open/floor/plating,
 /area/command/heads_quarters/hos)
 "jsz" = (
@@ -25627,38 +25646,9 @@
 /area/commons/vacant_room/office)
 "jsO" = (
 /obj/structure/cable{
-	icon_state = "2-8"
+	icon_state = "1-2"
 	},
-/obj/structure/cable{
-	icon_state = "4-8"
-	},
-/mob/living/simple_animal/hostile/retaliate/bat{
-	desc = "A fierce companion for any person of power, this spider has been carefully trained by Nanotrasen specialists. Its beady, staring eyes send shivers down your spine.";
-	emote_hear = list("chitters");
-	faction = list("spiders");
-	harm_intent_damage = 3;
-	health = 200;
-	icon_dead = "guard_dead";
-	icon_gib = "guard_dead";
-	icon_living = "guard";
-	icon_state = "guard";
-	maxHealth = 250;
-	max_co2 = 5;
-	max_tox = 2;
-	melee_damage_lower = 15;
-	melee_damage_upper = 20;
-	min_oxy = 5;
-	movement_type = 1;
-	name = "Sergeant Araneus";
-	real_name = "Sergeant Araneus";
-	response_help_continuous = "pets";
-	response_help_simple = "pet";
-	turns_per_move = 10
-	},
-/obj/machinery/atmospherics/components/unary/vent_pump/on{
-	dir = 8
-	},
-/turf/open/floor/carpet,
+/turf/open/floor/plasteel/dark,
 /area/command/heads_quarters/hos)
 "jsP" = (
 /obj/structure/chair/office{
@@ -26064,6 +26054,9 @@
 	},
 /obj/structure/disposalpipe/segment{
 	dir = 4
+	},
+/obj/machinery/door/poddoor/preopen{
+	id = "hos"
 	},
 /turf/open/floor/plating,
 /area/command/heads_quarters/hos)
@@ -26555,6 +26548,9 @@
 "jLx" = (
 /obj/effect/spawner/structure/window/reinforced,
 /obj/structure/cable,
+/obj/machinery/door/poddoor/preopen{
+	id = "hos"
+	},
 /turf/open/floor/plating,
 /area/command/heads_quarters/hos)
 "jLA" = (
@@ -26715,6 +26711,9 @@
 /obj/effect/spawner/structure/window/reinforced,
 /obj/structure/cable,
 /obj/machinery/atmospherics/pipe/simple/scrubbers/hidden,
+/obj/machinery/door/poddoor/preopen{
+	id = "hos"
+	},
 /turf/open/floor/plating,
 /area/command/heads_quarters/hos)
 "jNQ" = (
@@ -26749,6 +26748,10 @@
 /obj/structure/cable,
 /turf/open/floor/plating,
 /area/command/heads_quarters/ce)
+"jPq" = (
+/obj/machinery/vending/wardrobe/hos_wardrobe,
+/turf/open/floor/plasteel/dark,
+/area/command/heads_quarters/hos)
 "jPx" = (
 /obj/machinery/atmospherics/components/unary/vent_scrubber/on,
 /turf/open/floor/plasteel/dark,
@@ -28861,6 +28864,32 @@
 	},
 /turf/open/floor/plasteel,
 /area/service/hydroponics/garden)
+"kGz" = (
+/mob/living/simple_animal/hostile/retaliate/bat{
+	desc = "A fierce companion for any person of power, this spider has been carefully trained by Nanotrasen specialists. Its beady, staring eyes send shivers down your spine.";
+	emote_hear = list("chitters");
+	faction = list("spiders");
+	harm_intent_damage = 3;
+	health = 200;
+	icon_dead = "guard_dead";
+	icon_gib = "guard_dead";
+	icon_living = "guard";
+	icon_state = "guard";
+	maxHealth = 250;
+	max_co2 = 5;
+	max_tox = 2;
+	melee_damage_lower = 15;
+	melee_damage_upper = 20;
+	min_oxy = 5;
+	movement_type = 1;
+	name = "Sergeant Araneus";
+	real_name = "Sergeant Araneus";
+	response_help_continuous = "pets";
+	response_help_simple = "pet";
+	turns_per_move = 10
+	},
+/turf/open/floor/plasteel/dark,
+/area/command/heads_quarters/hos)
 "kGA" = (
 /obj/machinery/door/airlock/maintenance{
 	req_access_txt = "12"
@@ -32207,13 +32236,6 @@
 	},
 /turf/open/floor/plating,
 /area/maintenance/department/security/brig)
-"lPK" = (
-/obj/effect/spawner/structure/window/reinforced,
-/obj/structure/cable{
-	icon_state = "0-2"
-	},
-/turf/open/floor/plating,
-/area/command/heads_quarters/hos)
 "lQj" = (
 /obj/structure/disposalpipe/junction/flip{
 	dir = 1
@@ -34772,6 +34794,13 @@
 	icon_state = "wood-broken5"
 	},
 /area/maintenance/department/science)
+"mMo" = (
+/obj/machinery/atmospherics/pipe/simple/scrubbers/hidden,
+/obj/structure/cable{
+	icon_state = "1-2"
+	},
+/turf/open/floor/plasteel/dark,
+/area/command/heads_quarters/hos)
 "mMp" = (
 /obj/machinery/button/door{
 	id = "hopqueue";
@@ -36332,16 +36361,7 @@
 /turf/open/floor/plasteel,
 /area/security/brig)
 "njC" = (
-/obj/structure/closet/secure_closet/hos,
-/obj/structure/cable{
-	icon_state = "1-8"
-	},
-/obj/structure/cable{
-	icon_state = "4-8"
-	},
-/obj/machinery/atmospherics/pipe/simple/supply/hidden{
-	dir = 4
-	},
+/obj/structure/closet/secure_closet/hosnew,
 /turf/open/floor/plasteel/dark,
 /area/command/heads_quarters/hos)
 "nkl" = (
@@ -41693,7 +41713,6 @@
 /area/service/library/artgallery/museum)
 "ppn" = (
 /obj/machinery/portable_atmospherics/canister/oxygen,
-/obj/machinery/portable_atmospherics/canister/oxygen,
 /obj/effect/turf_decal/tile/yellow{
 	dir = 1
 	},
@@ -44257,6 +44276,19 @@
 /obj/effect/landmark/blobstart,
 /turf/open/floor/plating,
 /area/maintenance/fore)
+"qlx" = (
+/obj/structure/cable{
+	icon_state = "1-8"
+	},
+/obj/structure/cable{
+	icon_state = "4-8"
+	},
+/obj/machinery/atmospherics/pipe/simple/supply/hidden{
+	dir = 4
+	},
+/obj/structure/filingcabinet,
+/turf/open/floor/plasteel/dark,
+/area/command/heads_quarters/hos)
 "qlF" = (
 /obj/machinery/light{
 	dir = 4;
@@ -44543,6 +44575,16 @@
 	},
 /turf/open/floor/circuit/telecomms/mainframe,
 /area/tcommsat/server)
+"qsL" = (
+/obj/effect/spawner/structure/window/reinforced,
+/obj/structure/cable{
+	icon_state = "0-2"
+	},
+/obj/machinery/door/poddoor/preopen{
+	id = "hos"
+	},
+/turf/open/floor/plating,
+/area/command/heads_quarters/hos)
 "qte" = (
 /obj/effect/turf_decal/tile/blue{
 	dir = 4
@@ -55670,12 +55712,14 @@
 /area/hallway/secondary/civilian)
 "usD" = (
 /obj/structure/table/reinforced,
-/obj/item/clothing/gloves/color/yellow,
-/obj/item/clothing/glasses/meson/engine,
 /obj/effect/turf_decal/tile/yellow,
 /obj/effect/turf_decal/tile/yellow{
 	dir = 8
 	},
+/obj/item/clothing/gloves/color/yellow,
+/obj/item/clothing/gloves/color/yellow,
+/obj/item/clothing/glasses/meson/engine,
+/obj/item/clothing/glasses/meson/engine,
 /turf/open/floor/plasteel,
 /area/engineering/main)
 "usR" = (
@@ -56768,6 +56812,7 @@
 /area/command/heads_quarters/hos)
 "uOx" = (
 /obj/structure/table/reinforced,
+/obj/item/clothing/gloves/color/yellow,
 /obj/item/clothing/gloves/color/yellow,
 /obj/item/clothing/glasses/meson,
 /obj/item/clothing/glasses/meson,
@@ -93322,10 +93367,10 @@ roA
 fza
 fza
 roA
-fza
 xdb
 mli
 iST
+qlx
 njC
 nBZ
 xdb
@@ -93579,10 +93624,10 @@ fza
 fza
 kwf
 roA
-fza
 xdb
 iAv
 iUi
+iGC
 jsO
 uOv
 jLx
@@ -93836,11 +93881,11 @@ roA
 roA
 kwf
 roA
-roA
-lPK
+qsL
 mln
 iVH
 jsP
+kGz
 nCa
 jMB
 xMT
@@ -94093,11 +94138,11 @@ fza
 fza
 kwf
 roA
-fza
 xdb
 mlx
 iZN
 jsQ
+mMo
 jAI
 jNv
 oxh
@@ -94350,11 +94395,11 @@ roA
 fza
 fza
 roA
-fza
 xdb
 mlJ
 mJr
 nkt
+jPq
 nCG
 xdb
 oxj
@@ -94607,7 +94652,7 @@ roA
 roA
 fza
 roA
-fza
+kkZ
 ygt
 ygt
 ygt
