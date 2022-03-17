@@ -6369,9 +6369,6 @@
 /turf/open/floor/carpet/purple,
 /area/commons/dorms)
 "cux" = (
-/obj/structure/bed{
-	dir = 1
-	},
 /obj/machinery/light{
 	dir = 8
 	},
@@ -14397,7 +14394,7 @@
 	dir = 1
 	},
 /mob/living/simple_animal/pet/gondola{
-	health = 1120;
+	health = 1130;
 	name = "Gary";
 	real_name = "commandola"
 	},
@@ -23569,13 +23566,6 @@
 	},
 /turf/open/floor/plasteel/yellowsiding,
 /area/commons/fitness/pool)
-"iDo" = (
-/obj/machinery/pool/controller,
-/obj/machinery/atmospherics/pipe/simple/scrubbers/hidden{
-	dir = 4
-	},
-/turf/open/floor/plasteel/yellowsiding,
-/area/commons/fitness/pool)
 "iDx" = (
 /obj/machinery/atmospherics/pipe/simple/scrubbers/hidden{
 	dir = 4
@@ -27918,9 +27908,6 @@
 /turf/open/floor/plating,
 /area/security/office)
 "kqG" = (
-/obj/structure/bed{
-	dir = 1
-	},
 /obj/machinery/firealarm{
 	dir = 4;
 	pixel_x = -24
@@ -28867,6 +28854,9 @@
 "kGG" = (
 /obj/effect/turf_decal/tile/blue{
 	dir = 8
+	},
+/obj/structure/bed{
+	dir = 1
 	},
 /turf/open/floor/plasteel/white/corner{
 	dir = 1
@@ -30342,6 +30332,9 @@
 /obj/effect/turf_decal/tile/blue{
 	dir = 8
 	},
+/obj/structure/bed{
+	dir = 1
+	},
 /turf/open/floor/plasteel/white/corner{
 	dir = 1
 	},
@@ -31752,9 +31745,6 @@
 /turf/open/floor/plasteel/dark,
 /area/service/bar)
 "lHC" = (
-/obj/structure/bed{
-	dir = 1
-	},
 /obj/machinery/camera{
 	c_tag = "Pool West";
 	dir = 4
@@ -35625,6 +35615,12 @@
 	},
 /turf/open/floor/plasteel,
 /area/engineering/lobby)
+"nan" = (
+/obj/machinery/pool/controller,
+/turf/open/floor/plasteel/yellowsiding{
+	dir = 4
+	},
+/area/commons/fitness/pool)
 "nav" = (
 /obj/machinery/atmospherics/pipe/simple/supply/hidden{
 	dir = 4
@@ -41611,7 +41607,7 @@
 /area/ai_monitored/turret_protected/ai)
 "poP" = (
 /obj/machinery/atmospherics/components/unary/thermomachine/heater/on{
-	dir = 1;
+	dir = 4;
 	name = "lavaland atmospherics";
 	target_temperature = 300.15
 	},
@@ -117626,7 +117622,7 @@ gvH
 gvH
 gvH
 ylf
-gvH
+nan
 gvH
 gvH
 gvH
@@ -118649,7 +118645,7 @@ xkZ
 xkZ
 vUt
 rjF
-iDo
+iDj
 vbB
 vbB
 vbB
