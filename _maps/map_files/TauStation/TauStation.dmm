@@ -14411,7 +14411,7 @@
 	dir = 1
 	},
 /mob/living/simple_animal/pet/gondola{
-	health = 1140;
+	health = 1160;
 	name = "Gary";
 	real_name = "commandola"
 	},
@@ -32654,6 +32654,10 @@
 /obj/structure/grille,
 /turf/open/floor/plating,
 /area/maintenance/starboard/fore)
+"lZz" = (
+/mob/living/simple_animal/hostile/retaliate/clown/lube,
+/turf/open/floor/mineral/bananium,
+/area/service/theater/clown)
 "lZG" = (
 /obj/machinery/vending/coffee,
 /obj/machinery/atmospherics/pipe/simple/supply/hidden{
@@ -64678,10 +64682,6 @@
 	},
 /turf/open/floor/plasteel,
 /area/security/brig)
-"xxA" = (
-/mob/living/simple_animal/hostile/retaliate/clown/honkling,
-/turf/open/floor/plating,
-/area/service/theater/clown)
 "xxH" = (
 /obj/structure/cable{
 	icon_state = "2-8"
@@ -126134,7 +126134,7 @@ kCc
 hWz
 ygO
 ygO
-qeO
+lZz
 kCc
 chc
 chc
@@ -126646,7 +126646,7 @@ chc
 mDQ
 kCc
 ygO
-xxA
+ygO
 kCc
 mDQ
 chc
