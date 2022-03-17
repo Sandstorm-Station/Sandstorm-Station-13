@@ -1921,12 +1921,6 @@
 /obj/item/toy/plush/beeplushie,
 /turf/open/floor/plating,
 /area/maintenance/starboard/fore)
-"aKs" = (
-/obj/machinery/atmospherics/components/unary/outlet_injector/on{
-	dir = 1
-	},
-/turf/open/floor/plating/airless,
-/area/space/nearstation)
 "aKC" = (
 /obj/machinery/door/airlock{
 	name = "Prison Showers"
@@ -4657,10 +4651,8 @@
 /turf/open/floor/circuit/telecomms/mainframe,
 /area/tcommsat/server)
 "bQP" = (
-/obj/machinery/atmospherics/pipe/manifold/scrubbers/visible{
-	dir = 8
-	},
 /obj/effect/spawner/structure/window/reinforced,
+/obj/machinery/atmospherics/pipe/simple/scrubbers/hidden,
 /turf/open/floor/plating,
 /area/maintenance/disposal/incinerator)
 "bRe" = (
@@ -8823,9 +8815,7 @@
 /turf/open/floor/plating,
 /area/maintenance/starboard/fore)
 "dqA" = (
-/obj/machinery/atmospherics/pipe/simple/scrubbers/hidden{
-	dir = 10
-	},
+/obj/machinery/atmospherics/pipe/simple/scrubbers/hidden,
 /turf/closed/wall/r_wall,
 /area/maintenance/disposal/incinerator)
 "dqI" = (
@@ -10235,6 +10225,12 @@
 	},
 /turf/open/floor/plasteel,
 /area/hallway/primary/starboard)
+"dPj" = (
+/obj/machinery/atmospherics/components/unary/outlet_injector/on{
+	dir = 1
+	},
+/turf/open/floor/plating/airless,
+/area/engineering/atmos)
 "dPs" = (
 /obj/structure/chair/stool,
 /obj/machinery/power/apc{
@@ -13603,6 +13599,7 @@
 /obj/effect/turf_decal/tile/yellow{
 	dir = 1
 	},
+/obj/machinery/atmospherics/pipe/simple/scrubbers/visible,
 /turf/open/floor/plasteel,
 /area/engineering/atmos)
 "eZO" = (
@@ -14231,6 +14228,13 @@
 	},
 /turf/open/floor/plasteel,
 /area/hallway/primary/fore)
+"fma" = (
+/obj/structure/lattice,
+/obj/machinery/atmospherics/pipe/simple/scrubbers/visible{
+	dir = 5
+	},
+/turf/open/space,
+/area/space/nearstation)
 "fmg" = (
 /obj/machinery/door/window{
 	base_state = "right";
@@ -14291,7 +14295,7 @@
 	dir = 1
 	},
 /mob/living/simple_animal/pet/gondola{
-	health = 1100;
+	health = 1110;
 	name = "Gary";
 	real_name = "commandola"
 	},
@@ -14526,8 +14530,8 @@
 /area/maintenance/bar)
 "fro" = (
 /obj/effect/landmark/start/atmospheric_technician,
-/obj/machinery/atmospherics/pipe/manifold/scrubbers/visible{
-	dir = 8
+/obj/machinery/atmospherics/components/unary/vent_scrubber/on{
+	dir = 4
 	},
 /turf/open/floor/plasteel,
 /area/maintenance/disposal/incinerator)
@@ -15742,8 +15746,8 @@
 /area/commons/toilet)
 "fNp" = (
 /obj/machinery/meter,
-/obj/machinery/atmospherics/pipe/manifold/scrubbers/visible{
-	dir = 8
+/obj/machinery/atmospherics/pipe/simple/scrubbers/visible{
+	dir = 6
 	},
 /turf/open/floor/plasteel,
 /area/maintenance/disposal/incinerator)
@@ -24950,9 +24954,6 @@
 	pixel_x = -4;
 	pixel_y = -2
 	},
-/obj/machinery/atmospherics/pipe/simple/scrubbers/visible{
-	dir = 4
-	},
 /obj/machinery/camera{
 	c_tag = "Atmospherics - Incinerator";
 	name = "atmospherics camera"
@@ -24960,6 +24961,9 @@
 /obj/item/radio/intercom{
 	name = "Station Intercom (General)";
 	pixel_y = 22
+	},
+/obj/machinery/atmospherics/pipe/simple/scrubbers/visible{
+	dir = 6
 	},
 /turf/open/floor/plasteel,
 /area/maintenance/disposal/incinerator)
@@ -26111,7 +26115,7 @@
 	name = "Incinerator Output Pump"
 	},
 /turf/open/space,
-/area/space/nearstation)
+/area/maintenance/disposal/incinerator)
 "jGo" = (
 /obj/structure/disposalpipe/segment,
 /obj/machinery/atmospherics/components/unary/vent_pump/on,
@@ -31001,6 +31005,7 @@
 	dir = 1;
 	pixel_y = -30
 	},
+/obj/machinery/atmospherics/pipe/simple/scrubbers/visible,
 /turf/open/floor/plasteel,
 /area/maintenance/disposal/incinerator)
 "lyr" = (
@@ -38111,9 +38116,6 @@
 	pixel_y = 30
 	},
 /obj/machinery/computer/turbine_computer,
-/obj/machinery/atmospherics/pipe/simple/scrubbers/visible{
-	dir = 6
-	},
 /turf/open/floor/plasteel,
 /area/maintenance/disposal/incinerator)
 "oae" = (
@@ -41008,6 +41010,12 @@
 "phJ" = (
 /turf/closed/wall/r_wall,
 /area/commons/storage/primary)
+"phN" = (
+/obj/machinery/atmospherics/components/unary/outlet_injector/on{
+	dir = 8
+	},
+/turf/open/floor/plating/airless,
+/area/maintenance/disposal/incinerator)
 "pih" = (
 /obj/structure/disposalpipe/segment{
 	dir = 6
@@ -41366,6 +41374,9 @@
 	},
 /obj/effect/turf_decal/tile/yellow{
 	dir = 1
+	},
+/obj/machinery/atmospherics/components/binary/valve/digital{
+	name = "Waste Release"
 	},
 /turf/open/floor/plasteel,
 /area/engineering/atmos)
@@ -44294,6 +44305,11 @@
 /obj/effect/spawner/lootdrop/coin,
 /turf/open/floor/plating,
 /area/maintenance/fore)
+"qtP" = (
+/obj/machinery/atmospherics/pipe/simple/scrubbers/visible,
+/obj/effect/spawner/structure/window/reinforced,
+/turf/open/floor/plating/airless,
+/area/engineering/atmos)
 "qtQ" = (
 /obj/machinery/atmospherics/pipe/simple/scrubbers/hidden{
 	dir = 6
@@ -47020,7 +47036,7 @@
 "ruc" = (
 /obj/machinery/door/airlock/mining/glass{
 	name = "Cargo Bay";
-	req_access_txt = "31"
+	req_one_access_txt = "31;48"
 	},
 /obj/machinery/atmospherics/pipe/simple/supply/hidden{
 	dir = 4
@@ -61428,8 +61444,8 @@
 /turf/open/floor/plasteel/white,
 /area/medical/medbay/central)
 "wzt" = (
-/obj/machinery/atmospherics/components/unary/vent_scrubber/on{
-	dir = 8
+/obj/machinery/atmospherics/pipe/manifold/scrubbers/visible{
+	dir = 4
 	},
 /turf/open/floor/plasteel,
 /area/maintenance/disposal/incinerator)
@@ -62646,9 +62662,6 @@
 /turf/open/floor/plasteel/white,
 /area/medical/chemistry)
 "wSD" = (
-/obj/machinery/atmospherics/pipe/simple/scrubbers/visible{
-	dir = 5
-	},
 /obj/structure/cable{
 	icon_state = "1-2"
 	},
@@ -62658,6 +62671,9 @@
 /obj/machinery/firealarm{
 	dir = 4;
 	pixel_x = -26
+	},
+/obj/machinery/atmospherics/pipe/manifold/scrubbers/visible{
+	dir = 8
 	},
 /turf/open/floor/plasteel,
 /area/engineering/atmos)
@@ -81916,7 +81932,7 @@ xUL
 xUL
 xUL
 xUL
-fza
+roA
 fza
 fza
 fza
@@ -82172,9 +82188,9 @@ cbA
 wSD
 eZL
 poF
-xUL
-fza
-fza
+qtP
+dPj
+roA
 fza
 fza
 fza
@@ -82430,7 +82446,7 @@ nNQ
 tMs
 tJF
 xUL
-fza
+roA
 fza
 fza
 fza
@@ -83973,18 +83989,18 @@ xMc
 adl
 xjV
 oad
-nLo
+jmf
 fro
-udZ
-udZ
+smf
+smf
 fNp
 bQP
 jGi
 crr
 crr
 crr
-crr
-aKs
+fma
+kwf
 bSQ
 aMi
 fza
@@ -84230,17 +84246,17 @@ wwD
 miv
 xjV
 jiQ
-jmf
+nLo
 wzt
-smf
-smf
+udZ
+udZ
 lyf
 dqA
 nLH
 tty
 tty
 tty
-oTw
+phN
 oTw
 oTw
 oTw
