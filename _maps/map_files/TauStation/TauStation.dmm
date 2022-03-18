@@ -13931,7 +13931,9 @@
 /turf/open/floor/plasteel/freezer,
 /area/commons/toilet)
 "fde" = (
-/mob/living/simple_animal/hostile/retaliate/clown/clownhulk/chlown,
+/mob/living/simple_animal/hostile/retaliate/clown/clownhulk/chlown{
+	enemies = list("neutral")
+	},
 /turf/open/floor/plating,
 /area/service/theater/abandoned)
 "fdg" = (
@@ -14414,7 +14416,7 @@
 	dir = 1
 	},
 /mob/living/simple_animal/pet/gondola{
-	health = 1250;
+	health = 1260;
 	name = "Gary";
 	real_name = "commandola"
 	},
@@ -18348,9 +18350,9 @@
 /obj/structure/reagent_dispensers/peppertank{
 	pixel_x = -30
 	},
-/obj/item/restraints/handcuffs/cable,
-/obj/item/restraints/handcuffs/cable,
 /obj/item/melee/baton/cattleprod,
+/obj/item/restraints/handcuffs/cable,
+/obj/item/restraints/handcuffs/cable,
 /turf/open/floor/plasteel/dark/corner{
 	dir = 4
 	},
@@ -32744,7 +32746,9 @@
 /turf/open/floor/plating,
 /area/maintenance/starboard/fore)
 "lZz" = (
-/mob/living/simple_animal/hostile/retaliate/clown/lube,
+/mob/living/simple_animal/hostile/retaliate/clown/lube{
+	enemies = list("neutral")
+	},
 /turf/open/floor/mineral/bananium,
 /area/service/theater/abandoned)
 "lZG" = (
@@ -46152,7 +46156,11 @@
 	},
 /area/medical/break_room)
 "qUT" = (
-/mob/living/simple_animal/hostile/retaliate/clown/mutant/blob,
+/mob/living/simple_animal/hostile/retaliate/clown/mutant/blob{
+	atmos_requirements = list("min_oxy" = 0, "max_oxy" = 0, "min_tox" = 0, "max_tox" = 0, "min_co2" = 0, "max_co2" = 0, "min_n2" = 0, "max_n2" = 0);
+	enemies = list("neutral");
+	health = 300
+	},
 /turf/open/floor/plating,
 /area/service/theater/abandoned)
 "qUX" = (
@@ -48700,8 +48708,12 @@
 /turf/open/floor/plasteel,
 /area/hallway/secondary/entry)
 "rSK" = (
-/obj/machinery/door/airlock/bananium,
+/obj/machinery/door/airlock/bananium{
+	name = "Not A Clown Room";
+	req_access_txt = "46"
+	},
 /obj/structure/fans/tiny,
+/obj/effect/mapping_helpers/airlock/unres,
 /turf/open/floor/plating,
 /area/service/theater/abandoned)
 "rSR" = (
@@ -66061,6 +66073,10 @@
 	},
 /turf/open/floor/plasteel/checker,
 /area/hallway/primary/starboard)
+"xPQ" = (
+/obj/item/bikehorn/bluespacehonker,
+/turf/open/floor/plating,
+/area/service/theater/abandoned)
 "xPW" = (
 /turf/closed/wall/r_wall,
 /area/engineering/supermatter)
@@ -90273,7 +90289,7 @@ qrW
 qrW
 alV
 fza
-lxn
+roA
 fza
 fza
 iCl
@@ -91293,7 +91309,7 @@ ieD
 ieD
 ieD
 fza
-fza
+roA
 fza
 qrW
 qrW
@@ -91550,12 +91566,12 @@ jQw
 fHh
 ieD
 fza
+kwf
+roA
 fza
+roA
 fza
-fza
-fza
-fza
-fza
+roA
 fza
 fza
 fza
@@ -91807,12 +91823,12 @@ hZl
 hZl
 ieD
 ieD
+roA
 fza
 fza
+roA
 fza
-fza
-fza
-fza
+roA
 fza
 fza
 fza
@@ -92068,7 +92084,7 @@ ieD
 ieD
 ieD
 ieD
-fza
+roA
 fza
 fza
 fza
@@ -94891,9 +94907,9 @@ ieD
 ieD
 ieD
 fza
+roA
 fza
-fza
-fza
+roA
 fza
 fza
 fza
@@ -95143,15 +95159,15 @@ ieD
 ieD
 ieD
 ieD
+roA
+fza
+roA
 fza
 fza
-fza
-fza
-fza
-fza
-fza
-fza
-fza
+roA
+roA
+roA
+kwf
 fza
 fza
 fza
@@ -95401,12 +95417,12 @@ ncB
 ieD
 fza
 fza
-fza
-fza
-fza
-fza
-fza
-fza
+roA
+kwf
+roA
+roA
+kwf
+roA
 fza
 fza
 fza
@@ -95656,9 +95672,9 @@ kdh
 ieD
 kBO
 ieD
-fza
-fza
-fza
+roA
+roA
+roA
 fza
 fza
 fza
@@ -95914,7 +95930,7 @@ laE
 hwH
 ieD
 fza
-fza
+kwf
 fza
 fza
 fza
@@ -96170,7 +96186,7 @@ xTx
 sNT
 uOa
 ieD
-fza
+roA
 fza
 fza
 fza
@@ -96428,7 +96444,7 @@ ufE
 ufE
 ieD
 fza
-fza
+roA
 fza
 fza
 fza
@@ -125032,7 +125048,7 @@ mDQ
 mDQ
 kCc
 ygO
-ygO
+xPQ
 ygO
 kCc
 mDQ
