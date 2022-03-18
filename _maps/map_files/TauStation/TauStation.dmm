@@ -6379,6 +6379,9 @@
 /obj/effect/turf_decal/tile/blue{
 	dir = 8
 	},
+/obj/structure/bed{
+	dir = 1
+	},
 /turf/open/floor/plasteel/white/corner{
 	dir = 1
 	},
@@ -19489,6 +19492,12 @@
 /obj/machinery/vending/snack/random,
 /turf/open/floor/plasteel,
 /area/hallway/primary/aft)
+"hfT" = (
+/obj/machinery/atmospherics/pipe/simple/scrubbers/hidden{
+	dir = 4
+	},
+/turf/open/floor/plasteel,
+/area/commons/fitness/pool)
 "hgb" = (
 /obj/machinery/atmospherics/pipe/simple/supply/hidden{
 	dir = 5
@@ -27988,6 +27997,9 @@
 /obj/effect/turf_decal/tile/blue{
 	dir = 8
 	},
+/obj/structure/bed{
+	dir = 1
+	},
 /turf/open/floor/plasteel/white/corner{
 	dir = 1
 	},
@@ -28956,9 +28968,6 @@
 "kGG" = (
 /obj/effect/turf_decal/tile/blue{
 	dir = 8
-	},
-/obj/structure/bed{
-	dir = 1
 	},
 /turf/open/floor/plasteel/white/corner{
 	dir = 1
@@ -30434,9 +30443,6 @@
 /obj/effect/turf_decal/tile/blue{
 	dir = 8
 	},
-/obj/structure/bed{
-	dir = 1
-	},
 /turf/open/floor/plasteel/white/corner{
 	dir = 1
 	},
@@ -31859,6 +31865,9 @@
 	},
 /obj/effect/turf_decal/tile/blue{
 	dir = 8
+	},
+/obj/structure/bed{
+	dir = 1
 	},
 /turf/open/floor/plasteel/white/corner{
 	dir = 1
@@ -67355,9 +67364,7 @@
 /obj/machinery/atmospherics/components/unary/vent_scrubber/on{
 	dir = 8
 	},
-/turf/open/floor/plasteel/yellowsiding{
-	dir = 4
-	},
+/turf/open/floor/plasteel,
 /area/commons/fitness/pool)
 "ylp" = (
 /turf/closed/wall/r_wall,
@@ -117872,18 +117879,18 @@ qsJ
 xkZ
 vUt
 hWs
-iCv
-gvH
-gvH
-gvH
+hfT
+llo
+llo
+llo
 ylf
-nan
-gvH
-gvH
-gvH
-gvH
-gvH
-mAj
+llo
+llo
+llo
+llo
+llo
+llo
+llo
 mWo
 nvl
 qTV
@@ -118129,18 +118136,18 @@ qsJ
 xkZ
 vUt
 hXq
-iDj
-vbB
-vbB
-jHQ
-vbB
-vbB
-vbB
-vbB
-jHQ
-vbB
-vbB
-mCp
+iCv
+gvH
+gvH
+gvH
+gvH
+nan
+gvH
+gvH
+gvH
+gvH
+gvH
+mAj
 mXj
 vUt
 cNY
@@ -118389,12 +118396,12 @@ nyQ
 iDj
 vbB
 vbB
+jHQ
 vbB
 vbB
 vbB
 vbB
-vbB
-vbB
+jHQ
 vbB
 vbB
 mCp
@@ -118910,7 +118917,7 @@ jsz
 vbB
 vbB
 vbB
-lXO
+vbB
 mCp
 mZy
 vUt
@@ -119167,7 +119174,7 @@ vbB
 vbB
 vbB
 vbB
-vbB
+lXO
 mCp
 nav
 vUt
