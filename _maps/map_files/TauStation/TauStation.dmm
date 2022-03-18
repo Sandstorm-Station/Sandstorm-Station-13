@@ -4795,10 +4795,10 @@
 "bSe" = (
 /obj/machinery/button/door{
 	id = "executionspaceblast";
-	name = "Vent to Space";
+	name = "Execution Blast Doors";
 	pixel_x = -6;
 	pixel_y = 32;
-	req_access_txt = "7"
+	req_access_txt = "3"
 	},
 /obj/structure/table/reinforced,
 /obj/item/storage/box/bodybags{
@@ -14416,7 +14416,7 @@
 	dir = 1
 	},
 /mob/living/simple_animal/pet/gondola{
-	health = 1260;
+	health = 1270;
 	name = "Gary";
 	real_name = "commandola"
 	},
@@ -42761,7 +42761,8 @@
 /area/security/brig)
 "pIz" = (
 /obj/machinery/door/window/brigdoor/northleft{
-	name = "Brig Infirmary"
+	name = "Brig Infirmary";
+	req_access_txt = "71"
 	},
 /obj/machinery/atmospherics/pipe/manifold/scrubbers/hidden{
 	dir = 1
