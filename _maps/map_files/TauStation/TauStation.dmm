@@ -11928,18 +11928,6 @@
 /obj/item/storage/dice,
 /turf/open/floor/plasteel,
 /area/commons/fitness/recreation)
-"euI" = (
-/obj/machinery/atmospherics/pipe/simple/scrubbers/hidden{
-	dir = 4
-	},
-/obj/machinery/atmospherics/components/unary/vent_pump/on{
-	dir = 1
-	},
-/obj/structure/disposalpipe/segment{
-	dir = 10
-	},
-/turf/open/floor/plasteel,
-/area/security/prison)
 "euL" = (
 /obj/machinery/atmospherics/pipe/simple/supply/hidden{
 	dir = 4
@@ -13148,7 +13136,15 @@
 /obj/effect/turf_decal/tile/red{
 	dir = 8
 	},
-/turf/open/floor/plasteel,
+/obj/structure/closet/secure_closet/brig,
+/obj/effect/turf_decal/tile/red{
+	dir = 1
+	},
+/obj/effect/turf_decal/tile/red{
+	dir = 4
+	},
+/obj/effect/turf_decal/bot_white,
+/turf/open/floor/plasteel/dark,
 /area/security/prison)
 "ePq" = (
 /obj/effect/spawner/structure/window/reinforced,
@@ -13176,7 +13172,15 @@
 /obj/effect/turf_decal/tile/red{
 	dir = 8
 	},
-/turf/open/floor/plasteel,
+/obj/structure/closet/secure_closet/brig,
+/obj/effect/turf_decal/tile/red{
+	dir = 1
+	},
+/obj/effect/turf_decal/tile/red{
+	dir = 4
+	},
+/obj/effect/turf_decal/bot_white,
+/turf/open/floor/plasteel/dark,
 /area/security/prison)
 "eQw" = (
 /obj/machinery/atmospherics/pipe/simple/supply/hidden{
@@ -13282,27 +13286,6 @@
 /turf/open/floor/carpet,
 /area/command/blueshielquarters)
 "eSH" = (
-/obj/structure/table,
-/obj/item/clothing/shoes/sneakers/orange{
-	pixel_x = -6;
-	pixel_y = 10
-	},
-/obj/item/clothing/shoes/sneakers/orange{
-	pixel_x = -6;
-	pixel_y = -2
-	},
-/obj/item/clothing/shoes/sneakers/orange{
-	pixel_x = -6;
-	pixel_y = 4
-	},
-/obj/item/clothing/shoes/sneakers/orange{
-	pixel_x = -6;
-	pixel_y = -8
-	},
-/obj/item/clothing/under/rank/prisoner{
-	pixel_x = 8;
-	pixel_y = 5
-	},
 /obj/machinery/camera{
 	c_tag = "Permabrig Processing";
 	dir = 8;
@@ -13318,7 +13301,15 @@
 	dir = 8
 	},
 /obj/effect/turf_decal/tile/red,
-/turf/open/floor/plasteel,
+/obj/structure/closet/secure_closet/brig,
+/obj/effect/turf_decal/tile/red{
+	dir = 1
+	},
+/obj/effect/turf_decal/tile/red{
+	dir = 4
+	},
+/obj/effect/turf_decal/bot_white,
+/turf/open/floor/plasteel/dark,
 /area/security/prison)
 "eSK" = (
 /obj/machinery/atmospherics/pipe/simple/scrubbers/hidden,
@@ -14420,7 +14411,7 @@
 	dir = 1
 	},
 /mob/living/simple_animal/pet/gondola{
-	health = 1210;
+	health = 1220;
 	name = "Gary";
 	real_name = "commandola"
 	},
@@ -20582,12 +20573,14 @@
 /obj/machinery/atmospherics/pipe/manifold/supply/hidden{
 	dir = 1
 	},
-/obj/structure/disposalpipe/segment,
 /obj/effect/turf_decal/tile/red{
 	dir = 4
 	},
 /obj/effect/turf_decal/tile/red{
 	dir = 1
+	},
+/obj/structure/disposalpipe/segment{
+	dir = 9
 	},
 /turf/open/floor/plasteel,
 /area/security/prison)
@@ -22383,8 +22376,11 @@
 /obj/machinery/atmospherics/pipe/simple/scrubbers/hidden{
 	dir = 4
 	},
-/obj/effect/spawner/structure/window/reinforced,
-/turf/open/floor/plating,
+/obj/machinery/door/airlock/security/glass{
+	name = "Prison Visitation";
+	req_access_txt = "2"
+	},
+/turf/open/floor/plasteel,
 /area/security/prison/visit)
 "igd" = (
 /obj/machinery/atmospherics/pipe/manifold/scrubbers/hidden{
@@ -22398,9 +22394,6 @@
 	},
 /obj/machinery/atmospherics/components/unary/vent_pump/on{
 	dir = 1
-	},
-/obj/structure/disposalpipe/segment{
-	dir = 5
 	},
 /turf/open/floor/plasteel,
 /area/security/prison)
@@ -22534,9 +22527,6 @@
 /area/maintenance/department/science)
 "iio" = (
 /obj/machinery/atmospherics/pipe/manifold/scrubbers/hidden,
-/obj/structure/disposalpipe/segment{
-	dir = 4
-	},
 /turf/open/floor/plasteel,
 /area/security/prison)
 "iix" = (
@@ -22587,9 +22577,6 @@
 /obj/machinery/atmospherics/pipe/simple/scrubbers/hidden{
 	dir = 4
 	},
-/obj/structure/disposalpipe/segment{
-	dir = 4
-	},
 /turf/open/floor/plasteel,
 /area/security/prison)
 "ijh" = (
@@ -22602,9 +22589,6 @@
 	dir = 4
 	},
 /obj/machinery/door/firedoor,
-/obj/structure/disposalpipe/segment{
-	dir = 4
-	},
 /obj/effect/mapping_helpers/airlock/cyclelink_helper{
 	dir = 4
 	},
@@ -24011,7 +23995,15 @@
 	network = list("ss13","prison")
 	},
 /obj/machinery/light,
-/turf/open/floor/plasteel,
+/obj/structure/closet/secure_closet/brig,
+/obj/effect/turf_decal/tile/red{
+	dir = 1
+	},
+/obj/effect/turf_decal/tile/red{
+	dir = 4
+	},
+/obj/effect/turf_decal/bot_white,
+/turf/open/floor/plasteel/dark,
 /area/security/prison)
 "iMl" = (
 /obj/structure/cable{
@@ -24080,21 +24072,19 @@
 /obj/structure/cable{
 	icon_state = "4-8"
 	},
-/obj/machinery/disposal/deliveryChute{
-	dir = 1;
-	name = "Prisoner Chute"
-	},
-/obj/structure/plasticflaps/opaque{
-	name = "Prisoner Transfer"
-	},
-/obj/structure/disposalpipe/trunk{
-	dir = 1
-	},
 /obj/effect/turf_decal/tile/red{
 	dir = 8
 	},
 /obj/effect/turf_decal/tile/red,
-/turf/open/floor/plasteel,
+/obj/structure/closet/secure_closet/brig,
+/obj/effect/turf_decal/tile/red{
+	dir = 1
+	},
+/obj/effect/turf_decal/tile/red{
+	dir = 4
+	},
+/obj/effect/turf_decal/bot_white,
+/turf/open/floor/plasteel/dark,
 /area/security/prison)
 "iMI" = (
 /obj/machinery/camera{
@@ -26131,6 +26121,24 @@
 /obj/item/storage/lockbox/medal,
 /turf/open/floor/wood,
 /area/command/heads_quarters/captain/private)
+"jAY" = (
+/obj/structure/cable{
+	icon_state = "4-8"
+	},
+/obj/machinery/atmospherics/pipe/simple/supply/hidden{
+	dir = 4
+	},
+/obj/effect/turf_decal/tile/red{
+	dir = 4
+	},
+/obj/effect/turf_decal/tile/red{
+	dir = 1
+	},
+/obj/structure/disposalpipe/segment{
+	dir = 4
+	},
+/turf/open/floor/plasteel,
+/area/security/prison)
 "jBu" = (
 /obj/machinery/atmospherics/pipe/simple/general/visible{
 	dir = 4
@@ -32762,7 +32770,26 @@
 /obj/effect/turf_decal/tile/red{
 	dir = 8
 	},
-/turf/open/floor/plasteel,
+/obj/structure/table,
+/obj/item/clothing/under/rank/prisoner/skirt{
+	pixel_x = 9;
+	pixel_y = 5
+	},
+/obj/item/clothing/under/rank/prisoner{
+	pixel_x = -2;
+	pixel_y = 5
+	},
+/obj/item/clothing/under/rank/prisoner/skirt{
+	pixel_x = -13;
+	pixel_y = 5
+	},
+/obj/effect/turf_decal/tile/red{
+	dir = 1
+	},
+/obj/effect/turf_decal/tile/red{
+	dir = 4
+	},
+/turf/open/floor/plasteel/dark,
 /area/security/prison)
 "maD" = (
 /obj/structure/cable{
@@ -32786,6 +32813,40 @@
 	},
 /turf/open/floor/plasteel,
 /area/hallway/secondary/civilian)
+"maS" = (
+/obj/effect/turf_decal/tile/red,
+/obj/effect/turf_decal/tile/red{
+	dir = 8
+	},
+/obj/structure/table,
+/obj/item/clothing/under/rank/prisoner{
+	pixel_x = 8;
+	pixel_y = 5
+	},
+/obj/item/clothing/shoes/sneakers/orange{
+	pixel_x = -6;
+	pixel_y = -8
+	},
+/obj/item/clothing/shoes/sneakers/orange{
+	pixel_x = -6;
+	pixel_y = -2
+	},
+/obj/item/clothing/shoes/sneakers/orange{
+	pixel_x = -6;
+	pixel_y = 4
+	},
+/obj/item/clothing/shoes/sneakers/orange{
+	pixel_x = -6;
+	pixel_y = 10
+	},
+/obj/effect/turf_decal/tile/red{
+	dir = 1
+	},
+/obj/effect/turf_decal/tile/red{
+	dir = 4
+	},
+/turf/open/floor/plasteel/dark,
+/area/security/prison)
 "mbl" = (
 /obj/machinery/atmospherics/pipe/manifold/supply/hidden,
 /obj/structure/disposalpipe/segment{
@@ -33165,19 +33226,6 @@
 /turf/open/floor/plating,
 /area/maintenance/port/aft)
 "mit" = (
-/obj/structure/table,
-/obj/item/clothing/under/rank/prisoner/skirt{
-	pixel_x = -13;
-	pixel_y = 5
-	},
-/obj/item/clothing/under/rank/prisoner/skirt{
-	pixel_x = 9;
-	pixel_y = 5
-	},
-/obj/item/clothing/under/rank/prisoner{
-	pixel_x = -2;
-	pixel_y = 5
-	},
 /obj/machinery/flasher{
 	id = "waitingflash";
 	pixel_y = -28
@@ -33189,7 +33237,15 @@
 	dir = 8
 	},
 /obj/effect/turf_decal/tile/red,
-/turf/open/floor/plasteel,
+/obj/structure/closet/secure_closet/brig,
+/obj/effect/turf_decal/tile/red{
+	dir = 1
+	},
+/obj/effect/turf_decal/tile/red{
+	dir = 4
+	},
+/obj/effect/turf_decal/bot_white,
+/turf/open/floor/plasteel/dark,
 /area/security/prison)
 "miv" = (
 /obj/machinery/atmospherics/pipe/simple/supply/visible{
@@ -47240,16 +47296,13 @@
 /turf/open/floor/plating,
 /area/security/checkpoint/engineering)
 "rrt" = (
-/obj/machinery/door/airlock/security/glass{
-	name = "Prison Visitation";
-	req_access_txt = "2"
-	},
 /obj/machinery/door/poddoor/shutters/preopen{
 	id = "Prison Gate";
 	name = "Lockdown Shutters"
 	},
 /obj/machinery/door/firedoor,
-/turf/open/floor/plasteel,
+/obj/effect/spawner/structure/window/reinforced,
+/turf/open/floor/plating,
 /area/security/prison/visit)
 "rrC" = (
 /obj/machinery/door/window/southleft{
@@ -64682,6 +64735,16 @@
 	},
 /obj/effect/turf_decal/tile/red{
 	dir = 1
+	},
+/obj/machinery/disposal/deliveryChute{
+	dir = 4;
+	name = "Prisoner Chute"
+	},
+/obj/structure/plasticflaps/opaque{
+	name = "Prisoner Transfer"
+	},
+/obj/structure/disposalpipe/trunk{
+	dir = 4
 	},
 /turf/open/floor/plasteel,
 /area/security/prison)
@@ -85940,7 +86003,7 @@ fRl
 goP
 bPl
 gYS
-xvA
+jAY
 igd
 ePl
 xWU
@@ -86456,7 +86519,7 @@ gpH
 hbV
 hAi
 iio
-eQk
+maS
 xWU
 fza
 fza
@@ -87226,7 +87289,7 @@ iQH
 gJq
 xWU
 hAJ
-euI
+igg
 iMH
 xWU
 roA
