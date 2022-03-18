@@ -14414,7 +14414,7 @@
 	dir = 1
 	},
 /mob/living/simple_animal/pet/gondola{
-	health = 1220;
+	health = 1240;
 	name = "Gary";
 	real_name = "commandola"
 	},
@@ -17380,6 +17380,12 @@
 	pixel_x = 3;
 	pixel_y = -3
 	},
+/obj/machinery/button/door{
+	id = "armory3";
+	name = "Armory Shutters";
+	pixel_x = 26;
+	req_access_txt = "3"
+	},
 /turf/open/floor/engine,
 /area/ai_monitored/security/armory)
 "gsM" = (
@@ -19556,6 +19562,13 @@
 	},
 /turf/open/floor/plasteel/dark,
 /area/ai_monitored/turret_protected/aisat_interior)
+"hhb" = (
+/obj/effect/spawner/structure/window/reinforced,
+/obj/structure/cable{
+	icon_state = "0-8"
+	},
+/turf/open/floor/plating,
+/area/ai_monitored/security/armory)
 "hhs" = (
 /obj/structure/showcase/cyborg/old{
 	dir = 8;
@@ -20842,13 +20855,12 @@
 /turf/open/floor/plasteel,
 /area/security/prison)
 "hCe" = (
-/obj/effect/spawner/structure/window/reinforced,
-/obj/structure/cable{
-	icon_state = "0-2"
-	},
 /obj/machinery/atmospherics/pipe/simple/scrubbers/hidden,
 /obj/structure/cable{
 	icon_state = "1-2"
+	},
+/obj/machinery/door/poddoor/shutters/window{
+	id = "armory3"
 	},
 /turf/open/floor/plating,
 /area/ai_monitored/security/armory)
@@ -29411,6 +29423,9 @@
 	dir = 4
 	},
 /obj/effect/turf_decal/tile/red,
+/obj/structure/cable{
+	icon_state = "2-4"
+	},
 /turf/open/floor/plasteel,
 /area/security/prison)
 "kOT" = (
@@ -41552,6 +41567,20 @@
 /obj/machinery/atmospherics/pipe/heat_exchanging/simple,
 /turf/open/floor/wood/wood_diagonal,
 /area/space)
+"pkE" = (
+/obj/structure/cable{
+	icon_state = "1-2"
+	},
+/obj/machinery/atmospherics/pipe/simple/supply/hidden,
+/obj/effect/turf_decal/tile/red{
+	dir = 4
+	},
+/obj/effect/turf_decal/tile/red,
+/obj/structure/cable{
+	icon_state = "2-4"
+	},
+/turf/open/floor/plasteel,
+/area/security/prison)
 "pkR" = (
 /obj/structure/cable{
 	icon_state = "2-4"
@@ -48611,9 +48640,6 @@
 /obj/structure/cable{
 	icon_state = "4-8"
 	},
-/obj/structure/cable{
-	icon_state = "1-4"
-	},
 /obj/machinery/atmospherics/pipe/simple/scrubbers/hidden{
 	dir = 4
 	},
@@ -52633,11 +52659,10 @@
 /turf/open/floor/plasteel,
 /area/engineering/atmos)
 "tqs" = (
-/obj/effect/spawner/structure/window/reinforced,
-/obj/structure/cable{
-	icon_state = "0-2"
-	},
 /obj/machinery/atmospherics/pipe/simple/supply/hidden,
+/obj/machinery/door/poddoor/shutters/window{
+	id = "armory3"
+	},
 /turf/open/floor/plating,
 /area/ai_monitored/security/armory)
 "tqN" = (
@@ -66785,9 +66810,6 @@
 /turf/closed/wall/r_wall,
 /area/medical/virology)
 "ybN" = (
-/obj/structure/cable{
-	icon_state = "1-2"
-	},
 /obj/machinery/atmospherics/pipe/manifold/supply/hidden,
 /obj/effect/turf_decal/tile/red{
 	dir = 4
@@ -88575,7 +88597,7 @@ xWU
 dDg
 eMG
 hEs
-hEs
+pkE
 qHG
 kOr
 xRD
@@ -88832,9 +88854,9 @@ ock
 dzO
 nkZ
 nkZ
+hhb
 nkZ
-nkZ
-nkZ
+hhb
 nkZ
 nkZ
 nkZ
