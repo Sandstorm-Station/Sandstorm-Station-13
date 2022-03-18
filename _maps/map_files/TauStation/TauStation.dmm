@@ -14414,7 +14414,7 @@
 	dir = 1
 	},
 /mob/living/simple_animal/pet/gondola{
-	health = 1240;
+	health = 1250;
 	name = "Gary";
 	real_name = "commandola"
 	},
@@ -23472,6 +23472,12 @@
 	id = "hos";
 	name = "HoS Office Shutters";
 	pixel_y = 25
+	},
+/obj/machinery/button/door{
+	id = "Secure Brig Control";
+	name = "Brig Control Shutters";
+	pixel_y = 35;
+	req_access_txt = "2"
 	},
 /turf/open/floor/carpet,
 /area/command/heads_quarters/hos)
@@ -53895,6 +53901,13 @@
 	id = "brigentry";
 	pixel_x = 38;
 	pixel_y = 24
+	},
+/obj/machinery/button/door{
+	id = "Secure Brig Control";
+	name = "Brig Control Shutters";
+	pixel_x = 40;
+	pixel_y = 36;
+	req_access_txt = "2"
 	},
 /turf/open/floor/engine,
 /area/security/brig)
