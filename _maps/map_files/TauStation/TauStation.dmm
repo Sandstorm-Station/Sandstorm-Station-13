@@ -14416,7 +14416,7 @@
 	dir = 1
 	},
 /mob/living/simple_animal/pet/gondola{
-	health = 1270;
+	health = 1280;
 	name = "Gary";
 	real_name = "commandola"
 	},
@@ -52708,9 +52708,7 @@
 /turf/closed/wall,
 /area/commons/toilet)
 "tri" = (
-/obj/machinery/announcement_system{
-	arrival = "A %RANK-class anomaly, designated %PERSON is approaching the Tau System."
-	},
+/obj/machinery/announcement_system,
 /obj/effect/turf_decal/tile/yellow{
 	dir = 1
 	},
