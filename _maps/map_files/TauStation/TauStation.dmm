@@ -14416,7 +14416,7 @@
 	dir = 1
 	},
 /mob/living/simple_animal/pet/gondola{
-	health = 1280;
+	health = 1290;
 	name = "Gary";
 	real_name = "commandola"
 	},
@@ -32083,6 +32083,13 @@
 /obj/effect/landmark/start/assistant,
 /turf/open/floor/plasteel,
 /area/commons/fitness/pool)
+"lLk" = (
+/obj/machinery/door/airlock/external{
+	name = "Labor Camp Shuttle Airlock"
+	},
+/obj/structure/fans/tiny,
+/turf/open/floor/plasteel,
+/area/security/brig)
 "lLr" = (
 /obj/structure/chair/office{
 	dir = 1
@@ -41942,6 +41949,14 @@
 	},
 /turf/open/floor/wood/wood_large,
 /area/service/library)
+"pqS" = (
+/obj/machinery/door/airlock/external{
+	name = "Labor Camp Shuttle Airlock";
+	req_access_txt = "2"
+	},
+/obj/structure/fans/tiny,
+/turf/open/floor/plasteel,
+/area/security/brig)
 "pqY" = (
 /obj/structure/sign/painting/library{
 	pixel_x = 32
@@ -89933,7 +89948,7 @@ njn
 xWd
 oeG
 ovL
-oeG
+lLk
 fza
 fza
 fza
@@ -90961,7 +90976,7 @@ fNY
 fXO
 gIl
 ovN
-gIl
+pqS
 plv
 fza
 fza
