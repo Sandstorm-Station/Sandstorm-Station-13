@@ -1,4 +1,4 @@
-/datum/export/gear/corpus //a
+/datum/export/gear/corpus
 	cost = 120
 	unit_name = "Corpus Attire"
 	export_types = list(/obj/item/clothing/suit/hooded/corpus)
