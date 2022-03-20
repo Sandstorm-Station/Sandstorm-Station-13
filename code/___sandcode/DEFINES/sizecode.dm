@@ -15,12 +15,3 @@
 #define RESIZE_A_NORMALSMALL (RESIZE_NORMAL + RESIZE_SMALL) / 2
 #define RESIZE_A_SMALLTINY (RESIZE_SMALL + RESIZE_TINY) / 2
 #define RESIZE_A_TINYMICRO (RESIZE_TINY + RESIZE_MICRO) / 2
-
-/proc/get_size(mob/living/target)
-	if(!target || !istype(target))
-		CRASH("get_size(NULL) was called")
-	var/datum/dna/has_dna = target.has_dna()
-	if(ishuman(target) && has_dna)
-		return has_dna.features["body_size"]
-	else
-		return target.size_multiplier

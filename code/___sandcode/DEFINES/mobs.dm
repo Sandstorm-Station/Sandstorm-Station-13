@@ -1,5 +1,6 @@
 //Thirst
-#define THIRST_LEVEL_THRESHOLD		800		//Set to 0 to stop clamping
+/// Maximum amount of hydration the player can have
+#define THIRST_LEVEL_THRESHOLD		800
 #define THIRST_LEVEL_FULL			600
 #define THIRST_LEVEL_VERY_QUENCHED	550
 #define THIRST_LEVEL_QUENCHED		450
