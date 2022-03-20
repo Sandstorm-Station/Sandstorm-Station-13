@@ -6444,7 +6444,6 @@
 /turf/open/space/basic,
 /area/space/nearstation)
 "cve" = (
-/obj/machinery/light/small,
 /obj/effect/turf_decal/tile/yellow,
 /obj/effect/turf_decal/tile/yellow{
 	dir = 8
@@ -6457,7 +6456,18 @@
 	name = "Station Intercom (General)";
 	pixel_y = -28
 	},
-/turf/open/floor/plasteel,
+/obj/machinery/shower{
+	dir = 1
+	},
+/obj/structure/window{
+	dir = 8;
+	pixel_x = -4
+	},
+/obj/structure/window{
+	dir = 4;
+	pixel_x = 4
+	},
+/turf/open/floor/plasteel/freezer,
 /area/engineering/main)
 "cvj" = (
 /obj/structure/cable{
@@ -10987,15 +10997,14 @@
 /area/engineering/atmos)
 "dYr" = (
 /obj/machinery/atmospherics/pipe/simple/general/hidden,
-/obj/machinery/atmospherics/components/unary/vent_pump/on{
+/obj/effect/turf_decal/tile/yellow,
+/obj/machinery/shower{
 	dir = 8
 	},
-/obj/effect/turf_decal/tile/yellow,
-/obj/machinery/firealarm{
-	dir = 8;
-	pixel_x = 24
+/obj/effect/turf_decal/tile/yellow{
+	dir = 4
 	},
-/turf/open/floor/plasteel,
+/turf/open/floor/plasteel/freezer,
 /area/engineering/atmos)
 "dYy" = (
 /obj/effect/turf_decal/tile/neutral{
@@ -28141,6 +28150,9 @@
 	name = "Station Intercom (General)";
 	pixel_y = -28
 	},
+/obj/machinery/atmospherics/components/unary/vent_pump/on{
+	dir = 4
+	},
 /turf/open/floor/plasteel,
 /area/engineering/atmos)
 "kqE" = (
@@ -30792,6 +30804,7 @@
 /obj/effect/turf_decal/tile/yellow{
 	dir = 8
 	},
+/obj/machinery/light/small,
 /turf/open/floor/plasteel,
 /area/engineering/main)
 "lnL" = (
@@ -38568,6 +38581,9 @@
 /obj/effect/turf_decal/tile/yellow{
 	dir = 4
 	},
+/obj/machinery/light/small{
+	dir = 1
+	},
 /turf/open/floor/plasteel,
 /area/engineering/main)
 "nWZ" = (
@@ -44200,9 +44216,6 @@
 /area/service/bar)
 "qdb" = (
 /obj/structure/table/reinforced,
-/obj/machinery/light/small{
-	dir = 1
-	},
 /obj/item/clothing/ears/earmuffs{
 	pixel_x = -3;
 	pixel_y = -2
@@ -50152,7 +50165,7 @@
 /area/science/mixing)
 "soY" = (
 /obj/machinery/atmospherics/pipe/manifold/supply/hidden{
-	dir = 8
+	dir = 4
 	},
 /turf/open/floor/plasteel,
 /area/engineering/atmos)
@@ -51730,9 +51743,6 @@
 /area/science/xenobiology)
 "sRU" = (
 /obj/structure/rack,
-/obj/machinery/atmospherics/components/unary/vent_scrubber/on{
-	dir = 4
-	},
 /obj/item/radio,
 /obj/effect/turf_decal/tile/yellow{
 	dir = 8
@@ -53188,6 +53198,12 @@
 /obj/machinery/atmospherics/pipe/simple/supply/hidden,
 /obj/effect/turf_decal/tile/yellow{
 	dir = 1
+	},
+/obj/machinery/firealarm{
+	pixel_y = 24
+	},
+/obj/machinery/atmospherics/components/unary/vent_scrubber/on{
+	dir = 8
 	},
 /turf/open/floor/plasteel,
 /area/engineering/atmos)
@@ -61596,6 +61612,9 @@
 	dir = 4
 	},
 /obj/effect/turf_decal/tile/yellow,
+/obj/structure/window{
+	pixel_y = -4
+	},
 /turf/open/floor/plasteel,
 /area/engineering/atmos)
 "wni" = (
@@ -66522,7 +66541,7 @@
 /area/hallway/secondary/exit/departure_lounge)
 "xRa" = (
 /obj/machinery/atmospherics/pipe/manifold/scrubbers/hidden{
-	dir = 4
+	dir = 8
 	},
 /turf/open/floor/plasteel,
 /area/engineering/atmos)
