@@ -43070,6 +43070,10 @@
 /obj/effect/turf_decal/tile/brown{
 	dir = 1
 	},
+/obj/structure/table,
+/obj/item/storage/box,
+/obj/item/storage/box,
+/obj/item/storage/box,
 /turf/open/floor/plasteel,
 /area/cargo/sorting)
 "pEb" = (
@@ -53396,6 +53400,9 @@
 /obj/effect/turf_decal/tile/brown{
 	dir = 1
 	},
+/obj/structure/chair/office/dark{
+	dir = 1
+	},
 /turf/open/floor/plasteel,
 /area/cargo/sorting)
 "trT" = (
@@ -54196,23 +54203,20 @@
 /turf/open/floor/plasteel,
 /area/cargo/sorting)
 "tFM" = (
-/obj/structure/table,
-/obj/item/stack/wrapping_paper{
-	pixel_x = 3;
-	pixel_y = 4
-	},
-/obj/item/stack/packageWrap{
-	pixel_x = -1;
-	pixel_y = -1
-	},
-/obj/item/destTagger{
-	pixel_x = 4;
-	pixel_y = 3
-	},
 /obj/machinery/atmospherics/pipe/simple/supply/hidden{
 	dir = 4
 	},
 /obj/effect/turf_decal/tile/brown,
+/obj/structure/table/reinforced,
+/obj/item/paper_bin{
+	pixel_x = -3
+	},
+/obj/item/pen{
+	pixel_x = -3
+	},
+/obj/item/folder/yellow{
+	pixel_x = 4
+	},
 /turf/open/floor/plasteel,
 /area/cargo/sorting)
 "tFU" = (
@@ -55400,14 +55404,11 @@
 /turf/open/floor/plasteel/white,
 /area/medical/surgery)
 "tXA" = (
-/obj/structure/table,
-/obj/item/storage/box,
-/obj/item/storage/box,
-/obj/item/storage/box,
 /obj/machinery/atmospherics/components/unary/vent_pump/on{
 	dir = 8
 	},
 /obj/effect/turf_decal/tile/brown,
+/obj/structure/filingcabinet/filingcabinet,
 /turf/open/floor/plasteel,
 /area/cargo/sorting)
 "tXC" = (
@@ -59585,6 +59586,19 @@
 /area/engineering/atmos)
 "vww" = (
 /obj/effect/turf_decal/tile/brown,
+/obj/structure/table,
+/obj/item/stack/packageWrap{
+	pixel_x = -1;
+	pixel_y = -1
+	},
+/obj/item/stack/wrapping_paper{
+	pixel_x = 3;
+	pixel_y = 4
+	},
+/obj/item/destTagger{
+	pixel_x = 4;
+	pixel_y = 3
+	},
 /turf/open/floor/plasteel,
 /area/cargo/sorting)
 "vwH" = (
