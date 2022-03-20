@@ -14517,7 +14517,7 @@
 	dir = 1
 	},
 /mob/living/simple_animal/pet/gondola{
-	health = 1310;
+	health = 1320;
 	name = "Gary";
 	real_name = "commandola"
 	},
@@ -53807,7 +53807,7 @@
 /obj/structure/window/reinforced/spawner/west,
 /obj/machinery/conveyor_switch/oneway{
 	dir = 8;
-	id = "garbage";
+	id = "packageSort2";
 	name = "disposal conveyor"
 	},
 /turf/open/floor/plasteel,
