@@ -1,7 +1,0 @@
-author: SandPoot
-delete-after: true
-changes:
-  - bugfix: Miner's Salve no longer permanently allows you to make faster self-surgeries.
-      The TRAIT_PAINKILLER was seemingly not being removed.
-  - code_imp: Moved some files around just for the sake of organization, is not meaningful
-      to player and doesn't change anything.

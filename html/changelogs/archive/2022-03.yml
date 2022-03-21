@@ -133,3 +133,11 @@
   - code_imp: Splits the modular job clothes in their specific files like in the main
       code
   - bugfix: Fixes carpentry so you can actually use it
+2022-03-21:
+  Melbert:
+  - bugfix: Balloon alerts sourced on turfs work properly.
+  SandPoot:
+  - bugfix: Miner's Salve no longer permanently allows you to make faster self-surgeries.
+      The TRAIT_PAINKILLER was seemingly not being removed.
+  - code_imp: Moved some files around just for the sake of organization, is not meaningful
+      to player and doesn't change anything.
