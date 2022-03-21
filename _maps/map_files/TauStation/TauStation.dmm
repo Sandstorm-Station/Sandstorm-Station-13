@@ -5334,7 +5334,7 @@
 "bYo" = (
 /obj/machinery/door/airlock/grunge{
 	name = "Exhibit Atmospherics";
-	req_access_txt = "17"
+	req_access_txt = "37"
 	},
 /turf/open/floor/plating,
 /area/service/library/artgallery/museum)
@@ -31595,6 +31595,17 @@
 /obj/machinery/light/small,
 /turf/open/floor/plasteel,
 /area/engineering/main)
+"lnD" = (
+/obj/docking_port/stationary{
+	dir = 8;
+	dwidth = 5;
+	height = 7;
+	id = "supply_home";
+	name = "Cargo Bay";
+	width = 12
+	},
+/turf/open/space/basic,
+/area/space)
 "lnL" = (
 /obj/machinery/atmospherics/components/unary/thermomachine/heater{
 	dir = 8
@@ -45733,7 +45744,7 @@
 "qjL" = (
 /obj/machinery/door/airlock/grunge{
 	name = "Exhibit Atmospherics";
-	req_access_txt = "17"
+	req_access_txt = "37"
 	},
 /obj/machinery/atmospherics/pipe/simple/cyan/hidden,
 /turf/open/floor/wood/wood_large,
@@ -83544,7 +83555,7 @@ fza
 fza
 fza
 fza
-fza
+lnD
 fza
 fza
 fza
