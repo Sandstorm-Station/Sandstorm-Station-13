@@ -4,6 +4,9 @@ on:
   push:
     branches:
       - master
+    paths:
+      - 'html/changelogs/**'
+      - '!html/changelogs/archive/**'
 
 jobs:
   compile:
