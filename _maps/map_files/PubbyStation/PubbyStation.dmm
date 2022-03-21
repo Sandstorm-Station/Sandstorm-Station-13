@@ -891,7 +891,6 @@
 /obj/effect/turf_decal/tile/blue{
 	dir = 4
 	},
-/obj/item/storage/secure/briefcase/permits,
 /turf/open/floor/plasteel/dark,
 /area/command/bridge)
 "acc" = (
@@ -3072,6 +3071,10 @@
 /turf/open/floor/plasteel,
 /area/security/prison)
 "aib" = (
+/obj/machinery/rnd/production/techfab/department/security,
+/turf/open/floor/plasteel/dark,
+/area/ai_monitored/security/armory)
+"aic" = (
 /obj/structure/table,
 /obj/item/storage/box/chemimp{
 	pixel_x = 6
@@ -3081,26 +3084,24 @@
 	},
 /turf/open/floor/plasteel/dark,
 /area/ai_monitored/security/armory)
-"aic" = (
+"aid" = (
 /obj/structure/closet/secure_closet/contraband/armory,
 /obj/item/poster/random_contraband,
 /obj/item/clothing/suit/armor/navyblue/russian,
 /obj/item/grenade/plastic/c4,
 /turf/open/floor/plasteel/dark,
 /area/ai_monitored/security/armory)
-"aid" = (
-/obj/vehicle/ridden/secway,
-/turf/open/floor/plasteel/dark,
-/area/ai_monitored/security/armory)
 "aie" = (
-/obj/item/grenade/barrier{
-	pixel_x = 4
+/obj/structure/closet/secure_closet{
+	name = "nonlethal ammunition";
+	req_access = "list(3)"
 	},
-/obj/item/grenade/barrier,
-/obj/item/grenade/barrier{
-	pixel_x = -4
-	},
-/obj/structure/table,
+/obj/item/storage/box/rubbershot,
+/obj/item/storage/box/rubbershot,
+/obj/item/storage/box/rubbershot,
+/obj/item/storage/box/rubbershot,
+/obj/item/storage/box/rubbershot,
+/obj/item/storage/box/rubbershot,
 /turf/open/floor/plasteel/dark,
 /area/ai_monitored/security/armory)
 "aig" = (
@@ -3259,8 +3260,6 @@
 /obj/structure/cable{
 	icon_state = "0-8"
 	},
-/obj/item/clothing/suit/brigdoc/armor,
-/obj/item/clothing/head/helmet/brigdoc,
 /turf/open/floor/plasteel/dark,
 /area/ai_monitored/security/armory)
 "aiJ" = (
@@ -3451,17 +3450,26 @@
 	pixel_x = -3;
 	pixel_y = 3
 	},
+/obj/item/clothing/suit/armor/riot,
 /obj/item/clothing/suit/armor/riot{
 	pixel_x = 3;
 	pixel_y = -3
 	},
-/obj/item/clothing/head/helmet/riot,
-/obj/item/clothing/head/helmet/riot{
-	pixel_x = 3;
-	pixel_y = -3
+/obj/item/shield/riot{
+	pixel_x = -3;
+	pixel_y = 3
 	},
 /obj/item/shield/riot,
 /obj/item/shield/riot{
+	pixel_x = 3;
+	pixel_y = -3
+	},
+/obj/item/clothing/head/helmet/riot{
+	pixel_x = -3;
+	pixel_y = 3
+	},
+/obj/item/clothing/head/helmet/riot,
+/obj/item/clothing/head/helmet/riot{
 	pixel_x = 3;
 	pixel_y = -3
 	},
@@ -3475,20 +3483,6 @@
 /area/ai_monitored/security/armory)
 "ajf" = (
 /obj/structure/rack,
-/obj/item/storage/box/rubbershot{
-	pixel_x = -3;
-	pixel_y = 3
-	},
-/obj/item/storage/box/rubbershot{
-	pixel_x = -3;
-	pixel_y = 3
-	},
-/obj/item/storage/box/rubbershot,
-/obj/item/storage/box/rubbershot,
-/obj/item/storage/box/rubbershot{
-	pixel_x = 3;
-	pixel_y = -3
-	},
 /obj/machinery/light{
 	dir = 4;
 	light_color = "#e8eaff"
@@ -3496,6 +3490,8 @@
 /obj/structure/sign/warning/nosmoking{
 	pixel_x = 32
 	},
+/obj/item/clothing/suit/brigdoc/armor,
+/obj/item/clothing/head/helmet/brigdoc,
 /turf/open/floor/plasteel/dark,
 /area/ai_monitored/security/armory)
 "ajg" = (
@@ -3755,6 +3751,15 @@
 	pixel_y = 3
 	},
 /obj/item/clothing/suit/armor/bulletproof,
+/obj/item/clothing/suit/armor/bulletproof{
+	pixel_x = 3;
+	pixel_y = -3
+	},
+/obj/item/clothing/head/helmet/alt{
+	layer = 3.00001;
+	pixel_x = -3;
+	pixel_y = 3
+	},
 /obj/item/clothing/head/helmet/alt{
 	layer = 3.00001
 	},
@@ -3778,6 +3783,7 @@
 	pixel_x = -3;
 	pixel_y = 3
 	},
+/obj/item/gun/energy/laser,
 /obj/item/gun/energy/laser{
 	pixel_x = 3;
 	pixel_y = -3
@@ -4139,7 +4145,15 @@
 "akF" = (
 /obj/effect/landmark/event_spawn,
 /obj/structure/rack,
-/obj/item/key/security,
+/obj/item/gun/ballistic/automatic/pistol/enforcer{
+	pixel_x = -3;
+	pixel_y = 3
+	},
+/obj/item/gun/ballistic/automatic/pistol/enforcer,
+/obj/item/gun/ballistic/automatic/pistol/enforcer{
+	pixel_x = 3;
+	pixel_y = -3
+	},
 /turf/open/floor/plasteel/dark,
 /area/ai_monitored/security/armory)
 "akG" = (
@@ -4151,6 +4165,10 @@
 /area/ai_monitored/security/armory)
 "akH" = (
 /obj/structure/rack,
+/obj/item/gun/ballistic/shotgun/riot{
+	pixel_x = -3;
+	pixel_y = 3
+	},
 /obj/item/gun/ballistic/shotgun/riot,
 /obj/item/gun/ballistic/shotgun/riot{
 	pixel_x = 3;
@@ -5079,6 +5097,7 @@
 /obj/structure/cable{
 	icon_state = "1-2"
 	},
+/obj/item/key/security,
 /turf/open/floor/plasteel/showroomfloor,
 /area/security/warden)
 "amS" = (
@@ -10631,15 +10650,19 @@
 /area/security/brig)
 "aAW" = (
 /obj/structure/rack,
+/obj/machinery/atmospherics/components/unary/vent_pump/on,
+/obj/machinery/firealarm{
+	dir = 4;
+	pixel_x = -27
+	},
 /obj/item/gun/energy/e_gun{
 	pixel_x = -3;
 	pixel_y = 3
 	},
 /obj/item/gun/energy/e_gun,
-/obj/machinery/atmospherics/components/unary/vent_pump/on,
-/obj/machinery/firealarm{
-	dir = 4;
-	pixel_x = -27
+/obj/item/gun/energy/e_gun{
+	pixel_x = 3;
+	pixel_y = -3
 	},
 /turf/open/floor/plasteel/dark,
 /area/ai_monitored/security/armory)
@@ -10648,9 +10671,9 @@
 /turf/open/floor/plasteel/dark,
 /area/ai_monitored/security/armory)
 "aAY" = (
-/obj/machinery/rnd/production/techfab/department/security,
+/obj/vehicle/ridden/secway,
 /turf/open/floor/plasteel/dark,
-/area/security/office)
+/area/ai_monitored/security/armory)
 "aBa" = (
 /obj/structure/cable{
 	icon_state = "4-8"
@@ -50844,7 +50867,6 @@
 /area/service/library/lounge)
 "cyP" = (
 /obj/structure/closet/secure_closet/warden,
-/obj/item/clothing/mask/gas/sechailer,
 /obj/machinery/power/apc{
 	dir = 8;
 	name = "Brig Control APC";
@@ -59089,6 +59111,7 @@
 	pixel_y = 8;
 	req_access_txt = "2"
 	},
+/obj/item/storage/secure/briefcase/permits,
 /turf/open/floor/plasteel/showroomfloor,
 /area/security/warden)
 "pdW" = (
@@ -64533,6 +64556,17 @@
 /obj/effect/spawner/structure/window/reinforced,
 /turf/open/floor/plating,
 /area/maintenance/solars/port)
+"yiW" = (
+/obj/item/grenade/barrier{
+	pixel_x = 4
+	},
+/obj/item/grenade/barrier,
+/obj/item/grenade/barrier{
+	pixel_x = -4
+	},
+/obj/structure/table,
+/turf/open/floor/plasteel/dark,
+/area/ai_monitored/security/armory)
 "ymb" = (
 /obj/machinery/camera{
 	c_tag = "Engineering Telecomms Access";
@@ -84661,11 +84695,11 @@ aaa
 aaa
 aaa
 aaa
-aaa
 aby
 abI
 abI
 alx
+aic
 aib
 aiD
 azG
@@ -84918,12 +84952,12 @@ aaa
 aaa
 aaa
 aaa
-aaa
 aby
 abI
 abI
 alx
-aic
+aid
+aiF
 aiF
 aiF
 aAX
@@ -85175,12 +85209,12 @@ aaa
 aaa
 aaa
 aaa
-aaa
 aby
 abI
 ahn
 alx
 aqB
+aiF
 aiF
 ajd
 ajJ
@@ -85432,12 +85466,12 @@ aaa
 aaa
 aaa
 aaa
-aaa
 aby
 abI
 abI
 alx
-aid
+aAY
+aiF
 aiG
 aje
 ajK
@@ -85689,11 +85723,11 @@ aaa
 aaa
 aaa
 aaa
-aaa
 aby
 abI
 abI
 alx
+yiW
 aie
 aiH
 ajf
@@ -85949,7 +85983,7 @@ jXF
 jXF
 cnJ
 cnJ
-jXF
+aow
 alx
 alx
 alx
@@ -88267,7 +88301,7 @@ anO
 jXF
 amn
 azL
-aAY
+amn
 amZ
 jXF
 jXF

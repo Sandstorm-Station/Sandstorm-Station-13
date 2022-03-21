@@ -75,7 +75,6 @@
 "aaj" = (
 /obj/structure/table/reinforced,
 /obj/item/storage/fancy/donut_box,
-/obj/item/storage/secure/briefcase/permits,
 /turf/open/floor/plasteel,
 /area/command/bridge)
 "aak" = (
@@ -2314,6 +2313,8 @@
 /obj/effect/turf_decal/tile/neutral{
 	dir = 1
 	},
+/obj/machinery/rnd/production/techfab/department/security,
+/obj/effect/turf_decal/delivery,
 /turf/open/floor/plasteel/dark,
 /area/ai_monitored/security/armory)
 "aeY" = (
@@ -2416,6 +2417,16 @@
 	},
 /obj/effect/turf_decal/tile/neutral,
 /obj/effect/turf_decal/bot,
+/obj/structure/rack,
+/obj/item/gun/ballistic/automatic/pistol/enforcer{
+	pixel_x = -3;
+	pixel_y = 3
+	},
+/obj/item/gun/ballistic/automatic/pistol/enforcer,
+/obj/item/gun/ballistic/automatic/pistol/enforcer{
+	pixel_x = 3;
+	pixel_y = -3
+	},
 /turf/open/floor/plasteel/dark,
 /area/ai_monitored/security/armory)
 "afe" = (
@@ -4250,12 +4261,12 @@
 /turf/open/floor/plasteel/dark,
 /area/ai_monitored/security/armory)
 "aii" = (
-/obj/machinery/rnd/production/techfab/department/security,
-/obj/effect/turf_decal/delivery,
 /obj/machinery/light{
 	dir = 8;
 	light_color = "#e8eaff"
 	},
+/obj/effect/turf_decal/bot,
+/obj/machinery/photocopier,
 /turf/open/floor/plasteel/dark,
 /area/security/brig)
 "aij" = (
@@ -7695,6 +7706,7 @@
 /obj/structure/cable{
 	icon_state = "2-4"
 	},
+/obj/item/storage/secure/briefcase/permits,
 /turf/open/floor/plasteel/showroomfloor,
 /area/security/warden)
 "apw" = (
@@ -58909,15 +58921,15 @@
 /turf/open/floor/plating,
 /area/maintenance/starboard/aft)
 "lZn" = (
-/obj/machinery/door/airlock/security/glass{
-	name = "Brig Infirmary";
-	req_access_txt = "2, 71"
-	},
 /obj/effect/mapping_helpers/airlock/cyclelink_helper{
 	dir = 1
 	},
 /obj/machinery/door/firedoor,
 /obj/machinery/atmospherics/pipe/simple/scrubbers/hidden,
+/obj/machinery/door/airlock/security/glass{
+	name = "Brig Infirmary";
+	req_access_txt = "71"
+	},
 /turf/open/floor/plasteel,
 /area/security/brig)
 "lZp" = (
