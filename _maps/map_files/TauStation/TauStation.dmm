@@ -61515,7 +61515,8 @@
 	id = "Skynet_launch";
 	name = "Mech Bay Door Control";
 	pixel_x = 6;
-	pixel_y = 24
+	pixel_y = 24;
+	req_access_txt = "29"
 	},
 /obj/machinery/camera{
 	c_tag = "Starboard Primary Hallway - Tech Storage"
