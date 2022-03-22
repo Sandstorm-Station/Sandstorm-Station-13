@@ -674,6 +674,10 @@
 	dir = 4
 	},
 /obj/effect/turf_decal/tile/neutral,
+/obj/effect/turf_decal/tile/yellow,
+/obj/effect/turf_decal/tile/neutral{
+	dir = 8
+	},
 /turf/open/floor/plasteel,
 /area/commons/storage/auxiliary)
 "anC" = (
@@ -1213,6 +1217,10 @@
 /obj/machinery/camera/autoname{
 	dir = 8
 	},
+/obj/machinery/firealarm{
+	dir = 8;
+	pixel_x = 24
+	},
 /turf/open/floor/wood/wood_large,
 /area/service/library)
 "ayR" = (
@@ -1227,6 +1235,12 @@
 	},
 /turf/open/space,
 /area/space)
+"azf" = (
+/obj/effect/turf_decal/tile/neutral{
+	dir = 8
+	},
+/turf/open/floor/plasteel,
+/area/hallway/secondary/civilian)
 "azg" = (
 /obj/effect/decal/cleanable/cobweb/cobweb2,
 /obj/effect/decal/cleanable/dirt/dust,
@@ -6465,6 +6479,9 @@
 /obj/structure/disposalpipe/trunk{
 	dir = 8
 	},
+/obj/effect/turf_decal/tile/neutral{
+	dir = 4
+	},
 /turf/open/floor/plasteel,
 /area/hallway/secondary/civilian)
 "csf" = (
@@ -8576,6 +8593,9 @@
 	name = "Station Intercom (General)";
 	pixel_y = 20
 	},
+/obj/effect/turf_decal/tile/neutral{
+	dir = 1
+	},
 /turf/open/floor/plasteel,
 /area/hallway/secondary/civilian)
 "dbr" = (
@@ -9567,6 +9587,15 @@
 	},
 /turf/open/floor/plasteel/dark,
 /area/security/warden)
+"dvi" = (
+/obj/machinery/atmospherics/pipe/simple/scrubbers/hidden{
+	dir = 4
+	},
+/obj/effect/turf_decal/tile/neutral{
+	dir = 8
+	},
+/turf/open/floor/plasteel,
+/area/hallway/secondary/civilian)
 "dvo" = (
 /obj/machinery/atmospherics/pipe/simple/scrubbers/hidden{
 	dir = 5
@@ -9790,6 +9819,7 @@
 	dir = 9
 	},
 /obj/structure/closet/emcloset,
+/obj/effect/turf_decal/tile/neutral,
 /turf/open/floor/plasteel,
 /area/commons/fitness/recreation)
 "dyb" = (
@@ -10695,6 +10725,9 @@
 /obj/structure/sign/poster/official/random{
 	pixel_y = 32
 	},
+/obj/effect/turf_decal/tile/neutral{
+	dir = 1
+	},
 /turf/open/floor/plasteel,
 /area/hallway/secondary/civilian)
 "dOs" = (
@@ -11307,6 +11340,9 @@
 /area/maintenance/port/aft)
 "dXF" = (
 /obj/machinery/light{
+	dir = 4
+	},
+/obj/effect/turf_decal/tile/neutral{
 	dir = 4
 	},
 /turf/open/floor/plasteel,
@@ -12359,6 +12395,9 @@
 "etY" = (
 /obj/structure/disposalpipe/junction/flip{
 	dir = 4
+	},
+/obj/effect/turf_decal/tile/yellow{
+	dir = 8
 	},
 /turf/open/floor/plasteel,
 /area/hallway/primary/starboard)
@@ -13531,6 +13570,16 @@
 	},
 /turf/open/floor/plasteel,
 /area/security/prison)
+"eMQ" = (
+/obj/structure/cable{
+	icon_state = "1-2"
+	},
+/obj/structure/disposalpipe/segment,
+/obj/effect/turf_decal/tile/neutral{
+	dir = 1
+	},
+/turf/open/floor/plasteel,
+/area/hallway/secondary/civilian)
 "eMX" = (
 /obj/effect/spawner/structure/window/reinforced,
 /obj/structure/cable,
@@ -16086,6 +16135,9 @@
 /obj/structure/sign/directions/evac{
 	pixel_y = 24
 	},
+/obj/effect/turf_decal/tile/neutral{
+	dir = 1
+	},
 /turf/open/floor/plasteel,
 /area/hallway/secondary/civilian)
 "fHz" = (
@@ -17236,6 +17288,9 @@
 	name = "Station Intercom (General)";
 	pixel_y = 20
 	},
+/obj/effect/turf_decal/tile/neutral{
+	dir = 4
+	},
 /turf/open/floor/plasteel,
 /area/commons/fitness/recreation)
 "gch" = (
@@ -17272,6 +17327,9 @@
 	},
 /obj/machinery/disposal/bin,
 /obj/structure/disposalpipe/trunk,
+/obj/effect/turf_decal/tile/neutral{
+	dir = 4
+	},
 /turf/open/floor/plasteel,
 /area/commons/fitness/recreation)
 "gcH" = (
@@ -18597,6 +18655,9 @@
 /obj/structure/extinguisher_cabinet{
 	pixel_y = -31
 	},
+/obj/effect/turf_decal/tile/neutral{
+	dir = 8
+	},
 /turf/open/floor/plasteel,
 /area/hallway/secondary/civilian)
 "gDN" = (
@@ -18628,6 +18689,9 @@
 	},
 /obj/structure/disposalpipe/segment{
 	dir = 5
+	},
+/obj/effect/turf_decal/tile/neutral{
+	dir = 4
 	},
 /turf/open/floor/plasteel,
 /area/commons/fitness/recreation)
@@ -18683,6 +18747,9 @@
 	},
 /obj/machinery/door/firedoor,
 /obj/structure/disposalpipe/segment{
+	dir = 4
+	},
+/obj/effect/turf_decal/tile/neutral{
 	dir = 4
 	},
 /turf/open/floor/plasteel,
@@ -18767,7 +18834,9 @@
 	icon_state = "1-2"
 	},
 /obj/structure/disposalpipe/segment,
-/turf/open/floor/plasteel,
+/turf/open/floor/plasteel/white/side{
+	dir = 8
+	},
 /area/hallway/secondary/civilian)
 "gHi" = (
 /obj/structure/cable{
@@ -18835,6 +18904,9 @@
 	},
 /obj/machinery/atmospherics/pipe/simple/supply/hidden,
 /obj/machinery/light{
+	dir = 4
+	},
+/obj/effect/turf_decal/tile/neutral{
 	dir = 4
 	},
 /turf/open/floor/plasteel,
@@ -19626,6 +19698,9 @@
 	icon_state = "1-2"
 	},
 /obj/structure/disposalpipe/segment,
+/obj/effect/turf_decal/tile/neutral{
+	dir = 1
+	},
 /turf/open/floor/plasteel,
 /area/hallway/secondary/civilian)
 "gUz" = (
@@ -19635,6 +19710,9 @@
 "gUL" = (
 /obj/machinery/door/firedoor,
 /obj/machinery/atmospherics/pipe/simple/supply/hidden,
+/obj/effect/turf_decal/tile/neutral{
+	dir = 4
+	},
 /turf/open/floor/plasteel,
 /area/hallway/secondary/civilian)
 "gVD" = (
@@ -20670,6 +20748,13 @@
 	},
 /turf/open/floor/plating,
 /area/commons/cryopod)
+"hos" = (
+/obj/structure/closet/firecloset,
+/obj/effect/turf_decal/tile/neutral{
+	dir = 4
+	},
+/turf/open/floor/plasteel,
+/area/hallway/secondary/civilian)
 "hoT" = (
 /obj/machinery/atmospherics/pipe/simple/supply/hidden{
 	dir = 4
@@ -20921,6 +21006,9 @@
 /obj/structure/cable{
 	icon_state = "0-2"
 	},
+/obj/effect/turf_decal/tile/neutral{
+	dir = 1
+	},
 /turf/open/floor/plasteel,
 /area/hallway/secondary/civilian)
 "htG" = (
@@ -20933,6 +21021,9 @@
 "htN" = (
 /obj/machinery/firealarm{
 	pixel_y = 24
+	},
+/obj/effect/turf_decal/tile/neutral{
+	dir = 1
 	},
 /turf/open/floor/plasteel,
 /area/hallway/secondary/civilian)
@@ -20949,6 +21040,9 @@
 "huC" = (
 /obj/machinery/airalarm{
 	pixel_y = 23
+	},
+/obj/effect/turf_decal/tile/neutral{
+	dir = 1
 	},
 /turf/open/floor/plasteel,
 /area/hallway/secondary/civilian)
@@ -20987,10 +21081,16 @@
 /obj/structure/sign/departments/restroom{
 	pixel_y = 32
 	},
+/obj/effect/turf_decal/tile/neutral{
+	dir = 4
+	},
 /turf/open/floor/plasteel,
 /area/hallway/secondary/civilian)
 "hvr" = (
 /obj/machinery/atmospherics/pipe/manifold/scrubbers/hidden{
+	dir = 8
+	},
+/obj/effect/turf_decal/tile/neutral{
 	dir = 8
 	},
 /turf/open/floor/plasteel,
@@ -21019,6 +21119,9 @@
 "hvC" = (
 /obj/machinery/atmospherics/components/unary/vent_scrubber/on{
 	dir = 8
+	},
+/obj/effect/turf_decal/tile/neutral{
+	dir = 4
 	},
 /turf/open/floor/plasteel,
 /area/hallway/secondary/civilian)
@@ -21773,6 +21876,9 @@
 /obj/structure/cable{
 	icon_state = "4-8"
 	},
+/obj/effect/turf_decal/tile/neutral{
+	dir = 4
+	},
 /turf/open/floor/plasteel,
 /area/hallway/secondary/civilian)
 "hGR" = (
@@ -21870,6 +21976,7 @@
 /obj/machinery/atmospherics/pipe/simple/scrubbers/hidden{
 	dir = 6
 	},
+/obj/effect/turf_decal/tile/neutral,
 /turf/open/floor/plasteel,
 /area/commons/fitness/recreation)
 "hIz" = (
@@ -24181,13 +24288,26 @@
 	},
 /turf/open/floor/plating,
 /area/commons/fitness/recreation)
+"iym" = (
+/obj/structure/sign/poster/official/random{
+	pixel_y = 32
+	},
+/obj/effect/turf_decal/tile/neutral{
+	dir = 4
+	},
+/turf/open/floor/plasteel,
+/area/hallway/secondary/civilian)
 "iyQ" = (
 /obj/machinery/atmospherics/pipe/manifold/scrubbers/hidden,
 /obj/machinery/light,
+/obj/effect/turf_decal/tile/neutral,
 /turf/open/floor/plasteel,
 /area/commons/fitness/recreation)
 "iyR" = (
 /obj/machinery/light,
+/obj/effect/turf_decal/tile/neutral{
+	dir = 8
+	},
 /turf/open/floor/plasteel,
 /area/hallway/secondary/civilian)
 "izg" = (
@@ -24197,6 +24317,9 @@
 	},
 /obj/machinery/atmospherics/pipe/simple/scrubbers/hidden{
 	dir = 4
+	},
+/obj/effect/turf_decal/tile/neutral{
+	dir = 8
 	},
 /turf/open/floor/plasteel,
 /area/hallway/secondary/civilian)
@@ -25111,6 +25234,9 @@
 /obj/machinery/camera{
 	c_tag = "Theatre Hallway";
 	dir = 8
+	},
+/obj/effect/turf_decal/tile/neutral{
+	dir = 4
 	},
 /turf/open/floor/plasteel,
 /area/hallway/secondary/civilian)
@@ -26065,6 +26191,7 @@
 /obj/machinery/door/airlock/public/glass{
 	name = "Museum"
 	},
+/obj/machinery/door/firedoor,
 /turf/open/floor/plasteel,
 /area/service/library)
 "jlL" = (
@@ -27999,6 +28126,12 @@
 	dir = 1
 	},
 /area/commons/fitness/pool)
+"jXm" = (
+/obj/structure/disposalpipe/segment,
+/turf/open/floor/plasteel/white/side{
+	dir = 8
+	},
+/area/hallway/secondary/civilian)
 "jXw" = (
 /obj/structure/cable{
 	icon_state = "1-2"
@@ -28587,6 +28720,13 @@
 	},
 /turf/open/floor/plasteel,
 /area/service/hydroponics/garden)
+"klT" = (
+/obj/machinery/door/firedoor,
+/obj/effect/turf_decal/tile/neutral{
+	dir = 4
+	},
+/turf/open/floor/plasteel,
+/area/hallway/secondary/civilian)
 "klY" = (
 /obj/machinery/suit_storage_unit/security,
 /obj/effect/turf_decal/tile/red{
@@ -29254,6 +29394,17 @@
 	},
 /turf/open/floor/plating,
 /area/security/checkpoint/supply)
+"kwx" = (
+/obj/effect/turf_decal/tile/red{
+	dir = 1
+	},
+/obj/effect/turf_decal/tile/blue{
+	dir = 8
+	},
+/turf/open/floor/plasteel/white/side{
+	dir = 8
+	},
+/area/hallway/secondary/civilian)
 "kwM" = (
 /obj/machinery/nuclearbomb/selfdestruct,
 /turf/open/floor/plasteel/dark,
@@ -31367,6 +31518,12 @@
 	name = "Auxiliary Tool Storage";
 	req_access_txt = "12"
 	},
+/obj/effect/turf_decal/tile/yellow{
+	dir = 4
+	},
+/obj/effect/turf_decal/tile/neutral{
+	dir = 1
+	},
 /turf/open/floor/plasteel,
 /area/commons/storage/auxiliary)
 "ljU" = (
@@ -32917,6 +33074,9 @@
 	pixel_x = 32;
 	pixel_y = 32
 	},
+/obj/effect/turf_decal/tile/neutral{
+	dir = 4
+	},
 /turf/open/floor/plasteel,
 /area/hallway/secondary/civilian)
 "lHY" = (
@@ -33493,6 +33653,12 @@
 /obj/effect/turf_decal/bot,
 /turf/open/floor/plasteel/dark,
 /area/command/heads_quarters/hop)
+"lTy" = (
+/obj/effect/turf_decal/tile/yellow{
+	dir = 8
+	},
+/turf/open/floor/plasteel,
+/area/hallway/primary/starboard)
 "lTI" = (
 /obj/effect/spawner/structure/window/reinforced,
 /obj/machinery/door/poddoor/shutters/preopen{
@@ -37888,6 +38054,9 @@
 /obj/structure/sign/departments/restroom{
 	pixel_x = 32
 	},
+/obj/effect/turf_decal/tile/neutral{
+	dir = 4
+	},
 /turf/open/floor/plasteel,
 /area/hallway/secondary/civilian)
 "nrS" = (
@@ -41893,6 +42062,9 @@
 	name = "Station Intercom (General)";
 	pixel_y = -26
 	},
+/obj/effect/turf_decal/tile/neutral{
+	dir = 8
+	},
 /turf/open/floor/plasteel,
 /area/hallway/secondary/civilian)
 "oQT" = (
@@ -44551,6 +44723,9 @@
 /obj/machinery/camera{
 	c_tag = "Crew Quarters Entrance"
 	},
+/obj/effect/turf_decal/tile/neutral{
+	dir = 1
+	},
 /turf/open/floor/plasteel,
 /area/hallway/secondary/civilian)
 "pPD" = (
@@ -45705,7 +45880,9 @@
 	icon_state = "2-4"
 	},
 /obj/structure/disposalpipe/segment,
-/turf/open/floor/plasteel,
+/turf/open/floor/plasteel/white/side{
+	dir = 8
+	},
 /area/hallway/secondary/civilian)
 "qjD" = (
 /obj/structure/chair/sofa/left{
@@ -46844,6 +47021,9 @@
 /area/solars/port/fore)
 "qHj" = (
 /obj/structure/closet/emcloset,
+/obj/effect/turf_decal/tile/neutral{
+	dir = 1
+	},
 /turf/open/floor/plasteel,
 /area/hallway/secondary/civilian)
 "qHl" = (
@@ -49129,6 +49309,13 @@
 /obj/item/clothing/under/suit/red,
 /turf/open/floor/carpet,
 /area/service/library)
+"rwH" = (
+/obj/machinery/atmospherics/components/unary/vent_scrubber/on,
+/obj/effect/turf_decal/tile/neutral{
+	dir = 1
+	},
+/turf/open/floor/plasteel,
+/area/hallway/secondary/civilian)
 "rwV" = (
 /obj/machinery/atmospherics/components/unary/vent_scrubber/on{
 	dir = 1
@@ -50954,6 +51141,9 @@
 /obj/machinery/airalarm{
 	dir = 8;
 	pixel_x = 23
+	},
+/obj/effect/turf_decal/tile/neutral{
+	dir = 4
 	},
 /turf/open/floor/plasteel,
 /area/hallway/secondary/civilian)
@@ -53862,6 +54052,9 @@
 /area/commons/dorms)
 "tiQ" = (
 /obj/machinery/light{
+	dir = 8
+	},
+/obj/effect/turf_decal/tile/neutral{
 	dir = 8
 	},
 /turf/open/floor/plasteel,
@@ -57220,6 +57413,13 @@
 /obj/structure/grille,
 /turf/open/floor/plating,
 /area/maintenance/department/medical)
+"ulv" = (
+/obj/machinery/door/firedoor,
+/obj/effect/turf_decal/tile/neutral{
+	dir = 8
+	},
+/turf/open/floor/plasteel,
+/area/hallway/secondary/civilian)
 "ulO" = (
 /obj/structure/disposalpipe/segment,
 /obj/machinery/atmospherics/pipe/simple/supply/hidden{
@@ -57358,6 +57558,9 @@
 	dir = 8
 	},
 /obj/structure/disposalpipe/segment,
+/obj/effect/turf_decal/tile/yellow{
+	dir = 1
+	},
 /turf/open/floor/plasteel,
 /area/hallway/primary/starboard)
 "uow" = (
@@ -57617,6 +57820,9 @@
 /obj/structure/disposalpipe/segment{
 	dir = 6
 	},
+/obj/effect/turf_decal/tile/neutral{
+	dir = 4
+	},
 /turf/open/floor/plasteel,
 /area/hallway/secondary/civilian)
 "usD" = (
@@ -57696,6 +57902,15 @@
 	},
 /turf/open/floor/plasteel/cafeteria,
 /area/service/kitchen)
+"utX" = (
+/obj/machinery/atmospherics/pipe/manifold/scrubbers/hidden{
+	dir = 8
+	},
+/obj/effect/turf_decal/tile/neutral{
+	dir = 4
+	},
+/turf/open/floor/plasteel,
+/area/hallway/secondary/civilian)
 "utZ" = (
 /obj/structure/closet/crate,
 /obj/item/crowbar/red,
@@ -57757,6 +57972,9 @@
 	},
 /obj/machinery/atmospherics/pipe/simple/supply/hidden{
 	dir = 10
+	},
+/obj/effect/turf_decal/tile/neutral{
+	dir = 4
 	},
 /turf/open/floor/plasteel,
 /area/hallway/secondary/civilian)
@@ -57953,7 +58171,9 @@
 	dir = 4
 	},
 /obj/structure/disposalpipe/segment,
-/turf/open/floor/plasteel,
+/turf/open/floor/plasteel/white/side{
+	dir = 8
+	},
 /area/hallway/secondary/civilian)
 "uyQ" = (
 /obj/machinery/atmospherics/pipe/simple/scrubbers/hidden{
@@ -59764,6 +59984,15 @@
 /obj/effect/turf_decal/tile/brown,
 /turf/open/floor/plasteel,
 /area/cargo/sorting)
+"vie" = (
+/obj/machinery/atmospherics/pipe/simple/scrubbers/hidden{
+	dir = 4
+	},
+/obj/effect/turf_decal/tile/neutral{
+	dir = 4
+	},
+/turf/open/floor/plasteel,
+/area/hallway/secondary/civilian)
 "vim" = (
 /obj/machinery/atmospherics/components/unary/portables_connector/visible{
 	dir = 1
@@ -61657,6 +61886,7 @@
 	dir = 4
 	},
 /obj/machinery/door/firedoor,
+/obj/effect/turf_decal/tile/neutral,
 /turf/open/floor/plasteel,
 /area/commons/fitness/recreation)
 "vMT" = (
@@ -62784,6 +63014,9 @@
 /obj/machinery/light{
 	dir = 1
 	},
+/obj/effect/turf_decal/tile/neutral{
+	dir = 1
+	},
 /turf/open/floor/plasteel,
 /area/hallway/secondary/civilian)
 "whH" = (
@@ -63433,6 +63666,9 @@
 	dir = 9
 	},
 /obj/structure/disposalpipe/segment,
+/obj/effect/turf_decal/tile/yellow{
+	dir = 1
+	},
 /turf/open/floor/plasteel,
 /area/hallway/primary/starboard)
 "wrx" = (
@@ -66146,7 +66382,12 @@
 	dir = 10
 	},
 /obj/machinery/holopad,
-/turf/open/floor/plasteel,
+/obj/effect/turf_decal/tile/red{
+	dir = 1
+	},
+/turf/open/floor/plasteel/white/side{
+	dir = 8
+	},
 /area/hallway/secondary/civilian)
 "xkI" = (
 /obj/machinery/atmospherics/pipe/simple/scrubbers/hidden{
@@ -66856,6 +67097,9 @@
 /obj/machinery/airalarm{
 	dir = 4;
 	pixel_x = -22
+	},
+/obj/effect/turf_decal/tile/neutral{
+	dir = 8
 	},
 /turf/open/floor/plasteel,
 /area/hallway/secondary/civilian)
@@ -67933,6 +68177,9 @@
 /obj/structure/extinguisher_cabinet{
 	pixel_x = -27
 	},
+/obj/effect/turf_decal/tile/neutral{
+	dir = 8
+	},
 /turf/open/floor/plasteel,
 /area/hallway/secondary/civilian)
 "xOs" = (
@@ -68602,6 +68849,12 @@
 /obj/machinery/atmospherics/pipe/manifold4w/general/visible,
 /turf/open/floor/plasteel/white,
 /area/medical/medbay/central)
+"xWO" = (
+/obj/effect/turf_decal/tile/neutral{
+	dir = 4
+	},
+/turf/open/floor/plasteel,
+/area/hallway/secondary/civilian)
 "xWP" = (
 /obj/structure/window/reinforced{
 	dir = 8
@@ -113075,7 +113328,7 @@ nNE
 uoq
 wrs
 etY
-ygo
+lTy
 ygo
 sHo
 ygo
@@ -114093,7 +114346,7 @@ tom
 tom
 fHx
 hNC
-kAn
+ulv
 vYv
 jhn
 bif
@@ -114605,7 +114858,7 @@ wrI
 wQu
 gGf
 tom
-htt
+rwH
 hOF
 hQy
 hkl
@@ -116394,17 +116647,17 @@ hpl
 vYv
 cTg
 wTn
-bif
-bif
-bif
-bif
+kwx
+kwx
+kwx
+kwx
 xkx
-uYe
+jXm
 uyL
 qjA
 gHh
 gUv
-huJ
+eMQ
 iMl
 fIQ
 wlR
@@ -116908,11 +117161,11 @@ dIR
 vYv
 odr
 bif
-bif
+xWO
 dXF
 nrR
 iQh
-odr
+vie
 shu
 uvb
 hGE
@@ -117175,9 +117428,9 @@ xkZ
 gec
 xkZ
 xkZ
+klT
 kAn
-kAn
-kAn
+ulv
 wKD
 jjZ
 gRo
@@ -117432,7 +117685,7 @@ nNw
 gew
 gHU
 xkZ
-bif
+xWO
 bif
 iyR
 wKD
@@ -117691,7 +117944,7 @@ gKT
 xkZ
 hvf
 bif
-bif
+azf
 wKD
 jlL
 gRo
@@ -117946,7 +118199,7 @@ fMh
 geP
 seL
 gVH
-hvr
+utX
 hQy
 hvr
 iSF
@@ -118460,9 +118713,9 @@ xkZ
 drj
 xkZ
 xkZ
+xWO
 bif
-bif
-odr
+dvi
 wKD
 wKD
 wKD
@@ -118717,9 +118970,9 @@ lZS
 gfM
 qsJ
 xkZ
-dOr
+iym
 bif
-odr
+dvi
 xwA
 xOg
 tiQ
@@ -119234,11 +119487,11 @@ xkZ
 cse
 lpH
 odr
-bif
-bif
-bif
-bif
-jDf
+xWO
+xWO
+xWO
+xWO
+hos
 vYv
 kRj
 quq
