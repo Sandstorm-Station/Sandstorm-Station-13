@@ -9770,8 +9770,10 @@
 /obj/effect/turf_decal/tile/red{
 	dir = 4
 	},
-/obj/structure/closet/secure_closet/security/sec,
-/turf/open/floor/plasteel/dark/corner,
+/obj/structure/closet/secure_closet/brig,
+/obj/effect/turf_decal/tile/red,
+/obj/effect/turf_decal/bot_white,
+/turf/open/floor/plasteel/dark,
 /area/security/prison)
 "dxM" = (
 /obj/machinery/camera{
@@ -13641,15 +13643,9 @@
 /obj/effect/turf_decal/tile/red{
 	dir = 8
 	},
-/obj/structure/closet/secure_closet/brig,
-/obj/effect/turf_decal/tile/red{
+/turf/open/floor/plasteel/dark/side{
 	dir = 1
 	},
-/obj/effect/turf_decal/tile/red{
-	dir = 4
-	},
-/obj/effect/turf_decal/bot_white,
-/turf/open/floor/plasteel/dark,
 /area/security/prison)
 "ePq" = (
 /obj/effect/spawner/structure/window/reinforced,
@@ -13677,15 +13673,9 @@
 /obj/effect/turf_decal/tile/red{
 	dir = 8
 	},
-/obj/structure/closet/secure_closet/brig,
-/obj/effect/turf_decal/tile/red{
+/turf/open/floor/plasteel/dark/side{
 	dir = 1
 	},
-/obj/effect/turf_decal/tile/red{
-	dir = 4
-	},
-/obj/effect/turf_decal/bot_white,
-/turf/open/floor/plasteel/dark,
 /area/security/prison)
 "eQw" = (
 /obj/machinery/atmospherics/pipe/simple/supply/hidden{
@@ -13806,15 +13796,28 @@
 	dir = 8
 	},
 /obj/effect/turf_decal/tile/red,
-/obj/structure/closet/secure_closet/brig,
 /obj/effect/turf_decal/tile/red{
 	dir = 1
 	},
 /obj/effect/turf_decal/tile/red{
 	dir = 4
 	},
-/obj/effect/turf_decal/bot_white,
-/turf/open/floor/plasteel/dark,
+/obj/structure/table,
+/obj/item/clothing/under/rank/prisoner/skirt{
+	pixel_x = 9;
+	pixel_y = 5
+	},
+/obj/item/clothing/under/rank/prisoner{
+	pixel_x = -2;
+	pixel_y = 5
+	},
+/obj/item/clothing/under/rank/prisoner/skirt{
+	pixel_x = -13;
+	pixel_y = 5
+	},
+/turf/open/floor/plasteel/dark/side{
+	dir = 1
+	},
 /area/security/prison)
 "eSK" = (
 /obj/machinery/atmospherics/pipe/simple/scrubbers/hidden,
@@ -14963,7 +14966,7 @@
 	dir = 1
 	},
 /mob/living/simple_animal/pet/gondola{
-	health = 1380;
+	health = 1400;
 	name = "Gary";
 	real_name = "commandola"
 	},
@@ -15490,9 +15493,15 @@
 	},
 /obj/effect/turf_decal/tile/red,
 /obj/machinery/airalarm/directional/east,
-/turf/open/floor/plasteel/dark/side{
+/obj/structure/closet/secure_closet/brig,
+/obj/effect/turf_decal/bot_white,
+/obj/effect/turf_decal/tile/red{
 	dir = 8
 	},
+/obj/effect/turf_decal/tile/red{
+	dir = 1
+	},
+/turf/open/floor/plasteel/dark,
 /area/security/prison)
 "fww" = (
 /obj/machinery/atmospherics/pipe/simple/scrubbers/hidden{
@@ -18951,13 +18960,11 @@
 /obj/effect/turf_decal/tile/red{
 	dir = 1
 	},
-/obj/structure/table,
 /obj/structure/reagent_dispensers/peppertank{
 	pixel_x = -30
 	},
-/obj/item/melee/baton/cattleprod,
-/obj/item/restraints/handcuffs/cable,
-/obj/item/restraints/handcuffs/cable,
+/obj/machinery/flasher/portable,
+/obj/effect/turf_decal/box,
 /turf/open/floor/plasteel/dark/corner{
 	dir = 4
 	},
@@ -19009,9 +19016,10 @@
 /obj/effect/turf_decal/tile/red{
 	dir = 8
 	},
-/obj/structure/table,
 /obj/item/melee/baton/stunsword/smithed,
 /obj/item/restraints/handcuffs/cable,
+/obj/item/restraints/handcuffs/cable,
+/obj/structure/table,
 /turf/open/floor/plasteel/dark/corner{
 	dir = 1
 	},
@@ -24795,15 +24803,9 @@
 	network = list("ss13","prison")
 	},
 /obj/machinery/light,
-/obj/structure/closet/secure_closet/brig,
-/obj/effect/turf_decal/tile/red{
+/turf/open/floor/plasteel/dark/side{
 	dir = 1
 	},
-/obj/effect/turf_decal/tile/red{
-	dir = 4
-	},
-/obj/effect/turf_decal/bot_white,
-/turf/open/floor/plasteel/dark,
 /area/security/prison)
 "iMl" = (
 /obj/structure/cable{
@@ -24876,15 +24878,11 @@
 	dir = 8
 	},
 /obj/effect/turf_decal/tile/red,
-/obj/structure/closet/secure_closet/brig,
-/obj/effect/turf_decal/tile/red{
+/obj/effect/turf_decal/box,
+/obj/machinery/flasher/portable,
+/turf/open/floor/plasteel/dark/side{
 	dir = 1
 	},
-/obj/effect/turf_decal/tile/red{
-	dir = 4
-	},
-/obj/effect/turf_decal/bot_white,
-/turf/open/floor/plasteel/dark,
 /area/security/prison)
 "iMI" = (
 /obj/machinery/camera{
@@ -26139,14 +26137,19 @@
 /turf/open/floor/plasteel/freezer,
 /area/commons/fitness/locker_room)
 "jnn" = (
-/obj/machinery/flasher/portable,
 /obj/effect/turf_decal/tile/red{
 	dir = 4
 	},
 /obj/effect/turf_decal/tile/red,
-/turf/open/floor/plasteel/dark/side{
+/obj/structure/closet/secure_closet/brig,
+/obj/effect/turf_decal/bot_white,
+/obj/effect/turf_decal/tile/red{
 	dir = 8
 	},
+/obj/effect/turf_decal/tile/red{
+	dir = 1
+	},
+/turf/open/floor/plasteel/dark,
 /area/security/prison)
 "jnt" = (
 /obj/structure/cable{
@@ -26647,10 +26650,12 @@
 /obj/effect/turf_decal/tile/red{
 	dir = 1
 	},
-/obj/structure/closet/secure_closet/security/sec,
-/turf/open/floor/plasteel/dark/corner{
+/obj/structure/closet/secure_closet/brig,
+/obj/effect/turf_decal/tile/red{
 	dir = 8
 	},
+/obj/effect/turf_decal/bot_white,
+/turf/open/floor/plasteel/dark,
 /area/security/prison)
 "juU" = (
 /obj/structure/cable{
@@ -33853,26 +33858,9 @@
 /obj/effect/turf_decal/tile/red{
 	dir = 8
 	},
-/obj/structure/table,
-/obj/item/clothing/under/rank/prisoner/skirt{
-	pixel_x = 9;
-	pixel_y = 5
-	},
-/obj/item/clothing/under/rank/prisoner{
-	pixel_x = -2;
-	pixel_y = 5
-	},
-/obj/item/clothing/under/rank/prisoner/skirt{
-	pixel_x = -13;
-	pixel_y = 5
-	},
-/obj/effect/turf_decal/tile/red{
+/turf/open/floor/plasteel/dark/side{
 	dir = 1
 	},
-/obj/effect/turf_decal/tile/red{
-	dir = 4
-	},
-/turf/open/floor/plasteel/dark,
 /area/security/prison)
 "maD" = (
 /obj/structure/cable{
@@ -33900,40 +33888,6 @@
 /obj/effect/turf_decal/tile/green,
 /turf/open/floor/plasteel,
 /area/hallway/secondary/civilian)
-"maS" = (
-/obj/effect/turf_decal/tile/red,
-/obj/effect/turf_decal/tile/red{
-	dir = 8
-	},
-/obj/structure/table,
-/obj/item/clothing/under/rank/prisoner{
-	pixel_x = 8;
-	pixel_y = 5
-	},
-/obj/item/clothing/shoes/sneakers/orange{
-	pixel_x = -6;
-	pixel_y = -8
-	},
-/obj/item/clothing/shoes/sneakers/orange{
-	pixel_x = -6;
-	pixel_y = -2
-	},
-/obj/item/clothing/shoes/sneakers/orange{
-	pixel_x = -6;
-	pixel_y = 4
-	},
-/obj/item/clothing/shoes/sneakers/orange{
-	pixel_x = -6;
-	pixel_y = 10
-	},
-/obj/effect/turf_decal/tile/red{
-	dir = 1
-	},
-/obj/effect/turf_decal/tile/red{
-	dir = 4
-	},
-/turf/open/floor/plasteel/dark,
-/area/security/prison)
 "mbl" = (
 /obj/machinery/atmospherics/pipe/manifold/supply/hidden,
 /obj/structure/disposalpipe/segment{
@@ -34330,15 +34284,36 @@
 	dir = 8
 	},
 /obj/effect/turf_decal/tile/red,
-/obj/structure/closet/secure_closet/brig,
 /obj/effect/turf_decal/tile/red{
 	dir = 1
 	},
 /obj/effect/turf_decal/tile/red{
 	dir = 4
 	},
-/obj/effect/turf_decal/bot_white,
-/turf/open/floor/plasteel/dark,
+/obj/structure/table,
+/obj/item/clothing/under/rank/prisoner{
+	pixel_x = 8;
+	pixel_y = 5
+	},
+/obj/item/clothing/shoes/sneakers/orange{
+	pixel_x = -6;
+	pixel_y = -8
+	},
+/obj/item/clothing/shoes/sneakers/orange{
+	pixel_x = -6;
+	pixel_y = -2
+	},
+/obj/item/clothing/shoes/sneakers/orange{
+	pixel_x = -6;
+	pixel_y = 4
+	},
+/obj/item/clothing/shoes/sneakers/orange{
+	pixel_x = -6;
+	pixel_y = 10
+	},
+/turf/open/floor/plasteel/dark/side{
+	dir = 1
+	},
 /area/security/prison)
 "miv" = (
 /obj/machinery/atmospherics/pipe/simple/supply/visible{
@@ -53036,8 +53011,13 @@
 	c_tag = "Corrections Office";
 	dir = 6
 	},
-/obj/structure/closet/secure_closet/security/sec,
-/turf/open/floor/plasteel/dark/side,
+/obj/structure/closet/secure_closet/brig,
+/obj/effect/turf_decal/tile/red{
+	dir = 8
+	},
+/obj/effect/turf_decal/tile/red,
+/obj/effect/turf_decal/bot_white,
+/turf/open/floor/plasteel/dark,
 /area/security/prison)
 "sRI" = (
 /obj/item/beacon,
@@ -55258,7 +55238,6 @@
 /turf/open/floor/plasteel,
 /area/hallway/primary/central)
 "tGg" = (
-/obj/machinery/flasher/portable,
 /obj/effect/turf_decal/tile/red{
 	dir = 4
 	},
@@ -55266,9 +55245,15 @@
 /obj/structure/sign/poster/official/obey{
 	pixel_x = 32
 	},
-/turf/open/floor/plasteel/dark/side{
+/obj/structure/closet/secure_closet/brig,
+/obj/effect/turf_decal/bot_white,
+/obj/effect/turf_decal/tile/red{
 	dir = 8
 	},
+/obj/effect/turf_decal/tile/red{
+	dir = 1
+	},
+/turf/open/floor/plasteel/dark,
 /area/security/prison)
 "tGi" = (
 /turf/closed/wall,
@@ -88666,7 +88651,7 @@ gpH
 hbV
 hAi
 iio
-maS
+eQk
 xWU
 fza
 fza
@@ -89689,7 +89674,7 @@ eLG
 ocG
 fvY
 vTw
-ocG
+vTw
 vTw
 ejo
 hAT
