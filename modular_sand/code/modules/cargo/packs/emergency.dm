@@ -6,10 +6,11 @@
 	contains = list()
 	crate_name = "emergency crate"
 	crate_type = /obj/structure/closet/crate/internals
+	uplink_flags = UPLINK_TRAITORS
 
 /datum/supply_pack/emergency/syndicate/fill(obj/structure/closet/crate/C)
 	var/crate_value = 30
-	var/list/uplink_items = get_uplink_items(SSticker.mode)
+	var/list/uplink_items = get_uplink_items(uplink_flags, FALSE)
 	while(crate_value)
 		var/category = pick(uplink_items)
 		var/item = pick(uplink_items[category])

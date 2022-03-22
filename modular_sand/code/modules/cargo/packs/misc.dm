@@ -6,4 +6,3 @@
 	contains = list(/obj/structure/reagent_dispensers/keg/aphro/strong)
 	crate_name = "deluxe keg"
 	crate_type = /obj/structure/closet/crate
-
