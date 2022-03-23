@@ -15050,7 +15050,7 @@
 	dir = 1
 	},
 /mob/living/simple_animal/pet/gondola{
-	health = 1480;
+	health = 1490;
 	name = "Gary";
 	real_name = "commandola"
 	},
@@ -63374,10 +63374,11 @@
 /turf/open/floor/plasteel/white,
 /area/medical/medbay/central)
 "wkD" = (
-/obj/machinery/hydroponics/soil,
 /obj/structure/sign/poster/official/hydro_ad{
 	pixel_y = 32
 	},
+/obj/machinery/hydroponics/constructable,
+/obj/machinery/hydroponics/soil,
 /turf/open/floor/grass,
 /area/service/hydroponics)
 "wkQ" = (
@@ -67722,7 +67723,6 @@
 /obj/effect/turf_decal/tile/neutral{
 	dir = 1
 	},
-/obj/machinery/hydroponics/constructable,
 /turf/open/floor/plasteel/dark,
 /area/service/hydroponics)
 "xDH" = (
