@@ -11,10 +11,9 @@
 /obj/machinery/light_switch{
 	pixel_x = 22
 	},
-/obj/machinery/power/apc/auto_name/north,
-/obj/structure/cable{
-	icon_state = "0-2"
-	},
+/obj/structure/bed/roller,
+/obj/item/bedsheet/medical,
+/obj/machinery/iv_drip,
 /turf/open/floor/plasteel/white,
 /area/medical/storage)
 "abj" = (
@@ -10547,6 +10546,9 @@
 	pixel_y = 4
 	},
 /obj/item/pen/blue,
+/obj/structure/disposalpipe/segment{
+	dir = 6
+	},
 /turf/open/floor/plasteel/white,
 /area/medical/virology)
 "dMa" = (
@@ -28977,6 +28979,14 @@
 	},
 /turf/open/floor/plasteel,
 /area/hallway/primary/port)
+"kqh" = (
+/obj/machinery/airalarm{
+	dir = 4;
+	pixel_x = -22
+	},
+/obj/structure/closet/secure_closet/medical3,
+/turf/open/floor/plasteel/white,
+/area/medical/storage)
 "kqu" = (
 /obj/machinery/atmospherics/pipe/simple/green/visible{
 	dir = 6
@@ -36915,6 +36925,12 @@
 	icon_state = "panelscorched"
 	},
 /area/maintenance/department/security/upper)
+"mWY" = (
+/obj/structure/cable{
+	icon_state = "1-2"
+	},
+/turf/open/floor/plasteel/white,
+/area/medical/storage)
 "mXj" = (
 /obj/machinery/atmospherics/pipe/simple/supply/hidden{
 	dir = 4
@@ -38541,9 +38557,7 @@
 /turf/closed/wall/r_wall/rust,
 /area/maintenance/department/security/upper)
 "nzs" = (
-/obj/machinery/iv_drip,
 /obj/structure/bed/roller,
-/obj/item/bedsheet/medical,
 /turf/open/floor/plasteel/white,
 /area/medical/storage)
 "nzE" = (
@@ -45985,13 +45999,6 @@
 /obj/effect/turf_decal/caution/stand_clear/red,
 /turf/open/floor/plasteel,
 /area/hallway/secondary/entry)
-"qli" = (
-/obj/structure/closet/secure_closet/personal/patient,
-/obj/structure/disposalpipe/segment{
-	dir = 6
-	},
-/turf/open/floor/plasteel/white,
-/area/medical/virology)
 "qlk" = (
 /obj/effect/landmark/blobstart,
 /turf/open/floor/plating,
@@ -53600,14 +53607,6 @@
 	},
 /turf/open/floor/plating,
 /area/maintenance/department/science)
-"sYA" = (
-/obj/structure/closet/secure_closet/medical3,
-/obj/machinery/airalarm{
-	dir = 4;
-	pixel_x = -22
-	},
-/turf/open/floor/plasteel/white,
-/area/medical/storage)
 "sYZ" = (
 /obj/machinery/door/airlock/maintenance{
 	name = "Xenobiology Maintenance";
@@ -55796,6 +55795,10 @@
 /obj/machinery/atmospherics/components/unary/vent_pump/on,
 /turf/open/floor/engine,
 /area/security/brig)
+"tKd" = (
+/obj/structure/girder,
+/turf/open/floor/plating,
+/area/maintenance/department/medical)
 "tKn" = (
 /obj/structure/sign/warning/vacuum/external{
 	pixel_x = -32
@@ -61940,18 +61943,6 @@
 	},
 /turf/open/floor/plasteel,
 /area/engineering/main)
-"vMY" = (
-/obj/structure/disposalpipe/junction{
-	dir = 8
-	},
-/obj/structure/cable{
-	icon_state = "4-8"
-	},
-/obj/machinery/atmospherics/pipe/simple/scrubbers/hidden{
-	dir = 4
-	},
-/turf/open/floor/plating,
-/area/maintenance/department/medical)
 "vNg" = (
 /obj/structure/table,
 /obj/machinery/reagentgrinder,
@@ -64318,6 +64309,18 @@
 	dir = 1
 	},
 /area/engineering/break_room/atmos)
+"wAs" = (
+/obj/structure/cable{
+	icon_state = "4-8"
+	},
+/obj/machinery/atmospherics/pipe/simple/scrubbers/hidden{
+	dir = 4
+	},
+/obj/structure/disposalpipe/junction{
+	dir = 8
+	},
+/turf/open/floor/plating,
+/area/maintenance/department/medical)
 "wAv" = (
 /obj/machinery/power/apc{
 	areastring = "/area/security/checkpoint/medical";
@@ -64594,9 +64597,6 @@
 "wEO" = (
 /obj/machinery/atmospherics/components/unary/vent_pump/on{
 	dir = 4
-	},
-/obj/structure/cable{
-	icon_state = "1-2"
 	},
 /turf/open/floor/plasteel/white,
 /area/medical/storage)
@@ -66855,6 +66855,13 @@
 	dir = 8
 	},
 /area/science/xenobiology)
+"xrN" = (
+/obj/machinery/power/apc/auto_name/north,
+/obj/structure/cable{
+	icon_state = "0-2"
+	},
+/turf/open/floor/plasteel/white,
+/area/medical/storage)
 "xrR" = (
 /obj/structure/filingcabinet/chestdrawer{
 	pixel_x = -2;
@@ -93370,8 +93377,8 @@ ybK
 ybK
 ygg
 vmP
-uwj
-uwj
+aBv
+ocO
 uwj
 lbl
 ufB
@@ -93624,13 +93631,13 @@ qGM
 nnU
 lQH
 dLP
-ybK
-ygg
+qwP
+wAs
 vmP
-uwj
-ocO
-uwj
-aBv
+vmP
+vmP
+vmP
+vmP
 ufB
 ufB
 ufB
@@ -93880,15 +93887,15 @@ aPO
 oWs
 myn
 wDl
-qli
-qwP
-vMY
-vmP
-vmP
-vmP
-vmP
-vmP
-vmP
+sEQ
+ybK
+ecB
+ozc
+ukQ
+ozc
+ozc
+srB
+tKd
 lNR
 vyB
 bni
@@ -94139,12 +94146,12 @@ ybK
 nnU
 mue
 ybK
-ecB
-ozc
-ukQ
-ozc
-ozc
-ozc
+tsn
+tsn
+hqF
+tsn
+tsn
+fJi
 ozc
 ozc
 srB
@@ -94396,10 +94403,10 @@ pEu
 wDl
 sEQ
 ybK
-tsn
-tsn
-hqF
-tsn
+mtA
+wkd
+tur
+kqh
 tsn
 tsn
 tsn
@@ -94653,10 +94660,10 @@ ylA
 xor
 xKB
 ybK
-mtA
-wkd
-tur
-sYA
+xrN
+mWY
+nlP
+vEi
 lkr
 cRJ
 eKg
@@ -94912,7 +94919,7 @@ ybK
 ybK
 aaY
 wEO
-nlP
+vEi
 vSv
 pJd
 vEi
