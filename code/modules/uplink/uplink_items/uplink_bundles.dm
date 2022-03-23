@@ -138,6 +138,7 @@
 	player_minimum = 25
 	purchasable_from = ~(UPLINK_NUKE_OPS | UPLINK_CLOWN_OPS)
 	var/starting_crate_value = 50
+	var/uplink_flags = UPLINK_TRAITORS
 
 /datum/uplink_item/bundles_tc/surplus/super
 	name = "Super Surplus Crate"
@@ -148,7 +149,7 @@
 	starting_crate_value = 125
 
 /datum/uplink_item/bundles_tc/surplus/purchase(mob/user, datum/component/uplink/U)
-	var/list/uplink_items = get_uplink_items(SSticker && SSticker.mode? SSticker.mode : null, FALSE)
+	var/list/uplink_items = get_uplink_items(uplink_flags, FALSE)
 
 	var/crate_value = starting_crate_value
 	var/obj/structure/closet/crate/C = spawn_item(/obj/structure/closet/crate, user, U)
