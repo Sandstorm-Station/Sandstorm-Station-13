@@ -7345,27 +7345,6 @@
 	},
 /turf/open/floor/wood,
 /area/service/lawoffice)
-"anK" = (
-/obj/structure/closet/secure_closet/engineering_chief,
-/obj/effect/turf_decal/tile/neutral{
-	dir = 8
-	},
-/obj/effect/turf_decal/tile/neutral{
-	dir = 1
-	},
-/obj/effect/turf_decal/tile/neutral,
-/obj/effect/turf_decal/tile/neutral{
-	dir = 4
-	},
-/obj/item/radio/intercom{
-	name = "Station Intercom";
-	pixel_x = -26
-	},
-/obj/item/rcl/pre_loaded,
-/obj/item/clothing/glasses/meson/gar,
-/obj/machinery/atmospherics/pipe/simple/orange/visible,
-/turf/open/floor/plasteel/dark,
-/area/command/heads_quarters/ce)
 "anL" = (
 /obj/machinery/door/window/northleft{
 	dir = 4;
@@ -7394,18 +7373,6 @@
 /obj/item/beacon,
 /turf/open/floor/plasteel,
 /area/command/teleporter)
-"anO" = (
-/obj/machinery/atmospherics/pipe/simple/scrubbers/hidden,
-/obj/effect/turf_decal/stripes/line{
-	dir = 8
-	},
-/obj/machinery/holopad,
-/obj/effect/turf_decal/tile/yellow{
-	dir = 1
-	},
-/obj/effect/turf_decal/tile/yellow,
-/turf/open/floor/plasteel,
-/area/command/heads_quarters/ce)
 "anP" = (
 /obj/machinery/light{
 	dir = 4
@@ -33516,18 +33483,6 @@
 /obj/machinery/telecomms/server/presets/common/birdstation,
 /turf/open/floor/circuit/green/telecomms,
 /area/tcommsat/server)
-"buK" = (
-/obj/machinery/atmospherics/components/unary/vent_pump/on{
-	dir = 1
-	},
-/obj/effect/turf_decal/stripes/line{
-	dir = 4
-	},
-/obj/effect/turf_decal/stripes/line{
-	dir = 8
-	},
-/turf/open/floor/plasteel/dark/telecomms,
-/area/tcommsat/server)
 "buL" = (
 /obj/machinery/telecomms/hub/preset,
 /turf/open/floor/circuit/green/telecomms,
@@ -34406,9 +34361,6 @@
 	},
 /turf/open/floor/plasteel,
 /area/hallway/primary/starboard)
-"dsH" = (
-/turf/open/floor/plasteel/dark,
-/area/engineering/gravity_generator)
 "dvB" = (
 /obj/effect/turf_decal/sand,
 /obj/structure/well_foundation,
@@ -34678,6 +34630,21 @@
 /obj/item/pickaxe,
 /turf/open/floor/plating/asteroid/airless,
 /area/asteroid/nearstation)
+"eNI" = (
+/obj/effect/turf_decal/stripes/line{
+	dir = 4
+	},
+/obj/effect/turf_decal/stripes/line{
+	dir = 8
+	},
+/obj/machinery/atmospherics/components/unary/vent_pump/on{
+	dir = 1;
+	external_pressure_bound = 140;
+	name = "server vent";
+	pressure_checks = 0
+	},
+/turf/open/floor/plasteel/dark/telecomms,
+/area/tcommsat/server)
 "eOg" = (
 /obj/structure/closet/crate{
 	icon_state = "crateopen"
@@ -34889,6 +34856,12 @@
 	},
 /turf/open/space/basic,
 /area/space)
+"fsE" = (
+/obj/machinery/atmospherics/pipe/simple/scrubbers/hidden{
+	dir = 4
+	},
+/turf/open/floor/plasteel/dark,
+/area/engineering/gravity_generator)
 "fsJ" = (
 /obj/effect/decal/cleanable/dirt,
 /obj/machinery/atmospherics/components/binary/dp_vent_pump/high_volume{
@@ -35425,6 +35398,12 @@
 	},
 /turf/open/floor/plasteel,
 /area/service/bar/atrium)
+"hGf" = (
+/obj/machinery/atmospherics/components/unary/vent_scrubber/on{
+	dir = 4
+	},
+/turf/open/floor/plasteel,
+/area/engineering/gravity_generator)
 "hGN" = (
 /obj/machinery/light,
 /obj/structure/closet/secure_closet/exile,
@@ -35678,9 +35657,6 @@
 /obj/machinery/atmospherics/pipe/simple/orange/visible,
 /turf/open/floor/plasteel,
 /area/engineering/atmos)
-"iKr" = (
-/turf/open/floor/plasteel,
-/area/engineering/gravity_generator)
 "iML" = (
 /obj/machinery/atmospherics/pipe/manifold/scrubbers/hidden{
 	dir = 8
@@ -36408,29 +36384,6 @@
 /obj/effect/turf_decal/stripes/corner,
 /turf/open/floor/plasteel,
 /area/engineering/atmos)
-"kTV" = (
-/obj/machinery/shower{
-	dir = 1
-	},
-/obj/structure/curtain,
-/obj/structure/window/spawner/north,
-/obj/structure/sign/poster/contraband/yes_erp{
-	pixel_x = 32
-	},
-/obj/effect/turf_decal/bot,
-/obj{
-	name = "---Merge conflict marker---"
-	},
-/obj/machinery/shower{
-	dir = 1
-	},
-/obj/structure/curtain,
-/obj/structure/window/spawner/north,
-/obj/structure/sign/poster/contraband/yes_erp{
-	pixel_x = 32
-	},
-/turf/open/floor/plasteel/freezer,
-/area/commons/toilet/restrooms)
 "kUu" = (
 /obj/machinery/atmospherics/pipe/simple/supply/hidden,
 /turf/open/floor/wood,
@@ -36452,6 +36405,30 @@
 "lcW" = (
 /turf/open/floor/wood,
 /area/maintenance/starboard/aft)
+"leP" = (
+/obj/structure/closet/secure_closet/engineering_chief,
+/obj/effect/turf_decal/tile/neutral{
+	dir = 8
+	},
+/obj/effect/turf_decal/tile/neutral{
+	dir = 1
+	},
+/obj/effect/turf_decal/tile/neutral,
+/obj/effect/turf_decal/tile/neutral{
+	dir = 4
+	},
+/obj/item/radio/intercom{
+	name = "Station Intercom";
+	pixel_x = -26
+	},
+/obj/item/rcl/pre_loaded,
+/obj/item/clothing/glasses/meson/gar,
+/obj/machinery/atmospherics/pipe/simple/orange/visible,
+/obj/machinery/atmospherics/pipe/simple/scrubbers/hidden{
+	dir = 4
+	},
+/turf/open/floor/plasteel/dark,
+/area/command/heads_quarters/ce)
 "lmq" = (
 /obj/machinery/portable_atmospherics/canister/nitrous_oxide,
 /turf/open/floor/plating,
@@ -36689,6 +36666,20 @@
 	dir = 4
 	},
 /area/hallway/primary/aft)
+"lXR" = (
+/obj/effect/turf_decal/stripes/line{
+	dir = 4
+	},
+/obj/effect/turf_decal/stripes/line{
+	dir = 8
+	},
+/obj/machinery/atmospherics/components/unary/vent_pump/siphon/on{
+	dir = 1;
+	external_pressure_bound = 120;
+	name = "server vent"
+	},
+/turf/open/floor/plasteel/dark/telecomms,
+/area/tcommsat/server)
 "lZR" = (
 /turf/open/floor/plasteel{
 	heat_capacity = 1e+006
@@ -37626,6 +37617,20 @@
 	},
 /turf/closed/wall/r_wall,
 /area/engineering/atmos)
+"pOy" = (
+/obj/effect/turf_decal/stripes/line{
+	dir = 8
+	},
+/obj/machinery/holopad,
+/obj/effect/turf_decal/tile/yellow{
+	dir = 1
+	},
+/obj/effect/turf_decal/tile/yellow,
+/obj/machinery/atmospherics/pipe/manifold/scrubbers/hidden{
+	dir = 4
+	},
+/turf/open/floor/plasteel,
+/area/command/heads_quarters/ce)
 "pZU" = (
 /obj/structure/lattice,
 /obj/structure/grille,
@@ -41294,6 +41299,29 @@
 "vMb" = (
 /turf/open/floor/engine/n2o,
 /area/engineering/atmos)
+"vPs" = (
+/obj/machinery/shower{
+	dir = 1
+	},
+/obj/structure/curtain,
+/obj/structure/window/spawner/north,
+/obj/structure/sign/poster/contraband/yes_erp{
+	pixel_x = 32
+	},
+/obj/effect/turf_decal/bot,
+/obj{
+	name = "---Merge conflict marker---"
+	},
+/obj/machinery/shower{
+	dir = 1
+	},
+/obj/structure/curtain,
+/obj/structure/window/spawner/north,
+/obj/structure/sign/poster/contraband/yes_erp{
+	pixel_x = 32
+	},
+/turf/open/floor/plasteel/freezer,
+/area/commons/toilet/restrooms)
 "vPH" = (
 /obj/effect/turf_decal/box,
 /obj/machinery/power/tracker,
@@ -69871,7 +69899,7 @@ xyo
 hNO
 nvn
 aGe
-iKr
+hGf
 mpz
 aIc
 wkp
@@ -70128,7 +70156,7 @@ anx
 uok
 bCb
 aGe
-dsH
+fsE
 rYI
 mpz
 aHe
@@ -70385,7 +70413,7 @@ aAg
 akN
 anu
 alI
-aGe
+bwY
 aGe
 sIu
 aJj
@@ -70642,7 +70670,7 @@ lUu
 akN
 ptT
 iFm
-anK
+leP
 aoo
 aGe
 aJe
@@ -70657,7 +70685,7 @@ sJO
 aPG
 aQG
 aUO
-buK
+eNI
 sKj
 buR
 aMJ
@@ -70899,7 +70927,7 @@ aAg
 akN
 amF
 anw
-anO
+pOy
 aop
 aGe
 aJl
@@ -71171,7 +71199,7 @@ sJP
 aPG
 buG
 buI
-buK
+lXR
 sKj
 buR
 aMJ
@@ -88622,7 +88650,7 @@ bfo
 oyD
 oXj
 xpX
-kTV
+vPs
 oyD
 bfp
 adm
