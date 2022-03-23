@@ -15050,7 +15050,7 @@
 	dir = 1
 	},
 /mob/living/simple_animal/pet/gondola{
-	health = 1450;
+	health = 1480;
 	name = "Gary";
 	real_name = "commandola"
 	},
@@ -21963,6 +21963,10 @@
 	},
 /turf/open/floor/carpet/black,
 /area/service/chapel/main)
+"hHo" = (
+/obj/machinery/portable_atmospherics/canister/oxygen,
+/turf/open/floor/plating,
+/area/maintenance/starboard/fore)
 "hHp" = (
 /obj/machinery/atmospherics/components/unary/vent_scrubber/on{
 	dir = 1
@@ -28087,6 +28091,9 @@
 /obj/structure/disposalpipe/segment{
 	dir = 4
 	},
+/obj/structure/cable{
+	icon_state = "4-8"
+	},
 /turf/open/floor/plating,
 /area/maintenance/department/cargo)
 "jWn" = (
@@ -29020,6 +29027,9 @@
 	},
 /obj/effect/turf_decal/tile/yellow{
 	dir = 1
+	},
+/obj/structure/cable{
+	icon_state = "4-8"
 	},
 /turf/open/floor/plasteel,
 /area/hallway/primary/port)
@@ -31550,6 +31560,9 @@
 /obj/machinery/atmospherics/pipe/manifold/scrubbers/hidden{
 	dir = 4
 	},
+/obj/structure/cable{
+	icon_state = "1-2"
+	},
 /turf/open/floor/plating,
 /area/maintenance/department/cargo)
 "ljl" = (
@@ -34066,6 +34079,9 @@
 	},
 /obj/machinery/atmospherics/pipe/simple/scrubbers/hidden{
 	dir = 4
+	},
+/obj/structure/cable{
+	icon_state = "4-8"
 	},
 /turf/open/floor/plating,
 /area/maintenance/department/cargo)
@@ -38531,6 +38547,9 @@
 /obj/structure/disposalpipe/segment{
 	dir = 5
 	},
+/obj/structure/cable{
+	icon_state = "1-4"
+	},
 /turf/open/floor/plating,
 /area/maintenance/department/cargo)
 "nxA" = (
@@ -39145,6 +39164,9 @@
 	},
 /obj/structure/disposalpipe/segment{
 	dir = 4
+	},
+/obj/structure/cable{
+	icon_state = "4-8"
 	},
 /turf/open/floor/plating,
 /area/maintenance/department/cargo)
@@ -46022,6 +46044,15 @@
 	},
 /turf/open/floor/plasteel/white,
 /area/science/lab)
+"qkf" = (
+/obj/structure/cable{
+	icon_state = "1-2"
+	},
+/obj/structure/disposalpipe/segment,
+/obj/machinery/atmospherics/pipe/simple/supply/hidden,
+/obj/item/assembly/mousetrap/armed,
+/turf/open/floor/plating,
+/area/maintenance/department/medical)
 "qkl" = (
 /obj/effect/spawner/structure/window/reinforced,
 /obj/structure/cable{
@@ -60682,6 +60713,7 @@
 /obj/structure/cable{
 	icon_state = "1-8"
 	},
+/obj/item/assembly/mousetrap/armed,
 /turf/open/floor/plating,
 /area/maintenance/department/cargo)
 "vqq" = (
@@ -63939,6 +63971,9 @@
 	},
 /obj/machinery/atmospherics/pipe/manifold/scrubbers/hidden{
 	dir = 1
+	},
+/obj/structure/cable{
+	icon_state = "4-8"
 	},
 /turf/open/floor/plating,
 /area/maintenance/department/cargo)
@@ -91925,7 +91960,7 @@ ycW
 ycW
 ycW
 ycW
-ycW
+qkf
 wLl
 wLl
 ycW
@@ -99854,7 +99889,7 @@ uuN
 jNQ
 kbg
 xgm
-thT
+dID
 vvm
 ltm
 lRO
@@ -103715,7 +103750,7 @@ lAX
 lWC
 moP
 jPB
-jPB
+gmz
 lBE
 eBz
 eBz
@@ -104480,7 +104515,7 @@ jPB
 jPB
 hZa
 jPB
-jPB
+gmz
 jPB
 lBE
 eBz
@@ -118393,8 +118428,8 @@ xGP
 yjI
 xCY
 scv
+pnW
 fbk
-fza
 fza
 fza
 fza
@@ -118651,7 +118686,7 @@ ykp
 ykp
 ikY
 fbk
-roA
+fbk
 roA
 roA
 kwf
@@ -118904,7 +118939,7 @@ wnq
 wLv
 xJe
 xHR
-fbk
+rEZ
 fbk
 fbk
 fbk
@@ -119161,8 +119196,8 @@ vqz
 wLY
 xJe
 xHR
+hHo
 fbk
-fza
 fza
 roA
 roA
