@@ -15015,7 +15015,7 @@
 	dir = 1
 	},
 /mob/living/simple_animal/pet/gondola{
-	health = 1430;
+	health = 1450;
 	name = "Gary";
 	real_name = "commandola"
 	},
@@ -26048,7 +26048,15 @@
 /area/commons/storage/primary)
 "jhn" = (
 /obj/machinery/vending/cola/random,
-/turf/open/floor/plasteel,
+/obj/effect/turf_decal/tile/neutral{
+	dir = 4
+	},
+/obj/effect/turf_decal/tile/neutral{
+	dir = 1
+	},
+/turf/open/floor/plasteel/dark/side{
+	dir = 1
+	},
 /area/hallway/secondary/civilian)
 "jhF" = (
 /obj/structure/sign/poster/official/build,
@@ -27212,7 +27220,13 @@
 /area/commons/fitness/recreation)
 "jDf" = (
 /obj/structure/closet/firecloset,
-/turf/open/floor/plasteel,
+/obj/effect/turf_decal/tile/neutral{
+	dir = 4
+	},
+/obj/effect/turf_decal/tile/neutral,
+/turf/open/floor/plasteel/dark/side{
+	dir = 4
+	},
 /area/hallway/secondary/civilian)
 "jDl" = (
 /turf/open/floor/plating/foam,
@@ -27850,7 +27864,13 @@
 /obj/structure/disposalpipe/trunk{
 	dir = 8
 	},
-/turf/open/floor/plasteel,
+/obj/effect/turf_decal/tile/neutral{
+	dir = 4
+	},
+/obj/effect/turf_decal/tile/neutral,
+/turf/open/floor/plasteel/dark/side{
+	dir = 4
+	},
 /area/hallway/secondary/civilian)
 "jRO" = (
 /obj/machinery/status_display/evac{
@@ -28689,7 +28709,11 @@
 /area/science/lab)
 "klx" = (
 /obj/machinery/vending/snack/random,
-/turf/open/floor/plasteel,
+/obj/effect/turf_decal/tile/neutral,
+/obj/effect/turf_decal/tile/neutral{
+	dir = 8
+	},
+/turf/open/floor/plasteel/dark/side,
 /area/hallway/secondary/civilian)
 "klK" = (
 /obj/structure/sink{
@@ -29990,6 +30014,10 @@
 	},
 /turf/open/floor/plasteel,
 /area/maintenance/disposal/incinerator)
+"kGD" = (
+/obj/effect/turf_decal/loading_area,
+/turf/open/floor/plasteel,
+/area/hallway/primary/starboard)
 "kGE" = (
 /obj/machinery/vending/wardrobe/bridgeofficer_wardrobe,
 /obj/effect/turf_decal/tile/blue,
@@ -30361,9 +30389,7 @@
 /area/hallway/primary/fore)
 "kNg" = (
 /obj/machinery/atmospherics/pipe/simple/scrubbers/hidden,
-/obj/effect/turf_decal/stripes/line{
-	dir = 1
-	},
+/obj/effect/turf_decal/loading_area,
 /turf/open/floor/plasteel,
 /area/hallway/primary/starboard)
 "kNh" = (
@@ -35960,6 +35986,7 @@
 	name = "Mech Bay"
 	},
 /obj/machinery/door/firedoor,
+/obj/effect/turf_decal/delivery,
 /turf/open/floor/plasteel/dark,
 /area/science/robotics/mechbay)
 "mKl" = (
@@ -45871,7 +45898,11 @@
 	icon_state = "plant-21";
 	pixel_y = 3
 	},
-/turf/open/floor/plasteel,
+/obj/effect/turf_decal/tile/purple{
+	dir = 8
+	},
+/obj/effect/turf_decal/tile/purple,
+/turf/open/floor/plasteel/dark/side,
 /area/hallway/primary/starboard)
 "qjw" = (
 /obj/structure/cable{
@@ -50118,6 +50149,7 @@
 	name = "E.V.A. Storage Shutter"
 	},
 /obj/machinery/door/firedoor,
+/obj/effect/turf_decal/delivery,
 /turf/open/floor/plasteel,
 /area/ai_monitored/command/storage/eva)
 "rLP" = (
@@ -50264,6 +50296,7 @@
 	name = "E.V.A. Storage Shutter"
 	},
 /obj/machinery/door/firedoor,
+/obj/effect/turf_decal/delivery,
 /turf/open/floor/plasteel,
 /area/ai_monitored/command/storage/eva)
 "rOv" = (
@@ -50672,6 +50705,7 @@
 	},
 /obj/machinery/door/firedoor,
 /obj/machinery/atmospherics/pipe/simple/scrubbers/hidden,
+/obj/effect/turf_decal/delivery,
 /turf/open/floor/plasteel/dark,
 /area/science/robotics/mechbay)
 "rYd" = (
@@ -107191,7 +107225,7 @@ gRW
 cdb
 gcO
 mKk
-stQ
+kGD
 ygo
 wBZ
 wje
@@ -107448,7 +107482,7 @@ hUg
 gSP
 uJc
 mKk
-stQ
+kGD
 ygo
 gDF
 wje
