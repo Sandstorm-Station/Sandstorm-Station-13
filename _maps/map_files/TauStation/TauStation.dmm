@@ -648,6 +648,9 @@
 /obj/machinery/light{
 	dir = 8
 	},
+/obj/effect/turf_decal/tile/blue{
+	dir = 1
+	},
 /turf/open/floor/plasteel,
 /area/hallway/primary/aft)
 "anv" = (
@@ -6226,6 +6229,9 @@
 /obj/machinery/camera{
 	c_tag = "Aft Primary Hallway - Middle";
 	dir = 5
+	},
+/obj/effect/turf_decal/tile/blue{
+	dir = 1
 	},
 /turf/open/floor/plasteel,
 /area/hallway/primary/aft)
@@ -24325,6 +24331,11 @@
 	},
 /turf/open/floor/plasteel,
 /area/hallway/secondary/civilian)
+"izy" = (
+/obj/structure/girder,
+/obj/structure/grille,
+/turf/open/floor/plating,
+/area/maintenance/fore)
 "izO" = (
 /turf/open/floor/carpet,
 /area/service/chapel/main)
@@ -28440,6 +28451,9 @@
 "kdY" = (
 /obj/machinery/atmospherics/pipe/simple/scrubbers/hidden{
 	dir = 10
+	},
+/obj/effect/turf_decal/tile/blue{
+	dir = 1
 	},
 /turf/open/floor/plasteel,
 /area/hallway/primary/aft)
@@ -41543,6 +41557,9 @@
 /obj/structure/sign/departments/medbay/alt{
 	pixel_x = -32
 	},
+/obj/effect/turf_decal/tile/blue{
+	dir = 1
+	},
 /turf/open/floor/plasteel,
 /area/hallway/primary/aft)
 "oES" = (
@@ -45359,6 +45376,10 @@
 	},
 /turf/open/floor/circuit/green,
 /area/science/robotics/mechbay)
+"qaj" = (
+/obj/structure/grille,
+/turf/open/floor/plating,
+/area/maintenance/fore)
 "qak" = (
 /turf/open/floor/mech_bay_recharge_floor,
 /area/science/robotics/mechbay)
@@ -53624,6 +53645,13 @@
 	},
 /turf/open/floor/plating,
 /area/tcommsat/server)
+"sZq" = (
+/obj/machinery/atmospherics/pipe/manifold/supply/hidden,
+/obj/effect/turf_decal/tile/blue{
+	dir = 1
+	},
+/turf/open/floor/plasteel,
+/area/hallway/primary/aft)
 "sZz" = (
 /obj/machinery/light,
 /turf/open/floor/plasteel,
@@ -54237,6 +54265,9 @@
 	pixel_x = -23
 	},
 /obj/machinery/atmospherics/pipe/simple/scrubbers/hidden,
+/obj/effect/turf_decal/tile/blue{
+	dir = 1
+	},
 /turf/open/floor/plasteel,
 /area/hallway/primary/aft)
 "tlc" = (
@@ -64121,6 +64152,10 @@
 	},
 /turf/open/floor/plasteel,
 /area/hallway/primary/central)
+"wyb" = (
+/obj/structure/girder,
+/turf/open/floor/plating,
+/area/maintenance/fore)
 "wyd" = (
 /obj/structure/window/spawner/east,
 /obj/machinery/shower{
@@ -100832,12 +100867,12 @@ hpc
 uvy
 xVM
 clX
-tQL
-xzv
+sZq
+gzq
 anr
 oEI
-xzv
-xzv
+gzq
+gzq
 kdY
 tkV
 mmW
@@ -102598,7 +102633,7 @@ mGg
 lar
 pFL
 thT
-eBz
+rHg
 wkV
 oTz
 pmj
@@ -102855,7 +102890,7 @@ qiR
 qIo
 pFL
 thT
-rHg
+thT
 wkV
 wOm
 pmj
@@ -103111,8 +103146,8 @@ pFL
 tfn
 pFL
 pFL
+qaj
 thT
-eBz
 wkV
 ohT
 plH
@@ -103369,7 +103404,7 @@ qjs
 sJm
 eBz
 thT
-eBz
+thT
 wkV
 wOm
 pmj
@@ -104654,7 +104689,7 @@ eBz
 xWj
 eBz
 thT
-eBz
+nVR
 rTi
 rTi
 rTi
@@ -106454,7 +106489,7 @@ thT
 eXf
 eBz
 xWj
-eBz
+izy
 xqc
 fEv
 pZV
@@ -106703,7 +106738,7 @@ vmU
 eBz
 cdj
 tpn
-eBz
+wyb
 eBz
 eBz
 eBz
