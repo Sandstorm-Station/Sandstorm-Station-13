@@ -32425,7 +32425,7 @@
 "lwK" = (
 /obj/machinery/door/airlock/command{
 	name = "Conference Room";
-	req_access_txt = "19"
+	req_one_access_txt = "57;72"
 	},
 /obj/machinery/atmospherics/pipe/simple/scrubbers/hidden,
 /turf/open/floor/plasteel/dark,
