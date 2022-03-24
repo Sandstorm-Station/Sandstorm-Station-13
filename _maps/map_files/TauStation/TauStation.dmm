@@ -1005,6 +1005,9 @@
 	pixel_x = -6;
 	pixel_y = 3
 	},
+/obj/structure/extinguisher_cabinet{
+	pixel_x = 27
+	},
 /turf/open/floor/plasteel/dark,
 /area/security/warden)
 "asC" = (
@@ -7185,6 +7188,16 @@
 	},
 /turf/open/floor/plasteel/dark/telecomms,
 /area/tcommsat/server)
+"cDA" = (
+/obj/effect/turf_decal/tile/red{
+	dir = 8
+	},
+/obj/effect/turf_decal/tile/red,
+/obj/structure/extinguisher_cabinet{
+	pixel_y = -31
+	},
+/turf/open/floor/plasteel,
+/area/security/brig)
 "cDB" = (
 /obj/structure/reagent_dispensers/fueltank,
 /obj/structure/sign/warning/nosmoking{
@@ -8522,6 +8535,9 @@
 	},
 /obj/machinery/atmospherics/components/unary/vent_scrubber/on{
 	dir = 1
+	},
+/obj/structure/extinguisher_cabinet{
+	pixel_x = -27
 	},
 /turf/open/floor/plasteel,
 /area/security/execution)
@@ -13514,6 +13530,9 @@
 /obj/effect/turf_decal/tile/red{
 	dir = 1
 	},
+/obj/structure/extinguisher_cabinet{
+	pixel_x = -27
+	},
 /turf/open/floor/plasteel/dark/side{
 	dir = 4
 	},
@@ -15056,7 +15075,7 @@
 	dir = 1
 	},
 /mob/living/simple_animal/pet/gondola{
-	health = 1490;
+	health = 1500;
 	name = "Gary";
 	real_name = "commandola"
 	},
@@ -18952,6 +18971,15 @@
 	},
 /turf/open/floor/plasteel,
 /area/hallway/secondary/civilian)
+"gHP" = (
+/obj/effect/turf_decal/tile/red{
+	dir = 4
+	},
+/obj/structure/extinguisher_cabinet{
+	pixel_x = 27
+	},
+/turf/open/floor/plasteel/showroomfloor,
+/area/security/office)
 "gHU" = (
 /obj/structure/table,
 /obj/item/razor/straightrazor,
@@ -25073,6 +25101,9 @@
 	dir = 8
 	},
 /obj/effect/turf_decal/tile/red,
+/obj/structure/extinguisher_cabinet{
+	pixel_y = -31
+	},
 /turf/open/floor/plasteel,
 /area/security/prison)
 "iMJ" = (
@@ -27593,6 +27624,9 @@
 /obj/effect/turf_decal/tile/red,
 /obj/effect/turf_decal/tile/red{
 	dir = 4
+	},
+/obj/structure/extinguisher_cabinet{
+	pixel_x = 27
 	},
 /turf/open/floor/plasteel,
 /area/security/brig)
@@ -34726,6 +34760,9 @@
 /obj/machinery/atmospherics/components/unary/vent_pump/on{
 	dir = 4
 	},
+/obj/structure/extinguisher_cabinet{
+	pixel_y = -31
+	},
 /turf/open/floor/plasteel,
 /area/security/brig)
 "mjt" = (
@@ -40526,6 +40563,9 @@
 /obj/effect/turf_decal/tile/red{
 	dir = 8
 	},
+/obj/structure/extinguisher_cabinet{
+	pixel_x = -27
+	},
 /turf/open/floor/plasteel,
 /area/security/brig)
 "ojR" = (
@@ -42836,6 +42876,16 @@
 	},
 /turf/open/floor/plasteel,
 /area/engineering/main)
+"pea" = (
+/obj/effect/turf_decal/tile/red,
+/obj/effect/turf_decal/tile/red{
+	dir = 4
+	},
+/obj/structure/extinguisher_cabinet{
+	pixel_x = 27
+	},
+/turf/open/floor/plasteel,
+/area/security/brig)
 "ped" = (
 /obj/machinery/hydroponics/constructable,
 /obj/effect/turf_decal/tile/green,
@@ -49572,6 +49622,18 @@
 /obj/machinery/atmospherics/pipe/simple/supply/hidden,
 /turf/open/floor/plasteel,
 /area/engineering/workshop)
+"ryV" = (
+/obj/effect/turf_decal/tile/red{
+	dir = 8
+	},
+/obj/effect/turf_decal/tile/red{
+	dir = 1
+	},
+/obj/structure/extinguisher_cabinet{
+	pixel_x = -27
+	},
+/turf/open/floor/plasteel,
+/area/security/prison)
 "ryZ" = (
 /obj/effect/spawner/structure/window/plasma/reinforced,
 /turf/open/floor/plating,
@@ -50174,7 +50236,7 @@
 	id = "psych_shutters";
 	name = "psychology office shutters control";
 	pixel_x = -26;
-	req_access_txt = "38"
+	req_access_txt = "76"
 	},
 /obj/item/radio/intercom{
 	name = "Station Intercom (General)";
@@ -56854,6 +56916,9 @@
 /obj/structure/chair/sofa/right{
 	dir = 4
 	},
+/obj/structure/extinguisher_cabinet{
+	pixel_x = -27
+	},
 /turf/open/floor/plasteel,
 /area/security/brig)
 "tYH" = (
@@ -57667,6 +57732,18 @@
 /obj/machinery/atmospherics/pipe/simple/supply/hidden,
 /turf/open/floor/plating,
 /area/maintenance/fore)
+"unT" = (
+/obj/effect/turf_decal/tile/red,
+/obj/effect/turf_decal/tile/red{
+	dir = 8
+	},
+/obj/structure/extinguisher_cabinet{
+	pixel_y = -31
+	},
+/turf/open/floor/plasteel/dark/side{
+	dir = 1
+	},
+/area/security/prison)
 "uob" = (
 /obj/machinery/atmospherics/pipe/heat_exchanging/simple{
 	dir = 10
@@ -89094,7 +89171,7 @@ gpH
 hbV
 hAi
 iio
-eQk
+unT
 xWU
 fza
 fza
@@ -90887,7 +90964,7 @@ dCg
 eMz
 nIG
 nIG
-nIG
+ryV
 mRj
 gKf
 sZO
@@ -93733,7 +93810,7 @@ kQM
 ivJ
 xRF
 nTq
-osA
+cDA
 ygt
 ygt
 ygt
@@ -98107,7 +98184,7 @@ ygt
 oxq
 oMQ
 wry
-owU
+gHP
 rKC
 nZH
 qEQ
@@ -98873,7 +98950,7 @@ loq
 wSQ
 mKO
 vfN
-nFq
+pea
 xAD
 szZ
 oNz
