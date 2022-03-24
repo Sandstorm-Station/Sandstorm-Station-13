@@ -3990,6 +3990,13 @@
 /obj/effect/landmark/start/shaft_miner,
 /turf/open/floor/plasteel,
 /area/cargo/miningoffice)
+"bvu" = (
+/obj/machinery/power/apc/auto_name/west,
+/obj/structure/cable{
+	icon_state = "0-2"
+	},
+/turf/open/floor/plasteel/dark/corner,
+/area/engineering/transit_tube)
 "bvW" = (
 /obj/machinery/atmospherics/pipe/simple/general/hidden,
 /obj/effect/turf_decal/tile/yellow,
@@ -14827,6 +14834,12 @@
 	},
 /turf/open/floor/plasteel/dark,
 /area/security/prison/cells)
+"fhV" = (
+/obj/structure/cable{
+	icon_state = "0-4"
+	},
+/turf/open/floor/plating,
+/area/maintenance/department/engine)
 "fhZ" = (
 /obj/structure/table/reinforced,
 /obj/item/storage/box/trackimp,
@@ -15938,6 +15951,15 @@
 /obj/machinery/door/firedoor,
 /turf/open/floor/wood,
 /area/security/prison/rec)
+"fDc" = (
+/obj/structure/cable{
+	icon_state = "1-2"
+	},
+/obj/structure/cable{
+	icon_state = "1-4"
+	},
+/turf/open/floor/plasteel,
+/area/engineering/workshop)
 "fDe" = (
 /obj/structure/cable{
 	icon_state = "4-8"
@@ -25989,6 +26011,16 @@
 	},
 /turf/open/floor/plasteel,
 /area/construction/mining/aux_base)
+"jdX" = (
+/obj/machinery/atmospherics/pipe/simple/scrubbers/hidden,
+/obj/structure/cable{
+	icon_state = "1-2"
+	},
+/obj/structure/cable{
+	icon_state = "2-8"
+	},
+/turf/open/floor/plating,
+/area/maintenance/department/engine)
 "jdZ" = (
 /obj/machinery/atmospherics/pipe/manifold/scrubbers/visible{
 	dir = 8
@@ -28646,6 +28678,17 @@
 	},
 /turf/open/floor/plasteel/dark,
 /area/science/xenobiology)
+"kfW" = (
+/obj/machinery/door/airlock/engineering/glass{
+	name = "Engineering Transit";
+	req_one_access_txt = "32;19"
+	},
+/obj/machinery/door/firedoor,
+/obj/structure/cable{
+	icon_state = "1-2"
+	},
+/turf/open/floor/plasteel,
+/area/engineering/transit_tube)
 "kgf" = (
 /obj/machinery/door/window{
 	dir = 8;
@@ -29534,6 +29577,10 @@
 /obj/machinery/camera{
 	c_tag = "Engineering - Workshop";
 	dir = 8
+	},
+/obj/machinery/power/apc/auto_name/east,
+/obj/structure/cable{
+	icon_state = "0-8"
 	},
 /turf/open/floor/plasteel,
 /area/engineering/workshop)
@@ -32147,6 +32194,9 @@
 /obj/machinery/camera{
 	c_tag = "Engineering Tube - Satellite";
 	dir = 4
+	},
+/obj/structure/cable{
+	icon_state = "1-2"
 	},
 /turf/open/floor/plasteel/dark/corner{
 	dir = 4
@@ -36594,6 +36644,21 @@
 /obj/structure/disposalpipe/segment,
 /turf/open/floor/plasteel,
 /area/hallway/secondary/entry)
+"mPV" = (
+/obj/machinery/atmospherics/pipe/simple/general/hidden{
+	dir = 4
+	},
+/obj/effect/turf_decal/tile/yellow{
+	dir = 1
+	},
+/obj/effect/turf_decal/tile/yellow{
+	dir = 4
+	},
+/obj/structure/cable{
+	icon_state = "1-8"
+	},
+/turf/open/floor/plasteel,
+/area/engineering/lobby)
 "mQe" = (
 /obj/machinery/atmospherics/components/unary/thermomachine/heater/on{
 	dir = 1
@@ -44708,6 +44773,9 @@
 /obj/structure/cable{
 	icon_state = "4-8"
 	},
+/obj/structure/cable{
+	icon_state = "1-4"
+	},
 /turf/open/floor/plasteel,
 /area/command/heads_quarters/ce)
 "pKV" = (
@@ -45284,6 +45352,9 @@
 	},
 /obj/effect/turf_decal/tile/yellow{
 	dir = 4
+	},
+/obj/structure/cable{
+	icon_state = "4-8"
 	},
 /turf/open/floor/plasteel,
 /area/engineering/lobby)
@@ -52461,6 +52532,9 @@
 	},
 /obj/effect/turf_decal/tile/yellow{
 	dir = 4
+	},
+/obj/structure/cable{
+	icon_state = "4-8"
 	},
 /turf/open/floor/plasteel,
 /area/engineering/lobby)
@@ -62327,6 +62401,10 @@
 /obj/effect/turf_decal/tile/yellow{
 	dir = 4
 	},
+/obj/structure/cable{
+	icon_state = "0-2"
+	},
+/obj/machinery/power/apc/auto_name/north,
 /turf/open/floor/plasteel,
 /area/command/heads_quarters/ce)
 "vQa" = (
@@ -68742,6 +68820,9 @@
 	},
 /obj/effect/turf_decal/tile/yellow{
 	dir = 4
+	},
+/obj/structure/cable{
+	icon_state = "2-4"
 	},
 /turf/open/floor/plasteel,
 /area/engineering/lobby)
@@ -84402,7 +84483,7 @@ fza
 fza
 vfA
 kNA
-yiy
+fhV
 yik
 nag
 fwB
@@ -84659,7 +84740,7 @@ she
 eyu
 ixd
 eHK
-eHK
+jdX
 vgl
 xRj
 hVM
@@ -85429,10 +85510,10 @@ xij
 hIf
 fza
 uqL
-apC
+bvu
 lqX
-rRZ
-obu
+kfW
+mPV
 vrv
 vrv
 dTU
@@ -92610,7 +92691,7 @@ wjc
 azh
 oPH
 gsf
-oaU
+fDc
 oaU
 oaU
 oaU
