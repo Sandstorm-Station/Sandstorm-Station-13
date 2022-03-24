@@ -20,4 +20,8 @@
 	projectile_type = /obj/item/projectile/beam/disabler
 
 /obj/item/ammo_casing/c45/laser
-	projectile_type = /obj/item/projectile/beam/scatter
+	projectile_type = /obj/item/projectile/beam/laser
+
+/obj/item/ammo_casing/c9mm/rubber
+	projectile_type = /obj/item/projectile/bullet/c9mm/rubber
+

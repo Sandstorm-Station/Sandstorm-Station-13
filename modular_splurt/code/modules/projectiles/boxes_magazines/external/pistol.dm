@@ -1,11 +1,12 @@
 // Pistol Magazines
 
 /obj/item/ammo_box/magazine/m45
-	name = "M1911 magazine"
+	name = "M1911 magazine (.45 Lethal)"
 	desc = "A M1911 magazine."
 	ammo_type = /obj/item/ammo_casing/c45/lethal
 
 /obj/item/ammo_box/magazine/m45/rubber
+	name = "M1911 magazine (.45 Rubber)"
 	ammo_type = /obj/item/ammo_casing/c45
 
 /obj/item/ammo_box/magazine/e45
@@ -19,7 +20,7 @@
 
 /obj/item/ammo_box/magazine/e45/update_icon()
 	..()
-	icon_state = "enforcer-[ammo_count() ? "8" : "0"]"
+	icon_state = "enforcer-[round(ammo_count())]"
 
 /obj/item/ammo_box/magazine/e45/lethal
 	name = "Enforcer magazine (.45 Lethal)"
@@ -62,7 +63,7 @@
 	ammo_type = /obj/item/ammo_casing/c45/stun
 
 /obj/item/ammo_box/magazine/m9
-	name = "Cheap handgun magazine (9mm)"
+	name = "Cheap handgun magazine (9mm Lethal)"
 	icon = 'modular_splurt/icons/obj/ammo.dmi'
 	icon_state = "m9mmds"
 	ammo_type = /obj/item/ammo_casing/c9mm
@@ -73,6 +74,10 @@
 /obj/item/ammo_box/magazine/m9/update_icon()
 	..()
 	icon_state = "m9mmds-[ammo_count() ? "10" : "0"]"
+
+/obj/item/ammo_box/magazine/m9/rubber
+	name = "Cheap handgun magazine (9mm Rubber)"
+	ammo_type = /obj/item/ammo_casing/c9mm/rubber
 
 /obj/item/ammo_box/magazine/m22
 	name = "Cheap handgun magazine (.22LR)"

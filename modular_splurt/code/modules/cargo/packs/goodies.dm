@@ -60,7 +60,7 @@
 	name = "Hunting Rifle Single-Pack"
 	desc = "Contains a parts kit to assemble a hunting rifle."
 	cost = 800
-	contains = list(/obj/item/gunpart/rifle308sotck, /obj/item/gunpart/rifle308barrel, /obj/item/ammo_box/a762 = 3)
+	contains = list(/obj/item/gunpart/rifle308sotck, /obj/item/gunpart/rifle308barrel, /obj/item/ammo_box/a308, /obj/item/ammo_box/a308, /obj/item/ammo_box/a308)
 
 /datum/supply_pack/goody/sawndbshotgun_single
 	name = "Sawn-off Double Barrel Shotgun Single-Pack"
@@ -78,7 +78,7 @@
 	name = ".22 Pistol Single-Pack"
 	desc = "Contains a parts kit to assemble a .22 Pistol."
 	cost = 500
-	contains = list(/obj/item/gunpart/pistol22frame, /obj/item/gunpart/pistol22barrel, /obj/item/gunpart/pistol22bolt, /obj/item/ammo_box/magazine/m22 = 2)
+	contains = list(/obj/item/gunpart/pistol22frame, /obj/item/gunpart/pistol22barrel, /obj/item/gunpart/pistol22bolt, /obj/item/ammo_box/magazine/m22, /obj/item/ammo_box/magazine/m22)
 
 /datum/supply_pack/goody/revolver22_single
 	name = ".22 Revolver Single-Pack"
@@ -90,13 +90,13 @@
 	name = "9mm Pistol Single-Pack"
 	desc = "Contains a parts kit to assemble a 9mm Pistol."
 	cost = 900
-	contains = list(/obj/item/gunpart/pistol9frame, /obj/item/gunpart/pistol9slide, /obj/item/ammo_box/magazine/m9 = 2)
+	contains = list(/obj/item/gunpart/pistol9frame, /obj/item/gunpart/pistol9slide, /obj/item/ammo_box/magazine/m9/rubber, /obj/item/ammo_box/magazine/m9/rubber)
 
 /datum/supply_pack/goody/pistol45_single
 	name = ".45 Pistol Single-Pack"
 	desc = "Contains a pre-assembled .45 caliber M1911. Comes with .45 Rubber."
 	cost = 900
-	contains = list(/obj/item/gun/ballistic/automatic/pistol/m1911/no_mag, /obj/item/ammo_box/magazine/m45/rubber= 3)
+	contains = list(/obj/item/gun/ballistic/automatic/pistol/m1911/no_mag, /obj/item/ammo_box/magazine/m45/rubber, /obj/item/ammo_box/magazine/m45/rubber, /obj/item/ammo_box/magazine/m45/rubber)
 
 /datum/supply_pack/goody/lasercivlian_single
 	name = "Civilian Energy Pistol Single-Pack"

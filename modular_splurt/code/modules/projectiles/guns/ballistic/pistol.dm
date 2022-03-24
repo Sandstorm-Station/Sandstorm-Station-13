@@ -8,7 +8,7 @@
 
 
 /obj/item/gun/ballistic/automatic/pistol/enforcer
-	name = "\improper Mk. 58 Enforcer"
+	name = "\improper Mk. 58 Enforcer (.45)"
 	desc = "A polymer frame pistol made by Nanotreason. Won't show up on Space port X-rays and cost more then you make in a month."
 	icon = 'modular_splurt/icons/obj/guns/projectile.dmi'
 	icon_state = "enforcer_black"
@@ -37,7 +37,7 @@
 	spawnwithmagazine = FALSE
 
 /obj/item/gun/ballistic/automatic/pistol/enforcerred
-	name = "\improper HOS's Mk. 58 Enforcer"
+	name = "\improper HOS's Mk. 58 Enforcer (.45)"
 	desc = "A polymer frame pistol made by Nanotreason. Won't show up on Space port X-rays and cost more then you make in a month. Respect mah Authorita!"
 	icon = 'modular_splurt/icons/obj/guns/projectile.dmi'
 	icon_state = "enforcer_red"
@@ -53,7 +53,7 @@
 
 
 /obj/item/gun/ballistic/automatic/pistol/enforcergold
-	name = "\improper Gold Mk. 58 Enforcer"
+	name = "\improper Gold Mk. 58 Enforcer (.45)"
 	desc = "A titianium gold plated Enfocer. A vulger display of power. A show of force in a public execution."
 	icon = 'modular_splurt/icons/obj/guns/projectile.dmi'
 	icon_state = "enforcer_gold"
@@ -85,6 +85,9 @@
 		icon_state = "[unique_reskin[current_skin]][chambered ? "" : "-e"]"
 	else
 		icon_state = "[initial(icon_state)][chambered ? "" : "-e"]"
+
+/obj/item/gun/ballistic/automatic/pistol/m9mmpistol/nomag
+	spawnwithmagazine = FALSE
 
 /obj/item/gun/ballistic/automatic/pistol/m22pistol
 	name = "\improper Cheap .22 Handgun"
@@ -155,7 +158,7 @@
 
 /datum/crafting_recipe/pistol9assemble
 	name = "Assemble 9mm Pistol"
-	result = /obj/item/gun/ballistic/automatic/pistol/m9mmpistol
+	result = /obj/item/gun/ballistic/automatic/pistol/m9mmpistol/nomag
 	reqs = list(/obj/item/gunpart/pistol9frame = 1,
 				/obj/item/gunpart/pistol9slide = 1)
 	tools = list(TOOL_SCREWDRIVER)

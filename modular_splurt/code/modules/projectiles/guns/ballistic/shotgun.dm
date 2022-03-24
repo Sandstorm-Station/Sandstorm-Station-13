@@ -35,8 +35,8 @@
 // Rifles
 
 /obj/item/gun/ballistic/shotgun/huntingrifle
-	name = "cheap hunting rifle (7.62mm)"
-	desc = "A cheap hunting rifle chambered 7.62mm."
+	name = "cheap hunting rifle (.308)"
+	desc = "A cheap hunting rifle chambered .308."
 	icon = 'modular_splurt/icons/obj/guns/projectile.dmi'
 	icon_state = "308"
 	item_state = "308"
@@ -44,7 +44,7 @@
 	righthand_file = 'modular_splurt/icons/mob/inhands/weapons/guns_righthand.dmi'
 	fire_sound = "sound/weapons/Gunshot4.ogg"
 	fire_delay = 5
-	mag_type = /obj/item/ammo_box/magazine/internal/boltaction
+	mag_type = /obj/item/ammo_box/magazine/internal/hunting
 	w_class = WEIGHT_CLASS_BULKY
 	weapon_weight = WEAPON_MEDIUM
 	sawn_desc = "A cheap hunting rifle that bubba got ahold of."
@@ -71,6 +71,19 @@
 	mag_type = /obj/item/ammo_box/magazine/internal/shot/varmitrifle
 	w_class = WEIGHT_CLASS_NORMAL
 	weapon_weight = WEAPON_MEDIUM
+
+/obj/item/gun/ballistic/shotgun/leveraction/brush
+	name = "brush gun (.45-70 GOVT)"
+	icon = 'modular_splurt/icons/obj/guns/projectile.dmi'
+
+/obj/item/gun/ballistic/shotgun/leveraction/brush2
+	name = "brush gun (.45 Long)"
+	desc = "While lever-actions have been horribly out of date for hundreds of years now, \
+	putting a nicely sized hole in a man-sized target with a .45 Long round has stayed relatively timeless."
+	icon = 'modular_splurt/icons/obj/guns/projectile.dmi'
+	icon_state = "brushgun"
+	can_cut = FALSE
+	mag_type = /obj/item/ammo_box/magazine/internal/shot/levergun/brush2
 
 /obj/item/gunpart/rifle308sotck
 	name = "hunting rifle stock"
@@ -105,6 +118,16 @@
 	name = "sawn double barrel shotgun assembly"
 	desc = "a pre-sawn double barrel shotgun assembly"
 	icon_state = "sawnshotbarrel"
+
+/obj/item/gunpart/riflebrush2stock
+	name = "brush gun furniture"
+	desc = "a brush gun stock and foregrip"
+	icon_state = "brushgunstock"
+
+/obj/item/gunpart/riflebrush2barrel
+	name = "brush gun assembly"
+	desc = "a brush gun barrel and fire control assembly"
+	icon_state = "brushgunframe"
 
 /datum/crafting_recipe/riflehuntingassemble
 	name = "Assemble hunting rifle"
@@ -141,6 +164,16 @@
 	result = /obj/item/gun/ballistic/revolver/doublebarrel
 	reqs = list(/obj/item/gunpart/shotgunstock = 1,
 				/obj/item/gunpart/shotgunbarrel = 1)
+	tools = list(TOOL_SCREWDRIVER)
+	time = 50
+	category = CAT_WEAPONRY
+	subcategory = CAT_WEAPON
+
+/datum/crafting_recipe/brushgunassemble
+	name = "Assemble brush gun"
+	result = /obj/item/gun/ballistic/shotgun/leveraction/brush2
+	reqs = list(/obj/item/gunpart/riflebrush2stock = 1,
+				/obj/item/gunpart/riflebrush2barrel = 1)
 	tools = list(TOOL_SCREWDRIVER)
 	time = 50
 	category = CAT_WEAPONRY

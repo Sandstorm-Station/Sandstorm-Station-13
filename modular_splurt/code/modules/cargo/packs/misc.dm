@@ -54,15 +54,15 @@
 	desc = "A pack of 9mm Pistols with 6 spare magazines."
 	access = ACCESS_QM
 	cost = 2800
-	contains = list(/obj/item/gun/ballistic/automatic/pistol/m9mmpistol,
-					/obj/item/gun/ballistic/automatic/pistol/m9mmpistol,
-					/obj/item/gun/ballistic/automatic/pistol/m9mmpistol,
-					/obj/item/ammo_box/magazine/m9,
-					/obj/item/ammo_box/magazine/m9,
-					/obj/item/ammo_box/magazine/m9,
-					/obj/item/ammo_box/magazine/m9,
-					/obj/item/ammo_box/magazine/m9,
-					/obj/item/ammo_box/magazine/m9)
+	contains = list(/obj/item/gun/ballistic/automatic/pistol/m9mmpistol/nomag,
+					/obj/item/gun/ballistic/automatic/pistol/m9mmpistol/nomag,
+					/obj/item/gun/ballistic/automatic/pistol/m9mmpistol/nomag,
+					/obj/item/ammo_box/magazine/m9/rubber,
+					/obj/item/ammo_box/magazine/m9/rubber,
+					/obj/item/ammo_box/magazine/m9/rubber,
+					/obj/item/ammo_box/magazine/m9/rubber,
+					/obj/item/ammo_box/magazine/m9/rubber,
+					/obj/item/ammo_box/magazine/m9/rubber)
 	crate_name = "9mm pistols"
 	crate_type = /obj/structure/closet/crate/secure/weapon
 
@@ -102,15 +102,15 @@
 	contains = list(/obj/item/gun/ballistic/shotgun/huntingrifle,
 					/obj/item/gun/ballistic/shotgun/huntingrifle,
 					/obj/item/gun/ballistic/shotgun/huntingrifle,
-					/obj/item/ammo_box/a762,
-					/obj/item/ammo_box/a762,
-					/obj/item/ammo_box/a762,
-					/obj/item/ammo_box/a762,
-					/obj/item/ammo_box/a762,
-					/obj/item/ammo_box/a762,
-					/obj/item/ammo_box/a762,
-					/obj/item/ammo_box/a762,
-					/obj/item/ammo_box/a762)
+					/obj/item/ammo_box/a308,
+					/obj/item/ammo_box/a308,
+					/obj/item/ammo_box/a308,
+					/obj/item/ammo_box/a308,
+					/obj/item/ammo_box/a308,
+					/obj/item/ammo_box/a308,
+					/obj/item/ammo_box/a308,
+					/obj/item/ammo_box/a308,
+					/obj/item/ammo_box/a308)
 	crate_name = "Hunting Rifles"
 	crate_type = /obj/structure/closet/crate/secure/weapon
 

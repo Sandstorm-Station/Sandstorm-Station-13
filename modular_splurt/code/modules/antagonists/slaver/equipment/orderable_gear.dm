@@ -287,3 +287,52 @@ GLOBAL_LIST_INIT(slaver_gear, subtypesof(/datum/slaver_gear))
 	build_path = /obj/item/mecha_parts/mecha_equipment/repair_droid
 	category = "Mech"
 	cost = 1500
+
+/datum/slaver_gear/smg22
+	name = "FTU SMG Kit (rubber)"
+	description = "Free Trade Union SMG with rubber munitions. Great for crowd control and pinning down Security forces. Not much else. Spare magazine x 3."
+	build_path = /obj/item/storage/backpack/duffelbag/syndie/smg22
+	category = "Firearms"
+	cost = 10000
+
+/datum/slaver_gear/garandlethal
+	name = "Mars Service Rifle Kit (Lethal)"
+	description = "Mars Semi-Automatic Service rifle with lehtal munitions. Spare clips x 6."
+	build_path = /obj/item/storage/backpack/duffelbag/syndie/garand_lethal
+	category = "Firearms"
+	cost = 15000
+
+/datum/slaver_gear/garandrubber
+	name = "Mars Service Rifle Kit (Rubber)"
+	description = "Mars Semi-Automatic Service rifle with rubber munitions. Spare clips x 6."
+	build_path = /obj/item/storage/backpack/duffelbag/syndie/garand_rubber
+	category = "Firearms"
+	cost = 10000
+
+/datum/slaver_gear/garandmixed
+	name = "Mars Service Rifle Kit (Mixed)"
+	description = "Mars Semi-Automatic Service rifle with rubber and Soporific munitions. Spare clips x 6."
+	build_path = /obj/item/storage/backpack/duffelbag/syndie/garand_mixed
+	category = "Firearms"
+	cost = 12500
+
+/datum/slaver_gear/fallehtal
+	name = "FTU Rifle Kit (Lethal)"
+	description = "Free Trade Union Select Fire rifle with lehtal munitions. Spare Mags x 6."
+	build_path = /obj/item/storage/backpack/duffelbag/syndie/fal_lehtal
+	category = "Firearms"
+	cost = 25000
+
+/datum/slaver_gear/falrubber
+	name = "FTU Rifle Kit (rubber)"
+	description = "Free Trade Union Select Fire rifle with rubber munitions. Spare Mags x 6."
+	build_path = /obj/item/storage/backpack/duffelbag/syndie/fal_rubber
+	category = "Firearms"
+	cost = 20000
+
+/datum/slaver_gear/falmixed
+	name = "FTU Rifle Kit (mixed)"
+	description = "Free Trade Union Select Fire rifle with rubber and Soporific munitions. Spare Mags x 6."
+	build_path = /obj/item/storage/backpack/duffelbag/syndie/fal_mix
+	category = "Firearms"
+	cost = 22500
