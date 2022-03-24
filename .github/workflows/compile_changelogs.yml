@@ -1,8 +1,6 @@
 name: Compile changelogs
 
 on:
-  workflow_dispatch:
-  
   workflow_run:
     workflows: [Make changelogs]
     types:
