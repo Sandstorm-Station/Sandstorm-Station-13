@@ -9009,6 +9009,7 @@
 /obj/structure/closet/secure_closet/warden,
 /obj/machinery/atmospherics/pipe/simple/scrubbers/hidden,
 /obj/machinery/atmospherics/pipe/simple/scrubbers/hidden,
+/obj/item/storage/box/prisoner,
 /turf/open/floor/plasteel/dark,
 /area/security/warden)
 "diJ" = (
@@ -13346,7 +13347,6 @@
 /obj/machinery/atmospherics/pipe/simple/scrubbers/hidden{
 	dir = 4
 	},
-/obj/machinery/vending/games,
 /obj/effect/turf_decal/tile/neutral{
 	dir = 1
 	},
@@ -15075,7 +15075,7 @@
 	dir = 1
 	},
 /mob/living/simple_animal/pet/gondola{
-	health = 1500;
+	health = 1510;
 	name = "Gary";
 	real_name = "commandola"
 	},
@@ -16715,6 +16715,7 @@
 	c_tag = "Locker Room West";
 	dir = 4
 	},
+/obj/machinery/vending/kink,
 /turf/open/floor/plasteel,
 /area/commons/dorms)
 "fPJ" = (
@@ -18616,10 +18617,10 @@
 /turf/open/floor/plasteel,
 /area/hallway/secondary/entry)
 "gCf" = (
-/obj/machinery/vending/kink,
 /obj/effect/turf_decal/tile/neutral{
 	dir = 1
 	},
+/obj/machinery/vending/games,
 /turf/open/floor/plasteel,
 /area/commons/fitness/recreation)
 "gCg" = (
@@ -25078,8 +25079,8 @@
 	dir = 8
 	},
 /obj/effect/turf_decal/tile/red,
-/obj/effect/turf_decal/box,
-/obj/machinery/flasher/portable,
+/obj/structure/table,
+/obj/item/storage/box/prisoner,
 /turf/open/floor/plasteel/dark/side{
 	dir = 1
 	},
@@ -35444,6 +35445,7 @@
 	pixel_y = -25
 	},
 /obj/machinery/light,
+/obj/structure/reagent_dispensers/watertank,
 /turf/open/floor/plasteel,
 /area/commons/storage/primary)
 "mwe" = (
@@ -43982,6 +43984,19 @@
 /obj/structure/cable,
 /turf/open/floor/plating,
 /area/maintenance/disposal)
+"pxP" = (
+/obj/effect/turf_decal/tile/red{
+	dir = 8
+	},
+/obj/effect/turf_decal/tile/red{
+	dir = 1
+	},
+/obj/effect/turf_decal/box,
+/obj/machinery/flasher/portable,
+/turf/open/floor/plasteel/dark/side{
+	dir = 4
+	},
+/area/security/prison)
 "pyb" = (
 /obj/machinery/door/airlock/security{
 	name = "Security Post - Cargo";
@@ -64618,10 +64633,10 @@
 /turf/open/floor/plating,
 /area/maintenance/starboard/fore)
 "wBP" = (
-/obj/structure/reagent_dispensers/watertank,
 /obj/structure/sign/poster/official/pda_ad800{
 	pixel_y = -32
 	},
+/obj/machinery/vending/clothing,
 /turf/open/floor/plasteel,
 /area/commons/storage/primary)
 "wBV" = (
@@ -89937,7 +89952,7 @@ eLl
 fgN
 iQH
 iQH
-iQH
+pxP
 gJq
 xWU
 hAJ
