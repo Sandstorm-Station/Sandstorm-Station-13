@@ -15097,7 +15097,7 @@
 	dir = 1
 	},
 /mob/living/simple_animal/pet/gondola{
-	health = 1530;
+	health = 1550;
 	name = "Gary";
 	real_name = "commandola"
 	},
@@ -45921,10 +45921,6 @@
 /turf/open/floor/plasteel/white,
 /area/science)
 "qew" = (
-/obj/machinery/airalarm{
-	dir = 8;
-	pixel_x = 23
-	},
 /obj/machinery/chem_master/condimaster{
 	name = "HoochMaster 2000"
 	},
