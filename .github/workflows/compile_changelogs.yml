@@ -1,12 +1,12 @@
 name: Compile changelogs
 
 on:
-  push:
-    branches:
-      - master
-    paths:
-      - 'html/changelogs/**'
-      - '!html/changelogs/archive/**'
+  workflow_dispatch:
+  
+  workflow_run:
+    workflows: [Make changelogs]
+    types:
+      - completed
 
 jobs:
   compile:
