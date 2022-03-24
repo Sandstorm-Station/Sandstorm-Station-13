@@ -489,6 +489,8 @@
 
 	var/crate_value = 30 ///Total TC worth of contained uplink items
 
+	uplink_flags = UPLINK_TRAITORS
+
 
 //////////////////////////////////////////////////////////////////////////////
 //////////////////////////////// Syndicate Packs /////////////////////////////
@@ -497,7 +499,7 @@
 //Generate assorted uplink items, taking into account the same surplus modifiers used for surplus crates
 //(this is exclusively used for the rare variant of the stray cargo event!)
 /datum/supply_pack/misc/syndicate/fill(obj/structure/closet/crate/C)
-	var/list/uplink_items = get_uplink_items(SSticker.mode)
+	var/list/uplink_items = get_uplink_items(uplink_flags, FALSE)
 	while(crate_value)
 		var/category = pick(uplink_items)
 		var/item = pick(uplink_items[category])
