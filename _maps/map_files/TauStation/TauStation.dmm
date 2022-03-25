@@ -44622,7 +44622,9 @@
 /area/security/brig)
 "pIC" = (
 /obj/machinery/atmospherics/components/trinary/mixer/airmix/flipped/inverse{
-	dir = 8
+	dir = 8;
+	node1_concentration = 0.79;
+	node2_concentration = 0.21
 	},
 /turf/open/floor/plasteel,
 /area/engineering/atmos)
@@ -45797,6 +45799,10 @@
 /obj/structure/table,
 /obj/machinery/chem_dispenser/drinks{
 	dir = 8
+	},
+/obj/machinery/firealarm{
+	dir = 8;
+	pixel_x = 24
 	},
 /turf/open/floor/carpet/black,
 /area/service/bar)
@@ -49248,13 +49254,6 @@
 	dir = 1
 	},
 /area/command/heads_quarters/cmo)
-"rpa" = (
-/obj/machinery/firealarm{
-	dir = 1;
-	pixel_y = -26
-	},
-/turf/open/floor/carpet/black,
-/area/service/bar)
 "rpE" = (
 /obj/structure/table,
 /obj/item/book/manual/wiki/barman_recipes,
@@ -55838,20 +55837,6 @@
 	},
 /turf/open/floor/noslip,
 /area/service/janitor)
-"tGK" = (
-/obj/machinery/door/airlock/engineering/glass{
-	name = "Supermatter Engine Room";
-	req_access_txt = "10"
-	},
-/obj/machinery/door/firedoor,
-/obj/structure/cable/yellow{
-	icon_state = "1-2"
-	},
-/obj/structure/cable/yellow{
-	icon_state = "1-2"
-	},
-/turf/open/floor/engine,
-/area/engineering/main)
 "tGO" = (
 /obj/effect/spawner/structure/window/reinforced,
 /turf/open/floor/plating,
@@ -83728,7 +83713,7 @@ woU
 hjP
 vzK
 vMT
-tGK
+qLe
 dHs
 kQC
 bey
@@ -118870,7 +118855,7 @@ aLn
 qcO
 oJY
 oJY
-rpa
+oJY
 hzR
 uBb
 sho
