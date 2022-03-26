@@ -45,7 +45,6 @@
 	sharpness = SHARP_NONE
 	embedding = null
 
-
 /obj/item/ammo_casing/g45l
 	name= ".45 Long bullet casing (Rubber)"
 	desc = "An .45 Long bullet casing."

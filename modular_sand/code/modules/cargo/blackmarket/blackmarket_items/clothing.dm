@@ -1,7 +1,7 @@
 /datum/blackmarket_item/syndi/clothing
 	category = "Clothing"
 
-//Commintg out the Deathsquad gear.... crew should never have had access to this in the first place
+//Commiting out the Deathsquad gear.... crew should never have had access to this in the first place
 
 // /datum/blackmarket_item/syndi/clothing/ds_hardsuit
 //	name = "MK.III SWAT Suit"

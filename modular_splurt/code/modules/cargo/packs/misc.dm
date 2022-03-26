@@ -49,9 +49,9 @@
 	crate_name = ".22 Revolvers"
 	crate_type = /obj/structure/closet/crate/secure/weapon
 
-/datum/supply_pack/misc/m22pistols
+/datum/supply_pack/misc/m9pistols
 	name = "9mm Pistols"
-	desc = "A pack of 9mm Pistols with 6 spare magazines."
+	desc = "A pack of 9mm Pistols with 6 spare magazines of rubber."
 	access = ACCESS_QM
 	cost = 2800
 	contains = list(/obj/item/gun/ballistic/automatic/pistol/m9mmpistol/nomag,
@@ -98,7 +98,7 @@
 	name = "Hunting Rifles"
 	desc = "A pack of hunting rifles with 9 stripper clips."
 	access = ACCESS_QM
-	cost = 2500
+	cost = 2800
 	contains = list(/obj/item/gun/ballistic/shotgun/huntingrifle,
 					/obj/item/gun/ballistic/shotgun/huntingrifle,
 					/obj/item/gun/ballistic/shotgun/huntingrifle,
@@ -114,6 +114,23 @@
 	crate_name = "Hunting Rifles"
 	crate_type = /obj/structure/closet/crate/secure/weapon
 
+/datum/supply_pack/misc/c308ammo
+	name = ".308 stripper clips"
+	desc = "A pack of 6 stripper clips of .308 ammo."
+	access = ACCESS_QM
+	cost = 1500
+	contains = list(/obj/item/ammo_box/a308,
+					/obj/item/ammo_box/a308,
+					/obj/item/ammo_box/a308,
+					/obj/item/ammo_box/a308,
+					/obj/item/ammo_box/a308,
+					/obj/item/ammo_box/a308,
+					/obj/item/ammo_box/a308,
+					/obj/item/ammo_box/a308,
+					/obj/item/ammo_box/a308)
+	crate_name = ".308 ammo"
+	crate_type = /obj/structure/closet/crate/secure/weapon
+
 /datum/supply_pack/misc/civlianlasers
 	name = "Civilian Energy Pistols"
 	desc = "A pack of civlian energy pistols."
@@ -124,6 +141,41 @@
 					/obj/item/gun/energy/civilian)
 	crate_name = "Civilian Energy Pistols"
 	crate_type = /obj/structure/closet/crate/secure/weapon
+
+/datum/supply_pack/misc/m357pistols
+	name = ".357 Desert Eagles"
+	desc = "A pack of Desert Eagles chambered in .357 with 6 spare magazines."
+	access = ACCESS_QM
+	cost = 3500
+	contains = list(/obj/item/gun/ballistic/automatic/pistol/deagle2/nomag,
+					/obj/item/gun/ballistic/automatic/pistol/deagle2/nomag,
+					/obj/item/gun/ballistic/automatic/pistol/deagle2/nomag,
+					/obj/item/ammo_box/magazine/m357/rubber,
+					/obj/item/ammo_box/magazine/m357/rubber,
+					/obj/item/ammo_box/magazine/m357/rubber,
+					/obj/item/ammo_box/magazine/m357/rubber,
+					/obj/item/ammo_box/magazine/m357/rubber,
+					/obj/item/ammo_box/magazine/m357/rubber)
+	crate_name = ".357 Desert Eagles"
+	crate_type = /obj/structure/closet/crate/secure/weapon
+
+/datum/supply_pack/misc/huntingshotgun
+	name = "Hunting shotguns"
+	desc = "A pack 3 hutning shotguns with slugs and buckshot"
+	access = ACCESS_QM
+	cost = 3500
+	contains = list(/obj/item/gun/ballistic/shotgun/hunting,
+					/obj/item/gun/ballistic/shotgun/hunting,
+					/obj/item/gun/ballistic/shotgun/hunting,
+					/obj/item/storage/box/lethalshot,
+					/obj/item/storage/box/lethalshot,
+					/obj/item/storage/box/lethalshot,
+					/obj/item/storage/box/lethalslugs,
+					/obj/item/storage/box/lethalslugs,
+					/obj/item/storage/box/lethalslugs)
+	crate_name = "Hunting shotguns"
+	crate_type = /obj/structure/closet/crate/secure/weapon
+
 
 /datum/supply_pack/misc/carpet_exotic
 	name = "Exotic Carpet Crate"

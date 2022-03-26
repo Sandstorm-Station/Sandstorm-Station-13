@@ -1,7 +1,7 @@
 /datum/blackmarket_item/syndi/weapon
 	category = "Weapons"
 
-//Commiting out the laser gatting gun as its stujpdly broken
+//Commiting out the laser gatting gun as its stupidly broken
 
 // /datum/blackmarket_item/syndi/weapon/gatling_laser
 	// name = "Laser Gatling Gun"

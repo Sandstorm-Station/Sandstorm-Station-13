@@ -135,6 +135,7 @@
 	w_class = WEIGHT_CLASS_BULKY
 	slot_flags = ITEM_SLOT_BACK
 	automatic_burst_overlay = FALSE
+	spread = 8 //You are shooting a full power catraige from a light automatic rifle, what do you expect?
 
 /obj/item/gun/ballistic/automatic/fal/nomag
 	spawnwithmagazine = FALSE
@@ -149,10 +150,11 @@
 	weapon_weight = WEAPON_MEDIUM
 	mag_type = /obj/item/ammo_box/magazine/smg22 //This magazine may never be used, who knows
 	fire_delay = 3
-	burst_size = 10
+	burst_size = 5
 	w_class = WEIGHT_CLASS_NORMAL
 	slot_flags = ITEM_SLOT_BACK
 	automatic_burst_overlay = FALSE
+	spread = 5 //For balacing
 
 /obj/item/gun/ballistic/automatic/smg22/nomag
 	spawnwithmagazine = FALSE

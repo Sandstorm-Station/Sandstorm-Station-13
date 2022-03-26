@@ -12,6 +12,23 @@
 
 /obj/item/ammo_box/magazine/tommygunm45
 	ammo_type = /obj/item/ammo_casing/c45/lethal
+	icon = 'modular_splurt/icons/obj/ammo.dmi'
+
+/obj/item/ammo_box/magazine/tommygunm45/r30
+	name = "stick magazine (.45)"
+	icon_state = "grease"
+	max_ammo = 30
+
+/obj/item/ammo_box/magazine/tommygunm45/r30/update_icon()
+	..()
+	icon_state = "grease-[ammo_count() ? "30" : "0"]"
+
+/obj/item/ammo_box/magazine/tommygunm45/r30/rubber
+	name = "stick magazine (.45 Rubber)"
+	ammo_type = /obj/item/ammo_casing/c45
+
+/obj/item/ammo_box/magazine/smgm45
+	ammo_type = /obj/item/ammo_casing/c45/lethal
 
 /obj/item/ammo_box/magazine/garand
 	name = "Enbloc clip (.308)"

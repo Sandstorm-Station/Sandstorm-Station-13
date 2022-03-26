@@ -1,4 +1,5 @@
 /obj/item/gun/ballistic/automatic/pistol/m1911
+	icon = 'modular_splurt/icons/obj/guns/projectile.dmi'
 	can_flashlight = 1
 	flight_x_offset = 19
 	flight_y_offset = 15
@@ -100,6 +101,40 @@
 
 /obj/item/gun/ballistic/automatic/pistol/m22pistol/update_icon_state()
 	icon_state = "[initial(icon_state)][chambered ? "" : "-e"]"
+
+
+/obj/item/gun/ballistic/automatic/pistol/deagle
+	name = "\improper Desert Eagle (.50 AE)"
+
+
+/obj/item/gun/ballistic/automatic/pistol/deagle2
+	name = "\improper Desert Eagle (.357)"
+	desc = "A robust .357 Magnum handgun."
+	icon_state = "deagle"
+	force = 14
+	mag_type = /obj/item/ammo_box/magazine/m357
+	can_suppress = FALSE
+	automatic_burst_overlay = FALSE
+	obj_flags = UNIQUE_RENAME
+
+	unique_reskin = list("Default" = "deagle",
+						"Desert Eagle Gold" = "deagleg",
+						"Desert Eagle Camo" = "deaglecamo"
+						)
+
+/obj/item/gun/ballistic/automatic/pistol/deagle2/update_overlays()
+	. = ..()
+	if(magazine)
+		. += "deagle_magazine"
+
+/obj/item/gun/ballistic/automatic/pistol/deagle2/update_icon_state()
+	if(current_skin)
+		icon_state = "[unique_reskin[current_skin]][chambered ? "" : "-e"]"
+	else
+		icon_state = "[initial(icon_state)][chambered ? "" : "-e"]"
+
+/obj/item/gun/ballistic/automatic/pistol/deagle2/nomag
+	spawnwithmagazine = FALSE
 
 //gun parts
 

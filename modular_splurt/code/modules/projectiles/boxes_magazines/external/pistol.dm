@@ -93,6 +93,32 @@
 	icon_state = "pistol22-[ammo_count() ? "12" : "0"]"
 
 
+/obj/item/ammo_box/magazine/m357
+	name = "handgun magazine (.357)"
+	icon_state = "50ae"
+	ammo_type = /obj/item/ammo_casing/a357
+	caliber = ".357"
+	max_ammo = 7
+	multiple_sprites = 1
+
+/obj/item/ammo_box/magazine/m357/ap
+	name = "handgun magazine (.357 AP)"
+	ammo_type = /obj/item/ammo_casing/a357/ap
+
+/obj/item/ammo_box/magazine/m357/match
+	name = "handgun magazine (.357 Match)"
+	ammo_type = /obj/item/ammo_casing/a357/match
+
+/obj/item/ammo_box/magazine/m357/dumdum
+	name = "handgun magazine (.357 DumDum)"
+	ammo_type = /obj/item/ammo_casing/a357/dumdum
+
+/obj/item/ammo_box/magazine/m357/rubber
+	name = "handgun magazine (.357 Rubber)"
+	ammo_type = /obj/item/ammo_casing/a357/rubber
+
+
+
 // Pistol Magazines for the Sec Tecfab, yes its just easier to put it here for my own Sanity - Radar
 
 

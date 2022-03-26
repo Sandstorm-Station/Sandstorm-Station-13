@@ -1,13 +1,19 @@
 /obj/item/ammo_box/g4570
+	icon_state = "4570box"
 	icon = 'modular_splurt/icons/obj/ammo.dmi'
 
 /obj/item/ammo_box/g45l
-	name = "ammo box (.45 Long)"
-	desc = "Brought to you at great expense,this box contains 10 more .45-70 GOVT bullets."
+	name = "ammo box (.45 Long Rubber)"
+	desc = "Brought to you at great expense,this box contains .45 Long Rubber cartridges."
 	ammo_type = /obj/item/ammo_casing/g45l
-	icon_state = "45box"
+	icon_state = "45lbox"
 	icon = 'modular_splurt/icons/obj/ammo.dmi'
-	max_ammo = 10
+	max_ammo = 24
+
+/obj/item/ammo_box/g45l/lethal
+	name = "ammo box (.45 Long Lethal)"
+	desc = "Brought to you at great expense,this box contains .45 Long Lethal cartridges."
+	ammo_type = /obj/item/ammo_casing/g45l/lehtal
 
 /obj/item/ammo_box/c45
 	name = "ammo box (.45 Rubber)"
@@ -201,4 +207,20 @@ obj/item/ammo_box/c45/trac
 	build_type = AUTOLATHE | NO_PUBLIC_LATHE
 	materials = list(/datum/material/iron = 30000)
 	build_path = /obj/item/ammo_box/c9mm/rubber
+	category = list("hacked", "Security")
+
+/datum/design/g45l
+	name = "Ammo Box (.45 Long Rubber)"
+	id = "g45l"
+	build_type = AUTOLATHE | NO_PUBLIC_LATHE
+	materials = list(/datum/material/iron = 30000)
+	build_path = /obj/item/ammo_box/g45l
+	category = list("hacked", "Security")
+
+/datum/design/g45lethal
+	name = "Ammo Box (.45 Long)"
+	id = "g45leath"
+	build_type = AUTOLATHE | NO_PUBLIC_LATHE
+	materials = list(/datum/material/iron = 35000)
+	build_path = /obj/item/ammo_box/g45l/lethal
 	category = list("hacked", "Security")

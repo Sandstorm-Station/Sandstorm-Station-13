@@ -85,6 +85,21 @@
 	can_cut = FALSE
 	mag_type = /obj/item/ammo_box/magazine/internal/shot/levergun/brush2
 
+/obj/item/gun/ballistic/shotgun/hunting
+	name = "cheap hunting shotgun"
+	desc = "A cheap hunting shotgun."
+	icon = 'modular_splurt/icons/obj/guns/projectile.dmi'
+	icon_state = "hunting"
+	item_state = "shotgun"
+	fire_delay = 5
+	mag_type = /obj/item/ammo_box/magazine/internal/shot
+	w_class = WEIGHT_CLASS_BULKY
+	weapon_weight = WEAPON_MEDIUM
+	sawn_desc = "A cheap hunting shotgun that bubba got ahold of."
+
+/obj/item/gun/ballistic/shotgun/leveraction/on_sawoff(mob/user)
+	magazine.max_ammo-- // sawing off drops from 4+1 to 3+1
+
 /obj/item/gunpart/rifle308sotck
 	name = "hunting rifle stock"
 	desc = "a hunting rifle stock"
@@ -128,6 +143,16 @@
 	name = "brush gun assembly"
 	desc = "a brush gun barrel and fire control assembly"
 	icon_state = "brushgunframe"
+
+/obj/item/gunpart/shotgunhutningstock
+	name = "hunting shotgun furniture"
+	desc = "a hunting shotgun stock and foregrip"
+	icon_state = "huntingframe"
+
+/obj/item/gunpart/shotgunhutningbarrel
+	name = "brush gun assembly"
+	desc = "a hunting shotgun barrel and fire control assembly"
+	icon_state = "huntingframe"
 
 /datum/crafting_recipe/riflehuntingassemble
 	name = "Assemble hunting rifle"
@@ -174,6 +199,16 @@
 	result = /obj/item/gun/ballistic/shotgun/leveraction/brush2
 	reqs = list(/obj/item/gunpart/riflebrush2stock = 1,
 				/obj/item/gunpart/riflebrush2barrel = 1)
+	tools = list(TOOL_SCREWDRIVER)
+	time = 50
+	category = CAT_WEAPONRY
+	subcategory = CAT_WEAPON
+
+/datum/crafting_recipe/huntingshotgunassemble
+	name = "Assemble hunting shogun"
+	result = /obj/item/gun/ballistic/shotgun/hunting
+	reqs = list(/obj/item/gunpart/shotgunhutningstock = 1,
+				/obj/item/gunpart/shotgunhutningbarrel = 1)
 	tools = list(TOOL_SCREWDRIVER)
 	time = 50
 	category = CAT_WEAPONRY

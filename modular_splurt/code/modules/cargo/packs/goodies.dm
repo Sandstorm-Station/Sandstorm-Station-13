@@ -59,7 +59,7 @@
 /datum/supply_pack/goody/huntingrifle_single
 	name = "Hunting Rifle Single-Pack"
 	desc = "Contains a parts kit to assemble a hunting rifle."
-	cost = 800
+	cost = 1000
 	contains = list(/obj/item/gunpart/rifle308sotck, /obj/item/gunpart/rifle308barrel, /obj/item/ammo_box/a308, /obj/item/ammo_box/a308, /obj/item/ammo_box/a308)
 
 /datum/supply_pack/goody/sawndbshotgun_single
@@ -82,15 +82,21 @@
 
 /datum/supply_pack/goody/revolver22_single
 	name = ".22 Revolver Single-Pack"
-	desc = "Contains a parts kit to assemble a hunting rifle."
+	desc = "Contains a parts kit to assemble a .22 revolver."
 	cost = 500
 	contains = list(/obj/item/gunpart/revolver22frame, /obj/item/gunpart/revolver22cylinder, /obj/item/ammo_box/c22lr)
 
 /datum/supply_pack/goody/pistol9_single
 	name = "9mm Pistol Single-Pack"
-	desc = "Contains a parts kit to assemble a 9mm Pistol."
+	desc = "Contains a parts kit to assemble a 9mm Pistol. Comes with 9mm Rubber"
 	cost = 900
 	contains = list(/obj/item/gunpart/pistol9frame, /obj/item/gunpart/pistol9slide, /obj/item/ammo_box/magazine/m9/rubber, /obj/item/ammo_box/magazine/m9/rubber)
+
+/datum/supply_pack/goody/pistol357_single
+	name = ".357 Desert Eagle Single-Pack"
+	desc = "Contains a pre-assembledassemble Desert Eagle Pistol chambered in .357. Comes with .357 Rubber"
+	cost = 1200
+	contains = list(/obj/item/gun/ballistic/automatic/pistol/deagle2/nomag, /obj/item/ammo_box/magazine/m357/rubber, /obj/item/ammo_box/magazine/m357/rubber)
 
 /datum/supply_pack/goody/pistol45_single
 	name = ".45 Pistol Single-Pack"
@@ -103,3 +109,21 @@
 	desc = "Contains a parts kit to assemble a civlian energy pistol."
 	cost = 800
 	contains = list(/obj/item/gunpart/civilianlaserframe, /obj/item/gunpart/civilianlaserbarrel)
+
+/datum/supply_pack/goody/brushgun2_signle
+	name = ".45 Brush Gun Single-Pack"
+	desc = "Contains a parts kit to assemble a 45 Long Brush Gun. Comes with a box of .45 Long"
+	cost = 1500
+	contains = list( /obj/item/gunpart/riflebrush2stock, /obj/item/gunpart/riflebrush2barrel, /obj/item/ammo_box/g45l)
+
+/datum/supply_pack/goody/revolver45_single
+	name = ".45 Reolver Single-Pack"
+	desc = "Contains a parts kit to assemble a 45 Revolver Gun. Comes with a box of .45 Long"
+	cost = 800
+	contains = list( /obj/item/gunpart/revolver45cylinder, /obj/item/gunpart/revolver45frame, /obj/item/ammo_box/g45l)
+
+/datum/supply_pack/goody/huntingshotgun_single
+	name = "Hunting Shotgun Single-Pack"
+	desc = "Contains a parts kit to assemble a hutning shotgun."
+	cost = 1700
+	contains = list(/obj/item/gunpart/shotgunhutningstock, /obj/item/gunpart/shotgunhutningbarrel, /obj/item/storage/box/lethalshot)
