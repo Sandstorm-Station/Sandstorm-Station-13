@@ -4472,6 +4472,11 @@
 /obj/structure/cable/yellow{
 	icon_state = "1-4"
 	},
+/obj/machinery/camera{
+	c_tag = "Telecomms - Server Room - Aft-Starboard";
+	dir = 4;
+	network = list("ss13","tcomms")
+	},
 /turf/open/floor/circuit/telecomms/mainframe,
 /area/tcommsat/server)
 "bEF" = (
@@ -32530,6 +32535,11 @@
 /area/ai_monitored/command/nuke_storage)
 "lsN" = (
 /obj/machinery/telecomms/server/presets/supply,
+/obj/machinery/camera{
+	c_tag = "Telecomms - Server Room - Aft-Starboard";
+	dir = 8;
+	network = list("ss13","tcomms")
+	},
 /turf/open/floor/circuit/telecomms/mainframe,
 /area/tcommsat/server)
 "lsP" = (
@@ -43882,6 +43892,7 @@
 /turf/open/floor/plasteel,
 /area/hallway/primary/central)
 "ppH" = (
+/obj/item/clothing/gloves/mittens/kitten,
 /obj/item/clothing/suit/morningstar,
 /obj/structure/table/wood,
 /turf/open/floor/plating,
@@ -44324,6 +44335,7 @@
 	name = "Station Intercom (General)";
 	pixel_x = -31
 	},
+/mob/living/simple_animal/pet/cat/kitten,
 /turf/open/floor/grass,
 /area/medical/psychology/petpark)
 "pxO" = (
@@ -44676,10 +44688,6 @@
 	name = "Station Intercom (General)";
 	pixel_y = 26
 	},
-/obj/machinery/camera/motion{
-	c_tag = "Telecomms Monitoring";
-	network = list("tcomms")
-	},
 /obj/structure/cable{
 	icon_state = "2-8"
 	},
@@ -44688,6 +44696,10 @@
 	},
 /obj/effect/turf_decal/tile/yellow{
 	dir = 4
+	},
+/obj/machinery/camera{
+	c_tag = "Telecomms - Control Room";
+	network = list("ss13","tcomms")
 	},
 /turf/open/floor/plasteel,
 /area/tcommsat/computer)
@@ -46986,6 +46998,11 @@
 /area/hallway/secondary/exit/departure_lounge)
 "quE" = (
 /obj/machinery/telecomms/bus/preset_three,
+/obj/machinery/camera{
+	c_tag = "Telecomms - Server Room - Aft-Starboard";
+	dir = 4;
+	network = list("ss13","tcomms")
+	},
 /turf/open/floor/circuit/telecomms/mainframe,
 /area/tcommsat/server)
 "quI" = (
@@ -48445,6 +48462,11 @@
 /area/maintenance/fore)
 "qWS" = (
 /obj/machinery/telecomms/server/presets/science,
+/obj/machinery/camera{
+	c_tag = "Telecomms - Server Room - Aft-Starboard";
+	dir = 8;
+	network = list("ss13","tcomms")
+	},
 /turf/open/floor/circuit/telecomms/mainframe,
 /area/tcommsat/server)
 "qWU" = (
