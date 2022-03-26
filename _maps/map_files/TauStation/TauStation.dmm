@@ -14,6 +14,13 @@
 /obj/structure/bed/roller,
 /obj/item/bedsheet/medical,
 /obj/machinery/iv_drip,
+/obj/item/radio/intercom{
+	broadcasting = 1;
+	frequency = 1485;
+	listening = 0;
+	name = "Station Intercom (Medbay)";
+	pixel_y = 22
+	},
 /turf/open/floor/plasteel/white,
 /area/medical/storage)
 "abj" = (
@@ -2277,6 +2284,9 @@
 /obj/machinery/vending/medical{
 	pixel_x = -2
 	},
+/obj/structure/sign/warning/nosmoking{
+	pixel_x = -28
+	},
 /turf/open/floor/plasteel/white,
 /area/medical/medbay/central)
 "aQJ" = (
@@ -3022,6 +3032,11 @@
 	pixel_y = 5
 	},
 /obj/machinery/light/small,
+/obj/item/radio/intercom{
+	frequency = 1485;
+	name = "Station Intercom (Medbay)";
+	pixel_y = -30
+	},
 /turf/open/floor/plasteel/white/side{
 	dir = 5
 	},
@@ -8386,6 +8401,11 @@
 	dir = 8
 	},
 /obj/machinery/atmospherics/pipe/simple/supply/hidden,
+/obj/item/radio/intercom{
+	frequency = 1485;
+	name = "Station Intercom (Medbay)";
+	pixel_x = 30
+	},
 /turf/open/floor/plasteel/cafeteria{
 	dir = 1
 	},
@@ -26260,6 +26280,11 @@
 /obj/effect/turf_decal/tile/blue{
 	dir = 4
 	},
+/obj/item/radio/intercom{
+	frequency = 1485;
+	name = "Station Intercom (Medbay)";
+	pixel_x = -30
+	},
 /turf/open/floor/plasteel/dark,
 /area/medical/medbay/central)
 "jfI" = (
@@ -42153,6 +42178,11 @@
 /obj/item/restraints/handcuffs,
 /obj/machinery/light/small{
 	dir = 8
+	},
+/obj/item/radio/intercom{
+	frequency = 1485;
+	name = "Station Intercom (Medbay)";
+	pixel_x = -30
 	},
 /turf/open/floor/plasteel/white,
 /area/medical/virology)
@@ -68233,8 +68263,10 @@
 /obj/machinery/light{
 	dir = 8
 	},
-/obj/structure/sign/warning/nosmoking{
-	pixel_x = -28
+/obj/item/radio/intercom{
+	frequency = 1485;
+	name = "Station Intercom (Medbay)";
+	pixel_x = -30
 	},
 /turf/open/floor/plasteel/white,
 /area/medical/medbay/central)
