@@ -6600,6 +6600,10 @@
 	icon_state = "2-8"
 	},
 /obj/structure/disposalpipe/segment,
+/obj/machinery/newscaster/security_unit{
+	pixel_x = 29;
+	pixel_y = 1
+	},
 /turf/open/floor/plasteel,
 /area/security/brig)
 "csq" = (
@@ -9009,6 +9013,9 @@
 	},
 /obj/effect/turf_decal/tile/neutral{
 	dir = 8
+	},
+/obj/machinery/newscaster{
+	pixel_x = -32
 	},
 /turf/open/floor/plasteel,
 /area/commons/dorms)
@@ -17155,6 +17162,12 @@
 	},
 /turf/open/floor/plating,
 /area/engineering/main)
+"fTU" = (
+/obj/machinery/newscaster{
+	pixel_x = -32
+	},
+/turf/open/floor/plasteel/grimy,
+/area/hallway/primary/port)
 "fUC" = (
 /obj/machinery/atmospherics/pipe/simple/supply/hidden,
 /obj/structure/cable{
@@ -19884,6 +19897,9 @@
 /area/science/robotics/mechbay)
 "gSU" = (
 /obj/structure/chair/sofa/corp/corner,
+/obj/machinery/newscaster{
+	pixel_x = 30
+	},
 /turf/open/floor/plasteel/dark,
 /area/service/bar)
 "gSY" = (
@@ -20178,6 +20194,12 @@
 /obj/machinery/door/firedoor,
 /turf/open/floor/plasteel,
 /area/security/prison)
+"gZt" = (
+/obj/machinery/newscaster/security_unit{
+	pixel_x = -32
+	},
+/turf/open/floor/carpet,
+/area/security/detectives_office)
 "gZC" = (
 /turf/open/floor/plasteel/white/side{
 	dir = 9
@@ -26156,6 +26178,9 @@
 /obj/effect/turf_decal/tile/neutral{
 	dir = 8
 	},
+/obj/machinery/newscaster{
+	pixel_y = -26
+	},
 /turf/open/floor/plasteel,
 /area/commons/fitness/recreation)
 "jdO" = (
@@ -26689,6 +26714,9 @@
 /obj/item/assembly/prox_sensor{
 	pixel_x = -8;
 	pixel_y = 4
+	},
+/obj/machinery/newscaster{
+	pixel_y = -32
 	},
 /turf/open/floor/plasteel,
 /area/commons/storage/primary)
@@ -29335,6 +29363,15 @@
 /obj/structure/closet/secure_closet/medical3,
 /turf/open/floor/plasteel/white,
 /area/medical/storage)
+"kqo" = (
+/obj/structure/chair/office{
+	dir = 8
+	},
+/obj/machinery/newscaster{
+	pixel_y = -26
+	},
+/turf/open/floor/carpet,
+/area/commons/dorms)
 "kqu" = (
 /obj/machinery/atmospherics/pipe/simple/green/visible{
 	dir = 6
@@ -38127,6 +38164,9 @@
 	name = "Glory to Arstotzka";
 	poster_type = /obj/structure/sign/poster/contraband/communist_state
 	},
+/obj/machinery/newscaster/security_unit{
+	pixel_y = 30
+	},
 /turf/open/floor/plasteel,
 /area/security/checkpoint/customs)
 "njn" = (
@@ -43480,6 +43520,9 @@
 /obj/machinery/atmospherics/pipe/simple/scrubbers/hidden{
 	dir = 4
 	},
+/obj/machinery/newscaster/security_unit{
+	pixel_y = 32
+	},
 /turf/open/floor/plasteel,
 /area/security/checkpoint/supply)
 "pjs" = (
@@ -44667,6 +44710,9 @@
 	},
 /obj/machinery/atmospherics/pipe/manifold/supply/hidden{
 	dir = 8
+	},
+/obj/machinery/newscaster{
+	pixel_x = -30
 	},
 /turf/open/floor/plasteel,
 /area/engineering/main)
@@ -46115,6 +46161,9 @@
 /obj/effect/turf_decal/tile/red,
 /obj/effect/turf_decal/tile/red{
 	dir = 1
+	},
+/obj/machinery/newscaster/security_unit{
+	pixel_y = -30
 	},
 /turf/open/floor/plasteel/showroomfloor,
 /area/security/brig)
@@ -50414,6 +50463,9 @@
 /obj/effect/turf_decal/tile/red{
 	dir = 4
 	},
+/obj/machinery/newscaster/security_unit{
+	pixel_y = -30
+	},
 /turf/open/floor/plasteel,
 /area/security/office)
 "rGA" = (
@@ -50611,6 +50663,10 @@
 	},
 /obj/effect/turf_decal/tile/red{
 	dir = 8
+	},
+/obj/machinery/newscaster/security_unit{
+	pixel_x = 29;
+	pixel_y = 1
 	},
 /turf/open/floor/plasteel/showroomfloor,
 /area/security/office)
@@ -55795,6 +55851,9 @@
 /obj/effect/turf_decal/tile/red{
 	dir = 8
 	},
+/obj/machinery/newscaster/security_unit{
+	pixel_y = -30
+	},
 /turf/open/floor/plasteel,
 /area/security/checkpoint/science/research)
 "tCq" = (
@@ -56424,6 +56483,9 @@
 	c_tag = "Brig Control Room";
 	dir = 8
 	},
+/obj/machinery/newscaster/security_unit{
+	pixel_x = 32
+	},
 /turf/open/floor/engine,
 /area/security/brig)
 "tLx" = (
@@ -56775,6 +56837,9 @@
 	pixel_y = 3
 	},
 /obj/item/multitool,
+/obj/machinery/newscaster{
+	pixel_y = 32
+	},
 /turf/open/floor/plasteel,
 /area/cargo/office)
 "tQO" = (
@@ -59513,6 +59578,9 @@
 	dir = 1
 	},
 /obj/machinery/light,
+/obj/machinery/newscaster{
+	pixel_y = -32
+	},
 /turf/open/floor/plasteel/showroomfloor,
 /area/service/chapel/main)
 "uOf" = (
@@ -63636,6 +63704,9 @@
 	dir = 4
 	},
 /obj/effect/turf_decal/tile/purple,
+/obj/machinery/newscaster{
+	pixel_x = -30
+	},
 /turf/open/floor/plasteel/white,
 /area/science/lab)
 "wim" = (
@@ -94184,7 +94255,7 @@ fza
 fza
 tLo
 tYn
-ykv
+fTU
 ykv
 pvM
 sKE
@@ -99824,7 +99895,7 @@ nFu
 ofR
 ozN
 oOm
-plD
+gZt
 hLP
 vkG
 qgm
@@ -120611,7 +120682,7 @@ pHJ
 pHJ
 dpz
 vUO
-dOF
+kqo
 xkZ
 qsJ
 qsJ
