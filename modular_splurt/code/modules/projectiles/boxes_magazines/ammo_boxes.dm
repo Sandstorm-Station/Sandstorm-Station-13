@@ -224,3 +224,11 @@ obj/item/ammo_box/c45/trac
 	materials = list(/datum/material/iron = 35000)
 	build_path = /obj/item/ammo_box/g45l/lethal
 	category = list("hacked", "Security")
+
+/datum/design/a308
+	name = "Ammo Box (.308)"
+	id = "a308"
+	build_type = AUTOLATHE | NO_PUBLIC_LATHE
+	materials = list(/datum/material/iron = 35000)
+	build_path = /obj/item/ammo_box/a308
+	category = list("hacked", "Security")
