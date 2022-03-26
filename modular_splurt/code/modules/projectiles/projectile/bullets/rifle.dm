@@ -60,7 +60,7 @@
 	damage = 5
 	armour_penetration = 0
 	wound_bonus = 0
-	stamina = 25
+	stamina = 35
 	sharpness = SHARP_NONE
 	embedding = null
 
