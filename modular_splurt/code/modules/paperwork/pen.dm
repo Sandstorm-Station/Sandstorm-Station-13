@@ -4,7 +4,7 @@
 
 	if(!force)
 		if(M.can_inject(user, 1))
-			if(user.a_intent == "harm") //old poke requires harm intent.
+			if(user.a_intent == INTENT_HARM) //old poke requires harm intent.
 				return ..()
 
 			else //writing time
