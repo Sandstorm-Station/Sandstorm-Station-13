@@ -164,7 +164,7 @@
 	if(LAZYLEN(internal_organs) && (user.client?.prefs.cit_toggles & GENITAL_EXAMINE))
 		for(var/obj/item/organ/genital/dicc in internal_organs)
 			if(istype(dicc) && dicc.is_exposed())
-				. += "[dicc.desc]"
+				. += "[dicc.desc][length(dicc.writtentext) ? " The phrase \"[html_encode(dicc.writtentext)]\" is written on it" : ""]"
 	if(user.client?.prefs.cit_toggles & VORE_EXAMINE)
 		var/cursed_stuff = attempt_vr(src,"examine_bellies",args) //vore Code
 		if(cursed_stuff)
@@ -207,10 +207,13 @@
 
 	var/list/missing = list(BODY_ZONE_HEAD, BODY_ZONE_CHEST, BODY_ZONE_L_ARM, BODY_ZONE_R_ARM, BODY_ZONE_L_LEG, BODY_ZONE_R_LEG)
 	var/list/disabled = list()
+	var/list/writing = list()
 	for(var/X in bodyparts)
 		var/obj/item/bodypart/BP = X
 		if(BP.disabled)
 			disabled += BP
+		if(BP.writtentext)
+			writing += BP
 		missing -= BP.body_zone
 		for(var/obj/item/I in BP.embedded_objects)
 			if(I.isEmbedHarmless())
@@ -381,6 +384,11 @@
 			msg += "[t_He] has wild, spacey eyes and they have a strange, abnormal look to them.\n"
 		else
 			msg += "[t_He] has wild, spacey eyes and they don't look like they're all there.\n"
+
+	for(var/X in writing)
+		if(!w_uniform)
+			var/obj/item/bodypart/BP = X
+			msg += "<span class='notice'>[capitalize(t_He)] has \"[html_encode(BP.writtentext)]\" written on [t_his] [BP.name].</span>\n"
 
 	if(isliving(user))
 		var/mob/living/L = user
