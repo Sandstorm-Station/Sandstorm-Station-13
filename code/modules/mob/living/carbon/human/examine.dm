@@ -164,7 +164,7 @@
 	if(LAZYLEN(internal_organs) && (user.client?.prefs.cit_toggles & GENITAL_EXAMINE))
 		for(var/obj/item/organ/genital/dicc in internal_organs)
 			if(istype(dicc) && dicc.is_exposed())
-				. += "[dicc.desc][length(dicc.writtentext) ? " The phrase \"[html_encode(dicc.writtentext)]\" is written on it" : ""]"
+				. += "[dicc.desc]"
 	if(user.client?.prefs.cit_toggles & VORE_EXAMINE)
 		var/cursed_stuff = attempt_vr(src,"examine_bellies",args) //vore Code
 		if(cursed_stuff)
@@ -389,6 +389,9 @@
 		if(!w_uniform)
 			var/obj/item/bodypart/BP = X
 			msg += "<span class='notice'>[capitalize(t_He)] has \"[html_encode(BP.writtentext)]\" written on [t_his] [BP.name].</span>\n"
+	for(var/obj/item/organ/genital/G in internal_organs)
+		if(length(G.writtentext) && istype(G) && G.is_exposed())
+			msg += "<span class='notice'>[capitalize(t_He)] has \"[html_encode(G.writtentext)]\" written on [t_his] [G.name].</span>\n"
 
 	if(isliving(user))
 		var/mob/living/L = user
