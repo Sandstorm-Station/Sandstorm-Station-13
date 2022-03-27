@@ -15,7 +15,7 @@
 					to_chat(user, "<span class='warning'>You cannot write on someone with their clothes on.</span>")
 					return
 
-				var/obj/item/G = T.pick_receiving_organ(T, NONE, "Pick a genital to write on", "Cancel to write on the targeted body part")
+				var/obj/item/G = user:pick_receiving_organ(T, NONE, "Pick a genital to write on", "Cancel to write on the targeted body part")
 
 				var/obj/item/BP = (G ? G : T.get_bodypart(user.zone_selected))
 
