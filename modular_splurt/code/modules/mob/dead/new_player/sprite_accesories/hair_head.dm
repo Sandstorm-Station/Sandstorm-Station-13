@@ -25,3 +25,7 @@
 /datum/sprite_accessory/hair/eros/aviancrest
 	name = "Avian Crest"
 	icon_state = "hair_aviancrest"
+
+/datum/sprite_accessory/hair/eros/glamour
+	name = "Glamour"
+	icon_state = "hair_glamourh"
