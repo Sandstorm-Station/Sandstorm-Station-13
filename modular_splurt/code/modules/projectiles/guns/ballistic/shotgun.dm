@@ -97,7 +97,7 @@
 	weapon_weight = WEAPON_MEDIUM
 	sawn_desc = "A cheap hunting shotgun that bubba got ahold of."
 
-/obj/item/gun/ballistic/shotgun/leveraction/on_sawoff(mob/user)
+/obj/item/gun/ballistic/shotgun/hunting/on_sawoff(mob/user)
 	magazine.max_ammo-- // sawing off drops from 4+1 to 3+1
 
 /obj/item/gunpart/rifle308sotck
