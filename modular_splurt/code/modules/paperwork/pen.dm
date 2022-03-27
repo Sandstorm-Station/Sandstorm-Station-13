@@ -9,7 +9,7 @@
 
 			else //writing time
 				var/mob/living/carbon/human/T = M
-				if(!T) //not human.
+				if(!iscarbon(T)) //not carbon.
 					return
 				if(!T.is_chest_exposed())
 					to_chat(user, "<span class='warning'>You cannot write on someone with their clothes on.</span>")
