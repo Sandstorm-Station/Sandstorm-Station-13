@@ -142,7 +142,7 @@
 	price_max = 50000
 	stock_min = 1
 	stock_max = 5
-	availability_prob = 60
+	availability_prob = 30
 
 /datum/blackmarket_item/syndi/weapon/deaglemags
 	name = "Desert Eagle Magazine (50AE)"
@@ -152,7 +152,7 @@
 	price_max = 40000
 	stock_min = 2
 	stock_max = 10
-	availability_prob = 65
+	availability_prob = 30
 
 /datum/blackmarket_item/syndi/weapon/aps
 	name = "Stechkin APS pistol"
@@ -182,7 +182,7 @@
 	price_max = 40000
 	stock_min = 2
 	stock_max = 10
-	availability_prob = 60
+	availability_prob = 40
 
 /datum/blackmarket_item/syndi/weapon/deagle2mags
 	name = "Desert Eagle Magazine (.357)"
@@ -192,7 +192,7 @@
 	price_max = 35000
 	stock_min = 2
 	stock_max = 10
-	availability_prob = 60
+	availability_prob = 40
 
 //Revolvers
 
@@ -204,9 +204,9 @@
 	price_max = 40000
 	stock_min = 2
 	stock_max = 10
-	availability_prob = 70
+	availability_prob = 35
 
-/datum/blackmarket_item/syndi/weapon/golden
+/datum/blackmarket_item/weapon/golden
 	name = "Golden revolver"
 	desc = "This ain't no game, ain't never been no show, And I'll gladly gun down the oldest lady you know. Uses .357 ammo."
 	item = /obj/item/gun/ballistic/revolver/golden
@@ -218,7 +218,7 @@
 
 //SMGs
 
-/datum/blackmarket_item/weapon/c20r
+/datum/blackmarket_item/syndi/weapon/c20r
 	name = "Scarborough Arms C-20r SMG"
 	desc = "A bullpup two-round burst .45 SMG"
 	item = /obj/item/gun/ballistic/automatic/c20r/unrestricted
@@ -228,7 +228,7 @@
 	stock_max = 4
 	availability_prob = 60
 
-/datum/blackmarket_item/weapon/c20rmag
+/datum/blackmarket_item/syndi/weapon/c20rmag
 	name = "C-20r magazines"
 	desc = "Magazines for the C-20r"
 	item = /obj/item/ammo_box/magazine/smgm45
@@ -238,7 +238,7 @@
 	stock_max = 4
 	availability_prob = 60
 
-/datum/blackmarket_item/weapon/tommygun
+/datum/blackmarket_item/syndi/weapon/tommygun
 	name = "Tommy gun"
 	desc = "A a clone of the classic Auto Ordnance Thompson SMG"
 	item = /obj/item/gun/ballistic/automatic/tommygun
@@ -248,7 +248,7 @@
 	stock_max = 6
 	availability_prob = 55
 
-/datum/blackmarket_item/weapon/tommygunmag
+/datum/blackmarket_item/syndi/weapon/tommygunmag
 	name = "Tommy gun drum magazine"
 	desc = "Drum magazines for the Tommy gun"
 	item = /obj/item/ammo_box/magazine/tommygunm45
@@ -258,7 +258,7 @@
 	stock_max = 6
 	availability_prob = 55
 
-/datum/blackmarket_item/weapon/tommygunmag30
+/datum/blackmarket_item/syndi/weapon/tommygunmag30
 	name = "Tommy gun stick magazine"
 	desc = "Stick magazines for the Tommy gun"
 	item = /obj/item/ammo_box/magazine/tommygunm45/r30
@@ -268,7 +268,7 @@
 	stock_max = 6
 	availability_prob = 55
 
-/datum/blackmarket_item/weapon/smg22
+/datum/blackmarket_item/syndi/weapon/smg22
 	name = "Old FTU SMG"
 	desc = "The left arm of the FTU"
 	item = /obj/item/gun/ballistic/automatic/smg22
@@ -278,7 +278,7 @@
 	stock_max = 2
 	availability_prob = 60
 
-/datum/blackmarket_item/weapon/smg22mag
+/datum/blackmarket_item/syndi/weapon/smg22mag
 	name = "Old FTU SMG drum magazine"
 	desc = "Magazines for the FTU SMG"
 	item = /obj/item/ammo_box/magazine/smg22
@@ -290,7 +290,7 @@
 
 //rifles
 
-/datum/blackmarket_item/weapon/garand
+/datum/blackmarket_item/syndi/weapon/garand
 	name = "Old Mars Service Rifle"
 	desc = "A Mars copy of the greatest battle implement ever devised"
 	item = /obj/item/gun/ballistic/automatic/m1garand
@@ -300,7 +300,7 @@
 	stock_max = 5
 	availability_prob = 55
 
-/datum/blackmarket_item/weapon/garandmag
+/datum/blackmarket_item/syndi/weapon/garandmag
 	name = "Old Mars Enbloc clip"
 	desc = "Enbloc clip for the Mars Service rifle"
 	item = /obj/item/ammo_box/magazine/garand
@@ -363,7 +363,7 @@
 	availability_prob = 35
 
 
-/datum/blackmarket_item/weapon/bulldog
+/datum/blackmarket_item/syndi/weapon/bulldog
 	name = "bulldog shotgun"
 	desc = "A semi-auto, mag-fed shotgun for combat in narrow corridors, nicknamed 'Bulldog' by boarding parties. Compatible only with specialized 8-round drum magazines."
 	item = /obj/item/gun/ballistic/automatic/shotgun/bulldog/unrestricted
@@ -373,7 +373,7 @@
 	stock_max = 3
 	availability_prob = 40
 
-/datum/blackmarket_item/weapon/bulldogmag
+/datum/blackmarket_item/syndi/weapon/bulldogmag
 	name = "bulldog shotgun drum mags"
 	desc = "A 8 round drum magazine for the Bulldog shotgun."
 	item = /obj/item/ammo_box/magazine/m12g
@@ -385,7 +385,7 @@
 
 //Heavy weapons
 
-/datum/blackmarket_item/weapon/l6saw
+/datum/blackmarket_item/syndi/weapon/l6saw
 	name = "L6 SAW"
 	desc = "A heavily modified 1.95x129mm light machine gun, designated 'L6 SAW'. Has 'Aussec Armoury - 2531' engraved on the receiver below the designation."
 	item = /obj/item/gun/ballistic/automatic/l6_saw/unrestricted
@@ -393,9 +393,9 @@
 	price_max = 1300000
 	stock_min = 1
 	stock_max = 3
-	availability_prob = 40
+	availability_prob = 30
 
-/datum/blackmarket_item/weapon/l6sawmag
+/datum/blackmarket_item/syndi/weapon/l6sawmag
 	name = "L6 belts"
 	desc = "A 50 round belt of 1.95x129mm for the L6 SAW"
 	item = /obj/item/ammo_box/magazine/mm195x129
@@ -403,9 +403,9 @@
 	price_max = 950000
 	stock_min = 1
 	stock_max = 3
-	availability_prob = 40
+	availability_prob = 30
 
-/datum/blackmarket_item/weapon/pml9
+/datum/blackmarket_item/syndi/weapon/pml9
 	name = "PML-9"
 	desc = "A reusable rocket propelled grenade launcher. The words \"NT this way\" and an arrow have been written near the barrel."
 	item = /obj/item/gun/ballistic/rocketlauncher/unrestricted
@@ -415,7 +415,7 @@
 	stock_max = 3
 	availability_prob = 10
 
-/datum/blackmarket_item/weapon/pml9rocket
+/datum/blackmarket_item/syndi/weapon/pml9rocket
 	name = "PM-9HE 84mm rocket"
 	desc = "An 84mm High Explosive rocket. Fire at people and pray."
 	item = /obj/item/ammo_casing/caseless/rocket
