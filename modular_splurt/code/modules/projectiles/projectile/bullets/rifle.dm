@@ -7,7 +7,7 @@
 
 /obj/item/projectile/bullet/a308
 	name = ".308 bullet"
-	damage = 35
+	damage = 45
 	wound_bonus = -15
 	wound_falloff_tile = 0
 
