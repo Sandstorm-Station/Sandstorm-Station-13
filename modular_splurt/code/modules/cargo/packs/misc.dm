@@ -142,23 +142,6 @@
 	crate_name = "Civilian Energy Pistols"
 	crate_type = /obj/structure/closet/crate/secure/weapon
 
-/datum/supply_pack/misc/m357pistols
-	name = ".357 Desert Eagles"
-	desc = "A pack of Desert Eagles chambered in .357 with 6 spare magazines."
-	access = ACCESS_QM
-	cost = 3500
-	contains = list(/obj/item/gun/ballistic/automatic/pistol/deagle2/nomag,
-					/obj/item/gun/ballistic/automatic/pistol/deagle2/nomag,
-					/obj/item/gun/ballistic/automatic/pistol/deagle2/nomag,
-					/obj/item/ammo_box/magazine/m357/rubber,
-					/obj/item/ammo_box/magazine/m357/rubber,
-					/obj/item/ammo_box/magazine/m357/rubber,
-					/obj/item/ammo_box/magazine/m357/rubber,
-					/obj/item/ammo_box/magazine/m357/rubber,
-					/obj/item/ammo_box/magazine/m357/rubber)
-	crate_name = ".357 Desert Eagles"
-	crate_type = /obj/structure/closet/crate/secure/weapon
-
 /datum/supply_pack/misc/huntingshotgun
 	name = "Hunting shotguns"
 	desc = "A pack 3 hutning shotguns with slugs and buckshot"

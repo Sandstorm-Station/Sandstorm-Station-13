@@ -92,12 +92,6 @@
 	cost = 900
 	contains = list(/obj/item/gunpart/pistol9frame, /obj/item/gunpart/pistol9slide, /obj/item/ammo_box/magazine/m9/rubber, /obj/item/ammo_box/magazine/m9/rubber)
 
-/datum/supply_pack/goody/pistol357_single
-	name = ".357 Desert Eagle Single-Pack"
-	desc = "Contains a pre-assembledassemble Desert Eagle Pistol chambered in .357. Comes with .357 Rubber"
-	cost = 1200
-	contains = list(/obj/item/gun/ballistic/automatic/pistol/deagle2/nomag, /obj/item/ammo_box/magazine/m357/rubber, /obj/item/ammo_box/magazine/m357/rubber)
-
 /datum/supply_pack/goody/pistol45_single
 	name = ".45 Pistol Single-Pack"
 	desc = "Contains a pre-assembled .45 caliber M1911. Comes with .45 Rubber."

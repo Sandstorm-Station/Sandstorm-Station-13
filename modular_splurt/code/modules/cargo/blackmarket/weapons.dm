@@ -135,7 +135,7 @@
 	availability_prob = 95
 
 /datum/blackmarket_item/syndi/weapon/deagle
-	name = "Desert Eagle"
+	name = "Desert Eagle (.50AE)"
 	desc = "A robust 50 AE pistol."
 	item = /obj/item/gun/ballistic/automatic/pistol/deagle
 	price_min = 30000
@@ -145,8 +145,8 @@
 	availability_prob = 60
 
 /datum/blackmarket_item/syndi/weapon/deaglemags
-	name = "Desert Eagle Magazine"
-	desc = "A magazine for Desert Eagles"
+	name = "Desert Eagle Magazine (50AE)"
+	desc = "A magazine for Desert Eagles (50AE)"
 	item = /obj/item/ammo_box/magazine/m50
 	price_min = 25000
 	price_max = 40000
@@ -173,6 +173,26 @@
 	stock_min = 2
 	stock_max = 10
 	availability_prob = 80
+
+/datum/blackmarket_item/syndi/weapon/deagle2
+	name = "Desert Eagle (.357)"
+	desc = "A robust .357 pistol."
+	item = /obj/item/gun/ballistic/automatic/pistol/deagle2
+	price_min = 30000
+	price_max = 40000
+	stock_min = 2
+	stock_max = 10
+	availability_prob = 60
+
+/datum/blackmarket_item/syndi/weapon/deagle2mags
+	name = "Desert Eagle Magazine (.357)"
+	desc = "A magazine for Desert Eagles (357)"
+	item = /obj/item/ammo_box/magazine/m357
+	price_min = 25000
+	price_max = 35000
+	stock_min = 2
+	stock_max = 10
+	availability_prob = 60
 
 //Revolvers
 
