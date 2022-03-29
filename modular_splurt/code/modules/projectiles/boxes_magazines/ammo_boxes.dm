@@ -193,6 +193,14 @@ obj/item/ammo_box/c45/trac
 /datum/design/c45
 	name = "Ammo Box (.45 Rubber)"
 
+/datum/design/c45lethal
+	name = "Ammo Box (.45 Lehtal)"
+	id = "c45lehtal"
+	build_type = AUTOLATHE | NO_PUBLIC_LATHE
+	materials = list(/datum/material/iron = 30000)
+	build_path = /obj/item/ammo_box/c45/lethal
+	category = list("hacked", "Security")
+
 /datum/design/c22
 	name = "Ammo Box (.22)"
 	id = "c22"
