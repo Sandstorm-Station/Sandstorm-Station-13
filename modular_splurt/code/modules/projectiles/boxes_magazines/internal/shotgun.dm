@@ -20,5 +20,5 @@
 /obj/item/ammo_box/magazine/internal/shot/levergun/brush2
 	name = "brush gun internal magazine"
 	ammo_type = /obj/item/ammo_casing/g45l
-	caliber = ".45 Long"
+	caliber = ".45l"
 	max_ammo = 6
