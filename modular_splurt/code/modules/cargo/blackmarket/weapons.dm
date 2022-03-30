@@ -1,3 +1,9 @@
+/datum/blackmarket_item/syndi/weapon/gatling_laser
+	price_min = 0
+	price_max = 0
+	stock_min = 0
+	stock_max = 0
+	availability_prob = 0 // Zeroing this out so it can't be used at all
 //Standard
 
 /datum/blackmarket_item/weapon/luger

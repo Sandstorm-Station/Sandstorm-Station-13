@@ -1,3 +1,7 @@
+/datum/blackmarket_item/syndi/clothing/ds_hardsuit
+	price = 0
+	stock = 0
+	availability_prob = 0	//Zeroing this out so it can't be used at all
 //normal
 
 /datum/blackmarket_item/clothing/stalker
