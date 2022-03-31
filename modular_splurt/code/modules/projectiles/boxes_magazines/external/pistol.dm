@@ -1,11 +1,12 @@
 // Pistol Magazines
 
 /obj/item/ammo_box/magazine/m45
-	name = "M1911 magazine"
+	name = "M1911 magazine (.45 Lethal)"
 	desc = "A M1911 magazine."
 	ammo_type = /obj/item/ammo_casing/c45/lethal
 
 /obj/item/ammo_box/magazine/m45/rubber
+	name = "M1911 magazine (.45 Rubber)"
 	ammo_type = /obj/item/ammo_casing/c45
 
 /obj/item/ammo_box/magazine/e45
@@ -19,7 +20,7 @@
 
 /obj/item/ammo_box/magazine/e45/update_icon()
 	..()
-	icon_state = "enforcer-[ammo_count() ? "8" : "0"]"
+	icon_state = "enforcer-[round(ammo_count())]"
 
 /obj/item/ammo_box/magazine/e45/lethal
 	name = "Enforcer magazine (.45 Lethal)"
@@ -62,7 +63,7 @@
 	ammo_type = /obj/item/ammo_casing/c45/stun
 
 /obj/item/ammo_box/magazine/m9
-	name = "Cheap handgun magazine (9mm)"
+	name = "Cheap handgun magazine (9mm Lethal)"
 	icon = 'modular_splurt/icons/obj/ammo.dmi'
 	icon_state = "m9mmds"
 	ammo_type = /obj/item/ammo_casing/c9mm
@@ -73,6 +74,10 @@
 /obj/item/ammo_box/magazine/m9/update_icon()
 	..()
 	icon_state = "m9mmds-[ammo_count() ? "10" : "0"]"
+
+/obj/item/ammo_box/magazine/m9/rubber
+	name = "Cheap handgun magazine (9mm Rubber)"
+	ammo_type = /obj/item/ammo_casing/c9mm/rubber
 
 /obj/item/ammo_box/magazine/m22
 	name = "Cheap handgun magazine (.22LR)"
@@ -86,6 +91,32 @@
 /obj/item/ammo_box/magazine/m22/update_icon()
 	..()
 	icon_state = "pistol22-[ammo_count() ? "12" : "0"]"
+
+
+/obj/item/ammo_box/magazine/m357
+	name = "handgun magazine (.357)"
+	icon_state = "50ae"
+	ammo_type = /obj/item/ammo_casing/a357
+	caliber = "357"
+	max_ammo = 7
+	multiple_sprites = 1
+
+/obj/item/ammo_box/magazine/m357/ap
+	name = "handgun magazine (.357 AP)"
+	ammo_type = /obj/item/ammo_casing/a357/ap
+
+/obj/item/ammo_box/magazine/m357/match
+	name = "handgun magazine (.357 Match)"
+	ammo_type = /obj/item/ammo_casing/a357/match
+
+/obj/item/ammo_box/magazine/m357/dumdum
+	name = "handgun magazine (.357 DumDum)"
+	ammo_type = /obj/item/ammo_casing/a357/dumdum
+
+/obj/item/ammo_box/magazine/m357/rubber
+	name = "handgun magazine (.357 Rubber)"
+	ammo_type = /obj/item/ammo_casing/a357/rubber
+
 
 
 // Pistol Magazines for the Sec Tecfab, yes its just easier to put it here for my own Sanity - Radar

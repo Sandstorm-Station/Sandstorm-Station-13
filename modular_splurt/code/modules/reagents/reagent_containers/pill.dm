@@ -1,3 +1,13 @@
+//Main code edits
+/obj/item/reagent_containers/pill/breast_enlargement
+	icon = 'modular_splurt/icons/obj/chemical.dmi'
+	icon_state = "pill_lewd"
+
+/obj/item/reagent_containers/pill/butt_enlargement
+	icon = 'modular_splurt/icons/obj/chemical.dmi'
+	icon_state = "pill_lewd"
+
+//Own stuff
 /obj/item/reagent_containers/pill/lsdpsych
 	name = "antipsychotic pill"
 	desc = "Talk to your healthcare provider immediately if hallucinations worsen or new hallucinations emerge."

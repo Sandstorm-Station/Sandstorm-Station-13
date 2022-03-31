@@ -1,5 +1,19 @@
 /obj/item/ammo_box/g4570
+	icon_state = "4570box"
 	icon = 'modular_splurt/icons/obj/ammo.dmi'
+
+/obj/item/ammo_box/g45l
+	name = "ammo box (.45 Long Rubber)"
+	desc = "Brought to you at great expense,this box contains .45 Long Rubber cartridges."
+	ammo_type = /obj/item/ammo_casing/g45l
+	icon_state = "45lbox"
+	icon = 'modular_splurt/icons/obj/ammo.dmi'
+	max_ammo = 24
+
+/obj/item/ammo_box/g45l/lethal
+	name = "ammo box (.45 Long Lethal)"
+	desc = "Brought to you at great expense,this box contains .45 Long Lethal cartridges."
+	ammo_type = /obj/item/ammo_casing/g45l/lehtal
 
 /obj/item/ammo_box/c45
 	name = "ammo box (.45 Rubber)"
@@ -50,6 +64,25 @@ obj/item/ammo_box/c45/trac
 	icon = 'modular_splurt/icons/obj/ammo.dmi'
 	ammo_type = /obj/item/ammo_casing/c22lr
 	max_ammo = 24
+
+/obj/item/ammo_box/c9mm/rubber
+	name = "ammo box (9mm Rubber)"
+	ammo_type = /obj/item/ammo_casing/c9mm/rubber
+
+/obj/item/ammo_box/a308
+	name = "stripper clip (.308)"
+	desc = "A stripper clip."
+	icon_state = "762"
+	ammo_type = /obj/item/ammo_casing/a308
+	max_ammo = 5
+	multiple_sprites = 1
+
+/obj/item/ammo_box/c308
+	name = "ammo box (.308)"
+	icon_state = "308box"
+	icon = 'modular_splurt/icons/obj/ammo.dmi'
+	ammo_type = /obj/item/ammo_casing/a308
+	max_ammo = 30
 
 /datum/design/c45/c45r
 	name = "Box of ammo (.45 Rubber)"
@@ -157,4 +190,53 @@ obj/item/ammo_box/c45/trac
 	design_ids = list("e45_ion", "e45_stun", "e45_laser","e45_hot", "c45hot","c45las", "c45ion","c45stun")
 	research_costs = list(TECHWEB_POINT_TYPE_GENERIC = 4500)
 
+/datum/design/c45
+	name = "Ammo Box (.45 Rubber)"
 
+/datum/design/c45lethal
+	name = "Ammo Box (.45 Lehtal)"
+	id = "c45lehtal"
+	build_type = AUTOLATHE | NO_PUBLIC_LATHE
+	materials = list(/datum/material/iron = 30000)
+	build_path = /obj/item/ammo_box/c45/lethal
+	category = list("hacked", "Security")
+
+/datum/design/c22
+	name = "Ammo Box (.22)"
+	id = "c22"
+	build_type = AUTOLATHE | NO_PUBLIC_LATHE
+	materials = list(/datum/material/iron = 20000)
+	build_path = /obj/item/ammo_box/c22lr
+	category = list("hacked", "Security")
+
+/datum/design/c9mmr
+	name = "Ammo Box (9mm Rubber)"
+	id = "c9mmr"
+	build_type = AUTOLATHE | NO_PUBLIC_LATHE
+	materials = list(/datum/material/iron = 30000)
+	build_path = /obj/item/ammo_box/c9mm/rubber
+	category = list("hacked", "Security")
+
+/datum/design/g45l
+	name = "Ammo Box (.45 Long Rubber)"
+	id = "g45l"
+	build_type = AUTOLATHE | NO_PUBLIC_LATHE
+	materials = list(/datum/material/iron = 30000)
+	build_path = /obj/item/ammo_box/g45l
+	category = list("hacked", "Security")
+
+/datum/design/g45lethal
+	name = "Ammo Box (.45 Long)"
+	id = "g45leath"
+	build_type = AUTOLATHE | NO_PUBLIC_LATHE
+	materials = list(/datum/material/iron = 35000)
+	build_path = /obj/item/ammo_box/g45l/lethal
+	category = list("hacked", "Security")
+
+/datum/design/a308
+	name = "Ammo Box (.308)"
+	id = "a308"
+	build_type = AUTOLATHE | NO_PUBLIC_LATHE
+	materials = list(/datum/material/iron = 35000)
+	build_path = /obj/item/ammo_box/a308
+	category = list("hacked", "Security")

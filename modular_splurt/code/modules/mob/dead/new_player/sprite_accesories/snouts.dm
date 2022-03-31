@@ -156,3 +156,15 @@
 	icon = 'modular_splurt/icons/mob/mam_snouts.dmi'
 	matrixed_sections = MATRIX_RED
 	recommended_species = list("insect")
+
+/datum/sprite_accessory/snouts/mam_snouts/vulp
+	name = "Vulp"
+	icon = 'modular_splurt/icons/mob/mam_snouts.dmi'
+	icon_state = "vulp"
+	matrixed_sections = MATRIX_RED
+
+/datum/sprite_accessory/snouts/mam_snouts/vulp_alt
+	name = "Vulp Alt"
+	icon = 'modular_splurt/icons/mob/mam_snouts.dmi'
+	icon_state = "vulp2"
+	matrixed_sections = MATRIX_RED_GREEN

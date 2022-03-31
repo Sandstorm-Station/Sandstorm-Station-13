@@ -128,11 +128,11 @@ GLOBAL_VAR_INIT(miscreants_allowed, FALSE)
 		return TRUE
 	return FALSE
 
-
 /mob/living/carbon/proc/has_butt()
 	if(getorganslot(ORGAN_SLOT_BUTT))
 		return TRUE
-	return FALSE*/
+	return FALSE
+*/
 
 /mob/living/carbon/proc/is_groin_exposed(list/L)
 	if(!L)

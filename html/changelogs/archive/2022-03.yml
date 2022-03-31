@@ -144,3 +144,71 @@
 2022-03-23:
   SandPoot:
   - bugfix: Fixes any sort of crate related syndicate item fetching.
+2022-03-24:
+  BongaTheProto:
+  - bugfix: fixes the Compile Changelogs workflow once and for all
+  - tweak: Now you need to have your discord linked to use ooc and looc too
+  - code_imp: removed the manual run option thing
+2022-03-25:
+  lolc4n:
+  - imageadd: better combat indicator
+2022-03-26:
+  kiwilover8:
+  - rscadd: Adds Taustation and the associated files
+  - tweak: Edits the maps config to enable Taustation to be chosen
+  - tweak: adds the therapy offices to all in-rotation maps.
+2022-03-27:
+  BongaTheProto:
+  - rscadd: Some new sprite accessories
+  - rscadd: Now you can use a pen to write on people's bodies. Yes, including genitals.
+      Use on harm intent to do the original funny pen picking
+  - bugfix: fixes the `get_fluid_name()` proc
+  radar651:
+  - rscadd: 3 Enforcers to all armories
+  - rscadd: Added missing weapons to armories
+  - rscadd: Added missing weapon permits from Kilo
+  - tweak: Delta, Meta, Pubby and Kilo had their armories slightly increased in sized
+      by one row.
+  - tweak: Moved weapon permits from the Bridge to the Warden's office
+  - balance: Moved all Security Techfabs to the armory by default to ATTEMPT to balance
+      Security so they are not walking around with lethal weapons and X-rays on green.
+  - bugfix: HOS now has Brig Doc access
+2022-03-31:
+  kiwilover8:
+  - rscadd: Added new space ruin to station
+  - tweak: Adjusted access on chemistry maintenance door
+  - tweak: moved things around for brig physician shower
+  radar651:
+  - rscadd: Added Connect Players section to the stat panel
+  - rscadd: Added OOC status to the stat panel
+  - rscadd: Actual round time, a back up timer to the main round timer in-case it
+      de-synchronizes and gives a more accurate time, to the stat panel
+  - rscadd: Sever time and date to the stat panel
+  - code_imp: added real_round_start_time to the ticker subsystem
+  - rscadd: Add .308 as a caliber with Rubber and Soporific
+  - rscadd: Particle Blasters to the armory buy screen, none unique variant of the
+      patricidal defender that is non-lethal
+  - rscadd: 9mm Rubber
+  - rscadd: Old Mars Service Rifle
+  - rscadd: Old FTU Rifle
+  - rscadd: Old FTU SMG
+  - rscadd: Added the Old Mars Service rifle, FTU rifle and FTU SMG to Slavers
+  - rscadd: Hunting shotguns
+  - rscadd: New sprites for the Tommy gun
+  - rscadd: New sprites for the brush gun
+  - rscadd: New sprites for the .45-70 GOVT box
+  - rscadd: New sprites for the M1911, kitchen gun and M1911-P still use the old ones
+      at the moment
+  - rscadd: A lot of stuff to the black market, not everything I wanted to add even
+      but a lot.
+  - rscdel: Removed the Gatling Laser and Deathsquad armor from the Black Market
+  - tweak: spawn rate for some things in the black market to no longer be 100 percent
+  - tweak: 9mm handguns now come with 9mm rubber instead of 9mm lethal
+  - tweak: The cost of some of the goodie weapons
+  - balance: re chambered the hunting rifle from 7.62 to .308 so it no longer two
+      shots a person
+  - bugfix: M1911 magazines not updating properly
+  - bugfix: Enforcer mags not updating properly
+  - bugfix: Several goodie orders not spawning with spare mags properly
+  - bugfix: auto lathes now show what type of .45 ammo is going to be printed
+  - soundadd: added a garand ping for the Old Mars Service rifle
