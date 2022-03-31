@@ -173,3 +173,11 @@
   - balance: Moved all Security Techfabs to the armory by default to ATTEMPT to balance
       Security so they are not walking around with lethal weapons and X-rays on green.
   - bugfix: HOS now has Brig Doc access
+2022-03-31:
+  radar651:
+  - rscadd: Added Connect Players section to the stat panel
+  - rscadd: Added OOC status to the stat panel
+  - rscadd: Actual round time, a back up timer to the main round timer in-case it
+      de-synchronizes and gives a more accurate time, to the stat panel
+  - rscadd: Sever time and date to the stat panel
+  - code_imp: added real_round_start_time to the ticker subsystem

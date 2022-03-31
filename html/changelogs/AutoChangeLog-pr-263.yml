@@ -1,9 +1,0 @@
-author: radar651
-delete-after: true
-changes:
-  - rscadd: Added Connect Players section to the stat panel
-  - rscadd: Added OOC status to the stat panel
-  - rscadd: Actual round time, a back up timer to the main round timer in-case it
-      de-synchronizes and gives a more accurate time, to the stat panel
-  - rscadd: Sever time and date to the stat panel
-  - code_imp: added real_round_start_time to the ticker subsystem
