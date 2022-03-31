@@ -70,6 +70,7 @@ SUBSYSTEM_DEF(ticker)
 
 	var/station_integrity = 100				// stored at roundend for use in some antag goals
 	var/emergency_reason
+	var/real_round_start_time = 0
 
 	/// If the gamemode fails to be run too many times, we swap to a preset gamemode, this should give admins time to set their preferred one
 	var/emergency_swap = 0
@@ -293,6 +294,8 @@ SUBSYSTEM_DEF(ticker)
 		var/datum/callback/cb = I
 		cb.InvokeAsync()
 	LAZYCLEARLIST(round_start_events)
+
+	real_round_start_time = world.timeofday
 
 	log_world("Game start took [(world.timeofday - init_start)/10]s")
 	round_start_time = world.time
