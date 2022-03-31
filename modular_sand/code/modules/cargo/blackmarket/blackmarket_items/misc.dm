@@ -9,4 +9,4 @@
 	price_max = 6000000 // 6 million
 	stock_min = 1
 	stock_max = 10
-	availability_prob = 100
+	availability_prob = 75

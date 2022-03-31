@@ -195,3 +195,84 @@
 /obj/item/storage/box/syndie_kit/chameleon/ghostcafe/generic
 	name = "chameleon kit"
 	desc = "Now you don't have to steal your mom's clothes anymore."
+
+/obj/item/storage/box/syndie_kit/garand_rubber
+	name = "Mars Service Rifle kit (rubber)"
+
+/obj/item/storage/backpack/duffelbag/syndie/garand_rubber/PopulateContents()
+	new /obj/item/gun/ballistic/automatic/m1garand/nomag(src)
+	new /obj/item/ammo_box/magazine/garand/rubber(src)
+	new /obj/item/ammo_box/magazine/garand/rubber(src)
+	new /obj/item/ammo_box/magazine/garand/rubber(src)
+	new /obj/item/ammo_box/magazine/garand/rubber(src)
+	new /obj/item/ammo_box/magazine/garand/rubber(src)
+	new /obj/item/ammo_box/magazine/garand/rubber(src)
+
+/obj/item/storage/box/syndie_kit/garand_mixed
+	name = "Mars Service Rifle kit (mixed)"
+
+/obj/item/storage/backpack/duffelbag/syndie/garand_mixed/PopulateContents()
+	new /obj/item/gun/ballistic/automatic/m1garand/nomag(src)
+	new /obj/item/ammo_box/magazine/garand/rubber(src)
+	new /obj/item/ammo_box/magazine/garand/rubber(src)
+	new /obj/item/ammo_box/magazine/garand/rubber(src)
+	new /obj/item/ammo_box/magazine/garand/sleepy(src)
+	new /obj/item/ammo_box/magazine/garand/sleepy(src)
+	new /obj/item/ammo_box/magazine/garand/sleepy(src)
+
+/obj/item/storage/box/syndie_kit/garand_lethal
+	name = "Mars Service Rifle kit (lethal)"
+
+/obj/item/storage/backpack/duffelbag/syndie/garand_lethal/PopulateContents()
+	new /obj/item/gun/ballistic/automatic/m1garand/nomag(src)
+	new /obj/item/ammo_box/magazine/garand(src)
+	new /obj/item/ammo_box/magazine/garand(src)
+	new /obj/item/ammo_box/magazine/garand(src)
+	new /obj/item/ammo_box/magazine/garand(src)
+	new /obj/item/ammo_box/magazine/garand(src)
+	new /obj/item/ammo_box/magazine/garand(src)
+
+/obj/item/storage/box/syndie_kit/fal_rubber
+	name = "FTU Rifle kit (rubber)"
+
+/obj/item/storage/backpack/duffelbag/syndie/fal_rubber/PopulateContents()
+	new /obj/item/gun/ballistic/automatic/fal/nomag(src)
+	new /obj/item/ammo_box/magazine/fal/rubber(src)
+	new /obj/item/ammo_box/magazine/fal/rubber(src)
+	new /obj/item/ammo_box/magazine/fal/rubber(src)
+	new /obj/item/ammo_box/magazine/fal/rubber(src)
+	new /obj/item/ammo_box/magazine/fal/rubber(src)
+	new /obj/item/ammo_box/magazine/fal/rubber(src)
+
+/obj/item/storage/box/syndie_kit/fal_mix
+	name = "FTU Rifle kit (mixed)"
+
+/obj/item/storage/backpack/duffelbag/syndie/fal_mix/PopulateContents()
+	new /obj/item/gun/ballistic/automatic/fal/nomag(src)
+	new /obj/item/ammo_box/magazine/fal/r10/rubber(src)
+	new /obj/item/ammo_box/magazine/fal/r10/rubber(src)
+	new /obj/item/ammo_box/magazine/fal/r10/rubber(src)
+	new /obj/item/ammo_box/magazine/fal/r10/sleepy(src)
+	new /obj/item/ammo_box/magazine/fal/r10/sleepy(src)
+	new /obj/item/ammo_box/magazine/fal/r10/sleepy(src)
+
+/obj/item/storage/box/syndie_kit/fal_lehtal
+	name = "FTU Rifle kit (lehtal)"
+
+/obj/item/storage/backpack/duffelbag/syndie/fal_lehtal/PopulateContents()
+	new /obj/item/gun/ballistic/automatic/fal/nomag(src)
+	new /obj/item/ammo_box/magazine/fal(src)
+	new /obj/item/ammo_box/magazine/fal(src)
+	new /obj/item/ammo_box/magazine/fal(src)
+	new /obj/item/ammo_box/magazine/fal(src)
+	new /obj/item/ammo_box/magazine/fal(src)
+	new /obj/item/ammo_box/magazine/fal(src)
+
+/obj/item/storage/box/syndie_kit/smg22
+	name = "FTU SMG kit (rubber)"
+
+/obj/item/storage/backpack/duffelbag/syndie/smg22/PopulateContents()
+	new /obj/item/gun/ballistic/automatic/smg22/nomag(src)
+	new /obj/item/ammo_box/magazine/smg22/rubber(src)
+	new /obj/item/ammo_box/magazine/smg22/rubber(src)
+	new /obj/item/ammo_box/magazine/smg22/rubber(src)

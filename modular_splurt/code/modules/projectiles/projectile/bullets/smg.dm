@@ -69,3 +69,10 @@
 	knockdown_stamoverride = 5
 	knockdown_stam_max = 40
 	strong_tase = FALSE
+
+/obj/item/projectile/bullet/c9mm/rubber
+	name = "9mm Rubber"
+	damage = 5
+	stamina = 30
+	sharpness = NONE
+	embedding = null

@@ -41,7 +41,7 @@
 
 /obj/item/ammo_box/magazine/m45/update_icon()
 	..()
-	icon_state = "45-[ammo_count() ? "8" : "0"]"
+	icon_state = "45-[round(ammo_count())]"
 
 /obj/item/ammo_box/magazine/m45/kitchengun
 	name = "handgun magazine (.45 cleaning)"

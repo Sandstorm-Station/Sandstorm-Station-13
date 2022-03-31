@@ -1,4 +1,5 @@
 /obj/item/gun/ballistic/automatic/pistol/m1911
+	icon = 'modular_splurt/icons/obj/guns/projectile.dmi'
 	can_flashlight = 1
 	flight_x_offset = 19
 	flight_y_offset = 15
@@ -8,7 +9,7 @@
 
 
 /obj/item/gun/ballistic/automatic/pistol/enforcer
-	name = "\improper Mk. 58 Enforcer"
+	name = "\improper Mk. 58 Enforcer (.45)"
 	desc = "A polymer frame pistol made by Nanotreason. Won't show up on Space port X-rays and cost more then you make in a month."
 	icon = 'modular_splurt/icons/obj/guns/projectile.dmi'
 	icon_state = "enforcer_black"
@@ -37,7 +38,7 @@
 	spawnwithmagazine = FALSE
 
 /obj/item/gun/ballistic/automatic/pistol/enforcerred
-	name = "\improper HOS's Mk. 58 Enforcer"
+	name = "\improper HOS's Mk. 58 Enforcer (.45)"
 	desc = "A polymer frame pistol made by Nanotreason. Won't show up on Space port X-rays and cost more then you make in a month. Respect mah Authorita!"
 	icon = 'modular_splurt/icons/obj/guns/projectile.dmi'
 	icon_state = "enforcer_red"
@@ -53,7 +54,7 @@
 
 
 /obj/item/gun/ballistic/automatic/pistol/enforcergold
-	name = "\improper Gold Mk. 58 Enforcer"
+	name = "\improper Gold Mk. 58 Enforcer (.45)"
 	desc = "A titianium gold plated Enfocer. A vulger display of power. A show of force in a public execution."
 	icon = 'modular_splurt/icons/obj/guns/projectile.dmi'
 	icon_state = "enforcer_gold"
@@ -86,6 +87,9 @@
 	else
 		icon_state = "[initial(icon_state)][chambered ? "" : "-e"]"
 
+/obj/item/gun/ballistic/automatic/pistol/m9mmpistol/nomag
+	spawnwithmagazine = FALSE
+
 /obj/item/gun/ballistic/automatic/pistol/m22pistol
 	name = "\improper Cheap .22 Handgun"
 	desc = "An extremly cheap .22 handgun produced by a Martain weapons maker. Great for mouse hunting, not much else."
@@ -97,6 +101,40 @@
 
 /obj/item/gun/ballistic/automatic/pistol/m22pistol/update_icon_state()
 	icon_state = "[initial(icon_state)][chambered ? "" : "-e"]"
+
+
+/obj/item/gun/ballistic/automatic/pistol/deagle
+	name = "\improper Desert Eagle (.50 AE)"
+
+
+/obj/item/gun/ballistic/automatic/pistol/deagle2
+	name = "\improper Desert Eagle (.357)"
+	desc = "A robust .357 Magnum handgun."
+	icon_state = "deagle"
+	force = 14
+	mag_type = /obj/item/ammo_box/magazine/m357
+	can_suppress = FALSE
+	automatic_burst_overlay = FALSE
+	obj_flags = UNIQUE_RENAME
+
+	unique_reskin = list("Default" = "deagle",
+						"Desert Eagle Gold" = "deagleg",
+						"Desert Eagle Camo" = "deaglecamo"
+						)
+
+/obj/item/gun/ballistic/automatic/pistol/deagle2/update_overlays()
+	. = ..()
+	if(magazine)
+		. += "deagle_magazine"
+
+/obj/item/gun/ballistic/automatic/pistol/deagle2/update_icon_state()
+	if(current_skin)
+		icon_state = "[unique_reskin[current_skin]][chambered ? "" : "-e"]"
+	else
+		icon_state = "[initial(icon_state)][chambered ? "" : "-e"]"
+
+/obj/item/gun/ballistic/automatic/pistol/deagle2/nomag
+	spawnwithmagazine = FALSE
 
 //gun parts
 
@@ -155,7 +193,7 @@
 
 /datum/crafting_recipe/pistol9assemble
 	name = "Assemble 9mm Pistol"
-	result = /obj/item/gun/ballistic/automatic/pistol/m9mmpistol
+	result = /obj/item/gun/ballistic/automatic/pistol/m9mmpistol/nomag
 	reqs = list(/obj/item/gunpart/pistol9frame = 1,
 				/obj/item/gunpart/pistol9slide = 1)
 	tools = list(TOOL_SCREWDRIVER)
