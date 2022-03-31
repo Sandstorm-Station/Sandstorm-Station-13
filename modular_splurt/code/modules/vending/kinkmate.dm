@@ -13,7 +13,8 @@
 		/obj/item/milking_machine/penis = 5,
 		/obj/item/clothing/neck/petcollar/spike = 5,
 		/obj/item/clothing/neck/petcollar/holo = 5,
-		/obj/item/clothing/neck/petcollar/casino = 5
+		/obj/item/clothing/neck/petcollar/casino = 5,
+		/obj/item/clothing/gloves/latexsleeves = 3
 	)
 	var/list/extra_contraband = list(
 		//Lewd-Clothes
