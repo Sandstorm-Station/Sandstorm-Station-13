@@ -269,6 +269,7 @@ const ContentPreferencesTab = (props, context) => {
     bimbofication,
     breast_enlargement,
     penis_enlargement,
+    butt_enlargement,
     never_hypno,
     no_aphro,
     no_ass_slap,
@@ -394,6 +395,14 @@ const ContentPreferencesTab = (props, context) => {
         selected={penis_enlargement}
         onClick={() => act('pref', {
           pref: 'penis_enlargement',
+        })}
+      />
+      <Button
+        content="Butt enlargement"
+        icon={butt_enlargement ? "toggle-on" : "toggle-off"}
+        selected={butt_enlargement}
+        onClick={() => act('pref', {
+          pref: 'butt_enlargement',
         })}
       />
       <Button
