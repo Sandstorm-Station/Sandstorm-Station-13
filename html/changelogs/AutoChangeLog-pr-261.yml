@@ -1,0 +1,30 @@
+author: radar651
+delete-after: true
+changes:
+  - rscadd: Add .308 as a caliber with Rubber and Soporific
+  - rscadd: Particle Blasters to the armory buy screen, none unique variant of the
+      patricidal defender that is non-lethal
+  - rscadd: 9mm Rubber
+  - rscadd: Old Mars Service Rifle
+  - rscadd: Old FTU Rifle
+  - rscadd: Old FTU SMG
+  - rscadd: Added the Old Mars Service rifle, FTU rifle and FTU SMG to Slavers
+  - rscadd: Hunting shotguns
+  - rscadd: New sprites for the Tommy gun
+  - rscadd: New sprites for the brush gun
+  - rscadd: New sprites for the .45-70 GOVT box
+  - rscadd: New sprites for the M1911, kitchen gun and M1911-P still use the old ones
+      at the moment
+  - rscadd: A lot of stuff to the black market, not everything I wanted to add even
+      but a lot.
+  - rscdel: Removed the Gatling Laser and Deathsquad armor from the Black Market
+  - tweak: spawn rate for some things in the black market to no longer be 100 percent
+  - tweak: 9mm handguns now come with 9mm rubber instead of 9mm lethal
+  - tweak: The cost of some of the goodie weapons
+  - balance: re chambered the hunting rifle from 7.62 to .308 so it no longer two
+      shots a person
+  - bugfix: M1911 magazines not updating properly
+  - bugfix: Enforcer mags not updating properly
+  - bugfix: Several goodie orders not spawning with spare mags properly
+  - bugfix: auto lathes now show what type of .45 ammo is going to be printed
+  - soundadd: added a garand ping for the Old Mars Service rifle
