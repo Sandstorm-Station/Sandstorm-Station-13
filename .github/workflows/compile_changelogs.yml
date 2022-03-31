@@ -5,6 +5,7 @@ on:
     workflows: [Make changelogs]
     types:
       - completed
+  workflow_dispatch:
 
 jobs:
   compile:
