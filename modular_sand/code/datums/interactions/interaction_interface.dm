@@ -167,7 +167,7 @@
 		data["bimbofication"] = 	CHECK_BITFIELD(prefs.cit_toggles, BIMBOFICATION)
 		data["breast_enlargement"] = CHECK_BITFIELD(prefs.cit_toggles, BREAST_ENLARGEMENT)
 		data["penis_enlargement"] = CHECK_BITFIELD(prefs.cit_toggles, PENIS_ENLARGEMENT)
-		data["butt_enlargement"] = 	CHECK_BITFIELD(prefs.cit_toggles, BUTT_ENLARGEMENT)
+		data["butt_enlargement"] =	CHECK_BITFIELD(prefs.cit_toggles, BUTT_ENLARGEMENT)
 		data["belly_inflation"] = CHECK_BITFIELD(prefs.cit_toggles, BELLY_INFLATION)
 		data["never_hypno"] = 		!CHECK_BITFIELD(prefs.cit_toggles, NEVER_HYPNO)
 		data["no_aphro"] = 			!CHECK_BITFIELD(prefs.cit_toggles, NO_APHRO)
