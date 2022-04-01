@@ -9,6 +9,7 @@
 	slot_flags = ITEM_SLOT_BELT
 	attack_verb = list("whipped", "lashed", "disciplined")
 	max_integrity = 300
+	equip_sound = 'sound/items/equip/toolbelt_equip.ogg'
 	var/content_overlays = FALSE //If this is true, the belt will gain overlays based on what it's holding
 	var/onmob_overlays = FALSE //worn counterpart of the above.
 
@@ -44,6 +45,8 @@
 	item_state = "utility"
 	content_overlays = TRUE
 	custom_premium_price = 300
+	drop_sound = 'sound/items/handling/toolbelt_drop.ogg'
+	pickup_sound = 'sound/items/handling/toolbelt_pickup.ogg'
 	rad_flags = RAD_PROTECT_CONTENTS | RAD_NO_CONTAMINATE //because this is easier than trying to have showers wash all contents.
 
 /obj/item/storage/belt/utility/ComponentInitialize()
