@@ -5,6 +5,7 @@
 	icon_state = "portablechemicalmixer_open"
 	w_class = WEIGHT_CLASS_HUGE
 	slot_flags = ITEM_SLOT_BELT
+	equip_sound = 'sound/items/equip/toolbelt_equip.ogg'
 	custom_price = 2000
 	custom_premium_price = 2000
 
