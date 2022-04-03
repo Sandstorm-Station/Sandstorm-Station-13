@@ -30174,11 +30174,11 @@
 /turf/open/floor/plating,
 /area/maintenance/fore)
 "kBT" = (
-/obj/structure/toilet/secret/low_loot{
-	dir = 4;
-	name = "toilet"
-	},
 /obj/effect/decal/cleanable/ash/large,
+/obj/structure/toilet/secret/high_loot{
+	dir = 4;
+	name = "Dusty Toilet"
+	},
 /turf/open/floor/plating,
 /area/maintenance/fore)
 "kCc" = (
@@ -31705,6 +31705,8 @@
 /area/construction/mining/aux_base)
 "ldW" = (
 /obj/effect/turf_decal/tile/brown,
+/obj/structure/closet/crate,
+/obj/item/stack/license_plates/empty/fifty,
 /turf/open/floor/plasteel,
 /area/cargo/warehouse)
 "lex" = (
@@ -34491,7 +34493,9 @@
 	},
 /area/cargo/office)
 "lZK" = (
-/obj/machinery/plate_press,
+/obj/machinery/computer/operating{
+	dir = 1
+	},
 /turf/open/floor/plating,
 /area/maintenance/department/science)
 "lZO" = (
@@ -37679,8 +37683,7 @@
 /turf/open/floor/engine,
 /area/science/xenobiology)
 "nbo" = (
-/obj/item/stack/license_plates/empty/fifty,
-/obj/structure/closet/crate,
+/obj/structure/table/optable,
 /turf/open/floor/plating,
 /area/maintenance/department/science)
 "nbp" = (
@@ -38546,6 +38549,7 @@
 /obj/effect/mapping_helpers/airlock/cyclelink_helper{
 	dir = 1
 	},
+/obj/structure/fans/tiny,
 /turf/open/floor/plasteel,
 /area/cargo/miningoffice)
 "nqc" = (
@@ -62895,6 +62899,9 @@
 	amount = 12
 	},
 /obj/structure/closet,
+/obj/item/storage/backpack/duffelbag/med/surgery{
+	pixel_y = 5
+	},
 /turf/open/floor/plating,
 /area/maintenance/department/science)
 "vQE" = (
@@ -66078,6 +66085,7 @@
 	req_access_txt = "31"
 	},
 /obj/effect/turf_decal/tile/brown,
+/obj/machinery/plate_press,
 /turf/open/floor/plasteel,
 /area/cargo/warehouse)
 "wPU" = (
