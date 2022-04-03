@@ -28,7 +28,7 @@
 	else
 		var/datum/discord_link_record/existing_link = SSdiscord.find_discord_link_by_ckey(usr?.ckey, FALSE)
 		//Do not create a new entry if they already have a linked account
-		if(existing_link?.discord_id)
+		if(existing_link?.discord_id && existing_link?.valid)
 			message = "You already have a linked account with discord ID ([existing_link.discord_id]) linked on [existing_link.timestamp]. If you desire to change your account please contact staff."
 		// Will generate one if an expired one doesn't exist already, otherwise will grab existing token
 		else
