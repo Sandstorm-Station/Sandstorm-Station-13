@@ -8,6 +8,8 @@
 	custom_materials = list(/datum/material/iron=400, /datum/material/glass=120)
 	wires = WIRE_RECEIVE | WIRE_PULSE | WIRE_RADIO_PULSE | WIRE_RADIO_RECEIVE
 	attachable = TRUE
+	drop_sound = 'sound/items/handling/component_drop.ogg'
+	pickup_sound = 'sound/items/handling/component_pickup.ogg'
 
 	var/code = DEFAULT_SIGNALER_CODE
 	var/frequency = FREQ_SIGNALER

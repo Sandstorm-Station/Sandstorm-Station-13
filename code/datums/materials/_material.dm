@@ -121,10 +121,9 @@ Simple datum which is instanced once per type and is used for every object of sa
 	I.hitsound = item_sound_override
 	I.usesound = item_sound_override
 	I.mob_throw_hit_sound = item_sound_override
-	// I.mob_throw_hit_sound = item_sound_override
-	// I.equip_sound = item_sound_override
-	// I.pickup_sound = item_sound_override
-	// I.drop_sound = item_sound_override
+	I.equip_sound = item_sound_override
+	I.pickup_sound = item_sound_override
+	I.drop_sound = item_sound_override
 
 /datum/material/proc/on_applied_turf(turf/T, amount, material_flags)
 	if(isopenturf(T))
