@@ -21,4 +21,4 @@
 	name = "brush gun internal magazine"
 	ammo_type = /obj/item/ammo_casing/g45l
 	caliber = ".45l"
-	max_ammo = 6
+	max_ammo = 10

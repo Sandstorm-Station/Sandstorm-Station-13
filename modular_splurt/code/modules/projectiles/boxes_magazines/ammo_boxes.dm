@@ -194,7 +194,7 @@ obj/item/ammo_box/c45/trac
 	name = "Ammo Box (.45 Rubber)"
 
 /datum/design/c45lethal
-	name = "Ammo Box (.45 Lehtal)"
+	name = "Ammo Box (.45 Lethal)"
 	id = "c45lehtal"
 	build_type = AUTOLATHE | NO_PUBLIC_LATHE
 	materials = list(/datum/material/iron = 30000)

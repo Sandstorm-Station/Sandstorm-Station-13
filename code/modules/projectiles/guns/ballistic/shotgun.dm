@@ -358,19 +358,6 @@
 	icon_state = "levercarabine"
 	item_state = "leveraction"
 	sawn_item_state = "maresleg"
-	var/can_cut = TRUE
-
-/obj/item/gun/ballistic/shotgun/leveraction/attackby(obj/item/A, mob/user, params)
-	..()
-	if(!can_cut)
-		to_chat(user, "<span class='warning'>You can't cut \the [src] down!</span>")
-		return
-	if(A.tool_behaviour == TOOL_SAW || istype(A, /obj/item/gun/energy/plasmacutter))
-		sawoff(user)
-	if(istype(A, /obj/item/melee/transforming/energy))
-		var/obj/item/melee/transforming/energy/W = A
-		if(W.active)
-			sawoff(user)
 
 /obj/item/gun/ballistic/shotgun/leveraction/on_sawoff(mob/user)
 	magazine.max_ammo-- // sawing off drops from 7+1 to 6+1
@@ -381,10 +368,11 @@
 	else
 		icon_state = "[initial(icon_state)][sawn_off ? "-sawn" : ""][chambered ? "" : "-e"]"
 
-/obj/item/gun/ballistic/shotgun/leveraction/brush
+/obj/item/gun/ballistic/shotgun/brush
 	name = "brush gun"
 	desc = "While lever-actions have been horribly out of date for hundreds of years now, \
 	putting a nicely sized hole in a man-sized target with a .45-70 round has stayed relatively timeless."
 	icon_state = "brushgun"
-	can_cut = FALSE
+	item_state = "leveraction"
 	mag_type = /obj/item/ammo_box/magazine/internal/shot/levergun/brush
+	fire_sound = "sound/weapons/revolvershot.ogg"
