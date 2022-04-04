@@ -190,7 +190,7 @@ SUBSYSTEM_DEF(discord)
 	var/timeboundsql = ""
 	if(timebound)
 		timeboundsql = "AND timestamp >= Now() - INTERVAL 4 HOUR"
-	var/query = "SELECT CAST(discord_id AS CHAR(25)), ckey, MAX(timestamp), one_time_token FROM [format_table_name("discord_links")] WHERE one_time_token = :one_time_token [timeboundsql] GROUP BY ckey, discord_id, one_time_token LIMIT 1"
+	var/query = "SELECT CAST(discord_id AS CHAR(25)), ckey, MAX(timestamp), one_time_token, valid FROM [format_table_name("discord_links")] WHERE one_time_token = :one_time_token [timeboundsql] GROUP BY ckey, discord_id, one_time_token LIMIT 1"
 	var/datum/db_query/query_get_discord_link_record = SSdbcore.NewQuery(
 		query,
 		list("one_time_token" = one_time_token)
@@ -200,7 +200,7 @@ SUBSYSTEM_DEF(discord)
 		return
 	if(query_get_discord_link_record.NextRow())
 		var/result = query_get_discord_link_record.item
-		. = new /datum/discord_link_record(result[2], result[1], result[4], result[3])
+		. = new /datum/discord_link_record(result[2], result[1], result[4], result[3], result[5])
 
 	//Make sure we clean up the query
 	qdel(query_get_discord_link_record)
@@ -223,7 +223,7 @@ SUBSYSTEM_DEF(discord)
 	if(timebound)
 		timeboundsql = "AND timestamp >= Now() - INTERVAL 4 HOUR"
 
-	var/query = "SELECT CAST(discord_id AS CHAR(25)), ckey, MAX(timestamp), one_time_token FROM [format_table_name("discord_links")] WHERE ckey = :ckey [timeboundsql] GROUP BY ckey, discord_id, one_time_token LIMIT 1"
+	var/query = "SELECT CAST(discord_id AS CHAR(25)), ckey, MAX(timestamp), one_time_token, valid FROM [format_table_name("discord_links")] WHERE ckey = :ckey [timeboundsql] GROUP BY ckey, discord_id, one_time_token LIMIT 1"
 	var/datum/db_query/query_get_discord_link_record = SSdbcore.NewQuery(
 		query,
 		list("ckey" = ckey)
@@ -234,7 +234,7 @@ SUBSYSTEM_DEF(discord)
 
 	if(query_get_discord_link_record.NextRow())
 		var/result = query_get_discord_link_record.item
-		. = new /datum/discord_link_record(result[2], result[1], result[4], result[3])
+		. = new /datum/discord_link_record(result[2], result[1], result[4], result[3], result[5])
 
 	//Make sure we clean up the query
 	qdel(query_get_discord_link_record)
@@ -258,7 +258,7 @@ SUBSYSTEM_DEF(discord)
 	if(timebound)
 		timeboundsql = "AND timestamp >= Now() - INTERVAL 4 HOUR"
 
-	var/query = "SELECT CAST(discord_id AS CHAR(25)), ckey, MAX(timestamp), one_time_token FROM [format_table_name("discord_links")] WHERE discord_id = :discord_id [timeboundsql] GROUP BY ckey, discord_id, one_time_token LIMIT 1"
+	var/query = "SELECT CAST(discord_id AS CHAR(25)), ckey, MAX(timestamp), one_time_token, valid FROM [format_table_name("discord_links")] WHERE discord_id = :discord_id [timeboundsql] GROUP BY ckey, discord_id, one_time_token LIMIT 1"
 	var/datum/db_query/query_get_discord_link_record = SSdbcore.NewQuery(
 		query,
 		list("discord_id" = discord_id)
@@ -269,7 +269,7 @@ SUBSYSTEM_DEF(discord)
 
 	if(query_get_discord_link_record.NextRow())
 		var/result = query_get_discord_link_record.item
-		. = new /datum/discord_link_record(result[2], result[1], result[4], result[3])
+		. = new /datum/discord_link_record(result[2], result[1], result[4], result[3], result[5])
 
 	//Make sure we clean up the query
 	qdel(query_get_discord_link_record)
