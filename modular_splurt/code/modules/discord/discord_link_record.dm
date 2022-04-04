@@ -4,6 +4,7 @@
 	var/discord_id
 	var/one_time_token
 	var/timestamp
+	var/valid
 
 /**
  * Generate a discord link datum from the values
@@ -16,9 +17,11 @@
  * * discord_id Discord id as a string
  * * one_time_token as a string
  * * timestamp as a string
+ * * valid as a number
  */
-/datum/discord_link_record/New(ckey, discord_id, one_time_token, timestamp)
+/datum/discord_link_record/New(ckey, discord_id, one_time_token, timestamp, valid)
 	src.ckey = ckey
 	src.discord_id = discord_id
 	src.one_time_token = one_time_token
 	src.timestamp = timestamp
+	src.valid = valid
