@@ -10892,6 +10892,9 @@
 	name = "test chamber blast door"
 	},
 /obj/structure/cable,
+/obj/structure/cable{
+	icon_state = "1-2"
+	},
 /turf/open/floor/engine,
 /area/science/xenobiology)
 "dOj" = (
@@ -15109,6 +15112,13 @@
 /obj/item/key/security,
 /turf/open/floor/engine,
 /area/ai_monitored/security/armory)
+"fkL" = (
+/obj/machinery/atmospherics/pipe/simple/scrubbers/hidden,
+/mob/living/simple_animal/pickle{
+	name = "Richard"
+	},
+/turf/open/floor/plasteel/cafeteria,
+/area/service/kitchen)
 "fkP" = (
 /obj/machinery/atmospherics/pipe/simple/supply/hidden,
 /obj/structure/cable{
@@ -15260,9 +15270,13 @@
 	dir = 1
 	},
 /mob/living/simple_animal/pet/gondola{
-	health = 1690;
+	desc = "Commandola is the silent walker. Having no hands he embodies the Taoist principle of wu-wei (non-action) while his smiling facial expression shows his utter and complete acceptance of the world as it is. Its hide is extremely deadly.";
+	health = 1750;
+	melee_damage_lower = 2;
+	melee_damage_upper = 2;
 	name = "Gary";
-	real_name = "commandola"
+	real_name = "commandola";
+	unique_pet = 1
 	},
 /obj/machinery/holopad,
 /turf/open/floor/plasteel/dark,
@@ -15469,6 +15483,8 @@
 /obj/effect/turf_decal/tile/purple{
 	dir = 8
 	},
+/obj/item/reagent_containers/dropper,
+/obj/item/reagent_containers/dropper,
 /turf/open/floor/plasteel/white,
 /area/science/xenobiology)
 "fqD" = (
@@ -21298,6 +21314,13 @@
 /obj/structure/lattice/catwalk,
 /turf/open/space,
 /area/solars/port/aft)
+"hsP" = (
+/obj/effect/decal/cleanable/ash,
+/mob/living/simple_animal/hostile/shark/laser,
+/turf/open/floor/plating{
+	icon_state = "platingdmg1"
+	},
+/area/space/nearstation)
 "htc" = (
 /obj/item/radio/intercom{
 	name = "Station Intercom (General)";
@@ -38812,6 +38835,9 @@
 /area/service/bar)
 "nuv" = (
 /obj/machinery/shieldwallgen/xenobiologyaccess,
+/obj/structure/cable{
+	icon_state = "0-2"
+	},
 /turf/open/floor/plasteel/dark/side,
 /area/science/xenobiology)
 "nuw" = (
@@ -44123,6 +44149,11 @@
 	},
 /turf/open/floor/plasteel,
 /area/hallway/secondary/exit)
+"prB" = (
+/obj/structure/lattice,
+/mob/living/simple_animal/hostile/shark/laser,
+/turf/open/space/basic,
+/area/space/nearstation)
 "prG" = (
 /obj/machinery/meter,
 /obj/machinery/atmospherics/pipe/manifold/general/visible{
@@ -63798,6 +63829,7 @@
 /area/engineering/main)
 "who" = (
 /obj/machinery/shieldwallgen/xenobiologyaccess,
+/obj/structure/cable,
 /turf/open/floor/plasteel/dark/side{
 	dir = 1
 	},
@@ -68956,6 +68988,9 @@
 	},
 /obj/structure/disposalpipe/segment{
 	dir = 10
+	},
+/obj/structure/cable{
+	icon_state = "1-2"
 	},
 /turf/open/floor/engine,
 /area/science/xenobiology)
@@ -116509,7 +116544,7 @@ rQq
 sfP
 lia
 lia
-lia
+fkL
 gkc
 lia
 lia
@@ -131447,7 +131482,7 @@ axx
 rTx
 mUv
 rTx
-roA
+prB
 rTx
 rTx
 mDQ
@@ -131957,7 +131992,7 @@ chc
 chc
 mDQ
 mDQ
-uJZ
+hsP
 rTx
 gDX
 kjM
