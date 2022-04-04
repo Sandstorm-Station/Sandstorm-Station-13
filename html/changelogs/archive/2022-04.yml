@@ -1,0 +1,44 @@
+2022-04-04:
+  BlueWildrose:
+  - rscadd: Butts.
+  - rscadd: Butt growth related chemicals. Check out the kinkmate, and check out the
+      hypokit for rectifying genitals.
+  - bugfix: Testicles are actually rendered again. Hidden testicles are available
+      as well.
+  BongaTheProto:
+  - tweak: you'll no longer create a new verification entry if you already linked
+      your discord, and It'll show the id of your current account instead
+  - tweak: Makes it so discord links don't count for join checks if the `valid` field
+      is 0
+  - tweak: You'll wanna make sure you _stay_ in the discord server if you want to
+      play, btw
+  Floyd & ActionNinja:
+  - soundadd: Some things now make sounds when picked up, thrown, or dropped.
+  Putnam3145:
+  - bugfix: recycler now emergency stops properly
+  SandPoot:
+  - bugfix: Fixes some diagonal weirdness that might be going on with npcs.
+  TripleShades:
+  - rscadd: Added cameras to some areas in current rotation stations for parity
+  - rscadd: Added light switches to many areas in current rotation stations
+  - rscadd: Added atmos alarms to a few areas in current rotation stations for parity
+  - rscadd: '[Box] Gives Morgue Maintenance an APC'
+  - rscdel: '[Omega] Removes Arrivals Lobby APC since it''s now part of the hallway'
+  - bugfix: Fixes a few duplicate c_tags for current rotation ruins and stations
+  - bugfix: Fixes some incorrectly placed areas in current rotation stations
+  - bugfix: Fixes pipes that led to nowhere in current rotation stations
+  - bugfix: '[Box] Kitchen Cold Room should now lose power via proper area connection'
+  - bugfix: '[Box] Chief Engineer''s Office should no longer be announced as Command
+      erroneously due to mapping error'
+  - bugfix: '[Omega] Law Office APC should no longer control the Restrooms'
+  kiwilover8:
+  - rscadd: Added tinyfan to mining shuttle airlock
+  - rscadd: Added surgery table to a maint room
+  - tweak: moved license plate press to cargo warehouse
+  radar651:
+  - balance: rebalanced shotguns to not be slow to reload. The check for the 8/10s
+      of a second delay has been removed
+  - balance: Buckshot pellets have been boasted to 12.5 per pellet
+  - balance: slugs made more useful, now have some AP qualities
+  - balance: Beanbags and Rubber pellet shots do more stamina damage
+  - balance: Changed the Tommy gun from Huge to Bulky so it can actually be stowed.
