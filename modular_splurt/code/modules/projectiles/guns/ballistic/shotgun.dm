@@ -175,7 +175,7 @@
 /obj/item/gunpart/shotgunhutningstock
 	name = "hunting shotgun furniture"
 	desc = "a hunting shotgun stock and foregrip"
-	icon_state = "huntingframe"
+	icon_state = "huntingstock"
 
 /obj/item/gunpart/shotgunhutningbarrel
 	name = "hunting shotgun assembly"
