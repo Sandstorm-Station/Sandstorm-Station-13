@@ -158,7 +158,6 @@
 /datum/holiday/april_fools
 	name = APRIL_FOOLS
 	begin_day = 1
-	end_day = 5
 	begin_month = APRIL
 
 /datum/holiday/april_fools/celebrate()
@@ -230,7 +229,7 @@
 	drone_hat = /obj/item/clothing/mask/facehugger/dead
 
 /datum/holiday/UFO/getStationPrefix() //Is such a thing even possible?
-	return pick("Ayy","Truth","Tsoukalos","Mulder","Scully") //Yes it is!
+	return pick("Ayy","Truth","Tsoukalos","Mulder","Scully", "Daisy") //Yes it is!
 
 /datum/holiday/USA
 	name = "Independence Day"
@@ -320,9 +319,6 @@
 	begin_month = OCTOBER
 	drone_hat = /obj/item/clothing/head/that
 
-/datum/holiday/intersexawareness/greet()
-	return "Today is Intersex Awareness Day! It has been [text2num(time2text(world.timeofday, "YYYY")) - 1996] years since the first public protest speaking out against the human rights issues faced by intersex people."
-
 /datum/holiday/halloween
 	name = HALLOWEEN
 	begin_day = 1
@@ -391,26 +387,6 @@
 	begin_month = OCTOBER
 	begin_weekday = MONDAY
 
-/datum/holiday/aceawareness
-	name = "Asexual Awareness Week"
-	begin_month = OCTOBER
-
-/datum/holiday/aceawareness/greet()
-	return "This week is Asexual Awareness Week!"
-
-/datum/holiday/aceawareness/shouldCelebrate(dd, mm, yy, ww, ddd) //Ace awareness week falls on the last full week of October.
-	if(mm != begin_month)
-		return FALSE //it's not even the right month
-	var/daypointer = world.timeofday - ((WEEKDAY2NUM(ddd) - 1) * 24 HOURS)
-	if(text2num(time2text(daypointer, "MM")) != mm)
-		return FALSE //it's the beginning of the month and it isn't even a full week
-	daypointer += (24 HOURS * 6)
-	if(text2num(time2text(daypointer, "MM")) != mm)
-		return FALSE //this is the end of the month, and it is not a full week.
-	daypointer += (24 HOURS * 7)
-	if(text2num(time2text(daypointer, "MM")) != mm)
-		return TRUE //the end of next week falls on a different month, meaning that the current week is the last full week
-
 /datum/holiday/mother
 	name = "Mother's Day"
 	begin_week = 2
@@ -425,14 +401,6 @@
 	begin_week = 3
 	begin_month = JUNE
 	begin_weekday = SUNDAY
-
-/datum/holiday/stonewall
-	name = "Stonewall Riots Anniversary"
-	begin_day = 28
-	begin_month = JUNE
-
-/datum/holiday/stonewall/greet() //Not gonna lie, I was fairly tempted to make this use the IC year instead of the IRL year, but I was worried that it would have caused too much confusion.
-	return "Today marks the [text2num(time2text(world.timeofday, "YYYY")) - 1969]\th anniversary of the riots at the Stonewall Inn!"
 
 /datum/holiday/moth
 	name = "Moth Week"
