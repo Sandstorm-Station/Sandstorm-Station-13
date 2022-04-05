@@ -136,6 +136,9 @@
 /obj/item/gun/ballistic/automatic/pistol/deagle2/nomag
 	spawnwithmagazine = FALSE
 
+/obj/item/gun/ballistic/automatic/pistol/luger/mag
+	spawnwithmagazine = TRUE
+
 //gun parts
 
 /obj/item/gunpart //the parent

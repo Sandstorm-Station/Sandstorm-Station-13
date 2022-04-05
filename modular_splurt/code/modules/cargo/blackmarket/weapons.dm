@@ -9,7 +9,7 @@
 /datum/blackmarket_item/weapon/luger
 	name = "P-08 Luger"
 	desc = "A P-08 Luger modded to fire the standard 10mm rounds."
-	item = /obj/item/gun/ballistic/automatic/pistol/luger
+	item = /obj/item/gun/ballistic/automatic/pistol/luger/mag
 	price_min = 30000
 	price_max = 50000
 	stock_min = 1
