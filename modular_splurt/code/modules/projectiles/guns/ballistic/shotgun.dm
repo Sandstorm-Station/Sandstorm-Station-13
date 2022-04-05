@@ -178,7 +178,7 @@
 	icon_state = "huntingframe"
 
 /obj/item/gunpart/shotgunhutningbarrel
-	name = "brush gun assembly"
+	name = "hunting shotgun assembly"
 	desc = "a hunting shotgun barrel and fire control assembly"
 	icon_state = "huntingframe"
 
