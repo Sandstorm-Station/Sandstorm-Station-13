@@ -12,7 +12,7 @@
 	price_max = 800
 	stock_min = 1
 	stock_max = 3
-	availability_prob = 45
+	availability_prob = 80
 
 /datum/blackmarket_item/clothing/military
 	name = "Military Gas Mask"
@@ -22,7 +22,7 @@
 	price_max = 800
 	stock_min = 1
 	stock_max = 3
-	availability_prob = 55
+	availability_prob = 80
 
 //syndis
 
@@ -30,16 +30,77 @@
 	name = "Tactical turtleneck"
 	desc = "A non-descript and slightly suspicious looking turtleneck with digital camouflage cargo pants."
 	item = /obj/item/clothing/under/syndicate
-	price = 50000
+	price = 500000
 	stock_min = 1
 	stock_max = 10
-	availability_prob = 95
+	availability_prob = 75
 
 /datum/blackmarket_item/syndi/clothing/tacticalskirt
 	name = "Tactical skirtleneck"
 	desc = "A non-descript and slightly suspicious looking skirtleneck."
 	item = /obj/item/clothing/under/syndicate/tacticool
-	price = 50000
+	price = 500000
 	stock_min = 1
 	stock_max = 10
-	availability_prob = 95
+	availability_prob = 75
+
+/datum/blackmarket_item/syndi/clothing/tacticalskirt
+	name = "Combat uniform"
+	desc = "With a suit lined with this many pockets, you are ready to operate."
+	item = /obj/item/clothing/under/syndicate/combat
+	price = 500000
+	stock_min = 1
+	stock_max = 10
+	availability_prob = 50
+
+datum/blackmarket_item/syndi/clothing/fullred_spacesuit_set
+	name = "Red Spacesuit Box"
+	desc = "A boxed Syndicate space suit"
+	item = /obj/item/storage/box
+	price = 750000
+	stock_min = 1
+	stock_max = 2
+	availability_prob = 30
+
+
+/datum/blackmarket_item/syndi/clothing/fullred_spacesuit_set/spawn_item(loc)
+	var/obj/item/storage/box/B = ..()
+	B.name = "Spacesuit Box"
+	B.desc = "It has a NT logo crossed with marker on it."
+	new /obj/item/clothing/head/helmet/space/syndicate(B)
+	new /obj/item/clothing/suit/space/syndicate(B)
+	return B
+
+datum/blackmarket_item/syndi/clothing/fullgreen_spacesuit_set
+	name = "Green Spacesuit Box"
+	desc = "A boxed Syndicate space suit"
+	item = /obj/item/storage/box
+	price = 750000
+	stock_min = 1
+	stock_max = 2
+	availability_prob = 30
+
+/datum/blackmarket_item/syndi/clothing/fullgreen_spacesuit_set/spawn_item(loc)
+	var/obj/item/storage/box/B = ..()
+	B.name = "Spacesuit Box"
+	B.desc = "It has a NT logo crossed with marker on it."
+	new /obj/item/clothing/head/helmet/space/syndicate/green(B)
+	new /obj/item/clothing/suit/space/syndicate/green(B)
+	return B
+
+datum/blackmarket_item/syndi/clothing/fullgreen_spacesuit_set
+	name = "Dark Green Spacesuit Box"
+	desc = "A boxed Syndicate space suit"
+	item = /obj/item/storage/box
+	price = 750000
+	stock_min = 1
+	stock_max = 2
+	availability_prob = 30
+
+/datum/blackmarket_item/syndi/clothing/fullgreen_spacesuit_set/spawn_item(loc)
+	var/obj/item/storage/box/B = ..()
+	B.name = "Spacesuit Box"
+	B.desc = "It has a NT logo crossed with marker on it."
+	new /obj/item/clothing/head/helmet/space/syndicate/green/dark(B)
+	new /obj/item/clothing/suit/space/syndicate/green/dark(B)
+	return B

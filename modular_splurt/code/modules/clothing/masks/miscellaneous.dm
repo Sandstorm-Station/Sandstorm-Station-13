@@ -163,8 +163,57 @@
 	desc = "Mission Oriented Protective Posture. A heavy duty gas mask design to be worn in hazardus combat enviorments. Acutally works like a gas mask as well as can be connected to intenral air supply. Used by Centcom Staff and ERT teams."
 	armor = list("melee" = 20, "bullet" = 10, "laser" = 20,"energy" = 20, "bomb" = 20, "bio" = 110, "rad" = 110, "fire" = 50, "acid" = 110)
 
+//broken huds for loot
 
+/obj/item/clothing/glasses/brokenhud/security
+	name = "broken security HUD"
+	desc = "A former heads-up display that scans the humans in view and provides accurate data about their ID status and security records. At least it did. Now its just shorted out"
+	icon_state = "securityhud"
+	glass_colour_type = /datum/client_colour/glass_colour/red
 
+/obj/item/clothing/glasses/brokenhud/security/sunglasses
+	name = "broken security HUDSunglasses"
+	desc = "Sunglasses with a broken security HUD."
+	icon_state = "sunhudsec"
+	flash_protect = 1
+	glass_colour_type = /datum/client_colour/glass_colour/darkred
+
+/obj/item/clothing/glasses/brokenhud/security/night
+	name = "broken night vision security HUD"
+	desc = "An advanced heads-up display which provides id data and vision in complete darkness. However the electronics seem to no longer work."
+	icon_state = "securityhudnight"
+	glass_colour_type = /datum/client_colour/glass_colour/green
+
+/obj/item/clothing/glasses/brokenhud/health
+	name = "borken health scanner HUD"
+	desc = "A former heads-up display that scans the humans in view and provides accurate data about their health status. At least it did. Now its just shorted out."
+	icon_state = "healthhud"
+	glass_colour_type = /datum/client_colour/glass_colour/lightblue
+
+/obj/item/clothing/glasses/brokenhud/health/night
+	name = "broken night vision health scanner HUD"
+	desc = "An advanced medical heads-up display that allows doctors to find patients in complete darkness. However the eletronics seem to no longer work"
+	icon_state = "healthhudnight"
+	item_state = "glasses"
+	glass_colour_type = /datum/client_colour/glass_colour/green
+
+/obj/item/clothing/glasses/brokenhud/health/sunglasses
+	name = "broken medical HUDSunglasses"
+	desc = "Sunglasses with a broken medical HUD."
+	icon_state = "sunhudmed"
+	flash_protect = 1
+	glass_colour_type = /datum/client_colour/glass_colour/blue
+
+/obj/effect/spawner/lootdrop/brokenhuds
+	lootcount = 1
+	loot = list(
+				/obj/item/clothing/glasses/brokenhud/health/sunglasses = 16,
+				/obj/item/clothing/glasses/brokenhud/health/night = 16,
+				/obj/item/clothing/glasses/brokenhud/health = 16,
+				/obj/item/clothing/glasses/brokenhud/security/night = 16,
+				/obj/item/clothing/glasses/brokenhud/security/sunglasses = 16,
+				/obj/item/clothing/glasses/brokenhud/security = 16,
+				)
 //research nods
 
 /datum/design/cbrn/cbrnmask
