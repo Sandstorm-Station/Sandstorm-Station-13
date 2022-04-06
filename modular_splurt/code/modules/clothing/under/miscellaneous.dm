@@ -22,8 +22,9 @@
 	icon = 'modular_splurt/icons/obj/clothing/uniforms.dmi'
 	icon_state = "latex_half"
 	mob_overlay_icon = 'modular_splurt/icons/mob/clothing/uniform.dmi'
+	anthro_mob_worn_overlay = 'modular_splurt/icons/mob/clothing/uniform.dmi'
 	body_parts_covered = CHEST
-	mutantrace_variation = NONE
+	mutantrace_variation = STYLE_DIGITIGRADE
 
 /obj/item/clothing/under/sexynursesuit
 	name = "sexy nurse outfit"
