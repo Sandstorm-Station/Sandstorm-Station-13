@@ -120,7 +120,7 @@ SUBSYSTEM_DEF(discord)
 /datum/controller/subsystem/discord/proc/get_or_generate_one_time_token_for_ckey(ckey)
 	// Is there an existing valid one time token
 	var/datum/discord_link_record/link = find_discord_link_by_ckey(ckey, timebound = TRUE)
-	if(link)
+	if(link && link.valid)
 		return link.one_time_token
 
 	// Otherwise we make one
