@@ -1,0 +1,118 @@
+2022-03-03:
+  TripleShades:
+  - rscadd: [Omega] Windoors to Atmos flaps
+  - rscadd: [Omega] Windoor to Librarian desk
+  - rscadd: [Omega] Another belt switch to Cargo
+  - rscadd: [Omega] Superfluous decals
+  - rscadd: [Omega] Two space heaters
+  - rscadd: [Omega] Two empty medkits and health scanners to Robotics
+  - rscadd: [Omega] More painting mounts in the Library
+  - remove: [Omega] Superfluous decals
+  - bugfix: [Omega] Organ Fridge no longer invisibly takes up the tile it was shifted from
+  - tweak: [Omega] Maint garden is no longer spaced at the cost of losing a puddle
+  - tweak: [Omega] Moves around the blood crate in Medbay to swap with a vendor
+  - tweak: [Omega] Moved around Library book shelves"
+2022-03-04:
+  BongaTheProto:
+  - bugfix: Fixes femcum hydratation
+2022-03-07:
+  BongaTheProto:
+  - bugfix: Tops will now use the shirt slot
+  TripleShades:
+  - rscdel: [Omega] Hundreds of decals
+  - tweak: [Omega] Three airlock rooms to space dont have vents now to stop tiles ripping up
+2022-03-08:
+  Putnam3145:
+  - config: Made a config entry lowertext thing actually work right
+2022-03-10:
+  Daggertail:
+  - code_imp: Updated Python BS to 3.7.9
+  - code_imp: Changed some Mapmerge lines
+  SandPoot:
+  - rscadd: Screentips.
+  - rscdel: Removed the bottom grey section of the screen.
+  - refactor: Updated statpanel.
+  - refactor: Implements JPS Pathfinding!
+  Putnam3145:
+  - balance: Massively buffed trit fires (and nerfed trit-*generating* fires equally)
+  timothyteakettle:
+  - rscadd: spraypainting a stack of floor tiles makes the placed tile the same colour
+2022-03-13:
+  DeltaFire15:
+  - balance: rebalanced synthtissue's and strange reagent's revival.
+  - tweak: Hyposprays on spray mode now use \"patch\" as opposed to \"touch\" to mirror normal medsprays.
+  - balance: NTIRN can no longer access non-cargo departmental budgets.
+  - balance: Base organ healing rate reduced by 66% (It can still be increased to up to 500% of the base value via sufficient satiety)
+  - bugfix: Cybernetic organs no longer passively heal damage despite the proc stating they didn't.
+  - balance: Synthetics now gain satiety at sufficient charge (~5 minutes to max satiety from 0)
+  - balance: Regenerative cores when used on Synthetics on lavaland now heal for 20 brute + burn instead of 5
+  - balance: Regenerative cores when used now on lavaland now only heal 5 brute + burn, regardless of whom they are used on. Additionally, their damage slowdown negation is reduced to ten seconds.
+  TripleShades:
+  - rscdel: [Omega] Engineering Supermatter shortcut airlock to Cooling Loop
+  - tweak: [Omega] Gravity Generator walkable area"
+  - bugfix: [Omega] Two Xenobiology pens now have chutes
+  - bugfix: [Omega] Makes a t-junction pipe in Atmospherics not visible above the floor
+2022-03-14:
+  Putnam3145:
+  - bugfix: atmos equalization config now works properly
+  - balance: Supermatter now takes damage when near space tiles
+  - rscadd: Round continuation limitations based on population voting for continuation
+2022-03-15:
+  Putnam3145:
+  - balance: Implosion compressor now doesn't scale beyond bombs' ability to explode
+2022-03-17:
+  SandPoot:
+  - bugfix: Fixed LOG_VICTIM.
+2022-03-18:
+  TripleShades:
+  - rscadd: [Omega] Aix Mixer pipe
+  - rscadd: [Omega] Wire to Turbine
+2022-03-20:
+  Melbert:
+  - bugfix: Balloon alerts sourced on turfs work properly.
+2022-03-21:
+  SandPoot:
+  - bugfix: Miner's Salve no longer permanently allows you to make faster self-surgeries.
+      The TRAIT_PAINKILLER was seemingly not being removed.
+  - code_imp: Moved some files around just for the sake of organization, is not meaningful
+      to player and doesn't change anything.
+  bunny232:
+  - bugfix: A wire outside meta station customs has been fixed.
+2022-03-22:
+  LiteralMushroom:
+  - rscadd: Slimes can now change their eye color.
+  BlueWildrose:
+  - balance: Xenobiology's Advanced Mutation Toxin has another cure now, which is Mutadone. In addition, it no longer instantly transforms slime subspecies upon contraction.
+  TripleShades:
+  - rscadd: [Omega] Gravity Generator room scrubber
+  - tweak: [Omega] tcomms vents are now passive
+2022-03-24:
+  SandPoot:
+  - bugfix: Fixes any sort of crate related syndicate item fetching.
+  BongaTheProto:
+  - code_imp: Fixed the Compile changelogs workflow so it actually runs and is also
+      more responsive as it was intended
+  bunny232:
+  - rscadd: The receiving party of a climax with partner action can have their mouth exposed to count as a valid 'hole'
+  DeltaFire15:
+  - bugfix: Self-fueling welders should no longer be able to be stuck not refueling.
+2022-03-27:
+  Arturlang:
+  - code_imp: Updates caniuse-lite and changes babel to minify to true, instead of auto
+2022-03-31:
+  BlueWildrose:
+  - rscadd: Butts.
+  - rscadd: Butt growth related chemicals. Check out the kinkmate, and check out the hypokit for rectifying genitals.
+  - bugfix: Testicles are actually rendered again. Hidden testicles are available as well.
+  TripleShades:
+  - rscadd: Added cameras to some areas in current rotation stations for parity
+  - rscadd: Added light switches to many areas in current rotation stations
+  - rscadd: Added atmos alarms to a few areas in current rotation stations for parity
+  - rscadd: [Box] Gives Morgue Maintenance an APC
+  - rscdel: [Omega] Removes Arrivals Lobby APC since it's now part of the hallway
+  - bugfix: Fixes a few duplicate c_tags for current rotation ruins and stations
+  - bugfix: Fixes some incorrectly placed areas in current rotation stations
+  - bugfix: Fixes pipes that led to nowhere in current rotation stations
+  - bugfix: [Box] Kitchen Cold Room should now lose power via proper area connection
+  - bugfix: [Box] Chief Engineer's Office should no longer be announced as Command erroneously due to mapping error
+  - bugfix: [Omega] Law Office APC should no longer control the Restrooms
