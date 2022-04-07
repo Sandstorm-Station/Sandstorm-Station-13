@@ -46,6 +46,13 @@
   - balance: Beanbags and Rubber pellet shots do more stamina damage
   - balance: Changed the Tommy gun from Huge to Bulky so it can actually be stowed.
 2022-04-06:
+  SandPoot:
+  - balance: Bluespace miners cannot mine whilst unanchored, as god intended.
+  - bugfix: Tools won't behave weirdly on the bluespace miner, and you can now unanchor
+      it.
+  - code_imp: Made bluespace miner code less shit.
+  - rscadd: Added custom statues. Create carving block from 5 sheets of material then
+      use a chisel on it.
   radar651:
   - rscadd: Added loot crates to cargo, a 1k and a 10k crate.
   - rscadd: Added more stuff to the black market, fleshing it out more
@@ -60,9 +67,6 @@
   - balance: Hunting rifle and Hunting shotgun can no longer be one handed
   - bugfix: Brush guns and Lever guns can now be reloaded. They had to be recoded
   - bugfix: Some of the uniform sprites
-  SandPoot:
-  - balance: Bluespace miners cannot mine whilst unanchored, as god intended.
-  - bugfix: Tools won't behave weirdly on the bluespace miner, and you can now unanchor
-      it.
-  - code_imp: Made bluespace miner code less shit.
-  - rscadd: Added custom statues. Create carving block from 5 sheets of material then use a chisel on it.
+2022-04-07:
+  BongaTheProto:
+  - code_imp: Moves splurt's folder in code over to its own folder like sandstorm

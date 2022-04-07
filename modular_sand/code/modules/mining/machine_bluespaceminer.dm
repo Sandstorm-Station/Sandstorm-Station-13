@@ -51,8 +51,7 @@
 	if(!M.buffer || !istype(M.buffer, /obj/machinery/ore_silo))
 		to_chat(user, "<span class='warning'>You need to multitool the ore silo first.</span>")
 		balloon_alert(user, "invalid buffer!")
-		return FALSE
-	return TRUE
+		return TRUE
 
 /obj/machinery/mineral/bluespace_miner/process()
 	update_icon_state()
