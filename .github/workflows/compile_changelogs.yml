@@ -8,31 +8,47 @@ on:
   workflow_dispatch:
 
 jobs:
-  CompileCL:
-    runs-on: ubuntu-latest
+  compile:
+    name: "Compile changelogs"
+    runs-on: ubuntu-20.04
     steps:
-      - name: Checkout
+      - name: "Check for CHANGELOG_ENABLER secret and pass true to output if it exists to be checked by later steps"
+        id: value_holder
+        env:
+          CHANGELOG_ENABLER: ${{ secrets.CHANGELOG_ENABLER }}
+        run: |
+          unset SECRET_EXISTS
+          if [ -n $CHANGELOG_ENABLER ]; then SECRET_EXISTS='true' ; fi
+          echo ::set-output name=CL_ENABLED::${SECRET_EXISTS}
+      - name: "Setup python"
+        if: steps.value_holder.outputs.CL_ENABLED
+        uses: actions/setup-python@v1
+        with:
+          python-version: '3.x'
+      - name: "Install deps"
+        if: steps.value_holder.outputs.CL_ENABLED
+        run: |
+          python -m pip install --upgrade pip
+          python -m pip install pyyaml
+          sudo apt-get install  dos2unix
+      - name: "Checkout"
+        if: steps.value_holder.outputs.CL_ENABLED
         uses: actions/checkout@v1
         with:
           fetch-depth: 25
-      - name: Python setup
-        uses: actions/setup-python@v1
-        with:
-          python-version: "3.9"
-      - name: Install depends
+      - name: "Compile"
+        if: steps.value_holder.outputs.CL_ENABLED
         run: |
-          python -m pip install --upgrade pip
-          pip install -r tools/changelog/requirements.txt
-      - name: Compile CL
-        run: python tools/changelog/ss13_genchangelog.py html/changelog.html html/changelogs
+          python tools/ss13_genchangelog.py html/changelogs
       - name: Commit
+        if: steps.value_holder.outputs.CL_ENABLED
         run: |
           git config --local user.email "85452301+Sandstorm-Bot@users.noreply.github.com"
           git config --local user.name "Sandstorm Bot"
           git pull origin master
           git commit -m "Automatic changelog compile [ci skip]" -a || true
-      - name: Push
+      - name: "Push"
+        if: steps.value_holder.outputs.CL_ENABLED
         uses: ad-m/github-push-action@master
         with:
-          github_token: ${{ secrets.GITHUB_TOKEN }} # Use this instead if you have unprotected branches
-          #github_token: ${{ secrets.CL_TOKEN }}
+          github_token: ${{ secrets.GITHUB_TOKEN }}
