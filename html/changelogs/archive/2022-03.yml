@@ -1,17 +1,17 @@
 2022-03-03:
   TripleShades:
-  - rscadd: [Omega] Windoors to Atmos flaps
-  - rscadd: [Omega] Windoor to Librarian desk
-  - rscadd: [Omega] Another belt switch to Cargo
-  - rscadd: [Omega] Superfluous decals
-  - rscadd: [Omega] Two space heaters
-  - rscadd: [Omega] Two empty medkits and health scanners to Robotics
-  - rscadd: [Omega] More painting mounts in the Library
-  - remove: [Omega] Superfluous decals
-  - bugfix: [Omega] Organ Fridge no longer invisibly takes up the tile it was shifted from
-  - tweak: [Omega] Maint garden is no longer spaced at the cost of losing a puddle
-  - tweak: [Omega] Moves around the blood crate in Medbay to swap with a vendor
-  - tweak: [Omega] Moved around Library book shelves"
+  - rscadd: '[Omega] Windoors to Atmos flaps'
+  - rscadd: '[Omega] Windoor to Librarian desk'
+  - rscadd: '[Omega] Another belt switch to Cargo'
+  - rscadd: '[Omega] Superfluous decals'
+  - rscadd: '[Omega] Two space heaters'
+  - rscadd: '[Omega] Two empty medkits and health scanners to Robotics'
+  - rscadd: '[Omega] More painting mounts in the Library'
+  - remove: '[Omega] Superfluous decals'
+  - bugfix: '[Omega] Organ Fridge no longer invisibly takes up the tile it was shifted from'
+  - tweak: '[Omega] Maint garden is no longer spaced at the cost of losing a puddle'
+  - tweak: '[Omega] Moves around the blood crate in Medbay to swap with a vendor'
+  - tweak: '[Omega] Moved around Library book shelves"'
 2022-03-04:
   BongaTheProto:
   - bugfix: Fixes femcum hydratation
@@ -19,8 +19,8 @@
   BongaTheProto:
   - bugfix: Tops will now use the shirt slot
   TripleShades:
-  - rscdel: [Omega] Hundreds of decals
-  - tweak: [Omega] Three airlock rooms to space dont have vents now to stop tiles ripping up
+  - rscdel: '[Omega] Hundreds of decals'
+  - tweak: '[Omega] Three airlock rooms to space dont have vents now to stop tiles ripping up'
 2022-03-08:
   Putnam3145:
   - config: Made a config entry lowertext thing actually work right
@@ -48,10 +48,10 @@
   - balance: Regenerative cores when used on Synthetics on lavaland now heal for 20 brute + burn instead of 5
   - balance: Regenerative cores when used now on lavaland now only heal 5 brute + burn, regardless of whom they are used on. Additionally, their damage slowdown negation is reduced to ten seconds.
   TripleShades:
-  - rscdel: [Omega] Engineering Supermatter shortcut airlock to Cooling Loop
-  - tweak: [Omega] Gravity Generator walkable area"
-  - bugfix: [Omega] Two Xenobiology pens now have chutes
-  - bugfix: [Omega] Makes a t-junction pipe in Atmospherics not visible above the floor
+  - rscdel: '[Omega] Engineering Supermatter shortcut airlock to Cooling Loop'
+  - tweak: '[Omega] Gravity Generator walkable area"'
+  - bugfix: '[Omega] Two Xenobiology pens now have chutes'
+  - bugfix: '[Omega] Makes a t-junction pipe in Atmospherics not visible above the floor'
 2022-03-14:
   Putnam3145:
   - bugfix: atmos equalization config now works properly
@@ -65,8 +65,8 @@
   - bugfix: Fixed LOG_VICTIM.
 2022-03-18:
   TripleShades:
-  - rscadd: [Omega] Aix Mixer pipe
-  - rscadd: [Omega] Wire to Turbine
+  - rscadd: '[Omega] Aix Mixer pipe'
+  - rscadd: '[Omega] Wire to Turbine'
 2022-03-20:
   Melbert:
   - bugfix: Balloon alerts sourced on turfs work properly.
@@ -84,8 +84,8 @@
   BlueWildrose:
   - balance: Xenobiology's Advanced Mutation Toxin has another cure now, which is Mutadone. In addition, it no longer instantly transforms slime subspecies upon contraction.
   TripleShades:
-  - rscadd: [Omega] Gravity Generator room scrubber
-  - tweak: [Omega] tcomms vents are now passive
+  - rscadd: '[Omega] Gravity Generator room scrubber'
+  - tweak: '[Omega] tcomms vents are now passive'
 2022-03-24:
   SandPoot:
   - bugfix: Fixes any sort of crate related syndicate item fetching.
@@ -108,11 +108,11 @@
   - rscadd: Added cameras to some areas in current rotation stations for parity
   - rscadd: Added light switches to many areas in current rotation stations
   - rscadd: Added atmos alarms to a few areas in current rotation stations for parity
-  - rscadd: [Box] Gives Morgue Maintenance an APC
-  - rscdel: [Omega] Removes Arrivals Lobby APC since it's now part of the hallway
+  - rscadd: '[Box] Gives Morgue Maintenance an APC'
+  - rscdel: '[Omega] Removes Arrivals Lobby APC since it''s now part of the hallway'
   - bugfix: Fixes a few duplicate c_tags for current rotation ruins and stations
   - bugfix: Fixes some incorrectly placed areas in current rotation stations
   - bugfix: Fixes pipes that led to nowhere in current rotation stations
-  - bugfix: [Box] Kitchen Cold Room should now lose power via proper area connection
-  - bugfix: [Box] Chief Engineer's Office should no longer be announced as Command erroneously due to mapping error
-  - bugfix: [Omega] Law Office APC should no longer control the Restrooms
+  - bugfix: '[Box] Kitchen Cold Room should now lose power via proper area connection'
+  - bugfix: '[Box] Chief Engineer''s Office should no longer be announced as Command erroneously due to mapping error'
+  - bugfix: '[Omega] Law Office APC should no longer control the Restrooms'
