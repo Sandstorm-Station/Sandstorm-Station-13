@@ -1,3 +1,25 @@
+//Main code edits
+/obj/item/clothing/suit/space/hardsuit/Initialize()
+	. = ..()
+	if(type == /obj/item/clothing/suit/space/hardsuit)
+		icon = 'modular_splurt/icons/obj/clothing/suits.dmi'
+		mob_overlay_icon = 'modular_splurt/icons/mob/clothing/suit.dmi'
+		anthro_mob_worn_overlay = 'modular_splurt/icons/mob/clothing/suit_digi.dmi'
+
+/obj/item/clothing/suit/space/hardsuit/engine
+	icon = 'modular_splurt/icons/obj/clothing/suits.dmi'
+	mob_overlay_icon = 'modular_splurt/icons/mob/clothing/suit.dmi'
+	anthro_mob_worn_overlay = 'modular_splurt/icons/mob/clothing/suit_digi.dmi'
+
+/obj/item/clothing/head/helmet/space/hardsuit/Initialize()
+	. = ..()
+	if(type == /obj/item/clothing/head/helmet/space/hardsuit)
+		mob_overlay_icon = 'modular_splurt/icons/mob/clothing/head.dmi'
+
+/obj/item/clothing/head/helmet/space/hardsuit/engine
+	mob_overlay_icon = 'modular_splurt/icons/mob/clothing/head.dmi'
+
+//Own stuff
 /obj/item/clothing/head/helmet/space/hardsuit/rd/hev
 	name = "HEV Suit helmet"
 	desc = "A Hazardous Environment Helmet. It fits snug over the suit and has a heads-up display for researchers. The flashlight seems broken, fitting considering this was made before the start of the milennium."
