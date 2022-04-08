@@ -70,9 +70,15 @@
 2022-04-07:
   BongaTheProto:
   - code_imp: Moves splurt's folder in code over to its own folder like sandstorm
+2022-04-08:
+  AnthurK:
+  - bugfix: Fixes bots trying to path through dense corners.
+  Arturlang:
+  - rscadd: Adds stasis beds and related mechanics
+  - rscdel: Removed mapped in sleepers from station maps. Shuttles have it but centcomm
+      doesn't.
   SandPoot:
   - bugfix: Make changelogs actually get added!
-2022-04-08:
   ZSpitfire:
   - imageadd: reworked engineering hardsuits sprites
   - bugfix: Fixed hardsuit icon states
