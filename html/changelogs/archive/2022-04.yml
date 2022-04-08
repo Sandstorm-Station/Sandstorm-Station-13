@@ -15,5 +15,11 @@
   - rscadd: Added custom statues. Create carving block from 5 sheets of material then
       use a chisel on it.
 2022-04-08:
+  AnthurK:
+  - bugfix: Fixes bots trying to path through dense corners.
+  Arturlang:
+  - rscadd: Adds stasis beds and related mechanics
+  - rscdel: Removed mapped in sleepers from station maps. Shuttles have it but centcomm
+      doesn't.
   SandPoot:
   - bugfix: Make changelogs actually get added!
