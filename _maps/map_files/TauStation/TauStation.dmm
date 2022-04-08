@@ -4533,8 +4533,9 @@
 /turf/open/floor/plasteel,
 /area/security/prison/workout)
 "bGd" = (
-/obj/machinery/light_switch{
-	pixel_x = -23
+/obj/machinery/posialert{
+	pixel_x = -29;
+	pixel_y = -4
 	},
 /turf/open/floor/plasteel/white/side{
 	dir = 4
@@ -4889,8 +4890,15 @@
 /obj/structure/sign/poster/official/here_for_your_safety{
 	pixel_y = 32
 	},
+/obj/machinery/atmospherics/components/unary/vent_pump/on{
+	dir = 4
+	},
 /turf/open/floor/plasteel/dark,
 /area/security/brig)
+"bOH" = (
+/mob/living/simple_animal/hostile/shark/laser,
+/turf/open/space/basic,
+/area/space)
 "bOI" = (
 /obj/machinery/computer/crew{
 	dir = 1
@@ -12337,12 +12345,12 @@
 /turf/closed/wall/r_wall,
 /area/engineering/main)
 "emL" = (
-/obj/structure/urinal{
-	pixel_y = 32
-	},
 /obj/structure/window/reinforced/tinted{
 	dir = 8;
 	pixel_x = -4
+	},
+/obj/structure/urinal/shit{
+	pixel_y = 32
 	},
 /turf/open/floor/plasteel/freezer,
 /area/commons/toilet)
@@ -14363,6 +14371,7 @@
 	name = "Chemistry Desk";
 	req_access_txt = "33"
 	},
+/obj/machinery/door/firedoor,
 /turf/open/floor/plasteel/white,
 /area/medical/chemistry)
 "eXa" = (
@@ -15652,6 +15661,7 @@
 	id = "Secure Brig Control";
 	name = "brig shutters"
 	},
+/obj/machinery/door/firedoor,
 /turf/open/floor/engine,
 /area/security/brig)
 "ftJ" = (
@@ -17122,6 +17132,7 @@
 /obj/structure/disposalpipe/segment{
 	dir = 4
 	},
+/obj/item/vending_refill/boozeomat,
 /turf/open/floor/plating,
 /area/maintenance/department/security/brig)
 "fSr" = (
@@ -23575,6 +23586,11 @@
 	},
 /turf/open/floor/carpet,
 /area/command/blueshielquarters)
+"ifH" = (
+/obj/structure/bed/badhaybed,
+/obj/item/toy/plush/catgirl,
+/turf/open/floor/plating,
+/area/maintenance/port/aft)
 "ifM" = (
 /obj/machinery/atmospherics/pipe/simple/scrubbers/hidden{
 	dir = 4
@@ -30490,6 +30506,7 @@
 	response_help_simple = "pet";
 	turns_per_move = 10
 	},
+/obj/machinery/holopad/secure,
 /turf/open/floor/plasteel/dark,
 /area/command/heads_quarters/hos)
 "kGA" = (
@@ -46763,6 +46780,7 @@
 /obj/machinery/atmospherics/pipe/simple/scrubbers/hidden{
 	dir = 10
 	},
+/obj/item/toy/plush/mr_buckety,
 /turf/open/floor/noslip,
 /area/service/janitor)
 "qmN" = (
@@ -47342,6 +47360,9 @@
 	},
 /obj/structure/cable{
 	icon_state = "2-4"
+	},
+/obj/machinery/atmospherics/components/unary/vent_scrubber/on{
+	dir = 8
 	},
 /turf/open/floor/plasteel/dark,
 /area/security/brig)
@@ -55063,6 +55084,10 @@
 /obj/structure/filingcabinet/medical,
 /turf/open/floor/plasteel/white,
 /area/medical/genetics)
+"tnn" = (
+/obj/structure/tank_holder,
+/turf/open/floor/plasteel/white,
+/area/medical/surgery)
 "tnq" = (
 /obj/structure/cable{
 	icon_state = "4-8"
@@ -56429,7 +56454,6 @@
 /obj/structure/cable{
 	icon_state = "4-8"
 	},
-/obj/machinery/atmospherics/pipe/simple/supply/hidden,
 /obj/effect/turf_decal/tile/red{
 	dir = 4
 	},
@@ -56437,6 +56461,9 @@
 	dir = 1
 	},
 /obj/effect/turf_decal/tile/red,
+/obj/machinery/atmospherics/pipe/manifold/supply/hidden{
+	dir = 4
+	},
 /turf/open/floor/plasteel,
 /area/security/brig)
 "tIQ" = (
@@ -57721,6 +57748,7 @@
 	id = "Secure Brig Control";
 	name = "brig shutters"
 	},
+/obj/machinery/door/firedoor,
 /turf/open/floor/engine,
 /area/security/brig)
 "ucR" = (
@@ -57944,6 +57972,14 @@
 	},
 /obj/machinery/light{
 	dir = 4
+	},
+/obj/machinery/firealarm{
+	dir = 8;
+	pixel_x = 24
+	},
+/obj/machinery/airalarm{
+	dir = 1;
+	pixel_y = -22
 	},
 /turf/open/floor/engine,
 /area/security/brig)
@@ -59240,13 +59276,19 @@
 /turf/open/floor/engine,
 /area/science/explab)
 "uDR" = (
-/obj/machinery/atmospherics/pipe/simple/scrubbers/hidden,
 /obj/effect/turf_decal/tile/red{
 	dir = 8
 	},
 /obj/effect/turf_decal/tile/red,
 /obj/effect/turf_decal/tile/red{
 	dir = 1
+	},
+/obj/machinery/atmospherics/pipe/manifold/scrubbers/hidden{
+	dir = 8
+	},
+/obj/machinery/airalarm{
+	dir = 4;
+	pixel_x = -22
 	},
 /turf/open/floor/plasteel,
 /area/security/brig)
@@ -68682,6 +68724,7 @@
 	name = "Chemistry Desk";
 	req_access_txt = "33"
 	},
+/obj/machinery/door/firedoor,
 /turf/open/floor/plasteel/white,
 /area/medical/chemistry)
 "xIc" = (
@@ -70410,6 +70453,9 @@
 /obj/item/assembly/prox_sensor{
 	pixel_x = -8;
 	pixel_y = 4
+	},
+/obj/machinery/light_switch{
+	pixel_x = -23
 	},
 /turf/open/floor/plasteel/white/corner,
 /area/science/robotics/lab)
@@ -93476,7 +93522,7 @@ fza
 fza
 fza
 fza
-fza
+roA
 fza
 fza
 roA
@@ -93731,10 +93777,10 @@ fza
 fza
 roA
 roA
-fza
+bvb
+bvb
+bvb
 roA
-roA
-fza
 fza
 roA
 fza
@@ -93987,9 +94033,9 @@ fza
 fza
 fza
 fza
-roA
-fza
-fza
+bvb
+bvb
+ifH
 bvb
 bvb
 bvb
@@ -94245,8 +94291,8 @@ fza
 kwf
 fza
 bvb
-bvb
-bvb
+bZv
+pUU
 bvb
 csH
 wAW
@@ -98834,9 +98880,9 @@ egh
 tOx
 xPE
 pcX
-tXx
+tnn
 fxn
-tXx
+tnn
 tXx
 tXx
 uTQ
@@ -129431,7 +129477,7 @@ fza
 fza
 fza
 fza
-fza
+bOH
 fza
 fza
 fza
@@ -129929,7 +129975,7 @@ fza
 fza
 fza
 fza
-fza
+bOH
 fza
 fza
 fza
