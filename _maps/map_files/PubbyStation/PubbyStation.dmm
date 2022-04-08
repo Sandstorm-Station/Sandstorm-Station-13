@@ -32745,9 +32745,6 @@
 /turf/open/floor/plasteel/white,
 /area/medical/medbay/zone3)
 "bzP" = (
-/obj/machinery/sleeper{
-	dir = 4
-	},
 /obj/effect/turf_decal/stripes/line{
 	dir = 1
 	},
@@ -32764,6 +32761,7 @@
 /obj/effect/turf_decal/tile/blue{
 	dir = 8
 	},
+/obj/machinery/stasis,
 /turf/open/floor/plasteel,
 /area/medical/treatment_center)
 "bzQ" = (
@@ -33977,9 +33975,6 @@
 /turf/open/floor/plasteel,
 /area/medical/treatment_center)
 "bCj" = (
-/obj/machinery/sleeper{
-	dir = 4
-	},
 /obj/effect/turf_decal/tile/blue{
 	dir = 1
 	},
@@ -33990,6 +33985,7 @@
 /obj/effect/turf_decal/tile/blue{
 	dir = 8
 	},
+/obj/machinery/stasis,
 /turf/open/floor/plasteel,
 /area/medical/treatment_center)
 "bCl" = (
