@@ -225,8 +225,8 @@
 	damage_type = BRUTE
 	color = "#00FFFF"
 
-/obj/item/projectile/kinetic/axe/prehit(atom/target)
-	return
+/obj/item/projectile/kinetic/axe/prehit_pierce(atom/target)
+	return PROJECTILE_PIERCE_NONE
 
 //loot
 

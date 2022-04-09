@@ -15,7 +15,7 @@
 
 
 /obj/structure/spider/run_obj_armor(damage_amount, damage_type, damage_flag = 0, attack_dir)
-	if(damage_flag == "melee")
+	if(damage_flag == MELEE)
 		switch(damage_type)
 			if(BURN)
 				damage_amount *= 2
@@ -36,7 +36,8 @@
 		icon_state = "stickyweb2"
 	. = ..()
 
-/obj/structure/spider/stickyweb/CanPass(atom/movable/mover, turf/target)
+/obj/structure/spider/stickyweb/CanAllowThrough(atom/movable/mover, turf/target)
+	. = ..()
 	if (genetic)
 		return
 	if(istype(mover, /mob/living/simple_animal/hostile/poison/giant_spider))
@@ -49,7 +50,6 @@
 			return FALSE
 	else if(istype(mover, /obj/item/projectile))
 		return prob(30)
-	return TRUE
 
 /obj/structure/spider/stickyweb/genetic //for the spider genes in genetics
 	genetic = TRUE

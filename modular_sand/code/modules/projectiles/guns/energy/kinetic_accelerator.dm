@@ -74,12 +74,12 @@
 
 /obj/item/projectile/kinetic/nopenalty
 
-/obj/item/projectile/kinetic/nopenalty/prehit(atom/target)
+/obj/item/projectile/kinetic/nopenalty/prehit_pierce(atom/target)
 	if(kinetic_gun)
 		var/list/mods = kinetic_gun.get_modkits()
 		for(var/obj/item/borg/upgrade/modkit/M in mods)
 			M.projectile_prehit(src, target, kinetic_gun)
-	return TRUE
+	return PROJECTILE_PIERCE_NONE
 
 /obj/item/projectile/kinetic/nopenalty/strike_thing(atom/target)
 	var/turf/target_turf = get_turf(target)
@@ -517,7 +517,7 @@
 	icon = 'icons/obj/projectiles.dmi'
 	icon_state = "bullet"
 
-/obj/item/projectile/kinetic/etenmm/prehit(atom/target)
+/obj/item/projectile/kinetic/etenmm/prehit_pierce(atom/target)
 	if(kinetic_gun)
 		var/list/mods = kinetic_gun.get_modkits()
 		for(var/obj/item/borg/upgrade/modkit/M in mods)

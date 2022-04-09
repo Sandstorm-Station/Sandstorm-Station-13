@@ -87,3 +87,18 @@
   - rscadd: various flavor items
   - rscadd: Posialert console to robo
   - bugfix: Missing atmospherics machinery
+2022-04-09:
+  AnthurK:
+  - bugfix: Fixes bots trying to path through dense corners.
+  Arturlang:
+  - rscadd: Adds stasis beds and related mechanics
+  - rscdel: Removed mapped in sleepers from station maps. Shuttles have it but centcomm
+      doesn't.
+  SandPoot:
+  - bugfix: Medigaxes can actually be built now.
+  Solaris-Shade:
+  - bugfix: fixed a few projectile lines
+  - code_imp: changed a large block of the projectile code
+  - refactor: refactored most of the projectile code
+  tiviplus, lolman360, SandPoot:
+  - refactor: /obj/mecha > /obj/vehicle/sealed/mecha
