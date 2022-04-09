@@ -200,7 +200,7 @@ GLOBAL_LIST_INIT(slaver_gear, subtypesof(/datum/slaver_gear))
 /datum/slaver_gear/mech
 	name = "Gygax 'Riot-Control' Exosuit"
 	description = "A lightweight, agile mecha. Weapons sold separately."
-	build_path = /obj/mecha/combat/gygax/bluespace
+	build_path = /obj/vehicle/sealed/mecha/combat/gygax/bluespace
 	category = "Mech"
 	cost = 50000
 

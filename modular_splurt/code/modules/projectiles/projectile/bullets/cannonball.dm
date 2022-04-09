@@ -3,7 +3,7 @@
 	icon = 'modular_splurt/icons/obj/guns/projectiles.dmi'
 	icon_state = "cannonball"
 	damage = 110 //gets set to 100 before first mob impact.
-	movement_type = FLYING | UNSTOPPABLE
+	movement_type = FLYING | PHASING
 	sharpness = NONE
 	wound_bonus = 0
 	dismemberment = 0
@@ -13,10 +13,10 @@
 	hitsound = 'sound/effects/meteorimpact.ogg'
 	hitsound_wall = 'sound/weapons/sonic_jackhammer.ogg'
 
-/obj/item/projectile/bullet/cannonball/prehit(atom/target)
+/obj/item/projectile/bullet/cannonball/prehit_pierce(atom/A)
 	damage -= 10
 	if(damage < 40)
-		movement_type &= ~(UNSTOPPABLE)
+		movement_type &= ~(PHASING)
 	return ..()
 
 /obj/item/projectile/bullet/cannonball/on_hit(atom/target, blocked = FALSE)
@@ -37,16 +37,16 @@
 	color = "#FF0000"
 	damage = 40 //set to 30 before first mob impact, but they're gonna be gibbed by the explosion
 
-/obj/item/projectile/bullet/cannonball/explosive/prehit(atom/target)
+/obj/item/projectile/bullet/cannonball/explosive/prehit_pierce(atom/A)
 	. = ..()
-	explosion(target, devastation_range = 2, heavy_impact_range = 3, light_impact_range = 4)
+	explosion(A, devastation_range = 2, heavy_impact_range = 3, light_impact_range = 4)
 
 /obj/item/projectile/bullet/cannonball/emp
 	name = "malfunction shot"
 	icon_state = "emp_cannonball"
 	damage = 15 //very low
 
-/obj/item/projectile/bullet/cannonball/emp/prehit(atom/target)
+/obj/item/projectile/bullet/cannonball/emp/prehit_pierce(atom/A)
 	. = ..()
 	empulse(src, 4, 10)
 
@@ -55,10 +55,10 @@
 	icon_state = "biggest_one"
 	damage = 70 //low pierce
 
-/obj/item/projectile/bullet/cannonball/biggest_one/prehit(atom/target)
+/obj/item/projectile/bullet/cannonball/biggest_one/prehit_pierce(atom/A)
 	. = ..()
 	if(damage < 50)
-		explosion(target, GLOB.MAX_EX_DEVESTATION_RANGE, GLOB.MAX_EX_HEAVY_RANGE, GLOB.MAX_EX_LIGHT_RANGE, GLOB.MAX_EX_FLASH_RANGE)
+		explosion(A, GLOB.MAX_EX_DEVESTATION_RANGE, GLOB.MAX_EX_HEAVY_RANGE, GLOB.MAX_EX_LIGHT_RANGE, GLOB.MAX_EX_FLASH_RANGE)
 
 /obj/item/projectile/bullet/cannonball/trashball
 	name = "trashball"

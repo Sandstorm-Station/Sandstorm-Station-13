@@ -1,6 +1,6 @@
-/obj/mecha/combat/gygax/bluespace
+/obj/vehicle/sealed/mecha/combat/gygax/bluespace
 
-/obj/mecha/combat/gygax/bluespace/add_cell(obj/item/stock_parts/cell/C=null)
+/obj/vehicle/sealed/mecha/combat/gygax/bluespace/add_cell(obj/item/stock_parts/cell/C=null)
 	if(C)
 		C.forceMove(src)
 		cell = C
