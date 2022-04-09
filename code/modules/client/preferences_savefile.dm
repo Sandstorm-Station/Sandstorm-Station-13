@@ -1105,7 +1105,7 @@ SAVEFILE UPDATING/VERSIONING - 'Simplified', or rather, more coder-friendly ~Car
 	medical_records					= copytext(medical_records, 1, MAX_FLAVOR_LEN)
 
 	features["flavor_text"]			= copytext(features["flavor_text"], 1, MAX_FLAVOR_LEN)
-	features["naked_flavor_text"]	= copytext(features["naked_flavor_text"], 1, MAX_FLAVOR_LEN)
+	features["naked_flavor_text"]	= copytext(features["naked_flavor_text"], 1, MAX_FLAVOR_LEN) //tempt edit
 	features["silicon_flavor_text"]			= copytext(features["silicon_flavor_text"], 1, MAX_FLAVOR_LEN)
 	features["ooc_notes"]			= copytext(features["ooc_notes"], 1, MAX_FLAVOR_LEN)
 

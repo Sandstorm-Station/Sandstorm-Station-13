@@ -46,7 +46,7 @@
 		AddComponent(/datum/component/mood)
 	AddComponent(/datum/component/combat_mode)
 	AddElement(/datum/element/flavor_text/carbon, _name = "Flavor Text", _save_key = "flavor_text")
-	AddElement(/datum/element/flavor_text/carbon, _name = "Naked Flavor Text", _save_key = "naked_flavor_text", _show_on_naked = TRUE)
+	AddElement(/datum/element/flavor_text/carbon, _name = "Naked Flavor Text", _save_key = "naked_flavor_text", _show_on_naked = TRUE) //tempt edit
 	AddElement(/datum/element/flavor_text/carbon/temporary, "", "Set Pose (Temporary Flavor Text)", "This should be used only for things pertaining to the current round!", _save_key = null)
 	AddElement(/datum/element/flavor_text, _name = "OOC Notes", _addendum = "Put information on ERP/vore/lewd-related preferences here. THIS SHOULD NOT CONTAIN REGULAR FLAVORTEXT!!", _save_key = "ooc_notes", _examine_no_preview = TRUE)
 	AddElement(/datum/element/strippable, GLOB.strippable_human_items, /mob/living/carbon/human/.proc/should_strip)
