@@ -27,8 +27,8 @@
 		else
 			enemies -= L
 	else if(ismecha(A))
-		var/obj/mecha/M = A
-		if(M.occupant)
+		var/obj/vehicle/sealed/mecha/M = A
+		if(LAZYLEN(M.occupants))
 			return A
 
 /mob/living/simple_animal/hostile/megafauna/ListTargets()
@@ -52,14 +52,18 @@
 					retaliated = TRUE
 					retaliatedcooldown = world.time + retaliatedcooldowntime
 		else if(ismecha(A))
-			var/obj/mecha/M = A
-			if(M.occupant && M.occupant.client)
+			var/obj/vehicle/sealed/mecha/M = A
+			var/list/occupants = LAZYCOPY(M.occupants)
+			if(occupants.len)
 				enemies |= M
-				enemies |= M.occupant
-				if(!retaliated)
-					src.visible_message("<span class='userdanger'>[src] seems pretty pissed off at [M]!</span>")
-					retaliated = TRUE
-					retaliatedcooldown = world.time + retaliatedcooldowntime
+				for(var/mob/living/living in occupants)
+					if(!living.client)
+						continue
+					enemies |= living
+					if(!retaliated)
+						visible_message("<span class='userdanger'>[src] seems pretty pissed off at [M]!</span>")
+						retaliated = TRUE
+						retaliatedcooldown = world.time + retaliatedcooldowntime
 
 	for(var/mob/living/simple_animal/hostile/megafauna/H in around)
 		if(faction_check_mob(H) && !attack_same && !H.attack_same)

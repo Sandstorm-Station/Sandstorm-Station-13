@@ -42,7 +42,7 @@
 	icon_state = null
 	damage = 50
 	damage_type = BRUTE
-	flag = "bomb"
+	flag = BOMB
 	range = 4
 	log_override = TRUE
 
@@ -221,7 +221,7 @@
 	icon_state = null
 	damage = 40
 	damage_type = BRUTE
-	flag = "bomb"
+	flag = BOMB
 	range = 3
 	log_override = TRUE
 
