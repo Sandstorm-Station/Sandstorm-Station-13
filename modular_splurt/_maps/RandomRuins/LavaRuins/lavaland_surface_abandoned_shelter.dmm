@@ -1,7 +1,7 @@
 //MAP CONVERTED BY dmm2tgm.py THIS HEADER COMMENT PREVENTS RECONVERSION, DO NOT REMOVE
 "aj" = (
 /obj/item/wallframe/airalarm,
-/turf/open/floor/plasteel,
+/turf/open/floor/plasteel/airless,
 /area/lavaland/surface/outdoors)
 "bp" = (
 /obj/structure/cable{
@@ -23,7 +23,7 @@
 	icon_state = "4-8"
 	},
 /obj/machinery/door/airlock/atmos/glass,
-/turf/open/floor/plasteel,
+/turf/open/floor/plasteel/airless,
 /area/lavaland/surface/outdoors)
 "cZ" = (
 /obj/item/tank/internals/oxygen,
@@ -51,7 +51,7 @@
 /area/lavaland/surface/outdoors)
 "eP" = (
 /obj/item/stack/cable_coil/cut,
-/turf/open/floor/plasteel,
+/turf/open/floor/plasteel/airless,
 /area/lavaland/surface/outdoors)
 "fi" = (
 /obj/structure/cable{
@@ -74,16 +74,15 @@
 /obj/structure/cable{
 	icon_state = "2-8"
 	},
-/turf/open/floor/plasteel,
+/turf/open/floor/plasteel/airless,
 /area/lavaland/surface/outdoors)
 "ir" = (
 /obj/item/stock_parts/cell,
-/turf/open/floor/plasteel,
+/turf/open/floor/plasteel/airless,
 /area/lavaland/surface/outdoors)
 "jO" = (
 /obj/structure/window/reinforced/spawner/west,
 /obj/structure/window/reinforced/spawner,
-/obj/machinery/atmospherics/components/unary/vent_scrubber/layer1,
 /obj/effect/mapping_helpers/no_lava,
 /turf/open/floor/plating/asteroid/basalt/lava_land_surface,
 /area/lavaland/surface/outdoors)
@@ -102,7 +101,7 @@
 /obj/structure/cable{
 	icon_state = "2-8"
 	},
-/turf/open/floor/plasteel,
+/turf/open/floor/plasteel/airless,
 /area/lavaland/surface/outdoors)
 "nu" = (
 /obj/structure/cable{
@@ -115,14 +114,13 @@
 /area/lavaland/surface/outdoors)
 "nz" = (
 /obj/structure/grille,
-/obj/structure/window/reinforced/fulltile,
-/turf/open/floor/plasteel,
+/turf/open/floor/plasteel/airless,
 /area/lavaland/surface/outdoors)
 "oN" = (
 /obj/structure/cable{
 	icon_state = "1-2"
 	},
-/turf/open/floor/plasteel,
+/turf/open/floor/plasteel/airless,
 /area/lavaland/surface/outdoors)
 "pE" = (
 /obj/item/vending_refill/kink,
@@ -145,15 +143,16 @@
 /obj/item/stack/sheet/mineral/diamond{
 	amount = 5
 	},
-/turf/open/floor/plasteel,
+/turf/open/floor/plasteel/airless,
 /area/lavaland/surface/outdoors)
 "uP" = (
 /obj/structure/grille,
-/turf/open/floor/plasteel,
+/obj/structure/window/reinforced/fulltile,
+/turf/open/floor/plasteel/airless,
 /area/lavaland/surface/outdoors)
 "wd" = (
 /obj/structure/frame/machine,
-/turf/open/floor/plasteel,
+/turf/open/floor/plasteel/airless,
 /area/lavaland/surface/outdoors)
 "wj" = (
 /obj/structure/cable{
@@ -166,7 +165,7 @@
 /area/lavaland/surface/outdoors)
 "wk" = (
 /obj/item/stack/sheet/metal/ten,
-/turf/open/floor/plasteel,
+/turf/open/floor/plasteel/airless,
 /area/lavaland/surface/outdoors)
 "wF" = (
 /obj/item/circuitboard/machine/mining_equipment_vendor/golem,
@@ -181,7 +180,7 @@
 "zu" = (
 /obj/structure/cable,
 /obj/item/stack/sheet/metal/ten,
-/turf/open/floor/plasteel,
+/turf/open/floor/plasteel/airless,
 /area/lavaland/surface/outdoors)
 "AW" = (
 /obj/structure/window/reinforced/spawner,
@@ -209,7 +208,7 @@
 /area/lavaland/surface/outdoors)
 "CV" = (
 /obj/machinery/door/airlock/external/glass,
-/turf/open/floor/plasteel,
+/turf/open/floor/plasteel/airless,
 /area/lavaland/surface/outdoors)
 "CX" = (
 /obj/effect/mob_spawn/human/wandering_hermit,
@@ -228,14 +227,17 @@
 "ER" = (
 /obj/structure/window/reinforced/spawner/east,
 /obj/structure/window/reinforced/spawner,
-/obj/machinery/atmospherics/components/unary/vent_scrubber/layer1,
+/obj/machinery/atmospherics/components/unary/vent_scrubber/layer1{
+	anchored = 0;
+	dir = 8
+	},
 /obj/effect/mapping_helpers/no_lava,
 /obj/item/pipe_dispenser,
 /turf/open/floor/plating/asteroid/basalt/lava_land_surface,
 /area/lavaland/surface/outdoors)
 "FZ" = (
 /obj/item/stack/cable_coil/red,
-/turf/open/floor/plasteel,
+/turf/open/floor/plasteel/airless,
 /area/lavaland/surface/outdoors)
 "GU" = (
 /obj/structure/cable,
@@ -272,12 +274,12 @@
 /obj/structure/frame/machine,
 /obj/item/stock_parts/micro_laser/high,
 /obj/item/stock_parts/matter_bin/adv,
-/turf/open/floor/plasteel,
+/turf/open/floor/plasteel/airless,
 /area/lavaland/surface/outdoors)
 "Ku" = (
 /obj/item/wallframe/apc,
 /obj/structure/frame/machine,
-/turf/open/floor/plasteel,
+/turf/open/floor/plasteel/airless,
 /area/lavaland/surface/outdoors)
 "KS" = (
 /obj/structure/cable{
@@ -290,10 +292,10 @@
 	icon_state = "4-8"
 	},
 /obj/item/crowbar,
-/turf/open/floor/plasteel,
+/turf/open/floor/plasteel/airless,
 /area/lavaland/surface/outdoors)
 "Nq" = (
-/turf/open/floor/plasteel,
+/turf/open/floor/plasteel/airless,
 /area/lavaland/surface/outdoors)
 "Pm" = (
 /obj/structure/girder,
@@ -327,7 +329,7 @@
 /obj/item/electronics/airalarm,
 /obj/structure/closet/crate,
 /obj/item/circuitboard/machine/vendor,
-/turf/open/floor/plasteel,
+/turf/open/floor/plasteel/airless,
 /area/lavaland/surface/outdoors)
 "SS" = (
 /obj/machinery/atmospherics/pipe/simple/cyan/visible/layer1{
@@ -347,6 +349,9 @@
 /obj/item/stock_parts/capacitor/adv,
 /turf/open/floor/plating/asteroid/basalt/lava_land_surface,
 /area/lavaland/surface/outdoors)
+"Tz" = (
+/turf/template_noop,
+/area/template_noop)
 "UD" = (
 /obj/structure/cable{
 	icon_state = "0-8"
@@ -355,14 +360,14 @@
 /area/lavaland/surface/outdoors)
 "UE" = (
 /obj/machinery/door/airlock/glass,
-/turf/open/floor/plasteel,
+/turf/open/floor/plasteel/airless,
 /area/lavaland/surface/outdoors)
 "UK" = (
 /obj/machinery/door/airlock/public/glass,
 /obj/structure/cable{
 	icon_state = "1-2"
 	},
-/turf/open/floor/plasteel,
+/turf/open/floor/plasteel/airless,
 /area/lavaland/surface/outdoors)
 "VT" = (
 /obj/item/card/id/mining,
@@ -380,7 +385,7 @@
 /area/lavaland/surface/outdoors)
 "Yl" = (
 /obj/effect/decal/cleanable/semendrip,
-/turf/open/floor/plasteel,
+/turf/open/floor/plasteel/airless,
 /area/lavaland/surface/outdoors)
 "Yt" = (
 /obj/structure/cable{
@@ -392,32 +397,30 @@
 /obj/structure/cable{
 	icon_state = "4-8"
 	},
-/turf/open/floor/plasteel,
+/turf/open/floor/plasteel/airless,
 /area/lavaland/surface/outdoors)
 
 (1,1,1) = {"
-QQ
-QQ
-QQ
-ha
-ha
-QQ
-QQ
-QQ
-QQ
-QQ
-QQ
-ha
-ha
-QQ
-QQ
-ha
+Tz
+Tz
+Tz
+Tz
+Tz
+Tz
+Tz
+Tz
+Tz
+Tz
+Tz
+Tz
+Tz
+Tz
+Tz
+Tz
 "}
 (2,1,1) = {"
-QQ
-ha
-QQ
-QQ
+Tz
+Tz
 QQ
 QQ
 QQ
@@ -425,14 +428,16 @@ QQ
 QQ
 QQ
 QQ
-QQ
-ha
-ha
-QQ
-QQ
+Tz
+Tz
+Tz
+Tz
+Tz
+Tz
+Tz
 "}
 (3,1,1) = {"
-ha
+Tz
 QQ
 QQ
 Pm
@@ -444,13 +449,13 @@ Qn
 QQ
 QQ
 QQ
-QQ
-QQ
-QQ
-QQ
+Tz
+Tz
+Tz
+Tz
 "}
 (4,1,1) = {"
-ha
+QQ
 QQ
 ha
 Pm
@@ -463,9 +468,9 @@ Qn
 Qn
 QQ
 QQ
-QQ
-QQ
-QQ
+Tz
+Tz
+Tz
 "}
 (5,1,1) = {"
 QQ
@@ -482,8 +487,8 @@ Qn
 ha
 QQ
 QQ
-QQ
-QQ
+Tz
+Tz
 "}
 (6,1,1) = {"
 QQ
@@ -501,7 +506,7 @@ ha
 ha
 QQ
 QQ
-QQ
+Tz
 "}
 (7,1,1) = {"
 QQ
@@ -519,7 +524,7 @@ Qn
 ha
 QQ
 QQ
-QQ
+Tz
 "}
 (8,1,1) = {"
 QQ
@@ -615,7 +620,7 @@ Qn
 ha
 Qn
 Qn
-nz
+uP
 jO
 Jb
 UD
@@ -633,7 +638,7 @@ Qn
 QQ
 Qn
 Qn
-uP
+nz
 ER
 We
 ha
@@ -669,7 +674,7 @@ Qn
 QQ
 Qn
 Dz
-nz
+uP
 yv
 SS
 QN
@@ -687,7 +692,7 @@ Qn
 QQ
 Qn
 Qn
-nz
+uP
 AW
 IK
 ig
@@ -738,7 +743,7 @@ ch
 Qn
 "}
 (20,1,1) = {"
-QQ
+Tz
 QQ
 QQ
 ch

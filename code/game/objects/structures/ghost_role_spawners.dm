@@ -68,7 +68,7 @@
 	yolk.fully_replace_character_name(null,random_unique_lizard_name(gender))
 	yolk.set_species(/datum/species/lizard/ashwalker)
 	yolk.underwear = "Nude"
-	yolk.equipOutfit(/datum/outfit/ashwalker)//this is an authentic mess we're making
+	//yolk.equipOutfit(/datum/outfit/ashwalker)//this is an authentic mess we're making
 	yolk.update_body()
 	yolk.gib()
 	QDEL_NULL(egg)
@@ -122,8 +122,9 @@
 		H.undershirt = "Nude"
 		H.socks = "Nude"
 		H.update_body()
-		new_spawn.mind.add_antag_datum(/datum/antagonist/ashwalker, team)
-		team.players_spawned += (new_spawn.key)
+		if(team)
+			new_spawn.mind.add_antag_datum(/datum/antagonist/ashwalker, team)
+			team.players_spawned += (new_spawn.key)
 		eggshell.egg = null
 		QDEL_NULL(eggshell)
 
