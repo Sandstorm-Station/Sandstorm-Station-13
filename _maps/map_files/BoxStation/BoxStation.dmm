@@ -55912,7 +55912,9 @@
 	dir = 8;
 	network = list("ss13","medbay")
 	},
-/obj/machinery/stasis,
+/obj/machinery/sleeper{
+	dir = 8
+	},
 /turf/open/floor/plasteel,
 /area/medical/medbay/central)
 "iYE" = (
@@ -65737,7 +65739,9 @@
 /turf/open/floor/plasteel,
 /area/engineering/gravity_generator)
 "vFU" = (
-/obj/machinery/stasis,
+/obj/machinery/sleeper{
+	dir = 8
+	},
 /turf/open/floor/plasteel,
 /area/medical/medbay/central)
 "vFZ" = (

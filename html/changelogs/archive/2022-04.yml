@@ -96,11 +96,22 @@
   - rscadd: Adds stasis beds and related mechanics
   - rscdel: Removed mapped in sleepers from station maps. Shuttles have it but centcomm
       doesn't.
+  NatSCP:
+  - rscadd: John Syndicate
+  - tweak: Replaced Circuitry with Botany
   SandPoot:
   - bugfix: Medigaxes can actually be built now.
+  - bugfix: The action button for leaving mechs actually works!
+  - bugfix: The medigax no longer uses gygax armor plates to be built!
+  - bugfix: The firefighter ripley is now visible during construction.
   Solaris-Shade:
   - bugfix: fixed a few projectile lines
   - code_imp: changed a large block of the projectile code
   - refactor: refactored most of the projectile code
+  kiwilover8:
+  - rscadd: Added tinyfans to the default escape pod door
   tiviplus, lolman360, SandPoot:
   - refactor: /obj/mecha > /obj/vehicle/sealed/mecha
+2022-04-10:
+  kiwilover8:
+  - tweak: reverts the shitshow with the terrible fucking stasis beds
