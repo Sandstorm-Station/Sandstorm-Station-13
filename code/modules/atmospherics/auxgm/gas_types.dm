@@ -55,9 +55,6 @@
 	heat_penalty = 15
 	transmit_modifier = 4
 	powermix = 1
-	fire_burn_rate = OXYGEN_BURN_RATE_BASE // named when plasma fires were the only fires, surely
-	fire_temperature = FIRE_MINIMUM_TEMPERATURE_TO_EXIST
-	fire_products = "plasma_fire"
 	enthalpy = FIRE_PLASMA_ENERGY_RELEASED // 3000000, 3 megajoules, 3000 kj
 
 /datum/gas/water_vapor
@@ -128,11 +125,8 @@
 	powermix = 1
 	heat_penalty = 10
 	transmit_modifier = 30
-	fire_products = list(GAS_H2O = 1)
 	enthalpy = 300000
-	fire_burn_rate = 2
 	fire_radiation_released = 50 // arbitrary number, basically 60 moles of trit burning will just barely start to harm you
-	fire_temperature = FIRE_MINIMUM_TEMPERATURE_TO_EXIST - 50
 
 /datum/gas/bz
 	id = GAS_BZ

@@ -114,7 +114,7 @@
 //tritium combustion: combustion of oxygen and tritium (treated as hydrocarbons). creates hotspots. exothermic
 /datum/gas_reaction/tritfire
 	priority = -1 //fire should ALWAYS be last, but tritium fires happen before plasma fires
-	exclude = TRUE // generic fire now takes care of this
+	exclude = FALSE // generic fire now takes care of this
 	name = "Tritium Combustion"
 	id = "tritfire"
 
@@ -196,7 +196,7 @@
 /datum/gas_reaction/plasmafire
 	priority = -2 //fire should ALWAYS be last, but plasma fires happen after tritium fires
 	name = "Plasma Combustion"
-	exclude = TRUE // generic fire now takes care of this
+	exclude = FALSE // generic fire now takes care of this
 	id = "plasmafire"
 
 /datum/gas_reaction/plasmafire/init_reqs()
