@@ -41,3 +41,9 @@
   - refactor: refactored most of the projectile code
   tiviplus, lolman360, SandPoot:
   - refactor: /obj/mecha > /obj/vehicle/sealed/mecha
+2022-04-11:
+  SandPoot:
+  - tweak: Tweaks clothing checks to be more precise if something is covering something
+      else.
+  - bugfix: Splits interactions that expected you to only have one genital.
+  - code_imp: Files have been created for labeling reasons.
