@@ -39,7 +39,7 @@
 					C.adjustOrganLoss(ORGAN_SLOT_BRAIN, rand(3,7))
 	else
 		message = "forcefully slides [u_His] cock inside \the <b>[partner]</b>'s [partner.has_ears() ? "ear":"earsocket"]."
-		user.set_is_fucking(partner, CUM_TARGET_EARS, user.getorganslot(ORGAN_SLOT_PENIS) ? user.getorganslot(ORGAN_SLOT_PENIS) : null)
+		user.set_is_fucking(partner, CUM_TARGET_EARS, user.getorganslot(ORGAN_SLOT_PENIS))
 
 	playlewdinteractionsound(get_turf(user), pick('modular_sand/sound/interactions/champ1.ogg',
 												'modular_sand/sound/interactions/champ2.ogg'), 50, 1, -1)

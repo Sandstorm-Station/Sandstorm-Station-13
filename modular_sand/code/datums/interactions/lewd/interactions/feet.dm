@@ -133,7 +133,7 @@
 	else
 		message = "[pick("[shoes ? "positions [u_His] [shoes] on" :"positions [u_His] foot on"] \the <b>[partner]</b>'s cock.",
 			"starts playing around with \the <b>[partner]</b>'s cock, using [u_His] [shoes ? shoes :"foot"].")]"
-		partner.set_is_fucking(user, CUM_TARGET_FEET, partner.getorganslot(ORGAN_SLOT_PENIS) ? partner.getorganslot(ORGAN_SLOT_PENIS) : null)
+		partner.set_is_fucking(user, CUM_TARGET_FEET, partner.getorganslot(ORGAN_SLOT_PENIS))
 
 	playlewdinteractionsound(get_turf(user), pick('modular_sand/sound/interactions/foot_dry1.ogg',
 						'modular_sand/sound/interactions/foot_dry3.ogg',
