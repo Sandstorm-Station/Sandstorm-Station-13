@@ -1,3 +1,7 @@
+//Butt (main code edit)
+/datum/sprite_accessory/butt
+	icon = 'modular_splurt/icons/obj/genitals/butt_onmob.dmi'
+
 //Vaginas
 /datum/sprite_accessory/vagina/cloaca
 	name = "Cloaca"
