@@ -566,7 +566,13 @@ SUBSYSTEM_DEF(job)
 	var/jobstext = file2text("[global.config.directory]/jobs.txt")
 	for(var/datum/job/J in occupations)
 		var/regex/jobs = new("[J.title]=(-1|\\d+),(-1|\\d+)")
+		/* tempt edit
 		jobs.Find(jobstext)
+		*/
+		if(!jobs.Find(jobstext))
+			stack_trace("LoadJobs - No job entry found in [jobstext]! Job = [J.title]")
+			continue
+		//tempt edit end
 		J.total_positions = text2num(jobs.group[1])
 		J.spawn_positions = text2num(jobs.group[2])
 
