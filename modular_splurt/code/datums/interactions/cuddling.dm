@@ -15,7 +15,7 @@
 		"USER passionately nuzzles TARGET.",
 		"USER lovingly nuzzles TARGET.",
 		"USER embraces TARGET.",
-		"USER embraces TARGET in a soft embrace.",
+		"USER embraces TARGET in a soft cuddle.",
 		"USER passionately embraces TARGET.",
 		"USER lovingly embraces TARGET.",
 	)
