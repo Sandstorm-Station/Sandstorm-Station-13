@@ -80,7 +80,7 @@
 	last_lewd_datum = null
 	last_genital = null
 
-/mob/living/Initialize()
+/mob/living/Initialize(mapload)
 	. = ..()
 	sexual_potency =rand(10,25)
 	lust_tolerance = rand(75,200)

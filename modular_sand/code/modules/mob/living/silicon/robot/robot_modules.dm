@@ -73,7 +73,7 @@
 		rebuild_modules()
 	return I
 
-/obj/item/robot_module/engineering/Initialize()
+/obj/item/robot_module/engineering/Initialize(mapload)
 	basic_modules += /obj/item/pen
 	basic_modules += /obj/item/stack/sheet/plasmaglass/cyborg
 	basic_modules += /obj/item/stack/sheet/plasmarglass/cyborg
@@ -81,7 +81,7 @@
 	basic_modules += /obj/item/stack/sheet/mineral/plasma/cyborg
 	. = ..()
 
-/obj/item/robot_module/butler/Initialize()
+/obj/item/robot_module/butler/Initialize(mapload)
 	basic_modules -= /obj/item/reagent_containers/borghypo/borgshaker
 	basic_modules += /obj/item/reagent_containers/borghypo/borgshaker/beershaker
 	basic_modules += /obj/item/reagent_containers/borghypo/borgshaker/juiceshaker
@@ -89,7 +89,7 @@
 	basic_modules += /obj/item/reagent_containers/borghypo/borgshaker/miscshaker
 	. = ..()
 
-/obj/item/robot_module/miner/Initialize()
+/obj/item/robot_module/miner/Initialize(mapload)
 	basic_modules += /obj/item/card/id/miningborg
 	. = ..()
 
@@ -210,6 +210,6 @@
 	moduleselect_icon = "standard"
 	hat_offset = -3
 
-/obj/item/robot_module/Initialize()
+/obj/item/robot_module/Initialize(mapload)
 	basic_modules += /obj/item/dildo/custom
 	. = ..()
