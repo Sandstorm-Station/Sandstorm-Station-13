@@ -26,8 +26,9 @@ Based and maintained from SPLURT Station, which is (not) based and maintained fr
 * **Code:** https://github.com/SPLURT-Station/S.P.L.U.R.T-Station-13
 
 **TemptStation Information**
-* **Code:** https://github.com/TemptStation/TemptStation13
+* **Code:** https://github.com/TemptStation/TemptStation
 * **Discord:** https://discord.gg/PF4eKGWpam
+* **Patreon:** https://www.patreon.com/temptstation
 
 ## DOWNLOADING
 [Downloading](.github/guides/DOWNLOADING.md)
