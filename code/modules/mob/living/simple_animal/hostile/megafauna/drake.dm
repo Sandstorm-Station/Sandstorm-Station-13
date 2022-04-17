@@ -204,7 +204,7 @@ Difficulty: Medium
 			return 0 // nothing to attack in the arena time for enraged attack if we still have a target
 		for(var/turf/T in turfs)
 			if(!(T in empty))
-				new /obj/effect/temp_visual/lava_warning(T)
+				new /obj/effect/temp_visual/lava_warning(T, 13) //fuck you sand
 			else if(!istype(T, /turf/closed/indestructible))
 				new /obj/effect/temp_visual/lava_safe(T)
 		amount--
