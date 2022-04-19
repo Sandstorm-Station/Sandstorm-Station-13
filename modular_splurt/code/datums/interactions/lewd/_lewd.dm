@@ -497,7 +497,7 @@
 		lines = list(
 			" slides [u_His] [pick(GLOB.dick_nouns)] back and forth under \the <b>[target]</b>'s [pick(musk)] armpit",
 			"'s cock drools pre all over \the <b>[target]</b>'s [pick(musk)] armpit, thoroughly fucking its warm embrace",
-			" shovhes [u_His] [pick(GLOB.dick_nouns)] under \the <b>[target]</b>'s arm, using [t_His] [pick(musk)] pit like a fleshlight"
+			" shoves [u_His] [pick(GLOB.dick_nouns)] under \the <b>[target]</b>'s arm, using [t_His] [pick(musk)] pit like a fleshlight"
 		)
 	else
 		if(target.is_topless())
