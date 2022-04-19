@@ -18,7 +18,7 @@
 	)
 	var/list/extra_contraband = list(
 		//Lewd-Clothes
-		/obj/item/dildo/flared/huge = 3,
+		// /obj/item/dildo/flared/huge = 3,
 		/obj/item/clothing/glasses/hypno = 3,
 		/obj/item/clothing/neck/mind_collar = 3,
 		/obj/item/key/latex = 5,
