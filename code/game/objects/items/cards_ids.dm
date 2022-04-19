@@ -218,7 +218,7 @@
 	if(my_store)
 		my_store.my_card = null
 		my_store = null
-	cached_flat_icon = null //tempt edit
+	cached_flat_icon = null //SPLURT edit
 	return ..()
 
 /obj/item/card/id/vv_edit_var(var_name, var_value)

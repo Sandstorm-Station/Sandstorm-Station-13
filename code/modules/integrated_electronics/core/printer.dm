@@ -104,7 +104,7 @@
 	return ..()
 
 /obj/item/integrated_circuit_printer/attack_self(mob/user)
-	return
+	interact(user)
 
 /obj/item/integrated_circuit_printer/interact(mob/user)
 	if(!(in_range(src, user) || issilicon(user)))

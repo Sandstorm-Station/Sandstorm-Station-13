@@ -32,7 +32,7 @@
 		var/confirm = alert(src, "Send [O]([ckey]) back to the lobby without respawn restrictions?", "Send to Lobby", "Yes", "No")
 		if(confirm != "Yes")
 			return
-		//tempt edit
+		//SPLURT edit
 		if(!O.client)
 			to_chat(src, "The user has left the game.")
 			return
@@ -47,7 +47,7 @@
 		var/confirm = alert(src, "Remove [NP]'s respawn restrictions?", "Remove Restrictions", "Yes", "No")
 		if(confirm != "Yes")
 			return
-		//tempt edit
+		//SPLURT edit
 		if(!NP.client)
 			to_chat(src, "The user has left the game.")
 			return
