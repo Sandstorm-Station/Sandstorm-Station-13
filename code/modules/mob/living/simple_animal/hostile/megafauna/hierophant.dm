@@ -494,6 +494,10 @@ Difficulty: Normal
 	. = ..()
 	if(QDELETED(caster))
 		return FALSE
+	// SPLURT edit
+	if(caster in mover.buckled_mobs) //vehicles.
+		return TRUE //double edged sword but w/e.
+	//
 	if(mover == caster.pulledby)
 		return TRUE
 	if(istype(mover, /obj/item/projectile))
@@ -502,6 +506,7 @@ Difficulty: Normal
 			return TRUE
 	if(mover == caster)
 		return TRUE
+	return FALSE //SPLURT edit
 
 /obj/effect/temp_visual/hierophant/chaser //a hierophant's chaser. follows target around, moving and producing a blast every speed deciseconds.
 	duration = 98

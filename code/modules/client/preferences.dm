@@ -220,6 +220,7 @@ GLOBAL_LIST_EMPTY(preferences_datums)
 "ipc_screen" = "Sunburst",
 "ipc_antenna" = "None",
 "flavor_text" = "",
+"naked_flavor_text" = "", //SPLURT edit
 "silicon_flavor_text" = "",
 "ooc_notes" = "",
 "meat_type" = "Mammalian",
@@ -485,6 +486,17 @@ GLOBAL_LIST_EMPTY(preferences_datums)
 					dat += "[html_encode(features["flavor_text"])]<BR>" //skyrat - adds <br> and uses html_encode
 			else
 				dat += "[TextPreview(html_encode(features["flavor_text"]))]...<BR>" //skyrat edit, uses html_encode
+			//SPLURT edit - naked flavor text
+			dat += "<h2>Naked Flavor Text</h2>"
+			dat += "<a href='?_src_=prefs;preference=naked_flavor_text;task=input'><b>Set Naked Examine Text</b></a><br>"
+			if(length(features["naked_flavor_text"]) <= 40)
+				if(!length(features["naked_flavor_text"]))
+					dat += "\[...\]<BR>"
+				else
+					dat += "[html_encode(features["naked_flavor_text"])]<BR>"
+			else
+				dat += "[TextPreview(html_encode(features["naked_flavor_text"]))]...<BR>"
+			//SPLURT edit end
 			dat += "<h2>Silicon Flavor Text</h2>"
 			dat += "<a href='?_src_=prefs;preference=silicon_flavor_text;task=input'><b>Set Silicon Examine Text</b></a><br>"
 			if(length(features["silicon_flavor_text"]) <= 40)
@@ -1956,6 +1968,12 @@ GLOBAL_LIST_EMPTY(preferences_datums)
 					if(!isnull(msg))
 						features["flavor_text"] = strip_html_simple(msg, MAX_FLAVOR_LEN, TRUE) //Skyrat edit, removed strip_html_simple()
 
+				//SPLURT edit
+				if("naked_flavor_text")
+					var/msg = input(usr, "Set the naked flavor text in your 'examine' verb. This should be IC, describing how your character would look like if naked.", "Naked Flavor Text", features["naked_flavor_text"]) as message|null
+					if(!isnull(msg))
+						features["naked_flavor_text"] = strip_html_simple(msg, MAX_FLAVOR_LEN, TRUE)
+				//SPLURT edit end
 				if("silicon_flavor_text")
 					var/msg = input(usr, "Set the silicon flavor text in your 'examine' verb. This can also be used for OOC notes and preferences!", "Silicon Flavor Text", features["silicon_flavor_text"]) as message|null //Skyrat edit, removed stripped_multiline_input()
 					if(!isnull(msg))

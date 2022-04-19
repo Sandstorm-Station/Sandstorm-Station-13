@@ -952,6 +952,9 @@ SAVEFILE UPDATING/VERSIONING - 'Simplified', or rather, more coder-friendly ~Car
 	else //We have no old flavortext, default to new
 		S["feature_flavor_text"]		>> features["flavor_text"]
 
+	//SPLURT edit
+	S["feature_naked_flavor_text"]		>> features["naked_flavor_text"]
+	//end
 
 	S["silicon_feature_flavor_text"]		>> features["silicon_flavor_text"]
 
@@ -1106,6 +1109,7 @@ SAVEFILE UPDATING/VERSIONING - 'Simplified', or rather, more coder-friendly ~Car
 	medical_records					= copytext(medical_records, 1, MAX_FLAVOR_LEN)
 
 	features["flavor_text"]			= copytext(features["flavor_text"], 1, MAX_FLAVOR_LEN)
+	features["naked_flavor_text"]	= copytext(features["naked_flavor_text"], 1, MAX_FLAVOR_LEN) //SPLURT edit
 	features["silicon_flavor_text"]			= copytext(features["silicon_flavor_text"], 1, MAX_FLAVOR_LEN)
 	features["ooc_notes"]			= copytext(features["ooc_notes"], 1, MAX_FLAVOR_LEN)
 
