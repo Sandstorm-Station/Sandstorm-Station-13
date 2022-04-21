@@ -412,30 +412,33 @@
 ///Are we wearing something that covers our chest?
 /mob/living/proc/is_topless()
 	for(var/slot in GLOB.slots)
-		var/obj/item/clothing = vars[slot]
-		if(clothing)
-			if(clothing.body_parts_covered & CHEST)
-				return FALSE
+		if(slot in vars)
+			var/obj/item/clothing = vars[slot]
+			if(clothing)
+				if(clothing.body_parts_covered & CHEST)
+					return FALSE
 	// If didn't stop before, then we're topless
 	return TRUE
 
 ///Are we wearing something that covers our groin?
 /mob/living/proc/is_bottomless()
 	for(var/slot in GLOB.slots)
-		var/obj/item/clothing = vars[slot]
-		if(clothing)
-			if(clothing.body_parts_covered & GROIN)
-				return FALSE
+		if(slot in vars)
+			var/obj/item/clothing = vars[slot]
+			if(clothing)
+				if(clothing.body_parts_covered & GROIN)
+					return FALSE
 	// If didn't stop before, then we're bottomless
 	return TRUE
 
 ///Are we wearing something that covers our shoes?
 /mob/living/proc/is_barefoot()
 	for(var/slot in GLOB.slots)
-		var/obj/item/clothing = vars[slot]
-		if(clothing)
-			if(clothing.body_parts_covered & FEET)
-				return FALSE
+		if(slot in vars)
+			var/obj/item/clothing = vars[slot]
+			if(clothing)
+				if(clothing.body_parts_covered & FEET)
+					return FALSE
 	// If didn't stop before, then we're barefoot
 	return TRUE
 
