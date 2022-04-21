@@ -60,7 +60,9 @@
 	if(!milkers || !milktype)
 		return
 
-	var/milktext = initial(milktype)
+	var/datum/reagent/milk = new milktype
+
+	var/milktext = milk.name
 
 	lines = list(
 		"brings [u_His] own milk tanks to [u_His] mouth and sucks deeply into them",
@@ -84,3 +86,4 @@
 			else
 				modifier = 1
 	user.reagents.add_reagent(milktype, rand(1,3 * modifier))
+	qdel(milk)

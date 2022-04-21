@@ -21,7 +21,9 @@
 	if(!milkers || !milktype)
 		return
 
-	var/milktext = initial(milktype)
+	var/datum/reagent/milk = new milktype
+
+	var/milktext = milk.name
 
 	lines = list(
 		"pushes [u_His] breasts against \the <b>[target]</b>'s mouth, squirting [u_His] warm [lowertext(milktext)] into [t_His] mouth",
@@ -45,6 +47,7 @@
 			else
 				modifier = 1
 	target.reagents.add_reagent(milktype, rand(1,3 * modifier))
+	qdel(milk)
 
 /datum/interaction/lewd/titgrope
 	command = "titgrope"
