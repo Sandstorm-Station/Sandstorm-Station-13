@@ -21,7 +21,7 @@
 	if(!milkers || !milktype)
 		return
 
-	var/datum/reagent/milk = new milktype
+	var/datum/reagent/milk = find_reagent_object_from_type(milktype)
 
 	var/milktext = milk.name
 
@@ -47,7 +47,6 @@
 			else
 				modifier = 1
 	target.reagents.add_reagent(milktype, rand(1,3 * modifier))
-	qdel(milk)
 
 /datum/interaction/lewd/titgrope
 	command = "titgrope"
