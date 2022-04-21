@@ -70,3 +70,5 @@
 2022-04-21:
   BongaTheProto:
   - bugfix: fixes breastfeeding interactions
+  SandPoot:
+  - bugfix: Mobs lacking the vars in GLOB.slots won't create infinite runtimes anymore.
