@@ -138,6 +138,11 @@
       as before'
   SandPoot:
   - bugfix: Progressbars no longer stay after completing/failing their task.
+2022-04-17:
+  Putnam3145:
+  - bugfix: 'Fires are back on Linux tweak: Linux-only: plasma and trit fires work
+      as before'
+  SandPoot:
   - bugfix: Fixes testicle shape saving.
   - code_imp: Initialize(mapload)
   - rscadd: Added deadminning preferences (only affects admins).
@@ -162,3 +167,5 @@
   - bugfix: fixes breastfeeding interactions
   ChungusGamer666:
   - rscadd: added cuddling interactions
+  SandPoot:
+  - bugfix: Mobs lacking the vars in GLOB.slots won't create infinite runtimes anymore.
