@@ -71,6 +71,8 @@
 	item_state = icon_state
 
 /obj/item/milking_machine/afterattack(mob/living/carbon/human/H, mob/living/user)
+	if(!istype(H, mob/living/carbon))
+		return
 	if (!on)
 		to_chat(user, "<span class='notice'>You can't use the [src] while it's off.</span>")
 		return
