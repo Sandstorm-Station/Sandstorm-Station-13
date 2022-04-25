@@ -440,24 +440,30 @@
 ///Are we wearing something that covers our chest?
 /mob/living/proc/is_topless()
 	for(var/slot in GLOB.slots)
-		if(src.vars.Find(slot) && src.vars[slot] && src.vars[slot].body_parts_covered & CHEST)
-			return FALSE
+		if(src.vars.Find(slot) && src.vars[slot])
+			var/obj/item/clothing = src.vars[slot]
+			if(clothing.body_parts_covered & CHEST)
+				return FALSE
 	// If didn't stop before, then we're topless
 	return TRUE
 
 ///Are we wearing something that covers our groin?
 /mob/living/proc/is_bottomless()
 	for(var/slot in GLOB.slots)
-		if(src.vars.Find(slot) && src.vars[slot] && src.vars[slot].body_parts_covered & GROIN)
-			return FALSE
+		if(src.vars.Find(slot) && src.vars[slot])
+			var/obj/item/clothing = src.vars[slot]
+			if(clothing.body_parts_covered & GROIN)
+				return FALSE
 	// If didn't stop before, then we're bottomless
 	return TRUE
 
 ///Are we wearing something that covers our shoes?
 /mob/living/proc/is_barefoot()
 	for(var/slot in GLOB.slots)
-		if(src.vars.Find(slot) && src.vars[slot] && src.vars[slot].body_parts_covered & FEET)
-			return FALSE
+		if(src.vars.Find(slot) && src.vars[slot])
+			var/obj/item/clothing = src.vars[slot]
+			if(clothing.body_parts_covered & FEET)
+				return FALSE
 	// If didn't stop before, then we're barefoot
 	return TRUE
 
