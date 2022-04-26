@@ -1,3 +1,19 @@
+//Main code edits
+/obj/structure/table/ComponentInitialize()
+	. = ..()
+	AddElement(/datum/element/crawl_under)
+
+/obj/structure/table/CanPass(atom/movable/mover, turf/target)
+	if(mover.pass_flags & PASSCRAWL)
+		return TRUE
+	return ..()
+
+/obj/structure/table/glass/check_break(mob/living/M)
+	if(M.pass_flags & PASSCRAWL)
+		return
+	. = ..()
+
+//Own stuff
 /obj/structure/table/wood/shadow
 	name = "shadow wood table"
 	icon = 'modular_splurt/icons/obj/smooth_structures/table_shadow.dmi'

@@ -19,6 +19,6 @@
 
 /mob/living/Move(atom/newloc, direct)
 	. = ..()
-	if(.)
+	if(. && !HAS_TRAIT(src, IGNORE_FAKE_Z_AXIS)) //SPLURT edit. don't worry, i hate this too.
 		pseudo_z_axis = newloc.get_fake_z()
 		pixel_z = pseudo_z_axis
