@@ -6,7 +6,7 @@
 /mob/living/simple_animal/hostile/gremlin/Initialize(mapload)
 	. = ..()
 	if(!body_color)
-		body_color = pick(list("orange","blue","purple", "green"))
+		body_color = pick(list("orange","blue","purple", "green", "crystal"))
 	AddElement(/datum/element/mob_holder, "gremlin_[body_color]", alt_worn = icon)
 	icon_state = "gremlin_[body_color]"
 	icon_living = "gremlin_[body_color]"

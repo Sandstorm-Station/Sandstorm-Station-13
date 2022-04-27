@@ -1,3 +1,7 @@
+/obj/structure/bed/ComponentInitialize()
+	. = ..()
+	AddElement(/datum/element/crawl_under)
+
 /obj/structure/bed/Destroy()
 	unbuckle_all_mobs()
 	return ..()

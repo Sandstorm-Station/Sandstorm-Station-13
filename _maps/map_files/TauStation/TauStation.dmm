@@ -25129,6 +25129,9 @@
 /obj/machinery/firealarm{
 	pixel_y = 24
 	},
+/obj/machinery/camera{
+	c_tag = "Cryogenics"
+	},
 /turf/open/floor/plasteel/dark,
 /area/commons/cryopod)
 "iIc" = (
@@ -36100,6 +36103,7 @@
 /obj/structure/closet/secure_closet/chemical,
 /obj/item/construction/plumbing,
 /obj/item/stack/ducts/fifty,
+/obj/item/hand_labeler,
 /turf/open/floor/plasteel/white,
 /area/medical/chemistry)
 "mzY" = (
@@ -41898,6 +41902,11 @@
 	dir = 4;
 	name = "Station Intercom (General)";
 	pixel_x = -27
+	},
+/obj/structure/sink{
+	dir = 8;
+	pixel_x = -12;
+	pixel_y = 2
 	},
 /turf/open/floor/plasteel/white,
 /area/medical/surgery)
@@ -68749,6 +68758,7 @@
 	req_access_txt = "33"
 	},
 /obj/machinery/door/firedoor,
+/obj/item/hand_labeler,
 /turf/open/floor/plasteel/white,
 /area/medical/chemistry)
 "xIc" = (
