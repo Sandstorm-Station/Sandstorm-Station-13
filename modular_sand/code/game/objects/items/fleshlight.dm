@@ -250,6 +250,7 @@
 	var/targetting = "vagina"
 	equip_delay_self = 2 SECONDS
 	equip_delay_other = 5 SECONDS
+	var/signal_registered = FALSE
 
 /obj/item/clothing/underwear/briefs/panties/portalpanties/attack_self(mob/user)
 	. = ..()
@@ -305,10 +306,14 @@
 				update_portal()
 		else
 			update_portal()
-	RegisterSignal(user, COMSIG_PARENT_QDELETING, .proc/drop_out)
+	if(!signal_registered) //Will only register once. Stops a runtime of the signal registering multiple times.
+		RegisterSignal(user, COMSIG_PARENT_QDELETING, .proc/drop_out)
+		signal_registered = TRUE
 
 /obj/item/clothing/underwear/briefs/panties/portalpanties/dropped(mob/user)
-	UnregisterSignal(user, COMSIG_PARENT_QDELETING)
+	if(signal_registered)
+		UnregisterSignal(user, COMSIG_PARENT_QDELETING)
+		signal_registered = FALSE
 	. = ..()
 	update_portal()
 
