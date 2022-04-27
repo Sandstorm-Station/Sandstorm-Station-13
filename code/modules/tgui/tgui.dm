@@ -212,6 +212,8 @@
  * return list
  */
 /datum/tgui/proc/get_payload(custom_data, with_data, with_static_data)
+	if (!user.client)
+		return
 	var/list/json_data = list()
 	json_data["config"] = list(
 		"title" = title,

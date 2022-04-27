@@ -94,7 +94,7 @@ GLOBAL_LIST_EMPTY(mobs_with_editable_flavor_text) //et tu, hacky code
 		var/atom/target = locate(href_list["show_flavor"])
 		var/mob/living/L = target
 		var/text = texts_by_atom[target]
-		if(text || (flavor_name == "OOC Notes") && L.client)
+		if((text || (flavor_name == "OOC Notes")) && L.client)
 			var/content
 			if(flavor_name == "OOC Notes")
 

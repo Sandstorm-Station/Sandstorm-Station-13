@@ -24,6 +24,7 @@
 #define ROLE_MONKEY					"monkey"
 #define ROLE_ABDUCTOR				"abductor"
 #define ROLE_REVENANT				"revenant"
+#define ROLE_QAREEN					"qareen"
 #define ROLE_DEVIL					"devil"
 #define ROLE_SERVANT_OF_RATVAR		"servant of Ratvar"
 #define ROLE_BROTHER				"blood brother"

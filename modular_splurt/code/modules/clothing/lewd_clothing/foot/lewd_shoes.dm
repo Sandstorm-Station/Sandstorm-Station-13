@@ -63,7 +63,8 @@
 	. = ..()
 	var/mob/living/carbon/human/C = user
 	C.update_inv_shoes()
-	C.hud_used.hidden_inventory_update()
+	if(C.hud_used)
+		C.hud_used.hidden_inventory_update()
 
 //////////////////
 ///Domina heels///

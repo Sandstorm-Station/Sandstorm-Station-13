@@ -194,4 +194,6 @@
 	return ..()
 
 /atom/movable/screen/storage/item_holder/Click(location, control, params)
+	if (!our_item)
+		return
 	return our_item.Click(location, control, params)
