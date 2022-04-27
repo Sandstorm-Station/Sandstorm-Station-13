@@ -250,7 +250,6 @@
 	var/targetting = "vagina"
 	equip_delay_self = 2 SECONDS
 	equip_delay_other = 5 SECONDS
-	var/signal_registered = FALSE
 
 /obj/item/clothing/underwear/briefs/panties/portalpanties/attack_self(mob/user)
 	. = ..()
@@ -304,16 +303,13 @@
 				to_chat(user, "<span class='notice'>The panties are not linked to a portal fleshlight.</span>")
 			else
 				update_portal()
+				RegisterSignal(user, COMSIG_PARENT_QDELETING, .proc/drop_out)
 		else
 			update_portal()
-	if(!signal_registered) //Will only register once. Stops a runtime of the signal registering multiple times.
-		RegisterSignal(user, COMSIG_PARENT_QDELETING, .proc/drop_out)
-		signal_registered = TRUE
+			UnregisterSignal(user, COMSIG_PARENT_QDELETING)
 
 /obj/item/clothing/underwear/briefs/panties/portalpanties/dropped(mob/user)
-	if(signal_registered)
-		UnregisterSignal(user, COMSIG_PARENT_QDELETING)
-		signal_registered = FALSE
+	UnregisterSignal(user, COMSIG_PARENT_QDELETING)
 	. = ..()
 	update_portal()
 
