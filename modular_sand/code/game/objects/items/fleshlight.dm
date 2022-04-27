@@ -303,9 +303,10 @@
 				to_chat(user, "<span class='notice'>The panties are not linked to a portal fleshlight.</span>")
 			else
 				update_portal()
+				RegisterSignal(user, COMSIG_PARENT_QDELETING, .proc/drop_out)
 		else
 			update_portal()
-	RegisterSignal(user, COMSIG_PARENT_QDELETING, .proc/drop_out)
+			UnregisterSignal(user, COMSIG_PARENT_QDELETING)
 
 /obj/item/clothing/underwear/briefs/panties/portalpanties/dropped(mob/user)
 	UnregisterSignal(user, COMSIG_PARENT_QDELETING)
