@@ -1,7 +1,9 @@
 /obj/item/organ/genital/breasts/get_features(mob/living/carbon/human/H)
 	var/datum/dna/D = H.dna
 	if(D.features["breasts_fluid"])
-		fluid_id = D.features["breasts_fluid"]
+		var/datum/reagent/fluid = find_reagent_object_from_type(D.features["breasts_fluid"])
+		if(fluid && ((fluid in GLOB.genital_fluids_list) || istype(fluid, H.get_blood_id())))
+			fluid_id = D.features["breasts_fluid"]
 	else
 		fluid_id = initial(fluid_id)
 	original_fluid_id = fluid_id

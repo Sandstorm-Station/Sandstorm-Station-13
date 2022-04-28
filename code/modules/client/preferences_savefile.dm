@@ -5,7 +5,7 @@
 //	You do not need to raise this if you are adding new values that have sane defaults.
 //	Only raise this value when changing the meaning/format/name/layout of an existing value
 //	where you would want the updater procs below to run
-#define SAVEFILE_VERSION_MAX	53
+#define SAVEFILE_VERSION_MAX	53.01
 
 /*
 SAVEFILE UPDATING/VERSIONING - 'Simplified', or rather, more coder-friendly ~Carn
@@ -914,6 +914,7 @@ SAVEFILE UPDATING/VERSIONING - 'Simplified', or rather, more coder-friendly ~Car
 	S["feature_balls_size"]				>> features["balls_size"]
 	S["feature_balls_visibility"]		>> features["balls_visibility"]
 	S["feature_balls_fluid"]			>> features["balls_fluid"]
+	S["feature_womb_fluid"]				>> features["womb_fluid"]
 	S["feature_balls_shape"]			>> features["balls_shape"]
 	//breasts features
 	S["feature_has_breasts"]			>> features["has_breasts"]
@@ -1266,6 +1267,7 @@ SAVEFILE UPDATING/VERSIONING - 'Simplified', or rather, more coder-friendly ~Car
 	WRITE_FILE(S["feature_vag_visibility"], features["vag_visibility"])
 
 	WRITE_FILE(S["feature_has_womb"], features["has_womb"])
+	WRITE_FILE(S["feature_womb_fluid"], features["womb_fluid"])
 
 	WRITE_FILE(S["feature_has_butt"], features["has_butt"])
 	WRITE_FILE(S["feature_butt_color"], features["butt_color"])
