@@ -32,3 +32,12 @@
 /mob/proc/create_player_panel()
 	QDEL_NULL(mob_panel)
 	mob_panel = new(src)
+
+/mob/verb/check_out(atom/A as mob in view())
+	set name = "Check Out"
+	set category = "IC"
+
+	. = examinate(A)
+	if (.)
+		return
+	to_chat(A, "<span class='notice'>[src] seems to be checking you out.</span>")
