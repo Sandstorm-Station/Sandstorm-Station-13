@@ -133,7 +133,8 @@
 		if(!do_after(src, mb_time, target = src) || !in_range(src, container) || !G.climaxable(src, TRUE))
 			return
 	to_chat(src,"<span class='userlove'>You used your [G.name] to fill [container].</span>")
-	message_admins("[src] used their [G.name] to fill [container].")
+	//message_admins("[src] used their [G.name] to fill [container].")
+	message_admins("[ADMIN_LOOKUPFLW(src)] used [p_their()] [G.name] to fill [container] with [G.get_fluid_name()].") //SPLURT edit
 	do_climax(fluid_source, container, G, FALSE, cover = TRUE)
 
 /mob/living/carbon/human/proc/pick_climax_genitals(silent = FALSE)

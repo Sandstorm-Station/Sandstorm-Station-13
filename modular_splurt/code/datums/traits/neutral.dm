@@ -264,3 +264,13 @@
 	hydra.real_name = selhead
 	hydra.visible_message("<span class='notice'>[hydra.name] pulls the rest of their heads back; and puts [selhead]'s forward.</span>", \
 							"<span class='notice'>You are now talking as [selhead]!</span>", ignored_mobs=owner)
+
+//Own traits
+/datum/quirk/cum_sniff
+	name = "Genital Taster"
+	desc = "You've built so much experience savoring other people's genitals through your life that you can easily tell what liquids they're full of (besides blood in their vessels that is)"
+	value = 0
+	mob_trait = TRAIT_GFLUID_DETECT
+	gain_text = "<span class='notice'>You start getting peculiar smells from people's bits.</span>"
+	lose_text = "<span class='notice'>People's genitals start smelling all the same to you...</span>"
+	medical_record_text = "Patient attempted to get their doctor to drag his balls accross their face."

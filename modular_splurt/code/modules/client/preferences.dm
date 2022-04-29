@@ -89,13 +89,15 @@
 		/datum/reagent/consumable/laughsyrup,
 	)
 
-	if(GLOB.genital_fluids_list)
-		return
-
 	GLOB.genital_fluids_list = list()
 
 	var/list/paths = subtypesof(/datum/reagent/consumable)
-	LAZYADD(paths, list(/datum/reagent/water, /datum/reagent/drug/aphrodisiac, /datum/reagent/drug/copium))
+	LAZYADD(paths, list(
+		/datum/reagent/water,
+		/datum/reagent/drug/aphrodisiac,
+		/datum/reagent/drug/copium,
+		/datum/reagent/blood
+	))
 
 	for(var/path in paths)
 		var/datum/reagent/instance = find_reagent_object_from_type(path)
