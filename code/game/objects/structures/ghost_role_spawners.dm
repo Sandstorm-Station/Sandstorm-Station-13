@@ -404,7 +404,7 @@
 
 /datum/outfit/hotelstaff
 	name = "Hotel Staff"
-	uniform = /obj/item/clothing/under/suit/telegram
+	uniform = /obj/item/clothing/under/suit/red
 	shoes = /obj/item/clothing/shoes/laceup
 	head = /obj/item/clothing/head/hotel
 	r_pocket = /obj/item/radio/off
