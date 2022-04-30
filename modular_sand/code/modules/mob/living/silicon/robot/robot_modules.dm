@@ -210,7 +210,7 @@
 	name = "Roleplay"
 	basic_modules = list(
 		/obj/item/assembly/flash/cyborg,
-		/obj/item/extinguisher/mini,
+		/obj/item/extinguisher,
 		/obj/item/weldingtool/largetank/cyborg,
 		/obj/item/screwdriver/cyborg,
 		/obj/item/wrench/cyborg,
@@ -223,6 +223,7 @@
 		/obj/item/stack/rods/cyborg,
 		/obj/item/stack/tile/plasteel/cyborg,
 		/obj/item/stack/cable_coil/cyborg,
+		/obj/item/lightreplacer/cyborg/,
 		/obj/item/restraints/handcuffs/cable/zipties,
 		/obj/item/rsf/cyborg,
 		/obj/item/reagent_containers/food/drinks/drinkingglass,
@@ -232,6 +233,8 @@
 		/obj/item/reagent_containers/borghypo/borgshaker/miscshaker,
 		/obj/item/soap/nanotrasen,
 		/obj/item/borg/cyborghug,
+		/obj/item/healthanalyzer/advanced,
+		/obj/item/reagent_containers/borghypo,
 		/obj/item/dogborg_nose,
 		/obj/item/dogborg_tongue,
 		/obj/item/borg_shapeshifter/stable)
