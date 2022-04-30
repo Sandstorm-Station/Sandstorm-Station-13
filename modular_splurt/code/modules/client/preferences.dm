@@ -114,3 +114,13 @@
 			continue
 
 		LAZYADD(GLOB.genital_fluids_list, instance)
+
+/proc/allowed_gfluid_paths()
+	if(!GLOB.genital_fluids_list)
+		build_genital_fluids_list()
+
+	var/list/allowed
+	for(var/datum/reagent/fluid in GLOB.genital_fluids_list)
+		LAZYADD(allowed, fluid.type)
+
+	return allowed
