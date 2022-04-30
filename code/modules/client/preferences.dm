@@ -2630,6 +2630,8 @@ GLOBAL_LIST_EMPTY(preferences_datums)
 					var/datum/reagent/new_fluid
 					var/list/full_options = list()
 					LAZYADD(full_options, GLOB.genital_fluids_list)
+					LAZYREMOVE(full_options, find_reagent_object_from_type(/datum/reagent/consumable/semen))
+					full_options = list(find_reagent_object_from_type(/datum/reagent/consumable/semen)) + full_options
 					new_fluid = tgui_input_list(user, "Balls Fluid", "Character Preference", full_options)
 					if(new_fluid)
 						features["balls_fluid"] = new_fluid.type
@@ -2665,6 +2667,8 @@ GLOBAL_LIST_EMPTY(preferences_datums)
 					var/datum/reagent/new_fluid
 					var/list/full_options = list()
 					LAZYADD(full_options, GLOB.genital_fluids_list)
+					LAZYREMOVE(full_options, find_reagent_object_from_type(/datum/reagent/consumable/milk))
+					full_options = list(find_reagent_object_from_type(/datum/reagent/consumable/milk)) + full_options
 					new_fluid = tgui_input_list(user, "Breast Fluid", "Character Preference", full_options)
 					if(new_fluid)
 						features["breasts_fluid"] = new_fluid.type
@@ -2695,6 +2699,8 @@ GLOBAL_LIST_EMPTY(preferences_datums)
 					var/datum/reagent/new_fluid
 					var/list/full_options = list()
 					LAZYADD(full_options, GLOB.genital_fluids_list)
+					LAZYREMOVE(full_options, find_reagent_object_from_type(/datum/reagent/consumable/semen/femcum))
+					full_options = list(find_reagent_object_from_type(/datum/reagent/consumable/semen/femcum)) + full_options
 					new_fluid = tgui_input_list(user, "Womb Fluid", "Character Preference", full_options)
 					if(new_fluid)
 						features["womb_fluid"] = new_fluid.type
