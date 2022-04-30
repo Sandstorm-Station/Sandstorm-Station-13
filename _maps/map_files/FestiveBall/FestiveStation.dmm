@@ -53777,11 +53777,6 @@
 	},
 /turf/open/floor/carpet/orange,
 /area/maintenance/bar)
-"fOe" = (
-/obj/effect/decal/festive/christmas_ivy_string,
-/obj/machinery/stasis,
-/turf/open/floor/plasteel/white/side,
-/area/medical/exam_room)
 "fQp" = (
 /obj/structure/cable/yellow{
 	icon_state = "4-8"
@@ -53829,6 +53824,10 @@
 /mob/living/simple_animal/jacq/car_spawner,
 /turf/open/floor/festive/alleyway,
 /area/edina/street/secondary/command)
+"gdf" = (
+/obj/machinery/sleeper,
+/turf/open/floor/plasteel/white/side,
+/area/medical/exam_room)
 "ggz" = (
 /obj/machinery/light/small{
 	dir = 1
@@ -54104,10 +54103,6 @@
 	dir = 4
 	},
 /area/commons/dorms)
-"hXU" = (
-/obj/structure/dresser,
-/turf/open/floor/wood,
-/area/security/prison)
 "hYa" = (
 /obj/machinery/light/small{
 	dir = 1
@@ -54203,6 +54198,18 @@
 	},
 /turf/open/floor/plasteel/cafeteria,
 /area/maintenance/bar/cafe)
+"izC" = (
+/obj/structure/table/wood,
+/obj/item/book/manual/splurt_space_law,
+/obj/item/radio/off{
+	pixel_y = 3
+	},
+/obj/item/taperecorder{
+	pixel_x = -4
+	},
+/obj/item/cartridge/detective,
+/turf/open/floor/carpet,
+/area/command/heads_quarters/hos)
 "iAN" = (
 /obj/machinery/light/floor{
 	alpha = 0;
@@ -54299,15 +54306,6 @@
 /obj/effect/spawner/lootdrop/bedsheet,
 /turf/open/floor/carpet/red,
 /area/commons/dorms)
-"jjc" = (
-/obj/structure/cable/yellow{
-	icon_state = "4-8"
-	},
-/obj/structure/sign/poster/contraband/yes_erp{
-	pixel_y = 32
-	},
-/turf/open/floor/plasteel/white,
-/area/commons/fitness)
 "jqv" = (
 /obj/structure/table/glass,
 /obj/item/toy/fluff/tennis_poly/green,
@@ -54445,6 +54443,25 @@
 /obj/item/reagent_containers/food/drinks/ale,
 /turf/open/floor/wood,
 /area/maintenance/bar)
+"koi" = (
+/obj/structure/table/reinforced,
+/obj/item/book/manual/splurt_space_law,
+/obj/item/radio,
+/obj/machinery/status_display/ai{
+	pixel_y = 32
+	},
+/obj/structure/reagent_dispensers/peppertank{
+	pixel_x = 32
+	},
+/obj/effect/turf_decal/tile/red{
+	dir = 1
+	},
+/obj/effect/turf_decal/tile/red,
+/obj/effect/turf_decal/tile/red{
+	dir = 4
+	},
+/turf/open/floor/plasteel,
+/area/security/checkpoint/science)
 "kpp" = (
 /obj/structure/table/wood,
 /obj/item/clothing/glasses/sunglasses,
@@ -54551,6 +54568,18 @@
 /obj/machinery/nanite_program_hub,
 /turf/open/floor/circuit/off,
 /area/science)
+"lhS" = (
+/obj/structure/table/reinforced,
+/obj/item/book/manual/splurt_space_law,
+/obj/item/radio,
+/obj/machinery/camera{
+	c_tag = "Holodeck"
+	},
+/obj/machinery/firealarm{
+	pixel_y = 26
+	},
+/turf/open/floor/plasteel,
+/area/security/checkpoint/medical)
 "lhY" = (
 /obj/structure/closet/secure_closet/bar,
 /obj/item/storage/box/drinkingglasses,
@@ -54581,25 +54610,6 @@
 /obj/item/lighter/greyscale,
 /turf/open/floor/wood,
 /area/commons/dorms)
-"lzM" = (
-/obj/structure/table/reinforced,
-/obj/item/book/manual/splurt_space_law,
-/obj/item/radio,
-/obj/machinery/status_display/ai{
-	pixel_y = 32
-	},
-/obj/structure/reagent_dispensers/peppertank{
-	pixel_x = 32
-	},
-/obj/effect/turf_decal/tile/red{
-	dir = 1
-	},
-/obj/effect/turf_decal/tile/red,
-/obj/effect/turf_decal/tile/red{
-	dir = 4
-	},
-/turf/open/floor/plasteel,
-/area/security/checkpoint/science)
 "lzS" = (
 /obj/structure/chair/comfy/beige,
 /turf/open/floor/circuit/off,
@@ -54950,17 +54960,6 @@
 	},
 /turf/open/floor/festive/alleyway,
 /area/science)
-"ocb" = (
-/obj/structure/table,
-/obj/item/folder/red,
-/obj/item/pen,
-/obj/item/hand_labeler,
-/obj/item/book/manual/splurt_space_law,
-/obj/machinery/light{
-	dir = 8
-	},
-/turf/open/floor/wood,
-/area/security/warden)
 "oeX" = (
 /obj/machinery/mecha_part_fabricator,
 /obj/effect/decal/festive/christmas_ivy_string,
@@ -55280,10 +55279,6 @@
 /obj/item/integrated_electronics/wirer,
 /turf/open/floor/circuit/off,
 /area/science)
-"pUH" = (
-/obj/machinery/stasis,
-/turf/open/floor/plasteel/white/side,
-/area/medical/exam_room)
 "pVt" = (
 /obj/structure/festive/trainplatform/edge_north,
 /mob/living/simple_animal/jacq/car_spawner,
@@ -55435,6 +55430,14 @@
 /obj/effect/decal/festive/christmas_ivy_string,
 /turf/open/floor/plasteel/white/corner,
 /area/commons/dorms)
+"rdM" = (
+/obj/machinery/stasis{
+	dir = 4
+	},
+/turf/open/floor/plasteel/white/side{
+	dir = 1
+	},
+/area/medical/exam_room)
 "reC" = (
 /obj/structure/rack,
 /obj/item/gun/magic/staff/healing,
@@ -55485,12 +55488,6 @@
 /obj/machinery/microwave,
 /turf/open/floor/wood,
 /area/maintenance/bar)
-"rst" = (
-/obj/machinery/stasis,
-/turf/open/floor/plasteel/white/side{
-	dir = 1
-	},
-/area/medical/exam_room)
 "ruk" = (
 /turf/open/floor/plasteel/white/side{
 	dir = 1
@@ -55557,18 +55554,6 @@
 	},
 /turf/open/floor/plasteel/cafeteria,
 /area/maintenance/bar/cafe)
-"rDQ" = (
-/obj/structure/table/wood,
-/obj/item/book/manual/splurt_space_law,
-/obj/item/radio/off{
-	pixel_y = 3
-	},
-/obj/item/taperecorder{
-	pixel_x = -4
-	},
-/obj/item/cartridge/detective,
-/turf/open/floor/carpet,
-/area/command/heads_quarters/hos)
 "rEg" = (
 /obj/effect/turf_decal/weather/snow/corner,
 /obj/effect/turf_decal/weather/snow/corner{
@@ -55773,6 +55758,11 @@
 	},
 /turf/open/floor/grass/snow/edina,
 /area/edina)
+"sXW" = (
+/obj/effect/decal/festive/christmas_ivy_string,
+/obj/machinery/sleeper,
+/turf/open/floor/plasteel/white/side,
+/area/medical/exam_room)
 "sYK" = (
 /obj/structure/chair/sofa/left{
 	dir = 1
@@ -55840,6 +55830,35 @@
 	},
 /turf/open/floor/plasteel,
 /area/engineering/atmos)
+"tpx" = (
+/obj/structure/table/reinforced,
+/obj/item/book/manual/splurt_space_law,
+/obj/item/radio,
+/obj/machinery/camera{
+	c_tag = "Cargo Security Post"
+	},
+/obj/machinery/firealarm{
+	pixel_y = 26
+	},
+/obj/effect/turf_decal/tile/red{
+	dir = 4
+	},
+/obj/effect/turf_decal/tile/red{
+	dir = 1
+	},
+/turf/open/floor/plasteel,
+/area/security/checkpoint/supply)
+"ttf" = (
+/obj/structure/table,
+/obj/item/folder/red,
+/obj/item/pen,
+/obj/item/hand_labeler,
+/obj/item/book/manual/splurt_space_law,
+/obj/machinery/light{
+	dir = 8
+	},
+/turf/open/floor/wood,
+/area/security/warden)
 "twg" = (
 /obj/structure/fence{
 	dir = 4
@@ -55988,6 +56007,10 @@
 /obj/structure/table/wood,
 /turf/open/floor/wood,
 /area/command/heads_quarters/ce)
+"ult" = (
+/obj/structure/dresser,
+/turf/open/floor/wood,
+/area/security/prison)
 "uma" = (
 /obj/structure/bonfire,
 /turf/open/floor/wood,
@@ -56096,6 +56119,15 @@
 /obj/structure/sign/directions/cells,
 /turf/closed/wall/mineral/iron,
 /area/security/brig)
+"vht" = (
+/obj/structure/cable/yellow{
+	icon_state = "4-8"
+	},
+/obj/structure/sign/poster/contraband/yes_erp{
+	pixel_y = 32
+	},
+/turf/open/floor/plasteel/white,
+/area/commons/fitness)
 "viT" = (
 /obj/effect/turf_decal/stripes/white/full,
 /turf/open/floor/plating/beach/sand,
@@ -56236,30 +56268,6 @@
 	},
 /turf/open/floor/plasteel,
 /area/service/electronic_marketing_den)
-"wmm" = (
-/obj/structure/table/wood,
-/obj/item/pen/red,
-/obj/item/book/manual/splurt_space_law,
-/turf/open/floor/wood,
-/area/service/lawoffice)
-"woG" = (
-/obj/structure/table/reinforced,
-/obj/item/book/manual/splurt_space_law,
-/obj/item/radio,
-/obj/machinery/camera{
-	c_tag = "Cargo Security Post"
-	},
-/obj/machinery/firealarm{
-	pixel_y = 26
-	},
-/obj/effect/turf_decal/tile/red{
-	dir = 4
-	},
-/obj/effect/turf_decal/tile/red{
-	dir = 1
-	},
-/turf/open/floor/plasteel,
-/area/security/checkpoint/supply)
 "wpT" = (
 /obj/structure/fence,
 /turf/open/floor/plating/beach/sand,
@@ -56410,18 +56418,12 @@
 /obj/item/clothing/shoes/winterboots,
 /turf/open/floor/festive/trainplatform,
 /area/edina/street/primary/perimeter)
-"wUd" = (
-/obj/structure/table/reinforced,
+"wSV" = (
+/obj/structure/table/wood,
+/obj/item/pen/red,
 /obj/item/book/manual/splurt_space_law,
-/obj/item/radio,
-/obj/machinery/camera{
-	c_tag = "Holodeck"
-	},
-/obj/machinery/firealarm{
-	pixel_y = 26
-	},
-/turf/open/floor/plasteel,
-/area/security/checkpoint/medical)
+/turf/open/floor/wood,
+/area/service/lawoffice)
 "wWV" = (
 /obj/item/toy/cattoy,
 /turf/open/floor/grass,
@@ -77177,7 +77179,7 @@ cjm
 cki
 bHZ
 bLi
-jjc
+vht
 cfl
 bLi
 cfO
@@ -82037,7 +82039,7 @@ bus
 aTt
 aUh
 bdq
-fOe
+sXW
 bzg
 bdy
 bAC
@@ -82045,7 +82047,7 @@ bBv
 bCn
 bDm
 bDZ
-rst
+rdM
 bdq
 aTt
 aUh
@@ -82808,7 +82810,7 @@ bus
 aTt
 aUh
 bdq
-pUH
+gdf
 bzi
 bdy
 bAH
@@ -82816,7 +82818,7 @@ bBx
 bCq
 bDm
 bEa
-rst
+rdM
 bdq
 aTt
 aZB
@@ -86673,7 +86675,7 @@ bDD
 bfm
 buz
 bFj
-wUd
+lhS
 bGP
 bIH
 bbc
@@ -87138,7 +87140,7 @@ aCn
 aKR
 aLv
 aLY
-lzM
+koi
 aNr
 aOg
 aPd
@@ -96346,7 +96348,7 @@ alo
 amh
 amO
 anm
-hXU
+ult
 aoI
 apu
 aqk
@@ -100206,7 +100208,7 @@ anD
 apy
 aqr
 anl
-ocb
+ttf
 asi
 asi
 atE
@@ -103135,7 +103137,7 @@ bTw
 bDN
 txb
 bVG
-woG
+tpx
 ces
 cez
 bVJ
@@ -104575,7 +104577,7 @@ apc
 apL
 aqC
 ano
-rDQ
+izC
 asr
 arN
 atV
@@ -105099,7 +105101,7 @@ awg
 axb
 axK
 ayx
-wmm
+wSV
 azx
 azO
 axI
