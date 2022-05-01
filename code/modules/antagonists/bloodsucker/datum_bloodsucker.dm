@@ -267,7 +267,6 @@
 		if(bloodsucker_level_unspent >= 2)
 			to_chat(owner, "<span class='announce'>Bloodsucker Tip: If you cannot find or steal a coffin to use, you can build one from wooden planks.</span><br>")
 
-
 /datum/antagonist/bloodsucker/proc/LevelUpPowers()
 	for(var/datum/action/bloodsucker/power in powers)
 		power.level_current ++
