@@ -389,7 +389,7 @@
 	icon_state = "dragon"
 	upgrade_to = SPECIES_WINGS_DRAGON
 
-/datum/sprite_accessory/insect_wings/dragonfly
+/datum/sprite_accessory/insect_wings/modular/dragonfly
 	name = "Dragonfly"
 	icon_state = "dragonfly"
 	upgrade_to = SPECIES_WINGS_INSECT
