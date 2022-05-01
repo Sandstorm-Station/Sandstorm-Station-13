@@ -229,6 +229,7 @@
 		"belly_visibility"	= GEN_VISIBLE_NO_UNDIES,
 		//Hyper's custom fluids
 		"balls_fluid"		= /datum/reagent/consumable/semen,
+		"womb_fluid"		= /datum/reagent/consumable/semen/femcum,
 		"breasts_fluid"		= /datum/reagent/consumable/milk,
 		"ipc_screen"		= snowflake_ipc_antenna_list ? pick(snowflake_ipc_antenna_list) : "None",
 		"ipc_antenna"		= "None",

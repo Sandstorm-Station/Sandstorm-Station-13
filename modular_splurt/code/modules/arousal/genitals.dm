@@ -1,6 +1,7 @@
 /obj/item/organ/genital
 	var/datum/reagents/climax_fluids
 	var/datum/reagent/original_fluid_id
+	var/datum/reagent/default_fluid_id
 	var/list/writtentext = ""
 
 
@@ -19,9 +20,16 @@
 	var/message
 	if(!milkies) //No milkies??
 		return
-	var/datum/reagent/R = GLOB.chemical_reagents_list[milkies]
+	var/datum/reagent/R = find_reagent_object_from_type(milkies)
 	message = R.name
 	return message
+
+/obj/item/organ/genital/proc/get_default_fluid()
+	if(default_fluid_id)
+		return default_fluid_id
+	else if(linked_organ.default_fluid_id)
+		return linked_organ.default_fluid_id
+	return
 
 /obj/item/organ/genital
 	var/list/obj/item/equipment = list()

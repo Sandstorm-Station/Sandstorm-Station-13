@@ -165,6 +165,9 @@
 		for(var/obj/item/organ/genital/dicc in internal_organs)
 			if(istype(dicc) && dicc.is_exposed())
 				. += "[dicc.desc]"
+				if((src == user || HAS_TRAIT(user, TRAIT_GFLUID_DETECT)) && ((dicc.genital_flags & GENITAL_FUID_PRODUCTION) || ((dicc.linked_organ.genital_flags & GENITAL_FUID_PRODUCTION) && !dicc.linked_organ.is_exposed())))
+					var/datum/reagent/cummies = find_reagent_object_from_type(dicc.get_fluid_id())
+					. += "You smell <span style='color:[cummies.color]';>[cummies.name]</span> brewing inside..."
 	if(user.client?.prefs.cit_toggles & VORE_EXAMINE)
 		var/cursed_stuff = attempt_vr(src,"examine_bellies",args) //vore Code
 		if(cursed_stuff)
