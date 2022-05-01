@@ -157,7 +157,7 @@
 			cyborg_icon_override = 'modular_splurt/icons/mob/robots.dmi'
 			hat_offset = 3
 	return ..()
-	
+
 /// Cargo Borgs! ///
 /obj/item/robot_module/cargo
 	name="Cargo"
@@ -181,6 +181,7 @@
 	)
 	cyborg_base_icon = "cargoborg"
 	moduleselect_icon = "cargo"
+	moduleselect_alternate_icon = 'modular_splurt/icons/mob/screen_cyborg.dmi'
 	hat_offset = 3
 
 /obj/item/robot_module/cargo/be_transformed_to(obj/item/robot_module/old_module)
