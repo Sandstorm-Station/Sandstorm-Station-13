@@ -16,4 +16,4 @@
 	materials = list(/datum/material/glass = 500)
 	build_path = /obj/item/implantcase/genital_fluid
 	category = list("Medical Designs")
-	departmental_flags = DEPARTMENTAL_FLAG_SCIENCE | DEPARTMENTAL_FLAG_MEDICAL | DEPARTMENTAL_FLAG_SERVICE
+	departmental_flags = DEPARTMENTAL_FLAG_SCIENCE | DEPARTMENTAL_FLAG_MEDICAL
