@@ -180,6 +180,7 @@
 	BuyPower(new /datum/action/bloodsucker/feed)
 	BuyPower(new /datum/action/bloodsucker/masquerade)
 	BuyPower(new /datum/action/bloodsucker/veil)
+	BuyPower(new /datum/action/bloodsucker/levelup)
 	// Traits
 	for(var/T in defaultTraits)
 		ADD_TRAIT(owner.current, T, BLOODSUCKER_TRAIT)
@@ -265,6 +266,20 @@
 		to_chat(owner, "<EM><span class='notice'>You have grown more ancient! Sleep in a coffin that you have claimed to thicken your blood and become more powerful.</span></EM>")
 		if(bloodsucker_level_unspent >= 2)
 			to_chat(owner, "<span class='announce'>Bloodsucker Tip: If you cannot find or steal a coffin to use, you can build one from wooden planks.</span><br>")
+
+/datum/antagonist/bloodsucker/proc/ForcedRankUp() //I hate this.
+	set waitfor = FALSE
+	if(!owner || !owner.current)
+		return
+	bloodsucker_level_unspent ++
+	// Spend Rank Immediately?
+	if(istype(owner.current.loc, /obj/structure/closet/crate/coffin))
+		SpendRank()
+	else
+		to_chat(owner, "<EM><span class='notice'>You have forced your powers to further through the power of blood; Sleep within your lair to claim your boon.</span></EM>")
+		if(bloodsucker_level_unspent >= 2)
+			to_chat(owner, "<span class='announce'>Bloodsucker Tip: If you cannot find or steal a coffin to use, you can build one from wooden planks.</span><br>")
+
 
 /datum/antagonist/bloodsucker/proc/LevelUpPowers()
 	for(var/datum/action/bloodsucker/power in powers)
