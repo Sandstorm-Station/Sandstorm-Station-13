@@ -213,3 +213,14 @@
 	)
 	LAZYADD(basic_modules, extra)
 	. = ..()
+
+/obj/item/robot_module/roleplay/Initialize()
+	LAZYREMOVE(basic_modules, /obj/item/extinguisher/mini)
+	var/list/extra = list(
+		/obj/item/extinguisher,
+		/obj/item/lightreplacer/cyborg,
+		/obj/item/healthanalyzer/advanced,
+		/obj/item/reagent_containers/borghypo
+	)
+	LAZYADD(basic_modules, extra)
+	. = ..()
