@@ -21,6 +21,9 @@
 
 /obj/item/robot_module/miner
 	added_channels = list(RADIO_CHANNEL_SUPPLY = 1)
+	
+/obj/item/robot_module/cargo
+	added_channels = list(RADIO_CHANNEL_SUPPLY = 1)
 
 /obj/item/robot_module/syndicate
 	added_channels = list(RADIO_CHANNEL_SYNDICATE = 1)
@@ -177,7 +180,8 @@
 		/obj/item/gripper
 	)
 	emag_modules = list(
-		/obj/item/stamp/chameleon
+		/obj/item/stamp/chameleon,
+		/obj/item/borg/stun
 	)
 	cyborg_base_icon = "cargoborg"
 	moduleselect_icon = "cargo"
