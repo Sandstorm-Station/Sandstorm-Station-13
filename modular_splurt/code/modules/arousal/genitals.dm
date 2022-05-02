@@ -11,7 +11,7 @@
 /obj/item/organ/genital/proc/get_fluid_id()
 	if(fluid_id)
 		return fluid_id
-	else if(linked_organ.fluid_id)
+	else if(linked_organ?.fluid_id)
 		return linked_organ.fluid_id
 	return
 
@@ -27,9 +27,15 @@
 /obj/item/organ/genital/proc/get_default_fluid()
 	if(default_fluid_id)
 		return default_fluid_id
-	else if(linked_organ.default_fluid_id)
+	else if(linked_organ?.default_fluid_id)
 		return linked_organ.default_fluid_id
 	return
+
+/obj/item/organ/genital/proc/set_fluid_id(new_fluidtype)
+	if(genital_flags & GENITAL_FUID_PRODUCTION)
+		fluid_id = new_fluidtype
+	else if(linked_organ?.genital_flags & GENITAL_FUID_PRODUCTION)
+		linked_organ?.fluid_id = new_fluidtype
 
 /obj/item/organ/genital
 	var/list/obj/item/equipment = list()

@@ -854,21 +854,6 @@ GLOBAL_LIST_EMPTY(preferences_datums)
 							dat += "<a style='display:block;width:50px' href='?_src_=prefs;preference=balls_fluid;task=input'>[balls_fluid.name]</a>"
 						else
 							dat += "<a style='display:block;width:50px' href='?_src_=prefs;preference=balls_fluid;task=input'>Nothing?</a>"
-						/* //Old
-						switch(features["balls_fluid"])
-							if(/datum/reagent/consumable/milk)
-								dat += "<a style='display:block;width:50px' href='?_src_=prefs;preference=balls_fluid;task=input'>Milk</a>"
-							if(/datum/reagent/water)
-								dat += "<a style='display:block;width:50px' href='?_src_=prefs;preference=balls_fluid;task=input'>Water</a>"
-							if(/datum/reagent/consumable/semen)
-								dat += "<a style='display:block;width:50px' href='?_src_=prefs;preference=balls_fluid;task=input'>Semen</a>"
-							if(/datum/reagent/consumable/semen/femcum)
-								dat += "<a style='display:block;width:50px' href='?_src_=prefs;preference=balls_fluid;task=input'>Femcum</a>"
-							if(/datum/reagent/consumable/alienhoney)
-								dat += "<a style='display:block;width:50px' href='?_src_=prefs;preference=balls_fluid;task=input'>Honey</a>"
-							else
-								dat += "<a style='display:block;width:50px' href='?_src_=prefs;preference=balls_fluid;task=input'>Nothing?</a>"
-						*/
 				dat += "</td>"
 				dat += APPEARANCE_CATEGORY_COLUMN
 				dat += "<h3>Vagina</h3>"
@@ -912,23 +897,6 @@ GLOBAL_LIST_EMPTY(preferences_datums)
 							dat += "<a style='display:block;width:50px' href='?_src_=prefs;preference=breasts_fluid;task=input'>[breasts_fluid.name]</a>"
 						else
 							dat += "<a style='display:block;width:50px' href='?_src_=prefs;preference=breasts_fluid;task=input'>Nothing?</a>"
-						/* //Old
-						switch(features["breasts_fluid"])
-							if(/datum/reagent/consumable/milk)
-								dat += "<a style='display:block;width:50px' href='?_src_=prefs;preference=breasts_fluid;task=input'>Milk</a>"
-							if(/datum/reagent/water)
-								dat += "<a style='display:block;width:50px' href='?_src_=prefs;preference=breasts_fluid;task=input'>Water</a>"
-							if(/datum/reagent/consumable/semen)
-								dat += "<a style='display:block;width:50px' href='?_src_=prefs;preference=breasts_fluid;task=input'>Semen</a>"
-							if(/datum/reagent/consumable/semen/femcum)
-								dat += "<a style='display:block;width:50px' href='?_src_=prefs;preference=breasts_fluid;task=input'>Femcum</a>"
-							if(/datum/reagent/consumable/alienhoney)
-								dat += "<a style='display:block;width:50px' href='?_src_=prefs;preference=breasts_fluid;task=input'>Honey</a>"
-							else
-								dat += "<a style='display:block;width:50px' href='?_src_=prefs;preference=breasts_fluid;task=input'>Nothing?</a>"
-							//This else is a safeguard for errors, and if it happened, they wouldn't be able to change this pref,
-							//DO NOT REMOVE IT UNLESS YOU HAVE A GOOD IDEA
-						*/
 				dat += "</td>"
 				dat += APPEARANCE_CATEGORY_COLUMN
 				dat += "<h3>Butt</h3>"
@@ -1366,6 +1334,11 @@ GLOBAL_LIST_EMPTY(preferences_datums)
 				dat += "<b><span style='color: #e60000;'>Harmful ERP verbs :</b> <a href='?_src_=prefs;preference=extremeharm'>[extremeharm]</a><br>"
 			//END OF SKYRAT EDIT
 			dat += "<b>Automatic Wagging:</b> <a href='?_src_=prefs;preference=auto_wag'>[(cit_toggles & NO_AUTO_WAG) ? "Disabled" : "Enabled"]</a><br>"
+			dat += "<span style='border-radius: 2px;border:1px dotted white;cursor:help;' title='If anyone cums a blacklisted fluid into you, it uses the default fluid for that genital.'>?</span> "
+			dat += "<b><a href='?_src_=prefs;preference=gfluid_black;task=input'>Genital Fluid Blacklist</a></b><br>"
+			if(gfluid_blacklist?.len)
+				dat += "<span style='border-radius: 2px;border:1px dotted white;cursor:help;' title='Remove a genital fluid from your blacklist.'>?</span> "
+				dat += "<b><a href='?_src_=prefs;preference=gfluid_unblack;task=input'>Genital Fluid Un-Blacklist</a></b><br>"
 			dat += "</tr></table>"
 			dat += "<br>"
 		if(KEYBINDINGS_TAB) // Custom keybindings
@@ -2991,6 +2964,25 @@ GLOBAL_LIST_EMPTY(preferences_datums)
 									color_list[color_number] = "#[sanitize_hexcolor(new_marking_color, 6)]"
 								else
 									to_chat(user, "<span class='danger'>Invalid color. Your color is not bright enough.</span>")
+				if("gfluid_black")
+					var/list/datum/reagent/fluid_list = GLOB.genital_fluids_list.Copy()
+					var/list/blacklisted = list()
+					for(var/r in gfluid_blacklist)
+						LAZYADD(blacklisted, find_reagent_object_from_type(r))
+					LAZYREMOVE(fluid_list, GLOB.default_genital_fluids + blacklisted) //these are already blacklisted/are defaults
+					var/datum/reagent/selected = tgui_input_list(user, "Blacklist a fluid:", "Genital Fluid Blacklist", fluid_list)
+					if(selected)
+						LAZYADD(gfluid_blacklist, selected.type)
+				if("gfluid_unblack")
+					var/list/datum/reagent/fluid_list
+					for(var/r in gfluid_blacklist)
+						LAZYADD(fluid_list, find_reagent_object_from_type(r))
+					if(fluid_list)
+						var/datum/reagent/selected = tgui_input_list(user, "Remove a fluid from your blacklist:", "Genital Fluid Blacklist", fluid_list)
+						if(selected)
+							LAZYREMOVE(gfluid_blacklist, selected.type)
+					else
+						to_chat(user, span_warning("You do not have blacklisted reagents!"))
 		else
 			switch(href_list["preference"])
 				if("disable_combat_cursor")
