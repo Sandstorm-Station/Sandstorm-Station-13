@@ -127,7 +127,8 @@ GLOBAL_LIST_INIT(traits_by_type, list(
 		"TRAIT_FRIENDLY" = TRAIT_FRIENDLY,
 		"TRAIT_IWASBATONED" = TRAIT_IWASBATONED,
 		"TRAIT_SPACEWALK" = TRAIT_SPACEWALK,
-		"TRAIT_PRIMITIVE" = TRAIT_PRIMITIVE //unable to use mechs. Given to Ash Walkers
+		"TRAIT_PRIMITIVE" = TRAIT_PRIMITIVE, //unable to use mechs. Given to Ash Walkers
+		"TRAIT_SALT_SENSITIVE" = TRAIT_SALT_SENSITIVE
 	),
 	/obj/item/bodypart = list(
 		"TRAIT_PARALYSIS" = TRAIT_PARALYSIS
