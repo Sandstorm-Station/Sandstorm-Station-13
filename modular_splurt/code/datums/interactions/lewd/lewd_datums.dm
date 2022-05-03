@@ -349,7 +349,6 @@
 	if(!isclownjob(target) || !milkers)
 		return
 
-	var/t_His = target.p_their()
 	var/list/honks = list(
 		"\The <b>[target]</b>'s honkers produce a loud squeak!",
 		"\The <b>[user]</b>'s suck squeezes a honk out of \the <b>[target]</b>'s [pick(GLOB.breast_nouns)]!"
