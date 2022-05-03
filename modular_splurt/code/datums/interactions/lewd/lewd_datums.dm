@@ -242,7 +242,18 @@
 	playlewdinteractionsound(user, 'sound/items/bikehorn.ogg', 40, 1, -1)
 
 /datum/interaction/lewd/do_breastfeed/display_interaction(mob/living/user, mob/living/target)
+	var/obj/item/organ/genital/breasts/milkers = user.getorganslot(ORGAN_SLOT_BREASTS)
+	var/blacklist = target.client?.prefs.gfluid_blacklist
+	var/cached_fluid
+	if((milkers?.get_fluid_id() in blacklist) || ((/datum/reagent/blood in blacklist) && ispath(milkers?.get_fluid_id(), /datum/reagent/blood)))
+		cached_fluid = milkers?.get_fluid_id()
+		milkers?.set_fluid_id(milkers?.default_fluid_id)
+
 	. = ..()
+
+	if(cached_fluid)
+		milkers.set_fluid_id(cached_fluid)
+
 	if(!isclownjob(user))
 		return
 
@@ -297,7 +308,18 @@
 	playlewdinteractionsound(user, 'sound/items/bikehorn.ogg', 40, 1, -1)
 
 /datum/interaction/lewd/self_nipsuck/display_interaction(mob/living/user, mob/living/target)
+	var/obj/item/organ/genital/breasts/milkers = user.getorganslot(ORGAN_SLOT_BREASTS)
+	var/blacklist = target.client?.prefs.gfluid_blacklist
+	var/cached_fluid
+	if((milkers?.get_fluid_id() in blacklist) || ((/datum/reagent/blood in blacklist) && ispath(milkers?.get_fluid_id(), /datum/reagent/blood)))
+		cached_fluid = milkers?.get_fluid_id()
+		milkers?.set_fluid_id(milkers?.default_fluid_id)
+
 	. = ..()
+
+	if(cached_fluid)
+		milkers.set_fluid_id(cached_fluid)
+
 	if(!isclownjob(user))
 		return
 
@@ -310,6 +332,32 @@
 		user.visible_message("<span class='lewd'>[pick(honks)]</span>")
 
 	playlewdinteractionsound(user, 'sound/items/bikehorn.ogg', 40, 1, -1)
+
+/datum/interaction/lewd/nipsuck/display_interaction(mob/living/carbon/human/user, mob/living/carbon/human/target)
+	var/obj/item/organ/genital/breasts/milkers = target.getorganslot(ORGAN_SLOT_BREASTS)
+	var/blacklist = user.client?.prefs.gfluid_blacklist
+	var/cached_fluid
+	if((milkers?.get_fluid_id() in blacklist) || ((/datum/reagent/blood in blacklist) && ispath(milkers?.get_fluid_id(), /datum/reagent/blood)))
+		cached_fluid = milkers?.get_fluid_id()
+		milkers?.set_fluid_id(milkers?.default_fluid_id)
+
+	. = ..()
+
+	if(cached_fluid)
+		milkers.set_fluid_id(cached_fluid)
+
+	if(!isclownjob(target) || !milkers)
+		return
+
+	var/t_His = target.p_their()
+	var/list/honks = list(
+		"\The <b>[target]</b>'s honkers produce a loud squeak!",
+		"\The <b>[user]</b>'s suck squeezes a honk out of \the <b>[target]</b>'s [pick(GLOB.breast_nouns)]!"
+	)
+	if(prob(50))
+		user.visible_message("<span class='lewd'>[pick(honks)]</span>")
+
+	playlewdinteractionsound(target, 'sound/items/bikehorn.ogg', 40, 1, -1)
 
 //Own stuff
 /datum/interaction/lewd/oral/selfsuck
