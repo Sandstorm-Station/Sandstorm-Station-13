@@ -13,7 +13,7 @@
 /mob/living/carbon/human/do_climax(datum/reagents/R, atom/target, obj/item/organ/genital/G, spill, cover = FALSE)
 	if(!G)
 		return
-	if(!target)
+	if(!target || !R)
 		return
 
 	var/cached_fluid
