@@ -23,7 +23,7 @@
 /obj/item/implant/genital_fluid/activate()
 	. = ..()
 	var/list/obj/item/organ/genital/penidlist
-	var/list/datum/reagent/fluidlist
+	var/list/datum/reagent/fluidlist = list()
 	var/mob/living/carbon/human/owner = imp_in
 
 	//List their genitals if they have any at all
