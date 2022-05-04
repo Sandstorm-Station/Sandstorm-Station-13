@@ -13,6 +13,17 @@
 /mob/living/carbon/human/do_climax(datum/reagents/R, atom/target, obj/item/organ/genital/G, spill, cover = FALSE)
 	if(!G)
 		return
+	if(!target || !R)
+		return
+
+	var/cached_fluid
+	if(isliving(target) && !spill)
+		var/mob/living/L = target
+		var/list/blacklist = L.client?.prefs.gfluid_blacklist
+		if((G.get_fluid_id() in blacklist) || ((/datum/reagent/blood in blacklist) && ispath(G.get_fluid_id(), /datum/reagent/blood)))
+			cached_fluid = G.get_fluid_id()
+			var/default = G.get_default_fluid()
+			G.set_fluid_id(default)
 
 	if(istype(G, /obj/item/organ/genital/penis))
 		var/obj/item/organ/genital/penis/bepis = G
@@ -24,7 +35,11 @@
 
 	if(cover)
 		target.add_cum_overlay()
+
 	. = ..()
+
+	if(cached_fluid)
+		G.set_fluid_id(cached_fluid)
 
 /mob/living/carbon/human/mob_fill_container(obj/item/organ/genital/G, obj/item/reagent_containers/container, mb_time, obj/item/milking_machine/M)
 	if(!M)
@@ -71,4 +86,3 @@
 	if(cum_splatter_icon)
 		cut_overlay(cum_splatter_icon)
 	return TRUE
-

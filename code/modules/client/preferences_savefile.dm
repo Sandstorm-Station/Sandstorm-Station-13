@@ -449,6 +449,7 @@ SAVEFILE UPDATING/VERSIONING - 'Simplified', or rather, more coder-friendly ~Car
 	S["be_victim"]				>> be_victim
 	S["disable_combat_cursor"]	>> disable_combat_cursor
 	S["use_new_playerpanel"]	>> use_new_playerpanel
+	S["gfluid_blacklist"]		>> gfluid_blacklist
 	//favorite outfits
 	S["favorite_outfits"]		>> favorite_outfits
 
@@ -514,6 +515,10 @@ SAVEFILE UPDATING/VERSIONING - 'Simplified', or rather, more coder-friendly ~Car
 	//SKYRAT CHANGES BEGIN
 	see_chat_emotes	= sanitize_integer(see_chat_emotes, 0, 1, initial(see_chat_emotes))
 	//SKYRAT CHANGES END
+
+	//SPLURT CHANGES BEGIN
+	gfluid_blacklist = sanitize_islist(gfluid_blacklist, list())
+	//SPLURT CHANGES END
 
 	verify_keybindings_valid()		// one of these days this will runtime and you'll be glad that i put it in a different proc so no one gets their saves wiped
 
@@ -638,6 +643,7 @@ SAVEFILE UPDATING/VERSIONING - 'Simplified', or rather, more coder-friendly ~Car
 	WRITE_FILE(S["be_victim"], be_victim)
 	WRITE_FILE(S["disable_combat_cursor"], disable_combat_cursor)
 	WRITE_FILE(S["use_new_playerpanel"], use_new_playerpanel)
+	WRITE_FILE(S["gfluid_blacklist"], gfluid_blacklist)
 
 	var/mob/living/carbon/human/H = parent.mob
 	if(istype(H))

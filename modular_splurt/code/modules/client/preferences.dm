@@ -1,6 +1,8 @@
 /datum/preferences
 	var/unholypref = "No" //Goin 2 hell fo dis one
 
+	var/list/gfluid_blacklist = list() //Stuff you don't want people to cum into you
+
 /datum/preferences/New(client/C)
 	if(!GLOB.genital_fluids_list)
 		build_genital_fluids_list() //I DON'T KNOW where else to put it, ok??
@@ -87,6 +89,7 @@
 		/datum/reagent/consumable/liquidelectricity,
 		/datum/reagent/consumable/char,
 		/datum/reagent/consumable/laughsyrup,
+		/datum/reagent/consumable/honey, //zad
 	)
 
 	GLOB.genital_fluids_list = list()

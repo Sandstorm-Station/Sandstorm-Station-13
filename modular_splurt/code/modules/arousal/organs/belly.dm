@@ -74,7 +74,7 @@
 		else
 			size_name = "nonexistent"
 
-	desc = "You see a [size_name] [round(size) >= 4 ? "belly, it bounces around and gurgles as [owner] walks" : "belly in [owner.p_their()] midsection"]."
+	desc = "You see a [size_name] [round(size) >= 4 ? "belly, it bounces around and gurgles as [owner] walks" : "belly in [owner?.p_their() ? owner?.p_their() : "their"] midsection"]."
 
 	var/icon_size = size
 	icon_state = "belly_[lowershape]_[icon_size]"
