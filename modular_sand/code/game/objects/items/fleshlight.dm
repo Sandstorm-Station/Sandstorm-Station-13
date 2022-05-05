@@ -75,7 +75,7 @@
 
 /obj/item/portallight
 	name 				= "portal fleshlight"
-	desc 				= "A silver love(TM) fleshlight, used to stimulate someones penis, with bluespace tech that allows lovers to hump at a distance."
+	desc 				= "A silver love(TM) fleshlight, used for self-stimulation, with bluespace tech that allows lovers to hump at a distance. Also functions as a dildo, if your partner has the right parts."
 	icon 				= 'modular_sand/icons/obj/fleshlight.dmi'
 	icon_state 			= "unpaired"
 	item_state 			= "fleshlight"
@@ -87,7 +87,14 @@
 	var/mutable_appearance/sleeve
 	var/mutable_appearance/organ
 	var/obj/item/clothing/underwear/briefs/panties/portalpanties/portalunderwear
+	var/targetting      = "vagina"
 	var/useable 		= FALSE
+
+/obj/item/portallight/attack_self(mob/user)
+	. = ..()
+	if(portalunderwear && portalunderwear.targetting == "penis" && user.getorganslot(ORGAN_SLOT_VAGINA)) // don't really know if this works, too lazy to test it by myself
+		targetting = (targetting == "anus") ? "vagina" : "anus"
+		to_chat(user, "<span class='notice'>Now when using the dildo, it will now be facing \an [targetting].</span>")
 
 /obj/item/portallight/examine(mob/user)
 	. = ..()
@@ -104,20 +111,42 @@
 	var/message = ""
 	var/lust_amt = 0
 	var/arouse_only_target = FALSE
-	var/obj/item/organ/genital/penis/P
-	var/obj/item/organ/genital/vagina/V
+	var/obj/item/organ/genital/P // TODO: Rename variables, for now P = user genitals and V = portal target genitals
+	var/obj/item/organ/genital/V
 	var/target
 	if(ishuman(M) && (M?.client?.prefs?.toggles & VERB_CONSENT) && useable) // I promise all those checks are worth it!
 		switch(user.zone_selected)
 			if(BODY_ZONE_PRECISE_GROIN)
 				if(M.has_penis(REQUIRE_EXPOSED))
-					message = (user == M) ? pick("fucks into [src]") : pick("forces [M] to fuck into [src]")
+					if (portalunderwear.targetting == "vagina" || portalunderwear.targetting == "anus")
+						message = (user == M) ? pick("fucks into [src]") : pick("forces [M] to fuck into [src]")
+						P = M.getorganslot(ORGAN_SLOT_PENIS)
+					if (portalunderwear.targetting == "penis") // TODO: Doesn't seem to work
+						message = (user == M) ? pick("fucks [src] anally") : pick("fucks [M] anally with [src]")
+						P = M.getorganslot(ORGAN_SLOT_BUTT)
 					lust_amt = NORMAL_LUST
-					P = M.getorganslot(ORGAN_SLOT_PENIS)
 					target = P
+				else if(M.has_vagina(REQUIRE_EXPOSED))
+					if(portalunderwear.targetting == "vagina" || portalunderwear.targetting == "anus")
+						message = (user == M) ? pick("rubs against [src]") : pick("forces [M] to rub against [src]")
+						lust_amt = NORMAL_LUST
+						P = M.getorganslot(ORGAN_SLOT_VAGINA)
+						target = P
+					else if(portalunderwear.targetting == "penis")
+						if (targetting == "vagina")
+							message = (user == M) ? pick("fucks [src]") : pick("fucks [M] with [src]")
+							P = M.getorganslot(ORGAN_SLOT_VAGINA)
+						else if (targetting == "anus")
+							message = (user == M) ? pick("fucks [src] anally") : pick("fucks [M] anally with [src]")
+							P = M.getorganslot(ORGAN_SLOT_BUTT)
+						lust_amt = NORMAL_LUST
+						target = P
 			if(BODY_ZONE_PRECISE_MOUTH)
 				if(M.has_mouth() && !M.is_mouth_covered())
-					message = (user == M) ? pick("licks into [src]") : pick("forces [M] to lick into [src]")
+					if(portalunderwear.targetting == "vagina" || portalunderwear.targetting == "anus")
+						message = (user == M) ? pick("licks into [src]") : pick("forces [M] to lick into [src]")
+					else if(portalunderwear.targetting == "penis")
+						message = (user == M) ? pick("sucks on [src]") : pick("forces [M] to suck on [src]")
 					lust_amt = NORMAL_LUST
 					arouse_only_target = TRUE
 					target = "mouth"
@@ -127,7 +156,10 @@
 					for(var/obj/item/bodypart/r_arm/R in M.bodyparts)
 						can_interact = TRUE
 					if(can_interact)
-						message = (user == M) ? pick("touches softly against [src]") : pick("forces [M]'s finger on [src]")
+						if(portalunderwear.targetting == "vagina" || portalunderwear.targetting == "anus")
+							message = (user == M) ? pick("touches softly against [src]") : pick("forces [M]'s finger on [src]")
+						else if(portalunderwear.targetting == "penis")
+							message = (user == M) ? pick("jerks off [src]") : pick("forces [M] to jerk off [src]")
 						lust_amt = NORMAL_LUST
 						arouse_only_target = TRUE
 						target = "hand"
@@ -137,7 +169,10 @@
 					for(var/obj/item/bodypart/l_arm/L in M.bodyparts)
 						can_interact = TRUE
 					if(can_interact)
-						message = (user == M) ? pick("touches softly against [src]") : pick("forces [M]'s finger on [src]")
+						if(portalunderwear.targetting == "vagina" || portalunderwear.targetting == "anus")
+							message = (user == M) ? pick("touches softly against [src]") : pick("forces [M]'s finger on [src]")
+						else if(portalunderwear.targetting == "penis")
+							message = (user == M) ? pick("jerks off [src]") : pick("forces [M] to jerk off [src]")
 						lust_amt = NORMAL_LUST
 						arouse_only_target = TRUE
 						target = "hand"
@@ -145,14 +180,29 @@
 		to_chat(user, "<span class='notice'>It seems the device has failed or your partner is not wearing their device.</span>")
 	if(message)
 		var/mob/living/carbon/human/portal_target = ishuman(portalunderwear.loc) && portalunderwear.current_equipped_slot == ITEM_SLOT_UNDERWEAR ? portalunderwear.loc : null
+		switch(portalunderwear.targetting)
+			if("vagina")
+				V = portal_target.getorganslot(ORGAN_SLOT_VAGINA)
+			if("anus")
+				V = portal_target.getorganslot(ORGAN_SLOT_BUTT)
+			if("penis")
+				V = portal_target.getorganslot(ORGAN_SLOT_PENIS)
+		/*
 		if(portalunderwear.targetting == "vagina")
-			V = portal_target.getorganslot(ORGAN_SLOT_VAGINA)
+			V = portal_target.getorganslot(ORGAN_SLOT_VAGINA) // Why doesn't this have an equivalent for the anus?
+		*/
 		if(portal_target && (portal_target?.client?.prefs.toggles & VERB_CONSENT || !portal_target.ckey))
 			user.visible_message("<span class='lewd'>[user] [message].</span>")
 			if(!arouse_only_target)
 				if(M.handle_post_sex(lust_amt, null, portal_target))
 					if(P)
-						to_chat(portal_target, "<span class='userlove'>You feel a [P.shape] penis of [P.length] inches go deep into your [portalunderwear.targetting] and cum!</span>")
+						if(istype(P, /obj/item/organ/genital/penis))
+							var/obj/item/organ/genital/penis/temp = P
+							to_chat(portal_target, "<span class='userlove'>You feel a [temp.shape] penis of [temp.length] inches go deep into your [portalunderwear.targetting] and cum!</span>")
+						else if(istype(P, /obj/item/organ/genital/vagina))
+							to_chat(portal_target, "<span class='userlove'>You feel a [P.shape] vagina squirting on your [portalunderwear.targetting]!</span>")
+						else if(istype(P, /obj/item/organ/genital/butt))
+							to_chat(portal_target, "<span class='userlove'>You feel an anus constricting around your [portalunderwear.targetting]!</span>")
 			switch(user.zone_selected)
 				if(BODY_ZONE_PRECISE_GROIN)
 					playlewdinteractionsound(loc, pick('modular_sand/sound/interactions/bang4.ogg',
@@ -169,13 +219,18 @@
 			if(M != user)
 				message = replacetext(message, "[M]", "someone")
 			message = replacetext(message, "[src]", "your [targeted]")
-			to_chat(portal_target, "<span class='lewd'>You feel something on your panties, it [message][P ? ", it is a [P.shape] penis of [P.length] inches" : ""].</span>")
+			if(istype(P, /obj/item/organ/genital/penis))
+				var/obj/item/organ/genital/penis/temp = P
+				message = "[message], it is a [temp.shape] penis of [temp.length] inches"
+			to_chat(portal_target, "<span class='lewd'>You feel something on your panties, it [message].</span>")
 			if(portal_target.handle_post_sex(lust_amt, null, M))
 				switch(portalunderwear.targetting)
 					if("vagina")
 						to_chat(M, "<span class='userlove'>You feel \the [V] squirt over your [target]!</span>")
 					if("anus")
 						to_chat(M, "<span class='userlove'>You feel the anus constrict on your [target]!</span>")
+					if("penis")
+						to_chat(M, "<span class='userlove'>You feel the penis cumming [target == "hand" ? "on you" : "inside your [target]"]!</span>")
 			portal_target.do_jitter_animation() //make your partner shake too!
 		else
 			user.visible_message("<span class='warning'>\The [src] beeps and does not let [M] through.</span>")
@@ -187,15 +242,22 @@
 	cut_overlays()//remove current overlays
 
 	var/mob/living/carbon/human/H = null
-	if(ishuman(portalunderwear.loc) && portalunderwear)
+	if(ishuman(portalunderwear.loc) && portalunderwear) // Wouldn't this make more sense the other way around?
 		H = portalunderwear.loc
 	else
 		useable = FALSE
 		return
-	var/obj/item/organ/genital/G = H.getorganslot("vagina")
-	if(!G && portalunderwear.targetting == "vagina")
-		useable = FALSE
-		return
+	var/obj/item/organ/genital/G
+	if(portalunderwear.targetting == "vagina")
+		G = H.getorganslot(ORGAN_SLOT_VAGINA)
+		if(!G)
+			useable = FALSE
+			return
+	else if(portalunderwear.targetting == "penis")
+		G = H.getorganslot(ORGAN_SLOT_PENIS)
+		if(!G)
+			useable = FALSE
+			return
 	if(H) //if the portal panties are on someone.
 		if(portalunderwear.current_equipped_slot != ITEM_SLOT_UNDERWEAR)
 			useable = FALSE
@@ -214,12 +276,19 @@
 		sleeve.color = "#" + H.dna.features["mcolor"]
 		add_overlay(sleeve)
 
-		if(portalunderwear.targetting == "vagina")
-			organ = mutable_appearance('modular_sand/icons/obj/fleshlight.dmi', "portal_vag")
-			organ.color = G.color
-		else
-			organ = mutable_appearance('modular_sand/icons/obj/fleshlight.dmi', "portal_anus")
-			organ.color = "#" + H.dna.features["mcolor"]
+		switch(portalunderwear.targetting)
+			if("vagina")
+				name = "portal fleshlight"
+				organ = mutable_appearance('modular_sand/icons/obj/fleshlight.dmi', "portal_vag")
+				organ.color = G.color
+			if("anus")
+				name = "portal fleshlight"
+				organ = mutable_appearance('modular_sand/icons/obj/fleshlight.dmi', "portal_anus")
+				organ.color = "#" + H.dna.features["mcolor"]
+			if("penis")
+				name = "portal dildo"
+				organ = mutable_appearance('modular_sand/icons/obj/fleshlight.dmi', "portal_vag") // TODO: I'm not great at sprite work, gonna leave this up to someone else to deal with
+				organ.color = G.color
 
 		useable = TRUE
 		add_overlay(organ)
@@ -253,7 +322,14 @@
 
 /obj/item/clothing/underwear/briefs/panties/portalpanties/attack_self(mob/user)
 	. = ..()
-	targetting = targetting == "anus" ? "vagina" : "anus"
+	// targetting = targetting == "anus" ? "vagina" : "anus"
+	switch(targetting)
+		if("vagina")
+			targetting = "anus"
+		if("anus")
+			targetting = "penis"
+		if("penis")
+			targetting = "vagina"
 	to_chat(user, "<span class='notice'>Now when worn the portal will now be facing \an [targetting].</span>")
 
 /obj/item/clothing/underwear/briefs/panties/portalpanties/examine(mob/user)
@@ -290,6 +366,10 @@
 			if("anus")
 				if(!human.has_anus(REQUIRE_EXPOSED))
 					to_chat(human, "<span class='warning'>The anus is covered or there is none!</span>")
+					return FALSE
+			if("penis")
+				if(!human.has_penis(REQUIRE_EXPOSED))
+					to_chat(human, "<span class='warning'>The penis is covered or there is none!</span>")
 					return FALSE
 	return TRUE
 
