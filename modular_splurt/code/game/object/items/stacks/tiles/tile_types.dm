@@ -15,3 +15,7 @@
 	icon = 'modular_splurt/icons/obj/tiles.dmi'
 	icon_state = "tile-shadow_wood"
 	turf_type = /turf/open/floor/wood/shadow
+
+// Temporary fix for cyborgs losing their tiles
+/obj/item/stack/tile/plasteel/cyborg
+	tile_reskin_types = null
