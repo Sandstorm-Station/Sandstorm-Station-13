@@ -83,7 +83,7 @@
 	for(var/interaction_key in SSinteractions.interactions)
 		var/datum/interaction/I = SSinteractions.interactions[interaction_key]
 		if(I.evaluate_user(self, action_check = FALSE) && I.evaluate_target(self, target))
-			if(I.user_is_target == TRUE && target != self)
+			if(I.user_is_target && target != self)
 				continue
 			var/list/interaction = list()
 			interaction["key"] = I.command
