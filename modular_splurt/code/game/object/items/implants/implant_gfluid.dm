@@ -23,7 +23,7 @@
 /obj/item/implant/genital_fluid/activate()
 	. = ..()
 	var/list/obj/item/organ/genital/penidlist
-	var/list/datum/reagent/fluidlist
+	var/list/datum/reagent/fluidlist = list()
 	var/mob/living/carbon/human/owner = imp_in
 
 	//List their genitals if they have any at all
@@ -63,7 +63,7 @@
 	cocc.fluid_id = selection.type
 	SEND_SOUND(owner, 'sound/effects/bubbles.ogg')
 	to_chat(owner, span_notice("You feel the fluids inside your [cocc.name] bubble and swirl..."))
-	selection.holder.del_reagent(selection.type)
+	message_admins("[ADMIN_LOOKUPFLW(owner)] changed the fluid of their [owner.p_their()] [cocc.name] to [selection].")
 
 /obj/item/implant/genital_fluid/emag_act()
 	. = ..()
