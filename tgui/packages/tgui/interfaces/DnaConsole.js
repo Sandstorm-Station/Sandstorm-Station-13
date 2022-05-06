@@ -94,7 +94,7 @@ export const DnaConsole = (props, context) => {
           {radPulseSeconds}s
         </Dimmer>
       )}
-      <Window.Content scrollable>
+      <Window.Content overflow="auto">
         <DnaScanner />
         <DnaConsoleCommands />
         {consoleMode === CONSOLE_MODE_STORAGE && (

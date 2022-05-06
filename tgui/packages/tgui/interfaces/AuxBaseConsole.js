@@ -15,7 +15,7 @@ export const AuxBaseConsole = (props, context) => {
     <Window
       width={turrets.length ? 620 : 350}
       height={turrets.length ? 310 : 260}>
-      <Window.Content scrollable={!!turrets.length}>
+      <Window.Content overflow="auto">
         <Tabs>
           <Tabs.Tab
             icon="list"

@@ -11,7 +11,7 @@ export const AtmosControlConsole = (props, context) => {
     <Window
       width={500}
       height={315}>
-      <Window.Content scrollable>
+      <Window.Content overflow="auto">
         <Section
           title={!!data.tank && sensors[0]?.long_name}>
           {sensors.map(sensor => {

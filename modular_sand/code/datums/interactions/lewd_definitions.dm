@@ -5,45 +5,6 @@
 */
 //I'm sorry, lewd should not have mob procs such as life() and such in it. //NO SHIT IT SHOULDNT I REMOVED THEM
 
-/*
- * Lewd interactions have a blacklist for certain mobs. When we evalute the user and target, both of
- * their requirements must be satisfied, and the mob must not be of a blacklisted type.
-*/
-/datum/interaction/lewd
-	var/list/blacklisted_mobs = list(/mob/living/simple_animal/pet,
-									/mob/living/simple_animal/cockroach,
-									/mob/living/simple_animal/babyKiwi,
-									/mob/living/simple_animal/butterfly,
-									/mob/living/simple_animal/chick,
-									/mob/living/simple_animal/chicken,
-									/mob/living/simple_animal/cow,
-									/mob/living/simple_animal/crab,
-									/mob/living/simple_animal/kiwi,
-									/mob/living/simple_animal/parrot,
-									/mob/living/simple_animal/sloth,
-									/mob/living/simple_animal/pickle,
-									/mob/living/simple_animal/hostile/retaliate/goat)
-
-
-/// This should not be too weighty on the server, as the check is only run to generate the menu options.
-/datum/interaction/lewd/evaluate_user(mob/living/user, silent, action_check)
-	. = ..()
-	if(.)
-		if((user.stat == DEAD))
-			return FALSE
-		for(var/check in blacklisted_mobs)
-			if(istype(user, check))
-				return FALSE
-
-/datum/interaction/lewd/evaluate_target(mob/living/user, mob/living/target, silent = TRUE)
-	. = ..()
-	if(.)
-		if((target.stat == DEAD))
-			return FALSE
-		for(var/check in blacklisted_mobs)
-			if(istype(target, check))
-				return FALSE
-
 /proc/playlewdinteractionsound(turf/turf_source, soundin, vol as num, vary, extrarange as num, frequency, falloff, channel = 0, pressure_affected = TRUE, sound/S, envwet = -10000, envdry = 0, manual_x, manual_y, list/ignored_mobs)
 	var/list/hearing_mobs
 	for(var/mob/H in get_hearers_in_view(4, turf_source))

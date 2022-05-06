@@ -806,7 +806,7 @@ class PresetsPage extends Component {
     const [newNameText, setText] = useLocalState(this.context, 'newNameText', "");
     const [hue, setHue] = useLocalState(this.context, 'hue', 0);
     return (
-      <Section scrollable
+      <Section overflow="auto"
         fill
         title="Presets"
         buttons={(
@@ -942,7 +942,7 @@ const StylePage = (props, context) => {
   return (
     <Section
       fill
-      scrollable
+      overflow="auto"
       title="Style"
       buttons={(
         <Button

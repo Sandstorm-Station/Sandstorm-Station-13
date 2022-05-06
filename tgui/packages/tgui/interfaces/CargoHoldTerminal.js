@@ -14,7 +14,7 @@ export const CargoHoldTerminal = (props, context) => {
     <Window
       width={600}
       height={230}>
-      <Window.Content scrollable>
+      <Window.Content overflow="auto">
         <Section>
           <LabeledList>
             <LabeledList.Item label="Current Cargo Value">

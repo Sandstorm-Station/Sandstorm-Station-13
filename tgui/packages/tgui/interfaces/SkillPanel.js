@@ -22,7 +22,7 @@ export const SkillPanel = (props, context) => {
       width={600}
       height={500}
       resizable>
-      <Window.Content scrollable>
+      <Window.Content overflow="auto">
         <Section title={skills.playername}>
           <LabeledList>
             {skills.map(skill => (

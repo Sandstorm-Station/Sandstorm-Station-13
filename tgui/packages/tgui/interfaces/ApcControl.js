@@ -75,7 +75,7 @@ const ApcLoggedIn = (props, context) => {
         <>
           <ControlPanel />
           <Box fillPositionedParent top="53px">
-            <Window.Content scrollable>
+            <Window.Content overflow="auto">
               <ApcControlScene />
             </Window.Content>
           </Box>
@@ -83,7 +83,7 @@ const ApcLoggedIn = (props, context) => {
       )}
       {tabIndex === 2 && (
         <Box fillPositionedParent top="20px">
-          <Window.Content scrollable>
+          <Window.Content overflow="auto">
             <LogPanel />
           </Window.Content>
         </Box>

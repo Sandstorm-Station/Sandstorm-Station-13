@@ -33,7 +33,7 @@ export const ChemRecipeDebug = (props, context) => {
     <Window
       width={450}
       height={850}>
-      <Window.Content scrollable>
+      <Window.Content overflow="auto">
         <Section
           title="Controls"
           buttons={(

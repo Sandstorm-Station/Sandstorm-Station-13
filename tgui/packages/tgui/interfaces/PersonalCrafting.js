@@ -61,7 +61,7 @@ export const PersonalCrafting = (props, context) => {
       title="Crafting Menu"
       width={700}
       height={800}>
-      <Window.Content scrollable>
+      <Window.Content overflow="auto">
         {!!busy && (
           <Dimmer fontSize="32px">
             <Icon name="cog" spin={1} />

@@ -22,7 +22,7 @@ export const PortableChemMixer = (props, context) => {
     <Window
       width={465}
       height={550}>
-      <Window.Content scrollable>
+      <Window.Content overflow="auto">
         <Section
           title="Dispense"
           buttons={(

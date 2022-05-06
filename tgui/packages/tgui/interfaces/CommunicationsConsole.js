@@ -706,7 +706,7 @@ export const CommunicationsConsole = (props, context) => {
       width={400}
       height={650}
       theme={emagged ? "syndicate" : undefined}>
-      <Window.Content scrollable>
+      <Window.Content overflow="auto">
         {!hasConnection && <NoConnectionModal />}
 
         {(canLogOut || !authenticated) && (

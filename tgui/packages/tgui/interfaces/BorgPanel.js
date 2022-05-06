@@ -17,7 +17,7 @@ export const BorgPanel = (props, context) => {
       title="Borg Panel"
       width={700}
       height={700}>
-      <Window.Content scrollable>
+      <Window.Content overflow="auto">
         <Section
           title={borg.name}
           buttons={(

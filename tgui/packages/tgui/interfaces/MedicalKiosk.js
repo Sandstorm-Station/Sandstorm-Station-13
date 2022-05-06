@@ -16,7 +16,7 @@ export const MedicalKiosk = (props, context) => {
     <Window
       width={575}
       height={420}>
-      <Window.Content scrollable>
+      <Window.Content overflow="auto">
         <Flex mb={1}>
           <Flex.Item mr={1}>
             <Section minHeight="100%">

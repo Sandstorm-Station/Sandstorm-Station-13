@@ -67,7 +67,7 @@ const IntroductionSection = (props, context) => {
     intro,
   } = data;
   return (
-    <Section fill title="Intro" scrollable>
+    <Section fill title="Intro" overflow="auto">
       <Stack vertical fill>
         <Stack.Item fontSize="25px">
           {intro}
@@ -90,7 +90,7 @@ const EmployerSection = (props, context) => {
     <Section
       fill
       title="Employer"
-      scrollable
+      overflow="auto"
       buttons={
         <Button
           icon="hammer"

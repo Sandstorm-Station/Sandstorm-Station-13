@@ -16,7 +16,7 @@ export const CrewManifest = (props, context) => {
 
   return (
     <Window title="Crew Manifest" width={350} height={500}>
-      <Window.Content scrollable>
+      <Window.Content overflow="auto">
         {Object.entries(manifest).map(([dept, crew]) => (
           <Section
             className={"CrewManifest--" + dept}

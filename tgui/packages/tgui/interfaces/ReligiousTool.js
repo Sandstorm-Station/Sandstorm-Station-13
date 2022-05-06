@@ -22,7 +22,7 @@ export const ReligiousTool = (props, context) => {
       title={toolname}
       width={560}
       height={500}>
-      <Window.Content scrollable>
+      <Window.Content overflow="auto">
         <Stack vertical fill>
           <Stack.Item>
             <Tabs textAlign="center" fluid>
@@ -110,7 +110,7 @@ const SectSelectTab = (props, context) => {
     sects,
   } = data;
   return (
-    <Section fill title="Sect Select" scrollable>
+    <Section fill title="Sect Select" overflow="auto">
       <Stack vertical>
         {sects.map(sect => (
           <>

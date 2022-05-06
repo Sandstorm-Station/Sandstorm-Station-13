@@ -1,6 +1,8 @@
-import { map } from 'common/collections';
+import { filter, map, sortBy } from 'common/collections';
+import { flow } from 'common/fp';
+import { createSearch } from 'common/string';
 import { useBackend, useLocalState } from '../backend';
-import { BlockQuote, Button, Flex, LabeledList, Section, Tabs } from '../components';
+import { BlockQuote, Button, Flex, LabeledList, Icon, Input, Section, Table, Tabs, Stack } from '../components';
 import { Window } from '../layouts';
 
 export const MobInteraction = (props, context) => {
@@ -18,26 +20,32 @@ export const MobInteraction = (props, context) => {
       width={430}
       height={700}
       resizable>
-      <Window.Content scrollable>
+      <Window.Content overflow="auto">
         <Section title={interactingWith}>
-          <BlockQuote>
-            You...<br />
-            {selfAttributes.map(attribute => (
-              <div key={attribute}>
-                {attribute}<br />
-              </div>
-            ))}
-          </BlockQuote>
-          {!isTargetSelf ? (
-            <BlockQuote>
-              They...<br />
-              {theirAttributes.map(attribute => (
-                <div key={attribute}>
-                  {attribute}<br />
-                </div>
-              ))}
-            </BlockQuote>
-          ) : (null)}
+          <Table>
+            <Table.Cell>
+              <BlockQuote>
+                You...<br />
+                {selfAttributes.map(attribute => (
+                  <div key={attribute}>
+                    {attribute}<br />
+                  </div>
+                ))}
+              </BlockQuote>
+            </Table.Cell>
+            {!isTargetSelf ? (
+              <Table.Cell>
+                <BlockQuote>
+                  They...<br />
+                  {theirAttributes.map(attribute => (
+                    <div key={attribute}>
+                      {attribute}<br />
+                    </div>
+                  ))}
+                </BlockQuote>
+              </Table.Cell>
+            ) : (null)}
+          </Table>
         </Section>
         <Section>
           <Tabs>
@@ -71,24 +79,73 @@ export const MobInteraction = (props, context) => {
 
 const InteractionsTab = (props, context) => {
   const { act, data } = useBackend(context);
-  const interactions = data.interactions || [];
+  const [
+    searchText,
+    setSearchText,
+  ] = useLocalState(context, 'searchText', '');
+  const interactions = sortInteractions(data.interactions, searchText) || [];
   return (
-    interactions.length ? (
-      <Flex direction="column">
-        {interactions.map(interaction => (
-          <Button
-            key={interaction['key']}
-            content={interaction['desc']}
-            color={interaction['type'] === 2 ? "red" : interaction['type'] ? "pink" : "default"}
-            onClick={() => act('interact', {
-              interaction: interaction['key'],
-            })} />
-        ))}
-      </Flex>
-    ) : ("No interactions available")
+    <Table>
+      <Table.Row>
+        <Stack align="baseline">
+          <Stack.Item>
+            <Icon name="search" />
+          </Stack.Item>
+          <Stack.Item grow>
+            <Input
+              fluid
+              placeholder="Search for an interaction"
+              onInput={(e, value) => setSearchText(value)} />
+          </Stack.Item>
+        </Stack>
+        <br />
+      </Table.Row>
+      {
+        interactions.length ? (
+          interactions.map((interaction) => (
+            <Table.Row key={interaction["key"]}>
+              <Button
+                key={interaction['key']}
+                content={interaction['desc']}
+                color={interaction['type'] === 2 ? "red" : interaction['type'] ? "pink" : "default"}
+                fluid
+                mb={0.3}
+                onClick={() => act('interact', {
+                  interaction: interaction['key'],
+                })} />
+            </Table.Row>
+          ))
+        ) : (
+          <center>
+            {
+              searchText ? (
+                "No matching results."
+              ) : (
+                "No interactions available."
+              )
+            }
+          </center>
+        )
+      }
+    </Table>
   );
 };
 
+/**
+ * Interaction sorter! also search box
+ */
+export const sortInteractions = (interactions, searchText = '') => {
+  const testSearch = createSearch(searchText, interaction => interaction.desc);
+  return flow([
+    // Optional search term
+    searchText && filter(testSearch),
+    // Slightly expensive, but way better than sorting in BYOND
+    sortBy(interaction => interaction.desc),
+    sortBy(interaction => interaction.type),
+  ])(interactions);
+};
+
+// Self explanatory
 const ModeToIcon = {
   "Always visible": "eye",
   "Hidden by clothes": "tshirt",
@@ -276,167 +333,247 @@ const ContentPreferencesTab = (props, context) => {
     no_auto_wag,
   } = data;
   return (
-    <Flex direction="column">
-      <Button
-        content="Allow lewd verbs"
-        icon={verb_consent ? "toggle-on" : "toggle-off"}
-        selected={verb_consent}
-        onClick={() => act('pref', {
-          pref: 'verb_consent',
-        })}
-      />
-      <Button
-        content="Lewd verb sounds"
-        icon={lewd_verb_sounds ? "volume-up" : "volume-mute"}
-        selected={lewd_verb_sounds}
-        onClick={() => act('pref', {
-          pref: 'lewd_verb_sounds',
-        })}
-      />
-      <Button
-        content="Arousal"
-        icon={arousable ? "toggle-on" : "toggle-off"}
-        selected={arousable}
-        onClick={() => act('pref', {
-          pref: 'arousable',
-        })}
-      />
-      <Button
-        content="Genital examine text"
-        icon={genital_examine ? "toggle-on" : "toggle-off"}
-        selected={genital_examine}
-        onClick={() => act('pref', {
-          pref: 'genital_examine',
-        })}
-      />
-      <Button
-        content="Vore examine text"
-        icon={vore_examine ? "toggle-on" : "toggle-off"}
-        selected={vore_examine}
-        onClick={() => act('pref', {
-          pref: 'vore_examine',
-        })}
-      />
-      <Button
-        content="Voracious Medihound sleepers"
-        icon={medihound_sleeper ? "toggle-on" : "toggle-off"}
-        selected={medihound_sleeper}
-        onClick={() => act('pref', {
-          pref: 'medihound_sleeper',
-        })}
-      />
-      <Button
-        content="Hear vore sounds"
-        icon={eating_noises ? "volume-up" : "volume-mute"}
-        selected={eating_noises}
-        onClick={() => act('pref', {
-          pref: 'eating_noises',
-        })}
-      />
-      <Button
-        content="Hear vore digestion sounds"
-        icon={digestion_noises ? "volume-up" : "volume-mute"}
-        selected={digestion_noises}
-        onClick={() => act('pref', {
-          pref: 'digestion_noises',
-        })}
-      />
-      <Button
-        content="Allow trash forcefeeding (requires Trashcan quirk)"
-        icon={trash_forcefeed ? "toggle-on" : "toggle-off"}
-        selected={trash_forcefeed}
-        onClick={() => act('pref', {
-          pref: 'trash_forcefeed',
-        })}
-      />
-      <Button
-        content="Forced feminization"
-        icon={forced_fem ? "toggle-on" : "toggle-off"}
-        selected={forced_fem}
-        onClick={() => act('pref', {
-          pref: 'forced_fem',
-        })}
-      />
-      <Button
-        content="Forced Masculinization"
-        icon={forced_masc ? "toggle-on" : "toggle-off"}
-        selected={forced_masc}
-        onClick={() => act('pref', {
-          pref: 'forced_masc',
-        })}
-      />
-      <Button
-        content="Lewd hypno"
-        icon={hypno ? "toggle-on" : "toggle-off"}
-        selected={hypno}
-        onClick={() => act('pref', {
-          pref: 'hypno',
-        })}
-      />
-      <Button
-        content="Bimbofication"
-        icon={bimbofication ? "toggle-on" : "toggle-off"}
-        selected={bimbofication}
-        onClick={() => act('pref', {
-          pref: 'bimbofication',
-        })}
-      />
-      <Button
-        content="Breast enlargement"
-        icon={breast_enlargement ? "toggle-on" : "toggle-off"}
-        selected={breast_enlargement}
-        onClick={() => act('pref', {
-          pref: 'breast_enlargement',
-        })}
-      />
-      <Button
-        content="Penis enlargement"
-        icon={penis_enlargement ? "toggle-on" : "toggle-off"}
-        selected={penis_enlargement}
-        onClick={() => act('pref', {
-          pref: 'penis_enlargement',
-        })}
-      />
-      <Button
-        content="Butt enlargement"
-        icon={butt_enlargement ? "toggle-on" : "toggle-off"}
-        selected={butt_enlargement}
-        onClick={() => act('pref', {
-          pref: 'butt_enlargement',
-        })}
-      />
-      <Button
-        content="Hypno"
-        icon={never_hypno ? "toggle-on" : "toggle-off"}
-        selected={never_hypno}
-        onClick={() => act('pref', {
-          pref: 'never_hypno',
-        })}
-      />
-      <Button
-        content="Aphrodisiacs"
-        icon={no_aphro ? "toggle-on" : "toggle-off"}
-        selected={no_aphro}
-        onClick={() => act('pref', {
-          pref: 'no_aphro',
-        })}
-      />
-      <Button
-        content="Ass slapping"
-        icon={no_ass_slap ? "toggle-on" : "toggle-off"}
-        selected={no_ass_slap}
-        onClick={() => act('pref', {
-          pref: 'no_ass_slap',
-        })}
-      />
-      <Button
-        content="Automatic wagging"
-        icon={no_auto_wag ? "toggle-on" : "toggle-off"}
-        selected={no_auto_wag}
-        onClick={() => act('pref', {
-          pref: 'no_auto_wag',
-        })}
-      />
-    </Flex>
+    <Table>
+      <Table.Row>
+        <Button
+          fluid
+          mb={0.3}
+          content="Allow lewd verbs"
+          icon={verb_consent ? "toggle-on" : "toggle-off"}
+          selected={verb_consent}
+          onClick={() => act('pref', {
+            pref: 'verb_consent',
+          })}
+        />
+      </Table.Row>
+      <Table.Row>
+        <Button
+          fluid
+          mb={0.3}
+          content="Lewd verb sounds"
+          icon={lewd_verb_sounds ? "volume-up" : "volume-mute"}
+          selected={lewd_verb_sounds}
+          onClick={() => act('pref', {
+            pref: 'lewd_verb_sounds',
+          })}
+        />
+      </Table.Row>
+      <Table.Row>
+        <Button
+          fluid
+          mb={0.3}
+          content="Arousal"
+          icon={arousable ? "toggle-on" : "toggle-off"}
+          selected={arousable}
+          onClick={() => act('pref', {
+            pref: 'arousable',
+          })}
+        />
+      </Table.Row>
+      <Table.Row>
+        <Button
+          fluid
+          mb={0.3}
+          content="Genital examine text"
+          icon={genital_examine ? "toggle-on" : "toggle-off"}
+          selected={genital_examine}
+          onClick={() => act('pref', {
+            pref: 'genital_examine',
+          })}
+        />
+      </Table.Row>
+      <Table.Row>
+        <Button
+          fluid
+          mb={0.3}
+          content="Vore examine text"
+          icon={vore_examine ? "toggle-on" : "toggle-off"}
+          selected={vore_examine}
+          onClick={() => act('pref', {
+            pref: 'vore_examine',
+          })}
+        />
+      </Table.Row>
+      <Table.Row>
+        <Button
+          fluid
+          mb={0.3}
+          content="Voracious Medihound sleepers"
+          icon={medihound_sleeper ? "toggle-on" : "toggle-off"}
+          selected={medihound_sleeper}
+          onClick={() => act('pref', {
+            pref: 'medihound_sleeper',
+          })}
+        />
+      </Table.Row>
+      <Table.Row>
+        <Button
+          fluid
+          mb={0.3}
+          content="Hear vore sounds"
+          icon={eating_noises ? "volume-up" : "volume-mute"}
+          selected={eating_noises}
+          onClick={() => act('pref', {
+            pref: 'eating_noises',
+          })}
+        />
+      </Table.Row>
+      <Table.Row>
+        <Button
+          fluid
+          mb={0.3}
+          content="Hear vore digestion sounds"
+          icon={digestion_noises ? "volume-up" : "volume-mute"}
+          selected={digestion_noises}
+          onClick={() => act('pref', {
+            pref: 'digestion_noises',
+          })}
+        />
+      </Table.Row>
+      <Table.Row>
+        <Button
+          fluid
+          mb={0.3}
+          content="Allow trash forcefeeding (requires Trashcan quirk)"
+          icon={trash_forcefeed ? "toggle-on" : "toggle-off"}
+          selected={trash_forcefeed}
+          onClick={() => act('pref', {
+            pref: 'trash_forcefeed',
+          })}
+        />
+      </Table.Row>
+      <Table.Row>
+        <Button
+          fluid
+          mb={0.3}
+          content="Forced feminization"
+          icon={forced_fem ? "toggle-on" : "toggle-off"}
+          selected={forced_fem}
+          onClick={() => act('pref', {
+            pref: 'forced_fem',
+          })}
+        />
+      </Table.Row>
+      <Table.Row>
+        <Button
+          fluid
+          mb={0.3}
+          content="Forced Masculinization"
+          icon={forced_masc ? "toggle-on" : "toggle-off"}
+          selected={forced_masc}
+          onClick={() => act('pref', {
+            pref: 'forced_masc',
+          })}
+        />
+      </Table.Row>
+      <Table.Row>
+        <Button
+          fluid
+          mb={0.3}
+          content="Lewd hypno"
+          icon={hypno ? "toggle-on" : "toggle-off"}
+          selected={hypno}
+          onClick={() => act('pref', {
+            pref: 'hypno',
+          })}
+        />
+      </Table.Row>
+      <Table.Row>
+        <Button
+          fluid
+          mb={0.3}
+          content="Bimbofication"
+          icon={bimbofication ? "toggle-on" : "toggle-off"}
+          selected={bimbofication}
+          onClick={() => act('pref', {
+            pref: 'bimbofication',
+          })}
+        />
+      </Table.Row>
+      <Table.Row>
+        <Button
+          fluid
+          mb={0.3}
+          content="Breast enlargement"
+          icon={breast_enlargement ? "toggle-on" : "toggle-off"}
+          selected={breast_enlargement}
+          onClick={() => act('pref', {
+            pref: 'breast_enlargement',
+          })}
+        />
+      </Table.Row>
+      <Table.Row>
+        <Button
+          fluid
+          mb={0.3}
+          content="Penis enlargement"
+          icon={penis_enlargement ? "toggle-on" : "toggle-off"}
+          selected={penis_enlargement}
+          onClick={() => act('pref', {
+            pref: 'penis_enlargement',
+          })}
+        />
+      </Table.Row>
+      <Table.Row>
+        <Button
+          fluid
+          mb={0.3}
+          content="Butt enlargement"
+          icon={butt_enlargement ? "toggle-on" : "toggle-off"}
+          selected={butt_enlargement}
+          onClick={() => act('pref', {
+            pref: 'butt_enlargement',
+          })}
+        />
+      </Table.Row>
+      <Table.Row>
+        <Button
+          fluid
+          mb={0.3}
+          content="Hypno"
+          icon={never_hypno ? "toggle-on" : "toggle-off"}
+          selected={never_hypno}
+          onClick={() => act('pref', {
+            pref: 'never_hypno',
+          })}
+        />
+      </Table.Row>
+      <Table.Row>
+        <Button
+          fluid
+          mb={0.3}
+          content="Aphrodisiacs"
+          icon={no_aphro ? "toggle-on" : "toggle-off"}
+          selected={no_aphro}
+          onClick={() => act('pref', {
+            pref: 'no_aphro',
+          })}
+        />
+      </Table.Row>
+      <Table.Row>
+        <Button
+          fluid
+          mb={0.3}
+          content="Ass slapping"
+          icon={no_ass_slap ? "toggle-on" : "toggle-off"}
+          selected={no_ass_slap}
+          onClick={() => act('pref', {
+            pref: 'no_ass_slap',
+          })}
+        />
+      </Table.Row>
+      <Table.Row>
+        <Button
+          fluid
+          mb={0.3}
+          content="Automatic wagging"
+          icon={no_auto_wag ? "toggle-on" : "toggle-off"}
+          selected={no_auto_wag}
+          onClick={() => act('pref', {
+            pref: 'no_auto_wag',
+          })}
+        />
+      </Table.Row>
+    </Table>
   );
 };
