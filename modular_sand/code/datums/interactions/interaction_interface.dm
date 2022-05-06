@@ -14,7 +14,6 @@
 
 /// Allows "cyborg" players to change gender at will
 /mob/living/silicon/robot/verb/toggle_gender()
-	set category = "Robot Commands"
 	set name = "Set Gender"
 	set desc = "Allows you to set your gender."
 

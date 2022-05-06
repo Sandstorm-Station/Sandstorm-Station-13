@@ -20,7 +20,6 @@
 
 /// The base of all interactions
 /datum/interaction
-	var/command = "interact"
 	var/description = "Interact with them."
 	var/simple_message
 	var/simple_style = "notice"

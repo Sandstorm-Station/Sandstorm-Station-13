@@ -1,6 +1,5 @@
 // If I could have gotten away with using a tilde in the type path, I would have.
 /datum/interaction/lewd
-	command = "assslap"
 	description = "Slap their ass."
 	simple_message = "USER slaps TARGET right on the ass!"
 	simple_style = "danger"
