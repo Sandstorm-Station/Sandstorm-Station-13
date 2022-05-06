@@ -33,3 +33,4 @@
 			mob_size = MOB_SIZE_HUMAN
 		if(1.21 to INFINITY)
 			mob_size = MOB_SIZE_LARGE
+	SEND_SIGNAL(src, COMSIG_MOBSIZE_CHANGED, src)
