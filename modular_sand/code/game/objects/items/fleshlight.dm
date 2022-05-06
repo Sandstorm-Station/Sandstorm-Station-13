@@ -121,11 +121,11 @@
 					if (portalunderwear.targetting == "vagina" || portalunderwear.targetting == "anus")
 						message = (user == M) ? pick("fucks into [src]") : pick("forces [M] to fuck into [src]")
 						P = M.getorganslot(ORGAN_SLOT_PENIS)
-					if (portalunderwear.targetting == "penis") // TODO: Doesn't seem to work
+						target = P
+					if (portalunderwear.targetting == "penis")
 						message = (user == M) ? pick("fucks [src] anally") : pick("fucks [M] anally with [src]")
-						P = M.getorganslot(ORGAN_SLOT_BUTT)
+						target = "anus"
 					lust_amt = NORMAL_LUST
-					target = P
 				else if(M.has_vagina(REQUIRE_EXPOSED))
 					if(portalunderwear.targetting == "vagina" || portalunderwear.targetting == "anus")
 						message = (user == M) ? pick("rubs against [src]") : pick("forces [M] to rub against [src]")
@@ -136,11 +136,11 @@
 						if (targetting == "vagina")
 							message = (user == M) ? pick("fucks [src]") : pick("fucks [M] with [src]")
 							P = M.getorganslot(ORGAN_SLOT_VAGINA)
+							target = P
 						else if (targetting == "anus")
 							message = (user == M) ? pick("fucks [src] anally") : pick("fucks [M] anally with [src]")
-							P = M.getorganslot(ORGAN_SLOT_BUTT)
+							target = "anus"
 						lust_amt = NORMAL_LUST
-						target = P
 			if(BODY_ZONE_PRECISE_MOUTH)
 				if(M.has_mouth() && !M.is_mouth_covered())
 					if(portalunderwear.targetting == "vagina" || portalunderwear.targetting == "anus")
@@ -183,25 +183,19 @@
 		switch(portalunderwear.targetting)
 			if("vagina")
 				V = portal_target.getorganslot(ORGAN_SLOT_VAGINA)
-			if("anus")
-				V = portal_target.getorganslot(ORGAN_SLOT_BUTT)
 			if("penis")
 				V = portal_target.getorganslot(ORGAN_SLOT_PENIS)
-		/*
-		if(portalunderwear.targetting == "vagina")
-			V = portal_target.getorganslot(ORGAN_SLOT_VAGINA) // Why doesn't this have an equivalent for the anus?
-		*/
 		if(portal_target && (portal_target?.client?.prefs.toggles & VERB_CONSENT || !portal_target.ckey))
 			user.visible_message("<span class='lewd'>[user] [message].</span>")
 			if(!arouse_only_target)
-				if(M.handle_post_sex(lust_amt, null, portal_target))
+				if(M.handle_post_sex(lust_amt, target, portal_target))
 					if(P)
 						if(istype(P, /obj/item/organ/genital/penis))
 							var/obj/item/organ/genital/penis/temp = P
 							to_chat(portal_target, "<span class='userlove'>You feel a [temp.shape] penis of [temp.length] inches go deep into your [portalunderwear.targetting] and cum!</span>")
 						else if(istype(P, /obj/item/organ/genital/vagina))
 							to_chat(portal_target, "<span class='userlove'>You feel a [P.shape] vagina squirting on your [portalunderwear.targetting]!</span>")
-						else if(istype(P, /obj/item/organ/genital/butt))
+						else
 							to_chat(portal_target, "<span class='userlove'>You feel an anus constricting around your [portalunderwear.targetting]!</span>")
 			switch(user.zone_selected)
 				if(BODY_ZONE_PRECISE_GROIN)
@@ -223,7 +217,7 @@
 				var/obj/item/organ/genital/penis/temp = P
 				message = "[message], it is a [temp.shape] penis of [temp.length] inches"
 			to_chat(portal_target, "<span class='lewd'>You feel something on your panties, it [message].</span>")
-			if(portal_target.handle_post_sex(lust_amt, null, M))
+			if(portal_target.handle_post_sex(lust_amt, portalunderwear.targetting, M))
 				switch(portalunderwear.targetting)
 					if("vagina")
 						to_chat(M, "<span class='userlove'>You feel \the [V] squirt over your [target]!</span>")
