@@ -837,6 +837,7 @@ GLOBAL_LIST_EMPTY(preferences_datums)
 								tauric_shape = TRUE
 					dat += "<b>Penis Shape:</b> <a style='display:block;width:120px' href='?_src_=prefs;preference=cock_shape;task=input'>[features["cock_shape"]][tauric_shape ? " (Taur)" : ""]</a>"
 					dat += "<b>Penis Length:</b> <a style='display:block;width:120px' href='?_src_=prefs;preference=cock_length;task=input'>[features["cock_length"]] inch(es)</a>"
+					dat += "<b>Diameter Ratio:</b> <a style='display:block;width:120px' href='?_src_=prefs;preference=cock_diameter_ratio;task=input'>[features["cock_diameter_ratio"]]</a>"
 					dat += "<b>Penis Visibility:</b><a style='display:block;width:100px' href='?_src_=prefs;preference=cock_visibility;task=input'>[features["cock_visibility"]]</a>"
 					dat += "<b>Has Testicles:</b><a style='display:block;width:50px' href='?_src_=prefs;preference=has_balls'>[features["has_balls"] == TRUE ? "Yes" : "No"]</a>"
 					if(features["has_balls"])
@@ -2551,7 +2552,7 @@ GLOBAL_LIST_EMPTY(preferences_datums)
 				if("cock_length")
 					var/min_D = CONFIG_GET(number/penis_min_inches_prefs)
 					var/max_D = CONFIG_GET(number/penis_max_inches_prefs)
-					var/new_length = input(user, "Penis length in inches:\n([min_D]-[max_D])", "Character Preference") as num|null
+					var/new_length = input(user, "Penis length in inches:\n([min_D]-[max_D])\nReminder that your sprite size will affect this.", "Character Preference") as num|null
 					if(new_length)
 						features["cock_length"] = clamp(round(new_length), min_D, max_D)
 
@@ -2571,6 +2572,13 @@ GLOBAL_LIST_EMPTY(preferences_datums)
 							new_shape = hockeys[new_shape]
 							features["cock_taur"] = TRUE
 						features["cock_shape"] = new_shape
+
+				if("cock_diameter_ratio")
+					var/min_diameter_ratio = CONFIG_GET(number/diameter_ratio_min_size_prefs)
+					var/max_diameter_ratio = CONFIG_GET(number/diameter_ratio_max_size_prefs)
+					var/new_ratio = input(user, "Penis diameter ratio:\n([min_diameter_ratio]-[max_diameter_ratio])\nReminder that your sprite size will affect this.", "Character Preference") as num|null
+					if(new_ratio)
+						features["cock_diameter_ratio"] = clamp(round(new_ratio, 0.01), min_diameter_ratio, max_diameter_ratio)
 
 				if("cock_visibility")
 					var/n_vis = input(user, "Penis Visibility", "Character Preference") as null|anything in CONFIG_GET(keyed_list/safe_visibility_toggles)
@@ -2704,7 +2712,7 @@ GLOBAL_LIST_EMPTY(preferences_datums)
 					var/min_belly = CONFIG_GET(number/belly_min_size_prefs)
 					var/max_belly = CONFIG_GET(number/belly_max_size_prefs)
 					var/new_bellysize = input(user, "Belly size :\n([min_belly]-[max_belly])", "Character Preference") as num|null
-					if(new_bellysize)
+					if(!isnull(new_bellysize))
 						features["belly_size"] = clamp(new_bellysize, min_belly, max_belly)
 
 				if("butt_size")

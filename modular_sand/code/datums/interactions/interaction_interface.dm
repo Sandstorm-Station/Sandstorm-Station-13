@@ -3,7 +3,7 @@
 	set name = "Interact With"
 	set desc = "Perform an interaction with someone."
 	set category = "IC"
-	set src in view()
+	set src in view(usr.client)
 
 	if(!usr.mind) //Mindless boys, honestly just don't, it's better this way
 		return

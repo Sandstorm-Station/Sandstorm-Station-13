@@ -147,3 +147,16 @@
 /obj/item/clothing/head/mob_holder/micro/attack(mob/living/pred, mob/living/user)
 	user.vore_attack(user, held_mob, pred)
 	return STOP_ATTACK_PROC_CHAIN
+
+/obj/item/clothing/head/mob_holder/micro/verb/interact_with()
+	set name = "Interact With"
+	set desc = "Perform an interaction with someone."
+	set category = "IC"
+	set src in view(usr.client)
+
+	if(!usr.mind) //Mindless boys, honestly just don't, it's better this way
+		return
+	if(!usr.mind.interaction_holder)
+		usr.mind.interaction_holder = new(usr.mind)
+	usr.mind.interaction_holder.target = src.held_mob
+	usr.mind.interaction_holder.ui_interact(usr)

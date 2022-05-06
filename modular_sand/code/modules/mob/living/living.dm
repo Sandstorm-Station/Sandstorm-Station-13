@@ -19,14 +19,18 @@
 		size_multiplier = new_size
 		resize = new_size / oldsize
 		update_transform()
-	switch(get_size(src))
-		if(0 to 40)
-			mob_size = MOB_SIZE_TINY
-		if(41 to 80)
-			mob_size = MOB_SIZE_SMALL
-		if(81 to 120)
-			mob_size = MOB_SIZE_HUMAN
-		if(121 to INFINITY)
-			mob_size = MOB_SIZE_LARGE
+		adjust_mobsize()
 
 	return TRUE
+
+/mob/living/proc/adjust_mobsize()
+	switch(get_size(src))
+		if(0 to 0.40)
+			mob_size = MOB_SIZE_TINY
+		if(0.41 to 0.80)
+			mob_size = MOB_SIZE_SMALL
+		if(0.81 to 1.20)
+			mob_size = MOB_SIZE_HUMAN
+		if(1.21 to INFINITY)
+			mob_size = MOB_SIZE_LARGE
+	SEND_SIGNAL(src, COMSIG_MOBSIZE_CHANGED, src)
