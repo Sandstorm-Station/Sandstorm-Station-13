@@ -445,7 +445,7 @@
 			if(CUM_TARGET_ANUS)
 				name = "portal fleshlight"
 				organ = mutable_appearance('modular_sand/icons/obj/fleshlight.dmi', "portal_anus")
-				organ.color = "#" + H.dna.features["mcolor"]
+				organ.color = "#[H.dna.features["mcolor"]]"
 			if(CUM_TARGET_PENIS)
 				name = "portal dildo"
 				organ = mutable_appearance('modular_sand/icons/obj/fleshlight.dmi', "portal_vag") // TODO: I'm not great at sprite work, gonna leave this up to someone else to deal with
@@ -453,7 +453,7 @@
 			if(CUM_TARGET_MOUTH)
 				name = "portal fleshlight"
 				organ = mutable_appearance('modular_sand/icons/obj/fleshlight.dmi', "portal_vag") // TODO: also not dealing with this one
-				organ.color = "#" + H.lip_color
+				organ.color = "#[H.lip_style == "lipstick" ? H.lip_color : H.dna.features["mcolor"]]"
 
 		useable = TRUE
 		add_overlay(organ)
