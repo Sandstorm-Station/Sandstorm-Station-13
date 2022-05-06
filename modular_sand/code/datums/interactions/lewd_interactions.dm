@@ -71,9 +71,9 @@
 	. = ..()
 	if(!.)
 		return FALSE
-	if(user_not_tired && user.get_refraction_dif())
+	if(user_not_tired && !COOLDOWN_FINISHED(user, refractory_period))
 		if(!silent) //bye spam
-			to_chat(user, "<span class='warning'>You're still exhausted from the last time. You need to wait [DisplayTimeText(user.get_refraction_dif(), TRUE)] until you can do that!</span>")
+			to_chat(user, "<span class='warning'>You're still exhausted from the last time. You need to wait [DisplayTimeText(COOLDOWN_TIMELEFT(user, refractory_period), 1)] until you can do that!</span>")
 		return FALSE
 
 	if(require_user_bottomless && !user.is_bottomless())
@@ -290,9 +290,9 @@
 	. = ..()
 	if(!.)
 		return FALSE
-	if(target_not_tired && target.get_refraction_dif())
+	if(target_not_tired && !COOLDOWN_FINISHED(target, refractory_period))
 		if(!silent) //same with this
-			to_chat(user, "<span class='warning'>They're still exhausted from the last time. They need to wait [DisplayTimeText(target.get_refraction_dif(), TRUE)] until you can do that!</span>")
+			to_chat(user, "<span class='warning'>They're still exhausted from the last time. They need to wait [DisplayTimeText(COOLDOWN_TIMELEFT(target, refractory_period), 1)] until you can do that!</span>")
 		return FALSE
 
 	if(require_target_bottomless && !target.is_bottomless())
@@ -505,9 +505,9 @@
 
 /datum/interaction/lewd/post_interaction(mob/living/user, mob/living/target)
 	if(user_refractory_cost)
-		user.refractory_period = world.time + user_refractory_cost*10
+		COOLDOWN_START(user, refractory_period, user_refractory_cost*10)
 	if(target_refractory_cost)
-		target.refractory_period = world.time + target_refractory_cost*10
+		COOLDOWN_START(target, refractory_period, target_refractory_cost*10)
 	user.last_lewd_datum = src
 	if(user.cleartimer)
 		deltimer(user.cleartimer)
@@ -516,7 +516,7 @@
 
 /mob/living/list_interaction_attributes(mob/living/LM)
 	var/dat = ..()
-	if(get_refraction_dif())
+	if(!COOLDOWN_FINISHED(LM, refractory_period))
 		dat += "...are sexually exhausted for the time being."
 	switch(a_intent)
 		if(INTENT_HELP)

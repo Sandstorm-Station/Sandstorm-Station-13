@@ -59,7 +59,7 @@
 			to_chat(user, "<span class='warning'>You don't have hands.</span>")
 		return FALSE
 
-	if(user.last_interaction_time < world.time)
+	if(COOLDOWN_FINISHED(user, last_interaction_time))
 		return TRUE
 
 	if(action_check)
@@ -130,7 +130,7 @@
 
 /// After the interaction, the base only plays the sound and only if it has one
 /datum/interaction/proc/post_interaction(mob/living/user, mob/living/target)
-	user.last_interaction_time = world.time + 6
+	COOLDOWN_START(user, last_interaction_time, 0.6 SECONDS)
 	if(interaction_sound)
 		playsound(get_turf(user), interaction_sound, 50, 1, -1)
 	return
