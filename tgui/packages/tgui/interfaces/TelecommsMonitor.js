@@ -31,7 +31,7 @@ export const TelecommsMonitor = (props, context) => {
       resizable
       width={575}
       height={400}>
-      <Window.Content scrollable>
+      <Window.Content overflow="auto">
         <Fragment>
           {!!notice && (
             <NoticeBox>

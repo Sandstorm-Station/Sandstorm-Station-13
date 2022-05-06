@@ -46,7 +46,7 @@ export const ClockworkSlab = (props, context) => {
   const testSearch = createSearch(searchText, script => {
     return script.name + script.descname;
   });
-  
+
   let bucketOfScriptures = [];
   // merge it, no need to throw a var.
 
@@ -67,7 +67,7 @@ export const ClockworkSlab = (props, context) => {
       theme="clockcult"
       width={800}
       height={420}>
-      <Window.Content scrollable>
+      <Window.Content overflow="auto">
         {recollection ? ( // tutorial
           <CSTutorial />
         ) : (

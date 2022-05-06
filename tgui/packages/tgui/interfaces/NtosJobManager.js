@@ -7,7 +7,7 @@ export const NtosJobManager = (props, context) => {
     <NtosWindow
       width={400}
       height={620}>
-      <NtosWindow.Content scrollable>
+      <NtosWindow.Content overflow="auto">
         <NtosJobManagerContent />
       </NtosWindow.Content>
     </NtosWindow>

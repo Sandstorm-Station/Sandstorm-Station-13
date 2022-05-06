@@ -36,7 +36,7 @@ export const VorePanel = (props, context) => {
   const { act, data } = useBackend(context);
   return (
     <Window width={700} height={660} theme="abstract" resizable>
-      <Window.Content scrollable>
+      <Window.Content overflow="auto">
         {data.unsaved_changes && (
           <NoticeBox danger>
             <Flex>

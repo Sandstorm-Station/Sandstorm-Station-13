@@ -29,7 +29,7 @@ export const Limbgrower = (props, context) => {
           {' Building...'}
         </Dimmer>
       )}
-      <Window.Content scrollable>
+      <Window.Content overflow="auto">
         <Section title="Data Disk" buttons={
           <Button
             content="Eject Disk"

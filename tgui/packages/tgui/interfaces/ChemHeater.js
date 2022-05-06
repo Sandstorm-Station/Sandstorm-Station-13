@@ -21,7 +21,7 @@ export const ChemHeater = (props, context) => {
       width={300}
       height={320}
       resizable>
-      <Window.Content scrollable>
+      <Window.Content overflow="auto">
         <Section
           title="Thermostat"
           buttons={(

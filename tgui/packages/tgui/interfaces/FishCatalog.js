@@ -26,7 +26,7 @@ export const FishCatalog = (props, context) => {
       <Window.Content>
         <Stack fill>
           <Stack.Item width="120px">
-            <Section fill scrollable>
+            <Section fill overflow="auto">
               {fish_by_name.map(f => (
                 <Button
                   key={f.name}
@@ -42,7 +42,7 @@ export const FishCatalog = (props, context) => {
           <Stack.Item grow basis={0}>
             <Section
               fill
-              scrollable
+              overflow="auto"
               title={currentFish
                 ? capitalize(currentFish.name)
                 : sponsored_by + " Fish Index"}>

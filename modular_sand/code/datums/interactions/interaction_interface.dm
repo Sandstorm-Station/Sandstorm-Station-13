@@ -14,7 +14,6 @@
 
 /// Allows "cyborg" players to change gender at will
 /mob/living/silicon/robot/verb/toggle_gender()
-	set category = "Robot Commands"
 	set name = "Set Gender"
 	set desc = "Allows you to set your gender."
 
@@ -68,15 +67,15 @@
 			return 0
 
 /datum/interaction_menu/ui_data(mob/user)
+	. = ..()
 	//Getting player
 	var/mob/living/self = user
-	var/list/data = list()
 	//Getting info
-	data["isTargetSelf"] = target == self
-	data["interactingWith"] = target != self ? "Interacting with \the [target]..." : "Interacting with yourself..."
-	data["selfAttributes"] = self.list_interaction_attributes(self)
+	.["isTargetSelf"] = target == self
+	.["interactingWith"] = target != self ? "Interacting with \the [target]..." : "Interacting with yourself..."
+	.["selfAttributes"] = self.list_interaction_attributes(self)
 	if(target != self)
-		data["theirAttributes"] = target.list_interaction_attributes(self)
+		.["theirAttributes"] = target.list_interaction_attributes(self)
 
 	//Getting interactions
 	var/list/sent_interactions = list()
@@ -86,7 +85,7 @@
 			if(I.user_is_target && target != self)
 				continue
 			var/list/interaction = list()
-			interaction["key"] = I.command
+			interaction["key"] = I.type
 			interaction["desc"] = I.description
 			if(istype(I, /datum/interaction/lewd))
 				var/datum/interaction/lewd/O = I
@@ -97,7 +96,7 @@
 			else
 				interaction["type"] = INTERACTION_NORMAL
 			sent_interactions += list(interaction)
-	data["interactions"] = sent_interactions
+	.["interactions"] = sent_interactions
 
 	//Get their genitals
 	var/list/genitals = list()
@@ -136,40 +135,38 @@
 		simulated_ass["visibility"] = visibility
 		simulated_ass["possible_choices"] = GLOB.genitals_visibility_toggles - GEN_VISIBLE_NO_CLOTHES
 		genitals += list(simulated_ass)
-	data["genitals"] = genitals
+	.["genitals"] = genitals
 
 	var/datum/preferences/prefs = usr?.client.prefs
 	if(prefs)
 	//Getting char prefs
-		data["erp_pref"] = 			pref_to_num(prefs.erppref)
-		data["noncon_pref"] = 		pref_to_num(prefs.nonconpref)
-		data["vore_pref"] = 		pref_to_num(prefs.vorepref)
-		data["extreme_pref"] = 		pref_to_num(prefs.extremepref)
-		data["extreme_harm"] = 		pref_to_num(prefs.extremeharm)
+		.["erp_pref"] = 			pref_to_num(prefs.erppref)
+		.["noncon_pref"] = 		pref_to_num(prefs.nonconpref)
+		.["vore_pref"] = 		pref_to_num(prefs.vorepref)
+		.["extreme_pref"] = 		pref_to_num(prefs.extremepref)
+		.["extreme_harm"] = 		pref_to_num(prefs.extremeharm)
 
 	//Getting preferences
-		data["verb_consent"] = 		CHECK_BITFIELD(prefs.toggles, VERB_CONSENT)
-		data["lewd_verb_sounds"] = 	!CHECK_BITFIELD(prefs.toggles, LEWD_VERB_SOUNDS)
-		data["arousable"] = 		prefs.arousable
-		data["genital_examine"] = 	CHECK_BITFIELD(prefs.cit_toggles, GENITAL_EXAMINE)
-		data["vore_examine"] = 		CHECK_BITFIELD(prefs.cit_toggles, VORE_EXAMINE)
-		data["medihound_sleeper"] = CHECK_BITFIELD(prefs.cit_toggles, MEDIHOUND_SLEEPER)
-		data["eating_noises"] = 	CHECK_BITFIELD(prefs.cit_toggles, EATING_NOISES)
-		data["digestion_noises"] =	CHECK_BITFIELD(prefs.cit_toggles, DIGESTION_NOISES)
-		data["trash_forcefeed"] = 	CHECK_BITFIELD(prefs.cit_toggles, TRASH_FORCEFEED)
-		data["forced_fem"] = 		CHECK_BITFIELD(prefs.cit_toggles, FORCED_FEM)
-		data["forced_masc"] = 		CHECK_BITFIELD(prefs.cit_toggles, FORCED_MASC)
-		data["hypno"] = 			CHECK_BITFIELD(prefs.cit_toggles, HYPNO)
-		data["bimbofication"] = 	CHECK_BITFIELD(prefs.cit_toggles, BIMBOFICATION)
-		data["breast_enlargement"] = CHECK_BITFIELD(prefs.cit_toggles, BREAST_ENLARGEMENT)
-		data["penis_enlargement"] = CHECK_BITFIELD(prefs.cit_toggles, PENIS_ENLARGEMENT)
-		data["butt_enlargement"] =	CHECK_BITFIELD(prefs.cit_toggles, BUTT_ENLARGEMENT)
-		data["never_hypno"] = 		!CHECK_BITFIELD(prefs.cit_toggles, NEVER_HYPNO)
-		data["no_aphro"] = 			!CHECK_BITFIELD(prefs.cit_toggles, NO_APHRO)
-		data["no_ass_slap"] = 		!CHECK_BITFIELD(prefs.cit_toggles, NO_ASS_SLAP)
-		data["no_auto_wag"] = 		!CHECK_BITFIELD(prefs.cit_toggles, NO_AUTO_WAG)
-
-	return data
+		.["verb_consent"] = 		CHECK_BITFIELD(prefs.toggles, VERB_CONSENT)
+		.["lewd_verb_sounds"] = 	!CHECK_BITFIELD(prefs.toggles, LEWD_VERB_SOUNDS)
+		.["arousable"] = 			prefs.arousable
+		.["genital_examine"] = 		CHECK_BITFIELD(prefs.cit_toggles, GENITAL_EXAMINE)
+		.["vore_examine"] = 		CHECK_BITFIELD(prefs.cit_toggles, VORE_EXAMINE)
+		.["medihound_sleeper"] =	CHECK_BITFIELD(prefs.cit_toggles, MEDIHOUND_SLEEPER)
+		.["eating_noises"] = 		CHECK_BITFIELD(prefs.cit_toggles, EATING_NOISES)
+		.["digestion_noises"] =		CHECK_BITFIELD(prefs.cit_toggles, DIGESTION_NOISES)
+		.["trash_forcefeed"] = 		CHECK_BITFIELD(prefs.cit_toggles, TRASH_FORCEFEED)
+		.["forced_fem"] = 			CHECK_BITFIELD(prefs.cit_toggles, FORCED_FEM)
+		.["forced_masc"] = 			CHECK_BITFIELD(prefs.cit_toggles, FORCED_MASC)
+		.["hypno"] = 				CHECK_BITFIELD(prefs.cit_toggles, HYPNO)
+		.["bimbofication"] = 		CHECK_BITFIELD(prefs.cit_toggles, BIMBOFICATION)
+		.["breast_enlargement"] = 	CHECK_BITFIELD(prefs.cit_toggles, BREAST_ENLARGEMENT)
+		.["penis_enlargement"] =	CHECK_BITFIELD(prefs.cit_toggles, PENIS_ENLARGEMENT)
+		.["butt_enlargement"] =		CHECK_BITFIELD(prefs.cit_toggles, BUTT_ENLARGEMENT)
+		.["never_hypno"] = 			!CHECK_BITFIELD(prefs.cit_toggles, NEVER_HYPNO)
+		.["no_aphro"] = 			!CHECK_BITFIELD(prefs.cit_toggles, NO_APHRO)
+		.["no_ass_slap"] = 			!CHECK_BITFIELD(prefs.cit_toggles, NO_ASS_SLAP)
+		.["no_auto_wag"] = 			!CHECK_BITFIELD(prefs.cit_toggles, NO_AUTO_WAG)
 
 /proc/num_to_pref(num)
 	switch(num)

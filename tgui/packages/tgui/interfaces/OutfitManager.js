@@ -13,7 +13,7 @@ export const OutfitManager = (props, context) => {
       <Window.Content>
         <Section
           fill
-          scrollable
+          overflow="auto"
           title="Custom Outfit Manager"
           buttons={
             <>
