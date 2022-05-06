@@ -104,26 +104,46 @@
 /obj/item/portallight/examine(mob/user)
 	. = ..()
 	if(!portalunderwear)
-		. += "<span class='notice'>The device is unpaired, to pair, swipe against a pair of portal panties.</span>"
+		. += "<span class='notice'>The device is unpaired. To pair, swipe against a pair of portal panties.</span>"
 	else
 		. += "<span class='notice'>The device is paired, and awaiting input. </span>"
+
+/obj/item/portallight/attackby(obj/item/I, mob/living/user)
+	var/mob/living/carbon/human/portal_target = ishuman(portalunderwear.loc) && (portalunderwear.current_equipped_slot & (ITEM_SLOT_UNDERWEAR | ITEM_SLOT_MASK)) ? portalunderwear.loc : null
+	if(user.a_intent != INTENT_HARM)
+		if(portal_target && (portal_target?.client?.prefs?.toggles & VERB_CONSENT)) // I don't know if this is enough of a check, but only one way to find
+			if(istype(I, /obj/item/portallight)) // portal-ception
+				var/obj/item/portallight/other_portal = I
+				var/mob/living/carbon/human/other_portal_target = ishuman(other_portal.portalunderwear.loc) && (other_portal.portalunderwear.current_equipped_slot & (ITEM_SLOT_UNDERWEAR | ITEM_SLOT_MASK)) ? other_portal.portalunderwear.loc : null
+				attack(other_portal_target, portal_target, other_portal.portalunderwear.targetting)
+				other_portal.attack(portal_target, other_portal_target, portalunderwear.targetting) // this could very well be very, very strange and possibly buggy
+		else
+			user.visible_message("<span class='warning'>\The [src] beeps and does not let [I] through.</span>")
+	else
+		. = ..()
 
 /obj/item/portallight/update_appearance(updates)
 	. = ..()
 	updatesleeve()
 
-/obj/item/portallight/attack(mob/living/carbon/human/M, mob/living/carbon/human/user)
+/obj/item/portallight/attack(mob/living/carbon/human/M, mob/living/carbon/human/user, var/override)
 	var/message = ""
 	var/user_lust_amt = NONE
 	var/target_lust_amt = NONE
 	var/obj/item/organ/genital/P
 	var/target
+	var/override_zone
+	switch(override)
+		if(CUM_TARGET_PENIS, CUM_TARGET_VAGINA, CUM_TARGET_ANUS)
+			override_zone = BODY_ZONE_PRECISE_GROIN
+		if(CUM_TARGET_MOUTH)
+			override_zone = BODY_ZONE_PRECISE_MOUTH
 	if(ishuman(M) && (M?.client?.prefs?.toggles & VERB_CONSENT) && useable) // I promise all those checks are worth it!
-		switch(user.zone_selected)
+		switch(override ? override_zone : user.zone_selected)
 			if(BODY_ZONE_PRECISE_GROIN)
-				switch(targetting)
+				switch(override ? override : targetting)
 					if(CUM_TARGET_PENIS)
-						if(M.has_penis(REQUIRE_EXPOSED))
+						if(override || M.has_penis(REQUIRE_EXPOSED)) // weird error messages i can't figure out
 							switch(portalunderwear.targetting)
 								if(CUM_TARGET_PENIS)
 									message = (user == M) ? "frots with \the [src]" : "forces \the [M] to frot with \the [src]"
@@ -152,7 +172,7 @@
 						else
 							to_chat(user, "<span class='warning'>The penis is covered or there is none!</span>")
 					if(CUM_TARGET_VAGINA)
-						if(M.has_vagina(REQUIRE_EXPOSED))
+						if(override || M.has_vagina(REQUIRE_EXPOSED))
 							switch(portalunderwear.targetting)
 								if(CUM_TARGET_PENIS)
 									message = (user == M) ? "fucks \the [src]" : "fucks \the [M] with \the [src]"
@@ -179,7 +199,7 @@
 									user_lust_amt = NORMAL_LUST
 									target_lust_amt = LOW_LUST
 					if(CUM_TARGET_ANUS)
-						if(M.has_anus(REQUIRE_EXPOSED))
+						if(override || M.has_anus(REQUIRE_EXPOSED))
 							switch(portalunderwear.targetting)
 								if(CUM_TARGET_PENIS)
 									message = (user == M) ? "fucks \the [src] anally" : "fucks \the [M] anally with \the [src]"
@@ -204,7 +224,7 @@
 						else
 							to_chat(user, "<span class='warning'>The anus is covered or there is none!</span>")
 			if(BODY_ZONE_PRECISE_MOUTH)
-				if(M.has_mouth() && !M.is_mouth_covered())
+				if(override || (M.has_mouth() && !M.is_mouth_covered()))
 					switch(portalunderwear.targetting)
 						if(CUM_TARGET_PENIS)
 							message = (user == M) ? "sucks on \the [src]" : "forces \the [M] to suck on \the [src]"
@@ -403,7 +423,7 @@
 	cut_overlays()//remove current overlays
 
 	var/mob/living/carbon/human/H = null
-	if(ishuman(portalunderwear.loc) && portalunderwear) // Wouldn't this make more sense the other way around?
+	if(portalunderwear && ishuman(portalunderwear.loc))
 		H = portalunderwear.loc
 	else
 		useable = FALSE
@@ -492,18 +512,30 @@
 		if(CUM_TARGET_VAGINA)
 			targetting = CUM_TARGET_ANUS
 			slot_flags = ITEM_SLOT_UNDERWEAR
+			body_parts_covered = GROIN
+			flags_cover = 0
+			visor_flags_cover = 0
 			name = "portal panties"
 		if(CUM_TARGET_ANUS)
 			targetting = CUM_TARGET_PENIS
 			slot_flags = ITEM_SLOT_UNDERWEAR
+			body_parts_covered = GROIN
+			flags_cover = 0
+			visor_flags_cover = 0
 			name = "portal panties"
 		if(CUM_TARGET_PENIS)
 			targetting = CUM_TARGET_MOUTH
 			slot_flags = ITEM_SLOT_MASK
+			body_parts_covered = 0
+			flags_cover = MASKCOVERSMOUTH
+			visor_flags_cover = MASKCOVERSMOUTH
 			name = "portal mask"
 		if(CUM_TARGET_MOUTH)
 			targetting = CUM_TARGET_VAGINA
 			slot_flags = ITEM_SLOT_UNDERWEAR
+			body_parts_covered = GROIN
+			flags_cover = 0
+			visor_flags_cover = 0
 			name = "portal panties"
 	to_chat(user, "<span class='notice'>Now when worn the portal will now be facing \an [targetting].</span>")
 
