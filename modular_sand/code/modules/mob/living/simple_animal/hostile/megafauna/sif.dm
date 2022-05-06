@@ -111,7 +111,7 @@ Difficulty: Medium
 	layer = HIGH_OBJ_LAYER //Looks better when its over everything... cause its huge
 	var/obj/item/gps/internal/geepm
 
-/obj/structure/sword/sif/Initialize(mapload)
+/obj/structure/sword/sif/Initialize()
 	. = ..()
 	geepm = new /obj/item/gps/internal/sif(src)
 
@@ -214,13 +214,11 @@ Difficulty: Medium
 		switch(rand(0,100))
 			if(0 to 1)
 				passed = 1
-			else
 
 	if(enraged)
 		switch(rand(0,100))
 			if(0 to 5)
 				passed = 1
-			else
 
 	if(passed == 1)
 		visible_message("<span class='danger'>[src] dodged the projectile!</span>", "<span class='userdanger'>You dodge the projectile!</span>")
@@ -299,7 +297,7 @@ Difficulty: Medium
 		..()
 
 //Immune to explosions when spinning or charging
-/mob/living/simple_animal/hostile/megafauna/sif/ex_act(severity, target, origin)
+/mob/living/simple_animal/hostile/megafauna/sif/ex_act(severity, target)
 	return 0
 
 //stop spinning if you lose the target
