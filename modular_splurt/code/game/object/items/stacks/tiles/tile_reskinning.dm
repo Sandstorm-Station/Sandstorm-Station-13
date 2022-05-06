@@ -23,7 +23,7 @@
 	else	// But not really, I'm a benevolent coder
 		if (istype(user, /mob/living/silicon/robot))	// See above
 			var/mob/living/silicon/robot/R = user
-			R.deselect_module(selected_module)
+			R.deselect_module(R.get_selected_module())
 			moveToNullspace()
 			choice.is_cyborg = 1
 			choice.custom_materials = null
