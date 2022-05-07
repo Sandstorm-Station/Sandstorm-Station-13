@@ -65,3 +65,4 @@
 /obj/item/ammo_box/magazine/internal/shot/levergun/brush
 	name = "brush gun internal magazine"
 	ammo_type = /obj/item/ammo_casing/g4570
+	caliber = "45-70g" // :^(.
