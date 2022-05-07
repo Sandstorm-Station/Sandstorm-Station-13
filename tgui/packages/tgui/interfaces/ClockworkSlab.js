@@ -67,7 +67,7 @@ export const ClockworkSlab = (props, context) => {
       theme="clockcult"
       width={800}
       height={420}>
-      <Window.Content scrollable>
+      <Window.Content overflow="auto">
         {recollection ? ( // tutorial
           <CSTutorial />
         ) : (

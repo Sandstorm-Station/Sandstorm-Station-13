@@ -2,7 +2,7 @@
 
 /datum/interaction/lewd/display_interaction(mob/living/user, mob/living/target)
 	. = ..()
-	if(!(isclownjob(target) && command == "assslap"))
+	if(!(isclownjob(target) && type == /datum/interaction/lewd))
 		return
 
 	if(prob(50))
@@ -206,7 +206,7 @@
 
 /datum/interaction/lewd/nut_smack/display_interaction(mob/living/user, mob/living/target)
 	. = ..()
-	if(!(isclownjob(target) && command == "smack_nuts"))
+	if(!(isclownjob(target) && type == /datum/interaction/lewd/nut_smack))
 		return
 
 	if(prob(50))
@@ -360,12 +360,10 @@
 
 //Own stuff
 /datum/interaction/lewd/oral/selfsuck
-	command = "selfsuck"
 	description = "Suck yourself off."
 	interaction_sound = null
 	require_target_vagina = REQUIRE_NONE
 	require_user_penis = REQUIRE_EXPOSED
-	user_not_tired = TRUE
 	user_is_target = TRUE
 	max_distance = 0
 	write_log_user = "sucked off"
@@ -382,11 +380,9 @@
 	playlewdinteractionsound(user, 'sound/items/bikehorn.ogg', 40, 1, -1)
 
 /datum/interaction/lewd/oral/suckvagself
-	command = "suckvagself"
 	description = "Lick your own pussy."
 	interaction_sound = null
 	require_user_penis = REQUIRE_NONE
-	user_not_tired = TRUE
 	user_is_target = TRUE
 	max_distance = 0
 	write_log_user = "Сunni off"
@@ -396,12 +392,10 @@
 	user.do_oral_self(user, "vagina")
 
 /datum/interaction/lewd/breastfuckself
-	command = "breastfuckself"
 	description = "Fuck your breasts"
 	interaction_sound = null
 	require_user_penis = REQUIRE_EXPOSED
 	require_user_breasts = REQUIRE_EXPOSED
-	user_not_tired = TRUE
 	user_is_target = TRUE
 	max_distance = 0
 	write_log_user = "Breastfucked"
@@ -418,7 +412,6 @@
 	playlewdinteractionsound(user, 'sound/items/bikehorn.ogg', 40, 1, -1)
 
 /datum/interaction/lewd/fuck/belly
-	command = "fuckbelly"
 	description = "Fuck their belly."
 	require_target_vagina = REQUIRE_NONE
 	require_target_belly = REQUIRE_EXPOSED
@@ -437,7 +430,6 @@
 	playlewdinteractionsound(target, 'sound/items/bikehorn.ogg', 40, 1, -1)
 
 /datum/interaction/lewd/remove_self_equipment
-	command = "remove_self_equipment"
 	description = "Remove your genital's equipment"
 	require_user_hands = TRUE
 	interaction_sound = null
@@ -454,7 +446,6 @@
 	user.remove_equipment(user)
 
 /datum/interaction/lewd/remove_other_equipment
-	command = "remove_other_equipment"
 	description = "Remove their genital's equipment"
 	require_user_hands = TRUE
 	interaction_sound = null
@@ -468,7 +459,6 @@
 	user.remove_equipment(target)
 
 /datum/interaction/lewd/deflate_belly
-	command = "deflate_belly"
 	description = "Deflate belly"
 	require_user_belly = REQUIRE_EXPOSED
 	interaction_sound = null
@@ -483,7 +473,6 @@
 		gut.modify_size(-1)
 
 /datum/interaction/lewd/nuzzle_belly
-	command = "nuzzle_belly"
 	description = "Nuzzle their belly"
 	require_target_belly = REQUIRE_EXPOSED
 	interaction_sound = null
@@ -495,7 +484,6 @@
 	user.nuzzle_belly(target)
 
 /datum/interaction/lewd/do_breastsmother
-	command = "do_breastsmother"
 	description = "Smother them in your breasts"
 	require_user_breasts = REQUIRE_EXPOSED
 	max_distance = 1
@@ -515,7 +503,6 @@
 	playlewdinteractionsound(user, 'sound/items/bikehorn.ogg', 40, 1, -1)
 
 /datum/interaction/lewd/lick_sweat
-	command = "lick_sweat"
 	description = "Lick their sweat"
 	require_user_mouth = TRUE
 	max_distance = 1
@@ -527,7 +514,6 @@
 	user.lick_sweat(target)
 
 /datum/interaction/lewd/smother_armpit
-	command = "smother_armpit"
 	description = "Press your armpit against their face"
 	max_distance = 1
 	interaction_sound = null
@@ -538,7 +524,6 @@
 	user.smother_armpit(target)
 
 /datum/interaction/lewd/lick_armpit
-	command = "lick_armpit"
 	description = "Lick their armpit"
 	require_user_mouth = TRUE
 	max_distance = 1
@@ -550,7 +535,6 @@
 	user.lick_armpit(target)
 
 /datum/interaction/lewd/fuck_armpit
-	command = "fuck_armpit"
 	description = "Fuck their armpit"
 	require_user_penis = REQUIRE_EXPOSED
 	interaction_sound = null
@@ -569,7 +553,6 @@
 	playlewdinteractionsound(user, 'sound/items/bikehorn.ogg', 40, 1, -1)
 
 /datum/interaction/lewd/do_pitjob
-	command = "do_pitjob"
 	description = "Jerk them off with your armpit"
 	require_target_penis = REQUIRE_EXPOSED
 	interaction_sound = null
@@ -588,7 +571,6 @@
 	playlewdinteractionsound(user, 'sound/items/bikehorn.ogg', 40, 1, -1)
 
 /datum/interaction/lewd/do_boobjob
-	command = "do_boobjob"
 	description = "Give them a boobjob"
 	require_user_breasts = REQUIRE_EXPOSED
 	require_target_penis = REQUIRE_EXPOSED
@@ -609,7 +591,6 @@
 	playlewdinteractionsound(user, 'sound/items/bikehorn.ogg', 40, 1, -1)
 
 /datum/interaction/lewd/lick_nuts
-	command = "lick_nuts"
 	description = "Lick their balls"
 	require_user_mouth = TRUE
 	require_target_balls = REQUIRE_EXPOSED
@@ -622,7 +603,6 @@
 	user.lick_nuts(target)
 
 /datum/interaction/lewd/grope_ass
-	command = "grope_ass"
 	description = "Grope their ass"
 	simple_message = "USER gropes TARGET's ass!"
 	require_user_hands = TRUE
@@ -632,7 +612,6 @@
 	write_log_target = "ass-groped"
 
 /datum/interaction/lewd/fuck_cock
-	command = "fuck_cock"
 	description = "Penetrate their cock"
 	require_user_penis = REQUIRE_EXPOSED
 	require_target_penis = REQUIRE_EXPOSED
@@ -650,7 +629,6 @@
 	playlewdinteractionsound(user, 'sound/items/bikehorn.ogg', 40, 1, -1)
 
 /datum/interaction/lewd/nipple_fuck
-	command = "nipple_fuck"
 	description = "Fuck their nipple"
 	require_target_topless = TRUE
 	require_user_penis = REQUIRE_EXPOSED
@@ -671,7 +649,6 @@
 	playlewdinteractionsound(target, 'sound/items/bikehorn.ogg', 40, 1, -1)
 
 /datum/interaction/lewd/fuck_thighs
-	command = "fuck_thighs"
 	description = "Fuck their thighs"
 	require_user_penis = REQUIRE_EXPOSED
 	require_target_legs = REQUIRE_ANY
@@ -693,7 +670,6 @@
 	playlewdinteractionsound(user, 'sound/items/bikehorn.ogg', 40, 1, -1)
 
 /datum/interaction/lewd/do_thighjob
-	command = "do_thighjob"
 	description = "Give them a thighjob"
 	require_target_penis = REQUIRE_EXPOSED
 	require_user_legs = REQUIRE_ANY
@@ -722,7 +698,6 @@
 	unholy = TRUE
 
 /datum/interaction/lewd/unholy/do_facefart
-	command = "do_facefart"
 	description = "Fart on their face"
 	require_user_anus = REQUIRE_EXPOSED
 	max_distance = 1
@@ -734,7 +709,6 @@
 	user.do_facefart(target)
 
 /datum/interaction/lewd/unholy/do_crotchfart
-	command = "do_crotchfart"
 	description = "Fart on their crotch"
 	require_user_anus = REQUIRE_EXPOSED
 	max_distance = 1
@@ -746,7 +720,6 @@
 	user.do_crotchfart(target)
 
 /datum/interaction/lewd/unholy/do_fartfuck
-	command = "do_fartfuck"
 	description = "Fuck their ass + fart"
 	require_target_anus = REQUIRE_EXPOSED
 	require_user_penis = REQUIRE_EXPOSED
@@ -767,7 +740,6 @@
 	playlewdinteractionsound(target, 'sound/items/bikehorn.ogg', 40, 1, -1)
 
 /datum/interaction/lewd/unholy/suck_fart
-	command = "suck_fart"
 	description = "Suck the farts out of their asshole"
 	require_user_mouth = TRUE
 	require_target_anus = REQUIRE_EXPOSED
@@ -780,7 +752,6 @@
 	user.suck_fart(target)
 
 /datum/interaction/lewd/unholy/do_faceshit
-	command = "do_faceshit"
 	description = "Shit on their face"
 	require_user_anus = TRUE
 	max_distance = 1
@@ -792,7 +763,6 @@
 	user.do_faceshit(target)
 
 /datum/interaction/lewd/unholy/do_crotchshit/
-	command = "do_crotchshit"
 	description = "Shit on their crotch"
 	require_user_anus = REQUIRE_EXPOSED
 	max_distance = 1
@@ -804,7 +774,6 @@
 	user.do_crotchshit(target)
 
 /datum/interaction/lewd/unholy/do_shitfuck
-	command = "do_shitfuck"
 	description = "Fuck their ass + shit"
 	require_target_anus = REQUIRE_EXPOSED
 	require_user_penis = REQUIRE_EXPOSED
@@ -825,7 +794,6 @@
 	playlewdinteractionsound(target, 'sound/items/bikehorn.ogg', 40, 1, -1)
 
 /datum/interaction/lewd/unholy/suck_shit
-	command = "suck_shit"
 	description = "Suck the shit out of their asshole"
 	require_user_mouth = TRUE
 	require_target_anus = REQUIRE_EXPOSED
@@ -838,7 +806,6 @@
 	user.suck_shit(target)
 
 /datum/interaction/lewd/unholy/piss_over
-	command = "piss_over"
 	description = "Piss all over them"
 	require_user_bottomless = TRUE
 	max_distance = 1
@@ -850,7 +817,6 @@
 	user.piss_over(target)
 
 /datum/interaction/lewd/unholy/piss_mouth
-	command = "piss_mouth"
 	description = "Piss inside their mouth"
 	max_distance = 1
 	interaction_sound = null

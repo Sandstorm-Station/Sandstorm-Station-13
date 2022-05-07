@@ -266,7 +266,7 @@ export const NtosRobotactContent = (props, context) => {
             <Section
               title="Laws"
               fill
-              scrollable
+              overflow="auto"
               buttons={(
                 <>
                   <Button
@@ -293,7 +293,7 @@ export const NtosRobotactContent = (props, context) => {
           height={40}>
           <Section
             fill
-            scrollable
+            overflow="auto"
             backgroundColor="black">
             {borgLog.map(log => (
               <Box

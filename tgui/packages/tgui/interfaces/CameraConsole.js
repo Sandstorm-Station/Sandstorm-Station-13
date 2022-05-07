@@ -53,7 +53,7 @@ export const CameraConsole = (props, context) => {
       width={870}
       height={708}>
       <div className="CameraConsole__left">
-        <Window.Content scrollable>
+        <Window.Content overflow="auto">
           <CameraConsoleContent />
         </Window.Content>
       </div>
@@ -113,7 +113,7 @@ export const CameraConsoleContent = (props, context) => {
         height="100%">
         <Section
           fill
-          scrollable>
+          overflow="auto">
           {cameras.map(camera => (
           // We're not using the component here because performance
           // would be absolutely abysmal (50+ ms for each re-render).

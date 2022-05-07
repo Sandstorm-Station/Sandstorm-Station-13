@@ -101,12 +101,12 @@
 			// Abomination deathclaws do other stuff instead
 			if(deathclaw_mode == "abomination" && M.client?.prefs.unholypref == "Yes")
 				if(prob(1))
-					I = SSinteractions.interactions["grindmouth"]
+					I = SSinteractions.interactions[/datum/interaction/lewd/grindmouth]
 				else
-					I = SSinteractions.interactions["grindface"]
+					I = SSinteractions.interactions[/datum/interaction/lewd/grindface]
 				handle_post_sex(25, null, M)
 			else
-				I = SSinteractions.interactions["fuckass"]
+				I = SSinteractions.interactions[/datum/interaction/lewd/fuck/anal]
 			I.display_interaction(src, M)
 
 		if(CUM_TARGET_VAGINA)
@@ -117,10 +117,10 @@
 
 			// Abomination deathclaws do other stuff instead
 			if(deathclaw_mode == "abomination" && M.client?.prefs.unholypref == "Yes")
-				I = SSinteractions.interactions["footjob_vaginal"]
+				I = SSinteractions.interactions[/datum/interaction/lewd/footjob/vagina]
 				handle_post_sex(10, null, M)
 			else
-				I = SSinteractions.interactions["fuckvag"]
+				I = SSinteractions.interactions[/datum/interaction/lewd/fuck]
 			I.display_interaction(src, M)
 
 		if(CUM_TARGET_THROAT)
@@ -138,7 +138,7 @@
 				handle_post_sex(25, null, M)
 				shake_camera(M, 6, 1)
 			else
-				I = SSinteractions.interactions["throatfuck"]
+				I = SSinteractions.interactions[/datum/interaction/lewd/throatfuck]
 				I.display_interaction(src, M)
 
 /mob/living/simple_animal/hostile/deathclaw/funclaw/cum(mob/living/M)

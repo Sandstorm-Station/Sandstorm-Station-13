@@ -1,5 +1,4 @@
 /datum/interaction/cuddle
-	command = "cuddle"
 	description = "Cuddle with them."
 	simple_message = "USER cuddles TARGET."
 	simple_style = "lewd"

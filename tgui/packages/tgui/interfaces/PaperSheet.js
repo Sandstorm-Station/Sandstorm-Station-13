@@ -677,7 +677,7 @@ export const PaperSheet = (props, context) => {
       height={sizeY || 500}>
       <Window.Content
         backgroundColor={paper_color}
-        scrollable>
+        overflow="auto">
         <Box
           id="page"
           fitted

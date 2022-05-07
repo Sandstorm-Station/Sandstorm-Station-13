@@ -10,7 +10,7 @@ export const AtmosAlertConsole = (props, context) => {
     <Window
       width={350}
       height={300}>
-      <Window.Content scrollable>
+      <Window.Content overflow="auto">
         <Section title="Alarms">
           <ul>
             {priorityAlerts.length === 0 && (

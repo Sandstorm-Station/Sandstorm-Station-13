@@ -1,5 +1,4 @@
 /datum/interaction/lewd/do_breastfeed
-	command = "do_breastfeed"
 	description = "Breastfeed them"
 	require_user_breasts = REQUIRE_EXPOSED
 	require_target_mouth = TRUE
@@ -49,7 +48,6 @@
 	target.reagents.add_reagent(milktype, rand(1,3 * modifier))
 
 /datum/interaction/lewd/titgrope
-	command = "titgrope"
 	description = "Grope their breasts."
 	require_user_hands = TRUE
 	require_target_breasts = REQUIRE_ANY

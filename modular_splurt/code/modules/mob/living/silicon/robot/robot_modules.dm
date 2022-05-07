@@ -177,7 +177,8 @@
 		/obj/item/crowbar/cyborg,
 		/obj/item/extinguisher,
 		/obj/item/export_scanner,
-		/obj/item/gripper
+		/obj/item/gripper,
+		/obj/item/cyborg_clamp
 	)
 	emag_modules = list(
 		/obj/item/stamp/chameleon,

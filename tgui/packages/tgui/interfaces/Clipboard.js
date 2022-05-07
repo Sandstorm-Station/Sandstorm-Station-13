@@ -21,7 +21,7 @@ export const Clipboard = (props, context) => {
   } = data;
   return (
     <Window title="Clipboard" width={400} height={500}>
-      <Window.Content backgroundColor="#704D25" scrollable>
+      <Window.Content backgroundColor="#704D25" overflow="auto">
         <Section>
           {pen ? (
             <LabeledList>

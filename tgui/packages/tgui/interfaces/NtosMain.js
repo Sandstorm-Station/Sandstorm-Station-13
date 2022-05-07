@@ -22,7 +22,7 @@ export const NtosMain = (props, context) => {
       theme={device_theme}
       width={400}
       height={500}>
-      <NtosWindow.Content scrollable>
+      <NtosWindow.Content overflow="auto">
         {!!has_light && (
           <Section>
             <Button

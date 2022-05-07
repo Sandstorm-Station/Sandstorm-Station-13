@@ -38,7 +38,7 @@ export const Holopad = (props, context) => {
           </Box>
         </Modal>
       )}
-      <Window.Content scrollable>
+      <Window.Content overflow="auto">
         <HolopadContent />
       </Window.Content>
     </Window>

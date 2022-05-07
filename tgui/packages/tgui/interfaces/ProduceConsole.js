@@ -56,7 +56,7 @@ const ShoppingTab = (props, context) => {
         </Stack.Item>
       </Section>
       <Stack.Item grow>
-        <Section fill scrollable>
+        <Section fill overflow="auto">
           <Stack vertical mt={-2}>
             <Divider />
             {mapped_food.map(item => (
@@ -107,7 +107,7 @@ const CheckoutTab = (props, context) => {
   return (
     <Stack vertical fill>
       <Stack.Item grow>
-        <Section fill scrollable>
+        <Section fill overflow="auto">
           <Stack vertical fill>
             <Stack.Item textAlign="center">
               Checkout list:

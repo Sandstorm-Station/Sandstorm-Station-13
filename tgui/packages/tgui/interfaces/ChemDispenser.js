@@ -37,7 +37,7 @@ export const ChemDispenser = (props, context) => {
       width={565}
       height={data.canStore ? 720 : 620}
       resizable>
-      <Window.Content scrollable>
+      <Window.Content overflow="auto">
         <Section
           title="Status"
           buttons={
