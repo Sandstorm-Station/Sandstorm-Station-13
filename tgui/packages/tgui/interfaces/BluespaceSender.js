@@ -27,7 +27,7 @@ export const BluespaceSender = (props, context) => {
       height={600}>
       <Window.Content>
         <Section
-          overflow="auto"
+          scrollable
           fill
           title="Bluespace Network Gases"
           buttons={(

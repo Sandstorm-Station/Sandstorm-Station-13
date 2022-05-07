@@ -155,7 +155,7 @@ export const NtosNetChat = (props, context) => {
           <Stack.Item grow={5}>
             <Stack vertical fill>
               <Stack.Item grow>
-                <Section overflow="auto" fill>
+                <Section scrollable fill>
                   {in_channel && (
                     authorized ? (
                       messages.map(message => (
@@ -208,7 +208,7 @@ export const NtosNetChat = (props, context) => {
               <Stack.Item grow={1}>
                 <Stack vertical fill>
                   <Stack.Item grow>
-                    <Section overflow="auto" fill>
+                    <Section scrollable fill>
                       <Stack vertical>
                         {displayed_clients.map(client => (
                           <Stack height="18px" fill key={client.name}>

@@ -105,7 +105,7 @@ const Contents = (properties, context) => {
   return (
     <Box
       className="Safe__contents"
-      overflow="auto">
+      scrollable>
       {contents.map((item, index) => (
         <Fragment key={item}>
           <Button

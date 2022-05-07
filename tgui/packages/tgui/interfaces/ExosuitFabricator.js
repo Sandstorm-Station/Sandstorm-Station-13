@@ -291,7 +291,7 @@ const PartLists = (props, context) => {
         </Section>
       </Stack.Item>
       <Stack.Item grow>
-        <Section fill overflow="auto">
+        <Section fill scrollable>
           {!!searchText && (
             <PartCategory
               name={"Search Results"}
@@ -414,7 +414,7 @@ const Queue = (props, context) => {
       <Stack.Item grow>
         <Section
           fill
-          overflow="auto"
+          scrollable
           title="Queue"
           buttons={(
             <>

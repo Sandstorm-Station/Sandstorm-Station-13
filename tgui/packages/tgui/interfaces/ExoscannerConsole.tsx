@@ -271,7 +271,7 @@ export const ExoscannerConsole = (props, context) => {
                 <Section
                   fill
                   title="Configure Targeted Scans"
-                  overflow="auto"
+                  scrollable
                   buttons={
                     <Button
                       content="View Experiments"
