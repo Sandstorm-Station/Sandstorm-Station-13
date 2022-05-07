@@ -39,7 +39,7 @@ const CrewList = (props, context) => {
     frozen_crew.length && (
       <Section
         fill
-        overflow="auto">
+        scrollable>
         <LabeledList>
           {frozen_crew.map((person) => (
             <LabeledList.Item key={person} label={person.name}>
@@ -62,7 +62,7 @@ const ItemList = (props, context) => {
     item_meta.length && (
       <Section
         fill
-        overflow="auto">
+        scrollable>
         <LabeledList>
           {item_meta.map((metadat) => (
             <LabeledList.Item key={metadat.name} label={metadat.name}>

@@ -486,7 +486,7 @@ const SDQLSpellOptions = (props, context) => {
   const vars = typevars(type);
 
   return (
-    <Section fill overflow="auto">
+    <Section fill scrollable>
       {vars
         .filter((entry) => varCondition(entry, saved_vars))
         .map((entry) => (

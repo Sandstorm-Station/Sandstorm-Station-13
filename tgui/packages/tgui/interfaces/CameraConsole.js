@@ -113,7 +113,7 @@ export const CameraConsoleContent = (props, context) => {
         height="100%">
         <Section
           fill
-          overflow="auto">
+          scrollable>
           {cameras.map(camera => (
           // We're not using the component here because performance
           // would be absolutely abysmal (50+ ms for each re-render).

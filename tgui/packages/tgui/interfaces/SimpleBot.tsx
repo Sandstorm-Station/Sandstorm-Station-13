@@ -46,7 +46,7 @@ export const SimpleBot = (_, context) => {
           </Stack.Item>
           {access && (
             <Stack.Item grow>
-              <Section fill overflow="auto" title="Controls">
+              <Section fill scrollable title="Controls">
                 <ControlsDisplay />
               </Section>
             </Stack.Item>

@@ -396,7 +396,7 @@ const RecipeLibrary = (props, context) => {
   return (
     <Section
       fill
-      overflow="auto"
+      scrollable
       title={bookmarkMode ? "Bookmarked recipes" : "Possible recipes"}
       buttons={(
         <>

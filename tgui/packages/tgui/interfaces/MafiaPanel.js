@@ -59,7 +59,7 @@ export const MafiaPanel = (props, context) => {
                     </Stack.Item>
                     {!!roleinfo && (
                       <Stack.Item height="80px">
-                        <Section fill overflow="auto">
+                        <Section fill scrollable>
                           {roleinfo?.action_log?.map(line => (
                             <Box key={line}>{line}</Box>
                           ))}
@@ -94,7 +94,7 @@ const MafiaLobby = (props, context) => {
   return (
     <Section
       fill
-      overflow="auto"
+      scrollable
       title="Lobby"
       buttons={(
         <>
@@ -217,7 +217,7 @@ const MafiaListOfRoles = (props, context) => {
   return (
     <Section
       fill
-      overflow="auto"
+      scrollable
       title="Roles and Notes"
       minHeight="120px"
       buttons={
@@ -339,7 +339,7 @@ const MafiaPlayers = (props, context) => {
     players,
   } = data;
   return (
-    <Section fill overflow="auto" title="Players">
+    <Section fill scrollable title="Players">
       <Flex direction="column">
         {players?.map(player => (
           <Flex.Item

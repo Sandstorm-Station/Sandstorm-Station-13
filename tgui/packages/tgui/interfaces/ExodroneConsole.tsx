@@ -177,7 +177,7 @@ const DroneSelectionSection = (props, context) => {
   } = data;
 
   return (
-    <Section overflow="auto" fill title="Exploration Drone Listing">
+    <Section scrollable fill title="Exploration Drone Listing">
       <Stack vertical>
         {all_drones.map(drone => (
           <Fragment key={drone.ref}>
@@ -510,7 +510,7 @@ const TravelTargetSelectionScreen = (props, context) => {
       <Section
         title="Travel Destinations"
         fill
-        overflow="auto"
+        scrollable
         buttons={
           <>
             {props.showCancelButton && (
@@ -852,7 +852,7 @@ const ExodroneConsoleContent = (props, context) => {
         </Stack>
       </Stack.Item>
       <Stack.Item height={10}>
-        <Section title="Drone Log" fill overflow="auto">
+        <Section title="Drone Log" fill scrollable>
           <LabeledList>
             {drone_log.map((log_line, ix) => (
               <LabeledList.Item key={log_line} label={`Entry ${ix + 1}`}>
