@@ -140,7 +140,7 @@ const OutfitDisplay = (props, context) => {
   const { current_outfit } = data;
   const { entries, currentTab } = props;
   return (
-    <Section fill scrollable>
+    <Section fill overflow="auto">
       {entries.map(entry => (
         <Button
           key={getOutfitKey(entry)}

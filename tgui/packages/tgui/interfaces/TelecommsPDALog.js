@@ -33,7 +33,7 @@ export const TelecommsPDALog = (props, context) => {
         resizable
         width={727}
         height={510}>
-        <Window.Content scrollable>
+        <Window.Content overflow="auto">
           <NoticeBox>
             <b>
               <h3>
@@ -72,7 +72,7 @@ export const TelecommsPDALog = (props, context) => {
 
   return (
     <Window theme="ntos" resizable>
-      <Window.Content scrollable>
+      <Window.Content overflow="auto">
         <Fragment>
           {!!notice && (
             <NoticeBox>

@@ -79,7 +79,7 @@ export const NtosCyborgRemoteMonitorContent = (props, context) => {
             </Stack.Item>
           )}
           <Stack.Item grow={1}>
-            <Section fill scrollable>
+            <Section fill overflow="auto">
               {cyborgs.map(cyborg => (
                 <Section
                   key={cyborg.ref}
@@ -164,7 +164,7 @@ export const NtosCyborgRemoteMonitorContent = (props, context) => {
             grow={1}>
             <Section
               fill
-              scrollable
+              overflow="auto"
               backgroundColor="black">
               {storedlog.map(log => (
                 <Box

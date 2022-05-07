@@ -32,7 +32,7 @@ export const VariableMenu = (props, context) => {
     >
       <Stack height="100%">
         <Stack.Item grow={1} mr={2}>
-          <Section fill scrollable>
+          <Section fill overflow="auto">
             <Stack vertical>
               {variables.map(val => (
                 <Stack.Item key={val.name}>

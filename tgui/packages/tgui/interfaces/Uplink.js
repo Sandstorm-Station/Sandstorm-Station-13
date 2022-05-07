@@ -14,7 +14,7 @@ export const Uplink = (props, context) => {
       width={620}
       height={580}
       theme="syndicate">
-      <Window.Content scrollable>
+      <Window.Content overflow="auto">
         <GenericUplink
           currencyAmount={telecrystals}
           currencySymbol="TC" />

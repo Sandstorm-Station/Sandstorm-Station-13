@@ -18,7 +18,7 @@ export const PowerMonitor = () => {
     <Window
       width={550}
       height={700}>
-      <Window.Content scrollable>
+      <Window.Content overflow="auto">
         <PowerMonitorContent />
       </Window.Content>
     </Window>

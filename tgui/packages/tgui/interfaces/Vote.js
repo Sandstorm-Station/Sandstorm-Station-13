@@ -107,7 +107,7 @@ const VotersList = (props, context) => {
   return (
     <Stack.Item>
       <Collapsible title={`View Voters${voting.length ? `: ${voting.length}` : ""}`}>
-        <Section height={8} fill scrollable>
+        <Section height={8} fill overflow="auto">
           {voting.map((voter) => {
             return <Box key={voter}>{voter}</Box>;
           })}
@@ -127,7 +127,7 @@ const ChoicesPanel = (props, context) => {
 
   return (
     <Stack.Item grow>
-      <Section fill scrollable title="Choices">
+      <Section fill overflow="auto" title="Choices">
         {choices.length !== 0 ? (
           <LabeledList>
             {choices.map((choice, i) => (

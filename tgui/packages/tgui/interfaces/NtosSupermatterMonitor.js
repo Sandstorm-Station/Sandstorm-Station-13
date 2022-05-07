@@ -6,7 +6,7 @@ export const NtosSupermatterMonitor = (props, context) => {
     <NtosWindow
       width={600}
       height={350}>
-      <NtosWindow.Content scrollable>
+      <NtosWindow.Content overflow="auto">
         <SupermatterMonitorContent />
       </NtosWindow.Content>
     </NtosWindow>

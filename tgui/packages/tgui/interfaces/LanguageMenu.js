@@ -16,7 +16,7 @@ export const LanguageMenu = (props, context) => {
       title="Language Menu"
       width={700}
       height={600}>
-      <Window.Content scrollable>
+      <Window.Content overflow="auto">
         <Section title="Known Languages">
           <LabeledList>
             {languages.map(language => (

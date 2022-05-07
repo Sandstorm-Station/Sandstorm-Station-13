@@ -80,7 +80,7 @@ export const BluespaceVendor = (props, context) => {
           </Stack.Item>
           <Stack.Item grow>
             <Section
-              scrollable
+              overflow="auto"
               fill
               title="Bluespace Network Gases"
               buttons={(

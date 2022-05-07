@@ -11,7 +11,7 @@ export const StackingConsole = (props, context) => {
     <Window
       width={320}
       height={340}>
-      <Window.Content scrollable>
+      <Window.Content overflow="auto">
         {!machine ? (
           <NoticeBox>
             No connected stacking machine
