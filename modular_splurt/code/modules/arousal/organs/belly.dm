@@ -69,7 +69,7 @@
 			size_name = "sagging"
 		if(6)
 			size_name = "gigantic"
-		if(7)
+		if(7 to BELLY_SIZE_MAX)
 			size_name = pick("massive","unfathomably bulging","enormous","very generous","humongous","big bubbly")
 		else
 			size_name = "nonexistent"
