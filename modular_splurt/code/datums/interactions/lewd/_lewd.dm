@@ -7,6 +7,13 @@
 /mob/living
 	var/has_belly = FALSE
 
+/mob/living/proc/get_refraction_dif() //Got snapped in upstream, may delete later when I figure something out
+	var/dif = (refractory_period - world.time)
+	if(dif < 0)
+		return 0
+	else
+		return dif
+
 /mob/living/proc/has_belly(var/nintendo = REQUIRE_ANY)
 	var/mob/living/carbon/C = src
 	if(has_belly && !istype(C))

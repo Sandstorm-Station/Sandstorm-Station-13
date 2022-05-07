@@ -115,3 +115,7 @@
 				return FALSE
 	. = ..()
 
+/mob/living/list_interaction_attributes(mob/living/LM)
+	. = ..()
+	if(has_belly(REQUIRE_EXPOSED))
+		. += "...have a belly"
