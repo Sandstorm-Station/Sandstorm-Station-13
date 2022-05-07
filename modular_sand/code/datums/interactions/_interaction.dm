@@ -116,7 +116,7 @@
 	if(write_log_user)
 		user.log_message("[write_log_user] [target]", LOG_ATTACK)
 	if(write_log_target)
-		target.log_message("[write_log_target] [user]", LOG_VICTIM)
+		target.log_message("[write_log_target] [user]", LOG_VICTIM, log_globally = FALSE)
 
 	display_interaction(user, target)
 	post_interaction(user, target)
