@@ -40,4 +40,4 @@
 
 	languagewhitelist = list("Encoded Audio Language")
 
-
+	eye_type = "spectre"
