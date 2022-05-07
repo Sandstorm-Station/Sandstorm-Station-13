@@ -42,17 +42,17 @@
 	..()
 
 /obj/item/projectile/energy/electrode/security
-	tase_duration = 40
+	tase_duration = 20
 	knockdown = 0
-	stamina = 0
-	knockdown_stamoverride = 0
-	knockdown_stam_max = 0
+	stamina = 40
+	knockdown_stamoverride = 36
+	knockdown_stam_max = 50
 	strong_tase = FALSE
 
 /obj/item/projectile/energy/electrode/security/hos
-	tase_duration = 40
+	tase_duration = 20
 	knockdown = 0
-	stamina = 0
-	knockdown_stamoverride = 0
-	knockdown_stam_max = 0
+	stamina = 40
+	knockdown_stamoverride = 36
+	knockdown_stam_max = 50
 	strong_tase = FALSE
