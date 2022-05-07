@@ -53,7 +53,7 @@ export const AntagInfoWizard = (props, context) => {
       <Window.Content>
         <Stack vertical fill>
           <Stack.Item grow>
-            <Section overflow="auto" fill>
+            <Section scrollable fill>
               <Stack vertical>
                 <Stack.Item textColor="red" fontSize="20px">
                   You are the Space Wizard!

@@ -114,7 +114,7 @@ export const ListInput = (props, context) => {
           <Stack.Item grow>
             <Section
               fill
-              overflow="auto"
+              scrollable
               className="ListInput__Section"
               title={message}
               tabIndex={0}

@@ -110,7 +110,7 @@ const SectSelectTab = (props, context) => {
     sects,
   } = data;
   return (
-    <Section fill title="Sect Select" overflow="auto">
+    <Section fill title="Sect Select" scrollable>
       <Stack vertical>
         {sects.map(sect => (
           <>
