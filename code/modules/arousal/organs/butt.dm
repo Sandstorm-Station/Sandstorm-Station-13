@@ -62,7 +62,13 @@
 		if(4)
 			size_name = "hefty"
 		if(5)
-			size_name = pick("massive","extreme","enormous","very generous","humongous","big bubbly","dummy thicc")
+			size_name = pick("massive", "very generous")
+		if(6)
+			size_name = pick("gigantic", "big bubbly", "enormous")
+		if(7)
+			size_name = pick("unfathomably large", "extreme")
+		if(8)
+			size_name = pick("absolute dumptruck", "humongous", "dummy thicc")
 		else
 			size_name = "nonexistent"
 
