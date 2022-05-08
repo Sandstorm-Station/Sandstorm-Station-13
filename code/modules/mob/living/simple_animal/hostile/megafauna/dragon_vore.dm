@@ -2,7 +2,7 @@
 	vore_active = TRUE
 	isPredator = TRUE
 
-/mob/living/simple_animal/hostile/megafauna/dragon/Initialize(mapload)
+/mob/living/simple_animal/hostile/megafauna/dragon/Initialize()
 	// Create and register 'stomachs'
 	var/obj/belly/megafauna/dragon/maw/maw = new(src)
 	var/obj/belly/megafauna/dragon/gullet/gullet = new(src)
