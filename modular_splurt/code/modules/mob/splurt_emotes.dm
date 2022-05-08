@@ -410,6 +410,8 @@
 	key = "laugh2"
 	key_third_person = "laughs2"
 	message = "laughs like a king."
+	emote_type = EMOTE_AUDIBLE
+	muzzle_ignore = FALSE
 
 /datum/emote/living/laugh2/run_emote(mob/user, params, type_override, intentional)
 	if(!(. = ..()))
@@ -418,3 +420,16 @@
 		return
 	user.nextsoundemote = world.time + 7
 	playsound(user, 'modular_splurt/sound/voice/laugh_king.ogg', 50, 1, -1)
+
+/datum/emote/living/breakbad
+	key = "breakbad"
+	key_third_person = "breakbads"
+	message = "have an expression as if they planning to go after someone."
+
+/datum/emote/living/breakbad/run_emote(mob/user, params, type_override, intentional)
+	if(!(. = ..()))
+		return
+	if(user.nextsoundemote >= world.time)
+		return
+	user.nextsoundemote = world.time + 60
+	playsound(user, 'modular_splurt/sound/voice/breakbad.ogg', 50, 1, -1)
