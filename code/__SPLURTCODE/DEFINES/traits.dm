@@ -7,6 +7,8 @@
 
 #define TRAIT_GFLUID_DETECT "genital_fluid_detect"
 
+#define TRAIT_ASHRESISTANCE		"TRAIT_ASHRESISTANCE"
+
 // Hyperstation traits
 #define TRAIT_PHARMA            "hepatic_pharmacokinesis"
 #define TRAIT_CHOKE_SLUT		"choke_slut"
