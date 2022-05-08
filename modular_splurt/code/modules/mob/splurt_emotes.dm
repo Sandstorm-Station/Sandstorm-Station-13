@@ -424,7 +424,7 @@
 /datum/emote/living/breakbad
 	key = "breakbad"
 	key_third_person = "breakbads"
-	message = "have an expression as if they planning to go after someone."
+	message = "stares intensevily with determination."
 
 /datum/emote/living/breakbad/run_emote(mob/user, params, type_override, intentional)
 	if(!(. = ..()))
