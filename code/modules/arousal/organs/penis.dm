@@ -52,7 +52,7 @@
 			new_size = 5
 
 	if(linked_organ)
-		linked_organ.size = clamp(size + new_size, BALLS_SIZE_MIN, BALLS_SIZE_MAX)
+		linked_organ.size = clamp(size, BALLS_SIZE_MIN, BALLS_SIZE_MAX) //SPLURT Edit. No more randomly massive balls
 		linked_organ.update()
 	size = new_size
 
