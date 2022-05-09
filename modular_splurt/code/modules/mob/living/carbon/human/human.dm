@@ -6,3 +6,7 @@
 /mob/living/carbon/human/Logout()
 	. = ..()
 	set_antag_target_indicator()
+
+/mob/living/carbon/human/ComponentInitialize()
+	. = ..()
+	AddElement(/datum/element/flavor_text/carbon, _name = "Headshot", _save_key = "headshot_link", _examine_no_preview = TRUE, _edit = FALSE)

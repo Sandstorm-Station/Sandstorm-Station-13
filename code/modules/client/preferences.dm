@@ -517,6 +517,13 @@ GLOBAL_LIST_EMPTY(preferences_datums)
 					dat += "[features["ooc_notes"]]<BR>"
 			else
 				dat += "[TextPreview(features["ooc_notes"])]...<BR>"
+			//SPLURT EDIT
+			dat += "<h2>Headshot Image</h2>"
+			dat += "<a href='?_src_=prefs;preference=headshot'><b>Set Headshot Image</b></a><br>"
+			if(features["headshot_link"])
+				dat += "<img src='[features["headshot_link"]]' width='160px' height='120px'>"
+			dat += "<br><br>"
+			//SPLURT EDIT END
 			//SKYRAT EDIT
 			dat += 	"ERP : <a href='?_src_=prefs;preference=erp_pref'>[erppref]</a><br>"
 			dat += 	"Non-Con : <a href='?_src_=prefs;preference=noncon_pref'>[nonconpref]</a><br>"
@@ -3434,6 +3441,30 @@ GLOBAL_LIST_EMPTY(preferences_datums)
 				if("tab")
 					if(href_list["tab"])
 						current_tab = text2num(href_list["tab"])
+				//SPLURT edit
+				if("headshot")
+					var/usr_input = input(user, "Input the image link:", "Headshot Image", features["headshot_link"]) as text|null
+					if(isnull(usr_input))
+						return
+					if(!usr_input)
+						features["headshot_link"] = null
+						return
+
+					var/static/link_regex = regex("https://i.gyazo.com|https://media.discordapp.net|https://cdn.discordapp.com|https://media.discordapp.net$") //Do not touch the damn duplicates.
+					var/static/end_regex = regex(".jpg|.jpg|.png|.jpeg|.jpeg") //Regex is terrible, don't touch the duplicate extensions
+
+					if(!findtext(usr_input, link_regex, 1, 29))
+						to_chat(usr, span_warning("The link needs to be an unshortened Gyazo or Discordapp link!"))
+						return
+					if(!findtext(usr_input, end_regex, -8))
+						to_chat(usr, span_warning("You need either \".png\", \".jpg\", or \".jpeg\" in the link!"))
+						return
+
+					if(features["headshot_link"] != usr_input)
+						to_chat(usr, span_notice("If the photo doesn't show up properly in-game, ensure that it's a direct image link that opens properly in a browser."))
+						to_chat(usr, span_notice("Keep in mind that the photo will be downsized to 250x250 pixels, so the more square the photo, the better it will look."))
+					features["headshot_link"] = usr_input
+
 	if(href_list["preference"] == "gear")
 		if(href_list["clear_loadout"])
 			loadout_data["SAVE_[loadout_slot]"] = list()
