@@ -1,6 +1,6 @@
 /datum/interaction/lewd/nipsuck
 	description = "Suck their nipples."
-	require_target_topless = TRUE
+	require_target_breasts = REQUIRE_EXPOSED
 	require_user_mouth = TRUE
 	write_log_user = "sucked nipples"
 	write_log_target = "had their nipples sucked by"
