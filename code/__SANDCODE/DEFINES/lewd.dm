@@ -18,7 +18,7 @@ GLOBAL_LIST_INIT(lewd_prefs_choices, list(
 #define CUM_TARGET_BREASTS "breasts"
 #define CUM_TARGET_FEET "feet"
 #define CUM_TARGET_PENIS "penis"
-#define CUM_TARGET_URETHRA "urethra"
+// #define CUM_TARGET_URETHRA "urethra"
 //Weird defines go here
 #define CUM_TARGET_EARS "ears"
 #define CUM_TARGET_EYES "eyes"
