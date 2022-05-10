@@ -3,6 +3,35 @@
 /mob/living/silicon/robot
 	var/obj/item/pda/ai/aiPDA //TODO: Refractor the whole PDA system to be on /mob/living/silicon and add the pda functions of all the other silicons from /tg/
 
+/// Allows "cyborg" players to change gender at will - Modularised here
+/mob/living/silicon/robot/verb/toggle_gender()
+	set name = "Set Gender"
+	set desc = "Allows you to set your gender."
+	set category = "Robot Commands"
+
+	if(stat != CONSCIOUS)
+		to_chat(usr, "<span class='warning'>You cannot toggle your gender while unconcious!</span>")
+		return
+
+	var/choice = tgui_alert(usr, "Select Gender.", "Gender", list("Both", "Male", "Female", "None"))
+	switch(choice)
+		if("Both")
+			has_penis = TRUE
+			has_balls = TRUE
+			has_vagina = TRUE
+		if("Male")
+			has_penis = TRUE
+			has_balls = TRUE
+			has_vagina = FALSE
+		if("Female")
+			has_penis = FALSE
+			has_balls = FALSE
+			has_vagina = TRUE
+		if("None")
+			has_penis = FALSE
+			has_balls = FALSE
+			has_vagina = FALSE
+
 /mob/living/silicon/robot/Initialize(mapload)
 	. = ..()
 	if(!shell)
