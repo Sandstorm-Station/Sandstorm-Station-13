@@ -287,18 +287,26 @@
 
 /datum/quirk/masked_mook
 	name = "Masked Mook Syndrome"
-	desc = "For some reason you don't feel well without wearing some kind of mask."
-	gain_text = "<span class='danger'>You start feeling unwell without any mask on.</span>"
-	lose_text = "<span class='notice'>You no longer have a need to wear some mask.</span>"
+	desc = "For some reason you don't feel well without wearing some kind of gas mask."
+	gain_text = "<span class='danger'>You start feeling unwell without any gas mask on.</span>"
+	lose_text = "<span class='notice'>You no longer have a need to wear some gas mask.</span>"
 	value = 0
 	mood_quirk = TRUE
 	medical_record_text = "Patient feels more secure when wearing a face-covering item."
 
 /datum/quirk/masked_mook/on_process()
 	var/mob/living/carbon/human/H = quirk_holder
-	if(H.get_item_by_slot(ITEM_SLOT_MASK)) // Was intended to check if mask is a gasmask, but I am terrible at code so I left working part as-is.
+	var/obj/item/clothing/mask/gas/gasmask = H.get_item_by_slot(ITEM_SLOT_MASK)
+	if(istype(gasmask))
 		SEND_SIGNAL(quirk_holder, COMSIG_CLEAR_MOOD_EVENT, "masked_mook_incomplete")
 		SEND_SIGNAL(quirk_holder, COMSIG_ADD_MOOD_EVENT, "masked_mook", /datum/mood_event/masked_mook)
 	else
 		SEND_SIGNAL(quirk_holder, COMSIG_CLEAR_MOOD_EVENT, "masked_mook")
 		SEND_SIGNAL(quirk_holder, COMSIG_ADD_MOOD_EVENT, "masked_mook_incomplete", /datum/mood_event/masked_mook_incomplete)
+
+/datum/quirk/masked_mook/on_spawn()
+	. = ..()
+	var/mob/living/carbon/human/H = quirk_holder
+	var/obj/item/clothing/mask/gas/gasmask = new(get_turf(quirk_holder))
+	H.equip_to_slot(gasmask, ITEM_SLOT_MASK)
+	H.regenerate_icons()
