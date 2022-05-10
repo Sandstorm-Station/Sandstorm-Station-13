@@ -78,8 +78,7 @@
 	desc = "Take on the shape a lesser ash drake."
 	invocation = "RAAAAAAAAWR!"
 
-	shapeshift_type = /mob/living/simple_animal/hostile/megafauna/dragon/lesser/transformed
-
+	shapeshift_type = /mob/living/simple_animal/hostile/megafauna/dragon/lesser
 
 /obj/shapeshift_holder
 	name = "Shapeshift holder"

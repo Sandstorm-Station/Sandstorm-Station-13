@@ -9,7 +9,7 @@ export const SmartVend = (props, context) => {
     <Window
       width={440}
       height={550}>
-      <Window.Content scrollable>
+      <Window.Content overflow="auto">
         <Section
           title="Storage"
           buttons={!!data.isdryer && (

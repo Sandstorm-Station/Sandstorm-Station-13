@@ -38,7 +38,7 @@
 
 /obj/item/projectile/bullet/a308/rubber
 	name = ".308 Rubber bullet"
-	damage = 5
+	damage = 3
 	armour_penetration = 0
 	wound_bonus = 0
 	stamina = 30
@@ -57,7 +57,7 @@
 
 /obj/item/projectile/bullet/g45l
 	name = ".45 Long Rubber bullet"
-	damage = 5
+	damage = 3
 	armour_penetration = 0
 	wound_bonus = 0
 	stamina = 35

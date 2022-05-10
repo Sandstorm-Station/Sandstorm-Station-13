@@ -1,11 +1,12 @@
-#define CUM_TARGET_NIPPLE "nipple"
-// #define CUM_TARGET_URETHRA "urethra"
-#define CUM_TARGET_THIGHS "thighs"
-#define CUM_TARGET_BELLY "belly"
-#define CUM_TARGET_ARMPIT "armpit"
-
 /mob/living
 	var/has_belly = FALSE
+
+/mob/living/proc/get_refraction_dif() //Got snapped in upstream, may delete later when I figure something out
+	var/dif = (refractory_period - world.time)
+	if(dif < 0)
+		return 0
+	else
+		return dif
 
 /mob/living/proc/has_belly(var/nintendo = REQUIRE_ANY)
 	var/mob/living/carbon/C = src

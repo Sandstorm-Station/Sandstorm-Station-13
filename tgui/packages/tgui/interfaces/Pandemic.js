@@ -272,7 +272,7 @@ export const Pandemic = (props, context) => {
     <Window
       width={520}
       height={550}>
-      <Window.Content scrollable>
+      <Window.Content overflow="auto">
         <PandemicBeakerDisplay />
         {!!data.has_blood && (
           <>

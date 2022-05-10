@@ -74,7 +74,7 @@ export const ComponentPrinter = (props, context) => {
 
   return (
     <Window title="Component Printer" width={900} height={700}>
-      <Window.Content scrollable>
+      <Window.Content overflow="auto">
         <Stack vertical>
           <Stack.Item>
             <Section title="Materials">

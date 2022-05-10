@@ -281,7 +281,7 @@ export const NaniteCloudControl = (props, context) => {
       width={375}
       height={700}
       resizable>
-      <Window.Content scrollable>
+      <Window.Content overflow="auto">
         <Section
           title="Program Disk"
           buttons={(
