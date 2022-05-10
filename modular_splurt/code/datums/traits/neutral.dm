@@ -286,13 +286,13 @@
 	put_in.implant(quirk_holder, null, TRUE, TRUE)
 
 /datum/quirk/masked_mook
-	name = "Masked Mook Syndrome"
+	name = "Gas Mask Mook Syndrome"
 	desc = "For some reason you don't feel well without wearing some kind of gas mask."
 	gain_text = "<span class='danger'>You start feeling unwell without any gas mask on.</span>"
 	lose_text = "<span class='notice'>You no longer have a need to wear some gas mask.</span>"
 	value = 0
 	mood_quirk = TRUE
-	medical_record_text = "Patient feels more secure when wearing a face-covering item."
+	medical_record_text = "Patient feels more secure when wearing a gas mask."
 
 /datum/quirk/masked_mook/on_process()
 	var/mob/living/carbon/human/H = quirk_holder
