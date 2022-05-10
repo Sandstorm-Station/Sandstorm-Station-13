@@ -87,7 +87,7 @@ GLOBAL_LIST_EMPTY(ash_storm_sounds)
 /datum/weather/ash_storm/weather_act(mob/living/L)
 	if(is_ash_immune(L))
 		return
-	if(is_species(L, /datum/species/lizard/ashwalker))
+	if(is_species(L, /datum/species/lizard/ashwalker) || HAS_TRAIT(L, TRAIT_ASHRESISTANCE))
 		if(L.getStaminaLoss() < (STAMINA_CRIT - 40))
 			L.adjustStaminaLoss(4)
 		return
