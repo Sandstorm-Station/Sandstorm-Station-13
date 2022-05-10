@@ -648,7 +648,7 @@
 	visor_flags_cover  = targetting == CUM_TARGET_MOUTH ? MASKCOVERSMOUTH : NONE
 	name               = targetting == CUM_TARGET_MOUTH ? "portal mask"   : "portal panties"
 
-	to_chat(user, "<span class='notice'>Now when worn the portal will now be facing \an [targetting].</span>")
+	to_chat(user, "<span class='notice'>Now when worn the portal will now be facing your [targetting].</span>")
 	update_portal()
 
 /obj/item/clothing/underwear/briefs/panties/portalpanties/examine(mob/user)
