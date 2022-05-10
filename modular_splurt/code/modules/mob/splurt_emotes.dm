@@ -433,3 +433,31 @@
 		return
 	user.nextsoundemote = world.time + 60
 	playsound(user, 'modular_splurt/sound/voice/breakbad.ogg', 50, 1, -1)
+
+/datum/emote/living/lawyerup
+	key = "lawyerup"
+	key_third_person = "lawyerups"
+	message = "emits an aura of expertise."
+
+/datum/emote/living/lawyerup/run_emote(mob/user, params, type_override, intentional)
+	if(!(. = ..()))
+		return
+	if(user.nextsoundemote >= world.time)
+		return
+	user.nextsoundemote = world.time + 60
+	playsound(user, 'modular_splurt/sound/voice/lawyerup.ogg', 50, 1, -1)
+
+/datum/emote/living/cry2
+	key = "cry2"
+	key_third_person = "crys2"
+	message = "cries like a king."
+	emote_type = EMOTE_AUDIBLE
+	muzzle_ignore = FALSE
+
+/datum/emote/living/cry2/run_emote(mob/user, params, type_override, intentional)
+	if(!(. = ..()))
+		return
+	if(user.nextsoundemote >= world.time)
+		return
+	user.nextsoundemote = world.time + 7
+	playsound(user, pick('modular_splurt/sound/voice/cry_king.ogg', 'modular_splurt/sound/voice/cry_king2.ogg'), 50, 1, -1)
