@@ -73,3 +73,8 @@
 	name = "Dragon Eastern"
 	icon_state = "easternd"
 	matrixed_sections = MATRIX_RED_BLUE
+
+/datum/sprite_accessory/ears/mam_ears/eros/shadekin
+	name = "Shadekin"
+	icon_state = "shadekin"
+	color_src = MUTCOLORS
