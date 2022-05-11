@@ -201,6 +201,30 @@
 	icon = 'modular_splurt/icons/mob/mam_tails.dmi'
 	matrixed_sections = MATRIX_RED_GREEN
 
+/datum/sprite_accessory/tails/mam_tails/shadekin
+	name = "Shadekin"
+	icon_state = "shadekin"
+	icon = 'modular_splurt/icons/mob/mam_tails.dmi'
+	color_src = MUTCOLORS
+
+/datum/sprite_accessory/tails_animated/mam_tails_animated/shadekin
+	name = "Shadekin"
+	icon_state = "shadekin"
+	icon = 'modular_splurt/icons/mob/mam_tails.dmi'
+	color_src = MUTCOLORS
+
+/datum/sprite_accessory/tails/mam_tails/shadekinshort
+	name = "Shadekin Short"
+	icon_state = "shadekinshort"
+	icon = 'modular_splurt/icons/mob/mam_tails.dmi'
+	color_src = MUTCOLORS
+
+/datum/sprite_accessory/tails_animated/mam_tails_animated/shadekinshort
+	name = "Shadekin Short"
+	icon_state = "shadekinshort"
+	icon = 'modular_splurt/icons/mob/mam_tails.dmi'
+	color_src = MUTCOLORS
+
 //Lizard tails
 /datum/sprite_accessory/tails/lizard/tailmaw
 	name = "Tailmaw"
