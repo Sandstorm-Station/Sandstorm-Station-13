@@ -6,3 +6,6 @@
 /mob/living/carbon/human/Logout()
 	. = ..()
 	set_antag_target_indicator()
+
+/mob/living/carbon/human/species/mammal/shadekin
+	race = /datum/species/mammal/shadekin
