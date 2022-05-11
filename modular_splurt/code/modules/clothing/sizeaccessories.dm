@@ -39,7 +39,7 @@
 //SynTech ring
 /obj/item/clothing/gloves/ring/syntech
 	name = "normalizer ring"
-	desc = "An expensive, shimmering SynTech ring gilded with golden Kinaris markings. It will 'normalize' the size of the user to a specified height approved for work-conditions, as long as it is equipped. The artificial violet gem inside twinkles ominously."
+	desc = "An expensive, shimmering SynTech ring gilded with golden NanoTrasen markings. It will 'normalize' the size of the user to a specified height approved for work-conditions, as long as it is equipped. The artificial violet gem inside twinkles ominously."
 	icon = 'modular_splurt/icons/obj/clothing/sizeaccessories.dmi'
 	icon_state = "ring"
 	item_state = "sring" //No use in a unique sprite since it's just one pixel
@@ -70,7 +70,7 @@
 //SynTech Wristband
 /obj/item/clothing/gloves/ring/syntech/band
 	name = "normalizer wristband"
-	desc = "An expensive technological wristband cast in SynTech purples with shimmering Kinaris golds. It will 'normalize' the size of the user to a specified height for approved work-conditions, as long as it is equipped. There is a small screen buzzing with information."
+	desc = "An expensive technological wristband cast in SynTech purples with shimmering NanoTrasen golds. It will 'normalize' the size of the user to a specified height for approved work-conditions, as long as it is equipped. There is a small screen buzzing with information."
 	icon = 'modular_splurt/icons/obj/clothing/sizeaccessories.dmi'
 	mob_overlay_icon = 'modular_splurt/icons/mob/clothing/hands.dmi'
 	icon_state = "wristband"
@@ -81,7 +81,7 @@
 //Syntech Pendant
 /obj/item/clothing/neck/syntech
 	name = "normalizer pendant"
-	desc = "A vibrant violet jewel cast in silvery-gold metals, sporting the elegance of Kinaris with SynTech prowess. It will 'normalize' the size of the user to a specified height for approved work-conditions, as long as it is equipped. The artificial violet gem inside twinkles ominously."
+	desc = "A vibrant violet jewel cast in silvery-gold metals, sporting the elegance of NanoTrasen with SynTech prowess. It will 'normalize' the size of the user to a specified height for approved work-conditions, as long as it is equipped. The artificial violet gem inside twinkles ominously."
 	icon = 'modular_splurt/icons/obj/clothing/sizeaccessories.dmi'
 	mob_overlay_icon = 'modular_splurt/icons/mob/clothing/neck.dmi'
 	icon_state = "pendant"
@@ -108,7 +108,7 @@
 //Syntech Choker
 /obj/item/clothing/neck/syntech/choker
 	name = "normalizer choker"
-	desc = "A sleek, tight-fitting choker embezzled with silver to gold, adorned with vibrant purple studs; combined technology of Kinaris and SynTech. It will 'normalize' the size of the user to a specified height for approved work-conditions, as long as it is equipped. There is a small screen buzzing with information."
+	desc = "A sleek, tight-fitting choker embezzled with silver to gold, adorned with vibrant purple studs; combined technology of NanoTrasen and SynTech. It will 'normalize' the size of the user to a specified height for approved work-conditions, as long as it is equipped. There is a small screen buzzing with information."
 	icon = 'modular_splurt/icons/obj/clothing/sizeaccessories.dmi'
 	icon_state = "choker"
 	item_state = "collar"
