@@ -8,3 +8,7 @@
 
 /datum/mood_event/qareen_bliss/add_effects()
 	description = "<span class='umbra'>Must.. breed. , [pick("Nngggghh", "Can't.. think.", "It feels so good.", "Need.. fuck.")]...</span>\n"
+
+/datum/mood_event/masked_mook
+	description = "<span class='nicegreen'>I feel more complete with gas mask on.</span>\n"
+	mood_change = 1

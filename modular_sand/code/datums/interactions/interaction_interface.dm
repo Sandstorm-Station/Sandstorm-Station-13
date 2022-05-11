@@ -12,29 +12,6 @@
 	usr.mind.interaction_holder.target = src
 	usr.mind.interaction_holder.ui_interact(usr)
 
-/// Allows "cyborg" players to change gender at will
-/mob/living/silicon/robot/verb/toggle_gender()
-	set name = "Set Gender"
-	set desc = "Allows you to set your gender."
-
-	if(stat != CONSCIOUS)
-		to_chat(usr, "<span class='warning'>You cannot toggle your gender while unconcious!</span>")
-		return
-
-	var/choice = tgui_alert(usr, "Select Gender.", "Gender", list("Both", "Male", "Female"))
-	switch(choice)
-		if("Both")
-			has_penis = TRUE
-			has_balls = TRUE
-			has_vagina = TRUE
-		if("Male")
-			has_penis = TRUE
-			has_balls = TRUE
-			has_vagina = FALSE
-		if("Female")
-			has_penis = FALSE
-			has_balls = FALSE
-			has_vagina = TRUE
 
 #define INTERACTION_NORMAL 0
 #define INTERACTION_LEWD 1
