@@ -661,7 +661,7 @@
 /obj/item/clothing/underwear/briefs/panties/portalpanties/attackby(obj/item/I, mob/living/user) //pairing
 	if(istype(I, /obj/item/portallight))
 		var/obj/item/portallight/P = I
-		if(!P.portalunderwear) //make sure it aint linked to someone else
+		if(!portallight && !P.portalunderwear) //make sure it aint linked to someone else
 			portallight = P //pair the fleshlight
 			P.portalunderwear = src //pair the panties on the fleshlight.
 			P.icon_state = "paired" //we are paired!
@@ -670,7 +670,7 @@
 			update_portal()
 			RegisterSignal(user, COMSIG_PARENT_QDELETING, .proc/drop_out)
 		else
-			to_chat(user, "<span class='notice'>[P] has already been linked to another pair of underwear.</span>")
+			to_chat(user, "<span class='notice'>One of these pieces has already been paired.</span>")
 	else
 		..() //just allows people to hit it with other objects, if they so wished.
 
