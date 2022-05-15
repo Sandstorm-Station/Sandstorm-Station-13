@@ -31,6 +31,23 @@
 	mob_overlay_icon = 'modular_splurt/icons/mob/clothing/head.dmi'
 	flags_inv = HIDEHAIR
 
+/obj/item/clothing/head/helmet/sec/warden
+	name = "Warden's helmet"
+	desc = "A standard issiue helmet for the warden. Protects the head from impacts."
+	icon_state = "wardenhelmet"
+	icon = 'modular_splurt/icons/obj/clothing/head.dmi'
+	mob_overlay_icon = 'modular_splurt/icons/mob/clothing/head.dmi'
+	armor = list(MELEE = 40, BULLET = 30, LASER = 30, ENERGY = 10, BOMB = 25, BIO = 0, RAD = 0, FIRE = 30, ACID = 60)
+
+/obj/item/clothing/head/helmet/sec/hos
+	name = "Head of Security's helmet"
+	desc = "A standard issiue helmet for the Head of Security. Protects the head from impacts."
+	icon_state = "hoshelmet"
+	icon = 'modular_splurt/icons/obj/clothing/head.dmi'
+	mob_overlay_icon = 'modular_splurt/icons/mob/clothing/head.dmi'
+	armor = list(MELEE = 40, BULLET = 30, LASER = 25, ENERGY = 10, BOMB = 25, BIO = 10, RAD = 0, FIRE = 50, ACID = 60)
+	strip_delay = 80
+
 //CBRN/MOPP helmets
 
 /obj/item/clothing/head/helmet/cbrn

@@ -43,20 +43,20 @@
 	icon = 'modular_splurt/icons/obj/objects.dmi'
 	product_ads = "Protect and Serve!;Feel good while keeping people alive!;"
 	vend_reply = "Thank you for using the BlueDrobe!"
-	products = list(/obj/item/clothing/under/rank/blueshield = 1,
-					/obj/item/clothing/under/rank/blueshield/formal = 1,
-					/obj/item/clothing/under/rank/blueshield/skirt = 1,
-					/obj/item/storage/backpack/blueshield = 1,
-					/obj/item/storage/backpack/satchel/blueshield = 1,
-					/obj/item/storage/backpack/duffelbag/blueshield = 1,
-					/obj/item/clothing/shoes/jackboots = 2,
-					/obj/item/clothing/head/soft/blueshield  =1,
-					/obj/item/clothing/head/blueshield = 1,
-					/obj/item/clothing/head/blueshield/formal = 1,
-					/obj/item/clothing/head/blueshield/officercap = 1,
-					/obj/item/clothing/neck/tie/blue = 1,
-					/obj/item/clothing/under/rank/blueshield/formal/skirt = 1,
-					/obj/item/clothing/shoes/jackboots/tall = 2)
+	products = list(/obj/item/clothing/under/rank/blueshield = 3,
+					/obj/item/clothing/under/rank/blueshield/formal = 3,
+					/obj/item/clothing/under/rank/blueshield/skirt = 3,
+					/obj/item/storage/backpack/blueshield = 3,
+					/obj/item/storage/backpack/satchel/blueshield = 3,
+					/obj/item/storage/backpack/duffelbag/blueshield = 3,
+					/obj/item/clothing/shoes/jackboots = 6,
+					/obj/item/clothing/head/soft/blueshield  =3,
+					/obj/item/clothing/head/blueshield = 3,
+					/obj/item/clothing/head/blueshield/formal = 3,
+					/obj/item/clothing/head/blueshield/officercap = 3,
+					/obj/item/clothing/neck/tie/blue = 3,
+					/obj/item/clothing/under/rank/blueshield/formal/skirt = 3,
+					/obj/item/clothing/shoes/jackboots/tall = 6)
 	refill_canister = /obj/item/vending_refill/wardrobe/blueshield_wardrobe
 	payment_department = ACCOUNT_SEC
 	light_color = COLOR_STRONG_BLUE
@@ -101,6 +101,7 @@
 	product_ads = "Beat perps in style!;It's red so you can't see the blood!;You have the right to be fashionable!;Now you can be the fashion police you always wanted to be!"
 	vend_reply = "Thank you for using the SecDrobe!"
 	products = list(/obj/item/clothing/neck/cloak/hos = 1,
+					/obj/item/clothing/head/helmet/sec/hos = 1,
 					/obj/item/storage/backpack/security = 1,
 					/obj/item/storage/backpack/satchel/sec = 1,
 					/obj/item/storage/backpack/duffelbag/sec = 1,

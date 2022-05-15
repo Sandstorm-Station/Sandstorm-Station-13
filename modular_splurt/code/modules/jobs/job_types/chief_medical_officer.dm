@@ -1,3 +1,6 @@
+/datum/outfit/job/cmo
+	implants = list(/obj/item/implant/mindshield)
+
 /datum/job/cmo/New()
 	. = ..()
 	var/list/extra_access = list(ACCESS_PSYCH)

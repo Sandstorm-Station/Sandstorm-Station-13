@@ -1,3 +1,11 @@
+/obj/item/gun/ballistic/automatic/wt550
+	icon = 'modular_splurt/icons/obj/guns/projectile.dmi'
+	can_suppress = TRUE
+
+/obj/item/gun/ballistic/automatic/wt550/update_icon_state()
+	. = ..()
+	icon_state = "[initial(icon_state)][magazine ? "-[CEILING(((get_ammo(FALSE) / magazine.max_ammo) * 20) /4, 1)*4]" : "-0"][suppressed ? "-suppressed" : ""]" //Sprites only support up to 20.
+
 /obj/item/gun/ballistic/automatic/sniper_rifle/sleepy
 	desc = "A second-hand .50 cal sniper rifle. This one only seems to be capable of firing soporific rounds."
 	mag_type = /obj/item/ammo_box/magazine/sniper_rounds/soporific

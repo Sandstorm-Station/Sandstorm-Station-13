@@ -12,7 +12,7 @@
 /obj/item/ammo_box/magazine/e45
 	name = "Enforcer magazine (.45 Rubber)"
 	icon = 'modular_splurt/icons/obj/ammo.dmi'
-	icon_state = "enforcer"
+	icon_state = "enforcerb"
 	ammo_type = /obj/item/ammo_casing/c45
 	caliber = ".45"
 	desc = "A Mk. 58 magazine. Loaded with rubber rounds."
@@ -20,47 +20,55 @@
 
 /obj/item/ammo_box/magazine/e45/update_icon()
 	..()
-	icon_state = "enforcer-[round(ammo_count())]"
+	icon_state = "[initial(icon_state)]-[round(ammo_count())]"
 
 /obj/item/ammo_box/magazine/e45/lethal
 	name = "Enforcer magazine (.45 Lethal)"
 	desc = "A Mk. 58 magazine. Loaded with lethal rounds."
 	ammo_type = /obj/item/ammo_casing/c45/lethal
+	icon_state = "enforcerr"
 
 /obj/item/ammo_box/magazine/e45/hydra
 	name = "Enforcer magazine (.45 Hydra}"
 	desc = "A Mk. 58 magazine. Loaded with Hydra-shock."
+	icon_state = "enforcerg"
 	ammo_type = /obj/item/ammo_casing/c45/hydra
 
 /obj/item/ammo_box/magazine/e45/taser
 	name = "Enforcer magazine (.45 Taser}"
 	desc = "A Mk. 58 magazine. Loaded with taser rounds."
 	ammo_type = /obj/item/ammo_casing/c45/taser
+	icon_state = "enforcery"
 
 /obj/item/ammo_box/magazine/e45/trac
 	name = "Enforcer magazine (.45 Tracking}"
 	desc = "A Mk. 58 magazine. Loaded with trac rounds."
 	ammo_type = /obj/item/ammo_casing/c45/trac
+	icon_state = "enforcer"
 
 /obj/item/ammo_box/magazine/e45/hotshot
 	name = "Enforcer magazine (.45 Hotshot}"
 	desc = "A Mk. 58 magazine. Loaded with Hotshot rounds."
 	ammo_type = /obj/item/ammo_casing/c45/hotshot
+	icon_state = "enforcero"
 
 /obj/item/ammo_box/magazine/e45/ion
 	name = "Enforcer magazine (.45 Ion}"
 	desc = "A Mk. 58 magazine. Loaded with Ion rounds."
 	ammo_type = /obj/item/ammo_casing/c45/ion
+	icon_state = "enforcerc"
 
 /obj/item/ammo_box/magazine/e45/laser
 	name = "Enforcer magazine (.45 Laser}"
 	desc = "A Mk. 58 magazine. Loaded with Laser rounds."
 	ammo_type = /obj/item/ammo_casing/c45/laser
+	icon_state = "enforcerdr"
 
 /obj/item/ammo_box/magazine/e45/stun
 	name = "Enforcer magazine (.45 Stun}"
 	desc = "A Mk. 58 magazine. Loaded with Stun rounds."
 	ammo_type = /obj/item/ammo_casing/c45/stun
+	icon_state = "enforcerdb"
 
 /obj/item/ammo_box/magazine/m9
 	name = "Cheap handgun magazine (9mm Lethal)"
@@ -209,8 +217,6 @@
 	id = "e45_laser"
 	build_type = PROTOLATHE
 	materials = list(/datum/material/iron = 1200, /datum/material/uranium = 50)
-	build_path = /obj/item/ammo_box/magazine/e45/stun
+	build_path = /obj/item/ammo_box/magazine/e45/laser
 	category = list("ammo")
 	departmental_flags = DEPARTMENTAL_FLAG_SECURITY
-
-

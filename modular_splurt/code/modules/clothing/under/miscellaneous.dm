@@ -46,7 +46,7 @@
 
 /obj/item/clothing/under/bunnysuit
 	name = "bunny outfit"
-	desc = "A simple black bunnt outfit."
+	desc = "A simple black bunny outfit."
 	icon = 'modular_splurt/icons/obj/clothing/uniforms.dmi'
 	mob_overlay_icon = 'modular_splurt/icons/mob/clothing/uniform.dmi'
 	icon_state = "bunnysuit"
@@ -56,7 +56,7 @@
 
 /obj/item/clothing/under/bunnysuit/white
 	name = "white bunny outfit"
-	desc = "A simple white bunnt outfit."
+	desc = "A simple white bunny outfit."
 	icon = 'modular_splurt/icons/obj/clothing/uniforms.dmi'
 	mob_overlay_icon = 'modular_splurt/icons/mob/clothing/uniform.dmi'
 	icon_state = "whitebunnysuit"

@@ -1,3 +1,8 @@
+/obj/item/gun/ballistic/revolver/mws
+	can_flashlight = 1
+	flight_x_offset = 18
+	flight_y_offset = 4
+
 /obj/item/gun/ballistic/revolver/doublebarrel
 	icon = 'modular_splurt/icons/obj/guns/projectile.dmi'
 
