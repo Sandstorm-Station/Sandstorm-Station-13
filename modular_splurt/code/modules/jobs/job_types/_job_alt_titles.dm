@@ -35,8 +35,7 @@
 
 /datum/job/qm/New()
 	var/list/extra_titles = list(
-		"Supply Chief",
-		"Port Master"
+		"Supply Chief"
 	)
 	LAZYADD(alt_titles, extra_titles)
 
@@ -79,9 +78,7 @@
 		"Tourist",
 		"Clerk",
 		"Blacksmith",
-		"Bard",
-		"Test Subject",
-		"D-Class"
+		"Bard"
 	)
 	LAZYADD(alt_titles, extra_titles)
 
@@ -91,8 +88,7 @@
 		"Sommelier",
 		"Bar Owner",
 		"Barmaid",
-		"Expediter",
-		"Tavernkeep"
+		"Expediter"
 	)
 	LAZYADD(alt_titles, extra_titles)
 

@@ -1,12 +1,3 @@
-/obj/item/projectile/bullet/c46x30mm
-	damage = 25
-
-/obj/item/projectile/bullet/c46x30mm_ap
-	damage = 22.5
-
-/obj/item/projectile/bullet/incendiary/c46x30mm
-	damage = 17.5
-
 /obj/item/projectile/bullet/c45 // Yes I know I am changing how .45 weapons work by making the basic ammo less-than-lethal. This just makes this easier in the long run with mags
 	name = ".45 rubber bullet"
 	damage = 10
