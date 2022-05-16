@@ -173,9 +173,12 @@
 
 /obj/structure/anvil/proc/tryfinish(mob/user)
 	var/artifactchance = 0
+	var/stepexperience = currentsteps + currentquality
+	var/finalexperience = FLOOR((150 * (stepexperience + currentquality)),150) //A total of 16x the amount of EXP at MAX, with a minimum gain of 150, Keep in mind that this is of course only possible with a max-tier anvil and an already insanely high level. Just makes earlier levels faster.
+	var/combinedqualitymax = user.mind.get_skill_level(/datum/skill/level/dwarfy/blacksmithing)/20 //Makes sure that better smiths can make better items, even with a worse anvil. Encourages actually levelling up, instead of meta-rushing antag gear
 	if(!artifactrolled)
-		artifactchance = (1+(user.mind.get_skill_level(/datum/skill/level/dwarfy/blacksmithing)/4))/2500
-		artifactrolled = TRUE
+		artifactchance = (1+(user.mind.get_skill_level(/datum/skill/level/dwarfy/blacksmithing)/4))/1500 //Reduced from 2500 temporarily. Should help that percentage get above 1% on the RAND()
+		//artifactrolled = TRUE --Disabled because this is a shitty mechanic.
 	var/artifact = max(prob(artifactchance), debug)
 	var/finalfailchance = outrightfailchance
 	if(user.mind.skill_holder)
@@ -192,7 +195,7 @@
 		outrightfailchance = 1
 		artifactrolled = FALSE
 		if(user.mind.skill_holder)
-			user.mind.auto_gain_experience(/datum/skill/level/dwarfy/blacksmithing, 25, 400, silent = FALSE)
+			user.mind.auto_gain_experience(/datum/skill/level/dwarfy/blacksmithing, finalexperience, 500, silent = FALSE) //Made more forgiving for lower levels and terrible anvils.
 	for(var/i in smithrecipes)
 		if(i == stepsdone)
 			var/turf/T = get_turf(user)
@@ -202,10 +205,10 @@
 			if(artifact)
 				to_chat(user, "It is an artifact, a creation whose legacy shall live on forevermore.") //todo: SSblackbox
 				currentquality = max(currentquality, 2)
-				finisheditem.quality = currentquality * 3//this is insane i know it's 1/2500 for most of the time and 0.8% at best
+				finisheditem.quality = currentquality * 3 //This isn't actually that good due to the nonlinear scale of your armor pen.
 				finisheditem.artifact = TRUE
 			else
-				finisheditem.quality = min(currentquality, itemqualitymax)
+				finisheditem.quality = min(currentquality, combinedqualitymax) //Changed so better smiths can make better gear regardless of their anvil. WILL HAVE TO BE TWEAKED, POSSIBLY.
 			switch(finisheditem.quality)
 				if(-1000 to -8)
 					finisheditem.desc =  "It looks to be the most awfully made object you've ever seen."
@@ -215,8 +218,12 @@
 					finisheditem.desc =  "It looks to be barely passable as... whatever it's trying to pass for."
 				if(0)
 					finisheditem.desc =  "It looks to be totally average."
-				if(0 to INFINITY)
+				if(0 to 5)
 					finisheditem.desc =  "It looks to be better than average."
+				if(6 to 8)
+					finisheditem.desc =  "It looks to be a masterpiece"
+				if(9 to INFINITY)
+					finisheditem.desc =  "It is positively radiant, a legendary piece."
 			workpiece_state = FALSE
 			finisheditem.set_custom_materials(workpiece_material)
 			currentquality = anvilquality
@@ -225,7 +232,7 @@
 			outrightfailchance = 1
 			artifactrolled = FALSE
 			if(user.mind.skill_holder)
-				user.mind.auto_gain_experience(/datum/skill/level/dwarfy/blacksmithing, 50, 10000000, silent = FALSE)
+				user.mind.auto_gain_experience(/datum/skill/level/dwarfy/blacksmithing, finalexperience, 5000, silent = FALSE) //Adjusted to have less... funny values
 			break
 
 /obj/structure/anvil/debugsuper
