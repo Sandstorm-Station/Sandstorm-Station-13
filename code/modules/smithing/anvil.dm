@@ -173,9 +173,7 @@
 
 /obj/structure/anvil/proc/tryfinish(mob/user)
 	var/artifactchance = 0
-	var/stepexperience = currentsteps + currentquality
-	var/finalexperience = 150 *(stepexperience + currentquality)//A total of 16x the amount of EXP at MAX, with a minimum gain of 150, Keep in mind that this is of course only possible with a max-tier anvil and an already insanely high level. Just makes earlier levels faster.
-	var/combinedqualitymax = user.mind.get_skill_level(/datum/skill/level/dwarfy/blacksmithing)/2 + itemqualitymax //Makes sure that better smiths can make better items, even with a worse anvil. Encourages actually levelling up, instead of meta-rushing antag gear
+	var/combinedqualitymax = user.mind.get_skill_level(/datum/skill/level/dwarfy/blacksmithing)/5 + itemqualitymax //Makes sure that better smiths can make better items, even with a worse anvil. Encourages actually levelling up, instead of meta-rushing antag gear
 	if(!artifactrolled)
 		artifactchance = (1+(user.mind.get_skill_level(/datum/skill/level/dwarfy/blacksmithing)/4))/1500 //Reduced from 2500 temporarily. Should help that percentage get above 1% on the RAND()
 		//artifactrolled = TRUE --Disabled because this is a shitty mechanic.
@@ -195,10 +193,7 @@
 		outrightfailchance = 1
 		artifactrolled = FALSE
 		if(user.mind.skill_holder)
-			if(currentquality <= 1)
-				user.mind.auto_gain_experience(/datum/skill/level/dwarfy/blacksmithing, 200, 500000, silent = FALSE)
-			else
-				user.mind.auto_gain_experience(/datum/skill/level/dwarfy/blacksmithing, finalexperience, 500000, silent = FALSE) //Made more forgiving for lower levels and terrible anvils.
+			user.mind.auto_gain_experience(/datum/skill/level/dwarfy/blacksmithing, 200, 500000, silent = FALSE)
 	for(var/i in smithrecipes)
 		if(i == stepsdone)
 			var/turf/T = get_turf(user)
@@ -230,6 +225,15 @@
 					finisheditem.desc =  "It looks to be a masterpiece."
 				if(9 to INFINITY)
 					finisheditem.desc =  "It is positively radiant, a legendary piece."
+			var/stepexperience = currentsteps + finisheditem.quality
+			var/finalexperience = 150 *(stepexperience + finisheditem.quality)//A total of 16x the amount of EXP at MAX, with a minimum gain of 150, Keep in mind that this is of course only possible with a max-tier anvil and an already insanely high level. Just makes earlier levels faster.
+			if(user.mind.skill_holder)
+				if(currentquality <= 1)
+					user.mind.auto_gain_experience(/datum/skill/level/dwarfy/blacksmithing, 400, 500000, silent = FALSE) //Incentivises not spamming Slag
+				else
+					user.mind.auto_gain_experience(/datum/skill/level/dwarfy/blacksmithing, finalexperience, 500000, silent = FALSE) //Made more forgiving for lower levels and terrible anvils.
+
+
 			workpiece_state = FALSE
 			finisheditem.set_custom_materials(workpiece_material)
 			currentquality = anvilquality
@@ -237,11 +241,6 @@
 			currentsteps = 0
 			outrightfailchance = 1
 			artifactrolled = FALSE
-			if(user.mind.skill_holder)
-				if(currentquality <= 1)
-					user.mind.auto_gain_experience(/datum/skill/level/dwarfy/blacksmithing, 200, 500000, silent = FALSE)
-				else
-					user.mind.auto_gain_experience(/datum/skill/level/dwarfy/blacksmithing, finalexperience, 500000, silent = FALSE) //Made more forgiving for lower levels and terrible anvils.
 			break
 
 /obj/structure/anvil/debugsuper
