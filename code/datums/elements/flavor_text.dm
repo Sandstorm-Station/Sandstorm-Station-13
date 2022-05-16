@@ -63,7 +63,7 @@ GLOBAL_LIST_EMPTY(mobs_with_editable_flavor_text) //et tu, hacky code
 		var/unknown = L.get_visible_name() == "Unknown"
 		if(!unknown && iscarbon(target))
 			var/mob/living/carbon/C = L
-			unknown = (C.wear_mask && (C.wear_mask.flags_inv & HIDEFACE)) || (C.head && (C.head.flags_inv & HIDEFACE))
+			unknown = (C.wear_mask && (C.wear_mask.flags_inv & HIDEFACE) && !isobserver(user)) || (C.head && (C.head.flags_inv & HIDEFACE) && !isobserver(user)) //MASSIVE nonmodular edit. Has to be done here - Yawet330 / Making ghosts ignore gas-masks
 			if(show_on_naked && ishuman(C))
 				var/mob/living/carbon/human/H = C
 				unknown = (unknown || (H.w_uniform || H.wear_suit))
