@@ -71,6 +71,7 @@
 // Service
 /datum/job/assistant/New()
 	var/list/extra_titles = list(
+		"Volunteer",
 		"Morale Officer",
 		"Stripper",
 		"Off-Duty",
