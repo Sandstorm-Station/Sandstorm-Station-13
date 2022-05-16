@@ -227,7 +227,7 @@
 				if(0 to 5)
 					finisheditem.desc =  "It looks to be better than average."
 				if(6 to 8)
-					finisheditem.desc =  "It looks to be a masterpiece"
+					finisheditem.desc =  "It looks to be a masterpiece."
 				if(9 to INFINITY)
 					finisheditem.desc =  "It is positively radiant, a legendary piece."
 			workpiece_state = FALSE
