@@ -160,8 +160,8 @@
 									user_lust_amt = NORMAL_LUST
 									target_lust_amt = LOW_LUST
 								if(CUM_TARGET_URETHRA)
-									user_message = (user == M) ? "fucking urethra" : "force someone to fuck urethra"
-									target_message = "urethra fucked by dick"
+									user_message = (user == M) ? "fucks \the [src]'s urethra" : "forces \the [M] to fuck \the [src]'s urethra"
+									target_message = "fuck your urethra with their [temp.length]-inch [lowertext(temp.shape)] penis"
 									P = temp
 									target = CUM_TARGET_PENIS
 									user_lust_amt = NORMAL_LUST
