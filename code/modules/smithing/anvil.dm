@@ -211,7 +211,10 @@
 				finisheditem.quality = currentquality * 3 //This isn't actually that good due to the nonlinear scale of your armor pen.
 				finisheditem.artifact = TRUE
 			else
-				finisheditem.quality = min(currentquality, combinedqualitymax) //Changed so better smiths can make better gear regardless of their anvil. WILL HAVE TO BE TWEAKED, POSSIBLY.
+				if(combinedqualitymax >= 0)
+					finisheditem.quality = min(currentquality, combinedqualitymax) //Changed so better smiths can make better gear regardless of their anvil. WILL HAVE TO BE TWEAKED, POSSIBLY.
+				else
+					finisheditem.quality = min(currentquality, itemqualitymax)
 			switch(finisheditem.quality)
 				if(-1000 to -8)
 					finisheditem.desc =  "It looks to be the most awfully made object you've ever seen."
