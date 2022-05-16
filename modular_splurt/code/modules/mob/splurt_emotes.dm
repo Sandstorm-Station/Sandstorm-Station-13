@@ -506,3 +506,16 @@
 		return
 	user.nextsoundemote = world.time + 7
 	playsound(user, 'modular_splurt/sound/voice/sicko.ogg', 50, 1, -1)
+
+/datum/emote/living/chill
+	key = "chill"
+	key_third_person = "chills"
+	message = "felt a chill running down their spine..."
+
+/datum/emote/living/chill/run_emote(mob/user, params, type_override, intentional)
+	if(!(. = ..()))
+		return
+	if(user.nextsoundemote >= world.time)
+		return
+	user.nextsoundemote = world.time + 10
+	playsound(user, 'modular_splurt/sound/voice/waterphone.ogg', 50, 1, -1)
