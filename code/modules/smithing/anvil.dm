@@ -196,9 +196,9 @@
 		artifactrolled = FALSE
 		if(user.mind.skill_holder)
 			if(currentquality <= 1)
-				user.mind.auto_gain_experience(/datum/skill/level/dwarfy/blacksmithing, 200, 50000, silent = FALSE)
+				user.mind.auto_gain_experience(/datum/skill/level/dwarfy/blacksmithing, 200, 500000, silent = FALSE)
 			else
-				user.mind.auto_gain_experience(/datum/skill/level/dwarfy/blacksmithing, finalexperience, 50000, silent = FALSE) //Made more forgiving for lower levels and terrible anvils.
+				user.mind.auto_gain_experience(/datum/skill/level/dwarfy/blacksmithing, finalexperience, 500000, silent = FALSE) //Made more forgiving for lower levels and terrible anvils.
 	for(var/i in smithrecipes)
 		if(i == stepsdone)
 			var/turf/T = get_turf(user)
@@ -239,9 +239,9 @@
 			artifactrolled = FALSE
 			if(user.mind.skill_holder)
 				if(currentquality <= 1)
-					user.mind.auto_gain_experience(/datum/skill/level/dwarfy/blacksmithing, 200, 50000, silent = FALSE)
+					user.mind.auto_gain_experience(/datum/skill/level/dwarfy/blacksmithing, 200, 500000, silent = FALSE)
 				else
-					user.mind.auto_gain_experience(/datum/skill/level/dwarfy/blacksmithing, finalexperience, 50000, silent = FALSE) //Made more forgiving for lower levels and terrible anvils.
+					user.mind.auto_gain_experience(/datum/skill/level/dwarfy/blacksmithing, finalexperience, 500000, silent = FALSE) //Made more forgiving for lower levels and terrible anvils.
 			break
 
 /obj/structure/anvil/debugsuper
