@@ -421,6 +421,21 @@
 	user.nextsoundemote = world.time + 7
 	playsound(user, 'modular_splurt/sound/voice/laugh_king.ogg', 50, 1, -1)
 
+/datum/emote/living/laugh3
+	key = "laugh3"
+	key_third_person = "laughs3"
+	message = "laughs silly."
+	emote_type = EMOTE_AUDIBLE
+	muzzle_ignore = FALSE
+
+/datum/emote/living/laugh3/run_emote(mob/user, params, type_override, intentional)
+	if(!(. = ..()))
+		return
+	if(user.nextsoundemote >= world.time)
+		return
+	user.nextsoundemote = world.time + 70
+	playsound(user, 'modular_splurt/sound/voice/lol.ogg', 50, 1, -1)
+
 /datum/emote/living/breakbad
 	key = "breakbad"
 	key_third_person = "breakbads"
@@ -461,3 +476,46 @@
 		return
 	user.nextsoundemote = world.time + 7
 	playsound(user, pick('modular_splurt/sound/voice/cry_king.ogg', 'modular_splurt/sound/voice/cry_king2.ogg'), 50, 1, -1)
+
+/datum/emote/living/choir
+	key = "choir"
+	key_third_person = "choirs"
+	message = "let out a choir."
+	emote_type = EMOTE_AUDIBLE
+	muzzle_ignore = FALSE
+
+/datum/emote/living/choir/run_emote(mob/user, params, type_override, intentional)
+	if(!(. = ..()))
+		return
+	if(user.nextsoundemote >= world.time)
+		return
+	user.nextsoundemote = world.time + 60
+	playsound(user, 'modular_splurt/sound/voice/choir.ogg', 50, 1, -1)
+
+/datum/emote/living/sicko
+	key = "sicko"
+	key_third_person = "sickos"
+	message = "briefly goes sicko mode."
+	emote_type = EMOTE_AUDIBLE
+	muzzle_ignore = FALSE
+
+/datum/emote/living/sicko/run_emote(mob/user, params, type_override, intentional)
+	if(!(. = ..()))
+		return
+	if(user.nextsoundemote >= world.time)
+		return
+	user.nextsoundemote = world.time + 7
+	playsound(user, 'modular_splurt/sound/voice/sicko.ogg', 50, 1, -1)
+
+/datum/emote/living/chill
+	key = "chill"
+	key_third_person = "chills"
+	message = "felt a chill running down their spine..."
+
+/datum/emote/living/chill/run_emote(mob/user, params, type_override, intentional)
+	if(!(. = ..()))
+		return
+	if(user.nextsoundemote >= world.time)
+		return
+	user.nextsoundemote = world.time + 10
+	playsound(user, 'modular_splurt/sound/voice/waterphone.ogg', 50, 1, -1)
