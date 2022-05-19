@@ -613,7 +613,7 @@
 	. = ..()
 
 /obj/item/card/id/ert/Medical
-	icon_state = "ert_medical"
+	icon_state = "ert_medic"
 	registered_name = "Medical Response Officer"
 	assignment = "Medical Response Officer"
 
