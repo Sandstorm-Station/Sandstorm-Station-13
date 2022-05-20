@@ -8,6 +8,7 @@
 	material_flags = MATERIAL_COLOR | MATERIAL_AFFECT_STATISTICS
 	total_mass = TOTAL_MASS_MEDIEVAL_WEAPON //yeah ok
 	slot_flags = ITEM_SLOT_BELT
+	obj_flags = UNIQUE_RENAME	
 	w_class = WEIGHT_CLASS_NORMAL
 	force = 6
 	lefthand_file = 'icons/mob/inhands/weapons/swords_lefthand.dmi'
