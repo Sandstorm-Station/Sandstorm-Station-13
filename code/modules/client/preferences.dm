@@ -399,8 +399,8 @@ GLOBAL_LIST_EMPTY(preferences_datums)
 
 			dat += "<table><tr><td width='20%' height='300px' valign='top'>"
 			dat += "<h2>Flavor Text</h2>"
-			dat += "<a href='?_src_=prefs;preference=flavor_text;task=input'><b>Set Examine Text</b></a><br>" //skyrat - <br> moved one line down //stupid choice you guys
-			if(length(features["flavor_text"]) <= 40)
+			dat += "<a href='?_src_=prefs;preference=flavor_text;task=input'><b>Set Examine Text</b></a><br>"
+			if(length(features["flavor_text"]) <= MAX_FLAVOR_PREVIEW_LEN)
 				if(!length(features["flavor_text"]))
 					dat += "\[...\]<BR>" //skyrat - adds <br> //come to brazil or brazil comes to you
 				else
@@ -409,7 +409,7 @@ GLOBAL_LIST_EMPTY(preferences_datums)
 				dat += "[TextPreview(html_encode(features["flavor_text"]))]...<BR>" //skyrat edit, uses html_encode
 			dat += "<h2>Silicon Flavor Text</h2>"
 			dat += "<a href='?_src_=prefs;preference=silicon_flavor_text;task=input'><b>Set Silicon Examine Text</b></a><br>"
-			if(length(features["silicon_flavor_text"]) <= 40)
+			if(length(features["silicon_flavor_text"]) <= MAX_FLAVOR_PREVIEW_LEN)
 				if(!length(features["silicon_flavor_text"]))
 					dat += "\[...\]<BR>"
 				else
@@ -419,7 +419,7 @@ GLOBAL_LIST_EMPTY(preferences_datums)
 			dat += "<h2>OOC notes</h2>"
 			dat += "<a href='?_src_=prefs;preference=ooc_notes;task=input'><b>Set OOC notes</b></a><br>"
 			var/ooc_notes_len = length(features["ooc_notes"])
-			if(ooc_notes_len <= 40)
+			if(ooc_notes_len <= MAX_FLAVOR_PREVIEW_LEN)
 				if(!ooc_notes_len)
 					dat += "\[...\]<BR>"
 				else
@@ -1808,7 +1808,7 @@ GLOBAL_LIST_EMPTY(preferences_datums)
 				if("name")
 					var/new_name = input(user, "Choose your character's name:", "Character Preference")  as text|null
 					if(new_name)
-						new_name = reject_bad_name(new_name)
+						new_name = reject_bad_name(new_name, allow_numbers = TRUE)
 						if(new_name)
 							real_name = new_name
 						else
