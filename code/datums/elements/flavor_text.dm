@@ -63,7 +63,7 @@ GLOBAL_LIST_EMPTY(mobs_with_editable_flavor_text) //et tu, hacky code
 		var/unknown = L.get_visible_name() == "Unknown"
 		if(!unknown && iscarbon(target))
 			var/mob/living/carbon/C = L
-			unknown = (C.wear_mask && (C.wear_mask.flags_inv & HIDEFACE)) || (C.head && (C.head.flags_inv & HIDEFACE))
+			unknown = (C.wear_mask && (C.wear_mask.flags_inv & HIDEFACE) && !isobserver(user)) || (C.head && (C.head.flags_inv & HIDEFACE) && !isobserver(user)) //MASSIVE nonmodular edit. Has to be done here - Yawet330 / Making ghosts ignore gas-masks
 			if(show_on_naked && ishuman(C))
 				var/mob/living/carbon/human/H = C
 				unknown = (unknown || (H.w_uniform || H.wear_suit))
@@ -81,10 +81,10 @@ GLOBAL_LIST_EMPTY(mobs_with_editable_flavor_text) //et tu, hacky code
 	if(examine_full_view)
 		examine_list += "[msg]"
 		return
-	if(length_char(msg) <= 40)
+	if(length_char(msg) <= MAX_FLAVOR_PREVIEW_LEN)
 		examine_list += "<span class='notice'>[msg]</span>"
 	else
-		examine_list += "<span class='notice'>[copytext_char(msg, 1, 37)]... <a href='?src=[REF(src)];show_flavor=[REF(target)]'>More...</span></a>"
+		examine_list += "<span class='notice'>[copytext_char(msg, 1, (MAX_FLAVOR_PREVIEW_LEN - 3))]... <a href='?src=[REF(src)];show_flavor=[REF(target)]'>More...</span></a>"
 
 /datum/element/flavor_text/Topic(href, href_list)
 	. = ..()
@@ -223,7 +223,7 @@ GLOBAL_LIST_EMPTY(mobs_with_editable_flavor_text) //et tu, hacky code
 	if(ismob(target))
 		add_verb(target, /mob/proc/set_pose)
 
-/datum/element/flavor_Text/carbon/temporary/Detach(datum/source, force)
+/datum/element/flavor_text/carbon/temporary/Detach(datum/source, force)
 	. = ..()
 	if(ismob(source))
 		remove_verb(source, /mob/proc/set_pose)
