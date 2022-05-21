@@ -62,7 +62,7 @@
 	//flavor text
 	WRITE_FILE(S["feature_flavor_text"], features["flavor_text"])
 	WRITE_FILE(S["feature_naked_flavor_text"], features["naked_flavor_text"]) //SPLURT edit
-	WRITE_FILE(S["silicon_feature_flavor_text"], features["silicon_flavor_text"])
+	WRITE_FILE(S["feature_silicon_flavor_text"], features["silicon_flavor_text"])
 
 	//sandstorm stuff
 	WRITE_FILE(S["erp_pref"], erppref)
