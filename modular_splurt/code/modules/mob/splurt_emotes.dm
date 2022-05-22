@@ -519,3 +519,25 @@
 		return
 	user.nextsoundemote = world.time + 10
 	playsound(user, 'modular_splurt/sound/voice/waterphone.ogg', 50, 1, -1)
+
+/datum/emote/living/snore/snore2
+	key = "snore2"
+	key_third_person = "snores"
+	message = "lets out an <b>earthshaking</b> snore"
+
+/datum/emote/living/snore/snore2/run_emote(mob/user, params, type_override, intentional)
+	var/datum/dna/D = user.has_dna()
+	var/say_mod = (D ? D.species.say_mod : "says")
+	var/list/aaauughh = list(
+		"lets out an <b>earthshaking</b> snore.",
+		"lets out what sounds like a <b>painful</b> snore.",
+		"[say_mod], <b>\"AAAAAAUUUUUUGGGHHHHH!!!\"</b>"
+	)
+	message = pick(aaauughh)
+	. = ..()
+	if(!.)
+		return
+	if(user.nextsoundemote >= world.time)
+		return
+	user.nextsoundemote = world.time + 10
+	playsound(user, pick('modular_splurt/sound/voice/aauugghh1.ogg', 'modular_splurt/sound/voice/aauugghh2.ogg'), 40, 1, -1)
