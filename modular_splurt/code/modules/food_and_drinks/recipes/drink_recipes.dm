@@ -1,12 +1,10 @@
 //SPLURT drinks
-/* It's causing recipe conflicts for some reason, no idea how to fix
-/datum/chemical_reaction/panty_dropper
+/datum/chemical_reaction/panty_dropper //https://ifunny.co/video/uyksuxGK8?s=cl
 	name = "Liquid Panty Dropper"
 	id = /datum/reagent/consumable/ethanol/panty_dropper
 	results = list(/datum/reagent/consumable/ethanol/panty_dropper = 8, /datum/reagent/drug/anaphrodisiacplus = 2)
-	required_reagents = list(/datum/reagent/consumable/ethanol/vodka = 1, /datum/reagent/consumable/ethanol/gin = 1, /datum/reagent/consumable/ethanol/creme_de_coconut = 1, /datum/reagent/consumable/ethanol/rum = 1, /datum/reagent/consumable/ethanol/triple_sec = 1, /datum/reagent/consumable/pineapplejuice = 1, /datum/reagent/consumable/berryjuice = 1, /datum/reagent/consumable/orangejuice = 1)
-	mix_message = "A very twisted combination begins to bubble..."
-*/
+	required_reagents = list(/datum/reagent/consumable/ethanol/screwdrivercocktail = 1, /datum/reagent/consumable/ethanol/gin = 1, /datum/reagent/consumable/ethanol/creme_de_coconut = 1, /datum/reagent/consumable/ethanol/rum = 1, /datum/reagent/consumable/ethanol/triple_sec = 1, /datum/reagent/consumable/pineapplejuice = 1, /datum/reagent/consumable/berryjuice = 1) //Can't have the legendary 1:1 ratio or original recipe cuz of recipe clashes :(
+	mix_message = "A very tvvisted combination begins to bubble..."
 
 /datum/chemical_reaction/lean
 	name = "Lean"
@@ -39,3 +37,9 @@
     id = /datum/reagent/consumable/orange_creamsicle
     results = list(/datum/reagent/consumable/orange_creamsicle = 4)
     required_reagents = list(/datum/reagent/consumable/vanilla = 1, /datum/reagent/consumable/milk = 1, /datum/reagent/consumable/ice = 1, /datum/reagent/consumable/orangejuice = 1)
+
+/datum/chemical_reaction/mech_rider
+	name = "Mech Rider"
+	id = /datum/reagent/consumable/ethanol/mech_rider
+	results = list(/datum/reagent/consumable/ethanol/mech_rider = 4)
+	required_reagents = list(/datum/reagent/consumable/ethanol/absinthe = 1, /datum/reagent/consumable/ethanol/hcider = 1, /datum/reagent/consumable/ethanol/syndicatebomb = 1, /datum/reagent/consumable/coffee = 1)
