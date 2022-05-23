@@ -3,7 +3,7 @@
 /datum/reagent/consumable/ethanol/panty_dropper
 	name = "Liquid Panty Dropper"
 	description = "You feel it's not named like that for nothing."
-	color = "#ce3b01" // rgb: idk lol
+	color = "#ce3b01" // rgb: 206, 59, 1
 	boozepwr = 70
 	quality = DRINK_VERYGOOD
 	taste_description = "cloth ripping and tearing"
@@ -16,7 +16,7 @@
 	var/anyclothes = FALSE
 	var/items = M.get_contents()
 	for(var/obj/item/W in items)
-		if(W == M.w_uniform || W == M.wear_suit)
+		if(W.body_parts_covered)
 			anyclothes = TRUE
 			M.dropItemToGround(W, TRUE)
 			playsound(M.loc, 'sound/items/poster_ripped.ogg', 50, 1)
@@ -72,3 +72,15 @@
 	boozepwr = 65
 	taste_description = "viscous cream"
 	glass_desc = "The name is probably exactly what it is."
+
+/datum/reagent/consumable/ethanol/mech_rider
+	name = "Mech Rider"
+	description = "Who would even drink this? "
+	boozepwr = 65
+	color = rgb(111, 127, 63)
+	quality = DRINK_GOOD
+	taste_description = "the sweat of a certain Mauler pilot"
+	glass_icon = 'modular_splurt/icons/obj/drinks.dmi'
+	glass_icon_state = "mech_rider_bottle"
+	glass_name = "Mech Rider"
+	glass_desc = "Who would even drink this?"
