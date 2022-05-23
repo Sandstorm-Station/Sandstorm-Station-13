@@ -87,6 +87,7 @@
 					if(ispath(chosen_id))
 						valid_id = TRUE
 				else
+					chosen_id = text2path(chosen_id)
 					valid_id = TRUE
 				if(!valid_id)
 					to_chat(user, "<span class='warning'>A reagent with that ID doesn't exist!</span>")
