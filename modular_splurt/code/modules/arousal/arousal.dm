@@ -13,7 +13,7 @@
 			can_impregnate = source_gen.owner.client.prefs.virility
 		var/can_get_pregnant = (client?.prefs?.fertility && !is_type_in_typecache(src.type, GLOB.pregnancy_blocked_mob_typecache))
 		if(can_impregnate && can_get_pregnant)
-			apply_status_effect(/datum/status_effect/pregnancy, src.type, source_gen.owner)
+			src.AddComponent(/datum/component/pregnancy, source_gen.owner, src.type)
 			to_chat(source_gen.owner, span_danger("That felt like a pregnancy nut!"))
 			to_chat(src, span_danger("That felt like a pregnancy nut!"))
 	if(!receiver || spill || forced)
