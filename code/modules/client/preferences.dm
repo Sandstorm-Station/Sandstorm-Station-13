@@ -828,16 +828,16 @@ GLOBAL_LIST_EMPTY(preferences_datums)
 			dat += "<b>Sexual potency:</b><a style='display:block;width:100px' href ='?_src_=prefs;preference=sexual_potency;task=input'>[sexual_potency]</a>"
 			dat += "</td>"
 
-			dat += "<td width='220px' height='300px' valign='top'>"
 			//SPLURT EDIT BEGIN - gregnancy preferences
+			dat += "<td width='220px' height='300px' valign='top'>"
 			dat += "<h3>Pregnancy preferences</h3>"
 			dat += "<b>Can impregnate:</b><a style='display:block;width:100px' href ='?_src_=prefs;preference=virility;task=input'>[virility ? "Enabled" : "Disabled"]</a>"
 			dat += "<b>Can get pregnant:</b><a style='display:block;width:100px' href ='?_src_=prefs;preference=fertility;task=input'>[fertility ? "Enabled" : "Disabled"]</a>"
 			if(fertility)
 				dat += "<b>Pregnancy type:</b><a style='display:block;width:100px' href ='?_src_=prefs;preference=oviposition;task=input'>[oviposition ? "Oviposition" : "Live Birth"]</a>"
 				dat += "<b>Pregnancy inflation:</b><a style='display:block;width:100px' href ='?_src_=prefs;preference=pregnancy_inflation;task=input'>[pregnancy_inflation ? "Enabled" : "Disabled"]</a>"
-			//SPLURT EDIT END
 			dat += "</td>"
+			//SPLURT EDIT END
 			dat += APPEARANCE_CATEGORY_COLUMN
 			if(NOGENITALS in pref_species.species_traits)
 				dat += "<b>Your species ([pref_species.name]) does not support genitals!</b><br>"
