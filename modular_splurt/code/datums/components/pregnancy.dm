@@ -22,7 +22,7 @@
 	/// whether the pregnancy is revealed or not, scanners will reveal this no matter what
 	var/revealed = FALSE
 
-/datum/component/pregnancy/Initialize(mob/living/_father, _baby_type, obj/item/organ/container_organ)
+/datum/component/pregnancy/Initialize(mob/living/_father, _baby_type, obj/item/organ/container_organ, _oviposition, _pregnancy_inflation)
 	if(!isliving(parent))
 		return COMPONENT_INCOMPATIBLE
 
@@ -41,15 +41,11 @@
 		father_dna = new
 		carbo.dna.copy_dna(father_dna)
 
+	oviposition = oviposition
+	pregnancy_inflation = _pregnancy_inflation
+
 	if(container_organ)
 		container = container_organ
-
-	/*
-	if(iscarbon(parent))
-		var/mob/living/carbon/carbo = parent
-		if(!carbo.getorganslot(ORGAN_SLOT_WOMB) && need_wombs)
-			return COMPONENT_INCOMPATIBLE
-	*/
 
 	if(ishuman(parent))
 		human_pragency_start(parent)

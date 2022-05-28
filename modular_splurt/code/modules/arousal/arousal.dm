@@ -15,7 +15,8 @@
 
 	receiver.climax_modify_size(partner, source)
 
-/mob/living/proc/impregnate(mob/living/partner, /obj/item/organ/W, baby_type)
+//handles impregnation, also prefs
+/mob/living/proc/impregnate(mob/living/partner, obj/item/organ/W, baby_type)
 	if(!W)
 		return
 	if(prob(PREGNANCY_CHANCE_ON_EJACULATION))
@@ -23,8 +24,9 @@
 		if(partner?.client?.prefs)
 			can_impregnate = partner.client.prefs.virility
 		var/can_get_pregnant = (client?.prefs?.fertility && !is_type_in_typecache(src.type, GLOB.pregnancy_blocked_mob_typecache))
+
 		if(can_impregnate && can_get_pregnant)
-			AddComponent(/datum/component/pregnancy, partner, baby_type, W)
+			AddComponent(/datum/component/pregnancy, partner, baby_type, W, client?.prefs?.oviposition, client?.prefs?.pregnancy_inflation)
 
 /mob/living/carbon/human/do_climax(datum/reagents/R, atom/target, obj/item/organ/genital/G, spill, cover = FALSE)
 	if(!G)

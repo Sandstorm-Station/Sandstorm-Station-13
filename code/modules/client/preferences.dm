@@ -469,14 +469,6 @@ GLOBAL_LIST_EMPTY(preferences_datums)
 			dat += "<a href='?_src_=prefs;preference=ai_core_icon;task=input'><b>Preferred AI Core Display:</b> [preferred_ai_core_display]</a><br>"
 			dat += "<a href='?_src_=prefs;preference=sec_dept;task=input'><b>Preferred Security Department:</b> [prefered_security_department]</a><BR></td>"
 			dat += "<br><a href='?_src_=prefs;preference=hide_ckey;task=input'><b>Hide ckey: [hide_ckey ? "Enabled" : "Disabled"]</b></a><br>"
-			//SPLURT EDIT BEGIN - gregnancy preferences
-			dat += "<BR><b>Fertility preferences:</b>"
-			dat += "<br><a href='?_src_=prefs;preference=virility;task=input'><b>Can impregnate: [virility ? "Enabled" : "Disabled"]</b></a><br>"
-			dat += "<br><a href='?_src_=prefs;preference=fertility;task=input'><b>Can get pregnant: [fertility ? "Enabled" : "Disabled"]</b></a><br>"
-			if(fertility)
-				dat += "<br><a href='?_src_=prefs;preference=oviposition;task=input'><b>Pregnancy type: [oviposition ? "Oviposition" : "Live Birth"]</b></a><br>"
-				dat += "<br><a href='?_src_=prefs;preference=pregnancy_inflation;task=input'><b>Pregnancy inflation: [pregnancy_inflation ? "Enabled" : "Disabled"]</b></a><br>"
-			//SPLURT EDIT END
 			dat += "</tr></table>"
 
 		//Character Appearance
@@ -834,6 +826,17 @@ GLOBAL_LIST_EMPTY(preferences_datums)
 			dat += "<h3>Lewd preferences</h3>"
 			dat += "<b>Lust tolerance:</b><a style='display:block;width:100px' href ='?_src_=prefs;preference=lust_tolerance;task=input'>[lust_tolerance]</a>"
 			dat += "<b>Sexual potency:</b><a style='display:block;width:100px' href ='?_src_=prefs;preference=sexual_potency;task=input'>[sexual_potency]</a>"
+			dat += "</td>"
+
+			dat += "<td width='220px' height='300px' valign='top'>"
+			//SPLURT EDIT BEGIN - gregnancy preferences
+			dat += "<h3>Pregnancy preferences</h3>"
+			dat += "<b>Can impregnate:</b><a style='display:block;width:100px' href ='?_src_=prefs;preference=virility;task=input'>[virility ? "Enabled" : "Disabled"]</a>"
+			dat += "<b>Can get pregnant:</b><a style='display:block;width:100px' href ='?_src_=prefs;preference=fertility;task=input'>[fertility ? "Enabled" : "Disabled"]</a>"
+			if(fertility)
+				dat += "<b>Pregnancy type:</b><a style='display:block;width:100px' href ='?_src_=prefs;preference=oviposition;task=input'>[oviposition ? "Oviposition" : "Live Birth"]</a>"
+				dat += "<b>Pregnancy inflation:</b><a style='display:block;width:100px' href ='?_src_=prefs;preference=pregnancy_inflation;task=input'>[pregnancy_inflation ? "Enabled" : "Disabled"]</a>"
+			//SPLURT EDIT END
 			dat += "</td>"
 			dat += APPEARANCE_CATEGORY_COLUMN
 			if(NOGENITALS in pref_species.species_traits)
