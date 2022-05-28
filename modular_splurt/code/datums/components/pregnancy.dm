@@ -5,6 +5,8 @@
 	/// type of baby the mother will plop out - needs to be subtype of /mob/living
 	var/baby_type = /mob/living/carbon/human
 
+	var/obj/item/organ/container
+
 	var/datum/dna/father_dna
 
 	var/stage = 0
@@ -15,11 +17,12 @@
 	var/old_belly_size = 0
 	/// this boolean is for identifying whether this crime against nature is a live birth or oviposition
 	var/oviposition = FALSE
-	//this boolean is for saving whether or not we should inflate the belly if appropriate
+	/// this boolean is for saving whether or not we should inflate the belly if appropriate
 	var/pregnancy_inflation = TRUE
+	/// whether the pregnancy is revealed or not, scanners will reveal this no matter what
 	var/revealed = FALSE
 
-/datum/component/pregnancy/Initialize(mob/living/_father, _baby_type, need_wombs = TRUE)
+/datum/component/pregnancy/Initialize(mob/living/_father, _baby_type, obj/item/organ/container_organ)
 	if(!isliving(parent))
 		return COMPONENT_INCOMPATIBLE
 
@@ -38,10 +41,15 @@
 		father_dna = new
 		carbo.dna.copy_dna(father_dna)
 
+	if(container_organ)
+		container = container_organ
+
+	/*
 	if(iscarbon(parent))
 		var/mob/living/carbon/carbo = parent
 		if(!carbo.getorganslot(ORGAN_SLOT_WOMB) && need_wombs)
 			return COMPONENT_INCOMPATIBLE
+	*/
 
 	if(ishuman(parent))
 		human_pragency_start(parent)
@@ -52,11 +60,20 @@
 	. = ..()
 	RegisterSignal(parent, COMSIG_MOB_DEATH, .proc/fetus_mortus)
 	RegisterSignal(parent, COMSIG_LIVING_BIOLOGICAL_LIFE, .proc/handle_life)
+	RegisterSignal(parent, COMSIG_HEALTH_SCAN, .proc/on_scan)
+	RegisterSignal(parent, COMSIG_MOB_APPLY_DAMAGE, .proc/handle_damage)
+	if(container)
+		RegisterSignal(container, COMSIG_ORGAN_REMOVED, .proc/fetus_mortus)
+
 
 /datum/component/pregnancy/UnregisterFromParent()
 	. = ..()
 	UnregisterSignal(parent, COMSIG_MOB_DEATH)
 	UnregisterSignal(parent, COMSIG_LIVING_BIOLOGICAL_LIFE)
+	UnregisterSignal(parent, COMSIG_HEALTH_SCAN)
+	UnregisterSignal(parent, COMSIG_MOB_APPLY_DAMAGE)
+	if(container)
+		UnregisterSignal(container, COMSIG_ORGAN_REMOVED)
 
 /datum/component/pregnancy/Destroy()
 	REMOVE_TRAIT(parent, TRAIT_PREGNANT, PREGNANCY_TRAIT)
@@ -68,6 +85,7 @@
 
 /datum/component/pregnancy/proc/handle_life(seconds)
 	SIGNAL_HANDLER
+
 	if(ishuman(parent))
 		handle_belly_stuff(parent)
 
@@ -214,6 +232,7 @@
 
 /datum/component/pregnancy/proc/fetus_mortus()
 	SIGNAL_HANDLER
+
 	var/mob/living/preggo = parent
 	if(!QDELETED(parent) && get_turf(preggo) && (stage > (max_stage / 2)))
 		if(!oviposition)
@@ -223,6 +242,18 @@
 	preggo.visible_message(span_danger("[parent] has a miscarriage!"), \
 						span_userdanger("Oh no! My baby is dead!"))
 	qdel(src)
+
+/datum/component/pregnancy/proc/on_scan(datum/source, mob/user)
+	SIGNAL_HANDLER
+
+	to_chat(user, span_notice("<b>Pregnancy detected!</b>"))
+
+//drop kicked
+/datum/component/pregnancy/proc/handle_damage(datum/source, damage, damagetype, def_zone)
+	SIGNAL_HANDLER
+
+	if(def_zone == BODY_ZONE_CHEST && damage > 25 && prob(40))
+		fetus_mortus()
 
 /datum/component/pregnancy/proc/offer_control_to_babby(mob/living/babby, mob/living/mommy)
 	var/poll_message = "Do you want to play as [mommy]'s offspring?"

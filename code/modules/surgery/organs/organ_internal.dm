@@ -82,6 +82,7 @@
 			var/datum/action/A = X
 			A.Remove(owner)
 		. = owner //for possible subtypes specific post-removal code.
+	SEND_SIGNAL(src, COMSIG_ORGAN_REMOVED)//SPLURT EDIT ADD - gregnancy
 	owner = null
 	START_PROCESSING(SSobj, src)
 

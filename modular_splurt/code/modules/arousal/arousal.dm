@@ -2,24 +2,29 @@
 	. = ..()
 	L.receive_climax(src, Lgen, G, spillage, forced = forced)
 
-/mob/living/receive_climax(mob/living/partner, obj/item/organ/genital/receiver, obj/item/organ/genital/source_gen, spill, forced)
-	. = ..()
-
+/mob/living/proc/receive_climax(mob/living/partner, obj/item/organ/genital/receiver, obj/item/organ/genital/source, spill, forced)
 	//gregnancy...
-	if(!spill && istype(source_gen, /obj/item/organ/genital/penis) && \
-		istype(receiver, /obj/item/organ/genital/vagina) && prob(PREGNANCY_CHANCE_ON_EJACULATION))
-		var/can_impregnate = TRUE
-		if(source_gen.owner.client?.prefs)
-			can_impregnate = source_gen.owner.client.prefs.virility
-		var/can_get_pregnant = (client?.prefs?.fertility && !is_type_in_typecache(src.type, GLOB.pregnancy_blocked_mob_typecache))
-		if(can_impregnate && can_get_pregnant)
-			src.AddComponent(/datum/component/pregnancy, source_gen.owner, src.type)
-			to_chat(source_gen.owner, span_danger("That felt like a pregnancy nut!"))
-			to_chat(src, span_danger("That felt like a pregnancy nut!"))
+	if(!spill && istype(source, /obj/item/organ/genital/penis) && \
+		istype(receiver, /obj/item/organ/genital/vagina) && getorganslot(ORGAN_SLOT_WOMB))
+		var/obj/item/organ/genital/penis/peenus = source
+		if(!peenus.equipment[GENITAL_EQUIPEMENT_CONDOM])
+			impregnate(partner, getorganslot(ORGAN_SLOT_WOMB), src.type)
+
 	if(!receiver || spill || forced)
 		return
 
-	receiver.climax_modify_size(partner, source_gen)
+	receiver.climax_modify_size(partner, source)
+
+/mob/living/proc/impregnate(mob/living/partner, /obj/item/organ/W, baby_type)
+	if(!W)
+		return
+	if(prob(PREGNANCY_CHANCE_ON_EJACULATION))
+		var/can_impregnate = TRUE
+		if(partner?.client?.prefs)
+			can_impregnate = partner.client.prefs.virility
+		var/can_get_pregnant = (client?.prefs?.fertility && !is_type_in_typecache(src.type, GLOB.pregnancy_blocked_mob_typecache))
+		if(can_impregnate && can_get_pregnant)
+			AddComponent(/datum/component/pregnancy, partner, baby_type, W)
 
 /mob/living/carbon/human/do_climax(datum/reagents/R, atom/target, obj/item/organ/genital/G, spill, cover = FALSE)
 	if(!G)

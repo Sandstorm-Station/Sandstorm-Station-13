@@ -483,6 +483,9 @@
 							if(partner_carbon_check)
 								target_gen = c_partner.getorganslot(ORGAN_SLOT_VAGINA)
 							message = "cums in \the <b>[partner]</b>'s pussy."
+							var/obj/item/organ/genital/penis/peepee = getorganslot(ORGAN_SLOT_PENIS)
+							if(!peepee.equipment[GENITAL_EQUIPEMENT_CONDOM])
+								partner.impregnate(src, partner.getorganslot(ORGAN_SLOT_WOMB), src.type)
 							cumin = TRUE
 						else
 							message = "cums on \the <b>[partner]</b>'s belly."
@@ -647,6 +650,9 @@
 								if(partner_carbon_check)
 									target_gen = c_partner.getorganslot(ORGAN_SLOT_VAGINA)
 								message = "cums in \the <b>[partner]</b>'s pussy."
+								var/obj/item/organ/genital/penis/peepee = last_genital
+								if(!peepee.equipment[GENITAL_EQUIPEMENT_CONDOM])
+									partner.impregnate(src, partner.getorganslot(ORGAN_SLOT_WOMB), src.type)
 								cumin = TRUE
 							else
 								message = "cums on \the <b>[partner]</b>'s belly."
