@@ -8,13 +8,18 @@
 		/obj/item/clothing/suit/toggle/rp_jacket/orange = 3,
 		/obj/item/clothing/suit/toggle/rp_jacket/purple = 3,
 		/obj/item/clothing/suit/toggle/rp_jacket/red = 3,
-		/obj/item/clothing/suit/toggle/rp_jacket/white = 3
+		/obj/item/clothing/suit/toggle/rp_jacket/white = 3,
+		/obj/item/clothing/under/goner/green/fake = 10,
+		/obj/item/clothing/suit/goner/green/fake = 10,
+		/obj/item/clothing/head/helmet/goner/green/fake = 10
 	)
 	var/list/extra_contraband = list(
-		/obj/item/clothing/under/rank/civilian/lawyer/galaxy_red = 3
+		/obj/item/clothing/under/rank/civilian/lawyer/galaxy_red = 3,
+		/obj/item/clothing/mask/gas/goner/basic = 10
 	)
 	var/list/extra_premium = list(
-		/obj/item/clothing/under/rank/civilian/lawyer/galaxy_blue = 3
+		/obj/item/clothing/under/rank/civilian/lawyer/galaxy_blue = 3,
+		/obj/item/clothing/head/helmet/goner/officer/green/fake = 10
 	)
 	LAZYADD(products, extra_products)
 	LAZYADD(contraband, extra_contraband)
