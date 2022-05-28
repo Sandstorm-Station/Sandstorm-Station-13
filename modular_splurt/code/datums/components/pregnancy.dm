@@ -82,7 +82,7 @@
 /datum/component/pregnancy/proc/handle_life(seconds)
 	SIGNAL_HANDLER
 
-	if(ishuman(parent))
+	if(ishuman(parent) && pregnancy_inflation)
 		handle_belly_stuff(parent)
 
 	if(oviposition)
@@ -104,7 +104,7 @@
 	if(!(stage > (max_stage / 2)))
 		return
 	var/obj/item/organ/genital/belly/belly = gregnant.getorganslot(ORGAN_SLOT_BELLY)
-	if(belly && pregnancy_inflation)
+	if(belly)
 		switch(stage)
 			if(2)
 				belly.size = max(belly.size, 2)
