@@ -124,6 +124,20 @@
 	heat_protection = CHEST|GROIN|LEGS|ARMS
 	armor = list(MELEE = 25, BULLET = 10, LASER = 25, ENERGY = 10, BOMB = 5, BIO = 5, RAD = 5, FIRE = 5, ACID = 45) // Det's armor value + 5 BOMB&BIO&RAD&FIRE
 
+/obj/item/clothing/suit/goner/fake
+	name = "\improper NML coat replica"
+	desc = "A 90% replica of No Man's Land-type coat."
+	armor = list(MELEE = 0, BULLET = 0, LASER = 0, ENERGY = 0, BOMB = 0, BIO = 0, RAD = 0, FIRE = 0, ACID = 0)
+
+/obj/item/clothing/suit/goner/fake/poly
+	name = "polychromic NML coat"
+	desc = "A generic, grey trenchcoat with polychromatic spots."
+	var/list/poly_colors = list("#F2F2F2")
+
+/obj/item/clothing/suit/goner/fake/poly/ComponentInitialize()
+	. = ..()
+	AddElement(/datum/element/polychromic, poly_colors, 1)
+
 /obj/item/clothing/suit/goner/red
 	name = "red NML coat"
 	desc = "A trenchcoat of the boring wars. This one have red insignias."
@@ -133,11 +147,6 @@
 	name = "green NML coat"
 	desc = "A trenchcoat of the boring wars. This one have green insignias."
 	icon_state = "goner_suit_g"
-
-/obj/item/clothing/suit/goner/green/fake
-	name = "green NML coat replica"
-	desc = "A 90% replica of No Man's Land-type coat."
-	armor = list(MELEE = 0, BULLET = 0, LASER = 0, ENERGY = 0, BOMB = 0, BIO = 0, RAD = 0, FIRE = 0, ACID = 0)
 
 /obj/item/clothing/suit/goner/blue
 	name = "blue NML coat"

@@ -8,6 +8,20 @@
 	flags_inv = HIDEHAIR
 	armor = list(MELEE = 40, BULLET = 30, LASER = 30, ENERGY = 10, BOMB = 25, BIO = 5, RAD = 5, FIRE = 50, ACID = 50) // Normal helmet's + BIO&RAD
 
+/obj/item/clothing/head/helmet/goner/fake
+	name = "\improper NML helmet replica"
+	desc = "A plastic helmet with purple paint applied. Protects as best as cardboard box labeled 'Bomb Shelter'."
+	armor = list(MELEE = 0, BULLET = 0, LASER = 0, ENERGY = 0, BOMB = 0, BIO = 0, RAD = 0, FIRE = 0, ACID = 0)
+
+/obj/item/clothing/head/helmet/goner/fake/poly
+	name = "polychromic NML helmet"
+	desc = "A plastic helmet with polychromatic spot."
+	var/list/poly_colors = list("#D9D9D9")
+
+/obj/item/clothing/head/helmet/goner/fake/poly/ComponentInitialize()
+	. = ..()
+	AddElement(/datum/element/polychromic, poly_colors, 1)
+
 /obj/item/clothing/head/helmet/goner/red
 	name = "red NML helmet"
 	desc = "A No Man's Land-type helmet with red paint applied."
@@ -17,11 +31,6 @@
 	name = "green NML helmet"
 	desc = "A No Man's Land-type helmet with green paint applied."
 	icon_state = "goner_helmet_g"
-
-/obj/item/clothing/head/helmet/goner/green/fake
-	name = "green NML helmet replica"
-	desc = "A plastic helmet with green paint applied. Protects as best as cardboard box labeled 'Bomb Shelter'."
-	armor = list(MELEE = 0, BULLET = 0, LASER = 0, ENERGY = 0, BOMB = 0, BIO = 0, RAD = 0, FIRE = 0, ACID = 0)
 
 /obj/item/clothing/head/helmet/goner/blue
 	name = "blue NML helmet"
@@ -38,6 +47,20 @@
 	desc = "An army officer cap with purple pin."
 	icon_state = "goner_offcap"
 
+/obj/item/clothing/head/helmet/goner/officer/fake
+	name = "\improper NML officer cap replica"
+	desc = "A cheap officer cap. Great for people with Napoleon complex."
+	armor = list(MELEE = 0, BULLET = 0, LASER = 0, ENERGY = 0, BOMB = 0, BIO = 0, RAD = 0, FIRE = 0, ACID = 0)
+
+/obj/item/clothing/head/helmet/goner/officer/fake/poly
+	name = "polychromic NML officer cap"
+	desc = "A cheap officer cap with polychromatic pin."
+	var/list/poly_colors = list("#F2F2F2")
+
+/obj/item/clothing/head/helmet/goner/officer/fake/poly/ComponentInitialize()
+	. = ..()
+	AddElement(/datum/element/polychromic, poly_colors, 1)
+
 /obj/item/clothing/head/helmet/goner/officer/red
 	name = "red NML officer cap"
 	desc = "An army officer cap with red pin."
@@ -47,11 +70,6 @@
 	name = "green NML officer cap"
 	desc = "An army officer cap with green pin."
 	icon_state = "goner_offcap_g"
-
-/obj/item/clothing/head/helmet/goner/officer/green/fake
-	name = "green NML officer cap replica"
-	desc = "A cheap officer cap with green pin. Still might fool Green mooks, though."
-	armor = list(MELEE = 0, BULLET = 0, LASER = 0, ENERGY = 0, BOMB = 0, BIO = 0, RAD = 0, FIRE = 0, ACID = 0)
 
 /obj/item/clothing/head/helmet/goner/officer/blue
 	name = "blue NML officer cap"

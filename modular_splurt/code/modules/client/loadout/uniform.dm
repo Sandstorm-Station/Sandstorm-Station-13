@@ -112,7 +112,7 @@
 /datum/gear/uniform/orvsec
 	restricted_roles = list("Warden", "Detective", "Security Officer", "Head of Security", "Brig Physician", "Blueshield")
 
-// Greens are probably dead anyway...
+// Polychrome GWTB
 /datum/gear/uniform/gonercloth
-	name = "No Man's Land uniform (aesthetic)"
-	path = /obj/item/clothing/under/goner/green/fake
+	name = "No Man's Land polychromic uniform"
+	path = /obj/item/clothing/under/goner/fake/poly

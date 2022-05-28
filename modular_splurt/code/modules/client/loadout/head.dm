@@ -28,13 +28,13 @@
 /datum/gear/head/cowboyhat/sec
 	restricted_roles = list("Warden","Detective","Security Officer","Head of Security", "Brig Physician", "Blueshield")
 
-// Greens are probably dead anyway...
+// Polychrome GWTB
 /datum/gear/head/gonerhelm
-	name = "No Man's Land helmet (aesthetic)"
+	name = "No Man's Land polychromic helmet"
 	cost = 2
-	path = /obj/item/clothing/head/helmet/goner/green/fake
+	path = /obj/item/clothing/head/helmet/goner/fake/poly
 
 /datum/gear/head/goneroffcap
-	name = "No Man's Land officer cap (aesthetic)"
+	name = "No Man's Land polychromic officer cap"
 	cost = 2
-	path = /obj/item/clothing/head/helmet/goner/officer/green/fake
+	path = /obj/item/clothing/head/helmet/goner/officer/fake/poly

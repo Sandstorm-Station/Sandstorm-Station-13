@@ -65,8 +65,8 @@
 	path = /obj/item/clothing/suit/toggle/rp_jacket/white
 	subcategory = LOADOUT_SUBCATEGORY_SUIT_JACKETS
 
-// Greens are probably dead anyway...
+// Polychrome GWTB
 /datum/gear/suit/gonersuit
-	name = "No Man's Land coat (aesthetic)"
+	name = "No Man's Land polychromic coat"
 	cost = 2
-	path = /obj/item/clothing/suit/goner/green/fake
+	path = /obj/item/clothing/suit/goner/fake/poly
