@@ -111,3 +111,8 @@
 
 /datum/gear/uniform/orvsec
 	restricted_roles = list("Warden", "Detective", "Security Officer", "Head of Security", "Brig Physician", "Blueshield")
+
+// Greens are probably dead anyway...
+/datum/gear/uniform/gonercloth
+	name = "No Man's Land uniform (aesthetic)"
+	path = /obj/item/clothing/under/goner/green/fake

@@ -110,3 +110,41 @@
 
 /obj/item/clothing/head/hooded/corpus/c //command
 	icon_state = "corpusc"
+
+// GWTB-inspired stuff wooo
+/obj/item/clothing/suit/goner
+	name = "\improper NML coat"
+	desc = "A trenchcoat of the boring wars. This one have purple insignias."
+	icon = 'modular_splurt/icons/obj/clothing/suits.dmi'
+	mob_overlay_icon = 'modular_splurt/icons/mob/clothing/suit.dmi'
+	anthro_mob_worn_overlay = 'modular_splurt/icons/mob/clothing/suit_digi.dmi'
+	icon_state = "goner_suit"
+	body_parts_covered = CHEST|GROIN|LEGS|ARMS
+	cold_protection = CHEST|GROIN|LEGS|ARMS
+	heat_protection = CHEST|GROIN|LEGS|ARMS
+	armor = list(MELEE = 25, BULLET = 10, LASER = 25, ENERGY = 10, BOMB = 5, BIO = 5, RAD = 5, FIRE = 5, ACID = 45) // Det's armor value + 5 BOMB&BIO&RAD&FIRE
+
+/obj/item/clothing/suit/goner/red
+	name = "red NML coat"
+	desc = "A trenchcoat of the boring wars. This one have red insignias."
+	icon_state = "goner_suit_r"
+
+/obj/item/clothing/suit/goner/green
+	name = "green NML coat"
+	desc = "A trenchcoat of the boring wars. This one have green insignias."
+	icon_state = "goner_suit_g"
+
+/obj/item/clothing/suit/goner/green/fake
+	name = "green NML coat replica"
+	desc = "A 90% replica of No Man's Land-type coat."
+	armor = list(MELEE = 0, BULLET = 0, LASER = 0, ENERGY = 0, BOMB = 0, BIO = 0, RAD = 0, FIRE = 0, ACID = 0)
+
+/obj/item/clothing/suit/goner/blue
+	name = "blue NML coat"
+	desc = "A trenchcoat of the boring wars. This one have blue insignias."
+	icon_state = "goner_suit_b"
+
+/obj/item/clothing/suit/goner/yellow
+	name = "yellow NML coat"
+	desc = "A trenchcoat of the boring wars. This one have yellow insignias."
+	icon_state = "goner_suit_y"

@@ -64,3 +64,9 @@
 	name = "White Jacket"
 	path = /obj/item/clothing/suit/toggle/rp_jacket/white
 	subcategory = LOADOUT_SUBCATEGORY_SUIT_JACKETS
+
+// Greens are probably dead anyway...
+/datum/gear/suit/gonersuit
+	name = "No Man's Land coat (aesthetic)"
+	cost = 2
+	path = /obj/item/clothing/suit/goner/green/fake
