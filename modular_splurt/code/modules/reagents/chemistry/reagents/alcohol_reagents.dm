@@ -16,7 +16,7 @@
 	var/anyclothes = FALSE
 	var/items = M.get_contents()
 	for(var/obj/item/W in items)
-		if(W.body_parts_covered)
+		if(W.body_parts_covered && ismob(W.loc))
 			anyclothes = TRUE
 			M.dropItemToGround(W, TRUE)
 			playsound(M.loc, 'sound/items/poster_ripped.ogg', 50, 1)
