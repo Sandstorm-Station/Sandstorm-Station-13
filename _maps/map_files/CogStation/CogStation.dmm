@@ -43805,8 +43805,9 @@
 /obj/effect/turf_decal/loading_area{
 	dir = 8
 	},
-/obj/machinery/status_display/supply{
-	pixel_y = 32
+/obj/machinery/light{
+	dir = 1;
+	light_color = "#cee5d2"
 	},
 /turf/open/floor/plasteel,
 /area/cargo/storage)
@@ -70716,8 +70717,8 @@
 /area/command/bridge)
 "hhc" = (
 /obj/effect/turf_decal/bot,
-/obj/machinery/light/small{
-	dir = 1
+/obj/machinery/status_display/supply{
+	pixel_y = 32
 	},
 /turf/open/floor/plasteel,
 /area/cargo/storage)
@@ -70858,7 +70859,9 @@
 /area/security/brig)
 "ixI" = (
 /obj/effect/turf_decal/delivery,
-/obj/machinery/light/small,
+/obj/machinery/light{
+	light_color = "#cee5d2"
+	},
 /turf/open/floor/plasteel,
 /area/cargo/storage)
 "iCa" = (
@@ -70968,8 +70971,18 @@
 /turf/open/floor/plasteel/freezer,
 /area/commons/toilet/restrooms)
 "lys" = (
-/obj/machinery/light/small,
-/turf/open/floor/plasteel,
+/obj/effect/turf_decal/stripes/line,
+/obj/effect/turf_decal/stripes/line{
+	dir = 1
+	},
+/obj/machinery/conveyor{
+	dir = 4;
+	id = "cargoload"
+	},
+/obj/machinery/light{
+	light_color = "#cee5d2"
+	},
+/turf/open/floor/plating,
 /area/cargo/storage)
 "lRy" = (
 /obj/machinery/light{
@@ -71104,8 +71117,9 @@
 /area/space/nearstation)
 "oxH" = (
 /obj/effect/turf_decal/delivery,
-/obj/machinery/light/small{
-	dir = 1
+/obj/machinery/light{
+	dir = 1;
+	light_color = "#cee5d2"
 	},
 /turf/open/floor/plasteel,
 /area/cargo/storage)
@@ -121049,7 +121063,7 @@ bkn
 bkn
 bkn
 bhK
-lys
+bhK
 bgV
 aaU
 aaa
@@ -121820,7 +121834,7 @@ bRO
 bhK
 bSp
 bhK
-bXl
+lys
 bgV
 aaU
 aaa
