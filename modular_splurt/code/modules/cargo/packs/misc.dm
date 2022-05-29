@@ -66,6 +66,23 @@
 	crate_name = "9mm pistols"
 	crate_type = /obj/structure/closet/crate/secure/weapon
 
+/datum/supply_pack/misc/m9pistols
+	name = "9mm magazines"
+	desc = "A pack of 9 9mm magazines  of rubber for the 9mm Handgun."
+	access = ACCESS_QM
+	cost = 2500
+	contains = list(/obj/item/ammo_box/magazine/m9/rubber,
+					/obj/item/ammo_box/magazine/m9/rubber,
+					/obj/item/ammo_box/magazine/m9/rubber,
+					/obj/item/ammo_box/magazine/m9/rubber,
+					/obj/item/ammo_box/magazine/m9/rubber,
+					/obj/item/ammo_box/magazine/m9/rubber,
+					/obj/item/ammo_box/magazine/m9/rubber,
+					/obj/item/ammo_box/magazine/m9/rubber,
+					/obj/item/ammo_box/magazine/m9/rubber)
+	crate_name = "9mm magazines"
+	crate_type = /obj/structure/closet/crate/secure/weapon
+
 /datum/supply_pack/misc/c22lrammo
 	name = ".22 ammo boxes"
 	desc = "A pack of 6 boxes of .22 ammo."
