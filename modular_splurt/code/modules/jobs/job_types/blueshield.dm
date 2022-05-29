@@ -92,6 +92,14 @@
 	name = "Blueshield's Quarters"
 	icon_state = "bridge"
 
+/area/command/blueshielquarters2
+	name = "Blueshield's Quarters"
+	icon_state = "bridge"
+
+/area/command/blueshielquarters3
+	name = "Blueshield's Quarters"
+	icon_state = "bridge"
+
 ///Subtype of CQC. Only used for the Blueshit.
 /datum/martial_art/cqc/blueshield
 	name = "Close Quarters Combat, Blueshield edition"

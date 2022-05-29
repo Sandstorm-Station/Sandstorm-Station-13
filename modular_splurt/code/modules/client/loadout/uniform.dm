@@ -42,6 +42,18 @@
 	name = "white bunny outfit"
 	path = /obj/item/clothing/under/bunnysuit/white
 
+/datum/gear/uniform/raccveralls
+	name = "form fitting overalls"
+	path = /obj/item/clothing/under/raccveralls
+
+/datum/gear/uniform/sexyoffice
+	name = "Revealing office uniform"
+	path = /obj/item/clothing/under/officesexy
+
+/datum/gear/uniform/vaultsuit
+	name = "vault suit"
+	path = /obj/item/clothing/under/vaultsuit
+
 // Updates restrictions to accomodate new jobs (mostly trekkie stuff)
 /datum/gear/uniform/grey/sec
 	restricted_roles = list("Detective", "Security Officer", "Warden", "Head of Security", "Brig Physician")

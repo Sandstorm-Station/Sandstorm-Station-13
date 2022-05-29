@@ -1547,6 +1547,9 @@
 /obj/structure/cable{
 	icon_state = "0-4"
 	},
+/obj/structure/railing{
+	dir = 4
+	},
 /turf/open/floor/grass,
 /area/service/hydroponics/garden/monastery)
 "dW" = (
@@ -2415,14 +2418,6 @@
 	},
 /turf/open/floor/plasteel/cafeteria,
 /area/service/kitchen)
-"go" = (
-/obj/machinery/camera/autoname,
-/obj/structure/railing{
-	dir = 8;
-	icon_state = "railing"
-	},
-/turf/open/floor/grass,
-/area/service/hydroponics/garden/monastery)
 "gp" = (
 /obj/effect/turf_decal/vg_decals/department/sci,
 /obj/effect/turf_decal/tile/neutral,
@@ -2534,11 +2529,6 @@
 "gI" = (
 /turf/open/floor/plating,
 /area/maintenance/bar)
-"gJ" = (
-/obj/structure/closet,
-/obj/structure/railing/corner,
-/turf/open/floor/plating,
-/area/maintenance/central)
 "gK" = (
 /obj/structure/table,
 /obj/machinery/camera{
@@ -2562,14 +2552,6 @@
 	},
 /turf/open/floor/wood,
 /area/maintenance/bar)
-"gO" = (
-/obj/machinery/space_heater,
-/obj/structure/railing/corner{
-	dir = 8;
-	icon_state = "railing_corner"
-	},
-/turf/open/floor/plating,
-/area/maintenance/central)
 "gP" = (
 /obj/machinery/light/small{
 	dir = 8;
@@ -3052,6 +3034,15 @@
 	},
 /turf/open/floor/plating,
 /area/maintenance/department/crew_quarters/dorms)
+"ii" = (
+/obj/structure/railing{
+	dir = 4
+	},
+/obj/structure/railing{
+	dir = 1
+	},
+/turf/open/floor/grass,
+/area/service/hydroponics/garden/monastery)
 "ij" = (
 /obj/machinery/atmospherics/pipe/simple/supply/hidden/layer1{
 	dir = 4
@@ -3985,6 +3976,13 @@
 /obj/item/organ/heart,
 /turf/open/floor/carpet,
 /area/service/chapel/office)
+"kp" = (
+/obj/structure/railing{
+	dir = 4
+	},
+/obj/structure/railing,
+/turf/open/floor/grass,
+/area/service/hydroponics/garden/monastery)
 "kq" = (
 /obj/effect/turf_decal/bot_white/left,
 /obj/effect/turf_decal/tile/neutral{
@@ -4783,6 +4781,9 @@
 /turf/open/floor/plasteel,
 /area/hallway/primary/central)
 "ms" = (
+/obj/structure/railing{
+	dir = 1
+	},
 /turf/open/floor/plating,
 /turf/open/floor/plating{
 	icon_state = "platingdmg2"
@@ -5611,8 +5612,7 @@
 /area/space/nearstation)
 "oy" = (
 /obj/structure/railing{
-	dir = 4;
-	icon_state = "railing"
+	dir = 4
 	},
 /turf/open/floor/plating,
 /area/maintenance/central)
@@ -7073,13 +7073,6 @@
 	},
 /turf/open/floor/plasteel,
 /area/service/hydroponics)
-"sn" = (
-/obj/structure/railing/corner{
-	dir = 8;
-	icon_state = "railing_corner"
-	},
-/turf/open/floor/plating,
-/area/maintenance/central)
 "so" = (
 /obj/structure/cable{
 	icon_state = "1-2"
@@ -7098,13 +7091,6 @@
 "sq" = (
 /turf/closed/wall,
 /area/asteroid/nearstation)
-"sr" = (
-/obj/structure/railing/corner{
-	dir = 4;
-	icon_state = "railing_corner"
-	},
-/turf/open/floor/grass,
-/area/service/hydroponics/garden/monastery)
 "ss" = (
 /obj/effect/turf_decal/trimline/green/filled/line{
 	dir = 1
@@ -7971,10 +7957,6 @@
 	icon_state = "panelscorched"
 	},
 /area/maintenance/department/crew_quarters/dorms)
-"uH" = (
-/obj/structure/railing/corner,
-/turf/open/floor/grass,
-/area/service/hydroponics/garden/monastery)
 "uI" = (
 /obj/effect/decal/cleanable/blood/old,
 /turf/open/floor/plating,
@@ -10153,14 +10135,6 @@
 	},
 /turf/open/floor/plasteel,
 /area/commons/fitness/recreation)
-"An" = (
-/obj/machinery/light{
-	dir = 4;
-	light_color = "#c1caff"
-	},
-/obj/structure/railing/corner,
-/turf/open/floor/grass,
-/area/service/hydroponics/garden/monastery)
 "Ao" = (
 /turf/closed/wall,
 /area/tcommsat/chamber)
@@ -11302,10 +11276,6 @@
 /obj/machinery/light,
 /turf/open/floor/plasteel/cafeteria,
 /area/service/cafeteria)
-"Dz" = (
-/obj/structure/railing/corner,
-/turf/open/floor/plating,
-/area/maintenance/central)
 "DB" = (
 /obj/effect/turf_decal/tile/neutral{
 	dir = 1
@@ -12160,8 +12130,7 @@
 /area/hallway/secondary/service)
 "Fw" = (
 /obj/structure/railing{
-	dir = 8;
-	icon_state = "railing"
+	dir = 8
 	},
 /turf/open/floor/plating,
 /area/maintenance/central)
@@ -13685,12 +13654,11 @@
 /turf/open/floor/plasteel,
 /area/service/janitor)
 "IY" = (
-/obj/structure/railing{
-	dir = 8;
-	icon_state = "railing"
-	},
 /obj/structure/cable{
 	icon_state = "1-2"
+	},
+/obj/structure/railing{
+	dir = 8
 	},
 /turf/open/floor/plasteel,
 /area/construction/mining/aux_base)
@@ -14034,8 +14002,7 @@
 /area/commons/vacant_room/commissary)
 "JT" = (
 /obj/docking_port/stationary/public_mining_dock{
-	dir = 2;
-	icon_state = "pinonfar"
+	dir = 2
 	},
 /turf/open/floor/plating,
 /area/construction/mining/aux_base)
@@ -14451,13 +14418,6 @@
 /obj/machinery/atmospherics/pipe/simple/scrubbers/hidden/layer3,
 /turf/open/floor/plasteel/white,
 /area/service/kitchen)
-"KX" = (
-/obj/structure/railing/corner{
-	dir = 1;
-	icon_state = "railing_corner"
-	},
-/turf/open/floor/grass,
-/area/service/hydroponics/garden/monastery)
 "KZ" = (
 /obj/effect/turf_decal/tile/neutral{
 	dir = 1
@@ -14497,13 +14457,6 @@
 	},
 /turf/open/floor/plasteel,
 /area/hallway/secondary/service)
-"Le" = (
-/obj/structure/railing{
-	dir = 5;
-	icon_state = "railing"
-	},
-/turf/open/floor/grass,
-/area/service/hydroponics/garden/monastery)
 "Lf" = (
 /obj/machinery/atmospherics/pipe/manifold/scrubbers/hidden/layer3{
 	dir = 8
@@ -14522,10 +14475,6 @@
 /turf/open/floor/plasteel,
 /area/commons/fitness/recreation)
 "Lg" = (
-/obj/structure/railing{
-	dir = 8;
-	icon_state = "railing"
-	},
 /obj/machinery/power/apc{
 	areastring = "/area/hallway/secondary/construction";
 	dir = 1;
@@ -14537,6 +14486,9 @@
 	},
 /obj/machinery/light{
 	dir = 1
+	},
+/obj/structure/railing{
+	dir = 8
 	},
 /turf/open/floor/plasteel,
 /area/construction/mining/aux_base)
@@ -15532,8 +15484,10 @@
 /area/maintenance/department/crew_quarters/dorms)
 "NG" = (
 /obj/structure/railing{
-	dir = 9;
-	icon_state = "railing"
+	dir = 8
+	},
+/obj/structure/railing{
+	dir = 1
 	},
 /turf/open/floor/grass,
 /area/service/hydroponics/garden/monastery)
@@ -16785,8 +16739,7 @@
 /area/commons/fitness/recreation)
 "QT" = (
 /obj/structure/railing{
-	dir = 8;
-	icon_state = "railing"
+	dir = 8
 	},
 /turf/open/floor/grass,
 /area/service/hydroponics/garden/monastery)
@@ -16956,13 +16909,6 @@
 /obj/effect/spawner/structure/window/reinforced,
 /turf/open/floor/plating,
 /area/command/gateway)
-"Rx" = (
-/obj/structure/railing/corner{
-	dir = 8;
-	icon_state = "railing_corner"
-	},
-/turf/open/floor/grass,
-/area/service/hydroponics/garden/monastery)
 "Ry" = (
 /obj/effect/turf_decal/trimline/neutral/filled/line{
 	dir = 4
@@ -16991,8 +16937,7 @@
 /area/command/gateway)
 "RA" = (
 /obj/structure/railing{
-	dir = 4;
-	icon_state = "railing"
+	dir = 4
 	},
 /turf/open/floor/grass,
 /area/service/hydroponics/garden/monastery)
@@ -57818,9 +57763,9 @@ Iz
 Iz
 Iz
 Iz
-An
-RA
-sr
+DN
+Iz
+Iz
 Iz
 Iz
 ga
@@ -58077,20 +58022,20 @@ OA
 OA
 OA
 dV
-Le
+RA
 RA
 RA
 cn
-Iz
-Iz
-Iz
-Iz
+RA
+RA
+RA
+kp
 ae
 ae
-Iz
-Iz
-Iz
-Iz
+ii
+RA
+RA
+RA
 cn
 RA
 RA
@@ -59104,10 +59049,10 @@ PD
 Ej
 aA
 OA
-go
-QT
-QT
-QT
+qn
+Iz
+Iz
+Iz
 cn
 Iz
 Iz
@@ -59120,12 +59065,12 @@ fK
 Iz
 Iz
 cn
-QT
-QT
-QT
-QT
-QT
-QT
+Iz
+Iz
+Iz
+Iz
+Iz
+Iz
 cn
 wq
 wq
@@ -60137,11 +60082,11 @@ Iz
 Iz
 Iz
 Rv
-uH
+Iz
 RA
 RA
 RA
-sr
+Iz
 Yd
 Yd
 Yd
@@ -60398,7 +60343,7 @@ bv
 aZ
 aZ
 aZ
-Le
+ii
 pq
 Yd
 Yd
@@ -61679,11 +61624,11 @@ Iz
 Iz
 Iz
 Iz
-Rx
+Iz
 QT
 QT
 QT
-KX
+Iz
 Iz
 Iz
 Iz
@@ -63217,7 +63162,7 @@ mg
 bD
 Go
 TJ
-gJ
+nN
 fl
 fl
 fl
@@ -63731,7 +63676,7 @@ hd
 vP
 OA
 tw
-sn
+Bs
 Fw
 Bs
 fl
@@ -63988,7 +63933,7 @@ uc
 vP
 OA
 Yt
-Dz
+Bs
 oy
 Bs
 fl
@@ -64759,7 +64704,7 @@ MO
 vP
 OA
 Yt
-gO
+cx
 fl
 fl
 fl
