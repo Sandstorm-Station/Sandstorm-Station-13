@@ -1,19 +1,14 @@
-/datum/outfit/job/cmo/New()
-	. = ..()
+/datum/outfit/job/cmo
 	accessory = /obj/item/clothing/accessory/permit/head
 
-/datum/outfit/job/quartermaster/New()
-	. = ..()
+/datum/outfit/job/quartermaster
 	accessory = /obj/item/clothing/accessory/permit/head
 
-/datum/outfit/job/ce/New()
-	. = ..()
+/datum/outfit/job/ce 
 	accessory = /obj/item/clothing/accessory/permit/head
 
-/datum/outfit/job/hop/New()
-	. = ..()
+/datum/outfit/job/hop
 	accessory = /obj/item/clothing/accessory/permit/head
 
-/datum/outfit/job/rd/New()
-	. = ..()
+/datum/outfit/job/rd
 	accessory = /obj/item/clothing/accessory/permit/head

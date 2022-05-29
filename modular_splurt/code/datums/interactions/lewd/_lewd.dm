@@ -33,7 +33,7 @@
 	return FALSE
 
 /mob/living/cum(mob/living/partner, target_orifice)
-	var/message
+	var/message //if this doesn't exist it calls ..()
 	//var/u_His = p_their()
 	//var/u_He = p_they()
 	//var/u_S = p_s()
@@ -41,7 +41,6 @@
 	var/cumin = FALSE
 	var/obj/item/organ/genital/target_gen
 	var/mob/living/carbon/c_partner
-	var/cum_the_II = FALSE //If the cumming interaction is fully handled here or goes back to ..()
 	//Carbon checks
 	if(iscarbon(partner))
 		c_partner = partner
@@ -53,7 +52,6 @@
 					target_orifice = null
 				switch(target_orifice)
 					if(CUM_TARGET_NIPPLE)
-						cum_the_II = TRUE
 						cumin = TRUE
 						if(partner.has_breasts())
 							message = "cums iside \the <b>[partner]</b>'s nipple!."
@@ -66,21 +64,18 @@
 						if(target_gen)
 							target_gen.climax_modify_size(src, getorganslot(ORGAN_SLOT_PENIS))
 					if(CUM_TARGET_URETHRA)
-						cum_the_II = TRUE
 						cumin = TRUE
 						message = "cums down \the <b>[partner]</b>'s [pick(GLOB.dick_nouns + list("[pick("cock", "dick")]hole", "urethra"))]!"
 						if(c_partner)
 							target_gen = partner.getorganslot(ORGAN_SLOT_PENIS)
 							target_gen.climax_modify_size(src, getorganslot(ORGAN_SLOT_PENIS))
 					if(CUM_TARGET_THIGHS)
-						cum_the_II = TRUE
 						if(partner.has_legs() >= 2)
 							message = "cums right into \the <b>[partner]</b>'s thighs!"
 						else
 							message = "cums... somehow..."
 					if(CUM_TARGET_BELLY)
 						cumin = TRUE
-						cum_the_II = TRUE
 						if(partner.has_belly(REQUIRE_EXPOSED))
 							message = "cums into the <b>[partner]</b>'s navel, [pick(list("making it into a massive pond of jizz", "[p_their()] spunk drooling out of it"))]."
 							if(c_partner)
@@ -94,14 +89,8 @@
 									gut = new
 									gut.Insert(partner)
 								gut.climax_modify_size(src, getorganslot(ORGAN_SLOT_PENIS), target_orifice)
-							else if((partner.client?.prefs.cit_toggles & BUTT_ENLARGEMENT) && target_orifice == CUM_TARGET_ANUS)
-								var/obj/item/organ/genital/butt/ass = partner.getorganslot(ORGAN_SLOT_BUTT)
-								if(!ass)
-									ass = new
-									ass.Insert(partner)
-								ass.climax_modify_size(src, getorganslot(ORGAN_SLOT_PENIS))
+
 					if(CUM_TARGET_ARMPIT)
-						cum_the_II = TRUE
 						message = "cums under \the <b>[partner]</b>'s armpit"
 
 					if(CUM_TARGET_MOUTH, CUM_TARGET_THROAT, CUM_TARGET_VAGINA, CUM_TARGET_ANUS)
@@ -126,7 +115,6 @@
 					switch(target_orifice)
 						if(CUM_TARGET_NIPPLE)
 							cumin = TRUE
-							cum_the_II = TRUE
 							if(partner.has_breasts())
 								message = "cums iside \the <b>[partner]</b>'s nipple!."
 								target_gen = partner.getorganslot(ORGAN_SLOT_BREASTS)
@@ -139,20 +127,17 @@
 							if(target_gen)
 								target_gen.climax_modify_size(src, last_genital)
 						if(CUM_TARGET_URETHRA)
-							cum_the_II = TRUE
 							cumin = TRUE
 							message = "cums down \the <b>[partner]</b>'s [pick(GLOB.dick_nouns + list("[pick("cock", "dick")]hole", "urethra"))]!"
 							if(c_partner)
 								target_gen = partner.getorganslot(ORGAN_SLOT_PENIS)
 								target_gen.climax_modify_size(src, last_genital)
 						if(CUM_TARGET_THIGHS)
-							cum_the_II = TRUE
 							if(partner.has_legs() >= 2)
 								message = "cums right into \the <b>[partner]</b>'s thighs!"
 							else
 								message = "cums... somehow..."
 						if(CUM_TARGET_BELLY)
-							cum_the_II = TRUE
 							cumin = TRUE
 							if(partner.has_belly(REQUIRE_EXPOSED))
 								message = "cums into the <b>[partner]</b>'s navel, [pick(list("making it into a massive pond of jizz", "[p_their()] spunk drooling out of it"))]."
@@ -188,7 +173,7 @@
 										ass = new
 										ass.Insert(partner)
 									ass.climax_modify_size(src, last_genital)
-	if(!cum_the_II)
+	if(!message)
 		return ..()
 	if(gender == MALE)
 		playlewdinteractionsound(loc, pick('modular_sand/sound/interactions/final_m1.ogg',
@@ -780,7 +765,7 @@
 	var/list/hell = list(
 		" pushes [u_His] [pick(ass)] into \the <b>[target]</b>'s crotch, [pick(list("ripping a fat[pick(list("", " and [pick(stank)]"))] one", " and subsequently [pick(braps)]"))][pick(list("", ". [jiggle]"))]",
 		" and \the <b>[target]</b> can smell the [prob(50) ? pick(stank) : "flatulent"] gas fill the room ass it seeps in between \the <b>[target]</b>'s thighs!",
-		" [pick(braps)] into \the <b>[target]</b>'s [brap_catcher ? brap_catcher : "crotch"]"
+		" [pick(braps)] into \the <b>[target]</b>'s [brap_catcher ? brap_catcher.name : "crotch"]"
 	)
 
 	message = "<span class='lewd'>\The <b>[src]</b>[pick(hell)]</span>"
@@ -903,10 +888,10 @@
 	var/list/hell = list(
 		"presses [u_His] [pick(stankhole)] [pick(asscheeks)] right against \the <b>[target]</b>'s crotch, unleashing pounds of warm crap all over [brap_catcher ? "[t_His] [brap_catcher]" : "it"] [prob(50) ? ". [jiggle]" : ""]",
 		"shoves [u_His][pick(list("", " [pick(stank)],"))] shitting [pick(ass)] into \the <b>[target]</b>'s thighs and coats everything in between them with [pick("", "gas and ")] slick slop",
-		"shits uncontrollably all over \the <b>[target]</b>'s [brap_catcher ? brap_catcher : "crotch"][prob(50) ? "" : ". [jiggle]"]"
+		"shits uncontrollably all over \the <b>[target]</b>'s [brap_catcher ? brap_catcher.name : "crotch"][prob(50) ? "" : ". [jiggle]"]"
 	)
 
-	message = "<span class='lewd'>\The <b>[src]</b>[pick(hell)]</span>"
+	message = "<span class='lewd'>\The <b>[src]</b> [pick(hell)]</span>"
 	visible_message(message, ignored_mobs = get_unconsenting(unholy = TRUE))
 	playlewdinteractionsound(loc, pick(GLOB.brap_noises), 50, 1, -1, ignored_mobs = get_unconsenting(unholy = TRUE))
 	if(!target.is_fucking(src, CUM_TARGET_ANUS))

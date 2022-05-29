@@ -1,3 +1,6 @@
+/mob/living
+	var/datum/action/sizecode_smallsprite/small_sprite
+
 /// Toggle admin frozen
 /mob/living/proc/toggle_admin_freeze(client/admin)
 	admin_frozen = !admin_frozen
@@ -25,3 +28,10 @@
 		to_chat(src, "<span class='userdanger'>An admin has [!admin_sleeping ? "un": ""]slept you.</span>")
 		log_admin("[key_name(admin)] toggled admin-sleep on [key_name(src)].")
 		message_admins("[key_name_admin(admin)] toggled admin-sleep on [key_name_admin(src)].")
+
+/mob/living/adjust_mobsize()
+	. = ..()
+	if(mob_size == 0)
+		AddElement(/datum/element/smalltalk)
+	else
+		RemoveElement(/datum/element/smalltalk)

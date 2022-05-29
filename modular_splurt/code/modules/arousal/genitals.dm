@@ -4,6 +4,11 @@
 	var/datum/reagent/default_fluid_id
 	var/list/writtentext = ""
 
+/obj/item/organ/genital/modify_size(modifier, min, max)
+	. = ..()
+	if(owner) //Add extra space depending on the owner's size
+		fluid_max_volume += (modifier*2.5)*(get_size(owner)-1)
+		fluid_rate += (modifier/10)*(get_size(owner)-1)
 
 /obj/item/organ/genital/proc/climax_modify_size(mob/living/partner, obj/item/organ/genital/source_gen)
     return

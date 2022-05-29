@@ -1,3 +1,2 @@
-/datum/outfit/job/bartender/New()
-	. = ..()
+/datum/outfit/job/bartender
 	accessory = /obj/item/clothing/accessory/permit/bar

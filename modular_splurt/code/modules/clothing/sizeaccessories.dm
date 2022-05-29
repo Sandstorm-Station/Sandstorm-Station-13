@@ -55,7 +55,7 @@
 		var/mob/living/carbon/human/human_target = user
 		if(slot == ITEM_SLOT_GLOVES)
 
-			if(get_size(human_target) != RESIZE_NORMAL)
+			if(get_size(human_target) != normalize_size)
 				normalize_mob_size(human_target)
 	. = ..()
 
@@ -93,7 +93,7 @@
 		var/mob/living/carbon/human/human_target = user
 		if(slot == ITEM_SLOT_NECK)
 
-			if(get_size(human_target) != RESIZE_NORMAL)
+			if(get_size(human_target) != normalize_size)
 				normalize_mob_size(human_target)
 	. = ..()
 

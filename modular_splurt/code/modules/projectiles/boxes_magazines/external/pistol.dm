@@ -129,7 +129,7 @@
 	build_type = PROTOLATHE
 	materials = list(/datum/material/iron = 1200)
 	build_path = /obj/item/ammo_box/magazine/e45
-	category = list("ammo")
+	category = list("Ammo")
 	departmental_flags = DEPARTMENTAL_FLAG_SECURITY
 
 /datum/design/e45/e45lethal
@@ -139,7 +139,7 @@
 	build_type = PROTOLATHE
 	materials = list(/datum/material/iron = 1200)
 	build_path = /obj/item/ammo_box/magazine/e45/lethal
-	category = list("ammo")
+	category = list("Ammo")
 	departmental_flags = DEPARTMENTAL_FLAG_SECURITY
 
 /datum/design/e45/e45taser
@@ -149,7 +149,7 @@
 	build_type = PROTOLATHE
 	materials = list(/datum/material/iron = 1200)
 	build_path = /obj/item/ammo_box/magazine/e45/taser
-	category = list("ammo")
+	category = list("Ammo")
 	departmental_flags = DEPARTMENTAL_FLAG_SECURITY
 
 /datum/design/e45/e45trac
@@ -159,7 +159,7 @@
 	build_type = PROTOLATHE
 	materials = list(/datum/material/iron = 1200)
 	build_path = /obj/item/ammo_box/magazine/e45/trac
-	category = list("ammo")
+	category = list("Ammo")
 	departmental_flags = DEPARTMENTAL_FLAG_SECURITY
 
 /datum/design/e45/hotshot
@@ -169,7 +169,7 @@
 	build_type = PROTOLATHE
 	materials = list(/datum/material/iron = 1200)
 	build_path = /obj/item/ammo_box/magazine/e45/hotshot
-	category = list("ammo")
+	category = list("Ammo")
 	departmental_flags = DEPARTMENTAL_FLAG_SECURITY
 
 /datum/design/e45/hydra
@@ -179,7 +179,7 @@
 	build_type = PROTOLATHE
 	materials = list(/datum/material/iron = 1200)
 	build_path = /obj/item/ammo_box/magazine/e45/hydra
-	category = list("ammo")
+	category = list("Ammo")
 	departmental_flags = DEPARTMENTAL_FLAG_SECURITY
 
 /datum/design/e45/e45ion
@@ -189,7 +189,7 @@
 	build_type = PROTOLATHE
 	materials = list(/datum/material/iron = 1200, /datum/material/uranium = 50)
 	build_path = /obj/item/ammo_box/magazine/e45/ion
-	category = list("ammo")
+	category = list("Ammo")
 	departmental_flags = DEPARTMENTAL_FLAG_SECURITY
 
 /datum/design/e45/e45stun
@@ -199,7 +199,7 @@
 	build_type = PROTOLATHE
 	materials = list(/datum/material/iron = 1200, /datum/material/uranium = 50)
 	build_path = /obj/item/ammo_box/magazine/e45/stun
-	category = list("ammo")
+	category = list("Ammo")
 	departmental_flags = DEPARTMENTAL_FLAG_SECURITY
 
 
@@ -210,7 +210,7 @@
 	build_type = PROTOLATHE
 	materials = list(/datum/material/iron = 1200, /datum/material/uranium = 50)
 	build_path = /obj/item/ammo_box/magazine/e45/stun
-	category = list("ammo")
+	category = list("Ammo")
 	departmental_flags = DEPARTMENTAL_FLAG_SECURITY
 
 

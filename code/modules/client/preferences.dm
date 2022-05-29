@@ -520,6 +520,13 @@ GLOBAL_LIST_EMPTY(preferences_datums)
 					dat += "[features["ooc_notes"]]<BR>"
 			else
 				dat += "[TextPreview(features["ooc_notes"])]...<BR>"
+			//SPLURT EDIT
+			dat += "<h2>Headshot Image</h2>"
+			dat += "<a href='?_src_=prefs;preference=headshot'><b>Set Headshot Image</b></a><br>"
+			if(features["headshot_link"])
+				dat += "<img src='[features["headshot_link"]]' width='160px' height='120px'>"
+			dat += "<br><br>"
+			//SPLURT EDIT END
 			//SKYRAT EDIT
 			dat += 	"ERP : <a href='?_src_=prefs;preference=erp_pref'>[erppref]</a><br>"
 			dat += 	"Non-Con : <a href='?_src_=prefs;preference=noncon_pref'>[nonconpref]</a><br>"
@@ -840,6 +847,7 @@ GLOBAL_LIST_EMPTY(preferences_datums)
 								tauric_shape = TRUE
 					dat += "<b>Penis Shape:</b> <a style='display:block;width:120px' href='?_src_=prefs;preference=cock_shape;task=input'>[features["cock_shape"]][tauric_shape ? " (Taur)" : ""]</a>"
 					dat += "<b>Penis Length:</b> <a style='display:block;width:120px' href='?_src_=prefs;preference=cock_length;task=input'>[features["cock_length"]] inch(es)</a>"
+					dat += "<b>Diameter Ratio:</b> <a style='display:block;width:120px' href='?_src_=prefs;preference=cock_diameter_ratio;task=input'>[features["cock_diameter_ratio"]]</a>"
 					dat += "<b>Penis Visibility:</b><a style='display:block;width:100px' href='?_src_=prefs;preference=cock_visibility;task=input'>[features["cock_visibility"]]</a>"
 					dat += "<b>Has Testicles:</b><a style='display:block;width:50px' href='?_src_=prefs;preference=has_balls'>[features["has_balls"] == TRUE ? "Yes" : "No"]</a>"
 					if(features["has_balls"])
@@ -2568,7 +2576,7 @@ GLOBAL_LIST_EMPTY(preferences_datums)
 				if("cock_length")
 					var/min_D = CONFIG_GET(number/penis_min_inches_prefs)
 					var/max_D = CONFIG_GET(number/penis_max_inches_prefs)
-					var/new_length = input(user, "Penis length in inches:\n([min_D]-[max_D])", "Character Preference") as num|null
+					var/new_length = input(user, "Penis length in inches:\n([min_D]-[max_D])\nReminder that your sprite size will affect this.", "Character Preference") as num|null
 					if(new_length)
 						features["cock_length"] = clamp(round(new_length), min_D, max_D)
 
@@ -2588,6 +2596,13 @@ GLOBAL_LIST_EMPTY(preferences_datums)
 							new_shape = hockeys[new_shape]
 							features["cock_taur"] = TRUE
 						features["cock_shape"] = new_shape
+
+				if("cock_diameter_ratio")
+					var/min_diameter_ratio = CONFIG_GET(number/diameter_ratio_min_size_prefs)
+					var/max_diameter_ratio = CONFIG_GET(number/diameter_ratio_max_size_prefs)
+					var/new_ratio = input(user, "Penis diameter ratio:\n([min_diameter_ratio]-[max_diameter_ratio])\nReminder that your sprite size will affect this.", "Character Preference") as num|null
+					if(new_ratio)
+						features["cock_diameter_ratio"] = clamp(round(new_ratio, 0.01), min_diameter_ratio, max_diameter_ratio)
 
 				if("cock_visibility")
 					var/n_vis = input(user, "Penis Visibility", "Character Preference") as null|anything in CONFIG_GET(keyed_list/safe_visibility_toggles)
@@ -2721,7 +2736,7 @@ GLOBAL_LIST_EMPTY(preferences_datums)
 					var/min_belly = CONFIG_GET(number/belly_min_size_prefs)
 					var/max_belly = CONFIG_GET(number/belly_max_size_prefs)
 					var/new_bellysize = input(user, "Belly size :\n([min_belly]-[max_belly])", "Character Preference") as num|null
-					if(new_bellysize)
+					if(!isnull(new_bellysize))
 						features["belly_size"] = clamp(new_bellysize, min_belly, max_belly)
 
 				if("butt_size")
@@ -3443,6 +3458,30 @@ GLOBAL_LIST_EMPTY(preferences_datums)
 				if("tab")
 					if(href_list["tab"])
 						current_tab = text2num(href_list["tab"])
+				//SPLURT edit
+				if("headshot")
+					var/usr_input = input(user, "Input the image link:", "Headshot Image", features["headshot_link"]) as text|null
+					if(isnull(usr_input))
+						return
+					if(!usr_input)
+						features["headshot_link"] = null
+						return
+
+					var/static/link_regex = regex("https://i.gyazo.com|https://media.discordapp.net|https://cdn.discordapp.com|https://media.discordapp.net$") //Do not touch the damn duplicates.
+					var/static/end_regex = regex(".jpg|.jpg|.png|.jpeg|.jpeg") //Regex is terrible, don't touch the duplicate extensions
+
+					if(!findtext(usr_input, link_regex, 1, 29))
+						to_chat(usr, span_warning("The link needs to be an unshortened Gyazo or Discordapp link!"))
+						return
+					if(!findtext(usr_input, end_regex, -8))
+						to_chat(usr, span_warning("You need either \".png\", \".jpg\", or \".jpeg\" in the link!"))
+						return
+
+					if(features["headshot_link"] != usr_input)
+						to_chat(usr, span_notice("If the photo doesn't show up properly in-game, ensure that it's a direct image link that opens properly in a browser."))
+						to_chat(usr, span_notice("Keep in mind that the photo will be downsized to 250x250 pixels, so the more square the photo, the better it will look."))
+					features["headshot_link"] = usr_input
+
 	if(href_list["preference"] == "gear")
 		if(href_list["clear_loadout"])
 			loadout_data["SAVE_[loadout_slot]"] = list()

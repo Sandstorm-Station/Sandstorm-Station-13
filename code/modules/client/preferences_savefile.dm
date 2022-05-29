@@ -844,6 +844,7 @@ SAVEFILE UPDATING/VERSIONING - 'Simplified', or rather, more coder-friendly ~Car
 	S["feature_horns_color"] >> features["horns_color"]
 	S["feature_wings_color"] >> features["wings_color"]
 	S["feature_color_scheme"] >> features["color_scheme"]
+	S["headshot"] >> features["headshot_link"] //SPLURT edit
 	S["persistent_scars"] 				>> persistent_scars
 	S["scars1"] >> scars_list["1"]
 	S["scars2"] >> scars_list["2"]
@@ -919,6 +920,7 @@ SAVEFILE UPDATING/VERSIONING - 'Simplified', or rather, more coder-friendly ~Car
 	S["feature_cock_shape"] >> features["cock_shape"]
 	S["feature_cock_color"] >> features["cock_color"]
 	S["feature_cock_length"] >> features["cock_length"]
+	S["feature_cock_diameter_ratio"] >> features["cock_diameter_ratio"] //Why is this in the features but not a fucking option
 	S["feature_cock_diameter"] >> features["cock_diameter"]
 	S["feature_cock_taur"] >> features["cock_taur"]
 	S["feature_cock_visibility"] >> features["cock_visibility"]
@@ -1082,6 +1084,13 @@ SAVEFILE UPDATING/VERSIONING - 'Simplified', or rather, more coder-friendly ~Car
 	var/static/max_belly
 	if(!max_belly)
 		max_belly = CONFIG_GET(number/belly_max_size_prefs)
+	var/static/min_diameter_ratio
+	if(!min_diameter_ratio)
+		min_diameter_ratio = CONFIG_GET(number/diameter_ratio_min_size_prefs)
+	var/static/max_diameter_ratio
+	if(!max_diameter_ratio)
+		max_diameter_ratio = CONFIG_GET(number/diameter_ratio_max_size_prefs)
+
 
 	var/static/safe_visibilities
 	if(!safe_visibilities)
@@ -1090,6 +1099,7 @@ SAVEFILE UPDATING/VERSIONING - 'Simplified', or rather, more coder-friendly ~Car
 
 	features["breasts_size"] = sanitize_inlist(features["breasts_size"], B_sizes, BREASTS_SIZE_DEF)
 	features["cock_length"] = sanitize_integer(features["cock_length"], min_D, max_D, COCK_SIZE_DEF)
+	features["cock_diameter_ratio"] = sanitize_integer(features["cock_diameter_ratio"], min_diameter_ratio, max_diameter_ratio, COCK_DIAMETER_RATIO_DEF)
 	features["butt_size"] = sanitize_integer(features["butt_size"], min_B, max_B, BUTT_SIZE_DEF)
 	features["belly_size"] = sanitize_integer(features["belly_size"], min_belly, max_belly, BELLY_SIZE_DEF)
 	features["breasts_shape"] = sanitize_inlist(features["breasts_shape"], GLOB.breasts_shapes_list, DEF_BREASTS_SHAPE)
@@ -1246,6 +1256,7 @@ SAVEFILE UPDATING/VERSIONING - 'Simplified', or rather, more coder-friendly ~Car
 	WRITE_FILE(S["feature_cock_shape"], features["cock_shape"])
 	WRITE_FILE(S["feature_cock_color"], features["cock_color"])
 	WRITE_FILE(S["feature_cock_length"], features["cock_length"])
+	WRITE_FILE(S["feature_cock_diameter_ratio"], features["cock_diameter_ratio"])
 	WRITE_FILE(S["feature_cock_taur"], features["cock_taur"])
 	WRITE_FILE(S["feature_cock_visibility"], features["cock_visibility"])
 
@@ -1350,6 +1361,7 @@ SAVEFILE UPDATING/VERSIONING - 'Simplified', or rather, more coder-friendly ~Car
 	if(islist(modified_limbs))
 		WRITE_FILE(S["modified_limbs"]				, safe_json_encode(modified_limbs))
 	WRITE_FILE(S["chosen_limb_id"],   chosen_limb_id)
+	WRITE_FILE(S["headshot"], features["headshot_link"]) //SPLURT edit
 
 
 	//gear loadout

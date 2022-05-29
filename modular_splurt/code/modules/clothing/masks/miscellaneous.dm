@@ -233,7 +233,7 @@
 	build_type = PROTOLATHE
 	materials = list(/datum/material/plastic = 200, /datum/material/uranium = 50, /datum/material/iron = 200)
 	build_path = /obj/item/clothing/mask/gas/cbrn/mopp
-	category = list("Armor")
+	category = list("Equipment")
 	departmental_flags = DEPARTMENTAL_FLAG_SECURITY
 
 /obj/item/clothing/mask/muzzle/ballgag

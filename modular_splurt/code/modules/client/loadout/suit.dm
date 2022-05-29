@@ -64,3 +64,13 @@
 	name = "White Jacket"
 	path = /obj/item/clothing/suit/toggle/rp_jacket/white
 	subcategory = LOADOUT_SUBCATEGORY_SUIT_JACKETS
+
+/datum/gear/suit/tunnelfox
+	name = "tunnel fox jacket"
+	path = /obj/item/clothing/suit/tunnelfox
+	subcategory = LOADOUT_SUBCATEGORY_SUIT_JACKETS
+
+/datum/gear/suit/tunnelfox_t
+	name = "opened tunnel fox jacket"
+	path = /obj/item/clothing/suit/tunnelfox_t
+	subcategory = LOADOUT_SUBCATEGORY_SUIT_JACKETS
