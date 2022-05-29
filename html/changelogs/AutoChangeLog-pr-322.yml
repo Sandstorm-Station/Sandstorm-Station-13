@@ -1,0 +1,30 @@
+author: BongaTheProto
+delete-after: true
+changes:
+  - rscadd: Radio Implants to Neural Programing
+  - rscadd: Problem computers to Data Theory Node
+  - rscadd: ERT MOPP outfits are now select-able
+  - rscadd: 9mm Pistol mags to Cargo ordering console
+  - rscadd: Names to all the .45 ammo casings
+  - rscadd: Make your sprite look smaller FOR YOURSELF if you're big
+  - rscadd: twist when crossing railings
+  - rscadd: a couple new outfits
+  - rscadd: adds headshots for the character creation
+  - rscadd: you can now peek under people's clothes
+  - code_imp: optimizes the milking machine code
+  - code_imp: Syncs the chatclient with tg
+  - code_imp: Optimizes some interaction code
+  - spellcheck: fixes some grammar errors in unholy interactions
+  - bugfix: makes curtains visible in the map editor
+  - bugfix: Fixes some bugs with crawling under tables apparently
+  - bugfix: Barkboxes are no longer contraband
+  - bugfix: centcom dresses now have a sprite when picked up
+  - bugfix: ERT Medic ID not working right, the icon was referenced improperly
+  - bugfix: MOPP suits not showing up in the Equipment Section of the SecTech Fab
+  - bugfix: All .45 ammo not showing up in the ammo section of the SecTech Fab. I
+      hate case sensitive.
+  - spellcheck: Fixed misspellings on the Gold Enforcer
+  - imageadd: Some outfits may display breasts/bulge depending on your genitals
+  - imageadd: More belly and ass sizes past their current limits
+  - tweak: Now micros (anyone with mob_size = 0) has smalltalk
+  - balance: New size health & penalties management
