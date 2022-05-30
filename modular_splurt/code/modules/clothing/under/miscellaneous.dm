@@ -222,8 +222,8 @@
 
 // GWTB-inspired stuff wooo
 /obj/item/clothing/under/goner
-	name = "\improper NML uniform"
-	desc = "An utilitarian uniform of rugged warfare. This one have mysterious purple-colored insignias."
+	name = "trencher uniform"
+	desc = "An utilitarian uniform of rugged warfare. This one have purple-colored, corporate insignias."
 	icon = 'modular_splurt/icons/obj/clothing/uniforms.dmi'
 	mob_overlay_icon = 'modular_splurt/icons/mob/clothing/uniform.dmi'
 	anthro_mob_worn_overlay = 'modular_splurt/icons/mob/clothing/uniform_digi.dmi'
@@ -232,12 +232,12 @@
 	armor = list(MELEE = 10, BULLET = 0, LASER = 0, ENERGY = 0, BOMB = 0, BIO = 5, RAD = 5, FIRE = 30, ACID = 30, WOUND = 10) // Security uniform's + BIO&RAD
 
 /obj/item/clothing/under/goner/fake
-	name = "\improper NML uniform replica"
+	name = "trencher uniform replica"
 	desc = "A 90% replica of No Man's Land-type uniform."
-	armor = list(MELEE = 0, BULLET = 0, LASER = 0, ENERGY = 0, BOMB = 0, BIO = 0, RAD = 0, FIRE = 0, ACID = 0, WOUND = 0)
+	armor = 0
 
 /obj/item/clothing/under/goner/fake/poly
-	name = "polychromic NML uniform"
+	name = "polychromic trencher uniform"
 	desc = "An utilitarian uniform with polychromatic spots."
 	var/list/poly_colors = list("#E6E6E6")
 
@@ -246,21 +246,21 @@
 	AddElement(/datum/element/polychromic, poly_colors, 1)
 
 /obj/item/clothing/under/goner/red
-	name = "red NML uniform"
+	name = "red trencher uniform"
 	desc = "An utilitarian uniform of rugged warfare, with red insignias."
 	icon_state = "goner_uniform_r"
 
 /obj/item/clothing/under/goner/green
-	name = "green NML uniform"
+	name = "green trencher uniform"
 	desc = "An utilitarian uniform of rugged warfare, with green insignias."
 	icon_state = "goner_uniform_g"
 
 /obj/item/clothing/under/goner/blue
-	name = "blue NML uniform"
+	name = "blue trencher uniform"
 	desc = "An utilitarian uniform of rugged warfare, with blue insignias."
 	icon_state = "goner_uniform_b"
 
 /obj/item/clothing/under/goner/yellow
-	name = "yellow NML uniform"
+	name = "yellow trencher uniform"
 	desc = "An utilitarian uniform of rugged warfare, with yellow insignias."
 	icon_state = "goner_uniform_y"

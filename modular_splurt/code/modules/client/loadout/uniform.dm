@@ -126,5 +126,5 @@
 
 // Polychrome GWTB
 /datum/gear/uniform/gonercloth
-	name = "No Man's Land polychromic uniform"
+	name = "polychromic trencher uniform"
 	path = /obj/item/clothing/under/goner/fake/poly

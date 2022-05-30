@@ -67,7 +67,7 @@
 
 // Polychrome GWTB
 /datum/gear/suit/gonersuit
-	name = "No Man's Land polychromic coat"
+	name = "polychromic trencher coat"
 	cost = 2
 	path = /obj/item/clothing/suit/goner/fake/poly
 

@@ -19,7 +19,7 @@
 
 // GWTB-inspired thing wooo
 /obj/item/clothing/mask/gas/goner
-	name = "\improper NML gas mask"
+	name = "trencher gas mask"
 	desc = "A No Man's Land-type gas mask. Equipment beloved by many mooks and romantically apocalyptic people. It has filter installed."
 	icon = 'modular_splurt/icons/obj/clothing/masks.dmi'
 	mob_overlay_icon = 'modular_splurt/icons/mob/clothing/mask.dmi'
@@ -29,6 +29,6 @@
 	armor = list("melee" = 10, "bullet" = 5, "laser" = 10, "energy" = 10, "bomb" = 10, "bio" = 100, "rad" = 100, "fire" = 40, "acid" = 100) // MOPP's
 
 /obj/item/clothing/mask/gas/goner/basic
-	name = "stripped NML gas mask"
+	name = "stripped trencher gas mask"
 	desc = "A stripped version of No Man's Land-type mask equipment. While you can connect it to air supply, it doesn't block gas flow."
-	armor = list("melee" = 0, "bullet" = 0, "laser" = 0, "energy" = 0, "bomb" = 0, "bio" = 0, "rad" = 0, "fire" = 0, "acid" = 0)
+	armor = 0

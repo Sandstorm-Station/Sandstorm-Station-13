@@ -30,11 +30,11 @@
 
 // Polychrome GWTB
 /datum/gear/head/gonerhelm
-	name = "No Man's Land polychromic helmet"
+	name = "polychromic trencher helmet"
 	cost = 2
 	path = /obj/item/clothing/head/helmet/goner/fake/poly
 
 /datum/gear/head/goneroffcap
-	name = "No Man's Land polychromic officer cap"
+	name = "polychromic trencher officer cap"
 	cost = 2
 	path = /obj/item/clothing/head/helmet/goner/officer/fake/poly

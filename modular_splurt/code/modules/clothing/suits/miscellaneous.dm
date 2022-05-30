@@ -113,8 +113,8 @@
 
 // GWTB-inspired stuff wooo
 /obj/item/clothing/suit/goner
-	name = "\improper NML coat"
-	desc = "A trenchcoat of the boring wars. This one have purple insignias."
+	name = "trencher coat"
+	desc = "A generic trenchcoat of the boring wars. This one have purple, corporate insignias."
 	icon = 'modular_splurt/icons/obj/clothing/suits.dmi'
 	mob_overlay_icon = 'modular_splurt/icons/mob/clothing/suit.dmi'
 	anthro_mob_worn_overlay = 'modular_splurt/icons/mob/clothing/suit_digi.dmi'
@@ -125,12 +125,12 @@
 	armor = list(MELEE = 25, BULLET = 10, LASER = 25, ENERGY = 10, BOMB = 5, BIO = 5, RAD = 5, FIRE = 5, ACID = 45) // Det's armor value + 5 BOMB&BIO&RAD&FIRE
 
 /obj/item/clothing/suit/goner/fake
-	name = "\improper NML coat replica"
+	name = "trencher coat replica"
 	desc = "A 90% replica of No Man's Land-type coat."
-	armor = list(MELEE = 0, BULLET = 0, LASER = 0, ENERGY = 0, BOMB = 0, BIO = 0, RAD = 0, FIRE = 0, ACID = 0)
+	armor = 0
 
 /obj/item/clothing/suit/goner/fake/poly
-	name = "polychromic NML coat"
+	name = "polychromic trencher coat"
 	desc = "A generic, grey trenchcoat with polychromatic spots."
 	var/list/poly_colors = list("#F2F2F2")
 
@@ -139,21 +139,21 @@
 	AddElement(/datum/element/polychromic, poly_colors, 1)
 
 /obj/item/clothing/suit/goner/red
-	name = "red NML coat"
+	name = "red trencher coat"
 	desc = "A trenchcoat of the boring wars. This one have red insignias."
 	icon_state = "goner_suit_r"
 
 /obj/item/clothing/suit/goner/green
-	name = "green NML coat"
+	name = "green trencher coat"
 	desc = "A trenchcoat of the boring wars. This one have green insignias."
 	icon_state = "goner_suit_g"
 
 /obj/item/clothing/suit/goner/blue
-	name = "blue NML coat"
+	name = "blue trencher coat"
 	desc = "A trenchcoat of the boring wars. This one have blue insignias."
 	icon_state = "goner_suit_b"
 
 /obj/item/clothing/suit/goner/yellow
-	name = "yellow NML coat"
+	name = "yellow trencher coat"
 	desc = "A trenchcoat of the boring wars. This one have yellow insignias."
 	icon_state = "goner_suit_y"
