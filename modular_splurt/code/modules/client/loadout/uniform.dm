@@ -128,3 +128,5 @@
 /datum/gear/uniform/gonercloth
 	name = "polychromic trencher uniform"
 	path = /obj/item/clothing/under/goner/fake/poly
+	loadout_flags = LOADOUT_CAN_NAME | LOADOUT_CAN_DESCRIPTION | LOADOUT_CAN_COLOR_POLYCHROMIC
+	loadout_initial_colors = list("#E6E6E6")
