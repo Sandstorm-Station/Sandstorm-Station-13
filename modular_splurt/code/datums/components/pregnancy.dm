@@ -147,13 +147,15 @@
 
 	var/can_birth = TRUE
 	if(ishuman(preggo))
-		var/mob/living/carbon/human/human_owner =preggo
+		var/mob/living/carbon/human/human_owner = preggo
 		var/obj/item/bodypart/chest = human_owner.get_bodypart(BODY_ZONE_CHEST)
 		if(LAZYLEN(human_owner.clothingonpart(chest)))
 			can_birth = FALSE
 	if(can_birth)
-		playsound(parent, 'sound/effects/splat.ogg', 70, TRUE)
+		playsound(preggo, 'sound/effects/splat.ogg', 70, TRUE)
 		to_chat(preggo, span_nicegreen("The baby came out!"))
+		preggo.Knockdown(200, TRUE, TRUE)
+		preggo.Stun(200, TRUE, TRUE)
 		var/mob/living/babby = new baby_type(get_turf(preggo))
 		if(ishuman(babby))
 			determine_baby_dna(babby)
@@ -161,11 +163,11 @@
 		qdel(src)
 
 /datum/component/pregnancy/proc/handle_ovi_preg()
+	var/mob/living/preggo = parent
 	if(stage < (max_stage / 2))
 		if(stage == 2 && prob(3))
-			to_chat(parent, span_notice("You feel something pressing lightly inside"))
+			to_chat(preggo, span_notice("You feel something pressing lightly inside"))
 		return
-	var/mob/living/preggo = parent
 	if(prob(50))
 		to_chat(preggo, span_warning("Something presses hard against your anus! It's probably your egg!"))
 		preggo.adjustStaminaLoss(30)
@@ -175,15 +177,17 @@
 		preggo.emote("scream")
 
 	var/can_oviposit = TRUE
-	if(ishuman(parent))
-		var/mob/living/carbon/human/human_owner =parent
+	if(ishuman(preggo))
+		var/mob/living/carbon/human/human_owner = preggo
 		var/obj/item/bodypart/chest = human_owner.get_bodypart(BODY_ZONE_CHEST)
 		if(LAZYLEN(human_owner.clothingonpart(chest)))
 			can_oviposit = FALSE
 	if(can_oviposit)
-		playsound(parent, 'sound/effects/splat.ogg', 70, TRUE)
+		playsound(preggo, 'sound/effects/splat.ogg', 70, TRUE)
+		preggo.Knockdown(200, TRUE, TRUE)
+		preggo.Stun(200, TRUE, TRUE)
 		new /obj/item/reagent_containers/food/snacks/egg/oviposition(get_turf(preggo), src)
-		to_chat(parent, span_nicegreen("The egg came out!"))
+		to_chat(preggo, span_nicegreen("The egg came out!"))
 		qdel(src)
 
 //not how genetics work but okay
