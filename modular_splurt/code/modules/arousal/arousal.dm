@@ -75,7 +75,7 @@
 			return
 	visible_message("<span class='love'>[src] twitches as [p_their()] [main_fluid] trickles into [container].</span>", \
 								"<span class='userlove'>[M] sucks out all the [main_fluid] you had been saving up into [container].</span>", \
-								"<span class='userlove'>You feel a vacuum sucking on your [G.name] as you climax</span>")
+								"<span class='userlove'>You feel a vacuum sucking on your [G.name] as you climax!</span>")
 	do_climax(fluid_source, container, G, FALSE, cover = TRUE)
 	emote("moan")
 

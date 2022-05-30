@@ -77,7 +77,7 @@
 	contains = list(/obj/item/gun/ballistic/automatic/pistol/enforcer,
 					/obj/item/gun/ballistic/automatic/pistol/enforcer,
 					/obj/item/gun/ballistic/automatic/pistol/enforcer)
-	crate_name = "enfocer pistol crate"
+	crate_name = "enforcer pistol crate"
 
 /datum/supply_pack/security/armory/cap_e45 // I am mad I even have to do this. -Radar Fuckers keep exploting this, moved it to the armory section
 	name = "Captain's Enforcer .45"

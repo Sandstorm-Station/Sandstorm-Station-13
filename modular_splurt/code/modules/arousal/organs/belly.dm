@@ -69,7 +69,7 @@
 			size_name = "sagging"
 		if(6)
 			size_name = "gigantic"
-		if(7)
+		if(7 to BELLY_SIZE_MAX)
 			size_name = pick("massive","unfathomably bulging","enormous","very generous","humongous","big bubbly")
 		else
 			size_name = "nonexistent"
@@ -98,13 +98,13 @@
 	prev_size = size
 	size_cached = size
 	original_fluid_id = fluid_id
-	fluid_max_volume += (size - initial(size))*2.5
-	fluid_rate += (size - initial(size))/10
+	fluid_max_volume += ((size - initial(size))*2.5)*(owner ? get_size(owner) : 1)
+	fluid_rate += ((size - initial(size))/10)*(owner ? get_size(owner) : 1)
 	toggle_visibility(D.features["belly_visibility"], FALSE)
 
 /obj/item/organ/genital/belly/climax_modify_size(mob/living/partner, obj/item/organ/genital/source_gen, cum_hole)
 	if(!(owner.client?.prefs.cit_toggles & BELLY_INFLATION))
-		if(owner.has_anus(REQUIRE_EXPOSED) && (cum_hole == CUM_TARGET_ANUS))
+		if(owner.has_anus(REQUIRE_EXPOSED) && (cum_hole == CUM_TARGET_ANUS) && (owner.client?.prefs.cit_toggles & BUTT_ENLARGEMENT))
 			var/obj/item/organ/genital/butt/ass = owner.getorganslot(ORGAN_SLOT_BUTT)
 			if(!ass)
 				ass = new
@@ -130,7 +130,7 @@
 		if(size > round(previous))
 			owner.visible_message("<span class='lewd'>\The <b>[owner]</b>'s belly bloats outwards as it gets pumped full of[pick(" sweet", "")] [lowertext(source_gen.get_fluid_name())]!</span>", ignored_mobs = owner.get_unconsenting())
 			fluid_id = source_gen.get_fluid_id()
-		if(growth_amount >= 3 || size >= 3)
+		if((growth_amount >= 3 || size >= 3) && (owner.client?.prefs.cit_toggles & BUTT_ENLARGEMENT))
 			var/obj/item/organ/genital/butt/ass = owner.getorganslot(ORGAN_SLOT_BUTT)
 			if(!ass)
 				ass = new

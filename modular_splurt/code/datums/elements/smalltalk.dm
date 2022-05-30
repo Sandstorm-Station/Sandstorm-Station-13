@@ -1,0 +1,17 @@
+//For small players and such
+/datum/element/smalltalk
+	element_flags = ELEMENT_DETACH
+
+/datum/element/smalltalk/Attach(datum/target, force = FALSE)
+	. = ..()
+	if(!(isliving(target) || (force && istype(target, /atom/movable))))
+		return ELEMENT_INCOMPATIBLE
+
+	RegisterSignal(target, COMSIG_MOB_SAY, .proc/handle_speech)
+
+/datum/element/smalltalk/Detach(datum/source, force)
+	. = ..()
+	UnregisterSignal(source, COMSIG_MOB_SAY)
+
+/datum/element/smalltalk/proc/handle_speech(datum/source, list/speech_args)
+	speech_args[SPEECH_SPANS] |= SPAN_SMALL

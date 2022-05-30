@@ -398,6 +398,11 @@ SLEEPER CODE IS IN game/objects/items/devices/dogborg_sleeper.dm !
 	inserted_item.name = "cyborg stomach"
 	inserted_item.desc = "A cyborg stomach. It seems integrated into [src]'s machinery."
 
+/obj/item/milking_machine/pleasuremaw/Destroy()
+	STOP_PROCESSING(SSobj, src) //please no
+	borg_self = null
+	. = ..()
+
 /obj/item/milking_machine/pleasuremaw/interact(mob/user)
 	//start processing the regents in the container - and slowly use em up to create power
 	toggle_process_regents = !toggle_process_regents
@@ -422,118 +427,127 @@ SLEEPER CODE IS IN game/objects/items/devices/dogborg_sleeper.dm !
 	//function for when alt-clicked -  do nothing for now - do not call parent
 	return
 
-/obj/item/milking_machine/pleasuremaw/afterattack(mob/living/carbon/C, mob/living/user, proximity)
+/obj/item/milking_machine/pleasuremaw/afterattack(atom/target, mob/living/silicon/robot/user, proximity)
 	//use pleasuremaw on designated body part in different ways depending on the intent
-	var/mob/living/silicon/robot/R = user
-	if(!proximity || !check_allowed_items(C))
+	if(!proximity || !check_allowed_items(target) || !istype(user))
 		return
-	else if(istype(C, /obj/item/reagent_containers/))
-		R.visible_message("<span class='warning'>You open your mouth and dispense the contents of your [src.name]'s storage into [C]</span>", \
-						"<span class='notice'>[R] opens [p_their()] [src.name] and dispenses something sticky into [C]</span>")
-		//TODO: check if internal beaker is too full - and if yes - spill rest onto floor
-		inserted_item.reagents.trans_to(C, inserted_item.reagents.total_volume)
-	else if(ishuman(C))
-		var/mob/living/carbon/human/H = C
-		//TODO: arms and legs?
-		if(check_zone(R.zone_selected) == BODY_ZONE_HEAD)
+
+	if(istype(target, /obj/item/reagent_containers))
+		if(inserted_item?.reagents?.total_volume <= 1) //oh noes my 0.62 units of extra luxurious semen
+			to_chat(user, span_info("Pleasure maw tank empty."))
+			return
+		user.visible_message(span_notice("You open your mouth and dispense the contents of your [src.name]'s storage into \the [target]."),
+			span_notice("[user] opens [p_their()] [src.name] and dispenses something sticky into \the [target]!")
+		)
+		inserted_item.reagents.trans_to(target, inserted_item.reagents.total_volume)
+		return
+	//TODO: check if internal beaker is too full - and if yes - spill rest onto floor
+
+	if(!ishuman(target))
+		return
+	var/mob/living/carbon/human/victim = target
+	target_organ = null
+
+	//TODO: arms and legs?
+	switch(user.zone_selected) //i can't make it pretty jeremy
+		if(BODY_ZONE_PRECISE_MOUTH)
 			//mouth
 			//TODO: on harm intent feed contents of cyborg stomach to person instead
 			//		make a check for if the mouth is covered
-			if (R.zone_selected == BODY_ZONE_PRECISE_MOUTH)
-				R.visible_message("<span class='warning'>[R] kisses [H]!</span>", \
-								"<span class='notice'>You kiss [H]!</span>")
+			user.visible_message(span_warning("[user] kisses [victim]!"),
+				span_notice("You kiss [victim]!")
+			)
+			playsound(src.loc, 'sound/effects/attackblob.ogg', 30, 1)
+			victim.add_lust(10)
+
+		if(BODY_ZONE_HEAD, BODY_ZONE_PRECISE_EYES) //It's still funny how he thought hypercode was from sand lol
+			user.visible_message(span_warning("[user] licks [victim]'s ears!"),
+				span_notice("You lick [victim]'s ears!")
+			)
+			playsound(src.loc, 'sound/effects/attackblob.ogg', 30, 1)
+			victim.add_lust(5)
+		if(BODY_ZONE_CHEST)
+			var/obj/item/organ/genital/breasts/breasts = victim.getorganslot(ORGAN_SLOT_BREASTS)
+			if(breasts?.is_exposed())
+				user.visible_message(span_warning("[user] sucks on [victim]'s [breasts.name]]!"),
+					span_notice("You suck on [victim]'s [breasts.name]]!")
+				)
 				playsound(src.loc, 'sound/effects/attackblob.ogg', 30, 1)
-				H.add_lust(10)
-			//ears
-			else if (R.zone_selected == BODY_ZONE_HEAD)
-				//make check for ear visibility? nah.
-				R.visible_message("<span class='warning'>[R] licks [H]'s ears!</span>", \
-								"<span class='notice'>You lick [H]'s ears!</span>")
-				playsound(src.loc, 'sound/effects/attackblob.ogg', 30, 1)
-				H.add_lust(5)
-		else if(check_zone(R.zone_selected) == BODY_ZONE_CHEST)
-			//breasts
-			if (R.zone_selected == BODY_ZONE_CHEST)
-				var/obj/item/organ/genital/breasts/G = H.getorganslot("breasts")
-				target_organ = G.name
-				if (G && G.is_exposed())
-					R.visible_message("<span class='warning'>[R] sucks on [H]'s [G.name]!</span>", \
-									"<span class='notice'>You suck on [H]'s [G.name]!</span>")
-					playsound(src.loc, 'sound/effects/attackblob.ogg', 30, 1)
-					H.add_lust(10)
-					..()
-				else
-					to_chat(R, "<span class='info'>Lickable breasts not found!</span>")
+				victim.add_lust(10)
+				return ..() //this is giving me chain aneurisms but i don't have the patience to fix this
+			else
+				to_chat(user, span_info("Lickable breasts not found!"))
+		if(BODY_ZONE_PRECISE_GROIN)
 			//penis,testies,vag,ass
 			//TODO: add only the parts that the target actually has to the radial menu
 			//		add color to images and make them correspond with the type that the target user has
 			//		make it so that if a covered up part is chosen - it licks the outside (the clothes). (apply this to the mouth interaction)
-			else if (R.zone_selected == BODY_ZONE_PRECISE_GROIN)
-				var/static/list/possible_choices = sortList(list(
-					"Penis" = image(icon = 'icons/obj/genitals/penis.dmi', icon_state = "penis"),
-					"Testicles" = image(icon= 'icons/obj/genitals/testicles.dmi', icon_state = "testicles"),
-					"Vagina" = image(icon= 'icons/obj/genitals/vagina.dmi', icon_state = "vagina"),
-					"Butt" = image(icon= 'icons/obj/genitals/breasts.dmi', icon_state = "butt"),
-					"Belly" = image(icon= 'modular_splurt/icons/obj/genitals/belly_onmob.dmi', icon_state = "belly_pair_4_0_FRONT")
-				))
-				var/choice = show_radial_menu(R, src, possible_choices)
-				if(!choice)
-					return
-				switch(choice)
-					if("Penis")
-						var/obj/item/organ/genital/penis/G = H.getorganslot(ORGAN_SLOT_PENIS)
-						target_organ = G.name
-						if (G && G.is_exposed())
-							R.visible_message("<span class='warning'>[R] blows [H]'s [G.name]!</span>", \
-											"<span class='notice'>You blow [H]'s [G.name]!</span>")
-							playsound(src.loc, 'sound/effects/attackblob.ogg', 30, 1)
-							H.add_lust(10)
-							..()
-						else
-							to_chat(R, "<span class='info'>Lickable penis not found!</span>")
-					if("Testicles")
-						var/obj/item/organ/genital/testicles/G = H.getorganslot(ORGAN_SLOT_TESTICLES)
-						target_organ = G.name
-						if (G && G.is_exposed())
-							R.visible_message("<span class='warning'>[R] laps [H]'s [G.name]!</span>", \
-											"<span class='notice'>You lap [H]'s [G.name]!</span>")
-							playsound(src.loc, 'sound/effects/attackblob.ogg', 30, 1)
-							H.add_lust(10)
-							..()
-						else
-							to_chat(R, "<span class='info'>Lickable testicles not found!</span>")
-					if("Vagina")
-						var/obj/item/organ/genital/vagina/G = H.getorganslot(ORGAN_SLOT_VAGINA)
-						target_organ = G.name
-						if (G && G.is_exposed())
-							R.visible_message("<span class='warning'>[R] tongue fucks [H]'s [G.name]!</span>", \
-											"<span class='notice'>You tongue fuck [H]'s [G.name]!</span>")
-							playsound(src.loc, 'sound/effects/attackblob.ogg', 30, 1)
-							H.add_lust(10)
-							..()
-						else
-							to_chat(R, "<span class='info'>Lickable pussy not found!</span>")
-					if("Butt")
-						var/obj/item/organ/genital/butt/G = H.getorganslot(ORGAN_SLOT_BUTT)
-						target_organ = G.name
-						if (G && G.is_exposed())
-							R.visible_message("<span class='warning'>[R]'s giving [H] a rimjob!</span>", \
-											"<span class='notice'>You rim [H]'s [G.name]!</span>")
-							playsound(src.loc, 'sound/effects/attackblob.ogg', 30, 1)
-							H.add_lust(15)
-						else
-							to_chat(R, "<span class='info'>Lickable ass not found!</span>")
-					if("Belly")
-						var/obj/item/organ/genital/belly/G = H.getorganslot(ORGAN_SLOT_BELLY)
-						target_organ = G.name
-						if (G && G.is_exposed())
-							R.visible_message("<span class='warning'>[R]'s lapping [H]'s [G.name]!</span>", \
-											"<span class='notice'>You lick [H]'s [G.name]!</span>")
-							playsound(src, 'sound/effects/attackblob.ogg', 30, 1)
-							H.add_lust(5)
-						else
-							to_chat(R, "<span class='info'>Lickable belly not found!</span>")
-
+			var/static/list/possible_choices = sortList(list(
+				"Penis" = image(icon = 'icons/obj/genitals/penis.dmi', icon_state = "penis"),
+				"Testicles" = image(icon= 'icons/obj/genitals/testicles.dmi', icon_state = "testicles"),
+				"Vagina" = image(icon= 'icons/obj/genitals/vagina.dmi', icon_state = "vagina"),
+				"Butt" = image(icon= 'icons/obj/genitals/breasts.dmi', icon_state = "butt"),
+				"Belly" = image(icon= 'modular_splurt/icons/obj/genitals/belly_onmob.dmi', icon_state = "belly_pair_4_0_FRONT")
+			))
+			var/choice = show_radial_menu(user, src, possible_choices)
+			if(!choice)
+				return
+			switch(choice)
+				if("Penis")
+					var/obj/item/organ/genital/penis/penis = victim.getorganslot(ORGAN_SLOT_PENIS)
+					if(penis?.is_exposed())
+						target_organ = ORGAN_SLOT_PENIS
+						user.visible_message(span_warning("[user] blows [victim]'s [penis.name]!"),
+							span_notice("You blow [victim]'s [penis.name]!")
+						)
+						playsound(src.loc, 'sound/effects/attackblob.ogg', 30, 1)
+						victim.add_lust(10)
+						return ..()
+					else
+						to_chat(user, span_info("Lickable penis not found!"))
+				if("Testicles")
+					var/obj/item/organ/genital/testicles/testicles = victim.getorganslot(ORGAN_SLOT_TESTICLES)
+					if(testicles?.is_exposed())
+						user.visible_message(span_warning("[user] laps [victim]'s [testicles.name]!"),
+							span_notice("You lap [victim]'s [testicles.name]!")
+						)
+						playsound(src.loc, 'sound/effects/attackblob.ogg', 30, 1)
+						victim.add_lust(10)
+						return ..()
+					else
+						to_chat(user, span_info("Lickable testicles not found!"))
+				if("Vagina")
+					var/obj/item/organ/genital/vagina/vagina = victim.getorganslot(ORGAN_SLOT_VAGINA)
+					if(vagina?.is_exposed())
+						target_organ = ORGAN_SLOT_VAGINA
+						user.visible_message(span_warning("[user] tongue fucks [victim]'s [vagina.name]!"),
+							span_notice("You tongue fuck [victim]'s [vagina.name]!")
+						)
+						playsound(src.loc, 'sound/effects/attackblob.ogg', 30, 1)
+						victim.add_lust(10)
+						return ..()
+					else
+						to_chat(user, span_info("Lickable pussy not found!"))
+				if("Butt")
+					var/obj/item/organ/genital/butt/butt = victim.getorganslot(ORGAN_SLOT_BUTT)
+					if(butt?.is_exposed())
+						user.visible_message(span_warning("[user]'s giving [victim] a rimjob!"),
+							span_notice("You rim [victim]'s [butt.name]!")
+						)
+						playsound(src.loc, 'sound/effects/attackblob.ogg', 30, 1)
+						victim.add_lust(15)
+					else
+						to_chat(user, span_info("Lickable ass not found!"))
+				if("Belly")
+					var/obj/item/organ/genital/belly/belly = victim.getorganslot(ORGAN_SLOT_BELLY)
+					if(belly?.is_exposed())
+						user.visible_message(span_notice("[user]'s lapping [victim]'s [belly.name]!"),
+							span_notice("You lick [victim]'s [belly.name]!")
+						)
+						playsound(src, 'sound/effects/attackblob.ogg', 30, 1)
+						victim.add_lust(5)
+					else
+						to_chat(user, span_info("Lickable belly not found!"))
 		//TODO:	make check for if is in harm intent - if yes (spit regents from cyborg stomach) at target
 		//		if is nearby
 		// 			if target has a mouth and target_bodypart is mouth
@@ -544,4 +558,3 @@ SLEEPER CODE IS IN game/objects/items/devices/dogborg_sleeper.dm !
 		// 			if target has a mouth and target_bodypart is mouth
 		// 				feed 10u of the regents to target
 		// 			splash target with remaining regents
-	return

@@ -55,7 +55,7 @@
 
 /obj/item/gun/ballistic/automatic/pistol/enforcergold
 	name = "\improper Gold Mk. 58 Enforcer (.45)"
-	desc = "A titianium gold plated Enfocer. A vulger display of power. A show of force in a public execution."
+	desc = "A titianium gold plated Enforcer. A vulger display of power. A show of force in a public execution."
 	icon = 'modular_splurt/icons/obj/guns/projectile.dmi'
 	icon_state = "enforcer_gold"
 	w_class = WEIGHT_CLASS_NORMAL

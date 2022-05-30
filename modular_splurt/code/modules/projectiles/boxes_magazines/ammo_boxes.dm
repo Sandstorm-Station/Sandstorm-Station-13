@@ -91,7 +91,7 @@ obj/item/ammo_box/c45/trac
 	build_type = PROTOLATHE
 	materials = list(/datum/material/iron = 2000)
 	build_path = /obj/item/ammo_box/c45
-	category = list("ammo")
+	category = list("Ammo")
 	departmental_flags = DEPARTMENTAL_FLAG_SECURITY
 
 /datum/design/c45/c45leath
@@ -101,7 +101,7 @@ obj/item/ammo_box/c45/trac
 	build_type = PROTOLATHE
 	materials = list(/datum/material/iron = 2000)
 	build_path = /obj/item/ammo_box/c45/lethal
-	category = list("ammo")
+	category = list("Ammo")
 	departmental_flags = DEPARTMENTAL_FLAG_SECURITY
 
 /datum/design/c45/c45t
@@ -111,7 +111,7 @@ obj/item/ammo_box/c45/trac
 	build_type = PROTOLATHE
 	materials = list(/datum/material/iron = 2000)
 	build_path = /obj/item/ammo_box/c45/taser
-	category = list("ammo")
+	category = list("Ammo")
 	departmental_flags = DEPARTMENTAL_FLAG_SECURITY
 
 /datum/design/c45/c45hydra
@@ -121,7 +121,7 @@ obj/item/ammo_box/c45/trac
 	build_type = PROTOLATHE
 	materials = list(/datum/material/iron = 2000)
 	build_path = /obj/item/ammo_box/c45/hydra
-	category = list("ammo")
+	category = list("Ammo")
 	departmental_flags = DEPARTMENTAL_FLAG_SECURITY
 
 /datum/design/c45/c45hot
@@ -131,7 +131,7 @@ obj/item/ammo_box/c45/trac
 	build_type = PROTOLATHE
 	materials = list(/datum/material/iron = 2000)
 	build_path = /obj/item/ammo_box/c45/hotshot
-	category = list("ammo")
+	category = list("Ammo")
 	departmental_flags = DEPARTMENTAL_FLAG_SECURITY
 
 /datum/design/c45/c45trac
@@ -141,7 +141,7 @@ obj/item/ammo_box/c45/trac
 	build_type = PROTOLATHE
 	materials = list(/datum/material/iron = 2000)
 	build_path = /obj/item/ammo_box/c45/trac
-	category = list("ammo")
+	category = list("Ammo")
 	departmental_flags = DEPARTMENTAL_FLAG_SECURITY
 
 /datum/design/c45/c45stun
@@ -151,7 +151,7 @@ obj/item/ammo_box/c45/trac
 	build_type = PROTOLATHE
 	materials = list(/datum/material/iron = 2000, /datum/material/uranium = 150)
 	build_path = /obj/item/ammo_box/c45/trac
-	category = list("ammo")
+	category = list("Ammo")
 	departmental_flags = DEPARTMENTAL_FLAG_SECURITY
 
 /datum/design/c45/c45las
@@ -161,7 +161,7 @@ obj/item/ammo_box/c45/trac
 	build_type = PROTOLATHE
 	materials = list(/datum/material/iron = 2000, /datum/material/uranium = 150)
 	build_path = /obj/item/ammo_box/c45/laser
-	category = list("ammo")
+	category = list("Ammo")
 	departmental_flags = DEPARTMENTAL_FLAG_SECURITY
 
 /datum/design/c45/c45ion
@@ -171,7 +171,7 @@ obj/item/ammo_box/c45/trac
 	build_type = PROTOLATHE
 	materials = list(/datum/material/iron = 2000, /datum/material/uranium = 150)
 	build_path = /obj/item/ammo_box/c45/ion
-	category = list("ammo")
+	category = list("Ammo")
 	departmental_flags = DEPARTMENTAL_FLAG_SECURITY
 
 /datum/techweb_node/c45ammo

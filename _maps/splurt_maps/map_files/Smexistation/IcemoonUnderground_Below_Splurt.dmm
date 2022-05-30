@@ -119,12 +119,6 @@
 /obj/structure/closet/emcloset,
 /turf/open/floor/plasteel,
 /area/mine/eva)
-"ko" = (
-/obj/structure/railing{
-	dir = 6
-	},
-/turf/open/floor/plating,
-/area/command/bridge)
 "lP" = (
 /turf/closed/mineral/random/snow/underground,
 /area/icemoon/underground/explored)
@@ -138,8 +132,7 @@
 /area/icemoon/underground/explored)
 "nA" = (
 /obj/machinery/atmospherics/components/unary/outlet_injector/on/layer3{
-	dir = 1;
-	piping_layer = 3
+	dir = 1
 	},
 /turf/open/floor/plating/snowed/smoothed/icemoon,
 /area/command/bridge)
@@ -246,10 +239,12 @@
 /area/mine/eva)
 "sy" = (
 /obj/structure/ladder,
-/obj/structure/railing/corner,
 /obj/machinery/atmospherics/pipe/simple/scrubbers/hidden/layer3,
 /obj/machinery/atmospherics/pipe/simple/supply/hidden/layer1{
 	dir = 9
+	},
+/obj/structure/railing{
+	dir = 8
 	},
 /turf/open/floor/plating,
 /area/command/bridge)
@@ -313,11 +308,11 @@
 /turf/open/floor/plasteel,
 /area/mine/eva)
 "za" = (
-/obj/structure/railing{
-	dir = 4
-	},
 /obj/machinery/atmospherics/pipe/simple/scrubbers/hidden/layer3{
 	dir = 9
+	},
+/obj/structure/railing{
+	dir = 8
 	},
 /turf/open/floor/plating,
 /area/command/bridge)
@@ -33889,7 +33884,7 @@ Es
 Es
 AX
 AX
-iS
+wi
 Zo
 XA
 AX
@@ -34403,8 +34398,8 @@ Es
 Es
 AX
 Du
-wi
-ko
+iS
+iS
 pd
 bG
 oz

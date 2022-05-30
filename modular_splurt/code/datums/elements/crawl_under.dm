@@ -48,13 +48,18 @@
 /datum/element/crawl_under/proc/do_crawl(obj/structure/source, mob/living/user)
 	if(QDELETED(source) || QDELETED(user)) //sanity
 		return
-
 	to_chat(user, span_notice("You start crawling under [source].."))
 	if(!do_after(user, 20, FALSE, source) || (user.mobility_flags & MOBILITY_STAND || user.incapacitated(TRUE, FALSE, TRUE)))
 		to_chat(user, span_warning("You fail to crawl under [source]!"))
 		return
 
+	user.pass_flags |= PASSCRAWL
 	ADD_TRAIT(user, IGNORE_FAKE_Z_AXIS, ELEMENT_CRAWL_UNDER)
+	step(user, get_dir(user, source))
+	if(!(source in user.loc))
+		REMOVE_TRAIT(user, IGNORE_FAKE_Z_AXIS, ELEMENT_CRAWL_UNDER)
+		user.pass_flags &= ~PASSCRAWL
+		return
 	ADD_TRAIT(user, TRAIT_FLOORED, ELEMENT_CRAWL_UNDER)
 	user.layer = source.layer - 0.01 //just a lil under it
 	user.pass_flags |= PASSCRAWL
