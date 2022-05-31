@@ -65,6 +65,14 @@
 	path = /obj/item/clothing/suit/toggle/rp_jacket/white
 	subcategory = LOADOUT_SUBCATEGORY_SUIT_JACKETS
 
+// Polychrome GWTB
+/datum/gear/suit/gonersuit
+	name = "polychromic trencher coat"
+	cost = 2
+	path = /obj/item/clothing/suit/goner/fake/poly
+	loadout_flags = LOADOUT_CAN_NAME | LOADOUT_CAN_DESCRIPTION | LOADOUT_CAN_COLOR_POLYCHROMIC
+	loadout_initial_colors = list("#F2F2F2")
+
 /datum/gear/suit/tunnelfox
 	name = "tunnel fox jacket"
 	path = /obj/item/clothing/suit/tunnelfox

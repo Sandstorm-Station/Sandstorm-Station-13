@@ -286,7 +286,7 @@
 	put_in.implant(quirk_holder, null, TRUE, TRUE)
 
 /datum/quirk/masked_mook
-	name = "Gas Mask Mook Syndrome"
+	name = "Bane Syndrome"
 	desc = "For some reason you don't feel well without wearing some kind of gas mask."
 	gain_text = "<span class='danger'>You start feeling unwell without any gas mask on.</span>"
 	lose_text = "<span class='notice'>You no longer have a need to wear some gas mask.</span>"
