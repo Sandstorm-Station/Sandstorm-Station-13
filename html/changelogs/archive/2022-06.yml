@@ -8,6 +8,12 @@
   - bugfix: 'Mechs with different base movement power cost now actually have it apply
       instead of immediately being overwritten. tweak: Adjusted part impact on movement
       power use to make more sense.'
+  Putnam3145:
+  - balance: Nitryl is higher risk, can't be sold for as much
+  - refactor: Gas prices are now part of the gas data structure
+  TrojanCoyote:
+  - rscadd: sprites for muzzled and non muzzled mobs for the masks, along with the
+      adjusted versions, icons for the masks as well.
   timothyteakettle:
   - rscadd: 'optimises quirks somewhat tweak: nyctophobia will now stop run intent
       when you try to move in darkness with it on, compared to the old behaviour of
