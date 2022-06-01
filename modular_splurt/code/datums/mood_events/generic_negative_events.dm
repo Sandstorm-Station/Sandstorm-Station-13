@@ -12,6 +12,6 @@
 	var/mob/living/carbon/human/H = owner
 
 	if(iscatperson(H))
-		description = span_warning("<b>CHEESE, WAAAAAAAAAAAAAAAAAAAAAAAAAAAA!!!</b>")
+		description = span_warning("<b>CHEESE!!! WAAAAAAAAAAAAAAAAAAAAAAAAAAAA!!!</b>")
 		mood_change = -5
 		timeout = 5 MINUTES
