@@ -7,6 +7,13 @@
 	. = ..()
 	set_antag_target_indicator()
 
+/mob/living/carbon/human/wash_cream()
+	. = ..()
+	if(cheesed)
+		cut_overlay(mutable_appearance('modular_splurt/icons/effects/cheesed.dmi', "cheesed_snout"))
+		cut_overlay(mutable_appearance('modular_splurt/icons/effects/cheesed.dmi', "cheesed_human"))
+		cheesed = FALSE
+
 /mob/living/carbon/human/ComponentInitialize()
 	. = ..()
 	AddElement(/datum/element/flavor_text/carbon, _name = "Headshot", _save_key = "headshot_link", _examine_no_preview = TRUE, _edit = FALSE)
