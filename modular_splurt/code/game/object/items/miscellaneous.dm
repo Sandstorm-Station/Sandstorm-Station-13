@@ -150,3 +150,38 @@
 	name = "rose bouquet"
 	desc = "A bouquet of roses. A bundle of love."
 	icon_state = "rosebouquet"
+
+/obj/item/clothing/accessory/badge
+	name = "Security badge"
+	desc = "A badge showing the wearer is a member of Security."
+	icon = 'modular_splurt/icons/obj/badge.dmi'
+	icon_state = "security_badge"
+	mob_overlay_icon = 'icons/mob/clothing/accessories.dmi'
+	item_state = "lawerbadge"
+	w_class = WEIGHT_CLASS_TINY
+	resistance_flags = FIRE_PROOF
+	var/owner = null	//To prevent people from just renaming the thing if they steal it
+	var/ownjob = null
+
+/obj/item/clothing/accessory/badge/proc/update_label()
+	name = "Badge-[owner] ([ownjob])"
+
+/obj/item/clothing/accessory/badge/attackby(obj/item/C, mob/user)
+	if(istype(C, /obj/item/card/id))
+		var/obj/item/card/id/idcard = C
+		if(!idcard.registered_name)
+			to_chat(user, "<span class='warning'>\The [src] rejects the ID!</span>")
+			return
+
+		if(!owner)
+			owner = idcard.registered_name
+			ownjob = idcard.assignment
+			update_label()
+			to_chat(user, "<span class='notice'>Badge updated.</span>")
+
+
+/obj/item/clothing/accessory/badge/attack_self(mob/user)
+	if(Adjacent(user))
+		user.visible_message("<span class='notice'>[user] shows you: [icon2html(src, viewers(user))] [src.name].</span>", \
+					"<span class='notice'>You show \the [src.name].</span>")
+		add_fingerprint(user)
