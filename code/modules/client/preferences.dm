@@ -3305,8 +3305,7 @@ GLOBAL_LIST_EMPTY(preferences_datums)
 	//reset size if applicable
 	if(character.dna.features["body_size"])
 		var/initial_old_size = character.dna.features["body_size"]
-		character.dna.features["body_size"] = RESIZE_DEFAULT_SIZE
-		character.dna.update_body_size(initial_old_size)
+		character.update_size(RESIZE_DEFAULT_SIZE, initial_old_size)
 
 	character.real_name = nameless ? "[real_name] #[rand(10000, 99999)]" : real_name
 	character.name = character.real_name
@@ -3386,7 +3385,7 @@ GLOBAL_LIST_EMPTY(preferences_datums)
 
 	character.give_genitals(TRUE) //character.update_genitals() is already called on genital.update_appearance()
 
-	character.dna.update_body_size(old_size)
+	character.update_size(get_size(src), old_size)
 
 	//speech stuff
 	if(custom_tongue != "default")
