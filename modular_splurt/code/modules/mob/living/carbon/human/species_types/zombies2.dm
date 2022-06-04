@@ -18,7 +18,6 @@
 	disliked_food = NONE
 	blacklisted = 1
 	say_mod = "moans"
-	mutant_organs = list(/obj/item/organ/undead_infection/mammal)
 	brutemod = 1.2	//Get hurts more than average. doesn't fall down as easily, though.
 	burnmod = 1.2	//Essentially 1-2 more hits from weapons before hard-crit, compared to soft-critting
 
@@ -31,6 +30,15 @@
 
 	species_category = SPECIES_CATEGORY_UNDEAD
 
+/datum/species/mammal/undead/on_species_gain(mob/living/carbon/C, datum/species/old_species)
+	. = ..()
+
+	var/obj/item/organ/undead_infection/mammal/M
+	M = C.getorganslot(ORGAN_SLOT_ZOMBIE)
+	if(!M)
+		M = new()
+		M.Insert(C)
+
 /datum/species/insect/undead
 	id = SPECIES_UINSECT
 	name = "Undead Insect"
@@ -41,7 +49,7 @@
 	disliked_food = NONE
 	blacklisted = 1
 	say_mod = "moans"
-	mutant_organs = list(/obj/item/organ/undead_infection/insect)
+
 	species_traits = list(NOZOMBIE,NOTRANSSTING,MUTCOLORS,EYECOLOR,LIPS,HAIR,HORNCOLOR,WINGCOLOR,CAN_SCAR,HAS_FLESH,HAS_BONE)
 	inherent_traits = list(TRAIT_AUXILIARY_LUNGS,TRAIT_RESISTCOLD,TRAIT_RESISTLOWPRESSURE,TRAIT_RADIMMUNE,TRAIT_EASYDISMEMBER,TRAIT_LIMBATTACHMENT,TRAIT_NODEATH,TRAIT_FAKEDEATH)
 	inherent_biotypes = MOB_UNDEAD|MOB_HUMANOID|MOB_BUG
@@ -50,6 +58,15 @@
 	mutanttongue = /obj/item/organ/tongue/zombie
 
 	species_category = SPECIES_CATEGORY_UNDEAD
+
+/datum/species/mammal/undead/on_species_gain(mob/living/carbon/C, datum/species/old_species)
+	. = ..()
+
+	var/obj/item/organ/undead_infection/insect/M
+	M = C.getorganslot(ORGAN_SLOT_ZOMBIE)
+	if(!M)
+		M = new()
+		M.Insert(C)
 
 /datum/species/lizard/undead
 	id = SPECIES_GLIZZY
@@ -60,7 +77,7 @@
 	liked_food = GROSS | MEAT | RAW
 	blacklisted = 1
 	say_mod = "moans"
-	mutant_organs = list(/obj/item/organ/undead_infection/lizard)
+
 	burnmod = 0.5 //They are fire retardant... Glizzy popsicles can't survive in cold or space, though.
 
 	species_traits = list(NOZOMBIE,NOTRANSSTING,MUTCOLORS,EYECOLOR,LIPS,HAIR,HORNCOLOR,WINGCOLOR,CAN_SCAR,HAS_FLESH,HAS_BONE)
@@ -70,6 +87,15 @@
 	mutanttongue = /obj/item/organ/tongue/zombie
 
 	species_category = SPECIES_CATEGORY_UNDEAD
+
+/datum/species/mammal/undead/on_species_gain(mob/living/carbon/C, datum/species/old_species)
+	. = ..()
+
+	var/obj/item/organ/undead_infection/lizard/M
+	M = C.getorganslot(ORGAN_SLOT_ZOMBIE)
+	if(!M)
+		M = new()
+		M.Insert(C)
 
 
 /obj/item/organ/eyes/decayed
@@ -105,7 +131,7 @@
 	GLOB.zombie_infection_list -= src
 	. = ..()
 
-/obj/item/organ/undead_infection/Insert(var/mob/living/carbon/M, special = 0, drop_if_replaced = FALSE)
+/obj/item/organ/undead_infection/Insert(var/mob/living/carbon/M, special = 0, drop_if_replaced = TRUE)
 	. = ..()
 	START_PROCESSING(SSobj, src)
 
@@ -138,19 +164,19 @@
 		return
 	if(owner.suiciding)
 		return
-	if(owner.stat != DEAD && !converts_living)
+	if(owner.stat != DEAD && !converts_living || !(HAS_TRAIT(owner, TRAIT_FAKEDEATH)) && !(HAS_TRAIT(owner, TRAIT_DEATHCOMA)))
 		return
 	if(!owner.getorgan(/obj/item/organ/brain))
 		return
 	if(!iszombie(owner))
-		to_chat(owner, "<span class='cultlarge'>You can feel your heart stopping, but something isn't right... \
-		life has not abandoned your broken form. You can only feel a deep and immutable hunger that \
-		not even death can stop, you will rise again!</span>")
+		REMOVE_TRAIT(owner, TRAIT_NODEATH, DISEASE_TRAIT)
+		to_chat(owner, "<span class='cult'>Something isn't right. Your heart has stopped...  \
+		People like you don't deserve to live.</span>")
 		var/revive_time = rand(revive_time_min, revive_time_max)
 		var/flags = TIMER_STOPPABLE
 		timer_id = addtimer(CALLBACK(src, .proc/zombify), revive_time, flags)
 
-/obj/item/organ/undead_infection/proc/zombify()
+/obj/item/organ/undead_infection/proc/zombify(mob/living/M, mob/living/carbon/user)
 	timer_id = null
 
 	if(!converts_living && owner.stat != DEAD)
@@ -165,21 +191,27 @@
 		else if(old_species == /datum/species/lizard)
 			owner.set_species(/datum/species/lizard/undead)
 		else
-			owner.set_species(/datum/species/zombie/infectious)
+			owner.set_species(/datum/species/zombie)
+
+	var/stand_up = (owner.stat == DEAD) || (owner.stat == UNCONSCIOUS)
 
 	//Fully heal the zombie's damage the first time they rise
 	owner.setToxLoss(0, 0)
 	owner.setOxyLoss(0, 0)
 	owner.heal_overall_damage(INFINITY, INFINITY, INFINITY, FALSE, FALSE, TRUE)
+	REMOVE_TRAIT(owner, TRAIT_DEATHCOMA, "disease")
 
 	if(!owner.revive())
 		return
 
 	owner.grab_ghost()
-	owner.visible_message("<span class='danger'>[owner] suddenly convulses, as [owner.p_they()] squirm back awake and gain a ravenous hunger in [owner.p_their()] eyes!</span>", "<span class='alien'>You HUNGER!</span>")
+	owner.visible_message("<span class='danger'>[owner] suddenly convulses, as [owner.p_they()][stand_up ? " stagger to [owner.p_their()] feet and" : ""] gain a ravenous hunger in [owner.p_their()] eyes!</span>", "<span class='cultlarge'>* But it refused</span>")
 	playsound(owner.loc, 'sound/hallucinations/far_noise.ogg', 50, 1)
 	owner.do_jitter_animation(living_transformation_time)
 	owner.Stun(living_transformation_time)
+//	to_chat(owner, "<span class='alertalien'>You are now a zombie! You claw and bite, turning your fellow crewmembers into friends that help spread the plague.</span>")
+//	to_chat(owner, "<span class='alertwarning'>You are a zombie. Please act like one. Letting the crew remove the tumor inside your brain is a dick move to whoever infected you. Please do not do it.</span>")
+
 
 /obj/item/organ/undead_infection/mammal
 	old_species = /datum/species/mammal
@@ -189,3 +221,64 @@
 
 /obj/item/organ/undead_infection/lizard
 	old_species = /datum/species/lizard
+
+/datum/reagent/draughtofundeath
+	name = "Draught of Living Death"
+	description = "Smells of asphodels and wormwood."
+	color = "#89c955" //RGB: 94, 255, 59
+	metabolization_rate = INFINITY
+	taste_description = "bitter regret"
+	value = REAGENT_VALUE_GLORIOUS
+
+/datum/reagent/draughtofundeath/on_mob_life(mob/living/carbon/human/H, mob/living/carbon/C, datum/species/old_species)
+	..()
+	addtimer(CALLBACK(H, /mob/living/carbon/human/proc/undeath, "undeath"), 60 SECONDS)
+	if(!istype(H))
+		return
+	var/datum/disease/D = new /datum/disease/heart_failure/livingdeath
+	H.ForceContractDisease(D)
+
+	CHECK_DNA_AND_SPECIES(H)
+
+	if(NOZOMBIE in H.dna.species.species_traits)
+		return
+
+	var/obj/item/organ/undead_infection/infection
+	infection = H.getorganslot(ORGAN_SLOT_ZOMBIE)
+	if(!infection)
+		infection = new()
+		infection.Insert(H)
+
+	to_chat(H, "<span class='cult'>mors tua, vita mea.</span>")
+	H.playsound_local(H, 'sound/effects/singlebeat.ogg', 100, 0)
+	return
+
+/mob/living/carbon/human/proc/undeath(mob/living/M)
+	if(stat == DEAD)
+		return
+	else
+		emote("deathgasp")
+		tod = STATION_TIME_TIMESTAMP("hh:mm:ss", world.time)
+	fakedeath(DISEASE_TRAIT, TRUE)
+	update_stat()
+
+/datum/disease/heart_failure/livingdeath
+	visibility_flags = HIDDEN_PANDEMIC
+	disease_flags = CAN_CARRY
+	spread_flags = DISEASE_SPREAD_NON_CONTAGIOUS
+
+	form = "Anomaly"
+	name = "Immortal Ambition"
+	desc = "A newly freed soul desperately clinging onto any source of life..."
+	cure_text = "404 file not found"
+
+	stage_prob = 10
+	severity = DISEASE_SEVERITY_BIOHAZARD
+	process_dead = TRUE
+
+/obj/item/reagent_containers/pill/planz
+	name = "Plan Z"
+	desc = "All out of options, are we?"
+	icon_state = "pill5"
+	color = "#830000"
+	list_reagents = list(/datum/reagent/draughtofundeath = 1)
