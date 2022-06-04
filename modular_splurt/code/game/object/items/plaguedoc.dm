@@ -3,6 +3,7 @@
 	desc = "An authentic, modernised version of the classic design, with red lenses. This mask will not only filter out toxins but it can also be connected to an air supply."
 	icon = 'modular_splurt/icons/obj/plaguedoc.dmi'
 	mob_overlay_icon = 'modular_splurt/icons/mob/clothing/mask.dmi'
+	anthro_mob_worn_overlay = 'modular_splurt/icons/mob/clothing/mask_muzzle.dmi'
 	icon_state = "plaguedoctor_red"
 	item_state = "plaguedoctor_red"
 	armor = list(MELEE = 0, BULLET = 0, LASER = 2,ENERGY = 2, BOMB = 0, BIO = 75, RAD = 0, FIRE = 0, ACID = 0)
