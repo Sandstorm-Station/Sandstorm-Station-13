@@ -193,6 +193,7 @@
 					to_chat(user, "<span class='notice'>There was not enough genetic data to extract a viable chromosome.</span>")
 				if(A.crispr_charge)
 					crispr_charges++
+					to_chat(user, span_notice("CRISPR charge added."))
 			qdel(I)
 			return
 
@@ -583,7 +584,7 @@
 		// ---------------------------------------------------------------------- //
 		// params["mutref"] - ATOM Ref of specific mutation to swap out
 		// params["source"] - The source the request came from.
-		//	Expected results:
+		// Expected results:
 		//   "occupant" - From genetic sequencer
 		//   "console" - From DNA Console storage
 		//   "disk" - From inserted diskette
@@ -628,7 +629,7 @@
 			var/datum/mutation/human/target_mutation = get_mut_by_ref(bref, search_flags)
 
 			// Prompt for modifier string
-			var/new_sequence_input = input(usr, "Enter replacement sequence (or nothing to cancel)", "Replace inherent gene","")
+			var/new_sequence_input = input(usr, "Enter a replacement sequence", "Inherent Gene Replacement")
 			// Drop out if the string is the wrong length
 			if(length(new_sequence_input) != 32)
 				return
