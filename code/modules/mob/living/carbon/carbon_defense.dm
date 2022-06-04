@@ -267,7 +267,7 @@
 	if(M == src && check_self_for_injuries())
 		return
 
-	if(health >= 0 && !(HAS_TRAIT(src, TRAIT_FAKEDEATH)))
+	if(health >= 0 && !(HAS_TRAIT(src, TRAIT_FAKEDEATH)) || iszombie(src))
 		var/friendly_check = FALSE
 		if(mob_run_block(M, 0, M.name, ATTACK_TYPE_UNARMED, 0, null, null, null))
 			return

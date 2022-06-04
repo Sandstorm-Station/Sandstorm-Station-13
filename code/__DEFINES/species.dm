@@ -24,6 +24,7 @@
 	#define SPECIES_STARGAZER		"stargazer"
 #define SPECIES_LIZARD				"lizard"
 	#define SPECIES_ASHWALKER		"ashlizard"
+	#define SPECIES_GLIZZY			"ghoul_lizard"
 #define SPECIES_MUSHROOM			"mush"
 #define SPECIES_PLASMAMAN			"plasmaman"
 #define SPECIES_POD					"pod"
