@@ -3385,7 +3385,7 @@ GLOBAL_LIST_EMPTY(preferences_datums)
 
 	character.give_genitals(TRUE) //character.update_genitals() is already called on genital.update_appearance()
 
-	character.update_size(get_size(src), old_size)
+	character.update_size(get_size(character), old_size)
 
 	//speech stuff
 	if(custom_tongue != "default")
