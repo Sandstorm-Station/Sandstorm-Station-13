@@ -140,11 +140,11 @@
 /obj/item/clothing/suit/goner/fake/poly
 	name = "polychromic trencher coat"
 	desc = "A generic, grey trenchcoat with polychromatic spots."
-	var/list/poly_colors = list("#F2F2F2")
+	var/list/poly_colors = list("#E6E6E6", "#D6D6D6", "#D6D6D6")
 
 /obj/item/clothing/suit/goner/fake/poly/ComponentInitialize()
 	. = ..()
-	AddElement(/datum/element/polychromic, poly_colors, 1)
+	AddElement(/datum/element/polychromic, poly_colors, 3)
 
 /obj/item/clothing/suit/goner/red
 	name = "red trencher coat"
