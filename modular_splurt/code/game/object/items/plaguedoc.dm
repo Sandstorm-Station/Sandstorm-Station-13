@@ -41,7 +41,7 @@
 	desc = "A sharp, curved copper scalpel, just as effective."
 	icon = 'modular_splurt/icons/obj/plaguedoc.dmi'
 	icon_state = "scalpel_plague"
-	hitsound = 'sound/weapons/blade1.ogg'
+	hitsound = 'sound/weapons/bladeslice.ogg'
 	force = 18
 	toolspeed = 1
 	sharpness = SHARP_POINTY
