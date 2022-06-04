@@ -62,7 +62,7 @@
 		destination.dna.mutation_index = mutation_index
 		destination.dna.default_mutation_genes = default_mutation_genes
 
-	destination.dna.update_body_size(old_size)
+	destination.update_size(get_size(destination), old_size)
 
 	SEND_SIGNAL(destination, COMSIG_CARBON_IDENTITY_TRANSFERRED_TO, src, transfer_SE)
 
@@ -421,7 +421,7 @@
 	if(newfeatures)
 		var/old_size = dna.features["body_size"]
 		dna.features = newfeatures
-		dna.update_body_size(old_size)
+		update_size(get_size(src), old_size)
 
 	if(mrace)
 		var/datum/species/newrace = new mrace.type
