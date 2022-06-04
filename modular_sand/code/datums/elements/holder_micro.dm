@@ -12,14 +12,16 @@
 	UnregisterSignal(source, COMSIG_MICRO_PICKUP_FEET)
 
 /datum/element/mob_holder/micro/proc/on_resize(mob/living/micro, new_size, old_size)
-	if(istype(micro.loc))
-		var/obj/item/clothing/head/mob_holder/holder = micro.loc
+	var/obj/item/clothing/head/mob_holder/holder = micro.loc
+	if(istype(holder))
 		var/mob/living/living = get_atom_on_turf(micro.loc, /mob/living)
-		if(abs(get_size(micro)/get_size(living)) > CONFIG_GET(number/max_pick_ratio))
+		if(living && (abs(get_size(micro)/get_size(living)) > CONFIG_GET(number/max_pick_ratio)))
 			living.visible_message(span_warning("\The [living] drops [micro] as [micro.p_they()] grow\s too big to carry."),
 								span_warning("You drop \The [living] as [living.p_they()] grow\s too big to carry."),
 								target=micro,
 								target_message=span_notice("\The [living] drops you as you grow too big to carry."))
+			holder.release()
+		else if(!istype(living)) // Somehow a inside a mob_holder and the mob_holder isn't inside any livings? release.
 			holder.release()
 
 /datum/element/mob_holder/micro/on_examine(mob/living/source, mob/user, list/examine_list)
