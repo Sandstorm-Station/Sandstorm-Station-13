@@ -15,7 +15,7 @@
 	if(istype(micro.loc))
 		var/obj/item/clothing/head/mob_holder/holder = micro.loc
 		var/mob/living/living = get_atom_on_turf(micro.loc, /mob/living)
-		if(abs(get_size(living)/get_size(micro)) < 2.0)
+		if(abs(get_size(micro)/get_size(living)) > CONFIG_GET(number/max_pick_ratio))
 			living.visible_message(span_warning("\The [living] drops [micro] as [micro.p_they()] grow\s too big to carry."),
 								span_warning("You drop \The [living] as [living.p_they()] grow\s too big to carry."),
 								target=micro,
