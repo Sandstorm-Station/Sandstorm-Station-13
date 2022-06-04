@@ -96,6 +96,11 @@
 
 /datum/interaction/lewd/throatfuck/display_interaction(mob/living/carbon/human/user, mob/living/carbon/human/target)
 	. = ..()
+	if(istype(target, /mob/living) && user.is_fucking(target, CUM_TARGET_THROAT))
+		var/stat_before = target.stat
+		target.adjustOxyLoss(3)
+		if(target.stat == UNCONSCIOUS && stat_before != UNCONSCIOUS)
+			target.visible_message(message = "<font color=red><b>\The [target]</b> passes out on <b>\The [src]</b>'s cock.</span>", ignored_mobs = user.get_unconsenting())
 	if(!isclownjob(user))
 		return
 

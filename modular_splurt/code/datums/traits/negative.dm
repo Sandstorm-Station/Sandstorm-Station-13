@@ -57,3 +57,96 @@
 	var/datum/component/mood/mood = quirk_holder.GetComponent(/datum/component/mood)
 	if(mood)
 		mood.mood_modifier -= 0.5
+
+/datum/quirk/masked_mook
+	name = "Bane Syndrome"
+	desc = "For some reason you don't feel well without wearing some kind of gas mask."
+	gain_text = "<span class='danger'>You start feeling unwell without any gas mask on.</span>"
+	lose_text = "<span class='notice'>You no longer have a need to wear some gas mask.</span>"
+	value = -2
+	mood_quirk = TRUE
+	medical_record_text = "Patient feels more secure when wearing a gas mask."
+
+/datum/quirk/masked_mook/on_process()
+	var/mob/living/carbon/human/H = quirk_holder
+	var/obj/item/clothing/mask/gas/gasmask = H.get_item_by_slot(ITEM_SLOT_MASK)
+	if(istype(gasmask))
+		SEND_SIGNAL(quirk_holder, COMSIG_CLEAR_MOOD_EVENT, "masked_mook_incomplete")
+		SEND_SIGNAL(quirk_holder, COMSIG_ADD_MOOD_EVENT, "masked_mook", /datum/mood_event/masked_mook)
+	else
+		SEND_SIGNAL(quirk_holder, COMSIG_CLEAR_MOOD_EVENT, "masked_mook")
+		SEND_SIGNAL(quirk_holder, COMSIG_ADD_MOOD_EVENT, "masked_mook_incomplete", /datum/mood_event/masked_mook_incomplete)
+
+/datum/quirk/masked_mook/on_spawn()
+	. = ..()
+	var/mob/living/carbon/human/H = quirk_holder
+	var/obj/item/clothing/mask/gas/gasmask = new(get_turf(quirk_holder))
+	H.equip_to_slot(gasmask, ITEM_SLOT_MASK)
+	H.regenerate_icons()
+
+/datum/quirk/well_trained
+	name = "Well-trained"
+	desc = "You absolutely love being dominated. The thought of someone with a stronger character than yours is enough to make you act up."
+	value = -2
+	gain_text = "<span class='notice'>You feel like being someone's good boy</span>"
+	lose_text = "<span class='notice'>You no longer feel like being a good boy...</span>"
+	processing_quirk = TRUE
+	var/shy_stutter = FALSE
+	var/mood_category = "dom_trained"
+	var/distance_delay = 0
+
+/datum/quirk/well_trained/on_process()
+	. = ..()
+	if(!quirk_holder)
+		return
+
+	//Check for possible doms with the dominant_aura quirk, and for the closest one if there is
+	. = FALSE
+	var/list/mob/living/carbon/human/doms = range(DOMINANT_DETECT_RANGE, quirk_holder)
+	var/closest_distance
+	for(var/mob/living/carbon/human/dom in doms)
+		if(dom != quirk_holder && dom.has_quirk(/datum/quirk/dominant_aura))
+			if(!closest_distance || get_dist(quirk_holder, dom) <= closest_distance)
+				. = dom
+				closest_distance = get_dist(quirk_holder, dom)
+
+	//Remove effects and return if no dom is found
+	if(!.)
+		quirk_holder.stuttering = (shy_stutter ? max(0, quirk_holder.stuttering-3) : quirk_holder.stuttering)
+		shy_stutter = FALSE
+		return
+
+	//Handle stuttering
+	if(!shy_stutter || !quirk_holder.stuttering)
+		quirk_holder.stuttering += 3
+		shy_stutter = TRUE
+
+	//Handle the mood
+	var/datum/component/mood/mood = quirk_holder.GetComponent(/datum/component/mood)
+	if(istype(mood.mood_events[mood_category], /datum/mood_event/dominant/good_boy))
+		SEND_SIGNAL(quirk_holder, COMSIG_ADD_MOOD_EVENT, mood_category, /datum/mood_event/dominant/good_boy)
+	else
+		SEND_SIGNAL(quirk_holder, COMSIG_ADD_MOOD_EVENT, mood_category, /datum/mood_event/dominant/need)
+
+	//Handle chat effects
+	if(world.time < distance_delay)
+		return .
+	var/distance_mod = (-9/50)*closest_distance + 1
+	var/distance_seconds = (1/5)*(closest_distance**2) + (9/5)*closest_distance + 1
+	if(prob(50 * distance_mod))
+		var/list/notices = list(
+			"You feel someone's presence making you more submissive.",
+			"The thought of being commanded floods you with lust.",
+			"You really want to be called a good boy.",
+			"Someone's presence is making you all flustered.",
+			"You start getting excited and sweating."
+		)
+		to_chat(quirk_holder, span_lewd(pick(notices)))
+	if(prob(30) * distance_mod)
+		quirk_holder.emote(pick("blush", "pant"))
+	if(prob(25) * distance_mod)
+		quirk_holder.do_jitter_animation(50*distance_mod)
+		quirk_holder.visible_message(span_notice("\The [quirk_holder] shakes lewdly in [quirk_holder.p_their()] place..."))
+
+	if(distance_seconds > 1)
+		distance_delay = world.time + (distance_seconds SECONDS)

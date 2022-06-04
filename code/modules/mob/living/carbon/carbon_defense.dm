@@ -292,6 +292,14 @@
 			if(ishuman(src))
 				S = dna.species
 
+			//SPLURT EDIT - Headpat traits
+			if(M.has_quirk(/datum/quirk/dominant_aura) && H.has_quirk(/datum/quirk/well_trained))
+				if(H.has_quirk(/datum/quirk/headpat_hater))
+					H.remove_quirk(/datum/quirk/headpat_hater)
+				if(!H.has_quirk(/datum/quirk/headpat_slut))
+					H.add_quirk(/datum/quirk/headpat_slut)
+				SEND_SIGNAL(H, COMSIG_ADD_MOOD_EVENT, "dom_trained", /datum/mood_event/dominant/good_boy)
+
 			if(HAS_TRAIT(H, TRAIT_DISTANT)) //No mood buff since you're not really liking it.
 				M.visible_message("<span class='notice'>[M] gives [H] a pat on the head to make [p_them()] feel better! They seem annoyed...</span>", \
 					"<span class='warning'>You give [H] a pat on the head to make [p_them()] feel better! They seem annoyed as they're now glaring towards you...</span>")
@@ -315,12 +323,13 @@
 								"<span class='notice'>You give [src] a pat on the head to make [p_them()] feel better! They seem to like it way too much..</span>", target = src,
 								target_message = "<span class='boldnotice'>[M] gives you a pat on the head to make you feel better!</span>")
 					SEND_SIGNAL(src, COMSIG_ADD_MOOD_EVENT, "lewd_headpat", /datum/mood_event/lewd_headpat)
-					H.add_lust(5) //Headpats are hot af
+					H.handle_post_sex(5, null, null) //Headpats are hot af
 				else
 					M.visible_message("<span class='notice'>[M] gives [src] a pat on the head to make [p_them()] feel better!</span>", \
 								"<span class='notice'>You give [src] a pat on the head to make [p_them()] feel better!</span>", target = src,
 								target_message = "<span class='notice'>[M] gives you a pat on the head to make you feel better!</span>")
 					SEND_SIGNAL(src, COMSIG_ADD_MOOD_EVENT, "headpat", /datum/mood_event/headpat)
+			//SPLURT EDIT END
 
 			if(!(client?.prefs.cit_toggles & NO_AUTO_WAG) && friendly_check)
 				if(S?.can_wag_tail(src) && !dna.species.is_wagging_tail())
