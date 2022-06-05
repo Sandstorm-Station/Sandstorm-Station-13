@@ -363,6 +363,15 @@
 
 	playlewdinteractionsound(target, 'sound/items/bikehorn.ogg', 40, 1, -1)
 
+/datum/interaction/lewd/kiss/display_interaction(mob/living/user, mob/living/partner)
+	. = ..()
+	playlewdinteractionsound(partner, pick(
+		'modular_splurt/sound/interactions/kiss/kiss1.ogg',
+		'modular_splurt/sound/interactions/kiss/kiss2.ogg',
+		'modular_splurt/sound/interactions/kiss/kiss3.ogg',
+		'modular_splurt/sound/interactions/kiss/kiss4.ogg',
+		'modular_splurt/sound/interactions/kiss/kiss5.ogg'), 50, 1, -1, ignored_mobs = user.get_unconsenting())
+
 //Own stuff
 /datum/interaction/lewd/oral/selfsuck
 	description = "Suck yourself off."
