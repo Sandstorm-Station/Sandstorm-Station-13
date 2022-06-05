@@ -145,7 +145,7 @@
 /datum/reagent/consumable/pinkmilk
 	hydration = 4
 
-/datum/reagent/consumable/pinktea
+/datum/reagent/consumable/tea/pink
 	hydration = 4
 
 /datum/reagent/consumable/monkey_energy
