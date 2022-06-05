@@ -1,13 +1,7 @@
-/mob/living/carbon/handle_breathing(times_fired)
-	if(iszombie(src)) //silly zombie, breathing is for the living
-		return
-	. = ..()
-
 /mob/living/carbon/human/handle_blood()
 	if(iszombie(src)) //We're basically pudding pops.
 		return
 	. = ..()
-
 
 /datum/species/mammal/undead
 	id = SPECIES_UMAMMAL
@@ -23,7 +17,7 @@
 
 	wings_icons = SPECIES_WINGS_SKELETAL
 	species_traits = list(NOZOMBIE,NOTRANSSTING,MUTCOLORS,EYECOLOR,LIPS,HAIR,HORNCOLOR,WINGCOLOR,CAN_SCAR,HAS_FLESH,HAS_BONE)
-	inherent_traits = list(TRAIT_AUXILIARY_LUNGS,TRAIT_RESISTCOLD,TRAIT_RESISTLOWPRESSURE,TRAIT_RADIMMUNE,TRAIT_EASYDISMEMBER,TRAIT_LIMBATTACHMENT,TRAIT_NOSOFTCRIT,TRAIT_NODEATH,TRAIT_FAKEDEATH)
+	inherent_traits = list(TRAIT_NOBREATH,TRAIT_RESISTCOLD,TRAIT_RESISTLOWPRESSURE,TRAIT_RADIMMUNE,TRAIT_EASYDISMEMBER,TRAIT_LIMBATTACHMENT,TRAIT_NOSOFTCRIT,TRAIT_NODEATH,TRAIT_FAKEDEATH)
 	inherent_biotypes = MOB_UNDEAD|MOB_HUMANOID|MOB_BEAST
 
 	mutanttongue = /obj/item/organ/tongue/zombie
@@ -51,7 +45,7 @@
 	say_mod = "moans"
 
 	species_traits = list(NOZOMBIE,NOTRANSSTING,MUTCOLORS,EYECOLOR,LIPS,HAIR,HORNCOLOR,WINGCOLOR,CAN_SCAR,HAS_FLESH,HAS_BONE)
-	inherent_traits = list(TRAIT_AUXILIARY_LUNGS,TRAIT_RESISTCOLD,TRAIT_RESISTLOWPRESSURE,TRAIT_RADIMMUNE,TRAIT_EASYDISMEMBER,TRAIT_LIMBATTACHMENT,TRAIT_NODEATH,TRAIT_FAKEDEATH)
+	inherent_traits = list(TRAIT_NOBREATH,TRAIT_RESISTCOLD,TRAIT_RESISTLOWPRESSURE,TRAIT_RADIMMUNE,TRAIT_EASYDISMEMBER,TRAIT_LIMBATTACHMENT,TRAIT_NODEATH,TRAIT_FAKEDEATH)
 	inherent_biotypes = MOB_UNDEAD|MOB_HUMANOID|MOB_BUG
 
 	mutanteyes = /obj/item/organ/eyes/decayed 	//Can see well in the dark. Pretty much no protection from flashes, even with goggles.
@@ -59,14 +53,20 @@
 
 	species_category = SPECIES_CATEGORY_UNDEAD
 
-/datum/species/mammal/undead/on_species_gain(mob/living/carbon/C, datum/species/old_species)
+/datum/species/insect/undead/on_species_gain(mob/living/carbon/C, datum/species/old_species)
 	. = ..()
 
 	var/obj/item/organ/undead_infection/insect/M
+	var/obj/item/organ/eyes/decayed/I
 	M = C.getorganslot(ORGAN_SLOT_ZOMBIE)
 	if(!M)
 		M = new()
 		M.Insert(C)
+	I = C.getorganslot(ORGAN_SLOT_EYES)
+	if(!I)
+		I = new()
+		I.Insert(C, drop_if_replaced = FALSE)
+
 
 /datum/species/lizard/undead
 	id = SPECIES_GLIZZY
@@ -81,14 +81,14 @@
 	burnmod = 0.5 //They are fire retardant... Glizzy popsicles can't survive in cold or space, though.
 
 	species_traits = list(NOZOMBIE,NOTRANSSTING,MUTCOLORS,EYECOLOR,LIPS,HAIR,HORNCOLOR,WINGCOLOR,CAN_SCAR,HAS_FLESH,HAS_BONE)
-	inherent_traits = list(TRAIT_AUXILIARY_LUNGS,TRAIT_RESISTHEAT,TRAIT_RESISTHIGHPRESSURE,TRAIT_RADIMMUNE,TRAIT_EASYDISMEMBER,TRAIT_LIMBATTACHMENT,TRAIT_NOHARDCRIT,TRAIT_NODEATH,TRAIT_FAKEDEATH)
+	inherent_traits = list(TRAIT_NOBREATH,TRAIT_RESISTHEAT,TRAIT_RESISTHIGHPRESSURE,TRAIT_RADIMMUNE,TRAIT_EASYDISMEMBER,TRAIT_LIMBATTACHMENT,TRAIT_NOHARDCRIT,TRAIT_NODEATH,TRAIT_FAKEDEATH)
 	inherent_biotypes = MOB_UNDEAD|MOB_HUMANOID|MOB_REPTILE
 
 	mutanttongue = /obj/item/organ/tongue/zombie
 
 	species_category = SPECIES_CATEGORY_UNDEAD
 
-/datum/species/mammal/undead/on_species_gain(mob/living/carbon/C, datum/species/old_species)
+/datum/species/lizard/undead/on_species_gain(mob/living/carbon/C, datum/species/old_species)
 	. = ..()
 
 	var/obj/item/organ/undead_infection/lizard/M
@@ -96,7 +96,6 @@
 	if(!M)
 		M = new()
 		M.Insert(C)
-
 
 /obj/item/organ/eyes/decayed
 	name = "shabriri grapes"
