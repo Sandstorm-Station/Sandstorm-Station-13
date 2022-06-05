@@ -1,3 +1,8 @@
+/datum/hud/new_player/populate_buttons(mob/dead/new_player/owner)
+	if(!(owner.client?.prefs.toggles & TG_PLAYER_PANEL))
+		return
+	. = ..()
+
 /atom/movable/screen/lobby/button/Click(location, control, params)
 	if(owner != REF(usr)) //No idea what this even means but
 		return ..()

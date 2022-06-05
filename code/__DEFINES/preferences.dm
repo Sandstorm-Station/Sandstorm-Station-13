@@ -17,6 +17,7 @@
 #define COMBOHUD_LIGHTING		(1<<14)
 #define VERB_CONSENT			(1<<15) // Skyrat - ERP Mechanic Addition
 #define LEWD_VERB_SOUNDS		(1<<16) // Skyrat - ERP Mechanic Addition
+#define TG_PLAYER_PANEL			(1<<17) // SPLURT - Opt for the old splashscreen player panel
 
 #define DEADMIN_ALWAYS				(1<<0)
 #define DEADMIN_ANTAGONIST			(1<<1)
