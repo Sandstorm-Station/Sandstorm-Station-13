@@ -64,8 +64,10 @@
       darkness for >= 0.2 seconds tweak: nyctophobia and lightless will both not update
       your mood until you move now, as part of the optimisations made by changing
       them to tg code'
-2022-06-02:
+2022-06-03:
   Bhijn & Myr:
+  - bugfix: Solar panels now actually face the proper direction. This is achieved
+      by reducing the iconstate to only 1 dir.
   - bugfix: You can no longer attach multiple tracking beacons to a single mech, fixing
       an exploit where mechs can be nuked with minimal effort.
   - bugfix: Omegastation's airmix filter is no longer inverted! The oxygen:nitrogen
@@ -96,12 +98,26 @@
   Putnam3145:
   - balance: Nitryl is higher risk, can't be sold for as much
   - refactor: Gas prices are now part of the gas data structure
+  SandPoot:
+  - balance: After resizing and being on a mob's hand you will be dropped as they
+      are not able to carry someone bigger than half your size.
   TrojanCoyote:
   - rscadd: sprites for muzzled and non muzzled mobs for the masks, along with the
       adjusted versions, icons for the masks as well.
   bunny232:
   - rscadd: Universal blood type now accepts bug blood.
-2022-06-03:
-  Bhijn & Myr:
-  - bugfix: Solar panels now actually face the proper direction. This is achieved
-      by reducing the iconstate to only 1 dir.
+2022-06-04:
+  SandPoot:
+  - rscadd: Adds CRISPR - a gene editing method that lets you overwrite base mutations
+2022-06-05:
+  Anonymous:
+  - bugfix: Trencher mask now should be seen again on-character.
+  AshTheDerg:
+  - rscadd: Added Plague Doctor surgical tools
+  - rscadd: New cane for Plague Doctor
+  - rscadd: More accurate mask
+  - rscadd: Plague Doctor kit to Cargo Orders
+  SandPoot:
+  - refactor: Completely replaces the new player panel *not the admin one* with TG's.
+  timothyteakettle:
+  - rscadd: adds paper skin and glass bones quirks

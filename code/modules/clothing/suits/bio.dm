@@ -88,3 +88,4 @@
 	item_state = "bio_suit"
 	strip_delay = 40
 	equip_delay_other = 20
+	slowdown = 0
