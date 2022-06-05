@@ -11,4 +11,3 @@
 
 /datum/element/wuv/headpat/kick_the_dog(mob/target, mob/user)
 	return //No kicking the dog >:(( (until I find an use for this that is)
-
