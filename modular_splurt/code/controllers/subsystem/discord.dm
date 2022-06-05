@@ -71,6 +71,7 @@ SUBSYSTEM_DEF(discord)
 		notifymsg += ", a new round is starting!"
 		send2chat(trim(notifymsg), CONFIG_GET(string/chat_new_game_notifications)) // Sends the message to the discord, using same config option as the roundstart notification
 	fdel(notify_file) // Deletes the file
+	delete_nulls() // Deletes nulls in the database
 	return ..()
 
 /datum/controller/subsystem/discord/fire()
@@ -298,6 +299,29 @@ SUBSYSTEM_DEF(discord)
 	qdel(query_delete_nulls)
 	return TRUE
 
-/datum/controller/subsystem/discord/Initialize(start_timeofday)
-	. = ..()
-	delete_nulls()
+/**
+ * Check if an account is linked for login
+ *
+ * This will look for a valid discord link for the new player's ckey. Defaults to TRUE if the server isn't configured for discord verification
+ *
+ * It better be called with ?. in case the subsystem is still Initializing
+ *
+ * Arguments:
+ * * player: the new player to check
+ *
+ * Returns TRUE or FALSE
+*/
+
+/datum/controller/subsystem/discord/proc/check_login(mob/dead/new_player/player)
+	. = TRUE
+	if(!(SSdbcore.IsConnected() && CONFIG_GET(flag/need_discord_to_join) && CONFIG_GET(string/discordbotcommandprefix))) //If not configured/using DB
+		return TRUE
+	if(!player.client) //Safety check
+		return FALSE
+	if(player.client?.ckey in GLOB.discord_passthrough) //If they have bypass
+		return TRUE
+
+	var/datum/discord_link_record/player_link = find_discord_link_by_ckey(player.client?.ckey)
+
+	if(!(player_link && player_link?.discord_id && player_link?.valid))
+		return FALSE
