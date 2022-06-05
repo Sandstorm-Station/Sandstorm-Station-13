@@ -4,6 +4,7 @@
 	. = ..()
 
 /datum/species/mammal/undead
+// takes 20% more damage but doesn't soft-crit
 	id = SPECIES_UMAMMAL
 	name = "Undead Anthropomorph"
 	exotic_bloodtype = "U"
@@ -13,12 +14,12 @@
 	blacklisted = 1
 	say_mod = "moans"
 	speedmod = 1.5
-	brutemod = 1.2	//Get hurts more than average. doesn't fall down as easily, though.
-	burnmod = 1.2	//Essentially 1-2 more hits from weapons before hard-crit, compared to soft-critting
-
+	armor = -0.2
+	coldmod = 0.67
+	cold_offset = SYNTH_COLD_OFFSET
 	wings_icons = SPECIES_WINGS_SKELETAL
 	species_traits = list(NOZOMBIE,NOTRANSSTING,MUTCOLORS,EYECOLOR,LIPS,HAIR,HORNCOLOR,WINGCOLOR,CAN_SCAR,HAS_FLESH,HAS_BONE)
-	inherent_traits = list(TRAIT_NOBREATH,TRAIT_RESISTCOLD,TRAIT_RESISTLOWPRESSURE,TRAIT_RADIMMUNE,TRAIT_EASYDISMEMBER,TRAIT_LIMBATTACHMENT,TRAIT_NOSOFTCRIT,TRAIT_NODEATH,TRAIT_FAKEDEATH)
+	inherent_traits = list(TRAIT_AUXILIARY_LUNGS,TRAIT_NOBREATH,TRAIT_RESISTLOWPRESSURE,TRAIT_RADIMMUNE,TRAIT_EASYDISMEMBER,TRAIT_LIMBATTACHMENT,TRAIT_NOSOFTCRIT,TRAIT_NODEATH,TRAIT_FAKEDEATH)
 	inherent_biotypes = MOB_UNDEAD|MOB_HUMANOID|MOB_BEAST
 
 	mutanttongue = /obj/item/organ/tongue/zombie
@@ -45,6 +46,7 @@
 	..()
 
 /datum/species/insect/undead
+// Lighter and faster than other zombies. Hates light (No lamp for the dead)
 	id = SPECIES_UINSECT
 	name = "Undead Insect"
 	exotic_bloodtype = "U"
@@ -54,12 +56,14 @@
 	disliked_food = NONE
 	blacklisted = 1
 	say_mod = "moans"
-	speedmod = 1.5
+	speedmod = 1.2
+	coldmod = 0.67
+	cold_offset = SYNTH_COLD_OFFSET
 	species_traits = list(NOZOMBIE,NOTRANSSTING,MUTCOLORS,EYECOLOR,LIPS,HAIR,HORNCOLOR,WINGCOLOR,CAN_SCAR,HAS_FLESH,HAS_BONE)
-	inherent_traits = list(TRAIT_NOBREATH,TRAIT_RESISTCOLD,TRAIT_RESISTLOWPRESSURE,TRAIT_RADIMMUNE,TRAIT_EASYDISMEMBER,TRAIT_LIMBATTACHMENT,TRAIT_NODEATH,TRAIT_FAKEDEATH)
+	inherent_traits = list(TRAIT_AUXILIARY_LUNGS,TRAIT_NOBREATH,TRAIT_RESISTLOWPRESSURE,TRAIT_RADIMMUNE,TRAIT_EASYDISMEMBER,TRAIT_LIMBATTACHMENT,TRAIT_NODEATH,TRAIT_FAKEDEATH)
 	inherent_biotypes = MOB_UNDEAD|MOB_HUMANOID|MOB_BUG
 
-	mutanteyes = /obj/item/organ/eyes/decayed 	//Can see well in the dark. Pretty much no protection from flashes, even with goggles.
+	mutanteyes = /obj/item/organ/eyes/decayed 	//The lamp has abandoned you, monster
 	mutanttongue = /obj/item/organ/tongue/zombie
 
 	species_category = SPECIES_CATEGORY_UNDEAD
@@ -89,6 +93,7 @@
 	..()
 
 /datum/species/lizard/undead
+// heavy and lumbering. 20%less brute/33%less burn. Slow and weak to the cold
 	id = SPECIES_GLIZZY
 	name = "Undead Lizard"
 	exotic_bloodtype = "U"
@@ -97,10 +102,11 @@
 	liked_food = GROSS | MEAT | RAW
 	blacklisted = 1
 	say_mod = "moans"
-	speedmod = 1.5
-	burnmod = 0.5 //They are fire retardant... Glizzy popsicles can't survive in cold or space, though.
+	speedmod = 1.8
+	brutemod = 1.2
+	burnmod = 0.67 //They are fire retardant... Glizzy popsicles can't survive in cold or space, though.
 	species_traits = list(NOZOMBIE,NOTRANSSTING,MUTCOLORS,EYECOLOR,LIPS,HAIR,HORNCOLOR,WINGCOLOR,CAN_SCAR,HAS_FLESH,HAS_BONE)
-	inherent_traits = list(TRAIT_NOBREATH,TRAIT_RESISTHEAT,TRAIT_RESISTHIGHPRESSURE,TRAIT_RADIMMUNE,TRAIT_EASYDISMEMBER,TRAIT_LIMBATTACHMENT,TRAIT_NOHARDCRIT,TRAIT_NODEATH,TRAIT_FAKEDEATH)
+	inherent_traits = list(TRAIT_AUXILIARY_LUNGS,TRAIT_NOBREATH,TRAIT_RESISTHEAT,TRAIT_RESISTHIGHPRESSURE,TRAIT_RADIMMUNE,TRAIT_EASYDISMEMBER,TRAIT_LIMBATTACHMENT,TRAIT_NOHARDCRIT,TRAIT_NODEATH,TRAIT_FAKEDEATH)
 	inherent_biotypes = MOB_UNDEAD|MOB_HUMANOID|MOB_REPTILE
 
 	mutanttongue = /obj/item/organ/tongue/zombie
@@ -125,6 +131,8 @@
 /datum/species/lizard/undead/on_species_loss(mob/living/carbon/C, datum/species/new_species)
 	C.set_screwyhud(SCREWYHUD_NONE)
 	..()
+
+//
 
 /obj/item/organ/eyes/decayed
 	name = "shabriri grapes"
@@ -239,7 +247,6 @@
 	owner.Stun(living_transformation_time)
 //	to_chat(owner, "<span class='alertalien'>You are now a zombie! You claw and bite, turning your fellow crewmembers into friends that help spread the plague.</span>")
 //	to_chat(owner, "<span class='alertwarning'>You are a zombie. Please act like one. Letting the crew remove the tumor inside your brain is a dick move to whoever infected you. Please do not do it.</span>")
-
 
 /obj/item/organ/undead_infection/mammal
 	old_species = /datum/species/mammal
