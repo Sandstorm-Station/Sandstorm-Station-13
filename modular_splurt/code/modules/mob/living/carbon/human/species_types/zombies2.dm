@@ -12,6 +12,7 @@
 	disliked_food = NONE
 	blacklisted = 1
 	say_mod = "moans"
+	speedmod = 1.5
 	brutemod = 1.2	//Get hurts more than average. doesn't fall down as easily, though.
 	burnmod = 1.2	//Essentially 1-2 more hits from weapons before hard-crit, compared to soft-critting
 
@@ -25,6 +26,7 @@
 	species_category = SPECIES_CATEGORY_UNDEAD
 
 /datum/species/mammal/undead/on_species_gain(mob/living/carbon/C, datum/species/old_species)
+	C.set_screwyhud(SCREWYHUD_HEALTHY)
 	. = ..()
 
 	var/obj/item/organ/undead_infection/mammal/M
@@ -32,6 +34,15 @@
 	if(!M)
 		M = new()
 		M.Insert(C)
+
+/datum/species/mammal/undead/proc/on_life(mob/living/carbon/C)
+	C.set_screwyhud(SCREWYHUD_HEALTHY) //just in case of hallucinations
+	C.adjustStaminaLoss(-5) //no pain, no fatigue
+	. = ..()
+
+/datum/species/mammal/undead/on_species_loss(mob/living/carbon/C, datum/species/new_species)
+	C.set_screwyhud(SCREWYHUD_NONE)
+	..()
 
 /datum/species/insect/undead
 	id = SPECIES_UINSECT
@@ -43,7 +54,7 @@
 	disliked_food = NONE
 	blacklisted = 1
 	say_mod = "moans"
-
+	speedmod = 1.5
 	species_traits = list(NOZOMBIE,NOTRANSSTING,MUTCOLORS,EYECOLOR,LIPS,HAIR,HORNCOLOR,WINGCOLOR,CAN_SCAR,HAS_FLESH,HAS_BONE)
 	inherent_traits = list(TRAIT_NOBREATH,TRAIT_RESISTCOLD,TRAIT_RESISTLOWPRESSURE,TRAIT_RADIMMUNE,TRAIT_EASYDISMEMBER,TRAIT_LIMBATTACHMENT,TRAIT_NODEATH,TRAIT_FAKEDEATH)
 	inherent_biotypes = MOB_UNDEAD|MOB_HUMANOID|MOB_BUG
@@ -54,6 +65,7 @@
 	species_category = SPECIES_CATEGORY_UNDEAD
 
 /datum/species/insect/undead/on_species_gain(mob/living/carbon/C, datum/species/old_species)
+	C.set_screwyhud(SCREWYHUD_HEALTHY)
 	. = ..()
 
 	var/obj/item/organ/undead_infection/insect/M
@@ -67,6 +79,14 @@
 		I = new()
 		I.Insert(C, drop_if_replaced = FALSE)
 
+/datum/species/insect/undead/proc/on_life(mob/living/carbon/C)
+	C.set_screwyhud(SCREWYHUD_HEALTHY) //just in case of hallucinations
+	C.adjustStaminaLoss(-5) //no pain, no fatigue
+	. = ..()
+
+/datum/species/insect/undead/on_species_loss(mob/living/carbon/C, datum/species/new_species)
+	C.set_screwyhud(SCREWYHUD_NONE)
+	..()
 
 /datum/species/lizard/undead
 	id = SPECIES_GLIZZY
@@ -77,9 +97,8 @@
 	liked_food = GROSS | MEAT | RAW
 	blacklisted = 1
 	say_mod = "moans"
-
+	speedmod = 1.5
 	burnmod = 0.5 //They are fire retardant... Glizzy popsicles can't survive in cold or space, though.
-
 	species_traits = list(NOZOMBIE,NOTRANSSTING,MUTCOLORS,EYECOLOR,LIPS,HAIR,HORNCOLOR,WINGCOLOR,CAN_SCAR,HAS_FLESH,HAS_BONE)
 	inherent_traits = list(TRAIT_NOBREATH,TRAIT_RESISTHEAT,TRAIT_RESISTHIGHPRESSURE,TRAIT_RADIMMUNE,TRAIT_EASYDISMEMBER,TRAIT_LIMBATTACHMENT,TRAIT_NOHARDCRIT,TRAIT_NODEATH,TRAIT_FAKEDEATH)
 	inherent_biotypes = MOB_UNDEAD|MOB_HUMANOID|MOB_REPTILE
@@ -89,6 +108,7 @@
 	species_category = SPECIES_CATEGORY_UNDEAD
 
 /datum/species/lizard/undead/on_species_gain(mob/living/carbon/C, datum/species/old_species)
+	C.set_screwyhud(SCREWYHUD_HEALTHY)
 	. = ..()
 
 	var/obj/item/organ/undead_infection/lizard/M
@@ -96,6 +116,15 @@
 	if(!M)
 		M = new()
 		M.Insert(C)
+
+/datum/species/lizard/undead/proc/on_life(mob/living/carbon/C)
+	C.set_screwyhud(SCREWYHUD_HEALTHY) //just in case of hallucinations
+	C.adjustStaminaLoss(-5) //no pain, no fatigue
+	. = ..()
+
+/datum/species/lizard/undead/on_species_loss(mob/living/carbon/C, datum/species/new_species)
+	C.set_screwyhud(SCREWYHUD_NONE)
+	..()
 
 /obj/item/organ/eyes/decayed
 	name = "shabriri grapes"
@@ -231,6 +260,9 @@
 
 /datum/reagent/draughtofundeath/on_mob_life(mob/living/carbon/human/H, mob/living/carbon/C, datum/species/old_species)
 	..()
+	if(iszombie(H))
+		metabolization_rate = 0 //We are born from it.
+		return
 	addtimer(CALLBACK(H, /mob/living/carbon/human/proc/undeath, "undeath"), 60 SECONDS)
 	if(!istype(H))
 		return
