@@ -91,7 +91,6 @@
 	gain_text = "<span class='notice'>You feel like being someone's pet</span>"
 	lose_text = "<span class='notice'>You no longer feel like being a pet...</span>"
 	processing_quirk = TRUE
-	var/shy_stutter = FALSE
 	var/mood_category = "dom_trained"
 	var/distance_delay = 0
 
@@ -117,16 +116,9 @@
 				. = dom
 				closest_distance = get_dist(quirk_holder, dom)
 
-	//Remove effects and return if no dom is found
+	//Return if no dom is found
 	if(!.)
-		quirk_holder.stuttering = (shy_stutter ? max(0, quirk_holder.stuttering-3) : quirk_holder.stuttering)
-		shy_stutter = FALSE
 		return
-
-	//Handle stuttering
-	if(!shy_stutter || !quirk_holder.stuttering)
-		quirk_holder.stuttering += 3
-		shy_stutter = TRUE
 
 	//Handle the mood
 	var/datum/component/mood/mood = quirk_holder.GetComponent(/datum/component/mood)
@@ -139,7 +131,11 @@
 	if(world.time < distance_delay)
 		return .
 	var/distance_mod = (-9/50)*closest_distance + 1
-	var/distance_seconds = (1/5)*(closest_distance**2) + (9/5)*closest_distance + 1
+	var/distance_seconds
+	if(closest_distance > 2)
+		distance_seconds = (1/5)*(closest_distance**2) + (9/5)*closest_distance + 1
+	else
+		distance_seconds = (1/5)*(closest_distance**2) + (4/5)*closest_distance + 5
 	if(prob(50 * distance_mod))
 		var/list/notices = list(
 			"You feel someone's presence making you more submissive.",
