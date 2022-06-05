@@ -96,7 +96,7 @@
 	if(client?.prefs.toggles & TG_PLAYER_PANEL)
 		return ..()
 
-	//Determines Relevent Population Cap
+	//Determines Relevant Population Cap
 	var/relevant_cap
 	var/hpc = CONFIG_GET(number/hard_popcap)
 	var/epc = CONFIG_GET(number/extreme_popcap)
@@ -158,4 +158,3 @@
 		return
 
 	. = ..()
-
