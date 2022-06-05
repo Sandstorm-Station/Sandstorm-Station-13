@@ -49,6 +49,14 @@
 	value = 0
 	medical_record_text = "Patient seems overly affectionate."
 
+/datum/quirk/headpat_slut/add()
+	. = ..()
+	quirk_holder.AddElement(/datum/element/wuv/headpat, null, null, /datum/mood_event/pet_animal)
+
+/datum/quirk/headpat_slut/remove()
+	. = ..()
+	quirk_holder.RemoveElement(/datum/element/wuv/headpat)
+
 /datum/quirk/in_heat
 	name = "In Heat"
 	desc = "Your system burns with the desire to be bred. Satisfying your lust will make you happy, but ignoring it may cause you to become sad and needy."

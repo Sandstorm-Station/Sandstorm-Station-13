@@ -88,8 +88,8 @@
 	name = "Well-trained"
 	desc = "You absolutely love being dominated. The thought of someone with a stronger character than yours is enough to make you act up."
 	value = -2
-	gain_text = "<span class='notice'>You feel like being someone's good boy</span>"
-	lose_text = "<span class='notice'>You no longer feel like being a good boy...</span>"
+	gain_text = "<span class='notice'>You feel like being someone's pet</span>"
+	lose_text = "<span class='notice'>You no longer feel like being a pet...</span>"
 	processing_quirk = TRUE
 	var/shy_stutter = FALSE
 	var/mood_category = "dom_trained"
@@ -99,6 +99,13 @@
 	. = ..()
 	if(!quirk_holder)
 		return
+
+	var/good_x = "pet"
+	switch(quirk_holder.gender)
+		if(MALE)
+			good_x = "boy"
+		if(FEMALE)
+			good_x = "girl"
 
 	//Check for possible doms with the dominant_aura quirk, and for the closest one if there is
 	. = FALSE
@@ -137,7 +144,7 @@
 		var/list/notices = list(
 			"You feel someone's presence making you more submissive.",
 			"The thought of being commanded floods you with lust.",
-			"You really want to be called a good boy.",
+			"You really want to be called a good [good_x].",
 			"Someone's presence is making you all flustered.",
 			"You start getting excited and sweating."
 		)
