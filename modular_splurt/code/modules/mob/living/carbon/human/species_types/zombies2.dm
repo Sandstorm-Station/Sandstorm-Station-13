@@ -38,7 +38,7 @@
 /datum/species/mammal/undead/proc/on_life(mob/living/carbon/C)
 	C.set_screwyhud(SCREWYHUD_HEALTHY) //just in case of hallucinations
 	C.adjustStaminaLoss(-5) //no pain, no fatigue
-	. = ..()
+	return
 
 /datum/species/mammal/undead/on_species_loss(mob/living/carbon/C, datum/species/new_species)
 	C.set_screwyhud(SCREWYHUD_NONE)
@@ -82,7 +82,7 @@
 /datum/species/insect/undead/proc/on_life(mob/living/carbon/C)
 	C.set_screwyhud(SCREWYHUD_HEALTHY) //just in case of hallucinations
 	C.adjustStaminaLoss(-5) //no pain, no fatigue
-	. = ..()
+	return
 
 /datum/species/insect/undead/on_species_loss(mob/living/carbon/C, datum/species/new_species)
 	C.set_screwyhud(SCREWYHUD_NONE)
@@ -120,7 +120,7 @@
 /datum/species/lizard/undead/proc/on_life(mob/living/carbon/C)
 	C.set_screwyhud(SCREWYHUD_HEALTHY) //just in case of hallucinations
 	C.adjustStaminaLoss(-5) //no pain, no fatigue
-	. = ..()
+	return
 
 /datum/species/lizard/undead/on_species_loss(mob/living/carbon/C, datum/species/new_species)
 	C.set_screwyhud(SCREWYHUD_NONE)
