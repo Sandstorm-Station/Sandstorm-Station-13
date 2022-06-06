@@ -132,11 +132,17 @@
 		return .
 	var/distance_mod = (-9/50)*closest_distance + 1
 	var/distance_seconds
-	if(closest_distance > 2)
-		distance_seconds = (1/5)*(closest_distance**2) + (9/5)*closest_distance + 1
-	else
-		distance_seconds = (1/5)*(closest_distance**2) + (4/5)*closest_distance + 5
-	if(prob(50 * distance_mod))
+	switch(closest_distance)
+		if(5)
+			distance_seconds = 20
+		if(4)
+			distance_seconds = 15
+		if(3)
+			distance_seconds = 10
+		if(0 to 2)
+			distance_seconds = 7
+
+	if(prob(30 * distance_mod))
 		var/list/notices = list(
 			"You feel someone's presence making you more submissive.",
 			"The thought of being commanded floods you with lust.",
@@ -145,9 +151,9 @@
 			"You start getting excited and sweating."
 		)
 		to_chat(quirk_holder, span_lewd(pick(notices)))
-	if(prob(30) * distance_mod)
+	if(prob(20) * distance_mod)
 		quirk_holder.emote(pick("blush", "pant"))
-	if(prob(25) * distance_mod)
+	if(prob(15) * distance_mod)
 		quirk_holder.do_jitter_animation(50*distance_mod)
 		quirk_holder.visible_message(span_notice("\The [quirk_holder] shakes lewdly in [quirk_holder.p_their()] place..."))
 

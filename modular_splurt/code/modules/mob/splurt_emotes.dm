@@ -541,7 +541,7 @@
 		"pants!",
 		"pants like a dog.",
 		"lets out soft pants.",
-		"pulls his tongue out, panting."
+		"pulls [user.p_their()] tongue out, panting."
 	)
 	message = pick(pants)
 	. = ..()
