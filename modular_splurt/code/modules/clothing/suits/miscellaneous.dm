@@ -1,3 +1,11 @@
+//Main code edits
+/obj/item/clothing/suit/toggle/jacket
+	mutantrace_variation = STYLE_DIGITIGRADE|STYLE_NO_ANTHRO_ICON
+
+/obj/item/clothing/suit/toggle/wbreakpoly
+	mutantrace_variation = STYLE_DIGITIGRADE|STYLE_NO_ANTHRO_ICON
+
+//Own stuff
 /obj/item/clothing/under/wedding_dress
 	name = "wedding dress"
 	desc = "A luxurious gown for once-in-a-lifetime occasions."
@@ -110,3 +118,50 @@
 
 /obj/item/clothing/head/hooded/corpus/c //command
 	icon_state = "corpusc"
+
+// GWTB-inspired stuff wooo
+/obj/item/clothing/suit/goner
+	name = "trencher coat"
+	desc = "A generic trenchcoat of the boring wars. This one have purple, corporate insignias."
+	icon = 'modular_splurt/icons/obj/clothing/suits.dmi'
+	mob_overlay_icon = 'modular_splurt/icons/mob/clothing/suit.dmi'
+	anthro_mob_worn_overlay = 'modular_splurt/icons/mob/clothing/suit_digi.dmi'
+	icon_state = "goner_suit"
+	body_parts_covered = CHEST|GROIN|LEGS|ARMS
+	cold_protection = CHEST|GROIN|LEGS|ARMS
+	heat_protection = CHEST|GROIN|LEGS|ARMS
+	armor = list(MELEE = 25, BULLET = 10, LASER = 25, ENERGY = 10, BOMB = 5, BIO = 5, RAD = 5, FIRE = 5, ACID = 45) // Det's armor value + 5 BOMB&BIO&RAD&FIRE
+
+/obj/item/clothing/suit/goner/fake
+	name = "trencher coat replica"
+	desc = "A 90% replica of No Man's Land-type coat."
+	armor = 0
+
+/obj/item/clothing/suit/goner/fake/poly
+	name = "polychromic trencher coat"
+	desc = "A generic, grey trenchcoat with polychromatic spots."
+	var/list/poly_colors = list("#E6E6E6", "#D6D6D6", "#D6D6D6")
+
+/obj/item/clothing/suit/goner/fake/poly/ComponentInitialize()
+	. = ..()
+	AddElement(/datum/element/polychromic, poly_colors, 3)
+
+/obj/item/clothing/suit/goner/red
+	name = "red trencher coat"
+	desc = "A trenchcoat of the boring wars. This one have red insignias."
+	icon_state = "goner_suit_r"
+
+/obj/item/clothing/suit/goner/green
+	name = "green trencher coat"
+	desc = "A trenchcoat of the boring wars. This one have green insignias."
+	icon_state = "goner_suit_g"
+
+/obj/item/clothing/suit/goner/blue
+	name = "blue trencher coat"
+	desc = "A trenchcoat of the boring wars. This one have blue insignias."
+	icon_state = "goner_suit_b"
+
+/obj/item/clothing/suit/goner/yellow
+	name = "yellow trencher coat"
+	desc = "A trenchcoat of the boring wars. This one have yellow insignias."
+	icon_state = "goner_suit_y"

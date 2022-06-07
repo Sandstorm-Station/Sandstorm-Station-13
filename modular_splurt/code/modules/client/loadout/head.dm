@@ -27,3 +27,18 @@
 
 /datum/gear/head/cowboyhat/sec
 	restricted_roles = list("Warden","Detective","Security Officer","Head of Security", "Brig Physician", "Blueshield")
+
+// Polychrome GWTB
+/datum/gear/head/gonerhelm
+	name = "polychromic trencher helmet"
+	cost = 2
+	path = /obj/item/clothing/head/helmet/goner/fake/poly
+	loadout_flags = LOADOUT_CAN_NAME | LOADOUT_CAN_DESCRIPTION | LOADOUT_CAN_COLOR_POLYCHROMIC
+	loadout_initial_colors = list("#D9D9D9")
+
+/datum/gear/head/goneroffcap
+	name = "polychromic trencher officer cap"
+	cost = 2
+	path = /obj/item/clothing/head/helmet/goner/officer/fake/poly
+	loadout_flags = LOADOUT_CAN_NAME | LOADOUT_CAN_DESCRIPTION | LOADOUT_CAN_COLOR_POLYCHROMIC
+	loadout_initial_colors = list("#F2F2F2")

@@ -1122,9 +1122,10 @@ GLOBAL_LIST_EMPTY(preferences_datums)
 				p_chaos = preferred_chaos
 			dat += "<b>Preferred Chaos Amount:</b> <a href='?_src_=prefs;preference=preferred_chaos;task=input'>[p_chaos]</a><br>"
 
-			dat += "<h2>Splurt Preferences</h2>"
+			dat += "<h2>S.P.L.U.R.T. Preferences</h2>"
 			dat += "<b>Be Antagonist Victim:</b> <a href='?_src_=prefs;preference=be_victim;task=input'>[be_victim ? be_victim : BEVICTIM_ASK]</a><br>"
 			dat += "<b>Disable combat mode cursor:</b> <a href='?_src_=prefs;preference=disable_combat_cursor'>[disable_combat_cursor?"Yes":"No"]</a><br>"
+			dat += "<b>Splashscreen Player Panel Style:</b> <a href='?_src_=prefs;preference=tg_playerpanel'>[(toggles & TG_PLAYER_PANEL)?"TG":"Old"]</a><br>"
 			dat += "<br>"
 
 			dat += "</td>"
@@ -3056,6 +3057,10 @@ GLOBAL_LIST_EMPTY(preferences_datums)
 			switch(href_list["preference"])
 				if("disable_combat_cursor")
 					disable_combat_cursor = !disable_combat_cursor
+				if("tg_playerpanel")
+					toggles ^= TG_PLAYER_PANEL
+					to_chat(user, span_warning("Please relog in order to apply the changes"))
+					save_preferences()
 				//CITADEL PREFERENCES EDIT - I can't figure out how to modularize these, so they have to go here. :c -Pooj
 				if("genital_colour")
 					features["genitals_use_skintone"] = !features["genitals_use_skintone"]
@@ -3627,8 +3632,7 @@ GLOBAL_LIST_EMPTY(preferences_datums)
 	//reset size if applicable
 	if(character.dna.features["body_size"])
 		var/initial_old_size = character.dna.features["body_size"]
-		character.dna.features["body_size"] = RESIZE_DEFAULT_SIZE
-		character.dna.update_body_size(initial_old_size)
+		character.update_size(RESIZE_DEFAULT_SIZE, initial_old_size)
 
 	character.real_name = nameless ? "[real_name] #[rand(10000, 99999)]" : real_name
 	character.name = character.real_name
@@ -3708,7 +3712,7 @@ GLOBAL_LIST_EMPTY(preferences_datums)
 
 	character.give_genitals(TRUE) //character.update_genitals() is already called on genital.update_appearance()
 
-	character.dna.update_body_size(old_size)
+	character.update_size(get_size(character), old_size)
 
 	//speech stuff
 	if(custom_tongue != "default")
