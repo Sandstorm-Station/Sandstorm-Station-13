@@ -1,16 +1,14 @@
 /obj/item/clothing/gloves
 	var/dummy_thick = FALSE // is able to hold accessories on its item
-	// Sandstorm edit - Removed the old attached accessory system. We use a list of accessories instead.
-	var/list/obj/item/clothing/accessory/ring/attached_accessories = list()
 	var/max_accessories = 1
-	// Sandstorm edit END
-	var/mutable_appearance/accessory_overlay
+	var/list/obj/item/clothing/accessory/ring/attached_accessories = list()
+	var/list/mutable_appearance/accessory_overlays = list()
 
 /obj/item/clothing/gloves/worn_overlays(isinhands = FALSE, icon_file, used_state, style_flags = NONE)
 	. = ..()
 	if(!isinhands)
-		if(accessory_overlay)
-			. += accessory_overlay
+		if(length(accessory_overlays))
+			. += accessory_overlays
 
 /obj/item/clothing/gloves/attackby(obj/item/I, mob/user, params)
 	if(!attach_accessory(I, user))
@@ -20,7 +18,7 @@
 	. = ..()
 	if(!istype(user) || !user.canUseTopic(src, BE_CLOSE, ismonkey(user)))
 		return
-	if(length(attached_accessories)) // Sandstorm edit
+	if(length(attached_accessories))
 		remove_accessory(user)
 
 /obj/item/clothing/gloves/equipped(mob/user, slot)
@@ -70,14 +68,16 @@
 			if((flags_inv & HIDEACCESSORY) || (A.flags_inv & HIDEACCESSORY))
 				return TRUE
 
-			// Sandstorm edit
-			accessory_overlay = mutable_appearance(I.mob_overlay_icon, I.item_state)
-			for(var/obj/item/clothing/accessory/ring/attached_accessory in attached_accessories)
-				var/mutable_appearance/Y = mutable_appearance(attached_accessory.mob_overlay_icon, attached_accessory.icon_state, ABOVE_HUD_LAYER)
-				Y.alpha = attached_accessory.alpha
-				Y.color = attached_accessory.color
-				accessory_overlay.add_overlay(Y)
-			// Sandstorm edit END
+			accessory_overlays = list(mutable_appearance('icons/mob/clothing/accessories.dmi', "blank"))
+			for(var/obj/item/clothing/accessory/attached_accessory in attached_accessories)
+				var/datum/element/polychromic/polychromic = LAZYACCESS(attached_accessory.comp_lookup, "item_worn_overlays")
+				if(!polychromic)
+					var/mutable_appearance/accessory_overlay = mutable_appearance(attached_accessory.mob_overlay_icon, attached_accessory.item_state || attached_accessory.icon_state, ABOVE_HUD_LAYER)
+					accessory_overlay.alpha = attached_accessory.alpha
+					accessory_overlay.color = attached_accessory.color
+					accessory_overlays += accessory_overlay
+				else
+					polychromic.apply_worn_overlays(attached_accessory, FALSE, attached_accessory.mob_overlay_icon, attached_accessory.item_state || attached_accessory.icon_state, NONE, accessory_overlays)
 
 			if(ishuman(loc))
 				var/mob/living/carbon/human/H = loc
@@ -91,10 +91,8 @@
 	if(!can_use(user))
 		return
 
-	// Sandstorm edit
 	if(length(attached_accessories))
 		var/obj/item/clothing/accessory/ring/A = attached_accessories[length(attached_accessories)]
-	// Sandstorm edit END
 		A.detach(src, user)
 		if(user.put_in_hands(A))
 			to_chat(user, "<span class='notice'>You detach [A] from [src].</span>")
