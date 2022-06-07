@@ -92,7 +92,25 @@
 	lose_text = "<span class='notice'>You no longer feel like being a pet...</span>"
 	processing_quirk = TRUE
 	var/mood_category = "dom_trained"
-	var/distance_delay = 0
+	var/notice_delay = 0
+	var/mob/living/carbon/human/last_dom
+
+/datum/quirk/well_trained/add()
+	. = ..()
+	RegisterSignal(quirk_holder, COMSIG_PARENT_EXAMINE, .proc/on_examine_holder)
+
+/datum/quirk/well_trained/remove()
+	. = ..()
+	UnregisterSignal(quirk_holder, COMSIG_PARENT_EXAMINE)
+
+/datum/quirk/well_trained/proc/on_examine_holder(atom/source, mob/living/user, list/examine_list)
+	SIGNAL_HANDLER
+
+	if(!istype(user))
+		return
+	if(!user.has_quirk(/datum/quirk/dominant_aura))
+		return
+	examine_list += span_lewd("You can sense submissiveness irradiating from [quirk_holder.p_them()]")
 
 /datum/quirk/well_trained/on_process()
 	. = ..()
@@ -118,6 +136,7 @@
 
 	//Return if no dom is found
 	if(!.)
+		last_dom = null
 		return
 
 	//Handle the mood
@@ -127,35 +146,24 @@
 	else
 		SEND_SIGNAL(quirk_holder, COMSIG_ADD_MOOD_EVENT, mood_category, /datum/mood_event/dominant/need)
 
-	//Handle chat effects
-	if(world.time < distance_delay)
-		return .
-	var/distance_mod = (-9/50)*closest_distance + 1
-	var/distance_seconds
-	switch(closest_distance)
-		if(5)
-			distance_seconds = 20
-		if(4)
-			distance_seconds = 15
-		if(3)
-			distance_seconds = 10
-		if(0 to 2)
-			distance_seconds = 7
+	//Don't do anything if a previous dom was found
+	if(last_dom)
+		notice_delay = world.time + 15 SECONDS
+		return
 
-	if(prob(30 * distance_mod))
-		var/list/notices = list(
-			"You feel someone's presence making you more submissive.",
-			"The thought of being commanded floods you with lust.",
-			"You really want to be called a good [good_x].",
-			"Someone's presence is making you all flustered.",
-			"You start getting excited and sweating."
-		)
-		to_chat(quirk_holder, span_lewd(pick(notices)))
-	if(prob(20) * distance_mod)
-		quirk_holder.emote(pick("blush", "pant"))
-	if(prob(15) * distance_mod)
-		quirk_holder.do_jitter_animation(50*distance_mod)
-		quirk_holder.visible_message(span_notice("\The [quirk_holder] shakes lewdly in [quirk_holder.p_their()] place..."))
+	last_dom = .
 
-	if(distance_seconds > 1)
-		distance_delay = world.time + (distance_seconds SECONDS)
+	if(notice_delay > world.time)
+		return
+
+	//Let them know they're near
+	var/list/notices = list(
+		"You feel someone's presence making you more submissive.",
+		"The thought of being commanded floods you with lust.",
+		"You really want to be called a good [good_x].",
+		"Someone's presence is making you all flustered.",
+		"You start getting excited and sweating."
+	)
+
+	to_chat(quirk_holder, span_lewd(pick(notices)))
+	notice_delay = world.time + 15 SECONDS

@@ -79,15 +79,19 @@
 		switch(E?.key)
 			if("snap")
 				sub.dir = get_dir(sub, quirk_holder)
+				sub.emote(pick("blush", "pant"))
 				sub.visible_message(span_notice("\The <b>[sub]</b> turns shyly towards \the <b>[quirk_holder]</b>."), "You stare into \the [quirk_holder] submissively.")
 			if("snap2")
 				sub.dir = get_dir(sub, quirk_holder)
 				sub.KnockToFloor()
+				sub.emote(pick("blush", "pant"))
 				sub.visible_message(span_lewd("\The <b>[sub]</b> submissively throws [sub.p_them()]self on the floor."),
 									span_lewd("You throw yourself on the floor like a dog on <b>[quirk_holder]</b>'s command."))
 			if("snap3")
 				sub.KnockToFloor()
 				step(sub, get_dir(sub, quirk_holder))
+				sub.emote(pick("blush", "pant"))
+				sub.do_jitter_animation(30) //You're being moved anyways
 				sub.visible_message(span_lewd("\The <b>[sub]</b> crawls closer to \the <b>[quirk_holder]</b> in all fours, following [quirk_holder.p_their()] command"),
 									span_lewd("You get on your fours and crawl towards \the <b>[quirk_holder]</b> like a good, submissive boy."))
 		. = TRUE
