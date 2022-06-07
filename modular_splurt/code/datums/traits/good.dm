@@ -76,6 +76,12 @@
 	for(var/mob/living/carbon/human/sub in hearers(DOMINANT_DETECT_RANGE, quirk_holder))
 		if(!sub.has_quirk(/datum/quirk/well_trained) || (sub == quirk_holder))
 			continue
+		var/good_x = "pet"
+		switch(sub.gender)
+			if(MALE)
+				good_x = "boy"
+			if(FEMALE)
+				good_x = "girl"
 		switch(E?.key)
 			if("snap")
 				sub.dir = get_dir(sub, quirk_holder)
@@ -93,7 +99,7 @@
 				sub.emote(pick("blush", "pant"))
 				sub.do_jitter_animation(30) //You're being moved anyways
 				sub.visible_message(span_lewd("\The <b>[sub]</b> crawls closer to \the <b>[quirk_holder]</b> in all fours, following [quirk_holder.p_their()] command"),
-									span_lewd("You get on your fours and crawl towards \the <b>[quirk_holder]</b> like a good, submissive boy."))
+									span_lewd("You get on your fours and crawl towards \the <b>[quirk_holder]</b> like a good, submissive [good_x]."))
 		. = TRUE
 
 	if(.)
