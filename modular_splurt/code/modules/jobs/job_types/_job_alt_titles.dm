@@ -79,7 +79,8 @@
 		"Tourist",
 		"Clerk",
 		"Blacksmith",
-		"Bard"
+		"Bard",
+		"Snack"
 	)
 	LAZYADD(alt_titles, extra_titles)
 

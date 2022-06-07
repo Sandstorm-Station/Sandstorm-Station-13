@@ -14,4 +14,6 @@
 	UnregisterSignal(source, COMSIG_MOB_SAY)
 
 /datum/element/smalltalk/proc/handle_speech(datum/source, list/speech_args)
+	SIGNAL_HANDLER
+	
 	speech_args[SPEECH_SPANS] |= SPAN_SMALL
