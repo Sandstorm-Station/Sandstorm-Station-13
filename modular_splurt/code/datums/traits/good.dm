@@ -86,7 +86,8 @@
 			if("snap")
 				sub.dir = get_dir(sub, quirk_holder)
 				sub.emote(pick("blush", "pant"))
-				sub.visible_message(span_notice("\The <b>[sub]</b> turns shyly towards \the <b>[quirk_holder]</b>."), "You stare into \the [quirk_holder] submissively.")
+				sub.visible_message(span_notice("\The <b>[sub]</b> turns shyly towards \the <b>[quirk_holder]</b>."),
+									span_lewd("You stare into \the [quirk_holder] submissively."))
 			if("snap2")
 				sub.dir = get_dir(sub, quirk_holder)
 				sub.KnockToFloor()
