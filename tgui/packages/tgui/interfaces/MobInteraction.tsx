@@ -5,8 +5,67 @@ import { useBackend, useLocalState } from '../backend';
 import { BlockQuote, Button, Flex, LabeledList, Icon, Input, Section, Table, Tabs, Stack } from '../components';
 import { Window } from '../layouts';
 
+type HeaderInfo = {
+  isTargetSelf: boolean;
+  interactingWith: string;
+  selfAttributes: string[];
+  theirAttributes: string[];
+}
+
+type ContentInfo = {
+  interactions: InteractionData[];
+}
+
+type InteractionData = {
+  key: string;
+  desc: string;
+  type: number;
+}
+
+type GenitalInfo = {
+  genitals: GenitalData[];
+}
+
+type GenitalData = {
+  name: string,
+  key: string,
+  visibility: string,
+  possible_choices: string[],
+}
+
+type CharacterPrefsInfo = {
+  erp_pref: number,
+  noncon_pref: number,
+  vore_pref: number,
+  extreme_pref: number,
+  extreme_harm: boolean,
+}
+
+type ContentPrefsInfo = {
+  verb_consent: number,
+  lewd_verb_sounds: number,
+  arousable: number,
+  genital_examine: number,
+  vore_examine: number,
+  medihound_sleeper: number,
+  eating_noises: number,
+  digestion_noises: number,
+  trash_forcefeed: number,
+  forced_fem: number,
+  forced_masc: number,
+  hypno: number,
+  bimbofication: number,
+  breast_enlargement: number,
+  penis_enlargement: number,
+  butt_enlargement: number,
+  never_hypno: number,
+  no_aphro: number,
+  no_ass_slap: number,
+  no_auto_wag: number,
+}
+
 export const MobInteraction = (props, context) => {
-  const { act, data } = useBackend(context);
+  const { act, data } = useBackend<HeaderInfo>(context);
   const {
     isTargetSelf,
     interactingWith,
@@ -78,7 +137,7 @@ export const MobInteraction = (props, context) => {
 };
 
 const InteractionsTab = (props, context) => {
-  const { act, data } = useBackend(context);
+  const { act, data } = useBackend<ContentInfo>(context);
   const [
     searchText,
     setSearchText,
@@ -103,20 +162,20 @@ const InteractionsTab = (props, context) => {
       {
         interactions.length ? (
           interactions.map((interaction) => (
-            <Table.Row key={interaction["key"]}>
+            <Table.Row key={interaction.key}>
               <Button
-                key={interaction['key']}
-                content={interaction['desc']}
-                color={interaction['type'] === 2 ? "red" : interaction['type'] ? "pink" : "default"}
+                key={interaction.key}
+                content={interaction.desc}
+                color={interaction.type === 2 ? "red" : interaction.type ? "pink" : "default"}
                 fluid
                 mb={0.3}
                 onClick={() => act('interact', {
-                  interaction: interaction['key'],
+                  interaction: interaction.key,
                 })} />
             </Table.Row>
           ))
         ) : (
-          <center>
+          <Section align="center">
             {
               searchText ? (
                 "No matching results."
@@ -124,7 +183,7 @@ const InteractionsTab = (props, context) => {
                 "No interactions available."
               )
             }
-          </center>
+          </Section>
         )
       }
     </Table>
@@ -135,7 +194,8 @@ const InteractionsTab = (props, context) => {
  * Interaction sorter! also search box
  */
 export const sortInteractions = (interactions, searchText = '') => {
-  const testSearch = createSearch(searchText, interaction => interaction.desc);
+  const testSearch = createSearch<InteractionData>(searchText,
+    interaction => interaction.desc);
   return flow([
     // Optional search term
     searchText && filter(testSearch),
@@ -154,14 +214,14 @@ const ModeToIcon = {
 };
 
 const GenitalVisibilityTab = (props, context) => {
-  const { act, data } = useBackend(context);
+  const { act, data } = useBackend<GenitalInfo>(context);
   const genitals = data.genitals || [];
   return (
     genitals.length ? (
       <Flex direction="column">
         <LabeledList>
           {genitals.map(genital => (
-            <LabeledList.Item key={genital['key']} label={genital['name']}>
+            <LabeledList.Item key={genital.key} label={genital.name}>
               {genital.possible_choices.map(choice => (
                 <Button
                   key={choice}
@@ -169,7 +229,7 @@ const GenitalVisibilityTab = (props, context) => {
                   icon={ModeToIcon[choice]}
                   color={genital.visibility === choice ? "green" : "default"}
                   onClick={() => act('genital', {
-                    genital: genital['key'],
+                    genital: genital.key,
                     visibility: choice,
                   })} />
               ))}
@@ -177,12 +237,17 @@ const GenitalVisibilityTab = (props, context) => {
           ))}
         </LabeledList>
       </Flex>
-    ) : ("You don't seem to have any genitals... Or any that you could modify")
+    ) : (
+      <Section align="center">
+        You don&apos;t seem to have any genitals...
+        Or any that you could modify.
+      </Section>
+    )
   );
 };
 
 const CharacterPrefsTab = (props, context) => {
-  const { act, data } = useBackend(context);
+  const { act, data } = useBackend<CharacterPrefsInfo>(context);
   const {
     erp_pref,
     noncon_pref,
@@ -289,14 +354,14 @@ const CharacterPrefsTab = (props, context) => {
           <LabeledList.Item label="Extreme Harm">
             <Button
               icon={"check"}
-              color={extreme_harm === 1 ? "green" : "default"}
+              color={extreme_harm ? "green" : "default"}
               onClick={() => act('char_pref', {
                 char_pref: 'extreme_harm',
                 value: 1,
               })} />
             <Button
               icon={"times"}
-              color={extreme_harm === 0 ? "red" : "default"}
+              color={extreme_harm ? "default" : "red"}
               onClick={() => act('char_pref', {
                 char_pref: 'extreme_harm',
                 value: 0,
@@ -309,7 +374,7 @@ const CharacterPrefsTab = (props, context) => {
 };
 
 const ContentPreferencesTab = (props, context) => {
-  const { act, data } = useBackend(context);
+  const { act, data } = useBackend<ContentPrefsInfo>(context);
   const {
     verb_consent,
     lewd_verb_sounds,
