@@ -4,7 +4,7 @@
 
 /datum/outfit/job/detective/New()
     . = ..()
-    backpack_contents += list(/obj/item/device/hailer)
+    backpack_contents += list(/obj/item/device/hailer, /obj/item/clothing/accessory/badge)
 
 /datum/outfit/job/warden/New()
     . = ..()
