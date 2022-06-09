@@ -1045,13 +1045,13 @@
 	glass_desc = "Delicious flavored strawberry syrup mixed with milk."
 	value = REAGENT_VALUE_VERY_COMMON
 
-/datum/reagent/consumable/tea/pinkmilk/on_mob_life(mob/living/carbon/M)
+/datum/reagent/consumable/pinkmilk/on_mob_life(mob/living/carbon/M)
 	if(prob(15))
 		to_chat(M, "<span class = 'notice'>[pick("You cant help to smile.","You feel nostalgia all of sudden.","You remember to relax.")]</span>")
 	..()
 	. = 1
 
-/datum/reagent/consumable/pinktea //Tiny Tim song
+/datum/reagent/consumable/tea/pink //Tiny Tim song
 	name = "Strawberry Tea"
 	description = "A timeless classic!"
 	color = "#f76aeb"//rgb(247, 106, 235)
@@ -1061,7 +1061,7 @@
 	glass_name = "mug of strawberry tea"
 	glass_desc = "Delicious traditional tea flavored with strawberries."
 
-/datum/reagent/consumable/tea/pinktea/on_mob_life(mob/living/carbon/M)
+/datum/reagent/consumable/tea/pink/on_mob_life(mob/living/carbon/M)
 	if(prob(10))
 		to_chat(M, "<span class = 'notice'>[pick("Diamond skies where white deer fly.","Sipping strawberry tea.","Silver raindrops drift through timeless, Neverending June.","Crystal ... pearls free, with love!","Beaming love into me.")]</span>")
 	..()

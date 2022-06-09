@@ -131,8 +131,8 @@
 			"slams in and out of \the <b>[partner]</b>'s mouth, [u_His] balls slapping off [t_His] face.")]"
 		if(rand(3))
 			partner.emote("chokes on \the [user]")
-			if(prob(1) && istype(partner))
-				partner.adjustOxyLoss(5)
+			/*if(prob(1) && istype(partner)) //Handled on modular_splurt
+				partner.adjustOxyLoss(5)*/
 		if(partner.a_intent == INTENT_HARM)
 			// adjustBruteLoss(5)
 			retaliation_message = pick(

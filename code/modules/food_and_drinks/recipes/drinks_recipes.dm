@@ -1016,8 +1016,8 @@
 
 /datum/chemical_reaction/pinktea
 	name = "Strawberry Tea"
-	id = /datum/reagent/consumable/pinktea
-	results = list(/datum/reagent/consumable/pinktea = 5)
+	id = /datum/reagent/consumable/tea/pink
+	results = list(/datum/reagent/consumable/tea/pink = 5)
 	required_reagents = list(/datum/reagent/consumable/strawberryjuice = 1, /datum/reagent/consumable/tea/arnold_palmer = 1, /datum/reagent/consumable/sugar = 1)
 
 /datum/chemical_reaction/catnip_tea
