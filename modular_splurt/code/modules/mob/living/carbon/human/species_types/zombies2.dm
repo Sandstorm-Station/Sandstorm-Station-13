@@ -5,7 +5,7 @@
 
 /mob/living/carbon/get_status_tab_items()
 	. = ..()
-	var/obj/item/organ/heart/decayed/decaying = getorgan(/obj/item/organ/heart/decayed)
+	var/obj/item/organ/heart/decayed_heart/decaying = getorgan(/obj/item/organ/heart/decayed_heart)
 	if(decaying)
 		. += "Current blood level: [blood_volume]/[BLOOD_VOLUME_MAXIMUM]."
 
@@ -24,8 +24,8 @@
 	coldmod = 0.67
 	cold_offset = SYNTH_COLD_OFFSET
 	wings_icons = SPECIES_WINGS_SKELETAL
-	species_traits = list(NOZOMBIE,NOTRANSSTING,MUTCOLORS,EYECOLOR,LIPS,HAIR,HORNCOLOR,WINGCOLOR,CAN_SCAR,HAS_FLESH,HAS_BONE)
-	inherent_traits = list(TRAIT_AUXILIARY_LUNGS,TRAIT_NOBREATH,TRAIT_RESISTLOWPRESSURE,TRAIT_RADIMMUNE,TRAIT_EASYDISMEMBER,TRAIT_LIMBATTACHMENT,TRAIT_NOSOFTCRIT,TRAIT_NODEATH,TRAIT_FAKEDEATH)
+	species_traits = list(DRINKSBLOOD,NOZOMBIE,NOTRANSSTING,MUTCOLORS,EYECOLOR,LIPS,HAIR,HORNCOLOR,WINGCOLOR,CAN_SCAR,HAS_FLESH,HAS_BONE)
+	inherent_traits = list(TRAIT_NOPULSE,TRAIT_STABLEHEART,TRAIT_NOBREATH,TRAIT_RESISTLOWPRESSURE,TRAIT_RADIMMUNE,TRAIT_EASYDISMEMBER,TRAIT_LIMBATTACHMENT,TRAIT_NOSOFTCRIT,TRAIT_FAKEDEATH)
 	inherent_biotypes = MOB_UNDEAD|MOB_HUMANOID|MOB_BEAST
 
 	mutanttongue = /obj/item/organ/tongue/zombie
@@ -33,14 +33,19 @@
 	species_category = SPECIES_CATEGORY_UNDEAD
 
 /datum/species/mammal/undead/on_species_gain(mob/living/carbon/C, datum/species/old_species)
-	C.set_screwyhud(SCREWYHUD_HEALTHY)
 	. = ..()
+	C.set_screwyhud(SCREWYHUD_HEALTHY)
 
 	var/obj/item/organ/undead_infection/mammal/M
 	M = C.getorganslot(ORGAN_SLOT_ZOMBIE)
 	if(!M)
 		M = new()
 		M.Insert(C)
+	var/obj/item/organ/heart/decayed_heart/H
+	H = C.getorgan(/obj/item/organ/heart/decayed_heart)
+	if(!H)
+		H = new()
+		H.Insert(C, drop_if_replaced = FALSE)
 
 /datum/species/mammal/undead/spec_life(mob/living/carbon/human/C)
 	. = ..()
@@ -49,11 +54,11 @@
 	return
 
 /datum/species/mammal/undead/on_species_loss(mob/living/carbon/C, datum/species/new_species)
+	. = ..()
 	C.set_screwyhud(SCREWYHUD_NONE)
-	..()
 
 /datum/species/insect/undead
-// Lighterthan other zombies. Spaceproofed
+// Lighter than other zombies. Spaceproofed
 	id = SPECIES_UINSECT
 	name = "Undead Insect"
 	exotic_bloodtype = "U"
@@ -66,8 +71,8 @@
 	speedmod = 1.2
 	coldmod = 0.67
 	cold_offset = SYNTH_COLD_OFFSET
-	species_traits = list(NOZOMBIE,NOTRANSSTING,MUTCOLORS,EYECOLOR,LIPS,HAIR,HORNCOLOR,WINGCOLOR,CAN_SCAR,HAS_FLESH,HAS_BONE)
-	inherent_traits = list(TRAIT_AUXILIARY_LUNGS,TRAIT_NOBREATH,TRAIT_RESISTLOWPRESSURE,TRAIT_RADIMMUNE,TRAIT_EASYDISMEMBER,TRAIT_LIMBATTACHMENT,TRAIT_NODEATH,TRAIT_FAKEDEATH)
+	species_traits = list(DRINKSBLOOD,NOZOMBIE,NOTRANSSTING,MUTCOLORS,EYECOLOR,LIPS,HAIR,HORNCOLOR,WINGCOLOR,CAN_SCAR,HAS_FLESH,HAS_BONE)
+	inherent_traits = list(TRAIT_NOPULSE,TRAIT_STABLEHEART,TRAIT_NOBREATH,TRAIT_RESISTLOWPRESSURE,TRAIT_RADIMMUNE,TRAIT_EASYDISMEMBER,TRAIT_LIMBATTACHMENT,TRAIT_FAKEDEATH)
 	inherent_biotypes = MOB_UNDEAD|MOB_HUMANOID|MOB_BUG
 
 	mutanteyes = /obj/item/organ/eyes/decayed 	//The lamp has abandoned you, monster
@@ -89,8 +94,8 @@
 	if(!I)
 		I = new()
 		I.Insert(C, drop_if_replaced = FALSE)
-	var/obj/item/organ/heart/decayed/H
-	H = C.getorgan(/obj/item/organ/heart/decayed)
+	var/obj/item/organ/heart/decayed_heart/H
+	H = C.getorgan(/obj/item/organ/heart/decayed_heart)
 	if(!H)
 		H = new()
 		H.Insert(C, drop_if_replaced = FALSE)
@@ -117,9 +122,9 @@
 	say_mod = "moans"
 	speedmod = 1.8
 	brutemod = 0.8
-	burnmod = 0.67 //They are fire retardant... Glizzy popsicles can't survive in cold or space, though.
-	species_traits = list(NOZOMBIE,NOTRANSSTING,MUTCOLORS,EYECOLOR,LIPS,HAIR,HORNCOLOR,WINGCOLOR,CAN_SCAR,HAS_FLESH,HAS_BONE)
-	inherent_traits = list(TRAIT_AUXILIARY_LUNGS,TRAIT_NOBREATH,TRAIT_RESISTHEAT,TRAIT_RESISTHIGHPRESSURE,TRAIT_RADIMMUNE,TRAIT_EASYDISMEMBER,TRAIT_LIMBATTACHMENT,TRAIT_NOHARDCRIT,TRAIT_NODEATH,TRAIT_FAKEDEATH)
+	burnmod = 0.67 //They are fire retardant... because they can't have fire breath
+	species_traits = list(DRINKSBLOOD,NOZOMBIE,NOTRANSSTING,MUTCOLORS,EYECOLOR,LIPS,HAIR,HORNCOLOR,WINGCOLOR,CAN_SCAR,HAS_FLESH,HAS_BONE)
+	inherent_traits = list(TRAIT_NOPULSE,TRAIT_STABLEHEART,TRAIT_NOBREATH,TRAIT_RESISTHEAT,TRAIT_RESISTHIGHPRESSURE,TRAIT_RADIMMUNE,TRAIT_EASYDISMEMBER,TRAIT_LIMBATTACHMENT,TRAIT_NOHARDCRIT,TRAIT_FAKEDEATH)
 	inherent_biotypes = MOB_UNDEAD|MOB_HUMANOID|MOB_REPTILE
 
 	mutanttongue = /obj/item/organ/tongue/zombie
@@ -135,8 +140,8 @@
 	if(!M)
 		M = new()
 		M.Insert(C)
-	var/obj/item/organ/heart/decayed/H
-	H = C.getorgan(/obj/item/organ/heart/decayed)
+	var/obj/item/organ/heart/decayed_heart/H
+	H = C.getorgan(/obj/item/organ/heart/decayed_heart)
 	if(!H)
 		H = new()
 		H.Insert(C, drop_if_replaced = FALSE)
@@ -153,19 +158,24 @@
 
 //
 
+/obj/item/organ/brain/rotten_brain
+	name = "rotten brain"
+	desc = "Flies seem to be attracted to it..."
+	organ_flags = ORGAN_VITAL|ORGAN_EXTERNAL|ORGAN_NO_SPOIL
+
 /obj/item/organ/eyes/decayed
 	name = "shabriri grapes"
 	desc = "Delectably tender and sweet, yet searing..."
+	organ_flags = ORGAN_EXTERNAL
 	//Budget night_vision... Fear the sun, you monster
 	lighting_alpha = LIGHTING_PLANE_ALPHA_NV_TRAIT
 	see_in_dark = 6
 	flash_protect = -2
 
-/obj/item/organ/heart/decayed
+/obj/item/organ/heart/decayed_heart
 	name = "rotten heart"
-	desc = "A rotting mass of twisted sinew and viscera."
-
-	decay_factor = 0
+	desc = "A rotting mass of twisted viscera."
+	organ_flags = ORGAN_EXTERNAL
 
 	low_threshold_passed = "<span class='info'>Something forgotten weakens within your chest.</span>"
 	high_threshold_passed = "<span class='warning'>A chill of death stalks you.</span>"
@@ -173,11 +183,57 @@
 	high_threshold_cleared = "<span class='info'>The ghastly cold crawls back.</span>"
 
 	beating = FALSE
+	var/reviving = FALSE
 
-/obj/item/organ/heart/decayed/on_find(mob/living/finder)
+/obj/item/organ/heart/decayed_heart/on_find(mob/living/finder)
 	to_chat(finder, "<span class='warning'>Inside the chest is a sinewous \
 		mass of blood and viscera, sculpted crudely to resemble some \
 		makeshift heart.</span>")
+
+/obj/item/organ/heart/decayed_heart/on_life(seconds, times_fired)
+	. = ..()
+	if(owner.health <= HEALTH_THRESHOLD_CRIT)
+		if(reviving || islizard(owner) && !reviving) //Strong lizard blood.
+			if(owner.blood_volume >= BLOOD_VOLUME_SURVIVE)
+				owner.blood_volume -= 3
+				if(owner.getOxyLoss())
+					owner.adjustOxyLoss(-5)
+				if(owner.getBruteLoss())
+					owner.adjustBruteLoss(-3)
+				if(owner.getFireLoss())
+					owner.adjustFireLoss(-3)
+				if(owner.getToxLoss())
+					owner.adjustToxLoss(-1)
+		if(owner.health >= HEALTH_THRESHOLD_CRIT)
+			reviving = FALSE
+
+/obj/item/organ/heart/decayed_heart/on_death(seconds, times_fired)
+	. = ..()
+	if(reviving)
+		if(owner.blood_volume >= BLOOD_VOLUME_SURVIVE)
+			owner.blood_volume -= 1.5
+			if(owner.health <= HEALTH_THRESHOLD_FULLCRIT)
+				if(owner.getOxyLoss())
+					owner.adjustOxyLoss(-3)
+				if(owner.getBruteLoss())
+					owner.adjustBruteLoss(-1.5)
+				if(owner.getFireLoss())
+					owner.adjustFireLoss(-1.5)
+				if(owner.getToxLoss())
+					owner.adjustToxLoss(-1)
+			if(owner.health >= HEALTH_THRESHOLD_FULLCRIT)
+				owner.revive()
+				if(owner.stat == !DEAD) // incase any weird shit where they can't revive
+					owner.visible_message("<span class='danger'>[owner] suddenly convulses back to life!</span>")
+					owner.tod = null
+				owner.update_stat()
+				owner.update_health_hud()
+		if(owner.blood_volume <= BLOOD_VOLUME_SURVIVE)
+			reviving = FALSE
+			return
+	if(owner.health <= HEALTH_THRESHOLD_DEAD && owner.blood_volume >= BLOOD_VOLUME_SURVIVE)
+		reviving = TRUE
+		to_chat(owner, "<span class='alertwarning'>Your broken shell is stitching itself back together...</span>")
 
 /obj/item/organ/undead_infection
 	name = "festering ooze"
@@ -245,8 +301,8 @@
 		return
 	if(!iszombie(owner))
 		REMOVE_TRAIT(owner, TRAIT_NODEATH, DISEASE_TRAIT)
-		to_chat(owner, "<span class='cult'>Something isn't right. Your heart has stopped...  \
-		People like you don't deserve to live.</span>")
+		to_chat(owner, "<span class='cult'>Something isn't right.  \
+		Your heart has stopped...</span>")
 		var/revive_time = rand(revive_time_min, revive_time_max)
 		var/flags = TIMER_STOPPABLE
 		timer_id = addtimer(CALLBACK(src, .proc/zombify), revive_time, flags)
@@ -258,15 +314,15 @@
 		return
 
 	if(!iszombie(owner))
-		old_species = owner.dna.species.type
-		if(old_species == /datum/species/mammal)
-			owner.set_species(/datum/species/mammal/undead)
-		else if(old_species == /datum/species/insect)
-			owner.set_species(/datum/species/insect/undead)
-		else if(old_species == /datum/species/lizard)
-			owner.set_species(/datum/species/lizard/undead)
-		else
-			owner.set_species(/datum/species/zombie)
+		switch(old_species)
+			if(/datum/species/mammal)
+				owner.set_species(/datum/species/mammal/undead)
+			if(/datum/species/insect)
+				owner.set_species(/datum/species/insect/undead)
+			if(/datum/species/lizard)
+				owner.set_species(/datum/species/lizard/undead)
+			else
+				owner.set_species(/datum/species/zombie)
 
 	var/stand_up = (owner.stat == DEAD) || (owner.stat == UNCONSCIOUS)
 
@@ -274,7 +330,7 @@
 	owner.setToxLoss(0, 0)
 	owner.setOxyLoss(0, 0)
 	owner.heal_overall_damage(INFINITY, INFINITY, INFINITY, FALSE, FALSE, TRUE)
-	REMOVE_TRAIT(owner, TRAIT_DEATHCOMA, "disease")
+	REMOVE_TRAIT(owner, TRAIT_DEATHCOMA, DISEASE_TRAIT)
 
 	if(!owner.revive())
 		return
