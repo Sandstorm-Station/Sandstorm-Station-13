@@ -1,10 +1,16 @@
 /mob/living/carbon/human/handle_blood()
 	if(iszombie(src)) //We're basically pudding pops.
 		return
+	..()
+
+/mob/living/carbon/get_status_tab_items()
 	. = ..()
+	var/obj/item/organ/heart/decayed/decaying = getorgan(/obj/item/organ/heart/decayed)
+	if(decaying)
+		. += "Current blood level: [blood_volume]/[BLOOD_VOLUME_MAXIMUM]."
 
 /datum/species/mammal/undead
-// takes 20% more damage but doesn't soft-crit
+// takes 30% more damage but doesn't crit
 	id = SPECIES_UMAMMAL
 	name = "Undead Anthropomorph"
 	exotic_bloodtype = "U"
@@ -14,7 +20,7 @@
 	blacklisted = 1
 	say_mod = "moans"
 	speedmod = 1.5
-	armor = -0.2
+	armor = -0.3
 	coldmod = 0.67
 	cold_offset = SYNTH_COLD_OFFSET
 	wings_icons = SPECIES_WINGS_SKELETAL
@@ -36,7 +42,8 @@
 		M = new()
 		M.Insert(C)
 
-/datum/species/mammal/undead/proc/on_life(mob/living/carbon/C)
+/datum/species/mammal/undead/spec_life(mob/living/carbon/human/C)
+	. = ..()
 	C.set_screwyhud(SCREWYHUD_HEALTHY) //just in case of hallucinations
 	C.adjustStaminaLoss(-5) //no pain, no fatigue
 	return
@@ -46,7 +53,7 @@
 	..()
 
 /datum/species/insect/undead
-// Lighter and faster than other zombies. Hates light (No lamp for the dead)
+// Lighterthan other zombies. Spaceproofed
 	id = SPECIES_UINSECT
 	name = "Undead Insect"
 	exotic_bloodtype = "U"
@@ -73,17 +80,23 @@
 	. = ..()
 
 	var/obj/item/organ/undead_infection/insect/M
-	var/obj/item/organ/eyes/decayed/I
 	M = C.getorganslot(ORGAN_SLOT_ZOMBIE)
 	if(!M)
 		M = new()
 		M.Insert(C)
+	var/obj/item/organ/eyes/decayed/I
 	I = C.getorganslot(ORGAN_SLOT_EYES)
 	if(!I)
 		I = new()
 		I.Insert(C, drop_if_replaced = FALSE)
+	var/obj/item/organ/heart/decayed/H
+	H = C.getorgan(/obj/item/organ/heart/decayed)
+	if(!H)
+		H = new()
+		H.Insert(C, drop_if_replaced = FALSE)
 
-/datum/species/insect/undead/proc/on_life(mob/living/carbon/C)
+/datum/species/insect/undead/spec_life(mob/living/carbon/human/C)
+	. = ..()
 	C.set_screwyhud(SCREWYHUD_HEALTHY) //just in case of hallucinations
 	C.adjustStaminaLoss(-5) //no pain, no fatigue
 	return
@@ -103,7 +116,7 @@
 	blacklisted = 1
 	say_mod = "moans"
 	speedmod = 1.8
-	brutemod = 1.2
+	brutemod = 0.8
 	burnmod = 0.67 //They are fire retardant... Glizzy popsicles can't survive in cold or space, though.
 	species_traits = list(NOZOMBIE,NOTRANSSTING,MUTCOLORS,EYECOLOR,LIPS,HAIR,HORNCOLOR,WINGCOLOR,CAN_SCAR,HAS_FLESH,HAS_BONE)
 	inherent_traits = list(TRAIT_AUXILIARY_LUNGS,TRAIT_NOBREATH,TRAIT_RESISTHEAT,TRAIT_RESISTHIGHPRESSURE,TRAIT_RADIMMUNE,TRAIT_EASYDISMEMBER,TRAIT_LIMBATTACHMENT,TRAIT_NOHARDCRIT,TRAIT_NODEATH,TRAIT_FAKEDEATH)
@@ -122,8 +135,14 @@
 	if(!M)
 		M = new()
 		M.Insert(C)
+	var/obj/item/organ/heart/decayed/H
+	H = C.getorgan(/obj/item/organ/heart/decayed)
+	if(!H)
+		H = new()
+		H.Insert(C, drop_if_replaced = FALSE)
 
-/datum/species/lizard/undead/proc/on_life(mob/living/carbon/C)
+/datum/species/lizard/undead/spec_life(mob/living/carbon/human/C)
+	. = ..()
 	C.set_screwyhud(SCREWYHUD_HEALTHY) //just in case of hallucinations
 	C.adjustStaminaLoss(-5) //no pain, no fatigue
 	return
@@ -141,6 +160,24 @@
 	lighting_alpha = LIGHTING_PLANE_ALPHA_NV_TRAIT
 	see_in_dark = 6
 	flash_protect = -2
+
+/obj/item/organ/heart/decayed
+	name = "rotten heart"
+	desc = "A rotting mass of twisted sinew and viscera."
+
+	decay_factor = 0
+
+	low_threshold_passed = "<span class='info'>Something forgotten weakens within your chest.</span>"
+	high_threshold_passed = "<span class='warning'>A chill of death stalks you.</span>"
+	now_fixed = "<span class='cult'>It comforts you once more.</span>"
+	high_threshold_cleared = "<span class='info'>The ghastly cold crawls back.</span>"
+
+	beating = FALSE
+
+/obj/item/organ/heart/decayed/on_find(mob/living/finder)
+	to_chat(finder, "<span class='warning'>Inside the chest is a sinewous \
+		mass of blood and viscera, sculpted crudely to resemble some \
+		makeshift heart.</span>")
 
 /obj/item/organ/undead_infection
 	name = "festering ooze"
@@ -167,7 +204,7 @@
 	GLOB.zombie_infection_list -= src
 	. = ..()
 
-/obj/item/organ/undead_infection/Insert(var/mob/living/carbon/M, special = 0, drop_if_replaced = TRUE)
+/obj/item/organ/undead_infection/Insert(var/mob/living/carbon/M, special = FALSE, drop_if_replaced = TRUE)
 	. = ..()
 	START_PROCESSING(SSobj, src)
 
@@ -185,12 +222,14 @@
 		web of pus and viscera, bound tightly around the brain like some \
 		biological harness.</span>")
 
-/obj/item/organ/undead_infection/process()
+/obj/item/organ/undead_infection/process(special = FALSE)
 	if(!owner)
 		return
 	if(!(src in owner.internal_organs))
 		INVOKE_ASYNC(src,.proc/Remove,owner)
-	if(owner.mob_biotypes & MOB_MINERAL)//does not process in inorganic things
+	if(owner.mob_biotypes && MOB_MINERAL && MOB_UNDEAD)//We are already dead inside
+		. = ..()
+		STOP_PROCESSING(SSobj, src)
 		return
 	if (causes_damage && !iszombie(owner) && owner.stat != DEAD)
 		owner.adjustToxLoss(1)
@@ -200,7 +239,7 @@
 		return
 	if(owner.suiciding)
 		return
-	if(owner.stat != DEAD && !converts_living || !(HAS_TRAIT(owner, TRAIT_FAKEDEATH)) && !(HAS_TRAIT(owner, TRAIT_DEATHCOMA)))
+	if(owner.stat != DEAD && !converts_living)
 		return
 	if(!owner.getorgan(/obj/item/organ/brain))
 		return
@@ -258,7 +297,7 @@
 	old_species = /datum/species/lizard
 
 /datum/reagent/draughtofundeath
-	name = "Draught of Living Death"
+	name = "Essence of Living Death"
 	description = "Smells of asphodels and wormwood."
 	color = "#89c955" //RGB: 94, 255, 59
 	metabolization_rate = INFINITY
