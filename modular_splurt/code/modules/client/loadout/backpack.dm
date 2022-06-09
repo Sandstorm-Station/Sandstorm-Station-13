@@ -91,7 +91,7 @@
 /datum/gear/backback/secbadge
 	name = "Security Badge"
 	path = /obj/item/clothing/accessory/badge
-	restricted_role = list("Security Officer", "Warden", "Detective", "Head of Security")
+	restricted_roles = list("Security Officer", "Warden", "Detective", "Head of Security")
 
 /datum/gear/backpack/holobadge
 	name = "Security Holo Badge"
