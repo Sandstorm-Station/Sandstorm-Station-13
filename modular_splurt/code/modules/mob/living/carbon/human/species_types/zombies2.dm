@@ -225,7 +225,6 @@
 				owner.revive()
 				if(owner.stat == !DEAD) // incase any weird shit where they can't revive
 					owner.visible_message("<span class='danger'>[owner] suddenly convulses back to life!</span>")
-					owner.tod = null
 				owner.update_stat()
 				owner.update_health_hud()
 		if(owner.blood_volume <= BLOOD_VOLUME_SURVIVE)
