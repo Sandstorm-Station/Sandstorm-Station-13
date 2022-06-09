@@ -38,6 +38,7 @@ type CharacterPrefsInfo = {
   noncon_pref: number,
   vore_pref: number,
   extreme_pref: number,
+  unholy_pref: number,
   extreme_harm: boolean,
 }
 
@@ -58,6 +59,7 @@ type ContentPrefsInfo = {
   breast_enlargement: number,
   penis_enlargement: number,
   butt_enlargement: number,
+  belly_inflation: number,
   never_hypno: number,
   no_aphro: number,
   no_ass_slap: number,
