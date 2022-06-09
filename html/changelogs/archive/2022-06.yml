@@ -126,30 +126,6 @@
   timothyteakettle:
   - rscadd: adds paper skin and glass bones quirks
 2022-06-07:
-  BongaTheProto:
-  - rscadd: New panting emote
-  - rscadd: Adds a recipe for the cum donut
-  - rscadd: Adds a panting emote
-  - rscadd: Adds Dominant Aura and Well-trained quirks
-  - rscadd: Snack alt title for assistants
-  - soundadd: Adds sounds for the kiss them deeply interaction
-  - soundadd: Adds moaning sounds for verb moans
-  - tweak: Changes bane syndrome's value to -2
-  - tweak: Makes xenocommon a selectable language
-  - tweak: Fucking people's throats gives an actually harmful amount of oxyloss again
-  - tweak: If you have the voracious trait, the fat moodlet will become a positive
-      one.
-  - tweak: headpat slut will now give you an modified wuv element and possibly make
-      you cum
-  - bugfix: Fixes the notify verb so it actually removes you from the list if you
-      want it to
-  - bugfix: makes the cheesed moodlet actually check if you're a felinid
-  - bugfix: Gives Bane Syndrome its effects back
-  - bugfix: You can now actually dispense tea from the Soda Dispenser, rejoice!
-  - rscdel: deletes the double railing declaration in the code
-  - code_imp: changes some things to use the cooldown system
-  - code_imp: puts signal handlers in a couple procs where they needed to be
-  - code_imp: Adds a signal for when mobs use emotes
   Bhijn & Myr:
   - rscadd: During pride month, station nukes are significantly more efficient at
       revealing genders.
@@ -183,6 +159,30 @@
   - tweak: The float animation now uses pixel_z instead of pixel_y, fixing issues
       where the Y offset gets wiped due to the float animation. This also makes floating
       fully compatible with ctrl+WASD."
+  BongaTheProto:
+  - rscadd: New panting emote
+  - rscadd: Adds a recipe for the cum donut
+  - rscadd: Adds a panting emote
+  - rscadd: Adds Dominant Aura and Well-trained quirks
+  - rscadd: Snack alt title for assistants
+  - soundadd: Adds sounds for the kiss them deeply interaction
+  - soundadd: Adds moaning sounds for verb moans
+  - tweak: Changes bane syndrome's value to -2
+  - tweak: Makes xenocommon a selectable language
+  - tweak: Fucking people's throats gives an actually harmful amount of oxyloss again
+  - tweak: If you have the voracious trait, the fat moodlet will become a positive
+      one.
+  - tweak: headpat slut will now give you an modified wuv element and possibly make
+      you cum
+  - bugfix: Fixes the notify verb so it actually removes you from the list if you
+      want it to
+  - bugfix: makes the cheesed moodlet actually check if you're a felinid
+  - bugfix: Gives Bane Syndrome its effects back
+  - bugfix: You can now actually dispense tea from the Soda Dispenser, rejoice!
+  - rscdel: deletes the double railing declaration in the code
+  - code_imp: changes some things to use the cooldown system
+  - code_imp: puts signal handlers in a couple procs where they needed to be
+  - code_imp: Adds a signal for when mobs use emotes
   SandPoot:
   - refactor: Does some extremely minor touches on pulling/pushing code.
   timothyteakettle:
@@ -192,3 +192,8 @@
 2022-06-08:
   SandPoot:
   - tweak: The "MobInteraction" is now written on typescript.
+2022-06-09:
+  Anonymous:
+  - rscadd: Players, who somehow ended up controlling a simple mob, now can change
+      their genital set just like robots and pAIs.
+  - rscdel: My sanity.
