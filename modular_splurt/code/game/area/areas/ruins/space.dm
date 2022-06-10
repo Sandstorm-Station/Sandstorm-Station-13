@@ -38,6 +38,7 @@
 	has_gravity = STANDARD_GRAVITY
 
 /datum/map_template/ruin/space/radiostation
+	prefix = "modular_splurt/_maps/RandomRuins/SpaceRuins/"
 	id = "radiostation"
 	suffix = "radiostation.dmm"
 	name = "NT Radio Station"
