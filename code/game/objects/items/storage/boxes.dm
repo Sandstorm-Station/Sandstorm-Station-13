@@ -1432,7 +1432,8 @@
 		/obj/item/storage/box/beakers/bluespace=1,\
 		/obj/item/storage/box/beakers/variety=1,\
 		/obj/item/storage/box/material=1,\
-		/obj/item/storage/belt/medical/surgery_belt_adv=1
+		/obj/item/storage/belt/medical/surgery_belt_adv=1,
+		/obj/item/debug/omnitool=1
 		)
 	generate_items_inside(items_inside, src)
 

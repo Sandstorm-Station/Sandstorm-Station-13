@@ -84,3 +84,21 @@
 	item_state = "peacekeeper_trench_hos"
 	icon = 'modular_splurt/icons/obj/clothing/suits.dmi'
 	mob_overlay_icon = 'modular_splurt/icons/mob/clothing/suit.dmi'
+
+/obj/item/clothing/suit/sling
+	name = "rifle sling"
+	desc = "A sling with universal clips for holding various longarms, or even internals tanks."
+	icon = 'icons/obj/clothing/belts.dmi'
+	mob_overlay_icon = 'icons/mob/clothing/belt.dmi'
+	icon_state = "bandolier"
+	item_state = "bandolier"
+	mutantrace_variation = STYLE_DIGITIGRADE|STYLE_NO_ANTHRO_ICON
+	allowed = list(/obj/item/tank/internals, /obj/item/gun/ballistic/shotgun/varmintrifle, /obj/item/gun/ballistic/shotgun/huntingrifle, /obj/item/gun/ballistic/shotgun/hunting, /obj/item/gun/ballistic/shotgun/doublebarrel, /obj/item/gun/ballistic/revolver/doublebarrel/sawn, /obj/item/gun/ballistic/shotgun/leveraction, /obj/item/gun/ballistic/shotgun/brush, /obj/item/gun/ballistic/shotgun/brush2, /obj/item/gun/energy/e_gun)
+
+/datum/design/s_holster
+	name = "Rifle Sling"
+	id = "r_sling"
+	build_type = BIOGENERATOR
+	materials = list(/datum/material/biomass = 600)
+	build_path = /obj/item/clothing/suit/sling
+	category = list("initial","Organic Materials")
