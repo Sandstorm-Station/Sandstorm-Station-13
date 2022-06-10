@@ -50,6 +50,7 @@
 	has_gravity = STANDARD_GRAVITY
 
 /datum/map_template/ruin/space/syndielistenspace
+	prefix = "modular_splurt/_maps/RandomRuins/SpaceRuins/"
 	id = "syndielistenspace"
 	suffix = "syndielistenspace.dmm"
 	name = "Syndicate Listening Outpost"
