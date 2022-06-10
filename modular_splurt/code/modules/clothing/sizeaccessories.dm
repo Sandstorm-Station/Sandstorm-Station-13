@@ -1,6 +1,6 @@
 //GLOVE SLOT ITEMS...
 //SynTech ring
-/obj/item/clothing/gloves/ring/syntech
+/obj/item/clothing/accessory/ring/syntech
 	name = "normalizer ring"
 	desc = "An expensive, shimmering SynTech ring gilded with golden NanoTrasen markings. It will 'normalize' the size of the user to a specified height approved for work-conditions, as long as it is equipped. The artificial violet gem inside twinkles ominously."
 	icon = 'modular_splurt/icons/obj/clothing/sizeaccessories.dmi'
@@ -13,7 +13,7 @@
 	//These are already defined under the parent ring, but I wanna leave em here for reference purposes
 
 //For glove slots
-/obj/item/clothing/gloves/ring/syntech/equipped(mob/living/user, slot)
+/obj/item/clothing/accessory/ring/syntech/equipped(mob/living/user, slot)
 	if(slot != ITEM_SLOT_GLOVES)
 		return ..()
 
@@ -24,14 +24,14 @@
 		user.AddComponent(/datum/component/size_normalized, wear=src)
 	. = ..()
 
-/obj/item/clothing/gloves/ring/syntech/dropped(mob/living/user, slot)
+/obj/item/clothing/accessory/ring/syntech/dropped(mob/living/user, slot)
 	var/datum/component/size_normalized/comp = user.GetComponent(/datum/component/size_normalized)
 	if(comp?.attached_wear == src)
 		qdel(comp)
 	. = ..()
 
 //SynTech Wristband
-/obj/item/clothing/gloves/ring/syntech/band
+/obj/item/clothing/accessory/ring/syntech/band //I mean, you realistically *can* put a band over your gloves
 	name = "normalizer wristband"
 	desc = "An expensive technological wristband cast in SynTech purples with shimmering NanoTrasen golds. It will 'normalize' the size of the user to a specified height for approved work-conditions, as long as it is equipped. There is a small screen buzzing with information."
 	icon = 'modular_splurt/icons/obj/clothing/sizeaccessories.dmi'
