@@ -192,7 +192,7 @@
 	icon_state = "security_badge_holo"
 	
 /obj/item/clothing/accessory/badge/deputy
-	name = "security deputy badge
+	name = "security deputy badge"
 	desc = "A shiny silver badge for deputies on the Security force"
 	icon_state = "security_badge_deputy"
 	
