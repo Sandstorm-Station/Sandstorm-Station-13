@@ -518,7 +518,7 @@
 	. = list("[get_examine_string(user, TRUE)].[desc ? "<hr>" : null]")
 
 	if(desc)
-		. += desc
+		. += "<hr>[desc]"
 
 	if(custom_materials)
 		. += "<hr>"

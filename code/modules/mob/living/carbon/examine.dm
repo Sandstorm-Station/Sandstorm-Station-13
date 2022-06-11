@@ -152,10 +152,11 @@
 				. += "[t_He] look[p_s()] very happy."
 			if(MOOD_LEVEL_HAPPY4 to INFINITY)
 				. += "[t_He] look[p_s()] ecstatic."
-	SEND_SIGNAL(src, COMSIG_PARENT_EXAMINE, user, .)
 
-	if(length(.) > 1)
+	if(LAZYLEN(.) > 1)
 		.[1] += "<hr>"
+
+	SEND_SIGNAL(src, COMSIG_PARENT_EXAMINE, user, .)
 
 /mob/living/carbon/examine_more(mob/user)
 	if(!all_scars)
