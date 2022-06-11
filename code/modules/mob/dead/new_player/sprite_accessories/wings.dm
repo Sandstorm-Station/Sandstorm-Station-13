@@ -165,6 +165,13 @@
 
 //nonmoth wings
 
+/datum/sprite_accessory/deco_wings/sylveon
+	name = "Sylveon Ribbons"
+	icon_state = "sylveon_bow"
+	color_src = MATRIXED
+	matrixed_sections = MATRIX_ALL
+	relevant_layers = list(BODY_BEHIND_LAYER, BODY_ADJ_LAYER, BODY_FRONT_LAYER)
+
 /datum/sprite_accessory/deco_wings/bat
 	name = "Bat"
 	icon_state = "bat"
