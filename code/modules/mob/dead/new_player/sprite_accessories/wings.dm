@@ -165,7 +165,7 @@
 
 //nonmoth wings
 
-/datum/sprite_accessory/deco_wings/sylveon
+/datum/sprite_accessory/deco_wings/sylveon //The hackiest way to do this
 	name = "Sylveon Ribbons"
 	icon_state = "sylveon_bow"
 	color_src = MATRIXED
