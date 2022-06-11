@@ -152,7 +152,7 @@
 	icon_state = "rosebouquet"
 
 /obj/item/clothing/accessory/badge
-	name = "Security badge"
+	name = "security badge"
 	desc = "A badge showing the wearer is a member of Security."
 	icon = 'modular_splurt/icons/obj/badge.dmi'
 	icon_state = "security_badge"
@@ -187,6 +187,12 @@
 		add_fingerprint(user)
 
 /obj/item/clothing/accessory/badge/holo
-	name = "Security Holo Badge"
+	name = "security holo badge"
 	desc = "A more futuristic hard-light badge"
 	icon_state = "security_badge_holo"
+	
+/obj/item/clothing/accessory/badge/deputy
+	name = "security deputy badge
+	desc = "A shiny silver badge for deputies on the Security force"
+	icon_state = "security_badge_deputy"
+	
