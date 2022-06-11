@@ -46,9 +46,9 @@
 	l_pocket = /obj/item/assembly/flash/handheld
 	backpack_contents = list(/obj/item/storage/box/zipties, /obj/item/reagent_containers/peacehypo, /obj/item/reagent_containers/spray/pepper, /obj/item/clothing/accessory/badge/deputy)
 
-	backpack = /obj/item/storage/backpack/security
-	satchel = /obj/item/storage/backpack/satchel/sec
-	duffelbag = /obj/item/storage/backpack/duffelbag/sec
+	backpack = /obj/item/storage/backpack/security/pk
+	satchel = /obj/item/storage/backpack/satchel/sec/pk
+	duffelbag = /obj/item/storage/backpack/duffelbag/sec/pk
 	box = /obj/item/storage/box/survival/security
 
 	implants = list(/obj/item/implant/mindshield)
@@ -194,3 +194,22 @@ Peacekeeper Hypospray
 
 /* End Peacekeeper Hypo
 */
+
+// Peacekeeper Bags
+/obj/item/storage/backpack/security/pk
+	name = "peacekeeper backpack"
+	desc = "It's a very robust backpack in peacekeeper colors."
+	icon_state = "pkpack"
+	item_state = "pkpack"
+
+/obj/item/storage/backpack/satchel/sec/pk
+	name = "peacekeeper satchel"
+	desc = "A robust satchel for peacekeeper related needs."
+	icon_state = "satchel-pk"
+	item_state = "satchel-pk"
+
+/obj/item/storage/backpack/duffelbag/sec/pk
+	name = "peacekeeper duffel bag"
+	desc = "A large duffel bag for holding extra peacekeeper supplies."
+	icon_state = "duffel-pk"
+	item_state = "duffel-pk"
