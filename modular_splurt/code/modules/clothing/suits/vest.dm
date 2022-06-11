@@ -95,7 +95,7 @@
 	mutantrace_variation = STYLE_DIGITIGRADE|STYLE_NO_ANTHRO_ICON
 	allowed = list(/obj/item/tank/internals, /obj/item/gun/ballistic/shotgun/varmintrifle, /obj/item/gun/ballistic/shotgun/huntingrifle, /obj/item/gun/ballistic/shotgun/hunting, /obj/item/gun/ballistic/shotgun/doublebarrel, /obj/item/gun/ballistic/revolver/doublebarrel/sawn, /obj/item/gun/ballistic/shotgun/leveraction, /obj/item/gun/ballistic/shotgun/brush, /obj/item/gun/ballistic/shotgun/brush2, /obj/item/gun/energy/e_gun)
 
-/datum/design/s_holster
+/datum/design/r_sling
 	name = "Rifle Sling"
 	id = "r_sling"
 	build_type = BIOGENERATOR
