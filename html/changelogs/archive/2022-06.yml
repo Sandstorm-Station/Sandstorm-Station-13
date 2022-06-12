@@ -258,3 +258,14 @@
   AshTheDerg:
   - rscadd: Sylveon Bow "horns"
   - rscadd: Sylveon Ribbon "wings"
+  BongaTheProto:
+  - tweak: Now size normalizers will continuously normalize you and absorb the effect
+      of size changing mechanics in-game. Giving you all of the changes back when
+      you take off the clothing
+  - bugfix: Now you can actually give your character numbers in their names and species
+  - bugfix: Gives the syntech ring and band an actual ring path so they can be attached
+      to gloves (doesn't work if you use them this way tho)
+  - bugfix: Definitely fixes the bug where spawning with more than one size normalizer
+      locks you on size one _in case it still exists_
+  - bugfix: "Fixes a bug with nanites, probably \xBF"
+  - code_imp: Makes the size normalizer code less snowflakey and now relies on a component
