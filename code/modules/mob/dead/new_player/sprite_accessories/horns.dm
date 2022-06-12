@@ -40,10 +40,3 @@
 /datum/sprite_accessory/horns/short
 	name = "Short"
 	icon_state = "short"
-	
-/datum/sprite_accessory/horns/sylveon
-	name = "Sylveon bow"
-	icon_state = "sylveon_bow"
-	color_src = MATRIXED
-	matrixed_sections = MATRIX_ALL
-	relevant_layers = list(BODY_BEHIND_LAYER, BODY_ADJ_LAYER, BODY_FRONT_LAYER)
