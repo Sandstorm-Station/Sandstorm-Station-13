@@ -33,7 +33,7 @@
 	name = "Peacekeeper"
 	jobtype = /datum/job/peacekeeper
 
-	belt = /obj/item/pda/security
+	belt = /obj/item/gun/energy/e_gun/advtaser
 	ears = /obj/item/radio/headset/headset_sec/alt
 	glasses = /obj/item/clothing/glasses/hud/security/sunglasses
 	uniform = /obj/item/clothing/under/rank/security/officer/peacekeeper
@@ -41,10 +41,9 @@
 	head = /obj/item/clothing/head/helmet/blueshirt
 	suit = /obj/item/clothing/suit/armor/vest/peacekeeper
 	shoes = /obj/item/clothing/shoes/jackboots
-	r_hand = /obj/item/melee/classic_baton/telescopic
 	r_pocket = /obj/item/storage/bag/security
-	l_pocket = /obj/item/assembly/flash/handheld
-	backpack_contents = list(/obj/item/storage/box/zipties, /obj/item/reagent_containers/peacehypo, /obj/item/reagent_containers/spray/pepper, /obj/item/clothing/accessory/badge/deputy)
+	l_pocket = /obj/item/pda/security
+	backpack_contents = list(/obj/item/storage/box/zipties, /obj/item/reagent_containers/spray/pepper, /obj/item/clothing/accessory/badge/deputy, /obj/item/assembly/flash/handheld)
 
 	backpack = /obj/item/storage/backpack/security/pk
 	satchel = /obj/item/storage/backpack/satchel/sec/pk
