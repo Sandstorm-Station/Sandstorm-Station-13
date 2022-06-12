@@ -997,12 +997,12 @@ SAVEFILE UPDATING/VERSIONING - 'Simplified', or rather, more coder-friendly ~Car
 
 	//Sanitize
 
-	real_name = reject_bad_name(real_name)
+	real_name = reject_bad_name(real_name, TRUE)
 	gender = sanitize_gender(gender, TRUE, TRUE)
 	features["body_model"] = sanitize_gender(features["body_model"], FALSE, FALSE, gender == FEMALE ? FEMALE : MALE)
 	if(!real_name)
 		real_name = random_unique_name(gender)
-	custom_species = reject_bad_name(custom_species)
+	custom_species = reject_bad_name(custom_species, TRUE)
 	for(var/custom_name_id in GLOB.preferences_custom_names)
 		var/namedata = GLOB.preferences_custom_names[custom_name_id]
 		custom_names[custom_name_id] = reject_bad_name(custom_names[custom_name_id],namedata["allow_numbers"])
