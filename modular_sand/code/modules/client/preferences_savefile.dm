@@ -6,3 +6,14 @@
 		else
 			var/tmp = language
 			language = list(tmp)
+
+/datum/preferences/update_preferences(current_version, savefile/S)
+	// Citadel added a new bitfield to toggles, we need to push our prefs forward starting from the last bit
+	if(current_version < 55)
+		if(CHECK_BITFIELD(toggles, VERB_CONSENT))
+			DISABLE_BITFIELD(toggles, VERB_CONSENT)
+			ENABLE_BITFIELD(toggles, LEWD_VERB_SOUNDS)
+		if(CHECK_BITFIELD(toggles, SOUND_BARK))
+			DISABLE_BITFIELD(toggles, SOUND_BARK)
+			ENABLE_BITFIELD(toggles, VERB_CONSENT)
+	. = ..()
