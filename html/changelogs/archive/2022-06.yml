@@ -224,28 +224,27 @@
   - code_imp: The station minimap can now support managing data for up to 16,581,374
       areas without any conflicts at all! Before, BYOND's psuedorandom RNG meant that
       it was somewhat common for areas to collide with each others' data.
-  - rscadd: 'Talking is now accompanied with fully-customizable sounds! You can modify
-      your character''s speech under the speech tab in chargen, and you can toggle
+  - rscadd: Talking is now accompanied with fully-customizable sounds! You can modify
+      your character's speech under the speech tab in chargen, and you can toggle
       these sounds via the "Hear/Silence Vocal Barks" verb under the preferences tab!
-      This also fully supports genetics.'
+      This also fully supports genetics.
   - bugfix: Admittedly an unatomized change, but Cit's DNA blocks can now properly
       be updated through genetics. Before, these required a complete genetics reset
       to apply.
   - rscadd: 'The chat now supports blockquotes! tweak: Examining, medical scanners,
       self-checking, and mood checkups, have all been converted to make use of blockquotes.'
   Bhijn & Myr (+ UI work and cleanup by Sandpoot!):
-  - rscadd: 'Colormates now have HSV coloration!'
-  - tweak: Colormates have had their "please use white clothing" message removed, as that
-      recommendation's now mostly pointless
+  - rscadd: Colormates now have HSV coloration!
+  - tweak: Colormates have had their "please use white clothing" message removed,
+      as that recommendation's now mostly pointless
   - tweak: The default mode for colormates is now HSV coloration
-  - tweak: 'The temp messages in colormates have been tweaked slightly to be more user-friendly,
-      as they''re user-facing.'
-  - tweak: The description for constants in the colormate
-      matrix mode has been fixed; the constant variables have nothing to do with contrast,
-      they simply add color
-  - tweak: 'Matrix mode has been made a lot more usable; it''s now clamped between
-      -10 and 10, and features a step of 0.01, making it much easier to simply click
-      and drag to adjust the values, rather than having to punch them in manually'
+  - tweak: The temp messages in colormates have been tweaked slightly to be more user-friendly,
+      as they're user-facing.
+  - tweak: The description for constants in the colormate matrix mode has been fixed;
+      the constant variables have nothing to do with contrast, they simply add color
+  - tweak: Matrix mode has been made a lot more usable; it's now clamped between -10
+      and 10, and features a step of 0.01, making it much easier to simply click and
+      drag to adjust the values, rather than having to punch them in manually
   Putnam3145:
   - balance: QCD matter is now worth 10x as much and makes 2 research pointer per
       mole
@@ -277,3 +276,7 @@
 2022-06-13:
   Bhijn & Myr:
   - bugfix: Jukebox audio is now audible within closets, crates, etc!
+2022-06-15:
+  AshTheDerg:
+  - rscadd: Added Syndicate Asteroid Listening Post + Ghost Role
+  - rscadd: Added Radio Station Ship
