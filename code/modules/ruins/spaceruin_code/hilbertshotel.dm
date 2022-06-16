@@ -86,10 +86,6 @@ GLOBAL_VAR_INIT(hhmysteryRoomNumber, 1337)
 	if(tryStoredRoom(chosenRoomNumber, user))
 		return
 	sendToNewRoom(chosenRoomNumber, user)
-	//SPLURT EDIT - max infinidorms rooms
-	if(!mob_dorms[user]?.Find(chosenRoomNumber))
-		LAZYADD(mob_dorms[user], chosenRoomNumber)
-	//SPLURT EDIT END
 
 /obj/item/hilbertshotel/proc/tryActiveRoom(var/roomNumber, var/mob/user)
 	if(activeRooms["[roomNumber]"])
