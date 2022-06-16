@@ -1,5 +1,6 @@
 /obj/item/hilbertshotel
 	w_class = WEIGHT_CLASS_GIGANTIC
+	var/list/list/mob_dorms = list()
 
 // Better SPLURT version of hilbert's
 /datum/map_template/hilbertshotel
