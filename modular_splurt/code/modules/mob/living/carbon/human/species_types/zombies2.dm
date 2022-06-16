@@ -209,7 +209,7 @@
 
 /obj/item/organ/heart/decayed_heart/on_death(seconds, times_fired)
 	. = ..()
-	if(reviving)
+	if(reviving && owner)
 		if(owner.blood_volume >= BLOOD_VOLUME_SURVIVE)
 			owner.blood_volume -= 1.5
 			if(owner.health <= HEALTH_THRESHOLD_FULLCRIT)
@@ -230,7 +230,7 @@
 		if(owner.blood_volume <= BLOOD_VOLUME_SURVIVE)
 			reviving = FALSE
 			return
-	if(owner.health <= HEALTH_THRESHOLD_DEAD && owner.blood_volume >= BLOOD_VOLUME_SURVIVE)
+	if(owner?.health <= HEALTH_THRESHOLD_DEAD && owner?.blood_volume >= BLOOD_VOLUME_SURVIVE)
 		reviving = TRUE
 		to_chat(owner, "<span class='alertwarning'>Your broken shell is stitching itself back together...</span>")
 
