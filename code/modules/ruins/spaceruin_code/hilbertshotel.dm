@@ -55,11 +55,11 @@ GLOBAL_VAR_INIT(hhmysteryRoomNumber, 1337)
 		to_chat(user, span_warning("We're currently not offering service, please come back another day!"))
 		return
 
-	if(max_rooms > 0 && mob_dorms[user]?.len >= max_rooms)
+	chosenRoomNumber = input(user, "What number room will you be checking into?", "Room Number") as null|num
+	if(max_rooms > 0 && mob_dorms[user]?.len >= max_rooms && !activeRooms["[chosenRoomNumber]"] && !storedRooms["[chosenRoomNumber]"])
 		to_chat(user, span_warning("Your free trial of Hilbert's Hotel has ended! Please select one of the rooms you've already visited."))
 		chosenRoomNumber = input(user, "Select one of your previous rooms", "Room number") as null|anything in mob_dorms[user]
-	else
-		chosenRoomNumber = input(user, "What number room will you be checking into?", "Room Number") as null|num
+
 	//SPLURT EDIT END
 	if(!chosenRoomNumber || !user.CanReach(src))
 		return
