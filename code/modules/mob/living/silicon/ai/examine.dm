@@ -18,7 +18,7 @@
 		else if (!shunted && !client)
 			. += "[src]Core.exe has stopped responding! NTOS is searching for a solution to the problem..."
 	if(length(.) > 1)
-		.[1] += "\n<br>"
+		.[1] += "<br>"
 
 	. += "</span>"
 

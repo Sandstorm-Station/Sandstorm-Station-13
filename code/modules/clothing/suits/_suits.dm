@@ -26,15 +26,12 @@
 		var/mob/living/carbon/human/M = loc
 		if(ishuman(M) && M.w_uniform)
 			var/obj/item/clothing/under/U = M.w_uniform
-			//SKYRAT EDIT
+			//SANDSTORM EDIT
 			if(istype(U) && length(U.attached_accessories))
-				var/please_overlay = FALSE
 				for(var/obj/item/clothing/accessory/attached in U.attached_accessories)
 					if(attached.above_suit)
-						please_overlay = TRUE
-				if(please_overlay)
-					. += U.accessory_overlay
-			//SKYRAT EDIT END
+						. += U.accessory_overlays
+			//SANDSTORM EDIT END
 
 /obj/item/clothing/suit/update_clothes_damaged_state()
 	..()

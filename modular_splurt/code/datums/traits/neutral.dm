@@ -49,6 +49,14 @@
 	value = 0
 	medical_record_text = "Patient seems overly affectionate."
 
+/datum/quirk/headpat_slut/add()
+	. = ..()
+	quirk_holder.AddElement(/datum/element/wuv/headpat, null, null, /datum/mood_event/pet_animal)
+
+/datum/quirk/headpat_slut/remove()
+	. = ..()
+	quirk_holder.RemoveElement(/datum/element/wuv/headpat)
+
 /datum/quirk/in_heat
 	name = "In Heat"
 	desc = "Your system burns with the desire to be bred. Satisfying your lust will make you happy, but ignoring it may cause you to become sad and needy."
@@ -284,29 +292,3 @@
 	. = ..()
 	var/obj/item/implant/genital_fluid/put_in = new
 	put_in.implant(quirk_holder, null, TRUE, TRUE)
-
-/datum/quirk/masked_mook
-	name = "Bane Syndrome"
-	desc = "For some reason you don't feel well without wearing some kind of gas mask."
-	gain_text = "<span class='danger'>You start feeling unwell without any gas mask on.</span>"
-	lose_text = "<span class='notice'>You no longer have a need to wear some gas mask.</span>"
-	value = 0
-	mood_quirk = TRUE
-	medical_record_text = "Patient feels more secure when wearing a gas mask."
-
-/datum/quirk/masked_mook/on_process()
-	var/mob/living/carbon/human/H = quirk_holder
-	var/obj/item/clothing/mask/gas/gasmask = H.get_item_by_slot(ITEM_SLOT_MASK)
-	if(istype(gasmask))
-		SEND_SIGNAL(quirk_holder, COMSIG_CLEAR_MOOD_EVENT, "masked_mook_incomplete")
-		SEND_SIGNAL(quirk_holder, COMSIG_ADD_MOOD_EVENT, "masked_mook", /datum/mood_event/masked_mook)
-	else
-		SEND_SIGNAL(quirk_holder, COMSIG_CLEAR_MOOD_EVENT, "masked_mook")
-		SEND_SIGNAL(quirk_holder, COMSIG_ADD_MOOD_EVENT, "masked_mook_incomplete", /datum/mood_event/masked_mook_incomplete)
-
-/datum/quirk/masked_mook/on_spawn()
-	. = ..()
-	var/mob/living/carbon/human/H = quirk_holder
-	var/obj/item/clothing/mask/gas/gasmask = new(get_turf(quirk_holder))
-	H.equip_to_slot(gasmask, ITEM_SLOT_MASK)
-	H.regenerate_icons()

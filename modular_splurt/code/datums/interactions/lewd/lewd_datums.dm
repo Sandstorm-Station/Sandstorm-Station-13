@@ -96,6 +96,11 @@
 
 /datum/interaction/lewd/throatfuck/display_interaction(mob/living/carbon/human/user, mob/living/carbon/human/target)
 	. = ..()
+	if(istype(target, /mob/living) && user.is_fucking(target, CUM_TARGET_THROAT))
+		var/stat_before = target.stat
+		target.adjustOxyLoss(3)
+		if(target.stat == UNCONSCIOUS && stat_before != UNCONSCIOUS)
+			target.visible_message(message = "<font color=red><b>\The [target]</b> passes out on <b>\The [src]</b>'s cock.</span>", ignored_mobs = user.get_unconsenting())
 	if(!isclownjob(user))
 		return
 
@@ -357,6 +362,15 @@
 		user.visible_message("<span class='lewd'>[pick(honks)]</span>")
 
 	playlewdinteractionsound(target, 'sound/items/bikehorn.ogg', 40, 1, -1)
+
+/datum/interaction/lewd/kiss/display_interaction(mob/living/user, mob/living/partner)
+	. = ..()
+	playlewdinteractionsound(partner, pick(
+		'modular_splurt/sound/interactions/kiss/kiss1.ogg',
+		'modular_splurt/sound/interactions/kiss/kiss2.ogg',
+		'modular_splurt/sound/interactions/kiss/kiss3.ogg',
+		'modular_splurt/sound/interactions/kiss/kiss4.ogg',
+		'modular_splurt/sound/interactions/kiss/kiss5.ogg'), 50, 1, -1, ignored_mobs = user.get_unconsenting())
 
 //Own stuff
 /datum/interaction/lewd/oral/selfsuck

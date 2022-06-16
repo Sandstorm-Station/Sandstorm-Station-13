@@ -185,3 +185,8 @@
 		user.visible_message("<span class='notice'>[user] shows you: [icon2html(src, viewers(user))] [src.name].</span>", \
 					"<span class='notice'>You show \the [src.name].</span>")
 		add_fingerprint(user)
+
+/obj/item/clothing/accessory/badge/holo
+	name = "Security Holo Badge"
+	desc = "A more futuristic hard-light badge"
+	icon_state = "security_badge_holo"

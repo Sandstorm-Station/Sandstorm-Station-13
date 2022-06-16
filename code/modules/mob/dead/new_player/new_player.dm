@@ -367,6 +367,8 @@
 	if(QDELETED(src) || !src.client || this_is_like_playing_right != "Yes")
 		ready = PLAYER_NOT_READY
 		src << browse(null, "window=playersetup") //closes the player setup window
+		if(!(client?.prefs.toggles & TG_PLAYER_PANEL))
+			new_player_panel()
 		return FALSE
 
 	var/mob/dead/observer/observer = new()

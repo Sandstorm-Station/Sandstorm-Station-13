@@ -93,9 +93,14 @@
 
 /obj/item/clothing/suit/hooded/corpus/s //sec
 	name = "Enforcer Voidsuit"
-	desc = "Delux issue grofit voidsuit. Let the middle class know You're in charge."
+	desc = "Deluxe issue armored voidsuit. Let the middle class bask in your grofit!"
 	icon_state = "corpuss"
+	armor = list(MELEE = 30, BULLET = 30, LASER = 30, ENERGY = 10, BOMB = 25, BIO = 0, RAD = 0, FIRE = 50, ACID = 50, WOUND = 10)
 	hoodtype = /obj/item/clothing/head/hooded/corpus/s //Enjoy this nice red outfit Nanotrasen! There is NO NEED for a pink one! xoxo -VivI Fanteriso
+	
+/obj/item/clothing/suit/hooded/corpus/s/Initialize(mapload)
+	. = ..()
+	allowed = GLOB.security_wintercoat_allowed
 
 /obj/item/clothing/suit/hooded/corpus/c //command
 	name = "Commander Voidsuit"
@@ -131,6 +136,10 @@
 	cold_protection = CHEST|GROIN|LEGS|ARMS
 	heat_protection = CHEST|GROIN|LEGS|ARMS
 	armor = list(MELEE = 25, BULLET = 10, LASER = 25, ENERGY = 10, BOMB = 5, BIO = 5, RAD = 5, FIRE = 5, ACID = 45) // Det's armor value + 5 BOMB&BIO&RAD&FIRE
+
+/obj/item/clothing/suit/goner/Initialize(mapload)
+	. = ..()
+	allowed = GLOB.detective_vest_allowed // I am probably gonna get fire-line'd for this... But suggestion is a suggestion. Can always revert the changes, right?
 
 /obj/item/clothing/suit/goner/fake
 	name = "trencher coat replica"

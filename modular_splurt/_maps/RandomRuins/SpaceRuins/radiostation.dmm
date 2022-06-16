@@ -1,0 +1,1813 @@
+//MAP CONVERTED BY dmm2tgm.py THIS HEADER COMMENT PREVENTS RECONVERSION, DO NOT REMOVE
+"aq" = (
+/obj/structure/closet/cabinet,
+/turf/open/floor/carpet,
+/area/ruin/space/radiostation/cabin)
+"ar" = (
+/obj/machinery/door/airlock/glass{
+	name = "Break Room"
+	},
+/obj/structure/cable{
+	icon_state = "4-8"
+	},
+/turf/open/floor/plasteel/cafeteria,
+/area/ruin/space/radiostation/break_room)
+"aH" = (
+/turf/closed/wall,
+/area/ruin/space/radiostation/break_room)
+"aL" = (
+/obj/structure/table,
+/obj/item/storage/box/donkpockets,
+/obj/machinery/light{
+	dir = 1;
+	light_color = "#cee5d2"
+	},
+/obj/item/reagent_containers/glass/beaker/waterbottle,
+/obj/item/reagent_containers/glass/beaker/waterbottle,
+/turf/open/floor/plasteel/cafeteria,
+/area/ruin/space/radiostation/break_room)
+"bg" = (
+/obj/machinery/teleport/hub/syndicate,
+/turf/open/floor/plasteel,
+/area/ruin/space/radiostation)
+"bz" = (
+/obj/structure/fans/tiny,
+/obj/machinery/door/airlock/engineering,
+/obj/structure/cable{
+	icon_state = "1-2"
+	},
+/turf/open/floor/plating,
+/area/ruin/space/radiostation/engineering)
+"bK" = (
+/obj/machinery/door/airlock/glass{
+	name = "Control Room"
+	},
+/obj/structure/cable{
+	icon_state = "1-2"
+	},
+/turf/open/floor/carpet/blue,
+/area/ruin/space/radiostation/control_room)
+"bS" = (
+/obj/structure/cable{
+	icon_state = "4-8"
+	},
+/obj/machinery/light{
+	dir = 1
+	},
+/turf/open/floor/carpet/blue,
+/area/ruin/space/radiostation/control_room)
+"bU" = (
+/turf/open/floor/carpet/blue,
+/area/ruin/space/radiostation/control_room)
+"bV" = (
+/obj/structure/disposalpipe/trunk,
+/obj/machinery/disposal/bin,
+/turf/open/floor/plasteel,
+/area/ruin/space/radiostation/janitor)
+"ca" = (
+/turf/open/floor/plating,
+/area/ruin/space/radiostation/engineering)
+"cd" = (
+/obj/machinery/power/apc/auto_name/north{
+	name = "Engines"
+	},
+/obj/structure/cable{
+	icon_state = "0-4"
+	},
+/turf/open/floor/plating,
+/area/ruin/space/radiostation/engines)
+"dc" = (
+/obj/structure/closet,
+/obj/item/mop,
+/obj/item/reagent_containers/glass/bucket,
+/obj/item/lightreplacer,
+/obj/item/storage/bag/trash,
+/obj/item/soap,
+/turf/open/floor/plasteel,
+/area/ruin/space/radiostation/janitor)
+"dd" = (
+/obj/structure/cable{
+	icon_state = "1-4"
+	},
+/turf/open/floor/carpet/blue,
+/area/ruin/space/radiostation/control_room)
+"dE" = (
+/obj/machinery/vending/cola,
+/turf/open/floor/plasteel,
+/area/ruin/space/radiostation)
+"dQ" = (
+/obj/machinery/door/airlock{
+	name = "Cabin"
+	},
+/obj/structure/cable{
+	icon_state = "4-8"
+	},
+/turf/open/floor/carpet,
+/area/ruin/space/radiostation/cabin)
+"ep" = (
+/obj/structure/cable{
+	icon_state = "1-4"
+	},
+/obj/structure/cable{
+	icon_state = "1-2"
+	},
+/obj/structure/cable{
+	icon_state = "1-8"
+	},
+/turf/open/floor/plasteel,
+/area/ruin/space/radiostation)
+"fm" = (
+/obj/machinery/light/small{
+	dir = 1
+	},
+/turf/open/floor/plating,
+/area/ruin/space/radiostation/engines)
+"gD" = (
+/obj/machinery/light{
+	dir = 8;
+	light_color = "#e8eaff"
+	},
+/turf/open/floor/plasteel,
+/area/ruin/space/radiostation/janitor)
+"gQ" = (
+/obj/structure/lattice/catwalk,
+/obj/structure/cable{
+	icon_state = "1-8"
+	},
+/obj/structure/cable{
+	icon_state = "2-8"
+	},
+/obj/structure/cable{
+	icon_state = "4-8"
+	},
+/turf/open/space/basic,
+/area/ruin/space/radiostation/solars)
+"hr" = (
+/obj/structure/lattice/catwalk,
+/obj/structure/cable{
+	icon_state = "1-4"
+	},
+/obj/structure/cable{
+	icon_state = "2-4"
+	},
+/obj/structure/cable{
+	icon_state = "4-8"
+	},
+/turf/open/space/basic,
+/area/ruin/space/radiostation/solars)
+"hA" = (
+/obj/structure/disposalpipe/segment,
+/turf/closed/wall,
+/area/ruin/space/radiostation/break_room)
+"hO" = (
+/obj/structure/lattice/catwalk,
+/obj/structure/cable{
+	icon_state = "1-4"
+	},
+/obj/structure/cable{
+	icon_state = "2-4"
+	},
+/turf/open/space/basic,
+/area/ruin/space/radiostation/solars)
+"hP" = (
+/obj/structure/lattice/catwalk,
+/obj/structure/cable{
+	icon_state = "2-4"
+	},
+/obj/structure/cable{
+	icon_state = "1-4"
+	},
+/turf/open/space/basic,
+/area/ruin/space/radiostation/solars)
+"ie" = (
+/obj/structure/disposalpipe/segment,
+/turf/closed/wall,
+/area/ruin/space/radiostation/janitor)
+"ip" = (
+/obj/structure/cable{
+	icon_state = "0-2"
+	},
+/obj/machinery/power/solar/fake,
+/turf/open/floor/plasteel/solarpanel,
+/area/ruin/space/radiostation/solars)
+"is" = (
+/turf/open/floor/plasteel,
+/area/ruin/space/radiostation/janitor)
+"iB" = (
+/obj/structure/cable{
+	icon_state = "1-2"
+	},
+/turf/open/floor/plating,
+/area/ruin/space/radiostation/engineering)
+"iQ" = (
+/obj/structure/sink{
+	pixel_y = -8
+	},
+/turf/closed/wall,
+/area/ruin/space/radiostation/janitor)
+"ja" = (
+/obj/structure/cable{
+	icon_state = "1-2"
+	},
+/obj/item/beacon,
+/turf/open/floor/plasteel,
+/area/ruin/space/radiostation)
+"jO" = (
+/obj/structure/fans/tiny,
+/obj/structure/cable{
+	icon_state = "1-2"
+	},
+/obj/machinery/door/airlock/external/glass,
+/turf/open/floor/plating,
+/area/ruin/space/radiostation/engineering)
+"ma" = (
+/obj/machinery/power/apc/auto_name/north{
+	name = "Break Room";
+	areastring = "/area/ruin/space/radiostation/break_room"
+	},
+/obj/structure/cable{
+	icon_state = "0-2"
+	},
+/turf/open/floor/plasteel/cafeteria,
+/area/ruin/space/radiostation/break_room)
+"mb" = (
+/turf/open/floor/carpet,
+/area/ruin/space/radiostation/cabin)
+"mC" = (
+/obj/machinery/power/apc/auto_name/north{
+	name = "SMES Room";
+	areastring = "/area/ruin/space/radiostation/engineering"
+	},
+/obj/structure/cable{
+	icon_state = "0-2"
+	},
+/turf/open/floor/plating,
+/area/ruin/space/radiostation/engineering)
+"mD" = (
+/obj/machinery/power/apc/auto_name/north{
+	name = "Control Room";
+	areastring = "/area/ruin/space/radiostation/control_room"
+	},
+/obj/structure/cable{
+	icon_state = "0-8"
+	},
+/turf/open/floor/carpet/blue,
+/area/ruin/space/radiostation/control_room)
+"nu" = (
+/obj/structure/lattice/catwalk,
+/obj/structure/cable{
+	icon_state = "1-8"
+	},
+/turf/open/space/basic,
+/area/ruin/space/radiostation/solars)
+"nE" = (
+/obj/structure/cable{
+	icon_state = "1-8"
+	},
+/turf/open/floor/plating,
+/area/ruin/space/radiostation/engineering)
+"nG" = (
+/obj/structure/cable{
+	icon_state = "1-8"
+	},
+/obj/structure/cable{
+	icon_state = "4-8"
+	},
+/turf/open/floor/plasteel,
+/area/ruin/space/radiostation)
+"nN" = (
+/turf/open/floor/plasteel,
+/area/ruin/space/radiostation)
+"nQ" = (
+/obj/structure/cable{
+	icon_state = "1-2"
+	},
+/turf/open/floor/plasteel/cafeteria,
+/area/ruin/space/radiostation/break_room)
+"oo" = (
+/obj/structure/cable{
+	icon_state = "1-4"
+	},
+/turf/open/floor/plating,
+/area/ruin/space/radiostation/engineering)
+"oT" = (
+/obj/structure/cable{
+	icon_state = "4-8"
+	},
+/turf/open/floor/carpet,
+/area/ruin/space/radiostation/cabin)
+"oZ" = (
+/obj/machinery/light{
+	dir = 1;
+	light_color = "#cee5d2"
+	},
+/turf/open/floor/plasteel,
+/area/ruin/space/radiostation)
+"pd" = (
+/obj/machinery/vending/kink,
+/turf/open/floor/carpet,
+/area/ruin/space/radiostation/cabin)
+"pn" = (
+/obj/structure/cable{
+	icon_state = "0-4"
+	},
+/obj/machinery/power/solar/fake,
+/turf/open/floor/plasteel/solarpanel,
+/area/ruin/space/radiostation/solars)
+"py" = (
+/obj/structure/table,
+/obj/item/storage/toolbox/mechanical,
+/obj/item/multitool,
+/turf/open/floor/plating,
+/area/ruin/space/radiostation/engineering)
+"pz" = (
+/obj/machinery/light{
+	light_color = "#cee5d2"
+	},
+/turf/open/floor/plasteel,
+/area/ruin/space/radiostation)
+"qj" = (
+/obj/structure/lattice/catwalk,
+/obj/structure/cable{
+	icon_state = "2-8"
+	},
+/obj/structure/cable{
+	icon_state = "2-4"
+	},
+/turf/open/space/basic,
+/area/ruin/space/radiostation/solars)
+"ss" = (
+/obj/structure/cable{
+	icon_state = "2-4"
+	},
+/turf/open/floor/plasteel,
+/area/ruin/space/radiostation)
+"sR" = (
+/obj/structure/cable{
+	icon_state = "2-4"
+	},
+/obj/structure/cable{
+	icon_state = "4-8"
+	},
+/turf/open/floor/plating,
+/area/ruin/space/radiostation/engines)
+"tx" = (
+/turf/closed/wall,
+/area/ruin/space/radiostation/cabin)
+"tH" = (
+/obj/machinery/light{
+	dir = 1;
+	light_color = "#cee5d2"
+	},
+/turf/open/floor/carpet,
+/area/ruin/space/radiostation/cabin)
+"tL" = (
+/obj/structure/cable,
+/obj/machinery/power/solar/fake,
+/turf/open/floor/plasteel/solarpanel,
+/area/ruin/space/radiostation/solars)
+"uF" = (
+/obj/structure/grille,
+/obj/effect/spawner/structure/window/reinforced/indestructable,
+/turf/open/floor/plating,
+/area/ruin/space/radiostation/break_room)
+"uY" = (
+/obj/structure/cable{
+	icon_state = "2-4"
+	},
+/obj/structure/cable{
+	icon_state = "4-8"
+	},
+/turf/open/floor/plasteel,
+/area/ruin/space/radiostation)
+"vl" = (
+/obj/machinery/vending/sustenance,
+/turf/open/floor/plasteel/cafeteria,
+/area/ruin/space/radiostation/break_room)
+"vx" = (
+/obj/structure/cable{
+	icon_state = "2-4"
+	},
+/turf/open/floor/plating,
+/area/ruin/space/radiostation/engineering)
+"vN" = (
+/obj/machinery/light{
+	dir = 1
+	},
+/turf/open/floor/carpet/blue,
+/area/ruin/space/radiostation/control_room)
+"wh" = (
+/obj/structure/sink/kitchen{
+	dir = 4;
+	pixel_x = 19
+	},
+/turf/closed/wall,
+/area/ruin/space/radiostation/break_room)
+"wp" = (
+/obj/machinery/light{
+	light_color = "#cee5d2"
+	},
+/turf/open/floor/carpet/blue,
+/area/ruin/space/radiostation/control_room)
+"ws" = (
+/turf/closed/wall,
+/area/ruin/space/radiostation/engineering)
+"wI" = (
+/obj/machinery/light{
+	dir = 8;
+	light_color = "#e8eaff"
+	},
+/turf/open/floor/plasteel,
+/area/ruin/space/radiostation)
+"xc" = (
+/obj/machinery/power/terminal,
+/obj/structure/cable,
+/obj/structure/cable{
+	icon_state = "0-8"
+	},
+/obj/structure/cable{
+	icon_state = "0-4"
+	},
+/turf/open/floor/plating,
+/area/ruin/space/radiostation/engineering)
+"xk" = (
+/obj/structure/chair,
+/turf/open/floor/carpet/blue,
+/area/ruin/space/radiostation/control_room)
+"xR" = (
+/obj/structure/table,
+/obj/item/storage/firstaid,
+/turf/open/floor/carpet/blue,
+/area/ruin/space/radiostation/control_room)
+"xS" = (
+/obj/machinery/door/airlock,
+/obj/structure/cable{
+	icon_state = "4-8"
+	},
+/turf/open/floor/plasteel,
+/area/ruin/space/radiostation/janitor)
+"yu" = (
+/obj/machinery/light_switch,
+/turf/closed/wall,
+/area/ruin/space/radiostation)
+"yE" = (
+/obj/structure/cable{
+	icon_state = "0-4"
+	},
+/obj/structure/cable{
+	icon_state = "0-8"
+	},
+/obj/machinery/power/solar/fake,
+/turf/open/floor/plasteel/solarpanel,
+/area/ruin/space/radiostation/solars)
+"yM" = (
+/obj/machinery/power/smes/magical,
+/obj/structure/cable{
+	icon_state = "0-2";
+	pixel_y = 1
+	},
+/turf/open/floor/plating,
+/area/ruin/space/radiostation/engineering)
+"yX" = (
+/obj/structure/janitorialcart,
+/turf/open/floor/plasteel,
+/area/ruin/space/radiostation/janitor)
+"zA" = (
+/turf/open/floor/plating,
+/area/ruin/space/radiostation/engines)
+"zR" = (
+/obj/structure/cable{
+	icon_state = "1-8"
+	},
+/obj/structure/cable{
+	icon_state = "1-2"
+	},
+/turf/open/floor/plating,
+/area/ruin/space/radiostation/engines)
+"An" = (
+/obj/structure/disposalpipe/trunk{
+	dir = 1
+	},
+/obj/machinery/disposal/bin,
+/turf/open/floor/plasteel/cafeteria,
+/area/ruin/space/radiostation/break_room)
+"As" = (
+/obj/structure/cable{
+	icon_state = "1-4"
+	},
+/turf/open/floor/plasteel,
+/area/ruin/space/radiostation/janitor)
+"AV" = (
+/obj/structure/table/wood,
+/turf/open/floor/carpet/blue,
+/area/ruin/space/radiostation/control_room)
+"BH" = (
+/obj/structure/cable{
+	icon_state = "1-8"
+	},
+/obj/structure/cable{
+	icon_state = "1-4"
+	},
+/obj/structure/cable{
+	icon_state = "1-2"
+	},
+/turf/open/floor/plating,
+/area/ruin/space/radiostation/engines)
+"Cu" = (
+/turf/open/floor/plasteel/cafeteria,
+/area/ruin/space/radiostation/break_room)
+"Dd" = (
+/obj/structure/cable{
+	icon_state = "4-8"
+	},
+/turf/open/floor/plasteel,
+/area/ruin/space/radiostation)
+"Dy" = (
+/obj/structure/chair/comfy/brown{
+	dir = 1
+	},
+/turf/open/floor/carpet/blue,
+/area/ruin/space/radiostation/control_room)
+"DE" = (
+/obj/structure/cable{
+	icon_state = "2-8"
+	},
+/turf/open/floor/plating,
+/area/ruin/space/radiostation/engines)
+"EI" = (
+/obj/structure/cable{
+	icon_state = "1-2"
+	},
+/turf/open/floor/plasteel,
+/area/ruin/space/radiostation)
+"ET" = (
+/obj/structure/cable,
+/obj/structure/cable{
+	icon_state = "0-2"
+	},
+/obj/machinery/power/solar/fake,
+/turf/open/floor/plasteel/solarpanel,
+/area/ruin/space/radiostation/solars)
+"Ft" = (
+/obj/machinery/vending/cigarette,
+/turf/open/floor/carpet/blue,
+/area/ruin/space/radiostation/control_room)
+"FB" = (
+/obj/structure/cable{
+	icon_state = "2-4"
+	},
+/turf/open/floor/carpet,
+/area/ruin/space/radiostation/cabin)
+"FF" = (
+/obj/structure/disposalpipe/trunk,
+/obj/structure/disposaloutlet{
+	dir = 1
+	},
+/turf/open/floor/plating,
+/area/space/nearstation)
+"Gr" = (
+/obj/structure/cable{
+	icon_state = "1-8"
+	},
+/turf/open/floor/plasteel,
+/area/ruin/space/radiostation)
+"Hb" = (
+/obj/structure/cable{
+	icon_state = "2-8"
+	},
+/obj/structure/cable{
+	icon_state = "4-8"
+	},
+/turf/open/floor/plating,
+/area/ruin/space/radiostation/engines)
+"Hc" = (
+/obj/machinery/power/apc/auto_name/south{
+	name = "Cabin";
+	areastring = "/area/ruin/space/radiostation/cabin"
+	},
+/obj/structure/cable,
+/turf/open/floor/carpet,
+/area/ruin/space/radiostation/cabin)
+"HD" = (
+/obj/structure/cable{
+	icon_state = "1-8"
+	},
+/turf/open/floor/plasteel/cafeteria,
+/area/ruin/space/radiostation/break_room)
+"Is" = (
+/obj/structure/cable{
+	icon_state = "4-8"
+	},
+/obj/machinery/light{
+	light_color = "#cee5d2"
+	},
+/turf/open/floor/plasteel,
+/area/ruin/space/radiostation)
+"IG" = (
+/obj/structure/grille,
+/obj/effect/spawner/structure/window/reinforced/indestructable,
+/turf/open/floor/plating,
+/area/ruin/space/radiostation/control_room)
+"IJ" = (
+/obj/structure/dresser,
+/turf/open/floor/carpet,
+/area/ruin/space/radiostation/cabin)
+"IK" = (
+/turf/template_noop,
+/area/template_noop)
+"IO" = (
+/obj/structure/fans/tiny,
+/obj/machinery/door/airlock/engineering{
+	name = "Engines"
+	},
+/obj/structure/cable{
+	icon_state = "1-2"
+	},
+/turf/open/floor/plating,
+/area/ruin/space/radiostation/engines)
+"IW" = (
+/obj/machinery/light/small{
+	dir = 4;
+	light_color = "#d8b1b1"
+	},
+/obj/structure/cable{
+	icon_state = "1-8"
+	},
+/turf/open/floor/plating,
+/area/ruin/space/radiostation/engineering)
+"Ke" = (
+/obj/machinery/light_switch,
+/turf/closed/wall,
+/area/ruin/space/radiostation/control_room)
+"Kj" = (
+/obj/structure/table,
+/turf/open/floor/plasteel/cafeteria,
+/area/ruin/space/radiostation/break_room)
+"KD" = (
+/obj/machinery/power/apc/auto_name/north{
+	name = "Custodial Closet";
+	areastring = "/area/ruin/space/radiostation/janitor"
+	},
+/obj/structure/cable{
+	icon_state = "0-2"
+	},
+/turf/open/floor/plasteel,
+/area/ruin/space/radiostation/janitor)
+"KP" = (
+/turf/closed/wall,
+/area/ruin/space/radiostation/engines)
+"KX" = (
+/obj/structure/lattice/catwalk,
+/obj/structure/cable{
+	icon_state = "2-8"
+	},
+/obj/structure/cable{
+	icon_state = "2-4"
+	},
+/obj/structure/cable{
+	icon_state = "1-2"
+	},
+/turf/open/space/basic,
+/area/ruin/space/radiostation/solars)
+"KY" = (
+/obj/structure/disposalpipe/segment,
+/turf/open/floor/plating,
+/area/space/nearstation)
+"LA" = (
+/obj/structure/chair{
+	dir = 4
+	},
+/turf/open/floor/plasteel/cafeteria,
+/area/ruin/space/radiostation/break_room)
+"MG" = (
+/obj/structure/cable{
+	icon_state = "1-2"
+	},
+/obj/machinery/telecomms/relay/preset{
+	name = "NT Radio Relay"
+	},
+/obj/structure/cable{
+	icon_state = "1-4"
+	},
+/turf/open/floor/plating,
+/area/ruin/space/radiostation/engineering)
+"Ob" = (
+/obj/structure/lattice/catwalk,
+/obj/structure/cable{
+	icon_state = "2-8"
+	},
+/turf/open/space/basic,
+/area/ruin/space/radiostation/solars)
+"OH" = (
+/obj/structure/fans/tiny,
+/obj/structure/cable{
+	icon_state = "4-8"
+	},
+/obj/machinery/door/airlock/external/glass,
+/turf/open/floor/plating,
+/area/ruin/space/radiostation/engineering)
+"OK" = (
+/obj/structure/lattice,
+/turf/template_noop,
+/area/space/nearstation)
+"Pp" = (
+/obj/structure/cable{
+	icon_state = "4-8"
+	},
+/turf/open/floor/plating,
+/area/ruin/space/radiostation/engines)
+"PG" = (
+/obj/structure/bed/double{
+	dir = 1
+	},
+/obj/item/bedsheet/blue/double{
+	dir = 4
+	},
+/turf/open/floor/carpet,
+/area/ruin/space/radiostation/cabin)
+"PO" = (
+/obj/machinery/vending/coffee,
+/turf/open/floor/carpet/blue,
+/area/ruin/space/radiostation/control_room)
+"PQ" = (
+/obj/structure/cable{
+	icon_state = "1-2"
+	},
+/obj/machinery/light{
+	dir = 4;
+	light_color = "#e8eaff"
+	},
+/turf/open/floor/plasteel,
+/area/ruin/space/radiostation)
+"Qb" = (
+/obj/structure/cable{
+	icon_state = "2-8"
+	},
+/turf/open/floor/plating,
+/area/ruin/space/radiostation/engineering)
+"QM" = (
+/obj/item/radio/intercom{
+	pixel_y = 8;
+	name = "Radio Broadcaster"
+	},
+/turf/closed/wall,
+/area/ruin/space/radiostation/control_room)
+"Rm" = (
+/obj/structure/lattice/catwalk,
+/turf/open/space/basic,
+/area/ruin/space/radiostation/solars)
+"Rw" = (
+/obj/structure/cable{
+	icon_state = "4-8"
+	},
+/turf/open/floor/plating,
+/area/ruin/space/radiostation/engineering)
+"RP" = (
+/obj/structure/cable{
+	icon_state = "1-4"
+	},
+/obj/structure/cable{
+	icon_state = "1-2"
+	},
+/turf/open/floor/plasteel,
+/area/ruin/space/radiostation)
+"RZ" = (
+/obj/structure/disposalpipe/trunk{
+	dir = 1
+	},
+/obj/structure/disposaloutlet,
+/turf/open/floor/plating,
+/area/space/nearstation)
+"Sv" = (
+/obj/machinery/shuttle/engine,
+/turf/open/floor/plating,
+/area/ruin/space/radiostation/engines)
+"Tv" = (
+/obj/structure/table,
+/obj/machinery/microwave,
+/turf/open/floor/plasteel/cafeteria,
+/area/ruin/space/radiostation/break_room)
+"TG" = (
+/obj/structure/cable{
+	icon_state = "2-8"
+	},
+/turf/open/floor/plasteel,
+/area/ruin/space/radiostation)
+"Uh" = (
+/obj/structure/cable{
+	icon_state = "2-4"
+	},
+/turf/open/floor/plating,
+/area/ruin/space/radiostation/engines)
+"Uk" = (
+/obj/structure/lattice/catwalk,
+/obj/structure/cable{
+	icon_state = "2-4"
+	},
+/obj/structure/cable{
+	icon_state = "2-8"
+	},
+/turf/open/space/basic,
+/area/ruin/space/radiostation/solars)
+"UB" = (
+/obj/structure/window/plasma/reinforced/spawner/north,
+/obj/structure/shuttle/engine/heater,
+/obj/structure/cable,
+/turf/open/floor/plating,
+/area/ruin/space/radiostation/engines)
+"UM" = (
+/obj/machinery/vending/snack,
+/turf/open/floor/plasteel,
+/area/ruin/space/radiostation)
+"UT" = (
+/obj/structure/cable{
+	icon_state = "0-2"
+	},
+/obj/structure/cable,
+/obj/machinery/power/solar/fake,
+/turf/open/floor/plasteel/solarpanel,
+/area/ruin/space/radiostation/solars)
+"Va" = (
+/obj/structure/cable{
+	icon_state = "4-8"
+	},
+/obj/structure/cable{
+	icon_state = "1-2"
+	},
+/turf/open/floor/plating,
+/area/ruin/space/radiostation/engineering)
+"Vc" = (
+/obj/structure/lattice/catwalk,
+/obj/structure/cable{
+	icon_state = "1-4"
+	},
+/turf/open/space/basic,
+/area/ruin/space/radiostation/solars)
+"Vk" = (
+/obj/structure/lattice/catwalk,
+/obj/structure/cable{
+	icon_state = "1-8"
+	},
+/obj/structure/cable{
+	icon_state = "2-8"
+	},
+/turf/open/space/basic,
+/area/ruin/space/radiostation/solars)
+"VV" = (
+/obj/structure/cable{
+	icon_state = "0-8"
+	},
+/obj/machinery/power/solar/fake,
+/turf/open/floor/plasteel/solarpanel,
+/area/ruin/space/radiostation/solars)
+"Wf" = (
+/obj/machinery/light{
+	light_color = "#cee5d2"
+	},
+/turf/open/floor/plasteel/cafeteria,
+/area/ruin/space/radiostation/break_room)
+"WF" = (
+/obj/machinery/computer/teleporter,
+/turf/open/floor/plasteel,
+/area/ruin/space/radiostation)
+"Xt" = (
+/obj/machinery/light/small{
+	dir = 8
+	},
+/turf/open/floor/plating,
+/area/ruin/space/radiostation/engineering)
+"XD" = (
+/turf/closed/wall,
+/area/ruin/space/radiostation/janitor)
+"XQ" = (
+/turf/closed/wall,
+/area/ruin/space/radiostation)
+"XW" = (
+/obj/machinery/power/apc/auto_name/north{
+	name = "Hallway";
+	areastring = "/area/ruin/space/radiostation"
+	},
+/obj/structure/cable{
+	icon_state = "0-2"
+	},
+/turf/open/floor/plasteel,
+/area/ruin/space/radiostation)
+"Yj" = (
+/obj/structure/lattice/catwalk,
+/obj/structure/cable{
+	icon_state = "2-4"
+	},
+/turf/open/space/basic,
+/area/ruin/space/radiostation/solars)
+"YH" = (
+/obj/machinery/teleport/station,
+/turf/open/floor/plasteel,
+/area/ruin/space/radiostation)
+"YK" = (
+/turf/closed/wall,
+/area/ruin/space/radiostation/control_room)
+"Za" = (
+/obj/structure/lattice/catwalk,
+/obj/structure/cable{
+	icon_state = "2-4"
+	},
+/obj/structure/cable{
+	icon_state = "2-8"
+	},
+/obj/structure/cable{
+	icon_state = "1-2"
+	},
+/turf/open/space/basic,
+/area/ruin/space/radiostation/solars)
+
+(1,1,1) = {"
+IK
+IK
+IK
+IK
+IK
+IK
+IK
+IK
+IK
+IK
+IK
+IK
+IK
+IK
+IK
+IK
+IK
+IK
+IK
+IK
+IK
+IK
+IK
+IK
+IK
+IK
+IK
+IK
+IK
+IK
+IK
+"}
+(2,1,1) = {"
+IK
+IK
+IK
+IK
+IK
+IK
+IK
+IK
+IK
+IK
+IK
+IK
+IK
+tx
+tx
+tx
+tx
+XD
+XD
+XD
+XD
+XD
+OK
+IK
+IK
+IK
+IK
+IK
+IK
+IK
+IK
+"}
+(3,1,1) = {"
+IK
+IK
+IK
+IK
+IK
+IK
+IK
+IK
+IK
+IK
+IK
+IK
+IK
+tx
+IJ
+PG
+mb
+XD
+dc
+gD
+bV
+ie
+KY
+KY
+RZ
+IK
+IK
+IK
+IK
+IK
+IK
+"}
+(4,1,1) = {"
+IK
+IK
+IK
+IK
+IK
+IK
+IK
+IK
+IK
+IK
+IK
+IK
+IK
+tx
+tH
+FB
+Hc
+iQ
+is
+is
+is
+XD
+OK
+IK
+IK
+IK
+IK
+IK
+IK
+IK
+IK
+"}
+(5,1,1) = {"
+IK
+IK
+IK
+IK
+IK
+IK
+Rm
+Rm
+Rm
+Rm
+Rm
+Rm
+Rm
+tx
+aq
+oT
+pd
+XD
+KD
+As
+yX
+XD
+IK
+IK
+IK
+IK
+IK
+IK
+IK
+IK
+IK
+"}
+(6,1,1) = {"
+IK
+IK
+IK
+IK
+IK
+IK
+Rm
+ip
+hO
+UT
+hO
+tL
+Rm
+tx
+tx
+dQ
+tx
+XD
+XD
+xS
+XD
+XD
+XQ
+XQ
+XQ
+KP
+KP
+KP
+KP
+KP
+IK
+"}
+(7,1,1) = {"
+IK
+IK
+IK
+IK
+IK
+IK
+Rm
+ip
+hr
+UT
+hr
+tL
+Rm
+XQ
+nN
+uY
+EI
+EI
+EI
+Gr
+wI
+nN
+nN
+nN
+nN
+KP
+zA
+Uh
+UB
+Sv
+IK
+"}
+(8,1,1) = {"
+IK
+IK
+IK
+IK
+IK
+IK
+Rm
+ip
+hr
+UT
+hr
+tL
+Rm
+XQ
+oZ
+Dd
+nN
+nN
+nN
+nN
+nN
+nN
+nN
+nN
+nN
+KP
+zA
+sR
+UB
+Sv
+IK
+"}
+(9,1,1) = {"
+IK
+IK
+IK
+IK
+IK
+IK
+Rm
+Rm
+Ob
+hP
+nu
+Rm
+Rm
+XQ
+nN
+Dd
+YK
+YK
+IG
+IG
+IG
+YK
+YK
+nN
+pz
+KP
+zA
+sR
+UB
+Sv
+IK
+"}
+(10,1,1) = {"
+IK
+Rm
+Rm
+Rm
+Rm
+Rm
+ws
+ws
+ws
+OH
+ws
+ws
+ws
+XQ
+nN
+Dd
+YK
+Ft
+bU
+bU
+bU
+xR
+YK
+nN
+nN
+KP
+fm
+sR
+UB
+Sv
+IK
+"}
+(11,1,1) = {"
+IK
+Rm
+pn
+pn
+pn
+Rm
+ws
+ca
+Xt
+Rw
+ca
+ca
+ws
+UM
+nN
+Dd
+Ke
+bU
+bU
+bU
+bU
+wp
+YK
+nN
+nN
+KP
+cd
+sR
+UB
+Sv
+IK
+"}
+(12,1,1) = {"
+IK
+Rm
+Uk
+Za
+Za
+Vc
+ws
+vx
+iB
+nE
+ca
+ca
+ws
+nN
+nN
+Dd
+YK
+vN
+xk
+AV
+AV
+bU
+YK
+WF
+nN
+KP
+Pp
+sR
+UB
+Sv
+IK
+"}
+(13,1,1) = {"
+IK
+Rm
+yE
+yE
+yE
+Uk
+jO
+xc
+yM
+iB
+MG
+iB
+bz
+EI
+ja
+ep
+bK
+dd
+xk
+AV
+Dy
+bU
+QM
+YH
+ss
+IO
+zR
+BH
+UB
+Sv
+IK
+"}
+(14,1,1) = {"
+IK
+Rm
+qj
+KX
+KX
+nu
+ws
+Qb
+iB
+oo
+Rw
+ca
+ws
+nN
+nN
+Dd
+YK
+bS
+xk
+AV
+AV
+bU
+YK
+bg
+Dd
+KP
+zA
+Hb
+UB
+Sv
+IK
+"}
+(15,1,1) = {"
+IK
+Rm
+VV
+VV
+VV
+Rm
+ws
+mC
+iB
+Va
+IW
+py
+ws
+dE
+nN
+Dd
+YK
+mD
+bU
+bU
+bU
+wp
+YK
+nN
+Dd
+KP
+zA
+Hb
+UB
+Sv
+IK
+"}
+(16,1,1) = {"
+IK
+Rm
+Rm
+Rm
+Rm
+Rm
+ws
+ws
+ws
+OH
+ws
+ws
+ws
+XQ
+XW
+nG
+YK
+PO
+bU
+bU
+bU
+bU
+YK
+nN
+Dd
+KP
+fm
+Hb
+UB
+Sv
+IK
+"}
+(17,1,1) = {"
+IK
+IK
+IK
+IK
+IK
+IK
+Rm
+Rm
+Yj
+Vk
+Vc
+Rm
+Rm
+yu
+nN
+Dd
+YK
+YK
+IG
+IG
+IG
+YK
+YK
+nN
+Is
+KP
+zA
+Hb
+UB
+Sv
+IK
+"}
+(18,1,1) = {"
+IK
+IK
+IK
+IK
+IK
+IK
+Rm
+ip
+gQ
+ET
+gQ
+tL
+Rm
+XQ
+oZ
+Dd
+nN
+nN
+nN
+nN
+nN
+nN
+nN
+nN
+Dd
+KP
+zA
+Hb
+UB
+Sv
+IK
+"}
+(19,1,1) = {"
+IK
+IK
+IK
+IK
+IK
+IK
+Rm
+ip
+gQ
+ET
+gQ
+tL
+Rm
+XQ
+nN
+TG
+EI
+EI
+PQ
+RP
+EI
+EI
+EI
+EI
+Gr
+KP
+zA
+DE
+UB
+Sv
+IK
+"}
+(20,1,1) = {"
+IK
+IK
+IK
+IK
+IK
+IK
+Rm
+ip
+Vk
+ET
+Vk
+tL
+Rm
+XQ
+XQ
+XQ
+aH
+aH
+aH
+ar
+wh
+aH
+aH
+XQ
+XQ
+KP
+KP
+KP
+KP
+KP
+IK
+"}
+(21,1,1) = {"
+IK
+IK
+IK
+IK
+IK
+IK
+Rm
+Rm
+Rm
+Rm
+Rm
+Rm
+Rm
+IK
+IK
+IK
+aH
+ma
+nQ
+HD
+Cu
+Cu
+aH
+IK
+IK
+IK
+IK
+IK
+IK
+IK
+IK
+"}
+(22,1,1) = {"
+IK
+IK
+IK
+IK
+IK
+IK
+IK
+IK
+IK
+IK
+IK
+IK
+IK
+IK
+IK
+IK
+aH
+vl
+Cu
+Cu
+Cu
+Cu
+aH
+IK
+IK
+IK
+IK
+IK
+IK
+IK
+IK
+"}
+(23,1,1) = {"
+IK
+IK
+IK
+IK
+IK
+IK
+IK
+IK
+IK
+IK
+IK
+IK
+IK
+IK
+IK
+IK
+aH
+aL
+Cu
+Cu
+Cu
+Wf
+aH
+IK
+IK
+IK
+IK
+IK
+IK
+IK
+IK
+"}
+(24,1,1) = {"
+IK
+IK
+IK
+IK
+IK
+IK
+IK
+IK
+IK
+IK
+IK
+IK
+IK
+IK
+IK
+OK
+aH
+Tv
+Cu
+LA
+LA
+LA
+aH
+IK
+IK
+IK
+IK
+IK
+IK
+IK
+IK
+"}
+(25,1,1) = {"
+IK
+IK
+IK
+IK
+IK
+IK
+IK
+IK
+IK
+IK
+IK
+IK
+IK
+FF
+KY
+KY
+hA
+An
+Cu
+Kj
+Kj
+Kj
+aH
+IK
+IK
+IK
+IK
+IK
+IK
+IK
+IK
+"}
+(26,1,1) = {"
+IK
+IK
+IK
+IK
+IK
+IK
+IK
+IK
+IK
+IK
+IK
+IK
+IK
+IK
+IK
+OK
+aH
+aH
+uF
+uF
+uF
+aH
+aH
+IK
+IK
+IK
+IK
+IK
+IK
+IK
+IK
+"}
+(27,1,1) = {"
+IK
+IK
+IK
+IK
+IK
+IK
+IK
+IK
+IK
+IK
+IK
+IK
+IK
+IK
+IK
+IK
+IK
+IK
+IK
+IK
+IK
+IK
+IK
+IK
+IK
+IK
+IK
+IK
+IK
+IK
+IK
+"}

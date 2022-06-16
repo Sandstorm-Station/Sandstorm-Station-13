@@ -1,43 +1,6 @@
-//Clothing vars and procs
-/obj/item/clothing
-	var/normalize_size = RESIZE_NORMAL //This number is used as the "normal" height people will be given when wearing one of these accessories
-	var/natural_size = null //The value of the wearer's body_size var in prefs. Unused for now.
-	var/recorded_size = null //the user's height prior to equipping
-
-//For applying a normalization
-/obj/item/clothing/proc/normalize_mob_size(mob/living/carbon/human/H)
-	if(H.normalized) //First we make a check to see if they're already normalized, from wearing another article of SynTech jewelry
-		to_chat(H, "<span class='warning'>This accessory buzzes, being overwritten by another.</span>")
-		playsound(H, 'sound/machines/buzz-sigh.ogg', 50, 1)
-		return
-	recorded_size = get_size(H) //If not, grab their current size
-	playsound(H, 'sound/effects/magic.ogg', 50, 1)
-	flash_lighting_fx(3, 3, LIGHT_COLOR_PURPLE)
-	H.visible_message("<span class='warning'>A flash of purple light engulfs [H], before they change to normal!</span>","<span class='notice'>You feel warm for a moment, before everything scales to your size...</span>")
-	H.update_size(normalize_size) //Then apply the size
-	H.normalized = TRUE //And set normalization
-
-//For removing a normalization, and reverting back to normal
-/obj/item/clothing/proc/denormalize_mob_size(mob/living/carbon/human/H)
-	if(H.normalized) //sanity check
-		playsound(H,'sound/weapons/emitter2.ogg', 50, 1)
-		flash_lighting_fx(3, 3, LIGHT_COLOR_YELLOW)
-		H.visible_message("<span class='warning'>Golden light engulfs [H], and they shoot back to their default height!</span>","<span class='notice'>Energy rushes through your body, and you return to normal.</span>")
-		H.update_size(recorded_size)
-		H.normalized = FALSE
-
-
-//For storing normalization on mobs
-/mob/living
-	var/normalized = FALSE
-	//normalized is a check for instances where more than one accessory of jewelry is worn. For all intensive purposes, only the first worn accessory stores the user's size.
-	//Anything else is just extra.
-
-//Clothing below. Code could be compressed more, but until I make jewelry slots, this will do. -Dahl
-
 //GLOVE SLOT ITEMS...
 //SynTech ring
-/obj/item/clothing/gloves/ring/syntech
+/obj/item/clothing/accessory/ring/syntech
 	name = "normalizer ring"
 	desc = "An expensive, shimmering SynTech ring gilded with golden NanoTrasen markings. It will 'normalize' the size of the user to a specified height approved for work-conditions, as long as it is equipped. The artificial violet gem inside twinkles ominously."
 	icon = 'modular_splurt/icons/obj/clothing/sizeaccessories.dmi'
@@ -50,25 +13,25 @@
 	//These are already defined under the parent ring, but I wanna leave em here for reference purposes
 
 //For glove slots
-/obj/item/clothing/gloves/ring/syntech/equipped(mob/living/user, slot)
-	if(ishuman(user))
-		var/mob/living/carbon/human/human_target = user
-		if(slot == ITEM_SLOT_GLOVES)
+/obj/item/clothing/accessory/ring/syntech/equipped(mob/living/user, slot)
+	if(slot != ITEM_SLOT_GLOVES)
+		return ..()
 
-			if(get_size(human_target) != normalize_size)
-				normalize_mob_size(human_target)
+	if(user.GetComponent(/datum/component/size_normalized))
+		to_chat(user, "<span class='warning'>\The [src] buzzes, being overwritten by another accessory.</span>")
+		playsound(src, 'sound/machines/buzz-sigh.ogg', 50, 1)
+	else
+		user.AddComponent(/datum/component/size_normalized, wear=src)
 	. = ..()
 
-/obj/item/clothing/gloves/ring/syntech/dropped(mob/living/user, slot)
-	if(ishuman(user))
-		var/mob/living/carbon/human/human_target = user
-
-		if(human_target.normalized)
-			denormalize_mob_size(human_target)
+/obj/item/clothing/accessory/ring/syntech/dropped(mob/living/user, slot)
+	var/datum/component/size_normalized/comp = user.GetComponent(/datum/component/size_normalized)
+	if(comp?.attached_wear == src)
+		qdel(comp)
 	. = ..()
 
 //SynTech Wristband
-/obj/item/clothing/gloves/ring/syntech/band
+/obj/item/clothing/accessory/ring/syntech/band //I mean, you realistically *can* put a band over your gloves
 	name = "normalizer wristband"
 	desc = "An expensive technological wristband cast in SynTech purples with shimmering NanoTrasen golds. It will 'normalize' the size of the user to a specified height for approved work-conditions, as long as it is equipped. There is a small screen buzzing with information."
 	icon = 'modular_splurt/icons/obj/clothing/sizeaccessories.dmi'
@@ -89,20 +52,20 @@
 
 //For neck items
 /obj/item/clothing/neck/syntech/equipped(mob/living/user, slot)
-	if(ishuman(user))
-		var/mob/living/carbon/human/human_target = user
-		if(slot == ITEM_SLOT_NECK)
+	if(slot != ITEM_SLOT_NECK)
+		return ..()
 
-			if(get_size(human_target) != normalize_size)
-				normalize_mob_size(human_target)
+	if(user.GetComponent(/datum/component/size_normalized))
+		to_chat(user, "<span class='warning'>\The [src] buzzes, being overwritten by another accessory.</span>")
+		playsound(src, 'sound/machines/buzz-sigh.ogg', 50, 1)
+	else
+		user.AddComponent(/datum/component/size_normalized, wear=src)
 	. = ..()
 
 /obj/item/clothing/neck/syntech/dropped(mob/living/user, slot)
-	if(ishuman(user))
-		var/mob/living/carbon/human/human_target = user
-
-		if(human_target.normalized)
-			denormalize_mob_size(human_target)
+	var/datum/component/size_normalized/comp = user.GetComponent(/datum/component/size_normalized)
+	if(comp?.attached_wear == src)
+		qdel(comp)
 	. = ..()
 
 //Syntech Choker

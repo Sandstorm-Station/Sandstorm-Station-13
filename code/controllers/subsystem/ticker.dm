@@ -165,6 +165,10 @@ SUBSYSTEM_DEF(ticker)
 			to_chat(world, "<span class='boldnotice'>Welcome to [station_name()]!</span>")
 			send2chat("New round starting on [SSmapping.config.map_name]!", CONFIG_GET(string/chat_announce_new_game))
 			current_state = GAME_STATE_PREGAME
+			//SPLURT EDIT - Bring back old panel
+			//Everyone who wants to be an observer is now spawned
+			create_observers()
+			//SPLURT EDIT
 			SEND_SIGNAL(src, COMSIG_TICKER_ENTER_PREGAME)
 
 			fire()
@@ -385,6 +389,8 @@ SUBSYSTEM_DEF(ticker)
 				LAZYOR(player.client.prefs.characters_joined_as, player.new_character.real_name)
 			else
 				stack_trace("WARNING: Either a player did not have a new_character, did not have a client, or did not have preferences. This is VERY bad.")
+		else if(!(player.client?.prefs.toggles & TG_PLAYER_PANEL))
+			player.new_player_panel()
 		CHECK_TICK
 
 /datum/controller/subsystem/ticker/proc/collect_minds()

@@ -7,11 +7,11 @@
 
 /datum/mood_event/creampie/cheesed/add_effects(param)
 	. = ..()
-	if(!ishuman(owner))
-		return .
-	var/mob/living/carbon/human/H = owner
+	var/mob/living/carbon/human/actual_owner = owner_mob()
 
-	if(iscatperson(H))
+	if(!ishuman(actual_owner))
+		return .
+	if(iscatperson(actual_owner))
 		description = span_warning("<b>CHEESE!!! WAAAAAAAAAAAAAAAAAAAAAAAAAAAA!!!</b>")
 		mood_change = -5
 		timeout = 5 MINUTES

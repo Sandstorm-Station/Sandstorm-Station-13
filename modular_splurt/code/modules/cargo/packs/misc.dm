@@ -388,7 +388,7 @@
 /datum/supply_pack/misc/goner
 	name = "Trencher Outfits"
 	desc = "Contains five trench uniforms, coats, gas masks, jackboots, four helmets and one officer cap. Corporate-made."
-	cost = 1850 // Debatable, probably
+	cost = 2050 // Debatable, probably
 	contraband = TRUE
 	contains = list(
 					/obj/item/clothing/mask/gas/goner,
@@ -422,7 +422,7 @@
 /datum/supply_pack/misc/goner_red
 	name = "Red Trencher Outfits"
 	desc = "Contains an import of five trench uniforms, coats, gas masks, jackboots, four helmets and one officer cap. Made by pesky Reds."
-	cost = 1750
+	cost = 2000
 	contraband = TRUE
 	contains = list(
 					/obj/item/clothing/mask/gas/goner,
@@ -456,7 +456,7 @@
 /datum/supply_pack/misc/goner_green
 	name = "Green Trencher Outfits"
 	desc = "Contains an import of five trench uniforms, coats, gas masks, jackboots, four helmets and one officer cap. Made by stupid Greens."
-	cost = 1700
+	cost = 1950
 	contraband = TRUE
 	contains = list(
 					/obj/item/clothing/mask/gas/goner,
@@ -490,7 +490,7 @@
 /datum/supply_pack/misc/goner_blue
 	name = "Blue Trencher Outfits"
 	desc = "Contains an import of five trench uniforms, coats, gas masks, jackboots, four helmets and one officer cap. Made by dirty Blues."
-	cost = 1750
+	cost = 2000
 	contraband = TRUE
 	contains = list(
 					/obj/item/clothing/mask/gas/goner,
@@ -524,7 +524,7 @@
 /datum/supply_pack/misc/goner_yellow
 	name = "Yellow Trencher Outfits"
 	desc = "Contains an import of five trench uniforms, coats, gas masks, jackboots, four helmets and one officer cap. Made by cursed Yellows."
-	cost = 1750
+	cost = 2000
 	contraband = TRUE
 	contains = list(
 					/obj/item/clothing/mask/gas/goner,
@@ -554,7 +554,7 @@
 					/obj/item/clothing/shoes/jackboots
 					)
 	crate_name = "yellow trencher outfit crate"
-	
+
 /datum/supply_pack/medical/plaguedoc
 	name = "Plague Doctor Supply Crate"
 	desc = "Survive any Pandemic in style with this authentic Plague Doctor outfit, bag, and cane!"

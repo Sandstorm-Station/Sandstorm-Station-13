@@ -100,3 +100,11 @@
 	icon_state = "delirious"
 	icon = 'modular_splurt/icons/mob/wings.dmi'
 	upgrade_to = SPECIES_WINGS_MOTH
+
+/datum/sprite_accessory/deco_wings/sylveon
+	name = "Sylveon Ribbons"
+	icon_state = "sylveon_bow"
+	icon = 'modular_splurt/icons/mob/wings.dmi'
+	color_src = MATRIXED
+	matrixed_sections = MATRIX_ALL
+	relevant_layers = list(BODY_BEHIND_LAYER, BODY_ADJ_LAYER, BODY_FRONT_LAYER)
