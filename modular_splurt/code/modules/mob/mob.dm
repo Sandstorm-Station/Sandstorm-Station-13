@@ -41,3 +41,8 @@
 	if (.)
 		return
 	to_chat(A, "<span class='notice'>[src] seems to be checking you out.</span>")
+
+/mob/proc/is_dumb4cum()
+	if(HAS_TRAIT(src, TRAIT_DUMB4CUM))
+		return TRUE
+	return FALSE

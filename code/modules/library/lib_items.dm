@@ -113,6 +113,9 @@
 				if(!user.is_literate())
 					to_chat(user, "<span class='notice'>You scribble illegibly on the side of [src]!</span>")
 					return
+				if(user.is_dumb4cum())
+					to_chat(user, "<span class='love'>You can't think of anything but cum right now.</span>")
+					return
 				var/newname = stripped_input(user, "What would you like to title this bookshelf?")
 				if(!user.canUseTopic(src, BE_CLOSE))
 					return

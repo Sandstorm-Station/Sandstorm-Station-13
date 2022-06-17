@@ -2510,6 +2510,13 @@
 	nutriment_factor = 0.5 * REAGENTS_METABOLISM
 	var/decal_path = /obj/effect/decal/cleanable/semen
 
+/datum/reagent/consumable/semen/on_mob_add(mob/living/carbon/M)
+	var/datum/quirk/dumb4cum/d4c
+	for(var/datum/quirk/Q in M.roundstart_quirks)
+		if(Q.type == /datum/quirk/dumb4cum)
+			d4c = Q
+			d4c.uncrave()
+
 /datum/reagent/consumable/semen/reaction_turf(turf/T, reac_volume)
 	..()
 	if(!istype(T))
