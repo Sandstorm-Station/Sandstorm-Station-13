@@ -2926,19 +2926,19 @@ GLOBAL_LIST_EMPTY(preferences_datums)
 				if("barkspeed")
 					var/datum/bark/B = GLOB.bark_list[bark_id]
 					var/borkset = input(user, "Choose your desired bark speed (Higher is slower, lower is faster). Min: [initial(B.minspeed)]. Max: [initial(B.maxspeed)]", "Character Preference") as null|num
-					if(borkset)
+					if(!isnull(borkset))
 						bark_speed = round(clamp(borkset, initial(B.minspeed), initial(B.maxspeed)), 1)
 
 				if("barkpitch")
 					var/datum/bark/B = GLOB.bark_list[bark_id]
 					var/borkset = input(user, "Choose your desired baseline bark pitch. Min: [initial(B.minpitch)]. Max: [initial(B.maxpitch)]", "Character Preference") as null|num
-					if(borkset)
+					if(!isnull(borkset))
 						bark_pitch = clamp(borkset, initial(B.minpitch), initial(B.maxpitch))
 
 				if("barkvary")
 					var/datum/bark/B = GLOB.bark_list[bark_id]
 					var/borkset = input(user, "Choose your desired baseline bark pitch. Min: [initial(B.minvariance)]. Max: [initial(B.maxvariance)]", "Character Preference") as null|num
-					if(borkset)
+					if(!isnull(borkset))
 						bark_variance = clamp(borkset, initial(B.minvariance), initial(B.maxvariance))
 
 				if("bodysprite")
