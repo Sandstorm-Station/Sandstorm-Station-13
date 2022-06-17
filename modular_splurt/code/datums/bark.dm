@@ -24,6 +24,26 @@
 	minspeed = 5
 	maxspeed = 11
 
+/datum/bark/chirp
+	name = "Chirp"
+	id = "chirp"
+	allow_random = TRUE
+	soundpath = 'modular_splurt/sound/voice/chirp.ogg'
+
+/datum/bark/caw
+	name = "Caw"
+	id = "caw"
+	allow_random = TRUE
+	soundpath = 'modular_splurt/sound/voice/caw.ogg'
+
+/datum/bark/bleat
+	name = "Bleat"
+	id = "bleat"
+	allow_random = TRUE
+	soundpath = 'modular_splurt/sound/voice/barks/bleat_bark.ogg'
+	minspeed = 5
+	maxspeed = 11
+
 //Undertale
 /datum/bark/alphys
 	name = "Alphys"
