@@ -36,7 +36,7 @@
 		if(!user.is_literate())
 			to_chat(user, "<span class='notice'>You scribble illegibly on the side of [src]!</span>")
 			return
-		if(user.is_dumb4cum())
+		if(HAS_TRAIT(user, TRAIT_DUMB4CUM))
 			to_chat(user, "<span class='love'>You can't think of anything but cum right now.</span>")
 			return
 		var/str = stripped_input(user, "Label text?", "Set label", "", MAX_NAME_LEN)
@@ -122,8 +122,11 @@
 			playsound(loc, 'sound/machines/twobeep.ogg', 100, 1)
 
 	else if(istype(W, /obj/item/pen))
-		if(!user.is_literate() || user.is_dumb4cum())
+		if(!user.is_literate())
 			to_chat(user, "<span class='notice'>You scribble illegibly on the side of [src]!</span>")
+			return
+		if(HAS_TRAIT(user, TRAIT_DUMB4CUM))
+			to_chat(user, "<span class='love'>You can't think of anything but cum right now.</span>")
 			return
 		var/str = stripped_input(user, "Label text?", "Set label", "", MAX_NAME_LEN)
 		if(!user.canUseTopic(src, BE_CLOSE))

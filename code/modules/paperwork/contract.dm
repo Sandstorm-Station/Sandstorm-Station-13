@@ -190,7 +190,7 @@
 	if(!user.IsAdvancedToolUser() || !user.is_literate())
 		to_chat(user, "<span class='notice'>You don't know how to read or write.</span>")
 		return 0
-	if(user.is_dumb4cum())
+	if(HAS_TRAIT(user, TRAIT_DUMB4CUM))
 		to_chat(user, "<span class='love'>You can't think of anything but cum right now.</span>")
 		return
 	if(user.mind != target)

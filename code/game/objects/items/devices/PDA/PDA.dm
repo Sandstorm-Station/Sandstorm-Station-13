@@ -779,7 +779,7 @@ GLOBAL_LIST_EMPTY(PDAs)
 	return t
 
 /obj/item/pda/proc/send_message(mob/living/user, list/obj/item/pda/targets, everyone)
-	if(user.is_dumb4cum())
+	if(HAS_TRAIT(user, TRAIT_DUMB4CUM))
 		to_chat(user, "<span class='love'>You can't focus on anything but cum right now!</span>")
 		return
 		
@@ -865,7 +865,7 @@ GLOBAL_LIST_EMPTY(PDAs)
 	else
 		L = get(src, /mob/living/silicon)
 
-	if(L && L.stat != UNCONSCIOUS && !L.is_dumb4cum())
+	if(L && L.stat != UNCONSCIOUS && !HAS_TRAIT(L, TRAIT_DUMB4CUM))
 		var/hrefstart
 		var/hrefend
 		if (isAI(L))
