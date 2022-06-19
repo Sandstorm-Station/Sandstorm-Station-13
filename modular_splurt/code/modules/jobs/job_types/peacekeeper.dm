@@ -1,7 +1,7 @@
 /datum/job/peacekeeper
 	title = "Peacekeeper"
 	flag = SECPEACE
-	department_head = list("Head of Security")
+	department_head = list("Head of Security", "Head of Personel")
 	department_flag = ENGSEC
 	faction = "Station"
 	total_positions = 3 //Handled in /datum/controller/occupations/proc/setup_officer_positions()
@@ -13,15 +13,15 @@
 	exp_type = EXP_TYPE_CREW
 	considered_combat_role = FALSE
 	alt_titles = list("Peace Officer", "Security Trainee", "Security Assistant", "Security Cadet", "Security Trainee", "Rookie")
-	custom_spawn_text = "<font color='red' size='2'><b> Your job is to help Security and react to Minor and Moderate crimes. Conflict De-escalation through WORDS is your top priority. Only use your Baton or Hypos as a last resort. You are NOT required to engage hostile forces unless on Amber or Higher, and ONLY if ordered to by your Superiors.</b></font>"
+	custom_spawn_text = "<font color='black' size='2'><b> Your job is to help Security and react to Minor crimes. Conflict De-escalation through WORDS is your top priority. Only use your taser as a last resort.</b></font><font color='red' size='4'><b>You are NOT a Security Officer.</b></font>"
 
 	outfit = /datum/outfit/job/peacekeeper
 	plasma_outfit = /datum/outfit/plasmaman/peacekeeper
 
-	access = list(ACCESS_SECURITY, ACCESS_SEC_DOORS, ACCESS_BRIG, ACCESS_COURT, ACCESS_MAINT_TUNNELS, ACCESS_MORGUE, ACCESS_ENTER_GENPOP, ACCESS_LEAVE_GENPOP)
-	minimal_access = list(ACCESS_SECURITY, ACCESS_SEC_DOORS, ACCESS_BRIG, ACCESS_COURT, ACCESS_ENTER_GENPOP, ACCESS_LEAVE_GENPOP) // See /datum/job/officer/get_access()
-	paycheck = PAYCHECK_HARD
-	paycheck_department = ACCOUNT_SEC
+	access = list(ACCESS_BRIG, ACCESS_SEC_DOORS, ACCESS_COURT, ACCESS_MAINT_TUNNELS, ACCESS_ENTER_GENPOP, ACCESS_LEAVE_GENPOP)
+	minimal_access = list(ACCESS_BRIG, ACCESS_SEC_DOORS, ACCESS_COURT, ACCESS_ENTER_GENPOP, ACCESS_LEAVE_GENPOP) // See /datum/job/officer/get_access()
+	paycheck = PAYCHECK_MEDIUM
+	paycheck_department = ACCOUNT_CIV
 
 	mind_traits = list(TRAIT_LAW_ENFORCEMENT_METABOLISM)
 
@@ -33,7 +33,7 @@
 	name = "Peacekeeper"
 	jobtype = /datum/job/peacekeeper
 
-	belt = /obj/item/gun/energy/e_gun/advtaser
+	belt = /obj/item/gun/energy/taser
 	ears = /obj/item/radio/headset/headset_sec/alt
 	glasses = /obj/item/clothing/glasses/hud/security/sunglasses
 	uniform = /obj/item/clothing/under/rank/security/officer/peacekeeper
