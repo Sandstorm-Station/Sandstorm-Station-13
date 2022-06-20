@@ -1,5 +1,3 @@
-//Hyperstation Ears
-
 /datum/sprite_accessory/ears/human/gret
 	name = "Gret"
 	icon_state = "gret"
@@ -78,3 +76,8 @@
 	name = "Shadekin"
 	icon_state = "shadekin"
 	color_src = MUTCOLORS
+
+/datum/sprite_accessory/ears/mam_ears/eros/cat_normal
+	name = "Cat, normal"
+	icon_state = "catnormal"
+	matrixed_sections = MATRIX_RED_GREEN

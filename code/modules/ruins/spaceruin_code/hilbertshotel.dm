@@ -47,7 +47,20 @@ GLOBAL_VAR_INIT(hhmysteryRoomNumber, 1337)
 	promptAndCheckIn(user)
 
 /obj/item/hilbertshotel/proc/promptAndCheckIn(mob/user)
-	var/chosenRoomNumber = input(user, "What number room will you be checking into?", "Room Number") as null|num
+	//SPLURT EDIT - max infinidorms rooms
+	var/max_rooms = CONFIG_GET(number/max_infinidorms)
+	var/chosenRoomNumber
+	if(max_rooms == 0)
+		playsound(src, 'sound/machines/terminal_error.ogg', 15, 1)
+		to_chat(user, span_warning("We're currently not offering service, please come back another day!"))
+		return
+
+	chosenRoomNumber = input(user, "What number room will you be checking into?", "Room Number") as null|num
+	if(max_rooms > 0 && mob_dorms[user]?.len >= max_rooms && !activeRooms["[chosenRoomNumber]"] && !storedRooms["[chosenRoomNumber]"])
+		to_chat(user, span_warning("Your free trial of Hilbert's Hotel has ended! Please select one of the rooms you've already visited."))
+		chosenRoomNumber = input(user, "Select one of your previous rooms", "Room number") as null|anything in mob_dorms[user]
+
+	//SPLURT EDIT END
 	if(!chosenRoomNumber || !user.CanReach(src))
 		return
 	if(chosenRoomNumber > SHORT_REAL_LIMIT)

@@ -137,6 +137,10 @@
 	heat_protection = CHEST|GROIN|LEGS|ARMS
 	armor = list(MELEE = 25, BULLET = 10, LASER = 25, ENERGY = 10, BOMB = 5, BIO = 5, RAD = 5, FIRE = 5, ACID = 45) // Det's armor value + 5 BOMB&BIO&RAD&FIRE
 
+/obj/item/clothing/suit/goner/Initialize(mapload)
+	. = ..()
+	allowed = GLOB.detective_vest_allowed // I am probably gonna get fire-line'd for this... But suggestion is a suggestion. Can always revert the changes, right?
+
 /obj/item/clothing/suit/goner/fake
 	name = "trencher coat replica"
 	desc = "A 90% replica of No Man's Land-type coat."

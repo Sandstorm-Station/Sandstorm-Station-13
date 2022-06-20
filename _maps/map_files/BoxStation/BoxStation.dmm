@@ -3795,22 +3795,6 @@
 	},
 /turf/open/floor/plasteel,
 /area/security/office)
-"ahM" = (
-/obj/structure/cable{
-	icon_state = "2-8"
-	},
-/obj/structure/disposalpipe/segment{
-	dir = 10
-	},
-/obj/structure/cable{
-	icon_state = "4-8"
-	},
-/obj/machinery/atmospherics/pipe/simple/scrubbers/hidden{
-	dir = 4
-	},
-/obj/effect/landmark/start/peacekeeper,
-/turf/open/floor/plasteel,
-/area/security/office)
 "ahN" = (
 /obj/machinery/power/apc{
 	areastring = "/area/security/office";
@@ -15468,16 +15452,6 @@
 /obj/machinery/atmospherics/pipe/simple/supply/hidden,
 /turf/open/floor/wood,
 /area/service/bar)
-"aMw" = (
-/obj/machinery/vending/dinnerware{
-	contraband = list(/obj/item/reagent_containers/food/condiment/flour=4);
-	desc = "This vendor is full of condiments to put on food.";
-	name = "\improper Condiments Vendor";
-	product_ads = "Get your sauces here!;No slave labour was used to make these products!;Nanotrasen Approved?!";
-	products = list(/obj/item/storage/bag/tray=8,/obj/item/reagent_containers/food/drinks/drinkingglass=10,/obj/item/storage/box/cups=5,/obj/item/reagent_containers/food/condiment/pack/ketchup=20,/obj/item/reagent_containers/food/condiment/pack/mustard=20,/obj/item/reagent_containers/food/condiment/pack/hotsauce=20,/obj/item/reagent_containers/food/condiment/pack/astrotame=20,/obj/item/reagent_containers/food/condiment/saltshaker=20,/obj/item/reagent_containers/food/condiment/peppermill=20)
-	},
-/turf/open/floor/wood,
-/area/service/bar)
 "aMx" = (
 /obj/machinery/atmospherics/pipe/simple/scrubbers/hidden,
 /turf/open/floor/wood,
@@ -17228,12 +17202,6 @@
 	},
 /turf/open/floor/plasteel,
 /area/service/bar)
-"aRA" = (
-/obj/machinery/vending/dinnerware{
-	contraband = list(/obj/item/kitchen/rollingpin=2,/obj/item/kitchen/knife/butcher=2,/obj/item/reagent_containers/food/condiment/flour=4)
-	},
-/turf/open/floor/plasteel/cafeteria,
-/area/service/kitchen)
 "aRB" = (
 /obj/item/radio/intercom{
 	pixel_y = 25
@@ -22585,15 +22553,6 @@
 "bfF" = (
 /turf/closed/wall,
 /area/medical/chemistry)
-"bfG" = (
-/obj/machinery/cryopod{
-	dir = 4
-	},
-/obj/machinery/light{
-	dir = 8
-	},
-/turf/open/floor/carpet,
-/area/commons/cryopod)
 "bfH" = (
 /obj/structure/sign/departments/medbay/alt,
 /turf/closed/wall,
@@ -30092,17 +30051,6 @@
 	},
 /turf/open/floor/plasteel,
 /area/hallway/primary/central)
-"bxM" = (
-/obj/structure/chair/office/dark,
-/obj/machinery/atmospherics/pipe/simple/scrubbers/hidden,
-/obj/effect/landmark/event_spawn,
-/obj/effect/turf_decal/tile/red,
-/obj/effect/turf_decal/tile/red{
-	dir = 8
-	},
-/obj/effect/landmark/start/peacekeeper,
-/turf/open/floor/plasteel,
-/area/security/checkpoint/auxiliary)
 "bxN" = (
 /obj/structure/sink{
 	dir = 8;
@@ -53702,6 +53650,13 @@
 /obj/effect/decal/cleanable/dirt,
 /turf/closed/wall,
 /area/medical/psychology)
+"fJA" = (
+/obj/machinery/light{
+	dir = 8
+	},
+/obj/machinery/cryopod/tele,
+/turf/open/floor/carpet,
+/area/commons/cryopod)
 "fJY" = (
 /obj/machinery/atmospherics/pipe/simple/supply/hidden,
 /obj/effect/turf_decal/tile/red{
@@ -53846,6 +53801,22 @@
 /obj/structure/table,
 /turf/open/floor/plasteel/cafeteria,
 /area/commons/locker)
+"fSw" = (
+/obj/structure/cable{
+	icon_state = "2-8"
+	},
+/obj/structure/disposalpipe/segment{
+	dir = 10
+	},
+/obj/structure/cable{
+	icon_state = "4-8"
+	},
+/obj/machinery/atmospherics/pipe/simple/scrubbers/hidden{
+	dir = 4
+	},
+/obj/effect/landmark/start/peacekeeper,
+/turf/open/floor/plasteel,
+/area/security/office)
 "fSO" = (
 /obj/machinery/atmospherics/pipe/simple/scrubbers/visible,
 /obj/machinery/atmospherics/pipe/simple/orange/visible{
@@ -57686,6 +57657,17 @@
 	},
 /turf/open/floor/plasteel/dark,
 /area/medical/morgue)
+"kVY" = (
+/obj/structure/chair/office/dark,
+/obj/machinery/atmospherics/pipe/simple/scrubbers/hidden,
+/obj/effect/landmark/event_spawn,
+/obj/effect/turf_decal/tile/red,
+/obj/effect/turf_decal/tile/red{
+	dir = 8
+	},
+/obj/effect/landmark/start/peacekeeper,
+/turf/open/floor/plasteel,
+/area/security/checkpoint/auxiliary)
 "kWp" = (
 /obj/structure/shuttle/engine/heater{
 	dir = 1
@@ -59029,6 +59011,16 @@
 	},
 /turf/closed/wall,
 /area/service/theater)
+"myO" = (
+/obj/machinery/vending/dinnerware{
+	contraband = list(/obj/item/reagent_containers/food/condiment/flour=4);
+	desc = "This vendor is full of condiments to put on food.";
+	name = "\improper Condiments Vendor";
+	product_ads = "Get your sauces here!;No slave labour was used to make these products!;Nanotrasen Approved?!";
+	products = list(/obj/item/storage/bag/tray=8,/obj/item/reagent_containers/food/drinks/drinkingglass=10,/obj/item/storage/box/cups=5,/obj/item/reagent_containers/food/condiment/pack/ketchup=20,/obj/item/reagent_containers/food/condiment/pack/mustard=20,/obj/item/reagent_containers/food/condiment/pack/hotsauce=20,/obj/item/reagent_containers/food/condiment/pack/astrotame=20,/obj/item/reagent_containers/food/condiment/saltshaker=20,/obj/item/reagent_containers/food/condiment/peppermill=20)
+	},
+/turf/open/floor/wood,
+/area/service/bar)
 "mzv" = (
 /obj/machinery/door/morgue{
 	name = "Confession Booth"
@@ -63161,6 +63153,16 @@
 	},
 /turf/open/floor/plating,
 /area/service/abandoned_gambling_den)
+"srL" = (
+/obj/effect/turf_decal/tile/red{
+	dir = 1
+	},
+/obj/effect/turf_decal/tile/red{
+	dir = 4
+	},
+/obj/effect/landmark/start/peacekeeper,
+/turf/open/floor/plasteel,
+/area/security/brig)
 "ssc" = (
 /obj/effect/turf_decal/stripes/white/line,
 /obj/machinery/atmospherics/pipe/simple/supply/hidden{
@@ -64947,16 +64949,6 @@
 	},
 /turf/open/floor/plasteel,
 /area/security/processing)
-"uGm" = (
-/obj/effect/turf_decal/tile/red{
-	dir = 1
-	},
-/obj/effect/turf_decal/tile/red{
-	dir = 4
-	},
-/obj/effect/landmark/start/peacekeeper,
-/turf/open/floor/plasteel,
-/area/security/brig)
 "uGI" = (
 /obj/effect/turf_decal/tile/green{
 	dir = 4
@@ -67345,6 +67337,12 @@
 /obj/effect/spawner/lootdrop/bedsheet,
 /turf/open/floor/wood,
 /area/commons/dorms)
+"xQv" = (
+/obj/machinery/vending/dinnerware{
+	contraband = list(/obj/item/kitchen/rollingpin=2,/obj/item/kitchen/knife/butcher=2,/obj/item/reagent_containers/food/condiment/flour=4)
+	},
+/turf/open/floor/plasteel/cafeteria,
+/area/service/kitchen)
 "xRa" = (
 /obj/item/kirbyplants{
 	icon_state = "plant-20"
@@ -81631,7 +81629,7 @@ vON
 aBI
 aDc
 aEH
-bxM
+kVY
 aHa
 aIL
 aJY
@@ -95997,7 +95995,7 @@ afT
 ahy
 aij
 aiR
-uGm
+srL
 akz
 ene
 als
@@ -97821,8 +97819,8 @@ atf
 dgz
 tqg
 ujF
-bfG
-ujF
+fJA
+woR
 dgz
 aaa
 aJn
@@ -100877,7 +100875,7 @@ afk
 afZ
 agE
 ahh
-ahM
+fSw
 aiC
 abp
 aiY
@@ -103737,7 +103735,7 @@ aGH
 qPx
 aJC
 aKO
-aMw
+myO
 aNI
 aKR
 aKR
@@ -105283,7 +105281,7 @@ aMB
 aJC
 aOP
 aJI
-aRA
+xQv
 aVz
 aVz
 aVz

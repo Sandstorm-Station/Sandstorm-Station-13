@@ -157,10 +157,10 @@
 		. += ""
 		. += "<span class='love'>[t_He] [t_is] currently in [gender == MALE ? "rut" : "heat"].</span>"
 
-	SEND_SIGNAL(src, COMSIG_PARENT_EXAMINE, user, .)
-
-	if(length(.) > 1)
+	if(LAZYLEN(.) > 1)
 		.[1] += "<hr>"
+
+	SEND_SIGNAL(src, COMSIG_PARENT_EXAMINE, user, .)
 
 /mob/living/carbon/examine_more(mob/user)
 	if(!all_scars)
