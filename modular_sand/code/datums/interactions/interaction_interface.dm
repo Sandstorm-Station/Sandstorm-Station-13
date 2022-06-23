@@ -117,6 +117,40 @@
 		genitals += list(simulated_ass)
 	.["genitals"] = genitals
 
+	//Get their genitals
+	var/list/genital_fluids = list()
+	var/mob/living/carbon/target_genitals = target || self
+	if(istype(target_genitals))
+		for(var/obj/item/organ/genital/genital in target_genitals.internal_organs)
+			if(!(CHECK_BITFIELD(genital.genital_flags, GENITAL_FUID_PRODUCTION)))
+				continue
+			var/fluids = genital?.reagents ? \
+			(genital.reagents.total_volume / genital.reagents.maximum_volume) : null
+			if(!fluids)
+				continue
+			var/list/genital_entry = list()
+			genital_entry["name"] = "[genital.name]"
+			genital_entry["key"] = REF(genital)
+			genital_entry["fluid"] = fluids
+			genital_fluids += list(genital_entry)
+	.["genital_fluids"] = genital_fluids
+
+	var/list/genital_interactibles = list()
+	if(istype(target_genitals))
+		for(var/obj/item/organ/genital/genital in target_genitals.internal_organs)
+			if(CHECK_BITFIELD(genital.genital_flags, GENITAL_INTERNAL))			//Not those though
+				continue
+			var/list/equipment_names = list()
+			for(var/obj/equipment in genital.contents)
+				equipment_names += equipment.name
+			var/list/genital_entry = list()
+			genital_entry["name"] = "[genital.name]"
+			genital_entry["key"] = REF(genital)
+			genital_entry["possible_choices"] = GLOB.genitals_interactions
+			genital_entry["equipments"] = equipment_names
+			genital_interactibles += list(genital_entry)
+	.["genital_interactibles"] = genital_interactibles
+
 	var/datum/preferences/prefs = usr?.client.prefs
 	if(prefs)
 	//Getting char prefs
@@ -180,6 +214,21 @@
 				return TRUE
 			else
 				return FALSE
+		if("genital_interaction")
+			var/mob/living/carbon/actual_target = target || usr
+			var/mob/user = usr
+			var/obj/item/organ/genital/genital = locate(params["genital"], actual_target.internal_organs)
+			if(!(genital && (genital in actual_target.internal_organs)))
+				return FALSE
+			switch(params["action"])
+				if(GEN_INSERT_EQUIPMENT)
+					var/obj/item/stuff = user.get_active_held_item()
+					if(!istype(stuff))
+						to_chat(user, span_warning("You need to hold an item to insert it!"))
+						return FALSE
+					stuff.insert_item_organ(user, target, genital)
+				if(GEN_REMOVE_EQUIPMENT)
+
 		if("char_pref")
 			var/datum/preferences/prefs = usr.client.prefs
 			var/value = num_to_pref(params["value"])

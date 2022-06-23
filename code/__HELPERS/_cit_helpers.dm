@@ -66,6 +66,8 @@ GLOBAL_LIST_INIT(dick_nouns, list("phallus", "willy", "dick", "prick", "member",
 
 GLOBAL_LIST_INIT(genitals_visibility_toggles, list(GEN_VISIBLE_ALWAYS, GEN_VISIBLE_NO_CLOTHES, GEN_VISIBLE_NO_UNDIES, GEN_VISIBLE_NEVER))
 
+GLOBAL_LIST_INIT(genitals_interactions, list(GEN_REMOVE_EQUIPMENT, GEN_INSERT_EQUIPMENT))
+
 GLOBAL_LIST_INIT(dildo_shapes, list(
 		"Human"		= "human",
 		"Knotted"	= "knotted",

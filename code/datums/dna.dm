@@ -66,6 +66,70 @@
 
 	SEND_SIGNAL(destination, COMSIG_CARBON_IDENTITY_TRANSFERRED_TO, src, transfer_SE)
 
+#define TRANSFER_RANDOMIZED(destination, source1, source2) \
+	if(prob(50)) { \
+		destination = source1; \
+	} else { \
+		destination = source2; \
+	}
+
+#define TRANSFER_RANDOMIZED_LIST(destination, source1, source2) \
+	var/list/list1 = source1; \
+	var/list/list2 = source2; \
+	var/list/result = list(); \
+	var/list/iter_len; \
+	if(list1.len >= list2.len) { \
+		iter_len = list1.len; \
+	} else { \
+		iter_len = list2.len; \
+	} \
+	for(var/i in 1 to iter_len) { \
+		var/key1 = list1[i]; \
+		var/val1 = list1[key1]; \
+		var/key2 = list2[i]; \
+		var/val2 = list2[key2]; \
+		if(prob(50) && key1) { \
+			result[key1] = val1; \
+		} else if(key2) { \
+			result[key2] = val2; \
+		} \
+	} \
+	destination = result.Copy();
+
+
+/datum/dna/proc/transfer_identity_random(datum/dna/second_set, mob/living/carbon/destination)
+	if(!istype(destination))
+		return
+	var/old_size = destination.dna.features["body_size"]
+
+	TRANSFER_RANDOMIZED(destination.dna.blood_type, blood_type, second_set.blood_type)
+	TRANSFER_RANDOMIZED(destination.dna.skin_tone_override, skin_tone_override, second_set.skin_tone_override)
+	TRANSFER_RANDOMIZED_LIST(destination.dna.features, features, second_set.features)
+	TRANSFER_RANDOMIZED(destination.dna.real_name, real_name, second_set.real_name)
+	TRANSFER_RANDOMIZED(destination.dna.nameless, nameless, second_set.nameless)
+	TRANSFER_RANDOMIZED_LIST(destination.dna.temporary_mutations, temporary_mutations, second_set.temporary_mutations)
+
+	if(prob(50))
+		destination.set_species(species.type, icon_update=0)
+		destination.dna.species.say_mod = species.say_mod
+		destination.dna.custom_species = custom_species
+	else
+		destination.set_species(second_set.species.type, icon_update=0)
+		destination.dna.species.say_mod = second_set.species.say_mod
+		destination.dna.custom_species = second_set.custom_species
+
+	if(ishuman(destination))
+		var/mob/living/carbon/human/H = destination
+		H.give_genitals(TRUE)//This gives the body the genitals of this DNA. Used for any transformations based on DNA
+
+	destination.update_size(get_size(destination), old_size)
+
+	SEND_SIGNAL(destination, COMSIG_CARBON_IDENTITY_TRANSFERRED_TO, src, FALSE)
+	SEND_SIGNAL(destination, COMSIG_CARBON_IDENTITY_TRANSFERRED_TO, second_set, FALSE)
+
+#undef TRANSFER_RANDOMIZED
+#undef TRANSFER_RANDOMIZED_LIST
+
 /datum/dna/proc/copy_dna(datum/dna/new_dna)
 	new_dna.unique_enzymes = unique_enzymes
 	new_dna.mutation_index = mutation_index

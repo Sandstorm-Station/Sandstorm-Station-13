@@ -83,6 +83,9 @@
 #define GEN_VISIBLE_NO_UNDIES "Hidden by underwear"
 #define GEN_VISIBLE_NEVER "Always hidden"
 
+#define GEN_REMOVE_EQUIPMENT "Remove Equipment"
+#define GEN_INSERT_EQUIPMENT "Insert Equipment"
+
 //Individual logging define
 #define INDIVIDUAL_LOOC_LOG "LOOC log"
 

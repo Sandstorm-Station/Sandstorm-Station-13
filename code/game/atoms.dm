@@ -1099,6 +1099,7 @@
 
 /atom/Entered(atom/movable/AM, atom/oldLoc)
 	SEND_SIGNAL(src, COMSIG_ATOM_ENTERED, AM, oldLoc)
+	SEND_SIGNAL(AM, COMSIG_ATOM_ENTERING, src, oldLoc)
 
 /atom/Exit(atom/movable/AM, atom/newLoc)
 	. = ..()

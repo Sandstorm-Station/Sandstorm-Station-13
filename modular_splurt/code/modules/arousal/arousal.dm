@@ -26,7 +26,7 @@
 		var/can_get_pregnant = (client?.prefs?.fertility && !is_type_in_typecache(src.type, GLOB.pregnancy_blocked_mob_typecache))
 
 		if(can_impregnate && can_get_pregnant)
-			AddComponent(/datum/component/pregnancy, partner, baby_type, W, client?.prefs?.oviposition, client?.prefs?.pregnancy_inflation)
+			AddComponent(/datum/component/pregnancy, partner, baby_type, W)
 
 /mob/living/carbon/human/do_climax(datum/reagents/R, atom/target, obj/item/organ/genital/G, spill, cover = FALSE)
 	if(!G)
