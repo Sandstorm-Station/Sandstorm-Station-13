@@ -226,9 +226,16 @@
 					if(!istype(stuff))
 						to_chat(user, span_warning("You need to hold an item to insert it!"))
 						return FALSE
-					stuff.insert_item_organ(user, target, genital)
+					stuff.insert_item_organ(user, actual_target, genital)
 				if(GEN_REMOVE_EQUIPMENT)
-
+					var/obj/item/selected_item = input(user, "Pick an item to remove", "Removing item") as null|anything in genital.contents
+					if(selected_item)
+						if(!do_mob(user, actual_target, 5 SECONDS))
+							return FALSE
+						if(!user.put_in_hands(selected_item))
+							user.transferItemToLoc(get_turf(user))
+						return TRUE
+					return FALSE
 		if("char_pref")
 			var/datum/preferences/prefs = usr.client.prefs
 			var/value = num_to_pref(params["value"])

@@ -3,6 +3,7 @@ import { flow } from 'common/fp';
 import { createSearch } from 'common/string';
 import { useBackend, useLocalState } from '../backend';
 import { BlockQuote, Button, LabeledList, Icon, Input, Section, Table, Tabs, Stack, ProgressBar, Divider } from '../components';
+import { TableRow } from '../components/Table';
 import { Window } from '../layouts';
 
 type HeaderInfo = {
@@ -280,9 +281,7 @@ const GenitalManagerTab = (props, context) => {
   return (
     genital_fluids.length || genital_interactibles.length ? (
       <>
-        <Stack direction="column">
-          Genital fluids
-          <Divider />
+        <Section title="Genital Fluids">
           <LabeledList>
             {genital_fluids.map(genital => (
               <LabeledList.Item key={genital['key']} label={genital['name']}>
@@ -293,41 +292,39 @@ const GenitalManagerTab = (props, context) => {
               </LabeledList.Item>
             ))}
           </LabeledList>
-        </Stack>
-        <Stack>
-          Actions
-          <Divider />
-          <Stack>
-            {genital_interactibles.map(genital => (
-              <>
-                {
-                  genital.equipments.length ? (
-                    <>
-                      Equipments:
-                      <Stack.Item>
-                        {genital.equipments.map(equipment => (
-                          equipment
-                        ))}
-                      </Stack.Item>
-                    </>
-                  ) : null
-                }
-                <Stack.Item key={genital.key} label={genital.name}>
-                  {genital.possible_choices.map(choice => (
-                    <Button
-                      key={choice}
-                      content={choice}
-                      tooltip={choice}
-                      onClick={() => act('genital_interaction', {
-                        genital: genital.key,
-                        action: choice,
-                      })} />
-                  ))}
-                </Stack.Item>
-              </>
-            ))}
-          </Stack>
-        </Stack>
+        </Section>
+        <Section title="Actions">
+          {genital_interactibles.map(genital => (
+            <Section key={genital.key} title={genital.name}>
+              {
+                genital.equipments.length ? (
+                  <>
+                    <b>Equipments:</b>
+                    <Table direction="column">
+                      {genital.equipments.map(equipment => (
+                        <TableRow key={equipment}>
+                          {equipment}
+                        </TableRow>
+                      ))}
+                    </Table>
+                    <Divider />
+                  </>
+                ) : null
+              }
+
+              {genital.possible_choices.map(choice => (
+                <Button
+                  key={choice}
+                  content={choice}
+                  tooltip={choice}
+                  onClick={() => act('genital_interaction', {
+                    genital: genital.key,
+                    action: choice,
+                  })} />
+              ))}
+            </Section>
+          ))}
+        </Section>
       </>
     ) : (
       <Section align="center">
