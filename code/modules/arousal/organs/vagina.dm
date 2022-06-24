@@ -74,6 +74,3 @@
 		color = "[D.features["vag_color"]]"
 	shape = "[D.features["vag_shape"]]"
 	toggle_visibility(D.features["vag_visibility"], FALSE)
-
-/obj/item/organ/genital/vagina/on_life()
-	for(var/obj/item/reagent_containers/food/snacks/egg/oviposition/egg in src.contents)
