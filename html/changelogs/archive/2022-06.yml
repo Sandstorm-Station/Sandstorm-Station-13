@@ -224,28 +224,27 @@
   - code_imp: The station minimap can now support managing data for up to 16,581,374
       areas without any conflicts at all! Before, BYOND's psuedorandom RNG meant that
       it was somewhat common for areas to collide with each others' data.
-  - rscadd: 'Talking is now accompanied with fully-customizable sounds! You can modify
-      your character''s speech under the speech tab in chargen, and you can toggle
+  - rscadd: Talking is now accompanied with fully-customizable sounds! You can modify
+      your character's speech under the speech tab in chargen, and you can toggle
       these sounds via the "Hear/Silence Vocal Barks" verb under the preferences tab!
-      This also fully supports genetics.'
+      This also fully supports genetics.
   - bugfix: Admittedly an unatomized change, but Cit's DNA blocks can now properly
       be updated through genetics. Before, these required a complete genetics reset
       to apply.
   - rscadd: 'The chat now supports blockquotes! tweak: Examining, medical scanners,
       self-checking, and mood checkups, have all been converted to make use of blockquotes.'
   Bhijn & Myr (+ UI work and cleanup by Sandpoot!):
-  - rscadd: 'Colormates now have HSV coloration!'
-  - tweak: Colormates have had their "please use white clothing" message removed, as that
-      recommendation's now mostly pointless
+  - rscadd: Colormates now have HSV coloration!
+  - tweak: Colormates have had their "please use white clothing" message removed,
+      as that recommendation's now mostly pointless
   - tweak: The default mode for colormates is now HSV coloration
-  - tweak: 'The temp messages in colormates have been tweaked slightly to be more user-friendly,
-      as they''re user-facing.'
-  - tweak: The description for constants in the colormate
-      matrix mode has been fixed; the constant variables have nothing to do with contrast,
-      they simply add color
-  - tweak: 'Matrix mode has been made a lot more usable; it''s now clamped between
-      -10 and 10, and features a step of 0.01, making it much easier to simply click
-      and drag to adjust the values, rather than having to punch them in manually'
+  - tweak: The temp messages in colormates have been tweaked slightly to be more user-friendly,
+      as they're user-facing.
+  - tweak: The description for constants in the colormate matrix mode has been fixed;
+      the constant variables have nothing to do with contrast, they simply add color
+  - tweak: Matrix mode has been made a lot more usable; it's now clamped between -10
+      and 10, and features a step of 0.01, making it much easier to simply click and
+      drag to adjust the values, rather than having to punch them in manually
   Putnam3145:
   - balance: QCD matter is now worth 10x as much and makes 2 research pointer per
       mole
@@ -277,3 +276,60 @@
 2022-06-13:
   Bhijn & Myr:
   - bugfix: Jukebox audio is now audible within closets, crates, etc!
+2022-06-15:
+  AshTheDerg:
+  - rscadd: Added Syndicate Asteroid Listening Post + Ghost Role
+  - rscadd: Added Radio Station Ship
+2022-06-16:
+  BongaTheProto:
+  - imageadd: New ear sprites
+  - tweak: Now subs will actually blush when examining doms
+  - server: Limits the amount of infinidorms each person can create for the sake of
+      helping the TD
+2022-06-17:
+  BongaTheProto:
+  - soundadd: Added new bark sounds!
+2022-06-19:
+  IHOPMommyLich:
+  - rscdel: Removed the forced dynamic, allowing the standard game mode vote.
+  TripleShades:
+  - bugfix: Cannabis mutation variants now use the proper growth state icons
+  - bugfix: Picking to make tea cups will now give the right starting glasswork base
+  - bugfix: Picking to make tea plates will now give the right starting glasswork
+      base
+  - spellcheck: Fixed a state typo in tea cup glassworking
+  - spellcheck: Fixed an incorrect step displayed on spout glassworking
+  - code_imp: Enables the make priority announcement admin verb for admin use
+2022-06-20:
+  Bhijn & Myr:
+  - balance: Ling abilities now have a default loudness of 0.5. This change applies
+      to every single ability that used to have 0 loudness.
+  TrojanCoyote:
+  - rscadd: Adds a plate carrier to HoS loadout, sprites for such
+2022-06-21:
+  WoolyAypa:
+  - rscadd: 'Added a new +3 points worth quirk: Dumb4Cum'
+2022-06-22:
+  Bhijn & Myr:
+  - code_imp: Barks can now be intercepted via component signals. Both bark queuing
+      and individual barks can be intercepted via signals!
+  - rscadd: The "Brassy" bark has been added, using the cog installation sound as
+      a sample! This works surprisingly well as a bark
+  - rscadd: Genetics can now give people goose1.ogg
+  - tweak: If new barks are queued before the current barks are finished, this will
+      interrupt all ongoing barks
+  - tweak: Yelling no longer cuts the minimum bark time variance down to half, as
+      this proved to sound pretty awful with most barks.
+  - tweak: Chitter now uses a completely unique audio sample, which is based on the
+      original ratchet.ogg it used to be. This new sample is shorter, and has significantly
+      less harsh noise on the higher frequencies, making it much easier on the ears.
+      Additionally, the minimum speed for chitter has been reduced from 6 to 4.
+  - tweak: Setting vocal_bark to a file should now automatically turn it into a sound
+      datum (in theory, at least! as of writing i haven't tested this at all)
+  - bugfix: Barks and other DNA features after the first mob color now work exactly
+      as you'd expect. This was the cause for horrid eldritch bark sounds when the
+      wrong part of DNA gets hit. The first mob color has lost some genetics resolution
+      as an indirect result of this (the higher resolution is what caused this bug)
+2022-06-23:
+  BongaTheProto:
+  - soundadd: New Gaster and Mettaton barks

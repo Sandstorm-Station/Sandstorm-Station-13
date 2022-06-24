@@ -6,4 +6,8 @@
 
 # Enable global barks
 # Uncomment this to allow player's speech barks #
-#ENABLE_GLOBAL_BARKS
+ENABLE_GLOBAL_BARKS
+
+# Max number of infinidorms each mob can use
+# -1 for infinite, 0 to deactivate infinidorms as a whole
+MAX_INFINIDORMS 5

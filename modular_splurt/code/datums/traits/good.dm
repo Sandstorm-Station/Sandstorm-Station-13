@@ -64,6 +64,7 @@
 		to_chat(quirk_holder, span_notice("\The [user] tries to look at you but immediately looks away with a red face..."))
 		TIMER_COOLDOWN_START(user, COOLDOWN_DOMINANT_EXAMINE, 5 SECONDS)
 	sub.dir = turn(get_dir(sub, quirk_holder), pick(-90, 90))
+	sub.emote("blush")
 
 /datum/quirk/dominant_aura/proc/handle_snap(datum/source, list/emote_args)
 	SIGNAL_HANDLER
