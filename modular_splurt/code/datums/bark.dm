@@ -112,6 +112,18 @@
 	soundpath = 'modular_splurt/sound/voice/barks/undertale/voice_susie.ogg'
 	minvariance = 0
 
+/datum/bark/gaster
+	name = "Gaster"
+	id = "gaster"
+	soundpath = 'modular_splurt/sound/voice/barks/undertale/voice_gaster_1.ogg'
+	minvariance = 0
+
+/datum/bark/mettaton
+	name = "Mettaton"
+	id = "mettaton"
+	soundpath = 'modular_splurt/sound/voice/barks/undertale/voice_metta_1.ogg'
+	minvariance = 0
+
 /datum/bark/gen_monster
 	name = "Generic Monster 1"
 	id = "gen_monster_1"
