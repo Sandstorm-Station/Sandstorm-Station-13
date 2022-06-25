@@ -76,20 +76,23 @@
 	UnregisterSignal(parent, COMSIG_ATOM_ENTERING)
 	UnregisterSignal(parent, COMSIG_OBJ_BREAK)
 
-
 /datum/component/pregnancy/proc/register_carrier()
 	RegisterSignal(carrier, COMSIG_MOB_DEATH, .proc/fetus_mortus)
 	RegisterSignal(carrier, COMSIG_LIVING_BIOLOGICAL_LIFE, .proc/handle_life)
 	RegisterSignal(carrier, COMSIG_HEALTH_SCAN, .proc/on_scan)
 	RegisterSignal(carrier, COMSIG_MOB_APPLY_DAMAGE, .proc/handle_damage)
+	RegisterSignal(carrier, COMSIG_MOB_CLIMAX)
 	if(container)
 		RegisterSignal(container, COMSIG_ORGAN_REMOVED, .proc/fetus_mortus)
+	if(oviposition)
+		RegisterSignal(carrier, COMSIG_MOB_CLIMAX, .proc/on_climax)
 
 /datum/component/pregnancy/proc/unregister_carrier()
 	UnregisterSignal(carrier, COMSIG_MOB_DEATH)
 	UnregisterSignal(carrier, COMSIG_LIVING_BIOLOGICAL_LIFE)
 	UnregisterSignal(carrier, COMSIG_HEALTH_SCAN)
 	UnregisterSignal(carrier, COMSIG_MOB_APPLY_DAMAGE)
+	UnregisterSignal(carrier, COMSIG_MOB_CLIMAX)
 	if(container)
 		UnregisterSignal(container, COMSIG_ORGAN_REMOVED)
 
@@ -111,9 +114,27 @@
 		carrier = parent
 		RegisterWithParent()
 	else if(isitem(parent))
+		max_stage += 1
 		RegisterWithParent()
 	else
 		return COMPONENT_INCOMPATIBLE
+
+/datum/component/pregnancy/proc/on_climax(datum/source, atom/target, obj/item/organ/genital/sender, obj/item/organ/genital/receiver, spill)
+	SIGNAL_HANDLER
+
+	if(!oviposition)
+		return FALSE
+
+	if(stage < 2)
+		return FALSE
+
+	to_chat(carrier, span_userlove("You feel your egg sliding out slowly inside!"))
+
+	if(receiver && isliving(target))
+		var/mob/living/livingtarg = target
+		if(livingtarg.client?.prefs?.egg_stuffing)
+			return lay_eg(receiver)
+	return lay_eg(get_turf(carrier))
 
 /datum/component/pregnancy/proc/on_obj_break(datum/source, damage_flag)
 	SIGNAL_HANDLER
@@ -224,7 +245,7 @@
 			qdel(src)
 
 /datum/component/pregnancy/proc/handle_ovi_preg()
-	if(stage < (max_stage / 2))
+	if(stage <= 2)
 		if(stage == 2 && prob(10))
 			to_chat(carrier, span_notice("You feel something pressing lightly inside"))
 		return
@@ -236,20 +257,39 @@
 
 	carrier.emote("scream")
 
-	var/can_oviposit = TRUE
+	lay_eg(get_turf(carrier))
+
+/datum/component/pregnancy/proc/lay_eg(atom/location)
+	if(isorgan(location))
+		var/obj/item/organ/recv = location
+		if(!recv.owner)
+			return FALSE
+
 	if(ishuman(carrier))
 		var/mob/living/carbon/human/human_owner = carrier
 		var/obj/item/bodypart/chest = human_owner.get_bodypart(BODY_ZONE_CHEST)
 		if(LAZYLEN(human_owner.clothingonpart(chest)))
-			can_oviposit = FALSE
-	if(can_oviposit)
-		playsound(carrier, 'sound/effects/splat.ogg', 70, TRUE)
-		carrier.Knockdown(200, TRUE, TRUE)
-		carrier.Stun(200, TRUE, TRUE)
-		carrier.adjustStaminaLoss(200)
-		var/obj/item/oviposition_egg/eggo = new(get_turf(carrier))
-		to_chat(carrier, span_nicegreen("The egg came out!"))
-		eggo.TakeComponent(src)
+			return FALSE
+
+	playsound(carrier, 'sound/effects/splat.ogg', 70, TRUE)
+	carrier.Knockdown(200, TRUE, TRUE)
+	carrier.Stun(200, TRUE, TRUE)
+	carrier.adjustStaminaLoss(200)
+
+	var/obj/item/oviposition_egg/eggo = new(carrier)
+
+	eggo.TakeComponent(src)
+	eggo.forceMove(location)
+
+	if(isorgan(location))
+		var/obj/item/organ/recv = location
+		carrier.visible_message(span_userlove("[carrier] laid an egg!"), \
+			span_userlove("You laid an egg inside [recv.owner]'s [recv]"))
+	else
+		carrier.visible_message(span_notice("[carrier] laid an egg!"), \
+			span_nicegreen("The egg came out!"))
+
+	return TRUE
 
 //not how genetics work but okay
 /datum/component/pregnancy/proc/determine_baby_dna(mob/living/carbon/human/babby)

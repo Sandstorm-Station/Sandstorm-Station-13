@@ -28,10 +28,13 @@
 		if(can_impregnate && can_get_pregnant)
 			AddComponent(/datum/component/pregnancy, partner, baby_type, W)
 
-/mob/living/carbon/human/do_climax(datum/reagents/R, atom/target, obj/item/organ/genital/G, spill, cover = FALSE)
+/mob/living/carbon/human/do_climax(datum/reagents/R, atom/target, obj/item/organ/genital/G, spill, cover = FALSE, obj/item/organ/genital/Lgen)
 	if(!G)
 		return
 	if(!target || !R)
+		return
+
+	if(SEND_SIGNAL(src, COMSIG_MOB_CLIMAX, target, G, Lgen, spill))
 		return
 
 	var/cached_fluid
