@@ -33,7 +33,7 @@
 	name = "Peacekeeper"
 	jobtype = /datum/job/peacekeeper
 
-	belt = /obj/item/gun/energy/taser
+	belt = /obj/item/gun/energy/e_gun/advtaser
 	ears = /obj/item/radio/headset/headset_sec/alt
 	glasses = /obj/item/clothing/glasses/hud/security/sunglasses
 	uniform = /obj/item/clothing/under/rank/security/officer/peacekeeper
@@ -43,7 +43,7 @@
 	shoes = /obj/item/clothing/shoes/jackboots
 	r_pocket = /obj/item/storage/bag/security
 	l_pocket = /obj/item/pda/security
-	backpack_contents = list(/obj/item/storage/box/zipties, /obj/item/reagent_containers/spray/pepper, /obj/item/clothing/accessory/badge/deputy, /obj/item/assembly/flash/handheld)
+	backpack_contents = list(/obj/item/storage/box/zipties, /obj/item/reagent_containers/spray/pepper, /obj/item/clothing/accessory/badge/deputy, /obj/item/assembly/flash/handheld, /obj/item/holosign_creator/security)
 
 	backpack = /obj/item/storage/backpack/security/pk
 	satchel = /obj/item/storage/backpack/satchel/sec/pk
