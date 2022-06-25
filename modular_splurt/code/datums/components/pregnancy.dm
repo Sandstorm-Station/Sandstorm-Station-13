@@ -217,6 +217,10 @@
 		if(ishuman(babby))
 			determine_baby_dna(babby)
 		INVOKE_ASYNC(src, .proc/offer_control_to_babby, babby, carrier)
+		if(isitem(parent))
+			var/obj/item = parent
+			item.obj_break(MELEE)
+			item.forceMove(get_turf(carrier))
 		qdel(src)
 
 /datum/component/pregnancy/proc/handle_ovi_preg()
