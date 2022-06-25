@@ -18,6 +18,10 @@
 	*/
 
 /obj/item/genital_equipment/condom/insert_item_organ(mob/living/carbon/user, mob/living/carbon/target, obj/item/organ/genital/target_organ)
+	if(!(target.client?.prefs?.erppref == "Yes"))
+		to_chat(user, span_warning("They don't want you to do that!"))
+		return
+
 	if(!unwrapped)
 		to_chat(user, span_notice("You must remove the condom from the package first!"))
 		return
@@ -48,6 +52,10 @@
 	to_chat(target, span_userlove("Your penis feels more safe!"))
 
 /obj/item/genital_equipment/sounding/insert_item_organ(mob/living/carbon/user, mob/living/carbon/target, obj/item/organ/genital/target_organ)
+	if(!(target.client?.prefs?.erppref == "Yes"))
+		to_chat(user, span_warning("They don't want you to do that!"))
+		return
+
 	if(!unwrapped)
 		to_chat(user, span_notice("You must remove the rod from the package first!"))
 		return
@@ -79,6 +87,10 @@
 	owner = target
 
 /obj/item/electropack/vibrator/insert_item_organ(mob/living/carbon/user, mob/living/carbon/target, obj/item/organ/genital/target_organ)
+	if(!(target.client?.prefs?.erppref == "Yes"))
+		to_chat(user, span_warning("They don't want you to do that!"))
+		return
+
 	if(style == "long" && !(istype(target_organ, /obj/item/organ/genital/vagina))) //long vibrators dont fit on anything but vaginas, but small ones fit everywhere
 		to_chat(user, "<span class='warning'>[src] is too big to fit there, use a smaller version.</span>")
 		return
@@ -109,7 +121,11 @@
 	inside = TRUE
 
 
-/obj/item/reagent_containers/food/snacks/egg/oviposition/insert_item_organ(mob/living/carbon/user, mob/living/carbon/target, obj/item/organ/genital/target_organ)
+/obj/item/oviposition_egg/insert_item_organ(mob/living/carbon/user, mob/living/carbon/target, obj/item/organ/genital/target_organ)
+	if(!target.client?.prefs?.egg_stuffing)
+		to_chat(user, span_warning("They don't want you to do that!"))
+		return
+
 	target.visible_message(span_warning("\The <b>[user]</b> is trying to insert an egg inside \the <b>[target]</b>!"),\
 					span_warning("\The <b>[user]</b> is trying to insert an egg inside you!"))
 

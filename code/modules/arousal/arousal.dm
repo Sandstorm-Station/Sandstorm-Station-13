@@ -73,11 +73,11 @@
 	var/condomning
 	if(istype(G, /obj/item/organ/genital/penis))
 		var/obj/item/organ/genital/penis/P = G
-		condomning = P.equipment[GENITAL_EQUIPEMENT_CONDOM]
+		condomning = locate(/obj/item/genital_equipment/condom) in P.contents
 	G.generate_fluid(R)
 	log_message("Climaxed using [G] with [target]", LOG_EMOTE)
 	if(condomning)
-		to_chat(src, "<span class='userlove'>You feel the condom bubble outwards and fill up with your spunk, plopping on the floor</span>")
+		to_chat(src, "<span class='userlove'>You feel the condom bubble outwards and fill up with your spunk</span>")
 		R.trans_to(condomclimax(), R.total_volume)
 	else
 		if(spill && R.total_volume >= 5)

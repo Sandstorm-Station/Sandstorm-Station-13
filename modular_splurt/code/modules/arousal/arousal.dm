@@ -7,7 +7,7 @@
 	if(!spill && istype(source, /obj/item/organ/genital/penis) && \
 		istype(receiver, /obj/item/organ/genital/vagina) && getorganslot(ORGAN_SLOT_WOMB))
 		var/obj/item/organ/genital/penis/peenus = source
-		if(!peenus.equipment[GENITAL_EQUIPEMENT_CONDOM])
+		if(!(locate(/obj/item/genital_equipment/condom) in peenus.contents))
 			impregnate(partner, getorganslot(ORGAN_SLOT_WOMB), src.type)
 
 	if(!receiver || spill || forced)
@@ -45,11 +45,11 @@
 
 	if(istype(G, /obj/item/organ/genital/penis))
 		var/obj/item/organ/genital/penis/bepis = G
-		if(bepis.equipment[GENITAL_EQUIPMENT_SOUNDING])
+		if(locate(/obj/item/genital_equipment/sounding) in bepis.contents)
 			spill = TRUE
 			to_chat(src, "<span class='userlove'>You feel your sounding rod being pushed out of your cockhole with the burst of jizz!</span>")
-			bepis.equipment.Remove(GENITAL_EQUIPMENT_SOUNDING)
-			new /obj/item/genital_equipment/sounding/used_sounding(loc)
+			var/obj/item/genital_equipment/sounding/rod = locate(/obj/item/genital_equipment/sounding) in bepis.contents
+			rod.forceMove(get_turf(src))
 
 	if(cover)
 		target.add_cum_overlay()

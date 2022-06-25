@@ -25,7 +25,7 @@
 	/// whether the pregnancy is revealed or not, scanners will reveal this no matter what
 	var/revealed = FALSE
 
-/datum/component/pregnancy/Initialize(mob/living/_father, _baby_type, obj/item/organ/container_organ)
+/datum/component/pregnancy/Initialize(mob/living/_father, _baby_type = /mob/living/carbon/human, obj/item/organ/container_organ)
 	if(!isliving(parent))
 		return COMPONENT_INCOMPATIBLE
 
@@ -123,8 +123,8 @@
 /datum/component/pregnancy/proc/on_entering(datum/source, atom/destination, atom/oldLoc)
 	SIGNAL_HANDLER
 
-	if(istype(source, /obj/item/organ))
-		var/obj/item/organ/preg_container = source
+	if(istype(destination, /obj/item/organ))
+		var/obj/item/organ/preg_container = destination
 		//severed wombs don't count, boyos
 		if(!preg_container.owner)
 			return
@@ -155,9 +155,9 @@
 		carrier.apply_status_effect(/datum/status_effect/pregnancy)
 
 	if(COOLDOWN_FINISHED(src, stage_time))
-		COOLDOWN_START(src, stage_time, PREGNANCY_STAGE_DURATION)
 		stage += 1
 		stage = min(stage, max_stage)
+		COOLDOWN_START(src, stage_time, PREGNANCY_STAGE_DURATION)
 
 /datum/component/pregnancy/proc/handle_belly_stuff(mob/living/carbon/human/gregnant)
 	if(!(stage > (max_stage / 2)))
@@ -183,7 +183,7 @@
 					to_chat(carrier, span_warning("Oh! The kicking in my belly is getting a bit more intense!"))
 				else
 					to_chat(carrier, span_warning("The kicking is quite intense now!"))
-				carrier.adjustStaminaLoss(20)
+				carrier.adjustStaminaLoss(30)
 			if(4)
 				to_chat(carrier, span_warning("You feel like you're going into labor very soon! Get ready to give birth!"))
 				carrier.adjustStaminaLoss(50)
@@ -195,12 +195,10 @@
 
 	if(prob(50))
 		to_chat(carrier, span_warning("You're going into labor <b>right now!</b>"))
-		carrier.adjustStaminaLoss(30)
 	else
 		to_chat(carrier, span_userdanger("It hurts! The baby is coming out!"))
-		carrier.adjustStaminaLoss(50)
-		carrier.emote("scream")
-	carrier.adjustStaminaLoss(5)
+
+	carrier.emote("scream")
 
 	var/can_birth = TRUE
 	if(ishuman(carrier))
@@ -213,10 +211,11 @@
 		to_chat(carrier, span_nicegreen("The baby came out!"))
 		carrier.Knockdown(200, TRUE, TRUE)
 		carrier.Stun(200, TRUE, TRUE)
+		carrier.adjustStaminaLoss(200)
 		var/mob/living/babby = new baby_type(get_turf(carrier))
 		if(ishuman(babby))
 			determine_baby_dna(babby)
-		INVOKE_ASYNC(src, .proc/offer_control_to_babby, babby, carrier)
+		INVOKE_ASYNC(GLOBAL_PROC, .proc/offer_control_to_babby, babby, carrier)
 		if(isitem(parent))
 			var/obj/item = parent
 			item.forceMove(get_turf(carrier))
@@ -226,16 +225,16 @@
 
 /datum/component/pregnancy/proc/handle_ovi_preg()
 	if(stage < (max_stage / 2))
-		if(stage == 2 && prob(3))
+		if(stage == 2 && prob(10))
 			to_chat(carrier, span_notice("You feel something pressing lightly inside"))
 		return
+
 	if(prob(50))
 		to_chat(carrier, span_warning("Something presses hard against your anus! It's probably your egg!"))
-		carrier.adjustStaminaLoss(30)
 	else
 		to_chat(carrier, span_warning("You REALLY need to get this egg out!"))
-		carrier.adjustStaminaLoss(50)
-		carrier.emote("scream")
+
+	carrier.emote("scream")
 
 	var/can_oviposit = TRUE
 	if(ishuman(carrier))
@@ -247,6 +246,7 @@
 		playsound(carrier, 'sound/effects/splat.ogg', 70, TRUE)
 		carrier.Knockdown(200, TRUE, TRUE)
 		carrier.Stun(200, TRUE, TRUE)
+		carrier.adjustStaminaLoss(200)
 		var/obj/item/oviposition_egg/eggo = new(get_turf(carrier))
 		to_chat(carrier, span_nicegreen("The egg came out!"))
 		eggo.TakeComponent(src)
@@ -291,7 +291,7 @@
 	//get rid of king ass ripper belly
 	var/obj/item/organ/genital/belly/belly = gregnant.getorganslot(ORGAN_SLOT_BELLY)
 	if(belly && pregnancy_inflation)
-		belly.size = 1
+		belly.size = 0
 		belly.update()
 
 /datum/component/pregnancy/proc/fetus_mortus()
@@ -319,7 +319,7 @@
 	if(def_zone == BODY_ZONE_CHEST && damage > 25 && prob(40))
 		fetus_mortus()
 
-/datum/component/pregnancy/proc/offer_control_to_babby(mob/living/babby, mob/living/mommy)
+/proc/offer_control_to_babby(mob/living/babby, mob/living/mommy)
 	var/poll_message = "Do you want to play as [mommy]'s offspring?"
 	var/list/mob/candidates = pollCandidatesForMob(poll_message, ROLE_RESPAWN, null, FALSE, 120, babby)
 	if(!LAZYLEN(candidates))
@@ -328,17 +328,22 @@
 		return
 
 	var/mob/player = pick(candidates)
+
 	player.transfer_ckey(babby, TRUE)
+
 	var/mommy_name = "someone"
 	if(!QDELETED(mommy))
 		mommy_name = mommy.real_name
 
 	to_chat(babby, "You are the son (or daughter) of [mommy_name]!")
-	var/time = world.time
-	var/name = input(babby, "What will be your name? (You have a minute to decide!)", "Name yourself") as null|text
-	if(world.time - time >= 1 MINUTES)
-		to_chat(babby, "You took too long to decide a name and have been given a random name instead.")
-	if(!name || (world.time - time >= 1 MINUTES))
+
+	var/name
+	if(QDELETED(mommy))
+		name = input(babby, "What will be your name?", "Name yourself") as null|text
+	else
+		name = input(mommy, "What will be your baby's name?", "Name the baby") as null|text
+
+	if(!name)
 		babby.real_name = random_unique_name(babby.gender, FALSE)
 		babby.update_name()
 	else

@@ -9,7 +9,6 @@
 	item_state = "vibe"
 	w_class = WEIGHT_CLASS_SMALL
 	//slot_flags = ITEM_SLOT_DENYPOCKET   //no more pocket shockers
-	var/equipment_slot = GENITAL_EQUIPMENT_VIBRATOR
 	var/mode = 1
 	var/style = "long"
 	var/inside = FALSE
@@ -59,7 +58,7 @@ Code:
 				mode = 1
 				to_chat(user, "<span class='notice'>You twist the bottom of [src], setting it to the low setting.</span>")
 				return
-
+/*
 /obj/item/electropack/vibrator/attack(mob/living/carbon/C, mob/living/user)
 
 	var/obj/item/organ/genital/picked_organ
@@ -94,6 +93,7 @@ Code:
 
 	else
 		to_chat(user, "<span class='notice'>You don't see anywhere to attach this.</span>")
+*/
 
 
 /obj/item/electropack/vibrator/receive_signal(datum/signal/signal)
