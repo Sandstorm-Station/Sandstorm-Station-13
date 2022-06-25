@@ -1,1 +1,2 @@
-/obj/item/reagent_containers/food/snacks/egg/oviposition
+/obj/item/oviposition_egg
+	integrity_failure = 0.9

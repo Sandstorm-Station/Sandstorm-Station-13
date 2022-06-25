@@ -138,7 +138,7 @@
 	var/list/genital_interactibles = list()
 	if(istype(target_genitals))
 		for(var/obj/item/organ/genital/genital in target_genitals.internal_organs)
-			if(CHECK_BITFIELD(genital.genital_flags, GENITAL_INTERNAL))			//Not those though
+			if(!genital.is_exposed())
 				continue
 			var/list/equipment_names = list()
 			for(var/obj/equipment in genital.contents)

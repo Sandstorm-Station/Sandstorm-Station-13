@@ -64,6 +64,20 @@
 	ADD_TRAIT(parent, TRAIT_PREGNANT, PREGNANCY_TRAIT)
 
 /datum/component/pregnancy/RegisterWithParent()
+	if(carrier)
+		register_carrier()
+	if(isitem(parent))
+		RegisterSignal(parent, COMSIG_ATOM_ENTERING, .proc/on_entering)
+		RegisterSignal(parent, COMSIG_OBJ_BREAK, .proc/on_obj_break)
+
+/datum/component/pregnancy/UnregisterFromParent()
+	if(carrier)
+		unregister_carrier()
+	UnregisterSignal(parent, COMSIG_ATOM_ENTERING)
+	UnregisterSignal(parent, COMSIG_OBJ_BREAK)
+
+
+/datum/component/pregnancy/proc/register_carrier()
 	RegisterSignal(carrier, COMSIG_MOB_DEATH, .proc/fetus_mortus)
 	RegisterSignal(carrier, COMSIG_LIVING_BIOLOGICAL_LIFE, .proc/handle_life)
 	RegisterSignal(carrier, COMSIG_HEALTH_SCAN, .proc/on_scan)
@@ -71,7 +85,7 @@
 	if(container)
 		RegisterSignal(container, COMSIG_ORGAN_REMOVED, .proc/fetus_mortus)
 
-/datum/component/pregnancy/UnregisterFromParent()
+/datum/component/pregnancy/proc/unregister_carrier()
 	UnregisterSignal(carrier, COMSIG_MOB_DEATH)
 	UnregisterSignal(carrier, COMSIG_LIVING_BIOLOGICAL_LIFE)
 	UnregisterSignal(carrier, COMSIG_HEALTH_SCAN)
@@ -87,8 +101,7 @@
 /datum/component/pregnancy/PreTransfer()
 	if(carrier)
 		generic_pragency_end()
-		UnregisterFromParent()
-	UnregisterSignal(parent, COMSIG_ATOM_ENTERING)
+	UnregisterFromParent()
 	oviposition = FALSE
 	carrier = null
 	container = null
@@ -97,8 +110,15 @@
 	if(isliving(parent))
 		carrier = parent
 		RegisterWithParent()
+	else if(isitem(parent))
+		RegisterWithParent()
 	else
-		RegisterSignal(parent, COMSIG_ATOM_ENTERING, .proc/on_entering)
+		return COMPONENT_INCOMPATIBLE
+
+/datum/component/pregnancy/proc/on_obj_break(datum/source, damage_flag)
+	SIGNAL_HANDLER
+
+	qdel(src)
 
 /datum/component/pregnancy/proc/on_entering(datum/source, atom/destination, atom/oldLoc)
 	SIGNAL_HANDLER
@@ -113,7 +133,7 @@
 		pregnancy_inflation = carrier.client?.prefs?.pregnancy_inflation
 		RegisterWithParent()
 		generic_pragency_start()
-	else
+	else if(carrier)
 		generic_pragency_end()
 		UnregisterFromParent()
 		carrier = null
@@ -222,7 +242,7 @@
 		playsound(carrier, 'sound/effects/splat.ogg', 70, TRUE)
 		carrier.Knockdown(200, TRUE, TRUE)
 		carrier.Stun(200, TRUE, TRUE)
-		var/obj/item/reagent_containers/food/snacks/egg/oviposition/eggo = new(get_turf(carrier))
+		var/obj/item/oviposition_egg/eggo = new(get_turf(carrier))
 		to_chat(carrier, span_nicegreen("The egg came out!"))
 		eggo.TakeComponent(src)
 
@@ -284,7 +304,8 @@
 /datum/component/pregnancy/proc/on_scan(datum/source, mob/user)
 	SIGNAL_HANDLER
 
-	to_chat(user, span_notice("<b>Pregnancy detected!</b>"))
+	if(isliving(parent))
+		to_chat(user, span_notice("<b>Pregnancy detected!</b>"))
 
 //drop kicked
 /datum/component/pregnancy/proc/handle_damage(datum/source, damage, damagetype, def_zone)
