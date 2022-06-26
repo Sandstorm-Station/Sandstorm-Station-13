@@ -8217,13 +8217,6 @@
 /turf/open/space,
 /area/space/nearstation)
 "fcO" = (
-/obj/machinery/power/apc{
-	areastring = "/area/commons/toilet";
-	dir = 4;
-	name = "Dormitory Bathrooms APC";
-	pixel_x = -33;
-	pixel_y = -27
-	},
 /obj/machinery/atmospherics/pipe/simple/scrubbers/hidden/layer3{
 	dir = 5
 	},
@@ -27441,6 +27434,13 @@
 "qNo" = (
 /turf/closed/wall/r_wall,
 /area/hallway/primary/fore)
+"qNs" = (
+/obj/machinery/atmospherics/pipe/simple/supply/hidden/layer1{
+	dir = 4
+	},
+/obj/machinery/light,
+/turf/open/floor/plasteel/white,
+/area/medical/virology)
 "qNz" = (
 /obj/machinery/door/poddoor/shutters{
 	id = "teledoor";
@@ -30475,6 +30475,15 @@
 	},
 /turf/open/floor/plating,
 /area/science/robotics/mechbay)
+"sDi" = (
+/obj/structure/bed,
+/obj/item/bedsheet/medical,
+/mob/living/carbon/monkey,
+/obj/machinery/light{
+	dir = 1
+	},
+/turf/open/floor/plasteel/white,
+/area/medical/virology)
 "sDq" = (
 /obj/machinery/atmospherics/pipe/manifold/supply/hidden/layer1{
 	dir = 8
@@ -33193,6 +33202,7 @@
 /obj/machinery/camera/preset{
 	dir = 10
 	},
+/obj/machinery/light,
 /turf/open/floor/plasteel/white,
 /area/medical/virology)
 "uhk" = (
@@ -33923,6 +33933,13 @@
 	},
 /turf/open/floor/plating,
 /area/hallway/secondary/exit)
+"uDh" = (
+/obj/machinery/atmospherics/components/unary/vent_pump/on/layer1,
+/obj/machinery/light{
+	dir = 1
+	},
+/turf/open/floor/plasteel/white,
+/area/medical/virology)
 "uDt" = (
 /obj/structure/cable{
 	icon_state = "1-2"
@@ -77178,7 +77195,7 @@ jyR
 gss
 nWa
 jyR
-bVy
+qNs
 mZH
 vCL
 bfj
@@ -79443,7 +79460,7 @@ bGM
 bGM
 lIY
 gCg
-qHt
+sDi
 eNV
 fpB
 ejj
@@ -79947,7 +79964,7 @@ mUX
 orK
 brk
 gCg
-gsJ
+uDh
 mlc
 ven
 eOE
