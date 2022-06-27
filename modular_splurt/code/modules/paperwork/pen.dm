@@ -44,3 +44,10 @@
 					to_chat(user, "<span class='notice'>You write on your [BP:name].</span>")
 	else
 		. = ..()
+
+/obj/item/pen/try_modify_object(obj/O, mob/living/user, proximity)
+	. = ..()
+	if(!O.renamedByPlayer)
+		return
+	if(O.name != initial(O.name))
+		SEND_SIGNAL(O, COMSIG_OBJ_WRITTEN_ON, O.name)

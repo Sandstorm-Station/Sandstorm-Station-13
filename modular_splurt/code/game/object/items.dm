@@ -122,8 +122,8 @@
 
 
 /obj/item/oviposition_egg/insert_item_organ(mob/living/carbon/user, mob/living/carbon/target, obj/item/organ/genital/target_organ)
-	if(!target.client?.prefs?.egg_stuffing)
-		to_chat(user, span_warning("They don't want you to do that!"))
+	if(!(CHECK_BITFIELD(target_organ.genital_flags, GENITAL_CAN_STUFF)))
+		to_chat(user, span_warning("This genital can't be stuffed!"))
 		return
 
 	target.visible_message(span_warning("\The <b>[user]</b> is trying to insert an egg inside \the <b>[target]</b>!"),\

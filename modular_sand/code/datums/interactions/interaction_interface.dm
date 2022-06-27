@@ -97,8 +97,15 @@
 				visibility = "Always hidden"
 			else
 				visibility = "Hidden by clothes"
+
+			var/extras = "None"
+			if(CHECK_BITFIELD(genital.genital_flags, GENITAL_CAN_STUFF))
+				extras = "Allows egg stuffing"
+
+			genital_entry["extras"] = extras
 			genital_entry["visibility"] = visibility
 			genital_entry["possible_choices"] = GLOB.genitals_visibility_toggles
+			genital_entry["extra_choices"] = list(GEN_ALLOW_EGG_STUFFING)
 			genitals += list(genital_entry)
 	if(iscarbon(self))
 		var/simulated_ass = list()

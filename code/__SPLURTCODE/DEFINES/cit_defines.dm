@@ -4,4 +4,7 @@
 #define GEN_REMOVE_EQUIPMENT "Remove Equipment"
 #define GEN_INSERT_EQUIPMENT "Insert Equipment"
 
+#define GENITAL_CAN_STUFF (1<<14)
+#define GEN_ALLOW_EGG_STUFFING "Allows egg stuffing" //SPLURT EDIT, EGG STUFFING
+
 GLOBAL_LIST_INIT(genitals_interactions, list(GEN_REMOVE_EQUIPMENT, GEN_INSERT_EQUIPMENT))

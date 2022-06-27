@@ -12,6 +12,8 @@
 	var/datum/dna/father_dna
 	var/datum/dna/mother_dna
 
+	var/egg_name
+
 	var/stage = 0
 	var/max_stage = PREGNANCY_STAGES
 	COOLDOWN_DECLARE(stage_time)
@@ -69,12 +71,14 @@
 	if(isitem(parent))
 		RegisterSignal(parent, COMSIG_ATOM_ENTERING, .proc/on_entering)
 		RegisterSignal(parent, COMSIG_OBJ_BREAK, .proc/on_obj_break)
+		RegisterSignal(parent, COMSIG_OBJ_WRITTEN_ON, .proc/name_egg)
 
 /datum/component/pregnancy/UnregisterFromParent()
 	if(carrier)
 		unregister_carrier()
 	UnregisterSignal(parent, COMSIG_ATOM_ENTERING)
 	UnregisterSignal(parent, COMSIG_OBJ_BREAK)
+	UnregisterSignal(parent, COMSIG_OBJ_WRITTEN_ON)
 
 /datum/component/pregnancy/proc/register_carrier()
 	RegisterSignal(carrier, COMSIG_MOB_DEATH, .proc/fetus_mortus)
@@ -108,6 +112,7 @@
 	oviposition = FALSE
 	carrier = null
 	container = null
+	egg_name = null
 
 /datum/component/pregnancy/PostTransfer()
 	if(isliving(parent))
@@ -118,6 +123,11 @@
 		RegisterWithParent()
 	else
 		return COMPONENT_INCOMPATIBLE
+
+/datum/component/pregnancy/proc/name_egg(datum/source, name)
+	SIGNAL_HANDLER
+
+	egg_name = name
 
 /datum/component/pregnancy/proc/on_climax(datum/source, atom/target, obj/item/organ/genital/sender, obj/item/organ/genital/receiver, spill)
 	SIGNAL_HANDLER
@@ -131,8 +141,7 @@
 	to_chat(carrier, span_userlove("You feel your egg sliding out slowly inside!"))
 
 	if(receiver && isliving(target))
-		var/mob/living/livingtarg = target
-		if(livingtarg.client?.prefs?.egg_stuffing)
+		if(CHECK_BITFIELD(receiver.genital_flags, GENITAL_CAN_STUFF))
 			return lay_eg(receiver)
 	return lay_eg(get_turf(carrier))
 
@@ -163,8 +172,8 @@
 /datum/component/pregnancy/proc/handle_life(seconds)
 	SIGNAL_HANDLER
 
-	if(ishuman(parent) && pregnancy_inflation)
-		handle_belly_stuff(parent)
+	if(ishuman(carrier) && pregnancy_inflation)
+		handle_belly_stuff(carrier)
 
 	if(oviposition)
 		handle_ovi_preg()
@@ -174,6 +183,9 @@
 	if((stage > (max_stage / 2)) && !revealed)
 		revealed = TRUE
 		carrier.apply_status_effect(/datum/status_effect/pregnancy)
+
+	if(stage > 3 && ishuman(carrier))
+		SEND_SIGNAL(carrier, COMSIG_ADD_MOOD_EVENT, "pregnancy", /datum/mood_event/pregnant_negative)
 
 	if(COOLDOWN_FINISHED(src, stage_time))
 		stage += 1
@@ -195,7 +207,7 @@
 		belly.update()
 
 /datum/component/pregnancy/proc/handle_preg()
-	if(prob(10))
+	if(prob(2) && !isitem(parent))
 		switch(stage)
 			if(2)
 				to_chat(carrier, span_warning("You can feel your belly getting bigger!"))
@@ -204,7 +216,7 @@
 					to_chat(carrier, span_warning("Oh! The kicking in my belly is getting a bit more intense!"))
 				else
 					to_chat(carrier, span_warning("The kicking is quite intense now!"))
-				carrier.adjustStaminaLoss(30)
+				carrier.adjustStaminaLoss(20)
 			if(4)
 				to_chat(carrier, span_warning("You feel like you're going into labor very soon! Get ready to give birth!"))
 				carrier.adjustStaminaLoss(50)
@@ -213,11 +225,16 @@
 		return
 	if(stage < max_stage)
 		return
-
-	if(prob(50))
-		to_chat(carrier, span_warning("You're going into labor <b>right now!</b>"))
+	if(!isitem(parent))
+		if(prob(50))
+			to_chat(carrier, span_warning("You're going into labor <b>right now!</b>"))
+		else
+			to_chat(carrier, span_userdanger("It hurts! The baby is coming out!"))
 	else
-		to_chat(carrier, span_userdanger("It hurts! The baby is coming out!"))
+		if(prob(50))
+			to_chat(carrier, span_warning("Something is moving inside you!"))
+		else
+			to_chat(carrier, span_userdanger("It hurts! Something is trying to come out!"))
 
 	carrier.emote("scream")
 
@@ -236,17 +253,17 @@
 		var/mob/living/babby = new baby_type(get_turf(carrier))
 		if(ishuman(babby))
 			determine_baby_dna(babby)
-		INVOKE_ASYNC(GLOBAL_PROC, .proc/offer_control_to_babby, babby, carrier)
+		INVOKE_ASYNC(GLOBAL_PROC, .proc/offer_control_to_babby, babby, carrier, egg_name)
+		SEND_SIGNAL(carrier, COMSIG_ADD_MOOD_EVENT, "pregnancy_end", /datum/mood_event/pregnant_positive)
 		if(isitem(parent))
 			var/obj/item = parent
 			item.forceMove(get_turf(carrier))
 			item.obj_break(MELEE)
-		else
-			qdel(src)
+		qdel(src)
 
 /datum/component/pregnancy/proc/handle_ovi_preg()
 	if(stage <= 2)
-		if(stage == 2 && prob(10))
+		if(stage == 2 && prob(2))
 			to_chat(carrier, span_notice("You feel something pressing lightly inside"))
 		return
 
@@ -278,9 +295,6 @@
 
 	var/obj/item/oviposition_egg/eggo = new(carrier)
 
-	eggo.TakeComponent(src)
-	eggo.forceMove(location)
-
 	if(isorgan(location))
 		var/obj/item/organ/recv = location
 		carrier.visible_message(span_userlove("[carrier] laid an egg!"), \
@@ -288,6 +302,9 @@
 	else
 		carrier.visible_message(span_notice("[carrier] laid an egg!"), \
 			span_nicegreen("The egg came out!"))
+
+	eggo.TakeComponent(src)
+	eggo.forceMove(location)
 
 	return TRUE
 
@@ -333,6 +350,7 @@
 	if(belly && pregnancy_inflation)
 		belly.size = 0
 		belly.update()
+	SEND_SIGNAL(gregnant, COMSIG_CLEAR_MOOD_EVENT, "pregnancy")
 
 /datum/component/pregnancy/proc/fetus_mortus()
 	SIGNAL_HANDLER
@@ -342,6 +360,9 @@
 			new /obj/effect/gibspawner/generic(get_turf(carrier))
 		else
 			new /obj/effect/decal/cleanable/egg_smudge(get_turf(carrier))
+	carrier.Knockdown(200, TRUE, TRUE)
+	carrier.Stun(200, TRUE, TRUE)
+	carrier.adjustStaminaLoss(200)
 	carrier.visible_message(span_danger("[carrier] has a miscarriage!"), \
 						span_userdanger("Oh no! My baby is dead!"))
 	qdel(src)
@@ -356,10 +377,10 @@
 /datum/component/pregnancy/proc/handle_damage(datum/source, damage, damagetype, def_zone)
 	SIGNAL_HANDLER
 
-	if(def_zone == BODY_ZONE_CHEST && damage > 25 && prob(40))
+	if(def_zone == BODY_ZONE_CHEST && damage > 20 && prob(40))
 		fetus_mortus()
 
-/proc/offer_control_to_babby(mob/living/babby, mob/living/mommy)
+/proc/offer_control_to_babby(mob/living/babby, mob/living/mommy, pre_named)
 	var/poll_message = "Do you want to play as [mommy]'s offspring?"
 	var/list/mob/candidates = pollCandidatesForMob(poll_message, ROLE_RESPAWN, null, FALSE, 120, babby)
 	if(!LAZYLEN(candidates))
@@ -378,7 +399,9 @@
 	to_chat(babby, "You are the son (or daughter) of [mommy_name]!")
 
 	var/name
-	if(QDELETED(mommy))
+	if(pre_named)
+		name = pre_named
+	else if(QDELETED(mommy))
 		name = input(babby, "What will be your name?", "Name yourself") as null|text
 	else
 		name = input(mommy, "What will be your baby's name?", "Name the baby") as null|text

@@ -1192,7 +1192,6 @@ SAVEFILE UPDATING/VERSIONING - 'Simplified', or rather, more coder-friendly ~Car
 	S["fertile"] >> fertility
 	S["oviposition"] >> oviposition
 	S["pregnancy_inflation"] >> pregnancy_inflation
-	S["egg_stuffing"] >> egg_stuffing
 	//SPLURT EDIT END
 
 	cit_character_pref_load(S)
@@ -1391,7 +1390,6 @@ SAVEFILE UPDATING/VERSIONING - 'Simplified', or rather, more coder-friendly ~Car
 	WRITE_FILE(S["fertile"], fertility)
 	WRITE_FILE(S["oviposition"], oviposition)
 	WRITE_FILE(S["pregnancy_inflation"], pregnancy_inflation)
-	WRITE_FILE(S["egg_stuffing"], egg_stuffing)
 	WRITE_FILE(S["headshot"], features["headshot_link"])
 	//SPLURT EDIT END
 

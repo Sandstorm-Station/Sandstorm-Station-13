@@ -4,6 +4,7 @@
 	icon_state = "egg"
 	icon = 'icons/obj/food/food.dmi'
 	integrity_failure = 0.9
+	obj_flags = UNIQUE_RENAME
 
 /obj/item/oviposition_egg/obj_break(damage_flag)
 	. = ..()

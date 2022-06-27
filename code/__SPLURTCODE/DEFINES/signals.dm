@@ -2,3 +2,4 @@
 #define COMSIG_HEALTH_SCAN "health_scan"
 #define COMSIG_ORGAN_REMOVED "organ_removed"
 #define COMSIG_MOB_CLIMAX "mob_coomed"
+#define COMSIG_OBJ_WRITTEN_ON "written_on"

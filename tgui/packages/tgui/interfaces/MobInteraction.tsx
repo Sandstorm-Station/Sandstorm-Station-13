@@ -31,6 +31,8 @@ type GenitalData = {
   name: string,
   key: string,
   visibility: string,
+  extras: string,
+  extra_choices: string[],
   possible_choices: string[],
 }
 
@@ -238,6 +240,7 @@ const ModeToIcon = {
   "Hidden by clothes": "tshirt",
   "Hidden by underwear": "low-vision",
   "Always hidden": "eye-slash",
+  "Allows egg stuffing": "egg",
 };
 
 const GenitalVisibilityTab = (props, context) => {
@@ -260,6 +263,18 @@ const GenitalVisibilityTab = (props, context) => {
                     visibility: choice,
                   })} />
               ))}
+              {genital.extra_choices instanceof Array
+                ? genital.extra_choices.map(choice => (
+                  <Button
+                    key={choice}
+                    tooltip={choice}
+                    icon={ModeToIcon[choice]}
+                    color={genital.extras === choice ? "green" : "default"}
+                    onClick={() => act('genital', {
+                      genital: genital.key,
+                      visibility: choice,
+                    })} />
+                )) : null}
             </LabeledList.Item>
           ))}
         </LabeledList>

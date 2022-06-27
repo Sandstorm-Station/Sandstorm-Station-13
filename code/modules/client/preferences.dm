@@ -366,8 +366,6 @@ GLOBAL_LIST_EMPTY(preferences_datums)
 	var/oviposition = FALSE
 	/// Does john spaceman look like a gluttonous slob if he pregent?
 	var/pregnancy_inflation = FALSE
-	/// Does john spaceman like being stuffed
-	var/egg_stuffing = FALSE
 	//SPLURT END
 
 /datum/preferences/New(client/C)
@@ -849,7 +847,6 @@ GLOBAL_LIST_EMPTY(preferences_datums)
 			dat += "<h3>Pregnancy preferences</h3>"
 			dat += "<b>Can impregnate:</b><a style='display:block;width:100px' href ='?_src_=prefs;preference=virility;task=input'>[virility ? "Enabled" : "Disabled"]</a>"
 			dat += "<b>Can get pregnant:</b><a style='display:block;width:100px' href ='?_src_=prefs;preference=fertility;task=input'>[fertility ? "Enabled" : "Disabled"]</a>"
-			dat += "<b>Can be stuffed with eggs:</b><a style='display:block;width:100px' href ='?_src_=prefs;preference=egg_stuffing;task=input'>[egg_stuffing ? "Enabled" : "Disabled"]</a>"
 			if(fertility)
 				dat += "<b>Pregnancy type:</b><a style='display:block;width:100px' href ='?_src_=prefs;preference=oviposition;task=input'>[oviposition ? "Oviposition" : "Live Birth"]</a>"
 				dat += "<b>Pregnancy inflation:</b><a style='display:block;width:100px' href ='?_src_=prefs;preference=pregnancy_inflation;task=input'>[pregnancy_inflation ? "Enabled" : "Disabled"]</a>"
@@ -2063,9 +2060,6 @@ GLOBAL_LIST_EMPTY(preferences_datums)
 
 				if("pregnancy_inflation")
 					pregnancy_inflation = !pregnancy_inflation
-
-				if("egg_stuffing")
-					egg_stuffing = !egg_stuffing
 
 				//SPLURT EDIT END
 
