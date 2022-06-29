@@ -59,6 +59,7 @@
 
 /datum/reagent/consumable/ethanol/cum_in_a_hot_tub
 	name = "Cum in the Hot Tub"
+	description = "Doesn't really leave it to the imagination, eh?"
 	boozepwr = 80
 	color = "#D2D7D9"
 	quality = DRINK_VERYGOOD
@@ -71,6 +72,7 @@
 /datum/reagent/consumable/ethanol/cum_in_a_hot_tub/semen
 	boozepwr = 65
 	taste_description = "viscous cream"
+	description = "The name is probably exactly what it is."
 	glass_desc = "The name is probably exactly what it is."
 
 /datum/reagent/consumable/ethanol/mech_rider
@@ -84,3 +86,58 @@
 	glass_icon_state = "mech_rider_bottle"
 	glass_name = "Mech Rider"
 	glass_desc = "Who would even drink this?"
+
+/datum/reagent/consumable/ethanol/isloation_cell
+	name = "Isolation Cell"
+	description = "Ice cubes in a padded Cell."
+	color = "#b4b4b4"
+	quality = DRINK_FANTASTIC
+	taste_description = "cloth dissolved in sulphuric acid."
+	glass_icon = 'modular_splurt/icons/obj/drinks.dmi'
+	glass_icon_state = "isolationcell"
+	glass_name = "Isolation Cell"
+	glass_desc = "Ice cubes in a padded Cell"
+
+
+/datum/reagent/consumable/ethanol/isloation_cell/on_mob_life(mob/living/carbon/C)
+	. = ..()
+	C.reagents.add_reagent_list(list(/datum/reagent/drug/aphrodisiac = 1, /datum/reagent/medicine/morphine = 1))
+
+/datum/reagent/consumable/ethanol/chemical_ex
+	name = "Chemical Ex"
+	description = "Date rape in a glass, a mixture courtesy of the Chief Witchdoctor. The stench of cigar smoke permeates the air wherever it goes."
+	color = rgb(14, 14, 14)
+	quality = DRINK_FANTASTIC
+	taste_description = "ghost peppers, carbonated water and oil. Burns your tongue."
+	glass_icon = 'modular_splurt/icons/obj/drinks.dmi'
+	glass_icon_state = "chemicalex"
+	glass_name = "Chemical Ex"
+	glass_desc = "Date rape in a glass, a mixture courtesy of the Chief Witchdoctor. The stench of cigar smoke permeates the air wherever it goes."
+
+/datum/reagent/consumable/ethanol/chemical_ex/on_mob_life(mob/living/carbon/C)
+	. = ..()
+	C.reagents.add_reagent_list(list(/datum/reagent/drug/aphrodisiacplus = 1, /datum/reagent/medicine/morphine = 1, /datum/reagent/fermi/enthrall = 1))
+
+/datum/reagent/consumable/ethanol/heart_of_gold
+	name = "Heart Of Gold"
+	description = "The Captain's Ambrosia. Something about it just feels divine."
+	boozepwr = 15
+	color = "#fc56e6"
+	quality = DRINK_FANTASTIC
+	taste_description = "a fruit punch-like blend with a little fruity kick at the back of your throat, with an aftertaste of pineapple."
+	glass_icon = 'modular_splurt/icons/obj/drinks.dmi'
+	glass_icon_state = "heartofgold"
+	glass_name = "Heart Of Gold"
+	glass_desc = "The Captain's Ambrosia. Something about it just feels divine."
+
+/datum/reagent/consumable/ethanol/moth_in_chief
+	name = "Moth in Chief"
+	description = "A simole yet elegant drink, inspires confidence in even the most pessimistic of men. The mantle rests well upon your shoulders."
+	boozepwr = 50
+	color = "#0919be"
+	quality = DRINK_FANTASTIC
+	taste_description = "fuzz, warmth and comfort"
+	glass_icon = 'modular_splurt/icons/obj/drinks.dmi'
+	glass_icon_state = "mothinchief"
+	glass_name = "Moth in Chief"
+	glass_desc = "A simole yet elegant drink, inspires confidence in even the most pessimistic of men. The mantle rests well upon your shoulders."
