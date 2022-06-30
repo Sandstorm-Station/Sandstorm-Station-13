@@ -152,7 +152,7 @@
 	icon_state = "rosebouquet"
 
 /obj/item/clothing/accessory/badge
-	name = "Security badge"
+	name = "security badge"
 	desc = "A badge showing the wearer is a member of Security."
 	icon = 'modular_splurt/icons/obj/badge.dmi'
 	icon_state = "security_badge"
@@ -187,6 +187,31 @@
 		add_fingerprint(user)
 
 /obj/item/clothing/accessory/badge/holo
-	name = "Security Holo Badge"
+	name = "security holo badge"
 	desc = "A more futuristic hard-light badge"
 	icon_state = "security_badge_holo"
+	
+/obj/item/clothing/accessory/badge/deputy
+	name = "security deputy badge"
+	desc = "A shiny silver badge for deputies on the Security force"
+	icon_state = "security_badge_deputy"
+	
+/datum/design/sec_badge
+	name = "Security Badge"
+	desc = "A shiny badge to show the bearer is part of the Security force."
+	id = "sec_badge"
+	build_type = PROTOLATHE
+	materials = list(/datum/material/iron = 200, /datum/material/gold = 100)
+	build_path = /obj/item/clothing/accessory/badge
+	category = list("Equipment")
+	departmental_flags = DEPARTMENTAL_FLAG_SECURITY
+
+/datum/design/dep_badge
+	name = "Deputy Badge"
+	desc = "A shiny badge for deputies to the Security force."
+	id = "dep_badge"
+	build_type = PROTOLATHE
+	materials = list(/datum/material/iron = 200, /datum/material/silver = 100)
+	build_path = /obj/item/clothing/accessory/badge/deputy
+	category = list("Equipment")
+	departmental_flags = DEPARTMENTAL_FLAG_SECURITY
