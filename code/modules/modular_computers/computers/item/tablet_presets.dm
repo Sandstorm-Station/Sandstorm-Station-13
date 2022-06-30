@@ -18,6 +18,7 @@
 	install_component(new /obj/item/computer_hardware/hard_drive/small)
 	install_component(new /obj/item/computer_hardware/network_card)
 	install_component(new /obj/item/computer_hardware/card_slot)
+	install_component(new /obj/item/computer_hardware/card_slot/secondary) //Why does the HoP's tablet NOT have a secondary Card Reader?
 	install_component(new /obj/item/computer_hardware/printer/mini)
 
 /obj/item/modular_computer/tablet/preset/science/Initialize(mapload)
