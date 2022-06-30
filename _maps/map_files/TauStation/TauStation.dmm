@@ -1329,7 +1329,7 @@
 /area/commons/dorms)
 "aAt" = (
 /obj/item/reagent_containers/glass/bowl{
-	list_reagents = list(/datum/reagent/water = 50);
+	list_reagents = list(/datum/reagent/water=50);
 	name = "water bowl"
 	},
 /obj/structure/sign/warning/biohazard{
@@ -5715,7 +5715,7 @@
 /area/security/execution)
 "cdj" = (
 /obj/machinery/vending/sustenance{
-	contraband = list(/obj/item/kitchen/knife = 6, /obj/item/reagent_containers/food/drinks/coffee = 12);
+	contraband = list(/obj/item/kitchen/knife=6,/obj/item/reagent_containers/food/drinks/coffee=12);
 	desc = "A vending machine which vends food.";
 	product_ads = "Sufficiently healthy."
 	},
@@ -6435,7 +6435,7 @@
 /area/security/execution)
 "cnL" = (
 /obj/machinery/vending/sovietvend{
-	contraband = list(/obj/item/clothing/suit/armor/vest/russian_coat = 2, /obj/item/clothing/mask/balaclava = 4, /obj/item/clothing/head/helmet/rus_ushanka = 4, /obj/item/clothing/suit/space/hardsuit/soviet = 0, /obj/item/gun/energy/laser/LaserAK = 1)
+	contraband = list(/obj/item/clothing/suit/armor/vest/russian_coat=2,/obj/item/clothing/mask/balaclava=4,/obj/item/clothing/head/helmet/rus_ushanka=4,/obj/item/clothing/suit/space/hardsuit/soviet=0,/obj/item/gun/energy/laser/LaserAK=1)
 	},
 /turf/open/floor/plating/rust,
 /area/maintenance/department/security/upper)
@@ -7960,11 +7960,11 @@
 /area/hallway/primary/fore)
 "cOP" = (
 /obj/machinery/vending/dinnerware{
-	contraband = list(/obj/item/reagent_containers/food/condiment/flour = 4);
+	contraband = list(/obj/item/reagent_containers/food/condiment/flour=4);
 	desc = "This vendor is full of condiments to put on food.";
 	name = "\improper Condiments Vendor";
 	product_ads = "Get your sauces here!;No slave labour was used to make these products!;Nanotrasen Approved?!";
-	products = list(/obj/item/storage/bag/tray = 8, /obj/item/reagent_containers/food/drinks/drinkingglass = 10, /obj/item/storage/box/cups = 5, /obj/item/reagent_containers/food/condiment/pack/ketchup = 20, /obj/item/reagent_containers/food/condiment/pack/mustard = 20, /obj/item/reagent_containers/food/condiment/pack/hotsauce = 20, /obj/item/reagent_containers/food/condiment/pack/astrotame = 20, /obj/item/reagent_containers/food/condiment/saltshaker = 20, /obj/item/reagent_containers/food/condiment/peppermill = 20)
+	products = list(/obj/item/storage/bag/tray=8,/obj/item/reagent_containers/food/drinks/drinkingglass=10,/obj/item/storage/box/cups=5,/obj/item/reagent_containers/food/condiment/pack/ketchup=20,/obj/item/reagent_containers/food/condiment/pack/mustard=20,/obj/item/reagent_containers/food/condiment/pack/hotsauce=20,/obj/item/reagent_containers/food/condiment/pack/astrotame=20,/obj/item/reagent_containers/food/condiment/saltshaker=20,/obj/item/reagent_containers/food/condiment/peppermill=20)
 	},
 /turf/open/floor/plasteel/dark,
 /area/service/kitchen)
@@ -23424,6 +23424,7 @@
 /obj/effect/turf_decal/tile/red{
 	dir = 1
 	},
+/obj/effect/landmark/start/peacekeeper,
 /turf/open/floor/plasteel,
 /area/security/office)
 "iaQ" = (
@@ -27781,7 +27782,7 @@
 /area/science/xenobiology)
 "jGz" = (
 /obj/machinery/vending/barkbox{
-	products = list(/obj/item/storage/fancy/treat_box = 8, /obj/item/clothing/neck/petcollar = 5, /obj/item/clothing/neck/petcollar/ribbon = 5, /obj/item/clothing/neck/petcollar/leather = 5, /obj/item/clothing/suit/petharness = 4, /obj/item/clothing/suit/petharness/mesh = 4, /obj/item/toy/fluff/tennis_poly = 4, /obj/item/toy/fluff/tennis_poly/tri = 2, /obj/item/toy/fluff/bone_poly = 4, /obj/item/toy/fluff/frisbee_poly = 4, /obj/item/pet_carrier = 2)
+	products = list(/obj/item/storage/fancy/treat_box=8,/obj/item/clothing/neck/petcollar=5,/obj/item/clothing/neck/petcollar/ribbon=5,/obj/item/clothing/neck/petcollar/leather=5,/obj/item/clothing/suit/petharness=4,/obj/item/clothing/suit/petharness/mesh=4,/obj/item/toy/fluff/tennis_poly=4,/obj/item/toy/fluff/tennis_poly/tri=2,/obj/item/toy/fluff/bone_poly=4,/obj/item/toy/fluff/frisbee_poly=4,/obj/item/pet_carrier=2)
 	},
 /turf/open/floor/plasteel,
 /area/hallway/secondary/entry)
@@ -38705,8 +38706,8 @@
 	dir = 1
 	},
 /mob/living/simple_animal/kiwi{
-	atmos_requirements = list("min_oxy" = 0, "max_oxy" = 0, "min_tox" = 0, "max_tox" = 0, "min_co2" = 0, "max_co2" = 0, "min_n2" = 0, "max_n2" = 0);
-	damage_coeff = list("brute" = 0.25, "fire" = 0.25, "tox" = 1, "clone" = 1, "stamina" = 0, "oxy" = 1);
+	atmos_requirements = list("min_oxy"=0,"max_oxy"=0,"min_tox"=0,"max_tox"=0,"min_co2"=0,"max_co2"=0,"min_n2"=0,"max_n2"=0);
+	damage_coeff = list("brute"=0.25,"fire"=0.25,"tox"=1,"clone"=1,"stamina"=0,"oxy"=1);
 	desc = "Exposure to low gravity made them grow larger, this one looks particularly royal.";
 	health = 250;
 	maxHealth = 250;
@@ -42176,7 +42177,7 @@
 /obj/item/pickaxe/mini,
 /obj/item/stack/sheet/mineral/wood/twenty,
 /obj/item/clothing/suit/hooded/chaplain_hoodie{
-	armor = list("melee" = 5, "bullet" = 0, "laser" = 0, "energy" = 0, "bomb" = 0, "bio" = 0, "rad" = 0, "fire" = 15, "acid" = 0);
+	armor = list("melee"=5,"bullet"=0,"laser"=0,"energy"=0,"bomb"=0,"bio"=0,"rad"=0,"fire"=15,"acid"=0);
 	name = "gravedigger hoodie"
 	},
 /obj/item/flashlight/lantern,
@@ -42302,8 +42303,8 @@
 	attack_sound = 'sound/weapons/punch1.ogg';
 	attack_verb_continuous = "pummels";
 	attack_verb_simple = "pummel";
-	butcher_results = list(/obj/item/reagent_containers/food/snacks/meat/slab/gorilla = 4);
-	damage_coeff = list("brute" = 1, "fire" = 1.5, "tox" = 1.5, "clone" = 0, "stamina" = 0, "oxy" = 1.5);
+	butcher_results = list(/obj/item/reagent_containers/food/snacks/meat/slab/gorilla=4);
+	damage_coeff = list("brute"=1,"fire"=1.5,"tox"=1.5,"clone"=0,"stamina"=0,"oxy"=1.5);
 	desc = "This gorilla seems extremely familiar.";
 	dextrous = 1;
 	dir = 4;
@@ -47135,11 +47136,11 @@
 	name = "Speakeasy stash"
 	},
 /obj/item/reagent_containers/food/drinks/bottle/blank{
-	list_reagents = list(/datum/reagent/consumable/ethanol/quintuple_sec = 20);
+	list_reagents = list(/datum/reagent/consumable/ethanol/quintuple_sec=20);
 	name = "Uncle Joe's special supply"
 	},
 /obj/item/reagent_containers/glass/bottle{
-	list_reagents = list(/datum/reagent/medicine/ephedrine = 10)
+	list_reagents = list(/datum/reagent/medicine/ephedrine=10)
 	},
 /obj/item/reagent_containers/food/drinks/bottle/lizardwine,
 /obj/effect/decal/cleanable/cobweb,
@@ -48560,7 +48561,7 @@
 /area/medical/break_room)
 "qUT" = (
 /mob/living/simple_animal/hostile/retaliate/clown/mutant/blob{
-	atmos_requirements = list("min_oxy" = 0, "max_oxy" = 0, "min_tox" = 0, "max_tox" = 0, "min_co2" = 0, "max_co2" = 0, "min_n2" = 0, "max_n2" = 0);
+	atmos_requirements = list("min_oxy"=0,"max_oxy"=0,"min_tox"=0,"max_tox"=0,"min_co2"=0,"max_co2"=0,"min_n2"=0,"max_n2"=0);
 	enemies = list("neutral");
 	health = 300;
 	maxHealth = 300
@@ -58772,7 +58773,7 @@
 /area/service/kitchen)
 "utC" = (
 /obj/machinery/vending/dinnerware{
-	contraband = list(/obj/item/kitchen/rollingpin = 2, /obj/item/kitchen/knife/butcher = 2, /obj/item/reagent_containers/food/condiment/flour = 4)
+	contraband = list(/obj/item/kitchen/rollingpin=2,/obj/item/kitchen/knife/butcher=2,/obj/item/reagent_containers/food/condiment/flour=4)
 	},
 /turf/open/floor/plasteel/cafeteria,
 /area/service/kitchen)
@@ -59398,6 +59399,7 @@
 /area/security/brig)
 "uED" = (
 /obj/structure/chair/office,
+/obj/effect/landmark/start/peacekeeper,
 /turf/open/floor/engine,
 /area/security/brig)
 "uEY" = (
@@ -69875,6 +69877,7 @@
 /area/medical/medbay/central)
 "xXN" = (
 /obj/machinery/atmospherics/pipe/simple/scrubbers/hidden,
+/obj/effect/landmark/start/peacekeeper,
 /turf/open/floor/plasteel,
 /area/security/checkpoint/customs)
 "xXO" = (
@@ -70403,7 +70406,7 @@
 /area/maintenance/department/medical)
 "ygi" = (
 /obj/machinery/vending/sustenance{
-	contraband = list(/obj/item/kitchen/knife = 6, /obj/item/reagent_containers/food/drinks/coffee = 12);
+	contraband = list(/obj/item/kitchen/knife=6,/obj/item/reagent_containers/food/drinks/coffee=12);
 	desc = "A vending machine which vends food.";
 	product_ads = "Sufficiently healthy."
 	},
