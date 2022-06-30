@@ -331,10 +331,6 @@
 	},
 /turf/open/floor/plating,
 /area/command/heads_quarters/hos)
-"aaN" = (
-/obj/effect/spawner/structure/window/plasma,
-/turf/open/floor/plating,
-/area/security/prison/upper)
 "aaO" = (
 /obj/effect/spawner/structure/window/plastitanium,
 /obj/machinery/door/poddoor/preopen{
@@ -6776,10 +6772,6 @@
 	},
 /turf/open/floor/mineral/plastitanium/red,
 /area/security/brig)
-"anC" = (
-/obj/effect/spawner/structure/window/plasma,
-/turf/open/floor/plating,
-/area/security/courtroom)
 "anD" = (
 /obj/structure/disposalpipe/segment,
 /obj/structure/cable{
@@ -7628,10 +7620,6 @@
 /obj/structure/closet/wardrobe/mixed,
 /obj/item/clothing/shoes/jackboots,
 /obj/item/coin/silver,
-/turf/open/floor/plating,
-/area/maintenance/starboard/fore)
-"apE" = (
-/obj/effect/spawner/structure/window/plasma,
 /turf/open/floor/plating,
 /area/maintenance/starboard/fore)
 "apF" = (
@@ -11393,7 +11381,7 @@
 /turf/open/floor/mineral/plastitanium,
 /area/commons/dorms)
 "aAc" = (
-/obj/effect/spawner/structure/window/plasma,
+/obj/effect/spawner/structure/window/plastitanium,
 /obj/machinery/atmospherics/pipe/simple/scrubbers/hidden,
 /turf/open/floor/plating,
 /area/maintenance/starboard/fore)
@@ -12227,10 +12215,6 @@
 /obj/structure/cable{
 	icon_state = "1-8"
 	},
-/obj/structure/window/plasma{
-	dir = 4
-	},
-/obj/structure/window/plasma,
 /obj/machinery/atmospherics/pipe/simple/supply/hidden,
 /turf/open/floor/plating{
 	icon_state = "panelscorched"
@@ -15458,10 +15442,6 @@
 	},
 /turf/open/floor/mineral/plastitanium,
 /area/hallway/secondary/entry)
-"aLw" = (
-/obj/effect/spawner/structure/window/plasma,
-/turf/open/floor/plating,
-/area/hallway/secondary/entry)
 "aLx" = (
 /obj/machinery/atmospherics/pipe/simple/scrubbers/hidden,
 /turf/open/floor/mineral/plastitanium,
@@ -16173,10 +16153,6 @@
 /obj/structure/disposalpipe/segment,
 /turf/open/floor/mineral/plastitanium,
 /area/service/library)
-"aNQ" = (
-/obj/effect/spawner/structure/window/plasma,
-/turf/open/floor/plating,
-/area/service/hydroponics)
 "aNR" = (
 /obj/structure/table/wood,
 /obj/machinery/atmospherics/pipe/simple/supply/hidden,
@@ -16997,7 +16973,7 @@
 /turf/open/floor/mineral/plastitanium,
 /area/service/hydroponics)
 "aQg" = (
-/obj/effect/spawner/structure/window/plasma,
+/obj/effect/spawner/structure/window/plastitanium,
 /obj/machinery/door/poddoor/preopen{
 	id = "barShutters";
 	name = "privacy shutters"
@@ -21367,17 +21343,13 @@
 /turf/open/floor/carpet/black,
 /area/command/meeting_room)
 "bbD" = (
-/obj/effect/spawner/structure/window/plasma,
+/obj/effect/spawner/structure/window/plastitanium,
 /turf/open/floor/plating,
 /area/service/library)
 "bbE" = (
 /obj/machinery/atmospherics/pipe/simple/supply/hidden,
 /turf/closed/wall/r_wall/syndicate,
 /area/service/library)
-"bbF" = (
-/obj/effect/spawner/structure/window/plasma,
-/turf/open/floor/plating,
-/area/service/chapel/main)
 "bbG" = (
 /obj/machinery/firealarm{
 	dir = 4;
@@ -22129,7 +22101,7 @@
 /turf/open/floor/carpet/black,
 /area/command/meeting_room)
 "bdN" = (
-/obj/effect/spawner/structure/window/plasma,
+/obj/effect/spawner/structure/window/plastitanium,
 /turf/open/floor/plating,
 /area/medical/surgery)
 "bdO" = (
@@ -22856,7 +22828,7 @@
 /turf/open/floor/mineral/plastitanium,
 /area/command/heads_quarters/captain)
 "bfG" = (
-/obj/effect/spawner/structure/window/plasma,
+/obj/effect/spawner/structure/window/plastitanium,
 /turf/open/floor/plating,
 /area/medical/medbay/lobby)
 "bfH" = (
@@ -26147,10 +26119,6 @@
 	},
 /turf/open/floor/mineral/plastitanium,
 /area/cargo/office)
-"bnK" = (
-/obj/effect/spawner/structure/window/plasma,
-/turf/open/floor/plating,
-/area/cargo/office)
 "bnL" = (
 /obj/machinery/atmospherics/components/unary/vent_pump/on{
 	dir = 4
@@ -27082,7 +27050,7 @@
 	id = "robotics2";
 	name = "robotics lab shutters"
 	},
-/obj/effect/spawner/structure/window/plasma,
+/obj/effect/spawner/structure/window/plastitanium,
 /obj/machinery/door/poddoor/shutters/preopen{
 	id = "robotics2";
 	name = "robotics lab shutters"
@@ -27150,7 +27118,6 @@
 /obj/machinery/atmospherics/components/binary/valve{
 	dir = 1
 	},
-/obj/item/malf_upgrade,
 /turf/open/floor/plating,
 /area/maintenance/starboard)
 "bqh" = (
@@ -27631,7 +27598,7 @@
 /turf/open/floor/mineral/plastitanium,
 /area/science/robotics/lab)
 "brr" = (
-/obj/effect/spawner/structure/window/plasma,
+/obj/effect/spawner/structure/window/plastitanium,
 /obj/machinery/atmospherics/pipe/simple/supply/hidden{
 	dir = 4
 	},
@@ -27702,7 +27669,7 @@
 	id = "rnd2";
 	name = "research lab shutters"
 	},
-/obj/effect/spawner/structure/window/plasma,
+/obj/effect/spawner/structure/window/plastitanium,
 /turf/open/floor/plating,
 /area/science/research)
 "bry" = (
@@ -28812,7 +28779,7 @@
 	id = "robotics2";
 	name = "robotics lab shutters"
 	},
-/obj/effect/spawner/structure/window/plasma,
+/obj/effect/spawner/structure/window/plastitanium,
 /turf/open/floor/plating,
 /area/science/robotics/lab)
 "bul" = (
@@ -30870,14 +30837,14 @@
 /obj/structure/disposalpipe/segment{
 	dir = 4
 	},
-/obj/effect/spawner/structure/window/plasma,
+/obj/effect/spawner/structure/window/plastitanium,
 /turf/open/floor/plating,
 /area/medical/surgery)
 "byZ" = (
 /obj/structure/disposalpipe/segment{
 	dir = 6
 	},
-/obj/effect/spawner/structure/window/plasma,
+/obj/effect/spawner/structure/window/plastitanium,
 /turf/open/floor/plating,
 /area/medical/surgery)
 "bza" = (
@@ -31157,7 +31124,7 @@
 /turf/open/floor/mineral/plastitanium,
 /area/hallway/primary/central)
 "bzH" = (
-/obj/effect/spawner/structure/window/plasma,
+/obj/effect/spawner/structure/window/plastitanium,
 /obj/machinery/atmospherics/pipe/simple/supply/hidden,
 /turf/open/floor/plating,
 /area/medical/surgery)
@@ -32903,7 +32870,7 @@
 	id = "medpriv4";
 	name = "privacy door"
 	},
-/obj/effect/spawner/structure/window/plasma,
+/obj/effect/spawner/structure/window/plastitanium,
 /obj/machinery/atmospherics/pipe/simple/supply/hidden{
 	dir = 4
 	},
@@ -34693,7 +34660,7 @@
 /turf/open/floor/mineral/plastitanium,
 /area/hallway/primary/aft)
 "bHT" = (
-/obj/effect/spawner/structure/window/plasma,
+/obj/effect/spawner/structure/window/plastitanium,
 /obj/machinery/atmospherics/pipe/simple/scrubbers/hidden{
 	dir = 4
 	},
@@ -34718,10 +34685,6 @@
 /obj/structure/cable{
 	icon_state = "0-2"
 	},
-/turf/open/floor/plating,
-/area/maintenance/aft)
-"bHX" = (
-/obj/effect/spawner/structure/window/plasma,
 /turf/open/floor/plating,
 /area/maintenance/aft)
 "bHY" = (
@@ -35201,7 +35164,7 @@
 /turf/open/floor/mineral/plastitanium,
 /area/science/mixing)
 "bIT" = (
-/obj/effect/spawner/structure/window/plasma,
+/obj/effect/spawner/structure/window/plastitanium,
 /obj/machinery/atmospherics/pipe/simple/scrubbers/hidden{
 	dir = 4
 	},
@@ -35697,10 +35660,6 @@
 	},
 /turf/open/floor/mineral/plastitanium,
 /area/science)
-"bKe" = (
-/obj/effect/spawner/structure/window/plasma,
-/turf/open/floor/plating,
-/area/science/mixing)
 "bKf" = (
 /obj/machinery/door/window/southleft{
 	name = "Mass Driver Door";
@@ -36616,10 +36575,6 @@
 /obj/effect/turf_decal/stripes/line,
 /turf/open/floor/mineral/plastitanium,
 /area/science/xenobiology)
-"bMr" = (
-/obj/effect/spawner/structure/window/plasma,
-/turf/open/floor/plating,
-/area/science/xenobiology)
 "bMs" = (
 /obj/effect/spawner/structure/window/plastitanium,
 /turf/open/floor/plating,
@@ -36883,7 +36838,7 @@
 /turf/open/floor/mineral/plastitanium,
 /area/medical/virology)
 "bNk" = (
-/obj/effect/spawner/structure/window/plasma,
+/obj/effect/spawner/structure/window/plastitanium,
 /obj/machinery/atmospherics/pipe/simple/supply/hidden,
 /turf/open/floor/plating,
 /area/medical/virology)
@@ -37153,7 +37108,7 @@
 /turf/open/floor/mineral/plastitanium,
 /area/engineering/atmos)
 "bNU" = (
-/obj/effect/spawner/structure/window/plasma,
+/obj/effect/spawner/structure/window/plastitanium,
 /obj/machinery/atmospherics/pipe/manifold/supply/hidden{
 	dir = 8
 	},
@@ -37920,10 +37875,6 @@
 	},
 /turf/open/floor/mineral/plastitanium,
 /area/science/xenobiology)
-"bPK" = (
-/obj/effect/spawner/structure/window/plasma,
-/turf/open/floor/plating,
-/area/science/misc_lab)
 "bPL" = (
 /obj/machinery/atmospherics/pipe/simple/supply/hidden{
 	dir = 4
@@ -38211,7 +38162,7 @@
 /turf/open/floor/mineral/plastitanium,
 /area/medical/virology)
 "bQG" = (
-/obj/effect/spawner/structure/window/plasma,
+/obj/effect/spawner/structure/window/plastitanium,
 /obj/machinery/atmospherics/pipe/simple/scrubbers/hidden{
 	dir = 4
 	},
@@ -40143,11 +40094,7 @@
 /area/engineering/break_room)
 "bWi" = (
 /obj/machinery/atmospherics/pipe/simple/supply/hidden,
-/obj/effect/spawner/structure/window/plasma,
-/turf/open/floor/plating,
-/area/medical/virology)
-"bWj" = (
-/obj/effect/spawner/structure/window/plasma,
+/obj/effect/spawner/structure/window/plastitanium,
 /turf/open/floor/plating,
 /area/medical/virology)
 "bWl" = (
@@ -40485,7 +40432,7 @@
 /obj/machinery/atmospherics/pipe/simple/scrubbers/hidden{
 	dir = 4
 	},
-/obj/effect/spawner/structure/window/plasma,
+/obj/effect/spawner/structure/window/plastitanium,
 /turf/open/floor/plating,
 /area/medical/virology)
 "bXc" = (
@@ -43304,7 +43251,7 @@
 /turf/open/floor/mineral/plastitanium,
 /area/engineering/main)
 "cev" = (
-/obj/effect/spawner/structure/window/plasma,
+/obj/effect/spawner/structure/window/plastitanium,
 /obj/machinery/atmospherics/pipe/simple/supply/hidden,
 /obj/structure/cable{
 	icon_state = "1-2"
@@ -46012,10 +45959,6 @@
 	},
 /turf/open/floor/mineral/plastitanium,
 /area/engineering/engine_smes)
-"clJ" = (
-/obj/effect/spawner/structure/window/plasma,
-/turf/open/floor/plating,
-/area/engineering/main)
 "clM" = (
 /obj/structure/table,
 /obj/item/clothing/glasses/meson,
@@ -51138,10 +51081,6 @@
 "cOe" = (
 /turf/open/floor/plating,
 /area/maintenance/starboard/aft)
-"cOw" = (
-/obj/effect/spawner/structure/window/plasma,
-/turf/open/floor/plating,
-/area/maintenance/port/aft)
 "cOx" = (
 /obj/structure/closet,
 /obj/effect/spawner/lootdrop/maintenance,
@@ -51473,14 +51412,14 @@
 /turf/open/floor/mineral/plastitanium,
 /area/engineering/main)
 "cTc" = (
-/obj/effect/spawner/structure/window/plasma,
+/obj/effect/spawner/structure/window/plastitanium,
 /obj/structure/cable{
 	icon_state = "1-2"
 	},
 /turf/open/floor/plating,
 /area/engineering/main)
 "cTd" = (
-/obj/effect/spawner/structure/window/plasma,
+/obj/effect/spawner/structure/window/plastitanium,
 /obj/machinery/atmospherics/pipe/simple/scrubbers/hidden,
 /turf/open/floor/plating,
 /area/engineering/main)
@@ -53010,7 +52949,7 @@
 /turf/open/space,
 /area/space/nearstation)
 "eVC" = (
-/obj/effect/spawner/structure/window/plasma,
+/obj/effect/spawner/structure/window/plastitanium,
 /obj/machinery/door/firedoor,
 /turf/open/floor/plating,
 /area/commons/cryopod)
@@ -55566,7 +55505,7 @@
 /obj/machinery/atmospherics/pipe/simple/supply/hidden{
 	dir = 4
 	},
-/obj/effect/spawner/structure/window/plasma,
+/obj/effect/spawner/structure/window/plastitanium,
 /obj/machinery/door/firedoor,
 /turf/open/floor/plating,
 /area/commons/cryopod)
@@ -57413,8 +57352,8 @@
 /turf/open/floor/mineral/plastitanium,
 /area/commons/fitness/pool)
 "lpx" = (
-/obj/structure/window/plasma,
 /obj/effect/decal/cleanable/dirt,
+/obj/structure/window/reinforced/survival_pod,
 /turf/open/floor/mineral/plastitanium,
 /area/security/prison/upper)
 "lpQ" = (
@@ -57823,7 +57762,7 @@
 /turf/open/floor/plasteel/freezer,
 /area/commons/toilet)
 "lQG" = (
-/obj/effect/spawner/structure/window/plasma,
+/obj/effect/spawner/structure/window/plastitanium,
 /turf/open/floor/plating,
 /area/science/circuit)
 "lRb" = (
@@ -59337,7 +59276,7 @@
 /obj/structure/cable{
 	icon_state = "1-2"
 	},
-/obj/effect/spawner/structure/window/plasma,
+/obj/effect/spawner/structure/window/plastitanium,
 /turf/open/floor/plating,
 /area/security/prison/upper)
 "obs" = (
@@ -60687,7 +60626,7 @@
 	id = "PrivateStudy1";
 	name = "Private Study Privacy Shutters"
 	},
-/obj/effect/spawner/structure/window/plasma,
+/obj/effect/spawner/structure/window/plastitanium,
 /turf/open/floor/mineral/plastitanium,
 /area/service/library)
 "qfT" = (
@@ -60835,7 +60774,6 @@
 /area/space/nearstation)
 "qvc" = (
 /obj/structure/table,
-/obj/structure/window/plasma,
 /obj/item/reagent_containers/food/condiment/saltshaker{
 	layer = 3.1;
 	pixel_x = -2;
@@ -60851,6 +60789,7 @@
 	pixel_y = 3
 	},
 /obj/item/book/manual/chef_recipes,
+/obj/structure/window/reinforced/survival_pod,
 /turf/open/floor/mineral/plastitanium,
 /area/security/prison/upper)
 "qvf" = (
@@ -61131,7 +61070,7 @@
 /turf/open/floor/mineral/plastitanium,
 /area/service/chapel/office)
 "qVP" = (
-/obj/effect/spawner/structure/window/plasma,
+/obj/effect/spawner/structure/window/plastitanium,
 /obj/machinery/atmospherics/pipe/simple/supply/hidden{
 	dir = 4
 	},
@@ -61809,10 +61748,6 @@
 	},
 /turf/open/floor/mineral/plastitanium,
 /area/engineering/atmos)
-"rUe" = (
-/obj/effect/spawner/structure/window/plasma,
-/turf/open/floor/plating,
-/area/medical/medbay/central)
 "rUr" = (
 /obj/effect/spawner/lootdrop/prison_contraband,
 /obj/structure/rack,
@@ -79001,10 +78936,10 @@ aBI
 aBI
 liD
 aKj
-aLw
-aLw
-aLw
-aLw
+awW
+awW
+awW
+awW
 aQI
 liD
 czK
@@ -87014,7 +86949,7 @@ bCq
 bPW
 bCq
 bCq
-cOw
+bLv
 bCq
 bVF
 bWA
@@ -87526,7 +87461,7 @@ aaf
 aaf
 bCq
 bPY
-cOw
+bLv
 bCq
 bCq
 bCq
@@ -90257,7 +90192,7 @@ pgq
 peD
 sBM
 adI
-aaN
+ybb
 jOB
 adI
 adI
@@ -90330,12 +90265,12 @@ cNI
 bKP
 cNI
 aZK
-bnK
-bnK
+bfm
+bfm
 bqu
 bqu
-bnK
-bnK
+bfm
+bfm
 bwe
 bwe
 bwe
@@ -92178,8 +92113,8 @@ ckC
 cig
 coa
 coJ
-clJ
-clJ
+cqY
+cqY
 cgI
 cgI
 cgI
@@ -92318,8 +92253,8 @@ nLP
 adI
 dyS
 aaE
-aaN
-aaN
+ybb
+ybb
 aaV
 rvS
 etr
@@ -93201,7 +93136,7 @@ cid
 cSO
 cen
 ckG
-clJ
+cqY
 cmF
 cgR
 cgI
@@ -94486,7 +94421,7 @@ cSM
 cjd
 cSW
 ckI
-clJ
+cqY
 cmL
 cBO
 cgI
@@ -94743,7 +94678,7 @@ cij
 cjf
 cSX
 ckK
-clJ
+cqY
 cmL
 cgR
 cgI
@@ -95000,7 +94935,7 @@ cdk
 cMC
 cSY
 ckI
-clJ
+cqY
 cmL
 cnv
 cgI
@@ -97740,9 +97675,9 @@ aaQ
 aaQ
 aaQ
 aaQ
-anC
+amr
 anU
-anC
+amr
 cSA
 aqe
 ctq
@@ -101386,12 +101321,12 @@ bpu
 bqP
 bsy
 bEe
-rUe
+bog
 ajv
 bxN
 bze
 asL
-rUe
+bog
 bCG
 bBd
 bFw
@@ -101905,7 +101840,7 @@ bxQ
 bvm
 bDT
 bxQ
-rUe
+bog
 bzU
 bBe
 bCS
@@ -102157,7 +102092,7 @@ bog
 bxQ
 bsx
 bsr
-rUe
+bog
 bwD
 bxQ
 bxQ
@@ -102671,7 +102606,7 @@ bpv
 bxQ
 bsx
 btV
-rUe
+bog
 bwF
 bxQ
 bxQ
@@ -103185,7 +103120,7 @@ bJE
 bKL
 brf
 btV
-rUe
+bog
 bwH
 bxS
 bzh
@@ -103699,7 +103634,7 @@ bpx
 bpP
 brf
 bxQ
-rUe
+bog
 bwJ
 bxU
 bzi
@@ -103981,7 +103916,7 @@ bKH
 bzs
 bAw
 bBR
-bHX
+bPn
 bzs
 bzs
 bzs
@@ -104238,7 +104173,7 @@ bKH
 bzs
 bAw
 bXZ
-bHX
+bPn
 bZN
 caK
 bzs
@@ -106547,7 +106482,7 @@ bOr
 bRQ
 bOr
 bSQ
-bWj
+bRQ
 bOm
 bXc
 bYe
@@ -106804,10 +106739,10 @@ bQJ
 bRR
 bOr
 bSQ
-bWj
-bWj
-bWj
-bWj
+bRQ
+bRQ
+bRQ
+bRQ
 bNd
 bzs
 bzs
@@ -107061,7 +106996,7 @@ bOr
 bRQ
 bOr
 bSQ
-bWj
+bRQ
 bOm
 bXc
 bYe
@@ -107272,7 +107207,7 @@ aIp
 aIp
 aKL
 aMz
-aNQ
+bam
 aOX
 aQm
 lva
@@ -107786,7 +107721,7 @@ aIp
 aJO
 aLd
 aMN
-aNQ
+bam
 aOZ
 aOX
 aOX
@@ -108289,7 +108224,7 @@ auF
 apC
 auD
 auF
-apE
+alO
 aAs
 vbi
 apC
@@ -108541,12 +108476,12 @@ apC
 anf
 apC
 apC
-apE
+alO
 auG
 apC
 iWx
 auF
-apE
+alO
 anf
 anf
 noF
@@ -110088,7 +110023,7 @@ anf
 apC
 hyY
 anf
-apE
+alO
 anf
 anf
 aCE
@@ -110603,7 +110538,7 @@ apC
 awL
 anf
 anf
-apE
+alO
 aBF
 aCH
 aED
@@ -110860,7 +110795,7 @@ apC
 awK
 anf
 awD
-apE
+alO
 anf
 aCk
 aEC
@@ -111631,7 +111566,7 @@ hHQ
 kGJ
 wHT
 asA
-apE
+alO
 dPk
 aCG
 aEf
@@ -111679,7 +111614,7 @@ bEg
 bDc
 bDc
 bLe
-bMr
+ccQ
 bNr
 bIT
 bDb
@@ -111939,7 +111874,7 @@ bHK
 bIb
 bID
 bOA
-bPK
+bZZ
 bQO
 bSb
 bOu
@@ -112165,7 +112100,7 @@ aTg
 baA
 aZf
 xRa
-bbF
+dmX
 bbz
 aXq
 bbz
@@ -112422,7 +112357,7 @@ aTf
 baA
 aZf
 baA
-bbF
+dmX
 bbz
 aXq
 bbz
@@ -112453,7 +112388,7 @@ bHL
 boM
 boM
 boM
-bPK
+bZZ
 bWr
 bWr
 bWr
@@ -112679,7 +112614,7 @@ baA
 baA
 lNB
 baA
-bbF
+dmX
 bbz
 aXq
 bbz
@@ -112936,7 +112871,7 @@ baA
 baA
 aZf
 baA
-bbF
+dmX
 bbz
 aXq
 bbz
@@ -113193,7 +113128,7 @@ aVU
 aWg
 aZf
 baA
-bbF
+dmX
 bbz
 aXq
 bbz
@@ -113450,7 +113385,7 @@ aTh
 aXz
 aZg
 xRa
-bbF
+dmX
 bbz
 bdv
 bbz
@@ -117074,7 +117009,7 @@ bEH
 bGb
 cBA
 bIU
-bKe
+bGc
 bLj
 bEC
 qlY
@@ -117331,7 +117266,7 @@ bEC
 ydD
 bHv
 bIW
-bKe
+bGc
 vHY
 bEC
 qlY
