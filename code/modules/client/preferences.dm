@@ -359,13 +359,15 @@ GLOBAL_LIST_EMPTY(preferences_datums)
 
 	//SPLURT EDIT - gregnancy
 	/// Does john spaceman's cum actually impregnate people?
-	var/virility = FALSE
+	var/virility = 0
 	/// Can john spaceman get gregnant if all conditions are right? (has a womb and is not on contraceptives)
-	var/fertility = FALSE
+	var/fertility = 0
 	/// Does john spaceman need a cesarian/live birth or will he shit out eggs?
 	var/oviposition = FALSE
 	/// Does john spaceman look like a gluttonous slob if he pregent?
 	var/pregnancy_inflation = FALSE
+
+	var/egg_shell = "chicken"
 	//SPLURT END
 
 /datum/preferences/New(client/C)
@@ -845,11 +847,13 @@ GLOBAL_LIST_EMPTY(preferences_datums)
 			//SPLURT EDIT BEGIN - gregnancy preferences
 			dat += "<td width='220px' height='300px' valign='top'>"
 			dat += "<h3>Pregnancy preferences</h3>"
-			dat += "<b>Can impregnate:</b><a style='display:block;width:100px' href ='?_src_=prefs;preference=virility;task=input'>[virility ? "Enabled" : "Disabled"]</a>"
-			dat += "<b>Can get pregnant:</b><a style='display:block;width:100px' href ='?_src_=prefs;preference=fertility;task=input'>[fertility ? "Enabled" : "Disabled"]</a>"
+			dat += "<b>Chance of impregnation:</b><a style='display:block;width:100px' href ='?_src_=prefs;preference=virility;task=input'>[virility ? virility : "Disabled"]</a>"
+			dat += "<b>Chance of getting pregnant:</b><a style='display:block;width:100px' href ='?_src_=prefs;preference=fertility;task=input'>[fertility ? fertility : "Disabled"]</a>"
 			if(fertility)
 				dat += "<b>Pregnancy type:</b><a style='display:block;width:100px' href ='?_src_=prefs;preference=oviposition;task=input'>[oviposition ? "Oviposition" : "Live Birth"]</a>"
 				dat += "<b>Pregnancy inflation:</b><a style='display:block;width:100px' href ='?_src_=prefs;preference=pregnancy_inflation;task=input'>[pregnancy_inflation ? "Enabled" : "Disabled"]</a>"
+			if(oviposition)
+				dat += "<b>Egg shell:</b><a style='display:block;width:100px' href ='?_src_=prefs;preference=egg_shell;task=input'>[egg_shell]</a>"
 			dat += "</td>"
 			//SPLURT EDIT END
 			dat += APPEARANCE_CATEGORY_COLUMN
@@ -2050,13 +2054,22 @@ GLOBAL_LIST_EMPTY(preferences_datums)
 
 				//SPLURT EDIT BEGIN - gregnancy
 				if("virility")
-					virility = !virility
+					var/viri = input(user, "Set the chance of you impregnating something (set to 0 to disable). \n(0 = minimum, 100 = maximum)", "Character Preference", virility) as num|null
+					if(viri)
+						virility = clamp(viri, 0, 100)
 
 				if("fertility")
-					fertility = !fertility
+					var/fert = input(user, "Set the chance of you getting impregnated (set to 0 to disable). \n(0 = minimum, 100 = maximum)", "Character Preference", fertility) as num|null
+					if(fert)
+						fertility = clamp(fert, 0, 100)
 
 				if("oviposition")
 					oviposition = !oviposition
+
+				if("egg_shell")
+					var/shell = input(user, "Pick a shell for your eggs", "Character Preferences") as null|anything in GLOB.egg_skins
+					if(shell)
+						egg_shell = shell
 
 				if("pregnancy_inflation")
 					pregnancy_inflation = !pregnancy_inflation

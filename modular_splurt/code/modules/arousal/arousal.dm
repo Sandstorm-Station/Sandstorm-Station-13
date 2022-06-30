@@ -19,14 +19,17 @@
 /mob/living/proc/impregnate(mob/living/partner, obj/item/organ/W, baby_type)
 	if(!W)
 		return
-	if(prob(PREGNANCY_CHANCE_ON_EJACULATION))
-		var/can_impregnate = TRUE
-		if(partner?.client?.prefs)
-			can_impregnate = partner.client.prefs.virility
-		var/can_get_pregnant = (client?.prefs?.fertility && !is_type_in_typecache(src.type, GLOB.pregnancy_blocked_mob_typecache))
+	var/can_impregnate = 100
+	if(partner?.client?.prefs)
+		can_impregnate = partner.client.prefs.virility
+	var/can_get_pregnant = (client?.prefs?.fertility && !is_type_in_typecache(src.type, GLOB.pregnancy_blocked_mob_typecache))
+	if(!(can_impregnate || can_get_pregnant))
+		return
 
-		if(can_impregnate && can_get_pregnant)
-			AddComponent(/datum/component/pregnancy, partner, baby_type, W)
+	var/avg = (can_impregnate + client.prefs.fertility) / 2
+
+	if(prob(avg))
+		AddComponent(/datum/component/pregnancy, partner, baby_type, W)
 
 /mob/living/carbon/human/do_climax(datum/reagents/R, atom/target, obj/item/organ/genital/G, spill, cover = FALSE, obj/item/organ/genital/Lgen)
 	if(!G)

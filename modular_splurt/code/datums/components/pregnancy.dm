@@ -193,7 +193,7 @@
 		COOLDOWN_START(src, stage_time, PREGNANCY_STAGE_DURATION)
 
 /datum/component/pregnancy/proc/handle_belly_stuff(mob/living/carbon/human/gregnant)
-	if(!(stage > (max_stage / 2)))
+	if(stage < 2)
 		return
 	var/obj/item/organ/genital/belly/belly = gregnant.getorganslot(ORGAN_SLOT_BELLY)
 	if(belly)
@@ -295,6 +295,9 @@
 
 	var/obj/item/oviposition_egg/eggo = new(carrier)
 
+	eggo.icon_state = carrier.client?.prefs?.egg_shell ? ("egg_" + carrier.client.prefs.egg_shell) : "egg_chicken"
+	eggo.update_appearance()
+
 	if(isorgan(location))
 		var/obj/item/organ/recv = location
 		carrier.visible_message(span_userlove("[carrier] laid an egg!"), \
@@ -340,7 +343,6 @@
 			belly = gregnant.give_genital(/obj/item/organ/genital/belly)
 		else
 			old_belly_size = belly.size
-		belly.size = max(belly.size, 1)
 		belly.update()
 	return TRUE
 
