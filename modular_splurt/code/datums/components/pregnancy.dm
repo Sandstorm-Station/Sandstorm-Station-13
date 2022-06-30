@@ -313,15 +313,15 @@
 
 //not how genetics work but okay
 /datum/component/pregnancy/proc/determine_baby_dna(mob/living/carbon/human/babby)
+	var/datum/dna/rando = new
+	rando.initialize_dna(random_blood_type())
 	if(mother_dna && father_dna)
 		mother_dna.transfer_identity_random(father_dna, babby)
 	else if(mother_dna && !father_dna)
-		mother_dna.transfer_identity(babby)
+		mother_dna.transfer_identity_random(rando, babby)
 	else if(!mother_dna && father_dna)
-		father_dna.transfer_identity(babby)
+		father_dna.transfer_identity_random(rando, babby)
 	else
-		var/datum/dna/rando = new
-		rando.initialize_dna(random_blood_type())
 		rando.transfer_identity(babby)
 
 /datum/component/pregnancy/proc/generic_pragency_start()
