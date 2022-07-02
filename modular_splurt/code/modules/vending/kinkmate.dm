@@ -21,7 +21,8 @@
 		/obj/item/clothing/accessory/ring/syntech/band = 4,
 		/obj/item/clothing/neck/syntech = 4,
 		/obj/item/clothing/neck/syntech/choker = 4,
-		/obj/item/clothing/neck/syntech/collar = 4
+		/obj/item/clothing/neck/syntech/collar = 4,
+		/obj/item/storage/fancy/jellybean_pack = 5
 	)
 	var/list/extra_contraband = list(
 		//Lewd-Clothes
