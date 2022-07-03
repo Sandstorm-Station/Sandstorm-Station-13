@@ -45,5 +45,7 @@
 		return FALSE
 
 	recorded_size += new_size - cur_size
+	if(recorded_size > RESIZE_MACRO || recorded_size < RESIZE_MICRO)
+		recorded_size -= new_size - cur_size
 
 	source.update_size(normal_resize)
