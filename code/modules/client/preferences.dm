@@ -362,8 +362,6 @@ GLOBAL_LIST_EMPTY(preferences_datums)
 	var/virility = 0
 	/// Can john spaceman get gregnant if all conditions are right? (has a womb and is not on contraceptives)
 	var/fertility = 0
-	/// Does john spaceman need a cesarian/live birth or will he shit out eggs?
-	var/oviposition = FALSE
 	/// Does john spaceman look like a gluttonous slob if he pregent?
 	var/pregnancy_inflation = FALSE
 
@@ -850,9 +848,7 @@ GLOBAL_LIST_EMPTY(preferences_datums)
 			dat += "<b>Chance of impregnation:</b><a style='display:block;width:100px' href ='?_src_=prefs;preference=virility;task=input'>[virility ? virility : "Disabled"]</a>"
 			dat += "<b>Chance of getting pregnant:</b><a style='display:block;width:100px' href ='?_src_=prefs;preference=fertility;task=input'>[fertility ? fertility : "Disabled"]</a>"
 			if(fertility)
-				dat += "<b>Pregnancy type:</b><a style='display:block;width:100px' href ='?_src_=prefs;preference=oviposition;task=input'>[oviposition ? "Oviposition" : "Live Birth"]</a>"
 				dat += "<b>Pregnancy inflation:</b><a style='display:block;width:100px' href ='?_src_=prefs;preference=pregnancy_inflation;task=input'>[pregnancy_inflation ? "Enabled" : "Disabled"]</a>"
-			if(oviposition)
 				dat += "<b>Egg shell:</b><a style='display:block;width:100px' href ='?_src_=prefs;preference=egg_shell;task=input'>[egg_shell]</a>"
 			dat += "</td>"
 			//SPLURT EDIT END
@@ -2062,9 +2058,6 @@ GLOBAL_LIST_EMPTY(preferences_datums)
 					var/fert = input(user, "Set the chance of you getting impregnated (set to 0 to disable). \n(0 = minimum, 100 = maximum)", "Character Preference", fertility) as num|null
 					if(fert)
 						fertility = clamp(fert, 0, 100)
-
-				if("oviposition")
-					oviposition = !oviposition
 
 				if("egg_shell")
 					var/shell = input(user, "Pick a shell for your eggs", "Character Preferences") as null|anything in GLOB.egg_skins

@@ -1190,7 +1190,6 @@ SAVEFILE UPDATING/VERSIONING - 'Simplified', or rather, more coder-friendly ~Car
 	//SPLURT EDIT BEGIN - gregnancy
 	S["virile"] >> virility
 	S["fertile"] >> fertility
-	S["oviposition"] >> oviposition
 	S["egg_shell"] >> egg_shell
 	S["pregnancy_inflation"] >> pregnancy_inflation
 	//SPLURT EDIT END
@@ -1389,7 +1388,6 @@ SAVEFILE UPDATING/VERSIONING - 'Simplified', or rather, more coder-friendly ~Car
 	//SPLURT EDIT BEGIN
 	WRITE_FILE(S["virile"], virility)
 	WRITE_FILE(S["fertile"], fertility)
-	WRITE_FILE(S["oviposition"], oviposition)
 	WRITE_FILE(S["egg_shell"], egg_shell)
 	WRITE_FILE(S["pregnancy_inflation"], pregnancy_inflation)
 	WRITE_FILE(S["headshot"], features["headshot_link"])

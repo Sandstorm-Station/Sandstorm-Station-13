@@ -20,8 +20,8 @@
 
 	/// this stores the old belly size in case king ass ripper already had a huge, gluttonous belly
 	var/old_belly_size = 0
-	/// this boolean is for identifying whether this crime against nature is a live birth or oviposition
-	var/oviposition = FALSE
+	/// this boolean is for identifying whether this preg is in the egg state or not
+	var/oviposition = TRUE
 	/// this boolean is for saving whether or not we should inflate the belly if appropriate
 	var/pregnancy_inflation = TRUE
 	/// whether the pregnancy is revealed or not, scanners will reveal this no matter what
@@ -53,7 +53,6 @@
 		mother_dna = new
 		carmom.dna.copy_dna(mother_dna)
 
-	oviposition = gregnant.client?.prefs?.oviposition
 	pregnancy_inflation = gregnant.client?.prefs?.pregnancy_inflation
 
 	if(container_organ)
@@ -72,6 +71,8 @@
 		RegisterSignal(parent, COMSIG_ATOM_ENTERING, .proc/on_entering)
 		RegisterSignal(parent, COMSIG_OBJ_BREAK, .proc/on_obj_break)
 		RegisterSignal(parent, COMSIG_OBJ_WRITTEN_ON, .proc/name_egg)
+		RegisterSignal(parent, COMSIG_PARENT_ATTACKBY, .proc/hatch)
+		RegisterSignal(parent, COMSIG_PARENT_EXAMINE, .proc/eg_status)
 
 /datum/component/pregnancy/UnregisterFromParent()
 	if(carrier)
@@ -79,6 +80,8 @@
 	UnregisterSignal(parent, COMSIG_ATOM_ENTERING)
 	UnregisterSignal(parent, COMSIG_OBJ_BREAK)
 	UnregisterSignal(parent, COMSIG_OBJ_WRITTEN_ON)
+	UnregisterSignal(parent, COMSIG_PARENT_ATTACKBY)
+	UnregisterSignal(parent, COMSIG_PARENT_EXAMINE)
 
 /datum/component/pregnancy/proc/register_carrier()
 	RegisterSignal(carrier, COMSIG_MOB_DEATH, .proc/fetus_mortus)
@@ -132,9 +135,6 @@
 /datum/component/pregnancy/proc/on_climax(datum/source, atom/target, obj/item/organ/genital/sender, obj/item/organ/genital/receiver, spill)
 	SIGNAL_HANDLER
 
-	if(!oviposition)
-		return FALSE
-
 	if(stage < 2)
 		return FALSE
 
@@ -178,7 +178,7 @@
 	if(oviposition)
 		handle_ovi_preg()
 	else
-		handle_preg()
+		handle_incubation()
 
 	if((stage > (max_stage / 2)) && !revealed)
 		revealed = TRUE
@@ -206,60 +206,68 @@
 				belly.size = max(belly.size, 4)
 		belly.update()
 
-/datum/component/pregnancy/proc/handle_preg()
-	if(prob(2) && !isitem(parent))
-		switch(stage)
-			if(2)
-				to_chat(carrier, span_warning("You can feel your belly getting bigger!"))
-			if(3)
-				if(prob(50))
-					to_chat(carrier, span_warning("Oh! The kicking in my belly is getting a bit more intense!"))
-				else
-					to_chat(carrier, span_warning("The kicking is quite intense now!"))
-				carrier.adjustStaminaLoss(20)
-			if(4)
-				to_chat(carrier, span_warning("You feel like you're going into labor very soon! Get ready to give birth!"))
-				carrier.adjustStaminaLoss(50)
+/datum/component/pregnancy/proc/handle_incubation()
+	if(prob(2) && carrier)
+		to_chat(carrier, span_warning("You feel the egg moving a bit inside you!"))
 
-	if(prob(60))
-		return
+/datum/component/pregnancy/proc/hatch(datum/source, obj/item/I, mob/user, params)
+	SIGNAL_HANDLER
+
 	if(stage < max_stage)
 		return
-	if(!isitem(parent))
-		if(prob(50))
-			to_chat(carrier, span_warning("You're going into labor <b>right now!</b>"))
-		else
-			to_chat(carrier, span_userdanger("It hurts! The baby is coming out!"))
-	else
-		if(prob(50))
-			to_chat(carrier, span_warning("Something is moving inside you!"))
-		else
-			to_chat(carrier, span_userdanger("It hurts! Something is trying to come out!"))
 
-	carrier.emote("scream")
+	playsound(parent, 'sound/effects/splat.ogg', 70, TRUE)
+	var/mob/living/babby = new baby_type(get_turf(parent))
+	if(ishuman(babby))
+		determine_baby_dna(babby)
+	INVOKE_ASYNC(GLOBAL_PROC, .proc/offer_control_to_babby, babby, carrier, egg_name)
+	var/obj/item = parent
+	item.forceMove(get_turf(carrier))
+	item.obj_break(MELEE)
+	qdel(src)
 
-	var/can_birth = TRUE
-	if(ishuman(carrier))
-		var/mob/living/carbon/human/human_owner = carrier
-		var/obj/item/bodypart/chest = human_owner.get_bodypart(BODY_ZONE_CHEST)
-		if(LAZYLEN(human_owner.clothingonpart(chest)))
-			can_birth = FALSE
-	if(can_birth)
-		playsound(carrier, 'sound/effects/splat.ogg', 70, TRUE)
-		to_chat(carrier, span_nicegreen("The baby came out!"))
-		carrier.Knockdown(200, TRUE, TRUE)
-		carrier.Stun(200, TRUE, TRUE)
-		carrier.adjustStaminaLoss(200)
-		var/mob/living/babby = new baby_type(get_turf(carrier))
-		if(ishuman(babby))
-			determine_baby_dna(babby)
-		INVOKE_ASYNC(GLOBAL_PROC, .proc/offer_control_to_babby, babby, carrier, egg_name)
-		SEND_SIGNAL(carrier, COMSIG_ADD_MOOD_EVENT, "pregnancy_end", /datum/mood_event/pregnant_positive)
-		if(isitem(parent))
-			var/obj/item = parent
-			item.forceMove(get_turf(carrier))
-			item.obj_break(MELEE)
-		qdel(src)
+/datum/component/pregnancy/proc/eg_status(datum/source, mob/user, list/examine_list)
+	SIGNAL_HANDLER
+
+	if(stage >= max_stage)
+		examine_list += span_notice("\The [parent] seems ready to hatch! You can tap it with something to hatch it")
+
+///datum/component/pregnancy/proc/handle_preg()
+//
+//	if(prob(60))
+//		return
+//	if(stage < max_stage)
+//		return
+//
+//	if(prob(50))
+//		to_chat(carrier, span_warning("Something is moving inside you!"))
+//	else
+//		to_chat(carrier, span_userdanger("It hurts! Something is trying to come out!"))
+//
+//	carrier.emote("scream")
+//
+//	var/can_birth = TRUE
+//	if(ishuman(carrier))
+//		var/mob/living/carbon/human/human_owner = carrier
+//		var/obj/item/bodypart/chest = human_owner.get_bodypart(BODY_ZONE_CHEST)
+//		if(LAZYLEN(human_owner.clothingonpart(chest)))
+//			can_birth = FALSE
+//	if(can_birth)
+//		playsound(carrier, 'sound/effects/splat.ogg', 70, TRUE)
+//		to_chat(carrier, span_nicegreen("The egg hatched!"))
+//		carrier.Knockdown(200, TRUE, TRUE)
+//		carrier.Stun(200, TRUE, TRUE)
+//		carrier.adjustStaminaLoss(200)
+//		var/mob/living/babby = new baby_type(get_turf(carrier))
+//		if(ishuman(babby))
+//			determine_baby_dna(babby)
+//		INVOKE_ASYNC(GLOBAL_PROC, .proc/offer_control_to_babby, babby, carrier, egg_name)
+//		SEND_SIGNAL(carrier, COMSIG_ADD_MOOD_EVENT, "pregnancy_end", /datum/mood_event/pregnant_positive)
+//		if(isitem(parent))
+//			var/obj/item = parent
+//			item.forceMove(get_turf(carrier))
+//			item.obj_break(MELEE)
+//		qdel(src)
 
 /datum/component/pregnancy/proc/handle_ovi_preg()
 	if(stage <= 2)
@@ -292,6 +300,8 @@
 	carrier.Knockdown(200, TRUE, TRUE)
 	carrier.Stun(200, TRUE, TRUE)
 	carrier.adjustStaminaLoss(200)
+
+	SEND_SIGNAL(carrier, COMSIG_ADD_MOOD_EVENT, "pregnancy_end", /datum/mood_event/pregnant_positive)
 
 	var/obj/item/oviposition_egg/eggo = new(carrier)
 
@@ -357,7 +367,7 @@
 /datum/component/pregnancy/proc/fetus_mortus()
 	SIGNAL_HANDLER
 
-	if(!QDELETED(carrier) && get_turf(carrier) && (stage > (max_stage / 2)))
+	if(!QDELETED(carrier) && get_turf(carrier) && (stage >= 2))
 		if(!oviposition)
 			new /obj/effect/gibspawner/generic(get_turf(carrier))
 		else
