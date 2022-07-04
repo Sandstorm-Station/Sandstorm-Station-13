@@ -9,6 +9,15 @@
 	var/max_amount = 50
 	var/timer
 
+/obj/item/implant/aphrodisiac_pump/get_data()
+	var/data = {"
+		<b>Implant Specifications:</b><br>
+		<b>Name:</b> Prudism Treatment Implant<br>
+		<b>Function:</b> Official use is for the treatment of prudism but is frequently abused to make crocin-crazed bimbos and prostitutes.<br>
+		<i>Will currently synthetize [amount]u upon implantation</i><br>
+		"}
+	return data
+
 /obj/item/implant/aphrodisiac_pump/Initialize(mapload)
 	. = ..()
 	amount = base_amount
@@ -40,10 +49,10 @@
 	var/obj/item/implant/aphrodisiac_pump/pump = imp
 
 	if(pump.amount >= pump.max_amount)
-		pump.amount = pump.amount
+		pump.amount = pump.base_amount
 	else
 		pump.amount += 5
-	balloon_alert(user, "Now synthetizing [pump.amount]u.")
+	balloon_alert(user, "Now synthesizing [pump.amount]u.")
 //
 
 // - Hexacrocin -
@@ -51,6 +60,17 @@
 	name = "hexacrocin pumping implant"
 	desc = "A pump that injects a potent aphrodisiac drug into the bloodstream constantly."
 	reagent = /datum/reagent/drug/aphrodisiacplus
+
+/obj/item/implant/aphrodisiac_pump/plus/get_data()
+	var/data = {"
+		<b>Implant Specifications:</b><BR>
+		<b>Name:</b> Severe Prudism Treatment<BR>
+		<b>Function:</b> Official use is for the treatment of severe prudism but is frequently abused to make hexacrocin-crazed bimbos and prostitutes.<BR>
+		<i>Will currently synthetize [amount]u upon implantation</i><br>
+		<hr>
+		<u><b>WARNING: 30u is the overdose threshold, please do not set past that limit without consulting your medical team!</b></u>
+		"}
+	return data
 
 /obj/item/implanter/aphrodisiac_pump/plus
 	name = "implanter (hexacrocin pump)"
