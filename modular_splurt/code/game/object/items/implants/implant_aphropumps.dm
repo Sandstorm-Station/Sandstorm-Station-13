@@ -7,7 +7,6 @@
 	var/base_amount = 5
 	var/amount
 	var/max_amount = 50
-	var/timer
 
 /obj/item/implant/aphrodisiac_pump/get_data()
 	var/data = {"
@@ -24,16 +23,19 @@
 
 /obj/item/implant/aphrodisiac_pump/implant()
 	. = ..()
-	timer = addtimer(CALLBACK(src, .proc/pump), 5 SECONDS, TIMER_STOPPABLE)
+	START_PROCESSING(SSobj, src)
 
-/obj/item/implant/aphrodisiac_pump/removed(source)
+/obj/item/implant/aphrodisiac_pump/removed(source, silent = FALSE, special = 0)
 	. = ..()
-	deltimer(timer)
-	timer = null
+	STOP_PROCESSING(SSobj, src)
 
-/obj/item/implant/aphrodisiac_pump/proc/pump()
+/obj/item/implant/aphrodisiac_pump/proc/pump(amt)
 	if(imp_in && iscarbon(imp_in))
-		imp_in.reagents.add_reagent(reagent, amount)
+		imp_in.reagents.add_reagent(reagent, amt)
+
+/obj/item/implant/aphrodisiac_pump/process()
+	if(imp_in.reagents.get_reagent_amount(reagent) < amount)
+		pump(amount - imp_in.reagents.get_reagent_amount(reagent))
 
 /obj/item/implanter/aphrodisiac_pump
 	name = "implanter (crocin pump)"
@@ -45,8 +47,10 @@
 	imp_type = /obj/item/implant/aphrodisiac_pump
 
 /obj/item/implantcase/aphrodisiac_pump/attack_self(mob/user)
+	if(!imp || !istype(imp, /obj/item/implant/aphrodisiac_pump))
+		return
+	
 	var/obj/item/implant/aphrodisiac_pump/pump = imp
-
 	if(pump.amount >= pump.max_amount)
 		pump.amount = pump.base_amount
 	else
@@ -93,6 +97,7 @@
 /obj/item/storage/box/aphrodisiac_pump/PopulateContents()
 	new /obj/item/implanter(src)
 	new /obj/item/implantcase/aphrodisiac_pump(src)
+
 
 /obj/item/storage/box/aphrodisiac_pump/plus
 	name = "hexacrocin pump box"
