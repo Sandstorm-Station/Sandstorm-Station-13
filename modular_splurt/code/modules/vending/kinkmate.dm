@@ -33,7 +33,8 @@
 		/obj/item/clothing/head/dominatrixcap = 3,
 		/obj/item/mesmetron = 3,
 		/obj/item/dildo/flared/huge = 3,
-		/obj/item/clothing/neck/petcollar/locked/holo = 2
+		/obj/item/clothing/neck/petcollar/locked/holo = 2,
+		/obj/item/storage/box/aphrodisiac_pump/plus = 2
 	)
 	var/list/extra_premium = list(
 		/obj/item/clothing/mask/muzzle/ballgag = 3
