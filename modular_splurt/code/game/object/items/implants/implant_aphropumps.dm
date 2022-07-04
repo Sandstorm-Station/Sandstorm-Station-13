@@ -24,7 +24,7 @@
 
 /obj/item/implant/aphrodisiac_pump/implant()
 	. = ..()
-	timer = addtimer(CALLBACK(src, .proc/pump), 30 SECONDS, TIMER_STOPPABLE)
+	timer = addtimer(CALLBACK(src, .proc/pump), 5 SECONDS, TIMER_STOPPABLE)
 
 /obj/item/implant/aphrodisiac_pump/removed(source)
 	. = ..()
@@ -32,9 +32,8 @@
 	timer = null
 
 /obj/item/implant/aphrodisiac_pump/proc/pump()
-	if(imp_in)
+	if(imp_in && iscarbon(imp_in))
 		imp_in.reagents.add_reagent(reagent, amount)
-
 
 /obj/item/implanter/aphrodisiac_pump
 	name = "implanter (crocin pump)"
