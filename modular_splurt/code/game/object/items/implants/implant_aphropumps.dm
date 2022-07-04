@@ -71,7 +71,7 @@
 		<b>Function:</b> Official use is for the treatment of severe prudism but is frequently abused to make hexacrocin-crazed bimbos and prostitutes.<BR>
 		<i>Will currently synthetize [amount]u upon implantation</i><br>
 		<hr>
-		<u><b>WARNING: 30u is the overdose threshold, please do not set past that limit without consulting your medical team!</b></u>
+		<u><b>WARNING: 20u is the overdose threshold, please do not set past that limit without consulting your medical team!</b></u>
 		"}
 	return data
 
