@@ -111,19 +111,17 @@
 /datum/component/pregnancy/PreTransfer()
 	if(carrier)
 		generic_pragency_end()
-	UnregisterFromParent()
 	oviposition = FALSE
+
+/datum/component/pregnancy/PostTransfer()
 	carrier = null
 	container = null
 	egg_name = null
 
-/datum/component/pregnancy/PostTransfer()
 	if(isliving(parent))
 		carrier = parent
-		RegisterWithParent()
 	else if(isitem(parent))
 		max_stage += 1
-		RegisterWithParent()
 	else
 		return COMPONENT_INCOMPATIBLE
 
