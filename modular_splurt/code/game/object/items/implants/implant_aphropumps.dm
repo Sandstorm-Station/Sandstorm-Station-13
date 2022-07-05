@@ -87,7 +87,7 @@
 
 /obj/item/storage/box/aphrodisiac_pump
 	name = "crocin pump box"
-	desc = "Comes with an implanter and a implant case for quick application!"
+	desc = "Comes with an implanter and an implant case for quick application!"
 	icon = 'modular_sand/icons/obj/fleshlight.dmi'
 	icon_state = "box"
 
