@@ -222,7 +222,7 @@
 		determine_baby_dna(babby)
 	INVOKE_ASYNC(GLOBAL_PROC, .proc/offer_control_to_babby, babby, carrier, egg_name)
 	var/obj/item = parent
-	item.forceMove(get_turf(carrier))
+	item.forceMove(get_turf(parent))
 	item.obj_break(MELEE)
 	qdel(src)
 
@@ -323,16 +323,14 @@
 
 //not how genetics work but okay
 /datum/component/pregnancy/proc/determine_baby_dna(mob/living/carbon/human/babby)
-	var/datum/dna/rando = new
-	rando.initialize_dna(random_blood_type())
 	if(mother_dna && father_dna)
 		mother_dna.transfer_identity_random(father_dna, babby)
 	else if(mother_dna && !father_dna)
-		mother_dna.transfer_identity_random(rando, babby)
+		mother_dna.transfer_identity(babby)
 	else if(!mother_dna && father_dna)
-		father_dna.transfer_identity_random(rando, babby)
+		father_dna.transfer_identity(babby)
 	else
-		rando.transfer_identity(babby)
+		babby?.dna?.initialize_dna(random_blood_type())
 
 /datum/component/pregnancy/proc/generic_pragency_start()
 	if(ishuman(carrier))
