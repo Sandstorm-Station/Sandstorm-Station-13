@@ -88,6 +88,12 @@
 /obj/item/storage/box/aphrodisiac_pump
 	name = "crocin pump box"
 	desc = "Comes with an implanter and a implant case for quick application!"
+	icon = 'modular_sand/icons/obj/fleshlight.dmi'
+	icon_state = "box"
+
+/obj/item/storage/box/aphrodisiac_pump/examine(mob/user)
+	. = ..()
+	. += "<span class='notice'>Click the implant case while with the implant inside to change the desired dosage amounts.</span>"
 
 /obj/item/storage/box/aphrodisiac_pump/ComponentInitialize()
 	. = ..()
@@ -98,10 +104,8 @@
 	new /obj/item/implanter(src)
 	new /obj/item/implantcase/aphrodisiac_pump(src)
 
-
 /obj/item/storage/box/aphrodisiac_pump/plus
 	name = "hexacrocin pump box"
-	desc = "Comes with an implanter and a implant case for quick application!"
 
 /obj/item/storage/box/aphrodisiac_pump/plus/PopulateContents()
 	new /obj/item/implanter(src)
