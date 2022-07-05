@@ -2051,13 +2051,11 @@ GLOBAL_LIST_EMPTY(preferences_datums)
 				//SPLURT EDIT BEGIN - gregnancy
 				if("virility")
 					var/viri = input(user, "Set the chance of you impregnating something (set to 0 to disable). \n(0 = minimum, 100 = maximum)", "Character Preference", virility) as num|null
-					if(viri)
-						virility = clamp(viri, 0, 100)
+					virility = clamp(viri, 0, 100)
 
 				if("fertility")
 					var/fert = input(user, "Set the chance of you getting impregnated (set to 0 to disable). \n(0 = minimum, 100 = maximum)", "Character Preference", fertility) as num|null
-					if(fert)
-						fertility = clamp(fert, 0, 100)
+					fertility = clamp(fert, 0, 100)
 
 				if("egg_shell")
 					var/shell = input(user, "Pick a shell for your eggs", "Character Preferences") as null|anything in GLOB.egg_skins

@@ -23,7 +23,7 @@
 	if(partner?.client?.prefs)
 		can_impregnate = partner.client.prefs.virility
 	var/can_get_pregnant = (client?.prefs?.fertility && !is_type_in_typecache(src.type, GLOB.pregnancy_blocked_mob_typecache))
-	if(!(can_impregnate || can_get_pregnant))
+	if(!(can_impregnate && can_get_pregnant))
 		return
 
 	var/avg = (can_impregnate + client.prefs.fertility) / 2

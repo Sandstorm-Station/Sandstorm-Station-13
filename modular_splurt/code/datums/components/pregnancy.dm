@@ -161,11 +161,11 @@
 		carrier = preg_container.owner
 		container = preg_container
 		pregnancy_inflation = carrier.client?.prefs?.pregnancy_inflation
-		RegisterWithParent()
+		register_carrier()
 		generic_pragency_start()
 	else if(carrier)
 		generic_pragency_end()
-		UnregisterFromParent()
+		unregister_carrier()
 		carrier = null
 		container = null
 
