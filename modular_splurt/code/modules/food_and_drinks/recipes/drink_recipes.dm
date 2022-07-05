@@ -47,39 +47,48 @@
 /datum/chemical_reaction/isloation_cell
 	name = "Isolation Cell"
 	id = /datum/reagent/consumable/ethanol/isloation_cell
-	results = list(/datum/reagent/consumable/ethanol/isloation_cell = 50)
+	results = list(/datum/reagent/consumable/ethanol/isloation_cell = 5)
 	required_reagents = list(
-		/datum/reagent/drug/aphrodisiac = 10,
-		/datum/reagent/medicine/morphine = 20,
-		/datum/reagent/consumable/ethanol/hippies_delight = 20
+		/datum/reagent/drug/aphrodisiac = 1,
+		/datum/reagent/medicine/synaptizine = 2,
+		/datum/reagent/consumable/ethanol/hippies_delight = 2
+	)
+
+/datum/chemical_reaction/isloation_cell/morphine
+	id = /datum/reagent/consumable/ethanol/isloation_cell/morphine
+	results = list(/datum/reagent/consumable/ethanol/isloation_cell/morphine = 5)
+	required_reagents = list(
+		/datum/reagent/drug/aphrodisiac = 1,
+		/datum/reagent/medicine/morphine = 2,
+		/datum/reagent/consumable/ethanol/hippies_delight = 2
 	)
 
 /datum/chemical_reaction/chemical_ex
 	name = "Chemical Ex"
 	id = /datum/reagent/consumable/ethanol/chemical_ex
-	results = list(/datum/reagent/consumable/ethanol/chemical_ex = 50)
+	results = list(/datum/reagent/consumable/ethanol/chemical_ex = 5)
 	required_reagents = list(
-		/datum/reagent/drug/aphrodisiacplus = 10,
-		/datum/reagent/medicine/morphine = 20,
-		/datum/reagent/fermi/enthrall = 20
+		/datum/reagent/drug/aphrodisiacplus = 1,
+		/datum/reagent/medicine/morphine = 2,
+		/datum/reagent/fermi/enthrall = 2
 	)
 
 /datum/chemical_reaction/heart_of_gold
 	name = "Heart Of Gold"
 	id = /datum/reagent/consumable/ethanol/heart_of_gold
-	results = list(/datum/reagent/consumable/ethanol/heart_of_gold = 50)
+	results = list(/datum/reagent/consumable/ethanol/heart_of_gold = 10)
 	required_reagents = list(
-		/datum/reagent/consumable/ethanol/jack_rose = 20,
-		/datum/reagent/consumable/peachjuice = 15,
-		/datum/reagent/consumable/pineapplejuice = 15
+		/datum/reagent/consumable/ethanol/jack_rose = 4,
+		/datum/reagent/consumable/peachjuice = 3,
+		/datum/reagent/consumable/pineapplejuice = 3
 	)
 
 /datum/chemical_reaction/moth_in_chief
 	name = "Moth in Chief"
 	id = /datum/reagent/consumable/ethanol/moth_in_chief
-	results = list(/datum/reagent/consumable/ethanol/moth_in_chief = 45)
+	results = list(/datum/reagent/consumable/ethanol/moth_in_chief = 3)
 	required_reagents = list(
-		/datum/reagent/consumable/ethanol/commander_and_chief = 15,
-		/datum/reagent/mutationtoxin/insect = 15,
-		/datum/reagent/drug/copium = 15
+		/datum/reagent/consumable/ethanol/commander_and_chief = 1,
+		/datum/reagent/mutationtoxin/insect = 1,
+		/datum/reagent/drug/copium = 1
 	)
