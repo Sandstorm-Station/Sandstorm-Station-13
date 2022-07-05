@@ -1190,7 +1190,8 @@ SAVEFILE UPDATING/VERSIONING - 'Simplified', or rather, more coder-friendly ~Car
 	//SPLURT EDIT BEGIN - gregnancy
 	S["virile"] >> virility
 	S["fertile"] >> fertility
-	S["egg_shell"] >> egg_shell
+	if(S["egg_shell"])
+		S["egg_shell"] >> egg_shell
 	S["pregnancy_inflation"] >> pregnancy_inflation
 	//SPLURT EDIT END
 
