@@ -159,6 +159,8 @@
 				src.add_overlay("pai-question")
 			if(13)
 				src.add_overlay("pai-sunglasses")
+			if(14)
+				src.add_overlay("pai-mal-0")
 
 /obj/item/paicard/proc/alertUpdate()
 	visible_message("<span class ='info'>[src] flashes a message across its screen, \"Additional personalities available for download.\"", "<span class='notice'>[src] bleeps electronically.</span>")
