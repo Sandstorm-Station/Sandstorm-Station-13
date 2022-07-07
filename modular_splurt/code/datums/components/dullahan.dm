@@ -69,5 +69,5 @@
 
 /datum/species/dullahan/on_species_gain(mob/living/carbon/human/H, datum/species/old_species)
 	. = ..()
-	if(H.dna.features["neckfire"] && H.dna.features["neckfire_color"])
+	if(H.dna.features["neckfire"] && !istype(H, /mob/living/carbon/human/dummy))
 		H.AddComponent(/datum/component/neckfire, H.dna.features["neckfire_color"])
