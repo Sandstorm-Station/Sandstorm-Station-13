@@ -99,3 +99,5 @@
 	shape = D.features["cock_shape"]
 	prev_length = length
 	toggle_visibility(D.features["cock_visibility"], FALSE)
+	if(D.features["cock_stuffing"])
+		toggle_visibility(GEN_ALLOW_EGG_STUFFING, FALSE)

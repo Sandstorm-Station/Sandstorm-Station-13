@@ -69,3 +69,5 @@
 	fluid_mult = D.features["balls_cum_mult"]
 	fluid_efficiency = D.features["balls_efficiency"]
 	toggle_visibility(D.features["balls_visibility"], FALSE)
+	if(D.features["balls_stuffing"])
+		toggle_visibility(GEN_ALLOW_EGG_STUFFING, FALSE)
