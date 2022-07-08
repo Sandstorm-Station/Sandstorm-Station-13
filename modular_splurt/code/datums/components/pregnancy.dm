@@ -18,8 +18,7 @@
 	var/max_stage = PREGNANCY_STAGES
 	COOLDOWN_DECLARE(stage_time)
 
-	/// this stores the old belly size in case king ass ripper already had a huge, gluttonous belly
-	var/old_belly_size = 0
+	var/added_belly_size = 0
 	/// this boolean is for identifying whether this preg is in the egg state or not
 	var/oviposition = TRUE
 	/// this boolean is for saving whether or not we should inflate the belly if appropriate
@@ -170,9 +169,6 @@
 /datum/component/pregnancy/proc/handle_life(seconds)
 	SIGNAL_HANDLER
 
-	if(ishuman(carrier) && pregnancy_inflation)
-		handle_belly_stuff(carrier)
-
 	if(oviposition)
 		handle_ovi_preg()
 	else
@@ -182,30 +178,26 @@
 		revealed = TRUE
 		carrier.apply_status_effect(/datum/status_effect/pregnancy)
 
-	if(stage > 3 && ishuman(carrier))
+	if(stage > 3 && ishuman(carrier) && oviposition)
 		SEND_SIGNAL(carrier, COMSIG_ADD_MOOD_EVENT, "pregnancy", /datum/mood_event/pregnant_negative)
 
 	if(COOLDOWN_FINISHED(src, stage_time))
 		stage += 1
 		stage = min(stage, max_stage)
+		if(ishuman(carrier) && pregnancy_inflation && stage >= 2)
+			handle_belly_stuff(carrier)
 		COOLDOWN_START(src, stage_time, PREGNANCY_STAGE_DURATION)
 
 /datum/component/pregnancy/proc/handle_belly_stuff(mob/living/carbon/human/gregnant)
-	if(stage < 2)
-		return
 	var/obj/item/organ/genital/belly/belly = gregnant.getorganslot(ORGAN_SLOT_BELLY)
-	if(belly)
-		switch(stage)
-			if(2)
-				belly.size = max(belly.size, 2)
-			if(3)
-				belly.size = max(belly.size, 3)
-			if(4)
-				belly.size = max(belly.size, 4)
-		belly.update()
+	if(!belly)
+		return
+	if(added_belly_size < 4)
+		added_belly_size += 1
+		belly.modify_size(1)
 
 /datum/component/pregnancy/proc/handle_incubation()
-	if(prob(2) && carrier)
+	if(carrier && prob(2))
 		to_chat(carrier, span_warning("You feel the egg moving a bit inside you!"))
 
 /datum/component/pregnancy/proc/hatch(datum/source, obj/item/I, mob/user, params)
@@ -272,13 +264,12 @@
 		if(stage == 2 && prob(2))
 			to_chat(carrier, span_notice("You feel something pressing lightly inside"))
 		return
-
-	if(prob(50))
-		to_chat(carrier, span_warning("Something presses hard against your anus! It's probably your egg!"))
-	else
-		to_chat(carrier, span_warning("You REALLY need to get this egg out!"))
-
-	carrier.emote("scream")
+	if(prob(10))
+		if(prob(50))
+			to_chat(carrier, span_warning("Something presses hard against your anus! It's probably your egg!"))
+		else
+			to_chat(carrier, span_warning("You REALLY need to get this egg out!"))
+		carrier.emote("scream")
 
 	lay_eg(get_turf(carrier))
 
@@ -288,10 +279,9 @@
 		if(!recv.owner)
 			return FALSE
 
-	if(ishuman(carrier))
-		var/mob/living/carbon/human/human_owner = carrier
-		var/obj/item/bodypart/chest = human_owner.get_bodypart(BODY_ZONE_CHEST)
-		if(LAZYLEN(human_owner.clothingonpart(chest)))
+	if(container && isgenital(container))
+		var/obj/item/organ/genital/gen = container
+		if(!gen.is_exposed())
 			return FALSE
 
 	playsound(carrier, 'sound/effects/splat.ogg', 70, TRUE)
@@ -331,6 +321,8 @@
 		babby?.dna?.initialize_dna(random_blood_type())
 
 /datum/component/pregnancy/proc/generic_pragency_start()
+	if(revealed)
+		carrier.apply_status_effect(/datum/status_effect/pregnancy)
 	if(ishuman(carrier))
 		human_pragency_start(carrier)
 	ADD_TRAIT(carrier, TRAIT_PREGNANT, PREGNANCY_TRAIT)
@@ -347,17 +339,15 @@
 		var/obj/item/organ/genital/belly/belly = gregnant.getorganslot(ORGAN_SLOT_BELLY)
 		if(!belly)
 			belly = gregnant.give_genital(/obj/item/organ/genital/belly)
-		else
-			old_belly_size = belly.size
-		belly.update()
+		if(added_belly_size > 0)
+			belly.modify_size(added_belly_size)
 	return TRUE
 
 /datum/component/pregnancy/proc/human_pragency_end(mob/living/carbon/human/gregnant)
 	//get rid of king ass ripper belly
 	var/obj/item/organ/genital/belly/belly = gregnant.getorganslot(ORGAN_SLOT_BELLY)
 	if(belly && pregnancy_inflation)
-		belly.size = 0
-		belly.update()
+		belly.modify_size(-added_belly_size)
 	SEND_SIGNAL(gregnant, COMSIG_CLEAR_MOOD_EVENT, "pregnancy")
 
 /datum/component/pregnancy/proc/fetus_mortus()
