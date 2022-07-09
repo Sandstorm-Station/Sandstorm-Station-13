@@ -98,10 +98,20 @@
 	glass_name = "Isolation Cell"
 	glass_desc = "Ice cubes in a padded Cell"
 
-
 /datum/reagent/consumable/ethanol/isloation_cell/on_mob_life(mob/living/carbon/C)
 	. = ..()
-	C.reagents.add_reagent_list(list(/datum/reagent/drug/aphrodisiac = 1, /datum/reagent/medicine/morphine = 1))
+	if(!(current_cycle % 10)) //Every 10 cycles
+		C.reagents.add_reagent(/datum/reagent/drug/aphrodisiac, 2)
+
+/datum/reagent/consumable/ethanol/isloation_cell/morphine
+	description = "It has a distinct, sour smell, much like morphine."
+	taste_description = "cloth dissolved in sulphuric acid. Something feels off about it."
+	glass_desc = "It has a distinct, sour smell, much like morphine."
+
+/datum/reagent/consumable/ethanol/isloation_cell/morphine/on_mob_life(mob/living/carbon/C)
+	. = ..()
+	if(!(current_cycle % 10)) //Every 10 cycles
+		C.reagents.add_reagent_list(list(/datum/reagent/medicine/morphine = 2, /datum/reagent/consumable/ethanol/hippies_delight = 1))
 
 /datum/reagent/consumable/ethanol/chemical_ex
 	name = "Chemical Ex"
@@ -116,7 +126,8 @@
 
 /datum/reagent/consumable/ethanol/chemical_ex/on_mob_life(mob/living/carbon/C)
 	. = ..()
-	C.reagents.add_reagent_list(list(/datum/reagent/drug/aphrodisiacplus = 1, /datum/reagent/medicine/morphine = 1, /datum/reagent/fermi/enthrall = 1))
+	if(!(current_cycle % 10)) //Every 10 cycles
+		C.reagents.add_reagent_list(list(/datum/reagent/drug/aphrodisiacplus = 2, /datum/reagent/medicine/morphine = 4, /datum/reagent/fermi/enthrall = 1))
 
 /datum/reagent/consumable/ethanol/heart_of_gold
 	name = "Heart Of Gold"
@@ -132,7 +143,7 @@
 
 /datum/reagent/consumable/ethanol/moth_in_chief
 	name = "Moth in Chief"
-	description = "A simole yet elegant drink, inspires confidence in even the most pessimistic of men. The mantle rests well upon your shoulders."
+	description = "A simple yet elegant drink, inspires confidence in even the most pessimistic of men. The mantle rests well upon your shoulders."
 	boozepwr = 50
 	color = "#0919be"
 	quality = DRINK_FANTASTIC
@@ -140,4 +151,4 @@
 	glass_icon = 'modular_splurt/icons/obj/drinks.dmi'
 	glass_icon_state = "mothinchief"
 	glass_name = "Moth in Chief"
-	glass_desc = "A simole yet elegant drink, inspires confidence in even the most pessimistic of men. The mantle rests well upon your shoulders."
+	glass_desc = "A simple yet elegant drink, inspires confidence in even the most pessimistic of men. The mantle rests well upon your shoulders."
