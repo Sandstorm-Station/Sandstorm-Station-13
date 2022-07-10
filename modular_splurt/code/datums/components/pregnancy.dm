@@ -12,6 +12,9 @@
 	var/datum/dna/father_dna
 	var/datum/dna/mother_dna
 
+	/// for cloning eggs
+	var/datum/dna/forced_dna
+
 	var/egg_name
 
 	var/stage = 0
@@ -26,7 +29,7 @@
 	/// whether the pregnancy is revealed or not, scanners will reveal this no matter what
 	var/revealed = FALSE
 
-/datum/component/pregnancy/Initialize(mob/living/_father, _baby_type = /mob/living/carbon/human, obj/item/organ/container_organ)
+/datum/component/pregnancy/Initialize(mob/living/_father, _baby_type = /mob/living/carbon/human, obj/item/organ/container_organ, mob/living/carbon/clone_target)
 	if(!isliving(parent))
 		return COMPONENT_INCOMPATIBLE
 
@@ -36,21 +39,25 @@
 	if(gregnant.stat >= DEAD)
 		return COMPONENT_INCOMPATIBLE
 
-	if(ispath(_baby_type, /mob/living))
-		baby_type = _baby_type
+	if(istype(clone_target))
+		forced_dna = new
+		clone_target.dna.copy_dna(forced_dna)
 	else
-		stack_trace("Invalid baby_type given to pregnancy component!")
-		return COMPONENT_INCOMPATIBLE
+		if(ispath(_baby_type, /mob/living))
+			baby_type = _baby_type
+		else
+			stack_trace("Invalid baby_type given to pregnancy component!")
+			return COMPONENT_INCOMPATIBLE
 
-	if(iscarbon(_father))
-		var/mob/living/carbon/cardad = _father
-		father_dna = new
-		cardad.dna.copy_dna(father_dna)
+		if(iscarbon(_father))
+			var/mob/living/carbon/cardad = _father
+			father_dna = new
+			cardad.dna.copy_dna(father_dna)
 
-	if(iscarbon(parent))
-		var/mob/living/carbon/carmom = parent
-		mother_dna = new
-		carmom.dna.copy_dna(mother_dna)
+		if(iscarbon(parent))
+			var/mob/living/carbon/carmom = parent
+			mother_dna = new
+			carmom.dna.copy_dna(mother_dna)
 
 	pregnancy_inflation = gregnant.client?.prefs?.pregnancy_inflation
 
@@ -312,14 +319,15 @@
 
 //not how genetics work but okay
 /datum/component/pregnancy/proc/determine_baby_dna(mob/living/carbon/human/babby)
+	if(forced_dna)
+		forced_dna.transfer_identity(babby)
+		return
 	if(mother_dna && father_dna)
 		mother_dna.transfer_identity_random(father_dna, babby)
 	else if(mother_dna && !father_dna)
-		mother_dna.transfer_identity(babby)
+		mother_dna.transfer_identity_random(babby.dna, babby)
 	else if(!mother_dna && father_dna)
-		father_dna.transfer_identity(babby)
-	else
-		babby?.dna?.initialize_dna(random_blood_type())
+		father_dna.transfer_identity_random(babby.dna, babby)
 
 /datum/component/pregnancy/proc/generic_pragency_start()
 	if(revealed)
