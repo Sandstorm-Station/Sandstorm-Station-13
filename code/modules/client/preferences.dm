@@ -2827,17 +2827,17 @@ GLOBAL_LIST_EMPTY(preferences_datums)
 						features["belly_visibility"] = n_vis
 
 				if("cock_stuffing")
-					features["cock_stuffing"] = !features["cock_stuffing"]
+					features["cock_stuffing"] = isnull(features["cock_stuffing"]) ? TRUE : !features["cock_stuffing"]
 				if("balls_stuffing")
-					features["belly_stuffing"] = !features["belly_stuffing"]
+					features["belly_stuffing"] = isnull(features["belly_stuffing"]) ? TRUE : !features["belly_stuffing"]
 				if("vag_stuffing")
-					features["vag_stuffing"] = !features["vag_stuffing"]
+					features["vag_stuffing"] = isnull(features["vag_stuffing"]) ? TRUE : !features["vag_stuffing"]
 				if("breasts_stuffing")
-					features["breasts_stuffing"] = !features["breasts_stuffing"]
+					features["breasts_stuffing"] = isnull(features["breasts_stuffing"]) ? TRUE : !features["breasts_stuffing"]
 				if("butt_stuffing")
-					features["butt_stuffing"] = !features["butt_stuffing"]
+					features["butt_stuffing"] = isnull(features["butt_stuffing"]) ? TRUE : !features["butt_stuffing"]
 				if("belly_stuffing")
-					features["belly_stuffing"] = !features["belly_stuffing"]
+					features["belly_stuffing"] = isnull(features["belly_stuffing"]) ? TRUE : !features["belly_stuffing"]
 
 				if("ooccolor")
 					var/new_ooccolor = input(user, "Choose your OOC colour:", "Game Preference",ooccolor) as color|null
