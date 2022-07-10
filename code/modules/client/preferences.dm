@@ -233,7 +233,10 @@ GLOBAL_LIST_EMPTY(preferences_datums)
 "meat_type" = "Mammalian",
 "body_model" = MALE,
 "body_size" = RESIZE_DEFAULT_SIZE,
-"color_scheme" = OLD_CHARACTER_COLORING
+"color_scheme" = OLD_CHARACTER_COLORING,
+
+"neckfire" = FALSE,
+"neckfire_color" = "ffffff"
 )
 
 
@@ -976,6 +979,16 @@ GLOBAL_LIST_EMPTY(preferences_datums)
 					dat += "<b>Belly Visibility:</b><a style='display:block;width:100px' href='?_src_=prefs;preference=belly_visibility;task=input'>[features["belly_visibility"]]</a>"
 					dat += "<b>Egg Stuffing:</b><a style='display:block;width:50px' href='?_src_=prefs;preference=belly_stuffing'>[features["belly_stuffing"] == TRUE ? "Yes" : "No"]</a>"
 				dat += "</td>"
+				if(pref_species.id == SPECIES_DULLAHAN)
+					dat += APPEARANCE_CATEGORY_COLUMN
+				
+					dat += "<h3>Neckfire</h3>"
+					dat += "<a style='display:block;width:50px' href='?_src_=prefs;preference=has_neckfire;task=input'>[features["neckfire"] ? "Yes" : "No"]</a>"
+					if(features["neckfire"])
+						dat += "<b>Color:</b></a><BR>"
+						dat += "<span style='border: 1px solid #161616; background-color: #[features["neckfire_color"]];'><font color='[color_hex2num(features["neckfire_color"]) < 200 ? "FFFFFF" : "000000"]'>#[features["neckfire_color"]]</font></span><a href='?_src_=prefs;preference=has_neckfire_color;task=input'>Change</a><br>"
+
+					dat += "</td>"
 			dat += "</td>"
 			dat += "</tr></table>"
 
@@ -2286,6 +2299,19 @@ GLOBAL_LIST_EMPTY(preferences_datums)
 				if("mismatched_markings")
 					show_mismatched_markings = !show_mismatched_markings
 
+				if("has_neckfire")
+					features["neckfire"] = !features["neckfire"]
+				if("has_neckfire_color")
+					var/new_neckfire_color = input(user, "Choose your fire's color:", "Character Preference", "#"+features["neckfire_color"]) as color|null
+					if(new_neckfire_color)
+						var/temp_hsv = RGBtoHSV(new_neckfire_color)
+						if(new_neckfire_color == "#000000")
+							features["neckfire_color"] = pref_species.default_color
+						else if(ReadHSV(temp_hsv)[3] >= ReadHSV(MINIMUM_MUTANT_COLOR)[3])
+							features["neckfire_color"] = sanitize_hexcolor(new_neckfire_color, 6)
+						else
+							to_chat(user,"<span class='danger'>Invalid color. Your color is not bright enough.</span>")
+					
 				if("ipc_screen")
 					var/new_ipc_screen
 					new_ipc_screen = input(user, "Choose your character's screen:", "Character Preference") as null|anything in GLOB.ipc_screens_list

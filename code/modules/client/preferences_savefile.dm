@@ -761,7 +761,11 @@ SAVEFILE UPDATING/VERSIONING - 'Simplified', or rather, more coder-friendly ~Car
 "meat_type" = "Mammalian",
 "body_model" = MALE,
 "body_size" = RESIZE_DEFAULT_SIZE,
-"color_scheme" = OLD_CHARACTER_COLORING)
+"color_scheme" = OLD_CHARACTER_COLORING,
+
+"neckfire" = FALSE,
+"neckfire_color" = "ffffff"
+)
 
 
 	S.cd = "/"
@@ -968,6 +972,8 @@ SAVEFILE UPDATING/VERSIONING - 'Simplified', or rather, more coder-friendly ~Car
 
 	//SPLURT edit
 	S["feature_naked_flavor_text"] >> features["naked_flavor_text"]
+	S["feature_neckfire"] >> features["neckfire"]
+	S["feature_neckfire_color"] >> features["neckfire_color"]
 	//end
 	// Barks
 	S["bark_id"] >> bark_id
@@ -1332,6 +1338,9 @@ SAVEFILE UPDATING/VERSIONING - 'Simplified', or rather, more coder-friendly ~Car
 	WRITE_FILE(S["feature_belly_size"], features["belly_size"])
 	WRITE_FILE(S["feature_belly_visibility"], features["belly_visibility"])
 	WRITE_FILE(S["feature_belly_stuffing"], features["belly_stuffing"])
+
+	WRITE_FILE(S["feature_neckfire"], features["neckfire"])
+	WRITE_FILE(S["feature_neckfire_color"], features["neckfire_color"])
 
 	WRITE_FILE(S["feature_ooc_notes"], features["ooc_notes"])
 
