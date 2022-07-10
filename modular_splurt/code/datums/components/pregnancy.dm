@@ -282,7 +282,7 @@
 	if(container && isgenital(container))
 		var/obj/item/organ/genital/gen = container
 		if(!gen.is_exposed())
-			if(gen.linked_organ && !linked_organ.is_exposed())
+			if(gen.linked_organ && !gen.linked_organ.is_exposed())
 				return FALSE
 
 	playsound(carrier, 'sound/effects/splat.ogg', 70, TRUE)
