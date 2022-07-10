@@ -315,11 +315,9 @@
 	if(mother_dna && father_dna)
 		mother_dna.transfer_identity_random(father_dna, babby)
 	else if(mother_dna && !father_dna)
-		mother_dna.transfer_identity(babby)
+		mother_dna.transfer_identity_random(babby.dna, babby)
 	else if(!mother_dna && father_dna)
-		father_dna.transfer_identity(babby)
-	else
-		babby?.dna?.initialize_dna(random_blood_type())
+		father_dna.transfer_identity_random(babby.dna, babby)
 
 /datum/component/pregnancy/proc/generic_pragency_start()
 	if(revealed)
