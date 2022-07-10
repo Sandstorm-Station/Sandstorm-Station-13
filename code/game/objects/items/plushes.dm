@@ -722,7 +722,7 @@ GLOBAL_LIST_INIT(valid_plushie_paths, valid_plushie_paths())
 	attack_verb = list("beeped", "booped", "pinged")
 	squeak_override = list('sound/machines/beep.ogg' = 1)
 
-/obj/item/toy/plush/
+/obj/item/toy/plush/chaotic_toaster
 	name = "Chaotic toaster"
 	desc = "You arent sure if this plushie want a hug, or harvest your organs, or both"
 	icon_state = "chaotic_toaster"
