@@ -981,7 +981,7 @@ GLOBAL_LIST_EMPTY(preferences_datums)
 				dat += "</td>"
 				if(pref_species.id == SPECIES_DULLAHAN)
 					dat += APPEARANCE_CATEGORY_COLUMN
-				
+
 					dat += "<h3>Neckfire</h3>"
 					dat += "<a style='display:block;width:50px' href='?_src_=prefs;preference=has_neckfire;task=input'>[features["neckfire"] ? "Yes" : "No"]</a>"
 					if(features["neckfire"])
@@ -2311,7 +2311,7 @@ GLOBAL_LIST_EMPTY(preferences_datums)
 							features["neckfire_color"] = sanitize_hexcolor(new_neckfire_color, 6)
 						else
 							to_chat(user,"<span class='danger'>Invalid color. Your color is not bright enough.</span>")
-					
+
 				if("ipc_screen")
 					var/new_ipc_screen
 					new_ipc_screen = input(user, "Choose your character's screen:", "Character Preference") as null|anything in GLOB.ipc_screens_list
@@ -2852,19 +2852,6 @@ GLOBAL_LIST_EMPTY(preferences_datums)
 					if(n_vis)
 						features["belly_visibility"] = n_vis
 
-				if("cock_stuffing")
-					features["cock_stuffing"] = isnull(features["cock_stuffing"]) ? TRUE : !features["cock_stuffing"]
-				if("balls_stuffing")
-					features["belly_stuffing"] = isnull(features["belly_stuffing"]) ? TRUE : !features["belly_stuffing"]
-				if("vag_stuffing")
-					features["vag_stuffing"] = isnull(features["vag_stuffing"]) ? TRUE : !features["vag_stuffing"]
-				if("breasts_stuffing")
-					features["breasts_stuffing"] = isnull(features["breasts_stuffing"]) ? TRUE : !features["breasts_stuffing"]
-				if("butt_stuffing")
-					features["butt_stuffing"] = isnull(features["butt_stuffing"]) ? TRUE : !features["butt_stuffing"]
-				if("belly_stuffing")
-					features["belly_stuffing"] = isnull(features["belly_stuffing"]) ? TRUE : !features["belly_stuffing"]
-
 				if("ooccolor")
 					var/new_ooccolor = input(user, "Choose your OOC colour:", "Game Preference",ooccolor) as color|null
 					if(new_ooccolor)
@@ -3203,7 +3190,18 @@ GLOBAL_LIST_EMPTY(preferences_datums)
 					user.client.view_size.setDefault(getScreenSize(widescreenpref))
 				if("long_strip_menu")
 					long_strip_menu = !long_strip_menu
-
+				if("cock_stuffing")
+					features["cock_stuffing"] = !features["cock_stuffing"]
+				if("balls_stuffing")
+					features["belly_stuffing"] = !features["belly_stuffing"]
+				if("vag_stuffing")
+					features["vag_stuffing"] = !features["vag_stuffing"]
+				if("breasts_stuffing")
+					features["breasts_stuffing"] = !features["breasts_stuffing"]
+				if("butt_stuffing")
+					features["butt_stuffing"] = !features["butt_stuffing"]
+				if("belly_stuffing")
+					features["belly_stuffing"] = !features["belly_stuffing"]
 				if("pixel_size")
 					switch(pixel_size)
 						if(PIXEL_SCALING_AUTO)

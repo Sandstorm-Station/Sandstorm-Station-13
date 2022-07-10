@@ -227,6 +227,12 @@
 		"vag_visibility"	= GEN_VISIBLE_NO_UNDIES,
 		"butt_visibility"	= GEN_VISIBLE_NO_UNDIES,
 		"belly_visibility"	= GEN_VISIBLE_NO_UNDIES,
+		"cock_stuffing" = FALSE,
+		"balls_stuffing" = FALSE,
+		"vag_stuffing" = FALSE,
+		"breasts_stuffing" = FALSE,
+		"butt_stuffing" = FALSE,
+		"belly_stuffing" = FALSE,
 		//Hyper's custom fluids
 		"balls_fluid"		= /datum/reagent/consumable/semen,
 		"womb_fluid"		= /datum/reagent/consumable/semen/femcum,
