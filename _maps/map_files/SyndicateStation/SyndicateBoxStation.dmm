@@ -3733,8 +3733,7 @@
 	},
 /obj/machinery/camera/motion{
 	c_tag = "Brig Armory South";
-	dir = 8;
-	network = s
+	dir = 8
 	},
 /turf/open/floor/mineral/plastitanium/red,
 /area/ai_monitored/security/armory)
@@ -63348,7 +63347,8 @@
 	},
 /obj/machinery/camera{
 	c_tag = "Brig East";
-	dir = 8
+	dir = 8;
+	network = s
 	},
 /obj/machinery/firealarm{
 	pixel_y = 24
