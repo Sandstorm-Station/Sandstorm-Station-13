@@ -722,14 +722,6 @@ GLOBAL_LIST_INIT(valid_plushie_paths, valid_plushie_paths())
 	attack_verb = list("beeped", "booped", "pinged")
 	squeak_override = list('sound/machines/beep.ogg' = 1)
 
-/obj/item/toy/plush/chaotic_toaster
-	name = "Chaotic toaster"
-	desc = "You arent sure if this plushie want a hug, or harvest your organs, or both"
-	icon_state = "chaotic_toaster"
-	item_state = "chaotic_toaster"
-	attack_verb = list("beeped", "booped", "pinged")
-	squeak_override = list('sound/machines/beep.ogg' = 1)
-
 /obj/item/toy/plush/borgplushie/medihound
 	name = "medihound plushie"
 	icon_state = "medihound"
@@ -752,18 +744,6 @@ GLOBAL_LIST_INIT(valid_plushie_paths, valid_plushie_paths())
 	item_state = "malfai"
 	attack_verb = list("hacked", "detonated", "overloaded")
 	squeak_override = list('sound/machines/beep.ogg' = 9, 'sound/machines/buzz-two.ogg' = 1)
-
-/obj/item/toy/plush/Synth
-	name = "Synth plushie"
-	desc = "An adorable stuffed toy that resembles a very happy synth."
-	icon_state = "plushie_synth"
-	item_state = "plushie_synth"
-
-/obj/item/toy/plush/mal0
-	name = "Mal0 plushie"
-	desc = "An adorable stuffed toy that resembles something you download on your pda."
-	icon_state = "plushie_mal0"
-	item_state = "plushie_mal0"
 
 /obj/item/toy/plush/snakeplushie
 	name = "snake plushie"
