@@ -92,28 +92,31 @@
 	TRANSFER_RANDOMIZED(destination.dna.blood_type, blood_type, second_set.blood_type)
 	TRANSFER_RANDOMIZED(destination.dna.skin_tone_override, skin_tone_override, second_set.skin_tone_override)
 	transfer_randomized_list(destination.dna.features, features, second_set.features)
-	TRANSFER_RANDOMIZED(destination.dna.real_name, real_name, second_set.real_name)
-	TRANSFER_RANDOMIZED(destination.dna.nameless, nameless, second_set.nameless)
 	transfer_randomized_list(destination.dna.temporary_mutations, temporary_mutations, second_set.temporary_mutations)
 
 	if(prob(50))
-		destination.set_species(species.type, icon_update=0)
+		destination.set_species(species.type, FALSE)
 		destination.dna.species.say_mod = species.say_mod
 		destination.dna.custom_species = custom_species
 	else
-		destination.set_species(second_set.species.type, icon_update=0)
+		destination.set_species(second_set.species.type, FALSE)
 		destination.dna.species.say_mod = second_set.species.say_mod
 		destination.dna.custom_species = second_set.custom_species
 
-	if(ishuman(destination))
-		var/mob/living/carbon/human/H = destination
-		H.give_genitals(TRUE)//This gives the body the genitals of this DNA. Used for any transformations based on DNA
 
 	destination.update_size(get_size(destination), old_size)
 
 	SEND_SIGNAL(destination, COMSIG_CARBON_IDENTITY_TRANSFERRED_TO, src, FALSE)
 	SEND_SIGNAL(destination, COMSIG_CARBON_IDENTITY_TRANSFERRED_TO, second_set, FALSE)
 
+	destination.dna.update_dna_identity()
+	destination.dna.generate_dna_blocks()
+
 	destination.updateappearance(icon_update=TRUE, mutcolor_update=TRUE, mutations_overlay_update=TRUE)
+
+	if(ishuman(destination))
+		var/mob/living/carbon/human/H = destination
+		H.give_genitals(TRUE)//This gives the body the genitals of this DNA. Used for any transformations based on DNA
+		H.update_genitals()
 
 #undef TRANSFER_RANDOMIZED

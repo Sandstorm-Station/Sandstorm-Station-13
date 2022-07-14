@@ -380,7 +380,7 @@
 	var/poll_message = "Do you want to play as [mommy]'s offspring?"
 	var/list/mob/candidates = pollCandidatesForMob(poll_message, ROLE_RESPAWN, null, FALSE, 120, babby)
 	if(!LAZYLEN(candidates))
-		babby.real_name = random_unique_name(babby.gender, FALSE)
+		babby.real_name = random_unique_name(babby.gender)
 		babby.update_name()
 		return
 
@@ -403,7 +403,7 @@
 		name = input(mommy, "What will be your baby's name?", "Name the baby") as null|text
 
 	if(!name)
-		babby.real_name = random_unique_name(babby.gender, FALSE)
+		babby.real_name = random_unique_name(babby.gender, )
 		babby.update_name()
 	else
 		babby.real_name = name
