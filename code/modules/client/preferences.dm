@@ -3193,7 +3193,7 @@ GLOBAL_LIST_EMPTY(preferences_datums)
 				if("cock_stuffing")
 					features["cock_stuffing"] = !features["cock_stuffing"]
 				if("balls_stuffing")
-					features["belly_stuffing"] = !features["belly_stuffing"]
+					features["balls_stuffing"] = !features["balls_stuffing"]
 				if("vag_stuffing")
 					features["vag_stuffing"] = !features["vag_stuffing"]
 				if("breasts_stuffing")
