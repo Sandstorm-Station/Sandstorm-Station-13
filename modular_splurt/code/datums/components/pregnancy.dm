@@ -174,7 +174,7 @@
 	else
 		handle_incubation()
 
-	if((stage > (max_stage / 2)) && !revealed)
+	if((stage >= 2) && !revealed)
 		revealed = TRUE
 		carrier.apply_status_effect(/datum/status_effect/pregnancy)
 
@@ -281,9 +281,8 @@
 
 	if(container && isgenital(container))
 		var/obj/item/organ/genital/gen = container
-		if(!gen.is_exposed())
-			if(gen.linked_organ && !gen.linked_organ.is_exposed())
-				return FALSE
+		if(!gen.is_exposed() && gen.linked_organ && !gen.linked_organ.is_exposed())
+			return FALSE
 
 	playsound(carrier, 'sound/effects/splat.ogg', 70, TRUE)
 	carrier.Knockdown(200, TRUE, TRUE)
