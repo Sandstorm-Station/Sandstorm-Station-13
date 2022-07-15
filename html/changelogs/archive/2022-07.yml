@@ -7,18 +7,17 @@
       and individual barks can be intercepted via signals!
   - rscadd: The "Brassy" bark has been added, using the cog installation sound as
       a sample! This works surprisingly well as a bark
-  - rscadd: 'Genetics can now give people goose1.ogg'
+  - rscadd: Genetics can now give people goose1.ogg
   - tweak: If new barks are queued before the current barks are finished, this will
       interrupt all ongoing barks
   - tweak: Yelling no longer cuts the minimum bark time variance down to half, as
       this proved to sound pretty awful with most barks.
   - tweak: Chitter now uses a completely unique audio sample, which is based on the
-      original ratchet.ogg it used to be. This new sample is shorter, and has
-      significantly less harsh noise on the higher frequencies, making it much
-      easier on the ears. Additionally, the minimum speed for chitter has been
-      reduced from 6 to 4.
-  - tweak: Setting vocal_bark to a file should now automatically turn it into a
-      sound datum (in theory, at least! as of writing i haven't tested this at all)
+      original ratchet.ogg it used to be. This new sample is shorter, and has significantly
+      less harsh noise on the higher frequencies, making it much easier on the ears.
+      Additionally, the minimum speed for chitter has been reduced from 6 to 4.
+  - tweak: Setting vocal_bark to a file should now automatically turn it into a sound
+      datum (in theory, at least! as of writing i haven't tested this at all)
   - bugfix: Barks and other DNA features after the first mob color now work exactly
       as you'd expect. This was the cause for horrid eldritch bark sounds when the
       wrong part of DNA gets hit. The first mob color has lost some genetics resolution
@@ -30,3 +29,9 @@
       at low blood, and suffer brute damage and oxygen loss for having no blood and
       no limbs left to consume respectably, they cannot go past BLOOD_VOLUME_MAXIMUM
       from consuming toxin
+2022-07-15:
+  MediHound:
+  - rscdel: Removed old Alina sprites
+  - rscadd: Added new Alina sprites
+  SandPoot:
+  - bugfix: The tweak tag for changelogs should now work.
