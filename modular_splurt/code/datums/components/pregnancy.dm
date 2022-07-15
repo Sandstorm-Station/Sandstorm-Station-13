@@ -12,6 +12,9 @@
 	var/datum/dna/father_dna
 	var/datum/dna/mother_dna
 
+	var/list/mother_features
+	var/list/father_features
+
 	var/egg_name
 
 	var/stage = 0
@@ -51,6 +54,24 @@
 		var/mob/living/carbon/carmom = parent
 		mother_dna = new
 		carmom.dna.copy_dna(mother_dna)
+
+	if(ishuman(_father))
+		var/mob/living/carbon/human/cardad = _father
+		LAZYINITLIST(father_features)
+		father_features["skin_tone"] = cardad.skin_tone
+		father_features["hair_color"] = cardad.hair_color
+		father_features["facial_hair_color"] = cardad.facial_hair_color
+		father_features["left_eye_color"] = cardad.left_eye_color
+		father_features["right_eye_color"] = cardad.right_eye_color
+
+	if(ishuman(parent))
+		var/mob/living/carbon/human/carmom = parent
+		LAZYINITLIST(mother_features)
+		mother_features["skin_tone"] = carmom.skin_tone
+		mother_features["hair_color"] = carmom.hair_color
+		mother_features["facial_hair_color"] = carmom.facial_hair_color
+		mother_features["left_eye_color"] = carmom.left_eye_color
+		mother_features["right_eye_color"] = carmom.right_eye_color
 
 	pregnancy_inflation = gregnant.client?.prefs?.pregnancy_inflation
 
@@ -209,6 +230,7 @@
 	playsound(parent, 'sound/effects/splat.ogg', 70, TRUE)
 	var/mob/living/babby = new baby_type(get_turf(parent))
 	if(ishuman(babby))
+		determine_baby_features(babby)
 		determine_baby_dna(babby)
 	INVOKE_ASYNC(GLOBAL_PROC, .proc/offer_control_to_babby, babby, carrier, egg_name)
 	var/obj/item = parent
@@ -317,6 +339,29 @@
 		mother_dna.transfer_identity_random(babby.dna, babby)
 	else if(!mother_dna && father_dna)
 		father_dna.transfer_identity_random(babby.dna, babby)
+
+/datum/component/pregnancy/proc/determine_baby_features(mob/living/carbon/human/babby)
+
+	var/list/final_features = list()
+
+	transfer_randomized_list(final_features, mother_features, father_features)
+
+	if(final_features["skin_tone"])
+		babby.skin_tone = final_features["skin_tone"]
+	if(final_features["hair_color"])
+		babby.hair_color = final_features["hair_color"]
+	if(final_features["facial_hair_color"])
+		babby.facial_hair_color = final_features["facial_hair_color"]
+	if(final_features["left_eye_color"])
+		babby.left_eye_color = final_features["left_eye_color"]
+	if(final_features["right_eye_color"])
+		babby.right_eye_color = final_features["right_eye_color"]
+
+	babby.hair_style = pick("Bedhead", "Bedhead 2", "Bedhead 3")
+	babby.facial_hair_style = "Shaved"
+	babby.underwear = "Nude"
+	babby.undershirt = "Nude"
+	babby.socks = "Nude"
 
 /datum/component/pregnancy/proc/generic_pragency_start()
 	if(revealed)

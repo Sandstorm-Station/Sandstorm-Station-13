@@ -65,24 +65,22 @@
 	}
 
 /proc/transfer_randomized_list(list/destination, list/list1, list/list2)
-	. = list()
 	if(list1.len >= list2.len)
 		for(var/key1 as anything in list1)
 			var/val1 = list1[key1]
 			var/val2 = list2[key1]
 			if(prob(50) && val1)
-				.[key1] = val1
+				destination[key1] = val1
 			else if(val2)
-				.[key1] = val2
+				destination[key1] = val2
 	else
 		for(var/key2 as anything in list2)
 			var/val1 = list1[key2]
 			var/val2 = list2[key2]
 			if(prob(50) && val1)
-				.[key2] = val1
+				destination[key2] = val1
 			else if(val2)
-				.[key2] = val2
-	return .
+				destination[key2] = val2
 
 /datum/dna/proc/transfer_identity_random(datum/dna/second_set, mob/living/carbon/destination)
 	if(!istype(destination))
@@ -103,20 +101,21 @@
 		destination.dna.species.say_mod = second_set.species.say_mod
 		destination.dna.custom_species = second_set.custom_species
 
-
 	destination.update_size(get_size(destination), old_size)
 
-	SEND_SIGNAL(destination, COMSIG_CARBON_IDENTITY_TRANSFERRED_TO, src, FALSE)
-	SEND_SIGNAL(destination, COMSIG_CARBON_IDENTITY_TRANSFERRED_TO, second_set, FALSE)
+	if(prob(50))
+		SEND_SIGNAL(destination, COMSIG_CARBON_IDENTITY_TRANSFERRED_TO, src, FALSE)
+	else
+		SEND_SIGNAL(destination, COMSIG_CARBON_IDENTITY_TRANSFERRED_TO, second_set, FALSE)
 
 	destination.dna.update_dna_identity()
 	destination.dna.generate_dna_blocks()
-
-	destination.updateappearance(icon_update=TRUE, mutcolor_update=TRUE, mutations_overlay_update=TRUE)
 
 	if(ishuman(destination))
 		var/mob/living/carbon/human/H = destination
 		H.give_genitals(TRUE)//This gives the body the genitals of this DNA. Used for any transformations based on DNA
 		H.update_genitals()
+
+	destination.updateappearance(icon_update=TRUE, mutcolor_update=TRUE, mutations_overlay_update=TRUE)
 
 #undef TRANSFER_RANDOMIZED
