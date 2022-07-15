@@ -8,19 +8,13 @@
 	name = "Lumberjack Outfit"
 	description = "Makes you want to pull a genocide on trees."
 	path = /obj/item/clothing/under/lumberjack
-/* Redundent
-/datum/gear/uniform/latex
-	name = "Full latex jumpsuit"
-	path = /obj/item/clothing/under/latex
-	cost = 1 */
 
-/*
-/datum/gear/latex/uniform/half
-	name = "Latex bodysuit"
+/datum/gear/uniform/halfsuit
+	name = "Half Latex Catsuit"
 	path = /obj/item/clothing/under/latex/half
-*/
+
 /datum/gear/uniform/latex
-	name = "Latex Catsuit"
+	name = "Full Latex Catsuit"
 	path = /obj/item/clothing/under/misc/latex_catsuit
 
 /datum/gear/uniform/shorts/redwshort
@@ -47,6 +41,18 @@
 /datum/gear/uniform/bunnysuitwhite
 	name = "white bunny outfit"
 	path = /obj/item/clothing/under/bunnysuit/white
+
+/datum/gear/uniform/raccveralls
+	name = "form fitting overalls"
+	path = /obj/item/clothing/under/raccveralls
+
+/datum/gear/uniform/sexyoffice
+	name = "Revealing office uniform"
+	path = /obj/item/clothing/under/officesexy
+
+/datum/gear/uniform/vaultsuit
+	name = "vault suit"
+	path = /obj/item/clothing/under/vaultsuit
 
 // Updates restrictions to accomodate new jobs (mostly trekkie stuff)
 /datum/gear/uniform/grey/sec
@@ -117,3 +123,10 @@
 
 /datum/gear/uniform/orvsec
 	restricted_roles = list("Warden", "Detective", "Security Officer", "Head of Security", "Brig Physician", "Blueshield")
+
+// Polychrome GWTB
+/datum/gear/uniform/gonercloth
+	name = "polychromic trencher uniform"
+	path = /obj/item/clothing/under/goner/fake/poly
+	loadout_flags = LOADOUT_CAN_NAME | LOADOUT_CAN_DESCRIPTION | LOADOUT_CAN_COLOR_POLYCHROMIC
+	loadout_initial_colors = list("#E6E6E6")

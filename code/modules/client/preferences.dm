@@ -85,6 +85,8 @@ GLOBAL_LIST_EMPTY(preferences_datums)
 	var/tgui_lock = TRUE
 	var/windowflashing = TRUE
 	var/toggles = TOGGLES_DEFAULT
+	/// A separate variable for deadmin toggles, only deals with those.
+	var/deadmin = NONE
 	var/db_flags
 	var/chat_toggles = TOGGLES_DEFAULT_CHAT
 	var/ghost_form = "ghost"
@@ -203,6 +205,7 @@ GLOBAL_LIST_EMPTY(preferences_datums)
 "vag_shape" = DEF_VAGINA_SHAPE,
 "vag_color" = "ffffff",
 "has_womb" = FALSE,
+"womb_fluid" = /datum/reagent/consumable/semen/femcum,
 "has_butt" = FALSE,
 "butt_color" = "ffffff",
 "butt_size" = BUTT_SIZE_DEF,
@@ -218,12 +221,16 @@ GLOBAL_LIST_EMPTY(preferences_datums)
 "ipc_screen" = "Sunburst",
 "ipc_antenna" = "None",
 "flavor_text" = "",
+"naked_flavor_text" = "", //SPLURT edit
 "silicon_flavor_text" = "",
 "ooc_notes" = "",
 "meat_type" = "Mammalian",
 "body_model" = MALE,
 "body_size" = RESIZE_DEFAULT_SIZE,
-"color_scheme" = OLD_CHARACTER_COLORING
+"color_scheme" = OLD_CHARACTER_COLORING,
+
+"neckfire" = FALSE,
+"neckfire_color" = "ffffff"
 )
 
 
@@ -232,6 +239,13 @@ GLOBAL_LIST_EMPTY(preferences_datums)
 	var/list/language = list() //additional language your character has
 	var/modified_limbs = list() //prosthetic/amputated limbs
 	var/chosen_limb_id //body sprite selected to load for the users limbs, null means default, is sanitized when loaded
+
+	// Vocal bark prefs
+	var/bark_id = "mutedc3"
+	var/bark_speed = 4
+	var/bark_pitch = 1
+	var/bark_variance = 0.2
+	COOLDOWN_DECLARE(bark_previewing)
 
 	/// Security record note section
 	var/security_records
@@ -245,6 +259,9 @@ GLOBAL_LIST_EMPTY(preferences_datums)
 
 	//Quirk list
 	var/list/all_quirks = list()
+
+	//Quirk category currently selected
+	var/quirk_category = QUIRK_POSITIVE // defaults to positive, the first tab!
 
 	//Job preferences 2.0 - indexed by job title , no key or value implies never
 	var/list/job_preferences = list()
@@ -475,17 +492,28 @@ GLOBAL_LIST_EMPTY(preferences_datums)
 
 			dat += "<table><tr><td width='20%' height='300px' valign='top'>"
 			dat += "<h2>Flavor Text</h2>"
-			dat += "<a href='?_src_=prefs;preference=flavor_text;task=input'><b>Set Examine Text</b></a><br>" //skyrat - <br> moved one line down //stupid choice you guys
-			if(length(features["flavor_text"]) <= 40)
+			dat += "<a href='?_src_=prefs;preference=flavor_text;task=input'><b>Set Examine Text</b></a><br>"
+			if(length(features["flavor_text"]) <= MAX_FLAVOR_PREVIEW_LEN)
 				if(!length(features["flavor_text"]))
 					dat += "\[...\]<BR>" //skyrat - adds <br> //come to brazil or brazil comes to you
 				else
 					dat += "[html_encode(features["flavor_text"])]<BR>" //skyrat - adds <br> and uses html_encode
 			else
 				dat += "[TextPreview(html_encode(features["flavor_text"]))]...<BR>" //skyrat edit, uses html_encode
+			//SPLURT edit - naked flavor text
+			dat += "<h2>Naked Flavor Text</h2>"
+			dat += "<a href='?_src_=prefs;preference=naked_flavor_text;task=input'><b>Set Naked Examine Text</b></a><br>"
+			if(length(features["naked_flavor_text"]) <= 40)
+				if(!length(features["naked_flavor_text"]))
+					dat += "\[...\]<BR>"
+				else
+					dat += "[html_encode(features["naked_flavor_text"])]<BR>"
+			else
+				dat += "[TextPreview(html_encode(features["naked_flavor_text"]))]...<BR>"
+			//SPLURT edit end
 			dat += "<h2>Silicon Flavor Text</h2>"
 			dat += "<a href='?_src_=prefs;preference=silicon_flavor_text;task=input'><b>Set Silicon Examine Text</b></a><br>"
-			if(length(features["silicon_flavor_text"]) <= 40)
+			if(length(features["silicon_flavor_text"]) <= MAX_FLAVOR_PREVIEW_LEN)
 				if(!length(features["silicon_flavor_text"]))
 					dat += "\[...\]<BR>"
 				else
@@ -495,13 +523,20 @@ GLOBAL_LIST_EMPTY(preferences_datums)
 			dat += "<h2>OOC notes</h2>"
 			dat += "<a href='?_src_=prefs;preference=ooc_notes;task=input'><b>Set OOC notes</b></a><br>"
 			var/ooc_notes_len = length(features["ooc_notes"])
-			if(ooc_notes_len <= 40)
+			if(ooc_notes_len <= MAX_FLAVOR_PREVIEW_LEN)
 				if(!ooc_notes_len)
 					dat += "\[...\]<BR>"
 				else
 					dat += "[features["ooc_notes"]]<BR>"
 			else
 				dat += "[TextPreview(features["ooc_notes"])]...<BR>"
+			//SPLURT EDIT
+			dat += "<h2>Headshot Image</h2>"
+			dat += "<a href='?_src_=prefs;preference=headshot'><b>Set Headshot Image</b></a><br>"
+			if(features["headshot_link"])
+				dat += "<img src='[features["headshot_link"]]' width='160px' height='120px'>"
+			dat += "<br><br>"
+			//SPLURT EDIT END
 			//SKYRAT EDIT
 			dat += 	"ERP : <a href='?_src_=prefs;preference=erp_pref'>[erppref]</a><br>"
 			dat += 	"Non-Con : <a href='?_src_=prefs;preference=noncon_pref'>[nonconpref]</a><br>"
@@ -822,6 +857,7 @@ GLOBAL_LIST_EMPTY(preferences_datums)
 								tauric_shape = TRUE
 					dat += "<b>Penis Shape:</b> <a style='display:block;width:120px' href='?_src_=prefs;preference=cock_shape;task=input'>[features["cock_shape"]][tauric_shape ? " (Taur)" : ""]</a>"
 					dat += "<b>Penis Length:</b> <a style='display:block;width:120px' href='?_src_=prefs;preference=cock_length;task=input'>[features["cock_length"]] inch(es)</a>"
+					dat += "<b>Diameter Ratio:</b> <a style='display:block;width:120px' href='?_src_=prefs;preference=cock_diameter_ratio;task=input'>[features["cock_diameter_ratio"]]</a>"
 					dat += "<b>Penis Visibility:</b><a style='display:block;width:100px' href='?_src_=prefs;preference=cock_visibility;task=input'>[features["cock_visibility"]]</a>"
 					dat += "<b>Has Testicles:</b><a style='display:block;width:50px' href='?_src_=prefs;preference=has_balls'>[features["has_balls"] == TRUE ? "Yes" : "No"]</a>"
 					if(features["has_balls"])
@@ -834,19 +870,11 @@ GLOBAL_LIST_EMPTY(preferences_datums)
 						dat += "<b>Testicles Shape:</b> <a style='display:block;width:120px' href='?_src_=prefs;preference=balls_shape;task=input'>[features["balls_shape"]]</a>"
 						dat += "<b>Testicles Visibility:</b><a style='display:block;width:100px' href='?_src_=prefs;preference=balls_visibility;task=input'>[features["balls_visibility"]]</a>"
 						dat += "<b>Produces:</b>"
-						switch(features["balls_fluid"])
-							if(/datum/reagent/consumable/milk)
-								dat += "<a style='display:block;width:50px' href='?_src_=prefs;preference=balls_fluid;task=input'>Milk</a>"
-							if(/datum/reagent/water)
-								dat += "<a style='display:block;width:50px' href='?_src_=prefs;preference=balls_fluid;task=input'>Water</a>"
-							if(/datum/reagent/consumable/semen)
-								dat += "<a style='display:block;width:50px' href='?_src_=prefs;preference=balls_fluid;task=input'>Semen</a>"
-							if(/datum/reagent/consumable/semen/femcum)
-								dat += "<a style='display:block;width:50px' href='?_src_=prefs;preference=balls_fluid;task=input'>Femcum</a>"
-							if(/datum/reagent/consumable/alienhoney)
-								dat += "<a style='display:block;width:50px' href='?_src_=prefs;preference=balls_fluid;task=input'>Honey</a>"
-							else
-								dat += "<a style='display:block;width:50px' href='?_src_=prefs;preference=balls_fluid;task=input'>Nothing?</a>"
+						var/datum/reagent/balls_fluid = find_reagent_object_from_type(features["balls_fluid"])
+						if(balls_fluid && (balls_fluid in GLOB.genital_fluids_list))
+							dat += "<a style='display:block;width:50px' href='?_src_=prefs;preference=balls_fluid;task=input'>[balls_fluid.name]</a>"
+						else
+							dat += "<a style='display:block;width:50px' href='?_src_=prefs;preference=balls_fluid;task=input'>Nothing?</a>"
 				dat += "</td>"
 				dat += APPEARANCE_CATEGORY_COLUMN
 				dat += "<h3>Vagina</h3>"
@@ -861,6 +889,13 @@ GLOBAL_LIST_EMPTY(preferences_datums)
 						dat += "<span style='border: 1px solid #161616; background-color: #[features["vag_color"]];'><font color='[color_hex2num(features["vag_color"]) < 200 ? "FFFFFF" : "000000"]'>#[features["vag_color"]]</font></span> <a href='?_src_=prefs;preference=vag_color;task=input'>Change</a><br>"
 					dat += "<b>Vagina Visibility:</b><a style='display:block;width:100px' href='?_src_=prefs;preference=vag_visibility;task=input'>[features["vag_visibility"]]</a>"
 					dat += "<b>Has Womb:</b><a style='display:block;width:50px' href='?_src_=prefs;preference=has_womb'>[features["has_womb"] == TRUE ? "Yes" : "No"]</a>"
+					if(features["has_womb"] == TRUE)
+						dat += "<b>Produces:</b>"
+						var/datum/reagent/womb_fluid = find_reagent_object_from_type(features["womb_fluid"])
+						if(womb_fluid && (womb_fluid in GLOB.genital_fluids_list))
+							dat += "<a style='display:block;width:50px' href='?_src_=prefs;preference=womb_fluid;task=input'>[womb_fluid.name]</a>"
+						else
+							dat += "<a style='display:block;width:50px' href='?_src_=prefs;preference=womb_fluid;task=input'>Nothing?</a>"
 				dat += "</td>"
 				dat += APPEARANCE_CATEGORY_COLUMN
 				dat += "<h3>Breasts</h3>"
@@ -878,21 +913,11 @@ GLOBAL_LIST_EMPTY(preferences_datums)
 					dat += "<b>Lactates:</b><a style='display:block;width:50px' href='?_src_=prefs;preference=breasts_producing'>[features["breasts_producing"] == TRUE ? "Yes" : "No"]</a>"
 					if(features["breasts_producing"] == TRUE)
 						dat += "<b>Produces:</b>"
-						switch(features["breasts_fluid"])
-							if(/datum/reagent/consumable/milk)
-								dat += "<a style='display:block;width:50px' href='?_src_=prefs;preference=breasts_fluid;task=input'>Milk</a>"
-							if(/datum/reagent/water)
-								dat += "<a style='display:block;width:50px' href='?_src_=prefs;preference=breasts_fluid;task=input'>Water</a>"
-							if(/datum/reagent/consumable/semen)
-								dat += "<a style='display:block;width:50px' href='?_src_=prefs;preference=breasts_fluid;task=input'>Semen</a>"
-							if(/datum/reagent/consumable/semen/femcum)
-								dat += "<a style='display:block;width:50px' href='?_src_=prefs;preference=breasts_fluid;task=input'>Femcum</a>"
-							if(/datum/reagent/consumable/alienhoney)
-								dat += "<a style='display:block;width:50px' href='?_src_=prefs;preference=breasts_fluid;task=input'>Honey</a>"
-							else
-								dat += "<a style='display:block;width:50px' href='?_src_=prefs;preference=breasts_fluid;task=input'>Nothing?</a>"
-							//This else is a safeguard for errors, and if it happened, they wouldn't be able to change this pref,
-							//DO NOT REMOVE IT UNLESS YOU HAVE A GOOD IDEA
+						var/datum/reagent/breasts_fluid = find_reagent_object_from_type(features["breasts_fluid"])
+						if(breasts_fluid && (breasts_fluid in GLOB.genital_fluids_list))
+							dat += "<a style='display:block;width:50px' href='?_src_=prefs;preference=breasts_fluid;task=input'>[breasts_fluid.name]</a>"
+						else
+							dat += "<a style='display:block;width:50px' href='?_src_=prefs;preference=breasts_fluid;task=input'>Nothing?</a>"
 				dat += "</td>"
 				dat += APPEARANCE_CATEGORY_COLUMN
 				dat += "<h3>Butt</h3>"
@@ -920,6 +945,16 @@ GLOBAL_LIST_EMPTY(preferences_datums)
 					dat += "<b>Belly Size:</b><a style='display:block;width:50px' href='?_src_=prefs;preference=belly_size;task=input'>[features["belly_size"]]</a>"
 					dat += "<b>Belly Visibility:</b><a style='display:block;width:100px' href='?_src_=prefs;preference=belly_visibility;task=input'>[features["belly_visibility"]]</a>"
 				dat += "</td>"
+				if(pref_species.id == SPECIES_DULLAHAN)
+					dat += APPEARANCE_CATEGORY_COLUMN
+				
+					dat += "<h3>Neckfire</h3>"
+					dat += "<a style='display:block;width:50px' href='?_src_=prefs;preference=has_neckfire;task=input'>[features["neckfire"] ? "Yes" : "No"]</a>"
+					if(features["neckfire"])
+						dat += "<b>Color:</b></a><BR>"
+						dat += "<span style='border: 1px solid #161616; background-color: #[features["neckfire_color"]];'><font color='[color_hex2num(features["neckfire_color"]) < 200 ? "FFFFFF" : "000000"]'>#[features["neckfire_color"]]</font></span><a href='?_src_=prefs;preference=has_neckfire_color;task=input'>Change</a><br>"
+
+					dat += "</td>"
 			dat += "</td>"
 			dat += "</tr></table>"
 
@@ -945,16 +980,25 @@ GLOBAL_LIST_EMPTY(preferences_datums)
 			dat += "<table><tr><td width='340px' height='300px' valign='top'>"
 			dat += "<h2>Speech preferences</h2>"
 			dat += "<b>Custom Speech Verb:</b><BR>"
-			dat += "</b><a style='display:block;width:100px' href='?_src_=prefs;preference=speech_verb;task=input'>[custom_speech_verb]</a><BR>"
+			dat += "<a style='display:block;width:100px' href='?_src_=prefs;preference=speech_verb;task=input'>[custom_speech_verb]</a><BR>"
 			dat += "<b>Custom Tongue:</b><BR>"
-			dat += "</b><a style='display:block;width:100px' href='?_src_=prefs;preference=tongue;task=input'>[custom_tongue]</a><BR>"
-			//SKYRAT EDIT - additional language + runechat color
+			dat += "<a style='display:block;width:100px' href='?_src_=prefs;preference=tongue;task=input'>[custom_tongue]</a><BR>"
+			//SANDSTORM EDIT - additional language + runechat color
 			dat += "<b>Additional Language</b><br>"
 			var/list/languages_sorted = sortList(language)
 			dat += "<a href='?_src_=prefs;preference=language;task=menu'>[language.len ? languages_sorted.Join(", ") : "None"]</a></center><br>"
 			dat += "<b>Custom runechat color:</b> <a href='?_src_=prefs;preference=enable_personal_chat_color'>[enable_personal_chat_color ? "Enabled" : "Disabled"]</a><br> [enable_personal_chat_color ? "<span style='border: 1px solid #161616; background-color: [personal_chat_color];'><font color='[color_hex2num(personal_chat_color) < 200 ? "FFFFFF" : "000000"]'>[personal_chat_color]</font></span> <a href='?_src_=prefs;preference=personal_chat_color;task=input'>Change</a>" : ""]<br>"
 			dat += "</td>"
-			//END OF SKYRAT EDIT
+			//END OF SANDSTORM EDIT
+			dat += "<td width='340px' height='300px' valign='top'>"
+			dat += "<h2>Vocal Bark preferences</h2>"
+			var/datum/bark/B = GLOB.bark_list[bark_id]
+			dat += "<b>Vocal Bark Sound:</b><BR>"
+			dat += "<a style='display:block;width:200px' href='?_src_=prefs;preference=barksound;task=input'>[B ? initial(B.name) : "INVALID"]</a><BR>"
+			dat += "<b>Vocal Bark Speed:</b> <a href='?_src_=prefs;preference=barkspeed;task=input'>[bark_speed]</a><BR>"
+			dat += "<b>Vocal Bark Pitch:</b> <a href='?_src_=prefs;preference=barkpitch;task=input'>[bark_pitch]</a><BR>"
+			dat += "<b>Vocal Bark Variance:</b> <a href='?_src_=prefs;preference=barkvary;task=input'>[bark_variance]</a><BR>"
+			dat += "<BR><a href='?_src_=prefs;preference=barkpreview'>Preview Bark</a><BR>"
 			dat += "</td>"
 			dat += "</tr></table>"
 
@@ -1038,8 +1082,36 @@ GLOBAL_LIST_EMPTY(preferences_datums)
 				dat += "<b>Adminhelp Sounds:</b> <a href='?_src_=prefs;preference=hear_adminhelps'>[(toggles & SOUND_ADMINHELP)?"Enabled":"Disabled"]</a><br>"
 				dat += "<b>Announce Login:</b> <a href='?_src_=prefs;preference=announce_login'>[(toggles & ANNOUNCE_LOGIN)?"Enabled":"Disabled"]</a><br>"
 				dat += "<br>"
-				dat += "<b>Combo HUD Lighting:</b> <a href='?_src_=prefs;preference=combohud_lighting'>[(toggles & COMBOHUD_LIGHTING)?"Full-bright":"No Change"]</a><br>"
+				dat += "<b>Combo HUD Lighting:</b> <a href = '?_src_=prefs;preference=combohud_lighting'>[(toggles & COMBOHUD_LIGHTING)?"Full-bright":"No Change"]</a><br>"
 				dat += "<b>Use Modern Player Panel:</b> <a href='?_src_=prefs;preference=use_new_playerpanel'>[use_new_playerpanel ? "Yes" : "No"]</a><br>" // sandstorm end - moves admins prefs to the right
+
+				//deadmin
+				dat += "<h2>Deadmin While Playing</h2>"
+				if(CONFIG_GET(flag/auto_deadmin_players))
+					dat += "<b>Always Deadmin:</b> FORCED</a><br>"
+				else
+					dat += "<b>Always Deadmin:</b> <a href = '?_src_=prefs;preference=toggle_deadmin_always'>[(deadmin & DEADMIN_ALWAYS)?"Enabled":"Disabled"]</a><br>"
+					if(!(deadmin & DEADMIN_ALWAYS))
+						dat += "<br>"
+						if(!CONFIG_GET(flag/auto_deadmin_antagonists))
+							dat += "<b>As Antag:</b> <a href = '?_src_=prefs;preference=toggle_deadmin_antag'>[(deadmin & DEADMIN_ANTAGONIST)?"Deadmin":"Keep Admin"]</a><br>"
+						else
+							dat += "<b>As Antag:</b> FORCED<br>"
+
+						if(!CONFIG_GET(flag/auto_deadmin_heads))
+							dat += "<b>As Command:</b> <a href = '?_src_=prefs;preference=toggle_deadmin_head'>[(deadmin & DEADMIN_POSITION_HEAD)?"Deadmin":"Keep Admin"]</a><br>"
+						else
+							dat += "<b>As Command:</b> FORCED<br>"
+
+						if(!CONFIG_GET(flag/auto_deadmin_security))
+							dat += "<b>As Security:</b> <a href = '?_src_=prefs;preference=toggle_deadmin_security'>[(deadmin & DEADMIN_POSITION_SECURITY)?"Deadmin":"Keep Admin"]</a><br>"
+						else
+							dat += "<b>As Security:</b> FORCED<br>"
+
+						if(!CONFIG_GET(flag/auto_deadmin_silicons))
+							dat += "<b>As Silicon:</b> <a href = '?_src_=prefs;preference=toggle_deadmin_silicon'>[(deadmin & DEADMIN_POSITION_SILICON)?"Deadmin":"Keep Admin"]</a><br>"
+						else
+							dat += "<b>As Silicon:</b> FORCED<br>"
 
 			dat += "<h2>Citadel Preferences</h2>" //Because fuck me if preferences can't be fucking modularized and expected to update in a reasonable timeframe.
 			dat += "<b>Widescreen:</b> <a href='?_src_=prefs;preference=widescreenpref'>[widescreenpref ? "Enabled ([CONFIG_GET(string/default_view)])" : "Disabled (15x15)"]</a><br>"
@@ -1057,9 +1129,10 @@ GLOBAL_LIST_EMPTY(preferences_datums)
 				p_chaos = preferred_chaos
 			dat += "<b>Preferred Chaos Amount:</b> <a href='?_src_=prefs;preference=preferred_chaos;task=input'>[p_chaos]</a><br>"
 
-			dat += "<h2>Splurt Preferences</h2>"
+			dat += "<h2>S.P.L.U.R.T. Preferences</h2>"
 			dat += "<b>Be Antagonist Victim:</b> <a href='?_src_=prefs;preference=be_victim;task=input'>[be_victim ? be_victim : BEVICTIM_ASK]</a><br>"
 			dat += "<b>Disable combat mode cursor:</b> <a href='?_src_=prefs;preference=disable_combat_cursor'>[disable_combat_cursor?"Yes":"No"]</a><br>"
+			dat += "<b>Splashscreen Player Panel Style:</b> <a href='?_src_=prefs;preference=tg_playerpanel'>[(toggles & TG_PLAYER_PANEL)?"TG":"Old"]</a><br>"
 			dat += "<br>"
 
 			dat += "</td>"
@@ -1302,6 +1375,11 @@ GLOBAL_LIST_EMPTY(preferences_datums)
 				dat += "<b><span style='color: #e60000;'>Harmful ERP verbs :</b> <a href='?_src_=prefs;preference=extremeharm'>[extremeharm]</a><br>"
 			//END OF SKYRAT EDIT
 			dat += "<b>Automatic Wagging:</b> <a href='?_src_=prefs;preference=auto_wag'>[(cit_toggles & NO_AUTO_WAG) ? "Disabled" : "Enabled"]</a><br>"
+			dat += "<span style='border-radius: 2px;border:1px dotted white;cursor:help;' title='If anyone cums a blacklisted fluid into you, it uses the default fluid for that genital.'>?</span> "
+			dat += "<b><a href='?_src_=prefs;preference=gfluid_black;task=input'>Genital Fluid Blacklist</a></b><br>"
+			if(gfluid_blacklist?.len)
+				dat += "<span style='border-radius: 2px;border:1px dotted white;cursor:help;' title='Remove a genital fluid from your blacklist.'>?</span> "
+				dat += "<b><a href='?_src_=prefs;preference=gfluid_unblack;task=input'>Genital Fluid Un-Blacklist</a></b><br>"
 			dat += "</tr></table>"
 			dat += "<br>"
 		if(KEYBINDINGS_TAB) // Custom keybindings
@@ -1629,9 +1707,17 @@ GLOBAL_LIST_EMPTY(preferences_datums)
 		dat += "<hr>"
 		dat += "<center><b>Current quirks:</b> [all_quirks.len ? all_quirks.Join(", ") : "None"]</center>"
 		dat += "<center>[GetPositiveQuirkCount()] / [MAX_QUIRKS] max positive quirks<br>\
-		<b>Quirk balance remaining:</b> [GetQuirkBalance()]</center><br>"
+		<b>Quirk balance remaining:</b> [GetQuirkBalance()]<br>"
+		dat += " <a href='?_src_=prefs;quirk_category=[QUIRK_POSITIVE]' [quirk_category == QUIRK_POSITIVE ? "class='linkOn'" : ""]>[QUIRK_POSITIVE]</a> "
+		dat += " <a href='?_src_=prefs;quirk_category=[QUIRK_NEUTRAL]' [quirk_category == QUIRK_NEUTRAL ? "class='linkOn'" : ""]>[QUIRK_NEUTRAL]</a> "
+		dat += " <a href='?_src_=prefs;quirk_category=[QUIRK_NEGATIVE]' [quirk_category == QUIRK_NEGATIVE ? "class='linkOn'" : ""]>[QUIRK_NEGATIVE]</a> "
+		dat += "</center><br>"
 		for(var/V in SSquirks.quirks)
 			var/datum/quirk/T = SSquirks.quirks[V]
+			var/value = initial(T.value)
+			if((value > 0 && quirk_category != QUIRK_POSITIVE) || (value < 0 && quirk_category != QUIRK_NEGATIVE) || (value == 0 && quirk_category != QUIRK_NEUTRAL))
+				continue
+
 			var/quirk_name = initial(T.name)
 			var/has_quirk
 			var/quirk_cost = initial(T.value) * -1
@@ -1653,7 +1739,7 @@ GLOBAL_LIST_EMPTY(preferences_datums)
 				quirk_cost = "+[quirk_cost]"
 			var/font_color = "#AAAAFF"
 			if(initial(T.value) != 0)
-				font_color = initial(T.value) > 0 ? "#AAFFAA" : "#FFAAAA"
+				font_color = value > 0 ? "#AAFFAA" : "#FFAAAA"
 			if(quirk_conflict)
 				dat += "<font color='[font_color]'>[quirk_name]</font> - [initial(T.desc)] \
 				<font color='red'><b>LOCKED: [lock_reason]</b></font><br>"
@@ -1799,7 +1885,13 @@ GLOBAL_LIST_EMPTY(preferences_datums)
 			else
 				SetQuirks(user)
 		return TRUE
-//SKYRAT CHANGE - only language pref
+
+	else if(href_list["quirk_category"])
+		var/temp_quirk_category = href_list["quirk_category"]
+		if(temp_quirk_category == QUIRK_POSITIVE || temp_quirk_category == QUIRK_NEUTRAL || temp_quirk_category == QUIRK_NEGATIVE)
+			quirk_category = temp_quirk_category
+			SetQuirks(user)
+
 	else if(href_list["preference"] == "language")
 		switch(href_list["task"])
 			if("close")
@@ -1818,7 +1910,7 @@ GLOBAL_LIST_EMPTY(preferences_datums)
 			else
 				SetLanguage(user)
 		return TRUE
-//
+
 	switch(href_list["task"])
 		if("random")
 			switch(href_list["preference"])
@@ -1900,7 +1992,7 @@ GLOBAL_LIST_EMPTY(preferences_datums)
 				if("name")
 					var/new_name = input(user, "Choose your character's name:", "Character Preference")  as text|null
 					if(new_name)
-						new_name = reject_bad_name(new_name, TRUE)
+						new_name = reject_bad_name(new_name, allow_numbers = TRUE)
 						if(new_name)
 							real_name = new_name
 						else
@@ -1926,6 +2018,12 @@ GLOBAL_LIST_EMPTY(preferences_datums)
 					if(!isnull(msg))
 						features["flavor_text"] = strip_html_simple(msg, MAX_FLAVOR_LEN, TRUE) //Skyrat edit, removed strip_html_simple()
 
+				//SPLURT edit
+				if("naked_flavor_text")
+					var/msg = input(usr, "Set the naked flavor text in your 'examine' verb. This should be IC, describing how your character would look like if naked.", "Naked Flavor Text", features["naked_flavor_text"]) as message|null
+					if(!isnull(msg))
+						features["naked_flavor_text"] = strip_html_simple(msg, MAX_FLAVOR_LEN, TRUE)
+				//SPLURT edit end
 				if("silicon_flavor_text")
 					var/msg = input(usr, "Set the silicon flavor text in your 'examine' verb. This can also be used for OOC notes and preferences!", "Silicon Flavor Text", features["silicon_flavor_text"]) as message|null //Skyrat edit, removed stripped_multiline_input()
 					if(!isnull(msg))
@@ -2148,6 +2246,19 @@ GLOBAL_LIST_EMPTY(preferences_datums)
 				if("mismatched_markings")
 					show_mismatched_markings = !show_mismatched_markings
 
+				if("has_neckfire")
+					features["neckfire"] = !features["neckfire"]
+				if("has_neckfire_color")
+					var/new_neckfire_color = input(user, "Choose your fire's color:", "Character Preference", "#"+features["neckfire_color"]) as color|null
+					if(new_neckfire_color)
+						var/temp_hsv = RGBtoHSV(new_neckfire_color)
+						if(new_neckfire_color == "#000000")
+							features["neckfire_color"] = pref_species.default_color
+						else if(ReadHSV(temp_hsv)[3] >= ReadHSV(MINIMUM_MUTANT_COLOR)[3])
+							features["neckfire_color"] = sanitize_hexcolor(new_neckfire_color, 6)
+						else
+							to_chat(user,"<span class='danger'>Invalid color. Your color is not bright enough.</span>")
+					
 				if("ipc_screen")
 					var/new_ipc_screen
 					new_ipc_screen = input(user, "Choose your character's screen:", "Character Preference") as null|anything in GLOB.ipc_screens_list
@@ -2508,7 +2619,7 @@ GLOBAL_LIST_EMPTY(preferences_datums)
 				if("cock_length")
 					var/min_D = CONFIG_GET(number/penis_min_inches_prefs)
 					var/max_D = CONFIG_GET(number/penis_max_inches_prefs)
-					var/new_length = input(user, "Penis length in inches:\n([min_D]-[max_D])", "Character Preference") as num|null
+					var/new_length = input(user, "Penis length in inches:\n([min_D]-[max_D])\nReminder that your sprite size will affect this.", "Character Preference") as num|null
 					if(new_length)
 						features["cock_length"] = clamp(round(new_length), min_D, max_D)
 
@@ -2528,6 +2639,13 @@ GLOBAL_LIST_EMPTY(preferences_datums)
 							new_shape = hockeys[new_shape]
 							features["cock_taur"] = TRUE
 						features["cock_shape"] = new_shape
+
+				if("cock_diameter_ratio")
+					var/min_diameter_ratio = CONFIG_GET(number/diameter_ratio_min_size_prefs)
+					var/max_diameter_ratio = CONFIG_GET(number/diameter_ratio_max_size_prefs)
+					var/new_ratio = input(user, "Penis diameter ratio:\n([min_diameter_ratio]-[max_diameter_ratio])\nReminder that your sprite size will affect this.", "Character Preference") as num|null
+					if(new_ratio)
+						features["cock_diameter_ratio"] = clamp(round(new_ratio, 0.01), min_diameter_ratio, max_diameter_ratio)
 
 				if("cock_visibility")
 					var/n_vis = input(user, "Penis Visibility", "Character Preference") as null|anything in CONFIG_GET(keyed_list/safe_visibility_toggles)
@@ -2557,19 +2675,14 @@ GLOBAL_LIST_EMPTY(preferences_datums)
 						features["balls_visibility"] = n_vis
 
 				if("balls_fluid")
-					var/new_fluid
-					new_fluid = input(user, "Balls Fluid", "Character Preference") as null|anything in GLOB.genital_fluids_list
-					switch(new_fluid)
-						if("Milk")
-							features["balls_fluid"] = /datum/reagent/consumable/milk
-						if("Water")
-							features["balls_fluid"] = /datum/reagent/water
-						if("Semen")
-							features["balls_fluid"] = /datum/reagent/consumable/semen
-						if("Femcum")
-							features["balls_fluid"] = /datum/reagent/consumable/semen/femcum
-						if("Honey")
-							features["balls_fluid"] = /datum/reagent/consumable/alienhoney
+					var/datum/reagent/new_fluid
+					var/list/full_options = list()
+					LAZYADD(full_options, GLOB.genital_fluids_list)
+					LAZYREMOVE(full_options, find_reagent_object_from_type(/datum/reagent/consumable/semen))
+					full_options = list(find_reagent_object_from_type(/datum/reagent/consumable/semen)) + full_options
+					new_fluid = tgui_input_list(user, "Balls Fluid", "Character Preference", full_options)
+					if(new_fluid)
+						features["balls_fluid"] = new_fluid.type
 
 				if("breasts_size")
 					var/new_size = input(user, "Breast Size", "Character Preference") as null|anything in CONFIG_GET(keyed_list/breasts_cups_prefs)
@@ -2599,19 +2712,14 @@ GLOBAL_LIST_EMPTY(preferences_datums)
 						features["breasts_visibility"] = n_vis
 
 				if("breasts_fluid")
-					var/new_shape
-					new_shape = input(user, "Breast Fluid", "Character Preference") as null|anything in GLOB.genital_fluids_list
-					switch(new_shape)
-						if("Milk")
-							features["breasts_fluid"] = /datum/reagent/consumable/milk
-						if("Water")
-							features["breasts_fluid"] = /datum/reagent/water
-						if("Semen")
-							features["breasts_fluid"] = /datum/reagent/consumable/semen
-						if("Femcum")
-							features["breasts_fluid"] = /datum/reagent/consumable/semen/femcum
-						if("Honey")
-							features["breasts_fluid"] = /datum/reagent/consumable/alienhoney
+					var/datum/reagent/new_fluid
+					var/list/full_options = list()
+					LAZYADD(full_options, GLOB.genital_fluids_list)
+					LAZYREMOVE(full_options, find_reagent_object_from_type(/datum/reagent/consumable/milk))
+					full_options = list(find_reagent_object_from_type(/datum/reagent/consumable/milk)) + full_options
+					new_fluid = tgui_input_list(user, "Breast Fluid", "Character Preference", full_options)
+					if(new_fluid)
+						features["breasts_fluid"] = new_fluid.type
 
 				if("vag_shape")
 					var/new_shape
@@ -2634,6 +2742,16 @@ GLOBAL_LIST_EMPTY(preferences_datums)
 					var/n_vis = input(user, "Vagina Visibility", "Character Preference") as null|anything in CONFIG_GET(keyed_list/safe_visibility_toggles)
 					if(n_vis)
 						features["vag_visibility"] = n_vis
+
+				if("womb_fluid")
+					var/datum/reagent/new_fluid
+					var/list/full_options = list()
+					LAZYADD(full_options, GLOB.genital_fluids_list)
+					LAZYREMOVE(full_options, find_reagent_object_from_type(/datum/reagent/consumable/semen/femcum))
+					full_options = list(find_reagent_object_from_type(/datum/reagent/consumable/semen/femcum)) + full_options
+					new_fluid = tgui_input_list(user, "Womb Fluid", "Character Preference", full_options)
+					if(new_fluid)
+						features["womb_fluid"] = new_fluid.type
 
 				if("belly_color")
 					var/new_bellycolor = input(user, "Belly Color:", "Character Preference", "#"+features["belly_color"]) as color|null
@@ -2661,7 +2779,7 @@ GLOBAL_LIST_EMPTY(preferences_datums)
 					var/min_belly = CONFIG_GET(number/belly_min_size_prefs)
 					var/max_belly = CONFIG_GET(number/belly_max_size_prefs)
 					var/new_bellysize = input(user, "Belly size :\n([min_belly]-[max_belly])", "Character Preference") as num|null
-					if(new_bellysize)
+					if(!isnull(new_bellysize))
 						features["belly_size"] = clamp(new_bellysize, min_belly, max_belly)
 
 				if("butt_size")
@@ -2812,6 +2930,43 @@ GLOBAL_LIST_EMPTY(preferences_datums)
 					if(selected_custom_speech_verb)
 						custom_speech_verb = selected_custom_speech_verb
 
+				if("barksound")
+					var/list/woof_woof = list()
+					for(var/path in GLOB.bark_list)
+						var/datum/bark/B = GLOB.bark_list[path]
+						if(initial(B.ignore))
+							continue
+						if(initial(B.ckeys_allowed))
+							var/list/allowed = initial(B.ckeys_allowed)
+							if(!allowed.Find(user.client.ckey))
+								continue
+						woof_woof[initial(B.name)] = initial(B.id)
+					var/new_bork = input(user, "Choose your desired vocal bark", "Character Preference") as null|anything in woof_woof
+					if(new_bork)
+						bark_id = woof_woof[new_bork]
+						var/datum/bark/B = GLOB.bark_list[bark_id] //Now we need sanitization to take into account bark-specific min/max values
+						bark_speed = round(clamp(bark_speed, initial(B.minspeed), initial(B.maxspeed)), 1)
+						bark_pitch = clamp(bark_pitch, initial(B.minpitch), initial(B.maxpitch))
+						bark_variance = clamp(bark_variance, initial(B.minvariance), initial(B.maxvariance))
+
+				if("barkspeed")
+					var/datum/bark/B = GLOB.bark_list[bark_id]
+					var/borkset = input(user, "Choose your desired bark speed (Higher is slower, lower is faster). Min: [initial(B.minspeed)]. Max: [initial(B.maxspeed)]", "Character Preference") as null|num
+					if(!isnull(borkset))
+						bark_speed = round(clamp(borkset, initial(B.minspeed), initial(B.maxspeed)), 1)
+
+				if("barkpitch")
+					var/datum/bark/B = GLOB.bark_list[bark_id]
+					var/borkset = input(user, "Choose your desired baseline bark pitch. Min: [initial(B.minpitch)]. Max: [initial(B.maxpitch)]", "Character Preference") as null|num
+					if(!isnull(borkset))
+						bark_pitch = clamp(borkset, initial(B.minpitch), initial(B.maxpitch))
+
+				if("barkvary")
+					var/datum/bark/B = GLOB.bark_list[bark_id]
+					var/borkset = input(user, "Choose your desired baseline bark pitch. Min: [initial(B.minvariance)]. Max: [initial(B.maxvariance)]", "Character Preference") as null|num
+					if(!isnull(borkset))
+						bark_variance = clamp(borkset, initial(B.minvariance), initial(B.maxvariance))
+
 				if("bodysprite")
 					var/selected_body_sprite = input(user, "Choose your desired body sprite", "Character Preference") as null|anything in pref_species.allowed_limb_ids
 					if(selected_body_sprite)
@@ -2921,10 +3076,33 @@ GLOBAL_LIST_EMPTY(preferences_datums)
 									color_list[color_number] = "#[sanitize_hexcolor(new_marking_color, 6)]"
 								else
 									to_chat(user, "<span class='danger'>Invalid color. Your color is not bright enough.</span>")
+				if("gfluid_black")
+					var/list/datum/reagent/fluid_list = GLOB.genital_fluids_list.Copy()
+					var/list/blacklisted = list()
+					for(var/r in gfluid_blacklist)
+						LAZYADD(blacklisted, find_reagent_object_from_type(r))
+					LAZYREMOVE(fluid_list, GLOB.default_genital_fluids + blacklisted) //these are already blacklisted/are defaults
+					var/datum/reagent/selected = tgui_input_list(user, "Blacklist a fluid:", "Genital Fluid Blacklist", fluid_list)
+					if(selected)
+						LAZYADD(gfluid_blacklist, selected.type)
+				if("gfluid_unblack")
+					var/list/datum/reagent/fluid_list
+					for(var/r in gfluid_blacklist)
+						LAZYADD(fluid_list, find_reagent_object_from_type(r))
+					if(fluid_list)
+						var/datum/reagent/selected = tgui_input_list(user, "Remove a fluid from your blacklist:", "Genital Fluid Blacklist", fluid_list)
+						if(selected)
+							LAZYREMOVE(gfluid_blacklist, selected.type)
+					else
+						to_chat(user, span_warning("You do not have blacklisted reagents!"))
 		else
 			switch(href_list["preference"])
 				if("disable_combat_cursor")
 					disable_combat_cursor = !disable_combat_cursor
+				if("tg_playerpanel")
+					toggles ^= TG_PLAYER_PANEL
+					to_chat(user, span_warning("Please relog in order to apply the changes"))
+					save_preferences()
 				//CITADEL PREFERENCES EDIT - I can't figure out how to modularize these, so they have to go here. :c -Pooj
 				if("genital_colour")
 					features["genitals_use_skintone"] = !features["genitals_use_skintone"]
@@ -3186,6 +3364,19 @@ GLOBAL_LIST_EMPTY(preferences_datums)
 				if("use_new_playerpanel")
 					use_new_playerpanel = !use_new_playerpanel
 
+				// Deadmin preferences
+				if("toggle_deadmin_always")
+					deadmin ^= DEADMIN_ALWAYS
+				if("toggle_deadmin_antag")
+					deadmin ^= DEADMIN_ANTAGONIST
+				if("toggle_deadmin_head")
+					deadmin ^= DEADMIN_POSITION_HEAD
+				if("toggle_deadmin_security")
+					deadmin ^= DEADMIN_POSITION_SECURITY
+				if("toggle_deadmin_silicon")
+					deadmin ^= DEADMIN_POSITION_SILICON
+				//
+
 				if("be_special")
 					var/be_special_type = href_list["be_special_type"]
 					if(be_special_type in be_special)
@@ -3334,6 +3525,23 @@ GLOBAL_LIST_EMPTY(preferences_datums)
 				if("hud_toggle_flash")
 					hud_toggle_flash = !hud_toggle_flash
 
+				if("barkpreview")
+					if(SSticker.current_state == GAME_STATE_STARTUP) //Timers don't tick at all during game startup, so let's just give an error message
+						to_chat(user, "<span class='warning'>Bark previews can't play during initialization!</span>")
+						return
+					if(!COOLDOWN_FINISHED(src, bark_previewing))
+						return
+					if(!parent || !parent.mob)
+						return
+					COOLDOWN_START(src, bark_previewing, (5 SECONDS))
+					var/atom/movable/barkbox = new(get_turf(parent.mob))
+					barkbox.set_bark(bark_id)
+					var/total_delay
+					for(var/i in 1 to (round((32 / bark_speed)) + 1))
+						addtimer(CALLBACK(barkbox, /atom/movable/proc/bark, list(parent.mob), 7, 70, BARK_DO_VARY(bark_pitch, bark_variance)), total_delay)
+						total_delay += rand(DS2TICKS(bark_speed/4), DS2TICKS(bark_speed/4) + DS2TICKS(bark_speed/4)) TICKS
+					QDEL_IN(barkbox, total_delay)
+
 				if("save")
 					save_preferences()
 					save_character()
@@ -3351,6 +3559,30 @@ GLOBAL_LIST_EMPTY(preferences_datums)
 				if("tab")
 					if(href_list["tab"])
 						current_tab = text2num(href_list["tab"])
+				//SPLURT edit
+				if("headshot")
+					var/usr_input = input(user, "Input the image link:", "Headshot Image", features["headshot_link"]) as text|null
+					if(isnull(usr_input))
+						return
+					if(!usr_input)
+						features["headshot_link"] = null
+						return
+
+					var/static/link_regex = regex("https://i.gyazo.com|https://media.discordapp.net|https://cdn.discordapp.com|https://media.discordapp.net$") //Do not touch the damn duplicates.
+					var/static/end_regex = regex(".jpg|.jpg|.png|.jpeg|.jpeg") //Regex is terrible, don't touch the duplicate extensions
+
+					if(!findtext(usr_input, link_regex, 1, 29))
+						to_chat(usr, span_warning("The link needs to be an unshortened Gyazo or Discordapp link!"))
+						return
+					if(!findtext(usr_input, end_regex, -8))
+						to_chat(usr, span_warning("You need either \".png\", \".jpg\", or \".jpeg\" in the link!"))
+						return
+
+					if(features["headshot_link"] != usr_input)
+						to_chat(usr, span_notice("If the photo doesn't show up properly in-game, ensure that it's a direct image link that opens properly in a browser."))
+						to_chat(usr, span_notice("Keep in mind that the photo will be downsized to 250x250 pixels, so the more square the photo, the better it will look."))
+					features["headshot_link"] = usr_input
+
 	if(href_list["preference"] == "gear")
 		if(href_list["clear_loadout"])
 			loadout_data["SAVE_[loadout_slot]"] = list()
@@ -3459,8 +3691,7 @@ GLOBAL_LIST_EMPTY(preferences_datums)
 	//reset size if applicable
 	if(character.dna.features["body_size"])
 		var/initial_old_size = character.dna.features["body_size"]
-		character.dna.features["body_size"] = RESIZE_DEFAULT_SIZE
-		character.dna.update_body_size(initial_old_size)
+		character.update_size(RESIZE_DEFAULT_SIZE, initial_old_size)
 
 	character.real_name = nameless ? "[real_name] #[rand(10000, 99999)]" : real_name
 	character.name = character.real_name
@@ -3540,7 +3771,7 @@ GLOBAL_LIST_EMPTY(preferences_datums)
 
 	character.give_genitals(TRUE) //character.update_genitals() is already called on genital.update_appearance()
 
-	character.dna.update_body_size(old_size)
+	character.update_size(get_size(character), old_size)
 
 	//speech stuff
 	if(custom_tongue != "default")
@@ -3554,6 +3785,11 @@ GLOBAL_LIST_EMPTY(preferences_datums)
 			new_custom_tongue.Insert(character)
 	if(custom_speech_verb != "default")
 		character.dna.species.say_mod = custom_speech_verb
+
+	character.set_bark(bark_id)
+	character.vocal_speed = bark_speed
+	character.vocal_pitch = bark_pitch
+	character.vocal_pitch_range = bark_variance
 
 	//limb stuff, only done when initially spawning in
 	if(initial_spawn)

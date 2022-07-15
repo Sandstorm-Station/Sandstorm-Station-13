@@ -1,5 +1,15 @@
 // Hyper stuff
 
+/datum/gear/backpack/condom
+	name = "Condom"
+	path = /obj/item/genital_equipment/condom
+	cost = 1
+
+/datum/gear/backpack/sounding
+	name = "Sounding rod"
+	path = /obj/item/genital_equipment/sounding
+	cost = 1
+
 //Lipstick
 /datum/gear/backpack/lipstick
 	name = "Lipstick"
@@ -77,3 +87,13 @@
 /datum/gear/backpack/nailpolish_purple
 	name = "Purple Nail Polish"
 	path = /obj/item/nailpolish/purple
+	
+/datum/gear/backback/secbadge
+	name = "Security Badge"
+	path = /obj/item/clothing/accessory/badge
+	restricted_roles = list("Security Officer", "Warden", "Detective", "Head of Security")
+
+/datum/gear/backpack/holobadge
+	name = "Security Holo Badge"
+	path = /obj/item/clothing/accessory/badge/holo
+	restricted_roles = list("Security Officer", "Warden", "Detective", "Head of Security")

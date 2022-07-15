@@ -1,3 +1,7 @@
+/obj/structure/bed/ComponentInitialize()
+	. = ..()
+	AddElement(/datum/element/crawl_under)
+
 /obj/structure/bed/Destroy()
 	unbuckle_all_mobs()
 	return ..()
@@ -34,4 +38,10 @@
 /obj/structure/bed/matress/New()
 	..()
 	icon_state = "mattress[rand(0,6)]"
+
+/obj/structure/bed/secbed
+	name = "security pet bed"
+	desc = "A comfy-looking pet bed, now in the classic security colors."
+	//icon_state = "secbed" //doesn't exist...?
+	anchored = FALSE
 

@@ -1,0 +1,250 @@
+2022-05-01:
+  AshTheDerg:
+  - rscadd: Light replacer
+  - rscadd: Advanced health analyzer
+  - rscadd: Cyborg Hypospray
+  BongaTheProto:
+  - rscadd: 'add: Now you can make almost anything your genital fluid'
+  - rscadd: New "Genital Taster" trait that allows you to tell what fluids other people's
+      genitals produce. You can tell yours by default
+  - rscadd: Added an implant that allows you to change your genital fluids during
+      the game. Get it from service, medical or science lathes or from the quirk selection
+  - bugfix: Fixes examine texts for genitals
+2022-05-02:
+  AshTheDerg:
+  - rscadd: Cargo Cyborg Module
+  - rscadd: Cargo Cyborg Items
+  - imageadd: Added Icons for the Cargo Borg
+  - code_imp: Adjusted main code to allow selection of Cargo Borg
+  DrNukesky, E, Anonymous (modularization by Anonymous):
+  - code_imp: Most of alt title jobs are now modularized. <b>Be sure to check your
+      job titles in case if new code resets them</b>.
+  - rscadd: Bard (as an assistant's alternative job title).
+  Toxici11i:
+  - rscadd: Bloodsuckers can now forcefully level up using a large amount of blood.
+      Allows for us to use them as antagonists without admin interference.
+2022-05-03:
+  Putnam3145:
+  - bugfix: Round times are accurate now
+  SandPoot:
+  - bugfix: Actually fixes dragging storage items into themself.
+  SpookyTheFox:
+  - bugfix: fixed in character availability of the gfluid and slave implants.
+  timothyteakettle:
+  - rscadd: sodium sensitivity quirk
+2022-05-04:
+  BongaTheProto:
+  - rscadd: Added a genital blacklist to filter out fluids you don't want people to
+      cum into you
+  - rscadd: added clown honking support for nipsucks
+  - rscdel: Removes normal honey from the allowed genital fluids due to being too
+      exploitable. You still have alien honey which works the same
+  - bugfix: Fluid infuser no longer crashes when looking for reagents but having only
+      the default in the list
+2022-05-05:
+  AshTheDerg:
+  - rscadd: Cargo clamp to Cargo Borgs
+2022-05-06:
+  SandPoot:
+  - bugfix: Fixes, maybe?
+  - code_imp: Makes some vars use cooldown defines.
+  - refactor: A bunch of stuff was moved around again and rewritten.
+2022-05-07:
+  Toxici11i:
+  - bugfix: The Yeehaw update was a mistake of shitcode. One error at a time, it shall
+      be corrected and phased out.
+2022-05-08:
+  PurpleFenn:
+  - rscadd: "The ability to slap the ass of physical beings as a ghost. Spooky \u2620\
+      \u2620"
+  Toxici11i:
+  - rscadd: Massive content port
+  - bugfix: Massive fix port
+2022-05-10:
+  Anonymous:
+  - rscadd: A new emote to break-it-bad.
+  Anonymous, BongaTheProto:
+  - rscadd: 'Neutral Quirk: Gas Mask Mook Syndrome.'
+  PurpleFenn:
+  - rscdel: The fucking stupidest bug ever for us engiborgs
+  - bugfix: Borgs will no longer drop their floor tiles when they choose a different
+      tile type
+  Toxici11i:
+  - rscadd: New trait. Ash Resistance. Two points. Does what it says on the tin!
+  - bugfix: fixed borg genitals
+2022-05-11:
+  Coolgat3:
+  - rscadd: Added Shadekin
+2022-05-12:
+  Bhijn & Myr:
+  - rscadd: The server's hub tagline now has the option to pull random strings from
+      strings/server_taglines.txt!
+  LiteralMushroom:
+  - rscadd: alter form affects wings
+  - rscadd: Synths get to spark too.
+  Putnam3145:
+  - rscadd: Smelly gases (Bromine, methane, ammonia, nitric oxide and stimulum in
+      particular)
+  - rscadd: Easier-to-make-visible gases; gases made visible with this system are
+      bromine and hydrogen (plus nitryl, but that was already visible in the same
+      way)
+  - bugfix: 'Scrubbers scrub chems properly tweak: Air alarms now show all gases,
+      not just ones they''re hardcoded to show tweak: Contaminated now only removes
+      "dangerous" gases (this is actually a consequence of the hardcode reduction)
+      tweak: Water vapor is now counted as DANGEROUS (this makes it included in "contaminated"
+      and adds admin logging when people open water vapor cans)'
+  SandPoot:
+  - rscadd: Status displays can now be built.
+  - rscadd: AIs can now quickly modify their status displays using an emote (*bsod)!
+  - rscadd: AIs can also modify their status displays by just clicking on the devices
+      (opens a radial wheel)!
+  - refactor: Status displays simply look a lot better now.
+  TomGarou:
+  - rscadd: Added Reprogramming to surgeries via Techweb under Alien surgery and Brainwashing
+      disk
+  - balance: Synths and non Synths can now be brainwashed equally
+  - bugfix: Brainwash surgery not working with synths due to metal heads
+2022-05-13:
+  Anonymous:
+  - rscadd: An emote that allow you to flex on whatever expertise of yours (not necessary
+      important one), especially attorney-related.
+  - rscadd: Why king would cry?
+2022-05-14:
+  Putnam3145:
+  - rscadd: Smelly gases (Bromine, methane, ammonia, nitric oxide and stimulum in
+      particular)
+  - rscadd: Easier-to-make-visible gases; gases made visible with this system are
+      bromine and hydrogen (plus nitryl, but that was already visible in the same
+      way)
+  - bugfix: 'Scrubbers scrub chems properly tweak: Air alarms now show all gases,
+      not just ones they''re hardcoded to show tweak: Contaminated now only removes
+      "dangerous" gases (this is actually a consequence of the hardcode reduction)
+      tweak: Water vapor is now counted as DANGEROUS (this makes it included in "contaminated"
+      and adds admin logging when people open water vapor cans)'
+2022-05-16:
+  Anonymous:
+  - rscadd: Adds "Volunteer" as an alt title for Assistants.
+  - spellcheck: Replaces placeholder text for specific fleshlight interaction with
+      proper one.
+  JerryWester:
+  - bugfix: using unlinked fleshlight with unlinked underwear while equipped. Formerly
+      showed up as if underwear wasn't equipped
+  - tweak: portal fleshlight description
+  - tweak: added orifices to `handle_post_sex`'s. Dunno if this interferes with anonymity
+  - rscadd: interactions with portal fleshlight
+  - rscadd: two new modes for portal panties (penis and mouth)
+  - rscadd: sprite work for penis (credit goes to @Moltovz from the Hyperstation 13
+      discord) and mouth mode
+  - rscadd: three modes for fleshlight when targetting groin (penis, vagina, and anus)
+  Yawet330:
+  - admin: Staff when aghosting get the same things, so you can easily see peoples
+      OOC notes if disputes come up, and they're in something that prevents examines.
+2022-05-17:
+  timothyteakettle:
+  - rscadd: poly alt cloak can now be renamed/dedescriptioned in loadout
+2022-05-18:
+  timothyteakettle:
+  - rscadd: quirks are now organised into three tabs for positive, neutral and negative
+2022-05-19:
+  Anonymous:
+  - rscadd: Individuals are now able to sing choir in various situations, in despair
+      or not.
+  - rscadd: It is possible to go sicko mode for a brief moment.
+  - rscadd: Some crewmembers may possess the annoying-sounding laughter.
+  - rscadd: Feeling chill down the spine may be followed with ghostly noise.
+  BongaTheProto:
+  - admin: Added logging for stepping/trampling on people
+  - bugfix: Fixes silicon flavor text so it properly saves and loads through rounds
+2022-05-20:
+  Toxici11i:
+  - rscadd: Smithing scaling mechanics! Better smiths actually make better gear...
+  - bugfix: Lavaland Syndiebase now actually gets the correct boards to setup R&D.
+  - bugfix: Artifact scaling was fixed.
+  - tweak: Artifacts can now be made multiple times on the same anvil, without it
+      being a debug.
+  - rscadd: Plant data disks to Syndicate lavaland's crates.
+2022-05-21:
+  Bhijn & Myr:
+  - bugfix: Blood trails no longer have a duplicate directionless iconstate as their
+      base sprite, fixing the Wonkiness of blood trails going west/east.
+  BongaTheProto:
+  - bugfix: Fixed the changelogs again
+  - tweak: Using the positron alert console now broadcasts to Science, rather than
+      just locally.
+  SandPoot:
+  - bugfix: Silicon flavor texts are no longer broken... maybe?
+2022-05-22:
+  BongaTheProto:
+  - rscadd: added a goofy ahh snore emote
+2022-05-23:
+  BongaTheProto:
+  - bugfix: fixes the bug where reagents won't add through view variables if you enter
+      their full path
+  - rscadd: Added a recipe for liquid panty dropper
+  - rscadd: Added a new drink, Mech Rider
+2022-05-24:
+  SandPoot:
+  - rscadd: You can now make shuttle seats with titanium.
+2022-05-27:
+  BongaTheProto:
+  - bugfix: fixes extreme and harmful prefs so they're ABLE TO BE SAVED!! FINALLY!!!
+2022-05-28:
+  Anonymous:
+  - soundadd: Oh no! Our code! It's broken! :(
+  AshTheDerg:
+  - bugfix: fixed Cog Map
+  - tweak: Expanded Cargo (Cog)
+  - tweak: Lead-Lined Turbine (Cog)
+2022-05-29:
+  BongaTheProto:
+  - rscadd: Radio Implants to Neural Programing
+  - rscadd: Problem computers to Data Theory Node
+  - rscadd: ERT MOPP outfits are now select-able
+  - rscadd: 9mm Pistol mags to Cargo ordering console
+  - rscadd: Names to all the .45 ammo casings
+  - rscadd: Make your sprite look smaller FOR YOURSELF if you're big
+  - rscadd: twist when crossing railings
+  - rscadd: a couple new outfits
+  - rscadd: adds headshots for the character creation
+  - rscadd: you can now peek under people's clothes
+  - code_imp: optimizes the milking machine code
+  - code_imp: Syncs the chatclient with tg
+  - code_imp: Optimizes some interaction code
+  - spellcheck: fixes some grammar errors in unholy interactions
+  - bugfix: makes curtains visible in the map editor
+  - bugfix: Fixes some bugs with crawling under tables apparently
+  - bugfix: Barkboxes are no longer contraband
+  - bugfix: centcom dresses now have a sprite when picked up
+  - bugfix: ERT Medic ID not working right, the icon was referenced improperly
+  - bugfix: MOPP suits not showing up in the Equipment Section of the SecTech Fab
+  - bugfix: All .45 ammo not showing up in the ammo section of the SecTech Fab. I
+      hate case sensitive.
+  - spellcheck: Fixed misspellings on the Gold Enforcer
+  - imageadd: Some outfits may display breasts/bulge depending on your genitals
+  - imageadd: More belly and ass sizes past their current limits
+  - tweak: Now micros (anyone with mob_size = 0) has smalltalk
+  - balance: New size health & penalties management
+2022-05-30:
+  BongaTheProto:
+  - bugfix: Fixes digi sprites for flannel jackets, soft hoodies and polychromic windbreakers
+      (do tell if you find any more broken sprites please!)
+2022-05-31:
+  Anonymous:
+  - rscadd: Added aesthetic/cosmetic, polychromic version of trencher uniform, suit
+      and helmet to loadout and clothesmate vendor. Plus gasmask as contraband and
+      officer cap as premium item in the vendor (though you can grab it at loadout
+      too).
+  - tweak: Renames "Gas Mask Mook Syndrome" into "Bane Syndrome".
+  AshTheDerg:
+  - rscadd: Added Psychologist Office
+  - rscadd: Air Alarm in Psych Office
+  - rscadd: Added Public Garden
+  - rscadd: More Security Cameras
+  - rscadd: Disks for Genetics
+  - rscadd: Army Multitool Knife
+  - rscdel: Removed Fore Observatory (For Garden)
+  - tweak: tweaked part of the architecture to prevent shuttle clipping
+  - bugfix: fixed Cargo Doors and Conveyors
+  - bugfix: fixed wrong APC name for Psych office
+  Kuki-kono:
+  - rscadd: Added pAI gender selection

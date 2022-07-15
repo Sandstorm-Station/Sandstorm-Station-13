@@ -24,7 +24,7 @@
 	var/choice = input("Select a species", "Human Spawner", null) in GLOB.species_list
 	selected_species = GLOB.species_list[choice]
 	
-/* Revive this once we purge all the istype checks for tools for tool_behaviour
+// Revive this once we purge all the istype checks for tools for tool_behaviour
 /obj/item/debug/omnitool
 	name = "omnitool"
 	desc = "The original hypertool, born before them all. Use it in hand to unleash it's true power."
@@ -99,4 +99,3 @@
 			tool_behaviour = TOOL_SCALPEL
 		if("Saw")
 			tool_behaviour = TOOL_SAW
-*/

@@ -1,3 +1,25 @@
+//Main code edits
+/obj/structure/table/ComponentInitialize()
+	. = ..()
+	AddElement(/datum/element/crawl_under)
+
+/obj/structure/table/CanPass(atom/movable/mover, turf/target)
+	if(mover.pass_flags & PASSCRAWL)
+		return TRUE
+	return ..()
+
+/obj/structure/table/glass/check_break(mob/living/M)
+	if(M.pass_flags & PASSCRAWL)
+		return
+	. = ..()
+
+/obj/structure/table/glass/table_shatter(mob/living/L)
+	var/turf/F = get_turf(src) // Because modularized procs ignore original's defined vars.
+	if(prob(1)) // Took about 33 broken glass tables to play the meme on local testing.
+		playsound(F, 'modular_splurt/sound/misc/ourtable.ogg', 100, 0)
+	. = ..()
+
+//Own stuff
 /obj/structure/table/wood/shadow
 	name = "shadow wood table"
 	icon = 'modular_splurt/icons/obj/smooth_structures/table_shadow.dmi'

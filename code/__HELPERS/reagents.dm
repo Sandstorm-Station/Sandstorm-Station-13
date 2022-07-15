@@ -87,6 +87,7 @@
 					if(ispath(chosen_id))
 						valid_id = TRUE
 				else
+					chosen_id = text2path(chosen_id)
 					valid_id = TRUE
 				if(!valid_id)
 					to_chat(user, "<span class='warning'>A reagent with that ID doesn't exist!</span>")
@@ -97,6 +98,8 @@
 	return chosen_id
 
 /proc/find_reagent_object_from_type(input)
+	if(!GLOB.chemical_reagents_list)
+		build_chemical_reagent_list() //Still no idea how to make modular changes to global procs
 	if(GLOB.chemical_reagents_list[input]) //prefer IDs!
 		return GLOB.chemical_reagents_list[input]
 	else

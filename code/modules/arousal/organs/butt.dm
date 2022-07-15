@@ -15,12 +15,6 @@
 	var/prev_size //former size value, to allow update_size() to early return should be there no significant changes.
 	layer_index = BUTT_LAYER_INDEX
 
-/obj/item/organ/genital/butt/on_life()
-	if(QDELETED(src))
-		return
-	if(!owner)
-		return
-
 /obj/item/organ/genital/butt/modify_size(modifier, min = -INFINITY, max = BUTT_SIZE_MAX)
 	var/new_value = clamp(size_cached + modifier, min, max)
 	if(new_value == size_cached)
@@ -62,7 +56,13 @@
 		if(4)
 			size_name = "hefty"
 		if(5)
-			size_name = pick("massive","extreme","enormous","very generous","humongous","big bubbly","dummy thicc")
+			size_name = pick("massive", "very generous")
+		if(6)
+			size_name = pick("gigantic", "big bubbly", "enormous")
+		if(7)
+			size_name = pick("unfathomably large", "extreme")
+		if(8)
+			size_name = pick("absolute dumptruck", "humongous", "dummy thicc")
 		else
 			size_name = "nonexistent"
 

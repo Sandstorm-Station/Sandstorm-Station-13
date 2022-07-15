@@ -48,9 +48,9 @@
 		TakeComponent(detached_pockets)
 
 	U.armor = U.armor.detachArmor(armor)
-	//SKYRAT EDIT
+	//SANDSTORM EDIT
 	current_uniform = null
-	//SKYRAT EDIT END
+	//SANDSTORM EDIT END
 
 	if(isliving(user))
 		on_uniform_dropped(U, user)
@@ -61,18 +61,23 @@
 		pixel_y = 0
 	layer = initial(layer)
 	plane = initial(plane)
-	U.accessory_overlay = null
 	U.cut_overlays()
 	U.attached_accessories -= src
+	U.accessory_overlays = list()
 	if(length(U.attached_accessories))
-		U.accessory_overlay = mutable_appearance('icons/mob/clothing/accessories.dmi', "blank", WRISTS_LAYER, U.plane)
+		U.accessory_overlays = list(mutable_appearance('icons/mob/clothing/accessories.dmi', "blank"))
 		for(var/obj/item/clothing/accessory/attached_accessory in U.attached_accessories)
 			attached_accessory.force_unto(U)
-			var/mutable_appearance/Y = mutable_appearance(attached_accessory.mob_overlay_icon, attached_accessory.icon_state, WRISTS_LAYER, U.plane)
-			Y.alpha = attached_accessory.alpha
-			Y.color = attached_accessory.color
-			U.accessory_overlay.add_overlay(Y)
-//SKYRAT EDIT
+			var/datum/element/polychromic/polychromic = LAZYACCESS(attached_accessory.comp_lookup, "item_worn_overlays")
+			if(!polychromic)
+				var/mutable_appearance/accessory_overlay = mutable_appearance(attached_accessory.mob_overlay_icon, attached_accessory.item_state || attached_accessory.icon_state, ABOVE_HUD_LAYER)
+				accessory_overlay.alpha = attached_accessory.alpha
+				accessory_overlay.color = attached_accessory.color
+				U.accessory_overlays += accessory_overlay
+			else
+				polychromic.apply_worn_overlays(attached_accessory, FALSE, attached_accessory.mob_overlay_icon, attached_accessory.item_state || attached_accessory.icon_state, NONE, U.accessory_overlays)
+
+//SANDSTORM EDIT
 /obj/item/clothing/accessory/proc/force_unto(obj/item/clothing/under/U)
 	layer = FLOAT_LAYER
 	plane = FLOAT_PLANE
@@ -98,7 +103,7 @@
 					pixel_x += rand(-16, 16)
 					pixel_y += rand(-16, 16)
 	U.add_overlay(src)
-//SKYRAT EDIT END
+//SANDSTORM EDIT END
 
 /obj/item/clothing/accessory/proc/on_uniform_equip(obj/item/clothing/under/U, user)
 	return
@@ -296,6 +301,15 @@
 	item_state = "maidapron"
 	minimize_when_attached = FALSE
 
+/obj/item/clothing/accessory/maidapron/polychromic
+	name = "polychromic maid apron"
+	icon_state = "polymaidapron"
+	item_state = "polymaidapron"
+
+/obj/item/clothing/accessory/maidapron/polychromic/ComponentInitialize()
+	. = ..()
+	AddElement(/datum/element/polychromic, list("#333333", "#FFFFFF"), 2)
+
 /obj/item/clothing/accessory/sleevecrop
 	name = "one sleeved crop top"
 	desc = "Off the shoulder crop top, for those nights out partying."
@@ -419,7 +433,7 @@
 /obj/item/clothing/accessory/medal/gold/captain/family
 	name = "old medal of captaincy"
 	desc = "A rustic badge pure gold, has been through hell and back by the looks, the syndcate have been after these by the looks of it for generations..."
-	armor = list("melee" = 0, "bullet" = 0, "laser" = 0, "energy" = 0, "bomb" = 0, "bio" = 0, "rad" = 0, "fire" = 0, "acid" = 10) //Pure gold
+	armor = list(MELEE = 0, BULLET = 0, LASER = 0, ENERGY = 0, BOMB = 0, BIO = 0, RAD = 0, FIRE = 0, ACID = 10) //Pure gold
 	custom_materials = list(/datum/material/gold=2000)
 
 /obj/item/clothing/accessory/medal/gold/heroism
@@ -431,7 +445,7 @@
 	desc = "An eccentric medal made of plasma."
 	icon_state = "plasma"
 	medaltype = "medal-plasma"
-	armor = list("melee" = 0, "bullet" = 0, "laser" = 0, "energy" = 0, "bomb" = 0, "bio" = 0, "rad" = 0, "fire" = -10, "acid" = 0) //It's made of plasma. Of course it's flammable.
+	armor = list(MELEE = 0, BULLET = 0, LASER = 0, ENERGY = 0, BOMB = 0, BIO = 0, RAD = 0, FIRE = -10, ACID = 0) //It's made of plasma. Of course it's flammable.
 	custom_materials = list(/datum/material/plasma=1000)
 
 /obj/item/clothing/accessory/medal/plasma/temperature_expose(datum/gas_mixture/air, exposed_temperature, exposed_volume)
@@ -521,13 +535,13 @@
 	icon_state = "pocketprotector"
 	pocket_storage_component_path = /datum/component/storage/concrete/pockets/pocketprotector
 
-/obj/item/clothing/accessory/pocketprotector/full/Initialize()
+/obj/item/clothing/accessory/pocketprotector/full/Initialize(mapload)
 	. = ..()
 	new /obj/item/pen/red(src)
 	new /obj/item/pen(src)
 	new /obj/item/pen/blue(src)
 
-/obj/item/clothing/accessory/pocketprotector/cosmetology/Initialize()
+/obj/item/clothing/accessory/pocketprotector/cosmetology/Initialize(mapload)
 	. = ..()
 	for(var/i in 1 to 3)
 		new /obj/item/lipstick/random(src)
@@ -540,21 +554,21 @@
 	name = "bone talisman"
 	desc = "A hunter's talisman, some say the old gods smile on those who wear it."
 	icon_state = "talisman"
-	armor = list("melee" = 5, "bullet" = 5, "laser" = 0, "energy" = 0, "bomb" = 10, "bio" = 20, "rad" = 5, "fire" = 0, "acid" = 25)
+	armor = list(MELEE = 5, BULLET = 5, LASER = 0, ENERGY = 0, BOMB = 10, BIO = 20, RAD = 5, FIRE = 0, ACID = 25)
 
 /obj/item/clothing/accessory/skullcodpiece
 	name = "skull codpiece"
 	desc = "A skull shaped ornament, intended to protect the important things in life."
 	icon_state = "skull"
 	above_suit = TRUE
-	armor = list("melee" = 5, "bullet" = 5, "laser" = 0, "energy" = 0, "bomb" = 10, "bio" = 20, "rad" = 5, "fire" = 0, "acid" = 25)
+	armor = list(MELEE = 5, BULLET = 5, LASER = 0, ENERGY = 0, BOMB = 10, BIO = 20, RAD = 5, FIRE = 0, ACID = 25)
 
 /obj/item/clothing/accessory/skullcodpiece/fake
 	name = "false codpiece"
 	desc = "A plastic ornament, intended to protect the important things in life. It's not very good at it."
 	icon_state = "skull"
 	above_suit = TRUE
-	armor = list("melee" = 0, "bullet" = 0, "laser" = 0, "energy" = 0, "bomb" = 0, "bio" = 0, "rad" = 0, "fire" = 0, "acid" = 0)
+	armor = list(MELEE = 0, BULLET = 0, LASER = 0, ENERGY = 0, BOMB = 0, BIO = 0, RAD = 0, FIRE = 0, ACID = 0)
 
 /////////////////////
 //Syndie Accessories//
@@ -564,21 +578,21 @@
 	name = "protective padding"
 	desc = "A soft padding meant to cushion the wearer from melee harm."
 	icon_state = "padding"
-	armor = list("melee" = 20, "bullet" = 10, "laser" = 0, "energy" = 0, "bomb" = 5, "bio" = 0, "rad" = 0, "fire" = -20, "acid" = 45)
+	armor = list(MELEE = 20, BULLET = 10, LASER = 0, ENERGY = 0, BOMB = 5, BIO = 0, RAD = 0, FIRE = -20, ACID = 45)
 	flags_inv = HIDEACCESSORY //hidden from indiscrete mob examines.
 
 /obj/item/clothing/accessory/kevlar
 	name = "kevlar padding"
 	desc = "A layered kevlar padding meant to cushion the wearer from ballistic harm."
 	icon_state = "padding"
-	armor = list("melee" = 10, "bullet" = 20, "laser" = 0, "energy" = 0, "bomb" = 10, "bio" = 0, "rad" = 0, "fire" = 0, "acid" = 25)
+	armor = list(MELEE = 10, BULLET = 20, LASER = 0, ENERGY = 0, BOMB = 10, BIO = 0, RAD = 0, FIRE = 0, ACID = 25)
 	flags_inv = HIDEACCESSORY
 
 /obj/item/clothing/accessory/plastics
 	name = "ablative padding"
 	desc = "A thin ultra-refractory composite padding meant to cushion the wearer from energy lasers harm."
 	icon_state = "plastics"
-	armor = list("melee" = 0, "bullet" = 0, "laser" = 20, "energy" = 10, "bomb" = 0, "bio" = 0, "rad" = 0, "fire" = 20, "acid" = -40)
+	armor = list(MELEE = 0, BULLET = 0, LASER = 20, ENERGY = 10, BOMB = 0, BIO = 0, RAD = 0, FIRE = 20, ACID = -40)
 	flags_inv = HIDEACCESSORY
 
 //necklace

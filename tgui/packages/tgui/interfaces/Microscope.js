@@ -12,7 +12,7 @@ export const Microscope = (props, context) => {
   } = data;
   return (
     <Window>
-      <Window.Content scrollable>
+      <Window.Content overflow="auto">
         <Section>
           <LabeledList>
             <LabeledList.Item label="Dish Sample">

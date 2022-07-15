@@ -69,7 +69,7 @@ export const TrackedPlaytime = (props, context) => {
       title="Tracked Playtime"
       width={550}
       height={650}>
-      <Window.Content scrollable>
+      <Window.Content overflow="auto">
         {failReason && (
           failReason === JOB_REPORT_MENU_FAIL_REASON_TRACKING_DISABLED
             && <Box>This server has disabled tracking.</Box>

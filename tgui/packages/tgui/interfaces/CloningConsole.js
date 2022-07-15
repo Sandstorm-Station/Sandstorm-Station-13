@@ -20,7 +20,7 @@ export const CloningConsole = (props, context) => {
   const records = data.records || [];
   return (
     <Window width="400" height="600" resizable>
-      <Window.Content scrollable>
+      <Window.Content overflow="auto">
         {useRecords ? (
           <Section
             title="Autoclone"

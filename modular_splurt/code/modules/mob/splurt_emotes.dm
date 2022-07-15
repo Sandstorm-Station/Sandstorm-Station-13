@@ -1,3 +1,4 @@
+//Main code edits
 /datum/emote/living/audio_emote/laugh/run_emote(mob/user, params)
 	. = ..()
 	if(. && iscarbon(user))
@@ -27,11 +28,8 @@
 	message = "farts out shitcode."
 	emote_type = EMOTE_AUDIBLE
 
-/mob/living
-	var/fart_cooldown = 0
-
 /datum/emote/living/fart/run_emote(mob/living/user, params, type_override, intentional)
-	if(user.fart_cooldown)
+	if(TIMER_COOLDOWN_CHECK(user, COOLDOWN_EMOTE_FART))
 		to_chat(user, "<span class='warning'>You try your hardest, but no shart comes out.</span>")
 		return
 	var/list/fart_emotes = list( //cope goonies
@@ -82,17 +80,8 @@
 	. = ..()
 	if(.)
 		playsound(user, pick(GLOB.brap_noises), 50, 1, -1)
-		var/delay = 3 SECONDS
-		user.fart_cooldown = TRUE
-		addtimer(CALLBACK(GLOBAL_PROC, .proc/_fart_renew_msg, user), delay)
+		TIMER_COOLDOWN_START(user, COOLDOWN_EMOTE_FART, 3 SECONDS)
 
-/proc/_fart_renew_msg(mob/living/user)
-	if(QDELETED(user))
-		return
-	//to_chat(user, "<span class='notice'>Your ass feels full, again.</span>") //full o shit you mean
-	user.fart_cooldown = 0
-
-// Hyperstation Emotes
 /datum/emote/living/cackle
 	key = "cackle"
 	key_third_person = "cackles"
@@ -410,6 +399,8 @@
 	key = "laugh2"
 	key_third_person = "laughs2"
 	message = "laughs like a king."
+	emote_type = EMOTE_AUDIBLE
+	muzzle_ignore = FALSE
 
 /datum/emote/living/laugh2/run_emote(mob/user, params, type_override, intentional)
 	if(!(. = ..()))
@@ -418,3 +409,139 @@
 		return
 	user.nextsoundemote = world.time + 7
 	playsound(user, 'modular_splurt/sound/voice/laugh_king.ogg', 50, 1, -1)
+
+/datum/emote/living/laugh3
+	key = "laugh3"
+	key_third_person = "laughs3"
+	message = "laughs silly."
+	emote_type = EMOTE_AUDIBLE
+	muzzle_ignore = FALSE
+
+/datum/emote/living/laugh3/run_emote(mob/user, params, type_override, intentional)
+	if(!(. = ..()))
+		return
+	if(user.nextsoundemote >= world.time)
+		return
+	user.nextsoundemote = world.time + 70
+	playsound(user, 'modular_splurt/sound/voice/lol.ogg', 50, 1, -1)
+
+/datum/emote/living/breakbad
+	key = "breakbad"
+	key_third_person = "breakbads"
+	message = "stares intensively with determination."
+
+/datum/emote/living/breakbad/run_emote(mob/user, params, type_override, intentional)
+	if(!(. = ..()))
+		return
+	if(user.nextsoundemote >= world.time)
+		return
+	user.nextsoundemote = world.time + 60
+	playsound(user, 'modular_splurt/sound/voice/breakbad.ogg', 50, 1, -1)
+
+/datum/emote/living/lawyerup
+	key = "lawyerup"
+	key_third_person = "lawyerups"
+	message = "emits an aura of expertise."
+
+/datum/emote/living/lawyerup/run_emote(mob/user, params, type_override, intentional)
+	if(!(. = ..()))
+		return
+	if(user.nextsoundemote >= world.time)
+		return
+	user.nextsoundemote = world.time + 60
+	playsound(user, 'modular_splurt/sound/voice/lawyerup.ogg', 50, 1, -1)
+
+/datum/emote/living/cry2
+	key = "cry2"
+	key_third_person = "crys2"
+	message = "cries like a king."
+	emote_type = EMOTE_AUDIBLE
+	muzzle_ignore = FALSE
+
+/datum/emote/living/cry2/run_emote(mob/user, params, type_override, intentional)
+	if(!(. = ..()))
+		return
+	if(user.nextsoundemote >= world.time)
+		return
+	user.nextsoundemote = world.time + 7
+	playsound(user, pick('modular_splurt/sound/voice/cry_king.ogg', 'modular_splurt/sound/voice/cry_king2.ogg'), 50, 1, -1)
+
+/datum/emote/living/choir
+	key = "choir"
+	key_third_person = "choirs"
+	message = "let out a choir."
+	emote_type = EMOTE_AUDIBLE
+	muzzle_ignore = FALSE
+
+/datum/emote/living/choir/run_emote(mob/user, params, type_override, intentional)
+	if(!(. = ..()))
+		return
+	if(user.nextsoundemote >= world.time)
+		return
+	user.nextsoundemote = world.time + 60
+	playsound(user, 'modular_splurt/sound/voice/choir.ogg', 50, 1, -1)
+
+/datum/emote/living/sicko
+	key = "sicko"
+	key_third_person = "sickos"
+	message = "briefly goes sicko mode."
+	emote_type = EMOTE_AUDIBLE
+	muzzle_ignore = FALSE
+
+/datum/emote/living/sicko/run_emote(mob/user, params, type_override, intentional)
+	if(!(. = ..()))
+		return
+	if(user.nextsoundemote >= world.time)
+		return
+	user.nextsoundemote = world.time + 7
+	playsound(user, 'modular_splurt/sound/voice/sicko.ogg', 50, 1, -1)
+
+/datum/emote/living/chill
+	key = "chill"
+	key_third_person = "chills"
+	message = "felt a chill running down their spine..."
+
+/datum/emote/living/chill/run_emote(mob/user, params, type_override, intentional)
+	if(!(. = ..()))
+		return
+	if(user.nextsoundemote >= world.time)
+		return
+	user.nextsoundemote = world.time + 10
+	playsound(user, 'modular_splurt/sound/voice/waterphone.ogg', 50, 1, -1)
+
+/datum/emote/living/snore/snore2
+	key = "snore2"
+	key_third_person = "snores"
+	message = "lets out an <b>earthshaking</b> snore"
+
+/datum/emote/living/snore/snore2/run_emote(mob/user, params, type_override, intentional)
+	var/datum/dna/D = user.has_dna()
+	var/say_mod = (D ? D.species.say_mod : "says")
+	var/list/aaauughh = list(
+		"lets out an <b>earthshaking</b> snore.",
+		"lets out what sounds like a <b>painful</b> snore.",
+		"[say_mod], <b>\"AAAAAAUUUUUUGGGHHHHH!!!\"</b>"
+	)
+	message = pick(aaauughh)
+	. = ..()
+	if(!.)
+		return
+	if(user.nextsoundemote >= world.time)
+		return
+	user.nextsoundemote = world.time + 10
+	playsound(user, pick('modular_splurt/sound/voice/aauugghh1.ogg', 'modular_splurt/sound/voice/aauugghh2.ogg'), 40, 1, -1)
+
+/datum/emote/living/pant
+	key = "pant"
+	key_third_person = "pants"
+	message = "pants!"
+
+/datum/emote/living/pant/run_emote(mob/user, params, type_override, intentional)
+	var/list/pants = list(
+		"pants!",
+		"pants like a dog.",
+		"lets out soft pants.",
+		"pulls [user.p_their()] tongue out, panting."
+	)
+	message = pick(pants)
+	. = ..()

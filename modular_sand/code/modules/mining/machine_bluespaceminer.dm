@@ -4,6 +4,7 @@
 	icon = 'modular_sand/icons/obj/machines/mining_machines.dmi'
 	icon_state = "bsminer"
 	density = TRUE
+	can_be_unanchored = TRUE
 	circuit = /obj/item/circuitboard/machine/bluespace_miner
 	layer = BELOW_OBJ_LAYER
 	var/list/ore_rates = list(/datum/material/iron = 0.3, /datum/material/glass = 0.3, /datum/material/plasma = 0.1,  /datum/material/silver = 0.1, /datum/material/gold = 0.05, /datum/material/titanium = 0.05, /datum/material/uranium = 0.05, /datum/material/diamond = 0.02)
@@ -20,6 +21,12 @@
 		. += "<span class='notice'>A small screen on the machine reads, \"Efficiency at [multiplier * 100]%\"</span>"
 		if(multiplier >= 5)
 			. += "<span class='notice'>Bluespace generation is active.</span>"
+	if(!anchored)
+		. += "<span class='warning'>The machine won't work while not firmly secured to the ground.</span>"
+	if(!materials?.silo)
+		. += "<span class='notice'>No ore silo connected. Use a multi-tool to link an ore silo to this machine.</span>"
+	else if(materials?.on_hold())
+		. += "<span class='warning'>Ore silo access is on hold, please contact the quartermaster.</span>"
 
 /obj/machinery/mineral/bluespace_miner/RefreshParts()
 	multiplier = 0
@@ -31,34 +38,27 @@
 		stock_amt++
 	multiplier /= stock_amt
 	if(multiplier >= 5)
-		ore_rates += list(/datum/material/bluespace = 0.01)
+		ore_rates[/datum/material/bluespace] = 0.01
 	else
-		ore_rates -= ore_rates["bluespace crystal"]
+		ore_rates -= /datum/material/bluespace
 
 /obj/machinery/mineral/bluespace_miner/Destroy()
 	materials = null
 	return ..()
 
 /obj/machinery/mineral/bluespace_miner/multitool_act(mob/living/user, obj/item/M)
-	if(M.tool_behaviour == TOOL_MULTITOOL)
-		if(!M.buffer || !istype(M.buffer, /obj/machinery/ore_silo))
-			to_chat(user, "<span class='warning'>You need to multitool the ore silo first.</span>")
-			balloon_alert(user, "invalid buffer!")
-			return FALSE
-
-/obj/machinery/mineral/bluespace_miner/examine(mob/user)
 	. = ..()
-	if(!materials?.silo)
-		. += "<span class='notice'>No ore silo connected. Use a multi-tool to link an ore silo to this machine.</span>"
-	else if(materials?.on_hold())
-		. += "<span class='warning'>Ore silo access is on hold, please contact the quartermaster.</span>"
+	if(!M.buffer || !istype(M.buffer, /obj/machinery/ore_silo))
+		to_chat(user, "<span class='warning'>You need to multitool the ore silo first.</span>")
+		balloon_alert(user, "invalid buffer!")
+		return TRUE
 
 /obj/machinery/mineral/bluespace_miner/process()
 	update_icon_state()
 	if(!materials?.silo || materials?.on_hold())
 		return
 	var/datum/component/material_container/mat_container = materials.mat_container
-	if(!mat_container || panel_open || !powered())
+	if(!mat_container || panel_open || !powered() || !anchored)
 		return
 	var/datum/material/ore = pick(ore_rates)
 	mat_container.bsm_insert(((ore_rates[ore] * 1000) * multiplier), ore)
@@ -79,7 +79,7 @@
 	return FALSE
 
 /obj/machinery/mineral/bluespace_miner/update_icon_state()
-	if(!powered())
+	if(!powered() || !anchored || !materials?.silo || materials?.on_hold())
 		if(!panel_open)
 			icon_state = "bsminer-unpowered"
 		else
@@ -96,16 +96,14 @@
 		return TRUE
 
 /obj/machinery/mineral/bluespace_miner/screwdriver_act(mob/living/user, obj/item/I)
-	. = TRUE
-	if(..())
-		return
-	if(!I.tool_behaviour == TOOL_SCREWDRIVER)
-		return
-	if(!state_open)
-		if(powered())
-			if(default_deconstruction_screwdriver(user, "bsminer-maintenance", "bsminer", I))
-				return TRUE
-		else if(!powered())
-			if(default_deconstruction_screwdriver(user, "bsminer-unpowered-maintenance", "bsminer-unpowered", I))
-				return TRUE
+	. = ..()
+	var/powered = powered()
+	if(default_deconstruction_screwdriver(user, "bsminer-[!powered ? "unpowered-" : null]maintenance", "bsminer[!powered ? "unpowered" : null]", I))
+		return TRUE
+	return FALSE
+
+/obj/machinery/mineral/bluespace_miner/wrench_act(mob/living/user, obj/item/I)
+	. = ..()
+	if(default_unfasten_wrench(user, I))
+		return TRUE
 	return FALSE

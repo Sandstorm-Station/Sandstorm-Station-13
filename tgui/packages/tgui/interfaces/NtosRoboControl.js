@@ -17,7 +17,7 @@ export const NtosRoboControl = (props, context) => {
     <NtosWindow
       width={550}
       height={550}>
-      <NtosWindow.Content scrollable>
+      <NtosWindow.Content overflow="auto">
         <Section title="Robot Control Console">
           <LabeledList>
             <LabeledList.Item label="Id Card">

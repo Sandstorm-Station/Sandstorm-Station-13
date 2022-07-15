@@ -97,7 +97,7 @@
 	name = "Diminicillin"
 	id = /datum/reagent/shrinkchem
 	mix_message = "the reaction appears to shrink!"
-	required_reagents = list(/datum/reagent/sizechem = 0.15, /datum/reagent/consumable/frostoil = 0.15, /datum/reagent/drug = 0.30)
+	required_reagents = list(/datum/reagent/sizechem = 0.15, /datum/reagent/consumable/frostoil = 0.15, /datum/reagent/drug/space_drugs = 0.30)
 	results = list(/datum/reagent/shrinkchem = 0.25)
 	required_temp = 1
 	OptimalTempMin 		= 100 		// Lower area of bell curve for determining heat based rate reactions

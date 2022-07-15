@@ -3,9 +3,10 @@
 	icon = 'modular_splurt/icons/obj/structures/statue.dmi'
 	icon_state = "ashie"
 	max_integrity = 300
-	material_drop_type = /obj/item/stack/sheet/bone
 	desc = "This is a suprisingly-well done statue made out of bone."
 	impressiveness = 10
+	custom_materials = list(/datum/material/bone = MINERAL_MATERIAL_AMOUNT*5)
+	abstract_type = /obj/structure/statue/bone
 
 /obj/structure/statue/boney/ashwalker
 	icon_state = "bone"

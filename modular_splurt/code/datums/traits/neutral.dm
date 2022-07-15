@@ -49,6 +49,14 @@
 	value = 0
 	medical_record_text = "Patient seems overly affectionate."
 
+/datum/quirk/headpat_slut/add()
+	. = ..()
+	quirk_holder.AddElement(/datum/element/wuv/headpat, null, null, /datum/mood_event/pet_animal)
+
+/datum/quirk/headpat_slut/remove()
+	. = ..()
+	quirk_holder.RemoveElement(/datum/element/wuv/headpat)
+
 /datum/quirk/in_heat
 	name = "In Heat"
 	desc = "Your system burns with the desire to be bred. Satisfying your lust will make you happy, but ignoring it may cause you to become sad and needy."
@@ -264,3 +272,23 @@
 	hydra.real_name = selhead
 	hydra.visible_message("<span class='notice'>[hydra.name] pulls the rest of their heads back; and puts [selhead]'s forward.</span>", \
 							"<span class='notice'>You are now talking as [selhead]!</span>", ignored_mobs=owner)
+
+//Own traits
+/datum/quirk/cum_sniff
+	name = "Genital Taster"
+	desc = "You've built so much experience savoring other people's genitals through your life that you can easily tell what liquids they're full of (besides blood in their vessels that is)"
+	value = 0
+	mob_trait = TRAIT_GFLUID_DETECT
+	gain_text = "<span class='notice'>You start getting peculiar smells from people's bits.</span>"
+	lose_text = "<span class='notice'>People's genitals start smelling all the same to you...</span>"
+	medical_record_text = "Patient attempted to get their doctor to drag his balls accross their face."
+
+/datum/quirk/fluid_infuser
+	name = "Fluid Infuser"
+	desc = "You just couldn't wait to get one of NanoTrasen's new fluid inducers when they first came out, so now you can hop in the station with editable titty milk!"
+	value = 0
+
+/datum/quirk/fluid_infuser/on_spawn()
+	. = ..()
+	var/obj/item/implant/genital_fluid/put_in = new
+	put_in.implant(quirk_holder, null, TRUE, TRUE)

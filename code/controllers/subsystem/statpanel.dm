@@ -22,8 +22,8 @@ SUBSYSTEM_DEF(statpanels)
 			" ",
 			"OOC: [GLOB.ooc_allowed ? "Enabled" : "Disabled"]",
 			" ",
-			"Server Time: [time2text(world.timeofday, "YYYY-MM-DD hh:mm:ss", world.time)]",
-			"Round Time: [round_time > MIDNIGHT_ROLLOVER ? "[round(round_time/MIDNIGHT_ROLLOVER)]:[worldtime2text()]" : worldtime2text()]",
+			"Server Time: [time2text(world.timeofday, "YYYY-MM-DD hh:mm:ss")]",
+			"Round Time: [GAMETIMESTAMP("hh:mm:ss", round_time)]",
 			"Actual Round Timer: [time2text(real_round_time, "hh:mm:ss", 0)]", //A back up control to check the round time to see if round time has descyed as well as properly track round time
 			"Station Time: [STATION_TIME_TIMESTAMP("hh:mm:ss", world.time)]",
 			"Time Dilation: [round(SStime_track.time_dilation_current,1)]% AVG:([round(SStime_track.time_dilation_avg_fast,1)]%, [round(SStime_track.time_dilation_avg,1)]%, [round(SStime_track.time_dilation_avg_slow,1)]%)"

@@ -47,7 +47,7 @@
 	suit_store = /obj/item/kitchen/knife/combat
 	l_pocket = /obj/item/restraints/handcuffs
 	r_pocket = /obj/item/assembly/flash/handheld
-	backpack_contents = list(/obj/item/storage/firstaid/regular, /obj/item/reagent_containers/spray/pepper)
+	backpack_contents = list(/obj/item/storage/firstaid/regular, /obj/item/reagent_containers/spray/pepper, /obj/item/clothing/accessory/badge/holo)
 
 	backpack = /obj/item/storage/backpack/blueshield
 	satchel = /obj/item/storage/backpack/satchel/blueshield
@@ -89,6 +89,14 @@
 	icon_state = "bridge"
 
 /area/command/blueshielquarters
+	name = "Blueshield's Quarters"
+	icon_state = "bridge"
+
+/area/command/blueshielquarters2
+	name = "Blueshield's Quarters"
+	icon_state = "bridge"
+
+/area/command/blueshielquarters3
 	name = "Blueshield's Quarters"
 	icon_state = "bridge"
 

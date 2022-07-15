@@ -1329,7 +1329,7 @@
 /area/commons/dorms)
 "aAt" = (
 /obj/item/reagent_containers/glass/bowl{
-	list_reagents = list(/datum/reagent/water = 50);
+	list_reagents = list(/datum/reagent/water=50);
 	name = "water bowl"
 	},
 /obj/structure/sign/warning/biohazard{
@@ -2632,7 +2632,7 @@
 	icon_state = "2-4"
 	},
 /turf/open/floor/plating/asteroid,
-/area/space/nearstation)
+/area/maintenance/department/security/upper)
 "aTM" = (
 /obj/machinery/vending/snack/random,
 /turf/open/floor/plasteel/grimy,
@@ -4533,8 +4533,9 @@
 /turf/open/floor/plasteel,
 /area/security/prison/workout)
 "bGd" = (
-/obj/machinery/light_switch{
-	pixel_x = -23
+/obj/machinery/posialert{
+	pixel_x = -29;
+	pixel_y = -4
 	},
 /turf/open/floor/plasteel/white/side{
 	dir = 4
@@ -4848,7 +4849,8 @@
 /area/security/prison/mess)
 "bOj" = (
 /mob/living/simple_animal/hostile/bear/russian{
-	health = 200;
+	health = 350;
+	maxHealth = 350;
 	name = "Natalia"
 	},
 /turf/open/floor/plating/rust,
@@ -4889,8 +4891,15 @@
 /obj/structure/sign/poster/official/here_for_your_safety{
 	pixel_y = 32
 	},
+/obj/machinery/atmospherics/components/unary/vent_pump/on{
+	dir = 4
+	},
 /turf/open/floor/plasteel/dark,
 /area/security/brig)
+"bOH" = (
+/mob/living/simple_animal/hostile/shark/laser,
+/turf/open/space/basic,
+/area/space)
 "bOI" = (
 /obj/machinery/computer/crew{
 	dir = 1
@@ -5706,7 +5715,7 @@
 /area/security/execution)
 "cdj" = (
 /obj/machinery/vending/sustenance{
-	contraband = list(/obj/item/kitchen/knife = 6, /obj/item/reagent_containers/food/drinks/coffee = 12);
+	contraband = list(/obj/item/kitchen/knife=6,/obj/item/reagent_containers/food/drinks/coffee=12);
 	desc = "A vending machine which vends food.";
 	product_ads = "Sufficiently healthy."
 	},
@@ -6250,6 +6259,10 @@
 /obj/structure/fans/tiny,
 /turf/open/floor/plasteel,
 /area/hallway/secondary/entry)
+"ckI" = (
+/obj/machinery/smartfridge/organ/preloaded,
+/turf/closed/wall,
+/area/medical/surgery)
 "ckM" = (
 /obj/machinery/atmospherics/pipe/simple/supply/hidden{
 	dir = 4
@@ -6422,7 +6435,7 @@
 /area/security/execution)
 "cnL" = (
 /obj/machinery/vending/sovietvend{
-	contraband = list(/obj/item/clothing/suit/armor/vest/russian_coat = 2, /obj/item/clothing/mask/balaclava = 4, /obj/item/clothing/head/helmet/rus_ushanka = 4, /obj/item/clothing/suit/space/hardsuit/soviet = 0, /obj/item/gun/energy/laser/LaserAK = 1)
+	contraband = list(/obj/item/clothing/suit/armor/vest/russian_coat=2,/obj/item/clothing/mask/balaclava=4,/obj/item/clothing/head/helmet/rus_ushanka=4,/obj/item/clothing/suit/space/hardsuit/soviet=0,/obj/item/gun/energy/laser/LaserAK=1)
 	},
 /turf/open/floor/plating/rust,
 /area/maintenance/department/security/upper)
@@ -7947,11 +7960,11 @@
 /area/hallway/primary/fore)
 "cOP" = (
 /obj/machinery/vending/dinnerware{
-	contraband = list(/obj/item/reagent_containers/food/condiment/flour = 4);
+	contraband = list(/obj/item/reagent_containers/food/condiment/flour=4);
 	desc = "This vendor is full of condiments to put on food.";
 	name = "\improper Condiments Vendor";
 	product_ads = "Get your sauces here!;No slave labour was used to make these products!;Nanotrasen Approved?!";
-	products = list(/obj/item/storage/bag/tray = 8, /obj/item/reagent_containers/food/drinks/drinkingglass = 10, /obj/item/storage/box/cups = 5, /obj/item/reagent_containers/food/condiment/pack/ketchup = 20, /obj/item/reagent_containers/food/condiment/pack/mustard = 20, /obj/item/reagent_containers/food/condiment/pack/hotsauce = 20, /obj/item/reagent_containers/food/condiment/pack/astrotame = 20, /obj/item/reagent_containers/food/condiment/saltshaker = 20, /obj/item/reagent_containers/food/condiment/peppermill = 20)
+	products = list(/obj/item/storage/bag/tray=8,/obj/item/reagent_containers/food/drinks/drinkingglass=10,/obj/item/storage/box/cups=5,/obj/item/reagent_containers/food/condiment/pack/ketchup=20,/obj/item/reagent_containers/food/condiment/pack/mustard=20,/obj/item/reagent_containers/food/condiment/pack/hotsauce=20,/obj/item/reagent_containers/food/condiment/pack/astrotame=20,/obj/item/reagent_containers/food/condiment/saltshaker=20,/obj/item/reagent_containers/food/condiment/peppermill=20)
 	},
 /turf/open/floor/plasteel/dark,
 /area/service/kitchen)
@@ -12337,12 +12350,12 @@
 /turf/closed/wall/r_wall,
 /area/engineering/main)
 "emL" = (
-/obj/structure/urinal{
-	pixel_y = 32
-	},
 /obj/structure/window/reinforced/tinted{
 	dir = 8;
 	pixel_x = -4
+	},
+/obj/structure/urinal/shit{
+	pixel_y = 32
 	},
 /turf/open/floor/plasteel/freezer,
 /area/commons/toilet)
@@ -14363,6 +14376,7 @@
 	name = "Chemistry Desk";
 	req_access_txt = "33"
 	},
+/obj/machinery/door/firedoor,
 /turf/open/floor/plasteel/white,
 /area/medical/chemistry)
 "eXa" = (
@@ -14468,7 +14482,7 @@
 	dir = 6
 	},
 /turf/open/floor/plating/asteroid,
-/area/space/nearstation)
+/area/maintenance/department/security/upper)
 "eYZ" = (
 /obj/machinery/light{
 	dir = 8
@@ -15272,6 +15286,7 @@
 /mob/living/simple_animal/pet/gondola{
 	desc = "Commandola is the silent walker. Having no hands he embodies the Taoist principle of wu-wei (non-action) while his smiling facial expression shows his utter and complete acceptance of the world as it is. Its hide is extremely deadly.";
 	health = 1750;
+	maxHealth = 1750;
 	melee_damage_lower = 2;
 	melee_damage_upper = 2;
 	name = "Gary";
@@ -15399,12 +15414,12 @@
 /turf/open/floor/plasteel/freezer,
 /area/commons/toilet)
 "fpC" = (
-/obj/item/clothing/suit/yakuza,
-/obj/item/melee/baseball_bat/ablative,
-/obj/item/clothing/glasses/eyepatch,
 /obj/machinery/light/small{
 	dir = 8
 	},
+/obj/item/melee/baseball_bat/ablative,
+/obj/item/clothing/suit/yakuza,
+/obj/item/clothing/glasses/eyepatch,
 /turf/open/floor/plating,
 /area/maintenance/port/aft)
 "fpT" = (
@@ -15652,6 +15667,7 @@
 	id = "Secure Brig Control";
 	name = "brig shutters"
 	},
+/obj/machinery/door/firedoor,
 /turf/open/floor/engine,
 /area/security/brig)
 "ftJ" = (
@@ -16958,7 +16974,6 @@
 	c_tag = "Locker Room West";
 	dir = 4
 	},
-/obj/machinery/vending/kink,
 /turf/open/floor/plasteel,
 /area/commons/dorms)
 "fPI" = (
@@ -17122,6 +17137,7 @@
 /obj/structure/disposalpipe/segment{
 	dir = 4
 	},
+/obj/item/vending_refill/boozeomat,
 /turf/open/floor/plating,
 /area/maintenance/department/security/brig)
 "fSr" = (
@@ -17801,6 +17817,9 @@
 	},
 /turf/open/floor/plasteel/freezer,
 /area/commons/toilet)
+"gfc" = (
+/turf/closed/wall/r_wall/rust,
+/area/space/nearstation)
 "gfd" = (
 /obj/structure/sign/warning/vacuum/external{
 	pixel_x = 32
@@ -18233,10 +18252,6 @@
 /turf/open/floor/engine,
 /area/engineering/main)
 "grF" = (
-/obj/machinery/door/poddoor/shutters/preopen{
-	id = "robotics_shutters";
-	name = "robotics shutters"
-	},
 /obj/machinery/door/airlock/research{
 	name = "Robotics Lab";
 	req_access_txt = "29"
@@ -18991,9 +19006,7 @@
 /area/space/nearstation)
 "gEr" = (
 /obj/docking_port/stationary{
-	dheight = 12;
 	dir = 4;
-	dwidth = 1;
 	id = "whiteship_home";
 	name = "dormitories"
 	},
@@ -23411,6 +23424,7 @@
 /obj/effect/turf_decal/tile/red{
 	dir = 1
 	},
+/obj/effect/landmark/start/peacekeeper,
 /turf/open/floor/plasteel,
 /area/security/office)
 "iaQ" = (
@@ -23575,6 +23589,11 @@
 	},
 /turf/open/floor/carpet,
 /area/command/blueshielquarters)
+"ifH" = (
+/obj/structure/bed/badhaybed,
+/obj/item/toy/plush/catgirl,
+/turf/open/floor/plating,
+/area/maintenance/port/aft)
 "ifM" = (
 /obj/machinery/atmospherics/pipe/simple/scrubbers/hidden{
 	dir = 4
@@ -25111,6 +25130,9 @@
 /obj/machinery/firealarm{
 	pixel_y = 24
 	},
+/obj/machinery/camera{
+	c_tag = "Cryogenics"
+	},
 /turf/open/floor/plasteel/dark,
 /area/commons/cryopod)
 "iIc" = (
@@ -25390,6 +25412,11 @@
 /obj/machinery/atmospherics/pipe/simple/scrubbers/hidden,
 /turf/open/floor/plasteel/dark,
 /area/security/checkpoint/engineering)
+"iMC" = (
+/obj/structure/table/wood,
+/obj/item/reagent_containers/food/snacks/grown/banana/bluespace,
+/turf/open/floor/plating,
+/area/maintenance/starboard/fore)
 "iMH" = (
 /obj/structure/cable{
 	icon_state = "4-8"
@@ -26890,6 +26917,7 @@
 	name = "Engineering Storage";
 	req_access_txt = "32"
 	},
+/obj/machinery/atmospherics/pipe/simple/supply/hidden,
 /turf/open/floor/plasteel,
 /area/engineering/main)
 "jqZ" = (
@@ -27387,6 +27415,7 @@
 	health = 25;
 	maxHealth = 50;
 	name = "Speed Gonzalez";
+	speed = 10;
 	turns_per_move = 2
 	},
 /turf/open/floor/plating,
@@ -27753,7 +27782,7 @@
 /area/science/xenobiology)
 "jGz" = (
 /obj/machinery/vending/barkbox{
-	products = list(/obj/item/storage/fancy/treat_box = 8, /obj/item/clothing/neck/petcollar = 5, /obj/item/clothing/neck/petcollar/ribbon = 5, /obj/item/clothing/neck/petcollar/leather = 5, /obj/item/clothing/suit/petharness = 4, /obj/item/clothing/suit/petharness/mesh = 4, /obj/item/toy/fluff/tennis_poly = 4, /obj/item/toy/fluff/tennis_poly/tri = 2, /obj/item/toy/fluff/bone_poly = 4, /obj/item/toy/fluff/frisbee_poly = 4, /obj/item/pet_carrier = 2)
+	products = list(/obj/item/storage/fancy/treat_box=8,/obj/item/clothing/neck/petcollar=5,/obj/item/clothing/neck/petcollar/ribbon=5,/obj/item/clothing/neck/petcollar/leather=5,/obj/item/clothing/suit/petharness=4,/obj/item/clothing/suit/petharness/mesh=4,/obj/item/toy/fluff/tennis_poly=4,/obj/item/toy/fluff/tennis_poly/tri=2,/obj/item/toy/fluff/bone_poly=4,/obj/item/toy/fluff/frisbee_poly=4,/obj/item/pet_carrier=2)
 	},
 /turf/open/floor/plasteel,
 /area/hallway/secondary/entry)
@@ -29966,8 +29995,15 @@
 	name = "Station Intercom (General)";
 	pixel_x = -30
 	},
+/obj/machinery/recharger,
 /turf/open/floor/wood,
 /area/command/heads_quarters/hop)
+"kxT" = (
+/mob/living/simple_animal/hostile/shark/laser,
+/turf/open/floor/plating{
+	icon_state = "panelscorched"
+	},
+/area/space/nearstation)
 "kyf" = (
 /obj/effect/turf_decal/tile/brown{
 	dir = 4
@@ -30198,9 +30234,8 @@
 /area/maintenance/fore)
 "kBT" = (
 /obj/effect/decal/cleanable/ash/large,
-/obj/structure/toilet/secret/high_loot{
-	dir = 4;
-	name = "Dusty Toilet"
+/obj/structure/toilet/secret/low_loot{
+	dir = 4
 	},
 /turf/open/floor/plating,
 /area/maintenance/fore)
@@ -30490,6 +30525,7 @@
 	response_help_simple = "pet";
 	turns_per_move = 10
 	},
+/obj/machinery/holopad/secure,
 /turf/open/floor/plasteel/dark,
 /area/command/heads_quarters/hos)
 "kGA" = (
@@ -30805,12 +30841,7 @@
 	dir = 1;
 	pixel_y = -26
 	},
-/obj/machinery/atmospherics/components/unary/vent_pump/on{
-	dir = 8
-	},
-/obj/machinery/atmospherics/pipe/simple/supply/hidden{
-	dir = 4
-	},
+/obj/machinery/atmospherics/pipe/manifold/supply/hidden,
 /turf/open/floor/plasteel,
 /area/engineering/main)
 "kMq" = (
@@ -30891,6 +30922,7 @@
 "kNh" = (
 /mob/living/simple_animal/hostile/retaliate/goat{
 	health = 69;
+	maxHealth = 69;
 	melee_damage_lower = 8;
 	melee_damage_upper = 10;
 	name = "Asterion"
@@ -31167,7 +31199,7 @@
 	},
 /obj/structure/cable,
 /turf/open/floor/plating/asteroid,
-/area/space/nearstation)
+/area/maintenance/department/security/upper)
 "kSO" = (
 /obj/machinery/atmospherics/pipe/manifold/scrubbers/hidden{
 	dir = 4
@@ -32600,7 +32632,7 @@
 	dir = 4
 	},
 /turf/open/floor/plating/asteroid,
-/area/space/nearstation)
+/area/maintenance/department/security/upper)
 "lsv" = (
 /obj/structure/lattice/catwalk,
 /obj/structure/cable{
@@ -33620,7 +33652,7 @@
 /area/hallway/secondary/civilian)
 "lHY" = (
 /turf/open/floor/plating/asteroid,
-/area/space/nearstation)
+/area/maintenance/department/security/upper)
 "lId" = (
 /obj/machinery/camera{
 	c_tag = "Atmospherics Tank - CO2";
@@ -36072,6 +36104,7 @@
 /obj/structure/closet/secure_closet/chemical,
 /obj/item/construction/plumbing,
 /obj/item/stack/ducts/fifty,
+/obj/item/hand_labeler,
 /turf/open/floor/plasteel/white,
 /area/medical/chemistry)
 "mzY" = (
@@ -38673,10 +38706,11 @@
 	dir = 1
 	},
 /mob/living/simple_animal/kiwi{
-	atmos_requirements = list("min_oxy" = 0, "max_oxy" = 0, "min_tox" = 0, "max_tox" = 0, "min_co2" = 0, "max_co2" = 0, "min_n2" = 0, "max_n2" = 0);
-	damage_coeff = list("brute" = 0.25, "fire" = 0.25, "tox" = 1, "clone" = 1, "stamina" = 0, "oxy" = 1);
+	atmos_requirements = list("min_oxy"=0,"max_oxy"=0,"min_tox"=0,"max_tox"=0,"min_co2"=0,"max_co2"=0,"min_n2"=0,"max_n2"=0);
+	damage_coeff = list("brute"=0.25,"fire"=0.25,"tox"=1,"clone"=1,"stamina"=0,"oxy"=1);
 	desc = "Exposure to low gravity made them grow larger, this one looks particularly royal.";
 	health = 250;
+	maxHealth = 250;
 	name = "Lorde"
 	},
 /turf/open/floor/plasteel/vaporwave,
@@ -40163,7 +40197,7 @@
 /area/security/brig)
 "nTw" = (
 /obj/structure/table/wood,
-/obj/item/stack/sheet/mineral/bananium,
+/obj/item/reagent_containers/food/snacks/grown/banana/bombanana,
 /turf/open/floor/plating,
 /area/maintenance/starboard/fore)
 "nTH" = (
@@ -41870,6 +41904,11 @@
 	name = "Station Intercom (General)";
 	pixel_x = -27
 	},
+/obj/structure/sink{
+	dir = 8;
+	pixel_x = -12;
+	pixel_y = 2
+	},
 /turf/open/floor/plasteel/white,
 /area/medical/surgery)
 "oAy" = (
@@ -41980,7 +42019,7 @@
 	dir = 4
 	},
 /turf/open/floor/plating/asteroid,
-/area/space/nearstation)
+/area/maintenance/department/security/upper)
 "oCH" = (
 /obj/machinery/light/small{
 	dir = 1
@@ -42138,7 +42177,7 @@
 /obj/item/pickaxe/mini,
 /obj/item/stack/sheet/mineral/wood/twenty,
 /obj/item/clothing/suit/hooded/chaplain_hoodie{
-	armor = list("melee" = 5, "bullet" = 0, "laser" = 0, "energy" = 0, "bomb" = 0, "bio" = 0, "rad" = 0, "fire" = 15, "acid" = 0);
+	armor = list("melee"=5,"bullet"=0,"laser"=0,"energy"=0,"bomb"=0,"bio"=0,"rad"=0,"fire"=15,"acid"=0);
 	name = "gravedigger hoodie"
 	},
 /obj/item/flashlight/lantern,
@@ -42264,8 +42303,8 @@
 	attack_sound = 'sound/weapons/punch1.ogg';
 	attack_verb_continuous = "pummels";
 	attack_verb_simple = "pummel";
-	butcher_results = list(/obj/item/reagent_containers/food/snacks/meat/slab/gorilla = 4);
-	damage_coeff = list("brute" = 1, "fire" = 1.5, "tox" = 1.5, "clone" = 0, "stamina" = 0, "oxy" = 1.5);
+	butcher_results = list(/obj/item/reagent_containers/food/snacks/meat/slab/gorilla=4);
+	damage_coeff = list("brute"=1,"fire"=1.5,"tox"=1.5,"clone"=0,"stamina"=0,"oxy"=1.5);
 	desc = "This gorilla seems extremely familiar.";
 	dextrous = 1;
 	dir = 4;
@@ -42281,6 +42320,7 @@
 	icon_living = "crawling";
 	icon_state = "crawling";
 	loot = list(/obj/effect/gibspawner/generic);
+	maxHealth = 200;
 	melee_damage_lower = 12;
 	melee_damage_upper = 15;
 	name = "Geoffrey";
@@ -46763,6 +46803,7 @@
 /obj/machinery/atmospherics/pipe/simple/scrubbers/hidden{
 	dir = 10
 	},
+/obj/item/toy/plush/mr_buckety,
 /turf/open/floor/noslip,
 /area/service/janitor)
 "qmN" = (
@@ -47095,11 +47136,11 @@
 	name = "Speakeasy stash"
 	},
 /obj/item/reagent_containers/food/drinks/bottle/blank{
-	list_reagents = list(/datum/reagent/consumable/ethanol/quintuple_sec = 20);
+	list_reagents = list(/datum/reagent/consumable/ethanol/quintuple_sec=20);
 	name = "Uncle Joe's special supply"
 	},
 /obj/item/reagent_containers/glass/bottle{
-	list_reagents = list(/datum/reagent/medicine/ephedrine = 10)
+	list_reagents = list(/datum/reagent/medicine/ephedrine=10)
 	},
 /obj/item/reagent_containers/food/drinks/bottle/lizardwine,
 /obj/effect/decal/cleanable/cobweb,
@@ -47342,6 +47383,9 @@
 	},
 /obj/structure/cable{
 	icon_state = "2-4"
+	},
+/obj/machinery/atmospherics/components/unary/vent_scrubber/on{
+	dir = 8
 	},
 /turf/open/floor/plasteel/dark,
 /area/security/brig)
@@ -48517,9 +48561,10 @@
 /area/medical/break_room)
 "qUT" = (
 /mob/living/simple_animal/hostile/retaliate/clown/mutant/blob{
-	atmos_requirements = list("min_oxy" = 0, "max_oxy" = 0, "min_tox" = 0, "max_tox" = 0, "min_co2" = 0, "max_co2" = 0, "min_n2" = 0, "max_n2" = 0);
+	atmos_requirements = list("min_oxy"=0,"max_oxy"=0,"min_tox"=0,"max_tox"=0,"min_co2"=0,"max_co2"=0,"min_n2"=0,"max_n2"=0);
 	enemies = list("neutral");
-	health = 300
+	health = 300;
+	maxHealth = 300
 	},
 /turf/open/floor/plating,
 /area/service/theater/abandoned)
@@ -55063,6 +55108,10 @@
 /obj/structure/filingcabinet/medical,
 /turf/open/floor/plasteel/white,
 /area/medical/genetics)
+"tnn" = (
+/obj/structure/tank_holder,
+/turf/open/floor/plasteel/white,
+/area/medical/surgery)
 "tnq" = (
 /obj/structure/cable{
 	icon_state = "4-8"
@@ -56284,6 +56333,10 @@
 	},
 /turf/open/floor/noslip,
 /area/service/janitor)
+"tGM" = (
+/mob/living/simple_animal/hostile/shark/laser,
+/turf/open/space/basic,
+/area/space/station_ruins)
 "tGO" = (
 /obj/effect/spawner/structure/window/reinforced,
 /turf/open/floor/plating,
@@ -56429,7 +56482,6 @@
 /obj/structure/cable{
 	icon_state = "4-8"
 	},
-/obj/machinery/atmospherics/pipe/simple/supply/hidden,
 /obj/effect/turf_decal/tile/red{
 	dir = 4
 	},
@@ -56437,6 +56489,9 @@
 	dir = 1
 	},
 /obj/effect/turf_decal/tile/red,
+/obj/machinery/atmospherics/pipe/manifold/supply/hidden{
+	dir = 4
+	},
 /turf/open/floor/plasteel,
 /area/security/brig)
 "tIQ" = (
@@ -57721,6 +57776,7 @@
 	id = "Secure Brig Control";
 	name = "brig shutters"
 	},
+/obj/machinery/door/firedoor,
 /turf/open/floor/engine,
 /area/security/brig)
 "ucR" = (
@@ -57944,6 +58000,14 @@
 	},
 /obj/machinery/light{
 	dir = 4
+	},
+/obj/machinery/firealarm{
+	dir = 8;
+	pixel_x = 24
+	},
+/obj/machinery/airalarm{
+	dir = 1;
+	pixel_y = -22
 	},
 /turf/open/floor/engine,
 /area/security/brig)
@@ -58509,6 +58573,12 @@
 /obj/effect/spawner/structure/window/reinforced,
 /turf/open/floor/plating,
 /area/engineering/transit_tube)
+"uqP" = (
+/obj/machinery/rnd/experimentor{
+	pixel_x = -32
+	},
+/turf/open/floor/engine,
+/area/science/explab)
 "uqR" = (
 /turf/closed/wall/r_wall,
 /area/construction)
@@ -58703,7 +58773,7 @@
 /area/service/kitchen)
 "utC" = (
 /obj/machinery/vending/dinnerware{
-	contraband = list(/obj/item/kitchen/rollingpin = 2, /obj/item/kitchen/knife/butcher = 2, /obj/item/reagent_containers/food/condiment/flour = 4)
+	contraband = list(/obj/item/kitchen/rollingpin=2,/obj/item/kitchen/knife/butcher=2,/obj/item/reagent_containers/food/condiment/flour=4)
 	},
 /turf/open/floor/plasteel/cafeteria,
 /area/service/kitchen)
@@ -59240,13 +59310,19 @@
 /turf/open/floor/engine,
 /area/science/explab)
 "uDR" = (
-/obj/machinery/atmospherics/pipe/simple/scrubbers/hidden,
 /obj/effect/turf_decal/tile/red{
 	dir = 8
 	},
 /obj/effect/turf_decal/tile/red,
 /obj/effect/turf_decal/tile/red{
 	dir = 1
+	},
+/obj/machinery/atmospherics/pipe/manifold/scrubbers/hidden{
+	dir = 8
+	},
+/obj/machinery/airalarm{
+	dir = 4;
+	pixel_x = -22
 	},
 /turf/open/floor/plasteel,
 /area/security/brig)
@@ -59323,6 +59399,7 @@
 /area/security/brig)
 "uED" = (
 /obj/structure/chair/office,
+/obj/effect/landmark/start/peacekeeper,
 /turf/open/floor/engine,
 /area/security/brig)
 "uEY" = (
@@ -68682,6 +68759,8 @@
 	name = "Chemistry Desk";
 	req_access_txt = "33"
 	},
+/obj/machinery/door/firedoor,
+/obj/item/hand_labeler,
 /turf/open/floor/plasteel/white,
 /area/medical/chemistry)
 "xIc" = (
@@ -69231,6 +69310,13 @@
 	},
 /turf/open/floor/plating,
 /area/maintenance/department/science)
+"xQi" = (
+/obj/machinery/atmospherics/pipe/simple/supply/hidden{
+	dir = 5
+	},
+/mob/living/simple_animal/hostile/russian/ranged/mosin,
+/turf/open/floor/plating/rust,
+/area/maintenance/department/security/upper)
 "xQm" = (
 /obj/effect/turf_decal/tile/purple{
 	dir = 1
@@ -69791,6 +69877,7 @@
 /area/medical/medbay/central)
 "xXN" = (
 /obj/machinery/atmospherics/pipe/simple/scrubbers/hidden,
+/obj/effect/landmark/start/peacekeeper,
 /turf/open/floor/plasteel,
 /area/security/checkpoint/customs)
 "xXO" = (
@@ -69823,10 +69910,6 @@
 "xYM" = (
 /turf/closed/wall/r_wall,
 /area/security/office)
-"xYN" = (
-/obj/machinery/rnd/experimentor,
-/turf/open/floor/engine,
-/area/science/explab)
 "xYV" = (
 /obj/effect/turf_decal/tile/yellow{
 	dir = 4
@@ -70323,7 +70406,7 @@
 /area/maintenance/department/medical)
 "ygi" = (
 /obj/machinery/vending/sustenance{
-	contraband = list(/obj/item/kitchen/knife = 6, /obj/item/reagent_containers/food/drinks/coffee = 12);
+	contraband = list(/obj/item/kitchen/knife=6,/obj/item/reagent_containers/food/drinks/coffee=12);
 	desc = "A vending machine which vends food.";
 	product_ads = "Sufficiently healthy."
 	},
@@ -70410,6 +70493,9 @@
 /obj/item/assembly/prox_sensor{
 	pixel_x = -8;
 	pixel_y = 4
+	},
+/obj/machinery/light_switch{
+	pixel_x = -23
 	},
 /turf/open/floor/plasteel/white/corner,
 /area/science/robotics/lab)
@@ -80872,7 +80958,7 @@ iFN
 ara
 vMG
 mYI
-weM
+ofk
 kMn
 vMG
 unz
@@ -88952,7 +89038,7 @@ chc
 chc
 chc
 chc
-mDQ
+gfc
 chc
 chc
 chc
@@ -89208,9 +89294,9 @@ chc
 chc
 chc
 chc
-mDQ
+gfc
 bIs
-mDQ
+gfc
 chc
 chc
 chc
@@ -89464,11 +89550,11 @@ chc
 chc
 chc
 chc
-mDQ
+gfc
 bIs
 cnL
 bIs
-mDQ
+gfc
 chc
 chc
 chc
@@ -89720,12 +89806,12 @@ mDQ
 chc
 chc
 chc
-mDQ
+gfc
 bIs
 mra
 mra
 bIs
-mDQ
+gfc
 chc
 chc
 chc
@@ -89976,12 +90062,12 @@ bIs
 mDQ
 chc
 chc
-mDQ
+gfc
 bIs
 ewu
 bOj
 bIs
-mDQ
+gfc
 chc
 chc
 chc
@@ -90233,11 +90319,11 @@ mDQ
 chc
 chc
 chc
-mDQ
+gfc
 bIs
 mra
 bIs
-mDQ
+gfc
 chc
 chc
 chc
@@ -90490,11 +90576,11 @@ chc
 chc
 chc
 chc
-mDQ
+gfc
 bIs
 tNg
 bIs
-mDQ
+gfc
 chc
 chc
 chc
@@ -93321,7 +93407,7 @@ mWE
 qlD
 urj
 vSZ
-dDd
+xQi
 bIs
 mDQ
 chc
@@ -93476,7 +93562,7 @@ fza
 fza
 fza
 fza
-fza
+roA
 fza
 fza
 roA
@@ -93731,10 +93817,10 @@ fza
 fza
 roA
 roA
-fza
+bvb
+bvb
+bvb
 roA
-roA
-fza
 fza
 roA
 fza
@@ -93987,9 +94073,9 @@ fza
 fza
 fza
 fza
-roA
-fza
-fza
+bvb
+bvb
+ifH
 bvb
 bvb
 bvb
@@ -94245,8 +94331,8 @@ fza
 kwf
 fza
 bvb
-bvb
-bvb
+bZv
+pUU
 bvb
 csH
 wAW
@@ -98834,9 +98920,9 @@ egh
 tOx
 xPE
 pcX
-tXx
+tnn
 fxn
-tXx
+tnn
 tXx
 tXx
 uTQ
@@ -99602,7 +99688,7 @@ wye
 pqy
 xma
 xOz
-fxn
+ckI
 aMu
 veq
 tXx
@@ -111414,7 +111500,7 @@ ygo
 ygo
 twc
 xwx
-xYN
+xZb
 uDN
 nAj
 pdt
@@ -111671,7 +111757,7 @@ ygo
 ygo
 twc
 xye
-xZb
+uqP
 cTs
 ozy
 hun
@@ -121929,7 +122015,7 @@ vUt
 nSt
 hpl
 nSt
-nTw
+iMC
 fbk
 kRj
 quq
@@ -128913,7 +128999,7 @@ fza
 fza
 fza
 fza
-fza
+bOH
 fza
 fza
 fza
@@ -129164,7 +129250,7 @@ fza
 fza
 fza
 fza
-fza
+bOH
 fza
 fza
 fza
@@ -129431,7 +129517,7 @@ fza
 fza
 fza
 fza
-fza
+bOH
 fza
 fza
 fza
@@ -129931,13 +130017,13 @@ fza
 fza
 fza
 fza
+bOH
 fza
 fza
 fza
 fza
 fza
-fza
-fza
+bOH
 fza
 fza
 fza
@@ -130716,7 +130802,7 @@ mDQ
 chc
 chc
 chc
-chc
+tGM
 chc
 chc
 chc
@@ -132508,7 +132594,7 @@ mDQ
 mDQ
 rTx
 fAl
-rTx
+kxT
 rfX
 rfX
 uJZ

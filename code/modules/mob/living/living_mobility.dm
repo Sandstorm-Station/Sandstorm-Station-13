@@ -84,7 +84,8 @@
 	var/canstand_involuntary = conscious && !stat_softcrit && !knockdown && !chokehold && !paralyze && (ignore_legs || has_legs) && !(buckled && buckled.buckle_lying) && !(combat_flags & COMBAT_FLAG_HARD_STAMCRIT)
 	var/canstand = canstand_involuntary && !resting
 
-	var/should_be_lying = !canstand && !HAS_TRAIT(src, TRAIT_MOBILITY_NOREST)
+//	var/should_be_lying = !canstand && !HAS_TRAIT(src, TRAIT_MOBILITY_NOREST) //SPLURT edit
+	var/should_be_lying = HAS_TRAIT(src, TRAIT_FLOORED) || !(canstand || HAS_TRAIT(src, TRAIT_MOBILITY_NOREST))
 	if(buckled)
 		if(buckled.buckle_lying != -1)
 			should_be_lying = buckled.buckle_lying

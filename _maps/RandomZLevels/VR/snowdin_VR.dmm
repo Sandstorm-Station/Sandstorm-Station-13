@@ -2365,21 +2365,6 @@
 /obj/machinery/atmospherics/pipe/simple/supply/hidden,
 /turf/open/floor/carpet,
 /area/awaymission/snowdin/post/dorm)
-"ft" = (
-/obj/structure/sign/poster/contraband/yes_erp{
-	pixel_x = -32
-	},
-/obj/machinery/holopad,
-/obj/effect/turf_decal/tile/neutral{
-	dir = 1
-	},
-/obj/effect/turf_decal/tile/neutral{
-	dir = 8
-	},
-/turf/open/floor/plasteel{
-	heat_capacity = 1e+006
-	},
-/area/awaymission/snowdin/post/dorm)
 "fu" = (
 /obj/machinery/atmospherics/pipe/manifold/scrubbers/hidden{
 	dir = 8;
@@ -14450,14 +14435,6 @@
 /obj/machinery/mech_bay_recharge_port,
 /turf/open/floor/plasteel/dark,
 /area/awaymission/snowdin/post/mining_main/mechbay)
-"In" = (
-/obj/mecha/working/ripley/mining{
-	dir = 1;
-	icon_state = "ripley"
-	},
-/obj/effect/turf_decal/bot,
-/turf/open/floor/mech_bay_recharge_floor,
-/area/awaymission/snowdin/post/mining_main/mechbay)
 "Io" = (
 /obj/effect/turf_decal/stripes/line{
 	dir = 8
@@ -15722,6 +15699,14 @@
 	},
 /turf/open/floor/plasteel/dark,
 /area/awaymission/snowdin/cave)
+"Qv" = (
+/obj/vehicle/sealed/mecha/working/ripley/mining{
+	dir = 1;
+	icon_state = "ripley"
+	},
+/obj/effect/turf_decal/bot,
+/turf/open/floor/mech_bay_recharge_floor,
+/area/awaymission/snowdin/post/mining_main/mechbay)
 "QX" = (
 /obj/effect/baseturf_helper/asteroid/snow,
 /obj/effect/turf_decal/tile/neutral,
@@ -15737,6 +15722,21 @@
 	},
 /turf/open/floor/plating,
 /area/awaymission/snowdin/post/mining_main)
+"VN" = (
+/obj/structure/sign/poster/contraband/yes_erp{
+	pixel_x = -32
+	},
+/obj/machinery/holopad,
+/obj/effect/turf_decal/tile/neutral{
+	dir = 1
+	},
+/obj/effect/turf_decal/tile/neutral{
+	dir = 8
+	},
+/turf/open/floor/plasteel{
+	heat_capacity = 1e+006
+	},
+/area/awaymission/snowdin/post/dorm)
 "VW" = (
 /obj/machinery/door/airlock/external/glass,
 /obj/structure/fans/tiny,
@@ -21430,7 +21430,7 @@ cV
 cv
 ec
 eQ
-ft
+VN
 eQ
 eQ
 hK
@@ -64817,7 +64817,7 @@ GJ
 He
 HA
 HO
-In
+Qv
 GH
 wL
 wL

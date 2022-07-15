@@ -43,6 +43,25 @@
 	icon = 'modular_splurt/icons/mob/wings.dmi'
 	upgrade_to = SPECIES_WINGS_ANGEL
 
+//ripped from fulp
+/datum/sprite_accessory/deco_wings/aspen
+	name = "Aspen"
+	icon_state = "aspen"
+	icon = 'modular_splurt/icons/mob/wings.dmi'
+	upgrade_to = SPECIES_WINGS_MOTH
+
+/datum/sprite_accessory/deco_wings/dreamhead
+	name = "Dreamhead"
+	icon_state = "dreamhead"
+	icon = 'modular_splurt/icons/mob/wings.dmi'
+	upgrade_to = SPECIES_WINGS_MOTH
+
+/datum/sprite_accessory/deco_wings/delirious
+	name = "Delirious"
+	icon_state = "delirious"
+	icon = 'modular_splurt/icons/mob/wings.dmi'
+	upgrade_to = SPECIES_WINGS_MOTH
+
 //insect wings
 /datum/sprite_accessory/insect_wings/beetle
 	name = "Beetle (Hyper)"
@@ -64,3 +83,28 @@
 	icon = 'modular_splurt/icons/mob/wings.dmi'
 	upgrade_to = SPECIES_WINGS_INSECT
 
+/datum/sprite_accessory/insect_wings/aspen
+	name = "Aspen"
+	icon_state = "aspen"
+	icon = 'modular_splurt/icons/mob/wings.dmi'
+	upgrade_to = SPECIES_WINGS_MOTH
+
+/datum/sprite_accessory/insect_wings/dreamhead
+	name = "Dreamhead"
+	icon_state = "dreamhead"
+	icon = 'modular_splurt/icons/mob/wings.dmi'
+	upgrade_to = SPECIES_WINGS_MOTH
+
+/datum/sprite_accessory/insect_wings/delirious
+	name = "Delirious"
+	icon_state = "delirious"
+	icon = 'modular_splurt/icons/mob/wings.dmi'
+	upgrade_to = SPECIES_WINGS_MOTH
+
+/datum/sprite_accessory/deco_wings/sylveon
+	name = "Sylveon Ribbons"
+	icon_state = "sylveon_bow"
+	icon = 'modular_splurt/icons/mob/wings.dmi'
+	color_src = MATRIXED
+	matrixed_sections = MATRIX_ALL
+	relevant_layers = list(BODY_BEHIND_LAYER, BODY_ADJ_LAYER, BODY_FRONT_LAYER)

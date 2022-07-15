@@ -300,7 +300,7 @@ const SLOTS_LONG: Record<
 
   corgi_collar: {
     displayName: "collar",
-    gridSpot: getGridSpotKey([3, 1]),
+    gridSpot: getGridSpotKey([3, 0]),
     image: "inventory-collar.png",
   },
 

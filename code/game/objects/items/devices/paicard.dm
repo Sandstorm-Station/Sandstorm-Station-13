@@ -15,7 +15,7 @@
 	user.visible_message("<span class='suicide'>[user] is staring sadly at [src]! [user.p_they()] can't keep living without real human intimacy!</span>")
 	return OXYLOSS
 
-/obj/item/paicard/Initialize()
+/obj/item/paicard/Initialize(mapload)
 	SSpai.pai_card_list += src
 	add_overlay("pai-off")
 	AddElement(/datum/element/bed_tuckable, 6, -5, 90)
@@ -159,6 +159,8 @@
 				src.add_overlay("pai-question")
 			if(13)
 				src.add_overlay("pai-sunglasses")
+			if(14)
+				src.add_overlay("pai-mal-0")
 
 /obj/item/paicard/proc/alertUpdate()
 	visible_message("<span class ='info'>[src] flashes a message across its screen, \"Additional personalities available for download.\"", "<span class='notice'>[src] bleeps electronically.</span>")

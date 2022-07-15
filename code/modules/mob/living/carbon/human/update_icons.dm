@@ -179,6 +179,13 @@ There are several things that need to be remembered:
 				uniform_overlay.pixel_y += dna.species.offset_features[OFFSET_UNIFORM][2]
 			overlays_standing[UNIFORM_LAYER] = uniform_overlay
 
+			//SPLURT EDIT
+			if(has_penis())
+				uniform_overlay.add_overlay(mutable_appearance('modular_splurt/icons/mob/clothing/extra.dmi', "[U.icon_state]_penis"))
+			if(has_breasts())
+				uniform_overlay.add_overlay(mutable_appearance('modular_splurt/icons/mob/clothing/extra.dmi', "[U.icon_state]_breasts"))
+			//SPLURT EDIT END
+
 		apply_overlay(UNIFORM_LAYER)
 		update_mutant_bodyparts()
 
@@ -359,7 +366,7 @@ There are several things that need to be remembered:
 			inv.update_icon()
 
 		if(!gloves && bloody_hands)
-			var/mutable_appearance/bloody_overlay = mutable_appearance('icons/effects/blood.dmi', "bloodyhands", -GLOVES_LAYER, color = blood_DNA_to_color())
+			var/mutable_appearance/bloody_overlay = mutable_appearance('icons/effects/blood.dmi', "bloodyhands", -GLOVES_LAYER, color = blood_DNA_to_color(), blend_mode = blood_DNA_to_blend())
 			if(get_num_arms(FALSE) < 2)
 				if(has_left_hand(FALSE))
 					bloody_overlay.icon_state = "bloodyhands_left"

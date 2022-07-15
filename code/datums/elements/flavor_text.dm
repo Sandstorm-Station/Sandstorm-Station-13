@@ -7,6 +7,7 @@ GLOBAL_LIST_EMPTY(mobs_with_editable_flavor_text) //et tu, hacky code
 	var/list/texts_by_atom = list()
 	var/addendum = ""
 	var/always_show = FALSE
+	var/show_on_naked = FALSE //SPLURT edit
 	var/max_len = MAX_FLAVOR_LEN
 	var/can_edit = TRUE
 	/// For preference/DNA saving/loading. Null to prevent. Prefs are only loaded from obviously if it exists in preferences.features.
@@ -16,7 +17,7 @@ GLOBAL_LIST_EMPTY(mobs_with_editable_flavor_text) //et tu, hacky code
 	/// Examine FULLY views. Overrides examine_no_preview
 	var/examine_full_view = FALSE
 
-/datum/element/flavor_text/Attach(datum/target, text = "", _name = "Flavor Text", _addendum, _max_len = MAX_FLAVOR_LEN, _always_show = FALSE, _edit = TRUE, _save_key, _examine_no_preview = FALSE)
+/datum/element/flavor_text/Attach(datum/target, text = "", _name = "Flavor Text", _addendum, _max_len = MAX_FLAVOR_LEN, _always_show = FALSE, _edit = TRUE, _save_key, _examine_no_preview = FALSE, _show_on_naked)
 	. = ..()
 
 	if(. == ELEMENT_INCOMPATIBLE || !isatom(target)) //no reason why this shouldn't work on atoms too.
@@ -29,6 +30,7 @@ GLOBAL_LIST_EMPTY(mobs_with_editable_flavor_text) //et tu, hacky code
 		flavor_name = _name
 	if(!isnull(addendum))
 		addendum = _addendum
+	show_on_naked = _show_on_naked
 	always_show = _always_show
 	can_edit = _edit
 	save_key = _save_key
@@ -61,7 +63,10 @@ GLOBAL_LIST_EMPTY(mobs_with_editable_flavor_text) //et tu, hacky code
 		var/unknown = L.get_visible_name() == "Unknown"
 		if(!unknown && iscarbon(target))
 			var/mob/living/carbon/C = L
-			unknown = (C.wear_mask && (C.wear_mask.flags_inv & HIDEFACE)) || (C.head && (C.head.flags_inv & HIDEFACE))
+			unknown = (C.wear_mask && (C.wear_mask.flags_inv & HIDEFACE) && !isobserver(user)) || (C.head && (C.head.flags_inv & HIDEFACE) && !isobserver(user)) //MASSIVE nonmodular edit. Has to be done here - Yawet330 / Making ghosts ignore gas-masks
+			if(show_on_naked && ishuman(C))
+				var/mob/living/carbon/human/H = C
+				unknown = (unknown || (H.w_uniform || H.wear_suit))
 		if(unknown)
 			if(!("...?" in examine_list)) //can't think of anything better in case of multiple flavor texts.
 				examine_list += "...?"
@@ -76,10 +81,10 @@ GLOBAL_LIST_EMPTY(mobs_with_editable_flavor_text) //et tu, hacky code
 	if(examine_full_view)
 		examine_list += "[msg]"
 		return
-	if(length_char(msg) <= 40)
+	if(length_char(msg) <= MAX_FLAVOR_PREVIEW_LEN)
 		examine_list += "<span class='notice'>[msg]</span>"
 	else
-		examine_list += "<span class='notice'>[copytext_char(msg, 1, 37)]... <a href='?src=[REF(src)];show_flavor=[REF(target)]'>More...</span></a>"
+		examine_list += "<span class='notice'>[copytext_char(msg, 1, (MAX_FLAVOR_PREVIEW_LEN - 3))]... <a href='?src=[REF(src)];show_flavor=[REF(target)]'>More...</span></a>"
 
 /datum/element/flavor_text/Topic(href, href_list)
 	. = ..()
@@ -89,7 +94,7 @@ GLOBAL_LIST_EMPTY(mobs_with_editable_flavor_text) //et tu, hacky code
 		var/atom/target = locate(href_list["show_flavor"])
 		var/mob/living/L = target
 		var/text = texts_by_atom[target]
-		if(text || (flavor_name == "OOC Notes") && L.client)
+		if((text || (flavor_name == "OOC Notes")) && L.client)
 			var/content
 			if(flavor_name == "OOC Notes")
 
@@ -109,6 +114,14 @@ GLOBAL_LIST_EMPTY(mobs_with_editable_flavor_text) //et tu, hacky code
 				content += "\n"
 
 			content += text
+			if(flavor_name == "Headshot") //SPLURT edit
+				content = "<center>"
+				content += "[L]<br>"
+				content += "<img class='icon icon-misc' src='[text]' height=500px width=500px><br>"
+				content += "</center>"
+				usr << browse("<HTML><HEAD><meta http-equiv='Content-Type' content='text/html; charset=UTF-8'><TITLE>[isliving(target) ? L.get_visible_name() : target.name]</TITLE></HEAD><BODY><TT>[replacetext(content, "\n", "<BR>")]</TT></BODY></HTML>", "window=[isliving(target) ? L.get_visible_name() : target.name];size=600x500")
+				onclose(usr, "[target.name]")
+				return TRUE
 			usr << browse("<HTML><HEAD><meta http-equiv='Content-Type' content='text/html; charset=UTF-8'><TITLE>[isliving(target) ? L.get_visible_name() : target.name]</TITLE></HEAD><BODY><TT>[replacetext(content, "\n", "<BR>")]</TT></BODY></HTML>", "window=[isliving(target) ? L.get_visible_name() : target.name];size=500x200")
 			onclose(usr, "[target.name]")
 		return TRUE
@@ -174,7 +187,7 @@ GLOBAL_LIST_EMPTY(mobs_with_editable_flavor_text) //et tu, hacky code
 	var/static/list/i_dont_even_know_who_you_are = typecacheof(list(/datum/antagonist/abductor, /datum/antagonist/ert,
 													/datum/antagonist/nukeop, /datum/antagonist/wizard))
 
-/datum/element/flavor_text/carbon/Attach(datum/target, text = "", _name = "Flavor Text", _addendum, _max_len = MAX_FLAVOR_LEN, _always_show = FALSE, _edit = TRUE, _save_key, _examine_no_preview = FALSE)
+/datum/element/flavor_text/carbon/Attach(datum/target, text = "", _name = "Flavor Text", _addendum, _max_len = MAX_FLAVOR_LEN, _always_show = FALSE, _edit = TRUE, _save_key, _examine_no_preview = FALSE, _show_on_naked)
 	if(!iscarbon(target))
 		return ELEMENT_INCOMPATIBLE
 	. = ..()
@@ -218,7 +231,7 @@ GLOBAL_LIST_EMPTY(mobs_with_editable_flavor_text) //et tu, hacky code
 	if(ismob(target))
 		add_verb(target, /mob/proc/set_pose)
 
-/datum/element/flavor_Text/carbon/temporary/Detach(datum/source, force)
+/datum/element/flavor_text/carbon/temporary/Detach(datum/source, force)
 	. = ..()
 	if(ismob(source))
 		remove_verb(source, /mob/proc/set_pose)

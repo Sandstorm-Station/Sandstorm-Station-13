@@ -5,6 +5,7 @@
 	item_state = "shotgun"
 	fire_sound = "sound/weapons/gunshotshotgunshot.ogg"
 	w_class = WEIGHT_CLASS_BULKY
+	recoil = 1
 	force = 10
 	flags_1 =  CONDUCT_1
 	slot_flags = ITEM_SLOT_BACK
@@ -189,7 +190,7 @@
 	flags_1 = NONE
 	mag_type = /obj/item/ammo_box/magazine/internal/boltaction/enchanted/arcane_barrage
 
-/obj/item/gun/ballistic/shotgun/boltaction/enchanted/Initialize()
+/obj/item/gun/ballistic/shotgun/boltaction/enchanted/Initialize(mapload)
 	. = ..()
 	bolt_open = TRUE
 	pump()
@@ -300,7 +301,7 @@
 	. = ..()
 	. += "<span class='notice'>Alt-click to pump it.</span>"
 
-/obj/item/gun/ballistic/shotgun/automatic/dual_tube/Initialize()
+/obj/item/gun/ballistic/shotgun/automatic/dual_tube/Initialize(mapload)
 	. = ..()
 	if (!alternate_magazine)
 		alternate_magazine = new mag_type(src)
@@ -358,19 +359,6 @@
 	icon_state = "levercarabine"
 	item_state = "leveraction"
 	sawn_item_state = "maresleg"
-	var/can_cut = TRUE
-
-/obj/item/gun/ballistic/shotgun/leveraction/attackby(obj/item/A, mob/user, params)
-	..()
-	if(!can_cut)
-		to_chat(user, "<span class='warning'>You can't cut \the [src] down!</span>")
-		return
-	if(A.tool_behaviour == TOOL_SAW || istype(A, /obj/item/gun/energy/plasmacutter))
-		sawoff(user)
-	if(istype(A, /obj/item/melee/transforming/energy))
-		var/obj/item/melee/transforming/energy/W = A
-		if(W.active)
-			sawoff(user)
 
 /obj/item/gun/ballistic/shotgun/leveraction/on_sawoff(mob/user)
 	magazine.max_ammo-- // sawing off drops from 7+1 to 6+1
@@ -381,10 +369,11 @@
 	else
 		icon_state = "[initial(icon_state)][sawn_off ? "-sawn" : ""][chambered ? "" : "-e"]"
 
-/obj/item/gun/ballistic/shotgun/leveraction/brush
+/obj/item/gun/ballistic/shotgun/brush
 	name = "brush gun"
 	desc = "While lever-actions have been horribly out of date for hundreds of years now, \
 	putting a nicely sized hole in a man-sized target with a .45-70 round has stayed relatively timeless."
 	icon_state = "brushgun"
-	can_cut = FALSE
+	item_state = "leveraction"
 	mag_type = /obj/item/ammo_box/magazine/internal/shot/levergun/brush
+	fire_sound = "sound/weapons/revolvershot.ogg"

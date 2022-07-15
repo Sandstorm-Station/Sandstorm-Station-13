@@ -5,10 +5,24 @@
 
 	RegisterSignal(target, COMSIG_CLICK_ALT, .proc/mob_try_pickup_micro, TRUE)
 	RegisterSignal(target, COMSIG_MICRO_PICKUP_FEET, .proc/mob_pickup_micro_feet)
+	RegisterSignal(target, COMSIG_MOB_RESIZED, .proc/on_resize)
 
 /datum/element/mob_holder/micro/Detach(datum/source, force)
 	. = ..()
 	UnregisterSignal(source, COMSIG_MICRO_PICKUP_FEET)
+
+/datum/element/mob_holder/micro/proc/on_resize(mob/living/micro, new_size, old_size)
+	var/obj/item/clothing/head/mob_holder/holder = micro.loc
+	if(istype(holder))
+		var/mob/living/living = get_atom_on_turf(micro.loc, /mob/living)
+		if(living && (abs(get_size(micro)/get_size(living)) > CONFIG_GET(number/max_pick_ratio)))
+			living.visible_message(span_warning("\The [living] drops [micro] as [micro.p_they()] grow\s too big to carry."),
+								span_warning("You drop \The [living] as [living.p_they()] grow\s too big to carry."),
+								target=micro,
+								target_message=span_notice("\The [living] drops you as you grow too big to carry."))
+			holder.release()
+		else if(!istype(living)) // Somehow a inside a mob_holder and the mob_holder isn't inside any livings? release.
+			holder.release()
 
 /datum/element/mob_holder/micro/on_examine(mob/living/source, mob/user, list/examine_list)
 	if(ishuman(user) && !istype(source.loc, /obj/item/clothing/head/mob_holder) && (abs(get_size(source)/get_size(user)) <= CONFIG_GET(number/max_pick_ratio)))
@@ -147,3 +161,16 @@
 /obj/item/clothing/head/mob_holder/micro/attack(mob/living/pred, mob/living/user)
 	user.vore_attack(user, held_mob, pred)
 	return STOP_ATTACK_PROC_CHAIN
+
+/obj/item/clothing/head/mob_holder/micro/verb/interact_with()
+	set name = "Interact With"
+	set desc = "Perform an interaction with someone."
+	set category = "IC"
+	set src in view(usr.client)
+
+	if(!usr.mind) //Mindless boys, honestly just don't, it's better this way
+		return
+	if(!usr.mind.interaction_holder)
+		usr.mind.interaction_holder = new(usr.mind)
+	usr.mind.interaction_holder.target = src.held_mob
+	usr.mind.interaction_holder.ui_interact(usr)

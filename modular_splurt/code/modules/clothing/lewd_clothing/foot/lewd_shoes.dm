@@ -8,7 +8,7 @@
 	mob_overlay_icon = 'modular_splurt/icons/mob/clothing/lewd_clothing/feet/lewd_shoes.dmi'
 	anthro_mob_worn_overlay = 'modular_splurt/icons/mob/clothing/lewd_clothing/feet/lewd_shoes_digi.dmi'
 	can_be_tied = FALSE
-	slowdown = 3
+	slowdown = 0
 	strip_delay = 120
 	mutantrace_variation = STYLE_DIGITIGRADE
 	var/seamless = FALSE
@@ -63,7 +63,8 @@
 	. = ..()
 	var/mob/living/carbon/human/C = user
 	C.update_inv_shoes()
-	C.hud_used.hidden_inventory_update()
+	if(C.hud_used)
+		C.hud_used.hidden_inventory_update()
 
 //////////////////
 ///Domina heels///
@@ -79,7 +80,7 @@
 	anthro_mob_worn_overlay = 'modular_splurt/icons/mob/clothing/lewd_clothing/feet/lewd_shoes_digi.dmi'
 	equip_delay_other = 60
 	strip_delay = 60
-	slowdown = 1
+	slowdown = 0
 
 //it takes time to put them off, do not touch
 /obj/item/clothing/shoes/dominaheels/attack_hand(mob/user)

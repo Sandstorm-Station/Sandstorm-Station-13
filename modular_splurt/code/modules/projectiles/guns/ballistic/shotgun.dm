@@ -46,7 +46,7 @@
 	fire_delay = 5
 	mag_type = /obj/item/ammo_box/magazine/internal/hunting
 	w_class = WEIGHT_CLASS_BULKY
-	weapon_weight = WEAPON_MEDIUM
+	weapon_weight = WEAPON_HEAVY
 	sawn_desc = "A cheap hunting rifle that bubba got ahold of."
 
 /obj/item/gun/ballistic/shotgun/huntingrifle/attackby(obj/item/A, mob/user, params)
@@ -72,18 +72,46 @@
 	w_class = WEIGHT_CLASS_NORMAL
 	weapon_weight = WEAPON_MEDIUM
 
-/obj/item/gun/ballistic/shotgun/leveraction/brush
+/obj/item/gun/ballistic/shotgun/leveraction
+	sawn_desc = "A short stubby lever gun, like that of a female horse's leg."
+
+
+/obj/item/gun/ballistic/shotgun/leveraction/attackby(obj/item/A, mob/user, params)
+	..()
+	if(A.tool_behaviour == TOOL_SAW || istype(A, /obj/item/gun/energy/plasmacutter))
+		sawoff(user)
+	if(istype(A, /obj/item/melee/transforming/energy))
+		var/obj/item/melee/transforming/energy/W = A
+		if(W.active)
+			sawoff(user)
+
+/obj/item/gun/ballistic/shotgun/brush
 	name = "brush gun (.45-70 GOVT)"
 	icon = 'modular_splurt/icons/obj/guns/projectile.dmi'
 
-/obj/item/gun/ballistic/shotgun/leveraction/brush2
+/obj/item/gun/ballistic/shotgun/brush2
 	name = "brush gun (.45 Long)"
 	desc = "While lever-actions have been horribly out of date for hundreds of years now, \
 	putting a nicely sized hole in a man-sized target with a .45 Long round has stayed relatively timeless."
 	icon = 'modular_splurt/icons/obj/guns/projectile.dmi'
 	icon_state = "brushgun"
-	can_cut = FALSE
+	item_state = "leveraction"
+	fire_sound = "sound/weapons/revolvershot.ogg"
 	mag_type = /obj/item/ammo_box/magazine/internal/shot/levergun/brush2
+
+/obj/item/gun/ballistic/shotgun/brush2/attack_self(mob/living/user)
+	if(recentpump > world.time)
+		return
+	if(IS_STAMCRIT(user))//CIT CHANGE - makes pumping shotguns impossible in stamina softcrit
+		to_chat(user, "<span class='warning'>You're too exhausted for that.</span>")//CIT CHANGE - ditto
+		return//CIT CHANGE - ditto
+	pump(user, TRUE)
+	if(HAS_TRAIT(user, TRAIT_FAST_PUMP))
+		recentpump = world.time + 2
+	else
+		if(!user.UseStaminaBuffer(2, warn = TRUE))
+			return
+		recentpump = world.time + 5
 
 /obj/item/gun/ballistic/shotgun/hunting
 	name = "cheap hunting shotgun"
@@ -94,7 +122,7 @@
 	fire_delay = 5
 	mag_type = /obj/item/ammo_box/magazine/internal/shot
 	w_class = WEIGHT_CLASS_BULKY
-	weapon_weight = WEAPON_MEDIUM
+	weapon_weight = WEAPON_HEAVY
 	sawn_desc = "A cheap hunting shotgun that bubba got ahold of."
 
 /obj/item/gun/ballistic/shotgun/hunting/on_sawoff(mob/user)
@@ -147,10 +175,10 @@
 /obj/item/gunpart/shotgunhutningstock
 	name = "hunting shotgun furniture"
 	desc = "a hunting shotgun stock and foregrip"
-	icon_state = "huntingframe"
+	icon_state = "huntingstock"
 
 /obj/item/gunpart/shotgunhutningbarrel
-	name = "brush gun assembly"
+	name = "hunting shotgun assembly"
 	desc = "a hunting shotgun barrel and fire control assembly"
 	icon_state = "huntingframe"
 
@@ -196,7 +224,7 @@
 
 /datum/crafting_recipe/brushgunassemble
 	name = "Assemble brush gun"
-	result = /obj/item/gun/ballistic/shotgun/leveraction/brush2
+	result = /obj/item/gun/ballistic/shotgun/brush2
 	reqs = list(/obj/item/gunpart/riflebrush2stock = 1,
 				/obj/item/gunpart/riflebrush2barrel = 1)
 	tools = list(TOOL_SCREWDRIVER)

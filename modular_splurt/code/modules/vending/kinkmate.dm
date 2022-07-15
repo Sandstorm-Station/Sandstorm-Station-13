@@ -1,5 +1,6 @@
 /obj/machinery/vending/kink/Initialize()
 	var/list/extra_products = list(
+		/obj/item/storage/pill_bottle/belly_inflation = 10,
 		/obj/item/clothing/head/helmet/space/deprivation_helmet = 5,
 		/obj/item/clothing/under/misc/latex_catsuit = 10,
 		/obj/item/clothing/shoes/latex_socks = 10,
@@ -14,7 +15,15 @@
 		/obj/item/clothing/neck/petcollar/spike = 5,
 		/obj/item/clothing/neck/petcollar/holo = 5,
 		/obj/item/clothing/neck/petcollar/casino = 5,
-		/obj/item/clothing/gloves/latexsleeves = 3
+		/obj/item/clothing/gloves/latexsleeves = 3,
+		/obj/item/genital_equipment/sounding = 4,
+		/obj/item/clothing/accessory/ring/syntech = 4,
+		/obj/item/clothing/accessory/ring/syntech/band = 4,
+		/obj/item/clothing/neck/syntech = 4,
+		/obj/item/clothing/neck/syntech/choker = 4,
+		/obj/item/clothing/neck/syntech/collar = 4,
+		/obj/item/storage/fancy/jellybean_pack = 5,
+		/obj/item/storage/box/aphrodisiac_pump = 5
 	)
 	var/list/extra_contraband = list(
 		//Lewd-Clothes
@@ -25,7 +34,8 @@
 		/obj/item/clothing/head/dominatrixcap = 3,
 		/obj/item/mesmetron = 3,
 		/obj/item/dildo/flared/huge = 3,
-		/obj/item/clothing/neck/petcollar/locked/holo = 2
+		/obj/item/clothing/neck/petcollar/locked/holo = 2,
+		/obj/item/storage/box/aphrodisiac_pump/plus = 3
 	)
 	var/list/extra_premium = list(
 		/obj/item/clothing/mask/muzzle/ballgag = 3

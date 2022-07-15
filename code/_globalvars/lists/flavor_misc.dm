@@ -43,6 +43,10 @@ GLOBAL_LIST_EMPTY(arachnid_spinneret_list)
 GLOBAL_LIST_EMPTY(arachnid_mandibles_list)
 GLOBAL_LIST_EMPTY(caps_list)
 
+	//Bark bits
+GLOBAL_LIST_EMPTY(bark_list)
+GLOBAL_LIST_EMPTY(bark_random_list)
+
 //a way to index the right bodypart list given the type of bodypart
 GLOBAL_LIST_INIT(mutant_reference_list, list(
 	"tail_lizard" = GLOB.tails_list_lizard,
@@ -292,6 +296,8 @@ GLOBAL_LIST_INIT(station_names, world.file2list("strings/station_names.txt" + ""
 
 GLOBAL_LIST_INIT(station_suffixes, world.file2list("strings/station_suffixes.txt"))
 
+GLOBAL_LIST_INIT(server_taglines, world.file2list("[global.config.directory]/server_taglines.txt"))
+
 GLOBAL_LIST_INIT(greek_letters, world.file2list("strings/greek_letters.txt"))
 
 GLOBAL_LIST_INIT(phonetic_alphabet, world.file2list("strings/phonetic_alphabet.txt"))
@@ -328,7 +334,7 @@ GLOBAL_LIST_INIT(unlocked_mutant_parts, list("horns", "insect_fluff"))
 GLOBAL_LIST_INIT(colored_mutant_parts, list("insect_wings" = "wings_color", "deco_wings" = "wings_color", "horns" = "horns_color"))
 
 //body ids that have greyscale sprites
-GLOBAL_LIST_INIT(greyscale_limb_types, list("human","moth","lizard","pod","plant","jelly","slime","golem","slimelumi","stargazer","mush","ethereal","snail","c_golem","b_golem","mammal","xeno","ipc","insect","synthliz","avian","aquatic"))
+GLOBAL_LIST_INIT(greyscale_limb_types, list("human","moth","lizard","pod","plant","jelly","slime","golem","slimelumi","stargazer","mush","ethereal","snail","c_golem","b_golem","mammal","xeno","ipc","insect","synthliz","avian","aquatic", "shadekin"))
 
 //body ids that have prosthetic sprites
 GLOBAL_LIST_INIT(prosthetic_limb_types, list("xion","bishop","cybersolutions","grayson","hephaestus","nanotrasen","talon"))
@@ -372,7 +378,7 @@ GLOBAL_LIST_INIT(job_heirlooms, list(
 GLOBAL_LIST_INIT(nongendered_limb_types, list("fly", "zombie" ,"synth", "shadow", "cultgolem", "agent", "plasmaman", "clockgolem", "clothgolem"))
 
 //list of eye types, corresponding to a respective left and right icon state for the set of eyes
-GLOBAL_LIST_INIT(eye_types, list("normal", "insect", "moth", "double", "double2", "double3", "spider", "cyclops", "third"))
+GLOBAL_LIST_INIT(eye_types, list("normal", "insect", "moth", "double", "double2", "double3", "spider", "cyclops", "third", "spectre", "shadekin"))
 
 //list linking bodypart bitflags to their actual names
 GLOBAL_LIST_INIT(bodypart_names, list(num2text(HEAD) = "Head", num2text(CHEST) = "Chest", num2text(LEG_LEFT) = "Left Leg", num2text(LEG_RIGHT) = "Right Leg", num2text(ARM_LEFT) = "Left Arm", num2text(ARM_RIGHT) = "Right Arm"))

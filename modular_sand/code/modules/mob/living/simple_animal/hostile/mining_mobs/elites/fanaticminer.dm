@@ -215,7 +215,7 @@
 	duration = 5
 	color = rgb(255,0,0)
 
-/obj/effect/temp_visual/dragon_swoop/priest/Initialize()
+/obj/effect/temp_visual/dragon_swoop/priest/Initialize(mapload)
 	. = ..()
 	transform *= 0.33
 
@@ -225,8 +225,8 @@
 	damage_type = BRUTE
 	color = "#00FFFF"
 
-/obj/item/projectile/kinetic/axe/prehit(atom/target)
-	return
+/obj/item/projectile/kinetic/axe/prehit_pierce(atom/target)
+	return PROJECTILE_PIERCE_NONE
 
 //loot
 
@@ -248,12 +248,12 @@
 	sharpness = SHARP_EDGED
 	hitsound = 'sound/weapons/slash.ogg'
 
-/obj/item/melee/diamondaxe/Initialize()
+/obj/item/melee/diamondaxe/Initialize(mapload)
 	. = ..()
 	AddComponent(/datum/component/butchering, 50, 100, null, null, TRUE)
 
 /obj/item/melee/diamondaxe/priest
 
-/obj/item/melee/diamondaxe/priest/Initialize()
+/obj/item/melee/diamondaxe/priest/Initialize(mapload)
 	..()
 	QDEL_IN(src, 30)

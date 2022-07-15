@@ -22,7 +22,7 @@ They deal 35 brute (armor is considered).
 	attack_verb_continuous = "slash"
 	attack_sound = 'modular_sand/sound/weapons/zweihanderslice.ogg'
 	death_sound = 'modular_sand/sound/effects/gladiatordeathsound.ogg'
-	deathmessage = "gets discombobulated and dies."
+	deathmessage = "gets discombobulated and fucking dies."
 	rapid_melee = 1
 	melee_queue_distance = 2
 	melee_damage_lower = 35
@@ -56,7 +56,6 @@ They deal 35 brute (armor is considered).
 	glorymessagespka = list("grabs the gladiator by the neck and flips them, shooting through their guts with a PKA blast!", "shoots at the gladiator's shoulder, exploding their arm! To finish the fiend off, they grab their PKA and bonk the gladiator's head inside their torso!", "doesn't bother with being fancy, and simply shoots at the gladiator's head with their PKA, exploding it in one violent blast!")
 	glorymessagespkabayonet = list("rams into the gladiator's stomach with their PKA's bayonet, knocking them and themselves down! To finish the fiend off, they simply stab into their torso like a madman with their bayonet!", "kicks the gladiator's knee hard, breaking it! While the fiend is stunned and barely standing, their chop their head off with the PKA's bayonet!")
 	glorythreshold = 50
-	weather_immunities = list("lava","ash")
 
 /obj/item/gps/internal/gladiator
 	icon_state = null
@@ -74,14 +73,7 @@ They deal 35 brute (armor is considered).
 			if(!(M in introduced) && (stat != DEAD))
 				introduction(M)
 
-/mob/living/simple_animal/hostile/megafauna/gladiator/death()
-	. = ..()
-	addtimer(CALLBACK(src, .proc/deadify), 2.5 SECONDS)
-
-/mob/living/simple_animal/hostile/megafauna/gladiator/proc/deadify()
-	icon_state = "gladiator_dead"
-
-/mob/living/simple_animal/hostile/megafauna/gladiator/apply_damage(damage, damagetype, def_zone, blocked, forced, bare_wound_bonus = FALSE, sharpness = FALSE, wound_bonus=CANT_WOUND)
+/mob/living/simple_animal/hostile/megafauna/gladiator/apply_damage(damage = 0,damagetype = BRUTE, def_zone = null, blocked = FALSE, forced = FALSE, spread_damage = FALSE, wound_bonus = 0, bare_wound_bonus = 0, sharpness = SHARP_NONE) //skyrat edit
 	if(speen)
 		visible_message("<span class='danger'>[src] brushes off all incoming attacks!")
 		return FALSE
@@ -91,8 +83,8 @@ They deal 35 brute (armor is considered).
 	..()
 	update_phase()
 	var/adjustment_amount = min(damage * 0.15, 15)
-	if(world.time + adjustment_amount > next_action)
-		DelayNextAction(adjustment_amount, considered_action = FALSE, flush = TRUE)
+	if(world.time + adjustment_amount > next_move)
+		changeNext_move(adjustment_amount)
 
 /mob/living/simple_animal/hostile/megafauna/gladiator/Retaliate()
 	. = ..()
@@ -106,13 +98,13 @@ They deal 35 brute (armor is considered).
 	if(ishuman(target))
 		var/mob/living/carbon/human/H = target
 		var/datum/species/Hspecies = H.dna.species
-		if(Hspecies.id == SPECIES_ASHWALKER_EAST)
+		if(Hspecies.id == "ashlizard")
 			var/list/messages = list("I am sorry, tribesssmate. I cannot let you through.",\
 									"Pleassse leave, walker.",\
 									"The necropolisss must be protected even from it'ss servants. Pleassse retreat.")
 			say(message = pick(messages), language = /datum/language/draconic)
 			introduced |= H
-		else if(Hspecies.id == "lizard" || Hspecies.id == SPECIES_ASHWALKER_WEST)
+		else if(Hspecies.id == "lizard")
 			var/list/messages = list("Thisss isss not the time nor place to be. Leave.",\
 									"Go back where you came from. I am sssafeguarding thisss sssacred place.",\
 									"You ssshould not be here. Turn.",\
@@ -270,7 +262,7 @@ They deal 35 brute (armor is considered).
 			for(var/mob/living/M in U)
 				if(!faction_check(faction, M.faction) && !(M in hit_things))
 					playsound(src, 'sound/weapons/slash.ogg', 75, 0)
-					if(M.apply_damage(40, BRUTE, BODY_ZONE_CHEST))
+					if(M.apply_damage(40, BRUTE, BODY_ZONE_CHEST, M.run_armor_check(BODY_ZONE_CHEST), null, null, CANT_WOUND))
 						visible_message("<span class = 'userdanger'>[src] slashes [M] with his spinning zweihander!</span>")
 					else
 						visible_message("<span class = 'userdanger'>[src]'s spinning zweihander is stopped by [M]!</span>")

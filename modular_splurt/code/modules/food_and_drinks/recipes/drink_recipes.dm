@@ -1,12 +1,10 @@
 //SPLURT drinks
-/* It's causing recipe conflicts for some reason, no idea how to fix
-/datum/chemical_reaction/panty_dropper
+/datum/chemical_reaction/panty_dropper //https://ifunny.co/video/uyksuxGK8?s=cl
 	name = "Liquid Panty Dropper"
 	id = /datum/reagent/consumable/ethanol/panty_dropper
-	results = list(/datum/reagent/consumable/ethanol/panty_dropper = 8, /datum/reagent/drug/anaphrodisiacplus = 2)
-	required_reagents = list(/datum/reagent/consumable/ethanol/vodka = 1, /datum/reagent/consumable/ethanol/gin = 1, /datum/reagent/consumable/ethanol/creme_de_coconut = 1, /datum/reagent/consumable/ethanol/rum = 1, /datum/reagent/consumable/ethanol/triple_sec = 1, /datum/reagent/consumable/pineapplejuice = 1, /datum/reagent/consumable/berryjuice = 1, /datum/reagent/consumable/orangejuice = 1)
-	mix_message = "A very twisted combination begins to bubble..."
-*/
+	results = list(/datum/reagent/consumable/ethanol/panty_dropper = 8, /datum/reagent/drug/aphrodisiacplus = 2)
+	required_reagents = list(/datum/reagent/consumable/ethanol/screwdrivercocktail = 1, /datum/reagent/consumable/ethanol/gin = 1, /datum/reagent/consumable/ethanol/creme_de_coconut = 1, /datum/reagent/consumable/ethanol/rum = 1, /datum/reagent/consumable/ethanol/triple_sec = 1, /datum/reagent/consumable/pineapplejuice = 1, /datum/reagent/consumable/berryjuice = 1) //Can't have the legendary 1:1 ratio or original recipe cuz of recipe clashes :(
+	mix_message = "A very tvvisted combination begins to bubble..."
 
 /datum/chemical_reaction/lean
 	name = "Lean"
@@ -39,3 +37,58 @@
     id = /datum/reagent/consumable/orange_creamsicle
     results = list(/datum/reagent/consumable/orange_creamsicle = 4)
     required_reagents = list(/datum/reagent/consumable/vanilla = 1, /datum/reagent/consumable/milk = 1, /datum/reagent/consumable/ice = 1, /datum/reagent/consumable/orangejuice = 1)
+
+/datum/chemical_reaction/mech_rider
+	name = "Mech Rider"
+	id = /datum/reagent/consumable/ethanol/mech_rider
+	results = list(/datum/reagent/consumable/ethanol/mech_rider = 4)
+	required_reagents = list(/datum/reagent/consumable/ethanol/absinthe = 1, /datum/reagent/consumable/ethanol/hcider = 1, /datum/reagent/consumable/ethanol/syndicatebomb = 1, /datum/reagent/consumable/coffee = 1)
+
+/datum/chemical_reaction/isloation_cell
+	name = "Isolation Cell"
+	id = /datum/reagent/consumable/ethanol/isloation_cell
+	results = list(/datum/reagent/consumable/ethanol/isloation_cell = 5)
+	required_reagents = list(
+		/datum/reagent/drug/aphrodisiac = 1,
+		/datum/reagent/medicine/synaptizine = 2,
+		/datum/reagent/consumable/ethanol/hippies_delight = 2
+	)
+
+/datum/chemical_reaction/isloation_cell/morphine
+	id = /datum/reagent/consumable/ethanol/isloation_cell/morphine
+	results = list(/datum/reagent/consumable/ethanol/isloation_cell/morphine = 5)
+	required_reagents = list(
+		/datum/reagent/drug/aphrodisiac = 1,
+		/datum/reagent/medicine/morphine = 2,
+		/datum/reagent/consumable/ethanol/hippies_delight = 2
+	)
+
+/datum/chemical_reaction/chemical_ex
+	name = "Chemical Ex"
+	id = /datum/reagent/consumable/ethanol/chemical_ex
+	results = list(/datum/reagent/consumable/ethanol/chemical_ex = 5)
+	required_reagents = list(
+		/datum/reagent/drug/aphrodisiacplus = 1,
+		/datum/reagent/medicine/morphine = 2,
+		/datum/reagent/fermi/enthrall = 2
+	)
+
+/datum/chemical_reaction/heart_of_gold
+	name = "Heart Of Gold"
+	id = /datum/reagent/consumable/ethanol/heart_of_gold
+	results = list(/datum/reagent/consumable/ethanol/heart_of_gold = 10)
+	required_reagents = list(
+		/datum/reagent/consumable/ethanol/jack_rose = 4,
+		/datum/reagent/consumable/peachjuice = 3,
+		/datum/reagent/consumable/pineapplejuice = 3
+	)
+
+/datum/chemical_reaction/moth_in_chief
+	name = "Moth in Chief"
+	id = /datum/reagent/consumable/ethanol/moth_in_chief
+	results = list(/datum/reagent/consumable/ethanol/moth_in_chief = 3)
+	required_reagents = list(
+		/datum/reagent/consumable/ethanol/commander_and_chief = 1,
+		/datum/reagent/mutationtoxin/insect = 1,
+		/datum/reagent/drug/copium = 1
+	)

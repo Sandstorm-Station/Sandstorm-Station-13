@@ -4,7 +4,7 @@
 	block_priority = BLOCK_PRIORITY_WEAR_SUIT
 	var/fire_resist = T0C+100
 	allowed = list(/obj/item/tank/internals/emergency_oxygen, /obj/item/tank/internals/plasmaman)
-	armor = list("melee" = 0, "bullet" = 0, "laser" = 0,"energy" = 0, "bomb" = 0, "bio" = 0, "rad" = 0, "fire" = 0, "acid" = 0)
+	armor = list(MELEE = 0, BULLET = 0, LASER = 0,ENERGY = 0, BOMB = 0, BIO = 0, RAD = 0, FIRE = 0, ACID = 0)
 	drop_sound = 'sound/items/handling/cloth_drop.ogg'
 	pickup_sound = 'sound/items/handling/cloth_pickup.ogg'
 	slot_flags = ITEM_SLOT_OCLOTHING
@@ -22,19 +22,16 @@
 			. += mutable_appearance('icons/effects/item_damage.dmi', "damaged[blood_overlay_type]")
 		if(blood_DNA)
 			var/file2use = (style_flags & STYLE_ALL_TAURIC) ? 'modular_citadel/icons/mob/64x32_effects.dmi' : 'icons/effects/blood.dmi'
-			. += mutable_appearance(file2use, "[blood_overlay_type]blood", color = blood_DNA_to_color())
+			. += mutable_appearance(file2use, "[blood_overlay_type]blood", color = blood_DNA_to_color(), blend_mode = blood_DNA_to_blend())
 		var/mob/living/carbon/human/M = loc
 		if(ishuman(M) && M.w_uniform)
 			var/obj/item/clothing/under/U = M.w_uniform
-			//SKYRAT EDIT
+			//SANDSTORM EDIT
 			if(istype(U) && length(U.attached_accessories))
-				var/please_overlay = FALSE
 				for(var/obj/item/clothing/accessory/attached in U.attached_accessories)
 					if(attached.above_suit)
-						please_overlay = TRUE
-				if(please_overlay)
-					. += U.accessory_overlay
-			//SKYRAT EDIT END
+						. += U.accessory_overlays
+			//SANDSTORM EDIT END
 
 /obj/item/clothing/suit/update_clothes_damaged_state()
 	..()

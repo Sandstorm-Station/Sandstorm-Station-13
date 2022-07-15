@@ -1,4 +1,4 @@
-/mob/Initialize()
+/mob/Initialize(mapload)
 	add_to_mob_list()
 	if(stat == DEAD)
 		add_to_dead_mob_list()
@@ -141,7 +141,7 @@
 		return
 	hearers -= ignored_mobs
 
-	if(target_message && target && istype(target) && target.client)
+	if(target_message && target && istype(target) && (target.client || target.audiovisual_redirect))
 		hearers -= target
 		if(omni)
 			target.show_message(target_message)
@@ -158,7 +158,7 @@
 	if(self_message)
 		hearers -= src
 	for(var/mob/M in hearers)
-		if(!M.client)
+		if(!M.client && !M.audiovisual_redirect)
 			continue
 		if(omni)
 			M.show_message(message)
@@ -931,7 +931,7 @@ GLOBAL_VAR_INIT(exploit_warn_spam_prevention, 0)
 	else if(examine_cursor_icon && client.keys_held["Shift"]) //mouse shit is hardcoded, make this non hard-coded once we make mouse modifiers bindable
 		client.mouse_pointer_icon = examine_cursor_icon
 	else if (ismecha(loc))
-		var/obj/mecha/M = loc
+		var/obj/vehicle/sealed/mecha/M = loc
 		if(M.mouse_pointer)
 			client.mouse_pointer_icon = M.mouse_pointer
 

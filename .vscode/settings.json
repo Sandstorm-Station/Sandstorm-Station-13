@@ -13,7 +13,7 @@
 		"source.fixAll.eslint": true
 	},
 	"workbench.editorAssociations": {
-		"*.dmi": "imagePreview.previewEditor"
+		"*.dmi": "dmiEditor.dmiEditor"
 	},
 	"files.eol": "\n",
 	"gitlens.advanced.blame.customArguments": ["-w"],
@@ -28,5 +28,6 @@
 		"editor.rulers": [80]
 	},
 	"editor.bracketPairColorization.enabled": true,
-	"editor.guides.bracketPairs":"active"
+	"editor.guides.bracketPairs": "active",
+	"errorLens.enabled": false
 }

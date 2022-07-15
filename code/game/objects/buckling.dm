@@ -27,6 +27,8 @@
 
 /atom/movable/MouseDrop_T(mob/living/M, mob/living/user)
 	. = ..()
+	if(. & COMSIG_MOB_CANCEL_CLICKON) //SPLURT edit
+		return
 	if(can_buckle && istype(M) && istype(user))
 		if(user_buckle_mob(M, user))
 			return 1

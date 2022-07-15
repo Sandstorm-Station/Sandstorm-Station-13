@@ -37,6 +37,8 @@
 			message = "Your one time token is: \"[one_time_token]\". You can now verify yourself in discord by using the command <span class='warning'>\"[prefix][command] [one_time_token]\"</span>"
 
 	//Now give them a browse window so they can't miss whatever we told them
+	if(CONFIG_GET(flag/forced_discord_stay))
+		message += span_warning("Remember that to mantain verification you MUST stay in the discord server")
 	var/datum/browser/window = new/datum/browser(usr, "discordverification", "Discord verification")
 	window.set_content("<span>[message]</span>")
 	window.open()

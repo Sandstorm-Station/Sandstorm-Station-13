@@ -30,6 +30,10 @@
 			currently_coiled.pixel_x = 12
 
 /datum/action/innate/ability/coiling/proc/coil_mob(var/mob/living/carbon/human/H)
+	if(currently_coiling)
+		to_chat(owner, span_warning("You are already coiling someone!"))
+		return
+		
 	// begin the coiling action
 	H.visible_message("<span class='warning'>[owner] coils [H] with their tail!</span>", \
 						  "<span class='userdanger'>[owner] coils you with their tail!</span>")
@@ -57,7 +61,12 @@
 	user.update_mutant_bodyparts()
 
 /datum/action/innate/ability/coiling/proc/cancel_coil()
+	if (!currently_coiled)
+		return
 	var/mob/living/carbon/human/H = owner
+	
+	if(!currently_coiling)
+		return
 
 	// cancel the coiling action by removing the overlay
 	currently_coiled.pixel_x = 0

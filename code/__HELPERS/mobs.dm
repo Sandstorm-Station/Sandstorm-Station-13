@@ -229,11 +229,14 @@
 		"belly_visibility"	= GEN_VISIBLE_NO_UNDIES,
 		//Hyper's custom fluids
 		"balls_fluid"		= /datum/reagent/consumable/semen,
+		"womb_fluid"		= /datum/reagent/consumable/semen/femcum,
 		"breasts_fluid"		= /datum/reagent/consumable/milk,
 		"ipc_screen"		= snowflake_ipc_antenna_list ? pick(snowflake_ipc_antenna_list) : "None",
 		"ipc_antenna"		= "None",
 		"flavor_text"		= "",
 		"silicon_flavor_text"		= "",
+		"naked_flavor_text" = "", //SPLURT edit
+		"headshot_link"		= "", //SPLURT edit
 		"meat_type"			= "Mammalian",
 		"body_model"		= body_model,
 		"body_size"			= RESIZE_DEFAULT_SIZE
@@ -497,3 +500,5 @@ GLOBAL_LIST_EMPTY(species_datums)
 
 //check if the person is dead, not sure where to put this
 #define IS_DEAD_OR_INCAP(source) (source.incapacitated() || source.stat)
+
+#define IS_IN_STASIS(mob) (mob.has_status_effect(/datum/status_effect/grouped/stasis))

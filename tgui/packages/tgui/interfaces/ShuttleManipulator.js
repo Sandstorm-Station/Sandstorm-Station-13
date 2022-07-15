@@ -10,7 +10,7 @@ export const ShuttleManipulator = (props, context) => {
       title="Shuttle Manipulator"
       width={800}
       height={600}>
-      <Window.Content scrollable>
+      <Window.Content overflow="auto">
         <Tabs>
           <Tabs.Tab
             selected={tab === 1}

@@ -29,3 +29,8 @@
 ## The name of the command you use for verification, only in case you've set up an alias for it ##
 ## Defaults to "verify" ##
 #VERIFICATION_COMMAND verify
+
+# Discord forcing mode
+## Uncomment this if your players need to remain in the discord to keep verification ##
+## Note, this only produces aesthetic changes, the real magic happens with the redbot modules
+#FORCED_DISCORD_STAY

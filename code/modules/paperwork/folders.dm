@@ -46,6 +46,9 @@
 		if(!user.is_literate())
 			to_chat(user, "<span class='notice'>You scribble illegibly on the cover of [src]!</span>")
 			return
+		if(HAS_TRAIT(user, TRAIT_DUMB4CUM))
+			to_chat(user, "<span class='love'>You can't think of anything but cum right now.</span>")
+			return
 
 		var/inputvalue = stripped_input(user, "What would you like to label the folder?", "Folder Labelling", "", MAX_NAME_LEN)
 
@@ -100,7 +103,7 @@
 	name = "folder- 'TOP SECRET'"
 	desc = "A folder stamped \"Top Secret - Property of Nanotrasen Corporation. Unauthorized distribution is punishable by death.\""
 
-/obj/item/folder/documents/Initialize()
+/obj/item/folder/documents/Initialize(mapload)
 	. = ..()
 	new /obj/item/documents/nanotrasen(src)
 	update_icon()
@@ -113,7 +116,7 @@
 /obj/item/folder/syndicate/red
 	icon_state = "folder_sred"
 
-/obj/item/folder/syndicate/red/Initialize()
+/obj/item/folder/syndicate/red/Initialize(mapload)
 	. = ..()
 	new /obj/item/documents/syndicate/red(src)
 	update_icon()
@@ -121,12 +124,12 @@
 /obj/item/folder/syndicate/blue
 	icon_state = "folder_sblue"
 
-/obj/item/folder/syndicate/blue/Initialize()
+/obj/item/folder/syndicate/blue/Initialize(mapload)
 	. = ..()
 	new /obj/item/documents/syndicate/blue(src)
 	update_icon()
 
-/obj/item/folder/syndicate/mining/Initialize()
+/obj/item/folder/syndicate/mining/Initialize(mapload)
 	. = ..()
 	new /obj/item/documents/syndicate/mining(src)
 	update_icon()

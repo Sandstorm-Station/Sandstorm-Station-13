@@ -2,11 +2,11 @@
 #define FONT_SIZE "5pt"
 #define FONT_COLOR "#09f"
 #define FONT_STYLE "Arial Black"
-#define MAX_TIMER 15 MINUTES
+#define MAX_TIMER 45 MINUTES
 
-#define PRESET_SHORT 2 MINUTES
-#define PRESET_MEDIUM 3 MINUTES
-#define PRESET_LONG 5 MINUTES
+#define PRESET_SHORT 5 MINUTES
+#define PRESET_MEDIUM 10 MINUTES
+#define PRESET_LONG 15 MINUTES
 
 ///////////////////////////////////////////////////////////////////////////////////////////////
 // Brig Door control displays.
@@ -36,7 +36,7 @@
 	maptext_height = 26
 	maptext_width = 32
 
-/obj/machinery/door_timer/Initialize()
+/obj/machinery/door_timer/Initialize(mapload)
 	. = ..()
 
 	Radio = new/obj/item/radio(src)

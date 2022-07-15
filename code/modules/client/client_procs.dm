@@ -225,11 +225,11 @@ GLOBAL_LIST_INIT(blacklisted_builds, list(
 //This stops files larger than UPLOAD_LIMIT being sent from client to server via input(), client.Import() etc.
 /client/AllowUpload(filename, filelength)
 	if(holder)
-		if(filelength > UPLOAD_LIMIT_ADMIN)
-			to_chat(src, "<font color='red'>Error: AllowUpload(): File Upload too large. Upload Limit: [UPLOAD_LIMIT_ADMIN/1024]KiB.</font>")
+		if(filelength > CONFIG_GET(number/upload_limit_admin))
+			to_chat(src, "<font color='red'>Error: AllowUpload(): File Upload too large. Upload Limit: [CONFIG_GET(number/upload_limit_admin)/1024]KiB.</font>")
 			return FALSE
-	else if(filelength > UPLOAD_LIMIT)
-		to_chat(src, "<font color='red'>Error: AllowUpload(): File Upload too large. Upload Limit: [UPLOAD_LIMIT/1024]KiB.</font>")
+	else if(filelength > CONFIG_GET(number/upload_limit))
+		to_chat(src, "<font color='red'>Error: AllowUpload(): File Upload too large. Upload Limit: [CONFIG_GET(number/upload_limit)/1024]KiB.</font>")
 		return FALSE
 	return TRUE
 
@@ -876,10 +876,11 @@ GLOBAL_LIST_INIT(blacklisted_builds, list(
 		return
 	last_activity = world.time
 	last_click = world.time
-	var/ab = FALSE
 	var/list/L = params2list(params)
-	if (object && object == middragatom && L["left"])
-		ab = max(0, 5 SECONDS-(world.time-middragtime)*0.1)
+
+	if(L["drag"])
+		return
+
 	var/mcl = CONFIG_GET(number/minute_click_limit)
 	if (!holder && !ignore_spam && mcl)
 		var/minute = round(world.time, 600)
@@ -888,20 +889,14 @@ GLOBAL_LIST_INIT(blacklisted_builds, list(
 		if (minute != clicklimiter[CURRENT_MINUTE])
 			clicklimiter[CURRENT_MINUTE] = minute
 			clicklimiter[MINUTE_COUNT] = 0
-		clicklimiter[MINUTE_COUNT] += 1+(ab)
+		clicklimiter[MINUTE_COUNT] += 1
 		if (clicklimiter[MINUTE_COUNT] > mcl)
 			var/msg = "Your previous click was ignored because you've done too many in a minute."
 			if (minute != clicklimiter[ADMINSWARNED_AT]) //only one admin message per-minute. (if they spam the admins can just boot/ban them)
 				clicklimiter[ADMINSWARNED_AT] = minute
 
 				msg += " Administrators have been informed."
-				if (ab)
-					log_game("[key_name(src)] is using the middle click aimbot exploit")
-					message_admins("[ADMIN_LOOKUPFLW(src)] [ADMIN_KICK(usr)] is using the middle click aimbot exploit</span>")
-					add_system_note("aimbot", "Is using the middle click aimbot exploit")
-					log_click(object, location, control, params, src, "lockout (spam - minute ab c [ab] s [middragtime])", TRUE)
-				else
-					log_click(object, location, control, params, src, "lockout (spam - minute)", TRUE)
+				log_click(object, location, control, params, src, "lockout (spam - minute)", TRUE)
 				log_game("[key_name(src)] Has hit the per-minute click limit of [mcl] clicks in a given game minute")
 				message_admins("[ADMIN_LOOKUPFLW(src)] [ADMIN_KICK(usr)] Has hit the per-minute click limit of [mcl] clicks in a given game minute")
 			to_chat(src, "<span class='danger'>[msg]</span>")
@@ -915,14 +910,10 @@ GLOBAL_LIST_INIT(blacklisted_builds, list(
 		if (second != clicklimiter[CURRENT_SECOND])
 			clicklimiter[CURRENT_SECOND] = second
 			clicklimiter[SECOND_COUNT] = 0
-		clicklimiter[SECOND_COUNT] += 1+(!!ab)
+		clicklimiter[SECOND_COUNT] += 1
 		if (clicklimiter[SECOND_COUNT] > scl)
 			to_chat(src, "<span class='danger'>Your previous click was ignored because you've done too many in a second</span>")
 			return
-
-	if(ab) //Citadel edit, things with stuff.
-		log_click(object, location, control, params, src, "dropped (ab c [ab] s [middragtime])", TRUE)
-		return
 
 	if(prefs.log_clicks)
 		log_click(object, location, control, params, src, extra_info? "clicked ([extra_info])" : null)
@@ -942,7 +933,7 @@ GLOBAL_LIST_INIT(blacklisted_builds, list(
 		add_verb(src, /client/proc/self_playtime)
 
 
-#undef UPLOAD_LIMIT
+//#undef UPLOAD_LIMIT //SPLURT EDIT
 
 //checks if a client is afk
 //3000 frames = 5 minutes

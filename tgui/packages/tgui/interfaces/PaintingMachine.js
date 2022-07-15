@@ -28,7 +28,7 @@ export const PaintingMachine = (props, context) => {
     <Window
       width={500}
       height={620}>
-      <Window.Content scrollable>
+      <Window.Content overflow="auto">
         <Section
           title="PDA Painter"
           buttons={

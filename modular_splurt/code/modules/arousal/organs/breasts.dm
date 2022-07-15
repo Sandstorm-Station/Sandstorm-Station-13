@@ -1,13 +1,20 @@
+/obj/item/organ/genital/breasts
+	default_fluid_id = /datum/reagent/consumable/milk
+
 /obj/item/organ/genital/breasts/get_features(mob/living/carbon/human/H)
 	var/datum/dna/D = H.dna
 	if(D.features["breasts_fluid"])
-		fluid_id = D.features["breasts_fluid"]
+		var/datum/reagent/fluid = find_reagent_object_from_type(D.features["breasts_fluid"])
+		if(istype(fluid, /datum/reagent/blood))
+			fluid_id = H.get_blood_id()
+		else if(fluid && (fluid in GLOB.genital_fluids_list))
+			fluid_id = D.features["breasts_fluid"]
 	else
 		fluid_id = initial(fluid_id)
 	original_fluid_id = fluid_id
 	. = ..()
-	fluid_max_volume += (cached_size - breast_values[initial(size)])*2.5
-	fluid_rate += (cached_size - breast_values[initial(size)])/10
+	fluid_max_volume += ((cached_size - breast_values[initial(size)])*2.5)*(owner ? get_size(owner) : 1)
+	fluid_rate += ((cached_size - breast_values[initial(size)])/10)*(owner ? get_size(owner) : 1)
 
 /obj/item/organ/genital/breasts/climax_modify_size(mob/living/partner, obj/item/organ/genital/source_gen)
 	if(!(owner.client?.prefs.cit_toggles & BREAST_ENLARGEMENT))

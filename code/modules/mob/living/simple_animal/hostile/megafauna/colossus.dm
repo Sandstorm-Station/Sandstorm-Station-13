@@ -32,7 +32,6 @@ Difficulty: Very Hard
 	icon_state = "eva"
 	icon_living = "eva"
 	icon_dead = "dragon_dead"
-	health_doll_icon = "eva"
 	friendly_verb_continuous = "stares down"
 	friendly_verb_simple = "stare down"
 	icon = 'icons/mob/lavaland/96x96megafauna.dmi'
@@ -44,10 +43,7 @@ Difficulty: Very Hard
 	move_to_delay = 10
 	ranged = 1
 	pixel_x = -32
-	del_on_death = TRUE
-	achievement_type = /datum/award/achievement/boss/colossus_kill
-	crusher_achievement_type = /datum/award/achievement/boss/colossus_crusher
-	score_achievement_type = /datum/award/score/colussus_score
+	del_on_death = 1
 	crusher_loot = list(/obj/structure/closet/crate/necropolis/colossus/crusher)
 	loot = list(/obj/structure/closet/crate/necropolis/colossus)
 	butcher_results = list(/obj/item/stack/ore/diamond = 5, /obj/item/stack/sheet/sinew = 5, /obj/item/stack/sheet/animalhide/ashdrake = 10, /obj/item/stack/sheet/bone = 30)
@@ -129,8 +125,6 @@ Difficulty: Very Hard
 		if(H.mind)
 			if(istype(H.mind.martial_art, /datum/martial_art/the_sleeping_carp) & istype(H.mind.martial_art, /datum/martial_art/the_rising_bass))
 				. = TRUE
-		if (is_species(H, /datum/species/golem/sand))
-			.= TRUE
 
 /mob/living/simple_animal/hostile/megafauna/colossus/proc/alternating_dir_shots()
 	dir_shots(GLOB.diagonals)
@@ -388,7 +382,10 @@ Difficulty: Very Hard
 	if(isliving(speaker))
 		ActivationReaction(speaker, ACTIVATE_SPEECH)
 
-/obj/machinery/anomalous_crystal/on_attack_hand(mob/user, act_intent = user.a_intent, unarmed_attack_flags)
+/obj/machinery/anomalous_crystal/attack_hand(mob/user)
+	. = ..()
+	if(.)
+		return
 	ActivationReaction(user, ACTIVATE_TOUCH)
 
 /obj/machinery/anomalous_crystal/attackby(obj/item/I, mob/user, params)
@@ -421,12 +418,12 @@ Difficulty: Very Hard
 	if(ismob(AM))
 		ActivationReaction(AM, ACTIVATE_MOB_BUMP)
 
-/obj/machinery/anomalous_crystal/ex_act(severity, target, origin)
+/obj/machinery/anomalous_crystal/ex_act()
 	ActivationReaction(null, ACTIVATE_BOMB)
 
 /obj/machinery/anomalous_crystal/honk //Strips and equips you as a clown. I apologize for nothing
 	observer_desc = "This crystal strips and equips its targets as clowns."
-	possible_methods = list(ACTIVATE_TOUCH)  //Because We love AOE transformations!  
+	possible_methods = list(ACTIVATE_MOB_BUMP, ACTIVATE_SPEECH)
 	activation_sound = 'sound/items/bikehorn.ogg'
 
 /obj/machinery/anomalous_crystal/honk/ActivationReaction(mob/user)
@@ -528,7 +525,21 @@ Difficulty: Very Hard
 /obj/machinery/anomalous_crystal/emitter/ActivationReaction(mob/user, method)
 	if(..())
 		var/obj/item/projectile/P = new generated_projectile(get_turf(src))
-		P.fire(angle2dir(dir))
+		P.setDir(dir)
+		switch(dir)
+			if(NORTH)
+				P.yo = 20
+				P.xo = 0
+			if(EAST)
+				P.yo = 0
+				P.xo = 20
+			if(WEST)
+				P.yo = 0
+				P.xo = -20
+			else
+				P.yo = -20
+				P.xo = 0
+		P.fire()
 
 /obj/machinery/anomalous_crystal/dark_reprise //Revives anyone nearby, but turns them into shadowpeople and renders them uncloneable, so the crystal is your only hope of getting up again if you go down.
 	observer_desc = "When activated, this crystal revives anyone nearby, but turns them into Shadowpeople and makes them unclonable, making the crystal their only hope of getting up again."
@@ -631,11 +642,10 @@ Difficulty: Very Hard
 
 /mob/living/simple_animal/hostile/lightgeist/Initialize()
 	. = ..()
-	remove_verb(src, /mob/living/verb/pulled)
-	remove_verb(src, /mob/verb/me_verb)
+	verbs -= /mob/living/verb/pulled
+	verbs -= /mob/verb/me_verb
 	var/datum/atom_hud/medsensor = GLOB.huds[DATA_HUD_MEDICAL_ADVANCED]
 	medsensor.add_hud_to(src)
-	AddElement(/datum/element/ventcrawling, given_tier = VENTCRAWLER_ALWAYS)
 
 /mob/living/simple_animal/hostile/lightgeist/AttackingTarget()
 	. = ..()
@@ -722,7 +732,7 @@ Difficulty: Very Hard
 		L.mind.transfer_to(holder_animal)
 		var/obj/effect/proc_holder/spell/targeted/exit_possession/P = new /obj/effect/proc_holder/spell/targeted/exit_possession
 		holder_animal.mind.AddSpell(P)
-		remove_verb(holder_animal, /mob/living/verb/pulled)
+		holder_animal.verbs -= /mob/living/verb/pulled
 
 /obj/structure/closet/stasis/dump_contents(override = TRUE, kill = 1)
 	STOP_PROCESSING(SSobj, src)
@@ -740,7 +750,7 @@ Difficulty: Very Hard
 /obj/structure/closet/stasis/emp_act()
 	return
 
-/obj/structure/closet/stasis/ex_act(severity, target, origin)
+/obj/structure/closet/stasis/ex_act()
 	return
 
 /obj/structure/closet/stasis/handle_lock_addition()

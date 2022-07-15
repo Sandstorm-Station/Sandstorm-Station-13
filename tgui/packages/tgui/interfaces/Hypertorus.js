@@ -53,7 +53,7 @@ export const Hypertorus = (props, context) => {
       title="Fusion Reactor"
       width={500}
       height={600}>
-      <Window.Content scrollable>
+      <Window.Content overflow="auto">
         <Section title="Switches">
           <Stack>
             <Stack.Item color="label">

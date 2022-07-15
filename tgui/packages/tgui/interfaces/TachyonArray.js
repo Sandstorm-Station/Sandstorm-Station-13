@@ -13,7 +13,7 @@ export const TachyonArray = (props, context) => {
       width={550}
       height={250}
       resizable>
-      <Window.Content scrollable>
+      <Window.Content overflow="auto">
         <Flex direction="column" height="100%">
           <Flex.Item grow={1} className="TachyonArray__Content">
             {!records.length ? (

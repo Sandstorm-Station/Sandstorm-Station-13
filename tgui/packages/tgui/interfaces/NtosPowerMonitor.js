@@ -6,7 +6,7 @@ export const NtosPowerMonitor = () => {
     <NtosWindow
       width={550}
       height={700}>
-      <NtosWindow.Content scrollable>
+      <NtosWindow.Content overflow="auto">
         <PowerMonitorContent />
       </NtosWindow.Content>
     </NtosWindow>

@@ -10,10 +10,10 @@
 	var/color_to_apply = "#FFFFFF"
 	var/mutable_appearance/fill_overlay
 
-/obj/item/reagent_containers/blood/Initialize()
+/obj/item/reagent_containers/blood/Initialize(mapload)
 	. = ..()
 	if(blood_type != null)
-		reagents.add_reagent(/datum/reagent/blood, 200, list("donor"=null,"viruses"=null,"blood_DNA"=null,"bloodcolor"=bloodtype_to_color(blood_type), "blood_type"=blood_type,"resistances"=null,"trace_chem"=null))
+		reagents.add_reagent(/datum/reagent/blood, 200, list("donor"=null,"viruses"=null,"blood_DNA"=null,"bloodcolor"=bloodtype_to_color(blood_type), "bloodblend" = BLEND_MULTIPLY, "blood_type"=blood_type,"resistances"=null,"trace_chem"=null))
 		update_icon()
 
 /obj/item/reagent_containers/blood/on_reagent_change(changetype)
@@ -43,7 +43,7 @@
 /obj/item/reagent_containers/blood/random
 	icon_state = "random_bloodpack"
 
-/obj/item/reagent_containers/blood/random/Initialize()
+/obj/item/reagent_containers/blood/random/Initialize(mapload)
 	icon_state = "bloodpack"
 	blood_type = pick("A+", "A-", "B+", "B-", "O+", "O-", "L", "SY", "HF", "GEL", "BUG")
 	return ..()
@@ -88,6 +88,9 @@
 	if(istype(I, /obj/item/pen) || istype(I, /obj/item/toy/crayon))
 		if(!user.is_literate())
 			to_chat(user, "<span class='notice'>You scribble illegibly on the label of [src]!</span>")
+			return
+		if(HAS_TRAIT(user, TRAIT_DUMB4CUM))
+			to_chat(user, "<span class='love'>You can't think of anything but cum right now.</span>")
 			return
 		var/t = stripped_input(user, "What would you like to label the blood pack?", name, null, 53)
 		if(!user.canUseTopic(src, BE_CLOSE))

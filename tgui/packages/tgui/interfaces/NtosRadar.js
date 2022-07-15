@@ -32,7 +32,7 @@ export const NtosRadarContent = (props, context) => {
         position="relative"
         width={20.5}
         hight="100%">
-        <NtosWindow.Content scrollable>
+        <NtosWindow.Content overflow="auto">
           <Section>
             <Button
               icon="redo-alt"

@@ -17,7 +17,7 @@ export const OreRedemptionMachine = (props, context) => {
       title="Ore Redemption Machine"
       width={440}
       height={550}>
-      <Window.Content scrollable>
+      <Window.Content overflow="auto">
         <Section>
           <BlockQuote mb={1}>
             This machine only accepts ore.<br />

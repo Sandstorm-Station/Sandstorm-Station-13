@@ -17,7 +17,7 @@
  * * discord_id Discord id as a string
  * * one_time_token as a string
  * * timestamp as a string
- * * valid as a number
+ * * valid as a number of 0 or 1
  */
 /datum/discord_link_record/New(ckey, discord_id, one_time_token, timestamp, valid)
 	src.ckey = ckey

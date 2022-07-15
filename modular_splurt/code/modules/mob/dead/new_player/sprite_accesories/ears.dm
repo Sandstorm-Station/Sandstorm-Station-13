@@ -1,5 +1,3 @@
-//Hyperstation Ears
-
 /datum/sprite_accessory/ears/human/gret
 	name = "Gret"
 	icon_state = "gret"
@@ -63,3 +61,23 @@
 	icon_state = "thinant"
 	recommended_species = list("insect")
 	matrixed_sections = MATRIX_RED
+
+/datum/sprite_accessory/ears/mam_ears/eros/chemlight
+	name = "RadDog"
+	icon_state = "chemlight"
+	matrixed_sections = MATRIX_RED
+
+/datum/sprite_accessory/ears/mam_ears/eros/easterndragon
+	name = "Dragon Eastern"
+	icon_state = "easternd"
+	matrixed_sections = MATRIX_RED_BLUE
+
+/datum/sprite_accessory/ears/mam_ears/eros/shadekin
+	name = "Shadekin"
+	icon_state = "shadekin"
+	color_src = MUTCOLORS
+
+/datum/sprite_accessory/ears/mam_ears/eros/cat_normal
+	name = "Cat, normal"
+	icon_state = "catnormal"
+	matrixed_sections = MATRIX_RED_GREEN

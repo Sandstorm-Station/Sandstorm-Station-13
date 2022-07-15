@@ -127,3 +127,91 @@
 	name = "bar weapon permit"
 	desc = "A card indicating that the barkeep is allowed to carry a weapon, most likely their shotgun."
 	icon_state = "permit"
+
+//Hyper stuff
+// Bouquets
+/obj/item/bouquet
+	name = "mixed bouquet"
+	desc = "A bouquet of sunflowers, lilies, and geraniums. How delightful."
+	icon = 'modular_splurt/icons/obj/items_and_weapons.dmi'
+	icon_state = "mixedbouquet"
+
+/obj/item/bouquet/sunflower
+	name = "sunflower bouquet"
+	desc = "A bright bouquet of sunflowers."
+	icon_state = "sunbouquet"
+
+/obj/item/bouquet/poppy
+	name = "poppy bouquet"
+	desc = "A bouquet of poppies. You feel loved just looking at it."
+	icon_state = "poppybouquet"
+
+/obj/item/bouquet/rose
+	name = "rose bouquet"
+	desc = "A bouquet of roses. A bundle of love."
+	icon_state = "rosebouquet"
+
+/obj/item/clothing/accessory/badge
+	name = "security badge"
+	desc = "A badge showing the wearer is a member of Security."
+	icon = 'modular_splurt/icons/obj/badge.dmi'
+	icon_state = "security_badge"
+	mob_overlay_icon = 'icons/mob/clothing/accessories.dmi'
+	item_state = "lawerbadge"
+	w_class = WEIGHT_CLASS_TINY
+	resistance_flags = FIRE_PROOF
+	var/owner = null	//To prevent people from just renaming the thing if they steal it
+	var/ownjob = null
+
+/obj/item/clothing/accessory/badge/proc/update_label()
+	name = "Badge-[owner] ([ownjob])"
+
+/obj/item/clothing/accessory/badge/attackby(obj/item/C, mob/user)
+	if(istype(C, /obj/item/card/id))
+		var/obj/item/card/id/idcard = C
+		if(!idcard.registered_name)
+			to_chat(user, "<span class='warning'>\The [src] rejects the ID!</span>")
+			return
+
+		if(!owner)
+			owner = idcard.registered_name
+			ownjob = idcard.assignment
+			update_label()
+			to_chat(user, "<span class='notice'>Badge updated.</span>")
+
+
+/obj/item/clothing/accessory/badge/attack_self(mob/user)
+	if(Adjacent(user))
+		user.visible_message("<span class='notice'>[user] shows you: [icon2html(src, viewers(user))] [src.name].</span>", \
+					"<span class='notice'>You show \the [src.name].</span>")
+		add_fingerprint(user)
+
+/obj/item/clothing/accessory/badge/holo
+	name = "security holo badge"
+	desc = "A more futuristic hard-light badge"
+	icon_state = "security_badge_holo"
+	
+/obj/item/clothing/accessory/badge/deputy
+	name = "security deputy badge"
+	desc = "A shiny silver badge for deputies on the Security force"
+	icon_state = "security_badge_deputy"
+	
+/datum/design/sec_badge
+	name = "Security Badge"
+	desc = "A shiny badge to show the bearer is part of the Security force."
+	id = "sec_badge"
+	build_type = PROTOLATHE
+	materials = list(/datum/material/iron = 200, /datum/material/gold = 100)
+	build_path = /obj/item/clothing/accessory/badge
+	category = list("Equipment")
+	departmental_flags = DEPARTMENTAL_FLAG_SECURITY
+
+/datum/design/dep_badge
+	name = "Deputy Badge"
+	desc = "A shiny badge for deputies to the Security force."
+	id = "dep_badge"
+	build_type = PROTOLATHE
+	materials = list(/datum/material/iron = 200, /datum/material/silver = 100)
+	build_path = /obj/item/clothing/accessory/badge/deputy
+	category = list("Equipment")
+	departmental_flags = DEPARTMENTAL_FLAG_SECURITY

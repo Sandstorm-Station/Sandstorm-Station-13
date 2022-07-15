@@ -15,8 +15,10 @@
 	features["mcolor3"]	= sanitize_hexcolor(features["mcolor3"], 6, FALSE)
 
 	// Sandstorm changes
-	S["enable_personal_chat_color"]			>> enable_personal_chat_color
+	S["enable_personal_chat_color"]		>> enable_personal_chat_color
 	S["personal_chat_color"]			>> personal_chat_color
+	S["lust_tolerance"] 				>> lust_tolerance
+	S["sexual_potency"]					>> sexual_potency
 
 	S["alt_titles_preferences"]			>> alt_titles_preferences
 	alt_titles_preferences = SANITIZE_LIST(alt_titles_preferences)
@@ -59,15 +61,16 @@
 	WRITE_FILE(S["feature_xeno_head"], features["xenohead"])
 	//flavor text
 	WRITE_FILE(S["feature_flavor_text"], features["flavor_text"])
-	WRITE_FILE(S["silicon_feature_flavor_text"], features["silicon_flavor_text"])
+	WRITE_FILE(S["feature_naked_flavor_text"], features["naked_flavor_text"]) //SPLURT edit
+	WRITE_FILE(S["feature_silicon_flavor_text"], features["silicon_flavor_text"])
 
 	//sandstorm stuff
 	WRITE_FILE(S["erp_pref"], erppref)
 	WRITE_FILE(S["noncon_pref"], nonconpref)
 	WRITE_FILE(S["vore_pref"], vorepref)
 	WRITE_FILE(S["unholypref"], unholypref)
-	WRITE_FILE(S["extremepref"], extremepref)
-	WRITE_FILE(S["extremeharm"], extremeharm)
+	WRITE_FILE(S["extreme_pref"], extremepref)
+	WRITE_FILE(S["extreme_harm"], extremeharm)
 	WRITE_FILE(S["enable_personal_chat_color"], enable_personal_chat_color)
 	WRITE_FILE(S["personal_chat_color"], personal_chat_color)
 	WRITE_FILE(S["alt_titles_preferences"], alt_titles_preferences)

@@ -9,7 +9,7 @@ export const CellularEmporium = (props, context) => {
     <Window
       width={900}
       height={480}>
-      <Window.Content scrollable>
+      <Window.Content overflow="auto">
         <Section>
           <LabeledList>
             <LabeledList.Item

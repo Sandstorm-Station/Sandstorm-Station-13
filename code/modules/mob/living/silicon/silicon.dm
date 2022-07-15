@@ -49,7 +49,10 @@
 
 	typing_indicator_state = /obj/effect/overlay/typing_indicator/machine
 
-/mob/living/silicon/Initialize()
+	vocal_bark_id = "synth"
+	vocal_pitch_range = 0.1
+
+/mob/living/silicon/Initialize(mapload)
 	. = ..()
 	GLOB.silicon_mobs += src
 	faction += "silicon"

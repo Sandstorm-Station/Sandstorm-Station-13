@@ -23,7 +23,7 @@ export const Biogenerator = (props, context) => {
           {' Processing...'}
         </Dimmer>
       )}
-      <Window.Content scrollable>
+      <Window.Content overflow="auto">
         {!beaker && (
           <NoticeBox>No Container</NoticeBox>
         )}
