@@ -5636,8 +5636,7 @@
 	id = "Secure Gate";
 	name = "brig shutters"
 	},
-/obj/structure/flora/ausbushes/fernybush,
-/turf/open/floor/grass,
+/turf/open/floor/plating,
 /area/security/brig)
 "dmG" = (
 /obj/machinery/door/firedoor,
@@ -6015,6 +6014,14 @@
 "dwc" = (
 /turf/closed/wall,
 /area/service/theater)
+"dwg" = (
+/obj/machinery/door/poddoor/shutters/radiation/preopen{
+	id = "engsm";
+	name = "Radiation Chamber Shutters"
+	},
+/obj/machinery/field/generator,
+/turf/open/floor/plating,
+/area/engineering/main)
 "dwn" = (
 /obj/machinery/atmospherics/components/unary/vent_pump/on/layer1{
 	dir = 4
@@ -7370,6 +7377,7 @@
 /area/hallway/primary/port)
 "efa" = (
 /obj/machinery/atmospherics/components/unary/vent_pump/on/layer1,
+/obj/structure/closet/secure_closet/atmospherics,
 /turf/open/floor/plasteel,
 /area/engineering/storage/tech)
 "efc" = (
@@ -7617,6 +7625,10 @@
 /obj/effect/spawner/lootdrop/space_cash,
 /turf/open/floor/plasteel,
 /area/cargo/sorting)
+"elb" = (
+/obj/structure/closet/secure_closet/engineering_electrical,
+/turf/open/floor/plasteel,
+/area/engineering/storage/tech)
 "elc" = (
 /obj/structure/chair/sofa/corp/right{
 	dir = 8
@@ -7856,6 +7868,10 @@
 	},
 /turf/open/floor/plasteel,
 /area/commons/dorms)
+"etA" = (
+/obj/machinery/camera/preset,
+/turf/open/floor/plasteel,
+/area/command/bridge)
 "etW" = (
 /obj/machinery/atmospherics/pipe/simple/scrubbers/hidden/layer3{
 	dir = 9
@@ -9820,6 +9836,7 @@
 /obj/machinery/light{
 	dir = 8
 	},
+/obj/structure/closet/secure_closet/atmospherics,
 /turf/open/floor/plasteel,
 /area/engineering/storage/tech)
 "fso" = (
@@ -15869,6 +15886,16 @@
 /obj/structure/disposalpipe/segment,
 /turf/open/floor/plasteel,
 /area/commons/dorms)
+"iMg" = (
+/obj/structure/cable{
+	icon_state = "4-8"
+	},
+/obj/machinery/atmospherics/pipe/simple/scrubbers/hidden/layer3{
+	dir = 4
+	},
+/obj/structure/closet/firecloset,
+/turf/open/floor/plasteel,
+/area/security/brig)
 "iMm" = (
 /obj/machinery/power/tracker,
 /obj/structure/cable/yellow,
@@ -19627,6 +19654,7 @@
 	name = "Port Docking Bay 3"
 	},
 /obj/effect/mapping_helpers/airlock/cyclelink_helper,
+/obj/structure/fans/tiny,
 /turf/open/floor/plating,
 /area/hallway/secondary/entry)
 "kUL" = (
@@ -20174,8 +20202,7 @@
 	id = "Secure Gate";
 	name = "brig shutters"
 	},
-/obj/structure/flora/ausbushes/fernybush,
-/turf/open/floor/grass,
+/turf/open/floor/plating,
 /area/security/brig)
 "lki" = (
 /obj/machinery/atmospherics/pipe/simple/scrubbers/hidden{
@@ -21921,8 +21948,7 @@
 /obj/structure/cable{
 	icon_state = "0-2"
 	},
-/obj/structure/flora/ausbushes/fernybush,
-/turf/open/floor/grass,
+/turf/open/floor/plating,
 /area/security/brig)
 "mlc" = (
 /obj/machinery/atmospherics/pipe/simple/supply/hidden/layer1,
@@ -23965,6 +23991,7 @@
 /obj/machinery/atmospherics/pipe/simple/scrubbers/hidden/layer3{
 	dir = 4
 	},
+/obj/structure/closet/emcloset,
 /turf/open/floor/plasteel,
 /area/security/brig)
 "nqQ" = (
@@ -27067,8 +27094,7 @@
 	id = "Secure Gate";
 	name = "brig shutters"
 	},
-/obj/structure/flora/ausbushes/fernybush,
-/turf/open/floor/grass,
+/turf/open/floor/plating,
 /area/security/brig)
 "oXU" = (
 /obj/machinery/button/door{
@@ -32163,6 +32189,10 @@
 /obj/machinery/atmospherics/pipe/simple/scrubbers/hidden/layer3,
 /turf/open/floor/plasteel,
 /area/hallway/primary/aft)
+"rEZ" = (
+/obj/machinery/field/generator,
+/turf/open/floor/plasteel,
+/area/engineering/main)
 "rFc" = (
 /obj/machinery/atmospherics/pipe/simple/scrubbers/hidden/layer3{
 	dir = 6
@@ -39187,8 +39217,7 @@
 	id = "Secure Gate";
 	name = "brig shutters"
 	},
-/obj/structure/flora/ausbushes/fernybush,
-/turf/open/floor/grass,
+/turf/open/floor/plating,
 /area/security/brig)
 "vnC" = (
 /obj/effect/spawner/lootdrop/maintenance,
@@ -42150,6 +42179,7 @@
 	departmentType = 5;
 	pixel_y = 30
 	},
+/obj/structure/closet/firecloset,
 /turf/open/floor/plasteel,
 /area/security/brig)
 "wOS" = (
@@ -43630,8 +43660,7 @@
 /obj/structure/cable{
 	dir = 1
 	},
-/obj/structure/flora/ausbushes/fernybush,
-/turf/open/floor/grass,
+/turf/open/floor/plating,
 /area/security/brig)
 "xBg" = (
 /obj/structure/table,
@@ -61709,7 +61738,7 @@ tOz
 pjy
 eUo
 lXq
-hFb
+etA
 qMy
 hFb
 tPR
@@ -62437,7 +62466,7 @@ pwm
 pwm
 pwm
 pwm
-xEN
+iMg
 kWj
 jEW
 hLE
@@ -77605,7 +77634,7 @@ hqL
 fRx
 fsi
 pIq
-kDx
+elb
 wod
 qxm
 ndR
@@ -86943,8 +86972,8 @@ fun
 fun
 kRv
 nzh
-vWb
-vWb
+rEZ
+rEZ
 gjF
 vWb
 vWb
@@ -87694,8 +87723,8 @@ lbj
 xsQ
 sCk
 qIm
-hDD
-hDD
+dwg
+dwg
 hDD
 hDD
 hDD
