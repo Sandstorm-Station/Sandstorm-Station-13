@@ -103,11 +103,6 @@
 
 	destination.update_size(get_size(destination), old_size)
 
-	if(prob(50))
-		SEND_SIGNAL(destination, COMSIG_CARBON_IDENTITY_TRANSFERRED_TO, src, FALSE)
-	else
-		SEND_SIGNAL(destination, COMSIG_CARBON_IDENTITY_TRANSFERRED_TO, second_set, FALSE)
-
 	destination.dna.update_dna_identity()
 	destination.dna.generate_dna_blocks()
 

@@ -218,8 +218,10 @@
 		belly.modify_size(1)
 
 /datum/component/pregnancy/proc/handle_incubation()
-	if(carrier && prob(2))
-		to_chat(carrier, span_warning("You feel the egg moving a bit inside you!"))
+	if(carrier && (stage < max_stage) && prob(2))
+		to_chat(carrier, span_warning("You feel \The [parent] moving a bit inside you!"))
+	if(carrier && (stage == max_stage) && prob(2))
+		to_chat(carrier, span_warning("\The [parent] moves, it's probably ready to hatch!"))
 
 /datum/component/pregnancy/proc/hatch(datum/source, obj/item/I, mob/user, params)
 	SIGNAL_HANDLER
@@ -232,7 +234,7 @@
 	if(ishuman(babby))
 		determine_baby_features(babby)
 		determine_baby_dna(babby)
-	INVOKE_ASYNC(GLOBAL_PROC, .proc/offer_control_to_babby, babby, carrier, egg_name)
+	INVOKE_ASYNC(GLOBAL_PROC, .proc/offer_control_to_babby, babby, user, egg_name)
 	var/obj/item = parent
 	item.forceMove(get_turf(parent))
 	item.obj_break(MELEE)
@@ -292,10 +294,13 @@
 		else
 			to_chat(carrier, span_warning("You REALLY need to get this egg out!"))
 		carrier.emote("scream")
+		carrier.adjustStaminaLoss(15)
 
 	lay_eg(get_turf(carrier))
 
 /datum/component/pregnancy/proc/lay_eg(atom/location)
+	if(prob(60))
+		return FALSE
 	if(isorgan(location))
 		var/obj/item/organ/recv = location
 		if(!recv.owner)
@@ -362,6 +367,10 @@
 	babby.underwear = "Nude"
 	babby.undershirt = "Nude"
 	babby.socks = "Nude"
+
+	babby.saved_underwear = babby.underwear
+	babby.saved_undershirt = babby.undershirt
+	babby.saved_socks = babby.socks
 
 /datum/component/pregnancy/proc/generic_pragency_start()
 	if(revealed)
