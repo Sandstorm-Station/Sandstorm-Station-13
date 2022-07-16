@@ -10174,7 +10174,7 @@
 "azb" = (
 /obj/machinery/door/airlock/wood/dorms{
 	name = "Sauna Room";
-	
+	req_access_txt = null
 	},
 /turf/open/floor/festive/wooden/wooden2,
 /area/commons/fitness/recreation)
@@ -13213,7 +13213,7 @@
 "aII" = (
 /obj/machinery/door/airlock/wood{
 	name = "Chapel Bedroom";
-	req_access_txt = "22"
+	req_access_txt = "27"
 	},
 /turf/open/floor/wood/wood_large,
 /area/service/chapel/office)
@@ -13579,6 +13579,8 @@
 	dir = 1
 	},
 /obj/effect/turf_decal/tile/bar,
+/obj/machinery/reagentgrinder,
+/obj/structure/table/reinforced,
 /turf/open/floor/plasteel,
 /area/service/bar)
 "aJF" = (
@@ -15789,7 +15791,7 @@
 "aRz" = (
 /obj/machinery/door/airlock/public/glass{
 	name = "Kitchen";
-	
+	req_access_txt = "28"
 	},
 /turf/open/floor/plasteel/cafeteria,
 /area/service/kitchen)
@@ -16306,13 +16308,18 @@
 	dir = 1
 	},
 /obj/effect/landmark/start/assistant,
+/obj/machinery/atmospherics/components/unary/vent_pump/on{
+	dir = 8
+	},
 /turf/open/floor/plasteel/chapel{
 	dir = 8
 	},
 /area/service/chapel/main)
 "aTl" = (
-/obj/machinery/atmospherics/pipe/simple/supply/hidden,
 /obj/machinery/light/floor,
+/obj/machinery/atmospherics/pipe/manifold/supply/hidden{
+	dir = 8
+	},
 /turf/open/floor/carpet/black,
 /area/service/chapel/main)
 "aTm" = (
@@ -48286,7 +48293,7 @@
 /obj/machinery/door/airlock/security/glass{
 	id_tag = "innerbrig";
 	name = "Brig";
-	
+	req_access_txt = "1"
 	},
 /obj/machinery/door/firedoor,
 /obj/effect/mapping_helpers/airlock/cyclelink_helper,
@@ -48736,6 +48743,17 @@
 	dir = 1
 	},
 /obj/effect/turf_decal/tile/bar,
+/obj/item/reagent_containers/food/drinks/shaker{
+	pixel_x = -9
+	},
+/obj/item/reagent_containers/food/drinks/shaker{
+	pixel_x = -13
+	},
+/obj/item/stack/spacecash/c100,
+/obj/item/reagent_containers/spray/cleaner{
+	pixel_x = 11
+	},
+/obj/structure/table/reinforced,
 /turf/open/floor/plasteel,
 /area/service/bar)
 "cNG" = (
@@ -49496,7 +49514,7 @@
 	pixel_x = 25
 	},
 /obj/effect/decal/cleanable/cobweb/cobweb2,
-/turf/open/floor/plasteel/dark,
+/turf/open/floor/wood/wood_large,
 /area/service/chapel/main)
 "dal" = (
 /obj/effect/decal/cleanable/blood,
@@ -50919,7 +50937,9 @@
 /area/service/bar)
 "eJh" = (
 /obj/machinery/light/floor,
-/obj/machinery/atmospherics/pipe/simple/scrubbers/hidden,
+/obj/machinery/atmospherics/pipe/manifold/scrubbers/hidden{
+	dir = 4
+	},
 /turf/open/floor/carpet/black,
 /area/service/chapel/main)
 "eJu" = (
@@ -51597,7 +51617,9 @@
 /turf/open/floor/plasteel,
 /area/security/range)
 "fsQ" = (
-/obj/machinery/atmospherics/pipe/simple/scrubbers/hidden,
+/obj/machinery/atmospherics/pipe/manifold/scrubbers/hidden{
+	dir = 4
+	},
 /turf/open/floor/wood/wood_large,
 /area/service/chapel/main)
 "fth" = (
@@ -52468,7 +52490,7 @@
 /obj/machinery/light/small{
 	dir = 4
 	},
-/turf/closed/wall,
+/turf/open/floor/plating,
 /area/maintenance/fore/secondary)
 "gkl" = (
 /obj/effect/turf_decal/tile/blue{
@@ -53212,6 +53234,9 @@
 	},
 /obj/item/pen/fountain{
 	pixel_y = 4
+	},
+/obj/machinery/atmospherics/components/unary/vent_scrubber/on{
+	dir = 4
 	},
 /turf/open/floor/wood/wood_large,
 /area/service/chapel/main)
@@ -54565,7 +54590,14 @@
 /obj/machinery/atmospherics/pipe/simple/scrubbers/hidden,
 /obj/machinery/door/airlock/maintenance/abandoned{
 	req_access_txt = "12";
-	
+	id_tag = "abandonmaint1"
+	},
+/obj/machinery/button/door{
+	id = "abandonmaint1";
+	name = "Door Bolt Control";
+	normaldoorcontrol = 1;
+	pixel_x = -25;
+	specialfunctions = 4
 	},
 /turf/open/floor/wood/wood_large,
 /area/maintenance/starboard/fore)
@@ -54589,7 +54621,7 @@
 	lootcount = 2;
 	name = "2maintenance loot spawner"
 	},
-/turf/closed/wall,
+/turf/open/floor/plating,
 /area/maintenance/fore/secondary)
 "jbK" = (
 /obj/item/stack/sheet/glass{
@@ -55088,7 +55120,7 @@
 	dir = 1
 	},
 /obj/machinery/light/floor,
-/turf/open/floor/plasteel/dark,
+/turf/open/floor/wood/wood_large,
 /area/service/chapel/main)
 "jCV" = (
 /obj/effect/decal/cleanable/dirt,
@@ -55292,6 +55324,14 @@
 /obj/effect/mapping_helpers/airlock/cyclelink_helper,
 /turf/open/floor/plasteel,
 /area/engineering/engine_smes)
+"jLo" = (
+/obj/effect/turf_decal/tile/bar{
+	dir = 1
+	},
+/obj/effect/turf_decal/tile/bar,
+/obj/machinery/chem_master,
+/turf/open/floor/plasteel,
+/area/service/bar)
 "jLF" = (
 /obj/machinery/door/firedoor,
 /obj/machinery/door/airlock/command/glass{
@@ -55953,6 +55993,10 @@
 	dir = 1
 	},
 /obj/structure/closet/secure_closet/personal/cabinet,
+/obj/machinery/light/small{
+	brightness = 3;
+	dir = 8
+	},
 /turf/open/floor/carpet,
 /area/commons/dorms)
 "ksa" = (
@@ -56160,6 +56204,9 @@
 	dir = 1
 	},
 /obj/effect/landmark/start/assistant,
+/obj/machinery/atmospherics/pipe/simple/scrubbers/hidden{
+	dir = 4
+	},
 /turf/open/floor/plasteel/chapel,
 /area/service/chapel/main)
 "kGj" = (
@@ -57380,7 +57427,12 @@
 /area/maintenance/starboard/aft)
 "lWD" = (
 /obj/machinery/atmospherics/pipe/simple/supply/hidden,
-/obj/machinery/chem_master,
+/obj/structure/bed{
+	dir = 1
+	},
+/obj/item/bedsheet/gondola{
+	dir = 1
+	},
 /turf/open/floor/wood,
 /area/service/bar)
 "lXy" = (
@@ -57772,7 +57824,7 @@
 /obj/machinery/door/morgue{
 	name = "Confession Booth"
 	},
-/turf/open/space/basic,
+/turf/open/floor/wood/wood_large,
 /area/service/chapel/main)
 "mpI" = (
 /obj/structure/table/wood,
@@ -58000,7 +58052,7 @@
 "mzv" = (
 /obj/machinery/door/airlock/public/glass{
 	name = "Chapel Office";
-	
+	req_access_txt = "27"
 	},
 /turf/open/floor/wood/wood_large,
 /area/service/chapel/main)
@@ -59065,6 +59117,21 @@
 	},
 /turf/open/floor/plating,
 /area/maintenance/port/fore)
+"nQi" = (
+/obj/structure/table/wood,
+/obj/item/storage/fancy/candle_box{
+	pixel_x = 5;
+	pixel_y = 4
+	},
+/obj/item/storage/box/matches{
+	pixel_x = 4;
+	pixel_y = -8
+	},
+/obj/machinery/atmospherics/components/unary/vent_pump/on{
+	dir = 8
+	},
+/turf/open/floor/wood/wood_large,
+/area/service/chapel/main)
 "nRG" = (
 /obj/structure/cable/white{
 	icon_state = "4-8"
@@ -59705,10 +59772,10 @@
 /obj/effect/turf_decal/tile/red{
 	dir = 8
 	},
-/obj/machinery/vr_sleeper{
+/obj/effect/turf_decal/stripes/line{
 	dir = 1
 	},
-/obj/effect/turf_decal/stripes/line{
+/obj/machinery/vr_sleeper{
 	dir = 1
 	},
 /turf/open/floor/plasteel/white/corner{
@@ -60901,10 +60968,10 @@
 /obj/effect/turf_decal/tile/red{
 	dir = 8
 	},
-/obj/machinery/vr_sleeper{
+/obj/effect/turf_decal/stripes/line{
 	dir = 1
 	},
-/obj/effect/turf_decal/stripes/line{
+/obj/machinery/vr_sleeper{
 	dir = 1
 	},
 /turf/open/floor/plasteel/white/side{
@@ -63224,7 +63291,7 @@
 /area/service/hydroponics)
 "sIf" = (
 /obj/structure/loot_pile/maint,
-/turf/closed/wall,
+/turf/open/floor/plating,
 /area/maintenance/fore/secondary)
 "sIn" = (
 /obj/machinery/light/small{
@@ -63747,6 +63814,17 @@
 	},
 /turf/open/floor/plasteel/dark,
 /area/commons/dorms)
+"tmq" = (
+/obj/structure/chair/pew/left{
+	dir = 1
+	},
+/obj/machinery/atmospherics/components/unary/vent_scrubber/on{
+	dir = 4
+	},
+/turf/open/floor/plasteel/chapel{
+	dir = 8
+	},
+/area/service/chapel/main)
 "tmO" = (
 /obj/effect/turf_decal/stripes/line{
 	dir = 10
@@ -64133,14 +64211,6 @@
 	},
 /turf/open/floor/plasteel/dark,
 /area/service/kitchen)
-"tGr" = (
-/mob/living/simple_animal/parrot/commonblackbird{
-	name = "Omen";
-	desc = "Blackbirds are said to deliver souls of the damned to Satan";
-	speak_chance = 0
-	},
-/turf/open/floor/wood/wood_large,
-/area/service/chapel/office)
 "tGX" = (
 /obj/machinery/atmospherics/pipe/simple/supply/hidden,
 /turf/open/floor/festive/wooden/wooden1,
@@ -64977,6 +65047,7 @@
 /obj/structure/table/reinforced,
 /obj/machinery/door/window/southright{
 	name = "Bar Door";
+	req_one_access_txt = "28";
 	dir = 4
 	},
 /turf/open/floor/plasteel/dark,
@@ -66065,6 +66136,13 @@
 	},
 /turf/closed/wall,
 /area/maintenance/starboard/fore)
+"vQP" = (
+/obj/machinery/atmospherics/pipe/simple/scrubbers/hidden{
+	dir = 4
+	},
+/obj/structure/table/wood,
+/turf/open/floor/wood,
+/area/service/bar)
 "vRk" = (
 /obj/machinery/newscaster{
 	pixel_x = 30
@@ -66704,10 +66782,10 @@
 /obj/effect/turf_decal/tile/red{
 	dir = 8
 	},
-/obj/machinery/vr_sleeper{
+/obj/effect/turf_decal/tile/red{
 	dir = 1
 	},
-/obj/effect/turf_decal/tile/red{
+/obj/machinery/vr_sleeper{
 	dir = 1
 	},
 /obj/effect/turf_decal/stripes/line{
@@ -67019,11 +67097,12 @@
 /turf/open/floor/plating,
 /area/maintenance/starboard/aft)
 "xef" = (
-/obj/machinery/light{
-	dir = 8
-	},
 /obj/machinery/atmospherics/components/unary/vent_pump/on,
 /obj/structure/closet/secure_closet/personal/cabinet,
+/obj/machinery/light/small{
+	brightness = 3;
+	dir = 8
+	},
 /turf/open/floor/carpet,
 /area/commons/dorms)
 "xfW" = (
@@ -67126,6 +67205,12 @@
 	},
 /turf/open/floor/plating,
 /area/security/prison/upper)
+"xiv" = (
+/obj/machinery/atmospherics/pipe/manifold/supply/hidden{
+	dir = 8
+	},
+/turf/open/floor/wood/wood_large,
+/area/service/chapel/main)
 "xiw" = (
 /obj/machinery/door/airlock{
 	name = "Service Hall";
@@ -67146,10 +67231,6 @@
 /turf/open/floor/plasteel/dark,
 /area/security/prison/upper)
 "xkd" = (
-/obj/machinery/light/small{
-	dir = 4;
-	light_color = "#d8b1b1"
-	},
 /obj/machinery/atmospherics/components/unary/vent_scrubber/on{
 	dir = 1
 	},
@@ -67309,22 +67390,6 @@
 	},
 /obj/machinery/airalarm{
 	pixel_y = 23
-	},
-/turf/open/floor/wood,
-/area/service/bar)
-"xwB" = (
-/obj/structure/table/wood,
-/obj/item/stack/spacecash/c100,
-/obj/item/reagent_containers/food/drinks/shaker{
-	pixel_x = -9
-	},
-/obj/item/reagent_containers/food/drinks/shaker{
-	pixel_x = -13
-	},
-/obj/machinery/reagentgrinder,
-/obj/machinery/atmospherics/pipe/simple/supply/hidden,
-/obj/item/reagent_containers/spray/cleaner{
-	pixel_x = 11
 	},
 /turf/open/floor/wood,
 /area/service/bar)
@@ -102387,7 +102452,7 @@ aAl
 aJC
 rES
 wxk
-xwB
+aMu
 lWD
 dvb
 qvn
@@ -102902,7 +102967,7 @@ aJC
 shq
 aJC
 aka
-uBa
+vQP
 rZE
 mqs
 kgB
@@ -104189,7 +104254,7 @@ qOc
 arf
 aGJ
 aIe
-aKO
+jLo
 aKO
 kIy
 aNI
@@ -114219,7 +114284,7 @@ aNW
 aPl
 aTg
 aPl
-aTg
+tmq
 aPl
 aTg
 aRS
@@ -115493,7 +115558,7 @@ awO
 awO
 asB
 aCP
-tGr
+aMX
 aFw
 yeS
 aFw
@@ -116270,7 +116335,7 @@ dHT
 mLW
 aMM
 nuv
-aMM
+xiv
 aMM
 aVW
 aVW
@@ -116527,7 +116592,7 @@ uYZ
 voO
 aKe
 umM
-eaF
+nQi
 aNW
 aPl
 aTg
