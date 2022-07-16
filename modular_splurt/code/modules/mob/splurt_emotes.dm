@@ -451,6 +451,72 @@
 	user.nextsoundemote = world.time + 60
 	playsound(user, 'modular_splurt/sound/voice/lawyerup.ogg', 50, 1, -1)
 
+/datum/emote/living/fusrodah
+	key = "fusrodah"
+	key_third_person = "furodahs"
+	message = "<b>\"FUS RO DAH!!!\"</b>"
+
+/datum/emote/living/fusrodah/run_emote(mob/user, params, type_override, intentional)
+	if(!(. = ..()))
+		return
+	if(user.nextsoundemote >= world.time)
+		return
+	user.nextsoundemote = world.time + 60
+	playsound(user, 'modular_splurt/sound/voice/fusrodah.ogg', 50, 1, -1)
+
+/datum/emote/living/skibidi
+	key = "skibidi"
+	key_third_person = "skibidis"
+	message = "<b>\"Skibidi bop mm dada!\"</b>"
+
+/datum/emote/living/skibidi/run_emote(mob/user, params, type_override, intentional)
+	if(!(. = ..()))
+		return
+	if(user.nextsoundemote >= world.time)
+		return
+	user.nextsoundemote = world.time + 60
+	playsound(user, 'modular_splurt/sound/voice/skibidi.ogg', 50, 1, -1)
+
+/datum/emote/living/fbi
+	key = "fbi"
+	key_third_person = "fbis"
+	message = "<b>\"FBI OPEN UP!\"</b>"
+
+/datum/emote/living/fbi/run_emote(mob/user, params, type_override, intentional)
+	if(!(. = ..()))
+		return
+	if(user.nextsoundemote >= world.time)
+		return
+	user.nextsoundemote = world.time + 60
+	playsound(user, 'modular_splurt/sound/voice/fbi.ogg', 50, 1, -1)
+
+/datum/emote/living/illuminati
+	key = "illuminati"
+	key_third_person = "illuminatis"
+	message = "emits some X-files vibe"
+
+/datum/emote/living/illuminati/run_emote(mob/user, params, type_override, intentional)
+	if(!(. = ..()))
+		return
+	if(user.nextsoundemote >= world.time)
+		return
+	user.nextsoundemote = world.time + 60
+	playsound(user, 'modular_splurt/sound/voice/illuminati.ogg', 50, 1, -1)
+
+/datum/emote/living/bonerif
+	key = "bonerif"
+	key_third_person = "bonerifs"
+	message = "riffs"
+
+/datum/emote/living/bonerif/run_emote(mob/user, params, type_override, intentional)
+	if(!(. = ..()))
+		return
+	if(user.nextsoundemote >= world.time)
+		return
+	user.nextsoundemote = world.time + 60
+	playsound(user, 'modular_splurt/sound/voice/bonerif.ogg', 50, 1, -1)
+
+
 /datum/emote/living/cry2
 	key = "cry2"
 	key_third_person = "crys2"
