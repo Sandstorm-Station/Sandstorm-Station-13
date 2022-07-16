@@ -48286,7 +48286,7 @@
 /obj/machinery/door/airlock/security/glass{
 	id_tag = "innerbrig";
 	name = "Brig";
-	req_access_txt = sss
+	
 	},
 /obj/machinery/door/firedoor,
 /obj/effect/mapping_helpers/airlock/cyclelink_helper,
@@ -54565,7 +54565,7 @@
 /obj/machinery/atmospherics/pipe/simple/scrubbers/hidden,
 /obj/machinery/door/airlock/maintenance/abandoned{
 	req_access_txt = "12";
-	id_tag = s
+	
 	},
 /turf/open/floor/wood/wood_large,
 /area/maintenance/starboard/fore)
@@ -58000,7 +58000,7 @@
 "mzv" = (
 /obj/machinery/door/airlock/public/glass{
 	name = "Chapel Office";
-	req_access_txt = s
+	
 	},
 /turf/open/floor/wood/wood_large,
 /area/service/chapel/main)
@@ -64977,7 +64977,6 @@
 /obj/structure/table/reinforced,
 /obj/machinery/door/window/southright{
 	name = "Bar Door";
-	req_one_access_txt = s;
 	dir = 4
 	},
 /turf/open/floor/plasteel/dark,
