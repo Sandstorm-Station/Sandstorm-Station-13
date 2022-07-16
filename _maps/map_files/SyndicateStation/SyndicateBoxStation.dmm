@@ -8822,7 +8822,7 @@
 "auB" = (
 /obj/machinery/atmospherics/pipe/manifold/scrubbers/hidden{
 	dir = 4;
-	move_force = sssssssssssssssssssssssssssssssssssssssssssssssssssssssssss
+	
 	},
 /turf/open/floor/mineral/plastitanium,
 /area/commons/dorms)
@@ -39400,7 +39400,7 @@
 "bWp" = (
 /obj/structure/chair/office/light,
 /obj/effect/landmark/start/scientist{
-	initial_language_holder = s
+	
 	},
 /turf/open/floor/mineral/plastitanium,
 /area/science/misc_lab)
@@ -57049,7 +57049,6 @@
 /area/space/nearstation)
 "mgF" = (
 /obj/machinery/camera{
-	c_tag = s;
 	dir = 8
 	},
 /turf/open/floor/mineral/plastitanium,
@@ -63348,7 +63347,7 @@
 /obj/machinery/camera{
 	c_tag = "Brig East";
 	dir = 8;
-	network = s
+	
 	},
 /obj/machinery/firealarm{
 	pixel_y = 24
