@@ -142,8 +142,15 @@ GENETICS SCANNER
 	var/mob_status = (M.stat == DEAD ? "<span class='alert'><b>Deceased</b></span>" : "<b>[round(M.health/M.maxHealth,0.01)*100] % healthy</b>")
 
 	if(HAS_TRAIT(M, TRAIT_FAKEDEATH) && !advanced)
-		mob_status = "<span class='alert'><b>Deceased</b></span>"
-		oxy_loss = max(rand(1, 40), oxy_loss, (300 - (tox_loss + fire_loss + brute_loss))) // Random oxygen loss
+		if(iszombie(M))
+			mob_status = "<span class='alert'><b>Unknown</b></span>"
+			oxy_loss = (rand(0, 100) - (tox_loss + fire_loss + brute_loss))
+			tox_loss = (rand(0, 100) - (oxy_loss + fire_loss + brute_loss))
+			fire_loss = (rand(0, 100) - (oxy_loss + tox_loss + brute_loss))
+			brute_loss = (rand(0, 100) - (oxy_loss + tox_loss + fire_loss))
+		else if(!iszombie(M))
+			mob_status = "<span class='alert'><b>Deceased</b></span>"
+			oxy_loss = max(rand(1, 40), oxy_loss, (300 - (tox_loss + fire_loss + brute_loss))) // Random oxygen loss
 
 	var/msg = "<span class='info'>Analyzing results for [M]:\n\tOverall status: [mob_status]</span>"
 
@@ -389,18 +396,23 @@ GENETICS SCANNER
 
 	// Time of death
 	if(M.tod && (M.stat == DEAD || ((HAS_TRAIT(M, TRAIT_FAKEDEATH)) && !advanced)))
-		msg += "<span class='info'>Time of Death:</span> [M.tod]\n"
-		var/tdelta = round(world.time - M.timeofdeath)
-		if(tdelta < (DEFIB_TIME_LIMIT * 10))
-			if(heart_ded)
-				msg += "<span class='danger'>Subject died [DisplayTimeText(tdelta)] ago, heart requires surgical intervention for defibrillation.</span>"
-			else
-				msg += "<span class='danger'>Subject died [DisplayTimeText(tdelta)] ago, defibrillation may be possible!</span>"
-			if(advanced)
-				if(H.get_ghost() || H.key || H.client)//Since it can last a while.
-					msg += "<span class='danger'> Intervention recommended.</span>\n"
+		var/zdelta = round(rand(-world.time, world.time) - M.timeofdeath)
+		if(iszombie(M))
+			msg += "<span class='danger'>Subject died [DisplayTimeText(zdelta)] ago, defibrillation may be possible!</span>"
+			msg += "<span class='danger'> Anomaly detected.</span>\n"
+		else
+			msg += "<span class='info'>Time of Death:</span> [M.tod]\n"
+			var/tdelta = round(world.time - M.timeofdeath)
+			if(tdelta < (DEFIB_TIME_LIMIT * 10))
+				if(heart_ded)
+					msg += "<span class='danger'>Subject died [DisplayTimeText(tdelta)] ago, heart requires surgical intervention for defibrillation.</span>"
 				else
-					msg += "\n"
+					msg += "<span class='danger'>Subject died [DisplayTimeText(tdelta)] ago, defibrillation may be possible!</span>"
+				if(advanced)
+					if(H.get_ghost() || H.key || H.client)//Since it can last a while.
+						msg += "<span class='danger'> Intervention recommended.</span>\n"
+					else
+						msg += "\n"
 	// Wounds
 	if(iscarbon(M))
 		var/mob/living/carbon/C = M

@@ -610,7 +610,7 @@
 			to_chat(owner, "<span class='warning'>[linked_extract] flares up brightly, and your hands alone are enough cook [F]!</span>")
 			F.microwave_act()
 	else
-		I.attackby(fire, owner)
+		I?.attackby(fire, owner)
 	return ..()
 
 /datum/status_effect/stabilized/darkpurple/on_remove()
