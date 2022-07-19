@@ -380,6 +380,8 @@
 	visible_message(message = "<span class='lewd'><b>\The [src]</b> [message]</span>", ignored_mobs = get_unconsenting())
 	handle_post_sex(NORMAL_LUST, CUM_TARGET_BREASTS, user)
 
+/*
+
 /mob/living/proc/remove_equipment(mob/living/carbon/target)
 	var/obj/item/organ/genital/holder = pick_receiving_organ(target, HAS_EQUIPMENT, "Remove equipment", "What genital?")
 	if(!holder)
@@ -392,6 +394,8 @@
 	var/obj/item/gimme = input(src, "What do you want to remove?", "Remove equipment", null) as null|anything in holder.equipment
 	if(gimme)
 		holder.remove_equipment(src, gimme)
+
+*/
 
 /mob/living/proc/nuzzle_belly(mob/living/target)
 	var/message

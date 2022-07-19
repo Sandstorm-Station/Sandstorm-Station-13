@@ -45,6 +45,7 @@
 /obj/item/organ/genital
 	var/list/obj/item/equipment = list()
 
+/*
 /obj/item/organ/genital/proc/remove_equipment(mob/living/carbon/remover, selection)
 	var/obj/item/selected = equipment[selection]
 	if(!selected)
@@ -79,3 +80,4 @@
 		else
 			selected.loc = owner.loc
 			equipment.Remove(selection)
+*/
