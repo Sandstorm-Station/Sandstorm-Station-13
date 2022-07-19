@@ -454,7 +454,7 @@
 /datum/emote/living/fusrodah
 	key = "fusrodah"
 	key_third_person = "furodahs"
-	message = "<b>\"FUS RO DAH!!!\"</b>"
+	message = "yells, \"<b>FUS RO DAH!!!</b>\""
 
 /datum/emote/living/fusrodah/run_emote(mob/user, params, type_override, intentional)
 	if(!(. = ..()))
@@ -462,33 +462,33 @@
 	if(user.nextsoundemote >= world.time)
 		return
 	user.nextsoundemote = world.time + 60
-	playsound(user, 'modular_splurt/sound/voice/fusrodah.ogg', 50, 1, -1)
+	playsound(user, 'modular_splurt/sound/voice/fusrodah.ogg', 50, 0, 1)
 
 /datum/emote/living/skibidi
 	key = "skibidi"
 	key_third_person = "skibidis"
-	message = "<b>\"Skibidi bop mm dada!\"</b>"
+	message = "yells, \"<b>Skibidi bop mm dada!</b>\""
 
 /datum/emote/living/skibidi/run_emote(mob/user, params, type_override, intentional)
 	if(!(. = ..()))
 		return
 	if(user.nextsoundemote >= world.time)
 		return
-	user.nextsoundemote = world.time + 60
-	playsound(user, 'modular_splurt/sound/voice/skibidi.ogg', 50, 1, -1)
+	user.nextsoundemote = world.time + 10
+	playsound(user, 'modular_splurt/sound/voice/skibidi.ogg', 50, 0, 1)
 
 /datum/emote/living/fbi
 	key = "fbi"
 	key_third_person = "fbis"
-	message = "<b>\"FBI OPEN UP!\"</b>"
+	message = "yells, \"<b>FBI OPEN UP!</b>\""
 
 /datum/emote/living/fbi/run_emote(mob/user, params, type_override, intentional)
 	if(!(. = ..()))
 		return
 	if(user.nextsoundemote >= world.time)
 		return
-	user.nextsoundemote = world.time + 60
-	playsound(user, 'modular_splurt/sound/voice/fbi.ogg', 50, 1, -1)
+	user.nextsoundemote = world.time + 20
+	playsound(user, 'modular_splurt/sound/voice/fbi.ogg', 50, 0, 1)
 
 /datum/emote/living/illuminati
 	key = "illuminati"
@@ -500,8 +500,8 @@
 		return
 	if(user.nextsoundemote >= world.time)
 		return
-	user.nextsoundemote = world.time + 60
-	playsound(user, 'modular_splurt/sound/voice/illuminati.ogg', 50, 1, -1)
+	user.nextsoundemote = world.time + 80
+	playsound(user, 'modular_splurt/sound/voice/illuminati.ogg', 50, 0, 1)
 
 /datum/emote/living/bonerif
 	key = "bonerif"
@@ -513,8 +513,8 @@
 		return
 	if(user.nextsoundemote >= world.time)
 		return
-	user.nextsoundemote = world.time + 60
-	playsound(user, 'modular_splurt/sound/voice/bonerif.ogg', 50, 1, -1)
+	user.nextsoundemote = world.time + 10
+	playsound(user, 'modular_splurt/sound/voice/bonerif.ogg', 50, 0, 1)
 
 
 /datum/emote/living/cry2
