@@ -266,7 +266,7 @@
 /area/security/prison/cells)
 "abc" = (
 /turf/closed/wall/r_wall,
-/area/maintenance/prison/port)
+/area/maintenance/prison/aft)
 "abd" = (
 /obj/machinery/atmospherics/pipe/simple/scrubbers/hidden{
 	dir = 6
@@ -47609,7 +47609,7 @@
 	name = "Permabrig Maintenance"
 	},
 /turf/open/floor/plating,
-/area/maintenance/prison/port)
+/area/maintenance/prison/aft)
 "cCs" = (
 /obj/structure/closet/emcloset,
 /obj/machinery/atmospherics/pipe/simple/supply/hidden,
@@ -49618,7 +49618,7 @@
 	},
 /obj/effect/decal/cleanable/dirt,
 /turf/open/floor/plating,
-/area/maintenance/prison/port)
+/area/maintenance/prison/aft)
 "dJL" = (
 /obj/structure/cable{
 	icon_state = "1-2"
@@ -50235,17 +50235,12 @@
 /turf/open/floor/plasteel,
 /area/engineering/atmos)
 "ezR" = (
-/obj/machinery/power/apc{
-	areastring = "/area/maintenance/prison/starboard";
-	dir = 8;
-	name = "Prison Central Maintenance APC";
-	pixel_x = -24
-	},
 /obj/structure/cable,
 /obj/effect/turf_decal/bot,
 /obj/effect/decal/cleanable/dirt,
+/obj/machinery/power/apc/auto_name/west,
 /turf/open/floor/plating,
-/area/maintenance/prison/port)
+/area/maintenance/prison/fore)
 "eAe" = (
 /obj/structure/dresser,
 /turf/open/floor/plasteel/white/side{
@@ -50493,7 +50488,7 @@
 	},
 /obj/effect/decal/cleanable/dirt,
 /turf/open/floor/plating,
-/area/maintenance/prison/port)
+/area/maintenance/prison/fore)
 "eRS" = (
 /obj/structure/table,
 /obj/item/folder/red{
@@ -50698,7 +50693,7 @@
 /obj/effect/spawner/lootdrop/prison_contraband,
 /obj/item/clothing/mask/joy,
 /turf/open/floor/plating,
-/area/maintenance/prison/port)
+/area/maintenance/prison/aft)
 "fbp" = (
 /obj/structure/tank_dispenser,
 /obj/effect/turf_decal/bot,
@@ -50732,7 +50727,7 @@
 /obj/item/dildo/flared/gigantic,
 /obj/item/dildo/flared,
 /turf/open/floor/plating,
-/area/maintenance/prison/port)
+/area/maintenance/prison/aft)
 "fcd" = (
 /obj/structure/chair/sofa/right{
 	dir = 8
@@ -52102,7 +52097,7 @@
 /area/engineering/atmos)
 "gxK" = (
 /turf/open/floor/plating,
-/area/maintenance/prison/port)
+/area/maintenance/prison/aft)
 "gyr" = (
 /obj/machinery/atmospherics/pipe/simple/supply/hidden,
 /turf/open/floor/plasteel,
@@ -52279,10 +52274,6 @@
 /obj/item/reagent_containers/blood/random,
 /turf/open/floor/plating,
 /area/maintenance/port/fore)
-"gKB" = (
-/obj/effect/turf_decal/tile/red,
-/turf/open/space/basic,
-/area/space)
 "gKG" = (
 /obj/structure/bedsheetbin/towel,
 /turf/open/floor/wood/wood_diagonal,
@@ -52423,7 +52414,7 @@
 /obj/item/electropack/shockcollar,
 /obj/item/assembly/signaler,
 /turf/open/floor/plating,
-/area/maintenance/prison/port)
+/area/maintenance/prison/aft)
 "gSO" = (
 /obj/structure/table,
 /obj/machinery/recharger,
@@ -53366,7 +53357,7 @@
 	},
 /obj/effect/decal/cleanable/dirt,
 /turf/open/floor/plating,
-/area/maintenance/prison/port)
+/area/maintenance/prison/fore)
 "ibK" = (
 /turf/open/floor/plasteel,
 /area/security/processing)
@@ -53877,7 +53868,7 @@
 	},
 /obj/effect/spawner/lootdrop/prison_contraband,
 /turf/open/floor/plating,
-/area/maintenance/prison/port)
+/area/maintenance/prison/fore)
 "iIS" = (
 /obj/effect/spawner/structure/window/reinforced,
 /obj/machinery/atmospherics/pipe/simple/cyan/visible{
@@ -55178,7 +55169,7 @@
 "kcB" = (
 /obj/effect/decal/cleanable/dirt,
 /turf/open/floor/plating,
-/area/maintenance/prison/port)
+/area/maintenance/prison/aft)
 "kcR" = (
 /obj/machinery/door/airlock/grunge{
 	name = "Permanent Cell 4";
@@ -55816,7 +55807,7 @@
 	icon_state = "2-8"
 	},
 /turf/open/floor/plating,
-/area/maintenance/prison/port)
+/area/maintenance/prison/fore)
 "kJE" = (
 /obj/machinery/atmospherics/pipe/simple/scrubbers/visible,
 /obj/machinery/atmospherics/pipe/simple/cyan/visible{
@@ -57321,7 +57312,7 @@
 	dir = 4
 	},
 /turf/open/floor/plating,
-/area/maintenance/prison/port)
+/area/maintenance/prison/aft)
 "mzv" = (
 /obj/machinery/door/airlock/public/glass{
 	name = "Chapel Office";
@@ -58406,7 +58397,7 @@
 /obj/effect/decal/cleanable/semen,
 /obj/effect/decal/cleanable/semen/femcum,
 /turf/open/floor/plating,
-/area/maintenance/prison/port)
+/area/maintenance/prison/aft)
 "nLw" = (
 /obj/effect/turf_decal/tile/red{
 	dir = 1
@@ -58451,7 +58442,7 @@
 	},
 /obj/effect/decal/cleanable/semendrip,
 /turf/open/floor/plating,
-/area/maintenance/prison/port)
+/area/maintenance/prison/aft)
 "nOc" = (
 /obj/machinery/atmospherics/pipe/simple/scrubbers/hidden,
 /turf/closed/wall,
@@ -60011,7 +60002,7 @@
 	dir = 8
 	},
 /turf/open/floor/plating,
-/area/maintenance/prison/port)
+/area/maintenance/prison/aft)
 "pFk" = (
 /obj/structure/chair/sofa/left,
 /obj/effect/landmark/event_spawn,
@@ -60173,7 +60164,7 @@
 /obj/effect/decal/cleanable/dirt,
 /obj/item/storage/bag/trash,
 /turf/open/floor/plating,
-/area/maintenance/prison/port)
+/area/maintenance/prison/fore)
 "pPI" = (
 /obj/machinery/atmospherics/pipe/manifold/scrubbers/hidden{
 	dir = 4
@@ -60900,7 +60891,7 @@
 /area/hallway/primary/port)
 "qCc" = (
 /turf/closed/wall,
-/area/maintenance/prison/port)
+/area/maintenance/prison/aft)
 "qEB" = (
 /obj/machinery/hydroponics/soil{
 	pixel_y = 8
@@ -60950,6 +60941,9 @@
 	},
 /turf/open/floor/wood/wood_diagonal,
 /area/maintenance/port/fore)
+"qHk" = (
+/turf/closed/wall,
+/area/maintenance/prison/fore)
 "qHr" = (
 /obj/machinery/light{
 	dir = 4
@@ -62219,7 +62213,7 @@
 	icon_state = "4-8"
 	},
 /turf/open/floor/plating,
-/area/maintenance/prison/port)
+/area/maintenance/prison/aft)
 "shN" = (
 /obj/effect/decal/cleanable/dirt,
 /obj/structure/cable{
@@ -62621,7 +62615,7 @@
 /obj/item/trash/candy,
 /obj/effect/decal/cleanable/dirt,
 /turf/open/floor/plating,
-/area/maintenance/prison/port)
+/area/maintenance/prison/fore)
 "sEt" = (
 /turf/open/floor/wood{
 	icon_state = "wood-broken7"
@@ -62850,6 +62844,9 @@
 	},
 /turf/open/floor/plasteel,
 /area/hallway/secondary/exit)
+"sPz" = (
+/turf/closed/wall/r_wall,
+/area/maintenance/prison/fore)
 "sPT" = (
 /obj/machinery/atmospherics/components/unary/vent_pump/on{
 	dir = 8
@@ -63028,12 +63025,6 @@
 /obj/machinery/atmospherics/pipe/simple/scrubbers/hidden,
 /turf/closed/wall,
 /area/hallway/secondary/service)
-"tbG" = (
-/obj/effect/turf_decal/stripes/white/line{
-	dir = 4
-	},
-/turf/open/space/basic,
-/area/space/station_ruins)
 "tbR" = (
 /obj/machinery/computer/security/telescreen/interrogation{
 	dir = 4;
@@ -63070,7 +63061,7 @@
 /obj/effect/decal/cleanable/dirt,
 /obj/structure/janitorialcart,
 /turf/open/floor/plating,
-/area/maintenance/prison/port)
+/area/maintenance/prison/fore)
 "teq" = (
 /obj/structure/disposalpipe/segment,
 /obj/machinery/atmospherics/pipe/simple/supply/hidden{
@@ -63347,7 +63338,7 @@
 /obj/item/fleshlight,
 /obj/item/fleshlight,
 /turf/open/floor/plating,
-/area/maintenance/prison/port)
+/area/maintenance/prison/aft)
 "tyb" = (
 /obj/machinery/door/poddoor/shutters{
 	id = "visitation";
@@ -63588,7 +63579,7 @@
 "tJW" = (
 /obj/structure/reagent_dispensers/keg/semen,
 /turf/open/floor/plating,
-/area/maintenance/prison/port)
+/area/maintenance/prison/aft)
 "tKk" = (
 /obj/effect/turf_decal/tile/neutral{
 	dir = 1
@@ -63980,7 +63971,7 @@
 	name = "Cleaning Closet"
 	},
 /turf/open/floor/plating,
-/area/maintenance/prison/port)
+/area/maintenance/prison/fore)
 "ujt" = (
 /obj/machinery/vending/cola/red,
 /turf/open/floor/plasteel,
@@ -65453,7 +65444,7 @@
 /obj/effect/decal/cleanable/dirt,
 /obj/effect/decal/cleanable/semendrip,
 /turf/open/floor/plating,
-/area/maintenance/prison/port)
+/area/maintenance/prison/aft)
 "vYG" = (
 /obj/effect/spawner/structure/window/reinforced,
 /obj/structure/cable{
@@ -66617,17 +66608,12 @@
 /turf/open/floor/plasteel,
 /area/security/brig)
 "xnF" = (
-/obj/machinery/power/apc{
-	areastring = "/area/maintenance/prison/port";
-	dir = 8;
-	name = "Prison Port Maintenance APC";
-	pixel_x = -25
-	},
 /obj/structure/cable{
 	icon_state = "0-2"
 	},
+/obj/machinery/power/apc/auto_name/west,
 /turf/open/floor/plating,
-/area/maintenance/prison/port)
+/area/maintenance/prison/aft)
 "xnU" = (
 /obj/effect/turf_decal/stripes/line,
 /obj/machinery/atmospherics/pipe/manifold/supply/hidden,
@@ -81690,7 +81676,7 @@ cNd
 cNd
 cNd
 aaa
-gKB
+aaa
 aaa
 aaa
 aaa
@@ -86309,7 +86295,7 @@ cNd
 cNd
 cNd
 cNd
-cNd
+aaa
 aaa
 aaa
 aaa
@@ -86566,7 +86552,7 @@ cNd
 cNd
 cNd
 cNd
-cNd
+aaa
 aaa
 gXs
 eRz
@@ -86814,16 +86800,16 @@ cNd
 cNd
 cNd
 cNd
-cNd
-cNd
-cNd
-cNd
-cNd
-cNd
-cNd
-cNd
-cNd
-cNd
+aaa
+aaa
+aaa
+aaa
+aaa
+aaa
+aaa
+aaa
+aaa
+aaa
 aaa
 qaF
 aaa
@@ -87071,16 +87057,16 @@ cNd
 cNd
 cNd
 cNd
-tbG
-cNd
-cNd
-cNd
-cNd
-cNd
-cNd
-cNd
-cNd
-cNd
+aaa
+aaa
+aaa
+aaa
+aaa
+aaa
+aaa
+aaa
+aaa
+aaa
 eRz
 gTL
 aaa
@@ -87321,13 +87307,13 @@ cNd
 cNd
 cNd
 cNd
-cNd
-cNd
-cNd
-cNd
-cNd
-cNd
-cNd
+aaa
+aaa
+aaa
+aaa
+aaa
+aaa
+aaa
 aaa
 aaa
 aaa
@@ -87578,13 +87564,13 @@ cNd
 cNd
 cNd
 cNd
-cNd
-cNd
-cNd
-cNd
-cNd
-cNd
-cNd
+aaa
+aaa
+aaa
+aaa
+aaa
+aaa
+aaa
 aaa
 aaa
 aaa
@@ -93760,11 +93746,11 @@ jNA
 jNA
 adI
 adI
-abc
+sPz
 uhy
-qCc
-qCc
-qCc
+qHk
+qHk
+qHk
 lJA
 jSY
 hxg
@@ -94017,7 +94003,7 @@ aaa
 aaa
 aaa
 aaa
-abc
+sPz
 kIT
 eRE
 ezR
@@ -94274,7 +94260,7 @@ aaa
 aaa
 aaa
 aaa
-abc
+sPz
 sEm
 iIP
 iaW
@@ -94531,11 +94517,11 @@ aaa
 aaa
 aaa
 aaa
-abc
-abc
-abc
-abc
-abc
+sPz
+sPz
+sPz
+sPz
+sPz
 szn
 szn
 szn
