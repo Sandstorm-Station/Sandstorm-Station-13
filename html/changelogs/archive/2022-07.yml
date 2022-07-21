@@ -29,9 +29,22 @@
       at low blood, and suffer brute damage and oxygen loss for having no blood and
       no limbs left to consume respectably, they cannot go past BLOOD_VOLUME_MAXIMUM
       from consuming toxin
-2022-07-15:
+2022-07-16:
   MediHound:
   - rscdel: Removed old Alina sprites
   - rscadd: Added new Alina sprites
   SandPoot:
   - bugfix: The tweak tag for changelogs should now work.
+2022-07-20:
+  Putnam3145:
+  - balance: quark matter is now worth 5% as much and gives 10% the research points
+  timothyteakettle:
+  - bugfix: makes brain trauma event respect canSpawnEvent conditions such as min
+      players
+2022-07-21:
+  SandPoot:
+  - bugfix: If you have a dark purple stabilized extract and are holding nothing in
+      your hand, no longer attempts to heat nothing, which caused immense amounts
+      of runtimes.
+  - bugfix: The syndicate has fixed the radiation health analyzer allowing you to
+      check on the ui again.
