@@ -430,6 +430,9 @@ GLOBAL_LIST_INIT(department_radio_keys, list(
 	if(HAS_TRAIT(src, TRAIT_UNINTELLIGIBLE_SPEECH))
 		message = unintelligize(message)
 
+	if(HAS_TRAIT(src, TRAIT_TONGUELESS_SPEECH)) //this exists solely because deprivation helms
+		message = detongueify(message)
+
 	if(derpspeech)
 		message = derpspeech(message, stuttering)
 
