@@ -149,7 +149,6 @@
 #define TRAIT_PARALYSIS_R_LEG	"para-r-leg"
 #define TRAIT_DISK_VERIFIER     "disk-verifier"
 #define TRAIT_UNINTELLIGIBLE_SPEECH "unintelligible-speech"
-#define TRAIT_TONGUELESS_SPEECH "tongueless-speech"
 #define TRAIT_SOOTHED_THROAT    "soothed-throat"
 #define TRAIT_LAW_ENFORCEMENT_METABOLISM "law-enforcement-metabolism"
 #define TRAIT_QUICK_CARRY		"quick-carry"
