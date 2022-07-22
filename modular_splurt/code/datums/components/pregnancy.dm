@@ -1,6 +1,6 @@
 /datum/component/pregnancy
 
-	dupe_mode = COMPONENT_DUPE_UNIQUE
+	dupe_mode = COMPONENT_DUPE_ALLOWED
 	can_transfer = TRUE
 
 	/// type of baby the mother will plop out - needs to be subtype of /mob/living
@@ -21,11 +21,13 @@
 	var/max_stage = PREGNANCY_STAGES
 	COOLDOWN_DECLARE(stage_time)
 
-	var/added_belly_size = 0
+	var/added_size = 0
 	/// this boolean is for identifying whether this preg is in the egg state or not
 	var/oviposition = TRUE
 	/// this boolean is for saving whether or not we should inflate the belly if appropriate
 	var/pregnancy_inflation = TRUE
+	/// breast growth
+	var/pregnancy_breast_growth = TRUE
 	/// whether the pregnancy is revealed or not, scanners will reveal this no matter what
 	var/revealed = FALSE
 
@@ -75,6 +77,8 @@
 
 	pregnancy_inflation = gregnant.client?.prefs?.pregnancy_inflation
 
+	pregnancy_breast_growth = gregnant.client?.prefs?.pregnancy_breast_growth
+
 	if(container_organ)
 		container = container_organ
 
@@ -108,7 +112,6 @@
 	RegisterSignal(carrier, COMSIG_LIVING_BIOLOGICAL_LIFE, .proc/handle_life)
 	RegisterSignal(carrier, COMSIG_HEALTH_SCAN, .proc/on_scan)
 	RegisterSignal(carrier, COMSIG_MOB_APPLY_DAMAGE, .proc/handle_damage)
-	RegisterSignal(carrier, COMSIG_MOB_CLIMAX)
 	if(container)
 		RegisterSignal(container, COMSIG_ORGAN_REMOVED, .proc/fetus_mortus)
 	if(oviposition)
@@ -179,6 +182,7 @@
 		carrier = preg_container.owner
 		container = preg_container
 		pregnancy_inflation = carrier.client?.prefs?.pregnancy_inflation
+		pregnancy_breast_growth = carrier.client?.prefs?.pregnancy_breast_growth
 		register_carrier()
 		generic_pragency_start()
 	else if(carrier)
@@ -205,17 +209,22 @@
 	if(COOLDOWN_FINISHED(src, stage_time))
 		stage += 1
 		stage = min(stage, max_stage)
-		if(ishuman(carrier) && pregnancy_inflation && stage >= 2)
-			handle_belly_stuff(carrier)
+		if(ishuman(carrier) && stage >= 2 && (pregnancy_inflation || pregnancy_breast_growth))
+			handle_organ_inflation(carrier)
 		COOLDOWN_START(src, stage_time, PREGNANCY_STAGE_DURATION)
 
-/datum/component/pregnancy/proc/handle_belly_stuff(mob/living/carbon/human/gregnant)
+/datum/component/pregnancy/proc/handle_organ_inflation(mob/living/carbon/human/gregnant)
 	var/obj/item/organ/genital/belly/belly = gregnant.getorganslot(ORGAN_SLOT_BELLY)
-	if(!belly)
+	var/obj/item/organ/genital/breasts/boob = gregnant.getorganslot(ORGAN_SLOT_BREASTS)
+
+	if(added_size < 4)
+		added_size += 1
+	else
 		return
-	if(added_belly_size < 4)
-		added_belly_size += 1
-		belly.modify_size(1)
+	if(pregnancy_inflation)
+		belly?.modify_size(1)
+	else if(pregnancy_breast_growth)
+		boob?.modify_size(1)
 
 /datum/component/pregnancy/proc/handle_incubation()
 	if(carrier && (stage < max_stage) && prob(2))
@@ -391,15 +400,24 @@
 		var/obj/item/organ/genital/belly/belly = gregnant.getorganslot(ORGAN_SLOT_BELLY)
 		if(!belly)
 			belly = gregnant.give_genital(/obj/item/organ/genital/belly)
-		if(added_belly_size > 0)
-			belly.modify_size(added_belly_size)
+		if(added_size > 0)
+			belly.modify_size(added_size)
+	if(pregnancy_breast_growth)
+		var/obj/item/organ/genital/breasts/boob = gregnant.getorganslot(ORGAN_SLOT_BREASTS)
+		if(!boob)
+			boob = gregnant.give_genital(/obj/item/organ/genital/breasts)
+		if(added_size > 0)
+			boob.modify_size(added_size)
 	return TRUE
 
 /datum/component/pregnancy/proc/human_pragency_end(mob/living/carbon/human/gregnant)
 	//get rid of king ass ripper belly
 	var/obj/item/organ/genital/belly/belly = gregnant.getorganslot(ORGAN_SLOT_BELLY)
-	if(belly && pregnancy_inflation)
-		belly.modify_size(-added_belly_size)
+	var/obj/item/organ/genital/breasts/boob = gregnant.getorganslot(ORGAN_SLOT_BREASTS)
+	if(pregnancy_inflation)
+		belly?.modify_size(-added_size)
+	if(pregnancy_breast_growth)
+		boob?.modify_size(-added_size)
 	SEND_SIGNAL(gregnant, COMSIG_CLEAR_MOOD_EVENT, "pregnancy")
 
 /datum/component/pregnancy/proc/fetus_mortus()

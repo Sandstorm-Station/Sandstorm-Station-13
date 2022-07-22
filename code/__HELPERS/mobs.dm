@@ -233,6 +233,7 @@
 		"breasts_stuffing" = FALSE,
 		"butt_stuffing" = FALSE,
 		"belly_stuffing" = FALSE,
+		"inert_eggs" = FALSE,
 		//Hyper's custom fluids
 		"balls_fluid"		= /datum/reagent/consumable/semen,
 		"womb_fluid"		= /datum/reagent/consumable/semen/femcum,

@@ -759,6 +759,7 @@ SAVEFILE UPDATING/VERSIONING - 'Simplified', or rather, more coder-friendly ~Car
 "breasts_stuffing" = FALSE,
 "butt_stuffing" = FALSE,
 "belly_stuffing" = FALSE,
+"inert_eggs" = FALSE,
 "ipc_screen" = "Sunburst",
 "ipc_antenna" = "None",
 "flavor_text" = "",
@@ -997,6 +998,7 @@ SAVEFILE UPDATING/VERSIONING - 'Simplified', or rather, more coder-friendly ~Car
 	S["feature_vag_stuffing"] >> features["vag_stuffing"]
 	S["feature_butt_stuffing"] >> features["butt_stuffing"]
 	S["feature_belly_stuffing"] >> features["belly_stuffing"]
+	S["feature_inert_eggs"] >> features["inert_eggs"]
 
 	var/char_vr_path = "[vr_path]/character_[default_slot]_v2.json"
 	if(fexists(char_vr_path))
@@ -1213,6 +1215,7 @@ SAVEFILE UPDATING/VERSIONING - 'Simplified', or rather, more coder-friendly ~Car
 	if(S["egg_shell"])
 		S["egg_shell"] >> egg_shell
 	S["pregnancy_inflation"] >> pregnancy_inflation
+	S["pregnancy_breast_growth"] >> pregnancy_breast_growth
 	//SPLURT EDIT END
 
 	cit_character_pref_load(S)
@@ -1345,6 +1348,8 @@ SAVEFILE UPDATING/VERSIONING - 'Simplified', or rather, more coder-friendly ~Car
 	WRITE_FILE(S["feature_belly_visibility"], features["belly_visibility"])
 	WRITE_FILE(S["feature_belly_stuffing"], features["belly_stuffing"])
 
+	WRITE_FILE(S["feature_inert_eggs"], features["inert_eggs"])
+
 	WRITE_FILE(S["feature_neckfire"], features["neckfire"])
 	WRITE_FILE(S["feature_neckfire_color"], features["neckfire_color"])
 
@@ -1420,6 +1425,7 @@ SAVEFILE UPDATING/VERSIONING - 'Simplified', or rather, more coder-friendly ~Car
 	WRITE_FILE(S["fertile"], fertility)
 	WRITE_FILE(S["egg_shell"], egg_shell)
 	WRITE_FILE(S["pregnancy_inflation"], pregnancy_inflation)
+	WRITE_FILE(S["pregnancy_breast_growth"], pregnancy_breast_growth)
 	WRITE_FILE(S["headshot"], features["headshot_link"])
 	//SPLURT EDIT END
 

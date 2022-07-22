@@ -224,6 +224,7 @@ GLOBAL_LIST_EMPTY(preferences_datums)
 "breasts_stuffing" = FALSE,
 "butt_stuffing" = FALSE,
 "belly_stuffing" = FALSE,
+"inert_eggs" = FALSE,
 "ipc_screen" = "Sunburst",
 "ipc_antenna" = "None",
 "flavor_text" = "",
@@ -373,6 +374,8 @@ GLOBAL_LIST_EMPTY(preferences_datums)
 	var/fertility = 0
 	/// Does john spaceman look like a gluttonous slob if he pregent?
 	var/pregnancy_inflation = FALSE
+	/// Self explanitory
+	var/pregnancy_breast_growth = FALSE
 
 	var/egg_shell = "chicken"
 	//SPLURT END
@@ -856,8 +859,11 @@ GLOBAL_LIST_EMPTY(preferences_datums)
 			dat += "<h3>Pregnancy preferences</h3>"
 			dat += "<b>Chance of impregnation:</b><a style='display:block;width:100px' href ='?_src_=prefs;preference=virility;task=input'>[virility ? virility : "Disabled"]</a>"
 			dat += "<b>Chance of getting pregnant:</b><a style='display:block;width:100px' href ='?_src_=prefs;preference=fertility;task=input'>[fertility ? fertility : "Disabled"]</a>"
+			dat += "<b>Lay inert eggs:</b><a style='display:block;width:100px' href ='?_src_=prefs;preference=inert_eggs'>[features["inert_eggs"] == TRUE ? "Enabled" : "Disabled"]</a>"
 			if(fertility)
 				dat += "<b>Pregnancy inflation:</b><a style='display:block;width:100px' href ='?_src_=prefs;preference=pregnancy_inflation;task=input'>[pregnancy_inflation ? "Enabled" : "Disabled"]</a>"
+				dat += "<b>Pregnancy breast growth:</b><a style='display:block;width:100px' href ='?_src_=prefs;preference=pregnancy_breast_growth;task=input'>[pregnancy_breast_growth ? "Enabled" : "Disabled"]</a>"
+			if(fertility || features["inert_eggs"])
 				dat += "<b>Egg shell:</b><a style='display:block;width:100px' href ='?_src_=prefs;preference=egg_shell;task=input'>[egg_shell]</a>"
 			dat += "</td>"
 			//SPLURT EDIT END
@@ -2090,6 +2096,9 @@ GLOBAL_LIST_EMPTY(preferences_datums)
 				if("pregnancy_inflation")
 					pregnancy_inflation = !pregnancy_inflation
 
+				if("pregnancy_breast_growth")
+					pregnancy_breast_growth = !pregnancy_breast_growth
+
 				//SPLURT EDIT END
 
 				if("hair")
@@ -3202,6 +3211,8 @@ GLOBAL_LIST_EMPTY(preferences_datums)
 					features["butt_stuffing"] = !features["butt_stuffing"]
 				if("belly_stuffing")
 					features["belly_stuffing"] = !features["belly_stuffing"]
+				if("inert_eggs")
+					features["inert_eggs"] = !features["inert_eggs"]
 				if("pixel_size")
 					switch(pixel_size)
 						if(PIXEL_SCALING_AUTO)
