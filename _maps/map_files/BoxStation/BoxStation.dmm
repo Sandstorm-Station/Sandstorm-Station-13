@@ -58569,6 +58569,11 @@
 /obj/structure/grille,
 /turf/open/floor/plating,
 /area/maintenance/port/fore)
+"nXy" = (
+/obj/machinery/atmospherics/pipe/simple/supply/hidden,
+/obj/structure/table/wood,
+/turf/open/floor/wood,
+/area/service/bar)
 "nYe" = (
 /obj/machinery/firealarm{
 	dir = 8;
@@ -65381,13 +65386,6 @@
 	},
 /turf/closed/wall,
 /area/maintenance/starboard/fore)
-"vQP" = (
-/obj/machinery/atmospherics/pipe/simple/scrubbers/hidden{
-	dir = 4
-	},
-/obj/structure/table/wood,
-/turf/open/floor/wood,
-/area/service/bar)
 "vRk" = (
 /obj/machinery/newscaster{
 	pixel_x = 30
@@ -67243,6 +67241,9 @@
 	areastring = "/area/service/bar";
 	name = "Bar APC";
 	pixel_y = -23
+	},
+/obj/structure/cable{
+	icon_state = "0-4"
 	},
 /turf/open/floor/plating,
 /area/maintenance/starboard/fore)
@@ -101771,7 +101772,7 @@ aAl
 aJC
 rES
 wxk
-aMu
+nXy
 lWD
 dvb
 qvn
@@ -102286,7 +102287,7 @@ aJC
 shq
 aJC
 aka
-vQP
+uBa
 rZE
 mqs
 kgB
