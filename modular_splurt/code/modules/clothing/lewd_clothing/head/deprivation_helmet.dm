@@ -24,8 +24,6 @@
 	var/prevent_vision = FALSE
 	var/color_changed = FALSE
 	var/seamless = FALSE
-	//this var is because Asher doesn't know how to fucking program lol
-	var/fuckyou = FALSE
 
 	var/static/list/helmet_designs
 	actions_types = list(/datum/action/item_action/toggle_vision, /datum/action/item_action/toggle_hearing, /datum/action/item_action/toggle_speech)
@@ -76,35 +74,31 @@
 /obj/item/clothing/head/helmet/space/deprivation_helmet/proc/SwitchHelmet(button)
 	var/C = button
 	if(C == "speech")
-		if(muzzle == FULL_MUZZLE && fuckyou == FALSE)
+		if(muzzle == FULL_MUZZLE)
 			muzzle = NO_MUZZLE
 			//playsound(usr, 'sound/weapons/magout.ogg', 40, TRUE, ignore_walls = FALSE)
 			to_chat(usr, span_notice("Speech switch off"))
 			flags_cover = HEADCOVERSEYES
-			fuckyou = TRUE
 			if(usr.get_item_by_slot(ITEM_SLOT_HEAD) == src)
 				REMOVE_TRAIT(usr, TRAIT_MUTE, CLOTHING_TRAIT)
 				to_chat(usr, span_purple("Your mouth is free. you breathe out with relief."))
-		if(muzzle == NO_MUZZLE && fuckyou == FALSE)
+		else if(muzzle == NO_MUZZLE)
 			muzzle = HALF_MUZZLE
 			//playsound(usr, 'sound/weapons/magin.ogg', 40, TRUE, ignore_walls = FALSE)
 			to_chat(usr, span_notice("Ring gag switch on"))
 			flags_cover = HEADCOVERSEYES //should be unneccesary but fuck it
-			fuckyou = TRUE
 			if(usr.get_item_by_slot(ITEM_SLOT_HEAD) == src)
 				ADD_TRAIT(usr, TRAIT_TONGUELESS_SPEECH, CLOTHING_TRAIT)
 				to_chat(usr, span_purple("Something is gagging your mouth! It seems to be partially obstructing yet allowing full access to your mouth, whether you want it or not..."))
-		if(muzzle == HALF_MUZZLE && fuckyou == FALSE)
+		else if(muzzle == HALF_MUZZLE)
 			muzzle = FULL_MUZZLE
 			//playsound(usr, 'sound/weapons/magin.ogg', 40, TRUE, ignore_walls = FALSE)
 			to_chat(usr, span_notice("Full gag switch on"))
 			flags_cover = HEADCOVERSEYES | HEADCOVERSMOUTH
-			fuckyou = TRUE
 			if(usr.get_item_by_slot(ITEM_SLOT_HEAD) == src)
 				REMOVE_TRAIT(usr, TRAIT_TONGUELESS_SPEECH, CLOTHING_TRAIT)
 				ADD_TRAIT(usr, TRAIT_MUTE, CLOTHING_TRAIT)
 				to_chat(usr, span_purple("Something is gagging your mouth completely! You can't even make a sound..."))
-		fuckyou = FALSE //basically this makes it so only one if statement is picked per press. there's probably an easier way to do this.
 	if(C == "hearing")
 		if(earmuffs == TRUE)
 			earmuffs = FALSE
