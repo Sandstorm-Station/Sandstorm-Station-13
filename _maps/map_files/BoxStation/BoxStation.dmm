@@ -308,8 +308,8 @@
 /obj/item/radio/intercom{
 	desc = "Talk through this. It looks like it has been modified to not broadcast.";
 	name = "Prison Intercom (General)";
-	prison_radio = 1;
-	pixel_x = 30
+	pixel_x = 30;
+	prison_radio = 1
 	},
 /turf/open/floor/plasteel/cafeteria,
 /area/security/prison/upper)
@@ -3335,8 +3335,8 @@
 "aia" = (
 /obj/machinery/atmospherics/pipe/simple/supply/hidden,
 /obj/machinery/light_switch{
-	pixel_y = 32;
-	pixel_x = -9
+	pixel_x = -9;
+	pixel_y = 32
 	},
 /obj/machinery/atmospherics/components/unary/vent_scrubber/on{
 	dir = 8
@@ -4428,8 +4428,8 @@
 /area/security/brig)
 "akp" = (
 /obj/machinery/door_timer{
-	id = "Cell 1";
-	name = "Cell 1";
+	id = "Cell 2";
+	name = "Cell 2";
 	pixel_y = -32
 	},
 /obj/effect/turf_decal/tile/red,
@@ -4955,8 +4955,8 @@
 /area/science/xenobiology)
 "als" = (
 /obj/machinery/door_timer{
-	id = "Cell 3";
-	name = "Cell 3";
+	id = "Cell 4";
+	name = "Cell 4";
 	pixel_y = -32
 	},
 /obj/effect/turf_decal/tile/red,
@@ -5345,8 +5345,8 @@
 /area/science/xenobiology)
 "amj" = (
 /obj/machinery/door_timer{
-	id = "Cell 2";
-	name = "Cell 2";
+	id = "Cell 3";
+	name = "Cell 3";
 	pixel_y = -32
 	},
 /obj/effect/turf_decal/tile/red,
@@ -10850,9 +10850,9 @@
 /obj/item/radio/intercom{
 	desc = "Talk through this. It looks like it has been modified to not broadcast.";
 	name = "Prison Intercom (General)";
-	prison_radio = 1;
 	pixel_x = -1;
-	pixel_y = 30
+	pixel_y = 30;
+	prison_radio = 1
 	},
 /turf/open/floor/plasteel,
 /area/security/prison/upper)
@@ -11028,13 +11028,13 @@
 /obj/structure/cable{
 	icon_state = "4-8"
 	},
-/obj/machinery/atmospherics/pipe/simple/supply/hidden{
-	dir = 4
-	},
 /obj/machinery/button/crematorium{
 	id = "crematoriumChapel";
 	pixel_x = -1;
 	pixel_y = 25
+	},
+/obj/machinery/atmospherics/pipe/manifold/supply/hidden{
+	dir = 1
 	},
 /turf/open/floor/plasteel/dark,
 /area/service/chapel/office)
@@ -11507,7 +11507,6 @@
 /obj/structure/disposalpipe/segment{
 	dir = 4
 	},
-/obj/machinery/atmospherics/pipe/simple/supply/hidden,
 /turf/open/floor/plating,
 /area/maintenance/starboard/fore)
 "aEe" = (
@@ -11565,8 +11564,8 @@
 	pixel_y = 25
 	},
 /obj/machinery/light_switch{
-	pixel_y = 28;
-	pixel_x = -12
+	pixel_x = -12;
+	pixel_y = 28
 	},
 /obj/structure/table/wood,
 /obj/item/flashlight/lamp{
@@ -11590,8 +11589,8 @@
 	icon_state = "airlock_control_standby";
 	id = "chapelgun";
 	name = "Mass Driver Controller";
-	pixel_y = 32;
-	pixel_x = 32
+	pixel_x = 32;
+	pixel_y = 32
 	},
 /obj/machinery/atmospherics/pipe/manifold/supply/hidden{
 	dir = 4
@@ -12397,10 +12396,10 @@
 /turf/open/floor/plating,
 /area/maintenance/starboard/fore)
 "aGU" = (
-/obj/machinery/atmospherics/pipe/simple/supply/hidden{
-	dir = 10
-	},
 /obj/structure/table/wood,
+/obj/machinery/atmospherics/pipe/simple/supply/hidden{
+	dir = 6
+	},
 /turf/open/floor/wood/wood_large,
 /area/service/chapel/office)
 "aGV" = (
@@ -12473,9 +12472,6 @@
 /turf/open/floor/plasteel,
 /area/commons/storage/primary)
 "aHf" = (
-/obj/machinery/atmospherics/pipe/simple/supply/hidden{
-	dir = 5
-	},
 /obj/structure/chair/comfy/black{
 	dir = 4
 	},
@@ -12494,6 +12490,9 @@
 /obj/machinery/camera{
 	c_tag = "Chaplain Bedroom";
 	dir = 6
+	},
+/obj/machinery/atmospherics/pipe/simple/supply/hidden{
+	dir = 9
 	},
 /turf/open/floor/wood/wood_large,
 /area/service/chapel/office)
@@ -12715,8 +12714,8 @@
 /turf/open/floor/plasteel/dark,
 /area/ai_monitored/command/nuke_storage)
 "aHM" = (
-/obj/machinery/atmospherics/pipe/manifold/scrubbers/hidden{
-	dir = 1
+/obj/machinery/atmospherics/pipe/simple/scrubbers/hidden{
+	dir = 6
 	},
 /turf/closed/wall,
 /area/service/bar)
@@ -12799,9 +12798,6 @@
 /turf/open/floor/plating,
 /area/maintenance/starboard/fore)
 "aIa" = (
-/obj/machinery/atmospherics/pipe/simple/scrubbers/hidden{
-	dir = 5
-	},
 /obj/machinery/atmospherics/pipe/simple/supply/hidden,
 /turf/closed/wall,
 /area/service/bar)
@@ -13693,9 +13689,9 @@
 /area/service/bar)
 "aKQ" = (
 /obj/machinery/firealarm{
+	dir = 4;
 	pixel_x = -27;
-	pixel_y = 27;
-	dir = 4
+	pixel_y = 27
 	},
 /turf/open/floor/plasteel/cafeteria,
 /area/service/kitchen)
@@ -15442,8 +15438,8 @@
 	pixel_y = 7
 	},
 /obj/item/pen/fourcolor{
-	pixel_y = 7;
-	pixel_x = -7
+	pixel_x = -7;
+	pixel_y = 7
 	},
 /turf/open/floor/wood,
 /area/command/bridge)
@@ -15809,8 +15805,8 @@
 	pixel_y = 8
 	},
 /obj/structure/chair/comfy/shuttle{
-	dir = 1;
 	desc = "A comfortable looking seat that's clearly an upgrade for a Captain.";
+	dir = 1;
 	name = "Captain's Chair"
 	},
 /turf/open/floor/carpet/royalblack,
@@ -15833,8 +15829,8 @@
 	dir = 4
 	},
 /obj/machinery/recharger{
-	pixel_y = 1;
-	pixel_x = 5
+	pixel_x = 5;
+	pixel_y = 1
 	},
 /turf/open/floor/carpet/royalblack,
 /area/command/bridge)
@@ -16228,8 +16224,8 @@
 "aTU" = (
 /obj/machinery/atmospherics/components/unary/vent_scrubber/on,
 /obj/machinery/computer/monitor{
-	name = "bridge power monitoring console";
-	dir = 8
+	dir = 8;
+	name = "bridge power monitoring console"
 	},
 /obj/structure/window/reinforced{
 	dir = 4
@@ -47824,9 +47820,9 @@
 	location = "Kitchen"
 	},
 /obj/machinery/door/window/southleft{
+	dir = 8;
 	name = "Kitchen Delivery";
-	req_access_txt = "28";
-	dir = 8
+	req_access_txt = "28"
 	},
 /obj/effect/turf_decal/loading_area{
 	dir = 8
@@ -49420,8 +49416,8 @@
 /obj/item/radio/intercom{
 	desc = "Talk through this. It looks like it has been modified to not broadcast.";
 	name = "Prison Intercom (General)";
-	prison_radio = 1;
-	pixel_x = -30
+	pixel_x = -30;
+	prison_radio = 1
 	},
 /turf/open/floor/wood/wood_diagonal,
 /area/security/prison/upper)
@@ -50361,6 +50357,9 @@
 /obj/machinery/door/airlock/medical/glass{
 	name = "Prison Forestry"
 	},
+/obj/machinery/atmospherics/pipe/simple/supply/hidden{
+	dir = 4
+	},
 /turf/open/floor/plating,
 /area/security/prison/upper)
 "eDJ" = (
@@ -51137,6 +51136,7 @@
 /obj/machinery/light/small{
 	dir = 8
 	},
+/obj/machinery/atmospherics/pipe/simple/supply/hidden,
 /turf/open/floor/plasteel/dark,
 /area/service/chapel/office)
 "fvU" = (
@@ -51254,8 +51254,8 @@
 /obj/item/radio/intercom{
 	desc = "Talk through this. It looks like it has been modified to not broadcast.";
 	name = "Prison Intercom (General)";
-	prison_radio = 1;
-	pixel_x = 30
+	pixel_x = 30;
+	prison_radio = 1
 	},
 /turf/open/floor/plasteel,
 /area/security/prison/cells)
@@ -51447,9 +51447,9 @@
 /area/commons/fitness)
 "fHP" = (
 /obj/machinery/door/airlock/security{
+	id_tag = "secdormone";
 	name = "Security Dorm 1";
-	req_access = "63";
-	id_tag = "secdormone"
+	req_access = "63"
 	},
 /turf/open/floor/plasteel/dark,
 /area/security/office)
@@ -51632,9 +51632,9 @@
 /area/medical/medbay/central)
 "fTk" = (
 /obj/machinery/door/airlock/security{
+	id_tag = "secdormtwo";
 	name = "Security Dorm 2";
-	req_access = "63";
-	id_tag = "secdormtwo"
+	req_access = "63"
 	},
 /turf/open/floor/plasteel/dark,
 /area/security/office)
@@ -52217,8 +52217,8 @@
 	id = "Dorm12";
 	name = "Cabin Bolt Control";
 	normaldoorcontrol = 1;
-	specialfunctions = 4;
-	pixel_x = 25
+	pixel_x = 25;
+	specialfunctions = 4
 	},
 /obj/structure/fireplace{
 	pixel_y = -6
@@ -52806,12 +52806,12 @@
 	dir = 4
 	},
 /obj/structure/sink{
-	pixel_y = 23;
-	pixel_x = 7
+	pixel_x = 7;
+	pixel_y = 23
 	},
 /obj/structure/mirror{
-	pixel_y = 34;
-	pixel_x = 6
+	pixel_x = 6;
+	pixel_y = 34
 	},
 /turf/open/floor/mineral/titanium/blue,
 /area/commons/toilet)
@@ -53315,8 +53315,8 @@
 	id = "Dorm10";
 	name = "Cabin Bolt Control";
 	normaldoorcontrol = 1;
-	specialfunctions = 4;
-	pixel_x = 25
+	pixel_x = 25;
+	specialfunctions = 4
 	},
 /obj/structure/fireplace{
 	pixel_y = -6
@@ -53377,8 +53377,8 @@
 /obj/item/radio/intercom{
 	desc = "Talk through this. It looks like it has been modified to not broadcast.";
 	name = "Prison Intercom (General)";
-	prison_radio = 1;
-	pixel_x = -30
+	pixel_x = -30;
+	prison_radio = 1
 	},
 /turf/open/floor/plasteel,
 /area/security/prison/cells)
@@ -54042,8 +54042,8 @@
 /obj/machinery/button/door{
 	id = "secdormtwo";
 	name = "Window Shutter Control";
-	req_access_txt = "3";
-	pixel_x = -26
+	pixel_x = -26;
+	req_access_txt = "3"
 	},
 /turf/open/floor/plasteel/dark,
 /area/security/office)
@@ -54081,8 +54081,8 @@
 	},
 /obj/machinery/atmospherics/pipe/simple/scrubbers/hidden,
 /obj/machinery/door/airlock/maintenance/abandoned{
-	req_access_txt = "12";
-	id_tag = "abandonmaint1"
+	id_tag = "abandonmaint1";
+	req_access_txt = "12"
 	},
 /obj/machinery/button/door{
 	id = "abandonmaint1";
@@ -54556,8 +54556,8 @@
 	specialfunctions = 4
 	},
 /obj/machinery/airalarm{
-	pixel_x = 23;
-	dir = 8
+	dir = 8;
+	pixel_x = 23
 	},
 /obj/item/bedsheet/random/double,
 /obj/structure/bed/double,
@@ -55467,9 +55467,9 @@
 "koc" = (
 /obj/structure/table/reinforced,
 /obj/machinery/door/window/northleft{
+	dir = 8;
 	name = "Hydroponics Desk";
-	req_access_txt = "28,35";
-	dir = 8
+	req_access_txt = "28,35"
 	},
 /obj/machinery/door/firedoor,
 /obj/effect/turf_decal/delivery,
@@ -55948,6 +55948,9 @@
 	dir = 1
 	},
 /obj/structure/curtain,
+/obj/machinery/atmospherics/pipe/simple/scrubbers/hidden{
+	dir = 6
+	},
 /turf/open/floor/plasteel/freezer,
 /area/commons/toilet)
 "kSb" = (
@@ -56125,8 +56128,8 @@
 /area/security/prison)
 "lef" = (
 /obj/structure/closet/secure_closet/personal{
-	name = "Secure Evidence Closet";
-	desc = "It's a secure locker for evidence storage."
+	desc = "It's a secure locker for evidence storage.";
+	name = "Secure Evidence Closet"
 	},
 /turf/open/floor/plasteel,
 /area/security/brig)
@@ -58303,12 +58306,12 @@
 "nFA" = (
 /obj/machinery/power/apc/highcap/five_k{
 	areastring = "/area/security/prison/upper";
+	armor = list("melee"=50,"bullet"=20,"laser"=20,"energy"=20,"bomb"=0,"bio"=0,"rad"=0,"fire"=90,"acid"=50);
 	damage_deflection = 21;
 	desc = "A control terminal for the area's electrical systems. It's secured with a durable antitampering plasteel cage.";
 	dir = 1;
 	name = "Armored Upper Prison Wing APC";
-	pixel_y = 23;
-	armor = list("melee"=50,"bullet"=20,"laser"=20,"energy"=20,"bomb"=0,"bio"=0,"rad"=0,"fire"=90,"acid"=50)
+	pixel_y = 23
 	},
 /obj/machinery/atmospherics/pipe/simple/supply/hidden{
 	dir = 4
@@ -58496,8 +58499,8 @@
 	specialfunctions = 4
 	},
 /obj/machinery/airalarm{
-	pixel_x = 23;
-	dir = 8
+	dir = 8;
+	pixel_x = 23
 	},
 /obj/structure/bed/double,
 /obj/item/bedsheet/random/double,
@@ -60019,9 +60022,9 @@
 	},
 /obj/machinery/camera{
 	c_tag = "Prison Isolation Cell Two";
+	dir = 4;
 	network = list("ss13","isolation");
-	view_range = 5;
-	dir = 4
+	view_range = 5
 	},
 /turf/open/floor/padded,
 /area/security/prison/cells)
@@ -60309,8 +60312,8 @@
 /obj/item/radio/intercom{
 	desc = "Talk through this. It looks like it has been modified to not broadcast.";
 	name = "Prison Intercom (General)";
-	prison_radio = 1;
-	pixel_x = 30
+	pixel_x = 30;
+	prison_radio = 1
 	},
 /turf/open/floor/plasteel,
 /area/security/prison/upper)
@@ -60394,8 +60397,8 @@
 	id = "Dorm13";
 	name = "Cabin Bolt Control";
 	normaldoorcontrol = 1;
-	specialfunctions = 4;
-	pixel_x = 25
+	pixel_x = 25;
+	specialfunctions = 4
 	},
 /obj/structure/fireplace{
 	pixel_y = -6
@@ -60477,8 +60480,8 @@
 /area/security/prison/cells)
 "qca" = (
 /obj/machinery/firealarm{
-	pixel_x = -24;
-	dir = 4
+	dir = 4;
+	pixel_x = -24
 	},
 /obj/machinery/camera{
 	c_tag = "Cryo Chambers";
@@ -60589,9 +60592,9 @@
 /obj/item/radio/intercom{
 	desc = "Talk through this. It looks like it has been modified to not broadcast.";
 	name = "Prison Intercom (General)";
-	prison_radio = 1;
 	pixel_x = -1;
-	pixel_y = 30
+	pixel_y = 30;
+	prison_radio = 1
 	},
 /turf/open/floor/plasteel/freezer,
 /area/security/prison/cells)
@@ -60694,8 +60697,8 @@
 /obj/item/radio/intercom{
 	desc = "Talk through this. It looks like it has been modified to not broadcast.";
 	name = "Prison Intercom (General)";
-	prison_radio = 1;
-	pixel_x = 30
+	pixel_x = 30;
+	prison_radio = 1
 	},
 /turf/open/floor/plasteel,
 /area/security/prison/upper)
@@ -61006,12 +61009,12 @@
 	specialfunctions = 4
 	},
 /obj/structure/sink{
-	pixel_y = 23;
-	pixel_x = 7
+	pixel_x = 7;
+	pixel_y = 23
 	},
 /obj/structure/mirror{
-	pixel_y = 34;
-	pixel_x = 6
+	pixel_x = 6;
+	pixel_y = 34
 	},
 /turf/open/floor/mineral/titanium/blue,
 /area/commons/toilet)
@@ -61337,8 +61340,8 @@
 /obj/machinery/button/door{
 	id = "secdorm1";
 	name = "Window Shutter Control";
-	req_access_txt = "3";
-	pixel_x = 26
+	pixel_x = 26;
+	req_access_txt = "3"
 	},
 /turf/open/floor/plasteel/dark,
 /area/security/office)
@@ -61662,8 +61665,8 @@
 /obj/item/radio/intercom{
 	desc = "Talk through this. It looks like it has been modified to not broadcast.";
 	name = "Prison Intercom (General)";
-	prison_radio = 1;
-	pixel_x = -30
+	pixel_x = -30;
+	prison_radio = 1
 	},
 /turf/open/floor/plasteel,
 /area/security/prison/cells)
@@ -62207,9 +62210,9 @@
 "shq" = (
 /obj/effect/turf_decal/delivery,
 /obj/machinery/door/window/southleft{
+	dir = 8;
 	name = "Bar Delivery";
-	req_access_txt = "25";
-	dir = 8
+	req_access_txt = "25"
 	},
 /turf/open/floor/plasteel,
 /area/service/bar)
@@ -62436,8 +62439,8 @@
 /obj/structure/cable{
 	icon_state = "4-8"
 	},
-/obj/machinery/atmospherics/pipe/manifold/supply/hidden{
-	dir = 1
+/obj/machinery/atmospherics/pipe/simple/supply/hidden{
+	dir = 4
 	},
 /turf/open/floor/plating,
 /area/maintenance/starboard/fore)
@@ -62574,8 +62577,8 @@
 /obj/item/radio/intercom{
 	desc = "Talk through this. It looks like it has been modified to not broadcast.";
 	name = "Prison Intercom (General)";
-	prison_radio = 1;
-	pixel_x = 30
+	pixel_x = 30;
+	prison_radio = 1
 	},
 /turf/open/floor/plasteel,
 /area/security/prison/upper)
@@ -62607,8 +62610,8 @@
 	dir = 1
 	},
 /mob/living/simple_animal/parrot/commonblackbird{
-	name = "Omen";
 	desc = "Blackbirds are said to deliver souls of the damned to Satan";
+	name = "Omen";
 	speak_chance = 0
 	},
 /turf/open/floor/plasteel/dark,
@@ -63033,9 +63036,9 @@
 "tbR" = (
 /obj/machinery/computer/security/telescreen/interrogation{
 	dir = 4;
-	pixel_x = -30;
+	name = "isolation cell monitor";
 	network = list("isolation");
-	name = "isolation cell monitor"
+	pixel_x = -30
 	},
 /obj/effect/turf_decal/tile/red{
 	dir = 1
@@ -63194,9 +63197,9 @@
 	},
 /obj/machinery/camera{
 	c_tag = "Prison Isolation Cell Three";
+	dir = 1;
 	network = list("ss13","isolation");
-	view_range = 5;
-	dir = 1
+	view_range = 5
 	},
 /turf/open/floor/padded,
 /area/security/prison/cells)
@@ -63443,8 +63446,8 @@
 	id = "Dorm11";
 	name = "Cabin Bolt Control";
 	normaldoorcontrol = 1;
-	specialfunctions = 4;
-	pixel_x = 25
+	pixel_x = 25;
+	specialfunctions = 4
 	},
 /obj/structure/fireplace{
 	pixel_y = -6
@@ -63769,8 +63772,8 @@
 /obj/item/radio/intercom{
 	desc = "Talk through this. It looks like it has been modified to not broadcast.";
 	name = "Prison Intercom (General)";
-	prison_radio = 1;
-	pixel_x = 30
+	pixel_x = 30;
+	prison_radio = 1
 	},
 /turf/open/floor/plasteel,
 /area/security/prison/cells)
@@ -64308,8 +64311,8 @@
 /obj/item/radio/intercom{
 	desc = "Talk through this. It looks like it has been modified to not broadcast.";
 	name = "Prison Intercom (General)";
-	prison_radio = 1;
-	pixel_x = 30
+	pixel_x = 30;
+	prison_radio = 1
 	},
 /turf/open/floor/wood/wood_diagonal,
 /area/security/prison/upper)
@@ -64363,9 +64366,9 @@
 /obj/structure/disposalpipe/segment,
 /obj/structure/table/reinforced,
 /obj/machinery/door/window/southright{
+	dir = 4;
 	name = "Bar Door";
-	req_one_access_txt = "28";
-	dir = 4
+	req_one_access_txt = "28"
 	},
 /turf/open/floor/plasteel/dark,
 /area/service/kitchen)
@@ -65545,10 +65548,10 @@
 /area/command/heads_quarters/captain)
 "wcS" = (
 /obj/machinery/light/small{
+	armor = list("melee"=40,"bullet"=40,"laser"=40,"energy"=100,"bomb"=30,"bio"=100,"rad"=100,"fire"=90,"acid"=50);
 	dir = 1;
 	light_color = "#ffc1c1";
-	name = "Reinforced Light Fixture";
-	armor = list("melee"=40,"bullet"=40,"laser"=40,"energy"=100,"bomb"=30,"bio"=100,"rad"=100,"fire"=90,"acid"=50)
+	name = "Reinforced Light Fixture"
 	},
 /obj/machinery/atmospherics/components/unary/vent_pump/on{
 	dir = 4
@@ -65794,8 +65797,8 @@
 /obj/item/radio/intercom{
 	desc = "Talk through this. It looks like it has been modified to not broadcast.";
 	name = "Prison Intercom (General)";
-	prison_radio = 1;
-	pixel_x = -30
+	pixel_x = -30;
+	prison_radio = 1
 	},
 /turf/open/floor/plasteel,
 /area/security/prison/upper)
@@ -66012,8 +66015,8 @@
 	dir = 4
 	},
 /obj/machinery/computer/cryopod{
-	pixel_y = -26;
-	dir = 1
+	dir = 1;
+	pixel_y = -26
 	},
 /obj/effect/turf_decal/stripes/line{
 	dir = 1
@@ -66104,8 +66107,8 @@
 /obj/item/radio/intercom{
 	desc = "Talk through this. It looks like it has been modified to not broadcast.";
 	name = "Prison Intercom (General)";
-	prison_radio = 1;
-	pixel_x = -30
+	pixel_x = -30;
+	prison_radio = 1
 	},
 /turf/open/floor/plasteel,
 /area/security/prison/upper)
@@ -66761,8 +66764,8 @@
 	specialfunctions = 4
 	},
 /obj/machinery/airalarm{
-	pixel_x = 23;
-	dir = 8
+	dir = 8;
+	pixel_x = 23
 	},
 /obj/structure/bed/double,
 /obj/item/bedsheet/random/double,
@@ -66834,9 +66837,9 @@
 /obj/item/radio/intercom{
 	desc = "Talk through this. It looks like it has been modified to not broadcast.";
 	name = "Prison Intercom (General)";
-	prison_radio = 1;
 	pixel_x = -1;
-	pixel_y = 30
+	pixel_y = 30;
+	prison_radio = 1
 	},
 /turf/open/floor/grass,
 /area/security/prison/upper)
@@ -112823,7 +112826,7 @@ aAc
 ayd
 stx
 aEd
-puB
+aFw
 aHf
 aMX
 aJM
@@ -113337,7 +113340,7 @@ asB
 asB
 aCK
 fvK
-aFw
+puB
 aHg
 aMX
 aFw
