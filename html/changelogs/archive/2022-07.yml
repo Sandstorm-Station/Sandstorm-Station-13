@@ -96,3 +96,31 @@
   - soundadd: added fusrodah sound effect
   - soundadd: added illuminati sound effect
   - soundadd: added bonerif sound effect
+2022-07-23:
+  TripleShades:
+  - rscdel: Snow Cabin turbine
+  - tweak: Snow Cabin, Jungle Resort, and Plasma Outpost gateways now use RTGs for
+      power generation
+  - balance: Snow Cabin SMES unit is now non-magical
+  - bugfix: Snow Cabin gateway wiring now connected properly
+2022-07-24:
+  Bhijn & Myr:
+  - tweak: The typo in Polly's name has been fixed, severing the decade-old reference
+      to a 2012-era TGstation coder. If you know, you know.
+  BlueWildrose:
+  - qol: Two new Kinkmates have been added to Deltastation in the dorms and arrivals
+      area.
+  - bugfix: Cleanbots will no longer go invisible when they get turned on or off.
+  - qol: Public library paintings have been added to Omegastation. You can now submit
+      paintings that will appear in later rounds on that station.
+  - bugfix: Fixes hierophant walls letting non-casters pass through them.
+  - qol: Player-controlled cleanbots can now clean messes that ordinarily wouldn't
+      be clickable as long as they are clicking the tile it's on.
+  - bugfix: The shocked autolathe will no longer infinitely zap you with the menu
+      open.
+  - bugfix: Using wirecutters on an autolathe with an open panel will now have appropriate
+      behavior of opening the wire menu.
+  - bugfix: Harvested grown inedibles now take their seed stats into account instead
+      of acting like they got adminspawned.
+  - bugfix: Tea now dispenses from dispensers again.
+  - bugfix: Pink tea and Pink milk are pathed correctly.
