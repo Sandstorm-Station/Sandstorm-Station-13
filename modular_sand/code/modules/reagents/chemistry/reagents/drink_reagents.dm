@@ -142,10 +142,10 @@
 /datum/reagent/consumable/cream_soda
 	hydration = 4
 
-/datum/reagent/consumable/pinkmilk
+/datum/reagent/consumable/milk/pinkmilk
 	hydration = 4
 
-/datum/reagent/consumable/tea/pink
+/datum/reagent/consumable/tea/pinktea
 	hydration = 4
 
 /datum/reagent/consumable/monkey_energy
