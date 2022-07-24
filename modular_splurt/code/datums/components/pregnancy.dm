@@ -159,8 +159,6 @@
 	if(stage < 2)
 		return FALSE
 
-	to_chat(carrier, span_userlove("You feel your egg sliding out slowly inside!"))
-
 	if(receiver && isliving(target))
 		if(CHECK_BITFIELD(receiver.genital_flags, GENITAL_CAN_STUFF))
 			return lay_eg(receiver)
@@ -223,7 +221,7 @@
 		return
 	if(pregnancy_inflation)
 		belly?.modify_size(1)
-	else if(pregnancy_breast_growth)
+	if(pregnancy_breast_growth)
 		boob?.modify_size(1)
 
 /datum/component/pregnancy/proc/handle_incubation()
@@ -320,6 +318,8 @@
 		if(!gen.is_exposed() && gen.linked_organ && !gen.linked_organ.is_exposed())
 			return FALSE
 
+	to_chat(carrier, span_userlove("You feel your egg sliding out slowly inside!"))
+
 	playsound(carrier, 'sound/effects/splat.ogg', 70, TRUE)
 	carrier.Knockdown(200, TRUE, TRUE)
 	carrier.Stun(200, TRUE, TRUE)
@@ -406,8 +406,6 @@
 		var/obj/item/organ/genital/breasts/boob = gregnant.getorganslot(ORGAN_SLOT_BREASTS)
 		if(!boob)
 			boob = gregnant.give_genital(/obj/item/organ/genital/breasts)
-		if(added_size > 0)
-			boob.modify_size(added_size)
 	return TRUE
 
 /datum/component/pregnancy/proc/human_pragency_end(mob/living/carbon/human/gregnant)
@@ -416,8 +414,6 @@
 	var/obj/item/organ/genital/breasts/boob = gregnant.getorganslot(ORGAN_SLOT_BREASTS)
 	if(pregnancy_inflation)
 		belly?.modify_size(-added_size)
-	if(pregnancy_breast_growth)
-		boob?.modify_size(-added_size)
 	SEND_SIGNAL(gregnant, COMSIG_CLEAR_MOOD_EVENT, "pregnancy")
 
 /datum/component/pregnancy/proc/fetus_mortus()

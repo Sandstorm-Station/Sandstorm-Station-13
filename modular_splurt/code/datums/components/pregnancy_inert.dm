@@ -57,7 +57,7 @@
 	if(COOLDOWN_FINISHED(src, egg_timer))
 		egg_stage += 1
 		egg_stage = min(2, egg_stage)
-		COOLDOWN_START(src, egg_stage, EGG_STAGE_TIME)
+		COOLDOWN_START(src, egg_timer, EGG_STAGE_TIME)
 
 	if(egg_stage == 2)
 		egg_stage = 0
@@ -69,8 +69,6 @@
 
 	if(eggs_stored <= 0)
 		return FALSE
-
-	to_chat(carrier, span_userlove("You feel your egg sliding out slowly inside!"))
 
 	if(receiver && isliving(target))
 		if(CHECK_BITFIELD(receiver.genital_flags, GENITAL_CAN_STUFF))
@@ -89,6 +87,8 @@
 	var/obj/item/organ/genital/gen = parent
 	if(!gen.is_exposed() && gen.linked_organ && !gen.linked_organ.is_exposed())
 		return FALSE
+
+	to_chat(carrier, span_userlove("You feel your egg sliding out slowly inside!"))
 
 	playsound(carrier, 'sound/effects/splat.ogg', 70, TRUE)
 
