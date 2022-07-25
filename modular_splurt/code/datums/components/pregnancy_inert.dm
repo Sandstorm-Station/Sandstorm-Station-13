@@ -64,7 +64,7 @@
 		eggs_stored += 1
 		eggs_stored = min(3, eggs_stored)
 
-/datum/component/ovipositor/proc/on_climax(datum/source, atom/target, obj/item/organ/genital/sender, obj/item/organ/genital/receiver, spill)
+/datum/component/ovipositor/proc/on_climax(datum/source, datum/reagents/senders_cum, atom/target, obj/item/organ/genital/sender, obj/item/organ/genital/receiver, spill)
 	SIGNAL_HANDLER
 
 	var/obj/item/organ/genital/stuff = parent
@@ -76,10 +76,12 @@
 
 	if(receiver && isliving(target))
 		if(CHECK_BITFIELD(receiver.genital_flags, GENITAL_CAN_STUFF))
-			return lay_eg(receiver)
-	return lay_eg(get_turf(carrier))
+			return lay_eg(receiver, senders_cum)
+	return lay_eg(get_turf(carrier), senders_cum)
 
-/datum/component/ovipositor/proc/lay_eg(atom/location)
+/datum/component/ovipositor/proc/lay_eg(atom/location, datum/reagents/senders_cum)
+	to_chat(carrier, span_userlove("You feel your egg sliding slowly inside!"))
+
 	if(prob(30))
 		return FALSE
 
@@ -91,10 +93,6 @@
 	var/obj/item/organ/genital/gen = parent
 	if(!(gen.is_exposed() || gen.linked_organ?.is_exposed()))
 		return FALSE
-
-	to_chat(carrier, span_userlove("You feel your egg sliding out slowly inside!"))
-
-	playsound(carrier, 'sound/effects/splat.ogg', 70, TRUE)
 
 	var/obj/item/oviposition_egg/eggo = new(carrier)
 
@@ -108,6 +106,11 @@
 	else
 		carrier.visible_message(span_notice("[carrier] laid an egg!"), \
 			span_nicegreen("The egg came out!"))
+
+	playsound(carrier, 'sound/effects/splat.ogg', 70, TRUE)
+
+	if(senders_cum?.total_volume > 5)
+		senders_cum.reaction(location, TOUCH, 1, 0)
 
 	eggo.forceMove(location)
 	eggs_stored -= 1

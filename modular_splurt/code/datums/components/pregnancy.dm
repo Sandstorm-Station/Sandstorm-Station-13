@@ -153,7 +153,7 @@
 
 	egg_name = name
 
-/datum/component/pregnancy/proc/on_climax(datum/source, atom/target, obj/item/organ/genital/sender, obj/item/organ/genital/receiver, spill)
+/datum/component/pregnancy/proc/on_climax(datum/source, datum/reagents/senders_cum, atom/target, obj/item/organ/genital/sender, obj/item/organ/genital/receiver, spill)
 	SIGNAL_HANDLER
 
 	if(isgenital(container))
@@ -166,8 +166,8 @@
 
 	if(receiver && isliving(target))
 		if(CHECK_BITFIELD(receiver.genital_flags, GENITAL_CAN_STUFF))
-			return lay_eg(receiver)
-	return lay_eg(get_turf(carrier))
+			return lay_eg(receiver, senders_cum)
+	return lay_eg(get_turf(carrier), senders_cum)
 
 /datum/component/pregnancy/proc/on_obj_break(datum/source, damage_flag)
 	SIGNAL_HANDLER
@@ -310,7 +310,9 @@
 
 	lay_eg(get_turf(carrier))
 
-/datum/component/pregnancy/proc/lay_eg(atom/location)
+/datum/component/pregnancy/proc/lay_eg(atom/location, datum/reagents/senders_cum)
+	to_chat(carrier, span_userlove("You feel your egg sliding slowly inside!"))
+
 	if(prob(60))
 		return FALSE
 	if(isorgan(location))
@@ -322,15 +324,6 @@
 		var/obj/item/organ/genital/gen = container
 		if(!(gen.is_exposed() || gen.linked_organ?.is_exposed()))
 			return FALSE
-
-	to_chat(carrier, span_userlove("You feel your egg sliding out slowly inside!"))
-
-	playsound(carrier, 'sound/effects/splat.ogg', 70, TRUE)
-	carrier.Knockdown(200, TRUE, TRUE)
-	carrier.Stun(200, TRUE, TRUE)
-	carrier.adjustStaminaLoss(200)
-
-	SEND_SIGNAL(carrier, COMSIG_ADD_MOOD_EVENT, "pregnancy_end", /datum/mood_event/pregnant_positive)
 
 	var/obj/item/oviposition_egg/eggo = new(carrier)
 
@@ -344,6 +337,15 @@
 	else
 		carrier.visible_message(span_notice("[carrier] laid an egg!"), \
 			span_nicegreen("The egg came out!"))
+
+	if(senders_cum?.total_volume > 5)
+		senders_cum.reaction(location, TOUCH, 1, 0)
+
+	playsound(carrier, 'sound/effects/splat.ogg', 70, TRUE)
+	carrier.Knockdown(200, TRUE, TRUE)
+	carrier.Stun(200, TRUE, TRUE)
+	carrier.adjustStaminaLoss(200)
+	SEND_SIGNAL(carrier, COMSIG_ADD_MOOD_EVENT, "pregnancy_end", /datum/mood_event/pregnant_positive)
 
 	eggo.TakeComponent(src)
 	eggo.forceMove(location)

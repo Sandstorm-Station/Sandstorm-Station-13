@@ -37,7 +37,7 @@
 	if(!target || !R)
 		return
 
-	if(SEND_SIGNAL(src, COMSIG_MOB_CLIMAX, target, sender, receiver, spill))
+	if(SEND_SIGNAL(src, COMSIG_MOB_CLIMAX, R, target, sender, receiver, spill))
 		return
 
 	var/cached_fluid
