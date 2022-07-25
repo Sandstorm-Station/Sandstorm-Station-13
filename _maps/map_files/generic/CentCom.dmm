@@ -3688,7 +3688,6 @@
 /obj/effect/turf_decal/stripes/white/line{
 	dir = 10
 	},
-/obj/effect/decal/cleanable/dirt,
 /obj/effect/turf_decal/stripes/white/corner{
 	dir = 1
 	},
@@ -4509,6 +4508,14 @@
 /obj/machinery/vending/autodrobe,
 /turf/open/indestructible/hotelwood,
 /area/centcom/holding)
+"lm" = (
+/obj/structure/flora/rock/jungle{
+	icon_state = "rock5"
+	},
+/turf/open/floor/plating/asteroid/layenia/garden{
+	icon_state = "layenia0"
+	},
+/area/slavers)
 "ln" = (
 /obj/machinery/light,
 /obj/effect/turf_decal/tile/brown,
@@ -7117,7 +7124,9 @@
 /obj/structure/flora/rock/jungle{
 	icon_state = "rock2"
 	},
-/turf/open/floor/plating/asteroid/layenia,
+/turf/open/floor/plating/asteroid/layenia/garden{
+	icon_state = "layenia0"
+	},
 /area/slavers)
 "qi" = (
 /obj/structure/table/wood,
@@ -7524,11 +7533,11 @@
 /obj/item/pen/fountain,
 /turf/open/indestructible/hotelwood,
 /area/centcom/holding)
-"rk" = (
-/obj/structure/flora/rock/jungle{
-	icon_state = "grassb1"
+"ri" = (
+/obj/effect/oneway,
+/turf/open/floor/plating/asteroid/layenia/garden{
+	icon_state = "layenia2"
 	},
-/turf/open/floor/plating/asteroid/layenia,
 /area/slavers)
 "rl" = (
 /obj/machinery/computer/auxillary_base{
@@ -8017,12 +8026,6 @@
 	},
 /turf/open/floor/plating,
 /area/syndicate_mothership)
-"se" = (
-/obj/structure/flora/rock/jungle{
-	icon_state = "grassb2"
-	},
-/turf/open/floor/plating/asteroid/layenia,
-/area/slavers)
 "sf" = (
 /obj/effect/landmark/holding_facility,
 /mob/living/simple_animal/bot/medbot{
@@ -8046,14 +8049,6 @@
 	},
 /turf/open/floor/plasteel,
 /area/syndicate_mothership)
-"sj" = (
-/obj/structure/fans/tiny/invisible,
-/obj/effect/light_emitter{
-	set_cap = 1;
-	set_luminosity = 4
-	},
-/turf/open/floor/plating/asteroid/layenia,
-/area/slavers)
 "sk" = (
 /obj/machinery/door/airlock/wood{
 	name = "Bathroom"
@@ -8531,6 +8526,14 @@
 "ti" = (
 /obj/structure/dresser,
 /turf/open/floor/wood,
+/area/slavers)
+"tj" = (
+/obj/structure/flora/rock/jungle{
+	icon_state = "grassb5"
+	},
+/turf/open/floor/plating/asteroid/layenia/garden{
+	icon_state = "layenia2"
+	},
 /area/slavers)
 "tk" = (
 /obj/effect/turf_decal/tile/red,
@@ -9999,12 +10002,6 @@
 /obj/item/bedsheet/random,
 /turf/open/indestructible/hotelwood,
 /area/centcom/holding)
-"wk" = (
-/obj/structure/flora/rock/jungle{
-	icon_state = "rock4"
-	},
-/turf/open/floor/plating/asteroid/layenia,
-/area/slavers)
 "wl" = (
 /obj/structure/table/wood,
 /obj/item/paicard,
@@ -10024,14 +10021,9 @@
 /turf/open/floor/plasteel,
 /area/syndicate_mothership)
 "wo" = (
-/obj/effect/light_emitter{
-	set_cap = 1;
-	set_luminosity = 4
+/turf/open/floor/plating/asteroid/layenia/garden{
+	icon_state = "layenia0"
 	},
-/obj/effect/turf_decal/stripes/line{
-	dir = 1
-	},
-/turf/open/floor/engine,
 /area/slavers)
 "wp" = (
 /turf/open/floor/plasteel/dark,
@@ -10598,7 +10590,9 @@
 /area/syndicate_mothership)
 "xK" = (
 /obj/effect/decal/remains/xeno/larva,
-/turf/open/floor/plating/asteroid/layenia,
+/turf/open/floor/plating/asteroid/layenia/garden{
+	icon_state = "layenia2"
+	},
 /area/slavers)
 "xL" = (
 /obj/structure/table/wood/bar,
@@ -10620,21 +10614,13 @@
 /turf/open/floor/engine,
 /area/slavers)
 "xO" = (
-/obj/effect/light_emitter{
-	set_cap = 1;
-	set_luminosity = 4
+/obj/structure/flora/junglebush,
+/turf/open/floor/plating/asteroid/layenia/garden{
+	icon_state = "layenia1"
 	},
-/turf/open/floor/engine,
 /area/slavers)
 "xP" = (
-/obj/effect/light_emitter{
-	set_cap = 1;
-	set_luminosity = 4
-	},
-/obj/effect/turf_decal/stripes/line{
-	dir = 4
-	},
-/turf/open/floor/engine,
+/turf/open/floor/plating/rust,
 /area/slavers)
 "xQ" = (
 /obj/effect/turf_decal/delivery,
@@ -10774,17 +10760,6 @@
 /obj/structure/chair,
 /turf/open/floor/mineral/titanium,
 /area/centcom/evac)
-"yh" = (
-/obj/structure/fans/tiny/invisible,
-/obj/effect/light_emitter{
-	set_cap = 1;
-	set_luminosity = 4
-	},
-/obj/structure/flora/rock/jungle{
-	icon_state = "grassb2"
-	},
-/turf/open/floor/plating/asteroid/layenia,
-/area/slavers)
 "yj" = (
 /obj/machinery/door/airlock/centcom{
 	name = "CentCom Security";
@@ -11041,16 +11016,6 @@
 	},
 /turf/open/floor/plating,
 /area/syndicate_mothership)
-"yQ" = (
-/obj/effect/light_emitter{
-	set_cap = 1;
-	set_luminosity = 4
-	},
-/obj/structure/flora/rock/jungle{
-	icon_state = "grassb4"
-	},
-/turf/open/floor/plating/asteroid/layenia,
-/area/slavers)
 "yR" = (
 /obj/machinery/door/airlock/centcom{
 	name = "Dormitories";
@@ -11059,14 +11024,12 @@
 /turf/open/floor/wood,
 /area/slavers)
 "yS" = (
-/obj/effect/light_emitter{
-	set_cap = 1;
-	set_luminosity = 4
+/obj/structure/flora/rock/jungle{
+	icon_state = "rock2"
 	},
-/obj/effect/turf_decal/stripes/line{
-	dir = 8
+/turf/open/floor/plating/asteroid/layenia/garden{
+	icon_state = "layenia2"
 	},
-/turf/open/floor/engine,
 /area/slavers)
 "yT" = (
 /obj/structure/sign/poster/contraband/yes_erp{
@@ -11345,7 +11308,9 @@
 /obj/structure/flora/rock/jungle{
 	icon_state = "rock3"
 	},
-/turf/open/floor/plating/asteroid/layenia,
+/turf/open/floor/plating/asteroid/layenia/garden{
+	icon_state = "layenia0"
+	},
 /area/slavers)
 "zu" = (
 /obj/item/storage/box/drinkingglasses,
@@ -11368,7 +11333,9 @@
 /obj/structure/flora/rock/jungle{
 	icon_state = "rock5"
 	},
-/turf/open/floor/plating/asteroid/layenia,
+/turf/open/floor/plating/asteroid/layenia/garden{
+	icon_state = "layenia2"
+	},
 /area/slavers)
 "zx" = (
 /obj/structure/closet/syndicate/personal,
@@ -11629,6 +11596,18 @@
 	},
 /turf/open/indestructible/hotelwood,
 /area/centcom/holding)
+"zZ" = (
+/obj/effect/turf_decal/tile/bar{
+	dir = 8
+	},
+/obj/effect/turf_decal/tile/red{
+	dir = 1
+	},
+/obj/effect/decal/cleanable/dirt,
+/turf/open/floor/plasteel/dark/side{
+	dir = 8
+	},
+/area/slavers)
 "Aa" = (
 /turf/open/floor/mech_bay_recharge_floor,
 /area/syndicate_mothership)
@@ -12130,6 +12109,9 @@
 /obj/machinery/vending/clothing,
 /turf/open/floor/wood,
 /area/slavers)
+"Br" = (
+/turf/open/floor/festive/cobblestone/safe,
+/area/slavers)
 "Bs" = (
 /obj/effect/turf_decal/tile/red{
 	dir = 1
@@ -12144,10 +12126,10 @@
 /turf/open/floor/plasteel/dark,
 /area/slavers)
 "Bt" = (
-/obj/structure/flora/rock/jungle{
-	icon_state = "grassb4"
+/obj/structure/flora/junglebush,
+/turf/open/floor/plating/asteroid/layenia/garden{
+	icon_state = "layenia0"
 	},
-/turf/open/floor/plating/asteroid/layenia,
 /area/slavers)
 "Bu" = (
 /obj/structure/table/wood,
@@ -12458,6 +12440,7 @@
 /obj/machinery/light/small{
 	dir = 8
 	},
+/obj/effect/decal/cleanable/dirt,
 /turf/open/floor/plating,
 /area/slavers)
 "BV" = (
@@ -13221,19 +13204,26 @@
 /area/ai_multicam_room)
 "Dj" = (
 /obj/structure/fans/tiny/invisible,
-/obj/effect/light_emitter{
-	set_cap = 1;
-	set_luminosity = 4
-	},
 /obj/effect/oneway{
 	dir = 4
 	},
-/turf/open/floor/plating/asteroid/layenia,
+/turf/open/floor/plating/asteroid/layenia/garden{
+	icon_state = "layenia2"
+	},
 /area/slavers)
 "Dk" = (
 /obj/structure/table,
 /turf/open/floor/plasteel/cafeteria,
 /area/syndicate_mothership)
+"Dl" = (
+/obj/effect/turf_decal/stripes/line{
+	dir = 4
+	},
+/obj/effect/decal/cleanable/dirt,
+/turf/open/floor/plasteel/dark/side{
+	dir = 4
+	},
+/area/slavers)
 "Dm" = (
 /obj/machinery/door/airlock/wood{
 	id_tag = "Ninja2";
@@ -14390,16 +14380,6 @@
 	},
 /turf/open/floor/engine/cult,
 /area/wizard_station)
-"FU" = (
-/obj/structure/flora/rock/jungle{
-	icon_state = "rock3"
-	},
-/obj/effect/light_emitter{
-	set_cap = 1;
-	set_luminosity = 4
-	},
-/turf/open/floor/plating/asteroid/layenia,
-/area/slavers)
 "FW" = (
 /obj/structure/window/reinforced{
 	dir = 1
@@ -14418,12 +14398,12 @@
 /area/centcom/holding)
 "FY" = (
 /obj/structure/table/plasmaglass,
-/obj/item/dildo/random{
-	pixel_x = -4;
-	pixel_y = 6
+/obj/item/assembly/signaler{
+	pixel_x = 7;
+	pixel_y = 9
 	},
 /obj/item/dildo/random{
-	pixel_x = 4;
+	pixel_x = -4;
 	pixel_y = 6
 	},
 /obj/item/dildo/knotted{
@@ -16802,6 +16782,7 @@
 	name = "privacy shutters";
 	pixel_x = 26
 	},
+/obj/effect/decal/cleanable/dirt,
 /turf/open/floor/plating,
 /area/slavers)
 "KA" = (
@@ -16836,6 +16817,7 @@
 	name = "privacy shutters";
 	pixel_x = -26
 	},
+/obj/effect/decal/cleanable/dirt,
 /turf/open/floor/plating,
 /area/slavers)
 "KG" = (
@@ -16991,12 +16973,6 @@
 /obj/item/clothing/mask/luchador/rudos,
 /turf/open/floor/holofloor/wood,
 /area/holodeck/rec_center/wrestlingarena)
-"Le" = (
-/obj/structure/flora/rock/jungle{
-	icon_state = "grassb5"
-	},
-/turf/open/floor/plating/asteroid/layenia,
-/area/slavers)
 "Lh" = (
 /obj/machinery/stasis{
 	dir = 4
@@ -17031,11 +17007,9 @@
 /obj/structure/flora/rock/jungle{
 	icon_state = "rock1"
 	},
-/obj/effect/light_emitter{
-	set_cap = 1;
-	set_luminosity = 4
+/turf/open/floor/plating/asteroid/layenia/garden{
+	icon_state = "layenia2"
 	},
-/turf/open/floor/plating/asteroid/layenia,
 /area/slavers)
 "Lm" = (
 /obj/structure/table,
@@ -17044,7 +17018,9 @@
 /area/holodeck/rec_center/wrestlingarena)
 "Ln" = (
 /obj/effect/decal/remains/xeno,
-/turf/open/floor/plating/asteroid/layenia,
+/turf/open/floor/plating/asteroid/layenia/garden{
+	icon_state = "layenia0"
+	},
 /area/slavers)
 "Lp" = (
 /obj/structure/chair{
@@ -17126,7 +17102,9 @@
 /obj/structure/railing/corner{
 	dir = 8
 	},
-/turf/open/floor/plating/asteroid/layenia,
+/turf/open/floor/plating/asteroid/layenia/garden{
+	icon_state = "layenia2"
+	},
 /area/slavers)
 "LG" = (
 /obj/structure/filingcabinet,
@@ -17281,6 +17259,12 @@
 /obj/effect/turf_decal/box/red/corners{
 	dir = 4
 	},
+/obj/effect/turf_decal/trimline/red/line{
+	dir = 9
+	},
+/obj/effect/turf_decal/trimline/red/filled/line{
+	dir = 9
+	},
 /turf/open/floor/plasteel/dark/side{
 	dir = 9
 	},
@@ -17385,6 +17369,12 @@
 /area/syndicate_mothership)
 "Ml" = (
 /obj/effect/turf_decal/arrows/red,
+/obj/effect/turf_decal/trimline/red/line{
+	dir = 1
+	},
+/obj/effect/turf_decal/trimline/red/filled/line{
+	dir = 1
+	},
 /turf/open/floor/plasteel/dark/side{
 	dir = 1
 	},
@@ -17552,6 +17542,12 @@
 /obj/effect/turf_decal/box/red/corners{
 	dir = 8
 	},
+/obj/effect/turf_decal/trimline/red/line{
+	dir = 5
+	},
+/obj/effect/turf_decal/trimline/red/filled/line{
+	dir = 5
+	},
 /turf/open/floor/plasteel/dark/side{
 	dir = 5
 	},
@@ -17628,7 +17624,9 @@
 /obj/structure/flora/rock/jungle{
 	icon_state = "rock1"
 	},
-/turf/open/floor/plating/asteroid/layenia,
+/turf/open/floor/plating/asteroid/layenia/garden{
+	icon_state = "layenia2"
+	},
 /area/slavers)
 "MW" = (
 /obj/structure/mopbucket,
@@ -17667,6 +17665,7 @@
 	icon_state = "cobweb2"
 	},
 /obj/structure/bed/pod,
+/obj/effect/decal/cleanable/dirt,
 /turf/open/floor/plating,
 /area/slavers)
 "Na" = (
@@ -17759,11 +17758,9 @@
 /turf/open/floor/carpet/royalblue,
 /area/centcom/holding)
 "Nm" = (
-/obj/effect/light_emitter{
-	set_cap = 1;
-	set_luminosity = 4
+/turf/open/floor/plating/asteroid/layenia/garden{
+	icon_state = "layenia1"
 	},
-/turf/open/floor/plating/asteroid/layenia/garden,
 /area/slavers)
 "Nn" = (
 /obj/machinery/vending/hydronutrients,
@@ -17900,6 +17897,12 @@
 /obj/effect/turf_decal/arrows/red{
 	dir = 4
 	},
+/obj/effect/turf_decal/trimline/red/line{
+	dir = 8
+	},
+/obj/effect/turf_decal/trimline/red/filled/line{
+	dir = 8
+	},
 /turf/open/floor/plasteel/dark/side{
 	dir = 8
 	},
@@ -17933,6 +17936,13 @@
 	start_charge = 100
 	},
 /turf/open/floor/plasteel/dark,
+/area/slavers)
+"NN" = (
+/obj/structure/fans/tiny/invisible,
+/obj/effect/decal/remains/xeno,
+/turf/open/floor/plating/asteroid/layenia/garden{
+	icon_state = "layenia2"
+	},
 /area/slavers)
 "NO" = (
 /obj/effect/turf_decal/tile/bar{
@@ -17989,6 +17999,7 @@
 /obj/structure/sign/poster/contraband/lusty_xenomorph{
 	pixel_y = 32
 	},
+/obj/effect/decal/cleanable/dirt,
 /turf/open/floor/plating,
 /area/slavers)
 "NX" = (
@@ -18021,12 +18032,10 @@
 /area/syndicate_mothership)
 "Od" = (
 /obj/structure/fans/tiny/invisible,
-/obj/effect/light_emitter{
-	set_cap = 1;
-	set_luminosity = 4
-	},
 /obj/effect/oneway,
-/turf/open/floor/plating/asteroid/layenia,
+/turf/open/floor/plating/asteroid/layenia/garden{
+	icon_state = "layenia2"
+	},
 /area/slavers)
 "Oe" = (
 /obj/machinery/deepfryer,
@@ -18219,7 +18228,6 @@
 /obj/effect/turf_decal/stripes/white/line{
 	dir = 9
 	},
-/obj/effect/decal/cleanable/dirt,
 /obj/effect/turf_decal/stripes/white/corner{
 	dir = 4
 	},
@@ -18272,8 +18280,11 @@
 /turf/open/floor/plasteel/dark,
 /area/syndicate_mothership)
 "OT" = (
-/obj/structure/closet,
 /obj/effect/turf_decal/bot,
+/obj/structure/closet{
+	anchored = 1;
+	name = "slave asset storage"
+	},
 /turf/open/floor/plasteel/dark,
 /area/slavers)
 "OU" = (
@@ -18309,6 +18320,12 @@
 "OX" = (
 /obj/effect/turf_decal/box/red/corners{
 	dir = 1
+	},
+/obj/effect/turf_decal/trimline/red/line{
+	dir = 10
+	},
+/obj/effect/turf_decal/trimline/red/filled/line{
+	dir = 10
 	},
 /turf/open/floor/plasteel/dark/side{
 	dir = 10
@@ -18347,6 +18364,8 @@
 /obj/effect/turf_decal/arrows/red{
 	dir = 1
 	},
+/obj/effect/turf_decal/trimline/red/line,
+/obj/effect/turf_decal/trimline/red/filled/line,
 /turf/open/floor/plasteel/dark/side,
 /area/slavers/export)
 "Pk" = (
@@ -18422,6 +18441,12 @@
 /area/centcom/holding)
 "PB" = (
 /obj/effect/turf_decal/box/red/corners,
+/obj/effect/turf_decal/trimline/red/line{
+	dir = 6
+	},
+/obj/effect/turf_decal/trimline/red/filled/line{
+	dir = 6
+	},
 /turf/open/floor/plasteel/dark/side{
 	dir = 6
 	},
@@ -18764,12 +18789,6 @@
 	},
 /turf/open/floor/mineral/plastitanium/red,
 /area/syndicate_mothership)
-"QC" = (
-/obj/structure/flora/rock/jungle{
-	icon_state = "grassb"
-	},
-/turf/open/floor/plating/asteroid/layenia,
-/area/slavers)
 "QE" = (
 /turf/open/floor/plasteel,
 /area/centcom/supplypod)
@@ -19094,6 +19113,12 @@
 /obj/effect/turf_decal/arrows/red{
 	dir = 8
 	},
+/obj/effect/turf_decal/trimline/red/line{
+	dir = 4
+	},
+/obj/effect/turf_decal/trimline/red/filled/line{
+	dir = 4
+	},
 /turf/open/floor/plasteel/dark/side{
 	dir = 4
 	},
@@ -19222,11 +19247,9 @@
 "RY" = (
 /obj/structure/fans/tiny/invisible,
 /obj/structure/railing/corner,
-/obj/effect/light_emitter{
-	set_cap = 1;
-	set_luminosity = 4
+/turf/open/floor/plating/asteroid/layenia/garden{
+	icon_state = "layenia2"
 	},
-/turf/open/floor/plating/asteroid/layenia,
 /area/slavers)
 "RZ" = (
 /obj/effect/turf_decal/tile/bar,
@@ -19395,7 +19418,7 @@
 /obj/machinery/light/small{
 	dir = 4
 	},
-/turf/open/floor/plating,
+/turf/open/floor/plating/rust,
 /area/slavers)
 "SD" = (
 /obj/structure/mopbucket,
@@ -19530,12 +19553,8 @@
 /turf/open/indestructible/hotelwood,
 /area/centcom/holding)
 "SX" = (
-/obj/effect/light_emitter{
-	set_cap = 1;
-	set_luminosity = 4
-	},
-/obj/effect/turf_decal/stripes/line,
-/turf/open/floor/engine,
+/obj/effect/decal/cleanable/dirt,
+/turf/open/floor/plasteel/cafeteria,
 /area/slavers)
 "SY" = (
 /obj/structure/table/wood,
@@ -19757,6 +19776,7 @@
 /area/centcom/holding)
 "TN" = (
 /obj/effect/turf_decal/vg_decals/numbers/one,
+/obj/effect/decal/cleanable/dirt,
 /turf/open/floor/plasteel/dark/side{
 	dir = 1
 	},
@@ -19829,6 +19849,7 @@
 /area/centcom/holding)
 "Ua" = (
 /obj/effect/turf_decal/tile/red,
+/obj/effect/decal/cleanable/dirt,
 /turf/open/floor/plasteel/dark/corner,
 /area/slavers)
 "Uc" = (
@@ -20058,15 +20079,13 @@
 /area/slavers)
 "UB" = (
 /obj/structure/fans/tiny/invisible,
-/obj/effect/light_emitter{
-	set_cap = 1;
-	set_luminosity = 4
-	},
 /obj/structure/railing/corner,
 /obj/effect/oneway{
 	dir = 1
 	},
-/turf/open/floor/plating/asteroid/layenia,
+/turf/open/floor/plating/asteroid/layenia/garden{
+	icon_state = "layenia2"
+	},
 /area/slavers)
 "UC" = (
 /obj/machinery/vending/cola,
@@ -20087,17 +20106,15 @@
 /area/centcom/holding)
 "UF" = (
 /obj/structure/fans/tiny/invisible,
-/obj/effect/light_emitter{
-	set_cap = 1;
-	set_luminosity = 4
-	},
 /obj/structure/railing/corner{
 	dir = 8
 	},
 /obj/effect/oneway{
 	dir = 1
 	},
-/turf/open/floor/plating/asteroid/layenia,
+/turf/open/floor/plating/asteroid/layenia/garden{
+	icon_state = "layenia2"
+	},
 /area/slavers)
 "UG" = (
 /obj/structure/flora/tree/pine,
@@ -20105,12 +20122,6 @@
 /obj/effect/light_emitter,
 /turf/open/floor/plating/asteroid/snow/airless,
 /area/syndicate_mothership)
-"UH" = (
-/obj/structure/flora/rock/jungle{
-	icon_state = "grassb3"
-	},
-/turf/open/floor/plating/asteroid/layenia,
-/area/slavers)
 "UI" = (
 /obj/machinery/door/airlock/wood{
 	id_tag = "Ninja4";
@@ -20167,14 +20178,12 @@
 /turf/open/floor/plasteel,
 /area/centcom/supplypod/loading/one)
 "UR" = (
-/obj/effect/light_emitter{
-	set_cap = 1;
-	set_luminosity = 4
-	},
 /obj/structure/flora/rock/jungle{
 	icon_state = "rock3"
 	},
-/turf/open/floor/plating/asteroid/layenia,
+/turf/open/floor/plating/asteroid/layenia/garden{
+	icon_state = "layenia2"
+	},
 /area/slavers)
 "UT" = (
 /obj/structure/chair/wood/wings{
@@ -20415,24 +20424,10 @@
 /obj/machinery/autolathe,
 /turf/open/indestructible/hotelwood,
 /area/centcom/holding)
-"VJ" = (
-/obj/effect/light_emitter{
-	set_cap = 1;
-	set_luminosity = 4
-	},
-/obj/structure/flora/rock/jungle{
-	icon_state = "grassb5"
-	},
-/turf/open/floor/plating/asteroid/layenia,
-/area/slavers)
 "VK" = (
 /obj/machinery/vending/clothing,
 /turf/open/indestructible/hotelwood,
 /area/centcom/holding)
-"VL" = (
-/obj/structure/fans/tiny/invisible,
-/turf/open/floor/plating/asteroid/layenia,
-/area/slavers)
 "VM" = (
 /obj/effect/turf_decal/stripes/line,
 /obj/effect/turf_decal/stripes/line{
@@ -20476,18 +20471,11 @@
 	},
 /turf/open/floor/wood,
 /area/syndicate_mothership)
-"VV" = (
-/obj/effect/light_emitter{
-	set_cap = 1;
-	set_luminosity = 4
-	},
-/turf/open/floor/plating/asteroid/layenia,
-/area/slavers)
 "VW" = (
 /obj/machinery/shower{
 	pixel_y = 14
 	},
-/turf/open/floor/plasteel/freezer,
+/turf/open/floor/plasteel/showroomfloor/shower,
 /area/slavers)
 "VX" = (
 /obj/effect/landmark/shuttle_import,
@@ -20664,14 +20652,8 @@
 /turf/open/water/decorative,
 /area/slavers)
 "WG" = (
-/obj/effect/turf_decal/stripes/white/line{
-	dir = 1
-	},
 /obj/effect/decal/cleanable/dirt,
-/obj/effect/turf_decal/stripes/white/corner{
-	dir = 1
-	},
-/turf/open/floor/plasteel,
+/turf/open/floor/plating,
 /area/slavers)
 "WH" = (
 /obj/structure/table/reinforced,
@@ -20713,7 +20695,7 @@
 	pixel_y = 14
 	},
 /obj/item/soap/homemade,
-/turf/open/floor/plasteel/freezer,
+/turf/open/floor/plasteel/showroomfloor/shower,
 /area/slavers)
 "WO" = (
 /obj/effect/turf_decal/tile/brown,
@@ -20774,14 +20756,10 @@
 /area/syndicate_mothership)
 "WX" = (
 /obj/structure/railing/corner,
-/obj/structure/flora/rock/jungle{
-	icon_state = "grassb3"
+/obj/structure/flora/junglebush,
+/turf/open/floor/plating/asteroid/layenia/garden{
+	icon_state = "layenia2"
 	},
-/obj/effect/light_emitter{
-	set_cap = 1;
-	set_luminosity = 4
-	},
-/turf/open/floor/plating/asteroid/layenia,
 /area/slavers)
 "WY" = (
 /obj/effect/oneway,
@@ -20941,17 +20919,15 @@
 /turf/open/floor/plasteel,
 /area/centcom/ferry)
 "Xz" = (
-/obj/effect/light_emitter{
-	set_cap = 1;
-	set_luminosity = 4
-	},
 /obj/structure/flora/rock/jungle{
 	icon_state = "grassb3"
 	},
 /obj/effect/oneway{
 	dir = 4
 	},
-/turf/open/floor/plating/asteroid/layenia,
+/turf/open/floor/plating/asteroid/layenia/garden{
+	icon_state = "layenia2"
+	},
 /area/slavers)
 "XA" = (
 /obj/structure/railing/corner{
@@ -20960,27 +20936,22 @@
 /obj/structure/flora/rock/jungle{
 	icon_state = "rock4"
 	},
-/obj/effect/light_emitter{
-	set_cap = 1;
-	set_luminosity = 4
+/turf/open/floor/plating/asteroid/layenia/garden{
+	icon_state = "layenia2"
 	},
-/turf/open/floor/plating/asteroid/layenia,
 /area/slavers)
 "XC" = (
-/obj/effect/light_emitter{
-	set_cap = 1;
-	set_luminosity = 4
-	},
 /obj/effect/oneway{
 	dir = 4
 	},
-/turf/open/floor/plating/asteroid/layenia,
+/turf/open/floor/plating/asteroid/layenia/garden{
+	icon_state = "layenia2"
+	},
 /area/slavers)
 "XD" = (
 /obj/effect/turf_decal/stripes/white/line{
 	dir = 5
 	},
-/obj/effect/decal/cleanable/dirt,
 /obj/effect/turf_decal/stripes/white/corner{
 	dir = 8
 	},
@@ -21011,6 +20982,14 @@
 	dir = 1
 	},
 /turf/open/water/decorative,
+/area/slavers)
+"XJ" = (
+/obj/structure/flora/rock/jungle{
+	icon_state = "rock1"
+	},
+/turf/open/floor/plating/asteroid/layenia/garden{
+	icon_state = "layenia1"
+	},
 /area/slavers)
 "XK" = (
 /obj/effect/turf_decal/tile/red,
@@ -21137,7 +21116,7 @@
 /area/syndicate_mothership)
 "Yk" = (
 /obj/machinery/light/small,
-/turf/open/floor/plasteel/freezer,
+/turf/open/floor/plasteel/showroomfloor,
 /area/slavers)
 "Yl" = (
 /obj/machinery/vending/sustenance,
@@ -21157,14 +21136,16 @@
 	name = "\improper FOURTH WALL";
 	pixel_x = -32
 	},
-/turf/open/floor/plating/asteroid/layenia,
+/turf/open/floor/plating/asteroid/layenia/garden{
+	icon_state = "layenia0"
+	},
 /area/slavers)
 "Yr" = (
 /obj/structure/fans/tiny/invisible,
-/obj/structure/flora/rock/jungle{
-	icon_state = "grassb2"
+/obj/structure/flora/junglebush,
+/turf/open/floor/plating/asteroid/layenia/garden{
+	icon_state = "layenia2"
 	},
-/turf/open/floor/plating/asteroid/layenia,
 /area/slavers)
 "Ys" = (
 /obj/structure/table/reinforced,
@@ -21187,6 +21168,18 @@
 	},
 /turf/open/floor/plasteel/cafeteria,
 /area/centcom/holding)
+"Yv" = (
+/obj/effect/turf_decal/tile/bar{
+	dir = 4
+	},
+/obj/effect/turf_decal/tile/red{
+	dir = 1
+	},
+/obj/effect/decal/cleanable/dirt,
+/turf/open/floor/plasteel/dark/side{
+	dir = 1
+	},
+/area/slavers)
 "Yw" = (
 /turf/closed/indestructible/fakedoor{
 	name = "External Access"
@@ -21241,14 +21234,9 @@
 /area/slavers)
 "YD" = (
 /obj/structure/fans/tiny/invisible,
-/obj/effect/light_emitter{
-	set_cap = 1;
-	set_luminosity = 4
+/turf/open/floor/plating/asteroid/layenia/garden{
+	icon_state = "layenia2"
 	},
-/obj/structure/flora/rock/jungle{
-	icon_state = "grassb4"
-	},
-/turf/open/floor/plating/asteroid/layenia,
 /area/slavers)
 "YE" = (
 /obj/effect/oneway{
@@ -21263,7 +21251,7 @@
 /turf/open/floor/wood,
 /area/centcom/holding)
 "YG" = (
-/turf/open/floor/plasteel/freezer,
+/turf/open/floor/plasteel/showroomfloor,
 /area/slavers)
 "YH" = (
 /obj/item/hilbertshotel/ghostdojo,
@@ -21283,6 +21271,7 @@
 	name = "privacy shutters";
 	pixel_y = -26
 	},
+/obj/effect/decal/cleanable/dirt,
 /turf/open/floor/plating,
 /area/slavers)
 "YL" = (
@@ -21325,16 +21314,6 @@
 /obj/item/book/manual/hydroponics_pod_people,
 /turf/open/indestructible/hotelwood,
 /area/centcom/holding)
-"YQ" = (
-/obj/structure/flora/rock/jungle{
-	icon_state = "grassb1"
-	},
-/obj/effect/light_emitter{
-	set_cap = 1;
-	set_luminosity = 4
-	},
-/turf/open/floor/plating/asteroid/layenia,
-/area/slavers)
 "YR" = (
 /obj/machinery/light{
 	dir = 8
@@ -21390,14 +21369,10 @@
 /turf/open/floor/plasteel/dark,
 /area/slavers)
 "YZ" = (
-/obj/effect/light_emitter{
-	set_cap = 1;
-	set_luminosity = 4
+/obj/structure/flora/junglebush,
+/turf/open/floor/plating/asteroid/layenia/garden{
+	icon_state = "layenia2"
 	},
-/obj/structure/flora/rock/jungle{
-	icon_state = "grassb1"
-	},
-/turf/open/floor/plating/asteroid/layenia,
 /area/slavers)
 "Za" = (
 /obj/machinery/door/airlock/wood{
@@ -21413,7 +21388,7 @@
 	id_tag = null;
 	name = "Toilet"
 	},
-/turf/open/floor/plasteel/freezer,
+/turf/open/floor/plasteel/showroomfloor,
 /area/slavers)
 "Ze" = (
 /obj/effect/turf_decal/tile/bar{
@@ -21552,7 +21527,6 @@
 /obj/effect/turf_decal/stripes/white/line{
 	dir = 1
 	},
-/obj/effect/decal/cleanable/dirt,
 /obj/effect/turf_decal/stripes/white/corner,
 /turf/open/floor/plasteel,
 /area/slavers)
@@ -21564,7 +21538,7 @@
 	dir = 4
 	},
 /obj/effect/decal/cleanable/dirt,
-/turf/open/floor/plasteel/freezer,
+/turf/open/floor/plasteel/showroomfloor,
 /area/slavers)
 "ZC" = (
 /obj/structure/toilet{
@@ -21574,7 +21548,7 @@
 /obj/machinery/light/small{
 	dir = 4
 	},
-/turf/open/floor/plasteel/freezer,
+/turf/open/floor/plasteel/showroomfloor,
 /area/slavers)
 "ZE" = (
 /obj/structure/toilet{
@@ -21583,7 +21557,7 @@
 /obj/machinery/light/small{
 	dir = 4
 	},
-/turf/open/floor/plasteel/freezer,
+/turf/open/floor/plasteel/showroomfloor,
 /area/slavers)
 "ZF" = (
 /obj/effect/turf_decal/tile/brown,
@@ -21668,14 +21642,12 @@
 /turf/open/floor/plasteel/dark,
 /area/slavers)
 "ZO" = (
-/obj/effect/light_emitter{
-	set_cap = 1;
-	set_luminosity = 4
-	},
 /obj/structure/flora/rock/jungle{
 	icon_state = "rock4"
 	},
-/turf/open/floor/plating/asteroid/layenia,
+/turf/open/floor/plating/asteroid/layenia/garden{
+	icon_state = "layenia2"
+	},
 /area/slavers)
 "ZP" = (
 /obj/effect/turf_decal/stripes/line{
@@ -21699,7 +21671,9 @@
 /turf/open/floor/plasteel/white,
 /area/centcom/holding)
 "ZS" = (
-/turf/open/floor/plating/asteroid/layenia,
+/turf/open/floor/plating/asteroid/layenia/garden{
+	icon_state = "layenia2"
+	},
 /area/slavers)
 "ZT" = (
 /mob/living/simple_animal/cow,
@@ -68505,7 +68479,7 @@ Zg
 ZS
 ZS
 ZS
-QC
+YZ
 Zg
 Zg
 Zg
@@ -68759,10 +68733,10 @@ ZS
 Zg
 Zg
 ZS
-qh
+yS
 ZS
-ZS
-ZS
+Nm
+Nm
 Zg
 Zg
 Zg
@@ -69010,26 +68984,26 @@ aa
 aa
 Zg
 Zg
-wk
+ZO
 ZS
-rk
+YZ
 ZS
+wo
+wo
+wo
+wo
+wo
+XJ
 ZS
+YZ
 ZS
-ZS
-ZS
-ZS
-MV
-ZS
-Le
-ZS
-ZS
-ZS
+wo
+wo
 Yp
+wo
 ZS
-ZS
-wk
-ZS
+ZO
+Nm
 ZS
 Zg
 Zg
@@ -69271,23 +69245,23 @@ ZS
 xK
 ZS
 zt
+wo
 ZS
 ZS
+YZ
+wo
+wo
+Nm
+Nm
 ZS
-Bt
-ZS
-ZS
-ZS
-ZS
-ZS
-zw
-ZS
+lm
 ZS
 ZS
-ZS
-ZS
-ZS
-ZS
+wo
+wo
+Nm
+wo
+wo
 Zg
 Zg
 Zg
@@ -69524,28 +69498,28 @@ aa
 Zg
 Zg
 Zg
-ZS
+wo
 Bt
-ZS
+wo
 Ln
 ZS
 qJ
 ZS
-UH
+YZ
+Nm
+wo
 ZS
-ZS
-ZS
-QC
-ZS
+xO
+wo
 ZS
 ZS
 qJ
 ZS
-ZS
-ZS
+wo
+wo
 Bt
 ZS
-zt
+UR
 Zg
 Zg
 aa
@@ -69782,25 +69756,25 @@ Zg
 Zg
 qJ
 ZS
+Nm
+wo
+wo
 ZS
 ZS
 ZS
 ZS
 ZS
-ZS
-ZS
-ZS
-ZS
+wo
 zt
+wo
+wo
 ZS
 ZS
 ZS
-ZS
-ZS
-ZS
-ZS
-ZS
-ZS
+Nm
+Nm
+wo
+Nm
 ZS
 qJ
 Zg
@@ -70038,24 +70012,24 @@ aa
 Zg
 Zg
 ZS
-se
+YZ
 ZS
-Le
-Nm
-Nm
-Nm
-Nm
-Nm
+YZ
+ZS
+ZS
+ZS
+ZS
+ZS
 MV
 ZS
 ZS
 ZS
 ZS
+ZS
+ZS
 Nm
 Nm
-Nm
-Nm
-Nm
+ZS
 ZS
 ZS
 ZS
@@ -70297,23 +70271,23 @@ Zg
 zw
 ua
 xN
-yS
 xN
 xN
 xN
 xN
 xN
-yS
-yS
-yS
-yS
-yS
 xN
 xN
 xN
 xN
 xN
-yS
+xN
+xN
+xN
+xN
+xN
+xN
+xN
 xN
 PR
 ZS
@@ -70554,7 +70528,6 @@ Zg
 ZS
 zW
 BX
-xO
 BX
 BX
 BX
@@ -70570,10 +70543,11 @@ BX
 BX
 BX
 BX
-xO
+BX
+BX
 BX
 Bj
-qh
+yS
 ZS
 Zg
 Zg
@@ -70811,7 +70785,6 @@ ZS
 ZS
 zW
 BX
-xO
 BX
 BX
 BX
@@ -70827,7 +70800,8 @@ BX
 BX
 BX
 BX
-xO
+BX
+BX
 BX
 Bj
 ZS
@@ -71064,10 +71038,9 @@ aa
 aa
 Zg
 Zg
-ZS
+wo
 ZS
 zW
-xO
 BX
 BX
 BX
@@ -71085,7 +71058,8 @@ BX
 BX
 BX
 BX
-xO
+BX
+BX
 Bj
 ZS
 ZS
@@ -71322,8 +71296,8 @@ aa
 Zg
 Zg
 qh
-ZS
-wo
+Nm
+zW
 BX
 BX
 BX
@@ -71343,7 +71317,7 @@ BX
 BX
 BX
 BX
-SX
+Bj
 ZS
 ZS
 Zg
@@ -71578,9 +71552,9 @@ aa
 aa
 Zg
 Zg
-ZS
-ZS
+Nm
 wo
+zW
 BX
 BX
 BX
@@ -71600,9 +71574,9 @@ BX
 BX
 BX
 BX
-SX
+Bj
 ZS
-se
+YZ
 ZS
 Zg
 Zg
@@ -71858,7 +71832,7 @@ BX
 BX
 BX
 Bj
-Nm
+ZS
 ZS
 qJ
 Zg
@@ -72115,7 +72089,7 @@ BX
 BX
 BX
 Bj
-Nm
+ZS
 ZS
 ZS
 Zg
@@ -72349,7 +72323,7 @@ aa
 aa
 Zg
 Zg
-rk
+YZ
 Nm
 zW
 BX
@@ -72372,9 +72346,9 @@ BX
 BX
 BX
 Bj
-Nm
-rk
 ZS
+Nm
+xO
 Zg
 Zg
 aa
@@ -72606,7 +72580,7 @@ aa
 aa
 Zg
 Zg
-ZS
+wo
 Nm
 zW
 BX
@@ -72629,9 +72603,9 @@ BX
 BX
 BX
 Bj
+ZS
+ZS
 Nm
-ZS
-ZS
 Zg
 Zg
 aa
@@ -72864,8 +72838,8 @@ aa
 Zg
 Zg
 ZS
-ZS
 wo
+zW
 BX
 BX
 BX
@@ -72885,10 +72859,10 @@ BX
 BX
 BX
 BX
-SX
-ZS
-ZS
-ZS
+Bj
+Nm
+Nm
+Nm
 Zg
 Zg
 aa
@@ -73120,9 +73094,9 @@ aa
 aa
 Zg
 Zg
-se
-ZS
+YZ
 wo
+zW
 BX
 BX
 BX
@@ -73142,8 +73116,8 @@ BX
 BX
 BX
 BX
-SX
-ZS
+Bj
+Nm
 MV
 ZS
 Zg
@@ -73377,12 +73351,12 @@ aa
 aa
 Zg
 Zg
-ZS
-ZS
+Nm
+Nm
 wZ
-xP
-xP
-xP
+Co
+Co
+Co
 Co
 Co
 Co
@@ -73395,13 +73369,13 @@ Co
 Co
 Co
 Co
-xP
-xP
-xP
-xP
+Co
+Co
+Co
+Co
 LD
+xO
 ZS
-UH
 ZS
 Zg
 Zg
@@ -73634,30 +73608,30 @@ aa
 aa
 Zg
 Zg
+Nm
+ZS
+ZO
+Nm
+Nm
+wo
+wo
+wo
+Nm
 ZS
 ZS
-wk
-ZS
-ZS
-ZS
-VV
-VV
-VV
-VV
-VV
 Xw
 DA
 Xw
+ZS
+ZS
 Nm
 Nm
 Nm
+ZS
+ZS
 Nm
 ZS
-ZS
-ZS
-ZS
-ZS
-ZS
+Nm
 ZS
 Zg
 Zg
@@ -73894,24 +73868,24 @@ Zg
 ZS
 qJ
 ZS
-UH
+YZ
+wo
+wo
+xO
+Nm
+Nm
+yS
 ZS
-ZS
-Bt
-ZS
-ZS
-qh
-VV
 Xw
 DA
 Xw
-VV
 ZS
 ZS
+Nm
 ZS
-ZS
-QC
-ZS
+Nm
+xO
+Nm
 ZS
 ZS
 qJ
@@ -74151,23 +74125,23 @@ Zg
 Zg
 Zg
 Zg
-ZS
+wo
 ZS
 zw
 ZS
 qJ
-ZS
-YZ
+Nm
+xO
 YS
 YS
 SR
 YS
 YS
-VV
 ZS
+Nm
 qJ
 ZS
-ZS
+Nm
 ZS
 ZS
 Zg
@@ -74411,20 +74385,20 @@ Zg
 Zg
 Zg
 Zg
-sj
-Le
+YD
+YZ
 MV
-VV
+ZS
 YS
 QZ
 RV
 Ty
 YS
-VV
 ZS
-sj
-sj
-sj
+ZS
+YD
+YD
+YD
 Zg
 Zg
 Zg
@@ -74669,16 +74643,16 @@ Zp
 Zp
 Zp
 Zp
-sj
+YD
 RY
 Od
 Xw
 ZI
-RE
+Br
 XK
 Xw
 UB
-sj
+YD
 Zp
 Zp
 Zp
@@ -74931,7 +74905,7 @@ Mu
 Ww
 Xw
 ZZ
-RE
+Br
 XK
 Xw
 VZ
@@ -75188,7 +75162,7 @@ Mu
 Ww
 Xw
 sp
-RE
+Br
 TG
 Xw
 VZ
@@ -75445,7 +75419,7 @@ Mu
 Ww
 Xw
 Ke
-RE
+Br
 Vr
 Xw
 VZ
@@ -75692,9 +75666,9 @@ Zg
 Zg
 Zp
 Zp
-sj
-yh
-sj
+YD
+Yr
+YD
 Zp
 Zp
 Zp
@@ -75702,19 +75676,19 @@ Mu
 Ww
 Xw
 tQ
-RE
+Br
 Rc
 Xw
 VZ
 Zp
 Zp
 Zp
-sj
-sj
+YD
+YD
 YD
 Zp
 Zp
-sj
+NN
 Zg
 Zg
 Zg
@@ -75947,31 +75921,31 @@ Zg
 Zg
 Zg
 Zg
-sj
-sj
+YD
+YD
 ZS
 ZS
-UH
-sj
+YZ
+YD
 Zp
 Zp
-sj
-Od
+YD
+ri
 Xw
 Nq
-RE
+Br
 Og
 Xw
 UF
-VL
+YD
 Yr
-VL
+YD
 ZS
 zw
 ZS
-sj
-sj
-ZS
+YD
+YD
+xK
 Zg
 Zg
 Zg
@@ -76205,29 +76179,29 @@ Zg
 Zg
 Zg
 YZ
-VV
-VV
-VV
-VV
+ZS
+ZS
+ZS
+ZS
 XC
 Dj
 Dj
-VV
+ZS
 UR
 YS
 TX
 SS
 PQ
 YS
-VV
+ZS
 ZO
 XC
 XC
 Xz
-VV
-VV
-VV
-VJ
+ZS
+ZS
+ZS
+tj
 Zg
 Zg
 Zg
@@ -76464,13 +76438,13 @@ YS
 YS
 YS
 YS
-yQ
+YZ
 YS
 YL
 YL
 YL
 YS
-VJ
+YZ
 YS
 Xw
 Ti
@@ -76482,7 +76456,7 @@ Xw
 Xw
 Xw
 YS
-VV
+ZS
 YS
 YS
 YS
@@ -76987,7 +76961,7 @@ XK
 Xw
 PF
 ZN
-ZN
+Br
 ZN
 Up
 Xw
@@ -77244,7 +77218,7 @@ Ne
 Ot
 ZG
 RE
-RE
+Br
 RE
 Pk
 UN
@@ -77501,7 +77475,7 @@ XK
 YL
 YY
 RJ
-RJ
+Br
 RJ
 FB
 Xw
@@ -78268,7 +78242,7 @@ Zp
 Zp
 Zp
 Ll
-Bt
+YZ
 YS
 YS
 RO
@@ -78529,7 +78503,7 @@ Ww
 Xw
 OT
 ED
-RE
+Br
 XK
 OT
 YL
@@ -78786,7 +78760,7 @@ Ww
 Xw
 OT
 ED
-RE
+Br
 XK
 OT
 YL
@@ -79043,7 +79017,7 @@ Ww
 Xw
 OT
 ED
-RE
+Br
 XK
 OT
 YL
@@ -79296,7 +79270,7 @@ Zp
 Zp
 Zp
 LF
-VV
+ZS
 YS
 YS
 RU
@@ -79305,7 +79279,7 @@ TI
 YS
 YS
 XA
-se
+ZS
 Zp
 Zp
 Zp
@@ -79552,9 +79526,9 @@ xD
 WI
 WI
 ZS
-VV
-qh
-Le
+ZS
+yS
+tj
 YS
 Xw
 SZ
@@ -79562,7 +79536,7 @@ Xw
 YS
 ZS
 ZS
-YQ
+YZ
 WI
 WI
 WI
@@ -79808,8 +79782,8 @@ Zp
 Zp
 Zp
 Zp
-FU
-ZS
+UR
+YZ
 YS
 YS
 YS
@@ -79820,7 +79794,7 @@ YS
 YS
 YS
 zw
-VV
+ZS
 Zp
 Zp
 Zp
@@ -80072,7 +80046,7 @@ Ox
 PK
 RX
 RX
-RX
+zZ
 Us
 Vd
 YS
@@ -80329,7 +80303,7 @@ Wd
 zv
 wf
 wf
-wf
+Xn
 wT
 VD
 XG
@@ -80582,12 +80556,12 @@ AF
 Hz
 Qv
 XH
-XH
-zv
+SX
+Yv
 Sa
 Sa
 wf
-wf
+Xn
 wf
 qK
 Tb
@@ -80844,12 +80818,12 @@ zv
 FA
 Tq
 TR
-wf
+Xn
 wf
 wf
 Tb
 Ws
-Xn
+wf
 Zn
 XI
 Zp
@@ -81107,7 +81081,7 @@ XS
 Tb
 Ws
 Xn
-Zn
+WG
 XI
 Zp
 Zp
@@ -81352,8 +81326,8 @@ Xw
 Bo
 Kl
 MA
-XH
-XH
+SX
+SX
 zv
 Vp
 Vp
@@ -81610,12 +81584,12 @@ YS
 YS
 QO
 XH
-XH
+SX
 zv
 wf
 wf
 wf
-wf
+Xn
 wf
 wf
 Tb
@@ -81870,7 +81844,7 @@ NJ
 OR
 PM
 Sc
-wf
+Xn
 Ua
 UA
 wf
@@ -82127,7 +82101,7 @@ YS
 YS
 YS
 zv
-wf
+Xn
 Tb
 YS
 Vo
@@ -82378,7 +82352,7 @@ Zp
 WY
 Xw
 BT
-DA
+xP
 MR
 NO
 Pe
@@ -82641,7 +82615,7 @@ TN
 wf
 Qc
 Se
-wf
+Xn
 Tb
 YS
 UD
@@ -82895,10 +82869,10 @@ YS
 YS
 YS
 Wa
+Xn
+Xn
 wf
-wf
-wf
-wf
+Xn
 wf
 YS
 yT
@@ -83152,11 +83126,11 @@ Cn
 KE
 MT
 Ut
-wf
+Xn
 Qr
 Sn
-Sn
-Sn
+Dl
+Dl
 YS
 UD
 Yo
@@ -83922,7 +83896,7 @@ Zp
 Zp
 Zp
 YS
-DA
+xP
 YK
 YS
 Sq
@@ -83933,7 +83907,7 @@ WN
 Yk
 YS
 MV
-rk
+YZ
 Zp
 Zp
 Zp
@@ -84189,7 +84163,7 @@ YS
 VW
 YG
 YS
-UH
+YZ
 Zp
 Zp
 Zp

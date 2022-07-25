@@ -222,10 +222,11 @@
 /turf/open/floor/plating,
 /area/shuttle/slaveship)
 "yT" = (
-/obj/structure/closet{
-	anchored = 1
-	},
 /obj/effect/turf_decal/bot,
+/obj/structure/closet{
+	anchored = 1;
+	name = "slave asset storage"
+	},
 /turf/open/floor/mineral/plastitanium/red,
 /area/shuttle/slaveship)
 "zI" = (
