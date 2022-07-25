@@ -1,6 +1,6 @@
 /datum/component/pregnancy
 
-	dupe_mode = COMPONENT_DUPE_ALLOWED
+	dupe_mode = COMPONENT_DUPE_UNIQUE
 	can_transfer = TRUE
 
 	/// type of baby the mother will plop out - needs to be subtype of /mob/living
