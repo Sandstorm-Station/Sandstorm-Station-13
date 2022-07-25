@@ -156,6 +156,11 @@
 /datum/component/pregnancy/proc/on_climax(datum/source, atom/target, obj/item/organ/genital/sender, obj/item/organ/genital/receiver, spill)
 	SIGNAL_HANDLER
 
+	if(isgenital(container))
+		var/obj/item/organ/genital/stuff = container
+		if(stuff != sender && stuff.linked_organ != sender)
+			return TRUE
+
 	if(stage < 2)
 		return FALSE
 

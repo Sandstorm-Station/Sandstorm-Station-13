@@ -67,6 +67,10 @@
 /datum/component/ovipositor/proc/on_climax(datum/source, atom/target, obj/item/organ/genital/sender, obj/item/organ/genital/receiver, spill)
 	SIGNAL_HANDLER
 
+	var/obj/item/organ/genital/stuff = parent
+	if(stuff != sender && stuff.linked_organ != sender)
+		return TRUE
+
 	if(eggs_stored <= 0)
 		return FALSE
 

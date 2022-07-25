@@ -71,3 +71,6 @@
 	toggle_visibility(D.features["balls_visibility"], FALSE)
 	if(D.features["balls_stuffing"])
 		toggle_visibility(GEN_ALLOW_EGG_STUFFING, FALSE)
+	if(D.features["inert_eggs"])
+		AddComponent(/datum/component/ovipositor)
+
