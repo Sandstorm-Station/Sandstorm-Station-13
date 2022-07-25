@@ -320,7 +320,7 @@
 
 	if(container && isgenital(container))
 		var/obj/item/organ/genital/gen = container
-		if(!gen.is_exposed() && gen.linked_organ && !gen.linked_organ.is_exposed())
+		if(!(gen.is_exposed() || gen.linked_organ?.is_exposed()))
 			return FALSE
 
 	to_chat(carrier, span_userlove("You feel your egg sliding out slowly inside!"))
