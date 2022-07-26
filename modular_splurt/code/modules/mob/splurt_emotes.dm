@@ -611,3 +611,18 @@
 	)
 	message = pick(pants)
 	. = ..()
+
+/datum/emote/living/yippee
+	key = "yippee"
+	key_third_person = "yippees"
+	message = "lets out a yippee!"
+	emote_type = EMOTE_AUDIBLE
+	muzzle_ignore = FALSE
+
+/datum/emote/living/yippee/run_emote(mob/user, params, type_override, intentional)
+	if(!(. = ..()))
+		return
+	if(user.nextsoundemote >= world.time)
+		return
+	user.nextsoundemote = world.time + 70
+	playsound(user, 'modular_splurt/sound/voice/yippee.ogg', 50, 1, -1)
