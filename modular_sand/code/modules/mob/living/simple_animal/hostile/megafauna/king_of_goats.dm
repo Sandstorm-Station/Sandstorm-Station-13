@@ -66,17 +66,6 @@ Difficulty: Insanely Hard
 	glorythreshold = 50
 	crusher_loot = list(/obj/item/crusher_trophy/king_goat)
 
-
-/mob/living/simple_animal/hostile/megafauna/king/Initialize(mapload)
-	. = ..()
-	internal = new /obj/item/gps/internal/king(src)
-
-/obj/item/gps/internal/king
-	icon_state = null
-	gpstag = "Regal Signal"
-	desc = "Must lead to a true king."
-	invisibility = 100
-
 /mob/living/simple_animal/hostile/megafauna/king/ex_act(severity, target, origin)
 	switch (severity)
 		if (1)
