@@ -69,7 +69,7 @@
 
 	var/obj/item/organ/genital/stuff = parent
 	if(stuff != sender && stuff.linked_organ != sender)
-		return TRUE
+		return FALSE
 
 	if(eggs_stored <= 0)
 		return FALSE

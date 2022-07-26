@@ -159,7 +159,7 @@
 	if(isgenital(container))
 		var/obj/item/organ/genital/stuff = container
 		if(stuff != sender && stuff.linked_organ != sender)
-			return TRUE
+			return FALSE
 
 	if(stage < 2)
 		return FALSE
