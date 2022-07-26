@@ -16,17 +16,16 @@
 	pixel_x = 4
 	},
 /obj/item/clothing/head/welding,
-/obj/effect/decal/cleanable/dirt,
-/turf/open/floor/plating,
+/turf/open/floor/plating/rust,
 /area/shuttle/slaveship)
 "aA" = (
 /turf/open/floor/plasteel/dark,
 /area/shuttle/slaveship)
 "bb" = (
-/obj/machinery/computer/med_data/syndie,
 /obj/machinery/light{
 	dir = 4
 	},
+/obj/machinery/computer/crew/syndie,
 /turf/open/floor/mineral/plastitanium,
 /area/shuttle/slaveship)
 "bd" = (
@@ -37,13 +36,11 @@
 	},
 /obj/item/storage/toolbox/mechanical,
 /obj/item/multitool,
-/obj/effect/decal/cleanable/dirt,
-/turf/open/floor/plating,
+/turf/open/floor/plating/rust,
 /area/shuttle/slaveship)
 "cO" = (
 /obj/machinery/autolathe/hacked,
-/obj/effect/decal/cleanable/dirt,
-/turf/open/floor/plating,
+/turf/open/floor/plasteel/damturf/platdmg1,
 /area/shuttle/slaveship)
 "cQ" = (
 /obj/machinery/light{
@@ -64,11 +61,10 @@
 /area/shuttle/slaveship)
 "fI" = (
 /obj/structure/reagent_dispensers/fueltank,
-/obj/effect/decal/cleanable/dirt,
 /obj/machinery/light{
 	dir = 1
 	},
-/turf/open/floor/plating,
+/turf/open/floor/plasteel/damturf/scorched,
 /area/shuttle/slaveship)
 "gJ" = (
 /obj/effect/decal/cleanable/oil{
@@ -77,7 +73,6 @@
 /turf/open/floor/plating/rust,
 /area/shuttle/slaveship)
 "kn" = (
-/obj/effect/decal/cleanable/dirt,
 /obj/machinery/suit_storage_unit/mining/eva,
 /turf/open/floor/plating,
 /area/shuttle/slaveship)
@@ -95,11 +90,8 @@
 /turf/open/floor/plating/rust,
 /area/shuttle/slaveship)
 "li" = (
-/obj/effect/decal/cleanable/dirt,
-/obj/effect/decal/cleanable/oil{
-	pixel_y = 17
-	},
-/turf/open/floor/plating,
+/obj/effect/decal/cleanable/oil,
+/turf/open/floor/plating/rust,
 /area/shuttle/slaveship)
 "lv" = (
 /obj/machinery/door/poddoor{
@@ -136,8 +128,7 @@
 /obj/machinery/light{
 	dir = 1
 	},
-/obj/effect/decal/cleanable/dirt,
-/turf/open/floor/plating,
+/turf/open/floor/plasteel/damturf/scorched,
 /area/shuttle/slaveship/brig)
 "oq" = (
 /obj/structure/reagent_dispensers/watertank,
@@ -218,17 +209,18 @@
 /turf/open/floor/plasteel/dark,
 /area/shuttle/slaveship)
 "yH" = (
-/obj/effect/decal/cleanable/dirt,
-/turf/open/floor/plating,
+/turf/open/floor/plasteel/damturf/scorched,
 /area/shuttle/slaveship)
 "yT" = (
-/obj/effect/turf_decal/bot,
 /obj/structure/closet{
 	anchored = 1;
 	name = "slave asset storage"
 	},
 /turf/open/floor/mineral/plastitanium/red,
 /area/shuttle/slaveship)
+"zu" = (
+/turf/open/floor/plasteel/damturf/platdmg1,
+/area/shuttle/slaveship/brig)
 "zI" = (
 /obj/item/reagent_containers/glass/bottle/epinephrine{
 	pixel_x = 6
@@ -289,8 +281,7 @@
 /obj/machinery/light{
 	dir = 4
 	},
-/obj/effect/decal/cleanable/dirt,
-/turf/open/floor/plating,
+/turf/open/floor/plating/rust,
 /area/shuttle/slaveship/brig)
 "CU" = (
 /obj/effect/turf_decal/stripes/line{
@@ -338,12 +329,11 @@
 /turf/open/floor/mineral/plastitanium,
 /area/shuttle/slaveship)
 "Iq" = (
-/obj/effect/decal/cleanable/dirt,
 /turf/open/floor/plating,
 /area/shuttle/slaveship/brig)
 "Iu" = (
 /obj/machinery/suit_storage_unit/mining/eva,
-/turf/open/floor/plating,
+/turf/open/floor/plasteel/damturf/scorched,
 /area/shuttle/slaveship)
 "IY" = (
 /obj/structure/shuttle/engine/large{
@@ -387,7 +377,6 @@
 /turf/template_noop,
 /area/template_noop)
 "Nj" = (
-/obj/effect/decal/cleanable/dirt,
 /obj/structure/tank_dispenser/oxygen,
 /turf/open/floor/plating,
 /area/shuttle/slaveship)
@@ -406,7 +395,6 @@
 /turf/open/floor/plasteel/dark,
 /area/shuttle/slaveship)
 "Pb" = (
-/obj/effect/decal/cleanable/dirt,
 /obj/machinery/light,
 /turf/open/floor/plating,
 /area/shuttle/slaveship)
@@ -414,10 +402,10 @@
 /turf/closed/wall/r_wall/syndicate/nodiagonal,
 /area/shuttle/slaveship)
 "Qf" = (
-/obj/machinery/computer/crew/syndie{
+/obj/machinery/light,
+/obj/machinery/computer/camera_advanced/shuttle_docker/slaver{
 	dir = 4
 	},
-/obj/machinery/light,
 /turf/open/floor/mineral/plastitanium,
 /area/shuttle/slaveship)
 "Qo" = (
@@ -440,7 +428,7 @@
 /turf/open/floor/plating/rust,
 /area/shuttle/slaveship/brig)
 "Rv" = (
-/obj/machinery/computer/camera_advanced/syndie{
+/obj/machinery/computer/shuttle/slaver{
 	dir = 4
 	},
 /turf/open/floor/mineral/plastitanium,
@@ -487,7 +475,7 @@
 /turf/open/floor/mineral/plastitanium,
 /area/shuttle/slaveship)
 "VS" = (
-/obj/machinery/computer/camera_advanced/shuttle_docker/slaver{
+/obj/machinery/computer/camera_advanced/syndie{
 	dir = 4
 	},
 /turf/open/floor/mineral/plastitanium,
@@ -528,7 +516,6 @@
 /turf/open/floor/mineral/plastitanium/red,
 /area/shuttle/slaveship)
 "ZR" = (
-/obj/effect/decal/cleanable/dirt,
 /obj/structure/bed/pod,
 /obj/effect/decal/cleanable/semen{
 	icon_state = "fem4"
@@ -610,7 +597,7 @@ vD
 Wk
 QJ
 Iq
-Iq
+zu
 Wv
 MJ
 MJ
@@ -666,7 +653,7 @@ MJ
 MJ
 Pl
 oq
-rc
+li
 Wk
 aA
 aA
@@ -689,7 +676,7 @@ MJ
 ax
 Pl
 fI
-li
+UL
 uB
 aA
 aA
@@ -712,7 +699,7 @@ ax
 ax
 ay
 gJ
-yH
+UL
 Wk
 DQ
 vj
@@ -735,7 +722,7 @@ ax
 ax
 bd
 cO
-yH
+UL
 Wk
 uP
 zI
