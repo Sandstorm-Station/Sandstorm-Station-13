@@ -1,5 +1,9 @@
 //Credit goes to the Skyrat codebase https://github.com/Skyrat-SS13/Skyrat-tg
 
+#define NO_MUZZLE 0
+#define HALF_MUZZLE 1
+#define FULL_MUZZLE 2
+
 /obj/item/clothing/head/helmet/space/deprivation_helmet
 	name = "deprivation helmet"
 	desc = "Сompletely cuts off the wearer from the outside world."
@@ -16,9 +20,6 @@
 	flags_cover = HEADCOVERSEYES
 	var/current_helmet_color = "pink"
 	//these three vars needed to turn deprivation stuff on or off
-	#define NO_MUZZLE 0
-	#define HALF_MUZZLE 1
-	#define FULL_MUZZLE 2
 	var/muzzle = NO_MUZZLE
 	var/earmuffs = FALSE
 	var/prevent_vision = FALSE
@@ -257,3 +258,7 @@
 			to_chat(user, span_warning("The latches suddenly tighten!"))
 			seamless = TRUE
 	return
+
+#undef NO_MUZZLE
+#undef HALF_MUZZLE
+#undef FULL_MUZZLE
