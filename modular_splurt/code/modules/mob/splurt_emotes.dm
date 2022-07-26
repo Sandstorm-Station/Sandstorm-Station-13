@@ -406,7 +406,7 @@
 	if(user.nextsoundemote >= world.time)
 		return
 	user.nextsoundemote = world.time + 60
-	playsound(user, 'modular_splurt/sound/voice/moonmen.ogg', 50, 1, -1)
+	playsound(user, 'modular_splurt/sound/voice/moonmen.ogg', 50, 0, 1)
 
 /datum/emote/living/laugh2
 	key = "laugh2"
