@@ -395,6 +395,21 @@
 	user.nextsoundemote = world.time + 60
 	playsound(user, 'modular_splurt/sound/voice/vineboom.ogg', 50, 1, -1)
 
+/datum/emote/living/eyebrow3
+	key = "eyebrow3"
+	key_third_person = "eyebrows3"
+	message = "raises an eyebrow <i>quizzaciously.</i>"
+	emote_type = EMOTE_AUDIBLE
+	muzzle_ignore = FALSE
+
+/datum/emote/living/eyebrow3/run_emote(mob/user, params, type_override, intentional)
+	if(!(. = ..()))
+		return
+	if(user.nextsoundemote >= world.time)
+		return
+	user.nextsoundemote = world.time + 70
+	playsound(user, 'modular_splurt/sound/voice/moonmen.ogg', 50, 1, -1)
+
 /datum/emote/living/laugh2
 	key = "laugh2"
 	key_third_person = "laughs2"
@@ -626,3 +641,4 @@
 		return
 	user.nextsoundemote = world.time + 70
 	playsound(user, 'modular_splurt/sound/voice/yippee.ogg', 50, 1, -1)
+
