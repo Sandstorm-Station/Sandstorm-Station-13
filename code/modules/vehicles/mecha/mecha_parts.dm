@@ -441,6 +441,14 @@
 	name = "Clarke Central Control module (Exosuit Board)"
 	icon_state = "mainboard"
 
+/obj/item/circuitboard/mecha/savannah_ivanov/peripherals
+	name = "Savannah Peripherals Control module (Exosuit Board)"
+	icon_state = "mcontroller"
+
+/obj/item/circuitboard/mecha/savannah_ivanov/targeting
+	name = "Ivanov Weapon Control and Targeting module (Exosuit Board)"
+	icon_state = "mcontroller"
+
 /obj/item/circuitboard/mecha/savannah_ivanov/main
 	name = "Savannah-Ivanov Combination Control Lock module (Exosuit Board)"
 	icon_state = "mainboard"

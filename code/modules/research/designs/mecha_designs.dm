@@ -139,7 +139,7 @@
 	id = "savannah_ivanov_main"
 	build_path = /obj/item/circuitboard/mecha/savannah_ivanov/main
 	category = list("Exosuit Modules")
-	departmental_flags = DEPARTMENT_BITFLAG_SCIENCE
+	departmental_flags = DEPARTMENTAL_FLAG_SCIENCE
 
 /datum/design/board/savannah_ivanov_peri
 	name = "\"Savannah-Ivanov\" Peripherals Control module"
@@ -147,7 +147,7 @@
 	id = "savannah_ivanov_peri"
 	build_path = /obj/item/circuitboard/mecha/savannah_ivanov/peripherals
 	category = list("Exosuit Modules")
-	departmental_flags = DEPARTMENT_BITFLAG_SCIENCE
+	departmental_flags = DEPARTMENTAL_FLAG_SCIENCE
 
 /datum/design/board/savannah_ivanov_targ
 	name = "\"Savannah-Ivanov\" Weapons & Targeting Control module"
@@ -155,7 +155,7 @@
 	id = "savannah_ivanov_targ"
 	build_path = /obj/item/circuitboard/mecha/savannah_ivanov/targeting
 	category = list("Exosuit Modules")
-	departmental_flags = DEPARTMENT_BITFLAG_SCIENCE
+	departmental_flags = DEPARTMENTAL_FLAG_SCIENCE
 
 ////////////////////////////////////////
 /////////// Mecha Equpment /////////////

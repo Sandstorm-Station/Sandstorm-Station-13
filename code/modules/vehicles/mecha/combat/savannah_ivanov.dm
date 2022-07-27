@@ -20,18 +20,14 @@
 	icon_state = "savannah_ivanov_0_0"
 	//does not include mmi compatibility
 	mecha_flags = ADDING_ACCESS_POSSIBLE | CANSTRAFE | IS_ENCLOSED | HAS_LIGHTS
-	mech_type = EXOSUIT_MODULE_SAVANNAH
+	//mech_type = EXOSUIT_MODULE_SAVANNAH //N/A because of porting
 	movedelay = 3
 	max_integrity = 450 //really tanky, like damn
 	armor = list(MELEE = 45, BULLET = 40, LASER = 30, ENERGY = 30, BOMB = 40, BIO = 0, FIRE = 100, ACID = 100)
 	max_temperature = 30000
 	wreckage = /obj/structure/mecha_wreckage/savannah_ivanov
 	max_occupants = 2
-	max_equip_by_category = list(
-		MECHA_UTILITY = 1,
-		MECHA_POWER = 1,
-		MECHA_ARMOR = 3,
-	)
+	max_equip = 5
 	//no tax on flying, since the power cost is in the leap itself.
 	phasing_energy_drain = 0
 
@@ -112,13 +108,13 @@
 			chassis.spark_system.start()
 		if(SKYFALL_CHARGELEVEL_LAUNCH)
 			chassis.visible_message(span_danger("[chassis] leaps into the air!"))
-			playsound(chassis, 'sound/weapons/gun/general/rocket_launch.ogg', 50, TRUE)
+			playsound(chassis, 'sound/weapons/rocket_launch.ogg', 50, TRUE)
 	if(skyfall_charge_level != SKYFALL_CHARGELEVEL_LAUNCH)
 		skyfall_charge_loop()
 		return
 	S_TIMER_COOLDOWN_START(chassis, COOLDOWN_MECHA_SKYFALL, skyfall_cooldown_time)
 	button_icon_state = "mech_savannah_cooldown"
-	UpdateButtons()
+	UpdateButtonIcon()
 	addtimer(CALLBACK(src, .proc/reset_button_icon), skyfall_cooldown_time)
 	for(var/mob/living/shaken in range(7, chassis))
 		shake_camera(shaken, 3, 3)
@@ -133,7 +129,8 @@
 	chassis.movedelay = 1
 	chassis.density = FALSE
 	chassis.layer = ABOVE_ALL_MOB_LAYER
-	chassis.plane = GAME_PLANE_UPPER_FOV_HIDDEN
+	//Fixed by commenting
+	//chassis.plane = GAME_PLANE_UPPER_FOV_HIDDEN
 	animate(chassis, alpha = 0, time = 8, easing = QUAD_EASING|EASE_IN, flags = ANIMATION_PARALLEL)
 	animate(chassis, pixel_z = 400, time = 10, easing = QUAD_EASING|EASE_IN, flags = ANIMATION_PARALLEL) //Animate our rising mech (just like pods hehe)
 	addtimer(CALLBACK(src, .proc/begin_landing), 2 SECONDS)
@@ -220,7 +217,7 @@
  */
 /datum/action/vehicle/sealed/mecha/skyfall/proc/reset_button_icon()
 	button_icon_state = "mech_savannah"
-	UpdateButtons()
+	UpdateButtonIcon()
 
 /datum/action/vehicle/sealed/mecha/ivanov_strike
 	name = "Ivanov Strike"
@@ -255,7 +252,7 @@
  */
 /datum/action/vehicle/sealed/mecha/ivanov_strike/proc/reset_button_icon()
 	button_icon_state = "mech_ivanov"
-	UpdateButtons()
+	UpdateButtonIcon()
 
 /**
  * ## start_missile_targeting
@@ -269,9 +266,9 @@
 	rockets_left = 3
 	RegisterSignal(chassis, COMSIG_MECHA_MELEE_CLICK, .proc/on_melee_click)
 	RegisterSignal(chassis, COMSIG_MECHA_EQUIPMENT_CLICK, .proc/on_equipment_click)
-	owner.client.mouse_override_icon = 'icons/effects/mouse_pointers/supplypod_down_target.dmi'
+	owner.client.mouse_pointer_icon = 'icons/effects/mouse_pointers/supplypod_down_target.dmi'
 	owner.update_mouse_pointer()
-	owner.overlay_fullscreen("ivanov", /atom/movable/screen/fullscreen/ivanov_display, 1)
+	//owner.overlay_fullscreen("ivanov1", /atom/movable/screen/fullscreen/ivanov_display, 1) // fuck it, i'll fix it later
 	SEND_SOUND(owner, 'sound/machines/terminal_on.ogg') //spammable so I don't want to make it audible to anyone else
 
 /**
@@ -284,7 +281,7 @@
 	aiming_missile = FALSE
 	rockets_left = 0
 	UnregisterSignal(chassis, list(COMSIG_MECHA_MELEE_CLICK, COMSIG_MECHA_EQUIPMENT_CLICK))
-	owner.client.mouse_override_icon = null
+	owner.client.mouse_pointer_icon = null
 	owner.update_mouse_pointer()
 	owner.clear_fullscreen("ivanov")
 
@@ -323,7 +320,7 @@
 		"explosionSize" = list(0,0,1,2)
 	))
 	button_icon_state = "mech_ivanov_cooldown"
-	UpdateButtons()
+	UpdateButtonIcon()
 	addtimer(CALLBACK(src, /datum/action/vehicle/sealed/mecha/ivanov_strike.proc/reset_button_icon), strike_cooldown_time)
 
 //misc effects

@@ -1463,7 +1463,7 @@
 	result = /obj/vehicle/sealed/mecha/combat/savannah_ivanov
 	base_icon = "savannah_ivanov"
 
-	has_weapons_module = TRUE
+	//has_weapons_module = TRUE
 
 	circuit_control = /obj/item/circuitboard/mecha/savannah_ivanov/main
 	circuit_periph = /obj/item/circuitboard/mecha/savannah_ivanov/peripherals
