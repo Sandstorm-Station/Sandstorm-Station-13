@@ -1475,6 +1475,10 @@
 	outer_plating = /obj/item/mecha_parts/part/savannah_ivanov_armor
 	outer_plating_amount = 1
 
+/datum/component/construction/mecha/savannah_ivanov/custom_action(obj/item/I, mob/living/user, diff)
+	if(!..())
+		return FALSE
+
 	//TODO: better messages.
 	switch(index)
 		if(1)
