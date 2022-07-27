@@ -5,7 +5,7 @@
 		"Station Commander",
 		"Station Overseer",
 		"Stationmaster",
-		"Commissar",
+		"Condom",
 		"Senator"
 	)
 	LAZYADD(alt_titles, extra_titles)
@@ -29,7 +29,8 @@
 
 /datum/job/hos/New()
 	var/list/extra_titles = list(
-		"Security Commander"
+		"Security Commander",
+		"Head of Slutcurity"
 	)
 	LAZYADD(alt_titles, extra_titles)
 
@@ -53,6 +54,7 @@
 // Engineering
 /datum/job/atmos/New()
 	var/list/extra_titles = list(
+		"Atmos Plumber",
 		"Disposals Technician"
 	)
 	LAZYADD(alt_titles, extra_titles)
@@ -79,6 +81,9 @@
 		"Tourist",
 		"Clerk",
 		"Blacksmith",
+		"All-purpose fleshlight",
+		"Cumdump",
+		"Greytider",
 		"Bard",
 		"Snack"
 	)
@@ -91,6 +96,12 @@
 		"Bar Owner",
 		"Barmaid",
 		"Expediter"
+	)
+	LAZYADD(alt_titles, extra_titles)
+
+/datum/job/janitor/New()
+	var/list/extra_titles = list(
+		"Slutty Maid"
 	)
 	LAZYADD(alt_titles, extra_titles)
 
@@ -110,6 +121,7 @@
 /datum/job/cook/New()
 	var/list/extra_titles = list(
 		"Chef de partie",
+		"Prey Prepper",
 		"Poissonier"
 	)
 	LAZYADD(alt_titles, extra_titles)
@@ -117,6 +129,9 @@
 /datum/job/curator/New()
 	var/list/extra_titles = list(
 		"Keeper",
+		"Archaeologist",
+		"Historian",
+		"Scholar",
 		"Artist"
 	)
 	LAZYADD(alt_titles, extra_titles)
@@ -148,7 +163,6 @@
 
 
 // Science
-// No additions for roboticist
 
 /datum/job/scientist/New()
 	var/list/extra_titles = list(
@@ -161,7 +175,14 @@
 
 
 // Medical
-// No additions for chemist
+
+/datum/job/chemist/New()
+	var/list/extra_titles = list(
+		"Alchemist",
+		"Apothecarist",
+		"Chemical Plumber"
+	)
+	LAZYADD(alt_titles, extra_titles)
 
 /datum/job/doctor/New()
 	var/list/extra_titles = list(
@@ -190,7 +211,8 @@
 // Security
 /datum/job/detective/New()
 	var/list/extra_titles = list(
-		"Gumshoe"
+		"Gumshoe",
+		"Slutective"
 	)
 	LAZYADD(alt_titles, extra_titles)
 
@@ -201,7 +223,7 @@
 		"Guardsman",
 		"Police Officer",
 		"Rookie",
-		"Security Trainee"
+		"Slutcurity Officer"
 	)
 	LAZYADD(alt_titles, extra_titles)
 
@@ -210,7 +232,9 @@
 		"Prison Chief",
 		"Armory Manager",
 		"Prison Administrator",
-		"Brig Superintendent"
+		"Dungeon Master",
+		"Brig Superintendent",
+		"Voreden"
 	)
 	LAZYADD(alt_titles, extra_titles)
 
@@ -230,6 +254,9 @@
 	var/list/extra_titles = list(
 		"Exotic Ore Miner",
 		"Digger",
-		"Hunter"
+		"Hunter",
+		"Ashwalker Sex Slave",
+		"Ashwalker Breeder",
+		"Slayer"
 	)
 	LAZYADD(alt_titles, extra_titles)
