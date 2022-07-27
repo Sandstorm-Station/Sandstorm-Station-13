@@ -7533,12 +7533,6 @@
 /obj/item/pen/fountain,
 /turf/open/indestructible/hotelwood,
 /area/centcom/holding)
-"ri" = (
-/obj/effect/oneway,
-/turf/open/floor/plating/asteroid/layenia/garden{
-	icon_state = "layenia2"
-	},
-/area/slavers)
 "rl" = (
 /obj/machinery/computer/auxillary_base{
 	pixel_y = 32
@@ -13230,15 +13224,6 @@
 "Di" = (
 /turf/closed/indestructible/riveted,
 /area/ai_multicam_room)
-"Dj" = (
-/obj/structure/fans/tiny/invisible,
-/obj/effect/oneway{
-	dir = 4
-	},
-/turf/open/floor/plating/asteroid/layenia/garden{
-	icon_state = "layenia2"
-	},
-/area/slavers)
 "Dk" = (
 /obj/structure/table,
 /turf/open/floor/plasteel/cafeteria,
@@ -18064,13 +18049,6 @@
 	},
 /turf/open/floor/plasteel/cafeteria,
 /area/syndicate_mothership)
-"Od" = (
-/obj/structure/fans/tiny/invisible,
-/obj/effect/oneway,
-/turf/open/floor/plating/asteroid/layenia/garden{
-	icon_state = "layenia2"
-	},
-/area/slavers)
 "Oe" = (
 /obj/machinery/deepfryer,
 /turf/open/floor/plasteel/cafeteria,
@@ -19247,9 +19225,6 @@
 /obj/structure/window/reinforced{
 	dir = 4
 	},
-/obj/effect/oneway{
-	dir = 4
-	},
 /turf/open/water/decorative,
 /area/slavers)
 "RU" = (
@@ -20112,16 +20087,6 @@
 	dir = 4
 	},
 /area/slavers)
-"UB" = (
-/obj/structure/fans/tiny/invisible,
-/obj/structure/railing/corner,
-/obj/effect/oneway{
-	dir = 1
-	},
-/turf/open/floor/plating/asteroid/layenia/garden{
-	icon_state = "layenia2"
-	},
-/area/slavers)
 "UC" = (
 /obj/machinery/vending/cola,
 /turf/open/floor/plasteel,
@@ -20139,18 +20104,6 @@
 /obj/structure/chair/stool/bar,
 /turf/open/indestructible/hotelwood,
 /area/centcom/holding)
-"UF" = (
-/obj/structure/fans/tiny/invisible,
-/obj/structure/railing/corner{
-	dir = 8
-	},
-/obj/effect/oneway{
-	dir = 1
-	},
-/turf/open/floor/plating/asteroid/layenia/garden{
-	icon_state = "layenia2"
-	},
-/area/slavers)
 "UG" = (
 /obj/structure/flora/tree/pine,
 /obj/effect/light_emitter,
@@ -20527,9 +20480,6 @@
 "VZ" = (
 /obj/structure/lattice/catwalk,
 /obj/structure/railing,
-/obj/effect/oneway{
-	dir = 1
-	},
 /turf/open/water/decorative,
 /area/slavers)
 "Wa" = (
@@ -20652,11 +20602,6 @@
 	},
 /turf/open/indestructible/hotelwood,
 /area/centcom/holding)
-"Ww" = (
-/obj/structure/lattice/catwalk,
-/obj/effect/oneway,
-/turf/open/water/decorative,
-/area/slavers)
 "Wz" = (
 /obj/effect/turf_decal/tile/bar{
 	dir = 4
@@ -20684,9 +20629,6 @@
 	},
 /obj/structure/fans/tiny/invisible,
 /obj/structure/window/reinforced{
-	dir = 8
-	},
-/obj/effect/oneway{
 	dir = 8
 	},
 /turf/open/water/decorative,
@@ -20800,10 +20742,6 @@
 /turf/open/floor/plating/asteroid/layenia/garden{
 	icon_state = "layenia2"
 	},
-/area/slavers)
-"WY" = (
-/obj/effect/oneway,
-/turf/open/water/decorative,
 /area/slavers)
 "Xa" = (
 /obj/machinery/door/airlock/centcom{
@@ -20962,9 +20900,6 @@
 /obj/structure/flora/rock/jungle{
 	icon_state = "grassb3"
 	},
-/obj/effect/oneway{
-	dir = 4
-	},
 /turf/open/floor/plating/asteroid/layenia/garden{
 	icon_state = "layenia2"
 	},
@@ -20975,14 +20910,6 @@
 	},
 /obj/structure/flora/rock/jungle{
 	icon_state = "rock4"
-	},
-/turf/open/floor/plating/asteroid/layenia/garden{
-	icon_state = "layenia2"
-	},
-/area/slavers)
-"XC" = (
-/obj/effect/oneway{
-	dir = 4
 	},
 /turf/open/floor/plating/asteroid/layenia/garden{
 	icon_state = "layenia2"
@@ -21018,7 +20945,7 @@
 	dir = 1
 	},
 /obj/structure/fans/tiny/invisible,
-/obj/effect/oneway{
+/obj/structure/window/reinforced{
 	dir = 1
 	},
 /turf/open/water/decorative,
@@ -21277,12 +21204,6 @@
 /turf/open/floor/plating/asteroid/layenia/garden{
 	icon_state = "layenia2"
 	},
-/area/slavers)
-"YE" = (
-/obj/effect/oneway{
-	dir = 8
-	},
-/turf/open/water/decorative,
 /area/slavers)
 "YF" = (
 /obj/machinery/vending/clothing{
@@ -74672,13 +74593,13 @@ Zp
 Zp
 YD
 RY
-Od
+YD
 Xw
 ZI
 RE
 XK
 Xw
-UB
+RY
 YD
 Zp
 Zp
@@ -74929,7 +74850,7 @@ Zp
 Zp
 Zp
 Mu
-Ww
+xD
 Xw
 sp
 RE
@@ -75186,7 +75107,7 @@ Zp
 Zp
 Zp
 Mu
-Ww
+xD
 Xw
 sp
 RE
@@ -75443,7 +75364,7 @@ Zp
 Zp
 Zp
 Mu
-Ww
+xD
 Xw
 ED
 RE
@@ -75700,7 +75621,7 @@ Zp
 Zp
 Zp
 Mu
-Ww
+xD
 Xw
 ED
 RE
@@ -75957,13 +75878,13 @@ YD
 Zp
 Zp
 ua
-ri
+ZS
 Xw
 Nq
 RE
 Og
 Xw
-UF
+ua
 YD
 Yr
 YD
@@ -76210,9 +76131,9 @@ ZS
 ZS
 ZS
 ZS
-XC
-Dj
-Dj
+ZS
+YD
+YD
 ZS
 UR
 YS
@@ -76222,8 +76143,8 @@ Co
 YS
 ZS
 ZO
-XC
-XC
+ZS
+ZS
 Xz
 ZS
 ZS
@@ -78526,7 +78447,7 @@ Zp
 Zp
 Zp
 Mu
-Ww
+xD
 Xw
 OT
 ED
@@ -78783,7 +78704,7 @@ Zp
 Zp
 Zp
 Mu
-Ww
+xD
 Xw
 OT
 ED
@@ -79040,7 +78961,7 @@ Zp
 Zp
 Zp
 Mu
-Ww
+xD
 Xw
 OT
 ED
@@ -80577,7 +80498,7 @@ Zp
 Zp
 Zp
 Zp
-WY
+Zp
 Xw
 AF
 Hz
@@ -80834,7 +80755,7 @@ Zp
 Zp
 Zp
 Zp
-WY
+Zp
 Xw
 UY
 UY
@@ -81091,7 +81012,7 @@ Zp
 Zp
 Zp
 Zp
-WY
+Zp
 Xw
 UY
 UY
@@ -81348,7 +81269,7 @@ Zp
 Zp
 Zp
 Zp
-WY
+Zp
 Xw
 Bo
 Kl
@@ -82376,7 +82297,7 @@ Zp
 Zp
 Zp
 Zp
-WY
+Zp
 Xw
 BT
 xP
@@ -82633,7 +82554,7 @@ Zp
 Zp
 Zp
 Zp
-WY
+Zp
 Xw
 MZ
 Kz
@@ -83147,7 +83068,7 @@ Zp
 Zp
 Zp
 Zp
-WY
+Zp
 Xw
 Cn
 KE
@@ -83404,7 +83325,7 @@ Zp
 Zp
 Zp
 Zp
-WY
+Zp
 Xw
 SC
 DA
@@ -84694,15 +84615,15 @@ Zp
 Zp
 Zp
 WI
-YE
-YE
+Zp
+Zp
 WI
-YE
-YE
-YE
+Zp
+Zp
+Zp
 WI
-YE
-YE
+Zp
+Zp
 WI
 Zp
 Zp
