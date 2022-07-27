@@ -911,6 +911,34 @@
 		playsound(parent, 'sound/items/bikehorn.ogg', 50, TRUE)
 		user.visible_message("<span class='danger'>HONK!</span>")
 
+//SAVANNAH-IVANOV
+/datum/component/construction/unordered/mecha_chassis/savannah_ivanov
+	result = /datum/component/construction/mecha/savannah_ivanov
+	steps = list(
+		/obj/item/mecha_parts/part/savannah_ivanov_torso,
+		/obj/item/mecha_parts/part/savannah_ivanov_head,
+		/obj/item/mecha_parts/part/savannah_ivanov_left_arm,
+		/obj/item/mecha_parts/part/savannah_ivanov_right_arm,
+		/obj/item/mecha_parts/part/savannah_ivanov_left_leg,
+		/obj/item/mecha_parts/part/savannah_ivanov_right_leg
+	)
+
+/datum/component/construction/mecha/savannah_ivanov
+	result = /obj/vehicle/sealed/mecha/combat/savannah_ivanov
+	base_icon = "savannah_ivanov"
+
+	has_weapons_module = TRUE
+
+	circuit_control = /obj/item/circuitboard/mecha/savannah_ivanov/main
+	circuit_periph = /obj/item/circuitboard/mecha/savannah_ivanov/peripherals
+	circuit_weapon = /obj/item/circuitboard/mecha/savannah_ivanov/targeting
+
+	inner_plating = /obj/item/stack/sheet/plasteel
+	inner_plating_amount = 10
+
+	outer_plating = /obj/item/mecha_parts/part/savannah_ivanov_armor
+	outer_plating_amount = 1
+
 	//TODO: better messages.
 	switch(index)
 		if(2)
