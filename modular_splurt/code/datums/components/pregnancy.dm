@@ -418,7 +418,6 @@
 /datum/component/pregnancy/proc/human_pragency_end(mob/living/carbon/human/gregnant)
 	//get rid of king ass ripper belly
 	var/obj/item/organ/genital/belly/belly = gregnant.getorganslot(ORGAN_SLOT_BELLY)
-	var/obj/item/organ/genital/breasts/boob = gregnant.getorganslot(ORGAN_SLOT_BREASTS)
 	if(pregnancy_inflation)
 		belly?.modify_size(-added_size)
 	SEND_SIGNAL(gregnant, COMSIG_CLEAR_MOOD_EVENT, "pregnancy")
