@@ -641,7 +641,7 @@
 	icon_state = "reticenceprize"
 	quiet = 1
 
-/obj/item/toy/mecha/savannahivanov
+/obj/item/toy/prize/savannahivanov
 	name = "toy Savannah-Ivanov"
 	icon_state = "savannahivanovtoy"
 	desc = "Mini-Mecha action figure! Collect them all! 13/12."
