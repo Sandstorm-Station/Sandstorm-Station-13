@@ -50,9 +50,6 @@
 /turf/open/floor/mineral/plastitanium,
 /area/shuttle/slaveship)
 "et" = (
-/obj/effect/turf_decal/stripes/line{
-	dir = 8
-	},
 /obj/machinery/door/airlock/hatch{
 	name = "Slave Holding Pen";
 	req_access_txt = "152"
@@ -148,14 +145,38 @@
 	name = "Shuttle Storage";
 	req_access_txt = "152"
 	},
-/obj/effect/turf_decal/stripes/line{
-	dir = 1
-	},
 /turf/open/floor/plasteel/dark,
 /area/shuttle/slaveship)
 "uP" = (
-/obj/machinery/sleeper{
-	dir = 8
+/obj/item/reagent_containers/glass/bottle/epinephrine{
+	pixel_x = 6
+	},
+/obj/item/reagent_containers/glass/bottle/charcoal{
+	pixel_x = -3
+	},
+/obj/item/reagent_containers/glass/bottle/epinephrine{
+	pixel_x = -3;
+	pixel_y = 8
+	},
+/obj/item/reagent_containers/glass/bottle/charcoal{
+	pixel_x = 6;
+	pixel_y = 8
+	},
+/obj/item/reagent_containers/syringe/epinephrine{
+	pixel_x = 3;
+	pixel_y = -2
+	},
+/obj/item/reagent_containers/syringe/epinephrine{
+	pixel_x = 2;
+	pixel_y = 8
+	},
+/obj/structure/table/reinforced,
+/obj/effect/turf_decal/bot_white,
+/obj/item/stack/medical/mesh,
+/obj/item/stack/medical/gauze,
+/obj/item/stack/medical/suture,
+/obj/item/healthanalyzer{
+	pixel_y = -11
 	},
 /turf/open/floor/mineral/titanium/tiled/blue,
 /area/shuttle/slaveship)
@@ -201,7 +222,6 @@
 /turf/open/floor/mineral/plastitanium,
 /area/shuttle/slaveship)
 "yq" = (
-/obj/effect/turf_decal/stripes/line,
 /obj/machinery/door/airlock/hatch{
 	name = "EVA Suit Storage";
 	req_access_txt = "152"
@@ -222,35 +242,8 @@
 /turf/open/floor/plasteel/damturf/platdmg1,
 /area/shuttle/slaveship/brig)
 "zI" = (
-/obj/item/reagent_containers/glass/bottle/epinephrine{
-	pixel_x = 6
-	},
-/obj/item/reagent_containers/glass/bottle/charcoal{
-	pixel_x = -3
-	},
-/obj/item/reagent_containers/glass/bottle/epinephrine{
-	pixel_x = -3;
-	pixel_y = 8
-	},
-/obj/item/reagent_containers/glass/bottle/charcoal{
-	pixel_x = 6;
-	pixel_y = 8
-	},
-/obj/item/reagent_containers/syringe/epinephrine{
-	pixel_x = 3;
-	pixel_y = -2
-	},
-/obj/item/reagent_containers/syringe/epinephrine{
-	pixel_x = 2;
-	pixel_y = 8
-	},
-/obj/structure/table/reinforced,
-/obj/effect/turf_decal/bot_white,
-/obj/item/stack/medical/mesh,
-/obj/item/stack/medical/gauze,
-/obj/item/stack/medical/suture,
-/obj/item/healthanalyzer{
-	pixel_y = -11
+/obj/machinery/computer/med_data/syndie{
+	dir = 8
 	},
 /turf/open/floor/mineral/titanium/tiled/blue,
 /area/shuttle/slaveship)
@@ -384,9 +377,18 @@
 /turf/open/floor/mineral/plastitanium,
 /area/shuttle/slaveship)
 "Mo" = (
-/obj/machinery/computer/secure_data/syndie{
-	dir = 1
+/obj/item/radio{
+	pixel_y = 8
 	},
+/obj/item/radio{
+	pixel_x = 4;
+	pixel_y = 4
+	},
+/obj/item/radio{
+	pixel_x = -4;
+	pixel_y = 4
+	},
+/obj/structure/table/reinforced,
 /turf/open/floor/mineral/plastitanium,
 /area/shuttle/slaveship)
 "MJ" = (
@@ -404,9 +406,6 @@
 /obj/machinery/door/airlock/hatch{
 	name = "Shuttle Cockpit";
 	req_access_txt = "152"
-	},
-/obj/effect/turf_decal/stripes/line{
-	dir = 8
 	},
 /turf/open/floor/plasteel/dark,
 /area/shuttle/slaveship)
@@ -450,7 +449,12 @@
 /turf/open/floor/mineral/plastitanium,
 /area/shuttle/slaveship)
 "RC" = (
-/turf/open/floor/mineral/plastitanium/red,
+/obj/machinery/sleeper,
+/turf/open/floor/mineral/plastitanium,
+/area/shuttle/slaveship)
+"SK" = (
+/obj/structure/table/reinforced,
+/turf/open/floor/mineral/plastitanium,
 /area/shuttle/slaveship)
 "TA" = (
 /obj/structure/table/reinforced,
@@ -539,13 +543,10 @@
 /turf/open/floor/plating,
 /area/shuttle/slaveship/brig)
 "ZZ" = (
+/obj/structure/fans/tiny,
 /obj/machinery/door/airlock/hatch{
 	name = "Exit Hatch";
 	req_access_txt = "152"
-	},
-/obj/structure/fans/tiny,
-/obj/effect/turf_decal/stripes/line{
-	dir = 4
 	},
 /turf/open/floor/plasteel/dark,
 /area/shuttle/slaveship)
@@ -629,9 +630,9 @@ DQ
 Mo
 Wk
 TA
-RC
 aA
-RC
+aA
+aA
 WK
 Wk
 ZR
@@ -652,10 +653,10 @@ Od
 Wk
 Wk
 Uu
-DQ
 aA
-DQ
-DQ
+aA
+aA
+SK
 Wk
 Wk
 et
@@ -717,7 +718,7 @@ ay
 gJ
 UL
 Wk
-DQ
+RC
 vj
 Ll
 Pl

@@ -12984,6 +12984,14 @@
 	},
 /turf/open/floor/plasteel/dark,
 /area/centcom/evac)
+"CQ" = (
+/obj/machinery/light/floor,
+/obj/effect/light_emitter{
+	set_cap = 1;
+	set_luminosity = 4
+	},
+/turf/open/floor/pod/light,
+/area/slavers)
 "CR" = (
 /obj/machinery/computer/security{
 	dir = 8
@@ -19687,6 +19695,15 @@
 /obj/structure/window/reinforced/fulltile,
 /turf/open/indestructible/hotelwood,
 /area/centcom/holding)
+"Tv" = (
+/obj/effect/light_emitter{
+	set_cap = 1;
+	set_luminosity = 4
+	},
+/turf/open/floor/plating/asteroid/layenia/garden{
+	icon_state = "layenia2"
+	},
+/area/slavers)
 "Tx" = (
 /turf/open/floor/padded,
 /area/slavers)
@@ -19829,6 +19846,15 @@
 "TT" = (
 /obj/effect/spawner/structure/window/plasma/reinforced,
 /turf/open/floor/plating,
+/area/slavers)
+"TU" = (
+/obj/effect/light_emitter{
+	set_cap = 1;
+	set_luminosity = 4
+	},
+/turf/open/floor/plating/asteroid/layenia/garden{
+	icon_state = "layenia1"
+	},
 /area/slavers)
 "TV" = (
 /obj/structure/table,
@@ -20274,6 +20300,15 @@
 	pixel_y = 32
 	},
 /turf/open/floor/plasteel/dark,
+/area/slavers)
+"Vi" = (
+/obj/effect/light_emitter{
+	set_cap = 1;
+	set_luminosity = 4
+	},
+/turf/open/floor/plating/asteroid/layenia/garden{
+	icon_state = "layenia0"
+	},
 /area/slavers)
 "Vj" = (
 /obj/structure/toilet{
@@ -69963,21 +69998,21 @@ ZS
 YZ
 ZS
 YZ
-ZS
-ZS
-ZS
-ZS
-ZS
+Tv
+Tv
+Tv
+Tv
+Tv
 MV
 ZS
 ZS
 ZS
 ZS
-ZS
-ZS
-ZS
-Nm
-ZS
+Tv
+Tv
+Tv
+TU
+Tv
 ZS
 ZS
 ZS
@@ -70219,23 +70254,23 @@ Zg
 zw
 ZS
 ZS
+TU
 Nm
 Nm
-Nm
 ZS
 ZS
 ZS
-ZS
-ZS
-Nm
-ZS
-ZS
-ZS
-Nm
+Tv
+Tv
+TU
+Tv
+Tv
 ZS
 Nm
 ZS
+Nm
 ZS
+Tv
 Nm
 ZS
 ZS
@@ -70476,13 +70511,8 @@ Zg
 ZS
 Bj
 ZS
+TU
 Nm
-Nm
-Nm
-ZS
-ZS
-Nm
-ZS
 Nm
 ZS
 ZS
@@ -70493,6 +70523,11 @@ ZS
 ZS
 Nm
 ZS
+Nm
+ZS
+ZS
+Nm
+Tv
 Nm
 Bj
 yS
@@ -70733,23 +70768,23 @@ ZS
 ZS
 ZS
 ZS
+TU
 Nm
-Nm
-Nm
-ZS
-ZS
 Nm
 ZS
 ZS
 Nm
 ZS
+ZS
+Nm
+ZS
 Nm
 Nm
 Nm
 ZS
 Nm
 ZS
-Nm
+TU
 Nm
 ZS
 ZS
@@ -70989,7 +71024,7 @@ YS
 wo
 ZS
 ZS
-ZS
+Tv
 Nm
 ZS
 ZS
@@ -71007,7 +71042,7 @@ Nm
 Nm
 ZS
 ZS
-Nm
+TU
 ZS
 ZS
 ZS
@@ -71245,18 +71280,18 @@ Zg
 YS
 qh
 Nm
-ZS
+Tv
 ZS
 ZS
 Nm
-Nm
-ZS
 Nm
 ZS
 Nm
 ZS
 Nm
 ZS
+Nm
+ZS
 ZS
 ZS
 Nm
@@ -71265,7 +71300,7 @@ Nm
 ZS
 Nm
 ZS
-ZS
+Tv
 ZS
 ZS
 Zg
@@ -71502,27 +71537,27 @@ Zg
 YS
 YS
 wo
-ZS
+Tv
 ZS
 Nm
 Nm
-Nm
-ZS
-ZS
 Nm
 ZS
 ZS
 Nm
 ZS
 ZS
-ZS
-Nm
 Nm
 ZS
 ZS
 ZS
 Nm
+Nm
 ZS
+ZS
+ZS
+Nm
+Tv
 ZS
 YZ
 YS
@@ -71758,7 +71793,7 @@ aa
 Zg
 tQ
 Nm
-Nm
+TU
 ZS
 ZS
 Nm
@@ -71780,7 +71815,7 @@ ZS
 ZS
 Nm
 ZS
-ZS
+Tv
 ZS
 ZS
 tQ
@@ -72015,7 +72050,7 @@ aa
 Zg
 YS
 ZS
-Nm
+TU
 ZS
 ZS
 ZS
@@ -72037,7 +72072,7 @@ Nm
 ZS
 Nm
 ZS
-ZS
+Tv
 ZS
 ZS
 YS
@@ -72272,7 +72307,7 @@ aa
 Zg
 tQ
 YZ
-Nm
+TU
 ZS
 ZS
 ZS
@@ -72294,7 +72329,7 @@ ZS
 ZS
 Nm
 ZS
-ZS
+Tv
 Nm
 xO
 tQ
@@ -72529,7 +72564,7 @@ aa
 Zg
 YS
 YS
-Nm
+TU
 ZS
 ZS
 Nm
@@ -72551,7 +72586,7 @@ ZS
 Nm
 Nm
 ZS
-ZS
+Tv
 ZS
 YS
 YS
@@ -72787,7 +72822,7 @@ Zg
 YS
 ZS
 wo
-ZS
+Tv
 Nm
 Nm
 Nm
@@ -72807,7 +72842,7 @@ Nm
 ZS
 ZS
 Nm
-ZS
+Tv
 Nm
 Nm
 Nm
@@ -73044,7 +73079,7 @@ Zg
 YS
 YZ
 wo
-Bj
+CQ
 ZS
 ZS
 ZS
@@ -73064,7 +73099,7 @@ Nm
 Nm
 ZS
 Nm
-Bj
+CQ
 Nm
 MV
 ZS
@@ -73302,11 +73337,11 @@ YS
 Nm
 Nm
 ZS
-ZS
+Tv
+TU
+TU
 Nm
-Nm
-Nm
-ZS
+Tv
 ZS
 Nm
 ZS
@@ -73316,11 +73351,11 @@ Xw
 ZS
 ZS
 Nm
+TU
 Nm
-Nm
-ZS
-ZS
-Nm
+Tv
+Tv
+TU
 ZS
 xO
 ZS
@@ -73562,19 +73597,19 @@ ZO
 Nm
 Nm
 wo
+Vi
 wo
-wo
-Nm
-ZS
-ZS
+TU
+Tv
+Tv
 Xw
 DA
 Xw
-ZS
-ZS
+Tv
+Tv
+TU
 Nm
-Nm
-Nm
+TU
 ZS
 ZS
 Nm
