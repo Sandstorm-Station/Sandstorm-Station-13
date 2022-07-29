@@ -18,7 +18,7 @@ SUBSYSTEM_DEF(statpanels)
 			cached ? "Next Map: [cached.map_name]" : null,
 			"Round ID: [GLOB.round_id ? GLOB.round_id : "NULL"]",
 			"Server Time: [time2text(world.timeofday, "YYYY-MM-DD hh:mm:ss")]",
-			"Round Time: [GAMETIMESTAMP("hh:mm:ss", round_time)]",
+			"Round Time: [ROUND_TIME]", // You do know rounds might last more than 24 hours right? (sandstorm edit)
 			"Station Time: [STATION_TIME_TIMESTAMP("hh:mm:ss", world.time)]",
 			"Time Dilation: [round(SStime_track.time_dilation_current,1)]% AVG:([round(SStime_track.time_dilation_avg_fast,1)]%, [round(SStime_track.time_dilation_avg,1)]%, [round(SStime_track.time_dilation_avg_slow,1)]%)"
 		)
