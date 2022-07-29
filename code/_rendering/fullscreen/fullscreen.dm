@@ -234,6 +234,5 @@
 	show_when_dead = TRUE
 
 /atom/movable/screen/fullscreen/ivanov_display
-	icon_state = "ivanov1"
+	icon_state = "ivanov"
 	alpha = 180
-
