@@ -22,7 +22,7 @@
 	mecha_flags = ADDING_ACCESS_POSSIBLE | CANSTRAFE | IS_ENCLOSED | HAS_LIGHTS
 	//mech_type = EXOSUIT_MODULE_SAVANNAH //N/A on splurt
 	movedelay = 3
-	enter_delay = 40
+	//enter_delay = 40
 	max_integrity = 450 //really tanky, like damn
 	armor = list(MELEE = 45, BULLET = 40, LASER = 30, ENERGY = 30, BOMB = 40, BIO = 0, FIRE = 100, ACID = 100)
 	max_temperature = 30000
@@ -269,7 +269,7 @@
 	RegisterSignal(chassis, COMSIG_MECHA_EQUIPMENT_CLICK, .proc/on_equipment_click)
 	owner.client.mouse_pointer_icon = 'icons/effects/mouse_pointers/supplypod_down_target.dmi'
 	owner.update_mouse_pointer()
-	//owner.overlay_fullscreen("ivanov", /atom/movable/screen/fullscreen/ivanov_display, 1)
+	//owner.overlay_fullscreen("ivanov", /atom/movable/screen/fullscreen/ivanov_display, 1) //need sprite stretching on screen or stretch the sprite itself
 	SEND_SOUND(owner, 'sound/machines/terminal_on.ogg') //spammable so I don't want to make it audible to anyone else
 
 /**
