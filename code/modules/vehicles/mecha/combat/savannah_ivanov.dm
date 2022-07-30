@@ -25,6 +25,7 @@
 	//enter_delay = 40
 	max_integrity = 450 //really tanky, like damn
 	armor = list(MELEE = 45, BULLET = 40, LASER = 30, ENERGY = 30, BOMB = 40, BIO = 0, FIRE = 100, ACID = 100)
+	deflect_chance = 20
 	max_temperature = 30000
 	wreckage = /obj/structure/mecha_wreckage/savannah_ivanov
 	max_occupants = 2
