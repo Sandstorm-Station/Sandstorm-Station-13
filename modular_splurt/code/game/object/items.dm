@@ -130,6 +130,14 @@
 		to_chat(user, span_warning("This genital can't be stuffed!"))
 		return
 
+	var/existing_eggs = 0
+	for(var/obj/item/oviposition_egg/eg in target_organ.contents)
+		existing_eggs++
+
+	if(existing_eggs >= MAX_EGGS_PER_ORGAN)
+		to_chat(user, span_warning("This genital is full of eggs already, there is no space for more!"))
+		return
+
 	target.visible_message(span_warning("\The <b>[user]</b> is trying to insert an egg inside \the <b>[target]</b>!"),\
 					span_warning("\The <b>[user]</b> is trying to insert an egg inside you!"))
 

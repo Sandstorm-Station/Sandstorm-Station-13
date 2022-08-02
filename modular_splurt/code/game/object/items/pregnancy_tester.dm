@@ -9,20 +9,36 @@
 	w_class = WEIGHT_CLASS_TINY
 
 /obj/item/pregnancytest/attack_self(mob/user)
+	. = ..()
 	if(QDELETED(src))
 		return
 	if(!isliving(user))
 		return
 	if(user.stat > CONSCIOUS)//unconscious or dead
 		return
+
+	test(user, user)
+
+
+/obj/item/pregnancytest/afterattack(atom/target, mob/user, proximity_flag, click_parameters)
+	. = ..()
+	if(user.zone_selected != BODY_ZONE_PRECISE_GROIN)
+		return
+	if(!isliving(target))
+		return
+	var/mob/living/livingtar = target
+	if(iscarbon(target))
+		var/mob/living/carbon/cartar = target
+		if(!cartar.is_groin_exposed())
+			return
+
+	test(livingtar, user)
+
+/obj/item/pregnancytest/proc/test(mob/living/target, mob/user)
 	if(results)
 		to_chat(user, span_warning("The display reads [results], you can't use this tester anymore!"))
 		return
-
-	test(user)
-
-/obj/item/pregnancytest/proc/test(mob/living/user)
-	if(user.GetComponent(/datum/component/pregnancy))
+	if(target.GetComponent(/datum/component/pregnancy))
 		results = "positive"
 	else
 		results = "negative"

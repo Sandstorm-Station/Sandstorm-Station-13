@@ -317,6 +317,14 @@
 		return FALSE
 	if(isorgan(location))
 		var/obj/item/organ/recv = location
+
+		var/existing_eggs = 0
+		for(var/obj/item/oviposition_egg/eg in recv.contents)
+			existing_eggs++
+
+		if(existing_eggs >= MAX_EGGS_PER_ORGAN)
+			return FALSE
+
 		if(!recv.owner)
 			return FALSE
 
