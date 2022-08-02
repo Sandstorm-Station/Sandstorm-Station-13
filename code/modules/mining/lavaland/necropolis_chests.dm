@@ -1223,8 +1223,8 @@
 	attack_verb = list("clubbed", "beat", "pummeled")
 	hitsound = 'sound/weapons/sonic_jackhammer.ogg'
 	actions_types = list(/datum/action/item_action/vortex_recall, /datum/action/item_action/toggle_unfriendly_fire)
-	var/cooldown_time = 20 //how long the cooldown between non-melee ranged attacks is
-	var/chaser_cooldown = 81 //how long the cooldown between firing chasers at mobs is
+	var/cooldown_time = 15 //how long the cooldown between non-melee ranged attacks is
+	var/chaser_cooldown = 60 //how long the cooldown between firing chasers at mobs is
 	var/chaser_timer = 0 //what our current chaser cooldown is
 	var/chaser_speed = 0.8 //how fast our chasers are
 	var/timer = 0 //what our current cooldown is
@@ -1275,7 +1275,7 @@
 			if(isliving(target) && chaser_timer <= world.time) //living and chasers off cooldown? fire one!
 				chaser_timer = world.time + chaser_cooldown
 				var/obj/effect/temp_visual/hierophant/chaser/C = new(get_turf(user), user, target, chaser_speed, friendly_fire_check)
-				C.damage = 15
+				C.damage = 25
 				C.monster_damage_boost = TRUE
 				log_combat(user, target, "fired a chaser at", src)
 			else
@@ -1392,10 +1392,10 @@
 		new /obj/effect/temp_visual/hierophant/telegraph/teleport(source, user)
 		for(var/t in RANGE_TURFS(1, T))
 			var/obj/effect/temp_visual/hierophant/blast/B = new /obj/effect/temp_visual/hierophant/blast(t, user, TRUE) //blasts produced will not hurt allies
-			B.damage = 15
+			B.damage = 25
 		for(var/t in RANGE_TURFS(1, source))
 			var/obj/effect/temp_visual/hierophant/blast/B = new /obj/effect/temp_visual/hierophant/blast(t, user, TRUE) //but absolutely will hurt enemies
-			B.damage = 15
+			B.damage = 25
 		for(var/mob/living/L in range(1, source))
 			INVOKE_ASYNC(src, .proc/teleport_mob, source, L, T, user) //regardless, take all mobs near us along
 		sleep(6) //at this point the blasts detonate
@@ -1456,7 +1456,7 @@
 		if(!J)
 			return
 		var/obj/effect/temp_visual/hierophant/blast/B = new(J, user, friendly_fire_check)
-		B.damage = 15
+		B.damage = 25
 		B.monster_damage_boost = TRUE
 		previousturf = J
 		J = get_step(previousturf, dir)
@@ -1469,7 +1469,7 @@
 	sleep(2)
 	for(var/t in RANGE_TURFS(1, T))
 		var/obj/effect/temp_visual/hierophant/blast/B = new(t, user, friendly_fire_check)
-		B.damage = 15 //keeps monster damage boost due to lower damage (now added to all damage due to reduction to 15, 30dmg 50AP isn't cool)
+		B.damage = 25
 
 
 //Just some minor stuff

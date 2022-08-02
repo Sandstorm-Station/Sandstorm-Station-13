@@ -130,3 +130,48 @@
   - bugfix: Put arguments into handle_blood (it needs them).
   Yawet330:
   - rscadd: new sprites for dragon wings
+2022-07-26:
+  AsherAshenclaw:
+  - rscadd: added new Half gag option
+  - rscadd: added unique speech accent for the new half gag option
+  - code_imp: changed some of the speech switch code to work with the new half gag
+      option
+2022-07-27:
+  567Turtle:
+  - rscadd: New Captain alternate job title, "Condom"
+  - rscadd: New HoS alternate job title, "Head of Slutcurity"
+  - rscadd: New Atmos Tech alternate job title, "Atmos Plumber"
+  - rscadd: New Assistant alternate job title, "All-Purpose Fleshlight, Greytider,
+      Cumdump"
+  - rscadd: New Cook alternate job title, "Prey Prepper"
+  - rscadd: New Curator alternate job titles, "Scholar, Historian, Archaeologist"
+  - rscadd: New Chemist alternate job title, "Chemical Plumber"
+  - rscadd: New Detective alternate job title, "Slutective"
+  - rscadd: New Warden alternate job title, "Voreden, Dungeon Master""
+  - rscadd: New Security Officer alternate job title, "Slutcurity Officer"
+  - rscadd: New Peacekeeper alternate job title, "Slutcurity Trainee"
+  - rscadd: New Brig Physician alternate job title, "Slutcurity Nurse"
+  - rscadd: New Shaft Miner alternate job title, "Ashwalker Breeder, Ashwalker Sex
+      Slave, Slayer"
+  - bugfix: Fixed a typo in the chaplains alt job titles, used to be "Bichop", now
+      "Bishop"
+  timothyteakettle:
+  - bugfix: slime limb regeneration ability fix
+  Putnam3145:
+  - rscadd: Atmospheric flux event (properly)
+  - rscadd: Sandstorm event (was in files, just disabled; 10 space dusts all at once)
+  - tweak: Random brain trauma can now trigger if there's an AI, chemist, virologist,
+      captain, HoP or roboticist
+  - balance: Flux anomaly min player count 10->0
+  - balance: Pyroclastic anomaly min player count 0->5
+  - balance: Cat surgeon weight 8->5
+  - balance: Disease outbreak min player count 10->3, now requires medbay
+  - balance: Heart attack min player count 40->10, now requires medbay
+  - balance: Mass hallucination max occurrences 2->5
+  - balance: Supermatter surge max occurrences 2->5, now half as strong on CO2less
+      setups (lerping up to old value for 100% CO2)
+  - balance: Supernova max occurrences 2->1, weight 10->5
+  - balance: 'Vent Clog: Normal min players 25->0, random chem prob 1%->0%'
+  - balance: 'Vent Clog: Threatening min players 35->15'
+  - balance: 'Vent Clog: Catastrophic min players 45->25'
+  - rscadd: Random shoe untying
