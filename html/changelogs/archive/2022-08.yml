@@ -2,6 +2,23 @@
   Putnam3145:
   - bugfix: rad collectors display the right units now
   - balance: Stasis beds are now 90% as good as surgery tables for surgery
+2022-08-02:
+  SandPoot:
+  - admin: Alphabetically ordered bitfields for admin editing.
+  - admin: It is now easier to change the flags of turrets.
+  - refactor: Allows for defining bitfields in other files.
 2022-08-03:
   BongaTheProto:
   - tweak: normalizer wristbands now go in the wrist slot
+  MrJWhit:
+  - rscadd: Adds more AI screens on box
+  Putnam3145:
+  - balance: Research bomb "midpoint" at which it's worth exactly 50000 points from
+      240->300
+  - code_imp: doesn't snowflake the bomb cap for linux anymore, servers that need
+      to tweak it can do it themselves (I didn't even put it down right, should be
+      5000 instead of 50000, yikes)
+  TripleShades:
+  - qol: Three gateways will no longer lose power via Magical SMES Units
+  timothyteakettle:
+  - rscadd: lets AIs control status displays (vtuber mode)
