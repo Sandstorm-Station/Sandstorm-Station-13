@@ -2089,6 +2089,9 @@
 	},
 /obj/machinery/suit_storage_unit/hos,
 /obj/effect/turf_decal/delivery,
+/obj/machinery/status_display/ai{
+	pixel_x = 32
+	},
 /turf/open/floor/plasteel/dark,
 /area/command/heads_quarters/hos)
 "aeE" = (
@@ -5402,6 +5405,9 @@
 /obj/machinery/atmospherics/pipe/simple/scrubbers/hidden{
 	dir = 4
 	},
+/obj/machinery/status_display/ai{
+	pixel_y = 32
+	},
 /turf/open/floor/plasteel,
 /area/security/brig)
 "akp" = (
@@ -5686,6 +5692,9 @@
 	},
 /obj/structure/table,
 /obj/item/storage/box/donkpockets,
+/obj/machinery/status_display/ai{
+	pixel_y = -32
+	},
 /turf/open/floor/plasteel,
 /area/security/office)
 "akS" = (
@@ -13394,6 +13403,9 @@
 /obj/effect/turf_decal/tile/blue{
 	dir = 8
 	},
+/obj/machinery/status_display/ai{
+	pixel_x = -32
+	},
 /turf/open/floor/plasteel/cafeteria,
 /area/command/heads_quarters/cmo)
 "aFb" = (
@@ -19986,6 +19998,9 @@
 /obj/effect/turf_decal/tile/blue{
 	dir = 8
 	},
+/obj/machinery/status_display/ai{
+	pixel_y = -32
+	},
 /turf/open/floor/plasteel,
 /area/command/bridge)
 "aWV" = (
@@ -20712,12 +20727,20 @@
 /turf/closed/wall/r_wall,
 /area/ai_monitored/turret_protected/ai_upload)
 "aYy" = (
-/obj/machinery/status_display/ai,
-/obj/machinery/atmospherics/pipe/simple/supply/hidden{
+/obj/machinery/atmospherics/pipe/simple/scrubbers/hidden{
 	dir = 4
 	},
-/turf/closed/wall/r_wall,
-/area/ai_monitored/turret_protected/ai_upload)
+/obj/effect/turf_decal/tile/neutral{
+	dir = 4
+	},
+/obj/effect/turf_decal/tile/neutral{
+	dir = 1
+	},
+/obj/machinery/status_display/ai{
+	pixel_y = 32
+	},
+/turf/open/floor/plasteel,
+/area/commons/dorms)
 "aYz" = (
 /obj/machinery/atmospherics/pipe/simple/supply/hidden{
 	dir = 5
@@ -22945,6 +22968,9 @@
 "beG" = (
 /obj/machinery/door/firedoor,
 /obj/effect/turf_decal/tile/red,
+/obj/machinery/status_display/ai{
+	pixel_y = -32
+	},
 /turf/open/floor/plasteel,
 /area/hallway/secondary/exit)
 "beH" = (
@@ -23228,12 +23254,11 @@
 /turf/open/floor/plating,
 /area/maintenance/port)
 "bft" = (
-/obj/machinery/status_display/ai,
-/obj/structure/cable{
-	icon_state = "4-8"
+/obj/machinery/status_display/ai{
+	pixel_x = -32
 	},
-/turf/closed/wall/r_wall,
-/area/ai_monitored/turret_protected/ai_upload)
+/turf/open/floor/plasteel,
+/area/commons/locker)
 "bfu" = (
 /obj/machinery/atmospherics/pipe/manifold/scrubbers/hidden{
 	dir = 4
@@ -27020,6 +27045,9 @@
 /obj/effect/turf_decal/stripes/line{
 	dir = 1
 	},
+/obj/machinery/status_display/ai{
+	pixel_x = -32
+	},
 /turf/open/floor/plasteel/white,
 /area/science/research)
 "boB" = (
@@ -28450,6 +28478,9 @@
 	icon_state = "2-8"
 	},
 /obj/machinery/atmospherics/pipe/simple/supply/hidden,
+/obj/machinery/status_display/ai{
+	pixel_x = 32
+	},
 /turf/open/floor/plasteel,
 /area/command/heads_quarters/hop)
 "bsa" = (
@@ -31832,6 +31863,9 @@
 /obj/effect/turf_decal/stripes/line{
 	dir = 6
 	},
+/obj/machinery/status_display/ai{
+	pixel_x = 32
+	},
 /turf/open/floor/plasteel/white,
 /area/command/heads_quarters/rd)
 "bzO" = (
@@ -32996,6 +33030,9 @@
 /obj/item/paper_bin{
 	pixel_x = 1;
 	pixel_y = 9
+	},
+/obj/machinery/status_display/ai{
+	pixel_x = -32
 	},
 /turf/open/floor/plasteel,
 /area/cargo/miningdock)
@@ -46794,6 +46831,9 @@
 /obj/effect/turf_decal/tile/yellow{
 	dir = 8
 	},
+/obj/machinery/status_display/ai{
+	pixel_y = 32
+	},
 /turf/open/floor/plasteel,
 /area/engineering/main)
 "clN" = (
@@ -52834,6 +52874,14 @@
 	icon_state = "platingdmg3"
 	},
 /area/commons/arcade)
+"dGh" = (
+/obj/machinery/door/firedoor,
+/obj/effect/turf_decal/delivery,
+/obj/machinery/status_display/ai{
+	pixel_y = -32
+	},
+/turf/open/floor/plasteel,
+/area/medical/medbay/central)
 "dIu" = (
 /obj/structure/chair/sofa{
 	dir = 8
@@ -53816,6 +53864,12 @@
 	},
 /turf/open/floor/plasteel,
 /area/cargo/miningdock)
+"eVW" = (
+/obj/machinery/status_display/ai{
+	pixel_x = -32
+	},
+/turf/open/floor/wood,
+/area/command/heads_quarters/captain)
 "eWL" = (
 /obj/machinery/door/firedoor,
 /obj/machinery/atmospherics/pipe/simple/supply/hidden,
@@ -54392,6 +54446,12 @@
 /obj/effect/turf_decal/stripes/corner,
 /turf/open/floor/plasteel,
 /area/service/hydroponics)
+"fzx" = (
+/obj/machinery/status_display/ai{
+	pixel_y = -32
+	},
+/turf/open/floor/wood,
+/area/service/bar)
 "fAj" = (
 /obj/effect/turf_decal/tile/blue,
 /obj/effect/turf_decal/tile/blue{
@@ -54988,6 +55048,12 @@
 	},
 /turf/open/floor/plasteel/dark,
 /area/commons/fitness)
+"grS" = (
+/obj/machinery/status_display/ai{
+	pixel_y = -32
+	},
+/turf/open/floor/circuit,
+/area/ai_monitored/turret_protected/ai_upload)
 "gsM" = (
 /obj/structure/table,
 /obj/effect/spawner/lootdrop/maintenance,
@@ -56219,6 +56285,19 @@
 /obj/machinery/atmospherics/pipe/simple/supply/hidden,
 /turf/open/floor/plating,
 /area/maintenance/starboard/aft)
+"iyK" = (
+/obj/machinery/conveyor{
+	dir = 8;
+	id = "QMLoad"
+	},
+/obj/effect/turf_decal/stripes/line{
+	dir = 1
+	},
+/obj/machinery/status_display/ai{
+	pixel_y = -32
+	},
+/turf/open/floor/plating,
+/area/cargo/storage)
 "izg" = (
 /obj/item/cigbutt/cigarbutt,
 /turf/open/floor/plating,
@@ -57312,6 +57391,12 @@
 	},
 /turf/open/floor/plasteel,
 /area/security/prison/upper)
+"jYI" = (
+/obj/machinery/status_display/ai{
+	pixel_y = -32
+	},
+/turf/open/floor/plasteel/white,
+/area/science/robotics/lab)
 "jZT" = (
 /obj/structure/cable{
 	icon_state = "4-8"
@@ -58750,6 +58835,12 @@
 	},
 /turf/open/floor/plasteel,
 /area/security/prison/upper)
+"lOe" = (
+/obj/machinery/status_display/ai{
+	pixel_y = 32
+	},
+/turf/open/floor/wood,
+/area/command/meeting_room)
 "lOr" = (
 /obj/structure/table,
 /obj/machinery/light/floor,
@@ -58945,6 +59036,9 @@
 	dir = 4
 	},
 /obj/effect/decal/cleanable/dirt,
+/obj/machinery/status_display/ai{
+	pixel_y = 32
+	},
 /turf/open/floor/plasteel,
 /area/security/prison/cells)
 "maT" = (
@@ -84829,7 +84923,7 @@ aQN
 aTB
 aQN
 aWq
-aQN
+bft
 aWq
 aUt
 aQN
@@ -87160,7 +87254,7 @@ bjr
 cBp
 bjr
 buB
-bvV
+iyK
 bxu
 bxu
 bxx
@@ -93826,7 +93920,7 @@ aPR
 aWL
 aPR
 aZM
-bbX
+lOe
 bay
 bbM
 bcN
@@ -95628,8 +95722,8 @@ aZR
 aZR
 aZR
 aZR
-aZR
-bft
+grS
+nVz
 wZI
 gDO
 aBW
@@ -96651,7 +96745,7 @@ aSA
 aTX
 aVm
 aWU
-aYy
+aYB
 aZR
 aZR
 aZR
@@ -97686,7 +97780,7 @@ bch
 bdi
 bbw
 bfy
-bbw
+eVW
 bik
 aZV
 aZV
@@ -99971,7 +100065,7 @@ arf
 arf
 arf
 arf
-ltK
+aYy
 axP
 azb
 aAi
@@ -103610,7 +103704,7 @@ btX
 bof
 bwG
 bxR
-bxR
+dGh
 bof
 bof
 bzW
@@ -103848,7 +103942,7 @@ aSZ
 aQc
 qaY
 acN
-aKR
+fzx
 aJC
 aYV
 aYV
@@ -111315,7 +111409,7 @@ blG
 biL
 cHV
 cIa
-biL
+jYI
 box
 buo
 bvc
