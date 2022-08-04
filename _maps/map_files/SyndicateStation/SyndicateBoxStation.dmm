@@ -8819,13 +8819,6 @@
 /obj/effect/turf_decal/tile/neutral,
 /turf/open/floor/mineral/plastitanium,
 /area/commons/dorms)
-"auB" = (
-/obj/machinery/atmospherics/pipe/manifold/scrubbers/hidden{
-	dir = 4;
-	
-	},
-/turf/open/floor/mineral/plastitanium,
-/area/commons/dorms)
 "auD" = (
 /obj/structure/reagent_dispensers/fueltank,
 /turf/open/floor/plating,
@@ -9128,8 +9121,8 @@
 	id = "Oasis Dorms";
 	name = "Door Bolt Control";
 	normaldoorcontrol = 1;
-	specialfunctions = 4;
-	pixel_y = -25
+	pixel_y = -25;
+	specialfunctions = 4
 	},
 /obj/structure/closet/secure_closet/personal/cabinet,
 /turf/open/floor/grass,
@@ -14313,7 +14306,7 @@
 /turf/open/floor/mineral/plastitanium,
 /area/service/hydroponics/garden)
 "aKn" = (
-/obj/effect/spawner/structure/window/plasma,
+/obj/effect/spawner/structure/window/plastitanium,
 /turf/open/floor/plating,
 /area/service/hydroponics/garden)
 "aKo" = (
@@ -14325,7 +14318,7 @@
 /turf/open/floor/mineral/plastitanium,
 /area/hallway/primary/central)
 "aKp" = (
-/obj/effect/spawner/structure/window/plasma,
+/obj/effect/spawner/structure/window/plastitanium,
 /turf/open/floor/plating,
 /area/commons/storage/primary)
 "aKq" = (
@@ -14340,11 +14333,11 @@
 /area/service/bar)
 "aKs" = (
 /obj/structure/disposalpipe/segment,
-/obj/effect/spawner/structure/window/plasma,
+/obj/effect/spawner/structure/window/plastitanium,
 /turf/open/floor/plating,
 /area/commons/storage/primary)
 "aKw" = (
-/obj/effect/spawner/structure/window/plasma,
+/obj/effect/spawner/structure/window/plastitanium,
 /turf/open/floor/plating,
 /area/service/theater)
 "aKy" = (
@@ -16023,7 +16016,7 @@
 /turf/closed/wall/r_wall/syndicate,
 /area/commons/locker)
 "aPF" = (
-/obj/effect/spawner/structure/window/plasma,
+/obj/effect/spawner/structure/window/plastitanium,
 /turf/open/floor/plating,
 /area/commons/storage/art)
 "aPG" = (
@@ -26472,10 +26465,6 @@
 /obj/machinery/door/firedoor,
 /turf/open/floor/mineral/plastitanium,
 /area/cargo/office)
-"bqv" = (
-/obj/effect/spawner/structure/window/plasma,
-/turf/open/floor/plating,
-/area/hallway/primary/central)
 "bqw" = (
 /obj/effect/turf_decal/tile/red{
 	dir = 4
@@ -36023,6 +36012,18 @@
 /area/engineering/atmos)
 "bMY" = (
 /obj/machinery/autolathe/hacked,
+/obj/item/stack/sheet/metal/fifty,
+/obj/item/stack/sheet/metal/fifty,
+/obj/item/stack/sheet/metal/fifty,
+/obj/item/stack/sheet/metal/fifty,
+/obj/item/stack/sheet/metal/fifty,
+/obj/item/stack/sheet/metal/fifty,
+/obj/item/stack/sheet/glass/fifty,
+/obj/item/stack/sheet/glass/fifty,
+/obj/item/stack/sheet/glass/fifty,
+/obj/item/stack/sheet/glass/fifty,
+/obj/item/stack/sheet/glass/fifty,
+/obj/item/stack/sheet/glass/fifty,
 /turf/open/floor/mineral/plastitanium/red,
 /area/ai_monitored/security/armory)
 "bMZ" = (
@@ -39399,9 +39400,7 @@
 /area/science/misc_lab)
 "bWp" = (
 /obj/structure/chair/office/light,
-/obj/effect/landmark/start/scientist{
-	
-	},
+/obj/effect/landmark/start/scientist,
 /turf/open/floor/mineral/plastitanium,
 /area/science/misc_lab)
 "bWq" = (
@@ -51545,8 +51544,8 @@
 /obj/machinery/button/door{
 	id = "secdorm2";
 	name = "Armory Shutters";
-	req_access_txt = "1";
-	pixel_x = 26
+	pixel_x = 26;
+	req_access_txt = "1"
 	},
 /obj/item/bedsheet/red,
 /obj/effect/landmark/start/security_officer,
@@ -52354,8 +52353,8 @@
 /obj/machinery/button/door{
 	id = "secdorm1";
 	name = "Armory Shutters";
-	req_access_txt = "1";
-	pixel_x = -26
+	pixel_x = -26;
+	req_access_txt = "1"
 	},
 /obj/item/bedsheet/red{
 	dir = 1
@@ -53071,9 +53070,9 @@
 /area/construction)
 "gbO" = (
 /obj/machinery/door/airlock/security{
+	id_tag = "secdormdoor2";
 	name = "Security Dorm Two";
-	req_access_txt = "1";
-	id_tag = "secdormdoor2"
+	req_access_txt = "1"
 	},
 /turf/open/floor/mineral/plastitanium/red,
 /area/security/office)
@@ -53994,8 +53993,8 @@
 	id = "Space Dorms";
 	name = "Door Bolt Control";
 	normaldoorcontrol = 1;
-	specialfunctions = 4;
-	pixel_y = -25
+	pixel_y = -25;
+	specialfunctions = 4
 	},
 /obj/structure/table/wood/fancy/black,
 /turf/open/floor/glass/reinforced,
@@ -60090,6 +60089,12 @@
 /area/security/prison/upper)
 "qPk" = (
 /obj/machinery/autolathe/toy/hacked,
+/obj/item/stack/sheet/plastic/fifty,
+/obj/item/stack/sheet/plastic/fifty,
+/obj/item/stack/sheet/metal/fifty,
+/obj/item/stack/sheet/metal/fifty,
+/obj/item/stack/sheet/metal/fifty,
+/obj/item/stack/sheet/metal/fifty,
 /turf/open/floor/mineral/plastitanium/red,
 /area/ai_monitored/security/armory)
 "qQx" = (
@@ -60522,8 +60527,8 @@
 /obj/machinery/door/firedoor,
 /obj/structure/fans/tiny,
 /obj/machinery/door/airlock/external{
-	name = "Space Dorms";
-	id_tag = "Space Dorms"
+	id_tag = "Space Dorms";
+	name = "Space Dorms"
 	},
 /turf/open/floor/mineral/plastitanium,
 /area/commons/dorms)
@@ -63346,8 +63351,7 @@
 	},
 /obj/machinery/camera{
 	c_tag = "Brig East";
-	dir = 8;
-	
+	dir = 8
 	},
 /obj/machinery/firealarm{
 	pixel_y = 24
@@ -64555,9 +64559,9 @@
 /area/security/prison/upper)
 "xCi" = (
 /obj/machinery/door/airlock/security{
+	id_tag = "secdoordorm1";
 	name = "Security Dorm One";
-	req_access_txt = "1";
-	id_tag = "secdoordorm1"
+	req_access_txt = "1"
 	},
 /turf/open/floor/mineral/plastitanium/red,
 /area/security/office)
@@ -64819,8 +64823,8 @@
 	id = "Xeno Dorms";
 	name = "Door Bolt Control";
 	normaldoorcontrol = 1;
-	specialfunctions = 4;
-	pixel_y = -25
+	pixel_y = -25;
+	specialfunctions = 4
 	},
 /obj/structure/table/wood/fancy/black,
 /obj/structure/window/reinforced/tinted{
@@ -90316,10 +90320,10 @@ bkT
 bjz
 bjz
 aiV
-bqv
-bqv
-bqv
-bqv
+aJn
+aJn
+aJn
+aJn
 bwg
 fxV
 pQN
@@ -101075,7 +101079,7 @@ axW
 axW
 axW
 axW
-auB
+azT
 axT
 azg
 aun
