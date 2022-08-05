@@ -520,6 +520,14 @@ Traitors and the like can also be revived with the previous role mostly intact.
 	message_admins("[key_name_admin(src)] has created a command report")
 	SSblackbox.record_feedback("tally", "admin_verb", 1, "Create Command Report") //If you are copy-pasting this, ensure the 2nd parameter is unique to the new proc!
 
+	// Save this message to be shown on the TGUI command messages panel (centcom_communications.dm)
+	var/list/message_log = list()
+	message_log["message"] = input
+	message_log["sender_name"] = command_name()
+	message_log["time_sent"] = world.time
+	message_log["handled"] = TRUE
+	LAZYADD(GLOB.centcom_communications_messages, list(message_log))
+
 /client/proc/cmd_admin_make_priority_announcement()
 	set category = "Admin.Events"
 	set name = "Make Priority Announcement"
