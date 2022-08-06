@@ -404,7 +404,7 @@
 /datum/blackmarket_item/syndi/weapon/l6sawmag
 	name = "L6 belts"
 	desc = "A 50 round belt of 1.95x129mm for the L6 SAW"
-	item = /obj/item/ammo_box/magazine/mm195x129
+	item = /obj/item/ammo_casing/mm712x82
 	price_min = 8500000
 	price_max = 9500000
 	stock_min = 1
