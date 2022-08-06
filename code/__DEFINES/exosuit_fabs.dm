@@ -26,7 +26,7 @@
 #define EXOSUIT_MODULE_PHAZON		(1<<6)
 /// Module is compatable with N models
 #define EXOSUIT_MODULE_GYGAX_MED	(1<<7)
-/// Module is compatible with Savannah Exosuit models
+/// Module is compatible with Savannah Exosuit models - SPLURT ADDITION
 #define EXOSUIT_MODULE_SAVANNAH 	(1<<8)
 
 /// Module is compatible with "Working" Exosuit models - Ripley and Clarke

@@ -54,7 +54,6 @@
 								"Durand",
 								"H.O.N.K",
 								"Phazon",
-								"Savannah-Ivanov",
 								"Power Armor",
 								"Exosuit Equipment",
 								"Exosuit Ammunition",
