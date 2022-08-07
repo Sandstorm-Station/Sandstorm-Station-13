@@ -84,8 +84,7 @@
 
 	carrier = parent
 
-	if(ishuman(parent))
-		human_pragency_start(parent)
+	generic_pragency_start(parent)
 	ADD_TRAIT(parent, TRAIT_PREGNANT, PREGNANCY_TRAIT)
 
 /datum/component/pregnancy/RegisterWithParent()
@@ -212,11 +211,11 @@
 	if(COOLDOWN_FINISHED(src, stage_time))
 		stage += 1
 		stage = min(stage, max_stage)
-		if(ishuman(carrier) && stage >= 2 && (pregnancy_inflation || pregnancy_breast_growth))
-			handle_organ_inflation(carrier)
+		if(ishuman(carrier) && stage >= 2)
+			inflate_organs(carrier)
 		COOLDOWN_START(src, stage_time, PREGNANCY_STAGE_DURATION)
 
-/datum/component/pregnancy/proc/handle_organ_inflation(mob/living/carbon/human/gregnant)
+/datum/component/pregnancy/proc/inflate_organs(mob/living/carbon/human/gregnant)
 	var/obj/item/organ/genital/belly/belly = gregnant.getorganslot(ORGAN_SLOT_BELLY)
 	var/obj/item/organ/genital/breasts/boob = gregnant.getorganslot(ORGAN_SLOT_BREASTS)
 
