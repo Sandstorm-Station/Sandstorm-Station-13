@@ -12,6 +12,7 @@ SUBSYSTEM_DEF(statpanels)
 /datum/controller/subsystem/statpanels/fire(resumed = FALSE)
 	if (!resumed)
 		var/datum/map_config/cached = SSmapping.next_map_config
+		var/round_time = world.time - SSticker.round_start_time
 		var/real_round_time = world.timeofday - SSticker.real_round_start_time
 		var/list/global_data = list(
 			"Map: [SSmapping.config?.map_name || "Loading..."]",
@@ -22,7 +23,7 @@ SUBSYSTEM_DEF(statpanels)
 			"OOC: [GLOB.ooc_allowed ? "Enabled" : "Disabled"]",
 			" ",
 			"Server Time: [time2text(world.timeofday, "YYYY-MM-DD hh:mm:ss")]",
-			"Round Time: [ROUND_TIME]", // You do know rounds might last more than 24 hours right? (sandstorm edit)
+			"Round Time: [GAMETIMESTAMP("hh:mm:ss", round_time)]",
 			"Actual Round Timer: [time2text(real_round_time, "hh:mm:ss", 0)]", //A back up control to check the round time to see if round time has descyed as well as properly track round time
 			"Station Time: [STATION_TIME_TIMESTAMP("hh:mm:ss", world.time)]",
 			"Time Dilation: [round(SStime_track.time_dilation_current,1)]% AVG:([round(SStime_track.time_dilation_avg_fast,1)]%, [round(SStime_track.time_dilation_avg,1)]%, [round(SStime_track.time_dilation_avg_slow,1)]%)"

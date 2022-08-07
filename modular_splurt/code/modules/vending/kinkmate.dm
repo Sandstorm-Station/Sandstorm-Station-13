@@ -18,7 +18,7 @@
 		/obj/item/clothing/gloves/latexsleeves = 3,
 		/obj/item/genital_equipment/sounding = 4,
 		/obj/item/clothing/accessory/ring/syntech = 4,
-		/obj/item/clothing/accessory/ring/syntech/band = 4,
+		/obj/item/clothing/wrists/syntech = 4,
 		/obj/item/clothing/neck/syntech = 4,
 		/obj/item/clothing/neck/syntech/choker = 4,
 		/obj/item/clothing/neck/syntech/collar = 4,
