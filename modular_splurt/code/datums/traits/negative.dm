@@ -171,7 +171,7 @@
 /datum/quirk/dumb4cum
 	name = "Dumb For Cum"
 	desc = "You just like cum, it's heat, it's smell, it's... Taste."
-	value = -3
+	value = 0
 	gain_text = "<span class='notice'>You suddenly start craving some seed inside of you.<span>"
 	lose_text = "<span class='danger'>It didn't even taste that good, really!</span>"
 	medical_record_text = "Patient seems to drool for seminal fluid."
@@ -193,12 +193,12 @@
 
 	if(quirk_holder.stat == CONSCIOUS)
 		quirk_holder.emote("sigh")
-	ADD_TRAIT(quirk_holder, TRAIT_PACIFISM, type)
+	//ADD_TRAIT(quirk_holder, TRAIT_PACIFISM, type)
 	ADD_TRAIT(quirk_holder, TRAIT_DUMB4CUM, type)
 	SEND_SIGNAL(quirk_holder, COMSIG_ADD_MOOD_EVENT, "cum_craving", /datum/mood_event/cum_craving)
 
 /datum/quirk/dumb4cum/proc/uncrave()
-	REMOVE_TRAIT(quirk_holder, TRAIT_PACIFISM, type)
+	//REMOVE_TRAIT(quirk_holder, TRAIT_PACIFISM, type)
 	REMOVE_TRAIT(quirk_holder, TRAIT_DUMB4CUM, type)
 	SEND_SIGNAL(quirk_holder, COMSIG_CLEAR_MOOD_EVENT, "cum_craving")
 	SEND_SIGNAL(quirk_holder, COMSIG_ADD_MOOD_EVENT, "cum_stuffed", /datum/mood_event/cum_stuffed)
