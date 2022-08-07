@@ -171,7 +171,7 @@
 /datum/quirk/dumb4cum
 	name = "Dumb For Cum"
 	desc = "You just like cum, it's heat, it's smell, it's... Taste."
-	value = -3
+	value = 0
 	gain_text = "<span class='notice'>You suddenly start craving some seed inside of you.<span>"
 	lose_text = "<span class='danger'>It didn't even taste that good, really!</span>"
 	medical_record_text = "Patient seems to drool for seminal fluid."
