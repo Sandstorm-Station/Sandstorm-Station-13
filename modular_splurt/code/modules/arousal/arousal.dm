@@ -29,7 +29,8 @@
 	var/avg = (can_impregnate + client.prefs.fertility) / 2
 
 	if(prob(avg))
-		AddComponent(/datum/component/pregnancy, partner, baby_type, W)
+		var/obj/item/oviposition_egg/eggo = new(W)
+		eggo.AddComponent(/datum/component/pregnancy, src, partner, baby_type)
 
 /mob/living/carbon/human/do_climax(datum/reagents/R, atom/target, obj/item/organ/genital/sender, spill, cover = FALSE, obj/item/organ/genital/receiver)
 	if(!sender)

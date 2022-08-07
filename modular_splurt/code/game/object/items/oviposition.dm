@@ -44,6 +44,10 @@ GLOBAL_LIST_INIT(egg_skins, list( \
 	integrity_failure = 0.9
 	obj_flags = UNIQUE_RENAME
 
+/obj/item/oviposition_egg/ComponentInitialize()
+	. = ..()
+	AddComponent(/datum/component/belly_enlargement, 0)
+
 /obj/item/oviposition_egg/obj_break(damage_flag)
 	. = ..()
 	icon = 'modular_splurt/icons/obj/lewd_items/egg_broken.dmi'

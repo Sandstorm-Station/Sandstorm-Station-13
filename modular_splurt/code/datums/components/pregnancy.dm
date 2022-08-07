@@ -1,7 +1,7 @@
 /datum/component/pregnancy
 
 	dupe_mode = COMPONENT_DUPE_UNIQUE
-	can_transfer = TRUE
+	//can_transfer = TRUE
 
 	/// type of baby the mother will plop out - needs to be subtype of /mob/living
 	var/baby_type = /mob/living/carbon/human
@@ -31,14 +31,13 @@
 	/// whether the pregnancy is revealed or not, scanners will reveal this no matter what
 	var/revealed = FALSE
 
-/datum/component/pregnancy/Initialize(mob/living/_father, _baby_type = /mob/living/carbon/human, obj/item/organ/container_organ)
-	if(!isliving(parent))
+/datum/component/pregnancy/Initialize(mob/living/_mother, mob/living/_father, _baby_type = /mob/living/carbon/human)
+	if(!isobj(parent))
 		return COMPONENT_INCOMPATIBLE
 
-	var/mob/living/gregnant = parent
+	var/obj/item/thing = parent
 
-	//don't fuck dead bodies, pretty please
-	if(gregnant.stat >= DEAD)
+	if(!isorgan(thing.loc))
 		return COMPONENT_INCOMPATIBLE
 
 	if(ispath(_baby_type, /mob/living))
@@ -47,13 +46,20 @@
 		stack_trace("Invalid baby_type given to pregnancy component!")
 		return COMPONENT_INCOMPATIBLE
 
+	container = thing.loc
+
+	var/obj/item/organ/nads = thing.loc
+
+	if(nads.owner)
+		carrier = nads.owner
+
 	if(iscarbon(_father))
 		var/mob/living/carbon/cardad = _father
 		father_dna = new
 		cardad.dna.copy_dna(father_dna)
 
-	if(iscarbon(parent))
-		var/mob/living/carbon/carmom = parent
+	if(iscarbon(_mother))
+		var/mob/living/carbon/carmom = _mother
 		mother_dna = new
 		carmom.dna.copy_dna(mother_dna)
 
@@ -66,7 +72,7 @@
 		father_features["left_eye_color"] = cardad.left_eye_color
 		father_features["right_eye_color"] = cardad.right_eye_color
 
-	if(ishuman(parent))
+	if(ishuman(_mother))
 		var/mob/living/carbon/human/carmom = parent
 		LAZYINITLIST(mother_features)
 		mother_features["skin_tone"] = carmom.skin_tone
@@ -75,27 +81,22 @@
 		mother_features["left_eye_color"] = carmom.left_eye_color
 		mother_features["right_eye_color"] = carmom.right_eye_color
 
-	pregnancy_inflation = gregnant.client?.prefs?.pregnancy_inflation
+	pregnancy_inflation = carrier?.client?.prefs?.pregnancy_inflation
 
-	pregnancy_breast_growth = gregnant.client?.prefs?.pregnancy_breast_growth
+	pregnancy_breast_growth = carrier?.client?.prefs?.pregnancy_breast_growth
 
-	if(container_organ)
-		container = container_organ
-
-	carrier = parent
-
-	generic_pragency_start(parent)
-	ADD_TRAIT(parent, TRAIT_PREGNANT, PREGNANCY_TRAIT)
+	if(carrier)
+		generic_pragency_start()
+		ADD_TRAIT(carrier, TRAIT_PREGNANT, PREGNANCY_TRAIT)
 
 /datum/component/pregnancy/RegisterWithParent()
 	if(carrier)
 		register_carrier()
-	if(isitem(parent))
-		RegisterSignal(parent, COMSIG_ATOM_ENTERING, .proc/on_entering)
-		RegisterSignal(parent, COMSIG_OBJ_BREAK, .proc/on_obj_break)
-		RegisterSignal(parent, COMSIG_OBJ_WRITTEN_ON, .proc/name_egg)
-		RegisterSignal(parent, COMSIG_PARENT_ATTACKBY, .proc/hatch)
-		RegisterSignal(parent, COMSIG_PARENT_EXAMINE, .proc/eg_status)
+	RegisterSignal(parent, COMSIG_ATOM_ENTERING, .proc/on_entering)
+	RegisterSignal(parent, COMSIG_OBJ_BREAK, .proc/on_obj_break)
+	RegisterSignal(parent, COMSIG_OBJ_WRITTEN_ON, .proc/name_egg)
+	RegisterSignal(parent, COMSIG_PARENT_ATTACKBY, .proc/hatch)
+	RegisterSignal(parent, COMSIG_PARENT_EXAMINE, .proc/eg_status)
 
 /datum/component/pregnancy/UnregisterFromParent()
 	if(carrier)
@@ -111,8 +112,6 @@
 	RegisterSignal(carrier, COMSIG_LIVING_BIOLOGICAL_LIFE, .proc/handle_life)
 	RegisterSignal(carrier, COMSIG_HEALTH_SCAN, .proc/on_scan)
 	RegisterSignal(carrier, COMSIG_MOB_APPLY_DAMAGE, .proc/handle_damage)
-	if(container)
-		RegisterSignal(container, COMSIG_ORGAN_REMOVED, .proc/fetus_mortus)
 	if(oviposition)
 		RegisterSignal(carrier, COMSIG_MOB_CLIMAX, .proc/on_climax)
 
@@ -122,14 +121,12 @@
 	UnregisterSignal(carrier, COMSIG_HEALTH_SCAN)
 	UnregisterSignal(carrier, COMSIG_MOB_APPLY_DAMAGE)
 	UnregisterSignal(carrier, COMSIG_MOB_CLIMAX)
-	if(container)
-		UnregisterSignal(container, COMSIG_ORGAN_REMOVED)
 
 /datum/component/pregnancy/Destroy()
 	if(carrier)
 		generic_pragency_end()
 	return ..()
-
+/*
 /datum/component/pregnancy/PreTransfer()
 	if(carrier)
 		generic_pragency_end()
@@ -146,6 +143,7 @@
 		max_stage += 1
 	else
 		return COMPONENT_INCOMPATIBLE
+*/
 
 /datum/component/pregnancy/proc/name_egg(datum/source, name)
 	SIGNAL_HANDLER
@@ -216,15 +214,16 @@
 		COOLDOWN_START(src, stage_time, PREGNANCY_STAGE_DURATION)
 
 /datum/component/pregnancy/proc/inflate_organs(mob/living/carbon/human/gregnant)
-	var/obj/item/organ/genital/belly/belly = gregnant.getorganslot(ORGAN_SLOT_BELLY)
+	//var/obj/item/organ/genital/belly/belly = gregnant.getorganslot(ORGAN_SLOT_BELLY)
 	var/obj/item/organ/genital/breasts/boob = gregnant.getorganslot(ORGAN_SLOT_BREASTS)
 
 	if(added_size < 4)
 		added_size += 1
 	else
 		return
-	if(pregnancy_inflation)
-		belly?.modify_size(1)
+	parent.AddComponent(/datum/component/belly_enlargement, 1)
+	//if(pregnancy_inflation)
+	//	belly?.modify_size(1)
 	if(pregnancy_breast_growth)
 		boob?.modify_size(1)
 
@@ -354,7 +353,7 @@
 	carrier.adjustStaminaLoss(200)
 	SEND_SIGNAL(carrier, COMSIG_ADD_MOOD_EVENT, "pregnancy_end", /datum/mood_event/pregnant_positive)
 
-	eggo.TakeComponent(src)
+	//eggo.TakeComponent(src)
 	eggo.forceMove(location)
 
 	return TRUE
@@ -409,6 +408,7 @@
 		human_pragency_end(carrier)
 
 /datum/component/pregnancy/proc/human_pragency_start(mob/living/carbon/human/gregnant)
+	/*
 	if(pregnancy_inflation)
 		//give them a king ass ripper belly initially
 		var/obj/item/organ/genital/belly/belly = gregnant.getorganslot(ORGAN_SLOT_BELLY)
@@ -416,6 +416,7 @@
 			belly = gregnant.give_genital(/obj/item/organ/genital/belly)
 		if(added_size > 0)
 			belly.modify_size(added_size)
+	*/
 	if(pregnancy_breast_growth)
 		var/obj/item/organ/genital/breasts/boob = gregnant.getorganslot(ORGAN_SLOT_BREASTS)
 		if(!boob)
@@ -423,10 +424,12 @@
 	return TRUE
 
 /datum/component/pregnancy/proc/human_pragency_end(mob/living/carbon/human/gregnant)
+	/*
 	//get rid of king ass ripper belly
 	var/obj/item/organ/genital/belly/belly = gregnant.getorganslot(ORGAN_SLOT_BELLY)
 	if(pregnancy_inflation)
 		belly?.modify_size(-added_size)
+	*/
 	SEND_SIGNAL(gregnant, COMSIG_CLEAR_MOOD_EVENT, "pregnancy")
 
 /datum/component/pregnancy/proc/fetus_mortus()
