@@ -104,7 +104,7 @@
 
 	var/obj/item/oviposition_egg/eggo = new(carrier)
 
-	eggo.AddComponent(/datum/component/belly_enlargement, 3)
+	eggo.AddComponent(/datum/component/belly_enlargement, 2)
 
 	eggo.icon_state = "egg_" + egg_type
 	eggo.update_appearance()
@@ -121,7 +121,6 @@
 
 	if(senders_cum?.total_volume > 5)
 		senders_cum.reaction(location, TOUCH, 1, 0)
-
 
 	eggo.forceMove(location)
 	eggs_stored -= 1
