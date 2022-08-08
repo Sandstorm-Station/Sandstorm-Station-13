@@ -24,9 +24,9 @@
 	var/old_size = size
 	if(C)
 		var/datum/component/organ_inflation/other = C
-		size = max(size, other.size)
+		size += other.size
 	else
-		size = max(size, _size)
+		size += _size
 
 	if(abs(size - old_size) > 0)
 		inflate_organ(size - old_size)
