@@ -92,6 +92,9 @@
 			belly?.modify_size(new_size)
 
 /datum/component/organ_inflation/proc/deflate_organ()
+	if(!container.owner)
+		return
+
 	switch(container.slot)
 		if(ORGAN_SLOT_PENIS)
 			var/obj/item/organ/genital/penis/peenus = container.owner.getorganslot(ORGAN_SLOT_PENIS)
@@ -100,5 +103,5 @@
 			var/obj/item/organ/genital/breasts/breasts = container.owner.getorganslot(ORGAN_SLOT_BREASTS)
 			breasts?.modify_size(-size)
 		else
-			var/obj/item/organ/genital/belly/belly = container?.owner?.getorganslot(ORGAN_SLOT_BELLY)
+			var/obj/item/organ/genital/belly/belly = container.owner.getorganslot(ORGAN_SLOT_BELLY)
 			belly?.modify_size(-size)
