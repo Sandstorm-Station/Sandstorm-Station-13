@@ -104,7 +104,7 @@
 
 	var/obj/item/oviposition_egg/eggo = new(carrier)
 
-	eggo.AddComponent(/datum/component/belly_enlargement, 2)
+	eggo.AddComponent(/datum/component/organ_inflation, 2)
 
 	eggo.icon_state = "egg_" + egg_type
 	eggo.update_appearance()

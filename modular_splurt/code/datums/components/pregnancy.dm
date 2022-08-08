@@ -221,7 +221,7 @@
 		added_size += 1
 	else
 		return
-	parent.AddComponent(/datum/component/belly_enlargement, 1)
+	parent.AddComponent(/datum/component/organ_inflation, 1)
 	//if(pregnancy_inflation)
 	//	belly?.modify_size(1)
 	if(pregnancy_breast_growth)

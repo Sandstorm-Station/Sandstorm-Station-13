@@ -46,7 +46,7 @@ GLOBAL_LIST_INIT(egg_skins, list( \
 
 /obj/item/oviposition_egg/ComponentInitialize()
 	. = ..()
-	AddComponent(/datum/component/belly_enlargement, 0)
+	AddComponent(/datum/component/organ_inflation, 0)
 
 /obj/item/oviposition_egg/obj_break(damage_flag)
 	. = ..()
