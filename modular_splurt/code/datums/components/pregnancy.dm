@@ -73,7 +73,7 @@
 		father_features["right_eye_color"] = cardad.right_eye_color
 
 	if(ishuman(_mother))
-		var/mob/living/carbon/human/carmom = parent
+		var/mob/living/carbon/human/carmom = _mother
 		LAZYINITLIST(mother_features)
 		mother_features["skin_tone"] = carmom.skin_tone
 		mother_features["hair_color"] = carmom.hair_color
@@ -331,7 +331,7 @@
 		if(!(gen.is_exposed() || gen.linked_organ?.is_exposed()))
 			return FALSE
 
-	var/obj/item/oviposition_egg/eggo = new(carrier)
+	var/obj/item/oviposition_egg/eggo = parent
 
 	eggo.icon_state = carrier.client?.prefs?.egg_shell ? ("egg_" + carrier.client.prefs.egg_shell) : "egg_chicken"
 	eggo.update_appearance()
@@ -449,9 +449,7 @@
 
 /datum/component/pregnancy/proc/on_scan(datum/source, mob/user)
 	SIGNAL_HANDLER
-
-	if(isliving(parent))
-		to_chat(user, span_notice("<b>Pregnancy detected!</b>"))
+	to_chat(user, span_notice("<b>Pregnancy detected!</b>"))
 
 //drop kicked
 /datum/component/pregnancy/proc/handle_damage(datum/source, damage, damagetype, def_zone)

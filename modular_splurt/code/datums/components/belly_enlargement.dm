@@ -80,6 +80,8 @@
 	SIGNAL_HANDLER
 	if(!container.owner?.client?.prefs?.pregnancy_inflation)
 		return
+	if(belly_size == 0)
+		return
 	var/obj/item/organ/genital/belly/belly = container.owner.getorganslot(ORGAN_SLOT_BELLY)
 	if(!belly && ishuman(container.owner))
 		var/mob/living/carbon/human/human_owner = container.owner

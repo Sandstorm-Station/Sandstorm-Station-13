@@ -8,7 +8,7 @@
 		istype(receiver, /obj/item/organ/genital/vagina) && getorganslot(ORGAN_SLOT_WOMB))
 		var/obj/item/organ/genital/penis/peenus = source
 		if(!(locate(/obj/item/genital_equipment/condom) in peenus.contents))
-			impregnate(partner, getorganslot(ORGAN_SLOT_WOMB), src.type)
+			impregnate(partner)
 
 	if(!receiver || spill || forced)
 		return
@@ -16,9 +16,14 @@
 	receiver.climax_modify_size(partner, source)
 
 //handles impregnation, also prefs
-/mob/living/proc/impregnate(mob/living/partner, obj/item/organ/W, baby_type)
-	if(!W)
+/mob/living/proc/impregnate(mob/living/partner, obj/item/organ/W, baby_type = /mob/living/carbon/human)
+	var/obj/item/organ/container = W
+
+	if(!container)
+		container = getorganslot(ORGAN_SLOT_WOMB)
+	if(!container)
 		return
+
 	var/can_impregnate = 100
 	if(partner?.client?.prefs)
 		can_impregnate = partner.client.prefs.virility
@@ -29,7 +34,8 @@
 	var/avg = (can_impregnate + client.prefs.fertility) / 2
 
 	if(prob(avg))
-		var/obj/item/oviposition_egg/eggo = new(W)
+		var/obj/item/oviposition_egg/eggo = new()
+		eggo.forceMove(container)
 		eggo.AddComponent(/datum/component/pregnancy, src, partner, baby_type)
 
 /mob/living/carbon/human/do_climax(datum/reagents/R, atom/target, obj/item/organ/genital/sender, spill, cover = FALSE, obj/item/organ/genital/receiver)
