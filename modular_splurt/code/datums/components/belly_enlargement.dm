@@ -16,7 +16,7 @@
 
 	if(istype(thing.loc, /obj/item/organ))
 		container = thing.loc
-		enlarge_belly()
+		enlarge_belly(belly_size)
 
 /datum/component/belly_enlargement/InheritComponent(datum/component/C, i_am_original, _belly_size)
 	if(!i_am_original)
@@ -29,7 +29,7 @@
 		belly_size = max(belly_size, _belly_size)
 
 	if(abs(belly_size - old_size) > 0)
-		add_belly(belly_size - old_size)
+		enlarge_belly(belly_size - old_size)
 
 /datum/component/belly_enlargement/RegisterWithParent()
 	RegisterSignal(parent, COMSIG_ATOM_ENTERING, .proc/on_entering)
@@ -42,8 +42,8 @@
 		unregister_container()
 
 /datum/component/belly_enlargement/proc/register_container()
-	RegisterSignal(container, COMSIG_ORGAN_INSERTED, .proc/enlarge_belly)
-	RegisterSignal(container, COMSIG_ORGAN_REMOVED, .proc/deflate_belly)
+	RegisterSignal(container, COMSIG_ORGAN_INSERTED, .proc/on_inserted)
+	RegisterSignal(container, COMSIG_ORGAN_REMOVED, .proc/on_removed)
 
 /datum/component/belly_enlargement/proc/unregister_container()
 	UnregisterSignal(container, COMSIG_ORGAN_REMOVED)
@@ -59,14 +59,21 @@
 	if(istype(destination, /obj/item/organ))
 		container = destination
 		register_container()
-		enlarge_belly()
+		enlarge_belly(belly_size)
 	else if(container)
 		deflate_belly()
 		unregister_container()
 		container = null
 
+/datum/component/belly_enlargement/proc/on_inserted(datum/source)
+	SIGNAL_HANDLER
+	enlarge_belly(belly_size)
 
-/datum/component/belly_enlargement/proc/add_belly(size)
+/datum/component/belly_enlargement/proc/on_removed(datum/source)
+	SIGNAL_HANDLER
+	deflate_belly()
+
+/datum/component/belly_enlargement/proc/enlarge_belly(size)
 	if(!container.owner?.client?.prefs?.pregnancy_inflation)
 		return
 	var/obj/item/organ/genital/belly/belly = container.owner.getorganslot(ORGAN_SLOT_BELLY)
@@ -75,21 +82,7 @@
 		belly = human_owner.give_genital(/obj/item/organ/genital/belly)
 	belly?.modify_size(size)
 
-//cannot use this proc for above size adding because different args may be passed to this by signals
-/datum/component/belly_enlargement/proc/enlarge_belly()
-	SIGNAL_HANDLER
-	if(!container.owner?.client?.prefs?.pregnancy_inflation)
-		return
-	if(belly_size == 0)
-		return
-	var/obj/item/organ/genital/belly/belly = container.owner.getorganslot(ORGAN_SLOT_BELLY)
-	if(!belly && ishuman(container.owner))
-		var/mob/living/carbon/human/human_owner = container.owner
-		belly = human_owner.give_genital(/obj/item/organ/genital/belly)
-	belly?.modify_size(belly_size)
-
 /datum/component/belly_enlargement/proc/deflate_belly()
-	SIGNAL_HANDLER
 	var/obj/item/organ/genital/belly/belly = container?.owner?.getorganslot(ORGAN_SLOT_BELLY)
 	belly?.modify_size(-belly_size)
 
