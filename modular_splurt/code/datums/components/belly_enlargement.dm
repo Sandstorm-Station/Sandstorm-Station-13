@@ -85,7 +85,3 @@
 /datum/component/belly_enlargement/proc/deflate_belly()
 	var/obj/item/organ/genital/belly/belly = container?.owner?.getorganslot(ORGAN_SLOT_BELLY)
 	belly?.modify_size(-belly_size)
-
-/datum/component/belly_enlargement/Destroy(force, silent)
-	deflate_belly()
-	return ..()
