@@ -46,6 +46,11 @@
   - tweak: Various gases now have shortened names for filters
   - balance: Nitric oxide now removes from the power mix like nitrogen/pluoxium do
   - balance: Nitric oxide now becomes, at most, 20% nitrogen dioxide instead of 50%
+  - rscadd: 'Adds station traits: Small modifiers that can randomly be chosen each
+      round. They are usually logged in the intercept the station receives early in
+      the round'
+  - refactor: Announcement audio is now stored in a datum to make it easy to add different
+      announcers
   SandPoot:
   - bugfix: Fixed the lack of eyes making ERROR appear on people.
   - qol: Set up for the dmi editor extension, very helpful as you can see the existant
