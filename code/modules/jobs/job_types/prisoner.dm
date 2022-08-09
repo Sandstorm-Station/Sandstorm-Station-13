@@ -7,13 +7,18 @@
 	total_positions = 0
 	spawn_positions = 0
 	supervisors = "the security team"
-	custom_spawn_text = "<font color='red' size='4'><b>If you join the shift as a Prisoner, you MUST go directly to Security to be allowed into the Permabrig, and you may NOT attempt a break out without ahelping unless your life is in immediate danger.</b></font>"
+	random_spawns_possible = FALSE
+
 	outfit = /datum/outfit/job/prisoner
 	plasma_outfit = /datum/outfit/plasmaman/prisoner
 
 	display_order = JOB_DISPLAY_ORDER_PRISONER
 
+/datum/job/prisoner/get_latejoin_spawn_point()
+	return get_roundstart_spawn_point()
+
 /datum/job/prisoner/after_spawn(mob/living/carbon/human/H, mob/M)
+	. = ..()
 	var/list/policies = CONFIG_GET(keyed_list/policy)
 	var/policy = policies[POLICYCONFIG_JOB_PRISONER]
 	if(policy)
