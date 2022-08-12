@@ -209,8 +209,6 @@
 	id = "e45_laser"
 	build_type = PROTOLATHE
 	materials = list(/datum/material/iron = 1200, /datum/material/uranium = 50)
-	build_path = /obj/item/ammo_box/magazine/e45/stun
+	build_path = /obj/item/ammo_box/magazine/e45/laser
 	category = list("Ammo")
 	departmental_flags = DEPARTMENTAL_FLAG_SECURITY
-
-
