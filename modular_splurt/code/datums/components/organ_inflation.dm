@@ -28,7 +28,7 @@
 	else
 		size += _size
 
-	if(abs(size - old_size) > 0)
+	if(abs(size - old_size) > 0 && container)
 		inflate_organ(size - old_size)
 
 /datum/component/organ_inflation/RegisterWithParent()
@@ -74,7 +74,7 @@
 	deflate_organ()
 
 /datum/component/organ_inflation/proc/inflate_organ(new_size)
-	if(!container?.owner?.client?.prefs?.pregnancy_inflation)
+	if(!container.owner?.client?.prefs?.pregnancy_inflation)
 		return
 
 	switch(container.slot)
@@ -92,7 +92,7 @@
 			belly?.modify_size(new_size)
 
 /datum/component/organ_inflation/proc/deflate_organ()
-	if(!container?.owner)
+	if(!container.owner)
 		return
 
 	switch(container.slot)
