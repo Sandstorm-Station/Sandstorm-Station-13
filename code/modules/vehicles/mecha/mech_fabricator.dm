@@ -169,7 +169,8 @@
 					category_override += "H.O.N.K"
 				if(mech_types & EXOSUIT_MODULE_PHAZON)
 					category_override += "Phazon"
-
+				if(mech_types & EXOSUIT_MODULE_SAVANNAH)
+					category_override += "Savannah-Ivanov"
 
 	var/list/part = list(
 		"name" = D.name,
