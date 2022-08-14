@@ -353,7 +353,7 @@
 	carrier.adjustStaminaLoss(200)
 	SEND_SIGNAL(carrier, COMSIG_ADD_MOOD_EVENT, "pregnancy_end", /datum/mood_event/pregnant_positive)
 
-	//eggo.TakeComponent(src)
+	oviposition = FALSE
 	eggo.forceMove(location)
 
 	return TRUE
