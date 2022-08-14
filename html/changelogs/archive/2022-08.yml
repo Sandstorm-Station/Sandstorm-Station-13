@@ -72,3 +72,16 @@
 2022-08-11:
   BongaTheProto:
   - rscadd: ported Savannah Ivanov from tg
+2022-08-14:
+  BongaTheProto:
+  - rscadd: Adds new donator lewd medipens with different rewards for each tier
+  - tweak: Now social anxiety works like in tg
+  - tweak: Now podpeople can have hair (you'll want to check your character species
+      config if you're a pod person)
+  - imageadd: Ports podpeople hairs from TG
+  - imageadd: Adds a new binary cloak you can get from the autodrobe (Sprites credit
+      to The Immovable Saint#0001)
+  - soundadd: new *mewo emote
+  - code_imp: changes our modular sprite accessory paths to avoid nulls and bugs in
+      the character creation
+  - code_imp: Fixes a typo in our modular file for underwear
