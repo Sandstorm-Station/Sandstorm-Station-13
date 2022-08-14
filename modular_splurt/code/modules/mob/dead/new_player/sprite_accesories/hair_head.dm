@@ -35,7 +35,7 @@
 	icon_state = "hair_emma"
 
 /datum/sprite_accessory/hair/eros/immovable
-	name = "Immovable"
+	name = "Ozen"
 	icon_state = "hair_immovable"
 
 /datum/sprite_accessory/hair/eros/damsel
