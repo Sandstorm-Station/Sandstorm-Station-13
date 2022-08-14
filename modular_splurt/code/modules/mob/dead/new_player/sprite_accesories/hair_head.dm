@@ -29,3 +29,15 @@
 /datum/sprite_accessory/hair/eros/glamour
 	name = "Glamour"
 	icon_state = "hair_glamourh"
+
+/datum/sprite_accessory/hair/eros/emma
+	name = "Emma"
+	icon_state = "hair_emma"
+
+/datum/sprite_accessory/hair/eros/immovable
+	name = "Immovable"
+	icon_state = "hair_immovable"
+
+/datum/sprite_accessory/hair/eros/damsel
+	name = "Damsel"
+	icon_state = "hair_damsel"
