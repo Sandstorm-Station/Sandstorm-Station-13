@@ -19,42 +19,42 @@
 	name = "ammo box (.45 Rubber)"
 	icon = 'modular_splurt/icons/obj/ammo.dmi'
 
-obj/item/ammo_box/c45/taser
+/obj/item/ammo_box/c45/taser
 	name = "ammo box (.45 Taser)"
 	icon_state = "45box-y"
 	ammo_type = /obj/item/ammo_casing/c45/taser
 
-obj/item/ammo_box/c45/lethal
+/obj/item/ammo_box/c45/lethal
 	name = "ammo box (.45 Lethal)"
 	icon_state = "45box-r"
 	ammo_type = /obj/item/ammo_casing/c45/lethal
 
-obj/item/ammo_box/c45/stun
+/obj/item/ammo_box/c45/stun
 	name = "ammo box (.45 Stun)"
 	icon_state = "45box-c"
 	ammo_type = /obj/item/ammo_casing/c45/stun
 
-obj/item/ammo_box/c45/laser
+/obj/item/ammo_box/c45/laser
 	name = "ammo box (.45 Laser)"
 	icon_state = "45box-o"
 	ammo_type = /obj/item/ammo_casing/c45/laser
 
-obj/item/ammo_box/c45/hydra
+/obj/item/ammo_box/c45/hydra
 	name = "ammo box (.45 Hydra-shock)"
 	icon_state = "45box-g"
 	ammo_type = /obj/item/ammo_casing/c45/hydra
 
-obj/item/ammo_box/c45/hotshot
+/obj/item/ammo_box/c45/hotshot
 	name = "ammo box (.45 Hotshot)"
 	icon_state = "45box-o"
 	ammo_type = /obj/item/ammo_casing/c45/hotshot
 
-obj/item/ammo_box/c45/ion
+/obj/item/ammo_box/c45/ion
 	name = "ammo box (.45 Ion)"
 	icon_state = "45box-c"
 	ammo_type = /obj/item/ammo_casing/c45/ion
 
-obj/item/ammo_box/c45/trac
+/obj/item/ammo_box/c45/trac
 	name = "ammo box (.45 Trac)"
 	ammo_type = /obj/item/ammo_casing/c45/trac
 
@@ -150,7 +150,7 @@ obj/item/ammo_box/c45/trac
 	id = "c45stun"
 	build_type = PROTOLATHE
 	materials = list(/datum/material/iron = 2000, /datum/material/uranium = 150)
-	build_path = /obj/item/ammo_box/c45/trac
+	build_path = /obj/item/ammo_box/c45/stun
 	category = list("Ammo")
 	departmental_flags = DEPARTMENTAL_FLAG_SECURITY
 

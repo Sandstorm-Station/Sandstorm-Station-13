@@ -9,6 +9,8 @@
 
 #define TRAIT_ASHRESISTANCE		"TRAIT_ASHRESISTANCE"
 
+#define TRAIT_TONGUELESS_SPEECH "tongueless-speech" //for dephelm stuff
+
 // Hyperstation traits
 #define TRAIT_PHARMA            "hepatic_pharmacokinesis"
 #define TRAIT_CHOKE_SLUT		"choke_slut"

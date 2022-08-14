@@ -105,6 +105,13 @@ GLOBAL_DATUM_INIT(ahelp_tickets, /datum/admin_help_tickets, new)
 		L[++L.len] = list("Disconnected:", "[astatclick.update("[num_disconnected]")]", null, REF(astatclick))
 	L[++L.len] = list("Closed Tickets:", "[cstatclick.update("[closed_tickets.len]")]", null, REF(cstatclick))
 	L[++L.len] = list("Resolved Tickets:", "[rstatclick.update("[resolved_tickets.len]")]", null, REF(rstatclick))
+
+	var/unhandledMessages = 0
+	for(var/list/commandMessage in GLOB.centcom_communications_messages)
+		if(commandMessage["handled"] == FALSE)
+			unhandledMessages++
+	L[++L.len] = list("Communications:", "[mstatclick.update("[unhandledMessages]")]", null, REF(mstatclick))
+
 	return L
 
 //Reassociate still open ticket if one exists

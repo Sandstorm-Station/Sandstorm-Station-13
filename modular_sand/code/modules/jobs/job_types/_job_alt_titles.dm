@@ -32,7 +32,7 @@
 	alt_titles = list("Barista")
 
 /datum/job/chaplain
-	alt_titles = list("Priest", "Cult Leader", "Pope", "Bichop")
+	alt_titles = list("Priest", "Cult Leader", "Pope", "Bishop")
 
 /datum/job/clown //The most useless role in the game, delet this
 	alt_titles = list("Entertainer")

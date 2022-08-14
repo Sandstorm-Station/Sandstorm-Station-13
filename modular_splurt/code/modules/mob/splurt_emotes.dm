@@ -395,6 +395,19 @@
 	user.nextsoundemote = world.time + 60
 	playsound(user, 'modular_splurt/sound/voice/vineboom.ogg', 50, 1, -1)
 
+/datum/emote/living/eyebrow3
+	key = "eyebrow3"
+	key_third_person = "eyebrows3"
+	message = "raises an eyebrow <i>quizzaciously.</i>"
+
+/datum/emote/living/eyebrow3/run_emote(mob/user, params, type_override, intentional)
+	if(!(. = ..()))
+		return
+	if(user.nextsoundemote >= world.time)
+		return
+	user.nextsoundemote = world.time + 60
+	playsound(user, 'modular_splurt/sound/voice/moonmen.ogg', 50, 0, 1)
+
 /datum/emote/living/laugh2
 	key = "laugh2"
 	key_third_person = "laughs2"
@@ -450,6 +463,72 @@
 		return
 	user.nextsoundemote = world.time + 60
 	playsound(user, 'modular_splurt/sound/voice/lawyerup.ogg', 50, 1, -1)
+
+/datum/emote/living/fusrodah
+	key = "fusrodah"
+	key_third_person = "furodahs"
+	message = "yells, \"<b>FUS RO DAH!!!</b>\""
+
+/datum/emote/living/fusrodah/run_emote(mob/user, params, type_override, intentional)
+	if(!(. = ..()))
+		return
+	if(user.nextsoundemote >= world.time)
+		return
+	user.nextsoundemote = world.time + 60
+	playsound(user, 'modular_splurt/sound/voice/fusrodah.ogg', 50, 0, 1)
+
+/datum/emote/living/skibidi
+	key = "skibidi"
+	key_third_person = "skibidis"
+	message = "yells, \"<b>Skibidi bop mm dada!</b>\""
+
+/datum/emote/living/skibidi/run_emote(mob/user, params, type_override, intentional)
+	if(!(. = ..()))
+		return
+	if(user.nextsoundemote >= world.time)
+		return
+	user.nextsoundemote = world.time + 10
+	playsound(user, 'modular_splurt/sound/voice/skibidi.ogg', 50, 0, 1)
+
+/datum/emote/living/fbi
+	key = "fbi"
+	key_third_person = "fbis"
+	message = "yells, \"<b>FBI OPEN UP!</b>\""
+
+/datum/emote/living/fbi/run_emote(mob/user, params, type_override, intentional)
+	if(!(. = ..()))
+		return
+	if(user.nextsoundemote >= world.time)
+		return
+	user.nextsoundemote = world.time + 20
+	playsound(user, 'modular_splurt/sound/voice/fbi.ogg', 50, 0, 1)
+
+/datum/emote/living/illuminati
+	key = "illuminati"
+	key_third_person = "illuminatis"
+	message = "emits some X-files vibe"
+
+/datum/emote/living/illuminati/run_emote(mob/user, params, type_override, intentional)
+	if(!(. = ..()))
+		return
+	if(user.nextsoundemote >= world.time)
+		return
+	user.nextsoundemote = world.time + 80
+	playsound(user, 'modular_splurt/sound/voice/illuminati.ogg', 50, 0, 1)
+
+/datum/emote/living/bonerif
+	key = "bonerif"
+	key_third_person = "bonerifs"
+	message = "riffs"
+
+/datum/emote/living/bonerif/run_emote(mob/user, params, type_override, intentional)
+	if(!(. = ..()))
+		return
+	if(user.nextsoundemote >= world.time)
+		return
+	user.nextsoundemote = world.time + 10
+	playsound(user, 'modular_splurt/sound/voice/bonerif.ogg', 50, 0, 1)
+
 
 /datum/emote/living/cry2
 	key = "cry2"
@@ -545,3 +624,35 @@
 	)
 	message = pick(pants)
 	. = ..()
+
+/datum/emote/living/yippee
+	key = "yippee"
+	key_third_person = "yippees"
+	message = "lets out a yippee!"
+	emote_type = EMOTE_AUDIBLE
+	muzzle_ignore = FALSE
+
+/datum/emote/living/yippee/run_emote(mob/user, params, type_override, intentional)
+	if(!(. = ..()))
+		return
+	if(user.nextsoundemote >= world.time)
+		return
+	user.nextsoundemote = world.time + 70
+	playsound(user, 'modular_splurt/sound/voice/yippee.ogg', 50, 1, -1)
+
+/datum/emote/living/mewo
+	key = "mewo"
+	key_third_person = "mewos"
+	message = "mewos!"
+	emote_type = EMOTE_AUDIBLE
+	muzzle_ignore = FALSE
+	restraint_check = FALSE
+
+/datum/emote/living/mewo/run_emote(mob/user, params, type_override, intentional)
+	. = ..()
+	if(!.)
+		return
+	if(user.nextsoundemote >= world.time)
+		return
+	user.nextsoundemote = world.time + 1 SECONDS
+	playsound(user, 'modular_splurt/sound/voice/mewo.ogg', 50, 1, -1)
