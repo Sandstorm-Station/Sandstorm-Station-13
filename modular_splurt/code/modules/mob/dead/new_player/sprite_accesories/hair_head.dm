@@ -112,12 +112,12 @@
 	icon = 'modular_splurt/icons/mob/hair.dmi'
 	icon_state = "hair_emma"
 
-/datum/sprite_accessory/hair/eros/immovable
+/datum/sprite_accessory/hair/immovable
 	name = "Ozen"
 	icon = 'modular_splurt/icons/mob/hair.dmi'
 	icon_state = "hair_immovable"
 
-/datum/sprite_accessory/hair/eros/damsel
+/datum/sprite_accessory/hair/damsel
 	name = "Damsel"
 	icon = 'modular_splurt/icons/mob/hair.dmi'
 	icon_state = "hair_damsel"
