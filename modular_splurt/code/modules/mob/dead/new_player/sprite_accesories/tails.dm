@@ -317,7 +317,6 @@
 	icon_state = "westerndragon"
 	dimension_x = 64
 	center = TRUE
-	color_src = MATRIXED
 	matrixed_sections = MATRIX_RED_GREEN
 
 /datum/sprite_accessory/tails/human/succubus
