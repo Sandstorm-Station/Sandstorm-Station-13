@@ -311,7 +311,7 @@
 	icon = 'modular_splurt/icons/mob/mam_tails.dmi'
 	matrixed_sections = MATRIX_RED
 
-/datum/sprite_accessory/tails/human/westerndragon
+/datum/sprite_accessory/tails/mam_tails/westerndragon
 	name = "Dragon western"
 	icon = 'modular_splurt/icons/mob/64_mam_tails.dmi'
 	icon_state = "westerndragon"
