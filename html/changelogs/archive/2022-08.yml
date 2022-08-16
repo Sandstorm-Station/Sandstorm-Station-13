@@ -63,6 +63,8 @@
   - refactor: Announcement audio is now stored in a datum to make it easy to add different
       announcers
 2022-08-16:
+  Putnam3145:
+  - bugfix: added a missing signal call to SSticker
   TripleShades:
   - rscadd: '[Omega] Cleanbot named "Rustbucket" to the Bridge'
   - rscadd: '[Omega] Securitron "Pingsky" to AI Sat'
