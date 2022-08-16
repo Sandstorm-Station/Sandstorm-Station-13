@@ -106,3 +106,18 @@
 	icon_state = "pod_hair_hibiscus"
 	icon = 'modular_splurt/icons/mob/hair.dmi'
 	recommended_species = list(SPECIES_POD, SPECIES_POD_WEAK)
+
+/datum/sprite_accessory/hair/emma
+	name = "Emma"
+	icon = 'modular_splurt/icons/mob/hair.dmi'
+	icon_state = "hair_emma"
+
+/datum/sprite_accessory/hair/immovable
+	name = "Ozen"
+	icon = 'modular_splurt/icons/mob/hair.dmi'
+	icon_state = "hair_immovable"
+
+/datum/sprite_accessory/hair/damsel
+	name = "Damsel"
+	icon = 'modular_splurt/icons/mob/hair.dmi'
+	icon_state = "hair_damsel"
