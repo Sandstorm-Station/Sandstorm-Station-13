@@ -4,7 +4,7 @@
 		uses_vpn = FALSE
 		return .
 	uses_vpn = TRUE
-	if(!CONFIG_GET(flag/kick_vpn))
+	if(!CONFIG_GET(flag/kick_vpn) || ip_intel < 1)
 		return .
 	to_chat(src, span_danger("You have been kicked from the server because your IP has been flagged as a VPN. \
 	Please turn it off in order to connect or contact staff in case this is an error."))
