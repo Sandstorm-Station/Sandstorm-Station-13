@@ -62,7 +62,7 @@
       the round'
   - refactor: Announcement audio is now stored in a datum to make it easy to add different
       announcers
-2022-08-16:
+2022-08-17:
   Putnam3145:
   - bugfix: added a missing signal call to SSticker
   TripleShades:
@@ -94,3 +94,19 @@
       belt goes to the shuttle'
   - tweak: '[Omega] Engineering Secure Storage button is now in Chief Engineer''s
       office'
+2022-08-19:
+  BlueWildrose:
+  - balance: Removes persistence from the cleanable glowing goo. It'll no longer last
+      between rounds.
+  TripleShades:
+  - rscadd: '[Omega] One decal to better indicate Turbine area'
+  - rscdel: '[Omega] Duplicate leftover intercom'
+  - bugfix: '[Omega] Virology Airlock access buttons should actually work'
+2022-08-20:
+  Putnam3145:
+  - bugfix: Stake (maybe)
+  - bugfix: Caches the auxmos file if found
+  - balance: Sandstorm now happens less often, tends to be less powerful and is announced.
+  zeroisthebiggay:
+  - tweak: cauteries searing tools and energy scalpels now have heat and can be used
+      to light cigarettes
