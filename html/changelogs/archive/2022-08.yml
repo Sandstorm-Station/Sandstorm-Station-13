@@ -85,3 +85,109 @@
   - code_imp: changes our modular sprite accessory paths to avoid nulls and bugs in
       the character creation
   - code_imp: Fixes a typo in our modular file for underwear
+2022-08-16:
+  BongaTheProto:
+  - soundadd: Makes the pain of hitting someone with buns of steel in the ass more
+      hearable (?
+  - code_imp: deletes some unused interaction code
+  Putnam3145:
+  - bugfix: added a missing signal call to SSticker
+  TripleShades:
+  - rscadd: '[Omega] Cleanbot named "Rustbucket" to the Bridge'
+  - rscadd: '[Omega] Securitron "Pingsky" to AI Sat'
+  - rscadd: '[Omega] External AI Sat cams around the south'
+  - rscadd: '[Omega] Unfinished cleanbot to Robotics'
+  - rscadd: '[Omega] More status displays and AI displays'
+  - rscadd: '[Omega] Captain''s Wardrobe vendor'
+  - rscadd: '[Omega] Engineering Supermatter Room now has a YouTool'
+  - rscadd: '[Omega] Hydroponics front desk now has windoors'
+  - rscadd: '[Omega] Bar monkey Punpun placed at the Bar'
+  - rscadd: '[Omega] Paramedical room'
+  - rscadd: '[Omega] Scrubbers to Xenobiology slime pens'
+  - rscadd: '[Omega] Xenobiology now has one canister of BZ'
+  - rscdel: '[Omega] Tiny Medbay reception desk'
+  - rscdel: '[Omega] Overlapping cams and window-sitting cams'
+  - rscdel: '[Omega] Defibrillator outside of Medbay Surgery'
+  - rscdel: '[Omega] Rogue isolated power wire under East Maintenence Airlock'
+  - tweak: '[Omega] Virology now has a cycling airlock'
+  - tweak: '[Omega] Xenobiology slime pen floors and kill room floor now match other
+      stations'
+  - tweak: '[Omega] Xenobiology main scrubber and vent shifted around'
+  - tweak: '[Omega] Medbay intercoms are now largely on the unique frequency other
+      stations use'
+  - tweak: '[Omega] Certain floors under airlocks now properly match their surroundings'
+  - tweak: '[Omega] Atmospherics now has layer adaptors'
+  - tweak: '[Omega] Cargo''s starting crates are shifted around to better show which
+      belt goes to the shuttle'
+  - tweak: '[Omega] Engineering Secure Storage button is now in Chief Engineer''s
+      office'
+  WoolyAypa:
+  - rscadd: 'Added a new hairstyle: Emma'
+  - rscadd: 'Added a new hairstyle: Damsel'
+  - rscadd: 'Added a new hairstyle: Ozen'
+  - rscadd: 'Added a new tail: Dragon Western'
+  - rscadd: 'Added a new tail: Succubus Tail'
+  - rscadd: 'Added a new horn: Succ Horns'
+  - rscadd: 'Added a new wing: Harpy (Large)'
+  - tweak: The decorative angel wings can now be coloured
+  Yawet330:
+  - imageadd: Better wings
+2022-08-19:
+  BlueWildrose:
+  - balance: Removes persistence from the cleanable glowing goo. It'll no longer last
+      between rounds.
+  BongaTheProto:
+  - server: Adds the option to kick players who are likely connecting through a vpn
+      on join
+  - code_imp: reorganizes modular config code just a bit
+  SpookyTheFox:
+  - bugfix: fixed non-lethal magrifle ammo magazine name
+  TripleShades:
+  - rscadd: '[Omega] One decal to better indicate Turbine area'
+  - rscdel: '[Omega] Duplicate leftover intercom'
+  - bugfix: '[Omega] Virology Airlock access buttons should actually work'
+2022-08-20:
+  BongaTheProto:
+  - code_imp: Updates rust_g to 1.0.2
+  - qol: Upgrades our donator system to support automatic updates! Making sure all donators always have at least the loadout tiers perk
+  Hatterhat:
+  - tweak: Chief engineers now have expert wiring skills, as befitting a crew member
+      of their assumed caliber. Atmos techs also get more wire skill.
+  - tweak: Research directors now have trained wiring skills, and scientists have
+      basic wiring expertise.
+  - rscadd: 'Cleaving saws now have a Certified FromSoft Classic mechanic: dodge-rolling.
+      Combat mode RMB with it inhand to use.'
+  Linzolle:
+  - rscadd: radial menu to organ manipulation surgery
+  Onule, PositiveEntropy, TetraZeta, Axietheaxolotl, Thgvr, AdipemDragon:
+  - imageadd: Completely resprites all medkits!
+  - imageadd: Completely resprites all medical tools!
+  - imageadd: Removes the clamp sprite and instead creates separate hemostat and retractor
+      inhand sprites!
+  - imageadd: Adds missing inhands for the bonesetter, advanced med tools, tactical
+      medkit, surgical drill and bone gel!
+  Putnam3145:
+  - bugfix: Stake (maybe)
+  - bugfix: Caches the auxmos file if found
+  - balance: Sandstorm now happens less often, tends to be less powerful and is announced.
+  - bugfix: update air ref more aggressively
+  - bugfix: Binary translator key now has a proper description
+  - rscadd: Space lube, drying agent, salbutamol, colorful reagent, drying agent chem
+      gases
+  - bugfix: Signal commander works now
+  - tweak: Infinite blood trails are no longer possible
+  Rohesie:
+  - tweak: Admins and byond users can now set their OOC color to light values and
+      it will save in the preferences.
+  zeroisthebiggay:
+  - tweak: cauteries searing tools and energy scalpels now have heat and can be used
+      to light cigarettes
+  - imageadd: crushers
+  - imageadd: glaives
+  - imageadd: drills
+  - imageadd: mining scammers
+  - imageadd: my mom
+  - imageadd: new ninja sprites
+  - imageadd: makes the long gloves look more like their normal counterparts
+  - imageadd: mauler gauntlets have lost a grand total of three pixels in order to
+      make them slimmer
