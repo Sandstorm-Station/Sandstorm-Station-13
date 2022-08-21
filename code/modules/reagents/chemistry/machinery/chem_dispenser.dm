@@ -680,7 +680,9 @@
 		/datum/reagent/consumable/ethanol/creme_de_coconut,
 		/datum/reagent/consumable/ethanol/triple_sec,
 		/datum/reagent/consumable/ethanol/sake,
-		/datum/reagent/consumable/ethanol/applejack
+		/datum/reagent/consumable/ethanol/applejack,
+		/datum/reagent/consumable/ethanol/curacao,
+		/datum/reagent/consumable/ethanol/navy_rum
 	)
 	upgrade_reagents = list(
 		/datum/reagent/consumable/ethanol,
