@@ -149,7 +149,8 @@
 2022-08-20:
   BongaTheProto:
   - code_imp: Updates rust_g to 1.0.2
-  - qol: Upgrades our donator system to support automatic updates! Making sure all donators always have at least the loadout tiers perk
+  - qol: Upgrades our donator system to support automatic updates! Making sure all
+      donators always have at least the loadout tiers perk
   Hatterhat:
   - tweak: Chief engineers now have expert wiring skills, as befitting a crew member
       of their assumed caliber. Atmos techs also get more wire skill.
@@ -191,3 +192,9 @@
   - imageadd: makes the long gloves look more like their normal counterparts
   - imageadd: mauler gauntlets have lost a grand total of three pixels in order to
       make them slimmer
+2022-08-22:
+  BongaTheProto:
+  - server: adds a bypass list for the VPN blocker
+  - admin: adds verbs to toggle the VPN blocker and also add people to the bypass
+      list for a round
+  - spellcheck: Fixes some typos in the discordbunker verbs
