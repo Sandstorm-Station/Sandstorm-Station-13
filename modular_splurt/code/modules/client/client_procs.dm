@@ -9,8 +9,8 @@
 	//Kicks them automatically if 100% sure and they're not whitelisted
 	if(!CONFIG_GET(flag/kick_vpn) || ip_intel < 1)
 		return .
-	var/datum/config_entry/multi_keyed_flag/vpn_bypass/whitelist = CONFIG_GET_ENTRY(multi_keyed_flag/vpn_bypass)
-	if(ckey(ckey) in whitelist.config_entry_value)
+	var/list/whitelist = CONFIG_GET(multi_keyed_flag/vpn_bypass)
+	if(whitelist.Find(ckey(ckey)))
 		log_admin("[key_name(src)] was allowed to join although they're using a vpn")
 		return .
 
