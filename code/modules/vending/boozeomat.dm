@@ -3,8 +3,7 @@
 	desc = "A technological marvel, supposedly able to mix just the mixture you'd like to drink the moment you ask for one."
 	icon_state = "boozeomat"
 	icon_deny = "boozeomat-deny"
-	products = list(
-					/obj/item/reagent_containers/food/drinks/drinkingglass = 30,
+	products = list(/obj/item/reagent_containers/food/drinks/drinkingglass = 30,
 					/obj/item/reagent_containers/food/drinks/drinkingglass/shotglass = 12,
 					/obj/item/reagent_containers/food/drinks/bottle/blank = 5,
 					/obj/item/reagent_containers/food/drinks/bottle/blank/small = 10,
@@ -36,10 +35,7 @@
 					/obj/item/reagent_containers/food/drinks/soda_cans/sol_dry = 8,
 					/obj/item/reagent_containers/food/drinks/ice = 10,
 					/obj/item/reagent_containers/food/drinks/flask = 3,
-					/obj/item/reagent_containers/food/drinks/beer = 6,
-					/obj/item/reagent_containers/food/drinks/bottle/bitters = 6,
-					/obj/item/reagent_containers/food/drinks/bottle/curacao = 3,
-					/obj/item/reagent_containers/food/drinks/bottle/navy_rum = 3
+					/obj/item/reagent_containers/food/drinks/beer = 6
 				)
 	contraband = list(/obj/item/reagent_containers/food/drinks/mug/tea = 12,
 					/obj/item/reagent_containers/food/drinks/bottle/fernet = 5)
