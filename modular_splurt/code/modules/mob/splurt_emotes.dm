@@ -656,3 +656,36 @@
 		return
 	user.nextsoundemote = world.time + 1 SECONDS
 	playsound(user, 'modular_splurt/sound/voice/mewo.ogg', 50, 1, -1)
+
+/datum/emote/living/ara_ara
+	key = "ara"
+	key_third_person = "aras"
+	message = "seems sultrily surprised~"
+	emote_type = EMOTE_AUDIBLE
+	muzzle_ignore = FALSE
+
+/datum/emote/living/ara_ara/run_emote(mob/user, params, type_override, intentional)
+	. = ..()
+	if(!.)
+		return
+	if(user.nextsoundemote >= world.time)
+		return
+	user.nextsoundemote = world.time + 1.5 SECONDS
+	playsound(user, 'modular_splurt/sound/voice/ara-ara.ogg', 50, 1, -1)
+
+/datum/emote/living/missouri
+	key = "missouri"
+	key_third_person = "missouris"
+	message = "appears to believe %THEYRE in Missouri"
+	emote_type = EMOTE_AUDIBLE
+	muzzle_ignore = FALSE
+
+/datum/emote/living/missouri/run_emote(mob/user, params, type_override, intentional)
+	message = replacetextEx(message, "%THEYRE", user.p_theyre())
+	. = ..()
+	if(!.)
+		return
+	if(user.nextsoundemote >= world.time)
+		return
+	user.nextsoundemote = world.time + 3 SECONDS
+	playsound(user, 'modular_splurt/sound/voice/missouri.ogg', 50, 0, -1)
