@@ -2,21 +2,6 @@
 	to_chat(user, span_warning("You can't insert this item!"))
 	return
 
-	/*
-	if(locate(src.type) in target_organ.contents)
-		to_chat(user, span_warning("You can't insert more of this item!"))
-		return
-
-	user.visible_message(span_warning("\The <b>[user]</b> is trying to put [src] inside [target]'s [target_organ]"), \
-		span_warning("\The <b>[user]</b> is trying to put [src] inside [target]'s [target_organ]"))
-
-	if(!do_mob(user, target, 4 SECONDS))
-		return
-
-	if(!user.transferitemtoloc(src, target_organ))
-		return
-	*/
-
 /obj/item/genital_equipment/condom/insert_item_organ(mob/living/carbon/user, mob/living/carbon/target, obj/item/organ/genital/target_organ)
 	if(!(target.client?.prefs?.erppref == "Yes"))
 		to_chat(user, span_warning("They don't want you to do that!"))
