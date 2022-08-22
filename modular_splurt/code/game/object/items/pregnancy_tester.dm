@@ -38,7 +38,7 @@
 	if(results)
 		to_chat(user, span_warning("The display reads [results], you can't use this tester anymore!"))
 		return
-	for(var/thing as anything in target.contents)
+	for(var/obj/item/thing as anything in target.contents)
 		if(thing?.GetComponent(/datum/component/pregnancy))
 			results = "positive"
 			break
