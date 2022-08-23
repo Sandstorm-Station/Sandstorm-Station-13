@@ -627,6 +627,12 @@
 	user.nextsoundemote = world.time + 7
 	playsound(user, 'modular_splurt/sound/voice/weh_s.ogg', 50, 1, -1)
 
+/datum/emote/living/mlem
+	key = "mlem"
+	key_third_person = "mlems"
+	message = "sticks their tongue for a moment. Mlem!"
+	emote_type = EMOTE_VISIBLE
+
 /datum/emote/living/snore/snore2
 	key = "snore2"
 	key_third_person = "snores"
