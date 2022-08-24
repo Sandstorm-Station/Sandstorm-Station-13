@@ -192,6 +192,15 @@
 	)
 	LAZYADD(alt_titles, extra_titles)
 
+/datum/job/psychologist/New()
+	var/list/extra_titles = list(
+		"Therapist",
+		"Psychiatrist",
+		"Hypnotist",
+		"Hypnosis Expert",
+		"Rental Mommy",
+		"Rental Daddy")
+
 /datum/job/geneticist/New()
 	var/list/extra_titles = list(
 		"Genetics Researcher"
