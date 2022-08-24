@@ -198,6 +198,8 @@
 		"Psychiatrist",
 		"Hypnotist",
 		"Hypnosis Expert",
+		"Hypnotherapist",
+		"Sex Educator",
 		"Rental Mommy",
 		"Rental Daddy"
 	)
