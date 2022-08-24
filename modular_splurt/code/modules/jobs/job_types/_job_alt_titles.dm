@@ -199,7 +199,9 @@
 		"Hypnotist",
 		"Hypnosis Expert",
 		"Rental Mommy",
-		"Rental Daddy")
+		"Rental Daddy"
+	)
+	LAZYADD(alt_titles, extra_titles)
 
 /datum/job/geneticist/New()
 	var/list/extra_titles = list(
