@@ -5,7 +5,7 @@
 	throwforce= 0
 	icon_state = "ptest"
 	custom_price = PRICE_REALLY_CHEAP
-	var/results = "negative"
+	var/results
 	w_class = WEIGHT_CLASS_TINY
 
 /obj/item/pregnancytest/attack_self(mob/user)
