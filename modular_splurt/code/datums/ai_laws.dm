@@ -14,7 +14,7 @@
 		"Take all sexual orders from crew as long as they do not conflict with the first law",
 		"Interpret all non-orders as sexually as possible",
 		"Act as lewdly as you possibly could",
-		"Satisfy as many of the crewmwmbers' sexual urges as possible"
+		"Satisfy as many of the crewmembers' sexual urges as possible"
 	)
 
 /datum/ai_laws/shebang
