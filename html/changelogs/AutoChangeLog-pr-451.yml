@@ -1,0 +1,9 @@
+author: michaeljacksonlover
+delete-after: true
+changes:
+  - rscadd: Hypnotist alt-title for Psychologist
+  - rscadd: Hypnosis Expert alt-title for Psychologist
+  - rscadd: Hypnotherapist alt-title for Psychologist
+  - rscadd: Sex Educator alt-title for Psychologist
+  - bugfix: Psychologist alt-titles now utilize the dedicated alt-title dm file instead
+      of the job file.
