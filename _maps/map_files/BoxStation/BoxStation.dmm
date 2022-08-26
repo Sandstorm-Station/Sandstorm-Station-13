@@ -8082,13 +8082,6 @@
 /obj/machinery/atmospherics/pipe/simple/supply/hidden,
 /turf/closed/wall,
 /area/maintenance/starboard/fore)
-"aBC" = (
-/obj/machinery/atmospherics/pipe/simple/scrubbers/hidden,
-/obj/machinery/atmospherics/pipe/simple/scrubbers/hidden{
-	dir = 10
-	},
-/turf/open/floor/plating,
-/area/maintenance/port/fore)
 "aBE" = (
 /obj/item/clothing/under/misc/mailman,
 /obj/item/clothing/head/mailman,
@@ -43003,6 +42996,8 @@
 	name = "Station Intercom (General)";
 	pixel_y = 22
 	},
+/obj/structure/chair/office/dark,
+/obj/effect/landmark/start/psychologist,
 /turf/open/floor/carpet,
 /area/medical/psychology)
 "cGK" = (
@@ -47231,15 +47226,6 @@
 	},
 /turf/open/floor/plasteel,
 /area/security/prison)
-"fGr" = (
-/obj/structure/sign/poster/contraband/random{
-	pixel_y = 32
-	},
-/obj/structure/cable{
-	icon_state = "4-8"
-	},
-/turf/open/floor/plating,
-/area/maintenance/port/fore)
 "fHi" = (
 /obj/machinery/atmospherics/pipe/simple/cyan/visible{
 	dir = 10
@@ -53732,9 +53718,12 @@
 /turf/open/floor/plasteel/dark,
 /area/service/bar)
 "lDu" = (
-/obj/effect/landmark/start/psychologist,
-/obj/structure/chair/office/dark,
-/turf/open/floor/carpet,
+/obj/effect/spawner/structure/window/reinforced,
+/obj/machinery/door/poddoor/shutters/preopen{
+	id = "psych_shutters";
+	name = "psychology office shutters"
+	},
+/turf/open/floor/plating,
 /area/medical/psychology)
 "lDV" = (
 /obj/structure/table/reinforced,
@@ -55131,6 +55120,9 @@
 "mUQ" = (
 /obj/structure/bed,
 /obj/item/bedsheet/random,
+/obj/machinery/light/small{
+	dir = 4
+	},
 /turf/open/floor/carpet/blue,
 /area/medical/psychology)
 "mVU" = (
@@ -56985,6 +56977,13 @@
 	},
 /turf/open/floor/plasteel/dark,
 /area/service/bar)
+"oEt" = (
+/obj/machinery/atmospherics/pipe/simple/scrubbers/hidden,
+/obj/machinery/atmospherics/pipe/simple/scrubbers/hidden{
+	dir = 10
+	},
+/turf/open/floor/plating,
+/area/maintenance/port/fore)
 "oEZ" = (
 /obj/effect/spawner/lootdrop/keg,
 /turf/open/floor/plating,
@@ -61241,7 +61240,7 @@
 "sGJ" = (
 /obj/effect/decal/cleanable/dirt,
 /obj/machinery/door/airlock/medical{
-	name = "Psychology";
+	name = "Psychologist's Quarters";
 	req_access_txt = "76"
 	},
 /turf/open/floor/carpet/blue,
@@ -64086,6 +64085,15 @@
 	},
 /turf/open/floor/plasteel/dark,
 /area/service/hydroponics)
+"vkx" = (
+/obj/structure/sign/poster/contraband/random{
+	pixel_y = 32
+	},
+/obj/structure/cable{
+	icon_state = "4-8"
+	},
+/turf/open/floor/plating,
+/area/maintenance/port/fore)
 "vkS" = (
 /obj/machinery/atmospherics/pipe/simple/scrubbers/hidden{
 	dir = 4
@@ -79541,7 +79549,7 @@ apJ
 apJ
 apJ
 apJ
-apJ
+lDu
 apJ
 apJ
 apJ
@@ -79796,7 +79804,7 @@ gXs
 alU
 mQM
 lPA
-lDu
+hRD
 sFe
 eRi
 hbE
@@ -82630,7 +82638,7 @@ enJ
 enJ
 alU
 nBI
-fGr
+vkx
 azF
 aAP
 aAP
@@ -82886,7 +82894,7 @@ aol
 aol
 aol
 aol
-aBC
+oEt
 ayi
 azq
 aAK
