@@ -2871,15 +2871,6 @@
 /obj/effect/turf_decal/delivery,
 /turf/open/floor/plasteel,
 /area/maintenance/starboard/fore)
-"ajU" = (
-/obj/effect/turf_decal/tile/blue{
-	dir = 8
-	},
-/obj/machinery/atmospherics/pipe/simple/scrubbers/hidden{
-	dir = 4
-	},
-/turf/open/floor/plasteel/white/corner,
-/area/hallway/secondary/entry)
 "ajV" = (
 /obj/machinery/atmospherics/pipe/simple/scrubbers/hidden{
 	dir = 4
@@ -3172,13 +3163,12 @@
 /turf/open/floor/plasteel,
 /area/maintenance/starboard/fore)
 "akG" = (
-/obj/machinery/atmospherics/pipe/simple/supply/hidden,
-/obj/machinery/door/airlock/medical{
-	name = "Psychology";
-	req_access_txt = "76"
+/obj/effect/spawner/structure/window/reinforced,
+/obj/machinery/door/poddoor/shutters/preopen{
+	id = "psych_shutters";
+	name = "psychology office shutters"
 	},
-/obj/machinery/door/firedoor,
-/turf/open/floor/plasteel,
+/turf/open/floor/plating,
 /area/medical/psychology)
 "akH" = (
 /obj/machinery/atmospherics/pipe/simple/scrubbers/hidden,
@@ -3436,11 +3426,13 @@
 /turf/open/floor/carpet,
 /area/medical/psychology)
 "alv" = (
-/obj/machinery/atmospherics/pipe/simple/supply/hidden,
+/obj/structure/chair/comfy/brown{
+	color = "#596479";
+	dir = 8
+	},
 /turf/open/floor/carpet,
 /area/medical/psychology)
 "alw" = (
-/obj/machinery/atmospherics/pipe/simple/scrubbers/hidden,
 /obj/machinery/airalarm{
 	dir = 8;
 	pixel_x = 23
@@ -3645,23 +3637,32 @@
 /area/maintenance/port/fore)
 "amk" = (
 /obj/machinery/atmospherics/pipe/manifold/supply/hidden{
-	dir = 4
+	dir = 1
 	},
 /turf/open/floor/carpet,
 /area/medical/psychology)
-"aml" = (
-/obj/machinery/atmospherics/pipe/simple/scrubbers/hidden,
-/obj/structure/chair/comfy/brown{
-	color = "#596479";
-	dir = 8
+"amm" = (
+/obj/machinery/door/airlock/medical{
+	name = "Psychology";
+	req_access_txt = "76"
 	},
-/turf/open/floor/carpet,
+/obj/machinery/door/firedoor,
+/obj/machinery/atmospherics/pipe/simple/supply/hidden{
+	dir = 4
+	},
+/turf/open/floor/plasteel,
 /area/medical/psychology)
 "amn" = (
 /obj/effect/turf_decal/tile/blue{
 	dir = 8
 	},
 /obj/machinery/atmospherics/pipe/simple/scrubbers/hidden,
+/obj/effect/turf_decal/tile/purple{
+	dir = 1
+	},
+/obj/machinery/atmospherics/pipe/simple/supply/hidden{
+	dir = 4
+	},
 /turf/open/floor/plasteel,
 /area/hallway/secondary/entry)
 "amo" = (
@@ -3826,10 +3827,13 @@
 	icon_state = "2-8"
 	},
 /obj/machinery/atmospherics/pipe/simple/supply/hidden,
+/obj/structure/chair,
 /turf/open/floor/carpet,
 /area/medical/psychology)
 "ank" = (
-/obj/machinery/atmospherics/pipe/simple/scrubbers/hidden,
+/obj/machinery/atmospherics/pipe/simple/scrubbers/hidden{
+	dir = 6
+	},
 /turf/open/floor/carpet,
 /area/medical/psychology)
 "anl" = (
@@ -3838,12 +3842,20 @@
 	id = "psych_shutters";
 	name = "psychology office shutters"
 	},
+/obj/machinery/atmospherics/pipe/simple/scrubbers/hidden{
+	dir = 4
+	},
 /turf/open/floor/plating,
 /area/medical/psychology)
 "anm" = (
-/obj/machinery/atmospherics/pipe/simple/scrubbers/hidden,
 /obj/effect/turf_decal/tile/blue{
 	dir = 8
+	},
+/obj/machinery/atmospherics/pipe/manifold/scrubbers/hidden{
+	dir = 4
+	},
+/obj/effect/turf_decal/tile/purple{
+	dir = 1
 	},
 /turf/open/floor/plasteel,
 /area/hallway/secondary/entry)
@@ -28338,12 +28350,6 @@
 "ceq" = (
 /obj/effect/turf_decal/tile/blue{
 	dir = 8
-	},
-/obj/structure/sign/departments/custodian{
-	desc = "A sign labelling an area where the psychologist works.";
-	icon_state = "psychology";
-	name = "\improper PSYCHOLOGY";
-	pixel_y = -32
 	},
 /obj{
 	name = "---Merge conflict marker---"
@@ -71306,6 +71312,13 @@
 	},
 /turf/open/space/basic,
 /area/space/nearstation)
+"esQ" = (
+/obj/structure/closet/secure_closet/psychology,
+/obj/machinery/atmospherics/components/unary/vent_pump/on{
+	dir = 1
+	},
+/turf/open/floor/carpet/blue,
+/area/medical/psychology)
 "esV" = (
 /obj/structure/table,
 /obj/machinery/light{
@@ -72075,10 +72088,6 @@
 	},
 /turf/open/floor/plasteel/white,
 /area/service/kitchen)
-"eKQ" = (
-/obj/effect/decal/cleanable/dirt,
-/turf/open/floor/plasteel,
-/area/maintenance/port/fore)
 "eKR" = (
 /obj/machinery/atmospherics/pipe/simple/supply/hidden,
 /obj/effect/turf_decal/tile/neutral{
@@ -72550,6 +72559,10 @@
 	icon_state = "chapel"
 	},
 /area/service/chapel/main)
+"eTV" = (
+/obj/effect/decal/cleanable/dirt,
+/turf/open/floor/plasteel,
+/area/maintenance/port/fore)
 "eUs" = (
 /obj/machinery/chem_master/condimaster,
 /obj/effect/turf_decal/bot,
@@ -79133,6 +79146,10 @@
 	},
 /turf/open/floor/plasteel/dark,
 /area/service/library)
+"hkI" = (
+/obj/machinery/light/small,
+/turf/open/floor/plasteel/white,
+/area/command/blueshielquarters)
 "hkK" = (
 /obj/structure/table/reinforced,
 /obj/item/electronics/firelock,
@@ -83676,16 +83693,6 @@
 /obj/effect/turf_decal/delivery,
 /turf/open/floor/plasteel,
 /area/engineering/main)
-"iCJ" = (
-/obj/machinery/door/airlock/medical{
-	name = "Psychologist's Quarters";
-	req_access_txt = "76"
-	},
-/obj/machinery/atmospherics/pipe/simple/supply/hidden{
-	dir = 4
-	},
-/turf/open/floor/carpet/blue,
-/area/medical/psychology)
 "iCO" = (
 /obj/effect/turf_decal/delivery,
 /obj/structure/chair{
@@ -83946,6 +83953,10 @@
 	},
 /turf/open/floor/plasteel,
 /area/service/janitor)
+"iGN" = (
+/obj/item/kirbyplants/random,
+/turf/open/floor/wood,
+/area/command/blueshieldoffice)
 "iGQ" = (
 /obj/structure/mirror{
 	pixel_x = -28
@@ -85218,11 +85229,17 @@
 /turf/open/floor/plasteel,
 /area/command/heads_quarters/ce)
 "jdt" = (
+/obj/machinery/atmospherics/pipe/simple/scrubbers/hidden{
+	dir = 4
+	},
 /obj/effect/turf_decal/tile/blue{
 	dir = 8
 	},
-/obj/machinery/atmospherics/pipe/manifold/scrubbers/hidden{
-	dir = 1
+/obj/structure/sign/departments/custodian{
+	desc = "A sign labelling an area where the psychologist works.";
+	icon_state = "psychology";
+	name = "\improper PSYCHOLOGY";
+	pixel_y = -32
 	},
 /turf/open/floor/plasteel/white/corner,
 /area/hallway/secondary/entry)
@@ -89374,6 +89391,10 @@
 	},
 /turf/open/floor/plasteel,
 /area/service/hydroponics)
+"ktO" = (
+/obj/structure/dresser,
+/turf/open/floor/carpet/blue,
+/area/medical/psychology)
 "kue" = (
 /obj/effect/turf_decal/tile/neutral{
 	dir = 1
@@ -92055,13 +92076,6 @@
 	},
 /turf/open/floor/plasteel,
 /area/engineering/atmospherics_engine)
-"lun" = (
-/obj/structure/closet/secure_closet/psychology,
-/obj/machinery/atmospherics/components/unary/vent_pump/on{
-	dir = 1
-	},
-/turf/open/floor/carpet/blue,
-/area/medical/psychology)
 "luA" = (
 /obj/machinery/atmospherics/pipe/manifold/scrubbers/hidden{
 	dir = 1
@@ -93479,10 +93493,6 @@
 /obj/effect/turf_decal/bot,
 /turf/open/floor/plasteel,
 /area/engineering/main)
-"lTs" = (
-/obj/item/kirbyplants/random,
-/turf/open/floor/wood,
-/area/command/blueshieldoffice)
 "lTx" = (
 /obj/effect/turf_decal/tile/neutral{
 	dir = 1
@@ -97592,15 +97602,12 @@
 /turf/open/floor/plasteel,
 /area/cargo/sorting)
 "noQ" = (
-/obj/machinery/atmospherics/pipe/simple/scrubbers/hidden{
-	dir = 4
+/obj/machinery/door/airlock/maintenance_hatch{
+	name = "Maintenance Hatch";
+	req_access_txt = "12"
 	},
-/obj/effect/turf_decal/tile/blue{
-	dir = 8
-	},
-/obj/effect/turf_decal/tile/purple,
-/turf/open/floor/plasteel,
-/area/hallway/secondary/entry)
+/turf/open/floor/plating,
+/area/maintenance/port/fore)
 "noR" = (
 /obj/machinery/disposal/bin,
 /obj/effect/turf_decal/tile/neutral{
@@ -97703,12 +97710,10 @@
 /turf/open/floor/plasteel,
 /area/cargo/storage)
 "nqh" = (
-/obj/machinery/door/airlock/maintenance_hatch{
-	name = "Maintenance Hatch";
-	req_access_txt = "12"
-	},
-/turf/open/floor/plating,
-/area/maintenance/port/fore)
+/obj/structure/table/wood,
+/obj/item/flashlight/lamp/green,
+/turf/open/floor/carpet,
+/area/command/blueshieldoffice)
 "nqo" = (
 /obj/structure/cable/white,
 /obj/effect/spawner/structure/window/reinforced,
@@ -98871,13 +98876,13 @@
 /turf/open/floor/plating,
 /area/engineering/break_room)
 "nKy" = (
-/obj/machinery/atmospherics/pipe/simple/scrubbers/hidden,
-/obj/effect/spawner/structure/window/reinforced,
-/obj/machinery/door/poddoor/shutters/preopen{
-	id = "psych_shutters";
-	name = "psychology office shutters"
+/obj/structure/chair/sofa/left{
+	dir = 4
 	},
-/turf/open/floor/plating,
+/obj/machinery/light{
+	dir = 8
+	},
+/turf/open/floor/carpet,
 /area/medical/psychology)
 "nKB" = (
 /obj/effect/turf_decal/bot,
@@ -105720,12 +105725,32 @@
 	},
 /turf/open/floor/plating,
 /area/engineering/atmos)
+"qcw" = (
+/obj/machinery/door/airlock/medical{
+	name = "Psychologist's Quarters";
+	req_access_txt = "76"
+	},
+/obj/machinery/atmospherics/pipe/simple/supply/hidden{
+	dir = 4
+	},
+/turf/open/floor/carpet/blue,
+/area/medical/psychology)
 "qcW" = (
 /obj/machinery/firealarm{
 	pixel_y = 26
 	},
 /turf/open/floor/wood,
 /area/command/heads_quarters/captain)
+"qdk" = (
+/obj/structure/cable/white{
+	icon_state = "4-8"
+	},
+/obj/structure/cable/white{
+	icon_state = "1-8"
+	},
+/obj/machinery/atmospherics/pipe/simple/supply/hidden,
+/turf/open/floor/plating,
+/area/maintenance/port/fore)
 "qdz" = (
 /obj/structure/table/wood,
 /obj/machinery/light/small{
@@ -106732,16 +106757,6 @@
 /obj/effect/turf_decal/delivery,
 /turf/open/floor/plasteel,
 /area/cargo/miningoffice)
-"qtv" = (
-/obj/structure/cable/white{
-	icon_state = "4-8"
-	},
-/obj/structure/cable/white{
-	icon_state = "1-8"
-	},
-/obj/machinery/atmospherics/pipe/simple/supply/hidden,
-/turf/open/floor/plating,
-/area/maintenance/port/fore)
 "qtQ" = (
 /obj/structure/cable/white{
 	icon_state = "4-8"
@@ -108548,10 +108563,20 @@
 /turf/open/floor/plasteel/dark,
 /area/service/chapel/office)
 "rgT" = (
-/obj/structure/table/wood,
-/obj/item/flashlight/lamp/green,
-/turf/open/floor/carpet,
-/area/command/blueshieldoffice)
+/obj/machinery/door/firedoor,
+/obj/machinery/atmospherics/pipe/simple/scrubbers/hidden,
+/obj/effect/turf_decal/stripes/line,
+/obj/effect/turf_decal/stripes/line{
+	dir = 1
+	},
+/obj/effect/turf_decal/tile/purple{
+	dir = 1
+	},
+/obj/effect/turf_decal/tile/blue{
+	dir = 8
+	},
+/turf/open/floor/plasteel,
+/area/hallway/secondary/entry)
 "rhn" = (
 /obj/structure/plasticflaps/opaque,
 /obj/effect/decal/cleanable/dirt,
@@ -110549,14 +110574,11 @@
 /turf/open/floor/plasteel/dark,
 /area/command/heads_quarters/ce)
 "rNa" = (
-/obj/structure/chair/sofa/left{
+/obj/machinery/atmospherics/pipe/simple/scrubbers/hidden{
 	dir = 4
 	},
-/obj/machinery/light{
-	dir = 8
-	},
-/turf/open/floor/carpet,
-/area/medical/psychology)
+/turf/closed/wall,
+/area/command/blueshielquarters)
 "rNg" = (
 /obj/item/kirbyplants/random,
 /turf/open/floor/plasteel/dark,
@@ -112365,11 +112387,10 @@
 /obj/effect/turf_decal/tile/blue{
 	dir = 8
 	},
-/obj/effect/turf_decal/tile/purple,
 /obj/machinery/atmospherics/pipe/simple/scrubbers/hidden{
 	dir = 4
 	},
-/turf/open/floor/plasteel,
+/turf/open/floor/plasteel/white/corner,
 /area/hallway/secondary/entry)
 "ssg" = (
 /obj/structure/cable/white{
@@ -114754,11 +114775,18 @@
 /turf/closed/wall,
 /area/science/research/abandoned)
 "thZ" = (
-/obj/machinery/atmospherics/pipe/simple/scrubbers/hidden{
+/obj/effect/decal/cleanable/dirt,
+/obj/item/kirbyplants/random,
+/obj/effect/spawner/lootdrop/costume,
+/obj/effect/turf_decal/tile/neutral,
+/obj/effect/turf_decal/tile/neutral{
 	dir = 4
 	},
-/turf/closed/wall,
-/area/command/blueshielquarters)
+/obj/effect/turf_decal/tile/neutral{
+	dir = 8
+	},
+/turf/open/floor/plasteel,
+/area/maintenance/port/fore)
 "tin" = (
 /obj/machinery/light{
 	dir = 1
@@ -114980,6 +115008,12 @@
 	},
 /turf/open/floor/plasteel,
 /area/cargo/storage)
+"tlu" = (
+/obj/machinery/light/small{
+	dir = 8
+	},
+/turf/open/floor/carpet/blue,
+/area/medical/psychology)
 "tlL" = (
 /obj/structure/plasticflaps/opaque,
 /obj/effect/decal/cleanable/dirt,
@@ -116414,18 +116448,14 @@
 /turf/open/floor/plasteel/white,
 /area/science/misc_lab)
 "tIk" = (
-/obj/effect/decal/cleanable/dirt,
-/obj/item/kirbyplants/random,
-/obj/effect/spawner/lootdrop/costume,
-/obj/effect/turf_decal/tile/neutral,
-/obj/effect/turf_decal/tile/neutral{
+/obj/machinery/atmospherics/components/unary/vent_pump/on{
 	dir = 4
 	},
-/obj/effect/turf_decal/tile/neutral{
-	dir = 8
+/obj/structure/chair/sofa/right{
+	dir = 4
 	},
-/turf/open/floor/plasteel,
-/area/maintenance/port/fore)
+/turf/open/floor/carpet,
+/area/medical/psychology)
 "tIl" = (
 /obj/structure/table/wood,
 /obj/machinery/newscaster{
@@ -116586,8 +116616,7 @@
 /obj/effect/turf_decal/tile/blue{
 	dir = 8
 	},
-/obj/effect/turf_decal/tile/purple,
-/turf/open/floor/plasteel,
+/turf/open/floor/plasteel/white/corner,
 /area/hallway/secondary/entry)
 "tNb" = (
 /obj/structure/cable/white,
@@ -119145,10 +119174,6 @@
 	},
 /turf/open/floor/plasteel,
 /area/command/heads_quarters/cmo)
-"uHq" = (
-/obj/machinery/light/small,
-/turf/open/floor/plasteel/white,
-/area/command/blueshielquarters)
 "uHr" = (
 /obj/structure/cable/white{
 	icon_state = "1-2"
@@ -119447,14 +119472,21 @@
 /turf/open/floor/plasteel/dark,
 /area/science/mixing)
 "uOk" = (
-/obj/machinery/atmospherics/components/unary/vent_pump/on{
+/obj/effect/turf_decal/tile/neutral{
+	dir = 1
+	},
+/obj/effect/turf_decal/tile/neutral,
+/obj/effect/turf_decal/tile/neutral{
 	dir = 4
 	},
-/obj/structure/chair/sofa/right{
+/obj/effect/turf_decal/tile/neutral{
+	dir = 8
+	},
+/obj/machinery/atmospherics/pipe/manifold/supply/hidden{
 	dir = 4
 	},
-/turf/open/floor/carpet,
-/area/medical/psychology)
+/turf/open/floor/plasteel,
+/area/hallway/secondary/entry)
 "uON" = (
 /obj/structure/cable/white{
 	icon_state = "0-4"
@@ -123027,10 +123059,6 @@
 /obj/item/pen,
 /turf/open/floor/carpet,
 /area/command/blueshieldoffice)
-"wha" = (
-/obj/structure/dresser,
-/turf/open/floor/carpet/blue,
-/area/medical/psychology)
 "whi" = (
 /obj/structure/cable{
 	icon_state = "0-8"
@@ -127167,12 +127195,6 @@
 	},
 /turf/open/floor/plasteel/dark,
 /area/science/mixing)
-"xEa" = (
-/obj/machinery/light/small{
-	dir = 8
-	},
-/turf/open/floor/carpet/blue,
-/area/medical/psychology)
 "xED" = (
 /obj/effect/turf_decal/stripes/corner{
 	dir = 1
@@ -161845,16 +161867,16 @@ aiz
 aiR
 aje
 ajv
-noQ
+ajV
 nQm
 qiA
 aHY
 fMW
 kbR
 eio
-uHq
+hkI
 nQm
-eKQ
+eTV
 asP
 alf
 avw
@@ -162362,7 +162384,7 @@ ajx
 ajW
 nQm
 nQm
-thZ
+rNa
 wHi
 xFi
 nQm
@@ -163389,12 +163411,12 @@ aaO
 ajw
 ajV
 khz
-rgT
+nqh
 wgN
 sQG
 mea
 uXE
-lTs
+iGN
 khz
 arE
 kdb
@@ -164158,7 +164180,7 @@ aad
 ads
 agj
 hSD
-ajU
+sse
 khz
 khz
 khz
@@ -164424,7 +164446,7 @@ pZz
 ami
 nWP
 ami
-qtv
+qdk
 asX
 aEg
 kVl
@@ -164930,7 +164952,7 @@ aaa
 abf
 ajz
 aka
-nqh
+noQ
 alg
 alg
 vtY
@@ -165189,11 +165211,11 @@ tww
 ajV
 alf
 arB
-tIk
+thZ
 vtY
 tED
-xEa
-wha
+tlu
+ktO
 vtY
 kqo
 asZ
@@ -165450,7 +165472,7 @@ vtY
 vtY
 aog
 apd
-lun
+esQ
 vtY
 arH
 ata
@@ -165702,11 +165724,11 @@ abZ
 ajw
 ajV
 vtY
-rNa
-uOk
+nKy
+tIk
 vtY
 xLU
-iCJ
+qcw
 vtY
 vtY
 arD
@@ -165958,7 +165980,7 @@ aiU
 ajd
 ajD
 akc
-anl
+vtY
 alu
 rZM
 ani
@@ -166213,8 +166235,8 @@ aaO
 aaO
 abf
 ajh
-akb
-itE
+hSD
+ajV
 akG
 alv
 amk
@@ -166471,10 +166493,10 @@ aaa
 aaa
 abf
 ajw
-jdt
-nKy
+sse
+akG
 alw
-aml
+ape
 ank
 aoj
 apg
@@ -166728,10 +166750,10 @@ aad
 aad
 aaO
 ajw
-ajV
+jdt
 vtY
 vtY
-anl
+amm
 anl
 vtY
 vtY
@@ -166987,7 +167009,7 @@ abf
 ajA
 akd
 akH
-ajd
+rgT
 amn
 anm
 aol
@@ -167245,7 +167267,7 @@ ajz
 ake
 akI
 aje
-akI
+uOk
 akI
 akI
 apj
