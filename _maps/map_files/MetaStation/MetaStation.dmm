@@ -48810,6 +48810,17 @@
 /obj/machinery/atmospherics/pipe/simple/cyan/visible,
 /turf/open/floor/engine,
 /area/engineering/main)
+"dPr" = (
+/obj/machinery/atmospherics/pipe/simple/supply/hidden,
+/obj/structure/cable/yellow{
+	icon_state = "1-2"
+	},
+/obj/machinery/door/airlock/maintenance{
+	name = "Psychology Quarters Maintenance";
+	req_access_txt = "76"
+	},
+/turf/open/floor/plating,
+/area/maintenance/port)
 "dPI" = (
 /obj/structure/grille,
 /turf/closed/wall/r_wall,
@@ -54577,6 +54588,9 @@
 	},
 /turf/open/floor/engine,
 /area/engineering/main)
+"hiL" = (
+/turf/open/floor/carpet/blue,
+/area/medical/psychology)
 "hiR" = (
 /obj/machinery/power/apc{
 	areastring = "/area/hallway/primary/port";
@@ -62609,6 +62623,10 @@
 	},
 /turf/open/floor/plasteel,
 /area/cargo/sorting)
+"lxI" = (
+/obj/structure/closet/secure_closet/psychology,
+/turf/open/floor/carpet/blue,
+/area/medical/psychology)
 "lxV" = (
 /obj/structure/table,
 /obj/item/clothing/shoes/sneakers/orange{
@@ -64928,9 +64946,6 @@
 /obj/item/stamp/law,
 /turf/open/floor/wood,
 /area/service/lawoffice)
-"mJt" = (
-/turf/open/floor/carpet/blue,
-/area/medical/psychology)
 "mJR" = (
 /obj/effect/spawner/structure/window/reinforced,
 /obj/structure/cable/yellow{
@@ -74465,10 +74480,6 @@
 /obj/effect/spawner/structure/window,
 /turf/open/floor/plating,
 /area/commons/storage/primary)
-"rPX" = (
-/obj/structure/closet/secure_closet/psychology,
-/turf/open/floor/carpet/blue,
-/area/medical/psychology)
 "rQj" = (
 /obj/effect/landmark/start/cook,
 /obj/machinery/holopad,
@@ -82661,17 +82672,6 @@
 	},
 /turf/open/floor/plasteel/dark,
 /area/engineering/storage/tcomms)
-"wvs" = (
-/obj/machinery/atmospherics/pipe/simple/supply/hidden,
-/obj/structure/cable/yellow{
-	icon_state = "1-2"
-	},
-/obj/machinery/door/airlock/maintenance{
-	name = "Psychology Office Maintenance";
-	req_access_txt = "76"
-	},
-/turf/open/floor/plating,
-/area/maintenance/port)
 "wvO" = (
 /obj/machinery/power/apc{
 	areastring = "/area/medical/genetics";
@@ -100184,7 +100184,7 @@ kfV
 hVl
 bJq
 bJq
-wvs
+dPr
 bPG
 usf
 bSn
@@ -100439,8 +100439,8 @@ sfD
 jbe
 oOM
 wVI
-mJt
-rPX
+hiL
+lxI
 wVI
 alC
 aGN
