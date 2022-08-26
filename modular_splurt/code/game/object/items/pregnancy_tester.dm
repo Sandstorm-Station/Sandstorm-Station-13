@@ -21,7 +21,7 @@
 
 /obj/item/pregnancytest/examine(mob/user)
 	. = ..()
-	. += span_notice("[results ? "The display reads [results]" : "The display is empty, this tester is not yet used"]")
+	. += span_notice("[results ? "The display reads [results]" : "The display is empty, this tester is not yet used"].")
 
 /obj/item/pregnancytest/afterattack(atom/target, mob/user, proximity_flag, click_parameters)
 	. = ..()
@@ -48,6 +48,8 @@
 
 	if(!results)
 		results = "negative"
+
+	to_chat(user, span_notice("You use the tester."))
 
 	icon_state = results
 	name = "[results] pregnancy test"
