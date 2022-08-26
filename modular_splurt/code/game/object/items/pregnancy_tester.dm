@@ -19,6 +19,9 @@
 
 	test(user, user)
 
+/obj/item/pregnancytest/examine(mob/user)
+	. = ..()
+	. += span_notice("[results ? "The display reads [results]" : "The display is empty, this tester is not yet used"]")
 
 /obj/item/pregnancytest/afterattack(atom/target, mob/user, proximity_flag, click_parameters)
 	. = ..()
@@ -36,17 +39,17 @@
 
 /obj/item/pregnancytest/proc/test(mob/living/target, mob/user)
 	if(results)
-		to_chat(user, span_warning("The display reads [results], you can't use this tester anymore!"))
+		to_chat(user, span_warning("This tester is already used!"))
 		return
 	for(var/obj/item/thing as anything in target.contents)
 		if(thing?.GetComponent(/datum/component/pregnancy))
 			results = "positive"
 			break
 
+	if(!results)
+		results = "negative"
+
 	icon_state = results
 	name = "[results] pregnancy test"
 
 	update_appearance()
-
-	if(user)
-		to_chat(user, span_notice("You use the pregnancy test, the display reads [results]!"))
