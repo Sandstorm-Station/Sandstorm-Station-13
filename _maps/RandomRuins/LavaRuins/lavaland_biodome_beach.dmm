@@ -94,6 +94,7 @@
 /obj/item/stack/sheet/metal/fifty,
 /obj/item/stack/sheet/glass/fifty,
 /obj/structure/closet,
+/obj/item/stack/sheet/metal/twenty,
 /turf/open/floor/plating,
 /area/ruin/lavaland/powered/beach)
 "ar" = (
@@ -464,6 +465,12 @@
 /obj/machinery/light,
 /turf/open/floor/plating/beach/water,
 /area/ruin/lavaland/powered/beach)
+"cC" = (
+/obj/machinery/light,
+/turf/open/floor/plasteel/yellowsiding/corner{
+	dir = 4
+	},
+/area/ruin/lavaland/powered/beach)
 "cR" = (
 /obj/structure/table/wood,
 /obj/item/tank/internals/oxygen,
@@ -481,8 +488,29 @@
 	},
 /turf/open/floor/pod/dark,
 /area/ruin/lavaland/powered/beach)
+"eF" = (
+/obj/effect/turf_decal/sand,
+/obj/machinery/light{
+	dir = 1
+	},
+/turf/open/floor/plating/beach/sand,
+/area/ruin/lavaland/powered/beach)
+"fG" = (
+/obj/effect/turf_decal/sand,
+/obj/structure/table/wood,
+/turf/open/floor/plasteel,
+/area/ruin/lavaland/powered/beach)
 "gg" = (
 /obj/machinery/pool/controller,
+/turf/open/floor/plasteel,
+/area/ruin/lavaland/powered/beach)
+"gl" = (
+/turf/open/floor/plasteel/yellowsiding{
+	dir = 4
+	},
+/area/ruin/lavaland/powered/beach)
+"gu" = (
+/obj/structure/closet/wardrobe/mixed,
 /turf/open/floor/plasteel,
 /area/ruin/lavaland/powered/beach)
 "hY" = (
@@ -501,29 +529,6 @@
 /obj/effect/turf_decal/sand,
 /turf/open/floor/pod/dark,
 /area/ruin/lavaland/powered/beach)
-"kb" = (
-/obj/structure/fluff/beach_umbrella/security,
-/turf/open/floor/plating/beach/sand,
-/area/ruin/lavaland/powered/beach)
-"kn" = (
-/obj/effect/turf_decal/sand,
-/obj/structure/chair{
-	dir = 4
-	},
-/turf/open/floor/plasteel,
-/area/ruin/lavaland/powered/beach)
-"kz" = (
-/obj/structure/flora/ausbushes/sunnybush,
-/turf/open/floor/plating/beach/sand,
-/area/ruin/lavaland/powered/beach)
-"lk" = (
-/turf/open/floor/plasteel/yellowsiding,
-/area/ruin/lavaland/powered/beach)
-"lx" = (
-/turf/open/floor/plasteel/yellowsiding{
-	dir = 4
-	},
-/area/ruin/lavaland/powered/beach)
 "lF" = (
 /obj/machinery/light{
 	dir = 4
@@ -536,25 +541,25 @@
 /obj/structure/dresser,
 /turf/open/floor/pod/dark,
 /area/ruin/lavaland/powered/beach)
+"lP" = (
+/obj/effect/turf_decal/stripes/asteroid/line{
+	dir = 1
+	},
+/obj/effect/turf_decal/sand,
+/obj/structure/closet/secure_closet/personal,
+/turf/open/floor/plasteel,
+/area/ruin/lavaland/powered/beach)
 "mh" = (
 /obj/effect/spawner/structure/window,
 /turf/open/floor/plating,
 /area/ruin/lavaland/powered/beach)
-"nI" = (
+"nQ" = (
 /obj/machinery/light{
 	dir = 1
 	},
 /turf/open/floor/pod/dark{
 	initial_gas_mix = "o2=14;n2=23;TEMP=300"
 	},
-/area/ruin/lavaland/powered/beach)
-"oj" = (
-/obj/effect/turf_decal/stripes/asteroid/line{
-	dir = 1
-	},
-/obj/effect/turf_decal/sand,
-/obj/machinery/vending/autodrobe/all_access,
-/turf/open/floor/plasteel,
 /area/ruin/lavaland/powered/beach)
 "oK" = (
 /obj/effect/turf_decal/caution{
@@ -563,16 +568,23 @@
 /obj/effect/turf_decal/sand,
 /turf/open/floor/plasteel,
 /area/ruin/lavaland/powered/beach)
+"oR" = (
+/obj/machinery/light{
+	dir = 1
+	},
+/obj/machinery/light{
+	dir = 1
+	},
+/turf/open/floor/pod/dark{
+	initial_gas_mix = "o2=14;n2=23;TEMP=300"
+	},
+/area/ruin/lavaland/powered/beach)
 "pg" = (
 /obj/effect/turf_decal/sand,
 /obj/machinery/shower{
 	dir = 4
 	},
 /turf/open/floor/pod/light,
-/area/ruin/lavaland/powered/beach)
-"pn" = (
-/obj/item/stack/sheet/metal/fifty,
-/turf/open/floor/plating,
 /area/ruin/lavaland/powered/beach)
 "pI" = (
 /obj/machinery/door/airlock/hatch{
@@ -594,18 +606,18 @@
 	},
 /turf/open/floor/pod/dark,
 /area/ruin/lavaland/powered/beach)
-"qi" = (
-/obj/machinery/light,
-/turf/open/floor/plasteel/yellowsiding/corner{
+"qj" = (
+/obj/effect/turf_decal/sand,
+/obj/structure/railing{
 	dir = 4
 	},
+/turf/open/floor/plating/beach/sand,
 /area/ruin/lavaland/powered/beach)
-"qz" = (
-/obj/machinery/light{
-	dir = 4
+"qs" = (
+/obj/machinery/pool/filter{
+	pixel_y = 16
 	},
-/obj/item/toy/poolnoodle/red,
-/turf/open/floor/plasteel,
+/turf/open/pool,
 /area/ruin/lavaland/powered/beach)
 "qT" = (
 /obj/machinery/shower{
@@ -621,6 +633,10 @@
 	},
 /turf/open/floor/plating,
 /area/ruin/lavaland/powered/beach)
+"sb" = (
+/obj/item/clothing/neck/necklace/dope,
+/turf/open/floor/plating/beach/sand,
+/area/ruin/lavaland/powered/beach)
 "sy" = (
 /obj/effect/turf_decal/caution{
 	dir = 4
@@ -628,84 +644,87 @@
 /obj/effect/turf_decal/sand,
 /turf/open/floor/plasteel,
 /area/ruin/lavaland/powered/beach)
-"sJ" = (
-/obj/effect/spawner/structure/window/reinforced/indestructable{
-	desc = "These windows seem protected by a radical energy."
-	},
-/turf/open/floor/plating,
-/area/ruin/lavaland/powered/beach)
 "sO" = (
 /obj/machinery/jukebox/disco/indestructible,
 /turf/open/floor/light/colour_cycle,
 /area/ruin/lavaland/powered/beach)
-"sX" = (
-/obj/machinery/light{
-	dir = 1
+"tw" = (
+/obj/item/stack/sheet/metal/fifty,
+/turf/open/floor/plating,
+/area/ruin/lavaland/powered/beach)
+"tG" = (
+/obj/effect/turf_decal/sand,
+/obj/structure/chair{
+	dir = 8
 	},
-/obj/structure/dresser,
 /turf/open/floor/plasteel,
 /area/ruin/lavaland/powered/beach)
-"tl" = (
+"uX" = (
+/obj/effect/turf_decal/sand,
+/obj/structure/railing{
+	dir = 1
+	},
+/turf/open/floor/plating/beach/sand,
+/area/ruin/lavaland/powered/beach)
+"vl" = (
+/obj/structure/closet/athletic_mixed,
+/turf/open/floor/pod/dark,
+/area/ruin/lavaland/powered/beach)
+"wU" = (
 /obj/effect/turf_decal/sand,
 /obj/structure/railing/corner{
 	dir = 4
 	},
 /turf/open/floor/plating/beach/sand,
 /area/ruin/lavaland/powered/beach)
-"tN" = (
-/obj/structure/pool/Rboard,
-/turf/open/floor/plasteel/yellowsiding{
-	dir = 8
-	},
-/area/ruin/lavaland/powered/beach)
-"ui" = (
-/turf/open/floor/plasteel/yellowsiding{
-	dir = 10
-	},
-/area/ruin/lavaland/powered/beach)
-"uY" = (
-/obj/machinery/pool/filter{
-	pixel_y = 16
+"wX" = (
+/obj/structure/pool/ladder{
+	dir = 8;
+	pixel_x = 4
 	},
 /turf/open/pool,
-/area/ruin/lavaland/powered/beach)
-"vl" = (
-/obj/structure/closet/athletic_mixed,
-/turf/open/floor/pod/dark,
 /area/ruin/lavaland/powered/beach)
 "wY" = (
 /turf/open/floor/pod/light,
 /area/ruin/lavaland/powered/beach)
-"xg" = (
-/obj/effect/turf_decal/sand,
-/obj/structure/table/wood,
-/turf/open/floor/plasteel,
-/area/ruin/lavaland/powered/beach)
-"xU" = (
-/obj/structure/closet/wardrobe/mixed,
-/turf/open/floor/plasteel,
-/area/ruin/lavaland/powered/beach)
-"yf" = (
-/obj/machinery/pool/drain,
-/turf/open/pool,
-/area/ruin/lavaland/powered/beach)
 "yp" = (
-/obj/item/reagent_containers/spray/spraytan,
 /obj/effect/turf_decal/sand,
 /obj/structure/chair{
 	dir = 4
 	},
 /turf/open/floor/plasteel,
 /area/ruin/lavaland/powered/beach)
+"yX" = (
+/turf/open/floor/plasteel/yellowsiding{
+	dir = 1
+	},
+/area/ruin/lavaland/powered/beach)
+"zc" = (
+/obj/effect/spawner/structure/window/reinforced/indestructable{
+	desc = "These windows seem protected by a radical energy."
+	},
+/obj/machinery/door/poddoor/shutters/preopen{
+	id = "beach";
+	name = "Dome shutters"
+	},
+/turf/open/floor/plating,
+/area/ruin/lavaland/powered/beach)
 "zw" = (
 /obj/structure/closet/athletic_mixed,
 /obj/effect/turf_decal/sand,
 /turf/open/floor/pod/dark,
 /area/ruin/lavaland/powered/beach)
-"AM" = (
-/turf/open/floor/plasteel/yellowsiding{
+"zG" = (
+/obj/effect/turf_decal/stripes/asteroid/line{
 	dir = 1
 	},
+/obj/effect/turf_decal/sand,
+/obj/machinery/vending/autodrobe/all_access,
+/turf/open/floor/plasteel,
+/area/ruin/lavaland/powered/beach)
+"AE" = (
+/obj/item/toy/poolnoodle/blue,
+/turf/open/floor/plasteel,
 /area/ruin/lavaland/powered/beach)
 "Bl" = (
 /obj/effect/turf_decal/sand,
@@ -714,38 +733,8 @@
 	},
 /turf/open/floor/plating/beach/sand,
 /area/ruin/lavaland/powered/beach)
-"Bz" = (
-/obj/effect/turf_decal/stripes/asteroid/line{
-	dir = 1
-	},
-/obj/effect/turf_decal/sand,
-/obj/structure/closet/secure_closet/personal,
-/turf/open/floor/plasteel,
-/area/ruin/lavaland/powered/beach)
-"BB" = (
-/obj/structure/fluff/beach_umbrella,
-/turf/open/floor/plating/beach/sand,
-/area/ruin/lavaland/powered/beach)
-"BJ" = (
-/obj/item/toy/poolnoodle/blue,
-/turf/open/floor/plasteel,
-/area/ruin/lavaland/powered/beach)
-"BK" = (
-/turf/open/floor/plasteel,
-/area/ruin/lavaland/powered/beach)
-"CJ" = (
-/obj/structure/pool/ladder{
-	dir = 8;
-	pixel_x = 4
-	},
-/turf/open/pool,
-/area/ruin/lavaland/powered/beach)
-"DU" = (
-/obj/effect/turf_decal/sand,
-/obj/machinery/light{
-	dir = 1
-	},
-/turf/open/floor/plating/beach/sand,
+"Dt" = (
+/turf/open/floor/plasteel/yellowsiding,
 /area/ruin/lavaland/powered/beach)
 "Ec" = (
 /obj/machinery/door/airlock/sandstone{
@@ -768,19 +757,32 @@
 "Gu" = (
 /obj/structure/table/wood,
 /obj/item/reagent_containers/food/drinks/beer/light,
+/obj/item/gps/mining{
+	gpstag = "BEACH0"
+	},
+/obj/machinery/button/door{
+	id = "beach";
+	name = "Dome shutter control";
+	pixel_x = -22
+	},
 /turf/open/floor/wood,
 /area/ruin/lavaland/powered/beach)
-"GU" = (
+"GJ" = (
 /obj/effect/turf_decal/sand,
-/obj/structure/railing{
-	dir = 4
+/obj/structure/railing/corner{
+	dir = 1
 	},
 /turf/open/floor/plating/beach/sand,
 /area/ruin/lavaland/powered/beach)
-"Hw" = (
+"GN" = (
 /obj/effect/turf_decal/sand,
 /obj/machinery/vending/kink,
 /turf/open/floor/plasteel,
+/area/ruin/lavaland/powered/beach)
+"Hd" = (
+/turf/open/floor/plasteel/yellowsiding/corner{
+	dir = 8
+	},
 /area/ruin/lavaland/powered/beach)
 "HC" = (
 /obj/structure/rack,
@@ -789,30 +791,108 @@
 /obj/effect/turf_decal/sand,
 /turf/open/floor/pod/dark,
 /area/ruin/lavaland/powered/beach)
-"HU" = (
-/obj/effect/turf_decal/sand,
-/obj/structure/railing{
-	dir = 1
-	},
-/turf/open/floor/plating/beach/sand,
-/area/ruin/lavaland/powered/beach)
-"Jr" = (
-/obj/effect/turf_decal/sand,
-/obj/structure/railing/corner{
-	dir = 1
-	},
-/turf/open/floor/plating/beach/sand,
-/area/ruin/lavaland/powered/beach)
-"Kl" = (
-/obj/item/clothing/neck/necklace/dope,
-/turf/open/floor/plating/beach/sand,
-/area/ruin/lavaland/powered/beach)
-"Ko" = (
-/turf/open/floor/plasteel/yellowsiding/corner{
+"Iz" = (
+/turf/open/floor/plasteel/yellowsiding{
 	dir = 8
 	},
 /area/ruin/lavaland/powered/beach)
-"Ks" = (
+"IC" = (
+/obj/machinery/light{
+	dir = 4
+	},
+/obj/item/toy/poolnoodle/red,
+/turf/open/floor/plasteel,
+/area/ruin/lavaland/powered/beach)
+"IR" = (
+/obj/effect/turf_decal/sand,
+/obj/structure/railing{
+	dir = 8
+	},
+/turf/open/floor/plasteel,
+/area/ruin/lavaland/powered/beach)
+"Ji" = (
+/obj/effect/overlay/palmtree_r,
+/turf/open/floor/plating/beach/sand,
+/area/ruin/lavaland/powered/beach)
+"Jv" = (
+/obj/item/toy/poolnoodle/yellow,
+/turf/open/floor/plasteel,
+/area/ruin/lavaland/powered/beach)
+"JL" = (
+/obj/effect/turf_decal/sand,
+/obj/machinery/door/airlock/sandstone{
+	name = "Beach Access"
+	},
+/turf/open/floor/plasteel,
+/area/ruin/lavaland/powered/beach)
+"Kb" = (
+/obj/structure/fluff/beach_umbrella/security,
+/turf/open/floor/plating/beach/sand,
+/area/ruin/lavaland/powered/beach)
+"LX" = (
+/obj/vehicle/ridden/scooter/skateboard{
+	dir = 4
+	},
+/turf/open/floor/plating/beach/sand,
+/area/ruin/lavaland/powered/beach)
+"NB" = (
+/obj/structure/pool/Rboard,
+/turf/open/floor/plasteel/yellowsiding{
+	dir = 8
+	},
+/area/ruin/lavaland/powered/beach)
+"OL" = (
+/obj/machinery/light{
+	dir = 1
+	},
+/obj/structure/dresser,
+/turf/open/floor/plasteel,
+/area/ruin/lavaland/powered/beach)
+"ON" = (
+/turf/open/floor/plasteel,
+/area/ruin/lavaland/powered/beach)
+"Pa" = (
+/obj/structure/pool/Lboard,
+/turf/open/pool,
+/area/ruin/lavaland/powered/beach)
+"QS" = (
+/obj/effect/turf_decal/sand,
+/obj/machinery/light{
+	dir = 4
+	},
+/turf/open/floor/plating/beach/sand,
+/area/ruin/lavaland/powered/beach)
+"SC" = (
+/obj/structure/flora/ausbushes/sunnybush,
+/turf/open/floor/plating/beach/sand,
+/area/ruin/lavaland/powered/beach)
+"TP" = (
+/obj/machinery/light{
+	dir = 8
+	},
+/turf/open/floor/pod/dark{
+	initial_gas_mix = "o2=14;n2=23;TEMP=300"
+	},
+/area/ruin/lavaland/powered/beach)
+"Uu" = (
+/turf/open/floor/plasteel/yellowsiding{
+	dir = 10
+	},
+/area/ruin/lavaland/powered/beach)
+"Va" = (
+/obj/effect/turf_decal/sand,
+/obj/structure/table/wood,
+/obj/item/reagent_containers/spray/spraytan,
+/turf/open/floor/plasteel,
+/area/ruin/lavaland/powered/beach)
+"Vm" = (
+/obj/structure/fluff/beach_umbrella,
+/turf/open/floor/plating/beach/sand,
+/area/ruin/lavaland/powered/beach)
+"VO" = (
+/turf/open/floor/pod/dark,
+/area/ruin/lavaland/powered/beach)
+"Xe" = (
 /obj/structure/closet/crate/bin,
 /obj/item/tank/internals/emergency_oxygen,
 /obj/item/trash/candy,
@@ -823,72 +903,6 @@
 /obj/effect/turf_decal/sand,
 /turf/open/floor/plasteel,
 /area/ruin/lavaland/powered/beach)
-"LG" = (
-/obj/vehicle/ridden/scooter/skateboard{
-	dir = 4
-	},
-/turf/open/floor/plating/beach/sand,
-/area/ruin/lavaland/powered/beach)
-"Mo" = (
-/obj/effect/turf_decal/sand,
-/obj/structure/railing{
-	dir = 8
-	},
-/turf/open/floor/plasteel,
-/area/ruin/lavaland/powered/beach)
-"NS" = (
-/obj/machinery/light{
-	dir = 1
-	},
-/obj/machinery/light{
-	dir = 1
-	},
-/turf/open/floor/pod/dark{
-	initial_gas_mix = "o2=14;n2=23;TEMP=300"
-	},
-/area/ruin/lavaland/powered/beach)
-"QS" = (
-/obj/effect/turf_decal/sand,
-/obj/machinery/light{
-	dir = 4
-	},
-/turf/open/floor/plating/beach/sand,
-/area/ruin/lavaland/powered/beach)
-"Rm" = (
-/obj/structure/pool/Lboard,
-/turf/open/pool,
-/area/ruin/lavaland/powered/beach)
-"TD" = (
-/turf/open/floor/plasteel/yellowsiding/corner{
-	dir = 1
-	},
-/area/ruin/lavaland/powered/beach)
-"TP" = (
-/obj/machinery/light{
-	dir = 8
-	},
-/turf/open/floor/pod/dark{
-	initial_gas_mix = "o2=14;n2=23;TEMP=300"
-	},
-/area/ruin/lavaland/powered/beach)
-"UE" = (
-/turf/open/floor/plasteel/yellowsiding{
-	dir = 8
-	},
-/area/ruin/lavaland/powered/beach)
-"Vc" = (
-/turf/open/floor/plasteel/yellowsiding/corner,
-/area/ruin/lavaland/powered/beach)
-"VD" = (
-/obj/effect/turf_decal/sand,
-/obj/machinery/door/airlock/sandstone{
-	name = "Beach Access"
-	},
-/turf/open/floor/plasteel,
-/area/ruin/lavaland/powered/beach)
-"VO" = (
-/turf/open/floor/pod/dark,
-/area/ruin/lavaland/powered/beach)
 "Xp" = (
 /obj/effect/turf_decal/sand,
 /obj/machinery/light/small{
@@ -897,16 +911,17 @@
 	},
 /turf/open/floor/pod/dark,
 /area/ruin/lavaland/powered/beach)
-"Ym" = (
-/obj/item/toy/poolnoodle/yellow,
-/turf/open/floor/plasteel,
-/area/ruin/lavaland/powered/beach)
-"ZD" = (
-/obj/effect/turf_decal/sand,
-/obj/structure/chair{
-	dir = 8
+"Zg" = (
+/turf/open/floor/plasteel/yellowsiding/corner{
+	dir = 1
 	},
-/turf/open/floor/plasteel,
+/area/ruin/lavaland/powered/beach)
+"ZQ" = (
+/turf/open/floor/plasteel/yellowsiding/corner,
+/area/ruin/lavaland/powered/beach)
+"ZX" = (
+/obj/machinery/pool/drain,
+/turf/open/pool,
 /area/ruin/lavaland/powered/beach)
 
 (1,1,1) = {"
@@ -949,7 +964,7 @@ aa
 bW
 bW
 bW
-sJ
+zc
 bW
 bW
 bW
@@ -965,7 +980,7 @@ bW
 bW
 bW
 bW
-sJ
+zc
 bW
 bW
 aa
@@ -1012,7 +1027,7 @@ bW
 bW
 bW
 ap
-kz
+SC
 ar
 ar
 ad
@@ -1076,8 +1091,8 @@ bW
 aq
 bW
 ar
-ar
-Kl
+Ji
+sb
 aV
 ar
 ar
@@ -1177,15 +1192,15 @@ aA
 aA
 aA
 aA
-GU
-GU
-tl
+qj
+qj
+wU
 ar
 ar
 ar
 ap
 ar
-BB
+Vm
 bO
 bR
 bT
@@ -1194,7 +1209,7 @@ bU
 bU
 bU
 bU
-sJ
+zc
 aa
 "}
 (10,1,1) = {"
@@ -1203,7 +1218,7 @@ bW
 ae
 as
 bW
-Bz
+lP
 aK
 aK
 aK
@@ -1211,7 +1226,7 @@ aK
 aK
 aK
 yp
-HU
+uX
 ar
 ar
 ap
@@ -1226,7 +1241,7 @@ bU
 bV
 bU
 bU
-sJ
+zc
 aa
 "}
 (11,1,1) = {"
@@ -1238,12 +1253,12 @@ aj
 aj
 aj
 aj
-oj
+zG
 aK
 aK
 aK
-xg
-HU
+Va
+uX
 ar
 ar
 ar
@@ -1274,8 +1289,8 @@ aW
 aK
 Ga
 aK
-ZD
-HU
+tG
+uX
 ar
 ar
 ap
@@ -1307,7 +1322,7 @@ oK
 sO
 bl
 aK
-HU
+uX
 ar
 bx
 ar
@@ -1338,8 +1353,8 @@ aW
 aK
 sy
 aK
-kn
-HU
+yp
+uX
 ar
 ap
 ar
@@ -1355,7 +1370,7 @@ bU
 bU
 bU
 bW
-nI
+nQ
 "}
 (15,1,1) = {"
 bW
@@ -1370,14 +1385,14 @@ aW
 aK
 aK
 aK
-xg
-HU
+fG
+uX
 ar
 ar
 ar
 ar
 bE
-BB
+Vm
 ar
 bR
 bT
@@ -1402,8 +1417,8 @@ aj
 bc
 aj
 cj
-ZD
-HU
+tG
+uX
 ar
 ar
 ar
@@ -1434,8 +1449,8 @@ aC
 aC
 bg
 aB
-Mo
-Jr
+IR
+GJ
 ar
 ar
 aU
@@ -1451,7 +1466,7 @@ bU
 bU
 bU
 bW
-NS
+oR
 "}
 (18,1,1) = {"
 bW
@@ -1489,7 +1504,7 @@ bW
 bW
 bW
 am
-pn
+tw
 aj
 aj
 aj
@@ -1527,8 +1542,8 @@ aJ
 aN
 aT
 aY
-Hw
-Ks
+GN
+Xe
 aK
 aK
 aA
@@ -1578,7 +1593,7 @@ bU
 bU
 bU
 bU
-sJ
+zc
 aa
 "}
 (22,1,1) = {"
@@ -1597,11 +1612,11 @@ aj
 aA
 aA
 ar
-LG
+LX
 ar
 ar
 ar
-kb
+Kb
 bP
 bR
 bT
@@ -1610,23 +1625,23 @@ bU
 bU
 bV
 bU
-sJ
+zc
 aa
 "}
 (23,1,1) = {"
 bW
 bW
 gg
-BK
-Vc
-lx
-lx
-lx
-lx
-lx
-qi
+ON
+ZQ
+gl
+gl
+gl
+gl
+gl
+cC
 aj
-DU
+eF
 ar
 ar
 ar
@@ -1649,15 +1664,15 @@ bW
 bW
 bW
 bW
-BK
-lk
-uY
+ON
+Dt
+qs
 be
 be
 be
 be
-AM
-VD
+yX
+JL
 aA
 ar
 ar
@@ -1681,14 +1696,14 @@ bW
 aa
 bW
 bW
-sX
-lk
-CJ
+OL
+Dt
+wX
 be
-yf
+ZX
 be
 be
-AM
+yX
 mh
 aA
 ar
@@ -1714,13 +1729,13 @@ aa
 bW
 bW
 bW
-Ko
-ui
+Hd
+Uu
 be
 be
-Rm
+Pa
 be
-AM
+yX
 mh
 aA
 aA
@@ -1747,12 +1762,12 @@ aa
 bW
 bW
 bW
-Ko
-UE
-UE
-tN
-UE
-TD
+Hd
+Iz
+Iz
+NB
+Iz
+Zg
 bW
 mh
 mh
@@ -1781,10 +1796,10 @@ bW
 bW
 bW
 bW
-BJ
-qz
-Ym
-xU
+AE
+IC
+Jv
+gu
 bW
 zw
 VO
@@ -1813,7 +1828,7 @@ aa
 bW
 bW
 bW
-sJ
+zc
 bW
 bW
 bW
@@ -1829,7 +1844,7 @@ bW
 bW
 bW
 bW
-sJ
+zc
 bW
 bW
 aa
