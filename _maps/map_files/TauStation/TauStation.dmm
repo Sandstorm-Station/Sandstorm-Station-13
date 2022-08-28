@@ -23336,10 +23336,6 @@
 "hYS" = (
 /obj/structure/table/wood,
 /obj/machinery/computer/med_data/laptop,
-/obj/machinery/firealarm{
-	dir = 4;
-	pixel_x = -24
-	},
 /turf/open/floor/carpet,
 /area/medical/psychology)
 "hYX" = (
@@ -26127,6 +26123,9 @@
 	dir = 8
 	},
 /obj/structure/filingcabinet/medical,
+/obj/machinery/firealarm{
+	pixel_x = 25
+	},
 /turf/open/floor/carpet,
 /area/medical/psychology)
 "jay" = (
@@ -102522,7 +102521,7 @@ wqW
 vjF
 tMm
 bfX
-vjF
+bfX
 vjF
 vjF
 dUW

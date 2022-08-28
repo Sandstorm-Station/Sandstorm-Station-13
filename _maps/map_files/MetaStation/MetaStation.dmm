@@ -14009,13 +14009,6 @@
 "bbK" = (
 /turf/closed/wall,
 /area/security/checkpoint/customs)
-"bbL" = (
-/obj/machinery/atmospherics/pipe/simple/supply/hidden,
-/obj/structure/cable/yellow{
-	icon_state = "1-2"
-	},
-/turf/open/floor/plating,
-/area/maintenance/port)
 "bbM" = (
 /obj/item/stack/sheet/cardboard,
 /obj/item/storage/box/lights/mixed,
@@ -21139,11 +21132,8 @@
 /obj/structure/cable/yellow{
 	icon_state = "1-2"
 	},
-/obj/effect/turf_decal/stripes/line{
-	dir = 8
-	},
-/turf/open/floor/plating,
-/area/maintenance/port)
+/turf/open/floor/carpet/blue,
+/area/medical/psychology)
 "bJr" = (
 /obj/machinery/atmospherics/pipe/simple/supply/hidden,
 /turf/open/floor/plasteel,
@@ -48820,6 +48810,17 @@
 /obj/machinery/atmospherics/pipe/simple/cyan/visible,
 /turf/open/floor/engine,
 /area/engineering/main)
+"dPr" = (
+/obj/machinery/atmospherics/pipe/simple/supply/hidden,
+/obj/structure/cable/yellow{
+	icon_state = "1-2"
+	},
+/obj/machinery/door/airlock/maintenance{
+	name = "Psychology Quarters Maintenance";
+	req_access_txt = "76"
+	},
+/turf/open/floor/plating,
+/area/maintenance/port)
 "dPI" = (
 /obj/structure/grille,
 /turf/closed/wall/r_wall,
@@ -51392,11 +51393,13 @@
 /turf/open/floor/plasteel/dark,
 /area/commons/dorms)
 "fjZ" = (
-/obj/machinery/door/airlock/maintenance{
-	req_one_access_txt = "12;27;37;76"
+/obj/effect/spawner/structure/window/reinforced,
+/obj/machinery/door/poddoor/shutters/preopen{
+	id = "psych_shutters";
+	name = "psychology office shutters"
 	},
 /turf/open/floor/plating,
-/area/maintenance/port)
+/area/medical/psychology)
 "fkj" = (
 /obj/item/folder/blue,
 /obj/structure/table/glass,
@@ -52945,10 +52948,10 @@
 /turf/open/floor/engine,
 /area/engineering/main)
 "gii" = (
-/obj/structure/reagent_dispensers/watertank,
-/obj/item/storage/toolbox/emergency,
-/turf/open/floor/plating,
-/area/maintenance/port)
+/obj/structure/bed,
+/obj/item/bedsheet/random,
+/turf/open/floor/carpet/blue,
+/area/medical/psychology)
 "gim" = (
 /obj/machinery/light/small,
 /obj/machinery/air_sensor/atmos/oxygen_tank,
@@ -54585,6 +54588,9 @@
 	},
 /turf/open/floor/engine,
 /area/engineering/main)
+"hiL" = (
+/turf/open/floor/carpet/blue,
+/area/medical/psychology)
 "hiR" = (
 /obj/machinery/power/apc{
 	areastring = "/area/hallway/primary/port";
@@ -56102,12 +56108,12 @@
 /obj/structure/cable/yellow{
 	icon_state = "1-2"
 	},
-/obj/machinery/door/airlock/maintenance{
-	name = "Psychology Office Maintenance";
+/obj/machinery/door/airlock/medical{
+	name = "Psychologist's Quarters";
 	req_access_txt = "76"
 	},
-/turf/open/floor/plating,
-/area/maintenance/port)
+/turf/open/floor/carpet/blue,
+/area/medical/psychology)
 "hVs" = (
 /turf/open/floor/plasteel,
 /area/commons/toilet/auxiliary)
@@ -62617,6 +62623,10 @@
 	},
 /turf/open/floor/plasteel,
 /area/cargo/sorting)
+"lxI" = (
+/obj/structure/closet/secure_closet/psychology,
+/turf/open/floor/carpet/blue,
+/area/medical/psychology)
 "lxV" = (
 /obj/structure/table,
 /obj/item/clothing/shoes/sneakers/orange{
@@ -65204,15 +65214,8 @@
 /obj/structure/cable/yellow{
 	icon_state = "1-2"
 	},
-/obj/machinery/button/door{
-	id = "psych_shutters";
-	name = "psychology office shutters control";
-	pixel_x = -26;
-	req_access_txt = "76"
-	},
-/obj/machinery/light_switch{
-	pixel_x = -28;
-	pixel_y = 12
+/obj/structure/chair/comfy/black{
+	dir = 4
 	},
 /turf/open/floor/carpet,
 /area/medical/psychology)
@@ -67823,7 +67826,6 @@
 /turf/open/floor/plasteel/white,
 /area/command/heads_quarters/rd)
 "opN" = (
-/obj/structure/closet/secure_closet/psychology,
 /obj/machinery/atmospherics/pipe/simple/scrubbers/hidden{
 	dir = 9
 	},
@@ -68568,6 +68570,10 @@
 /obj/machinery/firealarm{
 	pixel_y = -24
 	},
+/obj/structure/chair/office/dark{
+	dir = 1
+	},
+/obj/effect/landmark/start/psychologist,
 /turf/open/floor/carpet,
 /area/medical/psychology)
 "oOQ" = (
@@ -68930,9 +68936,10 @@
 /turf/open/floor/plasteel,
 /area/engineering/atmos)
 "oWR" = (
-/obj/effect/spawner/lootdrop/maintenance,
-/turf/open/floor/plating,
-/area/maintenance/port)
+/obj/structure/table/wood,
+/obj/item/toy/plush/random,
+/turf/open/floor/carpet/blue,
+/area/medical/psychology)
 "oXj" = (
 /obj/structure/disposalpipe/segment{
 	dir = 4
@@ -73633,6 +73640,10 @@
 /obj/machinery/light{
 	dir = 8
 	},
+/obj/machinery/light_switch{
+	pixel_x = -28;
+	pixel_y = 12
+	},
 /turf/open/floor/carpet,
 /area/medical/psychology)
 "rqG" = (
@@ -75903,10 +75914,6 @@
 /turf/open/floor/plating,
 /area/medical/paramedic)
 "sCf" = (
-/obj/structure/chair/comfy/black{
-	dir = 1
-	},
-/obj/effect/landmark/start/psychologist,
 /obj/machinery/airalarm{
 	dir = 8;
 	pixel_x = 23
@@ -76214,10 +76221,6 @@
 	},
 /obj/machinery/atmospherics/pipe/simple/scrubbers/hidden{
 	dir = 5
-	},
-/obj/item/radio/intercom{
-	name = "Station Intercom (General)";
-	pixel_y = -28
 	},
 /obj/structure/cable/yellow{
 	icon_state = "1-4"
@@ -78104,6 +78107,13 @@
 /obj/item/radio/intercom{
 	name = "Station Intercom (General)";
 	pixel_x = 27
+	},
+/obj/machinery/button/door{
+	id = "psych_shutters";
+	name = "psychology office shutters control";
+	pixel_x = 26;
+	pixel_y = -9;
+	req_access_txt = "76"
 	},
 /turf/open/floor/carpet,
 /area/medical/psychology)
@@ -99909,15 +99919,15 @@ bJr
 bvK
 nNN
 wVI
-wVI
-wVI
-wVI
-wVI
-wVI
-alK
 fjZ
-alK
-alK
+fjZ
+wVI
+wVI
+wVI
+wVI
+wVI
+wVI
+wVI
 bPF
 asa
 bPL
@@ -100165,7 +100175,7 @@ bso
 bso
 bvL
 sKn
-wVI
+fjZ
 scB
 mSx
 eRe
@@ -100173,8 +100183,8 @@ rqA
 kfV
 hVl
 bJq
-bbL
-bbL
+bJq
+dPr
 bPG
 usf
 bSn
@@ -100429,9 +100439,9 @@ sfD
 jbe
 oOM
 wVI
-alC
-aqK
-aqO
+hiL
+lxI
+wVI
 alC
 aGN
 iPk
@@ -100688,7 +100698,7 @@ sCf
 wVI
 gii
 oWR
-aob
+wVI
 kDJ
 aob
 bSo
