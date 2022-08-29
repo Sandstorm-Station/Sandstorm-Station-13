@@ -255,6 +255,8 @@
   WoolyAypa:
   - bugfix: Now the western dragon tail doesn't glitch if you *wag
 2022-08-25:
+  Putnam3145:
+  - code_imp: New Find() lint
   michaeljacksonlover:
   - rscadd: Hypnotist alt-title for Psychologist
   - rscadd: Hypnosis Expert alt-title for Psychologist
@@ -262,3 +264,28 @@
   - rscadd: Sex Educator alt-title for Psychologist
   - bugfix: Psychologist alt-titles now utilize the dedicated alt-title dm file instead
       of the job file.
+2022-08-27:
+  KathrinBailey:
+  - rscadd: New belly fur body marking for character customisation!
+  PositiveEntropy:
+  - imageadd: Resprites the IPC/pAI recharge cable!
+  shellspeed1:
+  - rscadd: new garden survival pod added. . It can be bought from the mining vendor
+      for 7500 points.
+  - balance: To reflect the drop in usefulness of the penthouse pod, its price has
+      been halved.
+  - tweak: Penthouse survival pod redone, instead of a kitchen and garden it now features
+      an office area for when a miner feels like writing a book, or shitposting in
+      the station's modular computer chatroom.
+  - bugfix: Stacked windows in survival pods fixed.
+  - tweak: rtgs in survival pods now come prewired, I figured out a new trick woo.
+2022-08-28:
+  BongaTheProto:
+  - server: Adds a config to toggle random station traits each round on and off
+  Fabian272:
+  - code_imp: Changes the cake batter recipe
+  michaeljacksonlover:
+  - rscdel: Removed customs from delta. Very sad.
+  - tweak: Made the psychologist window on Tau slightly bigger.
+  - rscadd: Redoes the psychologist's room on Delta completely. It is now where customs
+      used to be, moved very slightly.

@@ -13341,10 +13341,10 @@
 /turf/open/floor/plasteel,
 /area/hallway/primary/central)
 "aHO" = (
-/obj/machinery/atmospherics/pipe/manifold/scrubbers/hidden{
-	dir = 1
-	},
 /obj/structure/disposalpipe/junction/flip{
+	dir = 4
+	},
+/obj/machinery/atmospherics/pipe/simple/scrubbers/hidden{
 	dir = 4
 	},
 /turf/open/floor/plasteel,
@@ -14148,9 +14148,6 @@
 /obj/machinery/atmospherics/pipe/simple/supply/hidden{
 	dir = 4
 	},
-/obj/structure/sign/departments/restroom{
-	pixel_y = -32
-	},
 /turf/open/floor/plasteel,
 /area/hallway/primary/central)
 "aJN" = (
@@ -14520,21 +14517,16 @@
 /turf/closed/wall,
 /area/commons/toilet/auxiliary)
 "aKR" = (
-/obj/machinery/door/airlock{
-	id_tag = "Potty1";
-	name = "Unisex Restrooms"
+/obj/machinery/door/airlock/medical{
+	name = "Psychologist's Quarters";
+	req_access_txt = "76"
 	},
-/obj/structure/cable{
-	icon_state = "1-2"
-	},
-/obj/machinery/atmospherics/pipe/simple/supply/hidden,
-/obj/machinery/door/firedoor,
-/turf/open/floor/plasteel/freezer,
+/turf/open/floor/carpet/blue,
 /area/commons/toilet/auxiliary)
 "aKS" = (
-/obj/machinery/atmospherics/pipe/simple/scrubbers/hidden,
-/turf/closed/wall,
-/area/commons/toilet/auxiliary)
+/obj/effect/landmark/xeno_spawn,
+/turf/open/floor/plating,
+/area/maintenance/department/crew_quarters/bar)
 "aKT" = (
 /turf/closed/wall,
 /area/maintenance/department/crew_quarters/bar)
@@ -14767,48 +14759,9 @@
 /turf/open/floor/plasteel/cafeteria,
 /area/service/cafeteria/lunchroom)
 "aLE" = (
-/obj/structure/sink{
-	dir = 8;
-	pixel_x = -12;
-	pixel_y = 2
-	},
-/obj/effect/landmark/xeno_spawn,
-/obj/machinery/airalarm{
-	dir = 4;
-	pixel_x = -22
-	},
-/turf/open/floor/plasteel/freezer,
-/area/commons/toilet/auxiliary)
-"aLF" = (
-/obj/structure/cable{
-	icon_state = "1-4"
-	},
-/obj/machinery/atmospherics/pipe/simple/supply/hidden,
-/turf/open/floor/plasteel/freezer,
-/area/commons/toilet/auxiliary)
-"aLG" = (
-/obj/structure/urinal{
-	pixel_y = 32
-	},
-/obj/structure/cable{
-	icon_state = "2-8"
-	},
-/obj/machinery/button/door{
-	id = "Potty1";
-	name = "Bathroom Bolt Control";
-	normaldoorcontrol = 1;
-	pixel_x = 25;
-	pixel_y = 4;
-	specialfunctions = 4
-	},
-/obj/machinery/atmospherics/components/unary/vent_scrubber/on{
-	dir = 1
-	},
-/obj/machinery/light_switch{
-	pixel_x = 36;
-	pixel_y = 6
-	},
-/turf/open/floor/plasteel/freezer,
+/obj/structure/bed,
+/obj/item/bedsheet/random,
+/turf/open/floor/carpet/blue,
 /area/commons/toilet/auxiliary)
 "aLL" = (
 /turf/open/floor/plating,
@@ -15411,30 +15364,17 @@
 /turf/open/floor/plasteel/cafeteria,
 /area/service/cafeteria/lunchroom)
 "aNc" = (
-/obj/structure/toilet/secret/low_loot{
-	dir = 4
-	},
-/obj/effect/landmark/start/assistant,
-/obj/machinery/light/small,
-/turf/open/floor/plasteel/freezer,
+/obj/structure/table/wood,
+/obj/item/toy/plush/random,
+/turf/open/floor/carpet/blue,
 /area/commons/toilet/auxiliary)
 "aNd" = (
-/obj/machinery/atmospherics/components/unary/vent_pump/on{
-	dir = 1
-	},
-/turf/open/floor/plasteel/freezer,
+/turf/open/floor/carpet/blue,
 /area/commons/toilet/auxiliary)
 "aNe" = (
-/obj/structure/cable,
-/obj/machinery/power/apc/highcap/five_k{
-	name = "Auxiliary Restrooms APC";
-	pixel_y = -24
-	},
-/obj/item/soap/nanotrasen,
-/obj/machinery/shower{
-	dir = 8
-	},
-/turf/open/floor/plasteel/freezer,
+/obj/machinery/light/small,
+/obj/structure/closet/secure_closet/psychology,
+/turf/open/floor/carpet/blue,
 /area/commons/toilet/auxiliary)
 "aNi" = (
 /obj/structure/grille/broken,
@@ -55921,9 +55861,6 @@
 /turf/open/floor/plasteel/dark,
 /area/hallway/secondary/exit/departure_lounge)
 "kAt" = (
-/obj/machinery/light{
-	dir = 8
-	},
 /obj/machinery/atmospherics/components/unary/vent_scrubber/on{
 	dir = 1
 	},
@@ -56614,7 +56551,6 @@
 /turf/open/space/basic,
 /area/space/nearstation)
 "lEB" = (
-/obj/structure/closet/secure_closet/psychology,
 /obj/machinery/firealarm{
 	dir = 4;
 	pixel_x = -24
@@ -63803,8 +63739,8 @@
 /area/science/explab)
 "wBg" = (
 /obj/machinery/door/airlock/maintenance{
-	id_tag = "Potty1";
-	req_access_txt = "12"
+	name = "Psychology Quarters Maintenance";
+	req_access_txt = "76"
 	},
 /turf/open/floor/plating,
 /area/maintenance/department/crew_quarters/bar)
@@ -91985,7 +91921,7 @@ aKQ
 aLE
 aNc
 aKQ
-aLL
+aKS
 aQL
 aRL
 aSF
@@ -92236,10 +92172,10 @@ aFw
 awR
 aHb
 jYe
-aIQ
-aJL
-aKR
-aLF
+aIO
+aJI
+aKQ
+aNd
 aNd
 wBg
 aLL
@@ -92493,10 +92429,10 @@ aza
 awR
 aHc
 aHO
-aIP
-aJK
-aKS
-aLG
+aIO
+aJI
+aKQ
+aNd
 aNe
 aKQ
 pIh
@@ -92753,7 +92689,7 @@ aHP
 aIO
 aJN
 aKQ
-aKQ
+aKR
 aKQ
 aKQ
 oSP

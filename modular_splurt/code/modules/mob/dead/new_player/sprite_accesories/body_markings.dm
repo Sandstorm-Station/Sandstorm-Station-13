@@ -89,3 +89,9 @@
 	icon_state = "gloss"
 	covered_limbs = list("Chest" = MATRIX_RED, "Right Arm" = MATRIX_RED, "Left Arm" = MATRIX_RED, "Right Leg" = MATRIX_RED, "Left Leg" = MATRIX_RED, "Head" = MATRIX_RED)
 	icon = 'modular_splurt/icons/mob/mam_markings.dmi'
+
+/datum/sprite_accessory/mam_body_markings/floof
+	name = "Belly Fur (Floof)"
+	icon = 'modular_splurt/icons/mob/mam_markings.dmi'
+	icon_state = "floof"
+	covered_limbs = list("Chest" = MATRIX_RED)
