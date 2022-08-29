@@ -723,6 +723,7 @@
 	message = "seems sultrily surprised~"
 	emote_type = EMOTE_AUDIBLE
 	muzzle_ignore = FALSE
+	var/voicesound = 'modular_splurt/sound/voice/ara-ara.ogg'
 
 /datum/emote/living/ara_ara/run_emote(mob/user, params, type_override, intentional)
 	. = ..()
@@ -731,7 +732,11 @@
 	if(user.nextsoundemote >= world.time)
 		return
 	user.nextsoundemote = world.time + 1.5 SECONDS
-	playsound(user, 'modular_splurt/sound/voice/ara-ara.ogg', 50, 1, -1)
+	playsound(user, voicesound, 50, 1, -1)
+
+/datum/emote/living/ara_ara/alt
+	key = "ara2"
+	voicesound = 'modular_splurt/sound/voice/ara-ara2.ogg'
 
 /datum/emote/living/missouri
 	key = "missouri"
