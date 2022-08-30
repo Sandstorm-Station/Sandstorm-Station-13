@@ -2308,6 +2308,11 @@
 	lootcount = 3;
 	lootdoubles = 0
 	},
+/obj/effect/spawner/lootdrop/aimodule_lewd{
+	fan_out_items = 1;
+	lootcount = 3;
+	lootdoubles = 0
+	},
 /obj/structure/sign/nanotrasen{
 	pixel_x = -32
 	},
