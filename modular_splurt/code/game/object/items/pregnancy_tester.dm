@@ -41,13 +41,15 @@
 	if(results)
 		to_chat(user, span_warning("This tester is already used!"))
 		return
-	for(var/obj/item/thing as anything in target.contents)
+
+	var/obj/item/organ/container = target.getorganslot(ORGAN_SLOT_WOMB)
+
+	results = "negative"
+
+	for(var/obj/item/thing as anything in container.contents)
 		if(thing?.GetComponent(/datum/component/pregnancy))
 			results = "positive"
 			break
-
-	if(!results)
-		results = "negative"
 
 	to_chat(user, span_notice("You use the tester."))
 
