@@ -2205,6 +2205,7 @@
 	dir = 1
 	},
 /obj/item/crowbar,
+/obj/item/vending_refill/kink,
 /turf/open/floor/plasteel/dark,
 /area/ruin/space/has_grav/hotel/workroom)
 "gI" = (
@@ -4093,10 +4094,10 @@
 /area/ruin/space/has_grav/hotel/pool)
 "li" = (
 /obj/effect/light_emitter,
-/turf/open/floor/plating/beach/water,
+/turf/open/pool,
 /area/ruin/space/has_grav/hotel/pool)
 "lj" = (
-/turf/open/floor/plating/beach/water,
+/turf/open/pool,
 /area/ruin/space/has_grav/hotel/pool)
 "lk" = (
 /obj/structure/chair{
@@ -4388,7 +4389,7 @@
 /area/ruin/space/has_grav/hotel/security)
 "lP" = (
 /obj/item/bikehorn/rubberducky,
-/turf/open/floor/plating/beach/water,
+/turf/open/pool,
 /area/ruin/space/has_grav/hotel/pool)
 "lQ" = (
 /obj/structure/table,
@@ -5004,6 +5005,18 @@
 /obj/effect/baseturf_helper/space,
 /turf/closed/wall,
 /area/ruin/space/has_grav/hotel/pool)
+"or" = (
+/obj/item/toy/poolnoodle/yellow,
+/turf/open/pool,
+/area/ruin/space/has_grav/hotel/pool)
+"oB" = (
+/obj/machinery/vending/kink,
+/turf/open/floor/wood,
+/area/ruin/space/has_grav/hotel)
+"pc" = (
+/obj/structure/pool/Lboard,
+/turf/open/pool,
+/area/ruin/space/has_grav/hotel/pool)
 "sN" = (
 /obj/machinery/door/airlock/external/glass,
 /obj/structure/cable/yellow{
@@ -5014,6 +5027,101 @@
 	},
 /turf/open/floor/plating,
 /area/ruin/space/has_grav/hotel/power)
+"vC" = (
+/obj/structure/pool/ladder{
+	dir = 1;
+	pixel_y = -24
+	},
+/turf/open/pool,
+/area/ruin/space/has_grav/hotel/pool)
+"yH" = (
+/obj/item/toy/poolnoodle/blue,
+/turf/open/pool,
+/area/ruin/space/has_grav/hotel/pool)
+"DO" = (
+/obj/effect/turf_decal/tile/neutral{
+	dir = 1
+	},
+/obj/effect/turf_decal/tile/neutral,
+/obj/effect/turf_decal/tile/neutral{
+	dir = 4
+	},
+/obj/effect/turf_decal/tile/neutral{
+	dir = 8
+	},
+/obj/item/toy/poolnoodle/yellow,
+/turf/open/floor/plasteel/dark,
+/area/ruin/space/has_grav/hotel/pool)
+"Fw" = (
+/obj/structure/closet/athletic_mixed,
+/turf/open/floor/plasteel,
+/area/ruin/space/has_grav/hotel/pool)
+"FI" = (
+/obj/effect/turf_decal/tile/neutral{
+	dir = 1
+	},
+/obj/effect/turf_decal/tile/neutral,
+/obj/effect/turf_decal/tile/neutral{
+	dir = 4
+	},
+/obj/effect/turf_decal/tile/neutral{
+	dir = 8
+	},
+/obj/item/toy/poolnoodle/blue,
+/turf/open/floor/plasteel/dark,
+/area/ruin/space/has_grav/hotel/pool)
+"GG" = (
+/obj/machinery/light{
+	dir = 4
+	},
+/obj/machinery/pool/controller,
+/turf/open/floor/plasteel,
+/area/ruin/space/has_grav/hotel/pool)
+"JS" = (
+/obj/structure/pool/ladder{
+	dir = 2;
+	pixel_y = 24
+	},
+/turf/open/pool,
+/area/ruin/space/has_grav/hotel/pool)
+"Nm" = (
+/obj/item/toy/poolnoodle/red,
+/turf/open/pool,
+/area/ruin/space/has_grav/hotel/pool)
+"Qo" = (
+/obj/effect/turf_decal/tile/neutral{
+	dir = 1
+	},
+/obj/effect/turf_decal/tile/neutral,
+/obj/effect/turf_decal/tile/neutral{
+	dir = 4
+	},
+/obj/effect/turf_decal/tile/neutral{
+	dir = 8
+	},
+/obj/machinery/pool/filter{
+	pixel_y = -17
+	},
+/turf/open/floor/plasteel/dark,
+/area/ruin/space/has_grav/hotel/pool)
+"Sm" = (
+/obj/effect/turf_decal/tile/neutral{
+	dir = 1
+	},
+/obj/effect/turf_decal/tile/neutral,
+/obj/effect/turf_decal/tile/neutral{
+	dir = 4
+	},
+/obj/effect/turf_decal/tile/neutral{
+	dir = 8
+	},
+/obj/structure/pool/Rboard,
+/turf/open/floor/plasteel/dark,
+/area/ruin/space/has_grav/hotel/pool)
+"TP" = (
+/obj/machinery/pool/drain,
+/turf/open/pool,
+/area/ruin/space/has_grav/hotel/pool)
 
 (1,1,1) = {"
 aa
@@ -7095,9 +7203,9 @@ jR
 jR
 kQ
 jR
-jR
-jR
-jR
+Fw
+Fw
+Fw
 jR
 kQ
 jR
@@ -7156,7 +7264,7 @@ cF
 cF
 cF
 cF
-eT
+oB
 am
 cJ
 jt
@@ -7307,7 +7415,7 @@ kD
 kD
 kD
 kD
-kD
+FI
 kD
 kD
 kD
@@ -7443,13 +7551,13 @@ jt
 jT
 jR
 kE
-kD
+Qo
 lj
 lj
 lj
 lj
 lj
-lj
+yH
 lj
 lj
 lj
@@ -7514,6 +7622,7 @@ jU
 jR
 kE
 kD
+JS
 lj
 lj
 lj
@@ -7521,8 +7630,7 @@ lj
 lj
 lj
 lj
-lj
-lj
+vC
 kD
 mC
 jR
@@ -7728,7 +7836,7 @@ lj
 lj
 lj
 lj
-lj
+TP
 lj
 lj
 lj
@@ -7801,7 +7909,7 @@ lj
 li
 lj
 lj
-lj
+or
 lj
 kD
 mC
@@ -7866,7 +7974,7 @@ kF
 kR
 lj
 lj
-lj
+Nm
 lj
 lj
 lj
@@ -8074,6 +8182,7 @@ jU
 jR
 kE
 kS
+JS
 lj
 lj
 lj
@@ -8081,8 +8190,7 @@ lj
 lj
 lj
 lj
-lj
-lj
+vC
 kD
 mC
 jR
@@ -8218,7 +8326,7 @@ li
 lj
 lj
 lj
-lj
+pc
 lj
 lj
 lj
@@ -8288,10 +8396,10 @@ kD
 kD
 kD
 kD
+Sm
 kD
 kD
-kD
-kD
+DO
 kD
 kD
 kD
@@ -8493,7 +8601,7 @@ jt
 jR
 jR
 jR
-kU
+GG
 ll
 lt
 ll
