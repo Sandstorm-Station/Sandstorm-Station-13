@@ -83,6 +83,9 @@ GLOBAL_LIST_EMPTY(preferences_datums)
 
 	var/tgui_fancy = TRUE
 	var/tgui_lock = TRUE
+	var/tgui_input_mode = TRUE			// All the Input Boxes (Text,Number,List,Alert)
+	var/tgui_large_buttons = TRUE
+	var/tgui_swapped_buttons = FALSE
 	var/windowflashing = TRUE
 	var/toggles = TOGGLES_DEFAULT
 	/// A separate variable for deadmin toggles, only deals with those.
@@ -948,7 +951,7 @@ GLOBAL_LIST_EMPTY(preferences_datums)
 				dat += "</td>"
 				if(pref_species.id == SPECIES_DULLAHAN)
 					dat += APPEARANCE_CATEGORY_COLUMN
-				
+
 					dat += "<h3>Neckfire</h3>"
 					dat += "<a style='display:block;width:50px' href='?_src_=prefs;preference=has_neckfire;task=input'>[features["neckfire"] ? "Yes" : "No"]</a>"
 					if(features["neckfire"])
@@ -2260,7 +2263,7 @@ GLOBAL_LIST_EMPTY(preferences_datums)
 							features["neckfire_color"] = sanitize_hexcolor(new_neckfire_color, 6)
 						else
 							to_chat(user,"<span class='danger'>Invalid color. Your color is not bright enough.</span>")
-					
+
 				if("ipc_screen")
 					var/new_ipc_screen
 					new_ipc_screen = input(user, "Choose your character's screen:", "Character Preference") as null|anything in GLOB.ipc_screens_list
