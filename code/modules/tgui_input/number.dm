@@ -128,7 +128,7 @@
 	return data
 
 /datum/tgui_input_number/ui_act(action, list/params)
-	//. = ..()
+	. = ..()
 	if (.)
 		return
 	switch(action)

@@ -121,7 +121,7 @@
 	return data
 
 /datum/tgui_alert/ui_act(action, list/params)
-	//. = ..()
+	. = ..()
 	if (.)
 		return
 	switch(action)

@@ -133,7 +133,7 @@
 	return data
 
 /datum/tgui_input_text/ui_act(action, list/params)
-	//. = ..()
+	. = ..()
 	if (.)
 		return
 	switch(action)
