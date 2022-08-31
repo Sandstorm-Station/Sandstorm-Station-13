@@ -453,6 +453,21 @@
 	user.nextsoundemote = world.time + 70
 	playsound(user, 'modular_splurt/sound/voice/laugh_muta.ogg', 50, 1, -1)
 
+/datum/emote/living/laugh5
+	key = "laugh5"
+	key_third_person = "laughs5"
+	message = "laughs in Scottish."
+	emote_type = EMOTE_AUDIBLE
+	muzzle_ignore = FALSE
+
+/datum/emote/living/laugh5/run_emote(mob/user, params, type_override, intentional)
+	if(!(. = ..()))
+		return
+	if(user.nextsoundemote >= world.time)
+		return
+	user.nextsoundemote = world.time + 70
+	playsound(user, 'modular_splurt/sound/voice/laugh_deman.ogg', 50, 1, -1)
+
 /datum/emote/living/breakbad
 	key = "breakbad"
 	key_third_person = "breakbads"
