@@ -34,7 +34,7 @@
 /datum/lighting_object/Destroy(force)
 	if (!force)
 		return QDEL_HINT_LETMELIVE
-	SSlighting.objects_queue -= src
+	GLOB.lighting_update_objects -= src
 	if (isturf(affected_turf))
 		affected_turf.lighting_object = null
 		affected_turf.luminosity = 1
@@ -54,12 +54,12 @@
 
 	var/static/datum/lighting_corner/dummy/dummy_lighting_corner = new
 
-	var/datum/lighting_corner/red_corner = affected_turf.lighting_corner_SW || dummy_lighting_corner
-	var/datum/lighting_corner/green_corner = affected_turf.lighting_corner_SE || dummy_lighting_corner
-	var/datum/lighting_corner/blue_corner = affected_turf.lighting_corner_NW || dummy_lighting_corner
-	var/datum/lighting_corner/alpha_corner = affected_turf.lighting_corner_NE || dummy_lighting_corner
+	var/datum/lighting_corner/red_corner = affected_turf.lc_bottomleft || dummy_lighting_corner
+	var/datum/lighting_corner/green_corner = affected_turf.lc_bottomright || dummy_lighting_corner
+	var/datum/lighting_corner/blue_corner = affected_turf.lc_topleft || dummy_lighting_corner
+	var/datum/lighting_corner/alpha_corner = affected_turf.lc_topright || dummy_lighting_corner
 
-	var/max = max(red_corner.largest_color_luminosity, green_corner.largest_color_luminosity, blue_corner.largest_color_luminosity, alpha_corner.largest_color_luminosity)
+	var/max = max(red_corner.cache_mx, green_corner.cache_mx, blue_corner.cache_mx, alpha_corner.cache_mx)
 
 	var/rr = red_corner.cache_r
 	var/rg = red_corner.cache_g

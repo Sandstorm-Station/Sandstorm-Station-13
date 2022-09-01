@@ -5,7 +5,7 @@
 	var/tmp/lighting_corners_initialised = FALSE
 
 	var/tmp/list/datum/light_source/affecting_lights       // List of light sources affecting this turf.
-	var/tmp/atom/movable/lighting_object/lighting_object // Our lighting object.
+	var/tmp/datum/lighting_object/lighting_object // Our lighting object.
 	var/tmp/datum/lighting_corner/lc_topleft
 	var/tmp/datum/lighting_corner/lc_topright
 	var/tmp/datum/lighting_corner/lc_bottomleft
@@ -83,7 +83,7 @@
 	if (!lighting_object)
 		return FALSE
 
-	return !(luminosity || dynamic_lumcount)
+	return !luminosity
 
 // Can't think of a good name, this proc will recalculate the has_opaque_atom variable.
 /turf/proc/recalc_atom_opacity()

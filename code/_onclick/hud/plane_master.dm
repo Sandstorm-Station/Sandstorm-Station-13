@@ -99,36 +99,18 @@
 	. = ..()
 	filters += filter(type="alpha", render_source=FIELD_OF_VISION_BLOCKER_RENDER_TARGET, flags=MASK_INVERSE)
 
+///Used to display the owner and its adjacent surroundings through the FoV plane mask.
+/atom/movable/screen/plane_master/field_of_vision_blocker
+	name = "field of vision blocker plane master"
+	plane = FIELD_OF_VISION_BLOCKER_PLANE
+	render_target = FIELD_OF_VISION_BLOCKER_RENDER_TARGET
+	mouse_opacity = MOUSE_OPACITY_TRANSPARENT
 
-/atom/movable/screen/plane_master/under_frill
-	name = "under frill plane master"
-	plane = UNDER_FRILL_PLANE
-	appearance_flags = PLANE_MASTER //should use client color
-	blend_mode = BLEND_OVERLAY
-
-/atom/movable/screen/plane_master/frill
-	name = "frill plane master"
-	plane = FRILL_PLANE
-	appearance_flags = PLANE_MASTER //should use client color
-	blend_mode = BLEND_OVERLAY
-
-/atom/movable/screen/plane_master/area
-	name = "area plane master"
-	plane = AREA_PLANE
-	appearance_flags = PLANE_MASTER //should use client color
-	blend_mode = BLEND_OVERLAY
-
-/atom/movable/screen/plane_master/massive_obj
-	name = "massive object plane master"
-	plane = MASSIVE_OBJ_PLANE
-	appearance_flags = PLANE_MASTER //should use client color
-	blend_mode = BLEND_OVERLAY
-
-/atom/movable/screen/plane_master/ghost
-	name = "ghost plane master"
-	plane = GHOST_PLANE
-	appearance_flags = PLANE_MASTER //should use client color
-	blend_mode = BLEND_OVERLAY
+///Stores the visible portion of the FoV shadow cone.
+/atom/movable/screen/plane_master/field_of_vision_visual
+	name = "field of vision visual plane master"
+	plane = FIELD_OF_VISION_VISUAL_PLANE
+	mouse_opacity = MOUSE_OPACITY_TRANSPARENT
 
 /atom/movable/screen/plane_master/field_of_vision_visual/Initialize(mapload)
 	. = ..()
