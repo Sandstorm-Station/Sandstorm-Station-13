@@ -151,7 +151,7 @@
 			if(target.see_invisible<invisibility) //if src is invisible to us,
 				msg = blind_message
 			//the light object is dark and not invisible to us, darkness does not matter if you're directly next to the target
-			else if(T.lighting_object && T.lighting_object.invisibility <= target.see_invisible && T.is_softly_lit() && !in_range(T,target))
+			else if(M.lighting_alpha > LIGHTING_PLANE_ALPHA_MOSTLY_INVISIBLE && T.is_softly_lit() && !in_range(T,target))
 				msg = blind_message
 			if(msg)
 				target.show_message(msg, MSG_VISUAL,blind_message, MSG_AUDIBLE)
@@ -168,7 +168,7 @@
 		//CITADEL EDIT, required for vore code to remove (T != loc && T != src)) as a check
 		if(M.see_invisible<invisibility) //if src is invisible to us,
 			msg = blind_message
-		else if(T.lighting_object && T.lighting_object.invisibility <= M.see_invisible && T.is_softly_lit() && !in_range(T,M)) //the light object is dark and not invisible to us, darkness does not matter if you're directly next to the target
+		else if(M.lighting_alpha > LIGHTING_PLANE_ALPHA_MOSTLY_INVISIBLE && T.is_softly_lit() && !in_range(T,M)) //the light object is dark and not invisible to us, darkness does not matter if you're directly next to the target
 			msg = blind_message
 		else if(SEND_SIGNAL(M, COMSIG_MOB_GET_VISIBLE_MESSAGE, src, message, vision_distance, ignored_mobs) & COMPONENT_NO_VISIBLE_MESSAGE)
 			msg = blind_message
