@@ -151,7 +151,7 @@
 			if(target.see_invisible<invisibility) //if src is invisible to us,
 				msg = blind_message
 			//the light object is dark and not invisible to us, darkness does not matter if you're directly next to the target
-			else if(M.lighting_alpha > LIGHTING_PLANE_ALPHA_MOSTLY_INVISIBLE && T.is_softly_lit() && !in_range(T,target))
+			else if(target.lighting_alpha > LIGHTING_PLANE_ALPHA_MOSTLY_INVISIBLE && T.is_softly_lit() && !in_range(T,target))
 				msg = blind_message
 			if(msg)
 				target.show_message(msg, MSG_VISUAL,blind_message, MSG_AUDIBLE)
