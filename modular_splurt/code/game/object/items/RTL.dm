@@ -135,3 +135,11 @@
 	loaded.max_amount = max_amount
 	loaded.amount = max_amount
 	return ..()
+
+/datum/design/rtl
+	name = "Rapid Tile Layer"
+	id = "rtl"
+	build_type = AUTOLATHE | PROTOLATHE
+	materials = list(/datum/material/iron = 2500)
+	build_path = /obj/item/rtl
+	category = list("initial","Tools")
