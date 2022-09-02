@@ -107,9 +107,9 @@
 		ui = new(user, src, "TextInputModal")
 		ui.open()
 
-//area/datum/tgui_input_text/tgui_close(mob/user)
-//	. = ..()
-//	closed = TRUE
+/datum/tgui_input_text/ui_close(mob/user)
+	. = ..()
+	closed = TRUE
 
 /datum/tgui_input_text/ui_state(mob/user)
 	return GLOB.always_state

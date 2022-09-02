@@ -97,9 +97,9 @@
 		ui = new(user, src, "AlertModal")
 		ui.open()
 
-///datum/tgui_alert/tgui_close(mob/user)
-//	. = ..()
-//	closed = TRUE
+/datum/tgui_alert/ui_close(mob/user)
+	. = ..()
+	closed = TRUE
 
 /datum/tgui_alert/ui_state(mob/user)
 	return GLOB.always_state
