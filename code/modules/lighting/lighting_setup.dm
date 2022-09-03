@@ -1,4 +1,3 @@
-
 /proc/create_all_lighting_objects()
 	for(var/area/A in world)
 		if(!IS_DYNAMIC_LIGHTING(A))
