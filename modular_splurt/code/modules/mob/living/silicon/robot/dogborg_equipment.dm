@@ -400,6 +400,7 @@ SLEEPER CODE IS IN game/objects/items/devices/dogborg_sleeper.dm !
 
 /obj/item/milking_machine/pleasuremaw/Destroy()
 	STOP_PROCESSING(SSobj, src) //please no
+	QDEL_NULL(inserted_item)
 	borg_self = null
 	. = ..()
 
