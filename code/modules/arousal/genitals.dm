@@ -81,7 +81,8 @@
 			return owner.is_groin_exposed()
 
 /obj/item/organ/genital/proc/toggle_visibility(visibility, update = TRUE)
-	genital_flags &= ~(GENITAL_THROUGH_CLOTHES|GENITAL_HIDDEN|GENITAL_UNDIES_HIDDEN)
+	if(visibility != GEN_ALLOW_EGG_STUFFING)
+		genital_flags &= ~(GENITAL_THROUGH_CLOTHES|GENITAL_HIDDEN|GENITAL_UNDIES_HIDDEN)
 	if(owner)
 		owner.exposed_genitals -= src
 	switch(visibility)
@@ -101,6 +102,10 @@
 			genital_flags |= GENITAL_HIDDEN
 			if(owner)
 				owner.log_message("Hid their [src] completely",LOG_EMOTE)
+		if(GEN_ALLOW_EGG_STUFFING)
+			TOGGLE_BITFIELD(genital_flags, GENITAL_CAN_STUFF)
+			if(owner)
+				owner.log_message("Allowed egg stuffing in their [src]",LOG_EMOTE)
 
 	if(update && owner && ishuman(owner)) //recast to use update genitals proc
 		var/mob/living/carbon/human/H = owner

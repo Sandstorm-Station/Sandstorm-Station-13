@@ -56,3 +56,61 @@
 	var/healthchange = healthmod_new - healthmod_old //Get ready to apply the new value, and subtract the old one. (Negative values become positive)
 	holder.maxHealth += healthchange
 	holder.health += healthchange
+
+#define TRANSFER_RANDOMIZED(destination, source1, source2) \
+	if(prob(50)) { \
+		destination = source1; \
+	} else { \
+		destination = source2; \
+	}
+
+/proc/transfer_randomized_list(list/destination, list/list1, list/list2)
+	if(list1.len >= list2.len)
+		for(var/key1 as anything in list1)
+			var/val1 = list1[key1]
+			var/val2 = list2[key1]
+			if(prob(50) && val1)
+				destination[key1] = val1
+			else if(val2)
+				destination[key1] = val2
+	else
+		for(var/key2 as anything in list2)
+			var/val1 = list1[key2]
+			var/val2 = list2[key2]
+			if(prob(50) && val1)
+				destination[key2] = val1
+			else if(val2)
+				destination[key2] = val2
+
+/datum/dna/proc/transfer_identity_random(datum/dna/second_set, mob/living/carbon/destination)
+	if(!istype(destination))
+		return
+	var/old_size = destination.dna.features["body_size"]
+
+	TRANSFER_RANDOMIZED(destination.dna.blood_type, blood_type, second_set.blood_type)
+	TRANSFER_RANDOMIZED(destination.dna.skin_tone_override, skin_tone_override, second_set.skin_tone_override)
+	transfer_randomized_list(destination.dna.features, features, second_set.features)
+	transfer_randomized_list(destination.dna.temporary_mutations, temporary_mutations, second_set.temporary_mutations)
+
+	if(prob(50))
+		destination.set_species(species.type, FALSE)
+		destination.dna.species.say_mod = species.say_mod
+		destination.dna.custom_species = custom_species
+	else
+		destination.set_species(second_set.species.type, FALSE)
+		destination.dna.species.say_mod = second_set.species.say_mod
+		destination.dna.custom_species = second_set.custom_species
+
+	destination.update_size(get_size(destination), old_size)
+
+	destination.dna.update_dna_identity()
+	destination.dna.generate_dna_blocks()
+
+	if(ishuman(destination))
+		var/mob/living/carbon/human/H = destination
+		H.give_genitals(TRUE)//This gives the body the genitals of this DNA. Used for any transformations based on DNA
+		H.update_genitals()
+
+	destination.updateappearance(icon_update=TRUE, mutcolor_update=TRUE, mutations_overlay_update=TRUE)
+
+#undef TRANSFER_RANDOMIZED

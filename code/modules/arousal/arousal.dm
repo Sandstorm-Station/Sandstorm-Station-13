@@ -73,11 +73,11 @@
 	var/condomning
 	if(istype(G, /obj/item/organ/genital/penis))
 		var/obj/item/organ/genital/penis/P = G
-		condomning = P.equipment[GENITAL_EQUIPEMENT_CONDOM]
+		condomning = locate(/obj/item/genital_equipment/condom) in P.contents
 	G.generate_fluid(R)
 	log_message("Climaxed using [G] with [target]", LOG_EMOTE)
 	if(condomning)
-		to_chat(src, "<span class='userlove'>You feel the condom bubble outwards and fill up with your spunk, plopping on the floor</span>")
+		to_chat(src, "<span class='userlove'>You feel the condom bubble outwards and fill up with your spunk</span>")
 		R.trans_to(condomclimax(), R.total_volume)
 	else
 		if(spill && R.total_volume >= 5)
@@ -121,7 +121,7 @@
 		to_chat(src,"<span class='userlove'>You climax [(Lgen) ? "in [L]'s [Lgen.name]" : "with [L]"], your [G.name] spilling nothing.</span>")
 		to_chat(L,"<span class='userlove'>[src] climaxes [(Lgen) ? "in your [Lgen.name]" : "with you"], [p_their()] [G.name] spilling nothing!</span>")
 	//SEND_SIGNAL(L, COMSIG_ADD_MOOD_EVENT, "orgasm", /datum/mood_event/orgasm) //Sandstorm edit
-	do_climax(fluid_source, spillage ? loc : L, G, spillage)
+	do_climax(fluid_source, spillage ? loc : L, G, spillage,, Lgen)
 	//L.receive_climax(src, Lgen, G, spillage)
 
 /mob/living/carbon/human/proc/mob_fill_container(obj/item/organ/genital/G, obj/item/reagent_containers/container, mb_time = 30) //For beaker-filling, beware the bartender
