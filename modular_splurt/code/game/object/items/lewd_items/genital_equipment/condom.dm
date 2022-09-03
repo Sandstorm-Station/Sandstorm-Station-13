@@ -7,7 +7,6 @@
 	icon 				= 'modular_splurt/icons/obj/condom.dmi'
 	throwforce			= 0
 	icon_state 			= "b_condom_wrapped"
-	equipment_slot		= GENITAL_EQUIPEMENT_CONDOM
 	var/unwrapped		= 0
 	w_class 			= WEIGHT_CLASS_TINY
 
@@ -27,6 +26,9 @@
 			icon_state = "b_condom_inflated_huge"
 	..()
 
+/obj/item/genital_equipment/condom/on_reagent_change()
+	update_icon()
+
 /obj/item/genital_equipment/condom/attack_self(mob/user) //Unwrap The Condom in hands
 	if(!istype(user))
 		return
@@ -37,13 +39,26 @@
 			to_chat(user, "<span class='notice'>You unwrap the condom.</span>")
 			playsound(user, 'sound/items/poster_ripped.ogg', 50, 1, -1)
 			return
+
+/obj/item/genital_equipment/condom/throw_impact(atom/hit_atom)
+	. = ..()
+	if(!.) //if we're not being caught
+		splat(hit_atom)
+
+/obj/item/genital_equipment/condom/proc/splat(atom/movable/hit_atom)
+	if(isliving(loc))
+		return
+	var/turf/T = get_turf(hit_atom)
+	new/obj/effect/decal/cleanable/semen(T)
+	playsound(T, 'sound/misc/splort.ogg', 50, TRUE)
+	qdel(src)
 //		if(unwrapped == 1)
 //			new /obj/item/clothing/head/condom(usr.loc)
 //			qdel(src)
 //			to_chat(user, "<span class='notice'>You roll the condom out.</span>")
 //			playsound(user, 'sound/lewd/latex.ogg', 50, 1, -1)
 //			return
-
+/*
 /obj/item/genital_equipment/condom/attack(mob/living/carbon/C, mob/living/user) //apply the johnny on another person or yourself
 
 	if(unwrapped == 0 )
@@ -73,6 +88,7 @@
 
 		return
 	to_chat(user, "<span class='notice'>You can't find anywhere to put the condom on.</span>") //Trying to put it on something without/or with a hidden
+*/
 
 /obj/item/clothing/head/condom //p
 	name = "condom"
@@ -93,7 +109,7 @@
 		/*P.colourtint = ""
 		update_genitals()*/
 */
-
+/*
 /obj/item/genital_equipment/condom/filled
 	name 				= "filled condom"
 	icon_state 			= "b_condom_inflated"
@@ -112,7 +128,8 @@
 	new/obj/effect/decal/cleanable/semen(T)
 	playsound(T, 'sound/misc/splort.ogg', 50, TRUE)
 	qdel(src)
-
+*/
+/*
 /obj/item/genital_equipment/condom/genital_remove_proccess(obj/item/organ/genital/G)
 	if(!G.equipment[GENITAL_EQUIPEMENT_CONDOM])
 		return
@@ -121,12 +138,12 @@
 	. = ..()
 	qdel(src)
 
+*/
+
 /mob/living/carbon/human/proc/condomclimax()
-	var/obj/item/genital_equipment/condom/filled/C = new
 	var/obj/item/organ/genital/penis/P = getorganslot(ORGAN_SLOT_PENIS)
-	P.equipment.Remove(GENITAL_EQUIPEMENT_CONDOM)
-	C.loc = loc
-	return C
+	var/obj/item/genital_equipment/condom/condo = locate(/obj/item/genital_equipment/condom) in P.contents
+	return condo
 
 	/*
 	var/obj/item/genital_equipment/condom/filled/C = new

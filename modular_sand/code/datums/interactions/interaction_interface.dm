@@ -97,8 +97,15 @@
 				visibility = "Always hidden"
 			else
 				visibility = "Hidden by clothes"
+
+			var/extras = "None"
+			if(CHECK_BITFIELD(genital.genital_flags, GENITAL_CAN_STUFF))
+				extras = "Allows egg stuffing"
+
+			genital_entry["extras"] = extras
 			genital_entry["visibility"] = visibility
 			genital_entry["possible_choices"] = GLOB.genitals_visibility_toggles
+			genital_entry["extra_choices"] = list(GEN_ALLOW_EGG_STUFFING)
 			genitals += list(genital_entry)
 	if(iscarbon(self))
 		var/simulated_ass = list()
@@ -116,6 +123,37 @@
 		simulated_ass["possible_choices"] = GLOB.genitals_visibility_toggles - GEN_VISIBLE_NO_CLOTHES
 		genitals += list(simulated_ass)
 	.["genitals"] = genitals
+
+	//Get their genitals
+	var/list/genital_fluids = list()
+	var/mob/living/carbon/target_genitals = target || self
+	if(istype(target_genitals))
+		for(var/obj/item/organ/genital/genital in target_genitals.internal_organs)
+			if(!(CHECK_BITFIELD(genital.genital_flags, GENITAL_FUID_PRODUCTION)))
+				continue
+			var/fluids = (clamp(genital.fluid_rate * ((world.time - genital.last_orgasmed) / (10 SECONDS)) * genital.fluid_mult, 0, genital.fluid_max_volume) / genital.fluid_max_volume)
+			var/list/genital_entry = list()
+			genital_entry["name"] = "[genital.name]"
+			genital_entry["key"] = REF(genital)
+			genital_entry["fluid"] = fluids
+			genital_fluids += list(genital_entry)
+	.["genital_fluids"] = genital_fluids
+
+	var/list/genital_interactibles = list()
+	if(istype(target_genitals))
+		for(var/obj/item/organ/genital/genital in target_genitals.internal_organs)
+			if(!genital.is_exposed())
+				continue
+			var/list/equipment_names = list()
+			for(var/obj/equipment in genital.contents)
+				equipment_names += equipment.name
+			var/list/genital_entry = list()
+			genital_entry["name"] = "[genital.name]"
+			genital_entry["key"] = REF(genital)
+			genital_entry["possible_choices"] = GLOB.genitals_interactions
+			genital_entry["equipments"] = equipment_names
+			genital_interactibles += list(genital_entry)
+	.["genital_interactibles"] = genital_interactibles
 
 	var/datum/preferences/prefs = usr?.client.prefs
 	if(prefs)
@@ -180,6 +218,28 @@
 				return TRUE
 			else
 				return FALSE
+		if("genital_interaction")
+			var/mob/living/carbon/actual_target = target || usr
+			var/mob/user = usr
+			var/obj/item/organ/genital/genital = locate(params["genital"], actual_target.internal_organs)
+			if(!(genital && (genital in actual_target.internal_organs)))
+				return FALSE
+			switch(params["action"])
+				if(GEN_INSERT_EQUIPMENT)
+					var/obj/item/stuff = user.get_active_held_item()
+					if(!istype(stuff))
+						to_chat(user, span_warning("You need to hold an item to insert it!"))
+						return FALSE
+					stuff.insert_item_organ(user, actual_target, genital)
+				if(GEN_REMOVE_EQUIPMENT)
+					var/obj/item/selected_item = input(user, "Pick an item to remove", "Removing item") as null|anything in genital.contents
+					if(selected_item)
+						if(!do_mob(user, actual_target, 5 SECONDS))
+							return FALSE
+						if(!user.put_in_hands(selected_item))
+							user.transferItemToLoc(get_turf(user))
+						return TRUE
+					return FALSE
 		if("char_pref")
 			var/datum/preferences/prefs = usr.client.prefs
 			var/value = num_to_pref(params["value"])

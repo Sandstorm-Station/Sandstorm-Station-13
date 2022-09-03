@@ -101,8 +101,8 @@
 		W = new
 		W.Insert(M)
 
-	if(M.has_quirk(/datum/quirk/infertile))
-		M.remove_quirk(/datum/quirk/infertile)
+	//if(M.has_quirk(/datum/quirk/infertile))
+	//	M.remove_quirk(/datum/quirk/infertile)
 
 	return ..()
 

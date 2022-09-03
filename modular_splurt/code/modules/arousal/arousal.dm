@@ -2,36 +2,67 @@
 	. = ..()
 	L.receive_climax(src, Lgen, G, spillage, forced = forced)
 
-/mob/living/receive_climax(mob/living/partner, obj/item/organ/genital/receiver, obj/item/organ/genital/source_gen, spill, forced)
-	. = ..()
+/mob/living/proc/receive_climax(mob/living/partner, obj/item/organ/genital/receiver, obj/item/organ/genital/source, spill, forced)
+	//gregnancy...
+	if(!spill && istype(source, /obj/item/organ/genital/penis) && \
+		istype(receiver, /obj/item/organ/genital/vagina) && getorganslot(ORGAN_SLOT_WOMB))
+		var/obj/item/organ/genital/penis/peenus = source
+		if(!(locate(/obj/item/genital_equipment/condom) in peenus.contents))
+			impregnate(partner)
 
 	if(!receiver || spill || forced)
 		return
 
-	receiver.climax_modify_size(partner, source_gen)
+	receiver.climax_modify_size(partner, source)
 
-/mob/living/carbon/human/do_climax(datum/reagents/R, atom/target, obj/item/organ/genital/G, spill, cover = FALSE)
-	if(!G)
+//handles impregnation, also prefs
+/mob/living/proc/impregnate(mob/living/partner, obj/item/organ/W, baby_type = /mob/living/carbon/human)
+	var/obj/item/organ/container = W
+
+	if(!container)
+		container = getorganslot(ORGAN_SLOT_WOMB)
+	if(!container)
+		return
+
+	var/can_impregnate = 100
+	if(partner?.client?.prefs)
+		can_impregnate = partner.client.prefs.virility
+	var/can_get_pregnant = (client?.prefs?.fertility && !is_type_in_typecache(src.type, GLOB.pregnancy_blocked_mob_typecache))
+	if(!(can_impregnate && can_get_pregnant))
+		return
+
+	var/avg = (can_impregnate + client.prefs.fertility) / 2
+
+	if(prob(avg))
+		var/obj/item/oviposition_egg/eggo = new()
+		eggo.forceMove(container)
+		eggo.AddComponent(/datum/component/pregnancy, src, partner, baby_type)
+
+/mob/living/carbon/human/do_climax(datum/reagents/R, atom/target, obj/item/organ/genital/sender, spill, cover = FALSE, obj/item/organ/genital/receiver)
+	if(!sender)
 		return
 	if(!target || !R)
+		return
+
+	if(SEND_SIGNAL(src, COMSIG_MOB_CLIMAX, R, target, sender, receiver, spill))
 		return
 
 	var/cached_fluid
 	if(isliving(target) && !spill)
 		var/mob/living/L = target
 		var/list/blacklist = L.client?.prefs.gfluid_blacklist
-		if((G.get_fluid_id() in blacklist) || ((/datum/reagent/blood in blacklist) && ispath(G.get_fluid_id(), /datum/reagent/blood)))
-			cached_fluid = G.get_fluid_id()
-			var/default = G.get_default_fluid()
-			G.set_fluid_id(default)
+		if((sender.get_fluid_id() in blacklist) || ((/datum/reagent/blood in blacklist) && ispath(sender.get_fluid_id(), /datum/reagent/blood)))
+			cached_fluid = sender.get_fluid_id()
+			var/default = sender.get_default_fluid()
+			sender.set_fluid_id(default)
 
-	if(istype(G, /obj/item/organ/genital/penis))
-		var/obj/item/organ/genital/penis/bepis = G
-		if(bepis.equipment[GENITAL_EQUIPMENT_SOUNDING])
+	if(istype(sender, /obj/item/organ/genital/penis))
+		var/obj/item/organ/genital/penis/bepis = sender
+		if(locate(/obj/item/genital_equipment/sounding) in bepis.contents)
 			spill = TRUE
 			to_chat(src, "<span class='userlove'>You feel your sounding rod being pushed out of your cockhole with the burst of jizz!</span>")
-			bepis.equipment.Remove(GENITAL_EQUIPMENT_SOUNDING)
-			new /obj/item/genital_equipment/sounding/used_sounding(loc)
+			var/obj/item/genital_equipment/sounding/rod = locate(/obj/item/genital_equipment/sounding) in bepis.contents
+			rod.forceMove(get_turf(src))
 
 	if(cover)
 		target.add_cum_overlay()
@@ -39,7 +70,7 @@
 	. = ..()
 
 	if(cached_fluid)
-		G.set_fluid_id(cached_fluid)
+		sender.set_fluid_id(cached_fluid)
 
 /mob/living/carbon/human/mob_fill_container(obj/item/organ/genital/G, obj/item/reagent_containers/container, mb_time, obj/item/milking_machine/M)
 	if(!M)

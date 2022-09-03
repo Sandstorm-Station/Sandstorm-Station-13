@@ -160,6 +160,7 @@
 		if(CUM_TARGET_VAGINA)
 			if(M.is_bottomless() && M.has_vagina())
 				message = "rams its meaty cock into \the [M]'s pussy and fills it with sperm."
+				M.impregnate(src, M.getorganslot(ORGAN_SLOT_WOMB), src.type)
 			else
 				message = "cums on \the [M]'s belly."
 		if(CUM_TARGET_ANUS)

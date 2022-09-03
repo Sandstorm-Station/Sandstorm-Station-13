@@ -463,6 +463,7 @@ GENETICS SCANNER
 			msg += "<span class='notice'>Detected cybernetic modifications:</span>\n"
 			msg += "<span class='notice'>[cyberimp_detect]</span>\n"
 	to_chat(user, examine_block(msg))
+	SEND_SIGNAL(M, COMSIG_HEALTH_SCAN, user)//SPLURT EDIT ADD - gregnancy
 	SEND_SIGNAL(M, COMSIG_NANITE_SCAN, user, FALSE)
 
 /proc/chemscan(mob/living/user, mob/living/M)

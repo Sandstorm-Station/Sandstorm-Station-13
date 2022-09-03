@@ -14,7 +14,7 @@
 	if(LAZYLEN(receivers_list))
 		var/obj/item/organ/genital/ret_organ = input(src, desc, title, null) as null|obj in receivers_list
 		return ret_organ
-
+/*
 /mob/living/proc/receive_climax(mob/living/partner, obj/item/organ/genital/receiver = null, obj/item/organ/genital/source_gen, spill = TRUE)
 	if(!ishuman(src))
 		return
@@ -36,3 +36,4 @@
 						var/obj/item/organ/genital/breasts/B = h_self.getorganslot(ORGAN_SLOT_BREASTS)
 						if(B)
 							B.fluid_rate *= 2
+*/
