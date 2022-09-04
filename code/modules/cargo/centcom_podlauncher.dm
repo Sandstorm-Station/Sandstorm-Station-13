@@ -708,7 +708,7 @@
 		return
 	var/obj/structure/closet/supplypod/centcompod/toLaunch = DuplicateObject(temp_pod) //Duplicate the temp_pod (which we have been varediting or configuring with the UI) and store the result
 	toLaunch.update_icon()//we update_icon() here so that the door doesnt "flicker on" right after it lands
-	var/shippingLane = GLOB.areas_by_type[/area/centcom/supplypod/supplypod_temp_holding]
+	var/shippingLane = GLOB.areas_by_type[/area/centcom/supplypod/podStorage]
 	toLaunch.forceMove(shippingLane)
 	if (launchClone) //We arent launching the actual items from the bay, rather we are creating clones and launching those
 		if(launchRandomItem)
