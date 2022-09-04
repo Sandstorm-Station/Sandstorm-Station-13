@@ -124,6 +124,15 @@
 /obj/item/clothing/head/hooded/corpus/c //command
 	icon_state = "corpusc"
 
+/obj/item/clothing/under/rank/civilian/janitor/maid/formal
+	name = "Formal maid uniform"
+	desc = "A cozy maid uniform for housekeeping."
+	icon = 'modular_splurt/icons/obj/clothing/suits.dmi'
+	mob_overlay_icon = 'modular_splurt/icons/mob/clothing/suit.dmi'
+	fitted = NO_FEMALE_UNIFORM
+	icon_state = "maiddress"
+	item_state = "maiddress"
+
 // GWTB-inspired stuff wooo
 /obj/item/clothing/suit/goner
 	name = "trencher coat"
