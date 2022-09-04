@@ -1,3 +1,11 @@
+//Uniform
+/datum/gear/donator/uniform/pentatop
+	name = "pentagram crop top"
+	path = /obj/item/clothing/under/pentatop
+	cost = 1
+	ckeywhitelist = list()
+	donator_group_id = DONATOR_GROUP_TIER_2
+
 //Backpack
 /datum/gear/donator/backpack/crocinpen/plus
 	name = "Shot of concentrated lust"

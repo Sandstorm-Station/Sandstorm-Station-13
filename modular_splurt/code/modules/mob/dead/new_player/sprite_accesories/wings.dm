@@ -115,3 +115,9 @@
 	icon = 'modular_splurt/icons/mob/64_wings.dmi'
 	dimension_x = 64
 	center = TRUE
+
+/datum/sprite_accessory/deco_wings/angelmoth
+	name = "Angel Moth"
+	icon_state = "angelmoth"
+	icon = 'modular_splurt/icons/mob/wings.dmi'
+	upgrade_to = SPECIES_WINGS_MOTH
