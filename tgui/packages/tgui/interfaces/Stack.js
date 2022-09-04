@@ -71,7 +71,7 @@ const RecipeList = (props, context) => {
 
   const sortedKeys = sortBy(key => key.toLowerCase())(Object.keys(recipes));
 
-  return sortedKeys.map(title, index => {
+  return sortedKeys.map((title, index) => {
     const recipe = recipes[title];
     if (recipe.ref === undefined) {
       return (
