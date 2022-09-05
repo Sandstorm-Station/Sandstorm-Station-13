@@ -65,7 +65,7 @@
 		to_chat(user, "<span class='notice'>You must remove the condom from the package first!</span>")
 		return
 	var/obj/item/organ/genital/penis/P = C.getorganslot(ORGAN_SLOT_PENIS)
-	if(C.has_penis(REQUIRE_EXPOSED) && (P?.genital_flags & HAS_EQUIPMENT))
+	if((C.has_penis(REQUIRE_EXPOSED) && (P?.genital_flags & HAS_EQUIPMENT)) || (C.has_strapon(REQUIRE_EXPOSED)))
 		if(P.equipment[GENITAL_EQUIPEMENT_CONDOM])
 			to_chat(user, "<span class='notice'>\The [C] already has condom on!</span>")
 			return
@@ -84,7 +84,10 @@
 		if(L)
 			L.update_genitals() // apply the colour!
 		*/
-		to_chat(C, "<span class='userlove'>Your penis feels more safe!</span>")
+		if(C.has_penis())
+			to_chat(C, "<span class='userlove'>Your penis feels more safe!</span>")
+		else
+			to_chat(C, "<span class='userlove'>Your strapon feels more safe... Not sure why would that matter though.</span>")
 
 		return
 	to_chat(user, "<span class='notice'>You can't find anywhere to put the condom on.</span>") //Trying to put it on something without/or with a hidden

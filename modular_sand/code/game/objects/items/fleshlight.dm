@@ -56,8 +56,9 @@
 	if(ishuman(M) && (M?.client?.prefs?.toggles & VERB_CONSENT))
 		switch(user.zone_selected)
 			if(BODY_ZONE_PRECISE_GROIN)
-				if(M.has_penis(REQUIRE_EXPOSED))
-					message = (user == M) ? "pumps [src] on [possessive_verb] penis" : "pumps \the [src] on [M]'s penis"
+				if(M.has_penis(REQUIRE_EXPOSED) || M.has_strapon(REQUIRE_EXPOSED))
+					var/genital_name = (user == M) ? user.get_penetrating_genital_name() : M.get_penetrating_genital_name()
+					message = (user == M) ? "pumps [src] on [possessive_verb] [genital_name]" : "pumps \the [src] on [M]'s [genital_name]"
 					lust_amt = NORMAL_LUST
 	if(message)
 		user.visible_message("<span class='lewd'>[user] [message].</span>")
@@ -128,6 +129,7 @@
 			if(BODY_ZONE_PRECISE_GROIN)
 				switch(targetting)
 					if(CUM_TARGET_PENIS)
+						// TODO: finish strapon interaction
 						if(M.has_penis(REQUIRE_EXPOSED))
 							var/obj/item/organ/genital/penis/temp = M.getorganslot(ORGAN_SLOT_PENIS)
 							switch(portalunderwear.targetting)
@@ -689,11 +691,11 @@
 					to_chat(human, "<span class='warning'>The anus is covered or there is none!</span>")
 					return FALSE
 			if(CUM_TARGET_PENIS)
-				if(!human.has_penis(REQUIRE_EXPOSED))
+				if(!human.has_penis(REQUIRE_EXPOSED) && !human.has_strapon(REQUIRE_EXPOSED))
 					to_chat(human, "<span class='warning'>The penis is covered or there is none!</span>")
 					return FALSE
 			if(CUM_TARGET_URETHRA)
-				if(!human.has_penis(REQUIRE_EXPOSED))
+				if(!human.has_penis(REQUIRE_EXPOSED) && !human.has_strapon(REQUIRE_EXPOSED))
 					to_chat(human, "<span class='warning'>The urethra is covered or there is none!</span>")
 					return FALSE
 			if(CUM_TARGET_MOUTH)

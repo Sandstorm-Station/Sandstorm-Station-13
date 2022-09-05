@@ -118,18 +118,17 @@
 
 /datum/interaction/lewd/footjob/display_interaction(mob/living/user, mob/living/partner)
 	var/message
-
 	var/u_His = user.p_their()
-
 	var/shoes = user.get_shoes(TRUE)
+	var/genital_name = partner.get_penetrating_genital_name()
 
 	if(partner.is_fucking(src, CUM_TARGET_FEET))
 		message = "[pick("jerks \the <b>[partner]</b> off with [u_His] [shoes ? shoes : pick("foot", "sole")].",
 			"rubs [u_His] [shoes ? shoes : pick("foot", "sole", "toes")] on \the <b>[partner]</b>'s shaft.",
-			"works [u_His] [shoes ? shoes : pick("foot", "sole")] up and down on \the <b>[partner]</b>'s cock.")]"
+			"works [u_His] [shoes ? shoes : pick("foot", "sole")] up and down on \the <b>[partner]</b>'s [genital_name].")]"
 	else
-		message = "[pick("[shoes ? "positions [u_His] [shoes] on" :"positions [u_His] foot on"] \the <b>[partner]</b>'s cock.",
-			"starts playing around with \the <b>[partner]</b>'s cock, using [u_His] [shoes ? shoes :"foot"].")]"
+		message = "[pick("[shoes ? "positions [u_His] [shoes] on" :"positions [u_His] foot on"] \the <b>[partner]</b>'s [genital_name].",
+			"starts playing around with \the <b>[partner]</b>'s [genital_name], using [u_His] [shoes ? shoes :"foot"].")]"
 		partner.set_is_fucking(user, CUM_TARGET_FEET, partner.getorganslot(ORGAN_SLOT_PENIS))
 
 	playlewdinteractionsound(get_turf(user), pick('modular_sand/sound/interactions/foot_dry1.ogg',
@@ -137,7 +136,8 @@
 						'modular_sand/sound/interactions/foot_wet1.ogg',
 						'modular_sand/sound/interactions/foot_wet2.ogg'), 70, 1, -1)
 	user.visible_message(message = "<span class='lewd'><b>\The [user]</b> [message]</span>", ignored_mobs = user.get_unconsenting())
-	partner.handle_post_sex(NORMAL_LUST, CUM_TARGET_FEET, user)
+	if(partner.can_penetrating_genital_cum())
+		partner.handle_post_sex(NORMAL_LUST, CUM_TARGET_FEET, user)
 
 /datum/interaction/lewd/footjob/double
 	description = "Jerk them off with both of your feet."
@@ -145,19 +145,18 @@
 
 /datum/interaction/lewd/footjob/double/display_interaction(mob/living/user, mob/living/partner)
 	var/message
-
 	var/u_His = user.p_their()
-
 	var/shoes = user.get_shoes()
+	var/genital_name = partner.get_penetrating_genital_name()
 
 	if(partner.is_fucking(user, CUM_TARGET_FEET))
 		message = "[pick("jerks \the <b>[partner]</b> off with [u_His] [shoes ? shoes : pick("feet", "soles")].",
 			"rubs [u_His] [shoes ? shoes : pick("feet", "soles")] on \the <b>[partner]</b>'s shaft.",
-			"rubs [shoes ? "[u_His] [shoes]" : "all of [u_His] toes"] on \the <b>[partner]</b>'s cock.",
-			"works [u_His] [shoes ? shoes : pick("feet", "soles")] up and down on \the <b>[partner]</b>'s cock.")]"
+			"rubs [shoes ? "[u_His] [shoes]" : "all of [u_His] toes"] on \the <b>[partner]</b>'s [genital_name].",
+			"works [u_His] [shoes ? shoes : pick("feet", "soles")] up and down on \the <b>[partner]</b>'s [genital_name].")]"
 	else
-		message = "[pick("[shoes ? "wraps [u_His] [shoes] around" : "wraps [u_His] [pick("feet", "soles")] around"] \the <b>[partner]</b>'s cock.",
-			"starts playing around with \the <b>[partner]</b>'s cock, using [u_His] [shoes ? shoes : "feet"].")]"
+		message = "[pick("[shoes ? "wraps [u_His] [shoes] around" : "wraps [u_His] [pick("feet", "soles")] around"] \the <b>[partner]</b>'s [genital_name].",
+			"starts playing around with \the <b>[partner]</b>'s [genital_name], using [u_His] [shoes ? shoes : "feet"].")]"
 		partner.set_is_fucking(user, CUM_TARGET_FEET, partner.getorganslot(ORGAN_SLOT_PENIS))
 
 	playlewdinteractionsound(get_turf(user), pick('modular_sand/sound/interactions/foot_dry1.ogg',
@@ -165,7 +164,8 @@
 						'modular_sand/sound/interactions/foot_wet1.ogg',
 						'modular_sand/sound/interactions/foot_wet2.ogg'), 70, 1, -1)
 	user.visible_message(message = "<span class='lewd'><b>\The [user]</b> [message]</span>", ignored_mobs = user.get_unconsenting())
-	partner.handle_post_sex(NORMAL_LUST, CUM_TARGET_FEET, user)
+	if(partner.can_penetrating_genital_cum())
+		partner.handle_post_sex(NORMAL_LUST, CUM_TARGET_FEET, user)
 
 /datum/interaction/lewd/footjob/vagina
 	description = "Rub their vagina with your foot."
@@ -194,4 +194,5 @@
 						'modular_sand/sound/interactions/foot_wet1.ogg',
 						'modular_sand/sound/interactions/foot_wet2.ogg'), 70, 1, -1)
 	user.visible_message(message = "<span class='lewd'><b>\The [user]</b> [message]</span>", ignored_mobs = user.get_unconsenting())
-	partner.handle_post_sex(NORMAL_LUST, CUM_TARGET_FEET, user)
+	if(partner.can_penetrating_genital_cum())
+		partner.handle_post_sex(NORMAL_LUST, CUM_TARGET_FEET, user)

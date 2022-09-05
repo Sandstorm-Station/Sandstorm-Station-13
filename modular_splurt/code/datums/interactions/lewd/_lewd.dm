@@ -278,12 +278,13 @@
 					else
 						improv = TRUE
 				if("penis")
-					if(user.has_penis())
+					if(user.has_penis() || user.has_strapon())
+						var/genital_name = user.get_penetrating_genital_name()
 						message = pick(
 							"sucks [t_Him] off.",
-							"runs their tongue up the shape of [t_His] cock.",
-							"traces [t_His] cock with their tongue.",
-							"darts the tip of their tongue around tip of [t_His] cock.",
+							"runs their tongue up the shape of [t_His] [genital_name].",
+							"traces [t_His] [genital_name] with their tongue.",
+							"darts the tip of their tongue around tip of [t_His] [genital_name].",
 							"laps slowly at [t_His] shaft.",
 							"kisses the base of [t_His] shaft.",
 							"takes [t_Him] deeper into their mouth.",
@@ -315,13 +316,14 @@
 				else
 					improv = TRUE
 			if("penis")
-				if(user.has_penis())
+				if(user.has_penis() || user.has_strapon())
+					var/genital_name = user.get_penetrating_genital_name()
 					message = pick(
-						"takes [t_His] cock into their mouth.",
-						"wraps their lips around [t_His] cock.",
+						"takes [t_His] [genital_name] into their mouth.",
+						"wraps their lips around [t_His] [genital_name].",
 						"finds their face between [t_His] thighs.",
 						"kneels down between [t_His] legs.",
-						"grips [t_His] legs, kissing at the tip of their cock.",
+						"grips [t_His] legs, kissing at the tip of their [genital_name].",
 						"goes down on [t_Him].",
 					)
 				else
@@ -358,20 +360,22 @@
 									'modular_sand/sound/interactions/bj10.ogg',
 									'modular_sand/sound/interactions/bj11.ogg'), 50, 1, -1)
 	visible_message(message = "<span class='lewd'><b>\The [src]</b> [message]</span>", ignored_mobs = get_unconsenting())
-	user.handle_post_sex(lust_increase, CUM_TARGET_MOUTH, src)
+	if(user.can_penetrating_genital_cum())
+		user.handle_post_sex(lust_increase, CUM_TARGET_MOUTH, src)
 	lust_increase = NORMAL_LUST //RESET IT REE
 
 /mob/living/proc/do_breastfuck_self(mob/living/user)
 	var/message
 	var/t_His = p_their()
+	var/genital_name = get_penetrating_genital_name()
 
 	if(is_fucking(user, CUM_TARGET_BREASTS))
 		message = "[pick("fucks [t_His] breasts.",
-			"grinds their cock between [t_His] boobs.",
+			"grinds their [genital_name] between [t_His] boobs.",
 			"thrusts into [t_His] tits.",
-			"grabs [t_His] breasts together and presses their dick between them.")]"
+			"grabs [t_His] breasts together and presses their [genital_name] between them.")]"
 	else
-		message = "pushes [t_His] breasts together and presses their dick between them."
+		message = "pushes [t_His] breasts together and presses their [genital_name] between them."
 		set_is_fucking(user, CUM_TARGET_BREASTS, getorganslot(ORGAN_SLOT_PENIS) ? getorganslot(ORGAN_SLOT_PENIS) : null)
 
 	playlewdinteractionsound(loc, pick('modular_sand/sound/interactions/bang1.ogg',
@@ -413,21 +417,23 @@
 
 /mob/living/proc/do_bellyfuck(mob/living/partner)
 	var/message
+	var/genital_name = get_penetrating_genital_name()
 
 	if(is_fucking(partner, CUM_TARGET_BELLY))
 		message = "[pick(
 			"pounds \the <b>[partner]</b>'s belly.",
-			"shoves their dick deep into \the <b>[partner]</b>'s soft tummy",
+			"shoves their [genital_name] deep into \the <b>[partner]</b>'s soft tummy",
 			"thrusts in and out of \the <b>[partner]</b>'s navel.",
 			"goes balls deep into \the <b>[partner]</b>'s gut over and over again.")]"
 	else
-		message = "pulls his cock up and slides it into \the <b>[partner]</b>'s receiving navel."
+		message = "pulls his [genital_name] up and slides it into \the <b>[partner]</b>'s receiving navel."
 		set_is_fucking(partner, CUM_TARGET_BELLY, getorganslot(ORGAN_SLOT_PENIS) ? getorganslot(ORGAN_SLOT_PENIS) : null)
 
 	playlewdinteractionsound(loc, pick('modular_sand/sound/interactions/champ1.ogg',
 						'modular_sand/sound/interactions/champ2.ogg'), 50, 1, -1)
 	visible_message(message = "<span class='lewd'><b>\The [src]</b> [message]</span>", ignored_mobs = get_unconsenting())
-	handle_post_sex(NORMAL_LUST, CUM_TARGET_BELLY, partner)
+	if(can_penetrating_genital_cum())
+		handle_post_sex(NORMAL_LUST, CUM_TARGET_BELLY, partner)
 	//partner.handle_post_sex(NORMAL_LUST, null, src) //don't think we need it fo dis one
 
 /mob/living/proc/do_breastsmother(mob/living/target)
@@ -494,24 +500,25 @@
 /mob/living/proc/fuck_armpit(mob/living/target)
 	var/message
 	var/u_His = p_their()
+	var/genital_name = get_penetrating_genital_name()
 	var/t_His = target.p_their()
 	var/list/musk = list("musky ", "sweaty ", "damp ", "smelly ", "")
 	var/list/lines
 
 	if(is_fucking(target, CUM_TARGET_ARMPIT))
 		lines = list(
-			" slides [u_His] [pick(GLOB.dick_nouns)] back and forth under \the <b>[target]</b>'s [pick(musk)] armpit",
-			"'s cock drools pre all over \the <b>[target]</b>'s [pick(musk)] armpit, thoroughly fucking its warm embrace",
-			" shoves [u_His] [pick(GLOB.dick_nouns)] under \the <b>[target]</b>'s arm, using [t_His] [pick(musk)] pit like a fleshlight"
+			" slides [u_His] [genital_name] back and forth under \the <b>[target]</b>'s [pick(musk)] armpit",
+			"'s [genital_name] drools pre all over \the <b>[target]</b>'s [pick(musk)] armpit, thoroughly fucking its warm embrace",
+			" shoves [u_His] [genital_name] under \the <b>[target]</b>'s arm, using [t_His] [pick(musk)] pit like a fleshlight"
 		)
 	else
 		if(target.is_topless())
 			lines = list(
-				" presents [u_His] [pick(GLOB.dick_nouns)] to \the <b>[target]</b>'s [pick(musk)] armpit, beginning to thrust its whole length right under [t_His] arm!"
+				" presents [u_His] [genital_name] to \the <b>[target]</b>'s [pick(musk)] armpit, beginning to thrust its whole length right under [t_His] arm!"
 			)
 		else // https://cdn.discordapp.com/attachments/802990353883070474/962478553117622322/NoName-480p.mp4
 			lines = list(
-				" rips a hole through \the <b>[target]</b>'s clothes so [t_His] armpit is exposed. \The <b>[target]</b> can suddenly feel the warmth of \the <b>[src]</b>' throbbing [pick(GLOB.dick_nouns)] sliding all the way into [t_His] [pick(musk)] pit!"
+				" rips a hole through \the <b>[target]</b>'s clothes so [t_His] armpit is exposed. \The <b>[target]</b> can suddenly feel the warmth of \the <b>[src]</b>' throbbing [genital_name] sliding all the way into [t_His] [pick(musk)] pit!"
 			)
 		set_is_fucking(target, CUM_TARGET_ARMPIT, getorganslot(ORGAN_SLOT_PENIS))
 
@@ -520,25 +527,27 @@
 	playlewdinteractionsound(loc, pick('modular_sand/sound/interactions/bang1.ogg',
 						'modular_sand/sound/interactions/bang2.ogg',
 						'modular_sand/sound/interactions/bang3.ogg'), 70, 1, -1)
-	handle_post_sex(NORMAL_LUST, CUM_TARGET_ARMPIT, target)
+	if(can_penetrating_genital_cum())
+		handle_post_sex(NORMAL_LUST, CUM_TARGET_ARMPIT, target)
 
 /mob/living/proc/do_pitjob(mob/living/target)
 	var/message
 	var/list/musk = list("musky ", "sweaty ", "damp ", "smelly ", "")
 	var/u_His = p_their()
+	var/genital_name = target.get_penetrating_genital_name()
 	var/t_His = target.p_their()
 	var/list/lines
 
 	if(is_fucking(target, CUM_TARGET_ARMPIT))
 		lines = list(
-			"squeezes [u_His] armpit right into \the <b>[target]</b>'s throbbing [pick(GLOB.dick_nouns)], massaging its length using [u_His] [pick(musk)]armpit!",
-			"presses [u_His] arm down all over \the <b>[target]</b>'s leaking [pick(GLOB.dick_nouns)], milking it with [u_His] [pick(musk)] pit!",
-			"rubs and grinds [u_His] [pick(musk)] arpit back and forth through \the <b>[target]</b>'s [pick(GLOB.dick_nouns)], deeply squeezing it to the base!"
+			"squeezes [u_His] armpit right into \the <b>[target]</b>'s throbbing [genital_name], massaging its length using [u_His] [pick(musk)]armpit!",
+			"presses [u_His] arm down all over \the <b>[target]</b>'s leaking [genital_name], milking it with [u_His] [pick(musk)] pit!",
+			"rubs and grinds [u_His] [pick(musk)] arpit back and forth through \the <b>[target]</b>'s [genital_name], deeply squeezing it to the base!"
 		)
 	else
 		if(target.is_topless())
 			lines = list(
-				"presents [u_His] [pick(musk)] armpit to \the <b>[target]</b>, lifting [u_His] arm up before clamping it down into [t_His] [pick(GLOB.dick_nouns)] with a deep squeeze!",
+				"presents [u_His] [pick(musk)] armpit to \the <b>[target]</b>, lifting [u_His] arm up before clamping it down into [t_His] [genital_name] with a deep squeeze!",
 			)
 		else // https://cdn.discordapp.com/attachments/802990353883070474/962478553117622322/NoName-480p.mp4
 			lines = list(
@@ -551,24 +560,26 @@
 	playlewdinteractionsound(loc, pick('modular_sand/sound/interactions/bang1.ogg',
 						'modular_sand/sound/interactions/bang2.ogg',
 						'modular_sand/sound/interactions/bang3.ogg'), 70, 1, -1)
-	target.handle_post_sex(NORMAL_LUST, CUM_TARGET_ARMPIT, src)
+	if(target.can_penetrating_genital_cum())
+		target.handle_post_sex(NORMAL_LUST, CUM_TARGET_ARMPIT, src)
 
 /mob/living/proc/do_boobjob(mob/living/target)
 	var/message
 	var/u_His = p_their()
+	var/genital_name = target.get_penetrating_genital_name()
 	var/list/lines
 
 	if(target.is_fucking(src, CUM_TARGET_BREASTS))
 		lines = list(
-			"slides [u_His] [pick(GLOB.breast_nouns)], up and down through \the <b>[target]</b>'s throbbing cock",
+			"slides [u_His] [pick(GLOB.breast_nouns)], up and down through \the <b>[target]</b>'s throbbing [genital_name]",
 			"squeezes [u_His] [pick(GLOB.breast_nouns)] through all of \the <b>[target]</b>'s lenght",
 			"jerks \the <b>[target]</b> off lustfully with [u_His] supple [pick(GLOB.breast_nouns)]"
 		)
 	else
 		lines = list(
-			"clamps [u_His] [pick(GLOB.breast_nouns)] around \the <b>[target]</b>'s throbbing cock, wrapping it in their sheer warmth",
+			"clamps [u_His] [pick(GLOB.breast_nouns)] around \the <b>[target]</b>'s throbbing [genital_name], wrapping it in their sheer warmth",
 			"envelops \the <b>[target]</b>'s hard member with [u_His] soft [pick(GLOB.breast_nouns)], giving it a tight and sloshing squeeze",
-			"lets [u_His] [pick(GLOB.breast_nouns)] fall into \the <b>[target]</b>'s fat cock, smothering it in [u_His] cleavage"
+			"lets [u_His] [pick(GLOB.breast_nouns)] fall into \the <b>[target]</b>'s fat [genital_name], smothering it in [u_His] cleavage"
 		)
 		target.set_is_fucking(src, CUM_TARGET_BREASTS, getorganslot(ORGAN_SLOT_PENIS))
 
@@ -577,7 +588,8 @@
 	playlewdinteractionsound(loc, pick('modular_sand/sound/interactions/bang1.ogg',
 						'modular_sand/sound/interactions/bang2.ogg',
 						'modular_sand/sound/interactions/bang3.ogg'), 70, 1, -1)
-	target.handle_post_sex(NORMAL_LUST, CUM_TARGET_BREASTS, src)
+	if(target.can_penetrating_genital_cum())
+		target.handle_post_sex(NORMAL_LUST, CUM_TARGET_BREASTS, src)
 
 /mob/living/proc/lick_nuts(mob/living/target)
 	var/message
@@ -609,7 +621,8 @@
 	var/message
 	var/u_His = p_their()
 	var/t_His = target.p_their()
-	var/list/cock = GLOB.dick_nouns
+	var/u_genital_name = get_penetrating_genital_name()
+	var/t_genital_name = target.get_penetrating_genital_name()
 	var/list/lines
 	var/list/noises = list(
 		'modular_sand/sound/interactions/bang1.ogg',
@@ -622,44 +635,47 @@
 
 	if(is_fucking(target, CUM_TARGET_URETHRA))
 		lines = list(
-			"humps right into \the <b>[target]</b>'s [pick(cock)], stretiching it as their balls slam together",
-			"slides [u_His] [pick(cock)] all the way down \the <b>[target]</b>'s own throbbing [pick(cock)], [t_His] urethra is so tight!",
-			"rams [u_His] [pick(cock)] back and forth through \the <b>[target]</b>'s urethra, giving it a very nice fucking"
+			"humps right into \the <b>[target]</b>'s [t_genital_name], stretiching it as their balls slam together",
+			"slides [u_His] [u_genital_name] all the way down \the <b>[target]</b>'s own throbbing [t_genital_name], [t_His] urethra is so tight!",
+			"rams [u_His] [u_genital_name] back and forth through \the <b>[target]</b>'s urethra, giving it a very nice fucking"
 		)
 	else
 		lines = list(
 			"'s tip gently smooches \the <b>[target]</b>'s, right before forcing its way right down [t_His] dickhole",
-			"grinds [u_His] tip against \the <b>[target]</b>'s [pick(cock)], only to slide [u_His] whole [pick(cock)] all the way down to [t_His] base",
-			"makes \the <b>[target]</b>'s fat [pick(cock)] stretch and throb as the size of [u_His] [pick(cock)] makes its way right in"
+			"grinds [u_His] tip against \the <b>[target]</b>'s [t_genital_name], only to slide [u_His] whole [ui_ai_alerts] all the way down to [t_His] base",
+			"makes \the <b>[target]</b>'s fat [t_genital_name] stretch and throb as the size of [u_His] [u_genital_name] makes its way right in"
 		)
 		set_is_fucking(target, CUM_TARGET_URETHRA, getorganslot(ORGAN_SLOT_PENIS))
 
 	message = "<span class='lewd'>\The <b>[src]</b> [pick(lines)]</span>"
 	visible_message(message, ignored_mobs = get_unconsenting())
 	playlewdinteractionsound(src, pick(noises), 70, 1, -1)
-	handle_post_sex(NORMAL_LUST, CUM_TARGET_URETHRA, target)
-	target.handle_post_sex(NORMAL_LUST, CUM_TARGET_URETHRA, src)
+	if(can_penetrating_genital_cum())
+		handle_post_sex(NORMAL_LUST, CUM_TARGET_URETHRA, target)
+	if(target.can_penetrating_genital_cum())
+		target.handle_post_sex(NORMAL_LUST, CUM_TARGET_URETHRA, src)
 
 /mob/living/proc/do_nipfuck(mob/living/target)
 	var/message
 	var/list/lines
 	var/u_His = p_their()
+	var/genital_name = get_penetrating_genital_name()
 	var/t_His = target.p_their()
 	if(is_fucking(target, CUM_TARGET_NIPPLE) && target.has_breasts(REQUIRE_EXPOSED))
 		lines = list(
-			"slides [u_His] [pick(GLOB.dick_nouns)] back and forth into \the <b>[target]</b>'s nipple",
+			"slides [u_His] [genital_name] back and forth into \the <b>[target]</b>'s nipple",
 			"thrusts in and out of \the <b>[target]</b>'s leaky and puffy nip, making [t_His] [pick(GLOB.breast_nouns)] slosh and leak",
-			"'s balls slap loudly against \the <b>[target]</b>'s jostling [pick(GLOB.breast_nouns)] as [t_His] nipple swallows [u_His] [pick(GLOB.dick_nouns)] whole"
+			"'s balls slap loudly against \the <b>[target]</b>'s jostling [pick(GLOB.breast_nouns)] as [t_His] nipple swallows [u_His] [genital_name] whole"
 		)
 	else if(target.has_breasts(REQUIRE_EXPOSED))
 		lines = list(
 			"presses [u_His] throbbing tip against \the <b>[target]</b>'s puffy nipple, forcing the whole lenght all the way in with a wet smack",
-			"stretches \the <b>[target]</b>'s nipple with his fingers, before forcing it open with the whole girth of [u_His] twitching [pick(GLOB.dick_nouns)]"
+			"stretches \the <b>[target]</b>'s nipple with his fingers, before forcing it open with the whole girth of [u_His] twitching [genital_name]"
 		)
 	else
 		lines = list(
 			"rubs [u_His] tip gently against \the <b>[target]</b>'s [pick("nipple", "chest")]",
-			"slaps [u_His] snaky [pick(GLOB.dick_nouns)] into \the <b>[target]</b>'s chest",
+			"slaps [u_His] snaky [genital_name] into \the <b>[target]</b>'s chest",
 			"smooches \the <b>[target]</b>'s nipple with [u_His] dickhole"
 		)
 
@@ -671,26 +687,28 @@
 	playlewdinteractionsound(src, pick('modular_sand/sound/interactions/bang1.ogg',
 						'modular_sand/sound/interactions/bang2.ogg',
 						'modular_sand/sound/interactions/bang3.ogg'), 70, 1, -1)
-	handle_post_sex(NORMAL_LUST, CUM_TARGET_NIPPLE, target)
+	if(can_penetrating_genital_cum())
+		handle_post_sex(NORMAL_LUST, CUM_TARGET_NIPPLE, target)
 	target.handle_post_sex(NORMAL_LUST, null, src)
 
 /mob/living/proc/do_thighfuck(mob/living/target)
 	var/message
 	var/list/lines
 	var/u_His = p_their()
+	var/genital_name = get_penetrating_genital_name()
 	var/t_His = target.p_their()
 
 	if(is_fucking(target, CUM_TARGET_THIGHS))
 		lines = list(
 			"thrusts in and out of \the <b>[target]</b>'s [pick("pudgy ", "soft ", "")]thighs, making them jiggle",
-			"lustfully rolls [u_His] [pick(GLOB.dick_nouns)] back and forth between \the <b>[target]</b>'s thighs",
+			"lustfully rolls [u_His] [genital_name] back and forth between \the <b>[target]</b>'s thighs",
 			"vigorously fucks \the <b>[target]</b>'s legs, making [u_His] tip pop in and out of [t_His] supple thighs"
 		)
 	else
 		lines = list(
 			"presses [u_His] tip against \the <b>[target]</b>'s [pick("pudgy ", "soft ", "")] thighs, soon shoving [u_His] whole lenght right in between them",
-			"presents [u_His] [pick(GLOB.dick_nouns)] to \the <b>[target]</b>'s legs, ramming its full size right into [t_His] thigh lock",
-			"smooches \the <b>[target]</b>'s crotch with [u_His] throbbing tip, right before piercing between [t_His] thighs with [u_His] full [pick(GLOB.dick_nouns)]"
+			"presents [u_His] [genital_name] to \the <b>[target]</b>'s legs, ramming its full size right into [t_His] thigh lock",
+			"smooches \the <b>[target]</b>'s crotch with [u_His] throbbing tip, right before piercing between [t_His] thighs with [u_His] full [genital_name]"
 		)
 		set_is_fucking(target, CUM_TARGET_THIGHS, getorganslot(ORGAN_SLOT_PENIS))
 
@@ -699,27 +717,29 @@
 	playlewdinteractionsound(loc, pick('modular_sand/sound/interactions/bang1.ogg',
 						'modular_sand/sound/interactions/bang2.ogg',
 						'modular_sand/sound/interactions/bang3.ogg'), 70, 1, -1)
-	handle_post_sex(NORMAL_LUST, CUM_TARGET_THIGHS, target)
+	if(can_penetrating_genital_cum())
+		handle_post_sex(NORMAL_LUST, CUM_TARGET_THIGHS, target)
 	target.handle_post_sex(LOW_LUST, CUM_TARGET_PENIS, src)
 
 /mob/living/proc/do_thighjob(mob/living/target)
 	var/message
 	var/list/lines
 	var/u_His = p_their()
+	var/genital_name = target.get_penetrating_genital_name()
 	var/t_He = target.p_they()
 	var/t_His = target.p_their()
 
 	if(target.is_fucking(src, CUM_TARGET_THIGHS))
 		lines = list(
-			"grinds and presses [u_His] thighs [pick("deeply ", "")] against \the <b>[target]</b>'s [pick(GLOB.dick_nouns)], massaging it all over with [u_His] thighs",
-			"squeezes \the <b>[target]</b>'s [pick(GLOB.dick_nouns)] between [u_His] supple thighs, smothering it deep under [u_His] crotch",
-			"rides \the <b>[target]</b>'s [pick(GLOB.dick_nouns)] with [u_His] [pick("pudgy ", "soft ", "")]thighs, [t_He] can feel [u_His] flesh smothering it down"
+			"grinds and presses [u_His] thighs [pick("deeply ", "")] against \the <b>[target]</b>'s [genital_name], massaging it all over with [u_His] thighs",
+			"squeezes \the <b>[target]</b>'s [genital_name] between [u_His] supple thighs, smothering it deep under [u_His] crotch",
+			"rides \the <b>[target]</b>'s [genital_name] with [u_His] [pick("pudgy ", "soft ", "")]thighs, [t_He] can feel [u_His] flesh smothering it down"
 		)
 	else
 		lines = list(
-			"presents [u_His] [pick("pudgy ", "soft ", "")] thighs to \the <b>[target]</b>'s [pick(GLOB.dick_nouns)], slamming them right into it[pick(" with a [pick("wet ", "")]smack", "")]",
-			"grinds \the <b>[target]</b>'s tip against [u_His] supple thighs, before slamming them right down into [t_His] [pick(GLOB.dick_nouns)]",
-			"forces \the <b>[target]</b>'s [pick(GLOB.dick_nouns)] right into the tight hold of [u_His] thighs, giving it a deep and lewd squeeze"
+			"presents [u_His] [pick("pudgy ", "soft ", "")] thighs to \the <b>[target]</b>'s [genital_name], slamming them right into it[pick(" with a [pick("wet ", "")]smack", "")]",
+			"grinds \the <b>[target]</b>'s tip against [u_His] supple thighs, before slamming them right down into [t_His] [genital_name]",
+			"forces \the <b>[target]</b>'s [genital_name] right into the tight hold of [u_His] thighs, giving it a deep and lewd squeeze"
 		)
 		target.set_is_fucking(src, CUM_TARGET_THIGHS, target.getorganslot(ORGAN_SLOT_PENIS))
 
@@ -729,7 +749,8 @@
 						'modular_sand/sound/interactions/bang2.ogg',
 						'modular_sand/sound/interactions/bang3.ogg'), 70, 1, -1)
 	handle_post_sex(LOW_LUST, CUM_TARGET_PENIS, target)
-	target.handle_post_sex(NORMAL_LUST, CUM_TARGET_THIGHS, src)
+	if(target.can_penetrating_genital_cum())
+		target.handle_post_sex(NORMAL_LUST, CUM_TARGET_THIGHS, src)
 
 ////////////////////////////////////////////////////////////////////////////////////////////////////////
 ///////// 									U N H O L Y										   /////////
@@ -768,8 +789,12 @@
 /mob/living/proc/do_crotchfart(mob/living/carbon/target)
 	var/message
 	var/u_His = p_their()
+	var/genital_name = "crotch"
+	if(target.has_penis(REQUIRE_EXPOSED) || target.has_strapon(REQUIRE_EXPOSED))
+		genital_name = target.get_penetrating_genital_name()
+	else if(target.has_vagina(REQUIRE_EXPOSED))
+		genital_name = target.getorganslot(ORGAN_SLOT_VAGINA).name
 
-	var/obj/item/organ/genital/brap_catcher = target.has_penis(REQUIRE_EXPOSED) && target.has_vagina(REQUIRE_EXPOSED) ? pick(list(target.getorganslot(ORGAN_SLOT_PENIS), target.getorganslot(ORGAN_SLOT_VAGINA))) : (target.has_penis(REQUIRE_EXPOSED) ? target.getorganslot(ORGAN_SLOT_PENIS) : (target.has_vagina(REQUIRE_EXPOSED) ? target.getorganslot(ORGAN_SLOT_VAGINA) : null))
 	var/list/asscheeks = list("asscheeks", "buttcheeks", "ass buns", "booty pillows", "dumptruck spheres", "[pick(list("jiggly", "bouncy", "wobbly"))] buttocks")
 	var/list/ass = list("ass", "butt", "dumptruck", "tush", "badonk", "booty", "rump")
 	var/jiggle = "[u_His] [pick(asscheeks)] [pick(list("jiggle", "bounce", "bounce around", "wobble"))] like crazy!"
@@ -784,7 +809,7 @@
 	var/list/hell = list(
 		" pushes [u_His] [pick(ass)] into \the <b>[target]</b>'s crotch, [pick(list("ripping a fat[pick(list("", " and [pick(stank)]"))] one", " and subsequently [pick(braps)]"))][pick(list("", ". [jiggle]"))]",
 		" and \the <b>[target]</b> can smell the [prob(50) ? pick(stank) : "flatulent"] gas fill the room ass it seeps in between \the <b>[target]</b>'s thighs!",
-		" [pick(braps)] into \the <b>[target]</b>'s [brap_catcher ? brap_catcher.name : "crotch"]"
+		" [pick(braps)] into \the <b>[target]</b>'s [genital_name]"
 	)
 
 	message = "<span class='lewd'>\The <b>[src]</b>[pick(hell)]</span>"
@@ -792,7 +817,8 @@
 	playlewdinteractionsound(loc, pick(GLOB.brap_noises), 50, 1, -1, ignored_mobs = get_unconsenting(unholy = TRUE))
 	if(!target.is_fucking(src, CUM_TARGET_ANUS))
 		target.set_is_fucking(src, CUM_TARGET_ANUS, target.has_penis(REQUIRE_EXPOSED) ? target.getorganslot(ORGAN_SLOT_PENIS) : (target.has_vagina(REQUIRE_EXPOSED) ? target.getorganslot(ORGAN_SLOT_VAGINA) : null))
-	target.handle_post_sex(NORMAL_LUST, CUM_TARGET_ANUS, src)
+	if(target.can_penetrating_genital_cum())
+		target.handle_post_sex(NORMAL_LUST, CUM_TARGET_ANUS, src)
 	handle_post_sex(NORMAL_LUST, null, target)
 
 /mob/living/proc/do_fartfuck(mob/living/target)
@@ -802,6 +828,7 @@
 	var/t_His = target.p_their()
 	var/u_His = p_their()
 	var/u_He = p_they()
+	var/genital_name = get_penetrating_genital_name()
 
 	var/list/asscheeks = list("asscheeks", "buttcheeks", "ass buns", "booty pillows", "dumptruck spheres", "[pick(list("jiggly", "bouncy", "wobbly"))] buttocks")
 	var/list/ass = list("ass", "butt", "dumptruck", "tush", "badonk", "booty", "rump")
@@ -817,15 +844,15 @@
 	)
 	if(is_fucking(target, CUM_TARGET_ANUS))
 		hell = list(
-			"thrusts in and out of \the <b>[target]</b>'s [pick(stankhole)] pucker, making it [pick("fumigate <b>[src]</b>'s cock with farts", "push out an unholy amount of ass gas")].",
+			"thrusts in and out of \the <b>[target]</b>'s [pick(stankhole)] pucker, making it [pick("fumigate <b>[src]</b>'s [genital_name] with farts", "push out an unholy amount of ass gas")].",
 			"pounds \the <b>[target]</b>'s ass. [t_He] [pick(braps)]",
 			"slams [u_His] hips up against \the <b>[target]</b>'s [pick(stankhole)] [pick(ass)] hard, causing a massive surge of [pick(list("farts", "butt methane", "brap", "ass gas", "shit winds", "thick flatulence"))] from [t_His] [pick(list("crack", "canyon"))][prob(50) ? ". [jiggle]" : ""]",
 			"goes balls deep into \the <b>[target]</b>'s [pick(ass)] over and over again. [t_He] can't stop pumping out [pick("", "[pick(stank)] ")] [pick(list("farts", "butt methane", "brap", "ass gas", "shit winds", "thick flatulence"))] from his wobbling [pick(asscheeks)]")
 	else
 		hell = list(
-			"can already smell the stench as [u_He] works [u_His] cock into \the <b>[target]</b>'s brap hole, being received by a long and warm backblast.",
-			"grabs the base of [u_His] twitching cock and presses the tip into \the <b>[target]</b>'s asshole, acting like a valve that unearths impossible amounts of pure, [pick(stank)] flatulence.",
-			"shoves their dick deep inside of \the <b>[target]</b>'s [pick(ass)], [t_He] [pick(braps)][pick("", ". [jiggle]")]")
+			"can already smell the stench as [u_He] works [u_His] [genital_name] into \the <b>[target]</b>'s brap hole, being received by a long and warm backblast.",
+			"grabs the base of [u_His] twitching [genital_name] and presses the tip into \the <b>[target]</b>'s asshole, acting like a valve that unearths impossible amounts of pure, [pick(stank)] flatulence.",
+			"shoves their [genital_name] deep inside of \the <b>[target]</b>'s [pick(ass)], [t_He] [pick(braps)][pick("", ". [jiggle]")]")
 		set_is_fucking(target, CUM_TARGET_ANUS, getorganslot(ORGAN_SLOT_PENIS) ? getorganslot(ORGAN_SLOT_PENIS) : null)
 
 	message = "<span class='lewd'>\The <b>[src]</b> [pick(hell)]</span>"
@@ -837,7 +864,8 @@
 						'modular_sand/sound/interactions/bang4.ogg',
 						'modular_sand/sound/interactions/bang5.ogg',
 						'modular_sand/sound/interactions/bang6.ogg'), 70, 1, -1)
-	handle_post_sex(NORMAL_LUST, CUM_TARGET_ANUS, target)
+	if(can_penetrating_genital_cum())
+		handle_post_sex(NORMAL_LUST, CUM_TARGET_ANUS, target)
 	target.handle_post_sex(NORMAL_LUST, null, src)
 
 /mob/living/proc/suck_fart(mob/living/target)
@@ -897,7 +925,12 @@
 	var/t_His = target.p_their()
 	var/u_His = p_their()
 
-	var/obj/item/organ/genital/brap_catcher = (target.has_penis(REQUIRE_EXPOSED) ? target.getorganslot(ORGAN_SLOT_PENIS) : (target.has_vagina(REQUIRE_EXPOSED) ? target.getorganslot(ORGAN_SLOT_VAGINA) : null))
+	var/genital_name = "crotch"
+	if(target.has_penis(REQUIRE_EXPOSED) || target.has_strapon(REQUIRE_EXPOSED))
+		genital_name = target.get_penetrating_genital_name()
+	else if(target.has_vagina(REQUIRE_EXPOSED))
+		genital_name = target.getorganslot(ORGAN_SLOT_VAGINA).name
+
 	var/list/asscheeks = list("asscheeks", "buttcheeks", "ass buns", "booty pillows", "dumptruck spheres", "[pick(list("jiggly", "bouncy", "wobbly"))] buttocks")
 	var/list/ass = list("ass", "butt", "dumptruck", "tush", "badonk", "booty", "rump")
 	var/jiggle = "[u_His] [pick(asscheeks)] [pick(list("jiggle", "bounce", "bounce around", "wobble"))] like crazy!"
@@ -905,17 +938,16 @@
 	var/list/stankhole = list("greasy", "stinky", "dirty", "gassy", "shitting", "noisy", "quaking", "musky", "messy", "shitcaked", "nasty")
 
 	var/list/hell = list(
-		"presses [u_His] [pick(stankhole)] [pick(asscheeks)] right against \the <b>[target]</b>'s crotch, unleashing pounds of warm crap all over [brap_catcher ? "[t_His] [brap_catcher]" : "it"] [prob(50) ? ". [jiggle]" : ""]",
+		"presses [u_His] [pick(stankhole)] [pick(asscheeks)] right against \the <b>[target]</b>'s crotch, unleashing pounds of warm crap all over [t_His] [genital_name] [prob(50) ? ". [jiggle]" : ""]",
 		"shoves [u_His][pick(list("", " [pick(stank)],"))] shitting [pick(ass)] into \the <b>[target]</b>'s thighs and coats everything in between them with [pick("", "gas and ")] slick slop",
-		"shits uncontrollably all over \the <b>[target]</b>'s [brap_catcher ? brap_catcher.name : "crotch"][prob(50) ? "" : ". [jiggle]"]"
+		"shits uncontrollably all over \the <b>[target]</b>'s [genital_name][prob(50) ? "" : ". [jiggle]"]"
 	)
 
 	message = "<span class='lewd'>\The <b>[src]</b> [pick(hell)]</span>"
 	visible_message(message, ignored_mobs = get_unconsenting(unholy = TRUE))
 	playlewdinteractionsound(loc, pick(GLOB.brap_noises), 50, 1, -1, ignored_mobs = get_unconsenting(unholy = TRUE))
-	if(!target.is_fucking(src, CUM_TARGET_ANUS))
-		target.set_is_fucking(src, CUM_TARGET_ANUS, brap_catcher)
-	target.handle_post_sex(NORMAL_LUST, CUM_TARGET_ANUS, src)
+	if(target.can_penetrating_genital_cum())
+		target.handle_post_sex(NORMAL_LUST, CUM_TARGET_ANUS, src)
 	handle_post_sex(NORMAL_LUST, null, target)
 
 /mob/living/proc/do_shitfuck(mob/living/carbon/target)
@@ -924,6 +956,7 @@
 	var/t_His = target.p_their()
 	var/u_His = p_their()
 	var/u_He = p_they()
+	var/genital_name = get_penetrating_genital_name()
 
 	var/list/hell
 	var/list/asscheeks = list("asscheeks", "buttcheeks", "ass buns", "booty pillows", "dumptruck spheres", "[pick(list("jiggly", "bouncy", "wobbly"))] buttocks")
@@ -937,12 +970,12 @@
 			"thrusts in and out of \the <b>[target]</b>'s [pick(stank)] shit-lubed pucker, making it squeak and expulse heavy gases and waste.",
 			"pounds \the <b>[target]</b>'s ass. [t_He] just can't stop pumping out slop!",
 			"slams [u_His] hips up against \the <b>[target]</b>'s [pick(stankhole)] [pick(ass)] hard, causing a massive surge of manure from [t_His] [pick(list("crack", "canyon"))][prob(50) ? ". [jiggle]" : ""]",
-			"goes balls deep into \the <b>[target]</b>'s dirty [pick(ass)] over and over again. [u_His] cock comes completely coated brown from in between the bouncing [pick(asscheeks)]")
+			"goes balls deep into \the <b>[target]</b>'s dirty [pick(ass)] over and over again. [u_His] [genital_name] comes completely coated brown from in between the bouncing [pick(asscheeks)]")
 	else
 		hell = list(
-			"can already smell the stench as [u_He] works [u_His] cock into \the <b>[target]</b>'s dung hole, being received by warm, wet and nasty feeling all over it.",
-			"grabs the base of [u_His] twitching cock and presses the tip into \the <b>[target]</b>'s asshole, immediately shoving it right into a fat and moisty log",
-			"shoves  dick deep inside of \the <b>[target]</b>'s [pick(ass)], [t_He] releases a massive amount of mush to greet the rod[pick("", ". [jiggle]")]")
+			"can already smell the stench as [u_He] works [u_His] [genital_name] into \the <b>[target]</b>'s dung hole, being received by warm, wet and nasty feeling all over it.",
+			"grabs the base of [u_His] twitching [genital_name] and presses the tip into \the <b>[target]</b>'s asshole, immediately shoving it right into a fat and moisty log",
+			"shoves [genital_name] deep inside of \the <b>[target]</b>'s [pick(ass)], [t_He] releases a massive amount of mush to greet the rod[pick("", ". [jiggle]")]")
 		set_is_fucking(target, CUM_TARGET_ANUS, getorganslot(ORGAN_SLOT_PENIS) ? getorganslot(ORGAN_SLOT_PENIS) : null)
 
 	message = "<span class='lewd'>\The <b>[src]</b> [pick(hell)]</span>"
@@ -954,7 +987,8 @@
 						'modular_sand/sound/interactions/bang4.ogg',
 						'modular_sand/sound/interactions/bang5.ogg',
 						'modular_sand/sound/interactions/bang6.ogg'), 70, 1, -1)
-	handle_post_sex(NORMAL_LUST, CUM_TARGET_ANUS, target)
+	if(can_penetrating_genital_cum())
+		handle_post_sex(NORMAL_LUST, CUM_TARGET_ANUS, target)
 	target.handle_post_sex(NORMAL_LUST, null, src)
 
 /mob/living/proc/suck_shit(mob/living/target)

@@ -292,6 +292,8 @@
 	for(var/obj/item/organ/genital/G in internal_organs)
 		if(G.is_exposed()) //Checks appropriate clothing slot and if it's through_clothes
 			LAZYADD(gen_index[G.layer_index], G)
+	if(has_strapon(REQUIRE_EXPOSED))
+		LAZYADD(gen_index[PENIS_LAYER_INDEX], get_strapon())
 	for(var/L in gen_index)
 		if(L) //skip nulls
 			LAZYADD(genitals_to_add, L)
@@ -303,6 +305,22 @@
 		var/list/standing = list()
 		var/layertext = relevant_layers[layer]
 		for(var/A in genitals_to_add)
+			if(istype(A, /obj/item/clothing/underwear/briefs/strapon))
+				var/obj/item/clothing/underwear/briefs/strapon/strapon = A
+				var/datum/sprite_accessory/S = GLOB.cock_shapes_list[GLOB.dildo_shape_to_cock_shape[strapon.dildo_shape]]
+				var/mutable_appearance/genital_overlay = mutable_appearance(S.icon, layer = -layer)
+				genital_overlay.color = strapon.dildo_color
+				genital_overlay.icon_state = "[ORGAN_SLOT_PENIS]_[S.icon_state]_[strapon.dildo_size]_[1]_[layertext]"
+				genital_overlay.alpha = strapon.dildo_alpha
+				// dirty fix to render the dildo above the strap
+				if(strapon.is_exposed())
+					genital_overlay.layer = -GENITALS_EXPOSED_LAYER
+					LAZYADD(fully_exposed, genital_overlay)
+				else
+					genital_overlay.layer = -layers_num[layer]
+					standing += genital_overlay
+				continue
+
 			var/obj/item/organ/genital/G = A
 			var/datum/sprite_accessory/S
 			var/size = G.size

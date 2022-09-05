@@ -66,7 +66,8 @@
 				continue
 			var/list/interaction = list()
 			interaction["key"] = I.type
-			interaction["desc"] = I.description
+			var/description = replacetext(I.description, "%COCK%", self.has_penis() ? "cock" : "strapon")
+			interaction["desc"] = description
 			if(istype(I, /datum/interaction/lewd))
 				var/datum/interaction/lewd/O = I
 				if(O.extreme)

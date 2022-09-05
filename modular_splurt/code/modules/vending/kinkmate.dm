@@ -23,7 +23,8 @@
 		/obj/item/clothing/neck/syntech/choker = 4,
 		/obj/item/clothing/neck/syntech/collar = 4,
 		/obj/item/storage/fancy/jellybean_pack = 5,
-		/obj/item/storage/box/aphrodisiac_pump = 5
+		/obj/item/storage/box/aphrodisiac_pump = 5,
+		/obj/item/strapon_strap = 5,
 	)
 	var/list/extra_contraband = list(
 		//Lewd-Clothes

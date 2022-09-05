@@ -44,12 +44,13 @@
 					else
 						improv = TRUE
 				if("penis")
-					if(partner.has_penis())
+					if(partner.has_penis() || partner.has_strapon())
+						var/genital_name = partner.get_penetrating_genital_name()
 						message = pick(
 							"sucks \the <b>[partner]</b>'s off.",
-							"runs [u_His] tongue up the shape of \the <b>[partner]</b>'s cock.",
-							"traces \the <b>[partner]</b>'s cock with [u_His] tongue.",
-							"darts the tip of [u_His] tongue around tip of \the <b>[partner]</b>'s cock.",
+							"runs [u_His] tongue up the shape of \the <b>[partner]</b>'s [genital_name].",
+							"traces \the <b>[partner]</b>'s [genital_name] with [u_His] tongue.",
+							"darts the tip of [u_His] tongue around tip of \the <b>[partner]</b>'s [genital_name].",
 							"laps slowly at \the <b>[partner]</b>'s shaft.",
 							"kisses the base of \the <b>[partner]</b>'s shaft.",
 							"takes \the <b>[partner]</b> deeper into [u_His] mouth.",
@@ -81,13 +82,14 @@
 				else
 					improv = TRUE
 			if("penis")
-				if(partner.has_penis())
+				if(partner.has_penis() || partner.has_strapon())
+					var/genital_name = partner.get_penetrating_genital_name()
 					message = pick(
-						"takes \the <b>[partner]</b>'s cock into [u_His] mouth.",
-						"wraps [u_His] lips around \the <b>[partner]</b>'s cock.",
+						"takes \the <b>[partner]</b>'s [genital_name] into [u_His] mouth.",
+						"wraps [u_His] lips around \the <b>[partner]</b>'s [genital_name].",
 						"finds [u_His] face between \the <b>[partner]</b>'s thighs.",
 						"kneels down between \the <b>[partner]</b>'s legs.",
-						"grips \the <b>[partner]</b>'s legs, kissing at the tip of [u_His] cock.",
+						"grips \the <b>[partner]</b>'s legs, kissing at the tip of [u_His] [genital_name].",
 						"goes down on \the <b>[partner]</b>.",
 					)
 				else
@@ -122,4 +124,5 @@
 									'modular_sand/sound/interactions/bj10.ogg',
 									'modular_sand/sound/interactions/bj11.ogg'), 50, 1, -1)
 	user.visible_message("<span class='lewd'><b>\The [user]</b> [message]</span>", ignored_mobs = user.get_unconsenting())
-	partner.handle_post_sex(lust_increase, CUM_TARGET_MOUTH, user)
+	if(partner.can_penetrating_genital_cum())
+		partner.handle_post_sex(lust_increase, CUM_TARGET_MOUTH, user)
