@@ -793,7 +793,8 @@
 	if(target.has_penis(REQUIRE_EXPOSED) || target.has_strapon(REQUIRE_EXPOSED))
 		genital_name = target.get_penetrating_genital_name()
 	else if(target.has_vagina(REQUIRE_EXPOSED))
-		genital_name = target.getorganslot(ORGAN_SLOT_VAGINA).name
+		var/obj/item/organ/genital/vagina/genital = target.getorganslot(ORGAN_SLOT_VAGINA)
+		genital_name = genital.name
 
 	var/list/asscheeks = list("asscheeks", "buttcheeks", "ass buns", "booty pillows", "dumptruck spheres", "[pick(list("jiggly", "bouncy", "wobbly"))] buttocks")
 	var/list/ass = list("ass", "butt", "dumptruck", "tush", "badonk", "booty", "rump")
@@ -929,7 +930,8 @@
 	if(target.has_penis(REQUIRE_EXPOSED) || target.has_strapon(REQUIRE_EXPOSED))
 		genital_name = target.get_penetrating_genital_name()
 	else if(target.has_vagina(REQUIRE_EXPOSED))
-		genital_name = target.getorganslot(ORGAN_SLOT_VAGINA).name
+		var/obj/item/organ/genital/vagina/genital = target.getorganslot(ORGAN_SLOT_VAGINA)
+		genital_name = genital.name
 
 	var/list/asscheeks = list("asscheeks", "buttcheeks", "ass buns", "booty pillows", "dumptruck spheres", "[pick(list("jiggly", "bouncy", "wobbly"))] buttocks")
 	var/list/ass = list("ass", "butt", "dumptruck", "tush", "badonk", "booty", "rump")
