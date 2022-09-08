@@ -19,8 +19,8 @@
 	departmental_flags = DEPARTMENTAL_FLAG_SCIENCE | DEPARTMENTAL_FLAG_MEDICAL
 
 /datum/design/board/implantradio
-	name = "Radio Implants"
-	desc = "Allows for the construction of Radio implants"
+	name = "Radio Implant Case"
+	desc = "A glass case containing an implant"
 	id = "impant_radio"
 	build_path = /obj/item/implantcase/radio
 	category = list("Medical Designs")
