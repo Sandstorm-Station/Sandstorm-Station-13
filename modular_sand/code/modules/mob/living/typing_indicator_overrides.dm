@@ -1,4 +1,4 @@
-/mob/living/silicon/
+/mob/living/silicon
 	typing_indicator_state = /obj/effect/overlay/typing_indicator/machine
 
 /obj/effect/overlay/typing_indicator/machine
