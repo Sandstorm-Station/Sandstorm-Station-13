@@ -44,7 +44,5 @@
 						'modular_sand/sound/interactions/squelch2.ogg',
 						'modular_sand/sound/interactions/squelch3.ogg'), 70, 1, -1)
 	user.visible_message("<span class='lewd'><b>\The [user]</b> [message]</span>", ignored_mobs = user.get_unconsenting())
-	if(partner.can_penetrating_genital_cum())
-		partner.handle_post_sex(NORMAL_LUST, CUM_TARGET_VAGINA, user)
-	if(user.can_penetrating_genital_cum())
-		user.handle_post_sex(NORMAL_LUST, CUM_TARGET_VAGINA, partner)
+	partner.handle_post_sex(NORMAL_LUST, CUM_TARGET_VAGINA, user)
+	user.handle_post_sex(NORMAL_LUST, CUM_TARGET_VAGINA, partner)

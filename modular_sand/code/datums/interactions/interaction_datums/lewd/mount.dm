@@ -161,4 +161,5 @@
 	user.handle_post_sex(lust_increase, THIGH_SMOTHERING, partner)
 	playlewdinteractionsound(get_turf(user), pick('modular_sand/sound/interactions/oral1.ogg',
 						'modular_sand/sound/interactions/oral2.ogg'), 70, 1, -1)
-	user.handle_post_sex(NORMAL_LUST, CUM_TARGET_MOUTH, partner)
+	if(fucktarget != "penis" || user.can_penetrating_genital_cum())
+		user.handle_post_sex(NORMAL_LUST, CUM_TARGET_MOUTH, partner)

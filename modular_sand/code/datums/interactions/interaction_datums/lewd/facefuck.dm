@@ -20,7 +20,7 @@
 	var/u_His = user.p_their()
 	var/t_Him = partner.p_them()
 	var/t_Hes = partner.p_theyre()
-
+	
 	if(user.is_fucking(partner, CUM_TARGET_MOUTH))
 		var/improv = FALSE
 		switch(fucktarget)
@@ -108,7 +108,7 @@
 	user.visible_message("<span class='lewd'><b>\The [user]</b> [message]</span>", ignored_mobs = user.get_unconsenting())
 	if(retaliation_message)
 		user.visible_message("<font color=red><b>\The <b>[partner]</b></b> [retaliation_message]</span>", ignored_mobs = user.get_unconsenting())
-	if(user.can_penetrating_genital_cum())
+	if(fucktarget != "penis" || user.can_penetrating_genital_cum())
 		user.handle_post_sex(NORMAL_LUST, CUM_TARGET_MOUTH, partner)
 
 /datum/interaction/lewd/throatfuck
