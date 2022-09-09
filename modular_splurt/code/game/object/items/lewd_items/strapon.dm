@@ -54,23 +54,33 @@
 	to_chat(user, "<span class='userlove'>You separate the dildo from the strap.</span>")
 	var/obj/item/strapon_strap/new_strapon_strap = new /obj/item/strapon_strap(user.loc)
 	var/obj/item/dildo/new_dildo
-	switch(dildo_shape)
-		if("human")
-			new_dildo = new /obj/item/dildo/human(user.loc)
-		if("knotted")
-			new_dildo = new /obj/item/dildo/knotted(user.loc)
-		if("plain")
-			new_dildo = new /obj/item/dildo/plain(user.loc)
-		if("flared")
-			new_dildo = new /obj/item/dildo/flared(user.loc)
-		else
-			return
-	 
+	if(dildo_can_customize)
+		new_dildo = new /obj/item/dildo/custom(user.loc)
+	else
+		switch(dildo_shape)
+			if("human")
+				new_dildo = new /obj/item/dildo/human(user.loc)
+			if("knotted")
+				new_dildo = new /obj/item/dildo/knotted(user.loc)
+			if("plain")
+				new_dildo = new /obj/item/dildo/plain(user.loc)
+			if("flared")
+				if(dildo_size > 4)
+					new_dildo = new /obj/item/dildo/flared/gigantic(user.loc)
+				else if(dildo_size > 3)
+					new_dildo = new /obj/item/dildo/flared/huge(user.loc)
+				else
+					new_dildo = new /obj/item/dildo/flared(user.loc)
+			else
+				return
+	
+	new_dildo.random_color = FALSE
 	new_dildo.color = dildo_color
+	new_dildo.random_shape = FALSE
 	new_dildo.dildo_shape = dildo_shape
+	new_dildo.random_size = FALSE
 	new_dildo.dildo_size = dildo_size
 	new_dildo.alpha = dildo_alpha
-	new_dildo.can_customize = dildo_can_customize
 	new_dildo.update_appearance()
 	if(loc == user)
 		qdel(src)
