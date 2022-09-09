@@ -40,7 +40,7 @@
 		return
 
 	if(prob(50))
-		var/genital_name = target.get_penetrating_genital_name()
+		var/genital_name = target.get_penetrating_genital_name(TRUE)
 		target.visible_message("<span class='lewd'>\The <b>[target]</b>'s [genital_name] honks[pick(" loudly", "")]!</span>")
 
 	playlewdinteractionsound(target, 'sound/items/bikehorn.ogg', 40, 1, -1)
@@ -91,7 +91,7 @@
 		return
 
 	if(prob(50))
-		var/genital_name = target.get_penetrating_genital_name()
+		var/genital_name = target.get_penetrating_genital_name(TRUE)
 		user.visible_message("<span class='lewd'>\The <b>[user]</b>'s [genital_name] honks[pick(" loudly", "")]!</span>")
 
 	playlewdinteractionsound(user, 'sound/items/bikehorn.ogg', 40, 1, -1)
@@ -107,7 +107,7 @@
 		return
 
 	if(prob(50))
-		var/genital_name = user.get_penetrating_genital_name()
+		var/genital_name = user.get_penetrating_genital_name(TRUE)
 		user.visible_message("<span class='lewd'>\The <b>[user]</b>'s [genital_name] honks[pick(" loudly", "")]!</span>")
 
 	playlewdinteractionsound(user, 'sound/items/bikehorn.ogg', 40, 1, -1)
@@ -118,7 +118,7 @@
 		return
 
 	if(prob(50))
-		var/genital_name = user.get_penetrating_genital_name()
+		var/genital_name = user.get_penetrating_genital_name(TRUE)
 		user.visible_message("<span class='lewd'>\The <b>[user]</b>'s [genital_name] honks[pick(" loudly", "")]!</span>")
 
 	playlewdinteractionsound(user, 'sound/items/bikehorn.ogg', 40, 1, -1)
@@ -169,7 +169,7 @@
 		return
 
 	if(prob(50))
-		var/genital_name = user.get_penetrating_genital_name()
+		var/genital_name = user.get_penetrating_genital_name(TRUE)
 		user.visible_message("<span class='lewd'>\The <b>[user]</b>'s [genital_name] honks[pick(" loudly", "")]!</span>")
 
 	playlewdinteractionsound(user, 'sound/items/bikehorn.ogg', 40, 1, -1)
@@ -180,7 +180,7 @@
 		return
 
 	if(prob(50))
-		var/genital_name = user.get_penetrating_genital_name()
+		var/genital_name = user.get_penetrating_genital_name(TRUE)
 		user.visible_message("<span class='lewd'>\The <b>[user]</b>'s [genital_name] honks[pick(" loudly", "")]!</span>")
 
 	playlewdinteractionsound(user, 'sound/items/bikehorn.ogg', 40, 1, -1)
@@ -191,7 +191,7 @@
 		return
 
 	if(prob(50))
-		var/genital_name = target.get_penetrating_genital_name()
+		var/genital_name = target.get_penetrating_genital_name(TRUE)
 		target.visible_message("<span class='lewd'>\The <b>[target]</b>'s [genital_name] honks[pick(" loudly", "")]!</span>")
 
 	playlewdinteractionsound(target, 'sound/items/bikehorn.ogg', 40, 1, -1)
@@ -202,7 +202,7 @@
 		return
 
 	if(prob(50))
-		var/genital_name = target.get_penetrating_genital_name()
+		var/genital_name = target.get_penetrating_genital_name(TRUE)
 		target.visible_message("<span class='lewd'>\The <b>[target]</b>'s [genital_name] honks[pick(" loudly", "")]!</span>")
 
 	playlewdinteractionsound(target, 'sound/items/bikehorn.ogg', 40, 1, -1)
@@ -233,7 +233,7 @@
 		return
 
 	if(prob(50))
-		var/genital_name = user.get_penetrating_genital_name()
+		var/genital_name = user.get_penetrating_genital_name(TRUE)
 		user.visible_message("<span class='lewd'>\The <b>[user]</b>'s [genital_name] honks[pick(" loudly", "")]!</span>")
 
 	playlewdinteractionsound(user, 'sound/items/bikehorn.ogg', 40, 1, -1)
@@ -244,7 +244,7 @@
 		return
 
 	if(prob(50))
-		var/genital_name = user.get_penetrating_genital_name()
+		var/genital_name = user.get_penetrating_genital_name(TRUE)
 		user.visible_message("<span class='lewd'>\The <b>[user]</b>'s [genital_name] honks[pick(" loudly", "")]!</span>")
 
 	playlewdinteractionsound(user, 'sound/items/bikehorn.ogg', 40, 1, -1)
@@ -283,7 +283,7 @@
 		return
 
 	if(prob(50))
-		var/genital_name = user.get_penetrating_genital_name()
+		var/genital_name = user.get_penetrating_genital_name(TRUE)
 		user.visible_message("<span class='lewd'>\The <b>[user]</b>'s [genital_name] honks[pick(" loudly", "")]!</span>")
 
 	playlewdinteractionsound(user, 'sound/items/bikehorn.ogg', 40, 1, -1)
@@ -400,7 +400,7 @@
 		return
 
 	if(prob(50))
-		var/genital_name = user.get_penetrating_genital_name()
+		var/genital_name = user.get_penetrating_genital_name(TRUE)
 		user.visible_message("<span class='lewd'>\The <b>[user]</b>'s [genital_name] honks[pick(" loudly", "")]!</span>")
 
 	playlewdinteractionsound(user, 'sound/items/bikehorn.ogg', 40, 1, -1)
@@ -545,7 +545,7 @@
 		return
 
 	if(prob(50))
-		var/genital_name = user.get_penetrating_genital_name()
+		var/genital_name = user.get_penetrating_genital_name(TRUE)
 		user.visible_message("<span class='lewd'>\The <b>[user]</b>'s [genital_name] honks[pick(" loudly", "")]!</span>")
 
 	playlewdinteractionsound(user, 'sound/items/bikehorn.ogg', 40, 1, -1)
@@ -564,7 +564,7 @@
 		return
 
 	if(prob(50))
-		var/genital_name = user.get_penetrating_genital_name()
+		var/genital_name = user.get_penetrating_genital_name(TRUE)
 		user.visible_message("<span class='lewd'>\The <b>[user]</b>'s [genital_name] honks[pick(" loudly", "")]!</span>")
 
 	playlewdinteractionsound(user, 'sound/items/bikehorn.ogg', 40, 1, -1)
@@ -664,7 +664,7 @@
 		return
 
 	if(prob(50))
-		var/genital_name = user.get_penetrating_genital_name()
+		var/genital_name = user.get_penetrating_genital_name(TRUE)
 		user.visible_message("<span class='lewd'>\The <b>[user]</b>'s [genital_name] honks[pick(" loudly", "")]!</span>")
 
 	playlewdinteractionsound(user, 'sound/items/bikehorn.ogg', 40, 1, -1)
@@ -686,7 +686,7 @@
 		return
 
 	if(prob(50))
-		var/genital_name = target.get_penetrating_genital_name()
+		var/genital_name = target.get_penetrating_genital_name(TRUE)
 		target.visible_message("<span class='lewd'>\The <b>[target]</b>'s [genital_name] honks[pick(" loudly", "")]!</span>")
 
 	playlewdinteractionsound(target, 'sound/items/bikehorn.ogg', 40, 1, -1)
