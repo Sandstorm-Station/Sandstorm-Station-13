@@ -579,7 +579,7 @@
 		return
 	if(user.nextsoundemote >= world.time)
 		return
-	user.nextsoundemote = world.time + 20
+	user.nextsoundemote = world.time + 40
 	playsound(user, 'modular_splurt/sound/voice/WTH.ogg', 50, 1, -1)
 
 /datum/emote/living/fusrodah
