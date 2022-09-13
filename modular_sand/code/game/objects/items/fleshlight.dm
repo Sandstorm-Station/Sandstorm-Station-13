@@ -691,11 +691,11 @@
 					to_chat(human, "<span class='warning'>The anus is covered or there is none!</span>")
 					return FALSE
 			if(CUM_TARGET_PENIS)
-				if(!human.has_penis(REQUIRE_EXPOSED) && !human.has_strapon(REQUIRE_EXPOSED))
+				if(!human.has_penis(REQUIRE_EXPOSED))
 					to_chat(human, "<span class='warning'>The penis is covered or there is none!</span>")
 					return FALSE
 			if(CUM_TARGET_URETHRA)
-				if(!human.has_penis(REQUIRE_EXPOSED) && !human.has_strapon(REQUIRE_EXPOSED))
+				if(!human.has_penis(REQUIRE_EXPOSED))
 					to_chat(human, "<span class='warning'>The urethra is covered or there is none!</span>")
 					return FALSE
 			if(CUM_TARGET_MOUTH)
