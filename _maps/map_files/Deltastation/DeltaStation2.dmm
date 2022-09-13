@@ -2935,6 +2935,9 @@
 /obj/effect/turf_decal/tile/blue{
 	dir = 8
 	},
+/obj/structure/cable/white{
+	icon_state = "1-2"
+	},
 /turf/open/floor/plasteel/white/corner,
 /area/hallway/secondary/entry)
 "akb" = (
@@ -74887,6 +74890,20 @@
 /obj/machinery/atmospherics/pipe/simple/scrubbers/hidden,
 /turf/open/floor/wood,
 /area/service/abandoned_gambling_den/secondary)
+"fJl" = (
+/obj/machinery/atmospherics/pipe/manifold/supply/hidden{
+	dir = 1
+	},
+/obj/effect/turf_decal/tile/blue{
+	dir = 4
+	},
+/obj/structure/cable/white{
+	icon_state = "2-4"
+	},
+/turf/open/floor/plasteel/white/corner{
+	dir = 1
+	},
+/area/hallway/secondary/entry)
 "fJs" = (
 /obj/effect/landmark/event_spawn,
 /obj/effect/turf_decal/tile/yellow{
@@ -97624,6 +97641,9 @@
 	name = "Maintenance Hatch";
 	req_access_txt = "12"
 	},
+/obj/structure/cable/white{
+	icon_state = "1-2"
+	},
 /turf/open/floor/plating,
 /area/maintenance/port/fore)
 "noR" = (
@@ -105635,6 +105655,9 @@
 /obj/machinery/atmospherics/pipe/simple/supply/hidden{
 	dir = 10
 	},
+/obj/structure/cable/white{
+	icon_state = "1-2"
+	},
 /turf/open/floor/plating,
 /area/maintenance/port/fore)
 "pZB" = (
@@ -106170,7 +106193,7 @@
 /area/service/abandoned_gambling_den/secondary)
 "qkk" = (
 /obj/machinery/shower{
-	dir = 4
+	dir = 1
 	},
 /obj/structure/curtain,
 /turf/open/floor/plasteel/white,
@@ -115724,6 +115747,9 @@
 	},
 /obj/effect/turf_decal/tile/blue{
 	dir = 4
+	},
+/obj/structure/cable/white{
+	icon_state = "0-8"
 	},
 /turf/open/floor/plasteel/white/corner{
 	dir = 1
@@ -126674,6 +126700,12 @@
 /obj/effect/turf_decal/bot,
 /turf/open/floor/plasteel,
 /area/command/gateway)
+"xvg" = (
+/obj/structure/cable/white{
+	icon_state = "1-8"
+	},
+/turf/open/floor/plating,
+/area/maintenance/port/fore)
 "xvh" = (
 /turf/closed/wall,
 /area/commons/locker)
@@ -164447,7 +164479,7 @@ ajV
 alf
 xms
 yfa
-alg
+arC
 pZz
 ami
 nWP
@@ -164703,8 +164735,8 @@ ajw
 ajV
 alf
 pDl
-alg
-alg
+arC
+xvg
 xFs
 bgi
 arB
@@ -164956,11 +164988,11 @@ aaa
 aaa
 aaa
 abf
-ajz
+fJl
 aka
 noQ
-alg
-alg
+auc
+xvg
 vtY
 vtY
 vtY
