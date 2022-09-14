@@ -188,3 +188,11 @@
 /datum/sprite_accessory/snouts/mam_snouts/feasterndragon/no_whiskers
 	name = "Eastern Dragon - No Whiskers (Top)"
 	icon_state = "feasterndnw"
+
+/datum/sprite_accessory/snouts/mam_snouts/magus
+	name = "Magus"
+	icon_state = "magus"
+	icon = 'modular_splurt/icons/mob/mam_snouts.dmi'
+	extra = TRUE
+	extra_color_src = MATRIXED
+	matrixed_sections = MATRIX_RED_GREEN
