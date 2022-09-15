@@ -16,6 +16,9 @@
 #define CHANNEL_DIGEST 1009
 #define CHANNEL_PREYLOOP 1008
 
+//SPLURT channels (idk will most likely break)
+#define CHANNEL_REACTOR_ALERT 1007 // reactor sounds
+
 ///Default range of a sound.
 #define SOUND_RANGE 17
 ///default extra range for sounds considered to be quieter
