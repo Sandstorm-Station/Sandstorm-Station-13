@@ -691,7 +691,6 @@
 		lad.client.view_size.zoomOut(zoom_out_amt, zoom_amt, new_dir)
 
 /obj/item/gun/proc/zoom(mob/living/user, direct, forced_zoom)
-	to_chat(user, "zoomies")
 	if(!(user?.client))
 		return
 
