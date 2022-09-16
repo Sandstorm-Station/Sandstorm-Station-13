@@ -5,6 +5,9 @@
 /mob/living/carbon/wendigo/has_penis(nintendo)
 	return TRUE
 
+/mob/living/carbon/wendigo/has_strapon(nintendo)
+	return FALSE
+
 /mob/living/carbon/wendigo/has_anus(nintendo)
 	return TRUE
 

@@ -1,5 +1,5 @@
 /datum/interaction/lewd/facefuck
-	description = "Fuck their mouth using your penis"
+	description = "Fuck their mouth using your %COCK%."
 	interaction_sound = null
 	require_target_mouth = TRUE
 	require_user_penis = REQUIRE_EXPOSED
@@ -7,7 +7,7 @@
 	var/fucktarget = "penis"
 
 /datum/interaction/lewd/facefuck/vag
-	description = "Fuck their mouth using your vagina"
+	description = "Fuck their mouth using your vagina."
 	require_user_penis = null
 	require_user_vagina = REQUIRE_EXPOSED
 	fucktarget = "vagina"
@@ -20,7 +20,7 @@
 	var/u_His = user.p_their()
 	var/t_Him = partner.p_them()
 	var/t_Hes = partner.p_theyre()
-
+	
 	if(user.is_fucking(partner, CUM_TARGET_MOUTH))
 		var/improv = FALSE
 		switch(fucktarget)
@@ -43,13 +43,14 @@
 				else
 					improv = TRUE
 			if("penis")
-				if(user.has_penis())
+				if(user.has_penis() || user.has_strapon())
+					var/genital_name = user.get_penetrating_genital_name()
 					message = pick(
 						"roughly fucks \the <b>[partner]</b>'s mouth.",
-						"forces [u_His] cock down \the <b>[partner]</b>'s throat.",
+						"forces [u_His] [genital_name] down \the <b>[partner]</b>'s throat.",
 						"pushes in against \the <b>[partner]</b>'s tongue until a tight gagging sound comes.",
-						"grips \the <b>[partner]</b>'s hair and draws [t_Him] to the base of the cock.",
-						"looks \the <b>[partner]</b>'s in the eyes as [u_His] cock presses into a waiting tongue.",
+						"grips \the <b>[partner]</b>'s hair and draws [t_Him] to the base of the [genital_name].",
+						"looks \the <b>[partner]</b>'s in the eyes as [u_His] [genital_name] presses into a waiting tongue.",
 						"rolls [u_His] hips hard, sinking into \the <b>[partner]</b>'s mouth.",
 						)
 					if(partner.a_intent == INTENT_HARM)
@@ -84,11 +85,12 @@
 				else
 					improv = TRUE
 			if("penis")
-				if(user.has_penis())
+				if(user.has_penis() || user.has_strapon())
+					var/genital_name = user.get_penetrating_genital_name()
 					if(user.is_fucking(partner, CUM_TARGET_THROAT))
-						message = "retracts [u_His] cock from \the <b>[partner]</b>'s throat"
+						message = "retracts [u_His] [genital_name] from \the <b>[partner]</b>'s throat"
 					else
-						message = "shoves [u_His] cock into \the <b>[partner]</b>'s mouth"
+						message = "shoves [u_His] [genital_name] into \the <b>[partner]</b>'s mouth"
 				else
 					improv = TRUE
 		if(improv)
@@ -106,7 +108,8 @@
 	user.visible_message("<span class='lewd'><b>\The [user]</b> [message]</span>", ignored_mobs = user.get_unconsenting())
 	if(retaliation_message)
 		user.visible_message("<font color=red><b>\The <b>[partner]</b></b> [retaliation_message]</span>", ignored_mobs = user.get_unconsenting())
-	user.handle_post_sex(NORMAL_LUST, CUM_TARGET_MOUTH, partner)
+	if(fucktarget != "penis" || user.can_penetrating_genital_cum())
+		user.handle_post_sex(NORMAL_LUST, CUM_TARGET_MOUTH, partner)
 
 /datum/interaction/lewd/throatfuck
 	description = "Fuck their throat. | Does oxy damage."
@@ -123,11 +126,12 @@
 	var/u_His = user.p_their()
 	var/t_His = partner.p_their()
 	var/t_Him = partner.p_them()
+	var/genital_name = user.get_penetrating_genital_name()
 
 	if(user.is_fucking(partner, CUM_TARGET_THROAT))
 		message = "[pick(
-			"brutally shoves [u_His] cock into \the <b>[partner]</b>'s throat to make [t_Him] gag.",
-			"chokes \the <b>[partner]</b> on [u_His] dick, going in balls deep.",
+			"brutally shoves [u_His] [genital_name] into \the <b>[partner]</b>'s throat to make [t_Him] gag.",
+			"chokes \the <b>[partner]</b> on [u_His] [genital_name], going in balls deep.",
 			"slams in and out of \the <b>[partner]</b>'s mouth, [u_His] balls slapping off [t_His] face.")]"
 		if(rand(3))
 			partner.emote("chokes on \the [user]")
@@ -146,7 +150,7 @@
 			genital = check
 		user.set_is_fucking(partner, CUM_TARGET_THROAT, genital)
 	else
-		message = "forces [u_His] dick deep down \the <b>[partner]</b>'s throat"
+		message = "forces [u_His] [genital_name] deep down \the <b>[partner]</b>'s throat"
 		var/check = user.getorganslot(ORGAN_SLOT_PENIS)
 		if(check)
 			genital = check
@@ -157,4 +161,5 @@
 	user.visible_message(message = "<span class='lewd'><b>\The [user]</b> [message]</span>", ignored_mobs = user.get_unconsenting())
 	if(retaliation_message)
 		user.visible_message(message = "<font color=red><b>\The <b>[partner]</b></b> [retaliation_message]</span>", ignored_mobs = user.get_unconsenting())
-	user.handle_post_sex(NORMAL_LUST, CUM_TARGET_THROAT, partner)
+	if(user.can_penetrating_genital_cum())
+		user.handle_post_sex(NORMAL_LUST, CUM_TARGET_THROAT, partner)
