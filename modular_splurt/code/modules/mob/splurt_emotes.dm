@@ -184,6 +184,19 @@
 		message = "makes a very loud noise."
 	. = ..()
 
+/datum/emote/living/audio_emote/chitter2
+	key = "chitter2"
+	key_third_person = "chitters2"
+	message = "chitters."
+	message_mime = "chitters silently!"
+
+/datum/emote/living/audio_emote/chitter2/run_emote(mob/user, params, type_override, intentional)
+	. = ..()
+	if(. && iscarbon(user))
+		var/mob/living/carbon/C = user
+		if(isinsect(C))
+			playsound(C, 'modular_splurt/sound/voice/moth/mothchitter2.ogg', 50, 1)
+
 /datum/emote/living/monkeytwerk
 	key = "twerk"
 	key_third_person = "twerk"
