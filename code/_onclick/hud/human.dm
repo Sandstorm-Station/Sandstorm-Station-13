@@ -551,6 +551,9 @@
 	zone_select.update_icon()
 	static_inventory += zone_select
 
+	combo_display = new /atom/movable/screen/combo()
+	infodisplay += combo_display
+
 	for(var/atom/movable/screen/inventory/inv in (static_inventory + toggleable_inventory + extra_inventory)) // Sandstorm edit
 		if(inv.slot_id)
 			inv.hud = src
