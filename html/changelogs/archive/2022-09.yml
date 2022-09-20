@@ -57,10 +57,10 @@
   timothyteakettle:
   - rscadd: lets ghosts click a pAI device to download into it without a master
 2022-09-14:
-  timothyteakettle:
-  - rscadd: lets ghosts click a pAI device to download into it without a master
   BongaTheProto:
   - imageadd: 'New anthro snout: Magus'
+  timothyteakettle:
+  - rscadd: lets ghosts click a pAI device to download into it without a master
 2022-09-17:
   BongaTheProto:
   - soundadd: Adds new chitter sounds!! bark and emote
@@ -71,13 +71,13 @@
   - bugfix: Improved performance noticeably, or so I hope. Please report any issues
       related to lighting!
 2022-09-18:
-  Zirok:
-  - bugfix: The scope on the sniper rifle available to nukeops and slavers works again!
   Putnam3145:
   - code_imp: Spurious for loop squashed
   That REALLY Good Soda Flavor, jacklecroy on GitHub, ported by Hatterhat:
   - rscadd: Using certain martial arts will create a combo meter when you attack.
   - imageadd: Added combo meter icons.
+  Zirok:
+  - bugfix: The scope on the sniper rifle available to nukeops and slavers works again!
   shellspeed1:
   - rscadd: The Quantum Spin design has been brought over from TG for testing in the
       Citadel Station facilities.
@@ -92,3 +92,16 @@
 2022-09-19:
   Putnam3145:
   - code_imp: Auxmos updated to 2.0.0
+2022-09-20:
+  JerryWester:
+  - rscadd: IPC organs and Prosthetics tabs to the mechfab
+  - tweak: sort mechfab items into their proper categories, including the unused Cybernetics
+      and Implants categories
+  - rscadd: printable IPC organs to the mechfab
+  - tweak: a few description and name edits to the IPC organs
+  - tweak: add IPC organs to the "basic cybernetics" techweb node, and move IPC power
+      cord implant to it as well
+  - tweak: add nanogel paste to the Misc category in the mechfab. It was always printable
+      from the mechfab, but before didn't have an assigned category
+  - tweak: remove the vortex cell from the mechfab because *why is it there? You can't
+      even print it without chems and the mechfab can't hold chems!*
