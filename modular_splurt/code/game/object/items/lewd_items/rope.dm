@@ -3,9 +3,10 @@
 #define ROPE_STATE_TIED 2
 
 #define ROPE_TARGET_LEGS 0
-#define ROPE_TARGET_HANDS 1
-#define ROPE_TARGET_LEGS_OBJECT 2
-#define ROPE_TARGET_HANDS_OBJECT 3
+#define ROPE_TARGET_HANDS_IN_FRONT 1
+#define ROPE_TARGET_HANDS_BEHIND 2
+#define ROPE_TARGET_LEGS_OBJECT 3
+#define ROPE_TARGET_HANDS_OBJECT 4
 
 #define ROPE_OBJECT_IMMOVABLE 0
 #define ROPE_OBJECT_MOVABLE 1
@@ -16,9 +17,11 @@
 #define ROPE_OBJECT_IMMOVABLE_SLOWDOWN 32
 #define ROPE_SELF_APPLY_INSTANT 0
 
+GLOBAL_LIST_INIT(bondage_rope_colors, list("#fc60db", "#fa3737", "#1a1a1a", "#e8e8e8", "#b88965"))
 GLOBAL_LIST_INIT(bondage_rope_targets, list(
 	"Legs"				= ROPE_TARGET_LEGS,
-	"Hands"				= ROPE_TARGET_HANDS,
+	"Hands (in front)"	= ROPE_TARGET_HANDS_IN_FRONT,
+	"Hands (behind)"	= ROPE_TARGET_HANDS_BEHIND,
 	"Legs (to object)"	= ROPE_TARGET_LEGS_OBJECT,
 	"Hands (to object)"	= ROPE_TARGET_HANDS_OBJECT
 	))
@@ -49,18 +52,29 @@ GLOBAL_LIST_INIT(bondage_rope_slowdowns, list(
 	icon = 'modular_splurt/icons/obj/rope.dmi'
 	icon_state = "rope"
 	item_state = "rope"
-	color = "#db74c5"
+	color = "#fc60db"
 	w_class = WEIGHT_CLASS_SMALL
 	breakouttime = 600 //Deciseconds = 60s = 1 minute
 	armor = list(MELEE = 0, BULLET = 0, LASER = 0, ENERGY = 0, BOMB = 0, BIO = 0, RAD = 0, FIRE = 50, ACID = 50)
 	// TODO: change sound
 	var/cuffsound = 'sound/weapons/handcuffs.ogg'
-	var/rope_target = ROPE_TARGET_HANDS
+	var/rope_target = ROPE_TARGET_HANDS_IN_FRONT
 	var/rope_state = ROPE_STATE_UNTIED
+	var/rope_strength = 1
 	var/mob/living/carbon/roped_master = null
 	var/mob/living/carbon/roped_mob = null
 	var/obj/roped_object = null
 	var/roped_object_type = null
+	var/random_color = TRUE
+
+/obj/item/restraints/bondage_rope/Initialize(mapload)
+	. = ..()
+	if(random_color == TRUE)
+		color = pick(GLOB.bondage_rope_colors)
+		update_appearance()
+
+/obj/item/restraints/bondage_rope/proc/rope_target_text()
+	return rope_target == ROPE_TARGET_HANDS_BEHIND ? "behind them" : "in front"
 
 // Handles initial rope checks and then calls process_knot
 /obj/item/restraints/bondage_rope/attack(mob/living/carbon/C, mob/living/user)
@@ -71,35 +85,48 @@ GLOBAL_LIST_INIT(bondage_rope_slowdowns, list(
 		forceMove(user.loc)
 
 	switch(rope_target)
-		if(ROPE_TARGET_HANDS, ROPE_TARGET_HANDS_OBJECT)
-			if(C.handcuffed)
+		if(ROPE_TARGET_HANDS_IN_FRONT, ROPE_TARGET_HANDS_BEHIND, ROPE_TARGET_HANDS_OBJECT)
+			if(C.handcuffed != null && !istype(C.handcuffed, /obj/item/restraints/bondage_rope))
 				to_chat(user, "<span class='warning'>[C] is already handcuffed...</span>")
 				return
 			if(C.get_num_arms(FALSE) < 2 && !C.get_arm_ignore())
 				to_chat(user, "<span class='warning'>[C] doesn't have two hands...</span>")
 				return
-			C.visible_message("<span class='danger'>[user] is trying to tie [C]'s hands!</span>", \
-								"<span class='userdanger'>[user] is trying to tie [C]'s hands!</span>")
+			if(C.handcuffed == null)
+				C.visible_message("<span class='danger'>[user] is trying to tie [C]'s hands [rope_target_text()]!</span>", \
+								"<span class='userdanger'>[user] is trying to tie [C]'s hands [rope_target_text()]!</span>")
+			else
+				var/obj/item/restraints/bondage_rope/rope = C.handcuffed
+				if(rope.rope_strength >= 3)
+					to_chat(user, "<span class='warning'>You cannot strengthen this rope anymore...</span>")
+					return
+				C.visible_message("<span class='danger'>[user] is trying to strengthen the rope on [C]!</span>", \
+								"<span class='userdanger'>[user] is trying to strengthen the rope on [C]!</span>")
 			process_knot(C, user)
 			
 		if(ROPE_TARGET_LEGS, ROPE_TARGET_LEGS_OBJECT)
-			if(C.legcuffed)
+			if(C.legcuffed != null && !istype(C.legcuffed, /obj/item/restraints/bondage_rope))
 				to_chat(user, "<span class='warning'>[C] is already legcuffed...</span>")
 				return
 			if(C.get_num_legs(FALSE) < 2 && !C.get_leg_ignore())
 				to_chat(user, "<span class='warning'>[C] doesn't have two legs...</span>")
 				return
-			C.visible_message("<span class='danger'>[user] is trying to tie [C]'s legs!</span>", \
+			if(C.legcuffed == null)
+				C.visible_message("<span class='danger'>[user] is trying to tie [C]'s legs!</span>", \
 								"<span class='userdanger'>[user] is trying to tie [C]'s legs!</span>")
+			else
+				var/obj/item/restraints/bondage_rope/rope = C.legcuffed
+				if(rope.rope_strength >= 3)
+					to_chat(user, "<span class='warning'>You cannot strengthen this rope anymore...</span>")
+					return
+				C.visible_message("<span class='danger'>[user] is trying to strengthen the rope on [C]!</span>", \
+								"<span class='userdanger'>[user] is trying to strengthen the rope on [C]!</span>")
 			process_knot(C, user)
 
 // Handles deciding objects in ROPE_STATE_DECIDING_OBJECT state
 // If rope is attached to an object calls finish_knot_object
 /obj/item/restraints/bondage_rope/attack_obj(obj/O, mob/user)
 	if((rope_target != ROPE_TARGET_LEGS_OBJECT && rope_target != ROPE_TARGET_HANDS_OBJECT))
-		return
-	if(rope_state == ROPE_STATE_TIED)
-		to_chat(user, "<span class='notice'>The rope is already tied to somebody.</span>")
 		return
 	if(roped_mob == null)
 		to_chat(user, "<span class='notice'>You need to attach the rope to somebody first.</span>")
@@ -116,25 +143,35 @@ GLOBAL_LIST_INIT(bondage_rope_slowdowns, list(
 		if(istype(O, type))
 			finish_knot_object(O, type)
 
-// Handles the initial knot on the target (including the timeout) and calls after_process_knot
+// Handles the initial knot on the target (timeout and messages)
+// > If target doesn't have a rope tied, calls after_process_knot
+// > If target does have a rope tied, calls strengthen_rope
 /obj/item/restraints/bondage_rope/proc/process_knot(mob/living/carbon/C, mob/living/user)
 	switch(rope_target)
-		if(ROPE_TARGET_HANDS, ROPE_TARGET_HANDS_OBJECT)
+		if(ROPE_TARGET_HANDS_IN_FRONT, ROPE_TARGET_HANDS_BEHIND, ROPE_TARGET_HANDS_OBJECT)
 			if(do_mob(user, C, 30) && (C.get_num_arms(FALSE) >= 2 || C.get_arm_ignore()))
 				playsound(loc, cuffsound, 30, 1, -2)
-				to_chat(user, "<span class='notice'>You tie [C]'s hands.</span>")
 				SSblackbox.record_feedback("tally", "handcuffs", 1, type)
 				log_combat(user, C, "handcuffed")
-				after_process_knot(C, user)
+				if(C.handcuffed == null)
+					to_chat(user, "<span class='notice'>You tie [C]'s hands [rope_target_text()].</span>")
+					after_process_knot(C, user)
+				else
+					to_chat(user, "<span class='notice'>You strengthen the rope on [C].</span>")
+					strengthen_rope(C, user)
 			else
 				to_chat(user, "<span class='warning'>You fail to tie [C]'s hands!</span>")
 		if(ROPE_TARGET_LEGS, ROPE_TARGET_LEGS_OBJECT)
 			if(do_mob(user, C, 30) && (C.get_num_legs(FALSE) >= 2 || C.get_leg_ignore()))
 				playsound(loc, cuffsound, 30, 1, -2)
-				to_chat(user, "<span class='notice'>You tie [C]'s legs.</span>")
 				SSblackbox.record_feedback("tally", "handcuffs", 1, type)
 				log_combat(user, C, "handcuffed")
-				after_process_knot(C, user)
+				if(C.legcuffed == null)
+					to_chat(user, "<span class='notice'>You tie [C]'s legs.</span>")
+					after_process_knot(C, user)
+				else
+					to_chat(user, "<span class='notice'>You strengthen the rope on [C].</span>")
+					strengthen_rope(C, user)
 			else
 				to_chat(user, "<span class='warning'>You fail to tie [C]'s legs!</span>")
 
@@ -142,7 +179,7 @@ GLOBAL_LIST_INIT(bondage_rope_slowdowns, list(
 // > Using object rope, handles the handcuffed effect (unless instant self apply is disabled) and sets state to ROPE_STATE_DECIDING_OBJECT
 /obj/item/restraints/bondage_rope/proc/after_process_knot(mob/living/carbon/C, mob/living/user)
 	switch(rope_target)
-		if(ROPE_TARGET_HANDS, ROPE_TARGET_LEGS)
+		if(ROPE_TARGET_HANDS_IN_FRONT, ROPE_TARGET_HANDS_BEHIND, ROPE_TARGET_LEGS)
 			finish_knot_normal(C, user)
 			return
 		if(ROPE_TARGET_HANDS_OBJECT)
@@ -163,20 +200,36 @@ GLOBAL_LIST_INIT(bondage_rope_slowdowns, list(
 		if(!check_rope_state())
 			break
 
-// Sets state to ROPE_STATE_TIED, applies handcuffed effect and deletes rope
+// Strengthens target's rope and deletes itself
+/obj/item/restraints/bondage_rope/proc/strengthen_rope(mob/living/carbon/target, mob/living/carbon/user)
+	switch(rope_target)
+		if(ROPE_TARGET_HANDS_IN_FRONT, ROPE_TARGET_HANDS_BEHIND, ROPE_TARGET_HANDS_OBJECT)
+			var/obj/item/restraints/bondage_rope/rope = target.handcuffed
+			rope.rope_strength++
+			rope.set_rope_slowdown(target)
+		if(ROPE_TARGET_LEGS, ROPE_TARGET_LEGS_OBJECT)
+			var/obj/item/restraints/bondage_rope/rope = target.legcuffed
+			rope.rope_strength++
+			rope.set_rope_slowdown(target)
+	reset_rope_state()
+	qdel(src)
+
+// Sets state to ROPE_STATE_TIED, applies handcuffed effect and disappears rope
 /obj/item/restraints/bondage_rope/proc/finish_knot_normal(mob/living/carbon/target, mob/living/carbon/user)
 	rope_state = ROPE_STATE_TIED
 	if(!user.temporarilyRemoveItemFromInventory(src))
 		reset_rope_state()
 		return
 	switch(rope_target)
-		if(ROPE_TARGET_HANDS)
+		if(ROPE_TARGET_HANDS_IN_FRONT, ROPE_TARGET_HANDS_BEHIND)
 			apply_hands(target)
 		if(ROPE_TARGET_LEGS)
 			apply_legs(target)
 	forceMove(target)
 	
-// Sets state to ROPE_STATE_TIED, applies handcuffed effect (if needed) and deletes rope
+	set_rope_slowdown(target)
+	
+// Sets state to ROPE_STATE_TIED, applies handcuffed effect (if needed) and disappears rope
 /obj/item/restraints/bondage_rope/proc/finish_knot_object(obj/O, O_type)
 	rope_state = ROPE_STATE_TIED
 	if(!roped_master.temporarilyRemoveItemFromInventory(src))
@@ -207,23 +260,20 @@ GLOBAL_LIST_INIT(bondage_rope_slowdowns, list(
 		reset_rope_state()
 		return FALSE
 	if(rope_state == ROPE_STATE_TIED || (roped_master != roped_mob || ROPE_SELF_APPLY_INSTANT))
-		if(rope_target == ROPE_TARGET_HANDS_OBJECT && !roped_mob.handcuffed)
+		if(rope_target == ROPE_TARGET_HANDS_OBJECT && roped_mob.handcuffed != src)
 			if(roped_master != null)
 				to_chat(roped_master, "<span class='warning'>[roped_mob] got out of your rope.</span>")
 			reset_rope_state()
 			return FALSE
-		if(rope_target == ROPE_TARGET_LEGS_OBJECT && !roped_mob.legcuffed)
+		if(rope_target == ROPE_TARGET_LEGS_OBJECT && roped_mob.legcuffed != src)
 			if(roped_master != null)
 				to_chat(roped_master, "<span class='warning'>[roped_mob] got out of your rope.</span>")
 			reset_rope_state()
 			return FALSE
-
-	switch(rope_state)
-		if(ROPE_STATE_TIED)
-			if(roped_object == null)
-				to_chat(roped_mob, "<span class='warning'>The thing you were tied to... Is gone?</span>")
-				reset_rope_state()
-				return FALSE
+	if(rope_state == ROPE_STATE_TIED && roped_object == null)
+		to_chat(roped_mob, "<span class='warning'>The thing you were tied to... Is gone?</span>")
+		reset_rope_state()
+		return FALSE
 	
 	return TRUE
 
@@ -311,8 +361,11 @@ GLOBAL_LIST_INIT(bondage_rope_slowdowns, list(
 	return ..()
 
 /obj/item/restraints/bondage_rope/dropped(mob/user, silent)
-	if(rope_state == ROPE_STATE_DECIDING_OBJECT)
-		set_roped_master(null)
+	switch(rope_state)
+		if(ROPE_STATE_DECIDING_OBJECT)
+			set_roped_master(null)
+		if(ROPE_STATE_TIED)
+			reset_rope_state()
 	..()
 
 /obj/item/restraints/bondage_rope/pickup(mob/user)
@@ -336,13 +389,19 @@ GLOBAL_LIST_INIT(bondage_rope_slowdowns, list(
 	target.update_inv_legcuffed()
 
 // Handles differing breakout times and cuffbreak (hands free removes rope faster, wirecutters even better)
-/obj/item/restraints/bondage_rope/proc/prepare_resist()
+/obj/item/restraints/bondage_rope/proc/prepare_resist(mob/living/carbon/target)
+	var/obj/item/restraints/bondage_rope/rope_handcuffed = target.handcuffed
 	switch(rope_target)
-		if(ROPE_TARGET_HANDS, ROPE_TARGET_HANDS_OBJECT)
-			breakouttime = 600
+		if(ROPE_TARGET_HANDS_IN_FRONT, ROPE_TARGET_HANDS_OBJECT)
+			breakouttime = 350 + (rope_strength * 100)
+		if(ROPE_TARGET_HANDS_BEHIND)
+			breakouttime = 500 + (rope_strength * 100)
 		if(ROPE_TARGET_LEGS, ROPE_TARGET_LEGS_OBJECT)
-			breakouttime = roped_mob.handcuffed != null ? 600 : 300
-	if(roped_mob.handcuffed == null && istype(roped_mob.get_active_held_item(), /obj/item/wirecutters))
+			// Alert resisting always resists hands first, so this may not be ever used T-T
+			if(rope_handcuffed != null && rope_handcuffed.rope_target == ROPE_TARGET_HANDS_BEHIND)
+				return -1
+			breakouttime = (rope_handcuffed != null ? 400 : 250) + (rope_strength * 100)
+	if(rope_handcuffed == null && istype(target.get_active_held_item(), /obj/item/wirecutters))
 		return FAST_CUFFBREAK
 
 	return 0
@@ -357,7 +416,7 @@ GLOBAL_LIST_INIT(bondage_rope_slowdowns, list(
 
 /obj/item/restraints/bondage_rope/proc/customize_rope(mob/living/user)
 	if(rope_state != ROPE_STATE_UNTIED)
-		to_chat(user, "<span class='warning'>You cannot customize a tied rope.</span>")
+		to_chat(user, "<span class='warning'>You can only customize an untied rope.</span>")
 		return
 
 	if(src && !user.incapacitated() && in_range(user, src))
@@ -389,7 +448,7 @@ GLOBAL_LIST_INIT(bondage_rope_slowdowns, list(
 		UnregisterSignal(roped_object, COMSIG_MOVABLE_MOVED)
 	roped_object = new_object
 	roped_object_type = new_object_type
-	set_rope_slowdown()
+	set_rope_slowdown(roped_mob)
 	if(roped_object != null)
 		RegisterSignal(roped_object, COMSIG_MOVABLE_MOVED, .proc/on_object_move)
 
@@ -411,10 +470,13 @@ GLOBAL_LIST_INIT(bondage_rope_slowdowns, list(
 	return GLOB.bondage_rope_objects[roped_object_type] == ROPE_OBJECT_MOVABLE
 
 // Handles changing slowdown based on roped object
-/obj/item/restraints/bondage_rope/proc/set_rope_slowdown()
+/obj/item/restraints/bondage_rope/proc/set_rope_slowdown(mob/living/carbon/target)
 	if(roped_object == null)
 		slowdown = 0
+		switch(rope_target)
+			if(ROPE_TARGET_LEGS)
+				slowdown = rope_strength * 8
 	else
 		slowdown = GLOB.bondage_rope_slowdowns[roped_object_type]
-	if(roped_mob != null)
-		roped_mob.update_equipment_speed_mods()
+	if(target != null)
+		target.update_equipment_speed_mods()
