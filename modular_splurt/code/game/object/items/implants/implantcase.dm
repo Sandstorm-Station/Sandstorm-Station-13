@@ -1,4 +1,3 @@
-
 /obj/item/implantcase/emag_act(mob/user)
 	. = ..()
 	if(istype(imp, /obj/item/implant/genital_fluid))
