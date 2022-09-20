@@ -1,0 +1,6 @@
+author: JerryWester
+delete-after: true
+changes:
+  - bugfix: made it so emagging an implant case containing the gfluid implant will
+      call the emag function on the implant
+  - rscadd: pre-emagged variants of the implanter/implant case for adminbus
