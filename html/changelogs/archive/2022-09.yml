@@ -93,6 +93,10 @@
   Putnam3145:
   - code_imp: Auxmos updated to 2.0.0
 2022-09-20:
+  ItsSelis:
+  - rscadd: Added the input framework itself (including prefs)
+  - code_imp: Changed some input procs to their relevant tgui_input ones
+  - refactor: Updated already existing tgui code (Text/List)
   JerryWester:
   - rscadd: IPC organs and Prosthetics tabs to the mechfab
   - tweak: sort mechfab items into their proper categories, including the unused Cybernetics
