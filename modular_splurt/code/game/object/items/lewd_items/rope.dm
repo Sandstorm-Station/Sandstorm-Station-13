@@ -1,22 +1,3 @@
-#define ROPE_STATE_UNTIED 0
-#define ROPE_STATE_DECIDING_OBJECT 1
-#define ROPE_STATE_TIED 2
-
-#define ROPE_TARGET_LEGS 0
-#define ROPE_TARGET_HANDS_IN_FRONT 1
-#define ROPE_TARGET_HANDS_BEHIND 2
-#define ROPE_TARGET_LEGS_OBJECT 3
-#define ROPE_TARGET_HANDS_OBJECT 4
-
-#define ROPE_OBJECT_IMMOVABLE 0
-#define ROPE_OBJECT_MOVABLE 1
-
-#define ROPE_MAX_DISTANCE_OBJECT 1
-#define ROPE_MAX_DISTANCE_MASTER 2
-#define ROPE_MAX_DISTANCE_SNAP 4
-#define ROPE_OBJECT_IMMOVABLE_SLOWDOWN 32
-#define ROPE_SELF_APPLY_INSTANT 0
-
 GLOBAL_LIST_INIT(bondage_rope_colors, list("#fc60db", "#fa3737", "#1a1a1a", "#e8e8e8", "#b88965"))
 GLOBAL_LIST_INIT(bondage_rope_targets, list(
 	"Legs"				= ROPE_TARGET_LEGS,
@@ -56,15 +37,15 @@ GLOBAL_LIST_INIT(bondage_rope_slowdowns, list(
 	w_class = WEIGHT_CLASS_SMALL
 	breakouttime = 600 //Deciseconds = 60s = 1 minute
 	armor = list(MELEE = 0, BULLET = 0, LASER = 0, ENERGY = 0, BOMB = 0, BIO = 0, RAD = 0, FIRE = 50, ACID = 50)
-	// TODO: change sound
-	var/cuffsound = 'sound/weapons/handcuffs.ogg'
+	var/cuffsound = 'modular_splurt/sound/lewd/rope.ogg'
 	var/rope_target = ROPE_TARGET_HANDS_IN_FRONT
 	var/rope_state = ROPE_STATE_UNTIED
-	var/rope_strength = 1
+	var/rope_stack
 	var/mob/living/carbon/roped_master = null
 	var/mob/living/carbon/roped_mob = null
 	var/obj/roped_object = null
 	var/roped_object_type = null
+	var/tugged_flag = FALSE
 	var/random_color = TRUE
 
 /obj/item/restraints/bondage_rope/Initialize(mapload)
@@ -72,6 +53,7 @@ GLOBAL_LIST_INIT(bondage_rope_slowdowns, list(
 	if(random_color == TRUE)
 		color = pick(GLOB.bondage_rope_colors)
 		update_appearance()
+	LAZYADD(rope_stack, color)
 
 /obj/item/restraints/bondage_rope/proc/rope_target_text()
 	return rope_target == ROPE_TARGET_HANDS_BEHIND ? "behind them" : "in front"
@@ -97,7 +79,7 @@ GLOBAL_LIST_INIT(bondage_rope_slowdowns, list(
 								"<span class='userdanger'>[user] is trying to tie [C]'s hands [rope_target_text()]!</span>")
 			else
 				var/obj/item/restraints/bondage_rope/rope = C.handcuffed
-				if(rope.rope_strength >= 3)
+				if(LAZYLEN(rope.rope_stack) >= ROPE_MAX_STACK)
 					to_chat(user, "<span class='warning'>You cannot strengthen this rope anymore...</span>")
 					return
 				C.visible_message("<span class='danger'>[user] is trying to strengthen the rope on [C]!</span>", \
@@ -116,20 +98,23 @@ GLOBAL_LIST_INIT(bondage_rope_slowdowns, list(
 								"<span class='userdanger'>[user] is trying to tie [C]'s legs!</span>")
 			else
 				var/obj/item/restraints/bondage_rope/rope = C.legcuffed
-				if(rope.rope_strength >= 3)
+				if(LAZYLEN(rope.rope_stack) >= ROPE_MAX_STACK)
 					to_chat(user, "<span class='warning'>You cannot strengthen this rope anymore...</span>")
 					return
 				C.visible_message("<span class='danger'>[user] is trying to strengthen the rope on [C]!</span>", \
 								"<span class='userdanger'>[user] is trying to strengthen the rope on [C]!</span>")
 			process_knot(C, user)
 
+/obj/item/restraints/bondage_rope/attack_obj(obj/O, mob/user)
+	if(rope_state != ROPE_STATE_DECIDING_OBJECT)
+		to_chat(user, "<span class='notice'>You need to attach the rope to somebody first.</span>")
+		return
+	process_object(O, user)
+
 // Handles deciding objects in ROPE_STATE_DECIDING_OBJECT state
 // If rope is attached to an object calls finish_knot_object
-/obj/item/restraints/bondage_rope/attack_obj(obj/O, mob/user)
-	if((rope_target != ROPE_TARGET_LEGS_OBJECT && rope_target != ROPE_TARGET_HANDS_OBJECT))
-		return
-	if(roped_mob == null)
-		to_chat(user, "<span class='notice'>You need to attach the rope to somebody first.</span>")
+/obj/item/restraints/bondage_rope/proc/process_object(obj/O, mob/user)
+	if(rope_state != ROPE_STATE_DECIDING_OBJECT)
 		return
 	// Might be reduntant, since the roped mob gets pulled, but meh
 	var/distance = get_dist(user, roped_mob)
@@ -137,8 +122,6 @@ GLOBAL_LIST_INIT(bondage_rope_slowdowns, list(
 		to_chat(user, "<span class='warning'>The rope isn't long enough to tie a knot.</span>")
 		return
 	
-	// TODO: make this work with tables (right now rope just gets put on top)
-	// either set rope as abstract or AfterPutItemOnTable patch or idk
 	for(var/type in GLOB.bondage_rope_objects)
 		if(istype(O, type))
 			finish_knot_object(O, type)
@@ -192,6 +175,7 @@ GLOBAL_LIST_INIT(bondage_rope_slowdowns, list(
 	rope_state = ROPE_STATE_DECIDING_OBJECT
 	set_roped_mob(C)
 	set_roped_master(user)
+	set_rope_slowdown(C)
 	to_chat(roped_master, "<span class='notice'>Attach the rope to an object to finish the knot.</span>")
 	while(1)
 		sleep(2)
@@ -205,11 +189,11 @@ GLOBAL_LIST_INIT(bondage_rope_slowdowns, list(
 	switch(rope_target)
 		if(ROPE_TARGET_HANDS_IN_FRONT, ROPE_TARGET_HANDS_BEHIND, ROPE_TARGET_HANDS_OBJECT)
 			var/obj/item/restraints/bondage_rope/rope = target.handcuffed
-			rope.rope_strength++
+			LAZYADD(rope.rope_stack, src.color)
 			rope.set_rope_slowdown(target)
 		if(ROPE_TARGET_LEGS, ROPE_TARGET_LEGS_OBJECT)
 			var/obj/item/restraints/bondage_rope/rope = target.legcuffed
-			rope.rope_strength++
+			LAZYADD(rope.rope_stack, src.color)
 			rope.set_rope_slowdown(target)
 	reset_rope_state()
 	qdel(src)
@@ -247,6 +231,7 @@ GLOBAL_LIST_INIT(bondage_rope_slowdowns, list(
 	set_roped_object(O, O_type)
 	to_chat(roped_mob, "<span class='warning'>You are tied to [O].</span>")
 	to_chat(roped_master, "<span class='notice'>You tie the rope to [O].</span>")
+	tugged_flag = TRUE
 	apply_tug_mob_to_object(roped_mob, roped_object, ROPE_MAX_DISTANCE_OBJECT)
 
 // Handles a number of edge cases, if something goes wrong resets the rope state and returns false
@@ -290,8 +275,10 @@ GLOBAL_LIST_INIT(bondage_rope_slowdowns, list(
 		return
 	var/distance = get_dist(roped_mob.loc, roped_master.loc)
 	if(distance > ROPE_MAX_DISTANCE_MASTER)
+		tugged_flag = TRUE
 		apply_tug_mob_to_mob(roped_mob, roped_master, ROPE_MAX_DISTANCE_MASTER)
-		roped_mob.apply_effect(20, EFFECT_KNOCKDOWN, 0)
+		if (prob(30))
+			roped_mob.apply_effect(20, EFFECT_KNOCKDOWN, 0)
 	if(distance > ROPE_MAX_DISTANCE_SNAP)
 		snap_rope()
 
@@ -301,8 +288,10 @@ GLOBAL_LIST_INIT(bondage_rope_slowdowns, list(
 		return
 	var/distance = get_dist(roped_mob.loc, roped_object.loc)
 	if(distance > ROPE_MAX_DISTANCE_OBJECT)
+		tugged_flag = TRUE
 		apply_tug_mob_to_object(roped_mob, roped_object, ROPE_MAX_DISTANCE_OBJECT)
-		roped_mob.apply_effect(20, EFFECT_KNOCKDOWN, 0)
+		if (prob(30))
+			roped_mob.apply_effect(20, EFFECT_KNOCKDOWN, 0)
 	if(distance > ROPE_MAX_DISTANCE_SNAP)
 		snap_rope()
 
@@ -310,18 +299,26 @@ GLOBAL_LIST_INIT(bondage_rope_slowdowns, list(
 /obj/item/restraints/bondage_rope/proc/on_mob_move()
 	if(!check_rope_state())
 		return
+	if(tugged_flag)
+		tugged_flag = FALSE
+		return
 	switch(rope_state)
 		if(ROPE_STATE_DECIDING_OBJECT)
 			if(roped_master != null)
 				var/distance = get_dist(roped_mob.loc, roped_master.loc)
 				if(distance > ROPE_MAX_DISTANCE_MASTER)
-					to_chat(roped_mob, "<span class='warning'>The rope doesn't let you to go further.</span>")
-					apply_tug_mob_to_mob(roped_mob, roped_master, ROPE_MAX_DISTANCE_MASTER)
-					distance = get_dist(roped_mob.loc, roped_master.loc)
-
-					// TODO: a chance to break free, tugging the rope away from the master, instead of getting tugged to the master
-					// to_chat(roped_mob, "<span class='warning'>You tug the rope away from [roped_master].</span>")
-					// to_chat(roped_master, "<span class='warning'>[roped_mob] tugs the rope away from you.</span>")
+					if (prob(10))
+						to_chat(roped_mob, "<span class='warning'>You tug the rope away from [roped_master].</span>")
+						to_chat(roped_master, "<span class='warning'>[roped_mob] tugs the rope away from you.</span>")
+						forceMove(roped_mob.loc)
+					else
+						to_chat(roped_mob, "<span class='warning'>The rope doesn't let you go further.</span>")
+						tugged_flag = TRUE
+						apply_tug_mob_to_mob(roped_mob, roped_master, ROPE_MAX_DISTANCE_MASTER)
+						// Not reduntant, since the above line can tug the rope and make roped_master null
+						if(roped_master == null)
+							return
+						distance = get_dist(roped_mob.loc, roped_master.loc)
 				if(distance > ROPE_MAX_DISTANCE_SNAP)
 					snap_rope()
 			else
@@ -339,7 +336,8 @@ GLOBAL_LIST_INIT(bondage_rope_slowdowns, list(
 				if(can_move)
 					apply_tug_object_to_mob(roped_object, roped_mob, ROPE_MAX_DISTANCE_OBJECT)
 				else
-					to_chat(roped_mob, "<span class='warning'>The rope doesn't let you to go further.</span>")
+					to_chat(roped_mob, "<span class='warning'>The rope doesn't let you go further.</span>")
+					tugged_flag = TRUE
 					apply_tug_mob_to_object(roped_mob, roped_object, ROPE_MAX_DISTANCE_OBJECT)
 				distance = get_dist(roped_mob.loc, roped_object.loc)
 			if(distance > ROPE_MAX_DISTANCE_SNAP)
@@ -365,7 +363,9 @@ GLOBAL_LIST_INIT(bondage_rope_slowdowns, list(
 		if(ROPE_STATE_DECIDING_OBJECT)
 			set_roped_master(null)
 		if(ROPE_STATE_TIED)
-			reset_rope_state()
+			// For object ones, this gets handled in check_rope_state
+			if(rope_target != ROPE_TARGET_HANDS_OBJECT && rope_target != ROPE_TARGET_LEGS_OBJECT)
+				reset_rope_state()
 	..()
 
 /obj/item/restraints/bondage_rope/pickup(mob/user)
@@ -393,14 +393,14 @@ GLOBAL_LIST_INIT(bondage_rope_slowdowns, list(
 	var/obj/item/restraints/bondage_rope/rope_handcuffed = target.handcuffed
 	switch(rope_target)
 		if(ROPE_TARGET_HANDS_IN_FRONT, ROPE_TARGET_HANDS_OBJECT)
-			breakouttime = 350 + (rope_strength * 100)
+			breakouttime = 350 + (LAZYLEN(rope_stack) * 100)
 		if(ROPE_TARGET_HANDS_BEHIND)
-			breakouttime = 500 + (rope_strength * 100)
+			breakouttime = 500 + (LAZYLEN(rope_stack) * 100)
 		if(ROPE_TARGET_LEGS, ROPE_TARGET_LEGS_OBJECT)
 			// Alert resisting always resists hands first, so this may not be ever used T-T
 			if(rope_handcuffed != null && rope_handcuffed.rope_target == ROPE_TARGET_HANDS_BEHIND)
 				return -1
-			breakouttime = (rope_handcuffed != null ? 400 : 250) + (rope_strength * 100)
+			breakouttime = (rope_handcuffed != null ? 400 : 250) + (LAZYLEN(rope_stack) * 100)
 	if(rope_handcuffed == null && istype(target.get_active_held_item(), /obj/item/wirecutters))
 		return FAST_CUFFBREAK
 
@@ -433,7 +433,7 @@ GLOBAL_LIST_INIT(bondage_rope_slowdowns, list(
 		else if(roped_mob.legcuffed == src)
 			roped_mob.clear_cuffs(roped_mob.legcuffed, 0)
 	roped_mob = new_mob
-	if(new_mob != null)
+	if(roped_mob != null)
 		RegisterSignal(roped_mob, COMSIG_MOVABLE_MOVED, .proc/on_mob_move)
 
 /obj/item/restraints/bondage_rope/proc/set_roped_master(mob/living/carbon/new_master)
@@ -465,17 +465,19 @@ GLOBAL_LIST_INIT(bondage_rope_slowdowns, list(
 		if(/obj/structure/table)
 			var/obj/structure/table/table = roped_object
 			var/list/tables = table.connected_floodfill(1)
-			return LAZYLEN(tables) < 1
+			return LAZYLEN(tables) <= 1
 
 	return GLOB.bondage_rope_objects[roped_object_type] == ROPE_OBJECT_MOVABLE
 
 // Handles changing slowdown based on roped object
 /obj/item/restraints/bondage_rope/proc/set_rope_slowdown(mob/living/carbon/target)
-	if(roped_object == null)
+	if(rope_state == ROPE_STATE_DECIDING_OBJECT)
+		slowdown = 16
+	else if(roped_object == null)
 		slowdown = 0
 		switch(rope_target)
 			if(ROPE_TARGET_LEGS)
-				slowdown = rope_strength * 8
+				slowdown = LAZYLEN(rope_stack) * 8
 	else
 		slowdown = GLOB.bondage_rope_slowdowns[roped_object_type]
 	if(target != null)
