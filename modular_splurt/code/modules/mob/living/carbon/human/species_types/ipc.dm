@@ -1,4 +1,4 @@
-/datum/species/ipc
+/datum/species/ipc/New()
 	name = "I.P.C."
 	id = SPECIES_IPC
 	say_mod = "beeps"
