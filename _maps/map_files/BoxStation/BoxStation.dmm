@@ -5927,13 +5927,6 @@
 /obj/item/wrench,
 /turf/open/floor/plating,
 /area/maintenance/port/fore)
-"atr" = (
-/obj/machinery/door/airlock/maintenance{
-	name = "Psychology Office Maintenance";
-	req_access_txt = "76"
-	},
-/turf/open/space/basic,
-/area/space)
 "att" = (
 /obj/machinery/atmospherics/pipe/simple/supply/hidden,
 /turf/open/floor/plasteel,
@@ -29568,7 +29561,7 @@
 /obj/machinery/door/firedoor,
 /obj/machinery/door/airlock/mining/glass{
 	name = "Cargo Office";
-	req_access_txt = "50"
+	req_one_access_txt = "50;48"
 	},
 /turf/open/floor/plasteel,
 /area/cargo/office)
@@ -33062,7 +33055,7 @@
 /obj/machinery/door/firedoor,
 /obj/machinery/door/airlock/engineering/glass{
 	name = "Engineering";
-	req_access_txt = "32"
+	req_access_txt = "10"
 	},
 /obj/machinery/atmospherics/pipe/simple/scrubbers/hidden{
 	dir = 4
@@ -55166,10 +55159,6 @@
 /obj/machinery/door/firedoor,
 /turf/open/floor/carpet,
 /area/commons/cryopod)
-"mYp" = (
-/obj/effect/spawner/structure/window/reinforced,
-/turf/open/space/basic,
-/area/space/nearstation)
 "naj" = (
 /obj/effect/spawner/structure/window/reinforced,
 /obj/machinery/door/poddoor/preopen{
@@ -67035,11 +67024,6 @@
 /obj/effect/spawner/lootdrop/bedsheet,
 /turf/open/floor/wood,
 /area/commons/dorms)
-"xQA" = (
-/obj/structure/lattice,
-/obj/effect/spawner/structure/window/reinforced,
-/turf/open/space,
-/area/space/nearstation)
 "xQN" = (
 /obj/effect/turf_decal/stripes/line{
 	dir = 1
@@ -79543,7 +79527,7 @@ aaa
 aaa
 aaa
 aaa
-atr
+aaa
 aaa
 apJ
 apJ
@@ -117617,7 +117601,7 @@ bcC
 cBl
 aPq
 bgg
-xQA
+aNa
 aaf
 bky
 btp
@@ -117874,7 +117858,7 @@ bcB
 aPs
 aPs
 bgf
-xQA
+aNa
 gXs
 bky
 cyU
@@ -118131,7 +118115,7 @@ aNa
 bdA
 aNa
 aNa
-mYp
+aNa
 gXs
 aaf
 aaa
@@ -118388,7 +118372,7 @@ aNa
 aQE
 aNa
 aaf
-ktS
+gXs
 gXs
 aaf
 aaf
