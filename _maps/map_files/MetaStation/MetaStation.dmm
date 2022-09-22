@@ -3654,6 +3654,7 @@
 /obj/effect/turf_decal/tile/red{
 	dir = 8
 	},
+/obj/item/storage/firstaid/regular,
 /turf/open/floor/plasteel/white,
 /area/security/brig)
 "alN" = (
@@ -4504,6 +4505,7 @@
 /obj/structure/cable/yellow{
 	icon_state = "4-8"
 	},
+/obj/machinery/iv_drip,
 /turf/open/floor/plasteel/dark,
 /area/security/brig)
 "aoo" = (
@@ -4527,15 +4529,12 @@
 /turf/open/floor/plasteel/white,
 /area/security/brig)
 "aop" = (
-/obj/structure/bed,
-/obj/item/bedsheet,
 /obj/structure/disposalpipe/segment{
 	dir = 4
 	},
 /obj/structure/cable/yellow{
 	icon_state = "4-8"
 	},
-/obj/machinery/iv_drip,
 /obj/effect/turf_decal/tile/red,
 /obj/effect/turf_decal/tile/red{
 	dir = 8
@@ -4543,23 +4542,17 @@
 /obj/machinery/atmospherics/pipe/manifold/supply/hidden{
 	dir = 4
 	},
+/obj/structure/table/optable,
+/obj/item/stock_parts/cell/high,
 /turf/open/floor/plasteel/white,
 /area/security/brig)
 "aoq" = (
 /obj/structure/window/reinforced{
 	dir = 4
 	},
-/obj/structure/rack,
-/obj/item/storage/firstaid/regular,
-/obj/item/healthanalyzer{
-	pixel_y = -2
-	},
 /obj/machinery/camera{
 	c_tag = "Brig - Infirmary";
 	dir = 1
-	},
-/obj/item/clothing/under/rank/medical/doctor/purple{
-	pixel_y = -4
 	},
 /obj/machinery/atmospherics/components/unary/vent_scrubber/on{
 	dir = 4
@@ -4576,6 +4569,10 @@
 	},
 /obj/effect/turf_decal/tile/red{
 	dir = 8
+	},
+/obj/machinery/computer/operating{
+	dir = 1;
+	name = "Robotics Operating Computer"
 	},
 /turf/open/floor/plasteel/white,
 /area/security/brig)
