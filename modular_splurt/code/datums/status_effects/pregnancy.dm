@@ -14,3 +14,30 @@
 	tick = FALSE
 	alert_type = /atom/movable/screen/alert/status_effect/pregnancy
 
+/atom/movable/screen/alert/status_effect/lactation
+	name = "Lactation"
+	desc = "You're lactating!"
+	icon_state = "sweat2"
+
+/datum/status_effect/lactation
+	id = "lactation"
+	duration = 20 MINUTES
+	alert_type = /atom/movable/screen/alert/status_effect/lactation
+
+/datum/status_effect/lactation/on_apply()
+	. = ..()
+	var/obj/item/organ/genital/breasts/booba = owner.getorganslot(ORGAN_SLOT_BREASTS)
+	if(!booba)
+		return FALSE
+	if(booba.genital_flags & (GENITAL_FUID_PRODUCTION|CAN_CLIMAX_WITH|CAN_MASTURBATE_WITH))
+		return FALSE
+	booba.genital_flags |= (GENITAL_FUID_PRODUCTION|CAN_CLIMAX_WITH|CAN_MASTURBATE_WITH)
+	return TRUE
+
+/datum/status_effect/lactation/on_remove()
+	. = ..()
+	var/obj/item/organ/genital/breasts/booba = owner.getorganslot(ORGAN_SLOT_BREASTS)
+	if(!booba)
+		return
+	booba.genital_flags &= ~ (GENITAL_FUID_PRODUCTION|CAN_CLIMAX_WITH|CAN_MASTURBATE_WITH)
+
