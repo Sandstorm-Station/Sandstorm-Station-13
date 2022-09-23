@@ -18,6 +18,7 @@
 	name = "Lactation"
 	desc = "You're lactating!"
 	icon_state = "sweat2"
+	var/noapply
 
 /datum/status_effect/lactation
 	id = "lactation"
@@ -30,6 +31,7 @@
 	if(!booba)
 		return FALSE
 	if(booba.genital_flags & (GENITAL_FUID_PRODUCTION|CAN_CLIMAX_WITH|CAN_MASTURBATE_WITH))
+		noapply = TRUE
 		return FALSE
 	booba.genital_flags |= (GENITAL_FUID_PRODUCTION|CAN_CLIMAX_WITH|CAN_MASTURBATE_WITH)
 	return TRUE
@@ -37,7 +39,7 @@
 /datum/status_effect/lactation/on_remove()
 	. = ..()
 	var/obj/item/organ/genital/breasts/booba = owner.getorganslot(ORGAN_SLOT_BREASTS)
-	if(!booba)
+	if(!booba || noapply)
 		return
 	booba.genital_flags &= ~ (GENITAL_FUID_PRODUCTION|CAN_CLIMAX_WITH|CAN_MASTURBATE_WITH)
 
