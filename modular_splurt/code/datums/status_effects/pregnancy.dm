@@ -18,12 +18,12 @@
 	name = "Lactation"
 	desc = "You're lactating!"
 	icon_state = "sweat2"
-	var/noapply
 
 /datum/status_effect/lactation
 	id = "lactation"
 	duration = 20 MINUTES
 	alert_type = /atom/movable/screen/alert/status_effect/lactation
+	var/noapply
 
 /datum/status_effect/lactation/on_apply()
 	. = ..()
