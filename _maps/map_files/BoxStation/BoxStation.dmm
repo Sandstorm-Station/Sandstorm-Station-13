@@ -13662,6 +13662,10 @@
 /area/service/bar)
 "bam" = (
 /obj/effect/spawner/structure/window/reinforced,
+/obj/machinery/door/poddoor/shutters/preopen{
+	id = "botanyshuttersprivacy";
+	name = "botany shutters"
+	},
 /turf/open/floor/plating,
 /area/service/hydroponics)
 "ban" = (
@@ -13670,6 +13674,10 @@
 /obj/machinery/door/window/northleft{
 	name = "Hydroponics Desk";
 	req_access_txt = "35"
+	},
+/obj/machinery/door/poddoor/shutters/preopen{
+	id = "botanyshuttersprivacy";
+	name = "botany shutters"
 	},
 /turf/open/floor/plasteel,
 /area/service/hydroponics)
@@ -13692,6 +13700,10 @@
 	dir = 1;
 	name = "Hydroponics Desk";
 	req_access_txt = "35"
+	},
+/obj/machinery/door/poddoor/shutters/preopen{
+	id = "botanyshuttersprivacy";
+	name = "botany shutters"
 	},
 /turf/open/floor/plasteel,
 /area/service/hydroponics)
@@ -42562,6 +42574,10 @@
 "cBg" = (
 /obj/effect/spawner/structure/window/reinforced,
 /obj/effect/landmark/event_spawn,
+/obj/machinery/door/poddoor/shutters/preopen{
+	id = "botanyshuttersprivacy";
+	name = "botany shutters"
+	},
 /turf/open/floor/plating,
 /area/service/hydroponics)
 "cBi" = (
@@ -54313,6 +54329,12 @@
 	dir = 8
 	},
 /obj/machinery/hydroponics/constructable,
+/obj/machinery/button/door{
+	id = "botanyshuttersprivacy";
+	name = "Botany Shutters";
+	pixel_x = 22;
+	req_access_txt = "35"
+	},
 /turf/open/floor/plasteel/dark,
 /area/service/hydroponics)
 "mhM" = (
@@ -54786,6 +54808,12 @@
 	},
 /obj/effect/turf_decal/tile/green{
 	dir = 8
+	},
+/obj/machinery/button/door{
+	id = "botanyshuttersprivacy";
+	name = "Botany Shutters";
+	pixel_x = -22;
+	req_access_txt = "35"
 	},
 /turf/open/floor/plasteel,
 /area/service/hydroponics)
@@ -63072,6 +63100,14 @@
 	},
 /turf/open/floor/plasteel/dark,
 /area/security/office)
+"ujf" = (
+/obj/effect/spawner/structure/window/reinforced,
+/obj/machinery/door/poddoor/shutters/preopen{
+	id = "botanyshuttersprivacy";
+	name = "botany shutters"
+	},
+/turf/open/floor/plating,
+/area/service/kitchen)
 "ujh" = (
 /obj/machinery/atmospherics/pipe/simple/supply/hidden,
 /obj/structure/cable{
@@ -106824,7 +106860,7 @@ ecS
 gGz
 hiP
 hYI
-aJI
+ujf
 wfP
 nCF
 xTR
