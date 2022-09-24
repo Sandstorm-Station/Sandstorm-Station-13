@@ -100,7 +100,7 @@
 	RegisterSignal(parent, COMSIG_ATOM_ENTERING, .proc/on_entering)
 	RegisterSignal(parent, COMSIG_OBJ_BREAK, .proc/on_obj_break)
 	RegisterSignal(parent, COMSIG_OBJ_WRITTEN_ON, .proc/name_egg)
-	RegisterSignal(parent, COMSIG_PARENT_ATTACKBY, .proc/hatch)
+	RegisterSignal(parent, COMSIG_PARENT_ATTACKBY, .proc/handle_hatch)
 	RegisterSignal(parent, COMSIG_PARENT_EXAMINE, .proc/eg_status)
 
 /datum/component/pregnancy/UnregisterFromParent()
