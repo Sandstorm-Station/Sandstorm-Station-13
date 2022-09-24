@@ -131,24 +131,6 @@
 	if(carrier)
 		generic_pragency_end()
 	return ..()
-/*
-/datum/component/pregnancy/PreTransfer()
-	if(carrier)
-		generic_pragency_end()
-	oviposition = FALSE
-
-/datum/component/pregnancy/PostTransfer()
-	carrier = null
-	container = null
-	egg_name = null
-
-	if(isliving(parent))
-		carrier = parent
-	else if(isitem(parent))
-		max_stage += 1
-	else
-		return COMPONENT_INCOMPATIBLE
-*/
 
 /datum/component/pregnancy/proc/name_egg(datum/source, name)
 	SIGNAL_HANDLER
@@ -288,6 +270,9 @@
 		babby.real_name = name
 		babby.update_name()
 
+	if(mother_name)
+		babby?.mind?.store_memory("[mother_name] is your mother!")
+
 	var/obj/item = parent
 	item.forceMove(get_turf(parent))
 	item.obj_break(MELEE)
@@ -298,43 +283,6 @@
 
 	if(stage >= max_stage)
 		examine_list += span_notice("\The [parent] seems ready to hatch! You can tap it with something to hatch it")
-
-///datum/component/pregnancy/proc/handle_preg()
-//
-//	if(prob(60))
-//		return
-//	if(stage < max_stage)
-//		return
-//
-//	if(prob(50))
-//		to_chat(carrier, span_warning("Something is moving inside you!"))
-//	else
-//		to_chat(carrier, span_userdanger("It hurts! Something is trying to come out!"))
-//
-//	carrier.emote("scream")
-//
-//	var/can_birth = TRUE
-//	if(ishuman(carrier))
-//		var/mob/living/carbon/human/human_owner = carrier
-//		var/obj/item/bodypart/chest = human_owner.get_bodypart(BODY_ZONE_CHEST)
-//		if(LAZYLEN(human_owner.clothingonpart(chest)))
-//			can_birth = FALSE
-//	if(can_birth)
-//		playsound(carrier, 'sound/effects/splat.ogg', 70, TRUE)
-//		to_chat(carrier, span_nicegreen("The egg hatched!"))
-//		carrier.Knockdown(200, TRUE, TRUE)
-//		carrier.Stun(200, TRUE, TRUE)
-//		carrier.adjustStaminaLoss(200)
-//		var/mob/living/babby = new baby_type(get_turf(carrier))
-//		if(ishuman(babby))
-//			determine_baby_dna(babby)
-//		INVOKE_ASYNC(GLOBAL_PROC, .proc/offer_control_to_babby, babby, carrier, egg_name)
-//		SEND_SIGNAL(carrier, COMSIG_ADD_MOOD_EVENT, "pregnancy_end", /datum/mood_event/pregnant_positive)
-//		if(isitem(parent))
-//			var/obj/item = parent
-//			item.forceMove(get_turf(carrier))
-//			item.obj_break(MELEE)
-//		qdel(src)
 
 /datum/component/pregnancy/proc/handle_ovi_preg()
 	if(stage <= 2)
@@ -444,15 +392,6 @@
 		human_pragency_end(carrier)
 
 /datum/component/pregnancy/proc/human_pragency_start(mob/living/carbon/human/gregnant)
-	/*
-	if(pregnancy_inflation)
-		//give them a king ass ripper belly initially
-		var/obj/item/organ/genital/belly/belly = gregnant.getorganslot(ORGAN_SLOT_BELLY)
-		if(!belly)
-			belly = gregnant.give_genital(/obj/item/organ/genital/belly)
-		if(added_size > 0)
-			belly.modify_size(added_size)
-	*/
 	if(pregnancy_breast_growth)
 		var/obj/item/organ/genital/breasts/boob = gregnant.getorganslot(ORGAN_SLOT_BREASTS)
 		if(!boob)
@@ -460,12 +399,6 @@
 	return TRUE
 
 /datum/component/pregnancy/proc/human_pragency_end(mob/living/carbon/human/gregnant)
-	/*
-	//get rid of king ass ripper belly
-	var/obj/item/organ/genital/belly/belly = gregnant.getorganslot(ORGAN_SLOT_BELLY)
-	if(pregnancy_inflation)
-		belly?.modify_size(-added_size)
-	*/
 	SEND_SIGNAL(gregnant, COMSIG_CLEAR_MOOD_EVENT, "pregnancy")
 
 /datum/component/pregnancy/proc/fetus_mortus()
