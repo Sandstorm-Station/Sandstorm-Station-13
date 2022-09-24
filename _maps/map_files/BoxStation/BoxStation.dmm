@@ -44879,7 +44879,9 @@
 /turf/open/floor/plasteel,
 /area/commons/fitness)
 "dwc" = (
-/obj/machinery/atmospherics/pipe/manifold/scrubbers/hidden,
+/obj/machinery/atmospherics/pipe/manifold/scrubbers/hidden{
+	dir = 1
+	},
 /turf/closed/wall,
 /area/service/bar)
 "dwU" = (
@@ -59024,6 +59026,14 @@
 	},
 /turf/open/floor/plasteel,
 /area/hallway/primary/central)
+"qEy" = (
+/obj/effect/spawner/structure/window/reinforced,
+/obj/machinery/door/poddoor/shutters/preopen{
+	id = "botanyshuttersprivacy";
+	name = "botany shutters"
+	},
+/turf/open/floor/plating,
+/area/service/kitchen)
 "qEB" = (
 /obj/machinery/hydroponics/soil{
 	pixel_y = 8
@@ -63100,14 +63110,6 @@
 	},
 /turf/open/floor/plasteel/dark,
 /area/security/office)
-"ujf" = (
-/obj/effect/spawner/structure/window/reinforced,
-/obj/machinery/door/poddoor/shutters/preopen{
-	id = "botanyshuttersprivacy";
-	name = "botany shutters"
-	},
-/turf/open/floor/plating,
-/area/service/kitchen)
 "ujh" = (
 /obj/machinery/atmospherics/pipe/simple/supply/hidden,
 /obj/structure/cable{
@@ -106860,7 +106862,7 @@ ecS
 gGz
 hiP
 hYI
-ujf
+qEy
 wfP
 nCF
 xTR
