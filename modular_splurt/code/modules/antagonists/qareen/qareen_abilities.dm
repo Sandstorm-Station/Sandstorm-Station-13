@@ -48,7 +48,6 @@
 					to_chat(src, "<span class='revennotice'>[target.p_their(TRUE)] [G.name] are brimming with [main_fluid].</span>")
 					if (fluid_ammount > 5)
 						fluid_ammount = 5 // For balancing reasons
-				to_chat(src, "<span class='revennotice'>[fluid_source.targetVol] or [fluid_ammount] or [fluid_source.reactedVol] or [fluid_source.maximum_volume].</span>")
 				if (target in drained_mobs || !target.ckey)
 					essence_drained += fluid_ammount
 				else if (!target.IsSleeping())
