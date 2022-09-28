@@ -42,9 +42,9 @@
 			if(prob(5))
 				affected_mob.emote("blush")
 		if(3)
-			if(!bliss)
+			if(!bliss_stage_1)
 				SEND_SIGNAL(affected_mob, COMSIG_ADD_MOOD_EVENT, "qar_bliss", /datum/mood_event/qareen_bliss)
-				bliss = TRUE
+				bliss_stage_1 = TRUE
 			SEND_SIGNAL(affected_mob, COMSIG_MODIFY_SANITY, 0.12, SANITY_CRAZY)
 			if(prob(5))
 				affected_mob.emote(pick("blush","drool"))
