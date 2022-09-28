@@ -69,4 +69,4 @@
 		if(rope.rope_state == ROPE_STATE_DECIDING_OBJECT)
 			rope.set_roped_master(user)
 			rope.process_object(src, user)
-	..()
+	. = ..()
