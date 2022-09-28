@@ -12,7 +12,7 @@
 
 	var/mob/living/living = user
 	var/obj/item/clothing/under/worn_uniform = w_uniform
-	if((user != src) && !(living.mobility_flags & MOBILITY_STAND) && (mobility_flags & MOBILITY_STAND) && (src.loc == living.loc) && (istype(worn_uniform)) && worn_uniform.is_skirt)
+	if((user != src) && !(living.mobility_flags & MOBILITY_STAND) && (mobility_flags & MOBILITY_STAND) && (src.loc == living.loc) && (istype(worn_uniform))) //SPLURT edit
 		var/string = "Peeking under [src]'s [w_uniform], you can see "
 		var/obj/item/clothing/underwear/worn_underwear = src.w_underwear
 		if(worn_underwear)
