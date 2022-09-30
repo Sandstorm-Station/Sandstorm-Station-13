@@ -91,6 +91,12 @@
 	color_src = MATRIXED
 	matrixed_sections = MATRIX_RED_BLUE
 
+/datum/sprite_accessory/deco_wings/angelmoth
+	name = "Angel Moth"
+	icon_state = "angelmoth"
+	icon = 'modular_splurt/icons/mob/wings.dmi'
+	upgrade_to = SPECIES_WINGS_MOTH
+
 //insect wings
 /datum/sprite_accessory/insect_wings/beetle
 	name = "Beetle (Hyper)"
@@ -131,12 +137,6 @@
 	upgrade_to = SPECIES_WINGS_MOTH
 
 /datum/sprite_accessory/insect_wings/angelmoth
-	name = "Angel Moth"
-	icon_state = "angelmoth"
-	icon = 'modular_splurt/icons/mob/wings.dmi'
-	upgrade_to = SPECIES_WINGS_MOTH
-
-/datum/sprite_accessory/deco_wings/angelmoth
 	name = "Angel Moth"
 	icon_state = "angelmoth"
 	icon = 'modular_splurt/icons/mob/wings.dmi'
