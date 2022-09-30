@@ -18075,8 +18075,8 @@
 /turf/open/floor/plasteel,
 /area/commons/dorms)
 "glJ" = (
-/obj/machinery/vending/coffee,
 /obj/effect/turf_decal/tile/neutral,
+/obj/machinery/vending/barkbox,
 /turf/open/floor/plasteel,
 /area/commons/dorms)
 "glW" = (
@@ -45134,6 +45134,7 @@
 	dir = 8;
 	pixel_y = -6
 	},
+/obj/item/stock_parts/cell/high,
 /turf/open/floor/plasteel/showroomfloor,
 /area/security/brig)
 "pJo" = (
