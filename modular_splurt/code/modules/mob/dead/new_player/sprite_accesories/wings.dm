@@ -88,6 +88,8 @@
 	name = "Seal"
 	icon_state = "seal"
 	icon = 'modular_splurt/icons/mob/wings.dmi'
+	color_src = MATRIXED
+	matrixed_sections = MATRIX_RED_BLUE
 
 //insect wings
 /datum/sprite_accessory/insect_wings/beetle
