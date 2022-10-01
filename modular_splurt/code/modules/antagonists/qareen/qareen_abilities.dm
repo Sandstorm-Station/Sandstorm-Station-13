@@ -37,7 +37,7 @@
 		for(var/obj/item/organ/genital/G in target.internal_organs)
 			if(!(G.genital_flags & GENITAL_FUID_PRODUCTION))
 				continue
-			var/datum/reagents/fluid_source = G.climaxable(target)
+			// var/datum/reagents/fluid_source = G.climaxable(target)
 			if(do_after(src, rand(10, 20), 0, target)) //did they get deleted in that second?
 				// var/main_fluid = lowertext(fluid_source.get_master_reagent_name())  // doesn't work no more (should delete probably)
 				var/main_fluid = G.get_fluid_name()
