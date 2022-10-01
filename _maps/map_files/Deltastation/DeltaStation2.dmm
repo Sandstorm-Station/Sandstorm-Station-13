@@ -116379,14 +116379,14 @@
 	dir = 4
 	},
 /obj/effect/turf_decal/tile/neutral,
-/obj/structure/cable/white{
-	icon_state = "4-8"
-	},
 /obj/machinery/power/apc{
 	areastring = "/area/commons/locker";
 	dir = 4;
 	name = "Lockerroom APC";
 	pixel_x = 24
+	},
+/obj/structure/cable/white{
+	icon_state = "0-8"
 	},
 /turf/open/floor/plasteel,
 /area/commons/locker)
@@ -120318,6 +120318,7 @@
 	desc = "A thin layer of dust coating the floor.";
 	name = "dust"
 	},
+/obj/item/organ/alien/hivenode,
 /turf/open/floor/wood,
 /area/commons/dorms)
 "vdS" = (
