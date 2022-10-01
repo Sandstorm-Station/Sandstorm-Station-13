@@ -213,7 +213,7 @@
 	var/list/extra_titles = list(
 		"Physician",
 		"Medical Intern",
-		"Medical Resident,"
+		"Medical Resident",
 		"Medtech"
 	)
 	LAZYADD(alt_titles, extra_titles)
