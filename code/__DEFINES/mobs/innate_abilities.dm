@@ -14,7 +14,7 @@
 /// limb regrowth
 #define INNATE_ABILITY_LIMB_REGROWTH "limb_regrowth"
 
-#define INNATE_ABILITY_VBITE "vbite"
+#define INNATE_ABILITY_VBITE "vbite"//splurt change
 
 /// ability properties
 // customization/body change

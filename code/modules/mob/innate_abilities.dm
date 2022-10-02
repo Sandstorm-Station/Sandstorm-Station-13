@@ -19,7 +19,7 @@ GLOBAL_LIST_INIT(innate_ability_typepaths, all_innate_ability_typepaths())
 		INNATE_ABILITY_HUMANOID_CUSTOMIZATION = /datum/action/innate/ability/humanoid_customization,
 		INNATE_ABILITY_SLIME_BLOBFORM = /datum/action/innate/ability/slime_blobform,
 		INNATE_ABILITY_LIMB_REGROWTH = /datum/action/innate/ability/limb_regrowth,
-		INNATE_ABILITY_VBITE = /datum/action/vbite
+		INNATE_ABILITY_VBITE = /datum/action/vbite //splurt change
 	)
 
 /**

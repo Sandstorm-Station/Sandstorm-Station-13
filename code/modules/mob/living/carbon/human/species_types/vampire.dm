@@ -73,7 +73,7 @@
 	color = "#1C1C1C"
 	var/drain_cooldown = 0
 
-#define VAMP_DRAIN_AMOUNT 50
+//had to remove macro
 
 /datum/action/item_action/organ_action/vampire
 	name = "Drain Victim"

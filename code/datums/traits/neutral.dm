@@ -119,6 +119,8 @@
 
 /datum/quirk/libido/remove()
 	var/mob/living/carbon/human/H = quirk_holder
+	if(!H)
+		return
 	H.arousal_rate = initial(H.arousal_rate)
 
 /datum/quirk/alcohol_intolerance
@@ -187,7 +189,7 @@
 	medical_record_text = "Patient should not come into contact with sodium."
 	mob_trait = TRAIT_SALT_SENSITIVE
 
-/datum/quirk/vampire
+/datum/quirk/vampire//splurt change start
 	name = "Bloodsucker Fledgeling"
 	desc = "you need blood for nutriment, you have fangs to aid with this, the church does not harm you"
 	value = 3
@@ -263,7 +265,7 @@
 			if(!victim.blood_volume)
 				to_chat(H, "<span class='warning'>You finish off [victim]'s blood supply!</span>")
 
-/datum/action/vbite/New(Target)//defines the button
+/datum/action/vbite/New(Target)//defines the button (I think)
 	link_to(Target)
 	button = new
 	button.linked_action = src
@@ -271,5 +273,5 @@
 	button.actiontooltipstyle = buttontooltipstyle
 	if(desc)
 		button.desc = desc
-
+//splurt change end
 //put next quirk action here
