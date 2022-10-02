@@ -223,13 +223,14 @@
 /// quirk actions ///
 
 //vampire bite
+
+#define BLOOD_DRAIN_NUM 50
+
 /datum/action/vbite
 	name = "Bite Victim"
 	button_icon_state = "power_feed"
 	icon_icon = 'icons/mob/actions/bloodsucker.dmi'
 	desc = "bite the person you are grabbing with your fangs"
-
-#define VAMP_DRAIN_AMOUNT 50
 
 /datum/action/vbite/Trigger()
 	. = ..()
@@ -255,7 +256,7 @@
 			if(!do_after(H, 30, target = victim))
 				return
 			var/blood_volume_difference = BLOOD_VOLUME_MAXIMUM - H.blood_volume //How much capacity we have left to absorb blood
-			var/drained_blood = min(victim.blood_volume, VAMP_DRAIN_AMOUNT, blood_volume_difference)
+			var/drained_blood = min(victim.blood_volume, BLOOD_DRAIN_NUM, blood_volume_difference)
 			H.reagents.add_reagent(/datum/reagent/blood/, drained_blood)
 			to_chat(victim, "<span class='danger'>[H] is draining your blood!</span>")
 			H.visible_message("<span class='danger'>[H] Bites down on [victim]'s neck!</span>")
