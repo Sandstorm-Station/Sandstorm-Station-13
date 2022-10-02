@@ -186,3 +186,90 @@
 	value = 0
 	medical_record_text = "Patient should not come into contact with sodium."
 	mob_trait = TRAIT_SALT_SENSITIVE
+
+/datum/quirk/vampire
+	name = "Bloodsucker Fledgeling"
+	desc = "you need blood for nutriment, you have fangs to aid with this, the church does not harm you"
+	value = 3
+	medical_record_text = "this person was partially infected by a bloodsucker"
+	mob_trait = BLOODFLEDGE
+	gain_text = "<span class='notice'>You feel an otherworldly thirst.</span>"
+	lose_text = "<span class='notice'>you feel an otherworldy burden remove itself</span>"
+	processing_quirk = TRUE
+
+/datum/quirk/vampire/on_spawn()
+	. = ..()
+	var/mob/living/carbon/human/H = quirk_holder
+	var/mob/living/carbon/C = quirk_holder
+	ADD_TRAIT(H,TRAIT_NO_PROCESS_FOOD,SPECIES_TRAIT)
+	ADD_TRAIT(H,TRAIT_COLDBLOODED,SPECIES_TRAIT)
+	ADD_TRAIT(H,TRAIT_NOBREATH,SPECIES_TRAIT)
+	ADD_TRAIT(H,TRAIT_NOTHIRST,SPECIES_TRAIT)
+	if(!C.dna.skin_tone_override)
+		H.skin_tone = "albino"
+	H.grant_ability_from_source(list(INNATE_ABILITY_VBITE),ABILITY_SOURCE_SPECIES)//gives the ability, check innate_abilities for defining new abilities
+
+/datum/quirk/vampire/on_process()
+	. = ..()
+	var/mob/living/carbon/C = quirk_holder
+	var/area/A = get_area(C)
+	if(istype(A, /area/service/chapel) && C.mind?.assigned_role != "Chaplain")
+		to_chat(C, "<span class='danger'>You don't belong here!</span>")
+		C.adjustFireLoss(5)
+		C.adjust_fire_stacks(6)
+
+/// quirk actions ///
+
+//vampire bite
+/datum/action/vbite
+	name = "Bite Victim"
+	button_icon_state = "power_feed"
+	icon_icon = 'icons/mob/actions/bloodsucker.dmi'
+	desc = "bite the person you are grabbing with your fangs"
+
+#define VAMP_DRAIN_AMOUNT 50
+
+/datum/action/vbite/Trigger()
+	. = ..()
+	var/drain_cooldown = 0
+	if(iscarbon(owner))
+		var/mob/living/carbon/H = owner
+		if(H.nutrition >= 800)
+			to_chat(H, "<span class='notice'>You are too full to drain any more.</span>")
+			return
+		if(drain_cooldown >= world.time)
+			to_chat(H, "<span class='notice'>You just drained blood, wait a few seconds.</span>")
+			return
+		if(H.pulling && iscarbon(H.pulling))
+			var/mob/living/carbon/victim = H.pulling
+			drain_cooldown = world.time + 40
+			if(victim.anti_magic_check(FALSE, TRUE, FALSE, 0))
+				to_chat(victim, "<span class='warning'>[H] tries to bite you, but stops before touching you!</span>")
+				to_chat(H, "<span class='warning'>[victim] is blessed! You stop just in time to avoid catching fire.</span>")
+				return
+			//Here we check now for both the garlic cloves on the neck and for blood in the victims bloodstream.
+			if(!blood_sucking_checks(victim, TRUE, TRUE))
+				return
+			if(!do_after(H, 30, target = victim))
+				return
+			var/blood_volume_difference = BLOOD_VOLUME_MAXIMUM - H.blood_volume //How much capacity we have left to absorb blood
+			var/drained_blood = min(victim.blood_volume, VAMP_DRAIN_AMOUNT, blood_volume_difference)
+			H.reagents.add_reagent(/datum/reagent/blood/, drained_blood)
+			to_chat(victim, "<span class='danger'>[H] is draining your blood!</span>")
+			H.visible_message("<span class='danger'>[H] Bites down on [victim]'s neck!</span>")
+			to_chat(H, "<span class='notice'>You drain some blood!</span>")
+			playsound(H, 'sound/items/drink.ogg', 30, 1, -2)
+			victim.blood_volume = clamp(victim.blood_volume - drained_blood, 0, BLOOD_VOLUME_MAXIMUM)
+			if(!victim.blood_volume)
+				to_chat(H, "<span class='warning'>You finish off [victim]'s blood supply!</span>")
+
+/datum/action/vbite/New(Target)//defines the button
+	link_to(Target)
+	button = new
+	button.linked_action = src
+	button.name = name
+	button.actiontooltipstyle = buttontooltipstyle
+	if(desc)
+		button.desc = desc
+
+//put next quirk action here
