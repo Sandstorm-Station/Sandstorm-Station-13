@@ -10,7 +10,7 @@
 	var/arousal_verb = "You feel aroused"
 	var/unarousal_verb = "You no longer feel aroused"
 	var/fluid_transfer_factor = 0 //How much would a partner get in them if they climax using this?
-	var/size = 2 //can vary between num or text, just used in icon_state strings
+	var/size = 2
 	var/datum/reagent/fluid_id = null
 	var/fluid_max_volume = 50
 	var/fluid_efficiency = 1
@@ -35,6 +35,9 @@
 
 /obj/item/organ/genital/on_life()
 	return
+
+/obj/item/organ/genital/proc/size_to_state()
+	return size
 
 /obj/item/organ/genital/proc/set_aroused_state(new_state,cause = "manual toggle")
 	if(!(genital_flags & GENITAL_CAN_AROUSE))
@@ -323,7 +326,7 @@
 
 			var/obj/item/organ/genital/G = A
 			var/datum/sprite_accessory/S
-			var/size = G.size
+			var/size = G.size_to_state()
 			switch(G.type)
 				if(/obj/item/organ/genital/penis)
 					S = GLOB.cock_shapes_list[G.shape]

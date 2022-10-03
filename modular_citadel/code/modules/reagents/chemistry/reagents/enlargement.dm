@@ -68,8 +68,7 @@
 			B.color = "#[M.dna.features["breasts_color"]]"
 		else
 			B.color = SKINTONE2HEX(H.skin_tone)
-		B.size = "flat"
-		B.cached_size = 0
+		B.size = 0
 		B.prev_size = 0
 		to_chat(H, "<span class='warning'>Your chest feels warm, tingling with newfound sensitivity.</b></span>")
 		H.reagents.remove_reagent(type, 5)
@@ -148,9 +147,9 @@
 	var/optimal_size = B.breast_values[M.dna.features["breasts_size"]]
 	if(!optimal_size)//Fast fix for those who don't want it.
 		B.modify_size(-0.1)
-	else if(B.cached_size > optimal_size)
+	else if(B.size > optimal_size)
 		B.modify_size(-0.05, optimal_size)
-	else if(B.cached_size < optimal_size)
+	else if(B.size < optimal_size)
 		B.modify_size(0.05, 0, optimal_size)
 	return ..()
 
@@ -238,7 +237,7 @@
 
 	if(B)
 		B.modify_size(-0.05)
-	if(V && (!B || B.cached_size <= 0))
+	if(V && (!B || B.size <= 0))
 		qdel(V)
 	if(W && (!B || B.size <= 0))
 		qdel(W)
