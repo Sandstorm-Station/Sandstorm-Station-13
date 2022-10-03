@@ -566,7 +566,7 @@
 	playsound(user, 'modular_splurt/sound/voice/spoonful.ogg', 50, 1, -1)
 
 /datum/emote/living/ohhmygod
-	key = "omg"
+	key = "mygod"
 	key_third_person = "omgs"
 	message = "invokes the presence of Jesus Christ."
 	emote_type = EMOTE_AUDIBLE
