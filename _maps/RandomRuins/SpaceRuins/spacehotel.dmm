@@ -5070,19 +5070,26 @@
 /obj/item/toy/poolnoodle/blue,
 /turf/open/floor/plasteel/dark,
 /area/ruin/space/has_grav/hotel/pool)
-"GG" = (
-/obj/machinery/light{
-	dir = 4
-	},
-/obj/machinery/pool/controller,
-/turf/open/floor/plasteel,
-/area/ruin/space/has_grav/hotel/pool)
 "JS" = (
 /obj/structure/pool/ladder{
 	dir = 2;
 	pixel_y = 24
 	},
 /turf/open/pool,
+/area/ruin/space/has_grav/hotel/pool)
+"MU" = (
+/obj/effect/turf_decal/tile/neutral{
+	dir = 1
+	},
+/obj/effect/turf_decal/tile/neutral,
+/obj/effect/turf_decal/tile/neutral{
+	dir = 4
+	},
+/obj/effect/turf_decal/tile/neutral{
+	dir = 8
+	},
+/obj/machinery/pool/controller,
+/turf/open/floor/plasteel/dark,
 /area/ruin/space/has_grav/hotel/pool)
 "Nm" = (
 /obj/item/toy/poolnoodle/red,
@@ -7481,7 +7488,7 @@ jt
 jR
 jR
 kE
-kD
+MU
 li
 lj
 lj
@@ -8601,7 +8608,7 @@ jt
 jR
 jR
 jR
-GG
+kU
 ll
 lt
 ll

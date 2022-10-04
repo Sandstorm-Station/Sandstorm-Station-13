@@ -17,13 +17,13 @@
 
 /datum/interaction/lewd/earfuck/display_interaction(mob/living/user, mob/living/partner)
 	var/message
-
 	var/u_His = user.p_their()
+	var/genital_name = user.get_penetrating_genital_name()
 
 	if(user.is_fucking(partner, CUM_TARGET_EARS))
 		message = "[pick(
 			"pounds into \the <b>[partner]</b>'s [partner.has_ears() ? "ear":"earsocker"].",
-			"shoves [u_His] dick deep into \the <b>[partner]</b>'s skull",
+			"shoves [u_His] [genital_name] deep into \the <b>[partner]</b>'s skull",
 			"thrusts in and out of \the <b>[partner]</b>'s [partner.has_ears() ? "ear":"eyesocket"].",
 			"goes balls deep into \the <b>[partner]</b>'s cranium over and over again.")]"
 		var/client/cli = partner.client
@@ -36,11 +36,12 @@
 					C.adjustOrganLoss(ORGAN_SLOT_EARS, rand(3,7))
 					C.adjustOrganLoss(ORGAN_SLOT_BRAIN, rand(3,7))
 	else
-		message = "forcefully slides [u_His] cock inside \the <b>[partner]</b>'s [partner.has_ears() ? "ear":"earsocket"]."
+		message = "forcefully slides [u_His] [genital_name] inside \the <b>[partner]</b>'s [partner.has_ears() ? "ear":"earsocket"]."
 		user.set_is_fucking(partner, CUM_TARGET_EARS, user.getorganslot(ORGAN_SLOT_PENIS))
 
 	playlewdinteractionsound(get_turf(user), pick('modular_sand/sound/interactions/champ1.ogg',
 												'modular_sand/sound/interactions/champ2.ogg'), 50, 1, -1)
 	user.visible_message(message = "<span class='lewd'><b>\The [user]</b> [message]</span>", ignored_mobs = user.get_unconsenting(TRUE))
-	user.handle_post_sex(NORMAL_LUST, CUM_TARGET_EARS, partner)
+	if(user.can_penetrating_genital_cum())
+		user.handle_post_sex(NORMAL_LUST, CUM_TARGET_EARS, partner)
 	partner.handle_post_sex(LOW_LUST, null, user)

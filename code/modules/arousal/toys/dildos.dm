@@ -22,18 +22,7 @@
 
 /obj/item/dildo/update_appearance()
 	icon_state = "[dildo_type]_[dildo_shape]_[dildo_size]"
-	var/sizeword = ""
-	switch(dildo_size)
-		if(1)
-			sizeword = "small "
-		if(3)
-			sizeword = "big "
-		if(4)
-			sizeword = "huge "
-		if(5)
-			sizeword = "gigantic "
-
-	name = "[sizeword][dildo_shape] [can_customize ? "custom " : ""][dildo_type]"
+	name = "[GLOB.dildo_size_names[dildo_size]] [dildo_shape][can_customize ? " custom" : ""] [dildo_type]"
 
 /obj/item/dildo/AltClick(mob/living/user)
 	. = ..()

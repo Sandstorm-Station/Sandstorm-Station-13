@@ -260,11 +260,6 @@ Difficulty: Insanely Hard
 	qdel(src)
 
 /mob/living/simple_animal/hostile/megafauna/king/phase2/OnDeath()
-	for(var/mob/L in rangers)
-		rangers -= L
-		if(!L || !L.client)
-			continue
-		L.stop_sound_channel(CHANNEL_BOSSMUSIC)
 	if(phase3)
 		visible_message("<span class='cult'>\The [src] shrieks as the seal on his power breaks and he starts to break apart!</span>")
 		new /obj/structure/ladder/unbreakable/goat(loc)
@@ -274,14 +269,6 @@ Difficulty: Insanely Hard
 /mob/living/simple_animal/hostile/megafauna/king/death()
 	..()
 	OnDeath()
-
-/mob/living/simple_animal/hostile/megafauna/king/phase2/Destroy()
-	for(var/mob/L in rangers)
-		rangers -= L
-		if(!L || !L.client)
-			continue
-		L.stop_sound_channel(CHANNEL_BOSSMUSIC)
-	. = ..()
 
 /mob/living/simple_animal/hostile/megafauna/king/AttackingTarget()
 	. = ..()

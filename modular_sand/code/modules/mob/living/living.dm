@@ -1,4 +1,5 @@
 /mob/living
+	var/lastclienttime = 0
 	var/size_multiplier = RESIZE_NORMAL
 
 /// Returns false on failure

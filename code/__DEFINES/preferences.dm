@@ -16,9 +16,10 @@
 #define DISABLE_ARRIVALRATTLE	(1<<13)
 #define COMBOHUD_LIGHTING		(1<<14)
 #define SOUND_BARK				(1<<15)
-#define VERB_CONSENT			(1<<16) // Sandstorm - ERP Mechanic Addition
-#define LEWD_VERB_SOUNDS		(1<<17) // Sandstorm - ERP Mechanic Addition
-#define TG_PLAYER_PANEL			(1<<18) // SPLURT - Opt for the old splashscreen player panel
+#define NO_ANTAG				(1<<16)
+#define VERB_CONSENT			(1<<17) // Sandstorm - ERP Mechanic Addition
+#define LEWD_VERB_SOUNDS		(1<<18) // Sandstorm - ERP Mechanic Addition
+#define TG_PLAYER_PANEL			(1<<19) // SPLURT - Opt for the old splashscreen player panel
 
 #define DEADMIN_ALWAYS				(1<<0)
 #define DEADMIN_ANTAGONIST			(1<<1)

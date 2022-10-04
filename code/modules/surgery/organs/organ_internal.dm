@@ -62,6 +62,7 @@
 	owner = M
 	M.internal_organs |= src
 	M.internal_organs_slot[slot] = src
+	SEND_SIGNAL(src, COMSIG_ORGAN_INSERTED)//SPLURT EDIT ADD - gregnancy
 	moveToNullspace()
 	for(var/X in actions)
 		var/datum/action/A = X
@@ -82,6 +83,7 @@
 			var/datum/action/A = X
 			A.Remove(owner)
 		. = owner //for possible subtypes specific post-removal code.
+	SEND_SIGNAL(src, COMSIG_ORGAN_REMOVED)//SPLURT EDIT ADD - gregnancy
 	owner = null
 	START_PROCESSING(SSobj, src)
 

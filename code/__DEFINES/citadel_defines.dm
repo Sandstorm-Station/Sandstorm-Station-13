@@ -31,6 +31,7 @@
 #define GENITAL_CAN_TAUR		(1<<11)
 #define CAN_CUM_INTO 			(1<<12) //Sandstorm change
 #define HAS_EQUIPMENT			(1<<13) //nother sandstorm change
+#define GENITAL_CAN_STUFF       (1<<14) //Splurt edit, used for pregnancy
 
 
 #define DEF_VAGINA_SHAPE	"Human"

@@ -5,7 +5,7 @@
 //	You do not need to raise this if you are adding new values that have sane defaults.
 //	Only raise this value when changing the meaning/format/name/layout of an existing value
 //	where you would want the updater procs below to run
-#define SAVEFILE_VERSION_MAX	55
+#define SAVEFILE_VERSION_MAX	56
 
 /*
 SAVEFILE UPDATING/VERSIONING - 'Simplified', or rather, more coder-friendly ~Carn
@@ -42,14 +42,20 @@ SAVEFILE UPDATING/VERSIONING - 'Simplified', or rather, more coder-friendly ~Car
 //if your savefile is 3 months out of date, then 'tough shit'.
 
 /datum/preferences/proc/update_preferences(current_version, savefile/S)
-	if(current_version < 55) //Bitflag toggles don't set their defaults when they're added, always defaulting to off instead.
-		toggles |= SOUND_BARK
-	if(current_version < 46)	//If you remove this, remove force_reset_keybindings() too.
-		force_reset_keybindings_direct(TRUE)
-		addtimer(CALLBACK(src, .proc/force_reset_keybindings), 30)	//No mob available when this is run, timer allows user choice.
 	if(current_version < 30)
 		outline_enabled = TRUE
 		outline_color = COLOR_THEME_MIDNIGHT
+	if(current_version < 46)	//If you remove this, remove force_reset_keybindings() too.
+		force_reset_keybindings_direct(TRUE)
+		addtimer(CALLBACK(src, .proc/force_reset_keybindings), 30)	//No mob available when this is run, timer allows user choice.
+	if(current_version < 55) //Bitflag toggles don't set their defaults when they're added, always defaulting to off instead.
+		toggles |= SOUND_BARK
+	if(current_version < 56)
+		if("NO_ANTAGS" in be_special)
+			toggles |= NO_ANTAG
+			be_special -= "NO_ANTAGS"
+		for(var/be_special_type in be_special)
+			be_special[be_special_type] = 1
 
 /datum/preferences/proc/update_character(current_version, savefile/S)
 	if(current_version < 19)
@@ -405,6 +411,9 @@ SAVEFILE UPDATING/VERSIONING - 'Simplified', or rather, more coder-friendly ~Car
 	S["see_chat_non_mob"] 	>> see_chat_non_mob
 	S["tgui_fancy"] >> tgui_fancy
 	S["tgui_lock"] >> tgui_lock
+	S["tgui_input_mode"]		>> tgui_input_mode
+	S["tgui_large_buttons"]		>> tgui_large_buttons
+	S["tgui_swapped_buttons"]	>> tgui_swapped_buttons
 	S["buttons_locked"] >> buttons_locked
 	S["windowflash"] >> windowflashing
 	S["be_special"] 		>> be_special
@@ -490,6 +499,9 @@ SAVEFILE UPDATING/VERSIONING - 'Simplified', or rather, more coder-friendly ~Car
 	see_chat_non_mob = sanitize_integer(see_chat_non_mob, 0, 1, initial(see_chat_non_mob))
 	tgui_fancy = sanitize_integer(tgui_fancy, 0, 1, initial(tgui_fancy))
 	tgui_lock = sanitize_integer(tgui_lock, 0, 1, initial(tgui_lock))
+	tgui_input_mode	= sanitize_integer(tgui_input_mode, 0, 1, initial(tgui_input_mode))
+	tgui_large_buttons	= sanitize_integer(tgui_large_buttons, 0, 1, initial(tgui_large_buttons))
+	tgui_swapped_buttons	= sanitize_integer(tgui_swapped_buttons, 0, 1, initial(tgui_swapped_buttons))
 	buttons_locked = sanitize_integer(buttons_locked, 0, 1, initial(buttons_locked))
 	windowflashing = sanitize_integer(windowflashing, 0, 1, initial(windowflashing))
 	default_slot = sanitize_integer(default_slot, 1, max_save_slots, initial(default_slot))
@@ -607,6 +619,9 @@ SAVEFILE UPDATING/VERSIONING - 'Simplified', or rather, more coder-friendly ~Car
 	WRITE_FILE(S["see_chat_non_mob"], see_chat_non_mob)
 	WRITE_FILE(S["tgui_fancy"], tgui_fancy)
 	WRITE_FILE(S["tgui_lock"], tgui_lock)
+	WRITE_FILE(S["tgui_input_mode"], tgui_input_mode)
+	WRITE_FILE(S["tgui_large_buttons"], tgui_large_buttons)
+	WRITE_FILE(S["tgui_swapped_buttons"], tgui_swapped_buttons)
 	WRITE_FILE(S["buttons_locked"], buttons_locked)
 	WRITE_FILE(S["windowflash"], windowflashing)
 	WRITE_FILE(S["be_special"], be_special)
@@ -753,6 +768,13 @@ SAVEFILE UPDATING/VERSIONING - 'Simplified', or rather, more coder-friendly ~Car
 "vag_visibility"   = GEN_VISIBLE_NO_UNDIES,
 "butt_visibility"  = GEN_VISIBLE_NO_UNDIES,
 "belly_visibility" = GEN_VISIBLE_NO_UNDIES,
+"cock_stuffing" = FALSE,
+"balls_stuffing" = FALSE,
+"vag_stuffing" = FALSE,
+"breasts_stuffing" = FALSE,
+"butt_stuffing" = FALSE,
+"belly_stuffing" = FALSE,
+"inert_eggs" = FALSE,
 "ipc_screen" = "Sunburst",
 "ipc_antenna" = "None",
 "flavor_text" = "",
@@ -984,6 +1006,15 @@ SAVEFILE UPDATING/VERSIONING - 'Simplified', or rather, more coder-friendly ~Car
 	S["vore_flags"] >> vore_flags
 	S["vore_taste"] >> vore_taste
 	S["vore_smell"] >> vore_smell
+
+	S["feature_breasts_stuffing"] >> features["breasts_stuffing"]
+	S["feature_cock_stuffing"] >> features["cock_stuffing"]
+	S["feature_balls_stuffing"] >> features["balls_stuffing"]
+	S["feature_vag_stuffing"] >> features["vag_stuffing"]
+	S["feature_butt_stuffing"] >> features["butt_stuffing"]
+	S["feature_belly_stuffing"] >> features["belly_stuffing"]
+	S["feature_inert_eggs"] >> features["inert_eggs"]
+
 	var/char_vr_path = "[vr_path]/character_[default_slot]_v2.json"
 	if(fexists(char_vr_path))
 		var/list/json_from_file = json_decode(file2text(char_vr_path))
@@ -1193,6 +1224,15 @@ SAVEFILE UPDATING/VERSIONING - 'Simplified', or rather, more coder-friendly ~Car
 	vore_smell = copytext(vore_smell, 1, MAX_TASTE_LEN)
 	belly_prefs = SANITIZE_LIST(belly_prefs)
 
+	//SPLURT EDIT BEGIN - gregnancy
+	S["virile"] >> virility
+	S["fertile"] >> fertility
+	if(S["egg_shell"])
+		S["egg_shell"] >> egg_shell
+	S["pregnancy_inflation"] >> pregnancy_inflation
+	S["pregnancy_breast_growth"] >> pregnancy_breast_growth
+	//SPLURT EDIT END
+
 	cit_character_pref_load(S)
 
 	return 1
@@ -1282,12 +1322,14 @@ SAVEFILE UPDATING/VERSIONING - 'Simplified', or rather, more coder-friendly ~Car
 	WRITE_FILE(S["feature_cock_diameter_ratio"], features["cock_diameter_ratio"])
 	WRITE_FILE(S["feature_cock_taur"], features["cock_taur"])
 	WRITE_FILE(S["feature_cock_visibility"], features["cock_visibility"])
+	WRITE_FILE(S["feature_cock_stuffing"], features["cock_stuffing"])
 
 	WRITE_FILE(S["feature_has_balls"], features["has_balls"])
 	WRITE_FILE(S["feature_balls_color"], features["balls_color"])
 	WRITE_FILE(S["feature_balls_shape"], features["balls_shape"])
 	WRITE_FILE(S["feature_balls_size"], features["balls_size"])
 	WRITE_FILE(S["feature_balls_visibility"], features["balls_visibility"])
+	WRITE_FILE(S["feature_balls_stuffing"], features["balls_stuffing"])
 	WRITE_FILE(S["feature_balls_shape"], features["balls_shape"])
 	WRITE_FILE(S["feature_balls_fluid"], features["balls_fluid"])
 
@@ -1298,11 +1340,13 @@ SAVEFILE UPDATING/VERSIONING - 'Simplified', or rather, more coder-friendly ~Car
 	WRITE_FILE(S["feature_breasts_fluid"], features["breasts_fluid"])
 	WRITE_FILE(S["feature_breasts_producing"], features["breasts_producing"])
 	WRITE_FILE(S["feature_breasts_visibility"], features["breasts_visibility"])
+	WRITE_FILE(S["feature_breasts_stuffing"], features["breasts_stuffing"])
 
 	WRITE_FILE(S["feature_has_vag"], features["has_vag"])
 	WRITE_FILE(S["feature_vag_shape"], features["vag_shape"])
 	WRITE_FILE(S["feature_vag_color"], features["vag_color"])
 	WRITE_FILE(S["feature_vag_visibility"], features["vag_visibility"])
+	WRITE_FILE(S["feature_vag_stuffing"], features["vag_stuffing"])
 
 	WRITE_FILE(S["feature_has_womb"], features["has_womb"])
 	WRITE_FILE(S["feature_womb_fluid"], features["womb_fluid"])
@@ -1311,11 +1355,15 @@ SAVEFILE UPDATING/VERSIONING - 'Simplified', or rather, more coder-friendly ~Car
 	WRITE_FILE(S["feature_butt_color"], features["butt_color"])
 	WRITE_FILE(S["feature_butt_size"], features["butt_size"])
 	WRITE_FILE(S["feature_butt_visibility"], features["butt_visibility"])
+	WRITE_FILE(S["feature_butt_stuffing"], features["butt_stuffing"])
 
 	WRITE_FILE(S["feature_has_belly"], features["has_belly"])
 	WRITE_FILE(S["feature_belly_color"], features["belly_color"])
 	WRITE_FILE(S["feature_belly_size"], features["belly_size"])
 	WRITE_FILE(S["feature_belly_visibility"], features["belly_visibility"])
+	WRITE_FILE(S["feature_belly_stuffing"], features["belly_stuffing"])
+
+	WRITE_FILE(S["feature_inert_eggs"], features["inert_eggs"])
 
 	WRITE_FILE(S["feature_neckfire"], features["neckfire"])
 	WRITE_FILE(S["feature_neckfire_color"], features["neckfire_color"])
@@ -1387,8 +1435,14 @@ SAVEFILE UPDATING/VERSIONING - 'Simplified', or rather, more coder-friendly ~Car
 	if(islist(modified_limbs))
 		WRITE_FILE(S["modified_limbs"]				, safe_json_encode(modified_limbs))
 	WRITE_FILE(S["chosen_limb_id"],   chosen_limb_id)
-	WRITE_FILE(S["headshot"], features["headshot_link"]) //SPLURT edit
-
+	//SPLURT EDIT BEGIN
+	WRITE_FILE(S["virile"], virility)
+	WRITE_FILE(S["fertile"], fertility)
+	WRITE_FILE(S["egg_shell"], egg_shell)
+	WRITE_FILE(S["pregnancy_inflation"], pregnancy_inflation)
+	WRITE_FILE(S["pregnancy_breast_growth"], pregnancy_breast_growth)
+	WRITE_FILE(S["headshot"], features["headshot_link"])
+	//SPLURT EDIT END
 
 	//gear loadout
 	if(length(loadout_data))

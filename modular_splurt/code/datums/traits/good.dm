@@ -36,7 +36,7 @@
 /datum/quirk/dominant_aura
 	name = "Dominant Aura"
 	desc = "Your personality is assertive enough to appear as powerful to other people, so much in fact that the weaker kind can't help but throw themselves at your feet on command."
-	value = 2
+	value = 1
 	gain_text = "<span class='notice'>You feel like making someone your pet</span>"
 	lose_text = "<span class='notice'>You feel less assertive than befpre</span>"
 

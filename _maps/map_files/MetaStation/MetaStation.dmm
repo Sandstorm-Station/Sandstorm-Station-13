@@ -1930,12 +1930,6 @@
 	},
 /turf/open/floor/plasteel/dark,
 /area/ai_monitored/security/armory)
-"afh" = (
-/obj/machinery/atmospherics/pipe/simple/scrubbers/hidden{
-	dir = 6
-	},
-/turf/open/floor/plasteel/dark,
-/area/ai_monitored/security/armory)
 "afp" = (
 /obj/machinery/light/small{
 	dir = 1
@@ -18197,13 +18191,6 @@
 /obj/effect/turf_decal/stripes/line{
 	dir = 5
 	},
-/turf/open/floor/plasteel,
-/area/hallway/secondary/entry)
-"btR" = (
-/obj/effect/turf_decal/stripes/line{
-	dir = 9
-	},
-/obj/machinery/vending/barkbox,
 /turf/open/floor/plasteel,
 /area/hallway/secondary/entry)
 "btS" = (
@@ -36848,18 +36835,6 @@
 /obj/effect/turf_decal/delivery,
 /turf/open/floor/plasteel,
 /area/science/robotics/lab)
-"cDf" = (
-/obj/machinery/mecha_part_fabricator,
-/obj/machinery/camera{
-	c_tag = "Robotics - Fore";
-	network = list("ss13","rd")
-	},
-/obj/effect/turf_decal/delivery,
-/obj/machinery/posialert{
-	pixel_y = 24
-	},
-/turf/open/floor/plasteel,
-/area/science/robotics/lab)
 "cDh" = (
 /obj/structure/cable/yellow{
 	icon_state = "1-2"
@@ -40413,21 +40388,6 @@
 /obj/effect/turf_decal/tile/neutral,
 /turf/open/floor/plasteel,
 /area/hallway/secondary/exit/departure_lounge)
-"cJH" = (
-/obj/structure/table,
-/obj/item/retractor,
-/obj/item/hemostat,
-/obj/item/radio/intercom{
-	name = "Station Intercom (General)";
-	pixel_x = -29
-	},
-/obj/item/cautery{
-	pixel_y = 15
-	},
-/turf/open/floor/plasteel/white/corner{
-	dir = 4
-	},
-/area/science/robotics/lab)
 "cJJ" = (
 /obj/machinery/computer/operating{
 	dir = 1;
@@ -69561,6 +69521,36 @@
 /obj/machinery/atmospherics/pipe/simple/supply/hidden,
 /turf/open/floor/plasteel,
 /area/commons/fitness/recreation)
+"plZ" = (
+/obj/machinery/atmospherics/pipe/simple/scrubbers/hidden{
+	dir = 6
+	},
+/obj{
+	name = "---Merge conflict marker---"
+	},
+/obj/structure/closet/secure_closet{
+	name = "contraband locker";
+	req_access_txt = "3"
+	},
+/obj/effect/spawner/lootdrop/maintenance{
+	lootcount = 3;
+	name = "3maintenance loot spawner"
+	},
+/obj/effect/spawner/lootdrop/armory_contraband{
+	loot = list(/obj/item/gun/ballistic/automatic/pistol=5,/obj/item/gun/ballistic/shotgun/automatic/combat=5,/obj/item/gun/ballistic/revolver/mateba,/obj/item/gun/ballistic/automatic/pistol/deagle,/obj/item/storage/box/syndie_kit/throwing_weapons=3)
+	},
+/obj/effect/turf_decal/tile/neutral{
+	dir = 1
+	},
+/obj/effect/turf_decal/tile/neutral,
+/obj/effect/turf_decal/tile/neutral{
+	dir = 4
+	},
+/obj/effect/turf_decal/tile/neutral{
+	dir = 8
+	},
+/turf/open/floor/plasteel/dark,
+/area/ai_monitored/security/armory)
 "pmb" = (
 /obj/structure/rack,
 /obj/effect/spawner/lootdrop/costume,
@@ -70005,6 +69995,15 @@
 	},
 /turf/open/floor/plasteel,
 /area/service/hydroponics)
+"pxd" = (
+/obj/machinery/mecha_part_fabricator,
+/obj/machinery/camera{
+	c_tag = "Robotics - Fore";
+	network = list("ss13","rd")
+	},
+/obj/effect/turf_decal/delivery,
+/turf/open/floor/plasteel,
+/area/science/robotics/lab)
 "pxg" = (
 /obj/effect/turf_decal/tile/brown{
 	dir = 1
@@ -74820,6 +74819,24 @@
 	},
 /turf/open/floor/plasteel,
 /area/commons/storage/primary)
+"rZW" = (
+/obj/structure/table,
+/obj/item/retractor,
+/obj/item/hemostat,
+/obj/item/radio/intercom{
+	name = "Station Intercom (General)";
+	pixel_x = -29
+	},
+/obj/item/cautery{
+	pixel_y = 15
+	},
+/obj/machinery/posialert{
+	pixel_y = -32
+	},
+/turf/open/floor/plasteel/white/corner{
+	dir = 4
+	},
+/area/science/robotics/lab)
 "saf" = (
 /obj/structure/table,
 /obj/item/paper_bin{
@@ -78216,6 +78233,13 @@
 /obj/machinery/atmospherics/components/unary/vent_pump/on,
 /turf/open/floor/wood,
 /area/service/bar)
+"tRV" = (
+/obj/effect/turf_decal/stripes/line{
+	dir = 9
+	},
+/obj/machinery/vending/barkbox,
+/turf/open/floor/plasteel,
+/area/hallway/secondary/entry)
 "tSa" = (
 /obj/machinery/atmospherics/pipe/simple/yellow/visible{
 	dir = 4
@@ -99397,7 +99421,7 @@ aaa
 aaa
 aaa
 aVs
-btR
+tRV
 bvI
 bxA
 bCN
@@ -113996,7 +114020,7 @@ aaa
 lMJ
 aeq
 tDY
-afh
+plZ
 mUO
 xzj
 ifR
@@ -114613,7 +114637,7 @@ cGa
 cGV
 cHP
 cII
-cJH
+rZW
 cCq
 cLw
 cPb
@@ -115891,7 +115915,7 @@ czl
 cAp
 cBj
 cCq
-cDf
+pxd
 lOi
 cFf
 cGd
