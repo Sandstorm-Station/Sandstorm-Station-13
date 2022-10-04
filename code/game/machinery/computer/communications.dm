@@ -351,6 +351,29 @@
 				log_game("[key_name(usr)] enabled emergency maintenance access.")
 				message_admins("[ADMIN_LOOKUPFLW(usr)] enabled emergency maintenance access.")
 				deadchat_broadcast(" enabled emergency maintenance access at [span_name("[get_area_name(usr, TRUE)]")].", usr, src.loc, message_type = DEADCHAT_ANNOUNCEMENT)
+		if("toggleBought")
+			var/boughtID = params["id"]
+
+			for(var/tracked_slave in GLOB.tracked_slaves)
+				var/obj/item/electropack/shockcollar/slave/C = tracked_slave
+				if (REF(C) == boughtID) // Get collar
+
+					var/datum/bank_account/bank = SSeconomy.get_dep_account(ACCOUNT_CAR)
+					if(bank)
+						if(C.bought)
+							bank.adjust_money(C.price)
+							C.setBought(FALSE)
+
+							for(var/obj/machinery/computer/slavery/tracked_slave_console in GLOB.tracked_slave_consoles)
+								tracked_slave_console.radioAnnounce("The station has recalled the ransom funds for [C.loc.name].")
+
+						else
+							bank.adjust_money(-C.price)
+							C.setBought(TRUE)
+
+							for(var/obj/machinery/computer/slavery/tracked_slave_console in GLOB.tracked_slave_consoles)
+								tracked_slave_console.radioAnnounce("The station has paid the ransom funds for [C.loc.name].")
+					break
 
 /obj/machinery/computer/communications/ui_data(mob/user)
 	var/list/data = list(
@@ -401,6 +424,42 @@
 				data["authorizeName"] = authorize_name
 				data["canLogOut"] = !issilicon(user)
 				data["shuttleCanEvacOrFailReason"] = SSshuttle.canEvac(user)
+
+				var/list/slaves = list()
+				data["slaves"] = list()
+				var/datum/bank_account/bank = SSeconomy.get_dep_account(ACCOUNT_CAR)
+				data["cargocredits"] = bank.account_balance
+
+				for(var/tracked_slave in GLOB.tracked_slaves)
+					var/obj/item/electropack/shockcollar/slave/C = tracked_slave
+					if (!C.price || !isliving(C.loc))
+						continue;
+
+					var/mob/living/L = C.loc
+					var/turf/pos = get_turf(L)
+					if(!pos || C != L.get_item_by_slot(ITEM_SLOT_NECK))
+						continue
+
+					var/list/slave = list()
+					slave["id"] = REF(C)
+					slave["name"] = L.real_name
+					slave["bought"] = C.bought
+					slave["price"] = C.price
+
+					var/canToggleRansom = FALSE
+					var/ransomFeedback = ""
+					var/ransomChangeCooldown = C.nextRansomChange - world.time
+
+					if(ransomChangeCooldown > 0) // On cooldown.
+						ransomFeedback += " (can undo in [round(ransomChangeCooldown / 10)])"
+					else if (C.bought || (bank && bank.account_balance >= C.price)) // Slave already bought
+						canToggleRansom = TRUE
+
+					slave["cantoggleransom"] = canToggleRansom
+					slave["toggleransomfeedback"] = ransomFeedback
+
+					slaves += list(slave) //Add this slave to the list of slaves
+				data["slaves"] = slaves
 
 				if (authenticated_as_non_silicon_captain(user))
 					data["canRequestNuke"] = TRUE

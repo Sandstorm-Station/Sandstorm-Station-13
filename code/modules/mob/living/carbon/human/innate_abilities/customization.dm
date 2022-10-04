@@ -22,7 +22,8 @@
 
 /datum/action/innate/ability/humanoid_customization/proc/change_form()
 	var/mob/living/carbon/human/H = owner
-	var/select_alteration = input(owner, "Select what part of your form to alter", "Form Alteration", "cancel") in list("Body Color", "Eye Color","Hair Style", "Genitals", "Tail", "Snout", "Wings", "Markings", "Ears", "Taur body", "Penis", "Vagina", "Penis Length", "Breast Size", "Breast Shape", "Butt Size", "Cancel")
+
+	var/select_alteration = input(owner, "Select what part of your form to alter", "Form Alteration", "cancel") in list("Body Color", "Eye Color","Hair Style", "Genitals", "Tail", "Snout", "Wings", "Markings", "Ears", "Taur body", "Penis", "Vagina", "Penis Length", "Breast Size", "Breast Shape", "Butt Size", "Belly Size", "Cancel")
 
 	if(select_alteration == "Body Color")
 		var/new_color = input(owner, "Choose your skin color:", "Race change","#"+H.dna.features["mcolor"]) as color|null
@@ -116,7 +117,7 @@
 		if(new_snout)
 			H.dna.features["mam_snouts"] = new_snout
 		H.update_body()
-		
+
 	else if (select_alteration == "Wings")
 		var/new_color = input(owner, "Choose your wing color:", "Race change","#"+H.dna.features["wings_color"]) as color|null
 		if(new_color)
@@ -257,6 +258,18 @@
 		H.update_genitals()
 		H.apply_overlay()
 		H.give_genital(/obj/item/organ/genital/butt)
+
+	else if (select_alteration == "Belly Size")
+		for(var/obj/item/organ/genital/belly/X in H.internal_organs)
+			qdel(X)
+		var/min_belly = CONFIG_GET(number/belly_min_size_prefs)
+		var/max_belly = CONFIG_GET(number/belly_max_size_prefs)
+		var/new_length = input(owner, "Belly size:\n([min_belly]-[max_belly])", "Genital Alteration") as num|null
+		if(new_length)
+			H.dna.features["belly_size"] = clamp(round(new_length), min_belly, max_belly)
+		H.update_genitals()
+		H.apply_overlay()
+		H.give_genital(/obj/item/organ/genital/belly)
 
 	else
 		return

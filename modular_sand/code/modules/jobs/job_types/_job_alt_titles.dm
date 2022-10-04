@@ -32,7 +32,7 @@
 	alt_titles = list("Barista")
 
 /datum/job/chaplain
-	alt_titles = list("Priest", "Cult Leader", "Pope", "Bichop")
+	alt_titles = list("Priest", "Cult Leader", "Pope", "Bishop")
 
 /datum/job/clown //The most useless role in the game, delet this
 	alt_titles = list("Entertainer")
@@ -83,7 +83,7 @@
 	alt_titles = list("Forensics Technician", "Private Investigator")
 
 /datum/job/officer
-	alt_titles = list("Security Cadet", "Security Guard", "Peacekeeper", "Enforcer")
+	alt_titles = list("Security Agent", "Security Guard", "Guardsman", "Enforcer", "Police Officer")
 
 /datum/job/warden
 	alt_titles = list("Brig Chief")

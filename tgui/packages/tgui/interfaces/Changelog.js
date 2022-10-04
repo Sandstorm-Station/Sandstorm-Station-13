@@ -91,7 +91,7 @@ export class Changelog extends Component {
           self.setData(yaml.load(result, { schema: yaml.CORE_SCHEMA }));
         }
       });
-  }
+  };
 
   componentDidMount() {
     const { data: { dates = [] } } = useBackend(this.context);
@@ -175,7 +175,7 @@ export class Changelog extends Component {
 
     const header = (
       <Section>
-        <h1>Sandstorm Station 13</h1>
+        <h1>S.P.L.U.R.T. Station 13</h1>
         <p>
           <b>Thanks to: </b>
           Citadel Station 13, /tg/station, Baystation 12, /vg/station,
@@ -186,17 +186,17 @@ export class Changelog extends Component {
         </p>
         <p>
           {'Current project maintainers can be found '}
-          <a href="https://github.com/orgs/Sandstorm-Station/people">
+          <a href="https://github.com/SPLURT-Station/S.P.L.U.R.T-Station-13/graphs/contributors">
             here
           </a>
           {', recent GitHub contributors can be found '}
-          <a href="https://github.com/Sandstorm-Station/Sandstorm-Station-13/pulse/monthly">
+          <a href="https://github.com/SPLURT-Station/S.P.L.U.R.T-Station-13/pulse/monthly">
             here
           </a>.
         </p>
         <p>
           {'You can also join our discord '}
-          <a href="https://discord.com/invite/quXTqa6cp9">
+          <a href="https://discord.com/invite/wynHVMzHzC">
             here
           </a>.
         </p>

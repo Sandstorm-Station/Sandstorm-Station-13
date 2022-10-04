@@ -1,4 +1,12 @@
 2022-02-01:
+  BongaTheProto:
+  - bugfix: Makes tails able to wag again
+  Crowbar764:
+  - rscadd: More buyable gear for slavers
+  - bugfix: Patches a few problems
+  - tweak: improves slaver hideout
+  - tweak: improves slaver shuttle
+2022-02-02:
   SandPoot:
   - bugfix: The Oilskin Duster is now visible.
   SpiWat:
@@ -13,6 +21,15 @@
       and has been relocated from D to w.
   - bugfix: The language Rachnidian's shortcut was getting in the way of the Ratvarian
       language, so it's been moved from r to c.
+  Crowbar764:
+  - rscadd: antag consent HUD added to admin HUD
+  - rscadd: new 'collection tool' to teleport crew to the slaver shuttle, removing
+      the need to drag them through space
+  - rscadd: supply shop changes
+  - tweak: other misc slaver changes
+  - rscadd: Another admin grief tool
+  Uso15:
+  - bugfix: Dullahans now talk through their Heads and _not_ their necks
 2022-02-04:
   CoreFlare:
   - rscadd: Humanity is... Ok. Blood is fuel. IPCs have wings.
@@ -57,13 +74,66 @@
       you get hydrated faster.
   - balance: Also for this reason the buffs to hydration have been reverted and tweaked.
   - bugfix: Drinks (/datum/reagent/consumable) now can actually make you hydrated!
+2022-02-06:
+  SandPoot:
+  - qol: Changing a reagent container's transfer amount will now give you feedback
+      in the form of text on the container itself.
+  Uso15:
+  - rscadd: Added 'Hypnotic Gaze' quirk to quirk list.
+  jbox144:
+  - rscadd: Added "bruh" emote. Does what it says on the tin.
+  - rscadd: Added "bruh moment" event. Admin only. Makes everyone say bruh after a
+      random delay - not at the same time.
+  - soundadd: bruh.ogg
+  personlized:
+  - rscdel: Removed weapon permits from loadouts
+2022-02-07:
+  Crowbar764:
+  - rscadd: Adds a game preference option to disable the special combat mode cursor.
 2022-02-08:
+  Crowbar764:
+  - rscadd: Fixes some runtimes
+  PurpleFenn:
+  - rscadd: Added Rapid Table Constructor
+  - admin: RTC is currently admin-spawn only
+  SandPoot:
+  - bugfix: Removes "Convert Lineendings" git action.
+  Uso15:
+  - rscadd: Added final preference check before Hypnotic Gaze triggers on the target.
+  - bugfix: Fixed Mesmetron not checking for Hypno preferences on use
   silicons:
   - refactor: clickcatchers, parallax
+2022-02-09:
+  BongaTheProto:
+  - rscadd: Added ambition objective system
+  - rscdel: Removed old objective generation
+  - tweak: tweaked the entire objective system
+  - refactor: refactored a bunch of shit to work with ambition
+  - config: added configs for ambition system
+  - admin: changes to antag panel for ambition system
+  Curiosity:
+  - balance: Reduced Mid-round antags that are commonly spawning
+  Daggertail:
+  - tweak: changed some map things on box
+2022-02-10:
+  Anonymous:
+  - rscadd: Added "blacksmith" as an alt title for Assistant.
+  - rscdel: Removes "mechanic" from Station Engineer alt titles.
+  - rscdel: Removes "entertainer" from Clown alt titles.
+  PurpleFenn:
+  - rscadd: Added copium gas and chem
+  - admin: New copium flood event to play with
 2022-02-12:
+  BongaTheProto:
+  - rscadd: Added wendigo, carrion and dancer mobs
+  - rscdel: Deleted walking mushrooms (they were being used to cause server crashes)
+  Crowbar764:
+  - rscadd: New trenchcoat variation for the Detective
   SandPoot:
   - tweak: A bunch of different sandstorm content has been modified to use balloon_alert().
   - bugfix: Turfs can have balloon alerts.
+  Uso15:
+  - imageadd: New icon for Hypnotic Gaze
 2022-02-14:
   keronshb:
   - rscadd: Adds the new MRP version of Families
@@ -86,11 +156,59 @@
   - refactor: Refactors give/take > offer/receive
   - config: Added Families to the dynamic config
   - admin: Adds admin tp Family stuff
+2022-02-16:
+  BongaTheProto:
+  - bugfix: Fixed the 3000000 runtimes in space.dm, hoprfully
+  - balance: Readded the function for breast and penis enlarger to cause forced feminization/masculinization.
+      Enable the Expansion toggles for growth only, forced options to go the full
+      course.
+  jbox144:
+  - rscadd: Added draculas coat, waiter's uniform and techpriest's robes to the loadout
+      menu.
+  radar651:
+  - rscadd: Aviator Glasses and HUD varaints, can be found in the load out or crafted
+  - rscadd: Custom lockers for the BS and Brig Doc
+  - rscadd: Missing mags to the research tree
+  - rscadd: clothing in prep for the Bridge Secretary
+  - rscadd: formal uniform, officer cap and flat cap to the Blueshield
+  - rscadd: helmet lights to the Blue helmet
+  - rscadd: Blueshield blue helmet and Blueshield standard helmet
+  - rscadd: melee beacon for the blueshield on spawn
+  - rscadd: CQC to the Blueshield when on the bridge or in the cap's office
+  - rscadd: Combat knife to Blueshield spawn
+  - rscdel: Egun from Blueshield load out
+  - rscdel: M1911 mags from Cargo purchase
+  - rscdel: M1911 from sec's beacon
+  - rscdel: M1911 mags from the .45 research tree
+  - tweak: The Enforcer handgun to act like the Det's revolver.
+  - tweak: Brig Timers can now be set for longer and the presets are now set to most
+      minimums of space law.
+  - tweak: All of the blueshield's armor is now not a mix of stats.
+  - tweak: Blueshield spawns with gripper gloves instead of black gloves
+  - balance: re balanced .45 caliber
+  - bugfix: The Brig Doc vest from not storing anything.
 2022-02-17:
   '[Timberpoes](https://github.com/Timberpoes)':
   - admin: Re-added the button to the player playtime panel that lets admins toggle
       a player's job playtime exemption status.
+2022-02-18:
+  BongaTheProto:
+  - rscadd: Added the RBMK, you can get a pack for it from cargo
+  - rscadd: Adds a RBMK reactor to the boxstation reactor rotation
+  - bugfix: Fixes a couple dogborg items
+  Crowbar764:
+  - bugfix: Lavaland syndie base no-gravity spot fixed
 2022-02-19:
+  BongaTheProto:
+  - rscadd: Now clowns will honk when they perform certain lewd interactions
+  - tweak: you now only need to wait 7 days instead of a month to play dogborg
+  Crowbar764:
+  - rscadd: Adds slaver borgs
+  - tweak: Makes slave prices automatically set in most cases
+  - rscadd: Unbought slaves can join the slaver team after 15 minutes.
+  - balance: Nerfs slaver teleport implant by requiring a 5 second channelling
+  PurpleFenn:
+  - tweak: Removed the ability to vote for the same map over and over. It's too OP.
   timothyteakettle:
   - rscadd: polychromic clown outfit and mask
 2022-02-20:
@@ -140,6 +258,18 @@
   - bugfix: '[Omega] Toxins Mix Chamber no longer starts bolted'
   - bugfix: '[Omega] Missing pipe above Security leading into Perma'
   - bugfix: '[Omega] Secure Tech Storage now properly has an area'
+  frontline03:
+  - rscadd: Added walls to the incin to prevent access
+  - rscdel: Removed airlock to incin
+2022-02-22:
+  BongaTheProto:
+  - rscadd: Adds boowomp emote
+  - rscadd: Adds a tgs command to check the time dilation (!tgs tidi)
+  radar651:
+  - rscadd: A note to the Captain's locker
+  - rscdel: Removed the Captain's enforcer from the Captain's locker
+  - tweak: Moved the Captain's enforcer to the Cargo ordering system like the Captain's
+      Pen. Can be bought for 6k.
 2022-02-23:
   SandPoot:
   - bugfix: You know the training targets? You can grab them again now with your own
@@ -168,14 +298,48 @@
   - rscadd: adds snake coiling
 2022-02-26:
   BongaTheProto:
+  - rscadd: New swaos emote
   - bugfix: Lewd verbs will actually count for the target's feet when needed
+  The-Sun-In-Splendour:
+  - tweak: the cyborg advanced plasma cutter is now under mining instead of "general"
+  - rscadd: 'Lean. Made of: salbutamol, Pwr Game and sugar !!! MORE THAN 50 UNITS
+      WILL PROBABLY KILL YOU !!!'
+  - spellcheck: Fixed a typo upon consuming panty dropper.
+  frontline03:
+  - bugfix: Pipes area fixed
+  radar651:
+  - rscadd: CBRN gear, which includes department and civi suits, boots, gloves, mask
+      and hoods
+  - rscadd: MOPP gear, which includes suits, boots, gloves, mask and hoods
+  - rscadd: Advance MOPP gear for Central and ERT use. This stuff is better than the
+      researchable ones.
+  - rscadd: Advance MOPP gear lockers that are locked with Centcom access, currently
+      only spawnable by searching mopp.
+  - rscadd: Double oxygen and Double plasmaman tanks
+  - rscadd: Research nods for CBRN and MOPP Gear
+  - spellcheck: Fixed some spelling mistakes with Blueshield equipment and the CMO
+      not being able to spawn with aviators due to a spelling mistake
+  - imageadd: A crap ton of icons for the CBRN and MOPP gear, including gloves, suits,
+      boots, mask and tanks.
+2022-02-27:
+  BongaTheProto:
+  - rscadd: Added new cuminflation mechanics
+  - rscadd: Added nipfuck and thighfuck verbs
+  - code_imp: Fixed a couple possible null runtimes and modularizes some stuff
+  - bugfix: Fixed the (horrible) belly inflation mechanics
+  - imageadd: added new crayon/spraycan drawings
+  - tweak: Now your roundstart genital size will affect how much fluids you produce
   Putnam3145:
   - balance: Now slightly easier to get 50,000 points with toxins (50,000 point baseline
       changed from 200 light range to 175)
+  frontline03:
+  - rscadd: Added power cables to Tcomms SMES
 2022-02-28:
   Arturlang:
   - rscadd: The limbgrower can make human chest parts that you can build onto into
       a person.
+  BongaTheProto:
+  - tweak: Now anthros and other races can audibly laugh
   Putnam3145:
   - rscadd: Configurable weekly high-chaos days
   SandPoot:
@@ -185,6 +349,26 @@
   bunny232:
   - rscadd: Cold weather gear can now provide insulation against temperatures of up
       to 57C (330K)
+  radar651:
+  - rscadd: Added several .22 caliber weapons, .22 Revolver, .22 Pistol and Varmint
+      Rifle
+  - rscadd: Added a unique 9mm pistol with a skin (MARIA)
+  - rscadd: Added a hunting rifle that uses 7.62 ammo and stripper clips. This can
+      be sawn off like the double barrel
+  - rscadd: a dedicated swan off shotgun
+  - rscadd: butterfly knife
+  - rscadd: switchblade to the goodies pack
+  - rscadd: M2A1 .50 Caliber Heavy Machine gun (ADMIN SPAWNABLE ONLY)
+  - rscadd: Civilian energy gun, which can be upgraded to shoot lethal with the right
+      parts
+  - rscadd: The double barrel shotgun to the goodies pack
+  - rscadd: M1911s to be ordered from cargo
+  - rscadd: Enforcer pistols to be ordered from cargo
+  - rscadd: a lot of weapon recipes as most guns bought through goodies have to be
+      assembled.
+  - bugfix: the improvised shotgun sprite disappearing
+  - imageadd: updated several old sprites including the brush gun and M1911 sprites
+      with the desert rose variant. The original sprites still exist just remain unused.
   timothyteakettle:
   - rscadd: adds a cartridge for the bartender's PDA that lets them search drink recipes
   - rscadd: updates chemist cartridge to be able to search all chemical recipes

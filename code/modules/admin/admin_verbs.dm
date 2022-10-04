@@ -45,7 +45,6 @@ GLOBAL_PROTECT(admin_verbs_admin)
 	/client/proc/getserverlogs,		/*for accessing server logs*/
 	/client/proc/getcurrentlogs,		/*for accessing server logs for the current round*/
 	/client/proc/cmd_admin_subtle_message,	/*send a message to somebody as a 'voice in their head'*/
-	/client/proc/cmd_admin_headset_message,	/*send a message to somebody through their headset as CentCom*/
 	/client/proc/cmd_admin_delete,		/*delete an instance/object/mob/etc*/
 	/client/proc/cmd_admin_check_contents,	/*displays the contents of an instance*/
 	/client/proc/centcom_podlauncher,/*Open a window to launch a Supplypod and configure it or it's contents*/
@@ -88,6 +87,10 @@ GLOBAL_PROTECT(admin_verbs_admin)
 	/client/proc/admin_cmd_remove_ghost_respawn_timer,	//CIT
 	/client/proc/addbunkerbypass,		//CIT
 	/client/proc/revokebunkerbypass,	//CIT
+	/client/proc/adddiscordbypass,		//SPLURT
+	/client/proc/revokediscordbypass,	//SPLURT
+	/client/proc/addvpnbypass, //SPLURT
+	/client/proc/revokevpnbypass, //SPLURT
 	/datum/admins/proc/open_borgopanel
 	)
 GLOBAL_LIST_INIT(admin_verbs_ban, list(/client/proc/unban_panel, /client/proc/DB_ban_panel, /client/proc/stickybanpanel))
@@ -118,7 +121,7 @@ GLOBAL_LIST_INIT(admin_verbs_fun, list(
 	/client/proc/show_tip,
 	/client/proc/smite,
 	/client/proc/admin_away,
-	/client/proc/spawn_floor_cluwne,
+	// /client/proc/spawn_floor_cluwne,
 	/client/proc/cmd_admin_toggle_fov,		//CIT CHANGE - FOV
 	/client/proc/roll_dices					//CIT CHANGE - Adds dice verb
 	))
@@ -147,6 +150,8 @@ GLOBAL_PROTECT(admin_verbs_server)
 	/client/proc/forcerandomrotate,
 	/client/proc/adminchangemap,
 	/client/proc/panicbunker,
+	/client/proc/discordbunker, // SPLURT
+	/client/proc/vpnbunker, //SPLURT
 	// /client/proc/toggle_interviews,
 	/client/proc/toggle_hub,
 	/client/proc/toggle_cdn
@@ -208,6 +213,7 @@ GLOBAL_PROTECT(admin_verbs_debug)
 #endif
 	// /client/proc/check_timer_sources,
 	/client/proc/toggle_cdn,
+	/client/proc/discordnulls,
 	/client/proc/generate_wikichem_list //DO NOT PRESS UNLESS YOU WANT SUPERLAG
 	)
 GLOBAL_LIST_INIT(admin_verbs_possess, list(/proc/possess, /proc/release))
@@ -230,8 +236,6 @@ GLOBAL_LIST_INIT(admin_verbs_hideable, list(
 	/datum/admins/proc/set_admin_notice,
 	/client/proc/admin_ghost,
 	/client/proc/toggle_view_range,
-	/client/proc/cmd_admin_subtle_message,
-	/client/proc/cmd_admin_headset_message,
 	/client/proc/cmd_admin_check_contents,
 	/datum/admins/proc/access_news_network,
 	/client/proc/admin_end_shift,
@@ -277,8 +281,14 @@ GLOBAL_LIST_INIT(admin_verbs_hideable, list(
 	/proc/release,
 	/client/proc/reload_admins,
 	/client/proc/panicbunker,
+	/client/proc/discordbunker, // SPLURT
+	/client/proc/vpnbunker, // SPLURT
 	/client/proc/addbunkerbypass,		//CIT
 	/client/proc/revokebunkerbypass,	//CIT
+	/client/proc/adddiscordbypass,		//SPLURT
+	/client/proc/revokediscordbypass,	//SPLURT
+	/client/proc/addvpnbypass, //SPLURT
+	/client/proc/revokevpnbypass, //SPLURT
 	// /client/proc/toggle_interviews,
 	/client/proc/admin_change_sec_level,
 	/client/proc/toggle_nuke,
@@ -713,7 +723,8 @@ GLOBAL_PROTECT(admin_verbs_hideable)
 	var/type_length = length_char("/obj/effect/proc_holder/spell") + 2
 	for(var/A in GLOB.spells)
 		spell_list[copytext_char("[A]", type_length)] = A
-	var/obj/effect/proc_holder/spell/S = input("Choose the spell to give to that guy", "ABRAKADABRA") as null|anything in sortList(spell_list)
+	var/obj/effect/proc_holder/spell/S = tgui_input_list(usr, "Choose a spell to give", "ABRAKADABRA", sortList(spell_list)) //input("Choose the spell to give to that guy", "ABRAKADABRA") as null|anything in sortList(spell_list)
+
 	if(!S)
 		return
 
@@ -734,7 +745,7 @@ GLOBAL_PROTECT(admin_verbs_hideable)
 	set desc = "Remove a spell from the selected mob."
 
 	if(T?.mind)
-		var/obj/effect/proc_holder/spell/S = input("Choose the spell to remove", "NO ABRAKADABRA") as null|anything in sortList(T.mind.spell_list)
+		var/obj/effect/proc_holder/spell/S = tgui_input_list(usr, "Choose the spell to remove", "NO ABRAKADABRA", sortList(T.mind.spell_list)) // input("Choose the spell to remove", "NO ABRAKADABRA") as null|anything in sortList(T.mind.spell_list)
 		if(S)
 			T.mind.RemoveSpell(S)
 			log_admin("[key_name(usr)] removed the spell [S] from [key_name(T)].")

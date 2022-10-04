@@ -8,6 +8,8 @@
   - admin: It is now easier to change the flags of turrets.
   - refactor: Allows for defining bitfields in other files.
 2022-08-03:
+  BongaTheProto:
+  - tweak: normalizer wristbands now go in the wrist slot
   MrJWhit:
   - rscadd: Adds more AI screens on box
   Putnam3145:
@@ -32,6 +34,11 @@
   Putnam3145:
   - tweak: Untied shoelaces probabilities rework
   - balance: Miner boots are slightly harder to tie/untie now
+2022-08-06:
+  BongaTheProto:
+  - tweak: Dumb4cum no longer makes you a pacifist
+  catrock31:
+  - imageadd: added boner sprite for largest knotted cock
 2022-08-08:
   Hatterhat:
   - tweak: Proto-kinetic crushers and variants can now be renamed via pen.
@@ -62,7 +69,27 @@
       the round'
   - refactor: Announcement audio is now stored in a datum to make it easy to add different
       announcers
-2022-08-17:
+2022-08-11:
+  BongaTheProto:
+  - rscadd: ported Savannah Ivanov from tg
+2022-08-14:
+  BongaTheProto:
+  - rscadd: Adds new donator lewd medipens with different rewards for each tier
+  - tweak: Now social anxiety works like in tg
+  - tweak: Now podpeople can have hair (you'll want to check your character species
+      config if you're a pod person)
+  - imageadd: Ports podpeople hairs from TG
+  - imageadd: Adds a new binary cloak you can get from the autodrobe (Sprites credit
+      to The Immovable Saint#0001)
+  - soundadd: new *mewo emote
+  - code_imp: changes our modular sprite accessory paths to avoid nulls and bugs in
+      the character creation
+  - code_imp: Fixes a typo in our modular file for underwear
+2022-08-16:
+  BongaTheProto:
+  - soundadd: Makes the pain of hitting someone with buns of steel in the ass more
+      hearable (?
+  - code_imp: deletes some unused interaction code
   Putnam3145:
   - bugfix: added a missing signal call to SSticker
   TripleShades:
@@ -94,15 +121,36 @@
       belt goes to the shuttle'
   - tweak: '[Omega] Engineering Secure Storage button is now in Chief Engineer''s
       office'
+  WoolyAypa:
+  - rscadd: 'Added a new hairstyle: Emma'
+  - rscadd: 'Added a new hairstyle: Damsel'
+  - rscadd: 'Added a new hairstyle: Ozen'
+  - rscadd: 'Added a new tail: Dragon Western'
+  - rscadd: 'Added a new tail: Succubus Tail'
+  - rscadd: 'Added a new horn: Succ Horns'
+  - rscadd: 'Added a new wing: Harpy (Large)'
+  - tweak: The decorative angel wings can now be coloured
+  Yawet330:
+  - imageadd: Better wings
 2022-08-19:
   BlueWildrose:
   - balance: Removes persistence from the cleanable glowing goo. It'll no longer last
       between rounds.
+  BongaTheProto:
+  - server: Adds the option to kick players who are likely connecting through a vpn
+      on join
+  - code_imp: reorganizes modular config code just a bit
+  SpookyTheFox:
+  - bugfix: fixed non-lethal magrifle ammo magazine name
   TripleShades:
   - rscadd: '[Omega] One decal to better indicate Turbine area'
   - rscdel: '[Omega] Duplicate leftover intercom'
   - bugfix: '[Omega] Virology Airlock access buttons should actually work'
 2022-08-20:
+  BongaTheProto:
+  - code_imp: Updates rust_g to 1.0.2
+  - qol: Upgrades our donator system to support automatic updates! Making sure all
+      donators always have at least the loadout tiers perk
   Hatterhat:
   - tweak: Chief engineers now have expert wiring skills, as befitting a crew member
       of their assumed caliber. Atmos techs also get more wire skill.
@@ -173,10 +221,22 @@
   - imageadd: mauler gauntlets have lost a grand total of three pixels in order to
       make them slimmer
 2022-08-22:
+  Anonymous:
+  - soundadd: Added weh2, weh3 and weh-s.
+  BongaTheProto:
+  - server: adds a bypass list for the VPN blocker
+  - admin: adds verbs to toggle the VPN blocker and also add people to the bypass
+      list for a round
+  - spellcheck: Fixes some typos in the discordbunker verbs
   zeroisthebiggay:
   - rscadd: Added polychromatic workout shorts to the loadout and to the clothesmate
       vendors for various workout procedures.
 2022-08-23:
+  Anonymous:
+  - rscadd: Added ability to mlem.
+  - tweak: Trencher's coats are now olive-drab color in general. They also have upper
+      part zipped up while lower part is longer and wider-ish. You can still get classic
+      (pre-change) polychromatic trencher's coat in the loadout along with new one.
   Linzolle:
   - bugfix: suiciding with a stamina projectile now actually works instead of doing
       literally nothing
@@ -184,13 +244,29 @@
   - bugfix: security levels work now
   TrojanCoyote:
   - tweak: slight change to sprite
-2022-08-24:
+  WoolyAypa:
+  - rscadd: Added 11 moth themed drinks
+  - code_imp: Eggs now contain 10u of egg white, good luck separating the yolk ;)
   zeroisthebiggay:
   - rscadd: hyper slutskirt and secukini
+2022-08-24:
+  Anonymous:
+  - rscdel: My dignity.
+  WoolyAypa:
+  - bugfix: Now the western dragon tail doesn't glitch if you *wag
 2022-08-25:
   Putnam3145:
   - code_imp: New Find() lint
+  michaeljacksonlover:
+  - rscadd: Hypnotist alt-title for Psychologist
+  - rscadd: Hypnosis Expert alt-title for Psychologist
+  - rscadd: Hypnotherapist alt-title for Psychologist
+  - rscadd: Sex Educator alt-title for Psychologist
+  - bugfix: Psychologist alt-titles now utilize the dedicated alt-title dm file instead
+      of the job file.
 2022-08-27:
+  KathrinBailey:
+  - rscadd: New belly fur body marking for character customisation!
   PositiveEntropy:
   - imageadd: Resprites the IPC/pAI recharge cable!
   shellspeed1:
@@ -203,7 +279,22 @@
       the station's modular computer chatroom.
   - bugfix: Stacked windows in survival pods fixed.
   - tweak: rtgs in survival pods now come prewired, I figured out a new trick woo.
+2022-08-28:
+  BongaTheProto:
+  - server: Adds a config to toggle random station traits each round on and off
+  Fabian272:
+  - code_imp: Changes the cake batter recipe
+  michaeljacksonlover:
+  - rscdel: Removed customs from delta. Very sad.
+  - tweak: Made the psychologist window on Tau slightly bigger.
+  - rscadd: Redoes the psychologist's room on Delta completely. It is now where customs
+      used to be, moved very slightly.
 2022-08-30:
+  BongaTheProto:
+  - rscadd: Adds four new lawsets that are supposed to be lewd
+  - soundadd: 'adds two new emotes: *ara and *missouri'
+  michaeljacksonlover:
+  - bugfix: hotel's pool is functional
   Putnam3145:
   - balance: Untied shoes are slightly less common
   - admin: Better admin logging on potential prefbreak arousal stuff

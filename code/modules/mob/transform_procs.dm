@@ -615,8 +615,8 @@
 		return 1
 	if(ispath(MP, /mob/living/simple_animal/hostile/carp))
 		return 1
-	if(ispath(MP, /mob/living/simple_animal/hostile/mushroom))
-		return 1
+	/*if(ispath(MP, /mob/living/simple_animal/hostile/mushroom))
+		return 1*/
 	if(ispath(MP, /mob/living/simple_animal/hostile/construct/shade))
 		return 1
 	if(ispath(MP, /mob/living/simple_animal/hostile/killertomato))

@@ -253,7 +253,7 @@ SUBSYSTEM_DEF(vote)
 		calculate_highest_median(vote_title_text)
 	var/list/winners = list()
 	if(mode == "transfer")
-		var/amount_required = 3 + transfer_votes_done
+		var/amount_required = CONFIG_GET(number/min_continue_votes) + transfer_votes_done
 		transfer_votes_done += 1
 		text += "\nExtending requires at least [amount_required] votes to win."
 		if(choices[VOTE_CONTINUE] < amount_required || choices[VOTE_TRANSFER] >= choices[VOTE_CONTINUE])
@@ -450,6 +450,10 @@ SUBSYSTEM_DEF(vote)
 					var/datum/map_config/targetmap = config.maplist[M]
 					if(!istype(targetmap))
 						continue
+					/* SPLURT change */
+					if(CONFIG_GET(flag/no_repeats) && targetmap.map_name == SSmapping.config.map_name)	// Second now because I did a stupid with types
+						continue
+					/* END SPLURT change */
 					if(!targetmap.voteweight)
 						continue
 					if((targetmap.config_min_users && players < targetmap.config_min_users) || (targetmap.config_max_users && players > targetmap.config_max_users))

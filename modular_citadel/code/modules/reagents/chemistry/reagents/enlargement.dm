@@ -75,7 +75,7 @@
 		H.reagents.remove_reagent(type, 5)
 		B.Insert(H)
 
-	B.modify_size(0.05)
+	B.modify_size(0.1)
 	return ..()
 
 /datum/reagent/fermi/breast_enlarger/overdose_process(mob/living/carbon/M) //Turns you into a female if male and ODing, doesn't touch nonbinary and object genders.
@@ -92,7 +92,7 @@
 
 	if(P)
 		P.modify_size(-0.05)
-	if(T)
+	if(T && (!P || P.size <= 0))
 		qdel(T)
 	if(!V)
 		V = new
@@ -101,8 +101,8 @@
 		W = new
 		W.Insert(M)
 
-	if(M.has_quirk(/datum/quirk/infertile))
-		M.remove_quirk(/datum/quirk/infertile)
+	//if(M.has_quirk(/datum/quirk/infertile))
+	//	M.remove_quirk(/datum/quirk/infertile)
 
 	return ..()
 
@@ -238,9 +238,9 @@
 
 	if(B)
 		B.modify_size(-0.05)
-	if(M.getorganslot(ORGAN_SLOT_VAGINA))
+	if(V && (!B || B.cached_size <= 0))
 		qdel(V)
-	if(W)
+	if(W && (!B || B.size <= 0))
 		qdel(W)
 	if(!T)
 		T = new

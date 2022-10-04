@@ -81,7 +81,7 @@
 /datum/outfit/job/engineer/New()
 	..()
 	MAP_JOB_CHECK
-	box = /obj/item/storage/box/engineer/radio
+	box = /obj/item/storage/box/survival/engineer/radio
 
 /datum/job/atmos/New()
 	..()
@@ -119,7 +119,7 @@
 
 /datum/outfit/job/mining/New()
 	..()
-	box = /obj/item/storage/box/engineer/radio
+	box = /obj/item/storage/box/survival/engineer/radio
 
 //Service
 

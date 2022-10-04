@@ -413,6 +413,18 @@
 					"You can't save him. Nothing can save him now", "It seems that Nar'Sie will triumph after all")].</span>")
 				if("emote")
 					M.visible_message("<span class='warning'>[M] [pick("whimpers quietly", "shivers as though cold", "glances around in paranoia")].</span>")
+		else if(HAS_TRAIT(M, TRAIT_CURSED_BLOOD) && prob(12))
+			M.say(pick("Somebody help me...","Unshackle me please...","Anybody... I've had enough of this dream...","The night blocks all sight...","Oh, somebody, please..."), forced = "holy water")
+			if(prob(10))
+				M.visible_message("<span class='danger'>[M] starts having a seizure!</span>", "<span class='userdanger'>You have a seizure!</span>")
+				M.Unconscious(120)
+				to_chat(M, "<span class='cultlarge'>[pick("The moon is close. It will be a long hunt tonight.", "Ludwig, why have you forsaken me?", \
+				"The night is near its end...", "Fear the blood...")]</span>")
+				if(prob(25)) //Prob of a prob.. Shouldn't happen too often but hey, that's what you get.
+					M.IgniteMob()
+				else
+					M.adjustToxLoss(1, 0)
+					M.adjustFireLoss(1, 0)
 	if(data["misc"] >= 60)	// 30 units, 135 seconds
 		if(iscultist(M, FALSE, TRUE) || is_servant_of_ratvar(M, FALSE, TRUE))
 			if(iscultist(M))
@@ -488,6 +500,14 @@
 	value = REAGENT_VALUE_VERY_RARE
 
 /datum/reagent/hellwater/on_mob_life(mob/living/carbon/M)
+	if(HAS_TRAIT(M, TRAIT_CURSED_BLOOD))
+		M.adjustToxLoss(-0.75*REAGENTS_EFFECT_MULTIPLIER, 0)
+		M.adjustOxyLoss(-0.75*REAGENTS_EFFECT_MULTIPLIER, 0)
+		M.adjustBruteLoss(-0.75*REAGENTS_EFFECT_MULTIPLIER, 0)
+		M.adjustFireLoss(-0.75*REAGENTS_EFFECT_MULTIPLIER, 0)
+		M.ExtinguishMob()
+		holder.remove_reagent(type, 1)
+		return
 	M.fire_stacks = min(5,M.fire_stacks + 3)
 	M.IgniteMob()			//Only problem with igniting people is currently the commonly availible fire suits make you immune to being on fire
 	M.adjustToxLoss(1, FALSE)
@@ -1322,6 +1342,7 @@
 			O.remove_atom_colour(WASHABLE_COLOUR_PRIORITY)
 			SEND_SIGNAL(O, COMSIG_COMPONENT_CLEAN_ACT, CLEAN_WEAK)
 			O.clean_blood()
+			O.wash_cum() //sandstorm edit
 
 /datum/reagent/space_cleaner/reaction_turf(turf/T, reac_volume)
 	..()
@@ -1329,6 +1350,7 @@
 		T.remove_atom_colour(WASHABLE_COLOUR_PRIORITY)
 		SEND_SIGNAL(T, COMSIG_COMPONENT_CLEAN_ACT, CLEAN_WEAK)
 		T.clean_blood()
+		T.wash_cum() //sandstorm edit
 		for(var/obj/effect/decal/cleanable/C in T)
 			qdel(C)
 
@@ -1371,6 +1393,7 @@
 					if(H.shoes.clean_blood())
 						H.update_inv_shoes()
 				H.wash_cream()
+				H.wash_cum() //sandstorm edit
 			SEND_SIGNAL(M, COMSIG_COMPONENT_CLEAN_ACT, CLEAN_WEAK)
 			M.clean_blood()
 

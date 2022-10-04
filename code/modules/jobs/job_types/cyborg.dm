@@ -8,7 +8,7 @@
 	spawn_positions = 3
 	supervisors = "your laws and the AI"	//Nodrak
 	selection_color = "#ddffdd"
-	minimal_player_age = 21
+	minimal_player_age = 7
 	exp_requirements = 120
 	exp_type = EXP_TYPE_CREW
 	considered_combat_role = TRUE

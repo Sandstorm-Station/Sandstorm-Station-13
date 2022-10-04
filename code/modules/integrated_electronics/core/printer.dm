@@ -110,6 +110,14 @@
 	if(!(in_range(src, user) || issilicon(user)))
 		return
 
+	var/client/client = user.client
+	if (CONFIG_GET(flag/use_exp_tracking) && client && client.get_exp_living(TRUE) < 480) // Player with less than 8 hours playtime is using this machine.
+		if(client.next_circuit_grief_warning < world.time)
+			var/turf/T = get_turf(src)
+			client.next_circuit_grief_warning = world.time + 15 MINUTES // Wait 15 minutes before alerting admins again
+			message_admins("<span class='adminhelp'>ANTI-GRIEF:</span> New player [ADMIN_LOOKUPFLW(user)] has touched \a [src] at [ADMIN_VERBOSEJMP(T)].")
+			client.touched_circuit = TRUE
+
 	if(isnull(current_category))
 		current_category = SScircuit.circuit_fabricator_recipe_list[1]
 

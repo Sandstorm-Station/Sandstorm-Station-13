@@ -22,6 +22,7 @@
 		if(!renamedByPlayer)
 			name = R.glass_name
 			desc = R.glass_desc
+		R.glass_icon ? (icon = R.glass_icon) : (icon = initial(icon))
 		if(R.glass_icon_state)
 			icon_state = R.glass_icon_state
 		else
@@ -30,6 +31,7 @@
 			reagent_overlay.color = mix_color_from_reagents(reagents.reagent_list)
 			add_overlay(reagent_overlay)
 	else
+		icon = initial(icon)
 		icon_state = "glass_empty"
 		renamedByPlayer = FALSE //so new drinks can rename the glass
 
@@ -61,6 +63,7 @@
 		name = "filled shot glass"
 		desc = "The challenge is not taking as many as you can, but guessing what it is before you pass out."
 
+		largest_reagent.shot_glass_icon ? (icon = largest_reagent.shot_glass_icon) : (icon = initial(icon))
 		if(largest_reagent.shot_glass_icon_state)
 			icon_state = largest_reagent.shot_glass_icon_state
 		else
@@ -71,6 +74,7 @@
 
 
 	else
+		icon = initial(icon)
 		icon_state = "shotglass"
 		name = "shot glass"
 		desc = "A shot glass - the universal symbol for bad decisions."
@@ -104,7 +108,7 @@
 				to_chat(user, "<span class='notice'>[src] is full.</span>")
 			else
 				to_chat(user, "<span class='notice'>You break [E] in [src].</span>")
-				reagents.add_reagent(/datum/reagent/consumable/eggyolk, 5)
+				reagents.add_reagent_list(E.list_reagents)
 				qdel(E)
 			return
 	else

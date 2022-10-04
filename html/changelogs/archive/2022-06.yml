@@ -1,4 +1,17 @@
 2022-06-01:
+  BongaTheProto:
+  - imageadd: Now you can slap cheese in people's faces which works just like creampies
+2022-06-02:
+  Anonymous:
+  - imageadd: 'tweak: Trenchers'' helmets, officer caps and coats now have darker
+      colors. Coats also no more have squares at side-view, and now sport colored
+      cuffs!'
+  - imageadd: 'Polychromic variant of trencher coat is now separated into 3 colorable
+      spots: arm insignias/patches, cuffs and lining.'
+  AshTheDerg:
+  - rscadd: Added Surgery access to Brig Physician
+  - tweak: Switched Brig Physician pay account to Medical
+  - rscadd: Security badges, updatable by swiping an ID on them
   Bhijn & Myr:
   - bugfix: You can no longer attach multiple tracking beacons to a single mech, fixing
       an exploit where mechs can be nuked with minimal effort.
@@ -51,8 +64,10 @@
       darkness for >= 0.2 seconds tweak: nyctophobia and lightless will both not update
       your mood until you move now, as part of the optimisations made by changing
       them to tg code'
-2022-06-02:
+2022-06-03:
   Bhijn & Myr:
+  - bugfix: Solar panels now actually face the proper direction. This is achieved
+      by reducing the iconstate to only 1 dir.
   - bugfix: You can no longer attach multiple tracking beacons to a single mech, fixing
       an exploit where mechs can be nuked with minimal effort.
   - bugfix: Omegastation's airmix filter is no longer inverted! The oxygen:nitrogen
@@ -83,35 +98,115 @@
   Putnam3145:
   - balance: Nitryl is higher risk, can't be sold for as much
   - refactor: Gas prices are now part of the gas data structure
+  SandPoot:
+  - balance: After resizing and being on a mob's hand you will be dropped as they
+      are not able to carry someone bigger than half your size.
   TrojanCoyote:
   - rscadd: sprites for muzzled and non muzzled mobs for the masks, along with the
       adjusted versions, icons for the masks as well.
   bunny232:
   - rscadd: Universal blood type now accepts bug blood.
-2022-06-03:
-  Bhijn & Myr:
-  - bugfix: Solar panels now actually face the proper direction. This is achieved
-      by reducing the iconstate to only 1 dir.
-  SandPoot:
-  - balance: After resizing and being on a mob's hand you will be dropped as they
-      are not able to carry someone bigger than half your size.
 2022-06-04:
   SandPoot:
   - rscadd: Adds CRISPR - a gene editing method that lets you overwrite base mutations
+2022-06-05:
+  Anonymous:
+  - bugfix: Trencher mask now should be seen again on-character.
+  AshTheDerg:
+  - rscadd: Added Plague Doctor surgical tools
+  - rscadd: New cane for Plague Doctor
+  - rscadd: More accurate mask
+  - rscadd: Plague Doctor kit to Cargo Orders
+  BongaTheProto:
+  - tweak: Makes the new player panel a toggle so you can choose between the old one
+      and TG's current. Option in Game Preferences
 2022-06-06:
   SandPoot:
   - refactor: Completely replaces the new player panel *not the admin one* with TG's.
   timothyteakettle:
   - rscadd: adds paper skin and glass bones quirks
-2022-06-08:
+2022-06-07:
+  Bhijn & Myr:
+  - rscadd: During pride month, station nukes are significantly more efficient at
+      revealing genders.
+  - rscadd: Station pets now retain their color between shifts!
+  - bugfix: Admin vote deobfuscation now properly displays votes as 0 if they were
+      simply never voted for.
+  - bugfix: Audiovisual redirection now works exactly as it used to. In laymen's terms,
+      this means folks in VR sleepers are aware of the world around them again!
+  - bugfix: The shake animation, jiggle animation, squish animation, jitter animation,
+      and float animation, have all been fixed.
+  - bugfix: This also means that storage animations are fully working again. It's
+      been a few years!
+  - bugfix: The pull animation no longer interrupts ongoing animations.
+  - tweak: The pull animation now supports diagonal directions (currently only applies
+      to the initial grab! pull code is spaghetti)
+  - bugfix: All screenshake sources now fully support the screenshake pref
+  - code_imp: cit_screenshake.dm has been fully merged into the base files.
+  - bugfix: You can no longer remotely apply fingerprints to storage objects by clicking
+      and dragging it around. Additionally, storage objects now rustle again when
+      clicking and dragging (only took like,, a year to fix)
+  - bugfix: The pickup animation now properly slides into your spaceman again, instead
+      of just kinda disappearing.
+  - tweak: When pulling a resting mob, they'll now skip the laying animation entirely,
+      fixing a visual oddity where they shrink and grow to flip.
+  - tweak: Alerts are now a little snappier and bouncier, as they've been swapped
+      from sine easing, to back easing.
+  - tweak: Radial menus now use sine easing, rather than linear easing. This just
+      looks a little prettier.
+  - tweak: Runechat now properly respects an object's X offset. Previously, it relied
+      on a hardcoded check for dogborgs.
+  - tweak: The float animation now uses pixel_z instead of pixel_y, fixing issues
+      where the Y offset gets wiped due to the float animation. This also makes floating
+      fully compatible with ctrl+WASD."
+  BongaTheProto:
+  - rscadd: New panting emote
+  - rscadd: Adds a recipe for the cum donut
+  - rscadd: Adds a panting emote
+  - rscadd: Adds Dominant Aura and Well-trained quirks
+  - rscadd: Snack alt title for assistants
+  - soundadd: Adds sounds for the kiss them deeply interaction
+  - soundadd: Adds moaning sounds for verb moans
+  - tweak: Changes bane syndrome's value to -2
+  - tweak: Makes xenocommon a selectable language
+  - tweak: Fucking people's throats gives an actually harmful amount of oxyloss again
+  - tweak: If you have the voracious trait, the fat moodlet will become a positive
+      one.
+  - tweak: headpat slut will now give you an modified wuv element and possibly make
+      you cum
+  - bugfix: Fixes the notify verb so it actually removes you from the list if you
+      want it to
+  - bugfix: makes the cheesed moodlet actually check if you're a felinid
+  - bugfix: Gives Bane Syndrome its effects back
+  - bugfix: You can now actually dispense tea from the Soda Dispenser, rejoice!
+  - rscdel: deletes the double railing declaration in the code
+  - code_imp: changes some things to use the cooldown system
+  - code_imp: puts signal handlers in a couple procs where they needed to be
+  - code_imp: Adds a signal for when mobs use emotes
   SandPoot:
-  - tweak: The "MobInteraction" is now written on typescript.
   - refactor: Does some extremely minor touches on pulling/pushing code.
   timothyteakettle:
   - rscadd: updates existing poly maid outfit with tg sprite but polychromatic
   - rscadd: adds polychromic maid apron, gloves, collar, headband
   - rscadd: adds support for polychromic accessories
-2022-06-12:
+2022-06-08:
+  SandPoot:
+  - tweak: The "MobInteraction" is now written on typescript.
+2022-06-09:
+  Anonymous:
+  - rscadd: Players, who somehow ended up controlling a simple mob, now can change
+      their genital set just like robots and pAIs.
+  - rscdel: My sanity.
+2022-06-10:
+  AshTheDerg:
+  - rscadd: Holgraphic Security Badges (Backpack loadout option for Security Department,
+      including Detectives)
+  - rscadd: Modular PC vendor
+  - rscadd: Rifle sling, craftable via biogenerator
+  - rscadd: Debug Omnitool (Admin-only, sorry)
+  - tweak: Enforcer Voidsuit now has armor equivalent to Security Winter Jackets
+  - tweak: Gave Detectives badges, too!
+2022-06-11:
   Bhijn & Myr:
   - rscadd: The station minimap now features higher detail! Instead of just windows
       and grilles being outlined, all dense+anchored structures and machinery are
@@ -160,9 +255,40 @@
       or without giving them a message)
   keronshb:
   - bugfix: Families fixed from crashing
+2022-06-12:
+  Anonymous:
+  - tweak: 'wip: Trencher''s coats are now able to hold detective-tier items, however
+      cargo costs for them are increased.'
+  AshTheDerg:
+  - rscadd: Sylveon Bow "horns"
+  - rscadd: Sylveon Ribbon "wings"
+  BongaTheProto:
+  - tweak: Now size normalizers will continuously normalize you and absorb the effect
+      of size changing mechanics in-game. Giving you all of the changes back when
+      you take off the clothing
+  - bugfix: Now you can actually give your character numbers in their names and species
+  - bugfix: Gives the syntech ring and band an actual ring path so they can be attached
+      to gloves (doesn't work if you use them this way tho)
+  - bugfix: Definitely fixes the bug where spawning with more than one size normalizer
+      locks you on size one _in case it still exists_
+  - bugfix: "Fixes a bug with nanites, probably \xBF"
+  - code_imp: Makes the size normalizer code less snowflakey and now relies on a component
 2022-06-13:
   Bhijn & Myr:
   - bugfix: Jukebox audio is now audible within closets, crates, etc!
+2022-06-15:
+  AshTheDerg:
+  - rscadd: Added Syndicate Asteroid Listening Post + Ghost Role
+  - rscadd: Added Radio Station Ship
+2022-06-16:
+  BongaTheProto:
+  - imageadd: New ear sprites
+  - tweak: Now subs will actually blush when examining doms
+  - server: Limits the amount of infinidorms each person can create for the sake of
+      helping the TD
+2022-06-17:
+  BongaTheProto:
+  - soundadd: Added new bark sounds!
 2022-06-19:
   IHOPMommyLich:
   - rscdel: Removed the forced dynamic, allowing the standard game mode vote.
@@ -174,12 +300,58 @@
   - spellcheck: Fixed a state typo in tea cup glassworking
   - spellcheck: Fixed an incorrect step displayed on spout glassworking
   - code_imp: Enables the make priority announcement admin verb for admin use
-2022-06-21:
+2022-06-20:
   Bhijn & Myr:
   - balance: Ling abilities now have a default loudness of 0.5. This change applies
       to every single ability that used to have 0 loudness.
   TrojanCoyote:
   - rscadd: Adds a plate carrier to HoS loadout, sprites for such
+2022-06-21:
+  WoolyAypa:
+  - rscadd: 'Added a new +3 points worth quirk: Dumb4Cum'
+2022-06-22:
+  Bhijn & Myr:
+  - code_imp: Barks can now be intercepted via component signals. Both bark queuing
+      and individual barks can be intercepted via signals!
+  - rscadd: The "Brassy" bark has been added, using the cog installation sound as
+      a sample! This works surprisingly well as a bark
+  - rscadd: Genetics can now give people goose1.ogg
+  - tweak: If new barks are queued before the current barks are finished, this will
+      interrupt all ongoing barks
+  - tweak: Yelling no longer cuts the minimum bark time variance down to half, as
+      this proved to sound pretty awful with most barks.
+  - tweak: Chitter now uses a completely unique audio sample, which is based on the
+      original ratchet.ogg it used to be. This new sample is shorter, and has significantly
+      less harsh noise on the higher frequencies, making it much easier on the ears.
+      Additionally, the minimum speed for chitter has been reduced from 6 to 4.
+  - tweak: Setting vocal_bark to a file should now automatically turn it into a sound
+      datum (in theory, at least! as of writing i haven't tested this at all)
+  - bugfix: Barks and other DNA features after the first mob color now work exactly
+      as you'd expect. This was the cause for horrid eldritch bark sounds when the
+      wrong part of DNA gets hit. The first mob color has lost some genetics resolution
+      as an indirect result of this (the higher resolution is what caused this bug)
+2022-06-23:
+  BongaTheProto:
+  - soundadd: New Gaster and Mettaton barks
+2022-06-26:
+  BongaTheProto:
+  - rscadd: Adds "Rental Mommy" and "Rental Daddy" job names for psychologist
 2022-06-29:
+  BongaTheProto:
+  - rscadd: adds jelly beans as a snack you can find in the chocolate vendor (Sprites
+      by Jasmine)
+  - rscadd: adds four new drinks, "Isolation Cell",  "Chemical Ex",  "Heart Of Gold"
+      and "Moth in Chief"
   Putnam3145:
   - bugfix: GAS_OXYGEN -> GAS_O2
+2022-06-30:
+  AshTheDerg:
+  - rscadd: Peacekeepers
+  - rscadd: Security Pouches
+  - rscadd: Deputy Badges
+  - tweak: Badges except Holo can be fabricated in a Sec TechFab
+  - tweak: Removed Hypo and Baton from Peacekeepers
+  - tweak: Gave Peacekeepers a Taser
+  - bugfix: Command Tablets now come with a secondary Card Reader
+  BongaTheProto:
+  - code_imp: Updates rust-g to version 0.7.0

@@ -27,6 +27,7 @@
 #define DIAG_LAUNCHPAD_HUD "23" //Displays launchpads' targeting reticle
 //for antag huds. these are used at the /mob level
 #define ANTAG_HUD		"24"
+#define ANTAGTARGET_HUD "25" // Which players consent via their game settings to be a target for antagonists
 
 //by default everything in the hud_list of an atom is an image
 //a value in hud_list with one of these will change that behavior
@@ -61,8 +62,12 @@
 #define ANTAG_HUD_BROTHER		23
 #define ANTAG_HUD_BLOODSUCKER   24
 #define ANTAG_HUD_FUGITIVE		25
-#define ANTAG_HUD_HERETIC	    26
+#define ANTAG_HUD_HERETIC		26
 #define ANTAG_HUD_SPACECOP		27
 #define ANTAG_HUD_GANGSTER		28
+#define ANTAG_HUD_SLAVER		29
+
+// Which players consent via their game settings to be a target for antagonists
+#define DATA_HUD_ANTAGTARGET	30
 
 #define ADD_HUD_TO_COOLDOWN 20 //cooldown for being shown the images for any particular data hud

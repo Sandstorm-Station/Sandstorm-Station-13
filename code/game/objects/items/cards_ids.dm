@@ -218,6 +218,7 @@
 	if(my_store)
 		my_store.my_card = null
 		my_store = null
+	cached_flat_icon = null //SPLURT edit
 	return ..()
 
 /obj/item/card/id/vv_edit_var(var_name, var_value)
@@ -612,7 +613,7 @@
 	. = ..()
 
 /obj/item/card/id/ert/Medical
-	icon_state = "ert_medical"
+	icon_state = "ert_medic"
 	registered_name = "Medical Response Officer"
 	assignment = "Medical Response Officer"
 

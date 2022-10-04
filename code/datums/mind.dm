@@ -159,6 +159,9 @@
 
 	SEND_SIGNAL(src, COMSIG_MIND_TRANSFER, new_character, old_character)
 	SEND_SIGNAL(new_character, COMSIG_MOB_ON_NEW_MIND)
+//splurt change
+	INVOKE_ASYNC(GLOBAL_PROC, .proc/_paci_check, new_character, old_character)
+//end change
 
 /datum/mind/proc/store_memory(new_text)
 	if((length_char(memory) + length_char(new_text)) <= MAX_MESSAGE_LEN)
@@ -291,6 +294,7 @@
 	remove_changeling()
 	remove_traitor()
 	remove_nukeop()
+	remove_slaver()
 	remove_wizard()
 	remove_cultist()
 	remove_rev()
@@ -398,7 +402,6 @@
 		N.send_to_spawnpoint = FALSE
 		N.nukeop_outfit = null
 		add_antag_datum(N,converter.nuke_team)
-
 
 	enslaved_to = creator
 
@@ -587,6 +590,8 @@ GLOBAL_LIST(objective_choices)
 		/datum/objective/download,
 		/datum/objective/nuclear,
 		/datum/objective/absorb,
+		/datum/objective/rescue_prisoner,
+		/datum/objective/custom
 		)
 
 	for(var/t in allowed_types)
@@ -1406,7 +1411,7 @@ GLOBAL_LIST(objective_choices)
 
 		var/selected_type = input("Select objective type:", "Objective type", def_value) as null|anything in GLOB.objective_choices
 		selected_type = GLOB.objective_choices[selected_type]
-//ambition end
+
 		if (!selected_type)
 			return
 

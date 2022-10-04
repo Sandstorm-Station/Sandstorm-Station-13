@@ -70,6 +70,7 @@ SUBSYSTEM_DEF(ticker)
 
 	var/station_integrity = 100				// stored at roundend for use in some antag goals
 	var/emergency_reason
+	var/real_round_start_time = 0
 
 	/// If the gamemode fails to be run too many times, we swap to a preset gamemode, this should give admins time to set their preferred one
 	var/emergency_swap = 0
@@ -164,6 +165,10 @@ SUBSYSTEM_DEF(ticker)
 			to_chat(world, "<span class='boldnotice'>Welcome to [station_name()]!</span>")
 			send2chat("New round starting on [SSmapping.config.map_name]!", CONFIG_GET(string/chat_announce_new_game))
 			current_state = GAME_STATE_PREGAME
+			//SPLURT EDIT - Bring back old panel
+			//Everyone who wants to be an observer is now spawned
+			create_observers()
+			//SPLURT EDIT
 			SEND_SIGNAL(src, COMSIG_TICKER_ENTER_PREGAME)
 
 			fire()
@@ -297,6 +302,7 @@ SUBSYSTEM_DEF(ticker)
 	LAZYCLEARLIST(round_start_events)
 
 	SEND_SIGNAL(src, COMSIG_TICKER_ROUND_STARTING)
+	real_round_start_time = world.timeofday
 
 	log_world("Game start took [(world.timeofday - init_start)/10]s")
 	round_start_time = world.time
@@ -384,6 +390,8 @@ SUBSYSTEM_DEF(ticker)
 				LAZYOR(player.client.prefs.characters_joined_as, player.new_character.real_name)
 			else
 				stack_trace("WARNING: Either a player did not have a new_character, did not have a client, or did not have preferences. This is VERY bad.")
+		else if(!(player.client?.prefs.toggles & TG_PLAYER_PANEL))
+			player.new_player_panel()
 		CHECK_TICK
 
 /datum/controller/subsystem/ticker/proc/collect_minds()
@@ -707,6 +715,16 @@ SUBSYSTEM_DEF(ticker)
 	update_everything_flag_in_db()
 	if(!round_end_sound)
 		round_end_sound = pick(\
+		'modular_splurt/sound/roundend/dotheballsgo.ogg',
+		'modular_splurt/sound/roundend/filledwith.ogg',
+		'modular_splurt/sound/roundend/iknowwhat.ogg',
+		'modular_splurt/sound/roundend/lottawords.ogg',
+		'modular_splurt/sound/roundend/pissesonme.ogg',
+		'modular_splurt/sound/roundend/theballsgothard.ogg',
+		'modular_splurt/sound/roundend/iwishtherewassomethingmore.ogg',
+		'modular_splurt/sound/roundend/likeisaid.ogg',
+		'modular_splurt/sound/roundend/whatarottenwaytodie.ogg',
+		'modular_splurt/sound/roundend/whatashame.ogg',
 		'sound/roundend/newroundsexy.ogg',
 		'sound/roundend/apcdestroyed.ogg',
 		'sound/roundend/seeyoulaterokay.ogg',

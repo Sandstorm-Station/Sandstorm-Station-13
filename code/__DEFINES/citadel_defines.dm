@@ -11,8 +11,10 @@
 #define TESTICLES_LAYER_INDEX	3
 #define GENITAL_LAYER_INDEX		4
 #define PENIS_LAYER_INDEX		5
+#define BELLY_LAYER_INDEX		6
+#define BREASTS_LAYER_INDEX		7
 
-#define GENITAL_LAYER_INDEX_LENGTH 5 //keep it updated with each new index added, thanks.
+#define GENITAL_LAYER_INDEX_LENGTH 7 //keep it updated with each new index added, thanks.
 
 //genital flags
 #define GENITAL_BLACKLISTED		(1<<0) //for genitals that shouldn't be added to GLOB.genitals_list.
@@ -28,6 +30,8 @@
 #define UPDATE_OWNER_APPEARANCE	(1<<10)
 #define GENITAL_CAN_TAUR		(1<<11)
 #define CAN_CUM_INTO 			(1<<12) //Sandstorm change
+#define HAS_EQUIPMENT			(1<<13) //nother sandstorm change
+#define GENITAL_CAN_STUFF       (1<<14) //Splurt edit, used for pregnancy
 
 
 #define DEF_VAGINA_SHAPE	"Human"
@@ -45,9 +49,12 @@
 
 #define DEF_BALLS_SHAPE		"Single"
 
+//SPLURT change, support for more sizes
 #define BALLS_SIZE_MIN		1
 #define BALLS_SIZE_DEF		2
-#define BALLS_SIZE_MAX		3
+#define BALLS_SIZE_2		3
+#define BALLS_SIZE_3		4
+#define BALLS_SIZE_MAX		5
 
 #define CUM_RATE			2 // units per 10 seconds
 #define CUM_RATE_MULT		1
@@ -65,7 +72,11 @@
 #define MILK_EFFICIENCY		1
 
 #define BUTT_SIZE_DEF		1
-#define BUTT_SIZE_MAX		5  //butt genitals are special in that they have caps. if there's the event there's even bigger butt sprites, raise this number.
+#define BUTT_SIZE_MAX		8  //butt genitals are special in that they have caps. if there's the event there's even bigger butt sprites, raise this number.
+
+#define BELLY_SIZE_MIN		0
+#define BELLY_SIZE_DEF		1
+#define BELLY_SIZE_MAX		10
 
 //visibility toggles defines to avoid errors typos code errors.
 #define GEN_VISIBLE_ALWAYS "Always visible"
@@ -108,6 +119,7 @@
 #define VORE_EXAMINE		(1<<14)
 #define TRASH_FORCEFEED		(1<<15)
 #define BUTT_ENLARGEMENT	(1<<16)
+#define BELLY_INFLATION		(1<<17)
 //Note: reminder, if you're a coder adding more bitflags here in the event we add more horny things, the maximum is (1<<23).
 #define TOGGLES_CITADEL 0
 

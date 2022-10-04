@@ -3,7 +3,7 @@
 	set name = "Interact With"
 	set desc = "Perform an interaction with someone."
 	set category = "IC"
-	set src in view()
+	set src in view(usr.client)
 
 	if(!usr.mind) //Mindless boys, honestly just don't, it's better this way
 		return
@@ -12,26 +12,6 @@
 	usr.mind.interaction_holder.target = src
 	usr.mind.interaction_holder.ui_interact(usr)
 
-/// Allows "cyborg" players to change gender at will
-/mob/living/silicon/robot/verb/toggle_gender()
-	set name = "Set Gender"
-	set desc = "Allows you to set your gender."
-
-	if(stat != CONSCIOUS)
-		to_chat(usr, "<span class='warning'>You cannot toggle your gender while unconcious!</span>")
-		return
-
-	var/choice = tgui_alert(usr, "Select Gender.", "Gender", list("Both", "Male", "Female"))
-	switch(choice)
-		if("Both")
-			has_penis = TRUE
-			has_vagina = TRUE
-		if("Male")
-			has_penis = TRUE
-			has_vagina = FALSE
-		if("Female")
-			has_penis = FALSE
-			has_vagina = TRUE
 
 #define INTERACTION_NORMAL 0
 #define INTERACTION_LEWD 1
@@ -86,7 +66,8 @@
 				continue
 			var/list/interaction = list()
 			interaction["key"] = I.type
-			interaction["desc"] = I.description
+			var/description = replacetext(I.description, "%COCK%", self.has_penis() ? "cock" : "strapon")
+			interaction["desc"] = description
 			if(istype(I, /datum/interaction/lewd))
 				var/datum/interaction/lewd/O = I
 				if(O.extreme)
@@ -117,8 +98,15 @@
 				visibility = "Always hidden"
 			else
 				visibility = "Hidden by clothes"
+
+			var/extras = "None"
+			if(CHECK_BITFIELD(genital.genital_flags, GENITAL_CAN_STUFF))
+				extras = "Allows egg stuffing"
+
+			genital_entry["extras"] = extras
 			genital_entry["visibility"] = visibility
 			genital_entry["possible_choices"] = GLOB.genitals_visibility_toggles
+			genital_entry["extra_choices"] = list(GEN_ALLOW_EGG_STUFFING)
 			genitals += list(genital_entry)
 	if(iscarbon(self))
 		var/simulated_ass = list()
@@ -137,6 +125,37 @@
 		genitals += list(simulated_ass)
 	.["genitals"] = genitals
 
+	//Get their genitals
+	var/list/genital_fluids = list()
+	var/mob/living/carbon/target_genitals = target || self
+	if(istype(target_genitals))
+		for(var/obj/item/organ/genital/genital in target_genitals.internal_organs)
+			if(!(CHECK_BITFIELD(genital.genital_flags, GENITAL_FUID_PRODUCTION)))
+				continue
+			var/fluids = (clamp(genital.fluid_rate * ((world.time - genital.last_orgasmed) / (10 SECONDS)) * genital.fluid_mult, 0, genital.fluid_max_volume) / genital.fluid_max_volume)
+			var/list/genital_entry = list()
+			genital_entry["name"] = "[genital.name]"
+			genital_entry["key"] = REF(genital)
+			genital_entry["fluid"] = fluids
+			genital_fluids += list(genital_entry)
+	.["genital_fluids"] = genital_fluids
+
+	var/list/genital_interactibles = list()
+	if(istype(target_genitals))
+		for(var/obj/item/organ/genital/genital in target_genitals.internal_organs)
+			if(!genital.is_exposed())
+				continue
+			var/list/equipment_names = list()
+			for(var/obj/equipment in genital.contents)
+				equipment_names += equipment.name
+			var/list/genital_entry = list()
+			genital_entry["name"] = "[genital.name]"
+			genital_entry["key"] = REF(genital)
+			genital_entry["possible_choices"] = GLOB.genitals_interactions
+			genital_entry["equipments"] = equipment_names
+			genital_interactibles += list(genital_entry)
+	.["genital_interactibles"] = genital_interactibles
+
 	var/datum/preferences/prefs = usr?.client.prefs
 	if(prefs)
 	//Getting char prefs
@@ -145,28 +164,30 @@
 		.["vore_pref"] = 		pref_to_num(prefs.vorepref)
 		.["extreme_pref"] = 		pref_to_num(prefs.extremepref)
 		.["extreme_harm"] = 		pref_to_num(prefs.extremeharm)
+		.["unholy_pref"] =		pref_to_num(prefs.unholypref)
 
 	//Getting preferences
 		.["verb_consent"] = 		CHECK_BITFIELD(prefs.toggles, VERB_CONSENT)
 		.["lewd_verb_sounds"] = 	!CHECK_BITFIELD(prefs.toggles, LEWD_VERB_SOUNDS)
-		.["arousable"] = 			prefs.arousable
-		.["genital_examine"] = 		CHECK_BITFIELD(prefs.cit_toggles, GENITAL_EXAMINE)
+		.["arousable"] = 		prefs.arousable
+		.["genital_examine"] = 	CHECK_BITFIELD(prefs.cit_toggles, GENITAL_EXAMINE)
 		.["vore_examine"] = 		CHECK_BITFIELD(prefs.cit_toggles, VORE_EXAMINE)
-		.["medihound_sleeper"] =	CHECK_BITFIELD(prefs.cit_toggles, MEDIHOUND_SLEEPER)
-		.["eating_noises"] = 		CHECK_BITFIELD(prefs.cit_toggles, EATING_NOISES)
-		.["digestion_noises"] =		CHECK_BITFIELD(prefs.cit_toggles, DIGESTION_NOISES)
-		.["trash_forcefeed"] = 		CHECK_BITFIELD(prefs.cit_toggles, TRASH_FORCEFEED)
-		.["forced_fem"] = 			CHECK_BITFIELD(prefs.cit_toggles, FORCED_FEM)
-		.["forced_masc"] = 			CHECK_BITFIELD(prefs.cit_toggles, FORCED_MASC)
-		.["hypno"] = 				CHECK_BITFIELD(prefs.cit_toggles, HYPNO)
-		.["bimbofication"] = 		CHECK_BITFIELD(prefs.cit_toggles, BIMBOFICATION)
-		.["breast_enlargement"] = 	CHECK_BITFIELD(prefs.cit_toggles, BREAST_ENLARGEMENT)
-		.["penis_enlargement"] =	CHECK_BITFIELD(prefs.cit_toggles, PENIS_ENLARGEMENT)
-		.["butt_enlargement"] =		CHECK_BITFIELD(prefs.cit_toggles, BUTT_ENLARGEMENT)
-		.["never_hypno"] = 			!CHECK_BITFIELD(prefs.cit_toggles, NEVER_HYPNO)
+		.["medihound_sleeper"] = CHECK_BITFIELD(prefs.cit_toggles, MEDIHOUND_SLEEPER)
+		.["eating_noises"] = 	CHECK_BITFIELD(prefs.cit_toggles, EATING_NOISES)
+		.["digestion_noises"] =	CHECK_BITFIELD(prefs.cit_toggles, DIGESTION_NOISES)
+		.["trash_forcefeed"] = 	CHECK_BITFIELD(prefs.cit_toggles, TRASH_FORCEFEED)
+		.["forced_fem"] = 		CHECK_BITFIELD(prefs.cit_toggles, FORCED_FEM)
+		.["forced_masc"] = 		CHECK_BITFIELD(prefs.cit_toggles, FORCED_MASC)
+		.["hypno"] = 			CHECK_BITFIELD(prefs.cit_toggles, HYPNO)
+		.["bimbofication"] = 	CHECK_BITFIELD(prefs.cit_toggles, BIMBOFICATION)
+		.["breast_enlargement"] = CHECK_BITFIELD(prefs.cit_toggles, BREAST_ENLARGEMENT)
+		.["penis_enlargement"] = CHECK_BITFIELD(prefs.cit_toggles, PENIS_ENLARGEMENT)
+		.["butt_enlargement"] =	CHECK_BITFIELD(prefs.cit_toggles, BUTT_ENLARGEMENT)
+		.["belly_inflation"] = CHECK_BITFIELD(prefs.cit_toggles, BELLY_INFLATION)
+		.["never_hypno"] = 		!CHECK_BITFIELD(prefs.cit_toggles, NEVER_HYPNO)
 		.["no_aphro"] = 			!CHECK_BITFIELD(prefs.cit_toggles, NO_APHRO)
-		.["no_ass_slap"] = 			!CHECK_BITFIELD(prefs.cit_toggles, NO_ASS_SLAP)
-		.["no_auto_wag"] = 			!CHECK_BITFIELD(prefs.cit_toggles, NO_AUTO_WAG)
+		.["no_ass_slap"] = 		!CHECK_BITFIELD(prefs.cit_toggles, NO_ASS_SLAP)
+		.["no_auto_wag"] = 		!CHECK_BITFIELD(prefs.cit_toggles, NO_AUTO_WAG)
 
 /proc/num_to_pref(num)
 	switch(num)
@@ -198,6 +219,28 @@
 				return TRUE
 			else
 				return FALSE
+		if("genital_interaction")
+			var/mob/living/carbon/actual_target = target || usr
+			var/mob/user = usr
+			var/obj/item/organ/genital/genital = locate(params["genital"], actual_target.internal_organs)
+			if(!(genital && (genital in actual_target.internal_organs)))
+				return FALSE
+			switch(params["action"])
+				if(GEN_INSERT_EQUIPMENT)
+					var/obj/item/stuff = user.get_active_held_item()
+					if(!istype(stuff))
+						to_chat(user, span_warning("You need to hold an item to insert it!"))
+						return FALSE
+					stuff.insert_item_organ(user, actual_target, genital)
+				if(GEN_REMOVE_EQUIPMENT)
+					var/obj/item/selected_item = input(user, "Pick an item to remove", "Removing item") as null|anything in genital.contents
+					if(selected_item)
+						if(!do_mob(user, actual_target, 5 SECONDS))
+							return FALSE
+						if(!user.put_in_hands(selected_item))
+							user.transferItemToLoc(get_turf(user))
+						return TRUE
+					return FALSE
 		if("char_pref")
 			var/datum/preferences/prefs = usr.client.prefs
 			var/value = num_to_pref(params["value"])
@@ -217,6 +260,11 @@
 						return FALSE
 					else
 						prefs.vorepref = value
+				if("unholy_pref")
+					if(prefs.unholypref == value)
+						return FALSE
+					else
+						prefs.unholypref = value
 				if("extreme_pref")
 					if(prefs.extremepref == value)
 						return FALSE
@@ -268,6 +316,8 @@
 					TOGGLE_BITFIELD(prefs.cit_toggles, PENIS_ENLARGEMENT)
 				if("butt_enlargement")
 					TOGGLE_BITFIELD(prefs.cit_toggles, BUTT_ENLARGEMENT)
+				if("belly_inflation")
+					TOGGLE_BITFIELD(prefs.cit_toggles, BELLY_INFLATION)
 				if("never_hypno")
 					TOGGLE_BITFIELD(prefs.cit_toggles, NEVER_HYPNO)
 				if("no_aphro")

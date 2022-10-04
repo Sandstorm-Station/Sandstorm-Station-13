@@ -84,6 +84,7 @@
 					reagents.add_reagent(r_id, amount * 0.3)
 					M.adjust_fire_stacks(minus_plus * amount)
 				M.wash_cream()
+				M.wash_cum() //sandstorm edit
 		return TRUE
 	return ..()
 

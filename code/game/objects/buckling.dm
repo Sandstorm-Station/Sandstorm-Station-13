@@ -27,6 +27,8 @@
 
 /atom/movable/MouseDrop_T(mob/living/M, mob/living/user)
 	. = ..()
+	if(. & COMSIG_MOB_CANCEL_CLICKON) //SPLURT edit
+		return
 	if(can_buckle && istype(M) && istype(user))
 		if(user_buckle_mob(M, user))
 			return 1
@@ -44,7 +46,7 @@
 	if(!istype(M))
 		return FALSE
 
-	if(check_loc && M.loc != loc)
+	if(check_loc && M.loc != loc && !(M.Adjacent(src) || src.Adjacent(M)))
 		return FALSE
 
 	if((!can_buckle && !force) || M.buckled || (buckled_mobs.len >= max_buckled_mobs) || (buckle_requires_restraints && !M.restrained()) || M == src)
@@ -65,7 +67,8 @@
 			var/mob/living/L = M.pulledby
 			L.reset_pull_offsets(M, TRUE)
 
-	if(!check_loc && M.loc != loc)
+	// if(!check_loc && M.loc != loc)
+	if(M.loc != loc)
 		M.forceMove(loc)
 
 	M.buckling = null

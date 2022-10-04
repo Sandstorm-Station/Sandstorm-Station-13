@@ -139,7 +139,6 @@
 	item_state = "forensics_blue_long"
 	mutantrace_variation = STYLE_DIGITIGRADE
 
-
 //Engineering
 /obj/item/clothing/suit/hazardvest
 	name = "hazard vest"

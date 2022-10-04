@@ -19,6 +19,7 @@
 #define NO_ANTAG				(1<<16)
 #define VERB_CONSENT			(1<<17) // Sandstorm - ERP Mechanic Addition
 #define LEWD_VERB_SOUNDS		(1<<18) // Sandstorm - ERP Mechanic Addition
+#define TG_PLAYER_PANEL			(1<<19) // SPLURT - Opt for the old splashscreen player panel
 
 #define DEADMIN_ALWAYS				(1<<0)
 #define DEADMIN_ANTAGONIST			(1<<1)
@@ -95,3 +96,8 @@
 #define CHAOS_MED "Medium"
 #define CHAOS_HIGH "High"
 #define CHAOS_MAX "Maximum"
+
+// 'Be Victim' consent options for preferences panel / antag target HUD
+#define BEVICTIM_NO "No"
+#define BEVICTIM_ASK "Ask"
+#define BEVICTIM_YES "Yes"

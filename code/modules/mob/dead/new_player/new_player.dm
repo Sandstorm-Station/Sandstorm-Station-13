@@ -81,12 +81,15 @@
 	return age_gate_result
 
 /mob/dead/new_player/proc/age_verify()
+	if(!client)
+		message_admins("Blocked [src] from new player panel because their client was called as null during the age_verify proc.")
+		return FALSE
 	if(CONFIG_GET(flag/age_verification) && !check_rights_for(client, R_ADMIN) && !(client.ckey in GLOB.bunker_passthrough)) //make sure they are verified
 		if(!client.set_db_player_flags())
 			message_admins("Blocked [src] from new player panel because age gate could not access player database flags.")
 			return FALSE
 
-		if(!(client.prefs.db_flags & DB_FLAG_AGE_CONFIRMATION_INCOMPLETE)) //completed? Skip
+		if(client.prefs.db_flags & DB_FLAG_AGE_CONFIRMATION_COMPLETE) //completed? Skip
 			return TRUE
 
 		if(!client)
@@ -364,6 +367,8 @@
 	if(QDELETED(src) || !src.client || this_is_like_playing_right != "Yes")
 		ready = PLAYER_NOT_READY
 		src << browse(null, "window=playersetup") //closes the player setup window
+		if(!(client?.prefs.toggles & TG_PLAYER_PANEL))
+			new_player_panel()
 		return FALSE
 
 	var/mob/dead/observer/observer = new()
@@ -694,6 +699,11 @@
 	. = new_character
 	if(.)
 		new_character.key = key		//Manually transfer the key to log them in
+		//splurt change
+		if(jobban_isbanned(new_character, "pacifist"))
+			to_chat(new_character, "<span class='cult'>You are pacification banned. Pacifist has been force applied.</span>")
+			ADD_TRAIT(new_character, TRAIT_PACIFISM, "pacification ban")
+		//
 		new_character.stop_sound_channel(CHANNEL_LOBBYMUSIC)
 		new_character = null
 		qdel(src)

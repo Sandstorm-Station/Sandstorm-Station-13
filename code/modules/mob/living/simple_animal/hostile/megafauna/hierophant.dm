@@ -44,7 +44,6 @@ Difficulty: Normal
 	attack_sound = 'sound/weapons/sonic_jackhammer.ogg'
 	icon_state = "hierophant"
 	icon_living = "hierophant"
-	health_doll_icon = "hierophant"
 	friendly_verb_continuous = "stares down"
 	friendly_verb_simple = "stare down"
 	icon = 'icons/mob/lavaland/hierophant_new.dmi'
@@ -62,9 +61,6 @@ Difficulty: Normal
 	loot = list(/obj/item/hierophant_club)
 	crusher_loot = list(/obj/item/hierophant_club)
 	wander = FALSE
-	achievement_type = /datum/award/achievement/boss/hierophant_kill
-	crusher_achievement_type = /datum/award/achievement/boss/hierophant_crusher
-	score_achievement_type = /datum/award/score/hierophant_score
 	del_on_death = TRUE
 	death_sound = 'sound/magic/repulse.ogg'
 
@@ -81,7 +77,7 @@ Difficulty: Normal
 	var/list/kill_phrases = list("Wsyvgi sj irivkc xettih. Vitemvmrk...", "Irivkc wsyvgi jsyrh. Vitemvmrk...", "Jyip jsyrh. Egxmzexmrk vitemv gcgpiw...", "Kix fiex. Liepmrk...")
 	var/list/target_phrases = list("Xevkix psgexih.", "Iriqc jsyrh.", "Eguymvih xevkix.")
 
-/mob/living/simple_animal/hostile/megafauna/hierophant/Initialize(mapload)
+/mob/living/simple_animal/hostile/megafauna/hierophant/Initialize()
 	. = ..()
 	internal = new/obj/item/gps/internal/hierophant(src)
 	spawned_beacon = new(loc)
@@ -447,7 +443,7 @@ Difficulty: Normal
 
 /mob/living/simple_animal/hostile/megafauna/hierophant/AltClickOn(atom/A) //player control handler(don't give this to a player holy fuck)
 	if(!istype(A) || get_dist(A, src) <= 2)
-		return AltClickNoInteract(src, A)
+		return altclick_listed_turf(A)
 	blink(A)
 
 //Hierophant overlays
@@ -490,8 +486,7 @@ Difficulty: Normal
 	queue_smooth_neighbors(src)
 	return ..()
 
-/obj/effect/temp_visual/hierophant/wall/CanAllowThrough(atom/movable/mover, turf/target)
-	. = ..()
+/obj/effect/temp_visual/hierophant/wall/CanPass(atom/movable/mover, turf/target)
 	if(QDELETED(caster))
 		return FALSE
 	if(mover == caster.pulledby)
@@ -504,6 +499,7 @@ Difficulty: Normal
 		return FALSE
 	if(mover == caster)
 		return TRUE
+	return FALSE
 
 /obj/effect/temp_visual/hierophant/chaser //a hierophant's chaser. follows target around, moving and producing a blast every speed deciseconds.
 	duration = 98
@@ -645,8 +641,8 @@ Difficulty: Normal
 		playsound(L,'sound/weapons/sear.ogg', 50, 1, -4)
 		to_chat(L, "<span class='userdanger'>You're struck by a [name]!</span>")
 		var/limb_to_hit = L.get_bodypart(pick(BODY_ZONE_HEAD, BODY_ZONE_CHEST, BODY_ZONE_R_ARM, BODY_ZONE_L_ARM, BODY_ZONE_R_LEG, BODY_ZONE_L_LEG))
-		var/armor = L.run_armor_check(limb_to_hit, MELEE, "Your armor absorbs [src]!", "Your armor blocks part of [src]!", 50, "Your armor was penetrated by [src]!")
-		L.apply_damage(damage, BURN, limb_to_hit, armor, wound_bonus=CANT_WOUND)
+		var/armor = L.run_armor_check(limb_to_hit, "melee", "Your armor absorbs [src]!", "Your armor blocks part of [src]!", 50, "Your armor was penetrated by [src]!")
+		L.apply_damage(damage, BURN, limb_to_hit, armor, wound_bonus=CANT_WOUND) //skyrat edit
 		if(ishostile(L))
 			var/mob/living/simple_animal/hostile/H = L //mobs find and damage you...
 			if(H.stat == CONSCIOUS && !H.target && H.AIStatus != AI_OFF && !H.client)
@@ -668,7 +664,6 @@ Difficulty: Normal
 			playsound(M,'sound/weapons/sear.ogg', 50, TRUE, -4)
 			M.take_damage(damage, BURN, 0, 0)
 
-
 /obj/effect/hierophant
 	name = "hierophant beacon"
 	desc = "A strange beacon, allowing mass teleportation for those able to use it."
@@ -678,7 +673,7 @@ Difficulty: Normal
 	layer = LOW_OBJ_LAYER
 	anchored = TRUE
 
-/obj/effect/hierophant/ex_act(severity, target, origin)
+/obj/effect/hierophant/ex_act()
 	return
 
 /obj/effect/hierophant/attackby(obj/item/I, mob/user, params)

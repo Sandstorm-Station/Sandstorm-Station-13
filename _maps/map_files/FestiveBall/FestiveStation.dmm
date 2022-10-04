@@ -265,6 +265,7 @@
 	},
 /obj/structure/window/reinforced,
 /obj/effect/spawner/lootdrop/aimodule_harmless,
+/obj/effect/spawner/lootdrop/aimodule_lewd,
 /obj/effect/spawner/lootdrop/aimodule_neutral,
 /obj/structure/window/reinforced{
 	dir = 1
@@ -5067,11 +5068,6 @@
 /obj/item/reagent_containers/pill/patch/silver_sulf,
 /turf/open/floor/plasteel/dark,
 /area/command/heads_quarters/ce)
-"ane" = (
-/obj/structure/filingcabinet/chestdrawer,
-/mob/living/simple_animal/parrot/Polly,
-/turf/open/floor/plasteel/dark,
-/area/command/heads_quarters/ce)
 "anf" = (
 /obj/structure/closet/secure_closet/engineering_chief,
 /obj/machinery/power/apc/highcap/five_k{
@@ -6961,17 +6957,6 @@
 "arC" = (
 /turf/closed/wall/mineral/iron,
 /area/security/warden)
-"arD" = (
-/obj/structure/table,
-/obj/item/folder/red,
-/obj/item/pen,
-/obj/item/hand_labeler,
-/obj/item/book/manual/wiki/security_space_law,
-/obj/machinery/light{
-	dir = 8
-	},
-/turf/open/floor/wood,
-/area/security/warden)
 "arE" = (
 /turf/open/floor/wood,
 /area/security/warden)
@@ -7048,18 +7033,6 @@
 /turf/open/floor/carpet,
 /area/command/heads_quarters/hos)
 "arN" = (
-/turf/open/floor/carpet,
-/area/command/heads_quarters/hos)
-"arO" = (
-/obj/structure/table/wood,
-/obj/item/book/manual/wiki/security_space_law,
-/obj/item/radio/off{
-	pixel_y = 3
-	},
-/obj/item/taperecorder{
-	pixel_x = -4
-	},
-/obj/item/cartridge/detective,
 /turf/open/floor/carpet,
 /area/command/heads_quarters/hos)
 "arP" = (
@@ -9859,12 +9832,6 @@
 /obj/structure/chair/comfy/brown{
 	dir = 4
 	},
-/turf/open/floor/wood,
-/area/service/lawoffice)
-"ayT" = (
-/obj/structure/table/wood,
-/obj/item/pen/red,
-/obj/item/book/manual/wiki/security_space_law,
 /turf/open/floor/wood,
 /area/service/lawoffice)
 "ayU" = (
@@ -14891,25 +14858,6 @@
 	dir = 4
 	},
 /obj/machinery/atmospherics/pipe/heat_exchanging/simple,
-/turf/open/floor/plasteel,
-/area/security/checkpoint/science)
-"aMF" = (
-/obj/structure/table/reinforced,
-/obj/item/book/manual/wiki/security_space_law,
-/obj/item/radio,
-/obj/machinery/status_display/ai{
-	pixel_y = 32
-	},
-/obj/structure/reagent_dispensers/peppertank{
-	pixel_x = 32
-	},
-/obj/effect/turf_decal/tile/red{
-	dir = 1
-	},
-/obj/effect/turf_decal/tile/red,
-/obj/effect/turf_decal/tile/red{
-	dir = 4
-	},
 /turf/open/floor/plasteel,
 /area/security/checkpoint/science)
 "aMG" = (
@@ -33452,18 +33400,6 @@
 /obj/machinery/atmospherics/pipe/simple/scrubbers/hidden,
 /turf/open/floor/plasteel,
 /area/security/checkpoint/medical)
-"bFG" = (
-/obj/structure/table/reinforced,
-/obj/item/book/manual/wiki/security_space_law,
-/obj/item/radio,
-/obj/machinery/camera{
-	c_tag = "Holodeck"
-	},
-/obj/machinery/firealarm{
-	pixel_y = 26
-	},
-/turf/open/floor/plasteel,
-/area/security/checkpoint/medical)
 "bFH" = (
 /obj/structure/table/reinforced,
 /obj/machinery/recharger,
@@ -43071,15 +43007,6 @@
 /obj/structure/window/spawner,
 /turf/open/floor/plasteel/white,
 /area/commons/fitness)
-"caO" = (
-/obj/structure/cable/yellow{
-	icon_state = "4-8"
-	},
-/obj/structure/sign/poster/official/no_erp{
-	pixel_y = 32
-	},
-/turf/open/floor/plasteel/white,
-/area/commons/fitness)
 "caP" = (
 /obj/machinery/door/airlock/medical{
 	name = "Showers"
@@ -44561,24 +44488,6 @@
 /area/security/checkpoint/supply)
 "cej" = (
 /obj/machinery/atmospherics/pipe/simple/scrubbers/hidden,
-/obj/effect/turf_decal/tile/red{
-	dir = 4
-	},
-/obj/effect/turf_decal/tile/red{
-	dir = 1
-	},
-/turf/open/floor/plasteel,
-/area/security/checkpoint/supply)
-"cek" = (
-/obj/structure/table/reinforced,
-/obj/item/book/manual/wiki/security_space_law,
-/obj/item/radio,
-/obj/machinery/camera{
-	c_tag = "Cargo Security Post"
-	},
-/obj/machinery/firealarm{
-	pixel_y = 26
-	},
 /obj/effect/turf_decal/tile/red{
 	dir = 4
 	},
@@ -54553,6 +54462,24 @@
 /mob/living/simple_animal/pet/dog/corgi,
 /turf/open/floor/grass,
 /area/edina)
+"kzs" = (
+/obj/structure/table/reinforced,
+/obj/item/book/manual/splurt_space_law,
+/obj/item/radio,
+/obj/machinery/camera{
+	c_tag = "Cargo Security Post"
+	},
+/obj/machinery/firealarm{
+	pixel_y = 26
+	},
+/obj/effect/turf_decal/tile/red{
+	dir = 4
+	},
+/obj/effect/turf_decal/tile/red{
+	dir = 1
+	},
+/turf/open/floor/plasteel,
+/area/security/checkpoint/supply)
 "kAo" = (
 /obj/structure/statue/gold/hop{
 	anchored = 1
@@ -54633,6 +54560,25 @@
 /obj/structure/chair/stool/bar,
 /turf/open/floor/wood,
 /area/maintenance/bar)
+"lds" = (
+/obj/structure/table/reinforced,
+/obj/item/book/manual/splurt_space_law,
+/obj/item/radio,
+/obj/machinery/status_display/ai{
+	pixel_y = 32
+	},
+/obj/structure/reagent_dispensers/peppertank{
+	pixel_x = 32
+	},
+/obj/effect/turf_decal/tile/red{
+	dir = 1
+	},
+/obj/effect/turf_decal/tile/red,
+/obj/effect/turf_decal/tile/red{
+	dir = 4
+	},
+/turf/open/floor/plasteel,
+/area/security/checkpoint/science)
 "ldU" = (
 /obj/machinery/nanite_program_hub,
 /turf/open/floor/circuit/off,
@@ -54827,6 +54773,15 @@
 	},
 /turf/open/floor/festive/alleyway,
 /area/science)
+"mBJ" = (
+/obj/structure/cable/yellow{
+	icon_state = "4-8"
+	},
+/obj/structure/sign/poster/contraband/yes_erp{
+	pixel_y = 32
+	},
+/turf/open/floor/plasteel/white,
+/area/commons/fitness)
 "mGF" = (
 /obj/effect/turf_decal/weather/snow/corner{
 	dir = 8
@@ -55017,6 +54972,10 @@
 	},
 /turf/open/floor/festive/alleyway,
 /area/science)
+"oez" = (
+/obj/structure/dresser,
+/turf/open/floor/wood,
+/area/security/prison)
 "oeX" = (
 /obj/machinery/mecha_part_fabricator,
 /obj/effect/decal/festive/christmas_ivy_string,
@@ -55080,6 +55039,11 @@
 	},
 /turf/open/floor/wood,
 /area/maintenance/bar)
+"oyq" = (
+/obj/structure/filingcabinet/chestdrawer,
+/mob/living/simple_animal/parrot/Polly,
+/turf/open/floor/plasteel/dark,
+/area/command/heads_quarters/ce)
 "oyS" = (
 /obj/structure/streetdecor/bigtree{
 	pixel_x = -16
@@ -55214,6 +55178,18 @@
 /obj/machinery/vending/assist,
 /turf/open/floor/circuit/off,
 /area/science)
+"pli" = (
+/obj/structure/table/wood,
+/obj/item/book/manual/splurt_space_law,
+/obj/item/radio/off{
+	pixel_y = 3
+	},
+/obj/item/taperecorder{
+	pixel_x = -4
+	},
+/obj/item/cartridge/detective,
+/turf/open/floor/carpet,
+/area/command/heads_quarters/hos)
 "poQ" = (
 /obj/effect/decal/cleanable/cobweb,
 /turf/open/floor/plasteel,
@@ -56130,6 +56106,18 @@
 /obj/structure/sign/directions/cells,
 /turf/closed/wall/mineral/iron,
 /area/security/brig)
+"vhJ" = (
+/obj/structure/table/reinforced,
+/obj/item/book/manual/splurt_space_law,
+/obj/item/radio,
+/obj/machinery/camera{
+	c_tag = "Holodeck"
+	},
+/obj/machinery/firealarm{
+	pixel_y = 26
+	},
+/turf/open/floor/plasteel,
+/area/security/checkpoint/medical)
 "viT" = (
 /obj/effect/turf_decal/stripes/white/full,
 /turf/open/floor/plating/beach/sand,
@@ -56456,6 +56444,17 @@
 	},
 /turf/open/floor/festive/cobblestone,
 /area/edina/street/primary/perimeter)
+"xdI" = (
+/obj/structure/table,
+/obj/item/folder/red,
+/obj/item/pen,
+/obj/item/hand_labeler,
+/obj/item/book/manual/splurt_space_law,
+/obj/machinery/light{
+	dir = 8
+	},
+/turf/open/floor/wood,
+/area/security/warden)
 "xkz" = (
 /obj/effect/festive/street/streetlineem,
 /mob/living/simple_animal/jacq/car_spawner,
@@ -56559,6 +56558,12 @@
 /mob/living/simple_animal/jacq/car_spawner,
 /turf/open/floor/festive/sidewalk,
 /area/edina/street/intersection/servsuppaux)
+"xMg" = (
+/obj/structure/table/wood,
+/obj/item/pen/red,
+/obj/item/book/manual/splurt_space_law,
+/turf/open/floor/wood,
+/area/service/lawoffice)
 "xMH" = (
 /obj/structure/cable{
 	icon_state = "1-4"
@@ -68073,7 +68078,7 @@ aal
 aal
 aal
 amw
-ane
+oyq
 anr
 aop
 api
@@ -77175,7 +77180,7 @@ cjm
 cki
 bHZ
 bLi
-caO
+mBJ
 cfl
 bLi
 cfO
@@ -86671,7 +86676,7 @@ bDD
 bfm
 buz
 bFj
-bFG
+vhJ
 bGP
 bIH
 bbc
@@ -87136,7 +87141,7 @@ aCn
 aKR
 aLv
 aLY
-aMF
+lds
 aNr
 aOg
 aPd
@@ -96344,7 +96349,7 @@ alo
 amh
 amO
 anm
-anD
+oez
 aoI
 apu
 aqk
@@ -100204,7 +100209,7 @@ anD
 apy
 aqr
 anl
-arD
+xdI
 asi
 asi
 atE
@@ -103133,7 +103138,7 @@ bTw
 bDN
 txb
 bVG
-cek
+kzs
 ces
 cez
 bVJ
@@ -104573,7 +104578,7 @@ apc
 apL
 aqC
 ano
-arO
+pli
 asr
 arN
 atV
@@ -105097,7 +105102,7 @@ awg
 axb
 axK
 ayx
-ayT
+xMg
 azx
 azO
 axI

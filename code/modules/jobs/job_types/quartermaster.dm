@@ -17,6 +17,7 @@
 	exp_type_department = EXP_TYPE_SUPPLY
 	considered_combat_role = TRUE
 
+
 	outfit = /datum/outfit/job/quartermaster
 
 	access = list(ACCESS_MAINT_TUNNELS, ACCESS_MAILSORTING, ACCESS_CARGO, ACCESS_CARGO_BOT, ACCESS_QM, ACCESS_MINING,

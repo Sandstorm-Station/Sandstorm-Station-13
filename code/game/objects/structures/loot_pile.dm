@@ -53,8 +53,9 @@
 		SCAVENGING_SPAWN_MOUSE = 10,
 		SCAVENGING_SPAWN_MICE = 5,
 		SCAVENGING_SPAWN_TOM = 1,
-		/obj/item/clothing/gloves/color/yellow = 0.5)
-	unique_loot = list(/obj/item/clothing/gloves/color/yellow = 5, SCAVENGING_SPAWN_TOM = 1)
+		/obj/item/clothing/gloves/color/yellow = 0.5,
+		/obj/item/book/granter/crafting_recipe/trash_cannon = 0.1)
+	unique_loot = list(/obj/item/clothing/gloves/color/yellow = 5, SCAVENGING_SPAWN_TOM = 1, /obj/item/book/granter/crafting_recipe/trash_cannon = 1)
 
 /obj/structure/loot_pile/maint/ComponentInitialize()
 	var/static/safe_maint_items

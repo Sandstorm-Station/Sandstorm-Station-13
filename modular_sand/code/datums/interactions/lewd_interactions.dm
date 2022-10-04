@@ -1,5 +1,6 @@
 // If I could have gotten away with using a tilde in the type path, I would have.
 /datum/interaction/lewd
+	// Description can take in %COCK% as a wildcard to get replaced with a cock/strapon accordingly.
 	description = "Slap their ass."
 	simple_message = "USER slaps TARGET right on the ass!"
 	simple_style = "danger"
@@ -89,17 +90,17 @@
 	if(require_user_penis)
 		switch(require_user_penis)
 			if(REQUIRE_EXPOSED)
-				if(!user.has_penis(REQUIRE_EXPOSED))
+				if(!user.has_penis(REQUIRE_EXPOSED) && !user.has_strapon(REQUIRE_EXPOSED))
 					if(!silent)
 						to_chat(user, "<span class='warning'>Your penis need to be exposed.</span>")
 					return FALSE
 			if(REQUIRE_ANY)
-				if(!user.has_penis(REQUIRE_ANY))
+				if(!user.has_penis(REQUIRE_ANY) && !user.has_strapon(REQUIRE_ANY))
 					if(!silent)
 						to_chat(user, "<span class='warning'>You don't have a penis.</span>")
 					return FALSE
 			if(REQUIRE_UNEXPOSED)
-				if(!user.has_penis(REQUIRE_UNEXPOSED))
+				if(!user.has_penis(REQUIRE_UNEXPOSED) && !user.has_strapon(REQUIRE_UNEXPOSED))
 					if(!silent)
 						to_chat(user, "<span class='warning'>Your penis need to be unexposed.</span>")
 					return FALSE
@@ -308,17 +309,17 @@
 	if(require_target_penis)
 		switch(require_target_penis)
 			if(REQUIRE_EXPOSED)
-				if(!target.has_penis(REQUIRE_EXPOSED))
+				if(!target.has_penis(REQUIRE_EXPOSED) && !target.has_strapon(REQUIRE_EXPOSED))
 					if(!silent)
 						to_chat(user, "<span class='warning'>Their penis needs to be exposed.</span>")
 					return FALSE
 			if(REQUIRE_ANY)
-				if(!target.has_penis(REQUIRE_ANY))
+				if(!target.has_penis(REQUIRE_ANY) && !target.has_strapon(REQUIRE_EXPOSED))
 					if(!silent)
 						to_chat(user, "<span class='warning'>They don't have a penis.</span>")
 					return FALSE
 			if(REQUIRE_UNEXPOSED)
-				if(!target.has_penis(REQUIRE_UNEXPOSED))
+				if(!target.has_penis(REQUIRE_UNEXPOSED) && !target.has_strapon(REQUIRE_EXPOSED))
 					if(!silent)
 						to_chat(user, "<span class='warning'>Their penis needs to be unexposed.</span>")
 					return FALSE
@@ -562,6 +563,8 @@
 		dat += "...have breasts."
 	if(has_penis(REQUIRE_EXPOSED))
 		dat += "...have a penis."
+	if(has_strapon(REQUIRE_EXPOSED))
+		dat += "...have a strapon."
 	if(has_balls(REQUIRE_EXPOSED))
 		dat += "...have a ballsack."
 	if(has_vagina(REQUIRE_EXPOSED))

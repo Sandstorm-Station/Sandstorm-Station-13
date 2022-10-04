@@ -5,6 +5,7 @@ on:
     workflows: [Make changelogs]
     types:
       - completed
+  workflow_dispatch:
 
 jobs:
   compile:
@@ -42,8 +43,8 @@ jobs:
       - name: Commit
         if: steps.value_holder.outputs.CL_ENABLED
         run: |
-          git config --local user.email "85452301+Sandstorm-Bot@users.noreply.github.com"
-          git config --local user.name "Sandstorm Bot"
+          git config --local user.email "action@github.com"
+          git config --local user.name "Changelogs"
           git pull origin master
           git add html/changelogs
           git commit -m "Automatic changelog compile [ci skip]" -a || true

@@ -16,6 +16,11 @@
 	set name = "Show Player Panel"
 	set desc="Edit player (respawn, ban, heal, etc)"
 
+	// Based on client setting, use modern TGUI player panel instead
+	if(usr.client.prefs.use_new_playerpanel)
+		usr.client.holder.show_player_panel2(M)
+		return
+
 	if(!check_rights())
 		return
 
@@ -74,8 +79,6 @@
 		body += "<a href='?_src_=holder;[HrefToken()];borgpanel=[REF(M)]'>BP</a> - "
 	body += "<a href='?priv_msg=[M.ckey]'>PM</a> - "
 	body += "<a href='?_src_=holder;[HrefToken()];subtlemessage=[REF(M)]'>SM</a> - "
-	if (ishuman(M) && M.mind)
-		body += "<a href='?_src_=holder;[HrefToken()];HeadsetMessage=[REF(M)]'>HM</a> - "
 	body += "<a href='?_src_=holder;[HrefToken()];adminplayerobservefollow=[REF(M)]'>FLW</a> - "
 	//Default to client logs if available
 	var/source = LOGSRC_MOB
@@ -102,6 +105,11 @@
 		body+= "<A href='?_src_=holder;[HrefToken()];jobban3=emote;jobban4=[rm]'>Emoteban</A> | "
 	if(QDELETED(M) || QDELETED(usr))
 		return
+	if(jobban_isbanned(M, "pacifist"))
+		body+= "<A href='?_src_=holder;[HrefToken()];jobban3=pacifist;jobban4=[rm]'><font color=red>PacifistBan</font></A> | "
+	else
+		body+= "<A href='?_src_=holder;[HrefToken()];jobban3=pacifist;jobban4=[rm]'>PacifistBan</A> | "
+
 
 	body += "<A href='?_src_=holder;[HrefToken()];showmessageckey=[M.ckey]'>Notes | Messages | Watchlist</A> "
 	if(M.client)

@@ -61,6 +61,8 @@
 	user.update_mutant_bodyparts()
 
 /datum/action/innate/ability/coiling/proc/cancel_coil()
+	if (!currently_coiled)
+		return
 	var/mob/living/carbon/human/H = owner
 	
 	if(!currently_coiling)

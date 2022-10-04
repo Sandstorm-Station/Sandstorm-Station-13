@@ -7,20 +7,21 @@
 
 /datum/interaction/lewd/mount/display_interaction(mob/living/user, mob/living/partner)
 	var/message
-
 	var/u_His = user.p_their()
+	var/genital_name = partner.get_penetrating_genital_name()
 
 	if(partner.is_fucking(user, CUM_TARGET_VAGINA))
-		message = "[pick("rides \the <b>[partner]</b>'s dick.",
-			"forces <b>[partner]</b>'s cock on [u_His] pussy")]"
+		message = "[pick("rides \the <b>[partner]</b>'s [genital_name].",
+			"forces <b>[partner]</b>'s [genital_name] on [u_His] pussy")]"
 	else
-		message = "slides [u_His] pussy onto \the <b>[partner]</b>'s cock."
+		message = "slides [u_His] pussy onto \the <b>[partner]</b>'s [genital_name]."
 		partner.set_is_fucking(user, CUM_TARGET_VAGINA, partner.getorganslot(ORGAN_SLOT_PENIS))
 	playlewdinteractionsound(get_turf(user), pick('modular_sand/sound/interactions/bang1.ogg',
 						'modular_sand/sound/interactions/bang2.ogg',
 						'modular_sand/sound/interactions/bang3.ogg'), 70, 1, -1)
 	user.visible_message("<span class='lewd'><b>\The [user]</b> [message]</span>", ignored_mobs = user.get_unconsenting())
-	partner.handle_post_sex(NORMAL_LUST, CUM_TARGET_VAGINA, user)
+	if(partner.can_penetrating_genital_cum())
+		partner.handle_post_sex(NORMAL_LUST, CUM_TARGET_VAGINA, user)
 	user.handle_post_sex(NORMAL_LUST, CUM_TARGET_PENIS, partner)
 
 /datum/interaction/lewd/mountass
@@ -32,20 +33,21 @@
 
 /datum/interaction/lewd/mountass/display_interaction(mob/living/user, mob/living/partner)
 	var/message
-
 	var/u_His = user.p_their()
+	var/genital_name = partner.get_penetrating_genital_name()
 
 	if(partner.is_fucking(user, CUM_TARGET_ANUS))
-		message = "[pick("rides \the <b>[partner]</b>'s dick.",
-			"forces <b>[partner]</b>'s cock on [u_His] ass")]"
+		message = "[pick("rides \the <b>[partner]</b>'s [genital_name].",
+			"forces <b>[partner]</b>'s [genital_name] on [u_His] ass")]"
 	else
-		message = "lowers [u_His] ass onto \the <b>[partner]</b>'s cock."
+		message = "lowers [u_His] ass onto \the <b>[partner]</b>'s [genital_name]."
 		partner.set_is_fucking(user, CUM_TARGET_ANUS, partner.getorganslot(ORGAN_SLOT_PENIS))
 	playlewdinteractionsound(get_turf(user), pick('modular_sand/sound/interactions/bang1.ogg',
 						'modular_sand/sound/interactions/bang2.ogg',
 						'modular_sand/sound/interactions/bang3.ogg'), 70, 1, -1)
 	user.visible_message("<span class='lewd'><b>\The [user]</b> [message]</span>", ignored_mobs = user.get_unconsenting())
-	partner.handle_post_sex(NORMAL_LUST, CUM_TARGET_ANUS, user)
+	if(partner.can_penetrating_genital_cum())
+		partner.handle_post_sex(NORMAL_LUST, CUM_TARGET_ANUS, user)
 	user.handle_post_sex(NORMAL_LUST, null, partner)
 
 /datum/interaction/lewd/mountface
@@ -76,7 +78,7 @@
 	user.handle_post_sex(LOW_LUST, null, partner)
 
 /datum/interaction/lewd/thighs
-	description = "Smother them using your penis."
+	description = "Smother them using your %COCK%."
 	max_distance = 1
 	require_user_penis = REQUIRE_EXPOSED
 	require_target_mouth = TRUE
@@ -114,10 +116,11 @@
 				else
 					improv = TRUE
 			if("penis")
-				if(user.has_penis())
+				if(user.has_penis() || user.has_strapon())
+					var/genital_name = user.get_penetrating_genital_name()
 					message = pick(list("presses [u_His] weight down onto \the <b>[partner]</b>'s face, blocking [t_His] vision completely.",
-						"forces [u_His] dick and nutsack into \the <b>[partner]</b>'s face as [t_Hes] stuck locked in between [u_His] thighs.",
-						"slips [u_His] cock into \the <b>[partner]</b>'s helpless mouth, keeping [u_His] shaft pressed hard into [t_His] face."))
+						"forces [u_His] [genital_name] into \the <b>[partner]</b>'s face as [t_Hes] stuck locked in between [u_His] thighs.",
+						"slips [u_His] [genital_name] into \the <b>[partner]</b>'s helpless mouth, keeping [u_His] shaft pressed hard into [t_His] face."))
 				else
 					improv = TRUE
 		if(improv)
@@ -133,7 +136,7 @@
 				else
 					improv = TRUE
 			if("penis")
-				if(user.has_penis())
+				if(user.has_penis() || user.has_strapon())
 					message = pick(list(
 						"clambers over \the <b>[partner]</b>'s face and pins [t_Him] down with [u_His] thighs, then slowly inching closer and covering [t_His] eyes and nose with [u_His] leaking erection.",
 						"locks [u_His] legs around \the <b>[partner]</b>'s head before pulling it into [u_His] fat package, smothering [t_Him]."))
@@ -158,4 +161,5 @@
 	user.handle_post_sex(lust_increase, THIGH_SMOTHERING, partner)
 	playlewdinteractionsound(get_turf(user), pick('modular_sand/sound/interactions/oral1.ogg',
 						'modular_sand/sound/interactions/oral2.ogg'), 70, 1, -1)
-	user.handle_post_sex(NORMAL_LUST, CUM_TARGET_MOUTH, partner)
+	if(fucktarget != "penis" || user.can_penetrating_genital_cum())
+		user.handle_post_sex(NORMAL_LUST, CUM_TARGET_MOUTH, partner)

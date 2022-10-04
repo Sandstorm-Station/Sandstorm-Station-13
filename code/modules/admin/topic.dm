@@ -104,6 +104,14 @@
 				else
 					message_admins("[key_name_admin(usr)] tried to create a nuke team. Unfortunately, there were not enough candidates available.")
 					log_admin("[key_name(usr)] failed to create a nuke team.")
+			if("slaver")
+				message_admins("[key_name(usr)] is creating a slaver trader crew...")
+				if(src.makeSlaverTeam())
+					message_admins("[key_name(usr)] created a slave trader crew.")
+					log_admin("[key_name(usr)] created a slave trader crew.")
+				else
+					message_admins("[key_name_admin(usr)] tried to create a slave trader crew. Unfortunately, there were not enough candidates available.")
+					log_admin("[key_name(usr)] failed to create a slave trader crew.")
 			if("ninja")
 				message_admins("[key_name(usr)] spawned a ninja.")
 				log_admin("[key_name(usr)] spawned a ninja.")
@@ -157,6 +165,13 @@
 				else
 					message_admins("[key_name_admin(usr)] tried to create a revenant. Unfortunately, there were no candidates available.")
 					log_admin("[key_name(usr)] failed to create a revenant.")
+			if("qareen")
+				if(src.makeQareen())
+					message_admins("[key_name(usr)] created a qareen.")
+					log_admin("[key_name(usr)] created a qareen.")
+				else
+					message_admins("[key_name_admin(usr)] tried to create a qareen. Unfortunately, there were no candidates available.")
+					log_admin("[key_name(usr)] failed to create a qareen.")
 
 	else if(href_list["forceevent"])
 		if(!check_rights(R_FUN))
@@ -239,6 +254,11 @@
 				banduration = null
 				banjob = null
 			if(BANTYPE_ADMIN_TEMP)
+				if(!banckey || !banreason || !banduration || !banseverity)
+					to_chat(usr, "Not enough parameters (Requires ckey, severity, reason and duration).")
+					return
+				banjob = null
+			if(BANTYPE_PACIFIST)
 				if(!banckey || !banreason || !banduration || !banseverity)
 					to_chat(usr, "Not enough parameters (Requires ckey, severity, reason and duration).")
 					return
@@ -921,6 +941,13 @@
 		else
 			dat += "<td width='20%'><a href='?src=[REF(src)];[HrefToken()];jobban3=bloodsucker;jobban4=[REF(M)]'>Bloodsucker</a></td>"
 
+		dat += "</tr><tr align='center'>" //So things dont get squished.
+
+		//Slave Trader
+		if(jobban_isbanned(M, ROLE_SLAVER) || isbanned_dept)
+			dat += "<td width='20%'><a href='?src=[REF(src)];[HrefToken()];jobban3=slaver;jobban4=[REF(M)]'><font color=red>Slaver</font></a></td>"
+		else
+			dat += "<td width='20%'><a href='?src=[REF(src)];[HrefToken()];jobban3=slaver;jobban4=[REF(M)]'>Slaver</a></td>"
 
 	//Other Roles (black)
 		dat += "<table cellpadding='1' cellspacing='0' width='100%'>"
@@ -1043,7 +1070,7 @@
 							msg += ", [job]"
 					create_message("note", M.key, null, "Banned  from [msg] - [reason]", null, null, 0, 0, null, 0, severity)
 					message_admins("<span class='adminnotice'>[key_name_admin(usr)] banned [key_name_admin(M)] from [msg] for [mins] minutes.</span>")
-					to_chat(M, "<span class='boldannounce'><BIG>You have been [(msg == ("ooc" || "appearance")) ? "banned" : "jobbanned"] by [usr.client.key] from: [msg].</BIG></span>")
+					to_chat(M, "<span class='boldannounce'><BIG>You have been [((msg == "ooc") || (msg == "appearance") || (msg == "pacifist")) ? "banned" : "jobbanned"] by [usr.client.key] from: [msg == "pacifist" ? "using violence" : msg].</BIG></span>")
 					to_chat(M, "<span class='boldannounce'>The reason is: [reason]</span>")
 					to_chat(M, "<span class='danger'>This jobban will be lifted in [mins] minutes.</span>")
 					href_list["jobban2"] = 1 // lets it fall through and refresh
@@ -1069,7 +1096,7 @@
 								msg += ", [job]"
 						create_message("note", M.key, null, "Banned  from [msg] - [reason]", null, null, 0, 0, null, 0, severity)
 						message_admins("<span class='adminnotice'>[key_name_admin(usr)] banned [key_name_admin(M)] from [msg].</span>")
-						to_chat(M, "<span class='boldannounce'><BIG>You have been [(msg == ("ooc" || "appearance")) ? "banned" : "jobbanned"] by [usr.client.key] from: [msg].</BIG></span>")
+						to_chat(M, "<span class='boldannounce'><BIG>You have been [((msg == "ooc") || (msg == "appearance") || (msg == "pacifist")) ? "banned" : "jobbanned"] by [usr.client.key] from: [msg == "pacifist" ? "using violence" : msg].</BIG></span>")
 						to_chat(M, "<span class='boldannounce'>The reason is: [reason]</span>")
 						to_chat(M, "<span class='danger'>Jobban can be lifted only upon request.</span>")
 						href_list["jobban2"] = 1 // lets it fall through and refresh
@@ -2007,21 +2034,15 @@
 			return
 
 		var/mob/M = locate(href_list["CentComReply"])
-		usr.client.admin_headset_message(M, RADIO_CHANNEL_CENTCOM)
+		usr.client.cmd_admin_subtle_headset_message(M, RADIO_CHANNEL_CENTCOM)
 
 	else if(href_list["SyndicateReply"])
 		if(!check_rights(R_ADMIN))
 			return
 
 		var/mob/M = locate(href_list["SyndicateReply"])
-		usr.client.admin_headset_message(M, RADIO_CHANNEL_SYNDICATE)
+		usr.client.cmd_admin_subtle_headset_message(M, RADIO_CHANNEL_SYNDICATE)
 
-	else if(href_list["HeadsetMessage"])
-		if(!check_rights(R_ADMIN))
-			return
-
-		var/mob/M = locate(href_list["HeadsetMessage"])
-		usr.client.admin_headset_message(M)
 //ambition start
 	else if(href_list["ObjectiveRequest"])
 		if(!check_rights(R_ADMIN))
@@ -2082,7 +2103,7 @@
 			return
 
 		var/mob/M = locate(href_list["subtlemessage"])
-		usr.client.cmd_admin_subtle_message(M)
+		usr.client.cmd_admin_subtle_headset_message(M)
 
 	else if(href_list["individuallog"])
 		if(!check_rights(R_ADMIN))

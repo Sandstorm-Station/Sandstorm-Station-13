@@ -140,37 +140,39 @@
 	icon_state = "fuel_high"
 	tank_volume = 5000
 
-/obj/structure/reagent_dispensers/fueltank/boom()
+/obj/structure/reagent_dispensers/fueltank/proc/explode()
 	explosion(get_turf(src), 0, 1, 5, flame_range = 5)
 	qdel(src)
 
-/obj/structure/reagent_dispensers/fueltank/high/boom()
+/obj/structure/reagent_dispensers/fueltank/high/explode()
 	explosion(get_turf(src), 0, 2, 5, flame_range = 12)
 	qdel(src)
+
 
 /obj/structure/reagent_dispensers/fueltank/blob_act(obj/structure/blob/B)
 	boom()
 
 /obj/structure/reagent_dispensers/fueltank/ex_act(severity, target, origin)
-	boom()
+	explode()
 
 /obj/structure/reagent_dispensers/fueltank/fire_act(exposed_temperature, exposed_volume)
-	boom()
+	explode()
 
 /obj/structure/reagent_dispensers/fueltank/zap_act(power, zap_flags, shocked_objects)
 	..() //extend the zap
 	if(ZAP_OBJ_DAMAGE & zap_flags)
-		boom()
+		explode()
 
 /obj/structure/reagent_dispensers/fueltank/bullet_act(obj/item/projectile/P)
 	. = ..()
-	if(!QDELETED(src)) //wasn't deleted by the projectile's effects.
-		if(!P.nodamage && ((P.damage_type == BURN) || (P.damage_type == BRUTE)))
-			var/boom_message = "[ADMIN_LOOKUPFLW(P.firer)] triggered a fueltank explosion via projectile."
-			GLOB.bombers += boom_message
-			message_admins(boom_message)
-			P.firer.log_message("triggered a fueltank explosion via projectile.", LOG_ATTACK)
-			boom()
+	if(QDELETED(src)) //wasn't deleted by the projectile's effects.
+		return
+	if(!P.nodamage && (P.damage_type == BURN) || (P.damage_type == BRUTE))
+		var/boom_message = "[ADMIN_LOOKUPFLW(P.firer)] triggered a fueltank explosion via projectile."
+		GLOB.bombers += boom_message
+		message_admins(boom_message)
+		P.firer.log_message("triggered a fueltank explosion via projectile.", LOG_ATTACK)
+		boom()
 
 /obj/structure/reagent_dispensers/fueltank/attackby(obj/item/I, mob/living/user, params)
 	if(I.tool_behaviour == TOOL_WELDER)
@@ -187,6 +189,9 @@
 			playsound(src, 'sound/effects/refill.ogg', 50, 1)
 			W.update_icon()
 		else
+			if(!HAS_TRAIT(user, TRAIT_DUMB))
+				to_chat("<span class='danger'>That would be stupid.</span>")
+				return
 			var/turf/T = get_turf(src)
 			user.visible_message("<span class='warning'>[user] catastrophically fails at refilling [user.p_their()] [W.name]!</span>", "<span class='userdanger'>That was stupid of you.</span>")
 

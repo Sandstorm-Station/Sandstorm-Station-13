@@ -1,9 +1,10 @@
 import { sortBy } from "common/collections";
 import { capitalize } from "common/string";
 import { useBackend, useLocalState } from "../backend";
-import { Blink, Box, Button, Dimmer, Flex, Icon, Input, Modal, Section, TextArea } from "../components";
+import { Blink, Box, Button, Dimmer, Flex, Icon, Input, Modal, Section, TextArea, LabeledList } from "../components";
 import { Window } from "../layouts";
 import { sanitizeText } from "../sanitize";
+import { formatMoney } from '../format';
 
 const STATE_BUYING_SHUTTLE = "buying_shuttle";
 const STATE_CHANGING_STATUS = "changing_status";
@@ -318,6 +319,8 @@ const PageMain = (props, context) => {
     shuttleCanEvacOrFailReason,
     shuttleLastCalled,
     shuttleRecallable,
+    cargocredits,
+    slaves,
   } = data;
 
   const [callingShuttle, setCallingShuttle] = useLocalState(
@@ -477,6 +480,61 @@ const PageMain = (props, context) => {
           />}
         </Flex>
       </Section>
+
+      {!!slaves.length && (
+        <Section title="Buy Slaves">
+          <LabeledList>
+            <LabeledList.Item
+              label="Cargo credits">
+              {formatMoney(cargocredits, null, true)}cr
+            </LabeledList.Item>
+            <LabeledList.Item
+              label="Info">
+              {"The credits will only be sent once the slave is delivered back to the station."}
+            </LabeledList.Item>
+          </LabeledList>
+
+          <Flex
+            direction="column"
+            pt="1rem">
+            {slaves.map(slave => (
+              <Flex
+                key={slave.name + slave.coords + slave.index}
+                className="candystripe"
+                align="center"
+                p=".5rem">
+
+                <Flex.Item
+                  bold
+                  grow
+                  color="label">
+                  {slave.name}
+                </Flex.Item>
+
+                <Flex.Item>
+                  {slave.toggleransomfeedback}
+                </Flex.Item>
+
+                <Flex.Item
+                  collapsing
+                  align="right"
+                  pl=".5rem"
+                >
+                  <Button
+                    icon={slave.bought ? "times" : ""}
+                    disabled={!slave.cantoggleransom}
+                    content={slave.bought ? "Cancel" : formatMoney(slave.price, null, true) + "cr"}
+                    color={slave.bought ? "bad" : "default"}
+                    onClick={() => act('toggleBought', {
+                      id: slave.id,
+                    })} />
+                </Flex.Item>
+
+              </Flex>
+            ))}
+          </Flex>
+        </Section>
+      )}
 
       {!!canMessageAssociates && messagingAssociates && <MessageModal
         label={`Message to transmit to ${emagged ? "[ABNORMAL ROUTING COORDINATES]" : "CentCom"} via quantum entanglement`}

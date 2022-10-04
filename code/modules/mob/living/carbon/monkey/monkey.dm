@@ -43,6 +43,7 @@ GLOBAL_LIST_INIT(strippable_monkey_items, create_strippable_list(list(
 
 	. = ..()
 
+	ADD_TRAIT(src, TRAIT_PRIMITIVE, ROUNDSTART_TRAIT)
 	if (cubespawned)
 		var/cap = CONFIG_GET(number/monkeycap)
 		if (LAZYLEN(SSmobs.cubemonkeys) > cap)

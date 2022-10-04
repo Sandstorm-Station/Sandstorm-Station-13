@@ -111,7 +111,7 @@ Difficulty: Medium
 	layer = HIGH_OBJ_LAYER //Looks better when its over everything... cause its huge
 	var/obj/item/gps/internal/geepm
 
-/obj/structure/sword/sif/Initialize(mapload)
+/obj/structure/sword/sif/Initialize()
 	. = ..()
 	geepm = new /obj/item/gps/internal/sif(src)
 
@@ -299,7 +299,7 @@ Difficulty: Medium
 		..()
 
 //Immune to explosions when spinning or charging
-/mob/living/simple_animal/hostile/megafauna/sif/ex_act(severity, target, origin)
+/mob/living/simple_animal/hostile/megafauna/sif/ex_act(severity, target)
 	return 0
 
 //stop spinning if you lose the target

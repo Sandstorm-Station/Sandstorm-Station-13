@@ -5,7 +5,9 @@ GLOBAL_LIST_INIT(command_positions, list(
 	"Chief Engineer",
 	"Research Director",
 	"Chief Medical Officer",
-	"Quartermaster"))
+	"Quartermaster",
+	"Blueshield",
+	"Bridge Officer"))
 
 GLOBAL_LIST_INIT(engineering_positions, list(
 	"Chief Engineer",
@@ -19,6 +21,7 @@ GLOBAL_LIST_INIT(medical_positions, list(
 	"Geneticist",
 	"Virologist",
 	"Paramedic",
+	"Psychologist",
 	"Chemist"))
 
 
@@ -50,7 +53,9 @@ GLOBAL_LIST_INIT(security_positions, list(
 	"Head of Security",
 	"Warden",
 	"Detective",
-	"Security Officer"))
+	"Security Officer",
+	"Brig Physician",
+	"Peacekeeper"))
 
 
 GLOBAL_LIST_INIT(nonhuman_positions, list(

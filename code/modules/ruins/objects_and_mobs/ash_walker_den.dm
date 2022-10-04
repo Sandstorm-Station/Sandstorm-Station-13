@@ -12,6 +12,8 @@
 	max_integrity = 200
 	var/faction = list("ashwalker")
 	var/meat_counter = 6
+	var/spawned_obj = /obj/effect/mob_spawn/human/ash_walker
+	var/species = /datum/species/lizard/ashwalker
 	var/datum/team/ashwalkers/ashies
 	var/datum/linked_objective
 

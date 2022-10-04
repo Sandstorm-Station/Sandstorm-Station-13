@@ -1,11 +1,50 @@
-2022-04-01:
+2022-04-04:
+  BlueWildrose:
+  - rscadd: Butts.
+  - rscadd: Butt growth related chemicals. Check out the kinkmate, and check out the
+      hypokit for rectifying genitals.
+  - bugfix: Testicles are actually rendered again. Hidden testicles are available
+      as well.
+  BongaTheProto:
+  - tweak: you'll no longer create a new verification entry if you already linked
+      your discord, and It'll show the id of your current account instead
+  - tweak: Makes it so discord links don't count for join checks if the `valid` field
+      is 0
+  - tweak: You'll wanna make sure you _stay_ in the discord server if you want to
+      play, btw
   Floyd & ActionNinja:
   - soundadd: Some things now make sounds when picked up, thrown, or dropped.
-2022-04-02:
   Putnam3145:
   - bugfix: recycler now emergency stops properly
   SandPoot:
   - bugfix: Fixes some diagonal weirdness that might be going on with npcs.
+  TripleShades:
+  - rscadd: Added cameras to some areas in current rotation stations for parity
+  - rscadd: Added light switches to many areas in current rotation stations
+  - rscadd: Added atmos alarms to a few areas in current rotation stations for parity
+  - rscadd: '[Box] Gives Morgue Maintenance an APC'
+  - rscdel: '[Omega] Removes Arrivals Lobby APC since it''s now part of the hallway'
+  - bugfix: Fixes a few duplicate c_tags for current rotation ruins and stations
+  - bugfix: Fixes some incorrectly placed areas in current rotation stations
+  - bugfix: Fixes pipes that led to nowhere in current rotation stations
+  - bugfix: '[Box] Kitchen Cold Room should now lose power via proper area connection'
+  - bugfix: '[Box] Chief Engineer''s Office should no longer be announced as Command
+      erroneously due to mapping error'
+  - bugfix: '[Omega] Law Office APC should no longer control the Restrooms'
+  kiwilover8:
+  - rscadd: Added tinyfan to mining shuttle airlock
+  - rscadd: Added surgery table to a maint room
+  - tweak: moved license plate press to cargo warehouse
+  - rscadd: Droppers and cables in xenobio
+  - rscadd: Space sharks to the ayylmao space ruin
+  - tweak: Gary is now registered as a unique pet
+  radar651:
+  - balance: rebalanced shotguns to not be slow to reload. The check for the 8/10s
+      of a second delay has been removed
+  - balance: Buckshot pellets have been boasted to 12.5 per pellet
+  - balance: slugs made more useful, now have some AP qualities
+  - balance: Beanbags and Rubber pellet shots do more stamina damage
+  - balance: Changed the Tommy gun from Huge to Bulky so it can actually be stowed.
 2022-04-06:
   SandPoot:
   - balance: Bluespace miners cannot mine whilst unanchored, as god intended.
@@ -14,6 +53,23 @@
   - code_imp: Made bluespace miner code less shit.
   - rscadd: Added custom statues. Create carving block from 5 sheets of material then
       use a chisel on it.
+  radar651:
+  - rscadd: Added loot crates to cargo, a 1k and a 10k crate.
+  - rscadd: Added more stuff to the black market, fleshing it out more
+  - rscadd: Broken hud loot spawner and Broken huds
+  - rscdel: Cypto miners are no long researchable, instead they are found in loot
+      crates
+  - rscdel: Removed the broken cycler shotgun from the Black market, its currently
+      unfixable
+  - tweak: Brig timers now go above 15 minutes and the presets are now 5, 10 and 15.
+  - tweak: A lot of the black market items spawn rate
+  - balance: Due to over mining, price increase across the black market
+  - balance: Hunting rifle and Hunting shotgun can no longer be one handed
+  - bugfix: Brush guns and Lever guns can now be reloaded. They had to be recoded
+  - bugfix: Some of the uniform sprites
+2022-04-07:
+  BongaTheProto:
+  - code_imp: Moves splurt's folder in code over to its own folder like sandstorm
 2022-04-08:
   AnthurK:
   - bugfix: Fixes bots trying to path through dense corners.
@@ -23,13 +79,26 @@
       doesn't.
   SandPoot:
   - bugfix: Make changelogs actually get added!
+  ZSpitfire:
+  - imageadd: reworked engineering hardsuits sprites
+  - bugfix: Fixed hardsuit icon states
+  kiwilover8:
+  - rscadd: tank holders to medbay
+  - rscadd: various flavor items
+  - rscadd: Posialert console to robo
+  - bugfix: Missing atmospherics machinery
 2022-04-09:
+  AManWithAToolbox:
+  - bugfix: Fixed a couple bugs with ashwalkers!
   AnthurK:
   - bugfix: Fixes bots trying to path through dense corners.
   Arturlang:
   - rscadd: Adds stasis beds and related mechanics
   - rscdel: Removed mapped in sleepers from station maps. Shuttles have it but centcomm
       doesn't.
+  NatSCP:
+  - rscadd: John Syndicate
+  - tweak: Replaced Circuitry with Botany
   SandPoot:
   - bugfix: Medigaxes can actually be built now.
   - bugfix: The action button for leaving mechs actually works!
@@ -39,14 +108,26 @@
   - bugfix: fixed a few projectile lines
   - code_imp: changed a large block of the projectile code
   - refactor: refactored most of the projectile code
+  kiwilover8:
+  - rscadd: Added tinyfans to the default escape pod door
   tiviplus, lolman360, SandPoot:
   - refactor: /obj/mecha > /obj/vehicle/sealed/mecha
+2022-04-10:
+  kiwilover8:
+  - tweak: reverts the shitshow with the terrible fucking stasis beds
 2022-04-11:
   SandPoot:
   - tweak: Tweaks clothing checks to be more precise if something is covering something
       else.
   - bugfix: Splits interactions that expected you to only have one genital.
   - code_imp: Files have been created for labeling reasons.
+2022-04-13:
+  BongaTheProto and Inanichts:
+  - rscadd: added armpit fucking verbs
+  - rscadd: added... other verbs
+  - rscadd: crocin and hexacrocin flood events
+  - imageadd: new sprites for butts!!
+  - bugfix: Attempts to fix the jukebox on the syndie base
 2022-04-15:
   BlueWildrose:
   - rscadd: Added carcinisoprojection jelly, a limb regrowth chemical made from xenobiology's
@@ -67,12 +148,51 @@
   - rscadd: Added deadminning preferences (only affects admins).
   maxspells:
   - expansion: Surgery steps play sound effects appropriate to the step
+2022-04-20:
+  BongaTheProto:
+  - rscadd: a lot of thing, really! it's like 1180 files changed
+  - rscadd: naked flavor text
+  - rscadd: some new character sprites wooohooo!
+  - rscadd: RBMK lavaland ruin
+  - rscadd: multi-tile poddoors...? (unused in maps still)
+  - rscadd: Size Normalizer items in loadout for big people who sometimes feel too
+      big for the big station
+  - imageadd: new gremlin sprites
+  - code_imp: Updates us with upstream's changes
+  - code_imp: Changes the way interactions work, kind of
+  - bugfix: Fixes a lot of bugs
+  - bugfix: Fixes smexi (nah jk unless????)
 2022-04-21:
   BongaTheProto:
   - bugfix: fixes breastfeeding interactions
+  ChungusGamer666:
+  - rscadd: added cuddling interactions
   SandPoot:
   - bugfix: Mobs lacking the vars in GLOB.slots won't create infinite runtimes anymore.
+2022-04-26:
+  Hideyoshi1:
+  - rscadd: Qareen antagonist
+  - imageadd: copy of revenant sprites in modular_splurt - will be modified soon
+  - code_imp: added a limit on the Tetris prizes + null and type checks for several
+      runtimes
+  - refactor: _lewd.dm - for the tgui chugging when in an interact_with menu - no
+      longer runtimes
+  - admin: message for when someone uses a Tetris machine - along with their score
+      and prizes
+2022-04-27:
+  BongaTheProto:
+  - rscadd: Rest and drag yourself into a table to crawl under it
+  - rscadd: PDA function for borgs
+  - rscadd: Tau and Smolstation updates
+  - imageadd: adds new body markings
+  - imageadd: New gremlim style
+  - bugfix: Jumpsuits no longer spawn unders... I think
 2022-04-28:
+  PurpleFenn:
+  - rscadd: Check-Out verb, acts like examine with flavor to the user you're examining
+2022-04-29:
+  AshTheDerg:
+  - bugfix: Replaced missing Ghost Role Hotel Staff suit with one that does exist.
   Putnam3145:
   - rscadd: 'Methane-based planetary atmospheres tweak: Advanced fire extinguishers
       can now remove non-plasma flammable gases'

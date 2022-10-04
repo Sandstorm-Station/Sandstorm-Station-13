@@ -18,6 +18,9 @@
 			var/temp_score = text2num(href_list["tetrisScore"])
 			say("YOUR SCORE: [temp_score]!")
 			var/reward = round(temp_score/REWARD_DIVISOR)
+			message_admins("[ADMIN_LOOKUPFLW(usr)] used [src] with score [temp_score] and total_rewards [reward]!!!")
+			if(reward > 5)
+				reward = 4
 			prizevend(usr, reward)
 	return
 

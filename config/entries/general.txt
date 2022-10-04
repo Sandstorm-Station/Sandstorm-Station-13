@@ -230,6 +230,12 @@ RANDOM_LAWS corporate
 ## meme laws. Honk
 #RANDOM_LAWS buildawall
 
+## lewd laws. Take a guess.
+RANDOM_LAWS slut
+RANDOM_LAWS shebang
+RANDOM_LAWS milker
+RANDOM_LAWS vore_pred
+
 ## If weighted laws are selected (DEFAULT_LAWS = 3),
 ## then an AI's starting laws will be determined by the weights of these values
 
@@ -261,6 +267,12 @@ LAW_WEIGHT thermodynamic,0
 LAW_WEIGHT ratvar,0
 LAW_WEIGHT buildawall,0
 
+## Lewd laws. Coom.
+LAW_WEIGHT slut,0
+LAW_WEIGHT shebang,0
+LAW_WEIGHT milker,0
+LAW_WEIGHT vore_pred,0
+
 ##------------------------------------------------
 
 ## SILICON LAW MAX AMOUNT ###
@@ -283,7 +295,7 @@ ROUNDSTART_RACES synthliz
 ROUNDSTART_RACES plasmaman
 #ROUNDSTART_RACES shadow
 ROUNDSTART_RACES felinid
-ROUNDSTART_RACES dwarf
+#ROUNDSTART_RACES dwarf
 ROUNDSTART_RACES ethereal
 
 ## Races that are better than humans in some ways, but worse in others
@@ -316,6 +328,17 @@ ROUNDSTART_RACES slimeperson
 ROUNDSTART_RACES guilmon
 ROUNDSTART_RACES ipc
 ROUNDSTART_RACES arachnid
+
+## SPLURT races (Or races that for some reason didn't appear in this txt file originally for whatever reason)
+ROUNDSTART_RACES mammal_synthetic
+ROUNDSTART_RACES dullahan
+ROUNDSTART_RACES spectre_bot
+ROUNDSTART_RACES vampire_roundstart
+ROUNDSTART_RACES shadekin
+ROUNDSTART_RACES undead_mammal
+ROUNDSTART_RACES undead_insect
+ROUNDSTART_RACES ghoul_lizard
+ROUNDSTART_RACES podweak
 
 ##-------------------------------------------------------------------------------------------
 
@@ -470,7 +493,7 @@ BOX_RANDOM_ENGINE Box TEG,3
 BOX_RANDOM_ENGINE Box Empty,0
 BOX_RANDOM_ENGINE Box Antimatter,1
 BOX_RANDOM_ENGINE Box P.A.C.M.A.N,1
-BOX_RANDOM_ENGINE Box RBMK,3
+BOX_RANDOM_ENGINE Box RBMK,0
 
 
 ## Whether the suicide verb is allowed.

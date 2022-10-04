@@ -188,23 +188,6 @@
 	},
 /turf/open/floor/plasteel/freezer,
 /area/awaymission/cabin)
-"aD" = (
-/obj/effect/decal/cleanable/dirt,
-/obj/structure/cable{
-	icon_state = "0-8"
-	},
-/obj/machinery/power/smes/magical,
-/turf/open/floor/plating,
-/area/awaymission/cabin)
-"aE" = (
-/obj/effect/decal/cleanable/cobweb/cobweb2,
-/obj/effect/baseturf_helper/asteroid/snow,
-/obj/effect/decal/cleanable/dirt,
-/obj/machinery/power/port_gen/pacman,
-/turf/open/floor/plating{
-	icon_state = "panelscorched"
-	},
-/area/awaymission/cabin)
 "aF" = (
 /obj/machinery/power/apc{
 	dir = 1;
@@ -645,6 +628,17 @@
 	},
 /obj/machinery/processor,
 /turf/open/floor/plasteel/freezer,
+/area/awaymission/cabin)
+"ca" = (
+/obj/structure/table/reinforced,
+/obj/item/clothing/head/welding{
+	pixel_y = 4
+	},
+/obj/effect/decal/cleanable/dirt,
+/obj/item/stack/sheet/mineral/plasma{
+	amount = 26
+	},
+/turf/open/floor/plating,
 /area/awaymission/cabin)
 "ce" = (
 /obj/structure/chair/wood{
@@ -2430,22 +2424,6 @@
 	},
 /turf/open/floor/plasteel/dark,
 /area/awaymission/cabin/caves/mountain)
-"gB" = (
-/obj/effect/turf_decal/tile/blue{
-	dir = 4
-	},
-/obj/effect/turf_decal/tile/blue{
-	dir = 1
-	},
-/obj/effect/turf_decal/tile/blue{
-	dir = 8
-	},
-/obj/effect/turf_decal/tile/blue,
-/obj/structure/sign/poster/official/no_erp{
-	pixel_y = -32
-	},
-/turf/open/floor/plasteel/dark,
-/area/awaymission/cabin/caves/mountain)
 "gC" = (
 /obj/effect/baseturf_helper/asteroid/snow,
 /turf/closed/indestructible/rock/snow/ice,
@@ -2852,17 +2830,6 @@
 /obj/item/clothing/suit/hooded/wintercoat/engineering,
 /obj/item/clothing/suit/hooded/wintercoat/engineering,
 /obj/effect/decal/cleanable/dirt,
-/turf/open/floor/plating,
-/area/awaymission/cabin)
-"hv" = (
-/obj/structure/table/reinforced,
-/obj/item/clothing/head/welding{
-	pixel_y = 4
-	},
-/obj/effect/decal/cleanable/dirt,
-/obj/item/stack/sheet/mineral/plasma{
-	amount = 26
-	},
 /turf/open/floor/plating,
 /area/awaymission/cabin)
 "hw" = (
@@ -5563,6 +5530,14 @@
 	},
 /turf/open/floor/plasteel/cafeteria,
 /area/awaymission/cabin)
+"pw" = (
+/obj/effect/decal/cleanable/dirt,
+/obj/structure/cable{
+	icon_state = "0-8"
+	},
+/obj/machinery/power/smes/magical,
+/turf/open/floor/plating,
+/area/awaymission/cabin)
 "rn" = (
 /obj/structure/cable{
 	icon_state = "1-8"
@@ -5634,6 +5609,22 @@
 	},
 /turf/open/floor/plasteel/cafeteria,
 /area/awaymission/cabin)
+"CS" = (
+/obj/effect/turf_decal/tile/blue{
+	dir = 4
+	},
+/obj/effect/turf_decal/tile/blue{
+	dir = 1
+	},
+/obj/effect/turf_decal/tile/blue{
+	dir = 8
+	},
+/obj/effect/turf_decal/tile/blue,
+/obj/structure/sign/poster/contraband/yes_erp{
+	pixel_y = -32
+	},
+/turf/open/floor/plasteel/dark,
+/area/awaymission/cabin/caves/mountain)
 "DU" = (
 /obj/effect/decal/cleanable/dirt,
 /obj/structure/cable{
@@ -5682,6 +5673,15 @@
 	icon_state = "4-8"
 	},
 /turf/open/floor/carpet,
+/area/awaymission/cabin)
+"My" = (
+/obj/effect/decal/cleanable/cobweb/cobweb2,
+/obj/effect/baseturf_helper/asteroid/snow,
+/obj/effect/decal/cleanable/dirt,
+/obj/machinery/power/port_gen/pacman,
+/turf/open/floor/plating{
+	icon_state = "panelscorched"
+	},
 /area/awaymission/cabin)
 "MB" = (
 /obj/structure/chair/wood{
@@ -10390,7 +10390,7 @@ fp
 fp
 fp
 fP
-gB
+CS
 fp
 fp
 fm
@@ -36478,7 +36478,7 @@ ax
 WX
 DU
 ed
-hv
+ca
 an
 hl
 bd
@@ -36732,7 +36732,7 @@ ac
 ac
 dB
 ax
-aD
+pw
 aM
 du
 hw
@@ -36989,7 +36989,7 @@ ac
 gP
 dB
 ax
-aE
+My
 aQ
 dv
 an

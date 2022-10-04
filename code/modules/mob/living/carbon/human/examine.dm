@@ -165,6 +165,9 @@
 		for(var/obj/item/organ/genital/dicc in internal_organs)
 			if(istype(dicc) && dicc.is_exposed())
 				. += "[dicc.desc]"
+				if((src == user || HAS_TRAIT(user, TRAIT_GFLUID_DETECT)) && ((dicc?.genital_flags & GENITAL_FUID_PRODUCTION) || ((dicc?.linked_organ?.genital_flags & GENITAL_FUID_PRODUCTION) && !dicc?.linked_organ?.is_exposed())))
+					var/datum/reagent/cummies = find_reagent_object_from_type(dicc?.get_fluid_id())
+					. += "You smell <span style='color:[cummies.color]';>[cummies.name]</span> brewing inside..."
 	if(user.client?.prefs.cit_toggles & VORE_EXAMINE)
 		var/cursed_stuff = attempt_vr(src,"examine_bellies",args) //vore Code
 		if(cursed_stuff)
@@ -207,10 +210,13 @@
 
 	var/list/missing = list(BODY_ZONE_HEAD, BODY_ZONE_CHEST, BODY_ZONE_L_ARM, BODY_ZONE_R_ARM, BODY_ZONE_L_LEG, BODY_ZONE_R_LEG)
 	var/list/disabled = list()
+	var/list/writing = list()
 	for(var/X in bodyparts)
 		var/obj/item/bodypart/BP = X
 		if(BP.disabled)
 			disabled += BP
+		if(BP.writtentext)
+			writing += BP
 		missing -= BP.body_zone
 		for(var/obj/item/I in BP.embedded_objects)
 			if(I.isEmbedHarmless())
@@ -382,6 +388,14 @@
 		else
 			msg += "[t_He] has wild, spacey eyes and they don't look like they're all there.\n"
 
+	for(var/X in writing)
+		if(!w_uniform)
+			var/obj/item/bodypart/BP = X
+			msg += "<span class='notice'>[capitalize(t_He)] has \"[html_encode(BP.writtentext)]\" written on [t_his] [BP.name].</span>\n"
+	for(var/obj/item/organ/genital/G in internal_organs)
+		if(length(G.writtentext) && istype(G) && G.is_exposed())
+			msg += "<span class='notice'>[capitalize(t_He)] has \"[html_encode(G.writtentext)]\" written on [t_his] [G.name].</span>\n"
+
 	if(isliving(user))
 		var/mob/living/L = user
 		if(src != user && HAS_TRAIT(L, TRAIT_EMPATH) && !appears_dead)
@@ -445,6 +459,10 @@
 
 	if (length(msg))
 		. += "<span class='warning'>[msg.Join("")]</span>"
+
+	if(HAS_TRAIT(src, TRAIT_IN_HEAT) && (HAS_TRAIT(user, TRAIT_HEAT_DETECT) || src == user))
+		. += ""
+		. += "<span class='love'>[t_He] [t_is] currently in [gender == MALE ? "rut" : "heat"].</span>"
 
 	var/trait_exam = common_trait_examine()
 	if (!isnull(trait_exam))

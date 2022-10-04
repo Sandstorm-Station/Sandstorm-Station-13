@@ -34,6 +34,11 @@ export const PlayerPlaytimes = (props, context) => {
               </Table.Cell>
               <Table.Cell>
                 <center>
+                  Flags
+                </center>
+              </Table.Cell>
+              <Table.Cell>
+                <center>
                   Actions
                 </center>
               </Table.Cell>
@@ -70,6 +75,18 @@ export const PlayerPlaytimes = (props, context) => {
                         <Tooltip content="This player is observing">
                           <Icon name="ghost" />
                         </Tooltip>))} {client.name}
+                  </center>
+                </Table.Cell>
+                <Table.Cell>
+                  <center>
+                    {client.flags.map(flag => (
+                      <Button
+                        key={flag.icon}
+                        icon={flag.icon}
+                        color="average"
+                        tooltip={flag.tooltip}
+                      />
+                    ))}
                   </center>
                 </Table.Cell>
                 <Table.Cell>

@@ -19,67 +19,12 @@
 	admin_ticket_log(M, msg)
 	SSblackbox.record_feedback("tally", "admin_verb", 1, "Drop Everything") //If you are copy-pasting this, ensure the 2nd parameter is unique to the new proc!
 
+// Unless I am dent-skulled, there is no way to do (mob/M in GLOB.mob_list, someothervar) with context-menu buttons, hence the instant proc call.
 /client/proc/cmd_admin_subtle_message(mob/M in GLOB.mob_list)
 	set category = "Admin.Events"
 	set name = "Subtle Message"
 
-	if(!ismob(M))
-		return
-	if(!check_rights(R_ADMIN))
-		return
-
-	message_admins("[key_name_admin(src)] has started answering [ADMIN_LOOKUPFLW(M)]'s prayer.")
-	var/msg = input("Message:", text("Subtle PM to [M.key]")) as text|null
-
-	if (!msg)
-		message_admins("[key_name_admin(src)] decided not to answer [ADMIN_LOOKUPFLW(M)]'s prayer")
-		return
-	if(usr)
-		if (usr.client)
-			if(usr.client.holder)
-				to_chat(M, "<i>You hear a voice in your head... <b>[msg]</i></b>")
-
-	log_admin("SubtlePM: [key_name(usr)] -> [key_name(M)] : [msg]")
-	msg = "<span class='adminnotice'><b> SubtleMessage: [key_name_admin(usr)] -> [key_name_admin(M)] :</b> [msg]</span>"
-	message_admins(msg)
-	admin_ticket_log(M, msg)
-	SSblackbox.record_feedback("tally", "admin_verb", 1, "Subtle Message") //If you are copy-pasting this, ensure the 2nd parameter is unique to the new proc!
-
-/client/proc/cmd_admin_headset_message(mob/M in GLOB.mob_list)
-	set category = "Admin.Events"
-	set name = "Headset Message"
-
-	admin_headset_message(M)
-
-/client/proc/admin_headset_message(mob/M in GLOB.mob_list, sender = null)
-	var/mob/living/carbon/human/H = M
-
-	if(!check_rights(R_ADMIN))
-		return
-
-	if(!istype(H))
-		to_chat(usr, "This can only be used on instances of type /mob/living/carbon/human")
-		return
-	if(!istype(H.ears, /obj/item/radio/headset))
-		to_chat(usr, "The person you are trying to contact is not wearing a headset.")
-		return
-
-	if (!sender)
-		sender = input("Who is the message from?", "Sender") as null|anything in list(RADIO_CHANNEL_CENTCOM,RADIO_CHANNEL_SYNDICATE)
-		if(!sender)
-			return
-
-	message_admins("[key_name_admin(src)] has started answering [key_name_admin(H)]'s [sender] request.")
-	var/input = input("Please enter a message to reply to [key_name(H)] via their headset.","Outgoing message from [sender]", "") as text|null
-	if(!input)
-		message_admins("[key_name_admin(src)] decided not to answer [key_name_admin(H)]'s [sender] request.")
-		return
-
-	log_directed_talk(mob, H, input, LOG_ADMIN, "reply")
-	message_admins("[key_name_admin(src)] replied to [key_name_admin(H)]'s [sender] message with: \"[input]\"")
-	to_chat(H, "You hear something crackle in your ears for a moment before a voice speaks.  \"Please stand by for a message from [sender == "Syndicate" ? "your benefactor" : "Central Command"].  Message as follows[sender == "Syndicate" ? ", agent." : ":"] <span class='bold'>[input].</span> Message ends.\"")
-
-	SSblackbox.record_feedback("tally", "admin_verb", 1, "Headset Message") //If you are copy-pasting this, ensure the 2nd parameter is unique to the new proc!
+	cmd_admin_subtle_headset_message(M)
 
 /client/proc/cmd_admin_mod_antag_rep(client/C in GLOB.clients, var/operation)
 	set category = "Special Verbs"
@@ -465,6 +410,10 @@ Traitors and the like can also be revived with the previous role mostly intact.
 			new_character.forceMove(pick(GLOB.nukeop_start))
 			var/datum/antagonist/nukeop/N = new_character.mind.has_antag_datum(/datum/antagonist/nukeop,TRUE)
 			N.equip_op()
+		if(ROLE_SLAVER)
+			new_character.forceMove(pick(GLOB.slaver_start))
+			var/datum/antagonist/slaver/S = new_character.mind.has_antag_datum(/datum/antagonist/slaver,TRUE)
+			S.equip_slaver()
 		if(ROLE_NINJA)
 			var/list/ninja_spawn = list()
 			for(var/obj/effect/landmark/carpspawn/L in GLOB.landmarks_list)
@@ -570,6 +519,14 @@ Traitors and the like can also be revived with the previous role mostly intact.
 	log_admin("[key_name(src)] has created a command report: [input]")
 	message_admins("[key_name_admin(src)] has created a command report")
 	SSblackbox.record_feedback("tally", "admin_verb", 1, "Create Command Report") //If you are copy-pasting this, ensure the 2nd parameter is unique to the new proc!
+
+	// Save this message to be shown on the TGUI command messages panel (centcom_communications.dm)
+	var/list/message_log = list()
+	message_log["message"] = input
+	message_log["sender_name"] = command_name()
+	message_log["time_sent"] = world.time
+	message_log["handled"] = TRUE
+	LAZYADD(GLOB.centcom_communications_messages, list(message_log))
 
 /client/proc/cmd_admin_make_priority_announcement()
 	set category = "Admin.Events"
@@ -1097,7 +1054,7 @@ Traitors and the like can also be revived with the previous role mostly intact.
 
 	var/adding_hud = !has_antag_hud()
 
-	for(var/hudtype in list(DATA_HUD_SECURITY_ADVANCED, DATA_HUD_MEDICAL_ADVANCED, DATA_HUD_DIAGNOSTIC_ADVANCED)) // add data huds
+	for(var/hudtype in list(DATA_HUD_SECURITY_ADVANCED, DATA_HUD_MEDICAL_ADVANCED, DATA_HUD_DIAGNOSTIC_ADVANCED, DATA_HUD_ANTAGTARGET)) // add data huds
 		var/datum/atom_hud/H = GLOB.huds[hudtype]
 		(adding_hud) ? H.add_hud_to(usr) : H.remove_hud_from(usr)
 	for(var/datum/atom_hud/antag/H in GLOB.huds) // add antag huds
@@ -1332,7 +1289,8 @@ Traitors and the like can also be revived with the previous role mostly intact.
 	if(!check_rights(R_ADMIN) || !check_rights(R_FUN))
 		return
 
-	var/list/punishment_list = list(ADMIN_PUNISHMENT_PIE,
+	var/list/punishment_list = list(
+		ADMIN_PUNISHMENT_PIE,
 		ADMIN_PUNISHMENT_CUSTOM_PIE,
 		ADMIN_PUNISHMENT_FIREBALL,
 		ADMIN_PUNISHMENT_LIGHTNING,
@@ -1350,15 +1308,24 @@ Traitors and the like can also be revived with the previous role mostly intact.
 		ADMIN_PUNISHMENT_BLEED,
 		ADMIN_PUNISHMENT_SCARIFY,
 		ADMIN_PUNISHMENT_CLUWNE,
-		ADMIN_PUNISHMENT_GOODBYE)
+		ADMIN_PUNISHMENT_GOODBYE,
+		ADMIN_PUNISHMENT_TABLETIDESTATIONWIDE,
+		ADMIN_PUNISHMENT_FAKEBWOINK,
+		ADMIN_PUNISHMENT_NUGGET,
+		ADMIN_PUNISHMENT_BREADIFY,
+		ADMIN_PUNISHMENT_BOOKIFY,
+		ADMIN_PUNISHMENT_BONK)
 
-	var/punishment = input("Choose a punishment", "DIVINE SMITING") as null|anything in punishment_list
+	var/punishment = tgui_input_list(usr, "Choose a punishment", "Divine Smiting", punishment_list)
 
 	if(QDELETED(target) || !punishment)
 		return
 
 	switch(punishment)
 		if(ADMIN_PUNISHMENT_LIGHTNING)
+			if(prob(75))
+				playsound(target, 'modular_splurt/sound/misc/NOW.ogg', 75, FALSE)
+				sleep(4 SECONDS)
 			var/turf/T = get_step(get_step(target, NORTH), NORTH)
 			T.Beam(target, icon_state="lightning[rand(1,12)]", time = 5)
 			target.adjustFireLoss(75)
@@ -1528,6 +1495,51 @@ Traitors and the like can also be revived with the previous role mostly intact.
 				return
 			else
 				C.pregoodbye(C) //sandstorm punish and ends here.
+		if(ADMIN_PUNISHMENT_TABLETIDESTATIONWIDE) //SPLURT punishments start here
+			priority_announce(html_decode("[target] has brought the wrath of the gods upon themselves and is now being tableslammed across the station. Please stand by."), null, 'sound/misc/announce.ogg', "CentCom")
+			var/list/areas = list()
+			for(var/area/A in world)
+				if(A.z == SSmapping.station_start)
+					areas += A
+			SEND_SOUND(target, sound('modular_splurt/sound/misc/slamofthenorthstar.ogg',volume=60))
+			for(var/area/A in areas)
+				for(var/obj/structure/table/T in A)
+					T.tablepush(target, target)
+					sleep(1)
+		if(ADMIN_PUNISHMENT_FAKEBWOINK)
+			SEND_SOUND(target, 'sound/effects/adminhelp.ogg')
+		if(ADMIN_PUNISHMENT_NUGGET)
+			if (!iscarbon(target))
+				return
+			var/mob/living/carbon/carbon_target = target
+			var/timer = 2 SECONDS
+			for (var/_limb in carbon_target.bodyparts)
+				var/obj/item/bodypart/limb = _limb
+				if (limb.body_part == HEAD || limb.body_part == CHEST)
+					continue
+				addtimer(CALLBACK(limb, /obj/item/bodypart/.proc/dismember), timer)
+				addtimer(CALLBACK(GLOBAL_PROC, .proc/playsound, carbon_target, 'modular_splurt/sound/effects/cartoon_pop.ogg', 70), timer)
+				addtimer(CALLBACK(carbon_target, /mob/living/.proc/spin, 4, 1), timer - 0.4 SECONDS)
+				timer += 2 SECONDS
+		if(ADMIN_PUNISHMENT_BREADIFY)
+			#define BREADIFY_TIME (5 SECONDS)
+			var/mutable_appearance/bread_appearance = mutable_appearance('icons/obj/food/burgerbread.dmi', "bread")
+			var/mutable_appearance/transform_scanline = mutable_appearance('modular_splurt/icons/effects/effects.dmi', "transform_effect")
+			target.transformation_animation(bread_appearance, time = BREADIFY_TIME, transform_overlay=transform_scanline, reset_after=TRUE)
+			addtimer(CALLBACK(GLOBAL_PROC, .proc/breadify, target), BREADIFY_TIME)
+			#undef BREADIFY_TIME
+		if(ADMIN_PUNISHMENT_BOOKIFY)
+			#define BOOKIFY_TIME (2 SECONDS)
+			var/mutable_appearance/book_appearance = mutable_appearance('icons/obj/library.dmi', "book")
+			var/mutable_appearance/transform_scanline = mutable_appearance('modular_splurt/icons/effects/effects.dmi', "transform_effect")
+			target.transformation_animation(book_appearance, time = BOOKIFY_TIME, transform_overlay=transform_scanline, reset_after=TRUE)
+			addtimer(CALLBACK(GLOBAL_PROC, .proc/bookify, target), BOOKIFY_TIME)
+			playsound(target, 'modular_splurt/sound/misc/bookify.ogg', 60, 1)
+			#undef BOOKIFY_TIME
+		if(ADMIN_PUNISHMENT_BONK)
+			playsound(target, 'modular_splurt/sound/misc/bonk.ogg', 100, 1)
+			target.AddElement(/datum/element/squish, 60 SECONDS)
+			to_chat(target, "<span class='warning big'>Bonk.</span>")
 
 	punish_log(target, punishment)
 
@@ -1714,7 +1726,7 @@ Traitors and the like can also be revived with the previous role mostly intact.
 					if(!source)
 						return
 			REMOVE_TRAIT(D,chosen_trait,source)
-
+/*
 /client/proc/spawn_floor_cluwne()
 	set category = "Admin.Fun"
 	set name = "Unleash Floor Cluwne"
@@ -1734,3 +1746,4 @@ Traitors and the like can also be revived with the previous role mostly intact.
 		new /mob/living/simple_animal/hostile/floor_cluwne(T)
 	log_admin("[key_name(usr)] spawned floor cluwne.")
 	message_admins("[key_name(usr)] spawned floor cluwne.")
+*/

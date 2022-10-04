@@ -22,18 +22,7 @@
 
 /obj/item/dildo/update_appearance()
 	icon_state = "[dildo_type]_[dildo_shape]_[dildo_size]"
-	var/sizeword = ""
-	switch(dildo_size)
-		if(1)
-			sizeword = "small "
-		if(3)
-			sizeword = "big "
-		if(4)
-			sizeword = "huge "
-		if(5)
-			sizeword = "gigantic "
-
-	name = "[sizeword][dildo_shape] [can_customize ? "custom " : ""][dildo_type]"
+	name = "[GLOB.dildo_size_names[dildo_size]] [dildo_shape][can_customize ? " custom" : ""] [dildo_type]"
 
 /obj/item/dildo/AltClick(mob/living/user)
 	. = ..()
@@ -119,8 +108,8 @@
 	attack_verb 		= list("penetrated", "slapped", "neighed", "gaped", "prolapsed", "inseminated")
 
 /obj/item/dildo/flared/huge
-	name 				= "literal horse cock"
-	desc 				= "THIS THING IS HUGE!"
+	name 				= "The Penetrator"
+	desc 				= "The absurdity of a sex toy with the lethality of a baseball bat."
 	dildo_size 			= 4
 	force				= 10
 	hitsound = 'sound/weapons/klonk.ogg'

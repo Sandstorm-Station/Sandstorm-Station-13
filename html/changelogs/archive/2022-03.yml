@@ -13,17 +13,76 @@
   - tweak: '[Omega] Moves around the blood crate in Medbay to swap with a vendor'
   - tweak: '[Omega] Moved around Library book shelves"'
 2022-03-04:
+  Mosley:
+  - code: Added a new changelog system that posts changelogs in the discord too!
+2022-03-05:
+  Anonymous:
+  - rscadd: Yet another meme sound. Take a guess.
   BongaTheProto:
-  - bugfix: Fixes femcum hydratation
+  - bugfix: FIXES THE FUCKING CHARACTER CREATION FINALLY ON GOD
+  - rscdel: Removes dwarves as a selectable race (they were bugging the character
+      creation)
+  jbox144:
+  - bugfix: Space law manuals now contain our laws
+  radar651:
+  - rscadd: Peacekeeper armor and outfits to Security from Skyrat
+  - rscadd: Bridge Officer, 2 spawn starts
+  - rscadd: Bridge Officer, Blueshield and Brig Doc accesses.
+  - rscadd: A few Blueshield pieces of clothing
+  - rscadd: A few Brig Doc pieces of clothing
+  - rscadd: Backpacks, satchels and dufflebags for the blueshield
+  - rscadd: HOP Parade Outfit and uniform
+  - rscadd: spawns for the Brig Doc and Blueshield to Kilostation
+  - rscadd: Ports Metrocop outfit from Skyrat
+  - rscadd: Brig Doc armor in the armory
+  - rscadd: Cleaned out the HOS locker and gave them a personal autodrob
+  - rscadd: Cleaned out the BS locker and gave them a personal autodrob
+  - rscadd: Plasmaman outfit to the BS
+  - rscadd: Pepperspray to the BS
+  - rscadd: Press armor for the Librarian
+  - rscadd: Bunny outfits in the load outmenu
+  - tweak: Brig doc vest now supplies more useful protection
+  - tweak: All access to include the new station access.
+2022-03-06:
+  BongaTheProto:
+  - rscadd: Added cum donut and cumburger, along with other lewd and nonlewd drinks
+  - rscadd: Added prospacilin and dimicilin bottles
+  - rscadd: Added hyper's carpentry stuff
+  - rscadd: Added micro bricks (so lego basically)
+  - rscadd: Added cargo export for the stripper pole
+  - bugfix: Fixes a ton of femcum mechanics
+  - bugfix: Fixed Micro bricks not having a sprite nor showing recipes
+  PurpleFenn:
+  - bugfix: Glass icon files can now be defined by the reagent. Thank FUCK.
 2022-03-07:
+  CloverIsLucky:
+  - bugfix: 'spellcheck: fixed a bounty typo with the high-prioritized milk reward.'
+2022-03-08:
+  Anonymous:
+  - tweak: Updates certain loadout items' restrictions to include new jobs. Mostly
+      Trekkie things.
+  - bugfix: Moved white federation uniform from general to jobs loadout category.
+  - tweak: Modularizes the Chalice of Cum sprite/icon.
+  - rscadd: hehehahaa
+  Baphomet:
+  - imageadd: Added directional signs for Dorms, bar and cryo. Still not use in any
+      map
   BongaTheProto:
   - bugfix: Tops will now use the shirt slot
+  Halford Steel:
+  - tweak: tweaked the cum in a hot tub recipe
+  The-Sun-In-Splendour:
+  - rscadd: cow bikini panties + bra + thigh highs you degenerates
+  - tweak: bra (binder) and bra (binder, strapless) now available in loadout
+  Putnam3145:
+  - config: Made a config entry lowertext thing actually work right
+2022-03-09:
+  PurpleFenn:
+  - bugfix: Drinks no longer go invisible when they're a modular icon file and get
+      emptied
   TripleShades:
   - rscdel: '[Omega] Hundreds of decals'
   - tweak: '[Omega] Three airlock rooms to space dont have vents now to stop tiles ripping up'
-2022-03-08:
-  Putnam3145:
-  - config: Made a config entry lowertext thing actually work right
 2022-03-10:
   Daggertail:
   - code_imp: Updated Python BS to 3.7.9
@@ -59,18 +118,44 @@
   - rscadd: Round continuation limitations based on population voting for continuation
 2022-03-15:
   Putnam3145:
-  - balance: Implosion compressor now doesn't scale beyond bombs' ability to explode
-2022-03-17:
-  SandPoot:
-  - bugfix: Fixed LOG_VICTIM.
-2022-03-18:
+  - bugfix: atmos equalization config now works properly
+  kiwilover8:
+  - rscadd: Added a gateway to wildwest gateway
+2022-03-19:
+  Crowbar764:
+  - tweak: Slaver improvements
+  - rscadd: Shiny new admin panel
+  - tweak: Switches some admin panels to TGUI
+  The-Sun-In-Splendour:
+  - spellcheck: export scanner description, switch blade order
   TripleShades:
   - rscadd: '[Omega] Aix Mixer pipe'
   - rscadd: '[Omega] Wire to Turbine'
 2022-03-20:
+  BongaTheProto:
+  - rscadd: added Slave Implants
+  - rscadd: added ERT cleanup teams for if someone makes an oopsie with the rbmk
+  - rscadd: added Engislut items
+  - rscadd: added The rest of the slutcurity items from the oldbase (I think)
+  - rscadd: added the HEV suit (funny)
+  - rscadd: added Workout shorts and CitRP fluffy jackets
+  - rscadd: added Ballgags
+  - rscadd: added New hardsuits (may be a little broken)
+  - rscadd: added Cyberpunk sweaters
+  - rscadd: added Corpus outfits
+  - imageadd: added Cat Medibot
+  - rscadd: added Crystalline reentry event (only adminspawn)
+  - rscadd: added Railings and handlrails as mapping resources, ready to be implemented
+  - rscadd: added New body markings and other sprite accessories
+  - rscadd: added Bigmouse and plasmamouse
+  - rscadd: added Psychologist job (FINALLY!!!) It still needs to be properly implemented
+      on the maps too
+  - code_imp: Splits the modular job clothes in their specific files like in the main
+      code
+  - bugfix: Fixes carpentry so you can actually use it
+2022-03-21:
   Melbert:
   - bugfix: Balloon alerts sourced on turfs work properly.
-2022-03-21:
   SandPoot:
   - bugfix: Miner's Salve no longer permanently allows you to make faster self-surgeries.
       The TRAIT_PAINKILLER was seemingly not being removed.
@@ -90,16 +175,72 @@
   SandPoot:
   - bugfix: Fixes any sort of crate related syndicate item fetching.
   BongaTheProto:
-  - code_imp: Fixed the Compile changelogs workflow so it actually runs and is also
-      more responsive as it was intended
-  bunny232:
-  - rscadd: The receiving party of a climax with partner action can have their mouth exposed to count as a valid 'hole'
-  DeltaFire15:
-  - bugfix: Self-fueling welders should no longer be able to be stuck not refueling.
+  - bugfix: fixes the Compile Changelogs workflow once and for all
+  - tweak: Now you need to have your discord linked to use ooc and looc too
+  - code_imp: removed the manual run option thing
+2022-03-25:
+  lolc4n:
+  - imageadd: better combat indicator
+2022-03-26:
+  kiwilover8:
+  - rscadd: Adds Taustation and the associated files
+  - tweak: Edits the maps config to enable Taustation to be chosen
+  - tweak: adds the therapy offices to all in-rotation maps.
 2022-03-27:
-  Arturlang:
-  - code_imp: Updates caniuse-lite and changes babel to minify to true, instead of auto
+  BongaTheProto:
+  - rscadd: Some new sprite accessories
+  - rscadd: Now you can use a pen to write on people's bodies. Yes, including genitals.
+      Use on harm intent to do the original funny pen picking
+  - bugfix: fixes the `get_fluid_name()` proc
+  radar651:
+  - rscadd: 3 Enforcers to all armories
+  - rscadd: Added missing weapons to armories
+  - rscadd: Added missing weapon permits from Kilo
+  - tweak: Delta, Meta, Pubby and Kilo had their armories slightly increased in sized
+      by one row.
+  - tweak: Moved weapon permits from the Bridge to the Warden's office
+  - balance: Moved all Security Techfabs to the armory by default to ATTEMPT to balance
+      Security so they are not walking around with lethal weapons and X-rays on green.
+  - bugfix: HOS now has Brig Doc access
 2022-03-31:
+  kiwilover8:
+  - rscadd: Added new space ruin to station
+  - tweak: Adjusted access on chemistry maintenance door
+  - tweak: moved things around for brig physician shower
+  radar651:
+  - rscadd: Added Connect Players section to the stat panel
+  - rscadd: Added OOC status to the stat panel
+  - rscadd: Actual round time, a back up timer to the main round timer in-case it
+      de-synchronizes and gives a more accurate time, to the stat panel
+  - rscadd: Sever time and date to the stat panel
+  - code_imp: added real_round_start_time to the ticker subsystem
+  - rscadd: Add .308 as a caliber with Rubber and Soporific
+  - rscadd: Particle Blasters to the armory buy screen, none unique variant of the
+      patricidal defender that is non-lethal
+  - rscadd: 9mm Rubber
+  - rscadd: Old Mars Service Rifle
+  - rscadd: Old FTU Rifle
+  - rscadd: Old FTU SMG
+  - rscadd: Added the Old Mars Service rifle, FTU rifle and FTU SMG to Slavers
+  - rscadd: Hunting shotguns
+  - rscadd: New sprites for the Tommy gun
+  - rscadd: New sprites for the brush gun
+  - rscadd: New sprites for the .45-70 GOVT box
+  - rscadd: New sprites for the M1911, kitchen gun and M1911-P still use the old ones
+      at the moment
+  - rscadd: A lot of stuff to the black market, not everything I wanted to add even
+      but a lot.
+  - rscdel: Removed the Gatling Laser and Deathsquad armor from the Black Market
+  - tweak: spawn rate for some things in the black market to no longer be 100 percent
+  - tweak: 9mm handguns now come with 9mm rubber instead of 9mm lethal
+  - tweak: The cost of some of the goodie weapons
+  - balance: re chambered the hunting rifle from 7.62 to .308 so it no longer two
+      shots a person
+  - bugfix: M1911 magazines not updating properly
+  - bugfix: Enforcer mags not updating properly
+  - bugfix: Several goodie orders not spawning with spare mags properly
+  - bugfix: auto lathes now show what type of .45 ammo is going to be printed
+  - soundadd: added a garand ping for the Old Mars Service rifle
   BlueWildrose:
   - rscadd: Butts.
   - rscadd: Butt growth related chemicals. Check out the kinkmate, and check out the hypokit for rectifying genitals.

@@ -46,6 +46,8 @@
 
 /obj/structure/MouseDrop_T(atom/movable/O, mob/user)
 	. = ..()
+	if(. & COMSIG_MOB_CANCEL_CLICKON) //SPLURT edit
+		return
 	if(!climbable)
 		return
 	if(user == O && iscarbon(O))

@@ -12,7 +12,6 @@
 	mag_type = /obj/item/ammo_box/magazine/internal/shot
 	casing_ejector = FALSE
 	var/recentpump = 0 // to prevent spammage
-	var/clip_delay = CLICK_CD_MELEE
 	weapon_weight = WEAPON_HEAVY
 	sawn_item_state = "sawnshotgun"
 
@@ -26,8 +25,6 @@
 		playsound(user, 'sound/weapons/shotguninsert.ogg', 60, 1)
 		A.update_icon()
 		update_icon()
-		if(istype(A, /obj/item/ammo_box))
-			user.SetNextAction(clip_delay)
 
 /obj/item/gun/ballistic/shotgun/process_chamber(mob/living/user, empty_chamber = 0)
 	return ..() //changed argument value
@@ -362,19 +359,6 @@
 	icon_state = "levercarabine"
 	item_state = "leveraction"
 	sawn_item_state = "maresleg"
-	var/can_cut = TRUE
-
-/obj/item/gun/ballistic/shotgun/leveraction/attackby(obj/item/A, mob/user, params)
-	..()
-	if(!can_cut)
-		to_chat(user, "<span class='warning'>You can't cut \the [src] down!</span>")
-		return
-	if(A.tool_behaviour == TOOL_SAW || istype(A, /obj/item/gun/energy/plasmacutter))
-		sawoff(user)
-	if(istype(A, /obj/item/melee/transforming/energy))
-		var/obj/item/melee/transforming/energy/W = A
-		if(W.active)
-			sawoff(user)
 
 /obj/item/gun/ballistic/shotgun/leveraction/on_sawoff(mob/user)
 	magazine.max_ammo-- // sawing off drops from 7+1 to 6+1
@@ -385,10 +369,11 @@
 	else
 		icon_state = "[initial(icon_state)][sawn_off ? "-sawn" : ""][chambered ? "" : "-e"]"
 
-/obj/item/gun/ballistic/shotgun/leveraction/brush
+/obj/item/gun/ballistic/shotgun/brush
 	name = "brush gun"
 	desc = "While lever-actions have been horribly out of date for hundreds of years now, \
 	putting a nicely sized hole in a man-sized target with a .45-70 round has stayed relatively timeless."
 	icon_state = "brushgun"
-	can_cut = FALSE
+	item_state = "leveraction"
 	mag_type = /obj/item/ammo_box/magazine/internal/shot/levergun/brush
+	fire_sound = "sound/weapons/revolvershot.ogg"

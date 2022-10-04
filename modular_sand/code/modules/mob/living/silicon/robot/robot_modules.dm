@@ -152,6 +152,13 @@
 		"Saboteur" = image(icon = 'icons/mob/robots.dmi', icon_state = "synd_engi"),
 		"Medical" = image(icon = 'icons/mob/robots.dmi', icon_state = "synd_medical"),
 		"Assault" = image(icon = 'icons/mob/robots.dmi', icon_state = "synd_sec"),
+		"MissM" = image(icon = 'modular_splurt/icons/mob/robots.dmi', icon_state = "missm_syndie"), // SPLURT Addon (Skyrat Port)
+		"Heavy" = image(icon = 'modular_splurt/icons/mob/robots.dmi', icon_state = "syndieheavy"), // SPLURT Addon (Skyrat Port)
+		"Spider" = image(icon = 'modular_splurt/icons/mob/robots.dmi', icon_state = "spidersyndi"), // SPLURT Addon (Skyrat Port)
+		"Chesty" = image(icon = 'modular_splurt/icons/mob/robots.dmi', icon_state = "chesty"), // SPLURT Addon (Skyrat Port)
+		"RoboMaid" = image(icon = 'modular_splurt/icons/mob/robots.dmi', icon_state = "robomaid_synd"), // SPLURT Addon (Old Skyrat Port)
+		"BootyNukie" = image(icon = 'modular_splurt/icons/mob/robots.dmi', icon_state = "bootynukie"), // SPLURT Addon (Hyper Port)
+		"BootyGorlex" = image(icon = 'modular_splurt/icons/mob/robots.dmi', icon_state = "bootygorlex") // SPLURT Addon (Hyper Port)
 		))
 	var/syndiejack_icon = show_radial_menu(R, R , syndicatejack_icons, custom_check = CALLBACK(src, .proc/check_menu, R), radius = 42, require_near = TRUE)
 	switch(syndiejack_icon)
@@ -164,6 +171,27 @@
 		if("Assault")
 			cyborg_base_icon = "synd_sec"
 			cyborg_icon_override = 'icons/mob/robots.dmi'
+		if("MissM") // SPLURT Addon (Skyrat Port)
+			cyborg_base_icon = "missm_syndie"
+			cyborg_icon_override = 'modular_splurt/icons/mob/robots.dmi'
+		if("Heavy") // SPLURT Addon (Skyrat Port)
+			cyborg_base_icon = "syndieheavy"
+			cyborg_icon_override = 'modular_splurt/icons/mob/robots.dmi'
+		if("Spider") // SPLURT Addon (Skyrat Port)
+			cyborg_base_icon = "spidersyndi"
+			cyborg_icon_override = 'modular_splurt/icons/mob/robots.dmi'
+		if("Chesty") // SPLURT Addon (Skyrat Port)
+			cyborg_base_icon = "chesty"
+			cyborg_icon_override = 'modular_splurt/icons/mob/robots.dmi'
+		if("RoboMaid") // SPLURT Addon (Old Skyrat Port)
+			cyborg_base_icon = "robomaid_synd"
+			cyborg_icon_override = 'modular_splurt/icons/mob/robots.dmi'
+		if("BootyNukie") // SPLURT Addon (Hyper Port)
+			cyborg_base_icon = "bootynukie"
+			cyborg_icon_override = 'modular_splurt/icons/mob/robots.dmi'
+		if("BootyGorlex") // SPLURT Addon (Hyper Port)
+			cyborg_base_icon = "bootygorlex"
+			cyborg_icon_override = 'modular_splurt/icons/mob/robots.dmi'
 		else
 			return FALSE
 	return ..()

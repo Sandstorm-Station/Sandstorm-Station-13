@@ -9,7 +9,7 @@
 	size 					= 0
 	var/size_name			= "nonexistent"
 	shape					= "Pair" //turn this into a default constant if for some inexplicable reason we get more than one butt type but I doubt it.
-	genital_flags = UPDATE_OWNER_APPEARANCE|GENITAL_UNDIES_HIDDEN
+	genital_flags = UPDATE_OWNER_APPEARANCE|GENITAL_UNDIES_HIDDEN|CAN_CUM_INTO|HAS_EQUIPMENT
 	masturbation_verb 		= "massage"
 	var/size_cached			= 0
 	var/prev_size //former size value, to allow update_size() to early return should be there no significant changes.
@@ -56,7 +56,13 @@
 		if(4)
 			size_name = "hefty"
 		if(5)
-			size_name = pick("massive","extreme","enormous","very generous","humongous","big bubbly","dummy thicc")
+			size_name = pick("massive", "very generous")
+		if(6)
+			size_name = pick("gigantic", "big bubbly", "enormous")
+		if(7)
+			size_name = pick("unfathomably large", "extreme")
+		if(8)
+			size_name = pick("absolute dumptruck", "humongous", "dummy thicc")
 		else
 			size_name = "nonexistent"
 
@@ -83,4 +89,7 @@
 		color = "#[D.features["butt_color"]]"
 	size = D.features["butt_size"]
 	prev_size = size
+	size_cached = size
 	toggle_visibility(D.features["butt_visibility"], FALSE)
+	if(D.features["butt_stuffing"])
+		toggle_visibility(GEN_ALLOW_EGG_STUFFING, FALSE)

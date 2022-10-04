@@ -1292,12 +1292,11 @@
 /area/awaymission/wildwest/mines)
 "eD" = (
 /obj/structure/window/reinforced{
-	dir = 4
+	icon_state = "fwindow"
 	},
-/turf/open/floor/plating/ironsand{
-	icon_state = "ironsand12"
-	},
-/area/awaymission/wildwest/gov)
+/obj/structure/lattice,
+/turf/open/space,
+/area/space/nearstation)
 "eE" = (
 /obj/structure/bed,
 /obj/item/bedsheet/blue,
@@ -1325,14 +1324,6 @@
 	},
 /turf/open/floor/carpet,
 /area/awaymission/wildwest/mines)
-"eI" = (
-/obj/structure/window/reinforced{
-	dir = 4
-	},
-/turf/open/floor/plating/ironsand{
-	icon_state = "ironsand7"
-	},
-/area/awaymission/wildwest/gov)
 "eJ" = (
 /obj/structure/sign/warning/vacuum,
 /turf/closed/wall/r_wall,
@@ -1355,14 +1346,8 @@
 /turf/closed/wall/mineral/sandstone,
 /area/awaymission/wildwest/mines)
 "eN" = (
-/obj/structure/window/reinforced{
-	dir = 8;
-	icon_state = "fwindow"
-	},
-/turf/open/floor/plating/ironsand{
-	icon_state = "ironsand14"
-	},
-/area/awaymission/wildwest/gov)
+/turf/open/space/basic,
+/area/space)
 "eO" = (
 /obj/structure/window/reinforced,
 /obj/structure/window/reinforced{
@@ -1482,14 +1467,6 @@
 	},
 /turf/open/floor/plasteel/cafeteria,
 /area/awaymission/wildwest/mines)
-"fc" = (
-/obj/structure/window/reinforced{
-	dir = 4
-	},
-/turf/open/floor/plating/ironsand{
-	icon_state = "ironsand9"
-	},
-/area/awaymission/wildwest/gov)
 "fd" = (
 /obj/machinery/door/airlock/external,
 /obj/effect/mapping_helpers/airlock/cyclelink_helper{
@@ -2133,10 +2110,23 @@
 	icon_state = "ironsand1"
 	},
 /area/awaymission/wildwest/mines)
+"ni" = (
+/obj/structure/cable{
+	icon_state = "1-8"
+	},
+/turf/open/floor/plating,
+/area/awaymission/wildwest/refine)
 "pD" = (
 /obj/machinery/door/airlock/external,
 /obj/effect/mapping_helpers/airlock/cyclelink_helper,
 /turf/open/floor/plasteel,
+/area/awaymission/wildwest/refine)
+"Ah" = (
+/obj/structure/cable{
+	icon_state = "0-2"
+	},
+/obj/machinery/power/port_gen/pacman,
+/turf/open/floor/plating,
 /area/awaymission/wildwest/refine)
 "Gh" = (
 /obj/machinery/door/airlock/external,
@@ -2145,12 +2135,42 @@
 	},
 /turf/open/floor/grass,
 /area/awaymission/wildwest/gov)
+"IQ" = (
+/obj/structure/cable{
+	icon_state = "0-2"
+	},
+/obj/structure/cable{
+	icon_state = "1-2"
+	},
+/turf/open/floor/plating,
+/area/awaymission/wildwest/refine)
+"IV" = (
+/obj/machinery/gateway/away,
+/obj/structure/cable{
+	icon_state = "0-2"
+	},
+/turf/open/floor/plating,
+/area/awaymission/wildwest/refine)
 "Kh" = (
 /obj/machinery/door/airlock/external,
 /obj/effect/mapping_helpers/airlock/cyclelink_helper{
 	dir = 1
 	},
 /turf/open/floor/plasteel,
+/area/awaymission/wildwest/refine)
+"OZ" = (
+/obj/structure/closet/crate,
+/obj/item/stack/sheet/mineral/plasma{
+	amount = 30
+	},
+/obj/item/wrench,
+/turf/open/floor/plating,
+/area/awaymission/wildwest/refine)
+"PR" = (
+/obj/structure/cable{
+	icon_state = "4-8"
+	},
+/turf/open/floor/plating,
 /area/awaymission/wildwest/refine)
 "RN" = (
 /obj/machinery/door/airlock/external,
@@ -2168,6 +2188,19 @@
 	icon_state = "ironsand1"
 	},
 /area/awaymission/wildwest/gov)
+"Vs" = (
+/obj/structure/closet/crate,
+/obj/structure/cable{
+	icon_state = "4-8"
+	},
+/turf/open/floor/plating,
+/area/awaymission/wildwest/refine)
+"Yq" = (
+/obj/structure/cable{
+	icon_state = "1-4"
+	},
+/turf/open/floor/plating,
+/area/awaymission/wildwest/refine)
 
 (1,1,1) = {"
 aa
@@ -17239,12 +17272,6 @@ br
 br
 aa
 aa
-aa
-aa
-aa
-aa
-aa
-aa
 bW
 bW
 bW
@@ -17258,8 +17285,14 @@ bW
 bW
 bW
 aa
+eN
+eN
+eN
 aa
 aa
+eN
+eN
+eN
 aa
 aa
 aa
@@ -17495,12 +17528,6 @@ br
 br
 br
 br
-aa
-aa
-aa
-aa
-aa
-aa
 bv
 fJ
 fU
@@ -17515,8 +17542,14 @@ fU
 fU
 gD
 ed
+eN
+eN
+eN
 aa
 aa
+eN
+eN
+eN
 aa
 aa
 aa
@@ -17752,12 +17785,6 @@ do
 aa
 aa
 br
-aa
-aa
-aa
-aa
-aa
-aa
 bv
 fK
 fL
@@ -17772,8 +17799,14 @@ fL
 fL
 gE
 ed
+eN
+eN
+eN
 aa
 aa
+eN
+eN
+eN
 aa
 aa
 aa
@@ -18009,13 +18042,7 @@ bP
 ed
 aa
 br
-br
-aa
-aa
-aa
-aa
-aa
-bv
+eD
 fK
 fV
 fL
@@ -18029,8 +18056,14 @@ fV
 fL
 gE
 ed
+eN
+eN
+eN
 aa
 aa
+eN
+eN
+eN
 aa
 aa
 aa
@@ -18266,13 +18299,7 @@ dR
 ed
 aa
 aa
-br
-aa
-aa
-aa
-aa
-aa
-bv
+eD
 fK
 fV
 fL
@@ -18286,8 +18313,14 @@ fV
 fL
 gE
 ed
+eN
+eN
+eN
 aa
 aa
+eN
+eN
+eN
 aa
 aa
 aa
@@ -18523,13 +18556,7 @@ dS
 ed
 aa
 aa
-br
-aa
-aa
-aa
-aa
-aa
-bv
+eD
 fK
 fV
 fL
@@ -18543,8 +18570,14 @@ fV
 fL
 gE
 ed
+eN
+eN
+eN
 aa
 aa
+eN
+eN
+eN
 aa
 aa
 aa
@@ -18780,13 +18813,7 @@ dS
 ed
 aa
 aa
-br
-aa
-aa
-aa
-aa
-aa
-bv
+eD
 fK
 fV
 fL
@@ -18800,8 +18827,14 @@ fV
 fL
 gE
 ed
+eN
+eN
+eN
 aa
 aa
+eN
+eN
+eN
 aa
 aa
 aa
@@ -19037,13 +19070,7 @@ dS
 ed
 aa
 aa
-br
-aa
-aa
-aa
-aa
-aa
-bv
+eD
 fK
 fV
 fL
@@ -19057,8 +19084,14 @@ fV
 fL
 gE
 ed
+eN
+eN
+eN
 aa
 aa
+eN
+eN
+eN
 aa
 aa
 aa
@@ -19294,13 +19327,7 @@ dS
 ed
 aa
 aa
-br
-aa
-aa
-aa
-aa
-aa
-bv
+eD
 fK
 fL
 fL
@@ -19314,8 +19341,14 @@ fL
 fL
 gE
 ed
+eN
+eN
+eN
 aa
 aa
+eN
+eN
+eN
 aa
 aa
 aa
@@ -19551,13 +19584,7 @@ dS
 ed
 aa
 aa
-br
-aa
-aa
-aa
-aa
-aa
-bv
+eD
 fK
 fL
 fL
@@ -19571,8 +19598,14 @@ fL
 gn
 gE
 ed
+eN
+eN
+eN
 aa
 aa
+eN
+eN
+eN
 aa
 aa
 aa
@@ -19808,13 +19841,7 @@ dS
 ed
 aa
 br
-br
-aa
-aa
-aa
-aa
-aa
-bv
+eD
 fK
 fL
 fL
@@ -19828,8 +19855,14 @@ fL
 fL
 gE
 ed
+eN
+eN
+eN
 aa
 aa
+eN
+eN
+eN
 aa
 aa
 aa
@@ -20065,12 +20098,6 @@ dS
 ed
 br
 br
-aa
-aa
-aa
-aa
-aa
-aa
 bv
 fK
 fL
@@ -20085,8 +20112,14 @@ fL
 fL
 gE
 ed
+eN
+eN
+eN
 aa
 aa
+eN
+eN
+eN
 aa
 aa
 aa
@@ -20319,14 +20352,8 @@ bY
 bY
 bY
 dS
-ed
+eN
 br
-aa
-aa
-aa
-aa
-aa
-aa
 aa
 bv
 fK
@@ -20342,8 +20369,14 @@ fL
 fL
 gE
 ed
+eN
+eN
+eN
 aa
 aa
+eN
+eN
+eN
 aa
 aa
 aa
@@ -20579,12 +20612,6 @@ dS
 ed
 br
 aa
-aa
-aa
-aa
-aa
-aa
-aa
 bv
 fK
 fL
@@ -20599,8 +20626,14 @@ fL
 fL
 gE
 ed
+eN
+eN
+eN
 aa
 aa
+eN
+eN
+eN
 aa
 aa
 aa
@@ -20836,12 +20869,6 @@ dS
 ee
 br
 aa
-aa
-aa
-aa
-aa
-aa
-aa
 bv
 fK
 fL
@@ -20856,8 +20883,14 @@ fL
 fL
 gE
 ed
+eN
+eN
+eN
 aa
 aa
+eN
+eN
+eN
 aa
 aa
 aa
@@ -21093,12 +21126,6 @@ dT
 ef
 do
 do
-do
-do
-do
-do
-do
-do
 fy
 fK
 fL
@@ -21113,8 +21140,14 @@ fL
 fL
 gE
 ed
+eN
+eN
+eN
 aa
 aa
+eN
+eN
+eN
 aa
 aa
 aa
@@ -21350,12 +21383,6 @@ dU
 eg
 er
 ex
-eg
-er
-eN
-eg
-ex
-eg
 Ua
 fL
 fL
@@ -21370,8 +21397,14 @@ fL
 fL
 gE
 ed
+eN
+eN
+eN
 aa
 aa
+eN
+eN
+eN
 aa
 aa
 aa
@@ -21607,12 +21640,6 @@ dU
 eh
 es
 ey
-eD
-eI
-eh
-fc
-eh
-es
 Ua
 fL
 fL
@@ -21627,8 +21654,14 @@ fL
 fL
 gE
 ed
+eN
+eN
+eN
 aa
 aa
+eN
+eN
+eN
 aa
 aa
 aa
@@ -21864,12 +21897,6 @@ dR
 ei
 bT
 bT
-bT
-bT
-bT
-bT
-bT
-bT
 fz
 fK
 fL
@@ -21884,8 +21911,14 @@ fL
 fL
 gE
 ed
+eN
+eN
+eN
 aa
 aa
+eN
+eN
+eN
 aa
 aa
 aa
@@ -22121,12 +22154,6 @@ dS
 ed
 aa
 aa
-aa
-aa
-aa
-aa
-aa
-aa
 bv
 fK
 fL
@@ -22141,8 +22168,14 @@ fL
 fL
 gE
 ed
+eN
+eN
+eN
 aa
 aa
+eN
+eN
+eN
 aa
 aa
 aa
@@ -22378,12 +22411,6 @@ dS
 ed
 aa
 aa
-aa
-aa
-aa
-aa
-aa
-aa
 bv
 fK
 fL
@@ -22398,8 +22425,14 @@ fL
 fL
 gE
 ed
+eN
+eN
+eN
 aa
 aa
+eN
+eN
+eN
 aa
 aa
 aa
@@ -22635,12 +22668,6 @@ dS
 ed
 aa
 aa
-aa
-aa
-aa
-aa
-aa
-aa
 bv
 fK
 fL
@@ -22655,8 +22682,14 @@ fL
 fL
 gE
 ed
+eN
+eN
+eN
 aa
 aa
+eN
+eN
+eN
 aa
 aa
 aa
@@ -22892,12 +22925,6 @@ dS
 ed
 aa
 aa
-aa
-aa
-aa
-aa
-aa
-aa
 bv
 fK
 fL
@@ -22912,8 +22939,14 @@ fL
 fL
 gE
 ed
+eN
+eN
+eN
 aa
 aa
+eN
+eN
+eN
 aa
 aa
 aa
@@ -23149,12 +23182,6 @@ dS
 ed
 aa
 aa
-aa
-aa
-aa
-aa
-aa
-aa
 bv
 fK
 fL
@@ -23169,8 +23196,14 @@ fL
 fL
 gE
 ed
+eN
+eN
+eN
 aa
 aa
+eN
+eN
+eN
 aa
 aa
 aa
@@ -23406,12 +23439,6 @@ dS
 ed
 aa
 aa
-aa
-aa
-aa
-aa
-aa
-aa
 bv
 fM
 fW
@@ -23426,8 +23453,14 @@ fW
 fW
 gF
 ed
+eN
+eN
+eN
 aa
 aa
+eN
+eN
+eN
 aa
 aa
 aa
@@ -23664,12 +23697,6 @@ ee
 br
 aa
 aa
-aa
-aa
-aa
-aa
-aa
-aa
 fN
 fN
 gc
@@ -23683,8 +23710,14 @@ bT
 bT
 bT
 aa
+eN
+eN
+eN
 aa
 aa
+eN
+eN
+eN
 aa
 aa
 aa
@@ -23921,12 +23954,6 @@ ed
 br
 aa
 aa
-aa
-aa
-aa
-aa
-aa
-aa
 br
 br
 gd
@@ -23940,8 +23967,14 @@ aa
 aa
 aa
 aa
+eN
+eN
+eN
 aa
 aa
+eN
+eN
+eN
 aa
 aa
 aa
@@ -24178,12 +24211,6 @@ ed
 br
 aa
 aa
-aa
-aa
-aa
-aa
-aa
-aa
 br
 br
 gd
@@ -24197,8 +24224,14 @@ aa
 aa
 aa
 aa
+eN
+eN
+eN
 aa
 aa
+eN
+eN
+eN
 aa
 aa
 aa
@@ -24435,12 +24468,6 @@ ed
 br
 aa
 aa
-aa
-aa
-aa
-aa
-aa
-aa
 br
 br
 br
@@ -24454,8 +24481,14 @@ aa
 aa
 aa
 aa
+eN
+eN
+eN
 aa
 aa
+eN
+eN
+eN
 aa
 aa
 aa
@@ -24692,12 +24725,6 @@ ed
 br
 aa
 aa
-aa
-aa
-aa
-aa
-aa
-aa
 br
 br
 br
@@ -24711,8 +24738,14 @@ aa
 aa
 aa
 aa
+eN
+eN
+eN
 aa
 aa
+eN
+eN
+eN
 aa
 aa
 aa
@@ -24947,12 +24980,6 @@ bY
 dS
 ed
 br
-aa
-aa
-aa
-aa
-aa
-aa
 br
 br
 br
@@ -24968,8 +24995,14 @@ aa
 aa
 aa
 aa
+eN
+eN
+eN
 aa
 aa
+eN
+eN
+eN
 aa
 aa
 aa
@@ -25204,12 +25237,6 @@ bY
 dS
 ed
 br
-aa
-aa
-aa
-aa
-aa
-aa
 br
 aa
 aa
@@ -25225,8 +25252,14 @@ aa
 aa
 aa
 aa
+eN
+eN
+eN
 aa
 aa
+eN
+eN
+eN
 aa
 aa
 aa
@@ -25481,9 +25514,9 @@ aa
 aa
 aa
 aa
-aa
-aa
-aa
+eN
+eN
+eN
 aa
 aa
 aa
@@ -29822,8 +29855,8 @@ aG
 aG
 aG
 aW
-bc
-bc
+Ah
+Yq
 bh
 bc
 bc
@@ -30079,8 +30112,8 @@ aG
 aG
 aG
 aW
-bo
-bc
+OZ
+PR
 bc
 bc
 bc
@@ -30337,7 +30370,7 @@ aG
 aG
 aW
 bc
-bc
+PR
 bc
 bc
 bc
@@ -30594,7 +30627,7 @@ aG
 aG
 aW
 bc
-bc
+PR
 bc
 bc
 bh
@@ -30851,7 +30884,7 @@ aG
 aG
 aW
 bh
-bc
+PR
 bn
 bc
 bc
@@ -31108,7 +31141,7 @@ aG
 aG
 aW
 bc
-bc
+PR
 bc
 bc
 bc
@@ -31365,7 +31398,7 @@ aW
 aW
 aW
 bc
-bc
+PR
 bc
 bc
 bc
@@ -31622,7 +31655,7 @@ aW
 bb
 bc
 bc
-bo
+Vs
 bc
 bc
 bc
@@ -31877,9 +31910,9 @@ aW
 aW
 bh
 bc
-bc
-bc
-bc
+IV
+IQ
+ni
 bc
 bh
 aW

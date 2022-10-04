@@ -1,0 +1,26 @@
+## Minimum and maximum limits for belly size from the character creation menu. If there's bigger belly sizes out there, change the max accordingly.
+BELLY_MIN_SIZE_PREFS 0
+BELLY_MAX_SIZE_PREFS 10
+
+## GIRTH ratio configs for penises. Defaults to the defines for this value
+#DIAMETER_RATIO_MIN_SIZE_PREFS
+#DIAMETER_RATIO_MAX_SIZE_PREFS
+
+## Max micro pick up ratio ##
+## The maximum size ratio between someone who's being picked up and whoever's picking them up ##
+## Eg. If set to 0.5, whoever's being picked up shall be 50% or less the size of their partner or they won't be picked up ##
+## Defaults to 0.5 if unset, 0 to disable picking up others as a whole ##
+#MAX_PICK_RATIO 0.5
+
+## Multiplier for the points earned on a sex table ##
+## Setting it to 0 obviously just makes it generate no points at all. ##
+#SEX_TABLE_MULTIPLIER 50
+
+## Enable old size penalty system ##
+## If uncommented, it'll use citadel's original size penalties for mob sizes rather than the new calculated ones. ##
+## NOTE: The new system will still use the configured BODY_SIZE_SLOWDOWN_MULTIPLIER to calculate slowdown ##
+#OLD_SIZE_PENALTIES
+
+## Macro health size cap ##
+## Macros no longer get more health after their size reaches this value ##
+#MACRO_HEALTH_CAP 3.5

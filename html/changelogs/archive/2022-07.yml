@@ -1,7 +1,34 @@
+2022-07-02:
+  BongaTheProto:
+  - rscadd: Adds a new kind of jelly beans you can find in the kinkmate, called mystery
+      beans!
+  - rscadd: Added a safe version of isolation cell
+  - tweak: new drinks now support smaller reaction servings!
+  - balance: balances out the added drinks a little so they don't insta-knockdown
+      you
+  - server: Now file limits are configurable
+2022-07-03:
+  BongaTheProto:
+  - rscadd: New tier 1 donator item
+  - bugfix: Fixes a size normalizer exploit
 2022-07-05:
   Putnam3145:
   - bugfix: Miasma is brown again
-2022-07-09:
+  WoolyAypa:
+  - rscadd: Added 2 new implants obtainable from the KinkMate
+2022-07-06:
+  Aphast:
+  - rscadd: pai mal0 sprite
+  BongaTheProto:
+  - rscadd: added two new items to the donator loadout, one of them being a portal
+      fleshlight pack
+  WoolyAypa:
+  - tweak: Icon change of the new KinkMate's items
+  - tweak: Added a new examine text to the new KinkMate's items
+2022-07-07:
+  JerryWester:
+  - rscadd: Joker cards
+2022-07-08:
   Bhijn & Myr:
   - code_imp: Barks can now be intercepted via component signals. Both bark queuing
       and individual barks can be intercepted via signals!
@@ -24,17 +51,26 @@
       as an indirect result of this (the higher resolution is what caused this bug)
   UDaV73rus, Tokoriso, dragomagol:
   - rscadd: welding now has an animation!
+  WoolyAypa:
+  - rscadd: Added a new dullahan-exclusive option in the Character Appearance tab.
   timothyteakettle:
   - rscadd: slimes no longer die from having no blood, properly consume limbs when
       at low blood, and suffer brute damage and oxygen loss for having no blood and
       no limbs left to consume respectably, they cannot go past BLOOD_VOLUME_MAXIMUM
       from consuming toxin
-2022-07-16:
+2022-07-11:
+  Nasumy:
+  - rscadd: Plushies of mal0, a generic synth and a chaotic toaster
+  - rscdel: Delete a duplicated plushie of a lizzard
+2022-07-15:
   MediHound:
   - rscdel: Removed old Alina sprites
   - rscadd: Added new Alina sprites
   SandPoot:
   - bugfix: The tweak tag for changelogs should now work.
+  Yatiyaya:
+  - rscadd: added a bunch of shit that this server doesn't need
+  - rscdel: Removed my sense of happiness
 2022-07-20:
   Putnam3145:
   - balance: quark matter is now worth 5% as much and gives 10% the research points
@@ -48,6 +84,18 @@
       of runtimes.
   - bugfix: The syndicate has fixed the radiation health analyzer allowing you to
       check on the ui again.
+2022-07-22:
+  AsrielFBI:
+  - rscadd: Added skibidi emote
+  - rscadd: Added fbi emote
+  - rscadd: Added fusrodah emote
+  - rscadd: Added illuminati emote
+  - rscadd: Added bonerif emote
+  - soundadd: added skibidi sound effect
+  - soundadd: added fbi sound effect
+  - soundadd: added fusrodah sound effect
+  - soundadd: added illuminati sound effect
+  - soundadd: added bonerif sound effect
 2022-07-23:
   TripleShades:
   - rscdel: Snow Cabin turbine
@@ -80,10 +128,35 @@
   - code_imp: correctly paths pinktea and pinkmilk after cit's fix
   SandPoot:
   - bugfix: Put arguments into handle_blood (it needs them).
+  Yawet330:
+  - rscadd: new sprites for dragon wings
+2022-07-26:
+  AsherAshenclaw:
+  - rscadd: added new Half gag option
+  - rscadd: added unique speech accent for the new half gag option
+  - code_imp: changed some of the speech switch code to work with the new half gag
+      option
 2022-07-27:
+  567Turtle:
+  - rscadd: New Captain alternate job title, "Condom"
+  - rscadd: New HoS alternate job title, "Head of Slutcurity"
+  - rscadd: New Atmos Tech alternate job title, "Atmos Plumber"
+  - rscadd: New Assistant alternate job title, "All-Purpose Fleshlight, Greytider,
+      Cumdump"
+  - rscadd: New Cook alternate job title, "Prey Prepper"
+  - rscadd: New Curator alternate job titles, "Scholar, Historian, Archaeologist"
+  - rscadd: New Chemist alternate job title, "Chemical Plumber"
+  - rscadd: New Detective alternate job title, "Slutective"
+  - rscadd: New Warden alternate job title, "Voreden, Dungeon Master""
+  - rscadd: New Security Officer alternate job title, "Slutcurity Officer"
+  - rscadd: New Peacekeeper alternate job title, "Slutcurity Trainee"
+  - rscadd: New Brig Physician alternate job title, "Slutcurity Nurse"
+  - rscadd: New Shaft Miner alternate job title, "Ashwalker Breeder, Ashwalker Sex
+      Slave, Slayer"
+  - bugfix: Fixed a typo in the chaplains alt job titles, used to be "Bichop", now
+      "Bishop"
   timothyteakettle:
   - bugfix: slime limb regeneration ability fix
-2022-07-31:
   Putnam3145:
   - rscadd: Atmospheric flux event (properly)
   - rscadd: Sandstorm event (was in files, just disabled; 10 space dusts all at once)

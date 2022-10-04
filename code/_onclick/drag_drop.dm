@@ -20,8 +20,7 @@
 
 // receive a mousedrop
 /atom/proc/MouseDrop_T(atom/dropping, mob/user)
-	SEND_SIGNAL(src, COMSIG_MOUSEDROPPED_ONTO, dropping, user)
-	return
+	return SEND_SIGNAL(src, COMSIG_MOUSEDROPPED_ONTO, dropping, user) //SPLURT edit
 
 /client/MouseDown(datum/object, location, control, params)
 	if(!control)

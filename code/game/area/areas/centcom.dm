@@ -176,7 +176,6 @@
 	area_flags = UNIQUE_AREA | NOTELEPORT
 
 //CAPTURE THE FLAG
-
 /area/ctf
 	name = "Capture the Flag"
 	icon_state = "yellow"

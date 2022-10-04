@@ -15,7 +15,7 @@
 	var/obj/item/clothing/head/mob_holder/holder = micro.loc
 	if(istype(holder))
 		var/mob/living/living = get_atom_on_turf(micro.loc, /mob/living)
-		if(living && (abs(get_size(living)/get_size(micro)) < 2.0))
+		if(living && (abs(get_size(micro)/get_size(living)) > CONFIG_GET(number/max_pick_ratio)))
 			living.visible_message(span_warning("\The [living] drops [micro] as [micro.p_they()] grow\s too big to carry."),
 								span_warning("You drop \The [living] as [living.p_they()] grow\s too big to carry."),
 								target=micro,
@@ -25,7 +25,7 @@
 			holder.release()
 
 /datum/element/mob_holder/micro/on_examine(mob/living/source, mob/user, list/examine_list)
-	if(ishuman(user) && !istype(source.loc, /obj/item/clothing/head/mob_holder) && (abs(get_size(user)/get_size(source)) >= 2.0))
+	if(ishuman(user) && !istype(source.loc, /obj/item/clothing/head/mob_holder) && (abs(get_size(source)/get_size(user)) <= CONFIG_GET(number/max_pick_ratio)))
 		examine_list += "<span class='notice'>Looks like [source.p_they(FALSE)] can be picked up using <b>Alt+Click and grab intent</b>!</span>"
 
 /datum/element/mob_holder/micro/proc/mob_pickup_micro(mob/living/source, mob/user)
@@ -53,7 +53,7 @@
 		to_chat(user, "<span class='warning'>You can't pick yourself up.</span>")
 		source.balloon_alert(user, "cannot pick yourself!")
 		return FALSE
-	if(abs(get_size(user)/get_size(source)) < 2.0 )
+	if(abs(get_size(source)/get_size(user)) > CONFIG_GET(number/max_pick_ratio))
 		to_chat(user, "<span class='warning'>They're too big to pick up!</span>")
 		source.balloon_alert(user, "too big to pick up!")
 		return FALSE
@@ -161,3 +161,16 @@
 /obj/item/clothing/head/mob_holder/micro/attack(mob/living/pred, mob/living/user)
 	user.vore_attack(user, held_mob, pred)
 	return STOP_ATTACK_PROC_CHAIN
+
+/obj/item/clothing/head/mob_holder/micro/verb/interact_with()
+	set name = "Interact With"
+	set desc = "Perform an interaction with someone."
+	set category = "IC"
+	set src in view(usr.client)
+
+	if(!usr.mind) //Mindless boys, honestly just don't, it's better this way
+		return
+	if(!usr.mind.interaction_holder)
+		usr.mind.interaction_holder = new(usr.mind)
+	usr.mind.interaction_holder.target = src.held_mob
+	usr.mind.interaction_holder.ui_interact(usr)

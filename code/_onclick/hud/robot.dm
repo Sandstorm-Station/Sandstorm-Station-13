@@ -301,6 +301,11 @@
 	else
 		icon_state = "lamp_off"
 
+/atom/movable/screen/robot/lamp/Destroy()
+	robot.lampButton = null
+	robot = null
+	return ..()
+
 /atom/movable/screen/robot/alerts
 	name = "Alert Panel"
 	icon = 'icons/mob/screen_ai.dmi'
@@ -336,6 +341,11 @@
 	name = "Modular Interface"
 	icon_state = "template"
 	var/mob/living/silicon/robot/robot
+
+/atom/movable/screen/robot/modPC/Destroy()
+	robot.interfaceButton = null
+	robot = null
+	return ..()
 
 /atom/movable/screen/robot/modPC/Click()
 	. = ..()

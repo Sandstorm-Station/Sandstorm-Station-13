@@ -18,9 +18,11 @@
 
 /mob/living
 	var/has_penis = FALSE
+	var/has_balls = FALSE
 	var/has_vagina = FALSE
 	var/has_anus = TRUE
 	var/has_breasts = FALSE
+	var/has_butt = FALSE
 	var/anus_exposed = FALSE
 	var/last_partner
 	var/last_orifice
@@ -83,99 +85,74 @@
 	lust = num
 	lastlusttime = world.time
 
-/mob/living/proc/has_penis(visibility = REQUIRE_ANY)
+/mob/living/proc/has_genital(slot, visibility = REQUIRE_ANY)
 	var/mob/living/carbon/C = src
-	if(has_penis && !istype(C))
-		return TRUE
 	if(istype(C))
-		var/obj/item/organ/genital/peepee = C.getorganslot(ORGAN_SLOT_PENIS)
-		if(peepee)
+		var/obj/item/organ/genital/genital = C.getorganslot(slot)
+		if(genital)
 			switch(visibility)
 				if(REQUIRE_ANY)
 					return TRUE
 				if(REQUIRE_EXPOSED)
-					if(peepee.is_exposed())
-						return TRUE
-					else
-						return FALSE
+					return genital.is_exposed()
 				if(REQUIRE_UNEXPOSED)
-					if(!peepee.is_exposed())
-						return TRUE
-					else
-						return FALSE
+					return !genital.is_exposed()
 				else
 					return TRUE
 	return FALSE
 
-/mob/living/proc/has_balls(visibility = REQUIRE_ANY)
+/mob/living/proc/has_penis(visibility = REQUIRE_ANY)
+	var/mob/living/carbon/C = src
+	if(has_penis && !istype(C))
+		return TRUE
+	return has_genital(ORGAN_SLOT_PENIS, visibility)
+
+/mob/living/proc/has_strapon(visibility = REQUIRE_ANY)
 	var/mob/living/carbon/C = src
 	if(istype(C))
-		var/obj/item/organ/genital/peepee = C.getorganslot(ORGAN_SLOT_TESTICLES)
-		if(peepee)
+		var/obj/item/clothing/underwear/briefs/strapon/strapon = C.get_strapon()
+		if(strapon)
 			switch(visibility)
 				if(REQUIRE_ANY)
 					return TRUE
 				if(REQUIRE_EXPOSED)
-					if(peepee.is_exposed())
-						return TRUE
-					else
-						return FALSE
+					return strapon.is_exposed()
 				if(REQUIRE_UNEXPOSED)
-					if(!peepee.is_exposed())
-						return TRUE
-					else
-						return FALSE
+					return !strapon.is_exposed()
 				else
 					return TRUE
 	return FALSE
+
+/mob/living/proc/get_strapon()
+	for(var/obj/item/clothing/cloth in get_equipped_items())
+		if(istype(cloth, /obj/item/clothing/underwear/briefs/strapon))
+			return cloth
+	
+	return null
+	
+/mob/living/proc/can_penetrating_genital_cum()
+	return has_penis()
+
+/mob/living/proc/get_penetrating_genital_name(long = FALSE)
+	return has_penis() ? (long ? pick(GLOB.dick_nouns) : pick("cock", "dick")) : pick("strapon")
+
+/mob/living/proc/has_balls(visibility = REQUIRE_ANY)
+	var/mob/living/carbon/C = src
+	if(has_balls && !istype(C))
+		return TRUE
+	return has_genital(ORGAN_SLOT_TESTICLES, visibility)
 
 /mob/living/proc/has_vagina(visibility = REQUIRE_ANY)
 	var/mob/living/carbon/C = src
 	if(has_vagina && !istype(C))
 		return TRUE
-	if(istype(C))
-		var/obj/item/organ/genital/peepee = C.getorganslot(ORGAN_SLOT_VAGINA)
-		if(peepee)
-			switch(visibility)
-				if(REQUIRE_ANY)
-					return TRUE
-				if(REQUIRE_EXPOSED)
-					if(peepee.is_exposed())
-						return TRUE
-					else
-						return FALSE
-				if(REQUIRE_UNEXPOSED)
-					if(!peepee.is_exposed())
-						return TRUE
-					else
-						return FALSE
-				else
-					return TRUE
-	return FALSE
+	return has_genital(ORGAN_SLOT_VAGINA, visibility)
 
 /mob/living/proc/has_breasts(visibility = REQUIRE_ANY)
 	var/mob/living/carbon/C = src
 	if(has_breasts && !istype(C))
 		return TRUE
-	if(istype(C))
-		var/obj/item/organ/genital/peepee = C.getorganslot(ORGAN_SLOT_BREASTS)
-		if(peepee)
-			switch(visibility)
-				if(REQUIRE_ANY)
-					return TRUE
-				if(REQUIRE_EXPOSED)
-					if(peepee.is_exposed())
-						return TRUE
-					else
-						return FALSE
-				if(REQUIRE_UNEXPOSED)
-					if(!peepee.is_exposed())
-						return TRUE
-					else
-						return FALSE
-				else
-					return TRUE
-	return FALSE
+	return has_genital(ORGAN_SLOT_BREASTS, visibility)
 
 /mob/living/proc/has_anus(visibility = REQUIRE_ANY)
 	if(has_anus && !iscarbon(src))
@@ -359,6 +336,30 @@
 						return FALSE
 					else
 						return TRUE
+				else
+					return TRUE
+	return FALSE
+
+/mob/living/proc/has_butt(var/nintendo = REQUIRE_ANY)
+	var/mob/living/carbon/C = src
+	if(has_butt && !istype(C))
+		return TRUE
+	if(istype(C))
+		var/obj/item/organ/genital/peepee = C.getorganslot(ORGAN_SLOT_BUTT)
+		if(peepee)
+			switch(nintendo)
+				if(REQUIRE_ANY)
+					return TRUE
+				if(REQUIRE_EXPOSED)
+					if(peepee.is_exposed())
+						return TRUE
+					else
+						return FALSE
+				if(REQUIRE_UNEXPOSED)
+					if(!peepee.is_exposed())
+						return TRUE
+					else
+						return FALSE
 				else
 					return TRUE
 	return FALSE
@@ -787,6 +788,7 @@
 			else
 				H.mob_climax(TRUE, "sex", partner, !cumin, target_gen)
 	set_lust(0)
+	SEND_SIGNAL(src, COMSIG_MOB_CAME, target_orifice, partner)
 
 /mob/living/proc/is_fucking(mob/living/partner, orifice)
 	if(partner == last_partner && orifice == last_orifice)
