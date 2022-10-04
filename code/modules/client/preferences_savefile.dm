@@ -762,17 +762,21 @@ SAVEFILE UPDATING/VERSIONING - 'Simplified', or rather, more coder-friendly ~Car
 "belly_size" = BELLY_SIZE_DEF,
 "has_belly" = FALSE,
 "belly_color" = "ffffff",
+"has_anus" = FALSE,
+"anus_color" = "ffffff",
 "balls_visibility"   = GEN_VISIBLE_NO_UNDIES,
 "breasts_visibility"= GEN_VISIBLE_NO_UNDIES,
 "cock_visibility" = GEN_VISIBLE_NO_UNDIES,
 "vag_visibility"   = GEN_VISIBLE_NO_UNDIES,
 "butt_visibility"  = GEN_VISIBLE_NO_UNDIES,
 "belly_visibility" = GEN_VISIBLE_NO_UNDIES,
+"anus_visibility" = GEN_VISIBLE_NO_UNDIES,
 "cock_stuffing" = FALSE,
 "balls_stuffing" = FALSE,
 "vag_stuffing" = FALSE,
 "breasts_stuffing" = FALSE,
 "butt_stuffing" = FALSE,
+"anus_stuffing" = FALSE,
 "belly_stuffing" = FALSE,
 "inert_eggs" = FALSE,
 "ipc_screen" = "Sunburst",
@@ -986,6 +990,10 @@ SAVEFILE UPDATING/VERSIONING - 'Simplified', or rather, more coder-friendly ~Car
 	S["feature_belly_size"] >> features["belly_size"]
 	S["feature_belly_color"] >> features["belly_color"]
 	S["feature_belly_visibility"] >> features["belly_visibility"]
+	//anus features
+	S["feature_has_anus"] >> features["has_anus"]
+	S["feature_anus_color"] >> features["anus_color"]
+	S["feature_anus_visibility"] >> features["anus_visibility"]
 
 	// Flavor texts, Made into a standard.
 	S["feature_flavor_text"] >> features["flavor_text"]
@@ -1013,6 +1021,8 @@ SAVEFILE UPDATING/VERSIONING - 'Simplified', or rather, more coder-friendly ~Car
 	S["feature_vag_stuffing"] >> features["vag_stuffing"]
 	S["feature_butt_stuffing"] >> features["butt_stuffing"]
 	S["feature_belly_stuffing"] >> features["belly_stuffing"]
+	S["feature_anus_stuffing"] >> features["anus_stuffing"]
+
 	S["feature_inert_eggs"] >> features["inert_eggs"]
 
 	var/char_vr_path = "[vr_path]/character_[default_slot]_v2.json"
@@ -1154,12 +1164,15 @@ SAVEFILE UPDATING/VERSIONING - 'Simplified', or rather, more coder-friendly ~Car
 	features["cock_color"] = sanitize_hexcolor(features["cock_color"], 6, FALSE, "FFFFFF")
 	features["balls_color"] = sanitize_hexcolor(features["balls_color"], 6, FALSE, "FFFFFF")
 	features["vag_color"] = sanitize_hexcolor(features["vag_color"], 6, FALSE, "FFFFFF")
+	features["belly_color"] = sanitize_hexcolor(features["belly_color"], 6, FALSE, "FFFFFF")
+	features["anus_color"] = sanitize_hexcolor(features["anus_color"], 6, FALSE, "FFFFFF")
 	features["breasts_visibility"] = sanitize_inlist(features["breasts_visibility"], safe_visibilities, GEN_VISIBLE_NO_UNDIES)
 	features["cock_visibility"] = sanitize_inlist(features["cock_visibility"], safe_visibilities, GEN_VISIBLE_NO_UNDIES)
 	features["balls_visibility"] = sanitize_inlist(features["balls_visibility"], safe_visibilities, GEN_VISIBLE_NO_UNDIES)
 	features["vag_visibility"] = sanitize_inlist(features["vag_visibility"], safe_visibilities, GEN_VISIBLE_NO_UNDIES)
 	features["butt_visibility"] = sanitize_inlist(features["butt_visibility"], safe_visibilities, GEN_VISIBLE_NO_UNDIES)
 	features["belly_visibility"] = sanitize_inlist(features["belly_visibility"], safe_visibilities, GEN_VISIBLE_NO_UNDIES)
+	features["anus_visibility"] = sanitize_inlist(features["anus_visibility"], safe_visibilities, GEN_VISIBLE_NO_UNDIES)
 
 	custom_speech_verb = sanitize_inlist(custom_speech_verb, GLOB.speech_verbs, "default")
 	custom_tongue = sanitize_inlist(custom_tongue, GLOB.roundstart_tongues, "default")
@@ -1362,6 +1375,11 @@ SAVEFILE UPDATING/VERSIONING - 'Simplified', or rather, more coder-friendly ~Car
 	WRITE_FILE(S["feature_belly_size"], features["belly_size"])
 	WRITE_FILE(S["feature_belly_visibility"], features["belly_visibility"])
 	WRITE_FILE(S["feature_belly_stuffing"], features["belly_stuffing"])
+
+	WRITE_FILE(S["feature_has_anus"], features["has_anus"])
+	WRITE_FILE(S["feature_anus_color"], features["anus_color"])
+	WRITE_FILE(S["feature_anus_visibility"], features["anus_visibility"])
+	WRITE_FILE(S["feature_anus_stuffing"], features["anus_stuffing"])
 
 	WRITE_FILE(S["feature_inert_eggs"], features["inert_eggs"])
 
