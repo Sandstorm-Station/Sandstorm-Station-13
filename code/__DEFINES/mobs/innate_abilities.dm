@@ -14,7 +14,6 @@
 /// limb regrowth
 #define INNATE_ABILITY_LIMB_REGROWTH "limb_regrowth"
 
-
 /// ability properties
 // customization/body change
 /// is this silent?
