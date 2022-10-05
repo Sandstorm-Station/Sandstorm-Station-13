@@ -390,15 +390,14 @@
 	lose_text = "<span class='notice'>you feel an otherworldy burden remove itself</span>"
 	processing_quirk = TRUE
 
-/datum/quirk/vampire/on_spawn()
+/datum/quirk/vampire/add()
 	. = ..()
 	var/mob/living/carbon/human/H = quirk_holder
-	var/mob/living/carbon/C = quirk_holder
 	ADD_TRAIT(H,TRAIT_NO_PROCESS_FOOD,ROUNDSTART_TRAIT)
 	ADD_TRAIT(H,TRAIT_COLDBLOODED,ROUNDSTART_TRAIT)
 	ADD_TRAIT(H,TRAIT_NOBREATH,ROUNDSTART_TRAIT)
 	ADD_TRAIT(H,TRAIT_NOTHIRST,ROUNDSTART_TRAIT)
-	if(!C.dna.skin_tone_override)
+	if(!H.dna.skin_tone_override)
 		H.skin_tone = "albino"
 	var/datum/action/vbite/B = new
 	B.Grant(H)
