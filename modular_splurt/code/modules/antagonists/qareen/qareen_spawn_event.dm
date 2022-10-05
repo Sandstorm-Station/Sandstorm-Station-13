@@ -1,11 +1,11 @@
 #define QAREEN_SPAWN_THRESHOLD 20
 
 /datum/round_event_control/qareen
-	name = "Spawn Qareen" // Did you mean 'griefghost'?
+	name = "Spawn Qareen"
 	typepath = /datum/round_event/ghost_role/qareen
 	weight = 7
-	max_occurrences = 1
-	min_players = 5
+	max_occurrences = 0
+	min_players = 200
 
 
 /datum/round_event/ghost_role/qareen

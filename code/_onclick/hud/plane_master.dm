@@ -27,7 +27,7 @@
 /atom/movable/screen/plane_master/openspace/Initialize(mapload)
 	. = ..()
 	filters += filter(type="alpha", render_source=FIELD_OF_VISION_RENDER_TARGET, flags=MASK_INVERSE)
-
+	filters += filter(type="alpha", render_source = LIGHTING_RENDER_TARGET, flags = MASK_INVERSE)
 	filters += filter(type = "drop_shadow", color = "#04080FAA", size = -10)
 	filters += filter(type = "drop_shadow", color = "#04080FAA", size = -15)
 	filters += filter(type = "drop_shadow", color = "#04080FAA", size = -20)

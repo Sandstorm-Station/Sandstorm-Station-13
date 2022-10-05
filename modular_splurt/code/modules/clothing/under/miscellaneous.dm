@@ -220,6 +220,16 @@
 	body_parts_covered = CHEST|GROIN|ARMS|LEGS
 	can_adjust = FALSE
 
+/obj/item/clothing/under/pentatop
+	name = "pentagram crop top"
+	desc = "For those goth girls with lots of chest to show."
+	icon = 'modular_splurt/icons/obj/clothing/uniforms.dmi'
+	mob_overlay_icon = 'modular_splurt/icons/mob/clothing/uniform.dmi'
+	icon_state = "pentatop"
+	item_state = "pentatop"
+	body_parts_covered = CHEST
+	can_adjust = FALSE
+
 // GWTB-inspired stuff wooo
 /obj/item/clothing/under/goner
 	name = "trencher uniform"

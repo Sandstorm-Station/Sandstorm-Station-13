@@ -184,6 +184,19 @@
 		message = "makes a very loud noise."
 	. = ..()
 
+/datum/emote/living/audio_emote/chitter2
+	key = "chitter2"
+	key_third_person = "chitters2"
+	message = "chitters."
+	message_mime = "chitters silently!"
+
+/datum/emote/living/audio_emote/chitter2/run_emote(mob/user, params, type_override, intentional)
+	. = ..()
+	if(. && iscarbon(user))
+		var/mob/living/carbon/C = user
+		if(isinsect(C))
+			playsound(C, 'modular_splurt/sound/voice/moth/mothchitter2.ogg', 50, 1)
+
 /datum/emote/living/monkeytwerk
 	key = "twerk"
 	key_third_person = "twerk"
@@ -408,6 +421,19 @@
 	user.nextsoundemote = world.time + 60
 	playsound(user, 'modular_splurt/sound/voice/moonmen.ogg', 50, 0, 1)
 
+/datum/emote/living/blink2
+	key = "blink2"
+	key_third_person = "blinks2"
+	message = "blinks."
+
+/datum/emote/living/blink2/run_emote(mob/user, params, type_override, intentional)
+	if(!(. = ..()))
+		return
+	if(user.nextsoundemote >= world.time)
+		return
+	user.nextsoundemote = world.time + 7
+	playsound(user, 'modular_splurt/sound/voice/blink.ogg', 50, 1, -1)
+
 /datum/emote/living/laugh2
 	key = "laugh2"
 	key_third_person = "laughs2"
@@ -453,6 +479,36 @@
 	user.nextsoundemote = world.time + 70
 	playsound(user, 'modular_splurt/sound/voice/laugh_muta.ogg', 50, 1, -1)
 
+/datum/emote/living/laugh5
+	key = "laugh5"
+	key_third_person = "laughs5"
+	message = "laughs in Scottish."
+	emote_type = EMOTE_AUDIBLE
+	muzzle_ignore = FALSE
+
+/datum/emote/living/laugh5/run_emote(mob/user, params, type_override, intentional)
+	if(!(. = ..()))
+		return
+	if(user.nextsoundemote >= world.time)
+		return
+	user.nextsoundemote = world.time + 70
+	playsound(user, 'modular_splurt/sound/voice/laugh_deman.ogg', 50, 1, -1)
+
+/datum/emote/living/laugh6
+	key = "laugh6"
+	key_third_person = "laughs6"
+	message = "sounds like a tea kettle."
+	emote_type = EMOTE_AUDIBLE
+	muzzle_ignore = FALSE
+
+/datum/emote/living/laugh6/run_emote(mob/user, params, type_override, intentional)
+	if(!(. = ..()))
+		return
+	if(user.nextsoundemote >= world.time)
+		return
+	user.nextsoundemote = world.time + 70
+	playsound(user, 'modular_splurt/sound/voice/laugh6.ogg', 50, 1, -1)
+
 /datum/emote/living/breakbad
 	key = "breakbad"
 	key_third_person = "breakbads"
@@ -478,6 +534,66 @@
 		return
 	user.nextsoundemote = world.time + 60
 	playsound(user, 'modular_splurt/sound/voice/lawyerup.ogg', 50, 1, -1)
+
+/datum/emote/living/goddamn
+	key = "damn"
+	key_third_person = "damns"
+	message = "is in utter stupor."
+	emote_type = EMOTE_AUDIBLE
+	muzzle_ignore = TRUE
+
+/datum/emote/living/goddamn/run_emote(mob/user, params, type_override, intentional)
+	if(!(. = ..()))
+		return
+	if(user.nextsoundemote >= world.time)
+		return
+	user.nextsoundemote = world.time + 7
+	playsound(user, 'modular_splurt/sound/voice/god_damn.ogg', 50, 1, -1)
+
+/datum/emote/living/spoonful
+	key = "spoonful"
+	key_third_person = "spoonfuls"
+	message = "draws a comically large spoon."
+	emote_type = EMOTE_AUDIBLE
+	muzzle_ignore = TRUE
+
+/datum/emote/living/spoonful/run_emote(mob/user, params, type_override, intentional)
+	if(!(. = ..()))
+		return
+	if(user.nextsoundemote >= world.time)
+		return
+	user.nextsoundemote = world.time + 7
+	playsound(user, 'modular_splurt/sound/voice/spoonful.ogg', 50, 1, -1)
+
+/datum/emote/living/ohhmygod
+	key = "mygod"
+	key_third_person = "omgs"
+	message = "invokes the presence of Jesus Christ."
+	emote_type = EMOTE_AUDIBLE
+	muzzle_ignore = TRUE
+
+/datum/emote/living/ohhmygod/run_emote(mob/user, params, type_override, intentional)
+	if(!(. = ..()))
+		return
+	if(user.nextsoundemote >= world.time)
+		return
+	user.nextsoundemote = world.time + 14
+	playsound(user, 'modular_splurt/sound/voice/OMG.ogg', 50, 1, -1)
+
+/datum/emote/living/whatthehell
+	key = "wth"
+	key_third_person = "wths"
+	message = "condemns the abysses of hell."
+	emote_type = EMOTE_AUDIBLE
+	muzzle_ignore = TRUE
+
+/datum/emote/living/whatthehell/run_emote(mob/user, params, type_override, intentional)
+	if(!(. = ..()))
+		return
+	if(user.nextsoundemote >= world.time)
+		return
+	user.nextsoundemote = world.time + 40
+	playsound(user, 'modular_splurt/sound/voice/WTH.ogg', 50, 1, -1)
 
 /datum/emote/living/fusrodah
 	key = "fusrodah"

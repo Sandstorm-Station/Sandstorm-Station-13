@@ -5,7 +5,7 @@
 	throwforce			= 0
 	icon_state 			= "sounding_wrapped"
 	var/unwrapped		= 0
-	equipment_slot 		= GENITAL_EQUIPMENT_SOUNDING
+//	equipment_slot 		= GENITAL_EQUIPMENT_SOUNDING
 	w_class 			= WEIGHT_CLASS_TINY
 
 /obj/item/genital_equipment/sounding/attack_self(mob/user)
@@ -18,7 +18,7 @@
 			to_chat(user, "<span class='notice'>You unwrap the rod.</span>")
 			playsound(user, 'sound/items/poster_ripped.ogg', 50, 1, -1)
 			return
-
+/*
 /obj/item/genital_equipment/sounding/attack(mob/living/carbon/C, mob/living/user)
 
 	if(unwrapped == 0 )
@@ -53,7 +53,6 @@
 	. = ..()
 	qdel(src)
 
-/*
 /mob/living/carbon/human/proc/removesounding()
 
 	var/obj/item/organ/genital/penis/P = getorganslot("penis")
@@ -61,13 +60,13 @@
 		P.equipment.Remove(GENITAL_EQUIPMENT_SOUNDING)
 		new /obj/item/genital_equipment/sounding/used_sounding(loc)
 		to_chat(src, "<span class='lewd'>The rod falls off from your penis.</span>")
-*/
+
 /obj/item/genital_equipment/sounding/used_sounding
 	name 				= "sounding rod"
 	icon_state 			= "sounding_rod"
 	unwrapped			= 2
 	w_class = WEIGHT_CLASS_TINY
-/*
+
 /mob/living/carbon/human/proc/soundingclimax()
 
 	var/obj/item/organ/genital/penis/P = src.getorganslot("penis")

@@ -25771,26 +25771,6 @@
 	},
 /turf/open/floor/plasteel,
 /area/science/robotics/lab)
-"blL" = (
-/obj/machinery/disposal/bin,
-/obj/structure/disposalpipe/trunk{
-	dir = 8
-	},
-/obj/effect/turf_decal/tile/neutral{
-	dir = 1
-	},
-/obj/effect/turf_decal/tile/neutral,
-/obj/effect/turf_decal/tile/neutral{
-	dir = 4
-	},
-/obj/effect/turf_decal/tile/neutral{
-	dir = 8
-	},
-/obj/machinery/posialert{
-	pixel_y = 26
-	},
-/turf/open/floor/plasteel/dark,
-/area/science/robotics/lab)
 "blM" = (
 /obj/machinery/rnd/server,
 /obj/structure/sign/poster/random{
@@ -29087,20 +29067,6 @@
 	},
 /turf/open/floor/plasteel,
 /area/hallway/primary/aft)
-"bsW" = (
-/obj/item/kirbyplants,
-/obj/effect/turf_decal/tile/neutral{
-	dir = 1
-	},
-/obj/effect/turf_decal/tile/neutral,
-/obj/effect/turf_decal/tile/neutral{
-	dir = 4
-	},
-/obj/effect/turf_decal/tile/neutral{
-	dir = 8
-	},
-/turf/open/floor/plasteel/dark,
-/area/science/robotics/lab)
 "bsX" = (
 /obj/structure/cable{
 	icon_state = "1-2"
@@ -55009,6 +54975,23 @@
 	},
 /turf/open/floor/plating,
 /area/maintenance/department/security/brig)
+"iZO" = (
+/obj/machinery/disposal/bin,
+/obj/structure/disposalpipe/trunk{
+	dir = 8
+	},
+/obj/effect/turf_decal/tile/neutral{
+	dir = 1
+	},
+/obj/effect/turf_decal/tile/neutral,
+/obj/effect/turf_decal/tile/neutral{
+	dir = 4
+	},
+/obj/effect/turf_decal/tile/neutral{
+	dir = 8
+	},
+/turf/open/floor/plasteel/dark,
+/area/science/robotics/lab)
 "jcT" = (
 /obj/machinery/atmospherics/pipe/simple/supply/hidden{
 	dir = 10
@@ -55141,6 +55124,23 @@
 	},
 /turf/open/floor/wood,
 /area/service/lawoffice)
+"jjD" = (
+/obj/item/kirbyplants,
+/obj/effect/turf_decal/tile/neutral{
+	dir = 1
+	},
+/obj/effect/turf_decal/tile/neutral,
+/obj/effect/turf_decal/tile/neutral{
+	dir = 4
+	},
+/obj/effect/turf_decal/tile/neutral{
+	dir = 8
+	},
+/obj/machinery/posialert{
+	pixel_x = -32
+	},
+/turf/open/floor/plasteel/dark,
+/area/science/robotics/lab)
 "jkv" = (
 /obj/machinery/atmospherics/components/binary/pump,
 /turf/closed/wall/r_wall,
@@ -60081,6 +60081,10 @@
 	},
 /turf/open/floor/plating,
 /area/hallway/secondary/entry)
+"qSj" = (
+/obj/machinery/vending/wallmed,
+/turf/closed/wall,
+/area/security/brig)
 "qTV" = (
 /obj/item/radio/intercom{
 	name = "Station Intercom (General)";
@@ -62894,10 +62898,6 @@
 	},
 /turf/open/floor/plating,
 /area/maintenance/department/chapel/monastery)
-"vsj" = (
-/obj/machinery/vending/wallmed,
-/turf/closed/wall,
-/area/security/brig)
 "vsk" = (
 /obj/machinery/atmospherics/pipe/simple/supply/hidden{
 	dir = 4
@@ -82658,7 +82658,7 @@ fUQ
 alk
 pSe
 amH
-vsj
+qSj
 ePU
 nUc
 aqi
@@ -100961,7 +100961,7 @@ bnO
 boX
 bqg
 brw
-bsW
+jjD
 bku
 cqp
 bxm
@@ -102754,7 +102754,7 @@ bhU
 biw
 biw
 bkt
-blL
+iZO
 bmR
 bnS
 boZ

@@ -295,3 +295,21 @@
   - soundadd: 'adds two new emotes: *ara and *missouri'
   michaeljacksonlover:
   - bugfix: hotel's pool is functional
+  Putnam3145:
+  - balance: Untied shoes are slightly less common
+  - admin: Better admin logging on potential prefbreak arousal stuff
+  zeroisthebiggay:
+  - bugfix: harpy wings layering
+  - rscadd: and steals the harpy wings from rp so that there is some variety
+2022-08-31:
+  Putnam3145:
+  - bugfix: has_important_message = TRUE added to a bunch of events so you still know
+      where that pyro anomaly is with an intern
+  - bugfix: Job code is no longer fricked (oh well)
+  - rscadd: Antag roles can be set to "low" rather than just "enabled" or "disabled",
+      which will prevent spending antag rep on that antag but make you a low priority
+      pick
+  - code_imp: Changed no antags from a special role to a toggle (why did i make it
+      a special role)
+  - code_imp: All direct references to ROLE_NO_ANTAGONISTS have been swapped to the
+      HAS_ANTAG_PREF macro or removed

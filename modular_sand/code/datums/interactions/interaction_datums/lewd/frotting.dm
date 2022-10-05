@@ -1,5 +1,5 @@
 /datum/interaction/lewd/frotting
-	description = "Rub your penis against theirs"
+	description = "Rub your %COCK% against theirs"
 	require_user_penis = REQUIRE_EXPOSED
 	require_target_penis = REQUIRE_EXPOSED
 	max_distance = 1
@@ -10,12 +10,15 @@
 /datum/interaction/lewd/frotting/display_interaction(mob/living/user, mob/living/partner)
 	var/message
 	var/t_His = user.p_their()
+	var/genital_name = user.get_penetrating_genital_name()
 
-	message = "rubs [t_His] penis against [partner]'s."
+	message = "rubs [t_His] [genital_name] against [partner]'s."
 	user.set_is_fucking(partner, CUM_TARGET_PENIS, user.getorganslot(ORGAN_SLOT_PENIS))
 	user.visible_message("<span class='lewd'><b>\The [user]</b> [message]</span>", ignored_mobs = user.get_unconsenting())
-	user.handle_post_sex(NORMAL_LUST, CUM_TARGET_PENIS, partner)
-	partner.handle_post_sex(NORMAL_LUST, CUM_TARGET_PENIS, user)
+	if(user.can_penetrating_genital_cum())
+		user.handle_post_sex(NORMAL_LUST, CUM_TARGET_PENIS, partner)
+	if(partner.can_penetrating_genital_cum())
+		partner.handle_post_sex(NORMAL_LUST, CUM_TARGET_PENIS, user)
 
 /datum/interaction/lewd/tribadism
 	description = "Grind your pussy against theirs."
