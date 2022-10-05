@@ -413,12 +413,12 @@
 
 /datum/quirk/vampire/remove()
 	var/mob/living/carbon/human/H = quirk_holder
-    var/datum/action/vbite/B = locate() in H.actions
-    REMOVE_TRAIT(H, TRAIT_NO_PROCESS_FOOD, ROUNDSTART_TRAIT)
-    REMOVE_TRAIT(H, TRAIT_COLDBLOODED, ROUNDSTART_TRAIT)
-    REMOVE_TRAIT(H, TRAIT_NOBREATH, ROUNDSTART_TRAIT)
-    REMOVE_TRAIT(H, TRAIT_NOTHIRST, ROUNDSTART_TRAIT)
-    B.Remove(H)
+	var/datum/action/vbite/B = locate() in H.actions
+	REMOVE_TRAIT(H, TRAIT_NO_PROCESS_FOOD, ROUNDSTART_TRAIT)
+	REMOVE_TRAIT(H, TRAIT_COLDBLOODED, ROUNDSTART_TRAIT)
+	REMOVE_TRAIT(H, TRAIT_NOBREATH, ROUNDSTART_TRAIT)
+	REMOVE_TRAIT(H, TRAIT_NOTHIRST, ROUNDSTART_TRAIT)
+	B.Remove(H)
 	. = ..()
 
 /// quirk actions ///
