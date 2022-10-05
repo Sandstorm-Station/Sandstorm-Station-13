@@ -400,7 +400,8 @@
 	ADD_TRAIT(H,TRAIT_NOTHIRST,SPECIES_TRAIT)
 	if(!C.dna.skin_tone_override)
 		H.skin_tone = "albino"
-	H.grant_ability_from_source(list(INNATE_ABILITY_VBITE),ABILITY_SOURCE_SPECIES)//gives the ability, check innate_abilities for defining new abilities
+	var/datum/action/vbite/B = new
+	B.Grant(H)
 
 /datum/quirk/vampire/on_process()
 	. = ..()
@@ -410,6 +411,13 @@
 		to_chat(C, "<span class='danger'>You don't belong here!</span>")
 		C.adjustFireLoss(5)
 		C.adjust_fire_stacks(6)
+
+/datum/quirk/vampire/remove()
+	var/mob/living/carbon/human/H = quirk_holder
+	var/mob/living/carbon/C = quirk_holder
+	. = ..()
+	var/datum/action/vbite/B = new
+	B.Remove(H)
 
 /// quirk actions ///
 
