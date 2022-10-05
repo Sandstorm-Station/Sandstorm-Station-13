@@ -382,7 +382,7 @@
 
 /datum/quirk/vampire//splurt change start
 	name = "Bloodsucker Fledgeling"
-	desc = "you need blood for nutriment, you have fangs to aid with this, the church does not harm you"
+	desc = "you need blood for nutriment, you have fangs to aid with this, the church harms you"
 	value = 3
 	medical_record_text = "this person was partially infected by a bloodsucker"
 	mob_trait = BLOODFLEDGE
@@ -414,7 +414,6 @@
 
 /datum/quirk/vampire/remove()
 	var/mob/living/carbon/human/H = quirk_holder
-	var/mob/living/carbon/C = quirk_holder
 	. = ..()
 	var/datum/action/vbite/B = new
 	B.Remove(H)
@@ -465,14 +464,6 @@
 			if(!victim.blood_volume)
 				to_chat(H, "<span class='warning'>You finish off [victim]'s blood supply!</span>")
 
-/datum/action/vbite/New(Target)//defines the button (I think)
-	link_to(Target)
-	button = new
-	button.linked_action = src
-	button.name = name
-	button.actiontooltipstyle = buttontooltipstyle
-	if(desc)
-		button.desc = desc
 //splurt change end
 //put next quirk action here
 
