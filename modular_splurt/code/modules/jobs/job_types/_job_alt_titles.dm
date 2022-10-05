@@ -93,7 +93,8 @@
 		"Cumdump",
 		"Greytider",
 		"Bard",
-		"Snack"
+		"Snack",
+		"Stress Relief"
 	)
 	LAZYADD(alt_titles, extra_titles)
 	. = ..()
