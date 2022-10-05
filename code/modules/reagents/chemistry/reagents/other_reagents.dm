@@ -61,7 +61,7 @@
 		if(!data || !(data["blood_type"] in get_safe_blood(C.dna.blood_type)))	//we only care about bloodtype here because this is where the poisoning should be
 			C.adjustToxLoss(rand(2,8)*REAGENTS_EFFECT_MULTIPLIER, TRUE, TRUE)	//forced to ensure people don't use it to gain beneficial toxin as slime person
 	if(HAS_TRAIT(C,BLOODFLEDGE))
-		C.adjust_nutrition(20)
+		C.adjust_nutrition(2)
 	..()
 
 /datum/reagent/blood/reaction_obj(obj/O, volume)
