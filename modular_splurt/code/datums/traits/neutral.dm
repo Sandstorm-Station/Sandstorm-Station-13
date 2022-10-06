@@ -432,10 +432,10 @@
 	button_icon_state = "power_feed"
 	icon_icon = 'icons/mob/actions/bloodsucker.dmi'
 	desc = "bite the person you are grabbing with your fangs"
+	var/drain_cooldown = 0
 
 /datum/action/vbite/Trigger()
 	. = ..()
-	var/drain_cooldown = 0
 	if(iscarbon(owner))
 		var/mob/living/carbon/H = owner
 		if(H.nutrition >= 800)
@@ -446,7 +446,7 @@
 			return
 		if(H.pulling && iscarbon(H.pulling))
 			var/mob/living/carbon/victim = H.pulling
-			drain_cooldown = world.time + 40
+			drain_cooldown = world.time + 25
 			if(victim.anti_magic_check(FALSE, TRUE, FALSE, 0))
 				to_chat(victim, "<span class='warning'>[H] tries to bite you, but stops before touching you!</span>")
 				to_chat(H, "<span class='warning'>[victim] is blessed! You stop just in time to avoid catching fire.</span>")
