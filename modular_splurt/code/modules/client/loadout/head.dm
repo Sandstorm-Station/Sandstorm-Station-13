@@ -43,6 +43,7 @@
 	loadout_flags = LOADOUT_CAN_NAME | LOADOUT_CAN_DESCRIPTION | LOADOUT_CAN_COLOR_POLYCHROMIC
 	loadout_initial_colors = list("#F2F2F2")
 
+//Adds bowler hats
 /datum/gear/head/bowler
 	name = "Bowler-hat"
 	cost = 1
