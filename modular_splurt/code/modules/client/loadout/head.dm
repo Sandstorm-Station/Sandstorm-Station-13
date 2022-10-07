@@ -48,3 +48,11 @@
 	cost = 1
 	path = /obj/item/clothing/head/bowler
 	loadout_flags = LOADOUT_CAN_NAME | LOADOUT_CAN_DESCRIPTION
+
+/datum/gear/head/medberet
+	name = "Medical officer's beret"
+	cost = 1
+	path = /obj/item/clothing/head/beret/med
+	loadout_flags = LOADOUT_CAN_NAME | LOADOUT_CAN_DESCRIPTION
+	restricted_roles = list("Chief Medical Officer", "Medical Doctor", "Chemist", "Virologist", "Paramedic", "Geneticist", "Brig Physician")
+	subcategory = LOADOUT_SUBCATEGORY_HEAD_JOBS
