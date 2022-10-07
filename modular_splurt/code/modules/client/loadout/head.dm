@@ -59,6 +59,7 @@
 	restricted_roles = list("Chief Medical Officer", "Medical Doctor", "Chemist", "Virologist", "Paramedic", "Geneticist", "Brig Physician")
 	subcategory = LOADOUT_SUBCATEGORY_HEAD_JOBS
 
+//Adds the three basic flowers that can be pinned into the hair
 /datum/gear/head/poppy
 	name = "Poppy"
 	cost = 2
