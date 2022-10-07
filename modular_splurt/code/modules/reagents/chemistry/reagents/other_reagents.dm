@@ -5,3 +5,14 @@
 		if(Q.type == /datum/quirk/dumb4cum)
 			d4c = Q
 			d4c.uncrave()
+
+/datum/reagent/consumable/semen/on_mob_metabolize(mob/living/carbon/M)
+	. = ..()
+	if(HAS_TRAIT(M,TRAIT_SUCCUBUS))
+		M.adjust_nutrition(5)
+
+/datum/reagent/consumable/milk/on_mob_metabolize(mob/living/carbon/M)
+	. = ..()
+	if(HAS_TRAIT(M,TRAIT_INCUBUS))
+		M.adjust_nutrition(5)
+
