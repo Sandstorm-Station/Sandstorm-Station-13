@@ -50,6 +50,7 @@
 	path = /obj/item/clothing/head/bowler
 	loadout_flags = LOADOUT_CAN_NAME | LOADOUT_CAN_DESCRIPTION
 
+//Adds medical beret
 /datum/gear/head/medberet
 	name = "Medical officer's beret"
 	cost = 1
