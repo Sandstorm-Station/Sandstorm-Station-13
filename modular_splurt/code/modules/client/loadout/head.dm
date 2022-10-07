@@ -42,3 +42,9 @@
 	path = /obj/item/clothing/head/helmet/goner/officer/fake/poly
 	loadout_flags = LOADOUT_CAN_NAME | LOADOUT_CAN_DESCRIPTION | LOADOUT_CAN_COLOR_POLYCHROMIC
 	loadout_initial_colors = list("#F2F2F2")
+
+/datum/gear/head/bowler
+	name = "Bowler-hat"
+	cost = 1
+	path = /obj/item/clothing/head/bowler
+	loadout_flags = LOADOUT_CAN_NAME | LOADOUT_CAN_DESCRIPTION
