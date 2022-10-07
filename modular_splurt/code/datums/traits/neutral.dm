@@ -379,7 +379,7 @@
 	. = ..()
 	var/obj/item/implant/genital_fluid/put_in = new
 	put_in.implant(quirk_holder, null, TRUE, TRUE)
-
+//succubus and incubus below
 /datum/quirk/incubus
 	name = "Incubus"
 	desc = "you can only be fed by milk (and semen too if you're a cubus hybrid)"
@@ -403,7 +403,7 @@
 /datum/quirk/incubus/on_process()
 	. = ..()
 	var/mob/living/carbon/human/H = quirk_holder
-	H.adjust_nutrition(-0.01)
+	H.adjust_nutrition(-0.09)//increases their nutrition loss rate to encourage them to gain a partner they can essentially leech off of
 
 /datum/quirk/succubus
 	name = "Succubus"
@@ -427,4 +427,4 @@
 /datum/quirk/succubus/on_process()
 	. = ..()
 	var/mob/living/carbon/human/H = quirk_holder
-	H.adjust_nutrition(-0.01)
+	H.adjust_nutrition(-0.09)//increases their nutrition loss rate to encourage them to gain a partner they can essentially leech off of
