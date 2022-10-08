@@ -33,7 +33,8 @@
 /datum/job/hos/New()
 	var/list/extra_titles = list(
 		"Security Commander",
-		"Head of Slutcurity"
+		"Head of Slutcurity",
+		"Head of Spookcurity"
 	)
 	LAZYADD(alt_titles, extra_titles)
 	. = ..()
@@ -261,7 +262,8 @@
 /datum/job/detective/New()
 	var/list/extra_titles = list(
 		"Gumshoe",
-		"Slutective"
+		"Slutective",
+		"Spookective"
 	)
 	LAZYADD(alt_titles, extra_titles)
 	. = ..()
@@ -273,7 +275,8 @@
 		"Guardsman",
 		"Police Officer",
 		"Rookie",
-		"Slutcurity Officer"
+		"Slutcurity Officer",
+		"Spookcurity Officer"
 	)
 	LAZYADD(alt_titles, extra_titles)
 	. = ..()
@@ -285,7 +288,8 @@
 		"Prison Administrator",
 		"Dungeon Master",
 		"Brig Superintendent",
-		"Voreden"
+		"Voreden",
+		"Spookden"
 	)
 	LAZYADD(alt_titles, extra_titles)
 	. = ..()
