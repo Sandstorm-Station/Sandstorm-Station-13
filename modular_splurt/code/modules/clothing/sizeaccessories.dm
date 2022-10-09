@@ -31,7 +31,7 @@
 	. = ..()
 
 //SynTech Wristband
-/obj/item/clothing/accessory/ring/syntech/band //I mean, you realistically *can* put a band over your gloves
+/obj/item/clothing/wrists/syntech
 	name = "normalizer wristband"
 	desc = "An expensive technological wristband cast in SynTech purples with shimmering NanoTrasen golds. It will 'normalize' the size of the user to a specified height for approved work-conditions, as long as it is equipped. There is a small screen buzzing with information."
 	icon = 'modular_splurt/icons/obj/clothing/sizeaccessories.dmi'
@@ -39,6 +39,22 @@
 	icon_state = "wristband"
 	item_state = "syntechband"
 
+/obj/item/clothing/wrists/syntech/equipped(mob/user, slot)
+	if(slot != ITEM_SLOT_WRISTS)
+		return ..()
+
+	if(user.GetComponent(/datum/component/size_normalized))
+		to_chat(user, "<span class='warning'>\The [src] buzzes, being overwritten by another accessory.</span>")
+		playsound(src, 'sound/machines/buzz-sigh.ogg', 50, 1)
+	else
+		user.AddComponent(/datum/component/size_normalized, wear=src)
+	. = ..()
+
+/obj/item/clothing/wrists/syntech/dropped(mob/living/user, slot)
+	var/datum/component/size_normalized/comp = user.GetComponent(/datum/component/size_normalized)
+	if(comp?.attached_wear == src)
+		qdel(comp)
+	. = ..()
 
 //NECK SLOT ITEMS...
 //Syntech Pendant

@@ -7,17 +7,22 @@
 	total_positions = 0
 	spawn_positions = 0
 	supervisors = "the security team"
-	custom_spawn_text = "<font color='red' size='4'><b>If you join the shift as a Prisoner, you MUST go directly to Security to be allowed into the Permabrig, and you may NOT attempt a break out without ahelping unless your life is in immediate danger.</b></font>"
+	random_spawns_possible = FALSE
+
 	outfit = /datum/outfit/job/prisoner
 	plasma_outfit = /datum/outfit/plasmaman/prisoner
 
 	display_order = JOB_DISPLAY_ORDER_PRISONER
 
-/datum/job/prisoner/after_spawn(mob/living/carbon/human/H, mob/M)
+/datum/job/prisoner/get_latejoin_spawn_point()
+	return get_roundstart_spawn_point()
+
+/datum/job/prisoner/after_spawn(mob/living/carbon/human/H, client/C)
+	. = ..()
 	var/list/policies = CONFIG_GET(keyed_list/policy)
 	var/policy = policies[POLICYCONFIG_JOB_PRISONER]
 	if(policy)
-		var/mob/found = (M?.client && M) || (H?.client && H)
+		var/mob/found = (H?.client && H)
 		to_chat(found, "<br><span class='userdanger'>!!READ THIS!!</span><br><span class='warning'>The following is server-specific policy configuration and overrides anything said above if conflicting.</span>")
 		to_chat(found, "<br><br>")
 		to_chat(found, "<span class='boldnotice'>[policy]</span>")

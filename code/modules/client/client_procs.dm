@@ -225,11 +225,11 @@ GLOBAL_LIST_INIT(blacklisted_builds, list(
 //This stops files larger than UPLOAD_LIMIT being sent from client to server via input(), client.Import() etc.
 /client/AllowUpload(filename, filelength)
 	if(holder)
-		if(filelength > UPLOAD_LIMIT_ADMIN)
-			to_chat(src, "<font color='red'>Error: AllowUpload(): File Upload too large. Upload Limit: [UPLOAD_LIMIT_ADMIN/1024]KiB.</font>")
+		if(filelength > CONFIG_GET(number/upload_limit_admin))
+			to_chat(src, "<font color='red'>Error: AllowUpload(): File Upload too large. Upload Limit: [CONFIG_GET(number/upload_limit_admin)/1024]KiB.</font>")
 			return FALSE
-	else if(filelength > UPLOAD_LIMIT)
-		to_chat(src, "<font color='red'>Error: AllowUpload(): File Upload too large. Upload Limit: [UPLOAD_LIMIT/1024]KiB.</font>")
+	else if(filelength > CONFIG_GET(number/upload_limit))
+		to_chat(src, "<font color='red'>Error: AllowUpload(): File Upload too large. Upload Limit: [CONFIG_GET(number/upload_limit)/1024]KiB.</font>")
 		return FALSE
 	return TRUE
 
@@ -430,9 +430,9 @@ GLOBAL_LIST_INIT(blacklisted_builds, list(
 
 	if(holder)
 		add_admin_verbs()
-		var/admin_memo = get_message_output("memo")
-		if(admin_memo)
-			to_chat(src, admin_memo)
+		var/admin_memo_note = get_message_output("memo")
+		if(admin_memo_note)
+			to_chat(src, admin_memo_note)
 		adminGreet()
 
 	add_verbs_from_config()
@@ -475,9 +475,9 @@ GLOBAL_LIST_INIT(blacklisted_builds, list(
 
 	if(CONFIG_GET(flag/autoconvert_notes))
 		convert_notes_sql(ckey)
-	var/player_message_output = get_message_output("message", ckey)
-	if(player_message_output)
-		to_chat(src, player_message_output)
+	var/admin_message_note = get_message_output("message", ckey)
+	if(admin_message_note)
+		to_chat(src, admin_message_note)
 	if(!winexists(src, "asset_cache_browser")) // The client is using a custom skin, tell them.
 		to_chat(src, "<span class='warning'>Unable to access asset cache browser, if you are using a custom skin file, please allow DS to download the updated version, if you are not, then make a bug report. This is not a critical issue but can cause issues with resource downloading, as it is impossible to know when extra resources arrived to you.</span>")
 
@@ -876,6 +876,16 @@ GLOBAL_LIST_INIT(blacklisted_builds, list(
 		return
 	last_activity = world.time
 	last_click = world.time
+	//fullauto stuff
+	/*
+	if(!control)
+		return
+	*/
+	if(click_intercept_time)
+		if(click_intercept_time >= world.time)
+			click_intercept_time = 0 //Reset and return. Next click should work, but not this one.
+			return
+		click_intercept_time = 0 //Just reset. Let's not keep re-checking forever.
 	var/list/L = params2list(params)
 
 	if(L["drag"])
@@ -933,7 +943,7 @@ GLOBAL_LIST_INIT(blacklisted_builds, list(
 		add_verb(src, /client/proc/self_playtime)
 
 
-#undef UPLOAD_LIMIT
+//#undef UPLOAD_LIMIT //SPLURT EDIT
 
 //checks if a client is afk
 //3000 frames = 5 minutes

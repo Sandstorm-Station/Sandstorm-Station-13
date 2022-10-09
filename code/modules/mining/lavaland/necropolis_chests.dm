@@ -770,6 +770,12 @@
 	total_mass_on = 5
 	attack_speed = 0
 	attack_unwieldlyness = CLICK_CD_MELEE * 0.5
+	/// how much stamina does it cost to roll?
+	var/roll_stamcost = 15
+	/// how far are we rolling?
+	var/roll_range = 3
+	/// do you spin when dodgerolling
+	var/roll_orientation = TRUE
 
 /obj/item/melee/transforming/cleaving_saw/examine(mob/user)
 	. = ..()
@@ -815,6 +821,11 @@
 	else
 		B.add_stacks(bleed_stacks_per_hit)
 
+/obj/item/melee/transforming/cleaving_saw/AltClick(mob/user)
+	. = ..()
+	roll_orientation = !roll_orientation
+	to_chat(user, span_notice("You are now [roll_orientation ? "rolling" : "quick-stepping"] when you dodge. (This only affects if you spin or not during a dodge.)"))
+
 /obj/item/melee/transforming/cleaving_saw/attack(mob/living/target, mob/living/carbon/human/user)
 	if(!active || swiping || !target.density || get_turf(target) == get_turf(user))
 		if(!active)
@@ -833,6 +844,43 @@
 				if(user.Adjacent(L) && L.density)
 					melee_attack_chain(user, L)
 		swiping = FALSE
+
+/obj/item/melee/transforming/cleaving_saw/alt_pre_attack(atom/A, mob/living/user, params)
+	return TRUE // Let's dance.
+
+/obj/item/melee/transforming/cleaving_saw/altafterattack(atom/target, mob/living/user, proximity_flag, click_parameters)
+	if(user.IsImmobilized()) // no free dodgerolls
+		return
+	var/turf/where_to = get_turf(target)
+	user.apply_damage(damage = roll_stamcost, damagetype = STAMINA)
+	user.Immobilize(0.8 SECONDS) // you dont get to adjust your roll
+	user.throw_at(where_to, range = roll_range, speed = 1, force = MOVE_FORCE_NORMAL, spin = roll_orientation)
+	user.apply_status_effect(/datum/status_effect/dodgeroll_iframes)
+	playsound(user, 'sound/effects/body-armor-rolling.ogg', 50, FALSE)
+	return ..()
+
+/datum/status_effect/dodgeroll_iframes
+	id = "dodgeroll_dodging"
+	alert_type = null
+	status_type = STATUS_EFFECT_REFRESH
+	duration = 0.8 SECONDS // worth tweaking?
+
+/datum/status_effect/dodgeroll_iframes/on_apply()
+	. = ..()
+	RegisterSignal(owner, COMSIG_LIVING_RUN_BLOCK, .proc/trolled)
+
+/datum/status_effect/dodgeroll_iframes/on_remove()
+	UnregisterSignal(owner, list(
+		COMSIG_LIVING_RUN_BLOCK
+		))
+	return ..()
+
+/datum/status_effect/dodgeroll_iframes/proc/trolled(mob/living/source, real_attack, object, damage, attack_text, attack_type, armour_penetration, attacker, def_zone, return_list)
+	SIGNAL_HANDLER
+	owner.balloon_alert_to_viewers("missed!")
+	playsound(src, 'sound/weapons/thudswoosh.ogg', 50, TRUE, -1)
+	return_list[BLOCK_RETURN_REDIRECT_METHOD] = REDIRECT_METHOD_PASSTHROUGH
+	return BLOCK_SUCCESS | BLOCK_SHOULD_REDIRECT | BLOCK_TARGET_DODGED
 
 //Dragon
 
@@ -1223,8 +1271,8 @@
 	attack_verb = list("clubbed", "beat", "pummeled")
 	hitsound = 'sound/weapons/sonic_jackhammer.ogg'
 	actions_types = list(/datum/action/item_action/vortex_recall, /datum/action/item_action/toggle_unfriendly_fire)
-	var/cooldown_time = 20 //how long the cooldown between non-melee ranged attacks is
-	var/chaser_cooldown = 81 //how long the cooldown between firing chasers at mobs is
+	var/cooldown_time = 15 //how long the cooldown between non-melee ranged attacks is
+	var/chaser_cooldown = 60 //how long the cooldown between firing chasers at mobs is
 	var/chaser_timer = 0 //what our current chaser cooldown is
 	var/chaser_speed = 0.8 //how fast our chasers are
 	var/timer = 0 //what our current cooldown is
@@ -1275,7 +1323,7 @@
 			if(isliving(target) && chaser_timer <= world.time) //living and chasers off cooldown? fire one!
 				chaser_timer = world.time + chaser_cooldown
 				var/obj/effect/temp_visual/hierophant/chaser/C = new(get_turf(user), user, target, chaser_speed, friendly_fire_check)
-				C.damage = 15
+				C.damage = 25
 				C.monster_damage_boost = TRUE
 				log_combat(user, target, "fired a chaser at", src)
 			else
@@ -1392,10 +1440,10 @@
 		new /obj/effect/temp_visual/hierophant/telegraph/teleport(source, user)
 		for(var/t in RANGE_TURFS(1, T))
 			var/obj/effect/temp_visual/hierophant/blast/B = new /obj/effect/temp_visual/hierophant/blast(t, user, TRUE) //blasts produced will not hurt allies
-			B.damage = 15
+			B.damage = 25
 		for(var/t in RANGE_TURFS(1, source))
 			var/obj/effect/temp_visual/hierophant/blast/B = new /obj/effect/temp_visual/hierophant/blast(t, user, TRUE) //but absolutely will hurt enemies
-			B.damage = 15
+			B.damage = 25
 		for(var/mob/living/L in range(1, source))
 			INVOKE_ASYNC(src, .proc/teleport_mob, source, L, T, user) //regardless, take all mobs near us along
 		sleep(6) //at this point the blasts detonate
@@ -1456,7 +1504,7 @@
 		if(!J)
 			return
 		var/obj/effect/temp_visual/hierophant/blast/B = new(J, user, friendly_fire_check)
-		B.damage = 15
+		B.damage = 25
 		B.monster_damage_boost = TRUE
 		previousturf = J
 		J = get_step(previousturf, dir)
@@ -1469,7 +1517,7 @@
 	sleep(2)
 	for(var/t in RANGE_TURFS(1, T))
 		var/obj/effect/temp_visual/hierophant/blast/B = new(t, user, friendly_fire_check)
-		B.damage = 15 //keeps monster damage boost due to lower damage (now added to all damage due to reduction to 15, 30dmg 50AP isn't cool)
+		B.damage = 25
 
 
 //Just some minor stuff

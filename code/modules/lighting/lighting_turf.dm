@@ -5,7 +5,7 @@
 	var/tmp/lighting_corners_initialised = FALSE
 
 	var/tmp/list/datum/light_source/affecting_lights       // List of light sources affecting this turf.
-	var/tmp/atom/movable/lighting_object/lighting_object // Our lighting object.
+	var/tmp/datum/lighting_object/lighting_object // Our lighting object.
 	var/tmp/datum/lighting_corner/lc_topleft
 	var/tmp/datum/lighting_corner/lc_topright
 	var/tmp/datum/lighting_corner/lc_bottomleft
@@ -25,23 +25,23 @@
 
 /turf/proc/lighting_clear_overlay()
 	if (lighting_object)
-		qdel(lighting_object, TRUE)
+		qdel(lighting_object, force=TRUE)
 
 	PROC_ON_CORNERS(update_active())
 
 // Builds a lighting object for us, but only if our area is dynamic.
 /turf/proc/lighting_build_overlay()
 	if (lighting_object)
-		qdel(lighting_object,force=TRUE) //Shitty fix for lighting objects persisting after death
+		qdel(lighting_object, force=TRUE) //Shitty fix for lighting objects persisting after death
 
-	var/area/A = loc
-	if (!IS_DYNAMIC_LIGHTING(A) && !light_sources)
+	var/area/our_area = loc
+	if (!IS_DYNAMIC_LIGHTING(our_area) && !light_sources)
 		return
 
 	if (!lighting_corners_initialised)
 		generate_missing_corners()
 
-	new/atom/movable/lighting_object(src)
+	new/datum/lighting_object(src)
 
 	var/datum/light_source/S
 	var/i
@@ -83,7 +83,7 @@
 	if (!lighting_object)
 		return FALSE
 
-	return !lighting_object.luminosity
+	return !luminosity
 
 // Can't think of a good name, this proc will recalculate the has_opaque_atom variable.
 /turf/proc/recalc_atom_opacity()

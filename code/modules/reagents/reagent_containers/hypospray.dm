@@ -504,8 +504,6 @@
 	if(L != user)
 		L.visible_message("<span class='danger'>[user] uses the [src] on [L]!</span>", \
 						"<span class='userdanger'>[user] uses the [src] on you!</span>")
-	else
-		L.log_message("<font color='orange'>applied [src] to themselves ([contained]).</font>", INDIVIDUAL_ATTACK_LOG)
 
 	var/fraction = min(vial.amount_per_transfer_from_this/vial.reagents.total_volume, 1)
 	vial.reagents.reaction(L, method, fraction)

@@ -230,6 +230,12 @@ RANDOM_LAWS corporate
 ## meme laws. Honk
 #RANDOM_LAWS buildawall
 
+## lewd laws. Take a guess.
+RANDOM_LAWS slut
+RANDOM_LAWS shebang
+RANDOM_LAWS milker
+RANDOM_LAWS vore_pred
+
 ## If weighted laws are selected (DEFAULT_LAWS = 3),
 ## then an AI's starting laws will be determined by the weights of these values
 
@@ -260,6 +266,12 @@ LAW_WEIGHT antimov,0
 LAW_WEIGHT thermodynamic,0
 LAW_WEIGHT ratvar,0
 LAW_WEIGHT buildawall,0
+
+## Lewd laws. Coom.
+LAW_WEIGHT slut,0
+LAW_WEIGHT shebang,0
+LAW_WEIGHT milker,0
+LAW_WEIGHT vore_pred,0
 
 ##------------------------------------------------
 
@@ -323,6 +335,10 @@ ROUNDSTART_RACES dullahan
 ROUNDSTART_RACES spectre_bot
 ROUNDSTART_RACES vampire_roundstart
 ROUNDSTART_RACES shadekin
+ROUNDSTART_RACES undead_mammal
+ROUNDSTART_RACES undead_insect
+ROUNDSTART_RACES ghoul_lizard
+ROUNDSTART_RACES podweak
 
 ##-------------------------------------------------------------------------------------------
 
@@ -501,7 +517,7 @@ PAI_CUSTOM_HOLOFORMS
 #HARD_DELETES_OVERRUN_LIMIT 0
 
 ## Enables monstermos/"equalization" step in atmos.
-# ATMOS_EQUALIZATION_ENABLED
+# ATMOS_EQUALIZE_ENABLED
 
 ## Do station renames from the station charter require admin approval to pass, as opposed to autoapproving if not denied.
 STATION_NAME_NEEDS_APPROVAL

@@ -265,3 +265,8 @@
 	name = "Speak 4"
 	id = "speak4"
 	soundpath = 'modular_splurt/sound/voice/barks/goon/speak_4.ogg'
+
+/datum/bark/chitter/alt
+	name = "Chittery Alt"
+	id = "chitter2"
+	soundpath = 'modular_splurt/sound/voice/moth/mothchitter2.ogg'

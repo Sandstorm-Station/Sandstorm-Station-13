@@ -22,13 +22,10 @@
 
 GLOBAL_VAR(command_name)
 /proc/command_name()
-	if (GLOB.command_name)
-		return GLOB.command_name
+	if (!GLOB.command_name)
+		GLOB.command_name = DEFAULT_CENTCOM_NAME
 
-	var/name = "Central Command"
-
-	GLOB.command_name = name
-	return name
+	return GLOB.command_name
 
 /proc/change_command_name(name)
 

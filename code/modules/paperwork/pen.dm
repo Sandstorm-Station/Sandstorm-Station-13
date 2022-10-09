@@ -171,9 +171,10 @@
 					label.apply_label()
 				to_chat(user, "<span class='notice'>You have successfully renamed \the [oldname] to [O].</span>")
 				O.renamedByPlayer = TRUE
+				SEND_SIGNAL(O, COMSIG_OBJ_WRITTEN_ON, O.name) //SPLURT EDIT - EGG NAMING
 
 		if(penchoice == "Change description")
-			var/input = stripped_input(user,"Describe [O] here:", ,"[O.desc]", 140)
+			var/input = stripped_input(user,"Describe [O] here:", ,"[O.desc]", 350)
 			var/olddesc = O.desc
 			if(QDELETED(O) || !user.canUseTopic(O, BE_CLOSE))
 				return

@@ -3229,6 +3229,11 @@
 	lootcount = 3;
 	lootdoubles = 0
 	},
+/obj/effect/spawner/lootdrop/aimodule_lewd{
+	fan_out_items = 1;
+	lootcount = 3;
+	lootdoubles = 0
+	},
 /obj/structure/sign/nanotrasen{
 	pixel_x = -32
 	},
@@ -15450,7 +15455,7 @@
 /obj/structure/closet/secure_closet/engineering_chief,
 /obj/item/clothing/suit/space/hardsuit/engine/elite,
 /obj/item/clothing/shoes/magboots/advance,
-/mob/living/simple_animal/parrot/Poly,
+/mob/living/simple_animal/parrot/Polly,
 /turf/open/floor/plasteel,
 /area/engineering/main)
 "lhi" = (

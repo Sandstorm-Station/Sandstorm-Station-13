@@ -1,5 +1,9 @@
 //Credit goes to the Skyrat codebase https://github.com/Skyrat-SS13/Skyrat-tg
 
+#define NO_MUZZLE 0
+#define HALF_MUZZLE 1
+#define FULL_MUZZLE 2
+
 /obj/item/clothing/head/helmet/space/deprivation_helmet
 	name = "deprivation helmet"
 	desc = "Сompletely cuts off the wearer from the outside world."
@@ -13,19 +17,17 @@
 	lefthand_file = 'modular_splurt/icons/mob/inhands/lewd_items/lewd_inhand_left.dmi'
 	righthand_file = 'modular_splurt/icons/mob/inhands/lewd_items/lewd_inhand_right.dmi'
 	flags_inv = HIDEMASK|HIDEEARS|HIDEEYES|HIDEFACE|HIDEHAIR|HIDESNOUT|HIDEFACIALHAIR
-	flags_cover = HEADCOVERSEYES | HEADCOVERSMOUTH
+	flags_cover = HEADCOVERSEYES
 	var/current_helmet_color = "pink"
 	//these three vars needed to turn deprivation stuff on or off
-	var/muzzle = FALSE
+	var/muzzle = NO_MUZZLE
 	var/earmuffs = FALSE
 	var/prevent_vision = FALSE
 	var/color_changed = FALSE
 	var/seamless = FALSE
 
 	var/static/list/helmet_designs
-	actions_types = list(/datum/action/item_action/toggle_vision,
-						 /datum/action/item_action/toggle_hearing,
-						 /datum/action/item_action/toggle_speech)
+	actions_types = list(/datum/action/item_action/toggle_vision, /datum/action/item_action/toggle_hearing, /datum/action/item_action/toggle_speech)
 //Declare action types
 /datum/action/item_action/toggle_vision
     name = "Vision switch"
@@ -73,20 +75,31 @@
 /obj/item/clothing/head/helmet/space/deprivation_helmet/proc/SwitchHelmet(button)
 	var/C = button
 	if(C == "speech")
-		if(muzzle == TRUE)
-			muzzle = FALSE
+		if(muzzle == FULL_MUZZLE)
+			muzzle = NO_MUZZLE
 			//playsound(usr, 'sound/weapons/magout.ogg', 40, TRUE, ignore_walls = FALSE)
 			to_chat(usr, span_notice("Speech switch off"))
+			flags_cover = HEADCOVERSEYES
 			if(usr.get_item_by_slot(ITEM_SLOT_HEAD) == src)
 				REMOVE_TRAIT(usr, TRAIT_MUTE, CLOTHING_TRAIT)
 				to_chat(usr, span_purple("Your mouth is free. you breathe out with relief."))
-		else
-			muzzle = TRUE
+		else if(muzzle == NO_MUZZLE)
+			muzzle = HALF_MUZZLE
 			//playsound(usr, 'sound/weapons/magin.ogg', 40, TRUE, ignore_walls = FALSE)
-			to_chat(usr, span_notice("Speech switch on"))
+			to_chat(usr, span_notice("Ring gag switch on"))
+			flags_cover = HEADCOVERSEYES //should be unneccesary but fuck it
 			if(usr.get_item_by_slot(ITEM_SLOT_HEAD) == src)
+				ADD_TRAIT(usr, TRAIT_TONGUELESS_SPEECH, CLOTHING_TRAIT)
+				to_chat(usr, span_purple("Something is gagging your mouth! It seems to be partially obstructing yet allowing full access to your mouth, whether you want it or not..."))
+		else if(muzzle == HALF_MUZZLE)
+			muzzle = FULL_MUZZLE
+			//playsound(usr, 'sound/weapons/magin.ogg', 40, TRUE, ignore_walls = FALSE)
+			to_chat(usr, span_notice("Full gag switch on"))
+			flags_cover = HEADCOVERSEYES | HEADCOVERSMOUTH
+			if(usr.get_item_by_slot(ITEM_SLOT_HEAD) == src)
+				REMOVE_TRAIT(usr, TRAIT_TONGUELESS_SPEECH, CLOTHING_TRAIT)
 				ADD_TRAIT(usr, TRAIT_MUTE, CLOTHING_TRAIT)
-				to_chat(usr, span_purple("Something is gagging your mouth! You can't even make a sound..."))
+				to_chat(usr, span_purple("Something is gagging your mouth completely! You can't even make a sound..."))
 	if(C == "hearing")
 		if(earmuffs == TRUE)
 			earmuffs = FALSE
@@ -182,14 +195,17 @@
 	.=..()
 	icon_state = "[initial(icon_state)]_[current_helmet_color]"
 	item_state = "[initial(icon_state)]_[current_helmet_color]"
-
+//Code for applying the deprivation aspects upon equip
 /obj/item/clothing/head/helmet/space/deprivation_helmet/equipped(mob/living/carbon/human/user, slot)
 	. = ..()
 	if(slot != ITEM_SLOT_HEAD)
 		return
-	if(muzzle == TRUE)
+	if(muzzle == HALF_MUZZLE)
+		ADD_TRAIT(user, TRAIT_TONGUELESS_SPEECH, CLOTHING_TRAIT)
+		to_chat(user, span_purple("Something is gagging your mouth! It seems to be partially obstructing yet allowing full access to your mouth, whether you want it or not..."))
+	if(muzzle == FULL_MUZZLE)
 		ADD_TRAIT(user, TRAIT_MUTE, CLOTHING_TRAIT)
-		to_chat(user, span_purple("Something is gagging your mouth! You can't even make a sound..."))
+		to_chat(user, span_purple("Something is gagging your mouth completely! You can't even make a sound..."))
 	if(earmuffs == TRUE)
 		ADD_TRAIT(user, TRAIT_DEAF, CLOTHING_TRAIT)
 		//Toggle_Sounds()
@@ -202,7 +218,9 @@
 //Here goes code that heals the wearer after unequipping helmet
 /obj/item/clothing/head/helmet/space/deprivation_helmet/dropped(mob/living/carbon/human/user)
 	. = ..()
-	if(muzzle == TRUE)
+	if(muzzle == HALF_MUZZLE)
+		REMOVE_TRAIT(user, TRAIT_TONGUELESS_SPEECH, CLOTHING_TRAIT)
+	if(muzzle == FULL_MUZZLE)
 		REMOVE_TRAIT(user, TRAIT_MUTE, CLOTHING_TRAIT)
 	if(earmuffs == TRUE)
 		earmuffs = FALSE
@@ -214,7 +232,7 @@
 
 	//some stuff for unequip messages
 	if(src == user.head)
-		if(muzzle == TRUE)
+		if(muzzle != NO_MUZZLE)
 			to_chat(user, span_purple("Your mouth is free. You breathe out with relief."))
 		if(earmuffs == TRUE)
 			to_chat(user, span_purple("Finally you can hear the world around you once more."))
@@ -240,3 +258,7 @@
 			to_chat(user, span_warning("The latches suddenly tighten!"))
 			seamless = TRUE
 	return
+
+#undef NO_MUZZLE
+#undef HALF_MUZZLE
+#undef FULL_MUZZLE

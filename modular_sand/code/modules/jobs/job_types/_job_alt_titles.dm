@@ -26,13 +26,13 @@
 
 //Service
 /datum/job/assistant
-	alt_titles = list("Civilian", "Visitor", "Businessman", "Trader", "Entertainer", "Intern")
+	alt_titles = list("Civilian", "Visitor", "Businessman", "Trader", "Entertainer", "Intern", "Off-Duty Civilian")
 
 /datum/job/bartender
 	alt_titles = list("Barista")
 
 /datum/job/chaplain
-	alt_titles = list("Priest", "Cult Leader", "Pope", "Bichop")
+	alt_titles = list("Priest", "Cult Leader", "Pope", "Bishop")
 
 /datum/job/clown //The most useless role in the game, delet this
 	alt_titles = list("Entertainer")

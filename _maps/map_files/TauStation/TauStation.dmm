@@ -15242,6 +15242,7 @@
 /obj/structure/table,
 /obj/effect/spawner/lootdrop/aimodule_neutral,
 /obj/effect/spawner/lootdrop/aimodule_harmless,
+/obj/effect/spawner/lootdrop/aimodule_lewd,
 /obj/item/aiModule/core/full/custom,
 /obj/item/aiModule/core/full/asimov,
 /obj/item/aiModule/core/freeformcore,
@@ -15927,6 +15928,10 @@
 	},
 /turf/open/floor/engine,
 /area/engineering/main)
+"fyM" = (
+/obj/machinery/vending/wallmed,
+/turf/closed/wall/r_wall,
+/area/security/brig)
 "fza" = (
 /turf/open/space/basic,
 /area/space)
@@ -18074,8 +18079,8 @@
 /turf/open/floor/plasteel,
 /area/commons/dorms)
 "glJ" = (
-/obj/machinery/vending/coffee,
 /obj/effect/turf_decal/tile/neutral,
+/obj/machinery/vending/barkbox,
 /turf/open/floor/plasteel,
 /area/commons/dorms)
 "glW" = (
@@ -23336,10 +23341,6 @@
 "hYS" = (
 /obj/structure/table/wood,
 /obj/machinery/computer/med_data/laptop,
-/obj/machinery/firealarm{
-	dir = 4;
-	pixel_x = -24
-	},
 /turf/open/floor/carpet,
 /area/medical/psychology)
 "hYX" = (
@@ -26127,6 +26128,9 @@
 	dir = 8
 	},
 /obj/structure/filingcabinet/medical,
+/obj/machinery/firealarm{
+	pixel_x = 25
+	},
 /turf/open/floor/carpet,
 /area/medical/psychology)
 "jay" = (
@@ -32103,7 +32107,7 @@
 /area/medical/storage)
 "lku" = (
 /obj/structure/filingcabinet/chestdrawer,
-/mob/living/simple_animal/parrot/Poly,
+/mob/living/simple_animal/parrot/Polly,
 /obj/effect/turf_decal/tile/yellow{
 	dir = 1
 	},
@@ -45134,6 +45138,7 @@
 	dir = 8;
 	pixel_y = -6
 	},
+/obj/item/stock_parts/cell/high,
 /turf/open/floor/plasteel/showroomfloor,
 /area/security/brig)
 "pJo" = (
@@ -51162,11 +51167,7 @@
 /turf/open/floor/engine/n2o,
 /area/engineering/atmos)
 "rRf" = (
-/obj/item/hilbertshotel/ghostdojo{
-	icon = 'icons/obj/doors/airlocks/station/wood.dmi';
-	icon_state = "closed";
-	pixel_y = 32
-	},
+/obj/item/hilbertshotel/ghostdojo,
 /turf/open/floor/plasteel,
 /area/commons/dorms)
 "rRi" = (
@@ -98385,7 +98386,7 @@ nNA
 pRk
 ygt
 ygt
-ygt
+fyM
 ygt
 ygt
 sni
@@ -102526,7 +102527,7 @@ wqW
 vjF
 tMm
 bfX
-vjF
+bfX
 vjF
 vjF
 dUW
@@ -125580,7 +125581,7 @@ wxP
 wxP
 vXM
 bLC
-xKb
+bLC
 rRf
 dld
 lBe

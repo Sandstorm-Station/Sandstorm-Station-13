@@ -165,6 +165,13 @@
 				else
 					message_admins("[key_name_admin(usr)] tried to create a revenant. Unfortunately, there were no candidates available.")
 					log_admin("[key_name(usr)] failed to create a revenant.")
+			if("qareen")
+				if(src.makeQareen())
+					message_admins("[key_name(usr)] created a qareen.")
+					log_admin("[key_name(usr)] created a qareen.")
+				else
+					message_admins("[key_name_admin(usr)] tried to create a qareen. Unfortunately, there were no candidates available.")
+					log_admin("[key_name(usr)] failed to create a qareen.")
 
 	else if(href_list["forceevent"])
 		if(!check_rights(R_FUN))
@@ -502,8 +509,8 @@
 				M.change_mob_type( /mob/living/simple_animal/crab/Coffee , null, null, delmob )
 			if("parrot")
 				M.change_mob_type( /mob/living/simple_animal/parrot , null, null, delmob )
-			if("polyparrot")
-				M.change_mob_type( /mob/living/simple_animal/parrot/Poly , null, null, delmob )
+			if("pollyparrot")
+				M.change_mob_type( /mob/living/simple_animal/parrot/Polly , null, null, delmob )
 			if("constructarmored")
 				M.change_mob_type( /mob/living/simple_animal/hostile/construct/armored , null, null, delmob )
 			if("constructbuilder")

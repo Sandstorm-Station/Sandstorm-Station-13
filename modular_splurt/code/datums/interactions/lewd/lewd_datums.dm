@@ -40,7 +40,8 @@
 		return
 
 	if(prob(50))
-		target.visible_message("<span class='lewd'>\The <b>[target]</b>'s [pick(GLOB.dick_nouns)] honks[pick(" loudly", "")]!</span>")
+		var/genital_name = target.get_penetrating_genital_name(TRUE)
+		target.visible_message("<span class='lewd'>\The <b>[target]</b>'s [genital_name] honks[pick(" loudly", "")]!</span>")
 
 	playlewdinteractionsound(target, 'sound/items/bikehorn.ogg', 40, 1, -1)
 
@@ -90,7 +91,8 @@
 		return
 
 	if(prob(50))
-		user.visible_message("<span class='lewd'>\The <b>[user]</b>'s [pick(GLOB.dick_nouns)] honks[pick(" loudly", "")]!</span>")
+		var/genital_name = target.get_penetrating_genital_name(TRUE)
+		user.visible_message("<span class='lewd'>\The <b>[user]</b>'s [genital_name] honks[pick(" loudly", "")]!</span>")
 
 	playlewdinteractionsound(user, 'sound/items/bikehorn.ogg', 40, 1, -1)
 
@@ -105,7 +107,8 @@
 		return
 
 	if(prob(50))
-		user.visible_message("<span class='lewd'>\The <b>[user]</b>'s [pick(GLOB.dick_nouns)] honks[pick(" loudly", "")]!</span>")
+		var/genital_name = user.get_penetrating_genital_name(TRUE)
+		user.visible_message("<span class='lewd'>\The <b>[user]</b>'s [genital_name] honks[pick(" loudly", "")]!</span>")
 
 	playlewdinteractionsound(user, 'sound/items/bikehorn.ogg', 40, 1, -1)
 
@@ -115,7 +118,8 @@
 		return
 
 	if(prob(50))
-		user.visible_message("<span class='lewd'>\The <b>[user]</b>'s [pick(GLOB.dick_nouns)] honks[pick(" loudly", "")]!</span>")
+		var/genital_name = user.get_penetrating_genital_name(TRUE)
+		user.visible_message("<span class='lewd'>\The <b>[user]</b>'s [genital_name] honks[pick(" loudly", "")]!</span>")
 
 	playlewdinteractionsound(user, 'sound/items/bikehorn.ogg', 40, 1, -1)
 
@@ -165,7 +169,8 @@
 		return
 
 	if(prob(50))
-		user.visible_message("<span class='lewd'>\The <b>[user]</b>'s [pick(GLOB.dick_nouns)] honks[pick(" loudly", "")]!</span>")
+		var/genital_name = user.get_penetrating_genital_name(TRUE)
+		user.visible_message("<span class='lewd'>\The <b>[user]</b>'s [genital_name] honks[pick(" loudly", "")]!</span>")
 
 	playlewdinteractionsound(user, 'sound/items/bikehorn.ogg', 40, 1, -1)
 
@@ -175,7 +180,8 @@
 		return
 
 	if(prob(50))
-		user.visible_message("<span class='lewd'>\The <b>[user]</b>'s [pick(GLOB.dick_nouns)] honks[pick(" loudly", "")]!</span>")
+		var/genital_name = user.get_penetrating_genital_name(TRUE)
+		user.visible_message("<span class='lewd'>\The <b>[user]</b>'s [genital_name] honks[pick(" loudly", "")]!</span>")
 
 	playlewdinteractionsound(user, 'sound/items/bikehorn.ogg', 40, 1, -1)
 
@@ -185,7 +191,8 @@
 		return
 
 	if(prob(50))
-		target.visible_message("<span class='lewd'>\The <b>[target]</b>'s [pick(GLOB.dick_nouns)] honks[pick(" loudly", "")]!</span>")
+		var/genital_name = target.get_penetrating_genital_name(TRUE)
+		target.visible_message("<span class='lewd'>\The <b>[target]</b>'s [genital_name] honks[pick(" loudly", "")]!</span>")
 
 	playlewdinteractionsound(target, 'sound/items/bikehorn.ogg', 40, 1, -1)
 
@@ -195,7 +202,8 @@
 		return
 
 	if(prob(50))
-		target.visible_message("<span class='lewd'>\The <b>[target]</b>'s [pick(GLOB.dick_nouns)] honks[pick(" loudly", "")]!</span>")
+		var/genital_name = target.get_penetrating_genital_name(TRUE)
+		target.visible_message("<span class='lewd'>\The <b>[target]</b>'s [genital_name] honks[pick(" loudly", "")]!</span>")
 
 	playlewdinteractionsound(target, 'sound/items/bikehorn.ogg', 40, 1, -1)
 
@@ -225,7 +233,8 @@
 		return
 
 	if(prob(50))
-		user.visible_message("<span class='lewd'>\The <b>[user]</b>'s [pick(GLOB.dick_nouns)] honks[pick(" loudly", "")]!</span>")
+		var/genital_name = user.get_penetrating_genital_name(TRUE)
+		user.visible_message("<span class='lewd'>\The <b>[user]</b>'s [genital_name] honks[pick(" loudly", "")]!</span>")
 
 	playlewdinteractionsound(user, 'sound/items/bikehorn.ogg', 40, 1, -1)
 
@@ -235,7 +244,8 @@
 		return
 
 	if(prob(50))
-		user.visible_message("<span class='lewd'>\The <b>[user]</b>'s [pick(GLOB.dick_nouns)] honks[pick(" loudly", "")]!</span>")
+		var/genital_name = user.get_penetrating_genital_name(TRUE)
+		user.visible_message("<span class='lewd'>\The <b>[user]</b>'s [genital_name] honks[pick(" loudly", "")]!</span>")
 
 	playlewdinteractionsound(user, 'sound/items/bikehorn.ogg', 40, 1, -1)
 
@@ -273,7 +283,8 @@
 		return
 
 	if(prob(50))
-		user.visible_message("<span class='lewd'>\The <b>[user]</b>'s [pick(GLOB.dick_nouns)] honks[pick(" loudly", "")]!</span>")
+		var/genital_name = user.get_penetrating_genital_name(TRUE)
+		user.visible_message("<span class='lewd'>\The <b>[user]</b>'s [genital_name] honks[pick(" loudly", "")]!</span>")
 
 	playlewdinteractionsound(user, 'sound/items/bikehorn.ogg', 40, 1, -1)
 
@@ -389,7 +400,8 @@
 		return
 
 	if(prob(50))
-		user.visible_message("<span class='lewd'>\The <b>[user]</b>'s [pick(GLOB.dick_nouns)] honks[pick(" loudly", "")]!</span>")
+		var/genital_name = user.get_penetrating_genital_name(TRUE)
+		user.visible_message("<span class='lewd'>\The <b>[user]</b>'s [genital_name] honks[pick(" loudly", "")]!</span>")
 
 	playlewdinteractionsound(user, 'sound/items/bikehorn.ogg', 40, 1, -1)
 
@@ -406,7 +418,7 @@
 	user.do_oral_self(user, "vagina")
 
 /datum/interaction/lewd/breastfuckself
-	description = "Fuck your breasts"
+	description = "Fuck your breasts."
 	interaction_sound = null
 	require_user_penis = REQUIRE_EXPOSED
 	require_user_breasts = REQUIRE_EXPOSED
@@ -443,37 +455,8 @@
 
 	playlewdinteractionsound(target, 'sound/items/bikehorn.ogg', 40, 1, -1)
 
-/datum/interaction/lewd/remove_self_equipment
-	description = "Remove your genital's equipment"
-	require_user_hands = TRUE
-	interaction_sound = null
-	max_distance = 0
-	user_is_target = TRUE
-	write_log_user = "messed with their genital equipment"
-	write_log_target = null
-	user_is_target = TRUE
-
-/datum/interaction/lewd/remove_self_equipment/display_interaction(mob/living/user)
-	if(!iscarbon(user))
-		to_chat(user, "<span class='warning'>You don't seem like someone who'd use cock equipment my dude</span>")
-		return
-	user.remove_equipment(user)
-
-/datum/interaction/lewd/remove_other_equipment
-	description = "Remove their genital's equipment"
-	require_user_hands = TRUE
-	interaction_sound = null
-	max_distance = 1
-	write_log_user = null
-	write_log_target = "got their genital's equipment edited by"
-
-/datum/interaction/lewd/remove_other_equipment/display_interaction(mob/living/user, mob/living/target)
-	if(!iscarbon(target))
-		to_chat(user, "<span class='warning'>[target.p_they()] don't look like someone who'd use balls equipment</span>")
-	user.remove_equipment(target)
-
 /datum/interaction/lewd/deflate_belly
-	description = "Deflate belly"
+	description = "Deflate belly."
 	require_user_belly = REQUIRE_EXPOSED
 	interaction_sound = null
 	max_distance = 0
@@ -487,7 +470,7 @@
 		gut.modify_size(-1)
 
 /datum/interaction/lewd/nuzzle_belly
-	description = "Nuzzle their belly"
+	description = "Nuzzle their belly."
 	require_target_belly = REQUIRE_EXPOSED
 	interaction_sound = null
 	max_distance = 1
@@ -498,7 +481,7 @@
 	user.nuzzle_belly(target)
 
 /datum/interaction/lewd/do_breastsmother
-	description = "Smother them in your breasts"
+	description = "Smother them in your breasts."
 	require_user_breasts = REQUIRE_EXPOSED
 	max_distance = 1
 	interaction_sound = null
@@ -517,7 +500,7 @@
 	playlewdinteractionsound(user, 'sound/items/bikehorn.ogg', 40, 1, -1)
 
 /datum/interaction/lewd/lick_sweat
-	description = "Lick their sweat"
+	description = "Lick their sweat."
 	require_user_mouth = TRUE
 	max_distance = 1
 	interaction_sound = null
@@ -528,7 +511,7 @@
 	user.lick_sweat(target)
 
 /datum/interaction/lewd/smother_armpit
-	description = "Press your armpit against their face"
+	description = "Press your armpit against their face."
 	max_distance = 1
 	interaction_sound = null
 	write_log_target = "Got armpit smothered by"
@@ -538,7 +521,7 @@
 	user.smother_armpit(target)
 
 /datum/interaction/lewd/lick_armpit
-	description = "Lick their armpit"
+	description = "Lick their armpit."
 	require_user_mouth = TRUE
 	max_distance = 1
 	interaction_sound = null
@@ -549,7 +532,7 @@
 	user.lick_armpit(target)
 
 /datum/interaction/lewd/fuck_armpit
-	description = "Fuck their armpit"
+	description = "Fuck their armpit."
 	require_user_penis = REQUIRE_EXPOSED
 	interaction_sound = null
 	write_log_target = "got their armpit fucked by"
@@ -562,12 +545,13 @@
 		return
 
 	if(prob(50))
-		user.visible_message("<span class='lewd'>\The <b>[user]</b>'s [pick(GLOB.dick_nouns)] honks[pick(" loudly", "")]!</span>")
+		var/genital_name = user.get_penetrating_genital_name(TRUE)
+		user.visible_message("<span class='lewd'>\The <b>[user]</b>'s [genital_name] honks[pick(" loudly", "")]!</span>")
 
 	playlewdinteractionsound(user, 'sound/items/bikehorn.ogg', 40, 1, -1)
 
 /datum/interaction/lewd/do_pitjob
-	description = "Jerk them off with your armpit"
+	description = "Jerk them off with your armpit."
 	require_target_penis = REQUIRE_EXPOSED
 	interaction_sound = null
 	write_log_target = "gave a pitjob to"
@@ -580,12 +564,13 @@
 		return
 
 	if(prob(50))
-		user.visible_message("<span class='lewd'>\The <b>[user]</b>'s [pick(GLOB.dick_nouns)] honks[pick(" loudly", "")]!</span>")
+		var/genital_name = user.get_penetrating_genital_name(TRUE)
+		user.visible_message("<span class='lewd'>\The <b>[user]</b>'s [genital_name] honks[pick(" loudly", "")]!</span>")
 
 	playlewdinteractionsound(user, 'sound/items/bikehorn.ogg', 40, 1, -1)
 
 /datum/interaction/lewd/do_boobjob
-	description = "Give them a boobjob"
+	description = "Give them a boobjob."
 	require_user_breasts = REQUIRE_EXPOSED
 	require_target_penis = REQUIRE_EXPOSED
 	interaction_sound = null
@@ -605,7 +590,7 @@
 	playlewdinteractionsound(user, 'sound/items/bikehorn.ogg', 40, 1, -1)
 
 /datum/interaction/lewd/lick_nuts
-	description = "Lick their balls"
+	description = "Lick their balls."
 	require_user_mouth = TRUE
 	require_target_balls = REQUIRE_EXPOSED
 	interaction_sound = null
@@ -617,7 +602,7 @@
 	user.lick_nuts(target)
 
 /datum/interaction/lewd/grope_ass
-	description = "Grope their ass"
+	description = "Grope their ass."
 	simple_message = "USER gropes TARGET's ass!"
 	require_user_hands = TRUE
 	max_distance = 1
@@ -626,7 +611,7 @@
 	write_log_target = "ass-groped"
 
 /datum/interaction/lewd/fuck_cock
-	description = "Penetrate their cock"
+	description = "Penetrate their %COCK%."
 	require_user_penis = REQUIRE_EXPOSED
 	require_target_penis = REQUIRE_EXPOSED
 	interaction_sound = null
@@ -643,7 +628,7 @@
 	playlewdinteractionsound(user, 'sound/items/bikehorn.ogg', 40, 1, -1)
 
 /datum/interaction/lewd/nipple_fuck
-	description = "Fuck their nipple"
+	description = "Fuck their nipple."
 	require_target_topless = TRUE
 	require_user_penis = REQUIRE_EXPOSED
 	write_log_user = "fucked nipples"
@@ -663,7 +648,7 @@
 	playlewdinteractionsound(target, 'sound/items/bikehorn.ogg', 40, 1, -1)
 
 /datum/interaction/lewd/fuck_thighs
-	description = "Fuck their thighs"
+	description = "Fuck their thighs."
 	require_user_penis = REQUIRE_EXPOSED
 	require_target_legs = REQUIRE_ANY
 	require_target_num_legs = 2
@@ -679,12 +664,13 @@
 		return
 
 	if(prob(50))
-		user.visible_message("<span class='lewd'>\The <b>[user]</b>'s [pick(GLOB.dick_nouns)] honks[pick(" loudly", "")]!</span>")
+		var/genital_name = user.get_penetrating_genital_name(TRUE)
+		user.visible_message("<span class='lewd'>\The <b>[user]</b>'s [genital_name] honks[pick(" loudly", "")]!</span>")
 
 	playlewdinteractionsound(user, 'sound/items/bikehorn.ogg', 40, 1, -1)
 
 /datum/interaction/lewd/do_thighjob
-	description = "Give them a thighjob"
+	description = "Give them a thighjob."
 	require_target_penis = REQUIRE_EXPOSED
 	require_user_legs = REQUIRE_ANY
 	require_user_num_legs = 2
@@ -700,7 +686,8 @@
 		return
 
 	if(prob(50))
-		target.visible_message("<span class='lewd'>\The <b>[target]</b>'s [pick(GLOB.dick_nouns)] honks[pick(" loudly", "")]!</span>")
+		var/genital_name = target.get_penetrating_genital_name(TRUE)
+		target.visible_message("<span class='lewd'>\The <b>[target]</b>'s [genital_name] honks[pick(" loudly", "")]!</span>")
 
 	playlewdinteractionsound(target, 'sound/items/bikehorn.ogg', 40, 1, -1)
 
@@ -712,7 +699,7 @@
 	unholy = TRUE
 
 /datum/interaction/lewd/unholy/do_facefart
-	description = "Fart on their face"
+	description = "Fart on their face."
 	require_user_anus = REQUIRE_EXPOSED
 	max_distance = 1
 	interaction_sound = null
@@ -723,7 +710,7 @@
 	user.do_facefart(target)
 
 /datum/interaction/lewd/unholy/do_crotchfart
-	description = "Fart on their crotch"
+	description = "Fart on their crotch."
 	require_user_anus = REQUIRE_EXPOSED
 	max_distance = 1
 	interaction_sound = null
@@ -734,7 +721,7 @@
 	user.do_crotchfart(target)
 
 /datum/interaction/lewd/unholy/do_fartfuck
-	description = "Fuck their ass + fart"
+	description = "Fuck their ass + fart."
 	require_target_anus = REQUIRE_EXPOSED
 	require_user_penis = REQUIRE_EXPOSED
 	max_distance = 1
@@ -754,7 +741,7 @@
 	playlewdinteractionsound(target, 'sound/items/bikehorn.ogg', 40, 1, -1)
 
 /datum/interaction/lewd/unholy/suck_fart
-	description = "Suck the farts out of their asshole"
+	description = "Suck the farts out of their asshole."
 	require_user_mouth = TRUE
 	require_target_anus = REQUIRE_EXPOSED
 	max_distance = 1
@@ -766,7 +753,7 @@
 	user.suck_fart(target)
 
 /datum/interaction/lewd/unholy/do_faceshit
-	description = "Shit on their face"
+	description = "Shit on their face."
 	require_user_anus = TRUE
 	max_distance = 1
 	interaction_sound = null
@@ -777,7 +764,7 @@
 	user.do_faceshit(target)
 
 /datum/interaction/lewd/unholy/do_crotchshit/
-	description = "Shit on their crotch"
+	description = "Shit on their crotch."
 	require_user_anus = REQUIRE_EXPOSED
 	max_distance = 1
 	interaction_sound = null
@@ -788,7 +775,7 @@
 	user.do_crotchshit(target)
 
 /datum/interaction/lewd/unholy/do_shitfuck
-	description = "Fuck their ass + shit"
+	description = "Fuck their ass + shit."
 	require_target_anus = REQUIRE_EXPOSED
 	require_user_penis = REQUIRE_EXPOSED
 	max_distance = 1
@@ -808,7 +795,7 @@
 	playlewdinteractionsound(target, 'sound/items/bikehorn.ogg', 40, 1, -1)
 
 /datum/interaction/lewd/unholy/suck_shit
-	description = "Suck the shit out of their asshole"
+	description = "Suck the shit out of their asshole."
 	require_user_mouth = TRUE
 	require_target_anus = REQUIRE_EXPOSED
 	max_distance = 1
@@ -820,7 +807,7 @@
 	user.suck_shit(target)
 
 /datum/interaction/lewd/unholy/piss_over
-	description = "Piss all over them"
+	description = "Piss all over them."
 	require_user_bottomless = TRUE
 	max_distance = 1
 	interaction_sound = null
@@ -831,7 +818,7 @@
 	user.piss_over(target)
 
 /datum/interaction/lewd/unholy/piss_mouth
-	description = "Piss inside their mouth"
+	description = "Piss inside their mouth."
 	max_distance = 1
 	interaction_sound = null
 	require_user_bottomless = TRUE

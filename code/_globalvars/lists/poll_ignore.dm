@@ -21,6 +21,7 @@
 #define POLL_IGNORE_CONTRACTOR_SUPPORT "contractor_support"
 #define POLL_IGNORE_FUGITIVE "fugitive"
 #define POLL_IGNORE_SLAVER "slaver"
+#define POLL_IGNORE_EGG "egg"
 
 GLOBAL_LIST_INIT(poll_ignore_desc, list(
 	POLL_IGNORE_SENTIENCE_POTION = "Sentience potion",
@@ -44,6 +45,7 @@ GLOBAL_LIST_INIT(poll_ignore_desc, list(
 	POLL_IGNORE_CONTRACTOR_SUPPORT = "Contractor Support Unit",
 	POLL_IGNORE_FUGITIVE = "Fugitive Hunter",
 	POLL_IGNORE_SLAVER = "Slaver",
+	POLL_IGNORE_EGG = "Pregnancy Eggs"
 ))
 GLOBAL_LIST_INIT(poll_ignore, init_poll_ignore())
 

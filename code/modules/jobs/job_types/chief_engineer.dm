@@ -16,7 +16,7 @@
 	exp_type = EXP_TYPE_CREW
 	exp_type_department = EXP_TYPE_ENGINEERING
 	considered_combat_role = TRUE
-	custom_spawn_text = "<font color='red'>Do your best to keep the station fully powered, the lights on, and the hull's breaches repaired. Keep the atmosphere breathable and habitable for all Humans and Anthromorphs alike. If you don't know how to work the engine, the Solar Panels must be wired at a bare minimum. You are second in line to be Acting Captain.</font>"
+
 	outfit = /datum/outfit/job/ce
 	plasma_outfit = /datum/outfit/plasmaman/ce
 
@@ -31,7 +31,7 @@
 	paycheck = PAYCHECK_COMMAND
 	paycheck_department = ACCOUNT_ENG
 
-	starting_modifiers = list(/datum/skill_modifier/job/level/wiring, /datum/skill_modifier/job/affinity/wiring)
+	starting_modifiers = list(/datum/skill_modifier/job/level/wiring/expert, /datum/skill_modifier/job/affinity/wiring)
 
 	display_order = JOB_DISPLAY_ORDER_CHIEF_ENGINEER
 	blacklisted_quirks = list(/datum/quirk/mute, /datum/quirk/brainproblems, /datum/quirk/paraplegic, /datum/quirk/insanity)

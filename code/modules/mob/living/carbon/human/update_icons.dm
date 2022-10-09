@@ -180,7 +180,7 @@ There are several things that need to be remembered:
 			overlays_standing[UNIFORM_LAYER] = uniform_overlay
 
 			//SPLURT EDIT
-			if(has_penis())
+			if(has_penis() || has_strapon())
 				uniform_overlay.add_overlay(mutable_appearance('modular_splurt/icons/mob/clothing/extra.dmi', "[U.icon_state]_penis"))
 			if(has_breasts())
 				uniform_overlay.add_overlay(mutable_appearance('modular_splurt/icons/mob/clothing/extra.dmi', "[U.icon_state]_breasts"))
