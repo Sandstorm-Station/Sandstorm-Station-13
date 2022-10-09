@@ -33,9 +33,10 @@
 /datum/job/hos/New()
 	var/list/extra_titles = list(
 		"Security Commander",
-		"Head of Slutcurity",
-		"Head of Spookcurity"
+		"Head of Slutcurity"
 	)
+	if(SSevents.holidays && SSevents.holidays[HALLOWEEN])
+		LAZYADD(extra_titles, "Head of Spookcurity")
 	LAZYADD(alt_titles, extra_titles)
 	. = ..()
 
@@ -262,9 +263,10 @@
 /datum/job/detective/New()
 	var/list/extra_titles = list(
 		"Gumshoe",
-		"Slutective",
-		"Spookective"
+		"Slutective"
 	)
+	if(SSevents.holidays && SSevents.holidays[HALLOWEEN])
+		LAZYADD(extra_titles, "Spookective")
 	LAZYADD(alt_titles, extra_titles)
 	. = ..()
 
@@ -275,9 +277,10 @@
 		"Guardsman",
 		"Police Officer",
 		"Rookie",
-		"Slutcurity Officer",
-		"Spookcurity Officer"
+		"Slutcurity Officer"
 	)
+	if(SSevents.holidays && SSevents.holidays[HALLOWEEN])
+		LAZYADD(extra_titles, "Spookcurity Officer")
 	LAZYADD(alt_titles, extra_titles)
 	. = ..()
 
@@ -288,9 +291,10 @@
 		"Prison Administrator",
 		"Dungeon Master",
 		"Brig Superintendent",
-		"Voreden",
-		"Spookden"
+		"Voreden"
 	)
+	if(SSevents.holidays && SSevents.holidays[HALLOWEEN])
+		LAZYADD(extra_titles, "Spookden")
 	LAZYADD(alt_titles, extra_titles)
 	. = ..()
 
