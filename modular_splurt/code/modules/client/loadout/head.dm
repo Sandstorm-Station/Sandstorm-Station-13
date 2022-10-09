@@ -42,3 +42,38 @@
 	path = /obj/item/clothing/head/helmet/goner/officer/fake/poly
 	loadout_flags = LOADOUT_CAN_NAME | LOADOUT_CAN_DESCRIPTION | LOADOUT_CAN_COLOR_POLYCHROMIC
 	loadout_initial_colors = list("#F2F2F2")
+
+//Adds bowler hats
+/datum/gear/head/bowler
+	name = "Bowler-hat"
+	cost = 1
+	path = /obj/item/clothing/head/bowler
+	loadout_flags = LOADOUT_CAN_NAME | LOADOUT_CAN_DESCRIPTION
+
+//Adds medical beret
+/datum/gear/head/medberet
+	name = "Medical officer's beret"
+	cost = 1
+	path = /obj/item/clothing/head/beret/med
+	loadout_flags = LOADOUT_CAN_NAME | LOADOUT_CAN_DESCRIPTION
+	restricted_roles = list("Chief Medical Officer", "Medical Doctor", "Chemist", "Virologist", "Paramedic", "Geneticist", "Brig Physician")
+	subcategory = LOADOUT_SUBCATEGORY_HEAD_JOBS
+
+//Adds the three basic flowers that can be pinned into the hair
+/datum/gear/head/poppy
+	name = "Poppy"
+	cost = 2
+	path = /obj/item/reagent_containers/food/snacks/grown/poppy
+	loadout_flags = LOADOUT_CAN_NAME | LOADOUT_CAN_DESCRIPTION
+
+/datum/gear/head/lily
+	name = "Lily"
+	cost = 2
+	path = /obj/item/reagent_containers/food/snacks/grown/poppy/lily
+	loadout_flags = LOADOUT_CAN_NAME | LOADOUT_CAN_DESCRIPTION
+
+/datum/gear/head/geranium
+	name = "Geranium"
+	cost = 2
+	path = /obj/item/reagent_containers/food/snacks/grown/poppy/geranium
+	loadout_flags = LOADOUT_CAN_NAME | LOADOUT_CAN_DESCRIPTION

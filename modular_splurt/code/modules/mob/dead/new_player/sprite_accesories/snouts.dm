@@ -214,3 +214,9 @@
 	icon_state = "owl"
 	icon = 'modular_splurt/icons/mob/mam_snouts.dmi'
 	matrixed_sections = MATRIX_RED
+
+/datum/sprite_accessory/snouts/mam_snouts/beaktiny
+	name = "Tiny beak"
+	icon_state = "beaktiny"
+	icon = 'modular_splurt/icons/mob/mam_snouts.dmi'
+	color_src = MUTCOLORS
