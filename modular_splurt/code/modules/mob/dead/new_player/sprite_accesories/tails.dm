@@ -225,6 +225,18 @@
 	icon = 'modular_splurt/icons/mob/mam_tails.dmi'
 	color_src = MUTCOLORS
 
+/datum/sprite_accessory/tails/mam_tails/fluffy
+	name = "Fluffy tail"
+	icon = 'modular_splurt/icons/mob/mam_tails.dmi'
+	icon_state = "fluffy"
+	color_src = MUTCOLORS
+
+/datum/sprite_accessory/tails_animated/mam_tails_animated/fluffy
+	name = "Fluffy tail"
+	icon = 'modular_splurt/icons/mob/mam_tails.dmi'
+	icon_state = "fluffy"
+	color_src = MUTCOLORS
+
 //Lizard tails
 /datum/sprite_accessory/tails/lizard/tailmaw
 	name = "Tailmaw"

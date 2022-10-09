@@ -103,7 +103,7 @@
 	ranged_cooldown = world.time + 25
 	visible_message("<span class='boldwarning'>[src] spews lava around themselves! Get back!</span>")
 	for(var/turf/T in oview(1, src))
-		new /obj/effect/temp_visual/lava_warning(T)
+		new /obj/effect/temp_visual/lava_warning/drakeling(T, 40)
 
 /mob/living/simple_animal/hostile/asteroid/elite/drakeling/proc/lava_around()
 	ranged_cooldown = world.time + 50
@@ -146,43 +146,9 @@
 /mob/living/simple_animal/hostile/asteroid/elite/drakeling/proc/lava_wall(dir, range)
 	var/turf/T = get_turf(src)
 	for(var/i in 1 to range)
-		new /obj/effect/temp_visual/lava_warning(T)
+		new /obj/effect/temp_visual/lava_warning/drakeling(T, 40)
 		T = get_step(T, dir)
 		sleep(2)
 
-/obj/effect/temp_visual/lava_warning
-	icon_state = "lavastaff_warn"
-	layer = BELOW_MOB_LAYER
-	light_range = 2
+/obj/effect/temp_visual/lava_warning/drakeling
 	duration = 7
-
-/obj/effect/temp_visual/lava_warning/ex_act()
-	return
-
-/obj/effect/temp_visual/lava_warning/Initialize(mapload, reset_time = 40)
-	. = ..()
-	INVOKE_ASYNC(src, .proc/fall, reset_time)
-	src.alpha = 63.75
-	animate(src, alpha = 255, time = duration)
-
-/obj/effect/temp_visual/lava_warning/proc/fall(var/reset_time)
-	var/turf/T = get_turf(src)
-	playsound(T,'sound/magic/fleshtostone.ogg', 80, TRUE)
-	sleep(duration)
-	playsound(T,'sound/magic/fireball.ogg', 200, TRUE)
-	for(var/mob/living/L in T.contents)
-		if(istype(L, /mob/living/simple_animal/hostile/asteroid/elite/drakeling))
-			continue
-		L.adjustFireLoss(10)
-		to_chat(L, "<span class='userdanger'>You fall directly into the pool of lava!</span>")
-
-	// deals damage to mechs
-	for(var/obj/vehicle/sealed/mecha/M in T.contents)
-		M.take_damage(45, BRUTE, "melee", 1)
-
-	// changes turf to lava temporarily
-	if(!istype(T, /turf/closed) && !istype(T, /turf/open/lava))
-		var/lava_turf = /turf/open/lava/smooth
-		var/reset_turf = T.type
-		T.ChangeTurf(lava_turf, flags = CHANGETURF_INHERIT_AIR)
-		addtimer(CALLBACK(T, /turf.proc/ChangeTurf, reset_turf, null, CHANGETURF_INHERIT_AIR), reset_time, TIMER_OVERRIDE|TIMER_UNIQUE)
