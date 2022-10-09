@@ -457,12 +457,11 @@
 			to_chat(H, "<span class='notice'>You just drained blood, wait a few seconds.</span>")
 			return
 		if(!H.pulling || !iscarbon(H.pulling))
-			if(H.getStaminaLoss() >= 80)//prevents being stunlocked in the chapel
-				if(H.nutrition > 20)
-					to_chat(H,("<span class='notice'>you use some of your power to energize</span>"))
-					H.adjustStaminaLoss(-20)
-					H.adjust_nutrition(-20)
-					H.resting = TRUE
+			if(H.getStaminaLoss() >= 80 && H.nutrition > 20)//prevents being stunlocked in the chapel
+				to_chat(H,("<span class='notice'>you use some of your power to energize</span>"))
+				H.adjustStaminaLoss(-20)
+				H.adjust_nutrition(-20)
+				H.resting = TRUE
 		if(H.pulling && iscarbon(H.pulling))
 			var/mob/living/carbon/victim = H.pulling
 			drain_cooldown = world.time + 25
