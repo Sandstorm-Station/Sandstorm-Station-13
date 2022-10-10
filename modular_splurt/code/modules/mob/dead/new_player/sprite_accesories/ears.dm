@@ -93,3 +93,31 @@
 	icon_state = "catnormal"
 	matrixed_sections = MATRIX_RED_GREEN
 	icon = 'modular_splurt/icons/mob/mam_ears.dmi'
+
+/datum/sprite_accessory/ears/mam_ears/noodledragon
+	name = "Noodle Dragon"
+	icon_state = "noodledragon"
+	matrixed_sections = MATRIX_RED_BLUE
+	icon = 'modular_splurt/icons/mob/mam_ears.dmi'
+
+/datum/sprite_accessory/ears/mam_ears/bunny/alt
+	name = "Bunny (Alt)"
+	color_src = MUTCOLORS
+	matrixed_sections = MATRIX_NONE
+	icon = 'modular_splurt/icons/mob/mam_ears.dmi'
+
+/datum/sprite_accessory/ears/mam_ears/bunny/alt/two
+	name = "Bunny (Alt 2)"
+	icon_state = "bunny2"
+
+/datum/sprite_accessory/ears/mam_ears/mouse
+	name = "Mouse"
+	icon_state = "mouse"
+	color_src = MUTCOLORS
+	icon = 'modular_splurt/icons/mob/mam_ears.dmi'
+
+/datum/sprite_accessory/ears/mam_ears/pointy
+	name = "Pointy"
+	icon_state = "pointy"
+	color_src = MUTCOLORS
+	icon = 'modular_splurt/icons/mob/mam_ears.dmi'

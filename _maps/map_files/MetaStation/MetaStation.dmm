@@ -1930,12 +1930,6 @@
 	},
 /turf/open/floor/plasteel/dark,
 /area/ai_monitored/security/armory)
-"afh" = (
-/obj/machinery/atmospherics/pipe/simple/scrubbers/hidden{
-	dir = 6
-	},
-/turf/open/floor/plasteel/dark,
-/area/ai_monitored/security/armory)
 "afp" = (
 /obj/machinery/light/small{
 	dir = 1
@@ -3654,6 +3648,7 @@
 /obj/effect/turf_decal/tile/red{
 	dir = 8
 	},
+/obj/item/storage/firstaid/regular,
 /turf/open/floor/plasteel/white,
 /area/security/brig)
 "alN" = (
@@ -4504,6 +4499,7 @@
 /obj/structure/cable/yellow{
 	icon_state = "4-8"
 	},
+/obj/machinery/iv_drip,
 /turf/open/floor/plasteel/dark,
 /area/security/brig)
 "aoo" = (
@@ -4527,15 +4523,12 @@
 /turf/open/floor/plasteel/white,
 /area/security/brig)
 "aop" = (
-/obj/structure/bed,
-/obj/item/bedsheet,
 /obj/structure/disposalpipe/segment{
 	dir = 4
 	},
 /obj/structure/cable/yellow{
 	icon_state = "4-8"
 	},
-/obj/machinery/iv_drip,
 /obj/effect/turf_decal/tile/red,
 /obj/effect/turf_decal/tile/red{
 	dir = 8
@@ -4543,23 +4536,17 @@
 /obj/machinery/atmospherics/pipe/manifold/supply/hidden{
 	dir = 4
 	},
+/obj/structure/table/optable,
+/obj/item/stock_parts/cell/high,
 /turf/open/floor/plasteel/white,
 /area/security/brig)
 "aoq" = (
 /obj/structure/window/reinforced{
 	dir = 4
 	},
-/obj/structure/rack,
-/obj/item/storage/firstaid/regular,
-/obj/item/healthanalyzer{
-	pixel_y = -2
-	},
 /obj/machinery/camera{
 	c_tag = "Brig - Infirmary";
 	dir = 1
-	},
-/obj/item/clothing/under/rank/medical/doctor/purple{
-	pixel_y = -4
 	},
 /obj/machinery/atmospherics/components/unary/vent_scrubber/on{
 	dir = 4
@@ -4576,6 +4563,10 @@
 	},
 /obj/effect/turf_decal/tile/red{
 	dir = 8
+	},
+/obj/machinery/computer/operating{
+	dir = 1;
+	name = "Robotics Operating Computer"
 	},
 /turf/open/floor/plasteel/white,
 /area/security/brig)
@@ -18203,12 +18194,10 @@
 /turf/open/floor/plasteel,
 /area/hallway/secondary/entry)
 "btR" = (
-/obj/item/kirbyplants{
-	icon_state = "plant-18"
-	},
 /obj/effect/turf_decal/stripes/line{
 	dir = 9
 	},
+/obj/machinery/vending/barkbox,
 /turf/open/floor/plasteel,
 /area/hallway/secondary/entry)
 "btS" = (
@@ -36853,18 +36842,6 @@
 /obj/effect/turf_decal/delivery,
 /turf/open/floor/plasteel,
 /area/science/robotics/lab)
-"cDf" = (
-/obj/machinery/mecha_part_fabricator,
-/obj/machinery/camera{
-	c_tag = "Robotics - Fore";
-	network = list("ss13","rd")
-	},
-/obj/effect/turf_decal/delivery,
-/obj/machinery/posialert{
-	pixel_y = 24
-	},
-/turf/open/floor/plasteel,
-/area/science/robotics/lab)
 "cDh" = (
 /obj/structure/cable/yellow{
 	icon_state = "1-2"
@@ -40418,21 +40395,6 @@
 /obj/effect/turf_decal/tile/neutral,
 /turf/open/floor/plasteel,
 /area/hallway/secondary/exit/departure_lounge)
-"cJH" = (
-/obj/structure/table,
-/obj/item/retractor,
-/obj/item/hemostat,
-/obj/item/radio/intercom{
-	name = "Station Intercom (General)";
-	pixel_x = -29
-	},
-/obj/item/cautery{
-	pixel_y = 15
-	},
-/turf/open/floor/plasteel/white/corner{
-	dir = 4
-	},
-/area/science/robotics/lab)
 "cJJ" = (
 /obj/machinery/computer/operating{
 	dir = 1;
@@ -57759,6 +57721,15 @@
 /obj/structure/reagent_dispensers/fueltank,
 /turf/open/floor/plating,
 /area/maintenance/port)
+"iPO" = (
+/obj/machinery/mecha_part_fabricator,
+/obj/machinery/camera{
+	c_tag = "Robotics - Fore";
+	network = list("ss13","rd")
+	},
+/obj/effect/turf_decal/delivery,
+/turf/open/floor/plasteel,
+/area/science/robotics/lab)
 "iPP" = (
 /obj/machinery/atmospherics/components/unary/vent_scrubber/on{
 	dir = 1
@@ -59966,6 +59937,10 @@
 	},
 /turf/open/floor/plasteel/dark,
 /area/command/bridge)
+"jZV" = (
+/obj/machinery/vending/wallmed,
+/turf/closed/wall/r_wall,
+/area/security/brig)
 "kaM" = (
 /obj/structure/table,
 /obj/item/storage/fancy/egg_box,
@@ -65571,6 +65546,24 @@
 /obj/machinery/atmospherics/pipe/simple/supply/hidden,
 /turf/open/floor/carpet,
 /area/command/heads_quarters/hos)
+"nem" = (
+/obj/structure/table,
+/obj/item/retractor,
+/obj/item/hemostat,
+/obj/item/radio/intercom{
+	name = "Station Intercom (General)";
+	pixel_x = -29
+	},
+/obj/item/cautery{
+	pixel_y = 15
+	},
+/obj/machinery/posialert{
+	pixel_y = -32
+	},
+/turf/open/floor/plasteel/white/corner{
+	dir = 4
+	},
+/area/science/robotics/lab)
 "neP" = (
 /obj/machinery/atmospherics/components/binary/pump,
 /turf/closed/wall/r_wall,
@@ -82391,6 +82384,36 @@
 	},
 /turf/open/space/basic,
 /area/solars/port/fore)
+"wou" = (
+/obj/machinery/atmospherics/pipe/simple/scrubbers/hidden{
+	dir = 6
+	},
+/obj{
+	name = "---Merge conflict marker---"
+	},
+/obj/structure/closet/secure_closet{
+	name = "contraband locker";
+	req_access_txt = "3"
+	},
+/obj/effect/spawner/lootdrop/maintenance{
+	lootcount = 3;
+	name = "3maintenance loot spawner"
+	},
+/obj/effect/spawner/lootdrop/armory_contraband{
+	loot = list(/obj/item/gun/ballistic/automatic/pistol=5,/obj/item/gun/ballistic/shotgun/automatic/combat=5,/obj/item/gun/ballistic/revolver/mateba,/obj/item/gun/ballistic/automatic/pistol/deagle,/obj/item/storage/box/syndie_kit/throwing_weapons=3)
+	},
+/obj/effect/turf_decal/tile/neutral{
+	dir = 1
+	},
+/obj/effect/turf_decal/tile/neutral,
+/obj/effect/turf_decal/tile/neutral{
+	dir = 4
+	},
+/obj/effect/turf_decal/tile/neutral{
+	dir = 8
+	},
+/turf/open/floor/plasteel/dark,
+/area/ai_monitored/security/armory)
 "wox" = (
 /obj/structure/disposalpipe/segment{
 	dir = 6
@@ -110414,7 +110437,7 @@ aku
 alN
 ane
 aoo
-ajm
+jZV
 ajm
 ajm
 ajo
@@ -114001,7 +114024,7 @@ aaa
 lMJ
 aeq
 tDY
-afh
+wou
 mUO
 xzj
 ifR
@@ -114618,7 +114641,7 @@ cGa
 cGV
 cHP
 cII
-cJH
+nem
 cCq
 cLw
 cPb
@@ -115896,7 +115919,7 @@ czl
 cAp
 cBj
 cCq
-cDf
+iPO
 lOi
 cFf
 cGd

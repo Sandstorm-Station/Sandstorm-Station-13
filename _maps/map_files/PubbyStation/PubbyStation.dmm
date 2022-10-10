@@ -3789,12 +3789,6 @@
 /turf/open/floor/plasteel/dark,
 /area/security/processing/cremation)
 "aku" = (
-/obj/item/storage/firstaid/regular{
-	pixel_x = 3;
-	pixel_y = 3
-	},
-/obj/item/storage/firstaid/regular,
-/obj/structure/table/glass,
 /obj/machinery/airalarm{
 	pixel_y = 22
 	},
@@ -3804,6 +3798,7 @@
 /obj/effect/turf_decal/tile/red{
 	dir = 4
 	},
+/obj/machinery/computer/operating,
 /turf/open/floor/plasteel/white,
 /area/security/brig)
 "akx" = (
@@ -4717,7 +4712,6 @@
 /obj/effect/turf_decal/tile/red{
 	dir = 8
 	},
-/obj/machinery/iv_drip,
 /turf/open/floor/plasteel/white,
 /area/security/brig)
 "amI" = (
@@ -20807,6 +20801,7 @@
 /obj/effect/turf_decal/tile/blue{
 	dir = 4
 	},
+/obj/machinery/vending/barkbox,
 /turf/open/floor/plasteel/white/corner{
 	dir = 1
 	},
@@ -25776,26 +25771,6 @@
 	},
 /turf/open/floor/plasteel,
 /area/science/robotics/lab)
-"blL" = (
-/obj/machinery/disposal/bin,
-/obj/structure/disposalpipe/trunk{
-	dir = 8
-	},
-/obj/effect/turf_decal/tile/neutral{
-	dir = 1
-	},
-/obj/effect/turf_decal/tile/neutral,
-/obj/effect/turf_decal/tile/neutral{
-	dir = 4
-	},
-/obj/effect/turf_decal/tile/neutral{
-	dir = 8
-	},
-/obj/machinery/posialert{
-	pixel_y = 26
-	},
-/turf/open/floor/plasteel/dark,
-/area/science/robotics/lab)
 "blM" = (
 /obj/machinery/rnd/server,
 /obj/structure/sign/poster/random{
@@ -29092,20 +29067,6 @@
 	},
 /turf/open/floor/plasteel,
 /area/hallway/primary/aft)
-"bsW" = (
-/obj/item/kirbyplants,
-/obj/effect/turf_decal/tile/neutral{
-	dir = 1
-	},
-/obj/effect/turf_decal/tile/neutral,
-/obj/effect/turf_decal/tile/neutral{
-	dir = 4
-	},
-/obj/effect/turf_decal/tile/neutral{
-	dir = 8
-	},
-/turf/open/floor/plasteel/dark,
-/area/science/robotics/lab)
 "bsX" = (
 /obj/structure/cable{
 	icon_state = "1-2"
@@ -46554,6 +46515,7 @@
 /obj/effect/turf_decal/tile/red{
 	dir = 8
 	},
+/obj/item/stock_parts/cell/high,
 /turf/open/floor/plasteel/white,
 /area/security/brig)
 "cjH" = (
@@ -49270,6 +49232,14 @@
 /obj/effect/turf_decal/tile/red{
 	dir = 8
 	},
+/obj/item/storage/firstaid/regular{
+	pixel_x = 3;
+	pixel_y = 3
+	},
+/obj/item/storage/firstaid/regular{
+	pixel_x = 3;
+	pixel_y = 3
+	},
 /turf/open/floor/plasteel/white,
 /area/security/brig)
 "ctX" = (
@@ -50234,6 +50204,7 @@
 /obj/machinery/atmospherics/pipe/simple/scrubbers/hidden{
 	dir = 6
 	},
+/obj/machinery/iv_drip,
 /turf/open/floor/plasteel/dark,
 /area/security/brig)
 "cyz" = (
@@ -51172,6 +51143,13 @@
 /obj/machinery/atmospherics/pipe/simple/scrubbers/hidden,
 /turf/open/floor/plating,
 /area/maintenance/department/engine)
+"cYq" = (
+/obj/machinery/atmospherics/pipe/simple/scrubbers/hidden{
+	dir = 4
+	},
+/obj/machinery/vending/barkbox,
+/turf/open/floor/plasteel,
+/area/security/prison)
 "cZt" = (
 /obj/structure/cable/yellow{
 	icon_state = "0-4"
@@ -54997,6 +54975,23 @@
 	},
 /turf/open/floor/plating,
 /area/maintenance/department/security/brig)
+"iZO" = (
+/obj/machinery/disposal/bin,
+/obj/structure/disposalpipe/trunk{
+	dir = 8
+	},
+/obj/effect/turf_decal/tile/neutral{
+	dir = 1
+	},
+/obj/effect/turf_decal/tile/neutral,
+/obj/effect/turf_decal/tile/neutral{
+	dir = 4
+	},
+/obj/effect/turf_decal/tile/neutral{
+	dir = 8
+	},
+/turf/open/floor/plasteel/dark,
+/area/science/robotics/lab)
 "jcT" = (
 /obj/machinery/atmospherics/pipe/simple/supply/hidden{
 	dir = 10
@@ -55129,6 +55124,23 @@
 	},
 /turf/open/floor/wood,
 /area/service/lawoffice)
+"jjD" = (
+/obj/item/kirbyplants,
+/obj/effect/turf_decal/tile/neutral{
+	dir = 1
+	},
+/obj/effect/turf_decal/tile/neutral,
+/obj/effect/turf_decal/tile/neutral{
+	dir = 4
+	},
+/obj/effect/turf_decal/tile/neutral{
+	dir = 8
+	},
+/obj/machinery/posialert{
+	pixel_x = -32
+	},
+/turf/open/floor/plasteel/dark,
+/area/science/robotics/lab)
 "jkv" = (
 /obj/machinery/atmospherics/components/binary/pump,
 /turf/closed/wall/r_wall,
@@ -60069,6 +60081,10 @@
 	},
 /turf/open/floor/plating,
 /area/hallway/secondary/entry)
+"qSj" = (
+/obj/machinery/vending/wallmed,
+/turf/closed/wall,
+/area/security/brig)
 "qTV" = (
 /obj/item/radio/intercom{
 	name = "Station Intercom (General)";
@@ -82119,7 +82135,7 @@ agy
 agy
 agy
 agy
-ahv
+cYq
 aqe
 aiz
 ayM
@@ -82642,7 +82658,7 @@ fUQ
 alk
 pSe
 amH
-ajM
+qSj
 ePU
 nUc
 aqi
@@ -100945,7 +100961,7 @@ bnO
 boX
 bqg
 brw
-bsW
+jjD
 bku
 cqp
 bxm
@@ -102738,7 +102754,7 @@ bhU
 biw
 biw
 bkt
-blL
+iZO
 bmR
 bnS
 boZ
