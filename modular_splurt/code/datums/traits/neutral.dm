@@ -379,3 +379,73 @@
 	. = ..()
 	var/obj/item/implant/genital_fluid/put_in = new
 	put_in.implant(quirk_holder, null, TRUE, TRUE)
+
+/datum/quirk/werewolf
+	name = "Werewolf"
+	desc = "you are capable of turning into an anthropomorphic wolf"
+	value = 0
+
+/datum/quirk/werewolf/add()
+	. = ..()
+	var/mob/living/carbon/human/H = quirk_holder
+	var/datum/action/werewolf/W = new
+	W.Grant(H)
+
+/datum/action/werewolf
+	name = "Transform"
+	desc = "Transform into a wolf."
+	icon_icon = 'modular_splurt/icons/mob/actions/misc_actions.dmi'
+	button_icon_state = "Transform"
+	var/transformed = 0
+	var/old_species = SPECIES_HUMAN
+	var/old_legs = "Plantigrade"
+	var/old_ears = null
+	var/old_snout = null
+	var/old_tail = null
+	var/old_size = 1
+
+/datum/action/werewolf/Trigger()
+	. = ..()
+	var/mob/living/carbon/human/H = owner
+	if(transformed == 0)
+		transformed = 1
+		H.set_species(/datum/species/mammal, 1)
+		H.dna.species.mutant_bodyparts["mam_tail"] = "Wolf"
+		H.dna.species.mutant_bodyparts["legs"] = "Digitigrade"
+		H.Digitigrade_Leg_Swap(TRUE)
+		H.dna.species.mutant_bodyparts["mam_snouts"] = "Mammal, Thick"
+		H.dna.features["mam_ears"] = "Wolf"
+		H.dna.features["mam_tail"] = "Wolf"
+		H.dna.features["mam_snouts"] = "Mammal, Thick"
+		H.dna.features["legs"] = "Digitigrade"
+		H.size_multiplier = 1.5
+		H.resize = old_size + 0.5
+		H.set_bark("bark")
+		H.custom_species = "Werewolf"
+		H.update_body()
+		H.update_body_parts()
+		H.regenerate_icons()
+	else
+		transformed = 0
+		H.set_species(old_species,FALSE)
+		H.dna.features["mam_ears"] = old_ears
+		H.dna.features["mam_snouts"] = old_snout
+		H.dna.features["mam_tail"] = old_tail
+		H.dna.features["legs"] = old_legs
+		H.dna.species.mutant_bodyparts["legs"] = old_legs
+		H.update_body()
+		H.update_body_parts()
+		H.regenerate_icons()
+		H.resize -= 0.5
+		H.Digitigrade_Leg_Swap(TRUE)
+
+/datum/action/werewolf/Grant()
+	. = ..()
+	var/mob/living/carbon/human/H = owner
+	old_species = H.dna.species.type
+	old_legs = H.dna.features["legs"]
+	old_snout = H.dna.features["mam_snouts"]
+	old_tail = H.dna.features["mam_tail"]
+	old_ears = H.dna.features["mam_ears"]
+	old_size = H.resize
+
