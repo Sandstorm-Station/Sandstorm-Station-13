@@ -79,6 +79,8 @@
 #define BELLY_SIZE_DEF		1
 #define BELLY_SIZE_MAX		10
 
+#define DEF_ANUS_SHAPE "donut"
+
 //visibility toggles defines to avoid errors typos code errors.
 #define GEN_VISIBLE_ALWAYS "Always visible"
 #define GEN_VISIBLE_NO_CLOTHES "Hidden by clothes"

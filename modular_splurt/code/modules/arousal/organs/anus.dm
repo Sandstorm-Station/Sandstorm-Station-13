@@ -20,8 +20,10 @@
 	update_appearance()
 
 /obj/item/organ/genital/anus/update_appearance(updates)
-	var/lowershape = lowertext(shape)
 	var/u_His = owner?.p_their() || "their"
+
+	var/datum/sprite_accessory/anus/S = GLOB.anus_shapes_list[shape]
+	var/lowershape = lowertext(S?.icon_state || DEF_ANUS_SHAPE)
 
 	desc = "You see [u_His] squishy [lowershape] pucker parting [u_His] asscheeks"
 
@@ -43,6 +45,7 @@
 		color = SKINTONE2HEX(H.skin_tone)
 	else
 		color = "#[D.features["anus_color"]]"
+	shape = D.features["anus_shape"]
 	toggle_visibility(D.features["anus_visibility"], FALSE)
 	if(D.features["anus_stuffing"])
 		toggle_visibility(GEN_ALLOW_EGG_STUFFING, FALSE)

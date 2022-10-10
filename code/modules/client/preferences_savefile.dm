@@ -764,6 +764,7 @@ SAVEFILE UPDATING/VERSIONING - 'Simplified', or rather, more coder-friendly ~Car
 "belly_color" = "ffffff",
 "has_anus" = FALSE,
 "anus_color" = "ffffff",
+"anus_shape" = DEF_ANUS_SHAPE,
 "balls_visibility"   = GEN_VISIBLE_NO_UNDIES,
 "breasts_visibility"= GEN_VISIBLE_NO_UNDIES,
 "cock_visibility" = GEN_VISIBLE_NO_UNDIES,
@@ -963,8 +964,6 @@ SAVEFILE UPDATING/VERSIONING - 'Simplified', or rather, more coder-friendly ~Car
 	S["feature_balls_size"] >> features["balls_size"]
 	S["feature_balls_visibility"] >> features["balls_visibility"]
 	S["feature_balls_fluid"] >> features["balls_fluid"]
-	S["feature_womb_fluid"] >> features["womb_fluid"]
-	S["feature_balls_shape"] >> features["balls_shape"]
 	//breasts features
 	S["feature_has_breasts"] >> features["has_breasts"]
 	S["feature_breasts_size"] >> features["breasts_size"]
@@ -980,6 +979,7 @@ SAVEFILE UPDATING/VERSIONING - 'Simplified', or rather, more coder-friendly ~Car
 	S["feature_vag_visibility"] >> features["vag_visibility"]
 	//womb features
 	S["feature_has_womb"] >> features["has_womb"]
+	S["feature_womb_fluid"] >> features["womb_fluid"]
 	//butt features
 	S["feature_has_butt"] >> features["has_butt"]
 	S["feature_butt_color"] >> features["butt_color"]
@@ -993,6 +993,7 @@ SAVEFILE UPDATING/VERSIONING - 'Simplified', or rather, more coder-friendly ~Car
 	//anus features
 	S["feature_has_anus"] >> features["has_anus"]
 	S["feature_anus_color"] >> features["anus_color"]
+	S["feature_anus_shape"] >> features["anus_shape"]
 	S["feature_anus_visibility"] >> features["anus_visibility"]
 
 	// Flavor texts, Made into a standard.
@@ -1160,6 +1161,7 @@ SAVEFILE UPDATING/VERSIONING - 'Simplified', or rather, more coder-friendly ~Car
 	features["cock_shape"] = sanitize_inlist(features["cock_shape"], GLOB.cock_shapes_list, DEF_COCK_SHAPE)
 	features["balls_shape"] = sanitize_inlist(features["balls_shape"], GLOB.balls_shapes_list, DEF_BALLS_SHAPE)
 	features["vag_shape"] = sanitize_inlist(features["vag_shape"], GLOB.vagina_shapes_list, DEF_VAGINA_SHAPE)
+	features["anus_shape"] = sanitize_inlist(features["anus_shape"], GLOB.anus_shapes_list, DEF_ANUS_SHAPE)
 	features["breasts_color"] = sanitize_hexcolor(features["breasts_color"], 6, FALSE, "FFFFFF")
 	features["cock_color"] = sanitize_hexcolor(features["cock_color"], 6, FALSE, "FFFFFF")
 	features["balls_color"] = sanitize_hexcolor(features["balls_color"], 6, FALSE, "FFFFFF")
@@ -1343,7 +1345,6 @@ SAVEFILE UPDATING/VERSIONING - 'Simplified', or rather, more coder-friendly ~Car
 	WRITE_FILE(S["feature_balls_size"], features["balls_size"])
 	WRITE_FILE(S["feature_balls_visibility"], features["balls_visibility"])
 	WRITE_FILE(S["feature_balls_stuffing"], features["balls_stuffing"])
-	WRITE_FILE(S["feature_balls_shape"], features["balls_shape"])
 	WRITE_FILE(S["feature_balls_fluid"], features["balls_fluid"])
 
 	WRITE_FILE(S["feature_has_breasts"], features["has_breasts"])
@@ -1379,6 +1380,7 @@ SAVEFILE UPDATING/VERSIONING - 'Simplified', or rather, more coder-friendly ~Car
 	WRITE_FILE(S["feature_has_anus"], features["has_anus"])
 	WRITE_FILE(S["feature_anus_color"], features["anus_color"])
 	WRITE_FILE(S["feature_anus_visibility"], features["anus_visibility"])
+	WRITE_FILE(S["feature_anus_shape"], features["anus_shape"])
 	WRITE_FILE(S["feature_anus_stuffing"], features["anus_stuffing"])
 
 	WRITE_FILE(S["feature_inert_eggs"], features["inert_eggs"])

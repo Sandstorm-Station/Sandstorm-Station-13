@@ -224,6 +224,7 @@
 		//SPLURT's anus stuff
 		"has_anus"			= FALSE,
 		"anus_color"		= pick("FFFFFF","7F7F7F", "7FFF7F", "7F7FFF", "FF7F7F", "7FFFFF", "FF7FFF", "FFFF7F"),
+		"anus_shape"		= DEF_ANUS_SHAPE,
 		//SPLURT's anus stuff
 
 		"balls_visibility"	= GEN_VISIBLE_NO_UNDIES,
