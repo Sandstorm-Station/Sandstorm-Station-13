@@ -382,7 +382,7 @@
 
 /datum/quirk/werewolf //adds the werewolf quirk
 	name = "Werewolf"
-	desc = "you are capable of turning into an anthropomorphic wolf"
+	desc = "you are capable of turning into an anthropomorphic wolf (this is still being tested, please send any bugs to nukechicken on discord)"
 	value = 0
 
 /datum/quirk/werewolf/add()
