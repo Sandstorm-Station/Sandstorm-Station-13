@@ -477,58 +477,6 @@
 	REMOVE_TRAIT(H, TRAIT_NOTHIRST, ROUNDSTART_TRAIT)
 	REMOVE_TRAIT(H,TRAIT_QUICKER_CARRY,ROUNDSTART_TRAIT)
 	REMOVE_TRAIT(H,TRAIT_AUTO_CATCH_ITEM,ROUNDSTART_TRAIT)
-	B.Remove(H)
-	. = ..()
-
-/datum/quirk/vampire//splurt change start
-	name = "Bloodsucker Fledgeling"
-	desc = "you need blood for nutriment, you have fangs to aid with this, the church harms you"
-	value = 0
-	medical_record_text = "this person was partially infected by a bloodsucker"
-	mob_trait = BLOODFLEDGE
-	gain_text = "<span class='notice'>You feel an otherworldly thirst.</span>"
-	lose_text = "<span class='notice'>you feel an otherworldy burden remove itself</span>"
-	processing_quirk = TRUE
-
-/datum/quirk/vampire/add()
-	. = ..()
-	var/mob/living/carbon/human/H = quirk_holder
-	ADD_TRAIT(H,TRAIT_NO_PROCESS_FOOD,ROUNDSTART_TRAIT)
-	ADD_TRAIT(H,TRAIT_COLDBLOODED,ROUNDSTART_TRAIT)
-	ADD_TRAIT(H,TRAIT_NOBREATH,ROUNDSTART_TRAIT)
-	ADD_TRAIT(H,TRAIT_NOTHIRST,ROUNDSTART_TRAIT)
-	ADD_TRAIT(H,TRAIT_QUICKER_CARRY,ROUNDSTART_TRAIT)
-	ADD_TRAIT(H,TRAIT_AUTO_CATCH_ITEM,ROUNDSTART_TRAIT)//these two make the vampire fast and enables some sexy "bet you didnt think i could do this" romance
-	if(!H.dna.skin_tone_override)
-		H.skin_tone = "albino"
-	var/datum/action/vbite/B = new
-	B.Grant(H)
-
-/datum/quirk/vampire/on_process()
-	. = ..()
-	var/mob/living/carbon/C = quirk_holder
-	var/area/A = get_area(C)
-	if(istype(A, /area/service/chapel) && C.mind?.assigned_role != "Chaplain")
-		C.adjustStaminaLoss(2)
-		C.adjust_nutrition(-0.3)//changed these to be less deadly and more of an inconvinience
-		C.adjust_disgust(1)
-	if(istype(C.loc, /obj/structure/closet/crate/coffin))//heals the vampire if in a coffin, except burn which fire can be considered holy
-		C.heal_overall_damage(4,4)
-		C.adjust_disgust(-7)
-		C.adjustOxyLoss(-4)
-		C.adjustCloneLoss(-4)
-		C.adjustBruteLoss(-0.3)
-		return
-
-/datum/quirk/vampire/remove()
-	var/mob/living/carbon/human/H = quirk_holder
-	var/datum/action/vbite/B = locate() in H.actions
-	REMOVE_TRAIT(H, TRAIT_NO_PROCESS_FOOD, ROUNDSTART_TRAIT)
-	REMOVE_TRAIT(H, TRAIT_COLDBLOODED, ROUNDSTART_TRAIT)
-	REMOVE_TRAIT(H, TRAIT_NOBREATH, ROUNDSTART_TRAIT)
-	REMOVE_TRAIT(H, TRAIT_NOTHIRST, ROUNDSTART_TRAIT)
-	REMOVE_TRAIT(H,TRAIT_QUICKER_CARRY,ROUNDSTART_TRAIT)
-	REMOVE_TRAIT(H,TRAIT_AUTO_CATCH_ITEM,ROUNDSTART_TRAIT)
 
 	B.Remove(H)
 	. = ..()
