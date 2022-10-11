@@ -403,41 +403,73 @@
 	var/old_snout = null
 	var/old_tail = null
 	var/old_size = 1
+	var/old_dick = null
+	var/old_dick_color = null
+	var/prim_col
+	var/old_boob = null
+	var/old_boob_color = null
 
 /datum/action/werewolf/Trigger()
 	. = ..()
 	var/mob/living/carbon/human/H = owner
+	var/obj/item/organ/genital/penis/P = null
+	var/obj/item/organ/genital/breasts/B = null
+	if(H.has_penis())
+		P = H.getorganslot(ORGAN_SLOT_PENIS)
+	if(H.has_breasts())
+		B = H.getorganslot(ORGAN_SLOT_BREASTS)
 	if(transformed == 0)
+		H.visible_message("<span class='danger'>[H] transforms into an anthropomorphic wolf!</span>")
 		transformed = 1
 		H.set_species(/datum/species/mammal, 1)
 		H.dna.species.mutant_bodyparts["mam_tail"] = "Wolf"
 		H.dna.species.mutant_bodyparts["legs"] = "Digitigrade"
-		H.Digitigrade_Leg_Swap(TRUE)
+		H.Digitigrade_Leg_Swap(FALSE)
 		H.dna.species.mutant_bodyparts["mam_snouts"] = "Mammal, Thick"
 		H.dna.features["mam_ears"] = "Wolf"
 		H.dna.features["mam_tail"] = "Wolf"
 		H.dna.features["mam_snouts"] = "Mammal, Thick"
 		H.dna.features["legs"] = "Digitigrade"
-		H.size_multiplier = 1.5
-		H.resize = old_size + 0.5
+		H.size_multiplier = old_size + 0.5
 		H.set_bark("bark")
 		H.custom_species = "Werewolf"
+		H.dna.species.species_traits += DIGITIGRADE
 		H.update_body()
 		H.update_body_parts()
-		H.regenerate_icons()
+		if(H.has_breasts())
+			B.color = prim_col
+			B.update()
+		if(H.has_penis())
+			P.shape = "Knotted"
+			P.size += 1
+			P.color = "#ff7c80"
+			P.update()
+			P.update_size()
 	else
 		transformed = 0
-		H.set_species(old_species,FALSE)
+		H.visible_message("<span class='danger'>[H] transforms back into what they were before they were a wolf</span>")
+		H.set_species(old_species,TRUE)
 		H.dna.features["mam_ears"] = old_ears
 		H.dna.features["mam_snouts"] = old_snout
 		H.dna.features["mam_tail"] = old_tail
 		H.dna.features["legs"] = old_legs
-		H.dna.species.mutant_bodyparts["legs"] = old_legs
+		H.dna.species.species_traits -= DIGITIGRADE
+		if(old_legs == "Plantigrade")
+			H.Digitigrade_Leg_Swap(TRUE)
+			H.dna.species.mutant_bodyparts["legs"] = old_legs
 		H.update_body()
 		H.update_body_parts()
-		H.regenerate_icons()
-		H.resize -= 0.5
-		H.Digitigrade_Leg_Swap(TRUE)
+		H.size_multiplier = old_size
+		H.update_size()
+		if(H.has_breasts())
+			B.color = old_boob_color
+			B.update()
+		if(H.has_penis())
+			P.shape = old_dick
+			P.size -= 1
+			P.color = old_dick_color
+			P.update()
+			P.update_size()
 
 /datum/action/werewolf/Grant()
 	. = ..()
@@ -447,5 +479,12 @@
 	old_snout = H.dna.features["mam_snouts"]
 	old_tail = H.dna.features["mam_tail"]
 	old_ears = H.dna.features["mam_ears"]
-	old_size = H.resize
-
+	old_size = H.size_multiplier
+	if(H.has_penis())
+		var/obj/item/organ/genital/penis/P = H.getorganslot(ORGAN_SLOT_PENIS)
+		old_dick = P.shape
+		old_dick_color = P.color
+	prim_col = addtext("#",H.dna.features["mcolor"])
+	if(H.has_breasts())
+		var/obj/item/organ/genital/breasts/B = H.getorganslot(ORGAN_SLOT_BREASTS)
+		old_boob_color = B.color
