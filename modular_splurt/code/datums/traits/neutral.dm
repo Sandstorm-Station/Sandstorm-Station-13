@@ -393,7 +393,6 @@
 	ADD_TRAIT(H,TRAIT_NO_PROCESS_FOOD,ROUNDSTART_TRAIT)
 	ADD_TRAIT(H,TRAIT_NOTHIRST,ROUNDSTART_TRAIT)
 
-
 /datum/quirk/incubus/remove()
 	. = ..()
 	var/mob/living/carbon/human/H = quirk_holder
@@ -478,65 +477,8 @@
 	REMOVE_TRAIT(H, TRAIT_NOTHIRST, ROUNDSTART_TRAIT)
 	REMOVE_TRAIT(H,TRAIT_QUICKER_CARRY,ROUNDSTART_TRAIT)
 	REMOVE_TRAIT(H,TRAIT_AUTO_CATCH_ITEM,ROUNDSTART_TRAIT)
-
 	B.Remove(H)
 	. = ..()
-
-/// quirk actions ///
-
-//vampire bite
-
-#define BLOOD_DRAIN_NUM 50
-
-/datum/action/vbite
-	name = "Bite Victim"
-	button_icon_state = "power_feed"
-	icon_icon = 'icons/mob/actions/bloodsucker.dmi'
-	desc = "bite the person you are grabbing with your fangs"
-	var/drain_cooldown = 0
-
-/datum/action/vbite/Trigger()
-	. = ..()
-	if(iscarbon(owner))
-		var/mob/living/carbon/H = owner
-		if(H.nutrition >= 500)
-			to_chat(H, "<span class='notice'>You are too full to drain any more.</span>")
-			return
-		if(drain_cooldown >= world.time)
-			to_chat(H, "<span class='notice'>You just drained blood, wait a few seconds.</span>")
-			return
-		if(!H.pulling || !iscarbon(H.pulling))
-			if(H.getStaminaLoss() >= 80 && H.nutrition > 20)//prevents being stunlocked in the chapel
-				to_chat(H,("<span class='notice'>you use some of your power to energize</span>"))
-				H.adjustStaminaLoss(-20)
-				H.adjust_nutrition(-20)
-				H.resting = TRUE
-		if(H.pulling && iscarbon(H.pulling))
-			var/mob/living/carbon/victim = H.pulling
-			drain_cooldown = world.time + 25
-			if(victim.anti_magic_check(FALSE, TRUE, FALSE, 0))
-				to_chat(victim, "<span class='warning'>[H] tries to bite you, but stops before touching you!</span>")
-				to_chat(H, "<span class='warning'>[victim] is blessed! You stop just in time to avoid catching fire.</span>")
-				return
-			//Here we check now for both the garlic cloves on the neck and for blood in the victims bloodstream.
-			if(!blood_sucking_checks(victim, TRUE, TRUE))
-				return
-			H.visible_message("<span class='danger'>[H] Bites down on [victim]'s neck!</span>")
-			if(!do_after(H, 30, target = victim))
-				return
-			var/blood_volume_difference = BLOOD_VOLUME_MAXIMUM - H.blood_volume //How much capacity we have left to absorb blood
-			var/drained_blood = min(victim.blood_volume, BLOOD_DRAIN_NUM, blood_volume_difference)
-			H.reagents.add_reagent(/datum/reagent/blood/, drained_blood)
-			to_chat(victim, "<span class='danger'>[H] is draining your blood!</span>")
-			to_chat(H, "<span class='notice'>You drain some blood!</span>")
-			playsound(H, 'sound/items/drink.ogg', 30, 1, -2)
-			victim.blood_volume = clamp(victim.blood_volume - drained_blood, 0, BLOOD_VOLUME_MAXIMUM)
-			log_combat(H,victim,"vampire bit")//logs the biting action for admins
-			if(!victim.blood_volume)
-				to_chat(H, "<span class='warning'>You finish off [victim]'s blood supply!</span>")
-
-//splurt change end
-//put next quirk action here
 
 /datum/quirk/vampire//splurt change start
 	name = "Bloodsucker Fledgeling"
