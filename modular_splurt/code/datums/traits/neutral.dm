@@ -380,7 +380,7 @@
 	var/obj/item/implant/genital_fluid/put_in = new
 	put_in.implant(quirk_holder, null, TRUE, TRUE)
 
-/datum/quirk/werewolf
+/datum/quirk/werewolf //adds the werewolf quirk
 	name = "Werewolf"
 	desc = "you are capable of turning into an anthropomorphic wolf"
 	value = 0
@@ -397,7 +397,7 @@
 	icon_icon = 'modular_splurt/icons/mob/actions/misc_actions.dmi'
 	button_icon_state = "Transform"
 	var/transformed = 0
-	var/old_species = SPECIES_HUMAN
+	var/old_species = SPECIES_HUMAN // all the players old things
 	var/old_legs = "Plantigrade"
 	var/old_ears = null
 	var/old_snout = null
@@ -418,7 +418,7 @@
 		P = H.getorganslot(ORGAN_SLOT_PENIS)
 	if(H.has_breasts())
 		B = H.getorganslot(ORGAN_SLOT_BREASTS)
-	if(transformed == 0)
+	if(transformed == 0) // transform them
 		H.visible_message("<span class='danger'>[H] transforms into an anthropomorphic wolf!</span>")
 		transformed = 1
 		H.set_species(/datum/species/mammal, 1)
@@ -445,14 +445,14 @@
 			P.color = "#ff7c80"
 			P.update()
 			P.update_size()
-	else
+	else // untransform them
 		transformed = 0
 		H.visible_message("<span class='danger'>[H] transforms back into what they were before they were a wolf</span>")
 		H.set_species(old_species,TRUE)
 		H.dna.features["mam_ears"] = old_ears
 		H.dna.features["mam_snouts"] = old_snout
 		H.dna.features["mam_tail"] = old_tail
-		H.dna.features["legs"] = old_legs
+		H.dna.features["legs"] = old_legs //i hate legs i hate legs i hate legs i hate legs i hate legs i hate legs i hate legs
 		H.dna.species.species_traits -= DIGITIGRADE
 		if(old_legs == "Plantigrade")
 			H.Digitigrade_Leg_Swap(TRUE)
@@ -471,7 +471,7 @@
 			P.update()
 			P.update_size()
 
-/datum/action/werewolf/Grant()
+/datum/action/werewolf/Grant()// on grant sets some variables
 	. = ..()
 	var/mob/living/carbon/human/H = owner
 	old_species = H.dna.species.type
