@@ -106,3 +106,145 @@
 
 	if(.)
 		TIMER_COOLDOWN_START(quirk_holder, COOLDOWN_DOMINANT_SNAP, DOMINANT_SNAP_COOLDOWN)
+
+/datum/quirk/arachnid
+	name = "Arachnid"
+	desc = "Your bodily anatomy allows you to spin webs and cocoons, even if you aren't an arachnid! (Note that this quirk does nothing for members of the arachnid species)"
+	value = 1
+	medical_record_text = "Patient has attempted to cover the room in webs, claiming to be \"making a nest\"."
+	mob_trait = TRAIT_ARACHNID
+	gain_text = "<span class='notice'>You feel a strange sensation near your anus...</span>"
+	lose_text = "<span class='notice'>You feel like you can't spin webs anymore...</span>"
+	processing_quirk = TRUE
+
+/datum/quirk/arachnid/add()
+	. = ..()
+	var/mob/living/carbon/human/H = quirk_holder
+	if(istype(H.dna.species,/datum/species/arachnid))
+		to_chat(H, "<span class='warning'>As an arachnid, this quirk does nothing for you, as these abilities are innate to your species.</span>")
+	else
+		var/datum/action/innate/spin_web_quirk/SW = new
+		var/datum/action/innate/spin_cocoon_quirk/SC = new
+		SC.Grant(H)
+		SW.Grant(H)
+
+/datum/quirk/arachnid/remove()
+	. = ..()
+	var/mob/living/carbon/human/H = quirk_holder
+	if(!istype(H.dna.species,/datum/species/arachnid))
+		var/datum/action/innate/spin_web_quirk/SW = locate(/datum/action/innate/spin_web_quirk) in H.actions
+		var/datum/action/innate/spin_cocoon_quirk/SC = locate(/datum/action/innate/spin_cocoon_quirk) in H.actions
+		SC?.Remove(H)
+		SW?.Remove(H)
+
+// Unfortunately, some copy-paste work needed doing. Web spinning and cocoon spinning relied on variables innate to the arachnid species. Also unsure of how to make the cooldown work between both actions ¯\_(ツ)_/¯
+/datum/action/innate/spin_web_quirk
+	name = "Spin Web"
+	check_flags = AB_CHECK_RESTRAINED|AB_CHECK_STUN|AB_CHECK_CONSCIOUS
+	icon_icon = 'icons/mob/actions/actions_animal.dmi'
+	button_icon_state = "lay_web"
+	var/web_cooldown = 200
+	var/web_ready = TRUE
+	var/spinner_rate = 25
+
+/datum/action/innate/spin_cocoon_quirk
+	name = "Spin Cocoon"
+	check_flags = AB_CHECK_RESTRAINED|AB_CHECK_STUN|AB_CHECK_CONSCIOUS
+	icon_icon = 'icons/mob/actions/actions_animal.dmi'
+	button_icon_state = "wrap_0"
+	var/web_cooldown = 200
+	var/web_ready = TRUE
+	var/spinner_rate = 25
+
+/datum/action/innate/spin_web_quirk/Activate()
+	var/mob/living/carbon/human/H = owner
+	if(H.stat == "DEAD")
+		return
+	if(web_ready == FALSE)
+		to_chat(H, "<span class='warning'>You need to wait a while to regenerate web fluid.</span>")
+		return
+	var/turf/T = get_turf(H)
+	if(!T)
+		to_chat(H, "<span class='warning'>There's no room to spin your web here!</span>")
+		return
+	var/obj/structure/spider/stickyweb/W = locate() in T
+	var/obj/structure/arachnid/W2 = locate() in T
+	if(W || W2)
+		to_chat(H, "<span class='warning'>There's already a web here!</span>")
+		return
+	 // Should have some minimum amount of food before trying to activate
+	var/nutrition_threshold = NUTRITION_LEVEL_FED
+	if (H.nutrition >= nutrition_threshold)
+		to_chat(H, "<i>You begin spinning some web...</i>")
+		if(!do_after(H, 10 SECONDS, 1, T))
+			to_chat(H, "<span class='warning'>Your web spinning was interrupted!</span>")
+			return
+		H.adjust_nutrition(-spinner_rate)
+		addtimer(VARSET_CALLBACK(src, web_ready, TRUE), web_cooldown)
+		to_chat(H, "<i>You use up a fair amount of energy weaving a web on the ground with your spinneret!</i>")
+		new /obj/structure/arachnid(T, owner)
+
+	else
+		to_chat(H, "<span class='warning'>You're too hungry to spin web right now, eat something first!</span>")
+		return
+/*
+	This took me far too long to figure out so I'm gonna document it here.
+	1) Create an innate action for the species
+	2) Have that action trigger a RegisterSignal for mob clicking
+	3) Trigger the cocoonAtom proc on that signal
+	4) Validate the target then start spinning
+	5) if you're not interrupted, force move the target to the cocoon created at their location.
+*/
+/datum/action/innate/spin_cocoon_quirk/Activate()
+	var/mob/living/carbon/human/H = owner
+	if(H.stat == "DEAD")
+		return
+	if(web_ready == FALSE)
+		to_chat(H, "<span class='warning'>You need to wait awhile to regenerate web fluid.</span>")
+		return
+	var/nutrition_threshold = NUTRITION_LEVEL_FED
+	if (H.nutrition >= nutrition_threshold)
+		to_chat(H, "<span class='warning'>You pull out a strand from your spinneret, ready to wrap a target. <BR>\
+		 (Press ALT+CLICK on the target to start wrapping.)</span>")
+		H.adjust_nutrition(spinner_rate * -0.5)
+		addtimer(VARSET_CALLBACK(src, web_ready, TRUE), web_cooldown)
+		RegisterSignal(H, list(COMSIG_MOB_ALTCLICKON), .proc/cocoonAtom)
+		return
+	else
+		to_chat(H, "<span class='warning'>You're too hungry to spin web right now, eat something first!</span>")
+		return
+
+/datum/action/innate/spin_cocoon_quirk/proc/cocoonAtom(mob/living/carbon/human/H, atom/movable/A)
+	UnregisterSignal(H, list(COMSIG_MOB_ALTCLICKON))
+	if (!H)
+		return COMSIG_MOB_CANCEL_CLICKON
+	else
+		if(web_ready == FALSE)
+			to_chat(H, "<span class='warning'>You need to wait awhile to regenerate web fluid.</span>")
+			return
+		if(!H.Adjacent(A))	//No.
+			return
+		if(!isliving(A) && A.anchored)
+			to_chat(H, "<span class='warning'>[A] is bolted to the floor!</span>")
+			return
+		if(istype(A, /obj/structure/arachnid))
+			to_chat(H, "<span class='warning'>No double wrapping.</span>")
+			return
+		if(istype(A, /obj/effect))
+			to_chat(H, "<span class='warning'>You cannot wrap this.</span>")
+			return
+		H.visible_message("<span class='danger'>[H] starts to wrap [A] into a cocoon!</span>","<span class='warning'>You start to wrap [A] into a cocoon.</span>")
+		if(!do_after(H, 10 SECONDS, 1, A))
+			to_chat(H, "<span class='warning'>Your web spinning was interrupted!</span>")
+			return
+		H.adjust_nutrition(spinner_rate * -3)
+		var/obj/structure/arachnid/cocoon/C = new(A.loc)
+		if(isliving(A))
+			C.icon_state = pick("cocoon_large1","cocoon_large2","cocoon_large3")
+			A.forceMove(C)
+			H.visible_message("<span class='danger'>[H] wraps [A] into a large cocoon!</span>")
+			return
+		else
+			A.forceMove(C)
+			H.visible_message("<span class='danger'>[H] wraps [A] into a cocoon!</span>")
+			return
