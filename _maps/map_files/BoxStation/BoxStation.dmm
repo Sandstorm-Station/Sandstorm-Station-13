@@ -11676,6 +11676,10 @@
 	},
 /turf/open/floor/plasteel,
 /area/hallway/primary/central)
+"aRs" = (
+/obj/effect/landmark/navigate_destination/dockaux,
+/turf/open/floor/plasteel,
+/area/hallway/secondary/entry)
 "aRt" = (
 /obj/machinery/light{
 	dir = 4
@@ -60233,6 +60237,10 @@
 	},
 /turf/open/floor/plating,
 /area/security/prison/upper)
+"rGz" = (
+/obj/effect/landmark/navigate_destination/tools,
+/turf/open/floor/plasteel,
+/area/commons/storage/primary)
 "rGX" = (
 /obj/machinery/atmospherics/pipe/simple/scrubbers/hidden,
 /obj/effect/turf_decal/tile/red{
@@ -78188,7 +78196,7 @@ aaa
 aaa
 awW
 awZ
-ayl
+aRs
 ayl
 aAE
 awW
@@ -86137,7 +86145,7 @@ gYo
 aBQ
 aDn
 aDo
-aDo
+rGz
 aHD
 aIZ
 aBQ
