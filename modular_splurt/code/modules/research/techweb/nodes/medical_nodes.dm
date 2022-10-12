@@ -25,5 +25,9 @@
 	var/list/removed_designs = list(
 		"ci-power-cord"
 	)
+	var/list/added_designs = list(
+		"ci-diaghud"
+	)
 	LAZYREMOVE(design_ids, removed_designs)
+	LAZYADD(design_ids, added_designs)
 	. = ..()

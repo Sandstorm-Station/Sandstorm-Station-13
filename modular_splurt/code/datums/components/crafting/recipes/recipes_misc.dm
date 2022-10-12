@@ -126,6 +126,37 @@
 				/obj/item/clothing/glasses/regular = 1)
 	category = CAT_CLOTHING
 
+/datum/crafting_recipe/hudsundiagaviators
+	name = "Diagnostic HUD Aviators"
+	result = /obj/item/clothing/glasses/hud/diagnostic/sunglasses/aviators
+	time = 20
+	tools = list(TOOL_SCREWDRIVER, TOOL_WIRECUTTER)
+	parts = list(/obj/item/clothing/glasses/hud/diagnostic/sunglasses = 1,
+					/obj/item/clothing/glasses/aviators = 1)
+	reqs = list(/obj/item/clothing/glasses/hud/diagnostic/sunglasses = 1,
+				/obj/item/clothing/glasses/aviators = 1,
+				/obj/item/stack/cable_coil = 5)
+	category = CAT_CLOTHING
+
+/datum/crafting_recipe/hudsundiagavviatorsremoval
+	name = "Diagnostic HUD Aviators removal"
+	result = /obj/item/clothing/glasses/aviators
+	time = 20
+	tools = list(TOOL_SCREWDRIVER, TOOL_WIRECUTTER)
+	reqs = list(/obj/item/clothing/glasses/hud/diagnostic/sunglasses/aviators = 1)
+	category = CAT_CLOTHING
+
+/datum/crafting_recipe/hudsundiagaviatorsper
+	name = "Prescription Diagnostic HUD Aviators"
+	result = /obj/item/clothing/glasses/hud/diagnostic/sunglasses/aviators/prescription
+	time = 20
+	tools = list(TOOL_SCREWDRIVER)
+	parts = list(/obj/item/clothing/glasses/hud/diagnostic/sunglasses/aviators = 1,
+				/obj/item/clothing/glasses/regular = 1)
+	reqs = list(/obj/item/clothing/glasses/hud/diagnostic/sunglasses/aviators = 1,
+				/obj/item/clothing/glasses/regular = 1)
+	category = CAT_CLOTHING
+
 /datum/crafting_recipe/hudsunmedaviators
 	name = "Medical HUD Aviators"
 	result = /obj/item/clothing/glasses/hud/health/sunglasses/aviators
