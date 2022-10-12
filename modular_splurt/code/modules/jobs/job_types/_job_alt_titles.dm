@@ -35,6 +35,8 @@
 		"Security Commander",
 		"Head of Slutcurity"
 	)
+	if(SSevents.holidays && SSevents.holidays[HALLOWEEN])
+		LAZYADD(extra_titles, "Head of Spookcurity")
 	LAZYADD(alt_titles, extra_titles)
 	. = ..()
 
@@ -263,6 +265,8 @@
 		"Gumshoe",
 		"Slutective"
 	)
+	if(SSevents.holidays && SSevents.holidays[HALLOWEEN])
+		LAZYADD(extra_titles, "Spookective")
 	LAZYADD(alt_titles, extra_titles)
 	. = ..()
 
@@ -275,6 +279,8 @@
 		"Rookie",
 		"Slutcurity Officer"
 	)
+	if(SSevents.holidays && SSevents.holidays[HALLOWEEN])
+		LAZYADD(extra_titles, "Spookcurity Officer")
 	LAZYADD(alt_titles, extra_titles)
 	. = ..()
 
@@ -287,6 +293,8 @@
 		"Brig Superintendent",
 		"Voreden"
 	)
+	if(SSevents.holidays && SSevents.holidays[HALLOWEEN])
+		LAZYADD(extra_titles, "Spookden")
 	LAZYADD(alt_titles, extra_titles)
 	. = ..()
 
