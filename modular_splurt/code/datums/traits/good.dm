@@ -216,7 +216,7 @@
 
 /datum/action/innate/spin_cocoon_quirk/proc/cocoonAtom(mob/living/carbon/human/H, atom/movable/A)
 	UnregisterSignal(H, list(COMSIG_MOB_ALTCLICKON))
-	if (!H)
+	if (!H || !isarachnid(H))
 		return COMSIG_MOB_CANCEL_CLICKON
 	else
 		if(web_ready == FALSE)
