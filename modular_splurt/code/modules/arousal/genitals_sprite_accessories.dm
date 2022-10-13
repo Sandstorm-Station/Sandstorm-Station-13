@@ -35,7 +35,7 @@
 	name = "anus"
 	color_src = "anus_color"
 
-/datum/sprite_accessory/anus/gape
+/datum/sprite_accessory/anus/donut
 	icon_state = DEF_ANUS_SHAPE
 	name = DEF_ANUS_SHAPE
 
