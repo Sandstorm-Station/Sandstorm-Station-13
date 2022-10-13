@@ -861,10 +861,6 @@
 	},
 /turf/open/floor/carpet,
 /area/awaymission/wildwest/gov)
-"di" = (
-/obj/machinery/mineral/mint,
-/turf/open/floor/plating,
-/area/awaymission/wildwest/refine)
 "dj" = (
 /obj/effect/spawner/structure/window,
 /turf/open/floor/wood,
@@ -1282,21 +1278,10 @@
 	icon_state = "ironsand4"
 	},
 /area/awaymission/wildwest/gov)
-"eA" = (
-/obj/machinery/mineral/mint,
-/turf/open/floor/plasteel,
-/area/awaymission/wildwest/refine)
 "eC" = (
 /obj/structure/chair/comfy/brown,
 /turf/open/floor/wood,
 /area/awaymission/wildwest/mines)
-"eD" = (
-/obj/structure/window/reinforced{
-	icon_state = "fwindow"
-	},
-/obj/structure/lattice,
-/turf/open/space,
-/area/space/nearstation)
 "eE" = (
 /obj/structure/bed,
 /obj/item/bedsheet/blue,
@@ -1345,9 +1330,6 @@
 /obj/effect/decal/cleanable/blood/splatter,
 /turf/closed/wall/mineral/sandstone,
 /area/awaymission/wildwest/mines)
-"eN" = (
-/turf/open/space/basic,
-/area/space)
 "eO" = (
 /obj/structure/window/reinforced,
 /obj/structure/window/reinforced{
@@ -2110,7 +2092,7 @@
 	icon_state = "ironsand1"
 	},
 /area/awaymission/wildwest/mines)
-"ni" = (
+"ip" = (
 /obj/structure/cable{
 	icon_state = "1-8"
 	},
@@ -2121,11 +2103,44 @@
 /obj/effect/mapping_helpers/airlock/cyclelink_helper,
 /turf/open/floor/plasteel,
 /area/awaymission/wildwest/refine)
-"Ah" = (
+"pR" = (
+/turf/open/space/basic,
+/area/space)
+"ss" = (
+/obj/structure/closet/crate,
+/obj/structure/cable{
+	icon_state = "4-8"
+	},
+/turf/open/floor/plating,
+/area/awaymission/wildwest/refine)
+"ts" = (
 /obj/structure/cable{
 	icon_state = "0-2"
 	},
 /obj/machinery/power/port_gen/pacman,
+/turf/open/floor/plating,
+/area/awaymission/wildwest/refine)
+"vO" = (
+/obj/machinery/gateway/away,
+/obj/structure/cable{
+	icon_state = "0-2"
+	},
+/turf/open/floor/plating,
+/area/awaymission/wildwest/refine)
+"zg" = (
+/obj/structure/window/reinforced{
+	icon_state = "fwindow"
+	},
+/obj/structure/lattice,
+/turf/open/space,
+/area/space/nearstation)
+"BX" = (
+/obj/structure/cable{
+	icon_state = "0-2"
+	},
+/obj/structure/cable{
+	icon_state = "1-2"
+	},
 /turf/open/floor/plating,
 /area/awaymission/wildwest/refine)
 "Gh" = (
@@ -2135,22 +2150,6 @@
 	},
 /turf/open/floor/grass,
 /area/awaymission/wildwest/gov)
-"IQ" = (
-/obj/structure/cable{
-	icon_state = "0-2"
-	},
-/obj/structure/cable{
-	icon_state = "1-2"
-	},
-/turf/open/floor/plating,
-/area/awaymission/wildwest/refine)
-"IV" = (
-/obj/machinery/gateway/away,
-/obj/structure/cable{
-	icon_state = "0-2"
-	},
-/turf/open/floor/plating,
-/area/awaymission/wildwest/refine)
 "Kh" = (
 /obj/machinery/door/airlock/external,
 /obj/effect/mapping_helpers/airlock/cyclelink_helper{
@@ -2158,17 +2157,15 @@
 	},
 /turf/open/floor/plasteel,
 /area/awaymission/wildwest/refine)
-"OZ" = (
-/obj/structure/closet/crate,
-/obj/item/stack/sheet/mineral/plasma{
-	amount = 30
-	},
-/obj/item/wrench,
-/turf/open/floor/plating,
-/area/awaymission/wildwest/refine)
-"PR" = (
+"KM" = (
 /obj/structure/cable{
 	icon_state = "4-8"
+	},
+/turf/open/floor/plating,
+/area/awaymission/wildwest/refine)
+"OS" = (
+/obj/structure/cable{
+	icon_state = "1-4"
 	},
 /turf/open/floor/plating,
 /area/awaymission/wildwest/refine)
@@ -2188,17 +2185,12 @@
 	icon_state = "ironsand1"
 	},
 /area/awaymission/wildwest/gov)
-"Vs" = (
+"YE" = (
 /obj/structure/closet/crate,
-/obj/structure/cable{
-	icon_state = "4-8"
+/obj/item/stack/sheet/mineral/plasma{
+	amount = 30
 	},
-/turf/open/floor/plating,
-/area/awaymission/wildwest/refine)
-"Yq" = (
-/obj/structure/cable{
-	icon_state = "1-4"
-	},
+/obj/item/wrench,
 /turf/open/floor/plating,
 /area/awaymission/wildwest/refine)
 
@@ -17285,14 +17277,14 @@ bW
 bW
 bW
 aa
-eN
-eN
-eN
+pR
+pR
+pR
 aa
 aa
-eN
-eN
-eN
+pR
+pR
+pR
 aa
 aa
 aa
@@ -17542,14 +17534,14 @@ fU
 fU
 gD
 ed
-eN
-eN
-eN
+pR
+pR
+pR
 aa
 aa
-eN
-eN
-eN
+pR
+pR
+pR
 aa
 aa
 aa
@@ -17799,14 +17791,14 @@ fL
 fL
 gE
 ed
-eN
-eN
-eN
+pR
+pR
+pR
 aa
 aa
-eN
-eN
-eN
+pR
+pR
+pR
 aa
 aa
 aa
@@ -18042,7 +18034,7 @@ bP
 ed
 aa
 br
-eD
+zg
 fK
 fV
 fL
@@ -18056,14 +18048,14 @@ fV
 fL
 gE
 ed
-eN
-eN
-eN
+pR
+pR
+pR
 aa
 aa
-eN
-eN
-eN
+pR
+pR
+pR
 aa
 aa
 aa
@@ -18299,7 +18291,7 @@ dR
 ed
 aa
 aa
-eD
+zg
 fK
 fV
 fL
@@ -18313,14 +18305,14 @@ fV
 fL
 gE
 ed
-eN
-eN
-eN
+pR
+pR
+pR
 aa
 aa
-eN
-eN
-eN
+pR
+pR
+pR
 aa
 aa
 aa
@@ -18556,7 +18548,7 @@ dS
 ed
 aa
 aa
-eD
+zg
 fK
 fV
 fL
@@ -18570,14 +18562,14 @@ fV
 fL
 gE
 ed
-eN
-eN
-eN
+pR
+pR
+pR
 aa
 aa
-eN
-eN
-eN
+pR
+pR
+pR
 aa
 aa
 aa
@@ -18813,7 +18805,7 @@ dS
 ed
 aa
 aa
-eD
+zg
 fK
 fV
 fL
@@ -18827,14 +18819,14 @@ fV
 fL
 gE
 ed
-eN
-eN
-eN
+pR
+pR
+pR
 aa
 aa
-eN
-eN
-eN
+pR
+pR
+pR
 aa
 aa
 aa
@@ -19070,7 +19062,7 @@ dS
 ed
 aa
 aa
-eD
+zg
 fK
 fV
 fL
@@ -19084,14 +19076,14 @@ fV
 fL
 gE
 ed
-eN
-eN
-eN
+pR
+pR
+pR
 aa
 aa
-eN
-eN
-eN
+pR
+pR
+pR
 aa
 aa
 aa
@@ -19327,7 +19319,7 @@ dS
 ed
 aa
 aa
-eD
+zg
 fK
 fL
 fL
@@ -19341,14 +19333,14 @@ fL
 fL
 gE
 ed
-eN
-eN
-eN
+pR
+pR
+pR
 aa
 aa
-eN
-eN
-eN
+pR
+pR
+pR
 aa
 aa
 aa
@@ -19584,7 +19576,7 @@ dS
 ed
 aa
 aa
-eD
+zg
 fK
 fL
 fL
@@ -19598,14 +19590,14 @@ fL
 gn
 gE
 ed
-eN
-eN
-eN
+pR
+pR
+pR
 aa
 aa
-eN
-eN
-eN
+pR
+pR
+pR
 aa
 aa
 aa
@@ -19841,7 +19833,7 @@ dS
 ed
 aa
 br
-eD
+zg
 fK
 fL
 fL
@@ -19855,14 +19847,14 @@ fL
 fL
 gE
 ed
-eN
-eN
-eN
+pR
+pR
+pR
 aa
 aa
-eN
-eN
-eN
+pR
+pR
+pR
 aa
 aa
 aa
@@ -20112,14 +20104,14 @@ fL
 fL
 gE
 ed
-eN
-eN
-eN
+pR
+pR
+pR
 aa
 aa
-eN
-eN
-eN
+pR
+pR
+pR
 aa
 aa
 aa
@@ -20352,7 +20344,7 @@ bY
 bY
 bY
 dS
-eN
+pR
 br
 aa
 bv
@@ -20369,14 +20361,14 @@ fL
 fL
 gE
 ed
-eN
-eN
-eN
+pR
+pR
+pR
 aa
 aa
-eN
-eN
-eN
+pR
+pR
+pR
 aa
 aa
 aa
@@ -20626,14 +20618,14 @@ fL
 fL
 gE
 ed
-eN
-eN
-eN
+pR
+pR
+pR
 aa
 aa
-eN
-eN
-eN
+pR
+pR
+pR
 aa
 aa
 aa
@@ -20883,14 +20875,14 @@ fL
 fL
 gE
 ed
-eN
-eN
-eN
+pR
+pR
+pR
 aa
 aa
-eN
-eN
-eN
+pR
+pR
+pR
 aa
 aa
 aa
@@ -21140,14 +21132,14 @@ fL
 fL
 gE
 ed
-eN
-eN
-eN
+pR
+pR
+pR
 aa
 aa
-eN
-eN
-eN
+pR
+pR
+pR
 aa
 aa
 aa
@@ -21397,14 +21389,14 @@ fL
 fL
 gE
 ed
-eN
-eN
-eN
+pR
+pR
+pR
 aa
 aa
-eN
-eN
-eN
+pR
+pR
+pR
 aa
 aa
 aa
@@ -21654,14 +21646,14 @@ fL
 fL
 gE
 ed
-eN
-eN
-eN
+pR
+pR
+pR
 aa
 aa
-eN
-eN
-eN
+pR
+pR
+pR
 aa
 aa
 aa
@@ -21911,14 +21903,14 @@ fL
 fL
 gE
 ed
-eN
-eN
-eN
+pR
+pR
+pR
 aa
 aa
-eN
-eN
-eN
+pR
+pR
+pR
 aa
 aa
 aa
@@ -22168,14 +22160,14 @@ fL
 fL
 gE
 ed
-eN
-eN
-eN
+pR
+pR
+pR
 aa
 aa
-eN
-eN
-eN
+pR
+pR
+pR
 aa
 aa
 aa
@@ -22425,14 +22417,14 @@ fL
 fL
 gE
 ed
-eN
-eN
-eN
+pR
+pR
+pR
 aa
 aa
-eN
-eN
-eN
+pR
+pR
+pR
 aa
 aa
 aa
@@ -22682,14 +22674,14 @@ fL
 fL
 gE
 ed
-eN
-eN
-eN
+pR
+pR
+pR
 aa
 aa
-eN
-eN
-eN
+pR
+pR
+pR
 aa
 aa
 aa
@@ -22939,14 +22931,14 @@ fL
 fL
 gE
 ed
-eN
-eN
-eN
+pR
+pR
+pR
 aa
 aa
-eN
-eN
-eN
+pR
+pR
+pR
 aa
 aa
 aa
@@ -23196,14 +23188,14 @@ fL
 fL
 gE
 ed
-eN
-eN
-eN
+pR
+pR
+pR
 aa
 aa
-eN
-eN
-eN
+pR
+pR
+pR
 aa
 aa
 aa
@@ -23453,14 +23445,14 @@ fW
 fW
 gF
 ed
-eN
-eN
-eN
+pR
+pR
+pR
 aa
 aa
-eN
-eN
-eN
+pR
+pR
+pR
 aa
 aa
 aa
@@ -23710,14 +23702,14 @@ bT
 bT
 bT
 aa
-eN
-eN
-eN
+pR
+pR
+pR
 aa
 aa
-eN
-eN
-eN
+pR
+pR
+pR
 aa
 aa
 aa
@@ -23967,14 +23959,14 @@ aa
 aa
 aa
 aa
-eN
-eN
-eN
+pR
+pR
+pR
 aa
 aa
-eN
-eN
-eN
+pR
+pR
+pR
 aa
 aa
 aa
@@ -24224,14 +24216,14 @@ aa
 aa
 aa
 aa
-eN
-eN
-eN
+pR
+pR
+pR
 aa
 aa
-eN
-eN
-eN
+pR
+pR
+pR
 aa
 aa
 aa
@@ -24481,14 +24473,14 @@ aa
 aa
 aa
 aa
-eN
-eN
-eN
+pR
+pR
+pR
 aa
 aa
-eN
-eN
-eN
+pR
+pR
+pR
 aa
 aa
 aa
@@ -24738,14 +24730,14 @@ aa
 aa
 aa
 aa
-eN
-eN
-eN
+pR
+pR
+pR
 aa
 aa
-eN
-eN
-eN
+pR
+pR
+pR
 aa
 aa
 aa
@@ -24995,14 +24987,14 @@ aa
 aa
 aa
 aa
-eN
-eN
-eN
+pR
+pR
+pR
 aa
 aa
-eN
-eN
-eN
+pR
+pR
+pR
 aa
 aa
 aa
@@ -25252,14 +25244,14 @@ aa
 aa
 aa
 aa
-eN
-eN
-eN
+pR
+pR
+pR
 aa
 aa
-eN
-eN
-eN
+pR
+pR
+pR
 aa
 aa
 aa
@@ -25514,9 +25506,9 @@ aa
 aa
 aa
 aa
-eN
-eN
-eN
+pR
+pR
+pR
 aa
 aa
 aa
@@ -29092,7 +29084,7 @@ aG
 aG
 aG
 et
-eA
+eu
 eu
 eu
 eu
@@ -29855,8 +29847,8 @@ aG
 aG
 aG
 aW
-Ah
-Yq
+ts
+OS
 bh
 bc
 bc
@@ -30112,8 +30104,8 @@ aG
 aG
 aG
 aW
-OZ
-PR
+YE
+KM
 bc
 bc
 bc
@@ -30370,7 +30362,7 @@ aG
 aG
 aW
 bc
-PR
+KM
 bc
 bc
 bc
@@ -30627,7 +30619,7 @@ aG
 aG
 aW
 bc
-PR
+KM
 bc
 bc
 bh
@@ -30884,7 +30876,7 @@ aG
 aG
 aW
 bh
-PR
+KM
 bn
 bc
 bc
@@ -31141,7 +31133,7 @@ aG
 aG
 aW
 bc
-PR
+KM
 bc
 bc
 bc
@@ -31398,7 +31390,7 @@ aW
 aW
 aW
 bc
-PR
+KM
 bc
 bc
 bc
@@ -31655,7 +31647,7 @@ aW
 bb
 bc
 bc
-Vs
+ss
 bc
 bc
 bc
@@ -31910,9 +31902,9 @@ aW
 aW
 bh
 bc
-IV
-IQ
-ni
+vO
+BX
+ip
 bc
 bh
 aW
@@ -33706,7 +33698,7 @@ bc
 bc
 bc
 bc
-di
+bc
 bc
 bh
 aW
