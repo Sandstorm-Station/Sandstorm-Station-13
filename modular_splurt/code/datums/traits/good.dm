@@ -120,7 +120,7 @@
 /datum/quirk/arachnid/add()
 	. = ..()
 	var/mob/living/carbon/human/H = quirk_holder
-	if(istype(H.dna.species,/datum/species/arachnid))
+	if(is_species(H,/datum/species/arachnid))
 		to_chat(H, "<span class='warning'>As an arachnid, this quirk does nothing for you, as these abilities are innate to your species.</span>")
 	else
 		var/datum/action/innate/spin_web_quirk/SW = new
@@ -131,7 +131,7 @@
 /datum/quirk/arachnid/remove()
 	. = ..()
 	var/mob/living/carbon/human/H = quirk_holder
-	if(!istype(H.dna.species,/datum/species/arachnid))
+	if(!is_species(H,/datum/species/arachnid))
 		var/datum/action/innate/spin_web_quirk/SW = locate(/datum/action/innate/spin_web_quirk) in H.actions
 		var/datum/action/innate/spin_cocoon_quirk/SC = locate(/datum/action/innate/spin_cocoon_quirk) in H.actions
 		SC?.Remove(H)
