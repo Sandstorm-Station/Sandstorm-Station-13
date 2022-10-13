@@ -288,7 +288,7 @@
 	name = "2maintenance loot spawner"
 	},
 /obj/item/clothing/mask/balaclava,
-/turf/open/floor/plating,
+/turf/open/floor/plasteel/damturf/damage1,
 /area/maintenance/department/crew_quarters/dorms)
 "aaE" = (
 /obj/machinery/light/small,
@@ -673,7 +673,7 @@
 /obj/structure/cable{
 	icon_state = "2-8"
 	},
-/turf/open/floor/plating,
+/turf/open/floor/plasteel,
 /area/maintenance/department/crew_quarters/dorms)
 "abH" = (
 /obj/machinery/door/firedoor,
@@ -52005,7 +52005,10 @@
 /obj/machinery/atmospherics/pipe/simple/scrubbers/hidden{
 	dir = 4
 	},
-/turf/open/floor/plating,
+/obj/machinery/light{
+	dir = 4
+	},
+/turf/open/floor/plasteel,
 /area/maintenance/department/crew_quarters/dorms)
 "epj" = (
 /obj/machinery/cryopod/tele,
@@ -52078,7 +52081,7 @@
 /obj/structure/cable{
 	icon_state = "1-4"
 	},
-/turf/open/floor/plating,
+/turf/open/floor/plasteel,
 /area/maintenance/department/crew_quarters/dorms)
 "exa" = (
 /obj/structure/table/wood,
@@ -54232,6 +54235,16 @@
 	icon_state = "platingdmg3"
 	},
 /area/maintenance/department/science)
+"hQn" = (
+/obj/structure/cable{
+	icon_state = "1-2"
+	},
+/obj/machinery/atmospherics/pipe/simple/supply/hidden,
+/obj/machinery/light{
+	dir = 4
+	},
+/turf/open/floor/plasteel,
+/area/maintenance/department/crew_quarters/dorms)
 "hQz" = (
 /obj/structure/closet/emcloset/anchored,
 /obj/structure/cable/yellow{
@@ -57569,6 +57582,7 @@
 	req_access_txt = "72"
 	},
 /obj/machinery/door/firedoor,
+/obj/effect/landmark/navigate_destination/blueshield,
 /turf/open/floor/wood,
 /area/command/blueshieldoffice)
 "mZE" = (
@@ -60125,6 +60139,13 @@
 	},
 /turf/open/floor/plating,
 /area/maintenance/department/security/brig)
+"qLu" = (
+/obj/structure/cable{
+	icon_state = "1-2"
+	},
+/obj/machinery/atmospherics/pipe/simple/supply/hidden,
+/turf/open/floor/plasteel,
+/area/maintenance/department/crew_quarters/dorms)
 "qLI" = (
 /obj/structure/table,
 /obj/item/stack/sheet/glass/fifty{
@@ -60140,6 +60161,15 @@
 	},
 /turf/open/floor/plasteel,
 /area/engineering/main)
+"qNa" = (
+/obj/structure/cable{
+	icon_state = "4-8"
+	},
+/obj/machinery/atmospherics/pipe/simple/supply/hidden{
+	dir = 4
+	},
+/turf/open/floor/plasteel/damturf,
+/area/maintenance/department/crew_quarters/dorms)
 "qOE" = (
 /obj/machinery/atmospherics/pipe/manifold/supply/hidden{
 	dir = 8
@@ -62336,6 +62366,16 @@
 /obj/machinery/atmospherics/pipe/simple/scrubbers/hidden,
 /turf/open/water/decorative,
 /area/hallway/secondary/entry)
+"uqx" = (
+/obj/structure/cable{
+	icon_state = "4-8"
+	},
+/obj/machinery/atmospherics/pipe/simple/supply/hidden{
+	dir = 4
+	},
+/obj/machinery/light/broken,
+/turf/open/floor/plating,
+/area/maintenance/department/crew_quarters/dorms)
 "uqJ" = (
 /obj/structure/cable{
 	icon_state = "4-8"
@@ -62390,6 +62430,10 @@
 	},
 /turf/open/floor/carpet,
 /area/service/lawoffice)
+"uvh" = (
+/obj/machinery/light/broken,
+/turf/open/floor/plasteel/damturf/damage1,
+/area/maintenance/department/crew_quarters/dorms)
 "uvo" = (
 /obj/effect/spawner/structure/window/reinforced,
 /obj/structure/cable{
@@ -63613,6 +63657,15 @@
 	},
 /turf/open/floor/engine,
 /area/engineering/main)
+"wgR" = (
+/obj/structure/cable{
+	icon_state = "4-8"
+	},
+/obj/machinery/atmospherics/pipe/simple/supply/hidden{
+	dir = 4
+	},
+/turf/open/floor/plasteel/damturf/damage1,
+/area/maintenance/department/crew_quarters/dorms)
 "whP" = (
 /obj/effect/turf_decal/tile/neutral,
 /obj/machinery/atmospherics/pipe/simple/supply/hidden,
@@ -64678,6 +64731,13 @@
 /obj/effect/landmark/carpspawn,
 /turf/open/space,
 /area/space/station_ruins)
+"xGi" = (
+/obj/structure/cable{
+	icon_state = "1-2"
+	},
+/obj/machinery/atmospherics/pipe/simple/supply/hidden,
+/turf/open/floor/plasteel/damturf/damage5,
+/area/maintenance/department/crew_quarters/dorms)
 "xGY" = (
 /obj/structure/table/wood,
 /obj/item/instrument/saxophone,
@@ -107219,7 +107279,7 @@ aaa
 aaa
 aaa
 aiS
-akn
+uqx
 aaF
 aaK
 aaS
@@ -108504,7 +108564,7 @@ aaa
 aaa
 aaa
 aiS
-akn
+qNa
 sbk
 aaF
 aaX
@@ -108761,8 +108821,8 @@ aaa
 aaa
 aaa
 aiS
-akn
-ajv
+wgR
+uvh
 aaF
 aaF
 aaF
@@ -109019,18 +109079,18 @@ aaa
 aaa
 aiS
 aaD
-ale
-ale
-ale
-ale
+xGi
+qLu
+qLu
+hQn
 ewt
-ale
-ale
+qLu
+qLu
 emI
-ale
+qLu
 abG
-ale
-ale
+qLu
+hQn
 vwX
 awD
 axA
