@@ -6,4 +6,3 @@
 	using = new /atom/movable/screen/navigate
 	using.screen_loc = ui_borg_navigate_menu
 	static_inventory += using
-

@@ -5,5 +5,3 @@
 /obj/structure/stairs/Destroy()
 	GLOB.stairs -= src
 	. = ..()
-
-
