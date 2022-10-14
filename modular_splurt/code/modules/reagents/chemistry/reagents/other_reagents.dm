@@ -9,12 +9,12 @@
 /datum/reagent/consumable/semen/on_mob_life(mob/living/carbon/M)
 	. = ..()
 	if(HAS_TRAIT(M,TRAIT_SUCCUBUS))
-		M.adjust_nutrition(0.5)
+		M.adjust_nutrition(1)
 
 /datum/reagent/consumable/milk/on_mob_life(mob/living/carbon/M)
 	. = ..()
 	if(HAS_TRAIT(M,TRAIT_INCUBUS))
-		M.adjust_nutrition(0.5)
+		M.adjust_nutrition(1.5)
 
 /datum/reagent/blood/on_mob_life(mob/living/carbon/C)
 	. = ..()
