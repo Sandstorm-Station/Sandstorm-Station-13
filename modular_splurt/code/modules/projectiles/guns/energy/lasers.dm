@@ -48,3 +48,18 @@
 	time = 50
 	category = CAT_WEAPONRY
 	subcategory = CAT_WEAPON
+
+/obj/item/gun/energy/e_gun/corpus
+	name = "Dera"
+	desc = "An exotic laser rifle of Corpus make, someone's scrawled the word 'GROFIT' on the stock."
+	icon = 'modular_splurt/icons/obj/guns/energy.dmi'
+	icon_state = "dera"
+	item_state = "dera"
+	lefthand_file = 'modular_splurt/icons/mob/inhands/weapons/guns_lefthand.dmi'
+	righthand_file = 'modular_splurt/icons/mob/inhands/weapons/guns_righthand.dmi'
+	w_class = WEIGHT_CLASS_NORMAL
+	cell_type = /obj/item/stock_parts/cell{charge = 700; maxcharge = 700}
+	ammo_type = list(/obj/item/ammo_casing/energy/disabler, /obj/item/ammo_casing/energy/laser)
+	weapon_weight = WEAPON_LIGHT
+	slot_flags = ITEM_SLOT_BACK
+	can_flashlight = 0
