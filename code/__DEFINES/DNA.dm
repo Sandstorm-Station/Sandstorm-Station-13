@@ -185,6 +185,7 @@
 #define ORGAN_SLOT_BREASTS "breasts"
 #define ORGAN_SLOT_BUTT "butt"
 #define ORGAN_SLOT_BELLY "belly"
+#define ORGAN_SLOT_ANUS "anus"
 
 ////organ defines
 #define STANDARD_ORGAN_THRESHOLD 	100

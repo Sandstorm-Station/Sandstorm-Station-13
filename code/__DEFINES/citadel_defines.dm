@@ -7,14 +7,15 @@
 
 //organ defines
 #define BUTT_LAYER_INDEX		1
-#define VAGINA_LAYER_INDEX		2
-#define TESTICLES_LAYER_INDEX	3
-#define GENITAL_LAYER_INDEX		4
-#define PENIS_LAYER_INDEX		5
-#define BELLY_LAYER_INDEX		6
-#define BREASTS_LAYER_INDEX		7
+#define ANUS_LAYER_INDEX		2
+#define VAGINA_LAYER_INDEX		3
+#define TESTICLES_LAYER_INDEX	4
+#define GENITAL_LAYER_INDEX		5
+#define PENIS_LAYER_INDEX		6
+#define BELLY_LAYER_INDEX		7
+#define BREASTS_LAYER_INDEX		8
 
-#define GENITAL_LAYER_INDEX_LENGTH 7 //keep it updated with each new index added, thanks.
+#define GENITAL_LAYER_INDEX_LENGTH 8 //keep it updated with each new index added, thanks.
 
 //genital flags
 #define GENITAL_BLACKLISTED		(1<<0) //for genitals that shouldn't be added to GLOB.genitals_list.
@@ -77,6 +78,8 @@
 #define BELLY_SIZE_MIN		0
 #define BELLY_SIZE_DEF		1
 #define BELLY_SIZE_MAX		10
+
+#define DEF_ANUS_SHAPE "donut"
 
 //visibility toggles defines to avoid errors typos code errors.
 #define GEN_VISIBLE_ALWAYS "Always visible"

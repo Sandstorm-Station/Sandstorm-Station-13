@@ -213,6 +213,9 @@ GLOBAL_LIST_EMPTY(preferences_datums)
 "butt_color" = "ffffff",
 "butt_size" = BUTT_SIZE_DEF,
 "has_belly" = FALSE,
+"has_anus" = FALSE,
+"anus_color" = "ffffff",
+"anus_shape" = DEF_ANUS_SHAPE,
 "belly_color" = "ffffff",
 "belly_size" = BELLY_SIZE_DEF,
 "balls_visibility"  = GEN_VISIBLE_NO_UNDIES,
@@ -221,12 +224,14 @@ GLOBAL_LIST_EMPTY(preferences_datums)
 "vag_visibility"   = GEN_VISIBLE_NO_UNDIES,
 "butt_visibility" = GEN_VISIBLE_NO_UNDIES,
 "belly_visibility" = GEN_VISIBLE_NO_UNDIES,
+"anus_visibility" = GEN_VISIBLE_NO_UNDIES,
 "cock_stuffing" = FALSE,
 "balls_stuffing" = FALSE,
 "vag_stuffing" = FALSE,
 "breasts_stuffing" = FALSE,
 "butt_stuffing" = FALSE,
 "belly_stuffing" = FALSE,
+"anus_stuffing" = FALSE,
 "inert_eggs" = FALSE,
 "ipc_screen" = "Sunburst",
 "ipc_antenna" = "None",
@@ -974,6 +979,16 @@ GLOBAL_LIST_EMPTY(preferences_datums)
 					dat += "<b>Butt Size:</b><a style='display:block;width:50px' href='?_src_=prefs;preference=butt_size;task=input'>[features["butt_size"]]</a>"
 					dat += "<b>Butt Visibility:</b><a style='display:block;width:100px' href='?_src_=prefs;preference=butt_visibility;task=input'>[features["butt_visibility"]]</a>"
 					dat += "<b>Egg Stuffing:</b><a style='display:block;width:50px' href='?_src_=prefs;preference=butt_stuffing'>[features["butt_stuffing"] == TRUE ? "Yes" : "No"]</a>"
+					dat += "<b>Butthole Sprite:</b><a style='display:block;width:50px' href='?_src_=prefs;preference=has_anus'>[features["has_anus"] == TRUE ? "Yes" : "No"]</a>"
+					if(features["has_anus"])
+						dat += "<b>Butthole Color:</b></a><BR>"
+						if(pref_species.use_skintones && features["genitals_use_skintone"] == TRUE)
+							dat += "<span style='border: 1px solid #161616; background-color: [SKINTONE2HEX(skin_tone)];'><font color='[color_hex2num(SKINTONE2HEX(skin_tone)) < 200 ? "FFFFFF" : "000000"]'>[SKINTONE2HEX(skin_tone)]</font></span>(Skin tone overriding)<br>"
+						else
+							dat += "<span style='border: 1px solid #161616; background-color: #[features["anus_color"]];'><font color='[color_hex2num(features["anus_color"]) < 200 ? "FFFFFF" : "000000"]'>#[features["anus_color"]]</font></span> <a href='?_src_=prefs;preference=anus_color;task=input'>Change</a><br>"
+							dat += "<b>Butthole Shape:</b> <a style='display:block;width:120px' href='?_src_=prefs;preference=anus_shape;task=input'>[features["anus_shape"]]</a>"
+						dat += "<b>Butthole Visibility:</b><a style='display:block;width:100px' href='?_src_=prefs;preference=anus_visibility;task=input'>[features["anus_visibility"]]</a>"
+						dat += "<b>Egg Stuffing:</b><a style='display:block;width:50px' href='?_src_=prefs;preference=anus_stuffing'>[features["anus_stuffing"] == TRUE ? "Yes" : "No"]</a>"
 				dat += "</td>"
 				dat += APPEARANCE_CATEGORY_COLUMN
 				dat += "<h3>Belly</h3>"
@@ -2851,6 +2866,23 @@ GLOBAL_LIST_EMPTY(preferences_datums)
 						else
 							to_chat(user,"<span class='danger'>Invalid color. Your color is not bright enough.</span>")
 
+				if("anus_color")
+					var/new_anuscolor = input(user, "Butthole color:", "Character Preference", "#"+features["anus_color"]) as color|null
+					if(new_anuscolor)
+						var/temp_hsv = RGBtoHSV(new_anuscolor)
+						if(new_anuscolor == "#000000")
+							features["anus_color"] = pref_species.default_color
+						else if(ReadHSV(temp_hsv)[3] >= ReadHSV(MINIMUM_MUTANT_COLOR)[3])
+							features["anus_color"] = sanitize_hexcolor(new_anuscolor, 6)
+						else
+							to_chat(user, "<span class='danger'>Invalid color. Your color is not bright enough.</span>")
+
+				if("anus_shape")
+					var/new_shape
+					new_shape = input(user, "Butthole Shape", "Character Preference") as null|anything in GLOB.anus_shapes_list
+					if(new_shape)
+						features["anus_shape"] = new_shape
+
 				if("belly_size")
 					var/min_belly = CONFIG_GET(number/belly_min_size_prefs)
 					var/max_belly = CONFIG_GET(number/belly_max_size_prefs)
@@ -2869,6 +2901,11 @@ GLOBAL_LIST_EMPTY(preferences_datums)
 					var/n_vis = input(user, "Butt Visibility", "Character Preference") as null|anything in CONFIG_GET(keyed_list/safe_visibility_toggles)
 					if(n_vis)
 						features["butt_visibility"] = n_vis
+
+				if("anus_visibility")
+					var/n_vis = input(user, "Butthole Visibility", "Character Preference") as null|anything in CONFIG_GET(keyed_list/safe_visibility_toggles)
+					if(n_vis)
+						features["anus_visibility"] = n_vis
 
 				if("belly_visibility")
 					var/n_vis = input(user, "Belly Visibility", "Character Preference") as null|anything in CONFIG_GET(keyed_list/safe_visibility_toggles)
@@ -3208,6 +3245,10 @@ GLOBAL_LIST_EMPTY(preferences_datums)
 					features["has_womb"] = !features["has_womb"]
 				if("has_butt")
 					features["has_butt"] = !features["has_butt"]
+					if(features["has_butt"] == FALSE)
+						features["has_anus"] = FALSE
+				if("has_anus")
+					features["has_anus"] = !features["has_anus"]
 				if("widescreenpref")
 					widescreenpref = !widescreenpref
 					user.client.view_size.setDefault(getScreenSize(widescreenpref))
@@ -3223,6 +3264,8 @@ GLOBAL_LIST_EMPTY(preferences_datums)
 					features["breasts_stuffing"] = !features["breasts_stuffing"]
 				if("butt_stuffing")
 					features["butt_stuffing"] = !features["butt_stuffing"]
+				if("anus_stuffing")
+					features["anus_stuffing"] = !features["anus_stuffing"]
 				if("belly_stuffing")
 					features["belly_stuffing"] = !features["belly_stuffing"]
 				if("inert_eggs")

@@ -3,9 +3,9 @@
 	desc 					= "You see a belly on their midsection."
 	icon_state 				= "belly"
 	icon 					= 'icons/obj/genitals/breasts.dmi' // I have no idea why it's set up like this on hyper
-	zone 					= "chest"
+	zone 					= BODY_ZONE_CHEST
 	slot 					= ORGAN_SLOT_BELLY
-	w_class 				= 3
+	w_class 				= WEIGHT_CLASS_NORMAL
 	size 					= 0
 	var/size_name 			= "flat"
 	var/statuscheck			= FALSE

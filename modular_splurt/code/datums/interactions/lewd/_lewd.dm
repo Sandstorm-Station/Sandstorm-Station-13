@@ -1,6 +1,11 @@
 /mob/living
 	var/has_belly = FALSE
 
+/mob/living/has_anus(visibility = REQUIRE_ANY)
+	if(getorganslot(ORGAN_SLOT_ANUS))
+		return has_genital(ORGAN_SLOT_ANUS, visibility)
+	. = ..()
+
 /mob/living/moan()
 	var/moaned = lastmoan
 	var/miming = mind ? mind?.miming : FALSE

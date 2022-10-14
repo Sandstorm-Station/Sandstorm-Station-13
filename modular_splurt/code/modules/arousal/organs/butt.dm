@@ -1,3 +1,23 @@
+/obj/item/organ/genital/butt
+	linked_organ_slot = ORGAN_SLOT_ANUS
+
+/obj/item/organ/genital/butt/update_size()
+	if(!linked_organ)
+		return ..()
+
+	linked_organ.size = size
+	linked_organ.update()
+	if(size < 0)
+		QDEL_IN(linked_organ, 1)
+	. = ..()
+
+/obj/item/organ/genital/butt/toggle_visibility(visibility, update)
+	. = ..()
+	var/obj/item/organ/genital/anus/butthole = linked_organ
+	if(!butthole?.is_exposed() || is_exposed())
+		return .
+	linked_organ.toggle_visibility(visibility)
+
 /obj/item/organ/genital/butt/get_features(mob/living/carbon/human/H)
 	. = ..()
 	original_fluid_id = fluid_id
