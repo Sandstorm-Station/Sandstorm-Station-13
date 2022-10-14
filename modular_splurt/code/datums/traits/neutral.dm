@@ -484,7 +484,7 @@
 		var/obj/item/organ/genital/penis/P = H.getorganslot(ORGAN_SLOT_PENIS)
 		old_dick = P.shape
 		old_dick_color = P.color
-	prim_col = addtext("#",H.dna.features["mcolor"])
+	prim_col = "#[H.dna.features["mcolor"]]"
 	if(H.has_breasts())
 		var/obj/item/organ/genital/breasts/B = H.getorganslot(ORGAN_SLOT_BREASTS)
 		old_boob_color = B.color
