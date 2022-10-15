@@ -472,13 +472,14 @@
 			//Here we check now for both the garlic cloves on the neck and for blood in the victims bloodstream.
 			if(!blood_sucking_checks(victim, TRUE, TRUE))
 				return
-			H.visible_message("<span class='danger'>[H] Bites down on [victim]'s neck!</span>")
+			H.visible_message("<span class='danger'>[H] bites down on [victim]'s neck!</span>")
+			to_chat(victim, "<span class='userdanger'>[H] is draining your blood!</span>")
 			if(!do_after(H, 30, target = victim))
 				return
 			var/blood_volume_difference = BLOOD_VOLUME_MAXIMUM - H.blood_volume //How much capacity we have left to absorb blood
 			var/drained_blood = min(victim.blood_volume, BLOOD_DRAIN_NUM, blood_volume_difference)
 			H.reagents.add_reagent(/datum/reagent/blood/, drained_blood)
-			to_chat(victim, "<span class='danger'>[H] is draining your blood!</span>")
+			to_chat(victim, "<span class='danger'>[H] has taken some of your blood!</span>")
 			to_chat(H, "<span class='notice'>You drain some blood!</span>")
 			playsound(H, 'sound/items/drink.ogg', 30, 1, -2)
 			victim.blood_volume = clamp(victim.blood_volume - drained_blood, 0, BLOOD_VOLUME_MAXIMUM)
