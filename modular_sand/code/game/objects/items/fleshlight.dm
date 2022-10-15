@@ -120,51 +120,58 @@
 	var/target_message = ""
 	var/user_lust_amt = NONE
 	var/target_lust_amt = NONE
-	var/obj/item/organ/genital/P
 	var/target
 	var/mob/living/carbon/human/portal_target = ishuman(portalunderwear.loc) && (portalunderwear.current_equipped_slot & (ITEM_SLOT_UNDERWEAR | ITEM_SLOT_MASK)) ? portalunderwear.loc : null
-	var/obj/item/organ/genital/penis/T = portal_target.getorganslot(ORGAN_SLOT_PENIS)
+	
+	// This list is structured as [M's longname, M's shortname, wearer's longname, wearer's shortname]
+	var/penis_names = list()
+	for(var/mob/living/carbon/human/person in list(M, portal_target))
+		if(person.has_penis())
+			var/obj/item/organ/genital/penis/person_penis = person.getorganslot(ORGAN_SLOT_PENIS)
+			LAZYADD(penis_names, "[person_penis.length]-inch [lowertext(person_penis.shape)]")
+			LAZYADD(penis_names, "penis")
+		else if(person.has_strapon())
+			var/obj/item/clothing/underwear/briefs/strapon/person_strapon = person.get_strapon()
+			LAZYADD(penis_names, "[GLOB.dildo_size_names[person_strapon.dildo_size]] [person_strapon.dildo_shape]")
+			LAZYADD(penis_names, "strapon")
+		else
+			LAZYADD(penis_names, "none")
+			LAZYADD(penis_names, "none")
+	
 	if(ishuman(M) && (M?.client?.prefs?.toggles & VERB_CONSENT) && useable) // I promise all those checks are worth it!
 		switch(user.zone_selected)
 			if(BODY_ZONE_PRECISE_GROIN)
 				switch(targetting)
 					if(CUM_TARGET_PENIS)
-						// TODO: finish strapon interaction
-						if(M.has_penis(REQUIRE_EXPOSED))
-							var/obj/item/organ/genital/penis/temp = M.getorganslot(ORGAN_SLOT_PENIS)
+						if(M.has_penis(REQUIRE_EXPOSED) || M.has_strapon(REQUIRE_EXPOSED))
 							switch(portalunderwear.targetting)
 								if(CUM_TARGET_PENIS)
-									user_message = (user == M) ? "frots with the [temp.shape] [src]" : "forces \the [M] to frot with \the [temp.shape] [src]"
+									user_message = (user == M) ? "frots with the [penis_names[3]] [name]" : "forces \the [M] to frot with the [penis_names[3]] [name]"
 									target_message = "frot with you"
-									P = temp
 									target = CUM_TARGET_PENIS
 									user_lust_amt = NORMAL_LUST
 									target_lust_amt = NORMAL_LUST
 								if(CUM_TARGET_VAGINA)
 									user_message = (user == M) ? "fucks \the [src]'s pussy" : "forces \the [M] to fuck \the [src]'s pussy"
-									target_message = "fuck your pussy with their [temp.length]-inch [lowertext(temp.shape)] penis"
-									P = temp
+									target_message = "fuck your pussy with their [penis_names[1]] [penis_names[2]]"
 									target = CUM_TARGET_PENIS
 									user_lust_amt = NORMAL_LUST
 									target_lust_amt = NORMAL_LUST
 								if(CUM_TARGET_ANUS)
 									user_message = (user == M) ? "fucks \the [src] anally" : "forces \the [M] to fuck \the [src] anally"
-									target_message = "fuck you anally with their [temp.length]-inch [lowertext(temp.shape)] penis"
-									P = temp
+									target_message = "fuck you anally with their [penis_names[1]] [penis_names[2]]"
 									target = CUM_TARGET_PENIS
 									user_lust_amt = NORMAL_LUST
 									target_lust_amt = NORMAL_LUST
 								if(CUM_TARGET_MOUTH)
 									user_message = (user == M) ? "fucks \the [src]'s mouth" : "forces \the [M] to fuck \the [src]'s mouth"
-									target_message = "fuck your mouth with their [temp.length]-inch [lowertext(temp.shape)] penis"
-									P = temp
+									target_message = "fuck your mouth with their [penis_names[1]] [penis_names[2]]"
 									target = CUM_TARGET_PENIS
 									user_lust_amt = NORMAL_LUST
 									target_lust_amt = LOW_LUST
 								if(CUM_TARGET_URETHRA)
 									user_message = (user == M) ? "fucks \the [src]'s urethra" : "forces \the [M] to fuck \the [src]'s urethra"
-									target_message = "fuck your urethra with their [temp.length]-inch [lowertext(temp.shape)] penis"
-									P = temp
+									target_message = "fuck your urethra with their [penis_names[1]] [penis_names[2]]"
 									target = CUM_TARGET_PENIS
 									user_lust_amt = NORMAL_LUST
 									target_lust_amt = LOW_LUST
@@ -174,30 +181,26 @@
 						if(M.has_vagina(REQUIRE_EXPOSED))
 							switch(portalunderwear.targetting)
 								if(CUM_TARGET_PENIS)
-									user_message = (user == M) ? "fucks the [T.length]-inch [lowertext(T.shape)] [src]" : "fucks \the [M] with \the [T.length]-inch [lowertext(T.shape)] [src]"
-									target_message = "fuck your dick with their pussy"
-									P = M.getorganslot(ORGAN_SLOT_VAGINA)
+									user_message = (user == M) ? "fucks the [penis_names[3]] [name]" : "fucks \the [M] with the [penis_names[3]] [name]"
+									target_message = "fuck your [penis_names[4]] with their pussy"
 									target = CUM_TARGET_VAGINA
 									user_lust_amt = NORMAL_LUST
 									target_lust_amt = NORMAL_LUST
 								if(CUM_TARGET_VAGINA)
 									user_message = (user == M) ? "grinds [M.p_their()] pussy into \the [src]'s pussy" : "rubs \the [src]'s pussy against \the [M]'s pussy"
 									target_message = "grind their pussy into yours"
-									P = M.getorganslot(ORGAN_SLOT_VAGINA)
 									target = CUM_TARGET_VAGINA
 									user_lust_amt = NORMAL_LUST
 									target_lust_amt = NORMAL_LUST
 								if(CUM_TARGET_ANUS)
 									user_message = (user == M) ? "grinds [M.p_their()] pussy into \the [src]'s anus" : "rubs \the [src]'s anus against \the [M]'s pussy"
 									target_message = "grind their pussy into your anus"
-									P = M.getorganslot(ORGAN_SLOT_VAGINA)
 									target = CUM_TARGET_VAGINA
 									user_lust_amt = LOW_LUST
 									target_lust_amt = LOW_LUST
 								if(CUM_TARGET_MOUTH)
 									user_message = (user == M) ? "grinds [M.p_their()] pussy into \the [src]'s mouth" : "rubs \the [src]'s mouth against \the [M]'s pussy"
 									target_message = "grind their pussy into your mouth"
-									P = M.getorganslot(ORGAN_SLOT_VAGINA)
 									target = CUM_TARGET_VAGINA
 									user_lust_amt = NORMAL_LUST
 									target_lust_amt = LOW_LUST
@@ -205,7 +208,6 @@
 								if(CUM_TARGET_URETHRA)
 									user_message = (user == M) ? "fucking urethra" : "force someone to fuck urethra"
 									target_message = "urethra fucked by pussy"
-									P = temp
 									target = CUM_TARGET_VAGINA
 									user_lust_amt = NORMAL_LUST
 									target_lust_amt = LOW_LUST
@@ -216,8 +218,8 @@
 						if(M.has_anus(REQUIRE_EXPOSED))
 							switch(portalunderwear.targetting)
 								if(CUM_TARGET_PENIS)
-									user_message = (user == M) ? "uses the [T.length]-inch [lowertext(T.shape)] [src] to fuck [M.p_them()]self anally" : "fucks \the [M] anally with \the [T.length]-inch [lowertext(T.shape)] [src]"
-									target_message = "fuck your penis with an anus"
+									user_message = (user == M) ? "uses the [penis_names[3]] [name] to fuck [M.p_them()]self anally" : "fucks \the [M] anally with the [penis_names[3]] [name]"
+									target_message = "fuck your [penis_names[4]] with an anus"
 									target = CUM_TARGET_ANUS
 									user_lust_amt = NORMAL_LUST
 									target_lust_amt = NORMAL_LUST
@@ -243,7 +245,6 @@
 								if(CUM_TARGET_URETHRA)
 									user_message = (user == M) ? "fucking urethra" : "force someone to fuck urethra"
 									target_message = "urethra fucked by ass"
-									P = temp
 									target = CUM_TARGET_ANUS
 									user_lust_amt = NORMAL_LUST
 									target_lust_amt = LOW_LUST
@@ -251,7 +252,7 @@
 						else
 							to_chat(user, "<span class='warning'>The anus is covered or there is none!</span>")
 					if(CUM_TARGET_URETHRA)
-						if(M.has_penis(REQUIRE_EXPOSED))
+						if(M.has_penis(REQUIRE_EXPOSED) || M.has_strapon(REQUIRE_EXPOSED))
 							switch(portalunderwear.targetting)
 								if(CUM_TARGET_PENIS)
 									user_message = (user == M) ? "fuck your urethra with dick" : "fuck someone elses urethra with dick"
@@ -281,7 +282,6 @@
 								if(CUM_TARGET_URETHRA)
 									user_message = (user == M) ? "fuck your urethra with partner urethra" : "fuck someone elses urethra with partner urethra"
 									target_message = "partner urethra is fucked by urethra"
-									P = temp
 									target = CUM_TARGET_URETHRA
 									user_lust_amt = NORMAL_LUST
 									target_lust_amt = LOW_LUST
@@ -292,8 +292,8 @@
 				if((M.has_mouth() && !M.is_mouth_covered()))
 					switch(portalunderwear.targetting)
 						if(CUM_TARGET_PENIS)
-							user_message = (user == M) ? "sucks on the [T.length]-inch [lowertext(T.shape)] [src]" : "forces \the [M] to suck on \the [T.length]-inch [lowertext(T.shape)] [src]"
-							target_message = "suck on your dick"
+							user_message = (user == M) ? "sucks on the [penis_names[3]] [name]" : "forces \the [M] to suck on the [penis_names[3]] [name]"
+							target_message = "suck on your [penis_names[4]]"
 							target = CUM_TARGET_MOUTH
 							user_lust_amt = LOW_LUST
 							target_lust_amt = NORMAL_LUST
@@ -319,7 +319,6 @@
 						if(CUM_TARGET_URETHRA)
 							user_message = (user == M) ? "fucking urethra" : "force someone to fuck urethra"
 							target_message = "urethra fucked by mouth"
-							P = temp
 							target = CUM_TARGET_MOUTH
 							user_lust_amt = NORMAL_LUST
 							target_lust_amt = LOW_LUST
@@ -338,8 +337,8 @@
 					if(can_interact)
 						switch(portalunderwear.targetting)
 							if(CUM_TARGET_PENIS)
-								user_message = (user == M) ? "jerks off the [T.length]-inch [lowertext(T.shape)] [src]" : "forces \the [M] to jerk off \the [T.length]-inch [lowertext(T.shape)] [src]"
-								target_message = "jerk on your dick"
+								user_message = (user == M) ? "jerks off the [penis_names[3]] [name]" : "forces \the [M] to jerk off the [penis_names[3]] [name]"
+								target_message = "jerk you off"
 								target = CUM_TARGET_HAND
 								user_lust_amt = NONE
 								target_lust_amt = NORMAL_LUST
@@ -365,7 +364,6 @@
 							if(CUM_TARGET_URETHRA)
 								user_message = (user == M) ? "fucking urethra" : "force someone to fuck urethra"
 								target_message = "urethra fucked by hand"
-								P = temp
 								target = CUM_TARGET_HAND
 								user_lust_amt = NORMAL_LUST
 								target_lust_amt = LOW_LUST
@@ -384,8 +382,8 @@
 					if(can_interact)
 						switch(portalunderwear.targetting)
 							if(CUM_TARGET_PENIS)
-								user_message = (user == M) ? "rubs the [T.length]-inch [lowertext(T.shape)] [src] with [M.p_their()] foot" : "rubs \the [T.length]-inch [lowertext(T.shape)] [src] against \the [M]'s foot"
-								target_message = "rub your dick with their foot"
+								user_message = (user == M) ? "rubs the [penis_names[3]] [name] with [M.p_their()] foot" : "rubs the [penis_names[3]] [name] against \the [M]'s foot"
+								target_message = "rub your [penis_names[4]] with their foot"
 								target = CUM_TARGET_FEET
 								user_lust_amt = NONE
 								target_lust_amt = NORMAL_LUST
@@ -411,7 +409,6 @@
 							if(CUM_TARGET_URETHRA)
 								user_message = (user == M) ? "fucking urethra" : "force someone to fuck urethra"
 								target_message = "urethra fucked by feet"
-								P = temp
 								target = CUM_TARGET_FEET
 								user_lust_amt = NORMAL_LUST
 								target_lust_amt = LOW_LUST
@@ -423,25 +420,24 @@
 	if(user_message)
 		if(portal_target && (portal_target?.client?.prefs.toggles & VERB_CONSENT || !portal_target.ckey))
 			user.visible_message("<span class='lewd'>[user] [user_message].</span>")
-			if(M.handle_post_sex(user_lust_amt, target, portal_target))
+			if(M.can_penetrating_genital_cum() && M.handle_post_sex(user_lust_amt, target, portal_target))
 				switch(target)
 					if(CUM_TARGET_PENIS)
-						var/obj/item/organ/genital/penis/temp = P
 						switch(portalunderwear.targetting)
 							if(CUM_TARGET_PENIS)
-								to_chat(portal_target, "<span class='userlove'>You feel a [temp.shape] penis push harder against yours and cum!</span>")
+								to_chat(portal_target, "<span class='userlove'>You feel a [penis_names[2]] push harder against yours and cum!</span>")
 							if(CUM_TARGET_VAGINA, CUM_TARGET_ANUS, CUM_TARGET_MOUTH)
-								to_chat(portal_target, "<span class='userlove'>You feel a [temp.shape] penis of [temp.length] inches go deep into your [portalunderwear.targetting] and cum!</span>")
+								to_chat(portal_target, "<span class='userlove'>You feel a [penis_names[2]] go deep into your [portalunderwear.targetting] and cum!</span>")
 							if(CUM_TARGET_URETHRA)
-								to_chat(portal_target, "<span class='userlove'>penis cumming in urethra</span>")
+								to_chat(portal_target, "<span class='userlove'>[penis_names[2]] cumming in urethra</span>")
 					if(CUM_TARGET_VAGINA)
 						switch(portalunderwear.targetting)
 							if(CUM_TARGET_PENIS, CUM_TARGET_VAGINA, CUM_TARGET_ANUS, CUM_TARGET_MOUTH)
-								to_chat(portal_target, "<span class='userlove'>You feel a [P.shape] vagina squirting on your [portalunderwear.targetting]!</span>")
+								to_chat(portal_target, "<span class='userlove'>You feel a vagina squirting on your [portalunderwear.targetting]!</span>")
 					if(CUM_TARGET_ANUS)
 						switch(portalunderwear.targetting)
 							if(CUM_TARGET_PENIS)
-								to_chat(portal_target, "<span class='userlove'>You feel an anus constricting around your penis!</span>")
+								to_chat(portal_target, "<span class='userlove'>You feel an anus constricting around your [penis_names[4]]!</span>")
 							if(CUM_TARGET_VAGINA, CUM_TARGET_ANUS)
 								to_chat(portal_target, "<span class='userlove'>You feel an anus constricting around nothing while rubbing against it!</span>")
 							if(CUM_TARGET_MOUTH)
@@ -449,7 +445,7 @@
 					if(CUM_TARGET_URETHRA)
 						switch(portalunderwear.targetting)
 							if(CUM_TARGET_PENIS)
-								to_chat(portal_target, "<span class='userlove'>urethra cumming around penis</span>")
+								to_chat(portal_target, "<span class='userlove'>urethra cumming around [penis_names[4]]</span>")
 					if(CUM_TARGET_MOUTH)
 						switch(portalunderwear.targetting)
 							if(CUM_TARGET_PENIS, CUM_TARGET_VAGINA, CUM_TARGET_ANUS)
@@ -691,11 +687,11 @@
 					to_chat(human, "<span class='warning'>The anus is covered or there is none!</span>")
 					return FALSE
 			if(CUM_TARGET_PENIS)
-				if(!human.has_penis(REQUIRE_EXPOSED))
+				if(!human.has_penis(REQUIRE_EXPOSED) && !human.has_strapon(REQUIRE_EXPOSED))
 					to_chat(human, "<span class='warning'>The penis is covered or there is none!</span>")
 					return FALSE
 			if(CUM_TARGET_URETHRA)
-				if(!human.has_penis(REQUIRE_EXPOSED))
+				if(!human.has_penis(REQUIRE_EXPOSED) && !human.has_strapon(REQUIRE_EXPOSED))
 					to_chat(human, "<span class='warning'>The urethra is covered or there is none!</span>")
 					return FALSE
 			if(CUM_TARGET_MOUTH)
