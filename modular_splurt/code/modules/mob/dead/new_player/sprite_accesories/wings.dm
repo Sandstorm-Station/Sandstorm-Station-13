@@ -166,6 +166,3 @@
 	icon_state = "angelmoth"
 	icon = 'modular_splurt/icons/mob/wings.dmi'
 	upgrade_to = SPECIES_WINGS_MOTH
-
-//Aero wings
-
