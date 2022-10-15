@@ -141,3 +141,29 @@
 	icon_state = "angelmoth"
 	icon = 'modular_splurt/icons/mob/wings.dmi'
 	upgrade_to = SPECIES_WINGS_MOTH
+
+//Aero wings
+/datum/sprite_accessory/aero_wings/delta
+	name = "Delta"
+	icon_state = "delta"
+	icon = 'modular_splurt/icons/mob/wings.dmi'
+
+/datum/sprite_accessory/aero_wings/straight
+	name = "Straight"
+	icon_state = "straight"
+	icon = 'modular_splurt/icons/mob/wings.dmi'
+
+/datum/sprite_accessory/aero_wings/variable
+	name = "Variable"
+	icon_state = "variable"
+	icon = 'modular_splurt/icons/mob/wings.dmi'
+
+/datum/sprite_accessory/aero_wings/swept
+	name = "Swept Forward"
+	icon_state = "swept"
+	icon = 'modular_splurt/icons/mob/wings.dmi'
+
+/datum/sprite_accessory/aero_wings/flyingwing
+	name = "Flying Wing"
+	icon_state = "flyingwing"
+	icon = 'modular_splurt/icons/mob/wings.dmi'

@@ -261,6 +261,26 @@
 	icon_state = "snagbackplate"
 	upgrade_to = list()
 
+/datum/sprite_accessory/deco_wings/delta
+	name = "Delta"
+	icon_state = "delta"
+
+/datum/sprite_accessory/deco_wings/straight
+	name = "Straight"
+	icon_state = "straight"
+
+/datum/sprite_accessory/deco_wings/variable
+	name = "Variable"
+	icon_state = "variable"
+
+/datum/sprite_accessory/deco_wings/swept
+	name = "Swept Forward"
+	icon_state = "swept"
+
+/datum/sprite_accessory/deco_wings/flyingwing
+	name = "Flying Wing"
+	icon_state = "flyingwing"
+
 //moth wings
 
 /datum/sprite_accessory/deco_wings/atlas
