@@ -408,16 +408,21 @@
 	var/prim_col
 	var/old_boob = null
 	var/old_boob_color = null
+	var/old_vag = null
+	var/old_vag_color = null
 
 /datum/action/werewolf/Trigger()
 	. = ..()
 	var/mob/living/carbon/human/H = owner
 	var/obj/item/organ/genital/penis/P = null
 	var/obj/item/organ/genital/breasts/B = null
+		var/obj/item/organ/genital/vagina/V = null
 	if(H.has_penis())
 		P = H.getorganslot(ORGAN_SLOT_PENIS)
 	if(H.has_breasts())
 		B = H.getorganslot(ORGAN_SLOT_BREASTS)
+	if(H.has_vagina())
+		B = H.getorganslot(ORGAN_SLOT_VAGINA)
 	if(transformed == 0) // transform them
 		H.visible_message("<span class='danger'>[H] transforms into an anthropomorphic wolf!</span>")
 		transformed = 1
@@ -445,6 +450,10 @@
 			P.color = "#ff7c80"
 			P.update()
 			P.update_size()
+		if(H.has_vagina())
+			V.shape = "Furred"
+			V.color = prim_col
+			V.update()
 	else // untransform them
 		transformed = 0
 		H.visible_message("<span class='danger'>[H] transforms back into what they were before they were a wolf</span>")
@@ -470,6 +479,11 @@
 			P.color = old_dick_color
 			P.update()
 			P.update_size()
+		if(H.has_vagina())
+			V.shape = old_vag
+			V.color = old_vag_color
+			V.update()
+			V.update_size()
 
 /datum/action/werewolf/Grant()// on grant sets some variables
 	. = ..()
@@ -488,3 +502,7 @@
 	if(H.has_breasts())
 		var/obj/item/organ/genital/breasts/B = H.getorganslot(ORGAN_SLOT_BREASTS)
 		old_boob_color = B.color
+	if(H.has_vagina())
+		var/obj/item/organ/genital/vagina/V = H.getorganslot(ORGAN_SLOT_VAGINA)
+		old_vag = V.shape
+		old_vag_color = V.color
