@@ -3712,10 +3712,6 @@
 	},
 /turf/open/floor/wood,
 /area/eventmap/inside)
-"alc" = (
-/obj/machinery/computer/bounty,
-/turf/open/floor/wood,
-/area/eventmap/inside)
 "ald" = (
 /obj/machinery/computer/cargo/request,
 /turf/open/floor/wood,
@@ -4970,6 +4966,14 @@
 /area/eventmap/inside)
 "aoI" = (
 /obj/structure/life_candle,
+/turf/open/floor/wood,
+/area/eventmap/inside)
+"aoJ" = (
+/obj/vehicle/sealed/mecha/working/ripley/deathripley{
+	equipment_disabled = 1;
+	light_color = "#FAA019";
+	lights_power = 3
+	},
 /turf/open/floor/wood,
 /area/eventmap/inside)
 "aoK" = (
@@ -12407,16 +12411,6 @@
 	},
 /turf/open/floor/plasteel,
 /area/eventmap/mountaininside)
-"aJT" = (
-/obj/machinery/computer/bounty{
-	dir = 8
-	},
-/obj/structure/cable/white{
-	icon_state = "1-2"
-	},
-/obj/effect/turf_decal/delivery,
-/turf/open/floor/plasteel,
-/area/eventmap/inside)
 "aJU" = (
 /turf/open/floor/spooktime/beach/coasts/innerE,
 /area/eventmap/outside)
@@ -14174,15 +14168,6 @@
 	dir = 1
 	},
 /turf/open/floor/wood/damturf/broken3,
-/area/eventmap/inside)
-"aOT" = (
-/obj/structure/cable/white{
-	icon_state = "4-8"
-	},
-/obj/machinery/computer/bounty{
-	dir = 1
-	},
-/turf/open/floor/wood,
 /area/eventmap/inside)
 "aOU" = (
 /obj/structure/cable/white{
@@ -16730,34 +16715,33 @@
 	},
 /turf/open/floor/plasteel,
 /area/eventmap/outside)
-"blY" = (
-/obj/structure/sign/poster/contraband/yes_erp,
-/turf/closed/wall/mineral/wood,
-/area/eventmap/mountaininside)
-"bBe" = (
-/obj/structure/sign/poster/contraband/yes_erp,
-/turf/closed/wall/mineral/wood,
-/area/eventmap/inside)
-"lEk" = (
-/obj/vehicle/sealed/mecha/working/ripley/deathripley{
-	equipment_disabled = 1;
-	light_color = "#FAA019";
-	lights_power = 3
-	},
-/turf/open/floor/wood,
-/area/eventmap/inside)
-"mjh" = (
+"mMd" = (
 /obj/structure/dresser,
 /turf/open/floor/spooktime/dirtpatch,
 /area/eventmap/inside)
-"ruP" = (
-/obj/structure/sign/poster/contraband/yes_erp,
-/turf/closed/wall/r_wall,
+"nOg" = (
+/obj/structure/cable/white{
+	icon_state = "1-2"
+	},
+/obj/effect/turf_decal/delivery,
+/turf/open/floor/plasteel,
 /area/eventmap/inside)
-"rwz" = (
+"sDL" = (
+/obj/structure/sign/poster/contraband/yes_erp,
+/turf/closed/wall/mineral/wood,
+/area/eventmap/mountaininside)
+"tFJ" = (
+/obj/structure/sign/poster/contraband/yes_erp,
+/turf/closed/wall/mineral/wood,
+/area/eventmap/inside)
+"vAI" = (
 /obj/structure/sign/poster/contraband/yes_erp,
 /turf/closed/wall/rust,
 /area/eventmap/mountaininside)
+"yfc" = (
+/obj/structure/sign/poster/contraband/yes_erp,
+/turf/closed/wall/r_wall,
+/area/eventmap/inside)
 
 (1,1,1) = {"
 aJx
@@ -18166,7 +18150,7 @@ aqr
 aqr
 aOG
 aOM
-aOT
+aBm
 aqr
 aac
 aac
@@ -18935,7 +18919,7 @@ aqr
 aqr
 aqr
 aqr
-bBe
+tFJ
 aqr
 aOV
 aqr
@@ -22520,7 +22504,7 @@ adx
 aRn
 asE
 aDm
-aJT
+nOg
 aMm
 aMx
 aMJ
@@ -23130,7 +23114,7 @@ aMz
 aED
 aED
 aED
-blY
+sDL
 aKA
 ags
 ags
@@ -25248,7 +25232,7 @@ aac
 aac
 ags
 ags
-blY
+sDL
 aKG
 aHj
 aAj
@@ -30798,7 +30782,7 @@ adN
 acy
 aLv
 aLv
-mjh
+mMd
 aMf
 aLv
 aLn
@@ -35887,7 +35871,7 @@ aqr
 aDI
 aDI
 aBm
-ruP
+yfc
 aDI
 alU
 aDI
@@ -36923,11 +36907,11 @@ aDI
 aDI
 arK
 aDI
-ruP
+yfc
 aDI
 aDI
 aDI
-ruP
+yfc
 aqI
 arF
 aqI
@@ -38458,7 +38442,7 @@ adR
 aDI
 aiZ
 akz
-alc
+aOE
 aOo
 aHT
 aqa
@@ -41035,11 +41019,11 @@ aDI
 aDI
 asJ
 aDI
-ruP
+yfc
 alR
 aDU
 aDI
-ruP
+yfc
 aqI
 arF
 aqI
@@ -42055,7 +42039,7 @@ aqr
 aDI
 aDI
 aBm
-ruP
+yfc
 aDI
 anT
 aDI
@@ -42067,7 +42051,7 @@ aqr
 aqr
 aDY
 aqr
-bBe
+tFJ
 aqr
 aIX
 aqr
@@ -47940,7 +47924,7 @@ abN
 acd
 aOE
 aOE
-bBe
+tFJ
 adh
 adA
 aOE
@@ -48188,7 +48172,7 @@ aOE
 aOE
 aaH
 aaV
-bBe
+tFJ
 aOE
 aOE
 abz
@@ -49476,10 +49460,10 @@ aOE
 aOE
 aFN
 abv
-bBe
+tFJ
 aOE
 aOE
-bBe
+tFJ
 ack
 acq
 aOE
@@ -49866,7 +49850,7 @@ aQx
 aNg
 aMp
 aMp
-blY
+sDL
 aXF
 aac
 aac
@@ -50706,7 +50690,7 @@ aac
 aac
 ags
 alv
-blY
+sDL
 aED
 aED
 aED
@@ -64010,7 +63994,7 @@ aaN
 aaN
 aaN
 aaN
-bBe
+tFJ
 aqr
 aqr
 aqr
@@ -65038,7 +65022,7 @@ aaN
 aaN
 aaN
 aaN
-bBe
+tFJ
 aay
 aOE
 aOE
@@ -65722,7 +65706,7 @@ amo
 amV
 aqr
 aol
-lEk
+aoJ
 apl
 aqr
 aqj
@@ -66115,7 +66099,7 @@ aED
 aED
 aED
 aDy
-blY
+sDL
 aac
 aac
 aZS
@@ -66323,13 +66307,13 @@ aaN
 aaN
 aaN
 aaN
-bBe
+tFJ
 aqr
 aqr
 aOL
 aOL
 aqr
-bBe
+tFJ
 aaN
 aac
 aac
@@ -70019,7 +70003,7 @@ aHf
 aHf
 aHf
 aqr
-bBe
+tFJ
 aaN
 aaN
 aaN
@@ -78890,7 +78874,7 @@ aYr
 aME
 aRe
 aZA
-rwz
+vAI
 aEF
 ags
 ags
@@ -79179,7 +79163,7 @@ ags
 ags
 ags
 aac
-rwz
+vAI
 aGP
 aFw
 aFw

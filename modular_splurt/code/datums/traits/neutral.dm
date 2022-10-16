@@ -379,6 +379,54 @@
 	. = ..()
 	var/obj/item/implant/genital_fluid/put_in = new
 	put_in.implant(quirk_holder, null, TRUE, TRUE)
+//succubus and incubus below
+/datum/quirk/incubus
+	name = "Incubus"
+	desc = "you can only be fed by milk (and semen too if you're a cubus hybrid)"
+	value = 0
+	mob_trait = TRAIT_INCUBUS
+	processing_quirk = TRUE
+
+/datum/quirk/incubus/add()
+	. = ..()
+	var/mob/living/carbon/human/H = quirk_holder
+	ADD_TRAIT(H,TRAIT_NO_PROCESS_FOOD,ROUNDSTART_TRAIT)
+	ADD_TRAIT(H,TRAIT_NOTHIRST,ROUNDSTART_TRAIT)
+
+/datum/quirk/incubus/remove()
+	. = ..()
+	var/mob/living/carbon/human/H = quirk_holder
+	REMOVE_TRAIT(H,TRAIT_NO_PROCESS_FOOD,ROUNDSTART_TRAIT)
+	REMOVE_TRAIT(H,TRAIT_NOTHIRST,ROUNDSTART_TRAIT)
+
+/datum/quirk/incubus/on_process()
+	. = ..()
+	var/mob/living/carbon/human/H = quirk_holder
+	H.adjust_nutrition(-0.09)//increases their nutrition loss rate to encourage them to gain a partner they can essentially leech off of
+
+/datum/quirk/succubus
+	name = "Succubus"
+	desc = "you can only be fed by semen (and milk too if you're a cubus hybrid)"
+	value = 0
+	mob_trait = TRAIT_SUCCUBUS
+	processing_quirk = TRUE
+
+/datum/quirk/succubus/add()
+	. = ..()
+	var/mob/living/carbon/human/H = quirk_holder
+	ADD_TRAIT(H,TRAIT_NO_PROCESS_FOOD,ROUNDSTART_TRAIT)
+	ADD_TRAIT(H,TRAIT_NOTHIRST,ROUNDSTART_TRAIT)
+
+/datum/quirk/succubus/remove()
+	. = ..()
+	var/mob/living/carbon/human/H = quirk_holder
+	REMOVE_TRAIT(H,TRAIT_NO_PROCESS_FOOD,ROUNDSTART_TRAIT)
+	REMOVE_TRAIT(H,TRAIT_NOTHIRST,ROUNDSTART_TRAIT)
+
+/datum/quirk/succubus/on_process()
+	. = ..()
+	var/mob/living/carbon/human/H = quirk_holder
+	H.adjust_nutrition(-0.09)//increases their nutrition loss rate to encourage them to gain a partner they can essentially leech off of
 
 /datum/quirk/vampire//splurt change start
 	name = "Bloodsucker Fledgeling"
@@ -476,13 +524,14 @@
 			//Here we check now for both the garlic cloves on the neck and for blood in the victims bloodstream.
 			if(!blood_sucking_checks(victim, TRUE, TRUE))
 				return
-			H.visible_message("<span class='danger'>[H] Bites down on [victim]'s neck!</span>")
+			H.visible_message("<span class='danger'>[H] bites down on [victim]'s neck!</span>")
+			to_chat(victim, "<span class='userdanger'>[H] is draining your blood!</span>")
 			if(!do_after(H, 30, target = victim))
 				return
 			var/blood_volume_difference = BLOOD_VOLUME_MAXIMUM - H.blood_volume //How much capacity we have left to absorb blood
 			var/drained_blood = min(victim.blood_volume, BLOOD_DRAIN_NUM, blood_volume_difference)
 			H.reagents.add_reagent(/datum/reagent/blood/, drained_blood)
-			to_chat(victim, "<span class='danger'>[H] is draining your blood!</span>")
+			to_chat(victim, "<span class='danger'>[H] has taken some of your blood!</span>")
 			to_chat(H, "<span class='notice'>You drain some blood!</span>")
 			playsound(H, 'sound/items/drink.ogg', 30, 1, -2)
 			victim.blood_volume = clamp(victim.blood_volume - drained_blood, 0, BLOOD_VOLUME_MAXIMUM)
