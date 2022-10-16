@@ -379,6 +379,291 @@
 	. = ..()
 	var/obj/item/implant/genital_fluid/put_in = new
 	put_in.implant(quirk_holder, null, TRUE, TRUE)
+//succubus and incubus below
+/datum/quirk/incubus
+	name = "Incubus"
+	desc = "you can only be fed by milk (and semen too if you're a cubus hybrid)"
+	value = 0
+	mob_trait = TRAIT_INCUBUS
+	processing_quirk = TRUE
+
+/datum/quirk/incubus/add()
+	. = ..()
+	var/mob/living/carbon/human/H = quirk_holder
+	ADD_TRAIT(H,TRAIT_NO_PROCESS_FOOD,ROUNDSTART_TRAIT)
+	ADD_TRAIT(H,TRAIT_NOTHIRST,ROUNDSTART_TRAIT)
+
+/datum/quirk/incubus/remove()
+	. = ..()
+	var/mob/living/carbon/human/H = quirk_holder
+	REMOVE_TRAIT(H,TRAIT_NO_PROCESS_FOOD,ROUNDSTART_TRAIT)
+	REMOVE_TRAIT(H,TRAIT_NOTHIRST,ROUNDSTART_TRAIT)
+
+/datum/quirk/incubus/on_process()
+	. = ..()
+	var/mob/living/carbon/human/H = quirk_holder
+	H.adjust_nutrition(-0.09)//increases their nutrition loss rate to encourage them to gain a partner they can essentially leech off of
+
+/datum/quirk/succubus
+	name = "Succubus"
+	desc = "you can only be fed by semen (and milk too if you're a cubus hybrid)"
+	value = 0
+	mob_trait = TRAIT_SUCCUBUS
+	processing_quirk = TRUE
+
+/datum/quirk/succubus/add()
+	. = ..()
+	var/mob/living/carbon/human/H = quirk_holder
+	ADD_TRAIT(H,TRAIT_NO_PROCESS_FOOD,ROUNDSTART_TRAIT)
+	ADD_TRAIT(H,TRAIT_NOTHIRST,ROUNDSTART_TRAIT)
+
+/datum/quirk/succubus/remove()
+	. = ..()
+	var/mob/living/carbon/human/H = quirk_holder
+	REMOVE_TRAIT(H,TRAIT_NO_PROCESS_FOOD,ROUNDSTART_TRAIT)
+	REMOVE_TRAIT(H,TRAIT_NOTHIRST,ROUNDSTART_TRAIT)
+
+/datum/quirk/succubus/on_process()
+	. = ..()
+	var/mob/living/carbon/human/H = quirk_holder
+	H.adjust_nutrition(-0.09)//increases their nutrition loss rate to encourage them to gain a partner they can essentially leech off of
+
+/datum/quirk/vampire//splurt change start
+	name = "Bloodsucker Fledgeling"
+	desc = "you need blood for nutriment, you have fangs to aid with this, the church harms you"
+	value = 0
+	medical_record_text = "this person was partially infected by a bloodsucker"
+	mob_trait = BLOODFLEDGE
+	gain_text = "<span class='notice'>You feel an otherworldly thirst.</span>"
+	lose_text = "<span class='notice'>you feel an otherworldy burden remove itself</span>"
+	processing_quirk = TRUE
+
+/datum/quirk/vampire/add()
+	. = ..()
+	var/mob/living/carbon/human/H = quirk_holder
+	ADD_TRAIT(H,TRAIT_NO_PROCESS_FOOD,ROUNDSTART_TRAIT)
+	ADD_TRAIT(H,TRAIT_COLDBLOODED,ROUNDSTART_TRAIT)
+	ADD_TRAIT(H,TRAIT_NOBREATH,ROUNDSTART_TRAIT)
+	ADD_TRAIT(H,TRAIT_NOTHIRST,ROUNDSTART_TRAIT)
+	ADD_TRAIT(H,TRAIT_QUICKER_CARRY,ROUNDSTART_TRAIT)
+	ADD_TRAIT(H,TRAIT_AUTO_CATCH_ITEM,ROUNDSTART_TRAIT)//these two make the vampire fast and enables some sexy "bet you didnt think i could do this" romance
+	if(!H.dna.skin_tone_override)
+		H.skin_tone = "albino"
+	var/datum/action/vbite/B = new
+	B.Grant(H)
+
+/datum/quirk/vampire/on_process()
+	. = ..()
+	var/mob/living/carbon/C = quirk_holder
+	var/area/A = get_area(C)
+	if(istype(A, /area/service/chapel) && C.mind?.assigned_role != "Chaplain")
+		C.adjustStaminaLoss(2)
+		C.adjust_nutrition(-0.3)//changed these to be less deadly and more of an inconvinience
+		C.adjust_disgust(1)
+	if(istype(C.loc, /obj/structure/closet/crate/coffin))//heals the vampire if in a coffin, except burn which fire can be considered holy
+		C.heal_overall_damage(4,4)
+		C.adjust_disgust(-7)
+		C.adjustOxyLoss(-4)
+		C.adjustCloneLoss(-4)
+		C.adjustBruteLoss(-0.3)
+		return
+
+/datum/quirk/vampire/remove()
+	var/mob/living/carbon/human/H = quirk_holder
+	var/datum/action/vbite/B = locate() in H.actions
+	REMOVE_TRAIT(H, TRAIT_NO_PROCESS_FOOD, ROUNDSTART_TRAIT)
+	REMOVE_TRAIT(H, TRAIT_COLDBLOODED, ROUNDSTART_TRAIT)
+	REMOVE_TRAIT(H, TRAIT_NOBREATH, ROUNDSTART_TRAIT)
+	REMOVE_TRAIT(H, TRAIT_NOTHIRST, ROUNDSTART_TRAIT)
+	REMOVE_TRAIT(H,TRAIT_QUICKER_CARRY,ROUNDSTART_TRAIT)
+	REMOVE_TRAIT(H,TRAIT_AUTO_CATCH_ITEM,ROUNDSTART_TRAIT)
+
+	B.Remove(H)
+	. = ..()
+
+/// quirk actions ///
+
+//vampire bite
+
+#define BLOOD_DRAIN_NUM 50
+
+/datum/action/vbite
+	name = "Bite Victim"
+	button_icon_state = "power_feed"
+	icon_icon = 'icons/mob/actions/bloodsucker.dmi'
+	desc = "bite the person you are grabbing with your fangs"
+	var/drain_cooldown = 0
+
+/datum/action/vbite/Trigger()
+	. = ..()
+	if(iscarbon(owner))
+		var/mob/living/carbon/H = owner
+		if(H.nutrition >= 500)
+			to_chat(H, "<span class='notice'>You are too full to drain any more.</span>")
+			return
+		if(drain_cooldown >= world.time)
+			to_chat(H, "<span class='notice'>You just drained blood, wait a few seconds.</span>")
+			return
+		if(!H.pulling || !iscarbon(H.pulling))
+			if(H.getStaminaLoss() >= 80 && H.nutrition > 20)//prevents being stunlocked in the chapel
+				to_chat(H,("<span class='notice'>you use some of your power to energize</span>"))
+				H.adjustStaminaLoss(-20)
+				H.adjust_nutrition(-20)
+				H.resting = TRUE
+		if(H.pulling && iscarbon(H.pulling))
+			var/mob/living/carbon/victim = H.pulling
+			drain_cooldown = world.time + 25
+			if(victim.anti_magic_check(FALSE, TRUE, FALSE, 0))
+				to_chat(victim, "<span class='warning'>[H] tries to bite you, but stops before touching you!</span>")
+				to_chat(H, "<span class='warning'>[victim] is blessed! You stop just in time to avoid catching fire.</span>")
+				return
+			//Here we check now for both the garlic cloves on the neck and for blood in the victims bloodstream.
+			if(!blood_sucking_checks(victim, TRUE, TRUE))
+				return
+			H.visible_message("<span class='danger'>[H] bites down on [victim]'s neck!</span>")
+			to_chat(victim, "<span class='userdanger'>[H] is draining your blood!</span>")
+			if(!do_after(H, 30, target = victim))
+				return
+			var/blood_volume_difference = BLOOD_VOLUME_MAXIMUM - H.blood_volume //How much capacity we have left to absorb blood
+			var/drained_blood = min(victim.blood_volume, BLOOD_DRAIN_NUM, blood_volume_difference)
+			H.reagents.add_reagent(/datum/reagent/blood/, drained_blood)
+			to_chat(victim, "<span class='danger'>[H] has taken some of your blood!</span>")
+			to_chat(H, "<span class='notice'>You drain some blood!</span>")
+			playsound(H, 'sound/items/drink.ogg', 30, 1, -2)
+			victim.blood_volume = clamp(victim.blood_volume - drained_blood, 0, BLOOD_VOLUME_MAXIMUM)
+			log_combat(H,victim,"vampire bit")//logs the biting action for admins
+			if(!victim.blood_volume)
+				to_chat(H, "<span class='warning'>You finish off [victim]'s blood supply!</span>")
+
+//splurt change end
+//put next quirk action here
+
+/datum/quirk/werewolf //adds the werewolf quirk
+	name = "Werewolf"
+	desc = "you are capable of turning into an anthropomorphic wolf (this is still being tested, please send any bugs to nukechicken on discord)"
+	value = 0
+
+/datum/quirk/werewolf/add()
+	. = ..()
+	var/mob/living/carbon/human/H = quirk_holder
+	var/datum/action/werewolf/W = new
+	W.Grant(H)
+
+/datum/action/werewolf
+	name = "Transform"
+	desc = "Transform into a wolf."
+	icon_icon = 'modular_splurt/icons/mob/actions/misc_actions.dmi'
+	button_icon_state = "Transform"
+	var/transformed = 0
+	var/old_species = SPECIES_HUMAN // all the players old things
+	var/old_legs = "Plantigrade"
+	var/old_ears = null
+	var/old_snout = null
+	var/old_tail = null
+	var/old_size = 1
+	var/old_dick = null
+	var/old_dick_color = null
+	var/prim_col
+	var/old_boob = null
+	var/old_boob_color = null
+	var/old_vag = null
+	var/old_vag_color = null
+
+/datum/action/werewolf/Trigger()
+	. = ..()
+	var/mob/living/carbon/human/H = owner
+	var/obj/item/organ/genital/penis/P = null
+	var/obj/item/organ/genital/breasts/B = null
+		var/obj/item/organ/genital/vagina/V = null
+	if(H.has_penis())
+		P = H.getorganslot(ORGAN_SLOT_PENIS)
+	if(H.has_breasts())
+		B = H.getorganslot(ORGAN_SLOT_BREASTS)
+	if(H.has_vagina())
+		B = H.getorganslot(ORGAN_SLOT_VAGINA)
+	if(transformed == 0) // transform them
+		H.visible_message("<span class='danger'>[H] transforms into an anthropomorphic wolf!</span>")
+		transformed = 1
+		H.set_species(/datum/species/mammal, 1)
+		H.dna.species.mutant_bodyparts["mam_tail"] = "Wolf"
+		H.dna.species.mutant_bodyparts["legs"] = "Digitigrade"
+		H.Digitigrade_Leg_Swap(FALSE)
+		H.dna.species.mutant_bodyparts["mam_snouts"] = "Mammal, Thick"
+		H.dna.features["mam_ears"] = "Wolf"
+		H.dna.features["mam_tail"] = "Wolf"
+		H.dna.features["mam_snouts"] = "Mammal, Thick"
+		H.dna.features["legs"] = "Digitigrade"
+		H.size_multiplier = old_size + 0.5
+		H.set_bark("bark")
+		H.custom_species = "Werewolf"
+		H.dna.species.species_traits += DIGITIGRADE
+		H.update_body()
+		H.update_body_parts()
+		if(H.has_breasts())
+			B.color = prim_col
+			B.update()
+		if(H.has_penis())
+			P.shape = "Knotted"
+			P.size += 1
+			P.color = "#ff7c80"
+			P.update()
+			P.update_size()
+		if(H.has_vagina())
+			V.shape = "Furred"
+			V.color = prim_col
+			V.update()
+	else // untransform them
+		transformed = 0
+		H.visible_message("<span class='danger'>[H] transforms back into what they were before they were a wolf</span>")
+		H.set_species(old_species,TRUE)
+		H.dna.features["mam_ears"] = old_ears
+		H.dna.features["mam_snouts"] = old_snout
+		H.dna.features["mam_tail"] = old_tail
+		H.dna.features["legs"] = old_legs //i hate legs i hate legs i hate legs i hate legs i hate legs i hate legs i hate legs
+		H.dna.species.species_traits -= DIGITIGRADE
+		if(old_legs == "Plantigrade")
+			H.Digitigrade_Leg_Swap(TRUE)
+			H.dna.species.mutant_bodyparts["legs"] = old_legs
+		H.update_body()
+		H.update_body_parts()
+		H.size_multiplier = old_size
+		H.update_size()
+		if(H.has_breasts())
+			B.color = old_boob_color
+			B.update()
+		if(H.has_penis())
+			P.shape = old_dick
+			P.size -= 1
+			P.color = old_dick_color
+			P.update()
+			P.update_size()
+		if(H.has_vagina())
+			V.shape = old_vag
+			V.color = old_vag_color
+			V.update()
+			V.update_size()
+
+/datum/action/werewolf/Grant()// on grant sets some variables
+	. = ..()
+	var/mob/living/carbon/human/H = owner
+	old_species = H.dna.species.type
+	old_legs = H.dna.features["legs"]
+	old_snout = H.dna.features["mam_snouts"]
+	old_tail = H.dna.features["mam_tail"]
+	old_ears = H.dna.features["mam_ears"]
+	old_size = H.size_multiplier
+	if(H.has_penis())
+		var/obj/item/organ/genital/penis/P = H.getorganslot(ORGAN_SLOT_PENIS)
+		old_dick = P.shape
+		old_dick_color = P.color
+	prim_col = "#[H.dna.features["mcolor"]]"
+	if(H.has_breasts())
+		var/obj/item/organ/genital/breasts/B = H.getorganslot(ORGAN_SLOT_BREASTS)
+		old_boob_color = B.color
+	if(H.has_vagina())
+		var/obj/item/organ/genital/vagina/V = H.getorganslot(ORGAN_SLOT_VAGINA)
+		old_vag = V.shape
+		old_vag_color = V.color
 
 /datum/quirk/werewolf //adds the werewolf quirk
 	name = "Werewolf"

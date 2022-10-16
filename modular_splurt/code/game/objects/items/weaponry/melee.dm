@@ -42,3 +42,14 @@
 		else if(!target.anchored)
 			var/whack_speed = (prob(60) ? 1 : 4)
 			target.throw_at(throw_target, rand(1, 2), whack_speed, user) // sorry friends, 7 speed batting caused wounds to absolutely delete whoever you knocked your target into (and said target)
+
+
+// Prova, cause I can
+
+/obj/item/melee/baton/prova
+	name = "prova"
+	desc = "An enhanced taser stick, a favorite of the legendary John Prodman."
+	icon = 'modular_splurt/icons/obj/items_and_weapons.dmi'
+	icon_state = "prova"
+	lefthand_file = 'modular_splurt/icons/mob/inhands/weapons/melee_lefthand.dmi'
+	righthand_file = 'modular_splurt/icons/mob/inhands/weapons/melee_righthand.dmi'

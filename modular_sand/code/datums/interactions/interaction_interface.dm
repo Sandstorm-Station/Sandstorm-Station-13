@@ -108,7 +108,7 @@
 			genital_entry["possible_choices"] = GLOB.genitals_visibility_toggles
 			genital_entry["extra_choices"] = list(GEN_ALLOW_EGG_STUFFING)
 			genitals += list(genital_entry)
-	if(iscarbon(self))
+	if(iscarbon(self) && !self.getorganslot(ORGAN_SLOT_ANUS))
 		var/simulated_ass = list()
 		simulated_ass["name"] = "anus"
 		simulated_ass["key"] = "anus"
