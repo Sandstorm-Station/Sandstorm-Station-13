@@ -417,6 +417,13 @@
 /obj/machinery/meter,
 /turf/open/floor/plasteel,
 /area/engineering/main)
+"su" = (
+/obj/machinery/atmospherics/pipe/simple/scrubbers/hidden,
+/obj/item/radio/intercom{
+	pixel_x = -25
+	},
+/turf/open/floor/plating,
+/area/engineering/main)
 "sA" = (
 /obj/machinery/atmospherics/pipe/simple/supply/hidden{
 	dir = 4
@@ -481,6 +488,12 @@
 "uE" = (
 /obj/machinery/atmospherics/pipe/simple/scrubbers/hidden{
 	dir = 6
+	},
+/turf/open/floor/plating,
+/area/engineering/main)
+"we" = (
+/obj/item/radio/intercom{
+	pixel_x = 25
 	},
 /turf/open/floor/plating,
 /area/engineering/main)
@@ -602,6 +615,13 @@
 /obj/structure/reagent_dispensers/water_cooler,
 /turf/open/floor/plasteel,
 /area/engineering/main)
+"Dt" = (
+/obj/machinery/airalarm{
+	dir = 8;
+	pixel_x = 22
+	},
+/turf/open/floor/plating,
+/area/engineering/main)
 "Dy" = (
 /obj/machinery/atmospherics/pipe/simple/supply/hidden{
 	dir = 4
@@ -651,6 +671,9 @@
 "Hu" = (
 /obj/machinery/atmospherics/pipe/simple/orange/visible{
 	dir = 5
+	},
+/obj/item/radio/intercom{
+	pixel_y = -25
 	},
 /turf/open/floor/plasteel,
 /area/engineering/main)
@@ -771,6 +794,14 @@
 	},
 /turf/closed/wall/r_wall,
 /area/engineering/main)
+"Qq" = (
+/obj/machinery/atmospherics/pipe/simple/supply/hidden,
+/obj/machinery/firealarm{
+	dir = 8;
+	pixel_x = -24
+	},
+/turf/open/floor/plating,
+/area/engineering/main)
 "Qr" = (
 /obj/structure/table,
 /obj/item/storage/toolbox/mechanical{
@@ -783,6 +814,9 @@
 /obj/item/flashlight{
 	pixel_x = 1;
 	pixel_y = 5
+	},
+/obj/item/radio/intercom{
+	pixel_y = -25
 	},
 /turf/open/floor/plasteel,
 /area/engineering/main)
@@ -1210,7 +1244,7 @@ kh
 kn
 cx
 uE
-qc
+su
 UY
 bu
 bu
@@ -1319,7 +1353,7 @@ dO
 Sn
 gC
 dx
-Yg
+Qq
 Yg
 Yg
 Yg
@@ -1605,12 +1639,12 @@ TR
 ji
 bu
 bu
-bu
+Dt
 lG
 bu
 bu
 bu
-bu
+we
 qV
 Ng
 zS
