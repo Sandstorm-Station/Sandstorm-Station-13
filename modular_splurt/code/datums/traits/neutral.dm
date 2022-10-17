@@ -492,6 +492,12 @@
 	var/mob/living/carbon/human/H = quirk_holder
 	var/datum/action/werewolf/W = new
 	W.Grant(H)
+	
+/datum/quirk/werewolf/remove()
+	var/mob/living/carbon/human/H = quirk_holder
+	var/datum/action/werewolf/W = locate() in H.actions
+	W.Remove(H)
+	. = ..()
 
 /// quirk actions ///
 
