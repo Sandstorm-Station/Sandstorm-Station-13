@@ -553,41 +553,24 @@
 			if(!victim.blood_volume)
 				to_chat(H, "<span class='warning'>You finish off [victim]'s blood supply!</span>")
 
+//werewolf tf
+
 /datum/action/werewolf
 	name = "Transform"
 	desc = "Transform into a wolf."
 	icon_icon = 'modular_splurt/icons/mob/actions/misc_actions.dmi'
 	button_icon_state = "Transform"
-	var/transformed = 0
-	var/old_species = SPECIES_HUMAN // all the players old things
-	var/old_legs = "Plantigrade"
-	var/old_ears = null
-	var/old_snout = null
-	var/old_tail = null
-	var/old_size = 1
-	var/old_dick = null
-	var/old_dick_color = null
-	var/prim_col
-	var/old_boob = null
-	var/old_boob_color = null
-	var/old_vag = null
-	var/old_vag_color = null
+	var/transformed = FALSE
+	var/list/old_features = list("species" = SPECIES_HUMAN, "legs" = "Plantigrade", "size" = 1)
 
 /datum/action/werewolf/Trigger()
 	. = ..()
 	var/mob/living/carbon/human/H = owner
-	var/obj/item/organ/genital/penis/P = null
-	var/obj/item/organ/genital/breasts/B = null
-	var/obj/item/organ/genital/vagina/V = null
-	if(H.has_penis())
-		P = H.getorganslot(ORGAN_SLOT_PENIS)
-	if(H.has_breasts())
-		B = H.getorganslot(ORGAN_SLOT_BREASTS)
-	if(H.has_vagina())
-		B = H.getorganslot(ORGAN_SLOT_VAGINA)
-	if(transformed == 0) // transform them
-		H.visible_message("<span class='danger'>[H] transforms into an anthropomorphic wolf!</span>")
-		transformed = 1
+	var/obj/item/organ/genital/penis/P = H.getorganslot(ORGAN_SLOT_PENIS)
+	var/obj/item/organ/genital/breasts/B = H.getorganslot(ORGAN_SLOT_BREASTS)
+	var/obj/item/organ/genital/vagina/V = H.getorganslot(ORGAN_SLOT_VAGINA)
+	if(!transformed) // transform them
+		H.visible_message(span_danger("The pale touch of moonlight transforms [H] into an anthropomorphic wolf!"))
 		H.set_species(/datum/species/mammal, 1)
 		H.dna.species.mutant_bodyparts["mam_tail"] = "Wolf"
 		H.dna.species.mutant_bodyparts["legs"] = "Digitigrade"
@@ -597,74 +580,57 @@
 		H.dna.features["mam_tail"] = "Wolf"
 		H.dna.features["mam_snouts"] = "Mammal, Thick"
 		H.dna.features["legs"] = "Digitigrade"
-		H.size_multiplier = old_size + 0.5
+		H.update_size(get_size(H) + 0.5)
 		H.set_bark("bark")
 		H.custom_species = "Werewolf"
-		H.dna.species.species_traits += DIGITIGRADE
+		if(!(H.dna.species.species_traits.Find(DIGITIGRADE)))
+			H.dna.species.species_traits += DIGITIGRADE
 		H.update_body()
 		H.update_body_parts()
-		if(H.has_breasts())
-			B.color = prim_col
+		if(B)
+			B.color = "#[H.dna.features["mcolor"]]"
 			B.update()
-		if(H.has_penis())
+		if(P)
 			P.shape = "Knotted"
-			P.size += 1
 			P.color = "#ff7c80"
 			P.update()
-			P.update_size()
-		if(H.has_vagina())
+			P.modify_size(6)
+		if(V)
 			V.shape = "Furred"
-			V.color = prim_col
+			V.color = "#[H.dna.features["mcolor"]]"
 			V.update()
 	else // untransform them
-		transformed = 0
-		H.visible_message("<span class='danger'>[H] transforms back into what they were before they were a wolf</span>")
-		H.set_species(old_species,TRUE)
-		H.dna.features["mam_ears"] = old_ears
-		H.dna.features["mam_snouts"] = old_snout
-		H.dna.features["mam_tail"] = old_tail
-		H.dna.features["legs"] = old_legs //i hate legs i hate legs i hate legs i hate legs i hate legs i hate legs i hate legs
-		H.dna.species.species_traits -= DIGITIGRADE
-		if(old_legs == "Plantigrade")
+		H.visible_message(span_danger("[H]'s features slowly recede from their wolfish appearance"))
+		H.set_species(old_features["species"], TRUE)
+		H.dna.features["mam_ears"] = old_features["mam_ears"]
+		H.dna.features["mam_snouts"] = old_features["mam_snouts"]
+		H.dna.features["mam_tail"] = old_features["mam_tail"]
+		H.dna.features["legs"] = old_features["legs"] //i hate legs i hate legs i hate legs i hate legs i hate legs i hate legs i hate legs
+		if(old_features["legs"] == "Plantigrade")
+			H.dna.species.species_traits -= DIGITIGRADE
 			H.Digitigrade_Leg_Swap(TRUE)
-			H.dna.species.mutant_bodyparts["legs"] = old_legs
+			H.dna.species.mutant_bodyparts["legs"] = old_features["legs"]
 		H.update_body()
 		H.update_body_parts()
-		H.size_multiplier = old_size
-		H.update_size()
-		if(H.has_breasts())
-			B.color = old_boob_color
+		H.update_size(old_features["size"])
+		if(B)
+			B.color = "#[old_features["breasts_color"]]"
 			B.update()
 		if(H.has_penis())
-			P.shape = old_dick
-			P.size -= 1
-			P.color = old_dick_color
+			P.shape = old_features["cock_shape"]
+			P.color = "#[old_features["cock_color"]]"
 			P.update()
-			P.update_size()
+			P.modify_size(-6)
 		if(H.has_vagina())
-			V.shape = old_vag
-			V.color = old_vag_color
+			V.shape = old_features["vag_shape"]
+			V.color = "#[old_features["vag_color"]]"
 			V.update()
 			V.update_size()
+	transformed = !transformed
 
 /datum/action/werewolf/Grant()// on grant sets some variables
 	. = ..()
 	var/mob/living/carbon/human/H = owner
-	old_species = H.dna.species.type
-	old_legs = H.dna.features["legs"]
-	old_snout = H.dna.features["mam_snouts"]
-	old_tail = H.dna.features["mam_tail"]
-	old_ears = H.dna.features["mam_ears"]
-	old_size = H.size_multiplier
-	if(H.has_penis())
-		var/obj/item/organ/genital/penis/P = H.getorganslot(ORGAN_SLOT_PENIS)
-		old_dick = P.shape
-		old_dick_color = P.color
-	prim_col = "#[H.dna.features["mcolor"]]"
-	if(H.has_breasts())
-		var/obj/item/organ/genital/breasts/B = H.getorganslot(ORGAN_SLOT_BREASTS)
-		old_boob_color = B.color
-	if(H.has_vagina())
-		var/obj/item/organ/genital/vagina/V = H.getorganslot(ORGAN_SLOT_VAGINA)
-		old_vag = V.shape
-		old_vag_color = V.color
+	old_features = H.dna.features.Copy()
+	old_features["species"] = H.dna.species.type
+	old_features["size"] = get_size(H)
