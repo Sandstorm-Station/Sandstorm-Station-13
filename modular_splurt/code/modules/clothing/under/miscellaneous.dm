@@ -54,6 +54,39 @@
 	mutantrace_variation = STYLE_DIGITIGRADE|STYLE_NO_ANTHRO_ICON
 	body_parts_covered = CHEST|GROIN
 
+/obj/item/clothing/under/domina
+	name = "Dominatrix Dress"
+	desc = "This dress makes you feel like you wanna get on all fours and beg for more!"
+	icon = 'modular_splurt/icons/obj/clothing/uniforms.dmi'
+	mob_overlay_icon = 'modular_splurt/icons/mob/clothing/uniform.dmi'
+	icon_state = "domina"
+	item_state = "domina"
+	can_adjust = FALSE
+	mutantrace_variation = STYLE_DIGITIGRADE|STYLE_NO_ANTHRO_ICON
+	body_parts_covered = CHEST|GROIN|LEGS
+
+/obj/item/clothing/under/bluedress
+	name = "Blue Royal Dress"
+	desc = "This dress is made with fine blue silks, it also smells of expensive perfumes and oils."
+	icon = 'modular_splurt/icons/obj/clothing/uniforms.dmi'
+	mob_overlay_icon = 'modular_splurt/icons/mob/clothing/uniform.dmi'
+	icon_state = "bluedress"
+	item_state = "bluedress"
+	can_adjust = FALSE
+	mutantrace_variation = STYLE_DIGITIGRADE|STYLE_NO_ANTHRO_ICON
+	body_parts_covered = CHEST|GROIN|LEGS
+
+/obj/item/clothing/under/performer
+	name = "Performers one piece"
+	desc = "This outfit smells a bit like cum and lube."
+	icon = 'modular_splurt/icons/obj/clothing/uniforms.dmi'
+	mob_overlay_icon = 'modular_splurt/icons/mob/clothing/uniform.dmi'
+	icon_state = "performer"
+	item_state = "performer"
+	can_adjust = FALSE
+	mutantrace_variation = STYLE_DIGITIGRADE|STYLE_NO_ANTHRO_ICON
+	body_parts_covered = CHEST
+
 /obj/item/clothing/under/bunnysuit/white
 	name = "white bunny outfit"
 	desc = "A simple white bunnt outfit."
