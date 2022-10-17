@@ -1,4 +1,3 @@
-//Hyper stuff
 /datum/gear/uniform/tunic
 	name = "Tunic"
 	description = "A simple tunic."
@@ -28,6 +27,18 @@
 /datum/gear/uniform/shorts/pinkwshort
 	name = "Pink workout short"
 	path = /obj/item/clothing/under/shorts/pinkwshort
+
+/datum/gear/uniform/domina
+	name = "Dominatrix Dress"
+	path = /obj/item/clothing/under/domina
+
+/datum/gear/uniform/bluedress
+	name = "Blue Royal Dress"
+	path = /obj/item/clothing/under/bluedress
+
+/datum/gear/uniform/performer
+	name = "Performers one piece"
+	path = /obj/item/clothing/under/performer
 
 // Suggestion #151
 /datum/gear/uniform/waiter

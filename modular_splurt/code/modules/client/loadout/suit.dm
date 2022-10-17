@@ -65,6 +65,14 @@
 	path = /obj/item/clothing/suit/toggle/rp_jacket/white
 	subcategory = LOADOUT_SUBCATEGORY_SUIT_JACKETS
 
+/datum/gear/suit/baroness
+	name = "Baroness Dress"
+	path = /obj/item/clothing/suit/baroness
+
+/datum/gear/suit/ladyballat
+	name = "Green Ball Dress"
+	path = /obj/item/clothing/suit/baroness/ladyballat
+
 // Polychrome GWTB
 /datum/gear/suit/gonersuit
 	name = "polychromic trencher coat"
