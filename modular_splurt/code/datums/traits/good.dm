@@ -122,20 +122,21 @@
 	var/mob/living/carbon/human/H = quirk_holder
 	if(is_species(H,/datum/species/arachnid))
 		to_chat(H, "<span class='warning'>As an arachnid, this quirk does nothing for you, as these abilities are innate to your species.</span>")
-	else
-		var/datum/action/innate/spin_web_quirk/SW = new
-		var/datum/action/innate/spin_cocoon_quirk/SC = new
-		SC.Grant(H)
-		SW.Grant(H)
+		return
+	var/datum/action/innate/spin_web_quirk/SW = new
+	var/datum/action/innate/spin_cocoon_quirk/SC = new
+	SC.Grant(H)
+	SW.Grant(H)
 
 /datum/quirk/arachnid/remove()
 	. = ..()
 	var/mob/living/carbon/human/H = quirk_holder
-	if(!is_species(H,/datum/species/arachnid))
-		var/datum/action/innate/spin_web_quirk/SW = locate(/datum/action/innate/spin_web_quirk) in H.actions
-		var/datum/action/innate/spin_cocoon_quirk/SC = locate(/datum/action/innate/spin_cocoon_quirk) in H.actions
-		SC?.Remove(H)
-		SW?.Remove(H)
+	if(is_species(H,/datum/species/arachnid))
+		return
+	var/datum/action/innate/spin_web_quirk/SW = locate(/datum/action/innate/spin_web_quirk) in H.actions
+	var/datum/action/innate/spin_cocoon_quirk/SC = locate(/datum/action/innate/spin_cocoon_quirk) in H.actions
+	SC?.Remove(H)
+	SW?.Remove(H)
 
 // Unfortunately, some copy-paste work needed doing. Web spinning and cocoon spinning relied on variables innate to the arachnid species. Also unsure of how to make the cooldown work between both actions ¯\_(ツ)_/¯
 /datum/action/innate/spin_web_quirk
