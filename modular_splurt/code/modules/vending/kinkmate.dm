@@ -26,6 +26,8 @@
 		/obj/item/storage/box/aphrodisiac_pump = 5,
 		/obj/item/strapon_strap = 5,
 		/obj/item/restraints/bondage_rope = 5,
+		/obj/item/clothing/under/domina = 5,
+		/obj/item/clothing/under/performer = 3
 	)
 	var/list/extra_contraband = list(
 		//Lewd-Clothes
