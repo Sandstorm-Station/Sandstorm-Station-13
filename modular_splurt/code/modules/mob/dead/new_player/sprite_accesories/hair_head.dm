@@ -155,3 +155,8 @@
 	name = "Straight Long (Very)"
 	icon = 'modular_splurt/icons/mob/hair.dmi'
 	icon_state = "hair_straightfloorlength"
+
+/datum/sprite_accessory/hair/deathhawk
+	name = "Deathhawk"
+	icon = 'modular_splurt/icons/mob/hair.dmi'
+	icon_state = "hair_deathhawk"
