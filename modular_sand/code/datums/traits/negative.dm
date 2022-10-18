@@ -1,11 +1,11 @@
 /datum/quirk/sheltered
 	name = "Sheltered"
-	desc = "You never learned galactic common."
+	desc = "For one reason or another, you either can't or haven't learned the common tongue."
 	value = 0
 	mob_trait = TRAIT_SHELTERED
-	gain_text = "<span class='danger'>You do not understand galactic common.</span>"
-	lose_text = "<span class='notice'>You start to put together what people are saying in galactic common.</span>"
-	medical_record_text = "Patient looks perplexed when questioned in galactic common."
+	gain_text = "<span class='danger'>The words of others begin to blur together...</span>"
+	lose_text = "<span class='notice'>You start putting together what people are saying!</span>"
+	medical_record_text = "Patient has shown an inability to use common speaking languages."
 
 /datum/quirk/sheltered/on_spawn()
 	var/mob/living/carbon/human/H = quirk_holder

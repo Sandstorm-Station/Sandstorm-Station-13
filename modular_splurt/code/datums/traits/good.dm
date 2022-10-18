@@ -16,7 +16,7 @@
 
 /datum/quirk/ashresistance
 	name = "Ashen Resistance"
-	desc = "Your form is naturally adapted to the burning sheets of ash that coat volcanic worlds."
+	desc = "Your body is adapted to the burning sheets of ash that coat volcanic worlds, though the heavy downpours of silt will still tire you."
 	value = 2 //Is not actually THAT good. Does not grant breathing and does stamina damage to the point you are unable to attack. Crippling on lavaland, but you'll survive. Is not a replacement for SEVA suits for this reason. Can be adjusted.
 	mob_trait = TRAIT_ASHRESISTANCE
 	medical_record_text = "Patient has an abnormally thick epidermis."
@@ -35,10 +35,10 @@
 
 /datum/quirk/dominant_aura
 	name = "Dominant Aura"
-	desc = "Your personality is assertive enough to appear as powerful to other people, so much in fact that the weaker kind can't help but throw themselves at your feet on command."
+	desc = "Your mere presence is assertive enough to appear as powerful to other people, so much in fact that the weaker kind can't help but throw themselves at your feet at the snap of a finger."
 	value = 1
-	gain_text = "<span class='notice'>You feel like making someone your pet</span>"
-	lose_text = "<span class='notice'>You feel less assertive than befpre</span>"
+	gain_text = "<span class='notice'>You feel like making someone your pet.</span>"
+	lose_text = "<span class='notice'>You feel less assertive.</span>"
 
 /datum/quirk/dominant_aura/add()
 	. = ..()
@@ -59,9 +59,9 @@
 	if(!sub.has_quirk(/datum/quirk/well_trained) || (sub == quirk_holder))
 		return
 
-	examine_list += span_lewd("\nYou can't look at [quirk_holder.p_them()] for more than three seconds before flustering away.")
+	examine_list += span_lewd("\nYou can't make eye contact with [quirk_holder.p_them()] before flustering away!")
 	if(!TIMER_COOLDOWN_CHECK(user, COOLDOWN_DOMINANT_EXAMINE))
-		to_chat(quirk_holder, span_notice("\The [user] tries to look at you but immediately looks away with a red face..."))
+		to_chat(quirk_holder, span_notice("\The [user] tries to look at you but immediately turns away with a red face..."))
 		TIMER_COOLDOWN_START(user, COOLDOWN_DOMINANT_EXAMINE, 5 SECONDS)
 	sub.dir = turn(get_dir(sub, quirk_holder), pick(-90, 90))
 	sub.emote("blush")
@@ -94,14 +94,14 @@
 				sub.KnockToFloor()
 				sub.emote(pick("blush", "pant"))
 				sub.visible_message(span_lewd("\The <b>[sub]</b> submissively throws [sub.p_them()]self on the floor."),
-									span_lewd("You throw yourself on the floor like a dog on <b>[quirk_holder]</b>'s command."))
+									span_lewd("You throw yourself on the floor like a pathetic beast on <b>[quirk_holder]</b>'s command."))
 			if("snap3")
 				sub.KnockToFloor()
 				step(sub, get_dir(sub, quirk_holder))
 				sub.emote(pick("blush", "pant"))
 				sub.do_jitter_animation(30) //You're being moved anyways
-				sub.visible_message(span_lewd("\The <b>[sub]</b> crawls closer to \the <b>[quirk_holder]</b> in all fours, following [quirk_holder.p_their()] command"),
-									span_lewd("You get on your fours and crawl towards \the <b>[quirk_holder]</b> like a good, submissive [good_x]."))
+				sub.visible_message(span_lewd("\The <b>[sub]</b> crawls closer to \the <b>[quirk_holder]</b> on all fours, following [quirk_holder.p_their()] command."),
+									span_lewd("You get on your hands and knees and crawl towards \the <b>[quirk_holder]</b> like a good [good_x] would."))
 		. = TRUE
 
 	if(.)

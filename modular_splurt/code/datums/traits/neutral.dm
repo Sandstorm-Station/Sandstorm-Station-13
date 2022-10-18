@@ -9,11 +9,11 @@
 	lose_text = "<span class='notice'>Seems you don't have a kink for suffocation anymore.</span>"
 
 /datum/quirk/pharmacokinesis //Supposed to prevent unwanted organ additions. But i don't think it's really working rn
-	name = "Acute hepatic pharmacokinesis" //copypasting dumbo
-	desc = "You have a rare genetic disorder that causes Incubus draft and Succubus milk to be absorbed by your liver instead."
+	name = "Acute Hepatic Pharmacokinesis" //copypasting dumbo
+	desc = "You have a genetic disorder that causes Incubus Draft and Succubus Milk to be absorbed by your liver instead."
 	value = 0
 	mob_trait = TRAIT_PHARMA
-	lose_text = "<span class='notice'>Your liver feels different.</span>"
+	lose_text = "<span class='notice'>Your liver feels... different, somehow.</span>"
 	var/active = FALSE
 	var/power = 0
 	var/cachedmoveCalc = 1
@@ -37,16 +37,20 @@
 
 /datum/quirk/headpat_hater
 	name = "Distant"
-	desc = "You don't seem to show much care for being touched. Whether it's because you're reserved or due to self control, you won't wag your tail outside of your own control should you possess one."
+	desc = "You don't seem to show much care for being touched. Whether it's because you're reserved or due to self control, others touching your head won't make you wag your tail should you possess one, and the action may even attract your ire.."
 	mob_trait = TRAIT_DISTANT
 	value = 0
+	gain_text = "<span class='notice'>Others' touches begin to make your blood boil...</span>"
+	lose_text = "<span class='notice'>Having your head pet doesn't sound so bad right about now...</span>"
 	medical_record_text = "Patient cares little with or dislikes being touched."
 
 /datum/quirk/headpat_slut
 	name = "Headpat Slut"
-	desc = "You like headpats, alot, maybe even a little bit too much. Headpats give you a bigger mood boost and cause arousal"
+	desc = "You love the feeling of others touching your head! Maybe a little too much, actually... Others patting your head will provide a bigger mood boost and cause aroused reactions."
 	mob_trait = TRAIT_HEADPAT_SLUT
 	value = 0
+	gain_text = "<span class='notice'>You crave headpats immensely!</span>"
+	lose_text = "<span class='notice'>Your headpats addiction wanes.</span>"
 	medical_record_text = "Patient seems overly affectionate."
 
 /datum/quirk/headpat_slut/add()
@@ -67,10 +71,10 @@
 
 /datum/quirk/Hypnotic_gaze
 	name = "Hypnotic Gaze"
-	desc = "Be it through mysterious patterns, flickering colors or a glint of the eye, prolonged eye contact with others will place the Target into a highly suggestible Hypnotic trance."
+	desc = "Be it through mysterious patterns, flickering colors, or some genetic oddity, prolonged eye contact with you will place the viewer into a highly-suggestible hypnotic trance."
 	value = 0
 	mob_trait = TRAIT_HYPNOTIC_GAZE
-	gain_text = "<span class='notice'>Your eyes glimmer Hypnotically..</span>"
+	gain_text = "<span class='notice'>Your eyes glimmer hypnotically...</span>"
 	lose_text = "<span class='notice'>Your eyes return to normal.</span>"
 	medical_record_text = "Prolonged exposure to Patient's eyes exhibits soporific effects."
 
@@ -103,7 +107,7 @@
 		return
 
 	to_chat(H, "<span class='notice'>You stare deeply into [T]'s eyes...</span>")
-	to_chat(T, "<span class='warning'>[H] stares Intensely into your eyes...</span>")
+	to_chat(T, "<span class='warning'>[H] stares intensely into your eyes...</span>")
 	if(!do_mob(H, T, 12 SECONDS))
 		return
 
@@ -119,7 +123,7 @@
 	var/response = alert(T, "Do you wish to fall into a hypnotic sleep?(This will allow [H] to issue hypnotic suggestions)", "Hypnosis", "Yes", "No")
 
 	if(response == "Yes")
-		T.visible_message("<span class='warning>[T] falls into a deep slumber!</span>", "<span class = 'danger'>Your eyelids gently shut as you fall into a deep slumber. All you can hear is [H]'s voice as you commit to following all of their suggestions</span>")
+		T.visible_message("<span class='warning>[T] falls into a deep slumber!</span>", "<span class = 'danger'>Your eyelids gently shut as you fall into a deep slumber. All you can hear is [H]'s voice as you commit to following all of their suggestions.</span>")
 
 		T.SetSleeping(1200)
 		T.drowsyness = max(T.drowsyness, 40)
@@ -139,7 +143,7 @@
 			to_chat(H, "You whisper your suggestion in a smooth calming voice to [T]")
 			to_chat(T, "<span class='hypnophrase'>...[text]...</span>")
 
-			T.visible_message("<span class='warning'>[T] wakes up from their deep slumber!</span>", "<span class ='danger'>Your eyelids gently open as you see [H]'s face staring back at you</span>")
+			T.visible_message("<span class='warning'>[T] wakes up from their deep slumber!</span>", "<span class ='danger'>Your eyelids gently open as you see [H]'s face staring back at you.</span>")
 			T.SetSleeping(0)
 			T = null
 			return
@@ -148,7 +152,7 @@
 			T.SetSleeping(0)
 			return
 	else
-		T.visible_message("<span class='warning'>[T]'s attention breaks, despite the attempt to hypnotize them! They clearly don't want this</span>", "<span class ='warning'>Your concentration breaks as you realise you have no interest in following [H]'s words!</span>")
+		T.visible_message("<span class='warning'>[T]'s attention breaks, despite the attempt to hypnotize them! They clearly don't want this!</span>", "<span class ='warning'>Your concentration breaks as you realise you have no interest in following [H]'s words!</span>")
 		return
 /datum/quirk/heat
 	name = "Estrus Detection"
@@ -195,12 +199,12 @@
 			species.disliked_food &= ~MEAT
 
 /datum/quirk/cum_plus
-	name = "Extra productive genitals"
-	desc = "Your lower bits produce more and hold more than normal."
+	name = "Extra-Productive Genitals"
+	desc = "Your genitals produce and hold more than normal."
 	value = 0
 	gain_text = "<span class='notice'>You feel pressure in your groin.</span>"
 	lose_text = "<span class='notice'>You feel a weight lifted from your groin.</span>"
-	medical_record_text = "Patient has greatly increased production of sexual fluids."
+	medical_record_text = "Patient exhibits increased production of sexual fluids."
 
 /datum/quirk/cum_plus/add()
 	var/mob/living/carbon/M = quirk_holder
@@ -228,10 +232,10 @@
 
 //well-trained moved to neutral to stop the awkward situation of a dom snapping and the 30 trait powergamers fall to the floor.
 /datum/quirk/well_trained
-	name = "Well-trained"
-	desc = "You absolutely love being dominated. The thought of someone with a stronger character than yours is enough to make you act up."
+	name = "Well-Trained"
+	desc = "You absolutely love being dominated. The thought of someone stronger than you is enough to make you act up."
 	value = 0
-	gain_text = "<span class='notice'>You feel like being someone's pet</span>"
+	gain_text = "<span class='notice'>You feel like being someone's pet...</span>"
 	lose_text = "<span class='notice'>You no longer feel like being a pet...</span>"
 	processing_quirk = TRUE
 	var/mood_category = "dom_trained"
@@ -301,11 +305,11 @@
 
 	//Let them know they're near
 	var/list/notices = list(
-		"You feel someone's presence making you more submissive.",
-		"The thought of being commanded floods you with lust.",
-		"You really want to be called a good [good_x].",
-		"Someone's presence is making you all flustered.",
-		"You start getting excited and sweating."
+		"You feel someone's presence making you more submissive...",
+		"Thoughts of being commanded flood you with lust...",
+		"You really want to be called a good [good_x]...",
+		"Someone's presence is making you all flustered...",
+		"You start getting excited and sweat..."
 	)
 
 	to_chat(quirk_holder, span_lewd(pick(notices)))
@@ -316,12 +320,12 @@
 
 /datum/quirk/hydra
 	name = "Hydra Heads"
-	desc = "You are a tri-headed creature. To use, format name like (Rucks-Sucks-Ducks)"
+	desc = "You are a tri-headed creature. To use, format your name like (Rucks-Sucks-Ducks)."
 	value = 0
 	mob_trait = TRAIT_HYDRA_HEADS
 	gain_text = "<span class='notice'>You hear two other voices inside of your head(s).</span>"
 	lose_text = "<span class='danger'>All of your minds become singular.</span>"
-	medical_record_text = "There are multiple heads and personalities affixed to one body."
+	medical_record_text = "Patient has multiple heads and personalities affixed to their body."
 
 /datum/quirk/hydra/on_spawn()
 	var/mob/living/carbon/human/hydra = quirk_holder
@@ -341,7 +345,7 @@
 	button_icon_state = "art_summon"
 
 /datum/action/innate/hydrareset
-	name = "Reset Speech"
+	name = "Reset speech"
 	desc = "Go back to speaking as a whole."
 	icon_icon = 'icons/mob/actions/actions_minor_antag.dmi'
 	button_icon_state = "art_summon"
@@ -363,10 +367,10 @@
 //Own traits
 /datum/quirk/cum_sniff
 	name = "Genital Taster"
-	desc = "You've built so much experience savoring other people's genitals through your life that you can easily tell what liquids they're full of (besides blood in their vessels that is)"
+	desc = "You've built so much experience savoring other people's genitals through your life that you can easily tell what liquids they're full of, besides reagents in their blood that is."
 	value = 0
 	mob_trait = TRAIT_GFLUID_DETECT
-	gain_text = "<span class='notice'>You start getting peculiar smells from people's bits.</span>"
+	gain_text = "<span class='notice'>You begin sensing peculiar smells from people's bits...</span>"
 	lose_text = "<span class='notice'>People's genitals start smelling all the same to you...</span>"
 	medical_record_text = "Patient attempted to get their doctor to drag his balls accross their face."
 
@@ -382,7 +386,7 @@
 //succubus and incubus below
 /datum/quirk/incubus
 	name = "Incubus"
-	desc = "you can only be fed by milk (and semen too if you're a cubus hybrid)"
+	desc = "Your seductor-like metabolism can only be sated by milk. (And semen, if you're a Succubus as well.)"
 	value = 0
 	mob_trait = TRAIT_INCUBUS
 	processing_quirk = TRUE
@@ -406,7 +410,7 @@
 
 /datum/quirk/succubus
 	name = "Succubus"
-	desc = "you can only be fed by semen (and milk too if you're a cubus hybrid)"
+	desc = "Your seductress-like metabolism can only be sated by semen. (And milk, if you're an Incubus as well.)"
 	value = 0
 	mob_trait = TRAIT_SUCCUBUS
 	processing_quirk = TRUE
@@ -430,7 +434,7 @@
 
 /datum/quirk/vampire//splurt change start
 	name = "Bloodsucker Fledgeling"
-	desc = "you need blood for nutriment, you have fangs to aid with this, the church harms you"
+	desc = "You are a fledgeling of an ancient Bloodsucker bloodline; your skin is incurably pale and your mouth glimmers with vampiric fangs. Only blood will sate your hungers, and holy energies will cause your flesh to char."
 	value = 0
 	medical_record_text = "this person was partially infected by a bloodsucker"
 	mob_trait = BLOODFLEDGE
@@ -488,10 +492,10 @@
 #define BLOOD_DRAIN_NUM 50
 
 /datum/action/vbite
-	name = "Bite Victim"
+	name = "Bite"
 	button_icon_state = "power_feed"
 	icon_icon = 'icons/mob/actions/bloodsucker.dmi'
-	desc = "bite the person you are grabbing with your fangs"
+	desc = "Sink your vampiric fangs into the person you are grabbing."
 	var/drain_cooldown = 0
 
 /datum/action/vbite/Trigger()
