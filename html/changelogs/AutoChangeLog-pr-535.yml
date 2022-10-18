@@ -1,0 +1,9 @@
+author: JerryWester
+delete-after: true
+changes:
+  - rscadd: diagnostic HUD aviators and prescription aviators, as well as crafting
+      recipes
+  - rscadd: diagnostic HUD implant
+  - tweak: add diagnostic HUD implant to the cybernetic implants techweb node
+  - tweak: move aviators and HUD aviators out of the masks file and into new files
+      that fall more in line with where they should have ended up
