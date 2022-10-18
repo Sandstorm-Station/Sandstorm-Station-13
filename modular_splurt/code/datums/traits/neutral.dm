@@ -492,7 +492,7 @@
 	var/mob/living/carbon/human/H = quirk_holder
 	var/datum/action/werewolf/W = new
 	W.Grant(H)
-	
+
 /datum/quirk/werewolf/remove()
 	var/mob/living/carbon/human/H = quirk_holder
 	var/datum/action/werewolf/W = locate() in H.actions
@@ -561,7 +561,7 @@
 	icon_icon = 'modular_splurt/icons/mob/actions/misc_actions.dmi'
 	button_icon_state = "Transform"
 	var/transformed = FALSE
-	var/list/old_features = list("species" = SPECIES_HUMAN, "legs" = "Plantigrade", "size" = 1)
+	var/list/old_features = list("species" = SPECIES_HUMAN, "legs" = "Plantigrade", "size" = 1, "bark")
 
 /datum/action/werewolf/Trigger()
 	. = ..()
@@ -602,6 +602,7 @@
 	else // untransform them
 		H.visible_message(span_danger("[H]'s features slowly recede from their wolfish appearance"))
 		H.set_species(old_features["species"], TRUE)
+		H.set_bark(old_features["bark"])
 		H.dna.features["mam_ears"] = old_features["mam_ears"]
 		H.dna.features["mam_snouts"] = old_features["mam_snouts"]
 		H.dna.features["mam_tail"] = old_features["mam_tail"]
@@ -634,3 +635,4 @@
 	old_features = H.dna.features.Copy()
 	old_features["species"] = H.dna.species.type
 	old_features["size"] = get_size(H)
+	old_features["bark"] = H.vocal_bark_id
