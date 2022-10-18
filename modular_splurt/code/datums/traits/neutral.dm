@@ -44,7 +44,7 @@
 
 /datum/quirk/headpat_slut
 	name = "Headpat Slut"
-	desc = "You love the feeling of others touching your head! Maybe a little too much, actually... Others patting your head will provide a bigger mood boost and cause aroused reactionas.
+	desc = "You love the feeling of others touching your head! Maybe a little too much, actually... Others patting your head will provide a bigger mood boost and cause aroused reactions."
 	mob_trait = TRAIT_HEADPAT_SLUT
 	value = 0
 	medical_record_text = "Patient seems overly affectionate."
