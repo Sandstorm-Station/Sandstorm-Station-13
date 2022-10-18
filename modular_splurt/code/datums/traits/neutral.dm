@@ -614,7 +614,7 @@
 			H.dna.species.mutant_bodyparts["legs"] = old_features["legs"]
 		H.update_body()
 		H.update_body_parts()
-		H.update_size(old_features["size"])
+		H.update_size(get_size(H) - 0.5)
 		if(B)
 			B.color = "#[old_features["breasts_color"]]"
 			B.update()
