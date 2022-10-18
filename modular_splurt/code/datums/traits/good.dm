@@ -209,13 +209,13 @@
 		 (Press ALT+CLICK on the target to start wrapping.)</span>")
 		H.adjust_nutrition(spinner_rate * -0.5)
 		addtimer(VARSET_CALLBACK(src, web_ready, TRUE), web_cooldown)
-		RegisterSignal(H, list(COMSIG_MOB_ALTCLICKON), .proc/cocoonAtom)
+		RegisterSignal(H, list(COMSIG_MOB_ALTCLICKON), .proc/cocoonCheck)
 		return
 	else
 		to_chat(H, "<span class='warning'>You're too hungry to spin web right now, eat something first!</span>")
 		return
 
-/datum/action/innate/spin_cocoon_quirk/proc/cocoonAtom(mob/living/carbon/human/H, atom/movable/A)
+/datum/action/innate/spin_cocoon_quirk/proc/cocoonCheck(mob/living/carbon/human/H, atom/movable/A)
 	UnregisterSignal(H, list(COMSIG_MOB_ALTCLICKON))
 	if (!H || !isarachnid(H))
 		return COMSIG_MOB_CANCEL_CLICKON
@@ -234,18 +234,30 @@
 		if(istype(A, /obj/effect))
 			to_chat(H, "<span class='warning'>You cannot wrap this.</span>")
 			return
-		H.visible_message("<span class='danger'>[H] starts to wrap [A] into a cocoon!</span>","<span class='warning'>You start to wrap [A] into a cocoon.</span>")
-		if(!do_after(H, 10 SECONDS, 1, A))
-			to_chat(H, "<span class='warning'>Your web spinning was interrupted!</span>")
-			return
-		H.adjust_nutrition(spinner_rate * -3)
-		var/obj/structure/arachnid/cocoon/C = new(A.loc)
 		if(isliving(A))
-			C.icon_state = pick("cocoon_large1","cocoon_large2","cocoon_large3")
-			A.forceMove(C)
-			H.visible_message("<span class='danger'>[H] wraps [A] into a large cocoon!</span>")
-			return
+			to_chat(H, "<span class='warning'>You prepare to wrap [A] in a cocoon...</span>")
+			var/response = alert(A, "Do you wish to be wrapped in a cocoon?", "Cocooning", "No", "Yes")
+			if(response == "No")
+				to_chat(H, "<span class='warning'>[A] resists your attempts to wrap [A.p_them()]!</span>")
+				return
+			else
+				cocoonAtom(H,A)
 		else
-			A.forceMove(C)
-			H.visible_message("<span class='danger'>[H] wraps [A] into a cocoon!</span>")
-			return
+			cocoonAtom(H,A)
+
+/datum/action/innate/spin_cocoon_quirk/proc/cocoonAtom(mob/living/carbon/human/H, atom/movable/A)
+	H.visible_message("<span class='danger'>[H] starts to wrap [A] into a cocoon!</span>","<span class='warning'>You start to wrap [A] into a cocoon.</span>")
+	if(!do_after(H, 10 SECONDS, 1, A))
+		to_chat(H, "<span class='warning'>Your web spinning was interrupted!</span>")
+		return
+	H.adjust_nutrition(spinner_rate * -3)
+	var/obj/structure/arachnid/cocoon/C = new(A.loc)
+	if(isliving(A))
+		C.icon_state = pick("cocoon_large1","cocoon_large2","cocoon_large3")
+		A.forceMove(C)
+		H.visible_message("<span class='danger'>[H] wraps [A] into a large cocoon!</span>")
+		return
+	else
+		A.forceMove(C)
+		H.visible_message("<span class='danger'>[H] wraps [A] into a cocoon!</span>")
+		return
