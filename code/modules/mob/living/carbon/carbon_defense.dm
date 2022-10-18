@@ -301,12 +301,12 @@
 				SEND_SIGNAL(H, COMSIG_ADD_MOOD_EVENT, "dom_trained", /datum/mood_event/dominant/good_boy)
 
 			if(HAS_TRAIT(H, TRAIT_DISTANT)) //No mood buff since you're not really liking it.
-				M.visible_message("<span class='notice'>[M] gives [H] a pat on the head to make [p_them()] feel better! They seem annoyed...</span>", \
-					"<span class='warning'>You give [H] a pat on the head to make [p_them()] feel better! They seem annoyed as they're now glaring towards you...</span>")
+				M.visible_message("<span class='warning'>[H] glares at [M] as they give them a pat on the head! They seem annoyed...</span>", \
+					"<span class='warning'>You give [H] a pat on the head to make [p_them()] feel better! Their eyes shift towards you contemptuously...</span>")
 				H.add_lust(-5) //Why are you touching me?
 				if(prob(5))
 					M.visible_message("<span class='warning'>[H] quickly twists [M]\'s arm!</span>", \
-						"<span class='boldwarning'>Your arm gets twisted in [H]\'s grasp. Maybe you should have taken the hint...</span>")
+						"<span class='boldwarning'>Your arm gets twisted in [H]\'s grasp! Maybe you should've taken the hint.</span>")
 					playsound(get_turf(H), 'sound/weapons/thudswoosh.ogg', 50, 1, -1)
 					M.emote("scream")
 					M.dropItemToGround(M.get_active_held_item())
@@ -319,8 +319,8 @@
 			else
 				friendly_check = TRUE
 				if(HAS_TRAIT(H, TRAIT_HEADPAT_SLUT))
-					M.visible_message("<span class='notice'>[M] gives [src] a pat on the head to make [p_them()] feel better! They seem incredibely pleased!</span>", \
-								"<span class='notice'>You give [src] a pat on the head to make [p_them()] feel better! They seem to like it way too much..</span>", target = src,
+					M.visible_message("<span class='notice'>[M] gives [src] a pat on the head to make [p_them()] feel better! They seem incredibly pleased!</span>", \
+								"<span class='notice'>You give [src] a pat on the head to make [p_them()] feel better! They seem to be way too into it...</span>", target = src,
 								target_message = "<span class='boldnotice'>[M] gives you a pat on the head to make you feel better!</span>")
 					SEND_SIGNAL(src, COMSIG_ADD_MOOD_EVENT, "lewd_headpat", /datum/mood_event/lewd_headpat)
 					H.handle_post_sex(5, null, null) //Headpats are hot af

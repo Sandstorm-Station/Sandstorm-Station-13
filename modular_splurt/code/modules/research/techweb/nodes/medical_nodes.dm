@@ -23,7 +23,15 @@
 
 /datum/techweb_node/cyber_implants/New()
 	var/list/removed_designs = list(
+		"ci-medhud", // Removing and re-adding the HUDs to the list because
+		"ci-sechud", // the positioning bothers my pattern-seeking mind
 		"ci-power-cord"
 	)
+	var/list/added_designs = list(
+		"ci-medhud",
+		"ci-sechud",
+		"ci-diaghud"
+	)
 	LAZYREMOVE(design_ids, removed_designs)
+	LAZYADD(design_ids, added_designs)
 	. = ..()

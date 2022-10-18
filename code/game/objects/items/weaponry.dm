@@ -970,7 +970,7 @@ for further reading, please see: https://github.com/tgstation/tgstation/pull/301
 		homerun_ready = 1
 	..()
 
-//EROS REMOVE modular_splurt\code\game\object\items\weaponry\melee
+//EROS REMOVE modular_splurt\code\game\objects\items\weaponry\melee
 /*
 /obj/item/melee/baseball_bat/attack(mob/living/target, mob/living/user)
 	. = ..()

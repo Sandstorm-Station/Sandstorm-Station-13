@@ -220,3 +220,9 @@
 	icon_state = "beaktiny"
 	icon = 'modular_splurt/icons/mob/mam_snouts.dmi'
 	color_src = MUTCOLORS
+
+/datum/sprite_accessory/snouts/mam_snouts/deoxys
+	name = "Deoxys"
+	icon_state = "deoxys"
+	icon = 'modular_splurt/icons/mob/mam_snouts.dmi'
+	matrixed_sections = MATRIX_ALL

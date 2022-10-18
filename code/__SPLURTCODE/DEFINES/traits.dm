@@ -18,3 +18,6 @@
 #define TRAIT_CHOKE_SLUT		"choke_slut"
 
 #define BLOODFLEDGE				"BloodFledge"//splurt change
+
+#define TRAIT_INCUBUS			"Incubus"
+#define TRAIT_SUCCUBUS			"Succubus"

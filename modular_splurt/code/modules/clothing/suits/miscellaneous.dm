@@ -75,6 +75,23 @@
 	icon_state = "jacket_white"
 	item_state = "jacket_white"
 
+/obj/item/clothing/suit/baroness
+	name = "Baroness Dress"
+	desc = "This dress is stained red due to the bloody history of its previous owner"
+	icon = 'modular_splurt/icons/obj/clothing/suits.dmi'
+	mob_overlay_icon = 'modular_splurt/icons/mob/clothing/suit.dmi'
+	icon_state = "baroness"
+	item_state = "baroness"
+	body_parts_covered = CHEST|GROIN|LEGS|FEET
+	mutantrace_variation = STYLE_DIGITIGRADE|STYLE_NO_ANTHRO_ICON
+	flags_inv = HIDESHOES|HIDEUNDERWEAR
+
+/obj/item/clothing/suit/baroness/ladyballat
+	name = "Green Ball Dress"
+	desc = "This dress looks a bit like the one an estranged aunt would wear."
+	icon_state = "ladyballat"
+	item_state = "ladyballat"
+
 /*
  * Posshim's Corpus atire
  */
@@ -124,14 +141,16 @@
 /obj/item/clothing/head/hooded/corpus/c //command
 	icon_state = "corpusc"
 
-/obj/item/clothing/under/rank/civilian/janitor/maid/formal
+/obj/item/clothing/suit/maid
 	name = "Formal maid uniform"
 	desc = "A cozy maid uniform for housekeeping."
 	icon = 'modular_splurt/icons/obj/clothing/suits.dmi'
 	mob_overlay_icon = 'modular_splurt/icons/mob/clothing/suit.dmi'
-	fitted = NO_FEMALE_UNIFORM
 	icon_state = "maiddress"
 	item_state = "maiddress"
+	body_parts_covered = CHEST|GROIN|LEGS|FEET
+	mutantrace_variation = STYLE_DIGITIGRADE|STYLE_NO_ANTHRO_ICON
+	flags_inv = HIDESHOES|HIDEUNDERWEAR
 
 /obj/item/clothing/suit/hooded/pyramidhead
 	name = "Pyramid Head apron"
