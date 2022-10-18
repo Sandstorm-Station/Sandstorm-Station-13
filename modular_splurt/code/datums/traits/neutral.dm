@@ -569,6 +569,7 @@
 	var/obj/item/organ/genital/penis/P = H.getorganslot(ORGAN_SLOT_PENIS)
 	var/obj/item/organ/genital/breasts/B = H.getorganslot(ORGAN_SLOT_BREASTS)
 	var/obj/item/organ/genital/vagina/V = H.getorganslot(ORGAN_SLOT_VAGINA)
+	H.shake_animation(2)
 	if(!transformed) // transform them
 		H.visible_message(span_danger("The pale touch of moonlight transforms [H] into an anthropomorphic wolf!"))
 		H.set_species(/datum/species/mammal, 1)
