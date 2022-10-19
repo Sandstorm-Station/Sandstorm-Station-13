@@ -124,8 +124,7 @@ Icons, maybe?
 				sleep(2) //Check every other tick
 				if(leash_pet == "null") //No pet, break loop
 					return
-				if(!(leash_pet.get_item_by_slot(ITEM_SLOT_NECK))) //The pet has slipped their 
-				and is not the pet anymore.
+				if(!(leash_pet.get_item_by_slot(ITEM_SLOT_NECK))) //The pet has slipped their and is not the pet anymore.
 					for(var/mob/viewing in viewers(user, null))
 						viewing.show_message("<span class='notice'>[leash_pet] has slipped out of their collar!!</span>", 1)
 					to_chat(leash_pet, "<span class='notice'>You have slipped out of your collar!</span>")
