@@ -459,6 +459,7 @@
 /datum/quirk/vampire/on_process()
 	. = ..()
 	var/mob/living/carbon/C = quirk_holder
+	var/mob/living/carbon/human/H = quirk_holder
 	var/area/A = get_area(C)
 	if(istype(A, /area/service/chapel) && C.mind?.assigned_role != "Chaplain")
 		C.adjustStaminaLoss(2)
@@ -470,6 +471,11 @@
 		C.adjustOxyLoss(-4)
 		C.adjustCloneLoss(-4)
 		C.adjustBruteLoss(-0.3)
+		C.adjustFireLoss(0.3)
+		if(H.dna.species ==  /datum/species/jelly || /datum/species/jelly/roundstartslime || /datum/species/jelly/slime || /datum/species/jelly/luminescent || /datum/species/jelly/stargazer)
+			C.adjustToxLoss(20)
+		else
+			C.adjustToxLoss(-20)
 		return
 
 /datum/quirk/vampire/remove()
