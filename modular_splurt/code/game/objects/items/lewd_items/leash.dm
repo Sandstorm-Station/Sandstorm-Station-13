@@ -92,7 +92,7 @@ Icons, maybe?
 	if(C.has_status_effect(/datum/status_effect/leash_pet)) //If the pet is already leashed, do not leash them. For the love of god.
 		to_chat(user, "<span class='notice'>[C] has already been leashed.</span>")
 		return
-	if(istype(C.get_item_by_slot(ITEM_SLOT_NECK), /obj/item/clothing/neck/petcollar) || istype(C.get_item_by_slot(ITEM_SLOT_NECK), /obj/item/electropack/shockcollar))
+	if(istype(C.get_item_by_slot(ITEM_SLOT_NECK), /obj/item/clothing/neck/petcollar) || istype(C.get_item_by_slot(ITEM_SLOT_NECK), /obj/item/electropack/shockcollar, /obj/item/clothing/neck/necklace/cowbell, /obj/item/clothing/neck/maid))
 		var/leashtime = 50
 		if(C.handcuffed)
 			leashtime = 5
@@ -124,7 +124,8 @@ Icons, maybe?
 				sleep(2) //Check every other tick
 				if(leash_pet == "null") //No pet, break loop
 					return
-				if(!(leash_pet.get_item_by_slot(ITEM_SLOT_NECK))) //The pet has slipped their collar and is not the pet anymore.
+				if(!(leash_pet.get_item_by_slot(ITEM_SLOT_NECK))) //The pet has slipped their 
+				and is not the pet anymore.
 					for(var/mob/viewing in viewers(user, null))
 						viewing.show_message("<span class='notice'>[leash_pet] has slipped out of their collar!!</span>", 1)
 					to_chat(leash_pet, "<span class='notice'>You have slipped out of your collar!</span>")
