@@ -472,10 +472,10 @@
 		C.adjustCloneLoss(-4)
 		C.adjustBruteLoss(-0.3)
 		C.adjustFireLoss(0.3)
-		if(H.dna.species ==  /datum/species/jelly || /datum/species/jelly/roundstartslime || /datum/species/jelly/slime || /datum/species/jelly/luminescent || /datum/species/jelly/stargazer)
-			C.adjustToxLoss(20)
+		if(H.dna.species ==  /datum/species/jelly || /datum/species/jelly/roundstartslime || /datum/species/jelly/slime || /datum/species/jelly/luminescent || /datum/species/jelly/stargazer)//checks species
+			C.adjustToxLoss(20)//heals toxin if slime
 		else
-			C.adjustToxLoss(-20)
+			C.adjustToxLoss(-20)//heals toxin if not slime
 		return
 
 /datum/quirk/vampire/remove()
