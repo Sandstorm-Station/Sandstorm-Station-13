@@ -557,7 +557,7 @@
 				to_chat(H, "<span class='warning'>You finish off [victim]'s blood supply!</span>")
 
 /datum/action/vrevive
-	name = "Ressurect"
+	name = "Resurrect"
 	button_icon_state = "power_strength"
 	icon_icon = 'icons/mob/actions/bloodsucker.dmi'
 	desc = "Use all your energy to come back to life!"
