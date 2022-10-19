@@ -6,3 +6,8 @@
 /obj/item/card/id/syndicate/slaver/leader
 	name = "\improper Slaver Master ID"
 	desc = "A cheap ID used by slave traders. This guy seems to run the show."
+
+/obj/item/card/id/vampire
+	name = "vampire ID card"
+	desc = "An ID made to easily recognize vampires without needing to do tests"
+	icon_state = "vampire"

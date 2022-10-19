@@ -454,7 +454,9 @@
 	if(!H.dna.skin_tone_override)
 		H.skin_tone = "albino"
 	var/datum/action/vbite/B = new
+	var/datum/action/vrevive/R = new
 	B.Grant(H)
+	R.Grant(H)
 
 /datum/quirk/vampire/on_process()
 	. = ..()
@@ -471,14 +473,17 @@
 		C.adjustOxyLoss(-4)
 		C.adjustCloneLoss(-4)
 		C.adjustBruteLoss(-0.3)
-		C.adjustFireLoss(0.3)
-		if(H.dna.species ==  /datum/species/jelly || /datum/species/jelly/roundstartslime || /datum/species/jelly/slime || /datum/species/jelly/luminescent || /datum/species/jelly/stargazer)//checks species
-			C.adjustToxLoss(20)//heals toxin if slime
+		C.adjustFireLoss(-0.3)
+		if(!istype(H.dna.species, /datum/species/jelly)) //checks species
+			C.adjustToxLoss(-5)//heals toxin if not slime
 		else
-			C.adjustToxLoss(-20)//heals toxin if not slime
+			C.adjustToxLoss(5)//heals toxin if slime
 		return
 
+
+
 /datum/quirk/vampire/remove()
+	. = ..()
 	var/mob/living/carbon/human/H = quirk_holder
 	var/datum/action/vbite/B = locate() in H.actions
 	REMOVE_TRAIT(H, TRAIT_NO_PROCESS_FOOD, ROUNDSTART_TRAIT)
@@ -487,8 +492,13 @@
 	REMOVE_TRAIT(H, TRAIT_NOTHIRST, ROUNDSTART_TRAIT)
 	REMOVE_TRAIT(H,TRAIT_QUICKER_CARRY,ROUNDSTART_TRAIT)
 	REMOVE_TRAIT(H,TRAIT_AUTO_CATCH_ITEM,ROUNDSTART_TRAIT)
-
 	B.Remove(H)
+
+/datum/quirk/vampire/on_spawn()
+	var/mob/living/carbon/human/H = quirk_holder
+	var/obj/item/card/id/vampire/vcard = new /obj/item/card/id/vampire
+	H.equip_to_slot(vcard, ITEM_SLOT_BACKPACK)
+	H.regenerate_icons()
 	. = ..()
 
 /// quirk actions ///
@@ -531,6 +541,7 @@
 			if(!blood_sucking_checks(victim, TRUE, TRUE))
 				return
 			H.visible_message("<span class='danger'>[H] bites down on [victim]'s neck!</span>")
+			victim.add_splatter_floor(get_turf(victim), TRUE)
 			to_chat(victim, "<span class='userdanger'>[H] is draining your blood!</span>")
 			if(!do_after(H, 30, target = victim))
 				return
@@ -544,6 +555,24 @@
 			log_combat(H,victim,"vampire bit")//logs the biting action for admins
 			if(!victim.blood_volume)
 				to_chat(H, "<span class='warning'>You finish off [victim]'s blood supply!</span>")
+
+/datum/action/vrevive
+	name = "Ressurect"
+	button_icon_state = "power_strength"
+	icon_icon = 'icons/mob/actions/bloodsucker.dmi'
+	desc = "Use all your energy to come back to life!"
+
+/datum/action/vrevive/Trigger()
+	. = ..()
+	var/mob/living/carbon/C = owner
+	var/mob/living/carbon/human/H = owner
+	if(H.stat == DEAD && istype(C.loc, /obj/structure/closet/crate/coffin))
+		H.revive(TRUE, FALSE)
+		H.set_nutrition(0)
+		H.Daze(20)
+		H.drunkenness = 70
+	else
+		to_chat(H,"<span class='warning'>You need to be dead and in a coffin to revive!</span>")
 
 //splurt change end
 //put next quirk action here
