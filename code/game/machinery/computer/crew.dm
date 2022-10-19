@@ -30,26 +30,36 @@ GLOBAL_DATUM_INIT(crewmonitor, /datum/crewmonitor, new)
 	. = ..()
 
 	var/list/jobs = new/list()
+	// Command
 	jobs["Captain"] = 00
+	jobs["Blueshield"] = 01
+	// Security
 	jobs["Head of Security"] = 10
 	jobs["Warden"] = 11
 	jobs["Security Officer"] = 12
 	jobs["Detective"] = 13
+	jobs["Brig Physician"] = 14
+	jobs["Peacekeeper"] = 15
+	// Medical
 	jobs["Chief Medical Officer"] = 20
 	jobs["Chemist"] = 21
 	jobs["Geneticist"] = 22
 	jobs["Virologist"] = 23
 	jobs["Medical Doctor"] = 24
 	jobs["Paramedic"] = 25
+	// Science
 	jobs["Research Director"] = 30
 	jobs["Scientist"] = 31
 	jobs["Roboticist"] = 32
+	// Engineering
 	jobs["Chief Engineer"] = 40
 	jobs["Station Engineer"] = 41
 	jobs["Atmospheric Technician"] = 42
+	// Cargo
 	jobs["Quartermaster"] = 50
 	jobs["Shaft Miner"] = 51
 	jobs["Cargo Technician"] = 52
+	// Service
 	jobs["Head of Personnel"] = 60
 	jobs["Bartender"] = 61
 	jobs["Cook"] = 62
@@ -60,6 +70,9 @@ GLOBAL_DATUM_INIT(crewmonitor, /datum/crewmonitor, new)
 	jobs["Mime"] = 67
 	jobs["Janitor"] = 68
 	jobs["Lawyer"] = 69
+	jobs["Psychologist"] = 71
+	jobs["Bridge Officer"] = 72
+	// Central Command
 	jobs["Admiral"] = 200
 	jobs["CentCom Commander"] = 210
 	jobs["Custodian"] = 211
@@ -69,6 +82,7 @@ GLOBAL_DATUM_INIT(crewmonitor, /datum/crewmonitor, new)
 	jobs["Security Response Officer"] = 221
 	jobs["Engineer Response Officer"] = 222
 	jobs["Medical Response Officer"] = 223
+	// Miscellaneous
 	jobs["Assistant"] = 999 //Unknowns/custom jobs should appear after civilians, and before assistants
 
 	src.jobs = jobs
