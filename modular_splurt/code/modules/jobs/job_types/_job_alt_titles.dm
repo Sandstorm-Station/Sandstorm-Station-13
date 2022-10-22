@@ -90,6 +90,7 @@
 		"Tourist",
 		"Clerk",
 		"Blacksmith",
+		"Waiter",
 		"All-purpose fleshlight",
 		"Cumdump",
 		"Greytider",
