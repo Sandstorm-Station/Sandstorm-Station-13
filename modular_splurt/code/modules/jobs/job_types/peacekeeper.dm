@@ -13,7 +13,7 @@
 	exp_type = EXP_TYPE_CREW
 	considered_combat_role = FALSE
 	alt_titles = list("Slutcurity Trainee", "Security Trainee", "Security Assistant", "Security Cadet", "Security Trainee", "Rookie")
-	custom_spawn_text = "<font color='black' size='2'><b> Your job is to help Security and react to Minor crimes. Conflict De-escalation through WORDS is your top priority. Only use your taser as a last resort.</b></font><font color='red' size='4'><b>You are NOT a Security Officer.</b></font>"
+	custom_spawn_text = "<font color='black' size='2'><b> Your job is to help Security and react to minor crimes. Conflict de-escalation through WORDS is your top priority. Only use your taser as a last resort.</b></font><font color='red' size='4'><b>You are NOT a Security Officer.</b></font>"
 
 	outfit = /datum/outfit/job/peacekeeper
 	plasma_outfit = /datum/outfit/plasmaman/peacekeeper
@@ -33,7 +33,7 @@
 	name = "Peacekeeper"
 	jobtype = /datum/job/peacekeeper
 
-	belt = /obj/item/gun/energy/e_gun/advtaser
+	belt = /obj/item/pda/security
 	ears = /obj/item/radio/headset/headset_sec/alt
 	glasses = /obj/item/clothing/glasses/hud/security/sunglasses
 	uniform = /obj/item/clothing/under/rank/security/officer/peacekeeper
@@ -41,9 +41,10 @@
 	head = /obj/item/clothing/head/helmet/blueshirt
 	suit = /obj/item/clothing/suit/armor/vest/peacekeeper
 	shoes = /obj/item/clothing/shoes/jackboots
-	r_pocket = /obj/item/storage/bag/security
-	l_pocket = /obj/item/pda/security
-	backpack_contents = list(/obj/item/storage/box/zipties, /obj/item/reagent_containers/spray/pepper, /obj/item/clothing/accessory/badge/deputy, /obj/item/assembly/flash/handheld, /obj/item/holosign_creator/security)
+	l_pocket = /obj/item/restraints/handcuffs
+	r_pocket = /obj/item/assembly/flash/handheld
+	suit_store = /obj/item/gun/energy/e_gun/advtaser
+	backpack_contents = list(/obj/item/reagent_containers/spray/pepper, /obj/item/clothing/accessory/badge/deputy, /obj/item/holosign_creator/security)
 
 	backpack = /obj/item/storage/backpack/security/pk
 	satchel = /obj/item/storage/backpack/satchel/sec/pk
@@ -52,7 +53,7 @@
 
 	implants = list(/obj/item/implant/mindshield)
 
-/datum/outfit/plasmaman/peacekeeper
+/datum/outfit/plasmaman/peacekeeper // i dare not to touch whatever this is why does it have a fucking telescopic baton
 	name = "Peacekeeper Plasmaman"
 
 	head = /obj/item/clothing/head/helmet/space/plasmaman/security
@@ -61,7 +62,7 @@
 	r_hand = /obj/item/melee/classic_baton/telescopic
 	r_pocket = /obj/item/storage/bag/security
 	l_pocket = /obj/item/assembly/flash/handheld
-	backpack_contents = list(/obj/item/storage/box/zipties, /obj/item/reagent_containers/peacehypo, /obj/item/reagent_containers/spray/pepper, /obj/item/clothing/accessory/badge/deputy)
+	backpack_contents = list(/obj/item/reagent_containers/spray/pepper, /obj/item/clothing/accessory/badge/deputy)
 
 	box = /obj/item/storage/box/survival/security
 

@@ -1,11 +1,11 @@
 /datum/job/blueshield
 	title = "Blueshield"
 	flag = BLUESHIELD
-	department_head = list("Central Command")
+	department_head = list("CentCom")
 	department_flag = ENGSEC
 	faction = "Station"
 	head_announce = list(RADIO_CHANNEL_COMMAND)
-	supervisors = "central command"
+	supervisors = "Central Command"
 	total_positions = 1
 	spawn_positions = 1
 	selection_color = "#aac1ee"
