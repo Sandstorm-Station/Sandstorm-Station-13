@@ -486,6 +486,7 @@
 	. = ..()
 	var/mob/living/carbon/human/H = quirk_holder
 	var/datum/action/vbite/B = locate() in H.actions
+	var/datum/action/vbite/R = locate() in H.actions
 	REMOVE_TRAIT(H, TRAIT_NO_PROCESS_FOOD, ROUNDSTART_TRAIT)
 	REMOVE_TRAIT(H, TRAIT_COLDBLOODED, ROUNDSTART_TRAIT)
 	REMOVE_TRAIT(H, TRAIT_NOBREATH, ROUNDSTART_TRAIT)
@@ -493,6 +494,7 @@
 	REMOVE_TRAIT(H,TRAIT_QUICKER_CARRY,ROUNDSTART_TRAIT)
 	REMOVE_TRAIT(H,TRAIT_AUTO_CATCH_ITEM,ROUNDSTART_TRAIT)
 	B.Remove(H)
+	R.Remove(H)
 
 /datum/quirk/vampire/on_spawn()
 	var/mob/living/carbon/human/H = quirk_holder
