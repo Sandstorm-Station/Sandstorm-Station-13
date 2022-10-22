@@ -86,11 +86,11 @@
 		"Volunteer",
 		"Morale Officer",
 		"Stripper",
-		"Off-Duty",
 		"Escort",
 		"Tourist",
 		"Clerk",
 		"Blacksmith",
+		"Waiter",
 		"All-purpose fleshlight",
 		"Cumdump",
 		"Greytider",
@@ -276,7 +276,6 @@
 		"Probation Officer",
 		"Guardsman",
 		"Police Officer",
-		"Rookie",
 		"Slutcurity Officer"
 	)
 	if(SSevents.holidays && SSevents.holidays[HALLOWEEN])
