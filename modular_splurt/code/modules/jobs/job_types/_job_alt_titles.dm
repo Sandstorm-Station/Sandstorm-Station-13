@@ -86,7 +86,6 @@
 		"Volunteer",
 		"Morale Officer",
 		"Stripper",
-		"Off-Duty",
 		"Escort",
 		"Tourist",
 		"Clerk",
