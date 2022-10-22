@@ -474,7 +474,7 @@
 		C.adjustCloneLoss(-4)
 		C.adjustBruteLoss(-0.3)
 		C.adjustFireLoss(-0.3)
-		if(!istype(H.dna.species, /datum/species/jelly)) //checks species
+		if(!is_species(H, /datum/species/jelly)) //checks species
 			C.adjustToxLoss(-5)//heals toxin if not slime
 		else
 			C.adjustToxLoss(5)//heals toxin if slime
