@@ -276,7 +276,6 @@
 		"Probation Officer",
 		"Guardsman",
 		"Police Officer",
-		"Rookie",
 		"Slutcurity Officer"
 	)
 	if(SSevents.holidays && SSevents.holidays[HALLOWEEN])
