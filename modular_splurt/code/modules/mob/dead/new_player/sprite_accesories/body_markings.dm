@@ -101,6 +101,12 @@
 	icon_state = "toeclaws"
 	covered_limbs = list("Right Leg" = MATRIX_RED, "Left Leg" = MATRIX_RED)
 
+/datum/sprite_accessory/mam_body_markings/deoxys
+	name = "Deoxys"
+	icon = 'modular_splurt/icons/mob/mam_markings.dmi'
+	icon_state = "deoxys"
+	covered_limbs = list("Head" = MATRIX_ALL, "Chest" = MATRIX_ALL, "Left Leg" = MATRIX_RED_GREEN, "Right Leg" = MATRIX_RED_GREEN, "Left Arm" = MATRIX_RED_GREEN, "Right Arm" = MATRIX_RED_GREEN)
+
 /******************************************
 ************* Insect Markings *************
 *******************************************/

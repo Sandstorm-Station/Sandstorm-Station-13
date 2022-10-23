@@ -1,4 +1,3 @@
-//Hyper stuff
 /datum/sprite_accessory/hair/hyenamane
 	name = "Hyena Mane"
 	icon_state = "hair_hyenamane"
@@ -121,3 +120,43 @@
 	name = "Damsel"
 	icon = 'modular_splurt/icons/mob/hair.dmi'
 	icon_state = "hair_damsel"
+
+/datum/sprite_accessory/hair/wavylong
+	name = "Long Wavy"
+	icon = 'modular_splurt/icons/mob/hair.dmi'
+	icon_state = "hair_wavylong"
+
+/datum/sprite_accessory/hair/wavyovereye
+	name = "Wavy over eye"
+	icon = 'modular_splurt/icons/mob/hair.dmi'
+	icon_state = "hair_wavyovereye"
+
+/datum/sprite_accessory/hair/straightovereye
+	name = "Straight over eye"
+	icon = 'modular_splurt/icons/mob/hair.dmi'
+	icon_state = "hair_straightovereye"
+
+/datum/sprite_accessory/hair/straightside
+	name = "Side Straight"
+	icon = 'modular_splurt/icons/mob/hair.dmi'
+	icon_state = "hair_straightside"
+
+/datum/sprite_accessory/hair/straightshort
+	name = "Straight Long"
+	icon = 'modular_splurt/icons/mob/hair.dmi'
+	icon_state = "hair_straightshort"
+
+/datum/sprite_accessory/hair/straightlong
+	name = "Straight Long"
+	icon = 'modular_splurt/icons/mob/hair.dmi'
+	icon_state = "hair_straightlong"
+
+/datum/sprite_accessory/hair/straightfloorlength
+	name = "Straight Long (Very)"
+	icon = 'modular_splurt/icons/mob/hair.dmi'
+	icon_state = "hair_straightfloorlength"
+
+/datum/sprite_accessory/hair/deathhawk
+	name = "Deathhawk"
+	icon = 'modular_splurt/icons/mob/hair.dmi'
+	icon_state = "hair_deathhawk"

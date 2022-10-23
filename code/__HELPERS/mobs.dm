@@ -94,6 +94,8 @@
 		init_sprite_accessory_subtypes(/datum/sprite_accessory/butt, GLOB.butt_shapes_list)
 	if(!GLOB.belly_shapes_list.len)
 		init_sprite_accessory_subtypes(/datum/sprite_accessory/belly, GLOB.belly_shapes_list)
+	if(!GLOB.anus_shapes_list.len)
+		init_sprite_accessory_subtypes(/datum/sprite_accessory/anus, GLOB.anus_shapes_list)
 	if(!GLOB.ipc_screens_list.len)
 		init_sprite_accessory_subtypes(/datum/sprite_accessory/screen, GLOB.ipc_screens_list)
 	if(!GLOB.ipc_antennas_list.len)
@@ -213,13 +215,17 @@
 		"has_butt"			= FALSE,
 		"butt_size"			= BUTT_SIZE_DEF,
 		"butt_color"		= pick("FFFFFF","7F7F7F", "7FFF7F", "7F7FFF", "FF7F7F", "7FFFFF", "FF7FFF", "FFFF7F"),
-		//Hyper's belly stuffs
+		//Hyper's belly stuff
 		"has_belly" 		= FALSE,
 		"belly_size"		= 1,
 		"belly_color" 		= pick("FFFFFF","7F7F7F", "7FFF7F", "7F7FFF", "FF7F7F", "7FFFFF", "FF7FFF", "FFFF7F"),
 		//Hyper's belly stuff
 
-
+		//SPLURT's anus stuff
+		"has_anus"			= FALSE,
+		"anus_color"		= pick("FFFFFF","7F7F7F", "7FFF7F", "7F7FFF", "FF7F7F", "7FFFFF", "FF7FFF", "FFFF7F"),
+		"anus_shape"		= DEF_ANUS_SHAPE,
+		//SPLURT's anus stuff
 
 		"balls_visibility"	= GEN_VISIBLE_NO_UNDIES,
 		"breasts_visibility"= GEN_VISIBLE_NO_UNDIES,
@@ -227,14 +233,16 @@
 		"vag_visibility"	= GEN_VISIBLE_NO_UNDIES,
 		"butt_visibility"	= GEN_VISIBLE_NO_UNDIES,
 		"belly_visibility"	= GEN_VISIBLE_NO_UNDIES,
+		"anus_visibility" 	= GEN_VISIBLE_NO_UNDIES,
 		"cock_stuffing" = FALSE,
 		"balls_stuffing" = FALSE,
 		"vag_stuffing" = FALSE,
 		"breasts_stuffing" = FALSE,
 		"butt_stuffing" = FALSE,
 		"belly_stuffing" = FALSE,
+		"anus_stuffing" = FALSE,
 		"inert_eggs" = FALSE,
-		//Hyper's custom fluids
+		//SPLURT's custom fluids
 		"balls_fluid"		= /datum/reagent/consumable/semen,
 		"womb_fluid"		= /datum/reagent/consumable/semen/femcum,
 		"breasts_fluid"		= /datum/reagent/consumable/milk,

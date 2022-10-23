@@ -767,17 +767,22 @@ SAVEFILE UPDATING/VERSIONING - 'Simplified', or rather, more coder-friendly ~Car
 "belly_max_size" = BELLY_SIZE_DEF * 3,
 "has_belly" = FALSE,
 "belly_color" = "ffffff",
+"has_anus" = FALSE,
+"anus_color" = "ffffff",
+"anus_shape" = DEF_ANUS_SHAPE,
 "balls_visibility"   = GEN_VISIBLE_NO_UNDIES,
 "breasts_visibility"= GEN_VISIBLE_NO_UNDIES,
 "cock_visibility" = GEN_VISIBLE_NO_UNDIES,
 "vag_visibility"   = GEN_VISIBLE_NO_UNDIES,
 "butt_visibility"  = GEN_VISIBLE_NO_UNDIES,
 "belly_visibility" = GEN_VISIBLE_NO_UNDIES,
+"anus_visibility" = GEN_VISIBLE_NO_UNDIES,
 "cock_stuffing" = FALSE,
 "balls_stuffing" = FALSE,
 "vag_stuffing" = FALSE,
 "breasts_stuffing" = FALSE,
 "butt_stuffing" = FALSE,
+"anus_stuffing" = FALSE,
 "belly_stuffing" = FALSE,
 "inert_eggs" = FALSE,
 "ipc_screen" = "Sunburst",
@@ -964,8 +969,6 @@ SAVEFILE UPDATING/VERSIONING - 'Simplified', or rather, more coder-friendly ~Car
 	S["feature_balls_size"] >> features["balls_size"]
 	S["feature_balls_visibility"] >> features["balls_visibility"]
 	S["feature_balls_fluid"] >> features["balls_fluid"]
-	S["feature_womb_fluid"] >> features["womb_fluid"]
-	S["feature_balls_shape"] >> features["balls_shape"]
 	//breasts features
 	S["feature_has_breasts"] >> features["has_breasts"]
 	S["feature_breasts_size"] >> features["breasts_size"]
@@ -981,6 +984,7 @@ SAVEFILE UPDATING/VERSIONING - 'Simplified', or rather, more coder-friendly ~Car
 	S["feature_vag_visibility"] >> features["vag_visibility"]
 	//womb features
 	S["feature_has_womb"] >> features["has_womb"]
+	S["feature_womb_fluid"] >> features["womb_fluid"]
 	//butt features
 	S["feature_has_butt"] >> features["has_butt"]
 	S["feature_butt_color"] >> features["butt_color"]
@@ -991,6 +995,11 @@ SAVEFILE UPDATING/VERSIONING - 'Simplified', or rather, more coder-friendly ~Car
 	S["feature_belly_size"] >> features["belly_size"]
 	S["feature_belly_color"] >> features["belly_color"]
 	S["feature_belly_visibility"] >> features["belly_visibility"]
+	//anus features
+	S["feature_has_anus"] >> features["has_anus"]
+	S["feature_anus_color"] >> features["anus_color"]
+	S["feature_anus_shape"] >> features["anus_shape"]
+	S["feature_anus_visibility"] >> features["anus_visibility"]
 
 	// Flavor texts, Made into a standard.
 	S["feature_flavor_text"] >> features["flavor_text"]
@@ -1018,6 +1027,8 @@ SAVEFILE UPDATING/VERSIONING - 'Simplified', or rather, more coder-friendly ~Car
 	S["feature_vag_stuffing"] >> features["vag_stuffing"]
 	S["feature_butt_stuffing"] >> features["butt_stuffing"]
 	S["feature_belly_stuffing"] >> features["belly_stuffing"]
+	S["feature_anus_stuffing"] >> features["anus_stuffing"]
+
 	S["feature_inert_eggs"] >> features["inert_eggs"]
 
 	S["features_cock_max_length"] >> features["cock_max_length"]
@@ -1157,16 +1168,20 @@ SAVEFILE UPDATING/VERSIONING - 'Simplified', or rather, more coder-friendly ~Car
 	features["cock_shape"] = sanitize_inlist(features["cock_shape"], GLOB.cock_shapes_list, DEF_COCK_SHAPE)
 	features["balls_shape"] = sanitize_inlist(features["balls_shape"], GLOB.balls_shapes_list, DEF_BALLS_SHAPE)
 	features["vag_shape"] = sanitize_inlist(features["vag_shape"], GLOB.vagina_shapes_list, DEF_VAGINA_SHAPE)
+	features["anus_shape"] = sanitize_inlist(features["anus_shape"], GLOB.anus_shapes_list, DEF_ANUS_SHAPE)
 	features["breasts_color"] = sanitize_hexcolor(features["breasts_color"], 6, FALSE, "FFFFFF")
 	features["cock_color"] = sanitize_hexcolor(features["cock_color"], 6, FALSE, "FFFFFF")
 	features["balls_color"] = sanitize_hexcolor(features["balls_color"], 6, FALSE, "FFFFFF")
 	features["vag_color"] = sanitize_hexcolor(features["vag_color"], 6, FALSE, "FFFFFF")
+	features["belly_color"] = sanitize_hexcolor(features["belly_color"], 6, FALSE, "FFFFFF")
+	features["anus_color"] = sanitize_hexcolor(features["anus_color"], 6, FALSE, "FFFFFF")
 	features["breasts_visibility"] = sanitize_inlist(features["breasts_visibility"], safe_visibilities, GEN_VISIBLE_NO_UNDIES)
 	features["cock_visibility"] = sanitize_inlist(features["cock_visibility"], safe_visibilities, GEN_VISIBLE_NO_UNDIES)
 	features["balls_visibility"] = sanitize_inlist(features["balls_visibility"], safe_visibilities, GEN_VISIBLE_NO_UNDIES)
 	features["vag_visibility"] = sanitize_inlist(features["vag_visibility"], safe_visibilities, GEN_VISIBLE_NO_UNDIES)
 	features["butt_visibility"] = sanitize_inlist(features["butt_visibility"], safe_visibilities, GEN_VISIBLE_NO_UNDIES)
 	features["belly_visibility"] = sanitize_inlist(features["belly_visibility"], safe_visibilities, GEN_VISIBLE_NO_UNDIES)
+	features["anus_visibility"] = sanitize_inlist(features["anus_visibility"], safe_visibilities, GEN_VISIBLE_NO_UNDIES)
 
 	custom_speech_verb = sanitize_inlist(custom_speech_verb, GLOB.speech_verbs, "default")
 	custom_tongue = sanitize_inlist(custom_tongue, GLOB.roundstart_tongues, "default")
@@ -1337,7 +1352,6 @@ SAVEFILE UPDATING/VERSIONING - 'Simplified', or rather, more coder-friendly ~Car
 	WRITE_FILE(S["feature_balls_size"], features["balls_size"])
 	WRITE_FILE(S["feature_balls_visibility"], features["balls_visibility"])
 	WRITE_FILE(S["feature_balls_stuffing"], features["balls_stuffing"])
-	WRITE_FILE(S["feature_balls_shape"], features["balls_shape"])
 	WRITE_FILE(S["feature_balls_fluid"], features["balls_fluid"])
 
 	WRITE_FILE(S["feature_has_breasts"], features["has_breasts"])
@@ -1369,6 +1383,12 @@ SAVEFILE UPDATING/VERSIONING - 'Simplified', or rather, more coder-friendly ~Car
 	WRITE_FILE(S["feature_belly_size"], features["belly_size"])
 	WRITE_FILE(S["feature_belly_visibility"], features["belly_visibility"])
 	WRITE_FILE(S["feature_belly_stuffing"], features["belly_stuffing"])
+
+	WRITE_FILE(S["feature_has_anus"], features["has_anus"])
+	WRITE_FILE(S["feature_anus_color"], features["anus_color"])
+	WRITE_FILE(S["feature_anus_visibility"], features["anus_visibility"])
+	WRITE_FILE(S["feature_anus_shape"], features["anus_shape"])
+	WRITE_FILE(S["feature_anus_stuffing"], features["anus_stuffing"])
 
 	WRITE_FILE(S["feature_inert_eggs"], features["inert_eggs"])
 

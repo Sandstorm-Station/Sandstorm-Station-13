@@ -101,3 +101,83 @@
 /mob/living/simple_animal/hostile/bigmouse/attack_animal(mob/living/simple_animal/M)
 	. = ..()
 	faction = list("hostile", "rat")
+
+/mob/living/simple_animal/mouse/mentor
+	name = "mentor mouse"
+	desc = "A helpful pink mouse! If it's interested in you, you should pick it up."
+	icon = 'modular_splurt/icons/mob/animal.dmi'
+	icon_state = "mouse_mentor"
+	icon_living = "mouse_mentor"
+	icon_dead = "mouse_mentor_dead"
+	speak = list("Squeak!","SQUEAK!","Squeak?")
+	speak_emote = list("squeaks")
+	emote_hear = list("squeaks.")
+	emote_see = list("runs in a circle.", "shakes.")
+	speak_chance = 1
+	turns_per_move = 5
+	blood_volume = 250
+	see_in_dark = 100
+	maxHealth = 50
+	health = 50
+	butcher_results = list(/obj/item/reagent_containers/food/snacks/meat/slab = 1)
+	response_help_continuous = "pets"
+	response_help_simple = "pet"
+	response_disarm_continuous = "gently pushes aside"
+	response_disarm_simple = "gently push aside"
+	response_harm_continuous = "splats"
+	response_harm_simple = "splat"
+	density = FALSE
+	pass_flags = PASSTABLE | PASSGRILLE | PASSMOB
+	mob_size = MOB_SIZE_TINY
+	mob_biotypes = MOB_ORGANIC|MOB_BEAST
+	faction = list("rat")
+	vocal_bark_id = "squeak"
+	vocal_pitch = 1.4
+
+/mob/living/simple_animal/mouse/mentor/Initialize()
+	. = ..()
+	//Force icons because mouse/initialize randomizes them
+	icon = 'modular_splurt/icons/mob/animal.dmi'
+	icon_state = "mouse_mentor"
+	icon_living = "mouse_mentor"
+	icon_dead = "mouse_mentor_dead"
+
+/mob/living/simple_animal/mouse/admin
+	name = "Admin mouse"
+	desc = "A strange red mouse. If it's interested in you, you should pick it up."
+	icon = 'modular_splurt/icons/mob/animal.dmi'
+	icon_state = "mouse_admin"
+	icon_living = "mouse_admin"
+	icon_dead = "mouse_admin_dead"
+	speak = list("Squeak!","SQUEAK!","Squeak?")
+	speak_emote = list("squeaks")
+	emote_hear = list("squeaks.")
+	emote_see = list("runs in a circle.", "shakes.")
+	speak_chance = 1
+	turns_per_move = 5
+	blood_volume = 250
+	see_in_dark = 100
+	maxHealth = 99
+	health = 99
+	butcher_results = list(/obj/item/reagent_containers/food/snacks/meat/slab = 1)
+	response_help_continuous = "pets"
+	response_help_simple = "pet"
+	response_disarm_continuous = "gently pushes aside"
+	response_disarm_simple = "gently push aside"
+	response_harm_continuous = "splats"
+	response_harm_simple = "splat"
+	density = FALSE
+	pass_flags = PASSTABLE | PASSGRILLE | PASSMOB
+	mob_size = MOB_SIZE_TINY
+	mob_biotypes = MOB_ORGANIC|MOB_BEAST
+	faction = list("rat")
+	vocal_bark_id = "squeak"
+	vocal_pitch = 1.4
+
+/mob/living/simple_animal/mouse/admin/Initialize()
+	. = ..()
+	//Force icons because mouse/initialize randomizes them
+	icon = 'modular_splurt/icons/mob/animal.dmi'
+	icon_state = "mouse_admin"
+	icon_living = "mouse_admin"
+	icon_dead = "mouse_admin_dead"

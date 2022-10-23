@@ -2388,6 +2388,7 @@
 /obj/effect/turf_decal/tile/neutral{
 	dir = 1
 	},
+/obj/item/stock_parts/cell/high,
 /turf/open/floor/mineral/plastitanium/red,
 /area/security/brig)
 "afL" = (
@@ -3041,6 +3042,7 @@
 	dir = 4
 	},
 /obj/effect/turf_decal/tile/neutral,
+/obj/item/radio/headset/headset_brigdoc,
 /turf/open/floor/mineral/plastitanium/red,
 /area/security/brig)
 "aha" = (
@@ -10822,6 +10824,7 @@
 	dir = 1
 	},
 /obj/effect/turf_decal/stripes/line,
+/obj/machinery/vending/barkbox,
 /turf/open/floor/mineral/plastitanium,
 /area/hallway/secondary/entry)
 "aAI" = (
@@ -15484,13 +15487,13 @@
 /turf/open/floor/mineral/plastitanium/red,
 /area/hallway/secondary/exit)
 "aOe" = (
-/obj/item/beacon,
 /obj/machinery/camera{
 	c_tag = "Arrivals Bay 1 South"
 	},
 /obj/effect/turf_decal/stripes/line{
 	dir = 1
 	},
+/obj/machinery/vending/barkbox,
 /turf/open/floor/mineral/plastitanium,
 /area/hallway/secondary/entry)
 "aOf" = (
@@ -27722,7 +27725,7 @@
 /turf/open/floor/mineral/plastitanium,
 /area/science)
 "btB" = (
-/obj/machinery/computer/bounty{
+/obj/machinery/piratepad/civilian{
 	dir = 4
 	},
 /obj/effect/turf_decal/tile/blue{
@@ -28610,7 +28613,7 @@
 	departmentType = 2;
 	pixel_x = -30
 	},
-/obj/machinery/computer/bounty{
+/obj/machinery/piratepad/civilian{
 	dir = 4
 	},
 /obj/effect/turf_decal/tile/brown{
@@ -56924,6 +56927,10 @@
 	},
 /turf/open/floor/mineral/plastitanium,
 /area/commons/dorms)
+"lYM" = (
+/obj/item/beacon,
+/turf/open/floor/mineral/plastitanium,
+/area/hallway/secondary/entry)
 "lYR" = (
 /obj/structure/chair/comfy/black{
 	dir = 4
@@ -61435,7 +61442,7 @@
 /obj/machinery/atmospherics/pipe/simple/supply/hidden{
 	dir = 4
 	},
-/obj/machinery/computer/bounty{
+/obj/machinery/piratepad/civilian{
 	dir = 8
 	},
 /turf/open/floor/mineral/plastitanium,
@@ -64880,6 +64887,10 @@
 	},
 /turf/open/floor/plating,
 /area/security/prison/upper)
+"xXf" = (
+/obj/machinery/vending/wallmed,
+/turf/closed/wall/r_wall/syndicate,
+/area/security/brig)
 "xYf" = (
 /obj/machinery/atmospherics/pipe/simple/supply/hidden{
 	dir = 10
@@ -75399,7 +75410,7 @@ aaa
 aaa
 awW
 aOe
-kMc
+lYM
 kMc
 aRY
 awW
@@ -91043,7 +91054,7 @@ afL
 ahu
 aie
 aiO
-aiX
+xXf
 xzv
 agL
 akT

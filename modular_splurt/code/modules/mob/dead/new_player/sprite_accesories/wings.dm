@@ -97,6 +97,31 @@
 	icon = 'modular_splurt/icons/mob/wings.dmi'
 	upgrade_to = SPECIES_WINGS_MOTH
 
+/datum/sprite_accessory/deco_wings/delta
+	name = "Delta"
+	icon_state = "delta"
+	icon = 'modular_splurt/icons/mob/wings.dmi'
+
+/datum/sprite_accessory/deco_wings/straight
+	name = "Straight"
+	icon_state = "straight"
+	icon = 'modular_splurt/icons/mob/wings.dmi'
+
+/datum/sprite_accessory/deco_wings/variable
+	name = "Variable"
+	icon_state = "variable"
+	icon = 'modular_splurt/icons/mob/wings.dmi'
+
+/datum/sprite_accessory/deco_wings/swept
+	name = "Swept Forward"
+	icon_state = "swept"
+	icon = 'modular_splurt/icons/mob/wings.dmi'
+
+/datum/sprite_accessory/deco_wings/flyingwing
+	name = "Flying Wing"
+	icon_state = "flyingwing"
+	icon = 'modular_splurt/icons/mob/wings.dmi'
+
 //insect wings
 /datum/sprite_accessory/insect_wings/beetle
 	name = "Beetle (Hyper)"

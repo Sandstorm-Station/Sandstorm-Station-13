@@ -71,14 +71,14 @@
 	desc = "You have filed a Do Not Clone order, stating that you do not wish to be cloned. You can still be revived by other means."
 	value = -2
 	mob_trait = TRAIT_NO_CLONE
-	medical_record_text = "Patient has a DNC (Do not clone) order on file, and cannot be cloned as a result."
+	medical_record_text = "Patient has a DNC (Do Not Clone) order and will be rejected by cloning mechanisms as a result."
 
 /datum/quirk/no_guns
 	name = "Fat-Fingered"
-	desc = "Due to the shape of your hands, width of your fingers or just not having fingers at all, you're unable to fire the majority of guns."
+	desc = "Due to the shape of your hands, width of your fingers or just not having fingers at all, you're unable to fire guns without accommodation."
 	value = -2
 	mob_trait = TRAIT_CHUNKYFINGERS
-	gain_text = "<span class='notice'>Your fingers feel.. thick.</span>"
+	gain_text = "<span class='notice'>Your fingers feel... thick.</span>"
 	lose_text = "<span class='notice'>Your fingers feel normal again.</span>"
 
 /datum/quirk/illiterate
@@ -128,7 +128,7 @@
 
 /datum/quirk/masked_mook
 	name = "Bane Syndrome"
-	desc = "For some reason you don't feel well without wearing some kind of gas mask."
+	desc = "For some reason you don't feel... right without wearing some kind of gas mask."
 	gain_text = "<span class='danger'>You start feeling unwell without any gas mask on.</span>"
 	lose_text = "<span class='notice'>You no longer have a need to wear some gas mask.</span>"
 	value = -2
@@ -156,11 +156,11 @@
 
 /datum/quirk/dumb4cum
 	name = "Dumb For Cum"
-	desc = "You just like cum, it's heat, it's smell, it's... Taste."
+	desc = "For one reason or another, you're totally obsessed with cum. The heat of it, the smell... its taste... It's quite simply euphoric."
 	value = 0
-	gain_text = "<span class='notice'>You suddenly start craving some seed inside of you.<span>"
-	lose_text = "<span class='danger'>It didn't even taste that good, really!</span>"
-	medical_record_text = "Patient seems to drool for seminal fluid."
+	gain_text = "<span class='notice'>You suddenly start craving some seed inside of you!<span>"
+	lose_text = "<span class='danger'>Cum didn't even taste that good, anyways.</span>"
+	medical_record_text = "Patient seems to have an unhealthy psychological obsession with seminal fluids."
 	var/craving_after = 15 MINUTES
 	var/timer
 
@@ -171,9 +171,9 @@
 /datum/quirk/dumb4cum/proc/crave()
 	var/list/hungry_phrases = list(
 									"Your stomach rumbles a bit and cum comes to your mind.",\
-									"Urgh, you really should get some cum...",\
-									"Some jizz wouldn't sit bad right now!",\
-									"You're starting to long for more cum."
+									"Urgh, you should really get some cum...",\
+									"Some jizz wouldn't be so bad right now!",\
+									"You're starting to long for some more cum..."
 								  )
 	to_chat(quirk_holder, "<span class='love'>[pick(hungry_phrases)]</span>")
 
