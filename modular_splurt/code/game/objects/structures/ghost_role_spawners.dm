@@ -61,10 +61,10 @@
 	job_description = "Hotel Staff"
 	icon = 'icons/obj/machines/sleeper.dmi'
 	icon_state = "sleeper_s"
-	objectives = "Cater to visiting guests with your fellow staff. Do not leave your assigned hotel and always remember: The customer is always right!"
+	objectives = "Cater to visiting guests with your fellow staff. Don't abandon the hotel - you can advertise and link up with potential guests, but always remember who signs your cheques! The customer is always right!"
 	short_desc = "You are a staff member of a top-of-the-line space hotel!"
 	flavour_text = "You are a staff member of a top-of-the-line space hotel! Cater to guests and make sure the manager doesn't fire you."
-	important_info = "DON'T leave the hotel"
+	important_info = "DON'T abandon the hotel"
 	assignedrole = "Hotel Staff"
 	death = FALSE
 	roundstart = FALSE
@@ -75,9 +75,9 @@
 	uniform = /obj/item/clothing/under/suit/red
 	shoes = /obj/item/clothing/shoes/laceup
 	head = /obj/item/clothing/head/hotel
-	r_pocket = /obj/item/radio/off
-	l_pocket = /obj/item/pda
+	r_pocket = /obj/item/pda
 	back = /obj/item/storage/backpack/satchel
+	ears = /obj/item/radio/headset
 
 /obj/effect/mob_spawn/human/hotel_staff/splurt/security
 	name = "hotel security sleeper"
@@ -86,8 +86,8 @@
 	short_desc = "You are a peacekeeper."
 	flavour_text = "You have been assigned to this hotel to protect the interests of the company while keeping the peace between \
 		guests and the staff."
-	important_info = "Do NOT leave the hotel, as that is grounds for contract termination."
-	objectives = "Do not leave your assigned hotel. Try and keep the peace between staff and guests, non-lethal force heavily advised if possible."
+	important_info = "Do NOT abandon the hotel, as that is grounds for contract termination."
+	objectives = "Do not abandon your assigned hotel. Try and keep the peace between staff and guests, non-lethal force heavily advised if possible."
 	id_job = "Hotel Security"
 	uniform = /obj/item/clothing/under/rank/security/officer/blueshirt
 	shoes = /obj/item/clothing/shoes/jackboots
@@ -97,14 +97,14 @@
 	belt = /obj/item/storage/belt/security/full
 	id = /obj/item/card/id/away/hotel/splurt/security
 
-/obj/effect/mob_spawn/human/hotel_staff/manager
+/obj/effect/mob_spawn/human/hotel_staff/splurt/manager
 	name = "hotel manager sleeper"
 	mob_name = "hotel manager"
 	job_description = "Hotel Manager"
 	short_desc = "You are the manager of a space hotel"
-	flavour_text = "You manage one site of a successful chain of space hotels. Your parent company has recently partnered with Nanotrasen to service some of their stations; you have recieved a selection of fancy tech as a result! Protect the interests of your parent company, ensure your staff are performing to standard and make sure to keep your guests happy!"
-	important_info = "Staff, including you, are NOT to leave the hotel."
-	objectives = "Don't leave your assigned hotel. Cater to visiting guests. Maintain good corporate relations and remember: The customer is always right!"
+	flavour_text = "You manage one site of a successful chain of space hotels. Your parent company has recently been bought out by Nanotrasen and tasked with servicing some of their stations; you have recieved a selection of fancy tech as a result! Protect the interests of your parent company, ensure your staff are performing to standard and make sure to keep your guests happy!"
+	important_info = "Staff, including you, are NOT to abandon the hotel."
+	objectives = "Don't abandon your assigned hotel. Cater to visiting guests. Maintain good corporate relations and remember: The customer is always right!"
 	id_job = "Hotel Manager"
 	uniform = /obj/item/clothing/under/suit/black
 	suit = /obj/item/clothing/suit/toggle/lawyer/black
