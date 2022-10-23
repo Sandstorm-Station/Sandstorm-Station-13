@@ -91,3 +91,20 @@
 
 /datum/outfit/syndicate_empty/post_equip(mob/living/carbon/human/H, visualsOnly = FALSE, client/preference_source)
 	H.faction |= ROLE_SYNDICATE
+
+/area/ruin/space/ruinsolars
+	name = "Solar Array"
+	dynamic_lighting = DYNAMIC_LIGHTING_IFSTARLIGHT
+	requires_power = FALSE
+	has_gravity = FALSE
+	area_flags = UNIQUE_AREA
+	flags_1 = NONE
+	sound_environment = SOUND_AREA_SPACE
+
+/datum/map_template/ruin/space/spacehotelsplurt
+	prefix = "modular_splurt/_maps/RandomRuins/SpaceRuins/"
+	id = "spacehotelsplurt"
+	suffix = "spacehotelsplurt.dmm"
+	name = "Twin Spires Hotel and Club"
+	description = "A Nanotrasen-partnered interstellar hotel and stripclub"
+
