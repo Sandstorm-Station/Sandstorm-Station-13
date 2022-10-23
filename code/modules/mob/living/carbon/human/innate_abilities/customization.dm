@@ -229,7 +229,7 @@
 	else if (select_alteration == "Breast Size")
 		for(var/obj/item/organ/genital/breasts/X in H.internal_organs)
 			qdel(X)
-		var/new_size = input(owner, "Breast Size", "Genital Alteration") as null|anything in CONFIG_GET(keyed_list/breasts_cups_prefs)
+		var/new_size = input(owner, "Breast Size", "Genital Alteration") as null|anything in GLOB.breast_values
 		if(new_size)
 			H.dna.features["breasts_size"] = new_size
 		H.update_genitals()

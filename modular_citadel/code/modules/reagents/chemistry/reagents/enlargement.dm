@@ -144,7 +144,7 @@
 	var/obj/item/organ/genital/breasts/B = M.getorganslot(ORGAN_SLOT_BREASTS)
 	if(!B)
 		return..()
-	var/optimal_size = B.breast_values[M.dna.features["breasts_size"]]
+	var/optimal_size = GLOB.breast_values[M.dna.features["breasts_size"]]
 	if(!optimal_size)//Fast fix for those who don't want it.
 		B.modify_size(-0.1)
 	else if(B.size > optimal_size)

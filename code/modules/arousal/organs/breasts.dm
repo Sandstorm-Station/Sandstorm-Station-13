@@ -19,7 +19,6 @@
 	orgasm_verb = "leaking"
 	fluid_transfer_factor = 0.5
 	layer_index = BREASTS_LAYER_INDEX
-	var/static/list/breast_values = list("a" =  1, "b" = 2, "c" = 3, "d" = 4, "e" = 5, "f" = 6, "g" = 7, "h" = 8, "i" = 9, "j" = 10, "k" = 11, "l" = 12, "m" = 13, "n" = 14, "o" = 15, "huge" = 16, "massive" = 17, "giga" = 25, "impossible" = 30, "flat" = 0)
 	var/prev_size //former cached_size value, to allow update_size() to early return should be there no significant changes.
 
 /obj/item/organ/genital/breasts/update_appearance()
@@ -49,7 +48,7 @@
 			desc += " They're leaking [lowertext(R.name)]."
 	var/datum/sprite_accessory/S = GLOB.breasts_shapes_list[shape]
 	var/icon_shape = S ? S.icon_state : "pair"
-	var/icon_size = clamp(breast_values[size_state], BREASTS_ICON_MIN_SIZE, BREASTS_ICON_MAX_SIZE)
+	var/icon_size = clamp(GLOB.breast_values[size_state], BREASTS_ICON_MIN_SIZE, BREASTS_ICON_MAX_SIZE)
 	icon_state = "breasts_[icon_shape]_[icon_size]"
 	if(owner)
 		if(owner.dna.species.use_skintones && owner.dna.features["genitals_use_skintone"])
@@ -82,11 +81,11 @@
 		if(0) //flatchested
 			str_size = "flat"
 		if(1 to 8) //modest
-			str_size = breast_values[size]
+			str_size = GLOB.breast_values[size]
 		if(9 to 15) //massive
-			str_size = breast_values[size]
+			str_size = GLOB.breast_values[size]
 		if(16 to 17) //ridiculous
-			str_size = breast_values[size]
+			str_size = GLOB.breast_values[size]
 		if(18 to 24) //AWOOOOGAAAAAAA
 			str_size = "massive"
 		if(25 to 29) //AWOOOOOOGAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA
@@ -118,7 +117,7 @@
 		color = SKINTONE2HEX(H.skin_tone)
 	else
 		color = "#[D.features["breasts_color"]]"
-	size = breast_values[D.features["breasts_size"]]
+	size = GLOB.breast_values[D.features["breasts_size"]]
 	shape = D.features["breasts_shape"]
 	if(!D.features["breasts_producing"])
 		genital_flags &= ~ (GENITAL_FUID_PRODUCTION|CAN_CLIMAX_WITH|CAN_MASTURBATE_WITH)

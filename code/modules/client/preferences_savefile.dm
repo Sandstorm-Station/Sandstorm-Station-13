@@ -737,6 +737,7 @@ SAVEFILE UPDATING/VERSIONING - 'Simplified', or rather, more coder-friendly ~Car
 "has_cock" = FALSE,
 "cock_shape" = DEF_COCK_SHAPE,
 "cock_length" = COCK_SIZE_DEF,
+"cock_max_length" = COCK_SIZE_DEF * 3,
 "cock_diameter_ratio" = COCK_DIAMETER_RATIO_DEF,
 "cock_color" = "ffffff",
 "cock_taur" = FALSE,
@@ -744,12 +745,14 @@ SAVEFILE UPDATING/VERSIONING - 'Simplified', or rather, more coder-friendly ~Car
 "balls_color" = "ffffff",
 "balls_shape" = DEF_BALLS_SHAPE,
 "balls_size" = BALLS_SIZE_DEF,
+"balls_max_size" = BALLS_SIZE_DEF * 3,
 "balls_cum_rate" = CUM_RATE,
 "balls_cum_mult" = CUM_RATE_MULT,
 "balls_efficiency" = CUM_EFFICIENCY,
 "has_breasts" = FALSE,
 "breasts_color" = "ffffff",
 "breasts_size" = BREASTS_SIZE_DEF,
+"breasts_max_size" = 9,
 "breasts_shape" = DEF_BREASTS_SHAPE,
 "breasts_producing" = FALSE,
 "has_vag" = FALSE,
@@ -759,7 +762,9 @@ SAVEFILE UPDATING/VERSIONING - 'Simplified', or rather, more coder-friendly ~Car
 "has_butt" = FALSE,
 "butt_color" = "ffffff",
 "butt_size" = BUTT_SIZE_DEF,
+"butt_max_size" = BUTT_SIZE_DEF * 3,
 "belly_size" = BELLY_SIZE_DEF,
+"belly_max_size" = BELLY_SIZE_DEF * 3,
 "has_belly" = FALSE,
 "belly_color" = "ffffff",
 "balls_visibility"   = GEN_VISIBLE_NO_UNDIES,
@@ -1015,6 +1020,12 @@ SAVEFILE UPDATING/VERSIONING - 'Simplified', or rather, more coder-friendly ~Car
 	S["feature_belly_stuffing"] >> features["belly_stuffing"]
 	S["feature_inert_eggs"] >> features["inert_eggs"]
 
+	S["features_cock_max_length"] >> features["cock_max_length"]
+	S["features_balls_max_size"] >> features["balls_max_size"]
+	S["features_breasts_max_size"] >> features["breasts_max_size"]
+	S["features_belly_max_size"] >> features["belly_max_size"]
+	S["features_butt_max_size"] >> features["butt_max_size"]
+
 	var/char_vr_path = "[vr_path]/character_[default_slot]_v2.json"
 	if(fexists(char_vr_path))
 		var/list/json_from_file = json_decode(file2text(char_vr_path))
@@ -1106,10 +1117,6 @@ SAVEFILE UPDATING/VERSIONING - 'Simplified', or rather, more coder-friendly ~Car
 		size_max = CONFIG_GET(number/body_size_max)
 	features["body_size"] = sanitize_num_clamp(features["body_size"], size_min, size_max, RESIZE_DEFAULT_SIZE, 0.01)
 
-	var/static/list/B_sizes
-	if(!B_sizes)
-		var/list/L = CONFIG_GET(keyed_list/breasts_cups_prefs)
-		B_sizes = L.Copy()
 	var/static/min_D
 	if(!min_D)
 		min_D = CONFIG_GET(number/penis_min_inches_prefs)
@@ -1141,7 +1148,7 @@ SAVEFILE UPDATING/VERSIONING - 'Simplified', or rather, more coder-friendly ~Car
 		var/list/L = CONFIG_GET(keyed_list/safe_visibility_toggles)
 		safe_visibilities = L.Copy()
 
-	features["breasts_size"] = sanitize_inlist(features["breasts_size"], B_sizes, BREASTS_SIZE_DEF)
+	features["breasts_size"] = sanitize_inlist(features["breasts_size"], GLOB.breast_values, BREASTS_SIZE_DEF)
 	features["cock_length"] = sanitize_integer(features["cock_length"], min_D, max_D, COCK_SIZE_DEF)
 	features["cock_diameter_ratio"] = sanitize_integer(features["cock_diameter_ratio"], min_diameter_ratio, max_diameter_ratio, COCK_DIAMETER_RATIO_DEF)
 	features["butt_size"] = sanitize_integer(features["butt_size"], min_B, max_B, BUTT_SIZE_DEF)
@@ -1364,6 +1371,13 @@ SAVEFILE UPDATING/VERSIONING - 'Simplified', or rather, more coder-friendly ~Car
 	WRITE_FILE(S["feature_belly_stuffing"], features["belly_stuffing"])
 
 	WRITE_FILE(S["feature_inert_eggs"], features["inert_eggs"])
+
+
+	WRITE_FILE(S["features_cock_max_length"], features["cock_max_length"])
+	WRITE_FILE(S["features_balls_max_size"], features["balls_max_size"])
+	WRITE_FILE(S["features_breasts_max_size"], features["breasts_max_size"])
+	WRITE_FILE(S["features_belly_max_size"], features["belly_max_size"])
+	WRITE_FILE(S["features_butt_max_size"], features["butt_max_size"])
 
 	WRITE_FILE(S["feature_neckfire"], features["neckfire"])
 	WRITE_FILE(S["feature_neckfire_color"], features["neckfire_color"])
