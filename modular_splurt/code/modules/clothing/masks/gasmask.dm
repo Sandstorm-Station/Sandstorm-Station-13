@@ -1,6 +1,10 @@
-/obj/item/clothing/mask/gas
-	is_edible = 0
+//Main code edits
+/obj/item/clothing/mask/gas/plaguedoctor
+	icon = 'modular_splurt/icons/obj/clothing/masks.dmi'
+	mob_overlay_icon = 'modular_splurt/icons/mob/clothing/mask.dmi'
+	mutantrace_variation = STYLE_MUZZLE|STYLE_NO_ANTHRO_ICON
 
+//Own stuff
 /obj/item/clothing/mask/gas/radmask
 	name = "radiation mask"
 	desc = "An mask that somewhat protects the user from radiation. Not as effective like a radiation hood, but is better than nothing."
