@@ -481,9 +481,8 @@
 		return
 	if(H.nutrition == 0)
 		H.adjustStaminaLoss(3, FALSE, TRUE)
-		if(rand(0,100) <= 10) //10 percent chance (if it was true randome D:<)
+		if(rand(0,100) <= 2) //2 percent chance (if it was true randome D:<)
 			to_chat(H, "<span class='warning'>You need blood NOW!!!</span>")
-
 
 /datum/quirk/vampire/remove()
 	. = ..()
