@@ -6476,11 +6476,11 @@
 /turf/open/floor/plasteel,
 /area/security/office)
 "dwJ" = (
-/obj/structure/chair/sofa/corp/left{
-	dir = 1
-	},
 /obj/effect/turf_decal/tile/red,
 /obj/effect/turf_decal/tile/red{
+	dir = 1
+	},
+/obj/structure/chair/sofa/corp/right{
 	dir = 1
 	},
 /turf/open/floor/plasteel/dark,
@@ -8162,10 +8162,10 @@
 /turf/open/floor/plasteel,
 /area/ai_monitored/command/storage/eva)
 "ena" = (
-/obj/structure/chair/sofa/corp/right{
+/obj/effect/landmark/start/station_engineer,
+/obj/structure/chair/sofa/corp/left{
 	dir = 1
 	},
-/obj/effect/landmark/start/station_engineer,
 /turf/open/floor/plasteel,
 /area/engineering/break_room)
 "enj" = (
@@ -10105,14 +10105,14 @@
 /turf/open/floor/plasteel,
 /area/engineering/main)
 "flX" = (
-/obj/structure/chair/sofa/corp/right{
-	dir = 1
-	},
 /obj/effect/turf_decal/tile/brown{
 	dir = 8
 	},
 /obj/effect/turf_decal/tile/brown{
 	dir = 4
+	},
+/obj/structure/chair/sofa/corp/left{
+	dir = 1
 	},
 /turf/open/floor/plasteel/dark,
 /area/cargo/qm)
@@ -12227,7 +12227,7 @@
 /turf/open/floor/plasteel/white,
 /area/science/xenobiology)
 "gqi" = (
-/obj/structure/chair/sofa/corp/right{
+/obj/structure/chair/sofa/corp/left{
 	dir = 1
 	},
 /turf/open/floor/plasteel,
@@ -26742,14 +26742,14 @@
 /turf/open/floor/plating,
 /area/engineering/atmos)
 "oeK" = (
-/obj/structure/chair/sofa/corp/right{
-	dir = 1
-	},
 /obj/effect/turf_decal/tile/green{
 	dir = 8
 	},
 /obj/effect/turf_decal/tile/green{
 	dir = 4
+	},
+/obj/structure/chair/sofa/corp/left{
+	dir = 1
 	},
 /turf/open/floor/plasteel/dark,
 /area/command/heads_quarters/hop)
@@ -30557,14 +30557,14 @@
 /turf/open/floor/plasteel,
 /area/security/prison)
 "pTr" = (
-/obj/structure/chair/sofa/corp/left{
-	dir = 1
-	},
 /obj/effect/turf_decal/tile/blue{
 	dir = 8
 	},
 /obj/effect/turf_decal/tile/blue{
 	dir = 4
+	},
+/obj/structure/chair/sofa/corp/right{
+	dir = 1
 	},
 /turf/open/floor/plasteel/dark,
 /area/command/heads_quarters/cmo)
@@ -33615,11 +33615,11 @@
 /turf/open/floor/plasteel,
 /area/hallway/primary/port)
 "rtO" = (
-/obj/structure/chair/sofa/corp/right{
-	dir = 1
-	},
 /obj/effect/turf_decal/tile/red,
 /obj/effect/turf_decal/tile/red{
+	dir = 1
+	},
+/obj/structure/chair/sofa/corp/left{
 	dir = 1
 	},
 /turf/open/floor/plasteel/dark,
@@ -37114,14 +37114,14 @@
 	},
 /area/maintenance/bar)
 "tjZ" = (
-/obj/structure/chair/sofa/corp/right{
-	dir = 1
-	},
 /obj/effect/turf_decal/tile/blue{
 	dir = 8
 	},
 /obj/effect/turf_decal/tile/blue{
 	dir = 4
+	},
+/obj/structure/chair/sofa/corp/left{
+	dir = 1
 	},
 /turf/open/floor/plasteel/dark,
 /area/command/heads_quarters/cmo)
@@ -37843,14 +37843,14 @@
 /turf/open/floor/plasteel,
 /area/cargo/miningdock)
 "tBW" = (
-/obj/structure/chair/sofa/corp/left{
-	dir = 1
-	},
 /obj/effect/turf_decal/tile/green{
 	dir = 8
 	},
 /obj/effect/turf_decal/tile/green{
 	dir = 4
+	},
+/obj/structure/chair/sofa/corp/right{
+	dir = 1
 	},
 /turf/open/floor/plasteel/dark,
 /area/command/heads_quarters/hop)
@@ -39060,8 +39060,7 @@
 /area/hallway/secondary/exit)
 "uhI" = (
 /obj/machinery/atmospherics/pipe/simple/orange/hidden{
-	dir = 5;
-	icon_state = "pipe11-2"
+	dir = 5
 	},
 /turf/closed/wall/r_wall,
 /area/engineering/atmos)
@@ -41019,7 +41018,7 @@
 /turf/open/floor/plasteel,
 /area/medical/chemistry)
 "vdH" = (
-/obj/structure/chair/sofa/corp/left{
+/obj/structure/chair/sofa/corp/right{
 	dir = 1
 	},
 /turf/open/floor/plasteel,
@@ -45606,14 +45605,14 @@
 /turf/open/floor/plating,
 /area/engineering/atmos)
 "xtv" = (
-/obj/structure/chair/sofa/corp/left{
-	dir = 1
-	},
 /obj/effect/turf_decal/tile/brown{
 	dir = 8
 	},
 /obj/effect/turf_decal/tile/brown{
 	dir = 4
+	},
+/obj/structure/chair/sofa/corp/right{
+	dir = 1
 	},
 /turf/open/floor/plasteel/dark,
 /area/cargo/qm)
