@@ -480,9 +480,12 @@
 			C.adjustToxLoss(5)//heals toxin if slime
 		return
 	if(H.nutrition == 0)
-		H.adjustStaminaLoss(3, FALSE, TRUE)
+		if(H.staminaloss < 99)//makes them tired but dosent stun them
+			H.adjustStaminaLoss(3, FALSE, TRUE)
+		else
+			H.adjustStaminaLoss(-1,FALSE, FALSE)//this also helps with if someone is stuck in the chapel for way too long, and i tested with a stun sword that stunning for sec is still possible
 		if(rand(0,100) <= 2) //2 percent chance (if it was true randome D:<)
-			to_chat(H, "<span class='warning'>You need blood NOW!!!</span>")
+			to_chat(H, "<span class='warning'>I need blood NOW!!!</span>")
 
 /datum/quirk/vampire/remove()
 	. = ..()
@@ -502,6 +505,10 @@
 	var/mob/living/carbon/human/H = quirk_holder
 	var/obj/item/card/id/vampire/vcard = new /obj/item/card/id/vampire
 	H.equip_to_slot(vcard, ITEM_SLOT_BACKPACK)
+	vcard.registered_name = H.real_name
+	vcard.update_label(addtext(vcard.registered_name, " the vampire"))
+	//var/obj/item/card/id/I = H.get_idcard(FALSE)   maybe later, hop can just give the extra card proper access if needed, as for banking, that can be set on spawn by the player using the card in hand
+	//vcard.access = I.access
 	H.regenerate_icons()
 	. = ..()
 

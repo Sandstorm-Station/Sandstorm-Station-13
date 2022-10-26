@@ -8,6 +8,6 @@
 	desc = "A cheap ID used by slave traders. This guy seems to run the show."
 
 /obj/item/card/id/vampire
-	name = "vampire ID card"
+	name = "Vampire ID"
 	desc = "An ID made to easily recognize vampires without needing to do tests"
 	icon_state = "vampire"
