@@ -30653,7 +30653,6 @@
 /turf/open/floor/plating,
 /area/maintenance/aft)
 "brK" = (
-/obj/structure/window/reinforced/spawner/east,
 /obj/machinery/chem_dispenser,
 /obj/machinery/airalarm{
 	pixel_y = 24
@@ -31153,18 +31152,10 @@
 /turf/open/floor/grass,
 /area/service/hydroponics)
 "bsL" = (
-/obj/structure/table,
 /obj/effect/turf_decal/stripes/line{
 	dir = 10
 	},
-/obj/machinery/reagentgrinder{
-	pixel_y = 8
-	},
-/obj/item/storage/box/syringes,
-/obj/item/storage/box/beakers{
-	pixel_x = -2;
-	pixel_y = -2
-	},
+/obj/machinery/chem_heater,
 /turf/open/floor/plasteel,
 /area/medical/chemistry)
 "bsM" = (
@@ -31186,6 +31177,11 @@
 	pixel_y = 6
 	},
 /obj/structure/disposalpipe/segment,
+/obj/item/storage/box/beakers{
+	pixel_x = -2;
+	pixel_y = -2
+	},
+/obj/item/storage/box/syringes,
 /turf/open/floor/plasteel,
 /area/medical/chemistry)
 "bsO" = (
@@ -37092,7 +37088,10 @@
 /turf/closed/wall/mineral/lead,
 /area/engineering/atmos)
 "bFZ" = (
-/obj/machinery/chem_heater,
+/obj/structure/table,
+/obj/machinery/reagentgrinder{
+	pixel_y = 8
+	},
 /turf/open/floor/plasteel/white,
 /area/medical/chemistry)
 "bGa" = (
@@ -52784,6 +52783,7 @@
 /obj/effect/turf_decal/tile/yellow{
 	dir = 4
 	},
+/obj/machinery/chem_heater,
 /turf/open/floor/plasteel/white,
 /area/medical/chemistry)
 "com" = (
