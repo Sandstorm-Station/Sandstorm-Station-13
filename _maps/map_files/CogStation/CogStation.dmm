@@ -54536,7 +54536,6 @@
 /turf/open/floor/plasteel/white,
 /area/medical/medbay/zone2)
 "crw" = (
-/obj/machinery/computer/med_data,
 /obj/effect/turf_decal/tile/red{
 	dir = 4
 	},
@@ -54547,6 +54546,7 @@
 	dir = 8
 	},
 /obj/effect/turf_decal/tile/red,
+/obj/machinery/limbgrower,
 /turf/open/floor/plasteel/white,
 /area/medical/medbay/zone2)
 "crx" = (
