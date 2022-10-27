@@ -70164,6 +70164,13 @@
 	},
 /turf/open/floor/plating,
 /area/cargo/storage)
+"rCm" = (
+/obj/machinery/conveyor/auto{
+	id = "pq";
+	dir = 4
+	},
+/turf/open/floor/plating/airless,
+/area/router/aux)
 "rCL" = (
 /obj/effect/landmark/start/assistant,
 /obj/structure/chair{
@@ -96641,7 +96648,7 @@ cPo
 cPo
 cPo
 cPo
-cPo
+rCm
 abp
 aaa
 aaa
