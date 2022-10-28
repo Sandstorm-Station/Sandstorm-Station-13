@@ -491,7 +491,7 @@
 	. = ..()
 	var/mob/living/carbon/human/H = quirk_holder
 	var/datum/action/vbite/B = locate() in H.actions
-	var/datum/action/vbite/R = locate() in H.actions
+	var/datum/action/vrevive/R = locate() in H.actions
 	REMOVE_TRAIT(H, TRAIT_NO_PROCESS_FOOD, ROUNDSTART_TRAIT)
 	REMOVE_TRAIT(H, TRAIT_COLDBLOODED, ROUNDSTART_TRAIT)
 	REMOVE_TRAIT(H, TRAIT_NOBREATH, ROUNDSTART_TRAIT)
