@@ -457,26 +457,26 @@
 	var/datum/action/vrevive/R = new
 	B.Grant(H)
 	R.Grant(H)
-
+species
 /datum/quirk/vampire/on_process()
 	. = ..()
 	var/mob/living/carbon/human/H = quirk_holder
-	var/area/A = get_area(C)
-	if(istype(A, /area/service/chapel) && C.mind?.assigned_role != "Chaplain")
-		C.adjustStaminaLoss(2)
-		C.adjust_nutrition(-0.3)//changed these to be less deadly and more of an inconvinience
-		C.adjust_disgust(1)
-	if(istype(C.loc, /obj/structure/closet/crate/coffin))//heals the vampire if in a coffin, except burn which fire can be considered holy
-		C.heal_overall_damage(4,4)
-		C.adjust_disgust(-7)
-		C.adjustOxyLoss(-4)
-		C.adjustCloneLoss(-4)
-		C.adjustBruteLoss(-0.3)
-		C.adjustFireLoss(-0.3)
+	var/area/A = get_area(H)
+	if(istype(A, /area/service/chapel) && H.mind?.assigned_role != "Chaplain")
+		H.adjustStaminaLoss(2)
+		H.adjust_nutrition(-0.3)//changed these to be less deadly and more of an inconvinience
+		H.adjust_disgust(1)
+	if(istype(H.loc, /obj/structure/closet/crate/coffin))//heals the vampire if in a coffin, except burn which fire can be considered holy
+		H.heal_overall_damage(4,4)
+		H.adjust_disgust(-7)
+		H.adjustOxyLoss(-4)
+		H.adjustCloneLoss(-4)
+		H.adjustBruteLoss(-0.3)
+		H.adjustFireLoss(-0.3)
 		if(!is_species(H, /datum/species/jelly)) //checks species
-			C.adjustToxLoss(-5)//heals toxin if not slime
+			H.adjustToxLoss(-5)//heals toxin if not slime
 		else
-			C.adjustToxLoss(5)//heals toxin if slime
+			H.adjustToxLoss(5)//heals toxin if slime
 		return
 	if(H.nutrition == 0)
 		if(H.staminaloss < 99)//makes them tired but dosent stun them
