@@ -460,7 +460,6 @@
 
 /datum/quirk/vampire/on_process()
 	. = ..()
-	var/mob/living/carbon/C = quirk_holder
 	var/mob/living/carbon/human/H = quirk_holder
 	var/area/A = get_area(C)
 	if(istype(A, /area/service/chapel) && C.mind?.assigned_role != "Chaplain")
@@ -484,7 +483,7 @@
 			H.adjustStaminaLoss(3, FALSE, TRUE)
 		else
 			H.adjustStaminaLoss(-1,FALSE, FALSE)//this also helps with if someone is stuck in the chapel for way too long, and i tested with a stun sword that stunning for sec is still possible
-		if(rand(0,100) <= 2) //2 percent chance (if it was true randome D:<)
+		if(prob(2)) //2 percent chance (if it was true randome D:<)
 			to_chat(H, "<span class='warning'>I need blood NOW!!!</span>")
 
 /datum/quirk/vampire/remove()
