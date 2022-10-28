@@ -88,7 +88,7 @@ GLOBAL_LIST_INIT(turfs_without_ground, typecacheof(list(
 #define isinsect(A) (is_species(A, /datum/species/insect))
 #define isxenoperson(A) (is_species(A, /datum/species/xeno))
 #define isstartjelly(A) (is_species(A, /datum/species/jelly/roundstartslime))
-#define isarachnid(A) (is_species(A, /datum/species/arachnid))
+#define isarachnid(A) (is_species(A, /datum/species/arachnid) || HAS_TRAIT(A, TRAIT_ARACHNID)) // SPLURT Edit: for the Arachnid trait
 
 //more carbon mobs
 #define ismonkey(A) (istype(A, /mob/living/carbon/monkey))

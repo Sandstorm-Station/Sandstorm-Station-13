@@ -532,8 +532,12 @@
 				H.adjustStaminaLoss(-20)
 				H.adjust_nutrition(-20)
 				H.resting = TRUE
-		if(H.pulling && iscarbon(H.pulling))
-			var/mob/living/carbon/victim = H.pulling
+		if(H.pulling && (iscarbon(H.pulling) || (istype(H.pulling,/obj/structure/arachnid/cocoon) && locate(/mob/living/carbon) in H.pulling.contents)))
+			var/mob/living/carbon/victim
+			if(iscarbon(H.pulling))
+				victim = H.pulling
+			else if(istype(H.pulling,/obj/structure/arachnid/cocoon))
+				victim = locate(/mob/living/carbon) in H.pulling.contents
 			drain_cooldown = world.time + 25
 			if(victim.anti_magic_check(FALSE, TRUE, FALSE, 0))
 				to_chat(victim, "<span class='warning'>[H] tries to bite you, but stops before touching you!</span>")
