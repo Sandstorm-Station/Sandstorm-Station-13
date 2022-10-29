@@ -409,7 +409,9 @@
 
 /mob/living/simple_animal/jacq/proc/trick(mob/living/carbon/C, gender)
 	var/option
-	if(ishuman(C))
+	if(ishuman(C) and gender_check(c)== MALE or FEMALE)
+		option = rand(1,8)
+	else if (ishuman(C))
 		option = rand(1,7)
 	else
 		option = rand(1,6)
@@ -454,6 +456,9 @@
 				H.dropItemToGround(W, TRUE)
 			var/ghost = new /obj/item/clothing/suit/ghost_sheet/sticky
 			H.equip_to_slot(ghost, ITEM_SLOT_OCLOTHING, 1, 1)
+		if(8)
+			visible_message("<b>[src]</b> waves their arms around, <span class='spooky'>\"Who cares, it's lad or lass? You'll take a new life glanсe!\"<span>")
+			jacqrunes("Who cares, it's lad or lass? You'll take a new life glanсe!",C)
 	poof()
 
 //Blame Fel
