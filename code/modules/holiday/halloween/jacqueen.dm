@@ -444,7 +444,7 @@
 			jacqrunes("A new familiar for me, and you'll see it's thee!", C)
 			C.reagents.add_reagent(/datum/reagent/fermi/secretcatchem, 30)
 		if(6)
-			visible_message("<b>[src]</b> waves their arms around, <span class='spooky'>\"There will be some fun on this night, go on and find someone you like!\"<span>")
+			visible_message("<b>[src]</b> waves their arms around, <span class='spooky'>\"There will be some fun on this night, go on and find someone you like!\"</span>")
 			jacqrunes("There will be some fun on this night, go on and find someone you like!", C)
 			C.reagents.add_reagent(/datum/reagent/drug/aphrodisiacplus, 15)
 		if(7)
@@ -457,8 +457,9 @@
 			var/ghost = new /obj/item/clothing/suit/ghost_sheet/sticky
 			H.equip_to_slot(ghost, ITEM_SLOT_OCLOTHING, 1, 1)
 		if(8)
-			visible_message("<b>[src]</b> waves their arms around, <span class='spooky'>\"Who cares, it's lad or lass? You'll take a new life glanсe!\"<span>")
-			jacqrunes("Who cares, it's lad or lass? You'll take a new life glanсe!",C)
+			visible_message("<b>[src]</b> waves their arms around, <span class='spooky'>\"Who cares, it's lad or lass? You'll take a new life glanсe!\"</span>")
+			jacqrunes("Who cares, it's lad or lass? You'll take a new life glanсe!", C)
+			C.set_gender(C.gender == MALE ? FEMALE : MALE)
 	poof()
 
 //Blame Fel
