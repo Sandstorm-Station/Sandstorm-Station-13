@@ -409,7 +409,7 @@
 
 /mob/living/simple_animal/jacq/proc/trick(mob/living/carbon/C, gender)
 	var/option
-	if(ishuman(C) and C.gender == MALE or FEMALE)
+	if(ishuman(C) and (C.gender == MALE or C.gender == FEMALE))
 		option = rand(1,8)
 	else if (ishuman(C))
 		option = rand(1,7)
