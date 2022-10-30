@@ -457,6 +457,7 @@
 	var/datum/action/vrevive/R = new
 	B.Grant(H)
 	R.Grant(H)
+
 /datum/quirk/vampire/on_process()
 	. = ..()
 	var/mob/living/carbon/human/H = quirk_holder
