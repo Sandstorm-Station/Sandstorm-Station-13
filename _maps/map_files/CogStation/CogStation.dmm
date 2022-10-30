@@ -30653,7 +30653,6 @@
 /turf/open/floor/plating,
 /area/maintenance/aft)
 "brK" = (
-/obj/structure/window/reinforced/spawner/east,
 /obj/machinery/chem_dispenser,
 /obj/machinery/airalarm{
 	pixel_y = 24
@@ -31153,18 +31152,10 @@
 /turf/open/floor/grass,
 /area/service/hydroponics)
 "bsL" = (
-/obj/structure/table,
 /obj/effect/turf_decal/stripes/line{
 	dir = 10
 	},
-/obj/machinery/reagentgrinder{
-	pixel_y = 8
-	},
-/obj/item/storage/box/syringes,
-/obj/item/storage/box/beakers{
-	pixel_x = -2;
-	pixel_y = -2
-	},
+/obj/machinery/chem_heater,
 /turf/open/floor/plasteel,
 /area/medical/chemistry)
 "bsM" = (
@@ -31186,6 +31177,11 @@
 	pixel_y = 6
 	},
 /obj/structure/disposalpipe/segment,
+/obj/item/storage/box/beakers{
+	pixel_x = -2;
+	pixel_y = -2
+	},
+/obj/item/storage/box/syringes,
 /turf/open/floor/plasteel,
 /area/medical/chemistry)
 "bsO" = (
@@ -37092,7 +37088,10 @@
 /turf/closed/wall/mineral/lead,
 /area/engineering/atmos)
 "bFZ" = (
-/obj/machinery/chem_heater,
+/obj/structure/table,
+/obj/machinery/reagentgrinder{
+	pixel_y = 8
+	},
 /turf/open/floor/plasteel/white,
 /area/medical/chemistry)
 "bGa" = (
@@ -47523,6 +47522,10 @@
 	name = "Robotics Desk";
 	req_access_txt = "29"
 	},
+/obj/machinery/door/window/eastright{
+	name = "Medbay Desk";
+	req_access_txt = "5"
+	},
 /turf/open/floor/plasteel/white,
 /area/science/robotics/lab)
 "ccC" = (
@@ -52784,6 +52787,7 @@
 /obj/effect/turf_decal/tile/yellow{
 	dir = 4
 	},
+/obj/machinery/chem_heater,
 /turf/open/floor/plasteel/white,
 /area/medical/chemistry)
 "com" = (
@@ -54536,7 +54540,6 @@
 /turf/open/floor/plasteel/white,
 /area/medical/medbay/zone2)
 "crw" = (
-/obj/machinery/computer/med_data,
 /obj/effect/turf_decal/tile/red{
 	dir = 4
 	},
@@ -54547,6 +54550,7 @@
 	dir = 8
 	},
 /obj/effect/turf_decal/tile/red,
+/obj/machinery/limbgrower,
 /turf/open/floor/plasteel/white,
 /area/medical/medbay/zone2)
 "crx" = (
@@ -55943,7 +55947,9 @@
 /turf/open/floor/plasteel,
 /area/science/xenobiology)
 "cuf" = (
-/obj/machinery/computer/operating,
+/obj/machinery/computer/operating{
+	dir = 8
+	},
 /obj/effect/turf_decal/bot,
 /obj/machinery/atmospherics/pipe/simple/cyan/hidden,
 /turf/open/floor/plasteel,
@@ -55966,7 +55972,6 @@
 /obj/item/paper/guides/cogstation/letter_med{
 	pixel_y = 4
 	},
-/obj/item/storage/backpack/duffelbag/med/surgery,
 /turf/open/floor/plasteel/white,
 /area/medical/medbay/zone2)
 "cui" = (
@@ -56140,6 +56145,8 @@
 "cux" = (
 /obj/machinery/atmospherics/pipe/simple/cyan/hidden,
 /obj/effect/landmark/event_spawn,
+/obj/structure/table,
+/obj/item/storage/backpack/duffelbag/med/surgery,
 /turf/open/floor/plasteel,
 /area/medical/medbay/zone2)
 "cuC" = (
@@ -56655,6 +56662,8 @@
 /obj/machinery/atmospherics/components/unary/vent_pump/on{
 	dir = 1
 	},
+/obj/structure/table,
+/obj/item/storage/backpack/duffelbag/med/surgery,
 /turf/open/floor/plasteel,
 /area/medical/medbay/zone2)
 "cvG" = (
@@ -59394,7 +59403,7 @@
 /area/hallway/primary/aft)
 "cAU" = (
 /obj/machinery/computer/operating{
-	dir = 1
+	dir = 8
 	},
 /obj/effect/turf_decal/bot,
 /turf/open/floor/plasteel,
@@ -59477,7 +59486,6 @@
 /obj/effect/turf_decal/tile/red{
 	dir = 8
 	},
-/obj/item/storage/backpack/duffelbag/med/surgery,
 /turf/open/floor/plasteel/white,
 /area/medical/medbay/zone2)
 "cBe" = (
@@ -70156,6 +70164,13 @@
 	},
 /turf/open/floor/plating,
 /area/cargo/storage)
+"rCm" = (
+/obj/machinery/conveyor/auto{
+	id = "pq";
+	dir = 4
+	},
+/turf/open/floor/plating/airless,
+/area/router/aux)
 "rCL" = (
 /obj/effect/landmark/start/assistant,
 /obj/structure/chair{
@@ -96633,7 +96648,7 @@ cPo
 cPo
 cPo
 cPo
-cPo
+rCm
 abp
 aaa
 aaa

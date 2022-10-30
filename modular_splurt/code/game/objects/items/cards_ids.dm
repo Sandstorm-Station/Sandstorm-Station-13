@@ -11,3 +11,19 @@
 	name = "Vampire ID"
 	desc = "An ID made to easily recognize vampires without needing to do tests"
 	icon_state = "vampire"
+
+/obj/item/card/id/away/hotel/splurt
+	name = "Staff ID"
+	assignment = "Hotel Staff"
+	desc = "A staff ID used to access the hotel's doors."
+	access = list(ACCESS_AWAY_GENERAL, ACCESS_AWAY_MAINT, ACCESS_AWAY_ENGINE)
+
+/obj/item/card/id/away/hotel/splurt/security
+	name = "Officer ID"
+	assignment = "Hotel Security"
+	access = list(ACCESS_AWAY_GENERAL, ACCESS_AWAY_MAINT, ACCESS_AWAY_SEC, ACCESS_AWAY_ENGINE)
+
+/obj/item/card/id/away/hotel/manager
+	name = "Manager ID"
+	assignment = "Hotel Manager"
+	access = list(ACCESS_AWAY_GENERAL, ACCESS_AWAY_MAINT, ACCESS_AWAY_ENGINE, ACCESS_AWAY_SEC, ACCESS_AWAY_GENERIC1)

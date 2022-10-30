@@ -489,6 +489,8 @@ SUBSYSTEM_DEF(job)
 		job.after_spawn(H, M.client, joined_late) // note: this happens before the mob has a key! M will always have a client, H might not.
 		equip_loadout(N, H, TRUE)//CIT CHANGE - makes players spawn with in-backpack loadout items properly. A little hacky but it works
 
+		handle_roundstart_items(H, M.ckey, H.mind.assigned_role, H.mind.special_role)
+
 	var/list/tcg_cards
 	if(ishuman(H))
 		if(length(H.client?.prefs?.tcg_cards))

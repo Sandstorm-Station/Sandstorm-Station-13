@@ -21,3 +21,5 @@
 
 #define TRAIT_INCUBUS			"Incubus"
 #define TRAIT_SUCCUBUS			"Succubus"
+
+#define TRAIT_ARACHNID			"Arachnid"
