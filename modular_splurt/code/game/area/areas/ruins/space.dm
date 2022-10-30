@@ -37,26 +37,10 @@
 	icon_state = "dorms"
 	has_gravity = STANDARD_GRAVITY
 
-/datum/map_template/ruin/space/radiostation
-	prefix = "modular_splurt/_maps/RandomRuins/SpaceRuins/"
-	id = "radiostation"
-	suffix = "radiostation.dmm"
-	name = "NT Radio Station"
-	description = "A mobile NT Radio Station ship."
-
-
 /area/ruin/space/syndielistenspace
 	name = "Syndicate Listening Post"
 	icon_state = "yellow"
 	has_gravity = STANDARD_GRAVITY
-
-/datum/map_template/ruin/space/syndielistenspace
-	prefix = "modular_splurt/_maps/RandomRuins/SpaceRuins/"
-	id = "syndielistenspace"
-	suffix = "syndielistenspace.dmm"
-	name = "Syndicate Listening Outpost"
-	description = "A syndicate listening outpost cleverly disguised as an asteroid"
-
 
 /obj/effect/mob_spawn/human/space/syndicate/special(mob/living/new_spawn)
 	new_spawn.grant_language(/datum/language/codespeak, TRUE, TRUE, LANGUAGE_MIND)
@@ -100,11 +84,3 @@
 	area_flags = UNIQUE_AREA
 	flags_1 = NONE
 	sound_environment = SOUND_AREA_SPACE
-
-/datum/map_template/ruin/space/spacehotelsplurt
-	prefix = "modular_splurt/_maps/RandomRuins/SpaceRuins/"
-	id = "spacehotelsplurt"
-	suffix = "spacehotelsplurt.dmm"
-	name = "Twin Spires Hotel and Club"
-	description = "A Nanotrasen-partnered interstellar hotel and stripclub"
-
