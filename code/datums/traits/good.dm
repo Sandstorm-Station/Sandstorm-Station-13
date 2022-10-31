@@ -220,3 +220,20 @@
 /datum/quirk/night_vision/on_spawn()
 	var/mob/living/carbon/human/H = quirk_holder
 	H.update_sight()
+
+/datum/quirk/weak_flight/on_process()
+	var/mob/living/carbon/human/H = quirk_holder
+	var/turf/T = get_turf(quirk_holder)
+	var/datum/gas_mixture/environment = T.return_air()
+	if(!quirk_holder.has_gravity())
+		if(environment && !(environment.return_pressure() > 30))//Set the player to be "flying".
+			H.physiology.stun_mod *=2
+			H.add_movespeed_modifier(/datum/movespeed_modifier/mob_config_speedmod_floating)
+			H.setMovetype(H.movement_type | FLYING)
+			quirk_holder.pass_flags |= PASSTABLE
+	else
+		H.physiology.stun_mod *= 0.5
+		H.remove_movespeed_modifier(/datum/movespeed_modifier/mob_config_speedmod_floating)
+		H.setMovetype(H.movement_type & ~FLYING)
+		quirk_holder.pass_flags &= ~PASSTABLE
+
