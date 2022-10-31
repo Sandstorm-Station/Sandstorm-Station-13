@@ -457,6 +457,7 @@
 	var/datum/action/vrevive/R = new
 	B.Grant(H)
 	R.Grant(H)
+	H.grant_language(/datum/language/vampiric, TRUE, TRUE, LANGUAGE_BLOODSUCKER)
 
 /datum/quirk/vampire/on_process()
 	. = ..()
@@ -499,6 +500,7 @@
 	REMOVE_TRAIT(H,TRAIT_AUTO_CATCH_ITEM,ROUNDSTART_TRAIT)
 	B.Remove(H)
 	R.Remove(H)
+	H.remove_language(/datum/language/vampiric, TRUE, TRUE, LANGUAGE_BLOODSUCKER)
 
 /datum/quirk/vampire/on_spawn()
 	var/mob/living/carbon/human/H = quirk_holder
