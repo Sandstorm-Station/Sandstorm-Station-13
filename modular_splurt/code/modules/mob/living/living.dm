@@ -27,6 +27,8 @@
 			has_penis = FALSE
 			has_balls = FALSE
 			has_vagina = FALSE
+		if("Toggle Breasts") // Idea/Initial code by @LunarFleet (github)
+			has_breasts = !has_breasts // Simplified line by @Zirok-BYOND (github)
 
 /// Toggle admin frozen
 /mob/living/proc/toggle_admin_freeze(client/admin)
