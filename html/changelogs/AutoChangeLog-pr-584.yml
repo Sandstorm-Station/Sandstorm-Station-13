@@ -1,7 +1,0 @@
-author: Anonymous
-delete-after: true
-changes:
-  - code_imp: Rewrites "Set Gender" for simple mobs and silicon as an upward proc
-      for "mob/living", while makes previous verbs to call for the proc instead. While
-      it'll help with verbs now sharing the same function (and thus easier to edit),
-      I am not sure if it will help with duplicate code.
