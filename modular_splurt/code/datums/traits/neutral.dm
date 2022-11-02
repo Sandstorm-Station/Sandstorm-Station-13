@@ -454,35 +454,63 @@
 	if(!H.dna.skin_tone_override)
 		H.skin_tone = "albino"
 	var/datum/action/vbite/B = new
+	var/datum/action/vrevive/R = new
 	B.Grant(H)
+	R.Grant(H)
+	H.grant_language(/datum/language/vampiric, TRUE, TRUE, LANGUAGE_BLOODSUCKER)
 
 /datum/quirk/vampire/on_process()
 	. = ..()
-	var/mob/living/carbon/C = quirk_holder
-	var/area/A = get_area(C)
-	if(istype(A, /area/service/chapel) && C.mind?.assigned_role != "Chaplain")
-		C.adjustStaminaLoss(2)
-		C.adjust_nutrition(-0.3)//changed these to be less deadly and more of an inconvinience
-		C.adjust_disgust(1)
-	if(istype(C.loc, /obj/structure/closet/crate/coffin))//heals the vampire if in a coffin, except burn which fire can be considered holy
-		C.heal_overall_damage(4,4)
-		C.adjust_disgust(-7)
-		C.adjustOxyLoss(-4)
-		C.adjustCloneLoss(-4)
-		C.adjustBruteLoss(-0.3)
+	var/mob/living/carbon/human/H = quirk_holder
+	var/area/A = get_area(H)
+	if(istype(A, /area/service/chapel) && H.mind?.assigned_role != "Chaplain")
+		H.adjustStaminaLoss(2)
+		H.adjust_nutrition(-0.3)//changed these to be less deadly and more of an inconvinience
+		H.adjust_disgust(1)
+	if(istype(H.loc, /obj/structure/closet/crate/coffin))//heals the vampire if in a coffin, except burn which fire can be considered holy
+		H.heal_overall_damage(4,4)
+		H.adjust_disgust(-7)
+		H.adjustOxyLoss(-4)
+		H.adjustCloneLoss(-4)
+		H.adjustBruteLoss(-0.3)
+		H.adjustFireLoss(-0.3)
+		if(!is_species(H, /datum/species/jelly)) //checks species
+			H.adjustToxLoss(-5)//heals toxin if not slime
+		else
+			H.adjustToxLoss(5)//heals toxin if slime
 		return
+	if(H.nutrition == 0)
+		if(H.staminaloss < 99)//makes them tired but dosent stun them
+			H.adjustStaminaLoss(3, FALSE, TRUE)
+		else
+			H.adjustStaminaLoss(-1,FALSE, FALSE)//this also helps with if someone is stuck in the chapel for way too long, and i tested with a stun sword that stunning for sec is still possible
+		if(prob(2)) //2 percent chance (if it was true randome D:<)
+			to_chat(H, "<span class='warning'>I need blood NOW!!!</span>")
 
 /datum/quirk/vampire/remove()
+	. = ..()
 	var/mob/living/carbon/human/H = quirk_holder
 	var/datum/action/vbite/B = locate() in H.actions
+	var/datum/action/vrevive/R = locate() in H.actions
 	REMOVE_TRAIT(H, TRAIT_NO_PROCESS_FOOD, ROUNDSTART_TRAIT)
 	REMOVE_TRAIT(H, TRAIT_COLDBLOODED, ROUNDSTART_TRAIT)
 	REMOVE_TRAIT(H, TRAIT_NOBREATH, ROUNDSTART_TRAIT)
 	REMOVE_TRAIT(H, TRAIT_NOTHIRST, ROUNDSTART_TRAIT)
 	REMOVE_TRAIT(H,TRAIT_QUICKER_CARRY,ROUNDSTART_TRAIT)
 	REMOVE_TRAIT(H,TRAIT_AUTO_CATCH_ITEM,ROUNDSTART_TRAIT)
-
 	B.Remove(H)
+	R.Remove(H)
+	H.remove_language(/datum/language/vampiric, TRUE, TRUE, LANGUAGE_BLOODSUCKER)
+
+/datum/quirk/vampire/on_spawn()
+	var/mob/living/carbon/human/H = quirk_holder
+	var/obj/item/card/id/vampire/vcard = new /obj/item/card/id/vampire
+	H.equip_to_slot(vcard, ITEM_SLOT_BACKPACK)
+	vcard.registered_name = H.real_name
+	vcard.update_label(addtext(vcard.registered_name, " the vampire"))
+	//var/obj/item/card/id/I = H.get_idcard(FALSE)   maybe later, hop can just give the extra card proper access if needed, as for banking, that can be set on spawn by the player using the card in hand
+	//vcard.access = I.access
+	H.regenerate_icons()
 	. = ..()
 
 
@@ -547,6 +575,7 @@
 			if(!blood_sucking_checks(victim, TRUE, TRUE))
 				return
 			H.visible_message("<span class='danger'>[H] bites down on [victim]'s neck!</span>")
+			victim.add_splatter_floor(get_turf(victim), TRUE)
 			to_chat(victim, "<span class='userdanger'>[H] is draining your blood!</span>")
 			if(!do_after(H, 30, target = victim))
 				return
@@ -560,6 +589,28 @@
 			log_combat(H,victim,"vampire bit")//logs the biting action for admins
 			if(!victim.blood_volume)
 				to_chat(H, "<span class='warning'>You finish off [victim]'s blood supply!</span>")
+
+
+/datum/action/vrevive
+	name = "Resurrect"
+	button_icon_state = "power_strength"
+	icon_icon = 'icons/mob/actions/bloodsucker.dmi'
+	desc = "Use all your energy to come back to life!"
+
+/datum/action/vrevive/Trigger()
+	. = ..()
+	var/mob/living/carbon/C = owner
+	var/mob/living/carbon/human/H = owner
+	if(H.stat == DEAD && istype(C.loc, /obj/structure/closet/crate/coffin))
+		H.revive(TRUE, FALSE)
+		H.set_nutrition(0)
+		H.Daze(20)
+		H.drunkenness = 70
+	else
+		to_chat(H,"<span class='warning'>You need to be dead and in a coffin to revive!</span>")
+
+//splurt change end
+//put next quirk action here
 
 //werewolf tf
 
@@ -645,3 +696,4 @@
 	old_features["species"] = H.dna.species.type
 	old_features["size"] = get_size(H)
 	old_features["bark"] = H.vocal_bark_id
+
