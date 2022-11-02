@@ -7,6 +7,11 @@
 	name = "\improper Slaver Master ID"
 	desc = "A cheap ID used by slave traders. This guy seems to run the show."
 
+/obj/item/card/id/vampire
+	name = "Vampire ID"
+	desc = "An ID made to easily recognize vampires without needing to do tests"
+	icon_state = "vampire"
+
 /obj/item/card/id/away/hotel/splurt
 	name = "Staff ID"
 	assignment = "Hotel Staff"
