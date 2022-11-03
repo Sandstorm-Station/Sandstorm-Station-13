@@ -92,6 +92,17 @@
 	icon_state = "ladyballat"
 	item_state = "ladyballat"
 
+/obj/item/clothing/suit/flatwoods
+	name = "Flatwoods Dress"
+	desc = "Despite it's rather simple and cozy look, it seems to be made for someone of at least 10ft."
+	icon = 'modular_splurt/icons/obj/clothing/suits.dmi'
+	mob_overlay_icon = 'modular_splurt/icons/mob/clothing/suit.dmi'
+	icon_state = "flatwoods"
+	item_state = "flatwoods"
+	body_parts_covered = CHEST|GROIN|LEGS|FEET
+	mutantrace_variation = STYLE_DIGITIGRADE|STYLE_NO_ANTHRO_ICON
+	flags_inv = HIDESHOES|HIDEUNDERWEAR
+
 /*
  * Posshim's Corpus atire
  */

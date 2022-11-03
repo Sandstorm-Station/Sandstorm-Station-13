@@ -138,7 +138,8 @@
 	var/list/extra_titles = list(
 		"Chef de partie",
 		"Prey Prepper",
-		"Poissonier"
+		"Poissonier",
+		"Baker"
 	)
 	LAZYADD(alt_titles, extra_titles)
 	. = ..()
@@ -264,7 +265,11 @@
 /datum/job/detective/New()
 	var/list/extra_titles = list(
 		"Gumshoe",
-		"Slutective"
+		"Slutective",
+		"Van Dorn Agent",
+		"Forensic Investigator",
+		"Cinder Dick",
+		"Cooperate Auditor"
 	)
 	if(SSevents.holidays && SSevents.holidays[HALLOWEEN])
 		LAZYADD(extra_titles, "Spookective")

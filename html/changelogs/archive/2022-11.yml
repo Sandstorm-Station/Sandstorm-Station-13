@@ -1,0 +1,15 @@
+2022-11-02:
+  Anonymous:
+  - code_imp: Rewrites "Set Gender" for simple mobs and silicon as an upward proc
+      for "mob/living", while makes previous verbs to call for the proc instead. While
+      it'll help with verbs now sharing the same function (and thus easier to edit),
+      I am not sure if it will help with duplicate code.
+  BongaTheProto:
+  - rscadd: Adds the Narrate (Player) verb in the IC tab
+  - rscadd: Also, /me's can now be multiline, because apparently no one did a CL for
+      it
+  - rscadd: Adds a new kind of horns (Alien bobbers) and a new dress you can find
+      in the autodrobe
+  Nukechickenu64:
+  - bugfix: made the vampire heal toxin in coffins so its alot easier to revive them
+      after being crit for a long time

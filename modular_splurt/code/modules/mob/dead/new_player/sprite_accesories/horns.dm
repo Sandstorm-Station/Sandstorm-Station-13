@@ -36,3 +36,8 @@
 	name = "Long Dragon"
 	icon = 'modular_splurt/icons/mob/mutant_bodyparts.dmi'
 	icon_state = "dragonlong"
+
+/datum/sprite_accessory/horns/alienbobbers
+	name = "Alien Bobbers"
+	icon = 'modular_splurt/icons/mob/mutant_bodyparts.dmi'
+	icon_state = "alienbobbers"
