@@ -106,3 +106,11 @@
 
 	if(.)
 		TIMER_COOLDOWN_START(quirk_holder, COOLDOWN_DOMINANT_SNAP, DOMINANT_SNAP_COOLDOWN)
+
+/datum/quirk/flutter
+	name = "Flutter"
+	desc = "You are able to move in Preassurized Low Gravity enviroments. Don't ask me how."
+	value = 1
+	mob_trait = TRAIT_FLUTTER
+
+

@@ -221,9 +221,3 @@
 	var/mob/living/carbon/human/H = quirk_holder
 	H.update_sight()
 
-/datum/quirk/weak_flight
-	name = "Flutter"
-	desc = "You are able to move in Preassurized Low Gravity enviroments. Don't ask me how."
-	value = -1
-	mob_trait = TRAIT_FLUTTER
-
