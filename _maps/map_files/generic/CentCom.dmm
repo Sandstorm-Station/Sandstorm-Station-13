@@ -8968,7 +8968,6 @@
 /obj/effect/turf_decal/tile/blue{
 	dir = 1
 	},
-/obj/machinery/computer/operating,
 /turf/open/floor/plasteel/dark,
 /area/slavers)
 "uj" = (
@@ -19090,11 +19089,12 @@
 /obj/effect/turf_decal/tile/blue{
 	dir = 8
 	},
-/obj/structure/table,
 /obj/item/cautery,
 /obj/item/circular_saw,
 /obj/item/scalpel,
 /obj/item/surgicaldrill,
+/obj/item/retractor/advanced,
+/obj/structure/table,
 /turf/open/floor/plasteel/dark,
 /area/slavers)
 "RO" = (
@@ -21084,12 +21084,10 @@
 /obj/effect/turf_decal/tile/blue{
 	dir = 4
 	},
-/obj/structure/table,
-/obj/item/retractor,
-/obj/item/hemostat,
 /obj/machinery/defibrillator_mount/loaded{
 	pixel_y = 28
 	},
+/obj/machinery/computer/operating,
 /turf/open/floor/plasteel/dark,
 /area/slavers)
 "YD" = (
