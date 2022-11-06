@@ -215,10 +215,6 @@
 /mob/Process_Spacemove(movement_dir = 0)
 	if(HAS_TRAIT(src, TRAIT_SPACEWALK) || spacewalk || ..())
 		return TRUE
-	var/turf/T = get_turf(src)
-	var/datum/gas_mixture/environment = T.return_air()
-	if(HAS_TRAIT(src, TRAIT_FLUTTER)&& (environment.return_pressure() > 30))
-		return TRUE
 	var/atom/movable/backup = get_spacemove_backup()
 	if(backup)
 		if(istype(backup) && movement_dir && !backup.anchored)

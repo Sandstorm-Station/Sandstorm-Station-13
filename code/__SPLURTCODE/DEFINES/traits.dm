@@ -23,3 +23,4 @@
 #define TRAIT_SUCCUBUS			"Succubus"
 
 #define TRAIT_ARACHNID			"Arachnid"
+#define TRAIT_FLUTTER			"flutter"
