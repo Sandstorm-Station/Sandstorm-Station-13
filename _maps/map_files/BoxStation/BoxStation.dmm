@@ -5482,7 +5482,6 @@
 /turf/closed/wall,
 /area/service/lawoffice)
 "arX" = (
-/obj/structure/table/wood,
 /obj/item/folder/blue,
 /obj/item/folder/blue,
 /obj/item/folder/blue,
@@ -5491,6 +5490,7 @@
 /obj/machinery/atmospherics/pipe/simple/supply/hidden{
 	dir = 4
 	},
+/obj/structure/table/wood,
 /turf/open/floor/wood,
 /area/service/lawoffice)
 "asa" = (
@@ -48575,7 +48575,7 @@
 /turf/open/floor/plasteel/dark,
 /area/tcommsat/computer)
 "hdv" = (
-/obj/structure/chair/sofa/corp/left{
+/obj/structure/chair/sofa/corp/right{
 	dir = 1
 	},
 /turf/open/floor/wood,
@@ -54982,7 +54982,6 @@
 /obj/machinery/atmospherics/components/unary/vent_pump/on{
 	dir = 8
 	},
-/obj/machinery/power/apc/auto_name/west,
 /turf/open/floor/wood,
 /area/service/lawoffice)
 "mOB" = (
@@ -56313,6 +56312,11 @@
 /obj/machinery/computer/arcade/orion_trail,
 /turf/open/floor/wood,
 /area/command/heads_quarters/captain)
+"obv" = (
+/obj/effect/decal/cleanable/dirt,
+/obj/machinery/atmospherics/pipe/simple/scrubbers/hidden,
+/turf/open/floor/plating,
+/area/maintenance/port/fore)
 "oce" = (
 /obj/machinery/atmospherics/pipe/manifold/supply/hidden{
 	dir = 1
@@ -57042,9 +57046,11 @@
 /turf/open/floor/plasteel/dark,
 /area/service/bar)
 "oEt" = (
-/obj/machinery/atmospherics/pipe/simple/scrubbers/hidden,
 /obj/machinery/atmospherics/pipe/simple/scrubbers/hidden{
 	dir = 10
+	},
+/obj/structure/cable{
+	icon_state = "1-2"
 	},
 /turf/open/floor/plating,
 /area/maintenance/port/fore)
@@ -62469,6 +62475,10 @@
 /obj/structure/bookcase/random/religion,
 /turf/open/floor/wood/wood_large,
 /area/service/chapel/main)
+"tGO" = (
+/obj/machinery/power/apc/auto_name/west,
+/turf/closed/wall,
+/area/service/lawoffice)
 "tHc" = (
 /obj/machinery/door/airlock/grunge{
 	name = "Prison Visitation";
@@ -82534,7 +82544,7 @@ auY
 hSR
 alU
 axi
-aKY
+obv
 ava
 gKo
 nBI
@@ -95122,7 +95132,7 @@ aiX
 anz
 anz
 aov
-aph
+tGO
 aob
 ara
 arV

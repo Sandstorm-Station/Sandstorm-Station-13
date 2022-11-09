@@ -168,6 +168,10 @@
 			H.dna.features["mam_tail"] = new_tail
 			if(new_tail != "None")
 				H.dna.features["taur"] = "None"
+				var/datum/action/innate/spin_web/SW = locate(/datum/action/innate/spin_web) in H.actions
+				var/datum/action/innate/spin_cocoon/SC = locate(/datum/action/innate/spin_cocoon) in H.actions
+				SC?.Remove(H)
+				SW?.Remove(H)
 		H.update_body()
 
 	else if (select_alteration == "Taur body")
@@ -183,7 +187,16 @@
 		var/new_taur
 		new_taur = input(owner, "Choose your character's tauric body:", "Tauric Alteration") as null|anything in snowflake_taur_list
 		if(new_taur)
+			var/datum/action/innate/spin_web/SW = locate(/datum/action/innate/spin_web) in H.actions
+			var/datum/action/innate/spin_cocoon/SC = locate(/datum/action/innate/spin_cocoon) in H.actions
+			SC?.Remove(H)
+			SW?.Remove(H)
 			H.dna.features["taur"] = new_taur
+			if(new_taur == "Drider")
+				SW = new
+				SC = new
+				SC.Grant(H)
+				SW.Grant(H)
 			if(new_taur != "None")
 				H.dna.features["mam_tail"] = "None"
 		H.update_body()
