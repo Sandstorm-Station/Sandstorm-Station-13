@@ -1556,10 +1556,6 @@
 /obj/structure/table,
 /turf/open/floor/plating,
 /area/ruin/space/has_grav/hotel)
-"hM" = (
-/obj/effect/decal/cleanable/chem_pile,
-/turf/open/floor/plating,
-/area/ruin/space/has_grav/hotel)
 "hN" = (
 /obj/structure/table/plasmaglass,
 /obj/structure/pole{
@@ -4111,6 +4107,7 @@
 /obj/machinery/atmospherics/pipe/simple/scrubbers/hidden/layer3{
 	dir = 6
 	},
+/obj/machinery/light/floor,
 /turf/open/floor/plating,
 /area/ruin/space/has_grav/hotel)
 "uO" = (
@@ -5505,12 +5502,6 @@
 /obj/item/bedsheet/blue/double,
 /turf/open/floor/carpet/blue,
 /area/ruin/space/has_grav/hotel/guestroom)
-"Bg" = (
-/obj/machinery/light{
-	dir = 4
-	},
-/turf/open/floor/carpet/black,
-/area/ruin/space/has_grav/hotel/bar)
 "Bj" = (
 /obj/structure/disposalpipe/segment{
 	dir = 4
@@ -5658,6 +5649,7 @@
 /obj/machinery/atmospherics/pipe/simple/scrubbers/hidden/layer3{
 	dir = 8
 	},
+/obj/machinery/light/floor,
 /turf/open/floor/carpet/royalblack,
 /area/ruin/space/has_grav/hotel/bar)
 "BV" = (
@@ -6627,8 +6619,7 @@
 /turf/open/floor/plating,
 /area/ruin/space/has_grav/hotel)
 "FT" = (
-/obj/effect/decal/cleanable/ash,
-/obj/item/trash/can,
+/obj/machinery/light/floor,
 /turf/open/floor/plating,
 /area/ruin/space/has_grav/hotel)
 "FU" = (
@@ -6762,10 +6753,6 @@
 /obj/item/stack/sheet/glass/five,
 /obj/item/stack/sheet/glass/five,
 /turf/open/floor/plasteel/vaporwave,
-/area/ruin/space/has_grav/hotel/bar)
-"GB" = (
-/obj/machinery/light,
-/turf/open/floor/plasteel/dark,
 /area/ruin/space/has_grav/hotel/bar)
 "GD" = (
 /turf/open/floor/plasteel/showroomfloor,
@@ -7232,6 +7219,10 @@
 /obj/machinery/door/airlock/external,
 /turf/open/floor/plating,
 /area/ruin/space/has_grav/hotel/dock)
+"Iw" = (
+/obj/machinery/light,
+/turf/open/floor/plasteel/showroomfloor,
+/area/ruin/space/has_grav/hotel/bar)
 "Ix" = (
 /obj/structure/closet/cabinet,
 /turf/open/floor/plating,
@@ -8211,7 +8202,10 @@
 /turf/open/floor/wood/wood_large,
 /area/ruin/space/has_grav/hotel)
 "Ne" = (
-/obj/machinery/door/airlock/vault,
+/obj/machinery/door/airlock/vault{
+	req_access_txt = "205";
+	req_access = 205
+	},
 /turf/open/floor/engine,
 /area/ruin/space/has_grav/hotel)
 "Nf" = (
@@ -9226,6 +9220,7 @@
 /area/ruin/space/has_grav/hotel)
 "Sm" = (
 /obj/item/stack/cable_coil,
+/obj/item/screwdriver/power,
 /turf/open/floor/engine,
 /area/ruin/space/has_grav/hotel)
 "Sn" = (
@@ -9545,11 +9540,6 @@
 	},
 /turf/open/floor/carpet/black,
 /area/ruin/space/has_grav/hotel/bar)
-"Tr" = (
-/obj/structure/sign/departments/engineering,
-/obj/machinery/atmospherics/pipe/layer_manifold,
-/turf/closed/wall,
-/area/ruin/space/has_grav/hotel/power)
 "Ts" = (
 /obj/structure/chair/stool/bar,
 /turf/open/floor/carpet/black,
@@ -10031,22 +10021,16 @@
 /turf/open/floor/wood/wood_tiled,
 /area/ruin/space/has_grav/hotel/bar)
 "VH" = (
-/obj/machinery/door/airlock/vault,
+/obj/machinery/door/airlock/vault{
+	req_access_txt = "205";
+	req_access = 205
+	},
 /turf/open/floor/plating,
 /area/ruin/space/has_grav/hotel)
 "VI" = (
 /obj/effect/turf_decal/vg_decals/atmos/nitrogen,
 /turf/open/floor/engine/n2,
 /area/ruin/space/has_grav/hotel/power)
-"VL" = (
-/obj/structure/chair/sofa/corp/right{
-	dir = 8
-	},
-/obj/machinery/light{
-	dir = 4
-	},
-/turf/open/floor/carpet/royalblack,
-/area/ruin/space/has_grav/hotel/bar)
 "VN" = (
 /obj/machinery/atmospherics/pipe/simple/scrubbers/hidden/layer3{
 	dir = 8
@@ -10131,6 +10115,11 @@
 /obj/item/gun/energy/laser/scatter/shotty,
 /turf/open/floor/plasteel/dark,
 /area/ruin/space/has_grav/hotel/security)
+"Wh" = (
+/obj/structure/table/plasmaglass,
+/obj/machinery/light/floor,
+/turf/open/floor/carpet/royalblack,
+/area/ruin/space/has_grav/hotel/bar)
 "Wj" = (
 /obj/machinery/atmospherics/pipe/manifold/scrubbers/visible/layer3{
 	dir = 8
@@ -10305,9 +10294,6 @@
 /turf/open/floor/plasteel/cafeteria,
 /area/ruin/space/has_grav/hotel/bar)
 "WV" = (
-/obj/machinery/light/small{
-	dir = 4
-	},
 /obj/structure/table,
 /obj/item/stack/sheet/mineral/gold{
 	amount = 5
@@ -10742,6 +10728,7 @@
 	req_access = null;
 	req_access_txt = "204"
 	},
+/obj/machinery/light,
 /turf/open/floor/plasteel/dark,
 /area/ruin/space/has_grav/hotel/bar)
 "YW" = (
@@ -10879,6 +10866,12 @@
 /obj/structure/flora/tree/jungle/small,
 /turf/open/floor/grass,
 /area/ruin/space/has_grav/hotel)
+"ZK" = (
+/obj/machinery/light{
+	dir = 1
+	},
+/turf/open/floor/wood/wood_tiled,
+/area/ruin/space/has_grav/hotel/bar)
 "ZL" = (
 /obj/effect/turf_decal/tile/red{
 	dir = 8
@@ -11252,7 +11245,7 @@ Ht
 af
 Oj
 LP
-af
+Tg
 oU
 FT
 bb
@@ -11644,7 +11637,7 @@ oc
 af
 vT
 cz
-hM
+Oj
 jj
 af
 MB
@@ -11747,7 +11740,7 @@ xu
 TI
 nf
 Eq
-Tr
+Xy
 ej
 BW
 Vk
@@ -11814,7 +11807,7 @@ Di
 NI
 Zu
 WK
-GD
+Iw
 qO
 Le
 Zt
@@ -11878,7 +11871,7 @@ wA
 gQ
 jF
 nf
-VE
+ZK
 be
 HP
 FG
@@ -12435,7 +12428,7 @@ TW
 TW
 lq
 Xo
-GB
+Xo
 Yu
 AQ
 AQ
@@ -13000,7 +12993,7 @@ nf
 AQ
 Kg
 Qg
-Qg
+Wh
 Qg
 qQ
 AQ
@@ -13140,14 +13133,14 @@ nf
 AQ
 AQ
 AQ
-Bg
 AQ
 AQ
 AQ
-Bg
+AQ
+AQ
 AQ
 vG
-VL
+Ib
 ec
 nf
 FE
@@ -13280,7 +13273,7 @@ xY
 oz
 oz
 oz
-iC
+oz
 oz
 oz
 nf
