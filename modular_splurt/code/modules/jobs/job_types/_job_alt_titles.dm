@@ -97,7 +97,8 @@
 		"Greytider",
 		"Bard",
 		"Snack",
-		"Stress Relief"
+		"Stress Relief",
+		"Freeloader"
 	)
 	LAZYADD(alt_titles, extra_titles)
 	. = ..()
