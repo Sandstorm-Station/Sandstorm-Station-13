@@ -143,3 +143,10 @@
 	desc = "You are able to move in Preassurized Low Gravity enviroments. Don't ask me how."
 	value = 1
 	mob_trait = TRAIT_FLUTTER
+
+/datum/quirk/cloth_eater
+	name = "Cloth Eater"
+	desc = "You can eat most articles of clothing, but do so will damage them."
+	value = 1
+	/var/mood_category ="cloth_eaten"
+	mob_trait = TRAIT_CLOTH_EATER

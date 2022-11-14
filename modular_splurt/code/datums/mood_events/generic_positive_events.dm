@@ -12,3 +12,11 @@
 /datum/mood_event/masked_mook
 	description = "<span class='nicegreen'>I feel more complete with gas mask on.</span>\n"
 	mood_change = 1
+
+/datum/mood_event/cloth_eaten
+	description = "<span class='nicegreen'> That sure was a tasty outfit!\n"
+	mood_change = 3
+	timeout = 2400
+
+/datum/mood_event/cloth_eaten/add_effects(obj/item/clothing/eaten)
+	description = "<span class='nicegreen'>That sure was a [pick("tasty","good","linty","amazing")] [eaten.name]!\n"
