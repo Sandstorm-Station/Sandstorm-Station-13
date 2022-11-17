@@ -120,6 +120,7 @@
 	return ..()
 
 // Set the clothing's integrity back to 100%, remove all damage to bodyparts, and generally fix it up
+/*Moved TO: modular_splurt/code/module/clothing/clothing.dmi
 /obj/item/clothing/proc/repair(mob/user, params)
 	update_clothes_damaged_state(CLOTHING_PRISTINE)
 	obj_integrity = max_integrity
@@ -132,7 +133,7 @@
 	if(user)
 		UnregisterSignal(user, COMSIG_MOVABLE_MOVED)
 		to_chat(user, "<span class='notice'>You fix the damage on [src].</span>")
-
+*/
 /**
   * take_damage_zone() is used for dealing damage to specific bodyparts on a worn piece of clothing, meant to be called from [/obj/item/bodypart/proc/check_woundings_mods()]
   *
