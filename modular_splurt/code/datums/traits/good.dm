@@ -148,5 +148,5 @@
 	name = "Clothes Eater"
 	desc = "You love the taste of Clothes, and can't help yourself chow down on them. Destroying them in the process."
 	value = 1
-	/var/mood_category ="cloth_eaten"
+	var/mood_category ="cloth_eaten"
 	mob_trait = TRAIT_CLOTH_EATER
