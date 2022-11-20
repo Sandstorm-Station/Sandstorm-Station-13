@@ -1,5 +1,3 @@
-//Hyper tails
-
 //Mam tails
 /datum/sprite_accessory/tails/mam_tails/deer
 	name = "Deer"
@@ -343,4 +341,20 @@
 	name = "Succubus tail"
 	icon = 'modular_splurt/icons/mob/mam_tails.dmi'
 	icon_state = "succubus"
+	color_src = MUTCOLORS
+
+/datum/sprite_accessory/tails/mam_tails/kangaroo/alt
+	name = "kangaroo (alt)"
+	icon = 'modular_splurt/icons/mob/64_mam_tails.dmi'
+	icon_state = "kangaroo"
+	dimension_x = 64
+	center = TRUE
+	color_src = MUTCOLORS
+
+/datum/sprite_accessory/tails_animated/mam_tails_animated/kangaroo/alt
+	name = "kangaroo (alt)"
+	icon = 'modular_splurt/icons/mob/64_mam_tails.dmi'
+	icon_state = "kangaroo"
+	dimension_x = 64
+	center = TRUE
 	color_src = MUTCOLORS

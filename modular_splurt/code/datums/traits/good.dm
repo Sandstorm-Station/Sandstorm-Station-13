@@ -137,3 +137,9 @@
 	var/datum/action/innate/spin_cocoon/SC = locate(/datum/action/innate/spin_cocoon) in H.actions
 	SC?.Remove(H)
 	SW?.Remove(H)
+
+/datum/quirk/flutter
+	name = "Flutter"
+	desc = "You are able to move in Preassurized Low Gravity enviroments. Don't ask me how."
+	value = 1
+	mob_trait = TRAIT_FLUTTER
