@@ -516,7 +516,7 @@
 
 /datum/quirk/werewolf //adds the werewolf quirk
 	name = "Werewolf"
-	desc = "A beastly affliction allows you to shapeshift into a more wolfish appearance at will! This will incrrease your size (In general and below!) and cause you to behave as though you were a mammal. (This is still being tested. Please send any bugs to nukechicken on discord)"
+	desc = "A beastly affliction allows you to shapeshift into a more wolfish appearance at will. This will increase your size (In general and below!) and cause you to behave as though you were an anthropomorphic canine. (This is still being tested. Please send any bugs to nukechicken on discord)"
 	value = 0
 
 /datum/quirk/werewolf/add()
