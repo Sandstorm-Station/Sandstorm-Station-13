@@ -93,6 +93,7 @@
 		"Blacksmith",
 		"Waiter",
 		"All-purpose fleshlight",
+		"All-purpose dildo",
 		"Cumdump",
 		"Greytider",
 		"Bard",
