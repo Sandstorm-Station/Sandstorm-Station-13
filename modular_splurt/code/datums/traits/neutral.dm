@@ -630,7 +630,7 @@
 	var/obj/item/organ/genital/vagina/V = H.getorganslot(ORGAN_SLOT_VAGINA)
 	H.shake_animation(2)
 	if(!transformed) // transform them
-		H.visible_message(span_danger("[H] shivers, their flesh bursting with a sudden growth of thick fur and their features twisting to something beastly, full transforming into a werewolf!"))
+		H.visible_message(span_danger("[H] shivers, their flesh bursting with a sudden growth of thick fur and their features contorting to that of a beast's, fully transforming them into a werewolf!"))
 		H.set_species(/datum/species/mammal, 1)
 		H.dna.species.mutant_bodyparts["mam_tail"] = "Wolf"
 		H.dna.species.mutant_bodyparts["legs"] = "Digitigrade"
