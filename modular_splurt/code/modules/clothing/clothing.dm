@@ -17,7 +17,10 @@
 //As a bonus for having the Cloth Eater trait. You gain extra mood from eatin clothes, but damage them at the same time.
 /obj/item/clothing/attack(mob/M, mob/user, def_zone)
 	if(user.a_intent != INTENT_HARM)
-		if(HAS_TRAIT(M,TRAIT_CLOTH_EATER))
+		if(HAS_TRAIT(M,TRAIT_CLOTH_EATER) || isinsect(M))
+			if(limb_integrity == 0)
+				to_chat(M, "<span class='warning'>This item is to tough to eat.")
+				return FALSE
 			var/obj/item/reagent_containers/food/snacks/clothing/clothing_as_food = new
 			clothing_as_food.name = name
 			var/mob/living/H = M
@@ -31,10 +34,6 @@
 			if(last_bites <= 0)
 				user.visible_message("<span class='notice'>[user] finishes eating the [name].")
 				src.Destroy()
-			return TRUE
-		if((isinsect(M)))
-			//Let insects chew on clothes without damaging them. This only sends out a message and does nothing.
-			user.visible_message("<span class='notice'>[user] pointlessly [pick("nibbles on","chews on","bites")] the [name].")
 			return TRUE
 	return ..()
 
