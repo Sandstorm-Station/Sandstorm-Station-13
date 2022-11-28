@@ -19,7 +19,7 @@
 	if(user.a_intent != INTENT_HARM)
 		if(HAS_TRAIT(M,TRAIT_CLOTH_EATER) || isinsect(M))
 			if(limb_integrity == 0)
-				to_chat(M, "<span class='warning'>This item is to tough to eat.")
+				to_chat(M, "<span class='warning'>This item is too tough to eat.")
 				return FALSE
 			var/obj/item/reagent_containers/food/snacks/clothing/clothing_as_food = new
 			clothing_as_food.name = name
@@ -27,7 +27,7 @@
 			if(clothing_as_food.attack(M, user, def_zone)) //I need to check a player can MAWNCH clothes before I run this. Doing them at the same time lets insects eat for free.
 				if(damaged_clothes == CLOTHING_SHREDDED) //Check if we need to start breaking clothes
 					last_bites -= 1
-					to_chat(M, "<span class='warning'>There isn't much left to eat.")
+					to_chat(M, "<span class='danger'>There isn't much left to eat.")
 				SEND_SIGNAL(H, COMSIG_ADD_MOOD_EVENT, "cloth_consumed", /datum/mood_event/cloth_eaten, src)
 				take_damage(20, sound_effect=FALSE)
 				qdel(clothing_as_food)
