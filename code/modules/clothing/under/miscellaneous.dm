@@ -169,7 +169,7 @@
 	icon_state = "gear_harness"
 	item_state = "gear_harness"
 	can_adjust = TRUE
-	body_parts_covered = CHEST|GROIN
+	body_parts_covered = NONE
 
 /obj/item/clothing/under/misc/gear_harness/toggle_jumpsuit_adjust()
 	if(!body_parts_covered)
