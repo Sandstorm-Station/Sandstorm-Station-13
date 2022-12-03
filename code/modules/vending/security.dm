@@ -14,14 +14,14 @@
 					/obj/item/storage/box/evidence = 6,
 					/obj/item/flashlight/seclite = 4,
 					/obj/item/restraints/legcuffs/bola/energy = 7,
+					/obj/item/clothing/head/helmet/blueshirt = 5, //SPLURT edit
+					/obj/item/clothing/under/rank/security/officer/blueshirt = 5, //SPLURT edit
+					/obj/item/clothing/suit/armor/vest/blueshirt = 5, //SPLURT edit
 					/obj/item/secbat = 5)
 	contraband = list(/obj/item/clothing/glasses/sunglasses = 2,
 					/obj/item/storage/fancy/donut_box = 2,
 					/obj/item/storage/belt/sabre/secbelt = 1)
 	premium = list(/obj/item/coin/antagtoken = 1,
-				   /obj/item/clothing/head/helmet/blueshirt = 5, //SPLURT edit, origional was 1
-				   /obj/item/clothing/suit/armor/vest/blueshirt = 5, //SPLURT edit, origional was 1
-					/obj/item/clothing/under/rank/security/officer/blueshirt = 5, //SPLURT edit, origional was 1
 				   /obj/item/clothing/gloves/tackler = 5,
 				   /obj/item/grenade/stingbang = 1,
 					/obj/item/ssword_kit = 1,
