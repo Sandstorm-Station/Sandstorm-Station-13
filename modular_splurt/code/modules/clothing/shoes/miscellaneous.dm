@@ -6,6 +6,24 @@
 	mob_overlay_icon = 'modular_splurt/icons/mob/clothing/shoes.dmi'
 	anthro_mob_worn_overlay = 'modular_splurt/icons/mob/clothing/shoes_digi.dmi'
 
+/obj/item/clothing/shoes/invisiboots
+	name = "invisifiber footwraps"
+	desc = "A set of transparent fibers used for wrapping claws or paws."
+	icon = 'modular_splurt/icons/obj/clothing/shoes.dmi'
+	icon_state = "foot_wraps_transparent"
+	// No overlay, because they're invisible!
+
+/obj/item/clothing/shoes/invisiboots/equipped(mob/user, slot)
+	// Adds a trait to check if the wearer has invisible shoes
+	// Currently unused
+	. = ..()
+	if(slot == ITEM_SLOT_FEET)
+		ADD_TRAIT(user, TRAIT_GHOST_SHOES, SHOES_TRAIT)
+
+/obj/item/clothing/shoes/invisiboots/dropped(mob/user)
+	. = ..()
+	REMOVE_TRAIT(user, TRAIT_GHOST_SHOES, SHOES_TRAIT)
+
 /obj/item/clothing/shoes/jackboots/toeless
 	name = "toe-less jackboots"
 	desc = "Modified pair of jackboots, particularly friendly to those species whose toes hold claws."
