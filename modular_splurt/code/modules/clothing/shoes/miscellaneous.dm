@@ -13,17 +13,6 @@
 	icon_state = "foot_wraps_transparent"
 	// No overlay, because they're invisible!
 
-/obj/item/clothing/shoes/invisiboots/equipped(mob/user, slot)
-	// Adds a trait to check if the wearer has invisible shoes
-	// Currently unused
-	. = ..()
-	if(slot == ITEM_SLOT_FEET)
-		ADD_TRAIT(user, TRAIT_GHOST_SHOES, SHOES_TRAIT)
-
-/obj/item/clothing/shoes/invisiboots/dropped(mob/user)
-	. = ..()
-	REMOVE_TRAIT(user, TRAIT_GHOST_SHOES, SHOES_TRAIT)
-
 /obj/item/clothing/shoes/jackboots/toeless
 	name = "toe-less jackboots"
 	desc = "Modified pair of jackboots, particularly friendly to those species whose toes hold claws."
