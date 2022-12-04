@@ -10,7 +10,7 @@
 		return
 
 	// A lot of this is just copied and pasted from the handle_digestion proc
-	if (H.thirst > 0 && H.stat != DEAD && !HAS_TRAIT(H, TRAIT_NOHUNGER))
+	if (H.thirst > 0 && H.stat != DEAD && !HAS_TRAIT(H, TRAIT_NOTHIRST))
 		// THEY ~~HUNGER~~ THIRST
 		var/thirst_rate = THIRST_FACTOR
 		/*
