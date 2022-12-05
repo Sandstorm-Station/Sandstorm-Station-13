@@ -181,7 +181,7 @@
 	category = list("IPC Organs")
 
 /datum/design/ipc_tongue
-	name = "IPC Positronic Voicebox"
+	name = "IPC Voicebox"
 	desc = "A voice synthesizer used by IPCs to smoothly interface with organic lifeforms."
 	id = "ipc_tongue"
 	build_type = MECHFAB
