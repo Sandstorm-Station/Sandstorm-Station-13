@@ -64,6 +64,8 @@ SUBSYSTEM_DEF(job)
 		occupations += job
 		name_occupations[job.title] = job
 		type_occupations[J] = job
+	
+	GLOB.real_job_name = build_jobnames()
 
 	return 1
 
