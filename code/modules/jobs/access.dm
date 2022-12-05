@@ -377,27 +377,23 @@ GLOBAL_LIST_INIT(real_job_name, build_jobnames())
 	for(var/title in get_all_job_icons())
 		valid_jobs[title] = TRUE
 
-	// Centcom jobs are an exception to this, they need to get handled seperately cause
-	// They need to set the jobname to "CentCom"
-	var/list/centcom_jobs = list()
-	for(var/title in get_all_centcom_jobs())
-		centcom_jobs[title] = TRUE
-
 	// List of job name -> real "name" this system is fucking stupid
 	var/list/titles = list()
 	for(var/datum/job/job in SSjob.occupations)
 		var/real_title = job.title
 
-		if(centcom_jobs[real_title])
-			real_title = "CentCom"
-		else if(!valid_jobs[real_title])
+		if(!valid_jobs[real_title])
 			continue
 
-		titles[job.title] = real_title
+		titles[real_title] = real_title
 		for(var/alt_title in job.alt_titles)
 			if(alt_title == job.title)
 				continue
 			titles[alt_title] = real_title
+
+	// Centcom jobs are not in occupations, but we need to handle them anyway
+	for(var/title in get_all_centcom_jobs())
+		titles[title] = "Centcom" //Return with the NT logo if it is a CentCom jo
 
 	return titles
 
