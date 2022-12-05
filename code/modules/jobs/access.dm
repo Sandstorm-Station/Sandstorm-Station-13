@@ -365,37 +365,7 @@
 
 /// Gets the job title, if the job name is an alt title, locates the original title using a prebuilt cache
 /proc/GetJobName(jobName)
-	return GLOB.real_job_name[jobName] || "Unknown"
-
-/// Stores an associative list of job name -> its "real" counterpart. Built to handle alt titles
-/// Burn in hell
-GLOBAL_LIST_EMPTY(real_job_name)
-
-/proc/build_jobnames()
-	// No "base" job not in this list will be accepted
-	var/list/valid_jobs = list()
-	for(var/title in get_all_job_icons())
-		valid_jobs[title] = TRUE
-
-	// List of job name -> real "name" this system is fucking stupid
-	var/list/titles = list()
-	for(var/datum/job/job in SSjob.occupations)
-		var/real_title = job.title
-
-		if(!valid_jobs[real_title])
-			continue
-
-		titles[real_title] = real_title
-		for(var/alt_title in job.alt_titles)
-			if(alt_title == job.title)
-				continue
-			titles[alt_title] = real_title
-
-	// Centcom jobs are not in occupations, but we need to handle them anyway
-	for(var/title in get_all_centcom_jobs())
-		titles[title] = "Centcom" //Return with the NT logo if it is a CentCom jo
-
-	return titles
+	return SSjob.real_job_name[jobName] || "Unknown"
 
 /obj/item/proc/get_job_name() //Used in secHUD icon generation
 	var/obj/item/card/id/I = GetID()
