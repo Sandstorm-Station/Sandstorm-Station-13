@@ -369,7 +369,7 @@
 
 /// Stores an associative list of job name -> its "real" counterpart. Built to handle alt titles
 /// Burn in hell
-GLOBAL_LIST_INIT(real_job_name, build_jobnames())
+GLOBAL_LIST_EMPTY(real_job_name)
 
 /proc/build_jobnames()
 	// No "base" job not in this list will be accepted
