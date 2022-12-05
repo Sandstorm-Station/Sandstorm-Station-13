@@ -191,7 +191,7 @@
 	category = list("IPC Organs")
 
 /datum/design/ipc_brain
-	name = "IPC Positronic Brain"
+	name = "IPC Brain (inert)"
 	desc = "A cube of shining metal, four inches to a side and covered in shallow grooves. It has an IPC serial number engraved on the top. It is usually slotted into the head of synthetic crewmembers."
 	id = "ipc_brain"
 	build_type = MECHFAB
