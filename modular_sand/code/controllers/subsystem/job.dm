@@ -1,11 +1,11 @@
 /datum/controller/subsystem/job
-  /// Stores an associative list of job name -> its "real" counterpart. Built to handle alt titles
-  var/list/real_job_name
+	/// Stores an associative list of job name -> its "real" counterpart. Built to handle alt titles
+	var/list/real_job_name
 
-/datum/controller/subsystem/job/SetupOccupations(faction = "Station")
-  . = ..()
-  real_job_name = build_jobnames()
-  
+/datum/controller/subsystem/job/SetupOccupations(faction)
+	. = ..()
+	real_job_name = build_jobnames()
+
 /datum/controller/subsystem/job/proc/build_jobnames()
 	// No "base" job not in this list will be accepted
 	var/list/valid_jobs = list()
@@ -13,6 +13,8 @@
 		valid_jobs[title] = TRUE
 
 	// List of job name -> real "name" this system is fucking stupid
+	// I'm taking well thought out solutions that do not include creating
+	// icon states with each alt title or generally not having it automated
 	var/list/titles = list()
 	for(var/datum/job/job in occupations)
 		var/real_title = job.title
@@ -28,6 +30,6 @@
 
 	// Centcom jobs are not in occupations, but we need to handle them anyway
 	for(var/title in get_all_centcom_jobs())
-		titles[title] = "Centcom" //Return with the NT logo if it is a CentCom jo
+		titles[title] = "Centcom" //Return with the NT logo if it is a CentCom job
 
 	return titles
