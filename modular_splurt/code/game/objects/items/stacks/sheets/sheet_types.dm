@@ -120,3 +120,13 @@ GLOBAL_LIST_INIT(micro_bricks_recipes, list( \
 /obj/item/stack/sheet/micro_bricks/get_main_recipes()
 	. = ..()
 	. += GLOB.micro_bricks_recipes
+
+// New list for SPLURT-specific cloth sheet crafting
+GLOBAL_LIST_INIT(cloth_recipes_splurt, list ( \
+	new/datum/stack_recipe("handmade collar", /obj/item/clothing/neck/petcollar/handmade, 2) \
+	))
+
+// Hijack recipe loading to add new list while preserving modularity
+/obj/item/stack/sheet/cloth/get_main_recipes()
+	. = ..()
+	. += GLOB.cloth_recipes_splurt
