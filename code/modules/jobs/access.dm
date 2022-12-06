@@ -363,28 +363,9 @@
 /proc/get_all_centcom_jobs()
 	return list("VIP Guest","Custodian","Thunderdome Overseer","CentCom Official","Medical Officer","Death Commando","Research Officer","Special Ops Officer","Admiral","CentCom Commander","Emergency Response Team Commander","Security Response Officer","Engineer Response Officer", "Medical Response Officer","CentCom Bartender")
 
-// Used for knowing what is the actual job
-// Does not include the original title, could cause recursion
-/proc/get_all_alt_titles()
-	. = list()
-	for(var/datum/job/job in SSjob.occupations)
-		for(var/alt_title in job.alt_titles)
-			if(alt_title == job.title)
-				continue
-			.[alt_title] = initial(job.title)
-
-// Gets the job title, if the job name is an alt title, tries to locate the original title
+/// Gets the job title, if the job name is an alt title, locates the original title using a prebuilt cache
 /proc/GetJobName(jobName)
-	if(!jobName)
-		return "Unknown" //Invalid
-	var/all_alt_titles = get_all_alt_titles()
-	if(jobName in all_alt_titles) 					// See if it's an alt title first
-		return GetJobName(all_alt_titles[jobName])	// Then locate the original job title and return that, that should handle secHUD and whatever else
-	if(jobName in get_all_job_icons()) //Check if the job has a hud icon
-		return jobName
-	if(jobName in get_all_centcom_jobs()) //Return with the NT logo if it is a CentCom job
-		return "CentCom"
-	return "Unknown" //Return unknown if none of the above apply
+	return SSjob.real_job_name[jobName] || "Unknown"
 
 /obj/item/proc/get_job_name() //Used in secHUD icon generation
 	var/obj/item/card/id/I = GetID()
