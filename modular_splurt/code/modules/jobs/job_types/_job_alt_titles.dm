@@ -60,7 +60,7 @@
 	alt_titles = list(
 		"Medical Director",
 		"Medical Administrator",
-		"Chief Medical Slut"
+		"Chief Heal Slut"
 	) // Sandcode do not have alt titles for CMO at the moment.
 
 
@@ -242,7 +242,7 @@
 		"Sex Educator",
 		"Rental Mommy",
 		"Rental Daddy",
-		"Psycho-Slut"
+		"Psycholo-Slut"
 	)
 	LAZYADD(alt_titles, extra_titles)
 	. = ..()
@@ -250,7 +250,7 @@
 /datum/job/geneticist/New()
 	var/list/extra_titles = list(
 		"Genetics Researcher",
-		"Geneti-Slut"
+		"Gene-Slut"
 	)
 	LAZYADD(alt_titles, extra_titles)
 	. = ..()
