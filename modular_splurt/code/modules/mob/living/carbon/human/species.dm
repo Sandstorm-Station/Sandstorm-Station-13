@@ -32,4 +32,4 @@
 			thirst_rate = 3 * THIRST_FACTOR
 		*/
 		thirst_rate *= H.physiology.thirst_mod
-		H.adjust_nutrition(-thirst_rate)
+		H.adjust_thirst(-thirst_rate)
