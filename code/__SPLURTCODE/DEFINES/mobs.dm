@@ -4,4 +4,5 @@
 #define WENDIGO_BODYPART "wendigo"
 
 // Increase max age
+#undef AGE_MAX
 #define AGE_MAX					500 // oldest a character can be
