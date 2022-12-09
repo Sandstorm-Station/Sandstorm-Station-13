@@ -531,6 +531,28 @@
 	W.Remove(H)
 	. = ..()
 
+/datum/quirk/nudist
+	// Mostly derived from masked_mook.
+	// Spawning with a gear harness is preferable, but failed during testing.
+	name = "Nudist"
+	desc = "Wearing most types of clothing unnerves you. Bring a gear harness!"
+	gain_text = "<span class='notice'>You feel spiritually connected to your natural form.</span>"
+	lose_text = "<span class='notice'>It feels like clothing could fit you comfortably.</span>"
+	medical_record_text = "Patient expresses a psychological need to remain unclothed."
+	value = 0
+	mood_quirk = TRUE
+	processing_quirk = TRUE
+	var/mood_category = "nudist_mood"
+
+/datum/quirk/nudist/on_process()
+	var/mob/living/carbon/human/H = quirk_holder
+	// Checking torso exposure appears to be a robust method.
+	if( ( H.is_chest_exposed() && H.is_groin_exposed() ) )
+		SEND_SIGNAL(quirk_holder, COMSIG_ADD_MOOD_EVENT, mood_category, /datum/mood_event/nudist_positive)
+	else
+		SEND_SIGNAL(quirk_holder, COMSIG_ADD_MOOD_EVENT, mood_category, /datum/mood_event/nudist_negative)
+
+
 /// quirk actions ///
 
 //vampire bite
