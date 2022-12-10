@@ -315,14 +315,6 @@
 	LAZYADD(alt_titles, extra_titles)
 	. = ..()
 
-/datum/job/peacekeeper/New()
-	var/list/extra_titles = list(
-		"Hired Muscle",
-		"Bodyguard"
-	)
-	LAZYADD(alt_titles, extra_titles)
-	. = ..()
-
 
 // Cargo
 /datum/job/cargo_tech/New()
