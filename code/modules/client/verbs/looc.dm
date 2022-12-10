@@ -37,7 +37,7 @@ GLOBAL_VAR_INIT(normal_looc_colour, "#6699CC")
 			to_chat(src, "<B>Advertising other servers is not allowed.</B>")
 			log_admin("[key_name(src)] has attempted to advertise in LOOC: [msg]")
 			return
-		//if(mob.stat) # Suggestion 3611, add LOOC for unconscious -and dead- (But I decided that it's not a good idea.) | SPLURT 10.12.2022
+		//if(mob.stat) # Suggestion 3611, add LOOC for unconscious and dead | SPLURT 10.12.2022
 		//	to_chat(src, "<span class='danger'>You cannot use LOOC while unconscious or dead.</span>")
 		//	return
 		//if(isdead(mob))
