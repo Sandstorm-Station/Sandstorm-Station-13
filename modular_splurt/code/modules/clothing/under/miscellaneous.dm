@@ -307,3 +307,7 @@
 	name = "yellow trencher uniform"
 	desc = "An utilitarian uniform of rugged warfare, with yellow insignias."
 	icon_state = "goner_uniform_y"
+
+/obj/item/clothing/under/misc/gear_harness
+	body_parts_covered = NONE
+
