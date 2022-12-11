@@ -82,15 +82,15 @@
 		if(M.putItemFromInventoryInHandIfPossible(src, H.held_index))
 			add_fingerprint(usr)
 
-/*MOVED TO: modular_splurt/code/module/clothing/clothing.dmi
+
 /obj/item/reagent_containers/food/snacks/clothing
 	name = "oops"
 	desc = "If you're reading this it means I messed up. This is related to moths eating clothes and I didn't know a better way to do it than making a new food object."
 	list_reagents = list(/datum/reagent/consumable/nutriment = 1)
 	tastes = list("dust" = 1, "lint" = 1)
-
+/*
+MOVED TO: modular_splurt/code/module/clothing/clothing.dm
 /obj/item/clothing/attack(mob/M, mob/user, def_zone)
-MOVED TO: modular_splurt/code/module/clothing/clothing.dmi
 	if(user.a_intent != INTENT_HARM && isinsect(M))
 		var/obj/item/reagent_containers/food/snacks/clothing/clothing_as_food = new
 		clothing_as_food.name = name
@@ -122,7 +122,6 @@ MOVED TO: modular_splurt/code/module/clothing/clothing.dmi
 	return ..()
 
 // Set the clothing's integrity back to 100%, remove all damage to bodyparts, and generally fix it up
-/*Moved TO: modular_splurt/code/module/clothing/clothing.dmi
 /obj/item/clothing/proc/repair(mob/user, params)
 	update_clothes_damaged_state(CLOTHING_PRISTINE)
 	obj_integrity = max_integrity
@@ -135,7 +134,8 @@ MOVED TO: modular_splurt/code/module/clothing/clothing.dmi
 	if(user)
 		UnregisterSignal(user, COMSIG_MOVABLE_MOVED)
 		to_chat(user, "<span class='notice'>You fix the damage on [src].</span>")
-*/
+
+
 /**
   * take_damage_zone() is used for dealing damage to specific bodyparts on a worn piece of clothing, meant to be called from [/obj/item/bodypart/proc/check_woundings_mods()]
   *
