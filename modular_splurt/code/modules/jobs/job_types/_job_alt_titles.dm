@@ -103,7 +103,8 @@
 		"Bard",
 		"Snack",
 		"Stress Relief",
-		"Freeloader"
+		"Freeloader",
+		"Station Pet"
 	)
 	LAZYADD(alt_titles, extra_titles)
 	. = ..()
