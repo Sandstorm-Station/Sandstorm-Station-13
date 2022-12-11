@@ -19,4 +19,4 @@
 		. += "<span class='warning'>You sense [t_He] might be disturbed by physical affection.</span>\n"
 	// Check for Heatpat Slut (pls touch head!)
 	if(HAS_TRAIT(src, TRAIT_HEADPAT_SLUT))
-		. += "<span class='info'>You sense [t_He] appreciates reviving physical affection more than normal.</span>\n"
+		. += "<span class='info'>You sense [t_He] appreciates receiving physical affection more than normal.</span>\n"
