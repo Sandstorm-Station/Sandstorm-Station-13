@@ -20,3 +20,8 @@
 
 /datum/mood_event/cloth_eaten/add_effects(obj/item/clothing/eaten)
 	description = "<span class='nicegreen'>That sure was a [pick("tasty","good","linty","amazing")] [eaten.name]!\n"
+
+/datum/mood_event/nudist_positive
+	description = "<span class='nicegreen'>I'm delighted to not be constricted by clothing.</span>\n"
+	mood_change = 1
+

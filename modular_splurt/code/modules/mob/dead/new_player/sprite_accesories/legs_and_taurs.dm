@@ -43,3 +43,11 @@
 /datum/sprite_accessory/taur/noodledragon/dotted
 	name = "Noodle Dragon (dotted)"
 	icon_state = "noodledragon_dotted"
+
+/datum/sprite_accessory/taur/spider
+	name = "Arachne"
+	icon_state = "spider"
+	icon = 'modular_splurt/icons/mob/mam_taur.dmi'
+	taur_mode = STYLE_PAW_TAURIC //it is what it is
+	hide_legs = USE_QUADRUPED_CLIP_MASK
+	matrixed_sections = MATRIX_RED_GREEN
