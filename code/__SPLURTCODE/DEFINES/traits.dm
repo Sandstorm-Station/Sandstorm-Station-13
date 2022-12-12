@@ -13,6 +13,14 @@
 
 #define TRAIT_TONGUELESS_SPEECH "tongueless-speech" //for dephelm stuff
 
+
+#define TRAIT_CHASTENED_ANUS "chastened_anus"
+#define TRAIT_IMPOTENT_ANUS "impotent_anus"
+#define TRAIT_EDGINGONLY_ANUS "edgingonly_anus"
+#define TRAIT_DISAPPOINTING_ANUS "disappointing_anus"
+#define TRAIT_OVERSTIM_ANUS "overstim_anus"
+#define TRAIT_HYPERSENS_ANUS "hypersens_anus"
+
 // Hyperstation traits
 #define TRAIT_PHARMA            "hepatic_pharmacokinesis"
 #define TRAIT_CHOKE_SLUT		"choke_slut"

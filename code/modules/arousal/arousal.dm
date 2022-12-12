@@ -47,6 +47,15 @@
 		return // no adjusting made here
 	var/enabling = strength > 0
 	for(var/obj/item/organ/genital/G in internal_organs)
+		//SPLURT edit
+		if(CHECK_BITFIELD(G.genital_flags, GENITAL_CHASTENED) && enabling)
+			to_chat(src, "<span class='userlove'>Your [pick(GLOB.dick_nouns)] twitches against it's cage!</span>")
+			continue
+		if(CHECK_BITFIELD(G.genital_flags, GENITAL_IMPOTENT) && enabling)
+			if(istype(G, /obj/item/organ/genital/penis))
+				to_chat(src, "<span class='userlove'>Your [pick(GLOB.dick_nouns)] simply won't go up!</span>")
+			continue
+		//
 		if(G.genital_flags & GENITAL_CAN_AROUSE && !G.aroused_state && prob(abs(strength)*G.sensitivity * arousal_rate))
 			G.set_aroused_state(enabling,cause)
 			G.update_appearance()
@@ -83,7 +92,7 @@
 		if(spill && R.total_volume >= 5)
 			R.reaction(turfing ? target : target.loc, TOUCH, 1, 0)
 		if(!turfing)
-			R.trans_to(target, R.total_volume * (spill ? G.fluid_transfer_factor : 1), log = TRUE)
+			R.trans_to(target, check_fluid_mod(R.total_volume * (spill ? G.fluid_transfer_factor : 1), G), log = TRUE) //SPLURT edit
 	G.last_orgasmed = world.time
 	R.clear_reagents()
 	//skyrat edit - chock i am going to beat you to death
@@ -146,6 +155,13 @@
 			LAZYADD(genitals_list, G)
 	if(LAZYLEN(genitals_list))
 		var/obj/item/organ/genital/ret_organ = input(src, "with what?", "Climax", null) as null|obj in genitals_list
+		//SPLURT edit
+		if(CHECK_BITFIELD(ret_organ.genital_flags, GENITAL_CHASTENED))
+			visible_message("<span class='userlove'><b>\The [src]</b> fumbles with their cage with a whine!</span>",
+							"<span class='userlove'>You can't climax with a cage on it!</span>",
+							ignored_mobs = get_unconsenting())
+			return
+		//
 		return ret_organ
 	else if(!silent)
 		to_chat(src, "<span class='warning'>You cannot climax without available genitals.</span>")
@@ -288,6 +304,7 @@
 			var/obj/item/organ/genital/picked_organ = pick_climax_genitals()
 			if(picked_organ && available_rosie_palms(TRUE))
 				mob_climax_outside(picked_organ)
+				check_orgasm(picked_organ) //SPLURT edit
 		if("Climax with partner")
 			//We need no hands, we can be restrained and so on, so let's pick an organ
 			var/obj/item/organ/genital/picked_organ = pick_climax_genitals()
@@ -299,6 +316,7 @@
 					var/spillage = input(src, "Would your fluids spill outside?", "Choose overflowing option", "Yes") as null|anything in list("Yes", "No")
 					if(spillage && in_range(src, partner))
 						mob_climax_partner(picked_organ, partner, spillage == "Yes" ? TRUE : FALSE, Lgen = picked_target)
+						check_orgasm(picked_organ) //SPLURT edit
 		if("Fill container")
 			//We'll need hands and no restraints.
 			if(!available_rosie_palms(FALSE, /obj/item/reagent_containers))
@@ -311,6 +329,7 @@
 				var/obj/item/reagent_containers/fluid_container = pick_climax_container()
 				if(fluid_container && available_rosie_palms(TRUE, /obj/item/reagent_containers))
 					mob_fill_container(picked_organ, fluid_container)
+					check_orgasm(picked_organ) //SPLURT edit
 		if("Climax over partner")
 			//We need no hands, we can be restrained and so on, so let's pick an organ
 			var/obj/item/organ/genital/picked_organ = pick_climax_genitals()
@@ -318,6 +337,7 @@
 				var/mob/living/partner = pick_partner() //Get someone
 				if(partner)
 					mob_climax_over(picked_organ, partner, TRUE)
+					check_orgasm(picked_organ) //SPLURT edit
 
 	mb_cd_timer = world.time + mb_cd_length
 

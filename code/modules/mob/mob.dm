@@ -1077,4 +1077,5 @@ GLOBAL_VAR_INIT(exploit_warn_spam_prevention, 0)
   * Like item dropped() on mob side.
   */
 /mob/proc/on_item_dropped(obj/item/I)
+	SEND_SIGNAL(src, COMSIG_MOB_ITEM_DROPPED, I) //SPLURT edit
 	return
