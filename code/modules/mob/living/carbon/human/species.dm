@@ -1344,6 +1344,8 @@ GLOBAL_LIST_EMPTY(roundstart_race_names)
 		if(ITEM_SLOT_FEET)
 			if(H.shoes)
 				return FALSE
+			if( !(I.slot_flags & ITEM_SLOT_FEET) )
+				return FALSE
 			if(num_legs < 2)
 				return FALSE
 			if(DIGITIGRADE in species_traits)
