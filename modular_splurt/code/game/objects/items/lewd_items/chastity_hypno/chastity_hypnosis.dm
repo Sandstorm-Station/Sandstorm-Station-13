@@ -123,15 +123,15 @@
 /obj/item/chastity_hypno/proc/change_mode(genital, direction)
 	switch(direction)
 		if("left")
-			if(choices[genital] == LAZYFIRST(available_modes))
+			if(choices[genital] == LISTFIRST(available_modes))
 				//choices[genital] = available_modes[length(available_modes)]
-				choices[genital] = LAZYLAST(available_modes)
+				choices[genital] = LISTLAST(available_modes)
 			else
 				choices[genital] = available_modes[LAZYFIND(available_modes, choices[genital]) - 1]
 		if("right")
-			if(choices[genital] == LAZYLAST(available_modes))
+			if(choices[genital] == LISTLAST(available_modes))
 				//choices[genital] = available_modes[1]
-				choices[genital] = LAZYFIRST(available_modes)
+				choices[genital] = LISTFIRST(available_modes)
 			else
 				choices[genital] = available_modes[LAZYFIND(available_modes, choices[genital]) + 1]
 
