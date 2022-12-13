@@ -15,3 +15,8 @@
 		description = span_warning("<b>CHEESE!!! WAAAAAAAAAAAAAAAAAAAAAAAAAAAA!!!</b>")
 		mood_change = -5
 		timeout = 5 MINUTES
+
+/datum/mood_event/nudist_negative
+	description = span_warning("I don't feel comfortable wearing this.\n")
+	mood_change = -4
+
