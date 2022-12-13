@@ -38,8 +38,8 @@ export const GenitalArousalPermission = (_: any, context: any) => {
 			<Section fill>
 				<Flex direction="column" align="center">
 					{
-					Object.keys(genitals).map((G) => (
-						<Flex.Item>
+					Object.keys(genitals).map((G,) => (
+						<Flex.Item key={G}>
 							<Flex.Item textAlign="center" fontSize={1.25}>
 								<b>{G}</b>
 							</Flex.Item>
@@ -47,7 +47,6 @@ export const GenitalArousalPermission = (_: any, context: any) => {
 								<Button
 									color="default"
 									icon="arrow-left"
-									
 									onClick={() => act("change_mode", { genital: G, direction: "left" })}
 								/>
 								<Tooltip position="top" content={getTooltip(genitals[G])}>
@@ -56,7 +55,6 @@ export const GenitalArousalPermission = (_: any, context: any) => {
 								<Button
 									color="default"
 									icon="arrow-right"
-									
 									onClick={() => act("change_mode", { genital: G, direction: "right" })}
 								/>
 							</Flex>
