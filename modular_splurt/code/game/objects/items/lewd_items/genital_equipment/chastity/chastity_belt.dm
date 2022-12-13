@@ -14,7 +14,7 @@
 	var/obj/item/organ/genital/blocked_genital
 	var/is_equipped
 
-/obj/item/genital_equipment/chastity_cage/belt/equipped(mob/user, slot)
+/obj/item/genital_equipment/chastity_cage/belt/proc/not_sleepy_equipped(mob/user, slot)
 	if(!CHECK_BITFIELD(slot, ITEM_SLOT_UNDERWEAR) || !ishuman(user) || !ishuman(usr))
 		return
 
@@ -58,7 +58,10 @@
 
 	RegisterSignal(H, COMSIG_MOB_ITEM_EQUIPPED, .proc/mob_equipped_item)
 	RegisterSignal(H, COMSIG_MOB_ITEM_DROPPED, .proc/mob_dropped_item)
-	. = ..()
+
+/obj/item/genital_equipment/chastity_cage/belt/equipped(mob/user, slot)
+	INVOKE_ASYNC(src, .proc/not_sleepy_equipped, user, slot)
+	. = .. ()
 
 // This sucks
 /obj/item/genital_equipment/chastity_cage/belt/on_attack_hand(mob/user)
