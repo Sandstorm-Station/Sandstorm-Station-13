@@ -2,7 +2,7 @@
 
 /obj/item/organ/genital/proc/can_be_chastened()
 	for(var/blacklisted_genital in blacklisted_genitals)
-		if(src.type in typesof(blacklisted_genital))
+		if(type in typesof(blacklisted_genital))
 			return FALSE
 	
 	return TRUE
