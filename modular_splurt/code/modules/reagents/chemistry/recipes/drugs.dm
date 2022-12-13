@@ -18,16 +18,6 @@
 	results = list(/datum/reagent/drug/genital_purity/virtuous_vagina = 2)
 	required_reagents = list(/datum/reagent/drug/anaphrodisiac = 1, /datum/reagent/fermi/BEsmaller = 1)
 
-/* !#!
-/datum/chemical_reaction/modesty_milk
-	results = list(/datum/reagent/drug/genital_shrinker/modesty_milk = 2)
-	required_reagents = list(/datum/reagent/drug/anaphrodisiac = 1, /datum/reagent/fermi/breast_enlarger = 1)
-
-/datum/chemical_reaction/chastity_draft
-	results = list(/datum/reagent/drug/genital_shrinker/chastity_draft = 2)
-	required_reagents = list(/datum/reagent/drug/anaphrodisiac = 1, /datum/reagent/fermi/penis_enlarger = 1)
-*/
-
 /datum/chemical_reaction/anal_allure
 	results = list(/datum/reagent/drug/genital_stimulator/anal_allure = 2)
 	required_reagents = list(/datum/reagent/drug/aphrodisiacplus = 1, /datum/reagent/fermi/butt_enlarger = 1)
