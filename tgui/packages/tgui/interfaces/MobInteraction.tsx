@@ -3,6 +3,7 @@ import { flow } from 'common/fp';
 import { createSearch } from 'common/string';
 import { useBackend, useLocalState } from '../backend';
 import { BlockQuote, Button, Flex, LabeledList, Icon, Input, Section, Table, Tabs, Stack } from '../components';
+import { TableCell, TableRow } from '../components/Table';
 import { Window } from '../layouts';
 
 type HeaderInfo = {
@@ -31,6 +32,8 @@ type GenitalData = {
   key: string,
   visibility: string,
   possible_choices: string[],
+  can_arouse: boolean,
+  arousal_state: boolean,
 }
 
 type CharacterPrefsInfo = {
@@ -42,26 +45,26 @@ type CharacterPrefsInfo = {
 }
 
 type ContentPrefsInfo = {
-  verb_consent: number,
-  lewd_verb_sounds: number,
-  arousable: number,
-  genital_examine: number,
-  vore_examine: number,
-  medihound_sleeper: number,
-  eating_noises: number,
-  digestion_noises: number,
-  trash_forcefeed: number,
-  forced_fem: number,
-  forced_masc: number,
-  hypno: number,
-  bimbofication: number,
-  breast_enlargement: number,
-  penis_enlargement: number,
-  butt_enlargement: number,
-  never_hypno: number,
-  no_aphro: number,
-  no_ass_slap: number,
-  no_auto_wag: number,
+  verb_consent: boolean,
+  lewd_verb_sounds: boolean,
+  arousable: boolean,
+  genital_examine: boolean,
+  vore_examine: boolean,
+  medihound_sleeper: boolean,
+  eating_noises: boolean,
+  digestion_noises: boolean,
+  trash_forcefeed: boolean,
+  forced_fem: boolean,
+  forced_masc: boolean,
+  hypno: boolean,
+  bimbofication: boolean,
+  breast_enlargement: boolean,
+  penis_enlargement: boolean,
+  butt_enlargement: boolean,
+  never_hypno: boolean,
+  no_aphro: boolean,
+  no_ass_slap: boolean,
+  no_auto_wag: boolean,
 }
 
 export const MobInteraction = (props, context) => {
@@ -107,12 +110,12 @@ export const MobInteraction = (props, context) => {
           </Table>
         </Section>
         <Section>
-          <Tabs>
+          <Tabs fluid textAlign="center">
             <Tabs.Tab selected={tabIndex === 0} onClick={() => setTabIndex(0)}>
               Interactions
             </Tabs.Tab>
             <Tabs.Tab selected={tabIndex === 1} onClick={() => setTabIndex(1)}>
-              Genital Visibility
+              Genital Options
             </Tabs.Tab>
             <Tabs.Tab selected={tabIndex === 2} onClick={() => setTabIndex(2)}>
               Character Prefs
@@ -124,7 +127,7 @@ export const MobInteraction = (props, context) => {
           {tabIndex === 0 && (
             <InteractionsTab />
           ) || tabIndex === 1 && (
-            <GenitalVisibilityTab />
+            <GenitalTab />
           ) || tabIndex === 2 && (
             <CharacterPrefsTab />
           ) || tabIndex === 3 && (
@@ -213,29 +216,59 @@ const ModeToIcon = {
   "Always hidden": "eye-slash",
 };
 
-const GenitalVisibilityTab = (props, context) => {
+/*
+  Greetings you, yes you, adding more stuff to actions,
+  To not have as much headache as i did,
+  do not attempt to make a sum of 100% with the buttons
+  as it will mess up math somewhere and overflow.
+
+  Also this is adjusted only for the current size,
+  if anyone feels like shrinking,
+  their window it will overflow anyways.
+  Single items is fine.
+*/
+const GenitalTab = (props, context) => {
   const { act, data } = useBackend<GenitalInfo>(context);
   const genitals = data.genitals || [];
   return (
     genitals.length ? (
       <Flex direction="column">
-        <LabeledList>
-          {genitals.map(genital => (
-            <LabeledList.Item key={genital.key} label={genital.name}>
-              {genital.possible_choices.map(choice => (
+        {genitals.map(genital => (
+          <Section key={genital.key} title={genital.name} textAlign="center">
+            <Table>
+              <TableCell width="50%" textAlign="center">
+                Visibility<br />
+                {genital.possible_choices.map(choice => (
+                  <Button
+                    width={((1 / genital.possible_choices.length) * 97) + "%"}
+                    key={choice}
+                    tooltip={choice}
+                    icon={ModeToIcon[choice]}
+                    color={genital.visibility === choice ? "green" : "default"}
+                    onClick={() => act('genital', {
+                      genital: genital.key,
+                      visibility: choice,
+                    })} />
+                ))}
+              </TableCell>
+              <TableCell textAlign="center">
+                Actions<br />
                 <Button
-                  key={choice}
-                  tooltip={choice}
-                  icon={ModeToIcon[choice]}
-                  color={genital.visibility === choice ? "green" : "default"}
+                  width="100%"
+                  key={genital.arousal_state}
+                  tooltip={genital.can_arouse
+                    ? ((genital.arousal_state ? "Unarouse" : "Arouse") + " your " + genital.name.toLowerCase())
+                    : "You cannot modify arousal on your " + genital.name.toLowerCase()}
+                  icon="heart"
+                  color={genital.can_arouse ? (genital.arousal_state ? "green" : "default") : "grey"}
                   onClick={() => act('genital', {
                     genital: genital.key,
-                    visibility: choice,
+                    set_arousal: !genital.arousal_state,
                   })} />
-              ))}
-            </LabeledList.Item>
-          ))}
-        </LabeledList>
+              </TableCell>
+            </Table>
+          </Section>
+        ))}
       </Flex>
     ) : (
       <Section align="center">
