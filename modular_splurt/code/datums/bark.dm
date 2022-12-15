@@ -270,3 +270,75 @@
 	name = "Chittery Alt"
 	id = "chitter2"
 	soundpath = 'modular_splurt/sound/voice/moth/mothchitter2.ogg'
+
+// The Mayhem Special
+/datum/bark/whistle
+	name = "Whistle 1"
+	id = "whistle1"
+	soundpath = 'modular_splurt/sound/voice/barks/kazooie/birdwhistle.ogg'
+
+/datum/bark/whistle/alt1
+	name = "Whistle 2"
+	id = "whistle2"
+	soundpath = 'modular_splurt/sound/voice/barks/kazooie/birdwhistle2.ogg'
+
+/datum/bark/caw/alt1
+	name = "Caw 2"
+	id = "caw2"
+	soundpath = 'modular_splurt/sound/voice/barks/kazooie/caw.ogg'
+
+/datum/bark/ehh
+	name = "Ehh 1"
+	id = "ehh1"
+	soundpath = 'modular_splurt/sound/voice/barks/kazooie/ehh.ogg'
+
+/datum/bark/ehh/alt1
+	name = "Ehh 2"
+	id = "ehh2"
+	soundpath = 'modular_splurt/sound/voice/barks/kazooie/ehh2.ogg'
+
+/datum/bark/eugh
+	name = "Eugh"
+	id = "eugh"
+	soundpath = 'modular_splurt/sound/voice/barks/kazooie/eugh.ogg'
+	minspeed = 6
+	maxspeed = 11
+
+/datum/bark/faucet
+	name = "Faucet 1"
+	id = "faucet1"
+	soundpath = 'modular_splurt/sound/voice/barks/kazooie/faucet.ogg'
+
+/datum/bark/faucet/alt1
+	name = "Faucet 2"
+	id = "faucet2"
+	soundpath = 'modular_splurt/sound/voice/barks/kazooie/faucet2.ogg'
+
+/datum/bark/haha
+	name = "Haha"
+	id = "haha"
+	soundpath = 'modular_splurt/sound/voice/barks/kazooie/haha.ogg'
+	minspeed = 7
+	maxspeed = 12
+
+/datum/bark/ribbit
+	name = "Ribbit"
+	id = "ribbit"
+	soundpath = 'modular_splurt/sound/voice/barks/kazooie/ribbit.ogg'
+
+/datum/bark/hoot
+	name = "Hoot"
+	id = "hoot"
+	soundpath = 'modular_splurt/sound/voice/barks/kazooie/hoot.ogg'
+	minspeed = 4
+	maxspeed = 9
+
+/datum/bark/tweet
+	name = "Tweet"
+	id = "tweet"
+	soundpath = 'modular_splurt/sound/voice/barks/kazooie/tweet.ogg'
+
+/datum/bark/poyo
+	name = "Poyo"
+	id = "Poyo"
+	soundpath = 'modular_splurt/sound/voice/barks/poyo.ogg'
