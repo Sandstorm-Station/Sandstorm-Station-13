@@ -16,13 +16,11 @@
 	var/maxtemp = 500 // 500K equals approximately 440F or 226C
 	var/heatingPower = 40000
 	var/datum/bank_account/pay_me = null
+	init_process = FALSE // Don't process upon creation
 
 /obj/machinery/cryptominer/Initialize(mapload)
 	. = ..()
 	pay_me = SSeconomy.get_dep_account(ACCOUNT_CAR)
-	// Don't process upon creation
-	STOP_PROCESSING(SSmachines,src)
-	update_icon()
 
 /obj/machinery/cryptominer/update_icon()
 	. = ..()
