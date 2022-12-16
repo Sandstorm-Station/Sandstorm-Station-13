@@ -83,9 +83,9 @@ There are several things that need to be remembered:
 			update_hair()
 			update_inv_w_uniform(block_recursive_calls)
 			// Sandstorm edit
-			update_inv_w_underwear()
-			update_inv_w_socks()
-			update_inv_w_shirt()
+			update_inv_w_underwear(block_recursive_calls)
+			update_inv_w_socks(block_recursive_calls)
+			update_inv_w_shirt(block_recursive_calls)
 			update_inv_ears_extra()
 			update_inv_wrists()
 			//
@@ -183,7 +183,7 @@ There are several things that need to be remembered:
 		update_mutant_bodyparts(block_recursive_calls)
 
 // Sandstorm edit
-/mob/living/carbon/human/update_inv_w_underwear()
+/mob/living/carbon/human/update_inv_w_underwear(block_recursive_calls = FALSE)
 	if(!HAS_TRAIT(src, TRAIT_HUMAN_NO_RENDER))
 		remove_overlay(UNDERWEAR_LAYER)
 
@@ -228,9 +228,9 @@ There are several things that need to be remembered:
 			overlays_standing[UNDERWEAR_LAYER] = underwear_overlay
 
 		apply_overlay(UNDERWEAR_LAYER)
-		update_mutant_bodyparts()
+		update_mutant_bodyparts(block_recursive_calls)
 
-/mob/living/carbon/human/update_inv_w_socks()
+/mob/living/carbon/human/update_inv_w_socks(block_recursive_calls = FALSE)
 	if(!HAS_TRAIT(src, TRAIT_HUMAN_NO_RENDER))
 		remove_overlay(SOCKS_LAYER)
 
@@ -275,9 +275,9 @@ There are several things that need to be remembered:
 			overlays_standing[SOCKS_LAYER] = underwear_overlay
 
 		apply_overlay(SOCKS_LAYER)
-		update_mutant_bodyparts()
+		update_mutant_bodyparts(block_recursive_calls)
 
-/mob/living/carbon/human/update_inv_w_shirt()
+/mob/living/carbon/human/update_inv_w_shirt(block_recursive_calls = FALSE)
 	if(!HAS_TRAIT(src, TRAIT_HUMAN_NO_RENDER))
 		remove_overlay(SHIRT_LAYER)
 
@@ -322,7 +322,7 @@ There are several things that need to be remembered:
 			overlays_standing[SHIRT_LAYER] = underwear_overlay
 
 		apply_overlay(SHIRT_LAYER)
-		update_mutant_bodyparts()
+		update_mutant_bodyparts(block_recursive_calls)
 //
 
 /mob/living/carbon/human/update_inv_wear_id()
