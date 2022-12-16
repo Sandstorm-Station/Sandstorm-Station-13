@@ -151,7 +151,7 @@ Class Procs:
 
 	if(!speed_process && init_process)
 		START_PROCESSING(SSmachines, src)
-	else
+	else if(speed_process) // Required to prevent non-speed non-init machines from running
 		START_PROCESSING(SSfastprocess, src)
 	RegisterSignal(src, COMSIG_ENTER_AREA, .proc/power_change)
 
