@@ -20,6 +20,9 @@
 /obj/machinery/cryptominer/Initialize(mapload)
 	. = ..()
 	pay_me = SSeconomy.get_dep_account(ACCOUNT_CAR)
+	// Don't process upon creation
+	STOP_PROCESSING(SSmachines,src)
+	update_icon()
 
 /obj/machinery/cryptominer/update_icon()
 	. = ..()
@@ -82,27 +85,21 @@
 	var/datum/gas_mixture/env = T.return_air()
 	if(!env)
 		return
-	if(!mining)
-		return
 	if(env.return_temperature() >= maxtemp)
-		if(mining)
-			playsound(loc, 'sound/machines/beep.ogg', 50, TRUE, -1)
+		playsound(loc, 'sound/machines/beep.ogg', 50, TRUE, -1)
 		set_mining(FALSE)
 		return
 	if(env.return_temperature() <= maxtemp && env.return_temperature() >= midtemp)
-		if(mining)
-			produce_points(0.20)
-			produce_heat()
+		produce_points(0.20)
+		produce_heat()
 		return
 	if(env.return_temperature() <= midtemp && env.return_temperature() >= mintemp)
-		if(mining)
-			produce_points(1)
-			produce_heat()
+		produce_points(1)
+		produce_heat()
 		return
 	if(env.return_temperature() <= mintemp)
-		if(mining)
-			produce_points(3)
-			produce_heat()
+		produce_points(3)
+		produce_heat()
 		return
 
 /obj/machinery/cryptominer/proc/produce_points(number)
