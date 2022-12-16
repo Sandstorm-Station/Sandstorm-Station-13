@@ -1,5 +1,7 @@
 /obj/item/clothing
 	var/last_bites = 3 //Once clothes is shredded, this determines how many more bites till its deleted.
+	 //Since Limb Inregrity exist on nothing. I'm just making a new variabe.
+	var/is_edible = 0 //Generally Items made of Metal or Durathread cannot be eaten. Has to be manually set.
 
 /obj/item/reagent_containers/food/snacks/clothing
 	list_reagents = list(/datum/reagent/consumable/nutriment = 4) //Cloth eaters get some nutrients. A Jumpsuit will roughly give back 50 Nutrition. IF eaten fully.
@@ -15,9 +17,9 @@
 /obj/item/clothing/attack(mob/M, mob/user, def_zone)
 	if(user.a_intent != INTENT_HARM)
 		if(HAS_TRAIT(M,TRAIT_CLOTH_EATER) || isinsect(M))
-			if(limb_integrity == 0) //This checks if an item can be shredded.
-				to_chat(M, "<span class='warning'>This item is too tough to eat.")
-				return FALSE //Return False to prevent the player smacking themselves with the item. Didn't want to risk a player accidently hurting themselves trying to eat anything.
+			//if(is_edible == 0) //This checks if an item can be shredded.
+			//	to_chat(M, "<span class='warning'>This item is too tough to eat.")
+			//	return FALSE //Return False to prevent the player smacking themselves with the item. Didn't want to risk a player accidently hurting themselves trying to eat anything.
 			var/obj/item/reagent_containers/food/snacks/clothing/clothing_as_food = new
 			clothing_as_food.name = name
 			var/mob/living/H = M
