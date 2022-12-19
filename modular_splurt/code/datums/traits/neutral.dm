@@ -531,6 +531,30 @@
 	W.Remove(H)
 	. = ..()
 
+/datum/quirk/gargoyle //Mmmm yes stone time
+	name = "Gargoyle"
+	desc = "You stone yes"
+	value = 0
+
+/datum/quirk/gargoyle/add()
+	.=..()
+	var/mob/living/carbon/human/H = quirk_holder
+	var/datum/action/gargoyle/transform/T = new
+	var/datum/action/gargoyle/check/C = new
+	T.Grant(H)
+	C.Grant(H)
+
+/datum/quirk/gargoyle/on_process()
+	.=..()
+
+/datum/quirk/gargoyle/remove()
+	var/mob/living/carbon/human/H = quirk_holder
+	var/datum/action/gargoyle/transform/T = locate() in H.actions
+	var/datum/action/gargoyle/check/C = locate() in H.actions
+	T.Remove(H)
+	C.Remove(H)
+	. = ..()
+
 /// quirk actions ///
 
 //vampire bite
@@ -697,3 +721,44 @@
 	old_features["size"] = get_size(H)
 	old_features["bark"] = H.vocal_bark_id
 
+/datum/action/gargoyle/transform
+	name = "Transform"
+	desc = "Transform into a statue, regaining energy in the process!"
+	icon_icon = 'modular_splurt/icons/mob/actions/misc_actions.dmi'
+	button_icon_state = "Transform"
+	var/transformed = FALSE
+	var/energy = 100
+	var/current = null
+
+/datum/action/gargoyle/transform/Trigger()
+	.=..()
+	var/mob/living/carbon/human/H = owner
+	if(!transformed)
+		if(!isturf(H.loc))
+			return 0
+		var/obj/structure/statue/gargoyle/S = new(H.loc, src)
+		current = S
+		S.name = "statue of [name]"
+		H.bleedsuppress = 1
+		S.copy_overlays(src)
+		var/newcolor = list(rgb(77,77,77), rgb(150,150,150), rgb(28,28,28), rgb(0,0,0))
+		S.add_atom_colour(newcolor, FIXED_COLOUR_PRIORITY)
+		return 1
+	else
+		qdel(current)
+
+/datum/action/gargoyle/check
+	name = "Check"
+	desc = "Transform into a statue, regaining energy in the process!"
+	icon_icon = 'modular_splurt/icons/mob/actions/misc_actions.dmi'
+	button_icon_state = "Transform"
+
+/datum/action/gargoyle/check/Trigger()
+	.=..()
+	var/mob/living/carbon/human/H = owner
+	var/datum/action/gargoyle/transform/T =	locate() in H.actions
+	var/energy = T.energy
+	if(energy)
+		return 1
+	else
+		return 0
