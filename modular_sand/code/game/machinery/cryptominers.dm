@@ -84,12 +84,19 @@
 		return
 
 	// Check for tiles with no conductivity (space)
-	if(require_conductivity && T.thermal_conductivity == 0)
-		say("Invalid atmospheric conditions detected! Shutting off!")
-		playsound(loc, 'sound/machines/beep.ogg', 50, TRUE, -1)
-		set_mining(FALSE)
-		return
-	
+	if(T.thermal_conductivity == 0)
+		// Normal mode: Warn the user and stop processing
+		if(require_conductivity)
+			say("Invalid atmospheric conditions detected! Shutting off!")
+			playsound(loc, 'sound/machines/beep.ogg', 50, TRUE, -1)
+			set_mining(FALSE)
+			return
+
+		// Cheat mode: Skip all atmos code and give points
+		else
+			produce_points(3)
+			return
+
 	// Get air
 	var/datum/gas_mixture/env = T.return_air()
 	if(!env)
