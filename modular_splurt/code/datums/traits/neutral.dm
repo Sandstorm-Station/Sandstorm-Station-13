@@ -580,6 +580,53 @@
 	C.Remove(H)
 	. = ..()
 
+/datum/quirk/nudist
+	// Mostly derived from masked_mook.
+	// Spawning with a gear harness is preferable, but failed during testing.
+	name = "Nudist"
+	desc = "Wearing most types of clothing unnerves you. Bring a gear harness!"
+	gain_text = "<span class='notice'>You feel spiritually connected to your natural form.</span>"
+	lose_text = "<span class='notice'>It feels like clothing could fit you comfortably.</span>"
+	medical_record_text = "Patient expresses a psychological need to remain unclothed."
+	value = 0
+	mood_quirk = TRUE
+	processing_quirk = TRUE
+	var/mood_category = "nudist_mood"
+
+/datum/quirk/nudist/on_process()
+	var/mob/living/carbon/human/H = quirk_holder
+	// Checking torso exposure appears to be a robust method.
+	if( ( H.is_chest_exposed() && H.is_groin_exposed() ) )
+		SEND_SIGNAL(quirk_holder, COMSIG_ADD_MOOD_EVENT, mood_category, /datum/mood_event/nudist_positive)
+	else
+		SEND_SIGNAL(quirk_holder, COMSIG_ADD_MOOD_EVENT, mood_category, /datum/mood_event/nudist_negative)
+
+/datum/quirk/masked_mook
+	name = "Bane Syndrome"
+	desc = "For some reason you don't feel... right without wearing some kind of gas mask."
+	gain_text = "<span class='danger'>You start feeling unwell without any gas mask on.</span>"
+	lose_text = "<span class='notice'>You no longer have a need to wear some gas mask.</span>"
+	value = 0
+	mood_quirk = TRUE
+	medical_record_text = "Patient feels more secure when wearing a gas mask."
+	processing_quirk = TRUE
+	var/mood_category = "masked_mook"
+
+/datum/quirk/masked_mook/on_process()
+	var/mob/living/carbon/human/H = quirk_holder
+	var/obj/item/clothing/mask/gas/gasmask = H.get_item_by_slot(ITEM_SLOT_MASK)
+	if(istype(gasmask))
+		SEND_SIGNAL(quirk_holder, COMSIG_ADD_MOOD_EVENT, mood_category, /datum/mood_event/masked_mook)
+	else
+		SEND_SIGNAL(quirk_holder, COMSIG_ADD_MOOD_EVENT, mood_category, /datum/mood_event/masked_mook_incomplete)
+
+/datum/quirk/masked_mook/on_spawn()
+	. = ..()
+	var/mob/living/carbon/human/H = quirk_holder
+	var/obj/item/clothing/mask/gas/cosmetic/gasmask = new(get_turf(quirk_holder)) // Uses a custom gas mask
+	H.equip_to_slot(gasmask, ITEM_SLOT_MASK)
+	H.regenerate_icons()
+
 /// quirk actions ///
 
 //vampire bite
