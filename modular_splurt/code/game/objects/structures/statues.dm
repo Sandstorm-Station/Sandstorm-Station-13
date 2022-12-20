@@ -15,7 +15,7 @@
 
 /obj/structure/statue/gargoyle
 	name = "statue"
-	desc = "An incredibly lifelike marble carving."
+	desc = "An incredibly intricate statue, which... almost seems alive!"
 	icon_state = "human_male"
 	density = TRUE
 	anchored = TRUE
@@ -29,7 +29,7 @@
 		petrified_mob = L
 		if(L.buckled)
 			L.buckled.unbuckle_mob(L,force=1)
-		L.visible_message("<span class='warning'>[L]'s skin rapidly turns to marble!</span>", "<span class='userdanger'>Your body freezes up! Can't... move... can't...  think...</span>")
+		L.visible_message("<span class='warning'>[L]'s skin rapidly turns to stone!</span>", "<span class='userdanger'>Your skin abruptly hardens as you turn to stone once more!</span>")
 		L.forceMove(src)
 		ADD_TRAIT(L, TRAIT_MUTE, STATUE_TRAIT)
 		ADD_TRAIT(L, TRAIT_MOBILITY_NOMOVE, STATUE_TRAIT)
