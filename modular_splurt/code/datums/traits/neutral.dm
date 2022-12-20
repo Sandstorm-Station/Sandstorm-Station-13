@@ -37,7 +37,7 @@
 
 /datum/quirk/headpat_hater
 	name = "Distant"
-	desc = "You don't seem to show much care for being touched. Whether it's because you're reserved or due to self control, others touching your head won't make you wag your tail should you possess one, and the action may even attract your ire.."
+	desc = "You don't seem to show much care for being touched. Whether it's because you're reserved or due to self control, others touching your head won't make you wag your tail should you possess one, and the action may even attract your ire."
 	mob_trait = TRAIT_DISTANT
 	value = 0
 	gain_text = "<span class='notice'>Others' touches begin to make your blood boil...</span>"
@@ -164,7 +164,7 @@
 
 /datum/quirk/overweight
 	name = "Overweight"
-	desc = "You're particularly fond of food, and join the round being overweight."
+	desc = "You're particularly fond of food, and join the shift being overweight."
 	value = 0
 	gain_text = "<span class='notice'>You feel a bit chubby!</span>"
 	//no lose_text cause why would there be?
@@ -257,7 +257,7 @@
 		return
 	if(!user.has_quirk(/datum/quirk/dominant_aura))
 		return
-	examine_list += span_lewd("You can sense submissiveness irradiating from [quirk_holder.p_them()]")
+	examine_list += span_lewd("You sense a strong aura of submission from [quirk_holder.p_them()].")
 
 /datum/quirk/well_trained/on_process()
 	. = ..()
@@ -309,7 +309,7 @@
 		"Thoughts of being commanded flood you with lust...",
 		"You really want to be called a good [good_x]...",
 		"Someone's presence is making you all flustered...",
-		"You start getting excited and sweat..."
+		"You start getting sweaty and excited..."
 	)
 
 	to_chat(quirk_holder, span_lewd(pick(notices)))
@@ -516,7 +516,7 @@
 
 /datum/quirk/werewolf //adds the werewolf quirk
 	name = "Werewolf"
-	desc = "you are capable of turning into an anthropomorphic wolf (this is still being tested, please send any bugs to nukechicken on discord)"
+	desc = "A beastly affliction allows you to shapeshift into a more wolfish appearance at will. This will increase your size (In general and below!) and cause you to behave as though you were an anthropomorphic canine. (This is still being tested. Please send any bugs to nukechicken on discord)"
 	value = 0
 
 /datum/quirk/werewolf/add()
@@ -530,6 +530,7 @@
 	var/datum/action/werewolf/W = locate() in H.actions
 	W.Remove(H)
 	. = ..()
+
 
 /datum/quirk/gargoyle //Mmmm yes stone time
 	name = "Gargoyle"
@@ -579,6 +580,7 @@
 	T.Remove(H)
 	C.Remove(H)
 	. = ..()
+
 
 /datum/quirk/nudist
 	// Mostly derived from masked_mook.
@@ -712,7 +714,7 @@
 
 /datum/action/werewolf
 	name = "Transform"
-	desc = "Transform into a wolf."
+	desc = "Transform into your wolf form."
 	icon_icon = 'modular_splurt/icons/mob/actions/misc_actions.dmi'
 	button_icon_state = "Transform"
 	var/transformed = FALSE
@@ -726,7 +728,7 @@
 	var/obj/item/organ/genital/vagina/V = H.getorganslot(ORGAN_SLOT_VAGINA)
 	H.shake_animation(2)
 	if(!transformed) // transform them
-		H.visible_message(span_danger("The pale touch of moonlight transforms [H] into an anthropomorphic wolf!"))
+		H.visible_message(span_danger("[H] shivers, their flesh bursting with a sudden growth of thick fur and their features contorting to that of a beast's, fully transforming them into a werewolf!"))
 		H.set_species(/datum/species/mammal, 1)
 		H.dna.species.mutant_bodyparts["mam_tail"] = "Wolf"
 		H.dna.species.mutant_bodyparts["legs"] = "Digitigrade"
@@ -756,7 +758,7 @@
 			V.color = "#[H.dna.features["mcolor"]]"
 			V.update()
 	else // untransform them
-		H.visible_message(span_danger("[H]'s features slowly recede from their wolfish appearance"))
+		H.visible_message(span_danger("[H] shrinks, their wolfish features quickly receding."))
 		H.set_species(old_features["species"], TRUE)
 		H.set_bark(old_features["bark"])
 		H.dna.features["mam_ears"] = old_features["mam_ears"]

@@ -88,7 +88,7 @@
 		return
 
 	if(rand(1,7) == 7)
-		playsound(loc, "modular_splurt/sound/lewd/deathclaw_grunt[rand(1, 5)].ogg", 70, 1, -1)
+		playsound(loc, "modular_splurt/sound/lewd/deathclaw_grunt[rand(1, 5)].ogg", 30, 1, -1)
 
 	var/datum/interaction/I
 	switch(chosen_hole)
@@ -101,12 +101,12 @@
 			// Abomination deathclaws do other stuff instead
 			if(deathclaw_mode == "abomination" && M.client?.prefs.unholypref == "Yes")
 				if(prob(1))
-					I = SSinteractions.interactions[/datum/interaction/lewd/grindmouth]
+					I = SSinteractions.interactions["/datum/interaction/lewd/grindmouth"]
 				else
-					I = SSinteractions.interactions[/datum/interaction/lewd/grindface]
+					I = SSinteractions.interactions["/datum/interaction/lewd/grindface"]
 				handle_post_sex(25, null, M)
 			else
-				I = SSinteractions.interactions[/datum/interaction/lewd/fuck/anal]
+				I = SSinteractions.interactions["/datum/interaction/lewd/fuck/anal"]
 			I.display_interaction(src, M)
 
 		if(CUM_TARGET_VAGINA)
@@ -117,10 +117,10 @@
 
 			// Abomination deathclaws do other stuff instead
 			if(deathclaw_mode == "abomination" && M.client?.prefs.unholypref == "Yes")
-				I = SSinteractions.interactions[/datum/interaction/lewd/footjob/vagina]
+				I = SSinteractions.interactions["/datum/interaction/lewd/footjob/vagina"]
 				handle_post_sex(10, null, M)
 			else
-				I = SSinteractions.interactions[/datum/interaction/lewd/fuck]
+				I = SSinteractions.interactions["/datum/interaction/lewd/fuck"]
 			I.display_interaction(src, M)
 
 		if(CUM_TARGET_THROAT)
@@ -138,7 +138,7 @@
 				handle_post_sex(25, null, M)
 				shake_camera(M, 6, 1)
 			else
-				I = SSinteractions.interactions[/datum/interaction/lewd/throatfuck]
+				I = SSinteractions.interactions["/datum/interaction/lewd/throatfuck"]
 				I.display_interaction(src, M)
 
 /mob/living/simple_animal/hostile/deathclaw/funclaw/cum(mob/living/M)
@@ -178,7 +178,7 @@
 		M.reagents.add_reagent(/datum/reagent/consumable/semen, 30)
 	new /obj/effect/decal/cleanable/semen(loc)
 
-	playsound(loc, "modular_splurt/sound/lewd/deathclaw[rand(1, 2)].ogg", 70, 1, -1)
+	playsound(loc, "modular_splurt/sound/lewd/deathclaw[rand(1, 2)].ogg", 30, 1, -1)
 	visible_message("<font color=purple><b>\The [src]</b> [message]</font>")
 	shake_camera(M, 6, 1)
 	set_is_fucking(null ,null)
@@ -190,7 +190,7 @@
 
 
 /mob/living/simple_animal/hostile/deathclaw/funclaw/proc/slap(mob/living/M)
-	playsound(loc, "modular_sand/sound/interactions/slap.ogg", 70, 1, -1)
+	playsound(loc, "modular_sand/sound/interactions/slap.ogg", 30, 1, -1)
 	visible_message("<span class='danger'>\The [src]</b> slaps \the [M] right on the ass!</span>", \
 			"<span class='userdanger'>\The [src]</b> slaps \the [M] right on the ass!</span>", null, COMBAT_MESSAGE_RANGE)
 
@@ -198,7 +198,7 @@
 	var/obj/item/W = M.get_item_by_slot(slot)
 	if(W)
 		M.dropItemToGround(W)
-		playsound(loc, "sound/items/poster_ripped.ogg", 70, 1, -1)
+		playsound(loc, "sound/items/poster_ripped.ogg", 30, 1, -1)
 		visible_message("<span class='danger'>\The [src]</b> tears off \the [M]'s clothes!</span>", \
 				"<span class='userdanger'>\The [src]</b> tears off \the [M]'s clothes!</span>", null, COMBAT_MESSAGE_RANGE)
 		return TRUE

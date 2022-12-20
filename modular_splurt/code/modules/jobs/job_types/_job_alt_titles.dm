@@ -57,7 +57,11 @@
 	. = ..()
 
 /datum/job/cmo
-	alt_titles = list("Medical Director", "Medical Administrator") // Sandcode do not have alt titles for CMO at the moment.
+	alt_titles = list(
+		"Medical Director",
+		"Medical Administrator",
+		"Chief Heal Slut"
+	) // Sandcode do not have alt titles for CMO at the moment.
 
 
 // Engineering
@@ -93,12 +97,14 @@
 		"Blacksmith",
 		"Waiter",
 		"All-purpose fleshlight",
+		"All-purpose dildo",
 		"Cumdump",
 		"Greytider",
 		"Bard",
 		"Snack",
 		"Stress Relief",
-		"Freeloader"
+		"Freeloader",
+		"Station Pet"
 	)
 	LAZYADD(alt_titles, extra_titles)
 	. = ..()
@@ -192,7 +198,8 @@
 		"Researcher",
 		"Toxins Researcher",
 		"Research Intern",
-		"Junior Scientist"
+		"Junior Scientist",
+		"Rack Researcher"
 	)
 	LAZYADD(alt_titles, extra_titles)
 	. = ..()
@@ -210,7 +217,8 @@
 	var/list/extra_titles = list(
 		"Alchemist",
 		"Apothecarist",
-		"Chemical Plumber"
+		"Chemical Plumber",
+		"Chemi-Slut"
 	)
 	LAZYADD(alt_titles, extra_titles)
 	. = ..()
@@ -220,7 +228,8 @@
 		"Physician",
 		"Medical Intern",
 		"Medical Resident",
-		"Medtech"
+		"Medtech",
+		"Medi-Slut"
 	)
 	LAZYADD(alt_titles, extra_titles)
 	. = ..()
@@ -234,21 +243,24 @@
 		"Hypnotherapist",
 		"Sex Educator",
 		"Rental Mommy",
-		"Rental Daddy"
+		"Rental Daddy",
+		"Psycholo-Slut"
 	)
 	LAZYADD(alt_titles, extra_titles)
 	. = ..()
 
 /datum/job/geneticist/New()
 	var/list/extra_titles = list(
-		"Genetics Researcher"
+		"Genetics Researcher",
+		"Gene-Slut"
 	)
 	LAZYADD(alt_titles, extra_titles)
 	. = ..()
 
 /datum/job/paramedic/New()
 	var/list/extra_titles = list(
-		"Trauma Team"
+		"Trauma Team",
+		"Para-Slut"
 	)
 	LAZYADD(alt_titles, extra_titles)
 	. = ..()
@@ -256,7 +268,8 @@
 /datum/job/virologist/New()
 	var/list/extra_titles = list(
 		"Microbiologist",
-		"Biochemist"
+		"Biochemist",
+		"Viro-Slut"
 	)
 	LAZYADD(alt_titles, extra_titles)
 	. = ..()
