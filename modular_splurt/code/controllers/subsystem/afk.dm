@@ -5,7 +5,8 @@
 
 SUBSYSTEM_DEF(afk)
 	name = "AFK Watcher"
-	wait = 30
+	// Don't run until minimum time has passed
+	wait = AFK_MINUTES_CRYO
 	flags = SS_BACKGROUND
 
 /datum/controller/subsystem/afk/Initialize()
