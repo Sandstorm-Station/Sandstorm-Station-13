@@ -1,17 +1,21 @@
-#define AFK_MINUTES_CRYO	40 MINUTES
-#define AFK_MINUTES_TEXT	AFK_MINUTES_WARN/600
-
-SUBSYSTEM_DEF(afk)
-	name = "AFK Watcher"
-	// Don't run until minimum time has passed
-	wait = AFK_MINUTES_CRYO
+SUBSYSTEM_DEF(auto_cryo)
+	name = "Automated Cryogenics"
 	flags = SS_BACKGROUND
+	
+	// Placeholder value in case of config failure (40 minutes)
+	var/autocryo_time_trigger = 24000
 
-/datum/controller/subsystem/afk/Initialize()
-	// Currently, this always runs by default
+/datum/controller/subsystem/auto_cryo/Initialize()
+	// Check config before running
+	if(CONFIG_GET(flag/autocryo_disabled))
+		can_fire = FALSE
+
+	// Set time for trigger
+	autocryo_time_trigger = CONFIG_GET(number/autocryo_time_trigger)
+
 	return ..()
 
-/datum/controller/subsystem/afk/fire()
+/datum/controller/subsystem/auto_cryo/fire()
 	// Check possible targets
 	for(var/mob/living/cryo_mob in GLOB.ssd_mob_list)
 		// Get SSD time
@@ -19,7 +23,7 @@ SUBSYSTEM_DEF(afk)
 		var/afk_time = world.time - cryo_mob.lastclienttime
 		
 		// Check if client meets the time requirement
-		if(!(afk_time > AFK_MINUTES_CRYO))
+		if(!(afk_time > autocryo_time_trigger))
 			continue
 		
 		// Send to cryo
@@ -27,6 +31,3 @@ SUBSYSTEM_DEF(afk)
 		
 		// Remove from SSD list
 		GLOB.ssd_mob_list -= cryo_mob
-
-#undef AFK_MINUTES_CRYO
-#undef AFK_MINUTES_TEXT
