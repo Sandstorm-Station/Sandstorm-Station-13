@@ -550,7 +550,7 @@
 	var/datum/action/gargoyle/check/C = new
 	var/datum/action/gargoyle/pause/P = new
 	energy = 100
-	cooldown = 60
+	cooldown = 30
 	T.Grant(H)
 	C.Grant(H)
 	P.Grant(H)
@@ -562,17 +562,17 @@
 
 	if(paused && H.loc != position)
 		paused = 0
-		energy -= 30
+		energy -= 15
 
 	if(cooldown > 0)
 		cooldown--
 
 	if(!transformed && energy > 0 && !paused)
-		energy -= 0.15
+		energy -= 0.075
 
 	if(transformed)
 		if(energy < 99.7)
-			energy += 0.3
+			energy += 0.25
 		H.heal_overall_damage(0.5,0.5)
 		H.adjustCloneLoss(-0.5)
 		H.adjustBruteLoss(-0.5)
@@ -829,14 +829,14 @@
 			S.add_atom_colour(newcolor, FIXED_COLOUR_PRIORITY)
 			current = S
 			T.transformed = 1
-			T.cooldown = 60
+			T.cooldown = 30
 			T.paused = 0
 			S.dir = H.dir
 			return 1
 		else
 			qdel(current)
 			T.transformed = 0
-			T.cooldown = 60
+			T.cooldown = 30
 			T.paused = 0
 			H.visible_message("<span class='warning'>[H]'s skin rapidly softens, returning them to normal!</span>", "<span class='userdanger'>Your skin softens, freeing your movement once more!</span>")
 	else
