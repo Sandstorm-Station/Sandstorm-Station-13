@@ -73,13 +73,11 @@
 	icon_states = null
 	resistance_flags = INDESTRUCTIBLE  //Sorry grinch, not this time
 
-/* Modularized emergency christmas nerf
 /obj/structure/flora/tree/pine/xmas/presents
 	icon_state = "pinepresents"
 	desc = "A wondrous decorated Christmas tree. It has presents!"
-	var/gift_type = /obj/item/a_gift/anything
+	// var/gift_type = /obj/item/a_gift/anything     Modularized emergency christmas nerf
 	var/list/ckeys_that_took = list()
-*/
 
 /obj/structure/flora/tree/pine/xmas/presents/on_attack_hand(mob/living/user, act_intent = user.a_intent, unarmed_attack_flags)
 	. = ..()
