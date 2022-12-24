@@ -7,7 +7,7 @@ SUBSYSTEM_DEF(auto_cryo)
 
 /datum/controller/subsystem/auto_cryo/Initialize()
 	// Check config before running
-	if(CONFIG_GET(flag/autocryo_disabled))
+	if(!CONFIG_GET(flag/autocryo_enabled))
 		can_fire = FALSE
 
 	// Set time for trigger

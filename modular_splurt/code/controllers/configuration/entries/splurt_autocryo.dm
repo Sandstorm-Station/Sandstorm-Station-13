@@ -5,4 +5,4 @@
 	integer = TRUE
 
 // Should this system be used?
-/datum/config_entry/flag/autocryo_disabled
+/datum/config_entry/flag/autocryo_enabled
