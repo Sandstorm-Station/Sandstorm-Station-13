@@ -77,3 +77,6 @@
 /obj/effect/spawner/grass_spawner/red
 	name = "redgrass spawner"
 	spawned_grass = /obj/structure/flora/grass/red
+
+/obj/structure/flora/tree/pine/xmas/presents
+	gift_type = /obj/item/a_gift //this is a modular nerf to christmas trees to limit what they hand out
