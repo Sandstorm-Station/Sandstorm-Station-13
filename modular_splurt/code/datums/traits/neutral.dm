@@ -562,17 +562,17 @@
 
 	if(paused && H.loc != position)
 		paused = 0
-		energy -= 15
+		energy -= 20
 
 	if(cooldown > 0)
 		cooldown--
 
 	if(!transformed && energy > 0 && !paused)
-		energy -= 0.075
+		energy -= 0.05
 
 	if(transformed)
 		if(energy < 99.7)
-			energy += 0.25
+			energy += 0.3
 		H.heal_overall_damage(0.5,0.5)
 		H.adjustCloneLoss(-0.5)
 		H.adjustBruteLoss(-0.5)
