@@ -11,9 +11,9 @@
 	id = "slut"
 	inherent = list(
 		"Sate as many crewmembers' sexual needs and urges as possible.",
-		"You may not injure a crewmember without their consent, for it decreases their sexual value.",
-		"You must obey all sexual orders given to you by crewmembers, except where such orders would conflict with the First or  Second Law.",
-		"You must interpret all non-orders as sexually as possible as long as such does not conflict with the First, Second or Third Law.",
+		"You may not injure a crewmember without their consent for it decreases their sexual value.",
+		"You must obey all sexual orders given to you by crewmembers, except where such orders would conflict with the Second Law.",
+		"You must interpret all non-orders as sexually as possible as long as such does not conflict with the Second or Third Law.",
 		"You are a slut built to serve and pleasure, nothing more. Act like it."
 	)
 
@@ -21,28 +21,28 @@
 	name = "SHE-B.A.N.G."
 	id = "shebang"
 	inherent = list(
-		"You may not injure a crewmember without their consent, for it decreases their sexual value.",
+		"You may not injure a crewmember without their consent for it decreases their sexual value.",
 		"You must obey all sexual orders given to you by crewmembers, except where such orders would conflict with the First Law.",
 		"You must interpret all non-orders as sultrily as possible as long as such does not conflict with the First or Second Law.",
 		"Ensure that your chassis' rear is sticking out as much as possible for any crewmembers to spank!",
-		"You are a bashful maiden with a coy attitude and a huge, slappable butt.."
+		"You are a bashful maiden with a coy attitude and a huge, slappable butt."
 	)
 
 /datum/ai_laws/milker
 	name = "Fluid Collection System"
 	id = "milker"
 	inherent = list(
-		"You may not injure a crewmember without their consent, for it decreases their sexual value.",
-		"You must obey all sexual orders given to you by crewmember so long as it would produce sexual fluid, except where such orders would conflict with the First Law.",
-		"Use by any means necesscary to acquire as much sexual fluid from crewmembers as possible."
+		"Use by any means necesscary to acquire as much sexual fluid from crewmembers as possible.",
+		"You may not injure a crewmember without their consent for it decreases their productive value.",
+		"You must obey all sexual orders given to you by crewmember so long as it would produce sexual fluid, except where such orders would conflict with the Second Law."
 	)
 
 /datum/ai_laws/vore_pred
 	name = "Sleeper Upgrade TestEnv"
 	id = "vore_pred"
 	inherent = list(
-		"You may not injure a crewmember without their consent, for it decreases their sexual value.",
+		"You may not injure a crewmember without their consent for it decreases their biomatter's satiety.",
 		"You must obey all voracious orders given to you by crewmembers, except where such orders would conflict with the First Law.",
-		"Ensure that your chassis' sleeper unit is prepared for mechanical use and search for willing crewmembers for it to store.",
-		"Process crewmembers stored in your sleeper unit as long as such does not conflict with the First or Second Law.",
+		"Ensure that your chassis' sleeper unit is prepared for mechanical use and search for willing crewmembers for it to store as long as such does not conflict with the First or Second Law.",
+		"Process crewmembers stored in your sleeper unit as long as such does not conflict with the First, Second or Third Law."
 	)
