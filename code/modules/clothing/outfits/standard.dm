@@ -361,10 +361,8 @@
 
 	head = /obj/item/clothing/head/helmet/space/plasmaman
 	uniform = /obj/item/clothing/under/plasmaman
-	r_hand= /obj/item/storage/belt/utility/atmostech
+	r_hand = /obj/item/tank/internals/plasmaman/belt/full
 	mask = /obj/item/clothing/mask/breath
-	l_hand = /obj/item/radio
-	l_pocket = /obj/item/flashlight
 
 /datum/outfit/death_commando
 	name = "Death Commando"
