@@ -3968,6 +3968,7 @@
 "amu" = (
 /obj/machinery/atmospherics/pipe/simple/supply/hidden,
 /obj/effect/turf_decal/stripes/line,
+/obj/effect/landmark/start/stowaway,
 /turf/open/floor/plating,
 /area/maintenance/fore)
 "amv" = (
@@ -5087,6 +5088,10 @@
 /obj/machinery/vending/wardrobe/sec_wardrobe,
 /turf/open/floor/plasteel/showroomfloor,
 /area/security/warden)
+"apX" = (
+/obj/effect/landmark/start/stowaway,
+/turf/open/floor/plating,
+/area/maintenance/starboard/fore)
 "aqb" = (
 /obj/machinery/atmospherics/pipe/simple/supply/hidden,
 /obj/structure/cable/yellow{
@@ -18637,6 +18642,7 @@
 /obj/effect/turf_decal/stripes/line{
 	dir = 1
 	},
+/obj/effect/landmark/start/stowaway,
 /turf/open/floor/plating,
 /area/maintenance/port)
 "bwh" = (
@@ -23742,6 +23748,7 @@
 /obj/machinery/atmospherics/pipe/simple/scrubbers/hidden{
 	dir = 4
 	},
+/obj/effect/landmark/start/stowaway,
 /turf/open/floor/plating,
 /area/maintenance/starboard)
 "bYC" = (
@@ -62802,6 +62809,14 @@
 /obj/machinery/air_sensor/atmos/toxin_tank,
 /turf/open/floor/engine/plasma,
 /area/engineering/atmos)
+"lDe" = (
+/obj/structure/cable/yellow{
+	icon_state = "1-2"
+	},
+/obj/machinery/atmospherics/pipe/simple/supply/hidden,
+/obj/effect/landmark/start/stowaway,
+/turf/open/floor/plating,
+/area/maintenance/port)
 "lDu" = (
 /obj/machinery/door/firedoor,
 /obj/structure/cable/yellow{
@@ -66584,6 +66599,7 @@
 /obj/machinery/atmospherics/pipe/manifold/supply/hidden{
 	dir = 8
 	},
+/obj/effect/landmark/start/stowaway,
 /turf/open/floor/plating,
 /area/maintenance/starboard)
 "nMV" = (
@@ -66727,6 +66743,10 @@
 	},
 /turf/open/floor/plasteel,
 /area/cargo/miningoffice)
+"nPM" = (
+/obj/effect/landmark/start/stowaway,
+/turf/open/floor/plating,
+/area/maintenance/starboard)
 "nQo" = (
 /obj/machinery/atmospherics/pipe/manifold/scrubbers/hidden{
 	dir = 4
@@ -69442,6 +69462,19 @@
 /obj/effect/turf_decal/stripes/line,
 /turf/open/floor/plasteel,
 /area/service/hydroponics)
+"piN" = (
+/obj/structure/cable/yellow{
+	icon_state = "4-8"
+	},
+/obj/machinery/atmospherics/pipe/simple/supply/hidden{
+	dir = 4
+	},
+/obj/structure/disposalpipe/segment{
+	dir = 4
+	},
+/obj/effect/landmark/start/stowaway,
+/turf/open/floor/plating,
+/area/maintenance/starboard/aft)
 "pjr" = (
 /obj/machinery/camera{
 	c_tag = "Atmospherics - Starboard Aft";
@@ -104897,7 +104930,7 @@ bzC
 bzC
 bzC
 bPM
-bzC
+lDe
 bzC
 bSp
 alC
@@ -118785,7 +118818,7 @@ bZq
 caG
 abt
 bSS
-ceZ
+piN
 cgo
 cgo
 cgo
@@ -123669,7 +123702,7 @@ caU
 ccD
 cdV
 cfj
-apc
+nPM
 chC
 dvY
 dvY
@@ -125668,7 +125701,7 @@ bai
 ate
 dDL
 axP
-dnS
+apX
 ocS
 pUr
 lmt

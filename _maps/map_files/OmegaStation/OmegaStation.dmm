@@ -11912,6 +11912,7 @@
 /obj/machinery/atmospherics/pipe/manifold/scrubbers/hidden{
 	dir = 8
 	},
+/obj/effect/landmark/start/stowaway,
 /turf/open/floor/plating{
 	icon_state = "platingdmg1"
 	},
@@ -27899,6 +27900,7 @@
 /obj/structure/cable/white{
 	icon_state = "1-2"
 	},
+/obj/effect/landmark/start/stowaway,
 /turf/open/floor/plating{
 	icon_state = "platingdmg1"
 	},
@@ -29472,6 +29474,7 @@
 /obj/structure/cable/white{
 	icon_state = "1-2"
 	},
+/obj/effect/landmark/start/stowaway,
 /turf/open/floor/plating,
 /area/maintenance/starboard/fore)
 "bdj" = (
@@ -34648,6 +34651,10 @@
 	},
 /turf/open/floor/plasteel,
 /area/service/hydroponics)
+"cyz" = (
+/obj/effect/landmark/start/stowaway,
+/turf/open/floor/plating,
+/area/maintenance/port/fore)
 "czQ" = (
 /obj/structure/table/reinforced,
 /obj/machinery/door/window/brigdoor{
@@ -35683,6 +35690,16 @@
 	},
 /turf/open/floor/engine,
 /area/science/xenobiology)
+"gEW" = (
+/obj/machinery/atmospherics/pipe/simple/supply/hidden{
+	dir = 4
+	},
+/obj/structure/cable/white{
+	icon_state = "4-8"
+	},
+/obj/effect/landmark/start/stowaway,
+/turf/open/floor/plating,
+/area/maintenance/starboard/aft)
 "gGq" = (
 /obj/machinery/mass_driver{
 	dir = 4;
@@ -35828,6 +35845,14 @@
 	},
 /turf/closed/wall/r_wall/rust,
 /area/science/xenobiology)
+"hfu" = (
+/obj/structure/cable/white{
+	icon_state = "1-2"
+	},
+/obj/machinery/atmospherics/pipe/simple/supply/hidden,
+/obj/effect/landmark/start/stowaway,
+/turf/open/floor/plating,
+/area/maintenance/port/aft)
 "hhM" = (
 /turf/closed/mineral/random/labormineral,
 /area/science/test_area)
@@ -36908,6 +36933,19 @@
 	},
 /turf/closed/wall,
 /area/science/mixing)
+"kPK" = (
+/obj/structure/cable/white{
+	icon_state = "4-8"
+	},
+/obj/machinery/atmospherics/pipe/simple/supply/hidden{
+	dir = 4
+	},
+/obj/effect/turf_decal/trimline/green/line{
+	dir = 1
+	},
+/obj/effect/landmark/start/stowaway,
+/turf/open/floor/plating,
+/area/maintenance/port/aft)
 "kQn" = (
 /obj/machinery/atmospherics/components/unary/portables_connector/visible{
 	dir = 8
@@ -41676,6 +41714,18 @@
 /obj/machinery/atmospherics/components/unary/outlet_injector/atmos/toxin_input,
 /turf/open/floor/engine/plasma,
 /area/engineering/atmos)
+"vWa" = (
+/obj/machinery/atmospherics/pipe/simple/supply/hidden{
+	dir = 4
+	},
+/obj/structure/cable/white{
+	icon_state = "4-8"
+	},
+/obj/effect/landmark/start/stowaway,
+/turf/open/floor/plating{
+	icon_state = "platingdmg3"
+	},
+/area/maintenance/starboard/aft)
 "vWg" = (
 /obj/structure/cable/white{
 	icon_state = "4-8"
@@ -75836,7 +75886,7 @@ aAc
 aAm
 acH
 acH
-ars
+cyz
 swZ
 ain
 aqG
@@ -75881,7 +75931,7 @@ aKl
 aKl
 aFM
 aFM
-aFM
+hfu
 aKl
 aFM
 bbn
@@ -77426,7 +77476,7 @@ aDo
 aKn
 aLy
 aFM
-aFM
+hfu
 aPP
 lFj
 aSm
@@ -79745,7 +79795,7 @@ bcd
 bcU
 bdQ
 aSh
-hIu
+kPK
 bfA
 bfV
 bgG
@@ -88211,7 +88261,7 @@ aPy
 aQA
 sOM
 sOU
-sOV
+gEW
 sKa
 aVC
 aWt
@@ -88483,7 +88533,7 @@ bxW
 bdw
 bep
 aZl
-sPI
+vWa
 bfP
 pej
 bhi

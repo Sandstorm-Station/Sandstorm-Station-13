@@ -1682,6 +1682,7 @@
 /obj/machinery/atmospherics/pipe/simple/general/visible{
 	dir = 9
 	},
+/obj/effect/landmark/start/stowaway,
 /turf/open/floor/plating,
 /area/maintenance/fore)
 "aeo" = (
@@ -68541,6 +68542,13 @@
 	},
 /turf/open/floor/plasteel,
 /area/engineering/secure_construction)
+"fYf" = (
+/obj/structure/cable{
+	icon_state = "4-8"
+	},
+/obj/effect/landmark/start/stowaway,
+/turf/open/floor/plating,
+/area/maintenance/starboard/aft)
 "gfX" = (
 /obj/effect/landmark/navigate_destination/cargo,
 /turf/open/floor/plasteel,
@@ -68704,6 +68712,15 @@
 /obj/effect/landmark/blobstart,
 /turf/open/floor/plating,
 /area/engineering/storage/tech)
+"hqL" = (
+/obj/structure/disposalpipe/segment,
+/obj/structure/cable{
+	icon_state = "1-2"
+	},
+/obj/machinery/atmospherics/pipe/simple/orange/hidden,
+/obj/effect/landmark/start/stowaway,
+/turf/open/floor/plating,
+/area/maintenance/port/fore)
 "htU" = (
 /obj/machinery/chem_dispenser,
 /turf/open/floor/plating,
@@ -70280,6 +70297,16 @@
 /obj/structure/reagent_dispensers/watertank,
 /turf/open/floor/plasteel/dark,
 /area/service/hydroponics/garden)
+"snC" = (
+/obj/machinery/atmospherics/pipe/simple/cyan/hidden{
+	dir = 4
+	},
+/obj/structure/cable{
+	icon_state = "4-8"
+	},
+/obj/effect/landmark/start/stowaway,
+/turf/open/floor/plating,
+/area/maintenance/starboard/fore)
 "spo" = (
 /obj/effect/turf_decal/tile/neutral,
 /obj/effect/turf_decal/tile/neutral{
@@ -70487,6 +70514,10 @@
 	},
 /turf/open/floor/plating,
 /area/router)
+"tvk" = (
+/obj/effect/landmark/start/stowaway,
+/turf/open/floor/plating,
+/area/maintenance/port/central)
 "tyI" = (
 /obj/machinery/atmospherics/pipe/simple/supplymain/visible{
 	dir = 4
@@ -70691,6 +70722,16 @@
 	},
 /turf/open/floor/plating,
 /area/cargo/storage)
+"uPD" = (
+/obj/structure/disposalpipe/segment{
+	dir = 4
+	},
+/obj/machinery/atmospherics/pipe/simple/cyan/hidden{
+	dir = 4
+	},
+/obj/effect/landmark/start/stowaway,
+/turf/open/floor/plating,
+/area/maintenance/fore)
 "uPN" = (
 /obj/machinery/atmospherics/pipe/simple/orange/hidden{
 	dir = 8
@@ -98104,7 +98145,7 @@ aQL
 aQL
 aQL
 aTS
-aRW
+tvk
 bcR
 bjG
 blk
@@ -98581,7 +98622,7 @@ amS
 amS
 aDE
 amS
-amS
+hqL
 aKR
 apY
 bRa
@@ -107053,7 +107094,7 @@ ajw
 ajw
 ajw
 awN
-bGc
+uPD
 bGl
 ahA
 aiQ
@@ -111936,7 +111977,7 @@ ahP
 ahP
 akj
 ahP
-aif
+snC
 aiB
 afK
 ahU
@@ -113319,7 +113360,7 @@ bqM
 btL
 bBm
 btC
-bPm
+fYf
 bta
 btV
 cfG

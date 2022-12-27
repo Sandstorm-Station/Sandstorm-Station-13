@@ -2641,7 +2641,7 @@
 	},
 /obj/item/clothing/under/syndicate/baseball,
 /obj/item/clothing/head/beret/sec{
-	armor = list("melee" = 0, "bullet" = 0, "laser" = 0, "energy" = 0, "bomb" = 0, "bio" = 0, "rad" = 0);
+	armor = list("melee"=0,"bullet"=0,"laser"=0,"energy"=0,"bomb"=0,"bio"=0,"rad"=0);
 	desc = "A replica beret resembling that of a special operations officer under Nanotrasen.";
 	name = "replica officer's beret"
 	},
@@ -2658,7 +2658,7 @@
 	dir = 4
 	},
 /obj/item/clothing/head/centhat{
-	armor = list("melee" = 0, "bullet" = 0, "laser" = 0, "energy" = 0, "bomb" = 0, "bio" = 0, "rad" = 0);
+	armor = list("melee"=0,"bullet"=0,"laser"=0,"energy"=0,"bomb"=0,"bio"=0,"rad"=0);
 	desc = "A replica hat of a Central Commander's attire. It has a small tag on it saying, 'It's good to be emperor.'";
 	name = "Replica CentCom hat"
 	},
@@ -35556,7 +35556,7 @@
 /obj/machinery/vending/dinnerware{
 	desc = "A vending machine stocked full of condiments to put on food.";
 	name = "\improper Condiments Dispenser";
-	products = list(/obj/item/storage/bag/tray = 10, /obj/item/kitchen/fork = 6, /obj/item/kitchen/knife = 6, /obj/item/reagent_containers/food/drinks/drinkingglass = 20, /obj/item/clothing/suit/apron/chef = 2, /obj/item/storage/box/cups = 10, /obj/item/reagent_containers/food/condiment/pack/ketchup = 20, /obj/item/reagent_containers/food/condiment/pack/mustard = 20, /obj/item/reagent_containers/food/condiment/pack/hotsauce = 20, /obj/item/reagent_containers/food/condiment/pack/astrotame = 20, /obj/item/reagent_containers/food/condiment/saltshaker = 20, /obj/item/reagent_containers/food/condiment/peppermill = 20, /obj/item/reagent_containers/glass/bowl = 30)
+	products = list(/obj/item/storage/bag/tray=10,/obj/item/kitchen/fork=6,/obj/item/kitchen/knife=6,/obj/item/reagent_containers/food/drinks/drinkingglass=20,/obj/item/clothing/suit/apron/chef=2,/obj/item/storage/box/cups=10,/obj/item/reagent_containers/food/condiment/pack/ketchup=20,/obj/item/reagent_containers/food/condiment/pack/mustard=20,/obj/item/reagent_containers/food/condiment/pack/hotsauce=20,/obj/item/reagent_containers/food/condiment/pack/astrotame=20,/obj/item/reagent_containers/food/condiment/saltshaker=20,/obj/item/reagent_containers/food/condiment/peppermill=20,/obj/item/reagent_containers/glass/bowl=30)
 	},
 /turf/open/floor/wood,
 /area/service/bar/atrium)
@@ -35854,6 +35854,7 @@
 /area/edina)
 "bKZ" = (
 /obj/effect/festive/street/sidewalke,
+/obj/effect/landmark/start/stowaway,
 /turf/open/floor/festive/cobblestone,
 /area/edina/street/primary/progress)
 "bLa" = (
@@ -43307,42 +43308,42 @@
 	},
 /obj/item/reagent_containers/food/condiment/flour{
 	desc = "A large sack of flour for restaurants, not the home-baker!";
-	list_reagents = list(/datum/reagent/consumable/flour = 90);
+	list_reagents = list(/datum/reagent/consumable/flour=90);
 	name = "Large Flour Sack"
 	},
 /obj/item/reagent_containers/food/condiment/flour{
 	desc = "A large sack of flour for restaurants, not the home-baker!";
-	list_reagents = list(/datum/reagent/consumable/flour = 90);
+	list_reagents = list(/datum/reagent/consumable/flour=90);
 	name = "Large Flour Sack"
 	},
 /obj/item/reagent_containers/food/condiment/flour{
 	desc = "A large sack of flour for restaurants, not the home-baker!";
-	list_reagents = list(/datum/reagent/consumable/flour = 90);
+	list_reagents = list(/datum/reagent/consumable/flour=90);
 	name = "Large Flour Sack"
 	},
 /obj/item/reagent_containers/food/condiment/flour{
 	desc = "A large sack of flour for restaurants, not the home-baker!";
-	list_reagents = list(/datum/reagent/consumable/flour = 90);
+	list_reagents = list(/datum/reagent/consumable/flour=90);
 	name = "Large Flour Sack"
 	},
 /obj/item/reagent_containers/food/condiment/rice{
 	desc = "A huge sack of rice. Probably for restaurants that actually go through such a huge volume of it easily, not for the home cook.";
-	list_reagents = list(/datum/reagent/consumable/rice = 90);
+	list_reagents = list(/datum/reagent/consumable/rice=90);
 	name = "Large Rice Sack"
 	},
 /obj/item/reagent_containers/food/condiment/rice{
 	desc = "A huge sack of rice. Probably for restaurants that actually go through such a huge volume of it easily, not for the home cook.";
-	list_reagents = list(/datum/reagent/consumable/rice = 90);
+	list_reagents = list(/datum/reagent/consumable/rice=90);
 	name = "Large Rice Sack"
 	},
 /obj/item/reagent_containers/food/condiment/rice{
 	desc = "A huge sack of rice. Probably for restaurants that actually go through such a huge volume of it easily, not for the home cook.";
-	list_reagents = list(/datum/reagent/consumable/rice = 90);
+	list_reagents = list(/datum/reagent/consumable/rice=90);
 	name = "Large Rice Sack"
 	},
 /obj/item/reagent_containers/food/condiment/rice{
 	desc = "A huge sack of rice. Probably for restaurants that actually go through such a huge volume of it easily, not for the home cook.";
-	list_reagents = list(/datum/reagent/consumable/rice = 90);
+	list_reagents = list(/datum/reagent/consumable/rice=90);
 	name = "Large Rice Sack"
 	},
 /turf/open/floor/plasteel/freezer,
@@ -54105,6 +54106,10 @@
 /obj/effect/turf_decal/weather/snow/corner,
 /turf/open/floor/festive/sidewalk,
 /area/edina)
+"hWb" = (
+/obj/effect/landmark/start/stowaway,
+/turf/open/floor/festive/sidewalk,
+/area/edina/street/primary/progress)
 "hXd" = (
 /obj/vehicle/ridden/janicart,
 /obj/item/key/janitor,
@@ -55050,6 +55055,10 @@
 	},
 /turf/open/floor/festive/alleyway,
 /area/edina/street/secondary/castle)
+"ozc" = (
+/obj/effect/landmark/start/stowaway,
+/turf/open/floor/festive/alleyway,
+/area/science)
 "oCy" = (
 /obj/structure/table/wood/fancy/red,
 /obj/machinery/light/small{
@@ -56408,6 +56417,10 @@
 /obj/item/clothing/shoes/winterboots,
 /turf/open/floor/festive/trainplatform,
 /area/edina/street/primary/perimeter)
+"wRc" = (
+/obj/effect/landmark/start/stowaway,
+/turf/open/floor/festive/cobblestone,
+/area/edina/street/primary/progress)
 "wWV" = (
 /obj/item/toy/cattoy,
 /turf/open/floor/grass,
@@ -86380,7 +86393,7 @@ cuQ
 cuT
 cuV
 hya
-aKT
+ozc
 pqA
 aLX
 aLX
@@ -88691,7 +88704,7 @@ aOl
 aQL
 aMG
 cuU
-bFg
+hWb
 bQz
 bTV
 bVm
@@ -105914,7 +105927,7 @@ bAF
 bAF
 bAF
 bAF
-bAF
+wRc
 bAF
 bWE
 bFg
@@ -107201,7 +107214,7 @@ bAF
 bAF
 bAF
 bAF
-bAF
+wRc
 bFg
 ccD
 bzs
@@ -107712,7 +107725,7 @@ bBU
 bFg
 bAF
 bAF
-bAF
+wRc
 bAF
 bAF
 bAF

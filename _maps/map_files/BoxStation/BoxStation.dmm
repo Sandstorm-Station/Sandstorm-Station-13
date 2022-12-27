@@ -31651,6 +31651,7 @@
 	icon_state = "4-8"
 	},
 /obj/machinery/atmospherics/pipe/simple/scrubbers/hidden,
+/obj/effect/landmark/start/stowaway,
 /turf/open/floor/plating,
 /area/maintenance/port/aft)
 "bUx" = (
@@ -34774,6 +34775,7 @@
 /obj/machinery/atmospherics/pipe/simple/supply/hidden{
 	dir = 10
 	},
+/obj/effect/landmark/start/stowaway,
 /turf/open/floor/plating,
 /area/maintenance/starboard/aft)
 "ccW" = (
@@ -37856,6 +37858,7 @@
 /obj/machinery/atmospherics/pipe/simple/scrubbers/hidden{
 	dir = 9
 	},
+/obj/effect/landmark/start/stowaway,
 /turf/open/floor/plating,
 /area/maintenance/aft)
 "clo" = (
@@ -44031,6 +44034,12 @@
 	},
 /turf/open/floor/plating,
 /area/security/prison/upper)
+"dhO" = (
+/obj/effect/landmark/start/stowaway,
+/turf/open/floor/plating{
+	icon_state = "panelscorched"
+	},
+/area/maintenance/starboard/fore)
 "diq" = (
 /obj/machinery/atmospherics/pipe/simple/supply/hidden,
 /obj/machinery/door/airlock/maintenance{
@@ -49105,6 +49114,10 @@
 /obj/structure/bedsheetbin,
 /turf/open/floor/plasteel/cafeteria,
 /area/security/prison/upper)
+"hFF" = (
+/obj/effect/landmark/start/stowaway,
+/turf/open/floor/plating,
+/area/maintenance/aft)
 "hGU" = (
 /obj/structure/cable{
 	icon_state = "0-2"
@@ -51717,6 +51730,12 @@
 	dir = 1
 	},
 /area/engineering/atmos)
+"jWa" = (
+/obj/effect/landmark/start/stowaway,
+/turf/open/floor/plating{
+	icon_state = "platingdmg1"
+	},
+/area/maintenance/starboard/aft)
 "jWW" = (
 /obj/machinery/light{
 	dir = 4
@@ -57211,6 +57230,13 @@
 /obj/effect/decal/cleanable/dirt,
 /turf/open/floor/plating,
 /area/maintenance/starboard/aft)
+"oMU" = (
+/obj/machinery/atmospherics/pipe/simple/supply/hidden{
+	dir = 4
+	},
+/obj/effect/landmark/start/stowaway,
+/turf/open/floor/plating,
+/area/maintenance/port)
 "oNt" = (
 /obj/structure/chair/sofa/left{
 	dir = 1
@@ -59435,6 +59461,10 @@
 	dir = 4
 	},
 /area/security/prison/upper)
+"qRO" = (
+/obj/effect/landmark/start/stowaway,
+/turf/open/floor/plating,
+/area/maintenance/starboard/aft)
 "qSf" = (
 /obj/machinery/atmospherics/pipe/simple/supply/hidden,
 /obj/structure/cable{
@@ -60811,6 +60841,10 @@
 /obj/machinery/disposal/bin,
 /turf/open/floor/plasteel,
 /area/security/office)
+"sjc" = (
+/obj/effect/landmark/start/stowaway,
+/turf/open/floor/plating,
+/area/maintenance/port/fore)
 "sjx" = (
 /obj/structure/chair/comfy/black{
 	dir = 4
@@ -63186,6 +63220,11 @@
 	},
 /turf/open/floor/plasteel/grimy,
 /area/security/detectives_office)
+"upd" = (
+/obj/machinery/atmospherics/pipe/simple/scrubbers/hidden,
+/obj/effect/landmark/start/stowaway,
+/turf/open/floor/plating,
+/area/maintenance/port/fore)
 "upe" = (
 /obj/machinery/computer/arcade/orion_trail,
 /obj/structure/window{
@@ -65262,6 +65301,10 @@
 	},
 /turf/open/floor/plasteel,
 /area/security/prison/cells)
+"vYV" = (
+/obj/effect/landmark/start/stowaway,
+/turf/open/floor/plating,
+/area/maintenance/port/aft)
 "vZA" = (
 /obj/structure/lattice/catwalk,
 /obj/structure/cable,
@@ -67220,6 +67263,10 @@
 	},
 /turf/open/floor/carpet/blue,
 /area/command/bridge)
+"xOz" = (
+/obj/effect/landmark/start/stowaway,
+/turf/open/floor/wood/wood_large,
+/area/service/abandoned_gambling_den)
 "xPb" = (
 /obj/structure/table/reinforced,
 /obj/structure/window/reinforced/tinted,
@@ -81243,7 +81290,7 @@ lPA
 alU
 ugq
 rMh
-ayy
+upd
 aAe
 aBJ
 aCs
@@ -82003,7 +82050,7 @@ aaf
 aaf
 alU
 arO
-amC
+sjc
 aom
 ank
 auT
@@ -83324,7 +83371,7 @@ bbI
 bcK
 aPz
 bdB
-aWv
+oMU
 bfh
 aPz
 aPz
@@ -86640,7 +86687,7 @@ amC
 uBf
 amC
 aKY
-amC
+sjc
 aAY
 aBQ
 aDp
@@ -87465,7 +87512,7 @@ aaa
 bCq
 bHE
 bHE
-bHE
+vYV
 bHE
 bCq
 bVy
@@ -88510,7 +88557,7 @@ bCq
 cqn
 cAh
 chT
-bHE
+vYV
 bHE
 ckv
 bHE
@@ -90034,7 +90081,7 @@ aoV
 aoV
 bLv
 bPZ
-bHE
+vYV
 bHE
 cTF
 bHE
@@ -105973,7 +106020,7 @@ bMa
 bTZ
 bKH
 bzs
-bAw
+hFF
 bXZ
 bHX
 bZN
@@ -109764,7 +109811,7 @@ apC
 aqy
 anf
 anf
-aty
+dhO
 auF
 alP
 aAt
@@ -113873,7 +113920,7 @@ wKe
 hda
 hda
 hda
-hda
+xOz
 qbq
 asB
 atD
@@ -114729,7 +114776,7 @@ diq
 clr
 bnt
 cOe
-cOe
+qRO
 bMB
 cOT
 aaa
@@ -119073,7 +119120,7 @@ vHY
 bEs
 rmX
 xIa
-vxh
+jWa
 cOe
 bPP
 bPP

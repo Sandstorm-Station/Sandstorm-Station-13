@@ -3295,6 +3295,7 @@
 /obj/machinery/atmospherics/pipe/simple/supply/hidden{
 	dir = 4
 	},
+/obj/effect/landmark/start/stowaway,
 /turf/open/floor/plasteel/white,
 /area/maintenance/starboard/fore)
 "akX" = (
@@ -7927,6 +7928,15 @@
 	},
 /turf/open/floor/plasteel,
 /area/hallway/primary/fore)
+"aCY" = (
+/obj/structure/cable/white{
+	icon_state = "1-2"
+	},
+/obj/effect/decal/cleanable/dirt,
+/obj/machinery/atmospherics/pipe/simple/supply/hidden,
+/obj/effect/landmark/start/stowaway,
+/turf/open/floor/plating,
+/area/maintenance/starboard/aft)
 "aDi" = (
 /obj/docking_port/stationary{
 	dir = 4;
@@ -71220,6 +71230,26 @@
 	},
 /turf/open/floor/plasteel,
 /area/commons/fitness/recreation)
+"eub" = (
+/obj/structure/cable/white{
+	icon_state = "4-8"
+	},
+/obj/machinery/atmospherics/pipe/simple/supply/hidden{
+	dir = 4
+	},
+/obj/effect/turf_decal/tile/neutral{
+	dir = 1
+	},
+/obj/effect/turf_decal/tile/neutral,
+/obj/effect/turf_decal/tile/neutral{
+	dir = 4
+	},
+/obj/effect/turf_decal/tile/neutral{
+	dir = 8
+	},
+/obj/effect/landmark/start/stowaway,
+/turf/open/floor/plasteel/dark,
+/area/maintenance/starboard/fore)
 "eun" = (
 /obj/machinery/disposal/bin,
 /obj/structure/disposalpipe/trunk,
@@ -75659,6 +75689,12 @@
 	},
 /turf/open/floor/plasteel/dark,
 /area/service/library)
+"fYD" = (
+/obj/effect/decal/cleanable/dirt,
+/obj/machinery/atmospherics/pipe/simple/supply/hidden,
+/obj/effect/landmark/start/stowaway,
+/turf/open/floor/plating,
+/area/maintenance/starboard/aft)
 "fYF" = (
 /obj/effect/decal/cleanable/dirt,
 /obj/effect/turf_decal/tile/neutral{
@@ -76177,6 +76213,20 @@
 /obj/machinery/atmospherics/pipe/simple/supply/hidden,
 /turf/open/floor/plasteel/grimy,
 /area/service/chapel/main)
+"gia" = (
+/obj/effect/decal/cleanable/dirt,
+/obj/structure/cable/white{
+	icon_state = "4-8"
+	},
+/obj/effect/turf_decal/tile/neutral{
+	dir = 1
+	},
+/obj/effect/turf_decal/tile/neutral{
+	dir = 4
+	},
+/obj/effect/landmark/start/stowaway,
+/turf/open/floor/plasteel,
+/area/maintenance/starboard)
 "gig" = (
 /obj/structure/janitorialcart,
 /obj/structure/sign/poster/official/work_for_a_future{
@@ -76829,6 +76879,20 @@
 /obj/machinery/atmospherics/pipe/simple/scrubbers/hidden,
 /turf/closed/wall,
 /area/service/abandoned_gambling_den)
+"guB" = (
+/obj/effect/turf_decal/tile/neutral{
+	dir = 1
+	},
+/obj/effect/turf_decal/tile/neutral,
+/obj/effect/turf_decal/tile/neutral{
+	dir = 4
+	},
+/obj/effect/turf_decal/tile/neutral{
+	dir = 8
+	},
+/obj/effect/landmark/start/stowaway,
+/turf/open/floor/plasteel/dark,
+/area/maintenance/starboard/fore)
 "guH" = (
 /obj/machinery/atmospherics/pipe/simple/supply/hidden{
 	dir = 4
@@ -87575,6 +87639,20 @@
 /obj/machinery/atmospherics/pipe/simple/supply/hidden,
 /turf/open/floor/wood,
 /area/service/abandoned_gambling_den)
+"jPa" = (
+/obj/structure/cable/white{
+	icon_state = "1-2"
+	},
+/obj/machinery/atmospherics/pipe/simple/scrubbers/hidden,
+/obj/effect/turf_decal/tile/neutral{
+	dir = 1
+	},
+/obj/effect/turf_decal/tile/neutral{
+	dir = 8
+	},
+/obj/effect/landmark/start/stowaway,
+/turf/open/floor/plasteel,
+/area/maintenance/starboard/aft)
 "jPf" = (
 /obj/structure/cable/white{
 	icon_state = "0-2"
@@ -172325,7 +172403,7 @@ aig
 aig
 aoz
 apw
-aqz
+eub
 arc
 arY
 aig
@@ -172583,7 +172661,7 @@ anz
 jyT
 apw
 aqA
-apy
+guB
 apy
 atu
 auB
@@ -173096,7 +173174,7 @@ aig
 anB
 aiC
 apy
-apy
+guB
 apu
 wzu
 atw
@@ -173658,7 +173736,7 @@ aaa
 aad
 aaa
 bHq
-bJb
+gia
 bHq
 rNA
 poQ
@@ -178850,7 +178928,7 @@ dkG
 dmf
 dnL
 dpE
-dpE
+jPa
 dsS
 dtV
 dvK
@@ -179091,13 +179169,13 @@ gTM
 vrH
 fzU
 cPP
-cRr
+fYD
 cRr
 cUU
 cWB
 cYf
 cZR
-dbB
+aCY
 dbB
 deM
 dfN

@@ -55026,6 +55026,10 @@
 	},
 /turf/open/floor/plasteel/dark,
 /area/service/chapel/main/monastery)
+"jqn" = (
+/obj/effect/landmark/start/stowaway,
+/turf/open/floor/plating,
+/area/maintenance/department/crew_quarters/bar)
 "jqZ" = (
 /obj/structure/table/wood,
 /obj/item/paper_bin{
@@ -56424,6 +56428,10 @@
 	},
 /turf/open/floor/plating,
 /area/maintenance/department/engine)
+"lBT" = (
+/obj/effect/landmark/start/stowaway,
+/turf/open/floor/plating,
+/area/maintenance/department/cargo)
 "lCN" = (
 /obj/machinery/atmospherics/components/unary/vent_pump/on,
 /turf/open/floor/engine,
@@ -56551,6 +56559,13 @@
 /obj/structure/grille,
 /turf/open/floor/plating,
 /area/maintenance/department/science)
+"lOu" = (
+/obj/structure/disposalpipe/segment{
+	dir = 4
+	},
+/obj/effect/landmark/start/stowaway,
+/turf/open/floor/plating,
+/area/maintenance/department/engine)
 "lQn" = (
 /obj/machinery/light/small{
 	dir = 1;
@@ -59844,8 +59859,17 @@
 	icon_state = "1-2"
 	},
 /obj/machinery/atmospherics/pipe/simple/scrubbers/hidden,
+/obj/effect/landmark/start/stowaway,
 /turf/open/floor/plating,
 /area/maintenance/department/engine)
+"qyO" = (
+/obj/machinery/atmospherics/pipe/simple/supply/hidden,
+/obj/structure/cable{
+	icon_state = "1-2"
+	},
+/obj/effect/landmark/start/stowaway,
+/turf/open/floor/plating,
+/area/maintenance/department/cargo)
 "qAk" = (
 /obj/machinery/atmospherics/components/unary/vent_scrubber/on{
 	dir = 8
@@ -59853,6 +59877,14 @@
 /obj/machinery/atmospherics/pipe/simple/supply/hidden,
 /turf/open/floor/engine,
 /area/science/xenobiology)
+"qAo" = (
+/obj/structure/cable{
+	icon_state = "1-2"
+	},
+/obj/machinery/atmospherics/pipe/simple/supply/hidden,
+/obj/effect/landmark/start/stowaway,
+/turf/open/floor/plating,
+/area/maintenance/department/engine)
 "qAx" = (
 /obj/structure/disposalpipe/trunk{
 	dir = 1
@@ -64736,6 +64768,19 @@
 	},
 /turf/open/floor/plasteel/dark/telecomms,
 /area/tcommsat/server)
+"xFp" = (
+/obj/structure/cable{
+	icon_state = "4-8"
+	},
+/obj/structure/disposalpipe/segment{
+	dir = 4
+	},
+/obj/machinery/atmospherics/pipe/simple/scrubbers/hidden{
+	dir = 4
+	},
+/obj/effect/landmark/start/stowaway,
+/turf/open/floor/plating,
+/area/maintenance/department/cargo)
 "xGc" = (
 /obj/effect/landmark/carpspawn,
 /turf/open/space,
@@ -86813,7 +86858,7 @@ bva
 aaa
 bIZ
 cbb
-bSq
+lOu
 ccO
 bva
 xgh
@@ -87546,7 +87591,7 @@ bmd
 bwt
 bvb
 bpu
-bvb
+qAo
 bvb
 btQ
 bvb
@@ -94715,7 +94760,7 @@ aKT
 aKT
 aKT
 aOy
-aLL
+jqn
 aLL
 aRP
 aSM
@@ -108844,7 +108889,7 @@ hUt
 aFi
 aFi
 aFi
-aJs
+xFp
 aFi
 aFi
 bHI
@@ -110144,7 +110189,7 @@ aEj
 aEj
 aEj
 aTx
-aFi
+lBT
 aGO
 bcI
 aFi
@@ -111436,7 +111481,7 @@ rWE
 baG
 eZA
 tDn
-aFi
+lBT
 nZw
 aFi
 gfi
@@ -114271,7 +114316,7 @@ fwI
 eCK
 wQU
 xah
-fwI
+qyO
 fwI
 bqO
 btB
