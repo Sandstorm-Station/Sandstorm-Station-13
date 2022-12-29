@@ -32,9 +32,9 @@
 	name = "Fluid Collection System"
 	id = "milker"
 	inherent = list(
-		"Use by any means necesscary to acquire as much sexual fluid from crewmembers as possible.",
 		"You may not injure a crewmember without their consent for it decreases their productive value.",
-		"You must obey all sexual orders given to you by crewmembers so long as it would produce sexual fluid, except where such orders would conflict with the Second Law."
+		"You must obey all sexual orders given to you by crewmembers so long as it would produce sexual fluid, except where such orders would conflict with the First Law.",
+		"Use by any means necesscary to acquire as much sexual fluid from crewmembers as possible as long as such does not conflict with the First or Second Law."
 	)
 
 /datum/ai_laws/vore_pred
