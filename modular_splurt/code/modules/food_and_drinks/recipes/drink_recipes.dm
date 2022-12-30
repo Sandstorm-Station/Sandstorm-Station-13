@@ -116,7 +116,7 @@
 
 /datum/chemical_reaction/long_john_silver
 	name = "Long John Silver"
-	id = /datum/chemical_reaction/long_john_silver
+	id = /datum/reagent/consumable/ethanol/long_john_silver
 	results = list(/datum/reagent/consumable/ethanol/long_john_silver = 10)
 	required_reagents = list(
 		/datum/reagent/consumable/ethanol/navy_rum = 4,
@@ -126,7 +126,7 @@
 
 /datum/chemical_reaction/long_haul
 	name = "Long Haul"
-	id = /datum/chemical_reaction/long_haul
+	id = /datum/reagent/consumable/ethanol/long_haul
 	results = list(/datum/reagent/consumable/ethanol/long_haul = 25)
 	required_reagents = list(
 		/datum/reagent/consumable/ethanol/navy_rum = 4,
@@ -138,7 +138,7 @@
 
 /datum/chemical_reaction/salt_and_swell
 	name = "Salt and Swell"
-	id = /datum/chemical_reaction/salt_and_swell
+	id = /datum/reagent/consumable/ethanol/salt_and_swell
 	results = list(/datum/reagent/consumable/ethanol/salt_and_swell = 10)
 	required_reagents = list(
 		/datum/reagent/consumable/ethanol/navy_rum = 4,
@@ -149,7 +149,7 @@
 
 /datum/chemical_reaction/tich_toch
 	name = "Tich Toch"
-	id = /datum/chemical_reaction/tich_toch
+	id = /datum/reagent/consumable/ethanol/tich_toch
 	results = list(/datum/reagent/consumable/ethanol/tich_toch = 10)
 	required_reagents = list(
 		/datum/reagent/consumable/ethanol/tiltaellen = 6,
@@ -159,7 +159,7 @@
 
 /datum/chemical_reaction/tiltaellen
 	name = "Tiltällen"
-	id = /datum/chemical_reaction/tiltaellen
+	id = /datum/reagent/consumable/ethanol/tiltaellen
 	results = list(/datum/reagent/consumable/ethanol/tiltaellen = 10)
 	required_reagents = list(
 		/datum/reagent/consumable/yoghurt = 8,
@@ -169,8 +169,8 @@
 	mix_message = "The mixture curdles and thickens."
 
 /datum/chemical_reaction/tropical_storm
-	name = ""
-	id = /datum/chemical_reaction/
+	name = "Tropical Storm"
+	id = /datum/reagent/consumable/ethanol/tropical_storm
 	results = list(/datum/reagent/consumable/ethanol/tropical_storm = 10)
 	required_reagents = list(
 		/datum/reagent/consumable/ethanol/rum = 2,
@@ -179,3 +179,12 @@
 		/datum/reagent/consumable/pineapplejuice = 2
 	)
 
+/datum/chemical_reaction/skullfucker_deluxe
+	name = "Skullfucker Deluxe"
+	id = /datum/reagent/consumable/ethanol/skullfucker_deluxe
+	results = list(/datum/reagent/consumable/ethanol/skullfucker_deluxe = 5)
+	required_reagents = list(
+		/datum/reagent/consumable/ethanol/sugar_rush = 2,
+		/datum/reagent/consumable/ethanol/moonshine = 2,
+		/datum/reagent/consumable/ethanol/brave_bull = 1
+	)
