@@ -790,10 +790,10 @@
 
 	// SPLURT edit
 	if(iscarbon(src))
-		var/mob/living/carbon/c_src
+		var/mob/living/carbon/carbon_src
 
-		c_src = src
-		for(var/obj/item/organ/genital/G in c_src.internal_organs)
+		carbon_src = src
+		for(var/obj/item/organ/genital/G in carbon_src.internal_organs)
 			if(check_orgasm(G))
 				break
 	//
