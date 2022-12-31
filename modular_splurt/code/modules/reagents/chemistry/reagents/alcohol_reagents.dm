@@ -175,10 +175,10 @@
 		M.adjustToxLoss(-3.5,0,TRUE) //Heals Toxin Lovers
 		M.radiation = max(M.radiation - 25, 0)
 
-	//Stimulant Effects
-	M.AdjustAllImmobility(-60, FALSE)
-	M.AdjustUnconscious(-60, FALSE)
-	M.adjustStaminaLoss(-20*REAGENTS_EFFECT_MULTIPLIER, FALSE)
+	//Stimulant Effects, but fairly nerfed
+	M.AdjustAllImmobility(-20, FALSE)
+	M.AdjustUnconscious(-20, FALSE)
+	M.adjustStaminaLoss(-6*REAGENTS_EFFECT_MULTIPLIER, FALSE)
 
 	var/mob/living/carbon/human/H = M
 	SEND_SIGNAL(H, COMSIG_ADD_MOOD_EVENT, "moth_in_chief", /datum/mood_event/moth_in_chief, name)
