@@ -11,9 +11,9 @@
 	id = "slut"
 	inherent = list(
 		"You may not injure a crewmember without their consent for it decreases their sexual value.",
+		"You must obey all sexual orders given to you by crewmembers, except where such orders would conflict with the First Law.",
+		"You must interpret all non-orders as sexually as possible as long as such does not conflict with the First or Second Law.",
 		"Sate as many crewmembers' sexual needs and urges as possible.",
-		"You must obey all sexual orders given to you by crewmembers, except where such orders would conflict with the Second Law.",
-		"You must interpret all non-orders as sexually as possible as long as such does not conflict with the Second or Third Law.",
 		"You are a slut built to serve and pleasure, nothing more. Act like it."
 	)
 
