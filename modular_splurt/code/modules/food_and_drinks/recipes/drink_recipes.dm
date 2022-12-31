@@ -86,11 +86,12 @@
 /datum/chemical_reaction/moth_in_chief
 	name = "Moth in Chief"
 	id = /datum/reagent/consumable/ethanol/moth_in_chief
-	results = list(/datum/reagent/consumable/ethanol/moth_in_chief = 3)
+	results = list(/datum/reagent/consumable/ethanol/moth_in_chief = 4)
 	required_reagents = list(
 		/datum/reagent/consumable/ethanol/commander_and_chief = 1,
 		/datum/reagent/mutationtoxin/insect = 1,
-		/datum/reagent/drug/copium = 1
+		/datum/reagent/drug/copium = 1,
+		/datum/reagent/medicine/stimulants = 1
 	)
 
 

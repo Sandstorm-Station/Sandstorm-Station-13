@@ -175,18 +175,16 @@
 		M.adjustToxLoss(-3.5,0,TRUE) //Heals Toxin Lovers
 		M.radiation = max(M.radiation - 25, 0)
 
-	//Stimulant Effects, but fairly nerfed
-	M.AdjustAllImmobility(-20, FALSE)
-	M.AdjustUnconscious(-20, FALSE)
-	M.adjustStaminaLoss(-6*REAGENTS_EFFECT_MULTIPLIER, FALSE)
+	//Stimulant Effects
+	M.AdjustAllImmobility(-60, FALSE)
+	M.AdjustUnconscious(-60, FALSE)
+	M.adjustStaminaLoss(-20*REAGENTS_EFFECT_MULTIPLIER, FALSE)MULTIPLIER, FALSE)
 
-	var/mob/living/carbon/human/H = M
-	SEND_SIGNAL(H, COMSIG_ADD_MOOD_EVENT, "moth_in_chief", /datum/mood_event/moth_in_chief, name)
-
-	. = 1
-	return ..()
-
-/datum/reagent/consumable/ethanol/moth_in_chief/on_mob_metabolize(mob/living/L)
+	var/mob/	//Stimulant Effects
+	M.AdjustAllImmobility(-60, FALSE)
+	M.AdjustUnconscious(-60, FALSE)
+	M.adjustStaminaLoss(-20*REAGENTS_EFFECT_MULTIPLIER, FALSE)
+hanol/moth_in_chief/on_mob_metabolize(mob/living/L)
 	..()
 	L.add_movespeed_modifier(/datum/movespeed_modifier/reagent/stimulants)
 	ADD_TRAIT(L, TRAIT_TASED_RESISTANCE, type)
