@@ -1,7 +1,7 @@
-// Replace carp with corgis
-/obj/effect/holodeck_effect/mobspawner
-	mobtype = /mob/living/simple_animal/pet/dog/corgi
+// Holodeck mob: Funclaw
+/obj/effect/holodeck_effect/mobspawner/funclaw
+	mobtype = /mob/living/simple_animal/hostile/deathclaw/funclaw/gentle
 
-// Replace bees with foxes
-/obj/effect/holodeck_effect/mobspawner/bee
-	mobtype = /mob/living/simple_animal/pet/fox
+// Holodeck mob: Friendly Bee
+/obj/effect/holodeck_effect/mobspawner/bumbles
+	mobtype = /mob/living/simple_animal/pet/bumbles
