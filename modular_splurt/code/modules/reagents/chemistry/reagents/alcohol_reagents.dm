@@ -156,9 +156,7 @@
 	can_synth = FALSE;
 
 //This drink gives the combined benefits of Stimulants, Regenerative Jelly, and Commander and Chief, and a mood buff similar to Copium; at least to an extent.
-/datum/reagent/consumable/ethanol/moth_in_chief/on_mob_life(mob/living/carbon/M)
-
-	//If Captain, gives improved CaC values, other wise gives normal CaC values
+/datum/reagent/consumable/ethanol/commander_and_chief/on_mob_life(mob/living/carbon/M)
 	if(M.mind && HAS_TRAIT(M.mind, TRAIT_CAPTAIN_METABOLISM))
 		M.heal_bodypart_damage(2,2,2)
 		M.adjustBruteLoss(-5,0)
@@ -166,6 +164,7 @@
 		M.adjustFireLoss(-5,0)
 		M.adjustToxLoss(-5,0,TRUE) //Heals Toxin Lovers
 		M.radiation = max(M.radiation - 25, 0)
+		. = 1
 	else
 		//Commander and Chief Effects, no need to be captain to receive the effect
 		M.heal_bodypart_damage(2,2,2)
@@ -178,18 +177,16 @@
 	//Stimulant Effects
 	M.AdjustAllImmobility(-60, FALSE)
 	M.AdjustUnconscious(-60, FALSE)
-	M.adjustStaminaLoss(-20*REAGENTS_EFFECT_MULTIPLIER, FALSE)MULTIPLIER, FALSE)
-
-	var/mob/	//Stimulant Effects
-	M.AdjustAllImmobility(-60, FALSE)
-	M.AdjustUnconscious(-60, FALSE)
 	M.adjustStaminaLoss(-20*REAGENTS_EFFECT_MULTIPLIER, FALSE)
-hanol/moth_in_chief/on_mob_metabolize(mob/living/L)
+	..()
+	. = 1
+
+/datum/reagent/medicine/stimulants/on_mob_metabolize(mob/living/L)
 	..()
 	L.add_movespeed_modifier(/datum/movespeed_modifier/reagent/stimulants)
 	ADD_TRAIT(L, TRAIT_TASED_RESISTANCE, type)
 
-/datum/reagent/consumable/ethanol/moth_in_chief/on_mob_end_metabolize(mob/living/L)
+/datum/reagent/medicine/stimulants/on_mob_end_metabolize(mob/living/L)
 	L.remove_movespeed_modifier(/datum/movespeed_modifier/reagent/stimulants)
 	REMOVE_TRAIT(L, TRAIT_TASED_RESISTANCE, type)
 	..()
