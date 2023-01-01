@@ -92,7 +92,7 @@
 		if(spill && R.total_volume >= 5)
 			R.reaction(turfing ? target : target.loc, TOUCH, 1, 0)
 		if(!turfing)
-			R.trans_to(target, check_fluid_mod(R.total_volume * (spill ? G.fluid_transfer_factor : 1), G), log = TRUE) //SPLURT edit
+			R.trans_to(target, R.total_volume * (spill ? G.fluid_transfer_factor : 1) * get_fluid_mod(G), log = TRUE) //SPLURT edit
 	G.last_orgasmed = world.time
 	R.clear_reagents()
 	//skyrat edit - chock i am going to beat you to death

@@ -8,6 +8,7 @@ GLOBAL_LIST_INIT(anus_traits, list("[TRAIT_HYPERSENS_ANUS]" = 3, "[TRAIT_OVERSTI
 
 /**
   * Returns a lust value depending if the genital has a lust modifier.
+  *
   * Arguments:
   * * amount: Amount of lust given.
   * * genital: Genital to check for any lust modifiers.
@@ -51,19 +52,21 @@ GLOBAL_LIST_INIT(anus_traits, list("[TRAIT_HYPERSENS_ANUS]" = 3, "[TRAIT_OVERSTI
 	return amount
 
 /**
-  * Returns the amount of fluids to be release depending if the genital has a fluid modifier.
+  * Returns the fluid modifier if the genital has one.
+  *
   * Arguments:
   * * amount: Amount of fluid to be released.
   * * genital: Genital to check for any fluid modifiers.
 */
-/mob/living/proc/check_fluid_mod(amount, obj/item/organ/genital/G)
+/mob/living/proc/get_fluid_mod(obj/item/organ/genital/G)
 	if(CHECK_BITFIELD(G?.genital_flags, GENITAL_DISAPPOINTING))
-		return amount * 0.5
-	return amount
+		return 0.5
+	return 1
 
 /**
   * Acts properly if the given genital has orgasm modifiers
-  * Argument:
+  *
+  * Arguments:
   * * genital: Genital to check for any orgasm modifiers.
 */
 /mob/living/proc/check_orgasm(obj/item/organ/genital/G)
