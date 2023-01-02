@@ -542,6 +542,7 @@
 	var/cooldown = 0
 	var/paused = 0
 	var/turf/position
+	var/obj/structure/statue/gargoyle/current = null
 
 /datum/quirk/gargoyle/add()
 	.=..()
@@ -576,10 +577,16 @@
 
 	if(transformed)
 		energy = min(energy + 0.03, 100)
-		H.heal_overall_damage(0.5,0.5)
-		H.adjustCloneLoss(-0.5)
-		H.adjustBruteLoss(-0.5)
-		H.adjustFireLoss(-0.5)
+		if (H.getBruteLoss() > 0 || H.getFireLoss() > 0)
+			H.adjustBruteLoss(-0.5)
+			H.adjustFireLoss(-0.5)
+		else if (H.getOxyLoss() > 0 || H.getToxLoss() > 0)
+			H.adjustToxLoss(-0.3)
+			H.adjustOxyLoss(-0.5) //oxyloss heals by itself, doesn't need a nerfed heal
+		else if (H.getCloneLoss() > 0)
+			H.adjustCloneLoss(-0.3)
+		else if (current && current.obj_integrity < current.max_integrity) //health == maxHealth is true since we checked all damages above
+			current.obj_integrity = min(current.obj_integrity + 0.1, current.max_integrity)
 
 	if(!transformed && energy <= 0)
 		var/datum/action/gargoyle/transform/T = locate() in H.actions
@@ -819,7 +826,6 @@
 	desc = "Transform into a statue, regaining energy in the process. Additionally, you will slowly heal while in statue form."
 	icon_icon = 'icons/mob/actions/actions_changeling.dmi'
 	button_icon_state = "ling_camouflage"
-	var/obj/structure/statue/gargoyle/current = null
 
 
 /datum/action/gargoyle/transform/Trigger()
@@ -838,13 +844,13 @@
 			S.copy_overlays(H)
 			var/newcolor = list(rgb(77,77,77), rgb(150,150,150), rgb(28,28,28), rgb(0,0,0))
 			S.add_atom_colour(newcolor, FIXED_COLOUR_PRIORITY)
-			current = S
+			T.current = S
 			T.transformed = 1
 			T.cooldown = 30
 			T.paused = 0
 			return 1
 		else
-			qdel(current)
+			qdel(T.current)
 			T.transformed = 0
 			T.cooldown = 30
 			T.paused = 0
