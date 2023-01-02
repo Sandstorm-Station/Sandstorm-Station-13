@@ -22,6 +22,7 @@
 	flags_1 = PREVENT_CONTENTS_EXPLOSION_1
 	max_integrity = 200
 	var/mob/living/petrified_mob
+	var/old_max_health
 
 /obj/structure/statue/gargoyle/Initialize(mapload, mob/living/L)
 	. = ..()
@@ -35,10 +36,19 @@
 		ADD_TRAIT(L, TRAIT_MOBILITY_NOMOVE, STATUE_TRAIT)
 		ADD_TRAIT(L, TRAIT_MOBILITY_NOPICKUP, STATUE_TRAIT)
 		ADD_TRAIT(L, TRAIT_MOBILITY_NOUSE, STATUE_TRAIT)
+		L.click_intercept = src
 		L.faction += "mimic" //Stops mimics from instaqdeling people in statues
 		L.status_flags |= GODMODE
+		old_max_health = L.maxHealth
 		obj_integrity = L.health + 100 //stoning damaged mobs will result in easier to shatter statues
 		max_integrity = obj_integrity
+
+/obj/structure/statue/gargoyle/proc/InterceptClickOn(mob/living/caller, params, atom/A) //technically could be bypassed by doing something that also uses click intercept but shrug
+	var/atom/movable/screen/movable/action_button/ab = A
+	if (istype(ab))
+		if (istype(ab.linked_action, /datum/action/gargoyle))
+			return FALSE
+	return TRUE
 
 /obj/structure/statue/gargoyle/handle_atom_del(atom/A)
 	if(A == petrified_mob)
@@ -52,7 +62,9 @@
 		REMOVE_TRAIT(petrified_mob, TRAIT_MOBILITY_NOMOVE, STATUE_TRAIT)
 		REMOVE_TRAIT(petrified_mob, TRAIT_MOBILITY_NOPICKUP, STATUE_TRAIT)
 		REMOVE_TRAIT(petrified_mob, TRAIT_MOBILITY_NOUSE, STATUE_TRAIT)
-		petrified_mob.take_overall_damage((petrified_mob.health - obj_integrity + 100)) //any new damage the statue incurred is transfered to the mob
+		petrified_mob.click_intercept = null
+		var/ratio = old_max_health/petrified_mob.maxHealth
+		petrified_mob.take_overall_damage((petrified_mob.health*ratio - obj_integrity + 100)) //any new damage the statue incurred is transfered to the mob
 		petrified_mob.faction -= "mimic"
 		petrified_mob = null
 	return ..()

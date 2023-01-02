@@ -837,6 +837,7 @@
 			S.transform = H.transform
 			S.pixel_x = H.pixel_x
 			S.pixel_y = H.pixel_y
+			S.layer = H.layer
 			H.bleedsuppress = 1
 			S.copy_overlays(H)
 			var/newcolor = list(rgb(77,77,77), rgb(150,150,150), rgb(28,28,28), rgb(0,0,0))
@@ -880,7 +881,7 @@ datum/action/gargoyle/pause/Trigger()
 	.=..()
 	var/mob/living/carbon/human/H = owner
 	var/datum/quirk/gargoyle/T = locate() in H.roundstart_quirks
-	if (!T)
+	if (!T || T.transformed)
 		return
 	if(!T.paused)
 		T.paused = 1
