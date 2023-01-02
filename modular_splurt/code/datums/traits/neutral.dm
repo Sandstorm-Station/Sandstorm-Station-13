@@ -575,7 +575,7 @@
 		energy -= 0.05
 
 	if(transformed)
-		energy = min(energy, 100)
+		energy = min(energy + 0.03, 100)
 		H.heal_overall_damage(0.5,0.5)
 		H.adjustCloneLoss(-0.5)
 		H.adjustBruteLoss(-0.5)
