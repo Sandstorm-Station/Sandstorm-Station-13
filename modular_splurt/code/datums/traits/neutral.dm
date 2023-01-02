@@ -834,10 +834,6 @@
 				return 0
 			var/obj/structure/statue/gargoyle/S = new(H.loc, H)
 			S.name = "statue of [H.name]"
-			S.transform = H.transform
-			S.pixel_x = H.pixel_x
-			S.pixel_y = H.pixel_y
-			S.layer = H.layer
 			H.bleedsuppress = 1
 			S.copy_overlays(H)
 			var/newcolor = list(rgb(77,77,77), rgb(150,150,150), rgb(28,28,28), rgb(0,0,0))
@@ -846,7 +842,6 @@
 			T.transformed = 1
 			T.cooldown = 30
 			T.paused = 0
-			S.dir = H.dir
 			return 1
 		else
 			qdel(current)
@@ -869,7 +864,7 @@
 	var/mob/living/carbon/human/H = owner
 	var/datum/quirk/gargoyle/T = locate() in H.roundstart_quirks
 	if (T)
-		to_chat(H, "<span class='warning'>You have [T.energy]/100 energy remaining!</span>")
+		to_chat(H, "<span class='warning'>You have [round(T.energy,0.01)]/100 energy remaining!</span>")
 
 /datum/action/gargoyle/pause
 	name = "Preserve"
