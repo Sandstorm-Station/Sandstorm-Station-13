@@ -16,7 +16,7 @@
 /obj/structure/statue/gargoyle
 	name = "statue"
 	desc = "An incredibly intricate statue, which... almost seems alive!"
-	icon_state = "human_male"
+	icon_state = "gargoyle" //empty sprite because it's supposed to copy over the overlays anyway, and otherwise, you end up with a white human male underlay beneath the statue.
 	density = TRUE
 	anchored = TRUE
 	flags_1 = PREVENT_CONTENTS_EXPLOSION_1
@@ -29,7 +29,7 @@
 		petrified_mob = L
 		if(L.buckled)
 			L.buckled.unbuckle_mob(L,force=1)
-		L.visible_message("<span class='warning'>[L]'s skin rapidly turns to stone!</span>", "<span class='userdanger'>Your skin abruptly hardens as you turn to stone once more!</span>")
+		L.visible_message("<span class='warning'>[L]'s skin rapidly turns to stone!</span>", "<span class='warning'>Your skin abruptly hardens as you turn to stone once more!</span>")
 		L.forceMove(src)
 		ADD_TRAIT(L, TRAIT_MUTE, STATUE_TRAIT)
 		ADD_TRAIT(L, TRAIT_MOBILITY_NOMOVE, STATUE_TRAIT)

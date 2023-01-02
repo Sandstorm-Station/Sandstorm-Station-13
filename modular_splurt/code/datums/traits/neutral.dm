@@ -546,6 +546,8 @@
 /datum/quirk/gargoyle/add()
 	.=..()
 	var/mob/living/carbon/human/H = quirk_holder
+	if (!H)
+		return
 	var/datum/action/gargoyle/transform/T = new
 	var/datum/action/gargoyle/check/C = new
 	var/datum/action/gargoyle/pause/P = new
@@ -558,7 +560,9 @@
 /datum/quirk/gargoyle/on_process()
 	.=..()
 	var/mob/living/carbon/human/H = quirk_holder
-	var/datum/action/gargoyle/transform/T = locate() in H.actions
+
+	if (!H)
+		return
 
 	if(paused && H.loc != position)
 		paused = 0
@@ -567,29 +571,34 @@
 	if(cooldown > 0)
 		cooldown--
 
-	if(!transformed && energy > 0 && !paused)
+	if(!transformed && !paused && energy > 0)
 		energy -= 0.05
 
 	if(transformed)
-		if(energy < 99.7)
-			energy += 0.3
+		energy = min(energy, 100)
 		H.heal_overall_damage(0.5,0.5)
 		H.adjustCloneLoss(-0.5)
 		H.adjustBruteLoss(-0.5)
 		H.adjustFireLoss(-0.5)
 
-	if(energy <= 0 && !transformed)
+	if(!transformed && energy <= 0)
+		var/datum/action/gargoyle/transform/T = locate() in H.actions
+		if (!T)
+			T = new
+			T.Grant(H)
 		cooldown = 0
-		T.Trigger()
+		T?.Trigger()
 
 /datum/quirk/gargoyle/remove()
 	var/mob/living/carbon/human/H = quirk_holder
+	if (!H)
+		return ..()
 	var/datum/action/gargoyle/transform/T = locate() in H.actions
 	var/datum/action/gargoyle/check/C = locate() in H.actions
 	var/datum/action/gargoyle/pause/P = locate() in H.actions
-	T.Remove(H)
-	C.Remove(H)
-	P.Remove(H)
+	T?.Remove(H)
+	C?.Remove(H)
+	P?.Remove(H)
 	. = ..()
 
 /datum/quirk/nudist
@@ -817,12 +826,17 @@
 	.=..()
 	var/mob/living/carbon/human/H = owner
 	var/datum/quirk/gargoyle/T = locate() in H.roundstart_quirks
+	if (!T)
+		return 0
 	if(!T.cooldown)
 		if(!T.transformed)
 			if(!isturf(H.loc))
 				return 0
 			var/obj/structure/statue/gargoyle/S = new(H.loc, H)
 			S.name = "statue of [H.name]"
+			S.transform = H.transform
+			S.pixel_x = H.pixel_x
+			S.pixel_y = H.pixel_y
 			H.bleedsuppress = 1
 			S.copy_overlays(H)
 			var/newcolor = list(rgb(77,77,77), rgb(150,150,150), rgb(28,28,28), rgb(0,0,0))
@@ -838,9 +852,9 @@
 			T.transformed = 0
 			T.cooldown = 30
 			T.paused = 0
-			H.visible_message("<span class='warning'>[H]'s skin rapidly softens, returning them to normal!</span>", "<span class='userdanger'>Your skin softens, freeing your movement once more!</span>")
+			H.visible_message("<span class='warning'>[H]'s skin rapidly softens, returning them to normal!</span>", "<span class='warning'>Your skin softens, freeing your movement once more!</span>")
 	else
-		to_chat(H, "<span class='warning'>You have transformed too recently; you cannot yet transform again!</span>")
+		to_chat(H, "<span class='warning'>You have transformed too recently; you cannot yet transform again! Try again in [T.cooldown] seconds.</span>")
 		return 0
 
 /datum/action/gargoyle/check
@@ -853,7 +867,8 @@
 	.=..()
 	var/mob/living/carbon/human/H = owner
 	var/datum/quirk/gargoyle/T = locate() in H.roundstart_quirks
-	to_chat(H, "<span class='warning'>You have [T.energy]/100 energy remaining!</span>")
+	if (T)
+		to_chat(H, "<span class='warning'>You have [T.energy]/100 energy remaining!</span>")
 
 /datum/action/gargoyle/pause
 	name = "Preserve"
@@ -865,7 +880,8 @@ datum/action/gargoyle/pause/Trigger()
 	.=..()
 	var/mob/living/carbon/human/H = owner
 	var/datum/quirk/gargoyle/T = locate() in H.roundstart_quirks
-
+	if (!T)
+		return
 	if(!T.paused)
 		T.paused = 1
 		T.position = H.loc
