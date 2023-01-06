@@ -13,6 +13,7 @@
 	var/turf/input_turf = null
 	/// Determines if this machine needs to pick up items. Used to avoid registering signals to `/mineral` machines that don't pickup items.
 	var/needs_item_input = FALSE
+	init_process = TRUE
 
 /obj/machinery/mineral/Initialize(mapload)
 	. = ..()
