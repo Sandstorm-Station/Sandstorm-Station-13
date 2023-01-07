@@ -578,13 +578,13 @@
 	if(transformed)
 		energy = min(energy + 0.03, 100)
 		if (H.getBruteLoss() > 0 || H.getFireLoss() > 0)
-			H.adjustBruteLoss(-0.5)
-			H.adjustFireLoss(-0.5)
+			H.adjustBruteLoss(-0.5, forced = TRUE)
+			H.adjustFireLoss(-0.5, forced = TRUE)
 		else if (H.getOxyLoss() > 0 || H.getToxLoss() > 0)
-			H.adjustToxLoss(-0.3)
-			H.adjustOxyLoss(-0.5) //oxyloss heals by itself, doesn't need a nerfed heal
+			H.adjustToxLoss(-0.3, forced = TRUE)
+			H.adjustOxyLoss(-0.5, forced = TRUE) //oxyloss heals by itself, doesn't need a nerfed heal
 		else if (H.getCloneLoss() > 0)
-			H.adjustCloneLoss(-0.3)
+			H.adjustCloneLoss(-0.3, forced = TRUE)
 		else if (current && current.obj_integrity < current.max_integrity) //health == maxHealth is true since we checked all damages above
 			current.obj_integrity = min(current.obj_integrity + 0.1, current.max_integrity)
 
@@ -850,7 +850,8 @@
 			T.paused = 0
 			return 1
 		else
-			qdel(T.current)
+			if (T.current)
+				qdel(T.current)
 			T.transformed = 0
 			T.cooldown = 30
 			T.paused = 0

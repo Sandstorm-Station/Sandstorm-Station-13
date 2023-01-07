@@ -47,6 +47,10 @@
 		ADD_TRAIT(L, TRAIT_MOBILITY_NOMOVE, STATUE_TRAIT)
 		ADD_TRAIT(L, TRAIT_MOBILITY_NOPICKUP, STATUE_TRAIT)
 		ADD_TRAIT(L, TRAIT_MOBILITY_NOUSE, STATUE_TRAIT)
+		ADD_TRAIT(L, TRAIT_NOBREATH, STATUE_TRAIT)
+		ADD_TRAIT(L, TRAIT_NOHUNGER, STATUE_TRAIT)
+		ADD_TRAIT(L, TRAIT_NOTHIRST, STATUE_TRAIT)
+		ADD_TRAIT(L, TRAIT_NOFIRE, STATUE_TRAIT) //OH GOD HELP I'M ON FIRE INSIDE THE STATUE I CAN'T MOVE AND I CAN'T STOP IT HAAAAALP - person who experienced this
 		L.click_intercept = src
 		L.faction += "mimic" //Stops mimics from instaqdeling people in statues
 		L.status_flags |= GODMODE
@@ -80,6 +84,10 @@
 		REMOVE_TRAIT(petrified_mob, TRAIT_MOBILITY_NOMOVE, STATUE_TRAIT)
 		REMOVE_TRAIT(petrified_mob, TRAIT_MOBILITY_NOPICKUP, STATUE_TRAIT)
 		REMOVE_TRAIT(petrified_mob, TRAIT_MOBILITY_NOUSE, STATUE_TRAIT)
+		REMOVE_TRAIT(petrified_mob, TRAIT_NOBREATH, STATUE_TRAIT)
+		REMOVE_TRAIT(petrified_mob, TRAIT_NOHUNGER, STATUE_TRAIT)
+		REMOVE_TRAIT(petrified_mob, TRAIT_NOTHIRST, STATUE_TRAIT)
+		REMOVE_TRAIT(petrified_mob, TRAIT_NOFIRE, STATUE_TRAIT)
 		petrified_mob.faction -= "mimic"
 		petrified_mob.click_intercept = null
 		petrified_mob.dir = dir
@@ -90,8 +98,10 @@
 		petrified_mob.pixel_x = pixel_x
 		petrified_mob.pixel_y = pixel_y
 		petrified_mob.layer = layer
-		petrified_mob.is_shifted = was_shifted
+		petrified_mob.is_shifted = TRUE //just prevents bad things tbh
 		petrified_mob.is_tilted = was_tilted
+		if (pulledby && pulledby.pulling == src) //gotta checked just in case
+			pulledby.start_pulling(petrified_mob, supress_message = TRUE)
 		var/datum/quirk/gargoyle/T = locate() in petrified_mob.roundstart_quirks
 		if (T)
 			T.transformed = 0
