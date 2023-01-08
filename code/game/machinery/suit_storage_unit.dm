@@ -87,6 +87,20 @@
 	storage_type = /obj/item/watertank/atmos
 	mod_type = /obj/item/mod/control/pre_equipped/atmospheric
 
+/obj/machinery/suit_storage_unit/enginemod
+	mask_type = /obj/item/clothing/mask/breath
+	mod_type = /obj/item/mod/control/pre_equipped/engineering
+
+/obj/machinery/suit_storage_unit/atmos
+	suit_type = /obj/item/clothing/suit/space/hardsuit/engine/atmos
+	mask_type = /obj/item/clothing/mask/breath
+	storage_type = /obj/item/watertank/atmos
+
+/obj/machinery/suit_storage_unit/atmosmod
+	mask_type = /obj/item/clothing/mask/breath
+	storage_type = /obj/item/watertank/atmos
+	mod_type = /obj/item/mod/control/pre_equipped/atmospheric
+
 /obj/machinery/suit_storage_unit/ce
 	suit_type = /obj/item/clothing/suit/space/hardsuit/engine/elite
 	mask_type = /obj/item/clothing/mask/breath
@@ -95,6 +109,11 @@
 /obj/machinery/suit_storage_unit/cemod
 	mask_type = /obj/item/clothing/mask/breath
 	shoes_type = /obj/item/clothing/shoes/magboots/advance
+	mod_type = /obj/item/mod/control/pre_equipped/advanced
+
+/obj/machinery/suit_storage_unit/cemod
+	mask_type = /obj/item/clothing/mask/breath
+	storage_type = /obj/item/clothing/shoes/magboots/advance
 	mod_type = /obj/item/mod/control/pre_equipped/advanced
 
 /obj/machinery/suit_storage_unit/security
