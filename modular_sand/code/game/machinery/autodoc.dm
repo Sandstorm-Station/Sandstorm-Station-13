@@ -12,13 +12,21 @@
 	var/organ_type = /obj/item/organ
 	var/processing = FALSE
 	var/surgerytime = 300
+	var/surgerytime_base = 350 // Actual time is determined by stock parts ratings
 
 /obj/machinery/autodoc/Initialize(mapload)
 	. = ..()
 	update_icon()
 
+	// Read configurations
+	surgerytime_base = CONFIG_GET(number/autodoc_time_surgery_base)
+	
+	// Set surgery time to match base value
+	// This is to prevent confusion when changing the config
+	surgerytime = surgerytime_base
+
 /obj/machinery/autodoc/RefreshParts()
-	var/max_time = 350
+	var/max_time = surgerytime_base
 	for(var/obj/item/stock_parts/L in component_parts)
 		max_time -= (L.rating*10)
 	surgerytime = max(max_time,10)

@@ -12,16 +12,38 @@
 	var/mining = FALSE
 	var/miningtime = 3000
 	var/miningpoints = 50
-	var/mintemp = TCRYO // 225K equals approximately -55F or -48C
-	var/midtemp = T0C // 273K equals 32F or 0C
-	var/maxtemp = 500 // 500K equals approximately 440F or 226C
-	var/heatingPower = 100 // Heat added each processing
-	var/require_conductivity = TRUE // Prevent use in space
+	var/temp_min = TCRYO			// 225K equals approximately -55F or -48C
+	var/temp_mid = T0C				// 273K equals 32F or 0C
+	var/temp_max = 500				// 500K equals approximately 440F or 226C
+	var/mult_min = 0.2				// Multiplier used during temp_min
+	var/mult_mid = 1				// Multiplier used during temp_mid
+	var/mult_max = 3				// Multiplier used during temp_max
+	var/heating_power = 100 		// Heat added each processing
+	var/ignore_atmos = FALSE 		// Allow use in space
 	var/datum/bank_account/pay_me = null
 
 /obj/machinery/cryptominer/Initialize(mapload)
 	. = ..()
 	pay_me = SSeconomy.get_dep_account(ACCOUNT_CAR)
+	
+	// Read configurations
+	use_power = CONFIG_GET(number/crypto_power_use_process)
+	idle_power_usage = CONFIG_GET(number/crypto_power_use_idle)
+	active_power_usage = CONFIG_GET(number/crypto_power_use_active)
+	
+	miningtime = CONFIG_GET(number/crypto_mining_time)
+	miningpoints = CONFIG_GET(number/crypto_payout_amount)
+
+	temp_min = CONFIG_GET(number/crypto_heat_threshold_min)
+	temp_mid = CONFIG_GET(number/crypto_heat_threshold_mid)
+	temp_max = CONFIG_GET(number/crypto_heat_threshold_max)
+
+	mult_min = CONFIG_GET(number/crypto_multiplier_min)
+	mult_mid = CONFIG_GET(number/crypto_multiplier_mid)
+	mult_max = CONFIG_GET(number/crypto_multiplier_max)
+
+	heating_power = CONFIG_GET(number/crypto_heat_power)
+	ignore_atmos = CONFIG_GET(flag/crypto_ignore_atmos)
 
 /obj/machinery/cryptominer/update_icon()
 	. = ..()
@@ -85,16 +107,17 @@
 
 	// Check for tiles with no conductivity (space)
 	if(T.thermal_conductivity == 0)
+		// Cheat mode: Skip all atmos code and give points
+		// Placed first, as servers are more likely to use it
+		if(ignore_atmos)
+			produce_points(3)
+			return
+
 		// Normal mode: Warn the user and stop processing
-		if(require_conductivity)
+		else
 			say("Invalid atmospheric conditions detected! Shutting off!")
 			playsound(loc, 'sound/machines/beep.ogg', 50, TRUE, -1)
 			set_mining(FALSE)
-			return
-
-		// Cheat mode: Skip all atmos code and give points
-		else
-			produce_points(3)
 			return
 
 	// Get air
@@ -107,22 +130,22 @@
 	
 	// Check for temperature effects
 	// Minimum (most likely)
-	if(env_temp <= mintemp)
-		produce_points(3)
+	if(env_temp <= temp_min)
+		produce_points(mult_max)
 	// Mid
-	else if((env_temp <= midtemp) && (env_temp >= mintemp))
-		produce_points(1)	
+	else if((env_temp <= temp_mid) && (env_temp >= temp_min))
+		produce_points(mult_mid)	
 	// Maximum
-	else if((env_temp <= maxtemp) && (env_temp >= midtemp))
-		produce_points(0.20)
+	else if((env_temp <= temp_max) && (env_temp >= temp_mid))
+		produce_points(mult_min)
 	// Overheat
-	else if(env_temp >= maxtemp)
+	else if(env_temp >= temp_max)
 		say("Critical overheating detected! Shutting off!")
 		playsound(loc, 'sound/machines/beep.ogg', 50, TRUE, -1)
 		set_mining(FALSE)
 	
-	// Increase heat by heatingPower
-	env.set_temperature(env_temp + heatingPower)
+	// Increase heat by heating_power
+	env.set_temperature(env_temp + heating_power)
 
 	// Update air
 	air_update_turf()
