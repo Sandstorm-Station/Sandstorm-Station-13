@@ -14,8 +14,10 @@
 	var/mintemp = TCRYO // 225K equals approximately -55F or -48C
 	var/midtemp = T0C // 273K equals 32F or 0C
 	var/maxtemp = 500 // 500K equals approximately 440F or 226C
-	var/heatingPower = 40000
+	var/heatingPower = 100 // Heat added each processing
+	var/require_conductivity = TRUE // Prevent use in space
 	var/datum/bank_account/pay_me = null
+	init_process = FALSE // Don't process upon creation
 
 /obj/machinery/cryptominer/Initialize(mapload)
 	. = ..()
@@ -76,42 +78,60 @@
 	. += "Alt-Click to reset to the Cargo budget.</span>"
 
 /obj/machinery/cryptominer/process()
+	// Get turf
 	var/turf/T = get_turf(src)
 	if(!T)
 		return
+
+	// Check for tiles with no conductivity (space)
+	if(T.thermal_conductivity == 0)
+		// Normal mode: Warn the user and stop processing
+		if(require_conductivity)
+			say("Invalid atmospheric conditions detected! Shutting off!")
+			playsound(loc, 'sound/machines/beep.ogg', 50, TRUE, -1)
+			set_mining(FALSE)
+			return
+
+		// Cheat mode: Skip all atmos code and give points
+		else
+			produce_points(3)
+			return
+
+	// Get air
 	var/datum/gas_mixture/env = T.return_air()
 	if(!env)
 		return
-	if(!mining)
-		return
-	if(env.return_temperature() >= maxtemp)
-		if(mining)
-			playsound(loc, 'sound/machines/beep.ogg', 50, TRUE, -1)
+	
+	// Get temp
+	var/env_temp = env.return_temperature()
+	
+	// Check for temperature effects
+	// Minimum (most likely)
+	if(env_temp <= mintemp)
+		produce_points(3)
+	// Mid
+	else if((env_temp <= midtemp) && (env_temp >= mintemp))
+		produce_points(1)	
+	// Maximum
+	else if((env_temp <= maxtemp) && (env_temp >= midtemp))
+		produce_points(0.20)
+	// Overheat
+	else if(env_temp >= maxtemp)
+		say("Critical overheating detected! Shutting off!")
+		playsound(loc, 'sound/machines/beep.ogg', 50, TRUE, -1)
 		set_mining(FALSE)
-		return
-	if(env.return_temperature() <= maxtemp && env.return_temperature() >= midtemp)
-		if(mining)
-			produce_points(0.20)
-			produce_heat()
-		return
-	if(env.return_temperature() <= midtemp && env.return_temperature() >= mintemp)
-		if(mining)
-			produce_points(1)
-			produce_heat()
-		return
-	if(env.return_temperature() <= mintemp)
-		if(mining)
-			produce_points(3)
-			produce_heat()
-		return
+	
+	// Increase heat by heatingPower
+	env.set_temperature(env_temp + heatingPower)
+
+	// Update air
+	air_update_turf()
 
 /obj/machinery/cryptominer/proc/produce_points(number)
 	playsound(loc, 'sound/machines/ping.ogg', 50, TRUE, -1)
 	if(pay_me)
 		pay_me.adjust_money(FLOOR(miningpoints * number,1))
-
-/obj/machinery/cryptominer/proc/produce_heat()
-	atmos_spawn_air("co2=10;TEMP=2000")
+	// say("Produced [number] points.") // Point debugging
 
 /obj/machinery/cryptominer/attack_hand(mob/living/user)
 	. = ..()
