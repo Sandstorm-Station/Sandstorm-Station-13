@@ -8,6 +8,7 @@
 	idle_power_usage = 20
 	active_power_usage = 200
 	circuit = /obj/item/circuitboard/machine/cryptominer
+	init_process = FALSE // Don't process upon creation
 	var/mining = FALSE
 	var/miningtime = 3000
 	var/miningpoints = 50
@@ -17,7 +18,6 @@
 	var/heatingPower = 100 // Heat added each processing
 	var/require_conductivity = TRUE // Prevent use in space
 	var/datum/bank_account/pay_me = null
-	init_process = FALSE // Don't process upon creation
 
 /obj/machinery/cryptominer/Initialize(mapload)
 	. = ..()
@@ -131,7 +131,6 @@
 	playsound(loc, 'sound/machines/ping.ogg', 50, TRUE, -1)
 	if(pay_me)
 		pay_me.adjust_money(FLOOR(miningpoints * number,1))
-	// say("Produced [number] points.") // Point debugging
 
 /obj/machinery/cryptominer/attack_hand(mob/living/user)
 	. = ..()
