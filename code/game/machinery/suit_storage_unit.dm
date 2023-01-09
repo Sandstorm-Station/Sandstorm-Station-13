@@ -11,7 +11,6 @@
 	var/obj/item/clothing/head/helmet/space/helmet = null
 	var/obj/item/clothing/mask/mask = null
 	var/obj/item/clothing/shoes/shoes = null
-	var/obj/item/mod/control/mod = null
 	var/obj/item/storage = null
 								// if you add more storage slots, update cook() to clear their radiation too.
 
@@ -23,8 +22,6 @@
 	var/mask_type = null
 	/// What type of shoes the unit starts with when spawned.
 	var/shoes_type = null
-	/// What type of MOD the unit starts with when spawned.
-	var/mod_type = null
 	/// What type of additional item the unit starts with when spawned.
 	var/storage_type = null
 
@@ -50,8 +47,6 @@
 	var/message_cooldown
 	/// How long it takes to break out of the SSU.
 	var/breakout_time = 300
-	/// How fast it charges cells in a suit
-	var/charge_rate = 250
 
 /obj/machinery/suit_storage_unit/standard_unit
 	suit_type = /obj/item/clothing/suit/space/eva
@@ -63,29 +58,10 @@
 	mask_type = /obj/item/clothing/mask/gas/sechailer
 	storage_type = /obj/item/tank/jetpack/oxygen/captain
 
-/obj/machinery/suit_storage_unit/captainmod
-	mask_type = /obj/item/clothing/mask/gas/sechailer
-	storage_type = /obj/item/tank/jetpack/oxygen/captain
-	mod_type = /obj/item/mod/control/pre_equipped/magnate
-
 /obj/machinery/suit_storage_unit/engine
 	suit_type = /obj/item/clothing/suit/space/hardsuit/engine
 	mask_type = /obj/item/clothing/mask/breath
 	shoes_type = /obj/item/clothing/shoes/magboots
-
-/obj/machinery/suit_storage_unit/enginemod
-	mask_type = /obj/item/clothing/mask/breath
-	mod_type = /obj/item/mod/control/pre_equipped/engineering
-
-/obj/machinery/suit_storage_unit/atmos
-	suit_type = /obj/item/clothing/suit/space/hardsuit/engine/atmos
-	mask_type = /obj/item/clothing/mask/breath
-	storage_type = /obj/item/watertank/atmos
-
-/obj/machinery/suit_storage_unit/atmosmod
-	mask_type = /obj/item/clothing/mask/breath
-	storage_type = /obj/item/watertank/atmos
-	mod_type = /obj/item/mod/control/pre_equipped/atmospheric
 
 /obj/machinery/suit_storage_unit/enginemod
 	mask_type = /obj/item/clothing/mask/breath
@@ -111,19 +87,10 @@
 	shoes_type = /obj/item/clothing/shoes/magboots/advance
 	mod_type = /obj/item/mod/control/pre_equipped/advanced
 
-/obj/machinery/suit_storage_unit/cemod
-	mask_type = /obj/item/clothing/mask/breath
-	storage_type = /obj/item/clothing/shoes/magboots/advance
-	mod_type = /obj/item/mod/control/pre_equipped/advanced
-
 /obj/machinery/suit_storage_unit/security
 	suit_type = /obj/item/clothing/suit/space/hardsuit/security
 	mask_type = /obj/item/clothing/mask/gas/sechailer
 	storage_type = /obj/item/tank/jetpack/oxygen/security
-
-/obj/machinery/suit_storage_unit/securitymod
-	mask_type = /obj/item/clothing/mask/gas/sechailer
-	mod_type = /obj/item/mod/control/pre_equipped/security
 
 /obj/machinery/suit_storage_unit/hos
 	suit_type = /obj/item/clothing/suit/space/hardsuit/security/hos
@@ -135,11 +102,6 @@
 	mask_type = /obj/item/clothing/mask/gas
 	storage_type = /obj/item/watertank/atmos
 
-/obj/machinery/suit_storage_unit/hosmod
-	mask_type = /obj/item/clothing/mask/gas/sechailer
-	storage_type = /obj/item/tank/internals/oxygen
-	mod_type = /obj/item/mod/control/pre_equipped/safeguard
-
 /obj/machinery/suit_storage_unit/mining
 	suit_type = /obj/item/clothing/suit/hooded/explorer/standard
 	mask_type = /obj/item/clothing/mask/gas/explorer
@@ -147,16 +109,6 @@
 /obj/machinery/suit_storage_unit/mining/eva
 	suit_type = /obj/item/clothing/suit/space/hardsuit/mining
 	mask_type = /obj/item/clothing/mask/breath
-
-/obj/machinery/suit_storage_unit/mining/evahos
-	suit_type = null
-	mask_type = /obj/item/clothing/mask/breath
-	mod_type = /obj/item/mod/control/pre_equipped/mining
-
-/obj/machinery/suit_storage_unit/medicalmod
-	mask_type = /obj/item/clothing/mask/breath/medical
-	storage_type = /obj/item/tank/internals/oxygen
-	mod_type = /obj/item/mod/control/pre_equipped/medical
 
 /obj/machinery/suit_storage_unit/cmo
 	suit_type = /obj/item/clothing/suit/space/hardsuit/medical
@@ -168,28 +120,14 @@
 	helmet_type = /obj/item/clothing/head/helmet/space/eva/paramedic
 	mask_type = /obj/item/clothing/mask/breath
 
-/obj/machinery/suit_storage_unit/cmomod
-	mask_type = /obj/item/clothing/mask/breath/medical
-	storage_type = /obj/item/tank/internals/oxygen
-	mod_type = /obj/item/mod/control/pre_equipped/rescue
-
 /obj/machinery/suit_storage_unit/rd
 	suit_type = /obj/item/clothing/suit/space/hardsuit/rd
 	mask_type = /obj/item/clothing/mask/breath
-
-/obj/machinery/suit_storage_unit/rdmod
-	mask_type = /obj/item/clothing/mask/breath
-	mod_type = /obj/item/mod/control/pre_equipped/research
 
 /obj/machinery/suit_storage_unit/syndicate
 	suit_type = /obj/item/clothing/suit/space/hardsuit/syndi
 	mask_type = /obj/item/clothing/mask/gas/syndicate
 	storage_type = /obj/item/tank/jetpack/oxygen/harness
-
-/obj/machinery/suit_storage_unit/syndicatemod
-	mask_type = /obj/item/clothing/mask/gas/syndicate
-	storage_type = /obj/item/tank/jetpack/oxygen/harness
-	mod_type = /obj/item/mod/control/pre_equipped/nuclear
 
 /obj/machinery/suit_storage_unit/ert/command
 	suit_type = /obj/item/clothing/suit/space/hardsuit/ert
@@ -232,8 +170,6 @@
 		mask = new mask_type(src)
 	if(shoes_type)
 		shoes = new shoes_type(src)
-	if(mod_type)
-		mod = new mod_type(src)
 	if(storage_type)
 		storage = new storage_type(src)
 	update_icon()
@@ -243,7 +179,6 @@
 	QDEL_NULL(helmet)
 	QDEL_NULL(mask)
 	QDEL_NULL(shoes)
-	QDEL_NULL(mod)
 	QDEL_NULL(storage)
 	return ..()
 
@@ -261,7 +196,7 @@
 			. += "broken"
 		else
 			. += "open"
-			if(suit || mod)
+			if(suit)
 				. += "suit"
 			if(helmet)
 				. += "helm"
@@ -282,7 +217,6 @@
 	helmet = null
 	suit = null
 	mask = null
-	mod = null
 	storage = null
 	occupant = null
 
@@ -361,8 +295,6 @@
 			qdel(mask)
 			shoes = null
 			qdel(shoes)
-			mod = null
-			qdel(mod)
 			storage = null
 			qdel(storage)
 			// The wires get damaged too.
@@ -387,9 +319,6 @@
 			if(shoes)
 				things_to_clear += shoes
 				things_to_clear += shoes.GetAllContents()
-			if(mod)
-				things_to_clear += mod
-				things_to_clear += mod.GetAllContents()
 			if(storage)
 				things_to_clear += storage
 				things_to_clear += storage.GetAllContents()
@@ -406,20 +335,6 @@
 		open_machine(FALSE)
 		if(occupant)
 			dump_contents()
-
-/obj/machinery/suit_storage_unit/process(delta_time)
-	var/obj/item/stock_parts/cell/cell
-	if(mod)
-		if(!istype(mod))
-			return
-		if(!mod.cell)
-			return
-		cell = mod.cell
-	else
-		return
-
-	use_power(charge_rate * delta_time)
-	cell.give(charge_rate * delta_time)
 
 /obj/machinery/suit_storage_unit/proc/shock(mob/user, prb)
 	if(!prob(prb))
@@ -502,13 +417,6 @@
 			if(!user.transferItemToLoc(I, src))
 				return
 			shoes = I
-		else if(istype(I, /obj/item/mod/control))
-			if(mod)
-				to_chat(user, span_warning("The unit already contains a MOD!"))
-				return
-			if(!user.transferItemToLoc(I, src))
-				return
-			mod = I
 		else
 			if(storage)
 				to_chat(user, "<span class='warning'>The auxiliary storage compartment is full!</span>")
@@ -565,10 +473,6 @@
 		data["shoes"] = shoes.name
 	else
 		data["shoes"] = null
-	if(mod)
-		data["mod"] = mod.name
-	else
-		data["mod"] = null
 	if(storage)
 		data["storage"] = storage.name
 	else
@@ -599,7 +503,7 @@
 		if("uv")
 			if(occupant && safeties)
 				return
-			else if(!helmet && !mask && !mod && !suit && !storage && !occupant)
+			else if(!helmet && !mask && !suit && !storage && !occupant)
 				return
 			else
 				if(occupant)
@@ -611,7 +515,7 @@
 			if(!state_open)
 				return
 
-			var/static/list/valid_items = list("helmet", "suit", "mask", "shoes", "mod", "storage")
+			var/static/list/valid_items = list("helmet", "suit", "mask", "shoes", "storage")
 			var/item_name = params["item"]
 			if(item_name in valid_items)
 				var/obj/item/I = vars[item_name]
