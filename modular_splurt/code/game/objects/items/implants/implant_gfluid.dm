@@ -95,7 +95,7 @@
 	to_chat(genital_owner, span_notice("You feel the fluids inside your [genital_input.name] bubble and swirl..."))
 
 	// Send admin notice
-	message_admins("[ADMIN_LOOKUPFLW(genital_owner)] changed the fluid of their [genital_owner.p_their()] [genital_input.name] to [reagent_selection].")
+	message_admins("[ADMIN_LOOKUPFLW(genital_owner)] changed the fluid of [genital_owner.p_their()] [genital_input.name] to [reagent_selection].")
 
 // Unlock with an emag
 /obj/item/implant/genital_fluid/emag_act()
