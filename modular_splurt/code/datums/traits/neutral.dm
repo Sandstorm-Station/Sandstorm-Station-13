@@ -576,7 +576,7 @@
 		energy -= 0.05
 
 	if(transformed)
-		energy = min(energy + 0.03, 100)
+		energy = min(energy + 0.3, 100)
 		if (H.getBruteLoss() > 0 || H.getFireLoss() > 0)
 			H.adjustBruteLoss(-0.5, forced = TRUE)
 			H.adjustFireLoss(-0.5, forced = TRUE)
