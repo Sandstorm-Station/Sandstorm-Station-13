@@ -16,6 +16,7 @@
 /obj/structure/statue/gargoyle
 	name = "statue"
 	desc = "An incredibly intricate statue, which... almost seems alive!"
+	icon = 'modular_splurt/icons/obj/structures/statue.dmi'
 	icon_state = "gargoyle" //empty sprite because it's supposed to copy over the overlays anyway, and otherwise, you end up with a white human male underlay beneath the statue.
 	density = TRUE
 	anchored = TRUE
