@@ -27,7 +27,7 @@
 	id = "adv_toolset_implant"
 	display_name = "Advanced Toolset Implant"
 	description = "Allows the creation of alien powerful implants for your arms."
-	prereq_ids = list("alien_bio")
+	prereq_ids = list("alien_bio", "alien_engi", "adv_cyber_implants")
 	design_ids = list("ci-toolset-adv","ci-surgery-adv")
 	research_costs = list(TECHWEB_POINT_TYPE_GENERIC = 5000)
 
