@@ -24,8 +24,9 @@
 	var/mob/living/petrified_mob
 	var/old_max_health
 	var/old_size
-	var/was_shifted
 	var/was_tilted
+	var/was_lying
+	var/was_lying_prev
 	var/deconstructed = FALSE
 
 /obj/structure/statue/gargoyle/Initialize(mapload, mob/living/L)
@@ -40,8 +41,9 @@
 		pixel_x = L.pixel_x
 		pixel_y = L.pixel_y
 		layer = L.layer
-		was_shifted = L.is_shifted
 		was_tilted = L.is_tilted
+		was_lying = L.lying
+		was_lying_prev = L.lying_prev
 		L.forceMove(src)
 		ADD_TRAIT(L, TRAIT_MUTE, STATUE_TRAIT)
 		ADD_TRAIT(L, TRAIT_MOBILITY_NOMOVE, STATUE_TRAIT)
@@ -64,6 +66,9 @@
 	if (istype(ab))
 		if (istype(ab.linked_action, /datum/action/gargoyle))
 			return FALSE
+	var/list/modifiers = params2list(params)
+	if (modifiers["shift"] && !modifiers["ctrl"] && !modifiers["middle"])
+		return FALSE
 	return TRUE
 
 /obj/structure/statue/gargoyle/examine_more(mob/user) //something about the funny signals doesn't work here no matter how much I fucked around with it (ie registering to COMSIG_PARENT_EXAMINE_MORE doesn't do anything), so we have to overwrite the proc
@@ -95,6 +100,9 @@
 		var/damage = deconstructed ? petrified_mob.health : petrified_mob.health*(old_max_health/petrified_mob.maxHealth) - obj_integrity + 100
 		petrified_mob.take_overall_damage(damage) //any new damage the statue incurred is transfered to the mob
 		petrified_mob.transform = transform
+		petrified_mob.lying = was_lying
+		petrified_mob.lying_prev = was_lying_prev
+		petrified_mob.update_mobility()
 		petrified_mob.pixel_x = pixel_x
 		petrified_mob.pixel_y = pixel_y
 		petrified_mob.layer = layer
