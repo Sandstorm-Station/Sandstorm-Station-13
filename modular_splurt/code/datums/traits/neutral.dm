@@ -643,6 +643,14 @@
 	else
 		SEND_SIGNAL(quirk_holder, COMSIG_ADD_MOOD_EVENT, mood_category, /datum/mood_event/nudist_negative)
 
+/datum/quirk/nudist/on_spawn()
+	. = ..()
+	// Spawn a Rapid Disrobe Implant
+	var/obj/item/implant/disrobe/quirk_implant = new
+
+	// Implant into quirk holder
+	quirk_implant.implant(quirk_holder, null, TRUE, TRUE)
+
 /datum/quirk/masked_mook
 	name = "Bane Syndrome"
 	desc = "For some reason you don't feel... right without wearing some kind of gas mask."
