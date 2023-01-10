@@ -209,7 +209,8 @@ GLOBAL_LIST_INIT(backbaglist, list(DBACKPACK, DSATCHEL, DDUFFELBAG, //everything
 	"Grey Satchel" = /obj/item/storage/backpack/satchel,
 	"Grey Duffel Bag" = /obj/item/storage/backpack/duffelbag,
 	"Leather Satchel" = /obj/item/storage/backpack/satchel/leather,
-	"Snail Shell" = /obj/item/storage/backpack/snail))
+	"Snail Shell" = /obj/item/storage/backpack/snail,
+	"Sloog Shell" = /obj/item/storage/backpack/sloogshell))
 
 //Suit/Skirt
 #define PREF_SUIT "Jumpsuit"
@@ -378,7 +379,7 @@ GLOBAL_LIST_INIT(job_heirlooms, list(
 GLOBAL_LIST_INIT(nongendered_limb_types, list("fly", "zombie" ,"synth", "shadow", "cultgolem", "agent", "plasmaman", "clockgolem", "clothgolem"))
 
 //list of eye types, corresponding to a respective left and right icon state for the set of eyes
-GLOBAL_LIST_INIT(eye_types, list("normal", "insect", "moth", "double", "double2", "double3", "spider", "cyclops", "third", "spectre", "shadekin"))
+GLOBAL_LIST_INIT(eye_types, list("normal", "insect", "moth", "double", "double2", "double3", "spider", "cyclops", "third", "spectre", "shadekin", "none"))
 
 //list linking bodypart bitflags to their actual names
 GLOBAL_LIST_INIT(bodypart_names, list(num2text(HEAD) = "Head", num2text(CHEST) = "Chest", num2text(LEG_LEFT) = "Left Leg", num2text(LEG_RIGHT) = "Right Leg", num2text(ARM_LEFT) = "Left Arm", num2text(ARM_RIGHT) = "Right Arm"))
