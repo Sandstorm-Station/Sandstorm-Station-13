@@ -11,18 +11,13 @@
 	glass_desc = "You feel it's not named like that for no reason."
 	value = 6
 
+// Liquid Panty Dropper drink effect
 /datum/reagent/consumable/ethanol/panty_dropper/on_mob_life(mob/living/carbon/C)
-	var/mob/living/carbon/human/M = C
-	var/anyclothes = FALSE
-	var/items = M.get_contents()
-	for(var/obj/item/W in items)
-		if(W.body_parts_covered && ismob(W.loc))
-			anyclothes = TRUE
-			M.dropItemToGround(W, TRUE)
-			playsound(M.loc, 'sound/items/poster_ripped.ogg', 50, 1)
-	if(anyclothes)
-		M.visible_message("<span class='userlove'>[M] suddenly bursts out of [M.p_their()] clothes!</span>")
-	return ..()
+	// Praise the funny BYOND dots
+	. = ..()
+
+	// Perform drink effect
+	C.clothing_burst(C)
 
 /datum/reagent/consumable/ethanol/lean
 	name = "Lean"
