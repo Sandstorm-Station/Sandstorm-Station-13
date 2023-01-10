@@ -226,3 +226,14 @@
 	icon_state = "deoxys"
 	icon = 'modular_splurt/icons/mob/mam_snouts.dmi'
 	matrixed_sections = MATRIX_ALL
+
+/datum/sprite_accessory/snouts/mam_snouts/sloog
+	name = "Sloog"
+	icon_state = "sloog"
+	icon = 'modular_splurt/icons/mob/mam_snouts.dmi'
+	matrixed_sections = MATRIX_RED
+
+/datum/sprite_accessory/snouts/mam_snouts/sloog/lips
+	name = "Sloog (lips)"
+	icon_state = "slooglips"
+	matrixed_sections = MATRIX_RED_GREEN
