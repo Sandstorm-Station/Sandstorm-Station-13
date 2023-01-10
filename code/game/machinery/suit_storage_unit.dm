@@ -71,7 +71,12 @@
 /obj/machinery/suit_storage_unit/engine
 	suit_type = /obj/item/clothing/suit/space/hardsuit/engine
 	mask_type = /obj/item/clothing/mask/breath
-	shoes_type= /obj/item/clothing/shoes/magboots
+	shoes_type = /obj/item/clothing/shoes/magboots
+
+/obj/machinery/suit_storage_unit/atmos
+	suit_type = /obj/item/clothing/suit/space/hardsuit/engine/atmos
+	mask_type = /obj/item/clothing/mask/breath
+	storage_type = /obj/item/watertank/atmos
 
 /obj/machinery/suit_storage_unit/enginemod
 	mask_type = /obj/item/clothing/mask/breath
@@ -90,7 +95,7 @@
 /obj/machinery/suit_storage_unit/ce
 	suit_type = /obj/item/clothing/suit/space/hardsuit/engine/elite
 	mask_type = /obj/item/clothing/mask/breath
-	shoes_type= /obj/item/clothing/shoes/magboots/advance
+	shoes_type = /obj/item/clothing/shoes/magboots/advance
 
 /obj/machinery/suit_storage_unit/cemod
 	mask_type = /obj/item/clothing/mask/breath
@@ -231,7 +236,6 @@
 
 /obj/machinery/suit_storage_unit/update_overlays()
 	. = ..()
-
 	if(uv)
 		if(uv_super)
 			. += "super"
@@ -248,7 +252,7 @@
 				. += "suit"
 			if(helmet)
 				. += "helm"
-			if(storage)
+			if(shoes || storage)
 				. += "storage"
 	else if(occupant)
 		. += "human"
@@ -619,15 +623,93 @@
 
 	return ..()
 
-/*	ref tg-git issue #45036
-	screwdriving it open while it's running a decontamination sequence without closing the panel prior to finish
-	causes the SSU to break due to state_open being set to TRUE at the end, and the panel becoming inaccessible.
-*/
-/obj/machinery/suit_storage_unit/default_deconstruction_screwdriver(mob/user, icon_state_open, icon_state_closed, obj/item/I)
-	if(!(flags_1 & NODECONSTRUCT_1) && I.tool_behaviour == TOOL_SCREWDRIVER && uv)
-		to_chat(user, "<span class='warning'>It might not be wise to fiddle with [src] while it's running...</span>")
-		return TRUE
-	return ..()
+/obj/machinery/suit_storage_unit/ui_state(mob/user)
+	return GLOB.notcontained_state
+
+/obj/machinery/suit_storage_unit/ui_interact(mob/user, datum/tgui/ui)
+	ui = SStgui.try_update_ui(user, src, ui)
+	if(!ui)
+		ui = new(user, src, "SuitStorageUnit", name)
+		ui.open()
+
+/obj/machinery/suit_storage_unit/ui_data()
+	var/list/data = list()
+	data["locked"] = locked
+	data["open"] = state_open
+	data["safeties"] = safeties
+	data["uv_active"] = uv
+	data["uv_super"] = uv_super
+	if(helmet)
+		data["helmet"] = helmet.name
+	else
+		data["helmet"] = null
+	if(suit)
+		data["suit"] = suit.name
+	else
+		data["suit"] = null
+	if(mask)
+		data["mask"] = mask.name
+	else
+		data["mask"] = null
+	if(shoes)
+		data["shoes"] = shoes.name
+	else
+		data["shoes"] = null
+	if(storage)
+		data["storage"] = storage.name
+	else
+		data["storage"] = null
+	if(occupant)
+		data["occupied"] = TRUE
+	else
+		data["occupied"] = FALSE
+	return data
+
+/obj/machinery/suit_storage_unit/ui_act(action, params)
+	if(..() || uv)
+		return
+	switch(action)
+		if("door")
+			if(state_open)
+				close_machine()
+			else
+				open_machine(0)
+				if(occupant)
+					dump_contents() // Dump out contents if someone is in there.
+			. = TRUE
+		if("lock")
+			if(state_open)
+				return
+			locked = !locked
+			. = TRUE
+		if("uv")
+			if(occupant && safeties)
+				return
+			else if(!helmet && !mask && !suit && !storage && !occupant)
+				return
+			else
+				if(occupant)
+					var/mob/living/mob_occupant = occupant
+					to_chat(mob_occupant, "<span class='userdanger'>[src]'s confines grow warm, then hot, then scorching. You're being burned [!mob_occupant.stat ? "alive" : "away"]!</span>")
+				cook()
+				. = TRUE
+		if("dispense")
+			if(!state_open)
+				return
+
+			var/static/list/valid_items = list("helmet", "suit", "mask", "shoes", "storage")
+			var/item_name = params["item"]
+			if(item_name in valid_items)
+				var/obj/item/I = vars[item_name]
+				vars[item_name] = null
+				if(I)
+					var/mob/living/living_person = usr
+					if(!istype(living_person))
+						return
+					if(!istype(living_person) || !Adjacent(living_person) || !living_person.put_in_active_hand(I))
+						I.forceMove(loc)
+			. = TRUE
+	update_icon()
 
 /obj/machinery/suit_storage_unit/default_pry_open(obj/item/I)//needs to check if the storage is locked.
 	. = !(state_open || panel_open || is_operational() || locked || (flags_1 & NODECONSTRUCT_1)) && I.tool_behaviour == TOOL_CROWBAR

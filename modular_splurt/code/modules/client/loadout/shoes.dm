@@ -2,6 +2,10 @@
 /datum/gear/shoes/footwraps
 	name = "Cloth Footwraps"
 	path= /obj/item/clothing/shoes/footwraps
+	
+/datum/gear/shoes/invisiboots
+	name = "Invisifiber Footwraps"
+	path= /obj/item/clothing/shoes/invisiboots
 
 /datum/gear/shoes/workboots/toeless
 	name = "Toeless Work Boots"

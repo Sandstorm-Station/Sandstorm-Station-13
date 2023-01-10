@@ -126,31 +126,7 @@
 	if(mood)
 		mood.mood_modifier -= 0.5
 
-/datum/quirk/masked_mook
-	name = "Bane Syndrome"
-	desc = "For some reason you don't feel... right without wearing some kind of gas mask."
-	gain_text = "<span class='danger'>You start feeling unwell without any gas mask on.</span>"
-	lose_text = "<span class='notice'>You no longer have a need to wear some gas mask.</span>"
-	value = -2
-	mood_quirk = TRUE
-	medical_record_text = "Patient feels more secure when wearing a gas mask."
-	processing_quirk = TRUE
-	var/mood_category = "masked_mook"
-
-/datum/quirk/masked_mook/on_process()
-	var/mob/living/carbon/human/H = quirk_holder
-	var/obj/item/clothing/mask/gas/gasmask = H.get_item_by_slot(ITEM_SLOT_MASK)
-	if(istype(gasmask))
-		SEND_SIGNAL(quirk_holder, COMSIG_ADD_MOOD_EVENT, mood_category, /datum/mood_event/masked_mook)
-	else
-		SEND_SIGNAL(quirk_holder, COMSIG_ADD_MOOD_EVENT, mood_category, /datum/mood_event/masked_mook_incomplete)
-
-/datum/quirk/masked_mook/on_spawn()
-	. = ..()
-	var/mob/living/carbon/human/H = quirk_holder
-	var/obj/item/clothing/mask/gas/gasmask = new(get_turf(quirk_holder))
-	H.equip_to_slot(gasmask, ITEM_SLOT_MASK)
-	H.regenerate_icons()
+// masked_mook moved to neutral
 
 //well-trained moved to neutral
 
@@ -192,3 +168,26 @@
 	deltimer(timer)
 	timer = null
 	timer = addtimer(CALLBACK(src, .proc/crave), craving_after, TIMER_STOPPABLE)
+
+// Small issue with this. If the quirk holder has NO_HUNGER or NO_THIRST, this trait can still be taken and they will still get the benefits of it.
+// It's unlikely that someone will be both, especially at round start, but vampirism makes me wary of having these separate.
+/datum/quirk/hungry
+	name = "Hungry And Thirsty"
+	desc = "You find yourself unusually hungry and thirsty. Gotta eat and drink twice as much as normal."
+	value = -1
+	gain_text = "<span class='danger'>You're starting to feel hungrier and thirstier a lot faster.</span>"
+	lose_text = "<span class='notice'>Your craving for food and water begins dying down.</span>"
+	medical_record_text = "Patient reports eating twice as many meals per day than usual for their species."
+
+/datum/quirk/hungry/add()
+	var/mob/living/carbon/human/H = quirk_holder
+	var/datum/physiology/P = H.physiology
+	P.hunger_mod *= 2
+	P.thirst_mod *= 2
+
+/datum/quirk/hungry/remove()
+	var/mob/living/carbon/human/H = quirk_holder
+	if(H)
+		var/datum/physiology/P = H.physiology
+		P.hunger_mod /= 2
+		P.thirst_mod /= 2
