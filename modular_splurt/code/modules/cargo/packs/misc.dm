@@ -215,6 +215,15 @@
 	cost = 100000
 	contains = list(/obj/item/reagent_containers/food/drinks/diminicillin)
 
+/datum/supply_pack/misc/plushmium
+	name = "Plushmium Crate"
+	desc = "Contains a small sample of an experimental chemical known as Plushmium, and a plushie to use it on."
+	cost = 5000 // Cost of an expensive animal
+	contains = list(
+		/obj/item/reagent_containers/glass/bottle/plushmium,
+		/obj/item/choice_beacon/box/plushie
+	)
+
 /datum/supply_pack/misc/microbricks
 	name = "Microbricks Crate"
 	desc = "Extremely bored? Recreate a downscale city and get upset when it all comes crumbling down!"
