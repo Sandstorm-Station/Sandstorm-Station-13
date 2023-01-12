@@ -329,7 +329,7 @@
 	icon_icon = 'icons/mob/actions/actions_flightsuit.dmi'
 	button_icon_state = "flightsuit_lock"
 
-datum/action/gargoyle/pause/Trigger()
+/datum/action/gargoyle/pause/Trigger()
 	.=..()
 	var/mob/living/carbon/human/H = owner
 	var/datum/quirk/gargoyle/T = locate() in H.roundstart_quirks
