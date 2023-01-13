@@ -12,7 +12,21 @@ Our Solutions:
 Our Method:
 • Override the supermatter's explode() proc to respect the bombcap.
 • Scan through the player list an count how many alive engineers are there. If you sign up as an engineer, you consent to fixing the damage.
+Custom Bombcaps:
+• Small Delam: 1, 2, 5
+• Medium Delam: 2, 3, 10
+• Big Delam: 3, 5, 15
 */
+
+#define EXPLOSION_MODIFIER_SMALL 0.1
+#define EXPLOSION_MODIFIER_MEDIUM 0.25
+#define EXPLOSION_MODIFIER_LARGE 0.5
+
+// Let's turn the base explosion power down a little...
+/obj/machinery/power/supermatter_crystal
+	explosion_power = 20
+/obj/machinery/power/supermatter_crystal/shard
+	explosion_power = 6
 
 // Proc to screen the mob list for engineers. We'll need this later!
 /proc/count_alive_engineers(mob/M)
@@ -34,7 +48,6 @@ Our Method:
 
 /obj/machinery/power/supermatter_crystal/explode()
 // Handle the mood event.
-	var/turf/T = get_turf(src)
 	for(var/mob/M in GLOB.player_list)
 		if(M.z == z)
 			SEND_SOUND(M, 'sound/magic/charge.ogg')
@@ -63,24 +76,28 @@ Our Method:
 		if(1 to 2)
 			investigate_log("has delaminated, but there are only [alive_engineers] engineers! Defaulting to minimum explosion.", INVESTIGATE_SUPERMATTER)
 			priority_announce("A supermatter crystal delamination has been detected. Crystal hyperstructure has collapsed within safety tolerance, resulting in majority self-annihilation.", "CRYSTAL DELAMINATION DETECTED!")
-			explosion(get_turf(src), 1, 2, 3, 10, TRUE, FALSE, 5, FALSE, 1)
+			explosion(get_turf(src), min(1,(explosion_power * max(gasmix_power_ratio, 0.205)*EXPLOSION_MODIFIER_SMALL)), min(2,((explosion_power * max(gasmix_power_ratio, 0.205))*EXPLOSION_MODIFIER_SMALL)), min(5,((explosion_power * max(gasmix_power_ratio, 0.205))*EXPLOSION_MODIFIER_SMALL)), ((explosion_power * max(gasmix_power_ratio, 0.205))*EXPLOSION_MODIFIER_SMALL)+3, TRUE, FALSE)
 			qdel(src)
 			return
 //	DELAMINATION C: Enough engineers, halved explosion size.
 		if(3 to 4)
 			investigate_log("has delaminated with [alive_engineers] engineers, explosion size has been halved!", INVESTIGATE_SUPERMATTER)
 			priority_announce("A supermatter crystal delamination has been detected. Crystal hyperstructure did not complete a controlled collapse.", "CRYSTAL DELAMINATION DETECTED!")
-			explosion(get_turf(src), (explosion_power * max(gasmix_power_ratio, 0.205) * 0.5)/2, ((explosion_power * max(gasmix_power_ratio, 0.205))/2)+1, ((explosion_power * max(gasmix_power_ratio, 0.205))/2)+2, ((explosion_power * max(gasmix_power_ratio, 0.205))/2)+3, TRUE, FALSE)
+			explosion(get_turf(src), min(2,(explosion_power * max(gasmix_power_ratio, 0.205)*EXPLOSION_MODIFIER_MEDIUM)), min(3,((explosion_power * max(gasmix_power_ratio, 0.205))*EXPLOSION_MODIFIER_MEDIUM)), min(10,((explosion_power * max(gasmix_power_ratio, 0.205))*EXPLOSION_MODIFIER_MEDIUM)), ((explosion_power * max(gasmix_power_ratio, 0.205))*EXPLOSION_MODIFIER_MEDIUM)+3, TRUE, FALSE)
 			qdel(src)
 			return
 //	DELAMINATION D:
 		if(5 to INFINITY)
 			investigate_log("has delaminated with full effect due to there being [alive_engineers] engineers.", INVESTIGATE_SUPERMATTER)
 			priority_announce("A supermatter crystal delamination has been detected. Crystal hyperstructure has failed catastrophically.", sender_override="CRYSTAL DELAMINATION DETECTED!")
-			explosion(get_turf(T), explosion_power * max(gasmix_power_ratio, 0.205) * 0.5 , explosion_power * max(gasmix_power_ratio, 0.205) + 2, explosion_power * max(gasmix_power_ratio, 0.205) + 4 , explosion_power * max(gasmix_power_ratio, 0.205) + 6, TRUE, FALSE)
+			explosion(get_turf(src), min(3,(explosion_power * max(gasmix_power_ratio, 0.205)*EXPLOSION_MODIFIER_LARGE), min(5,((explosion_power * max(gasmix_power_ratio, 0.205))*EXPLOSION_MODIFIER_LARGE)), min(15,((explosion_power * max(gasmix_power_ratio, 0.205))*EXPLOSION_MODIFIER_LARGE)), ((explosion_power * max(gasmix_power_ratio, 0.205))*EXPLOSION_MODIFIER_LARGE)+3, TRUE, FALSE)
 			qdel(src)
 			return
 		if(null)
 			investigate_log("tried to delaminate, but there are... null alive engineers? [alive_engineers] <- that", INVESTIGATE_SUPERMATTER)
 			qdel(src)
 			return
+
+#undef EXPLOSION_MODIFIER_SMALL
+#undef EXPLOSION_MODIFIER_MEDIUM
+#undef EXPLOSION_MODIFIER_LARGE
