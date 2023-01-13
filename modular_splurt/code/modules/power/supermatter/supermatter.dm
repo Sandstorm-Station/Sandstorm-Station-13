@@ -18,13 +18,13 @@ Custom Bombcaps:
 • Big Delam: 3, 5, 15
 */
 
-#define EXPLOSION_MODIFIER_SMALL 0.1
-#define EXPLOSION_MODIFIER_MEDIUM 0.25
-#define EXPLOSION_MODIFIER_LARGE 0.5
+#define EXPLOSION_MODIFIER_SMALL 0.25
+#define EXPLOSION_MODIFIER_MEDIUM 0.5
+#define EXPLOSION_MODIFIER_LARGE 0.75
 
 // Let's turn the base explosion power down a little...
 /obj/machinery/power/supermatter_crystal
-	explosion_power = 20
+	explosion_power = 22
 /obj/machinery/power/supermatter_crystal/shard
 	explosion_power = 6
 
@@ -76,21 +76,21 @@ Custom Bombcaps:
 		if(1 to 2)
 			investigate_log("has delaminated, but there are only [alive_engineers] engineers! Defaulting to minimum explosion.", INVESTIGATE_SUPERMATTER)
 			priority_announce("A supermatter crystal delamination has been detected. Crystal hyperstructure has collapsed within safety tolerance, resulting in majority self-annihilation.", "CRYSTAL DELAMINATION DETECTED!")
-			explosion(get_turf(src), min(1,(explosion_power * max(gasmix_power_ratio, 0.205)*EXPLOSION_MODIFIER_SMALL)), min(2,((explosion_power * max(gasmix_power_ratio, 0.205))*EXPLOSION_MODIFIER_SMALL)), min(5,((explosion_power * max(gasmix_power_ratio, 0.205))*EXPLOSION_MODIFIER_SMALL)), ((explosion_power * max(gasmix_power_ratio, 0.205))*EXPLOSION_MODIFIER_SMALL)+3, TRUE, FALSE)
+			explosion(get_turf(src), clamp(((explosion_power*gasmix_power_ratio)*EXPLOSION_MODIFIER_SMALL), 0, 2), clamp(((explosion_power*gasmix_power_ratio)*EXPLOSION_MODIFIER_SMALL), 0, 2), clamp(((explosion_power*gasmix_power_ratio)*EXPLOSION_MODIFIER_SMALL), 3, 5), clamp(((explosion_power*gasmix_power_ratio)*EXPLOSION_MODIFIER_SMALL), 5, 15), TRUE, FALSE)
 			qdel(src)
 			return
 //	DELAMINATION C: Enough engineers, halved explosion size.
 		if(3 to 4)
 			investigate_log("has delaminated with [alive_engineers] engineers, explosion size has been halved!", INVESTIGATE_SUPERMATTER)
 			priority_announce("A supermatter crystal delamination has been detected. Crystal hyperstructure did not complete a controlled collapse.", "CRYSTAL DELAMINATION DETECTED!")
-			explosion(get_turf(src), min(2,(explosion_power * max(gasmix_power_ratio, 0.205)*EXPLOSION_MODIFIER_MEDIUM)), min(3,((explosion_power * max(gasmix_power_ratio, 0.205))*EXPLOSION_MODIFIER_MEDIUM)), min(10,((explosion_power * max(gasmix_power_ratio, 0.205))*EXPLOSION_MODIFIER_MEDIUM)), ((explosion_power * max(gasmix_power_ratio, 0.205))*EXPLOSION_MODIFIER_MEDIUM)+3, TRUE, FALSE)
+			explosion(get_turf(src), clamp(((explosion_power*gasmix_power_ratio)*EXPLOSION_MODIFIER_MEDIUM), 0, 2), clamp(((explosion_power*gasmix_power_ratio)*EXPLOSION_MODIFIER_MEDIUM), 1, 3), clamp(((explosion_power*gasmix_power_ratio)*EXPLOSION_MODIFIER_MEDIUM), 3, 10), clamp(((explosion_power*gasmix_power_ratio)*EXPLOSION_MODIFIER_MEDIUM), 5, 20), TRUE, FALSE)
 			qdel(src)
 			return
 //	DELAMINATION D:
 		if(5 to INFINITY)
 			investigate_log("has delaminated with full effect due to there being [alive_engineers] engineers.", INVESTIGATE_SUPERMATTER)
 			priority_announce("A supermatter crystal delamination has been detected. Crystal hyperstructure has failed catastrophically.", sender_override="CRYSTAL DELAMINATION DETECTED!")
-			explosion(get_turf(src), min(3,(explosion_power * max(gasmix_power_ratio, 0.205)*EXPLOSION_MODIFIER_LARGE), min(5,((explosion_power * max(gasmix_power_ratio, 0.205))*EXPLOSION_MODIFIER_LARGE)), min(15,((explosion_power * max(gasmix_power_ratio, 0.205))*EXPLOSION_MODIFIER_LARGE)), ((explosion_power * max(gasmix_power_ratio, 0.205))*EXPLOSION_MODIFIER_LARGE)+3, TRUE, FALSE)
+			explosion(get_turf(src), clamp(((explosion_power*gasmix_power_ratio)*EXPLOSION_MODIFIER_LARGE), 1, 3), clamp(((explosion_power*gasmix_power_ratio)*EXPLOSION_MODIFIER_LARGE), 2, 5), clamp(((explosion_power*gasmix_power_ratio)*EXPLOSION_MODIFIER_LARGE), 3, 15), clamp(((explosion_power*gasmix_power_ratio)*EXPLOSION_MODIFIER_LARGE), 5, 30), TRUE, FALSE)
 			qdel(src)
 			return
 		if(null)
