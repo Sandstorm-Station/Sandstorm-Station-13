@@ -170,14 +170,6 @@
 	// Define pulled target
 	var/pull_target = action_owner.pulling
 
-	// Check for blood tomatoes
-	if(istype(pull_target,/obj/item/reagent_containers/food/snacks/grown/tomato/blood))
-		// Warn the user, then return
-		to_chat(action_owner, "<span class='danger'>You plunge your fangs into [pull_target]! It's not very nutritious.</span>")
-		return
-
-		// This doesn't actually interact with the item
-
 	// Define bite target
 	var/mob/living/carbon/bite_target
 
@@ -197,6 +189,14 @@
 			// Set the bite target
 			bite_target = possible_cocoon_target
 
+	// Or a blood tomato
+	else if(istype(pull_target,/obj/item/reagent_containers/food/snacks/grown/tomato/blood))
+		// Warn the user, then return
+		to_chat(action_owner, "<span class='danger'>You plunge your fangs into [pull_target]! It's not very nutritious.</span>")
+		return
+
+		// This doesn't actually interact with the item
+
 	// Or none of the above
 	else
 		// Warn the user, then return
@@ -204,10 +204,12 @@
 		return
 
 	// Check for carbon robots (technical issue)
+	/* Removed in favor of mood penalty
 	if (bite_target.mob_biotypes & MOB_ROBOTIC)
 		// Warn the user, then return
 		to_chat(action_owner, "<span class='warning'>You can't drain blood from robotic lifeforms!</span>")
 		return
+	*/
 
 	// Check for anti-magic
 	if(bite_target.anti_magic_check(FALSE, TRUE, FALSE, 0))
@@ -218,6 +220,9 @@
 
 	// Check for garlic necklace or garlic in the bloodstream
 	if(!blood_sucking_checks(bite_target, TRUE, TRUE))
+		// Warn the user and target, then return
+		to_chat(bite_target, "<span class='warning'>[action_owner] tries to bite you, but is warded off by your Allium Sativum!</span>")
+		to_chat(action_owner, "<span class='warning'>You sense that [bite_target] is protected by Allium Sativum, and refrain from biting them.</span>")
 		return
 
 	// Define bite target's blood volume
@@ -229,17 +234,19 @@
 		to_chat(action_owner, "<span class='warning'>There's not enough blood in [bite_target]!</span>")
 		return
 
-	// Check for unsafe blood volume, if a pacifist
-	if(HAS_TRAIT(src, TRAIT_PACIFISM) && target_blood_volume <= BLOOD_VOLUME_BAD)
-		// Warn the user, then return
-		to_chat(action_owner, "<span class='warning'>You can't drain any more blood from [bite_target] without hurting [bite_target.p_them()]!</span>")
-		return
+	// Check if total blood would become too low
+	if((target_blood_volume - BLOODFLEDGE_DRAIN_NUM) <= BLOOD_VOLUME_OKAY)
+		// Check for aggressive grab
+		if(action_owner.grab_state < GRAB_AGGRESSIVE)
+			// Warn the user, then return
+			to_chat(action_owner, "<span class='warning'>You sense that [bite_target] is running low on blood. You'll need a tighter grip on [bite_target.p_them()] to continue.</span>")
+			return
 
-	// Check for slime race with enough blood to split
-	if(isslimeperson(action_owner) && action_owner.blood_volume >= BLOOD_VOLUME_SLIME_SPLIT)
-		// Warn the user, then return
-		to_chat(action_owner, "<span class='warning'>Your body can't absorb any more blood! Split before trying again.</span>")
-		return
+		// Check for pacifist
+		if(HAS_TRAIT(action_owner, TRAIT_PACIFISM))
+			// Warn the user, then return
+			to_chat(action_owner, "<span class='warning'>You can't drain any more blood from [bite_target] without hurting [bite_target.p_them()]!</span>")
+			return
 
 	// Set cooldown and action times
 	var/time_cooldown = BLOODFLEDGE_COOLDOWN_BITE
@@ -258,7 +265,10 @@
 	action_owner.visible_message("<span class='danger'>[action_owner] begins to bite down on [bite_target]'s neck!</span>")
 
 	// Warn bite target
-	to_chat(bite_target, "<span class='userdanger'>[action_owner] is trying to drain your blood!</span>")
+	to_chat(bite_target, "<span class='userdanger'>[action_owner] has bitten your neck, and is trying to drain your blood!</span>")
+
+	// Play a bite sound effect
+	playsound(action_owner, 'sound/weapons/bite.ogg', 30, 1, -2)
 
 	// Try to perform action timer
 	if(!do_after(action_owner, time_interact, target = bite_target))
@@ -270,10 +280,16 @@
 		// This creates large blood splatter
 		bite_target.bleed(BLOODFLEDGE_DRAIN_NUM, FALSE)
 
+		// Play splatter sound
+		playsound(get_turf(target), 'sound/effects/splat.ogg', 40, 1)
+
 		// Check for masochism
 		if(!HAS_TRAIT(bite_target, TRAIT_MASO))
 			// Force bite_target to play the scream emote
 			bite_target.emote("scream")
+
+		// Log the biting action failure
+		log_combat(action_owner,bite_target,"bloodfledge bitten (interrupted)")
 
 		// Return
 		return
@@ -292,34 +308,57 @@
 	var/blood_volume_difference = BLOOD_VOLUME_MAXIMUM - action_owner.blood_volume
 	var/drained_blood = min(target_blood_volume, BLOODFLEDGE_DRAIN_NUM, blood_volume_difference)
 
-	/* Obsolete
-	// Add blood to the user
-	action_owner.reagents.add_reagent(/datum/reagent/blood/, drained_blood)
-
 	// Remove blood from bite target
 	bite_target.blood_volume = clamp(target_blood_volume - drained_blood, 0, BLOOD_VOLUME_MAXIMUM)
-	*/
 
-	// Perform a blood transfer
-	bite_target.transfer_blood_to(action_owner, drained_blood, TRUE)
+	// Add blood reagent to the user
+	action_owner.reagents.add_reagent(/datum/reagent/blood/, drained_blood)
 
-	// Add nutrition equal to 80% of blood drain amount
-	action_owner.adjust_nutrition(BLOODFLEDGE_DRAIN_NUM*0.8)
+	// Perform a zero-blood transfer
+	// This is done to transfer compatible diseases
+	bite_target.transfer_blood_to(action_owner, 0, TRUE)
 
 	// Alert the bite target and local user of success
 	to_chat(bite_target, "<span class='danger'>[action_owner] has taken some of your blood!</span>")
 	to_chat(action_owner, "<span class='notice'>You've drained some of [bite_target]'s blood!</span>")
 
-	// Play a drink sound effect
-	playsound(action_owner, 'sound/items/drink.ogg', 30, 1, -2)
+	// Play a heartbeat sound effect
+	// This was changed to match bloodsucker
+	playsound(action_owner, 'sound/effects/singlebeat.ogg', 30, 1, -2)
 
-	// Log the biting action for admins
-	log_combat(action_owner,bite_target,"bloodfledge bit")
+	// Log the biting action success
+	log_combat(action_owner,bite_target,"bloodfledge bitten (successfully)")
+
+	// Mood events
+	// Check if bite target is dead
+	if(bite_target.stat >= DEAD)
+		// Warn the user
+		to_chat(action_owner, "<span class='warning'>The rotten blood tasted foul.</span>")
+
+		// Add disgust
+		action_owner.adjust_disgust(2)
+
+		// Cause negative mood
+		SEND_SIGNAL(action_owner, COMSIG_ADD_MOOD_EVENT, "bloodfledge_drank_dead", /datum/mood_event/drankblood_dead)
+
+	// Check bite target for synth blood
+	if (bite_target.mob_biotypes & MOB_ROBOTIC)
+		// Warn the user
+		to_chat(action_owner, "<span class='warning'>That didn't taste like blood at all...</span>")
+
+		// Add disgust
+		action_owner.adjust_disgust(2)
+
+		// Cause negative mood
+		SEND_SIGNAL(action_owner, COMSIG_ADD_MOOD_EVENT, "bloodfledge_drank_synth", /datum/mood_event/drankblood_synth)
 
 	// Check if bite target's blood has been depleted
 	if(!target_blood_volume)
 		// Warn the user
 		to_chat(action_owner, "<span class='warning'>You've depleted [bite_target]'s blood supply!</span>")
+
+		// Cause negative mood
+		SEND_SIGNAL(action_owner, COMSIG_ADD_MOOD_EVENT, "bloodfledge_drank_killed", /datum/mood_event/drankkilled)
 
 // Action: Revive
 /datum/action/bloodfledge/revive
