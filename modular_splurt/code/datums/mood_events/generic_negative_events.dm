@@ -20,3 +20,6 @@
 	description = span_warning("I don't feel comfortable wearing this.\n")
 	mood_change = -4
 
+/datum/mood_event/dorsualiphobic_mood_negative
+	description = span_warning("I can't let anyone find out if I'm wearing a backpack or not!\n")
+	mood_change = -4

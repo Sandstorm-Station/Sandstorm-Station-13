@@ -41,3 +41,12 @@
 	name = "Alien Bobbers"
 	icon = 'modular_splurt/icons/mob/mutant_bodyparts.dmi'
 	icon_state = "alienbobbers"
+
+/datum/sprite_accessory/horns/sloogbobbers
+	name = "Sloog Bobbers"
+	icon = 'modular_splurt/icons/mob/64_mutant_bodyparts.dmi'
+	icon_state = "sloogbobbers"
+	dimension_x = 64
+	center = TRUE
+	color_src = MATRIXED
+	matrixed_sections = MATRIX_RED_GREEN
