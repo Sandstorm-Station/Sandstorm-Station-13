@@ -16,6 +16,11 @@
 	. = ..()
 	if(.)
 		return
+
+	// Don't teleport telekinetic users to the pole.
+	if (get_dist(src,user) > 1)
+		return
+
 	if(obj_flags & IN_USE)
 		to_chat(user, "It's already in use - wait a bit.")
 		return
