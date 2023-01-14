@@ -411,12 +411,13 @@
 
 		// Check if quirk mob's area is the chapel
 		if(!istype(holder_area, /area/service/chapel))
-			return		
+			return
 
 		// Run until stamina limit is reached
-		if(quirk_mob.staminaloss < STAMINA_CRIT_REMOVAL_THRESHOLD)
+		// Hard-coded based on STAMINA_CRIT of 140
+		if(quirk_mob.staminaloss < 120)
 			// Apply penalty to stamina, nutrition, and disgust
-			quirk_mob.adjustStaminaLoss(2, FALSE, TRUE)
+			quirk_mob.adjustStaminaLoss(4, FALSE, TRUE)
 			quirk_mob.adjust_nutrition(-0.5)
 			quirk_mob.adjust_disgust(0.5)
 
