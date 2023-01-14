@@ -217,10 +217,10 @@
 
 /datum/supply_pack/misc/plushmium
 	name = "Plushmium Crate"
-	desc = "Contains a small sample of an experimental chemical known as Plushmium, and a plushie to use it on."
+	desc = "Surplus shipment of Stuffing For Spessmen backer rewards. Contains a pre-packaged spray bottle of Plushmium, and toy to use it on."
 	cost = 5000 // Cost of an expensive animal
 	contains = list(
-		/obj/item/reagent_containers/glass/bottle/plushmium,
+		/obj/item/storage/box/shipment_plushmium,
 		/obj/item/choice_beacon/box/plushie
 	)
 

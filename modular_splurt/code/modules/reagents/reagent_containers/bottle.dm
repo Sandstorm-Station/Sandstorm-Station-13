@@ -8,4 +8,6 @@
 	name = "\improper Plushmium Bottle"
 	desc = "A small bottle of Plushmium. Seems almost fluffy, if not for it being a liquid."
 	icon_state = "bottle20"
-	list_reagents = list(/datum/reagent/fermi/plushmium = 30)
+	list_reagents = list(/datum/reagent/fermi/plushmium = 5)
+	possible_transfer_amounts = list(5)
+	volume = 5
