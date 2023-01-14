@@ -15,6 +15,22 @@
 		new /obj/item/reagent_containers/hypospray/medipen/prospacillin(src)
 		new /obj/item/reagent_containers/hypospray/medipen/lewdbomb(src)
 
+// Kinkmate listing for the rapid disrobe implant
+/obj/item/storage/box/implant_disrobe
+	name = "rapid disrobe implant box"
+	desc = "Comes with an implanter and an implant case for quick application!"
+	icon = 'modular_sand/icons/obj/fleshlight.dmi'
+	icon_state = "box"
+
+/obj/item/storage/box/implant_disrobe/ComponentInitialize()
+	. = ..()
+	var/datum/component/storage/str = GetComponent(/datum/component/storage)
+	str.max_items = 2
+
+/obj/item/storage/box/implant_disrobe/PopulateContents()
+	new /obj/item/implanter(src)
+	new /obj/item/implantcase/disrobe(src)
+
 // Shipment box for Plushmium
 /obj/item/storage/box/shipment_plushmium
 	name = "plushmium backer rewards box"
