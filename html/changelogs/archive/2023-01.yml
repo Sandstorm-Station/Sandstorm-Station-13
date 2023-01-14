@@ -40,3 +40,23 @@
   - tweak: Liquid Panty Dropper no longer interferes with held items
   - code_imp: LPD's clothing burst is now a mob proc
   - bugfix: Fixed the late-join panel showing job slots twice
+2023-01-11:
+  BongaTheProto:
+  - bugfix: Fixes gun reskins broken by the new reskin system
+  Seris02:
+  - bugfix: fixed gargoyles having sprites that are odd, along with sanity checks
+      and making the transition between living and statue seamless
+2023-01-12:
+  LeDrascol:
+  - refactor: Moved quirk action datums to a new file
+  - rscadd: Added a Plushmium Crate to cargo
+2023-01-13:
+  Guatolipo:
+  - rscadd: Added CART_CHEMISTRY access to cart-cmo
+  LeDrascol:
+  - tweak: Replaced three dangerous holodeck modes with harmless alternatives
+2023-01-14:
+  LeDrascol:
+  - bugfix: Fixed spelling mistakes in the interaction system
+  - rscadd: Added the Love to Life spray bottle
+  - tweak: Updated Plushmium Crate contents
