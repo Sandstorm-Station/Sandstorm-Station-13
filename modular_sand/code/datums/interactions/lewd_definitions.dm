@@ -136,6 +136,8 @@
 		if(REQUIRE_ANY)
 			return TRUE
 		if(REQUIRE_EXPOSED)
+			if (has_anus && anus_always_accessible)
+				return TRUE
 			switch(anus_exposed)
 				if(-1)
 					return FALSE
