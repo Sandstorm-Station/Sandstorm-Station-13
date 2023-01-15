@@ -231,7 +231,7 @@
 				var/obj/item/organ/genital/genital = locate(params["genital"], self.internal_organs)
 				if(!genital)
 					return FALSE
-				genital.set_accessibility()
+				genital.toggle_accessibility()
 				return TRUE
 			else
 				return FALSE
