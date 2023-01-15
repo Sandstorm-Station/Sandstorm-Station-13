@@ -124,6 +124,7 @@
 				&& !(HAS_TRAIT(get_genitals, TRAIT_PERMABONER) \
 				|| HAS_TRAIT(get_genitals, TRAIT_NEVERBONER)))
 			genital_entry["arousal_state"] = genital.aroused_state
+			genital_entry["always_accessible"] = genital.always_accessible
 			genitals += list(genital_entry)
 	if(iscarbon(self))
 		var/simulated_ass = list()
@@ -139,6 +140,7 @@
 				visibility = "Always hidden"
 		simulated_ass["visibility"] = visibility
 		simulated_ass["possible_choices"] = GLOB.genitals_visibility_toggles - GEN_VISIBLE_NO_CLOTHES
+		simulated_ass["always_accessible"] = self.anus_always_accessible
 		genitals += list(simulated_ass)
 	.["genitals"] = genitals
 
@@ -222,6 +224,15 @@
 					var/mob/living/carbon/human/human = self
 					human.update_genitals()
 				return
+			if("set_accessibility" in params)
+				if(params["genital"] == "anus")
+					self.toggle_anus_always_accessible()
+					return TRUE
+				var/obj/item/organ/genital/genital = locate(params["genital"], self.internal_organs)
+				if(!genital)
+					return FALSE
+				genital.set_accessibility()
+				return TRUE
 			else
 				return FALSE
 		if("char_pref")
