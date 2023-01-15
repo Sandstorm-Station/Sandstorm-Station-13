@@ -507,14 +507,30 @@
 	var/mob/living/carbon/human/quirk_mob = quirk_holder
 
 	// Create vampire ID card
-	var/obj/item/card/id/vampire/vcard = new /obj/item/card/id/vampire
+	var/obj/item/card/id/vampire/id_vampire = new /obj/item/card/id/vampire
 
-	// Update name and description
-	vcard.registered_name = quirk_mob.real_name
-	vcard.update_label(addtext(vcard.registered_name, " the vampire"))
+	// Update card information
+	id_vampire.registered_name = quirk_mob.real_name
+	id_vampire.update_label(addtext(id_vampire.registered_name, "'s Bloodfledge"))
+
+	// Determine banking ID information
+	for(var/bank_account in SSeconomy.bank_accounts)
+		// Define current iteration's account
+		var/datum/bank_account/account = bank_account
+
+		// Check for match
+		if(account.account_id == quirk_mob.account_id)
+			// Add to cards list
+			account.bank_cards += src
+
+			// Assign account
+			id_vampire.registered_account = account
+
+			// Stop searching
+			break
 
 	// Add to backpack
-	quirk_mob.equip_to_slot(vcard, ITEM_SLOT_BACKPACK)
+	quirk_mob.equip_to_slot(id_vampire, ITEM_SLOT_BACKPACK)
 
 	// Update sprites
 	quirk_mob.regenerate_icons()
