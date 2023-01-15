@@ -18,7 +18,7 @@
 	set desc = "Allows you to set your gender."
 
 	if(stat != CONSCIOUS)
-		to_chat(usr, "<span class='warning'>You cannot toggle your gender while unconcious!</span>")
+		to_chat(usr, span_warning("You cannot toggle your gender while unconcious!"))
 		return
 
 	var/choice = tgui_alert(usr, "Select Gender.", "Gender", list("Both", "Male", "Female"))
@@ -214,10 +214,10 @@
 				var/original_state = genital.aroused_state
 				genital.set_aroused_state(params["set_arousal"])// i'm not making it just `!aroused_state` because
 				if(original_state != genital.aroused_state)		// someone just might port skyrat's new genitals
-					to_chat(self, "<span class='userlove'>[genital.aroused_state ? genital.arousal_verb : genital.unarousal_verb].</span>")
+					to_chat(self, span_userlove("[genital.aroused_state ? genital.arousal_verb : genital.unarousal_verb]."))
 					. = TRUE
 				else
-					to_chat(self, "<span class='userlove'>You can't make that genital [genital.aroused_state ? "unaroused" : "aroused"]!</span>")
+					to_chat(self, span_userlove("You can't make that genital [genital.aroused_state ? "unaroused" : "aroused"]!"))
 					. = FALSE
 				genital.update_appearance()
 				if(ishuman(self))

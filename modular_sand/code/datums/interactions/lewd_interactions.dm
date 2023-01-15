@@ -73,17 +73,17 @@
 		return FALSE
 	if(user_not_tired && !COOLDOWN_FINISHED(user, refractory_period))
 		if(!silent) //bye spam
-			to_chat(user, "<span class='warning'>You're still exhausted from the last time. You need to wait [DisplayTimeText(COOLDOWN_TIMELEFT(user, refractory_period), 1)] until you can do that!</span>")
+			to_chat(user, span_warning("You're still exhausted from the last time. You need to wait [DisplayTimeText(COOLDOWN_TIMELEFT(user, refractory_period), 1)] until you can do that!"))
 		return FALSE
 
 	if(require_user_bottomless && !user.is_bottomless())
 		if(!silent)
-			to_chat(user, "<span class='warning'>Your pants are in the way.</span>")
+			to_chat(user, span_warning("Your pants are in the way."))
 		return FALSE
 
 	if(require_user_topless && !user.is_topless())
 		if(!silent)
-			to_chat(user, "<span class='warning'>Your top is in the way.</span>")
+			to_chat(user, span_warning("Your top is in the way."))
 		return FALSE
 
 	if(require_user_penis)
@@ -91,17 +91,17 @@
 			if(REQUIRE_EXPOSED)
 				if(!user.has_penis(REQUIRE_EXPOSED))
 					if(!silent)
-						to_chat(user, "<span class='warning'>Your penis need to be exposed.</span>")
+						to_chat(user, span_warning("Your penis need to be exposed."))
 					return FALSE
 			if(REQUIRE_ANY)
 				if(!user.has_penis(REQUIRE_ANY))
 					if(!silent)
-						to_chat(user, "<span class='warning'>You don't have a penis.</span>")
+						to_chat(user, span_warning("You don't have a penis."))
 					return FALSE
 			if(REQUIRE_UNEXPOSED)
 				if(!user.has_penis(REQUIRE_UNEXPOSED))
 					if(!silent)
-						to_chat(user, "<span class='warning'>Your penis need to be unexposed.</span>")
+						to_chat(user, span_warning("Your penis need to be unexposed."))
 					return FALSE
 
 	if(require_user_balls)
@@ -109,17 +109,17 @@
 			if(REQUIRE_EXPOSED)
 				if(!user.has_balls(REQUIRE_EXPOSED))
 					if(!silent)
-						to_chat(user, "<span class='warning'>Your balls need to be exposed.</span>")
+						to_chat(user, span_warning("Your balls need to be exposed."))
 					return FALSE
 			if(REQUIRE_ANY)
 				if(!user.has_balls(REQUIRE_ANY))
 					if(!silent)
-						to_chat(user, "<span class='warning'>You don't have balls.</span>")
+						to_chat(user, span_warning("You don't have balls."))
 					return FALSE
 			if(REQUIRE_UNEXPOSED)
 				if(!user.has_balls(REQUIRE_UNEXPOSED))
 					if(!silent)
-						to_chat(user, "<span class='warning'>Your balls need to be unexposed.</span>")
+						to_chat(user, span_warning("Your balls need to be unexposed."))
 					return FALSE
 
 	if(require_user_anus)
@@ -127,17 +127,17 @@
 			if(REQUIRE_EXPOSED)
 				if(!user.has_anus(REQUIRE_EXPOSED))
 					if(!silent)
-						to_chat(user, "<span class='warning'>Your anus need to be exposed.</span>")
+						to_chat(user, span_warning("Your anus need to be exposed."))
 					return FALSE
 			if(REQUIRE_ANY)
 				if(!user.has_anus(REQUIRE_ANY))
 					if(!silent)
-						to_chat(user, "<span class='warning'>You don't have an anus.</span>")
+						to_chat(user, span_warning("You don't have an anus."))
 					return FALSE
 			if(REQUIRE_UNEXPOSED)
 				if(!user.has_anus(REQUIRE_UNEXPOSED))
 					if(!silent)
-						to_chat(user, "<span class='warning'>Your anus need to be unexposed.</span>")
+						to_chat(user, span_warning("Your anus need to be unexposed."))
 					return FALSE
 
 	if(require_user_vagina)
@@ -145,17 +145,17 @@
 			if(REQUIRE_EXPOSED)
 				if(!user.has_vagina(REQUIRE_EXPOSED))
 					if(!silent)
-						to_chat(user, "<span class='warning'>Your vagina need to be exposed.</span>")
+						to_chat(user, span_warning("Your vagina need to be exposed."))
 					return FALSE
 			if(REQUIRE_ANY)
 				if(!user.has_vagina(REQUIRE_ANY))
 					if(!silent)
-						to_chat(user, "<span class='warning'>You don't have a vagina.</span>")
+						to_chat(user, span_warning("You don't have a vagina."))
 					return FALSE
 			if(REQUIRE_UNEXPOSED)
 				if(!user.has_vagina(REQUIRE_UNEXPOSED))
 					if(!silent)
-						to_chat(user, "<span class='warning'>Your vagina need to be unexposed.</span>")
+						to_chat(user, span_warning("Your vagina need to be unexposed."))
 					return FALSE
 
 	if(require_user_breasts)
@@ -163,17 +163,17 @@
 			if(REQUIRE_EXPOSED)
 				if(!user.has_breasts(REQUIRE_EXPOSED))
 					if(!silent)
-						to_chat(user, "<span class='warning'>Your breasts need to be exposed.</span>")
+						to_chat(user, span_warning("Your breasts need to be exposed."))
 					return FALSE
 			if(REQUIRE_ANY)
 				if(!user.has_breasts(REQUIRE_ANY))
 					if(!silent)
-						to_chat(user, "<span class='warning'>You don't have breasts.</span>")
+						to_chat(user, span_warning("You don't have breasts."))
 					return FALSE
 			if(REQUIRE_UNEXPOSED)
 				if(!user.has_breasts(REQUIRE_UNEXPOSED))
 					if(!silent)
-						to_chat(user, "<span class='warning'>Your breasts need to be unexposed.</span>")
+						to_chat(user, span_warning("Your breasts need to be unexposed."))
 					return FALSE
 
 	if(require_user_feet)
@@ -181,22 +181,22 @@
 			if(REQUIRE_EXPOSED)
 				if(!user.has_feet(REQUIRE_EXPOSED))
 					if(!silent)
-						to_chat(user, "<span class='warning'>Your feet need to be exposed.</span>")
+						to_chat(user, span_warning("Your feet need to be exposed."))
 					return FALSE
 			if(REQUIRE_ANY)
 				if(!user.has_feet(REQUIRE_ANY))
 					if(!silent)
-						to_chat(user, "<span class='warning'>You don't have enough feet.</span>")
+						to_chat(user, span_warning("You don't have enough feet."))
 					return FALSE
 			if(REQUIRE_UNEXPOSED)
 				if(!user.has_feet(REQUIRE_UNEXPOSED))
 					if(!silent)
-						to_chat(user, "<span class='warning'>Your feet need to be unexposed.</span>")
+						to_chat(user, span_warning("Your feet need to be unexposed."))
 					return FALSE
 
 	if(require_user_num_feet && (user.get_num_feet() < require_user_num_feet))
 		if(!silent)
-			to_chat(user, "<span class='warning'>You don't have enough feet.</span>")
+			to_chat(user, span_warning("You don't have enough feet."))
 		return FALSE
 
 	if(require_user_eyes)
@@ -204,17 +204,17 @@
 			if(REQUIRE_EXPOSED)
 				if(!user.has_eyes(REQUIRE_EXPOSED))
 					if(!silent)
-						to_chat(user, "<span class='warning'>Your eyes need to be exposed.</span>")
+						to_chat(user, span_warning("Your eyes need to be exposed."))
 					return FALSE
 			if(REQUIRE_ANY)
 				if(!user.has_eyes(REQUIRE_ANY))
 					if(!silent)
-						to_chat(user, "<span class='warning'>You don't have eyes.</span>")
+						to_chat(user, span_warning("You don't have eyes."))
 					return FALSE
 			if(REQUIRE_UNEXPOSED)
 				if(!user.has_eyes(REQUIRE_UNEXPOSED))
 					if(!silent)
-						to_chat(user, "<span class='warning'>Your eyes need to be unexposed.</span>")
+						to_chat(user, span_warning("Your eyes need to be unexposed."))
 					return FALSE
 
 	if(require_user_eyesockets)
@@ -222,17 +222,17 @@
 			if(REQUIRE_EXPOSED)
 				if(!user.has_eyesockets(REQUIRE_EXPOSED))
 					if(!silent)
-						to_chat(user, "<span class='warning'>Your eyesockets need to be exposed.</span>")
+						to_chat(user, span_warning("Your eyesockets need to be exposed."))
 					return FALSE
 			if(REQUIRE_ANY)
 				if(!user.has_eyesockets(REQUIRE_ANY))
 					if(!silent)
-						to_chat(user, "<span class='warning'>You still have eyes.</span>")
+						to_chat(user, span_warning("You still have eyes."))
 					return FALSE
 			if(REQUIRE_UNEXPOSED)
 				if(!user.has_eyesockets(REQUIRE_UNEXPOSED))
 					if(!silent)
-						to_chat(user, "<span class='warning'>Your eyesockets need to be unexposed.</span>")
+						to_chat(user, span_warning("Your eyesockets need to be unexposed."))
 					return FALSE
 
 	if(require_user_ears)
@@ -240,17 +240,17 @@
 			if(REQUIRE_EXPOSED)
 				if(!user.has_ears(REQUIRE_EXPOSED))
 					if(!silent)
-						to_chat(user, "<span class='warning'>Your ears need to be exposed.</span>")
+						to_chat(user, span_warning("Your ears need to be exposed."))
 					return FALSE
 			if(REQUIRE_ANY)
 				if(!user.has_ears(REQUIRE_ANY))
 					if(!silent)
-						to_chat(user, "<span class='warning'>You don't have ears.</span>")
+						to_chat(user, span_warning("You don't have ears."))
 					return FALSE
 			if(REQUIRE_UNEXPOSED)
 				if(!user.has_ears(REQUIRE_UNEXPOSED))
 					if(!silent)
-						to_chat(user, "<span class='warning'>Your ears need to be unexposed.</span>")
+						to_chat(user, span_warning("Your ears need to be unexposed."))
 					return FALSE
 
 	if(require_user_earsockets)
@@ -258,17 +258,17 @@
 			if(REQUIRE_EXPOSED)
 				if(!user.has_earsockets(REQUIRE_EXPOSED))
 					if(!silent)
-						to_chat(user, "<span class='warning'>Your earsockets need to be exposed.</span>")
+						to_chat(user, span_warning("Your earsockets need to be exposed."))
 					return FALSE
 			if(REQUIRE_ANY)
 				if(!user.has_earsockets(REQUIRE_ANY))
 					if(!silent)
-						to_chat(user, "<span class='warning'>You still have eyes.</span>")
+						to_chat(user, span_warning("You still have eyes."))
 					return FALSE
 			if(REQUIRE_UNEXPOSED)
 				if(!user.has_earsockets(REQUIRE_UNEXPOSED))
 					if(!silent)
-						to_chat(user, "<span class='warning'>Your earsockets need to be unexposed.</span>")
+						to_chat(user, span_warning("Your earsockets need to be unexposed."))
 					return FALSE
 
 	if(extreme)
@@ -276,7 +276,7 @@
 		if(cli)
 			if(cli.prefs.extremepref == "No")
 				if(!silent)
-					to_chat(user, "<span class='warning'>That's way too much for you.</span>")
+					to_chat(user, span_warning("That's way too much for you."))
 				return FALSE
 
 	if(require_ooc_consent)
@@ -292,17 +292,17 @@
 		return FALSE
 	if(target_not_tired && !COOLDOWN_FINISHED(target, refractory_period))
 		if(!silent) //same with this
-			to_chat(user, "<span class='warning'>They're still exhausted from the last time. They need to wait [DisplayTimeText(COOLDOWN_TIMELEFT(target, refractory_period), 1)] until you can do that!</span>")
+			to_chat(user, span_warning("They're still exhausted from the last time. They need to wait [DisplayTimeText(COOLDOWN_TIMELEFT(target, refractory_period), 1)] until you can do that!"))
 		return FALSE
 
 	if(require_target_bottomless && !target.is_bottomless())
 		if(!silent)
-			to_chat(user, "<span class='warning'>Their pants are in the way.</span>")
+			to_chat(user, span_warning("Their pants are in the way."))
 		return FALSE
 
 	if(require_target_topless && !target.is_topless())
 		if(!silent)
-			to_chat(user, "<span class='warning'>Their clothes are in the way.</span>")
+			to_chat(user, span_warning("Their clothes are in the way."))
 		return FALSE
 
 	if(require_target_penis)
@@ -310,17 +310,17 @@
 			if(REQUIRE_EXPOSED)
 				if(!target.has_penis(REQUIRE_EXPOSED))
 					if(!silent)
-						to_chat(user, "<span class='warning'>Their penis needs to be exposed.</span>")
+						to_chat(user, span_warning("Their penis needs to be exposed."))
 					return FALSE
 			if(REQUIRE_ANY)
 				if(!target.has_penis(REQUIRE_ANY))
 					if(!silent)
-						to_chat(user, "<span class='warning'>They don't have a penis.</span>")
+						to_chat(user, span_warning("They don't have a penis."))
 					return FALSE
 			if(REQUIRE_UNEXPOSED)
 				if(!target.has_penis(REQUIRE_UNEXPOSED))
 					if(!silent)
-						to_chat(user, "<span class='warning'>Their penis needs to be unexposed.</span>")
+						to_chat(user, span_warning("Their penis needs to be unexposed."))
 					return FALSE
 
 	if(require_target_balls)
@@ -328,17 +328,17 @@
 			if(REQUIRE_EXPOSED)
 				if(!target.has_balls(REQUIRE_EXPOSED))
 					if(!silent)
-						to_chat(user, "<span class='warning'>Their balls need to be exposed.</span>")
+						to_chat(user, span_warning("Their balls need to be exposed."))
 					return FALSE
 			if(REQUIRE_ANY)
 				if(!target.has_balls(REQUIRE_ANY))
 					if(!silent)
-						to_chat(user, "<span class='warning'>They don't have balls.</span>")
+						to_chat(user, span_warning("They don't have balls."))
 					return FALSE
 			if(REQUIRE_UNEXPOSED)
 				if(!target.has_balls(REQUIRE_UNEXPOSED))
 					if(!silent)
-						to_chat(user, "<span class='warning'>Their balls need to be unexposed.</span>")
+						to_chat(user, span_warning("Their balls need to be unexposed."))
 					return FALSE
 
 	if(require_target_anus)
@@ -346,17 +346,17 @@
 			if(REQUIRE_EXPOSED)
 				if(!target.has_anus(REQUIRE_EXPOSED))
 					if(!silent)
-						to_chat(user, "<span class='warning'>Their anus needs to be exposed.</span>")
+						to_chat(user, span_warning("Their anus needs to be exposed."))
 					return FALSE
 			if(REQUIRE_ANY)
 				if(!target.has_anus(REQUIRE_ANY))
 					if(!silent)
-						to_chat(user, "<span class='warning'>They don't have an anus.</span>")
+						to_chat(user, span_warning("They don't have an anus."))
 					return FALSE
 			if(REQUIRE_UNEXPOSED)
 				if(!target.has_anus(REQUIRE_UNEXPOSED))
 					if(!silent)
-						to_chat(user, "<span class='warning'>Their anus needs to be unexposed.</span>")
+						to_chat(user, span_warning("Their anus needs to be unexposed."))
 					return FALSE
 
 	if(require_target_vagina)
@@ -364,17 +364,17 @@
 			if(REQUIRE_EXPOSED)
 				if(!target.has_vagina(REQUIRE_EXPOSED))
 					if(!silent)
-						to_chat(user, "<span class='warning'>Their vagina needs to be exposed.</span>")
+						to_chat(user, span_warning("Their vagina needs to be exposed."))
 					return FALSE
 			if(REQUIRE_ANY)
 				if(!target.has_vagina(REQUIRE_ANY))
 					if(!silent)
-						to_chat(user, "<span class='warning'>They don't have a vagina.</span>")
+						to_chat(user, span_warning("They don't have a vagina."))
 					return FALSE
 			if(REQUIRE_UNEXPOSED)
 				if(!target.has_vagina(REQUIRE_UNEXPOSED))
 					if(!silent)
-						to_chat(user, "<span class='warning'>Their vagina needs to be unexposed.</span>")
+						to_chat(user, span_warning("Their vagina needs to be unexposed."))
 					return FALSE
 
 	if(require_target_breasts)
@@ -382,17 +382,17 @@
 			if(REQUIRE_EXPOSED)
 				if(!target.has_breasts(REQUIRE_EXPOSED))
 					if(!silent)
-						to_chat(user, "<span class='warning'>Their breasts need to be exposed.</span>")
+						to_chat(user, span_warning("Their breasts need to be exposed."))
 					return FALSE
 			if(REQUIRE_ANY)
 				if(!target.has_breasts(REQUIRE_ANY))
 					if(!silent)
-						to_chat(user, "<span class='warning'>They don't have breasts.</span>")
+						to_chat(user, span_warning("They don't have breasts."))
 					return FALSE
 			if(REQUIRE_UNEXPOSED)
 				if(!target.has_breasts(REQUIRE_UNEXPOSED))
 					if(!silent)
-						to_chat(user, "<span class='warning'>Their breasts need to be unexposed.</span>")
+						to_chat(user, span_warning("Their breasts need to be unexposed."))
 					return FALSE
 
 	if(require_target_feet)
@@ -400,22 +400,22 @@
 			if(REQUIRE_EXPOSED)
 				if(!target.has_feet(REQUIRE_EXPOSED))
 					if(!silent)
-						to_chat(user, "<span class='warning'>Their feet need to be exposed.</span>")
+						to_chat(user, span_warning("Their feet need to be exposed."))
 					return FALSE
 			if(REQUIRE_ANY)
 				if(!target.has_feet(REQUIRE_ANY))
 					if(!silent)
-						to_chat(user, "<span class='warning'>They don't have enough feet.</span>")
+						to_chat(user, span_warning("They don't have enough feet."))
 					return FALSE
 			if(REQUIRE_UNEXPOSED)
 				if(!target.has_feet(REQUIRE_UNEXPOSED))
 					if(!silent)
-						to_chat(user, "<span class='warning'>Their feet need to be unexposed.</span>")
+						to_chat(user, span_warning("Their feet need to be unexposed."))
 					return FALSE
 
 	if(require_target_num_feet && (target.get_num_feet() < require_target_num_feet))
 		if(!silent)
-			to_chat(user, "<span class='warning'>They don't have enough feet.</span>")
+			to_chat(user, span_warning("They don't have enough feet."))
 		return FALSE
 
 	if(require_target_eyes)
@@ -423,17 +423,17 @@
 			if(REQUIRE_EXPOSED)
 				if(!target.has_eyes(REQUIRE_EXPOSED))
 					if(!silent)
-						to_chat(user, "<span class='warning'>Their eyes need to be exposed.</span>")
+						to_chat(user, span_warning("Their eyes need to be exposed."))
 					return FALSE
 			if(REQUIRE_ANY)
 				if(!target.has_eyes(REQUIRE_ANY))
 					if(!silent)
-						to_chat(user, "<span class='warning'>They don't have eyes.</span>")
+						to_chat(user, span_warning("They don't have eyes."))
 					return FALSE
 			if(REQUIRE_UNEXPOSED)
 				if(!target.has_eyes(REQUIRE_UNEXPOSED))
 					if(!silent)
-						to_chat(user, "<span class='warning'>Their eyes need to be unexposed.</span>")
+						to_chat(user, span_warning("Their eyes need to be unexposed."))
 					return FALSE
 
 	if(require_target_eyesockets)
@@ -441,17 +441,17 @@
 			if(REQUIRE_EXPOSED)
 				if(!target.has_eyesockets(REQUIRE_EXPOSED))
 					if(!silent)
-						to_chat(user, "<span class='warning'>Their eyesockets need to be exposed.</span>")
+						to_chat(user, span_warning("Their eyesockets need to be exposed."))
 					return FALSE
 			if(REQUIRE_ANY)
 				if(!target.has_eyesockets(REQUIRE_ANY))
 					if(!silent)
-						to_chat(user, "<span class='warning'>They still have eyes.</span>")
+						to_chat(user, span_warning("They still have eyes."))
 					return FALSE
 			if(REQUIRE_UNEXPOSED)
 				if(!target.has_eyesockets(REQUIRE_UNEXPOSED))
 					if(!silent)
-						to_chat(user, "<span class='warning'>Their eyesockets need to be unexposed.</span>")
+						to_chat(user, span_warning("Their eyesockets need to be unexposed."))
 					return FALSE
 
 	if(require_target_ears)
@@ -459,17 +459,17 @@
 			if(REQUIRE_EXPOSED)
 				if(!target.has_ears(REQUIRE_EXPOSED))
 					if(!silent)
-						to_chat(user, "<span class='warning'>Their ears need to be exposed.</span>")
+						to_chat(user, span_warning("Their ears need to be exposed."))
 					return FALSE
 			if(REQUIRE_ANY)
 				if(!target.has_ears(REQUIRE_ANY))
 					if(!silent)
-						to_chat(user, "<span class='warning'>They don't have ears.</span>")
+						to_chat(user, span_warning("They don't have ears."))
 					return FALSE
 			if(REQUIRE_UNEXPOSED)
 				if(!target.has_ears(REQUIRE_UNEXPOSED))
 					if(!silent)
-						to_chat(user, "<span class='warning'>Their ears need to be unexposed.</span>")
+						to_chat(user, span_warning("Their ears need to be unexposed."))
 					return FALSE
 
 	if(require_target_earsockets)
@@ -477,17 +477,17 @@
 			if(REQUIRE_EXPOSED)
 				if(!target.has_earsockets(REQUIRE_EXPOSED))
 					if(!silent)
-						to_chat(user, "<span class='warning'>Their earsockets need to be exposed.</span>")
+						to_chat(user, span_warning("Their earsockets need to be exposed."))
 					return FALSE
 			if(REQUIRE_ANY)
 				if(!target.has_earsockets(REQUIRE_ANY))
 					if(!silent)
-						to_chat(user, "<span class='warning'>They still have eyes.</span>")
+						to_chat(user, span_warning("They still have eyes."))
 					return FALSE
 			if(REQUIRE_UNEXPOSED)
 				if(!target.has_earsockets(REQUIRE_UNEXPOSED))
 					if(!silent)
-						to_chat(user, "<span class='warning'>Their earsockets need to be unexposed.</span>")
+						to_chat(user, span_warning("Their earsockets need to be unexposed."))
 					return FALSE
 
 	if(extreme)
@@ -495,7 +495,7 @@
 		if(cli)
 			if(target.client.prefs.extremepref == "No")
 				if(!silent)
-					to_chat(user, "<span class='warning'>For some reason, you don't want to do this to [target].</span>")
+					to_chat(user, span_warning("For some reason, you don't want to do this to [target]."))
 				return FALSE
 
 	if(require_ooc_consent)
