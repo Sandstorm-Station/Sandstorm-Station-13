@@ -20,3 +20,11 @@
 	icon = 'modular_splurt/icons/obj/plushes.dmi'
 	icon_state = "plushie_mal0"
 	item_state = "plushie_mal0"
+
+/obj/item/toy/plush/nobl
+	name = "Nobl plushie"
+	desc = "It seems to be a small canine, not necessarily latex like you would suspect for some reason, but extremely squishy."
+	icon = 'modular_splurt/icons/obj/plushes.dmi'
+	icon_state = "nobl_plush"
+	item_state = "nobl_plush"
+	squeak_override = list('modular_splurt/sound/misc/dog_toy.ogg' = 1)
