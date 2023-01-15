@@ -8,7 +8,7 @@
 		if(!suppressed)
 			playsound(src.loc, 'sound/weapons/kenetic_reload.ogg', 60, 1)
 		else
-			to_chat(loc, "<span class='warning'>[src] silently charges up.</span>")
+			to_chat(loc, span_warning("[src] silently charges up."))
 		update_icon()
 		overheat = FALSE
 	else //this is a terrible solution, but it ensures that it wont be stuck on dischaged if it fails to reload in an obj
@@ -32,16 +32,16 @@
 		var/obj/item/borg/upgrade/modkit/MK = I
 		switch(MK.type)
 			if(/obj/item/borg/upgrade/modkit/chassis_mod)
-				to_chat(user, "<span class='userdanger'>This modkit is unsuitable for [src]!</span>")
+				to_chat(user, span_userdanger("This modkit is unsuitable for [src]!"))
 				return FALSE
 			if(/obj/item/borg/upgrade/modkit/chassis_mod/orange)
-				to_chat(user, "<span class='userdanger'>This modkit is unsuitable for [src]!</span>")
+				to_chat(user, span_userdanger("This modkit is unsuitable for [src]!"))
 				return FALSE
 			if(/obj/item/borg/upgrade/modkit/tracer)
-				to_chat(user, "<span class='userdanger'>This modkit is unsuitable for [src]!</span>")
+				to_chat(user, span_userdanger("This modkit is unsuitable for [src]!"))
 				return FALSE
 			if(/obj/item/borg/upgrade/modkit/tracer/adjustable)
-				to_chat(user, "<span class='userdanger'>This modkit is unsuitable for [src]!</span>")
+				to_chat(user, span_userdanger("This modkit is unsuitable for [src]!"))
 				return FALSE
 		MK.install(src, user)
 	else
@@ -53,16 +53,16 @@
 			var/obj/item/borg/upgrade/modkit/MK = src
 			switch(MK.type)
 				if(/obj/item/borg/upgrade/modkit/chassis_mod)
-					to_chat(user, "<span class='userdanger'>This modkit is unsuitable for [A]!</span>")
+					to_chat(user, span_userdanger("This modkit is unsuitable for [A]!"))
 					return FALSE
 				if(/obj/item/borg/upgrade/modkit/chassis_mod/orange)
-					to_chat(user, "<span class='userdanger'>This modkit is unsuitable for [A]!</span>")
+					to_chat(user, span_userdanger("This modkit is unsuitable for [A]!"))
 					return FALSE
 				if(/obj/item/borg/upgrade/modkit/tracer)
-					to_chat(user, "<span class='userdanger'>This modkit is unsuitable for [A]!</span>")
+					to_chat(user, span_userdanger("This modkit is unsuitable for [A]!"))
 					return FALSE
 				if(/obj/item/borg/upgrade/modkit/tracer/adjustable)
-					to_chat(user, "<span class='userdanger'>This modkit is unsuitable for [A]!</span>")
+					to_chat(user, span_userdanger("This modkit is unsuitable for [A]!"))
 					return FALSE
 		install(A, user)
 	else
@@ -391,7 +391,7 @@
 
 /mob/living/simple_animal/hostile/asteroid/hivelordbrood/explosivelegion/death()
 	explosion(src.loc, 0, 0, 1, 2, 0, FALSE, 2)
-	src.visible_message("<span class='danger'>The [src] explodes!</span>")
+	src.visible_message(span_danger("The [src] explodes!"))
 	..()
 
 /obj/item/borg/upgrade/modkit/skull
@@ -435,7 +435,7 @@
 			else
 				hitlist += L
 				L.adjustFireLoss(src.modifier)
-				to_chat(L, "<span class='userdanger'>You're hit by [KA]'s fire breath!</span>")
+				to_chat(L, span_userdanger("You're hit by [KA]'s fire breath!"))
 //king goat
 /obj/item/borg/upgrade/modkit/cooldown/cooler
 	name = "cooler modification kit"

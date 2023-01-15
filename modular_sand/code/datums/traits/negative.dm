@@ -3,8 +3,8 @@
 	desc = "You never learned galactic common."
 	value = 0
 	mob_trait = TRAIT_SHELTERED
-	gain_text = "<span class='danger'>You do not understand galactic common.</span>"
-	lose_text = "<span class='notice'>You start to put together what people are saying in galactic common.</span>"
+	gain_text = span_danger("You do not understand galactic common.")
+	lose_text = span_notice("You start to put together what people are saying in galactic common.")
 	medical_record_text = "Patient looks perplexed when questioned in galactic common."
 
 /datum/quirk/sheltered/on_spawn()

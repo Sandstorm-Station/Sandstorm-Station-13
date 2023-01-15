@@ -2417,7 +2417,7 @@
 		var/list/adjusted = H.adjust_arousal(2,"catnip", aphro = TRUE)
 		for(var/g in adjusted)
 			var/obj/item/organ/genital/G = g
-			to_chat(M, "<span class='userlove'>You feel like playing with your [G.name]!</span>")
+			to_chat(M, span_userlove("You feel like playing with your [G.name]!"))
 	..()
 
 /datum/reagent/preservahyde

@@ -195,11 +195,11 @@ They deal 35 brute (armor is considered).
 		if(isliving(A))
 			var/mob/living/LM = A
 			forceMove(LM.loc)
-			visible_message("<span class='userdanger'>[src] knocks [LM] down!</span>")
+			visible_message(span_userdanger("[src] knocks [LM] down!"))
 			LM.DefaultCombatKnockdown(60)
 			discharge()
 		else if(istype(A, /turf/closed))
-			visible_message("<span class='userdanger'>[src] crashes headfirst into [A]!</span>")
+			visible_message(span_userdanger("[src] crashes headfirst into [A]!"))
 			discharge(1.33)
 
 /mob/living/simple_animal/hostile/megafauna/gladiator/proc/update_phase()
@@ -231,7 +231,7 @@ They deal 35 brute (armor is considered).
 		move_to_delay = move_to_charge
 
 /mob/living/simple_animal/hostile/megafauna/gladiator/proc/zweispin()
-	visible_message("<span class='boldwarning'>[src] lifts his zweihander, and prepares to spin!</span>")
+	visible_message(span_boldwarning("[src] lifts his zweihander, and prepares to spin!"))
 	speen = TRUE
 	animate(src, color = "#ff6666", 10)
 	sleep(5)
@@ -285,7 +285,7 @@ They deal 35 brute (armor is considered).
 
 /mob/living/simple_animal/hostile/megafauna/gladiator/proc/chargeattack(atom/target, var/range)
 	face_atom(target)
-	visible_message("<span class='boldwarning'>[src] lifts his shield, and prepares to charge!</span>")
+	visible_message(span_boldwarning("[src] lifts his shield, and prepares to charge!"))
 	animate(src, color = "#ff6666", 3)
 	sleep(4)
 	face_atom(target)
