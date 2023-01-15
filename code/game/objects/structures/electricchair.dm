@@ -50,7 +50,6 @@
 
 /obj/structure/chair/e_chair/Destroy()
 	if(part)
-		qdel(part)
-		part = null
+		QDEL_NULL(part)
 
 	return ..()
