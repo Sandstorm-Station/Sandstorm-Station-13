@@ -20,6 +20,7 @@
 	var/has_penis = FALSE
 	var/has_vagina = FALSE
 	var/has_anus = TRUE
+	var/anus_always_accessible = FALSE
 	var/has_breasts = FALSE
 	var/anus_exposed = FALSE
 	var/last_partner
@@ -83,6 +84,9 @@
 	lust = num
 	lastlusttime = world.time
 
+/mob/living/proc/toggle_anus_always_accessible()
+	anus_always_accessible = !anus_always_accessible
+
 /mob/living/proc/has_penis(visibility = REQUIRE_ANY)
 	var/mob/living/carbon/C = src
 	if(has_penis && !istype(C))
@@ -94,7 +98,7 @@
 				if(REQUIRE_ANY)
 					return TRUE
 				if(REQUIRE_EXPOSED)
-					if(peepee.is_exposed())
+					if(peepee.is_exposed() || peepee.always_accessible)
 						return TRUE
 					else
 						return FALSE
@@ -116,7 +120,7 @@
 				if(REQUIRE_ANY)
 					return TRUE
 				if(REQUIRE_EXPOSED)
-					if(peepee.is_exposed())
+					if(peepee.is_exposed() || peepee.always_accessible)
 						return TRUE
 					else
 						return FALSE
@@ -140,7 +144,7 @@
 				if(REQUIRE_ANY)
 					return TRUE
 				if(REQUIRE_EXPOSED)
-					if(peepee.is_exposed())
+					if(peepee.is_exposed() || peepee.always_accessible)
 						return TRUE
 					else
 						return FALSE
@@ -164,7 +168,7 @@
 				if(REQUIRE_ANY)
 					return TRUE
 				if(REQUIRE_EXPOSED)
-					if(peepee.is_exposed())
+					if(peepee.is_exposed() || peepee.always_accessible)
 						return TRUE
 					else
 						return FALSE
@@ -184,6 +188,8 @@
 		if(REQUIRE_ANY)
 			return TRUE
 		if(REQUIRE_EXPOSED)
+			if (has_anus && anus_always_accessible)
+				return TRUE
 			switch(anus_exposed)
 				if(-1)
 					return FALSE
