@@ -23,3 +23,9 @@
 /datum/mood_event/dorsualiphobic_mood_negative
 	description = span_warning("I can't let anyone find out if I'm wearing a backpack or not!\n")
 	mood_change = -4
+
+// Matches drinking synth blood (drankblood_synth)
+/datum/mood_event/drankblood_slime
+	description = "<span class='boldwarning'>I drank liquid slime. What is wrong with me?</span>\n"
+	mood_change = -7
+	timeout = 15 MINUTES

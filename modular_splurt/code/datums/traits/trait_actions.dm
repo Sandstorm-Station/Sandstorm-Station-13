@@ -203,14 +203,6 @@
 		to_chat(action_owner, "<span class='warning'>You can't drain blood from [pull_target]!</span>")
 		return
 
-	// Check for carbon robots (technical issue)
-	/* Removed in favor of mood penalty
-	if (bite_target.mob_biotypes & MOB_ROBOTIC)
-		// Warn the user, then return
-		to_chat(action_owner, "<span class='warning'>You can't drain blood from robotic lifeforms!</span>")
-		return
-	*/
-
 	// Check for anti-magic
 	if(bite_target.anti_magic_check(FALSE, TRUE, FALSE, 0))
 		// Warn the user and target, then return
@@ -304,6 +296,68 @@
 	// Create blood splatter
 	bite_target.add_splatter_floor(get_turf(bite_target), TRUE)
 
+	// Checks for exotic species blood below
+
+	// Variable for species with non-blood blood volumes
+	var/blood_valid = TRUE
+
+	// Variable for gaining blood volume
+	var/blood_transfer = FALSE
+
+	// Name of blood volume to be taken
+	// Action owner assumes blood until after drinking
+	var/blood_name = "blood"
+
+	// Check bite target for synth blood
+	if(bite_target.mob_biotypes & MOB_ROBOTIC)
+		// Mark blood as invalid
+		blood_valid = FALSE
+
+		// Set blood type name
+		blood_name = "coolant"
+
+		// Check if the action owner is also a synth
+		if (action_owner.mob_biotypes & MOB_ROBOTIC)
+			// Allow gaining blood from this
+			blood_transfer = TRUE
+
+		// Action owner is not a synth
+		else
+			// Warn the user
+			to_chat(action_owner, "<span class='warning'>That didn't taste like blood at all...</span>")
+
+			// Add disgust
+			action_owner.adjust_disgust(2)
+
+			// Cause negative mood
+			SEND_SIGNAL(action_owner, COMSIG_ADD_MOOD_EVENT, "bloodfledge_drank_synth", /datum/mood_event/drankblood_synth)
+
+	// Check if bite target is a slime
+	if (isslimeperson(bite_target))
+		// Mark blood as invalid
+		blood_valid = FALSE
+
+		// Set blood type name
+		blood_name = "slime"
+
+		// Check if the action owner is also a slime
+		if(isslimeperson(action_owner))
+			// Allow gaining blood from this
+			blood_transfer = TRUE
+
+		// Action owner is not a slime
+		else
+			// Warn the user
+			to_chat(action_owner, "<span class='warning'>You feel a sloshing presence inside you, but it dies out after a few moments.</span>")
+
+			// Add disgust
+			action_owner.adjust_disgust(2)
+
+			// Cause negative mood
+			SEND_SIGNAL(action_owner, COMSIG_ADD_MOOD_EVENT, "bloodfledge_drank_slime", /datum/mood_event/drankblood_slime)
+
+	// End of species blood checks
+
 	// Define user's remaining capacity to absorb blood
 	var/blood_volume_difference = BLOOD_VOLUME_MAXIMUM - action_owner.blood_volume
 	var/drained_blood = min(target_blood_volume, BLOODFLEDGE_DRAIN_NUM, blood_volume_difference)
@@ -311,29 +365,37 @@
 	// Remove blood from bite target
 	bite_target.blood_volume = clamp(target_blood_volume - drained_blood, 0, BLOOD_VOLUME_MAXIMUM)
 
-	// Add blood reagent to the user
-	action_owner.reagents.add_reagent(/datum/reagent/blood/, drained_blood)
-
-	// Perform a zero-blood transfer
+	// Perform a blood transfer
 	// This is done to transfer compatible diseases
-	bite_target.transfer_blood_to(action_owner, 0, TRUE)
+	// Grants nothing, unless blood transfer variable is set
+	bite_target.transfer_blood_to(action_owner, (blood_transfer ? drained_blood : 0), TRUE)
+
+	// Check if action owner received valid (nourishing) blood
+	if(blood_valid)
+		// Add blood reagent to the user
+		action_owner.reagents.add_reagent(/datum/reagent/blood/, drained_blood)
 
 	// Alert the bite target and local user of success
-	to_chat(bite_target, "<span class='danger'>[action_owner] has taken some of your blood!</span>")
-	to_chat(action_owner, "<span class='notice'>You've drained some of [bite_target]'s blood!</span>")
+	// Yes, this is AFTER the message for non-valid blood
+	to_chat(bite_target, "<span class='danger'>[action_owner] has taken some of your [blood_name]!</span>")
+	to_chat(action_owner, "<span class='notice'>You've drained some of [bite_target]'s [blood_name]!</span>")
+
+	// Alert the action holder if blood volume limit was exceeded
+	if(blood_transfer && (action_owner.blood_volume >= BLOOD_VOLUME_MAXIMUM))
+		to_chat(action_owner, "<span class='warning'>You body fails to absorb any more [blood_name]. The remainder has been lost.</span>")
 
 	// Play a heartbeat sound effect
 	// This was changed to match bloodsucker
 	playsound(action_owner, 'sound/effects/singlebeat.ogg', 30, 1, -2)
 
 	// Log the biting action success
-	log_combat(action_owner,bite_target,"bloodfledge bitten (successfully)")
+	log_combat(action_owner,bite_target,"bloodfledge bitten (successfully), transferring [blood_name]")
 
 	// Mood events
-	// Check if bite target is dead
-	if(bite_target.stat >= DEAD)
+	// Check if bite target is dead or undead
+	if((bite_target.stat >= DEAD) || (bite_target.mob_biotypes & MOB_UNDEAD))
 		// Warn the user
-		to_chat(action_owner, "<span class='warning'>The rotten blood tasted foul.</span>")
+		to_chat(action_owner, "<span class='warning'>The rotten [blood_name] tasted foul.</span>")
 
 		// Add disgust
 		action_owner.adjust_disgust(2)
@@ -341,21 +403,10 @@
 		// Cause negative mood
 		SEND_SIGNAL(action_owner, COMSIG_ADD_MOOD_EVENT, "bloodfledge_drank_dead", /datum/mood_event/drankblood_dead)
 
-	// Check bite target for synth blood
-	if (bite_target.mob_biotypes & MOB_ROBOTIC)
-		// Warn the user
-		to_chat(action_owner, "<span class='warning'>That didn't taste like blood at all...</span>")
-
-		// Add disgust
-		action_owner.adjust_disgust(2)
-
-		// Cause negative mood
-		SEND_SIGNAL(action_owner, COMSIG_ADD_MOOD_EVENT, "bloodfledge_drank_synth", /datum/mood_event/drankblood_synth)
-
 	// Check if bite target's blood has been depleted
-	if(!target_blood_volume)
+	if(!bite_target.blood_volume)
 		// Warn the user
-		to_chat(action_owner, "<span class='warning'>You've depleted [bite_target]'s blood supply!</span>")
+		to_chat(action_owner, "<span class='warning'>You've depleted [bite_target]'s [blood_name] supply!</span>")
 
 		// Cause negative mood
 		SEND_SIGNAL(action_owner, COMSIG_ADD_MOOD_EVENT, "bloodfledge_drank_killed", /datum/mood_event/drankkilled)
