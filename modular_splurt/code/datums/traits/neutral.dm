@@ -410,39 +410,52 @@
 		var/area/holder_area = get_area(quirk_mob)
 
 		// Check if quirk mob's area is the chapel
-		if(!istype(holder_area, /area/service/chapel))
-			return
-
-		// Run until stamina limit is reached
-		// Hard-coded based on STAMINA_CRIT of 140
-		if(quirk_mob.staminaloss < 120)
-			// Apply penalty to stamina, nutrition, and disgust
-			quirk_mob.adjustStaminaLoss(4, FALSE, TRUE)
-			quirk_mob.adjust_nutrition(-0.5)
-			quirk_mob.adjust_disgust(0.5)
+		if(istype(holder_area, /area/service/chapel))
+			// Run until stamina limit is reached
+			// Hard-coded based on STAMINA_CRIT of 140
+			if(quirk_mob.staminaloss < 120)
+				// Apply penalty to stamina, nutrition, and disgust
+				quirk_mob.adjustStaminaLoss(4, FALSE, TRUE)
+				quirk_mob.adjust_nutrition(-0.5)
+				quirk_mob.adjust_disgust(0.5)
 
 	// Check if the current area is a coffin
 	if(istype(quirk_mob.loc, /obj/structure/closet/crate/coffin))
-		// Define initial health
-		var/health_start = quirk_mob.health
-
 		// Quirk mob must be injured
 		if(quirk_mob.health >= quirk_mob.maxHealth)
+			return
+
+		// Prevent healing for robots
+		// This caused numerous technical issues
+		if(quirk_mob.mob_biotypes & MOB_ROBOTIC)
+			// Display a warning chat message (10% chance)
+			if(prob(20))
+				to_chat(quirk_mob, "<span class='warning'>Your mechanical body rejects the curse's healing properties!</span>")
+
+			// Return without healing, due robotic nature
 			return
 
 		// Nutrition (blood) level must be above STARVING
 		if(quirk_mob.nutrition <= NUTRITION_LEVEL_STARVING)
 			// Display a warning chat message (10% chance)
-			if(prob(10))
-				to_chat(quirk_mob, "<span class='warning'>I need more blood before I can regenerate!</span>")
+			if(prob(20))
+				to_chat(quirk_mob, "<span class='warning'>You need more blood before you can regenerate!</span>")
 
 			// Return without healing, due to lack of blood
 			return
 
+		// Define initial health
+		var/health_start = quirk_mob.health
+
 		// Heal brute and burn
+		// Accounts for robotic limbs
 		quirk_mob.heal_overall_damage(2,2)
-		// Heal fire
+		/*
+		// Heal brute
+		quirk_mob.adjustBruteLoss(-2)
+		// Heal burn
 		quirk_mob.adjustFireLoss(-2)
+		*/
 		// Heal oxygen
 		quirk_mob.adjustOxyLoss(-2)
 		// Heal clone
@@ -458,15 +471,15 @@
 			// Grant toxin (heals slimes)
 			quirk_mob.adjustToxLoss(2)
 
+		// Update health
+		quirk_mob.updatehealth()
+
 		// Determine healed amount
 		var/health_restored = quirk_mob.health - health_start
 
 		// Remove nutrition (blood) as compensation for healing
 		// Amount is equal to 50% of healing done
-		quirk_mob.adjust_nutrition(health_restored*-0.5)
-
-		// Return
-		return
+		quirk_mob.adjust_nutrition(health_restored*-1)
 
 /datum/quirk/bloodfledge/remove()
 	. = ..()
