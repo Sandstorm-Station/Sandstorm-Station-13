@@ -98,7 +98,7 @@
 				if(REQUIRE_ANY)
 					return TRUE
 				if(REQUIRE_EXPOSED)
-					return genital.is_exposed() || peepee.always_accessible
+					return genital.is_exposed() || genital.always_accessible
 				if(REQUIRE_UNEXPOSED)
 					return !genital.is_exposed()
 				else
@@ -114,7 +114,7 @@
 /mob/living/proc/has_balls(visibility = REQUIRE_ANY)
 	var/mob/living/carbon/C = src
 	if(has_balls && !istype(C))
-					return TRUE
+		return TRUE
 	return has_genital(ORGAN_SLOT_TESTICLES, visibility)
 
 /mob/living/proc/has_vagina(visibility = REQUIRE_ANY)
