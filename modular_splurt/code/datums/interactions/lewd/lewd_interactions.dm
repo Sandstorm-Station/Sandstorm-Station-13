@@ -18,17 +18,17 @@
 			if(REQUIRE_EXPOSED)
 				if(!user.has_belly(REQUIRE_EXPOSED))
 					if(!silent)
-						to_chat(user, "<span class='warning'>Your belly needs to be exposed.</span>")
+						to_chat(user, span_warning("Your belly needs to be exposed."))
 					return FALSE
 			if(REQUIRE_ANY)
 				if(!user.has_belly(REQUIRE_ANY))
 					if(!silent)
-						to_chat(user, "<span class='warning'>Your belly seems to be too flat for that.</span>")
+						to_chat(user, span_warning("Your belly seems to be too flat for that."))
 					return FALSE
 			if(REQUIRE_UNEXPOSED)
 				if(!user.has_belly(REQUIRE_UNEXPOSED))
 					if(!silent)
-						to_chat(user, "<span class='warning'>Your belly needs to be unexposed.</span>")
+						to_chat(user, span_warning("Your belly needs to be unexposed."))
 					return FALSE
 
 	if(require_user_legs)
@@ -36,22 +36,22 @@
 			if(REQUIRE_EXPOSED)
 				if(!user.has_legs(REQUIRE_EXPOSED))
 					if(!silent)
-						to_chat(user, "<span class='warning'>Your legs need to be exposed.</span>")
+						to_chat(user, span_warning("Your legs need to be exposed."))
 					return FALSE
 			if(REQUIRE_UNEXPOSED)
 				if(!user.has_legs(REQUIRE_UNEXPOSED))
 					if(!silent)
-						to_chat(user, "<span class='warning'>Your legs need to be unexposed.</span>")
+						to_chat(user, span_warning("Your legs need to be unexposed."))
 					return FALSE
 			if(REQUIRE_ANY)
 				if(!user.has_legs(REQUIRE_ANY))
 					if(!silent)
-						to_chat(user, "<span class='warning'>You don't have enough legs.</span>")
+						to_chat(user, span_warning("You don't have enough legs."))
 					return FALSE
 
 	if(require_user_num_legs && (user.has_legs() < require_user_num_legs))
 		if(!silent)
-			to_chat(user, "<span class='warning'>Your don't have enough legs.</span>")
+			to_chat(user, span_warning("Your don't have enough legs."))
 		return FALSE
 
 
@@ -60,7 +60,7 @@
 		if(cli)
 			if(cli.prefs.unholypref == "No")
 				if(!silent)
-					to_chat(user, "<span class='warning'>That's way too much for you.</span>")
+					to_chat(user, span_warning("That's way too much for you."))
 				return FALSE
 	. = ..()
 
@@ -70,17 +70,17 @@
 			if(REQUIRE_EXPOSED)
 				if(!target.has_belly(REQUIRE_EXPOSED))
 					if(!silent)
-						to_chat(user, "<span class='warning'>Their belly needs to be exposed.</span>")
+						to_chat(user, span_warning("Their belly needs to be exposed."))
 					return FALSE
 			if(REQUIRE_ANY)
 				if(!target.has_belly(REQUIRE_ANY))
 					if(!silent)
-						to_chat(user, "<span class='warning'>Their belly seems to be too flat for that.</span>")
+						to_chat(user, span_warning("Their belly seems to be too flat for that."))
 					return FALSE
 			if(REQUIRE_UNEXPOSED)
 				if(!target.has_belly(REQUIRE_UNEXPOSED))
 					if(!silent)
-						to_chat(user, "<span class='warning'>Their belly needs to be unexposed.</span>")
+						to_chat(user, span_warning("Their belly needs to be unexposed."))
 					return FALSE
 
 	if(require_target_legs)
@@ -88,22 +88,22 @@
 			if(REQUIRE_EXPOSED)
 				if(!target.has_legs(REQUIRE_EXPOSED))
 					if(!silent)
-						to_chat(user, "<span class='warning'>[target.p_their()] legs need to be exposed.</span>")
+						to_chat(user, span_warning("[target.p_their()] legs need to be exposed."))
 					return FALSE
 			if(REQUIRE_UNEXPOSED)
 				if(!target.has_legs(REQUIRE_UNEXPOSED))
 					if(!silent)
-						to_chat(user, "<span class='warning'>[target.p_their()] legs need to be unexposed.</span>")
+						to_chat(user, span_warning("[target.p_their()] legs need to be unexposed."))
 					return FALSE
 			if(REQUIRE_ANY)
 				if(!target.has_legs(REQUIRE_ANY))
 					if(!silent)
-						to_chat(user, "<span class='warning'>[target.p_they()] [target.p_do()]n't have enough legs.</span>")
+						to_chat(user, span_warning("[target.p_they()] [target.p_do()]n't have enough legs."))
 					return FALSE
 
 	if(require_target_num_legs && (target.has_legs() < require_target_num_legs))
 		if(!silent)
-			to_chat(user, "<span class='warning'>[target.p_they()] [target.p_do()]n't have enough legs.</span>")
+			to_chat(user, span_warning("[target.p_they()] [target.p_do()]n't have enough legs."))
 		return FALSE
 
 	if(unholy)
@@ -111,7 +111,7 @@
 		if(cli)
 			if(target.client.prefs.unholypref == "No")
 				if(!silent)
-					to_chat(user, "<span class='warning'>For some reason, you don't want to do this to [target].</span>")
+					to_chat(user, span_warning("For some reason, you don't want to do this to [target]."))
 				return FALSE
 	. = ..()
 

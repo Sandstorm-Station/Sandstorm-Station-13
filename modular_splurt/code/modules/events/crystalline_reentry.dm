@@ -149,7 +149,7 @@
 
 	if(prob(10))
 		playsound(src, 'sound/effects/bang.ogg', 50, 1)
-		audible_message("<span class='danger'>You hear a BONK!</span>")
+		audible_message(span_danger("You hear a BONK!"))
 
 	if(clong && prob(25))
 		x = clong.x
@@ -179,7 +179,7 @@
 		atmos_spawn_air("water_vapor=75;TEMP=0") //brr
 
 /obj/effect/crystalline_reentry/proc/penetrate(mob/living/L)
-	L.visible_message("<span class='danger'>[L] is smashed by a crystalline asteroid!</span>" , "<span class='userdanger'>The crystalline asteroid smashes you!</span>" , "<span class ='danger'>You hear a BONK!</span>")
+	L.visible_message(span_danger("[L] is smashed by a crystalline asteroid!") , span_userdanger("The crystalline asteroid smashes you!") , "<span class ='danger'>You hear a BONK!</span>")
 	if(ishuman(L))
 		var/mob/living/carbon/human/H = L
 		H.adjustBruteLoss(160)
@@ -209,14 +209,14 @@
 	switch(rand(1,100))
 		if(1 to 30)
 			var/obj/structure/spawner/crystalline/M = new(src.loc)
-			visible_message("<span class='danger'>A [M] emerges from the asteroid's rubble!</span>")
+			visible_message(span_danger("A [M] emerges from the asteroid's rubble!"))
 			if(prob(50) && tendrilnotify)
 				priority_announce("Unknown organic entities have been detected in the vincinity of [station_name()]. General caution is advised.", "General Alert")
 		if(31 to 99)
 			visible_message("The asteroid collapses into nothing...")
 		if(100)
 			var/mob/living/simple_animal/bot/hugbot/M = new(src.loc)
-			visible_message("<span class='danger'>A [M] emerges from the asteroid's rubble! Wait... What?</span>")
+			visible_message(span_danger("A [M] emerges from the asteroid's rubble! Wait... What?"))
 	qdel(src)
 
 /obj/effect/crystalline_reentry/notendrilalert
@@ -289,8 +289,8 @@
 /obj/effect/cloud_collapse/Initialize()
 	. = ..()
 	emitted_light = new(loc)
-	visible_message("<span class='boldannounce'>The tendril writhes in fury as the earth around it begins to crack and break apart! Get back!</span>")
-	visible_message("<span class='warning'>Something falls free of the tendril!</span>")
+	visible_message(span_boldannounce("The tendril writhes in fury as the earth around it begins to crack and break apart! Get back!"))
+	visible_message(span_warning("Something falls free of the tendril!"))
 	playsound(loc,'sound/effects/tendril_destroyed.ogg', 200, 0, 50, 1, 1)
 	addtimer(CALLBACK(src, .proc/collapse), 50)
 
@@ -302,7 +302,7 @@
 	for(var/mob/M in range(7,src))
 		shake_camera(M, 15, 1)
 	playsound(get_turf(src),'sound/effects/explosionfar.ogg', 200, 1)
-	visible_message("<span class='boldannounce'>The tendril falls into the clouds below!</span>")
+	visible_message(span_boldannounce("The tendril falls into the clouds below!"))
 	for(var/turf/T in range(1,src))
 		if(!T.density)
 			T.TerraformTurf(/turf/open/chasm/cloud, /turf/open/chasm/cloud)

@@ -17,12 +17,12 @@
 		return TRUE
 
 	if(istype(item, /obj/item/carpentry/glue))
-		to_chat(user,"<span class='notice'>You glue the bricks to the floor.</span>")
+		to_chat(user,span_notice("You glue the bricks to the floor."))
 		anchored = TRUE
 		return TRUE
 
 	if(istype(item, /obj/item/crowbar))
-		to_chat(user,"<span class='notice'>You pry the bricks from the floor.</span>")
+		to_chat(user,span_notice("You pry the bricks from the floor."))
 		anchored = FALSE
 		return TRUE
 

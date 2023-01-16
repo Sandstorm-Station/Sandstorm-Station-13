@@ -40,4 +40,4 @@
 	. = examinate(A)
 	if (.)
 		return
-	to_chat(A, "<span class='notice'>[src] seems to be checking you out.</span>")
+	to_chat(A, span_notice("[src] seems to be checking you out."))
