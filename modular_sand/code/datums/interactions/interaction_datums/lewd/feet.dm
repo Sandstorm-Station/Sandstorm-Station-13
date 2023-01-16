@@ -135,7 +135,7 @@
 						'modular_sand/sound/interactions/foot_dry3.ogg',
 						'modular_sand/sound/interactions/foot_wet1.ogg',
 						'modular_sand/sound/interactions/foot_wet2.ogg'), 70, 1, -1)
-	user.visible_message(message = span_lewd("<b>\The [user]</b> [message]"), ignored_mobs = user.get_unconsenting()))
+	user.visible_message(message = span_lewd("<b>\The [user]</b> [message]"), ignored_mobs = user.get_unconsenting())
 	if(partner.can_penetrating_genital_cum())
 		partner.handle_post_sex(NORMAL_LUST, CUM_TARGET_FEET, user)
 

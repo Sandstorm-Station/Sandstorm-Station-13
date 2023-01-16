@@ -3,7 +3,7 @@
 	desc = "For one reason or another, you either can't or haven't learned the common tongue."
 	value = 0
 	mob_trait = TRAIT_SHELTERED
-	gain_text = span_dagner("The words of others begin to blur together...")
+	gain_text = span_danger("The words of others begin to blur together...")
 	lose_text = span_notice("You start putting together what people are saying!")
 	medical_record_text = "Patient has shown an inability to use common speaking languages."
 

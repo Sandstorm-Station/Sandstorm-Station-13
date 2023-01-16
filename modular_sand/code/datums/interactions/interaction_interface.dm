@@ -268,7 +268,7 @@
 					human.update_genitals()
 				return
 			if("set_accessibility" in params)
-				if(params["genital"] == "anus")
+				if(!self.getorganslot(ORGAN_SLOT_ANUS) && params["genital"] == "anus")
 					self.toggle_anus_always_accessible()
 					return TRUE
 				var/obj/item/organ/genital/genital = locate(params["genital"], self.internal_organs)

@@ -21,9 +21,9 @@
 	var/has_balls = FALSE
 	var/has_vagina = FALSE
 	var/has_anus = TRUE
+	var/has_butt = FALSE
 	var/anus_always_accessible = FALSE
 	var/has_breasts = FALSE
-	var/has_butt = FALSE
 	var/anus_exposed = FALSE
 	var/last_partner
 	var/last_orifice
@@ -86,6 +86,9 @@
 	lust = num
 	lastlusttime = world.time
 
+/mob/living/proc/toggle_anus_always_accessible()
+	anus_always_accessible = !anus_always_accessible
+
 /mob/living/proc/has_genital(slot, visibility = REQUIRE_ANY)
 	var/mob/living/carbon/C = src
 	if(istype(C))
@@ -95,7 +98,7 @@
 				if(REQUIRE_ANY)
 					return TRUE
 				if(REQUIRE_EXPOSED)
-					return genital.is_exposed()
+					return genital.is_exposed() || genital.always_accessible
 				if(REQUIRE_UNEXPOSED)
 					return !genital.is_exposed()
 				else
@@ -343,29 +346,11 @@
 					return TRUE
 	return FALSE
 
-/mob/living/proc/has_butt(var/nintendo = REQUIRE_ANY)
+/mob/living/proc/has_butt(visibility = REQUIRE_ANY)
 	var/mob/living/carbon/C = src
 	if(has_butt && !istype(C))
 		return TRUE
-	if(istype(C))
-		var/obj/item/organ/genital/peepee = C.getorganslot(ORGAN_SLOT_BUTT)
-		if(peepee)
-			switch(nintendo)
-				if(REQUIRE_ANY)
-					return TRUE
-				if(REQUIRE_EXPOSED)
-					if(peepee.is_exposed())
-						return TRUE
-					else
-						return FALSE
-				if(REQUIRE_UNEXPOSED)
-					if(!peepee.is_exposed())
-						return TRUE
-					else
-						return FALSE
-				else
-					return TRUE
-	return FALSE
+	return has_genital(ORGAN_SLOT_BUTT, visibility)
 
 ///Are we wearing something that covers our chest?
 /mob/living/proc/is_topless()
