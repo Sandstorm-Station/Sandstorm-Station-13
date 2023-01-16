@@ -33,7 +33,7 @@
 	// Check for bloodfledge
 	if(HAS_TRAIT(cord_user, TRAIT_BLOODFLEDGE))
 		// Warn user and return
-		to_chat(cord_user, "<span class='warning'>You try to siphon energy from [target], but a sanguine force prevents you from absorbing any charge!</span>")
+		to_chat(cord_user, span_warning("You try to siphon energy from [target], but a sanguine force prevents you from absorbing any charge!"))
 		return
 
 	// Return normally

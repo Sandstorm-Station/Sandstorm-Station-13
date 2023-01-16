@@ -26,6 +26,6 @@
 
 // Matches drinking synth blood (drankblood_synth)
 /datum/mood_event/drankblood_slime
-	description = "<span class='boldwarning'>I drank liquid slime. What is wrong with me?</span>\n"
+	description = span_boldwarning("I drank liquid slime. What is wrong with me?\n")
 	mood_change = -7
 	timeout = 15 MINUTES

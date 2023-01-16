@@ -140,31 +140,31 @@
 	// Check for cooldown
 	if(drain_cooldown >= world.time)
 		// Warn the user, then return
-		to_chat(action_owner, "<span class='notice'>That ability isn't ready yet.</span>")
+		to_chat(action_owner, span_notice("That ability isn't ready yet."))
 		return
 
 	// Check for any grabbed target
 	if(!action_owner.pulling)
 		// Warn the user, then return
-		to_chat(action_owner, "<span class='warning'>You need a victim first!</span>")
+		to_chat(action_owner, span_warning("You need a victim first!"))
 		return
 
 	// Limit maximum nutrition
 	if(action_owner.nutrition >= NUTRITION_LEVEL_FAT)
 		// Warn the user, then return
-		to_chat(action_owner, "<span class='notice'>You are too full to drain any more.</span>")
+		to_chat(action_owner, span_notice("You are too full to drain any more."))
 		return
 
 	// Limit maximum potential nutrition
 	if(action_owner.nutrition + BLOODFLEDGE_DRAIN_NUM >= NUTRITION_LEVEL_FAT)
 		// Warn the user, then return
-		to_chat(action_owner, "<span class='notice'>You would become too full by draining any more blood.</span>")
+		to_chat(action_owner, span_notice("You would become too full by draining any more blood."))
 		return
 
 	// Check for muzzle
 	if(action_owner.is_muzzled())
 		// Warn the user, then return
-		to_chat(action_owner, "<span class='notice'>You can't bite things while muzzled!</span>")
+		to_chat(action_owner, span_notice("You can't bite things while muzzled!"))
 		return
 
 	// Define pulled target
@@ -192,7 +192,7 @@
 	// Or a blood tomato
 	else if(istype(pull_target,/obj/item/reagent_containers/food/snacks/grown/tomato/blood))
 		// Warn the user, then return
-		to_chat(action_owner, "<span class='danger'>You plunge your fangs into [pull_target]! It's not very nutritious.</span>")
+		to_chat(action_owner, span_danger("You plunge your fangs into [pull_target]! It's not very nutritious."))
 		return
 
 		// This doesn't actually interact with the item
@@ -200,21 +200,21 @@
 	// Or none of the above
 	else
 		// Warn the user, then return
-		to_chat(action_owner, "<span class='warning'>You can't drain blood from [pull_target]!</span>")
+		to_chat(action_owner, span_warning("You can't drain blood from [pull_target]!"))
 		return
 
 	// Check for anti-magic
 	if(bite_target.anti_magic_check(FALSE, TRUE, FALSE, 0))
 		// Warn the user and target, then return
-		to_chat(bite_target, "<span class='warning'>[action_owner] tries to bite you, but stops before touching you!</span>")
-		to_chat(action_owner, "<span class='warning'>[bite_target] is blessed! You stop just in time to avoid catching fire.</span>")
+		to_chat(bite_target, span_warning("[action_owner] tries to bite you, but stops before touching you!"))
+		to_chat(action_owner, span_warning("[bite_target] is blessed! You stop just in time to avoid catching fire."))
 		return
 
 	// Check for garlic necklace or garlic in the bloodstream
 	if(!blood_sucking_checks(bite_target, TRUE, TRUE))
 		// Warn the user and target, then return
-		to_chat(bite_target, "<span class='warning'>[action_owner] tries to bite you, but is warded off by your Allium Sativum!</span>")
-		to_chat(action_owner, "<span class='warning'>You sense that [bite_target] is protected by Allium Sativum, and refrain from biting them.</span>")
+		to_chat(bite_target, span_warning("[action_owner] tries to bite you, but is warded off by your Allium Sativum!"))
+		to_chat(action_owner, span_warning("You sense that [bite_target] is protected by Allium Sativum, and refrain from biting them."))
 		return
 
 	// Define bite target's blood volume
@@ -223,7 +223,7 @@
 	// Check for sufficient blood volume
 	if(!target_blood_volume)
 		// Warn the user, then return
-		to_chat(action_owner, "<span class='warning'>There's not enough blood in [bite_target]!</span>")
+		to_chat(action_owner, span_warning("There's not enough blood in [bite_target]!"))
 		return
 
 	// Check if total blood would become too low
@@ -231,13 +231,13 @@
 		// Check for aggressive grab
 		if(action_owner.grab_state < GRAB_AGGRESSIVE)
 			// Warn the user, then return
-			to_chat(action_owner, "<span class='warning'>You sense that [bite_target] is running low on blood. You'll need a tighter grip on [bite_target.p_them()] to continue.</span>")
+			to_chat(action_owner, span_warning("You sense that [bite_target] is running low on blood. You'll need a tighter grip on [bite_target.p_them()] to continue."))
 			return
 
 		// Check for pacifist
 		if(HAS_TRAIT(action_owner, TRAIT_PACIFISM))
 			// Warn the user, then return
-			to_chat(action_owner, "<span class='warning'>You can't drain any more blood from [bite_target] without hurting [bite_target.p_them()]!</span>")
+			to_chat(action_owner, span_warning("You can't drain any more blood from [bite_target] without hurting [bite_target.p_them()]!"))
 			return
 
 	// Set cooldown and action times
@@ -254,10 +254,10 @@
 	drain_cooldown = world.time + time_cooldown
 
 	// Display local chat message
-	action_owner.visible_message("<span class='danger'>[action_owner] begins to bite down on [bite_target]'s neck!</span>")
+	action_owner.visible_message(span_danger("[action_owner] begins to bite down on [bite_target]'s neck!"))
 
 	// Warn bite target
-	to_chat(bite_target, "<span class='userdanger'>[action_owner] has bitten your neck, and is trying to drain your blood!</span>")
+	to_chat(bite_target, span_userdanger("[action_owner] has bitten your neck, and is trying to drain your blood!"))
 
 	// Play a bite sound effect
 	playsound(action_owner, 'sound/weapons/bite.ogg', 30, 1, -2)
@@ -266,7 +266,7 @@
 	if(!do_after(action_owner, time_interact, target = bite_target))
 		// When failing
 		// Display a local chat message
-		action_owner.visible_message("<span class='danger'>[action_owner]'s fangs are prematurely torn from [bite_target]'s neck, spilling [bite_target.p_their()] blood!</span>")
+		action_owner.visible_message(span_danger("[action_owner]'s fangs are prematurely torn from [bite_target]'s neck, spilling [bite_target.p_their()] blood!"))
 
 		// Bite target "drops" the blood
 		// This creates large blood splatter
@@ -289,8 +289,8 @@
 	// Check if bite target species has blood
 	if(NOBLOOD in bite_target.dna.species.species_traits)
 		// Warn the user and target, then return
-		to_chat(bite_target, "<span class='warning'>[action_owner] tried to drain you, but didn't find any blood!</span>")
-		to_chat(action_owner, "<span class='warning'>[bite_target] doesn't have any blood to drink!</span>")
+		to_chat(bite_target, span_warning("[action_owner] tried to drain you, but didn't find any blood!"))
+		to_chat(action_owner, span_warning("[bite_target] doesn't have any blood to drink!"))
 		return
 
 	// Create blood splatter
@@ -324,7 +324,7 @@
 		// Action owner is not a synth
 		else
 			// Warn the user
-			to_chat(action_owner, "<span class='warning'>That didn't taste like blood at all...</span>")
+			to_chat(action_owner, span_warning("That didn't taste like blood at all..."))
 
 			// Add disgust
 			action_owner.adjust_disgust(2)
@@ -348,7 +348,7 @@
 		// Action owner is not a slime
 		else
 			// Warn the user
-			to_chat(action_owner, "<span class='warning'>You feel a sloshing presence inside you, but it dies out after a few moments.</span>")
+			to_chat(action_owner, span_warning("You feel a sloshing presence inside you, but it dies out after a few moments."))
 
 			// Add disgust
 			action_owner.adjust_disgust(2)
@@ -377,12 +377,12 @@
 
 	// Alert the bite target and local user of success
 	// Yes, this is AFTER the message for non-valid blood
-	to_chat(bite_target, "<span class='danger'>[action_owner] has taken some of your [blood_name]!</span>")
-	to_chat(action_owner, "<span class='notice'>You've drained some of [bite_target]'s [blood_name]!</span>")
+	to_chat(bite_target, span_danger("[action_owner] has taken some of your [blood_name]!"))
+	to_chat(action_owner, span_notice("You've drained some of [bite_target]'s [blood_name]!"))
 
 	// Alert the action holder if blood volume limit was exceeded
 	if(blood_transfer && (action_owner.blood_volume >= BLOOD_VOLUME_MAXIMUM))
-		to_chat(action_owner, "<span class='warning'>You body fails to absorb any more [blood_name]. The remainder has been lost.</span>")
+		to_chat(action_owner, span_warning("You body fails to absorb any more [blood_name]. The remainder has been lost."))
 
 	// Play a heartbeat sound effect
 	// This was changed to match bloodsucker
@@ -395,7 +395,7 @@
 	// Check if bite target is dead or undead
 	if((bite_target.stat >= DEAD) || (bite_target.mob_biotypes & MOB_UNDEAD))
 		// Warn the user
-		to_chat(action_owner, "<span class='warning'>The rotten [blood_name] tasted foul.</span>")
+		to_chat(action_owner, span_warning("The rotten [blood_name] tasted foul."))
 
 		// Add disgust
 		action_owner.adjust_disgust(2)
@@ -406,7 +406,7 @@
 	// Check if bite target's blood has been depleted
 	if(!bite_target.blood_volume)
 		// Warn the user
-		to_chat(action_owner, "<span class='warning'>You've depleted [bite_target]'s [blood_name] supply!</span>")
+		to_chat(action_owner, span_warning("You've depleted [bite_target]'s [blood_name] supply!"))
 
 		// Cause negative mood
 		SEND_SIGNAL(action_owner, COMSIG_ADD_MOOD_EVENT, "bloodfledge_drank_killed", /datum/mood_event/drankkilled)
@@ -454,7 +454,7 @@
 	// Check for failure
 	if(revive_failed)
 		// Set combined message
-		revive_failed = "<span class='warning'>You can't revive right now because: [revive_failed]</span>"
+		revive_failed = span_warning("You can't revive right now because: [revive_failed]")
 
 		// Alert user in chat of failure
 		to_chat(action_owner, revive_failed)
@@ -466,7 +466,7 @@
 	action_owner.revive()
 
 	// Alert the user in chat of success
-	action_owner.visible_message("<span class='notice'>An ominous energy radiates from the [action_owner.loc]...</span>", "<span class='warning'>You've expended all remaining blood to bring your body back to life!</span>")
+	action_owner.visible_message(span_notice("An ominous energy radiates from the [action_owner.loc]..."), span_warning("You've expended all remaining blood to bring your body back to life!"))
 
 	// Log this, to match defib behavior
 	action_owner.log_message("revived using a vampire quirk ability.", LOG_GAME)
@@ -598,9 +598,9 @@
 			T.transformed = 0
 			T.cooldown = 30
 			T.paused = 0
-			H.visible_message("<span class='warning'>[H]'s skin rapidly softens, returning them to normal!</span>", "<span class='userdanger'>Your skin softens, freeing your movement once more!</span>")
+			H.visible_message(span_warning("[H]'s skin rapidly softens, returning them to normal!"), span_userdanger("Your skin softens, freeing your movement once more!"))
 	else
-		to_chat(H, "<span class='warning'>You have transformed too recently; you cannot yet transform again!</span>")
+		to_chat(H, span_warning("You have transformed too recently; you cannot yet transform again!"))
 		return 0
 
 //

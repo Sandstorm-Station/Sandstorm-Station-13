@@ -430,7 +430,7 @@
 		if(quirk_mob.mob_biotypes & MOB_ROBOTIC)
 			// Display a warning chat message (10% chance)
 			if(prob(20))
-				to_chat(quirk_mob, "<span class='warning'>Your mechanical body rejects the curse's healing properties!</span>")
+				to_chat(quirk_mob, span_warning("Your mechanical body rejects the curse's healing properties!"))
 
 			// Return without healing, due robotic nature
 			return
@@ -439,7 +439,7 @@
 		if(quirk_mob.nutrition <= NUTRITION_LEVEL_STARVING)
 			// Display a warning chat message (10% chance)
 			if(prob(20))
-				to_chat(quirk_mob, "<span class='warning'>You need more blood before you can regenerate!</span>")
+				to_chat(quirk_mob, span_warning("You need more blood before you can regenerate!"))
 
 			// Return without healing, due to lack of blood
 			return
