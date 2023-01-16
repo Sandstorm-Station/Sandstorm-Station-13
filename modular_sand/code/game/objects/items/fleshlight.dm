@@ -20,7 +20,7 @@
 
 /obj/item/fleshlight/examine(mob/user)
 	. = ..()
-	. += "<span class='notice'>Alt-Click \the [name] to customize it.</span>"
+	. += span_notice("Alt-Click \the [name] to customize it.")
 
 /obj/item/fleshlight/update_appearance(updates)
 	. = ..()
@@ -60,7 +60,7 @@
 					message = (user == M) ? pick("pumps [src] on [possessive_verb] penis") : pick("pumps \the [src] on [M]'s penis")
 					lust_amt = NORMAL_LUST
 	if(message)
-		user.visible_message("<span class='lewd'>[user] [message].</span>")
+		user.visible_message(span_lewd("[user] [message]."))
 		M.handle_post_sex(lust_amt, null, user)
 		playlewdinteractionsound(loc, pick('modular_sand/sound/interactions/bang4.ogg',
 							'modular_sand/sound/interactions/bang5.ogg',
@@ -92,9 +92,9 @@
 /obj/item/portallight/examine(mob/user)
 	. = ..()
 	if(!portalunderwear)
-		. += "<span class='notice'>The device is unpaired, to pair, swipe against a pair of portal panties.</span>"
+		. += span_notice("The device is unpaired, to pair, swipe against a pair of portal panties.")
 	else
-		. += "<span class='notice'>The device is paired, and awaiting input. </span>"
+		. += span_notice("The device is paired, and awaiting input. ")
 
 /obj/item/portallight/update_appearance(updates)
 	. = ..()
@@ -142,17 +142,17 @@
 						arouse_only_target = TRUE
 						target = "hand"
 	if(!useable)
-		to_chat(user, "<span class='notice'>It seems the device has failed or your partner is not wearing their device.</span>")
+		to_chat(user, span_notice("It seems the device has failed or your partner is not wearing their device."))
 	if(message)
 		var/mob/living/carbon/human/portal_target = ishuman(portalunderwear.loc) && portalunderwear.current_equipped_slot == ITEM_SLOT_UNDERWEAR ? portalunderwear.loc : null
 		if(portalunderwear.targetting == "vagina")
 			V = portal_target.getorganslot(ORGAN_SLOT_VAGINA)
 		if(portal_target && (portal_target?.client?.prefs.toggles & VERB_CONSENT || !portal_target.ckey))
-			user.visible_message("<span class='lewd'>[user] [message].</span>")
+			user.visible_message(span_lewd("[user] [message]."))
 			if(!arouse_only_target)
 				if(M.handle_post_sex(lust_amt, null, null))
 					if(P)
-						to_chat(portal_target, "<span class='userlove'>You feel a [P.shape] penis of [P.length] inches go deep into your [portalunderwear.targetting] and cum!</span>")
+						to_chat(portal_target, span_userlove("You feel a [P.shape] penis of [P.length] inches go deep into your [portalunderwear.targetting] and cum!"))
 			switch(user.zone_selected)
 				if(BODY_ZONE_PRECISE_GROIN)
 					playlewdinteractionsound(loc, pick('modular_sand/sound/interactions/bang4.ogg',
@@ -169,16 +169,16 @@
 			if(M != user)
 				message = replacetext(message, "[M]", "someone")
 			message = replacetext(message, "[src]", "your [targeted]")
-			to_chat(portal_target, "<span class='lewd'>You feel something on your panties, it [message][P ? ", it is a [P.shape] penis of [P.length] inches" : ""].</span>")
+			to_chat(portal_target, span_lewd("You feel something on your panties, it [message][P ? ", it is a [P.shape] penis of [P.length] inches" : ""]."))
 			if(portal_target.handle_post_sex(lust_amt, null, null))
 				switch(portalunderwear.targetting)
 					if("vagina")
-						to_chat(M, "<span class='userlove'>You feel \the [V] squirt over your [target]!</span>")
+						to_chat(M, span_userlove("You feel \the [V] squirt over your [target]!"))
 					if("anus")
-						to_chat(M, "<span class='userlove'>You feel the anus constrict on your [target]!</span>")
+						to_chat(M, span_userlove("You feel the anus constrict on your [target]!"))
 			portal_target.do_jitter_animation() //make your partner shake too!
 		else
-			user.visible_message("<span class='warning'>\The [src] beeps and does not let [M] through.</span>")
+			user.visible_message(span_warning("\The [src] beeps and does not let [M] through."))
 	else if(user.a_intent == INTENT_HARM)
 		return ..()
 
@@ -232,7 +232,7 @@
 		if(isliving(portalunderwear.loc))
 			portalunderwear.audible_message("[icon2html(portalunderwear, hearers(portalunderwear))] *beep* *beep* *beep*")
 			playsound(portalunderwear, 'sound/machines/triple_beep.ogg', ASSEMBLY_BEEP_VOLUME, TRUE)
-			to_chat(portalunderwear.loc, "<span class='notice'>The panties beep as the link to the [src] is lost.</span>")
+			to_chat(portalunderwear.loc, span_notice("The panties beep as the link to the [src] is lost."))
 	. = ..()
 
 /**
@@ -254,14 +254,14 @@
 /obj/item/clothing/underwear/briefs/panties/portalpanties/attack_self(mob/user)
 	. = ..()
 	targetting = targetting == "anus" ? "vagina" : "anus"
-	to_chat(user, "<span class='notice'>Now when worn the portal will now be facing \an [targetting].</span>")
+	to_chat(user, span_notice("Now when worn the portal will now be facing \an [targetting]."))
 
 /obj/item/clothing/underwear/briefs/panties/portalpanties/examine(mob/user)
 	. = ..()
 	if(!portallight)
-		. += "<span class='notice'>The device is unpaired, to pair, swipe the fleshlight against this pair of portal panties(TM). </span>"
+		. += span_notice("The device is unpaired, to pair, swipe the fleshlight against this pair of portal panties(TM). ")
 	else
-		. += "<span class='notice'>The device is paired, and awaiting attachment. </span>"
+		. += span_notice("The device is paired, and awaiting attachment. ")
 
 /obj/item/clothing/underwear/briefs/panties/portalpanties/attackby(obj/item/I, mob/living/user) //pairing
 	if(istype(I, /obj/item/portallight))
@@ -271,9 +271,9 @@
 			P.portalunderwear = src //pair the panties on the fleshlight.
 			P.icon_state = "paired" //we are paired!
 			playsound(src, 'sound/machines/ping.ogg', 50, FALSE)
-			to_chat(user, "<span class='notice'>[P] has been linked up successfully.</span>")
+			to_chat(user, span_notice("[P] has been linked up successfully."))
 		else
-			to_chat(user, "<span class='notice'>[P] has already been linked to another pair of underwear.</span>")
+			to_chat(user, span_notice("[P] has already been linked to another pair of underwear."))
 	else
 		..() //just allows people to hit it with other objects, if they so wished.
 
@@ -285,11 +285,11 @@
 		switch(targetting)
 			if("vagina")
 				if(!human.has_vagina(REQUIRE_EXPOSED))
-					to_chat(human, "<span class='warning'>The vagina is covered or there is none!</span>")
+					to_chat(human, span_warning("The vagina is covered or there is none!"))
 					return FALSE
 			if("anus")
 				if(!human.has_anus(REQUIRE_EXPOSED))
-					to_chat(human, "<span class='warning'>The anus is covered or there is none!</span>")
+					to_chat(human, span_warning("The anus is covered or there is none!"))
 					return FALSE
 	return TRUE
 
@@ -300,7 +300,7 @@
 			if(!portallight)
 				audible_message("[icon2html(src, hearers(src))] *beep* *beep* *beep*")
 				playsound(src, 'sound/machines/triple_beep.ogg', ASSEMBLY_BEEP_VOLUME, TRUE)
-				to_chat(user, "<span class='notice'>The panties are not linked to a portal fleshlight.</span>")
+				to_chat(user, span_notice("The panties are not linked to a portal fleshlight."))
 			else
 				update_portal()
 				RegisterSignal(user, COMSIG_PARENT_QDELETING, .proc/drop_out)

@@ -34,6 +34,7 @@ type GenitalData = {
   possible_choices: string[],
   can_arouse: boolean,
   arousal_state: boolean,
+  always_accessible: boolean,
 }
 
 type CharacterPrefsInfo = {
@@ -254,16 +255,28 @@ const GenitalTab = (props, context) => {
               <TableCell textAlign="center">
                 Actions<br />
                 <Button
-                  width="100%"
+                  width="49%"
                   key={genital.arousal_state}
                   tooltip={genital.can_arouse
                     ? ((genital.arousal_state ? "Unarouse" : "Arouse") + " your " + genital.name.toLowerCase())
                     : "You cannot modify arousal on your " + genital.name.toLowerCase()}
-                  icon="heart"
+                  icon={genital.arousal_state ? "heart" : "heart-broken"}
                   color={genital.can_arouse ? (genital.arousal_state ? "green" : "default") : "grey"}
                   onClick={() => act('genital', {
                     genital: genital.key,
                     set_arousal: !genital.arousal_state,
+                  })} />
+                <Button
+                  width="49%"
+                  key={genital.always_accessible}
+                  tooltip={genital.always_accessible
+                    ? "Forbid others from manipulating this genital at any moment"
+                    : "Allow others to manipulate this genital at any moment"}
+                  icon={genital.always_accessible ? "hand-paper" : 'hand-rock'}
+                  color={genital.always_accessible ? "green" : "default"}
+                  onClick={() => act('genital', {
+                    genital: genital.key,
+                    set_accessibility: true,
                   })} />
               </TableCell>
             </Table>
