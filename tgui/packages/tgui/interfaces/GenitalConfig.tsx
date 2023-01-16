@@ -129,12 +129,6 @@ const SizeButtons = (props, context) => {
             <NumberInput />
           </Stack>
         </Stack.Item>
-        <Stack.Item>
-          <Stack vertical>
-            Min shrink:
-            <NumberInput />
-          </Stack>
-        </Stack.Item>
       </Stack>
     </Section>
   );
