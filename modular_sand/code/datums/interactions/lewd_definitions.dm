@@ -21,6 +21,7 @@
 	var/has_balls = FALSE
 	var/has_vagina = FALSE
 	var/has_anus = TRUE
+	var/anus_always_accessible = FALSE
 	var/has_breasts = FALSE
 	var/has_butt = FALSE
 	var/anus_exposed = FALSE
@@ -127,9 +128,9 @@
 	for(var/obj/item/clothing/cloth in get_equipped_items())
 		if(istype(cloth, /obj/item/clothing/underwear/briefs/strapon))
 			return cloth
-	
+
 	return null
-	
+
 /mob/living/proc/can_penetrating_genital_cum()
 	return has_penis()
 
@@ -161,6 +162,8 @@
 		if(REQUIRE_ANY)
 			return TRUE
 		if(REQUIRE_EXPOSED)
+			if (has_anus && anus_always_accessible)
+				return TRUE
 			switch(anus_exposed)
 				if(-1)
 					return FALSE
@@ -413,9 +416,9 @@
 	if(moan == lastmoan)
 		moan--
 	if(!is_muzzled())
-		visible_message(message = "<span class='lewd'><B>\The [src]</B> [pick("moans", "moans in pleasure")].</span>", ignored_mobs = get_unconsenting())
+		visible_message(message = span_lewd("<B>\The [src]</B> [pick("moans", "moans in pleasure")]."), ignored_mobs = get_unconsenting())
 	if(is_muzzled())//immursion
-		audible_message("<span class='lewd'><B>[src]</B> [pick("mimes a pleasured moan","moans in silence")].</span>")
+		audible_message(span_lewd("<B>[src]</B> [pick("mimes a pleasured moan","moans in silence")]."))
 	lastmoan = moan
 
 /mob/living/proc/cum(mob/living/partner, target_orifice)
@@ -776,7 +779,7 @@
 		playlewdinteractionsound(loc, pick('modular_sand/sound/interactions/final_f1.ogg',
 							'modular_sand/sound/interactions/final_f2.ogg',
 							'modular_sand/sound/interactions/final_f3.ogg'), 70, 1, 0)
-	visible_message(message = "<span class='userlove'><b>\The [src]</b> [message]</span>", ignored_mobs = get_unconsenting())
+	visible_message(message = span_userlove("<b>\The [src]</b> [message]"), ignored_mobs = get_unconsenting())
 	multiorgasms += 1
 
 	COOLDOWN_START(src, refractory_period, (rand(300, 900) - get_sexual_potency()))//sex cooldown

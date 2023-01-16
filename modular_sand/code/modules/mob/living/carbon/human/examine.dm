@@ -71,7 +71,7 @@ GLOBAL_LIST_INIT(pairless_panties, list(
 						continue
 				genitals += appended
 
-			string += english_list(genitals, "featureless groin", " and", ",")
+			string += english_list(genitals, " featureless groin", " and", ",")
 			string += " on full display."
 
 		examine_content += span_purple(string)
