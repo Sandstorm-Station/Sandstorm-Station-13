@@ -103,7 +103,8 @@
 		"Bard",
 		"Snack",
 		"Stress Relief",
-		"Freeloader"
+		"Freeloader",
+		"Station Pet"
 	)
 	LAZYADD(alt_titles, extra_titles)
 	. = ..()
@@ -197,7 +198,8 @@
 		"Researcher",
 		"Toxins Researcher",
 		"Research Intern",
-		"Junior Scientist"
+		"Junior Scientist",
+		"Rack Researcher"
 	)
 	LAZYADD(alt_titles, extra_titles)
 	. = ..()

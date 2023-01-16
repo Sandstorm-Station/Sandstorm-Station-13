@@ -50,9 +50,9 @@
 		language -= lang
 	else if(check_language_maxhit())
 		if(CONFIG_GET(number/max_languages) == 1)
-			to_chat(usr, "<span class='danger'>You can only have 1 additional language!</span>")
+			to_chat(usr, span_danger("You can only have 1 additional language!"))
 		else
-			to_chat(usr, "<span class='danger'>You can only have up to [CONFIG_GET(number/max_languages)] additional languages!</span>")
+			to_chat(usr, span_danger("You can only have up to [CONFIG_GET(number/max_languages)] additional languages!"))
 	else
 		language += lang
 

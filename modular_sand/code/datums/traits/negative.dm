@@ -3,8 +3,8 @@
 	desc = "For one reason or another, you either can't or haven't learned the common tongue."
 	value = 0
 	mob_trait = TRAIT_SHELTERED
-	gain_text = "<span class='danger'>The words of others begin to blur together...</span>"
-	lose_text = "<span class='notice'>You start putting together what people are saying!</span>"
+	gain_text = span_danger("The words of others begin to blur together...")
+	lose_text = span_notice("You start putting together what people are saying!")
 	medical_record_text = "Patient has shown an inability to use common speaking languages."
 
 /datum/quirk/sheltered/on_spawn()

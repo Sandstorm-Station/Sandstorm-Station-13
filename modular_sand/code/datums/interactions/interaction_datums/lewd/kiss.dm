@@ -16,6 +16,6 @@
 
 /datum/interaction/lewd/kiss/display_interaction(mob/living/user, mob/living/partner)
 	if(user.get_lust() >= 3)
-		user.visible_message("<span class='lewd'>\The <b>[user]</b> gives an intense, lingering kiss to \the <b>[partner]</b>.</span>")
+		user.visible_message(span_lewd("\The <b>[user]</b> gives an intense, lingering kiss to \the <b>[partner]</b>."))
 	else
-		user.visible_message("<span class='lewd'>\The <b>[user]</b> kisses \the <b>[partner]</b> deeply.</span>")
+		user.visible_message(span_lewd("\The <b>[user]</b> kisses \the <b>[partner]</b> deeply."))
