@@ -22,13 +22,13 @@
 	force = 10
 
 /obj/item/bdsm_whip/suicide_act(mob/user)
-		user.visible_message("<span class='suicide'>[user] is getting just a little too kinky!</span>")
+		user.visible_message(span_suicide("[user] is getting just a little too kinky!"))
 		return (OXYLOSS)
 
 /obj/item/bdsm_whip/attack(mob/M, mob/user)
 	if(user.zone_selected == BODY_ZONE_PRECISE_GROIN)
 		playsound(loc, 'sound/weapons/whip.ogg', 30)
-		M.visible_message("<span class='userdanger'>[user] has [pick(attack_verb)] [M] on the ass!</span>")
+		M.visible_message(span_userdanger("[user] has [pick(attack_verb)] [M] on the ass!"))
 	else
 		return ..(M, user)
 
@@ -54,5 +54,5 @@
 	total_mass = TOTAL_MASS_MEDIEVAL_WEAPON
 
 /obj/item/khopesh/suicide_act(mob/user)
-	user.visible_message("<span class='suicide'>[user] is falling on [src]! It looks like [user.p_theyre()] trying to commit suicide!</span>")
+	user.visible_message(span_suicide("[user] is falling on [src]! It looks like [user.p_theyre()] trying to commit suicide!"))
 	return(BRUTELOSS)

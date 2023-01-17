@@ -36,7 +36,7 @@
 		petrified_mob = L
 		if(L.buckled)
 			L.buckled.unbuckle_mob(L,force=1)
-		L.visible_message("<span class='warning'>[L]'s skin rapidly turns to stone!</span>", "<span class='warning'>Your skin abruptly hardens as you turn to stone once more!</span>")
+		L.visible_message(span_warning("[L]'s skin rapidly turns to stone!"), span_warning("Your skin abruptly hardens as you turn to stone once more!"))
 		dir = L.dir
 		transform = L.transform
 		pixel_x = L.pixel_x
@@ -76,7 +76,7 @@
 	. = ..()
 	if (petrified_mob)
 		SEND_SIGNAL(petrified_mob, COMSIG_PARENT_EXAMINE, user, .)
-		. -= "<span class='notice'><i>You examine [src] closer, but find nothing of interest...</i></span>"
+		. -= span_notice("<i>You examine [src] closer, but find nothing of interest...</i>")
 
 /obj/structure/statue/gargoyle/handle_atom_del(atom/A)
 	if(A == petrified_mob)
@@ -119,7 +119,7 @@
 
 /obj/structure/statue/gargoyle/deconstruct(disassembled = TRUE)
 	deconstructed = TRUE
-	visible_message("<span class='danger'>[src] shatters!</span>")
+	visible_message(span_danger("[src] shatters!"))
 	qdel(src)
 
 /obj/structure/statue/gargoyle/attackby(obj/item/W, mob/living/user, params)
@@ -137,7 +137,7 @@
 			user.visible_message(span_notice("[user] is slicing apart the [name]."), \
 								span_notice("You are slicing apart the [name]..."))
 			if (petrified_mob)
-				to_chat(petrified_mob, "<span class='userdanger'>You are being sliced apart by [user]!</span>")
+				to_chat(petrified_mob, span_userdanger("You are being sliced apart by [user]!"))
 			if(W.use_tool(src, user, 40, volume=50))
 				user.visible_message(span_notice("[user] slices apart the [name]."), \
 									span_notice("You slice apart the [name]!"))

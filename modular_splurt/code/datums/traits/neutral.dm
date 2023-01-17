@@ -5,15 +5,15 @@
 	desc = "You are aroused by suffocation."
 	value = 0
 	mob_trait = TRAIT_CHOKE_SLUT
-	gain_text = "<span class='notice'>You feel like you want to feel fingers around your neck, choking you until you pass out or make a mess... Maybe both.</span>"
-	lose_text = "<span class='notice'>Seems you don't have a kink for suffocation anymore.</span>"
+	gain_text = span_notice("You feel like you want to feel fingers around your neck, choking you until you pass out or make a mess... Maybe both.")
+	lose_text = span_notice("Seems you don't have a kink for suffocation anymore.")
 
 /datum/quirk/pharmacokinesis //Supposed to prevent unwanted organ additions. But i don't think it's really working rn
 	name = "Acute Hepatic Pharmacokinesis" //copypasting dumbo
 	desc = "You have a genetic disorder that causes Incubus Draft and Succubus Milk to be absorbed by your liver instead."
 	value = 0
 	mob_trait = TRAIT_PHARMA
-	lose_text = "<span class='notice'>Your liver feels... different, somehow.</span>"
+	lose_text = span_notice("Your liver feels... different, somehow.")
 	var/active = FALSE
 	var/power = 0
 	var/cachedmoveCalc = 1
@@ -23,16 +23,16 @@
 	desc = "You've never skipped ass day. You are completely immune to all forms of ass slapping and anyone who tries to slap your rock hard ass usually gets a broken hand."
 	value = 0
 	mob_trait = TRAIT_STEEL_ASS
-	gain_text = "<span class='notice'>Your ass rivals those of golems.</span>"
-	lose_text = "<span class='notice'>Your butt feels more squishy and slappable.</span>"
+	gain_text = span_notice("Your ass rivals those of golems.")
+	lose_text = span_notice("Your butt feels more squishy and slappable.")
 
 /datum/quirk/cursed_blood
 	name = "Cursed Blood"
 	desc = "Your lineage is cursed with the paleblood curse. Best to stay away from holy water... Hell water, on the other hand..."
 	value = 0
 	mob_trait = TRAIT_CURSED_BLOOD
-	gain_text = "<span class='notice'>A curse from a land where men return as beasts runs deep in your blood.</span>"
-	lose_text = "<span class='notice'>You feel the weight of the curse in your blood finally gone.</span>"
+	gain_text = span_notice("A curse from a land where men return as beasts runs deep in your blood.")
+	lose_text = span_notice("You feel the weight of the curse in your blood finally gone.")
 	medical_record_text = "Patient suffers from an unknown type of aversion to holy reagents. Keep them away from a chaplain."
 
 /datum/quirk/headpat_hater
@@ -40,8 +40,8 @@
 	desc = "You don't seem to show much care for being touched. Whether it's because you're reserved or due to self control, others touching your head won't make you wag your tail should you possess one, and the action may even attract your ire."
 	mob_trait = TRAIT_DISTANT
 	value = 0
-	gain_text = "<span class='notice'>Others' touches begin to make your blood boil...</span>"
-	lose_text = "<span class='notice'>Having your head pet doesn't sound so bad right about now...</span>"
+	gain_text = span_notice("Others' touches begin to make your blood boil...")
+	lose_text = span_notice("Having your head pet doesn't sound so bad right about now...")
 	medical_record_text = "Patient cares little with or dislikes being touched."
 
 /datum/quirk/headpat_slut
@@ -49,8 +49,8 @@
 	desc = "You love the feeling of others touching your head! Maybe a little too much, actually... Others patting your head will provide a bigger mood boost and cause aroused reactions."
 	mob_trait = TRAIT_HEADPAT_SLUT
 	value = 0
-	gain_text = "<span class='notice'>You crave headpats immensely!</span>"
-	lose_text = "<span class='notice'>Your headpats addiction wanes.</span>"
+	gain_text = span_notice("You crave headpats immensely!")
+	lose_text = span_notice("Your headpats addiction wanes.")
 	medical_record_text = "Patient seems overly affectionate."
 
 /datum/quirk/headpat_slut/add()
@@ -66,16 +66,16 @@
 	desc = "Your system burns with the desire to be bred. Satisfying your lust will make you happy, but ignoring it may cause you to become sad and needy."
 	value = 0
 	mob_trait = TRAIT_IN_HEAT
-	gain_text = "<span class='notice'>You body burns with the desire to be bred.</span>"
-	lose_text = "<span class='notice'>You feel more in control of your body and thoughts.</span>"
+	gain_text = span_notice("You body burns with the desire to be bred.")
+	lose_text = span_notice("You feel more in control of your body and thoughts.")
 
 /datum/quirk/Hypnotic_gaze
 	name = "Hypnotic Gaze"
 	desc = "Be it through mysterious patterns, flickering colors, or some genetic oddity, prolonged eye contact with you will place the viewer into a highly-suggestible hypnotic trance."
 	value = 0
 	mob_trait = TRAIT_HYPNOTIC_GAZE
-	gain_text = "<span class='notice'>Your eyes glimmer hypnotically...</span>"
-	lose_text = "<span class='notice'>Your eyes return to normal.</span>"
+	gain_text = span_notice("Your eyes glimmer hypnotically...")
+	lose_text = span_notice("Your eyes return to normal.")
 	medical_record_text = "Prolonged exposure to Patient's eyes exhibits soporific effects."
 
 /datum/quirk/Hypnotic_gaze/on_spawn()
@@ -89,14 +89,14 @@
 	desc = "You have a animalistic sense of detecting if someone is in heat."
 	value = 0
 	mob_trait = TRAIT_HEAT_DETECT
-	gain_text = "<span class='notice'>You feel your senses adjust, allowing a animalistic sense of others' fertility.</span>"
-	lose_text = "<span class='notice'>You feel your sense of others' fertility fade.</span>"
+	gain_text = span_notice("You feel your senses adjust, allowing a animalistic sense of others' fertility.")
+	lose_text = span_notice("You feel your sense of others' fertility fade.")
 
 /datum/quirk/overweight
 	name = "Overweight"
 	desc = "You're particularly fond of food, and join the shift being overweight."
 	value = 0
-	gain_text = "<span class='notice'>You feel a bit chubby!</span>"
+	gain_text = span_notice("You feel a bit chubby!")
 	//no lose_text cause why would there be?
 
 /datum/quirk/overweight/on_spawn()
@@ -109,8 +109,8 @@
 	name = "Vegetarian"
 	desc = "You find the idea of eating meat morally and physically repulsive."
 	value = 0
-	gain_text = "<span class='notice'>You feel repulsion at the idea of eating meat.</span>"
-	lose_text = "<span class='notice'>You feel like eating meat isn't that bad.</span>"
+	gain_text = span_notice("You feel repulsion at the idea of eating meat.")
+	lose_text = span_notice("You feel like eating meat isn't that bad.")
 	medical_record_text = "Patient reports a vegetarian diet."
 
 /datum/quirk/vegetarian/add()
@@ -132,8 +132,8 @@
 	name = "Extra-Productive Genitals"
 	desc = "Your genitals produce and hold more than normal."
 	value = 0
-	gain_text = "<span class='notice'>You feel pressure in your groin.</span>"
-	lose_text = "<span class='notice'>You feel a weight lifted from your groin.</span>"
+	gain_text = span_notice("You feel pressure in your groin.")
+	lose_text = span_notice("You feel a weight lifted from your groin.")
 	medical_record_text = "Patient exhibits increased production of sexual fluids."
 
 /datum/quirk/cum_plus/add()
@@ -165,8 +165,8 @@
 	name = "Well-Trained"
 	desc = "You absolutely love being dominated. The thought of someone stronger than you is enough to make you act up."
 	value = 0
-	gain_text = "<span class='notice'>You feel like being someone's pet...</span>"
-	lose_text = "<span class='notice'>You no longer feel like being a pet...</span>"
+	gain_text = span_notice("You feel like being someone's pet...")
+	lose_text = span_notice("You no longer feel like being a pet...")
 	processing_quirk = TRUE
 	var/mood_category = "dom_trained"
 	var/notice_delay = 0
@@ -253,8 +253,8 @@
 	desc = "You are a tri-headed creature. To use, format your name like (Rucks-Sucks-Ducks)."
 	value = 0
 	mob_trait = TRAIT_HYDRA_HEADS
-	gain_text = "<span class='notice'>You hear two other voices inside of your head(s).</span>"
-	lose_text = "<span class='danger'>All of your minds become singular.</span>"
+	gain_text = span_notice("You hear two other voices inside of your head(s).")
+	lose_text = span_danger("All of your minds become singular.")
 	medical_record_text = "Patient has multiple heads and personalities affixed to their body."
 
 /datum/quirk/hydra/on_spawn()
@@ -273,8 +273,8 @@
 	desc = "You've built so much experience savoring other people's genitals through your life that you can easily tell what liquids they're full of, besides reagents in their blood that is."
 	value = 0
 	mob_trait = TRAIT_GFLUID_DETECT
-	gain_text = "<span class='notice'>You begin sensing peculiar smells from people's bits...</span>"
-	lose_text = "<span class='notice'>People's genitals start smelling all the same to you...</span>"
+	gain_text = span_notice("You begin sensing peculiar smells from people's bits...")
+	lose_text = span_notice("People's genitals start smelling all the same to you...")
 	medical_record_text = "Patient attempted to get their doctor to drag his balls accross their face."
 
 /datum/quirk/fluid_infuser
@@ -366,14 +366,14 @@
 	H.adjust_nutrition(-0.09)//increases their nutrition loss rate to encourage them to gain a partner they can essentially leech off of
 
 /datum/quirk/bloodfledge
-	name = "Bloodsucker Fledgling"
-	desc = "You are a fledgling belonging to ancient Bloodsucker bloodline. While the blessing has yet to fully convert you, some things have changed. Only blood will sate your hungers, and holy energies will cause your flesh to char. <b>This is NOT an antagonist role!</b>"
-	value = 2
-	medical_record_text = "Patient exhibits onset symptoms of a sanguine curse."
-	mob_trait = TRAIT_BLOODFLEDGE
-	gain_text = "<span class='notice'>You feel a sanguine thirst.</span>"
-	lose_text = "<span class='notice'>You feel the sanguine thirst fade away.</span>"
-	processing_quirk = TRUE
+    name = "Bloodsucker Fledgling"
+    desc = "You are a fledgling belonging to ancient Bloodsucker bloodline. While the blessing has yet to fully convert you, some things have changed. Only blood will sate your hungers, and holy energies will cause your flesh to char. <b>This is NOT an antagonist role!</b>"
+    value = 2
+    medical_record_text = "Patient exhibits onset symptoms of a sanguine curse."
+    mob_trait = TRAIT_BLOODFLEDGE
+    gain_text = span_notice("You feel a sanguine thirst.")
+    lose_text = span_notice("You feel the sanguine thirst fade away.")
+    processing_quirk = TRUE
 
 /datum/quirk/bloodfledge/add()
 	. = ..()
@@ -635,8 +635,8 @@
 	// Spawning with a gear harness is preferable, but failed during testing.
 	name = "Nudist"
 	desc = "Wearing most types of clothing unnerves you. Bring a gear harness!"
-	gain_text = "<span class='notice'>You feel spiritually connected to your natural form.</span>"
-	lose_text = "<span class='notice'>It feels like clothing could fit you comfortably.</span>"
+	gain_text = span_notice("You feel spiritually connected to your natural form.")
+	lose_text = span_notice("It feels like clothing could fit you comfortably.")
 	medical_record_text = "Patient expresses a psychological need to remain unclothed."
 	value = 0
 	mood_quirk = TRUE
@@ -651,11 +651,19 @@
 	else
 		SEND_SIGNAL(quirk_holder, COMSIG_ADD_MOOD_EVENT, mood_category, /datum/mood_event/nudist_negative)
 
+/datum/quirk/nudist/on_spawn()
+	. = ..()
+	// Spawn a Rapid Disrobe Implant
+	var/obj/item/implant/disrobe/quirk_implant = new
+
+	// Implant into quirk holder
+	quirk_implant.implant(quirk_holder, null, TRUE, TRUE)
+
 /datum/quirk/masked_mook
 	name = "Bane Syndrome"
 	desc = "For some reason you don't feel... right without wearing some kind of gas mask."
-	gain_text = "<span class='danger'>You start feeling unwell without any gas mask on.</span>"
-	lose_text = "<span class='notice'>You no longer have a need to wear some gas mask.</span>"
+	gain_text = span_danger("You start feeling unwell without any gas mask on.")
+	lose_text = span_notice("You no longer have a need to wear some gas mask.")
 	value = 0
 	mood_quirk = TRUE
 	medical_record_text = "Patient feels more secure when wearing a gas mask."

@@ -51,7 +51,7 @@
 		user.transferItemToLoc(O,src)
 		encryption_keys += O
 		recalculate_channels()
-		to_chat(user, "<span class='notice'>You slide \the [O] inside the circuit.</span>")
+		to_chat(user, span_notice("You slide \the [O] inside the circuit."))
 	else
 		..()
 
@@ -75,10 +75,10 @@
 			O.forceMove(drop_location())
 		encryption_keys.Cut()
 		set_pin_data(IC_OUTPUT, 1, WEAKREF(null))
-		to_chat(user, "<span class='notice'>You slide the encryption keys out of the circuit.</span>")
+		to_chat(user, span_notice("You slide the encryption keys out of the circuit."))
 		recalculate_channels()
 	else
-		to_chat(user, "<span class='notice'>There are no encryption keys to remove from the mechanism.</span>")
+		to_chat(user, span_notice("There are no encryption keys to remove from the mechanism."))
 
 /obj/item/radio/headset/integrated
 

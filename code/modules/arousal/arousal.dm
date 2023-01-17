@@ -99,10 +99,10 @@
 		to_chat(src,"<span class='userdanger'>Your [G.name] cannot cum.</span>")
 		return
 	if(mb_time) //as long as it's not instant, give a warning
-		to_chat(src,"<span class='userlove'>You feel yourself about to orgasm.</span>")
+		to_chat(src, span_userlove("You feel yourself about to orgasm."))
 		if(!do_after(src, mb_time, target = src) || !G.climaxable(src, TRUE))
 			return
-	to_chat(src,"<span class='userlove'>You climax[isturf(loc) ? " onto [loc]" : ""] with your [G.name].</span>")
+	to_chat(src, span_userlove("You climax[isturf(loc) ? " onto [loc]" : ""] with your [G.name]."))
 	do_climax(fluid_source, loc, G)
 
 /mob/living/carbon/human/proc/mob_climax_partner(obj/item/organ/genital/G, mob/living/L, spillage = TRUE, mb_time = 30, obj/item/organ/genital/Lgen = null) //Used for climaxing with any living thing
@@ -110,16 +110,16 @@
 	if(!fluid_source)
 		return
 	if(mb_time) //Skip warning if this is an instant climax.
-		to_chat(src,"<span class='userlove'>You're about to climax [(Lgen) ? "in [L]'s [Lgen.name]" : "with [L]"]!</span>")
-		to_chat(L,"<span class='userlove'>[src] is about to climax [(Lgen) ? "in your [Lgen.name]" : "with you"]!</span>")
+		to_chat(src, span_userlove("You're about to climax [(Lgen) ? "in [L]'s [Lgen.name]" : "with [L]"]!"))
+		to_chat(L, span_userlove("[src] is about to climax [(Lgen) ? "in your [Lgen.name]" : "with you"]!"))
 		if(!do_after(src, mb_time, target = src) || !in_range(src, L) || !G.climaxable(src, TRUE))
 			return
 	if(spillage)
-		to_chat(src,"<span class='userlove'>You orgasm with [L], spilling out of [(Lgen) ? "[L.p_their()] [Lgen.name]" : "[L.p_them()]"], using your [G.name].</span>")
-		to_chat(L,"<span class='userlove'>[src] climaxes [(Lgen) ? "in your [Lgen.name]" : "with you"], overflowing and spilling, using [p_their()] [G.name]!</span>")
+		to_chat(src, span_userlove("You orgasm with [L], spilling out of [(Lgen) ? "[L.p_their()] [Lgen.name]" : "[L.p_them()]"], using your [G.name]."))
+		to_chat(L, span_userlove("[src] climaxes [(Lgen) ? "in your [Lgen.name]" : "with you"], overflowing and spilling, using [p_their()] [G.name]!"))
 	else //knots and other non-spilling orgasms
-		to_chat(src,"<span class='userlove'>You climax [(Lgen) ? "in [L]'s [Lgen.name]" : "with [L]"], your [G.name] spilling nothing.</span>")
-		to_chat(L,"<span class='userlove'>[src] climaxes [(Lgen) ? "in your [Lgen.name]" : "with you"], [p_their()] [G.name] spilling nothing!</span>")
+		to_chat(src, span_userlove("You climax [(Lgen) ? "in [L]'s [Lgen.name]" : "with [L]"], your [G.name] spilling nothing."))
+		to_chat(L, span_userlove("[src] climaxes [(Lgen) ? "in your [Lgen.name]" : "with you"], [p_their()] [G.name] spilling nothing!"))
 	//SEND_SIGNAL(L, COMSIG_ADD_MOOD_EVENT, "orgasm", /datum/mood_event/orgasm) //Sandstorm edit
 	do_climax(fluid_source, spillage ? loc : L, G, spillage,, Lgen)
 	//L.receive_climax(src, Lgen, G, spillage)
@@ -129,10 +129,10 @@
 	if(!fluid_source)
 		return
 	if(mb_time)
-		to_chat(src,"<span class='userlove'>You start to [G.masturbation_verb] your [G.name] over [container].</span>")
+		to_chat(src, span_userlove("You start to [G.masturbation_verb] your [G.name] over [container]."))
 		if(!do_after(src, mb_time, target = src) || !in_range(src, container) || !G.climaxable(src, TRUE))
 			return
-	to_chat(src,"<span class='userlove'>You used your [G.name] to fill [container].</span>")
+	to_chat(src, span_userlove("You used your [G.name] to fill [container]."))
 	message_admins("[ADMIN_LOOKUPFLW(src)] used [p_their()] [G.name] to fill [container] with [G.get_fluid_name()].")
 	log_consent("[key_name(src)] used their [G.name] to fill [container].")
 	do_climax(fluid_source, container, G, FALSE, cover = TRUE)

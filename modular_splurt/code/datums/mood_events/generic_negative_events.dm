@@ -1,5 +1,5 @@
 /datum/mood_event/masked_mook_incomplete
-	description = "<span class='warning'>I feel incomplete without a gas mask...</span>\n"
+	description = span_warning("I feel incomplete without a gas mask...")
 	mood_change = -4
 
 /datum/mood_event/creampie/cheesed
