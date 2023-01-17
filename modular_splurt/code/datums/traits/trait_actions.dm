@@ -443,9 +443,18 @@
 	if(action_owner.nutrition <= NUTRITION_LEVEL_STARVING)
 		revive_failed += "\n- You don't have enough blood left!"
 
-	// Condition: Mortal damage
-	if(action_owner.health <= HEALTH_THRESHOLD_DEAD)
-		revive_failed += "\n- Your body is still too weak!"
+	// Condition: Can be revived
+	// This is used by revive(), and must be checked here to prevent false feedback
+	if(!action_owner.can_be_revived())
+		revive_failed += "\n- Your body is too weak to sustain life!"
+
+	// Condition: Damage limit, brute
+	if(action_owner.getBruteLoss() >= MAX_REVIVE_BRUTE_DAMAGE)
+		revive_failed += "\n- Your body is too battered!"
+	
+	// Condition: Damage limit, burn
+	if(action_owner.getFireLoss() >= MAX_REVIVE_FIRE_DAMAGE)
+		revive_failed += "\n- Your body is too badly burned!"
 
 	// Condition: Suicide
 	if(action_owner.suiciding)
@@ -462,20 +471,44 @@
 		// Return
 		return
 
+	// Define time dead
+	// Used for revive policy
+	var/time_dead = world.time - action_owner.timeofdeath
+
 	// Revive the action owner
 	action_owner.revive()
 
 	// Alert the user in chat of success
 	action_owner.visible_message(span_notice("An ominous energy radiates from the [action_owner.loc]..."), span_warning("You've expended all remaining blood to bring your body back to life!"))
 
-	// Log this, to match defib behavior
-	action_owner.log_message("revived using a vampire quirk ability.", LOG_GAME)
+	// Play a haunted sound effect
+	playsound(action_owner, 'sound/hallucinations/growl1.ogg', 30, 1, -2)
 
 	// Remove all nutrition (blood)
 	action_owner.set_nutrition(0)
 
 	// Apply daze effect
-	action_owner.Daze(20)		
+	action_owner.Daze(20)
+
+	// Define time limit for revival
+	// Determines memory loss, using defib time and policies
+	var/revive_time_limit = CONFIG_GET(number/defib_cmd_time_limit) * 10
+
+	// Define revive time threshold
+	// Late causes memory loss, according to policy
+	var/time_late = revive_time_limit && (time_dead > revive_time_limit)
+
+	// Define policy to use
+	var/list/policies = CONFIG_GET(keyed_list/policy)
+	var/time_policy = time_late? policies[POLICYCONFIG_ON_DEFIB_LATE] : policies[POLICYCONFIG_ON_DEFIB_INTACT]
+
+	// Check if policy exists
+	if(time_policy)
+		// Alert user in chat of policy
+		to_chat(action_owner, time_policy)
+
+	// Log the revival and effective policy
+	action_owner.log_message("revived using a vampire quirk ability after being dead for [time_dead] deciseconds. Considered [time_late? "late" : "memory-intact"] revival under configured policy limits.", LOG_GAME)
 
 //
 // Quirk: Werewolf
