@@ -1,6 +1,9 @@
 /obj/item/clothing/neck
 	is_edible = 1
 
+/obj/item/clothing/neck/stethoscope
+	is_edible = 2
+
 /obj/item/clothing/neck/petcollar/locked/security
 	name = "security collar"
 	desc = "For when you need to show everyone who your pet belongs to."
