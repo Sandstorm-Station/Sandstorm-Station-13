@@ -30,7 +30,7 @@
 
 /datum/emote/living/fart/run_emote(mob/living/user, params, type_override, intentional)
 	if(TIMER_COOLDOWN_CHECK(user, COOLDOWN_EMOTE_FART))
-		to_chat(user, "<span class='warning'>You try your hardest, but no shart comes out.</span>")
+		to_chat(user, span_warning("You try your hardest, but no shart comes out."))
 		return
 	var/list/fart_emotes = list( //cope goonies
 		"lets out a girly little 'toot' from [user.p_their()] butt.",

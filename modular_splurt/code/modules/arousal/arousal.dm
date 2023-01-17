@@ -60,7 +60,7 @@
 		var/obj/item/organ/genital/penis/bepis = sender
 		if(locate(/obj/item/genital_equipment/sounding) in bepis.contents)
 			spill = TRUE
-			to_chat(src, "<span class='userlove'>You feel your sounding rod being pushed out of your cockhole with the burst of jizz!</span>")
+			to_chat(src, span_userlove("You feel your sounding rod being pushed out of your cockhole with the burst of jizz!"))
 			var/obj/item/genital_equipment/sounding/rod = locate(/obj/item/genital_equipment/sounding) in bepis.contents
 			rod.forceMove(get_turf(src))
 
@@ -81,14 +81,14 @@
 		return
 	var/main_fluid = lowertext(fluid_source.get_master_reagent_name())
 	if(mb_time)
-		visible_message("<span class='love'>You hear a strong suction sound coming from the [M.name] on [src]'s [G.name].</span>", \
-							"<span class='userlove'>The [M.name] pumps faster, trying to get you over the edge.</span>", \
-							"<span class='userlove'>Something vacuums your [G.name] with a quiet but powerfull vrrrr.</span>")
+		visible_message(span_love("You hear a strong suction sound coming from the [M.name] on [src]'s [G.name]."), \
+							span_userlove("The [M.name] pumps faster, trying to get you over the edge."), \
+							span_userlove("Something vacuums your [G.name] with a quiet but powerfull vrrrr."))
 		if(!do_after(src, mb_time, target = src) || !in_range(src, container) || !G.climaxable(src, TRUE))
 			return
-	visible_message("<span class='love'>[src] twitches as [p_their()] [main_fluid] trickles into [container].</span>", \
-								"<span class='userlove'>[M] sucks out all the [main_fluid] you had been saving up into [container].</span>", \
-								"<span class='userlove'>You feel a vacuum sucking on your [G.name] as you climax!</span>")
+	visible_message(span_love("[src] twitches as [p_their()] [main_fluid] trickles into [container]."), \
+								span_userlove("[M] sucks out all the [main_fluid] you had been saving up into [container]."), \
+								span_userlove("You feel a vacuum sucking on your [G.name] as you climax!"))
 	do_climax(fluid_source, container, G, FALSE, cover = TRUE)
 	emote("moan")
 
@@ -97,12 +97,12 @@
 	if(!fluid_source)
 		return
 	if(mb_time) //Skip warning if this is an instant climax.
-		to_chat(src,"<span class='userlove'>You're about to climax over [L]!</span>")
-		to_chat(L,"<span class='userlove'>[src] is about to climax over you!</span>")
+		to_chat(src,span_userlove("You're about to climax over [L]!"))
+		to_chat(L,span_userlove("[src] is about to climax over you!"))
 		if(!do_after(src, mb_time, target = src) || !in_range(src, L) || !G.climaxable(src, TRUE))
 			return
-	to_chat(src,"<span class='userlove'>You climax all over [L] using your [G.name]!</span>")
-	to_chat(L, "<span class='userlove'>[src] climaxes all over you using [p_their()] [G.name]!</span>")
+	to_chat(src,span_userlove("You climax all over [L] using your [G.name]!"))
+	to_chat(L, span_userlove("[src] climaxes all over you using [p_their()] [G.name]!"))
 	do_climax(fluid_source, L, G, spillage, cover = TRUE)
 
 /atom/proc/add_cum_overlay() //This can go in a better spot, for now its here.

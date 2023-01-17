@@ -49,7 +49,7 @@
 			if(!M.undergoing_cardiac_arrest() && M.can_heartattack() && prob(1))
 				M.set_heartattack(TRUE)
 				if(M.stat == CONSCIOUS)
-					M.visible_message("<span class='userdanger'>[M] clutches at [M.p_their()] chest as if [M.p_their()] heart stopped!</span>") // too much lean :(
+					M.visible_message(span_userdanger("[M] clutches at [M.p_their()] chest as if [M.p_their()] heart stopped!")) // too much lean :(
 	..()
 
 /datum/reagent/consumable/ethanol/cum_in_a_hot_tub
@@ -355,4 +355,4 @@
 	T.Remove()
 	nT.Insert(M)
 	T.moveToNullspace()//To valhalla
-	to_chat(M, "<span class='big warning'>Your tongue feels... weally fwuffy!!</span>")
+	to_chat(M, span_big_warning("Your tongue feels... weally fwuffy!!"))

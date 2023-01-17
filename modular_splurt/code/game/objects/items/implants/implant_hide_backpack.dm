@@ -99,7 +99,7 @@
 	var/implant_toggle_text_2 = (!ability_active ? "dis" : "") // Engage or Disengage
 
 	// Display a chat message
-	action_owner.visible_message("<span class='notice'>The equipment worn on [action_owner]'s back-region flickers momentarily, before becoming [implant_toggle_text].</span>", "<span class='notice'>You [implant_toggle_text_2]engage the Storage Concealment Implant, causing your backpack to be [implant_toggle_text].</span>")
+	action_owner.visible_message(span_notice("The equipment worn on [action_owner]'s back-region flickers momentarily, before becoming [implant_toggle_text]."), span_notice("You [implant_toggle_text_2]engage the Storage Concealment Implant, causing your backpack to be [implant_toggle_text]."))
 
 /*
  * Implant items
