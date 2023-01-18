@@ -7,11 +7,11 @@
 /obj/item/implant/slaver/activate()
 	. = ..()
 
-	imp_in.visible_message("<span class='notice'>[imp_in] begins fiddling with a subtle bump on their arm.</span>", "<span class='notice'>You prepare to teleport.</span>")
+	imp_in.visible_message(span_notice("[imp_in] begins fiddling with a subtle bump on their arm."), span_notice("You prepare to teleport."))
 	if(do_mob(imp_in, imp_in, 5 SECONDS, ignorehelditem = TRUE))
 		playsound(get_turf(imp_in.loc), 'sound/magic/blink.ogg', 50, 1)
-		imp_in.visible_message("<span class='notice'>[imp_in] vanishes from sight!</span>", \
-					"<span class='notice'>You activate [src], sending you to the slaver mothership!</span>")
+		imp_in.visible_message(span_notice("[imp_in] vanishes from sight!"), \
+					span_notice("You activate [src], sending you to the slaver mothership!"))
 		new /obj/effect/temp_visual/dir_setting/ninja(get_turf(imp_in), imp_in.dir)
 
 		var/list/L = list()
@@ -26,7 +26,7 @@
 
 		qdel(src)
 	else
-		to_chat(imp_in, "<span class='warning'>You need to stand still and uninterrupted for 5 seconds!</span>")
+		to_chat(imp_in, span_warning("You need to stand still and uninterrupted for 5 seconds!"))
 
 /obj/item/implant/slaver/get_data()
 	var/dat = {"<b>Implant Specifications:</b><BR>

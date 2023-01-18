@@ -35,6 +35,10 @@
 	ass_image = 'icons/ass/assslime.png'
 	blacklisted_quirks = list(/datum/quirk/glass_bones)
 
+	family_heirlooms = list(
+		/obj/item/toy/plush/slimeplushie
+	)
+
 /datum/species/jelly/on_species_loss(mob/living/carbon/C)
 	C.faction -= "slime"
 	if(ishuman(C))

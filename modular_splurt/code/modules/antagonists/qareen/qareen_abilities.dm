@@ -9,7 +9,7 @@
 
 	if(ishuman(A))
 		if(A in drained_mobs)
-			to_chat(src, "<span class='revenwarning'>[A]'s fluids are almost devoid of any essence, also very bland.. almost tasteless... but beggars can't be choosers.</span>" )
+			to_chat(src, span_revenwarning("[A]'s fluids are almost devoid of any essence, also very bland.. almost tasteless... but beggars can't be choosers.") )
 		if(in_range(src, A))
 			Harvest(A)
 
@@ -20,19 +20,19 @@
 	if(!castcheck(0))
 		return
 	if(draining)
-		to_chat(src, "<span class='revenwarning'>You are already sucking up the essence!</span>")
+		to_chat(src, span_revenwarning("You are already sucking up the essence!"))
 		return
 	if(target.stat)
-		to_chat(src, "<span class='revennotice'>[target.p_their(TRUE)] essence is too faded to harvest.</span>")
+		to_chat(src, span_revennotice("[target.p_their(TRUE)] essence is too faded to harvest."))
 		return
 	if(!target.ckey)
-		to_chat(src, "<span class='revennotice'>[target.p_their(TRUE)] essence is lacking .. worthless.</span>")
+		to_chat(src, span_revennotice("[target.p_their(TRUE)] essence is lacking .. worthless."))
 		// return
 	if(prob(10))
 		to_chat(target, "You feel as if you are being watched.")
 	face_atom(target)
 	draining = TRUE
-	to_chat(src, "<span class='revennotice'>You search for the lifespring of [target].</span>")
+	to_chat(src, span_revennotice("You search for the lifespring of [target]."))
 	if(do_after(src, rand(10, 20), 0, target)) //did they get deleted in that second?
 		for(var/obj/item/organ/genital/G in target.internal_organs)
 			if(!(G.genital_flags & GENITAL_FUID_PRODUCTION))
@@ -43,9 +43,9 @@
 				var/main_fluid = G.get_fluid_name()
 				var/fluid_ammount = clamp((G.fluid_rate * ((world.time - G.last_orgasmed) / (10 SECONDS)) * G.fluid_mult),0,G.fluid_max_volume)
 				if (fluid_ammount <= 2)
-					to_chat(src, "<span class='revennotice'>[target.p_their(TRUE)] [G.name] spasms pitifully, almost nothing will come out.</span>")
+					to_chat(src, span_revennotice("[target.p_their(TRUE)] [G.name] spasms pitifully, almost nothing will come out."))
 				else
-					to_chat(src, "<span class='revennotice'>[target.p_their(TRUE)] [G.name] are brimming with [main_fluid].</span>")
+					to_chat(src, span_revennotice("[target.p_their(TRUE)] [G.name] are brimming with [main_fluid]."))
 					if (fluid_ammount > 5)
 						fluid_ammount = 5 // For balancing reasons
 				if ((target in drained_mobs) || !target.ckey)
@@ -60,33 +60,33 @@
 		if(do_after(src, rand(15, 20), 0, target)) //did they get deleted NOW?
 			switch(essence_drained)
 				if(0 to 4)
-					to_chat(src, "<span class='revennotice'>[target] is almost barren of essence. Still, every bit counts.</span>")
+					to_chat(src, span_revennotice("[target] is almost barren of essence. Still, every bit counts."))
 				if(5 to 10)
-					to_chat(src, "<span class='revennotice'>[target] will yield an average amount of essence.</span>")
+					to_chat(src, span_revennotice("[target] will yield an average amount of essence."))
 				if(11 to 20)
-					to_chat(src, "<span class='revenboldnotice'>Such a feast! [target] will yield much essence to you.</span>")
+					to_chat(src, span_revenboldnotice("Such a feast! [target] will yield much essence to you."))
 				if(30 to INFINITY)
-					to_chat(src, "<span class='revenbignotice'>Ah, a sexually furstrated person. [target] will yield massive amounts of essence to you.</span>")
+					to_chat(src, span_revenbignotice("Ah, a sexually furstrated person. [target] will yield massive amounts of essence to you."))
 			if(do_after(src, rand(15, 25), 0, target)) //how about now
 				if(target.stat)
-					to_chat(src, "<span class='revenwarning'>[target.p_theyre(TRUE)] now too weak to provide anything of worth.</span>")
-					to_chat(target, "<span class='boldannounce'>You feel something tugging across your body before subsiding.</span>")
+					to_chat(src, span_revenwarning("[target.p_theyre(TRUE)] now too weak to provide anything of worth."))
+					to_chat(target, span_boldannounce("You feel something tugging across your body before subsiding."))
 					draining = 0
 					essence_drained = 0
 					return //hey, wait a minute...
-				to_chat(src, "<span class='revenminor'>You begin sucking up essence from [target]'s genitals and body.</span>")
+				to_chat(src, span_revenminor("You begin sucking up essence from [target]'s genitals and body."))
 				if(target.stat != DEAD)
-					to_chat(target, "<span class='warning'>You feel an unholy euphoria as as something sucks at every part your body, your fluids flowing out...</span>")
+					to_chat(target, span_warning("You feel an unholy euphoria as as something sucks at every part your body, your fluids flowing out..."))
 				if(target.stat == SOFT_CRIT)
 					target.Stun(150)
 				reveal(46)
 				stun(100)
-				target.visible_message("<span class='warning'>[target] suddenly rises slightly into the air, [target.p_their()] skin turning an ashy gray.</span>")
+				target.visible_message(span_warning("[target] suddenly rises slightly into the air, [target.p_their()] skin turning an ashy gray."))
 				if(target.anti_magic_check(FALSE, TRUE))
-					to_chat(src, "<span class='revenminor'>Something's wrong! [target] seems to be resisting the sucking, leaving you vulnerable!</span>")
+					to_chat(src, span_revenminor("Something's wrong! [target] seems to be resisting the sucking, leaving you vulnerable!"))
 					target.set_resting(TRUE,TRUE)
-					target.visible_message("<span class='warning'>[target] slumps onto the ground.</span>", \
-											   "<span class='revenwarning'>Violet lights, dancing in your vision, receding--</span>")
+					target.visible_message(span_warning("[target] slumps onto the ground."), \
+											   span_revenwarning("Violet lights, dancing in your vision, receding--"))
 					draining = FALSE
 					return
 				var/datum/beam/B = Beam(target,icon_state="drain_life",time=INFINITY)
@@ -100,25 +100,25 @@
 					if(essence_drained > 30)
 						essence_regen_cap += 15
 						perfectsouls++
-						to_chat(src, "<span class='revenboldnotice'>The ammount of [target]'s fluids has increased your maximum essence level. Your new maximum essence is [essence_regen_cap].</span>")
+						to_chat(src, span_revenboldnotice("The ammount of [target]'s fluids has increased your maximum essence level. Your new maximum essence is [essence_regen_cap]."))
 					else if(essence_drained >= 5)
 						essence_regen_cap += 5
-						to_chat(src, "<span class='revenboldnotice'>The absorption of [target]'s fluids has increased your maximum essence level. Your new maximum essence is [essence_regen_cap].</span>")
+						to_chat(src, span_revenboldnotice("The absorption of [target]'s fluids has increased your maximum essence level. Your new maximum essence is [essence_regen_cap]."))
 					target.set_resting(TRUE,TRUE)
-					target.visible_message("<span class='warning'>[target] slumps onto the ground.</span>", \
-										   "<span class='revenwarning'>Violets lights, dancing in your vision, getting clo--</span>")
+					target.visible_message(span_warning("[target] slumps onto the ground."), \
+										   span_revenwarning("Violets lights, dancing in your vision, getting clo--"))
 					drained_mobs.Add(target)
 					target.setStaminaLoss(150)
 					// target.death(0)
 				else
-					to_chat(src, "<span class='revenwarning'>[target ? "[target] has":"[target.p_theyve(TRUE)]"] been drawn out of your grasp. The link has been broken.</span>")
+					to_chat(src, span_revenwarning("[target ? "[target] has":"[target.p_theyve(TRUE)]"] been drawn out of your grasp. The link has been broken."))
 					if(target) //Wait, target is WHERE NOW?
 						target.set_resting(TRUE,TRUE)
-						target.visible_message("<span class='warning'>[target] slumps onto the ground.</span>", \
-											   "<span class='revenwarning'>Violets lights, dancing in your vision, receding--</span>")
+						target.visible_message(span_warning("[target] slumps onto the ground."), \
+											   span_revenwarning("Violets lights, dancing in your vision, receding--"))
 				qdel(B)
 			else
-				to_chat(src, "<span class='revenwarning'>You are not close enough to suck on [target ? "[target]'s":"[target.p_their()]"] fluids. The link has been broken.</span>")
+				to_chat(src, span_revenwarning("You are not close enough to suck on [target ? "[target]'s":"[target.p_their()]"] fluids. The link has been broken."))
 	draining = FALSE
 	essence_drained = 0
 
@@ -126,7 +126,7 @@
 /obj/effect/proc_holder/spell/targeted/night_vision/qareen
 	charge_max = 0
 	panel = "Qareen Abilities"
-	message = "<span class='revennotice'>You toggle your night vision.</span>"
+	message = span_revennotice("You toggle your night vision.")
 	action_icon = 'icons/mob/actions/actions_revenant.dmi'
 	action_icon_state = "r_nightvision"
 	action_background_icon_state = "bg_qareen"
@@ -188,7 +188,7 @@
 			charge_counter = charge_max
 			return FALSE
 		name = "[initial(name)] ([cast_amount]E)"
-		to_chat(user, "<span class='revennotice'>You have unlocked [initial(name)]!</span>")
+		to_chat(user, span_revennotice("You have unlocked [initial(name)]!"))
 		panel = "Qareen Abilities"
 		locked = FALSE
 		charge_counter = charge_max
@@ -227,7 +227,7 @@
 			L.flicker(20) //spooky
 			continue
 		L.flicker(20) //spooky
-		L.visible_message("<span class='warning'><b>\The [L] suddenly flares brightly and begins to spark!</span>")
+		L.visible_message(span_warning("<b>\The [L] suddenly flares brightly and begins to spark!"))
 		var/datum/effect_system/spark_spread/s = new /datum/effect_system/spark_spread
 		s.set_up(4, 0, L)
 		s.start()
@@ -335,7 +335,7 @@
 			continue
 		if(human.anti_magic_check(FALSE, TRUE))
 			continue
-		to_chat(human, "<span class='revenwarning'>You feel [pick("your sense of direction flicker out", "a stabbing pain in your head", "your mind fill with thought of servitude for a brief moment")].</span>")
+		to_chat(human, span_revenwarning("You feel [pick("your sense of direction flicker out", "a stabbing pain in your head", "your mind fill with thought of servitude for a brief moment")]."))
 		new /obj/effect/temp_visual/revenant(human.loc)
 		// human.emp_act(80)
 	// for(var/obj/thing in T)
@@ -394,7 +394,7 @@
 				if(!blissfound)
 					H.ForceContractDisease(new /datum/disease/qarbliss(), FALSE, TRUE)
 					mob.adjust_bodytemperature(5)
-					to_chat(H, "<span class='revenminor'>You feel [pick("suddenly hot", "a surge of warmth", "like your crotch is <i>tingling</i>")].</span>")
+					to_chat(H, span_revenminor("You feel [pick("suddenly hot", "a surge of warmth", "like your crotch is <i>tingling</i>")]."))
 			mob.reagents.add_reagent(/datum/reagent/drug/aphrodisiac, 5)
 		else
 			mob.adjust_bodytemperature(5)

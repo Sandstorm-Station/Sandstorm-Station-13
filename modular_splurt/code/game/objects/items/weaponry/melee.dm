@@ -3,7 +3,7 @@
 
 /obj/item/melee/baseball_bat/AltClick(mob/living/carbon/human/user as mob)
 	hole = hole == CUM_TARGET_VAGINA ? CUM_TARGET_ANUS : CUM_TARGET_VAGINA
-	to_chat(user, "<span class='notice'>Now targetting \the [hole].</span>")
+	to_chat(user, span_notice("Now targetting \the [hole]."))
 
 /obj/item/melee/baseball_bat/attack(mob/living/target, mob/living/user)
 	if (BODY_ZONE_PRECISE_GROIN && user.a_intent != INTENT_HARM) //ROUGH PRISON HUMILATION YAY
@@ -22,7 +22,7 @@
 							message = (user == target) ? pick("fucks [possessive_verb] own ass with \the [src]","shoves \the [src] into [possessive_verb] ass", "jams \the [src] into [possessive_verb] ass") : pick("fucks [target]'s asshole with \the [src]", "jams \the [src] into [target]'s ass")
 							lust_amt = NORMAL_LUST
 		if(message)
-			user.visible_message("<span class='lewd'>[user] [message].</span>")
+			user.visible_message(span_lewd("[user] [message]."))
 			target.handle_post_sex(lust_amt, null, user)
 			playsound(loc, pick('modular_sand/sound/interactions/bang4.ogg',
 								'modular_sand/sound/interactions/bang5.ogg',
@@ -33,7 +33,7 @@
 			return
 		var/atom/throw_target = get_edge_target_turf(target, user.dir)
 		if(homerun_ready)
-			user.visible_message("<span class='userdanger'>It's a home run!</span>")
+			user.visible_message(span_userdanger("It's a home run!"))
 			target.throw_at(throw_target, rand(8,10), 14, user)
 			target.ex_act(EXPLODE_HEAVY)
 			playsound(get_turf(src), 'sound/weapons/homerun.ogg', 100, TRUE)
