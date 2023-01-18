@@ -32,7 +32,7 @@
 					if(prob(30 + clamp((70*(rand() + (h_self.sexual_potency + h_partner.sexual_potency)/200)), 0, 70)) && !W.impregnated && !Sp.equipment[GENITAL_EQUIPEMENT_CONDOM] && (Sp.linked_organ.fluid_id == /datum/reagent/consumable/semen))
 						W.impregnated = TRUE
 						log_game("Debug: [h_self] has been impregnated by [h_partner]")
-						to_chat(src, "<span class='userlove'>You feel your hormones change, and a motherly instinct take over.</span>")
+						to_chat(src, span_userlove("You feel your hormones change, and a motherly instinct take over."))
 						var/obj/item/organ/genital/breasts/B = h_self.getorganslot(ORGAN_SLOT_BREASTS)
 						if(B)
 							B.fluid_rate *= 2

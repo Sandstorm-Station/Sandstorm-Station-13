@@ -65,8 +65,8 @@
 
 
 /obj/item/electropack/shockcollar/slave/Destroy()
-	visible_message("<span class='notice'>The [src] detaches from [src.loc]'s neck.</span>", \
-		"<span class='notice'>The [src] detaches from your neck.</span>")
+	visible_message(span_notice("The [src] detaches from [src.loc]'s neck."), \
+		span_notice("The [src] detaches from your neck."))
 	playsound(get_turf(src.loc), 'sound/machines/terminal_eject_disc.ogg', 50, 1)
 
 	GLOB.tracked_slaves -= src
