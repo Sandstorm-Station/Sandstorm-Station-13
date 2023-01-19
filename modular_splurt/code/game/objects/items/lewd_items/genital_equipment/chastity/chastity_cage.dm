@@ -51,7 +51,7 @@
 	if(!istype(target_organ, /obj/item/organ/genital/penis))
 		return ..()
 
-	if(!(target.client?.prefs?.erppref == "Yes"))
+	if(!target.client?.prefs?.chastitypref)
 		to_chat(user, span_warning("They don't want you to do that!"))
 		return
 

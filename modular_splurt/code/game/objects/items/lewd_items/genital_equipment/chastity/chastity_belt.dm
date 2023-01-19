@@ -18,10 +18,10 @@
 	if(!CHECK_BITFIELD(slot, ITEM_SLOT_UNDERWEAR) || !ishuman(user) || !ishuman(usr))
 		return
 
-	if(!(user.client?.prefs?.erppref == "Yes"))
+	if(!user.client?.prefs?.chastitypref)
 		to_chat(user, span_warning("They don't want you to do that!"))
 		return
-
+	
 	var/mob/holder = usr
 	owner = user
 

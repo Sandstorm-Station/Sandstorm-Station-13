@@ -19,6 +19,7 @@
 	S["personal_chat_color"]			>> personal_chat_color
 	S["lust_tolerance"] 				>> lust_tolerance
 	S["sexual_potency"]					>> sexual_potency
+	S["chastity_pref"]					>> chastitypref // SPLURT edit
 
 	S["alt_titles_preferences"]			>> alt_titles_preferences
 	alt_titles_preferences = SANITIZE_LIST(alt_titles_preferences)
@@ -68,6 +69,7 @@
 	WRITE_FILE(S["erp_pref"], erppref)
 	WRITE_FILE(S["noncon_pref"], nonconpref)
 	WRITE_FILE(S["vore_pref"], vorepref)
+	WRITE_FILE(S["chastity_pref"], chastitypref) // SPLURT edit
 	WRITE_FILE(S["unholypref"], unholypref)
 	WRITE_FILE(S["extreme_pref"], extremepref)
 	WRITE_FILE(S["extreme_harm"], extremeharm)

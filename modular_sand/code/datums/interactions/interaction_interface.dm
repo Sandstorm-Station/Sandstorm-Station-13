@@ -217,6 +217,7 @@
 		.["no_aphro"] = 			!CHECK_BITFIELD(prefs.cit_toggles, NO_APHRO)
 		.["no_ass_slap"] = 		!CHECK_BITFIELD(prefs.cit_toggles, NO_ASS_SLAP)
 		.["no_auto_wag"] = 		!CHECK_BITFIELD(prefs.cit_toggles, NO_AUTO_WAG)
+		.["chastity_pref"] = 		prefs.chastitypref
 
 /proc/num_to_pref(num)
 	switch(num)
@@ -400,6 +401,10 @@
 					TOGGLE_BITFIELD(prefs.cit_toggles, NO_ASS_SLAP)
 				if("no_auto_wag")
 					TOGGLE_BITFIELD(prefs.cit_toggles, NO_AUTO_WAG)
+				// SPLURT edit
+				if("chastity_pref")
+					prefs.chastitypref = !prefs.chastitypref
+				//
 				else
 					return FALSE
 			prefs.save_preferences()

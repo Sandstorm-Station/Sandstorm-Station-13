@@ -89,6 +89,7 @@ type ContentPrefsInfo = {
   no_aphro: boolean,
   no_ass_slap: boolean,
   no_auto_wag: boolean,
+  chastity_pref: boolean,
 }
 
 export const MobInteraction = (props, context) => {
@@ -574,6 +575,7 @@ const ContentPreferencesTab = (props, context) => {
     no_aphro,
     no_ass_slap,
     no_auto_wag,
+	chastity_pref
   } = data;
   return (
     <Table>
@@ -826,6 +828,18 @@ const ContentPreferencesTab = (props, context) => {
           selected={no_auto_wag}
           onClick={() => act('pref', {
             pref: 'no_auto_wag',
+          })}
+        />
+      </Table.Row>
+      <Table.Row>
+        <Button
+          fluid
+          mb={0.3}
+          content="Chastity Interactions"
+          icon={chastity_pref ? "toggle-on" : "toggle-off"}
+          selected={chastity_pref}
+          onClick={() => act('pref', {
+            pref: 'chastity_pref',
           })}
         />
       </Table.Row>

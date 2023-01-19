@@ -1433,6 +1433,7 @@ GLOBAL_LIST_EMPTY(preferences_datums)
 			dat += "<b>Aphrodisiacs:</b> <a href='?_src_=prefs;preference=aphro'>[(cit_toggles & NO_APHRO) ? "Disallowed" : "Allowed"]</a><br>"
 			dat += "<b>Ass Slapping:</b> <a href='?_src_=prefs;preference=ass_slap'>[(cit_toggles & NO_ASS_SLAP) ? "Disallowed" : "Allowed"]</a><br>"
 			//SPLURT EDIT
+			dat += "<b>Chastity Interactions :</b> <a href='?_src_=prefs;preference=chastitypref'>[chastitypref ? "Allowed" : "Disallowed"]</a><br>"
 			dat += "<span style='border-radius: 2px;border:1px dotted white;cursor:help;' title='Enables verbs involving farts, shit and piss.'>?</span> "
 			dat += "<b>Unholy ERP verbs :</b> <a href='?_src_=prefs;preference=unholypref'>[unholypref]</a><br>" //https://www.youtube.com/watch?v=OHKARc-GObU
 			//END OF SPLURT EDIT
@@ -3731,6 +3732,10 @@ GLOBAL_LIST_EMPTY(preferences_datums)
 						to_chat(usr, span_notice("If the photo doesn't show up properly in-game, ensure that it's a direct image link that opens properly in a browser."))
 						to_chat(usr, span_notice("Keep in mind that the photo will be downsized to 250x250 pixels, so the more square the photo, the better it will look."))
 					features["headshot_link"] = usr_input
+
+				if("chastitypref")
+					chastitypref = !chastitypref
+				//
 
 	if(href_list["preference"] == "gear")
 		if(href_list["clear_loadout"])
