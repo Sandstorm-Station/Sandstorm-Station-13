@@ -24,7 +24,7 @@
 					continue
 		if(valid_languages.len)
 			var/list/sorted_valid = sortList(valid_languages)
-			to_chat(user, "<span class='notice'>You are able to speak in [sorted_valid.Join(", ")]. If you're actually good at [valid_languages.len > 1 ? "them" : "it"] or not, it's up to you.</span>")
+			to_chat(user, span_notice("You are able to speak in [sorted_valid.Join(", ")]. If you're actually good at [valid_languages.len > 1 ? "them" : "it"] or not, it's up to you."))
 		if(invalid_languages.len)
 			var/list/sorted_invalid = sortList(invalid_languages)
-			to_chat(user, "<span class='warning'>[sorted_invalid.Join(", ")] [invalid_languages.len > 1 ? "are" : "is a"] restricted language[invalid_languages.len > 1 ? "s" : ""], and ha[invalid_languages.len > 1 ? "ve" : "s"] not been assigned.</span>")
+			to_chat(user, span_warning("[sorted_invalid.Join(", ")] [invalid_languages.len > 1 ? "are" : "is a"] restricted language[invalid_languages.len > 1 ? "s" : ""], and ha[invalid_languages.len > 1 ? "ve" : "s"] not been assigned."))

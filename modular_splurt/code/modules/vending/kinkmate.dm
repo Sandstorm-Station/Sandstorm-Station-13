@@ -44,6 +44,7 @@
 		/obj/item/dildo/flared/huge = 3,
 		/obj/item/clothing/neck/petcollar/locked/holo = 2,
 		/obj/item/storage/box/aphrodisiac_pump/plus = 3,
+		/obj/item/storage/box/implant_disrobe = 3,
 		/obj/item/storage/box/chastity_cage/estim = 2,
 		/obj/item/reagent_containers/glass/bottle/camphor = 2,
 		/obj/item/storage/pill_bottle/PEsmaller = 3,

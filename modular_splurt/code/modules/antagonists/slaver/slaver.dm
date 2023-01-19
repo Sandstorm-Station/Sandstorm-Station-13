@@ -199,7 +199,7 @@ GLOBAL_LIST_INIT(slavers_ransom_values, list(
 
 /datum/team/slavers/roundend_report()
 	var/list/parts = list()
-	parts += "<span class='header'>Slave Traders:</span>"
+	parts += span_header("Slave Traders:")
 
 	var/text = "<br><span class='header'>The crew were:</span>"
 	var/slavesSold = GLOB.slavers_slaves_sold
@@ -224,9 +224,9 @@ GLOBAL_LIST_INIT(slavers_ransom_values, list(
 
 	// var/datum/objective/slaver/O = locate() in objectives
 	if(GLOB.slavers_credits_total >= 200000 && !all_dead)
-		parts += "<span class='greentext'>The slaver crew were successful!</span>"
+		parts += span_greentext("The slaver crew were successful!")
 	else
-		parts += "<span class='redtext'>The slaver crew have failed.</span>"
+		parts += span_redtext("The slaver crew have failed.")
 
 	parts += text
 

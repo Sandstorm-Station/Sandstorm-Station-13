@@ -18,6 +18,16 @@
 	category = list("Medical Designs")
 	departmental_flags = DEPARTMENTAL_FLAG_SCIENCE | DEPARTMENTAL_FLAG_MEDICAL
 
+/datum/design/implant_hide_backpack
+	name = "Storage Concealment Implant Case"
+	desc = "A glass case containing an implant"
+	id = "implant_hide_backpack"
+	build_type = PROTOLATHE
+	materials = list(/datum/material/glass = 500)
+	build_path = /obj/item/implantcase/hide_backpack
+	category = list("Medical Designs")
+	departmental_flags = DEPARTMENTAL_FLAG_SCIENCE | DEPARTMENTAL_FLAG_MEDICAL
+
 /datum/design/board/implantradio
 	name = "Radio Implant Case"
 	desc = "A glass case containing an implant"

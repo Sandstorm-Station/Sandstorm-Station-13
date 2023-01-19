@@ -11,18 +11,13 @@
 	glass_desc = "You feel it's not named like that for no reason."
 	value = 6
 
+// Liquid Panty Dropper drink effect
 /datum/reagent/consumable/ethanol/panty_dropper/on_mob_life(mob/living/carbon/C)
-	var/mob/living/carbon/human/M = C
-	var/anyclothes = FALSE
-	var/items = M.get_contents()
-	for(var/obj/item/W in items)
-		if(W.body_parts_covered && ismob(W.loc))
-			anyclothes = TRUE
-			M.dropItemToGround(W, TRUE)
-			playsound(M.loc, 'sound/items/poster_ripped.ogg', 50, 1)
-	if(anyclothes)
-		M.visible_message("<span class='userlove'>[M] suddenly bursts out of [M.p_their()] clothes!</span>")
-	return ..()
+	// Praise the funny BYOND dots
+	. = ..()
+
+	// Perform drink effect
+	C.clothing_burst(C)
 
 /datum/reagent/consumable/ethanol/lean
 	name = "Lean"
@@ -54,7 +49,7 @@
 			if(!M.undergoing_cardiac_arrest() && M.can_heartattack() && prob(1))
 				M.set_heartattack(TRUE)
 				if(M.stat == CONSCIOUS)
-					M.visible_message("<span class='userdanger'>[M] clutches at [M.p_their()] chest as if [M.p_their()] heart stopped!</span>") // too much lean :(
+					M.visible_message(span_userdanger("[M] clutches at [M.p_their()] chest as if [M.p_their()] heart stopped!")) // too much lean :(
 	..()
 
 /datum/reagent/consumable/ethanol/cum_in_a_hot_tub
@@ -147,12 +142,49 @@
 	boozepwr = 50
 	color = "#0919be"
 	quality = DRINK_FANTASTIC
+	value = REAGENT_VALUE_AMAZING
 	taste_description = "fuzz, warmth and comfort"
 	glass_icon = 'modular_splurt/icons/obj/drinks.dmi'
 	glass_icon_state = "mothinchief"
 	glass_name = "Moth in Chief"
 	glass_desc = "A simple yet elegant drink, inspires confidence in even the most pessimistic of men. The mantle rests well upon your shoulders."
+	can_synth = FALSE;
 
+//This drink gives the combined benefits of Stimulants, Regenerative Jelly, and Commander and Chief, and a mood buff similar to Copium; at least to an extent.
+/datum/reagent/consumable/ethanol/commander_and_chief/on_mob_life(mob/living/carbon/M)
+	if(M.mind && HAS_TRAIT(M.mind, TRAIT_CAPTAIN_METABOLISM))
+		M.heal_bodypart_damage(2,2,2)
+		M.adjustBruteLoss(-5,0)
+		M.adjustOxyLoss(-5,0)
+		M.adjustFireLoss(-5,0)
+		M.adjustToxLoss(-5,0,TRUE) //Heals Toxin Lovers
+		M.radiation = max(M.radiation - 25, 0)
+		. = 1
+	else
+		//Commander and Chief Effects, no need to be captain to receive the effect
+		M.heal_bodypart_damage(2,2,2)
+		M.adjustBruteLoss(-3.5,0)
+		M.adjustOxyLoss(-3.5,0)
+		M.adjustFireLoss(-3.5,0)
+		M.adjustToxLoss(-3.5,0,TRUE) //Heals Toxin Lovers
+		M.radiation = max(M.radiation - 25, 0)
+
+	//Stimulant Effects
+	M.AdjustAllImmobility(-60, FALSE)
+	M.AdjustUnconscious(-60, FALSE)
+	M.adjustStaminaLoss(-20*REAGENTS_EFFECT_MULTIPLIER, FALSE)
+	..()
+	. = 1
+
+/datum/reagent/medicine/stimulants/on_mob_metabolize(mob/living/L)
+	..()
+	L.add_movespeed_modifier(/datum/movespeed_modifier/reagent/stimulants)
+	ADD_TRAIT(L, TRAIT_TASED_RESISTANCE, type)
+
+/datum/reagent/medicine/stimulants/on_mob_end_metabolize(mob/living/L)
+	L.remove_movespeed_modifier(/datum/movespeed_modifier/reagent/stimulants)
+	REMOVE_TRAIT(L, TRAIT_TASED_RESISTANCE, type)
+	..()
 
 // ~( Ported from TG )~
 /datum/reagent/consumable/ethanol/curacao
@@ -286,3 +318,41 @@
 	glass_name = "Tropical Storm"
 	glass_desc = "Less destructive than the real thing."
 
+/datum/reagent/consumable/ethanol/skullfucker_deluxe
+	name = "Skullfucker Deluxe"
+	description = "The Rosewater secret to becoming psychotically retarded. It has many warning labels."
+	boozepwr = 75
+	color = "#cb4d8b"
+	quality = DRINK_VERYGOOD
+	taste_description = "being violated by a tiny fish with crayons"
+	glass_icon = 'modular_splurt/icons/obj/drinks.dmi'
+	glass_icon_state = "skullfucker"
+	glass_name = "Skullfucker Deluxe"
+	glass_desc = "It has many warning labels, you might want to read them."
+	overdose_threshold = 25
+
+/datum/reagent/consumable/ethanol/skullfucker_deluxe/on_mob_life(mob/living/carbon/C)
+	. = ..()
+	//Do nothing if they haven't metabolized enough
+	if(!current_cycle >= 15)
+		return
+	//Make them giggle
+	if(prob(40))
+		C.emote("giggle")
+	//Make them jitter
+	if(prob(20))
+		C.jitteriness = max(C.jitteriness, 30)
+
+/datum/reagent/consumable/ethanol/skullfucker_deluxe/overdose_process(mob/living/M)
+	. = ..()
+	//Do nothing if they're already fwuffy OwO
+	var/obj/item/organ/tongue/T = M.getorganslot(ORGAN_SLOT_TONGUE)
+	if(istype(T, /obj/item/organ/tongue/fluffy))
+		return
+
+	//Replace their tongue with a fwuffy one
+	var/obj/item/organ/tongue/nT = new /obj/item/organ/tongue/fluffy
+	T.Remove()
+	nT.Insert(M)
+	T.moveToNullspace()//To valhalla
+	to_chat(M, span_big_warning("Your tongue feels... weally fwuffy!!"))

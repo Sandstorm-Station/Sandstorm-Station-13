@@ -12,6 +12,28 @@
 	usr.mind.interaction_holder.target = src
 	usr.mind.interaction_holder.ui_interact(usr)
 
+/*
+/// Allows "cyborg" players to change gender at will
+/mob/living/silicon/robot/verb/toggle_gender()
+	set name = "Set Gender"
+	set desc = "Allows you to set your gender."
+
+	if(stat != CONSCIOUS)
+		to_chat(usr, span_warning("You cannot toggle your gender while unconcious!"))
+		return
+
+	var/choice = tgui_alert(usr, "Select Gender.", "Gender", list("Both", "Male", "Female"))
+	switch(choice)
+		if("Both")
+			has_penis = TRUE
+			has_vagina = TRUE
+		if("Male")
+			has_penis = TRUE
+			has_vagina = FALSE
+		if("Female")
+			has_penis = FALSE
+			has_vagina = TRUE
+*/
 
 #define INTERACTION_NORMAL 0
 #define INTERACTION_LEWD 1
@@ -112,6 +134,7 @@
 				&& !(HAS_TRAIT(get_genitals, TRAIT_PERMABONER) \
 				|| HAS_TRAIT(get_genitals, TRAIT_NEVERBONER)))
 			genital_entry["arousal_state"] = genital.aroused_state
+			genital_entry["always_accessible"] = genital.always_accessible
 			genitals += list(genital_entry)
 	if(iscarbon(self) && !self.getorganslot(ORGAN_SLOT_ANUS))
 		var/simulated_ass = list()
@@ -127,6 +150,7 @@
 				visibility = "Always hidden"
 		simulated_ass["visibility"] = visibility
 		simulated_ass["possible_choices"] = GLOB.genitals_visibility_toggles - GEN_VISIBLE_NO_CLOTHES
+		simulated_ass["always_accessible"] = self.anus_always_accessible
 		genitals += list(simulated_ass)
 	.["genitals"] = genitals
 
@@ -233,16 +257,25 @@
 				var/original_state = genital.aroused_state
 				genital.set_aroused_state(params["set_arousal"])// i'm not making it just `!aroused_state` because
 				if(original_state != genital.aroused_state)		// someone just might port skyrat's new genitals
-					to_chat(self, "<span class='userlove'>[genital.aroused_state ? genital.arousal_verb : genital.unarousal_verb].</span>")
+					to_chat(self, span_userlove("[genital.aroused_state ? genital.arousal_verb : genital.unarousal_verb]."))
 					. = TRUE
 				else
-					to_chat(self, "<span class='userlove'>You can't make that genital [genital.aroused_state ? "unaroused" : "aroused"]!</span>")
+					to_chat(self, span_userlove("You can't make that genital [genital.aroused_state ? "unaroused" : "aroused"]!"))
 					. = FALSE
 				genital.update_appearance()
 				if(ishuman(self))
 					var/mob/living/carbon/human/human = self
 					human.update_genitals()
 				return
+			if("set_accessibility" in params)
+				if(!self.getorganslot(ORGAN_SLOT_ANUS) && params["genital"] == "anus")
+					self.toggle_anus_always_accessible()
+					return TRUE
+				var/obj/item/organ/genital/genital = locate(params["genital"], self.internal_organs)
+				if(!genital)
+					return FALSE
+				genital.toggle_accessibility()
+				return TRUE
 			else
 				return FALSE
 		if("genital_interaction")

@@ -13,11 +13,11 @@
 /obj/item/slaver/gizmo/attack(mob/living/M, mob/user)
 	var/datum/antagonist/slaver/S = locate() in user.mind.antag_datums
 	if(!S) // Is not a slaver antag.
-		to_chat(user, "<span class='warning'>You aren't sure how to use this tech!</span>")
+		to_chat(user, span_warning("You aren't sure how to use this tech!"))
 		return
 
 	if(user == M)
-		to_chat(user, "<span class='warning'>You can't teleport yourself!</span>")
+		to_chat(user, span_warning("You can't teleport yourself!"))
 		return
 
 	// Find a location to teleport to
@@ -32,19 +32,19 @@
 
 	// Check we are in range of the destination
 	if(!mobLocation || mobLocation.z != teleportDestination.z)
-		to_chat(user, "<span class='warning'>The mothership is out of range, you need to be on the same z-level!</span>")
+		to_chat(user, span_warning("The mothership is out of range, you need to be on the same z-level!"))
 		return
 
-	user.visible_message("<span class='notice'>[user] begins scanning [M] with [src].</span>", "<span class='notice'>You begin scanning [M] with [src].</span>")
+	user.visible_message(span_notice("[user] begins scanning [M] with [src]."), span_notice("You begin scanning [M] with [src]."))
 	if(do_mob(user, M, 15 SECONDS))
 		// Teleport!
 		playsound(get_turf(M.loc), 'sound/magic/blink.ogg', 50, 1)
-		M.visible_message("<span class='notice'>[M] vanishes from sight!</span>", \
-					"<span class='notice'>You feel a rush of energy as you are beamed to the slaver mothership!</span>")
+		M.visible_message(span_notice("[M] vanishes from sight!"), \
+					span_notice("You feel a rush of energy as you are beamed to the slaver mothership!"))
 		new /obj/effect/temp_visual/dir_setting/ninja(get_turf(M), M.dir)
 		M.forceMove(teleportDestination)
 	else
-		to_chat(user, "<span class='warning'>You need to stand still and uninterrupted for 15 seconds!</span>")
+		to_chat(user, span_warning("You need to stand still and uninterrupted for 15 seconds!"))
 
 // Buyable gear kits at the slaver console
 /obj/item/storage/box/slaver_teleport
