@@ -366,14 +366,14 @@
 	H.adjust_nutrition(-0.09)//increases their nutrition loss rate to encourage them to gain a partner they can essentially leech off of
 
 /datum/quirk/bloodfledge
-    name = "Bloodsucker Fledgling"
-    desc = "You are a fledgling belonging to ancient Bloodsucker bloodline. While the blessing has yet to fully convert you, some things have changed. Only blood will sate your hungers, and holy energies will cause your flesh to char. <b>This is NOT an antagonist role!</b>"
-    value = 2
-    medical_record_text = "Patient exhibits onset symptoms of a sanguine curse."
-    mob_trait = TRAIT_BLOODFLEDGE
-    gain_text = span_notice("You feel a sanguine thirst.")
-    lose_text = span_notice("You feel the sanguine thirst fade away.")
-    processing_quirk = TRUE
+	name = "Bloodsucker Fledgling"
+	desc = "You are a fledgling belonging to ancient Bloodsucker bloodline. While the blessing has yet to fully convert you, some things have changed. Only blood will sate your hungers, and holy energies will cause your flesh to char. <b>This is NOT an antagonist role!</b>"
+	value = 2
+	medical_record_text = "Patient exhibits onset symptoms of a sanguine curse."
+	mob_trait = TRAIT_BLOODFLEDGE
+	gain_text = span_notice("You feel a sanguine thirst.")
+	lose_text = span_notice("You feel the sanguine thirst fade away.")
+	processing_quirk = TRUE
 
 /datum/quirk/bloodfledge/add()
 	. = ..()
@@ -507,7 +507,7 @@
 	var/mob/living/carbon/human/quirk_mob = quirk_holder
 
 	// Create vampire ID card
-	var/obj/item/card/id/vampire/id_vampire = new /obj/item/card/id/vampire
+	var/obj/item/card/id/vampire/id_vampire = new /obj/item/card/id/vampire(get_turf(quirk_holder))
 
 	// Update card information
 	id_vampire.registered_name = quirk_mob.real_name
@@ -529,12 +529,15 @@
 			// Stop searching
 			break
 
-	// Add to backpack
-	quirk_mob.equip_to_slot(id_vampire, ITEM_SLOT_BACKPACK)
+	// Try to add ID to backpack
+	var/id_in_bag = quirk_mob.equip_to_slot_if_possible(id_vampire, ITEM_SLOT_BACKPACK) || FALSE
 
-	// Update sprites
-	quirk_mob.regenerate_icons()
+	// Text for where the item was sent
+	var/id_location = (id_in_bag ? "in your backpack" : "at your feet" )
 
+	// Alert user in chat
+	// This should not post_add, because the ID is added by on_spawn
+	to_chat(quirk_holder, span_boldnotice("There is a bloodfledge's ID card [id_location], linked to your station account. It functions as a spare ID, but lacks job access."))
 
 /datum/quirk/werewolf //adds the werewolf quirk
 	name = "Werewolf"
