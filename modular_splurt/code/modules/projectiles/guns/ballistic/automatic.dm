@@ -35,11 +35,11 @@
 /obj/item/gun/ballistic/automatic/m2a1/examine(mob/user)
 	. = ..()
 	if(cover_open && magazine)
-		. += "<span class='notice'>It seems like you could use an <b>empty hand</b> to remove the magazine.</span>"
+		. += span_notice("It seems like you could use an <b>empty hand</b> to remove the magazine.")
 
 /obj/item/gun/ballistic/automatic/m2a1/attack_self(mob/user)
 	cover_open = !cover_open
-	to_chat(user, "<span class='notice'>You [cover_open ? "open" : "close"] [src]'s cover.</span>")
+	to_chat(user, span_notice("You [cover_open ? "open" : "close"] [src]'s cover."))
 	if(cover_open)
 		playsound(user, 'sound/weapons/sawopen.ogg', 60, 1)
 	else
@@ -52,7 +52,7 @@
 
 /obj/item/gun/ballistic/automatic/m2a1/afterattack(atom/target as mob|obj|turf, mob/living/user as mob|obj, flag, params)
 	if(cover_open)
-		to_chat(user, "<span class='warning'>[src]'s cover is open! Close it before firing!</span>")
+		to_chat(user, span_warning("[src]'s cover is open! Close it before firing!"))
 	else
 		. = ..()
 		update_icon()
@@ -70,12 +70,12 @@
 		user.put_in_hands(magazine)
 		magazine = null
 		update_icon()
-		to_chat(user, "<span class='notice'>You remove the magazine from [src].</span>")
+		to_chat(user, span_notice("You remove the magazine from [src]."))
 		playsound(user, 'sound/weapons/magout.ogg', 60, 1)
 
 /obj/item/gun/ballistic/automatic/m2a1/attackby(obj/item/A, mob/user, params)
 	if(!cover_open && istype(A, mag_type))
-		to_chat(user, "<span class='warning'>[src]'s cover is closed! You can't insert a new mag.</span>")
+		to_chat(user, span_warning("[src]'s cover is closed! You can't insert a new mag."))
 		return
 	..()
 
@@ -108,7 +108,7 @@
 	if(auto_eject && magazine && magazine.stored_ammo && !magazine.stored_ammo.len && !chambered)
 		magazine.dropped()
 		user.visible_message(
-			"<span class='warning'>[magazine] flies out and clatters on the floor!</span>",
+			span_warning("[magazine] flies out and clatters on the floor!"),
 			to_chat("[magazine] flies out and clatters on the floor!")
 		)
 		if(auto_eject_sound)

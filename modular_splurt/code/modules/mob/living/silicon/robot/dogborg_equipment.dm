@@ -43,7 +43,7 @@ SLEEPER CODE IS IN game/objects/items/devices/dogborg_sleeper.dm !
 			force = 12
 			attack_verb = list("chomped", "bit", "ripped", "mauled", "enforced")
 			status = 1
-			to_chat(user, "<span class='notice'>Your jaws are now [status ? "Combat" : "Pup'd"].</span>")
+			to_chat(user, span_notice("Your jaws are now [status ? "Combat" : "Pup'd"]."))
 		else
 			name = "puppy jaws"
 			icon_state = "smalljaws"
@@ -52,7 +52,7 @@ SLEEPER CODE IS IN game/objects/items/devices/dogborg_sleeper.dm !
 			attack_verb = list("nibbled", "bit", "gnawed", "chomped", "nommed")
 			status = 0
 			if(R.emagged)
-				to_chat(user, "<span class='notice'>Your jaws are now [status ? "Combat" : "Pup'd"].</span>")
+				to_chat(user, span_notice("Your jaws are now [status ? "Combat" : "Pup'd"]."))
 	update_icon()
 
 //Boop
@@ -69,7 +69,7 @@ SLEEPER CODE IS IN game/objects/items/devices/dogborg_sleeper.dm !
 	w_class = 1
 
 /obj/item/analyzer/nose/attack_self(mob/user)
-	user.visible_message("[user] sniffs around the air.", "<span class='warning'>You sniff the air for gas traces.</span>")
+	user.visible_message("[user] sniffs around the air.", span_warning("You sniff the air for gas traces."))
 
 	var/turf/location = user.loc
 	if(!istype(location))
@@ -80,11 +80,11 @@ SLEEPER CODE IS IN game/objects/items/devices/dogborg_sleeper.dm !
 	var/pressure = environment.return_pressure()
 	var/total_moles = environment.total_moles()
 
-	to_chat(user, "<span class='info'><B>Results:</B></span>")
+	to_chat(user, span_info("<B>Results:</B>"))
 	if(abs(pressure - ONE_ATMOSPHERE) < 10)
-		to_chat(user, "<span class='info'>Pressure: [round(pressure,0.1)] kPa</span>")
+		to_chat(user, span_info("Pressure: [round(pressure,0.1)] kPa"))
 	else
-		to_chat(user, "<span class='alert'>Pressure: [round(pressure,0.1)] kPa</span>")
+		to_chat(user, span_alert("Pressure: [round(pressure,0.1)] kPa"))
 	if(total_moles)
 		var/list/env_gases = environment.get_gases()
 
@@ -95,39 +95,39 @@ SLEEPER CODE IS IN game/objects/items/devices/dogborg_sleeper.dm !
 		GAS_GARBAGE_COLLECT(environment.get_gases())
 
 		if(abs(n2_concentration - N2STANDARD) < 20)
-			to_chat(user, "<span class='info'>Nitrogen: [round(n2_concentration*100, 0.01)] %</span>")
+			to_chat(user, span_info("Nitrogen: [round(n2_concentration*100, 0.01)] %"))
 		else
-			to_chat(user, "<span class='alert'>Nitrogen: [round(n2_concentration*100, 0.01)] %</span>")
+			to_chat(user, span_alert("Nitrogen: [round(n2_concentration*100, 0.01)] %"))
 
 		if(abs(o2_concentration - O2STANDARD) < 2)
-			to_chat(user, "<span class='info'>Oxygen: [round(o2_concentration*100, 0.01)] %</span>")
+			to_chat(user, span_info("Oxygen: [round(o2_concentration*100, 0.01)] %"))
 		else
-			to_chat(user, "<span class='alert'>Oxygen: [round(o2_concentration*100, 0.01)] %</span>")
+			to_chat(user, span_alert("Oxygen: [round(o2_concentration*100, 0.01)] %"))
 
 		if(co2_concentration > 0.01)
-			to_chat(user, "<span class='alert'>CO2: [round(co2_concentration*100, 0.01)] %</span>")
+			to_chat(user, span_alert("CO2: [round(co2_concentration*100, 0.01)] %"))
 		else
-			to_chat(user, "<span class='info'>CO2: [round(co2_concentration*100, 0.01)] %</span>")
+			to_chat(user, span_info("CO2: [round(co2_concentration*100, 0.01)] %"))
 
 		if(plasma_concentration > 0.005)
-			to_chat(user, "<span class='alert'>Plasma: [round(plasma_concentration*100, 0.01)] %</span>")
+			to_chat(user, span_alert("Plasma: [round(plasma_concentration*100, 0.01)] %"))
 		else
-			to_chat(user, "<span class='info'>Plasma: [round(plasma_concentration*100, 0.01)] %</span>")
+			to_chat(user, span_info("Plasma: [round(plasma_concentration*100, 0.01)] %"))
 
 
 		for(var/id in env_gases)
 			if(id in GLOB.hardcoded_gases)
 				continue
 			var/gas_concentration = env_gases[id]/total_moles
-			to_chat(user, "<span class='alert'>[GLOB.gas_data.names[id]]: [round(gas_concentration*100, 0.01)] %</span>")
-		to_chat(user, "<span class='info'>Temperature: [round(environment.return_temperature()-T0C)] &deg;C</span>")
+			to_chat(user, span_alert("[GLOB.gas_data.names[id]]: [round(gas_concentration*100, 0.01)] %"))
+		to_chat(user, span_info("Temperature: [round(environment.return_temperature()-T0C)] &deg;C"))
 
 /obj/item/analyzer/nose/afterattack(atom/target, mob/user, proximity)
 	. = ..()
 	if(!proximity)
 		return
 	do_attack_animation(target, null, src)
-	user.visible_message("<span class='notice'>[user] [pick(attack_verb)] \the [target.name] with their nose!</span>")
+	user.visible_message(span_notice("[user] [pick(attack_verb)] \the [target.name] with their nose!"))
 
 //Delivery
 /obj/item/storage/bag/borgdelivery
@@ -170,7 +170,7 @@ SLEEPER CODE IS IN game/objects/items/devices/dogborg_sleeper.dm !
 			name = "energized tongue"
 			desc = "Your tongue is energized for dangerously maximum efficency."
 			icon_state = "syndietongue"
-			to_chat(user, "<span class='notice'>Your tongue is now [status ? "Energized" : "Normal"].</span>")
+			to_chat(user, span_notice("Your tongue is now [status ? "Energized" : "Normal"]."))
 			cleanspeed = 10 //(nerf'd)tator soap stat
 		else
 			status = 0
@@ -179,7 +179,7 @@ SLEEPER CODE IS IN game/objects/items/devices/dogborg_sleeper.dm !
 			icon_state = "synthtongue"
 			cleanspeed = initial(cleanspeed)
 			if(R.emagged)
-				to_chat(user, "<span class='notice'>Your tongue is now [status ? "Energized" : "Normal"].</span>")
+				to_chat(user, span_notice("Your tongue is now [status ? "Energized" : "Normal"]."))
 	update_icon()
 
 /obj/item/soap/tongue/afterattack(atom/target, mob/user, proximity)
@@ -187,54 +187,54 @@ SLEEPER CODE IS IN game/objects/items/devices/dogborg_sleeper.dm !
 	if(!proximity || !check_allowed_items(target))
 		return
 	if(R.client && (target in R.client.screen))
-		to_chat(R, "<span class='warning'>You need to take that [target.name] off before cleaning it!</span>")
+		to_chat(R, span_warning("You need to take that [target.name] off before cleaning it!"))
 	else if(is_cleanable(target))
-		R.visible_message("[R] begins to lick off \the [target.name].", "<span class='warning'>You begin to lick off \the [target.name]...</span>")
+		R.visible_message("[R] begins to lick off \the [target.name].", span_warning("You begin to lick off \the [target.name]..."))
 		if(do_after(R, src.cleanspeed, target = target))
 			if(!in_range(src, target)) //Proximity is probably old news by now, do a new check.
 				return //If they moved away, you can't eat them.
-			to_chat(R, "<span class='notice'>You finish licking off \the [target.name].</span>")
+			to_chat(R, span_notice("You finish licking off \the [target.name]."))
 			qdel(target)
 			R.cell.give(50)
 	else if(isobj(target)) //hoo boy. danger zone man
 		if(istype(target,/obj/item/trash))
-			R.visible_message("[R] nibbles away at \the [target.name].", "<span class='warning'>You begin to nibble away at \the [target.name]...</span>")
+			R.visible_message("[R] nibbles away at \the [target.name].", span_warning("You begin to nibble away at \the [target.name]..."))
 			if(!do_after(R, src.cleanspeed, target = target))
 				return //If they moved away, you can't eat them.
-			to_chat(R, "<span class='notice'>You finish off \the [target.name].</span>")
+			to_chat(R, span_notice("You finish off \the [target.name]."))
 			qdel(target)
 			R.cell.give(250)
 			return
 		if(istype(target,/obj/item/stock_parts/cell))
-			R.visible_message("[R] begins cramming \the [target.name] down its throat.", "<span class='warning'>You begin cramming \the [target.name] down your throat...</span>")
+			R.visible_message("[R] begins cramming \the [target.name] down its throat.", span_warning("You begin cramming \the [target.name] down your throat..."))
 			if(!do_after(R, 50, target = target))
 				return //If they moved away, you can't eat them.
-			to_chat(R, "<span class='notice'>You finish off \the [target.name].</span>")
+			to_chat(R, span_notice("You finish off \the [target.name]."))
 			var/obj/item/stock_parts/cell/C = target
 			R.cell.charge = R.cell.charge + (C.charge / 3) //Instant full cell upgrades op idgaf
 			qdel(target)
 			return
 		var/obj/item/I = target //HAHA FUCK IT, NOT LIKE WE ALREADY HAVE A SHITTON OF WAYS TO REMOVE SHIT
 		if(!I.anchored && R.emagged)
-			R.visible_message("[R] begins chewing up \the [target.name]. Looks like it's trying to loophole around its diet restriction!", "<span class='warning'>You begin chewing up \the [target.name]...</span>")
+			R.visible_message("[R] begins chewing up \the [target.name]. Looks like it's trying to loophole around its diet restriction!", span_warning("You begin chewing up \the [target.name]..."))
 			if(!do_after(R, 100, target = I)) //Nerf dat time yo
 				return //If they moved away, you can't eat them.
-			visible_message("<span class='warning'>[R] chews up \the [target.name] and cleans off the debris!</span>")
-			to_chat(R, "<span class='notice'>You finish off \the [target.name].</span>")
+			visible_message(span_warning("[R] chews up \the [target.name] and cleans off the debris!"))
+			to_chat(R, span_notice("You finish off \the [target.name]."))
 			qdel(I)
 			R.cell.give(500)
 			return
-		R.visible_message("[R] begins to lick \the [target.name] clean...", "<span class='notice'>You begin to lick \the [target.name] clean...</span>")
+		R.visible_message("[R] begins to lick \the [target.name] clean...", span_notice("You begin to lick \the [target.name] clean..."))
 	else if(ishuman(target))
 		var/mob/living/L = target
 		if(status == 0 && check_zone(R.zone_selected) == "head")
-			R.visible_message("<span class='warning'>\the [R] affectionally licks \the [L]'s face!</span>", "<span class='notice'>You affectionally lick \the [L]'s face!</span>")
+			R.visible_message(span_warning("\the [R] affectionally licks \the [L]'s face!"), span_notice("You affectionally lick \the [L]'s face!"))
 			playsound(src.loc, 'sound/effects/attackblob.ogg', 50, 1)
 			if(istype(L) && L.fire_stacks > 0)
 				L.adjust_fire_stacks(-10)
 			return
 		else if(status == 0)
-			R.visible_message("<span class='warning'>\the [R] affectionally licks \the [L]!</span>", "<span class='notice'>You affectionally lick \the [L]!</span>")
+			R.visible_message(span_warning("\the [R] affectionally licks \the [L]!"), span_notice("You affectionally lick \the [L]!"))
 			playsound(src.loc, 'sound/effects/attackblob.ogg', 50, 1)
 			if(istype(L) && L.fire_stacks > 0)
 				L.adjust_fire_stacks(-10)
@@ -246,22 +246,22 @@ SLEEPER CODE IS IN game/objects/items/devices/dogborg_sleeper.dm !
 			L.Stun(4) // normal stunbaton is force 7 gimme a break good sir!
 			L.Knockdown(80)
 			L.apply_effect(EFFECT_STUTTER, 4)
-			L.visible_message("<span class='danger'>[R] has shocked [L] with its tongue!</span>", \
-								"<span class='userdanger'>[R] has shocked you with its tongue!</span>")
+			L.visible_message(span_danger("[R] has shocked [L] with its tongue!"), \
+								span_userdanger("[R] has shocked you with its tongue!"))
 			playsound(loc, 'sound/weapons/Egloves.ogg', 50, 1, -1)
 			R.cell.use(666)
 			log_combat(R, L, "tongue stunned")
 
 	else if(istype(target, /obj/structure/window))
-		R.visible_message("[R] begins to lick \the [target.name] clean...", "<span class='notice'>You begin to lick \the [target.name] clean...</span>")
+		R.visible_message("[R] begins to lick \the [target.name] clean...", span_notice("You begin to lick \the [target.name] clean..."))
 		if(do_after(user, src.cleanspeed, target = target))
-			to_chat(user, "<span class='notice'>You clean \the [target.name].</span>")
+			to_chat(user, span_notice("You clean \the [target.name]."))
 			target.remove_atom_colour(WASHABLE_COLOUR_PRIORITY)
 			target.set_opacity(initial(target.opacity))
 	else
-		R.visible_message("[R] begins to lick \the [target.name] clean...", "<span class='notice'>You begin to lick \the [target.name] clean...</span>")
+		R.visible_message("[R] begins to lick \the [target.name] clean...", span_notice("You begin to lick \the [target.name] clean..."))
 		if(do_after(user, src.cleanspeed, target = target))
-			to_chat(user, "<span class='notice'>You clean \the [target.name].</span>")
+			to_chat(user, span_notice("You clean \the [target.name]."))
 			var/obj/effect/decal/cleanable/C = locate() in target
 			qdel(C)
 			target.remove_atom_colour(WASHABLE_COLOUR_PRIORITY)
@@ -323,19 +323,19 @@ SLEEPER CODE IS IN game/objects/items/devices/dogborg_sleeper.dm !
 		spawn(R.pounce_cooldown_time)
 			R.pounce_cooldown = !R.pounce_cooldown
 	else if(R && R.pounce_cooldown)
-		to_chat(R, "<span class='danger'>Your leg actuators are still recharging!</span>")
+		to_chat(R, span_danger("Your leg actuators are still recharging!"))
 
 /mob/living/silicon/robot/proc/leap_at(atom/A)
 	if(leaping || stat || buckled || lying)
 		return
 
 	if(!has_gravity(src) || !has_gravity(A))
-		to_chat(src,"<span class='danger'>It is unsafe to leap without gravity!</span>")
+		to_chat(src,span_danger("It is unsafe to leap without gravity!"))
 		//It's also extremely buggy visually, so it's balance+bugfix
 		return
 
 	if(cell.charge <= 750)
-		to_chat(src,"<span class='danger'>Insufficent reserves for jump actuators!</span>")
+		to_chat(src,span_danger("Insufficent reserves for jump actuators!"))
 		return
 
 	else
@@ -408,12 +408,12 @@ SLEEPER CODE IS IN game/objects/items/devices/dogborg_sleeper.dm !
 	//start processing the regents in the container - and slowly use em up to create power
 	toggle_process_regents = !toggle_process_regents
 	if (toggle_process_regents)
-		to_chat(user, "<span class='notice'>You start churning the sexual fluids from your [inserted_item.name] into energy.</span>")
+		to_chat(user, span_notice("You start churning the sexual fluids from your [inserted_item.name] into energy."))
 		borg_self = user
 		START_PROCESSING(SSobj, src)
 	else
 		STOP_PROCESSING(SSobj, src)
-		to_chat(user, "<span class='notice'>You stop processing the fluids from the [inserted_item.name].</span>")
+		to_chat(user, span_notice("You stop processing the fluids from the [inserted_item.name]."))
 	return
 
 /obj/item/milking_machine/pleasuremaw/process()

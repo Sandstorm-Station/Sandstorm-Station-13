@@ -18,7 +18,7 @@
 	if(obj_flags & EMAGGED)
 		return
 	obj_flags |= EMAGGED
-	to_chat(usr, "<span class='notice'>You unlock [src]'s integrated dagger!</span>")
+	to_chat(usr, span_notice("You unlock [src]'s integrated dagger!"))
 	items_list += new /obj/item/pen/edagger(src)
 	return TRUE
 
@@ -38,6 +38,6 @@
 	if(obj_flags & EMAGGED)
 		return
 	obj_flags |= EMAGGED
-	to_chat(usr, "<span class='notice'>You unlock [src]'s integrated dagger!</span>")
+	to_chat(usr, span_notice("You unlock [src]'s integrated dagger!"))
 	items_list += new /obj/item/pen/edagger(src)
 	return TRUE

@@ -40,7 +40,7 @@
 	var/list/belly_names = list("stomach", "belly", "gut", "midsection", "rolls")
 	if(size < 0)//I don't actually know what round() does to negative numbers, so to be safe!!fixed
 		if(owner)
-			to_chat(owner, "<span class='warning'>You feel your [pick(belly_names)] go completely flat.</span>")
+			to_chat(owner, span_warning("You feel your [pick(belly_names)] go completely flat."))
 		QDEL_IN(src, 1)
 		return
 
@@ -48,9 +48,9 @@
 		var/mob/living/carbon/human/H = owner
 		var/r_prev_size = round(prev_size)
 		if (rounded_size > r_prev_size)
-			to_chat(H, "<span class='warning'>Your guts [pick("swell up to", "gurgle into", "expand into", "plump up into", "grow eagerly into", "fatten up into", "distend into")] a larger midsection.</span>")
+			to_chat(H, span_warning("Your guts [pick("swell up to", "gurgle into", "expand into", "plump up into", "grow eagerly into", "fatten up into", "distend into")] a larger midsection."))
 		else if (rounded_size < r_prev_size)
-			to_chat(H, "<span class='warning'>Your guts [pick("shrink down to", "decrease into", "wobble down into", "diminish into", "deflate into", "contracts into")] a smaller midsection.</span>")
+			to_chat(H, span_warning("Your guts [pick("shrink down to", "decrease into", "wobble down into", "diminish into", "deflate into", "contracts into")] a smaller midsection."))
 
 /obj/item/organ/genital/belly/update_appearance()
 	var/lowershape = lowertext(shape)
@@ -130,7 +130,7 @@
 		var/growth_amount = climax_fluids.total_volume / (fluid_max_volume * GENITAL_INFLATION_THRESHOLD)
 		modify_size(growth_amount)
 		if(size > round(previous))
-			owner.visible_message("<span class='lewd'>\The <b>[owner]</b>'s belly bloats outwards as it gets pumped full of[pick(" sweet", "")] [lowertext(source_gen.get_fluid_name())]!</span>", ignored_mobs = owner.get_unconsenting())
+			owner.visible_message(span_lewd("\The <b>[owner]</b>'s belly bloats outwards as it gets pumped full of[pick(" sweet", "")] [lowertext(source_gen.get_fluid_name())]!"), ignored_mobs = owner.get_unconsenting())
 			fluid_id = source_gen.get_fluid_id()
 		if((growth_amount >= 3 || size >= 3) && (owner.client?.prefs.cit_toggles & BUTT_ENLARGEMENT))
 			var/obj/item/organ/genital/butt/ass = owner.getorganslot(ORGAN_SLOT_BUTT)

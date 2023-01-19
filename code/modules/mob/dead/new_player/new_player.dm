@@ -585,18 +585,28 @@
 		for(var/job in category)
 			var/datum/job/job_datum = SSjob.name_occupations[job]
 			if(job_datum && IsJobUnavailable(job_datum.title, TRUE) == JOB_AVAILABLE)
+				// Get currently occupied slots
+				var/num_positions_current = job_datum.current_positions
+
+				// Get total slots that can be occupied
+				var/num_positions_total = job_datum.total_positions
+
+				// Change to lemniscate for infinite-slot jobs
+				// This variable should only used to display text!
+				num_positions_total = (num_positions_total == -1 ? "∞" : num_positions_total)
+
 				var/command_bold = ""
 				if(job in GLOB.command_positions)
 					command_bold = " command"
-				//SKYRAT CHANGES
-				var/jobline = "[job_datum.title] ([job_datum.current_positions])"
+				//Sandstorm changes
+				var/jobline = "[job_datum.title]"
 				if(job_datum in SSjob.prioritized_jobs)
 					jobline = "<span class='priority'>[jobline]</span>"
 				if(client && client.prefs && client.prefs.alt_titles_preferences[job_datum.title])
 					jobline = "[jobline]<br><span style='color:#BBBBBB; font-style: italic;'>(as [client.prefs.alt_titles_preferences[job_datum.title]])</span>"
-				jobline = "<a class='job[command_bold]' style='display:block;width:170px' href='byond://?src=[REF(src)];SelectedJob=[job_datum.title]'>[jobline]</a>"
+				jobline = "<a class='job[command_bold]' style='display:block;width:170px' href='byond://?src=[REF(src)];SelectedJob=[job_datum.title]'>[jobline] ([num_positions_current]/[num_positions_total])</a>"
 				dept_dat += jobline
-				//END OF SKYRAT CHANGES
+				//End of Sandstorm changes
 		if(!dept_dat.len)
 			dept_dat += "<span class='nopositions'>No positions open.</span>"
 		dat += jointext(dept_dat, "")
