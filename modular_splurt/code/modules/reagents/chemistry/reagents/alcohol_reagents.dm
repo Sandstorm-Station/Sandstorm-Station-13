@@ -16,6 +16,18 @@
 	// Praise the funny BYOND dots
 	. = ..()
 
+	// Check for client
+	if(C.client)
+		// Check target pref for ERP
+		if(C.client?.prefs.erppref == "No")
+			// Return without triggering
+			return
+
+		// Check target pref for aphrodisiacs
+		if(C.client?.prefs.cit_toggles & NO_APHRO)
+			// Return without triggering
+			return
+
 	// Perform drink effect
 	C.clothing_burst(C)
 
