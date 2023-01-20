@@ -401,26 +401,11 @@
 /datum/quirk/bloodfledge/on_process()
 	. = ..()
 
-	// Define quirk mob
-	var/mob/living/carbon/human/quirk_mob = quirk_holder
-
-	// Check if the quirk mob is NOT a chaplain
-	if(quirk_mob.mind?.assigned_role != "Chaplain")
-		// Get current area
-		var/area/holder_area = get_area(quirk_mob)
-
-		// Check if quirk mob's area is the chapel
-		if(istype(holder_area, /area/service/chapel))
-			// Run until stamina limit is reached
-			// Hard-coded based on STAMINA_CRIT of 140
-			if(quirk_mob.staminaloss < 120)
-				// Apply penalty to stamina, nutrition, and disgust
-				quirk_mob.adjustStaminaLoss(4, FALSE, TRUE)
-				quirk_mob.adjust_nutrition(-0.5)
-				quirk_mob.adjust_disgust(0.5)
-
 	// Check if the current area is a coffin
-	if(istype(quirk_mob.loc, /obj/structure/closet/crate/coffin))
+	if(istype(quirk_holder.loc, /obj/structure/closet/crate/coffin))
+		// Define quirk mob
+		var/mob/living/carbon/human/quirk_mob = quirk_holder
+
 		// Quirk mob must be injured
 		if(quirk_mob.health >= quirk_mob.maxHealth)
 			return
