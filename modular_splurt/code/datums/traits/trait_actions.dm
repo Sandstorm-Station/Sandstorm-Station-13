@@ -460,6 +460,14 @@
 	if(action_owner.suiciding)
 		revive_failed += "\n- You chose this path."		
 
+	// Condition: No revivals
+	if(HAS_TRAIT(action_owner, TRAIT_NOCLONE))
+		revive_failed += "\n- You only had one chance."		
+
+	// Condition: Demonic contract
+	if(action_owner.hellbound)
+		revive_failed += "\n- The soul pact must be honored."		
+
 	// Check for failure
 	if(revive_failed)
 		// Set combined message
