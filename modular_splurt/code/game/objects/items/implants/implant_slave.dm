@@ -28,9 +28,9 @@
 		if(target.mind.has_antag_datum(/datum/antagonist/rev/head) || target.mind.unconvertable || target.mind.assigned_role == "Security Officer" || target.mind.assigned_role == "Detective" || target.mind.assigned_role == "Warden" || target.mind.assigned_role == "Head of Security" || HAS_TRAIT(target, TRAIT_MINDSHIELD))
 			if(!silent)
 				if(target.mind.assigned_role == "Security Officer" || target.mind.assigned_role == "Detective" || target.mind.assigned_role == "Warden" || target.mind.assigned_role == "Head of Security")
-					target.visible_message("<span class='warning'>[target] seems to resist the implant! You can't enslave a member of security!</span>", "<span class='warning'>You feel something interfering with your mental conditioning, but you resist it!</span>")
+					target.visible_message(span_warning("[target] seems to resist the implant! You can't enslave a member of security!"), span_warning("You feel something interfering with your mental conditioning, but you resist it!"))
 				else
-					target.visible_message("<span class='warning'>[target] seems to resist the implant!</span>", "<span class='warning'>You feel something interfering with your mental conditioning, but you resist it!</span>")
+					target.visible_message(span_warning("[target] seems to resist the implant!"), span_warning("You feel something interfering with your mental conditioning, but you resist it!"))
 			var/obj/item/implanter/I = loc
 			removed(target, 1)
 			qdel(src)
@@ -47,9 +47,9 @@
 			target.mind.remove_antag_datum(/datum/antagonist/gang)
 		if(!silent)
 			if(target.mind in SSticker.mode.cult)
-				to_chat(target, "<span class='warning'>You feel something interfering with your mental conditioning, but you resist it!</span>")
+				to_chat(target, span_warning("You feel something interfering with your mental conditioning, but you resist it!"))
 			else
-				to_chat(target, "<span class='notice'>You feel a sense of peace and security. You are now enslaved!</span>")
+				to_chat(target, span_notice("You feel a sense of peace and security. You are now enslaved!"))
 		var/slave_objective = "[((target.client?.prefs.cit_toggles & HYPNO)?"Security has enslaved you into being their pet! Obey their commands, but remember: a good pet is not violent.":"You've been neutralized by security! Follow their orders, but remember: neutralization also means nonviolence.")]"
 		brainwash(target, slave_objective)
 		target.sec_hud_set_implants()
@@ -63,7 +63,7 @@
 			target.mind.remove_antag_datum(/datum/antagonist/brainwashed)
 			L.sec_hud_set_implants()
 		if(target.stat != DEAD && !silent)
-			to_chat(target, "<span class='boldnotice'>Your mind suddenly feels free from burden. You are no longer enslaved!</span>")
+			to_chat(target, span_boldnotice("Your mind suddenly feels free from burden. You are no longer enslaved!"))
 		return 1
 	return 0
 

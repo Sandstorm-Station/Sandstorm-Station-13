@@ -22,7 +22,7 @@
 		return
 
 	if(!CONFIG_GET(flag/use_exp_tracking))
-		to_chat(usr, "<span class='warning'>Tracking is disabled in the server configuration file.</span>")
+		to_chat(usr, span_warning("Tracking is disabled in the server configuration file."))
 		return
 
 	if(!playtime_menu)
@@ -120,7 +120,7 @@
 
 			var/atom/movable/target = get_mob_by_key(params["ckey"])
 			if(!target)
-				to_chat(usr, "<span class='notice'>This player cannot be observed.</span>")
+				to_chat(usr, span_notice("This player cannot be observed."))
 				return
 
 			var/client/C = usr.client

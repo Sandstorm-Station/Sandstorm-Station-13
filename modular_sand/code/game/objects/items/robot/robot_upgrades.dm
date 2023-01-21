@@ -16,7 +16,7 @@
 		if(!XW)
 			XW = locate() in R.module
 		if(XW)
-			to_chat(user, "<span class='warning'>This unit is already equipped with an experimental welding tool module.</span>")
+			to_chat(user, span_warning("This unit is already equipped with an experimental welding tool module."))
 			return FALSE
 		XW = new(R.module)
 		qdel(WT)
@@ -83,7 +83,7 @@
 		if(!BD)
 			BD = locate() in R.module //There's gotta be a smarter way to do this.
 		if(BD)
-			to_chat(user, "<span class='warning'>This unit is already equipped with a BSRPD module.</span>")
+			to_chat(user, span_warning("This unit is already equipped with a BSRPD module."))
 			return FALSE
 
 		BD = new(R.module)
@@ -138,11 +138,11 @@
 	if(.)
 
 		if(R.hasExpanded)
-			to_chat(usr, "<span class='notice'>This unit already has an expand module installed!</span>")
+			to_chat(usr, span_notice("This unit already has an expand module installed!"))
 			return FALSE
 
 		if(R.hasShrunk)
-			to_chat(usr, "<span class='notice'>This unit already has an shrink module installed!</span>")
+			to_chat(usr, span_notice("This unit already has an shrink module installed!"))
 			return FALSE
 
 		if(ExpandSize <= 0)
@@ -184,11 +184,11 @@
 	if(.)
 
 		if(R.hasShrunk)
-			to_chat(usr, "<span class='notice'>This unit already has an shrink module installed!</span>")
+			to_chat(usr, span_notice("This unit already has an shrink module installed!"))
 			return FALSE
 
 		if(R.hasExpanded)
-			to_chat(usr, "<span class='notice'>This unit already has an expand module installed!</span>")
+			to_chat(usr, span_notice("This unit already has an expand module installed!"))
 			return FALSE
 
 		if(ShrinkSize == 0)
@@ -246,7 +246,7 @@
 		if(!shuttle_maker)
 			shuttle_maker = locate() in R.module
 		if(shuttle_maker)
-			to_chat(user, "<span class='warning'>This unit is already equipped with a rapid shuttle designator module.</span>")
+			to_chat(user, span_warning("This unit is already equipped with a rapid shuttle designator module."))
 			return FALSE
 		shuttle_maker = new(R.module)
 		R.module.basic_modules += shuttle_maker

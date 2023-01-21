@@ -20,6 +20,6 @@
 
 /datum/tgs_chat_command/restart/Run(datum/tgs_chat_user/sender)
 	. = "Restarting."
-	to_chat(world, "<span class='boldwarning'>Server restart - Initialized by [sender.friendly_name] on Discord.</span>")
+	to_chat(world, span_boldwarning("Server restart - Initialized by [sender.friendly_name] on Discord."))
 	send2adminchat("Server", "[sender.friendly_name] forced a restart.")
 	addtimer(CALLBACK(src, world.TgsEndProcess()), 1 SECONDS)

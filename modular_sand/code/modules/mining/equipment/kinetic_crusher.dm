@@ -30,7 +30,7 @@
 			L.loot = null
 			L.crusher_loot = null
 			L.faction = user.faction.Copy()
-			user.visible_message("<span class='notice'>[user] revives [target] with [src], as a friendly fauna</span>")
+			user.visible_message(span_notice("[user] revives [target] with [src], as a friendly fauna"))
 			playsound(src,'sound/effects/supermatter.ogg',50,1)
 
 /obj/item/crusher_trophy/golden_skull/on_melee_hit(mob/living/target, mob/living/user)
@@ -53,10 +53,10 @@
 			L.attack_same = 0
 			L.loot = null
 			L.crusher_loot = null
-			user.visible_message("<span class='notice'>[user] revives [target] with [src], as a friendly legion.</span>")
+			user.visible_message(span_notice("[user] revives [target] with [src], as a friendly legion."))
 			playsound(src,'sound/effects/supermatter.ogg',50,1)
 		else
-			(to_chat(user, "<span class='notice'>You cancel turning [target] into a legion.</span>"))
+			(to_chat(user, span_notice("You cancel turning [target] into a legion.")))
 
 //rogue process
 /obj/item/crusher_trophy/brokentech
@@ -344,22 +344,22 @@
 
 /obj/item/melee/zweihander/examine(mob/living/user)
 	. = ..()
-	. += "<span class='notice'>Mark a large creature with the destabilizing force, then hit them in melee to do <b>[force + detonation_damage]</b> damage.</span>"
-	. += "<span class='notice'>Does <b>[force + detonation_damage + backstab_bonus]</b> damage if the target is backstabbed, instead of <b>[force + detonation_damage]</b>.</span>"
+	. += span_notice("Mark a large creature with the destabilizing force, then hit them in melee to do <b>[force + detonation_damage]</b> damage.")
+	. += span_notice("Does <b>[force + detonation_damage + backstab_bonus]</b> damage if the target is backstabbed, instead of <b>[force + detonation_damage]</b>.")
 	for(var/t in trophies)
 		var/obj/item/crusher_trophy/T = t
-		. += "<span class='notice'>It has \a [T] attached, which causes [T.effect_desc()].</span>"
+		. += span_notice("It has \a [T] attached, which causes [T.effect_desc()].")
 
 /obj/item/melee/zweihander/attackby(obj/item/I, mob/living/user)
 	if(istype(I, /obj/item/crowbar))
 		if(LAZYLEN(trophies))
-			to_chat(user, "<span class='notice'>You remove [src]'s trophies.</span>")
+			to_chat(user, span_notice("You remove [src]'s trophies."))
 			I.play_tool_sound(src)
 			for(var/t in trophies)
 				var/obj/item/crusher_trophy/T = t
 				T.remove_from(src, user)
 		else
-			to_chat(user, "<span class='warning'>There are no trophies on [src].</span>")
+			to_chat(user, span_warning("There are no trophies on [src]."))
 	else if(istype(I, /obj/item/crusher_trophy))
 		var/obj/item/crusher_trophy/T = I
 		T.add_to(src, user)

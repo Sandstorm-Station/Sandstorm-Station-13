@@ -78,15 +78,15 @@
 	desc = "Due to the shape of your hands, width of your fingers or just not having fingers at all, you're unable to fire guns without accommodation."
 	value = -2
 	mob_trait = TRAIT_CHUNKYFINGERS
-	gain_text = "<span class='notice'>Your fingers feel... thick.</span>"
-	lose_text = "<span class='notice'>Your fingers feel normal again.</span>"
+	gain_text = span_notice("Your fingers feel... thick.")
+	lose_text = span_notice("Your fingers feel normal again.")
 
 /datum/quirk/illiterate
 	name = "Illiterate"
 	desc = "You can't read nor write, plain and simple."
 	value = -1
 	mob_trait = TRAIT_ILLITERATE
-	gain_text = "<span class='notice'>The knowledge of how to read seems to escape from you.</span>"
+	gain_text = span_notice("The knowledge of how to read seems to escape from you.")
 	lose_text = "<span class='notice'>Written words suddenly make sense again."
 
 /datum/quirk/flimsy
@@ -109,8 +109,8 @@
 	name = "Hypersensitive"
 	desc = "For better or worse, everything seems to affect your mood more than it should."
 	value = -1
-	gain_text = "<span class='danger'>You seem to make a big deal out of everything.</span>"
-	lose_text = "<span class='notice'>You don't seem to make a big deal out of everything anymore.</span>"
+	gain_text = span_danger("You seem to make a big deal out of everything.")
+	lose_text = span_notice("You don't seem to make a big deal out of everything anymore.")
 	mood_quirk = TRUE //yogs
 	medical_record_text = "Patient demonstrates a high level of emotional volatility."
 
@@ -135,7 +135,7 @@
 	desc = "For one reason or another, you're totally obsessed with cum. The heat of it, the smell... its taste... It's quite simply euphoric."
 	value = 0
 	gain_text = "<span class='notice'>You suddenly start craving some seed inside of you!<span>"
-	lose_text = "<span class='danger'>Cum didn't even taste that good, anyways.</span>"
+	lose_text = span_danger("Cum didn't even taste that good, anyways.")
 	medical_record_text = "Patient seems to have an unhealthy psychological obsession with seminal fluids."
 	var/craving_after = 15 MINUTES
 	var/timer
@@ -151,7 +151,7 @@
 									"Some jizz wouldn't be so bad right now!",\
 									"You're starting to long for some more cum..."
 								  )
-	to_chat(quirk_holder, "<span class='love'>[pick(hungry_phrases)]</span>")
+	to_chat(quirk_holder, span_love("[pick(hungry_phrases)]"))
 
 	if(quirk_holder.stat == CONSCIOUS)
 		quirk_holder.emote("sigh")
@@ -175,8 +175,8 @@
 	name = "Hungry And Thirsty"
 	desc = "You find yourself unusually hungry and thirsty. Gotta eat and drink twice as much as normal."
 	value = -1
-	gain_text = "<span class='danger'>You're starting to feel hungrier and thirstier a lot faster.</span>"
-	lose_text = "<span class='notice'>Your craving for food and water begins dying down.</span>"
+	gain_text = span_danger("You're starting to feel hungrier and thirstier a lot faster.")
+	lose_text = span_notice("Your craving for food and water begins dying down.")
 	medical_record_text = "Patient reports eating twice as many meals per day than usual for their species."
 
 /datum/quirk/hungry/add()
