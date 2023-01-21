@@ -33,6 +33,14 @@
 	quirk_holder.weather_immunities -= "ash"
 */
 
+/datum/quirk/immunity_rads
+	name = "Lead Blooded"
+	desc = "Your body been rendered completely immune to the effects of radiation. Bask in the supermatter\'s warming glow without worry! Contains less than 1% actual lead."
+	value = 3
+	mob_trait = TRAIT_RADIMMUNE
+	gain_text = span_notice("You feel drawn to Cherenkov's glow.")
+	lose_text = span_notice("You realize that rads aren't so rad.")
+
 /datum/quirk/dominant_aura
 	name = "Dominant Aura"
 	desc = "Your mere presence is assertive enough to appear as powerful to other people, so much in fact that the weaker kind can't help but throw themselves at your feet at the snap of a finger."
