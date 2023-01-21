@@ -12,6 +12,7 @@
 
 /obj/item/nullrod/papal_staff
 	name = "papal staff"
+	desc = "A staff used by traditional bishops and popes."
 	icon = 'modular_splurt/icons/obj/items_and_weapons.dmi'
 	icon_state = "papal_staff"
 	item_state = "papal_staff"
@@ -22,6 +23,7 @@
 
 /obj/item/clothing/head/mitre
 	name = "papal mitre"
+	desc = "A traditional headdress, worn by bishops and popes in traditional Christianity"
 	icon = 'modular_splurt/icons/obj/clothing/hats.dmi'
 	mob_overlay_icon = 'modular_splurt/icons/mob/clothing/32x48_head.dmi'
 	icon_state = "mitre"
@@ -29,6 +31,7 @@
 
 /obj/item/clothing/suit/chaplain/papal
 	name = "papal robe"
+	desc = "A short cape over a cassock, worn by bishops and popes in traditional Christianity"
 	icon = 'modular_splurt/icons/obj/clothing/suits.dmi'
 	mob_overlay_icon = 'modular_splurt/icons/mobs/suits.dmi'
 	icon_state = "papalrobe"
