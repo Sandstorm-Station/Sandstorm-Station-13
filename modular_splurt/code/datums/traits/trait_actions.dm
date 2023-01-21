@@ -300,7 +300,8 @@
 			organ_vagina.update_size()
 
 	// Set transformation message
-	var/toggle_message = (transformed ? "[action_owner] shivers, [p_their()] flesh bursting with a sudden growth of thick fur and [p_their()] features contorting to that of a beast's, fully transforming them into a werewolf!" : "[action_owner] shrinks, [p_their()] wolfish features quickly receding.")
+	var/owner_p_their = action_owner.p_their()
+	var/toggle_message = (!transformed ? "[action_owner] shivers, [owner_p_their] flesh bursting with a sudden growth of thick fur as [owner_p_their] features contort to that of a beast, fully transforming [action_owner.p_them()] into a werewolf!" : "[action_owner] shrinks, [owner_p_their] wolfish features quickly receding.")
 
 	// Alert in local chat
 	action_owner.visible_message(span_danger(toggle_message))
