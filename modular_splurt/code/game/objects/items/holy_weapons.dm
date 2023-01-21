@@ -44,3 +44,4 @@
 /obj/item/storage/box/holy/papal/PopulateContents()
 	new /obj/item/clothing/head/mitre(src)
 	new /obj/item/clothing/suit/chaplain/papal(src)
+	
