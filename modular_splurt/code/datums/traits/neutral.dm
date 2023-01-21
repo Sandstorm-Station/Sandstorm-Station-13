@@ -446,24 +446,32 @@
 	H.regenerate_icons()
 	. = ..()
 
-
-/datum/quirk/werewolf //adds the werewolf quirk
+/datum/quirk/werewolf
 	name = "Werewolf"
-	desc = "A beastly affliction allows you to shapeshift into a more wolfish appearance at will. This will increase your size (In general and below!) and cause you to behave as though you were an anthropomorphic canine. (This is still being tested. Please send any bugs to nukechicken on discord)"
+	desc = "A beastly affliction allows you to shape-shift into a large anthropomorphic canine at will."
 	value = 0
+	mob_trait = TRAIT_WEREWOLF
+	gain_text = span_notice("You feel the full moon beckon.")
+	lose_text = span_notice("The moon's call hushes into silence.")
+	medical_record_text = "Patient has been reported howling at the night sky."
 
 /datum/quirk/werewolf/add()
 	. = ..()
-	var/mob/living/carbon/human/H = quirk_holder
-	var/datum/action/werewolf/W = new
-	W.Grant(H)
+
+	// Define quirk action
+	var/datum/action/werewolf/transform/quirk_action = new
+
+	// Grant quirk action
+	quirk_action.Grant(quirk_holder)
 
 /datum/quirk/werewolf/remove()
-	var/mob/living/carbon/human/H = quirk_holder
-	var/datum/action/werewolf/W = locate() in H.actions
-	W.Remove(H)
 	. = ..()
 
+	// Define quirk action
+	var/datum/action/werewolf/transform/quirk_action = locate() in quirk_holder.actions
+
+	// Revoke quirk action
+	quirk_action.Remove(quirk_holder)
 
 /datum/quirk/gargoyle //Mmmm yes stone time
 	name = "Gargoyle"
