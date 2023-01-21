@@ -87,54 +87,54 @@
 //saw a plank into two platforms
 /obj/item/processed/wood/plank/attackby(obj/item/I, mob/user, params)
 	if(istype(I, /obj/item/carpentry/handsaw))
-		to_chat(user,"<span class='notice'> You begin to saw [src] in half...</span>")
+		to_chat(user,span_notice(" You begin to saw [src] in half..."))
 		if(do_after(user, 40, target = src) && isturf(loc))
 			new src.sawobj(loc)
 			new src.sawobj(loc) //send help i dont know how to make two in the same line lmfao
-			to_chat(user, "<span class='notice'> You saw [src] in half.</span>")
+			to_chat(user, span_notice(" You saw [src] in half."))
 			qdel(src)
 		else
-			to_chat(user, "<span class='warning'>You need to hold still to saw [src]!</span>")
+			to_chat(user, span_warning("You need to hold still to saw [src]!"))
 	else
 		..()
 //saw a platform into four blocks
 /obj/item/processed/wood/platform/attackby(obj/item/I, mob/user, params)
 	if(istype(I, /obj/item/carpentry/handsaw))
-		to_chat(user,"<span class='notice'> You begin cut [src] into smaller pieces...</span>")
+		to_chat(user,span_notice(" You begin cut [src] into smaller pieces..."))
 		if(do_after(user, 20, target = src) && isturf(loc))
 			new src.sawobj(loc)
 			new src.sawobj(loc)
 			new src.sawobj(loc)
 			new src.sawobj(loc)
-			to_chat(user, "<span class='notice'> You cut [src] into four pieces.</span>")
+			to_chat(user, span_notice(" You cut [src] into four pieces."))
 			qdel(src)
 		else
-			to_chat(user, "<span class='warning'>You need to hold still to saw [src]!</span>")
+			to_chat(user, span_warning("You need to hold still to saw [src]!"))
 	else
 		..()
 //sand a block into a peg
 /obj/item/processed/wood/block/attackby(obj/item/I, mob/user, params)
 	if(istype(I, /obj/item/carpentry/sandpaper))
-		to_chat(user,"<span class='notice'> You carefully begin to sand down [src]...</span>")
+		to_chat(user,span_notice(" You carefully begin to sand down [src]..."))
 		if(do_after(user, 50, target = src) && isturf(loc))
 			new src.sandobj(loc)
-			to_chat(user, "<span class='notice'> You smooth [src] into a peg.</span>")
+			to_chat(user, span_notice(" You smooth [src] into a peg."))
 			qdel(src)
 		else
-			to_chat(user, "<span class='warning'>You need to hold still to sand [src]!</span>")
+			to_chat(user, span_warning("You need to hold still to sand [src]!"))
 	else
 		..()
 //cut heated metal into nails
 /obj/item/processed/metal/attackby(obj/item/I, mob/user, params)
 	if(istype(I, /obj/item/wirecutters))
-		to_chat(user,"<span class='notice'> You tediously begin to cut [src] into several nails...</span>")
+		to_chat(user,span_notice(" You tediously begin to cut [src] into several nails..."))
 		if(do_after(user, 80, target = src) && isturf(loc))
 			new /obj/item/nails(loc)
 			new /obj/item/nails(loc)
-			to_chat(user, "<span class='notice'> You make some crude metal nails.</span>")
+			to_chat(user, span_notice(" You make some crude metal nails."))
 			qdel(src)
 		else
-			to_chat(user, "<span class='warning'>You need to hold still to process [src]!</span>")
+			to_chat(user, span_warning("You need to hold still to process [src]!"))
 	else
 		..()
 
@@ -142,25 +142,25 @@
 //cover a wooden block in glue
 /obj/item/processed/wood/block/attackby(obj/item/I, mob/user, params)
 	if(istype(I, /obj/item/carpentry/glue))
-		to_chat(user,"<span class='notice'> You begin to glue down one end of [src]...</span>")
+		to_chat(user,span_notice(" You begin to glue down one end of [src]..."))
 		if(do_after(user, 10, target = src) && isturf(loc))
 			new src.glueobj(loc)
-			to_chat(user, "<span class='notice'> You slap some glue onto [src].</span>")
+			to_chat(user, span_notice(" You slap some glue onto [src]."))
 			qdel(src)
 		else
-			to_chat(user, "<span class='warning'>You need to hold still to glue [src]!</span>")
+			to_chat(user, span_warning("You need to hold still to glue [src]!"))
 	else
 		..()
 //cover a wooden peg in glue
 /obj/item/processed/wood/peg/attackby(obj/item/I, mob/user, params)
 	if(istype(I, /obj/item/carpentry/glue))
-		to_chat(user,"<span class='notice'> You begin to glue down one end of the [src]...</span>")
+		to_chat(user,span_notice(" You begin to glue down one end of the [src]..."))
 		if(do_after(user, 10, target = src) && isturf(loc))
 			new src.glueobj(loc)
-			to_chat(user, "<span class='notice'> You slap some glue onto [src].</span>")
+			to_chat(user, span_notice(" You slap some glue onto [src]."))
 			qdel(src)
 		else
-			to_chat(user, "<span class='warning'>You need to hold still to glue [src]!</span>")
+			to_chat(user, span_warning("You need to hold still to glue [src]!"))
 	else
 		..()
 
@@ -168,89 +168,89 @@
 //bore a platform into a seat
 /obj/item/processed/wood/platform/attackby(obj/item/I, mob/user, params)
 	if(istype(I, /obj/item/carpentry/borer))
-		to_chat(user,"<span class='notice'> You begin to cut four holes into [src]...</span>")
+		to_chat(user,span_notice(" You begin to cut four holes into [src]..."))
 		if(do_after(user, 40, target = src) && isturf(loc))
 			new src.boreobj(loc)
-			to_chat(user, "<span class='notice'> You drill four holes into [src].</span>")
+			to_chat(user, span_notice(" You drill four holes into [src]."))
 			qdel(src)
 		else
-			to_chat(user, "<span class='warning'>You need to hold still to refine [src]!</span>")
+			to_chat(user, span_warning("You need to hold still to refine [src]!"))
 	else
 		..()
 
 //Stools - Further crafting
 /obj/item/processed/wood/stool1/attackby(obj/item/I, mob/user, params)
 	if(istype(I, /obj/item/nails))
-		to_chat(user,"<span class='notice'> You place nails into [src]...</span>")
+		to_chat(user,span_notice(" You place nails into [src]..."))
 		if(do_after(user, 20, target = src) && isturf(loc))
 			new /obj/item/processed/wood/stool2(loc)
-			to_chat(user, "<span class='notice'> The nails are ready to be hammered.</span>")
+			to_chat(user, span_notice(" The nails are ready to be hammered."))
 			qdel(src)
 			qdel(I)
 		else
-			to_chat(user, "<span class='warning'>You need to hold still to refine [src]!</span>")
+			to_chat(user, span_warning("You need to hold still to refine [src]!"))
 	else
 		..()
 
 /obj/item/processed/wood/stool2/attackby(obj/item/I, mob/user, params)
 	if(istype(I, /obj/item/carpentry/hammer))
-		to_chat(user,"<span class='notice'> You begin to hammer the [src]...</span>")
+		to_chat(user,span_notice(" You begin to hammer the [src]..."))
 		if(do_after(user, 30, target = src) && isturf(loc))
 			new /obj/item/processed/wood/stool3(loc)
-			to_chat(user, "<span class='notice'> The nails are hammered into place.</span>")
+			to_chat(user, span_notice(" The nails are hammered into place."))
 			qdel(src)
 		else
-			to_chat(user, "<span class='warning'>You need to hold still to refine [src]!</span>")
+			to_chat(user, span_warning("You need to hold still to refine [src]!"))
 	else
 		..()
 
 /obj/item/processed/wood/stool3/attackby(obj/item/I, mob/user, params)
 	if(istype(I, /obj/item/carpentry/sandpaper))
-		to_chat(user,"<span class='notice'> You begin to sand the [src]...</span>")
+		to_chat(user,span_notice(" You begin to sand the [src]..."))
 		if(do_after(user, 30, target = src) && isturf(loc))
 			new /obj/item/processed/wood/stool4(loc)
-			to_chat(user, "<span class='notice'> You sand down the [src].</span>")
+			to_chat(user, span_notice(" You sand down the [src]."))
 			qdel(src)
 		else
-			to_chat(user, "<span class='warning'>You need to hold still to refine [src]!</span>")
+			to_chat(user, span_warning("You need to hold still to refine [src]!"))
 	else
 		..()
 
 /obj/item/processed/wood/stool4/attackby(obj/item/I, mob/user, params)
 	if(istype(I, /obj/item/processed/wood/glueblock))
-		to_chat(user,"<span class='notice'> You add some finishing touches to the [src]...</span>")
+		to_chat(user,span_notice(" You add some finishing touches to the [src]..."))
 		if(do_after(user, 30, target = src) && isturf(loc))
 			new /obj/item/processed/wood/stool(loc)
-			to_chat(user, "<span class='notice'> You complete the [src].</span>")
+			to_chat(user, span_notice(" You complete the [src]."))
 			qdel(src)
 			qdel(I)
 		else
-			to_chat(user, "<span class='warning'>You need to hold still to refine [src]!</span>")
+			to_chat(user, span_warning("You need to hold still to refine [src]!"))
 	else
 		..()
 
 /obj/item/processed/wood/stool/attackby(obj/item/I, mob/user, params)
 	if(istype(I, /obj/item/cushion))
-		to_chat(user,"<span class='notice'> You secure a cloth cushion to [src]...</span>")
+		to_chat(user,span_notice(" You secure a cloth cushion to [src]..."))
 		if(do_after(user, 30, target = src) && isturf(loc))
 			new /obj/item/processed/wood/stoolcloth(loc)
-			to_chat(user, "<span class='notice'> You add a cushion to [src].</span>")
+			to_chat(user, span_notice(" You add a cushion to [src]."))
 			qdel(src)
 			qdel(I)
 		else
-			to_chat(user, "<span class='warning'>You need to hold still to detail [src]!</span>")
+			to_chat(user, span_warning("You need to hold still to detail [src]!"))
 	else
 		..()
 
 /obj/item/processed/wood/stool/attackby(obj/item/I, mob/user, params)
 	if(istype(I, /obj/item/cushion/silk))
-		to_chat(user,"<span class='notice'> You secure a silk cushion to [src]...</span>")
+		to_chat(user,span_notice(" You secure a silk cushion to [src]..."))
 		if(do_after(user, 30, target = src) && isturf(loc))
 			new /obj/item/processed/wood/stoolsilk(loc)
-			to_chat(user, "<span class='notice'> You add a cushion to [src].</span>")
+			to_chat(user, span_notice(" You add a cushion to [src]."))
 			qdel(src)
 			qdel(I)
 		else
-			to_chat(user, "<span class='warning'>You need to hold still to detail [src]!</span>")
+			to_chat(user, span_warning("You need to hold still to detail [src]!"))
 	else
 		..()

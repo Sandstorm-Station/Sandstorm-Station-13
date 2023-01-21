@@ -48,15 +48,15 @@ Code:
 		switch(mode)
 			if(1)
 				mode = 2
-				to_chat(user, "<span class='notice'>You twist the bottom of [src], setting it to the medium setting.</span>")
+				to_chat(user, span_notice("You twist the bottom of [src], setting it to the medium setting."))
 				return
 			if(2)
 				mode = 3
-				to_chat(user, "<span class='warning'>You twist the bottom of [src], setting it to the high setting.</span>")
+				to_chat(user, span_warning("You twist the bottom of [src], setting it to the high setting."))
 				return
 			if(3)
 				mode = 1
-				to_chat(user, "<span class='notice'>You twist the bottom of [src], setting it to the low setting.</span>")
+				to_chat(user, span_notice("You twist the bottom of [src], setting it to the low setting."))
 				return
 /*
 /obj/item/electropack/vibrator/attack(mob/living/carbon/C, mob/living/user)
@@ -66,22 +66,22 @@ Code:
 	var/mob/living/carbon/human/T = C
 	picked_organ = S.pick_receiving_organ(T, HAS_EQUIPMENT, "Vibrator", "Where are you putting it in?")
 	if(picked_organ)
-		C.visible_message("<span class='warning'><b>\The [user]</b> is trying to attach [src] to <b>\The [T]</b>!</span>",\
-						"<span class='warning'><b>\The [user]</b> is trying to put [src] on you!</span>")
+		C.visible_message(span_warning("<b>\The [user]</b> is trying to attach [src] to <b>\The [T]</b>!"),\
+						span_warning("<b>\The [user]</b> is trying to put [src] on you!"))
 		if(!do_mob(user, C, 5 SECONDS))//warn them and have a delay of 5 seconds to apply.
 			return
 
 		if(style == "long" && !(picked_organ.type == /obj/item/organ/genital/vagina)) //long vibrators dont fit on anything but vaginas, but small ones fit everywhere
-			to_chat(user, "<span class='warning'>[src] is too big to fit there, use a smaller version.</span>")
+			to_chat(user, span_warning("[src] is too big to fit there, use a smaller version."))
 			return
 
 		if(!picked_organ.equipment[GENITAL_EQUIPMENT_VIBRATOR])
 			if(!(style == "long"))
-				to_chat(user, "<span class='love'>You attach [src] to <b>\The [T]</b>'s [picked_organ.name].</span>")
+				to_chat(user, span_love("You attach [src] to <b>\The [T]</b>'s [picked_organ.name]."))
 			else
-				to_chat(user, "<span class='love'>You insert [src] into <b>\The <b>[T]</b>'s [picked_organ.name].</span>")
+				to_chat(user, span_love("You insert [src] into <b>\The <b>[T]</b>'s [picked_organ.name]."))
 		else
-			to_chat(user, "<span class='notice'>They already have a [picked_organ.equipment[GENITAL_EQUIPMENT_VIBRATOR].name] there.</span>")
+			to_chat(user, span_notice("They already have a [picked_organ.equipment[GENITAL_EQUIPMENT_VIBRATOR].name] there."))
 			return
 
 		if(!user.transferItemToLoc(src, picked_organ)) //check if you can put it in
@@ -89,10 +89,10 @@ Code:
 		playsound(C, 'modular_sand/sound/lewd/champ_fingering.ogg', 50, 1, -1)
 		inside = TRUE
 		picked_organ.equipment[GENITAL_EQUIPMENT_VIBRATOR] = src
-		to_chat(user, "<span class='warning'>Done <b>Done</b></span>") //Will delete after testing
+		to_chat(user, span_warning("Done <b>Done</b>")) //Will delete after testing
 
 	else
-		to_chat(user, "<span class='notice'>You don't see anywhere to attach this.</span>")
+		to_chat(user, span_notice("You don't see anywhere to attach this."))
 */
 
 
@@ -114,9 +114,9 @@ Code:
 		if(G)
 			switch(G.type) //just being fancy
 				if(/obj/item/organ/genital/breasts)
-					to_chat(U, "<span class='love'>[src] vibrates against your nipples!</span>")
+					to_chat(U, span_love("[src] vibrates against your nipples!"))
 				else
-					to_chat(U, "<span class='love'>[src] vibrates against your [G.name]!</span>")
+					to_chat(U, span_love("[src] vibrates against your [G.name]!"))
 
 			var/intencity = 6*mode
 			U.handle_post_sex(intencity, null, src) //give pleasure
@@ -125,13 +125,13 @@ Code:
 
 			switch(mode)
 				if(1) //low, setting for RP, it wont force your character to do anything.
-					to_chat(U, "<span class='love'>You feel pleasure surge through your [G.name]</span>")
+					to_chat(U, span_love("You feel pleasure surge through your [G.name]"))
 					U.do_jitter_animation() //do animation without heartbeat
 				if(2) //med, can make you cum
-					to_chat(U, "<span class='love'>You feel intense pleasure surge through your [G.name]</span>")
+					to_chat(U, span_love("You feel intense pleasure surge through your [G.name]"))
 					U.do_jitter_animation()
 				if(3) //high, makes you stun
-					to_chat(U, "<span class='userdanger'>You feel overpowering pleasure surge through your [G.name]</span>")
+					to_chat(U, span_userdanger("You feel overpowering pleasure surge through your [G.name]"))
 					U.Jitter(3)
 					U.Stun(30)
 					if(prob(50))

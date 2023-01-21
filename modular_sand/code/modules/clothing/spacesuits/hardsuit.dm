@@ -101,7 +101,7 @@
 	var/mob/living/carbon/human/user = src.loc
 	playsound(src.loc, 'modular_sand/sound/misc/suitmalf.ogg', 60, 1, 10)
 	if (ishuman(user) && (user.wear_suit == src))
-		to_chat(user, "<span class='danger'>The motors on your armor cease to function, causing the full weight of the suit to weigh on you all at once!</span>")
+		to_chat(user, span_danger("The motors on your armor cease to function, causing the full weight of the suit to weigh on you all at once!"))
 		user.emote("scream")
 		user.adjustStaminaLoss(stamdamageemp)
 		user.adjustBruteLoss(brutedamageemp)
@@ -126,12 +126,20 @@
 /obj/item/clothing/suit/space/hardsuit/mining
 	unique_reskin = list(
 		"Default" = list(
+			"name" = "mining hardsuit",
+			"desc" = "A special suit that protects against hazardous, low pressure environments. Has reinforced plating for wildlife encounters.",
 			"icon" = 'icons/obj/clothing/suits.dmi',
-			"icon_state" = "hardsuit-mining"
+			"icon_state" = "hardsuit-mining",
+			"mob_overlay_icon" = null,
+			"anthro_mob_worn_overlay" = null
 		),
 		"Conscript" = list(
+			"name" = "Conscript suit",
+			"desc" = "<span style=\"font-family:Lucida Console;font-size:85%\">..and so he left, with new orders and new questions.</span>",
 			"icon" = 'modular_sand/icons/mob/clothing/suit.dmi',
-			"icon_state" = "commando-armor"
+			"icon_state" = "commando-armor",
+			"mob_overlay_icon" = 'modular_sand/icons/mob/clothing/suit.dmi',
+			"anthro_mob_worn_overlay" = 'modular_sand/icons/mob/clothing/suit_digi.dmi'
 		)
 	)
 
@@ -152,8 +160,6 @@
 
 /obj/item/clothing/suit/space/hardsuit/mining/reskin_obj(mob/M)
 	. = ..()
-	if(!.)
-		return
 	var/datum/component/armor_plate/armor_comp = GetComponent(/datum/component/armor_plate)
 	var/armor_level = 0
 	var/armor_max = 0
@@ -167,12 +173,9 @@
 
 	switch(current_skin)
 		if("Default")
-			name = initial(name)
-			desc = initial(desc)
 			if(armor_level != 0)
 				upgrade_icon(amount = armor_level, maxamount = armor_max)
-			mob_overlay_icon = initial(mob_overlay_icon)
-			anthro_mob_worn_overlay = initial(mob_overlay_icon)
+
 			if(mining_helmet)
 				mining_helmet.name = initial(mining_helmet.name)
 				mining_helmet.desc = initial(mining_helmet.desc)
@@ -185,12 +188,8 @@
 
 		/// Sprited by Dexxiol#3462 :)
 		if("Conscript")
-			name = "Conscript suit"
-			desc = "<span style=\"font-family:Lucida Console;font-size:85%\">..and so he left, with new orders and new questions.</span>"
 			if(armor_level != 0)
 				upgrade_icon(amount = armor_level, maxamount = armor_max)
-			mob_overlay_icon = 'modular_sand/icons/mob/clothing/suit.dmi'
-			anthro_mob_worn_overlay = 'modular_sand/icons/mob/clothing/suit_digi.dmi'
 
 			if(mining_helmet)
 				mining_helmet.name = "Conscript helmet"

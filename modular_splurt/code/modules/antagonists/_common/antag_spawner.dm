@@ -13,14 +13,14 @@
 
 /obj/item/antag_spawner/slaver_borg/proc/check_usability(mob/user)
 	if(used)
-		to_chat(user, "<span class='warning'>[src] is out of power!</span>")
+		to_chat(user, span_warning("[src] is out of power!"))
 		return FALSE
 	if(!user.mind.has_antag_datum(/datum/antagonist/slaver,TRUE))
-		to_chat(user, "<span class='danger'>AUTHENTICATION FAILURE. ACCESS DENIED.</span>")
+		to_chat(user, span_danger("AUTHENTICATION FAILURE. ACCESS DENIED."))
 		return FALSE
 	var/area/A = get_area(get_turf(user))
 	if (!istype(A, /area/slavers))
-		to_chat(user, "<span class='warning'>[src] is out of range! It can only be used at your hideout!</span>")
+		to_chat(user, span_warning("[src] is out of range! It can only be used at your hideout!"))
 		return FALSE
 
 	return TRUE
@@ -30,11 +30,11 @@
 		return
 
 	if(!(next_attempt_allowed < world.time))
-		to_chat(user, "<span class='warning'>A request has already been sent! Wait 1 minute.</span>")
+		to_chat(user, span_warning("A request has already been sent! Wait 1 minute."))
 		return
 	next_attempt_allowed = world.time + 1 MINUTES
 
-	to_chat(user, "<span class='notice'>You activate [src] and wait for confirmation.</span>")
+	to_chat(user, span_notice("You activate [src] and wait for confirmation."))
 	var/list/borg_candidates = pollGhostCandidates("Do you want to play as a slaver [lowertext(borg_to_spawn)] cyborg?", ROLE_SLAVER, null, ROLE_SLAVER, 150, POLL_IGNORE_SLAVER)
 	if(LAZYLEN(borg_candidates))
 		if(QDELETED(src) || !check_usability(user))
@@ -45,7 +45,7 @@
 		do_sparks(4, TRUE, src)
 		qdel(src)
 	else
-		to_chat(user, "<span class='warning'>Unable to connect to Slaver command. Please wait and try again later.</span>")
+		to_chat(user, span_warning("Unable to connect to Slaver command. Please wait and try again later."))
 
 /obj/item/antag_spawner/slaver_borg/spawn_antag(client/C, turf/T, kind, datum/mind/user)
 	var/mob/living/silicon/robot/R

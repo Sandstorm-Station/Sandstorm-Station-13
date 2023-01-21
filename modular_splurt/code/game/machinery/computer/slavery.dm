@@ -165,7 +165,7 @@
 			if(!input || !user.canUseTopic(src, !issilicon(usr)))
 				return
 			if(!(user.can_speak())) //No more cheating, mime/random mute guy!
-				to_chat(user, "<span class='warning'>You find yourself unable to speak.</span>")
+				to_chat(user, span_warning("You find yourself unable to speak."))
 				return
 
 			input = user.treat_message(input) //Adds slurs and so on. Someone should make this use languages too.
@@ -232,8 +232,8 @@
 			new /obj/effect/temp_visual/dir_setting/ninja(get_turf(collar.loc), collar.loc.dir)
 
 			playsound(get_turf(src.loc), 'sound/effects/bamf.ogg', 50, 1)
-			visible_message("<span class='notice'>[collar.loc] vanishes into the droppod.</span>", \
-			"<span class='notice'>You are taken by the droppod.</span>")
+			visible_message(span_notice("[collar.loc] vanishes into the droppod."), \
+			span_notice("You are taken by the droppod."))
 
 			var/area/pod_storage_area = locate(/area/centcom/supplypod/podStorage) in GLOB.sortedAreas
 			var/mob/living/M = collar.loc

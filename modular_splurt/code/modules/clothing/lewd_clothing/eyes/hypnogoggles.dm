@@ -38,7 +38,7 @@
 		if(victim.glasses == src)
 			victim.cure_trauma_type(/datum/brain_trauma/induced_hypnosis, TRAUMA_RESILIENCE_BASIC)
 
-/obj/item/clothing/glasses/hypno/attack_self(mob/user) //Setting up hypnotising phrase
+/obj/item/clothing/glasses/hypno/attack_self(mob/user) //Setting up hypnotizing phrase
 	. = ..()
 	codephrase = stripped_input(user, "Change the hypnotic phrase")
 	// Notice to the user that this shouldn't be used outside of kink related purpose.
@@ -114,7 +114,7 @@
 
 /datum/brain_trauma/induced_hypnosis/on_gain()
 	log_game("[key_name(owner)] was hypnogoggled'.")
-	to_chat(owner, "<span class='reallybig hypnophrase'>[hypnotic_phrase]</span>")
+	to_chat(owner, span_reallybig_hypnophrase("[hypnotic_phrase]"))
 	to_chat(owner, span_notice(pick("You feel your thoughts focusing on this phrase... you can't seem to get it out of your head.",
 									"Your head hurts, but this is all you can think of. It must be vitally important.",
 									"You feel a part of your mind repeating this over and over. You need to follow these words.",

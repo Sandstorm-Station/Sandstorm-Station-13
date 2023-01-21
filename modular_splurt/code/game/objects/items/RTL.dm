@@ -58,7 +58,7 @@
 
 /obj/item/rtl/examine(mob/user)
 	. = ..()
-	. += "<span class='notice'>Alt-click to set what tile to lay.</span>"
+	. += span_notice("Alt-click to set what tile to lay.")
 	if(loaded)
 		. += span_info("It contains [loaded.amount]/[max_amount] metal.")
 
