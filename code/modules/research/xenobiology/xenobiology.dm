@@ -755,6 +755,7 @@
 	to_chat(SM, "<span class='notice'>In a quick flash, you feel your consciousness flow into [SM]!</span>")
 	to_chat(SM, "<span class='warning'>You are now [SM]. Your allegiances, alliances, and role is still the same as it was prior to consciousness transfer!</span>")
 	SM.name = "[user.real_name]"
+	SM.add_overlay(mutable_appearance('icons/mob/hud.dmi', "brother", ANTAG_LAYER))
 	qdel(src)
 
 /obj/item/slimepotion/slime/steroid
