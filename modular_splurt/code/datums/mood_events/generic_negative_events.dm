@@ -1,5 +1,5 @@
 /datum/mood_event/masked_mook_incomplete
-	description = span_warning("I feel incomplete without a gas mask...")
+	description = span_warning("I feel incomplete without a gas mask...\n")
 	mood_change = -4
 
 /datum/mood_event/creampie/cheesed
@@ -12,7 +12,7 @@
 	if(!ishuman(actual_owner))
 		return .
 	if(iscatperson(actual_owner))
-		description = span_warning("<b>CHEESE!!! WAAAAAAAAAAAAAAAAAAAAAAAAAAAA!!!</b>")
+		description = span_warning("<b>CHEESE!!! WAAAAAAAAAAAAAAAAAAAAAAAAAAAA!!!</b>\n")
 		mood_change = -5
 		timeout = 5 MINUTES
 
