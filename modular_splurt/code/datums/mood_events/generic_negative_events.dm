@@ -29,3 +29,8 @@
 	description = span_boldwarning("I drank liquid slime. What is wrong with me?\n")
 	mood_change = -7
 	timeout = 15 MINUTES
+
+/datum/mood_event/drank_cursed_bad
+	description = span_warning("I can feel a pale curse from the blood I drank.\n")
+	mood_change = -1
+	timeout = 2 MINUTES

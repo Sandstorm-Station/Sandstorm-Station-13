@@ -411,6 +411,23 @@
 		// Cause negative mood
 		SEND_SIGNAL(action_owner, COMSIG_ADD_MOOD_EVENT, "bloodfledge_drank_killed", /datum/mood_event/drankkilled)
 
+	// Check if bite target has cursed blood
+	if(HAS_TRAIT(bite_target, TRAIT_CURSED_BLOOD))
+		// Check action owner for cursed blood
+		var/owner_cursed = HAS_TRAIT(action_owner, TRAIT_CURSED_BLOOD)
+
+		// Set chat message based on action owner's trait status
+		var/warn_message = (owner_cursed ? "You taste the unholy touch of a familiar curse in [bite_target]\'s blood." : "You experience a sensation of intense dread just after drinking from [bite_target]. Something about their blood feels... wrong.")
+
+		// Alert user in chat
+		to_chat(action_owner, span_notice(warn_message))
+
+		// Set mood type based on curse status
+		var/mood_type = (owner_cursed ? /datum/mood_event/drank_cursed_good : /datum/mood_event/drank_cursed_bad)
+
+		// Cause mood event
+		SEND_SIGNAL(action_owner, COMSIG_ADD_MOOD_EVENT, "bloodfledge_drank_cursed_blood", mood_type)
+
 // Action: Revive
 /datum/action/bloodfledge/revive
 	name = "Fledgling Revive"
