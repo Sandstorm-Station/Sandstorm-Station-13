@@ -47,9 +47,9 @@
 	AddComponent(/datum/component/personal_crafting)
 
 
-mob/living/silicon/robot/pick_module()
+/mob/living/silicon/robot/pick_module()
 	.=..()
-	var/datum/hud/R = src.hud_used
+	var/datum/hud/R = hud_used
 	var/atom/movable/screen/craft/C = locate() in R.static_inventory
 	C.icon = 'icons/mob/screen_midnight.dmi'
 	C.screen_loc = "CENTER+5:5,SOUTH+1:5"
