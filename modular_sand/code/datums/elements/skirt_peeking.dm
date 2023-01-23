@@ -14,10 +14,8 @@
 	var/obj/item/clothing/under/worn_uniform = peeked.get_item_by_slot(ITEM_SLOT_ICLOTHING)
 
 	// Unfortunately, you can't see it
-	// Going to be honest, i wanted to do something like a groin check, but that would
-	// Block EVERYTHING, and well, most of the others won't even cover it right?
-	// Should maybe consider using this for groin genitals.
-	if(istype(peeked.get_item_by_slot(ITEM_SLOT_OCLOTHING), /obj/item/clothing/suit/space))
+	var/obj/item/clothing/suit/outer_clothing = peeked.get_item_by_slot(ITEM_SLOT_OCLOTHING)
+	if(outer_clothing && CHECK_MULTIPLE_BITFIELDS(outer_clothing.body_parts_covered, CHEST | GROIN | LEGS | FEET))
 		return FALSE
 	//
 
