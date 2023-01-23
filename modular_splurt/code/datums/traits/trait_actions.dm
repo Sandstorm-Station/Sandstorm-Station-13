@@ -231,15 +231,23 @@
 
 	// Transform into wolf form
 	if(!transformed)
+		// Define current species type
+		var/datum/species/owner_species = action_owner.dna.species.type
+
 		// Check if species has changed
-		if(old_features["species"] != action_owner.dna.species.type)
+		if(old_features["species"] != owner_species)
 			// Set old species
-			old_features["species"] = action_owner.dna.species.type
+			old_features["species"] = owner_species
 
 		// Check if species is already mammal (anthro)
-		if(ismammal(action_owner) || is_species(action_owner, /datum/species/mammal/synthetic))
+		if(ismammal(action_owner))
 			// Do nothing!
 
+		// Check if species is already a mammal sub-type
+		else if(owner_species in subtypesof(/datum/species/mammal))
+			// Do nothing!
+
+		// Species is not a mammal
 		else
 			// Change species
 			action_owner.set_species(/datum/species/mammal, 1)
@@ -277,10 +285,15 @@
 
 	// Un-transform from wolf form
 	else
-		// Check if species is already mammal (anthro)
-		if((old_features["species"] == /datum/species/mammal) || (old_features["species"] == /datum/species/mammal/synthetic))
+		// Check if species was already mammal (anthro)
+		if(old_features["species"] == /datum/species/mammal)
 			// Do nothing!
 
+		// Check if species was a mammal sub-type
+		else if(old_features["species"] in subtypesof(/datum/species/mammal))
+			// Do nothing!
+
+		// Species was not a mammal
 		else
 			// Revert species
 			action_owner.set_species(old_features["species"], TRUE)
