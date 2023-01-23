@@ -231,8 +231,18 @@
 
 	// Transform into wolf form
 	if(!transformed)
-		// Change species
-		action_owner.set_species(/datum/species/mammal, 1)
+		// Check if species has changed
+		if(old_features["species"] != action_owner.dna.species.type)
+			// Set old species
+			old_features["species"] = action_owner.dna.species.type
+
+		// Check if species is already mammal (anthro)
+		if(ismammal(action_owner) || is_species(action_owner, /datum/species/mammal/synthetic))
+			// Do nothing!
+
+		else
+			// Change species
+			action_owner.set_species(/datum/species/mammal, 1)
 
 		// Set species features
 		action_owner.dna.species.mutant_bodyparts["mam_tail"] = "Wolf"
@@ -267,8 +277,13 @@
 
 	// Un-transform from wolf form
 	else
-		// Revert species
-		action_owner.set_species(old_features["species"], TRUE)
+		// Check if species is already mammal (anthro)
+		if((old_features["species"] == /datum/species/mammal) || (old_features["species"] == /datum/species/mammal/synthetic))
+			// Do nothing!
+
+		else
+			// Revert species
+			action_owner.set_species(old_features["species"], TRUE)
 
 		// Revert species trait
 		action_owner.set_bark(old_features["bark"])
