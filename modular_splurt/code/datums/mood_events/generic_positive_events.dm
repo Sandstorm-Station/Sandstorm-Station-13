@@ -20,3 +20,8 @@
 /datum/mood_event/dorsualiphobic_mood_positive
 	description = span_nicegreen("Nobody will know if I'm wearing a backpack or not.\n")
 	mood_change = 1
+
+/datum/mood_event/drank_cursed_good
+	description = span_nicegreen("I\'ve tasted sympathy from a fellow curse bearer.\n")
+	mood_change = 1
+	timeout = 2 MINUTES
