@@ -10,7 +10,7 @@
 				ExpandSize = 200
 			if(ExpandSize <= 0)
 				ExpandSize = 200
-			to_chat(user, "<span class='notice'>Expand set to [ExpandSize] %.</span>")
+			to_chat(user, span_notice("Expand set to [ExpandSize] %."))
 			return ExpandSize
 
 /obj/item/borg/upgrade/shrink
@@ -25,5 +25,5 @@
 				ShrinkSize = 50
 			if(ShrinkSize <= 0)
 				ShrinkSize = 50
-			to_chat(user, "<span class='notice'>Shrink set to [ShrinkSize] %.</span>")
+			to_chat(user, span_notice("Shrink set to [ShrinkSize] %."))
 			return ShrinkSize

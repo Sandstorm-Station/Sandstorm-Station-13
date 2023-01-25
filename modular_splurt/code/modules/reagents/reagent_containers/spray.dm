@@ -18,7 +18,7 @@
 	// Check for plush toy
 	if(!istype(target, /obj/item/toy/plush))
 		// Alert user and return
-		to_chat(user, "<span class='warning'>You don't want to waste the solution on a non-plushie.</span>")
+		to_chat(user, span_warning("You don't want to waste the solution on a non-plushie."))
 		return
 
 	// Return normally

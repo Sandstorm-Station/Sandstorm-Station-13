@@ -104,7 +104,7 @@
 	if(recentpump > world.time)
 		return
 	if(IS_STAMCRIT(user))//CIT CHANGE - makes pumping shotguns impossible in stamina softcrit
-		to_chat(user, "<span class='warning'>You're too exhausted for that.</span>")//CIT CHANGE - ditto
+		to_chat(user, span_warning("You're too exhausted for that."))//CIT CHANGE - ditto
 		return//CIT CHANGE - ditto
 	pump(user, TRUE)
 	if(HAS_TRAIT(user, TRAIT_FAST_PUMP))

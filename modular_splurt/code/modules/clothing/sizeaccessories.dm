@@ -18,7 +18,7 @@
 		return ..()
 
 	if(user.GetComponent(/datum/component/size_normalized))
-		to_chat(user, "<span class='warning'>\The [src] buzzes, being overwritten by another accessory.</span>")
+		to_chat(user, span_warning("\The [src] buzzes, being overwritten by another accessory."))
 		playsound(src, 'sound/machines/buzz-sigh.ogg', 50, 1)
 	else
 		user.AddComponent(/datum/component/size_normalized, wear=src)
@@ -44,7 +44,7 @@
 		return ..()
 
 	if(user.GetComponent(/datum/component/size_normalized))
-		to_chat(user, "<span class='warning'>\The [src] buzzes, being overwritten by another accessory.</span>")
+		to_chat(user, span_warning("\The [src] buzzes, being overwritten by another accessory."))
 		playsound(src, 'sound/machines/buzz-sigh.ogg', 50, 1)
 	else
 		user.AddComponent(/datum/component/size_normalized, wear=src)
@@ -72,7 +72,7 @@
 		return ..()
 
 	if(user.GetComponent(/datum/component/size_normalized))
-		to_chat(user, "<span class='warning'>\The [src] buzzes, being overwritten by another accessory.</span>")
+		to_chat(user, span_warning("\The [src] buzzes, being overwritten by another accessory."))
 		playsound(src, 'sound/machines/buzz-sigh.ogg', 50, 1)
 	else
 		user.AddComponent(/datum/component/size_normalized, wear=src)

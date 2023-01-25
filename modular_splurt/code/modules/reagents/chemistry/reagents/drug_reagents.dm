@@ -2,7 +2,7 @@
 /datum/reagent/drug/aphrodisiacplus/overdose_process(mob/living/M)
 	if(M && M.client?.prefs.arousable && !(M.client?.prefs.cit_toggles & NO_APHRO))
 		if(!HAS_TRAIT(M, TRAIT_IN_HEAT))
-			to_chat(M, "<span class='userlove'>Your need for sex is overpowering!</span>")
+			to_chat(M, span_userlove("Your need for sex is overpowering!"))
 			M.log_message("Made In Heat by hexacrocin.", LOG_EMOTE)
 			ADD_TRAIT(M, TRAIT_IN_HEAT, APHRO_TRAIT)
 	. = ..()
@@ -47,20 +47,20 @@
 		return
 	var/mob/living/carbon/human/H = M
 	if (prob(10))
-		to_chat(H, "<span class='notice'>You feel like you can cope!</span>")
+		to_chat(H, span_notice("You feel like you can cope!"))
 		H.adjust_disgust(-10)
 		SEND_SIGNAL(H, COMSIG_ADD_MOOD_EVENT, "copium", /datum/mood_event/cope, name)
 	. = 1
 
 /datum/reagent/drug/copium/overdose_start(mob/living/M)
-	to_chat(M, "<span class='userdanger'>What the fuck.</span>")
+	to_chat(M, span_userdanger("What the fuck."))
 	SEND_SIGNAL(M, COMSIG_ADD_MOOD_EVENT, "[type]_overdose", /datum/mood_event/overdose, name)
 
 /datum/reagent/drug/copium/overdose_process(mob/living/M)
 	var/mob/living/carbon/human/H = M
 	if (prob(5))
 		H.adjust_disgust(20)
-		to_chat(H, "<span class='warning'>I can't stand it anymore!</span>")
+		to_chat(H, span_warning("I can't stand it anymore!"))
 	..()
 
 /datum/reagent/drug/copium/reaction_obj(obj/O, volume)

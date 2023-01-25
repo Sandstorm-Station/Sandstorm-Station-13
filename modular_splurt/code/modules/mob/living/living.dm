@@ -6,7 +6,7 @@
 // There's probably better way to do this but I am terrible at it --Nopeman
 /mob/living/proc/change_gender()
 	if(stat != CONSCIOUS)
-		to_chat(usr, "<span class='warning'>You cannot toggle your gender while unconcious!</span>")
+		to_chat(usr, span_warning("You cannot toggle your gender while unconcious!"))
 		return
 
 	var/choice = tgui_alert(usr, "Select Gender.", "Gender", list("Both", "Male", "Female", "None", "Toggle Breasts"))
@@ -40,7 +40,7 @@
 		SetStun(0, ignore_canstun = TRUE)
 
 	if(client && admin)
-		to_chat(src, "<span class='userdanger'>An admin has [!admin_frozen ? "un" : ""]frozen you.</span>")
+		to_chat(src, span_userdanger("An admin has [!admin_frozen ? "un" : ""]frozen you."))
 		log_admin("[key_name(admin)] toggled admin-freeze on [key_name(src)].")
 		message_admins("[key_name_admin(admin)] toggled admin-freeze on [key_name_admin(src)].")
 
@@ -54,7 +54,7 @@
 		SetSleeping(0, ignore_canstun = TRUE)
 
 	if(client && admin)
-		to_chat(src, "<span class='userdanger'>An admin has [!admin_sleeping ? "un": ""]slept you.</span>")
+		to_chat(src, span_userdanger("An admin has [!admin_sleeping ? "un": ""]slept you."))
 		log_admin("[key_name(admin)] toggled admin-sleep on [key_name(src)].")
 		message_admins("[key_name_admin(admin)] toggled admin-sleep on [key_name_admin(src)].")
 

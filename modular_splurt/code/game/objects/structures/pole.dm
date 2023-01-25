@@ -78,9 +78,9 @@
 	add_fingerprint(user)
 	if(istype(P, /obj/item/wrench))
 		if (!(item_flags & IN_INVENTORY))
-			to_chat(user, "<span class='notice'>You start to fasten the frame to the floor and celing...</span>")
+			to_chat(user, span_notice("You start to fasten the frame to the floor and celing..."))
 			if(P.use_tool(src, user, 8 SECONDS, volume=50))
-				to_chat(user, "<span class='notice'>You construct the stripper pole!</span>")
+				to_chat(user, span_notice("You construct the stripper pole!"))
 				var/obj/structure/pole/C = new
 				C.loc = loc
 				del(src)
@@ -89,9 +89,9 @@
 /obj/structure/pole/attackby(obj/item/P, mob/user, params) //un-erecting a pole. :(
 	add_fingerprint(user)
 	if(istype(P, /obj/item/wrench))
-		to_chat(user, "<span class='notice'>You start to unfastening the frame...</span>")
+		to_chat(user, span_notice("You start to unfastening the frame..."))
 		if(P.use_tool(src, user, 8 SECONDS, volume=50))
-			to_chat(user, "<span class='notice'>You take down the stripper pole!</span>")
+			to_chat(user, span_notice("You take down the stripper pole!"))
 			var/obj/item/polepack/C = new
 			C.loc = loc
 			del(src)

@@ -10,7 +10,7 @@ GLOBAL_LIST_INIT(pairless_panties, list(
 	var/mob/living/living = user
 	var/obj/item/clothing/under/worn_uniform = get_item_by_slot(ITEM_SLOT_ICLOTHING)
 	if(worn_uniform && is_type_in_typecache(worn_uniform.type, GLOB.skirt_peekable) && (isobserver(user) || (isliving(user) && (user != src) && !(living.mobility_flags & MOBILITY_STAND) && (mobility_flags & MOBILITY_STAND) && (loc == living.loc) && (istype(worn_uniform)))))
-		. += span_purple("[p_theyre(TRUE)] wearing a [worn_uniform.name]! I can probably give it a little peek <b>looking closer</b>.")
+		. += span_purple("[p_theyre(TRUE)] wearing a [worn_uniform.name]! You can probably give it a little peek by <b>looking closer</b>.")
 
 /mob/living/carbon/human/Initialize(mapload)
 	. = ..()

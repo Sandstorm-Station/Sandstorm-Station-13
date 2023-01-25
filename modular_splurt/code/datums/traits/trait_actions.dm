@@ -17,7 +17,7 @@
 	var/mob/living/carbon/human/H = owner
 
 	if(!H.pulling || !isliving(H.pulling) || H.grab_state < GRAB_AGGRESSIVE)
-		to_chat(H, "<span class='warning'>You need to aggressively grab someone to hypnotize them!</span>")
+		to_chat(H, span_warning("You need to aggressively grab someone to hypnotize them!"))
 		return
 
 	var/mob/living/carbon/T = H.pulling
@@ -26,8 +26,8 @@
 		to_chat(H, "You can't hypnotize [T] whilst they're asleep!")
 		return
 
-	to_chat(H, "<span class='notice'>You stare deeply into [T]'s eyes...</span>")
-	to_chat(T, "<span class='warning'>[H] stares intensely into your eyes...</span>")
+	to_chat(H, span_notice("You stare deeply into [T]'s eyes..."))
+	to_chat(T, span_warning("[H] stares intensely into your eyes..."))
 	if(!do_mob(H, T, 12 SECONDS))
 		return
 
@@ -43,7 +43,7 @@
 	var/response = alert(T, "Do you wish to fall into a hypnotic sleep?(This will allow [H] to issue hypnotic suggestions)", "Hypnosis", "Yes", "No")
 
 	if(response == "Yes")
-		T.visible_message("<span class='warning>[T] falls into a deep slumber!</span>", "<span class = 'danger'>Your eyelids gently shut as you fall into a deep slumber. All you can hear is [H]'s voice as you commit to following all of their suggestions.</span>")
+		T.visible_message(span_warning("[T] falls into a deep slumber!"), "<span class = 'danger'>Your eyelids gently shut as you fall into a deep slumber. All you can hear is [H]'s voice as you commit to following all of their suggestions.</span>")
 
 		T.SetSleeping(1200)
 		T.drowsyness = max(T.drowsyness, 40)
@@ -61,9 +61,9 @@
 				return
 
 			to_chat(H, "You whisper your suggestion in a smooth calming voice to [T]")
-			to_chat(T, "<span class='hypnophrase'>...[text]...</span>")
+			to_chat(T, span_hypnophrase("...[text]..."))
 
-			T.visible_message("<span class='warning'>[T] wakes up from their deep slumber!</span>", "<span class ='danger'>Your eyelids gently open as you see [H]'s face staring back at you.</span>")
+			T.visible_message(span_warning("[T] wakes up from their deep slumber!"), "<span class ='danger'>Your eyelids gently open as you see [H]'s face staring back at you.</span>")
 			T.SetSleeping(0)
 			T = null
 			return
@@ -72,7 +72,7 @@
 			T.SetSleeping(0)
 			return
 	else
-		T.visible_message("<span class='warning'>[T]'s attention breaks, despite the attempt to hypnotize them! They clearly don't want this!</span>", "<span class ='warning'>Your concentration breaks as you realise you have no interest in following [H]'s words!</span>")
+		T.visible_message(span_warning("[T]'s attention breaks, despite the attempt to hypnotize them! They clearly don't want this!"), "<span class ='warning'>Your concentration breaks as you realise you have no interest in following [H]'s words!</span>")
 		return
 
 //
@@ -94,16 +94,16 @@
 /datum/action/innate/hydrareset/Activate()
 	var/mob/living/carbon/human/hydra = owner
 	hydra.real_name = hydra.name_archive
-	hydra.visible_message("<span class='notice'>[hydra.name] pushes all three heads forwards; they seem to be talking as a collective.</span>", \
-							"<span class='notice'>You are now talking as [hydra.name_archive]!</span>", ignored_mobs=owner)
+	hydra.visible_message(span_notice("[hydra.name] pushes all three heads forwards; they seem to be talking as a collective."), \
+							span_notice("You are now talking as [hydra.name_archive]!"), ignored_mobs=owner)
 
 /datum/action/innate/hydra/Activate() //I hate this but its needed
 	var/mob/living/carbon/human/hydra = owner
 	var/list/names = splittext(hydra.name_archive,"-")
 	var/selhead = input("Who would you like to speak as?","Heads:") in names
 	hydra.real_name = selhead
-	hydra.visible_message("<span class='notice'>[hydra.name] pulls the rest of their heads back; and puts [selhead]'s forward.</span>", \
-							"<span class='notice'>You are now talking as [selhead]!</span>", ignored_mobs=owner)
+	hydra.visible_message(span_notice("[hydra.name] pulls the rest of their heads back; and puts [selhead]'s forward."), \
+							span_notice("You are now talking as [selhead]!"), ignored_mobs=owner)
 
 //
 // Quirk: Bloodsucker Fledgling / Vampire
@@ -121,14 +121,14 @@
 	if(iscarbon(owner))
 		var/mob/living/carbon/H = owner
 		if(H.nutrition >= 500)
-			to_chat(H, "<span class='notice'>You are too full to drain any more.</span>")
+			to_chat(H, span_notice("You are too full to drain any more."))
 			return
 		if(drain_cooldown >= world.time)
-			to_chat(H, "<span class='notice'>You just drained blood, wait a few seconds.</span>")
+			to_chat(H, span_notice("You just drained blood, wait a few seconds."))
 			return
 		if(!H.pulling || !iscarbon(H.pulling))
 			if(H.getStaminaLoss() >= 80 && H.nutrition > 20)//prevents being stunlocked in the chapel
-				to_chat(H,("<span class='notice'>you use some of your power to energize</span>"))
+				to_chat(H,(span_notice("you use some of your power to energize")))
 				H.adjustStaminaLoss(-20)
 				H.adjust_nutrition(-20)
 				H.resting = TRUE
@@ -140,27 +140,27 @@
 				victim = locate(/mob/living/carbon) in H.pulling.contents
 			drain_cooldown = world.time + 25
 			if(victim.anti_magic_check(FALSE, TRUE, FALSE, 0))
-				to_chat(victim, "<span class='warning'>[H] tries to bite you, but stops before touching you!</span>")
-				to_chat(H, "<span class='warning'>[victim] is blessed! You stop just in time to avoid catching fire.</span>")
+				to_chat(victim, span_warning("[H] tries to bite you, but stops before touching you!"))
+				to_chat(H, span_warning("[victim] is blessed! You stop just in time to avoid catching fire."))
 				return
 			//Here we check now for both the garlic cloves on the neck and for blood in the victims bloodstream.
 			if(!blood_sucking_checks(victim, TRUE, TRUE))
 				return
-			H.visible_message("<span class='danger'>[H] bites down on [victim]'s neck!</span>")
+			H.visible_message(span_danger("[H] bites down on [victim]'s neck!"))
 			victim.add_splatter_floor(get_turf(victim), TRUE)
-			to_chat(victim, "<span class='userdanger'>[H] is draining your blood!</span>")
+			to_chat(victim, span_userdanger("[H] is draining your blood!"))
 			if(!do_after(H, 30, target = victim))
 				return
 			var/blood_volume_difference = BLOOD_VOLUME_MAXIMUM - H.blood_volume //How much capacity we have left to absorb blood
 			var/drained_blood = min(victim.blood_volume, BLOOD_DRAIN_NUM, blood_volume_difference)
 			H.reagents.add_reagent(/datum/reagent/blood/, drained_blood)
-			to_chat(victim, "<span class='danger'>[H] has taken some of your blood!</span>")
-			to_chat(H, "<span class='notice'>You drain some blood!</span>")
+			to_chat(victim, span_danger("[H] has taken some of your blood!"))
+			to_chat(H, span_notice("You drain some blood!"))
 			playsound(H, 'sound/items/drink.ogg', 30, 1, -2)
 			victim.blood_volume = clamp(victim.blood_volume - drained_blood, 0, BLOOD_VOLUME_MAXIMUM)
 			log_combat(H,victim,"vampire bit")//logs the biting action for admins
 			if(!victim.blood_volume)
-				to_chat(H, "<span class='warning'>You finish off [victim]'s blood supply!</span>")
+				to_chat(H, span_warning("You finish off [victim]'s blood supply!"))
 
 
 /datum/action/vrevive
@@ -179,7 +179,7 @@
 		H.Daze(20)
 		H.drunkenness = 70
 	else
-		to_chat(H,"<span class='warning'>You need to be dead and in a coffin to revive!</span>")
+		to_chat(H,span_warning("You need to be dead and in a coffin to revive!"))
 
 //
 // Quirk: Werewolf
@@ -302,9 +302,9 @@
 			T.transformed = 0
 			T.cooldown = 30
 			T.paused = 0
-			H.visible_message("<span class='warning'>[H]'s skin rapidly softens, returning them to normal!</span>", "<span class='userdanger'>Your skin softens, freeing your movement once more!</span>")
+			H.visible_message(span_warning("[H]'s skin rapidly softens, returning them to normal!"), span_userdanger("Your skin softens, freeing your movement once more!"))
 	else
-		to_chat(H, "<span class='warning'>You have transformed too recently; you cannot yet transform again!</span>")
+		to_chat(H, span_warning("You have transformed too recently; you cannot yet transform again!"))
 		return 0
 
 //
@@ -321,7 +321,7 @@
 	.=..()
 	var/mob/living/carbon/human/H = owner
 	var/datum/quirk/gargoyle/T = locate() in H.roundstart_quirks
-	to_chat(H, "<span class='warning'>You have [T.energy]/100 energy remaining!</span>")
+	to_chat(H, span_warning("You have [T.energy]/100 energy remaining!"))
 
 /datum/action/gargoyle/pause
 	name = "Preserve"
@@ -337,7 +337,7 @@
 	if(!T.paused)
 		T.paused = 1
 		T.position = H.loc
-		to_chat(H, "<span class='warning'>You are now conserving your energy; this effect will end the moment you move from your current position!</span>")
+		to_chat(H, span_warning("You are now conserving your energy; this effect will end the moment you move from your current position!"))
 		return
 	else
-		to_chat(H, "<span class='warning'>You are already conserving your energy!</span>")
+		to_chat(H, span_warning("You are already conserving your energy!"))
