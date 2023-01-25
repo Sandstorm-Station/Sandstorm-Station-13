@@ -1,8 +1,9 @@
 /// Attempts to open the tgui menu
-/mob/living/verb/configure_genitals()
+/mob/living/verb/genital_menu()
 	set name = "Genitals Menu"
-	set desc = "Change your genital settings"
+	set desc = "Manage your genital, or someone else's."
 	set category = "IC"
+	set src in oview(1)
 
 	if(!iscarbon(usr))
 		return
@@ -11,6 +12,7 @@
 	if(!usr.mind.genitals_menu_holder)
 		usr.mind.genitals_menu_holder= new(usr.mind)
 
+	usr.mind.genitals_menu_holder.target = src
 	usr.mind.genitals_menu_holder.ui_interact(usr)
 
 /datum/mind
@@ -21,6 +23,7 @@
 	genitals_menu_holder = new(src)
 
 /datum/genitals_menu
+	var/mob/living/carbon/target
 
 /datum/genitals_menu/ui_state(mob/user)
 	return GLOB.conscious_state
@@ -34,7 +37,9 @@
 
 /datum/genitals_menu/ui_data(mob/user)
 	. = ..()
-	var/mob/living/carbon/genital_holder = user
+	var/mob/living/carbon/genital_holder = target
+	var/user_is_target = target == self
+	.["isTargetSelf"] = user_is_target
 	var/list/genitals = list()
 	for(var/obj/item/organ/genital/genital in genital_holder.internal_organs)	//Only get the genitals
 		if(CHECK_BITFIELD(genital.genital_flags, GENITAL_INTERNAL))			//Not those though
@@ -45,31 +50,31 @@
 
 		genital_entry["description"] = genital.desc + "\n [genital.linked_organ ? "Linked organ: [genital.linked_organ.name]" : ""]"
 
-		var/visibility = "Invalid"
-		if(CHECK_BITFIELD(genital.genital_flags, GENITAL_THROUGH_CLOTHES))
-			visibility = "Always visible"
-		else if(CHECK_BITFIELD(genital.genital_flags, GENITAL_UNDIES_HIDDEN))
-			visibility = "Hidden by underwear"
-		else if(CHECK_BITFIELD(genital.genital_flags, GENITAL_HIDDEN))
-			visibility = "Always hidden"
-		else
-			visibility = "Hidden by clothes"
+		if(user_is_target)
+			var/visibility = "Invalid"
+			if(CHECK_BITFIELD(genital.genital_flags, GENITAL_THROUGH_CLOTHES))
+				visibility = "Always visible"
+			else if(CHECK_BITFIELD(genital.genital_flags, GENITAL_UNDIES_HIDDEN))
+				visibility = "Hidden by underwear"
+			else if(CHECK_BITFIELD(genital.genital_flags, GENITAL_HIDDEN))
+				visibility = "Always hidden"
+			else
+				visibility = "Hidden by clothes"
 
-		var/extras = "None"
-		if(CHECK_BITFIELD(genital.genital_flags, GENITAL_CAN_STUFF))
-			extras = "Allows egg stuffing"
+			var/extras = "None"
+			if(CHECK_BITFIELD(genital.genital_flags, GENITAL_CAN_STUFF))
+				extras = "Allows egg stuffing"
 
-		genital_entry["extras"] = extras
-		genital_entry["visibility"] = visibility
-		genital_entry["possible_choices"] = GLOB.genitals_visibility_toggles
-		genital_entry["extra_choices"] = list(GEN_ALLOW_EGG_STUFFING)
-		genital_entry["can_arouse"] = (
-			!!CHECK_BITFIELD(genital.genital_flags, GENITAL_CAN_AROUSE) \
-			&& !(HAS_TRAIT(genital_holder, TRAIT_PERMABONER) \
-			|| HAS_TRAIT(genital_holder, TRAIT_NEVERBONER)))
-		genital_entry["arousal_state"] = genital.aroused_state
-		genital_entry["max_size"] = 5 //TODO
-
+			genital_entry["extras"] = extras
+			genital_entry["visibility"] = visibility
+			genital_entry["possible_choices"] = GLOB.genitals_visibility_toggles
+			genital_entry["extra_choices"] = list(GEN_ALLOW_EGG_STUFFING)
+			genital_entry["can_arouse"] = (
+				!!CHECK_BITFIELD(genital.genital_flags, GENITAL_CAN_AROUSE) \
+				&& !(HAS_TRAIT(genital_holder, TRAIT_PERMABONER) \
+				|| HAS_TRAIT(genital_holder, TRAIT_NEVERBONER)))
+			genital_entry["arousal_state"] = genital.aroused_state
+			genital_entry["max_size"] = 5 //TODO
 
 		//fluids
 		if(CHECK_BITFIELD(genital.genital_flags, GENITAL_FUID_PRODUCTION))
@@ -89,7 +94,7 @@
 
 		genitals += list(genital_entry)
 
-	if(!genital_holder.getorganslot(ORGAN_SLOT_ANUS))
+	if(!genital_holder.getorganslot(ORGAN_SLOT_ANUS) && user_is_target)
 		var/simulated_ass = list()
 		simulated_ass["name"] = "Anus"
 		simulated_ass["key"] = "anus"
