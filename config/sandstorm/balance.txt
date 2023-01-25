@@ -25,13 +25,16 @@ CRYPTO_HEAT_THRESHOLD_MAX 500
 CRYPTO_HEAT_POWER 100
 
 ## How long between cryptominers producing resources?
+## Currently unimplemented!
 CRYPTO_MINING_TIME 3000
 
 ## What material amount should the cryptominers produce?
 ## This is modified by the MULTIPLIER value
+## Currently unimplemented!
 CRYPTO_PAYOUT_AMOUNT 50
 
 ## How much power should the cryptominer use?
+## Currently unimplemented!
 CRYPTO_POWER_USE_IDLE 20
 CRYPTO_POWER_USE_ACTIVE 200
 CRYPTO_POWER_USE_PROCESS 20
@@ -51,3 +54,6 @@ AUTODOC_TIME_SURGERY_BASE 350
 ## How much should the bluespace miner produce, compared to normal?
 ## This is modified by stock part ratings
 BLUESPACEMINER_MULT_OUTPUT 1
+
+## What is the minimum stock part tier to produce bluespace crystals?
+BLUESPACEMINER_CRYSTAL_TIER 5

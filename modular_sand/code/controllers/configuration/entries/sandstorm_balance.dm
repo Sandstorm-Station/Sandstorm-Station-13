@@ -29,6 +29,9 @@
 /datum/config_entry/number/crypto_heat_power
 	config_entry_value = 100
 
+/*
+ * The contained configuration values are currently unimplemented
+ *
 // Cryptominer processing time
 /datum/config_entry/number/crypto_mining_time
 	config_entry_value = 3000
@@ -46,6 +49,7 @@
 
 /datum/config_entry/number/crypto_power_use_process
 	config_entry_value = 20
+*/
 
 /// AUTODOC ///
 // Autodoc processing time
@@ -56,3 +60,7 @@
 // BSM production output multiplier
 /datum/config_entry/number/bluespaceminer_mult_output
 	config_entry_value = 1
+
+// BSM minimum tier for bluespace crystals
+/datum/config_entry/number/bluespaceminer_crystal_tier
+	config_entry_value = 5

@@ -1,3 +1,7 @@
+// Configuration defines
+#define BLUESPACE_MINER_BONUS_MULT		CONFIG_GET(number/bluespaceminer_mult_output)
+#define BLUESPACE_MINER_CRYSTAL_TIER	CONFIG_GET(number/bluespaceminer_mult_output)
+
 /obj/machinery/mineral/bluespace_miner
 	name = "bluespace mining machine"
 	desc = "A machine that uses the magic of Bluespace to slowly generate materials and add them to a linked ore silo."
@@ -8,23 +12,31 @@
 	circuit = /obj/item/circuitboard/machine/bluespace_miner
 	layer = BELOW_OBJ_LAYER
 	init_process = TRUE
-	var/list/ore_rates = list(/datum/material/iron = 0.3, /datum/material/glass = 0.3, /datum/material/plasma = 0.1,  /datum/material/silver = 0.1, /datum/material/gold = 0.05, /datum/material/titanium = 0.05, /datum/material/uranium = 0.05, /datum/material/diamond = 0.02)
+	var/list/ore_rates = list(
+		/datum/material/iron = 0.3,
+		/datum/material/glass = 0.3,
+		/datum/material/plasma = 0.1,
+		/datum/material/silver = 0.1,
+		/datum/material/gold = 0.05,
+		/datum/material/titanium = 0.05,
+		/datum/material/uranium = 0.05,
+		/datum/material/diamond = 0.02
+		)
 	var/datum/component/remote_materials/materials
 	var/multiplier = 0 //Multiplier by tier, has been made fair and everything
-	var/multiplier_config = 1 // Server config's multiplier
 
 /obj/machinery/mineral/bluespace_miner/Initialize(mapload)
 	. = ..()
 	materials = AddComponent(/datum/component/remote_materials, "bsm", mapload)
 
-	// Read configurations
-	multiplier_config = CONFIG_GET(number/bluespaceminer_mult_output)
+	// Set initial multiplier based on config
+	multiplier *= BLUESPACE_MINER_BONUS_MULT
 
 /obj/machinery/mineral/bluespace_miner/examine(mob/user)
 	. = ..()
 	if(in_range(user, src) || isobserver(user))
 		. += span_notice("A small screen on the machine reads, \"Efficiency at [multiplier * 100]%\"")
-		if(multiplier >= 5)
+		if(multiplier >= BLUESPACE_MINER_CRYSTAL_TIER)
 			. += span_notice("Bluespace generation is active.")
 	if(!anchored)
 		. += span_warning("The machine won't work while not firmly secured to the ground.")
@@ -42,13 +54,13 @@
 		multiplier += L.rating
 		stock_amt++
 	multiplier /= stock_amt
-	if(multiplier >= 5)
+	if(multiplier >= BLUESPACE_MINER_CRYSTAL_TIER)
 		ore_rates[/datum/material/bluespace] = 0.01
 	else
 		ore_rates -= /datum/material/bluespace
 
 	// Apply config multiplier here to not interfere with bluespace material check
-	multiplier *= multiplier_config
+	multiplier *= BLUESPACE_MINER_BONUS_MULT
 
 /obj/machinery/mineral/bluespace_miner/Destroy()
 	materials = null
