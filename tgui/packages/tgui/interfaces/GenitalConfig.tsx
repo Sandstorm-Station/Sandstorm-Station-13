@@ -8,7 +8,7 @@ import { Window } from '../layouts';
 
 
 type GenitalInfo = {
-  istargetself: bool,
+  istargetself: boolean,
   genitals: GenitalData[];
 }
 
