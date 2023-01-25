@@ -17,7 +17,7 @@
 #define TRAIT_PHARMA            "hepatic_pharmacokinesis"
 #define TRAIT_CHOKE_SLUT		"choke_slut"
 
-#define BLOODFLEDGE				"BloodFledge"//splurt change
+#define TRAIT_BLOODFLEDGE		"BloodFledge"
 
 #define TRAIT_INCUBUS			"Incubus"
 #define TRAIT_SUCCUBUS			"Succubus"
