@@ -84,16 +84,18 @@ export const GenitalConfig = (props, context) => {
                         />
                       </Section>
                     </Stack.Item>
-                    <Stack.Item>
-                      <Stack grow>
-                        <Stack.Item>
-                          <SizeButtons />
-                        </Stack.Item>
-                        <Stack.Item grow>
-                          <ToggleSettings />
-                        </Stack.Item>
-                      </Stack>
-                    </Stack.Item>
+                    {data.istargetself ?
+                      <Stack.Item>
+                        <Stack grow>
+                          <Stack.Item>
+                            <SizeButtons />
+                          </Stack.Item>
+                          <Stack.Item grow>
+                            <ToggleSettings />
+                          </Stack.Item>
+                        </Stack>
+                      </Stack.Item> : null
+                    }
                   </Stack>
                 </Stack.Item>
               </Stack>

@@ -3,7 +3,7 @@
 	set name = "Genitals Menu"
 	set desc = "Manage your genital, or someone else's."
 	set category = "IC"
-	set src in oview(1)
+	set src in view(usr.client)
 
 	if(!iscarbon(usr))
 		return
@@ -37,9 +37,9 @@
 
 /datum/genitals_menu/ui_data(mob/user)
 	. = ..()
-	var/mob/living/carbon/genital_holder = target
-	var/user_is_target = target == self
-	.["isTargetSelf"] = user_is_target
+	var/mob/living/carbon/genital_holder = target || user
+	var/user_is_target = genital_holder == user
+	.["istargetself"] = user_is_target
 	var/list/genitals = list()
 	for(var/obj/item/organ/genital/genital in genital_holder.internal_organs)	//Only get the genitals
 		if(CHECK_BITFIELD(genital.genital_flags, GENITAL_INTERNAL))			//Not those though
@@ -122,6 +122,8 @@
 	switch(action)
 		if("genital")
 			var/mob/living/carbon/self = usr
+			if(self != target)
+				return FALSE
 			if("visibility" in params)
 				if(params["genital"] == "anus")
 					self.anus_toggle_visibility(params["visibility"])
@@ -164,15 +166,19 @@
 			else
 				return FALSE
 		if("equipment")
+			var/mob/living/carbon/actual_target = target || usr
 			var/mob/living/carbon/self = usr
-			var/obj/item/organ/genital/genital = locate(params["genital"], self.internal_organs)
-			if(!(genital && (genital in self.internal_organs)))
+			if(get_dist(actual_target, self) > 1)
+				to_chat(self, span_warning("You're too far away!"))
+				return FALSE
+			var/obj/item/organ/genital/genital = locate(params["genital"], actual_target.internal_organs)
+			if(!(genital && (genital in actual_target.internal_organs)))
 				return FALSE
 			switch(params["equipment_action"])
 				if("remove")
 					var/obj/item/selected_item = locate(params["equipment"], genital.contents)
 					if(selected_item)
-						if(!do_mob(self, self, 5 SECONDS))
+						if(!do_mob(self, actual_target, 5 SECONDS))
 							return FALSE
 						if(!self.put_in_hands(selected_item))
 							self.transferItemToLoc(get_turf(self))
