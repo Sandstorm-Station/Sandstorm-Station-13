@@ -11,6 +11,7 @@
 	var/unarousal_verb = "You no longer feel aroused"
 	var/fluid_transfer_factor = 0 //How much would a partner get in them if they climax using this?
 	var/size = 2
+	var/max_size = 6
 	var/datum/reagent/fluid_id = null
 	var/fluid_max_volume = 50
 	var/fluid_efficiency = 1

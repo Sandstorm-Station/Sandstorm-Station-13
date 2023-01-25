@@ -1046,11 +1046,16 @@ SAVEFILE UPDATING/VERSIONING - 'Simplified', or rather, more coder-friendly ~Car
 
 	S["feature_inert_eggs"] >> features["inert_eggs"]
 
-	S["features_cock_max_length"] >> features["cock_max_length"]
-	S["features_balls_max_size"] >> features["balls_max_size"]
-	S["features_breasts_max_size"] >> features["breasts_max_size"]
-	S["features_belly_max_size"] >> features["belly_max_size"]
-	S["features_butt_max_size"] >> features["butt_max_size"]
+	if(S["features_cock_max_length"])
+		S["features_cock_max_length"] >> features["cock_max_length"]
+	if(S["features_balls_max_size"])
+		S["features_balls_max_size"] >> features["balls_max_size"]
+	if(S["features_breasts_max_size"])
+		S["features_breasts_max_size"] >> features["breasts_max_size"]
+	if(S["features_belly_max_size"])
+		S["features_belly_max_size"] >> features["belly_max_size"]
+	if(S["features_butt_max_size"])
+		S["features_butt_max_size"] >> features["butt_max_size"]
 
 	var/char_vr_path = "[vr_path]/character_[default_slot]_v2.json"
 	if(fexists(char_vr_path))

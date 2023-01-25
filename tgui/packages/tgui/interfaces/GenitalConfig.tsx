@@ -24,6 +24,7 @@ type GenitalData = {
   arousal_state: boolean,
   fluid: number,
   possible_equipment_choices: string[],
+  max_size: number,
   equipments: Equipment[],
 }
 
@@ -35,7 +36,7 @@ type Equipment = {
 export const GenitalConfig = (props, context) => {
   const { act, data } = useBackend<GenitalInfo>(context);
   const genitals = data.genitals || [];
-  const [tabIndex, setTabIndex] = useLocalState(context, 'tabIndex', 0)
+  const [tabIndex, setTabIndex] = useLocalState(context, 'tabIndex', 0);
   return (
     <Window
       width={850}
@@ -44,100 +45,110 @@ export const GenitalConfig = (props, context) => {
       resizable>
       <Window.Content scrollable={false}>
         {genitals.length ? (
-        <>
-        <Section title="Genital">
-          <Stack vertical>
-          <Stack.Item>
-          <Tabs fluid textAlign="center">
-            {genitals.map((genital, index) => (
-              <Tabs.Tab
-                selected={tabIndex === index}
-                onClick={() => setTabIndex(index)}
-              >
-                {genital.name}
-              </Tabs.Tab>
-            ))}
-          </Tabs>
-          </Stack.Item>
-          <Stack.Item>
-          {genitals[tabIndex].description}
-          </Stack.Item>
-          </Stack>
-        </Section>
-        <Section title="Settings">
-          <Stack grow>
-            <Stack.Item grow>
+          <>
+            <Section title="Genital">
               <Stack vertical>
                 <Stack.Item>
-                  <Section>
-                    Fluid level:
-                    <ProgressBar
-                      key={genitals[tabIndex].key}
-                      value={genitals[tabIndex].fluid ? genitals[tabIndex].fluid : 0.0}
-                      color="white"
-                    />
-                  </Section>
+                  <Tabs fluid textAlign="center">
+                    {genitals.map((genital, index) => (
+                      <Tabs.Tab
+                        key={index}
+                        selected={tabIndex === index}
+                        onClick={() => setTabIndex(index)}
+                      >
+                        {genital.name}
+                      </Tabs.Tab>
+                    ))}
+                  </Tabs>
                 </Stack.Item>
                 <Stack.Item>
-                  <Stack grow>
+                  {genitals[tabIndex].description}
+                </Stack.Item>
+              </Stack>
+            </Section>
+            <Section title="Settings">
+              <Stack grow>
+                <Stack.Item grow>
+                  <Stack vertical>
                     <Stack.Item>
-                      <SizeButtons />
+                      <Section>
+                        Fluid level:
+                        <ProgressBar
+                          key={genitals[tabIndex].key}
+                          value={
+                            genitals[tabIndex].fluid
+                              ? genitals[tabIndex].fluid
+                              : 0.0
+                          }
+                          color="white"
+                        />
+                      </Section>
                     </Stack.Item>
-                    <Stack.Item grow>
-                      <ToggleSettings />
+                    <Stack.Item>
+                      <Stack grow>
+                        <Stack.Item>
+                          <SizeButtons />
+                        </Stack.Item>
+                        <Stack.Item grow>
+                          <ToggleSettings />
+                        </Stack.Item>
+                      </Stack>
                     </Stack.Item>
                   </Stack>
                 </Stack.Item>
               </Stack>
-            </Stack.Item>
-          </Stack>
-        </Section>
-        <Section
-          title="Items Inserted"
-          buttons={(
-            <Button
-              fluid
-              content="Insert Item"
-              onClick={() => act('equipment', {
-                genital: genitals[tabIndex].key,
-                equipment_action: "insert",
-              })}
-            />
-          )}
-        >
-          <Equipments />
-        </Section>
-        </>
+            </Section>
+            <Section
+              title="Items Inserted"
+              buttons={(
+                <Button
+                  fluid
+                  content="Insert Item"
+                  onClick={() => act('equipment', {
+                    genital: genitals[tabIndex].key,
+                    equipment_action: "insert",
+                  })}
+                />
+              )}
+            >
+              <Equipments />
+            </Section>
+          </>
         ) : (
           <Section align="center">
             You don&apos;t seem to have any genitals...
             Or any that you could modify.
           </Section>
-        )
-      }
+        )}
       </Window.Content>
     </Window>
   );
 };
 
 const SizeButtons = (props, context) => {
+  const [tabIndex] = useLocalState(context, 'tabIndex', 0);
+  const { act, data } = useBackend<GenitalInfo>(context);
+  const genital = data.genitals[tabIndex];
   return (
-    <Section>
-      <Stack>
-        <Stack.Item>
-          <Stack vertical>
-            Max growth:
-            <NumberInput />
-          </Stack>
-        </Stack.Item>
-        <Stack.Item>
-          <Stack vertical>
-            Min shrink:
-            <NumberInput />
-          </Stack>
-        </Stack.Item>
-      </Stack>
-    </Section>
+    typeof genital.max_size === "number"
+      ? <Section>
+        <Stack>
+          <Stack.Item>
+            <Stack vertical>
+              Max growth:
+              <NumberInput
+                value={genital.max_size}
+                onChange={(e, value) => act('genital', {
+                  genital: genital.key,
+                  max_size: value,
+                }
+                )}
+              />
+            </Stack>
+          </Stack.Item>
+        </Stack>
+      </Section>
+      : null
   );
 };
 
@@ -149,14 +160,14 @@ const ModeToIcon = {
   "Allows egg stuffing": "egg",
 };
 
-const ToggleSettings = (props , context) => {
-  const [tabIndex] = useLocalState(context, 'tabIndex', 0)
+const ToggleSettings = (props, context) => {
+  const [tabIndex] = useLocalState(context, 'tabIndex', 0);
   const { act, data } = useBackend<GenitalInfo>(context);
   const genital = data.genitals[tabIndex];
   return (
     <Stack grow>
       {genital.possible_choices.map(choice => (
-        <Stack.Item grow>
+        <Stack.Item key={choice} grow>
           <Button
             textAlign="center"
             key={choice}
@@ -189,28 +200,28 @@ const ToggleSettings = (props , context) => {
       </Stack.Item>
       {genital.extra_choices instanceof Array
         ? genital.extra_choices.map(choice => (
-        <Stack.Item grow>
-          <Button
-            textAlign="center"
-            key={choice}
-            tooltip={choice}
-            icon={ModeToIcon[choice]}
-            color={genital.extras === choice ? "green" : "default"}
-            onClick={() => act('genital', {
-              genital: genital.key,
-              visibility: choice,
-            })}
-            fluid
-          />
-        </Stack.Item>
+          <Stack.Item key={choice} grow>
+            <Button
+              textAlign="center"
+              key={choice}
+              tooltip={choice}
+              icon={ModeToIcon[choice]}
+              color={genital.extras === choice ? "green" : "default"}
+              onClick={() => act('genital', {
+                genital: genital.key,
+                visibility: choice,
+              })}
+              fluid
+            />
+          </Stack.Item>
         )) : null}
     </Stack>
   );
 };
 
-const Equipments = (props , context) => {
-  const [tabIndex] = useLocalState(context, 'tabIndex', 0)
-  const {act, data} = useBackend<GenitalInfo>(context)
+const Equipments = (props, context) => {
+  const [tabIndex] = useLocalState(context, 'tabIndex', 0);
+  const { act, data } = useBackend<GenitalInfo>(context);
   const genital = data.genitals[tabIndex];
   const [searchText, setSearchText] = useLocalState(context, 'searchText', '');
   const items = prepareSearch(genital.equipments, searchText) || [];
@@ -225,23 +236,25 @@ const Equipments = (props , context) => {
       </Stack.Item>
       <Stack.Item>
         <Table mb={1}>
-          {items.map(item =>
-          <Table.Row className="candystripe">
-            <Table.Cell bold>
-              {item.name}
-            </Table.Cell>
-            <Table.Cell collapsing textAlign="center">
-              <Button
-                fluid
-                content="Remove"
-                onClick={() => act('equipment', {
-                  equipment: item.key,
-                  genital: genital.key,
-                  equipment_action: "remove",
-                })}
-              />
-            </Table.Cell>
-          </Table.Row>
+          {items.map((item, index) =>
+            (
+              <Table.Row key={index} className="candystripe">
+                <Table.Cell bold>
+                  {item.name}
+                </Table.Cell>
+                <Table.Cell collapsing textAlign="center">
+                  <Button
+                    fluid
+                    content="Remove"
+                    onClick={() => act('equipment', {
+                      equipment: item.key,
+                      genital: genital.key,
+                      equipment_action: "remove",
+                    })}
+                  />
+                </Table.Cell>
+              </Table.Row>
+            )
           )}
         </Table>
       </Stack.Item>

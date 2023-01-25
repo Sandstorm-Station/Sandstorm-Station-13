@@ -295,19 +295,19 @@ const GenitalTab = (props, context) => {
                     genital: genital.key,
                     set_arousal: !genital.arousal_state,
                   })} />
-                  {genital.extra_choices instanceof Array
-                    ? genital.extra_choices.map(choice => (
-                      <Button
-                        width="50%"
-                        key={choice}
-                        tooltip={choice}
-                        icon={ModeToIcon[choice]}
-                        color={genital.extras === choice ? "green" : "default"}
-                        onClick={() => act('genital', {
-                          genital: genital.key,
-                          visibility: choice,
-                        })} />
-                    )) : null}
+                {genital.extra_choices instanceof Array
+                  ? genital.extra_choices.map(choice => (
+                    <Button
+                      width="50%"
+                      key={choice}
+                      tooltip={choice}
+                      icon={ModeToIcon[choice]}
+                      color={genital.extras === choice ? "green" : "default"}
+                      onClick={() => act('genital', {
+                        genital: genital.key,
+                        visibility: choice,
+                      })} />
+                  )) : null}
                 <Button
                   width="49%"
                   key={genital.always_accessible}

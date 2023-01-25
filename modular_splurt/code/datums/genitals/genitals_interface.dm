@@ -44,6 +44,7 @@
 	for(var/obj/item/organ/genital/genital in genital_holder.internal_organs)	//Only get the genitals
 		if(CHECK_BITFIELD(genital.genital_flags, GENITAL_INTERNAL))			//Not those though
 			continue
+
 		var/list/genital_entry = list()
 		genital_entry["name"] = "[capitalize(genital.name)]" //Prevents code from adding a prefix
 		genital_entry["key"] = REF(genital) //The key is the reference to the object
@@ -74,7 +75,11 @@
 				&& !(HAS_TRAIT(genital_holder, TRAIT_PERMABONER) \
 				|| HAS_TRAIT(genital_holder, TRAIT_NEVERBONER)))
 			genital_entry["arousal_state"] = genital.aroused_state
-			genital_entry["max_size"] = 5 //TODO
+			if(istype(genital, /obj/item/organ/genital/penis))
+				var/obj/item/organ/genital/penis/peepee = genital
+				genital_entry["max_size"] = peepee.max_length
+			else
+				genital_entry["max_size"] = genital.max_size
 
 		//fluids
 		if(CHECK_BITFIELD(genital.genital_flags, GENITAL_FUID_PRODUCTION))
@@ -145,6 +150,17 @@
 					var/mob/living/carbon/human/human = self
 					human.update_genitals()
 				return
+			if("max_size" in params)
+				var/obj/item/organ/genital/genital = locate(params["genital"], self.internal_organs)
+				if(!genital)
+					return FALSE
+				var/new_max_size = params["max_size"]
+				if(istype(genital, /obj/item/organ/genital/penis))
+					var/obj/item/organ/genital/penis/peepee = genital
+					peepee.max_length = new_max_size
+				else
+					genital.max_size = new_max_size
+				genital.modify_size(0)
 			else
 				return FALSE
 		if("equipment")
@@ -168,13 +184,6 @@
 						to_chat(self, span_warning("You need to hold an item to insert it!"))
 						return FALSE
 					stuff.insert_item_organ(self, self, genital)
-		if("sizes")
-			var/mob/living/carbon/self = usr
-			var/obj/item/organ/genital/genital = locate(params["genital"], self.internal_organs)
-			if(!(genital && (genital in self.internal_organs)))
-				return FALSE
-			//switch(params["action"])
-			//	if("max")
 
 
 
