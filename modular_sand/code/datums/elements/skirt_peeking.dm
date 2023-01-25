@@ -25,13 +25,13 @@
 		if(isobserver(peeker))
 			return TRUE
 		// Are you a living creature (and not us)?
-		if(istype(living) && (living_peeker != peeked))
+		if(istype(living_peeker) && (living_peeker != peeked))
 			// And are you under us while we're standing up?
 			if(!(CHECK_BITFIELD(living_peeker.mobility_flags, MOBILITY_STAND)) && (CHECK_BITFIELD(peeked.mobility_flags, MOBILITY_STAND)) && (peeked.loc == living_peeker.loc))
 				return TRUE
 			// Or are you nearby and we are up high
 			// to-do SOMEONE PLEASE PORT /datum/element/climbable
-			var/obj/structure/high_ground = locate(/obj/structure/table) in get_turf(peeked)
+			var/obj/structure/high_ground = locate(/obj/structure) in get_turf(peeked)
 			if(high_ground && high_ground.climbable && CHECK_BITFIELD(peeked.mobility_flags, MOBILITY_STAND) && \
 				peeked.Adjacent(peeker))
 				return TRUE
