@@ -169,3 +169,12 @@
   - imagedel: Removed old non-modular vampire ID icon
   - refactor: Refactored all Bloodsucker Fledgling code
   - refactor: Trait BLOODFLEDGE is now TRAIT_BLOODFLEDGE
+2023-01-25:
+  LeDrascol:
+  - rscadd: 'Added quirk: DNC Order'
+  - code_imp: Removed redundant definition of DNC quirk
+  - tweak: Moved Research Rack from Data Theory to Biological Technology
+2023-01-26:
+  ShamanSliph:
+  - rscadd: 'Added new Quirk: Clothes Eater'
+  - bugfix: Fixed insects getting infinite nutrient from chewing on clothes.
