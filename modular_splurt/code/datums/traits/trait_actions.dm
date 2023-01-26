@@ -25,14 +25,23 @@
 		to_chat(action_owner, span_warning("You you need to grab someone first!"))
 		return
 
-	// Check for aggressive grab
-	if(action_owner.grab_state < GRAB_AGGRESSIVE)
+	// Check for cyborg
+	if(iscyborg(grab_target))
 		// Warn the user, then return
-		to_chat(action_owner, span_warning("You need a stronger grip before trying this!"))
+		to_chat(action_owner, span_warning("You can't hypnotize a cyborg!"))
 		return
 
-	// Check for carbon target
-	if(!iscarbon(grab_target))
+	// Check for alien
+	// Taken from eyedropper check
+	/*
+	if(isalien(grab_target))
+		// Warn the user, then return
+		to_chat(action_owner, span_warning("[grab_target] doesn\'t seem to have any eyes!"))
+		return
+	*/
+
+	// Check for carbon human target
+	if(!ishuman(grab_target))
 		// Warn the user, then return
 		to_chat(action_owner, span_warning("That's not a valid creature!"))
 		return
@@ -43,8 +52,62 @@
 		to_chat(action_owner, span_warning("You can't hypnotize the dead!"))
 		return
 
+	// Check for aggressive grab
+	if(action_owner.grab_state < GRAB_AGGRESSIVE)
+		// Warn the user, then return
+		to_chat(action_owner, span_warning("You need a stronger grip before trying this!"))
+		return
+
 	// Define target
 	var/mob/living/carbon/human/action_target = grab_target
+
+	// Check if target has a mind
+	if(!action_target.mind)
+		// Warn the user, then return
+		to_chat(action_owner, span_warning("[grab_target] doesn\'t have a compatible mind!"))
+		return
+
+	/* Unused: Replaced by get_eye_protection
+	// Check if target's eyes are obscured
+	// ... by headwear
+	if((action_target.head && action_target.head.flags_cover & HEADCOVERSEYES))
+		// Warn the user, then return
+		to_chat(action_owner, span_warning("[action_target]'s eyes are obscured by [action_target.head]."))
+		return
+
+	// ... by a mask
+	else if((action_target.wear_mask && action_target.wear_mask.flags_cover & MASKCOVERSEYES))
+		// Warn the user, then return
+		to_chat(action_owner, span_warning("[action_target]'s eyes are obscured by [action_target.wear_mask]."))
+		return
+
+	// ... by glasses
+	else if((action_target.glasses && action_target.glasses.flags_cover & GLASSESCOVERSEYES))
+		// Warn the user, then return
+		to_chat(action_owner, span_warning("[action_target]'s eyes are obscured by [action_target.glasses]."))
+		return
+	*/
+
+	// Check if target has eye protection
+	if(action_target.get_eye_protection())
+		// Warn the user, then return
+		to_chat(action_owner, span_warning("You have difficulty focusing on [action_target]'s eyes due to some form of protection, and are left unable to hypnotize them."))
+		to_chat(action_target, span_notice("[action_owner] stares intensely at you, but stops after a moment."))
+		return
+
+	// Check if target is blind
+	if(HAS_TRAIT(action_target, TRAIT_BLIND))
+		// Warn the user, then return
+		to_chat(action_owner, span_warning("You stare deeply into [action_target]'s eyes, but see nothing but emptiness."))
+		return
+
+	// Check for anti-magic
+	// This does not include TRAIT_HOLY
+	if(action_target.anti_magic_check())
+		// Warn the users, then return
+		to_chat(action_owner, span_warning("You stare deeply into [action_target]'s eyes. They stare back at you as if nothing had happened."))
+		to_chat(action_target, span_notice("[action_owner] stares intensely into your eyes for a moment. You sense nothing out of the ordinary from them."))
+		return
 
 	// Check client pref for hypno
 	if(action_target.client?.prefs.cit_toggles & NEVER_HYPNO)
@@ -72,6 +135,13 @@
 	if(action_target.IsSleeping())
 		// Warn the user, then return
 		to_chat(action_owner, span_warning("You can't hypnotize [action_target] whilst [action_target.p_theyre()] asleep!"))
+		return
+
+	// Check for combat mode
+	if(SEND_SIGNAL(action_target, COMSIG_COMBAT_MODE_CHECK, COMBAT_MODE_ACTIVE))
+		// Warn the users, then return
+		to_chat(action_owner, span_warning("[action_target] is acting too defensively! You'll need [action_target.p_them()] to lower [action_target.p_their()] guard first!"))
+		to_chat(action_target, span_notice("[action_owner] tries to stare into your eyes, but can't get a read on you."))
 		return
 
 	// Display chat messages
@@ -129,6 +199,9 @@
 	// Display message to users
 	to_chat(action_owner, "You whisper your suggestion in a smooth calming voice to [action_target]")
 	to_chat(action_target, span_hypnophrase("...[input_suggestion]..."))
+
+	// Play a sound effect
+	playsound(action_target, 'sound/magic/domain.ogg', 20, 1)
 
 	// Display local message
 	action_target.visible_message(span_warning("[action_target] wakes up from their deep slumber!"), span_danger("Your eyelids gently open as you see [action_owner]'s face staring back at you."))
