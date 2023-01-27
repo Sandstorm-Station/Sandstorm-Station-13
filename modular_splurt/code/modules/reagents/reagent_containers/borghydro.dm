@@ -9,3 +9,4 @@
         /datum/reagent/consumable/ethanol
     )
     LAZYADD(reagent_ids, extra_reagents)
+. = ..()
