@@ -49,7 +49,7 @@ export const GenitalConfig = (props, context) => {
           <Section>
             Interacting with <b>{data.target_name}</b>
           </Section>
-          ) : null}
+        ) : null}
         {genitals.length ? (
           <>
             <Section title="Genital">
