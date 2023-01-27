@@ -131,6 +131,7 @@ const SelfConfig = (props, context) => {
   return (
     <Stack.Item>
       <Stack grow>
+        {genital.img ? (
         <Stack.Item>
           <img
             src={`data:image/jpeg;base64,${genital.img}`}
@@ -139,11 +140,12 @@ const SelfConfig = (props, context) => {
               'horizontal-align': 'middle',
             }} />
         </Stack.Item>
+        ) : null}
         {typeof genital.max_size === "number" ? (
           <Stack.Item>
             <SizeButtons />
           </Stack.Item>
-        ): null}
+        ) : null}
         <Stack.Item grow>
           <ToggleSettings />
         </Stack.Item>
