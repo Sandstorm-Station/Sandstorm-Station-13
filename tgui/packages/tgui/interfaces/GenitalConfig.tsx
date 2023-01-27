@@ -9,6 +9,7 @@ import { Window } from '../layouts';
 
 type GenitalInfo = {
   istargetself: boolean,
+  target_name: String,
   genitals: GenitalData[];
 }
 
@@ -44,6 +45,11 @@ export const GenitalConfig = (props, context) => {
       theme="hotpink"
       resizable>
       <Window.Content scrollable={false}>
+        {data.target_name ? (
+          <Section>
+            Interacting with <b>{data.target_name}</b>
+          </Section>
+          ) : null}
         {genitals.length ? (
           <>
             <Section title="Genital">
@@ -108,8 +114,8 @@ export const GenitalConfig = (props, context) => {
           </>
         ) : (
           <Section align="center">
-            You don&apos;t seem to have any genitals...
-            Or any that you could modify.
+            {data.target_name ? "They" : "You"} don&apos;t seem to have any genitals...
+            Or any that you could interact with.
           </Section>
         )}
       </Window.Content>

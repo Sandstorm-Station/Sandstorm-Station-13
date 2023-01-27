@@ -40,6 +40,8 @@
 	var/mob/living/carbon/genital_holder = target || user
 	var/user_is_target = genital_holder == user
 	.["istargetself"] = user_is_target
+	if(!user_is_target)
+		.["target_name"] = genital_holder.name
 	var/list/genitals = list()
 	for(var/obj/item/organ/genital/genital in genital_holder.internal_organs)	//Only get the genitals
 		if(CHECK_BITFIELD(genital.genital_flags, GENITAL_INTERNAL))			//Not those though
