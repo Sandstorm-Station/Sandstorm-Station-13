@@ -14,6 +14,7 @@ type GenitalInfo = {
 }
 
 type GenitalData = {
+  img: string,
   name: string,
   key: string,
   description: string,
@@ -130,6 +131,14 @@ const SelfConfig = (props, context) => {
   return (
     <Stack.Item>
       <Stack grow>
+        <Stack.Item>
+          <img
+            src={`data:image/jpeg;base64,${genital.img}`}
+            style={{
+              'vertical-align': 'middle',
+              'horizontal-align': 'middle',
+            }} />
+        </Stack.Item>
         {typeof genital.max_size === "number" ? (
           <Stack.Item>
             <SizeButtons />

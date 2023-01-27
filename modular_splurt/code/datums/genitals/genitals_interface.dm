@@ -48,6 +48,7 @@
 			continue
 
 		var/list/genital_entry = list()
+		genital_entry["img"] = icon2base64(getFlatIcon(genital, no_anim=TRUE))
 		genital_entry["name"] = "[capitalize(genital.name)]" //Prevents code from adding a prefix
 		genital_entry["key"] = REF(genital) //The key is the reference to the object
 
