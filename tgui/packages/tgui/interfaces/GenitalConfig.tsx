@@ -130,10 +130,11 @@ const SelfConfig = (props, context) => {
   return (
     <Stack.Item>
       <Stack grow>
-        <Stack.Item>
-          {typeof genital.max_size === "number"
-            ? <SizeButtons /> : null}
-        </Stack.Item>
+        {typeof genital.max_size === "number" ? (
+          <Stack.Item>
+            <SizeButtons />
+          </Stack.Item>
+        ): null}
         <Stack.Item grow>
           <ToggleSettings />
         </Stack.Item>
