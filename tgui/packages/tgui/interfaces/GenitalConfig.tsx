@@ -85,16 +85,7 @@ export const GenitalConfig = (props, context) => {
                       </Section>
                     </Stack.Item>
                     {data.istargetself
-                      ? <Stack.Item>
-                        <Stack grow>
-                          <Stack.Item>
-                            <SizeButtons />
-                          </Stack.Item>
-                          <Stack.Item grow>
-                            <ToggleSettings />
-                          </Stack.Item>
-                        </Stack>
-                      </Stack.Item> : null}
+                      ? <SelfConfig /> : null}
                   </Stack>
                 </Stack.Item>
               </Stack>
@@ -126,30 +117,47 @@ export const GenitalConfig = (props, context) => {
   );
 };
 
+const SelfConfig = (props, context) => {
+  const [tabIndex] = useLocalState(context, 'tabIndex', 0);
+  const { act, data } = useBackend<GenitalInfo>(context);
+  const genital = data.genitals[tabIndex];
+  return (
+    <Stack.Item>
+      <Stack grow>
+        <Stack.Item>
+          {typeof genital.max_size === "number"
+            ? <SizeButtons /> : null}
+        </Stack.Item>
+        <Stack.Item grow>
+          <ToggleSettings />
+        </Stack.Item>
+      </Stack>
+    </Stack.Item>
+  );
+};
+
 const SizeButtons = (props, context) => {
   const [tabIndex] = useLocalState(context, 'tabIndex', 0);
   const { act, data } = useBackend<GenitalInfo>(context);
   const genital = data.genitals[tabIndex];
   return (
-    typeof genital.max_size === "number"
-      ? <Section>
-        <Stack>
-          <Stack.Item>
-            <Stack vertical>
-              Max growth:
-              <NumberInput
-                value={genital.max_size}
-                onChange={(e, value) => act('genital', {
-                  genital: genital.key,
-                  max_size: value,
-                }
-                )}
-              />
-            </Stack>
-          </Stack.Item>
-        </Stack>
-      </Section>
-      : null
+    <Section>
+      <Stack>
+        <Stack.Item>
+          <Stack vertical>
+            Max growth:
+            <NumberInput
+              value={genital.max_size}
+              onChange={(e, value) => act('genital', {
+                genital: genital.key,
+                max_size: value,
+              }
+              )}
+            />
+          </Stack>
+        </Stack.Item>
+      </Stack>
+    </Section>
   );
 };
 
