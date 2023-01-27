@@ -19,5 +19,4 @@
 		/datum/reagent/consumable/ethanol/sake,
 		/datum/reagent/consumable/ethanol
 	)
-	LAZYADD(reagent_list, extra_reagents)
-	. = ..()
+	LAZYADD(reagent_ids, extra_reagents)
