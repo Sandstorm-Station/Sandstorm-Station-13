@@ -1,74 +1,201 @@
-// Honestly, i was just sad when i made this, if you don't my sadness moment, simply delete the file or comment it out.
+// Honestly, Saliith was just sad when he made this. Leave this file in the game to let people hug him.
 
-/obj/item/toy/plush/saliith
+/obj/item/toy/plush/lizardplushie/saliith
 	name = "Saliith plushie"
-	desc = "It has seen better days."
+	desc = "He looks like he needs a friend."
 	icon = 'modular_sand/icons/obj/plushes.dmi'
 	icon_state = "saliith"
 	gender = MALE
 	can_random_spawn = FALSE
+	resistance_flags = INDESTRUCTIBLE | LAVA_PROOF | FIRE_PROOF | ACID_PROOF // Protected by a higher power
+	unstuffable = TRUE // Prevent grenades
 
-/obj/item/toy/plush/saliith/examine(mob/user)
+/obj/item/toy/plush/lizardplushie/saliith/examine(mob/user)
 	. = ..()
-	. += "[p_they(TRUE)] seems depressed."
+
+	// Define pronouns
+	var/p_them = p_them()
+	//var/p_they = p_they()
+	//var/p_are = p_are()
+
+	// Check for stuffing
 	if(!stuffed)
+		// Update examine text and return
 		. += span_deadsay("[p_they(TRUE)] [p_are()] dead.")
-	else
-		if((length(user?.mind?.antag_datums) >= 1) && user.ckey != "sandpoot")
-			. += "[src] looks at you menacingly, patting [p_them()] does NOT look like a good idea."
+		return
 
-/obj/item/toy/plush/saliith/attack_self(mob/user)
+	// Check if user is Saliith himself
 	if(user.ckey == "sandpoot")
+		// Update examine text and return
+		. += span_deadsay("You feel a sense of familiarity from [p_them].")
+		return
+
+	// Check for antag datums
+	if((length(user?.mind?.antag_datums) >= 1))
+		// Update examine text
+		. += span_warning("[src] gives you a menacing glare! Patting [p_them] would be a dangerous mistake.")
+
+/obj/item/toy/plush/lizardplushie/saliith/attack_self(mob/living/carbon/human/user)
+	// Check if user exists
+	if(!user)
+		// Return normally
 		return ..()
-	var/special_friend = FALSE
-	for(var/datum/antagonist/A in user?.mind?.antag_datums)
-		if(istype(A, /datum/antagonist/changeling/xenobio))
-			special_friend = TRUE // Doesn't help if they're evil anyways on the else
-			continue
+
+	// Check if user has a mind
+	if(!user.mind)
+		// Return normally
+		return ..()
+
+	// Define pronouns
+	var/p_they = p_they()
+	//var/p_their = p_their()
+	var/p_s = p_s()	
+
+	// Check if user is Saliith himself
+	if(user.ckey == "sandpoot")
+		// Alert him and return
+		to_chat(user, span_notice("You hug the adorable stuffed version of yourself. [p_they] give[p_s] you a hesitant gaze, but accept the gesture anyhow."))
+		return ..()
+
+	// Check if user is an antagonist role
+	if((length(user?.mind?.antag_datums) >= 1))
+		// Check if user is a xenobio changeling
+		if(user?.mind?.has_antag_datum(/datum/antagonist/changeling/xenobio))
+			// Alert the user
+			to_chat(user, span_notice("[src] senses what you really are, but decides to spare you."))
+
+		// Check if user is a brainwashed victim
+		else if(user?.mind?.has_antag_datum(/datum/antagonist/brainwashed))
+			// Alert the user
+			to_chat(user, span_notice("[src] senses that you're not in control of your actions, and offers [p_their()] sympathy."))
+
+		// User is not a whitelisted antagonist
 		else
-			to_chat(user, span_warning("This was a bad idea."))
-			user.gib()
+			// Drop the item
+			user.dropItemToGround(src)
+
+			// Warn user
+			user.visible_message(span_warning("[src] smites [user] with an otherworldly wrath!"), span_boldwarning("You've made a grave mistake."))
+
+			// Get lightning location
+			var/turf/turf_target = get_step(get_step(user, NORTH), NORTH)
+
+			// Perform lightning effect
+			turf_target.Beam(user, icon_state="lightning[rand(1,12)]", time = 5)
+			user.electrocution_animation(40)
+
+			// Play sound effect
+			playsound(get_turf(user), 'sound/magic/lightningbolt.ogg', 50, 1)
+
+			// Add fire damage
+			user.adjustFireLoss(120)
+
+			// Return
 			return
-	if(special_friend)
-		to_chat(user, "[src] looks at you hesitantly, but lets you carry on anyhow.")
-	if(grenade)
-		qdel(grenade)
+
+	// User has no antagonist status
+
+	// Alert the user
+	to_chat(user, span_notice("You hug the adorable stuffed toy. [p_they] give[p_s] you a hesitant gaze, but accepts the gesture anyhow."))
+
+	// Return
 	return ..()
 
-/obj/item/toy/plush/saliith/attackby(obj/item/I, mob/living/user, params)
+/obj/item/toy/plush/lizardplushie/saliith/attackby(obj/item/item_used, mob/living/user, params)
+	// Check for sharp object
+	if(item_used.get_sharpness())
+		// Warn in local chat
+		src.visible_message(span_warning("[src] knocks \the [item_used] out of [user]'s hands!"), span_warning("[src] knocks \the [item_used] out of your hands!"))
+
+		// Drop the item
+		user.dropItemToGround(item_used)
+
+		// Throw the item away
+		item_used.throw_at(pick(oview(7,get_turf(src))),10,1)
+
+		// Return
+		return
+
+	// Check if user is Saliith himself
 	if(user.ckey == "sandpoot")
+		// Return with no effects
 		return ..()
-	if(I.get_sharpness())
-		to_chat(user, "[src] shatters \the [I]!")
-		qdel(I)
+
+	// Check for grenade
+	if(istype(item_used, /obj/item/grenade))
+		// Warn in local chat
+		src.visible_message(span_warning("[src] forces \the [item_used] into [user]'s mouth!"), span_warning("[src] forces \the [item_used] into your mouth!"))
+
+		// Define the grenade item
+		var/obj/item/grenade/item_grenade = item_used
+
+		// Move grenade to the user
+		item_grenade.forceMove(user)
+		
+		// Set the detonation time
+		item_grenade.preprime(volume = 10)
+		
+		// Return
 		return
-	if(istype(I, /obj/item/grenade))
-		to_chat(user, "[src] forces \the [I] into your mouth!")
-		var/obj/item/grenade/bad_idea = I
-		bad_idea.forceMove(user)
-		bad_idea.preprime(volume = 10)
-		return
+	
+	// Return normally
 	return ..()
 
-/obj/item/toy/plush/saliith/ex_act(severity, target, origin)
+/obj/item/toy/plush/lizardplushie/saliith/ex_act(severity, target, origin)
 	return
 
 /obj/item/toy/plush/plushling/plushie_absorb(obj/item/toy/plush/victim)
-	if(istype(victim, /obj/item/toy/plush/saliith))
-		visible_message(span_warning("[victim] violently parries the impostor!"))
+	// Check if target is the Saliith plushie
+	if(istype(victim, /obj/item/toy/plush/lizardplushie/saliith))
+		// Warn in local chat
+		visible_message(span_warning("[victim] violently parries the impostor! [src] is utterly annihilated!"))
+
+		// Create a gib effect
 		new /obj/effect/gibspawner(get_turf(src))
+
+		// Delete the plushling
 		qdel(src)
+
+		// Return
 		return
+
+	// Return normally
 	return ..()
 
 /obj/item/toy/plush/love(obj/item/toy/plush/Kisser, mob/living/user)
+	// Check if plush is Saliith
+	if(!istype(src, /obj/item/toy/plush/lizardplushie/saliith))
+		// Return normally
+		return ..()
+
+	// Check if user is Saliith himself
 	if(user.ckey != "sandpoot")
-		if(istype(src, /obj/item/toy/plush/saliith))
-			user.show_message(span_notice("[src] refuses socializing with [Kisser]!"), MSG_VISUAL,
-				span_notice("That didn't feel like it worked."), NONE)
-			return
-		if(istype(Kisser, /obj/item/toy/plush/saliith))
-			user.show_message(span_notice("[Kisser] refuses socializing with [src]!"), MSG_VISUAL,
-				span_notice("That didn't feel like it worked."), NONE)
-			return
+		// Return normally
+		return ..()
+
+	// Check if target is Saliith
+	if(istype(Kisser, /obj/item/toy/plush/lizardplushie/saliith))
+		// Warn user, then return
+		user.show_message(span_notice("[Kisser] carefully avoids overstepping [src]'s personal boundaries!"), MSG_VISUAL,
+			span_notice("You can't force [Kisser] to interact with [src]."), NONE)
+		return
+
+	// Warn user, then return
+	user.show_message(span_notice("[src] refuses to interact with [Kisser]!"), MSG_VISUAL,
+		span_notice("You can't force [src] to interact with [Kisser]."), NONE)
+	return
+
+	// Return normally
 	return ..()
+
+// Pinpointer for plushie toy
+/obj/item/pinpointer/plushie_saliith 
+	name = "Saliith plushie pinpointer"
+	desc = "A handheld tracking device that locates Saliith's plushie."
+	/* This causes issues
+	icon = 'modular_sand/icons/obj/device.dmi'
+	icon_state = "pinpointer_saliith"
+	*/
+
+/obj/item/pinpointer/plushie_saliith/scan_for_target()
+	set_target(locate(/obj/item/toy/plush/lizardplushie/saliith), src)
