@@ -10,6 +10,19 @@
 	resistance_flags = INDESTRUCTIBLE | LAVA_PROOF | FIRE_PROOF | ACID_PROOF // Protected by a higher power
 	unstuffable = TRUE // Prevent grenades
 
+/obj/item/toy/plush/lizardplushie/saliith/ComponentInitialize()
+	. = ..()
+
+	// Add respawn component
+	AddComponent(/datum/component/stationloving)
+
+	// Define pronouns
+	var/p_they = p_they()
+	var/p_s = p_s()
+
+	// Add custom description
+	normal_desc = "[p_they] look[p_s] like [p_they] need[p_s] a friend."
+
 /obj/item/toy/plush/lizardplushie/saliith/examine(mob/user)
 	. = ..()
 
@@ -54,7 +67,7 @@
 	// Check if user is Saliith himself
 	if(user.ckey == "sandpoot")
 		// Alert him and return
-		to_chat(user, span_notice("You hug the adorable stuffed version of yourself. [p_they] give[p_s] you a hesitant gaze, but accept the gesture anyhow."))
+		to_chat(user, span_notice("You hug the adorable stuffed version of yourself. [p_they] give[p_s] you a hesitant gaze, but accept[p_s] the gesture anyhow."))
 		return ..()
 
 	// Check if user is an antagonist role
@@ -163,28 +176,41 @@
 	return ..()
 
 /obj/item/toy/plush/love(obj/item/toy/plush/Kisser, mob/living/user)
-	// Check if plush is Saliith
-	if(!istype(src, /obj/item/toy/plush/lizardplushie/saliith))
-		// Return normally
-		return ..()
+	// Define saliith plush
+	var/plush_saliith = /obj/item/toy/plush/lizardplushie/saliith
 
-	// Check if user is Saliith himself
-	if(user.ckey != "sandpoot")
-		// Return normally
-		return ..()
+	// Check if interaction involves the Saliith plush
+	if(istype(src, plush_saliith) || istype(Kisser, plush_saliith))
+		// Check if user is Saliith himself
+		if(user.ckey == "sandpoot")
+			// Return normally
+			return ..()
 
-	// Check if target is Saliith
-	if(istype(Kisser, /obj/item/toy/plush/lizardplushie/saliith))
-		// Warn user, then return
-		user.show_message(span_notice("[Kisser] carefully avoids overstepping [src]'s personal boundaries!"), MSG_VISUAL,
-			span_notice("You can't force [Kisser] to interact with [src]."), NONE)
+		// User is not Saliith
+		// Warn in local chat
+		user.visible_message(span_warning("[user] tried to force [Kisser] to kiss [src] against their will, and has been yeeted!"), span_warning("You try to force [Kisser] to kiss [src], but get yeeted instead!"))
+
+		// Display voice of god message
+		say("YEET", spans = list("colossus","yell"))
+
+		// Play sound
+		playsound(get_turf(src), 'sound/magic/clockwork/invoke_general.ogg', 200, TRUE, 5)
+
+		// Drop the plushies if held
+		if(src in user.held_items)
+			user.dropItemToGround(src)
+		if(Kisser in user.held_items)
+			user.dropItemToGround(Kisser)
+
+		// Launch user away
+		var/turf/yeet_target = get_edge_target_turf(user, pick(GLOB.alldirs))
+		user.throw_at(yeet_target, 10, 14)
+		log_combat(src, user, "plush yeeted")
+
+		// Return
 		return
 
-	// Warn user, then return
-	user.show_message(span_notice("[src] refuses to interact with [Kisser]!"), MSG_VISUAL,
-		span_notice("You can't force [src] to interact with [Kisser]."), NONE)
-	return
-
+	// Interaction does not involve Saliith
 	// Return normally
 	return ..()
 
