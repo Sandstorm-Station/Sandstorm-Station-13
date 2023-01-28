@@ -75,7 +75,7 @@
 	// Check if user is Saliith himself
 	if(user.ckey == "sandpoot")
 		// Alert him and return
-		to_chat(user, span_notice("You hug the adorable stuffed version of yourself. [p_they] give[p_s] you a hesitant gaze, but accept[p_s] the gesture anyhow."))
+		to_chat(user, span_notice("[p_they] give[p_s] you a hesitant gaze, but accept[p_s] the gesture anyhow."))
 		return ..()
 
 	// Check if user is an antagonist role
@@ -117,7 +117,7 @@
 	// User has no antagonist status
 
 	// Alert the user
-	to_chat(user, span_notice("You hug the adorable stuffed toy. [p_they] give[p_s] you a hesitant gaze, but accepts the gesture anyhow."))
+	to_chat(user, span_notice("[p_they] give[p_s] you a hesitant gaze, but accepts the gesture anyhow."))
 
 	// Return
 	return ..()
@@ -126,7 +126,7 @@
 	// Check for sharp object
 	if(item_used.get_sharpness())
 		// Warn in local chat
-		src.visible_message(span_warning("[src] knocks \the [item_used] out of [user]'s hands!"), span_warning("[src] knocks \the [item_used] out of your hands!"))
+		visible_message(span_warning("[src] knocks \the [item_used] out of [user]'s hands!"), span_warning("[src] knocks \the [item_used] out of your hands!"))
 
 		// Drop the item
 		user.dropItemToGround(item_used)
@@ -145,7 +145,7 @@
 	// Check for grenade
 	if(istype(item_used, /obj/item/grenade))
 		// Warn in local chat
-		src.visible_message(span_warning("[src] forces \the [item_used] into [user]'s mouth!"), span_warning("[src] forces \the [item_used] into your mouth!"))
+		visible_message(span_warning("[src] forces \the [item_used] into [user]'s mouth!"), span_warning("[src] forces \the [item_used] into your mouth!"))
 
 		// Define the grenade item
 		var/obj/item/grenade/item_grenade = item_used
