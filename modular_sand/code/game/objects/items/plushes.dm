@@ -10,6 +10,14 @@
 	resistance_flags = INDESTRUCTIBLE | LAVA_PROOF | FIRE_PROOF | ACID_PROOF // Protected by a higher power
 	unstuffable = TRUE // Prevent grenades
 
+/obj/item/toy/plush/lizardplushie/saliith/Initialize(mapload, set_snowflake_id)
+	// Check if plush already exists
+	if(GLOB.saliith_plushie && (GLOB.saliith_plushie != src))
+		return INITIALIZE_HINT_QDEL
+
+	// Return normally
+	. = ..()
+
 /obj/item/toy/plush/lizardplushie/saliith/ComponentInitialize()
 	. = ..()
 
@@ -224,4 +232,4 @@
 	*/
 
 /obj/item/pinpointer/plushie_saliith/scan_for_target()
-	set_target(locate(/obj/item/toy/plush/lizardplushie/saliith), src)
+	set_target(GLOB.saliith_plushie, src)
