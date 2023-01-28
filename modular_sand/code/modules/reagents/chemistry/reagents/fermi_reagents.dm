@@ -2,13 +2,13 @@
 /datum/reagent/fermi/plushmium/reaction_obj(obj/O, reac_volume)
 	// Check for Saliith plush
 	if(istype(O, /obj/item/toy/plush/lizardplushie/saliith))
+		// Check if a carbon user exists
+		if((!usr) || (!iscarbon(usr)))
+			// Return without any effects
+			return
+
 		// Warn in local chat
 		O.loc.visible_message(span_warning("[src] is sprayed with a strange chemical, and reacts with overwhelming hostility! [usr] is sprayed with a concoction of horrible chemicals!"))
-
-		// Check for not carbon user
-		if(!ishuman(usr))
-			// Return without further effects
-			return
 
 		// Define user mob
 		var/mob/living/carbon/human/spray_user = usr
