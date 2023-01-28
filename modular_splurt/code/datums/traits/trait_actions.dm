@@ -560,6 +560,7 @@
 	// Record features
 	old_features = action_owner.dna.features.Copy()
 	old_features["species"] = action_owner.dna.species.type
+	old_features["custom_species"] = action_owner.custom_species
 	old_features["size"] = get_size(action_owner)
 	old_features["bark"] = action_owner.vocal_bark_id
 
@@ -607,6 +608,7 @@
 			action_owner.set_species(/datum/species/mammal, 1)
 
 		// Set species features
+		action_owner.dna.custom_species = "Werewolf"
 		action_owner.dna.species.mutant_bodyparts["mam_tail"] = "Wolf"
 		action_owner.dna.species.mutant_bodyparts["legs"] = "Digitigrade"
 		action_owner.Digitigrade_Leg_Swap(FALSE)
@@ -617,7 +619,6 @@
 		action_owner.dna.features["legs"] = "Digitigrade"
 		action_owner.update_size(get_size(action_owner) + 0.5)
 		action_owner.set_bark("bark")
-		action_owner.custom_species = "Werewolf"
 		if(!(action_owner.dna.species.species_traits.Find(DIGITIGRADE)))
 			action_owner.dna.species.species_traits += DIGITIGRADE
 		action_owner.update_body()
@@ -654,6 +655,7 @@
 
 		// Revert species trait
 		action_owner.set_bark(old_features["bark"])
+		action_owner.dna.custom_species = old_features["custom_species"]
 		action_owner.dna.features["mam_ears"] = old_features["mam_ears"]
 		action_owner.dna.features["mam_snouts"] = old_features["mam_snouts"]
 		action_owner.dna.features["mam_tail"] = old_features["mam_tail"]
