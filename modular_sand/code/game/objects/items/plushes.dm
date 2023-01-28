@@ -226,10 +226,8 @@
 /obj/item/pinpointer/plushie_saliith 
 	name = "Saliith plushie pinpointer"
 	desc = "A handheld tracking device that locates Saliith's plushie."
-	/* This causes issues
 	icon = 'modular_sand/icons/obj/device.dmi'
 	icon_state = "pinpointer_saliith"
-	*/
 
 /obj/item/pinpointer/plushie_saliith/scan_for_target()
 	set_target(GLOB.saliith_plushie, src)
