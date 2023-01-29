@@ -2,24 +2,17 @@
 /datum/reagent/fermi/plushmium/reaction_obj(obj/O, reac_volume)
 	// Check for Headcoder plush
 	if(istype(O, /obj/item/toy/plush/headcoder))
-		// Check if a carbon user exists
-		if((!usr) || (!iscarbon(usr)))
-			// Return without any effects
-			return
-
 		// Warn in local chat
-		O.loc.visible_message(span_warning("[src] is sprayed with a strange chemical, and reacts with overwhelming hostility! [usr] is sprayed with a concoction of horrible chemicals!"))
+		O.loc.visible_message(span_warning("[src] is sprayed with a strange chemical, and vanishes in a puff of smoke!"))
 
-		// Define user mob
-		var/mob/living/carbon/human/spray_user = usr
+		// Create an impostor plush
+		new /obj/item/toy/plush/mammal(O.loc)
 
-		// Add chemicals
-		spray_user.reagents.add_reagent(/datum/reagent/toxin/mutagen, 20)
-		spray_user.reagents.add_reagent(/datum/reagent/toxin/mindbreaker, 20)
-		spray_user.reagents.add_reagent(/datum/reagent/toxin/mutetoxin, 20)
-		//spray_user.reagents.add_reagent(/datum/reagent/toxin/histamine, 30)
-		spray_user.reagents.add_reagent(/datum/reagent/toxin/bonehurtingjuice, 30)
-		spray_user.reagents.add_reagent(/datum/reagent/toxin/brainhurtingjuice, 30)
+		// Create a smoke effect
+		new /obj/effect/temp_visual/small_smoke(O.loc)
+
+		// Send the real plush to a safe location
+		O.forceMove(find_safe_turf())
 
 		// Return without further effects
 		return
