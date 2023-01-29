@@ -171,3 +171,5 @@
 		return
 	obj_flags |= EMAGGED
 	to_chat(user, span_warning("You reprogram [src]'s surgery procedures."))
+
+#undefine AUTODOC_TIME_BASE

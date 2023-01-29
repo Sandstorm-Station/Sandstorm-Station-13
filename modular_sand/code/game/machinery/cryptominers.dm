@@ -228,3 +228,21 @@
 		icon_state = "loop_nano"
 	else
 		icon_state = "on_nano"
+
+/*
+ * Some entries are currently unimplemented
+ *
+#undefine CRYPTO_POWER_USE
+#undefine CRYPTO_POWER_IDLE
+#undefine CRYPTO_POWER_ACTIVE
+#undefine CRYPTO_MININGTIME
+#undefine CRYPTO_MININGPOINTS
+*/
+#undefine CRYPTO_TEMP_MIN
+#undefine CRYPTO_TEMP_MID
+#undefine CRYPTO_TEMP_MAX
+#undefine CRYPTO_MULT_MIN
+#undefine CRYPTO_MULT_MID
+#undefine CRYPTO_MULT_MAX
+#undefine CRYPTO_HEATING_POWER
+#undefine CRYPTO_IGNORE_ATMOS

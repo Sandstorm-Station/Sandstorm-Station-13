@@ -127,3 +127,6 @@
 	if(default_unfasten_wrench(user, I))
 		return TRUE
 	return FALSE
+
+#undefine BLUESPACE_MINER_BONUS_MULT
+#undefine BLUESPACE_MINER_CRYSTAL_TIER
