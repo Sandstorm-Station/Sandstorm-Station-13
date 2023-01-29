@@ -544,6 +544,7 @@
 	desc = "Do something related to werewolves."
 	icon_icon = 'modular_splurt/icons/mob/actions/misc_actions.dmi'
 	button_icon_state = "Transform"
+	check_flags = AB_CHECK_RESTRAINED | AB_CHECK_STUN | AB_CHECK_CONSCIOUS | AB_CHECK_ALIVE
 
 /datum/action/werewolf/transform
 	name = "Toggle Werewolf Form"
@@ -567,14 +568,14 @@
 /datum/action/werewolf/transform/Trigger()
 	. = ..()
 
+	// Check if unavailable
+	// Checks the parent function's return value
+	if(!.)
+		// Messages will not display here
+		return FALSE
+
 	// Define action owner
 	var/mob/living/carbon/human/action_owner = owner
-
-	// Check if owner is conscious
-	if(action_owner.stat != CONSCIOUS)
-		// Warn user and return
-		to_chat(action_owner,span_warning("You cannot use this ability right now!"))
-		return
 
 	// Define citadel organs
 	var/obj/item/organ/genital/penis/organ_penis = action_owner.getorganslot(ORGAN_SLOT_PENIS)
