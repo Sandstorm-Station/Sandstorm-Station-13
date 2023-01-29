@@ -96,7 +96,7 @@
 	var/turf/T = get_turf(src)
 	if(!T)
 		return
-	
+
 	// Check for tiles with no conductivity (space)
 	if(T.thermal_conductivity == 0)
 		// Cheat mode: Skip all atmos code and give points
@@ -131,7 +131,7 @@
 		produce_points(CRYPTO_MULT_MAX)
 	// Mid
 	else if((env_temp <= temp_mid) && (env_temp >= temp_min))
-		produce_points(CRYPTO_MULT_MID)	
+		produce_points(CRYPTO_MULT_MID)
 	// Maximum
 	else if((env_temp <= temp_max) && (env_temp >= temp_mid))
 		produce_points(CRYPTO_MULT_MIN)
