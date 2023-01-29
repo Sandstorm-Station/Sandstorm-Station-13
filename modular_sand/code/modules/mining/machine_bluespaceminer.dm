@@ -1,6 +1,6 @@
 // Configuration defines
 #define BLUESPACE_MINER_BONUS_MULT		CONFIG_GET(number/bluespaceminer_mult_output)
-#define BLUESPACE_MINER_CRYSTAL_TIER	CONFIG_GET(number/bluespaceminer_mult_output)
+#define BLUESPACE_MINER_CRYSTAL_TIER	CONFIG_GET(number/bluespaceminer_crystal_tier)
 
 /obj/machinery/mineral/bluespace_miner
 	name = "bluespace mining machine"
