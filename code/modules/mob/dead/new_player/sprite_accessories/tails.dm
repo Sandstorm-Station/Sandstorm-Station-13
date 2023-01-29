@@ -36,6 +36,20 @@
 	icon = 'modular_citadel/icons/mob/mam_tails.dmi'
 	matrixed_sections = MATRIX_RED
 
+/datum/sprite_accessory/tails/lizard/nightstalker
+	name = "Nightstalker"
+	icon_state = "nightstalker"
+	color_src = MATRIXED
+	icon = 'modular_citadel/icons/mob/mam_tails.dmi'
+	matrixed_sections = MATRIX_RED_GREEN
+
+/datum/sprite_accessory/tails_animated/lizard/nightstalker
+	name = "Nightstalker"
+	icon_state = "nightstalker"
+	color_src = MATRIXED
+	icon = 'modular_citadel/icons/mob/mam_tails.dmi'
+	matrixed_sections = MATRIX_RED_GREEN
+
 /datum/sprite_accessory/tails_animated/lizard/axolotl
 	name = "Axolotl"
 	icon_state = "axolotl"
@@ -112,6 +126,21 @@
 	icon = 'modular_citadel/icons/mob/mam_tails.dmi'
 	color_src = MATRIXED
 	matrixed_sections = MATRIX_RED
+
+/datum/sprite_accessory/tails/human/nightstalker
+	name = "Nightstalker"
+	icon_state = "nightstalker"
+	color_src = MATRIXED
+	icon = 'modular_citadel/icons/mob/mam_tails.dmi'
+	matrixed_sections = MATRIX_RED_GREEN
+
+/datum/sprite_accessory/tails_animated/human/nightstalker
+	name = "Nightstalker"
+	icon_state = "nightstalker"
+	color_src = MATRIXED
+	icon = 'modular_citadel/icons/mob/mam_tails.dmi'
+	matrixed_sections = MATRIX_RED_GREEN
+
 
 /datum/sprite_accessory/tails_animated/human/axolotl
 	name = "Axolotl"
@@ -636,6 +665,20 @@
 	name = "Axolotl"
 	icon_state = "axolotl"
 	matrixed_sections = MATRIX_RED
+
+/datum/sprite_accessory/tails/mam_tails/nightstalker
+	name = "Nightstalker"
+	icon_state = "nightstalker"
+	color_src = MATRIXED
+	matrixed_sections = MATRIX_RED_GREEN
+
+/datum/sprite_accessory/tails_animated/mam_tails_animated/nightstalker
+	name = "Nightstalker"
+	icon_state = "nightstalker"
+	color_src = MATRIXED
+	icon = 'modular_citadel/icons/mob/mam_tails.dmi'
+	matrixed_sections = MATRIX_RED_GREEN
+
 
 /datum/sprite_accessory/tails/mam_tails/batl
 	name = "Bat (Long)"
