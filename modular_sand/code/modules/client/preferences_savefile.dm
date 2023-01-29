@@ -19,4 +19,7 @@
 	. = ..()
 
 /datum/preferences/cit_character_pref_load(savefile/S)
+	. = ..()
+
+	// Load modular prefs
 	pref_stomping = sanitize_inlist(S["pref_stomping"], GLOB.lewd_prefs_choices, "Yes")
