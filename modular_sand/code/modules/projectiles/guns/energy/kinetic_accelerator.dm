@@ -1,21 +1,3 @@
-//Kinetic accelerator charging meme bugfix
-/obj/item/gun/energy/kinetic_accelerator/
-	var/chargetimer = null
-
-/obj/item/gun/energy/kinetic_accelerator/proc/reload()
-	if(ismob(loc) || isturf(loc)) //Kinetic accelerators won't charge inside objects. Period.
-		cell.give(cell.maxcharge)
-		if(!suppressed)
-			playsound(src.loc, 'sound/weapons/kenetic_reload.ogg', 60, 1)
-		else
-			to_chat(loc, "<span class='warning'>[src] silently charges up.</span>")
-		update_icon()
-		overheat = FALSE
-	else //this is a terrible solution, but it ensures that it wont be stuck on dischaged if it fails to reload in an obj
-		if(chargetimer)
-			deltimer(chargetimer)
-		chargetimer = addtimer(CALLBACK(src, .proc/reload), overheat_time * 2, TIMER_STOPPABLE)
-
 //BDM pka
 /obj/item/gun/energy/kinetic_accelerator/premiumka/bdminer
 	name = "bloody accelerator"
@@ -32,16 +14,16 @@
 		var/obj/item/borg/upgrade/modkit/MK = I
 		switch(MK.type)
 			if(/obj/item/borg/upgrade/modkit/chassis_mod)
-				to_chat(user, "<span class='userdanger'>This modkit is unsuitable for [src]!</span>")
+				to_chat(user, span_userdanger("This modkit is unsuitable for [src]!"))
 				return FALSE
 			if(/obj/item/borg/upgrade/modkit/chassis_mod/orange)
-				to_chat(user, "<span class='userdanger'>This modkit is unsuitable for [src]!</span>")
+				to_chat(user, span_userdanger("This modkit is unsuitable for [src]!"))
 				return FALSE
 			if(/obj/item/borg/upgrade/modkit/tracer)
-				to_chat(user, "<span class='userdanger'>This modkit is unsuitable for [src]!</span>")
+				to_chat(user, span_userdanger("This modkit is unsuitable for [src]!"))
 				return FALSE
 			if(/obj/item/borg/upgrade/modkit/tracer/adjustable)
-				to_chat(user, "<span class='userdanger'>This modkit is unsuitable for [src]!</span>")
+				to_chat(user, span_userdanger("This modkit is unsuitable for [src]!"))
 				return FALSE
 		MK.install(src, user)
 	else
@@ -53,16 +35,16 @@
 			var/obj/item/borg/upgrade/modkit/MK = src
 			switch(MK.type)
 				if(/obj/item/borg/upgrade/modkit/chassis_mod)
-					to_chat(user, "<span class='userdanger'>This modkit is unsuitable for [A]!</span>")
+					to_chat(user, span_userdanger("This modkit is unsuitable for [A]!"))
 					return FALSE
 				if(/obj/item/borg/upgrade/modkit/chassis_mod/orange)
-					to_chat(user, "<span class='userdanger'>This modkit is unsuitable for [A]!</span>")
+					to_chat(user, span_userdanger("This modkit is unsuitable for [A]!"))
 					return FALSE
 				if(/obj/item/borg/upgrade/modkit/tracer)
-					to_chat(user, "<span class='userdanger'>This modkit is unsuitable for [A]!</span>")
+					to_chat(user, span_userdanger("This modkit is unsuitable for [A]!"))
 					return FALSE
 				if(/obj/item/borg/upgrade/modkit/tracer/adjustable)
-					to_chat(user, "<span class='userdanger'>This modkit is unsuitable for [A]!</span>")
+					to_chat(user, span_userdanger("This modkit is unsuitable for [A]!"))
 					return FALSE
 		install(A, user)
 	else
@@ -391,7 +373,7 @@
 
 /mob/living/simple_animal/hostile/asteroid/hivelordbrood/explosivelegion/death()
 	explosion(src.loc, 0, 0, 1, 2, 0, FALSE, 2)
-	src.visible_message("<span class='danger'>The [src] explodes!</span>")
+	src.visible_message(span_danger("The [src] explodes!"))
 	..()
 
 /obj/item/borg/upgrade/modkit/skull
@@ -435,7 +417,7 @@
 			else
 				hitlist += L
 				L.adjustFireLoss(src.modifier)
-				to_chat(L, "<span class='userdanger'>You're hit by [KA]'s fire breath!</span>")
+				to_chat(L, span_userdanger("You're hit by [KA]'s fire breath!"))
 //king goat
 /obj/item/borg/upgrade/modkit/cooldown/cooler
 	name = "cooler modification kit"
@@ -568,3 +550,37 @@
 
 /obj/item/borg/upgrade/modkit/aoe/heavy/modify_projectile(obj/item/projectile/kinetic/K)
 	K.name = "heavy kinetic explosion"
+
+/obj/item/gun/energy/kinetic_accelerator/premiumka
+	unique_reskin = list(
+		"Default" = list(
+			"name" = "premium accelerator",
+			"desc" = "A premium kinetic accelerator fitted with an extended barrel and increased pressure tank.",
+			"icon" = 'icons/obj/guns/energy.dmi',
+			"icon_state" = "premiumgun",
+			"item_state" = "premiumgun",
+			"lefthand_file" = 'icons/mob/inhands/weapons/guns_lefthand.dmi',
+			"righthand_file" = 'icons/mob/inhands/weapons/guns_righthand.dmi'
+		),
+		"Conscript's tapper" = list(
+			"name" = "Conscript's tapper",
+			"desc" = "Good 'ol kinetic handgun that has been revised to mining and killing tool, works better in pair.", // lies
+			"icon" = 'modular_sand/icons/obj/guns/energy.dmi',
+			"icon_state" = "commando-gun",
+			"item_state" = "commando-gun",
+			"lefthand_file" = 'modular_sand/icons/mob/inhands/weapons/guns_lefthand.dmi',
+			"righthand_file" = 'modular_sand/icons/mob/inhands/weapons/guns_righthand.dmi'
+		)
+	)
+
+/obj/item/gun/energy/kinetic_accelerator/premiumka/reskin_obj(mob/user)
+	. = ..()
+	if(ismob(loc) && current_equipped_slot == ITEM_SLOT_HANDS)
+		var/mob/update_hands = loc
+		update_hands.update_inv_hands()
+
+/obj/item/gun/energy/kinetic_accelerator/premiumka/update_overlays()
+	. = ..()
+	if(current_skin == "Conscript's tapper")
+		if(can_shoot())
+			. += "[icon_state]_cocked"

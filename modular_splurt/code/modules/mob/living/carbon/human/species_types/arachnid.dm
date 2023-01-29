@@ -13,23 +13,23 @@
 	if(H.stat == "DEAD")
 		return
 	if(web_ready == FALSE)
-		to_chat(H, "<span class='warning'>You need to wait a while to regenerate web fluid.</span>")
+		to_chat(H, span_warning("You need to wait a while to regenerate web fluid."))
 		return
 	var/turf/T = get_turf(H)
 	if(!T)
-		to_chat(H, "<span class='warning'>There's no room to spin your web here!</span>")
+		to_chat(H, span_warning("There's no room to spin your web here!"))
 		return
 	var/obj/structure/spider/stickyweb/W = locate() in T
 	var/obj/structure/arachnid/W2 = locate() in T
 	if(W || W2)
-		to_chat(H, "<span class='warning'>There's already a web here!</span>")
+		to_chat(H, span_warning("There's already a web here!"))
 		return
 	// Should have some minimum amount of food before trying to activate
 	var/nutrition_threshold = NUTRITION_LEVEL_FED
 	if (H.nutrition >= nutrition_threshold)
 		to_chat(H, "<i>You begin spinning some web...</i>")
 		if(!do_after(H, 10 SECONDS, 1, T))
-			to_chat(H, "<span class='warning'>Your web spinning was interrupted!</span>")
+			to_chat(H, span_warning("Your web spinning was interrupted!"))
 			return
 		H.adjust_nutrition(-spinner_rate)
 		addtimer(VARSET_CALLBACK(src, web_ready, TRUE), web_cooldown)
@@ -37,7 +37,7 @@
 		new /obj/structure/arachnid(T, owner)
 
 	else
-		to_chat(H, "<span class='warning'>You're too hungry to spin web right now, eat something first!</span>")
+		to_chat(H, span_warning("You're too hungry to spin web right now, eat something first!"))
 		return
 
 /datum/action/innate/spin_cocoon/Activate()
@@ -45,17 +45,17 @@
 	if(H.stat == "DEAD")
 		return
 	if(web_ready == FALSE)
-		to_chat(H, "<span class='warning'>You need to wait awhile to regenerate web fluid.</span>")
+		to_chat(H, span_warning("You need to wait awhile to regenerate web fluid."))
 		return
 	var/nutrition_threshold = NUTRITION_LEVEL_FED
 	if (H.nutrition >= nutrition_threshold)
-		to_chat(H, "<span class='warning'>You pull out a strand from your spinneret, ready to wrap a target. (Press ALT+CLICK on the target to start wrapping.)</span>")
+		to_chat(H, span_warning("You pull out a strand from your spinneret, ready to wrap a target. (Press ALT+CLICK on the target to start wrapping.)"))
 		H.adjust_nutrition(spinner_rate * -0.5)
 		addtimer(VARSET_CALLBACK(src, web_ready, TRUE), web_cooldown)
 		RegisterSignal(H, list(COMSIG_MOB_ALTCLICKON), .proc/cocoonAtom)
 		return
 	else
-		to_chat(H, "<span class='warning'>You're too hungry to spin web right now, eat something first!</span>")
+		to_chat(H, span_warning("You're too hungry to spin web right now, eat something first!"))
 		return
 
 /datum/action/innate/spin_cocoon/cocoonAtom(mob/living/carbon/human/H, atom/movable/A)
@@ -64,39 +64,39 @@
 		return COMSIG_MOB_CANCEL_CLICKON
 	else
 		if(web_ready == FALSE)
-			to_chat(H, "<span class='warning'>You need to wait awhile to regenerate web fluid.</span>")
+			to_chat(H, span_warning("You need to wait awhile to regenerate web fluid."))
 			return
 		if(!H.Adjacent(A))	//No.
 			return
 		if(!isliving(A) && A.anchored)
-			to_chat(H, "<span class='warning'>[A] is bolted to the floor!</span>")
+			to_chat(H, span_warning("[A] is bolted to the floor!"))
 			return
 		if(istype(A, /obj/structure/arachnid))
-			to_chat(H, "<span class='warning'>No double wrapping.</span>")
+			to_chat(H, span_warning("No double wrapping."))
 			return
 		if(istype(A, /obj/effect))
-			to_chat(H, "<span class='warning'>You cannot wrap this.</span>")
+			to_chat(H, span_warning("You cannot wrap this."))
 			return
 		if(isliving(A))
 			var/mob/living/L = A
 			if(L.key)
-				to_chat(H, "<span class='warning'>You prepare to wrap [L] in a cocoon...</span>")
+				to_chat(H, span_warning("You prepare to wrap [L] in a cocoon..."))
 				var/response = alert(L, "Do you wish to be wrapped in a cocoon?", "Cocooning", "No", "Yes")
 				if(response == "No")
-					to_chat(H, "<span class='warning'>[L] resists your attempts to wrap [L.p_them()]!</span>")
+					to_chat(H, span_warning("[L] resists your attempts to wrap [L.p_them()]!"))
 					return
-		H.visible_message("<span class='danger'>[H] starts to wrap [A] into a cocoon!</span>","<span class='warning'>You start to wrap [A] into a cocoon.</span>")
+		H.visible_message(span_danger("[H] starts to wrap [A] into a cocoon!"),span_warning("You start to wrap [A] into a cocoon."))
 		if(!do_after(H, 10 SECONDS, 1, A))
-			to_chat(H, "<span class='warning'>Your web spinning was interrupted!</span>")
+			to_chat(H, span_warning("Your web spinning was interrupted!"))
 			return
 		H.adjust_nutrition(spinner_rate * -3)
 		var/obj/structure/arachnid/cocoon/C = new(A.loc)
 		if(isliving(A))
 			C.icon_state = pick("cocoon_large1","cocoon_large2","cocoon_large3")
 			A.forceMove(C)
-			H.visible_message("<span class='danger'>[H] wraps [A] into a large cocoon!</span>")
+			H.visible_message(span_danger("[H] wraps [A] into a large cocoon!"))
 			return
 		else
 			A.forceMove(C)
-			H.visible_message("<span class='danger'>[H] wraps [A] into a cocoon!</span>")
+			H.visible_message(span_danger("[H] wraps [A] into a cocoon!"))
 			return

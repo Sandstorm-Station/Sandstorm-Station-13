@@ -46,8 +46,8 @@
 
 		start_pulling(M, supress_message = TRUE)
 		log_combat(src, M, "grabbed")
-		M.visible_message("<span class='warning'>[src] violently grabs [M]!</span>", \
-			"<span class='userdanger'>[src] violently grabs you!</span>")
+		M.visible_message(span_warning("[src] violently grabs [M]!"), \
+			span_userdanger("[src] violently grabs you!"))
 		setGrabState(GRAB_NECK) //Instant neck grab
 
 		return
@@ -191,15 +191,15 @@
 
 /mob/living/simple_animal/hostile/deathclaw/funclaw/proc/slap(mob/living/M)
 	playsound(loc, "modular_sand/sound/interactions/slap.ogg", 30, 1, -1)
-	visible_message("<span class='danger'>\The [src]</b> slaps \the [M] right on the ass!</span>", \
-			"<span class='userdanger'>\The [src]</b> slaps \the [M] right on the ass!</span>", null, COMBAT_MESSAGE_RANGE)
+	visible_message(span_danger("\The [src]</b> slaps \the [M] right on the ass!"), \
+			span_userdanger("\The [src]</b> slaps \the [M] right on the ass!"), null, COMBAT_MESSAGE_RANGE)
 
 /mob/living/simple_animal/hostile/deathclaw/funclaw/proc/tearSlot(mob/living/M, slot)
 	var/obj/item/W = M.get_item_by_slot(slot)
 	if(W)
 		M.dropItemToGround(W)
 		playsound(loc, "sound/items/poster_ripped.ogg", 30, 1, -1)
-		visible_message("<span class='danger'>\The [src]</b> tears off \the [M]'s clothes!</span>", \
-				"<span class='userdanger'>\The [src]</b> tears off \the [M]'s clothes!</span>", null, COMBAT_MESSAGE_RANGE)
+		visible_message(span_danger("\The [src]</b> tears off \the [M]'s clothes!"), \
+				span_userdanger("\The [src]</b> tears off \the [M]'s clothes!"), null, COMBAT_MESSAGE_RANGE)
 		return TRUE
 	return FALSE

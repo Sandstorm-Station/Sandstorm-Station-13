@@ -68,7 +68,7 @@
 				B.color = SKINTONE2HEX(H.skin_tone)
 			B.size = 1
 			B.size_cached = B.size
-			to_chat(M, "<span class='warning'>You feel your midsection get warmer... bubbling softly as it seems to start distending</b></span>")
+			to_chat(M, span_warning("You feel your midsection get warmer... bubbling softly as it seems to start distending</b>"))
 			M.reagents.remove_reagent(type, 5)
 	//If they have, increase size.
 	if(B.size_cached < BELLY_SIZE_MAX) //just in case
