@@ -62,8 +62,13 @@
 		if(abs(get_size(user)/get_size(target)) >= 2)
 			// Check client pref
 			if(target.client?.prefs.pref_stomping != "Yes")
-				// Prevent stomp
-				return FALSE
+				// Warn in chat
+				target.visible_message(span_danger("[src] is attempting to step on [target]!"), span_danger("[src] is attempting to step on you!"))
+
+				// Perform interaction timer
+				if(!do_mob(user, target, 3 SECONDS))
+					// Prevent stomp
+					return FALSE
 
 			log_combat(user, target, "stepped on", addition="[user.a_intent] trample")
 			if(user.a_intent == "disarm" && CHECK_MOBILITY(user, MOBILITY_MOVE) && !user.buckled)
@@ -80,6 +85,10 @@
 					return TRUE
 
 			if(user.a_intent == "harm" && CHECK_MOBILITY(user, MOBILITY_MOVE) && !user.buckled)
+				// Check client pref for harm
+				if(target.client?.prefs.extremeharm == "No")
+					return
+
 				now_pushing = 0
 				user.forceMove(target.loc)
 				user.sizediffStamLoss(target)

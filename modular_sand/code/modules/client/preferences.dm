@@ -1,6 +1,6 @@
 // New preference entries
 /datum/preferences
-	var/pref_stomping = "Yes"
+	var/pref_stomping = "No"
 
 //SKYRAT EDIT - extra language
 /datum/preferences/proc/SetLanguage(mob/user)

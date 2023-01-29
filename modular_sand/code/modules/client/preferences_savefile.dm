@@ -22,4 +22,4 @@
 	. = ..()
 
 	// Load modular prefs
-	pref_stomping = sanitize_inlist(S["pref_stomping"], GLOB.lewd_prefs_choices, "Yes")
+	pref_stomping = sanitize_inlist(S["pref_stomping"], GLOB.lewd_prefs_choices, "No")
