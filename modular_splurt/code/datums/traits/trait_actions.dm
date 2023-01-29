@@ -539,20 +539,22 @@
 // Quirk: Werewolf
 //
 
-/datum/action/werewolf
+/datum/action/cooldown/werewolf
 	name = "Werewolf Ability"
 	desc = "Do something related to werewolves."
 	icon_icon = 'modular_splurt/icons/mob/actions/misc_actions.dmi'
 	button_icon_state = "Transform"
 	check_flags = AB_CHECK_RESTRAINED | AB_CHECK_STUN | AB_CHECK_CONSCIOUS | AB_CHECK_ALIVE
+	cooldown_time = 5 SECONDS
+	transparent_when_unavailable = TRUE
 
-/datum/action/werewolf/transform
+/datum/action/cooldown/werewolf/transform
 	name = "Toggle Werewolf Form"
 	desc = "Transform in or out of your wolf form."
 	var/transformed = FALSE
 	var/list/old_features = list("species" = SPECIES_HUMAN, "legs" = "Plantigrade", "size" = 1, "bark")
 
-/datum/action/werewolf/transform/Grant()
+/datum/action/cooldown/werewolf/transform/Grant()
 	. = ..()
 
 	// Define action owner
@@ -565,7 +567,7 @@
 	old_features["size"] = get_size(action_owner)
 	old_features["bark"] = action_owner.vocal_bark_id
 
-/datum/action/werewolf/transform/Trigger()
+/datum/action/cooldown/werewolf/transform/Trigger()
 	. = ..()
 
 	// Check if unavailable
@@ -576,6 +578,12 @@
 
 	// Define action owner
 	var/mob/living/carbon/human/action_owner = owner
+
+	// Check for restraints
+	if(!CHECK_MOBILITY(action_owner, MOBILITY_USE))
+		// Warn user, then return
+		action_owner.visible_message(span_warning("You cannot transform while restrained!"))
+		return
 
 	// Define citadel organs
 	var/obj/item/organ/genital/penis/organ_penis = action_owner.getorganslot(ORGAN_SLOT_PENIS)
@@ -695,6 +703,12 @@
 
 	// Toggle transformation state
 	transformed = !transformed
+
+	// Start cooldown
+	StartCooldown()
+
+	// Return success
+	return TRUE
 
 //
 // Quirk: Gargoyle

@@ -537,7 +537,7 @@
 	. = ..()
 
 	// Define quirk action
-	var/datum/action/werewolf/transform/quirk_action = new
+	var/datum/action/cooldown/werewolf/transform/quirk_action = new
 
 	// Grant quirk action
 	quirk_action.Grant(quirk_holder)
@@ -546,7 +546,7 @@
 	. = ..()
 
 	// Define quirk action
-	var/datum/action/werewolf/transform/quirk_action = locate() in quirk_holder.actions
+	var/datum/action/cooldown/werewolf/transform/quirk_action = locate() in quirk_holder.actions
 
 	// Revoke quirk action
 	quirk_action.Remove(quirk_holder)
