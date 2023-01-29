@@ -17,3 +17,6 @@
 			DISABLE_BITFIELD(toggles, SOUND_BARK)
 			ENABLE_BITFIELD(toggles, VERB_CONSENT)
 	. = ..()
+
+/datum/preferences/cit_character_pref_load(savefile/S)
+	pref_stomping = sanitize_inlist(S["pref_stomping"], GLOB.lewd_prefs_choices, "Yes")

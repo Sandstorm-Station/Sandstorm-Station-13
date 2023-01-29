@@ -1219,6 +1219,9 @@ GLOBAL_LIST_EMPTY(preferences_datums)
 			if(extremepref != "No")
 				dat += "<b><span style='color: #e60000;'>Harmful ERP verbs :</b> <a href='?_src_=prefs;preference=extremeharm'>[extremeharm]</a><br>"
 			//END OF SKYRAT EDIT
+			// SANDSTORM EDIT
+			dat += "<b>Macro Stomping:</b> <a href='?_src_=prefs;preference=pref_stomping'>[pref_stomping]</a><br>" 
+			// END OF SANDSTORM EDIT
 			dat += "<b>Automatic Wagging:</b> <a href='?_src_=prefs;preference=auto_wag'>[(cit_toggles & NO_AUTO_WAG) ? "Disabled" : "Enabled"]</a><br>"
 			dat += "</tr></table>"
 			dat += "<br>"
@@ -2962,6 +2965,14 @@ GLOBAL_LIST_EMPTY(preferences_datums)
 					if(extremepref == "No")
 						extremeharm = "No"
 				//END CITADEL EDIT
+				// Sandstorm edit
+				if("pref_stomping")
+					switch(pref_stomping)
+						if("Yes")
+							pref_stomping = "No"
+						if("No")
+							pref_stomping = "Yes"
+				// End sandstorm edit
 				if("publicity")
 					if(unlock_content)
 						toggles ^= MEMBER_PUBLIC
