@@ -102,4 +102,4 @@
 	add_fingerprint(usr)
 	
 	/obj/item/photo/old
-	icon_state = "photo_old
+	icon_state = "photo_old"
