@@ -609,14 +609,15 @@
 
 		// Set species features
 		action_owner.dna.custom_species = "Werewolf"
-		action_owner.dna.species.mutant_bodyparts["mam_tail"] = "Wolf"
+		action_owner.dna.species.mutant_bodyparts["mam_tail"] = "Otusian"
 		action_owner.dna.species.mutant_bodyparts["legs"] = "Digitigrade"
 		action_owner.Digitigrade_Leg_Swap(FALSE)
-		action_owner.dna.species.mutant_bodyparts["mam_snouts"] = "Mammal, Thick"
-		action_owner.dna.features["mam_ears"] = "Wolf"
-		action_owner.dna.features["mam_tail"] = "Wolf"
-		action_owner.dna.features["mam_snouts"] = "Mammal, Thick"
+		action_owner.dna.species.mutant_bodyparts["mam_snouts"] = "Sergal"
+		action_owner.dna.features["mam_ears"] = "Jackal"
+		action_owner.dna.features["mam_tail"] = "Otusian"
+		action_owner.dna.features["mam_snouts"] = "Sergal"
 		action_owner.dna.features["legs"] = "Digitigrade"
+		action_owner.dna.features["insect_fluff"] = "Hyena"
 		action_owner.update_size(get_size(action_owner) + 0.5)
 		action_owner.set_bark("bark")
 		if(!(action_owner.dna.species.species_traits.Find(DIGITIGRADE)))
@@ -660,6 +661,7 @@
 		action_owner.dna.features["mam_snouts"] = old_features["mam_snouts"]
 		action_owner.dna.features["mam_tail"] = old_features["mam_tail"]
 		action_owner.dna.features["legs"] = old_features["legs"]
+		action_owner.dna.features["insect_fluff"] = old_features["insect_fluff"]
 		if(old_features["legs"] == "Plantigrade")
 			action_owner.dna.species.species_traits -= DIGITIGRADE
 			action_owner.Digitigrade_Leg_Swap(TRUE)
