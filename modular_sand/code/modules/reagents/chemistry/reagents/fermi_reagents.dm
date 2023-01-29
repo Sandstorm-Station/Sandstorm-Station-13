@@ -1,7 +1,7 @@
 // Plushmium object reaction
 /datum/reagent/fermi/plushmium/reaction_obj(obj/O, reac_volume)
-	// Check for Saliith plush
-	if(istype(O, /obj/item/toy/plush/lizardplushie/saliith))
+	// Check for Headcoder plush
+	if(istype(O, /obj/item/toy/plush/headcoder))
 		// Check if a carbon user exists
 		if((!usr) || (!iscarbon(usr)))
 			// Return without any effects

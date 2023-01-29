@@ -1,7 +1,10 @@
-// Honestly, Saliith was just sad when he made this. Leave this file in the game to let people hug him.
+// Honestly, Saliith was just sad when he made the original. Leave this file in the game to carry on his legacy.
 
-/obj/item/toy/plush/lizardplushie/saliith
-	name = "Saliith plushie"
+// BYOND ckey for plushie owner
+#define PLUSH_HEADCODER_CKEY "sandpoot"
+
+/obj/item/toy/plush/headcoder
+	name = "saliith plushie"
 	desc = "He looks like he needs a friend."
 	icon = 'modular_sand/icons/obj/plushes.dmi'
 	icon_state = "saliith"
@@ -9,16 +12,18 @@
 	can_random_spawn = FALSE
 	resistance_flags = INDESTRUCTIBLE | LAVA_PROOF | FIRE_PROOF | ACID_PROOF // Protected by a higher power
 	unstuffable = TRUE // Prevent grenades
+	squeak_override = list('modular_citadel/sound/voice/hiss.ogg'=1)
+	attack_verb = list("clawed", "hissed", "tail slapped")
 
-/obj/item/toy/plush/lizardplushie/saliith/Initialize(mapload, set_snowflake_id)
+/obj/item/toy/plush/headcoder/Initialize(mapload, set_snowflake_id)
 	// Check if plush already exists
-	if(GLOB.saliith_plushie && (GLOB.saliith_plushie != src))
+	if(GLOB.plushie_headcoder && (GLOB.plushie_headcoder != src))
 		return INITIALIZE_HINT_QDEL
 
 	// Return normally
 	. = ..()
 
-/obj/item/toy/plush/lizardplushie/saliith/ComponentInitialize()
+/obj/item/toy/plush/headcoder/ComponentInitialize()
 	. = ..()
 
 	// Add respawn component
@@ -31,7 +36,7 @@
 	// Add custom description
 	normal_desc = "[p_they] look[p_s] like [p_they] need[p_s] a friend."
 
-/obj/item/toy/plush/lizardplushie/saliith/examine(mob/user)
+/obj/item/toy/plush/headcoder/examine(mob/user)
 	. = ..()
 
 	// Define pronouns
@@ -45,8 +50,8 @@
 		. += span_deadsay("[p_they(TRUE)] [p_are()] dead.")
 		return
 
-	// Check if user is Saliith himself
-	if(user.ckey == "sandpoot")
+	// Check if user is Headcoder
+	if(user.ckey == PLUSH_HEADCODER_CKEY)
 		// Update examine text and return
 		. += span_deadsay("You feel a sense of familiarity from [p_them].")
 		return
@@ -56,7 +61,7 @@
 		// Update examine text
 		. += span_warning("[src] gives you a menacing glare! Patting [p_them] would be a dangerous mistake.")
 
-/obj/item/toy/plush/lizardplushie/saliith/attack_self(mob/living/carbon/human/user)
+/obj/item/toy/plush/headcoder/attack_self(mob/living/carbon/human/user)
 	// Check if user exists
 	if(!user)
 		// Return normally
@@ -68,14 +73,14 @@
 		return ..()
 
 	// Define pronouns
-	var/p_they = p_they()
+	//var/p_they = p_they()
 	//var/p_their = p_their()
-	var/p_s = p_s()	
+	//var/p_s = p_s()	
 
-	// Check if user is Saliith himself
-	if(user.ckey == "sandpoot")
+	// Check if user is Headcoder
+	if(user.ckey == PLUSH_HEADCODER_CKEY)
 		// Alert him and return
-		to_chat(user, span_notice("[p_they] give[p_s] you a hesitant gaze, but accept[p_s] the gesture anyhow."))
+		to_chat(user, span_notice("[src] gives you a hesitant gaze, but accepts the gesture anyhow."))
 		return ..()
 
 	// Check if user is an antagonist role
@@ -117,12 +122,12 @@
 	// User has no antagonist status
 
 	// Alert the user
-	to_chat(user, span_notice("[p_they] give[p_s] you a hesitant gaze, but accepts the gesture anyhow."))
+	to_chat(user, span_notice("[src] gives you a hesitant gaze, but accepts the gesture anyhow."))
 
 	// Return
 	return ..()
 
-/obj/item/toy/plush/lizardplushie/saliith/attackby(obj/item/item_used, mob/living/user, params)
+/obj/item/toy/plush/headcoder/attackby(obj/item/item_used, mob/living/user, params)
 	// Check for sharp object
 	if(item_used.get_sharpness())
 		// Warn in local chat
@@ -137,8 +142,8 @@
 		// Return
 		return
 
-	// Check if user is Saliith himself
-	if(user.ckey == "sandpoot")
+	// Check if user is Headcoder
+	if(user.ckey == PLUSH_HEADCODER_CKEY)
 		// Return with no effects
 		return ..()
 
@@ -162,12 +167,12 @@
 	// Return normally
 	return ..()
 
-/obj/item/toy/plush/lizardplushie/saliith/ex_act(severity, target, origin)
+/obj/item/toy/plush/headcoder/ex_act(severity, target, origin)
 	return
 
 /obj/item/toy/plush/plushling/plushie_absorb(obj/item/toy/plush/victim)
-	// Check if target is the Saliith plushie
-	if(istype(victim, /obj/item/toy/plush/lizardplushie/saliith))
+	// Check if target is the Headcoder plushie
+	if(istype(victim, /obj/item/toy/plush/headcoder))
 		// Warn in local chat
 		visible_message(span_warning("[victim] violently parries the impostor! [src] is utterly annihilated!"))
 
@@ -185,16 +190,16 @@
 
 /obj/item/toy/plush/love(obj/item/toy/plush/Kisser, mob/living/user)
 	// Define saliith plush
-	var/plush_saliith = /obj/item/toy/plush/lizardplushie/saliith
+	var/plush_saliith = /obj/item/toy/plush/headcoder
 
-	// Check if interaction involves the Saliith plush
+	// Check if interaction involves the Headcoder plush
 	if(istype(src, plush_saliith) || istype(Kisser, plush_saliith))
-		// Check if user is Saliith himself
-		if(user.ckey == "sandpoot")
+		// Check if user is Headcoder
+		if(user.ckey == PLUSH_HEADCODER_CKEY)
 			// Return normally
 			return ..()
 
-		// User is not Saliith
+		// User is not Headcoder
 		// Warn in local chat
 		user.visible_message(span_warning("[user] tried to force [Kisser] to kiss [src] against their will, and has been yeeted!"), span_warning("You try to force [Kisser] to kiss [src], but get yeeted instead!"))
 
@@ -218,16 +223,16 @@
 		// Return
 		return
 
-	// Interaction does not involve Saliith
+	// Interaction does not involve Headcoder
 	// Return normally
 	return ..()
 
 // Pinpointer for plushie toy
-/obj/item/pinpointer/plushie_saliith 
-	name = "Saliith plushie pinpointer"
-	desc = "A handheld tracking device that locates Saliith's plushie."
+/obj/item/pinpointer/plushie_headcoder 
+	name = "Secret plushie pinpointer"
+	desc = "A handheld tracking device that locates the secret plushie."
 	icon = 'modular_sand/icons/obj/device.dmi'
 	icon_state = "pinpointer_saliith"
 
-/obj/item/pinpointer/plushie_saliith/scan_for_target()
-	set_target(GLOB.saliith_plushie, src)
+/obj/item/pinpointer/plushie_headcoder/scan_for_target()
+	set_target(GLOB.plushie_headcoder, src)

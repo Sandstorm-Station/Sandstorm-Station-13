@@ -1,3 +1,3 @@
-/datum/gear/backpack/pinpointer/plushie_saliith
-	name = "Saliith Plushie Pinpointer"
-	path = /obj/item/pinpointer/plushie_saliith
+/datum/gear/backpack/pinpointer/plushie_headcoder
+	name = "Secret Plushie Pinpointer"
+	path = /obj/item/pinpointer/plushie_headcoder
