@@ -553,6 +553,7 @@
 	desc = "Transform in or out of your wolf form."
 	var/transformed = FALSE
 	var/list/old_features = list("species" = SPECIES_HUMAN, "legs" = "Plantigrade", "size" = 1, "bark")
+	var/werewolf_gender = "Lycan"
 
 /datum/action/cooldown/werewolf/transform/Grant()
 	. = ..()
@@ -566,6 +567,17 @@
 	old_features["custom_species"] = action_owner.custom_species
 	old_features["size"] = get_size(action_owner)
 	old_features["bark"] = action_owner.vocal_bark_id
+
+	// Set species gendered name
+	switch(action_owner.gender)
+		if(MALE)
+			werewolf_gender = "Wer"
+		if(FEMALE)
+			werewolf_gender = "Wīf"
+		if(PLURAL)
+			werewolf_gender = "Hie"
+		if(NEUTER)
+			werewolf_gender = "Þing"
 
 /datum/action/cooldown/werewolf/transform/Trigger()
 	. = ..()
@@ -617,7 +629,7 @@
 			action_owner.set_species(/datum/species/mammal, 1)
 
 		// Set species features
-		action_owner.dna.custom_species = "Werewolf"
+		action_owner.dna.custom_species = "[werewolf_gender]wulf"
 		action_owner.dna.species.mutant_bodyparts["mam_tail"] = "Otusian"
 		action_owner.dna.species.mutant_bodyparts["legs"] = "Digitigrade"
 		action_owner.Digitigrade_Leg_Swap(FALSE)
