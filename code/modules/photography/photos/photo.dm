@@ -100,6 +100,3 @@
 	if(n_name && (loc == usr || loc.loc && loc.loc == usr) && CHECK_MOBILITY(L, MOBILITY_USE))
 		name = "photo[(n_name ? text("- '[n_name]'") : null)]"
 	add_fingerprint(usr)
-	
-	/obj/item/photo/old
-	icon_state = "photo_old"
