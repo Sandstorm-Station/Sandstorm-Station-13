@@ -552,6 +552,7 @@
 	name = "Toggle Werewolf Form"
 	desc = "Transform in or out of your wolf form."
 	var/transformed = FALSE
+	var/species_changed = FALSE
 	var/list/old_features = list("species" = SPECIES_HUMAN, "legs" = "Plantigrade", "size" = 1, "bark")
 	var/werewolf_gender = "Lycan"
 
@@ -615,7 +616,7 @@
 			// Set old species
 			old_features["species"] = owner_species
 
-		// Check if species is already mammal (anthro)
+		// Check if species is mammal (anthro)
 		if(ismammal(action_owner))
 			// Do nothing!
 
@@ -623,10 +624,21 @@
 		else if(owner_species in subtypesof(/datum/species/mammal))
 			// Do nothing!
 
+		// Check if species is a jelly
+		else if(isjellyperson(action_owner))
+			// Do nothing!
+
+		// Check if species is a jelly subtype
+		else if(owner_species in subtypesof(/datum/species/jelly))
+			// Do nothing!
+
 		// Species is not a mammal
 		else
 			// Change species
 			action_owner.set_species(/datum/species/mammal, 1)
+
+			// Set species changed
+			species_changed = TRUE
 
 		// Set species features
 		action_owner.dna.custom_species = "[werewolf_gender]wulf"
@@ -663,17 +675,16 @@
 	// Un-transform from wolf form
 	else
 		// Check if species was already mammal (anthro)
-		if(old_features["species"] == /datum/species/mammal)
-			// Do nothing!
-
-		// Check if species was a mammal sub-type
-		else if(old_features["species"] in subtypesof(/datum/species/mammal))
+		if(!species_changed)
 			// Do nothing!
 
 		// Species was not a mammal
 		else
 			// Revert species
 			action_owner.set_species(old_features["species"], TRUE)
+
+			// Clear species changed flag
+			species_changed = FALSE
 
 		// Revert species trait
 		action_owner.set_bark(old_features["bark"])
