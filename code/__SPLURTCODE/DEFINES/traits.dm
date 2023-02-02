@@ -26,3 +26,5 @@
 #define TRAIT_FLUTTER			"flutter"
 #define TRAIT_NUDIST			"Nudist"
 #define TRAIT_CLOTH_EATER		"cloth_eater"
+#define TRAIT_DUMB_CUM			"dumb_for_cum_base"
+#define TRAIT_DUMB_CUM_CRAVE	"dumb_for_cum_need"

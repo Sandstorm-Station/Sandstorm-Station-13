@@ -7,5 +7,3 @@
 #define TRAIT_HEAT_DETECT "heat_detect"
 #define TRAIT_ILLITERATE "illiterate"
 #define TRAIT_HIDE_BACKPACK "hide_backpack"
-
-#define TRAIT_DUMB4CUM "dumb4cum"
