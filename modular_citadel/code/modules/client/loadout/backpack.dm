@@ -195,21 +195,3 @@
 /datum/gear/backpack/dyespray
 	name = "Hair dye spray"
 	path = /obj/item/dyespray
-
-/datum/gear/backpack/shortcrop //loadouts still don't support proper accessories
-	name = "Short sleeved croptop"
-	path = /obj/item/clothing/accessory/shortcrop
-	loadout_flags = LOADOUT_CAN_NAME | LOADOUT_CAN_DESCRIPTION
-	subcategory = LOADOUT_SUBCATEGORY_BACKPACK_ACCESSORIES
-
-/datum/gear/backpack/longcrop //loadouts still don't support proper accessories x2
-	name = "Long sleeved croptop"
-	path = /obj/item/clothing/accessory/longcrop
-	loadout_flags = LOADOUT_CAN_NAME | LOADOUT_CAN_DESCRIPTION
-	subcategory = LOADOUT_SUBCATEGORY_BACKPACK_ACCESSORIES
-
-/datum/gear/backpack/formalcrop //loadouts still don't support proper accessories x3
-	name = "Formal croptop"
-	path = /obj/item/clothing/accessory/formalcrop
-	loadout_flags = LOADOUT_CAN_NAME | LOADOUT_CAN_DESCRIPTION
-	subcategory = LOADOUT_SUBCATEGORY_BACKPACK_ACCESSORIES
