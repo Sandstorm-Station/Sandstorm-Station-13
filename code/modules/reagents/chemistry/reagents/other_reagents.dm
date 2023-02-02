@@ -57,7 +57,7 @@
 
 /datum/reagent/blood/on_mob_life(mob/living/carbon/C)	//Because lethals are preferred over stamina. damnifino.
 	var/blood_id = C.get_blood_id()
-	if((blood_id in GLOB.blood_reagent_types) && !HAS_TRAIT(C, TRAIT_NOMARROW) && !HAS_TRAIT(C, BLOODFLEDGE))
+	if((blood_id in GLOB.blood_reagent_types) && !HAS_TRAIT(C, TRAIT_NOMARROW) && !HAS_TRAIT(C, TRAIT_BLOODFLEDGE))
 		if(!data || !(data["blood_type"] in get_safe_blood(C.dna.blood_type)))	//we only care about bloodtype here because this is where the poisoning should be
 			C.adjustToxLoss(rand(2,8)*REAGENTS_EFFECT_MULTIPLIER, TRUE, TRUE)	//forced to ensure people don't use it to gain beneficial toxin as slime person
 	..()
@@ -411,18 +411,6 @@
 					"You can't save him. Nothing can save him now", "It seems that Nar'Sie will triumph after all")].</span>")
 				if("emote")
 					M.visible_message("<span class='warning'>[M] [pick("whimpers quietly", "shivers as though cold", "glances around in paranoia")].</span>")
-		else if(HAS_TRAIT(M, TRAIT_CURSED_BLOOD) && prob(12))
-			M.say(pick("Somebody help me...","Unshackle me please...","Anybody... I've had enough of this dream...","The night blocks all sight...","Oh, somebody, please..."), forced = "holy water")
-			if(prob(10))
-				M.visible_message("<span class='danger'>[M] starts having a seizure!</span>", "<span class='userdanger'>You have a seizure!</span>")
-				M.Unconscious(120)
-				to_chat(M, "<span class='cultlarge'>[pick("The moon is close. It will be a long hunt tonight.", "Ludwig, why have you forsaken me?", \
-				"The night is near its end...", "Fear the blood...")]</span>")
-				if(prob(25)) //Prob of a prob.. Shouldn't happen too often but hey, that's what you get.
-					M.IgniteMob()
-				else
-					M.adjustToxLoss(1, 0)
-					M.adjustFireLoss(1, 0)
 	if(data["misc"] >= 60)	// 30 units, 135 seconds
 		if(iscultist(M, FALSE, TRUE) || is_servant_of_ratvar(M, FALSE, TRUE))
 			if(iscultist(M))
@@ -2440,7 +2428,7 @@
 		var/list/adjusted = H.adjust_arousal(2,"catnip", aphro = TRUE)
 		for(var/g in adjusted)
 			var/obj/item/organ/genital/G = g
-			to_chat(M, "<span class='userlove'>You feel like playing with your [G.name]!</span>")
+			to_chat(M, span_userlove("You feel like playing with your [G.name]!"))
 	..()
 
 /datum/reagent/preservahyde

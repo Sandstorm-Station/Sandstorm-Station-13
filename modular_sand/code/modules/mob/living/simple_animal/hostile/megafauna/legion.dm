@@ -33,7 +33,7 @@
 
 		L.GiveTarget(target)
 
-		visible_message("<span class='boldannounce'>[src] splits in twain!</span>")
+		visible_message(span_boldannounce("[src] splits in twain!"))
 	else
 		var/last_legion = TRUE
 		for(var/mob/living/simple_animal/hostile/megafauna/legion/other in GLOB.mob_living_list)

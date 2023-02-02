@@ -9,6 +9,7 @@
 	icon_state 			= "b_condom_wrapped"
 	var/unwrapped		= 0
 	w_class 			= WEIGHT_CLASS_TINY
+	custom_price		= PRICE_CHEAP_AS_FREE // 10 credits
 
 /obj/item/genital_equipment/condom/Initialize()
 	create_reagents(300, DRAWABLE|NO_REACT)
@@ -36,7 +37,7 @@
 		if(unwrapped == 0)
 			icon_state 	= "b_condom"
 			unwrapped = 1
-			to_chat(user, "<span class='notice'>You unwrap the condom.</span>")
+			to_chat(user, span_notice("You unwrap the condom."))
 			playsound(user, 'sound/items/poster_ripped.ogg', 50, 1, -1)
 			return
 
@@ -55,23 +56,23 @@
 //		if(unwrapped == 1)
 //			new /obj/item/clothing/head/condom(usr.loc)
 //			qdel(src)
-//			to_chat(user, "<span class='notice'>You roll the condom out.</span>")
+//			to_chat(user, span_notice("You roll the condom out."))
 //			playsound(user, 'sound/lewd/latex.ogg', 50, 1, -1)
 //			return
 /*
 /obj/item/genital_equipment/condom/attack(mob/living/carbon/C, mob/living/user) //apply the johnny on another person or yourself
 
 	if(unwrapped == 0 )
-		to_chat(user, "<span class='notice'>You must remove the condom from the package first!</span>")
+		to_chat(user, span_notice("You must remove the condom from the package first!"))
 		return
 	var/obj/item/organ/genital/penis/P = C.getorganslot(ORGAN_SLOT_PENIS)
 	if((C.has_penis(REQUIRE_EXPOSED) && (P?.genital_flags & HAS_EQUIPMENT)) || (C.has_strapon(REQUIRE_EXPOSED)))
 		if(P.equipment[GENITAL_EQUIPEMENT_CONDOM])
-			to_chat(user, "<span class='notice'>\The [C] already has condom on!</span>")
+			to_chat(user, span_notice("\The [C] already has condom on!"))
 			return
 		if(isliving(C) && isliving(user) && unwrapped == 1)
-			C.visible_message("<span class='warning'>\The <b>[user]</b> is trying to put a condom on \the <b>[C]</b>!</span>",\
-						"<span class='warning'>\The <b>[user]</b> is trying to put a condom on you!</span>")
+			C.visible_message(span_warning("\The <b>[user]</b> is trying to put a condom on \the <b>[C]</b>!"),\
+						span_warning("\The <b>[user]</b> is trying to put a condom on you!"))
 		if(!do_mob(user, C, 4 SECONDS))	//if Failed to put the condom on
 			return
 		if(!user.transferItemToLoc(src, P)) //check if you can put it in
@@ -85,12 +86,12 @@
 			L.update_genitals() // apply the colour!
 		*/
 		if(C.has_penis())
-			to_chat(C, "<span class='userlove'>Your penis feels more safe!</span>")
+			to_chat(C, span_userlove("Your penis feels more safe!"))
 		else
-			to_chat(C, "<span class='userlove'>Your strapon feels more safe... Not sure why would that matter though.</span>")
+			to_chat(C, span_userlove("Your strapon feels more safe... Not sure why would that matter though."))
 
 		return
-	to_chat(user, "<span class='notice'>You can't find anywhere to put the condom on.</span>") //Trying to put it on something without/or with a hidden
+	to_chat(user, span_notice("You can't find anywhere to put the condom on.")) //Trying to put it on something without/or with a hidden
 */
 
 /obj/item/clothing/head/condom //p
@@ -156,7 +157,7 @@
 	//P.colourtint = ""
 	update_genitals()
 	C.update_icon()
-	to_chat(src, "<span class='love'>The condom bubbles outwards and fills with your cum.</span>")
+	to_chat(src, span_love("The condom bubbles outwards and fills with your cum."))
 	SEND_SIGNAL(src, COMSIG_ADD_MOOD_EVENT, "orgasm", /datum/mood_event/orgasm)
 	setArousalLoss(0)
 	*/

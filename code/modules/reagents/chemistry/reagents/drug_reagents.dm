@@ -570,13 +570,13 @@
 			M.emote(pick("moan","blush"))
 		if(prob(min(current_cycle/4,10)))
 			var/aroused_message = pick("You feel frisky.", "You're having trouble suppressing your urges.", "You feel in the mood.")
-			to_chat(M, "<span class='userlove'>[aroused_message]</span>")
+			to_chat(M, span_userlove("[aroused_message]"))
 		if(ishuman(M))
 			var/mob/living/carbon/human/H = M
 			var/list/genits = H.adjust_arousal(current_cycle, "crocin", aphro = TRUE) // redundant but should still be here
 			for(var/g in genits)
 				var/obj/item/organ/genital/G = g
-				to_chat(M, "<span class='userlove'>[G.arousal_verb]!</span>")
+				to_chat(M, span_userlove("[G.arousal_verb]!"))
 	..()
 
 /datum/reagent/drug/aphrodisiacplus
@@ -603,14 +603,14 @@
 				aroused_message = pick("You need to fuck someone!", "You're bursting with sexual tension!", "You can't get sex off your mind!")
 			else
 				aroused_message = pick("You feel a bit hot.", "You feel strong sexual urges.", "You feel in the mood.", "You're ready to go down on someone.")
-			to_chat(M, "<span class='userlove'>[aroused_message]</span>")
+			to_chat(M, span_userlove("[aroused_message]"))
 			REMOVE_TRAIT(M,TRAIT_NEVERBONER,APHRO_TRAIT)
 		if(ishuman(M))
 			var/mob/living/carbon/human/H = M
 			var/list/genits = H.adjust_arousal(100, "hexacrocin", aphro = TRUE) // redundant but should still be here
 			for(var/g in genits)
 				var/obj/item/organ/genital/G = g
-				to_chat(M, "<span class='userlove'>[G.arousal_verb]!</span>")
+				to_chat(M, span_userlove("[G.arousal_verb]!"))
 	..()
 
 /datum/reagent/drug/aphrodisiacplus/addiction_act_stage2(mob/living/M)
@@ -631,7 +631,7 @@
 	if(M && M.client?.prefs.arousable && !(M.client?.prefs.cit_toggles & NO_APHRO) && prob(33))
 		if(prob(5) && ishuman(M) && M.has_dna() && (M.client?.prefs.cit_toggles & BIMBOFICATION))
 			if(!HAS_TRAIT(M,TRAIT_PERMABONER))
-				to_chat(M, "<span class='userlove'>Your libido is going haywire!</span>")
+				to_chat(M, span_userlove("Your libido is going haywire!"))
 				M.log_message("Made perma-horny by hexacrocin.",LOG_EMOTE)
 				ADD_TRAIT(M,TRAIT_PERMABONER,APHRO_TRAIT)
 	..()
@@ -677,6 +677,6 @@
 
 /datum/reagent/drug/anaphrodisiacplus/overdose_process(mob/living/M)
 	if(M && M.client?.prefs.arousable && prob(5))
-		to_chat(M, "<span class='userlove'>You feel like you'll never feel aroused again...</span>")
+		to_chat(M, span_userlove("You feel like you'll never feel aroused again..."))
 		ADD_TRAIT(M,TRAIT_NEVERBONER,APHRO_TRAIT)
 	..()

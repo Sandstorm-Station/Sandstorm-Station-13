@@ -11,18 +11,25 @@
 	glass_desc = "You feel it's not named like that for no reason."
 	value = 6
 
+// Liquid Panty Dropper drink effect
 /datum/reagent/consumable/ethanol/panty_dropper/on_mob_life(mob/living/carbon/C)
-	var/mob/living/carbon/human/M = C
-	var/anyclothes = FALSE
-	var/items = M.get_contents()
-	for(var/obj/item/W in items)
-		if(W.body_parts_covered && ismob(W.loc))
-			anyclothes = TRUE
-			M.dropItemToGround(W, TRUE)
-			playsound(M.loc, 'sound/items/poster_ripped.ogg', 50, 1)
-	if(anyclothes)
-		M.visible_message("<span class='userlove'>[M] suddenly bursts out of [M.p_their()] clothes!</span>")
-	return ..()
+	// Praise the funny BYOND dots
+	. = ..()
+
+	// Check for client
+	if(C.client)
+		// Check target pref for ERP
+		if(C.client?.prefs.erppref == "No")
+			// Return without triggering
+			return
+
+		// Check target pref for aphrodisiacs
+		if(C.client?.prefs.cit_toggles & NO_APHRO)
+			// Return without triggering
+			return
+
+	// Perform drink effect
+	C.clothing_burst(C)
 
 /datum/reagent/consumable/ethanol/lean
 	name = "Lean"
@@ -54,7 +61,7 @@
 			if(!M.undergoing_cardiac_arrest() && M.can_heartattack() && prob(1))
 				M.set_heartattack(TRUE)
 				if(M.stat == CONSCIOUS)
-					M.visible_message("<span class='userdanger'>[M] clutches at [M.p_their()] chest as if [M.p_their()] heart stopped!</span>") // too much lean :(
+					M.visible_message(span_userdanger("[M] clutches at [M.p_their()] chest as if [M.p_their()] heart stopped!")) // too much lean :(
 	..()
 
 /datum/reagent/consumable/ethanol/cum_in_a_hot_tub
@@ -147,12 +154,49 @@
 	boozepwr = 50
 	color = "#0919be"
 	quality = DRINK_FANTASTIC
+	value = REAGENT_VALUE_AMAZING
 	taste_description = "fuzz, warmth and comfort"
 	glass_icon = 'modular_splurt/icons/obj/drinks.dmi'
 	glass_icon_state = "mothinchief"
 	glass_name = "Moth in Chief"
 	glass_desc = "A simple yet elegant drink, inspires confidence in even the most pessimistic of men. The mantle rests well upon your shoulders."
+	can_synth = FALSE;
 
+//This drink gives the combined benefits of Stimulants, Regenerative Jelly, and Commander and Chief, and a mood buff similar to Copium; at least to an extent.
+/datum/reagent/consumable/ethanol/commander_and_chief/on_mob_life(mob/living/carbon/M)
+	if(M.mind && HAS_TRAIT(M.mind, TRAIT_CAPTAIN_METABOLISM))
+		M.heal_bodypart_damage(2,2,2)
+		M.adjustBruteLoss(-5,0)
+		M.adjustOxyLoss(-5,0)
+		M.adjustFireLoss(-5,0)
+		M.adjustToxLoss(-5,0,TRUE) //Heals Toxin Lovers
+		M.radiation = max(M.radiation - 25, 0)
+		. = 1
+	else
+		//Commander and Chief Effects, no need to be captain to receive the effect
+		M.heal_bodypart_damage(2,2,2)
+		M.adjustBruteLoss(-3.5,0)
+		M.adjustOxyLoss(-3.5,0)
+		M.adjustFireLoss(-3.5,0)
+		M.adjustToxLoss(-3.5,0,TRUE) //Heals Toxin Lovers
+		M.radiation = max(M.radiation - 25, 0)
+
+	//Stimulant Effects
+	M.AdjustAllImmobility(-60, FALSE)
+	M.AdjustUnconscious(-60, FALSE)
+	M.adjustStaminaLoss(-20*REAGENTS_EFFECT_MULTIPLIER, FALSE)
+	..()
+	. = 1
+
+/datum/reagent/medicine/stimulants/on_mob_metabolize(mob/living/L)
+	..()
+	L.add_movespeed_modifier(/datum/movespeed_modifier/reagent/stimulants)
+	ADD_TRAIT(L, TRAIT_TASED_RESISTANCE, type)
+
+/datum/reagent/medicine/stimulants/on_mob_end_metabolize(mob/living/L)
+	L.remove_movespeed_modifier(/datum/movespeed_modifier/reagent/stimulants)
+	REMOVE_TRAIT(L, TRAIT_TASED_RESISTANCE, type)
+	..()
 
 // ~( Ported from TG )~
 /datum/reagent/consumable/ethanol/curacao
@@ -162,7 +206,6 @@
 	color = "#1a5fa1"
 	quality = DRINK_NICE
 	taste_description = "blue orange"
-	glass_icon = 'modular_splurt/icons/obj/drinks.dmi'
 	glass_icon_state = "curacao"
 	glass_name = "glass of curaçao"
 	glass_desc = "It's blue, da ba dee."
@@ -185,7 +228,6 @@
 	color = "#1c0000"
 	quality = DRINK_NICE
 	taste_description = "spiced alcohol"
-	glass_icon = 'modular_splurt/icons/obj/drinks.dmi'
 	glass_icon_state = "bitters"
 	glass_name = "glass of bitters"
 	glass_desc = "Typically you'd want to mix this with something- but you do you."
@@ -197,7 +239,6 @@
 	color = "#1F0001"
 	quality = DRINK_VERYGOOD
 	taste_description = "haughty arrogance"
-	glass_icon = 'modular_splurt/icons/obj/drinks.dmi'
 	glass_icon_state = "admiralty"
 	glass_name = "Admiralty"
 	glass_desc = "Hail to the Admiral, for he brings fair tidings, and rum too."
@@ -209,7 +250,6 @@
 	color = "#8c5046"
 	quality = DRINK_GOOD
 	taste_description = "ginger and rum"
-	glass_icon = 'modular_splurt/icons/obj/drinks.dmi'
 	glass_icon_state = "dark_and_stormy"
 	glass_name = "Dark and Stormy"
 	glass_desc = "Thunder and lightning, very very frightening."
@@ -221,7 +261,6 @@
 	color = "#c4b35c"
 	quality = DRINK_VERYGOOD
 	taste_description = "rum and spices"
-	glass_icon = 'modular_splurt/icons/obj/drinks.dmi'
 	glass_icon_state = "long_john_silver"
 	glass_name = "Long John Silver"
 	glass_desc = "Named for a famous pirate, who may or may not have been fictional. But hey, why let the truth get in the way of a good yarn?"
@@ -233,7 +272,6 @@
 	color = "#003153"
 	quality = DRINK_VERYGOOD
 	taste_description = "companionship"
-	glass_icon = 'modular_splurt/icons/obj/drinks.dmi'
 	glass_icon_state = "long_haul"
 	glass_name = "Long Haul"
 	glass_desc = "A perfect companion for a lonely long haul flight."
@@ -245,7 +283,6 @@
 	color = "#b4abd0"
 	quality = DRINK_FANTASTIC
 	taste_description = "salt and spice"
-	glass_icon = 'modular_splurt/icons/obj/drinks.dmi'
 	glass_icon_state = "salt_and_swell"
 	glass_name = "Salt and Swell"
 	glass_desc = "Ah, I do like to be beside the seaside."
@@ -257,7 +294,6 @@
 	color = "#b4abd0"
 	quality = DRINK_VERYGOOD
 	taste_description = "spicy sour cheesy yoghurt"
-	glass_icon = 'modular_splurt/icons/obj/drinks.dmi'
 	glass_icon_state = "tich_toch"
 	glass_name = "Tich Toch"
 	glass_desc = "Oh god."
@@ -269,7 +305,6 @@
 	color = "#F4EFE2"
 	quality = DRINK_NICE
 	taste_description = "sour cheesy yoghurt"
-	glass_icon = 'modular_splurt/icons/obj/drinks.dmi'
 	glass_icon_state = "tiltaellen"
 	glass_name = "glass of tiltällen"
 	glass_desc = "Eww... it's curdled."
@@ -281,8 +316,45 @@
 	color = "#00bfa3"
 	quality = DRINK_VERYGOOD
 	taste_description = "the tropics"
-	glass_icon = 'modular_splurt/icons/obj/drinks.dmi'
 	glass_icon_state = "tropical_storm"
 	glass_name = "Tropical Storm"
 	glass_desc = "Less destructive than the real thing."
 
+/datum/reagent/consumable/ethanol/skullfucker_deluxe
+	name = "Skullfucker Deluxe"
+	description = "The Rosewater secret to becoming psychotically retarded. It has many warning labels."
+	boozepwr = 75
+	color = "#cb4d8b"
+	quality = DRINK_VERYGOOD
+	taste_description = "being violated by a tiny fish with crayons"
+	glass_icon = 'modular_splurt/icons/obj/drinks.dmi'
+	glass_icon_state = "skullfucker"
+	glass_name = "Skullfucker Deluxe"
+	glass_desc = "It has many warning labels, you might want to read them."
+	overdose_threshold = 25
+
+/datum/reagent/consumable/ethanol/skullfucker_deluxe/on_mob_life(mob/living/carbon/C)
+	. = ..()
+	//Do nothing if they haven't metabolized enough
+	if(!current_cycle >= 15)
+		return
+	//Make them giggle
+	if(prob(40))
+		C.emote("giggle")
+	//Make them jitter
+	if(prob(20))
+		C.jitteriness = max(C.jitteriness, 30)
+
+/datum/reagent/consumable/ethanol/skullfucker_deluxe/overdose_process(mob/living/M)
+	. = ..()
+	//Do nothing if they're already fwuffy OwO
+	var/obj/item/organ/tongue/T = M.getorganslot(ORGAN_SLOT_TONGUE)
+	if(istype(T, /obj/item/organ/tongue/fluffy))
+		return
+
+	//Replace their tongue with a fwuffy one
+	var/obj/item/organ/tongue/nT = new /obj/item/organ/tongue/fluffy
+	T.Remove()
+	nT.Insert(M)
+	T.moveToNullspace()//To valhalla
+	to_chat(M, span_big_warning("Your tongue feels... weally fwuffy!!"))

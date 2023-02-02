@@ -49,9 +49,9 @@
 				if(KA && KA.bayonet)
 					message = pick(glorymessagespka | glorymessagespkabayonet)
 			if(message)
-				visible_message("<span class='danger'><b>[slayer] [message]</b></span>")
+				visible_message(span_danger("<b>[slayer] [message]</b>"))
 			else
-				visible_message("<span class='danger'><b>[slayer] does something generally considered brutal to [src]... Whatever that may be!</b></span>")
+				visible_message(span_danger("<b>[slayer] does something generally considered brutal to [src]... Whatever that may be!</b>"))
 			slayer.heal_overall_damage(gloryhealth,gloryhealth)
 			playsound(src.loc, death_sound, 150, TRUE, -1)
 			crusher_drop_mod *= 2
@@ -61,4 +61,4 @@
 			else if(mob_biotypes & MOB_ROBOTIC)
 				new /obj/effect/gibspawner/robot(src.loc)
 		else
-			to_chat(slayer, "<span class='danger'>You fail to glory kill [src]!</span>")
+			to_chat(slayer, span_danger("You fail to glory kill [src]!"))

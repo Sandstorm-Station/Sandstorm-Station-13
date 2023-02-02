@@ -15,9 +15,12 @@
 		var/obj/structure/chair/C = new /obj/structure/chair(loc)
 		W.play_tool_sound(src)
 		C.setDir(dir)
-		part.forceMove(loc)
-		part.master = null
-		part = null
+
+		if (part)
+			part.forceMove(loc)
+			part.master = null
+			part = null
+
 		qdel(src)
 
 /obj/structure/chair/e_chair/proc/shock()
@@ -44,3 +47,9 @@
 			to_chat(buckled_mob, "<span class='userdanger'>You feel a deep shock course through your body!</span>")
 			addtimer(CALLBACK(buckled_mob, /mob/living.proc/electrocute_act, 85, src, 1), 1)
 	visible_message("<span class='danger'>The electric chair went off!</span>", "<span class='italics'>You hear a deep sharp shock!</span>")
+
+/obj/structure/chair/e_chair/Destroy()
+	if(part)
+		QDEL_NULL(part)
+
+	return ..()

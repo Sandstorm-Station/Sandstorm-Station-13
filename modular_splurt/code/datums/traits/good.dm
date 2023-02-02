@@ -3,8 +3,8 @@
 	desc = "Your body is abnormally enduring and can take 10% more damage."
 	value = 4
 	medical_record_text = "Patient has an abnormally high capacity for injury."
-	gain_text = "<span class='notice'>You feel very sturdy.</span>"
-	lose_text = "<span class='notice'>You feel less sturdy.</span>"
+	gain_text = span_notice("You feel very sturdy.")
+	lose_text = span_notice("You feel less sturdy.")
 
 /datum/quirk/tough/add()
 	quirk_holder.maxHealth *= 1.1
@@ -20,8 +20,8 @@
 	value = 2 //Is not actually THAT good. Does not grant breathing and does stamina damage to the point you are unable to attack. Crippling on lavaland, but you'll survive. Is not a replacement for SEVA suits for this reason. Can be adjusted.
 	mob_trait = TRAIT_ASHRESISTANCE
 	medical_record_text = "Patient has an abnormally thick epidermis."
-	gain_text = "<span class='notice'>You feel resistant to burning brimstone.</span>"
-	lose_text = "<span class='notice'>You feel less as if your flesh is more flamamble.</span>"
+	gain_text = span_notice("You feel resistant to burning brimstone.")
+	lose_text = span_notice("You feel less as if your flesh is more flamamble.")
 
 /* --FALLBACK SYSTEM INCASE THE TRAIT FAILS TO WORK. Do NOT enable this without editing ash_storm.dm to deal stamina damage with ash immunity.
 /datum/quirk/ashresistance/add()
@@ -37,8 +37,8 @@
 	name = "Dominant Aura"
 	desc = "Your mere presence is assertive enough to appear as powerful to other people, so much in fact that the weaker kind can't help but throw themselves at your feet at the snap of a finger."
 	value = 1
-	gain_text = "<span class='notice'>You feel like making someone your pet.</span>"
-	lose_text = "<span class='notice'>You feel less assertive.</span>"
+	gain_text = span_notice("You feel like making someone your pet.")
+	lose_text = span_notice("You feel less assertive.")
 
 /datum/quirk/dominant_aura/add()
 	. = ..()
@@ -113,15 +113,15 @@
 	value = 1
 	medical_record_text = "Patient has attempted to cover the room in webs, claiming to be \"making a nest\"."
 	mob_trait = TRAIT_ARACHNID
-	gain_text = "<span class='notice'>You feel a strange sensation near your anus...</span>"
-	lose_text = "<span class='notice'>You feel like you can't spin webs anymore...</span>"
+	gain_text = span_notice("You feel a strange sensation near your anus...")
+	lose_text = span_notice("You feel like you can't spin webs anymore...")
 	processing_quirk = TRUE
 
 /datum/quirk/arachnid/add()
 	. = ..()
 	var/mob/living/carbon/human/H = quirk_holder
 	if(is_species(H,/datum/species/arachnid))
-		to_chat(H, "<span class='warning'>As an arachnid, this quirk does nothing for you, as these abilities are innate to your species.</span>")
+		to_chat(H, span_warning("As an arachnid, this quirk does nothing for you, as these abilities are innate to your species."))
 		return
 	var/datum/action/innate/spin_web/SW = new
 	var/datum/action/innate/spin_cocoon/SC = new
@@ -143,3 +143,10 @@
 	desc = "You are able to move about freely in pressurized low-gravity environments be it through the use of wings, magic, or some other physiological nonsense."
 	value = 1
 	mob_trait = TRAIT_FLUTTER
+
+/datum/quirk/cloth_eater
+	name = "Clothes Eater"
+	desc = "You can eat most apparel to gain a boost in mood, and to gain some nutrients. (Insects already have this.)"
+	value = 1
+	var/mood_category ="cloth_eaten"
+	mob_trait = TRAIT_CLOTH_EATER
