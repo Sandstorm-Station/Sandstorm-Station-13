@@ -12,13 +12,15 @@
 	C.add_quirk(/datum/quirk/estrous_detection, SPECIES_TRAIT)
 
 	// Define round ID
-	var/round_id = text2num(GLOB.round_id)
+	// Requires a server database to use this
+	var/round_id = text2num(GLOB.round_id) || null
 
 	// Define round mating season value
 	var/round_season = ((round_id + (ESTROUS_CYCLE_OFFSET + 2)) % ESTROUS_CYCLE_LENGTH)
 
 	// Check for mating season
-	if(round_season <= 2 && round_season >= 0)
+	// Default to active without variable
+	if((!round_id) || round_season <= 2 && round_season >= 0)
 		// Alert user in chat
 		to_chat(C, span_userlove("It\'s that time again. Your loins lay restless as they await a potential mate."))
 
