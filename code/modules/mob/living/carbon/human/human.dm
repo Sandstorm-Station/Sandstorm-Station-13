@@ -37,8 +37,11 @@
 /mob/living/carbon/human/proc/setup_human_dna()
 	//initialize dna. for spawned humans; overwritten by other code
 	create_dna(src)
-	randomize_human(src)
 	dna.initialize_dna()
+	// I know this is absolutely bad, but tg shitcode gives me no other option
+	// Prevents calling randomize_human twice for /species type (triple with the one above)
+	if(istype(src, /mob/living/carbon/human/species))
+		randomize_human(src)
 
 /mob/living/carbon/human/ComponentInitialize()
 	. = ..()
