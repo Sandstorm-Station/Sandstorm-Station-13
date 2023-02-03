@@ -553,22 +553,29 @@
 	desc = "Transform in or out of your wolf form."
 	var/transformed = FALSE
 	var/species_changed = FALSE
-	var/list/old_features = list("species" = SPECIES_HUMAN, "legs" = "Plantigrade", "size" = 1, "bark")
 	var/werewolf_gender = "Lycan"
+	var/list/old_features
 
 /datum/action/cooldown/werewolf/transform/Grant()
 	. = ..()
 
+	// Define carbon owner
+	var/mob/living/carbon/action_owner_carbon = owner
+
+	// Define parent quirk
+	var/datum/quirk/werewolf/quirk_data = locate() in action_owner_carbon.roundstart_quirks
+
+	// Check if data was copied
+	if(!quirk_data)
+		// Log error and return
+		log_game("Failed to get species data for werewolf action!")
+		return
+
+	// Define stored features
+	old_features = quirk_data.old_features.Copy()
+
 	// Define action owner
 	var/mob/living/carbon/human/action_owner = owner
-
-	// Record features
-	old_features = action_owner.dna.features.Copy()
-	old_features["species"] = action_owner.dna.species.type
-	old_features["custom_species"] = action_owner.custom_species
-	old_features["size"] = get_size(action_owner)
-	old_features["bark"] = action_owner.vocal_bark_id
-	old_features["taur"] = action_owner.dna.features["taur"]
 
 	// Set species gendered name
 	switch(action_owner.gender)
@@ -617,6 +624,9 @@
 			// Set old species
 			old_features["species"] = owner_species
 
+		// Define species prefix
+		var/custom_species_prefix
+
 		// Check if species is mammal (anthro)
 		if(ismammal(action_owner))
 			// Do nothing!
@@ -627,11 +637,13 @@
 
 		// Check if species is a jelly
 		else if(isjellyperson(action_owner))
-			// Do nothing!
+			// Set species prefix
+			custom_species_prefix = "Jelly "
 
 		// Check if species is a jelly subtype
 		else if(owner_species in subtypesof(/datum/species/jelly))
-			// Do nothing!
+			// Set species prefix
+			custom_species_prefix = "Slime "
 
 		// Species is not a mammal
 		else
@@ -642,7 +654,7 @@
 			species_changed = TRUE
 
 		// Set species features
-		action_owner.dna.custom_species = "[werewolf_gender]wulf"
+		action_owner.dna.custom_species = "[custom_species_prefix][werewolf_gender]wulf"
 		action_owner.dna.species.mutant_bodyparts["mam_tail"] = "Otusian"
 		action_owner.dna.species.mutant_bodyparts["legs"] = "Digitigrade"
 		action_owner.Digitigrade_Leg_Swap(FALSE)
