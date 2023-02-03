@@ -26,12 +26,12 @@
 			H.dna.features["mam_ears"] = "Sergal"
 			H.dna.features["mam_tail"] = "Sergal"
 			H.dna.features["mam_snouts"] = "Sergal"
-			prepare_markings(H, selected_marking = sub_species)
+			prepare_markings(H, selected_marking = sub_species, color1 = mcolor, color2 = mcolor, color3 = mcolor)
 		if("Husky")
 			H.dna.features["mam_ears"] = "Husky"
 			H.dna.features["mam_tail"] = "Husky"
 			H.dna.features["mam_snouts"] = "Husky"
-			prepare_markings(H, selected_marking = sub_species)
+			prepare_markings(H, selected_marking = sub_species, color1 = mcolor, color2 = mcolor, color3 = mcolor)
 		else
 			H.dna.features["mam_ears"] = pick(GLOB.mam_ears_list)
 			H.dna.features["mam_tail"] = pick(GLOB.mam_tails_list)

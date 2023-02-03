@@ -48,7 +48,7 @@
 	H.vocal_pitch = BARK_PITCH_RAND(H.gender)
 	H.vocal_pitch_range = BARK_VARIANCE_RAND
 
-/proc/prepare_markings(mob/living/carbon/human/user, selected_limb = "All", selected_marking, marking_type = "mam_body_markings")
+/proc/prepare_markings(mob/living/carbon/human/user, selected_limb = "All", selected_marking, marking_type = "mam_body_markings", color1, color2, color3)
 	if(!istype(user))
 		return
 	var/datum/dna/dna = user.dna
@@ -65,4 +65,4 @@
 	var/datum/sprite_accessory/mam_body_markings/S = marking_list[selected_marking]
 	for(var/limb in S.covered_limbs)
 		var/limb_value = text2num(GLOB.bodypart_values[limb])
-		dna.features[marking_type] += list(list(limb_value, selected_marking))
+		dna.features[marking_type] += list(list(limb_value, selected_marking, list(color1, color2, color3)))
