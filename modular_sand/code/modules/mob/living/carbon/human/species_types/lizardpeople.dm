@@ -35,7 +35,7 @@
 	. = ..()
 	ADD_TRAIT(C, TRAIT_ESTROUS_DETECT, SPECIES_TRAIT)
 	var/temp = text2num(GLOB.round_id)
-	var/tempish = ((temp + (HEAT_CYCLE_OFFSET + 2)) % HEAT_CYCLE_LENGTH)
+	var/tempish = ((temp + (ESTROUS_CYCLE_OFFSET + 2)) % ESTROUS_CYCLE_LENGTH)
 	if(tempish <= 2 && tempish >= 0)
 		to_chat(C, span_userlove("It's this time again.. Your loins lay restless as they await a potential mate."))
 		ADD_TRAIT(C, TRAIT_ESTROUS_ACTIVE, SPECIES_TRAIT)
@@ -50,5 +50,5 @@
 		to_chat(C, span_userlove("Your animalistic need leaves you as you become a different species."))
 
 
-#undef HEAT_CYCLE_LENGTH
-#undef HEAT_CYCLE_OFFSET
+#undef ESTROUS_CYCLE_LENGTH
+#undef ESTROUS_CYCLE_OFFSET
