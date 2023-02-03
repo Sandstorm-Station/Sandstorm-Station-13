@@ -1,3 +1,19 @@
+/datum/reagent/drug/aphrodisiacplus/overdose_start(mob/living/M)
+	// Check for pre-existing heat trait
+	if(!HAS_TRAIT(M, TRAIT_ESTROUS_ACTIVE))
+		// Check client preferences
+		if(M && M.client?.prefs.arousable && !(M.client?.prefs.cit_toggles & NO_APHRO))
+			// Add quirk
+			M.add_quirk(/datum/quirk/estrous_active, APHRO_TRAIT)
+
+			// Chat message is handled by the quirk
+
+			// Log interaction
+			M.log_message("Given the In Estrous quirk by hexacrocin overdose.", LOG_EMOTE)
+
+	// Return normally
+	. = ..()
+
 //Own stuff
 /datum/reagent/drug/maint/tar
 	name = "Maintenance Tar"
