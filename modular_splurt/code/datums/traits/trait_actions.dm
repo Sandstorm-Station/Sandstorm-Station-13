@@ -568,6 +568,7 @@
 	old_features["custom_species"] = action_owner.custom_species
 	old_features["size"] = get_size(action_owner)
 	old_features["bark"] = action_owner.vocal_bark_id
+	old_features["taur"] = action_owner.dna.features["taur"]
 
 	// Set species gendered name
 	switch(action_owner.gender)
@@ -653,6 +654,8 @@
 		action_owner.dna.features["insect_fluff"] = "Hyena"
 		action_owner.update_size(get_size(action_owner) + 0.5)
 		action_owner.set_bark("bark")
+		if(old_features["taur"] != "None")
+			action_owner.dna.features["taur"] = "Canine"
 		if(!(action_owner.dna.species.species_traits.Find(DIGITIGRADE)))
 			action_owner.dna.species.species_traits += DIGITIGRADE
 		action_owner.update_body()
@@ -694,6 +697,8 @@
 		action_owner.dna.features["mam_tail"] = old_features["mam_tail"]
 		action_owner.dna.features["legs"] = old_features["legs"]
 		action_owner.dna.features["insect_fluff"] = old_features["insect_fluff"]
+		if(old_features["taur"] != "None")
+			action_owner.dna.features["taur"] = old_features["taur"]
 		if(old_features["legs"] == "Plantigrade")
 			action_owner.dna.species.species_traits -= DIGITIGRADE
 			action_owner.Digitigrade_Leg_Swap(TRUE)
