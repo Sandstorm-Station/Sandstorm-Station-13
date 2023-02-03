@@ -535,8 +535,6 @@
 	var/list/old_features
 
 /datum/quirk/werewolf/add()
-	. = ..()
-
 	// Define old features
 	old_features = list("species" = SPECIES_HUMAN, "legs" = "Plantigrade", "size" = 1, "bark")
 
@@ -559,8 +557,6 @@
 	quirk_action.Grant(quirk_holder)
 
 /datum/quirk/werewolf/remove()
-	. = ..()
-
 	// Define quirk action
 	var/datum/action/cooldown/werewolf/transform/quirk_action = locate() in quirk_holder.actions
 
