@@ -1,3 +1,6 @@
+#define ESTROUS_CYCLE_LENGTH 32
+#define ESTROUS_CYCLE_OFFSET 11
+
 /datum/species/lizard/New()
 	mutant_bodyparts += list("ears" = "None")
 	. = ..()
@@ -28,29 +31,24 @@
 	// If this creature gets to chance gender & get a
 	// give_genitals(TRUE) call they'll have features still
 
-/*
-#define HEAT_CYCLE_LENGTH 32
-#define HEAT_CYCLE_OFFSET 11
-
 /datum/species/lizard/ashwalker/on_species_gain(mob/living/carbon/human/C, datum/species/old_species, pref_load)
 	. = ..()
-	ADD_TRAIT(C, TRAIT_HEAT_DETECT, SPECIES_TRAIT)
+	ADD_TRAIT(C, TRAIT_ESTROUS_DETECT, SPECIES_TRAIT)
 	var/temp = text2num(GLOB.round_id)
 	var/tempish = ((temp + (HEAT_CYCLE_OFFSET + 2)) % HEAT_CYCLE_LENGTH)
 	if(tempish <= 2 && tempish >= 0)
 		to_chat(C, span_userlove("It's this time again.. Your loins lay restless as they await a potential mate."))
-		ADD_TRAIT(C, TRAIT_IN_HEAT, SPECIES_TRAIT)
+		ADD_TRAIT(C, TRAIT_ESTROUS_ACTIVE, SPECIES_TRAIT)
 
 /datum/species/lizard/ashwalker/on_species_loss(mob/living/carbon/human/C, datum/species/new_species, pref_load)
 	. = ..()
-	REMOVE_TRAIT(C, TRAIT_HEAT_DETECT, SPECIES_TRAIT)
-	REMOVE_TRAIT(C, TRAIT_IN_HEAT, SPECIES_TRAIT)
+	REMOVE_TRAIT(C, TRAIT_ESTROUS_DETECT, SPECIES_TRAIT)
+	REMOVE_TRAIT(C, TRAIT_ESTROUS_ACTIVE, SPECIES_TRAIT)
 	// Still have the trait? We don't need to know that
 	// we lost it from no longer being an ashwalker
-	if(!HAS_TRAIT(C, TRAIT_IN_HEAT))
+	if(!HAS_TRAIT(C, TRAIT_ESTROUS_ACTIVE))
 		to_chat(C, span_userlove("Your animalistic need leaves you as you become a different species."))
 
 
 #undef HEAT_CYCLE_LENGTH
 #undef HEAT_CYCLE_OFFSET
-*/
