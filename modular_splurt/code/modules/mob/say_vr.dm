@@ -55,7 +55,7 @@
 
 /mob/living/verb/subtle_indicator()
 	// Set data
-	set name = "subtle_indicator"
+	set name = "Subtle (Indicator)"
 	set category = "IC"
 
 	// Check if say is disabled
