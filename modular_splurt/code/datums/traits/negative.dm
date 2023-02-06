@@ -167,14 +167,22 @@
 		to_chat(quirk_holder, span_love("[pick(trigger_phrases)]"))
 
 	// Add active status trait
-	ADD_TRAIT(quirk_holder, TRAIT_DUMB_CUM_CRAVE, type)
+	ADD_TRAIT(quirk_holder, TRAIT_DUMB_CUM_CRAVE, "dumb4cum")
+
+	// Add illiterate and dumb
+	ADD_TRAIT(quirk_holder, TRAIT_ILLITERATE, "dumb4cum")
+	ADD_TRAIT(quirk_holder, TRAIT_DUMB, "dumb4cum")
 
 	// Add negative mood effect
 	SEND_SIGNAL(quirk_holder, COMSIG_ADD_MOOD_EVENT, "cum_craving", /datum/mood_event/cum_craving)
 
 /datum/quirk/dumb4cum/proc/uncrave()
 	// Remove active status trait
-	REMOVE_TRAIT(quirk_holder, TRAIT_DUMB_CUM_CRAVE, type)
+	REMOVE_TRAIT(quirk_holder, TRAIT_DUMB_CUM_CRAVE, "dumb4cum")
+
+	// Remove illiterate and dumb
+	ADD_TRAIT(quirk_holder, TRAIT_ILLITERATE, "dumb4cum")
+	ADD_TRAIT(quirk_holder, TRAIT_DUMB, "dumb4cum")
 
 	// Remove negative mood event
 	SEND_SIGNAL(quirk_holder, COMSIG_CLEAR_MOOD_EVENT, "cum_craving")
