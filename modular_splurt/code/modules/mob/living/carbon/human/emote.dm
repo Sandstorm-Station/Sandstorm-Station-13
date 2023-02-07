@@ -9,3 +9,4 @@
 	key_third_person = "whines"
 	message = "whines."
 	sound = 'modular_splurt/sound/voice/whine.ogg'
+
