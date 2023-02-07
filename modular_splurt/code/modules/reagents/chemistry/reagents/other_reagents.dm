@@ -2,7 +2,7 @@
 	. = ..()
 
 	// Check for D4C quirk
-	if(HAS_TRAIT(M,TRAIT_DUMB_CUM_CRAVE))
+	if(HAS_TRAIT(M,TRAIT_DUMB_CUM))
 		// Define quirk entry
 		var/datum/quirk/dumb4cum/quirk_target = locate() in M.roundstart_quirks
 
@@ -13,7 +13,7 @@
 	. = ..()
 
 	// Check for D4C quirk
-	if(HAS_TRAIT(M,TRAIT_DUMB_CUM_CRAVE))
+	if(HAS_TRAIT(M,TRAIT_DUMB_CUM))
 		// Define quirk entry
 		var/datum/quirk/dumb4cum/quirk_target = locate() in M.roundstart_quirks
 
