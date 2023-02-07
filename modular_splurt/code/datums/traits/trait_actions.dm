@@ -709,6 +709,7 @@
 		action_owner.dna.features["mam_tail"] = old_features["mam_tail"]
 		action_owner.dna.features["legs"] = old_features["legs"]
 		action_owner.dna.features["insect_fluff"] = old_features["insect_fluff"]
+		action_owner.dna.species.eye_type = old_features["eye_type"]
 		if(old_features["taur"] != "None")
 			action_owner.dna.features["taur"] = old_features["taur"]
 		if(old_features["legs"] == "Plantigrade")

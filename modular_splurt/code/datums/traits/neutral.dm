@@ -548,6 +548,7 @@
 	old_features["size"] = get_size(quirk_mob)
 	old_features["bark"] = quirk_mob.vocal_bark_id
 	old_features["taur"] = quirk_mob.dna.features["taur"]
+	old_features["eye_type"] = quirk_mob.dna.species.eye_type
 
 /datum/quirk/werewolf/post_add()
 	// Define quirk action
