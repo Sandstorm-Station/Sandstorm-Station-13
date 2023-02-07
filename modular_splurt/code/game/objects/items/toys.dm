@@ -46,6 +46,7 @@
 
 /obj/item/toy/beach_ball/syndicate
 	icon_state = "ballsyndicate"
+	icon = 'modular_splurt/icons/misc/beach.dmi'
 	desc = "Hmm. This ball is a bit heavier and tougher than the others."
 
 /obj/item/electropack/vibrator/var/hidden
