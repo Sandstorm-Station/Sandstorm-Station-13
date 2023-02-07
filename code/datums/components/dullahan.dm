@@ -18,6 +18,10 @@
 
 	dullahan_head.owner = H
 	RegisterSignal(H, COMSIG_LIVING_REGENERATE_LIMBS, .proc/unlist_head)
+	//SPLURT edit
+	RegisterSignal(dullahan_head, COMSIG_MOUSEDROPPED_ONTO, .proc/on_mouse_dropped)
+	RegisterSignal(dullahan_head, COMSIG_MOUSEDROP_ONTO, .proc/on_mouse_drop)
+	//
 
 	// make sure the brain can't decay or fall out
 	var/obj/item/organ/brain/B = H.getorganslot(ORGAN_SLOT_BRAIN)
@@ -88,7 +92,7 @@
 	desc = "An abstraction."
 	actions_types = list(/datum/action/item_action/organ_action/dullahan)
 	zone = "abstract"
-	tint = INFINITY // used to switch the vision perspective to the head on species_gain().
+	//tint = INFINITY // used to switch the vision perspective to the head on species_gain(). //SPLURT edit
 	organ_flags = ORGAN_NO_SPOIL | ORGAN_NO_DISMEMBERMENT
 
 /obj/item/dullahan_head
@@ -119,12 +123,12 @@
 
 /obj/item/dullahan_head/update_appearance()
 	if(owner && !HAS_TRAIT(owner, TRAIT_HUMAN_NO_RENDER))
-		remove_head_overlays()
+		//remove_head_overlays() //SPLURT edit
 		// to do this without duplicating large amounts of code
 		// it's best to regenerate the head, then remove it once we have the overlays we want
 		owner.regenerate_limb(BODY_ZONE_HEAD, TRUE) // don't heal them
-		owner.cut_overlays()
-		owner.regenerate_icons(TRUE) // yes i know it's expensive but do you want me to rewrite our entire overlay system, also block recursive calls here by passing in TRUE (it wont go back to call update_appearance this way)
+		//owner.cut_overlays() //SPLURT edit
+		//owner.regenerate_icons(TRUE) // yes i know it's expensive but do you want me to rewrite our entire overlay system, also block recursive calls here by passing in TRUE (it wont go back to call update_appearance this way) //SPLURT edit
 		var/obj/item/bodypart/head/head = owner.get_bodypart(BODY_ZONE_HEAD)
 		if(head)
 			add_overlay(head.get_limb_icon(FALSE, TRUE, TRUE))
@@ -151,15 +155,29 @@
 	name = "Toggle Perspective"
 	desc = "Switch between seeing normally from your head, or blindly from your body."
 
+//SPLURT edit
+/datum/action/item_action/organ_action/dullahan/proc/toggle_monochromacy()
+	var/obj/item/organ/eyes/eyes = owner.getorganslot(ORGAN_SLOT_EYES)
+
+	if(eyes.monochromacy_on)
+		owner.remove_client_colour(/datum/client_colour/monochrome)
+	else
+		owner.add_client_colour(/datum/client_colour/monochrome)
+
+	eyes.monochromacy_on = !eyes.monochromacy_on
+
+/obj/item/organ/eyes
+	var/monochromacy_on = FALSE
+
+/datum/action/item_action/organ_action/dullahan/Grant(mob/M)
+	. = ..()
+	toggle_monochromacy()
+//
 /datum/action/item_action/organ_action/dullahan/Trigger()
 	. = ..()
 	var/mob/living/carbon/human/H = owner
-	var/obj/item/organ/eyes/E = owner.getorganslot(ORGAN_SLOT_EYES)
-	if(E)
-		if(E.tint)
-			E.tint = 0
-		else
-			E.tint = INFINITY
+
+	toggle_monochromacy() //SPLURT edit
 
 	var/datum/component/dullahan/D = H.GetComponent(/datum/component/dullahan)
 	if(D)
@@ -171,8 +189,7 @@
 		return .
 	var/obj/item/organ/eyes/eyes = H.getorganslot(ORGAN_SLOT_EYES)
 	if(eyes)
-		H.update_tint()
-		if(eyes.tint)
+		if(eyes.monochromacy_on) //SPLURT edit
 			H.reset_perspective(H)
 		else
 			H.reset_perspective(dullahan_head)
