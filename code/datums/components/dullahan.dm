@@ -18,10 +18,6 @@
 
 	dullahan_head.owner = H
 	RegisterSignal(H, COMSIG_LIVING_REGENERATE_LIMBS, .proc/unlist_head)
-	//SPLURT edit
-	RegisterSignal(dullahan_head, COMSIG_MOUSEDROPPED_ONTO, .proc/on_mouse_dropped)
-	RegisterSignal(dullahan_head, COMSIG_MOUSEDROP_ONTO, .proc/on_mouse_drop)
-	//
 
 	// make sure the brain can't decay or fall out
 	var/obj/item/organ/brain/B = H.getorganslot(ORGAN_SLOT_BRAIN)
@@ -92,7 +88,7 @@
 	desc = "An abstraction."
 	actions_types = list(/datum/action/item_action/organ_action/dullahan)
 	zone = "abstract"
-	//tint = INFINITY // used to switch the vision perspective to the head on species_gain(). //SPLURT edit
+	tint = INFINITY // used to switch the vision perspective to the head on species_gain().
 	organ_flags = ORGAN_NO_SPOIL | ORGAN_NO_DISMEMBERMENT
 
 /obj/item/dullahan_head
@@ -118,7 +114,7 @@
 	cut_overlays()
 
 /obj/item/dullahan_head/proc/add_head_overlay(var/overlay)
-	overlays_standing += overlay
+	LAZYADD(overlays_standing, overlay) //SPLURT edit
 	add_overlay(overlay)
 
 /obj/item/dullahan_head/update_appearance()
@@ -155,24 +151,6 @@
 	name = "Toggle Perspective"
 	desc = "Switch between seeing normally from your head, or blindly from your body."
 
-//SPLURT edit
-/datum/action/item_action/organ_action/dullahan/proc/toggle_monochromacy()
-	var/obj/item/organ/eyes/eyes = owner.getorganslot(ORGAN_SLOT_EYES)
-
-	if(eyes.monochromacy_on)
-		owner.remove_client_colour(/datum/client_colour/monochrome)
-	else
-		owner.add_client_colour(/datum/client_colour/monochrome)
-
-	eyes.monochromacy_on = !eyes.monochromacy_on
-
-/obj/item/organ/eyes
-	var/monochromacy_on = FALSE
-
-/datum/action/item_action/organ_action/dullahan/Grant(mob/M)
-	. = ..()
-	toggle_monochromacy()
-//
 /datum/action/item_action/organ_action/dullahan/Trigger()
 	. = ..()
 	var/mob/living/carbon/human/H = owner
