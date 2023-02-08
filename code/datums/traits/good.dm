@@ -128,7 +128,7 @@
 	var/mob/living/carbon/human/H = quirk_holder
 	var/obj/item/camera/camera = new(get_turf(H))
 	H.put_in_hands(camera)
-	H.equip_to_slot(camera, ITEM_SLOT_BACKPACK)
+	H.equip_to_slot(camera, ITEM_SLOT_BACKPACK) //SPLURT Edit
 	H.regenerate_icons()
 
 /datum/quirk/selfaware
