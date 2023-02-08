@@ -49,8 +49,6 @@
 	icon = 'modular_splurt/icons/misc/beach.dmi'
 	desc = "Hmm. This ball is a bit heavier and tougher than the others."
 
-/obj/item/electropack/vibrator/var/hidden
-
 /obj/item/toy/beach_ball/attackby(obj/item/I, mob/living/user)
 	if(istype(I, /obj/item/electropack/vibrator))
 		if(vibrator)
@@ -95,7 +93,7 @@
 		//	playsound(src.loc, 'modular_splurt/sound/effects/beachball_whine.ogg', 50, 1)
 
 /obj/item/toy/beach_ball/syndicate/process()
-	..()
+	. = ..()
 	if(vibrator && enabled)
 		throwforce = 60
 
@@ -112,8 +110,6 @@
 
 	else
 		..()
-
-/obj/item/toy/beach_ball/syndicate
 
 /obj/item/toy/beach_ball/syndicate/throw_at(atom/target, range, speed, mob/thrower, spin=1, diagonals_first = 0, datum/callback/callback)
 	if(ishuman(thrower))
