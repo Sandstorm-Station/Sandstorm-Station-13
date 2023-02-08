@@ -105,3 +105,4 @@
 	if(istype(hit_atom, /turf/closed/wall) && throwforce > 0)
 		var/turf/closed/wall/W = hit_atom
 		W.dismantle_wall()
+
