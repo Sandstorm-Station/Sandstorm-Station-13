@@ -89,27 +89,11 @@
 	if(vibrator && enabled)
 		throw_at(get_edge_target_turf(src,pick(GLOB.alldirs)),3,1)
 		playsound(src, 'modular_splurt/sound/lewd/vibrate.ogg', 40, 1, -1)
-		//if(prob(25))
-		//	playsound(src.loc, 'modular_splurt/sound/effects/beachball_whine.ogg', 50, 1)
 
 /obj/item/toy/beach_ball/syndicate/process()
 	. = ..()
 	if(vibrator && enabled)
 		throwforce = 60
-
-/obj/item/electropack/vibrator/receive_signal(datum/signal/signal)
-	if(hidden)
-		if(!signal || signal.data["code"] != code)
-			return
-
-		if(last > world.time)
-			return
-
-		playsound(src.loc, 'modular_splurt/sound/lewd/vibrate.ogg', 50, 1, -1)
-
-
-	else
-		..()
 
 /obj/item/toy/beach_ball/syndicate/throw_at(atom/target, range, speed, mob/thrower, spin=1, diagonals_first = 0, datum/callback/callback)
 	if(ishuman(thrower))
@@ -121,7 +105,3 @@
 	if(istype(hit_atom, /turf/closed/wall) && throwforce > 0)
 		var/turf/closed/wall/W = hit_atom
 		W.dismantle_wall()
-	//if(istype(hit_atom, /mob/living/carbon/human))
-		//playsound(src.loc, 'modular_splurt/sound/effects/beachball_huh.ogg', 50, 1)
-
-
