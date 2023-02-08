@@ -111,3 +111,4 @@
 	name = "A condenser"
 	path = /obj/item/autosurgeon/condenser
 	cost = 7
+
