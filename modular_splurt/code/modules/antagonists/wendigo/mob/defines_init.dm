@@ -110,8 +110,10 @@
 	return TRUE
 /mob/living/carbon/wendigo/IsAdvancedToolUser()
 	return TRUE
+/* So they can be pulled.
 /mob/living/carbon/wendigo/can_be_pulled()
 	return FALSE
+*/
 /mob/living/carbon/wendigo/is_literate()
 	return TRUE
 /mob/living/carbon/wendigo/canBeHandcuffed()
