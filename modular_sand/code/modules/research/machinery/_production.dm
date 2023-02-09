@@ -1,4 +1,14 @@
+/obj/machinery/rnd/production/Initialize(mapload)
+	. = ..()
+
+	// Generate access lists
+	gen_access()
+
 /obj/machinery/rnd/production/ui_interact(mob/user)
+	// Check if access is required
+	if(!req_access)
+		return ..()
+
 	// Define machine user
 	var/mob/living/carbon/human/machine_user = user
 
@@ -6,62 +16,26 @@
 	if(!istype(machine_user))
 		return ..()
 
-	// Define user job assignment
-	var/job_type = machine_user.get_assignment(if_no_id = null, if_no_job = null, hand_first = TRUE)
+	// Define user ID card
+	var/obj/item/card/id/user_id = machine_user.get_idcard()
 
-	// Check if assignment was found
-	if(!job_type)
+	// Check if ID card was found
+	if(!istype(user_id))
 		// Warn in local chat, then return
-		say("Unable to verify user credentials. Access denied.")
-		return
-
-	// Define job name
-	var/user_job_name = GetJobName(job_type)
-
-	// Check if job name exists
-	if(!user_job_name)
-		// Warn in local chat, then return
-		say("Unable to verify user assignment. Access denied.")
+		say("Access denied: Unable to scan user ID card.")
 		return
 
 	// Check for Captain
-	if(user_job_name == "Captain")
+	if(ACCESS_CAPTAIN in user_id.access)
 		// Allow usage
 		return ..()
 
-	// Check job based on protolathe type
-	// Then check if user has that job
-	// If so, return normally
-	switch(department_tag)
-		if("Engineering")
-			if(user_job_name in GLOB.engineering_positions)
-				return ..()
+	// Check if access requirements are met
+	if(check_access(user_id))
+		// Allow use
+		return ..()
 
-		if("Service")
-			if(user_job_name in GLOB.civilian_positions)
-				return ..()
-
-		if("Medical")
-			if(user_job_name in GLOB.medical_positions)
-				return ..()
-
-		if("Cargo")
-			if(user_job_name in GLOB.supply_positions)
-				return ..()
-
-		if("Science")
-			if(user_job_name in GLOB.science_positions)
-				return ..()
-
-		if("Security")
-			if(user_job_name in GLOB.security_positions)
-				return ..()
-
-		// Non-department lathe
-		else
-			return ..()
-
-	// User is not a valid job
+	// User does not have access
 	// Warn in local chat, then return
-	say("No valid departmental credentials detected. Access denied.")
+	say("Access denied: No valid departmental credentials detected.")
 	return
