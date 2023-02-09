@@ -2781,7 +2781,7 @@ GLOBAL_LIST_EMPTY(preferences_datums)
 						features["balls_fluid"] = new_fluid.type
 
 				if("breasts_size")
-					var/new_size = input(user, "Breast Size", "Character Preference") as null|anything in GLOB.breast_values
+					var/new_size = input(user, "Breast Size", "Character Preference") as null|anything in CONFIG_GET(keyed_list/breasts_cups_prefs)
 					if(new_size)
 						features["breasts_size"] = new_size
 
