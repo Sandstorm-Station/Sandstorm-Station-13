@@ -16,9 +16,23 @@
 		usr.set_machine(src)
 		if(href_list["tetrisScore"])
 			var/temp_score = text2num(href_list["tetrisScore"])
-			say("YOUR SCORE: [temp_score]!")
 			var/reward = round(temp_score/REWARD_DIVISOR)
 			prizevend(usr, reward)
+
+			// Check if user is a scientist
+			if(usr.mind && (usr.mind.assigned_role == "Scientist" || usr.mind.assigned_role == "Research Director"))
+				// Check if science exists
+				if(SSresearch.science_tech)
+					// Add science points based on score
+					SSresearch.science_tech.add_point_list(list(TECHWEB_POINT_TYPE_GENERIC = temp_score))
+
+					// Announce points earned
+					say("Success! Applying [temp_score] points to research algorithms...")
+
+			// User is not a scientist
+			else
+				// Display normal message
+				say("YOUR SCORE: [temp_score]!")
 	return
 
 /obj/machinery/computer/arcade/tetris/attack_ai(user as mob)
