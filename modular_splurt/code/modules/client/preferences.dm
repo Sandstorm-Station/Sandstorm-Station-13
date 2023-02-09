@@ -9,8 +9,9 @@
 
 	//Extra saves for donators
 	max_save_slots = CONFIG_GET(number/base_save_slots)
-	var/extra_slots = (IS_CKEY_DONATOR_GROUP(C.key, DONATOR_GROUP_TIER_1) + IS_CKEY_DONATOR_GROUP(C.key, DONATOR_GROUP_TIER_2) + IS_CKEY_DONATOR_GROUP(C.key, DONATOR_GROUP_TIER_3)) * 10
-	max_save_slots += extra_slots
+	if(istype(C))
+		var/extra_slots = (IS_CKEY_DONATOR_GROUP(C.key, DONATOR_GROUP_TIER_1) + IS_CKEY_DONATOR_GROUP(C.key, DONATOR_GROUP_TIER_2) + IS_CKEY_DONATOR_GROUP(C.key, DONATOR_GROUP_TIER_3)) * 10
+		max_save_slots += extra_slots
 
 	. = ..()
 
