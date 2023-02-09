@@ -122,11 +122,6 @@
 		to_chat(src, span_userlove("You climax [(Lgen) ? "in [L]'s [Lgen.name]" : "with [L]"], your [G.name] spilling nothing."))
 		to_chat(L, span_userlove("[src] climaxes [(Lgen) ? "in your [Lgen.name]" : "with you"], [p_their()] [G.name] spilling nothing!"))
 	//SEND_SIGNAL(L, COMSIG_ADD_MOOD_EVENT, "orgasm", /datum/mood_event/orgasm) //Sandstorm edit
-	if(iswendigo(L))
-		var/mob/living/carbon/wendigo/W = L
-		if(L.pulling == src)
-			L.slaves |= src
-			to_chat(src, "<font color='red'> You are now [W]'s slave! Serve your master properly! </font>")
 	do_climax(fluid_source, spillage ? loc : L, G, spillage,, Lgen)
 	//L.receive_climax(src, Lgen, G, spillage)
 
