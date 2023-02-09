@@ -101,7 +101,6 @@
 			sent_interactions += list(interaction)
 	.["interactions"] = sent_interactions
 
-	/*
 	//Get their genitals
 	var/list/genitals = list()
 	var/mob/living/carbon/get_genitals = self
@@ -185,7 +184,6 @@
 			genital_entry["equipments"] = equipment_names
 			genital_interactibles += list(genital_entry)
 	.["genital_interactibles"] = genital_interactibles
-	*/
 
 	var/datum/preferences/prefs = self?.client.prefs
 	if(prefs)
@@ -239,7 +237,6 @@
 				o.do_action(usr, target)
 				return TRUE
 			return FALSE
-		/*
 		if("genital")
 			var/mob/living/carbon/self = usr
 			if("visibility" in params)
@@ -303,7 +300,6 @@
 							user.transferItemToLoc(get_turf(user))
 						return TRUE
 					return FALSE
-		*/
 		if("char_pref")
 			var/datum/preferences/prefs = usr.client.prefs
 			var/value = num_to_pref(params["value"])

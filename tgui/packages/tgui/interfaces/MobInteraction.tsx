@@ -23,6 +23,41 @@ type InteractionData = {
   type: number;
 }
 
+type GenitalInfo = {
+  genitals: GenitalData[];
+}
+
+type GenitalData = {
+  name: string,
+  key: string,
+  visibility: string,
+  extras: string,
+  extra_choices: string[],
+  possible_choices: string[],
+  can_arouse: boolean,
+  arousal_state: boolean,
+  always_accessible: boolean,
+}
+
+type GenitalManagerInfo = {
+  isTargetSelf: boolean;
+  genital_fluids: GenitalFluid[];
+  genital_interactibles: GenitalInteractionInfos[];
+}
+
+type GenitalInteractionInfos = {
+  name: string,
+  key: string,
+  possible_choices: string[],
+  equipments: string[],
+}
+
+type GenitalFluid = {
+  name: string,
+  key: string,
+  fluids: number,
+}
+
 type CharacterPrefsInfo = {
   erp_pref: number,
   noncon_pref: number,
@@ -103,19 +138,29 @@ export const MobInteraction = (props, context) => {
             <Tabs.Tab selected={tabIndex === 0} onClick={() => setTabIndex(0)}>
               Interactions
             </Tabs.Tab>
-            <Tabs.Tab selected={tabIndex === 1} onClick={() => setTabIndex(2)}>
+            <Tabs.Tab selected={tabIndex === 1} onClick={() => setTabIndex(1)}>
+              Genital Options
+            </Tabs.Tab>
+            <Tabs.Tab selected={tabIndex === 2} onClick={() => setTabIndex(2)}>
               Character Prefs
             </Tabs.Tab>
-            <Tabs.Tab selected={tabIndex === 2} onClick={() => setTabIndex(3)}>
+            <Tabs.Tab selected={tabIndex === 3} onClick={() => setTabIndex(3)}>
               Preferences
+            </Tabs.Tab>
+            <Tabs.Tab selected={tabIndex === 4} onClick={() => setTabIndex(4)}>
+              Genital Manager
             </Tabs.Tab>
           </Tabs>
           {tabIndex === 0 && (
             <InteractionsTab />
           ) || tabIndex === 1 && (
-            <CharacterPrefsTab />
+            <GenitalTab />
           ) || tabIndex === 2 && (
+            <CharacterPrefsTab />
+          ) || tabIndex === 3 && (
             <ContentPreferencesTab />
+          ) || tabIndex === 4 && (
+            <GenitalManagerTab />
           ) || ("Somehow, you've got into an invalid page, please report this.")}
         </Section>
       </Window.Content>
@@ -190,6 +235,168 @@ export const sortInteractions = (interactions, searchText = '') => {
     sortBy(interaction => interaction.desc),
     sortBy(interaction => interaction.type),
   ])(interactions);
+};
+
+// Self explanatory
+const ModeToIcon = {
+  "Always visible": "eye",
+  "Hidden by clothes": "tshirt",
+  "Hidden by underwear": "low-vision",
+  "Always hidden": "eye-slash",
+  "Allows egg stuffing": "egg",
+};
+
+/*
+  Greetings you, yes you, adding more stuff to actions,
+  To not have as much headache as i did,
+  do not attempt to make a sum of 100% with the buttons
+  as it will mess up math somewhere and overflow.
+
+  Also this is adjusted only for the current size,
+  if anyone feels like shrinking,
+  their window it will overflow anyways.
+  Single items is fine.
+*/
+const GenitalTab = (props, context) => {
+  const { act, data } = useBackend<GenitalInfo>(context);
+  const genitals = data.genitals || [];
+  return (
+    genitals.length ? (
+      <Flex direction="column">
+        {genitals.map(genital => (
+          <Section key={genital.key} title={genital.name} textAlign="center">
+            <Table>
+              <TableCell width="50%" textAlign="center">
+                Visibility<br />
+                {genital.possible_choices.map(choice => (
+                  <Button
+                    width={((1 / genital.possible_choices.length) * 97) + "%"}
+                    key={choice}
+                    tooltip={choice}
+                    icon={ModeToIcon[choice]}
+                    color={genital.visibility === choice ? "green" : "default"}
+                    onClick={() => act('genital', {
+                      genital: genital.key,
+                      visibility: choice,
+                    })} />
+                ))}
+              </TableCell>
+              <TableCell textAlign="center">
+                Actions<br />
+                <Button
+                  width="49%"
+                  key={genital.arousal_state}
+                  tooltip={genital.can_arouse
+                    ? ((genital.arousal_state ? "Unarouse" : "Arouse") + " your " + genital.name.toLowerCase())
+                    : "You cannot modify arousal on your " + genital.name.toLowerCase()}
+                  icon={genital.arousal_state ? "heart" : "heart-broken"}
+                  color={genital.can_arouse ? (genital.arousal_state ? "green" : "default") : "grey"}
+                  onClick={() => act('genital', {
+                    genital: genital.key,
+                    set_arousal: !genital.arousal_state,
+                  })} />
+                {genital.extra_choices instanceof Array
+                  ? genital.extra_choices.map(choice => (
+                    <Button
+                      width="50%"
+                      key={choice}
+                      tooltip={choice}
+                      icon={ModeToIcon[choice]}
+                      color={genital.extras === choice ? "green" : "default"}
+                      onClick={() => act('genital', {
+                        genital: genital.key,
+                        visibility: choice,
+                      })} />
+                  )) : null}
+                <Button
+                  width="49%"
+                  key={genital.always_accessible}
+                  tooltip={genital.always_accessible
+                    ? "Forbid others from manipulating this genital at any moment"
+                    : "Allow others to manipulate this genital at any moment"}
+                  icon={genital.always_accessible ? "hand-paper" : 'hand-rock'}
+                  color={genital.always_accessible ? "green" : "default"}
+                  onClick={() => act('genital', {
+                    genital: genital.key,
+                    set_accessibility: true,
+                  })} />
+              </TableCell>
+            </Table>
+          </Section>
+        ))}
+      </Flex>
+    ) : (
+      <Section align="center">
+        You don&apos;t seem to have any genitals...
+        Or any that you could modify.
+      </Section>
+    )
+  );
+};
+
+const GenitalManagerTab = (props, context) => {
+  const { act, data } = useBackend<GenitalManagerInfo>(context);
+  const isTargetSelf = data.isTargetSelf;
+  const genital_fluids = data.genital_fluids || [];
+  const genital_interactibles = data.genital_interactibles || [];
+  return (
+    genital_fluids.length || genital_interactibles.length ? (
+      <>
+        <Section title="Genital Fluids">
+          <LabeledList>
+            {genital_fluids.map(genital => (
+              <LabeledList.Item key={genital['key']} label={genital['name']}>
+                <ProgressBar
+                  key={genital['key']}
+                  value={genital['fluid'] ? genital['fluid'] : 0.0}
+                  color="white" />
+              </LabeledList.Item>
+            ))}
+          </LabeledList>
+        </Section>
+        <Section title="Actions">
+          {genital_interactibles.map(genital => (
+            <Section key={genital.key} title={genital.name}>
+              {
+                genital.equipments.length ? (
+                  <>
+                    <b>Equipments:</b>
+                    <Table direction="column">
+                      {genital.equipments.map(equipment => (
+                        <TableRow key={equipment}>
+                          {equipment}
+                        </TableRow>
+                      ))}
+                    </Table>
+                    <Divider />
+                  </>
+                ) : null
+              }
+
+              {genital.possible_choices.map(choice => (
+                <Button
+                  key={choice}
+                  content={choice}
+                  tooltip={choice}
+                  onClick={() => act('genital_interaction', {
+                    genital: genital.key,
+                    action: choice,
+                  })} />
+              ))}
+            </Section>
+          ))}
+        </Section>
+      </>
+    ) : (
+      <Section align="center">
+        {
+          isTargetSelf
+            ? "You don't seem to have any genitals... Or any that you could do anything with"
+            : "They don't seem to have any genitals... Or any that you could do anything with"
+        }
+      </Section>
+    )
+  );
 };
 
 const CharacterPrefsTab = (props, context) => {
