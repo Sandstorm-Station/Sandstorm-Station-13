@@ -84,6 +84,12 @@
 			R.reaction(turfing ? target : target.loc, TOUCH, 1, 0)
 		if(!turfing)
 			R.trans_to(target, R.total_volume * (spill ? G.fluid_transfer_factor : 1), log = TRUE)
+			if(iswendigo(target))
+				var/mob/living/carbon/wendigo/W = target
+				if(W.pulling == src)
+					W.slaves |= src
+					to_chat(src, "<font color='red'> You are now [W]'s slave! Serve your master properly! </font>")
+
 	G.last_orgasmed = world.time
 	R.clear_reagents()
 	//skyrat edit - chock i am going to beat you to death
