@@ -66,8 +66,8 @@
 //Ridiculous sizes makes you more cumbersome.
 //this is far too lewd wah
 
-/obj/item/organ/genital/breasts/modify_size(modifier, min = -INFINITY)
-	var/new_value = clamp(size + modifier, min, max_size)
+/obj/item/organ/genital/breasts/modify_size(modifier, min = -INFINITY, max = INFINITY)
+	var/new_value =  clamp(size + modifier, min, min(max_size, max))
 	if(new_value == size)
 		return
 	prev_size = size
