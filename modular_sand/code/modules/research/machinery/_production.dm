@@ -40,6 +40,11 @@
 		say("Unable to verify user rank. Access denied.")
 		return
 
+	// Check for Captain
+	if(user_job_name == "Captain")
+		// Allow usage
+		return ..()
+
 	// Check job based on protolathe type
 	// Then check if user has that job
 	// If so, return normally
