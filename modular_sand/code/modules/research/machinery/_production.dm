@@ -6,38 +6,22 @@
 	if(!istype(machine_user))
 		return ..()
 
-	// Define name on ID card
-	var/user_public_name = machine_user.get_visible_name()
+	// Define user job assignment
+	var/job_type = machine_user.get_assignment(if_no_id = null, if_no_job = null, hand_first = TRUE)
 
-	// Check if ID name was found
-	if(user_public_name == "Unknown")
+	// Check if assignment was found
+	if(!job_type)
 		// Warn in local chat, then return
-		say("User cannot be identified. Access denied.")
+		say("Unable to verify user credentials. Access denied.")
 		return
 
-	// Define potential job record
-	var/datum/data/record/user_job_record
+	// Define job name
+	var/user_job_name = GetJobName(job_type)
 
-	// Get user assignment from ID
-	user_job_record = find_record("name", user_public_name, GLOB.data_core.general)
-
-	// Define potential job name
-	var/user_job_name
-
-	// Check if a job was found
-	if(user_job_record && (user_job_record != "Unknown"))
-		// Define potential rank
-		var/user_job_rank = user_job_record.fields["rank"]
-
-		// Check if rank field exists
-		if(user_job_rank)
-			// Define user job name as rank
-			user_job_name = GetJobName(user_job_rank)
-
-	// No job was found
-	else
+	// Check if job name exists
+	if(!user_job_name)
 		// Warn in local chat, then return
-		say("Unable to verify user rank. Access denied.")
+		say("Unable to verify user assignment. Access denied.")
 		return
 
 	// Check for Captain
