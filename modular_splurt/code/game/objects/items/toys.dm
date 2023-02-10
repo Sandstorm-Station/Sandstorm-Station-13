@@ -98,10 +98,10 @@
 /obj/item/toy/beach_ball/syndicate/throw_at(atom/target, range, speed, mob/thrower, spin=1, diagonals_first = 0, datum/callback/callback)
 	if(ishuman(thrower))
 		throwforce = 0
-	..()
+	. = ..()
 
 /obj/item/toy/beach_ball/syndicate/throw_impact(atom/hit_atom, datum/thrownthing/throwingdatum)
-	..()
+	. = ..()
 	if(istype(hit_atom, /turf/closed/wall) && throwforce > 0)
 		var/turf/closed/wall/W = hit_atom
 		W.dismantle_wall()
