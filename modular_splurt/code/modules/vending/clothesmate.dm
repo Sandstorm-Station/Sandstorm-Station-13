@@ -19,7 +19,8 @@
 		/obj/item/clothing/under/bluedress = 3,
 		/obj/item/clothing/under/misc/leia_outfit = 2,
 		/obj/item/clothing/under/misc/leia_outfit/red = 2,
-		/obj/item/clothing/under/misc/leia_outfit/blue = 2
+		/obj/item/clothing/under/misc/leia_outfit/blue = 2,
+		/obj/item/clothing/under/performer/polychromic = 2
 	)
 	var/list/extra_contraband = list(
 		/obj/item/clothing/under/rank/civilian/lawyer/galaxy_red = 3,
