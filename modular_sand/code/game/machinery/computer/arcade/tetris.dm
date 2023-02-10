@@ -1,17 +1,11 @@
-// The machine awards prizes based on score divided by this value
-#define TETRIS_REWARD_DIVISOR 1000
-
-// Score required to message admins
-#define TETRIS_SCORE_HIGH 10000
-
-// Maximum score accepted
-#define TETRIS_SCORE_MAX 100000
-
-// Maximum score to be used for research
-#define TETRIS_SCORE_MAX_SCI 10000
-
-// Time between dispensing prizes
-#define TETRIS_TIME_COOLDOWN 600 // One minute
+// Configuration defines
+#define TETRIS_REWARD_DIVISOR CONFIG_GET(number/tetris_reward_divisor)
+#define TETRIS_PRIZES_MAX CONFIG_GET(number/tetris_prizes_max)
+#define TETRIS_SCORE_HIGH CONFIG_GET(number/tetris_score_high)
+#define TETRIS_SCORE_MAX CONFIG_GET(number/tetris_score_max)
+#define TETRIS_SCORE_MAX_SCI CONFIG_GET(number/tetris_score_max_sci)
+#define TETRIS_TIME_COOLDOWN CONFIG_GET(number/tetris_time_cooldown)
+#define TETRIS_NO_SCIENCE CONFIG_GET(flag/tetris_no_science)
 
 /obj/machinery/computer/arcade/tetris
 	name = "T.E.T.R.I.S."
@@ -37,8 +31,8 @@
 				// Alert admins
 				message_admins("[ADMIN_LOOKUPFLW(usr)] [ADMIN_KICK(usr)] has achieved a score of [temp_score] on [src] in [get_area(src.loc)]! Score exceeds configured suspicion threshold.")
 
-			// Round and clamp prize count from 0 to 5
-			var/reward_count = clamp(round(temp_score/TETRIS_REWARD_DIVISOR), 0, 5)
+			// Round and clamp prize count from 0 to (default) 5
+			var/reward_count = clamp(round(temp_score/TETRIS_REWARD_DIVISOR), 0, TETRIS_PRIZES_MAX)
 
 			// Define score text
 			var/score_text = (reward_count ? temp_score : "PATHETIC! TRY HARDER")
@@ -66,22 +60,24 @@
 			// Vend prizes
 			prizevend(usr, reward_count)
 
+			// Check if science points are possible and allowed
+			if((!SSresearch.science_tech) || TETRIS_NO_SCIENCE)
+				return
+
 			// Define user ID card
 			var/obj/item/card/id/user_id = usr.get_idcard()
 
 			// Check if ID exists
 			// Check if ID has science access
 			if(istype(user_id) && (ACCESS_RESEARCH in user_id.access))
-				// Check if science exists
-				if(SSresearch.science_tech)
-					// Limit maximum research points to (default) 10,000
-					var/score_research_points = clamp(temp_score, 0, TETRIS_SCORE_MAX_SCI)
+				// Limit maximum research points to (default) 10,000
+				var/score_research_points = clamp(temp_score, 0, TETRIS_SCORE_MAX_SCI)
 
-					// Add science points based on score
-					SSresearch.science_tech.add_point_list(list(TECHWEB_POINT_TYPE_GENERIC = score_research_points))
+				// Add science points based on score
+				SSresearch.science_tech.add_point_list(list(TECHWEB_POINT_TYPE_GENERIC = score_research_points))
 
-					// Announce points earned
-					say("Research personnel detected. Applying gathered data to algorithms...")
+				// Announce points earned
+				say("Research personnel detected. Applying gathered data to algorithms...")
 
 	return
 
@@ -163,7 +159,9 @@
 
 // Remove defines
 #undef TETRIS_REWARD_DIVISOR
+#undef TETRIS_PRIZES_MAX
 #undef TETRIS_SCORE_HIGH
 #undef TETRIS_SCORE_MAX
 #undef TETRIS_SCORE_MAX_SCI
 #undef TETRIS_TIME_COOLDOWN
+#undef TETRIS_NO_SCIENCE
