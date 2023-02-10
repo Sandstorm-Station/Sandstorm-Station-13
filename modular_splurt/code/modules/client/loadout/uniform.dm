@@ -146,3 +146,19 @@
 	path = /obj/item/clothing/under/goner/fake/poly
 	loadout_flags = LOADOUT_CAN_NAME | LOADOUT_CAN_DESCRIPTION | LOADOUT_CAN_COLOR_POLYCHROMIC
 	loadout_initial_colors = list("#E6E6E6")
+
+/datum/gear/uniform/leia_outfit
+	name = "Princess Leia Putfit"
+	path = /obj/item/clothing/under/misc/leia_outfit
+
+/datum/gear/uniform/leia_outfit/red
+	name = "Red Princess Leia Outfit"
+	path = /obj/item/clothing/under/misc/leia_outfit/red
+
+/datum/gear/uniform/leia_outfit/blue
+	name = "Blue Princess Leia Outfit"
+	path = /obj/item/clothing/under/misc/leia_outfit/blue
+
+/datum/gear/uniform/performer/polychromic
+	name = "Polychromic performers one piece"
+	path = /obj/item/clothing/under/performer/polychromic

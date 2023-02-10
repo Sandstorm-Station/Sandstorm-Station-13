@@ -311,3 +311,30 @@
 /obj/item/clothing/under/misc/gear_harness
 	body_parts_covered = NONE
 
+/obj/item/clothing/under/misc/leia_outfit
+	name = "space princess outfit"
+	desc = "Chain for your Master's erotic asphyxiation not included."
+	icon = 'modular_splurt/icons/obj/clothing/uniforms.dmi'
+	mob_overlay_icon = 'modular_splurt/icons/mob/clothing/uniform.dmi'
+	icon_state = "leia"
+	can_adjust = FALSE
+
+/obj/item/clothing/under/misc/leia_outfit/red
+	name = "red space princess outfit"
+	icon_state = "leia_red"
+	desc = "Now in sexy gold and red! Chain for your Master's erotic asphyxiation not included."
+
+/obj/item/clothing/under/misc/leia_outfit/blue
+	name = "blue space princess outfit"
+	icon_state = "leia_blue"
+	desc = "Now in sexy gold and blue! Chain for your Master's erotic asphyxiation not included."
+
+/obj/item/clothing/under/performer/polychromic
+	name = "polychromic performers one piece"
+	icon = 'modular_splurt/icons/obj/clothing/uniforms.dmi'
+	mob_overlay_icon = 'modular_splurt/icons/mob/clothing/uniform.dmi'
+	icon_state = "poly_performer"
+
+/obj/item/clothing/under/performer/polychromic/ComponentInitialize()
+	. = ..()
+	AddElement(/datum/element/polychromic, list("#ffffff"), 1)
