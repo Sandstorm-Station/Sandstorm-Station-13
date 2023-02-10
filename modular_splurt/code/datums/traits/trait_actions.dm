@@ -339,6 +339,22 @@
 
 	// Check for anti-magic
 	if(bite_target.anti_magic_check(FALSE, TRUE, FALSE, 0))
+		// Check for a dumb user
+		if(HAS_TRAIT(action_owner, TRAIT_DUMB))
+			// Warn the user and target
+			to_chat(bite_target, span_warning("[action_owner] tries to bite you, but bursts into flames just as [action_owner.p_they()] come[action_owner.p_s()] into contact with you!"))
+			to_chat(action_owner, span_userdanger("Surges of pain course through your body as you attempt to bite [bite_target]! What were you thinking?"))
+
+			// Stop grabbing
+			action_owner.stop_pulling()
+
+			// Ignite action owner
+			action_owner.adjust_fire_stacks(2)
+			action_owner.IgniteMob()
+
+			// Return with no further effects
+			return
+
 		// Warn the user and target, then return
 		to_chat(bite_target, span_warning("[action_owner] tries to bite you, but stops before touching you!"))
 		to_chat(action_owner, span_warning("[bite_target] is blessed! You stop just in time to avoid catching fire."))
@@ -346,6 +362,24 @@
 
 	// Check for garlic necklace or garlic in the bloodstream
 	if(!blood_sucking_checks(bite_target, TRUE, TRUE))
+		// Check for a dumb user
+		if(HAS_TRAIT(action_owner, TRAIT_DUMB))
+			// Warn the user and target
+			to_chat(bite_target, span_warning("[action_owner] tries to bite you, but recoils in disgust just as [action_owner.p_they()] come[action_owner.p_s()] into contact with you!"))
+			to_chat(action_owner, span_userdanger("An intense wave of disgust washes over your body as you attempt to bite [bite_target]! What were you thinking?"))
+
+			// Stop grabbing
+			action_owner.stop_pulling()
+
+			// Add disgust
+			action_owner.adjust_disgust(10)
+
+			// Vomit
+			action_owner.vomit()
+
+			// Return with no further effects
+			return
+
 		// Warn the user and target, then return
 		to_chat(bite_target, span_warning("[action_owner] tries to bite you, but is warded off by your Allium Sativum!"))
 		to_chat(action_owner, span_warning("You sense that [bite_target] is protected by Allium Sativum, and refrain from biting them."))
@@ -362,14 +396,19 @@
 
 	// Check if total blood would become too low
 	if((target_blood_volume - BLOODFLEDGE_DRAIN_NUM) <= BLOOD_VOLUME_OKAY)
+		// Check for a dumb user
+		if(HAS_TRAIT(action_owner, TRAIT_DUMB))
+			// Warn the user, but allow
+			to_chat(action_owner, span_warning("You pay no attention to [bite_target]'s blood volume, and bite them without hesitation."))
+
 		// Check for aggressive grab
-		if(action_owner.grab_state < GRAB_AGGRESSIVE)
+		else if(action_owner.grab_state < GRAB_AGGRESSIVE)
 			// Warn the user, then return
 			to_chat(action_owner, span_warning("You sense that [bite_target] is running low on blood. You'll need a tighter grip on [bite_target.p_them()] to continue."))
 			return
 
 		// Check for pacifist
-		if(HAS_TRAIT(action_owner, TRAIT_PACIFISM))
+		else if(HAS_TRAIT(action_owner, TRAIT_PACIFISM))
 			// Warn the user, then return
 			to_chat(action_owner, span_warning("You can't drain any more blood from [bite_target] without hurting [bite_target.p_them()]!"))
 			return
