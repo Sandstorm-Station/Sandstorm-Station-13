@@ -1183,7 +1183,7 @@ SAVEFILE UPDATING/VERSIONING - 'Simplified', or rather, more coder-friendly ~Car
 		var/list/L = CONFIG_GET(keyed_list/safe_visibility_toggles)
 		safe_visibilities = L.Copy()
 
-	features["breasts_size"] = sanitize_inlist(features["breasts_size"], GLOB.breast_values, BREASTS_SIZE_DEF)
+	features["breasts_size"] = sanitize_inlist(features["breasts_size"], B_sizes, BREASTS_SIZE_DEF)
 	features["cock_length"] = sanitize_integer(features["cock_length"], min_D, max_D, COCK_SIZE_DEF)
 	features["cock_diameter_ratio"] = sanitize_integer(features["cock_diameter_ratio"], min_diameter_ratio, max_diameter_ratio, COCK_DIAMETER_RATIO_DEF)
 	features["butt_size"] = sanitize_integer(features["butt_size"], min_B, max_B, BUTT_SIZE_DEF)
