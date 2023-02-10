@@ -1,4 +1,5 @@
 /obj/item/organ/genital
+	var/max_size = 6
 	var/datum/reagents/climax_fluids
 	var/datum/reagent/original_fluid_id
 	var/datum/reagent/default_fluid_id
@@ -9,6 +10,9 @@
 	if(owner) //Add extra space depending on the owner's size
 		fluid_max_volume += (modifier*2.5)*(get_size(owner)-1)
 		fluid_rate += (modifier/10)*(get_size(owner)-1)
+
+/obj/item/organ/genital/proc/size_to_state()
+	return size
 
 /obj/item/organ/genital/proc/climax_modify_size(mob/living/partner, obj/item/organ/genital/source_gen)
     return
