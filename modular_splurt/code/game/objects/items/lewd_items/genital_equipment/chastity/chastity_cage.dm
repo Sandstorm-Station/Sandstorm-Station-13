@@ -1,4 +1,4 @@
-#define blacklisted_genitals list(/obj/item/organ/genital/breasts, /obj/item/organ/genital/belly)
+#define BLACKLISTED_GENITALS list(/obj/item/organ/genital/breasts, /obj/item/organ/genital/belly)
 
 /obj/item/organ/genital/proc/can_be_chastened()
 	for(var/blacklisted_genital in blacklisted_genitals)
