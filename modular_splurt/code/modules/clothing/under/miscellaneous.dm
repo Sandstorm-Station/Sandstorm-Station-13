@@ -319,15 +319,9 @@
 	icon_state = "leia"
 	can_adjust = FALSE
 
-/obj/item/clothing/under/misc/leia_outfit/red
-	name = "red space princess outfit"
-	icon_state = "leia_red"
-	desc = "Now in sexy gold and red! Chain for your Master's erotic asphyxiation not included."
-
-/obj/item/clothing/under/misc/leia_outfit/blue
-	name = "blue space princess outfit"
-	icon_state = "leia_blue"
-	desc = "Now in sexy gold and blue! Chain for your Master's erotic asphyxiation not included."
+/obj/item/clothing/under/misc/leia_outfit/ComponentInitialize()
+	. = ..()
+	AddElement(/datum/element/polychromic, list("#C61818", "#D4AF37"), 2)
 
 /obj/item/clothing/under/performer/polychromic
 	name = "polychromic performers one piece"
