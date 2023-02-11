@@ -577,11 +577,11 @@
 	if(!do_after(action_owner, time_interact, target = bite_target))
 		// When failing
 		// Display a local chat message
-		action_owner.visible_message(span_danger("[action_owner]'s fangs are prematurely torn from [bite_target]'s [target_zone_name], spilling [bite_target.p_their()] blood!"))
+		action_owner.visible_message(span_danger("[action_owner]'s fangs are prematurely torn from [bite_target]'s [target_zone_name], spilling some of [bite_target.p_their()] blood!"))
 
-		// Bite target "drops" the blood
+		// Bite target "drops" 20% of the blood
 		// This creates large blood splatter
-		bite_target.bleed(BLOODFLEDGE_DRAIN_NUM, FALSE)
+		bite_target.bleed((BLOODFLEDGE_DRAIN_NUM*0.2), FALSE)
 
 		// Play splatter sound
 		playsound(get_turf(target), 'sound/effects/splat.ogg', 40, 1)
@@ -593,6 +593,19 @@
 
 		// Log the biting action failure
 		log_combat(action_owner,bite_target,"bloodfledge bitten (interrupted)")
+
+		// Add target's blood to quirk holder and themselves
+		bite_target.add_mob_blood(bite_target)
+		action_owner.add_mob_blood(bite_target)
+
+		// Check if body part is valid for bleeding
+		// This reuses the dismember-able check
+		if(target_zone_check)
+			// Cause minor bleeding
+			bite_bodypart.generic_bleedstacks += 2
+
+			// Apply minor damage
+			bite_bodypart.receive_damage(brute = rand(4,8), sharpness = SHARP_POINTY)
 
 		// Start cooldown early
 		// This is to prevent bite interrupt spam
