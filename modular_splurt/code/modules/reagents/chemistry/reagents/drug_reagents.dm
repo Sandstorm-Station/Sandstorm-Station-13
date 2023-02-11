@@ -85,6 +85,9 @@
 
 /datum/reagent/drug/genital_purity/on_mob_metabolize(mob/living/carbon/C)
 	..()
+	if(!(C.client?.prefs.cit_toggles & CHASTITY))
+		return
+
 	var/obj/item/organ/genital/G = C.getorganslot(genital)
 	if(!G)
 		return
@@ -121,6 +124,9 @@
 
 /datum/reagent/drug/genital_stimulator/on_mob_metabolize(mob/living/carbon/C)
 	..()
+	if(!(C.client?.prefs.cit_toggles & STIMULATION))
+		return
+
 	if(genital == "anus" && !C.dna.features["has_anus"])
 		ADD_TRAIT(C, trait_mod_flag, ORGAN_TRAIT)
 		return
