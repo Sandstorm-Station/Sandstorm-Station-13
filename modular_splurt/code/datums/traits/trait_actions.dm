@@ -350,6 +350,93 @@
 		to_chat(action_owner, span_warning(message_invalid_target))
 		return
 
+	// Define selected zone
+	var/target_zone = action_owner.zone_selected
+
+	// Check targeted body part
+	var/obj/item/bodypart/bite_bodypart = bite_target.get_bodypart(target_zone)
+
+	// Define zone name
+	var/target_zone_name = "flesh"
+
+	// Define if zone should be checked
+	// Uses dismember check to determine if it can be missing
+	// Missing limbs are assumed to be dismembered
+	var/target_zone_check = bite_bodypart?.can_dismember() || TRUE
+
+	// Set zone name based on region
+	// Also checks for some protections
+	switch(target_zone)
+		if(BODY_ZONE_HEAD)
+			target_zone_name = "neck"
+
+		if(BODY_ZONE_CHEST)
+			target_zone_name = "shoulder"
+
+		if(BODY_ZONE_L_ARM)
+			target_zone_name = "left arm"
+
+		if(BODY_ZONE_R_ARM)
+			target_zone_name = "right arm"
+
+		if(BODY_ZONE_L_LEG)
+			target_zone_name = "left thigh"
+
+		if(BODY_ZONE_R_LEG)
+			target_zone_name = "right thigh"
+
+		if(BODY_ZONE_PRECISE_EYES)
+			// Check if eyes exist and are exposed
+			if(!bite_target.has_eyes(REQUIRE_EXPOSED))
+				// Warn user and return
+				to_chat(action_owner, span_userdanger("You can't find [bite_target]'s eyes to bite them!"))
+				return
+
+			// Set region data normally
+			target_zone_check = FALSE
+			target_zone_name = "eyes"
+
+		if(BODY_ZONE_PRECISE_MOUTH)
+			// Check if mouth exists and is exposed
+			if(!(bite_target.has_mouth() && bite_target.mouth_is_free()))
+				to_chat(action_owner, span_userdanger("You can't find [bite_target]'s eyes to bite them!"))
+				return
+
+			// Set region data normally
+			target_zone_name = "lips"
+			target_zone_check = FALSE
+
+		if(BODY_ZONE_PRECISE_GROIN)
+			target_zone_name = "groin"
+			target_zone_check = FALSE
+
+		if(BODY_ZONE_PRECISE_L_HAND)
+			target_zone_name = "left wrist"
+
+		if(BODY_ZONE_PRECISE_R_HAND)
+			target_zone_name = "right wrist"
+
+		if(BODY_ZONE_PRECISE_L_FOOT)
+			target_zone_name = "left ankle"
+
+		if(BODY_ZONE_PRECISE_R_FOOT)
+			target_zone_name = "right ankle"
+
+	// Check if target should be checked
+	if(target_zone_check)
+		// Check if bodypart exists
+		if(!bite_bodypart)
+			// Warn user and return
+			to_chat(action_owner, span_userdanger("[bite_target] doesn't have a [target_zone_name] for you to bite!"))
+			return
+
+		// Check if bodypart is organic
+		if(!bite_bodypart.is_organic_limb())
+			// Warn user and target, then return
+			to_chat(action_owner, span_userdanger("You attempt to bite [bite_target]'s [target_zone_name], but can't penetrate the mechanical prosthetic!"))
+			to_chat(bite_target, span_warning("[action_owner] tries to bite your [target_zone_name], but is unable to penetrate the mechanical prosthetic!"))
+			return
+
 	// Check for anti-magic
 	if(bite_target.anti_magic_check(FALSE, TRUE, FALSE, 0))
 		// Check for a dumb user
@@ -369,7 +456,7 @@
 			return
 
 		// Warn the user and target, then return
-		to_chat(bite_target, span_warning("[action_owner] tries to bite you, but stops before touching you!"))
+		to_chat(bite_target, span_warning("[action_owner] tries to bite your [target_zone_name], but stops before touching you!"))
 		to_chat(action_owner, span_warning("[bite_target] is blessed! You stop just in time to avoid catching fire."))
 		return
 
@@ -394,8 +481,8 @@
 			return
 
 		// Warn the user and target, then return
-		to_chat(bite_target, span_warning("[action_owner] tries to bite you, but is warded off by your Allium Sativum!"))
-		to_chat(action_owner, span_warning("You sense that [bite_target] is protected by Allium Sativum, and refrain from biting them."))
+		to_chat(bite_target, span_warning("[action_owner] tries to bite your [target_zone_name], but is warded off by your Allium Sativum!"))
+		to_chat(action_owner, span_warning("You sense that [bite_target] is protected by Allium Sativum, and refrain from biting [bite_target.p_them()]."))
 		return
 
 	// Define bite target's blood volume
@@ -412,7 +499,7 @@
 		// Check for a dumb user
 		if(action_owner_dumb)
 			// Warn the user, but allow
-			to_chat(action_owner, span_warning("You pay no attention to [bite_target]'s blood volume, and bite them without hesitation."))
+			to_chat(action_owner, span_warning("You pay no attention to [bite_target]'s blood volume, and bite [bite_target.p_their()] [target_zone_name] without hesitation."))
 
 		// Check for aggressive grab
 		else if(action_owner.grab_state < GRAB_AGGRESSIVE)
@@ -427,19 +514,42 @@
 			return
 
 	// Display local chat message
-	action_owner.visible_message(span_danger("[action_owner] begins to bite down on [bite_target]'s neck!"))
+	action_owner.visible_message(span_danger("[action_owner] begins to bite down on [bite_target]'s [target_zone_name]!"))
 
 	// Warn bite target
-	to_chat(bite_target, span_userdanger("[action_owner] has bitten your neck, and is trying to drain your blood!"))
+	to_chat(bite_target, span_userdanger("[action_owner] has bitten your [target_zone_name], and is trying to drain your blood!"))
 
 	// Play a bite sound effect
 	playsound(action_owner, 'sound/weapons/bite.ogg', 30, 1, -2)
+
+	// Check for strange bite regions
+	switch(target_zone)
+		// Zone is eyes
+		if(BODY_ZONE_PRECISE_EYES)
+			// Define target's eyes
+			var/obj/item/organ/eyes/target_eyes = bite_target.getorganslot(ORGAN_SLOT_EYES)
+
+			// Check if eyes exist
+			if(target_eyes)
+				// Display warning
+				to_chat(bite_target, span_userdanger("Your [target_eyes] rupture in pain as [action_owner]'s fangs pierce their surface!"))
+
+				// Blur vision
+				bite_target.blur_eyes(10)
+
+				// Add organ damage
+				target_eyes.applyOrganDamage(20)
+
+		// Zone is mouth
+		if(BODY_ZONE_PRECISE_MOUTH)
+			// Cause temporary stuttering
+			bite_target.stuttering = 10
 
 	// Try to perform action timer
 	if(!do_after(action_owner, time_interact, target = bite_target))
 		// When failing
 		// Display a local chat message
-		action_owner.visible_message(span_danger("[action_owner]'s fangs are prematurely torn from [bite_target]'s neck, spilling [bite_target.p_their()] blood!"))
+		action_owner.visible_message(span_danger("[action_owner]'s fangs are prematurely torn from [bite_target]'s [target_zone_name], spilling [bite_target.p_their()] blood!"))
 
 		// Bite target "drops" the blood
 		// This creates large blood splatter
