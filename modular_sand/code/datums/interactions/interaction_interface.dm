@@ -218,6 +218,8 @@
 		.["no_ass_slap"] = 		!CHECK_BITFIELD(prefs.cit_toggles, NO_ASS_SLAP)
 		.["no_auto_wag"] = 		!CHECK_BITFIELD(prefs.cit_toggles, NO_AUTO_WAG)
 		.["chastity_pref"] = 		!!CHECK_BITFIELD(prefs.cit_toggles, CHASTITY)
+		.["stimulation_pref"] = 	!!CHECK_BITFIELD(prefs.cit_toggles, STIMULATION)
+		.["edging_pref"] =			!!CHECK_BITFIELD(prefs.cit_toggles, EDGING)
 
 /proc/num_to_pref(num)
 	switch(num)
@@ -404,6 +406,10 @@
 				// SPLURT edit
 				if("chastity_pref")
 					TOGGLE_BITFIELD(prefs.cit_toggles, CHASTITY)
+				if("stimulation_pref")
+					TOGGLE_BITFIELD(prefs.cit_toggles, STIMULATION)
+				if("edging_pref")
+					TOGGLE_BITFIELD(prefs.cit_toggles, EDGING)
 				//
 				else
 					return FALSE

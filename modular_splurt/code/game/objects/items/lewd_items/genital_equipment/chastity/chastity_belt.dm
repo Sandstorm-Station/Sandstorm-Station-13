@@ -38,7 +38,7 @@
 		holder.dropItemToGround(src)
 		return
 
-	blocked_genital = input(holder, "Choose a genital to block.") as null|anything in exposed_genitals + list("anus")
+	blocked_genital = input(holder, "Choose a genital to block.") as null|anything in ((exposed_genitals + list("anus")) - list("butt"))
 	if(!blocked_genital)
 		holder.dropItemToGround(src)
 		return
@@ -48,7 +48,7 @@
 		holder.dropItemToGround(src)
 		return
 
-	if(blocked_genital == "anus")
+	if(blocked_genital == "anus" && !H.dna.features["has_anus"])
 		ADD_TRAIT(H, TRAIT_CHASTENED_ANUS, CLOTHING_TRAIT)
 		H.anus_toggle_visibility(GEN_VISIBLE_NEVER)
 	else
@@ -82,7 +82,7 @@
 //
 
 /obj/item/genital_equipment/chastity_cage/belt/unequip(obj/item/organ/genital/G, mob/living/carbon/human/H)
-	if(blocked_genital == "anus")
+	if(blocked_genital == "anus" && !H.dna.features["has_anus"])
 		REMOVE_TRAIT(H, TRAIT_CHASTENED_ANUS, CLOTHING_TRAIT)
 		H.anus_toggle_visibility(GEN_VISIBLE_NO_UNDIES)
 	else

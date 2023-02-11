@@ -14,24 +14,25 @@ GLOBAL_LIST_INIT(anus_traits, list("[TRAIT_HYPERSENS_ANUS]" = 3, "[TRAIT_OVERSTI
   * * genital: Genital to check for any lust modifiers.
   * TODO - TURN THE TRAITS INTO COMPONENTS
 */
-/mob/living/proc/check_stimulation(amount, genital)
+/mob/living/carbon/proc/check_stimulation(amount, genital)
 	var/list/common_flags = list()
 
 	// Check if the given genital is an "anus"
 	if(genital == "anus")
-		for(var/anus_trait in GLOB.anus_traits)
-			if(HAS_TRAIT(src, anus_trait))
-				LAZYADD(common_flags, anus_trait)
+		if(!dna.features["has_anus"])
+			for(var/anus_trait in GLOB.anus_traits)
+				if(HAS_TRAIT(src, anus_trait))
+					LAZYADD(common_flags, anus_trait)
 
-		if(!isemptylist(common_flags))
-			var/new_amount = amount * GLOB.anus_traits[common_flags[1]]  // Multiply the arousal amount by the first trait added
+			if(!isemptylist(common_flags))
+				var/new_amount = amount * GLOB.anus_traits[common_flags[1]]  // Multiply the arousal amount by the first trait added
 
-			if(CHECK_BITFIELD(text2num(common_flags[1]), TRAIT_EDGINGONLY_ANUS))
-				lustcap(new_amount)
+				if(CHECK_BITFIELD(text2num(common_flags[1]), TRAIT_EDGINGONLY_ANUS))
+					lustcap(new_amount)
 
-			return new_amount
+				return new_amount
 
-		return amount
+			return amount
 
 
 	// Set a G variable to a proper genital instead of a string if it's one.
@@ -76,7 +77,7 @@ GLOBAL_LIST_INIT(anus_traits, list("[TRAIT_HYPERSENS_ANUS]" = 3, "[TRAIT_OVERSTI
 		return TRUE
 	return FALSE
 
-/mob/living/handle_post_sex(amount, orifice, mob/living/partner, organ = null)
+/mob/living/carbon/handle_post_sex(amount, orifice, mob/living/partner, organ = null)
 	if(organ)
 		amount = check_stimulation(amount, organ)
 

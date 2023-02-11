@@ -4,7 +4,7 @@
 	var/list/choices = list("Anus" = "None", "Breasts" = "None", "Penis" = "None", "Vagina" = "None")
 
 /obj/item/chastity_hypno/proc/hypno(mob/target)
-	if(!iscarbon(target) || !choices)
+	if(!iscarbon(target) || !choices || !(target.client?.prefs.cit_toggles & HYPNO))
 		return
 
 	var/mob/living/carbon/C = target
@@ -16,22 +16,38 @@
 			continue
 
 		if(G == "Anus" && C.has_anus(REQUIRE_ANY))
-			var/trait_flag
-			switch(choices[G])
-				if("Impotent")
-					trait_flag = TRAIT_IMPOTENT_ANUS
-				if("Edging-Only")
-					trait_flag = TRAIT_EDGINGONLY_ANUS
-				if("Disappointing-Orgasm")
-					trait_flag = TRAIT_DISAPPOINTING_ANUS
-				if("Overstimulated")
-					trait_flag = TRAIT_OVERSTIM_ANUS
-				if("Hyper-Sensitive")
-					trait_flag = TRAIT_HYPERSENS_ANUS
+			if(!C.dna.features["has_anus"])
+				var/trait_flag
+				switch(choices[G])
+					if("Impotent")
+						if(!(target.client?.prefs.cit_toggles & CHASTITY))
+							continue
 
-			ADD_TRAIT(C, trait_flag, ORGAN_TRAIT)
-			to_chat(C, "<span class='hypnophrase'>Your anus is now <i>[lowertext(choices[G])]</i></span>")
-			continue
+						trait_flag = TRAIT_IMPOTENT_ANUS
+					if("Edging-Only")
+						if(!(target.client?.prefs.cit_toggles & EDGING))
+							continue
+
+						trait_flag = TRAIT_EDGINGONLY_ANUS
+					if("Disappointing-Orgasm")
+						if(!(target.client?.prefs.cit_toggles & CHASTITY))
+							continue
+
+						trait_flag = TRAIT_DISAPPOINTING_ANUS
+					if("Overstimulated")
+						if(!(target.client?.prefs.cit_toggles & STIMULATION))
+							continue
+
+						trait_flag = TRAIT_OVERSTIM_ANUS
+					if("Hyper-Sensitive")
+						if(!(target.client?.prefs.cit_toggles & STIMULATION))
+							continue
+
+						trait_flag = TRAIT_HYPERSENS_ANUS
+
+				ADD_TRAIT(C, trait_flag, ORGAN_TRAIT)
+				to_chat(C, "<span class='hypnophrase'>Your anus is now <i>[lowertext(choices[G])]</i></span>")
+				continue
 
 		var/obj/item/organ/genital/genital = C.getorganslot(lowertext(G))
 		if(!genital)
@@ -42,16 +58,31 @@
 
 		switch(choices[G])
 			if("Impotent")
+				if(!(target.client?.prefs.cit_toggles & CHASTITY))
+					continue
+
 				hypno_flag = GENITAL_IMPOTENT
 				if(istype(genital, /obj/item/organ/genital/penis))
 					genital.set_aroused_state(0, "impotence") //Pp goes wooon
 			if("Edging-Only")
+				if(!(target.client?.prefs.cit_toggles & EDGING))
+					continue
+
 				hypno_flag = GENITAL_EDGINGONLY
 			if("Disappointing-Orgasm")
+				if(!(target.client?.prefs.cit_toggles & CHASTITY))
+					continue
+
 				hypno_flag = GENITAL_DISAPPOINTING
 			if("Overstimulated")
+				if(!(target.client?.prefs.cit_toggles & STIMULATION))
+					continue
+
 				hypno_flag = GENITAL_OVERSTIM
 			if("Hyper-Sensitive")
+				if(!(target.client?.prefs.cit_toggles & STIMULATION))
+					continue
+
 				hypno_flag = GENITAL_HYPERSENS
 
 		if(!hypno_flag)

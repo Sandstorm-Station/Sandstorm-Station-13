@@ -75,10 +75,17 @@
 				to_chat(user, "<span class='warning>You can't do anything with your vagina like this!")
 			return FALSE
 	if(require_user_anus)
-		if(HAS_TRAIT(user, TRAIT_CHASTENED_ANUS) || HAS_TRAIT(user, TRAIT_IMPOTENT_ANUS))
-			if(!silent)
-				to_chat(user, "<span class='warning>You can't do anything with your [pick(GLOB.butt_nouns)] like this!")
-			return FALSE
+		var/obj/item/organ/genital/anus/holi = user.getorganslot(ORGAN_SLOT_ANUS)
+		if(holi)
+			if(CHECK_BITFIELD(holi?.genital_flags, GENITAL_CHASTENED) || CHECK_BITFIELD(holi?.genital_flags, GENITAL_IMPOTENT))
+				if(!silent)
+					to_chat(user, "<span class='warning>You can't do anything with your [pick(GLOB.butt_nouns)] like this!")
+				return FALSE
+		else
+			if(HAS_TRAIT(user, TRAIT_CHASTENED_ANUS) || HAS_TRAIT(user, TRAIT_IMPOTENT_ANUS))
+				if(!silent)
+					to_chat(user, "<span class='warning>You can't do anything with your [pick(GLOB.butt_nouns)] like this!")
+				return FALSE
 	. = ..()
 
 /datum/interaction/lewd/evaluate_target(mob/living/user, mob/living/target, silent = TRUE)

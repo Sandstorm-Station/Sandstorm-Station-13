@@ -130,6 +130,8 @@
 #define BUTT_ENLARGEMENT	(1<<16)
 #define BELLY_INFLATION		(1<<17)
 #define CHASTITY			(1<<18)
+#define STIMULATION			(1<<19)
+#define EDGING				(1<<20)
 //Note: reminder, if you're a coder adding more bitflags here in the event we add more horny things, the maximum is (1<<23).
 #define TOGGLES_CITADEL 0
 

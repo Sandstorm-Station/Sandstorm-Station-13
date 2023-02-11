@@ -88,7 +88,7 @@
 	var/obj/item/organ/genital/G = C.getorganslot(genital)
 	if(!G)
 		return
-	
+
 	G.set_aroused_state(0, "impotence") //just so it goes down if it's a penis
 	ENABLE_BITFIELD(G.genital_flags, mod_flag)
 
@@ -96,7 +96,7 @@
 	var/obj/item/organ/genital/G = C.getorganslot(genital)
 	if(!genital)
 		return
-	
+
 	DISABLE_BITFIELD(G.genital_flags, mod_flag)
 
 	..()
@@ -116,12 +116,13 @@
 	metabolization_rate = 0.2
 	taste_description = "excitement"
 	var/mod_flag = GENITAL_OVERSTIM
+	var/trait_mod_flag = TRAIT_OVERSTIM_ANUS //In case the genital is abstract
 	var/genital
 
 /datum/reagent/drug/genital_stimulator/on_mob_metabolize(mob/living/carbon/C)
 	..()
-	if(genital == "anus")
-		ADD_TRAIT(C, mod_flag, ORGAN_TRAIT)
+	if(genital == "anus" && !C.dna.features["has_anus"])
+		ADD_TRAIT(C, trait_mod_flag, ORGAN_TRAIT)
 		return
 
 	var/obj/item/organ/genital/G = C.getorganslot(genital)
@@ -134,9 +135,9 @@
 	var/obj/item/organ/genital/G = C.getorganslot(genital)
 	if(!genital)
 		return
-	
-	if(G == "anus")
-		REMOVE_TRAIT(C, mod_flag, ORGAN_TRAIT)
+
+	if(G == "anus" && !C.dna.features["has_anus"])
+		REMOVE_TRAIT(C, trait_mod_flag, ORGAN_TRAIT)
 	else
 		DISABLE_BITFIELD(G.genital_flags, mod_flag)
 
@@ -145,7 +146,6 @@
 /datum/reagent/drug/genital_stimulator/anal_allure
 	name = "Anal Allure"
 	color = COLOR_DARK_RED
-	mod_flag = TRAIT_OVERSTIM_ANUS
 	genital = "anus"
 
 /datum/reagent/drug/genital_stimulator/breast_buzzer
