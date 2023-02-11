@@ -374,8 +374,8 @@
 		quirk_mob.skin_tone = "albino"
 
 	// Add quirk ability action datums
-	var/datum/action/bloodfledge/bite/act_bite = new
-	var/datum/action/bloodfledge/revive/act_revive = new
+	var/datum/action/cooldown/bloodfledge/bite/act_bite = new
+	var/datum/action/cooldown/bloodfledge/revive/act_revive = new
 	act_bite.Grant(quirk_mob)
 	act_revive.Grant(quirk_mob)
 
@@ -461,8 +461,8 @@
 	REMOVE_TRAIT(quirk_mob, TRAIT_NOTHIRST, ROUNDSTART_TRAIT)
 
 	// Remove quirk ability action datums
-	var/datum/action/bloodfledge/bite/act_bite = locate() in quirk_mob.actions
-	var/datum/action/bloodfledge/revive/act_revive = locate() in quirk_mob.actions
+	var/datum/action/cooldown/bloodfledge/bite/act_bite = locate() in quirk_mob.actions
+	var/datum/action/cooldown/bloodfledge/revive/act_revive = locate() in quirk_mob.actions
 	act_bite.Remove(quirk_mob)
 	act_revive.Remove(quirk_mob)
 

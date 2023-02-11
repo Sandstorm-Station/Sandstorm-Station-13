@@ -1,5 +1,6 @@
 #define BLOODFLEDGE_DRAIN_NUM 50
-#define BLOODFLEDGE_COOLDOWN_BITE 60
+#define BLOODFLEDGE_COOLDOWN_BITE 60 // Six seconds
+#define BLOODFLEDGE_COOLDOWN_REVIVE 3000 // Five minutes
 
 //
 // Quirk: Hypnotic Gaze
@@ -245,7 +246,7 @@
 //
 
 // Basic action preset
-/datum/action/bloodfledge
+/datum/action/cooldown/bloodfledge
 	name = "Broken Bloodfledge Ability"
 	desc = "You shouldn't be seeing this!"
 	button_icon_state = "power_torpor"
@@ -253,15 +254,26 @@
 	buttontooltipstyle = "cult"
 	icon_icon = 'icons/mob/actions/bloodsucker.dmi'
 	button_icon = 'icons/mob/actions/bloodsucker.dmi'
+	transparent_when_unavailable = TRUE
 
 // Action: Bite
-/datum/action/bloodfledge/bite
+/datum/action/cooldown/bloodfledge/bite
 	name = "Fledgling Bite"
 	desc = "Sink your vampiric fangs into the person you are grabbing, and attempt to drink their blood."
 	button_icon_state = "power_feed"
-	var/drain_cooldown = 0
+	cooldown_time = BLOODFLEDGE_COOLDOWN_BITE
+	var/time_interact = 30
 
-/datum/action/bloodfledge/bite/Trigger()
+/datum/action/cooldown/bloodfledge/bite/Grant()
+	. = ..()
+
+	// Check for voracious
+	if(HAS_TRAIT(owner, TRAIT_VORACIOUS))
+		// Make times twice as fast
+		cooldown_time *= 0.5
+		time_interact*= 0.5
+
+/datum/action/cooldown/bloodfledge/bite/Trigger()
 	. = ..()
 
 	// Check for carbon owner
@@ -270,12 +282,6 @@
 
 	// Define action owner
 	var/mob/living/carbon/action_owner = owner
-
-	// Check for cooldown
-	if(drain_cooldown >= world.time)
-		// Warn the user, then return
-		to_chat(action_owner, span_notice("That ability isn't ready yet."))
-		return
 
 	// Check for any grabbed target
 	if(!action_owner.pulling)
@@ -413,19 +419,6 @@
 			to_chat(action_owner, span_warning("You can't drain any more blood from [bite_target] without hurting [bite_target.p_them()]!"))
 			return
 
-	// Set cooldown and action times
-	var/time_cooldown = BLOODFLEDGE_COOLDOWN_BITE
-	var/time_interact = 30
-
-	// Check for voracious
-	if(HAS_TRAIT(action_owner, TRAIT_VORACIOUS))
-		// Make times twice as fast
-		time_cooldown *= 0.5
-		time_interact*= 0.5
-
-	// Set cooldown
-	drain_cooldown = world.time + time_cooldown
-
 	// Display local chat message
 	action_owner.visible_message(span_danger("[action_owner] begins to bite down on [bite_target]'s neck!"))
 
@@ -455,6 +448,10 @@
 
 		// Log the biting action failure
 		log_combat(action_owner,bite_target,"bloodfledge bitten (interrupted)")
+
+		// Start cooldown early
+		// This is to prevent bite interrupt spam
+		StartCooldown()
 
 		// Return
 		return
@@ -601,13 +598,17 @@
 		// Cause mood event
 		SEND_SIGNAL(action_owner, COMSIG_ADD_MOOD_EVENT, "bloodfledge_drank_cursed_blood", mood_type)
 
+	// Start cooldown
+	StartCooldown()
+
 // Action: Revive
-/datum/action/bloodfledge/revive
+/datum/action/cooldown/bloodfledge/revive
 	name = "Fledgling Revive"
 	desc = "Expend all of your remaining energy to escape death."
 	button_icon_state = "power_strength"
+	cooldown_time = BLOODFLEDGE_COOLDOWN_REVIVE
 
-/datum/action/bloodfledge/revive/Trigger()
+/datum/action/cooldown/bloodfledge/revive/Trigger()
 	. = ..()
 
 	// Define mob
@@ -707,6 +708,9 @@
 
 	// Log the revival and effective policy
 	action_owner.log_message("revived using a vampire quirk ability after being dead for [time_dead] deciseconds. Considered [time_late? "late" : "memory-intact"] revival under configured policy limits.", LOG_GAME)
+
+	// Start cooldown
+	StartCooldown()
 
 //
 // Quirk: Werewolf
