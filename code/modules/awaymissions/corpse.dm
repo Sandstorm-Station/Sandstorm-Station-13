@@ -218,7 +218,8 @@
 	H.update_hair()
 	H.update_body() //update_genitals arg FALSE because these don't quite require/have them most times.
 	if(outfit)
-		for(var/slot in GLOB.slots)
+		var/static/list/slots = list("uniform", "r_hand", "l_hand", "suit", "shoes", "gloves", "ears", "glasses", "mask", "head", "belt", "r_pocket", "l_pocket", "back", "id", "neck", "backpack_contents", "suit_store")
+		for(var/slot in slots)
 			var/T = vars[slot]
 			if(!isnum(T))
 				outfit.vars[slot] = T
