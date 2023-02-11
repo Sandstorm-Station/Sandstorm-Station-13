@@ -18,10 +18,10 @@
 	if(!CHECK_BITFIELD(slot, ITEM_SLOT_UNDERWEAR) || !ishuman(user) || !ishuman(usr))
 		return
 
-	if(!user.client?.prefs?.chastitypref)
+	if(!(user.client?.prefs.cit_toggles & CHASTITY))
 		to_chat(user, span_warning("They don't want you to do that!"))
 		return
-	
+
 	var/mob/holder = usr
 	owner = user
 
@@ -42,7 +42,7 @@
 	if(!blocked_genital)
 		holder.dropItemToGround(src)
 		return
-	
+
 	if(blocked_genital != "anus" && locate(/obj/item/genital_equipment/chastity_cage) in blocked_genital?.contents)
 		to_chat(holder, "<span class='notice'>\The [H] already have a cage on them!</span>")
 		holder.dropItemToGround(src)
@@ -115,5 +115,5 @@
 		if(belt.blocked_genital && belt.owner)
 			belt.unequip_process(belt.blocked_genital, user)
 		return
-	
+
 	. = ..()

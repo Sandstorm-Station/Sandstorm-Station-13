@@ -775,17 +775,6 @@
 				H.mob_climax(TRUE, "masturbation", "none")
 			else
 				H.mob_climax(TRUE, "sex", partner, !cumin, target_gen)
-
-	// SPLURT edit
-	if(iscarbon(src))
-		var/mob/living/carbon/carbon_src
-
-		carbon_src = src
-		for(var/obj/item/organ/genital/G in carbon_src.internal_organs)
-			if(check_orgasm(G))
-				break
-	//
-
 	set_lust(0)
 	SEND_SIGNAL(src, COMSIG_MOB_CAME, target_orifice, partner)
 
@@ -815,18 +804,13 @@
 
 /**
   * Handles the sex, if cumming returns true.
-  * 
+  *
   * Please, make sure to use the correct genital
   * in the organ argument when you call this proc!
 */
 /mob/living/proc/handle_post_sex(amount, orifice, mob/living/partner, organ = null)
 	if(stat != CONSCIOUS)
 		return FALSE
-
-	// SPLURT edit
-	if(organ)
-		amount = check_stimulation(amount, organ)
-	//
 
 	if(amount)
 		add_lust(amount)

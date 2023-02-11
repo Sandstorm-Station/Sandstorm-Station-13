@@ -41,3 +41,7 @@
 	if (.)
 		return
 	to_chat(A, span_notice("[src] seems to be checking you out."))
+
+/mob/on_item_dropped(obj/item/I)
+	SEND_SIGNAL(src, COMSIG_MOB_ITEM_DROPPED, I) //SPLURT edit
+	. = ..()

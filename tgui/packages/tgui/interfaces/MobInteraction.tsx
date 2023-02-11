@@ -575,7 +575,7 @@ const ContentPreferencesTab = (props, context) => {
     no_aphro,
     no_ass_slap,
     no_auto_wag,
-	chastity_pref
+    chastity_pref
   } = data;
   return (
     <Table>

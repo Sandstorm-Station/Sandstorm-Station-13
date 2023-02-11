@@ -22,13 +22,13 @@ GLOBAL_LIST_INIT(anus_traits, list("[TRAIT_HYPERSENS_ANUS]" = 3, "[TRAIT_OVERSTI
 		for(var/anus_trait in GLOB.anus_traits)
 			if(HAS_TRAIT(src, anus_trait))
 				LAZYADD(common_flags, anus_trait)
-		
+
 		if(!isemptylist(common_flags))
 			var/new_amount = amount * GLOB.anus_traits[common_flags[1]]  // Multiply the arousal amount by the first trait added
 
 			if(CHECK_BITFIELD(text2num(common_flags[1]), TRAIT_EDGINGONLY_ANUS))
 				lustcap(new_amount)
-			
+
 			return new_amount
 
 		return amount
@@ -75,3 +75,9 @@ GLOBAL_LIST_INIT(anus_traits, list("[TRAIT_HYPERSENS_ANUS]" = 3, "[TRAIT_OVERSTI
 		to_chat(src, "<span class='hypnophrase'>[pick("Ugh, that was embarassing...", "I could've done it better...")]</span>")
 		return TRUE
 	return FALSE
+
+/mob/living/handle_post_sex(amount, orifice, mob/living/partner, organ = null)
+	if(organ)
+		amount = check_stimulation(amount, organ)
+
+	. = ..()

@@ -166,7 +166,7 @@
 	if(picked_organ)
 		//SPLURT edit
 		if(CHECK_BITFIELD(picked_organ.genital_flags, GENITAL_CHASTENED))
-			to_chat(src, "<span class='userlove'>Your [pick(GLOB.dick_nouns)] twitches against it's cage!</span>")
+			to_chat(src, "<span class='userlove'>Your [pick(GLOB.dick_nouns)] twitches against its cage!</span>")
 			return
 		if(CHECK_BITFIELD(picked_organ.genital_flags, GENITAL_IMPOTENT))
 			if(istype(picked_organ, /obj/item/organ/genital/penis))

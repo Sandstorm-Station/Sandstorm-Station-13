@@ -225,6 +225,13 @@
 				H.mob_climax(TRUE, "masturbation", "none")
 			else
 				H.mob_climax(TRUE, "sex", partner, !cumin, target_gen)
+	if(iscarbon(src))
+		var/mob/living/carbon/carbon_src
+
+		carbon_src = src
+		for(var/obj/item/organ/genital/G in carbon_src.internal_organs)
+			if(check_orgasm(G))
+				break
 	set_lust(0)
 	SEND_SIGNAL(src, COMSIG_MOB_CAME, target_orifice, partner)
 

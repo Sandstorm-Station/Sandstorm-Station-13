@@ -1,10 +1,10 @@
 #define BLACKLISTED_GENITALS list(/obj/item/organ/genital/breasts, /obj/item/organ/genital/belly)
 
 /obj/item/organ/genital/proc/can_be_chastened()
-	for(var/blacklisted_genital in blacklisted_genitals)
+	for(var/blacklisted_genital in BLACKLISTED_GENITALS)
 		if(type in typesof(blacklisted_genital))
 			return FALSE
-	
+
 	return TRUE
 
 /obj/item/key/chastity_key
@@ -51,7 +51,7 @@
 	if(!istype(target_organ, /obj/item/organ/genital/penis))
 		return ..()
 
-	if(!target.client?.prefs?.chastitypref)
+	if(!(target.client?.prefs.cit_toggles & CHASTITY))
 		to_chat(user, span_warning("They don't want you to do that!"))
 		return
 
@@ -69,12 +69,12 @@
 	if(!I)
 		to_chat(user, "<span class='warning'>You need \a [break_require] or its key to take it off!</span>")
 		return
-	
+
 	if(I == key)
 		to_chat(user, "<span class='warning'>You wield \the [I.name] and unlock the cage!</span>")
 		unequip(G, owner)
 		return
-	
+
 	if(break_require == TOOL_WIRECUTTER && I.tool_behaviour == break_require)
 		if(!do_mob(user, owner, break_time))
 			return
@@ -126,7 +126,7 @@
 /obj/item/genital_equipment/chastity_cage/proc/unequip(obj/item/organ/genital/G, mob/living/carbon/human/H)
 	if(!CHECK_BITFIELD(G.genital_flags, GENITAL_CHASTENED) && !owner)
 		return
-	
+
 	DISABLE_BITFIELD(G.genital_flags, GENITAL_CHASTENED)
 	H.cut_overlay(cage_overlay)
 	is_overlay_on = FALSE

@@ -1,6 +1,5 @@
 /datum/preferences
 	var/unholypref = "No" //Goin 2 hell fo dis one
-	var/chastitypref = FALSE
 
 	var/list/gfluid_blacklist = list() //Stuff you don't want people to cum into you
 

@@ -217,7 +217,7 @@
 		.["no_aphro"] = 			!CHECK_BITFIELD(prefs.cit_toggles, NO_APHRO)
 		.["no_ass_slap"] = 		!CHECK_BITFIELD(prefs.cit_toggles, NO_ASS_SLAP)
 		.["no_auto_wag"] = 		!CHECK_BITFIELD(prefs.cit_toggles, NO_AUTO_WAG)
-		.["chastity_pref"] = 		prefs.chastitypref
+		.["chastity_pref"] = 		!!CHECK_BITFIELD(prefs.cit_toggles, CHASTITY)
 
 /proc/num_to_pref(num)
 	switch(num)
@@ -293,7 +293,7 @@
 						return FALSE
 					//SPLURT edit
 					if(CHECK_BITFIELD(genital.genital_flags, GENITAL_CHASTENED))
-						to_chat(user, "<span class='warning'>You got to take it's cage off first!</span>")
+						to_chat(user, "<span class='warning'>You got to take its cage off first!</span>")
 						return FALSE
 					//
 					stuff.insert_item_organ(user, actual_target, genital)
@@ -305,9 +305,9 @@
 							var/obj/item/genital_equipment/chastity_cage/CG = selected_item
 							CG.unequip_process(genital, user) // >:(
 							return TRUE
-						
+
 						if(CHECK_BITFIELD(genital.genital_flags, GENITAL_CHASTENED))
-							to_chat(user, "<span class='warning'>You got to take it's cage off first!</span>")
+							to_chat(user, "<span class='warning'>You got to take its cage off first!</span>")
 							return FALSE
 						//
 						if(!do_mob(user, actual_target, 5 SECONDS))
@@ -403,7 +403,7 @@
 					TOGGLE_BITFIELD(prefs.cit_toggles, NO_AUTO_WAG)
 				// SPLURT edit
 				if("chastity_pref")
-					prefs.chastitypref = !prefs.chastitypref
+					TOGGLE_BITFIELD(prefs.cit_toggles, CHASTITY)
 				//
 				else
 					return FALSE
