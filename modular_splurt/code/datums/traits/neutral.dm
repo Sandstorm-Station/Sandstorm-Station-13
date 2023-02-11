@@ -374,6 +374,9 @@
 	// Add quirk language
 	quirk_mob.grant_language(/datum/language/vampiric, TRUE, TRUE, LANGUAGE_BLOODSUCKER)
 
+	// Register examine text
+	RegisterSignal(quirk_holder, COMSIG_PARENT_EXAMINE, .proc/quirk_examine_bloodfledge)
+
 /datum/quirk/bloodfledge/post_add()
 	// Define quirk mob
 	var/mob/living/carbon/human/quirk_mob = quirk_holder
@@ -481,6 +484,9 @@
 	// Remove quirk language
 	quirk_mob.remove_language(/datum/language/vampiric, TRUE, TRUE, LANGUAGE_BLOODSUCKER)
 
+	// Unregister examine text
+	UnregisterSignal(quirk_holder, COMSIG_PARENT_EXAMINE)
+
 /datum/quirk/bloodfledge/on_spawn()
 	// Define quirk mob
 	var/mob/living/carbon/human/quirk_mob = quirk_holder
@@ -517,6 +523,50 @@
 	// Alert user in chat
 	// This should not post_add, because the ID is added by on_spawn
 	to_chat(quirk_holder, span_boldnotice("There is a bloodfledge's ID card [id_location], linked to your station account. It functions as a spare ID, but lacks job access."))
+
+/datum/quirk/bloodfledge/proc/quirk_examine_bloodfledge(atom/examine_target, mob/living/carbon/human/examiner, list/examine_list)
+	SIGNAL_HANDLER
+
+	// Check if human examiner exists
+	if(!istype(examiner))
+		return
+
+	// Define quirk mob
+	var/mob/living/carbon/human/quirk_mob = quirk_holder
+
+	// Define hunger texts
+	var/examine_hunger_public
+	var/examine_hunger_secret
+
+	// Check hunger levels
+	switch(quirk_mob.nutrition)
+		// Hungry
+		if(NUTRITION_LEVEL_STARVING to NUTRITION_LEVEL_HUNGRY)
+			examine_hunger_secret = "[quirk_holder.p_they(TRUE)] [quirk_holder.p_are()] blood starved!"
+			examine_hunger_public = "[quirk_holder.p_they(TRUE)] seem[quirk_holder.p_s()] on edge from something."
+
+		// Starving
+		if(0 to NUTRITION_LEVEL_STARVING)
+			examine_hunger_secret = "[quirk_holder.p_they(TRUE)] [quirk_holder.p_are()] in dire need of blood!"
+			examine_hunger_public = "[quirk_holder.p_they(TRUE)] [quirk_holder.p_are()] radiating an aura of frenzied hunger!"
+
+		// Invalid hunger
+		else
+			// Return with no message
+			return
+
+	// Check if examiner shares the quirk
+	if(HAS_TRAIT(examiner, TRAIT_BLOODFLEDGE))
+		// Add detection text
+		examine_list += span_info("[quirk_holder.p_their(TRUE)] hunger makes it easy to identify them as a fellow bloodfledge!")
+
+		// Add hunger text
+		examine_list += span_warning(examine_hunger_secret)
+
+	// Check if public hunger text exists
+	else
+		// Add hunger text
+		examine_list += span_warning(examine_hunger_public)
 
 /datum/quirk/werewolf //adds the werewolf quirk
 	name = "Werewolf"
