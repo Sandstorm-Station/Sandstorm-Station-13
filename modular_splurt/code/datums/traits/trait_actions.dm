@@ -313,6 +313,9 @@
 	// Define bite target
 	var/mob/living/carbon/bite_target
 
+	// Define if action owner is dumb
+	var/action_owner_dumb = HAS_TRAIT(action_owner, TRAIT_DUMB)
+
 	// Check if the target is carbon
 	if(iscarbon(pull_target))
 		// Set the bite target
@@ -331,22 +334,26 @@
 
 	// Or a blood tomato
 	else if(istype(pull_target,/obj/item/reagent_containers/food/snacks/grown/tomato/blood))
+		// Set message based on dumbness
+		var/message_tomato_suffix = (action_owner_dumb ? ", and absorb it\'s delicious vegan-friendly blood!" : "! It's not very nutritious.")
 		// Warn the user, then return
-		to_chat(action_owner, span_danger("You plunge your fangs into [pull_target]! It's not very nutritious."))
+		to_chat(action_owner, span_danger("You plunge your fangs into [pull_target][message_tomato_suffix]"))
 		return
 
 		// This doesn't actually interact with the item
 
 	// Or none of the above
 	else
+		// Set message based on dumbness
+		var/message_invalid_target = (action_owner_dumb ? "You bite at [pull_target], but nothing seems to happen" : "You can't drain blood from [pull_target]!")
 		// Warn the user, then return
-		to_chat(action_owner, span_warning("You can't drain blood from [pull_target]!"))
+		to_chat(action_owner, span_warning(message_invalid_target))
 		return
 
 	// Check for anti-magic
 	if(bite_target.anti_magic_check(FALSE, TRUE, FALSE, 0))
 		// Check for a dumb user
-		if(HAS_TRAIT(action_owner, TRAIT_DUMB))
+		if(action_owner_dumb)
 			// Warn the user and target
 			to_chat(bite_target, span_warning("[action_owner] tries to bite you, but bursts into flames just as [action_owner.p_they()] come[action_owner.p_s()] into contact with you!"))
 			to_chat(action_owner, span_userdanger("Surges of pain course through your body as you attempt to bite [bite_target]! What were you thinking?"))
@@ -369,9 +376,9 @@
 	// Check for garlic necklace or garlic in the bloodstream
 	if(!blood_sucking_checks(bite_target, TRUE, TRUE))
 		// Check for a dumb user
-		if(HAS_TRAIT(action_owner, TRAIT_DUMB))
+		if(action_owner_dumb)
 			// Warn the user and target
-			to_chat(bite_target, span_warning("[action_owner] tries to bite you, but recoils in disgust just as [action_owner.p_they()] come[action_owner.p_s()] into contact with you!"))
+			to_chat(bite_target, span_warning("[action_owner] tries to bite your [target_zone_name], but recoils in disgust just as [action_owner.p_they()] come[action_owner.p_s()] into contact with you!"))
 			to_chat(action_owner, span_userdanger("An intense wave of disgust washes over your body as you attempt to bite [bite_target]! What were you thinking?"))
 
 			// Stop grabbing
@@ -403,7 +410,7 @@
 	// Check if total blood would become too low
 	if((target_blood_volume - BLOODFLEDGE_DRAIN_NUM) <= BLOOD_VOLUME_OKAY)
 		// Check for a dumb user
-		if(HAS_TRAIT(action_owner, TRAIT_DUMB))
+		if(action_owner_dumb)
 			// Warn the user, but allow
 			to_chat(action_owner, span_warning("You pay no attention to [bite_target]'s blood volume, and bite them without hesitation."))
 
