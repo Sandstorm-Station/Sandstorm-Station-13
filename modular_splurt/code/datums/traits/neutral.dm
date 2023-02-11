@@ -531,6 +531,11 @@
 	if(!istype(examiner))
 		return
 
+	// Check if examiner is dumb
+	if(HAS_TRAIT(examiner, TRAIT_DUMB))
+		// Return with no effects
+		return
+
 	// Define quirk mob
 	var/mob/living/carbon/human/quirk_mob = quirk_holder
 
