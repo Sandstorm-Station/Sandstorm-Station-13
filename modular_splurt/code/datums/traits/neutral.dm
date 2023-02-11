@@ -360,8 +360,6 @@
 	processing_quirk = TRUE
 
 /datum/quirk/bloodfledge/add()
-	. = ..()
-
 	// Define quirk mob
 	var/mob/living/carbon/human/quirk_mob = quirk_holder
 
@@ -373,18 +371,30 @@
 	if(!quirk_mob.dna.skin_tone_override)
 		quirk_mob.skin_tone = "albino"
 
-	// Add quirk ability action datums
-	var/datum/action/cooldown/bloodfledge/bite/act_bite = new
-	var/datum/action/cooldown/bloodfledge/revive/act_revive = new
-	act_bite.Grant(quirk_mob)
-	act_revive.Grant(quirk_mob)
-
 	// Add quirk language
 	quirk_mob.grant_language(/datum/language/vampiric, TRUE, TRUE, LANGUAGE_BLOODSUCKER)
 
-/datum/quirk/bloodfledge/on_process()
-	. = ..()
+/datum/quirk/bloodfledge/post_add()
+	// Define quirk mob
+	var/mob/living/carbon/human/quirk_mob = quirk_holder
 
+	// Define and grant ability Bite
+	var/datum/action/cooldown/bloodfledge/bite/act_bite = new
+	act_bite.Grant(quirk_mob)
+
+	// Check for synthetic
+	// Robotic mobs have technical issues with adjusting damage
+	if(quirk_mob.mob_biotypes & MOB_ROBOTIC)
+		// Warn user
+		to_chat(quirk_mob, span_warning("As a synthetic lifeform, your components are only able to grant limited sanguine abilities! Regeneration and revival are not possible."))
+
+	// User is not synthetic
+	else
+		// Define and grant ability Revive
+		var/datum/action/cooldown/bloodfledge/revive/act_revive = new
+		act_revive.Grant(quirk_mob)
+
+/datum/quirk/bloodfledge/on_process()
 	// Check if the current area is a coffin
 	if(istype(quirk_holder.loc, /obj/structure/closet/crate/coffin))
 		// Define quirk mob
@@ -451,8 +461,6 @@
 		quirk_mob.adjust_nutrition(health_restored*-1)
 
 /datum/quirk/bloodfledge/remove()
-	. = ..()
-
 	// Define quirk mob
 	var/mob/living/carbon/human/quirk_mob = quirk_holder
 
@@ -470,8 +478,6 @@
 	quirk_mob.remove_language(/datum/language/vampiric, TRUE, TRUE, LANGUAGE_BLOODSUCKER)
 
 /datum/quirk/bloodfledge/on_spawn()
-	. = ..()
-
 	// Define quirk mob
 	var/mob/living/carbon/human/quirk_mob = quirk_holder
 

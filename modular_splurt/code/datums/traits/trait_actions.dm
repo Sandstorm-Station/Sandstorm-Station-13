@@ -276,6 +276,10 @@
 /datum/action/cooldown/bloodfledge/bite/Trigger()
 	. = ..()
 
+	// Check parent return
+	if(!.)
+		return
+
 	// Check for carbon owner
 	if(!iscarbon(owner))
 		return
@@ -770,6 +774,10 @@
 
 /datum/action/cooldown/bloodfledge/revive/Trigger()
 	. = ..()
+
+	// Check parent return
+	if(!.)
+		return
 
 	// Define mob
 	var/mob/living/carbon/human/action_owner = owner
