@@ -116,7 +116,7 @@
 		to_chat(action_owner, span_warning("You sense that [action_target] would rather not be hypnotized, and decide to respect their wishes."))
 		to_chat(action_target, span_notice("[action_owner] stares into your eyes with a strange conviction, but turns away after a moment."))
 		return
-	
+
 	// Check for mindshield implant
 	if(HAS_TRAIT(action_target, TRAIT_MINDSHIELD))
 		// Warn the users, then return
@@ -184,7 +184,7 @@
 
 	// Prompt action owner for response
 	var/input_suggestion = input("What would you like to suggest [action_target] do? Leave blank to release [action_target.p_them()] instead.", "Hypnotic suggestion", null, null)
-		
+
 	// Check if input text exists
 	if(!input_suggestion)
 		// Alert user of no input
@@ -206,7 +206,7 @@
 
 	// Display local message
 	action_target.visible_message(span_warning("[action_target] wakes up from their deep slumber!"), span_danger("Your eyelids gently open as you see [action_owner]'s face staring back at you."))
-	
+
 	// Remove sleep, then return
 	action_target.SetSleeping(0)
 	return
@@ -662,7 +662,7 @@
 	if(action_owner.stat != DEAD)
 		// Warn user in chat
 		to_chat(action_owner, "You can't use this ability while alive!")
-		
+
 		// Return
 		return
 
@@ -685,22 +685,22 @@
 	// Condition: Damage limit, brute
 	if(action_owner.getBruteLoss() >= MAX_REVIVE_BRUTE_DAMAGE)
 		revive_failed += "\n- Your body is too battered!"
-	
+
 	// Condition: Damage limit, burn
 	if(action_owner.getFireLoss() >= MAX_REVIVE_FIRE_DAMAGE)
 		revive_failed += "\n- Your body is too badly burned!"
 
 	// Condition: Suicide
 	if(action_owner.suiciding)
-		revive_failed += "\n- You chose this path."		
+		revive_failed += "\n- You chose this path."
 
 	// Condition: No revivals
 	if(HAS_TRAIT(action_owner, TRAIT_NOCLONE))
-		revive_failed += "\n- You only had one chance."		
+		revive_failed += "\n- You only had one chance."
 
 	// Condition: Demonic contract
 	if(action_owner.hellbound)
-		revive_failed += "\n- The soul pact must be honored."		
+		revive_failed += "\n- The soul pact must be honored."
 
 	// Check for failure
 	if(revive_failed)
