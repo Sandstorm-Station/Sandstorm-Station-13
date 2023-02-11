@@ -794,6 +794,9 @@
 	if(action_owner.nutrition <= NUTRITION_LEVEL_STARVING)
 		revive_failed += "\n- You don't have enough blood left!"
 
+	/*
+	 * Removed to buff revivals
+	 *
 	// Condition: Can be revived
 	// This is used by revive(), and must be checked here to prevent false feedback
 	if(!action_owner.can_be_revived())
@@ -806,6 +809,7 @@
 	// Condition: Damage limit, burn
 	if(action_owner.getFireLoss() >= MAX_REVIVE_FIRE_DAMAGE)
 		revive_failed += "\n- Your body is too badly burned!"
+	*/
 
 	// Condition: Suicide
 	if(action_owner.suiciding)
@@ -828,6 +832,48 @@
 		to_chat(action_owner, revive_failed)
 
 		// Return
+		return
+
+	// Check if health is too low to use revive()
+	if(action_owner.health <= HEALTH_THRESHOLD_DEAD)
+		// Set health high enough to revive
+		// Based on defib.dm
+
+		// Define damage values
+		var/damage_brute = action_owner.getBruteLoss()
+		var/damage_burn = action_owner.getFireLoss()
+		var/damage_tox = action_owner.getToxLoss()
+		var/damage_oxy = action_owner.getOxyLoss()
+		var/damage_clone = action_owner.getCloneLoss()
+		var/damage_brain = action_owner.getOrganLoss(ORGAN_SLOT_BRAIN)
+
+		// Define total damage
+		var/damage_total = damage_brute + damage_burn + damage_tox + damage_oxy + damage_brain + damage_clone
+
+		// Define to prevent redundant math
+		var/health_half_crit = action_owner.health - HALFWAYCRITDEATH
+
+		// Adjust damage types
+		action_owner.adjustOxyLoss(health_half_crit * (damage_oxy / damage_total), 0)
+		action_owner.adjustToxLoss(health_half_crit * (damage_tox / damage_total), 0)
+		action_owner.adjustFireLoss(health_half_crit * (damage_burn / damage_total), 0)
+		action_owner.adjustBruteLoss(health_half_crit * (damage_brute / damage_total), 0)
+		action_owner.adjustCloneLoss(health_half_crit * (damage_clone / damage_total), 0)
+		action_owner.adjustOrganLoss(ORGAN_SLOT_BRAIN, health_half_crit * (damage_brain / damage_total))
+
+		// Update health
+		action_owner.updatehealth()
+
+	// Check if revival is possible
+	// This is used by revive(), and must be checked here to prevent false feedback
+	if(!action_owner.can_be_revived())
+		// Warn user
+		to_chat(action_owner, span_warning("Despite your body's best attempts at mending, it remains too weak to revive! Something this terrible shouldn't be possible!"))
+
+		// Start cooldown anyway, since healing was performed
+		StartCooldown()
+
+		// Return without revival
 		return
 
 	// Define time dead
