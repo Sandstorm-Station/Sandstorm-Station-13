@@ -75,7 +75,7 @@
 /datum/component/interaction/ui_data(mob/user)
 	. = ..()
 	//Getting player
-	var/mob/living/self = parent
+	var/mob/self = parent
 	//Getting info
 	.["isTargetSelf"] = target == self
 	.["interactingWith"] = target != self ? "Interacting with \the [target]..." : "Interacting with yourself..."
@@ -193,15 +193,16 @@
 /datum/component/interaction/ui_act(action, params)
 	if(..())
 		return
+	var/mob/parent_mob = parent
 	switch(action)
 		if("interact")
 			var/datum/interaction/o = SSinteractions.interactions[params["interaction"]]
 			if(o)
-				o.do_action(usr, target)
+				o.do_action(parent_mob, target)
 				return TRUE
 			return FALSE
 		if("genital")
-			var/mob/living/carbon/self = usr
+			var/mob/living/carbon/self = parent_mob
 			if("visibility" in params)
 				if(params["genital"] == "anus")
 					self.anus_toggle_visibility(params["visibility"])
@@ -242,7 +243,7 @@
 			else
 				return FALSE
 		if("char_pref")
-			var/datum/preferences/prefs = usr.client.prefs
+			var/datum/preferences/prefs = parent_mob.client.prefs
 			var/value = num_to_pref(params["value"])
 			switch(params["char_pref"])
 				if("erp_pref")
@@ -277,7 +278,7 @@
 			prefs.save_character()
 			return TRUE
 		if("pref")
-			var/datum/preferences/prefs = usr.client.prefs
+			var/datum/preferences/prefs = parent_mob.client.prefs
 			switch(params["pref"])
 				if("verb_consent")
 					TOGGLE_BITFIELD(prefs.toggles, VERB_CONSENT)
