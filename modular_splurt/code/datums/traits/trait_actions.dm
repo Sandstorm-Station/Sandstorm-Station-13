@@ -396,7 +396,7 @@
 			// Check if eyes exist and are exposed
 			if(!bite_target.has_eyes(REQUIRE_EXPOSED))
 				// Warn user and return
-				to_chat(action_owner, span_userdanger("You can't find [bite_target]'s eyes to bite them!"))
+				to_chat(action_owner, span_warning("You can't find [bite_target]'s eyes to bite them!"))
 				return
 
 			// Set region data normally
@@ -407,7 +407,7 @@
 		if(BODY_ZONE_PRECISE_MOUTH)
 			// Check if mouth exists and is exposed
 			if(!(bite_target.has_mouth() && bite_target.mouth_is_free()))
-				to_chat(action_owner, span_userdanger("You can't find [bite_target]'s eyes to bite them!"))
+				to_chat(action_owner, span_warning("You can't find [bite_target]'s lips to bite them!"))
 				return
 
 			// Set region data normally
@@ -436,23 +436,35 @@
 		// Check if bodypart exists
 		if(!bite_bodypart)
 			// Warn user and return
-			to_chat(action_owner, span_userdanger("[bite_target] doesn't have a [target_zone_name] for you to bite!"))
+			to_chat(action_owner, span_warning("[bite_target] doesn't have a [target_zone_name] for you to bite!"))
 			return
 
 		// Check if bodypart is organic
 		if(!bite_bodypart.is_organic_limb())
-			// Warn user and target, then return
-			to_chat(action_owner, span_userdanger("You attempt to bite [bite_target]'s [target_zone_name], but can't penetrate the mechanical prosthetic!"))
+			// Display local message
+			action_owner.visible_message(span_danger("[action_owner] tries to bite [bite_target]'s [target_zone_name], but is unable to penetrate the mechanical prosthetic!"), span_warning("You attempt to bite [bite_target]'s [target_zone_name], but can't penetrate the mechanical prosthetic!"))
+
+			// Warn user
 			to_chat(bite_target, span_warning("[action_owner] tries to bite your [target_zone_name], but is unable to penetrate the mechanical prosthetic!"))
+
+			// Play metal hit sound
+			playsound(bite_target, "sound/effects/clang[pick(1,2)].ogg", 30, 1, -2)
+
+			// Start cooldown early to prevent spam
+			StartCooldown()
+
+			// Return without further effects
 			return
 
 	// Check for anti-magic
 	if(bite_target.anti_magic_check(FALSE, TRUE, FALSE, 0))
 		// Check for a dumb user
 		if(action_owner_dumb)
-			// Warn the user and target
+			// Display local message
+			action_owner.visible_message(span_danger("[action_owner] tries to bite [bite_target]'s [target_zone_name], but bursts into flames just as [action_owner.p_they()] come[action_owner.p_s()] into contact with [bite_target.p_them()]!"), span_userdanger("Surges of pain course through your body as you attempt to bite [bite_target]! What were you thinking?"))
+
+			// Warn target
 			to_chat(bite_target, span_warning("[action_owner] tries to bite you, but bursts into flames just as [action_owner.p_they()] come[action_owner.p_s()] into contact with you!"))
-			to_chat(action_owner, span_userdanger("Surges of pain course through your body as you attempt to bite [bite_target]! What were you thinking?"))
 
 			// Stop grabbing
 			action_owner.stop_pulling()
@@ -473,9 +485,11 @@
 	if(!blood_sucking_checks(bite_target, TRUE, TRUE))
 		// Check for a dumb user
 		if(action_owner_dumb)
-			// Warn the user and target
+			// Display local message
+			action_owner.visible_message(span_danger("[action_owner] tries to bite [bite_target]'s [target_zone_name], but immediately recoils in disgust upon touching [bite_target.p_them()]!"), span_userdanger("An intense wave of disgust washes over your body as you attempt to bite [bite_target]! What were you thinking?"))
+
+			// Warn target
 			to_chat(bite_target, span_warning("[action_owner] tries to bite your [target_zone_name], but recoils in disgust just as [action_owner.p_they()] come[action_owner.p_s()] into contact with you!"))
-			to_chat(action_owner, span_userdanger("An intense wave of disgust washes over your body as you attempt to bite [bite_target]! What were you thinking?"))
 
 			// Stop grabbing
 			action_owner.stop_pulling()
@@ -490,7 +504,7 @@
 			return
 
 		// Warn the user and target, then return
-		to_chat(bite_target, span_warning("[action_owner] tries to bite your [target_zone_name], but is warded off by your Allium Sativum!"))
+		to_chat(bite_target, span_warning("[action_owner] leans in to bite your [target_zone_name], but is warded off by your Allium Sativum!"))
 		to_chat(action_owner, span_warning("You sense that [bite_target] is protected by Allium Sativum, and refrain from biting [bite_target.p_them()]."))
 		return
 
@@ -530,7 +544,7 @@
 			// Snout type is a string that cannot use subtype search
 			if(findtext(bite_target.dna?.features["mam_snouts"], "Synthetic Lizard"))
 				// Display local chat message
-				action_owner.visible_message(span_notice("[action_owner]'s fangs clank harmlessly against [bite_target]'s face screen!"))
+				action_owner.visible_message(span_notice("[action_owner]'s fangs clank harmlessly against [bite_target]'s face screen!"), span_notice("Your fangs clank harmlessly against [bite_target]'s face screen!"))
 
 				// Play glass tap sound
 				playsound(bite_target, 'sound/effects/Glasshit.ogg', 30, 1, -2)
@@ -565,7 +579,7 @@
 				bite_target.stuttering = 10
 
 	// Display local chat message
-	action_owner.visible_message(span_danger("[action_owner] begins to bite down on [bite_target]'s [target_zone_name]!"))
+	action_owner.visible_message(span_danger("[action_owner] begins to bite down on [bite_target]'s [target_zone_name]!"), span_danger("You begin to bite down on [bite_target]'s [target_zone_name]!"))
 
 	// Warn bite target
 	to_chat(bite_target, span_userdanger("[action_owner] has bitten your [target_zone_name], and is trying to drain your blood!"))
@@ -577,7 +591,7 @@
 	if(!do_after(action_owner, time_interact, target = bite_target))
 		// When failing
 		// Display a local chat message
-		action_owner.visible_message(span_danger("[action_owner]'s fangs are prematurely torn from [bite_target]'s [target_zone_name], spilling some of [bite_target.p_their()] blood!"))
+		action_owner.visible_message(span_danger("[action_owner]'s fangs are prematurely torn from [bite_target]'s [target_zone_name], spilling some of [bite_target.p_their()] blood!"), span_danger("Your fangs are prematurely torn from [bite_target]'s [target_zone_name], spilling some of [bite_target.p_their()] blood!"))
 
 		// Bite target "drops" 20% of the blood
 		// This creates large blood splatter
