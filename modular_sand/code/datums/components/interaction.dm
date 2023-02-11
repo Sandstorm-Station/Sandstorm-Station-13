@@ -75,7 +75,7 @@
 /datum/component/interaction/ui_data(mob/user)
 	. = ..()
 	//Getting player
-	var/mob/self = parent
+	var/mob/living/self = parent
 	//Getting info
 	.["isTargetSelf"] = target == self
 	.["interactingWith"] = target != self ? "Interacting with \the [target]..." : "Interacting with yourself..."
@@ -132,12 +132,12 @@
 			genital_entry["arousal_state"] = genital.aroused_state
 			genital_entry["always_accessible"] = genital.always_accessible
 			genitals += list(genital_entry)
-	if(iscarbon(self))
+
 		var/simulated_ass = list()
 		simulated_ass["name"] = "Anus"
 		simulated_ass["key"] = "anus"
 		var/visibility = "Invalid"
-		switch(self.anus_exposed)
+		switch(get_genitals.anus_exposed)
 			if(1)
 				visibility = "Always visible"
 			if(0)
@@ -146,7 +146,7 @@
 				visibility = "Always hidden"
 		simulated_ass["visibility"] = visibility
 		simulated_ass["possible_choices"] = GLOB.genitals_visibility_toggles - GEN_VISIBLE_NO_CLOTHES
-		simulated_ass["always_accessible"] = self.anus_always_accessible
+		simulated_ass["always_accessible"] = get_genitals.anus_always_accessible
 		genitals += list(simulated_ass)
 	.["genitals"] = genitals
 
