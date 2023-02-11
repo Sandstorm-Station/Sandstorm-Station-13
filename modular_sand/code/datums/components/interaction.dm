@@ -193,7 +193,7 @@
 /datum/component/interaction/ui_act(action, params)
 	if(..())
 		return
-	var/mob/parent_mob = parent
+	var/mob/living/parent_mob = parent
 	switch(action)
 		if("interact")
 			var/datum/interaction/o = SSinteractions.interactions[params["interaction"]]
