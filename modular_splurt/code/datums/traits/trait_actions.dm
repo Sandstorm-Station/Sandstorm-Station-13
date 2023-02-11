@@ -395,7 +395,7 @@
 	var/target_blood_volume = bite_target.blood_volume
 
 	// Check for sufficient blood volume
-	if(!target_blood_volume)
+	if(target_blood_volume < BLOODFLEDGE_DRAIN_NUM)
 		// Warn the user, then return
 		to_chat(action_owner, span_warning("There's not enough blood in [bite_target]!"))
 		return
@@ -457,7 +457,7 @@
 		return
 
 	// Check if bite target species has blood
-	if(NOBLOOD in bite_target.dna.species.species_traits)
+	if(NOBLOOD in bite_target.dna?.species?.species_traits)
 		// Warn the user and target, then return
 		to_chat(bite_target, span_warning("[action_owner] tried to drain you, but didn't find any blood!"))
 		to_chat(action_owner, span_warning("[bite_target] doesn't have any blood to drink!"))
@@ -465,8 +465,6 @@
 
 	// Create blood splatter
 	bite_target.add_splatter_floor(get_turf(bite_target), TRUE)
-
-	// Checks for exotic species blood below
 
 	// Variable for species with non-blood blood volumes
 	var/blood_valid = TRUE
@@ -478,55 +476,94 @@
 	// Action owner assumes blood until after drinking
 	var/blood_name = "blood"
 
-	// Check bite target for synth blood
-	if(bite_target.mob_biotypes & MOB_ROBOTIC)
-		// Mark blood as invalid
-		blood_valid = FALSE
+	// Check if target has exotic blood
+	if(bite_target.dna?.species?.exotic_bloodtype)
+		// Define blood types for owner and target
+		var/blood_type_owner = action_owner.dna?.species?.exotic_bloodtype
+		var/blood_type_target = bite_target.dna?.species?.exotic_bloodtype
 
-		// Set blood type name
-		blood_name = "coolant"
+		// Define if blood types match
+		var/blood_type_match = (blood_type_owner == blood_type_target ? TRUE : FALSE)
 
-		// Check if the action owner is also a synth
-		if (action_owner.mob_biotypes & MOB_ROBOTIC)
-			// Allow gaining blood from this
-			blood_transfer = TRUE
+		// Check if types matched
+		if(blood_type_match)
+			// Add positive mood
+			SEND_SIGNAL(action_owner, COMSIG_ADD_MOOD_EVENT, "bloodfledge_drank_exotic_match", /datum/mood_event/drank_exotic_matched)
 
-		// Action owner is not a synth
-		else
-			// Warn the user
-			to_chat(action_owner, span_warning("That didn't taste like blood at all..."))
+		// Switch for target's blood type
+		switch(blood_type_target)
+			// Synth blood
+			if("S")
+				// Mark blood as invalid
+				blood_valid = FALSE
 
-			// Add disgust
-			action_owner.adjust_disgust(2)
+				// Set blood type name
+				blood_name = "coolant"
 
-			// Cause negative mood
-			SEND_SIGNAL(action_owner, COMSIG_ADD_MOOD_EVENT, "bloodfledge_drank_synth", /datum/mood_event/drankblood_synth)
+				// Check if blood types match
+				if(blood_type_match)
+					// Allow gaining blood from this
+					blood_transfer = TRUE
 
-	// Check if bite target is a slime
-	if (isslimeperson(bite_target))
-		// Mark blood as invalid
-		blood_valid = FALSE
+				// Blood types do not match
+				else
+					// Warn the user
+					to_chat(action_owner, span_warning("That didn't taste like blood at all..."))
 
-		// Set blood type name
-		blood_name = "slime"
+					// Add disgust
+					action_owner.adjust_disgust(2)
 
-		// Check if the action owner is also a slime
-		if(isslimeperson(action_owner))
-			// Allow gaining blood from this
-			blood_transfer = TRUE
+					// Cause negative mood
+					SEND_SIGNAL(action_owner, COMSIG_ADD_MOOD_EVENT, "bloodfledge_drank_synth", /datum/mood_event/drankblood_synth)
 
-		// Action owner is not a slime
-		else
-			// Warn the user
-			to_chat(action_owner, span_warning("You feel a sloshing presence inside you, but it dies out after a few moments."))
+			// Slime blood
+			if("GEL")
+				// Mark blood as invalid
+				blood_valid = FALSE
 
-			// Add disgust
-			action_owner.adjust_disgust(2)
+				// Allow transferring blood from this
+				blood_transfer = TRUE
 
-			// Cause negative mood
-			SEND_SIGNAL(action_owner, COMSIG_ADD_MOOD_EVENT, "bloodfledge_drank_slime", /datum/mood_event/drankblood_slime)
+				// Set blood type name
+				blood_name = "slime"
 
-	// End of species blood checks
+				// Check if blood types match
+				if(!blood_type_match)
+					// Cause negative mood
+					SEND_SIGNAL(action_owner, COMSIG_ADD_MOOD_EVENT, "bloodfledge_drank_slime", /datum/mood_event/drankblood_slime)
+
+			// Bug blood
+			if("BUG")
+				// Set blood type name
+				blood_name = "hemolymph"
+
+				// Check if blood types match
+				if(!blood_type_match)
+					// Mark blood as invalid
+					blood_valid = FALSE
+
+					// Cause negative mood
+					SEND_SIGNAL(action_owner, COMSIG_ADD_MOOD_EVENT, "bloodfledge_drank_insect", /datum/mood_event/drankblood_insect)
+
+			// Xenomorph blood
+			if("X*")
+				// Set blood type name
+				blood_name = "xeno blood"
+
+				// Check if blood types match
+				if(!blood_type_match)
+					// Mark blood as invalid
+					blood_valid = FALSE
+
+					// Cause negative mood
+					SEND_SIGNAL(action_owner, COMSIG_ADD_MOOD_EVENT, "bloodfledge_drank_xeno", /datum/mood_event/drankblood_xeno)
+
+			// Lizard blood
+			if("L")
+				// Set blood type name
+				blood_name = "reptilian blood"
+
+	// End of exotic blood checks
 
 	// Define user's remaining capacity to absorb blood
 	var/blood_volume_difference = BLOOD_VOLUME_MAXIMUM - action_owner.blood_volume
@@ -540,18 +577,24 @@
 	// Grants nothing, unless blood transfer variable is set
 	bite_target.transfer_blood_to(action_owner, (blood_transfer ? drained_blood : 0), TRUE)
 
-	// Check if action owner received valid (nourishing) blood
-	if(blood_valid)
-		// Add blood reagent to the user
-		action_owner.reagents.add_reagent(/datum/reagent/blood/, drained_blood)
-
 	// Alert the bite target and local user of success
 	// Yes, this is AFTER the message for non-valid blood
 	to_chat(bite_target, span_danger("[action_owner] has taken some of your [blood_name]!"))
 	to_chat(action_owner, span_notice("You've drained some of [bite_target]'s [blood_name]!"))
 
+	// Check if action owner received valid (nourishing) blood
+	if(blood_valid)
+		// Add blood reagent to the user
+		action_owner.reagents.add_reagent(/datum/reagent/blood/, drained_blood)
+
+	// Valid blood was not received
+	// Check if a transfer is occurring
+	else if(!blood_transfer)
+		// Warn user of failure
+		to_chat(action_owner, span_warning("Your body struggles to process the [blood_name]!"))
+
 	// Alert the action holder if blood volume limit was exceeded
-	if(blood_transfer && (action_owner.blood_volume >= BLOOD_VOLUME_MAXIMUM))
+	else if(blood_transfer && (action_owner.blood_volume >= BLOOD_VOLUME_MAXIMUM))
 		to_chat(action_owner, span_warning("You body fails to absorb any more [blood_name]. The remainder has been lost."))
 
 	// Play a heartbeat sound effect
