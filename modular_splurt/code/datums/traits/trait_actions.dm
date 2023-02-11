@@ -363,6 +363,9 @@
 	// Define zone name
 	var/target_zone_name = "flesh"
 
+	// Define if target zone has special effects
+	var/target_zone_effects = FALSE
+
 	// Define if zone should be checked
 	// Uses dismember check to determine if it can be missing
 	// Missing limbs are assumed to be dismembered
@@ -397,8 +400,9 @@
 				return
 
 			// Set region data normally
-			target_zone_check = FALSE
 			target_zone_name = "eyes"
+			target_zone_check = FALSE
+			target_zone_effects = TRUE
 
 		if(BODY_ZONE_PRECISE_MOUTH)
 			// Check if mouth exists and is exposed
@@ -409,6 +413,7 @@
 			// Set region data normally
 			target_zone_name = "lips"
 			target_zone_check = FALSE
+			target_zone_effects = TRUE
 
 		if(BODY_ZONE_PRECISE_GROIN)
 			target_zone_name = "groin"
@@ -517,6 +522,48 @@
 			to_chat(action_owner, span_warning("You can't drain any more blood from [bite_target] without hurting [bite_target.p_them()]!"))
 			return
 
+	// Check for target zone special effects
+	if(target_zone_effects)
+		// Check if biting eyes or mouth
+		if((target_zone == BODY_ZONE_PRECISE_EYES) || (target_zone == BODY_ZONE_PRECISE_MOUTH))
+			// Check if biting target with proto-type face
+			// Snout type is a string that cannot use subtype search
+			if(findtext(bite_target.dna?.features["mam_snouts"], "Synthetic Lizard"))
+				// Display local chat message
+				action_owner.visible_message(span_notice("[action_owner]'s fangs clank harmlessly against [bite_target]'s face screen!"))
+
+				// Play glass tap sound
+				playsound(bite_target, 'sound/effects/Glasshit.ogg', 30, 1, -2)
+
+				// Start cooldown early to prevent spam
+				StartCooldown()
+
+				// Return without further effects
+				return
+
+		// Check for strange bite regions
+		switch(target_zone)
+			// Zone is eyes
+			if(BODY_ZONE_PRECISE_EYES)
+				// Define target's eyes
+				var/obj/item/organ/eyes/target_eyes = bite_target.getorganslot(ORGAN_SLOT_EYES)
+
+				// Check if eyes exist
+				if(target_eyes)
+					// Display warning
+					to_chat(bite_target, span_userdanger("Your [target_eyes] rupture in pain as [action_owner]'s fangs pierce their surface!"))
+
+					// Blur vision
+					bite_target.blur_eyes(10)
+
+					// Add organ damage
+					target_eyes.applyOrganDamage(20)
+
+			// Zone is mouth
+			if(BODY_ZONE_PRECISE_MOUTH)
+				// Cause temporary stuttering
+				bite_target.stuttering = 10
+
 	// Display local chat message
 	action_owner.visible_message(span_danger("[action_owner] begins to bite down on [bite_target]'s [target_zone_name]!"))
 
@@ -525,29 +572,6 @@
 
 	// Play a bite sound effect
 	playsound(action_owner, 'sound/weapons/bite.ogg', 30, 1, -2)
-
-	// Check for strange bite regions
-	switch(target_zone)
-		// Zone is eyes
-		if(BODY_ZONE_PRECISE_EYES)
-			// Define target's eyes
-			var/obj/item/organ/eyes/target_eyes = bite_target.getorganslot(ORGAN_SLOT_EYES)
-
-			// Check if eyes exist
-			if(target_eyes)
-				// Display warning
-				to_chat(bite_target, span_userdanger("Your [target_eyes] rupture in pain as [action_owner]'s fangs pierce their surface!"))
-
-				// Blur vision
-				bite_target.blur_eyes(10)
-
-				// Add organ damage
-				target_eyes.applyOrganDamage(20)
-
-		// Zone is mouth
-		if(BODY_ZONE_PRECISE_MOUTH)
-			// Cause temporary stuttering
-			bite_target.stuttering = 10
 
 	// Try to perform action timer
 	if(!do_after(action_owner, time_interact, target = bite_target))
