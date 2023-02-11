@@ -107,17 +107,3 @@
 	name = "Towel"
 	path = /obj/item/reagent_containers/rag/towel
 
-/datum/gear/backpack/shortcrop //loadouts still don't support proper accessories
-	name = "Short sleeved croptop"
-	path = /obj/item/clothing/accessory/shortcrop
-	subcategory = LOADOUT_SUBCATEGORY_BACKPACK_ACCESSORIES
-
-/datum/gear/backpack/longcrop //loadouts still don't support proper accessories x2
-	name = "Long sleeved croptop"
-	path = /obj/item/clothing/accessory/longcrop
-	subcategory = LOADOUT_SUBCATEGORY_BACKPACK_ACCESSORIES
-
-/datum/gear/backpack/formalcrop //loadouts still don't support proper accessories x3
-	name = "Formal croptop"
-	path = /obj/item/clothing/accessory/formalcrop
-	subcategory = LOADOUT_SUBCATEGORY_BACKPACK_ACCESSORIES
