@@ -4,7 +4,7 @@
 	var/list/choices = list("Anus" = "None", "Breasts" = "None", "Penis" = "None", "Vagina" = "None")
 
 /obj/item/chastity_hypno/proc/hypno(mob/target)
-	if(!iscarbon(target) || !choices || !(target.client?.prefs.cit_toggles & HYPNO))
+	if(!iscarbon(target) || !choices || !(target.client?.prefs.cit_toggles & HYPNO) || choices == initial(choices))
 		return
 
 	var/mob/living/carbon/C = target
@@ -97,20 +97,33 @@
 	choices = list("Anus" = "None", "Breasts" = "None", "Penis" = "None", "Vagina" = "None")
 
 /mob/living/carbon/proc/remove_chastity_hypno_effects()
-	if(HAS_TRAIT(src, TRAIT_OVERSTIM_ANUS))
+	if(HAS_TRAIT(src, TRAIT_IMPOTENT_ANUS))
+		REMOVE_TRAIT(src, TRAIT_IMPOTENT_ANUS, ORGAN_TRAIT)
+	else if(HAS_TRAIT(src, TRAIT_EDGINGONLY_ANUS))
+		REMOVE_TRAIT(src, TRAIT_EDGINGONLY_ANUS, ORGAN_TRAIT)
+	else if(HAS_TRAIT(src, TRAIT_DISAPPOINTING_ANUS))
+		REMOVE_TRAIT(src, TRAIT_DISAPPOINTING_ANUS, ORGAN_TRAIT)
+	else if(HAS_TRAIT(src, TRAIT_OVERSTIM_ANUS))
 		REMOVE_TRAIT(src, TRAIT_OVERSTIM_ANUS, ORGAN_TRAIT)
+	else if(HAS_TRAIT(src, TRAIT_HYPERSENS_ANUS))
+		REMOVE_TRAIT(src, TRAIT_HYPERSENS_ANUS, ORGAN_TRAIT)
 
 	for(var/obj/item/organ/genital/G in internal_organs)
 		if(CHECK_BITFIELD(G.genital_flags, GENITAL_IMPOTENT))
 			DISABLE_BITFIELD(G.genital_flags, GENITAL_IMPOTENT)
+			continue
 		if(CHECK_BITFIELD(G.genital_flags, GENITAL_EDGINGONLY))
 			DISABLE_BITFIELD(G.genital_flags, GENITAL_EDGINGONLY)
+			continue
 		if(CHECK_BITFIELD(G.genital_flags, GENITAL_DISAPPOINTING))
 			DISABLE_BITFIELD(G.genital_flags, GENITAL_DISAPPOINTING)
+			continue
 		if(CHECK_BITFIELD(G.genital_flags, GENITAL_OVERSTIM))
 			DISABLE_BITFIELD(G.genital_flags, GENITAL_OVERSTIM)
+			continue
 		if(CHECK_BITFIELD(G.genital_flags, GENITAL_HYPERSENS))
 			DISABLE_BITFIELD(G.genital_flags, GENITAL_HYPERSENS)
+			continue
 
 	SEND_SIGNAL(src, COMSIG_CLEAR_MOOD_EVENT, "hypno")
 
