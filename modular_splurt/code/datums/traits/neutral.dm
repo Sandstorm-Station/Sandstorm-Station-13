@@ -357,7 +357,7 @@
 	mob_trait = TRAIT_BLOODFLEDGE
 	gain_text = span_notice("You feel a sanguine thirst.")
 	lose_text = span_notice("You feel the sanguine thirst fade away.")
-	processing_quirk = TRUE
+	processing_quirk = FALSE // Handled by crates.dm
 
 /datum/quirk/bloodfledge/add()
 	// Define quirk mob
@@ -395,32 +395,33 @@
 		act_revive.Grant(quirk_mob)
 
 /datum/quirk/bloodfledge/on_process()
+	// Processing is currently only used for coffin healing
+	// This is started and stopped by a proc in crates.dm
+
+	// Define potential coffin
+	var/quirk_coffin = quirk_holder.loc
+
 	// Check if the current area is a coffin
-	if(istype(quirk_holder.loc, /obj/structure/closet/crate/coffin))
+	if(istype(quirk_coffin, /obj/structure/closet/crate/coffin))
 		// Define quirk mob
 		var/mob/living/carbon/human/quirk_mob = quirk_holder
 
 		// Quirk mob must be injured
 		if(quirk_mob.health >= quirk_mob.maxHealth)
-			return
+			// Warn user
+			to_chat(quirk_mob, span_notice("[quirk_coffin] does nothing more to help you, as your body is fully mended."))
 
-		// Prevent healing for robots
-		// This caused numerous technical issues
-		if(quirk_mob.mob_biotypes & MOB_ROBOTIC)
-			// Display a warning chat message (10% chance)
-			if(prob(20))
-				to_chat(quirk_mob, span_warning("Your mechanical body rejects the curse's healing properties!"))
-
-			// Return without healing, due robotic nature
+			// Stop processing and return
+			STOP_PROCESSING(SSquirks, src)
 			return
 
 		// Nutrition (blood) level must be above STARVING
 		if(quirk_mob.nutrition <= NUTRITION_LEVEL_STARVING)
-			// Display a warning chat message (10% chance)
-			if(prob(20))
-				to_chat(quirk_mob, span_warning("You need more blood before you can regenerate!"))
+			// Warn user
+			to_chat(quirk_mob, span_warning("[quirk_coffin] requires blood to operate, which you are currently lacking. Your connection to the other-world fades once again."))
 
-			// Return without healing, due to lack of blood
+			// Stop processing and return
+			STOP_PROCESSING(SSquirks, src)
 			return
 
 		// Define initial health
@@ -429,12 +430,6 @@
 		// Heal brute and burn
 		// Accounts for robotic limbs
 		quirk_mob.heal_overall_damage(2,2)
-		/*
-		// Heal brute
-		quirk_mob.adjustBruteLoss(-2)
-		// Heal burn
-		quirk_mob.adjustFireLoss(-2)
-		*/
 		// Heal oxygen
 		quirk_mob.adjustOxyLoss(-2)
 		// Heal clone
@@ -459,6 +454,15 @@
 		// Remove nutrition (blood) as compensation for healing
 		// Amount is equal to 50% of healing done
 		quirk_mob.adjust_nutrition(health_restored*-1)
+
+	// User is not in a coffin
+	// This should not occur without teleportation
+	else
+		// Warn user
+		to_chat(quirk_holder, span_warning("Your connection to the other-world is broken upon leaving the [quirk_coffin]!"))
+
+		// Stop processing
+		STOP_PROCESSING(SSquirks, src)
 
 /datum/quirk/bloodfledge/remove()
 	// Define quirk mob
