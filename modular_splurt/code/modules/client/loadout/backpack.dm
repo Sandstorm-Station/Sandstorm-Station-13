@@ -106,4 +106,3 @@
 /datum/gear/backpack/towel
 	name = "Towel"
 	path = /obj/item/reagent_containers/rag/towel
-
