@@ -256,6 +256,27 @@
 	button_icon = 'icons/mob/actions/bloodsucker.dmi'
 	transparent_when_unavailable = TRUE
 
+// Basic can-use check
+/datum/action/cooldown/bloodfledge/IsAvailable(silent = FALSE)
+	. = ..()
+
+	// Check parent return
+	if(!.)
+		return FALSE
+
+	// Check for carbon owner
+	if(!iscarbon(owner))
+		// Warn user and return
+		to_chat(owner, span_warning("You shouldn't have this ability!"))
+		return FALSE
+
+	// Check vampire ability mob proc
+	if(!owner.allow_vampiric_ability(silent = FALSE))
+		return FALSE
+
+	// Action can be used
+	return TRUE
+
 // Action: Bite
 /datum/action/cooldown/bloodfledge/bite
 	name = "Fledgling Bite"
@@ -278,10 +299,6 @@
 
 	// Check parent return
 	if(!.)
-		return
-
-	// Check for carbon owner
-	if(!iscarbon(owner))
 		return
 
 	// Define action owner

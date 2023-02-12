@@ -25,7 +25,11 @@
 				to_chat(coffin_user, span_warning("Your components don't respond to [src]'s sanguine connection! Regeneration will not be possible."))
 				continue
 
-			// User is not synthetic
+			// Check if vampire ability is allowed
+			if(!coffin_user.allow_vampiric_ability())
+				to_chat(coffin_user, span_warning("[src] fails to form a connection with your body amidst the strong magical interference! Something is blocking your connection to the other-world!"))
+				// Function already contains message
+				continue
 
 			// Define quirk entry
 			var/datum/quirk/bloodfledge/quirk_target = locate() in coffin_user.roundstart_quirks
