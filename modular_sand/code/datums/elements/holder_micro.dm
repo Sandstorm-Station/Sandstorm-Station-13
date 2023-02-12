@@ -170,7 +170,7 @@
 
 	if(!src)
 		return
-	var/datum/component/interaction_menu_granter/menu = held_mob.GetComponent(/datum/component/interaction)
+	var/datum/component/interaction_menu_granter/menu = held_mob.GetComponent(/datum/component/interaction_menu_granter)
 	if(menu)
 		menu.open_menu(usr, src)
 	else // you bad
