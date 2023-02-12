@@ -7,6 +7,9 @@
 #define TETRIS_TIME_COOLDOWN CONFIG_GET(number/tetris_time_cooldown)
 #define TETRIS_NO_SCIENCE CONFIG_GET(flag/tetris_no_science)
 
+// Cooldown defines
+#define TETRIS_COOLDOWN_MAIN cooldown_timer
+
 /obj/machinery/computer/arcade/tetris
 	name = "T.E.T.R.I.S."
 	desc = "The pinnacle of human technology."
@@ -14,7 +17,7 @@
 	icon_state = "arcade"
 	circuit = /obj/item/circuitboard/computer/arcade/tetris
 	light_color = LIGHT_COLOR_GREEN
-	var/cooldown_timer = 0
+	COOLDOWN_DECLARE(TETRIS_COOLDOWN_MAIN)
 
 /obj/machinery/computer/arcade/tetris/Topic(href, href_list)
 	if(..())
@@ -46,7 +49,7 @@
 				return
 
 			// Check cooldown
-			if(world.time < cooldown_timer)
+			if(!COOLDOWN_FINISHED(src, TETRIS_COOLDOWN_MAIN))
 				// Play a fake prize vend effect based on prizevend()
 				playsound(src, 'sound/machines/machine_vend.ogg', 50, TRUE, extrarange = -3)
 				visible_message(span_notice("[src] sputters for a moment before going quiet."))
@@ -55,7 +58,7 @@
 				return
 
 			// Set cooldown time
-			cooldown_timer = world.time + TETRIS_TIME_COOLDOWN
+			COOLDOWN_START(src, TETRIS_COOLDOWN_MAIN, TETRIS_TIME_COOLDOWN)
 
 			// Vend prizes
 			prizevend(usr, reward_count)
@@ -165,3 +168,4 @@
 #undef TETRIS_SCORE_MAX_SCI
 #undef TETRIS_TIME_COOLDOWN
 #undef TETRIS_NO_SCIENCE
+#undef TETRIS_COOLDOWN_MAIN
