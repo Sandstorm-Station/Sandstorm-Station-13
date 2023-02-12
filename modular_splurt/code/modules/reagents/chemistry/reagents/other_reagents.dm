@@ -32,10 +32,14 @@
 	if(method != INGEST)
 		return
 
+	// Check if blood data exists
+	if(!data)
+		return
+
 	// Check for Bloodfledge quirk
 	if(HAS_TRAIT(M,TRAIT_BLOODFLEDGE))
 		// Check for own blood
-		if(data && (data["donor"] == M))
+		if(data["donor"] == M)
 			// Warn user and return
 			to_chat(M, span_warning("You gain no nourishment from the familiar blood..."))
 			return
