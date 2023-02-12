@@ -13,10 +13,7 @@
 /obj/machinery/computer/arcade/tetris
 	name = "T.E.T.R.I.S."
 	desc = "The pinnacle of human technology."
-	icon = 'icons/obj/computer.dmi'
-	icon_state = "arcade"
 	circuit = /obj/item/circuitboard/computer/arcade/tetris
-	light_color = LIGHT_COLOR_GREEN
 	COOLDOWN_DECLARE(TETRIS_COOLDOWN_MAIN)
 
 /obj/machinery/computer/arcade/tetris/Topic(href, href_list)
