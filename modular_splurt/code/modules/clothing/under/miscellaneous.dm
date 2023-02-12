@@ -318,6 +318,7 @@
 	mob_overlay_icon = 'modular_splurt/icons/mob/clothing/uniform.dmi'
 	icon_state = "leia"
 	can_adjust = FALSE
+	mutantrace_variation = STYLE_DIGITIGRADE|STYLE_NO_ANTHRO_ICON
 
 /obj/item/clothing/under/misc/leia_outfit/ComponentInitialize()
 	. = ..()
