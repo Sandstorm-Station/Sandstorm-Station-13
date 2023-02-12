@@ -7,11 +7,12 @@
 
 	if(!src)
 		return
-	var/datum/component/interaction_menu_granter/menu = GetComponent(/datum/component/interaction_menu_granter)
+	// I FUCKING HATE VERBS (NEED TO GRAB COMPONENT FROM USR, NOT SRC)
+	var/datum/component/interaction_menu_granter/menu = usr.GetComponent(/datum/component/interaction_menu_granter)
 	if(menu)
 		menu.open_menu(usr, src)
 	else // you bad
-		remove_verb(src, /mob/proc/interact_with)
+		remove_verb(usr, /mob/proc/interact_with)
 
 #define INTERACTION_NORMAL 0
 #define INTERACTION_LEWD 1
@@ -59,7 +60,7 @@
 
 /datum/component/interaction_menu_granter/ui_state(mob/user)
 	// Funny admin, don't you dare be the extra funny now.
-	if(user.client.holder)
+	if(user.client.holder && !user.client.holder.deadmined)
 		return GLOB.always_state
 	if(user == parent)
 		return GLOB.conscious_state
