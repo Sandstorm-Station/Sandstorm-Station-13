@@ -37,6 +37,11 @@
 	species_category = SPECIES_CATEGORY_ROBOT
 	wings_icons = SPECIES_WINGS_ROBOT
 
+	family_heirlooms = list(
+		// Gives a broken powercell for flavor text!
+		/obj/item/stock_parts/cell/family
+	)
+
 	var/datum/action/innate/monitor_change/screen
 	languagewhitelist = list("Encoded Audio Language") //Skyrat change - species language whitelist
 

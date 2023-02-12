@@ -4,6 +4,11 @@
 	name = "Condom"
 	path = /obj/item/genital_equipment/condom
 
+/datum/gear/backpack/condom_box
+	name = "Box of Condoms"
+	path = /obj/item/storage/box/bulk_condoms
+	cost = 2
+
 /datum/gear/backpack/sounding
 	name = "Sounding rod"
 	path = /obj/item/genital_equipment/sounding

@@ -67,8 +67,8 @@
 	mutantrace_variation = NONE
 
 /obj/item/clothing/under/centcomdress
-	name = "Centcom Dress Uniform"
-	desc = "A stylish yet revealing dress uniform worn in extravagent black and gold, worthy of those who sit around and watch cameras all day in an office."
+	name = "CentCom Dress Uniform"
+	desc = "A stylish yet revealing dress uniform worn in extravagant black and gold, worthy of those who sit around and watch cameras all day in an office."
 	icon = 'modular_splurt/icons/obj/clothing/suits.dmi'
 	icon_state = "ccdress"
 	mob_overlay_icon = 'modular_splurt/icons/mobs/suits.dmi'
@@ -83,7 +83,7 @@
 	armor = list("melee" = 60, "bullet" = 80, "laser" = 80, "energy" = 90, "bomb" = 50, "bio" = 100, "rad" = 50, "fire" = 50, "acid" = 50)
 
 /obj/item/clothing/under/centcomdress/vk
-	name = "Virginkiller Centcom Dress Uniform"
+	name = "Virginkiller CentCom Dress Uniform"
 	desc = "This black and gold beauty does not help paperwork get done, it seems."
 	icon_state = "ccdressvk"
 
@@ -114,7 +114,10 @@
 	icon_state = "vaultsuit"
 	mob_overlay_icon = 'modular_splurt/icons/mob/clothing/uniform.dmi'
 	item_state = "b_suit"
+	item_state = "b_suit"
 	can_adjust = FALSE
+	anthro_mob_worn_overlay = 'modular_splurt/icons/mob/clothing/uniform_digi.dmi'
+	mutantrace_variation = STYLE_DIGITIGRADE|STYLE_ALL_TAURIC
 	var/firstpickup = TRUE
 	var/pickupsound = TRUE
 
