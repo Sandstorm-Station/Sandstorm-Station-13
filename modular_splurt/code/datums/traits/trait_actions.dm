@@ -328,11 +328,17 @@
 		to_chat(action_owner, span_notice("You can't bite things while muzzled!"))
 		return
 
+	// Check for covered mouth
+	if(action_owner.is_mouth_covered())
+		// Warn the user, then return
+		to_chat(action_owner, span_notice("You can't bite things with your mouth covered!"))
+		return
+
 	// Define pulled target
 	var/pull_target = action_owner.pulling
 
 	// Define bite target
-	var/mob/living/carbon/bite_target
+	var/mob/living/carbon/human/bite_target
 
 	// Define if action owner is dumb
 	var/action_owner_dumb = HAS_TRAIT(action_owner, TRAIT_DUMB)
@@ -346,7 +352,7 @@
 	else if(istype(pull_target,/obj/structure/arachnid/cocoon))
 		// Define if cocoon has a valid target
 		// This cannot use pull_target
-		var/possible_cocoon_target = locate(/mob/living/carbon) in action_owner.pulling.contents
+		var/possible_cocoon_target = locate(/mob/living/carbon/human) in action_owner.pulling.contents
 
 		// Check defined cocoon target
 		if(possible_cocoon_target)
@@ -373,6 +379,13 @@
 
 	// Define selected zone
 	var/target_zone = action_owner.zone_selected
+
+	// Check if target can be penetrated
+	// Bypass pierce immunity so feedback can be provided later
+	if(!bite_target.can_inject(action_owner, FALSE, target_zone, FALSE, TRUE))
+		// Warn the user, then return
+		to_chat(action_owner, span_warning("There\'s no exposed flesh or thin material in that region of [bite_target]'s body. You're unable to bite them!"))
+		return
 
 	// Check targeted body part
 	var/obj/item/bodypart/bite_bodypart = bite_target.get_bodypart(target_zone)
@@ -552,6 +565,17 @@
 			// Warn the user, then return
 			to_chat(action_owner, span_warning("You can't drain any more blood from [bite_target] without hurting [bite_target.p_them()]!"))
 			return
+
+	// Check for pierce immunity
+	if(HAS_TRAIT(bite_target, TRAIT_PIERCEIMMUNE))
+		// Display local chat message
+		action_owner.visible_message(span_danger("[action_owner] tries to bite down on [bite_target]'s [target_zone_name], but can't seem to pierce [bite_target.p_them()]!"), span_danger("You try to bite down on [bite_target]'s [target_zone_name], but are completely unable to pierce [bite_target.p_them()]!"))
+
+		// Warn bite target
+		to_chat(bite_target, span_userdanger("[action_owner] tries to bite your [target_zone_name], but is unable to piece you!"))
+
+		// Return without further effects
+		return
 
 	// Check for target zone special effects
 	if(target_zone_effects)
