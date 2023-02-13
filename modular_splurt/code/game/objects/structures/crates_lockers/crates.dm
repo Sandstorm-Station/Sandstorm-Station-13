@@ -9,7 +9,7 @@
 		return
 
 	// Check for bloodfledge
-	if(HAS_TRAIT(coffin_examinee, TRAIT_BLOODFLEDGE))
+	if(isbloodfledge(coffin_examinee))
 		. += span_cult("As a Bloodsucker Fledgling; You can use coffins like this one to heal your wounds and escape from death.")
 
 /obj/structure/closet/crate/coffin/after_close(mob/living/coffin_toucher)
@@ -18,7 +18,7 @@
 	// Iterate over carbon mobs inside
 	for(var/mob/living/carbon/coffin_user in contents)
 		// Check for bloodfledge
-		if(HAS_TRAIT(coffin_user, TRAIT_BLOODFLEDGE))
+		if(isbloodfledge(coffin_user))
 			// Check for synthetic
 			if(coffin_user.mob_biotypes && (coffin_user.mob_biotypes & MOB_ROBOTIC))
 				// Warn user and continue
@@ -49,7 +49,7 @@
 	// Iterate over carbon mobs inside
 	for(var/mob/living/carbon/coffin_user in coffin_turf.contents)
 		// Check for bloodfledge
-		if(HAS_TRAIT(coffin_user, TRAIT_BLOODFLEDGE))
+		if(isbloodfledge(coffin_user))
 			// Define quirk entry
 			var/datum/quirk/bloodfledge/quirk_target = locate() in coffin_user.roundstart_quirks
 

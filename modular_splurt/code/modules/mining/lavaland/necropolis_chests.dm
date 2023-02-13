@@ -7,7 +7,7 @@
 		return ..()
 
 	// Check for bloodfledge
-	if(HAS_TRAIT(user, TRAIT_BLOODFLEDGE))
+	if(isbloodfledge(user))
 		// Define list of options
 		var/list/prompt_options = list("Confirm", "Cancel")
 

@@ -561,7 +561,7 @@
 			return
 
 	// Check if examiner shares the quirk
-	if(HAS_TRAIT(examiner, TRAIT_BLOODFLEDGE))
+	if(isbloodfledge(examiner))
 		// Add detection text
 		examine_list += span_info("[quirk_holder.p_their(TRUE)] hunger makes it easy to identify them as a fellow bloodfledge!")
 
