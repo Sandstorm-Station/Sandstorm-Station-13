@@ -358,3 +358,27 @@
 	nT.Insert(M)
 	T.moveToNullspace()//To valhalla
 	to_chat(M, span_big_warning("Your tongue feels... weally fwuffy!!"))
+
+/datum/reagent/consumable/ethanol/ionstorm
+	name = "Ion Storm"
+	description = "A highly chaotic mixture that looks like it may react violently at any moment, but is surprisingly stable"
+	color = "#3fd2ff"
+	taste_description = "a scorching taste of strong alcohol and good brew going down your throat, making you feel warm inside"
+	glass_icon = 'modular_splurt/icons/obj/drinks.dmi'
+	glass_icon_state = "ionstorm"
+	glass_name = "glass of Ion Storm"
+	glass_desc = "You're not sure how this mixture is stable or even if it's drinkable, but it does remind you of a hot cup of apple cider on a cold winter morning"
+	pH = 6.5
+	value = REAGENT_VALUE_UNCOMMON
+	boozepwr = 30
+	quality = DRINK_FANTASTIC
+
+/datum/reagent/consumable/ethanol/ionstorm/on_mob_life(mob/living/carbon/C)
+	C.adjustBruteLoss(-0.5,0)
+	C.adjustFireLoss(-0.5,0)
+	if (C.reagents.has_reagent(/datum/reagent/medicine/epinephrine))
+		C.adjustToxLoss(0.25)
+	else
+		C.adjustOxyLoss(0.25)
+	. = 1
+	return ..()
