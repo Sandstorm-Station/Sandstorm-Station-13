@@ -1,0 +1,10 @@
+author: LeDrascol
+delete-after: true
+changes:
+  - balance: T.E.T.R.I.S. arcade machine now generates research points if used by
+      scientists
+  - balance: T.E.T.R.I.S. machine maximum score, prize count, and points payout are
+      now limited
+  - balance: T.E.T.R.I.S. machine can only dispense rewards once per configured time
+      threshold
+  - server: Added configuration settings for the T.E.T.R.I.S. arcade machine
