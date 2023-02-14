@@ -34,6 +34,8 @@
 
 	// Check if blood data exists
 	if(!data)
+		// Log warning and return
+		log_game("[M] attempted to ingest blood that had no data!")
 		return
 
 	// Check for Bloodfledge quirk
@@ -45,7 +47,8 @@
 			return
 
 		// Add nutrition reagent
-		M.reagents.add_reagent(/datum/reagent/consumable/notriment, reac_volume)
+		// Reduced to 10%
+		M.reagents.add_reagent(/datum/reagent/consumable/notriment, reac_volume*0.1)
 
 /datum/reagent/water/holywater/on_mob_life(mob/living/carbon/M)
 	. = ..()
@@ -98,12 +101,23 @@
 	nutriment_factor = 10 * REAGENTS_METABOLISM
 	color = "#66552f" // rgb: 102, 85, 47
 
-/datum/reagent/consumable/notriment/on_mob_life(mob/living/carbon/M)
-	. = ..()
+/datum/reagent/consumable/notriment/reaction_mob(mob/living/carbon/M, method=TOUCH, reac_volume)
 	// Check if mob can process food
 	if(!HAS_TRAIT(M, TRAIT_NO_PROCESS_FOOD))
+		// Warn user
+		to_chat(M, span_warning("Your body is incapable of processing the Strange Nutriment!"))
+
+		// Remove reagent
+		M.reagents.remove_reagent(/datum/reagent/consumable/notriment/, reac_volume)
+
 		// Ignore this mob
 		return
+
+	// Return normally
+	. = ..()
+
+/datum/reagent/consumable/notriment/on_mob_life(mob/living/carbon/M)
+	. = ..()
 
 	// Add nutrition
 	M.adjust_nutrition(nutriment_factor, max_nutrition)

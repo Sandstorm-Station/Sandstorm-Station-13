@@ -285,6 +285,9 @@
 	cooldown_time = BLOODFLEDGE_COOLDOWN_BITE
 	var/time_interact = 30
 
+	// Reagent holder, used to change reaction type
+	var/datum/reagents/blood_bank
+
 /datum/action/cooldown/bloodfledge/bite/Grant()
 	. = ..()
 
@@ -294,6 +297,8 @@
 		cooldown_time *= 0.5
 		time_interact*= 0.5
 
+	// Create reagent holder
+	blood_bank = new()
 /datum/action/cooldown/bloodfledge/bite/Trigger()
 	. = ..()
 
@@ -715,7 +720,7 @@
 
 				// Check if blood types match
 				if(blood_type_match)
-					// Allow gaining blood from this
+					// Allow transferring blood from this
 					blood_transfer = TRUE
 
 				// Blood types do not match
@@ -785,11 +790,6 @@
 	// Remove blood from bite target
 	bite_target.blood_volume = clamp(target_blood_volume - drained_blood, 0, BLOOD_VOLUME_MAXIMUM)
 
-	// Perform a blood transfer
-	// This is done to transfer compatible diseases
-	// Grants nothing, unless blood transfer variable is set
-	bite_target.transfer_blood_to(action_owner, (blood_transfer ? drained_blood : 0), TRUE)
-
 	// Alert the bite target and local user of success
 	// Yes, this is AFTER the message for non-valid blood
 	to_chat(bite_target, span_danger("[action_owner] has taken some of your [blood_name]!"))
@@ -797,18 +797,35 @@
 
 	// Check if action owner received valid (nourishing) blood
 	if(blood_valid)
-		// Add blood reagent to the user
-		action_owner.reagents.add_reagent(/datum/reagent/blood/, drained_blood)
+		// Add blood reagent to reagent holder
+		blood_bank.add_reagent(/datum/reagent/blood/, drained_blood)
+
+		// Set reaction type to INGEST
+		blood_bank.reaction(action_owner, INGEST)
+
+		// Transfer reagent to action owner
+		blood_bank.trans_to(action_owner, drained_blood)
+
+		// Remove reagents
+		blood_bank.remove_all(drained_blood)
+
+	// Check if blood transfer should occur
+	else if(blood_transfer)
+		// Check if action holder's blood volume limit was exceeded
+		if(action_owner.blood_volume >= BLOOD_VOLUME_MAXIMUM)
+			// Warn user
+			to_chat(action_owner, span_warning("You body fails to absorb any more [blood_name]. The remainder has been lost."))
+
+		// Blood volume limit was not exceeded
+		else
+			// Transfer blood directly
+			bite_target.transfer_blood_to(action_owner, drained_blood, TRUE)
 
 	// Valid blood was not received
-	// Check if a transfer is occurring
-	else if(!blood_transfer)
+	// No transfer occurred
+	else
 		// Warn user of failure
 		to_chat(action_owner, span_warning("Your body struggles to process the [blood_name]!"))
-
-	// Alert the action holder if blood volume limit was exceeded
-	else if(blood_transfer && (action_owner.blood_volume >= BLOOD_VOLUME_MAXIMUM))
-		to_chat(action_owner, span_warning("You body fails to absorb any more [blood_name]. The remainder has been lost."))
 
 	// Play a heartbeat sound effect
 	// This was changed to match bloodsucker
