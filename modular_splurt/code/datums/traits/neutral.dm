@@ -563,7 +563,7 @@
 	// Check if examiner shares the quirk
 	if(isbloodfledge(examiner))
 		// Add detection text
-		examine_list += span_info("[quirk_holder.p_their(TRUE)] hunger makes it easy to identify them as a fellow bloodfledge!")
+		examine_list += span_info("[quirk_holder.p_their(TRUE)] hunger makes it easy to identify [quirk_holder.p_them()] as a fellow Bloodsucker Fledgling!")
 
 		// Add hunger text
 		examine_list += span_warning(examine_hunger_secret)
