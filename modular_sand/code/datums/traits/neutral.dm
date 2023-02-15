@@ -35,8 +35,15 @@
 	desc = "Your system burns with the desire to be bred. Satisfying your lust will make you happy, while ignoring it may cause you to become sad and needy."
 	value = 0
 	mob_trait = TRAIT_ESTROUS_ACTIVE
-	gain_text = span_love("You body burns with the desire to be bred.")
+	gain_text = span_love("You body burns with the desire to engage in breeding.")
 	lose_text = span_notice("You feel more in control of your body and thoughts.")
+
+	// Default heat message for examine text
+	var/heat_type = "influenced by the estrous cycle"
+
+	// Type of interaction to be performed
+	// Intended for use with downstream quirks
+	var/positional_orientation = "engage in breeding"
 
 /datum/quirk/estrous_active/add()
 	// Add examine hook
@@ -45,6 +52,28 @@
 /datum/quirk/estrous_active/remove()
 	// Remove examine hook
 	UnregisterSignal(quirk_holder, COMSIG_PARENT_EXAMINE)
+
+/datum/quirk/estrous_active/post_add()
+	// Check for male reproductive organs
+	var/breed_male = quirk_holder.has_balls()
+
+	// Define possible womb
+	var/obj/item/organ/genital/womb/organ_womb = quirk_holder.getorganslot(ORGAN_SLOT_WOMB)
+
+	// Check for female reproductive organs
+	var/breed_female = (quirk_holder.has_vagina() && istype(organ_womb))
+
+	// Set variable for both reproductive types
+	if(breed_male && breed_female)
+		heat_type = "both estrous and rut"
+
+	// Set variable for male-only
+	else if(breed_male)
+		heat_type = "rut"
+
+	// Set variable for female-only
+	else if(breed_female)
+		heat_type = "estrous"
 
 /datum/quirk/estrous_active/proc/quirk_examine_estrous_active(atom/examine_target, mob/living/carbon/human/examiner, list/examine_list)
 	SIGNAL_HANDLER
@@ -58,4 +87,4 @@
 		return
 
 	// Add quirk message
-	examine_list += span_love("[quirk_holder.p_they(TRUE)] [quirk_holder.p_are()] currently influenced by the estrous cycle, and long for breeding.")
+	examine_list += span_love("[quirk_holder.p_they(TRUE)] [quirk_holder.p_are()] currently in [heat_type], and longs to [positional_orientation].")
