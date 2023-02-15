@@ -1,4 +1,4 @@
-/obj/item/organ/Insert(mob/living/carbon/M, special = 0, drop_if_replaced = TRUE)
+/obj/item/organ/Insert(mob/living/carbon/organ_mob)
 	. = ..()
 
 	// Check parent return
@@ -6,9 +6,9 @@
 		return
 
 	// Send signal to mob
-	SEND_SIGNAL(M, COMSIG_MOB_ORGAN_ADD, src)
+	SEND_SIGNAL(organ_mob, COMSIG_MOB_ORGAN_ADD, src)
 
-/obj/item/organ/Remove(special = FALSE)
+/obj/item/organ/Remove()
 	. = ..()
 
 	// Define organ mob
