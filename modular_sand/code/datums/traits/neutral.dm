@@ -65,15 +65,15 @@
 
 	// Set variable for both reproductive types
 	if(breed_male && breed_female)
-		heat_type = "both estrous and rut"
+		heat_type = "in both estrous and rut"
 
 	// Set variable for male-only
 	else if(breed_male)
-		heat_type = "rut"
+		heat_type = "in rut"
 
 	// Set variable for female-only
 	else if(breed_female)
-		heat_type = "estrous"
+		heat_type = "in estrous"
 
 /datum/quirk/estrous_active/proc/quirk_examine_estrous_active(atom/examine_target, mob/living/carbon/human/examiner, list/examine_list)
 	SIGNAL_HANDLER
@@ -87,4 +87,4 @@
 		return
 
 	// Add quirk message
-	examine_list += span_love("[quirk_holder.p_they(TRUE)] [quirk_holder.p_are()] currently in [heat_type], and longs to [positional_orientation].")
+	examine_list += span_love("[quirk_holder.p_they(TRUE)] [quirk_holder.p_are()] currently [heat_type], and longs to [positional_orientation].")
