@@ -49,11 +49,23 @@
 	// Add examine hook
 	RegisterSignal(quirk_holder, COMSIG_PARENT_EXAMINE, .proc/quirk_examine_estrous_active)
 
+	// Add organ change hooks
+	RegisterSignal(quirk_holder, COMSIG_MOB_ORGAN_ADD, .proc/update_heat_type)
+	RegisterSignal(quirk_holder, COMSIG_MOB_ORGAN_REMOVE, .proc/update_heat_type)
+
 /datum/quirk/estrous_active/remove()
 	// Remove examine hook
 	UnregisterSignal(quirk_holder, COMSIG_PARENT_EXAMINE)
 
+	// Remove organ change hooks
+	UnregisterSignal(quirk_holder, COMSIG_MOB_ORGAN_ADD, .proc/update_heat_type)
+	UnregisterSignal(quirk_holder, COMSIG_MOB_ORGAN_REMOVE, .proc/update_heat_type)
+
 /datum/quirk/estrous_active/post_add()
+	// Update text used by message
+	update_heat_type()
+
+/datum/quirk/estrous_active/proc/update_heat_type()
 	// Check for male reproductive organs
 	var/breed_male = quirk_holder.has_balls()
 
@@ -74,6 +86,10 @@
 	// Set variable for female-only
 	else if(breed_female)
 		heat_type = "in estrous"
+
+	// Set variable for none
+	else
+		positional_orientation = "engage in breeding"
 
 /datum/quirk/estrous_active/proc/quirk_examine_estrous_active(atom/examine_target, mob/living/carbon/human/examiner, list/examine_list)
 	SIGNAL_HANDLER
