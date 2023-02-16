@@ -168,10 +168,12 @@
 	set category = "IC"
 	set src in view(usr.client)
 
-	if(!src)
+	var/datum/component/interaction_menu_granter/menu = usr.GetComponent(/datum/component/interaction_menu_granter)
+	if(!menu)
+		to_chat(usr, span_warning("You must have done something really bad to not have an interaction component."))
 		return
-	var/datum/component/interaction_menu_granter/menu = held_mob.GetComponent(/datum/component/interaction_menu_granter)
-	if(menu)
-		menu.open_menu(usr, src)
-	else // you bad
-		remove_verb(src, /mob/proc/interact_with)
+
+	if(!src)
+		to_chat(usr, span_warning("Your interaction target is gone!"))
+		return
+	menu.open_menu(usr, src)
