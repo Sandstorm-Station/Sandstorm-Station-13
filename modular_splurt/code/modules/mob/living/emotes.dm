@@ -29,7 +29,7 @@
 	var/emote_cooldown = 1 SECONDS
 
 	// Sound used by the audio emote
-	var/emote_sound = 'sound/voice/human/manlaugh1.ogg'
+	var/emote_sound
 
 // Check if audio emote can run
 /datum/emote/living/audio_emote/can_run_emote(mob/living/user, status_check)
@@ -57,8 +57,10 @@
 	if(!.)
 		return
 
-	// Play emote sound
-	playsound(user, emote_sound, 50, 1, -1)
+	// Check if emote sound was set
+	if(emote_sound)
+		// Play emote sound
+		playsound(user, emote_sound, 50, 1, -1)
 
 // SPLURT emotes
 /datum/emote/living/tilt
