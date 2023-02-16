@@ -23,6 +23,21 @@
 		else
 			playsound(carbon_user, pick('sound/voice/human/manlaugh1.ogg', 'sound/voice/human/manlaugh2.ogg'), 50, 1)
 
+// Base living emote
+/datum/emote/living
+	// Should the emote substitute pronouns?
+	var/uses_pronouns = FALSE
+
+// Run living emote
+/datum/emote/living/run_emote(mob/user, params)
+	// Check if pronouns should be substituted
+	if(uses_pronouns)
+		// Substitute pronoun texts
+		message = replacetextEx(message, "their", user.p_their())
+
+	// Call original
+	. = ..()
+
 // Base audio emote
 /datum/emote/living/audio_emote
 	// Time before using the emote again
@@ -70,18 +85,47 @@
 		// Play emote sound
 		playsound(user, emote_sound, 50, 1, -1)
 
+// Emote edits
+// Used for pronoun support
+/datum/emote/living/cross
+	uses_pronouns = TRUE
+
+/datum/emote/living/deathgasp
+	uses_pronouns = TRUE
+
+/datum/emote/living/flap
+	uses_pronouns = TRUE
+
+/datum/emote/living/aflap
+	uses_pronouns = TRUE
+
+/datum/emote/living/shake
+	uses_pronouns = TRUE
+
+/datum/emote/living/strech
+	uses_pronouns = TRUE
+
+/datum/emote/living/surrender/run_emote(mob/user, params, type_override, intentional)
+	// Set message with pronouns
+	message = "puts [user.p_their()] hands on [user.p_their()] head and falls to the ground, [user.p_they()] surrender[user.p_s()]!"
+
+	// Return normally
+	. = ..()
+
 // SPLURT emotes
 /datum/emote/living/tilt
 	key = "tilt"
 	key_third_person = "tilts their head"
 	message = "tilts their head."
 	emote_type = EMOTE_VISIBLE
+	uses_pronouns = TRUE
 
 /datum/emote/living/squint
 	key = "squint"
 	key_third_person = "squints their eyes"
 	message = "squints their eyes." // i dumb
 	emote_type = EMOTE_VISIBLE
+	uses_pronouns = TRUE
 
 /datum/emote/living/fart
 	key = "fart"
@@ -548,6 +592,7 @@
 	key_third_person = "chills"
 	message = "feels a chill running down their spine..."
 	emote_sound = 'modular_splurt/sound/voice/waterphone.ogg'
+	uses_pronouns = TRUE
 
 /datum/emote/living/audio_emote/weh2
 	key = "weh2"
@@ -582,6 +627,7 @@
 	key_third_person = "mlems"
 	message = "sticks their tongue for a moment. Mlem!"
 	emote_type = EMOTE_VISIBLE
+	uses_pronouns = TRUE
 
 /datum/emote/living/audio_emote/snore/snore2
 	key = "snore2"
@@ -653,9 +699,16 @@
 /datum/emote/living/audio_emote/missouri
 	key = "missouri"
 	key_third_person = "missouris"
-	message = "appears to believe %THEYRE in Missouri."
+	message = "has relocated to Missouri."
 	muzzle_ignore = FALSE
 	emote_sound = 'modular_splurt/sound/voice/missouri.ogg'
+
+/datum/emote/living/audio_emote/missouri/run_emote(mob/user, params, type_override, intentional)
+	// Set message pronouns
+	message = "appears to believe [user.p_theyre()] in Missouri."
+
+	// Return normally
+	. = ..()
 
 /datum/emote/living/audio_emote/facemetacarpus
 	key = "facehand" // Facepalm was taken
