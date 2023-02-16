@@ -6,22 +6,54 @@
 	if(!.)
 		return
 
-	// Check if carbon
-	if(!iscarbon(user))
-		return
-
 	// Define carbon user
 	var/mob/living/carbon/carbon_user = user
 
-	// Check for subraces
-	if(!iscatperson(carbon_user) && !isinsect(carbon_user) && !isjellyperson(carbon_user) && !ishumanbasic(carbon_user))
-		// Check if female
-		if(user.gender == FEMALE)
-			playsound(carbon_user, 'sound/voice/human/womanlaugh.ogg', 50, 1)
+	// Check if carbon user exists
+	if(!istype(carbon_user))
+		return
 
-		// Assume user must be male
+	// Check for subraces
+	if(ishumanbasic(carbon_user) || iscatperson(carbon_user) || isinsect(carbon_user) || isjellyperson(carbon_user))
+		return
+
+	// Define default laugh type
+	// Defaults to male
+	var/laugh_sound = 'sound/voice/human/manlaugh1.ogg'
+
+	// Check gender
+	switch(user.gender)
+		// Female
+		if(FEMALE)
+			// Set laugh sound
+			laugh_sound = 'sound/voice/human/womanlaugh.ogg'
+
+		/*
+		 * Please add more gendered laughs
+		 *
+		// Male
+		if(MALE)
+			// Set laugh sound
+			laugh_sound = 'sound/voice/human/laugh_male.ogg'
+
+		// Non-binary
+		if(PLURAL)
+			// Set laugh sound
+			laugh_sound = 'sound/voice/human/laugh_nonbinary.ogg'
+
+		// Object
+		if(NEUTER)
+			// Set laugh sound
+			laugh_sound = 'sound/voice/human/laugh_object.ogg'
+		*/
+
+		// Other
 		else
-			playsound(carbon_user, pick('sound/voice/human/manlaugh1.ogg', 'sound/voice/human/manlaugh2.ogg'), 50, 1)
+			// Set laugh sound
+			laugh_sound = pick('sound/voice/human/manlaugh1.ogg', 'sound/voice/human/manlaugh2.ogg')
+
+	// Play laugh sound
+	playsound(carbon_user, laugh_sound, 50, 1)
 
 // Base living emote
 /datum/emote/living
