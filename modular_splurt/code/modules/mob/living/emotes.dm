@@ -37,7 +37,10 @@
 
 	// Check parent return
 	if(!.)
-		return FALSE
+		// Check if user is miming
+		if(!user.mind?.miming)
+			// Disallow emote
+			return FALSE
 
 	// Check cooldown
 	if(user.nextsoundemote >= world.time)
@@ -55,6 +58,11 @@
 
 	// Check parent return
 	if(!.)
+		return
+
+	// Check if user is miming
+	if(user.mind?.miming)
+		// Do not play sound
 		return
 
 	// Check if emote sound was set
@@ -138,6 +146,7 @@
 	key = "cackle"
 	key_third_person = "cackles"
 	message = "cackles hysterically!"
+	message_mime = "cackles silently!"
 	muzzle_ignore = FALSE
 	restraint_check = FALSE
 	emote_sound = 'modular_splurt/sound/voice/cackle_yeen.ogg'
@@ -185,12 +194,14 @@
 	key = "chirp"
 	key_third_person = "chirps"
 	message = "chirps!"
+	message_mime = "chirps silently!"
 	emote_sound = 'modular_splurt/sound/voice/chirp.ogg'
 
 /datum/emote/living/audio_emote/caw
 	key = "caw"
 	key_third_person = "caws"
 	message = "caws!"
+	message_mime = "caws silently!"
 	emote_sound = 'modular_splurt/sound/voice/caw.ogg'
 
 /datum/emote/living/burp/run_emote(mob/user, params, type_override, intentional)
@@ -208,6 +219,7 @@
 	key = "bleat"
 	key_third_person = "bleats loudly"
 	message = "bleats loudly!"
+	message_mime = "bleats silently!"
 	emote_sound = 'modular_splurt/sound/voice/bleat.ogg'
 
 /datum/emote/living/carbon/moan/run_emote(mob/user, params, type_override, intentional) //I can't not port this shit, come on.
@@ -257,6 +269,7 @@
 	key = "bababooey"
 	key_third_person = "bababooeys"
 	message = "spews bababooey."
+	message_mime = "spews something silently."
 	muzzle_ignore = FALSE
 	emote_sound = 'modular_splurt/sound/voice/bababooey/bababooey.ogg'
 
@@ -278,6 +291,7 @@
 	key = "babafooey"
 	key_third_person = "babafooeys"
 	message = "spews babafooey."
+	message_mime = "spews something silently."
 	muzzle_ignore = FALSE
 	emote_sound = 'modular_splurt/sound/voice/bababooey/babafooey.ogg'
 
@@ -285,6 +299,7 @@
 	key = "fafafooey"
 	key_third_person = "fafafooeys"
 	message = "spews fafafooey."
+	message_mime = "spews something silently."
 	muzzle_ignore = FALSE
 	emote_sound = 'modular_splurt/sound/voice/bababooey/fafafooey.ogg'
 
@@ -306,6 +321,7 @@
 	key = "fafafoggy"
 	key_third_person = "fafafoggys"
 	message = "spews fafafoggy."
+	message_mime = "spews something silently."
 	muzzle_ignore = FALSE
 	emote_sound = 'modular_splurt/sound/voice/bababooey/fafafoggy.ogg'
 
@@ -327,6 +343,7 @@
 	key = "hohohoy"
 	key_third_person = "hohohoys"
 	message = "spews hohohoy."
+	message_mime = "spews something silently."
 	muzzle_ignore = FALSE
 	emote_sound = 'modular_splurt/sound/voice/bababooey/hohohoy.ogg'
 
@@ -334,6 +351,7 @@
 	key = "ffff"
 	key_third_person = "ffffs"
 	message = "spews something softly."
+	message_mime = "spews something silently."
 	muzzle_ignore = TRUE
 	emote_sound = 'modular_splurt/sound/voice/bababooey/ffff.ogg'
 
@@ -341,6 +359,7 @@
 	key = "fafafail"
 	key_third_person = "fafafails"
 	message = "spews something unintelligible."
+	message_mime = "spews something silent."
 	muzzle_ignore = FALSE
 	emote_sound = 'modular_splurt/sound/voice/bababooey/ffffhvh.ogg'
 
@@ -348,6 +367,7 @@
 	key = "boowomp"
 	key_third_person = "boowomps"
 	message = "produces a sad boowomp."
+	message_mime = "produces a silent boowomp."
 	muzzle_ignore = FALSE
 	emote_sound = 'modular_splurt/sound/voice/boowomp.ogg'
 
@@ -355,6 +375,7 @@
 	key = "swaos"
 	key_third_person = "swaos"
 	message = "mutters swaos."
+	message_mime = "imitates swaos."
 	muzzle_ignore = FALSE
 	emote_sound = 'modular_splurt/sound/voice/swaos.ogg'
 
@@ -380,6 +401,7 @@
 	key = "laugh2"
 	key_third_person = "laughs2"
 	message = "laughs like a king."
+	message_mime = "acts out laughing like a king."
 	muzzle_ignore = FALSE
 	emote_sound = 'modular_splurt/sound/voice/laugh_king.ogg'
 
@@ -387,6 +409,7 @@
 	key = "laugh3"
 	key_third_person = "laughs3"
 	message = "laughs silly."
+	message_mime = "acts out laughing silly."
 	muzzle_ignore = FALSE
 	emote_sound = 'modular_splurt/sound/voice/lol.ogg'
 
@@ -394,6 +417,7 @@
 	key = "laugh4"
 	key_third_person = "laughs4"
 	message = "burst into laughter!"
+	message_mime = "acts out bursting into laughter."
 	muzzle_ignore = FALSE
 	emote_sound = 'modular_splurt/sound/voice/laugh_muta.ogg'
 
@@ -401,6 +425,7 @@
 	key = "laugh5"
 	key_third_person = "laughs5"
 	message = "laughs in Scottish."
+	message_mime = "acts out laughing in Scottish."
 	muzzle_ignore = FALSE
 	emote_sound = 'modular_splurt/sound/voice/laugh_deman.ogg'
 
@@ -408,6 +433,7 @@
 	key = "laugh6"
 	key_third_person = "laughs6"
 	message = "laughs like a kettle!"
+	message_mime = "acts out laughing like a kettle."
 	muzzle_ignore = FALSE
 	emote_sound = 'modular_splurt/sound/voice/laugh6.ogg'
 
@@ -434,6 +460,7 @@
 	key = "spoonful"
 	key_third_person = "spoonfuls"
 	message = "asks for a spoonful."
+	message_mime = "pretends to ask for a spoonful."
 	muzzle_ignore = TRUE
 	emote_sound = 'modular_splurt/sound/voice/spoonful.ogg'
 
@@ -441,6 +468,7 @@
 	key = "mygod"
 	key_third_person = "omgs"
 	message = "invokes the presence of Jesus Christ."
+	message_mime = "invokes the presence of Jesus Christ through silent prayer."
 	muzzle_ignore = TRUE
 	emote_sound = 'modular_splurt/sound/voice/OMG.ogg'
 
@@ -455,18 +483,21 @@
 	key = "fusrodah"
 	key_third_person = "furodahs"
 	message = "yells, \"<b>FUS RO DAH!!!</b>\""
+	message_mime = "acts out a dragon shout."
 	emote_sound = 'modular_splurt/sound/voice/fusrodah.ogg'
 
 /datum/emote/living/audio_emote/skibidi
 	key = "skibidi"
 	key_third_person = "skibidis"
 	message = "yells, \"<b>Skibidi bop mm dada!</b>\""
+	message_mime = "makes incoherent mouth motions."
 	emote_sound = 'modular_splurt/sound/voice/skibidi.ogg'
 
 /datum/emote/living/audio_emote/fbi
 	key = "fbi"
 	key_third_person = "fbis"
 	message = "yells, \"<b>FBI OPEN UP!</b>\""
+	message_mime = "acts out being the FBI."
 	emote_sound = 'modular_splurt/sound/voice/fbi.ogg'
 
 /datum/emote/living/audio_emote/illuminati
@@ -479,12 +510,14 @@
 	key = "bonerif"
 	key_third_person = "bonerifs"
 	message = "riffs!"
+	message_mime = "riffs silently!"
 	emote_sound = 'modular_splurt/sound/voice/bonerif.ogg'
 
 /datum/emote/living/audio_emote/cry2
 	key = "cry2"
 	key_third_person = "crys2"
 	message = "cries like a king."
+	message_mime = "acts out crying like a king."
 	muzzle_ignore = FALSE
 	emote_sound = 'modular_splurt/sound/voice/cry_king.ogg'
 
@@ -499,6 +532,7 @@
 	key = "choir"
 	key_third_person = "choirs"
 	message = "let out a choir!"
+	message_mime = "acts out a choir."
 	muzzle_ignore = FALSE
 	emote_sound = 'modular_splurt/sound/voice/choir.ogg'
 
@@ -519,24 +553,28 @@
 	key = "weh2"
 	key_third_person = "wehs2"
 	message = "let out a weh!"
+	message_mime = "acts out a weh!"
 	emote_sound = 'modular_splurt/sound/voice/weh2.ogg'
 
 /datum/emote/living/audio_emote/weh3
 	key = "weh3"
 	key_third_person = "wehs3"
 	message = "let out a weh!"
+	message_mime = "acts out a weh!"
 	emote_sound = 'modular_splurt/sound/voice/weh3.ogg'
 
 /datum/emote/living/audio_emote/weh4
 	key = "weh-s"
 	key_third_person = "wehs4"
 	message = "let out a surprised weh!"
+	message_mime = "acts out a surprised weh!"
 	emote_sound = 'modular_splurt/sound/voice/weh_s.ogg'
 
 /datum/emote/living/audio_emote/waa
 	key = "waa"
 	key_third_person = "waas"
 	message = "let out a waa!"
+	message_mime = "acts out a waa!"
 	emote_sound = 'modular_splurt/sound/voice/waa.ogg'
 
 /datum/emote/living/mlem
@@ -549,6 +587,7 @@
 	key = "snore2"
 	key_third_person = "snores2"
 	message = "lets out an <b>earthshaking</b> snore"
+	message_mime = "lets out an <b>inaudible</b> snore!"
 	emote_sound = 'modular_splurt/sound/voice/aauugghh1.ogg'
 
 /datum/emote/living/audio_emote/snore/snore2/run_emote(mob/user, params, type_override, intentional)
@@ -586,6 +625,7 @@
 	key = "yippee"
 	key_third_person = "yippees"
 	message = "lets out a yippee!"
+	message_mime = "acts out a yippee!"
 	muzzle_ignore = FALSE
 	emote_sound = 'modular_splurt/sound/voice/yippee.ogg'
 
@@ -593,6 +633,7 @@
 	key = "mewo"
 	key_third_person = "mewos"
 	message = "mewos!"
+	message_mime = "mewos silently!"
 	muzzle_ignore = FALSE
 	restraint_check = FALSE
 	emote_sound = 'modular_splurt/sound/voice/mewo.ogg'
@@ -601,6 +642,7 @@
 	key = "ara"
 	key_third_person = "aras"
 	message = "coos with sultry surprise~..."
+	message_mime = "exudes a sultry aura~"
 	muzzle_ignore = FALSE
 	emote_sound = 'modular_splurt/sound/voice/ara-ara.ogg'
 
@@ -656,6 +698,7 @@
 	key = "poyo"
 	key_third_person = "poyos"
 	message = "%SAYS, \"Poyo!\""
+	message_mime = "acts out an excited motion!"
 	emote_sound = 'modular_splurt/sound/voice/barks/poyo.ogg'
 
 /datum/emote/living/audio_emote/poyo/run_emote(mob/user, params, type_override, intentional)
