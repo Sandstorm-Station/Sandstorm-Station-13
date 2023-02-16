@@ -1,3 +1,5 @@
+#define ETHANOL_GFLUID_POWER_LIMIT 80
+
 /datum/preferences
 	max_save_slots = DEFAULT_SAVE_SLOTS
 	var/unholypref = "No" //Goin 2 hell fo dis one
@@ -16,8 +18,8 @@
 	. = ..()
 
 /proc/build_genital_fluids_list()
-
-	var/list/blacklisted = list( //Nonos
+	// Define disallowed reagents
+	var/list/blacklisted = list(
 		//Ethanol
 		/datum/reagent/consumable/ethanol,
 		/datum/reagent/consumable/ethanol/thirteenloko,
@@ -75,11 +77,13 @@
 		/datum/reagent/consumable/ethanol/mauna_loa,
 		/datum/reagent/consumable/ethanol/commander_and_chief,
 		/datum/reagent/consumable/ethanol/hellfire,
+
 		//Drink reagents
 		/datum/reagent/consumable/laughter,
 		/datum/reagent/consumable/superlaughter,
-		/datum/reagent/consumable/soymilk, //No soy shall come from any titty
+		/datum/reagent/consumable/soymilk,
 		/datum/reagent/consumable/soy_latte,
+
 		//Normal reagents
 		/datum/reagent/consumable/capsaicin,
 		/datum/reagent/consumable/frostoil,
@@ -95,34 +99,56 @@
 		/datum/reagent/consumable/liquidelectricity,
 		/datum/reagent/consumable/char,
 		/datum/reagent/consumable/laughsyrup,
-		/datum/reagent/consumable/honey, //zad
+		/datum/reagent/consumable/honey,
 	)
 
-	GLOB.genital_fluids_list = list()
+	// Define base list
+	var/list/consumable_list = subtypesof(/datum/reagent/consumable)
 
-	var/list/paths = subtypesof(/datum/reagent/consumable)
-	LAZYADD(paths, list(
+	// Define additional allowed reagents
+	LAZYADD(consumable_list, list(
 		/datum/reagent/water,
 		/datum/reagent/drug/aphrodisiac,
 		/datum/reagent/drug/copium,
 		/datum/reagent/blood
 	))
 
-	for(var/path in paths)
-		var/datum/reagent/instance = find_reagent_object_from_type(path)
+	// Define final list
+	var/list/reagent_list
 
+	for(var/reagent in consumable_list)
+		// Define reagent
+		var/datum/reagent/instance = find_reagent_object_from_type(reagent)
+
+		// Check if reagent exists
 		if(!instance)
 			continue
-		if(path in blacklisted)
-			continue
-		if(istype(instance, /datum/reagent/consumable/ethanol))
-			var/datum/reagent/consumable/ethanol/drink = instance
-			if(drink.boozepwr > 80)
-				continue
+
+		// Check if reagent is non-liquid
 		if(instance.reagent_state != LIQUID)
+			// Ignore reagent
 			continue
 
-		LAZYADD(GLOB.genital_fluids_list, instance)
+		// Check if reagent is blacklisted
+		if(reagent in blacklisted)
+			// Ignore reagent
+			continue
+
+		// Check if reagent is an ethanol sub-type
+		if(istype(instance, /datum/reagent/consumable/ethanol))
+			// Define ethanol reagent
+			var/datum/reagent/consumable/ethanol/drink = instance
+
+			// Check if booze power exceeds the defined limit
+			if(drink.boozepwr > ETHANOL_GFLUID_POWER_LIMIT)
+				// Ignore reagent
+				continue
+
+		// Add reagent to final list
+		LAZYADD(reagent_list, instance)
+
+	// Define GLOB from final list
+	GLOB.genital_fluids_list = reagent_list
 
 /proc/allowed_gfluid_paths()
 	if(!GLOB.genital_fluids_list)
