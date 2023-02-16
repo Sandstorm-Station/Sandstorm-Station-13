@@ -154,16 +154,30 @@
 	// Check parent return
 	if(!.)
 		return
-		user.spin(20, 1)
 
+	// Spin user
+	user.spin(20, 1)
+
+	// Check for cyborg
+	// Check for buckled mobs
 	if(iscyborg(user) && user.has_buckled_mobs())
-		var/mob/living/silicon/robot/R = user
-		var/datum/component/riding/riding_datum = R.GetComponent(/datum/component/riding)
+		// Define cyborg user
+		var/mob/living/silicon/robot/user_cyborg = user
+
+		// Define riding datum
+		var/datum/component/riding/riding_datum = user_cyborg.GetComponent(/datum/component/riding)
+
+		// Check if riding datum exists
 		if(riding_datum)
-			for(var/mob/M in R.buckled_mobs)
-				riding_datum.force_dismount(M)
+			// Iterate over buckled mobs
+			for(var/mob/buckled_mob in user_cyborg.buckled_mobs)
+				// Unbuckle iterated mob
+				riding_datum.force_dismount(buckled_mob)
+
+		// Riding datum does not exist
 		else
-			R.unbuckle_all_mobs()
+			// Unbuckle all mobs
+			user_cyborg.unbuckle_all_mobs()
 
 /datum/emote/living/audio_emote/chirp
 	key = "chirp"
