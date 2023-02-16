@@ -226,30 +226,217 @@
 		// Replaces the tongue
 		/datum/reagent/consumable/ethanol/skullfucker_deluxe,
 
-		// End of special drinks
+		//
+		// Effect drink reagents
+		//
 
-		// Drink reagents
+		// Causes toxin damage
+		/datum/reagent/consumable/poisonberryjuice,
+
+		// Heals body parts for clown
+		/datum/reagent/consumable/banana,
+
+		// Heals body parts for mime
+		/datum/reagent/consumable/nothing,
+
+		// Causes forced laughter emote and mood event
 		/datum/reagent/consumable/laughter,
+
+		// Causes stun and mood event
 		/datum/reagent/consumable/superlaughter,
+
+		// Heals brute, fire, toxin, and suffocation damage, and reduces nutrition for non-doctors
+		/datum/reagent/consumable/doctor_delight,
+
+		// Reduces size
+		/datum/reagent/consumable/red_queen,
+
+		// Causes stamina loss, forced emote, chat messages, and arousal
+		/datum/reagent/consumable/catnip_tea,
+
+		// Heals toxin damage
+		/datum/reagent/consumable/aloejuice,
+
+		/*
+		 * The following reagents have effects
+		 * But are allowed for humor purposes
+		 *
+
+		// Heals body part and brute damage, removes capsaicin, and heals body parts for calcium healers
+		/datum/reagent/consumable/milk,
+
+		// Heals body parts
 		/datum/reagent/consumable/soymilk,
+
+		// Heals body parts
+		/datum/reagent/consumable/coconutmilk,
+
+		// Heals body parts
+		/datum/reagent/consumable/cream,
+		*/
+
+		/*
+		 * The following reagents have effects
+		 * But are too mild to warrant blacklisting
+		 *
+
+		// Heals suffocation damage
+		/datum/reagent/consumable/orangejuice,
+
+		// Heals burn damage
+		/datum/reagent/consumable/tomatojuice,
+
+		// Heals body parts
+		/datum/reagent/consumable/tomatojuice,
+
+		// Heals blurred vision, blindness, and nearsightedness
+		/datum/reagent/consumable/carrotjuice,
+
+		// Removes dizziness, drowsiness, and sleeping, increases temperature, and removes frost oil
+		/datum/reagent/consumable/coffee,
+
+		// Reduces dizziness, drowsiness, jittering, and sleeping, heals toxin damage, and increases temperature
+		/datum/reagent/consumable/tea,
+
+		// Reduces nutrition, dizziness, drowsiness, and jittering, and increases temperature
+		/datum/reagent/consumable/tea/red,
+
+		// Heals liver damage, reduces dizziness, drowsiness, and jittering, and increases temperature
+		/datum/reagent/consumable/tea/green,
+
+		// Heals toxin damage, reduces dizziness, drowsiness, and jittering, and increases temperature
+		/datum/reagent/consumable/tea/forest,
+
+		// Causes drugging and dizziness, removes all disgust
+		/datum/reagent/consumable/tea/mush,
+
+		// Displays chat messages
+		/datum/reagent/consumable/tea/arnold_palmer,
+
+		// Reduces dizziness, drowsiness, jittering, and sleeping, and reduces temperature
+		/datum/reagent/consumable/icecoffee,
+
+		// Reduces dizziness, drowsiness, and sleeping, heals toxin damage, and reduces temperature
+		/datum/reagent/consumable/icetea,
+
+		// Reduces drowsiness and temperature
+		/datum/reagent/consumable/space_cola,
+
+		// Causes jittering, drugging, and dizziness, removes drowsiness, reduces sleeping and temperature
+		/datum/reagent/consumable/nuka_cola,
+
+		// Reduces drowsiness, sleeping, and temperature, and causes jittering
+		/datum/reagent/consumable/spacemountainwind,
+
+		// Reduces temperature
+		/datum/reagent/consumable/space_up,
+
+		// Reduces temperature
+		/datum/reagent/consumable/lemon_lime,
+
+		// Reduces temperature
+		/datum/reagent/consumable/pwr_game,
+
+		// Reduces temperature
+		/datum/reagent/consumable/shamblers,
+
+		// Adds sugar or honey
+		/datum/reagent/consumable/buzz_fuzz,
+
+		// Causes jittering, and dizziness, removes drowsiness, reduces sleeping and temperature
+		/datum/reagent/consumable/grey_bull,
+
+		// Reduces dizziness, and drowsiness, and temperature
+		/datum/reagent/consumable/sodawater,
+
+		// Reduces dizziness, and drowsiness, and temperature
+		/datum/reagent/consumable/tonic,
+
+		// Reduces dizziness and drowsiness, removes sleeping, increases temperature and jittering, heals body parts
 		/datum/reagent/consumable/soy_latte,
 
-		// Normal reagents
+		// Reduces dizziness and drowsiness, removes sleeping, increases temperature and jittering, heals body parts
+		/datum/reagent/consumable/cafe_latte,
+
+		// Reduces temperature
+		/datum/reagent/consumable/grape_soda,
+
+		// Causes throat soothed effect
+		/datum/reagent/consumable/menthol,
+
+		// Reduces temperature
+		/datum/reagent/consumable/cream_soda,
+
+		// Reduces disgust
+		/datum/reagent/consumable/sol_dry,
+
+		// Causes chat messages
+		/datum/reagent/consumable/milk/pinkmilk,
+
+		// Causes chat messages
+		/datum/reagent/consumable/tea/pinktea,
+
+		// Causes jittering, and dizziness, removes drowsiness, reduces sleeping and temperature
+		/datum/reagent/consumable/monkey_energy,
+		*/
+
+		//
+		// Effect standard reagents
+		//
+
+		// Grants nutrition
+		/datum/reagent/consumable/nutriment/vitamin,
+
+		// Can cause hyperglycemic shock (sleeping)
+		/datum/reagent/consumable/sugar,
+
+		// Increases temperature
 		/datum/reagent/consumable/capsaicin,
+
+		// Reduces temperature
 		/datum/reagent/consumable/frostoil,
+
+		// Causes coughing, and can be used for stuns
 		/datum/reagent/consumable/condensedcapsaicin,
+
+		// Increases temperature
+		/datum/reagent/consumable/hot_coco,
+
+		// Heals the cook, but damages vampires
 		/datum/reagent/consumable/garlic,
+
+		// Heals body part damage
 		/datum/reagent/consumable/sprinkles,
-		/datum/reagent/consumable/enzyme,
+
+		// Increases temperature
 		/datum/reagent/consumable/hot_ramen,
+
+		// Increases temperature
 		/datum/reagent/consumable/hell_ramen,
-		/datum/reagent/consumable/tearjuice,
-		/datum/reagent/consumable/entpoly,
-		/datum/reagent/consumable/vitfro,
-		/datum/reagent/consumable/liquidelectricity,
-		/datum/reagent/consumable/char,
-		/datum/reagent/consumable/laughsyrup,
+
+		// Adds sugar reagent
+		/datum/reagent/consumable/corn_syrup,
+
+		// Adds sugar, heals brute, burn, suffocation, and toxin
 		/datum/reagent/consumable/honey,
+
+		// Causes temporary blindness and blurred vision
+		/datum/reagent/consumable/tearjuice,
+
+		// Causes unconsciousness, breath loss, brain damage, toxin damage, stamina loss, and blurred vision
+		/datum/reagent/consumable/entpoly,
+
+		// Heals brute and burn damage
+		/datum/reagent/consumable/vitfro,
+
+		// Causes electrocution
+		/datum/reagent/consumable/liquidelectricity,
+
+		// Causes forced speech
+		/datum/reagent/consumable/char,
+
+		// Secret reagent, makes all food max quality
+		/datum/reagent/consumable/secretsauce,
 	)
 
 	// Define base list
@@ -257,10 +444,19 @@
 
 	// Define additional allowed reagents
 	LAZYADD(consumable_list, list(
+		// Just water
 		/datum/reagent/water,
+
+		// Causes arousal
+		// Allowed for ERP reasons
 		/datum/reagent/drug/aphrodisiac,
-		/datum/reagent/drug/copium,
-		/datum/reagent/blood
+
+		// Causes positive mood bonus
+		// On overdose: Causes negative mood penalty and disgust
+		// /datum/reagent/drug/copium,
+
+		// Restores blood volume
+		// /datum/reagent/blood,
 	))
 
 	// Define final list
