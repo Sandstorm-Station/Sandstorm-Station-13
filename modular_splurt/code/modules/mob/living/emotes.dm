@@ -1,13 +1,64 @@
 //Main code edits
 /datum/emote/living/audio_emote/laugh/run_emote(mob/user, params)
 	. = ..()
-	if(. && iscarbon(user))
-		var/mob/living/carbon/C = user
-		if(!iscatperson(C) && !isinsect(C) && !isjellyperson(C) && !ishumanbasic(C))
-			if(user.gender == FEMALE)
-				playsound(C, 'sound/voice/human/womanlaugh.ogg', 50, 1)
-			else
-				playsound(C, pick('sound/voice/human/manlaugh1.ogg', 'sound/voice/human/manlaugh2.ogg'), 50, 1)
+
+	// Check parent return
+	if(!.)
+		return
+
+	// Check if carbon
+	if(!iscarbon(user))
+		return
+
+	// Define carbon user
+	var/mob/living/carbon/carbon_user = user
+
+	// Check for subraces
+	if(!iscatperson(carbon_user) && !isinsect(carbon_user) && !isjellyperson(carbon_user) && !ishumanbasic(carbon_user))
+		// Check if female
+		if(user.gender == FEMALE)
+			playsound(carbon_user, 'sound/voice/human/womanlaugh.ogg', 50, 1)
+
+		// Assume user must be male
+		else
+			playsound(carbon_user, pick('sound/voice/human/manlaugh1.ogg', 'sound/voice/human/manlaugh2.ogg'), 50, 1)
+
+// Base audio emote
+/datum/emote/living/audio_emote
+	// Time before using the emote again
+	var/emote_cooldown = 1 SECONDS
+
+	// Sound used by the audio emote
+	var/emote_sound = 'sound/voice/human/manlaugh1.ogg'
+
+// Check if audio emote can run
+/datum/emote/living/audio_emote/can_run_emote(mob/living/user, status_check)
+	. = ..()
+
+	// Check parent return
+	if(!.)
+		return FALSE
+
+	// Check cooldown
+	if(user.nextsoundemote >= world.time)
+		return FALSE
+
+	// Set coodown
+	user.nextsoundemote = world.time + emote_cooldown
+
+	// Allow use
+	return TRUE
+
+// Run audio emote
+/datum/emote/living/audio_emote/run_emote(mob/user, params)
+	. = ..()
+
+	// Check parent return
+	if(!.)
+		return
+
+	// Play emote sound
+	playsound(user, emote_sound, 50, 1, -1)
 
 // SPLURT emotes
 /datum/emote/living/tilt
@@ -26,7 +77,6 @@
 	key = "fart"
 	key_third_person = "farts"
 	message = "farts out shitcode."
-	emote_type = EMOTE_AUDIBLE
 
 /datum/emote/living/fart/run_emote(mob/living/user, params, type_override, intentional)
 	if(TIMER_COOLDOWN_CHECK(user, COOLDOWN_EMOTE_FART))
@@ -82,62 +132,50 @@
 		playsound(user, pick(GLOB.brap_noises), 50, 1, -1)
 		TIMER_COOLDOWN_START(user, COOLDOWN_EMOTE_FART, 3 SECONDS)
 
-/datum/emote/living/cackle
+/datum/emote/living/audio_emote/cackle
 	key = "cackle"
 	key_third_person = "cackles"
 	message = "cackles hysterically!"
-	emote_type = EMOTE_AUDIBLE
 	muzzle_ignore = FALSE
 	restraint_check = FALSE
+	emote_sound = 'modular_splurt/sound/voice/cackle_yeen.ogg'
 
-/datum/emote/living/cackle/run_emote(mob/user, params, type_override, intentional)
-	if(ishuman(user))
-		if(user.nextsoundemote >= world.time)
-			return
-		user.nextsoundemote = world.time + 7
-		playsound(user, 'modular_splurt/sound/voice/cackle_yeen.ogg', 50, 1, -1)
-	. = ..()
-
-/datum/emote/speen
+/datum/emote/living/audio_emote/speen
 	key = "speen"
 	key_third_person = "speeeeens!"
 	restraint_check = TRUE
 	mob_type_allowed_typecache = list(/mob/living, /mob/dead/observer)
 	mob_type_ignore_stat_typecache = list(/mob/dead/observer)
+	emote_sound = 'modular_splurt/sound/voice/speen.ogg'
 
-/datum/emote/speen/run_emote(mob/user, params, type_override, intentional)
+/datum/emote/living/audio_emote/speen/run_emote(mob/user, params, type_override, intentional)
 	. = ..()
-	if(.)
+
+	// Check parent return
+	if(!.)
+		return
 		user.spin(20, 1)
 
-		if(iscyborg(user) && user.has_buckled_mobs())
-			var/mob/living/silicon/robot/R = user
-			var/datum/component/riding/riding_datum = R.GetComponent(/datum/component/riding)
-			if(riding_datum)
-				for(var/mob/M in R.buckled_mobs)
-					riding_datum.force_dismount(M)
-			else
-				R.unbuckle_all_mobs()
+	if(iscyborg(user) && user.has_buckled_mobs())
+		var/mob/living/silicon/robot/R = user
+		var/datum/component/riding/riding_datum = R.GetComponent(/datum/component/riding)
+		if(riding_datum)
+			for(var/mob/M in R.buckled_mobs)
+				riding_datum.force_dismount(M)
+		else
+			R.unbuckle_all_mobs()
 
-/datum/emote/speen/run_emote(mob/user, params, type_override, intentional)
-	if(ishuman(user))
-		if(user.nextsoundemote >= world.time)
-			return
-		user.nextsoundemote = world.time + 7
-		playsound(user, 'modular_splurt/sound/voice/speen.ogg', 50, 1, -1)
-	. = ..()
-
-/datum/emote/sound/human/chirp
+/datum/emote/living/audio_emote/chirp
 	key = "chirp"
 	key_third_person = "chirps"
 	message = "chirps!"
-	sound = 'modular_splurt/sound/voice/chirp.ogg'
+	emote_sound = 'modular_splurt/sound/voice/chirp.ogg'
 
-/datum/emote/sound/human/caw
+/datum/emote/living/audio_emote/caw
 	key = "caw"
 	key_third_person = "caws"
 	message = "caws!"
-	sound = 'modular_splurt/sound/voice/caw.ogg'
+	emote_sound = 'modular_splurt/sound/voice/caw.ogg'
 
 /datum/emote/living/burp/run_emote(mob/user, params, type_override, intentional)
 	. = ..()
@@ -150,19 +188,11 @@
 	if(.)
 		playsound(user, pick(burp_noises), 50, 1)
 
-/datum/emote/living/bleat
+/datum/emote/living/audio_emote/bleat
 	key = "bleat"
 	key_third_person = "bleats loudly"
 	message = "bleats loudly!"
-	emote_type = EMOTE_AUDIBLE
-
-/datum/emote/living/bleat/run_emote(mob/user, params, type_override, intentional)
-	if(ishuman(user))
-		if(user.nextsoundemote >= world.time)
-			return
-		user.nextsoundemote = world.time + 7
-		playsound(user, 'modular_splurt/sound/voice/bleat.ogg', 50, 1, -1)
-	. = ..()
+	emote_sound = 'modular_splurt/sound/voice/bleat.ogg'
 
 /datum/emote/living/carbon/moan/run_emote(mob/user, params, type_override, intentional) //I can't not port this shit, come on.
 	if(user.nextsoundemote >= world.time || user.stat != CONSCIOUS)
@@ -189,587 +219,309 @@
 	key_third_person = "chitters2"
 	message = "chitters."
 	message_mime = "chitters silently!"
+	emote_sound = 'modular_splurt/sound/voice/moth/mothchitter2.ogg'
 
-/datum/emote/living/audio_emote/chitter2/run_emote(mob/user, params, type_override, intentional)
-	. = ..()
-	if(. && iscarbon(user))
-		var/mob/living/carbon/C = user
-		if(isinsect(C))
-			playsound(C, 'modular_splurt/sound/voice/moth/mothchitter2.ogg', 50, 1)
-
-/datum/emote/living/monkeytwerk
+/datum/emote/living/audio_emote/monkeytwerk
 	key = "twerk"
 	key_third_person = "twerk"
 	message = "shakes it harder than James Russle himself!"
-	emote_type = EMOTE_AUDIBLE
 	muzzle_ignore = TRUE
 	restraint_check = FALSE
+	emote_sound = 'modular_splurt/sound/misc/monkey_twerk.ogg'
 
-/datum/emote/living/monkeytwerk/run_emote(mob/user, params, type_override, intentional)
-	. = ..()
-	playsound(user, 'modular_splurt/sound/misc/monkey_twerk.ogg', 50, 1)
-
-
-/datum/emote/living/bruh
+/datum/emote/living/audio_emote/bruh
 	key = "bruh"
 	key_third_person = "bruhs"
 	message = "thinks this is a bruh moment."
-	emote_type = EMOTE_AUDIBLE
 	muzzle_ignore = FALSE
 	restraint_check = FALSE
+	emote_sound = 'modular_splurt/sound/voice/bruh.ogg'
 
-/datum/emote/living/bruh/run_emote(mob/user, params, type_override, intentional)
-	if(!(. = ..()))
-		return
-	if(user.nextsoundemote >= world.time)
-		return
-	user.nextsoundemote = world.time + 7
-	playsound(user, 'modular_splurt/sound/voice/bruh.ogg', 50, 1, -1)
-
-/datum/emote/living/bababooey
+/datum/emote/living/audio_emote/bababooey
 	key = "bababooey"
 	key_third_person = "bababooeys"
 	message = "spews bababooey."
-	emote_type = EMOTE_AUDIBLE
 	muzzle_ignore = FALSE
+	emote_sound = 'modular_splurt/sound/voice/bababooey/bababooey.ogg'
 
-/datum/emote/living/bababooey/run_emote(mob/user, params, type_override, intentional)
-	if(!(. = ..()))
-		return
-	if(user.nextsoundemote >= world.time)
-		return
+/datum/emote/living/audio_emote/bababooey/run_emote(mob/user, params, type_override, intentional)
+	// Check if user is muzzled
 	if(user.is_muzzled())
-		user.nextsoundemote = world.time + 7
-		playsound(user, 'modular_splurt/sound/voice/bababooey/ffff.ogg', 50, 1, -1)
-		return
-	user.nextsoundemote = world.time + 7
-	playsound(user, pick('modular_splurt/sound/voice/bababooey/bababooey.ogg', 'modular_splurt/sound/voice/bababooey/bababooey2.ogg'), 50, 1, -1)
+		// Set muzzled sound
+		emote_sound = 'modular_splurt/sound/voice/bababooey/ffff.ogg'
 
-/datum/emote/living/babafooey
+	// User is not muzzled
+	else
+		// Set random emote sound
+		emote_sound = pick('modular_splurt/sound/voice/bababooey/bababooey.ogg', 'modular_splurt/sound/voice/bababooey/bababooey2.ogg')
+
+	// Return normally
+	. = ..()
+
+/datum/emote/living/audio_emote/babafooey
 	key = "babafooey"
 	key_third_person = "babafooeys"
 	message = "spews babafooey."
-	emote_type = EMOTE_AUDIBLE
 	muzzle_ignore = FALSE
+	emote_sound = 'modular_splurt/sound/voice/bababooey/babafooey.ogg'
 
-/datum/emote/living/babafooey/run_emote(mob/user, params, type_override, intentional)
-	if(!(. = ..()))
-		return
-	if(user.nextsoundemote >= world.time)
-		return
-	if(user.is_muzzled())
-		user.nextsoundemote = world.time + 7
-		playsound(user, 'modular_splurt/sound/voice/bababooey/ffff.ogg', 50, 1, -1)
-		return
-	user.nextsoundemote = world.time + 7
-	playsound(user, 'modular_splurt/sound/voice/bababooey/babafooey.ogg', 50, 1, -1)
-
-/datum/emote/living/fafafooey
+/datum/emote/living/audio_emote/fafafooey
 	key = "fafafooey"
 	key_third_person = "fafafooeys"
 	message = "spews fafafooey."
-	emote_type = EMOTE_AUDIBLE
 	muzzle_ignore = FALSE
+	emote_sound = 'modular_splurt/sound/voice/bababooey/fafafooey.ogg'
 
-/datum/emote/living/fafafooey/run_emote(mob/user, params, type_override, intentional)
-	if(!(. = ..()))
-		return
-	if(user.nextsoundemote >= world.time)
-		return
+/datum/emote/living/audio_emote/fafafooey/run_emote(mob/user, params, type_override, intentional)
+	// Check if user is muzzled
 	if(user.is_muzzled())
-		user.nextsoundemote = world.time + 7
-		playsound(user, 'modular_splurt/sound/voice/bababooey/ffff.ogg', 50, 1, -1)
-		return
-	user.nextsoundemote = world.time + 7
-	playsound(user, pick('modular_splurt/sound/voice/bababooey/fafafooey.ogg', 'modular_splurt/sound/voice/bababooey/fafafooey2.ogg', 'modular_splurt/sound/voice/bababooey/fafafooey3.ogg'), 50, 1, -1)
+		// Set muzzled sound
+		emote_sound = 'modular_splurt/sound/voice/bababooey/ffff.ogg'
 
-/datum/emote/living/fafafoggy
+	// User is not muzzled
+	else
+		// Set random emote sound
+		emote_sound = pick('modular_splurt/sound/voice/bababooey/fafafooey.ogg', 'modular_splurt/sound/voice/bababooey/fafafooey2.ogg', 'modular_splurt/sound/voice/bababooey/fafafooey3.ogg')
+
+	// Return normally
+	. = ..()
+
+/datum/emote/living/audio_emote/fafafoggy
 	key = "fafafoggy"
 	key_third_person = "fafafoggys"
 	message = "spews fafafoggy."
-	emote_type = EMOTE_AUDIBLE
 	muzzle_ignore = FALSE
+	emote_sound = 'modular_splurt/sound/voice/bababooey/fafafoggy.ogg'
 
-/datum/emote/living/fafafoggy/run_emote(mob/user, params, type_override, intentional)
-	if(!(. = ..()))
-		return
-	if(user.nextsoundemote >= world.time)
-		return
+/datum/emote/living/audio_emote/fafafoggy/run_emote(mob/user, params, type_override, intentional)
+	// Check if user is muzzled
 	if(user.is_muzzled())
-		user.nextsoundemote = world.time + 7
-		playsound(user, 'modular_splurt/sound/voice/bababooey/ffff.ogg', 50, 1, -1)
-		return
-	user.nextsoundemote = world.time + 7
-	playsound(user, pick('modular_splurt/sound/voice/bababooey/fafafoggy.ogg', 'modular_splurt/sound/voice/bababooey/fafafoggy2.ogg'), 50, 1, -1)
+		// Set muzzled sound
+		emote_sound = 'modular_splurt/sound/voice/bababooey/ffff.ogg'
 
-/datum/emote/living/hohohoy
+	// User is not muzzled
+	else
+		// Set random emote sound
+		emote_sound = pick('modular_splurt/sound/voice/bababooey/fafafoggy.ogg', 'modular_splurt/sound/voice/bababooey/fafafoggy2.ogg')
+
+	// Return normally
+	. = ..()
+
+/datum/emote/living/audio_emote/hohohoy
 	key = "hohohoy"
 	key_third_person = "hohohoys"
 	message = "spews hohohoy."
-	emote_type = EMOTE_AUDIBLE
 	muzzle_ignore = FALSE
+	emote_sound = 'modular_splurt/sound/voice/bababooey/hohohoy.ogg'
 
-/datum/emote/living/hohohoy/run_emote(mob/user, params, type_override, intentional)
-	if(!(. = ..()))
-		return
-	if(user.nextsoundemote >= world.time)
-		return
-	if(user.is_muzzled())
-		user.nextsoundemote = world.time + 7
-		playsound(user, 'modular_splurt/sound/voice/bababooey/ffff.ogg', 50, 1, -1)
-		return
-	user.nextsoundemote = world.time + 7
-	playsound(user, 'modular_splurt/sound/voice/bababooey/hohohoy.ogg', 50, 1, -1)
-
-/datum/emote/living/ffff
+/datum/emote/living/audio_emote/ffff
 	key = "ffff"
 	key_third_person = "ffffs"
 	message = "spews something softly."
-	emote_type = EMOTE_AUDIBLE
 	muzzle_ignore = TRUE
+	emote_sound = 'modular_splurt/sound/voice/bababooey/ffff.ogg'
 
-/datum/emote/living/ffff/run_emote(mob/user, params, type_override, intentional)
-	if(!(. = ..()))
-		return
-	if(user.nextsoundemote >= world.time)
-		return
-	user.nextsoundemote = world.time + 7
-	playsound(user, 'modular_splurt/sound/voice/bababooey/ffff.ogg', 50, 1, -1)
-
-/datum/emote/living/fafafail
+/datum/emote/living/audio_emote/fafafail
 	key = "fafafail"
 	key_third_person = "fafafails"
 	message = "spews something unintelligible."
-	emote_type = EMOTE_AUDIBLE
 	muzzle_ignore = FALSE
+	emote_sound = 'modular_splurt/sound/voice/bababooey/ffffhvh.ogg'
 
-/datum/emote/living/fafafail/run_emote(mob/user, params, type_override, intentional)
-	if(!(. = ..()))
-		return
-	if(user.nextsoundemote >= world.time)
-		return
-	if(user.is_muzzled())
-		user.nextsoundemote = world.time + 7
-		playsound(user, 'modular_splurt/sound/voice/bababooey/ffff.ogg', 50, 1, -1)
-		return
-	user.nextsoundemote = world.time + 7
-	playsound(user, 'modular_splurt/sound/voice/bababooey/ffffhvh.ogg', 50, 1, -1)
-
-/datum/emote/living/boowomp
+/datum/emote/living/audio_emote/boowomp
 	key = "boowomp"
 	key_third_person = "boowomps"
 	message = "produces a sad boowomp."
-	emote_type = EMOTE_AUDIBLE
 	muzzle_ignore = FALSE
+	emote_sound = 'modular_splurt/sound/voice/boowomp.ogg'
 
-/datum/emote/living/boowomp/run_emote(mob/user, params, type_override, intentional)
-	. = ..()
-	if(!.)
-		return
-	if(user.nextsoundemote >= world.time)
-		return
-	if(user.is_muzzled())
-		user.nextsoundemote = world.time + 7
-		playsound(user, 'modular_splurt/sound/voice/boowomp_muffled.ogg', 50, 1, -1)
-		return
-	user.nextsoundemote = world.time + 7
-	playsound(user, 'modular_splurt/sound/voice/boowomp.ogg', 50, 1, -1)
-
-/datum/emote/living/swaos
+/datum/emote/living/audio_emote/swaos
 	key = "swaos"
 	key_third_person = "swaos"
 	message = "mutters swaos."
-	emote_type = EMOTE_AUDIBLE
 	muzzle_ignore = FALSE
+	emote_sound = 'modular_splurt/sound/voice/swaos.ogg'
 
-/datum/emote/living/swaos/run_emote(mob/user, params, type_override, intentional)
-	. = ..()
-	if(!.)
-		return
-	if(user.nextsoundemote >= world.time)
-		return
-	if(user.is_muzzled())
-		user.nextsoundemote = world.time + 7
-		playsound(user, 'modular_splurt/sound/voice/swaos_muffled.ogg', 50, 1, -1)
-		return
-	user.nextsoundemote = world.time + 7
-	playsound(user, 'modular_splurt/sound/voice/swaos.ogg', 50, 1, -1)
-
-/datum/emote/living/eyebrow2
+/datum/emote/living/audio_emote/eyebrow2
 	key = "eyebrow2"
 	key_third_person = "eyebrows2"
 	message = "<b>raises an eyebrow.</b>"
+	emote_sound = 'modular_splurt/sound/voice/vineboom.ogg'
 
-/datum/emote/living/eyebrow2/run_emote(mob/user, params, type_override, intentional)
-	if(!(. = ..()))
-		return
-	if(user.nextsoundemote >= world.time)
-		return
-	user.nextsoundemote = world.time + 60
-	playsound(user, 'modular_splurt/sound/voice/vineboom.ogg', 50, 1, -1)
-
-/datum/emote/living/eyebrow3
+/datum/emote/living/audio_emote/eyebrow3
 	key = "eyebrow3"
 	key_third_person = "eyebrows3"
 	message = "raises an eyebrow <i>quizzaciously</i>."
+	emote_sound = 'modular_splurt/sound/voice/moonmen.ogg'
 
-/datum/emote/living/eyebrow3/run_emote(mob/user, params, type_override, intentional)
-	if(!(. = ..()))
-		return
-	if(user.nextsoundemote >= world.time)
-		return
-	user.nextsoundemote = world.time + 60
-	playsound(user, 'modular_splurt/sound/voice/moonmen.ogg', 50, 0, 1)
-
-/datum/emote/living/blink2
+/datum/emote/living/audio_emote/blink2
 	key = "blink2"
 	key_third_person = "blinks2"
 	message = "blinks."
+	emote_sound = 'modular_splurt/sound/voice/blink.ogg'
 
-/datum/emote/living/blink2/run_emote(mob/user, params, type_override, intentional)
-	if(!(. = ..()))
-		return
-	if(user.nextsoundemote >= world.time)
-		return
-	user.nextsoundemote = world.time + 7
-	playsound(user, 'modular_splurt/sound/voice/blink.ogg', 50, 1, -1)
-
-/datum/emote/living/laugh2
+/datum/emote/living/audio_emote/laugh2
 	key = "laugh2"
 	key_third_person = "laughs2"
 	message = "laughs like a king."
-	emote_type = EMOTE_AUDIBLE
 	muzzle_ignore = FALSE
+	emote_sound = 'modular_splurt/sound/voice/laugh_king.ogg'
 
-/datum/emote/living/laugh2/run_emote(mob/user, params, type_override, intentional)
-	if(!(. = ..()))
-		return
-	if(user.nextsoundemote >= world.time)
-		return
-	user.nextsoundemote = world.time + 7
-	playsound(user, 'modular_splurt/sound/voice/laugh_king.ogg', 50, 1, -1)
-
-/datum/emote/living/laugh3
+/datum/emote/living/audio_emote/laugh3
 	key = "laugh3"
 	key_third_person = "laughs3"
 	message = "laughs silly."
-	emote_type = EMOTE_AUDIBLE
 	muzzle_ignore = FALSE
+	emote_sound = 'modular_splurt/sound/voice/lol.ogg'
 
-/datum/emote/living/laugh3/run_emote(mob/user, params, type_override, intentional)
-	if(!(. = ..()))
-		return
-	if(user.nextsoundemote >= world.time)
-		return
-	user.nextsoundemote = world.time + 70
-	playsound(user, 'modular_splurt/sound/voice/lol.ogg', 50, 1, -1)
-
-/datum/emote/living/laugh4
+/datum/emote/living/audio_emote/laugh4
 	key = "laugh4"
 	key_third_person = "laughs4"
 	message = "burst into laughter!"
-	emote_type = EMOTE_AUDIBLE
 	muzzle_ignore = FALSE
+	emote_sound = 'modular_splurt/sound/voice/laugh_muta.ogg'
 
-/datum/emote/living/laugh4/run_emote(mob/user, params, type_override, intentional)
-	if(!(. = ..()))
-		return
-	if(user.nextsoundemote >= world.time)
-		return
-	user.nextsoundemote = world.time + 70
-	playsound(user, 'modular_splurt/sound/voice/laugh_muta.ogg', 50, 1, -1)
-
-/datum/emote/living/laugh5
+/datum/emote/living/audio_emote/laugh5
 	key = "laugh5"
 	key_third_person = "laughs5"
 	message = "laughs in Scottish."
-	emote_type = EMOTE_AUDIBLE
 	muzzle_ignore = FALSE
+	emote_sound = 'modular_splurt/sound/voice/laugh_deman.ogg'
 
-/datum/emote/living/laugh5/run_emote(mob/user, params, type_override, intentional)
-	if(!(. = ..()))
-		return
-	if(user.nextsoundemote >= world.time)
-		return
-	user.nextsoundemote = world.time + 70
-	playsound(user, 'modular_splurt/sound/voice/laugh_deman.ogg', 50, 1, -1)
-
-/datum/emote/living/laugh6
+/datum/emote/living/audio_emote/laugh6
 	key = "laugh6"
 	key_third_person = "laughs6"
 	message = "laughs like a kettle!"
-	emote_type = EMOTE_AUDIBLE
 	muzzle_ignore = FALSE
+	emote_sound = 'modular_splurt/sound/voice/laugh6.ogg'
 
-/datum/emote/living/laugh6/run_emote(mob/user, params, type_override, intentional)
-	if(!(. = ..()))
-		return
-	if(user.nextsoundemote >= world.time)
-		return
-	user.nextsoundemote = world.time + 70
-	playsound(user, 'modular_splurt/sound/voice/laugh6.ogg', 50, 1, -1)
-
-/datum/emote/living/breakbad
+/datum/emote/living/audio_emote/breakbad
 	key = "breakbad"
 	key_third_person = "breakbads"
 	message = "stares intensively with determination."
+	emote_sound = 'modular_splurt/sound/voice/breakbad.ogg'
 
-/datum/emote/living/breakbad/run_emote(mob/user, params, type_override, intentional)
-	if(!(. = ..()))
-		return
-	if(user.nextsoundemote >= world.time)
-		return
-	user.nextsoundemote = world.time + 60
-	playsound(user, 'modular_splurt/sound/voice/breakbad.ogg', 50, 1, -1)
-
-/datum/emote/living/lawyerup
+/datum/emote/living/audio_emote/lawyerup
 	key = "lawyerup"
 	key_third_person = "lawyerups"
 	message = "emits an aura of expertise."
+	emote_sound = 'modular_splurt/sound/voice/lawyerup.ogg'
 
-/datum/emote/living/lawyerup/run_emote(mob/user, params, type_override, intentional)
-	if(!(. = ..()))
-		return
-	if(user.nextsoundemote >= world.time)
-		return
-	user.nextsoundemote = world.time + 60
-	playsound(user, 'modular_splurt/sound/voice/lawyerup.ogg', 50, 1, -1)
-
-/datum/emote/living/goddamn
+/datum/emote/living/audio_emote/goddamn
 	key = "damn"
 	key_third_person = "damns"
 	message = "is in utter stupor."
-	emote_type = EMOTE_AUDIBLE
 	muzzle_ignore = TRUE
+	emote_sound = 'modular_splurt/sound/voice/god_damn.ogg'
 
-/datum/emote/living/goddamn/run_emote(mob/user, params, type_override, intentional)
-	if(!(. = ..()))
-		return
-	if(user.nextsoundemote >= world.time)
-		return
-	user.nextsoundemote = world.time + 7
-	playsound(user, 'modular_splurt/sound/voice/god_damn.ogg', 50, 1, -1)
-
-/datum/emote/living/spoonful
+/datum/emote/living/audio_emote/spoonful
 	key = "spoonful"
 	key_third_person = "spoonfuls"
 	message = "asks for a spoonful."
-	emote_type = EMOTE_AUDIBLE
 	muzzle_ignore = TRUE
+	emote_sound = 'modular_splurt/sound/voice/spoonful.ogg'
 
-/datum/emote/living/spoonful/run_emote(mob/user, params, type_override, intentional)
-	if(!(. = ..()))
-		return
-	if(user.nextsoundemote >= world.time)
-		return
-	user.nextsoundemote = world.time + 7
-	playsound(user, 'modular_splurt/sound/voice/spoonful.ogg', 50, 1, -1)
-
-/datum/emote/living/ohhmygod
+/datum/emote/living/audio_emote/ohhmygod
 	key = "mygod"
 	key_third_person = "omgs"
 	message = "invokes the presence of Jesus Christ."
-	emote_type = EMOTE_AUDIBLE
 	muzzle_ignore = TRUE
+	emote_sound = 'modular_splurt/sound/voice/OMG.ogg'
 
-/datum/emote/living/ohhmygod/run_emote(mob/user, params, type_override, intentional)
-	if(!(. = ..()))
-		return
-	if(user.nextsoundemote >= world.time)
-		return
-	user.nextsoundemote = world.time + 14
-	playsound(user, 'modular_splurt/sound/voice/OMG.ogg', 50, 1, -1)
-
-/datum/emote/living/whatthehell
+/datum/emote/living/audio_emote/whatthehell
 	key = "wth"
 	key_third_person = "wths"
 	message = "condemns the abysses of hell!"
-	emote_type = EMOTE_AUDIBLE
 	muzzle_ignore = TRUE
+	emote_sound = 'modular_splurt/sound/voice/WTH.ogg'
 
-/datum/emote/living/whatthehell/run_emote(mob/user, params, type_override, intentional)
-	if(!(. = ..()))
-		return
-	if(user.nextsoundemote >= world.time)
-		return
-	user.nextsoundemote = world.time + 40
-	playsound(user, 'modular_splurt/sound/voice/WTH.ogg', 50, 1, -1)
-
-/datum/emote/living/fusrodah
+/datum/emote/living/audio_emote/fusrodah
 	key = "fusrodah"
 	key_third_person = "furodahs"
 	message = "yells, \"<b>FUS RO DAH!!!</b>\""
+	emote_sound = 'modular_splurt/sound/voice/fusrodah.ogg'
 
-/datum/emote/living/fusrodah/run_emote(mob/user, params, type_override, intentional)
-	if(!(. = ..()))
-		return
-	if(user.nextsoundemote >= world.time)
-		return
-	user.nextsoundemote = world.time + 60
-	playsound(user, 'modular_splurt/sound/voice/fusrodah.ogg', 50, 0, 1)
-
-/datum/emote/living/skibidi
+/datum/emote/living/audio_emote/skibidi
 	key = "skibidi"
 	key_third_person = "skibidis"
 	message = "yells, \"<b>Skibidi bop mm dada!</b>\""
+	emote_sound = 'modular_splurt/sound/voice/skibidi.ogg'
 
-/datum/emote/living/skibidi/run_emote(mob/user, params, type_override, intentional)
-	if(!(. = ..()))
-		return
-	if(user.nextsoundemote >= world.time)
-		return
-	user.nextsoundemote = world.time + 10
-	playsound(user, 'modular_splurt/sound/voice/skibidi.ogg', 50, 0, 1)
-
-/datum/emote/living/fbi
+/datum/emote/living/audio_emote/fbi
 	key = "fbi"
 	key_third_person = "fbis"
 	message = "yells, \"<b>FBI OPEN UP!</b>\""
+	emote_sound = 'modular_splurt/sound/voice/fbi.ogg'
 
-/datum/emote/living/fbi/run_emote(mob/user, params, type_override, intentional)
-	if(!(. = ..()))
-		return
-	if(user.nextsoundemote >= world.time)
-		return
-	user.nextsoundemote = world.time + 20
-	playsound(user, 'modular_splurt/sound/voice/fbi.ogg', 50, 0, 1)
-
-/datum/emote/living/illuminati
+/datum/emote/living/audio_emote/illuminati
 	key = "illuminati"
 	key_third_person = "illuminatis"
 	message = "exudes a mysterious aura!"
+	emote_sound = 'modular_splurt/sound/voice/illuminati.ogg'
 
-/datum/emote/living/illuminati/run_emote(mob/user, params, type_override, intentional)
-	if(!(. = ..()))
-		return
-	if(user.nextsoundemote >= world.time)
-		return
-	user.nextsoundemote = world.time + 80
-	playsound(user, 'modular_splurt/sound/voice/illuminati.ogg', 50, 0, 1)
-
-/datum/emote/living/bonerif
+/datum/emote/living/audio_emote/bonerif
 	key = "bonerif"
 	key_third_person = "bonerifs"
 	message = "riffs!"
+	emote_sound = 'modular_splurt/sound/voice/bonerif.ogg'
 
-/datum/emote/living/bonerif/run_emote(mob/user, params, type_override, intentional)
-	if(!(. = ..()))
-		return
-	if(user.nextsoundemote >= world.time)
-		return
-	user.nextsoundemote = world.time + 10
-	playsound(user, 'modular_splurt/sound/voice/bonerif.ogg', 50, 0, 1)
-
-
-/datum/emote/living/cry2
+/datum/emote/living/audio_emote/cry2
 	key = "cry2"
 	key_third_person = "crys2"
 	message = "cries like a king."
-	emote_type = EMOTE_AUDIBLE
 	muzzle_ignore = FALSE
+	emote_sound = 'modular_splurt/sound/voice/cry_king.ogg'
 
-/datum/emote/living/cry2/run_emote(mob/user, params, type_override, intentional)
-	if(!(. = ..()))
-		return
-	if(user.nextsoundemote >= world.time)
-		return
-	user.nextsoundemote = world.time + 7
-	playsound(user, pick('modular_splurt/sound/voice/cry_king.ogg', 'modular_splurt/sound/voice/cry_king2.ogg'), 50, 1, -1)
+/datum/emote/living/audio_emote/cry2/run_emote(mob/user, params, type_override, intentional)
+	// Set random emote sound
+	emote_sound = pick('modular_splurt/sound/voice/cry_king.ogg', 'modular_splurt/sound/voice/cry_king2.ogg')
 
-/datum/emote/living/choir
+	// Return normally
+	. = ..()
+
+/datum/emote/living/audio_emote/choir
 	key = "choir"
 	key_third_person = "choirs"
 	message = "let out a choir!"
-	emote_type = EMOTE_AUDIBLE
 	muzzle_ignore = FALSE
+	emote_sound = 'modular_splurt/sound/voice/choir.ogg'
 
-/datum/emote/living/choir/run_emote(mob/user, params, type_override, intentional)
-	if(!(. = ..()))
-		return
-	if(user.nextsoundemote >= world.time)
-		return
-	user.nextsoundemote = world.time + 60
-	playsound(user, 'modular_splurt/sound/voice/choir.ogg', 50, 1, -1)
-
-/datum/emote/living/sicko
+/datum/emote/living/audio_emote/sicko
 	key = "sicko"
 	key_third_person = "sickos"
 	message = "briefly goes sicko mode!"
-	emote_type = EMOTE_AUDIBLE
 	muzzle_ignore = FALSE
+	emote_sound = 'modular_splurt/sound/voice/sicko.ogg'
 
-/datum/emote/living/sicko/run_emote(mob/user, params, type_override, intentional)
-	if(!(. = ..()))
-		return
-	if(user.nextsoundemote >= world.time)
-		return
-	user.nextsoundemote = world.time + 7
-	playsound(user, 'modular_splurt/sound/voice/sicko.ogg', 50, 1, -1)
-
-/datum/emote/living/chill
+/datum/emote/living/audio_emote/chill
 	key = "chill"
 	key_third_person = "chills"
 	message = "feels a chill running down their spine..."
+	emote_sound = 'modular_splurt/sound/voice/waterphone.ogg'
 
-/datum/emote/living/chill/run_emote(mob/user, params, type_override, intentional)
-	if(!(. = ..()))
-		return
-	if(user.nextsoundemote >= world.time)
-		return
-	user.nextsoundemote = world.time + 10
-	playsound(user, 'modular_splurt/sound/voice/waterphone.ogg', 50, 1, -1)
-
-/datum/emote/living/weh2
+/datum/emote/living/audio_emote/weh2
 	key = "weh2"
 	key_third_person = "wehs2"
 	message = "let out a weh!"
+	emote_sound = 'modular_splurt/sound/voice/weh2.ogg'
 
-/datum/emote/living/weh2/run_emote(mob/user, params, type_override, intentional)
-	if(!(. = ..()))
-		return
-	if(user.nextsoundemote >= world.time)
-		return
-	user.nextsoundemote = world.time + 7
-	playsound(user, 'modular_splurt/sound/voice/weh2.ogg', 50, 1, -1)
-
-/datum/emote/living/weh3
+/datum/emote/living/audio_emote/weh3
 	key = "weh3"
 	key_third_person = "wehs3"
 	message = "let out a weh!"
+	emote_sound = 'modular_splurt/sound/voice/weh3.ogg'
 
-/datum/emote/living/weh3/run_emote(mob/user, params, type_override, intentional)
-	if(!(. = ..()))
-		return
-	if(user.nextsoundemote >= world.time)
-		return
-	user.nextsoundemote = world.time + 7
-	playsound(user, 'modular_splurt/sound/voice/weh3.ogg', 50, 1, -1)
-
-/datum/emote/living/weh4
+/datum/emote/living/audio_emote/weh4
 	key = "weh-s"
 	key_third_person = "wehs4"
 	message = "let out a surprised weh!"
+	emote_sound = 'modular_splurt/sound/voice/weh_s.ogg'
 
-/datum/emote/living/weh4/run_emote(mob/user, params, type_override, intentional)
-	if(!(. = ..()))
-		return
-	if(user.nextsoundemote >= world.time)
-		return
-	user.nextsoundemote = world.time + 7
-	playsound(user, 'modular_splurt/sound/voice/weh_s.ogg', 50, 1, -1)
-
-/datum/emote/living/waa
+/datum/emote/living/audio_emote/waa
 	key = "waa"
 	key_third_person = "waas"
 	message = "let out a waa!"
-
-/datum/emote/living/waa/run_emote(mob/user, params, type_override, intentional)
-	if(!(. = ..()))
-		return
-	if(user.nextsoundemote >= world.time)
-		return
-	user.nextsoundemote = world.time + 10
-	playsound(user, 'modular_splurt/sound/voice/waa.ogg', 50, 1, -1)
+	emote_sound = 'modular_splurt/sound/voice/waa.ogg'
 
 /datum/emote/living/mlem
 	key = "mlem"
@@ -777,12 +529,13 @@
 	message = "sticks their tongue for a moment. Mlem!"
 	emote_type = EMOTE_VISIBLE
 
-/datum/emote/living/snore/snore2
+/datum/emote/living/audio_emote/snore/snore2
 	key = "snore2"
 	key_third_person = "snores2"
 	message = "lets out an <b>earthshaking</b> snore"
+	emote_sound = 'modular_splurt/sound/voice/aauugghh1.ogg'
 
-/datum/emote/living/snore/snore2/run_emote(mob/user, params, type_override, intentional)
+/datum/emote/living/audio_emote/snore/snore2/run_emote(mob/user, params, type_override, intentional)
 	var/datum/dna/D = user.has_dna()
 	var/say_mod = (D ? D.species.say_mod : "says")
 	var/list/aaauughh = list(
@@ -791,13 +544,12 @@
 		"[say_mod], <b>\"AAAAAAUUUUUUGGGHHHHH!!!\"</b>"
 	)
 	message = pick(aaauughh)
+
+	// Set random emote sound
+	emote_sound = pick('modular_splurt/sound/voice/aauugghh1.ogg', 'modular_splurt/sound/voice/aauugghh2.ogg')
+
+	// Return normally
 	. = ..()
-	if(!.)
-		return
-	if(user.nextsoundemote >= world.time)
-		return
-	user.nextsoundemote = world.time + 10
-	playsound(user, pick('modular_splurt/sound/voice/aauugghh1.ogg', 'modular_splurt/sound/voice/aauugghh2.ogg'), 40, 1, -1)
 
 /datum/emote/living/pant
 	key = "pant"
@@ -814,131 +566,86 @@
 	message = pick(pants)
 	. = ..()
 
-/datum/emote/living/yippee
+/datum/emote/living/audio_emote/yippee
 	key = "yippee"
 	key_third_person = "yippees"
 	message = "lets out a yippee!"
-	emote_type = EMOTE_AUDIBLE
 	muzzle_ignore = FALSE
+	emote_sound = 'modular_splurt/sound/voice/yippee.ogg'
 
-/datum/emote/living/yippee/run_emote(mob/user, params, type_override, intentional)
-	if(!(. = ..()))
-		return
-	if(user.nextsoundemote >= world.time)
-		return
-	user.nextsoundemote = world.time + 70
-	playsound(user, 'modular_splurt/sound/voice/yippee.ogg', 50, 1, -1)
-
-/datum/emote/living/mewo
+/datum/emote/living/audio_emote/mewo
 	key = "mewo"
 	key_third_person = "mewos"
 	message = "mewos!"
-	emote_type = EMOTE_AUDIBLE
 	muzzle_ignore = FALSE
 	restraint_check = FALSE
+	emote_sound = 'modular_splurt/sound/voice/mewo.ogg'
 
-/datum/emote/living/mewo/run_emote(mob/user, params, type_override, intentional)
-	. = ..()
-	if(!.)
-		return
-	if(user.nextsoundemote >= world.time)
-		return
-	user.nextsoundemote = world.time + 1 SECONDS
-	playsound(user, 'modular_splurt/sound/voice/mewo.ogg', 50, 1, -1)
-
-/datum/emote/living/ara_ara
+/datum/emote/living/audio_emote/ara_ara
 	key = "ara"
 	key_third_person = "aras"
 	message = "coos with sultry surprise~..."
-	emote_type = EMOTE_AUDIBLE
 	muzzle_ignore = FALSE
-	var/voicesound = 'modular_splurt/sound/voice/ara-ara.ogg'
+	emote_sound = 'modular_splurt/sound/voice/ara-ara.ogg'
 
-/datum/emote/living/ara_ara/run_emote(mob/user, params, type_override, intentional)
-	. = ..()
-	if(!.)
-		return
-	if(user.nextsoundemote >= world.time)
-		return
-	user.nextsoundemote = world.time + 1.5 SECONDS
-	playsound(user, voicesound, 50, 1, -1)
-
-/datum/emote/living/ara_ara/alt
+/datum/emote/living/audio_emote/ara_ara/alt
 	key = "ara2"
-	voicesound = 'modular_splurt/sound/voice/ara-ara2.ogg'
+	emote_sound = 'modular_splurt/sound/voice/ara-ara2.ogg'
 
-/datum/emote/living/missouri
+/datum/emote/living/audio_emote/missouri
 	key = "missouri"
 	key_third_person = "missouris"
 	message = "appears to believe %THEYRE in Missouri."
-	emote_type = EMOTE_AUDIBLE
 	muzzle_ignore = FALSE
+	emote_sound = 'modular_splurt/sound/voice/missouri.ogg'
 
-/datum/emote/living/missouri/run_emote(mob/user, params, type_override, intentional)
-	message = replacetextEx(message, "%THEYRE", user.p_theyre())
-	. = ..()
-	if(!.)
-		return
-	if(user.nextsoundemote >= world.time)
-		return
-	user.nextsoundemote = world.time + 3 SECONDS
-	playsound(user, 'modular_splurt/sound/voice/missouri.ogg', 50, 0, -1)
-
-/datum/emote/living/facemetacarpus
+/datum/emote/living/audio_emote/facemetacarpus
 	key = "facehand" // Facepalm was taken
 	key_third_person = "facepalms"
 	// Message is generated from metacarpus_type below. You shouldn't see this!
-	message = "creates an error in the code."
-	emote_type = EMOTE_AUDIBLE // Hear a slapping sound
+	message = "creates an error in the code." // Hear a slapping sound
 	muzzle_ignore = TRUE // Not a spoken emote
 	restraint_check = TRUE // Uses your hands
-	mob_type_allowed_typecache = list(/mob/living/carbon) // Don't let borgs do this
+	emote_sound = 'modular_splurt/sound/effects/slap.ogg'
 	// Defines appendage type for generated message
 	var/metacarpus_type = "palm" // Default to hands
 
-/datum/emote/living/facemetacarpus/run_emote(mob/user, params, type_override, intentional)
+/datum/emote/living/audio_emote/facemetacarpus/run_emote(mob/user, params, type_override, intentional)
 	// Randomly pick a message using metacarpus_type for hand
 	message = pick(list(
 			"places [usr.p_their()] [metacarpus_type] across [usr.p_their()] face.",
 			"lowers [usr.p_their()] face into [usr.p_their()] [metacarpus_type].",
 			"face[metacarpus_type]s",
 		))
-	if(!(. = ..()))
-		return
-	if(user.nextsoundemote >= world.time)
-		return
-	user.nextsoundemote = world.time + 10
-	playsound(user, 'modular_splurt/sound/effects/slap.ogg', 50, 1, -1)
 
-/datum/emote/living/facemetacarpus/paw
+	// Return normally
+	. = ..()
+
+/datum/emote/living/audio_emote/facemetacarpus/paw
 	key = "facepaw" // For furries
 	key_third_person = "facepaws"
 	metacarpus_type = "paw"
 
-/datum/emote/living/facemetacarpus/claw
+/datum/emote/living/audio_emote/facemetacarpus/claw
 	key = "faceclaw" // For scalies and avians
 	key_third_person = "faceclaws"
 	metacarpus_type = "claw"
 
-/datum/emote/living/facemetacarpus/hoof
+/datum/emote/living/audio_emote/facemetacarpus/hoof
 	key = "facehoof" // For horse enthusiasts
 	key_third_person = "facehoofs"
 	metacarpus_type = "hoof"
 
-/datum/emote/living/poyo
+/datum/emote/living/audio_emote/poyo
 	key = "poyo"
 	key_third_person = "poyos"
 	message = "%SAYS, \"Poyo!\""
-	emote_type = EMOTE_AUDIBLE
+	emote_sound = 'modular_splurt/sound/voice/barks/poyo.ogg'
 
-/datum/emote/living/poyo/run_emote(mob/user, params, type_override, intentional)
+/datum/emote/living/audio_emote/poyo/run_emote(mob/user, params, type_override, intentional)
 	var/datum/dna/D = user.has_dna()
 	var/say_mod = (D ? D.species.say_mod : "says")
 	message = replacetextEx(message, "%SAYS", say_mod)
+
+	// Return normally
 	. = ..()
-	if(!.)
-		return
-	if(user.nextsoundemote >= world.time)
-		return
-	user.nextsoundemote = world.time + 1 SECONDS
-	playsound(user, 'modular_splurt/sound/voice/barks/poyo.ogg', 50, 1, -1)
