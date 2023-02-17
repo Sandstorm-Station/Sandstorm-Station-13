@@ -1,4 +1,6 @@
-#define ETHANOL_GFLUID_POWER_LIMIT 80
+#define GFLUID_ETHANOL_POWER_LIMIT 80
+#define GFLUID_RARITY_LIMIT REAGENT_VALUE_RARE
+
 
 /datum/preferences
 	max_save_slots = DEFAULT_SAVE_SLOTS
@@ -489,13 +491,18 @@
 			// Ignore reagent
 			continue
 
+		// Check if reagent exceeds rarity limit
+		if(instance.value >= GFLUID_RARITY_LIMIT)
+			// Ignore reagent
+			continue
+
 		// Check if reagent is an ethanol sub-type
 		if(istype(instance, /datum/reagent/consumable/ethanol))
 			// Define ethanol reagent
 			var/datum/reagent/consumable/ethanol/drink = instance
 
 			// Check if booze power exceeds the defined limit
-			if(drink.boozepwr > ETHANOL_GFLUID_POWER_LIMIT)
+			if(drink.boozepwr > GFLUID_ETHANOL_POWER_LIMIT)
 				// Ignore reagent
 				continue
 
