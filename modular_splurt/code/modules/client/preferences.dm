@@ -201,6 +201,12 @@
 		// Causes drugging and stamina loss
 		/datum/reagent/consumable/ethanol/hotlime_miami,
 
+		// Plays an explosion sound effect
+		/datum/reagent/consumable/ethanol/b52,
+
+		// Causes brute damage
+		/datum/reagent/consumable/ethanol/crevice_spike,
+
 		//
 		// SPLURT effect drinks
 		//
@@ -437,6 +443,9 @@
 
 		// Secret reagent, makes all food max quality
 		/datum/reagent/consumable/secretsauce,
+
+		// Used for making most food
+		/datum/reagent/consumable/enzyme,
 	)
 
 	// Define base list
