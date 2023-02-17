@@ -157,7 +157,7 @@
 	description = "A visored cap. Intended to be used with ORV uniform."
 	path = /obj/item/clothing/head/kepi/orvi
 	subcategory = LOADOUT_SUBCATEGORY_HEAD_JOBS
-	restricted_roles = list("Assistant")
+	restricted_roles = list("Assistant", "Stowaway")
 
 /*Commenting out Until next Christmas or made automatic
 /datum/gear/santahatr
@@ -194,6 +194,12 @@
 	subcategory = LOADOUT_SUBCATEGORY_HEAD_JOBS
 	restricted_desc = "Security"
 	restricted_roles = list("Warden","Detective","Security Officer","Head of Security")
+
+/datum/gear/head/cowboyhat/polychromic
+	name = "Cowboy Hat, Polychromic"
+	path = /obj/item/clothing/head/cowboyhat/polychromic
+	loadout_flags = LOADOUT_CAN_NAME | LOADOUT_CAN_DESCRIPTION | LOADOUT_CAN_COLOR_POLYCHROMIC
+	loadout_initial_colors = list("#5F5F5F", "#DDDDDD")
 
 /datum/gear/head/wkepi
 	name = "white kepi"
