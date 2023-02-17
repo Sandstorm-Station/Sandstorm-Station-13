@@ -29,20 +29,11 @@
 		// Effect drinks
 		//
 
-		// Tints the user green
-		/datum/reagent/consumable/ethanol/beer/green,
-
 		// Removes dizziness, drowsiness, and sleeping
 		/datum/reagent/consumable/ethanol/kahlua,
 
 		// Can cause organ loss and death
 		/datum/reagent/consumable/ethanol/thirteenloko,
-
-		// Heals radiation
-		/datum/reagent/consumable/ethanol/vodka,
-
-		// Heals brute loss
-		/datum/reagent/consumable/ethanol/bilk,
 
 		// Drugs the user
 		/datum/reagent/consumable/ethanol/threemileisland,
@@ -194,30 +185,49 @@
 		// Heals body part, brute, suffocation, fire, foxin, and radiation for the Captain
 		/datum/reagent/consumable/ethanol/commander_and_chief,
 
-		// Displays a chat message
-		// /datum/reagent/consumable/ethanol/gunfire,
-
 		// Increases temperature
 		/datum/reagent/consumable/ethanol/hellfire,
 
 		// Causes drugging and stamina loss
 		/datum/reagent/consumable/ethanol/hotlime_miami,
 
+		// Causes brute damage
+		/datum/reagent/consumable/ethanol/crevice_spike,
+
+		/*
+		 * The following reagents have effects
+		 * But are too mild to warrant blacklisting
+		 *
+		// Tints the user green
+		/datum/reagent/consumable/ethanol/beer/green,
+
+		// Heals radiation
+		/datum/reagent/consumable/ethanol/vodka,
+
+		// Heals brute loss
+		/datum/reagent/consumable/ethanol/bilk,
+
 		// Plays an explosion sound effect
 		/datum/reagent/consumable/ethanol/b52,
 
-		// Causes brute damage
-		/datum/reagent/consumable/ethanol/crevice_spike,
+		// Displays a chat message
+		/datum/reagent/consumable/ethanol/gunfire,
+		*/
 
 		//
 		// SPLURT effect drinks
 		//
 
+		/*
+		 * The following reagents have effects
+		 * But are allowed for humor purposes
+		 *
 		// Causes clothing loss
 		/datum/reagent/consumable/ethanol/panty_dropper,
 
 		// Causes brain damage
 		/datum/reagent/consumable/ethanol/lean,
+		*/
 
 		// Contains morphine
 		/datum/reagent/consumable/ethanol/isloation_cell/morphine,
@@ -407,9 +417,6 @@
 		// Causes coughing, and can be used for stuns
 		/datum/reagent/consumable/condensedcapsaicin,
 
-		// Increases temperature
-		/datum/reagent/consumable/hot_coco,
-
 		// Heals the cook, but damages vampires
 		/datum/reagent/consumable/garlic,
 
@@ -448,13 +455,21 @@
 
 		// Used for making most food
 		/datum/reagent/consumable/enzyme,
+
+		/*
+		 * The following reagents have effects
+		 * But are too mild to warrant blacklisting
+		 *
+		// Increases temperature
+		/datum/reagent/consumable/hot_coco,
+		*/
 	)
 
 	// Define base list
 	var/list/consumable_list = subtypesof(/datum/reagent/consumable)
 
 	// Define additional allowed reagents
-	LAZYADD(consumable_list, list(
+	var/list/whitelist_list = list(
 		// Just water
 		/datum/reagent/water,
 
@@ -464,11 +479,14 @@
 
 		// Causes positive mood bonus
 		// On overdose: Causes negative mood penalty and disgust
-		// /datum/reagent/drug/copium,
+		/datum/reagent/drug/copium/gfluid,
 
 		// Restores blood volume
-		// /datum/reagent/blood,
-	))
+		/datum/reagent/blood,
+	)
+
+	// Add whitelisted entries to main list
+	LAZYADD(consumable_list, whitelist_list)
 
 	// Define final list
 	var/list/reagent_list
@@ -489,6 +507,14 @@
 		// Check if reagent is blacklisted
 		if(reagent in blacklisted)
 			// Ignore reagent
+			continue
+
+		// Check if reagent is manually whitelisted
+		if(reagent in whitelist_list)
+			// Add immediately
+			LAZYADD(reagent_list, instance)
+
+			// Skip further processing
 			continue
 
 		// Check if reagent exceeds rarity limit
