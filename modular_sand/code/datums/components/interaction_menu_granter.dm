@@ -45,11 +45,11 @@
 
 /// The one interacting is clicker, the interacted is clicked.
 /datum/component/interaction_menu_granter/proc/open_menu(mob/clicker, mob/clicked)
-	// Don't cancel admin quick spawn
-	if(isobserver(clicked) && check_rights_for(clicker, R_SPAWN))
-		return FALSE
 	// COMSIG_MOB_CTRLSHIFTCLICKON accepts `atom`s, prevent it
 	if(!istype(clicked))
+		return FALSE
+	// Don't cancel admin quick spawn
+	if(isobserver(clicked) && check_rights_for(clicker.client, R_SPAWN))
 		return FALSE
 	target = clicked
 	ui_interact(clicker)
