@@ -47,8 +47,8 @@
 			return
 
 		// Add nutrition reagent
-		// Reduced to 10%
-		M.reagents.add_reagent(/datum/reagent/consumable/notriment, reac_volume*0.1)
+		// Reduced to 50%
+		M.reagents.add_reagent(/datum/reagent/consumable/notriment, reac_volume*0.5)
 
 /datum/reagent/water/holywater/on_mob_life(mob/living/carbon/M)
 	. = ..()
@@ -98,7 +98,9 @@
 	name = "Strange Nutriment"
 	description = "An exotic form of nutriment produced by unusual digestive systems."
 	reagent_state = SOLID
-	nutriment_factor = 10 * REAGENTS_METABOLISM
+	nutriment_factor = 5					// From 4
+	metabolization_rate = 1					// From 0.4
+	max_nutrition = NUTRITION_LEVEL_FAT		// From INFINITY
 	color = "#66552f" // rgb: 102, 85, 47
 
 /datum/reagent/consumable/notriment/reaction_mob(mob/living/carbon/M, method=TOUCH, reac_volume)
