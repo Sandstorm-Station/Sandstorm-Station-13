@@ -14,6 +14,9 @@
 /obj/item/organ/genital/proc/size_to_state()
 	return size
 
+/obj/item/organ/genital/proc/get_fluid()
+	return (clamp(fluid_rate * ((world.time - last_orgasmed) / (10 SECONDS)) * fluid_mult, 0, fluid_max_volume) / fluid_max_volume)
+
 /obj/item/organ/genital/proc/climax_modify_size(mob/living/partner, obj/item/organ/genital/source_gen)
     return
 

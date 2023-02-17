@@ -190,7 +190,7 @@
 		aroused_state = FALSE
 
 /obj/item/organ/genital/proc/generate_fluid(datum/reagents/R)
-	var/amount = clamp((fluid_rate * ((world.time - last_orgasmed) / (10 SECONDS)) * fluid_mult),0,fluid_max_volume)
+	var/amount = get_fluid()
 	R.clear_reagents()
 	R.maximum_volume = fluid_max_volume
 	if(fluid_id)

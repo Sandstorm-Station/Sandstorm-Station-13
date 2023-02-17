@@ -86,7 +86,7 @@
 
 		//fluids
 		if(CHECK_BITFIELD(genital.genital_flags, GENITAL_FUID_PRODUCTION))
-			var/fluids = (clamp(genital.fluid_rate * ((world.time - genital.last_orgasmed) / (10 SECONDS)) * genital.fluid_mult, 0, genital.fluid_max_volume) / genital.fluid_max_volume)
+			var/fluids = genital.get_fluid()
 			genital_entry["fluid"] = fluids
 
 		//equipments
