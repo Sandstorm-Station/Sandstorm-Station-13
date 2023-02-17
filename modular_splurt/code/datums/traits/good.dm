@@ -1,3 +1,18 @@
+//Main code edits
+/datum/quirk/photographer
+	desc = "You carry your camera and personal photo album everywhere you go, and you're quicker at taking pictures."
+
+/datum/quirk/photographer/on_spawn()
+	. = ..()
+	var/mob/living/carbon/human/H = quirk_holder
+	var/obj/item/storage/photo_album/photo_album = new(get_turf(H))
+	H.put_in_hands(photo_album)
+	H.equip_to_slot(photo_album, ITEM_SLOT_BACKPACK)
+	photo_album.persistence_id = "personal_[H.mind.key]" // this is a persistent album, the ID is tied to the account's key to avoid tampering
+	photo_album.persistence_load()
+	photo_album.name = "[H.real_name]'s photo album"
+
+//Own stuff
 /datum/quirk/tough
 	name = "Tough"
 	desc = "Your body is abnormally enduring and can take 10% more damage."
@@ -143,3 +158,10 @@
 	desc = "You are able to move about freely in pressurized low-gravity environments be it through the use of wings, magic, or some other physiological nonsense."
 	value = 1
 	mob_trait = TRAIT_FLUTTER
+
+/datum/quirk/cloth_eater
+	name = "Clothes Eater"
+	desc = "You can eat most apparel to gain a boost in mood, and to gain some nutrients. (Insects already have this.)"
+	value = 1
+	var/mood_category ="cloth_eaten"
+	mob_trait = TRAIT_CLOTH_EATER
