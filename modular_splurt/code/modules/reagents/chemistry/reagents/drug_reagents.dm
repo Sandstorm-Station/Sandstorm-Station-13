@@ -1,3 +1,5 @@
+#define QUIRK_ESTROUS_ACTIVE /datum/quirk/estrous_active
+
 // Hexacrocin
 /datum/reagent/drug/aphrodisiacplus/overdose_start(mob/living/M)
 	. = ..()
@@ -19,9 +21,9 @@
 		return
 
 	// Check for pre-existing heat trait
-	if(!HAS_TRAIT(M, TRAIT_ESTROUS_ACTIVE))
+	if(!M.has_quirk(QUIRK_ESTROUS_ACTIVE))
 		// Add quirk
-		M.add_quirk(/datum/quirk/estrous_active, APHRO_TRAIT)
+		M.add_quirk(QUIRK_ESTROUS_ACTIVE, APHRO_TRAIT)
 
 		// Chat message is handled by the quirk
 
@@ -46,9 +48,11 @@
 		return
 
 	// Check for pre-existing heat trait
-	if(HAS_TRAIT(M, TRAIT_ESTROUS_ACTIVE))
+	if(M.has_quirk(QUIRK_ESTROUS_ACTIVE))
 		// Remove quirk
-		M.remove_quirk(/datum/quirk/estrous_active)
+		M.remove_quirk(QUIRK_ESTROUS_ACTIVE)
+
+		// Chat message is handled by the quirk
 
 		// Log interaction
 		M.log_message("lost the In Estrous quirk due to [src] overdose.", LOG_EMOTE)
@@ -120,3 +124,5 @@
 		var/temp = holder ? holder.chem_temp : T20C
 		T.atmos_spawn_air("copium=[volume];TEMP=[temp]")
 	return
+
+#undef QUIRK_ESTROUS_ACTIVE
