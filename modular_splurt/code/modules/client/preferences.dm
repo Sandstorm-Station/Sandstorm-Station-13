@@ -8,8 +8,11 @@
 	var/list/gfluid_blacklist = list() //Stuff you don't want people to cum into you
 
 /datum/preferences/New(client/C)
+	// Check if readable fluids list exists
+	// Please move this check a better location if possible
 	if(!GLOB.genital_fluids_list)
-		build_genital_fluids_list() //I DON'T KNOW where else to put it, ok??
+		// Build list
+		build_genital_fluids_list()
 
 	//Extra saves for donators
 	max_save_slots = CONFIG_GET(number/base_save_slots)
@@ -491,6 +494,9 @@
 	// Define final list
 	var/list/reagent_list
 
+	// Define final type-based list
+	var/list/reagent_list_paths
+
 	for(var/reagent in consumable_list)
 		// Define reagent
 		var/datum/reagent/instance = find_reagent_object_from_type(reagent)
@@ -535,15 +541,20 @@
 		// Add reagent to final list
 		LAZYADD(reagent_list, instance)
 
-	// Define GLOB from final list
+		// Add reagent to type list
+		LAZYADD(reagent_list_paths, reagent)
+
+	// Define readable GLOB
 	GLOB.genital_fluids_list = reagent_list
 
+	// Define type-path GLOB
+	GLOB.genital_fluids_paths = reagent_list_paths
+
 /proc/allowed_gfluid_paths()
-	if(!GLOB.genital_fluids_list)
+	// Check if paths list exists
+	if(!GLOB.genital_fluids_paths)
+		// Build list
 		build_genital_fluids_list()
 
-	var/list/allowed
-	for(var/datum/reagent/fluid in GLOB.genital_fluids_list)
-		LAZYADD(allowed, fluid.type)
-
-	return allowed
+	// Return list of valid types
+	return GLOB.genital_fluids_paths
