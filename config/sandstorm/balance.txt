@@ -97,9 +97,4 @@ TETRIS_TIME_COOLDOWN 600
 
 ## Should production machinery be restricted for skeleton crews?
 ## Uncomment this to enable
-#PROTOLOCK_DURING_NONMIN
-
-## Should production machinery check EVERYONE's IDs?
-## Triggered when the interacting user lacks access
-## Uncomment this to enable
-#PROTOLOCK_CHECK_ALL_IDS
+#PROTOLOCK_DURING_LOWPOP

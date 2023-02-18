@@ -1,6 +1,6 @@
 // Configuration defines
 #define JOB_MINIMAL_ACCESS CONFIG_GET(flag/jobs_have_minimal_access)
-#define PROTOLOCK_DURING_NONMIN CONFIG_GET(flag/protolock_during_nonmin)
+#define PROTOLOCK_DURING_LOWPOP CONFIG_GET(flag/protolock_during_lowpop)
 #define PROTOLOCK_CHECK_ALL_IDS CONFIG_GET(flag/protolock_check_all_ids)
 
 // Only Clients should have a panel for them, okay?
@@ -61,39 +61,6 @@
 	if(machine_target.check_access(user_id))
 		// Allow use
 		return TRUE
-
-	// Check if the machine should iterate over all possible IDs
-	if(PROTOLOCK_CHECK_ALL_IDS)
-		// Define variable for if finding a valid ID
-		var/found_valid_crew = FALSE
-
-		// Iterate over alive crew
-		for(var/mob/living/carbon/human/iter_user in GLOB.alive_mob_list)
-			// Ignore mobs with no mind
-			if(!iter_user.mind)
-				continue
-
-			// Define user ID card
-			var/obj/item/card/id/iter_id = iter_user.get_idcard()
-
-			// Check if ID card was found
-			// If not: Ignore user
-			if(!istype(iter_id))
-				continue
-
-			// Check if ID has access
-			if(machine_target.check_access(iter_id))
-				// Set found ID variable
-				found_valid_crew = TRUE
-
-				// End loop
-				break
-
-		// Check if valid crew was found
-		if(!found_valid_crew)
-			// No valid crew was found
-			// Allow access
-			return TRUE
 
 	// User does not have access
 	// Warn in local chat, then return

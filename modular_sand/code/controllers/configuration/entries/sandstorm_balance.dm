@@ -95,7 +95,4 @@
 
 /// R&D Machinery ///
 // Should production machinery be restricted for skeleton crews?
-/datum/config_entry/flag/protolock_during_nonmin
-
-// Should production machinery check EVERYONE's IDs?
-/datum/config_entry/flag/protolock_check_all_ids
+/datum/config_entry/flag/protolock_during_lowpop
