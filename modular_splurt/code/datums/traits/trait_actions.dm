@@ -791,6 +791,10 @@
 	var/blood_volume_difference = BLOOD_VOLUME_MAXIMUM - action_owner.blood_volume
 	var/drained_blood = min(target_blood_volume, BLOODFLEDGE_DRAIN_NUM, blood_volume_difference)
 
+	// Transfer reagents from target to action owner
+	// Limited to a maximum 10% of bite amount (default 10u)
+	bite_target.reagents.trans_to(action_owner, (drained_blood*0.1))
+
 	// Alert the bite target and local user of success
 	// Yes, this is AFTER the message for non-valid blood
 	to_chat(bite_target, span_danger("[action_owner] has taken some of your [blood_name]!"))
@@ -798,12 +802,8 @@
 
 	// Check if action owner received valid (nourishing) blood
 	if(blood_valid)
-		// Copy bite target's reagent data
-		// Limited to a maximum 10% of bite amount (default 10u)
-		bite_target.reagents.trans_to(blood_bank, (drained_blood*0.1))
-
 		// Add blood reagent to reagent holder
-		blood_bank.add_reagent(/datum/reagent/blood/, drained_blood)
+		blood_bank.add_reagent(/datum/reagent/blood/, drained_blood, bite_target.get_blood_data())
 
 		// Set reaction type to INGEST
 		blood_bank.reaction(action_owner, INGEST)
