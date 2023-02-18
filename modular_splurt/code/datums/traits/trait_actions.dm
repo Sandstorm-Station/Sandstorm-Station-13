@@ -1,16 +1,20 @@
 #define BLOODFLEDGE_DRAIN_NUM 50
 #define BLOODFLEDGE_COOLDOWN_BITE 60
+#define HYPNOEYES_COOLDOWN_NORMAL 3 SECONDS
+#define HYPNOEYES_COOLDOWN_BRAINWASH 30 SECONDS
 
 //
 // Quirk: Hypnotic Gaze
 //
 
-/datum/action/innate/Hypnotize
+/datum/action/cooldown/hypnotize
 	name = "Hypnotize"
 	desc = "Stare deeply into someone's eyes, drawing them into a hypnotic slumber."
 	button_icon_state = "Hypno_eye"
 	icon_icon = 'modular_splurt/icons/mob/actions/lewd_actions/lewd_icons.dmi'
 	background_icon_state = "bg_alien"
+	transparent_when_unavailable = TRUE
+	cooldown_time = HYPNOEYES_COOLDOWN_NORMAL
 
 	// Should this create a brainwashed victim?
 	// Enabled by using Mesmer Eyes with the quirk
@@ -20,7 +24,47 @@
 	var/term_hypno = "hypnotize"
 	var/term_suggest = "suggestion"
 
-/datum/action/innate/Hypnotize/proc/set_brainwash(set_to = FALSE)
+/datum/action/cooldown/hypnotize/IsAvailable(silent)
+	. = ..()
+
+	// Check parent return
+	if(!.)
+		return FALSE
+
+	// Check for carbon owner
+	if(!iscarbon(owner))
+		// Warn user and return
+		to_chat(owner, span_warning("You shouldn't have this ability!"))
+		return FALSE
+
+	// Define action owner
+	var/mob/living/carbon/human/action_owner = owner
+
+	// Check if owner has eye protection
+	if(action_owner.get_eye_protection())
+		// Warn the user, then return
+		to_chat(action_owner, span_warning("Your eyes need to be visible for this ability to work."))
+		return FALSE
+
+	// Define owner's eyes
+	var/obj/item/organ/eyes/owner_eyes = owner.getorganslot(ORGAN_SLOT_EYES)
+
+	// Check if eyes exist
+	if(!istype(owner_eyes))
+		// Warn the user, then return
+		to_chat(action_owner, span_warning("You need eyes to use this ability!"))
+		return FALSE
+
+	// Check if owner is blind
+	if(HAS_TRAIT(action_owner, TRAIT_BLIND))
+		// Warn the user, then return
+		to_chat(action_owner, span_warning("Your blind [owner_eyes] are of no use."))
+		return FALSE
+
+	// All checks passed
+	return TRUE
+
+/datum/action/cooldown/hypnotize/proc/set_brainwash(set_to = FALSE)
 	// Check if state will change
 	if(mode_brainwash == set_to)
 		// Do nothing
@@ -41,6 +85,9 @@
 		name = "Brainwash"
 		desc = "Stare deeply into someone's eyes, and force them to become your loyal slave."
 
+		// Set cooldown time
+		cooldown_time = HYPNOEYES_COOLDOWN_BRAINWASH
+
 		// Set terminology
 		term_hypno = "brainwash"
 		term_suggest = "command"
@@ -57,6 +104,9 @@
 		name = "Hypnotize"
 		desc = "Stare deeply into someone's eyes, drawing them into a hypnotic slumber."
 
+		// Set cooldown time
+		cooldown_time = HYPNOEYES_COOLDOWN_NORMAL
+
 		// Set terminology
 		term_hypno = "hypnotize"
 		term_suggest = "suggestion"
@@ -70,13 +120,22 @@
 	// Update buttons
 	owner.update_action_buttons()
 
+	// Reset cooldown time
+	StartCooldown()
+
 	// Alert user
-	to_chat(owner, span_mind_control("Your hypnotic power [toggle_message]"))
+	to_chat(owner, span_mind_control("Your hypnotic power [toggle_message] You'll need time to adjust before using it again."))
 
 	// Log interaction
 	log_admin("[key_name(owner)] [log_message_type] hypnotic brainwashing powers.")
 
-/datum/action/innate/Hypnotize/Activate()
+/datum/action/cooldown/hypnotize/Trigger()
+	. = ..()
+
+	// Check parent return
+	if(!.)
+		return
+
 	// Define action owner
 	var/mob/living/carbon/human/action_owner = owner
 
@@ -243,7 +302,7 @@
 	action_target.visible_message(span_warning("[action_target] falls into a deep slumber!"), span_danger("Your eyelids gently shut as you fall into a deep slumber. All you can hear is [action_owner]'s voice as you commit to following all of their [term_suggest]s."))
 
 	// Set sleeping
-	action_target.SetSleeping(1200)
+	action_target.SetSleeping(2 MINUTES)
 
 	// Set drowsiness
 	action_target.drowsyness = max(action_target.drowsyness, 40)
@@ -275,6 +334,9 @@
 	else
 		// Display message to target
 		to_chat(action_target, span_mind_control("...[input_suggestion]..."))
+
+	// Start cooldown
+	StartCooldown()
 
 	// Display message to action owner
 	to_chat(action_owner, "You whisper your [term_suggest] in a smooth calming voice to [action_target]")
@@ -1036,3 +1098,6 @@
 		return
 	else
 		to_chat(H, span_warning("You are already conserving your energy!"))
+
+#undef HYPNOEYES_COOLDOWN_NORMAL
+#undef HYPNOEYES_COOLDOWN_BRAINWASH

@@ -75,7 +75,7 @@
 	var/mob/living/carbon/human/quirk_mob = quirk_holder
 
 	// Add quirk ability action datum
-	var/datum/action/innate/Hypnotize/act_hypno = new
+	var/datum/action/cooldown/hypnotize/act_hypno = new
 	act_hypno.Grant(quirk_mob)
 
 	// Add examine text
@@ -86,7 +86,7 @@
 	var/mob/living/carbon/human/quirk_mob = quirk_holder
 
 	// Remove quirk ability action datum
-	var/datum/action/innate/Hypnotize/act_hypno = locate() in quirk_mob.actions
+	var/datum/action/cooldown/hypnotize/act_hypno = locate() in quirk_mob.actions
 	act_hypno.Remove(quirk_mob)
 
 	// Remove examine text

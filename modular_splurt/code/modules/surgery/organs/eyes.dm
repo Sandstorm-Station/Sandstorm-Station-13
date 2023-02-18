@@ -20,7 +20,7 @@
 		return
 
 	// Define ability
-	var/datum/action/innate/Hypnotize/eye_ability
+	var/datum/action/cooldown/hypnotize/eye_ability
 
 	// Check for pre-existing hypnotic quirk
 	if(eye_user.has_quirk(/datum/quirk/Hypnotic_gaze))
@@ -51,7 +51,7 @@
 	. = ..()
 
 	// Define ability
-	var/datum/action/innate/Hypnotize/eye_ability = locate() in eye_user.actions
+	var/datum/action/cooldown/hypnotize/eye_ability = locate() in eye_user.actions
 
 	// Check for pre-existing hypnotic quirk
 	if(eye_user.has_quirk(/datum/quirk/Hypnotic_gaze))
