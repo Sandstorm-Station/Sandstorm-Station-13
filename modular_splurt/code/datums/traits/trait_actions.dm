@@ -625,13 +625,25 @@
 				bite_target.stuttering = 10
 
 	// Display local chat message
-	action_owner.visible_message(span_danger("[action_owner] begins to bite down on [bite_target]'s [target_zone_name]!"), span_danger("You begin to bite down on [bite_target]'s [target_zone_name]!"))
-
-	// Warn bite target
-	to_chat(bite_target, span_userdanger("[action_owner] has bitten your [target_zone_name], and is trying to drain your blood!"))
+	action_owner.visible_message(span_danger("[action_owner] bites down on [bite_target]'s [target_zone_name]!"), span_danger("You bite down on [bite_target]'s [target_zone_name]!"))
 
 	// Play a bite sound effect
 	playsound(action_owner, 'sound/weapons/bite.ogg', 30, 1, -2)
+
+	// Check if bite target species has blood
+	if(NOBLOOD in bite_target.dna?.species?.species_traits)
+		// Warn the user and target
+		to_chat(bite_target, span_warning("[action_owner] bit your [target_zone_name] in an attempt to drain your blood, but couldn't find any!"))
+		to_chat(action_owner, span_warning("[bite_target] doesn't have any blood to drink!"))
+
+		// Start cooldown early to prevent sound spam
+		StartCooldown()
+
+		// Return without effects
+		return
+
+	// Warn bite target
+	to_chat(bite_target, span_userdanger("[action_owner] has bitten your [target_zone_name], and is trying to drain your blood!"))
 
 	// Try to perform action timer
 	if(!do_after(action_owner, time_interact, target = bite_target))
@@ -673,16 +685,6 @@
 
 		// Return
 		return
-
-	// Check if bite target species has blood
-	if(NOBLOOD in bite_target.dna?.species?.species_traits)
-		// Warn the user and target, then return
-		to_chat(bite_target, span_warning("[action_owner] tried to drain you, but didn't find any blood!"))
-		to_chat(action_owner, span_warning("[bite_target] doesn't have any blood to drink!"))
-		return
-
-	// Create blood splatter
-	bite_target.add_splatter_floor(get_turf(bite_target), TRUE)
 
 	// Variable for species with non-blood blood volumes
 	var/blood_valid = TRUE
