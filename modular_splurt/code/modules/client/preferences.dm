@@ -247,6 +247,9 @@
 		// Replaces the tongue
 		/datum/reagent/consumable/ethanol/skullfucker_deluxe,
 
+		// Heals brute, burn, and toxin or suffocation damage
+		/datum/reagent/consumable/ethanol/ionstorm,
+
 		//
 		// Effect drink reagents
 		//
