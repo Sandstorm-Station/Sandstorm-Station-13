@@ -1,18 +1,19 @@
 /// Attempts to open the tgui menu
-/mob/proc/interact_with()
+/mob/verb/interact_with()
 	set name = "Interact With"
 	set desc = "Perform an interaction with someone."
 	set category = "IC"
 	set src in view(usr.client)
 
-	if(!src)
-		return
-	// I FUCKING HATE VERBS (NEED TO GRAB COMPONENT FROM USR, NOT SRC)
 	var/datum/component/interaction_menu_granter/menu = usr.GetComponent(/datum/component/interaction_menu_granter)
-	if(menu)
-		menu.open_menu(usr, src)
-	else // you bad
-		remove_verb(usr, /mob/proc/interact_with)
+	if(!menu)
+		to_chat(usr, span_warning("You must have done something really bad to not have an interaction component."))
+		return
+
+	if(!src)
+		to_chat(usr, span_warning("Your interaction target is gone!"))
+		return
+	menu.open_menu(usr, src)
 
 #define INTERACTION_NORMAL 0
 #define INTERACTION_LEWD 1
@@ -28,32 +29,28 @@
 	var/mob/parent_mob = parent
 	if(!parent_mob.client)
 		return COMPONENT_INCOMPATIBLE
-	add_verb(parent_mob, /mob/proc/interact_with)
-	/// > Why don't you attach it to COMSIG_CLICK_CTRL_SHIFT
-	/// I want to open the ui on myself, not everyone has it and it's just bad practice i guess.
-	RegisterSignal(parent_mob, COMSIG_MOB_CLICKON, .proc/open_menu)
 	. = ..()
+
+/datum/component/interaction_menu_granter/RegisterWithParent()
+	. = ..()
+	RegisterSignal(parent, COMSIG_MOB_CTRLSHIFTCLICKON, .proc/open_menu)
 
 /datum/component/interaction_menu_granter/Destroy(force, ...)
-	var/mob/parent_mob = parent
-	remove_verb(parent_mob, /mob/proc/interact_with)
 	target = null
-	UnregisterSignal(parent_mob, COMSIG_MOB_CLICKON)
 	. = ..()
 
-/datum/component/interaction_menu_granter/proc/open_menu(mob/clicker, mob/clicked, mouse_params)
-	// Don't cancel admin quick spawn
-	if(isobserver(clicked) && check_rights(R_SPAWN, FALSE))
-		return FALSE
-	// COMSIG_MOB_CLICKON is sent for EVERYTHING your mob character clicks, avoid non-mob
+/datum/component/interaction_menu_granter/UnregisterFromParent()
+	UnregisterSignal(parent, COMSIG_MOB_CTRLSHIFTCLICKON)
+	. = ..()
+
+/// The one interacting is clicker, the interacted is clicked.
+/datum/component/interaction_menu_granter/proc/open_menu(mob/clicker, mob/clicked)
+	// COMSIG_MOB_CTRLSHIFTCLICKON accepts `atom`s, prevent it
 	if(!istype(clicked))
 		return FALSE
-	// Using the verb calls leaves this empty
-	if(mouse_params)
-		var/list/params = params2list(mouse_params)
-		if(!(params[LEFT_CLICK] && params[CTRL_CLICK] && params[SHIFT_CLICK]))
-			// Continue click normally
-			return FALSE
+	// Don't cancel admin quick spawn
+	if(isobserver(clicked) && check_rights_for(clicker.client, R_SPAWN))
+		return FALSE
 	target = clicked
 	ui_interact(clicker)
 	return COMSIG_MOB_CANCEL_CLICKON
