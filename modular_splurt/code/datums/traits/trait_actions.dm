@@ -1,6 +1,7 @@
 #define BLOODFLEDGE_DRAIN_NUM 50
 #define BLOODFLEDGE_COOLDOWN_BITE 60 // Six seconds
 #define BLOODFLEDGE_COOLDOWN_REVIVE 3000 // Five minutes
+#define BLOODFLEDGE_BANK_CAPACITY (BLOODFLEDGE_DRAIN_NUM * 2)
 
 //
 // Quirk: Hypnotic Gaze
@@ -298,7 +299,8 @@
 		time_interact*= 0.5
 
 	// Create reagent holder
-	blood_bank = new()
+	blood_bank = new(BLOODFLEDGE_BANK_CAPACITY)
+
 /datum/action/cooldown/bloodfledge/bite/Trigger()
 	. = ..()
 
@@ -789,9 +791,6 @@
 	var/blood_volume_difference = BLOOD_VOLUME_MAXIMUM - action_owner.blood_volume
 	var/drained_blood = min(target_blood_volume, BLOODFLEDGE_DRAIN_NUM, blood_volume_difference)
 
-	// Remove blood from bite target
-	bite_target.blood_volume = clamp(target_blood_volume - drained_blood, 0, BLOOD_VOLUME_MAXIMUM)
-
 	// Alert the bite target and local user of success
 	// Yes, this is AFTER the message for non-valid blood
 	to_chat(bite_target, span_danger("[action_owner] has taken some of your [blood_name]!"))
@@ -799,6 +798,10 @@
 
 	// Check if action owner received valid (nourishing) blood
 	if(blood_valid)
+		// Copy bite target's reagent data
+		// Limited to a maximum 10% of bite amount (default 10u)
+		bite_target.reagents.trans_to(blood_bank, (drained_blood*0.1))
+
 		// Add blood reagent to reagent holder
 		blood_bank.add_reagent(/datum/reagent/blood/, drained_blood)
 
@@ -808,26 +811,36 @@
 		// Transfer reagent to action owner
 		blood_bank.trans_to(action_owner, drained_blood)
 
-		// Remove reagents
-		blood_bank.remove_all(drained_blood)
+		// Remove all reagents
+		blood_bank.remove_all()
 
 	// Check if blood transfer should occur
 	else if(blood_transfer)
 		// Check if action holder's blood volume limit was exceeded
 		if(action_owner.blood_volume >= BLOOD_VOLUME_MAXIMUM)
 			// Warn user
-			to_chat(action_owner, span_warning("You body fails to absorb any more [blood_name]. The remainder has been lost."))
+			to_chat(action_owner, span_warning("You body cannot integrate any more [blood_name]. The remainder will be lost."))
 
 		// Blood volume limit was not exceeded
 		else
-			// Transfer blood directly
-			bite_target.transfer_blood_to(action_owner, drained_blood, TRUE)
+			// Alert user
+			to_chat(action_owner, span_notice("You body integrates the [blood_name] directly, instead of processing it into nutrition."))
+
+		// Transfer blood directly
+		bite_target.transfer_blood_to(action_owner, drained_blood, TRUE)
+
+		// Set drain amount to none
+		// This prevents double removal
+		drained_blood = 0
 
 	// Valid blood was not received
-	// No transfer occurred
+	// No direct blood transfer occurred
 	else
 		// Warn user of failure
-		to_chat(action_owner, span_warning("Your body struggles to process the [blood_name]!"))
+		to_chat(action_owner, span_warning("Your body cannot process the [blood_name] into nourishment!"))
+
+	// Remove blood from bite target
+	bite_target.blood_volume = clamp(target_blood_volume - drained_blood, 0, BLOOD_VOLUME_MAXIMUM)
 
 	// Play a heartbeat sound effect
 	// This was changed to match bloodsucker
