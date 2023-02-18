@@ -70,11 +70,31 @@
 	lose_text = span_notice("Your eyes return to normal.")
 	medical_record_text = "Prolonged exposure to Patient's eyes exhibits soporific effects."
 
-/datum/quirk/Hypnotic_gaze/on_spawn()
-	var/mob/living/carbon/human/Hypno_eyes = quirk_holder
-	var/datum/action/innate/Hypnotize/spell = new
-	spell.Grant(Hypno_eyes)
-	spell.owner = Hypno_eyes
+/datum/quirk/Hypnotic_gaze/add()
+	// Define quirk mob
+	var/mob/living/carbon/human/quirk_mob = quirk_holder
+
+	// Add quirk ability action datum
+	var/datum/action/innate/Hypnotize/act_hypno = new
+	act_hypno.Grant(quirk_mob)
+
+	// Add examine text
+	RegisterSignal(quirk_holder, COMSIG_PARENT_EXAMINE, .proc/quirk_examine_Hypnotic_gaze)
+
+/datum/quirk/Hypnotic_gaze/remove()
+	// Define quirk mob
+	var/mob/living/carbon/human/quirk_mob = quirk_holder
+
+	// Remove quirk ability action datum
+	var/datum/action/innate/Hypnotize/act_hypno = locate() in quirk_mob.actions
+	act_hypno.Remove(quirk_mob)
+
+	// Remove examine text
+	UnregisterSignal(quirk_holder, COMSIG_PARENT_EXAMINE)
+
+// Quirk examine text
+/datum/quirk/Hypnotic_gaze/proc/quirk_examine_Hypnotic_gaze(atom/examine_target, mob/living/carbon/human/examiner, list/examine_list)
+	examine_list += span_hypnophrase("[quirk_holder.p_their(TRUE)] eyes glimmer with an entrancing power...")
 
 /datum/quirk/overweight
 	name = "Overweight"
