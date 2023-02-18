@@ -1402,6 +1402,7 @@ GLOBAL_LIST_EMPTY(preferences_datums)
 					dat += "<b>Be Antagonist Victim:</b> <a href='?_src_=prefs;preference=be_victim;task=input'>[be_victim ? be_victim : BEVICTIM_ASK]</a><br>"
 					dat += "<b>Disable combat mode cursor:</b> <a href='?_src_=prefs;preference=disable_combat_cursor'>[disable_combat_cursor?"Yes":"No"]</a><br>"
 					dat += "<b>Splashscreen Player Panel Style:</b> <a href='?_src_=prefs;preference=tg_playerpanel'>[(toggles & TG_PLAYER_PANEL)?"TG":"Old"]</a><br>"
+					dat += "<b>Character Creation Menu Style:</b> <a href='?_src_=prefs;preference=charcreation_style'>[new_character_creator ? "New" : "Old"]</a><br>"
 					//SPLURT Edit end
 
 					dat += "<br>"
