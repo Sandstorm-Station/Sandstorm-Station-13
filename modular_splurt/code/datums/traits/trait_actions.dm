@@ -12,6 +12,70 @@
 	icon_icon = 'modular_splurt/icons/mob/actions/lewd_actions/lewd_icons.dmi'
 	background_icon_state = "bg_alien"
 
+	// Should this create a brainwashed victim?
+	// Enabled by using Mesmer Eyes with the quirk
+	var/mode_brainwash = FALSE
+
+	// Terminology used
+	var/term_hypno = "hypnotize"
+	var/term_suggest = "suggestion"
+
+/datum/action/innate/Hypnotize/proc/set_brainwash(set_to = FALSE)
+	// Check if state will change
+	if(mode_brainwash == set_to)
+		// Do nothing
+		return
+
+	// Set new variable
+	mode_brainwash = set_to
+
+	// Define toggle message
+	var/toggle_message = "experiences an error?"
+
+	// Define log message type
+	var/log_message_type = "somehow screwed up"
+
+	// Check if brainwashing
+	if(mode_brainwash)
+		// Set ability text
+		name = "Brainwash"
+		desc = "Stare deeply into someone's eyes, and force them to become your loyal slave."
+
+		// Set terminology
+		term_hypno = "brainwash"
+		term_suggest = "command"
+
+		// Set message suffix
+		toggle_message = "suddenly feels more intense!"
+
+		// Set log message type
+		log_message_type = "GAINED"
+
+	// Not brainwashing
+	else
+		// Set ability text
+		name = "Hypnotize"
+		desc = "Stare deeply into someone's eyes, drawing them into a hypnotic slumber."
+
+		// Set terminology
+		term_hypno = "hypnotize"
+		term_suggest = "suggestion"
+
+		// Set message suffix
+		toggle_message = "fades back to normal levels..."
+
+		// Set log message type
+		log_message_type = "LOST"
+
+	// Update buttons
+	owner.update_action_buttons()
+
+	// Alert user
+	to_chat(owner, span_mind_control("Your hypnotic power [toggle_message]"))
+
+	// Log interaction
+	log_admin("[key_name(owner)] [log_message_type] hypnotic brainwashing powers.")
+
 /datum/action/innate/Hypnotize/Activate()
 	// Define action owner
 	var/mob/living/carbon/human/action_owner = owner
@@ -28,7 +92,7 @@
 	// Check for cyborg
 	if(iscyborg(grab_target))
 		// Warn the user, then return
-		to_chat(action_owner, span_warning("You can't hypnotize a cyborg!"))
+		to_chat(action_owner, span_warning("You can't [term_hypno] a cyborg!"))
 		return
 
 	// Check for alien
@@ -49,13 +113,13 @@
 	// Check if target is alive
 	if(!isliving(grab_target))
 		// Warn the user, then return
-		to_chat(action_owner, span_warning("You can't hypnotize the dead!"))
+		to_chat(action_owner, span_warning("You can't [term_hypno] the dead!"))
 		return
 
 	// Check for aggressive grab
 	if(action_owner.grab_state < GRAB_AGGRESSIVE)
 		// Warn the user, then return
-		to_chat(action_owner, span_warning("You need a stronger grip before trying this!"))
+		to_chat(action_owner, span_warning("You need a stronger grip before trying to [term_hypno] [grab_target]!"))
 		return
 
 	// Define target
@@ -91,7 +155,7 @@
 	// Check if target has eye protection
 	if(action_target.get_eye_protection())
 		// Warn the user, then return
-		to_chat(action_owner, span_warning("You have difficulty focusing on [action_target]'s eyes due to some form of protection, and are left unable to hypnotize them."))
+		to_chat(action_owner, span_warning("You have difficulty focusing on [action_target]'s eyes due to some form of protection, and are left unable to [term_hypno] them."))
 		to_chat(action_target, span_notice("[action_owner] stares intensely at you, but stops after a moment."))
 		return
 
@@ -115,7 +179,7 @@
 		to_chat(action_owner, span_warning("You sense that [action_target] would rather not be hypnotized, and decide to respect their wishes."))
 		to_chat(action_target, span_notice("[action_owner] stares into your eyes with a strange conviction, but turns away after a moment."))
 		return
-	
+
 	// Check for mindshield implant
 	if(HAS_TRAIT(action_target, TRAIT_MINDSHIELD))
 		// Warn the users, then return
@@ -134,7 +198,7 @@
 	// Check for sleep
 	if(action_target.IsSleeping())
 		// Warn the user, then return
-		to_chat(action_owner, span_warning("You can't hypnotize [action_target] whilst [action_target.p_theyre()] asleep!"))
+		to_chat(action_owner, span_warning("You can't [term_hypno] [action_target] whilst [action_target.p_theyre()] asleep!"))
 		return
 
 	// Check for combat mode
@@ -152,7 +216,7 @@
 	if(!do_mob(action_owner, action_target, 5 SECONDS))
 		// Action timer was interrupted
 		// Warn the user, then return
-		to_chat(action_owner, span_warning("You lose concentration on [action_target], and fail to hypnotize [action_target.p_them()]!"))
+		to_chat(action_owner, span_warning("You lose concentration on [action_target], and fail to [term_hypno] [action_target.p_them()]!"))
 		to_chat(action_target, span_notice("[action_owner]'s gaze is broken prematurely, freeing you from any potential effects."))
 		return
 
@@ -162,18 +226,21 @@
 	// Check for non-consensual setting
 	if(action_target.client?.prefs.nonconpref != "Yes")
 		// Non-consensual is NOT enabled
+		// Define warning suffix
+		var/warning_target = (mode_brainwash ? "You will become a brainwashed victim, and be required to follow all orders given. [action_owner] accepts all responsibility for antagonistic orders." : "These are only suggestions, and you may disobey cases that strongly violate your character.")
+
 		// Prompt target for consent response
-		input_consent = alert(action_target, "Will you fall into a hypnotic stupor? This will allow [action_owner] to issue hypnotic suggestions.", "Hypnosis", "Yes", "No")
+		input_consent = alert(action_target, "Will you fall into a hypnotic stupor? This will allow [action_owner] to issue hypnotic [term_suggest]s. [warning_target]", "Hypnosis", "Yes", "No")
 
 	// When consent is denied
 	if(input_consent == "No")
 		// Warn the users, then return
-		to_chat(action_owner, span_warning("[action_target]'s attention breaks, despite the attempt to hypnotize [action_target.p_them()]! [action_target.p_they()] clearly don't want this!"))
+		to_chat(action_owner, span_warning("[action_target]'s attention breaks, despite the attempt to [term_hypno] [action_target.p_them()]! [action_target.p_they()] clearly don't want this!"))
 		to_chat(action_target, span_notice("Your concentration breaks as you realize you have no interest in following [action_owner]'s words!"))
 		return
 
 	// Display local message
-	action_target.visible_message(span_warning("[action_target] falls into a deep slumber!"), span_danger("Your eyelids gently shut as you fall into a deep slumber. All you can hear is [action_owner]'s voice as you commit to following all of their suggestions."))
+	action_target.visible_message(span_warning("[action_target] falls into a deep slumber!"), span_danger("Your eyelids gently shut as you fall into a deep slumber. All you can hear is [action_owner]'s voice as you commit to following all of their [term_suggest]s."))
 
 	// Set sleeping
 	action_target.SetSleeping(1200)
@@ -181,13 +248,16 @@
 	// Set drowsiness
 	action_target.drowsyness = max(action_target.drowsyness, 40)
 
+	// Define warning suffix
+	var/warning_owner = (mode_brainwash ? "You are responsible for any antagonistic actions they take as a result of the brainwashing." : "This is only a suggestion, and [action_target.p_they()] may disobey if it violates [action_target.p_their()] character.")
+
 	// Prompt action owner for response
-	var/input_suggestion = input("What would you like to suggest [action_target] do? Leave blank to release [action_target.p_them()] instead.", "Hypnotic suggestion", null, null)
-		
+	var/input_suggestion = input("What would you like to suggest [action_target] do? Leave blank to release [action_target.p_them()] instead. [warning_owner]", "Hypnotic [term_suggest]", null, null)
+
 	// Check if input text exists
 	if(!input_suggestion)
 		// Alert user of no input
-		to_chat(action_owner, "You decide not to give [action_target] a suggestion.")
+		to_chat(action_owner, "You decide not to give [action_target] a [term_suggest].")
 
 		// Remove sleep, then return
 		action_target.SetSleeping(0)
@@ -196,16 +266,25 @@
 	// Sanitize input text
 	input_suggestion = sanitize(input_suggestion)
 
-	// Display message to users
-	to_chat(action_owner, "You whisper your suggestion in a smooth calming voice to [action_target]")
-	to_chat(action_target, span_hypnophrase("...[input_suggestion]..."))
+	// Check if brainwash mode
+	if(mode_brainwash)
+		// Create brainwash objective
+		brainwash(action_target, input_suggestion)
+
+	// Not in brainwash mode
+	else
+		// Display message to target
+		to_chat(action_target, span_mind_control("...[input_suggestion]..."))
+
+	// Display message to action owner
+	to_chat(action_owner, "You whisper your [term_suggest] in a smooth calming voice to [action_target]")
 
 	// Play a sound effect
 	playsound(action_target, 'sound/magic/domain.ogg', 20, 1)
 
 	// Display local message
 	action_target.visible_message(span_warning("[action_target] wakes up from their deep slumber!"), span_danger("Your eyelids gently open as you see [action_owner]'s face staring back at you."))
-	
+
 	// Remove sleep, then return
 	action_target.SetSleeping(0)
 	return
@@ -579,7 +658,7 @@
 	if(action_owner.stat != DEAD)
 		// Warn user in chat
 		to_chat(action_owner, "You can't use this ability while alive!")
-		
+
 		// Return
 		return
 
@@ -602,22 +681,22 @@
 	// Condition: Damage limit, brute
 	if(action_owner.getBruteLoss() >= MAX_REVIVE_BRUTE_DAMAGE)
 		revive_failed += "\n- Your body is too battered!"
-	
+
 	// Condition: Damage limit, burn
 	if(action_owner.getFireLoss() >= MAX_REVIVE_FIRE_DAMAGE)
 		revive_failed += "\n- Your body is too badly burned!"
 
 	// Condition: Suicide
 	if(action_owner.suiciding)
-		revive_failed += "\n- You chose this path."		
+		revive_failed += "\n- You chose this path."
 
 	// Condition: No revivals
 	if(HAS_TRAIT(action_owner, TRAIT_NOCLONE))
-		revive_failed += "\n- You only had one chance."		
+		revive_failed += "\n- You only had one chance."
 
 	// Condition: Demonic contract
 	if(action_owner.hellbound)
-		revive_failed += "\n- The soul pact must be honored."		
+		revive_failed += "\n- The soul pact must be honored."
 
 	// Check for failure
 	if(revive_failed)
