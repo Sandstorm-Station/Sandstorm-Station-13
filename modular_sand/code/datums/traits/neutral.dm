@@ -54,12 +54,8 @@
 	RegisterSignal(quirk_holder, COMSIG_MOB_ORGAN_REMOVE, .proc/update_heat_type)
 
 /datum/quirk/estrous_active/remove()
-	// Remove examine hook
-	UnregisterSignal(quirk_holder, COMSIG_PARENT_EXAMINE)
-
-	// Remove organ change hooks
-	UnregisterSignal(quirk_holder, COMSIG_MOB_ORGAN_ADD, .proc/update_heat_type)
-	UnregisterSignal(quirk_holder, COMSIG_MOB_ORGAN_REMOVE, .proc/update_heat_type)
+	// Remove signals
+	UnregisterSignal(quirk_holder, list(COMSIG_MOB_ORGAN_ADD, COMSIG_MOB_ORGAN_REMOVE, COMSIG_PARENT_EXAMINE))
 
 /datum/quirk/estrous_active/post_add()
 	// Update text used by message
