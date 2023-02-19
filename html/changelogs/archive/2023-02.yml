@@ -20,3 +20,7 @@
 2023-02-19:
   LeDrascol:
   - bugfix: Fixed techweb exploit with 357 speed loader
+  - rscadd: Added more feedback messages to Cryptominer account changing
+  - tweak: Standard cryptominers will report account changes on Cargo radio
+  - balance: Setting a cryptominer's account now takes five seconds
+  - admin: Added game logging for Cryptominer account changes
