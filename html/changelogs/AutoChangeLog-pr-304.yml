@@ -1,0 +1,7 @@
+author: LeDrascol
+delete-after: true
+changes:
+  - rscadd: Added more feedback messages to Cryptominer account changing
+  - tweak: Standard cryptominers will report account changes on Cargo radio
+  - balance: Setting a cryptominer's account now takes five seconds
+  - admin: Added game logging for Cryptominer account changes
