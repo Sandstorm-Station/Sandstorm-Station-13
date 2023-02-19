@@ -67,15 +67,15 @@
 
 	// Check for male hormonal organ
 	if(quirk_holder.has_balls())
-		heat_phrases += list("in rut")
+		heat_phrases += "in rut"
 
 	// Check for female hormonal organ
 	if(quirk_holder.getorganslot(ORGAN_SLOT_WOMB))
-		heat_phrases += list("in estrous")
+		heat_phrases += "in estrous"
 
 	// Check for synthetic
 	if(isrobotic(quirk_holder))
-		heat_phrases += list("simulating a hormonal response")
+		heat_phrases += "simulating hormones"
 
 	// Build English list
 	heat_type = english_list(heat_phrases, nothing_text = "experiencing high hormonal levels")
