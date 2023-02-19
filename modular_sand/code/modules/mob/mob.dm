@@ -31,7 +31,7 @@
 /mob/proc/can_use_production(obj/machinery/rnd/production/machine_target)
 	// Check if server is NOT using minimal access
 	// This is intended for low populations
-	if((!JOB_MINIMAL_ACCESS) && (!PROTOLOCK_DURING_LOWPOP))
+	if((!PROTOLOCK_DURING_LOWPOP) && (!JOB_MINIMAL_ACCESS))
 		// Allow unrestricted use
 		return TRUE
 
