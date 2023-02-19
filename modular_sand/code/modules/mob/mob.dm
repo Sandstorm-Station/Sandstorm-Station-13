@@ -1,7 +1,6 @@
 // Configuration defines
 #define JOB_MINIMAL_ACCESS CONFIG_GET(flag/jobs_have_minimal_access)
 #define PROTOLOCK_DURING_LOWPOP CONFIG_GET(flag/protolock_during_lowpop)
-#define PROTOLOCK_CHECK_ALL_IDS CONFIG_GET(flag/protolock_check_all_ids)
 
 // Only Clients should have a panel for them, okay?
 /mob/Login()
@@ -69,4 +68,3 @@
 
 #undef JOB_MINIMAL_ACCESS
 #undef PROTOLOCK_DURING_LOWPOP
-#undef PROTOLOCK_CHECK_ALL_IDS
