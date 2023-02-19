@@ -638,9 +638,9 @@
 	var/mob/living/carbon/human/H = quirk_holder
 	// Checking torso exposure appears to be a robust method.
 	if( ( H.is_chest_exposed() && H.is_groin_exposed() ) )
-		SEND_SIGNAL(quirk_holder, COMSIG_ADD_MOOD_EVENT, QUIRK_MOOD_NUDIST, /datum/mood_event/nudist_positive)
+		SEND_SIGNAL(quirk_holder, COMSIG_ADD_MOOD_EVENT, QMOOD_NUDIST, /datum/mood_event/nudist_positive)
 	else
-		SEND_SIGNAL(quirk_holder, COMSIG_ADD_MOOD_EVENT, QUIRK_MOOD_NUDIST, /datum/mood_event/nudist_negative)
+		SEND_SIGNAL(quirk_holder, COMSIG_ADD_MOOD_EVENT, QMOOD_NUDIST, /datum/mood_event/nudist_negative)
 
 /datum/quirk/nudist/on_spawn()
 	. = ..()
