@@ -62,30 +62,23 @@
 	update_heat_type()
 
 /datum/quirk/estrous_active/proc/update_heat_type()
-	// Check for male reproductive organs
-	var/breed_male = quirk_holder.has_balls()
+	// Define temporary list of heat phrases
+	var/list/heat_phrases = list()
 
-	// Define possible womb
-	var/obj/item/organ/genital/womb/organ_womb = quirk_holder.getorganslot(ORGAN_SLOT_WOMB)
+	// Check for male hormonal organ
+	if(quirk_holder.has_balls())
+		heat_phrases += list("in rut")
 
-	// Check for female reproductive organs
-	var/breed_female = (quirk_holder.has_vagina() && istype(organ_womb))
+	// Check for female hormonal organ
+	if(quirk_holder.getorganslot(ORGAN_SLOT_WOMB))
+		heat_phrases += list("in estrous")
 
-	// Set variable for both reproductive types
-	if(breed_male && breed_female)
-		heat_type = "in both estrous and rut"
+	// Check for synthetic
+	if(isrobotic(quirk_holder))
+		heat_phrases += list("simulating a hormonal response")
 
-	// Set variable for male-only
-	else if(breed_male)
-		heat_type = "in rut"
-
-	// Set variable for female-only
-	else if(breed_female)
-		heat_type = "in estrous"
-
-	// Set variable for none
-	else
-		positional_orientation = "engage in breeding"
+	// Build English list
+	heat_type = english_list(heat_phrases, nothing_text = "experiencing high hormonal levels")
 
 /datum/quirk/estrous_active/proc/quirk_examine_estrous_active(atom/examine_target, mob/living/carbon/human/examiner, list/examine_list)
 	SIGNAL_HANDLER
@@ -99,4 +92,4 @@
 		return
 
 	// Add quirk message
-	examine_list += span_love("[quirk_holder.p_they(TRUE)] [quirk_holder.p_are()] currently [heat_type], and longs to [positional_orientation].")
+	examine_list += span_love("[quirk_holder.p_they(TRUE)] [quirk_holder.p_are()] currently [heat_type], with a longing to [positional_orientation].")
