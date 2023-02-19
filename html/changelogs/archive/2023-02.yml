@@ -27,6 +27,10 @@
   - balance: Production machines now check ID cards for access
   - balance: R&D console starts locked by default
   - config: Added new configuration options for production machine access
+  - tweak: In Estrous examine text is now based on the holder's reproductive organs
+  - tweak: In Estrous gain text no longer implies the holder intends to be an organ
+      recipient
+  - code_imp: Added signals for organ insertion and removal
   SandPoot:
   - imageadd: Changed screentips icons to something a lot fancier unified with the
       LMB / RMB text.
