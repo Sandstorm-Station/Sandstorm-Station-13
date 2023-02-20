@@ -141,16 +141,15 @@
 
 /datum/quirk/dumb4cum/remove()
 	// Remove status trait
-	REMOVE_TRAIT(quirk_holder, TRAIT_DUMB_CUM_CRAVE, "dumb4cum")
+	REMOVE_TRAIT(quirk_holder, TRAIT_DUMB_CUM_CRAVE, DUMB_CUM_TRAIT)
 
 	// Remove penalty traits
-	REMOVE_TRAIT(quirk_holder, TRAIT_ILLITERATE, "dumb4cum")
-	REMOVE_TRAIT(quirk_holder, TRAIT_DUMB, "dumb4cum")
-	REMOVE_TRAIT(quirk_holder, TRAIT_PACIFISM, "dumb4cum")
+	REMOVE_TRAIT(quirk_holder, TRAIT_ILLITERATE, DUMB_CUM_TRAIT)
+	REMOVE_TRAIT(quirk_holder, TRAIT_DUMB, DUMB_CUM_TRAIT)
+	REMOVE_TRAIT(quirk_holder, TRAIT_PACIFISM, DUMB_CUM_TRAIT)
 
-	// Remove mood events
-	SEND_SIGNAL(quirk_holder, COMSIG_CLEAR_MOOD_EVENT, "cum_craving")
-	SEND_SIGNAL(quirk_holder, COMSIG_CLEAR_MOOD_EVENT, "cum_stuffed")
+	// Remove mood event
+	SEND_SIGNAL(quirk_holder, COMSIG_CLEAR_MOOD_EVENT, QMOOD_DUMB_CUM)
 
 	// Remove timer
 	deltimer(timer)
@@ -172,30 +171,27 @@
 		to_chat(quirk_holder, span_love("[pick(trigger_phrases)]"))
 
 	// Add active status trait
-	ADD_TRAIT(quirk_holder, TRAIT_DUMB_CUM_CRAVE, "dumb4cum")
+	ADD_TRAIT(quirk_holder, TRAIT_DUMB_CUM_CRAVE, DUMB_CUM_TRAIT)
 
 	// Add illiterate, dumb, and pacifist
-	ADD_TRAIT(quirk_holder, TRAIT_ILLITERATE, "dumb4cum")
-	ADD_TRAIT(quirk_holder, TRAIT_DUMB, "dumb4cum")
-	ADD_TRAIT(quirk_holder, TRAIT_PACIFISM, "dumb4cum")
+	ADD_TRAIT(quirk_holder, TRAIT_ILLITERATE, DUMB_CUM_TRAIT)
+	ADD_TRAIT(quirk_holder, TRAIT_DUMB, DUMB_CUM_TRAIT)
+	ADD_TRAIT(quirk_holder, TRAIT_PACIFISM, DUMB_CUM_TRAIT)
 
 	// Add negative mood effect
-	SEND_SIGNAL(quirk_holder, COMSIG_ADD_MOOD_EVENT, "cum_craving", /datum/mood_event/cum_craving)
+	SEND_SIGNAL(quirk_holder, COMSIG_ADD_MOOD_EVENT, QMOOD_DUMB_CUM, /datum/mood_event/cum_craving)
 
 /datum/quirk/dumb4cum/proc/uncrave()
 	// Remove active status trait
-	REMOVE_TRAIT(quirk_holder, TRAIT_DUMB_CUM_CRAVE, "dumb4cum")
+	REMOVE_TRAIT(quirk_holder, TRAIT_DUMB_CUM_CRAVE, DUMB_CUM_TRAIT)
 
 	// Remove penalty traits
-	REMOVE_TRAIT(quirk_holder, TRAIT_ILLITERATE, "dumb4cum")
-	REMOVE_TRAIT(quirk_holder, TRAIT_DUMB, "dumb4cum")
-	REMOVE_TRAIT(quirk_holder, TRAIT_PACIFISM, "dumb4cum")
-
-	// Remove negative mood event
-	SEND_SIGNAL(quirk_holder, COMSIG_CLEAR_MOOD_EVENT, "cum_craving")
+	REMOVE_TRAIT(quirk_holder, TRAIT_ILLITERATE, DUMB_CUM_TRAIT)
+	REMOVE_TRAIT(quirk_holder, TRAIT_DUMB, DUMB_CUM_TRAIT)
+	REMOVE_TRAIT(quirk_holder, TRAIT_PACIFISM, DUMB_CUM_TRAIT)
 
 	// Add positive mood event
-	SEND_SIGNAL(quirk_holder, COMSIG_ADD_MOOD_EVENT, "cum_stuffed", /datum/mood_event/cum_stuffed)
+	SEND_SIGNAL(quirk_holder, COMSIG_ADD_MOOD_EVENT, QMOOD_DUMB_CUM, /datum/mood_event/cum_stuffed)
 
 	// Remove timer
 	deltimer(timer)
