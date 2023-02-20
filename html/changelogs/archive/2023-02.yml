@@ -77,3 +77,37 @@
   - bugfix: Space princess outfit now can be used along with digitigrade legs
   - rscadd: Added some of the old dullahan stuff to the new one
   - bugfix: Fixed the overlay glitches with the new dullahan quirk
+  - bugfix: Space princess outfit and the polychromic performers one piece can now
+      be colored in the loadout
+2023-02-13:
+  Neyusha:
+  - rscadd: Added stowaway role
+2023-02-14:
+  LeDrascol:
+  - tweak: SSD players are automatically sent to cryo after 40 minutes
+  - code_imp: Reverted non-modular SPLURT edits to TETRIS
+  - balance: T.E.T.R.I.S. arcade machine now generates research points if used by
+      scientists
+  - balance: T.E.T.R.I.S. machine maximum score, prize count, and points payout are
+      now limited
+  - balance: T.E.T.R.I.S. machine can only dispense rewards once per configured time
+      threshold
+  - server: Added configuration settings for the T.E.T.R.I.S. arcade machine
+2023-02-16:
+  Zattarra:
+  - rscadd: Added the shortcrop, longcrop, and formalcrop.
+  - rscadd: Added croptops to loadout.
+  - rscadd: Added croptops to clothesmate.
+  - imageadd: Gave the croptops sprites.
+2023-02-17:
+  LeDrascol:
+  - tweak: Hexacamphor overdose will remove the In Estrous quirk
+2023-02-18:
+  KeplerWasTaken:
+  - rscadd: A new drink, the Ion Storm, made with 5 parts quadruple sec, 2 parts bastion
+      bourbon, resulting in 10 units.
+  LeDrascol:
+  - rscdel: Removed techweb entry for Infective Exo-Locomotion nanites
+2023-02-20:
+  LeDrascol:
+  - refactor: Refactored trait defines

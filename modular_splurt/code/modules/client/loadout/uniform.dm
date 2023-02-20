@@ -150,7 +150,11 @@
 /datum/gear/uniform/leia_outfit
 	name = "Princess Leia Outfit"
 	path = /obj/item/clothing/under/misc/leia_outfit
+	loadout_flags = LOADOUT_CAN_NAME | LOADOUT_CAN_DESCRIPTION | LOADOUT_CAN_COLOR_POLYCHROMIC
+	loadout_initial_colors = list("#C61818", "#D4AF37")
 
 /datum/gear/uniform/performer/polychromic
 	name = "Polychromic performers one piece"
 	path = /obj/item/clothing/under/performer/polychromic
+	loadout_flags = LOADOUT_CAN_NAME | LOADOUT_CAN_DESCRIPTION | LOADOUT_CAN_COLOR_POLYCHROMIC
+	loadout_initial_colors = list("#ffffff")
