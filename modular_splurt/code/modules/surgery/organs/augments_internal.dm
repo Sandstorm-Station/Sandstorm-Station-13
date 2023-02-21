@@ -9,7 +9,9 @@
 	actions_types = list(/datum/action/item_action/organ_action/toggle)
 	var/datum/condenser_implant/condenser/condenser
 	var/on = 0
-	var/wanted_size = 30
+	var/wanted_size_p = 30
+	var/wanted_size_t = 5
+	var/wanted_size_b = 30
 
 /obj/item/organ/cyberimp/brain/condenser/New()
 	..()
@@ -20,9 +22,11 @@
 
 /datum/condenser_implant/condenser
 	var/obj/item/organ/cyberimp/brain/condenser/FATHER = null
+	var/mob/living/carbon/human/HH = null
 
 /datum/condenser_implant/condenser/ui_interact(mob/user, datum/tgui/ui)
 	ui = SStgui.try_update_ui(user, src, ui)
+	HH = user
 	if(!ui)
 		ui = new(user, src, "Condenser", "Condenser")
 		ui.open()
@@ -41,16 +45,21 @@
 		if("condenser")
 			FATHER.on = !FATHER.on
 			. = TRUE
-		if("size")
-			var/sent_value = params["size"]
-			FATHER.wanted_size = sent_value
+		if("size_p")
+			var/sent_value = params["size_p"]
+			FATHER.wanted_size_p = sent_value
+			. = TRUE
+		if("size_t")
+			var/sent_value = params["size_t"]
+			FATHER.wanted_size_t = sent_value
+			. = TRUE
+		if("size_b")
+			var/sent_value = params["size_b"]
+			FATHER.wanted_size_b = sent_value
 			. = TRUE
 
-/datum/condenser_implant/condenser/ui_data(mob/user)
-	if(!ishuman(user))
-		return
-	var/list/data = list()
-	var/mob/living/carbon/human/H = user
+
+	var/mob/living/carbon/human/H = HH
 	var/obj/item/organ/genital/penis/P = null
 	var/obj/item/organ/genital/testicles/T = null
 	var/obj/item/organ/genital/breasts/B = null
@@ -62,41 +71,37 @@
 	for(var/obj/item/organ/genital/breasts/BB in H.internal_organs)
 		B = BB
 
-
-	data["on"] = FATHER.on
-	data["wanted_size"] = FATHER.wanted_size
 	if(FATHER.on)
 		if(P)
-			P.length = max(FATHER.wanted_size, 1)
+			var/tamanho = FATHER.wanted_size_p-P.length
+			P.modify_size(tamanho)
 		if(T)
-			T.size = clamp(FATHER.wanted_size, BALLS_SIZE_MIN, BALLS_SIZE_MAX)
+			var/tamanho = FATHER.wanted_size_t-T.size
+			T.modify_size(tamanho)
 		if(B)
-			B.cached_size = max(FATHER.wanted_size, 1)
+			var/tamanho = FATHER.wanted_size_b-B.cached_size
+			B.modify_size(tamanho)
 	else
 		if(P)
-			P.length = initial(P.prev_length)
+			var/tamanho = P.prev_length-P.length
+			P.modify_size(tamanho)
+		if(T)
+			var/tamanho = initial(T.size)-T.size
+			T.modify_size(tamanho)
 		if(B)
-			B.cached_size = max(FATHER.wanted_size, 1)
+			var/tamanho = B.prev_size-B.cached_size
+			B.modify_size(tamanho)
 
-	if(P)
-		if(P.length != P.prev_length)
-			P.update()
-			P.update_size()
-			P.get_features(user)
-		P.prev_length = P.length
+/datum/condenser_implant/condenser/ui_data(mob/user)
+	if(!ishuman(user))
+		return
+	var/list/data = list()
 
-	if(T)
-		T.get_features(user)
-		T.update_appearance()
-		T.update_size()
+	data["on"] = FATHER.on
+	data["wanted_size_p"] = FATHER.wanted_size_p
+	data["wanted_size_t"] = FATHER.wanted_size_t
+	data["wanted_size_b"] = FATHER.wanted_size_b
 
-	if(B)
-		if(B.cached_size != B.prev_size)
-			B.update()
-			B.update_size()
-			B.get_features(user)
-		else
-			B.prev_size = B.cached_size
 
 	return data
 
