@@ -172,7 +172,6 @@
 	gain_text = span_notice("You feel like being someone's pet...")
 	lose_text = span_notice("You no longer feel like being a pet...")
 	processing_quirk = TRUE
-	var/mood_category = "dom_trained"
 	var/notice_delay = 0
 	var/mob/living/carbon/human/last_dom
 
@@ -222,10 +221,10 @@
 
 	//Handle the mood
 	var/datum/component/mood/mood = quirk_holder.GetComponent(/datum/component/mood)
-	if(istype(mood.mood_events[mood_category], /datum/mood_event/dominant/good_boy))
-		SEND_SIGNAL(quirk_holder, COMSIG_ADD_MOOD_EVENT, mood_category, /datum/mood_event/dominant/good_boy)
+	if(istype(mood.mood_events[QMOOD_WELL_TRAINED], /datum/mood_event/dominant/good_boy))
+		SEND_SIGNAL(quirk_holder, COMSIG_ADD_MOOD_EVENT, QMOOD_WELL_TRAINED, /datum/mood_event/dominant/good_boy)
 	else
-		SEND_SIGNAL(quirk_holder, COMSIG_ADD_MOOD_EVENT, mood_category, /datum/mood_event/dominant/need)
+		SEND_SIGNAL(quirk_holder, COMSIG_ADD_MOOD_EVENT, QMOOD_WELL_TRAINED, /datum/mood_event/dominant/need)
 
 	//Don't do anything if a previous dom was found
 	if(last_dom)
@@ -299,7 +298,6 @@
 	// The shame is unbearable
 	mood_quirk = FALSE
 	processing_quirk = FALSE
-	var/mood_category = "backpack_implant_mood"
 
 /datum/quirk/storage_concealment/on_spawn()
 	. = ..()
@@ -315,10 +313,10 @@
 	// Check the quirk holder for the trait
 	if(HAS_TRAIT(quirk_holder, TRAIT_HIDE_BACKPACK))
 		// When found: Mood bonus
-		SEND_SIGNAL(quirk_holder, COMSIG_ADD_MOOD_EVENT, mood_category, /datum/mood_event/dorsualiphobic_mood_positive)
+		SEND_SIGNAL(quirk_holder, COMSIG_ADD_MOOD_EVENT, QMOOD_HIDE_BAG, /datum/mood_event/dorsualiphobic_mood_positive)
 	else
 		// When not found: Mood penalty
-		SEND_SIGNAL(quirk_holder, COMSIG_ADD_MOOD_EVENT, mood_category, /datum/mood_event/dorsualiphobic_mood_negative)
+		SEND_SIGNAL(quirk_holder, COMSIG_ADD_MOOD_EVENT, QMOOD_HIDE_BAG, /datum/mood_event/dorsualiphobic_mood_negative)
 
 //succubus and incubus below
 /datum/quirk/incubus
@@ -655,15 +653,14 @@
 	value = 0
 	mood_quirk = TRUE
 	processing_quirk = TRUE
-	var/mood_category = "nudist_mood"
 
 /datum/quirk/nudist/on_process()
 	var/mob/living/carbon/human/H = quirk_holder
 	// Checking torso exposure appears to be a robust method.
 	if( ( H.is_chest_exposed() && H.is_groin_exposed() ) )
-		SEND_SIGNAL(quirk_holder, COMSIG_ADD_MOOD_EVENT, mood_category, /datum/mood_event/nudist_positive)
+		SEND_SIGNAL(quirk_holder, COMSIG_ADD_MOOD_EVENT, QMOOD_NUDIST, /datum/mood_event/nudist_positive)
 	else
-		SEND_SIGNAL(quirk_holder, COMSIG_ADD_MOOD_EVENT, mood_category, /datum/mood_event/nudist_negative)
+		SEND_SIGNAL(quirk_holder, COMSIG_ADD_MOOD_EVENT, QMOOD_NUDIST, /datum/mood_event/nudist_negative)
 
 /datum/quirk/nudist/on_spawn()
 	. = ..()
@@ -682,15 +679,14 @@
 	mood_quirk = TRUE
 	medical_record_text = "Patient feels more secure when wearing a gas mask."
 	processing_quirk = TRUE
-	var/mood_category = "masked_mook"
 
 /datum/quirk/masked_mook/on_process()
 	var/mob/living/carbon/human/H = quirk_holder
 	var/obj/item/clothing/mask/gas/gasmask = H.get_item_by_slot(ITEM_SLOT_MASK)
 	if(istype(gasmask))
-		SEND_SIGNAL(quirk_holder, COMSIG_ADD_MOOD_EVENT, mood_category, /datum/mood_event/masked_mook)
+		SEND_SIGNAL(quirk_holder, COMSIG_ADD_MOOD_EVENT, QMOOD_MASKED_MOOK, /datum/mood_event/masked_mook)
 	else
-		SEND_SIGNAL(quirk_holder, COMSIG_ADD_MOOD_EVENT, mood_category, /datum/mood_event/masked_mook_incomplete)
+		SEND_SIGNAL(quirk_holder, COMSIG_ADD_MOOD_EVENT, QMOOD_MASKED_MOOK, /datum/mood_event/masked_mook_incomplete)
 
 /datum/quirk/masked_mook/on_spawn()
 	. = ..()
