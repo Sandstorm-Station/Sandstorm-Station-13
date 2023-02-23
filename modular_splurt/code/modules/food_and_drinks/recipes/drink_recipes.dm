@@ -290,3 +290,14 @@
 		/datum/reagent/consumable/milkshake_base = 1,
 		/datum/reagent/consumable/watermelonjuice = 1
 	)
+
+/datum/chemical_reaction/ionstorm
+	name = "Ion Storm"
+	id = /datum/reagent/consumable/ethanol/ionstorm
+	results = list(/datum/reagent/consumable/ethanol/ionstorm = 10)
+	required_reagents = list(
+		/datum/reagent/consumable/ethanol/quadruple_sec = 5,
+		/datum/reagent/consumable/ethanol/bastion_bourbon = 2
+	)
+	mix_message = "The lights flicker for a moment..."
+	mix_sound = 'sound/weapons/taser.ogg'
