@@ -30,3 +30,4 @@
 #define TRAIT_ILLITERATE		"illiterate"
 #define TRAIT_HIDE_BACKPACK		"hide_backpack"
 #define TRAIT_DUMB4CUM			"dumb4cum"
+#define TRAIT_RAD_FIEND     	"RadFiend"
