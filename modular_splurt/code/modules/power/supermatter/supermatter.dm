@@ -39,6 +39,7 @@ Custom Bombcaps:
 	name = "magical engineer counter"
 	icon = 'icons/obj/guns/magic.dmi'
 	icon_state = "nothingwand"
+
 /obj/item/debug/engineer_counter/attack_self(mob/user)
 	var/alive_engineers = 0
 	for(var/mob/living/carbon/human/M in GLOB.alive_mob_list)
@@ -53,6 +54,19 @@ Custom Bombcaps:
 			SEND_SOUND(M, 'sound/magic/charge.ogg')
 			to_chat(M, "<span class='boldannounce'>You feel reality distort for a moment...</span>")
 			SEND_SIGNAL(M, COMSIG_ADD_MOOD_EVENT, "delam", /datum/mood_event/delam)
+
+// Don't explode if we no allow
+	if(!CONFIG_GET(flag/sm_delamination))
+		investigate_log("has attempted a delamination, but the config disallows it", INVESTIGATE_SUPERMATTER)
+		priority_announce("Supermatter privileges revoked. Current crew is deemed unsuitable to handle a highly hazardous engine. More training is required.", "SIMULATION TERMINATED")
+		var/skill_issue_sound = prob(50) ? 'modular_splurt/sound/voice/boowomp.ogg' : 'modular_splurt/sound/effects/fart_reverb.ogg'
+		sound_to_playing_players(skill_issue_sound)
+		var/obj/item/toy/plush/random/plushe = new(get_turf(src))
+		plushe.name = "Consolation plushie"
+		plushe.desc = "It has \"You tried\" poorly written in its tag."
+		plushe.squeak_override = list(skill_issue_sound = 1)
+		qdel(src)
+		return
 
 // Replace the singularity and tesla delaminations with an EMP pulse. It's hard to achieve this without deliberate sabotage.
 	if(combined_gas > MOLE_PENALTY_THRESHOLD || power > POWER_PENALTY_THRESHOLD)
