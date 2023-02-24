@@ -7,7 +7,7 @@
 
 /datum/emote/living/narrate/proc/check_invalid(mob/user, input)
 	if(stop_bad_mime.Find(input, 1, 1))
-		to_chat(user, "<span class='danger'>Invalid emote.</span>")
+		to_chat(user, span_danger("Invalid emote."))
 		return TRUE
 	return FALSE
 
@@ -28,7 +28,7 @@
 		return FALSE
 
 	user.log_message(message, LOG_EMOTE)
-	message = "<span class='name'>([user])</span> <span class='pnarrate'>[message]</span>"
+	message = span_name("([user])</span> <span class='pnarrate'>[message]")
 
 	for(var/mob/M in GLOB.dead_mob_list)
 		if(!M.client || isnewplayer(M))
@@ -44,7 +44,34 @@
 	set name = "Narrate (Player)"
 	set desc = "Narrate an action or event! An alternative to emoting, for when your emote shouldn't start with your name!"
 	if(GLOB.say_disabled)
-		to_chat(usr, "<span class='danger'>Speech is currently admin-disabled.</span>")
+		to_chat(usr, span_danger("Speech is currently admin-disabled."))
 		return
 	message = trim(html_encode(message), MAX_MESSAGE_LEN)
 	emote("narrate", message=message)
+
+/datum/emote/living/subtle/subtle_indicator
+	key = "subtle-indicator"
+	key_third_person = "subtle-indicator"
+
+/mob/living/verb/subtle_indicator()
+	// Set data
+	set name = "Subtle (Indicator)"
+	set category = "IC"
+
+	// Check if say is disabled
+	if(GLOB.say_disabled)
+		// Warn user and return
+		to_chat(usr, span_danger("Speech is currently admin-disabled."))
+		return
+
+	// Display typing indicator
+	display_typing_indicator()
+
+	// Prompt user for text input
+	var/input_message = input(usr, "What would you like to subtly emote, with a typing indicator?", "Input subtle emote") as message|null
+
+	// Remove typing indicator
+	clear_typing_indicator()
+
+	// Run subtle emote with input
+	usr.emote("subtle", message = input_message)

@@ -1,0 +1,100 @@
+# Special Sandstorm balance config!
+
+###
+## CRYPTOMINER
+###
+
+## Should cryptominers work in non-atmos turf (ex. space)?
+## Uncomment this to disable atmos processing (cheat mode)
+#CRYPTO_IGNORE_ATMOS
+
+## What point multiplier should cryptominers use?
+## Determined by heat level, or uses MAX in cheat mode
+CRYPTO_MULTIPLIER_MIN 0.2
+CRYPTO_MULTIPLIER_MID 1
+CRYPTO_MULTIPLIER_MAX 3
+
+## What heat thresholds should cryptominers use?
+## This is measured in Kelvins
+CRYPTO_HEAT_THRESHOLD_MIN 225
+CRYPTO_HEAT_THRESHOLD_MID 273
+CRYPTO_HEAT_THRESHOLD_MAX 500
+
+## How much heat should cryptominers produce?
+## This amount is added to the environment on process
+CRYPTO_HEAT_POWER 100
+
+## How long between cryptominers producing resources?
+## Currently unimplemented!
+CRYPTO_MINING_TIME 3000
+
+## What material amount should the cryptominers produce?
+## This is modified by the MULTIPLIER value
+## Currently unimplemented!
+CRYPTO_PAYOUT_AMOUNT 50
+
+## How much power should the cryptominer use?
+## Currently unimplemented!
+CRYPTO_POWER_USE_IDLE 20
+CRYPTO_POWER_USE_ACTIVE 200
+CRYPTO_POWER_USE_PROCESS 20
+
+###
+## AUTODOC
+###
+
+## How long should the autodoc take to perform surgery?
+## This is modified by stock part ratings
+AUTODOC_TIME_SURGERY_BASE 350
+
+###
+## BLUESPACE MINER
+###
+
+## How much should the bluespace miner produce, compared to normal?
+## This is modified by stock part ratings
+BLUESPACEMINER_MULT_OUTPUT 1
+
+## What is the minimum stock part tier to produce bluespace crystals?
+BLUESPACEMINER_CRYSTAL_TIER 5
+
+###
+## TETRIS
+###
+
+## The machine produces science points based on score
+## Uncomment this to prevent it from doing so
+#TETRIS_NO_SCIENCE
+
+## How many prizes can the machine dispense
+## This is also limited by TETRIS_SCORE_MAX
+TETRIS_PRIZES_MAX 5
+
+## How many points required per prize vended
+## Amount is equal to SCORE divided by TETRIS_REWARD_DIVISOR
+TETRIS_REWARD_DIVISOR 1000
+
+## Minimum score required to message admins
+## This is intended for detecting suspicious scores
+TETRIS_SCORE_HIGH 10000
+
+## Maximum score that can be displayed
+## Score values past this number are ignored
+TETRIS_SCORE_MAX 100000
+
+## Maximum research points that can be generated
+## Score values past this number are ignored
+TETRIS_SCORE_MAX_SCI 10000
+
+## Minimum time between giving rewards
+## This applies to both prizes and research points
+## Time is measured in ticks
+TETRIS_TIME_COOLDOWN 600
+
+##
+## PROTOLATHE RESTRICTIONS
+###
+
+## Should production machinery be restricted for skeleton crews?
+## Uncomment this to enable
+#PROTOLOCK_DURING_LOWPOP

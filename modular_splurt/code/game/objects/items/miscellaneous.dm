@@ -64,15 +64,15 @@
 
 	if(isnull(insults))
 		playsound(get_turf(src), 'modular_splurt/sound/voice/halt.ogg', 100, 1, vary = 0)
-		user.audible_message("<span class='warning'>[user]'s [name] rasps, \"[use_message]\"</span>", "<span class='warning'>\The [user] holds up \the [name].</span>")
+		user.audible_message(span_warning("[user]'s [name] rasps, \"[use_message]\""), span_warning("\The [user] holds up \the [name]."))
 	else
 		if(insults > 0)
 			playsound(get_turf(src), 'sound/voice/beepsky/insult.ogg', 100, 1, vary = 0)
 			// Yes, it used to show the transcription of the sound clip. That was a) inaccurate b) immature as shit.
-			user.audible_message("<span class='warning'>[user]'s [name] gurgles something indecipherable and deeply offensive.</span>", "<span class='warning'>\The [user] holds up \the [name].</span>")
+			user.audible_message(span_warning("[user]'s [name] gurgles something indecipherable and deeply offensive."), span_warning("\The [user] holds up \the [name]."))
 			insults--
 		else
-			user << "<span class='danger'>*BZZZZZZZZT*</span>"
+			user << span_danger("*BZZZZZZZZT*")
 
 	spamcheck = 1
 	spawn(20)
@@ -80,7 +80,7 @@
 
 /obj/item/device/hailer/emag_act(remaining_charges, mob/user)
 	if(isnull(insults))
-		user << "<span class='danger'>You overload \the [src]'s voice synthesizer.</span>"
+		user << span_danger("You overload \the [src]'s voice synthesizer.")
 		insults = rand(1, 3)//to prevent dickflooding
 		return 1
 	else
@@ -170,32 +170,32 @@
 	if(istype(C, /obj/item/card/id))
 		var/obj/item/card/id/idcard = C
 		if(!idcard.registered_name)
-			to_chat(user, "<span class='warning'>\The [src] rejects the ID!</span>")
+			to_chat(user, span_warning("\The [src] rejects the ID!"))
 			return
 
 		if(!owner)
 			owner = idcard.registered_name
 			ownjob = idcard.assignment
 			update_label()
-			to_chat(user, "<span class='notice'>Badge updated.</span>")
+			to_chat(user, span_notice("Badge updated."))
 
 
 /obj/item/clothing/accessory/badge/attack_self(mob/user)
 	if(Adjacent(user))
-		user.visible_message("<span class='notice'>[user] shows you: [icon2html(src, viewers(user))] [src.name].</span>", \
-					"<span class='notice'>You show \the [src.name].</span>")
+		user.visible_message(span_notice("[user] shows you: [icon2html(src, viewers(user))] [src.name]."), \
+					span_notice("You show \the [src.name]."))
 		add_fingerprint(user)
 
 /obj/item/clothing/accessory/badge/holo
 	name = "security holo badge"
 	desc = "A more futuristic hard-light badge"
 	icon_state = "security_badge_holo"
-	
+
 /obj/item/clothing/accessory/badge/deputy
 	name = "security deputy badge"
 	desc = "A shiny silver badge for deputies on the Security force"
 	icon_state = "security_badge_deputy"
-	
+
 /datum/design/sec_badge
 	name = "Security Badge"
 	desc = "A shiny badge to show the bearer is part of the Security force."
@@ -215,3 +215,41 @@
 	build_path = /obj/item/clothing/accessory/badge/deputy
 	category = list("Equipment")
 	departmental_flags = DEPARTMENTAL_FLAG_SECURITY
+
+/obj/item/handmirror/split_personality
+	name = "dissociative mirror"
+	desc = "An enchanted hand mirror. You may not recognize who stares back."
+	var/item_used
+
+/obj/item/handmirror/split_personality/attack_self(mob/user)
+	// Check if already used
+	if(item_used)
+		// Warn user, then return
+		to_chat(user, span_warning("[src] is no longer functional."))
+		return
+
+	// Check if human user exists
+	if(!ishuman(user))
+		// Warn user, then return
+		to_chat(user, span_warning("You see nothing in [src]."))
+		return
+
+	// Define human user
+	var/mob/living/carbon/human/mirror_user = user
+
+	// Add brain trauma
+	mirror_user.gain_trauma(/datum/brain_trauma/severe/split_personality, TRAUMA_RESILIENCE_SURGERY)
+
+	// Set item used variable
+	// This prevents future use
+	item_used = TRUE
+
+	// Alert in local chat
+	mirror_user.visible_message(span_warning("The [src] shatters in [mirror_user]'s hands!"), span_warning("The mirror shatters in your hands!"))
+
+	// Play mirror break sound
+	playsound(src, 'sound/effects/Glassbr3.ogg', 50, 1)
+
+	// Set flavor text
+	name = "broken hand mirror"
+	desc = "You won\'t get much use out of it."

@@ -156,7 +156,7 @@
 /obj/item/projectile/heckhook/on_hit(atom/target)
 	. = ..()
 	var/atom/A = target
-	A.visible_message("<span class='danger'>[A] is snagged by [firer]'s hook!</span>")
+	A.visible_message(span_danger("[A] is snagged by [firer]'s hook!"))
 	new /datum/forced_movement(firer, get_turf(A), 1, TRUE)
 
 /obj/item/projectile/heckhook/Destroy()
@@ -184,7 +184,7 @@
 		to_chat(user, "You will now fire normal shotgun rounds.")
 
 /obj/item/gun/ballistic/revolver/doublebarrel/super/sawoff(mob/user)
-	to_chat(user, "<span class='warning'>Why would you mutilate this work of art?</span>")
+	to_chat(user, span_warning("Why would you mutilate this work of art?"))
 	return
 
 /obj/item/gun/ballistic/revolver/doublebarrel/super/upgraded
@@ -235,7 +235,7 @@
 
 /obj/item/crucible/suicide_act(mob/living/carbon/user)
 	if(wielded)
-		user.visible_message("<span class='suicide'>[user] DOOMs themselves with the [src]!</span>")
+		user.visible_message(span_suicide("[user] DOOMs themselves with the [src]!"))
 
 		var/obj/item/bodypart/head/myhead = user.get_bodypart(BODY_ZONE_HEAD)//stole from chainsaw code
 		var/obj/item/organ/brain/B = user.getorganslot(ORGAN_SLOT_BRAIN)
@@ -250,12 +250,12 @@
 					myhead.drop_limb()
 				sleep(3)
 			else
-				user.visible_message("<span class='suicide'>[user] panics and starts choking to death!</span>")
+				user.visible_message(span_suicide("[user] panics and starts choking to death!"))
 				return OXYLOSS
 
 
 	else
-		user.visible_message("<span class='suicide'>[user] begins beating [user.p_them()]self to death with \the [src]'s handle! It probably would've been cooler if [user.p_they()] turned it on first!</span>")
+		user.visible_message(span_suicide("[user] begins beating [user.p_them()]self to death with \the [src]'s handle! It probably would've been cooler if [user.p_they()] turned it on first!"))
 	return BRUTELOSS
 
 /obj/item/crucible/update_icon_state()
@@ -336,7 +336,7 @@
 		var/mob/living/carbon/C = user
 		if(C.wear_mask)
 			in_mouth = ", barely missing [user.p_their()] nose"
-	. = "<span class='warning'>[user] swings [user.p_their()] [name][in_mouth]. [user.p_they(TRUE)] light[user.p_s()] [user.p_their()] [A.name] in the process.</span>"
+	. = span_warning("[user] swings [user.p_their()] [name][in_mouth]. [user.p_they(TRUE)] light[user.p_s()] [user.p_their()] [A.name] in the process.")
 	playsound(loc, hitsound, get_clamped_volume(), 1, -1)
 	add_fingerprint(user)
 
@@ -437,12 +437,12 @@
 	sharpness = SHARP_NONE
 	if(ghost_counter >= 4)
 		sharpness = SHARP_POINTY
-	user.visible_message("<span class='danger'>[user] strikes with the force of [ghost_counter] vengeful spirits!</span>")
+	user.visible_message(span_danger("[user] strikes with the force of [ghost_counter] vengeful spirits!"))
 
 /obj/item/melee/ghost_sword/run_block(mob/living/owner, atom/object, damage, attack_text, attack_type, armour_penetration, mob/attacker, def_zone, final_block_chance, list/block_return)
 	var/ghost_counter = ghost_check()
 	final_block_chance = clamp((ghost_counter * 5), 10, 50)
-	owner.visible_message("<span class='danger'>[owner] is protected by a ring of [ghost_counter] ghosts!</span>")
+	owner.visible_message(span_danger("[owner] is protected by a ring of [ghost_counter] ghosts!"))
 	return ..()
 
 /obj/item/clothing/neck/necklace/memento_mori/king
@@ -503,7 +503,7 @@
 	var/choosey = choices[choice]
 	var/obj/machinery/anomalous_crystal/A = new choosey(user.loc)
 	A.activation_method = method
-	to_chat(user, "<span class='userdanger'>[A] appears under your feet as the [src] breaks apart!</span>")
+	to_chat(user, span_userdanger("[A] appears under your feet as the [src] breaks apart!"))
 	qdel(src)
 
 //normal chests
@@ -744,7 +744,7 @@
 
 /obj/item/stock_parts/cell/high/plus/argent/attack_self(mob/user)
 	..()
-	user.visible_message("<span class='danger'>[user] crushes the [src] in his hands, absorbing it's energy!</span>")
+	user.visible_message(span_danger("[user] crushes the [src] in his hands, absorbing it's energy!"))
 	playsound(user.loc, 'sound/effects/hit_on_shattered_glass.ogg', 100, TRUE)
 	var/mob/living/M = user
 	M.apply_status_effect(onuse)
@@ -822,13 +822,13 @@
 /obj/item/clothing/mask/gas/dagoth/ui_action_click(mob/user, action)
 	if(istype(action, /datum/action/item_action/ashstorm))
 		if(storm_cooldown > world.time)
-			to_chat(user, "<span class='warning'>The [src] is still recharging!</span>")
+			to_chat(user, span_warning("The [src] is still recharging!"))
 			return
 
 		var/area/user_area = get_base_area(user)
 		var/turf/user_turf = get_turf(user)
 		if(!user_area || !user_turf || (user_area.type in excluded_areas))
-			to_chat(user, "<span class='warning'>Something is preventing you from using the [src] here.</span>")
+			to_chat(user, span_warning("Something is preventing you from using the [src] here."))
 			return
 		var/datum/weather/A
 		for(var/V in SSweather.processing)
@@ -840,10 +840,10 @@
 		if(A)
 			if(A.stage != END_STAGE)
 				if(A.stage == WIND_DOWN_STAGE)
-					to_chat(user, "<span class='warning'>The storm is already ending! It would be a waste to use the [src] now.</span>")
+					to_chat(user, span_warning("The storm is already ending! It would be a waste to use the [src] now."))
 					return
-				user.visible_message("<span class='warning'>[user] gazes into the sky with [src], seemingly repelling the current storm!</span>", \
-				"<span class='notice'>You gaze intently skyward, dispelling the storm!</span>")
+				user.visible_message(span_warning("[user] gazes into the sky with [src], seemingly repelling the current storm!"), \
+				span_notice("You gaze intently skyward, dispelling the storm!"))
 				playsound(user, 'sound/magic/staff_change.ogg', 200, 0)
 				A.wind_down()
 				log_game("[user] ([key_name(user)]) has dispelled a storm at [AREACOORD(user_turf)]")
@@ -858,8 +858,8 @@
 			A.telegraph_duration = 100
 			A.end_duration = 100
 
-		user.visible_message("<span class='warning'>[user] gazes skyward with his [src], terrible red lightning strikes seem to accompany them!</span>", \
-		"<span class='notice'>You gaze skyward with [src], calling down a terrible storm!</span>")
+		user.visible_message(span_warning("[user] gazes skyward with his [src], terrible red lightning strikes seem to accompany them!"), \
+		span_notice("You gaze skyward with [src], calling down a terrible storm!"))
 		playsound(user, 'sound/magic/staff_change.ogg', 200, 0)
 		A.telegraph()
 		storm_cooldown = world.time + 200
@@ -973,9 +973,9 @@
 
 //Apply a temp buff until the necklace is used
 /obj/item/clothing/neck/necklace/necklace_of_the_forsaken/proc/temp_buff(mob/living/carbon/human/user)
-	to_chat(user, "<span class='warning'>You feel as if you have a second chance at something, but you're not sure what.</span>")
+	to_chat(user, span_warning("You feel as if you have a second chance at something, but you're not sure what."))
 	if(do_after(user, 40, target = user))
-		to_chat(user, "<span class='notice'>The ember warms you...</span>")
+		to_chat(user, span_notice("The ember warms you..."))
 		ADD_TRAIT(user, TRAIT_NOHARDCRIT, "necklace_of_the_forsaken")//less chance of being gibbed
 		active_owner = user
 
@@ -986,7 +986,7 @@
 		return
 	var/mob/living/carbon/C = active_owner
 	active_owner = null
-	to_chat(C, "<span class='userdanger'>You feel a scorching burn fill your body and limbs!</span>")
+	to_chat(C, span_userdanger("You feel a scorching burn fill your body and limbs!"))
 	C.revive(TRUE, FALSE)
 	remove_necklace() //remove buffs
 
@@ -1013,7 +1013,7 @@
 		if(iscarbon(owner))
 			MM.temp_buff(owner)
 		src.desc = "Revive or fully heal yourself, but you can only do this once! Can be used when knocked out or dead."
-		to_chat(MM.active_owner, "<span class='userdanger'>You have binded the ember to yourself! The next time you use the necklace it will heal you!</span>")
+		to_chat(MM.active_owner, span_userdanger("You have binded the ember to yourself! The next time you use the necklace it will heal you!"))
 	else if(MM.numUses >= 1 && MM.active_owner)//revive / heal then remove usage
 		MM.second_chance()
 		MM.numUses = 0

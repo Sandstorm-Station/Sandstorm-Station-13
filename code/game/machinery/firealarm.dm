@@ -56,6 +56,15 @@
 	LAZYADD(myarea.firealarms, src)
 
 	wires = new /datum/wires/firealarm(src)
+	register_context()
+
+/obj/machinery/firealarm/add_context(atom/source, list/context, obj/item/held_item, mob/living/user)
+	. = ..()
+
+	if(isnull(held_item))
+		var/area/location = get_area(src)
+		LAZYSET(context[SCREENTIP_CONTEXT_LMB], INTENT_ANY, (location.fire ? "Turn off" : "Turn on"))
+		return CONTEXTUAL_SCREENTIP_SET
 
 /obj/machinery/firealarm/Destroy()
 	myarea.firereset(src)

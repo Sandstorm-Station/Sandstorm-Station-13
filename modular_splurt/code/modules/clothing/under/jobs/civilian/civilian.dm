@@ -17,7 +17,7 @@
 
 /obj/item/clothing/under/rank/civilian/lawyer/galaxy_blue
 	name = "\improper De Void of Soul"
-	desc = "A suit of stars and high-V gas. One that screams the cosmos and unfathomnable vastness. Earned by only the best of the best."
+	desc = "A suit of stars and high-V gas. One that screams the cosmos and unfathomable vastness. Earned by only the best of the best."
 	icon_state = "galaxy_blue"
 	icon = 'modular_splurt/icons/obj/clothing/uniforms.dmi'
 	mob_overlay_icon = 'modular_splurt/icons/mob/clothing/uniform.dmi'

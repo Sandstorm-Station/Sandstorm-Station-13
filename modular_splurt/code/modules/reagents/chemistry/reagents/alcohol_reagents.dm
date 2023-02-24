@@ -16,6 +16,18 @@
 	// Praise the funny BYOND dots
 	. = ..()
 
+	// Check for client
+	if(C.client)
+		// Check target pref for ERP
+		if(C.client?.prefs.erppref == "No")
+			// Return without triggering
+			return
+
+		// Check target pref for aphrodisiacs
+		if(C.client?.prefs.cit_toggles & NO_APHRO)
+			// Return without triggering
+			return
+
 	// Perform drink effect
 	C.clothing_burst(C)
 
@@ -49,7 +61,7 @@
 			if(!M.undergoing_cardiac_arrest() && M.can_heartattack() && prob(1))
 				M.set_heartattack(TRUE)
 				if(M.stat == CONSCIOUS)
-					M.visible_message("<span class='userdanger'>[M] clutches at [M.p_their()] chest as if [M.p_their()] heart stopped!</span>") // too much lean :(
+					M.visible_message(span_userdanger("[M] clutches at [M.p_their()] chest as if [M.p_their()] heart stopped!")) // too much lean :(
 	..()
 
 /datum/reagent/consumable/ethanol/cum_in_a_hot_tub
@@ -194,7 +206,6 @@
 	color = "#1a5fa1"
 	quality = DRINK_NICE
 	taste_description = "blue orange"
-	glass_icon = 'modular_splurt/icons/obj/drinks.dmi'
 	glass_icon_state = "curacao"
 	glass_name = "glass of curaçao"
 	glass_desc = "It's blue, da ba dee."
@@ -217,7 +228,6 @@
 	color = "#1c0000"
 	quality = DRINK_NICE
 	taste_description = "spiced alcohol"
-	glass_icon = 'modular_splurt/icons/obj/drinks.dmi'
 	glass_icon_state = "bitters"
 	glass_name = "glass of bitters"
 	glass_desc = "Typically you'd want to mix this with something- but you do you."
@@ -229,7 +239,6 @@
 	color = "#1F0001"
 	quality = DRINK_VERYGOOD
 	taste_description = "haughty arrogance"
-	glass_icon = 'modular_splurt/icons/obj/drinks.dmi'
 	glass_icon_state = "admiralty"
 	glass_name = "Admiralty"
 	glass_desc = "Hail to the Admiral, for he brings fair tidings, and rum too."
@@ -241,7 +250,6 @@
 	color = "#8c5046"
 	quality = DRINK_GOOD
 	taste_description = "ginger and rum"
-	glass_icon = 'modular_splurt/icons/obj/drinks.dmi'
 	glass_icon_state = "dark_and_stormy"
 	glass_name = "Dark and Stormy"
 	glass_desc = "Thunder and lightning, very very frightening."
@@ -253,7 +261,6 @@
 	color = "#c4b35c"
 	quality = DRINK_VERYGOOD
 	taste_description = "rum and spices"
-	glass_icon = 'modular_splurt/icons/obj/drinks.dmi'
 	glass_icon_state = "long_john_silver"
 	glass_name = "Long John Silver"
 	glass_desc = "Named for a famous pirate, who may or may not have been fictional. But hey, why let the truth get in the way of a good yarn?"
@@ -265,7 +272,6 @@
 	color = "#003153"
 	quality = DRINK_VERYGOOD
 	taste_description = "companionship"
-	glass_icon = 'modular_splurt/icons/obj/drinks.dmi'
 	glass_icon_state = "long_haul"
 	glass_name = "Long Haul"
 	glass_desc = "A perfect companion for a lonely long haul flight."
@@ -277,7 +283,6 @@
 	color = "#b4abd0"
 	quality = DRINK_FANTASTIC
 	taste_description = "salt and spice"
-	glass_icon = 'modular_splurt/icons/obj/drinks.dmi'
 	glass_icon_state = "salt_and_swell"
 	glass_name = "Salt and Swell"
 	glass_desc = "Ah, I do like to be beside the seaside."
@@ -289,7 +294,6 @@
 	color = "#b4abd0"
 	quality = DRINK_VERYGOOD
 	taste_description = "spicy sour cheesy yoghurt"
-	glass_icon = 'modular_splurt/icons/obj/drinks.dmi'
 	glass_icon_state = "tich_toch"
 	glass_name = "Tich Toch"
 	glass_desc = "Oh god."
@@ -301,7 +305,6 @@
 	color = "#F4EFE2"
 	quality = DRINK_NICE
 	taste_description = "sour cheesy yoghurt"
-	glass_icon = 'modular_splurt/icons/obj/drinks.dmi'
 	glass_icon_state = "tiltaellen"
 	glass_name = "glass of tiltällen"
 	glass_desc = "Eww... it's curdled."
@@ -313,7 +316,6 @@
 	color = "#00bfa3"
 	quality = DRINK_VERYGOOD
 	taste_description = "the tropics"
-	glass_icon = 'modular_splurt/icons/obj/drinks.dmi'
 	glass_icon_state = "tropical_storm"
 	glass_name = "Tropical Storm"
 	glass_desc = "Less destructive than the real thing."
@@ -355,4 +357,28 @@
 	T.Remove()
 	nT.Insert(M)
 	T.moveToNullspace()//To valhalla
-	to_chat(M, "<span class='big warning'>Your tongue feels... weally fwuffy!!</span>")
+	to_chat(M, span_big_warning("Your tongue feels... weally fwuffy!!"))
+
+/datum/reagent/consumable/ethanol/ionstorm
+	name = "Ion Storm"
+	description = "A highly chaotic mixture that looks like it may react violently at any moment, but is surprisingly stable"
+	color = "#3fd2ff"
+	taste_description = "a scorching taste of strong alcohol and good brew going down your throat, making you feel warm inside"
+	glass_icon = 'modular_splurt/icons/obj/drinks.dmi'
+	glass_icon_state = "ionstorm"
+	glass_name = "glass of Ion Storm"
+	glass_desc = "You're not sure how this mixture is stable or even if it's drinkable, but it does remind you of a hot cup of apple cider on a cold winter morning"
+	pH = 6.5
+	value = REAGENT_VALUE_UNCOMMON
+	boozepwr = 30
+	quality = DRINK_FANTASTIC
+
+/datum/reagent/consumable/ethanol/ionstorm/on_mob_life(mob/living/carbon/C)
+	C.adjustBruteLoss(-0.5,0)
+	C.adjustFireLoss(-0.5,0)
+	if (C.reagents.has_reagent(/datum/reagent/medicine/epinephrine))
+		C.adjustToxLoss(0.25)
+	else
+		C.adjustOxyLoss(0.25)
+	. = 1
+	return ..()

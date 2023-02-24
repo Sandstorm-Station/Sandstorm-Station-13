@@ -1,3 +1,4 @@
+/* //striked out for now because I dont know what the fuck was planned here but this is breaking blood regain.
 /mob/living/carbon/human/handle_blood()
 	if(iszombie(src)) //We're basically pudding pops.
 		return
@@ -8,7 +9,7 @@
 	var/obj/item/organ/heart/decayed_heart/decaying = getorgan(/obj/item/organ/heart/decayed_heart)
 	if(decaying)
 		. += "Current blood level: [blood_volume]/[BLOOD_VOLUME_MAXIMUM]."
-
+		*/
 /datum/species/mammal/undead
 // takes 30% more damage but doesn't crit
 	id = SPECIES_UMAMMAL
@@ -177,10 +178,10 @@
 	desc = "A rotting mass of twisted viscera."
 	organ_flags = ORGAN_EXTERNAL
 
-	low_threshold_passed = "<span class='info'>Something forgotten weakens within your chest.</span>"
-	high_threshold_passed = "<span class='warning'>A chill of death stalks you.</span>"
-	now_fixed = "<span class='cult'>It comforts you once more.</span>"
-	high_threshold_cleared = "<span class='info'>The ghastly cold crawls back.</span>"
+	low_threshold_passed = span_info("Something forgotten weakens within your chest.")
+	high_threshold_passed = span_warning("A chill of death stalks you.")
+	now_fixed = span_cult("It comforts you once more.")
+	high_threshold_cleared = span_info("The ghastly cold crawls back.")
 
 	beating = FALSE
 	var/reviving = FALSE
@@ -224,7 +225,7 @@
 			if(owner.health >= HEALTH_THRESHOLD_FULLCRIT)
 				owner.revive()
 				if(owner.stat == !DEAD) // incase any weird shit where they can't revive
-					owner.visible_message("<span class='danger'>[owner] suddenly convulses back to life!</span>")
+					owner.visible_message(span_danger("[owner] suddenly convulses back to life!"))
 				owner.update_stat()
 				owner.update_health_hud()
 		if(owner.blood_volume <= BLOOD_VOLUME_SURVIVE)
@@ -232,7 +233,7 @@
 			return
 	if(owner?.health <= HEALTH_THRESHOLD_DEAD && owner?.blood_volume >= BLOOD_VOLUME_SURVIVE)
 		reviving = TRUE
-		to_chat(owner, "<span class='alertwarning'>Your broken shell is stitching itself back together...</span>")
+		to_chat(owner, span_alertwarning("Your broken shell is stitching itself back together..."))
 
 /obj/item/organ/undead_infection
 	name = "festering ooze"
@@ -289,7 +290,7 @@
 	if (causes_damage && !iszombie(owner) && owner.stat != DEAD)
 		owner.adjustToxLoss(1)
 		if (prob(10))
-			to_chat(owner, "<span class='danger'>You feel sick...</span>")
+			to_chat(owner, span_danger("You feel sick..."))
 	if(timer_id)
 		return
 	if(owner.suiciding)
@@ -335,12 +336,12 @@
 		return
 
 	owner.grab_ghost()
-	owner.visible_message("<span class='danger'>[owner] suddenly convulses, as [owner.p_they()][stand_up ? " stagger to [owner.p_their()] feet and" : ""] gain a ravenous hunger in [owner.p_their()] eyes!</span>", "<span class='cultlarge'>* But it refused</span>")
+	owner.visible_message(span_danger("[owner] suddenly convulses, as [owner.p_they()][stand_up ? " stagger to [owner.p_their()] feet and" : ""] gain a ravenous hunger in [owner.p_their()] eyes!"), span_cultlarge("* But it refused"))
 	playsound(owner.loc, 'sound/hallucinations/far_noise.ogg', 50, 1)
 	owner.do_jitter_animation(living_transformation_time)
 	owner.Stun(living_transformation_time)
-//	to_chat(owner, "<span class='alertalien'>You are now a zombie! You claw and bite, turning your fellow crewmembers into friends that help spread the plague.</span>")
-//	to_chat(owner, "<span class='alertwarning'>You are a zombie. Please act like one. Letting the crew remove the tumor inside your brain is a dick move to whoever infected you. Please do not do it.</span>")
+//	to_chat(owner, span_alertalien("You are now a zombie! You claw and bite, turning your fellow crewmembers into friends that help spread the plague."))
+//	to_chat(owner, span_alertwarning("You are a zombie. Please act like one. Letting the crew remove the tumor inside your brain is a dick move to whoever infected you. Please do not do it."))
 
 /obj/item/organ/undead_infection/mammal
 	old_species = /datum/species/mammal
@@ -381,7 +382,7 @@
 		infection = new()
 		infection.Insert(H)
 
-	to_chat(H, "<span class='cult'>mors tua, vita mea.</span>")
+	to_chat(H, span_cult("mors tua, vita mea."))
 	H.playsound_local(H, 'sound/effects/singlebeat.ogg', 100, 0)
 	return
 

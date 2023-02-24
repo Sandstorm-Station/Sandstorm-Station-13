@@ -54,7 +54,7 @@
 				structure_data["cost"][blueprint] = 20
 
 	playsound(src, 'sound/effects/pop.ogg', 50, FALSE)
-	to_chat(user, "<span class='notice'>You change [name]s blueprint to '[choice]'.</span>")
+	to_chat(user, span_notice("You change [name]s blueprint to '[choice]'."))
 
 // Also pretty much rcd_create but named differently. I'm shameless, fuck you.
 /obj/item/construction/tables/proc/create_table(atom/A, mob/user)
@@ -91,5 +91,5 @@
 		create_table(A, user)
 
 /obj/item/construction/tables/suicide_act(mob/user)
-	user.visible_message("<span class='suicide'>[user] sets the RTC to 'Glass Table' and points it down [user.p_their()] throat! It looks like [user.p_theyre()] trying to commit suicide.</span>")
+	user.visible_message(span_suicide("[user] sets the RTC to 'Glass Table' and points it down [user.p_their()] throat! It looks like [user.p_theyre()] trying to commit suicide."))
 	return (BRUTELOSS)

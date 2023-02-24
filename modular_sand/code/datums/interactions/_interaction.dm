@@ -10,13 +10,15 @@
 - Makes all the code good because yes as well - SandPoot
 **/
 
-/mob/living/proc/list_interaction_attributes()
-	var/dat = list()
+/mob/proc/list_interaction_attributes()
+	return list()
+
+/mob/living/list_interaction_attributes()
+	. = ..()
 	if(has_hands())
-		dat += "...have hands."
+		. += "...have hands."
 	if(has_mouth())
-		dat += "...have a mouth, which is [mouth_is_free() ? "uncovered" : "covered"]."
-	return dat
+		. += "...have a mouth, which is [mouth_is_free() ? "uncovered" : "covered"]."
 
 /// The base of all interactions
 /datum/interaction
@@ -46,17 +48,17 @@
 	if(require_user_mouth)
 		if(!user.has_mouth() && !issilicon(user)) //Again, silicons do not have the required parts normally.
 			if(!silent)
-				to_chat(user, "<span class='warning'>You don't have a mouth.</span>")
+				to_chat(user, span_warning("You don't have a mouth."))
 			return FALSE
 
 		if(!user.mouth_is_free() && !issilicon(user)) //Borgs cannot wear mouthgear, bypassing the check.
 			if(!silent)
-				to_chat(user, "<span class='warning'>Your mouth is covered.</span>")
+				to_chat(user, span_warning("Your mouth is covered."))
 			return FALSE
 
 	if(require_user_hands && !user.has_hands() && !issilicon(user)) //Edited to allow silicons to interact.
 		if(!silent)
-			to_chat(user, "<span class='warning'>You don't have hands.</span>")
+			to_chat(user, span_warning("You don't have hands."))
 		return FALSE
 
 	if(COOLDOWN_FINISHED(user, last_interaction_time))
@@ -100,13 +102,13 @@
 /datum/interaction/proc/do_action(mob/living/user, mob/living/target)
 	if(!user_is_target)
 		if(user == target) //tactical href fix
-			to_chat(user, "<span class='warning'>You cannot target yourself.</span>")
+			to_chat(user, span_warning("You cannot target yourself."))
 			return
 	if(get_dist(user, target) > max_distance)
-		to_chat(user, "<span class='warning'>They are too far away.</span>")
+		to_chat(user, span_warning("They are too far away."))
 		return
 	if(needs_physical_contact && !(user.Adjacent(target) && target.Adjacent(user)))
-		to_chat(user, "<span class='warning'>You cannot get to them.</span>")
+		to_chat(user, span_warning("You cannot get to them."))
 		return
 	if(!evaluate_user(user, silent = FALSE))
 		return

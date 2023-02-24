@@ -25,7 +25,7 @@
 
 /datum/reagent/dragons_blood/admin/reaction_mob(mob/living/L, method=TOUCH, reac_volume, show_message = 1, touch_protection = 0)
 	if(method==PATCH || method==INGEST || method==INJECT || (method == VAPOR && prob(min(reac_volume,100)*(1 - touch_protection))))
-		to_chat(user, "<span class='danger'>Power courses through you! You can now shift your form at will.</span>")
+		to_chat(user, span_danger("Power courses through you! You can now shift your form at will."))
 		var/obj/effect/proc_holder/spell/targeted/shapeshift/dragon/D = new
 		var/user.mind.AddSpell(D)
 */ //FIX THIS SHIT

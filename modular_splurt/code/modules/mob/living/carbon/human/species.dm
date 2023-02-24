@@ -1,7 +1,7 @@
 /datum/species/althelp(mob/living/carbon/human/user, mob/living/carbon/human/target, datum/martial_art/attacker_style)
 	if(user == target && istype(user))
 		if(HAS_TRAIT(user, TRAIT_FLOORED))
-			to_chat(user, "<span class='warning'>You can't seem to force yourself up right now!</span>")
+			to_chat(user, span_warning("You can't seem to force yourself up right now!"))
 			return
 	. = ..()
 
@@ -33,3 +33,12 @@
 		*/
 		thirst_rate *= H.physiology.thirst_mod
 		H.adjust_thirst(-thirst_rate)
+
+/datum/species/handle_mutations_and_radiation(mob/living/carbon/human/H)
+	// Check for rad fiend quirk
+	// Check for radiation resist threshold
+	if(HAS_TRAIT(H, TRAIT_RAD_FIEND) && (H.radiation < RAD_BURN_THRESHOLD))
+		// Return without effects
+		return TRUE
+
+	. = ..()

@@ -24,11 +24,13 @@
 		/obj/item/clothing/neck/syntech/collar = 4,
 		/obj/item/storage/fancy/jellybean_pack = 5,
 		/obj/item/storage/box/aphrodisiac_pump = 5,
+		/obj/item/storage/box/bulk_condoms = 10,
 		/obj/item/strapon_strap = 5,
 		/obj/item/restraints/bondage_rope = 5,
 		/obj/item/clothing/under/domina = 5,
 		/obj/item/clothing/under/performer = 3,
-		/obj/item/clothing/shoes/invisiboots = 10 // Added here to go with the Gear Harness
+		/obj/item/clothing/shoes/invisiboots = 10, // Added here to go with the Gear Harness
+		/obj/item/clothing/shoes/highheel_sandals = 3
 	)
 	var/list/extra_contraband = list(
 		//Lewd-Clothes
@@ -40,7 +42,8 @@
 		/obj/item/mesmetron = 3,
 		/obj/item/dildo/flared/huge = 3,
 		/obj/item/clothing/neck/petcollar/locked/holo = 2,
-		/obj/item/storage/box/aphrodisiac_pump/plus = 3
+		/obj/item/storage/box/aphrodisiac_pump/plus = 3,
+		/obj/item/storage/box/implant_disrobe = 3
 	)
 	var/list/extra_premium = list(
 		/obj/item/clothing/mask/muzzle/ballgag = 3
