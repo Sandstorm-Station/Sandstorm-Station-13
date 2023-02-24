@@ -67,7 +67,6 @@
 	// Placeholder variables
 	// These should NOT appear in-game
 	message = "makes an indescribable noise"
-	message_mime = "acts out an unintelligible gesture"
 	var/emote_sound = 'sound/arcade/Boom.ogg'
 
 	// Default time before using another audio emote
@@ -230,6 +229,7 @@
 	key = "speen"
 	key_third_person = "speens"
 	message = "speeeeens!"
+	message_mime = "speeeeens silently!"
 	restraint_check = TRUE
 	mob_type_allowed_typecache = list(/mob/living, /mob/dead/observer)
 	mob_type_ignore_stat_typecache = list(/mob/dead/observer)
@@ -334,7 +334,6 @@
 	key = "twerk"
 	key_third_person = "twerks"
 	message = "shakes it harder than James Russle himself!"
-	muzzle_ignore = TRUE
 	emote_sound = 'modular_splurt/sound/misc/monkey_twerk.ogg'
 	emote_cooldown = 3.2 SECONDS
 
@@ -342,6 +341,7 @@
 	key = "bruh"
 	key_third_person = "bruhs"
 	message = "thinks this is a bruh moment."
+	message_mime = "silently acknowledges the bruh moment."
 	emote_sound = 'modular_splurt/sound/voice/bruh.ogg'
 	emote_cooldown = 0.6 SECONDS
 
@@ -464,6 +464,7 @@
 	key = "eyebrow2"
 	key_third_person = "eyebrows2"
 	message = "<b>raises an eyebrow.</b>"
+	message_mime = "<b>raises an eyebrow with quaking force!</b>"
 	emote_sound = 'modular_splurt/sound/voice/vineboom.ogg'
 	emote_cooldown = 2.9 SECONDS
 
@@ -478,6 +479,7 @@
 	key = "blink2"
 	key_third_person = "blinks2"
 	message = "blinks."
+	message_mime = "blinks expressively."
 	emote_sound = 'modular_splurt/sound/voice/blink.ogg'
 	emote_cooldown = 0.25 SECONDS
 
@@ -539,7 +541,7 @@
 	key = "damn"
 	key_third_person = "damns"
 	message = "is in utter stupor."
-	muzzle_ignore = TRUE
+	message_mime = "appears to be in utter stupor."
 	emote_sound = 'modular_splurt/sound/voice/god_damn.ogg'
 	emote_cooldown = 1.25 SECONDS
 
@@ -548,7 +550,6 @@
 	key_third_person = "spoonfuls"
 	message = "asks for a spoonful."
 	message_mime = "pretends to ask for a spoonful."
-	muzzle_ignore = TRUE
 	emote_sound = 'modular_splurt/sound/voice/spoonful.ogg'
 	// No cooldown var required
 
@@ -557,7 +558,6 @@
 	key_third_person = "omgs"
 	message = "invokes the presence of Jesus Christ."
 	message_mime = "invokes the presence of Jesus Christ through silent prayer."
-	muzzle_ignore = TRUE
 	emote_sound = 'modular_splurt/sound/voice/OMG.ogg'
 	emote_cooldown = 1.6 SECONDS
 
@@ -565,7 +565,7 @@
 	key = "wth"
 	key_third_person = "wths"
 	message = "condemns the abysses of hell!"
-	muzzle_ignore = TRUE
+	message_mime = "silently condemns the abysses of hell!"
 	emote_sound = 'modular_splurt/sound/voice/WTH.ogg'
 	emote_cooldown = 4.4 SECONDS
 
@@ -635,6 +635,7 @@
 	key = "sicko"
 	key_third_person = "sickos"
 	message = "briefly goes sicko mode!"
+	message_mime = "briefly imitates sicko mode!"
 	emote_sound = 'modular_splurt/sound/voice/sicko.ogg'
 	emote_cooldown = 0.8 SECONDS
 
@@ -642,6 +643,7 @@
 	key = "chill"
 	key_third_person = "chills"
 	message = "feels a chill running down their spine..."
+	message_mime = "acts out a chill running down their spine..."
 	emote_sound = 'modular_splurt/sound/voice/waterphone.ogg'
 	emote_cooldown = 3.4 SECONDS
 
@@ -755,6 +757,7 @@
 	key = "missouri"
 	key_third_person = "missouris"
 	message = "has relocated to Missouri."
+	message_mime = "starts thinking about Missouri."
 	emote_sound = 'modular_splurt/sound/voice/missouri.ogg'
 	emote_cooldown = 3.4 SECONDS
 
