@@ -51,3 +51,7 @@
 	path = /obj/item/reagent_containers/hypospray/medipen/bellygrowth
 	ckeywhitelist = list()
 	donator_group_id = DONATOR_GROUP_TIER_1
+
+/datum/gear/backpack/plushbox/deluxe
+	name = "Deluxe Plushie Choice Box"
+	path = /obj/item/choice_beacon/box/plushie/deluxe
