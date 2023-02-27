@@ -351,3 +351,9 @@
 	name = "usa shirt"
 	desc = "Freedom and obesity."
 	icon_state = "undershirt_assblastusa"
+
+/obj/item/clothing/underwear/shirt/corset
+	name = "Corset"
+	desc = ""
+	body_parts_covered = CHEST
+	icon_state = "corset"

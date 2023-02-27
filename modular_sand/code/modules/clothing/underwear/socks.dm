@@ -28,6 +28,11 @@
 	name = "garter"
 	icon_state = "garter"
 
+/obj/item/clothing/underwear/socks/latex
+	name = "Latex socks"
+	desc = "A pair of latex socks."
+	icon_state = "socks_latex"
+
 /obj/item/clothing/underwear/socks/knee
 	name = "knee socks"
 	icon_state = "socks_knee"
@@ -146,6 +151,10 @@
 	name = "fishnet stockings"
 	icon_state = "stockings_fishnet"
 
+/obj/item/clothing/underwear/socks/thigh/stockings/fishnet/alt
+	name = "fishnet stockings (alt)"
+	icon_state = "fishnet_alt"
+
 /obj/item/clothing/underwear/socks/thigh/stockings/green
 	name = "green stockings"
 	icon_state = "stockings_green"
@@ -183,3 +192,48 @@
 	name = "usa thigh high socks"
 	desc = "McDonald's or something."
 	icon_state = "socks_thigh_assblastusa"
+
+/obj/item/clothing/underwear/socks/stir/
+	name = "Normal Stirrups (Greyscale)"
+	desc = ""
+	body_parts_covered = NONE
+	icon_state = "socks_norm-stir"
+
+/obj/item/clothing/underwear/socks/stir/knee
+	name = "Knee-high Stirrups (Greyscale)"
+	icon_state = "socks_knee-stir"
+
+/obj/item/clothing/underwear/socks/stir/knee/rainbow
+	name = "Knee-high Rainbow Stirrups"
+	icon_state = "rainbow_knee-stir"
+
+/obj/item/clothing/underwear/socks/stir/thigh/
+	name = "Thigh-high Stirrups (Greyscale)"
+	body_parts_covered = LEGS
+	icon_state = "socks_thigh-stir"
+
+/obj/item/clothing/underwear/socks/stir/thigh/striped
+	name = "Thigh-high Striped Stirrups"
+	icon_state = "striped_thigh-stir"
+
+/obj/item/clothing/underwear/socks/stir/thigh/gym
+	name = "Thigh-high Stirrups (black with stripe)"
+	icon_state = "striped_thigh-stir"
+
+/obj/item/clothing/underwear/socks/stir/thigh/rainbow
+	name = "Thigh-high Rainbow Stirrups"
+	icon_state = "rainbow_thigh-stir"
+
+/obj/item/clothing/underwear/socks/stir/leggings
+	name = "Leggings Stirrups"
+	body_parts_covered = LEGS | GROIN
+	icon_state = "leggings-stir"
+
+/obj/item/clothing/underwear/socks/stir/leggings/pantyhose
+	name = "Pantyhose Stirrups"
+	icon_state = "pantyhose-stir"
+
+/obj/item/clothing/underwear/socks/stir/leggings/pantyhose/ripped
+	name = "Ripped Pantyhose Stirrups"
+	body_parts_covered = NONE
+	icon_state = "pantyhose_ripped-stir"
