@@ -52,6 +52,26 @@
 	ckeywhitelist = list()
 	donator_group_id = DONATOR_GROUP_TIER_1
 
-/datum/gear/backpack/plushbox/deluxe
+/datum/gear/donator/backpack/plushbox/deluxe
 	name = "Deluxe Plushie Choice Box"
 	path = /obj/item/choice_beacon/box/plushie/deluxe
+	ckeywhitelist = list()
+	donator_group_id = DONATOR_GROUP_TIER_1
+
+/datum/gear/donator/uniform/jester_suit
+	name = "Jester Suit"
+	path = /obj/item/clothing/under/rank/civilian/clown/jester
+	ckeywhitelist = list()
+	donator_group_id = DONATOR_GROUP_TIER_1
+
+/datum/gear/donator/head/jester_hat
+	name = "Jester Hat"
+	path = /obj/item/clothing/head/jester
+	ckeywhitelist = list()
+	donator_group_id = DONATOR_GROUP_TIER_1
+
+/datum/gear/donator/shoes/jester_shoes
+	name = "Jester Shoes"
+	path = /obj/item/clothing/shoes/clown_shoes/jester
+	ckeywhitelist = list()
+	donator_group_id = DONATOR_GROUP_TIER_1
