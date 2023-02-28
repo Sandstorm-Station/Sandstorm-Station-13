@@ -80,7 +80,7 @@
 	icon_state = "socks_knee_assblastusa"
 
 /obj/item/clothing/underwear/socks/latex
-	name = "Latex socks"
+	name = "latex socks"
 	desc = "A pair of latex socks."
 	icon_state = "socks_latex"
 
@@ -194,46 +194,59 @@
 	icon_state = "socks_thigh_assblastusa"
 
 /obj/item/clothing/underwear/socks/stir
-	name = "Normal Stirrups (Greyscale)"
+	name = "polychromatic stirrups"
 	desc = "A type of close-fitting ladies' pant that tapers at the ankle, similar to leggings, except that the material extends to a band, or strap, that is worn under the arch of the foot to hold the pant leg in place."
 	body_parts_covered = NONE
 	icon_state = "socks_norm-stir"
+	var/polychromic = TRUE
+
+/obj/item/clothing/underwear/socks/stir/ComponentInitialize()
+	. = ..()
+	if(polychromic)
+		AddElement(/datum/element/polychromic, list("#ffffff"), 1)
 
 /obj/item/clothing/underwear/socks/stir/knee
-	name = "Knee-high Stirrups (Greyscale)"
+	name = "polychromatic knee-high stirrups"
 	icon_state = "socks_knee-stir"
 
 /obj/item/clothing/underwear/socks/stir/knee/rainbow
-	name = "Knee-high Rainbow Stirrups"
+	name = "knee-high rainbow stirrups"
 	icon_state = "rainbow_knee-stir"
+	polychromic = FALSE
 
 /obj/item/clothing/underwear/socks/stir/leggings
-	name = "Leggings Stirrups"
+	name = "leggings stirrups"
 	body_parts_covered = LEGS | GROIN
 	icon_state = "leggings-stir"
+	polychromic = FALSE
 
 /obj/item/clothing/underwear/socks/stir/leggings/pantyhose
-	name = "Pantyhose Stirrups"
+	name = "pantyhose stirrups"
 	icon_state = "pantyhose-stir"
+	polychromic = FALSE
 
 /obj/item/clothing/underwear/socks/stir/leggings/pantyhose/ripped
-	name = "Ripped Pantyhose Stirrups"
+	name = "ripped pantyhose stirrups"
 	body_parts_covered = NONE
 	icon_state = "pantyhose_ripped-stir"
+	polychromic = FALSE
 
 /obj/item/clothing/underwear/socks/stir/thigh
-	name = "Thigh-high Stirrups (Greyscale)"
+	name = "polychromatic thigh-high stirrups"
 	body_parts_covered = LEGS
 	icon_state = "socks_thigh-stir"
 
 /obj/item/clothing/underwear/socks/stir/thigh/striped
-	name = "Thigh-high Striped Stirrups"
+	name = "thigh-high striped stirrups"
 	icon_state = "striped_thigh-stir"
+	polychromic = FALSE
 
 /obj/item/clothing/underwear/socks/stir/thigh/gym
-	name = "Thigh-high Stirrups (black with stripe)"
+	name = "thigh-high stirrups (black with stripe)"
 	icon_state = "striped_thigh-stir"
+	polychromic = FALSE
 
 /obj/item/clothing/underwear/socks/stir/thigh/rainbow
-	name = "Thigh-high Rainbow Stirrups"
+	name = "thigh-high rainbow stirrups"
 	icon_state = "rainbow_thigh-stir"
+	polychromic = FALSE

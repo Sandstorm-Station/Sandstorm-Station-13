@@ -75,12 +75,12 @@
 	path = /obj/item/clothing/underwear/socks/short
 
 /datum/gear/socks/stir
-	name = "Normal Stirrups (Greyscale)"
+	name = "Polychromic Normal Stirrups"
 	description = "A type of close-fitting ladies' pant that tapers at the ankle, similar to leggings, except that the material extends to a band, or strap, that is worn under the arch of the foot to hold the pant leg in place."
 	path = /obj/item/clothing/underwear/socks/stir
 
 /datum/gear/socks/stir/knee
-	name = "Knee-high Stirrups (Greyscale)"
+	name = "Polychromic Knee-high Stirrups"
 	path = /obj/item/clothing/underwear/socks/stir/knee
 
 /datum/gear/socks/stir/knee/rainbow
@@ -100,7 +100,7 @@
 	path = /obj/item/clothing/underwear/socks/stir/leggings/pantyhose/ripped
 
 /datum/gear/socks/stir/thigh
-	name = "Thigh-high Stirrups (Greyscale)"
+	name = "Polychromic Thigh-high Stirrups"
 	path = /obj/item/clothing/underwear/socks/stir/thigh
 
 /datum/gear/socks/stir/thigh/striped
