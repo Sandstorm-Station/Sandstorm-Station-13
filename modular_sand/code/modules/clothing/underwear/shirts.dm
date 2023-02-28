@@ -22,6 +22,12 @@
 	desc = "Bee yourself!"
 	icon_state = "undershirt_bee"
 
+/obj/item/clothing/underwear/shirt/corset
+	name = "Corset"
+	desc = "A support garment commonly worn to hold and train the torso into a desired shape, traditionally a smaller waist or larger bottom, for aesthetic or medical purposes, or support the breasts."
+	body_parts_covered = CHEST
+	icon_state = "corset"
+
 /obj/item/clothing/underwear/shirt/bluejersey
 	name = "blue jersey shirt"
 	icon_state = "undershirt_bluejersey"
@@ -351,9 +357,3 @@
 	name = "usa shirt"
 	desc = "Freedom and obesity."
 	icon_state = "undershirt_assblastusa"
-
-/obj/item/clothing/underwear/shirt/corset
-	name = "Corset"
-	desc = ""
-	body_parts_covered = CHEST
-	icon_state = "corset"
