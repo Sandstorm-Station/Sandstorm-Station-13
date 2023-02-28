@@ -1,17 +1,17 @@
 /obj/machinery/rnd/production/techfab/department/engineering
-	req_access = list(ACCESS_ENGINE)
+	req_access = list(ACCESS_PRODUCTION_ENGINEERING)
 
 /obj/machinery/rnd/production/techfab/department/service
-	req_one_access = list(ACCESS_BAR, ACCESS_KITCHEN, ACCESS_HYDROPONICS, ACCESS_JANITOR)
+	req_access = list(ACCESS_PRODUCTION_SERVICE)
 
 /obj/machinery/rnd/production/techfab/department/medical
-	req_access = list(ACCESS_MEDICAL)
+	req_access = list(ACCESS_PRODUCTION_MEDICAL)
 
 /obj/machinery/rnd/production/techfab/department/cargo
-	req_access = list(ACCESS_CARGO)
+	req_access = list(ACCESS_PRODUCTION_CARGO)
 
 /obj/machinery/rnd/production/techfab/department/science
-	req_access = list(ACCESS_RESEARCH)
+	req_access = list(ACCESS_PRODUCTION_SCIENCE)
 
 /obj/machinery/rnd/production/techfab/department/security
-	req_access = list(ACCESS_SECURITY)
+	req_access = list(ACCESS_PRODUCTION_SECURITY)
