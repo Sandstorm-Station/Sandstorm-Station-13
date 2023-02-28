@@ -199,14 +199,17 @@
 		"Toxins Researcher",
 		"Research Intern",
 		"Junior Scientist",
-		"Rack Researcher"
+		"Rack Researcher",
+		"Nanite Programmer",
+		"Tetromino Researcher"
 	)
 	LAZYADD(alt_titles, extra_titles)
 	. = ..()
 
 /datum/job/roboticist/New()
 	var/list/extra_titles = list(
-		"Ripperdoc"
+		"Ripperdoc",
+		"MOD Mechanic"
 	)
 	LAZYADD(alt_titles, extra_titles)
 	. = ..()
@@ -325,7 +328,8 @@
 		"Mail Man",
 		"Mail Woman",
 		"Mailroom Technician",
-		"Logistics Technician"
+		"Logistics Technician",
+		"Cryptocurrency Technician"
 	)
 	LAZYADD(alt_titles, extra_titles)
 	. = ..()
@@ -338,6 +342,19 @@
 		"Ashwalker Sex Slave",
 		"Ashwalker Breeder",
 		"Slayer"
+	)
+	LAZYADD(alt_titles, extra_titles)
+	. = ..()
+
+// Prisoner
+/datum/job/prisoner/New()
+	var/list/extra_titles = list(
+		"Low Security Prisoner",
+		"Medium Security Prisoner",
+		"Maximum Security Prisoner",
+		"Supermax Prisoner",
+		"Protective Custody Prisoner",
+		"Prison Slut"
 	)
 	LAZYADD(alt_titles, extra_titles)
 	. = ..()
