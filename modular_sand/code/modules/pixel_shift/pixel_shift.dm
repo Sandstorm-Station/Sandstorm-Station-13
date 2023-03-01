@@ -91,9 +91,15 @@
 	if(pixel_x < -PASSABLE_SHIFT_THRESHOLD)
 		passthroughable |= NORTH | EAST | SOUTH
 
+/mob/living/Login()
+	. = ..()
+	if(is_shifted)
+		client?.pixel_x = pixel_x - base_pixel_x
+		client?.pixel_y = pixel_y - base_pixel_y
+
 /mob/living/CanAllowThrough(atom/movable/mover, turf/target)
 	// Make sure to not allow projectiles of any kind past where they normally wouldn't.
-	if(!istype(mover, /obj/item/projectile) && !mover.throwing && passthroughable & mover.dir)
+	if(!istype(mover, /obj/item/projectile) && !mover.throwing && passthroughable & get_dir(src, mover))
 		return TRUE
 	return ..()
 
