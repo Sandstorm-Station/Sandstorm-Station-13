@@ -14,7 +14,7 @@
 	name = "Candycane Socks"
 	path = /obj/item/clothing/underwear/socks/candycane
 
-/datum/gear/socks/candycane
+/datum/gear/socks/candycane/green
 	name = "Green Candycane Socks"
 	path = /obj/item/clothing/underwear/socks/candycane/green
 
@@ -58,13 +58,62 @@
 	name = "UK Knee Socks"
 	path = /obj/item/clothing/underwear/socks/knee/uk
 
+/datum/gear/socks/latex
+	name = "Latex socks"
+	path = /obj/item/clothing/underwear/socks/latex
+
 /datum/gear/socks/pantyhose
 	name = "Pantyhose"
 	path = /obj/item/clothing/underwear/socks/pantyhose
 
+/datum/gear/socks/pantyhose_ripped
+	name = "Pantyhose - Ripped"
+	path = /obj/item/clothing/underwear/socks/pantyhose_ripped
+
 /datum/gear/socks/short
 	name = "Short Socks"
 	path = /obj/item/clothing/underwear/socks/short
+
+/datum/gear/socks/stir
+	name = "Polychromic Normal Stirrups"
+	description = "A type of close-fitting ladies' pant that tapers at the ankle, similar to leggings, except that the material extends to a band, or strap, that is worn under the arch of the foot to hold the pant leg in place."
+	path = /obj/item/clothing/underwear/socks/stir
+
+/datum/gear/socks/stir/knee
+	name = "Polychromic Knee-high Stirrups"
+	path = /obj/item/clothing/underwear/socks/stir/knee
+
+/datum/gear/socks/stir/knee/rainbow
+	name = "Knee-high Rainbow Stirrups"
+	path = /obj/item/clothing/underwear/socks/stir/knee/rainbow
+
+/datum/gear/socks/stir/leggings
+	name = "Leggings Stirrups"
+	path = /obj/item/clothing/underwear/socks/stir/leggings
+
+/datum/gear/socks/stir/leggings/pantyhose
+	name = "Pantyhose Stirrups"
+	path = /obj/item/clothing/underwear/socks/stir/leggings/pantyhose
+
+/datum/gear/socks/stir/leggings/pantyhose/ripped
+	name = "Ripped Pantyhose Stirrups"
+	path = /obj/item/clothing/underwear/socks/stir/leggings/pantyhose/ripped
+
+/datum/gear/socks/stir/thigh
+	name = "Polychromic Thigh-high Stirrups"
+	path = /obj/item/clothing/underwear/socks/stir/thigh
+
+/datum/gear/socks/stir/thigh/striped
+	name = "Thigh-high Striped Stirrups"
+	path = /obj/item/clothing/underwear/socks/stir/thigh/striped
+
+/datum/gear/socks/stir/thigh/gym
+	name = "Thigh-high Stirrups (black with stripe)"
+	path = /obj/item/clothing/underwear/socks/stir/thigh/gym
+
+/datum/gear/socks/stir/thigh/rainbow
+	name = "Thigh-high Rainbow Stirrups"
+	path = /obj/item/clothing/underwear/socks/stir/thigh/rainbow
 
 /datum/gear/socks/thigh
 	name = "Thigh High Socks"
@@ -150,7 +199,3 @@
 /datum/gear/socks/thigh/usa
 	name = "Thigh High USA Stockings"
 	path = /obj/item/clothing/underwear/socks/thigh/usa
-
-/datum/gear/socks/pantyhose_ripped
-	name = "Pantyhose - Ripped"
-	path = /obj/item/clothing/underwear/socks/pantyhose_ripped

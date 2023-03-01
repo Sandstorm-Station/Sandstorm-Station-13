@@ -7,6 +7,7 @@
 // Trait types
 #define SLAVER_TRAIT			"slaver"
 #define PREGNANCY_TRAIT			"pregnancy"
+#define DUMB_CUM_TRAIT			"dumb4cum"
 
 // Quirk traits
 #define TRAIT_HYPNOTIC_GAZE		"hypnotic_gaze"
@@ -29,4 +30,6 @@
 #define TRAIT_DISTANT			"headpat_hater"
 #define TRAIT_ILLITERATE		"illiterate"
 #define TRAIT_HIDE_BACKPACK		"hide_backpack"
-#define TRAIT_DUMB4CUM			"dumb4cum"
+#define TRAIT_DUMB_CUM			"dumb_for_cum_base"
+#define TRAIT_DUMB_CUM_CRAVE	"dumb_for_cum_need"
+#define TRAIT_RAD_FIEND     	"RadFiend"

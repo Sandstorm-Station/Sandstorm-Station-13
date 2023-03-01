@@ -106,6 +106,11 @@
 	/// A luminescence-shifted value of the last color calculated for chatmessage overlays
 	var/chat_color_darkened
 
+	// Use SET_BASE_PIXEL(x, y) to set these in typepath definitions, it'll handle pixel_x and y for you
+	///Default pixel x shifting for the atom's icon.
+	var/base_pixel_x = 0
+	///Default pixel y shifting for the atom's icon.
+	var/base_pixel_y = 0
 	///Used for changing icon states for different base sprites.
 	var/base_icon_state
 
@@ -1485,7 +1490,7 @@
 			var/extra_lines = 0
 			var/extra_context = ""
 
-			if (isliving(user) || isovermind(user) || isaicamera(user))
+			if ((isliving(user) || isovermind(user) || isaicamera(user)) && (user.client.prefs.screentip_pref != SCREENTIP_PREFERENCE_NO_CONTEXT))
 				var/obj/item/held_item = user.get_active_held_item()
 				var/allow_images = user.client.prefs.screentip_allow_images
 
