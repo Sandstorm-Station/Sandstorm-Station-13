@@ -7,7 +7,8 @@
 	using.hud = src
 	static_inventory += using
 
-	arousal = new /atom/movable/screen/arousal()
-	arousal.icon_state = (owner.client?.prefs.arousable == 1 ? "arousal0" : "")
-	arousal.hud = src
-	infodisplay += arousal
+	if(owner.client?.prefs.arousable)
+		using = new /atom/movable/screen/arousal(null, owner)
+		using.icon_state = "arousal0"
+		using.hud = src
+		infodisplay += using
