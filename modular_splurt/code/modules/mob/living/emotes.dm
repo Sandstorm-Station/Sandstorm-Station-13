@@ -656,6 +656,7 @@
 
 /datum/emote/living/audio/taunt/alt
 	key = "tt2"
+	key_third_person = "taunts2"
 	emote_sound = 'modular_splurt/sound/voice/orchestrahit.ogg'
 
 /datum/emote/living/audio/weh2
