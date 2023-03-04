@@ -341,3 +341,34 @@
 	icon_state = "explorerstripper"
 	mob_overlay_icon = 'modular_splurt/icons/mob/clothing/uniform.dmi'
 	mutantrace_variation = STYLE_DIGITIGRADE|STYLE_NO_ANTHRO_ICON
+
+// Prison Jumpsuit/Jumpskirt override to allow reskins
+/obj/item/clothing/under/rank/prisoner
+	icon = 'modular_splurt/icons/obj/clothing/uniforms.dmi'
+	mob_overlay_icon = 'modular_splurt/icons/mobs/clothing/uniform.dmi'
+	anthro_mob_worn_overlay = 'modular_splurt/icons/mobs/clothing/uniform_digi.dmi'
+	reskin_binding = COMSIG_CLICK_CTRL
+	unique_reskin = list(
+		"max-sec"			= list("icon_state" = "maxprisoner"),
+		"high-sec"			= list("icon_state" = "highprisoner"),
+		"med-sec"			= list("icon_state" = "prisoner"),
+		"low-sec"			= list("icon_state" = "lowprisoner"),
+		"prot-sec"			= list("icon_state" = "protprisoner")
+	)
+
+/obj/item/clothing/under/rank/prisoner/reskin_obj(mob/M)
+	. = ..()
+	name = "prison [current_skin] jumpsuit"
+
+/obj/item/clothing/under/rank/prisoner/skirt
+	unique_reskin = list(
+		"max-sec"			= list("icon_state" = "maxprisoner_skirt"),
+		"high-sec"			= list("icon_state" = "highprisoner_skirt"),
+		"med-sec"			= list("icon_state" = "prisoner_skirt"),
+		"low-sec"			= list("icon_state" = "lowprisoner_skirt"),
+		"prot-sec"			= list("icon_state" = "protprisoner_skirt")
+	)
+
+/obj/item/clothing/under/rank/prisoner/skirt/reskin_obj(mob/M)
+	. = ..()
+	name = "prison [current_skin] jumpskirt"
