@@ -679,6 +679,42 @@
 	emote_sound = 'modular_splurt/sound/voice/waa.ogg'
 	emote_cooldown = 3.5 SECONDS
 
+/datum/emote/living/audio/bark2
+	key = "bark2"
+	key_third_person = "barks2"
+	message = "barks!"
+	message_mime = "acts out a bark!"
+	emote_sound = 'modular_splurt/sound/voice/bark_alt.ogg'
+	emote_cooldown = 0.35 SECONDS
+
+/datum/emote/living/audio/yap
+	key = "yap"
+	key_third_person = "yaps"
+	message = "yaps!"
+	message_mime = "acts out a yap!"
+	emote_sound = 'modular_splurt/sound/voice/yap.ogg'
+	emote_cooldown = 0.28 SECONDS
+
+/datum/emote/living/audio/howl
+	key = "howl"
+	key_third_person = "howls"
+	message = "howls!"
+	message_mime = "acts out a howl!"
+	emote_sound = 'modular_splurt/sound/voice/wolfhowl.ogg'
+	emote_cooldown = 2.04 SECONDS
+
+/datum/emote/living/audio/coyhowl
+	key = "coyhowl"
+	key_third_person = "coyhowls"
+	message = "howls like coyote!"
+	message_mime = "acts out a coyote's howl!"
+	emote_sound = 'modular_splurt/sound/voice/coyotehowl.ogg'
+	emote_cooldown = 2.94 SECONDS // Uses longest sound's time
+
+/datum/emote/living/audio/coyhowl/run_emote(mob/user, params)
+	emote_sound = pick('modular_splurt/sound/voice/coyotehowl.ogg', 'modular_splurt/sound/voice/coyotehowl2.ogg', 'modular_splurt/sound/voice/coyotehowl3.ogg', 'modular_splurt/sound/voice/coyotehowl4.ogg', 'modular_splurt/sound/voice/coyotehowl5.ogg')
+	. = ..()
+
 /datum/emote/living/mlem
 	key = "mlem"
 	key_third_person = "mlems"
