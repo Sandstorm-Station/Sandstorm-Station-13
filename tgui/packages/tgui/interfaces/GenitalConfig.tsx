@@ -26,6 +26,7 @@ type GenitalData = {
   arousal_state: boolean,
   fluid: number,
   possible_equipment_choices: string[],
+  min_size: number,
   max_size: number,
   equipments: Equipment[],
 }
@@ -132,14 +133,14 @@ const SelfConfig = (props, context) => {
     <Stack.Item>
       <Stack grow>
         {genital.img ? (
-        <Stack.Item>
-          <img
-            src={`data:image/jpeg;base64,${genital.img}`}
-            style={{
-              'vertical-align': 'middle',
-              'horizontal-align': 'middle',
-            }} />
-        </Stack.Item>
+          <Stack.Item>
+            <img
+              src={`data:image/jpeg;base64,${genital.img}`}
+              style={{
+                'vertical-align': 'middle',
+                'horizontal-align': 'middle',
+              }} />
+          </Stack.Item>
         ) : null}
         {typeof genital.max_size === "number" ? (
           <Stack.Item>
@@ -169,6 +170,19 @@ const SizeButtons = (props, context) => {
               onChange={(e, value) => act('genital', {
                 genital: genital.key,
                 max_size: value,
+              }
+              )}
+            />
+          </Stack>
+        </Stack.Item>
+        <Stack.Item>
+          <Stack vertical>
+            Min shrink:
+            <NumberInput
+              value={genital.min_size}
+              onChange={(e, value) => act('genital', {
+                genital: genital.key,
+                min_size: value,
               }
               )}
             />
@@ -264,24 +278,24 @@ const Equipments = (props, context) => {
       <Stack.Item>
         <Table mb={1}>
           {items.map((item, index) =>
-            (
-              <Table.Row key={index} className="candystripe">
-                <Table.Cell bold>
-                  {item.name}
-                </Table.Cell>
-                <Table.Cell collapsing textAlign="center">
-                  <Button
-                    fluid
-                    content="Remove"
-                    onClick={() => act('equipment', {
-                      equipment: item.key,
-                      genital: genital.key,
-                      equipment_action: "remove",
-                    })}
-                  />
-                </Table.Cell>
-              </Table.Row>
-            )
+          (
+            <Table.Row key={index} className="candystripe">
+              <Table.Cell bold>
+                {item.name}
+              </Table.Cell>
+              <Table.Cell collapsing textAlign="center">
+                <Button
+                  fluid
+                  content="Remove"
+                  onClick={() => act('equipment', {
+                    equipment: item.key,
+                    genital: genital.key,
+                    equipment_action: "remove",
+                  })}
+                />
+              </Table.Cell>
+            </Table.Row>
+          )
           )}
         </Table>
       </Stack.Item>

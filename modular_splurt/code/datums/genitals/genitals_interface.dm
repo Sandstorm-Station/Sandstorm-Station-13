@@ -80,9 +80,11 @@
 			genital_entry["arousal_state"] = genital.aroused_state
 			if(istype(genital, /obj/item/organ/genital/penis))
 				var/obj/item/organ/genital/penis/peepee = genital
-				genital_entry["max_size"] = peepee.max_length
+				genital_entry["max_size"] = peepee.max_length ? peepee.max_length : 0
+				genital_entry["min_size"] = peepee.min_length ? peepee.min_length : 0
 			else
-				genital_entry["max_size"] = genital.max_size
+				genital_entry["max_size"] = genital.max_size ? genital.max_size : 0
+				genital_entry["min_size"] = genital.min_size ? genital.min_size : 0
 
 		//fluids
 		if(CHECK_BITFIELD(genital.genital_flags, GENITAL_FUID_PRODUCTION))
@@ -159,12 +161,25 @@
 				var/obj/item/organ/genital/genital = locate(params["genital"], self.internal_organs)
 				if(!genital)
 					return FALSE
-				var/new_max_size = params["max_size"]
 				if(istype(genital, /obj/item/organ/genital/penis))
 					var/obj/item/organ/genital/penis/peepee = genital
+					var/new_max_size = clamp(params["max_size"], peepee.length, INFINITY)
 					peepee.max_length = new_max_size
 				else
+					var/new_max_size = clamp(params["max_size"], genital.size, INFINITY)
 					genital.max_size = new_max_size
+				genital.modify_size(0)
+			if("min_size" in params)
+				var/obj/item/organ/genital/genital = locate(params["genital"], self.internal_organs)
+				if(!genital)
+					return FALSE
+				if(istype(genital, /obj/item/organ/genital/penis))
+					var/obj/item/organ/genital/penis/peepee = genital
+					var/new_min_size = clamp(params["min_size"], 0, peepee.length)
+					peepee.min_length = new_min_size
+				else
+					var/new_min_size = clamp(params["min_size"], 0, genital.size)
+					genital.min_size = new_min_size
 				genital.modify_size(0)
 			else
 				return FALSE
