@@ -16,8 +16,8 @@
 	var/prev_size //former size value, to allow update_size() to early return should be there no significant changes.
 	layer_index = BUTT_LAYER_INDEX
 
-/obj/item/organ/genital/butt/modify_size(modifier, min = -INFINITY)
-	var/new_value = clamp(size_cached + modifier, min, max_size)
+/obj/item/organ/genital/butt/modify_size(modifier, min = -INFINITY, max = INFINITY)
+	var/new_value = clamp(size_cached + modifier, min, min(max_size ? max_size : INFINITY, max))
 	if(new_value == size_cached)
 		return
 	prev_size = size_cached

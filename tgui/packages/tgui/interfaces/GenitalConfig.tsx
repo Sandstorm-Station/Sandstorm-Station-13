@@ -8,10 +8,13 @@ import { Window } from '../layouts';
 
 
 type GenitalInfo = {
+  istargetself: boolean,
+  target_name: String,
   genitals: GenitalData[];
 }
 
 type GenitalData = {
+  img: string,
   name: string,
   key: string,
   description: string,
@@ -43,6 +46,11 @@ export const GenitalConfig = (props, context) => {
       theme="hotpink"
       resizable>
       <Window.Content scrollable={false}>
+        {data.target_name ? (
+          <Section>
+            Interacting with <b>{data.target_name}</b>
+          </Section>
+        ) : null}
         {genitals.length ? (
           <>
             <Section title="Genital">
@@ -83,16 +91,8 @@ export const GenitalConfig = (props, context) => {
                         />
                       </Section>
                     </Stack.Item>
-                    <Stack.Item>
-                      <Stack grow>
-                        <Stack.Item>
-                          <SizeButtons />
-                        </Stack.Item>
-                        <Stack.Item grow>
-                          <ToggleSettings />
-                        </Stack.Item>
-                      </Stack>
-                    </Stack.Item>
+                    {data.istargetself
+                      ? <SelfConfig /> : null}
                   </Stack>
                 </Stack.Item>
               </Stack>
@@ -115,12 +115,42 @@ export const GenitalConfig = (props, context) => {
           </>
         ) : (
           <Section align="center">
-            You don&apos;t seem to have any genitals...
-            Or any that you could modify.
+            {data.target_name ? "They" : "You"} don&apos;t seem to have any genitals...
+            Or any that you could interact with.
           </Section>
         )}
       </Window.Content>
     </Window>
+  );
+};
+
+const SelfConfig = (props, context) => {
+  const [tabIndex] = useLocalState(context, 'tabIndex', 0);
+  const { act, data } = useBackend<GenitalInfo>(context);
+  const genital = data.genitals[tabIndex];
+  return (
+    <Stack.Item>
+      <Stack grow>
+        {genital.img ? (
+        <Stack.Item>
+          <img
+            src={`data:image/jpeg;base64,${genital.img}`}
+            style={{
+              'vertical-align': 'middle',
+              'horizontal-align': 'middle',
+            }} />
+        </Stack.Item>
+        ) : null}
+        {typeof genital.max_size === "number" ? (
+          <Stack.Item>
+            <SizeButtons />
+          </Stack.Item>
+        ) : null}
+        <Stack.Item grow>
+          <ToggleSettings />
+        </Stack.Item>
+      </Stack>
+    </Stack.Item>
   );
 };
 
@@ -129,25 +159,23 @@ const SizeButtons = (props, context) => {
   const { act, data } = useBackend<GenitalInfo>(context);
   const genital = data.genitals[tabIndex];
   return (
-    typeof genital.max_size === "number"
-      ? <Section>
-        <Stack>
-          <Stack.Item>
-            <Stack vertical>
-              Max growth:
-              <NumberInput
-                value={genital.max_size}
-                onChange={(e, value) => act('genital', {
-                  genital: genital.key,
-                  max_size: value,
-                }
-                )}
-              />
-            </Stack>
-          </Stack.Item>
-        </Stack>
-      </Section>
-      : null
+    <Section>
+      <Stack>
+        <Stack.Item>
+          <Stack vertical>
+            Max growth:
+            <NumberInput
+              value={genital.max_size}
+              onChange={(e, value) => act('genital', {
+                genital: genital.key,
+                max_size: value,
+              }
+              )}
+            />
+          </Stack>
+        </Stack.Item>
+      </Stack>
+    </Section>
   );
 };
 

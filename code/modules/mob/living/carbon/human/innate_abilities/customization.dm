@@ -117,7 +117,7 @@
 		if(new_snout)
 			H.dna.features["mam_snouts"] = new_snout
 		H.update_body()
-		
+
 	else if (select_alteration == "Wings")
 		var/new_color = input(owner, "Choose your wing color:", "Race change","#"+H.dna.features["wings_color"]) as color|null
 		if(new_color)
@@ -229,7 +229,7 @@
 	else if (select_alteration == "Breast Size")
 		for(var/obj/item/organ/genital/breasts/X in H.internal_organs)
 			qdel(X)
-		var/new_size = input(owner, "Breast Size", "Genital Alteration") as null|anything in GLOB.breast_values
+		var/new_size = input(owner, "Breast Size", "Genital Alteration") as null|anything in CONFIG_GET(keyed_list/breasts_cups_prefs)
 		if(new_size)
 			H.dna.features["breasts_size"] = new_size
 		H.update_genitals()

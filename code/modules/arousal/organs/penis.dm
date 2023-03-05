@@ -21,14 +21,20 @@
 	var/diameter = 4.38
 	var/diameter_ratio = COCK_DIAMETER_RATIO_DEF //0.25; check citadel_defines.dm
 
-/obj/item/organ/genital/penis/modify_size(modifier, min = -INFINITY)
-	var/new_value = clamp(length + modifier, min, max_length)
+/obj/item/organ/genital/penis/modify_size(modifier, min = -INFINITY, max = INFINITY)
+	var/new_value = clamp(length + modifier, min, min(max_length ? max_length : INFINITY, max))
 	if(new_value == length)
 		return
 	prev_length = length
 	length = new_value
 	update()
 	..()
+
+/obj/item/organ/genital/penis/get_fluid()
+	if(linked_organ)
+		return (clamp(linked_organ.fluid_rate * ((world.time - last_orgasmed) / (10 SECONDS)) * linked_organ.fluid_mult, 0, linked_organ.fluid_max_volume) / linked_organ.fluid_max_volume)
+	else
+		return (clamp(fluid_rate * ((world.time - last_orgasmed) / (10 SECONDS)) * fluid_mult, 0, fluid_max_volume) / fluid_max_volume)
 
 /obj/item/organ/genital/penis/update_size(modified = FALSE)
 	if(length <= 0)//I don't actually know what round() does to negative numbers, so to be safe!!
