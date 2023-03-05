@@ -1,5 +1,6 @@
 /obj/item/organ/genital
 	var/max_size = 6
+	var/min_size = 1
 	var/datum/reagents/climax_fluids
 	var/datum/reagent/original_fluid_id
 	var/datum/reagent/default_fluid_id
