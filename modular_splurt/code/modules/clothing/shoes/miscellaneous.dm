@@ -1,3 +1,17 @@
+/obj/item/clothing/shoes/clown_shoes/jester
+	unique_reskin = list(
+		"Original" = list(
+			"icon_state" = "jester_shoes",
+			"icon" = 'icons/obj/clothing/shoes.dmi',
+			"mob_overlay_icon" = null
+		),
+		"Stripped" = list(
+			"icon_state" = "striped_jester_shoes",
+			"icon" = 'modular_splurt/icons/obj/clothing/shoes.dmi',
+			"mob_overlay_icon" = 'modular_splurt/icons/mob/clothing/shoes.dmi'
+		)
+	)
+
 /obj/item/clothing/shoes/footwraps
 	name = "cloth footwraps"
 	desc = "A roll of treated canvas used for wrapping claws or paws."
@@ -35,7 +49,7 @@
 
 /obj/item/clothing/shoes/workboots/toeless
 	name = "toe-less workboots"
-	desc = "A pair of toeless work boots designed for use in industrial settings. Modified for species whose toes have claws."
+	desc = "A pair of toe-less work boots designed for use in industrial settings. Modified for species whose toes have claws."
 	icon = 'modular_splurt/icons/obj/clothing/shoes.dmi'
 	icon_state = "workboots-toeless"
 	mob_overlay_icon = 'modular_splurt/icons/mob/clothing/shoes.dmi'
@@ -43,7 +57,7 @@
 
 /obj/item/clothing/shoes/jackboots/cbrn
 	name = "CBRN boots"
-	desc = "Chemical, Biological, Radiological and Nuclear. Thick black boots design for working in hazardus evniroments."
+	desc = "Chemical, Biological, Radiological and Nuclear. Thick black boots design for working in hazardous environments."
 	icon = 'modular_splurt/icons/obj/clothing/shoes.dmi'
 	icon_state = "cbrnboots"
 	mob_overlay_icon = 'modular_splurt/icons/mob/clothing/shoes.dmi'
@@ -51,15 +65,16 @@
 	resistance_flags = ACID_PROOF
 	rad_flags = RAD_PROTECT_CONTENTS | RAD_NO_CONTAMINATE
 	armor = list("melee" = 5, "bullet" = 0, "laser" = 5,"energy" = 5, "bomb" = 0, "bio" = 100, "rad" = 100, "fire" = 40, "acid" = 100)
+	is_edible = 0
 
 /obj/item/clothing/shoes/jackboots/cbrn/mopp
 	name = "MOPP boots"
-	desc = "Mission Oriented Protective Posture. Thick black boots design for working in hazardus combat evniroments."
+	desc = "Mission Oriented Protective Posture. Thick black boots design for working in hazardous combat environments."
 	armor = list("melee" = 10, "bullet" = 0, "laser" = 10,"energy" = 10, "bomb" = 10, "bio" = 100, "rad" = 100, "fire" = 40, "acid" = 100)
 
 /obj/item/clothing/shoes/jackboots/cbrn/mopp/advance
 	name = "advance MOPP boots"
-	desc = "Mission Oriented Protective Posture. Thick black boots design for working in hazardus combat evniroments. Used by Centcom Officer and ERT staff."
+	desc = "Mission Oriented Protective Posture. Thick black boots design for working in hazardous combat environments. Used by CentCom Officer and ERT staff."
 	armor = list("melee" = 10, "bullet" = 0, "laser" = 10,"energy" = 10, "bomb" = 10, "bio" = 100, "rad" = 100, "fire" = 40, "acid" = 100)
 	clothing_flags = NOSLIP
 
@@ -83,3 +98,15 @@
 	build_path = /obj/item/clothing/shoes/jackboots/cbrn/mopp
 	category = list("Equipment")
 	departmental_flags = DEPARTMENTAL_FLAG_SECURITY
+
+/obj/item/clothing/shoes/highheel_sandals
+	name = "high-heel sandals"
+	desc = "A pair of high-heel sandals"
+	icon = 'modular_splurt/icons/obj/clothing/shoes.dmi'
+	mob_overlay_icon = 'modular_splurt/icons/mob/clothing/shoes.dmi'
+	anthro_mob_worn_overlay = 'modular_splurt/icons/mob/clothing/shoes_digi.dmi'
+	icon_state = "highheel_sandals"
+
+/obj/item/clothing/shoes/highheel_sandals/Initialize()
+	. = ..()
+	AddComponent(/datum/component/squeak, list('modular_splurt/sound/effects/footstep/highheel1.ogg' = 1,'modular_splurt/sound/effects/footstep/highheel2.ogg' = 1), 20)

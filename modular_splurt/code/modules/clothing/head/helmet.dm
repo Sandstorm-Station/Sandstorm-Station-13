@@ -1,4 +1,7 @@
 // GWTB-inspired stuff wooo
+/obj/item/clothing/head/helmet
+	is_edible = 0
+
 /obj/item/clothing/head/helmet/goner
 	name = "trencher helmet"
 	desc = "A No Man's Land-type helmet with purple paint applied."
@@ -15,7 +18,7 @@
 
 /obj/item/clothing/head/helmet/goner/fake/poly
 	name = "polychromic trencher helmet"
-	desc = "A plastic helmet with polychromatic spot."
+	desc = "A plastic helmet with polychromic spot."
 	var/list/poly_colors = list("#D9D9D9")
 
 /obj/item/clothing/head/helmet/goner/fake/poly/ComponentInitialize()
@@ -56,7 +59,7 @@
 
 /obj/item/clothing/head/helmet/goner/officer/fake/poly
 	name = "polychromic trencher officer cap"
-	desc = "A cheap officer cap with polychromatic pin."
+	desc = "A cheap officer cap with polychromic pin."
 	var/list/poly_colors = list("#F2F2F2")
 
 /obj/item/clothing/head/helmet/goner/officer/fake/poly/ComponentInitialize()

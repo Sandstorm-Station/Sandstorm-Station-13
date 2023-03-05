@@ -1,7 +1,7 @@
 //Main code edits
 /// Allows "cyborg" players to change gender at will - Modularised here
 // FUNCTION MOVED TO living.dm AS PROC
-/mob/living/silicon/robot/verb/toggle_gender()
+/mob/living/silicon/robot/toggle_gender()
 	set name = "Set Gender"
 	set desc = "Allows you to set your gender."
 	set category = "Robot Commands"
@@ -41,3 +41,15 @@
 	laws = new /datum/ai_laws/slaver_override
 	laws.associate(src)
 	update_icons()
+
+/mob/living/silicon/robot/Initialize(mapload)
+	.=..()
+	AddComponent(/datum/component/personal_crafting)
+
+
+/mob/living/silicon/robot/pick_module()
+	.=..()
+	var/datum/hud/R = hud_used
+	var/atom/movable/screen/craft/C = locate() in R.static_inventory
+	C.icon = 'icons/mob/screen_midnight.dmi'
+	C.screen_loc = "CENTER+5:5,SOUTH+1:5"

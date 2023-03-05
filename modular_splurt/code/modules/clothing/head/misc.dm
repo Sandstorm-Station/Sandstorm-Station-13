@@ -3,6 +3,20 @@
 	icon = 'modular_splurt/icons/obj/clothing/head.dmi'
 	mob_overlay_icon = 'modular_splurt/icons/mob/clothing/head.dmi'
 
+/obj/item/clothing/head/jester
+	unique_reskin = list(
+		"Original" = list(
+			"icon_state" = "jester_hat",
+			"icon" = 'icons/obj/clothing/hats.dmi',
+			"mob_overlay_icon" = null,
+		),
+		"Stripped" = list(
+			"icon_state" = "striped_jester_hat",
+			"icon" = 'modular_splurt/icons/obj/clothing/head.dmi',
+			"mob_overlay_icon" = 'modular_splurt/icons/mob/clothing/head.dmi',
+		)
+	)
+
 /obj/item/clothing/head/bridgeofficer
 	name = "bridge officer cap"
 	desc = "A generic blue cap for the back ground officer"
@@ -26,7 +40,7 @@
 	name = "press helmet"
 	icon_state = "press_helmet"
 	item_state = "press_helmet"
-	desc = "A lightweight helmet for reporting on security. You swear up and down it is made of kevlar and not old cloth and plastic."
+	desc = "A lightweight helmet for reporting on security. You swear up and down it is made of Kevlar and not old cloth and plastic."
 	icon = 'modular_splurt/icons/obj/clothing/head.dmi'
 	mob_overlay_icon = 'modular_splurt/icons/mob/clothing/head.dmi'
 	flags_inv = HIDEHAIR
@@ -51,6 +65,7 @@
 	flags_inv = HIDEHAIR|HIDEEARS
 	resistance_flags = ACID_PROOF
 	rad_flags = RAD_PROTECT_CONTENTS | RAD_NO_CONTAMINATE
+	is_edible = 0
 
 /obj/item/clothing/head/helmet/cbrn/mopp
 	name = "MOPP hood"
@@ -59,6 +74,7 @@
 	item_state = "mopphood"
 	can_flashlight = 1
 	armor = list("melee" = 40, "bullet" = 30, "laser" = 30,"energy" = 10, "bomb" = 25, "bio" = 100, "rad" = 100, "fire" = 40, "acid" = 100)
+	is_edible = 0
 
 /obj/item/clothing/head/helmet/cbrn/mopp/advance
 	name = "advance MOPP hood"
@@ -66,6 +82,7 @@
 	can_flashlight = 1
 	armor = list("melee" = 50, "bullet" = 40, "laser" = 40,"energy" = 20, "bomb" = 35, "bio" = 110, "rad" = 110, "fire" = 50, "acid" = 110)
 	clothing_flags = NONE
+	is_edible = 0
 
 
 // research nods
@@ -81,7 +98,7 @@
 
 /datum/design/cbrn/mopphood
 	name = "MOPP Hood"
-	desc = "A MOPP hood with an intergreted helmet"
+	desc = "A MOPP hood with an integrated helmet"
 	id = "mopp_hood"
 	build_type = PROTOLATHE
 	materials = list(/datum/material/plastic = 200, /datum/material/uranium = 50, /datum/material/iron = 200)

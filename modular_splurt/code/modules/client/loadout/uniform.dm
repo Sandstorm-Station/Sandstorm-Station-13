@@ -146,3 +146,27 @@
 	path = /obj/item/clothing/under/goner/fake/poly
 	loadout_flags = LOADOUT_CAN_NAME | LOADOUT_CAN_DESCRIPTION | LOADOUT_CAN_COLOR_POLYCHROMIC
 	loadout_initial_colors = list("#E6E6E6")
+
+/datum/gear/uniform/leia_outfit
+	name = "Princess Leia Outfit"
+	path = /obj/item/clothing/under/misc/leia_outfit
+	loadout_flags = LOADOUT_CAN_NAME | LOADOUT_CAN_DESCRIPTION | LOADOUT_CAN_COLOR_POLYCHROMIC
+	loadout_initial_colors = list("#C61818", "#D4AF37")
+
+/datum/gear/uniform/performer/polychromic
+	name = "Polychromic performers one piece"
+	path = /obj/item/clothing/under/performer/polychromic
+	loadout_flags = LOADOUT_CAN_NAME | LOADOUT_CAN_DESCRIPTION | LOADOUT_CAN_COLOR_POLYCHROMIC
+	loadout_initial_colors = list("#ffffff")
+
+/datum/gear/uniform/stripper/security
+	name = "Security Stripper Outfit"
+	path = /obj/item/clothing/under/rank/security/stripper
+	subcategory = LOADOUT_SUBCATEGORY_UNIFORM_JOBS
+	restricted_roles = list("Security Officer", "Warden", "Head Of Security")
+
+/datum/gear/uniform/stripper/explorer
+	name = "Explorer Stripper Outfit"
+	path = /obj/item/clothing/under/rank/cargo/miner/lavaland/stripper
+	subcategory = LOADOUT_SUBCATEGORY_UNIFORM_JOBS
+	restricted_roles = list("Shaft Miner")

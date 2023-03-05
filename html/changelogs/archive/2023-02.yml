@@ -1,0 +1,172 @@
+2023-02-02:
+  LeDrascol:
+  - tweak: Hypnotic Gaze checks for ten new conditions
+  - tweak: Hypnotic Gaze supports personal pronouns
+  - tweak: Hypnotic Gaze accounts for non-con preferences
+  - balance: Hypnotic Gaze interaction time reduced from 12s to 5s
+  - balance: Hypnotic Gaze can be blocked by eye protection and mind shielding
+  - rscadd: Added quirk Estrous Detection
+  - rscadd: Added quirk In Estrous
+  - tweak: Ashwalkers now spawn with the Estrous Detection quirk
+  - tweak: Ashwalkers will now gain the In Estrous quirk during some rounds
+2023-02-03:
+  LeDrascol:
+  - code_imp: Removed obsolete entries for In Heat and Estrus Detection
+  - rscadd: Added the Imaginary Friend Action Figure
+  - rscadd: Added the Dissociative Mirror
+  - tweak: Restored techweb node and circuit printing for Cryptominers
+2023-02-04:
+  AshTheDerg:
+  - rscadd: Added 10 new varieties of Milkshake
+  LeDrascol:
+  - rscadd: Added variant of Subtle verb with typing indicator
+  - tweak: Default binding for Subtle is now Control-5
+2023-02-07:
+  LeDrascol:
+  - tweak: Added gain, lose, and medical text to werewolf quirk
+  - tweak: Updated werewolf ability tooltip
+  - tweak: Changed body part sprites used for werewolf
+  - tweak: Werewolves cannot transform while asleep, restrained, or stunned
+  - tweak: Werewolf transformation now has a five second cooldown
+  - tweak: Werewolf species name prefix is now based on gender
+  - tweak: Werewolves can be slime and jelly entities
+  - tweak: Werewolves will gain an appropriate taur body if the owner had one
+  - bugfix: Werewolves cannot transform while dead
+  - bugfix: Werewolf transformation organ bug fixed for some species
+  - bugfix: Werewolf old species attributes are no longer lost on action removal
+  - bugfix: Werewolves custom species name properly applies
+  - bugfix: Werewolves will regain exotic eye types
+  - code_imp: Added a werewolf quirk trait
+  - refactor: Updated werewolf quirk variable names
+  - tweak: Added Bluespace Light Replacer to the Science protolathe
+  The-Real-Goku:
+  - rscadd: Added persistent photo album.
+  - rscadd: Added custom name for player album. ([Player name]'s album)
+  - rscadd: Added specific names for the photo albums located in the Heads of Departments'
+      lockers. (Ex. Captain, HoP...)
+  - bugfix: Fixed in-hand sprite for Photo Album. (They looked like briefcases before).
+  zeroisthebiggay:
+  - bugfix: ai research
+2023-02-09:
+  BongaTheProto:
+  - rscadd: New tail, Snake Tail (Large)
+  - tweak: Now the max amount of character slots can be configured, and donators get
+      more slots
+  - bugfix: Photographer quirk will no longer fuck over your neck loadout items
+  Comicao1:
+  - rscadd: Added a few icons and code. Not modularized because it's not possible.
+  - rscadd: Adds the inflate verb.
+2023-02-10:
+  Comicao1:
+  - rscadd: Beach ball may be inserted a vibrator in it.
+  - rscadd: Syndicate beach ball also might be bought in the traitor's uplink.
+2023-02-11:
+  SandPoot:
+  - refactor: Interaction menu is no longer stored in your mind, and should clear
+      references and all properly when deleting.
+  WoolyAypa:
+  - rscadd: Added a new polychromic Princess Leia outfits to the ClothesMate (and
+      loadout)
+  - rscadd: Added a polychromic version of the "Performers one piece" to the ClothesMate
+      (and loadout)
+  - rscadd: Added high-heel sandals to the KinkMate (and loadout)
+2023-02-12:
+  BongaTheProto:
+  - bugfix: snake tail (large) is now available for humans and lizards too
+  WoolyAypa:
+  - bugfix: Space princess outfit now can be used along with digitigrade legs
+  - rscadd: Added some of the old dullahan stuff to the new one
+  - bugfix: Fixed the overlay glitches with the new dullahan quirk
+  - bugfix: Space princess outfit and the polychromic performers one piece can now
+      be colored in the loadout
+2023-02-13:
+  Neyusha:
+  - rscadd: Added stowaway role
+2023-02-14:
+  LeDrascol:
+  - tweak: SSD players are automatically sent to cryo after 40 minutes
+  - code_imp: Reverted non-modular SPLURT edits to TETRIS
+  - balance: T.E.T.R.I.S. arcade machine now generates research points if used by
+      scientists
+  - balance: T.E.T.R.I.S. machine maximum score, prize count, and points payout are
+      now limited
+  - balance: T.E.T.R.I.S. machine can only dispense rewards once per configured time
+      threshold
+  - server: Added configuration settings for the T.E.T.R.I.S. arcade machine
+2023-02-16:
+  Zattarra:
+  - rscadd: Added the shortcrop, longcrop, and formalcrop.
+  - rscadd: Added croptops to loadout.
+  - rscadd: Added croptops to clothesmate.
+  - imageadd: Gave the croptops sprites.
+2023-02-17:
+  LeDrascol:
+  - tweak: Hexacamphor overdose will remove the In Estrous quirk
+2023-02-18:
+  KeplerWasTaken:
+  - rscadd: A new drink, the Ion Storm, made with 5 parts quadruple sec, 2 parts bastion
+      bourbon, resulting in 10 units.
+  LeDrascol:
+  - rscdel: Removed techweb entry for Infective Exo-Locomotion nanites
+2023-02-19:
+  LeDrascol:
+  - bugfix: Fixed techweb exploit with 357 speed loader
+  - rscadd: Added more feedback messages to Cryptominer account changing
+  - tweak: Standard cryptominers will report account changes on Cargo radio
+  - balance: Setting a cryptominer's account now takes five seconds
+  - admin: Added game logging for Cryptominer account changes
+  - balance: Production machines now check ID cards for access
+  - balance: R&D console starts locked by default
+  - config: Added new configuration options for production machine access
+  - tweak: In Estrous examine text is now based on the holder's reproductive organs
+  - tweak: In Estrous gain text no longer implies the holder intends to be an organ
+      recipient
+  - code_imp: Added signals for organ insertion and removal
+  - tweak: The Gear Harness is now non-covering
+  - rscadd: Added Synthetic species flavor text for In Estrous
+  - tweak: In Estrous no longer requires both female organs
+  - code_imp: In Estrous examine text uses English lists
+  SandPoot:
+  - imageadd: Changed screentips icons to something a lot fancier unified with the
+      LMB / RMB text.
+2023-02-20:
+  LeDrascol:
+  - refactor: Refactored trait defines
+2023-02-21:
+  SandPoot:
+  - tweak: Tweaked pixelshifting. (Default keybinding is B, check your keybinds!)
+  - bugfix: Duct pipes will always have the same cost no matter where you make it.
+  - bugfix: Hand-made duct pipes will properly stack with machine made ones.
+2023-02-22:
+  BongaTheProto:
+  - tweak: The pixelfishing keybind is now B, although you can use use the previous
+      ctrl+shift keybinds. Please make sure you check your keybinds!
+2023-02-23:
+  Comicao1:
+  - tweak: Wendigos may now work in a proper way, and are also able to enslave people
+      through sex while grabbing them.
+  LeDrascol:
+  - rscadd: 'Added positive quirk: Rad Fiend'
+  WoolyAypa:
+  - rscadd: Added a tajaran snout option
+  - rscadd: Added an alt version of the dragon wings
+  - rscadd: Added a stripper version of the explorer jumpsuit
+  - rscadd: Added the security stripper outfit in the loadout
+  - tweak: Now the security stripper outfit can be used with digitigrade
+2023-02-24:
+  LeDrascol:
+  - tweak: Auto-cryo now ignores dead bodies
+  - admin: Auto-cryo now logs all cases of mobs being ignored
+  - bugfix: Dumb For Cum quirk can be added and removed mid-round
+  - balance: Dumb For Cum quirk craving now causes pacifism and dumbness
+2023-02-27:
+  WoolyAypa:
+  - rscadd: Added the character setup missing breast sizes for the quad shape
+  - rscadd: Added the character setup missing breast sizes for the sextuple shape
+2023-02-28:
+  LeDrascol:
+  - rscadd: 'Added new scientist job titles: Nanite Programmer, Tetromino Researcher'
+  - rscadd: 'Added new roboticist job titles: MOD Mechanic'
+  - rscadd: 'Added new prisoner job titles: Low Security Prisoner, Medium Security
+      Prisoner, Maximum Security Prisoner, Supermax Prisoner, Prison Slut'
+  - rscadd: 'Added new cargo job titles: Cryptocurrency Technician'
