@@ -344,16 +344,13 @@
 
 // Prison Jumpsuit/Jumpskirt override to allow reskins
 /obj/item/clothing/under/rank/prisoner
-	icon = 'modular_splurt/icons/obj/clothing/uniforms.dmi'
-	mob_overlay_icon = 'modular_splurt/icons/mobs/clothing/uniform.dmi'
-	anthro_mob_worn_overlay = 'modular_splurt/icons/mobs/clothing/uniform_digi.dmi'
 	reskin_binding = COMSIG_CLICK_CTRL
 	unique_reskin = list(
-		"max-sec"			= list("icon_state" = "maxprisoner"),
-		"high-sec"			= list("icon_state" = "highprisoner"),
+		"max-sec"			= list("icon_state" = "maxprisoner", "icon" = 'modular_splurt/icons/obj/clothing/uniforms.dmi', "mob_overlay_icon" = 'modular_splurt/icons/mobs/clothing/uniform.dmi', "anthro_mob_worn_overlay" = 'modular_splurt/icons/mobs/clothing/uniform_digi.dmi'),
+		"high-sec"			= list("icon_state" = "highprisoner", "icon" = 'modular_splurt/icons/obj/clothing/uniforms.dmi', "mob_overlay_icon" = 'modular_splurt/icons/mobs/clothing/uniform.dmi', "anthro_mob_worn_overlay" = 'modular_splurt/icons/mobs/clothing/uniform_digi.dmi'),
 		"med-sec"			= list("icon_state" = "prisoner"),
-		"low-sec"			= list("icon_state" = "lowprisoner"),
-		"prot-sec"			= list("icon_state" = "protprisoner")
+		"low-sec"			= list("icon_state" = "lowprisoner", "icon" = 'modular_splurt/icons/obj/clothing/uniforms.dmi', "mob_overlay_icon" = 'modular_splurt/icons/mobs/clothing/uniform.dmi', "anthro_mob_worn_overlay" = 'modular_splurt/icons/mobs/clothing/uniform_digi.dmi'),
+		"prot-sec"			= list("icon_state" = "protprisoner", "icon" = 'modular_splurt/icons/obj/clothing/uniforms.dmi', "mob_overlay_icon" = 'modular_splurt/icons/mobs/clothing/uniform.dmi', "anthro_mob_worn_overlay" = 'modular_splurt/icons/mobs/clothing/uniform_digi.dmi')
 	)
 
 /obj/item/clothing/under/rank/prisoner/reskin_obj(mob/M)
@@ -362,11 +359,11 @@
 
 /obj/item/clothing/under/rank/prisoner/skirt
 	unique_reskin = list(
-		"max-sec"			= list("icon_state" = "maxprisoner_skirt"),
-		"high-sec"			= list("icon_state" = "highprisoner_skirt"),
+		"max-sec"			= list("icon_state" = "maxprisoner_skirt", "icon" = 'modular_splurt/icons/obj/clothing/uniforms.dmi', "mob_overlay_icon" = 'modular_splurt/icons/mobs/clothing/uniform.dmi'),
+		"high-sec"			= list("icon_state" = "highprisoner_skirt", "icon" = 'modular_splurt/icons/obj/clothing/uniforms.dmi', "mob_overlay_icon" = 'modular_splurt/icons/mobs/clothing/uniform.dmi'),
 		"med-sec"			= list("icon_state" = "prisoner_skirt"),
-		"low-sec"			= list("icon_state" = "lowprisoner_skirt"),
-		"prot-sec"			= list("icon_state" = "protprisoner_skirt")
+		"low-sec"			= list("icon_state" = "lowprisoner_skirt", "icon" = 'modular_splurt/icons/obj/clothing/uniforms.dmi', "mob_overlay_icon" = 'modular_splurt/icons/mobs/clothing/uniform.dmi'),
+		"prot-sec"			= list("icon_state" = "protprisoner_skirt", "icon" = 'modular_splurt/icons/obj/clothing/uniforms.dmi', "mob_overlay_icon" = 'modular_splurt/icons/mobs/clothing/uniform.dmi')
 	)
 
 /obj/item/clothing/under/rank/prisoner/skirt/reskin_obj(mob/M)
