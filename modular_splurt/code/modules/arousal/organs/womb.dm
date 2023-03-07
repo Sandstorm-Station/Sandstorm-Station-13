@@ -1,6 +1,12 @@
 /obj/item/organ/genital/womb
 	default_fluid_id = /datum/reagent/consumable/semen/femcum
 
+/obj/item/organ/genital/womb/get_fluid()
+	if(linked_organ)
+		return (clamp(fluid_rate * ((world.time - linked_organ.last_orgasmed) / (10 SECONDS)) * fluid_mult, 0, fluid_max_volume) / fluid_max_volume)
+	else
+		return 0
+
 /obj/item/organ/genital/womb/get_features(mob/living/carbon/human/H)
 	var/datum/dna/D = H.dna
 	if(D.features["womb_fluid"])

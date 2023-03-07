@@ -192,10 +192,11 @@
 /obj/item/organ/genital/proc/generate_fluid(datum/reagents/R)
 	var/amount = get_fluid()
 	R.clear_reagents()
-	R.maximum_volume = fluid_max_volume
 	if(fluid_id)
+		R.maximum_volume = fluid_max_volume
 		R.add_reagent(fluid_id,amount, owner.get_blood_data())
 	else if(linked_organ?.fluid_id)
+		R.maximum_volume = linked_organ.fluid_max_volume
 		R.add_reagent(linked_organ.fluid_id,amount, owner.get_blood_data())
 	return TRUE
 

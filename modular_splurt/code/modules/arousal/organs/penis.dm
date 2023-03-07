@@ -5,10 +5,7 @@
 	fluid_rate += ((length - initial(length))/10)*(owner ? get_size(owner) : 1)
 
 /obj/item/organ/genital/penis/get_fluid()
-	if(linked_organ)
-		return (clamp(linked_organ.fluid_rate * ((world.time - last_orgasmed) / (10 SECONDS)) * linked_organ.fluid_mult, 0, linked_organ.fluid_max_volume) / linked_organ.fluid_max_volume)
-	else
-		return ..()
+	return linked_organ.get_fluid()
 
 /obj/item/organ/genital/penis/climax_modify_size(mob/living/partner, obj/item/organ/genital/source_gen)
 	if(!(owner.client?.prefs.cit_toggles & PENIS_ENLARGEMENT))
