@@ -15,3 +15,38 @@
   - rscadd: Added mime messages for all SPLURT audio emotes
   - tweak: All SPLURT audio emotes now use length-based cooldowns
   - refactor: Refactored SPLURT audio emote code
+  - bugfix: Fixed Cargo protolathe access (MAILSORTING instead of CARGO)
+2023-03-05:
+  thux-tk:
+  - rscadd: new arousal meter to humanoid mob's interface
+2023-03-06:
+  Anonymous:
+  - rscadd: 'Emotes: \*bark2; \*yap; \*howl; \*coyhowl.'
+2023-03-07:
+  Anonymous:
+  - rscadd: 'I am gonna sugarcoat it: \*tt.'
+  LeDrascol:
+  - rscadd: Added Bloodfledge quirk examine text
+  - rscadd: Added Bloodfledge integration with Dumb trait
+  - rscadd: Added Bloodfledge body part region targeting support
+  - rscadd: Added Bloodfledge coffin examine text and usage message
+  - rscadd: Added warning to flight potion for bloodfledge users
+  - tweak: Bloodfledge quirk actions use proper cooldown buttons
+  - tweak: Bloodfledge Bite failure splatters blood onto participants
+  - tweak: Bloodfledge Bite can transfer some of the target's reagents
+  - tweak: Bloodfledge Bite interaction time is skipped for targets with no blood
+  - tweak: Drinking blood now grants Strange Nutriment instead of nourishing directly
+  - balance: Bloodfledge robots will not gain the Revive ability (technical issues)
+  - balance: Bloodfledge Revive has a five-minute cooldown
+  - balance: Bloodfledge Revive will always work regardless of health
+  - balance: Bloodfledge Bite cannot drink from mechanical limbs
+  - balance: Bloodfledge Bite will not work directly on Synthetic Lizard faces
+  - balance: Bloodfledge Bite failure triggers cooldown to prevent abuse
+  - balance: Bloodfledge Bite failure causes minor damage and bleeding to compatible
+      regions
+  - balance: Bloodfledge Bite failure only drops 20% of bite amount (from 100%)
+  - balance: Bloodfledge abilities do not function under anti-magic, garlic, or a
+      staked heart
+  - balance: Blood must be ingested to gain nutrition
+  - balance: Blood ingestion will NOT grant nutrition if used by it's original donor
+  - balance: Blood ingestion will not clear disgust or stamina loss
