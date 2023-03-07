@@ -61,9 +61,23 @@
 		// Allow use
 		return TRUE
 
-	// User does not have access
+	// User does not have normal access
+	// Check for ORM access
+	if(ACCESS_MINERAL_STOREROOM in user_id.access)
+		// Check if already on material screen
+		if(machine_target.screen != RESEARCH_FABRICATOR_SCREEN_MATERIALS)
+			// Warn in local chat
+			machine_target.say("Access limited: Configuring for ORM remote control mode.")
+
+			// Set to material screen
+			machine_target.screen = RESEARCH_FABRICATOR_SCREEN_MATERIALS
+
+		// Allow use
+		return TRUE
+
+	// User has no access
 	// Warn in local chat, then return
-	machine_target.say("Access denied: No valid departmental credentials detected.")
+	machine_target.say("Access denied: No valid departmental or mineral credentials detected.")
 	return FALSE
 
 #undef JOB_MINIMAL_ACCESS
