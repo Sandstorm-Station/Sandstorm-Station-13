@@ -348,7 +348,7 @@
 	unique_reskin = list(
 		"max-sec"			= list("icon_state" = "maxprisoner", "icon" = 'modular_splurt/icons/obj/clothing/uniforms.dmi', "mob_overlay_icon" = 'modular_splurt/icons/mobs/clothing/uniform.dmi', "anthro_mob_worn_overlay" = 'modular_splurt/icons/mobs/clothing/uniform_digi.dmi'),
 		"high-sec"			= list("icon_state" = "highprisoner", "icon" = 'modular_splurt/icons/obj/clothing/uniforms.dmi', "mob_overlay_icon" = 'modular_splurt/icons/mobs/clothing/uniform.dmi', "anthro_mob_worn_overlay" = 'modular_splurt/icons/mobs/clothing/uniform_digi.dmi'),
-		"med-sec"			= list("icon_state" = "prisoner"),
+		"med-sec"			= list("icon_state" = "prisoner", "icon" = 'icons/obj/clothing/uniforms.dmi', "mob_overlay_icon" = null, "anthro_mob_worn_overlay" = null),
 		"low-sec"			= list("icon_state" = "lowprisoner", "icon" = 'modular_splurt/icons/obj/clothing/uniforms.dmi', "mob_overlay_icon" = 'modular_splurt/icons/mobs/clothing/uniform.dmi', "anthro_mob_worn_overlay" = 'modular_splurt/icons/mobs/clothing/uniform_digi.dmi'),
 		"prot-sec"			= list("icon_state" = "protprisoner", "icon" = 'modular_splurt/icons/obj/clothing/uniforms.dmi', "mob_overlay_icon" = 'modular_splurt/icons/mobs/clothing/uniform.dmi', "anthro_mob_worn_overlay" = 'modular_splurt/icons/mobs/clothing/uniform_digi.dmi')
 	)
@@ -361,7 +361,7 @@
 	unique_reskin = list(
 		"max-sec"			= list("icon_state" = "maxprisoner_skirt", "icon" = 'modular_splurt/icons/obj/clothing/uniforms.dmi', "mob_overlay_icon" = 'modular_splurt/icons/mobs/clothing/uniform.dmi'),
 		"high-sec"			= list("icon_state" = "highprisoner_skirt", "icon" = 'modular_splurt/icons/obj/clothing/uniforms.dmi', "mob_overlay_icon" = 'modular_splurt/icons/mobs/clothing/uniform.dmi'),
-		"med-sec"			= list("icon_state" = "prisoner_skirt"),
+		"med-sec"			= list("icon_state" = "prisoner_skirt",  "icon" = 'icons/obj/clothing/uniforms.dmi', "mob_overlay_icon" = null, "anthro_mob_worn_overlay" = null),
 		"low-sec"			= list("icon_state" = "lowprisoner_skirt", "icon" = 'modular_splurt/icons/obj/clothing/uniforms.dmi', "mob_overlay_icon" = 'modular_splurt/icons/mobs/clothing/uniform.dmi'),
 		"prot-sec"			= list("icon_state" = "protprisoner_skirt", "icon" = 'modular_splurt/icons/obj/clothing/uniforms.dmi', "mob_overlay_icon" = 'modular_splurt/icons/mobs/clothing/uniform.dmi')
 	)
