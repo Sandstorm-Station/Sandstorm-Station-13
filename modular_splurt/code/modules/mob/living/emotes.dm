@@ -647,6 +647,18 @@
 	emote_sound = 'modular_splurt/sound/voice/waterphone.ogg'
 	emote_cooldown = 3.4 SECONDS
 
+/datum/emote/living/audio/taunt
+	key = "tt"
+	key_third_person = "taunts"
+	message = "strikes a pose!"
+	message_param = "taunts %t!"
+	emote_sound = 'modular_splurt/sound/voice/phillyhit.ogg'
+
+/datum/emote/living/audio/taunt/alt
+	key = "tt2"
+	key_third_person = "taunts2"
+	emote_sound = 'modular_splurt/sound/voice/orchestrahit.ogg'
+
 /datum/emote/living/audio/weh2
 	key = "weh2"
 	key_third_person = "wehs2"
