@@ -6,3 +6,6 @@
 
 /datum/gear/donator/uniform
 	slot = ITEM_SLOT_ICLOTHING
+
+/datum/gear/donator/shoes
+	slot = ITEM_SLOT_FEET

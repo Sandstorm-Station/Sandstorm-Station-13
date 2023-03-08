@@ -125,42 +125,80 @@
 
 /datum/quirk/dumb4cum
 	name = "Dumb For Cum"
-	desc = "For one reason or another, you're totally obsessed with cum. The heat of it, the smell... its taste... It's quite simply euphoric."
+	desc = "For one reason or another, you're totally obsessed with seminal fluids. The heat of it, the smell... the taste... It's quite simply euphoric."
 	value = 0
-	gain_text = "<span class='notice'>You suddenly start craving some seed inside of you!<span>"
-	lose_text = span_danger("Cum didn't even taste that good, anyways.")
+	mob_trait = TRAIT_DUMB_CUM
+	gain_text = span_notice("You feel an insatiable craving for seminal fluids.")
+	lose_text = span_notice("Cum didn't even taste that good, anyways.")
 	medical_record_text = "Patient seems to have an unhealthy psychological obsession with seminal fluids."
-	var/craving_after = 15 MINUTES
+	mood_quirk = TRUE
 	var/timer
+	var/timer_trigger = 15 MINUTES
 
-/datum/quirk/dumb4cum/on_spawn()
-	. = ..()
-	timer = addtimer(CALLBACK(src, .proc/crave), craving_after, TIMER_STOPPABLE)
+/datum/quirk/dumb4cum/add()
+	// Set timer
+	timer = addtimer(CALLBACK(src, .proc/crave), timer_trigger, TIMER_STOPPABLE)
+
+/datum/quirk/dumb4cum/remove()
+	// Remove status trait
+	REMOVE_TRAIT(quirk_holder, TRAIT_DUMB_CUM_CRAVE, DUMB_CUM_TRAIT)
+
+	// Remove penalty traits
+	REMOVE_TRAIT(quirk_holder, TRAIT_ILLITERATE, DUMB_CUM_TRAIT)
+	REMOVE_TRAIT(quirk_holder, TRAIT_DUMB, DUMB_CUM_TRAIT)
+	REMOVE_TRAIT(quirk_holder, TRAIT_PACIFISM, DUMB_CUM_TRAIT)
+
+	// Remove mood event
+	SEND_SIGNAL(quirk_holder, COMSIG_CLEAR_MOOD_EVENT, QMOOD_DUMB_CUM)
+
+	// Remove timer
+	deltimer(timer)
 
 /datum/quirk/dumb4cum/proc/crave()
-	var/list/hungry_phrases = list(
-									"Your stomach rumbles a bit and cum comes to your mind.",\
-									"Urgh, you should really get some cum...",\
-									"Some jizz wouldn't be so bad right now!",\
-									"You're starting to long for some more cum..."
-								  )
-	to_chat(quirk_holder, span_love("[pick(hungry_phrases)]"))
-
+	// Check if conscious
 	if(quirk_holder.stat == CONSCIOUS)
+		// Display emote
 		quirk_holder.emote("sigh")
-	//ADD_TRAIT(quirk_holder, TRAIT_PACIFISM, type)
-	ADD_TRAIT(quirk_holder, TRAIT_DUMB4CUM, type)
-	SEND_SIGNAL(quirk_holder, COMSIG_ADD_MOOD_EVENT, "cum_craving", /datum/mood_event/cum_craving)
+
+		// Define list of phrases
+		var/list/trigger_phrases = list(
+										"Your stomach rumbles a bit and cum comes to your mind.",\
+										"Urgh, you should really get some cum...",\
+										"Some jizz wouldn't be so bad right now!",\
+										"You're starting to long for some more cum..."
+									  )
+		// Alert user in chat
+		to_chat(quirk_holder, span_love("[pick(trigger_phrases)]"))
+
+	// Add active status trait
+	ADD_TRAIT(quirk_holder, TRAIT_DUMB_CUM_CRAVE, DUMB_CUM_TRAIT)
+
+	// Add illiterate, dumb, and pacifist
+	ADD_TRAIT(quirk_holder, TRAIT_ILLITERATE, DUMB_CUM_TRAIT)
+	ADD_TRAIT(quirk_holder, TRAIT_DUMB, DUMB_CUM_TRAIT)
+	ADD_TRAIT(quirk_holder, TRAIT_PACIFISM, DUMB_CUM_TRAIT)
+
+	// Add negative mood effect
+	SEND_SIGNAL(quirk_holder, COMSIG_ADD_MOOD_EVENT, QMOOD_DUMB_CUM, /datum/mood_event/cum_craving)
 
 /datum/quirk/dumb4cum/proc/uncrave()
-	//REMOVE_TRAIT(quirk_holder, TRAIT_PACIFISM, type)
-	REMOVE_TRAIT(quirk_holder, TRAIT_DUMB4CUM, type)
-	SEND_SIGNAL(quirk_holder, COMSIG_CLEAR_MOOD_EVENT, "cum_craving")
-	SEND_SIGNAL(quirk_holder, COMSIG_ADD_MOOD_EVENT, "cum_stuffed", /datum/mood_event/cum_stuffed)
+	// Remove active status trait
+	REMOVE_TRAIT(quirk_holder, TRAIT_DUMB_CUM_CRAVE, DUMB_CUM_TRAIT)
 
+	// Remove penalty traits
+	REMOVE_TRAIT(quirk_holder, TRAIT_ILLITERATE, DUMB_CUM_TRAIT)
+	REMOVE_TRAIT(quirk_holder, TRAIT_DUMB, DUMB_CUM_TRAIT)
+	REMOVE_TRAIT(quirk_holder, TRAIT_PACIFISM, DUMB_CUM_TRAIT)
+
+	// Add positive mood event
+	SEND_SIGNAL(quirk_holder, COMSIG_ADD_MOOD_EVENT, QMOOD_DUMB_CUM, /datum/mood_event/cum_stuffed)
+
+	// Remove timer
 	deltimer(timer)
 	timer = null
-	timer = addtimer(CALLBACK(src, .proc/crave), craving_after, TIMER_STOPPABLE)
+
+	// Add new timer
+	timer = addtimer(CALLBACK(src, .proc/crave), timer_trigger, TIMER_STOPPABLE)
 
 // Small issue with this. If the quirk holder has NO_HUNGER or NO_THIRST, this trait can still be taken and they will still get the benefits of it.
 // It's unlikely that someone will be both, especially at round start, but vampirism makes me wary of having these separate.
