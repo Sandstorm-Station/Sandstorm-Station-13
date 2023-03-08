@@ -33,51 +33,68 @@
 	// This is intended for low populations
 	if((!PROTOLOCK_DURING_LOWPOP) && (!JOB_MINIMAL_ACCESS))
 		// Allow unrestricted use
-		return TRUE
+		return PROTOLOCK_ACCESS_LOWPOP
 
-	// Define machine user
-	var/mob/living/carbon/human/machine_user = src
-
-	// Check if user exists
-	if(!istype(machine_user))
-		return TRUE
+	// Check if user has access to this machine
+	if(machine_target.allowed(src))
+		return PROTOLOCK_ACCESS_NORMAL
 
 	// Define user ID card
-	var/obj/item/card/id/user_id = machine_user.get_idcard()
+	var/obj/item/card/id/user_id = get_idcard()
 
 	// Check if ID card was found
 	if(!istype(user_id))
-		// Warn in local chat, then return
-		machine_target.say("Access denied: Unable to scan user ID card.")
 		return FALSE
 
 	// Check for Captain
 	if(ACCESS_CAPTAIN in user_id.access)
 		// Allow usage
-		return TRUE
+		return PROTOLOCK_ACCESS_CAPTAIN
 
-	// Check if access requirements are met
-	if(machine_target.check_access(user_id))
-		// Allow use
-		return TRUE
-
-	// User does not have normal access
 	// Check for ORM access
 	if(ACCESS_MINERAL_STOREROOM in user_id.access)
-		// Check if already on material screen
-		if(machine_target.screen != RESEARCH_FABRICATOR_SCREEN_MATERIALS)
-			// Warn in local chat
-			machine_target.say("Access limited: Configuring for ORM remote control mode.")
-
-			// Set to material screen
-			machine_target.screen = RESEARCH_FABRICATOR_SCREEN_MATERIALS
-
 		// Allow use
-		return TRUE
+		return PROTOLOCK_ACCESS_MINERAL
 
 	// User has no access
-	// Warn in local chat, then return
-	machine_target.say("Access denied: No valid departmental or mineral credentials detected.")
+	return FALSE
+
+/mob/proc/can_use_production_topic(obj/machinery/rnd/production/machine_target, raw, ls)
+	// Basic actions that are always permitted
+	// This includes syncing research and switching screens
+	if(ls["sync_research"] || ls["switch_screen"])
+		return TRUE
+
+	// Define user's access type
+	var/user_access = usr.can_use_production(machine_target)
+
+	// Switch result based on access type
+	// This currently doesn't do anything special
+	switch(user_access)
+		// Type: Low population
+		if(PROTOLOCK_ACCESS_LOWPOP)
+			return TRUE
+
+		// Type: Standard
+		if(PROTOLOCK_ACCESS_NORMAL)
+			return TRUE
+
+		// Type: Captain
+		if(PROTOLOCK_ACCESS_CAPTAIN)
+			return TRUE
+
+		// Type: Mineral / ORM
+		if(PROTOLOCK_ACCESS_MINERAL)
+			// Check if permitted topic
+			if(ls["ejectsheet"])
+				return TRUE
+
+			// Topic prohibited
+			// Deny usage
+			else
+				return FALSE
+
+	// Default to false
 	return FALSE
 
 #undef JOB_MINIMAL_ACCESS
