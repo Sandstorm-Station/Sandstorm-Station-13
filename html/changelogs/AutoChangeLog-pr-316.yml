@@ -1,0 +1,7 @@
+author: LeDrascol
+delete-after: true
+changes:
+  - rscadd: Added better feedback for production machinery topic access denial
+  - tweak: Production machinery access checks now work for all mobs
+  - balance: Production machinery can now be used in 'mineral mode' by crew with ORM
+      access
