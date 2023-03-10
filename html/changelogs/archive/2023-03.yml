@@ -50,3 +50,9 @@
   - balance: Blood must be ingested to gain nutrition
   - balance: Blood ingestion will NOT grant nutrition if used by it's original donor
   - balance: Blood ingestion will not clear disgust or stamina loss
+2023-03-08:
+  LeDrascol:
+  - rscadd: Added better feedback for production machinery topic access denial
+  - tweak: Production machinery access checks now work for all mobs
+  - balance: Production machinery can now be used in 'mineral mode' by crew with ORM
+      access
