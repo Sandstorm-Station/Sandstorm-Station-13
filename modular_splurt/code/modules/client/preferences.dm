@@ -1699,6 +1699,7 @@
 		if(reagent in whitelist_list)
 			// Add immediately
 			LAZYADD(reagent_list, instance)
+			LAZYADD(reagent_list_paths, reagent)
 
 			// Skip further processing
 			continue
