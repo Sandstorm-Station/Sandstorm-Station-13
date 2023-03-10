@@ -1,3 +1,9 @@
+/obj/machinery/mecha_part_fabricator/maint
+	req_access = null
+
+/obj/machinery/mecha_part_fabricator/offstation
+	req_access = null
+
 /obj/machinery/mecha_part_fabricator/ui_interact(mob/user, datum/tgui/ui)
 	// Check if user can use machine
 	if(!user.can_use_production(src))
