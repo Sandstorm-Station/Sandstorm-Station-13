@@ -1,22 +1,28 @@
-/obj/machinery/rnd/production/Initialize(mapload)
-	. = ..()
-
-	// Generate access lists
-	gen_access()
-
-/obj/machinery/rnd/production/ui_interact(mob/user)
+/obj/machinery/mecha_part_fabricator/ui_interact(mob/user, datum/tgui/ui)
 	// Check if user can use machine
 	if(!user.can_use_production(src))
-		// Warn in local chat and return
-		say("Access denied: No valid departmental or mineral credentials detected.")
+		// Check if UI doesn't exist
+		if(!ui)
+			// Send normal warning
+			say("Access denied: No valid credentials detected.")
+
+		// UI does exist
+		else
+			// Close UI
+			ui.close()
+
+			// Send alternate warning
+			say("Access revoked: Valid credentials no longer detected.")
+
+		// Return
 		return
 
 	// Return normally
 	. = ..()
 
-/obj/machinery/rnd/production/Topic(raw, ls)
+/obj/machinery/mecha_part_fabricator/ui_act(action, var/list/params)
 	// Check if user can use machine
-	if(!usr.can_use_production_topic(src, raw, ls))
+	if(!usr.can_use_mechfab_topic(src, action, params))
 		// Alert in local chat
 		usr.visible_message(span_warning("[usr] pushes a button on [src], causing it to chime with the familiar sound of rejection."), span_warning("The machine buzzes with a soft chime. It seems you don't have access to that button."))
 
