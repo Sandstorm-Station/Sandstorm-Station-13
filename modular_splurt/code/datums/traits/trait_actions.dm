@@ -1,5 +1,7 @@
 #define BLOODFLEDGE_DRAIN_NUM 50
-#define BLOODFLEDGE_COOLDOWN_BITE 60
+#define BLOODFLEDGE_COOLDOWN_BITE 60 // Six seconds
+#define BLOODFLEDGE_COOLDOWN_REVIVE 3000 // Five minutes
+#define BLOODFLEDGE_BANK_CAPACITY (BLOODFLEDGE_DRAIN_NUM * 2)
 #define HYPNOEYES_COOLDOWN_NORMAL 3 SECONDS
 #define HYPNOEYES_COOLDOWN_BRAINWASH 30 SECONDS
 
@@ -386,7 +388,7 @@
 //
 
 // Basic action preset
-/datum/action/bloodfledge
+/datum/action/cooldown/bloodfledge
 	name = "Broken Bloodfledge Ability"
 	desc = "You shouldn't be seeing this!"
 	button_icon_state = "power_torpor"
@@ -394,29 +396,61 @@
 	buttontooltipstyle = "cult"
 	icon_icon = 'icons/mob/actions/bloodsucker.dmi'
 	button_icon = 'icons/mob/actions/bloodsucker.dmi'
+	transparent_when_unavailable = TRUE
 
-// Action: Bite
-/datum/action/bloodfledge/bite
-	name = "Fledgling Bite"
-	desc = "Sink your vampiric fangs into the person you are grabbing, and attempt to drink their blood."
-	button_icon_state = "power_feed"
-	var/drain_cooldown = 0
-
-/datum/action/bloodfledge/bite/Trigger()
+// Basic can-use check
+/datum/action/cooldown/bloodfledge/IsAvailable(silent = FALSE)
 	. = ..()
+
+	// Check parent return
+	if(!.)
+		return FALSE
 
 	// Check for carbon owner
 	if(!iscarbon(owner))
+		// Warn user and return
+		to_chat(owner, span_warning("You shouldn't have this ability!"))
+		return FALSE
+
+	// Check vampire ability mob proc
+	if(!owner.allow_vampiric_ability(silent = FALSE))
+		return FALSE
+
+	// Action can be used
+	return TRUE
+
+// Action: Bite
+/datum/action/cooldown/bloodfledge/bite
+	name = "Fledgling Bite"
+	desc = "Sink your vampiric fangs into the person you are grabbing, and attempt to drink their blood."
+	button_icon_state = "power_feed"
+	cooldown_time = BLOODFLEDGE_COOLDOWN_BITE
+	var/time_interact = 30
+
+	// Reagent holder, used to change reaction type
+	var/datum/reagents/blood_bank
+
+/datum/action/cooldown/bloodfledge/bite/Grant()
+	. = ..()
+
+	// Check for voracious
+	if(HAS_TRAIT(owner, TRAIT_VORACIOUS))
+		// Make times twice as fast
+		cooldown_time *= 0.5
+		time_interact*= 0.5
+
+	// Create reagent holder
+	blood_bank = new(BLOODFLEDGE_BANK_CAPACITY)
+
+/datum/action/cooldown/bloodfledge/bite/Trigger()
+	. = ..()
+
+	// Check parent return
+	if(!.)
 		return
 
 	// Define action owner
 	var/mob/living/carbon/action_owner = owner
-
-	// Check for cooldown
-	if(drain_cooldown >= world.time)
-		// Warn the user, then return
-		to_chat(action_owner, span_notice("That ability isn't ready yet."))
-		return
 
 	// Check for any grabbed target
 	if(!action_owner.pulling)
@@ -442,11 +476,20 @@
 		to_chat(action_owner, span_notice("You can't bite things while muzzled!"))
 		return
 
+	// Check for covered mouth
+	if(action_owner.is_mouth_covered())
+		// Warn the user, then return
+		to_chat(action_owner, span_notice("You can't bite things with your mouth covered!"))
+		return
+
 	// Define pulled target
 	var/pull_target = action_owner.pulling
 
 	// Define bite target
-	var/mob/living/carbon/bite_target
+	var/mob/living/carbon/human/bite_target
+
+	// Define if action owner is dumb
+	var/action_owner_dumb = HAS_TRAIT(action_owner, TRAIT_DUMB)
 
 	// Check if the target is carbon
 	if(iscarbon(pull_target))
@@ -457,7 +500,7 @@
 	else if(istype(pull_target,/obj/structure/arachnid/cocoon))
 		// Define if cocoon has a valid target
 		// This cannot use pull_target
-		var/possible_cocoon_target = locate(/mob/living/carbon) in action_owner.pulling.contents
+		var/possible_cocoon_target = locate(/mob/living/carbon/human) in action_owner.pulling.contents
 
 		// Check defined cocoon target
 		if(possible_cocoon_target)
@@ -466,86 +509,294 @@
 
 	// Or a blood tomato
 	else if(istype(pull_target,/obj/item/reagent_containers/food/snacks/grown/tomato/blood))
+		// Set message based on dumbness
+		var/message_tomato_suffix = (action_owner_dumb ? ", and absorb it\'s delicious vegan-friendly blood!" : "! It's not very nutritious.")
 		// Warn the user, then return
-		to_chat(action_owner, span_danger("You plunge your fangs into [pull_target]! It's not very nutritious."))
+		to_chat(action_owner, span_danger("You plunge your fangs into [pull_target][message_tomato_suffix]"))
 		return
 
 		// This doesn't actually interact with the item
 
 	// Or none of the above
 	else
+		// Set message based on dumbness
+		var/message_invalid_target = (action_owner_dumb ? "You bite at [pull_target], but nothing seems to happen" : "You can't drain blood from [pull_target]!")
 		// Warn the user, then return
-		to_chat(action_owner, span_warning("You can't drain blood from [pull_target]!"))
+		to_chat(action_owner, span_warning(message_invalid_target))
 		return
+
+	// Define selected zone
+	var/target_zone = action_owner.zone_selected
+
+	// Check if target can be penetrated
+	// Bypass pierce immunity so feedback can be provided later
+	if(!bite_target.can_inject(action_owner, FALSE, target_zone, FALSE, TRUE))
+		// Warn the user, then return
+		to_chat(action_owner, span_warning("There\'s no exposed flesh or thin material in that region of [bite_target]'s body. You're unable to bite them!"))
+		return
+
+	// Check targeted body part
+	var/obj/item/bodypart/bite_bodypart = bite_target.get_bodypart(target_zone)
+
+	// Define zone name
+	var/target_zone_name = "flesh"
+
+	// Define if target zone has special effects
+	var/target_zone_effects = FALSE
+
+	// Define if zone should be checked
+	// Uses dismember check to determine if it can be missing
+	// Missing limbs are assumed to be dismembered
+	var/target_zone_check = bite_bodypart?.can_dismember() || TRUE
+
+	// Set zone name based on region
+	// Also checks for some protections
+	switch(target_zone)
+		if(BODY_ZONE_HEAD)
+			target_zone_name = "neck"
+
+		if(BODY_ZONE_CHEST)
+			target_zone_name = "shoulder"
+
+		if(BODY_ZONE_L_ARM)
+			target_zone_name = "left arm"
+
+		if(BODY_ZONE_R_ARM)
+			target_zone_name = "right arm"
+
+		if(BODY_ZONE_L_LEG)
+			target_zone_name = "left thigh"
+
+		if(BODY_ZONE_R_LEG)
+			target_zone_name = "right thigh"
+
+		if(BODY_ZONE_PRECISE_EYES)
+			// Check if eyes exist and are exposed
+			if(!bite_target.has_eyes(REQUIRE_EXPOSED))
+				// Warn user and return
+				to_chat(action_owner, span_warning("You can't find [bite_target]'s eyes to bite them!"))
+				return
+
+			// Set region data normally
+			target_zone_name = "eyes"
+			target_zone_check = FALSE
+			target_zone_effects = TRUE
+
+		if(BODY_ZONE_PRECISE_MOUTH)
+			// Check if mouth exists and is exposed
+			if(!(bite_target.has_mouth() && bite_target.mouth_is_free()))
+				to_chat(action_owner, span_warning("You can't find [bite_target]'s lips to bite them!"))
+				return
+
+			// Set region data normally
+			target_zone_name = "lips"
+			target_zone_check = FALSE
+			target_zone_effects = TRUE
+
+		if(BODY_ZONE_PRECISE_GROIN)
+			target_zone_name = "groin"
+			target_zone_check = FALSE
+
+		if(BODY_ZONE_PRECISE_L_HAND)
+			target_zone_name = "left wrist"
+
+		if(BODY_ZONE_PRECISE_R_HAND)
+			target_zone_name = "right wrist"
+
+		if(BODY_ZONE_PRECISE_L_FOOT)
+			target_zone_name = "left ankle"
+
+		if(BODY_ZONE_PRECISE_R_FOOT)
+			target_zone_name = "right ankle"
+
+	// Check if target should be checked
+	if(target_zone_check)
+		// Check if bodypart exists
+		if(!bite_bodypart)
+			// Warn user and return
+			to_chat(action_owner, span_warning("[bite_target] doesn't have a [target_zone_name] for you to bite!"))
+			return
+
+		// Check if bodypart is organic
+		if(!bite_bodypart.is_organic_limb())
+			// Display local message
+			action_owner.visible_message(span_danger("[action_owner] tries to bite [bite_target]'s [target_zone_name], but is unable to penetrate the mechanical prosthetic!"), span_warning("You attempt to bite [bite_target]'s [target_zone_name], but can't penetrate the mechanical prosthetic!"))
+
+			// Warn user
+			to_chat(bite_target, span_warning("[action_owner] tries to bite your [target_zone_name], but is unable to penetrate the mechanical prosthetic!"))
+
+			// Play metal hit sound
+			playsound(bite_target, "sound/effects/clang[pick(1,2)].ogg", 30, 1, -2)
+
+			// Start cooldown early to prevent spam
+			StartCooldown()
+
+			// Return without further effects
+			return
 
 	// Check for anti-magic
 	if(bite_target.anti_magic_check(FALSE, TRUE, FALSE, 0))
+		// Check for a dumb user
+		if(action_owner_dumb)
+			// Display local message
+			action_owner.visible_message(span_danger("[action_owner] tries to bite [bite_target]'s [target_zone_name], but bursts into flames just as [action_owner.p_they()] come[action_owner.p_s()] into contact with [bite_target.p_them()]!"), span_userdanger("Surges of pain course through your body as you attempt to bite [bite_target]! What were you thinking?"))
+
+			// Warn target
+			to_chat(bite_target, span_warning("[action_owner] tries to bite you, but bursts into flames just as [action_owner.p_they()] come[action_owner.p_s()] into contact with you!"))
+
+			// Stop grabbing
+			action_owner.stop_pulling()
+
+			// Ignite action owner
+			action_owner.adjust_fire_stacks(2)
+			action_owner.IgniteMob()
+
+			// Return with no further effects
+			return
+
 		// Warn the user and target, then return
-		to_chat(bite_target, span_warning("[action_owner] tries to bite you, but stops before touching you!"))
+		to_chat(bite_target, span_warning("[action_owner] tries to bite your [target_zone_name], but stops before touching you!"))
 		to_chat(action_owner, span_warning("[bite_target] is blessed! You stop just in time to avoid catching fire."))
 		return
 
 	// Check for garlic necklace or garlic in the bloodstream
 	if(!blood_sucking_checks(bite_target, TRUE, TRUE))
+		// Check for a dumb user
+		if(action_owner_dumb)
+			// Display local message
+			action_owner.visible_message(span_danger("[action_owner] tries to bite [bite_target]'s [target_zone_name], but immediately recoils in disgust upon touching [bite_target.p_them()]!"), span_userdanger("An intense wave of disgust washes over your body as you attempt to bite [bite_target]! What were you thinking?"))
+
+			// Warn target
+			to_chat(bite_target, span_warning("[action_owner] tries to bite your [target_zone_name], but recoils in disgust just as [action_owner.p_they()] come[action_owner.p_s()] into contact with you!"))
+
+			// Stop grabbing
+			action_owner.stop_pulling()
+
+			// Add disgust
+			action_owner.adjust_disgust(10)
+
+			// Vomit
+			action_owner.vomit()
+
+			// Return with no further effects
+			return
+
 		// Warn the user and target, then return
-		to_chat(bite_target, span_warning("[action_owner] tries to bite you, but is warded off by your Allium Sativum!"))
-		to_chat(action_owner, span_warning("You sense that [bite_target] is protected by Allium Sativum, and refrain from biting them."))
+		to_chat(bite_target, span_warning("[action_owner] leans in to bite your [target_zone_name], but is warded off by your Allium Sativum!"))
+		to_chat(action_owner, span_warning("You sense that [bite_target] is protected by Allium Sativum, and refrain from biting [bite_target.p_them()]."))
 		return
 
 	// Define bite target's blood volume
 	var/target_blood_volume = bite_target.blood_volume
 
 	// Check for sufficient blood volume
-	if(!target_blood_volume)
+	if(target_blood_volume < BLOODFLEDGE_DRAIN_NUM)
 		// Warn the user, then return
 		to_chat(action_owner, span_warning("There's not enough blood in [bite_target]!"))
 		return
 
 	// Check if total blood would become too low
 	if((target_blood_volume - BLOODFLEDGE_DRAIN_NUM) <= BLOOD_VOLUME_OKAY)
+		// Check for a dumb user
+		if(action_owner_dumb)
+			// Warn the user, but allow
+			to_chat(action_owner, span_warning("You pay no attention to [bite_target]'s blood volume, and bite [bite_target.p_their()] [target_zone_name] without hesitation."))
+
 		// Check for aggressive grab
-		if(action_owner.grab_state < GRAB_AGGRESSIVE)
+		else if(action_owner.grab_state < GRAB_AGGRESSIVE)
 			// Warn the user, then return
 			to_chat(action_owner, span_warning("You sense that [bite_target] is running low on blood. You'll need a tighter grip on [bite_target.p_them()] to continue."))
 			return
 
 		// Check for pacifist
-		if(HAS_TRAIT(action_owner, TRAIT_PACIFISM))
+		else if(HAS_TRAIT(action_owner, TRAIT_PACIFISM))
 			// Warn the user, then return
 			to_chat(action_owner, span_warning("You can't drain any more blood from [bite_target] without hurting [bite_target.p_them()]!"))
 			return
 
-	// Set cooldown and action times
-	var/time_cooldown = BLOODFLEDGE_COOLDOWN_BITE
-	var/time_interact = 30
+	// Check for pierce immunity
+	if(HAS_TRAIT(bite_target, TRAIT_PIERCEIMMUNE))
+		// Display local chat message
+		action_owner.visible_message(span_danger("[action_owner] tries to bite down on [bite_target]'s [target_zone_name], but can't seem to pierce [bite_target.p_them()]!"), span_danger("You try to bite down on [bite_target]'s [target_zone_name], but are completely unable to pierce [bite_target.p_them()]!"))
 
-	// Check for voracious
-	if(HAS_TRAIT(action_owner, TRAIT_VORACIOUS))
-		// Make times twice as fast
-		time_cooldown *= 0.5
-		time_interact*= 0.5
+		// Warn bite target
+		to_chat(bite_target, span_userdanger("[action_owner] tries to bite your [target_zone_name], but is unable to piece you!"))
 
-	// Set cooldown
-	drain_cooldown = world.time + time_cooldown
+		// Return without further effects
+		return
+
+	// Check for target zone special effects
+	if(target_zone_effects)
+		// Check if biting eyes or mouth
+		if((target_zone == BODY_ZONE_PRECISE_EYES) || (target_zone == BODY_ZONE_PRECISE_MOUTH))
+			// Check if biting target with proto-type face
+			// Snout type is a string that cannot use subtype search
+			if(findtext(bite_target.dna?.features["mam_snouts"], "Synthetic Lizard"))
+				// Display local chat message
+				action_owner.visible_message(span_notice("[action_owner]'s fangs clank harmlessly against [bite_target]'s face screen!"), span_notice("Your fangs clank harmlessly against [bite_target]'s face screen!"))
+
+				// Play glass tap sound
+				playsound(bite_target, 'sound/effects/Glasshit.ogg', 30, 1, -2)
+
+				// Start cooldown early to prevent spam
+				StartCooldown()
+
+				// Return without further effects
+				return
+
+		// Check for strange bite regions
+		switch(target_zone)
+			// Zone is eyes
+			if(BODY_ZONE_PRECISE_EYES)
+				// Define target's eyes
+				var/obj/item/organ/eyes/target_eyes = bite_target.getorganslot(ORGAN_SLOT_EYES)
+
+				// Check if eyes exist
+				if(target_eyes)
+					// Display warning
+					to_chat(bite_target, span_userdanger("Your [target_eyes] rupture in pain as [action_owner]'s fangs pierce their surface!"))
+
+					// Blur vision
+					bite_target.blur_eyes(10)
+
+					// Add organ damage
+					target_eyes.applyOrganDamage(20)
+
+			// Zone is mouth
+			if(BODY_ZONE_PRECISE_MOUTH)
+				// Cause temporary stuttering
+				bite_target.stuttering = 10
 
 	// Display local chat message
-	action_owner.visible_message(span_danger("[action_owner] begins to bite down on [bite_target]'s neck!"))
-
-	// Warn bite target
-	to_chat(bite_target, span_userdanger("[action_owner] has bitten your neck, and is trying to drain your blood!"))
+	action_owner.visible_message(span_danger("[action_owner] bites down on [bite_target]'s [target_zone_name]!"), span_danger("You bite down on [bite_target]'s [target_zone_name]!"))
 
 	// Play a bite sound effect
 	playsound(action_owner, 'sound/weapons/bite.ogg', 30, 1, -2)
+
+	// Check if bite target species has blood
+	if(NOBLOOD in bite_target.dna?.species?.species_traits)
+		// Warn the user and target
+		to_chat(bite_target, span_warning("[action_owner] bit your [target_zone_name] in an attempt to drain your blood, but couldn't find any!"))
+		to_chat(action_owner, span_warning("[bite_target] doesn't have any blood to drink!"))
+
+		// Start cooldown early to prevent sound spam
+		StartCooldown()
+
+		// Return without effects
+		return
+
+	// Warn bite target
+	to_chat(bite_target, span_userdanger("[action_owner] has bitten your [target_zone_name], and is trying to drain your blood!"))
 
 	// Try to perform action timer
 	if(!do_after(action_owner, time_interact, target = bite_target))
 		// When failing
 		// Display a local chat message
-		action_owner.visible_message(span_danger("[action_owner]'s fangs are prematurely torn from [bite_target]'s neck, spilling [bite_target.p_their()] blood!"))
+		action_owner.visible_message(span_danger("[action_owner]'s fangs are prematurely torn from [bite_target]'s [target_zone_name], spilling some of [bite_target.p_their()] blood!"), span_danger("Your fangs are prematurely torn from [bite_target]'s [target_zone_name], spilling some of [bite_target.p_their()] blood!"))
 
-		// Bite target "drops" the blood
+		// Bite target "drops" 20% of the blood
 		// This creates large blood splatter
-		bite_target.bleed(BLOODFLEDGE_DRAIN_NUM, FALSE)
+		bite_target.bleed((BLOODFLEDGE_DRAIN_NUM*0.2), FALSE)
 
 		// Play splatter sound
 		playsound(get_turf(target), 'sound/effects/splat.ogg', 40, 1)
@@ -558,20 +809,25 @@
 		// Log the biting action failure
 		log_combat(action_owner,bite_target,"bloodfledge bitten (interrupted)")
 
+		// Add target's blood to quirk holder and themselves
+		bite_target.add_mob_blood(bite_target)
+		action_owner.add_mob_blood(bite_target)
+
+		// Check if body part is valid for bleeding
+		// This reuses the dismember-able check
+		if(target_zone_check)
+			// Cause minor bleeding
+			bite_bodypart.generic_bleedstacks += 2
+
+			// Apply minor damage
+			bite_bodypart.receive_damage(brute = rand(4,8), sharpness = SHARP_POINTY)
+
+		// Start cooldown early
+		// This is to prevent bite interrupt spam
+		StartCooldown()
+
 		// Return
 		return
-
-	// Check if bite target species has blood
-	if(NOBLOOD in bite_target.dna.species.species_traits)
-		// Warn the user and target, then return
-		to_chat(bite_target, span_warning("[action_owner] tried to drain you, but didn't find any blood!"))
-		to_chat(action_owner, span_warning("[bite_target] doesn't have any blood to drink!"))
-		return
-
-	// Create blood splatter
-	bite_target.add_splatter_floor(get_turf(bite_target), TRUE)
-
-	// Checks for exotic species blood below
 
 	// Variable for species with non-blood blood volumes
 	var/blood_valid = TRUE
@@ -583,81 +839,149 @@
 	// Action owner assumes blood until after drinking
 	var/blood_name = "blood"
 
-	// Check bite target for synth blood
-	if(bite_target.mob_biotypes & MOB_ROBOTIC)
-		// Mark blood as invalid
-		blood_valid = FALSE
+	// Check if target has exotic blood
+	if(bite_target.dna?.species?.exotic_bloodtype)
+		// Define blood types for owner and target
+		var/blood_type_owner = action_owner.dna?.species?.exotic_bloodtype
+		var/blood_type_target = bite_target.dna?.species?.exotic_bloodtype
 
-		// Set blood type name
-		blood_name = "coolant"
+		// Define if blood types match
+		var/blood_type_match = (blood_type_owner == blood_type_target ? TRUE : FALSE)
 
-		// Check if the action owner is also a synth
-		if (action_owner.mob_biotypes & MOB_ROBOTIC)
-			// Allow gaining blood from this
-			blood_transfer = TRUE
+		// Check if types matched
+		if(blood_type_match)
+			// Add positive mood
+			SEND_SIGNAL(action_owner, COMSIG_ADD_MOOD_EVENT, "bloodfledge_drank_exotic_match", /datum/mood_event/drank_exotic_matched)
 
-		// Action owner is not a synth
-		else
-			// Warn the user
-			to_chat(action_owner, span_warning("That didn't taste like blood at all..."))
+		// Switch for target's blood type
+		switch(blood_type_target)
+			// Synth blood
+			if("S")
+				// Mark blood as invalid
+				blood_valid = FALSE
 
-			// Add disgust
-			action_owner.adjust_disgust(2)
+				// Set blood type name
+				blood_name = "coolant"
 
-			// Cause negative mood
-			SEND_SIGNAL(action_owner, COMSIG_ADD_MOOD_EVENT, "bloodfledge_drank_synth", /datum/mood_event/drankblood_synth)
+				// Check if blood types match
+				if(blood_type_match)
+					// Allow transferring blood from this
+					blood_transfer = TRUE
 
-	// Check if bite target is a slime
-	if (isslimeperson(bite_target))
-		// Mark blood as invalid
-		blood_valid = FALSE
+				// Blood types do not match
+				else
+					// Warn the user
+					to_chat(action_owner, span_warning("That didn't taste like blood at all..."))
 
-		// Set blood type name
-		blood_name = "slime"
+					// Add disgust
+					action_owner.adjust_disgust(2)
 
-		// Check if the action owner is also a slime
-		if(isslimeperson(action_owner))
-			// Allow gaining blood from this
-			blood_transfer = TRUE
+					// Cause negative mood
+					SEND_SIGNAL(action_owner, COMSIG_ADD_MOOD_EVENT, "bloodfledge_drank_synth", /datum/mood_event/drankblood_synth)
 
-		// Action owner is not a slime
-		else
-			// Warn the user
-			to_chat(action_owner, span_warning("You feel a sloshing presence inside you, but it dies out after a few moments."))
+			// Slime blood
+			if("GEL")
+				// Mark blood as invalid
+				blood_valid = FALSE
 
-			// Add disgust
-			action_owner.adjust_disgust(2)
+				// Allow transferring blood from this
+				blood_transfer = TRUE
 
-			// Cause negative mood
-			SEND_SIGNAL(action_owner, COMSIG_ADD_MOOD_EVENT, "bloodfledge_drank_slime", /datum/mood_event/drankblood_slime)
+				// Set blood type name
+				blood_name = "slime"
 
-	// End of species blood checks
+				// Check if blood types match
+				if(!blood_type_match)
+					// Cause negative mood
+					SEND_SIGNAL(action_owner, COMSIG_ADD_MOOD_EVENT, "bloodfledge_drank_slime", /datum/mood_event/drankblood_slime)
+
+			// Bug blood
+			if("BUG")
+				// Set blood type name
+				blood_name = "hemolymph"
+
+				// Check if blood types match
+				if(!blood_type_match)
+					// Mark blood as invalid
+					blood_valid = FALSE
+
+					// Cause negative mood
+					SEND_SIGNAL(action_owner, COMSIG_ADD_MOOD_EVENT, "bloodfledge_drank_insect", /datum/mood_event/drankblood_insect)
+
+			// Xenomorph blood
+			if("X*")
+				// Set blood type name
+				blood_name = "xeno blood"
+
+				// Check if blood types match
+				if(!blood_type_match)
+					// Mark blood as invalid
+					blood_valid = FALSE
+
+					// Cause negative mood
+					SEND_SIGNAL(action_owner, COMSIG_ADD_MOOD_EVENT, "bloodfledge_drank_xeno", /datum/mood_event/drankblood_xeno)
+
+			// Lizard blood
+			if("L")
+				// Set blood type name
+				blood_name = "reptilian blood"
+
+	// End of exotic blood checks
 
 	// Define user's remaining capacity to absorb blood
 	var/blood_volume_difference = BLOOD_VOLUME_MAXIMUM - action_owner.blood_volume
 	var/drained_blood = min(target_blood_volume, BLOODFLEDGE_DRAIN_NUM, blood_volume_difference)
 
-	// Remove blood from bite target
-	bite_target.blood_volume = clamp(target_blood_volume - drained_blood, 0, BLOOD_VOLUME_MAXIMUM)
-
-	// Perform a blood transfer
-	// This is done to transfer compatible diseases
-	// Grants nothing, unless blood transfer variable is set
-	bite_target.transfer_blood_to(action_owner, (blood_transfer ? drained_blood : 0), TRUE)
-
-	// Check if action owner received valid (nourishing) blood
-	if(blood_valid)
-		// Add blood reagent to the user
-		action_owner.reagents.add_reagent(/datum/reagent/blood/, drained_blood)
+	// Transfer reagents from target to action owner
+	// Limited to a maximum 10% of bite amount (default 10u)
+	bite_target.reagents.trans_to(action_owner, (drained_blood*0.1))
 
 	// Alert the bite target and local user of success
 	// Yes, this is AFTER the message for non-valid blood
 	to_chat(bite_target, span_danger("[action_owner] has taken some of your [blood_name]!"))
 	to_chat(action_owner, span_notice("You've drained some of [bite_target]'s [blood_name]!"))
 
-	// Alert the action holder if blood volume limit was exceeded
-	if(blood_transfer && (action_owner.blood_volume >= BLOOD_VOLUME_MAXIMUM))
-		to_chat(action_owner, span_warning("You body fails to absorb any more [blood_name]. The remainder has been lost."))
+	// Check if action owner received valid (nourishing) blood
+	if(blood_valid)
+		// Add blood reagent to reagent holder
+		blood_bank.add_reagent(/datum/reagent/blood/, drained_blood, bite_target.get_blood_data())
+
+		// Set reaction type to INGEST
+		blood_bank.reaction(action_owner, INGEST)
+
+		// Transfer reagent to action owner
+		blood_bank.trans_to(action_owner, drained_blood)
+
+		// Remove all reagents
+		blood_bank.remove_all()
+
+	// Check if blood transfer should occur
+	else if(blood_transfer)
+		// Check if action holder's blood volume limit was exceeded
+		if(action_owner.blood_volume >= BLOOD_VOLUME_MAXIMUM)
+			// Warn user
+			to_chat(action_owner, span_warning("You body cannot integrate any more [blood_name]. The remainder will be lost."))
+
+		// Blood volume limit was not exceeded
+		else
+			// Alert user
+			to_chat(action_owner, span_notice("You body integrates the [blood_name] directly, instead of processing it into nutrition."))
+
+		// Transfer blood directly
+		bite_target.transfer_blood_to(action_owner, drained_blood, TRUE)
+
+		// Set drain amount to none
+		// This prevents double removal
+		drained_blood = 0
+
+	// Valid blood was not received
+	// No direct blood transfer occurred
+	else
+		// Warn user of failure
+		to_chat(action_owner, span_warning("Your body cannot process the [blood_name] into nourishment!"))
+
+	// Remove blood from bite target
+	bite_target.blood_volume = clamp(target_blood_volume - drained_blood, 0, BLOOD_VOLUME_MAXIMUM)
 
 	// Play a heartbeat sound effect
 	// This was changed to match bloodsucker
@@ -703,14 +1027,22 @@
 		// Cause mood event
 		SEND_SIGNAL(action_owner, COMSIG_ADD_MOOD_EVENT, "bloodfledge_drank_cursed_blood", mood_type)
 
+	// Start cooldown
+	StartCooldown()
+
 // Action: Revive
-/datum/action/bloodfledge/revive
+/datum/action/cooldown/bloodfledge/revive
 	name = "Fledgling Revive"
 	desc = "Expend all of your remaining energy to escape death."
 	button_icon_state = "power_strength"
+	cooldown_time = BLOODFLEDGE_COOLDOWN_REVIVE
 
-/datum/action/bloodfledge/revive/Trigger()
+/datum/action/cooldown/bloodfledge/revive/Trigger()
 	. = ..()
+
+	// Check parent return
+	if(!.)
+		return
 
 	// Define mob
 	var/mob/living/carbon/human/action_owner = owner
@@ -735,6 +1067,9 @@
 	if(action_owner.nutrition <= NUTRITION_LEVEL_STARVING)
 		revive_failed += "\n- You don't have enough blood left!"
 
+	/*
+	 * Removed to buff revivals
+	 *
 	// Condition: Can be revived
 	// This is used by revive(), and must be checked here to prevent false feedback
 	if(!action_owner.can_be_revived())
@@ -747,6 +1082,7 @@
 	// Condition: Damage limit, burn
 	if(action_owner.getFireLoss() >= MAX_REVIVE_FIRE_DAMAGE)
 		revive_failed += "\n- Your body is too badly burned!"
+	*/
 
 	// Condition: Suicide
 	if(action_owner.suiciding)
@@ -769,6 +1105,48 @@
 		to_chat(action_owner, revive_failed)
 
 		// Return
+		return
+
+	// Check if health is too low to use revive()
+	if(action_owner.health <= HEALTH_THRESHOLD_DEAD)
+		// Set health high enough to revive
+		// Based on defib.dm
+
+		// Define damage values
+		var/damage_brute = action_owner.getBruteLoss()
+		var/damage_burn = action_owner.getFireLoss()
+		var/damage_tox = action_owner.getToxLoss()
+		var/damage_oxy = action_owner.getOxyLoss()
+		var/damage_clone = action_owner.getCloneLoss()
+		var/damage_brain = action_owner.getOrganLoss(ORGAN_SLOT_BRAIN)
+
+		// Define total damage
+		var/damage_total = damage_brute + damage_burn + damage_tox + damage_oxy + damage_brain + damage_clone
+
+		// Define to prevent redundant math
+		var/health_half_crit = action_owner.health - HALFWAYCRITDEATH
+
+		// Adjust damage types
+		action_owner.adjustOxyLoss(health_half_crit * (damage_oxy / damage_total), 0)
+		action_owner.adjustToxLoss(health_half_crit * (damage_tox / damage_total), 0)
+		action_owner.adjustFireLoss(health_half_crit * (damage_burn / damage_total), 0)
+		action_owner.adjustBruteLoss(health_half_crit * (damage_brute / damage_total), 0)
+		action_owner.adjustCloneLoss(health_half_crit * (damage_clone / damage_total), 0)
+		action_owner.adjustOrganLoss(ORGAN_SLOT_BRAIN, health_half_crit * (damage_brain / damage_total))
+
+		// Update health
+		action_owner.updatehealth()
+
+	// Check if revival is possible
+	// This is used by revive(), and must be checked here to prevent false feedback
+	if(!action_owner.can_be_revived())
+		// Warn user
+		to_chat(action_owner, span_warning("Despite your body's best attempts at mending, it remains too weak to revive! Something this terrible shouldn't be possible!"))
+
+		// Start cooldown anyway, since healing was performed
+		StartCooldown()
+
+		// Return without revival
 		return
 
 	// Define time dead
@@ -809,6 +1187,9 @@
 
 	// Log the revival and effective policy
 	action_owner.log_message("revived using a vampire quirk ability after being dead for [time_dead] deciseconds. Considered [time_late? "late" : "memory-intact"] revival under configured policy limits.", LOG_GAME)
+
+	// Start cooldown
+	StartCooldown()
 
 //
 // Quirk: Werewolf
