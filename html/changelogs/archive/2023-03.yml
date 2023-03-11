@@ -60,3 +60,10 @@
   Anonymous:
   - rscadd: Prison jumpsuits can be re-skinned into other color-coded security level,
       including protective custody and "vampire" variant.
+2023-03-11:
+  LeDrascol:
+  - rscadd: Added genital fluid blacklist entries for missing effect reagents
+  - code_imp: Added comments explaining the function of every functional consumable
+      reagent
+  - refactor: Refactored genital fluid list generation
+  - refactor: Refactored getter function for allowed genital fluids list
