@@ -2,15 +2,19 @@ import { filter, map, sortBy } from 'common/collections';
 import { flow } from 'common/fp';
 import { createSearch } from 'common/string';
 import { useBackend, useLocalState } from '../backend';
-import { BlockQuote, Button, Flex, LabeledList, Icon, Input, Section, Table, Tabs, Stack } from '../components';
+import { BlockQuote, Button, Flex, Icon, Input, LabeledList, ProgressBar, Section, Table, Tabs, Stack } from '../components';
 import { TableCell, TableRow } from '../components/Table';
 import { Window } from '../layouts';
 
 type HeaderInfo = {
   isTargetSelf: boolean;
   interactingWith: string;
+  lust: number;
+  maxLust: number;
   selfAttributes: string[];
   theirAttributes: string[];
+  theirLust: number;
+  theirMaxLust: number;
 }
 
 type ContentInfo = {
@@ -73,8 +77,12 @@ export const MobInteraction = (props, context) => {
   const {
     isTargetSelf,
     interactingWith,
+    lust,
+    maxLust,
     selfAttributes,
     theirAttributes,
+    theirLust,
+    theirMaxLust,
   } = data;
   const [tabIndex, setTabIndex] = useLocalState(context, 'tabIndex', 0);
 
@@ -86,28 +94,40 @@ export const MobInteraction = (props, context) => {
       <Window.Content overflow="auto">
         <Section title={interactingWith}>
           <Table>
-            <Table.Cell>
-              <BlockQuote>
-                You...<br />
-                {selfAttributes.map(attribute => (
-                  <div key={attribute}>
-                    {attribute}<br />
-                  </div>
-                ))}
-              </BlockQuote>
-            </Table.Cell>
-            {!isTargetSelf ? (
+            <Table.Row>
               <Table.Cell>
                 <BlockQuote>
-                  They...<br />
-                  {theirAttributes.map(attribute => (
+                  You...<br />
+                  {selfAttributes.map(attribute => (
                     <div key={attribute}>
                       {attribute}<br />
                     </div>
                   ))}
                 </BlockQuote>
               </Table.Cell>
-            ) : (null)}
+              {!isTargetSelf ? (
+                <Table.Cell>
+                  <BlockQuote>
+                    They...<br />
+                    {theirAttributes.map(attribute => (
+                      <div key={attribute}>
+                        {attribute}<br />
+                      </div>
+                    ))}
+                  </BlockQuote>
+                </Table.Cell>
+              ) : (null)}
+            </Table.Row>
+            <Table.Row>
+              <Table.Cell>
+                <ProgressBar value={lust} maxValue={maxLust} color="purple" mt="10px"><Icon name="heart" /></ProgressBar>
+              </Table.Cell>
+              {(!isTargetSelf && !isNaN(theirLust)) ? (
+                <Table.Cell>
+                  <ProgressBar value={theirLust} maxValue={theirMaxLust} color="purple"><Icon name="heart" /></ProgressBar>
+                </Table.Cell>
+              ) : (null)}
+            </Table.Row>
           </Table>
         </Section>
         <Section>
