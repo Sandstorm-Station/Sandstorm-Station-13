@@ -93,9 +93,6 @@
 		if(HAS_TRAIT(user, TRAIT_ESTROUS_DETECT))
 			.["theirLust"] = target.get_lust()
 			.["theirMaxLust"] = target.get_lust_tolerance() * 3
-		else
-			.["theirLust"] = null
-			.["theirMaxLust"] = null
 
 	//Getting interactions
 	var/list/sent_interactions = list()
