@@ -59,12 +59,13 @@ Custom Bombcaps:
 	if(!CONFIG_GET(flag/sm_delamination))
 		investigate_log("has attempted a delamination, but the config disallows it", INVESTIGATE_SUPERMATTER)
 		priority_announce("Supermatter privileges revoked. Current crew is deemed unsuitable to handle a highly hazardous engine. More training is required.", "SIMULATION TERMINATED")
-		var/skill_issue_sound = prob(50) ? 'modular_splurt/sound/voice/boowomp.ogg' : 'modular_splurt/sound/effects/fart_reverb.ogg'
+		var/skill_issue_sound = pick('modular_splurt/sound/voice/boowomp.ogg', 'modular_splurt/sound/effects/fart_reverb.ogg')
 		sound_to_playing_players(skill_issue_sound)
 		var/obj/item/toy/plush/random/plushe = new(get_turf(src))
 		plushe.name = "Consolation plushie"
 		plushe.desc = "It has \"You tried\" poorly written in its tag."
 		plushe.squeak_override = list(skill_issue_sound = 1)
+		plushe.resistance_flags = INDESTRUCTIBLE | LAVA_PROOF | FIRE_PROOF | ACID_PROOF | FREEZE_PROOF
 		qdel(src)
 		return
 
