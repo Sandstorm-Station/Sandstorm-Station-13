@@ -184,3 +184,4 @@
 	for(var/turf/T in AFFECTED_TURFS)
 		if(istype(T, /turf/open/floor/plating/smooth/grass/lavaland_jungle))
 			spawn_lavaland_jungle_flora(T)
+

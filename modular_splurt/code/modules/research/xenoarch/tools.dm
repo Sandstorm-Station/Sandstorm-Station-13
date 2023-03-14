@@ -570,3 +570,4 @@
 	build_path = /obj/item/storage/bag/strangerockadv
 	category = list("Tool Designs")
 	departmental_flags = DEPARTMENTAL_FLAG_SCIENCE
+
