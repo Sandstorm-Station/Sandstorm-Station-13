@@ -707,6 +707,14 @@
 	emote_sound = 'modular_splurt/sound/voice/yap.ogg'
 	emote_cooldown = 0.28 SECONDS
 
+/datum/emote/living/audio/woof
+	key = "woof"
+	key_third_person = "woofs"
+	message = "woofs!"
+	message_mime = "acts out a woof!"
+	emote_sound = 'modular_splurt/sound/voice/woof.ogg'
+	emote_cooldown = 0.71 SECONDS
+
 /datum/emote/living/audio/howl
 	key = "howl"
 	key_third_person = "howls"
