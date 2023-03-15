@@ -160,9 +160,7 @@
 
 /**** moved from core code ****/
 
-/datum/plant_gene/trait/slip/proc/handle_slip(obj/item/reagent_containers/food/snacks/grown/G, mob/M)
-	for(var/datum/plant_gene/trait/T in G.seed.genes)
-		T.on_slip(G, M)
+/datum/plant_gene/trait/slip/handle_slip(obj/item/reagent_containers/food/snacks/grown/G, mob/M)
 	for(var/datum/plant_gene/trait/T in G.seed.genes)
 		if(!QDELETED(G) && G)
 			T.after_slip(G, M)

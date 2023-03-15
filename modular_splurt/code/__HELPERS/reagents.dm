@@ -8,7 +8,7 @@
 	var/color_temp
 
 	for(var/i in reagent_list)
-		var/datum/reagent/R = new i //HOW DO I DO THIS PROPERLY
+		var/datum/reagent/R = find_reagent_object_from_type(i)
 		vol_temp = reagent_list[R]
 		color_temp = R.color
 		vol_counter += vol_temp
