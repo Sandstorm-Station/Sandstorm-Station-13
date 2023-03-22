@@ -75,7 +75,7 @@
 	req_access = list(ACCESS_MINING)
 	circuit = /obj/item/circuitboard/computer/mining_shuttle
 	shuttleId = "mining"
-	possible_destinations = "mining_home;mining_away;landing_zone_dock;mining_public"
+	possible_destinations = "mining_home;mining_away;landing_zone_dock;mining_public;lavaland_common_away"
 	no_destination_swap = TRUE
 	var/static/list/dumb_rev_heads = list()
 

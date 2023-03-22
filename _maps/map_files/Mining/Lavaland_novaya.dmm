@@ -3035,7 +3035,6 @@
 /turf/open/floor/plasteel,
 /area/mine/production)
 "gI" = (
-/obj/effect/turf_decal/tile/purple,
 /obj/effect/turf_decal/tile/purple{
 	dir = 8
 	},
@@ -3045,15 +3044,8 @@
 /turf/open/floor/plasteel,
 /area/mine/production)
 "gJ" = (
-/obj/effect/turf_decal/tile/purple,
-/obj/effect/turf_decal/tile/purple{
-	dir = 8
-	},
 /obj/structure/disposalpipe/segment{
 	dir = 9
-	},
-/obj/structure/sign/poster/official/random{
-	pixel_y = -32
 	},
 /turf/open/floor/plasteel,
 /area/mine/production)
@@ -3390,77 +3382,6 @@
 	},
 /turf/open/floor/plasteel,
 /area/mine/production)
-"hx" = (
-/obj/structure/closet/crate{
-	icon_state = "crateopen"
-	},
-/obj/effect/turf_decal/bot,
-/turf/open/floor/plasteel/dark,
-/area/mine/production)
-"hy" = (
-/obj/machinery/light{
-	dir = 1
-	},
-/turf/open/floor/plasteel/dark,
-/area/mine/production)
-"hz" = (
-/obj/effect/turf_decal/stripes/line{
-	dir = 4
-	},
-/turf/open/floor/plasteel/dark,
-/area/mine/production)
-"hA" = (
-/obj/structure/disposaloutlet{
-	dir = 4
-	},
-/obj/structure/disposalpipe/trunk{
-	dir = 1
-	},
-/obj/effect/turf_decal/stripes/line{
-	dir = 4
-	},
-/turf/open/floor/plasteel/dark,
-/area/mine/production)
-"hB" = (
-/obj/machinery/conveyor{
-	dir = 4;
-	id = "garbageL"
-	},
-/obj/machinery/status_display/evac{
-	layer = 4;
-	pixel_y = 32
-	},
-/turf/open/floor/plasteel/dark,
-/area/mine/production)
-"hC" = (
-/obj/machinery/conveyor{
-	dir = 4;
-	id = "garbageL"
-	},
-/turf/open/floor/plasteel/dark,
-/area/mine/production)
-"hD" = (
-/obj/machinery/conveyor{
-	dir = 4;
-	id = "garbage"
-	},
-/obj/machinery/recycler,
-/obj/structure/sign/warning/securearea{
-	name = "\improper STAY CLEAR HEAVY MACHINERY";
-	pixel_y = 32
-	},
-/turf/open/floor/plasteel/dark,
-/area/mine/production)
-"hE" = (
-/obj/machinery/conveyor{
-	dir = 6;
-	id = "garbageL"
-	},
-/obj/machinery/light{
-	dir = 1
-	},
-/turf/open/floor/plasteel/dark,
-/area/mine/production)
 "hF" = (
 /obj/effect/turf_decal/stripes/line{
 	dir = 8
@@ -3693,26 +3614,15 @@
 	},
 /turf/open/floor/plasteel,
 /area/mine/production)
-"id" = (
-/obj/machinery/conveyor/inverted{
-	dir = 5;
-	id = "garbageL"
-	},
-/turf/open/floor/plasteel/dark,
-/area/mine/production)
 "ie" = (
-/obj/machinery/conveyor{
-	dir = 8;
-	id = "garbageL"
+/obj/machinery/light/small{
+	dir = 8
 	},
-/turf/open/floor/plasteel/dark,
-/area/mine/production)
-"if" = (
-/obj/machinery/conveyor{
-	dir = 10;
-	id = "garbageL"
+/obj/structure/ladder,
+/obj/effect/turf_decal/tile/purple{
+	dir = 1
 	},
-/turf/open/floor/plasteel/dark,
+/turf/open/floor/plasteel,
 /area/mine/production)
 "ig" = (
 /obj/structure/sink{
@@ -3833,60 +3743,14 @@
 	},
 /turf/open/floor/plasteel,
 /area/mine/production)
-"it" = (
-/obj/machinery/conveyor{
-	id = "garbageL"
-	},
-/turf/open/floor/plasteel/dark,
-/area/mine/production)
-"iu" = (
-/obj/structure/disposalpipe/trunk{
-	dir = 2
-	},
-/obj/machinery/disposal/deliveryChute{
-	dir = 4
-	},
-/obj/structure/window/reinforced,
-/obj/structure/window/reinforced{
-	dir = 8
-	},
-/obj/structure/window/reinforced{
-	dir = 1
-	},
-/obj/machinery/door/window{
-	base_state = "right";
-	dir = 4;
-	icon_state = "right";
-	layer = 3
-	},
-/obj/effect/turf_decal/stripes/line{
-	dir = 4
-	},
-/turf/open/floor/plating,
-/area/mine/production)
-"iv" = (
-/obj/machinery/conveyor{
-	dir = 8;
-	id = "garbageL"
-	},
-/turf/open/floor/plating,
-/area/mine/production)
-"iw" = (
-/obj/machinery/mineral/stacking_machine{
-	input_dir = 1;
-	stack_amt = 10
-	},
-/turf/open/floor/plating,
-/area/mine/production)
 "ix" = (
-/obj/effect/turf_decal/stripes/line{
+/obj/machinery/shower{
 	dir = 8
 	},
-/obj/machinery/mineral/stacking_unit_console{
-	machinedir = 8;
-	pixel_x = 28
+/obj/structure/extinguisher_cabinet{
+	pixel_x = 30
 	},
-/turf/open/floor/plasteel/dark,
+/turf/open/floor/plasteel,
 /area/mine/production)
 "iy" = (
 /obj/machinery/hydroponics/constructable,
@@ -4054,35 +3918,18 @@
 	},
 /turf/open/floor/plasteel,
 /area/mine/production)
-"iR" = (
-/obj/structure/disposalpipe/segment{
-	dir = 5
-	},
-/obj/effect/turf_decal/stripes/line{
-	dir = 1
-	},
-/turf/open/floor/plasteel/dark,
-/area/mine/production)
 "iS" = (
-/obj/structure/disposalpipe/segment{
+/obj/structure/closet/emcloset,
+/obj/effect/turf_decal/tile/purple{
 	dir = 4
 	},
-/obj/effect/turf_decal/stripes/line{
-	dir = 1
-	},
-/turf/open/floor/plasteel/dark,
+/turf/open/floor/plasteel,
 /area/mine/production)
 "iT" = (
 /obj/structure/disposalpipe/segment{
 	dir = 4
 	},
 /turf/open/floor/plasteel/dark,
-/area/mine/production)
-"iU" = (
-/obj/structure/disposalpipe/segment{
-	dir = 9
-	},
-/turf/closed/wall,
 /area/mine/production)
 "iV" = (
 /obj/structure/cable/yellow{
@@ -4163,15 +4010,6 @@
 	},
 /obj/machinery/door/firedoor,
 /turf/open/floor/plasteel,
-/area/mine/production)
-"jg" = (
-/obj/structure/chair/stool,
-/obj/item/radio/intercom{
-	dir = 8;
-	name = "Station Intercom (General)";
-	pixel_x = -28
-	},
-/turf/open/floor/plasteel/dark,
 /area/mine/production)
 "jh" = (
 /obj/machinery/hydroponics/constructable,
@@ -4362,23 +4200,6 @@
 	},
 /turf/open/floor/plasteel,
 /area/mine/production)
-"jA" = (
-/obj/machinery/light,
-/turf/open/floor/plasteel/dark,
-/area/mine/production)
-"jB" = (
-/obj/machinery/conveyor_switch/oneway{
-	dir = 8;
-	id = "garbageL";
-	name = "disposal conveyor"
-	},
-/turf/open/floor/plasteel/dark,
-/area/mine/production)
-"jC" = (
-/obj/structure/closet,
-/obj/effect/spawner/lootdrop/maintenance,
-/turf/open/floor/plasteel/dark,
-/area/mine/production)
 "jD" = (
 /turf/closed/wall/r_wall,
 /area/mine/production)
@@ -4430,13 +4251,6 @@
 	dir = 1
 	},
 /turf/open/floor/plasteel/white,
-/area/mine/production)
-"jL" = (
-/obj/machinery/conveyor{
-	id = "garbageL"
-	},
-/obj/structure/fans/tiny,
-/turf/open/floor/plasteel/dark,
 /area/mine/production)
 "jM" = (
 /turf/open/floor/engine/plasma,
@@ -7151,16 +6965,6 @@
 	},
 /turf/open/floor/plasteel/dark,
 /area/mine/production)
-"qd" = (
-/obj/machinery/light/small{
-	dir = 1
-	},
-/turf/open/floor/plating/asteroid/basalt/lava_land_surface,
-/area/lavaland/surface/outdoors)
-"qe" = (
-/obj/structure/ladder,
-/turf/open/floor/plating/asteroid/basalt/lava_land_surface,
-/area/lavaland/surface/outdoors)
 "qf" = (
 /obj/effect/turf_decal/tile/purple{
 	dir = 8
@@ -9583,6 +9387,35 @@
 /obj/effect/landmark/stationroom/lavaland/station,
 /turf/open/lava/smooth/lava_land_surface,
 /area/template_noop)
+"JP" = (
+/obj/effect/turf_decal/tile/purple,
+/obj/effect/turf_decal/tile/purple{
+	dir = 8
+	},
+/obj/effect/turf_decal/tile/purple{
+	dir = 1
+	},
+/turf/open/floor/plasteel,
+/area/mine/production)
+"Pz" = (
+/obj/machinery/light/small{
+	dir = 4
+	},
+/obj/effect/turf_decal/tile/purple{
+	dir = 1
+	},
+/turf/open/floor/plasteel,
+/area/mine/production)
+"PY" = (
+/obj/effect/turf_decal/tile/purple,
+/obj/effect/turf_decal/tile/purple{
+	dir = 8
+	},
+/obj/effect/turf_decal/tile/purple{
+	dir = 4
+	},
+/turf/open/floor/plasteel,
+/area/mine/production)
 
 (1,1,1) = {"
 ab
@@ -22908,13 +22741,13 @@ fJ
 ga
 eW
 ac
-hx
-hx
-hx
-hx
-hx
-hx
-ac
+kh
+kh
+kh
+kh
+kh
+kh
+kh
 hH
 hH
 hH
@@ -23165,13 +22998,13 @@ fK
 ga
 eW
 ac
-hy
-pb
-pb
-pb
-pb
-jA
-ac
+kh
+kh
+kh
+kh
+kh
+kh
+kh
 kh
 hH
 kh
@@ -23422,13 +23255,13 @@ fL
 ga
 eW
 ac
-hz
-hz
-hz
-hz
-hz
-hz
-ac
+kh
+kh
+kh
+kh
+kh
+kh
+kh
 kh
 kh
 kh
@@ -23679,13 +23512,13 @@ fM
 gb
 gF
 he
-hA
-id
-it
-it
-it
-it
-jL
+kh
+kh
+kh
+kh
+kh
+kh
+kh
 kh
 kh
 kh
@@ -23936,13 +23769,13 @@ fI
 ga
 gG
 ac
-hB
-ie
-ac
-cX
-ac
-cX
-ac
+kh
+kh
+kh
+kh
+kh
+kh
+kh
 kh
 kh
 kh
@@ -24193,13 +24026,13 @@ fI
 ga
 gH
 ac
-hC
-ie
-iu
-iR
-jg
-jB
 ac
+ac
+ac
+ac
+ac
+kh
+kh
 kh
 kh
 hH
@@ -24449,14 +24282,14 @@ fs
 fI
 gc
 gI
+JP
 ac
-hD
 ie
-iv
+cq
 iS
-pb
-hF
 ac
+kh
+kh
 kh
 hH
 hH
@@ -24706,14 +24539,14 @@ ft
 fN
 gd
 gJ
+cq
 ac
-hE
-if
-iw
-iS
-pb
-jA
+cq
+cq
+cq
 ac
+kh
+kh
 hH
 hH
 hH
@@ -24962,15 +24795,15 @@ eY
 ac
 fO
 ga
-eW
-hf
-hF
-hF
+gE
+PY
+gg
+Pz
 ix
-iT
-pb
-jC
+iS
 ac
+kh
+kh
 hH
 hH
 hH
@@ -25221,13 +25054,13 @@ fN
 ge
 gK
 he
-he
-he
-he
-iU
 ac
 ac
 ac
+ac
+ac
+kh
+kh
 hH
 hH
 jD
@@ -94373,13 +94206,13 @@ ab
 ab
 af
 af
-ad
-qd
 af
 af
 af
-hj
-ad
+af
+af
+af
+af
 af
 af
 af
@@ -94630,13 +94463,13 @@ ab
 ab
 ab
 af
-jq
 af
 af
 af
 af
 af
-jq
+af
+af
 af
 af
 af
@@ -95147,7 +94980,7 @@ af
 af
 af
 af
-qe
+af
 af
 af
 af
@@ -95658,13 +95491,13 @@ kF
 kF
 kF
 af
-jr
 af
 af
 af
 af
 af
-jr
+af
+af
 af
 af
 af
@@ -95915,13 +95748,13 @@ kF
 kF
 kF
 af
-ad
-qd
 af
 af
 af
-hj
-ad
+af
+af
+af
+af
 af
 af
 af
