@@ -80,6 +80,10 @@
 	name = "Mining Station Mech Bay"
 	icon_state = "mechbay"
 
+/area/mine/xenoarch
+	name = "Mining Station Xenoarch"
+	icon_state = "mechbay"
+
 /area/mine/laborcamp
 	name = "Labor Camp"
 	icon_state = "mining_labor"
