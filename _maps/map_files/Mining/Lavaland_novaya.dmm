@@ -1688,12 +1688,17 @@
 /obj/structure/cable/yellow{
 	icon_state = "0-8"
 	},
-/obj/machinery/power/apc/auto_name/east,
 /obj/machinery/light{
 	dir = 4
 	},
 /obj/structure/disposalpipe/trunk,
 /obj/machinery/disposal/bin,
+/obj/machinery/power/apc{
+	areastring = "/area/mine/xenoarch";
+	dir = 4;
+	name = "Xenoarch";
+	pixel_x = 24
+	},
 /turf/open/floor/plasteel,
 /area/mine/xenoarch)
 "el" = (
@@ -2027,8 +2032,13 @@
 /obj/effect/turf_decal/tile/red{
 	dir = 4
 	},
-/obj/machinery/power/apc/auto_name/east,
 /obj/structure/cable/yellow,
+/obj/machinery/power/apc{
+	areastring = "/area/mine/xenoarch";
+	dir = 4;
+	name = "Xenoarch";
+	pixel_x = 24
+	},
 /turf/open/floor/plasteel/dark,
 /area/mine/xenoarch)
 "eT" = (
@@ -4078,17 +4088,6 @@
 	},
 /turf/open/floor/plasteel,
 /area/mine/xenoarch)
-"jn" = (
-/obj/machinery/power/apc/auto_name/south,
-/obj/structure/cable/yellow{
-	icon_state = "0-8"
-	},
-/obj/effect/turf_decal/tile/green,
-/obj/effect/turf_decal/tile/purple{
-	dir = 8
-	},
-/turf/open/floor/plasteel,
-/area/mine/xenoarch)
 "jo" = (
 /obj/effect/turf_decal/tile/green,
 /obj/effect/turf_decal/tile/purple{
@@ -4097,6 +4096,9 @@
 /obj/machinery/firealarm{
 	dir = 1;
 	pixel_y = -24
+	},
+/obj/structure/cable/yellow{
+	icon_state = "4-8"
 	},
 /turf/open/floor/plasteel,
 /area/mine/xenoarch)
@@ -4110,6 +4112,9 @@
 /obj/machinery/light,
 /obj/structure/sign/poster/official/random{
 	pixel_y = -32
+	},
+/obj/structure/cable/yellow{
+	icon_state = "4-8"
 	},
 /turf/open/floor/plasteel,
 /area/mine/xenoarch)
@@ -4133,6 +4138,9 @@
 	},
 /obj/item/storage/box/disks_plantgene,
 /obj/item/storage/box/disks_plantgene,
+/obj/structure/cable/yellow{
+	icon_state = "4-8"
+	},
 /turf/open/floor/plasteel,
 /area/mine/xenoarch)
 "jt" = (
@@ -4144,6 +4152,15 @@
 	},
 /obj/effect/turf_decal/tile/purple{
 	dir = 4
+	},
+/obj/structure/cable/yellow{
+	icon_state = "0-8"
+	},
+/obj/machinery/power/apc{
+	areastring = "/area/mine/xenoarch";
+	dir = 4;
+	name = "Xenoarch";
+	pixel_x = 24
 	},
 /turf/open/floor/plasteel,
 /area/mine/xenoarch)
@@ -4695,10 +4712,15 @@
 /obj/structure/cable{
 	icon_state = "1-8"
 	},
-/obj/machinery/power/apc/auto_name/east,
 /obj/effect/turf_decal/tile/yellow,
 /obj/effect/turf_decal/tile/yellow{
 	dir = 4
+	},
+/obj/machinery/power/apc{
+	areastring = "/area/mine/xenoarch";
+	dir = 4;
+	name = "Xenoarch";
+	pixel_x = 24
 	},
 /turf/open/floor/plasteel,
 /area/mine/xenoarch)
@@ -6070,7 +6092,12 @@
 /obj/structure/cable/yellow{
 	icon_state = "0-8"
 	},
-/obj/machinery/power/apc/auto_name/east,
+/obj/machinery/power/apc{
+	areastring = "/area/mine/xenoarch";
+	dir = 4;
+	name = "Xenoarch";
+	pixel_x = 24
+	},
 /turf/open/floor/plasteel/dark,
 /area/mine/xenoarch)
 "nN" = (
@@ -27302,7 +27329,7 @@ hM
 cq
 iD
 cq
-jn
+mt
 jD
 jQ
 kl
