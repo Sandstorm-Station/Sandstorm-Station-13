@@ -86,7 +86,7 @@
 				genital_entry["min_size"] = genital.min_size ? genital.min_size : 0
 
 		//fluids
-		if(CHECK_BITFIELD(genital.genital_flags, GENITAL_FUID_PRODUCTION) || CHECK_BITFIELD(genital?.linked_organ.genital_flags, GENITAL_FUID_PRODUCTION))
+		if(CHECK_BITFIELD(genital.genital_flags, GENITAL_FUID_PRODUCTION) || CHECK_BITFIELD(genital?.linked_organ?.genital_flags, GENITAL_FUID_PRODUCTION))
 			var/fluids = genital.get_fluid()
 			genital_entry["fluid"] = fluids
 
