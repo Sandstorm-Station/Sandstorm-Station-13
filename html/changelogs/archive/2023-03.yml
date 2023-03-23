@@ -93,3 +93,9 @@
   - bugfix: Exosuit Drill Mech can no longer drill multiple times at once
   - bugfix: Exosuit Drill Mech can no longer drill people past melee range
   - bugfix: Exosuit Drill Mech now does the correct amount of damage to objects
+  LeDrascol:
+  - rscadd: 'Added new cybernetic organ: Mesmer Eyes'
+  - rscadd: Added examine text to the Hypnotic Gaze quirk
+  - tweak: Hypnotic Gaze consent prompt now includes additional information
+  - tweak: Brainwashed victims are no longer shown in the round-end panel
+  - admin: Hypnotic Gaze quirk can now be added and removed mid-round
