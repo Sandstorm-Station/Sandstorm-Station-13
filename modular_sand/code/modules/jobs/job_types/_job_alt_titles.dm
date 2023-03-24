@@ -1,6 +1,6 @@
 //Command
 /datum/job/captain
-	alt_titles = list("Colony Overseer")
+	alt_titles = list("Colony Overseer", "Senator", "Consul")
 
 /datum/job/chief_engineer
 	alt_titles = list("Senior Engineer")
@@ -9,7 +9,7 @@
 	alt_titles = list("Crew Resource Officer", "Executive Officer")
 
 /datum/job/hos
-	alt_titles = list("Chief of Security", "Sheriff")
+	alt_titles = list("Chief of Security", "Sheriff", "Praetor")
 
 /datum/job/qm
 	alt_titles = list("Resource Manager", "Logistics Supervisor")
@@ -32,7 +32,7 @@
 	alt_titles = list("Barista")
 
 /datum/job/chaplain
-	alt_titles = list("Priest", "Cult Leader", "Pope", "Bishop")
+	alt_titles = list("Priest", "Cult Leader", "Pope", "Bichop", "Pontiff")
 
 /datum/job/clown //The most useless role in the game, delet this
 	alt_titles = list("Entertainer")
