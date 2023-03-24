@@ -162,13 +162,13 @@
 					return FALSE
 				if(istype(genital, /obj/item/organ/genital/penis))
 					var/obj/item/organ/genital/penis/peepee = genital
-					if(params["max_size"])
+					if(params["max_size"] > 0)
 						var/new_max_size = clamp(params["max_size"], peepee.length, INFINITY)
 						peepee.max_length = new_max_size
 					else
 						genital.max_size = 0
 				else
-					if(params["max_size"])
+					if(params["max_size"] > 0)
 						var/new_max_size = clamp(params["max_size"], genital.size, INFINITY)
 						genital.max_size = new_max_size
 					else
