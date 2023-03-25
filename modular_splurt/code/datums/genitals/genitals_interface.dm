@@ -166,7 +166,7 @@
 						var/new_max_size = clamp(params["max_size"], peepee.length, INFINITY)
 						peepee.max_length = new_max_size
 					else
-						genital.max_length = 0
+						peepee.max_length = 0
 				else
 					if(params["max_size"])
 						var/new_max_size = clamp(params["max_size"], genital.size, INFINITY)
