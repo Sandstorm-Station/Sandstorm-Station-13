@@ -162,18 +162,17 @@
 					return FALSE
 				if(istype(genital, /obj/item/organ/genital/penis))
 					var/obj/item/organ/genital/penis/peepee = genital
-					if(params["max_size"] > 0)
+					if(params["max_size"])
 						var/new_max_size = clamp(params["max_size"], peepee.length, INFINITY)
 						peepee.max_length = new_max_size
 					else
-						genital.max_size = 0
+						genital.max_length = 0
 				else
-					if(params["max_size"] > 0)
+					if(params["max_size"])
 						var/new_max_size = clamp(params["max_size"], genital.size, INFINITY)
 						genital.max_size = new_max_size
 					else
 						genital.max_size = 0
-				genital.modify_size(0)
 			if("min_size" in params)
 				var/obj/item/organ/genital/genital = locate(params["genital"], self.internal_organs)
 				if(!genital)
@@ -185,7 +184,6 @@
 				else
 					var/new_min_size = clamp(params["min_size"], 0, genital.size)
 					genital.min_size = new_min_size
-				genital.modify_size(0)
 			else
 				return FALSE
 		if("equipment")
