@@ -168,9 +168,12 @@
 	set category = "IC"
 	set src in view(usr.client)
 
-	if(!usr.mind) //Mindless boys, honestly just don't, it's better this way
+	var/datum/component/interaction_menu_granter/menu = usr.GetComponent(/datum/component/interaction_menu_granter)
+	if(!menu)
+		to_chat(usr, span_warning("You must have done something really bad to not have an interaction component."))
 		return
-	if(!usr.mind.interaction_holder)
-		usr.mind.interaction_holder = new(usr.mind)
-	usr.mind.interaction_holder.target = src.held_mob
-	usr.mind.interaction_holder.ui_interact(usr)
+
+	if(!src)
+		to_chat(usr, span_warning("Your interaction target is gone!"))
+		return
+	menu.open_menu(usr, held_mob)

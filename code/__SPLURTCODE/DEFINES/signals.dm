@@ -7,3 +7,4 @@
 
 #define COMSIG_MOB_ITEM_EQUIPPED "mob_item_equipped"
 #define COMSIG_MOB_ITEM_DROPPED "mob_item_dropped"
+#define COMSIG_MOB_LUST_UPDATED "mob_lust_updated"
