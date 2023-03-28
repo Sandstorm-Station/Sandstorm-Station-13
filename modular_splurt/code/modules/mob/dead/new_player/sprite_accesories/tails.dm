@@ -194,7 +194,7 @@
 	matrixed_sections = MATRIX_RED_GREEN
 
 /datum/sprite_accessory/tails_animated/mam_tails_animated/easterndragon
-	name = "Eastern Dragon"
+	name = "Dragon Eastern"
 	icon_state = "easternd"
 	icon = 'modular_splurt/icons/mob/mam_tails.dmi'
 	matrixed_sections = MATRIX_RED_GREEN
