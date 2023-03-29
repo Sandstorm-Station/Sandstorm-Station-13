@@ -24,8 +24,18 @@
 
 	//Find the info of the current splashscreen
 	if(!splashinfo.Find(current_splashscreen))
-		return "The current splashscreen has no info set up yet!"
-	return "*[splashinfo[current_splashscreen]["name"]] by* **[splashinfo[current_splashscreen]["author"]]**\n[splashinfo[current_splashscreen]["link"]]"
+		return new /datum/tgs_message_content("The current splashscreen has no info set up yet!")
+
+	//create info and embed of the sauce
+	var/datum/tgs_message_content/message = new("Source found!")
+	message.embed = new
+
+	message.embed.author = new(splashinfo[current_splashscreen]["author"])
+	message.embed.title = splashinfo[current_splashscreen]["name"]
+	message.embed.description = splashinfo[current_splashscreen]["link"]
+	message.embed.timestamp = time2text(world.timeofday, "YYYY-MM-DD hh:mm:ss")
+
+	return message
 
 /datum/tgs_chat_command/allsplashscreens
 	name = "allsplashscreens"
@@ -34,17 +44,23 @@
 /datum/tgs_chat_command/allsplashscreens/Run(datum/tgs_chat_user/sender, params)
 	//Check if the sauce system is turned on
 	if(!CONFIG_GET(flag/sauce_command_enabled))
-		return "This command is not enabled!"
+		return new /datum/tgs_message_content("This command is not enabled!")
 
 	//Get the info of all splashscreens
 	var/list/splashinfo = safe_json_decode(rustg_file_read("[global.config.directory]/splurt/title_screens_sources.json"))
 	if(!splashinfo.len)
-		return "There are no splashscreens set up yet!"
+		return new /datum/tgs_message_content("There are no splashscreens set up yet!")
 
 	//Organize the splashscreen info
-	var/list/data = list()
+	var/datum/tgs_message_content/message = new("Splashscreens:")
+	message.embed = new
+
+	message.embed.title = "Currently available splashscreens"
+	message.embed.description = "These are the splashscreens with info currently available"
+	message.embed.timestamp = time2text(world.timeofday, "YYYY-MM-DD hh:mm:ss")
+
 	for(var/pic in splashinfo)
 		var/list/info = splashinfo[pic]
-		var/text = "- [info.Join(" - ")]"
-		LAZYADD(data, text)
-	return "Currently active splashscreens: ```yaml\n[data.Join("\n")]```"
+		var/datum/tgs_chat_embed/field/field = new("<a href=[info["link"]]>[info["name"]]</a>", "by [info["author"]]")
+		LAZYADD(message.embed.fields, field)
+	return message
