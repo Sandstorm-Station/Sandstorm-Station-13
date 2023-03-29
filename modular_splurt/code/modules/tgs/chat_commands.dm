@@ -13,7 +13,7 @@
 /datum/tgs_chat_command/splashsauce/Run(datum/tgs_chat_user/sender, params)
 	//Check if the sauce system is turned on
 	if(!CONFIG_GET(flag/sauce_command_enabled))
-		return "This command is not enabled!"
+		return new /datum/tgs_message_content("This command is not enabled!")
 
 	//Get the current splashscreen
 	var/list/raw_path = splittext(SStitle.file_path, "/")
