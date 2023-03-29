@@ -128,7 +128,11 @@
 	. = ..()
 
 /datum/job/chaplain/New() // Yell at upstream maintainer(s) to fix "Bichop" title.
+	var/list/rem_titles = list(
+		"Bichop"
+	)
 	var/list/extra_titles = list(
+		"Bishop",
 		"Priestess",
 		"Prior",
 		"Monk",
@@ -136,6 +140,7 @@
 		"Counselor"
 	)
 	LAZYADD(alt_titles, extra_titles)
+	LAZYREMOVE(alt_titles, rem_titles)
 	. = ..()
 
 /datum/job/clown // Sorry, but no TWO entertainer titles.
@@ -199,14 +204,17 @@
 		"Toxins Researcher",
 		"Research Intern",
 		"Junior Scientist",
-		"Rack Researcher"
+		"Rack Researcher",
+		"Nanite Programmer",
+		"Tetromino Researcher"
 	)
 	LAZYADD(alt_titles, extra_titles)
 	. = ..()
 
 /datum/job/roboticist/New()
 	var/list/extra_titles = list(
-		"Ripperdoc"
+		"Ripperdoc",
+		"MOD Mechanic"
 	)
 	LAZYADD(alt_titles, extra_titles)
 	. = ..()
@@ -298,9 +306,13 @@
 		"Police Officer",
 		"Slutcurity Officer"
 	)
+	var/list/rem_titles = list(
+		"Peacekeeper"
+	)
 	if(SSevents.holidays && SSevents.holidays[HALLOWEEN])
 		LAZYADD(extra_titles, "Spookcurity Officer")
 	LAZYADD(alt_titles, extra_titles)
+	LAZYREMOVE(alt_titles, rem_titles)
 	. = ..()
 
 /datum/job/warden/New()
@@ -325,7 +337,8 @@
 		"Mail Man",
 		"Mail Woman",
 		"Mailroom Technician",
-		"Logistics Technician"
+		"Logistics Technician",
+		"Cryptocurrency Technician"
 	)
 	LAZYADD(alt_titles, extra_titles)
 	. = ..()
@@ -338,6 +351,19 @@
 		"Ashwalker Sex Slave",
 		"Ashwalker Breeder",
 		"Slayer"
+	)
+	LAZYADD(alt_titles, extra_titles)
+	. = ..()
+
+// Prisoner
+/datum/job/prisoner/New()
+	var/list/extra_titles = list(
+		"Low Security Prisoner",
+		"Medium Security Prisoner",
+		"Maximum Security Prisoner",
+		"Supermax Prisoner",
+		"Protective Custody Prisoner",
+		"Prison Slut"
 	)
 	LAZYADD(alt_titles, extra_titles)
 	. = ..()

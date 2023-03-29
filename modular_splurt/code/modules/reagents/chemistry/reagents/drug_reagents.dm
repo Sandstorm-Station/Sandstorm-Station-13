@@ -1,18 +1,61 @@
+#define QUIRK_ESTROUS_ACTIVE /datum/quirk/estrous_active
+
+// Hexacrocin
 /datum/reagent/drug/aphrodisiacplus/overdose_start(mob/living/M)
+	. = ..()
+
+	// Check for mob with client
+	if(!(istype(M) && M.client))
+		return
+
+	// Check pref for arousable
+	if(!M.client?.prefs.arousable)
+		// Log interaction and return
+		M.log_message("overdosed on [src], but ignored it due to arousal preference.", LOG_EMOTE)
+		return
+
+	// Check pref for aphro
+	if(M.client?.prefs.cit_toggles & NO_APHRO)
+		// Log interaction and return
+		M.log_message("overdosed on [src], but ignored it due to aphrodisiac preference.", LOG_EMOTE)
+		return
+
 	// Check for pre-existing heat trait
-	if(!HAS_TRAIT(M, TRAIT_ESTROUS_ACTIVE))
-		// Check client preferences
-		if(M && M.client?.prefs.arousable && !(M.client?.prefs.cit_toggles & NO_APHRO))
-			// Add quirk
-			M.add_quirk(/datum/quirk/estrous_active, APHRO_TRAIT)
+	if(!M.has_quirk(QUIRK_ESTROUS_ACTIVE))
+		// Add quirk
+		M.add_quirk(QUIRK_ESTROUS_ACTIVE, APHRO_TRAIT)
 
-			// Chat message is handled by the quirk
+		// Chat message is handled by the quirk
 
-			// Log interaction
-			M.log_message("Given the In Estrous quirk by hexacrocin overdose.", LOG_EMOTE)
+		// Log interaction
+		M.log_message("was given the In Estrous quirk by [src] overdose.", LOG_EMOTE)
 
 	// Return normally
 	. = ..()
+
+// Hexacamphor
+/datum/reagent/drug/anaphrodisiacplus/overdose_start(mob/living/M)
+	. = ..()
+
+	// Check for mob with client
+	if(!(istype(M) && M.client))
+		return
+
+	// Check pref for arousable
+	if(!M.client?.prefs.arousable)
+		// Log interaction and return
+		M.log_message("overdosed on [src], but ignored it due to arousal preference.", LOG_EMOTE)
+		return
+
+	// Check for pre-existing heat trait
+	if(M.has_quirk(QUIRK_ESTROUS_ACTIVE))
+		// Remove quirk
+		M.remove_quirk(QUIRK_ESTROUS_ACTIVE)
+
+		// Chat message is handled by the quirk
+
+		// Log interaction
+		M.log_message("lost the In Estrous quirk due to [src] overdose.", LOG_EMOTE)
 
 //Own stuff
 /datum/reagent/drug/maint/tar
@@ -46,6 +89,10 @@
 	overdose_threshold = 30
 	gas = GAS_COPIUM
 	value = REAGENT_VALUE_GLORIOUS
+
+// Variant of Copium created by genital fluids
+/datum/reagent/drug/copium/gfluid
+	value = REAGENT_VALUE_COMMON
 
 /datum/reagent/drug/copium/on_mob_life(mob/living/carbon/M)
 	. = ..()
@@ -81,3 +128,5 @@
 		var/temp = holder ? holder.chem_temp : T20C
 		T.atmos_spawn_air("copium=[volume];TEMP=[temp]")
 	return
+
+#undef QUIRK_ESTROUS_ACTIVE
