@@ -64,6 +64,6 @@
 
 	for(var/pic in splashinfo)
 		var/list/info = splashinfo[pic]
-		var/datum/tgs_chat_embed/field/field = new("\[[info["name"]]\]([info["link"]])", "by [info["author"]]")
+		var/datum/tgs_chat_embed/field/field = new("by [info["author"]]", "\[[info["name"]]\]([info["link"]])")
 		LAZYADD(message.embed.fields, field)
 	return message
