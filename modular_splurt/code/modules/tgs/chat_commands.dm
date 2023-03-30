@@ -34,6 +34,8 @@
 	message.embed.title = splashinfo[current_splashscreen]["name"]
 	message.embed.description = splashinfo[current_splashscreen]["link"]
 	message.embed.timestamp = time2text(world.timeofday, "YYYY-MM-DD hh:mm:ss")
+	message.embed.image = new(splashinfo[current_splashscreen]["dw_link"])
+	message.embed.colour = "#00ff00"
 
 	return message
 
@@ -58,9 +60,10 @@
 	message.embed.title = "Currently available splashscreens"
 	message.embed.description = "These are the splashscreens with info currently available"
 	message.embed.timestamp = time2text(world.timeofday, "YYYY-MM-DD hh:mm:ss")
+	message.embed.colour = "#350bce"
 
 	for(var/pic in splashinfo)
 		var/list/info = splashinfo[pic]
-		var/datum/tgs_chat_embed/field/field = new("<a href=[info["link"]]>[info["name"]]</a>", "by [info["author"]]")
+		var/datum/tgs_chat_embed/field/field = new("\[[info["name"]]\]([info["link"]])", "by [info["author"]]")
 		LAZYADD(message.embed.fields, field)
 	return message
