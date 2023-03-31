@@ -1060,6 +1060,10 @@
 	name = "Zone"
 	icon_state = "hair_zone"
 
+/datum/sprite_accessory/hair/fluffball
+	name = "Fluffball"
+	icon_state = "hair_fluffball"
+
 /datum/sprite_accessory/hair_gradient
 	icon = 'icons/mob/hair_gradients.dmi'
 
