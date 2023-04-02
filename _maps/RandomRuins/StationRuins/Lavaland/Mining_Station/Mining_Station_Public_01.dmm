@@ -1283,6 +1283,13 @@
 /obj/machinery/atmospherics/pipe/simple/scrubbers/hidden/layer3,
 /turf/open/floor/plasteel,
 /area/mine/living_quarters)
+"tx" = (
+/obj/effect/turf_decal/tile/purple{
+	dir = 8
+	},
+/obj/structure/ladder/teleport/xenoarch,
+/turf/open/floor/plasteel,
+/area/mine/production)
 "tK" = (
 /obj/structure/closet/crate,
 /turf/open/floor/plating/asteroid/basalt/lava_land_surface,
@@ -6691,7 +6698,7 @@ VT
 VT
 Cd
 Ed
-Wf
+tx
 II
 Jo
 Ed
