@@ -4,9 +4,6 @@
 	fluid_max_volume += ((length - initial(length))*2.5)*(owner ? get_size(owner) : 1)
 	fluid_rate += ((length - initial(length))/10)*(owner ? get_size(owner) : 1)
 
-/obj/item/organ/genital/penis/get_fluid()
-	return linked_organ.get_fluid()
-
 /obj/item/organ/genital/penis/climax_modify_size(mob/living/partner, obj/item/organ/genital/source_gen)
 	if(!(owner.client?.prefs.cit_toggles & PENIS_ENLARGEMENT))
 		return
