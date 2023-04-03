@@ -1,9 +1,8 @@
-var/list/teleport_ladders = list()
-
 /obj/structure/ladder/teleport
-	var/tag_teleport = "null"
+	var/tag_teleport = null
+	var/static/list/teleport_ladders = list()
 
-/obj/structure/ladder/Initialize(mapload, obj/structure/ladder/up, obj/structure/ladder/down)
+/obj/structure/ladder/teleport/Initialize(mapload, obj/structure/ladder/up, obj/structure/ladder/down)
 	..()
 	teleport_ladders.Add(src)
 	return INITIALIZE_HINT_LATELOAD

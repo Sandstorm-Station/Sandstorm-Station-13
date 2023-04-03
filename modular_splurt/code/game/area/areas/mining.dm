@@ -10,3 +10,7 @@
 	name = "Mining Station Xenoarch"
 	icon_state = "mining_lobby"
 
+/area/mine/xenoarch
+	name = "Mining Station Xenoarch"
+	icon_state = "mechbay"
+
