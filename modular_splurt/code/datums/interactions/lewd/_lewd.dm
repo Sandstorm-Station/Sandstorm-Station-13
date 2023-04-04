@@ -243,7 +243,7 @@
 
 		carbon_src = src
 		for(var/obj/item/organ/genital/G in carbon_src.internal_organs)
-			if(check_orgasm(G))
+			if(check_orgasm(sender = G))
 				break
 	set_lust(0)
 	SEND_SIGNAL(src, COMSIG_MOB_CAME, target_orifice, partner)

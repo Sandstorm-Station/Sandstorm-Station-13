@@ -304,7 +304,6 @@
 			var/obj/item/organ/genital/picked_organ = pick_climax_genitals()
 			if(picked_organ && available_rosie_palms(TRUE))
 				mob_climax_outside(picked_organ)
-				check_orgasm(picked_organ) //SPLURT edit
 		if("Climax with partner")
 			//We need no hands, we can be restrained and so on, so let's pick an organ
 			var/obj/item/organ/genital/picked_organ = pick_climax_genitals()
@@ -316,7 +315,6 @@
 					var/spillage = input(src, "Would your fluids spill outside?", "Choose overflowing option", "Yes") as null|anything in list("Yes", "No")
 					if(spillage && in_range(src, partner))
 						mob_climax_partner(picked_organ, partner, spillage == "Yes" ? TRUE : FALSE, Lgen = picked_target)
-						check_orgasm(picked_organ) //SPLURT edit
 		if("Fill container")
 			//We'll need hands and no restraints.
 			if(!available_rosie_palms(FALSE, /obj/item/reagent_containers))
@@ -329,7 +327,6 @@
 				var/obj/item/reagent_containers/fluid_container = pick_climax_container()
 				if(fluid_container && available_rosie_palms(TRUE, /obj/item/reagent_containers))
 					mob_fill_container(picked_organ, fluid_container)
-					check_orgasm(picked_organ) //SPLURT edit
 		if("Climax over partner")
 			//We need no hands, we can be restrained and so on, so let's pick an organ
 			var/obj/item/organ/genital/picked_organ = pick_climax_genitals()
@@ -337,7 +334,6 @@
 				var/mob/living/partner = pick_partner() //Get someone
 				if(partner)
 					mob_climax_over(picked_organ, partner, TRUE)
-					check_orgasm(picked_organ) //SPLURT edit
 
 	mb_cd_timer = world.time + mb_cd_length
 
