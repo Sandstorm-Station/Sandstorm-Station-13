@@ -104,3 +104,6 @@
 //ash walker nest
 /area/ruin/lavaland/unpowered/ash_walkers
 	icon_state = "red"
+
+/area/ruin/lavaland/unpowered/xenoarch
+	icon_state = "red"
