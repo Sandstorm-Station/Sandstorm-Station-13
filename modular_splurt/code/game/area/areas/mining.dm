@@ -14,3 +14,5 @@
 	name = "Mining Station Xenoarch"
 	icon_state = "mechbay"
 
+/area/ruin/lavaland/unpowered/xenoarch
+	icon_state = "red"
