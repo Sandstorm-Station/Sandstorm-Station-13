@@ -6,7 +6,7 @@
 	materials = list(/datum/material/glass = 2250, /datum/material/plasma = 2250, /datum/material/diamond = 185, /datum/material/bluespace = 185)
 	build_path = /obj/item/reagent_containers/spray/bluespace
 	category = list("Misc", "Medical Designs")
-	departmental_flags = DEPARTMENTAL_FLAG_MEDICAL | DEPARTMENTAL_FLAG_SCIENCE | DEPARTMENTAL_FLAG_SERVICE
+	departmental_flags = DEPARTMENTAL_FLAG_MEDICAL | DEPARTMENTAL_FLAG_SCIENCE
 
 /datum/design/dropper
 	name = "Dropper"
