@@ -87,7 +87,7 @@
 
 		//fluids
 		if(CHECK_BITFIELD(genital.genital_flags, GENITAL_FUID_PRODUCTION) || CHECK_BITFIELD(genital?.linked_organ?.genital_flags, GENITAL_FUID_PRODUCTION))
-			var/fluids = genital.get_fluid()
+			var/fluids = genital.get_fluid_fraction()
 			genital_entry["fluid"] = fluids
 
 		//equipments
