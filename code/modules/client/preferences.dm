@@ -2380,9 +2380,9 @@ GLOBAL_LIST_EMPTY(preferences_datums)
 					var/new_mutantcolor = input(user, "Choose your character's alien/mutant color:", "Character Preference","#"+features["mcolor"]) as color|null
 					if(new_mutantcolor)
 						var/temp_hsv = RGBtoHSV(new_mutantcolor)
-						if(new_mutantcolor == "#000000")
+						if(new_mutantcolor == "#000000" && features["mcolor"] != pref_species.default_color) //SPLURT EDIT
 							features["mcolor"] = pref_species.default_color
-						else if((MUTCOLORS_PARTSONLY in pref_species.species_traits) || ReadHSV(temp_hsv)[3] >= ReadHSV(MINIMUM_MUTANT_COLOR)[3]) // mutantcolors must be bright, but only if they affect the skin
+						else if((MUTCOLORS_PARTSONLY in pref_species.species_traits) || ReadHSV(temp_hsv)[3] >= ReadHSV(MINIMUM_MUTANT_COLOR)[3] || !CONFIG_GET(flag/character_color_limits)) // mutantcolors must be bright, but only if they affect the skin //SPLURT EDIT
 							features["mcolor"] = sanitize_hexcolor(new_mutantcolor, 6)
 						else
 							to_chat(user, "<span class='danger'>Invalid color. Your color is not bright enough.</span>")
@@ -2391,9 +2391,9 @@ GLOBAL_LIST_EMPTY(preferences_datums)
 					var/new_mutantcolor = input(user, "Choose your character's secondary alien/mutant color:", "Character Preference","#"+features["mcolor2"]) as color|null
 					if(new_mutantcolor)
 						var/temp_hsv = RGBtoHSV(new_mutantcolor)
-						if(new_mutantcolor == "#000000")
+						if(new_mutantcolor == "#000000" && features["mcolor2"] != pref_species.default_color) //SPLURT EDIT
 							features["mcolor2"] = pref_species.default_color
-						else if((MUTCOLORS_PARTSONLY in pref_species.species_traits) || ReadHSV(temp_hsv)[3] >= ReadHSV(MINIMUM_MUTANT_COLOR)[3]) // mutantcolors must be bright, but only if they affect the skin
+						else if((MUTCOLORS_PARTSONLY in pref_species.species_traits) || ReadHSV(temp_hsv)[3] >= ReadHSV(MINIMUM_MUTANT_COLOR)[3] || !CONFIG_GET(flag/character_color_limits)) // mutantcolors must be bright, but only if they affect the skin //SPLURT EDIT
 							features["mcolor2"] = sanitize_hexcolor(new_mutantcolor, 6)
 						else
 							to_chat(user, "<span class='danger'>Invalid color. Your color is not bright enough.</span>")
@@ -2402,9 +2402,9 @@ GLOBAL_LIST_EMPTY(preferences_datums)
 					var/new_mutantcolor = input(user, "Choose your character's tertiary alien/mutant color:", "Character Preference","#"+features["mcolor3"]) as color|null
 					if(new_mutantcolor)
 						var/temp_hsv = RGBtoHSV(new_mutantcolor)
-						if(new_mutantcolor == "#000000")
+						if(new_mutantcolor == "#000000" && features["mcolor3"] != pref_species.default_color) //SPLURT EDIT
 							features["mcolor3"] = pref_species.default_color
-						else if((MUTCOLORS_PARTSONLY in pref_species.species_traits) || ReadHSV(temp_hsv)[3] >= ReadHSV(MINIMUM_MUTANT_COLOR)[3]) // mutantcolors must be bright, but only if they affect the skin
+						else if((MUTCOLORS_PARTSONLY in pref_species.species_traits) || ReadHSV(temp_hsv)[3] >= ReadHSV(MINIMUM_MUTANT_COLOR)[3] || !CONFIG_GET(flag/character_color_limits)) // mutantcolors must be bright, but only if they affect the skin //SPLURT EDIT
 							features["mcolor3"] = sanitize_hexcolor(new_mutantcolor, 6)
 						else
 							to_chat(user, "<span class='danger'>Invalid color. Your color is not bright enough.</span>")
@@ -2418,9 +2418,9 @@ GLOBAL_LIST_EMPTY(preferences_datums)
 					var/new_neckfire_color = input(user, "Choose your fire's color:", "Character Preference", "#"+features["neckfire_color"]) as color|null
 					if(new_neckfire_color)
 						var/temp_hsv = RGBtoHSV(new_neckfire_color)
-						if(new_neckfire_color == "#000000")
+						if(new_neckfire_color == "#000000" && features["neckfire_color"] != pref_species.default_color) //SPLURT EDIT
 							features["neckfire_color"] = pref_species.default_color
-						else if(ReadHSV(temp_hsv)[3] >= ReadHSV(MINIMUM_MUTANT_COLOR)[3])
+						else if(ReadHSV(temp_hsv)[3] >= ReadHSV(MINIMUM_MUTANT_COLOR)[3] || !CONFIG_GET(flag/character_color_limits)) //SPLURT EDIT
 							features["neckfire_color"] = sanitize_hexcolor(new_neckfire_color, 6)
 						else
 							to_chat(user,"<span class='danger'>Invalid color. Your color is not bright enough.</span>")
@@ -2561,7 +2561,7 @@ GLOBAL_LIST_EMPTY(preferences_datums)
 				if("horns_color")
 					var/new_horn_color = input(user, "Choose your character's horn colour:", "Character Preference","#"+features["horns_color"]) as color|null
 					if(new_horn_color)
-						if (new_horn_color == "#000000")
+						if (new_horn_color == "#000000" && features["horns_color"] != "85615A") //SPLURT EDIT
 							features["horns_color"] = "85615A"
 						else
 							features["horns_color"] = sanitize_hexcolor(new_horn_color, 6)
@@ -2575,7 +2575,7 @@ GLOBAL_LIST_EMPTY(preferences_datums)
 				if("wings_color")
 					var/new_wing_color = input(user, "Choose your character's wing colour:", "Character Preference","#"+features["wings_color"]) as color|null
 					if(new_wing_color)
-						if (new_wing_color == "#000000")
+						if (new_wing_color == "#000000" && features["wings_color"] != "#FFFFFF") //SPLURT EDIT
 							features["wings_color"] = "#FFFFFF"
 						else
 							features["wings_color"] = sanitize_hexcolor(new_wing_color, 6)
@@ -2651,7 +2651,7 @@ GLOBAL_LIST_EMPTY(preferences_datums)
 							var/custom_tone = input(user, "Choose your custom skin tone:", "Character Preference", default) as color|null
 							if(custom_tone)
 								var/temp_hsv = RGBtoHSV(custom_tone)
-								if(ReadHSV(temp_hsv)[3] < ReadHSV("#333333")[3]) // rgb(50,50,50)
+								if(ReadHSV(temp_hsv)[3] < ReadHSV("#333333")[3] && CONFIG_GET(flag/character_color_limits)) // rgb(50,50,50) //SPLURT EDIT
 									to_chat(user,"<span class='danger'>Invalid color. Your color is not bright enough.</span>")
 								else
 									use_custom_skin_tone = TRUE
@@ -2746,9 +2746,9 @@ GLOBAL_LIST_EMPTY(preferences_datums)
 					var/new_feature_color = input(user, "Choose your character's mutant part colour:", "Character Preference","#"+features[href_list["preference"]]) as color|null
 					if(new_feature_color)
 						var/temp_hsv = RGBtoHSV(new_feature_color)
-						if(new_feature_color == "#000000")
+						if(new_feature_color == "#000000" && features[href_list["preference"]] != pref_species.default_color) //SPLURT EDIT
 							features[href_list["preference"]] = pref_species.default_color
-						else if(ReadHSV(temp_hsv)[3] >= ReadHSV(MINIMUM_MUTANT_COLOR)[3])
+						else if(ReadHSV(temp_hsv)[3] >= ReadHSV(MINIMUM_MUTANT_COLOR)[3] || !CONFIG_GET(flag/character_color_limits)) //SPLURT EDIT
 							features[href_list["preference"]] = sanitize_hexcolor(new_feature_color, 6)
 						else
 							to_chat(user,"<span class='danger'>Invalid color. Your color is not bright enough.</span>")
@@ -2775,9 +2775,9 @@ GLOBAL_LIST_EMPTY(preferences_datums)
 					var/new_cockcolor = input(user, "Penis color:", "Character Preference","#"+features["cock_color"]) as color|null
 					if(new_cockcolor)
 						var/temp_hsv = RGBtoHSV(new_cockcolor)
-						if(new_cockcolor == "#000000")
+						if(new_cockcolor == "#000000" && features["cock_color"] != pref_species.default_color) //SPLURT EDIT
 							features["cock_color"] = pref_species.default_color
-						else if(ReadHSV(temp_hsv)[3] >= ReadHSV(MINIMUM_MUTANT_COLOR)[3])
+						else if(ReadHSV(temp_hsv)[3] >= ReadHSV(MINIMUM_MUTANT_COLOR)[3] || !CONFIG_GET(flag/character_color_limits)) //SPLURT EDIT
 							features["cock_color"] = sanitize_hexcolor(new_cockcolor, 6)
 						else
 							to_chat(user,"<span class='danger'>Invalid color. Your color is not bright enough.</span>")
@@ -2822,9 +2822,9 @@ GLOBAL_LIST_EMPTY(preferences_datums)
 					var/new_ballscolor = input(user, "Testicles Color:", "Character Preference","#"+features["balls_color"]) as color|null
 					if(new_ballscolor)
 						var/temp_hsv = RGBtoHSV(new_ballscolor)
-						if(new_ballscolor == "#000000")
+						if(new_ballscolor == "#000000" && features["balls_color"] != pref_species.default_color) //SPLURT EDIT
 							features["balls_color"] = pref_species.default_color
-						else if(ReadHSV(temp_hsv)[3] >= ReadHSV(MINIMUM_MUTANT_COLOR)[3])
+						else if(ReadHSV(temp_hsv)[3] >= ReadHSV(MINIMUM_MUTANT_COLOR)[3] || !CONFIG_GET(flag/character_color_limits)) //SPLURT EDIT
 							features["balls_color"] = sanitize_hexcolor(new_ballscolor, 6)
 						else
 							to_chat(user,"<span class='danger'>Invalid color. Your color is not bright enough.</span>")
@@ -2865,9 +2865,9 @@ GLOBAL_LIST_EMPTY(preferences_datums)
 					var/new_breasts_color = input(user, "Breast Color:", "Character Preference","#"+features["breasts_color"]) as color|null
 					if(new_breasts_color)
 						var/temp_hsv = RGBtoHSV(new_breasts_color)
-						if(new_breasts_color == "#000000")
+						if(new_breasts_color == "#000000" && features["breasts_color"] != pref_species.default_color) //SPLURT EDIT
 							features["breasts_color"] = pref_species.default_color
-						else if(ReadHSV(temp_hsv)[3] >= ReadHSV(MINIMUM_MUTANT_COLOR)[3])
+						else if(ReadHSV(temp_hsv)[3] >= ReadHSV(MINIMUM_MUTANT_COLOR)[3] || !CONFIG_GET(flag/character_color_limits)) //SPLURT EDIT
 							features["breasts_color"] = sanitize_hexcolor(new_breasts_color, 6)
 						else
 							to_chat(user,"<span class='danger'>Invalid color. Your color is not bright enough.</span>")
@@ -2897,9 +2897,9 @@ GLOBAL_LIST_EMPTY(preferences_datums)
 					var/new_vagcolor = input(user, "Vagina color:", "Character Preference","#"+features["vag_color"]) as color|null
 					if(new_vagcolor)
 						var/temp_hsv = RGBtoHSV(new_vagcolor)
-						if(new_vagcolor == "#000000")
+						if(new_vagcolor == "#000000" && features["vag_color"] != pref_species.default_color) //SPLURT EDIT
 							features["vag_color"] = pref_species.default_color
-						else if(ReadHSV(temp_hsv)[3] >= ReadHSV(MINIMUM_MUTANT_COLOR)[3])
+						else if(ReadHSV(temp_hsv)[3] >= ReadHSV(MINIMUM_MUTANT_COLOR)[3] || !CONFIG_GET(flag/character_color_limits)) //SPLURT EDIT
 							features["vag_color"] = sanitize_hexcolor(new_vagcolor, 6)
 						else
 							to_chat(user,"<span class='danger'>Invalid color. Your color is not bright enough.</span>")
@@ -2923,9 +2923,9 @@ GLOBAL_LIST_EMPTY(preferences_datums)
 					var/new_bellycolor = input(user, "Belly Color:", "Character Preference", "#"+features["belly_color"]) as color|null
 					if(new_bellycolor)
 						var/temp_hsv = RGBtoHSV(new_bellycolor)
-						if(new_bellycolor == "#000000")
+						if(new_bellycolor == "#000000" && features["belly_color"] != pref_species.default_color) //SPLURT EDIT
 							features["belly_color"] = pref_species.default_color
-						else if(ReadHSV(temp_hsv)[3] >= ReadHSV(MINIMUM_MUTANT_COLOR)[3])
+						else if(ReadHSV(temp_hsv)[3] >= ReadHSV(MINIMUM_MUTANT_COLOR)[3] || !CONFIG_GET(flag/character_color_limits)) //SPLURT EDIT
 							features["belly_color"] = sanitize_hexcolor(new_bellycolor, 6)
 						else
 							to_chat(user,"<span class='danger'>Invalid color. Your color is not bright enough.</span>")
@@ -2934,9 +2934,9 @@ GLOBAL_LIST_EMPTY(preferences_datums)
 					var/new_buttcolor = input(user, "Butt color:", "Character Preference","#"+features["butt_color"]) as color|null
 					if(new_buttcolor)
 						var/temp_hsv = RGBtoHSV(new_buttcolor)
-						if(new_buttcolor == "#000000")
+						if(new_buttcolor == "#000000" && features["butt_color"] != pref_species.default_color) //SPLURT EDIT
 							features["butt_color"] = pref_species.default_color
-						else if(ReadHSV(temp_hsv)[3] >= ReadHSV(MINIMUM_MUTANT_COLOR)[3])
+						else if(ReadHSV(temp_hsv)[3] >= ReadHSV(MINIMUM_MUTANT_COLOR)[3] || !CONFIG_GET(flag/character_color_limits)) //SPLURT EDIT
 							features["butt_color"] = sanitize_hexcolor(new_buttcolor, 6)
 						else
 							to_chat(user,"<span class='danger'>Invalid color. Your color is not bright enough.</span>")
@@ -2945,9 +2945,9 @@ GLOBAL_LIST_EMPTY(preferences_datums)
 					var/new_anuscolor = input(user, "Butthole color:", "Character Preference", "#"+features["anus_color"]) as color|null
 					if(new_anuscolor)
 						var/temp_hsv = RGBtoHSV(new_anuscolor)
-						if(new_anuscolor == "#000000")
+						if(new_anuscolor == "#000000" && features["anus_color"] != pref_species.default_color) //SPLURT EDIT
 							features["anus_color"] = pref_species.default_color
-						else if(ReadHSV(temp_hsv)[3] >= ReadHSV(MINIMUM_MUTANT_COLOR)[3])
+						else if(ReadHSV(temp_hsv)[3] >= ReadHSV(MINIMUM_MUTANT_COLOR)[3] || !CONFIG_GET(flag/character_color_limits)) //SPLURT EDIT
 							features["anus_color"] = sanitize_hexcolor(new_anuscolor, 6)
 						else
 							to_chat(user, "<span class='danger'>Invalid color. Your color is not bright enough.</span>")
@@ -3249,7 +3249,7 @@ GLOBAL_LIST_EMPTY(preferences_datums)
 						var/new_marking_color = input(user, "Choose your character's marking color:", "Character Preference","#"+color_list[color_number]) as color|null
 						if(new_marking_color)
 							var/temp_hsv = RGBtoHSV(new_marking_color)
-							if((MUTCOLORS_PARTSONLY in pref_species.species_traits) || ReadHSV(temp_hsv)[3] >= ReadHSV(MINIMUM_MUTANT_COLOR)[3]) // mutantcolors must be bright, but only if they affect the skin
+							if((MUTCOLORS_PARTSONLY in pref_species.species_traits) || ReadHSV(temp_hsv)[3] >= ReadHSV(MINIMUM_MUTANT_COLOR)[3] || !CONFIG_GET(flag/character_color_limits)) // mutantcolors must be bright, but only if they affect the skin //SPLURT EDIT
 								color_list[color_number] = "#[sanitize_hexcolor(new_marking_color, 6)]"
 							else
 								to_chat(user, "<span class='danger'>Invalid color. Your color is not bright enough.</span>")
