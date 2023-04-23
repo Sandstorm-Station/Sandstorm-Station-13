@@ -765,7 +765,6 @@ SAVEFILE UPDATING/VERSIONING - 'Simplified', or rather, more coder-friendly ~Car
 "has_cock" = FALSE,
 "cock_shape" = DEF_COCK_SHAPE,
 "cock_length" = COCK_SIZE_DEF,
-"cock_max_length" = COCK_SIZE_DEF * 3,
 "cock_diameter_ratio" = COCK_DIAMETER_RATIO_DEF,
 "cock_color" = "ffffff",
 "cock_taur" = FALSE,
