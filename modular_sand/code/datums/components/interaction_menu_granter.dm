@@ -136,14 +136,8 @@
 			else
 				visibility = "Hidden by clothes"
 
-			var/extras = "None"
-			if(CHECK_BITFIELD(genital.genital_flags, GENITAL_CAN_STUFF))
-				extras = "Allows egg stuffing"
-
-			genital_entry["extras"] = extras
 			genital_entry["visibility"] = visibility
 			genital_entry["possible_choices"] = GLOB.genitals_visibility_toggles
-			genital_entry["extra_choices"] = list(GEN_ALLOW_EGG_STUFFING)
 			genital_entry["can_arouse"] = (
 				!!CHECK_BITFIELD(genital.genital_flags, GENITAL_CAN_AROUSE) \
 				&& !(HAS_TRAIT(get_genitals, TRAIT_PERMABONER) \
@@ -168,37 +162,6 @@
 			simulated_ass["always_accessible"] = get_genitals.anus_always_accessible
 			genitals += list(simulated_ass)
 	.["genitals"] = genitals
-
-	//Get their genitals
-	var/list/genital_fluids = list()
-	var/mob/living/carbon/target_genitals = target || self
-	if(istype(target_genitals))
-		for(var/obj/item/organ/genital/genital in target_genitals.internal_organs)
-			if(!(CHECK_BITFIELD(genital.genital_flags, GENITAL_FUID_PRODUCTION)))
-				continue
-			var/fluids = (clamp(genital.fluid_rate * ((world.time - genital.last_orgasmed) / (10 SECONDS)) * genital.fluid_mult, 0, genital.fluid_max_volume) / genital.fluid_max_volume)
-			var/list/genital_entry = list()
-			genital_entry["name"] = "[genital.name]"
-			genital_entry["key"] = REF(genital)
-			genital_entry["fluid"] = fluids
-			genital_fluids += list(genital_entry)
-	.["genital_fluids"] = genital_fluids
-
-	var/list/genital_interactibles = list()
-	if(istype(target_genitals))
-		for(var/obj/item/organ/genital/genital in target_genitals.internal_organs)
-			if(!genital.is_exposed())
-				continue
-			var/list/equipment_names = list()
-			for(var/obj/equipment in genital.contents)
-				equipment_names += equipment.name
-			var/list/genital_entry = list()
-			genital_entry["name"] = "[genital.name]"
-			genital_entry["key"] = REF(genital)
-			genital_entry["possible_choices"] = GLOB.genitals_interactions
-			genital_entry["equipments"] = equipment_names
-			genital_interactibles += list(genital_entry)
-	.["genital_interactibles"] = genital_interactibles
 
 	var/datum/preferences/prefs = self?.client.prefs
 	if(prefs)
