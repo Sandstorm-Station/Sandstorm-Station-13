@@ -18,10 +18,6 @@
 	if(!CHECK_BITFIELD(slot, ITEM_SLOT_UNDERWEAR) || !ishuman(user) || !ishuman(usr))
 		return
 
-	if(!(user.client?.prefs.cit_toggles & CHASTITY))
-		to_chat(user, span_warning("They don't want you to do that!"))
-		return
-
 	var/mob/holder = usr
 	owner = user
 
@@ -63,6 +59,12 @@
 	RegisterSignal(H, COMSIG_MOB_ITEM_EQUIPPED, .proc/mob_equipped_item)
 	RegisterSignal(H, COMSIG_MOB_ITEM_DROPPED, .proc/mob_dropped_item)
 
+
+/obj/item/genital_equipment/chastity_cage/belt/mob_can_equip(mob/M, equipper, slot, disable_warning, bypass_equip_delay_self, list/return_warning)
+	if(!(M.client?.prefs.cit_toggles & CHASTITY))
+		return FALSE
+	return ..()
+
 /obj/item/genital_equipment/chastity_cage/belt/equipped(mob/user, slot)
 	INVOKE_ASYNC(src, .proc/not_sleepy_equipped, user, slot)
 	. = .. ()
@@ -82,6 +84,9 @@
 //
 
 /obj/item/genital_equipment/chastity_cage/belt/unequip(obj/item/organ/genital/G, mob/living/carbon/human/H)
+	if(!blocked_genital)
+		return
+
 	if(blocked_genital == "anus" && !H.dna.features["has_anus"])
 		REMOVE_TRAIT(H, TRAIT_CHASTENED_ANUS, CLOTHING_TRAIT)
 		H.anus_toggle_visibility(GEN_VISIBLE_NO_UNDIES)
@@ -100,10 +105,11 @@
 	UnregisterSignal(owner, list(COMSIG_MOB_ITEM_EQUIPPED, COMSIG_MOB_ITEM_DROPPED))
 
 /obj/item/genital_equipment/chastity_cage/belt/Destroy()
-	if(!ishuman(owner))
-		return
+	if(owner)
+		if(!ishuman(owner))
+			return
 
-	unequip(blocked_genital, owner)
+		unequip(blocked_genital, owner)
 
 	. = ..()
 
