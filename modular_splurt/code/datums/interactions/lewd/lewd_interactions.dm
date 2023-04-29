@@ -64,25 +64,25 @@
 				return FALSE
 	if(require_user_penis)
 		var/obj/item/organ/genital/penis/penor = user.getorganslot(ORGAN_SLOT_PENIS)
-		if(CHECK_BITFIELD(penor?.genital_flags, GENITAL_CHASTENED) || CHECK_BITFIELD(penor?.genital_flags, GENITAL_IMPOTENT))
+		if(CHECK_BITFIELD(penor?.genital_flags, GENITAL_CHASTENED))
 			if(!silent)
 				to_chat(user, "<span class='warning>You can't do anything with your [pick(GLOB.dick_nouns)] like this!")
 			return FALSE
 	if(require_user_vagina)
 		var/obj/item/organ/genital/vagina/puss = user.getorganslot(ORGAN_SLOT_VAGINA)
-		if(CHECK_BITFIELD(puss?.genital_flags, GENITAL_CHASTENED) || CHECK_BITFIELD(puss?.genital_flags, GENITAL_IMPOTENT))
+		if(CHECK_BITFIELD(puss?.genital_flags, GENITAL_CHASTENED))
 			if(!silent)
 				to_chat(user, "<span class='warning>You can't do anything with your vagina like this!")
 			return FALSE
 	if(require_user_anus)
 		var/obj/item/organ/genital/anus/holi = user.getorganslot(ORGAN_SLOT_ANUS)
 		if(holi)
-			if(CHECK_BITFIELD(holi?.genital_flags, GENITAL_CHASTENED) || CHECK_BITFIELD(holi?.genital_flags, GENITAL_IMPOTENT))
+			if(CHECK_BITFIELD(holi?.genital_flags, GENITAL_CHASTENED))
 				if(!silent)
 					to_chat(user, "<span class='warning>You can't do anything with your [pick(GLOB.butt_nouns)] like this!")
 				return FALSE
 		else
-			if(HAS_TRAIT(user, TRAIT_CHASTENED_ANUS) || HAS_TRAIT(user, TRAIT_IMPOTENT_ANUS))
+			if(HAS_TRAIT(user, TRAIT_CHASTENED_ANUS))
 				if(!silent)
 					to_chat(user, "<span class='warning>You can't do anything with your [pick(GLOB.butt_nouns)] like this!")
 				return FALSE
@@ -139,18 +139,18 @@
 				return FALSE
 	if(require_target_penis)
 		var/obj/item/organ/genital/penis/penor = target.getorganslot(ORGAN_SLOT_PENIS)
-		if(CHECK_MULTIPLE_BITFIELDS(penor?.genital_flags, GENITAL_CHASTENED|GENITAL_IMPOTENT))
+		if(CHECK_MULTIPLE_BITFIELDS(penor?.genital_flags, GENITAL_CHASTENED))
 			if(!silent)
 				to_chat(user, "<span class='warning>You can't do anything with their [pick(GLOB.dick_nouns)] like that!")
 			return FALSE
 	if(require_user_vagina)
 		var/obj/item/organ/genital/vagina/puss = target.getorganslot(ORGAN_SLOT_VAGINA)
-		if(CHECK_BITFIELD(puss?.genital_flags, GENITAL_CHASTENED) || CHECK_BITFIELD(puss?.genital_flags, GENITAL_IMPOTENT))
+		if(CHECK_BITFIELD(puss?.genital_flags, GENITAL_CHASTENED))
 			if(!silent)
 				to_chat(user, "<span class='warning>You can't do anything with their vagina like this!")
 			return FALSE
 	if(require_user_anus)
-		if(HAS_TRAIT(target, TRAIT_CHASTENED_ANUS) || HAS_TRAIT(target, TRAIT_IMPOTENT_ANUS))
+		if(HAS_TRAIT(target, TRAIT_CHASTENED_ANUS))
 			if(!silent)
 				to_chat(user, "<span class='warning>You can't do anything with their [pick(GLOB.butt_nouns)] like this!")
 			return FALSE
