@@ -281,16 +281,6 @@
 				if(GEN_REMOVE_EQUIPMENT)
 					var/obj/item/selected_item = input(user, "Pick an item to remove", "Removing item") as null|anything in genital.contents
 					if(selected_item)
-						//SPLURT edit
-						if(istype(selected_item, /obj/item/genital_equipment/chastity_cage))
-							var/obj/item/genital_equipment/chastity_cage/CG = selected_item
-							CG.unequip_process(genital, user) // >:(
-							return TRUE
-
-						if(CHECK_BITFIELD(genital.genital_flags, GENITAL_CHASTENED))
-							to_chat(user, "<span class='warning'>You got to take its cage off first!</span>")
-							return FALSE
-						//
 						if(!do_mob(user, actual_target, 5 SECONDS))
 							return FALSE
 						if(!user.put_in_hands(selected_item))

@@ -134,9 +134,11 @@
 	H.update_genitals()
 
 	H.transferItemToLoc(src, get_turf(H))
+	
+	UnregisterSignal(owner, list(COMSIG_MOB_ITEM_EQUIPPED, COMSIG_MOB_ITEM_DROPPED))
+
 	owner = null
 
-	UnregisterSignal(owner, list(COMSIG_MOB_ITEM_EQUIPPED, COMSIG_MOB_ITEM_DROPPED))
 
 /obj/item/genital_equipment/chastity_cage/proc/mob_equipped_item(datum/source, obj/item/I)
 	if(istype(I, /obj/item/clothing/under) && is_overlay_on)

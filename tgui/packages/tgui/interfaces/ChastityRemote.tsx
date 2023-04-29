@@ -16,7 +16,7 @@ export const ChastityRemote = (_: any, context: any) => {
 
 	return (
 	<Window
-		width={300}
+		width={350}
 		height={200}>
 
 		<Window.Content>

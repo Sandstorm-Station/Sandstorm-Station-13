@@ -199,6 +199,11 @@
 				if("remove")
 					var/obj/item/selected_item = locate(params["equipment"], genital.contents)
 					if(selected_item)
+						if(istype(selected_item, /obj/item/genital_equipment/chastity_cage))
+							var/obj/item/genital_equipment/chastity_cage/CG = selected_item
+							CG.unequip_process(genital, self) // >:(
+							return TRUE
+
 						if(!do_mob(self, actual_target, 5 SECONDS))
 							return FALSE
 						if(!self.put_in_hands(selected_item))
