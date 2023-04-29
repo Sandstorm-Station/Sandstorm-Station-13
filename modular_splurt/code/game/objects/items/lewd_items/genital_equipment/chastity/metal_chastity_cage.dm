@@ -5,7 +5,7 @@
 	break_time = 40 SECONDS
 	break_require = TOOL_WELDER
 	
-	var/jingle_chance = 5//in percentage
+	var/jingle_chance = 1.25//in percentage
 
 /obj/item/genital_equipment/chastity_cage/metal/equip()
 	. = ..()
