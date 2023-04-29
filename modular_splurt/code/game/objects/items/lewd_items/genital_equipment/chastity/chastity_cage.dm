@@ -42,9 +42,10 @@
 	cage_overlay.color = color //Set the overlay's color to the cage item's
 
 /obj/item/genital_equipment/chastity_cage/Destroy()
-	if(istype(loc, /obj/item/organ/genital))
-		unequip(loc, owner)
-
+	if(owner)
+		if(istype(loc, /obj/item/organ/genital))
+			unequip(loc, owner)
+				
 	. = ..()
 
 /obj/item/genital_equipment/chastity_cage/insert_item_organ(mob/living/user, mob/living/carbon/target, obj/item/organ/genital/target_organ)
