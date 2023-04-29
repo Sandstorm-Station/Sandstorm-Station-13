@@ -97,6 +97,10 @@
 	choices = list("Anus" = "None", "Breasts" = "None", "Penis" = "None", "Vagina" = "None")
 
 /mob/living/carbon/proc/remove_chastity_hypno_effects()
+	var/datum/component/mood/mood_comp = GetComponent(/datum/component/mood)
+	if(!("hypno" in mood_comp.mood_events))
+		return
+
 	if(HAS_TRAIT(src, TRAIT_IMPOTENT_ANUS))
 		REMOVE_TRAIT(src, TRAIT_IMPOTENT_ANUS, ORGAN_TRAIT)
 	else if(HAS_TRAIT(src, TRAIT_EDGINGONLY_ANUS))
@@ -186,4 +190,9 @@
 
 /datum/mood_event/hypnosis
 	description = "<span class='hypnophrase'>You don't feel like you're really in control of your body.</span>"
-	mood_change = 40
+
+/mob/living/carbon/verb/remove_chastity_hypnosis()
+	set name = "Escape Chastity Hypnosis"
+	set category = "OOC"
+
+	remove_chastity_hypno_effects()
