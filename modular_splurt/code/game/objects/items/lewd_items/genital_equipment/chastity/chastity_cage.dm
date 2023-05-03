@@ -31,6 +31,8 @@
 	var/overlay_layer = -(GENITALS_FRONT_LAYER - 0.01)
 	var/is_overlay_on
 
+	var/cage_sprite
+
 /obj/item/genital_equipment/chastity_cage/Initialize(mapload, obj/item/key/chastity_key/newkey = null)
 	. = ..()
 
@@ -38,8 +40,6 @@
 		key = newkey
 
 	color = pick(list(COLOR_LIGHT_PINK, COLOR_STRONG_VIOLET, null))
-	cage_overlay = mutable_appearance(icon, worn_icon_state ? worn_icon_state : "worn_[icon_state]", overlay_layer)
-	cage_overlay.color = color //Set the overlay's color to the cage item's
 
 /obj/item/genital_equipment/chastity_cage/Destroy()
 	if(owner)
@@ -116,6 +116,17 @@
 
 		//turn that flag on
 		ENABLE_BITFIELD(penor.genital_flags, GENITAL_CHASTENED)
+
+		switch(penor.size)
+			if(1 to 2)
+				cage_sprite = 1
+			if(3 to 4)
+				cage_sprite = 2
+			if(5)
+				cage_sprite = 3
+
+		cage_overlay = mutable_appearance(icon, worn_icon_state ? worn_icon_state : "worn_[icon_state]_[cage_sprite]", overlay_layer)
+		cage_overlay.color = color //Set the overlay's color to the cage item's
 
 		H.add_overlay(cage_overlay)
 		is_overlay_on = TRUE
