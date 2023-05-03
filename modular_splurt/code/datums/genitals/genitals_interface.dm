@@ -201,7 +201,7 @@
 					if(selected_item)
 						if(istype(selected_item, /obj/item/genital_equipment/chastity_cage))
 							var/obj/item/genital_equipment/chastity_cage/CG = selected_item
-							CG.unequip_process(genital, self) // >:(
+							CG.unequip_process(genital, actual_target) // >:(
 							return TRUE
 
 						if(!do_mob(self, actual_target, 5 SECONDS))
@@ -215,4 +215,4 @@
 					if(!istype(stuff))
 						to_chat(self, span_warning("You need to hold an item to insert it!"))
 						return FALSE
-					stuff.insert_item_organ(self, self, genital)
+					stuff.insert_item_organ(self, actual_target, genital)
