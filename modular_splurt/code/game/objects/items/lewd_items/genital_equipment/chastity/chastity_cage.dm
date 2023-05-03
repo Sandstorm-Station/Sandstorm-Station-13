@@ -32,6 +32,7 @@
 	var/is_overlay_on
 
 	var/cage_sprite
+	var/resizeable = TRUE
 
 /obj/item/genital_equipment/chastity_cage/Initialize(mapload, obj/item/key/chastity_key/newkey = null)
 	. = ..()
@@ -117,15 +118,21 @@
 		//turn that flag on
 		ENABLE_BITFIELD(penor.genital_flags, GENITAL_CHASTENED)
 
-		switch(penor.size)
-			if(1 to 2)
-				cage_sprite = 1
-			if(3 to 4)
-				cage_sprite = 2
-			if(5)
-				cage_sprite = 3
+		var/overlay_icon_state
 
-		cage_overlay = mutable_appearance(icon, worn_icon_state ? worn_icon_state : "worn_[icon_state]_[cage_sprite]", overlay_layer)
+		overlay_icon_state = "worn_[worn_icon_state || icon_state]"
+		if(resizeable)
+			switch(penor.size)
+				if(1 to 2)
+					cage_sprite = 1
+				if(3 to 4)
+					cage_sprite = 2
+				if(5)
+					cage_sprite = 3
+
+			overlay_icon_state += "_[cage_sprite]"
+
+		cage_overlay = mutable_appearance(icon, overlay_icon_state, overlay_layer)
 		cage_overlay.color = color //Set the overlay's color to the cage item's
 
 		H.add_overlay(cage_overlay)

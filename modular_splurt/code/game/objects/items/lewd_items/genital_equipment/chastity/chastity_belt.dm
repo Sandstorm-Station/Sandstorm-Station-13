@@ -10,9 +10,16 @@
 
 	break_require = TOOL_WELDER
 	overlay_layer = -(GENITALS_FRONT_LAYER - 0.05)
+	resizeable = FALSE
 
 	var/obj/item/organ/genital/blocked_genital
 	var/is_equipped
+
+/obj/item/genital_equipment/chastity_cage/Initialize(mapload, obj/item/key/chastity_key/newkey = null)
+	. = ..()
+
+	cage_overlay = mutable_appearance(icon, "worn_[icon_state]", overlay_layer)
+	cage_overlay.color = color
 
 /obj/item/genital_equipment/chastity_cage/belt/proc/not_sleepy_equipped(mob/user, slot)
 	if(!CHECK_BITFIELD(slot, ITEM_SLOT_UNDERWEAR) || !ishuman(user) || !ishuman(usr))

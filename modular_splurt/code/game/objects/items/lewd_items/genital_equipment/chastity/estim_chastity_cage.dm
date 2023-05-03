@@ -106,7 +106,7 @@
 /obj/item/genital_equipment/chastity_cage/estim
 	name = "\improper E-Stim chastity cage"
 	icon_state = "estim_cage"
-	worn_icon_state = "worn_standard_cage"
+	worn_icon_state = "standard_cage"
 	break_require = TOOL_MULTITOOL
 	break_time = 15 SECONDS
 
