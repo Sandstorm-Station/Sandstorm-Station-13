@@ -2240,6 +2240,9 @@
 /area/mine/xenoarch_area_c)
 "fs" = (
 /obj/machinery/door/airlock/research/glass,
+/obj/structure/cable{
+	icon_state = "1-2"
+	},
 /turf/open/floor/plasteel,
 /area/mine/xenoarch)
 "ft" = (
@@ -2622,6 +2625,9 @@
 	},
 /obj/structure/cable/yellow{
 	icon_state = "4-8"
+	},
+/obj/structure/cable/yellow{
+	icon_state = "1-4"
 	},
 /turf/open/floor/plasteel,
 /area/mine/xenoarch)
@@ -6951,6 +6957,12 @@
 	},
 /turf/open/floor/plasteel/dark,
 /area/mine/xenoarch_area_b)
+"qv" = (
+/obj/machinery/airalarm{
+	pixel_y = 24
+	},
+/turf/open/floor/circuit,
+/area/mine/xenoarch)
 "qF" = (
 /turf/open/floor/plating/beach/sand,
 /area/lavaland/surface/outdoors)
@@ -7172,6 +7184,19 @@
 	},
 /turf/open/indestructible/boss,
 /area/lavaland/surface/outdoors)
+"rw" = (
+/obj/machinery/atmospherics/pipe/simple/supply/hidden{
+	dir = 6
+	},
+/obj/machinery/atmospherics/pipe/simple/scrubbers/hidden/layer3{
+	dir = 10
+	},
+/obj/machinery/bluespace_beacon,
+/obj/structure/cable{
+	icon_state = "2-8"
+	},
+/turf/open/floor/plasteel/dark,
+/area/mine/xenoarch)
 "rD" = (
 /obj/structure/stone_tile/block{
 	dir = 1
@@ -7209,6 +7234,9 @@
 	},
 /turf/open/indestructible/boss,
 /area/lavaland/surface/outdoors)
+"rV" = (
+/turf/open/floor/circuit,
+/area/mine/xenoarch)
 "sz" = (
 /obj/structure/stone_tile/slab/cracked{
 	dir = 5
@@ -8228,6 +8256,24 @@
 	},
 /turf/open/floor/plating/asteroid/basalt/lava_land_surface,
 /area/ruin/lavaland/unpowered/ash_walkers)
+"zA" = (
+/obj/effect/turf_decal/tile/purple{
+	dir = 4
+	},
+/obj/effect/turf_decal/tile/purple{
+	dir = 1
+	},
+/obj/structure/cable{
+	icon_state = "1-2"
+	},
+/turf/open/floor/plasteel,
+/area/mine/xenoarch)
+"zN" = (
+/obj/structure/cable{
+	icon_state = "2-4"
+	},
+/turf/open/floor/plating,
+/area/mine/xenoarch)
 "zU" = (
 /obj/structure/flora/tree/shadow,
 /turf/open/floor/plating/asteroid/basalt/lava_land_surface,
@@ -8289,6 +8335,13 @@
 /obj/item/kitchen/knife/combat/bone,
 /turf/open/floor/plating/asteroid/basalt/lava_land_surface,
 /area/ruin/lavaland/unpowered/ash_walkers)
+"Ct" = (
+/obj/effect/turf_decal/delivery,
+/obj/structure/cable{
+	icon_state = "1-2"
+	},
+/turf/open/floor/plasteel,
+/area/mine/xenoarch)
 "CF" = (
 /obj/structure/stone_tile/burnt{
 	dir = 1
@@ -8337,6 +8390,23 @@
 	},
 /turf/open/floor/plating/asteroid/basalt/lava_land_surface,
 /area/ruin/lavaland/unpowered/ash_walkers)
+"Dd" = (
+/obj/machinery/telecomms/relay/preset/mining,
+/obj/machinery/light/small{
+	dir = 1
+	},
+/obj/effect/turf_decal/tile/neutral{
+	dir = 1
+	},
+/obj/effect/turf_decal/tile/neutral,
+/obj/effect/turf_decal/tile/neutral{
+	dir = 4
+	},
+/obj/effect/turf_decal/tile/neutral{
+	dir = 8
+	},
+/turf/open/floor/plasteel/dark,
+/area/mine/xenoarch)
 "Dj" = (
 /obj/structure/stone_tile/burnt{
 	dir = 8
@@ -8403,6 +8473,14 @@
 	},
 /turf/open/indestructible/necropolis,
 /area/ruin/lavaland/unpowered/ash_walkers)
+"Fa" = (
+/obj/machinery/camera{
+	c_tag = "Communications Relay";
+	dir = 8;
+	network = list("mine")
+	},
+/turf/open/floor/circuit,
+/area/mine/xenoarch)
 "Fr" = (
 /obj/structure/stone_tile/surrounding,
 /obj/structure/stone_tile/center,
@@ -8455,6 +8533,12 @@
 	},
 /turf/open/floor/plasteel,
 /area/mine/xenoarch_area_c)
+"Gt" = (
+/obj/structure/cable{
+	icon_state = "1-8"
+	},
+/turf/open/floor/plating,
+/area/mine/xenoarch)
 "GB" = (
 /obj/structure/bed/badhaybed,
 /turf/open/floor/plating/asteroid/basalt/lava_land_surface,
@@ -8494,6 +8578,19 @@
 /obj/structure/stone_tile/center,
 /turf/open/lava/smooth/lava_land_surface,
 /area/ruin/lavaland/unpowered/ash_walkers)
+"Jk" = (
+/obj/machinery/power/apc{
+	dir = 1;
+	name = "Mining Communications APC";
+	pixel_x = 1;
+	pixel_y = 23
+	},
+/obj/machinery/atmospherics/components/unary/vent_scrubber/on/layer3,
+/obj/structure/cable{
+	icon_state = "0-2"
+	},
+/turf/open/floor/plasteel/dark,
+/area/mine/xenoarch)
 "Jz" = (
 /obj/structure/table/wood/mushroom,
 /turf/open/floor/plating/asteroid/basalt/lava_land_surface,
@@ -8562,6 +8659,15 @@
 	},
 /turf/open/floor/plasteel,
 /area/mine/xenoarch_area_c)
+"KH" = (
+/obj/machinery/light_switch{
+	pixel_y = -25
+	},
+/obj/machinery/atmospherics/pipe/simple/supply/hidden{
+	dir = 9
+	},
+/turf/open/floor/circuit,
+/area/mine/xenoarch)
 "KW" = (
 /obj/structure/stone_tile/block/cracked{
 	pixel_x = -16
@@ -8670,6 +8776,18 @@
 	},
 /turf/open/lava/smooth/lava_land_surface,
 /area/lavaland/surface/outdoors)
+"Mt" = (
+/obj/effect/turf_decal/tile/purple{
+	dir = 1
+	},
+/obj/effect/turf_decal/tile/purple{
+	dir = 4
+	},
+/obj/structure/cable{
+	icon_state = "1-2"
+	},
+/turf/open/floor/plasteel,
+/area/mine/xenoarch)
 "Mu" = (
 /obj/structure/stone_tile{
 	dir = 4
@@ -8701,6 +8819,18 @@
 	},
 /turf/open/floor/plasteel,
 /area/mine/xenoarch_area_a)
+"MX" = (
+/obj/machinery/door/airlock/maintenance{
+	name = "Mining Station Communications";
+	req_access_txt = "48"
+	},
+/obj/machinery/atmospherics/pipe/simple/supply/hidden,
+/obj/machinery/atmospherics/pipe/simple/scrubbers/hidden/layer3,
+/obj/structure/cable{
+	icon_state = "1-2"
+	},
+/turf/open/floor/plating,
+/area/mine/xenoarch)
 "Na" = (
 /obj/structure/table/wood/mushroom,
 /obj/item/spear/bonespear,
@@ -8771,6 +8901,12 @@
 	},
 /turf/open/floor/plating/asteroid/basalt/lava_land_surface,
 /area/ruin/lavaland/unpowered/ash_walkers)
+"OQ" = (
+/obj/structure/cable{
+	icon_state = "1-2"
+	},
+/turf/open/floor/plasteel,
+/area/mine/xenoarch)
 "Pd" = (
 /obj/structure/table/wood/shadow,
 /obj/item/clothing/accessory/talisman{
@@ -8843,6 +8979,15 @@
 	},
 /turf/open/indestructible/necropolis,
 /area/ruin/lavaland/unpowered/ash_walkers)
+"Qn" = (
+/obj/machinery/atmospherics/pipe/simple/scrubbers/hidden/layer3{
+	dir = 5
+	},
+/obj/structure/cable{
+	icon_state = "1-4"
+	},
+/turf/open/floor/circuit,
+/area/mine/xenoarch)
 "QH" = (
 /obj/structure/stone_tile/block,
 /turf/open/floor/plating/asteroid/basalt/lava_land_surface,
@@ -8977,6 +9122,10 @@
 	},
 /turf/open/floor/plating/asteroid/basalt/lava_land_surface,
 /area/ruin/lavaland/unpowered/ash_walkers)
+"Tv" = (
+/obj/machinery/atmospherics/components/unary/vent_pump/on,
+/turf/open/floor/plasteel/dark,
+/area/mine/xenoarch)
 "TF" = (
 /obj/effect/turf_decal/tile/purple{
 	dir = 8
@@ -9072,6 +9221,13 @@
 	},
 /turf/open/floor/plating/asteroid/basalt/lava_land_surface,
 /area/ruin/lavaland/unpowered/ash_walkers)
+"VF" = (
+/obj/machinery/door/airlock/maintenance,
+/obj/structure/cable{
+	icon_state = "1-2"
+	},
+/turf/open/floor/plating,
+/area/mine/xenoarch)
 "VN" = (
 /obj/structure/table/wood/shadow,
 /obj/item/reagent_containers/glass/mortar{
@@ -9154,6 +9310,16 @@
 	},
 /turf/open/floor/plating/asteroid/basalt/lava_land_surface,
 /area/ruin/lavaland/unpowered/ash_walkers)
+"Xy" = (
+/obj/effect/turf_decal/tile/purple,
+/obj/effect/turf_decal/tile/purple{
+	dir = 8
+	},
+/obj/structure/cable{
+	icon_state = "1-2"
+	},
+/turf/open/floor/plasteel,
+/area/mine/xenoarch)
 "Yf" = (
 /obj/effect/turf_decal/tile/purple{
 	dir = 1
@@ -89364,9 +89530,9 @@ ab
 Bi
 cv
 cv
-cv
-cv
-cv
+Bi
+rV
+rV
 Bi
 cv
 Bi
@@ -89621,20 +89787,20 @@ ab
 Bi
 cv
 cv
-cv
-cv
-cv
 Bi
-cv
-bj
-cR
-cq
-dI
-dI
-cq
-eW
+Jk
+Qn
+Bi
+zN
+VF
+Mt
+OQ
+Ct
+Ct
+OQ
+Xy
 fs
-fI
+zA
 gc
 gI
 JP
@@ -89878,11 +90044,11 @@ ab
 Bi
 aH
 cv
-cv
-cv
-cv
 Bi
-cv
+Dd
+rw
+MX
+Gt
 Bi
 cS
 dm
@@ -90135,9 +90301,9 @@ ab
 Bi
 cv
 cv
-cv
-cv
-cv
+Bi
+Tv
+KH
 Bi
 cv
 Bi
@@ -90392,9 +90558,9 @@ ab
 Bi
 cv
 cv
-cv
-cv
-cv
+Bi
+qv
+Fa
 Bi
 cn
 Bi
@@ -90649,9 +90815,9 @@ ab
 Bi
 cv
 cv
-cv
-cv
-cv
+Bi
+Bi
+Bi
 Bi
 cv
 Bi
