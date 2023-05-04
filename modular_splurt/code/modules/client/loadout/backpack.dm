@@ -106,3 +106,9 @@
 /datum/gear/backpack/towel
 	name = "Towel"
 	path = /obj/item/reagent_containers/rag/towel
+
+/datum/gear/backpack/condenser
+	name = "A condenser"
+	path = /obj/item/autosurgeon/condenser
+	cost = 7
+
