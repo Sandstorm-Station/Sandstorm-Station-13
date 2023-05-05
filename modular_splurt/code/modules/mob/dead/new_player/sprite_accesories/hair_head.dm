@@ -165,3 +165,9 @@
 	name = "Fluffball"
 	icon = 'modular_splurt/icons/mob/hair.dmi'
 	icon_state = "hair_fluffball"
+
+/datum/sprite_accessory/hair/phoebe
+	name = "Phoebe"
+	icon = 'modular_splurt/icons/mob/hair.dmi'
+	icon_state = "hair_phoebe"
+	color_src = NONE
