@@ -3,6 +3,20 @@
 	icon = 'modular_splurt/icons/obj/clothing/head.dmi'
 	mob_overlay_icon = 'modular_splurt/icons/mob/clothing/head.dmi'
 
+/obj/item/clothing/head/jester
+	unique_reskin = list(
+		"Original" = list(
+			"icon_state" = "jester_hat",
+			"icon" = 'icons/obj/clothing/hats.dmi',
+			"mob_overlay_icon" = null,
+		),
+		"Stripped" = list(
+			"icon_state" = "striped_jester_hat",
+			"icon" = 'modular_splurt/icons/obj/clothing/head.dmi',
+			"mob_overlay_icon" = 'modular_splurt/icons/mob/clothing/head.dmi',
+		)
+	)
+
 /obj/item/clothing/head/bridgeofficer
 	name = "bridge officer cap"
 	desc = "A generic blue cap for the back ground officer"

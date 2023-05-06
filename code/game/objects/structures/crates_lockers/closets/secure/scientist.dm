@@ -34,3 +34,4 @@
 	new /obj/item/analyzer/hilbertsanalyzer(src)
 	new /obj/item/mod/construction/armor/research(src)
 
+	new /obj/item/mod/construction/armor/research(src)

@@ -6,6 +6,14 @@
 		return has_genital(ORGAN_SLOT_ANUS, visibility)
 	. = ..()
 
+/mob/living/add_lust(add)
+	. = ..()
+	SEND_SIGNAL(src, COMSIG_MOB_LUST_UPDATED)
+
+/mob/living/set_lust(num)
+	. = ..()
+	SEND_SIGNAL(src, COMSIG_MOB_LUST_UPDATED)
+
 /mob/living/moan()
 	var/moaned = lastmoan
 	var/miming = mind ? mind?.miming : FALSE
@@ -127,6 +135,7 @@
 									ass = new
 									ass.Insert(partner)
 								ass.climax_modify_size(src, getorganslot(ORGAN_SLOT_PENIS))
+
 		else
 			switch(last_genital.type)
 				if(/obj/item/organ/genital/penis)
@@ -193,6 +202,10 @@
 										ass = new
 										ass.Insert(partner)
 									ass.climax_modify_size(src, last_genital)
+		if(iswendigo(partner) && partner.pulling == src)
+			var/mob/living/carbon/wendigo/W = partner
+			W.slaves |= src
+			to_chat(src, "<font color='red'> You are now [W]'s slave! Serve your master properly! </font>")
 	if(!message)
 		return ..()
 	if(gender == MALE)

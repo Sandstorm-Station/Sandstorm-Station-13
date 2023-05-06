@@ -655,6 +655,10 @@
 		data["shoes"] = shoes.name
 	else
 		data["shoes"] = null
+	if(mod)
+		data["mod"] = mod.name
+	else
+		data["mod"] = null
 	if(storage)
 		data["storage"] = storage.name
 	else
@@ -685,7 +689,7 @@
 		if("uv")
 			if(occupant && safeties)
 				return
-			else if(!helmet && !mask && !suit && !storage && !occupant)
+			else if(!helmet && !mask && !mod && !suit && !storage && !occupant)
 				return
 			else
 				if(occupant)
@@ -697,7 +701,7 @@
 			if(!state_open)
 				return
 
-			var/static/list/valid_items = list("helmet", "suit", "mask", "shoes", "storage")
+			var/static/list/valid_items = list("helmet", "suit", "mask", "shoes", "mod", "storage")
 			var/item_name = params["item"]
 			if(item_name in valid_items)
 				var/obj/item/I = vars[item_name]
