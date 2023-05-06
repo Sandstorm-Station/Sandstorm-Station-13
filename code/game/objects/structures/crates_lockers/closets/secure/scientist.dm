@@ -33,3 +33,4 @@
 	new /obj/item/clothing/suit/hooded/wintercoat/rd(src)
 	new /obj/item/analyzer/hilbertsanalyzer(src)
 
+	new /obj/item/mod/construction/armor/research(src)
