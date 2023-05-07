@@ -269,6 +269,7 @@
 	helmet = null
 	suit = null
 	mask = null
+	shoes = null
 	mod = null
 	storage = null
 	occupant = null
@@ -280,8 +281,110 @@
 		new /obj/item/stack/sheet/metal(loc, 2)
 	qdel(src)
 
-/obj/machinery/suit_storage_unit/MouseDrop_T(atom/A, mob/user)
-	if(user.stat || user.lying || !Adjacent(user) || !Adjacent(A) || !isliving(A))
+/obj/machinery/suit_storage_unit/interact(mob/living/user)
+	var/static/list/items
+
+	if (!items)
+		items = list(
+			"suit" = create_silhouette_of(/obj/item/clothing/suit/space/eva),
+			"helmet" = create_silhouette_of(/obj/item/clothing/head/helmet/space/eva),
+			"mask" = create_silhouette_of(/obj/item/clothing/mask/breath),
+			"shoes" = create_silhouette_of(/obj/item/clothing/shoes/magboots),
+			"mod" = create_silhouette_of(/obj/item/mod),
+			"storage" = create_silhouette_of(/obj/item/tank/internals/oxygen),
+		)
+
+	. = ..()
+	if (.)
+		return
+
+	if (!check_interactable(user))
+		return
+
+	var/list/choices = list()
+
+	if (locked)
+		choices["unlock"] = icon('modular_sand/icons/hud/radial.dmi', "radial_unlock")
+	else if (state_open)
+		choices["close"] = icon('modular_sand/icons/hud/radial.dmi', "radial_close")
+
+		for (var/item_key in items)
+			var/item = vars[item_key]
+			if (item)
+				choices[item_key] = item
+			else
+				// If the item doesn't exist, put a silhouette in its place
+				choices[item_key] = items[item_key]
+	else
+		choices["open"] = icon('modular_sand/icons/hud/radial.dmi', "radial_open")
+		choices["disinfect"] = icon('modular_sand/icons/hud/radial.dmi', "radial_disinfect")
+		choices["lock"] = icon('modular_sand/icons/hud/radial.dmi', "radial_lock")
+
+	var/choice = show_radial_menu(
+		user,
+		src,
+		choices,
+		custom_check = CALLBACK(src, .proc/check_interactable, user),
+		require_near = !issilicon(user),
+	)
+
+	if (!choice)
+		return
+
+	switch (choice)
+		if ("open")
+			if (!state_open)
+				open_machine(drop = FALSE)
+				if (occupant)
+					dump_contents()
+		if ("close")
+			if (state_open)
+				close_machine()
+		if ("disinfect")
+			if (occupant && safeties)
+				return
+			else if (!helmet && !mask && !suit && !shoes && !storage && !occupant)
+				return
+			else
+				if (occupant)
+					var/mob/living/mob_occupant = occupant
+					to_chat(mob_occupant, "<span class='userdanger'>[src]'s confines grow warm, then hot, then scorching. You're being burned [!mob_occupant.stat ? "alive" : "away"]!</span>")
+				cook()
+		if ("lock", "unlock")
+			if (!state_open)
+				locked = !locked
+		else
+			var/obj/item/item_to_dispense = vars[choice]
+			if (item_to_dispense)
+				vars[choice] = null
+				user.put_in_hands(item_to_dispense)
+			else
+				var/obj/item/in_hands = user.get_active_held_item()
+				if (in_hands)
+					attackby(in_hands, user)
+
+	interact(user)
+
+/obj/machinery/suit_storage_unit/proc/check_interactable(mob/user)
+	if (!state_open && !can_interact(user))
+		return FALSE
+
+	if (panel_open)
+		return FALSE
+
+	if (uv)
+		return FALSE
+
+	return TRUE
+
+/obj/machinery/suit_storage_unit/proc/create_silhouette_of(atom/item)
+	var/image/image = image(initial(item.icon), initial(item.icon_state))
+	image.alpha = 128
+	image.color = COLOR_RED
+	return image
+
+/obj/machinery/suit_storage_unit/MouseDrop_T(atom/A, mob/living/user)
+	if(!istype(user) || user.stat || !Adjacent(user) || !Adjacent(A) || !isliving(A))
 		return
 	var/mob/living/target = A
 	if(!state_open)
