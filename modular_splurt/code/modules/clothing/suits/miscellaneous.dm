@@ -102,6 +102,7 @@
 	name = "Runner Jacket"
 	icon = 'modular_splurt/icons/obj/clothing/suits.dmi'
 	mob_overlay_icon = 'modular_splurt/icons/mob/clothing/suit.dmi'
+	item_state = null
 
 /obj/item/clothing/suit/jacket/runner/engi
 	name = "Engineer Runner Jacket"
