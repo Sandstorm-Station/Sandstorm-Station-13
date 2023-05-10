@@ -1,9 +1,13 @@
-/obj/item/clothing/mask/gas
-	is_edible = 0
+//Main code edits
+/obj/item/clothing/mask/gas/plaguedoctor
+	icon = 'modular_splurt/icons/obj/clothing/masks.dmi'
+	mob_overlay_icon = 'modular_splurt/icons/mob/clothing/mask.dmi'
+	mutantrace_variation = STYLE_MUZZLE|STYLE_NO_ANTHRO_ICON
 
+//Own stuff
 /obj/item/clothing/mask/gas/radmask
 	name = "radiation mask"
-	desc = "An mask that somewhat protects the user from radiation. Not as effective like a radiation hood, but is better than nothing."
+	desc = "An mask that somewhat protects the user from ratiation. Not as effective like a radiation hood, but is better than nothing."
 	icon = 'modular_splurt/icons/obj/clothing/masks.dmi'
 	mob_overlay_icon = 'modular_splurt/icons/mob/clothing/mask.dmi'
 	anthro_mob_worn_overlay = 'modular_splurt/icons/mob/clothing/mask_muzzle.dmi'
@@ -35,11 +39,3 @@
 	name = "stripped trencher gas mask"
 	desc = "A stripped version of No Man's Land-type mask equipment. While you can connect it to air supply, it doesn't block gas flow."
 	armor = 0
-
-// Cosmetic gas mask for Bane Syndrome (masked_mook)
-/obj/item/clothing/mask/gas/cosmetic
-	name = "aesthetic gas mask"
-	desc = "A face-covering mask that resembles a traditional gas mask, but without the breathing functionality."
-	clothing_flags = NONE
-	gas_transfer_coefficient = 0
-	permeability_coefficient = 0
