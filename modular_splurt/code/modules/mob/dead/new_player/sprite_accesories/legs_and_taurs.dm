@@ -45,9 +45,17 @@
 	icon_state = "noodledragon_dotted"
 
 /datum/sprite_accessory/taur/spider
-	name = "Spider"
+	name = "Arachne"
 	icon_state = "spider"
 	icon = 'modular_splurt/icons/mob/mam_taur.dmi'
-	taur_mode = STYLE_PAW_TAURIC //No special spider sprites
+	taur_mode = STYLE_PAW_TAURIC //it is what it is
+	hide_legs = USE_QUADRUPED_CLIP_MASK
+	matrixed_sections = MATRIX_RED_GREEN
+
+/datum/sprite_accessory/taur/sloog
+	name = "Sloog"
+	icon_state = "sloog"
+	icon = 'modular_splurt/icons/mob/mam_taur.dmi'
+	taur_mode = STYLE_PAW_TAURIC
 	hide_legs = USE_QUADRUPED_CLIP_MASK
 	matrixed_sections = MATRIX_RED_GREEN
