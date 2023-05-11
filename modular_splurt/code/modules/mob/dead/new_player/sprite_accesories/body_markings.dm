@@ -165,4 +165,4 @@
 	icon = 'modular_splurt/icons/mob/neck_fluff.dmi'
 	icon_state = "renamon"
 	color_src = MATRIXED
-	matrixed_sections = MATRIX_ALL
+	matrixed_sections = MATRIX_GREEN
