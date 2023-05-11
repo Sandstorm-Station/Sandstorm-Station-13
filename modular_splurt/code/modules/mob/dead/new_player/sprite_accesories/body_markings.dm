@@ -129,7 +129,7 @@
 	name = "Renamon"
 	icon = 'modular_splurt/icons/mob/mam_markings.dmi'
 	icon_state = "renamon"
-	covered_limbs = list("Head" = MATRIX_RED_GREEN,  "Left Leg" = MATRIX_RED_GREEN, "Right Leg" = MATRIX_RED_GREEN)
+	covered_limbs = list("Head" = MATRIX_BLUE,  "Left Leg" = MATRIX_BLUE, "Right Leg" = MATRIX_BLUE)
 
 /******************************************
 ************* Insect Markings *************
