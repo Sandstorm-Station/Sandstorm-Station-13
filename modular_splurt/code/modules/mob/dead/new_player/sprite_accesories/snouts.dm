@@ -260,6 +260,7 @@
 	name = "Noodle"
 	icon = 'modular_splurt/icons/mob/mam_snouts.dmi'
 	icon_state = "noodle"
+	matrixed_sections = MATRIX_ALL
 
 /datum/sprite_accessory/snouts/mam_snouts/renamon
 	name = "Renamon"
