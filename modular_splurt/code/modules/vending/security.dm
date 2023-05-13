@@ -85,6 +85,7 @@
 	new /obj/item/grenade/flashbang(src)
 	new /obj/item/choice_beacon/bsbaton(src)
 	new /obj/item/armorkit/blueshield(src)
+	new /obj/item/armorkit/blueshield/helmet(src)
 
 /obj/structure/closet/secure_closet/bridgesec
 	name = "bridge officer's locker"
