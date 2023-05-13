@@ -8,6 +8,7 @@
 /obj/item/armorkit/blueshield/afterattack(atom/target, mob/user, proximity_flag, click_parameters)
 	// yeah have fun making subtypes and modifying the afterattack if you want to make variants
 	// idiot
+	// I have no idea what you are talking about.
 	var/used = FALSE
 
 	if(isobj(target) && istype(target, /obj/item/clothing/suit))
