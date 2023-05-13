@@ -25,3 +25,5 @@
 	icon_mask = 'modular_splurt/icons/mob/clothing/species/teshari/mask.dmi'
 	icon_neck = 'modular_splurt/icons/mob/clothing/species/teshari/neck.dmi'
 	icon_uniform = 'modular_splurt/icons/mob/clothing/species/teshari/uniform.dmi'
+	icon_suit = 'modular_splurt/icons/mob/clothing/species/teshari/suit.dmi'
+
