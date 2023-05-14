@@ -7,7 +7,7 @@
 /area/mine/production)
 "ad" = (
 /turf/closed/wall,
-/area/lavaland/surface/outdoors)
+/area/mine/xenoarch_area_a)
 "ae" = (
 /turf/closed/mineral/random/high_chance/volcanic,
 /area/lavaland/surface/outdoors)
@@ -109,7 +109,7 @@
 /area/ruin/lavaland/unpowered/xenoarch)
 "av" = (
 /turf/open/floor/plating,
-/area/lavaland/surface/outdoors)
+/area/mine/xenoarch_area_a)
 "aw" = (
 /obj/machinery/door/airlock,
 /turf/open/floor/plasteel/freezer,
@@ -325,7 +325,7 @@
 /obj/structure/flora/tree/jungle/small,
 /obj/structure/flora/grass/jungle,
 /turf/open/floor/grass,
-/area/lavaland/surface/outdoors)
+/area/mine/xenoarch_area_a)
 "bh" = (
 /obj/structure/grille/broken,
 /turf/open/floor/plating,
@@ -1907,7 +1907,7 @@
 "eJ" = (
 /obj/structure/flora/grass/jungle,
 /turf/open/floor/grass,
-/area/lavaland/surface/outdoors)
+/area/mine/xenoarch_area_a)
 "eK" = (
 /obj/structure/flora/ausbushes/lavendergrass,
 /turf/open/floor/grass,
@@ -2104,11 +2104,11 @@
 "fb" = (
 /obj/structure/flora/tree/jungle/small,
 /turf/open/floor/grass,
-/area/lavaland/surface/outdoors)
+/area/mine/xenoarch_area_a)
 "fc" = (
 /obj/structure/flora/ausbushes/fullgrass,
 /turf/open/floor/grass,
-/area/lavaland/surface/outdoors)
+/area/mine/xenoarch_area_a)
 "fd" = (
 /obj/effect/turf_decal/tile/purple{
 	dir = 8
@@ -2181,13 +2181,13 @@
 "fk" = (
 /obj/machinery/telecomms/relay/preset/mining,
 /turf/open/floor/plating,
-/area/lavaland/surface/outdoors)
+/area/mine/xenoarch_area_a)
 "fl" = (
 /obj/machinery/light/small{
 	dir = 4
 	},
 /turf/open/floor/grass,
-/area/lavaland/surface/outdoors)
+/area/mine/xenoarch_area_a)
 "fm" = (
 /obj/machinery/atmospherics/components/unary/portables_connector/visible{
 	dir = 8
@@ -2313,14 +2313,14 @@
 	dir = 1
 	},
 /turf/open/floor/grass,
-/area/lavaland/surface/outdoors)
+/area/mine/xenoarch_area_a)
 "fB" = (
 /obj/structure/flora/ausbushes/fullgrass,
 /obj/machinery/light/small{
 	dir = 1
 	},
 /turf/open/floor/grass,
-/area/lavaland/surface/outdoors)
+/area/mine/xenoarch_area_a)
 "fC" = (
 /obj/machinery/atmospherics/pipe/simple/scrubbers/hidden,
 /obj/machinery/atmospherics/pipe/simple/supply/hidden/layer1,
@@ -3073,7 +3073,7 @@
 	dir = 8
 	},
 /turf/open/floor/plating/asteroid/basalt/lava_land_surface,
-/area/lavaland/surface/outdoors)
+/area/mine/xenoarch_area_a)
 "gO" = (
 /obj/structure/sign/poster/official/random{
 	pixel_y = -32
@@ -3251,15 +3251,15 @@
 "hi" = (
 /obj/machinery/light/small,
 /turf/open/floor/grass,
-/area/lavaland/surface/outdoors)
+/area/mine/xenoarch_area_a)
 "hj" = (
 /obj/machinery/light/small,
 /turf/open/floor/plating/asteroid/basalt/lava_land_surface,
-/area/lavaland/surface/outdoors)
+/area/mine/xenoarch_area_a)
 "hk" = (
 /obj/machinery/light/small,
 /turf/open/water,
-/area/lavaland/surface/outdoors)
+/area/mine/xenoarch_area_a)
 "hl" = (
 /obj/machinery/atmospherics/pipe/simple/supply/hidden/layer1{
 	dir = 1
@@ -3481,14 +3481,14 @@
 	dir = 8
 	},
 /turf/open/water,
-/area/lavaland/surface/outdoors)
+/area/mine/xenoarch_area_a)
 "hR" = (
 /obj/structure/flora/grass/jungle,
 /obj/machinery/light/small{
 	dir = 4
 	},
 /turf/open/floor/grass,
-/area/lavaland/surface/outdoors)
+/area/mine/xenoarch_area_a)
 "hS" = (
 /obj/structure/table,
 /obj/machinery/plantgenes,
@@ -4107,13 +4107,13 @@
 	dir = 8
 	},
 /turf/open/floor/plating/asteroid/basalt/lava_land_surface,
-/area/lavaland/surface/outdoors)
+/area/mine/xenoarch_area_a)
 "jr" = (
 /obj/machinery/light/small{
 	dir = 4
 	},
 /turf/open/floor/plating/asteroid/basalt/lava_land_surface,
-/area/lavaland/surface/outdoors)
+/area/mine/xenoarch_area_a)
 "js" = (
 /obj/structure/table,
 /obj/effect/turf_decal/tile/green,
@@ -4400,12 +4400,12 @@
 "ka" = (
 /obj/structure/flora/grass/jungle/b,
 /turf/open/floor/grass,
-/area/lavaland/surface/outdoors)
+/area/mine/xenoarch_area_a)
 "kb" = (
 /obj/structure/flora/grass/jungle,
 /obj/structure/flora/ausbushes/fullgrass,
 /turf/open/floor/grass,
-/area/lavaland/surface/outdoors)
+/area/mine/xenoarch_area_a)
 "kc" = (
 /obj/machinery/atmospherics/pipe/manifold/scrubbers/hidden,
 /obj/machinery/atmospherics/pipe/manifold/supply/hidden/layer1,
@@ -4585,22 +4585,22 @@
 "kt" = (
 /obj/effect/turf_decal/stripes/line,
 /turf/open/floor/plating/asteroid/basalt/lava_land_surface,
-/area/lavaland/surface/outdoors)
+/area/mine/xenoarch_area_a)
 "ku" = (
 /obj/structure/flora/ausbushes/lavendergrass,
 /obj/structure/flora/ausbushes/grassybush,
 /turf/open/floor/grass,
-/area/lavaland/surface/outdoors)
+/area/mine/xenoarch_area_a)
 "kv" = (
 /obj/structure/flora/tree/jungle/small,
 /obj/structure/flora/grass/jungle/b,
 /turf/open/floor/grass,
-/area/lavaland/surface/outdoors)
+/area/mine/xenoarch_area_a)
 "kw" = (
 /obj/structure/flora/grass/jungle,
 /obj/structure/flora/ausbushes/grassybush,
 /turf/open/floor/grass,
-/area/lavaland/surface/outdoors)
+/area/mine/xenoarch_area_a)
 "kx" = (
 /obj/machinery/light,
 /turf/open/floor/plasteel/white,
@@ -4782,26 +4782,26 @@
 /obj/structure/flora/ausbushes/lavendergrass,
 /obj/structure/flora/ausbushes/grassybush,
 /turf/open/floor/grass,
-/area/lavaland/surface/outdoors)
+/area/mine/xenoarch_area_a)
 "kT" = (
 /obj/structure/flora/grass/jungle,
 /obj/structure/flora/ausbushes/lavendergrass,
 /turf/open/floor/grass,
-/area/lavaland/surface/outdoors)
+/area/mine/xenoarch_area_a)
 "kU" = (
 /obj/structure/flora/grass/jungle,
 /obj/machinery/light/small{
 	dir = 8
 	},
 /turf/open/floor/grass,
-/area/lavaland/surface/outdoors)
+/area/mine/xenoarch_area_a)
 "kV" = (
 /obj/structure/flora/ausbushes/grassybush,
 /obj/machinery/light/small{
 	dir = 4
 	},
 /turf/open/floor/grass,
-/area/lavaland/surface/outdoors)
+/area/mine/xenoarch_area_a)
 "kW" = (
 /obj/machinery/atmospherics/pipe/manifold/scrubbers/hidden{
 	dir = 1
@@ -5053,7 +5053,7 @@
 /obj/structure/flora/ausbushes/lavendergrass,
 /obj/structure/flora/ausbushes/fullgrass,
 /turf/open/floor/grass,
-/area/lavaland/surface/outdoors)
+/area/mine/xenoarch_area_a)
 "lu" = (
 /obj/machinery/atmospherics/pipe/simple/scrubbers/visible{
 	dir = 4
@@ -6434,7 +6434,7 @@
 "oy" = (
 /obj/machinery/atmospherics/pipe/simple/dark/visible,
 /turf/open/floor/plating/asteroid/basalt/lava_land_surface,
-/area/lavaland/surface/outdoors)
+/area/mine/xenoarch_area_a)
 "oz" = (
 /obj/machinery/atmospherics/components/unary/vent_pump/siphon/atmos/nitrogen_output{
 	dir = 1
@@ -6551,13 +6551,13 @@
 	dir = 4
 	},
 /turf/open/floor/plating/asteroid/basalt/lava_land_surface,
-/area/lavaland/surface/outdoors)
+/area/mine/xenoarch_area_a)
 "oR" = (
 /obj/machinery/atmospherics/pipe/simple/dark/visible{
 	dir = 9
 	},
 /turf/open/floor/plating/asteroid/basalt/lava_land_surface,
-/area/lavaland/surface/outdoors)
+/area/mine/xenoarch_area_a)
 "oS" = (
 /turf/open/floor/engine/air,
 /area/mine/xenoarch_area_a)
@@ -7622,6 +7622,9 @@
 	},
 /turf/open/floor/plating/asteroid/basalt/lava_land_surface,
 /area/lavaland/surface/outdoors)
+"tU" = (
+/turf/open/floor/plating/asteroid/basalt/lava_land_surface,
+/area/mine/xenoarch_area_a)
 "tV" = (
 /obj/structure/stone_tile/cracked{
 	dir = 4
@@ -8225,6 +8228,9 @@
 	},
 /turf/open/floor/plating/asteroid/basalt/lava_land_surface,
 /area/ruin/lavaland/unpowered/ash_walkers)
+"yo" = (
+/turf/open/floor/grass,
+/area/mine/xenoarch_area_a)
 "yu" = (
 /obj/machinery/hydroponics/soil,
 /turf/open/floor/plating/asteroid/basalt/lava_land_surface,
@@ -8473,6 +8479,9 @@
 	},
 /turf/open/indestructible/necropolis,
 /area/ruin/lavaland/unpowered/ash_walkers)
+"EJ" = (
+/turf/open/water,
+/area/mine/xenoarch_area_a)
 "Fa" = (
 /obj/machinery/camera{
 	c_tag = "Communications Relay";
@@ -9151,6 +9160,10 @@
 /obj/structure/barricade/wooden/shadow,
 /turf/open/floor/plating/asteroid/basalt/lava_land_surface,
 /area/lavaland/surface/outdoors)
+"Ua" = (
+/obj/structure/flora/ausbushes/lavendergrass,
+/turf/open/floor/grass,
+/area/mine/xenoarch_area_a)
 "Um" = (
 /obj/structure/stone_tile/surrounding_tile/burnt{
 	dir = 4
@@ -9344,6 +9357,10 @@
 	},
 /turf/open/floor/plasteel,
 /area/mine/xenoarch_area_c)
+"Yr" = (
+/obj/structure/flora/ausbushes/grassybush,
+/turf/open/floor/grass,
+/area/mine/xenoarch_area_a)
 "Yw" = (
 /obj/structure/stone_tile/block/cracked,
 /turf/open/floor/plating/asteroid/basalt/lava_land_surface,
@@ -94938,16 +94955,16 @@ ab
 ab
 ab
 ab
-eI
-eI
-eI
+yo
+yo
+yo
 gN
-eK
-eL
-eI
-eL
-eI
-eK
+Ua
+Yr
+yo
+Yr
+yo
+Ua
 ab
 ab
 ac
@@ -95194,19 +95211,19 @@ ab
 ab
 ab
 ab
-eI
-eI
+yo
+yo
 fb
-eL
-af
-af
-eI
-eI
-eI
+Yr
+tU
+tU
+yo
+yo
+yo
 fb
-eI
-eL
-eI
+yo
+Yr
+yo
 ab
 xZ
 kP
@@ -95452,18 +95469,18 @@ ab
 ab
 ab
 eJ
-eI
-eI
-eK
-af
-af
-eI
-eI
-eI
-eK
-eI
-eL
-eI
+yo
+yo
+Ua
+tU
+tU
+yo
+yo
+yo
+Ua
+yo
+Yr
+yo
 ab
 xZ
 kP
@@ -95707,19 +95724,19 @@ ab
 ab
 ab
 ab
-eI
-eI
+yo
+yo
 ad
 fA
-af
-af
-af
+tU
+tU
+tU
 hi
 ad
 eJ
-eI
-eI
-eI
+yo
+yo
+yo
 fb
 ab
 xZ
@@ -95964,20 +95981,20 @@ ab
 ab
 ab
 ab
-eI
+yo
 av
 av
 av
-af
-af
-af
-af
-af
-af
+tU
+tU
+tU
+tU
+tU
+tU
 eJ
-eI
-eL
-eK
+yo
+Yr
+Ua
 ab
 xZ
 kR
@@ -96225,17 +96242,17 @@ eJ
 av
 fk
 av
-af
-af
-af
-af
-af
-af
-af
-af
-af
+tU
+tU
+tU
+tU
+tU
+tU
+tU
+tU
+tU
 eJ
-eI
+yo
 Su
 kW
 lk
@@ -96478,20 +96495,20 @@ ab
 ab
 ab
 ab
-eK
+Ua
 av
 av
 av
-af
-af
-af
-af
-af
-af
-af
-af
-af
-af
+tU
+tU
+tU
+tU
+tU
+tU
+tU
+tU
+tU
+tU
 kt
 kr
 kX
@@ -96735,19 +96752,19 @@ ab
 ab
 ab
 ab
-eI
-eI
+yo
+yo
 ad
 fA
-af
-af
-af
+tU
+tU
+tU
 hj
 ad
-hG
-hG
-af
-af
+EJ
+EJ
+tU
+tU
 eJ
 ku
 Su
@@ -96992,21 +97009,21 @@ ab
 ab
 ab
 ab
-eI
+yo
 fb
-eI
+yo
 fc
-af
-af
-af
-hG
-hG
-hG
-hG
-af
-af
-af
-eI
+tU
+tU
+tU
+EJ
+EJ
+EJ
+EJ
+tU
+tU
+tU
+yo
 xZ
 xZ
 xZ
@@ -97249,21 +97266,21 @@ ab
 ab
 ab
 ab
-eL
-eI
-eL
+Yr
+yo
+Yr
 eJ
-af
-af
-af
-hG
-hG
-hG
-hG
-hG
-af
-af
-eI
+tU
+tU
+tU
+EJ
+EJ
+EJ
+EJ
+EJ
+tU
+tU
+yo
 ab
 ab
 ab
@@ -97507,19 +97524,19 @@ ab
 ab
 ab
 ab
-eK
-eI
-eK
-af
-af
-af
-hG
-hG
-hG
-hG
-hG
-af
-af
+Ua
+yo
+Ua
+tU
+tU
+tU
+EJ
+EJ
+EJ
+EJ
+EJ
+tU
+tU
 eJ
 ab
 ab
@@ -97764,20 +97781,20 @@ ab
 ab
 ab
 ab
-eI
+yo
 ad
 fB
-af
-af
-af
+tU
+tU
+tU
 hk
 ad
-hG
-hG
-hG
+EJ
+EJ
+EJ
 ad
 eJ
-eK
+Ua
 kS
 ad
 ab
@@ -98021,23 +98038,23 @@ ab
 ab
 ab
 ab
-eI
-eI
-eI
-af
-af
-af
-af
+yo
+yo
+yo
+tU
+tU
+tU
+tU
 hQ
-hG
-hG
-hG
+EJ
+EJ
+EJ
 jq
 ka
-eI
+yo
 bg
 kU
-eK
+Ua
 ab
 ab
 ab
@@ -98280,21 +98297,21 @@ ab
 ab
 fc
 eJ
-eK
-eI
-af
-af
-af
-af
-af
-af
-af
-af
+Ua
+yo
+tU
+tU
+tU
+tU
+tU
+tU
+tU
+tU
 kb
 eJ
 ka
 lt
-eL
+Yr
 ab
 ab
 ab
@@ -98535,22 +98552,22 @@ ab
 ab
 ab
 ab
-eI
-eI
-eI
+yo
+yo
+yo
 eJ
-af
-af
-af
-af
-af
-af
-af
-af
-af
-eK
-eL
-eK
+tU
+tU
+tU
+tU
+tU
+tU
+tU
+tU
+tU
+Ua
+Yr
+Ua
 fc
 fc
 ab
@@ -98793,23 +98810,23 @@ ab
 ab
 ab
 ab
-eK
+Ua
 fc
-eI
-eI
-af
-af
-af
-af
-af
-af
-af
-af
+yo
+yo
+tU
+tU
+tU
+tU
+tU
+tU
+tU
+tU
 kv
 fc
 kT
 eJ
-eK
+Ua
 ab
 ab
 ab
@@ -99051,22 +99068,22 @@ ab
 ab
 ab
 fl
-eI
-eI
-eK
+yo
+yo
+Ua
 fc
-eK
+Ua
 hR
-eI
-hG
-af
+yo
+EJ
+tU
 jr
-af
+tU
 fc
 kT
 kV
 ab
-eL
+Yr
 ab
 ab
 ab
@@ -99309,18 +99326,18 @@ ab
 ab
 ad
 fA
-eI
-eI
+yo
+yo
 fb
-eI
+yo
 ad
 fc
-hG
-hG
+EJ
+EJ
 ad
-hG
+EJ
 kw
-eK
+Ua
 ad
 ab
 ab
@@ -99566,10 +99583,10 @@ ab
 ab
 ab
 eJ
-eK
-eI
+Ua
+yo
 fc
-eK
+Ua
 ab
 ab
 ab
