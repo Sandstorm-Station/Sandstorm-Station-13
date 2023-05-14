@@ -16,7 +16,15 @@
 	override_bp_icon = 'modular_splurt/icons/mob/teshari.dmi'
 	eye_type = "teshari"
 	damage_overlay_type = "teshari"
-
+	species_language_holder = /datum/language_holder/teshari
+	exotic_blood_color = "#D514F7"
+	disliked_food = GROSS | GRAIN
+	liked_food = MEAT
+	payday_modifier = 0.75
+	attack_verb = "claw"
+	attack_sound = 'sound/weapons/slash.ogg'
+	miss_sound = 'sound/weapons/slashmiss.ogg'
+	ass_image = 'icons/ass/asslizard.png'
 
 	species_traits = list(MUTCOLORS,
 		EYECOLOR,
@@ -27,27 +35,6 @@
 	heatmod = TESHARI_HEATMOD
 	brutemod = TESHARI_BRUTEMOD
 	burnmod = TESHARI_BURNMOD
-
-
-	species_language_holder = /datum/language_holder/teshari
-	exotic_blood_color = "#D514F7"
-	disliked_food = GROSS | GRAIN
-	liked_food = MEAT
-	payday_modifier = 0.75
-
-
-
-	attack_verb = "claw"
-	attack_sound = 'sound/weapons/slash.ogg'
-	miss_sound = 'sound/weapons/slashmiss.ogg'
-	ass_image = 'icons/ass/asslizard.png'
-
-
-
-
-
-//	short_sighted = 1
-
 
 
 /datum/species/mammal/teshari/on_species_gain(mob/living/carbon/human/C, datum/species/old_species, pref_load)
@@ -202,3 +189,4 @@
 		to_chat(src,jointext(feedback,null))
 	if(!heard_something)
 		to_chat(src, "<span class='notice'>You hear no movement but your own.</span>")
+
