@@ -170,3 +170,154 @@
 	name = "Phoebe"
 	icon = 'modular_splurt/icons/mob/hair.dmi'
 	icon_state = "hair_phoebe"
+
+
+/datum/sprite_accessory/hair/teshari
+	name = "Teshari Default"
+	icon_state = "teshari_default"
+	icon = 'modular_splurt/icons/mob/hair.dmi'
+
+/datum/sprite_accessory/hair/teshari/altdefault
+	name = "Teshari Alt. Default"
+	icon_state = "teshari_ears"
+
+/datum/sprite_accessory/hair/teshari/tight
+	name = "Teshari Tight"
+	icon_state = "teshari_tight"
+
+/datum/sprite_accessory/hair/teshari/excited
+	name = "Teshari Spiky"
+	icon_state = "teshari_spiky"
+
+/datum/sprite_accessory/hair/teshari/spike
+	name = "Teshari Spike"
+	icon_state = "teshari_spike"
+
+/datum/sprite_accessory/hair/teshari/long
+	name = "Teshari Overgrown"
+	icon_state = "teshari_long"
+
+/datum/sprite_accessory/hair/teshari/burst
+	name = "Teshari Starburst"
+	icon_state = "teshari_burst"
+
+/datum/sprite_accessory/hair/teshari/shortburst
+	name = "Teshari Short Starburst"
+	icon_state = "teshari_burst_short"
+
+/datum/sprite_accessory/hair/teshari/mohawk
+	name = "Teshari Mohawk"
+	icon_state = "teshari_mohawk"
+
+/datum/sprite_accessory/hair/teshari/pointy
+	name = "Teshari Pointy"
+	icon_state = "teshari_pointy"
+
+/datum/sprite_accessory/hair/teshari/upright
+	name = "Teshari Upright"
+	icon_state = "teshari_upright"
+
+/datum/sprite_accessory/hair/teshari/mane
+	name = "Teshari Mane"
+	icon_state = "teshari_mane"
+
+/datum/sprite_accessory/hair/teshari/droopy
+	name = "Teshari Droopy"
+	icon_state = "teshari_droopy"
+
+/datum/sprite_accessory/hair/teshari/mushroom
+	name = "Teshari Mushroom"
+	icon_state = "teshari_mushroom"
+
+/datum/sprite_accessory/hair/teshari/twies
+	name = "Teshari Twies"
+	icon_state = "teshari_twies"
+
+/datum/sprite_accessory/hair/teshari/backstrafe
+	name = "Teshari Backstrafe"
+	icon_state = "teshari_backstrafe"
+
+/datum/sprite_accessory/hair/teshari/_longway
+	name = "Teshari Long way"
+	icon_state = "teshari_longway"
+
+/datum/sprite_accessory/hair/teshari/tree
+	name = "Teshari Tree"
+	icon_state = "teshari_tree"
+
+/datum/sprite_accessory/hair/teshari/fluffymohawk
+	name = "Teshari Fluffy Mohawk"
+	icon_state = "teshari_fluffymohawk"
+
+//Teshari face things
+/datum/sprite_accessory/facial_hair/teshari
+	name = "Teshari Beard"
+	icon_state = "teshari_chin"
+	gender = NEUTER
+	icon = 'modular_splurt/icons/mob/hair.dmi'
+
+/datum/sprite_accessory/facial_hair/teshari/scraggly
+	name = "Teshari Scraggly"
+	icon_state = "teshari_scraggly"
+
+/datum/sprite_accessory/facial_hair/teshari/chops
+	name = "Teshari Chops"
+	icon_state = "teshari_gap"
+
+/datum/sprite_accessory/ears/mam_ears/teshari
+	name = "Teshari (colorable fluff)"
+
+	icon_state = "teshari"
+	color_src = SKINTONE
+	icon = 'modular_splurt/icons/mob/ears.dmi'
+
+/datum/sprite_accessory/ears/mam_ears/tesharihigh
+	name = "Teshari upper ears (colorable fluff)"
+
+	icon_state = "tesharihigh"
+	color_src = SKINTONE
+	icon = 'modular_splurt/icons/mob/ears.dmi'
+
+/datum/sprite_accessory/ears/mam_ears/tesharilow
+	name = "Teshari lower ears (colorable fluff)"
+
+	icon_state = "tesharilow"
+	color_src = SKINTONE
+	icon = 'modular_splurt/icons/mob/ears.dmi'
+
+/datum/sprite_accessory/tails/mam_tails/teshari
+	icon = 'modular_splurt/icons/mob/tail.dmi'
+	recommended_species = list("teshari")
+
+/datum/sprite_accessory/tails/mam_tails/teshari/tesharitailhc
+	name = "teshari tail, colorable"
+
+	icon_state = "tesharicolorable"
+	color_src = MATRIXED
+	matrixed_sections = MATRIX_RED_GREEN
+
+/datum/sprite_accessory/tails/mam_tails/teshari/tesharitailfeatheredhc
+	name = "teshari tail w/ feathers, colorable"
+
+	icon_state = "tesharifeatherscolorable"
+	color_src = SKINTONE
+	matrixed_sections = MATRIX_RED_GREEN
+
+/datum/sprite_accessory/tails/mam_tails/teshari/tesharitail
+	name = "teshari tail"
+
+	icon_state = "teshari"
+	color_src = SKINTONE
+	matrixed_sections = MATRIX_RED_GREEN
+	//species_allowed = list(SPECIES_TESHARI, SPECIES_EVENT1, SPECIES_EVENT2, SPECIES_EVENT3)			//Removing Polaris whitelits, ones we need are defined in our files
+
+/datum/sprite_accessory/tails/mam_tails/teshari/tesharitailfeathered
+	name = "teshari tail w/ feathers"
+
+	icon_state = "tesharifeathers"
+	color_src = MATRIXED
+	matrixed_sections = MATRIX_RED_GREEN
+	//species_allowed = list(SPECIES_TESHARI, SPECIES_EVENT1, SPECIES_EVENT2, SPECIES_EVENT3)			//Removing Polaris whitelits, ones we need are defined in our files
+
+
+

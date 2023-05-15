@@ -10,11 +10,9 @@
 	id = SPECIES_TESHARI
 	say_mod = "mars"
 	eye_type = "teshari"
-	mutant_bodyparts = list("mcolor" = "FFFFFF", "mcolor2" = "FFFFFF", "mcolor3" = "FFFFFF", "mam_tail" = "Shadekin", "mam_ears" = "Shadekin", "deco_wings" = "None",
-						"taur" = "None", "horns" = "None", "legs" = "Plantigrade", "meat_type" = "Mammalian")
+	mutant_bodyparts = list("mcolor" = "FFFFFF", "mcolor2" = "FFFFFF", "mcolor3" = "FFFFFF", "mam_tail" = "teshari tail", "mam_ears" = "None",)
 	allowed_limb_ids = null
 	override_bp_icon = 'modular_splurt/icons/mob/teshari.dmi'
-	eye_type = "teshari"
 	damage_overlay_type = "teshari"
 	species_language_holder = /datum/language_holder/teshari
 	exotic_blood_color = "#D514F7"
@@ -28,7 +26,9 @@
 
 	species_traits = list(MUTCOLORS,
 		EYECOLOR,
-		NO_UNDERWEAR
+		NO_UNDERWEAR,
+		HAIR,
+		FACEHAIR
 		)
 
 	coldmod = TESHARI_COLDMOD
