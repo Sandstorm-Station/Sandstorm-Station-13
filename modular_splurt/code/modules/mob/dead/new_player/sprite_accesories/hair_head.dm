@@ -265,24 +265,24 @@
 	icon_state = "teshari_gap"
 
 /datum/sprite_accessory/ears/mam_ears/teshari
-	name = "Teshari (colorable fluff)"
+	name = "Teshari"
 
 	icon_state = "teshari"
-	color_src = SKINTONE
+	color_src = MUTCOLORS
 	icon = 'modular_splurt/icons/mob/ears.dmi'
 
 /datum/sprite_accessory/ears/mam_ears/tesharihigh
-	name = "Teshari upper ears (colorable fluff)"
+	name = "Teshari upper ears"
 
 	icon_state = "tesharihigh"
-	color_src = SKINTONE
+	color_src = MUTCOLORS
 	icon = 'modular_splurt/icons/mob/ears.dmi'
 
 /datum/sprite_accessory/ears/mam_ears/tesharilow
-	name = "Teshari lower ears (colorable fluff)"
+	name = "Teshari lower ears"
 
 	icon_state = "tesharilow"
-	color_src = SKINTONE
+	color_src = MUTCOLORS
 	icon = 'modular_splurt/icons/mob/ears.dmi'
 
 /datum/sprite_accessory/tails/mam_tails/teshari
@@ -300,23 +300,23 @@
 	name = "teshari tail w/ feathers, colorable"
 
 	icon_state = "tesharifeatherscolorable"
-	color_src = SKINTONE
+	color_src = MATRIXED
 	matrixed_sections = MATRIX_RED_GREEN
 
 /datum/sprite_accessory/tails/mam_tails/teshari/tesharitail
 	name = "teshari tail"
 
 	icon_state = "teshari"
-	color_src = SKINTONE
-	matrixed_sections = MATRIX_RED_GREEN
+	color_src = MUTCOLORS
+	//matrixed_sections = MATRIX_RED_GREEN
 	//species_allowed = list(SPECIES_TESHARI, SPECIES_EVENT1, SPECIES_EVENT2, SPECIES_EVENT3)			//Removing Polaris whitelits, ones we need are defined in our files
 
 /datum/sprite_accessory/tails/mam_tails/teshari/tesharitailfeathered
 	name = "teshari tail w/ feathers"
 
 	icon_state = "tesharifeathers"
-	color_src = MATRIXED
-	matrixed_sections = MATRIX_RED_GREEN
+	color_src = MUTCOLORS
+	//matrixed_sections = MATRIX_RED_GREEN
 	//species_allowed = list(SPECIES_TESHARI, SPECIES_EVENT1, SPECIES_EVENT2, SPECIES_EVENT3)			//Removing Polaris whitelits, ones we need are defined in our files
 
 
