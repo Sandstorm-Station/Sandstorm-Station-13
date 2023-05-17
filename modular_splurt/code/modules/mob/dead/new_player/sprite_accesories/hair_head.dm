@@ -265,21 +265,21 @@
 	icon_state = "teshari_gap"
 
 /datum/sprite_accessory/ears/mam_ears/teshari
-	name = "Teshari"
+	name = "Teshari (COLORABLE)"
 
 	icon_state = "teshari"
 	color_src = MUTCOLORS
 	icon = 'modular_splurt/icons/mob/ears.dmi'
 
 /datum/sprite_accessory/ears/mam_ears/tesharihigh
-	name = "Teshari upper ears"
+	name = "Teshari upper ears (COLORABLE)"
 
 	icon_state = "tesharihigh"
 	color_src = MUTCOLORS
 	icon = 'modular_splurt/icons/mob/ears.dmi'
 
 /datum/sprite_accessory/ears/mam_ears/tesharilow
-	name = "Teshari lower ears"
+	name = "Teshari lower ears (COLORABLE)"
 
 	icon_state = "tesharilow"
 	color_src = MUTCOLORS
