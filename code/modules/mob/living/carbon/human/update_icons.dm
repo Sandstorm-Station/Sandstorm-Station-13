@@ -156,7 +156,7 @@ There are several things that need to be remembered:
 
 			var/alt_worn = U.mob_overlay_icon || 'icons/mob/clothing/uniform.dmi'
 			if(dna.species.icon_uniform)
-				alt_worn = U.mob_overlay_icon || dna.species.icon_uniform
+				alt_worn = dna.species.icon_uniform
 			var/variant_flag = NONE
 
 			if((DIGITIGRADE in dna.species.species_traits) && U.mutantrace_variation & STYLE_DIGITIGRADE && !(U.mutantrace_variation & STYLE_NO_ANTHRO_ICON))
