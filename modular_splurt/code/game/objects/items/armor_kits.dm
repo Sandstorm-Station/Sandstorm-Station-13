@@ -98,7 +98,110 @@
 			user.visible_message("<span class = 'notice'>[user] reinforces [C] with [src].</span>", \
 			"<span class = 'notice'>You reinforce [C] with [src], making it as protective as a blueshield helmet.</span>")
 			C.name = "aegis [C.name]"
-			C.upgrade_prefix = "aegis" // god i hope this works
+			C.upgrade_prefix = "aegis"
+			qdel(src)
+			return
+		else
+			to_chat(user, "<span class = 'notice'>You don't need to reinforce [C] any further.")
+			return
+	else
+		return
+
+/obj/item/armorkit/security
+	name = "rampart armor kit"
+	desc = "A security armoring kit with flexible armored sheets and some nanoglue, for reinforcing outerwear."
+	icon = 'modular_splurt/icons/obj/clothing/reinforcekits.dmi'
+	w_class = WEIGHT_CLASS_SMALL
+	icon_state = "sec_armor_kit" // I'm so sorry I butchered the sprite, Toriate. (x3)
+
+/obj/item/armorkit/security/afterattack(atom/target, mob/user, proximity_flag, click_parameters)
+	var/used = FALSE
+
+	if(isobj(target) && istype(target, /obj/item/clothing/suit))
+		var/obj/item/clothing/suit/C = target
+		if(C.damaged_clothes)
+			to_chat(user,"<span class='warning'>You should repair the damage done to [C] first.</span>")
+			return
+		if(C.armor.getRating(MELEE) < 30)
+			C.armor = C.armor.setRating(MELEE = 30)
+			used = TRUE
+		if(C.armor.getRating(BULLET) < 30)
+			C.armor = C.armor.setRating(BULLET = 30)
+			used = TRUE
+		if(C.armor.getRating(LASER) < 30)
+			C.armor = C.armor.setRating(LASER = 30)
+			used = TRUE
+		if(C.armor.getRating(ENERGY) < 10)
+			C.armor = C.armor.setRating(ENERGY = 10)
+			used = TRUE
+		if(C.armor.getRating(BOMB) < 25)
+			C.armor = C.armor.setRating(BOMB = 25)
+			used = TRUE
+		if(C.armor.getRating(FIRE) < 50)
+			C.armor = C.armor.setRating(FIRE = 50)
+			used = TRUE
+		if(C.armor.getRating(ACID) < 50)
+			C.armor = C.armor.setRating(ACID = 50)
+			used = TRUE
+		if(C.armor.getRating(WOUND) < 10)
+			C.armor = C.armor.setRating(WOUND = 10)
+			used = TRUE
+
+		if(used)
+			user.visible_message("<span class = 'notice'>[user] reinforces [C] with [src].</span>", \
+			"<span class = 'notice'>You reinforce [C] with [src], making it as protective as a security armored vest.</span>")
+			C.name = "rampart [C.name]"
+			C.upgrade_prefix = "rampart"
+			qdel(src)
+			return
+		else
+			to_chat(user, "<span class = 'notice'>You don't need to reinforce [C] any further.")
+			return
+	else
+		return
+
+/obj/item/armorkit/security/helmet
+	name = "rampart headgear kit"
+	desc = "A security armoring kit with flexible armored sheets and some nanoglue, for reinforcing hats or other headgear."
+	icon = 'modular_splurt/icons/obj/clothing/reinforcekits.dmi'
+	w_class = WEIGHT_CLASS_SMALL
+	icon_state = "sec_helmet_kit" // I'm so sorry I butchered the sprite, Toriate. (x4)
+
+/obj/item/armorkit/security/helmet/afterattack(atom/target, mob/user, proximity_flag, click_parameters)
+	var/used = FALSE
+
+	if(isobj(target) && istype(target, /obj/item/clothing/head))
+		var/obj/item/clothing/head/C = target
+		if(C.damaged_clothes)
+			to_chat(user,"<span class='warning'>You should repair the damage done to [C] first.</span>")
+			return
+		if(C.armor.getRating(MELEE) < 40)
+			C.armor = C.armor.setRating(MELEE = 40)
+			used = TRUE
+		if(C.armor.getRating(BULLET) < 30)
+			C.armor = C.armor.setRating(BULLET = 30)
+			used = TRUE
+		if(C.armor.getRating(LASER) < 30)
+			C.armor = C.armor.setRating(LASER = 30) // Why the fuck does the sec helmet have better laser protection than the blueshield's?
+			used = TRUE
+		if(C.armor.getRating(ENERGY) < 10)
+			C.armor = C.armor.setRating(ENERGY = 10)
+			used = TRUE
+		if(C.armor.getRating(BOMB) < 25)
+			C.armor = C.armor.setRating(BOMB = 25)
+			used = TRUE
+		if(C.armor.getRating(FIRE) < 50)
+			C.armor = C.armor.setRating(FIRE = 50)
+			used = TRUE
+		if(C.armor.getRating(ACID) < 50)
+			C.armor = C.armor.setRating(ACID = 50)
+			used = TRUE
+
+		if(used)
+			user.visible_message("<span class = 'notice'>[user] reinforces [C] with [src].</span>", \
+			"<span class = 'notice'>You reinforce [C] with [src], making it as protective as a security helmet.</span>")
+			C.name = "rampart [C.name]"
+			C.upgrade_prefix = "rampart"
 			qdel(src)
 			return
 		else

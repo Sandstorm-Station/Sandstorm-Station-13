@@ -8,7 +8,9 @@
 		/obj/item/storage/bag/security = 5,
 		/obj/item/clothing/head/helmet/blueshirt = 5,
 		/obj/item/clothing/under/rank/security/officer/blueshirt = 5,
-		/obj/item/clothing/suit/armor/vest/blueshirt = 5
+		/obj/item/clothing/suit/armor/vest/blueshirt = 5,
+		/obj/item/armorkit/security = 5,
+		/obj/item/armorkit/security/helmet = 5
 	)
 	var/list/extra_contraband = list(
 		/obj/item/storage/belt/slut = 5,
