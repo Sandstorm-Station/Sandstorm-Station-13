@@ -5,17 +5,15 @@
 	w_class = WEIGHT_CLASS_SMALL
 	icon_state = "blueshield_armor_kit" // I'm so sorry I butchered the sprite, Toriate.
 
-/obj/item/armorkit/blueshield/afterattack(atom/target, mob/user, proximity_flag, click_parameters)
+/obj/item/armorkit/blueshield/afterattack(obj/item/target, mob/user, proximity_flag, click_parameters)
 	// yeah have fun making subtypes and modifying the afterattack if you want to make variants
 	// idiot
 	// I have no idea what you are talking about.
 	var/used = FALSE
 
-	if(isobj(target) && istype(target, /obj/item/clothing/suit))
-		var/obj/item/clothing/suit/C = target
-		if(C.damaged_clothes)
-			to_chat(user,"<span class='warning'>You should repair the damage done to [C] first.</span>")
-			return
+	if(isobj(target) && target.slot_flags == ITEM_SLOT_OCLOTHING)
+		var/obj/item/clothing/C = target
+
 		if(C.armor.getRating(MELEE) < 30)
 			C.armor = C.armor.setRating(MELEE = 30)
 			used = TRUE
@@ -45,7 +43,7 @@
 			user.visible_message("<span class = 'notice'>[user] reinforces [C] with [src].</span>", \
 			"<span class = 'notice'>You reinforce [C] with [src], making it as protective as a blueshield armored vest.</span>")
 			C.name = "aegis [C.name]"
-			C.upgrade_prefix = "aegis" // god i hope this works
+			C.upgrade_prefix = "aegis" // god i hope this works <-- I'm not sure what this even does.
 			qdel(src)
 			return
 		else
@@ -61,14 +59,12 @@
 	w_class = WEIGHT_CLASS_SMALL
 	icon_state = "blueshield_helmet_kit" // I'm so sorry I butchered the sprite, Toriate. (x2)
 
-/obj/item/armorkit/blueshield/helmet/afterattack(atom/target, mob/user, proximity_flag, click_parameters)
+/obj/item/armorkit/blueshield/helmet/afterattack(obj/item/target, mob/user, proximity_flag, click_parameters)
 	var/used = FALSE
 
-	if(isobj(target) && istype(target, /obj/item/clothing/head))
-		var/obj/item/clothing/head/C = target
-		if(C.damaged_clothes)
-			to_chat(user,"<span class='warning'>You should repair the damage done to [C] first.</span>")
-			return
+	if(isobj(target) && target.slot_flags == ITEM_SLOT_HEAD) // This will do, probably.
+		var/obj/item/clothing/C = target
+
 		if(C.armor.getRating(MELEE) < 40)
 			C.armor = C.armor.setRating(MELEE = 40)
 			used = TRUE
@@ -114,14 +110,12 @@
 	w_class = WEIGHT_CLASS_SMALL
 	icon_state = "sec_armor_kit" // I'm so sorry I butchered the sprite, Toriate. (x3)
 
-/obj/item/armorkit/security/afterattack(atom/target, mob/user, proximity_flag, click_parameters)
+/obj/item/armorkit/security/afterattack(obj/item/target, mob/user, proximity_flag, click_parameters)
 	var/used = FALSE
 
-	if(isobj(target) && istype(target, /obj/item/clothing/suit))
-		var/obj/item/clothing/suit/C = target
-		if(C.damaged_clothes)
-			to_chat(user,"<span class='warning'>You should repair the damage done to [C] first.</span>")
-			return
+	if(isobj(target) && target.slot_flags == ITEM_SLOT_OCLOTHING)
+		var/obj/item/clothing/C = target
+
 		if(C.armor.getRating(MELEE) < 30)
 			C.armor = C.armor.setRating(MELEE = 30)
 			used = TRUE
@@ -167,14 +161,12 @@
 	w_class = WEIGHT_CLASS_SMALL
 	icon_state = "sec_helmet_kit" // I'm so sorry I butchered the sprite, Toriate. (x4)
 
-/obj/item/armorkit/security/helmet/afterattack(atom/target, mob/user, proximity_flag, click_parameters)
+/obj/item/armorkit/security/helmet/afterattack(obj/item/target, mob/user, proximity_flag, click_parameters)
 	var/used = FALSE
 
-	if(isobj(target) && istype(target, /obj/item/clothing/head))
-		var/obj/item/clothing/head/C = target
-		if(C.damaged_clothes)
-			to_chat(user,"<span class='warning'>You should repair the damage done to [C] first.</span>")
-			return
+	if(isobj(target) && target.slot_flags == ITEM_SLOT_HEAD)
+		var/obj/item/clothing/C = target
+
 		if(C.armor.getRating(MELEE) < 40)
 			C.armor = C.armor.setRating(MELEE = 40)
 			used = TRUE
