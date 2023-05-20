@@ -116,6 +116,8 @@
 	if(!(isobj(target) && target.slot_flags & ITEM_SLOT_OCLOTHING))
 		return
 
+	var/obj/item/clothing/C = target
+
 	if(C.armor.getRating(MELEE) < 30)
 		C.armor = C.armor.setRating(MELEE = 30)
 		used = TRUE
@@ -164,6 +166,8 @@
 
 	if(!(isobj(target) && target.slot_flags & ITEM_SLOT_HEAD))
 		return
+
+	var/obj/item/clothing/C = target
 
 	if(C.armor.getRating(MELEE) < 40)
 		C.armor = C.armor.setRating(MELEE = 40)
