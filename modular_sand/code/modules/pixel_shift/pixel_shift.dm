@@ -59,22 +59,26 @@
 	if(CHECK_BITFIELD(direction, NORTH))
 		if(pixel_y <= PIXEL_SHIFT_MAXIMUM + base_pixel_y)
 			pixel_y++
-			client?.pixel_y++
+			if(client?.prefs.view_pixelshift) //SPLURT Edit
+				client?.pixel_y++
 			is_shifted = TRUE
 	if(CHECK_BITFIELD(direction, EAST))
 		if(pixel_x <= PIXEL_SHIFT_MAXIMUM + base_pixel_x)
 			pixel_x++
-			client?.pixel_x++
+			if(client?.prefs.view_pixelshift) //SPLURT Edit
+				client?.pixel_x++
 			is_shifted = TRUE
 	if(CHECK_BITFIELD(direction, SOUTH))
 		if(pixel_y >= -PIXEL_SHIFT_MAXIMUM + base_pixel_y)
 			pixel_y--
-			client?.pixel_y--
+			if(client?.prefs.view_pixelshift) //SPLURT Edit
+				client?.pixel_y--
 			is_shifted = TRUE
 	if(CHECK_BITFIELD(direction, WEST))
 		if(pixel_x >= -PIXEL_SHIFT_MAXIMUM + base_pixel_x)
 			pixel_x--
-			client?.pixel_x--
+			if(client?.prefs.view_pixelshift) //SPLURT Edit
+				client?.pixel_x--
 			is_shifted = TRUE
 
 	// Yes, I know this sets it to true for everything if more than one is matched.
@@ -90,7 +94,7 @@
 
 /mob/living/Login()
 	. = ..()
-	if(is_shifted)
+	if(is_shifted && client?.prefs.view_pixelshift) //SPLURT Edit
 		client?.pixel_x = pixel_x - base_pixel_x
 		client?.pixel_y = pixel_y - base_pixel_y
 
