@@ -11,45 +11,45 @@
 	// I have no idea what you are talking about.
 	var/used = FALSE
 
-	if(isobj(target) && target.slot_flags == ITEM_SLOT_OCLOTHING)
-		var/obj/item/clothing/C = target
+	if(!(isobj(target) && target.slot_flags & ITEM_SLOT_OCLOTHING))
+		return
+		
+	var/obj/item/clothing/C = target
 
-		if(C.armor.getRating(MELEE) < 30)
-			C.armor = C.armor.setRating(MELEE = 30)
-			used = TRUE
-		if(C.armor.getRating(BULLET) < 30)
-			C.armor = C.armor.setRating(BULLET = 30)
-			used = TRUE
-		if(C.armor.getRating(LASER) < 30)
-			C.armor = C.armor.setRating(LASER = 30)
-			used = TRUE
-		if(C.armor.getRating(ENERGY) < 40)
-			C.armor = C.armor.setRating(ENERGY = 40)
-			used = TRUE
-		if(C.armor.getRating(BOMB) < 25)
-			C.armor = C.armor.setRating(BOMB = 25)
-			used = TRUE
-		if(C.armor.getRating(FIRE) < 70)
-			C.armor = C.armor.setRating(FIRE = 70)
-			used = TRUE
-		if(C.armor.getRating(ACID) < 90)
-			C.armor = C.armor.setRating(ACID = 90)
-			used = TRUE
-		if(C.armor.getRating(WOUND) < 10)
-			C.armor = C.armor.setRating(WOUND = 10)
-			used = TRUE
+	if(C.armor.getRating(MELEE) < 30)
+		C.armor = C.armor.setRating(MELEE = 30)
+		used = TRUE
+	if(C.armor.getRating(BULLET) < 30)
+		C.armor = C.armor.setRating(BULLET = 30)
+		used = TRUE
+	if(C.armor.getRating(LASER) < 30)
+		C.armor = C.armor.setRating(LASER = 30)
+		used = TRUE
+	if(C.armor.getRating(ENERGY) < 40)
+		C.armor = C.armor.setRating(ENERGY = 40)
+		used = TRUE
+	if(C.armor.getRating(BOMB) < 25)
+		C.armor = C.armor.setRating(BOMB = 25)
+		used = TRUE
+	if(C.armor.getRating(FIRE) < 70)
+		C.armor = C.armor.setRating(FIRE = 70)
+		used = TRUE
+	if(C.armor.getRating(ACID) < 90)
+		C.armor = C.armor.setRating(ACID = 90)
+		used = TRUE
+	if(C.armor.getRating(WOUND) < 10)
+		C.armor = C.armor.setRating(WOUND = 10)
+		used = TRUE
 
-		if(used)
-			user.visible_message("<span class = 'notice'>[user] reinforces [C] with [src].</span>", \
-			"<span class = 'notice'>You reinforce [C] with [src], making it as protective as a blueshield armored vest.</span>")
-			C.name = "aegis [C.name]"
-			C.upgrade_prefix = "aegis" // god i hope this works <-- I'm not sure what this even does.
-			qdel(src)
-			return
-		else
-			to_chat(user, "<span class = 'notice'>You don't need to reinforce [C] any further.")
-			return
+	if(used)
+		user.visible_message("<span class = 'notice'>[user] reinforces [C] with [src].</span>", \
+		"<span class = 'notice'>You reinforce [C] with [src], making it as protective as a blueshield armored vest.</span>")
+		C.name = "aegis [C.name]"
+		C.upgrade_prefix = "aegis" // god i hope this works <-- I'm not sure what this even does.
+		qdel(src)
+		return
 	else
+		to_chat(user, "<span class = 'notice'>You don't need to reinforce [C] any further.")
 		return
 
 /obj/item/armorkit/blueshield/helmet
