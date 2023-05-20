@@ -3,39 +3,12 @@ import { useBackend, useLocalState } from '../backend';
 import { Box, Button, Icon, LabeledList, Section, Table } from '../components';
 import { Window } from '../layouts';
 
-/* //General erp preferences are probably a better indicator for this station
-  const getErpTagColor = (tag) => {
-  switch (tag) {
-    case 'Unset':
-      return 'label';
-    case 'Pred':
-      return 'red';
-    case 'Pred-Pref':
-      return 'orange';
-    case 'Prey':
-      return 'blue';
-    case 'Prey-Pref':
-      return 'green';
-    case 'Switch':
-      return 'yellow';
-    case 'Non-Vore':
-      return 'black';
-  }
-};*/
-
-const getErpTagColor = (tag) => {
-  switch (tag) {
-    case 'Unset':
-      return 'label';
-    case 'Top':
-      return 'red';
-    case 'Bottom':
-      return 'blue';
-    case 'Switch':
-      return 'yellow';
-    case 'No ERP':
-      return 'black';
-  }
+const erpTagColor = {
+  'Unset': 'label',
+  'Top': 'red',
+  'Bottom': 'blue',
+  'Switch': 'yellow',
+  'No ERP': 'black'
 };
 
 export const CharacterDirectory = (props, context) => {
@@ -113,12 +86,12 @@ const ViewCharacter = (props, context) => {
         <Box>{overlay.species}</Box>
       </Section>
       <Section level={2} title="Vore Tag">
-        <Box p={1} backgroundColor={getErpTagColor(overlay.tag)}>
-          {overlay.tag}
-        </Box>
+        <Box>{overlay.tag}</Box>
       </Section>
       <Section level={2} title="ERP Tag">
-        <Box>{overlay.erptag}</Box>
+        <Box p={1} backgroundColor={erpTagColor[overlay.erptag]}>
+          {overlay.erptag}
+        </Box>
       </Section>
       <Section level={2} title="Character Ad">
         <Box style={{ 'word-break': 'break-all' }} preserveWhitespace>
@@ -166,7 +139,7 @@ const CharacterDirectoryList = (props, context) => {
             return a[sortId].localeCompare(b[sortId]) * i;
           })
           .map((character, i) => (
-            <Table.Row key={i} backgroundColor={getErpTagColor(character.erptag)}>
+            <Table.Row key={i} backgroundColor={erpTagColor[character.erptag]}>
               <Table.Cell p={1}>{character.name}</Table.Cell>
               <Table.Cell>{character.species}</Table.Cell>
               <Table.Cell>{character.tag}</Table.Cell>
