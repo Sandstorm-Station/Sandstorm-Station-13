@@ -1475,7 +1475,7 @@
 			cyborg_base_icon = "miningdrone"
 			cyborg_icon_override = 'modular_splurt/icons/mob/robots.dmi'
 			hat_offset = 3
-		if("Robomaid") // SPLURT Addon (Old Skyrat Port)
+		if("RoboMaid") // SPLURT Addon (Old Skyrat Port)
 			cyborg_base_icon = "robomaid_miner"
 			cyborg_icon_override = 'modular_splurt/icons/mob/robots.dmi'
 			hat_offset = 3
