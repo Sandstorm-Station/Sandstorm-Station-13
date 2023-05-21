@@ -115,7 +115,7 @@ const ViewCharacter = (props, context) => {
 const CharacterDirectoryList = (props, context) => {
   const { act, data } = useBackend(context);
 
-  const { directory } = data;
+  const { directory, canOrbit } = data;
 
   const [sortId, _setSortId] = useLocalState(context, 'sortId', 'name');
   const [sortOrder, _setSortOrder] = useLocalState(context, 'sortOrder', 'name');
@@ -130,7 +130,7 @@ const CharacterDirectoryList = (props, context) => {
           <SortButton id="tag">Vore Tag</SortButton>
           <SortButton id="erptag">ERP Tag</SortButton>
           <Table.Cell collapsing textAlign="right">
-            View
+            Advertisement
           </Table.Cell>
         </Table.Row>
         {directory
@@ -140,7 +140,17 @@ const CharacterDirectoryList = (props, context) => {
           })
           .map((character, i) => (
             <Table.Row key={i} backgroundColor={erpTagColor[character.erptag]}>
-              <Table.Cell p={1}>{character.name}</Table.Cell>
+              <Table.Cell p={1}>
+                {canOrbit
+                ? <Button
+                    color={erpTagColor[character.erptag]}
+                    icon="ghost"
+                    tooltip="Orbit"
+                    content={character.name}
+                    onClick={() => act("orbit", { ref: character.ref })}
+                  />
+                : character.name}
+              </Table.Cell>
               <Table.Cell>{character.species}</Table.Cell>
               <Table.Cell>{character.tag}</Table.Cell>
               <Table.Cell>{character.erptag}</Table.Cell>

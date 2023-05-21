@@ -46,6 +46,8 @@ GLOBAL_DATUM(character_directory, /datum/character_directory)
 		data["personalErpTag"] = user.client.prefs.directory_erptag || "Unset"
 		data["prefsOnly"] = TRUE
 
+	data["canOrbit"] = isobserver(user)
+
 	return data
 
 /datum/character_directory/ui_static_data(mob/user)
@@ -67,6 +69,7 @@ GLOBAL_DATUM(character_directory, /datum/character_directory)
 		var/tag
 		var/erptag
 		var/character_ad
+		var/ref = REF(C?.mob)
 		if (C.mob?.mind) //could use ternary for all three but this is more efficient
 			tag = C.mob.mind.directory_tag || "Unset"
 			erptag = C.mob.mind.directory_erptag || "Unset"
@@ -115,6 +118,7 @@ GLOBAL_DATUM(character_directory, /datum/character_directory)
 			"erptag" = erptag,
 			"character_ad" = character_ad,
 			"flavor_text" = flavor_text,
+			"ref" = ref
 		)))
 
 	data["directory"] = directory_mobs
@@ -127,16 +131,26 @@ GLOBAL_DATUM(character_directory, /datum/character_directory)
 	if(.)
 		return
 
-	if(action == "refresh")
-		// This is primarily to stop malicious users from trying to lag the server by spamming this verb
-		if(!COOLDOWN_FINISHED(usr.client, char_directory_cooldown))
-			to_chat(usr, "<span class='warning'>Don't spam character directory refresh.</span>")
-			return
-		COOLDOWN_START(usr.client, char_directory_cooldown, 10)
-		update_static_data(usr, ui)
-		return TRUE
-	else
-		return check_for_mind_or_prefs(usr, action, params["overwrite_prefs"])
+	switch(action)
+		if("refresh")
+			// This is primarily to stop malicious users from trying to lag the server by spamming this verb
+			if(!COOLDOWN_FINISHED(usr.client, char_directory_cooldown))
+				to_chat(usr, "<span class='warning'>Don't spam character directory refresh.</span>")
+				return
+			COOLDOWN_START(usr.client, char_directory_cooldown, 10)
+			update_static_data(usr, ui)
+			return TRUE
+		if("orbit")
+			var/ref = params["ref"]
+			var/mob/dead/observer/ghost = usr
+			var/atom/movable/poi = (locate(ref) in GLOB.mob_list) || (locate(ref) in GLOB.poi_list)
+			if (poi == null)
+				return TRUE
+			ghost.ManualFollow(poi)
+			ghost.reset_perspective(null)
+			return TRUE
+		else
+			return check_for_mind_or_prefs(usr, action, params["overwrite_prefs"])
 
 /datum/character_directory/proc/check_for_mind_or_prefs(mob/user, action, overwrite_prefs)
 	if (!user.client)
