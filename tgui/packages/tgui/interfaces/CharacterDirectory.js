@@ -8,7 +8,7 @@ const erpTagColor = {
   'Top': 'red',
   'Bottom': 'blue',
   'Switch': 'yellow',
-  'No ERP': 'black'
+  'No ERP': 'black',
 };
 
 export const CharacterDirectory = (props, context) => {
@@ -141,15 +141,7 @@ const CharacterDirectoryList = (props, context) => {
           .map((character, i) => (
             <Table.Row key={i} backgroundColor={erpTagColor[character.erptag]}>
               <Table.Cell p={1}>
-                {canOrbit
-                ? <Button
-                  color={erpTagColor[character.erptag]}
-                  icon="ghost"
-                  tooltip="Orbit"
-                  content={character.name}
-                  onClick={() => act("orbit", { ref: character.ref })}
-                  />
-                : character.name}
+                {canOrbit ? <Button color={erpTagColor[character.erptag]} icon="ghost" tooltip="Orbit" content={character.name} onClick={() => act("orbit", { ref: character.ref })} /> : character.name}
               </Table.Cell>
               <Table.Cell>{character.species}</Table.Cell>
               <Table.Cell>{character.tag}</Table.Cell>
