@@ -1,5 +1,5 @@
 /mob/living/simple_animal/hostile/heavymaniac
-	name = "Heavely Armoured Trooper"
+	name = "Heavily Armoured Trooper"
 	desc = "Aim for the... i don't hecking know, shoot this beast down asap!"
 	icon = 'modular_splurt/icons/mobs/vharmob.dmi'
 	icon_state = "flaksoldner"

@@ -8,7 +8,7 @@
 	mob_biotypes = MOB_ORGANIC|MOB_HUMANOID
 	gender = FEMALE
 	speak_chance = 12
-	speak = list("Ahn~!!", "Deruta-1 to Central!!", "You're scuffy lookin'", "Come here, baka" )
+	speak = list("Ahn~!!", "Delta-1 to Central!!", "You're scuffy lookin'", "Come here, baka" )
 	turns_per_move = 1
 	turns_per_move = 2
 	maxHealth = 130
