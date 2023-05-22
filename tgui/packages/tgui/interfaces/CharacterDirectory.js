@@ -143,11 +143,11 @@ const CharacterDirectoryList = (props, context) => {
               <Table.Cell p={1}>
                 {canOrbit
                 ? <Button
-                    color={erpTagColor[character.erptag]}
-                    icon="ghost"
-                    tooltip="Orbit"
-                    content={character.name}
-                    onClick={() => act("orbit", { ref: character.ref })}
+                  color={erpTagColor[character.erptag]}
+                  icon="ghost"
+                  tooltip="Orbit"
+                  content={character.name}
+                  onClick={() => act("orbit", { ref: character.ref })}
                   />
                 : character.name}
               </Table.Cell>
