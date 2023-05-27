@@ -85,7 +85,7 @@
 	req_access = list()
 	circuit = /obj/item/circuitboard/computer/mining_shuttle/common
 	shuttleId = "mining_shuttle_common"
-	possible_destinations = "commonmining_home;lavaland_common_away;mining_away"
+	possible_destinations = "commonmining_home;lavaland_common_away_xenoarch"
 
 
 /obj/machinery/computer/shuttle/mining/on_attack_hand(mob/user, act_intent = user.a_intent, unarmed_attack_flags)
