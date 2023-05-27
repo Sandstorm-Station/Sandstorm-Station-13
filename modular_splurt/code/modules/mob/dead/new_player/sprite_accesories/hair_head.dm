@@ -291,33 +291,14 @@
 
 /datum/sprite_accessory/tails/mam_tails/teshari/tesharitailhc
 	name = "teshari tail, colorable"
-
 	icon_state = "tesharicolorable"
-	color_src = MATRIXED
 	matrixed_sections = MATRIX_RED_GREEN
 
 /datum/sprite_accessory/tails/mam_tails/teshari/tesharitailfeatheredhc
 	name = "teshari tail w/ feathers, colorable"
-
 	icon_state = "tesharifeatherscolorable"
-	color_src = MATRIXED
 	matrixed_sections = MATRIX_RED_GREEN
 
-/datum/sprite_accessory/tails/mam_tails/teshari/tesharitail
-	name = "teshari tail"
-
-	icon_state = "teshari"
-	color_src = MUTCOLORS
-	//matrixed_sections = MATRIX_RED_GREEN
-	//species_allowed = list(SPECIES_TESHARI, SPECIES_EVENT1, SPECIES_EVENT2, SPECIES_EVENT3)			//Removing Polaris whitelits, ones we need are defined in our files
-
-/datum/sprite_accessory/tails/mam_tails/teshari/tesharitailfeathered
-	name = "teshari tail w/ feathers"
-
-	icon_state = "tesharifeathers"
-	color_src = MUTCOLORS
-	//matrixed_sections = MATRIX_RED_GREEN
-	//species_allowed = list(SPECIES_TESHARI, SPECIES_EVENT1, SPECIES_EVENT2, SPECIES_EVENT3)			//Removing Polaris whitelits, ones we need are defined in our files
 
 
 

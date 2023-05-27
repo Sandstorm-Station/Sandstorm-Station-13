@@ -10,7 +10,7 @@
 	id = SPECIES_TESHARI
 	say_mod = "mars"
 	eye_type = "teshari"
-	mutant_bodyparts = list("mcolor" = "FFFFFF", "mcolor2" = "FFFFFF", "mcolor3" = "FFFFFF", "mam_tail" = "teshari tail", "mam_ears" = "None",)
+	mutant_bodyparts = list("mcolor" = "FFFFFF", "mcolor2" = "FFFFFF", "mcolor3" = "FFFFFF", "mam_tail" = "teshari tail, colorable", "mam_ears" = "None")
 	allowed_limb_ids = null
 	override_bp_icon = 'modular_splurt/icons/mob/teshari.dmi'
 	damage_overlay_type = "teshari"
@@ -46,7 +46,7 @@
 		C.add_movespeed_modifier(/datum/movespeed_modifier/teshari)
 
 /datum/movespeed_modifier/teshari
-	multiplicative_slowdown = -0.1
+	multiplicative_slowdown = -0.2
 
 /datum/emote/sound/teshari
 	mob_type_allowed_typecache = list(/mob/living/carbon/human)
