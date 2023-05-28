@@ -349,6 +349,7 @@
 	name = "Decker headphones"
 	icon_state = "decker_hat"
 	item_state = "decker_hat"
+	dynamic_hair_suffix = ""
 
 /obj/item/clothing/head/morningstar
 	name = "Morningstar beret"
