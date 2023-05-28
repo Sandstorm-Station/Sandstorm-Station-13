@@ -802,13 +802,9 @@
 				txt = copytext(A.name, 1, length(A.name))
 			return txt
 
-/**
-  * Handles the sex, if cumming returns true.
-  *
-  * Please, make sure to use the correct genital
-  * in the organ argument when you call this proc!
-*/
-/mob/living/proc/handle_post_sex(amount, orifice, mob/living/partner, organ = null)
+
+///Handles the sex, if cumming returns true.
+/mob/living/proc/handle_post_sex(amount, orifice, mob/living/partner)
 	if(stat != CONSCIOUS)
 		return FALSE
 

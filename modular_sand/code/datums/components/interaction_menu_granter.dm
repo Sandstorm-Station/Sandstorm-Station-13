@@ -260,33 +260,6 @@
 				return TRUE
 			else
 				return FALSE
-		if("genital_interaction")
-			var/mob/living/carbon/actual_target = target || usr
-			var/mob/user = usr
-			var/obj/item/organ/genital/genital = locate(params["genital"], actual_target.internal_organs)
-			if(!(genital && (genital in actual_target.internal_organs)))
-				return FALSE
-			switch(params["action"])
-				if(GEN_INSERT_EQUIPMENT)
-					var/obj/item/stuff = user.get_active_held_item()
-					if(!istype(stuff))
-						to_chat(user, span_warning("You need to hold an item to insert it!"))
-						return FALSE
-					//SPLURT edit
-					if(CHECK_BITFIELD(genital.genital_flags, GENITAL_CHASTENED))
-						to_chat(user, "<span class='warning'>You got to take its cage off first!</span>")
-						return FALSE
-					//
-					stuff.insert_item_organ(user, actual_target, genital)
-				if(GEN_REMOVE_EQUIPMENT)
-					var/obj/item/selected_item = input(user, "Pick an item to remove", "Removing item") as null|anything in genital.contents
-					if(selected_item)
-						if(!do_mob(user, actual_target, 5 SECONDS))
-							return FALSE
-						if(!user.put_in_hands(selected_item))
-							user.transferItemToLoc(get_turf(user))
-						return TRUE
-					return FALSE
 		if("char_pref")
 			var/datum/preferences/prefs = parent_mob.client.prefs
 			var/value = num_to_pref(params["value"])

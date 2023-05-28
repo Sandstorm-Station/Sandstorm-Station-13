@@ -215,4 +215,7 @@
 					if(!istype(stuff))
 						to_chat(self, span_warning("You need to hold an item to insert it!"))
 						return FALSE
+					if(CHECK_BITFIELD(genital.genital_flags, GENITAL_CHASTENED))
+						to_chat(actual_target, "<span class='warning'>You got to take its cage off first!</span>")
+						return FALSE
 					stuff.insert_item_organ(self, actual_target, genital)
