@@ -83,4 +83,4 @@
 				modifier = clamp(GLOB.breast_values[milkers.size] - 5, 0, INFINITY)
 			else
 				modifier = 1
-	user.reagents.add_reagent(milktype, rand(1,3 * modifier) * user.get_fluid_mod(milkers), milkers) //SPLURT edit
+	user.reagents.add_reagent(milktype, rand(1,3 * modifier) * user.get_fluid_mod(milkers)) //SPLURT edit

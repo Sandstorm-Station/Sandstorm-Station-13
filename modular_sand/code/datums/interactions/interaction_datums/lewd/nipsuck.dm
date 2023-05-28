@@ -27,7 +27,7 @@
 					else
 						modifier = 1
 			if(B.fluid_id)
-				user.reagents.add_reagent(B.fluid_id, rand(1,2 * modifier) * user.get_fluid_mod(B), B) //SPLURT edit
+				user.reagents.add_reagent(B.fluid_id, rand(1,2 * modifier) * user.get_fluid_mod(B)) //SPLURT edit
 
 	if(user.a_intent == INTENT_HARM)
 		user.visible_message(
