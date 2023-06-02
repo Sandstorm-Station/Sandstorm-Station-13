@@ -56,13 +56,26 @@
 	desc = "A magazine for the M46A1 Carbine"
 	icon = 'modular_splurt/icons/obj/ammo.dmi'
 	icon_state = "regm4mag"
-	ammo_type = /obj/item/ammo_casing/a308
-	caliber = ".308"
+	ammo_type = /obj/item/ammo_casing/a543
+	caliber = ".543"
 	max_ammo = 20
 
 /obj/item/ammo_box/magazine/regm4mag/update_icon()
 	..()
 	icon_state = "regm4mag-[ammo_count() ? "20" : "0"]"
+
+/obj/item/ammo_box/magazine/aegismag
+	name = "AEGIS 20-Round Magazine"
+	desc = "A magazine for the Aegis Assault System"
+	icon = 'modular_splurt/icons/obj/ammo.dmi'
+	icon_state = "aegismag"
+	ammo_type = /obj/item/ammo_casing/a543
+	caliber = ".543"
+	max_ammo = 20
+
+/obj/item/ammo_box/magazine/aegismag/update_icon()
+	..()
+	icon_state = "aegismag-[ammo_count() ? "20" : "0"]"
 
 /obj/item/ammo_box/magazine/rrcmag
 	name = "RRC Shotgun 8-shells Magazine"

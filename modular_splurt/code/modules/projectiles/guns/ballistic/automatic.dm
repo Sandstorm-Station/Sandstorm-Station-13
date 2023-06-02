@@ -159,6 +159,24 @@
 /obj/item/gun/ballistic/automatic/m46a1/nomag
 	spawnwithmagazine = FALSE
 
+/obj/item/gun/ballistic/automatic/autoaegis
+	name = "Aegis Assault System"
+	desc = "A standart Paradeus assault rifle, different from it's DMR variant, this one isn't a laser rifle."
+	icon = 'modular_splurt/icons/obj/guns/vhariik4032.dmi'
+	icon_state = "aegisauto"
+	item_state = "moistnugget"
+	fire_sound = 'sound/weapons/rifleshot.ogg'
+	weapon_weight = WEAPON_MEDIUM //heavier than the dmr, as it carries bullets instead of energy
+	mag_type = /obj/item/ammo_box/magazine/aegismag
+	fire_delay = 2
+	w_class = WEIGHT_CLASS_NORMAL
+	slot_flags = ITEM_SLOT_BACK
+	automatic_burst_overlay = FALSE
+	spread = 3
+
+/obj/item/gun/ballistic/automatic/autoaegis/nomag
+	spawnwithmagazine = FALSE
+
 /obj/item/gun/ballistic/automatic/caelus
 	name = "AOD Caelus System"
 	desc = "The Area Of Denial Caelus LMG is a LMG developed by Paradeus in early 2400's it still proves effective to this day"
