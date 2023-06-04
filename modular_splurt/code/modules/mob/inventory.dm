@@ -1,5 +1,5 @@
 /mob/doUnEquip(obj/item/I, force, newloc, no_move, invdrop, silent)
-	if(SEND_SIGNAL(I, COMSIG_MOB_ITEM_DROPPING, force, newloc, no_move, invdrop, silent)) //this can return null
+	if(I && SEND_SIGNAL(I, COMSIG_MOB_ITEM_DROPPING, force, newloc, no_move, invdrop, silent)) //this can return null
 		return FALSE
 	. = ..()
 
