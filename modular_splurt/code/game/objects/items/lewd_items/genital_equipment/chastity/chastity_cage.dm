@@ -178,7 +178,7 @@
 	SIGNAL_HANDLER
 
 	if(source == equipment.get_wearer())
-		to_chat(user, "<span class='warning'>You got to take [equipment.get_wearer().p_their()] cage off first!</span>")
+		to_chat(user, "<span class='warning'>You got to take [source.p_their()] cage off first!</span>")
 		return TRUE
 
 /obj/item/genital_equipment/chastity_cage/proc/mob_equipped_item(datum/source, obj/item/I)

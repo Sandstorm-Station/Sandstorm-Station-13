@@ -114,16 +114,15 @@
 /obj/item/clothing/underwear/chastity_belt/proc/mob_can_unequip(obj/item/source, force, newloc, no_move, invdrop, silent)
 	SIGNAL_HANDLER_DOES_SLEEP
 
-	. = TRUE
-
 	if(force)
-		return TRUE
+		return
 
 	if(belt && bepis)
 		. = belt.item_removing(belt, bepis, null)
+		. = . ? null : TRUE
 
-	if(. || QDELETED(belt))
-		return TRUE
+	if(!. || QDELETED(belt))
+		return null
 
 /obj/item/clothing/underwear/chastity_belt/proc/handle_cage_dropping(datum/source, obj/item/organ/genital/G, mob/user)
 	. = TRUE
