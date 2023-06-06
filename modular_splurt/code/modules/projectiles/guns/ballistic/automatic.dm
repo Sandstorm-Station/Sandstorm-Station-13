@@ -196,6 +196,25 @@
 /obj/item/gun/ballistic/automatic/caelus/nomag
 	spawnwithmagazine = FALSE
 
+/obj/item/gun/ballistic/automatic/kaijukill
+	name = "Kaiju SMG"
+	desc = "Kaiju SMG made to kill large creatures and powerful beings such as drakes."
+	icon = 'modular_splurt/icons/obj/guns/vhariik4032.dmi'
+	icon_state = "kaiju"
+	item_state = "moistnugget"
+	fire_sound = 'sound/weapons/rifleshot.ogg'
+	weapon_weight = WEAPON_HEAVY
+	mag_type = /obj/item/ammo_box/magazine/kaijumag
+	fire_delay = 2
+	w_class = WEIGHT_CLASS_BULKY
+	slot_flags = ITEM_SLOT_BACK
+	automatic_burst_overlay = FALSE
+	spread = 3
+	pin = /obj/item/firing_pin/kaiju
+
+/obj/item/gun/ballistic/automatic/kaijukill/nomag
+	spawnwithmagazine = FALSE
+
 /obj/item/gun/ballistic/automatic/m9smg
 	name = "M9SMG"
 	desc = "A .45ACP M9SMG, yes, it's .45ACP, don't ask me what the '9' means."

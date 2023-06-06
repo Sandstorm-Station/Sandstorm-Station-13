@@ -64,6 +64,19 @@
 	..()
 	icon_state = "regm4mag-[ammo_count() ? "20" : "0"]"
 
+/obj/item/ammo_box/magazine/kaijumag
+	name = "KAIJU 20-Round Magazine"
+	desc = "Magazine used by the Kaiju SMG."
+	icon = 'modular_splurt/icons/obj/ammo.dmi'
+	icon_state = "kaijumag"
+	ammo_type = /obj/item/ammo_casing/kaiju
+	caliber = "kaiju"
+	max_ammo = 20
+
+/obj/item/ammo_box/magazine/kaijumag/update_icon()
+	..()
+	icon_state = "kaijumag-[ammo_count() ? "20" : "0"]"
+
 /obj/item/ammo_box/magazine/aegismag
 	name = "AEGIS 20-Round Magazine"
 	desc = "A magazine for the Aegis Assault System"

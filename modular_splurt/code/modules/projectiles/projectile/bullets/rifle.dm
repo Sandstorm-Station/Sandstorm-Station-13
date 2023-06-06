@@ -45,6 +45,19 @@
 	sharpness = SHARP_NONE
 	embedding = null
 
+/obj/item/projectile/bullet/kaiju
+	name = "8.83 Kaiju Bullet"
+	damage = 150
+	wound_bonus = 0
+	wound_falloff_tile = 0
+
+/obj/item/ammo_casing/kaiju
+	name = "8.83 Kaiju bullet casing"
+	desc = "A Kaiju bullet casing."
+	icon_state = "762-casing"
+	caliber = "kaiju"
+	projectile_type = /obj/item/projectile/bullet/kaiju
+
 /obj/item/projectile/bullet/a543
 	name = "5.43mm bullet"
 	damage = 35
