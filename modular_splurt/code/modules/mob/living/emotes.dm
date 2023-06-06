@@ -972,6 +972,14 @@
 	emote_sound = 'modular_splurt/sound/voice/wurble.ogg'
 	emote_cooldown = 2.3 SECONDS
 
+/datum/emote/living/audio/warble
+	key = "warble"
+	key_third_person = "warbles"
+	message = "warbles!"
+	message_mime = "acts out a warbling!"
+	emote_sound = 'modular_splurt/sound/voice/warble.ogg'
+	emote_cooldown = 0.4 SECONDS
+
 // At the moment of adding it I just realized there's Tesh test-merge going on, so I've added numeral in case if that gets merged in the long run.
 /datum/emote/living/audio/trill2
 	key = "trill2"
