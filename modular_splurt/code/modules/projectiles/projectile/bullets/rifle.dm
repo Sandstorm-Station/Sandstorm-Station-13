@@ -47,7 +47,7 @@
 
 /obj/item/projectile/bullet/kaiju
 	name = "8.83 Kaiju Bullet"
-	damage = 150
+	damage = 100
 	wound_bonus = 0
 	wound_falloff_tile = 0
 
