@@ -86,6 +86,8 @@
 	name = "Virginkiller CentCom Dress Uniform"
 	desc = "This black and gold beauty does not help paperwork get done, it seems."
 	icon_state = "ccdressvk"
+	item_state = "ccdressvk"
+	mutantrace_variation = STYLE_DIGITIGRADE|STYLE_NO_ANTHRO_ICON
 
 /obj/item/clothing/under/raccveralls
 	name = "form fitting overalls"
