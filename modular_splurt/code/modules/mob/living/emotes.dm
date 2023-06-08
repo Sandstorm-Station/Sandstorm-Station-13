@@ -1012,3 +1012,11 @@
 	message_mime = "acts like a bawking chicken."
 	emote_sound = 'modular_splurt/sound/voice/bawk.ogg'
 	emote_cooldown = 0.5 SECONDS
+
+/datum/emote/living/audio/moo
+	key = "moo"
+	key_third_person = "moos"
+	message = "moos!"
+	message_mime = "acts like a mooing cow."
+	emote_sound = 'modular_splurt/sound/voice/moo.ogg'
+	emote_cooldown = 1.7 SECONDS
