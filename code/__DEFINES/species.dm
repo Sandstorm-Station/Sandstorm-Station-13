@@ -8,6 +8,7 @@
 	#define SPECIES_MAMMAL_SYNTHETIC "mammal_synthetic"
 #define SPECIES_ARACHNID			"arachnid"
 #define SPECIES_TESHARI				"teshari"
+#define SPECIES_XENOCHIMERA			"xenochimera"
 #define SPECIES_INSECT				"insect"
 	#define SPECIES_UINSECT			"undead_insect"
 #define SPECIES_DULLAHAN			"dullahan"

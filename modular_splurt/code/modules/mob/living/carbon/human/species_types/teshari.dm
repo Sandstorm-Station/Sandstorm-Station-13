@@ -10,7 +10,7 @@
 	id = SPECIES_TESHARI
 	say_mod = "mars"
 	eye_type = "teshari"
-	mutant_bodyparts = list("mcolor" = "FFFFFF", "mcolor2" = "FFFFFF", "mcolor3" = "FFFFFF", "mam_tail" = "teshari tail, colorable", "mam_ears" = "None")
+	mutant_bodyparts = list("mcolor" = "FFFFFF", "mcolor2" = "FFFFFF", "mcolor3" = "FFFFFF", "mam_tail" = "teshari tail, colorable", "mam_ears" = "None", "mam_body_markings" = list())
 	allowed_limb_ids = null
 	override_bp_icon = 'modular_splurt/icons/mob/teshari.dmi'
 	damage_overlay_type = "teshari"
@@ -28,7 +28,8 @@
 		EYECOLOR,
 		NO_UNDERWEAR,
 		HAIR,
-		FACEHAIR
+		FACEHAIR,
+		MARKINGS
 		)
 
 	coldmod = TESHARI_COLDMOD

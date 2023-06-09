@@ -302,3 +302,78 @@
 
 
 
+
+/datum/sprite_accessory/mam_body_markings/tesh_feathers
+	name = "Teshari Feathers"
+	icon = 'modular_splurt/icons/mob/mam_markings.dmi'
+	icon_state = "tesh-feathers"
+	covered_limbs = list("Left Foot" = MATRIX_GREEN, "Right Foot" = MATRIX_GREEN, "Left Hand" = MATRIX_GREEN, "Right Hand" = MATRIX_GREEN)
+	recommended_species = list("teshari")
+
+/datum/sprite_accessory/mam_body_markings/teshi_small_feathers
+	name = "Teshari small wingfeathers"
+	icon = 'modular_splurt/icons/mob/mam_markings.dmi'
+	icon_state = "teshi_sf"
+	covered_limbs = list("Left Foot" = MATRIX_GREEN, "Right Foot" = MATRIX_GREEN, "Left Hand" = MATRIX_GREEN, "Right Hand" = MATRIX_GREEN, "Chest" = MATRIX_GREEN)
+	recommended_species = list("teshari")
+
+/datum/sprite_accessory/mam_body_markings/tesh_skull
+	name = "Teshari Skull Face"
+	icon = 'modular_splurt/icons/mob/mam_markings.dmi'
+	icon_state = "teshari_skull"
+	covered_limbs = list("Head" = MATRIX_GREEN)
+	recommended_species = list("teshari")
+
+/datum/sprite_accessory/mam_body_markings/vr_teshari_large_eyes
+	name = "Teshari large eyes"
+	icon = 'modular_splurt/icons/mob/mam_markings.dmi'
+	icon_state = "teshlarge_eyes"
+	covered_limbs = list("Head" = MATRIX_GREEN)
+	recommended_species = list("teshari")
+
+/datum/sprite_accessory/mam_body_markings/vr_teshari_coat
+	name = "Teshari coat"
+	icon = 'modular_splurt/icons/mob/mam_markings.dmi'
+	icon_state = "tesh_coat"
+	covered_limbs = list("Left Leg" = MATRIX_GREEN, "Right Leg" = MATRIX_GREEN, "Left Arm" = MATRIX_GREEN, "Right Arm" = MATRIX_GREEN, "Chest" = MATRIX_GREEN, "Head" = MATRIX_GREEN)
+	recommended_species = list("teshari")
+
+/datum/sprite_accessory/mam_body_markings/vr_teshari_pattern_male
+	name = "Teshari male pattern"
+	icon = 'modular_splurt/icons/mob/mam_markings.dmi'
+	icon_state = "tesh-pattern-male"
+	covered_limbs = list("Left Leg" = MATRIX_GREEN, "Right Leg" = MATRIX_GREEN, "Left Arm" = MATRIX_GREEN, "Right Arm" = MATRIX_GREEN, "Left Hand" = MATRIX_GREEN, "Right Hand" = MATRIX_GREEN, "Chest" = MATRIX_GREEN, "Head" = MATRIX_GREEN)
+	recommended_species = list("teshari")
+
+/datum/sprite_accessory/mam_body_markings/vr_teshari_pattern_female
+	name = "Teshari female pattern"
+	icon = 'modular_splurt/icons/mob/mam_markings.dmi'
+	icon_state = "tesh-pattern-fem"
+	covered_limbs = list("Left Leg" = MATRIX_GREEN, "Right Leg" = MATRIX_GREEN, "Left Hand" = MATRIX_GREEN, "Right Hand" = MATRIX_GREEN, "Chest" = MATRIX_GREEN, "Groin" = MATRIX_GREEN, "Head" = MATRIX_GREEN)
+	recommended_species = list("teshari")
+
+/datum/sprite_accessory/mam_body_markings/vr_tesh_beak
+	name = "Teshari beak, pointed"
+	icon = 'modular_splurt/icons/mob/mam_markings.dmi'
+	icon_state = "tesh-beak"
+	covered_limbs = list("Head" = MATRIX_GREEN)
+	recommended_species = list("teshari")
+
+/datum/sprite_accessory/mam_body_markings/vr_tesh_beak_alt
+	name = "Teshari beak, rounded"
+	icon = 'modular_splurt/icons/mob/mam_markings.dmi'
+	icon_state = "tesh-beak-alt"
+	covered_limbs = list("Head" = MATRIX_GREEN)
+	recommended_species = list("teshari")
+
+
+
+
+
+
+
+
+
+
+
+
