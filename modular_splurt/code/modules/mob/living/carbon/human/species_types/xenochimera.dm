@@ -48,7 +48,7 @@
 
 		//Very low pressure damage
 		if(adjusted_pressure2 <= 20)
-			H.take_overall_damage(brute=LOW_PRESSURE_DAMAGE, 0)
+			H.take_overall_damage(LOW_PRESSURE_DAMAGE, 0)
 
 
 		//Cold hurts and gives them pain messages, eventually weakening and paralysing, but doesn't damage or trigger feral.
