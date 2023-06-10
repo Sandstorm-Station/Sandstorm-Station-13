@@ -106,4 +106,3 @@
 	name = "Halo"
 	icon = 'modular_splurt/icons/mob/mutant_bodyparts.dmi'
 	icon_state = "halo"
-	relevant_layers = list(BODY_ADJ_LAYER)
