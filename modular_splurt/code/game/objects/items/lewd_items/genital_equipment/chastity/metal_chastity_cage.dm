@@ -9,7 +9,7 @@
 	var/mutable_appearance/skin_overlay
 	var/skin_overlay_layer = -(GENITALS_FRONT_LAYER - 0.02)
 
-/obj/item/genital_equipment/chastity_cage/metal/equip(user, target, obj/item/organ/genital/penis/penor)
+/obj/item/genital_equipment/chastity_cage/metal/item_inserted(datum/source, obj/item/organ/genital/G, mob/user)
 	. = ..()
 
 	var/mob/living/carbon/human/H = equipment.get_wearer()
