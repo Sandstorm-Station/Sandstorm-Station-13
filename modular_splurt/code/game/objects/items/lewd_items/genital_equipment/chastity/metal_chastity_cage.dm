@@ -16,7 +16,7 @@
 	RegisterSignal(H, COMSIG_MOVABLE_MOVED, .proc/on_move)
 
 	skin_overlay = mutable_appearance(icon, "worn_[icon_state]_[cage_sprite]_skin", skin_overlay_layer)
-	skin_overlay.color = penor.color
+	skin_overlay.color = G.color
 
 	H.add_overlay(skin_overlay)
 
