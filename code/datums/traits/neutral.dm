@@ -182,3 +182,23 @@
 
 /datum/quirk/dullahan/post_add()
 	quirk_holder.AddComponent(/datum/component/dullahan)
+
+/datum/quirk/pushover
+	name = "Pushover"
+	desc = "You are a pushover! Those who are larger than you can step over and stomp on you."
+	value = 0
+	mob_trait = TRAIT_PUSHOVER
+	gain_text = span_notice("You feel more feeble than usual...")
+	lose_text = span_notice("You feel like standing up for yourself!")
+	medical_record_text = "Patient can be considered as a pushover."
+
+/datum/quirk/pushover/add()
+	// Add examine text.
+	RegisterSignal(quirk_holder, COMSIG_PARENT_EXAMINE, .proc/quirk_examine_Pushover)
+
+/datum/quirk/pushover/remove()
+	// Remove examine text.
+	UnregisterSignal(quirk_holder, COMSIG_PARENT_EXAMINE)
+
+/datum/quirk/pushover/proc/quirk_examine_Pushover(atom/examine_target, mob/living/carbon/human/examiner, list/examine_list)
+	examine_list += "[quirk_holder.p_they(TRUE)] seems like a pushover..."
