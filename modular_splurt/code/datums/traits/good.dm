@@ -255,4 +255,4 @@
 
 // Quirk examine text.
 /datum/quirk/hallowed/proc/quirk_examine_Hallowed(atom/examine_target, mob/living/carbon/human/examiner, list/examine_list)
-	examine_list += "[quirk_holder.p_they(TRUE)] radiate divine power..."
+	examine_list += "[quirk_holder.p_they(TRUE)] radiates divine power..."
