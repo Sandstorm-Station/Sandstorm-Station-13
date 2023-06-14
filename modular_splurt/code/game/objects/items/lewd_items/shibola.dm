@@ -31,14 +31,8 @@
 				return
 			payload = R
 			to_chat(user, "<span class='notice'>You strengthen the [src] with [R]</span>")
-
-
-
-
 	else
 		return ..()
-
-
 
 /obj/item/shibola/throw_at(atom/target, range, speed, mob/thrower, spin=1, diagonals_first = 0, datum/callback/callback)
 	if(!..())

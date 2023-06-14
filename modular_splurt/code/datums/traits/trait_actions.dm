@@ -1557,7 +1557,7 @@
 
 	if(istype(I,/obj/item/stack/sheet/cloth))
 		var/obj/item/stack/sheet/cloth/C = I
-		if(C.amount <= 5)
+		if(C.amount < 5)
 			to_chat(H, span_warning("There is not enough cloth left to make more rope!"))
 			return
 		else
