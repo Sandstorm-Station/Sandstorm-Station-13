@@ -3768,6 +3768,7 @@
 /obj/structure/chair{
 	dir = 1
 	},
+/obj/effect/landmark/start/peacekeeper,
 /turf/open/floor/plasteel,
 /area/security/brig)
 "akG" = (
@@ -10469,6 +10470,7 @@
 /obj/machinery/atmospherics/pipe/simple/cyan/hidden{
 	dir = 5
 	},
+/obj/effect/landmark/start/peacekeeper,
 /turf/open/floor/carpet/red,
 /area/security/brig)
 "aBa" = (
@@ -14496,6 +14498,7 @@
 	dir = 4
 	},
 /obj/machinery/atmospherics/pipe/simple/orange/hidden,
+/obj/effect/landmark/start/peacekeeper,
 /turf/open/floor/plasteel,
 /area/security/office)
 "aJw" = (
@@ -24236,6 +24239,13 @@
 /obj/machinery/atmospherics/pipe/simple/cyan/hidden{
 	dir = 4
 	},
+/obj/item/radio/intercom{
+	broadcasting = 1;
+	frequency = 1485;
+	listening = 0;
+	name = "Station Intercom (Medical)";
+	pixel_y = -28
+	},
 /turf/open/floor/plasteel/dark,
 /area/command/bridge)
 "biu" = (
@@ -24329,19 +24339,17 @@
 /obj/structure/cable{
 	icon_state = "4-8"
 	},
-/obj/item/radio/intercom{
-	broadcasting = 1;
-	frequency = 1485;
-	listening = 0;
-	name = "Station Intercom (Medical)";
-	pixel_y = -28
-	},
 /obj/effect/turf_decal/tile/blue,
 /obj/effect/turf_decal/tile/blue{
 	dir = 8
 	},
 /obj/machinery/atmospherics/pipe/simple/cyan/hidden{
 	dir = 4
+	},
+/obj/item/radio/intercom{
+	frequency = 1359;
+	name = "Station Intercom (Security)";
+	pixel_y = -28
 	},
 /turf/open/floor/plasteel,
 /area/command/bridge)
@@ -24760,14 +24768,13 @@
 /obj/effect/turf_decal/tile/green{
 	dir = 8
 	},
-/obj/item/radio/intercom{
-	name = "Station Intercom (Common)";
-	pixel_y = -28
+/obj/machinery/atmospherics/pipe/simple/orange/hidden,
+/obj/structure/cable{
+	icon_state = "2-4"
 	},
 /obj/machinery/atmospherics/pipe/simple/cyan/hidden{
 	dir = 4
 	},
-/obj/machinery/atmospherics/pipe/simple/orange/hidden,
 /turf/open/floor/plasteel,
 /area/command/bridge)
 "bjK" = (
@@ -25122,9 +25129,6 @@
 /obj/machinery/camera{
 	c_tag = "Bridge - Starboard Quarter";
 	dir = 1
-	},
-/obj/structure/cable{
-	icon_state = "2-4"
 	},
 /obj/machinery/atmospherics/pipe/manifold/cyan/hidden{
 	dir = 1
@@ -62163,6 +62167,9 @@
 /obj/structure/cable{
 	icon_state = "1-8"
 	},
+/obj/item/kirbyplants{
+	icon_state = "plant-02"
+	},
 /turf/open/floor/plasteel/dark,
 /area/command/bridge)
 "cRa" = (
@@ -63935,16 +63942,12 @@
 /obj/structure/cable{
 	icon_state = "4-8"
 	},
-/obj/item/radio/intercom{
-	frequency = 1359;
-	name = "Station Intercom (Security)";
-	pixel_y = -28
-	},
 /obj/machinery/atmospherics/pipe/simple/cyan/hidden{
 	dir = 4
 	},
-/obj/item/kirbyplants{
-	icon_state = "plant-02"
+/obj/item/radio/intercom{
+	name = "Station Intercom (Common)";
+	pixel_y = -28
 	},
 /turf/open/floor/plasteel,
 /area/command/bridge)
@@ -64372,15 +64375,8 @@
 /turf/open/floor/plasteel/dark,
 /area/tcommsat/computer)
 "hYe" = (
-/obj/machinery/door/airlock/command{
-	name = "Blueshield's Quarters";
-	req_access_txt = "72"
-	},
-/obj/structure/cable{
-	icon_state = "1-2"
-	},
 /obj/machinery/atmospherics/pipe/simple/cyan/hidden,
-/turf/open/floor/plasteel,
+/turf/closed/wall/r_wall,
 /area/command/blueshieldoffice)
 "hZl" = (
 /obj/effect/turf_decal/tile/neutral{
@@ -65990,6 +65986,10 @@
 /obj/structure/lattice/catwalk,
 /turf/open/space/basic,
 /area/engineering/secure_construction)
+"mqr" = (
+/obj/structure/closet/secure_closet/blueshield,
+/turf/open/floor/carpet/green,
+/area/command/blueshieldoffice)
 "mqB" = (
 /obj/machinery/atmospherics/components/binary/pump{
 	dir = 4;
@@ -67908,7 +67908,9 @@
 	name = "Customs APC";
 	pixel_y = -24
 	},
-/obj/structure/cable,
+/obj/structure/cable{
+	icon_state = "0-8"
+	},
 /turf/open/floor/carpet/green,
 /area/command/blueshieldoffice)
 "qZA" = (
@@ -69615,10 +69617,6 @@
 /turf/open/floor/carpet/red,
 /area/maintenance/department/eva)
 "vDh" = (
-/obj/effect/landmark/start/blueshield,
-/obj/structure/cable{
-	icon_state = "1-2"
-	},
 /obj/machinery/atmospherics/components/unary/vent_pump/on{
 	dir = 1
 	},
@@ -69626,7 +69624,9 @@
 	dir = 4;
 	light_color = "#e8eaff"
 	},
-/obj/effect/landmark/navigate_destination/blueshield,
+/obj/machinery/airalarm{
+	pixel_y = 24
+	},
 /turf/open/floor/carpet/green,
 /area/command/blueshieldoffice)
 "vDu" = (
@@ -70512,6 +70512,13 @@
 	},
 /turf/open/floor/plasteel,
 /area/security/brig)
+"xPq" = (
+/obj/structure/cable{
+	icon_state = "1-4"
+	},
+/obj/effect/landmark/start/blueshield,
+/turf/open/floor/carpet/green,
+/area/command/blueshieldoffice)
 "xQE" = (
 /obj/machinery/atmospherics/components/unary/vent_scrubber/on{
 	dir = 1
@@ -70627,18 +70634,25 @@
 /turf/open/floor/plating,
 /area/commons/fitness/cogpool)
 "ycE" = (
-/obj/structure/closet/secure_closet/blueshield,
-/obj/machinery/airalarm{
-	pixel_y = 24
-	},
 /obj/machinery/atmospherics/components/unary/vent_scrubber/on{
 	dir = 1
 	},
+/obj/structure/cable{
+	icon_state = "1-2"
+	},
+/obj/effect/landmark/navigate_destination/blueshield,
 /turf/open/floor/carpet/green,
 /area/command/blueshieldoffice)
 "ydl" = (
 /obj/machinery/atmospherics/pipe/simple/orange/hidden,
-/turf/closed/wall/r_wall,
+/obj/machinery/door/airlock/command{
+	name = "Blueshield's Quarters";
+	req_access_txt = "72"
+	},
+/obj/structure/cable{
+	icon_state = "1-2"
+	},
+/turf/open/floor/plasteel,
 /area/command/blueshieldoffice)
 "yev" = (
 /obj/machinery/airalarm{
@@ -88840,13 +88854,13 @@ aIE
 csD
 aHF
 cQW
-aGq
+aQW
+bkC
+bkC
+aQW
+bkC
+aQW
 aaU
-aaa
-aaU
-aaa
-aaa
-aaa
 aaa
 aaa
 aaa
@@ -89098,14 +89112,14 @@ aIE
 aHF
 cQX
 aQW
-bkC
-bkC
+bmj
+bBt
+cDB
+bLh
+aQW
 aQW
 bkC
-aQW
-aaU
-aaa
-aaa
+bVN
 aaa
 aaa
 aaa
@@ -89355,14 +89369,14 @@ aIE
 aHF
 cQY
 aQW
-bmj
-bBt
-cDB
-bLh
-aQW
-aQW
-bkC
-bVN
+baP
+bCd
+cjQ
+bLk
+aVP
+cpt
+bOR
+bXI
 aaa
 aaa
 aaa
@@ -89611,15 +89625,15 @@ aXS
 bbb
 aHF
 lww
-aQW
-baP
-bCd
-cjQ
-bLk
-aVP
-cpt
-bOR
-bXI
+cDt
+cDw
+bEq
+cps
+bMh
+bRb
+bOQ
+bOS
+cbi
 aaa
 aaa
 aaa
@@ -89868,15 +89882,15 @@ aXT
 bbc
 bbD
 cQZ
-cDt
-cDw
-bEq
-cps
-bMh
-bRb
-bOQ
-bOS
-cbi
+cDu
+cDx
+bFy
+cDC
+bOJ
+aVR
+bBj
+bRc
+bXI
 aaa
 aaa
 aaa
@@ -90125,15 +90139,15 @@ aGn
 bbd
 bbG
 bit
-cDu
-cDx
-bFy
-cDC
-bOJ
-aVR
-bBj
-bRc
-bXI
+aQW
+pYR
+bAX
+bEN
+bOL
+aQW
+aQW
+buO
+cbp
 aaa
 aaa
 aaa
@@ -90383,14 +90397,14 @@ aSW
 aHM
 biF
 aQW
-pYR
-bAX
-bEN
-bOL
+aQW
 aQW
 aQW
 buO
-cbp
+aQW
+aaU
+aaa
+aaa
 aaa
 aaa
 aaa
@@ -90639,12 +90653,12 @@ aNi
 aSW
 aHM
 gYa
-aQW
-aQW
-aQW
-aQW
-buO
-aQW
+oYl
+mqr
+tFO
+oYl
+aaa
+aaa
 aaU
 aaa
 aaa
@@ -90898,7 +90912,7 @@ fQR
 bjJ
 ydl
 ycE
-tFO
+xPq
 ewi
 aaa
 aaa
