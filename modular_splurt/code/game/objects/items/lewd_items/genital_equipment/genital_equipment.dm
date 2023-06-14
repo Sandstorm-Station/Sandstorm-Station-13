@@ -5,30 +5,26 @@
 /obj/item/genital_equipment/ComponentInitialize()
 	. = ..()
 	var/list/procs_list = list(
-		CALLBACK(src, .proc/item_inserting),
-		CALLBACK(src, .proc/item_removing)
+		"before_inserting" = CALLBACK(src, .proc/item_inserting),
+		"after_inserting" = CALLBACK(src, .proc/item_inserted),
+		"before_removing" = CALLBACK(src, .proc/item_removing),
+		"after_removing" = CALLBACK(src, .proc/item_removed)
 	)
 	AddComponent(/datum/component/genital_equipment, genital_slot, procs_list)
 	equipment = GetComponent(/datum/component/genital_equipment)
-	RegisterSignal(src, COMSIG_MOB_GENITAL_INSERTED, .proc/item_inserted)
-	RegisterSignal(src, COMSIG_MOB_GENITAL_REMOVED, .proc/item_removed)
 
-/obj/item/genital_equipment/Destroy()
-	. = ..()
-	UnregisterSignal(src, COMSIG_MOB_GENITAL_INSERTED, COMSIG_MOB_GENITAL_REMOVED)
-
+/// Item-specific checks to run before inserting in a genital
 /obj/item/genital_equipment/proc/item_inserting(datum/source, obj/item/organ/genital/G, mob/user)
-	SIGNAL_HANDLER_DOES_SLEEP
 	return TRUE
 
+/// Runs after the item has been inserted in a genital
 /obj/item/genital_equipment/proc/item_inserted(datum/source, obj/item/organ/genital/G, mob/user)
-	SIGNAL_HANDLER_DOES_SLEEP
 	return TRUE
 
+/// Item-specific checks to run before removing from a genital
 /obj/item/genital_equipment/proc/item_removing(datum/source, obj/item/organ/genital/G, mob/user)
-	SIGNAL_HANDLER_DOES_SLEEP
 	return TRUE
 
+/// Runs after the item has been removed from a genital
 /obj/item/genital_equipment/proc/item_removed(datum/source, obj/item/organ/genital/G, mob/user)
-	SIGNAL_HANDLER_DOES_SLEEP
 	return TRUE

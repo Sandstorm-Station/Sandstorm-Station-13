@@ -47,11 +47,11 @@ GLOBAL_LIST_INIT(egg_skins, list( \
 /obj/item/oviposition_egg/ComponentInitialize()
 	. = ..()
 	var/list/procs_list = list(
-		CALLBACK(src, .proc/item_inserting)
+		"before_inserting" = CALLBACK(src, .proc/item_inserting),
+		"after_inserting" = CALLBACK(src, .proc/item_inserted),
 	)
 	AddComponent(/datum/component/organ_inflation, 0)
 	AddComponent(/datum/component/genital_equipment, list(ORGAN_SLOT_PENIS, ORGAN_SLOT_WOMB, ORGAN_SLOT_VAGINA, ORGAN_SLOT_TESTICLES, ORGAN_SLOT_BREASTS, ORGAN_SLOT_BELLY, ORGAN_SLOT_BELLY, ORGAN_SLOT_ANUS), procs_list)
-	RegisterSignal(src, COMSIG_MOB_GENITAL_INSERTED, .proc/item_inserted)
 
 /obj/item/oviposition_egg/obj_break(damage_flag)
 	. = ..()
@@ -59,8 +59,6 @@ GLOBAL_LIST_INIT(egg_skins, list( \
 	update_appearance()
 
 /obj/item/oviposition_egg/proc/item_inserting(datum/source, obj/item/organ/genital/G, mob/user)
-	SIGNAL_HANDLER_DOES_SLEEP
-
 	. = TRUE
 	if(!(G.owner.client?.prefs?.erppref == "Yes"))
 		to_chat(user, span_warning("They don't want you to do that!"))
@@ -81,8 +79,6 @@ GLOBAL_LIST_INIT(egg_skins, list( \
 		return FALSE
 
 /obj/item/oviposition_egg/proc/item_inserted(datum/source, obj/item/organ/genital/G, mob/user)
-	SIGNAL_HANDLER_DOES_SLEEP
-
 	. = TRUE
 	to_chat(G.owner, span_userlove("Your [G] feels stuffed and stretched!"))
 	playsound(G.owner, 'modular_sand/sound/lewd/champ_fingering.ogg', 50, 1, -1)

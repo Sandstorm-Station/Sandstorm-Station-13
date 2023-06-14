@@ -21,18 +21,12 @@
 /obj/item/electropack/vibrator/ComponentInitialize()
 	. = ..()
 	var/list/procs_list = list(
-		CALLBACK(src, .proc/item_inserting)
+		"before_inserting" = CALLBACK(src, .proc/item_inserting),
+		"after_inserting" = CALLBACK(src, .proc/item_inserted),
 	)
 	AddComponent(/datum/component/genital_equipment, list(ORGAN_SLOT_VAGINA, ORGAN_SLOT_ANUS, ORGAN_SLOT_PENIS, ORGAN_SLOT_BREASTS, ORGAN_SLOT_BUTT, ORGAN_SLOT_BELLY), procs_list)
-	RegisterSignal(src, COMSIG_MOB_GENITAL_INSERTED, .proc/item_inserted)
-
-/obj/item/electropack/vibrator/Destroy()
-	. = ..()
-	UnregisterSignal(src, COMSIG_MOB_GENITAL_INSERTED)
 
 /obj/item/electropack/vibrator/proc/item_inserting(datum/source, obj/item/organ/genital/G, mob/user)
-	SIGNAL_HANDLER_DOES_SLEEP
-
 	. = TRUE
 	if(!(G.owner.client?.prefs?.erppref == "Yes"))
 		to_chat(user, span_warning("They don't want you to do that!"))
@@ -56,8 +50,6 @@
 		return FALSE
 
 /obj/item/electropack/vibrator/proc/item_inserted(datum/source, obj/item/organ/genital/G, mob/user)
-	SIGNAL_HANDLER_DOES_SLEEP
-
 	. = TRUE
 	to_chat(user, span_userlove("You attach [src] to <b>\The [G.owner]</b>'s [G]."))
 	playsound(G.owner, 'modular_sand/sound/lewd/champ_fingering.ogg', 50, 1, -1)
