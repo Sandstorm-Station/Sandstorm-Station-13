@@ -64933,6 +64933,10 @@
 	},
 /turf/open/floor/plasteel,
 /area/security/prison/cells)
+"jwb" = (
+/obj/effect/landmark/start/stowaway,
+/turf/open/floor/plating,
+/area/maintenance/starboard/central)
 "jwf" = (
 /obj/machinery/light{
 	dir = 4;
@@ -65390,6 +65394,11 @@
 /obj/effect/landmark/start/roboticist,
 /turf/open/floor/plasteel/white,
 /area/science/robotics/lab)
+"kHi" = (
+/obj/structure/disposalpipe/segment,
+/obj/effect/landmark/start/stowaway,
+/turf/open/floor/plating,
+/area/maintenance/department/eva)
 "kHX" = (
 /obj/structure/table/wood,
 /turf/open/floor/plasteel,
@@ -102991,7 +103000,7 @@ aFU
 ayK
 aPh
 rJp
-aPI
+kHi
 dCi
 vrY
 pZf
@@ -111220,7 +111229,7 @@ btP
 bwo
 arE
 lJh
-att
+jwb
 arE
 aaU
 aaU
