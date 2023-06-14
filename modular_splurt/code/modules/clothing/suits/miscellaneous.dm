@@ -271,4 +271,4 @@
 	// No overlay, because they're invisible!
 	icon_state = "jacket_transparent"
 	// I feel REALLY bad about doing this, but the default overlay is not transparent (null does not work either).
-	item_state = "jacket_purple"
+	item_state = "jacket_transparent"
