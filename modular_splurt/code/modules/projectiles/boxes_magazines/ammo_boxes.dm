@@ -69,6 +69,18 @@
 	name = "ammo box (9mm Rubber)"
 	ammo_type = /obj/item/ammo_casing/c9mm/rubber
 
+/obj/item/ammo_box/a543/lethal
+	name = "ammo box (.5x43mm Lethal)"
+	icon_state = "543box"
+	ammo_type = /obj/item/ammo_casing/a543
+	max_ammo = 40
+
+/obj/item/ammo_box/a543/rubber
+	name = "ammo box (.5x43mm Rubber)"
+	icon_state = "543box"
+	ammo_type = /obj/item/ammo_casing/a543/rubber
+	max_ammo = 40
+
 /obj/item/ammo_box/a308
 	name = "stripper clip (.308)"
 	desc = "A stripper clip."
