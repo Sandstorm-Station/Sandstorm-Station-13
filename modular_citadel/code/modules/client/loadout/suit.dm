@@ -24,22 +24,22 @@
 	path = /obj/item/clothing/suit/jacket
 	subcategory = LOADOUT_SUBCATEGORY_SUIT_JACKETS
 
-/datum/gear/suit/jacketflannel // all of these are reskins of bomber jackets but with the vibe to make you look like a true lumberjack
+/datum/gear/suit/jacketflannelblack // all of these are reskins of bomber jackets but with the vibe to make you look like a true lumberjack
 	name = "Black flannel jacket"
 	path = /obj/item/clothing/suit/toggle/jacket/flannel
 	subcategory = LOADOUT_SUBCATEGORY_SUIT_JACKETS
 
-/datum/gear/suit/jacketflannel/red
+/datum/gear/suit/jacketflannelred
 	name = "Red flannel jacket"
 	path = /obj/item/clothing/suit/toggle/jacket/flannel/red
 	subcategory = LOADOUT_SUBCATEGORY_SUIT_JACKETS
 
-/datum/gear/suit/jacketflannel/aqua
+/datum/gear/suit/jacketflannelaqua
 	name = "Aqua flannel jacket"
 	path = /obj/item/clothing/suit/toggle/jacket/flannel/aqua
 	subcategory = LOADOUT_SUBCATEGORY_SUIT_JACKETS
 
-/datum/gear/suit/jacketflannel/brown
+/datum/gear/suit/jacketflannelbrown
 	name = "Brown flannel jacket"
 	path = /obj/item/clothing/suit/toggle/jacket/flannel/brown
 	subcategory = LOADOUT_SUBCATEGORY_SUIT_JACKETS
