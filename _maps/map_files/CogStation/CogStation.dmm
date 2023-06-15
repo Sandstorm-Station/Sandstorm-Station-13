@@ -21595,8 +21595,9 @@
 /obj/structure/cable{
 	icon_state = "1-2"
 	},
-/obj/machinery/atmospherics/pipe/simple/cyan/hidden,
-/obj/machinery/atmospherics/pipe/simple/cyan/hidden,
+/obj/machinery/atmospherics/pipe/manifold/cyan/hidden{
+	dir = 4
+	},
 /turf/open/floor/plasteel/dark,
 /area/command/bridge)
 "bbG" = (
@@ -24235,7 +24236,6 @@
 	dir = 4
 	},
 /obj/effect/turf_decal/tile/neutral,
-/obj/machinery/atmospherics/pipe/simple/orange/hidden,
 /obj/machinery/atmospherics/pipe/simple/cyan/hidden{
 	dir = 4
 	},
@@ -24245,6 +24245,9 @@
 	listening = 0;
 	name = "Station Intercom (Medical)";
 	pixel_y = -28
+	},
+/obj/machinery/atmospherics/pipe/simple/orange/hidden{
+	dir = 9
 	},
 /turf/open/floor/plasteel/dark,
 /area/command/bridge)
@@ -55917,6 +55920,7 @@
 	icon_state = "1-2"
 	},
 /obj/machinery/atmospherics/pipe/simple/cyan/hidden,
+/obj/machinery/atmospherics/pipe/simple/cyan/hidden,
 /turf/open/floor/plasteel/dark,
 /area/command/heads_quarters/captain)
 "cDu" = (
@@ -62156,19 +62160,22 @@
 /area/command/bridge)
 "cQZ" = (
 /obj/structure/cable{
-	icon_state = "2-4"
-	},
-/obj/structure/cable{
 	icon_state = "1-2"
-	},
-/obj/machinery/atmospherics/pipe/manifold/cyan/hidden{
-	dir = 8
 	},
 /obj/structure/cable{
 	icon_state = "1-8"
 	},
 /obj/item/kirbyplants{
 	icon_state = "plant-02"
+	},
+/obj/machinery/atmospherics/pipe/simple/cyan/hidden{
+	dir = 5
+	},
+/obj/structure/cable{
+	icon_state = "4-8"
+	},
+/obj/machinery/atmospherics/pipe/simple/orange/hidden{
+	dir = 6
 	},
 /turf/open/floor/plasteel/dark,
 /area/command/bridge)
@@ -62922,6 +62929,12 @@
 /obj/machinery/atmospherics/pipe/manifold/orange/hidden,
 /turf/open/floor/plasteel,
 /area/security/prison/upper)
+"evN" = (
+/obj/machinery/atmospherics/pipe/simple/cyan/hidden{
+	dir = 6
+	},
+/turf/open/floor/plasteel/dark,
+/area/command/bridge)
 "ewi" = (
 /obj/structure/lattice,
 /turf/closed/wall/r_wall,
@@ -65627,6 +65640,10 @@
 	},
 /obj/structure/table,
 /obj/item/radio/off,
+/obj/machinery/atmospherics/pipe/simple/cyan/hidden,
+/obj/structure/cable{
+	icon_state = "2-4"
+	},
 /turf/open/floor/plasteel/dark,
 /area/command/bridge)
 "lwB" = (
@@ -89632,7 +89649,7 @@ aKG
 aRe
 aXS
 bbb
-aHF
+evN
 lww
 cDt
 cDw
