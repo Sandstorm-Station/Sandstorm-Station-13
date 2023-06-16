@@ -202,7 +202,7 @@
 /obj/item/firing_pin/holy
 	name = "blessed pin"
 	desc = "A firing pin that only responds to those who are holier than thou."
-	pin_removeable = TRUE
+	pin_removeable = FALSE
 
 /obj/item/firing_pin/holy/pin_auth(mob/living/user)
 	if(user.mind.isholy)
@@ -216,6 +216,7 @@
 	fail_message = "<span class='warning'>SUIT CHECK FAILED.</span>"
 	var/obj/item/clothing/suit/suit_requirement = null
 	var/tagcolor = ""
+	pin_removeable = FALSE
 
 /obj/item/firing_pin/tag/pin_auth(mob/living/user)
 	if(ishuman(user))
@@ -245,6 +246,7 @@
 	var/max_sec_level = SEC_LEVEL_DELTA
 	var/only_lethals = FALSE
 	var/can_toggle = TRUE
+	pin_removeable = TRUE
 
 /obj/item/firing_pin/security_level/Initialize(mapload)
 	. = ..()
