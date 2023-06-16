@@ -121,6 +121,7 @@
 	req_implant = /obj/item/implant/weapons_auth
 
 
+
 // Honk pin, clown's joke item.
 // Can replace other pins. Replace a pin in cap's laser for extra fun!
 /obj/item/firing_pin/clown
