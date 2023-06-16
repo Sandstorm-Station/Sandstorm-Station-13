@@ -12,7 +12,6 @@
 	var/force_replace = 0 // Can forcefully replace other pins.
 	var/pin_removeable = 0 // Can be replaced by any pin.
 	var/obj/item/gun/gun
-	pin_removeable = TRUE
 
 /obj/item/firing_pin/Initialize(mapload, newloc)
 	. = ..()
@@ -80,7 +79,6 @@
 /obj/item/firing_pin/magic
 	name = "magic crystal shard"
 	desc = "A small enchanted shard which allows magical weapons to fire."
-	pin_removeable = FALSE
 
 // Test pin, works only near firing range.
 /obj/item/firing_pin/test_range
@@ -103,7 +101,6 @@
 	desc = "This is a security firing pin which only authorizes users who are implanted with a certain device."
 	fail_message = "<span class='warning'>IMPLANT CHECK FAILED.</span>"
 	var/obj/item/implant/req_implant = null
-	pin_removeable = TRUE
 
 /obj/item/firing_pin/implant/pin_auth(mob/living/user)
 	if(user)
@@ -117,13 +114,11 @@
 	desc = "This Security firing pin authorizes the weapon for only mindshield-implanted users."
 	icon_state = "firing_pin_loyalty"
 	req_implant = /obj/item/implant/mindshield
-	pin_removeable = TRUE
 
 /obj/item/firing_pin/implant/pindicate
 	name = "syndicate firing pin"
 	icon_state = "firing_pin_pindi"
 	req_implant = /obj/item/implant/weapons_auth
-	pin_removeable = TRUE
 
 
 // Honk pin, clown's joke item.
@@ -134,7 +129,6 @@
 	color = "#FFFF00"
 	fail_message = "<span class='warning'>HONK!</span>"
 	force_replace = TRUE
-	pin_removeable = FALSE
 
 /obj/item/firing_pin/clown/pin_auth(mob/living/user)
 	playsound(src, 'sound/items/bikehorn.ogg', 50, 1)
@@ -170,7 +164,6 @@
 	icon_state = "firing_pin_dna"
 	fail_message = "<span class='warning'>DNA CHECK FAILED.</span>"
 	var/unique_enzymes = null
-	pin_removeable = FALSE
 
 /obj/item/firing_pin/dna/afterattack(atom/target, mob/user, proximity_flag)
 	. = ..()
@@ -197,12 +190,10 @@
 /obj/item/firing_pin/dna/dredd
 	desc = "This is a DNA-locked firing pin which only authorizes one user. Attempt to fire once to DNA-link. It has a small explosive charge on it."
 	selfdestruct = TRUE
-	pin_removeable = FALSE
 
 /obj/item/firing_pin/holy
 	name = "blessed pin"
 	desc = "A firing pin that only responds to those who are holier than thou."
-	pin_removeable = TRUE
 
 /obj/item/firing_pin/holy/pin_auth(mob/living/user)
 	if(user.mind.isholy)
@@ -327,7 +318,6 @@
 	desc = "A firing pin used by the austrailian defense force, retrofit to prevent weapon discharge on the station."
 	icon_state = "firing_pin_explorer"
 	fail_message = "<span class='warning'>CANNOT FIRE WHILE ON STATION, MATE!</span>"
-	pin_removeable = TRUE
 
 // This checks that the user isn't on the station Z-level.
 /obj/item/firing_pin/explorer/pin_auth(mob/living/user)
