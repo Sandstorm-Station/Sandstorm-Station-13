@@ -373,6 +373,7 @@
 		constantly trying to mentally probe you."
 	fail_message = "<span class='abductor'>\
 		Firing error, please contact Command.</span>"
+	pin_removeable = FALSE
 
 /obj/item/firing_pin/abductor/pin_auth(mob/living/user)
 	. = isabductor(user)
