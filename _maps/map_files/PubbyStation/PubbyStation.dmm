@@ -25421,13 +25421,13 @@
 /obj/machinery/light{
 	dir = 1
 	},
-/obj/machinery/portable_atmospherics/scrubber,
 /obj/effect/turf_decal/tile/green{
 	dir = 1
 	},
 /obj/effect/turf_decal/tile/green{
 	dir = 4
 	},
+/obj/machinery/lapvend,
 /turf/open/floor/plasteel,
 /area/hallway/primary/aft)
 "bly" = (
@@ -56609,6 +56609,21 @@
 	},
 /turf/open/floor/plating,
 /area/maintenance/department/engine)
+"lRY" = (
+/obj/effect/turf_decal/bot,
+/obj/effect/turf_decal/tile/neutral{
+	dir = 1
+	},
+/obj/effect/turf_decal/tile/neutral,
+/obj/effect/turf_decal/tile/neutral{
+	dir = 4
+	},
+/obj/effect/turf_decal/tile/neutral{
+	dir = 8
+	},
+/obj/machinery/portable_atmospherics/scrubber,
+/turf/open/floor/plasteel/dark,
+/area/hallway/primary/aft)
 "lTx" = (
 /obj/structure/sign/departments/security{
 	pixel_y = 32
@@ -99160,7 +99175,7 @@ bkm
 bly
 bmD
 bJI
-boS
+lRY
 bqb
 brs
 bsS
