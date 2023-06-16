@@ -24252,6 +24252,8 @@
 /obj/machinery/atmospherics/pipe/simple/orange/hidden{
 	dir = 9
 	},
+/obj/structure/table,
+/obj/item/radio/off,
 /turf/open/floor/plasteel/dark,
 /area/command/bridge)
 "biu" = (
@@ -65665,8 +65667,6 @@
 /obj/structure/cable{
 	icon_state = "4-8"
 	},
-/obj/structure/table,
-/obj/item/radio/off,
 /obj/machinery/atmospherics/pipe/simple/cyan/hidden,
 /obj/structure/cable{
 	icon_state = "2-4"
