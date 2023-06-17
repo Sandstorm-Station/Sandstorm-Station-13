@@ -5,7 +5,8 @@
 	icon_state = "deathclaw"
 	icon_living = "deathclaw"
 	icon_dead = "deathclaw_dead"
-	icon_gib = "syndicate_gib"
+	icon_gib = "deathclaw_gib"
+	pixel_x = -16
 	gender = MALE
 	mob_biotypes = list(MOB_ORGANIC, MOB_BEAST)
 	stat_attack = UNCONSCIOUS
@@ -43,37 +44,6 @@
 	// Gentle: lewds people
 	// Abomination: Hurts and does unspeakable lewd things to people
 	var/deathclaw_mode = "hostile"
-
-/mob/living/simple_animal/hostile/deathclaw/femclaw
-	icon = 'modular_splurt/icons/mob/femclaw/femclaw.dmi'
-	icon_state = "femclaw"
-	desc = "A massive, reptilian creature with powerful muscles, razor-sharp claws, and aggression to match. This one seems to be a female, but you're not sure if her massive breasts were what made this obvious."
-	maxHealth = 400
-	health = 400
-	armour_penetration = 45
-	pixel_x = - 15
-	var/body_colors = "#847559"
-
-/mob/living/simple_animal/hostile/deathclaw/femclaw/death()
-	..()
-	gib()
-
-/mob/living/simple_animal/hostile/deathclaw/mommyclaw
-	icon = 'modular_splurt/icons/mob/femclaw/femclaw.dmi'
-	icon_state = "mommyclaw"
-	desc = "A massive, reptilian creature with powerful muscles, razor-sharp claws, and aggression to match. This one seems to be a female, but you're not sure if her massive breasts were what made this obvious. She will make you her bitch, and you wall refer to her as mommy."
-	maxHealth = 1200
-	health = 1200
-	obj_damage = 145
-	armour_penetration = 80
-	melee_damage_lower = 80
-	melee_damage_upper = 80
-	pixel_x = - 15
-	var/body_colors = "#6790c2"
-
-/mob/living/simple_animal/hostile/deathclaw/mommyclaw/death()
-	..()
-	gib()
 
 /mob/living/simple_animal/hostile/deathclaw/pacifist
 	name = "Friendly Deathclaw"
