@@ -1166,7 +1166,7 @@
 /area/solars/starboard/fore)
 "adA" = (
 /obj/machinery/camera{
-	c_tag = "Service Hallway - Aft";
+	c_tag = "Permabrig - South";
 	pixel_x = 22
 	},
 /turf/open/floor/plasteel,
@@ -1714,19 +1714,23 @@
 /turf/open/floor/plating,
 /area/maintenance/fore)
 "afl" = (
-/obj/machinery/camera{
-	c_tag = "Service Hallway - Aft";
-	pixel_x = 22
+/obj/machinery/button/door{
+	id = "Security Dorm";
+	name = "Dormitory Door Lock";
+	normaldoorcontrol = 1;
+	pixel_x = -7;
+	pixel_y = 24;
+	specialfunctions = 4
 	},
-/turf/open/floor/plasteel/cafeteria,
-/area/security/prison/mess)
+/turf/open/floor/carpet/red,
+/area/security/brig)
 "afm" = (
 /obj/effect/decal/cleanable/dirt,
 /turf/open/floor/plasteel,
 /area/construction)
 "afn" = (
 /obj/machinery/camera{
-	c_tag = "Hydroponics Lobby"
+	c_tag = "Prison Wing"
 	},
 /turf/open/floor/plasteel,
 /area/security/brig)
@@ -1948,7 +1952,7 @@
 "afY" = (
 /obj/machinery/atmospherics/pipe/simple/orange/hidden,
 /obj/machinery/camera{
-	c_tag = "Fitness Room";
+	c_tag = "Permabrig Hallway";
 	dir = 8;
 	pixel_y = -22
 	},
@@ -2248,7 +2252,7 @@
 /area/science/observatory)
 "agP" = (
 /obj/machinery/camera{
-	c_tag = "Barbershop";
+	c_tag = "Permabrig - West";
 	dir = 4
 	},
 /turf/open/floor/plasteel,
@@ -6196,7 +6200,7 @@
 /obj/structure/extinguisher_cabinet{
 	pixel_x = -26
 	},
-/obj/machinery/autolathe/secure,
+/obj/machinery/autolathe,
 /turf/open/floor/plasteel,
 /area/security/brig)
 "aqZ" = (
@@ -9098,11 +9102,12 @@
 /turf/open/floor/plasteel,
 /area/service/hydroponics/lobby)
 "ayh" = (
-/obj/machinery/atmospherics/pipe/simple/cyan/hidden,
-/obj/machinery/camera{
-	c_tag = "Hydroponics Storage";
+/obj/effect/turf_decal/tile/red,
+/obj/effect/turf_decal/tile/red{
 	dir = 4
 	},
+/obj/structure/table,
+/obj/item/gun/energy/laser/practice,
 /turf/open/floor/plasteel,
 /area/security/brig)
 "ayi" = (
@@ -9120,7 +9125,7 @@
 /area/commons/fitness)
 "ayj" = (
 /obj/machinery/camera{
-	c_tag = "Security - Prison Bathroom";
+	c_tag = "Permabrig Cafeteria";
 	dir = 4
 	},
 /turf/open/floor/plasteel,
@@ -12287,7 +12292,7 @@
 /area/security/brig)
 "aET" = (
 /obj/machinery/camera{
-	c_tag = "Service Hallway - Aft";
+	c_tag = "Permabrig - North";
 	pixel_x = 22
 	},
 /turf/open/floor/plasteel,
@@ -63397,12 +63402,13 @@
 /turf/open/floor/plasteel,
 /area/science/mixing)
 "fxp" = (
-/obj/machinery/door/airlock/security/glass{
-	name = "Brig Control";
-	req_access_txt = "3"
-	},
 /obj/structure/cable{
 	icon_state = "4-8"
+	},
+/obj/machinery/door/airlock/security/glass{
+	id_tag = "innerbrig";
+	name = "Brig";
+	req_access_txt = "63"
 	},
 /turf/open/floor/plasteel,
 /area/security/prison)
@@ -63546,7 +63552,7 @@
 "fPL" = (
 /obj/machinery/atmospherics/pipe/simple/cyan/hidden,
 /obj/machinery/camera{
-	c_tag = "Fitness Room";
+	c_tag = "Permabrig - Northeast";
 	dir = 8;
 	pixel_y = -22
 	},
@@ -63974,7 +63980,7 @@
 	dir = 4
 	},
 /obj/machinery/camera{
-	c_tag = "Fitness Room";
+	c_tag = "Permabrig - East";
 	dir = 8;
 	pixel_y = -22
 	},
@@ -65335,7 +65341,7 @@
 	dir = 8
 	},
 /obj/machinery/camera{
-	c_tag = "Service Hallway - Aft";
+	c_tag = "Permabrig - Northwest";
 	pixel_x = 22
 	},
 /turf/open/floor/plasteel,
@@ -67004,7 +67010,7 @@
 /area/security/prison)
 "oqR" = (
 /obj/machinery/camera{
-	c_tag = "Kitchen Coldroom";
+	c_tag = "Permabrig Control";
 	dir = 8
 	},
 /turf/open/floor/plasteel,
@@ -67719,9 +67725,14 @@
 /turf/closed/wall/r_wall,
 /area/security/prison)
 "qmc" = (
-/obj/effect/decal/cleanable/blood/old,
+/obj/effect/turf_decal/tile/red,
+/obj/effect/turf_decal/tile/red{
+	dir = 4
+	},
+/obj/structure/table,
+/obj/machinery/syndicatebomb/training,
 /turf/open/floor/plasteel,
-/area/maintenance/port/fore)
+/area/security/brig)
 "qnC" = (
 /obj/structure/cable{
 	icon_state = "1-2"
@@ -68320,7 +68331,7 @@
 "rTP" = (
 /obj/structure/chair/stool,
 /obj/machinery/camera{
-	c_tag = "Prison North West";
+	c_tag = "Permabrig Workshop";
 	dir = 4;
 	network = list("ss13","prison")
 	},
@@ -68372,7 +68383,7 @@
 	dir = 4
 	},
 /obj/machinery/camera{
-	c_tag = "Fitness Room";
+	c_tag = "Security - North";
 	dir = 8;
 	pixel_y = -22
 	},
@@ -69730,7 +69741,7 @@
 /area/service/hydroponics/garden)
 "vwb" = (
 /obj/machinery/camera{
-	c_tag = "Service Hallway - Aft";
+	c_tag = "Permabrig RecRoom";
 	pixel_x = 22
 	},
 /turf/open/floor/plasteel,
@@ -69778,6 +69789,11 @@
 	name = "Prison Intercom (General)";
 	pixel_x = -30;
 	prison_radio = 1
+	},
+/obj/machinery/camera{
+	c_tag = "Permabrig Garden";
+	dir = 4;
+	network = list("ss13","prison")
 	},
 /turf/open/floor/plasteel,
 /area/security/prison/garden)
@@ -70947,7 +70963,7 @@
 	dir = 8
 	},
 /obj/machinery/camera{
-	c_tag = "Hydroponics - Fore";
+	c_tag = "Permabrig Transfer";
 	dir = 1
 	},
 /turf/open/floor/plasteel,
@@ -91325,7 +91341,7 @@ odJ
 odJ
 odJ
 pTP
-afl
+vZM
 vZM
 hfE
 xdy
@@ -92632,7 +92648,7 @@ nMI
 nXZ
 ykP
 qlK
-ayh
+agE
 agE
 pYk
 agE
@@ -94965,8 +94981,8 @@ aeM
 ahr
 wWq
 sdy
-wWq
-wWq
+ayh
+qmc
 aeJ
 aeJ
 aeJ
@@ -95992,9 +96008,9 @@ fIU
 pwY
 nPt
 anU
+afl
+aAX
 ekg
-aAX
-aAX
 anU
 xnk
 aaS
@@ -97279,7 +97295,7 @@ acL
 oIV
 aiT
 alx
-qmc
+alx
 cjo
 aaj
 aGc
