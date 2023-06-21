@@ -62,6 +62,3 @@
 		else
 			cell = new preload_cell_type(src)
 	update_icon()
-
-/obj/item/melee/baton/prova/loaded
-	preload_cell_type = /obj/item/stock_parts/cell/high/plus
