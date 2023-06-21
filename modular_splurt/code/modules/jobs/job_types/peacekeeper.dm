@@ -257,7 +257,8 @@ Peacekeeper Hypospray
 	desc = "A storage case for a Prova. Teach them the way of John Prodman."
 
 /obj/item/storage/secure/briefcase/pkbaton/prova/PopulateContents()
-	new /obj/item/melee/baton/prova/loaded(src)
+	new /obj/item/melee/baton/prova(src)
+	new /obj/item/stock_parts/cell/high/plus(src)
 
 /obj/item/storage/secure/briefcase/pkbaton/tbaton
 	name = "\improper Telescopic Baton box"
