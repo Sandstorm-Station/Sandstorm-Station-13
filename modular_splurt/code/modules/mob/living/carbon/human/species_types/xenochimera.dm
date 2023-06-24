@@ -7,7 +7,7 @@
 /datum/species/mammal/xenochimera
 	name = "Xenochimera"
 	id = SPECIES_XENOCHIMERA
-	mutant_bodyparts = list("mcolor" = "FFFFFF", "mcolor2" = "FFFFFF", "mcolor3" = "FFFFFF", "mam_snouts" = none, "mam_tail" = "None", "mam_ears" = "None", "deco_wings" = "None",
+	mutant_bodyparts = list("mcolor" = "FFFFFF", "mcolor2" = "FFFFFF", "mcolor3" = "FFFFFF", "mam_snouts" = "None", "mam_tail" = "None", "mam_ears" = "None", "deco_wings" = "None",
 						"taur" = "None", "horns" = "None", "legs" = "Plantigrade", "meat_type" = "Mammalian")
 	species_traits = list(MUTCOLORS,EYECOLOR,HAIR,FACEHAIR,LIPS,WINGCOLOR,HAS_FLESH,HAS_BONE)
 	mutanteyes = /obj/item/organ/eyes/night_vision
