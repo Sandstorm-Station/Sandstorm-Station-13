@@ -7755,11 +7755,11 @@
 	pixel_x = -25
 	},
 /obj/machinery/button/door{
-	id = "nukereactor";
-	name = "Emergency Shutters Control";
-	pixel_x = -23;
-	pixel_y = -23;
-	req_access_txt = "10;24"
+	id = "engsm";
+	name = "Radiation Shutters Control";
+	pixel_y = -21;
+	req_access_txt = "10";
+	pixel_x = -26
 	},
 /turf/open/floor/plasteel/dark,
 /area/engineering/main/reactor_control)
@@ -18328,6 +18328,10 @@
 "cSR" = (
 /obj/effect/spawner/structure/window/plasma/reinforced,
 /obj/machinery/door/firedoor,
+/obj/machinery/door/poddoor/shutters/radiation/preopen{
+	id = "engsm";
+	name = "Radiation Chamber Shutters"
+	},
 /turf/open/floor/engine,
 /area/engineering/main/reactor_core)
 "cSS" = (
@@ -23721,7 +23725,8 @@
 	},
 /obj/machinery/door/firedoor,
 /obj/machinery/door/poddoor/shutters/radiation/preopen{
-	id = nukereactor
+	id = "engsm";
+	name = "Radiation Chamber Shutters"
 	},
 /turf/open/floor/plating,
 /area/engineering/main/reactor_control)
@@ -40539,6 +40544,10 @@
 /obj/machinery/door/firedoor{
 	dir = 8
 	},
+/obj/machinery/door/poddoor/shutters/radiation/preopen{
+	id = "engsm";
+	name = "Radiation Chamber Shutters"
+	},
 /turf/open/floor/engine,
 /area/engineering/main/reactor_core)
 "gpy" = (
@@ -56310,7 +56319,8 @@
 /obj/effect/spawner/structure/window/plasma/reinforced,
 /obj/machinery/door/firedoor,
 /obj/machinery/door/poddoor/shutters/radiation/preopen{
-	id = nukereactor
+	id = "engsm";
+	name = "Radiation Chamber Shutters"
 	},
 /turf/open/floor/plating,
 /area/engineering/main/reactor_control)
@@ -76564,7 +76574,8 @@
 	},
 /obj/machinery/door/firedoor,
 /obj/machinery/door/poddoor/shutters/radiation/preopen{
-	id = nukereactor
+	id = "engsm";
+	name = "Radiation Chamber Shutters"
 	},
 /turf/open/floor/plating,
 /area/engineering/main/reactor_control)
@@ -115363,6 +115374,10 @@
 /obj/effect/spawner/structure/window/plasma/reinforced,
 /obj/machinery/atmospherics/pipe/layer_manifold,
 /obj/machinery/door/firedoor,
+/obj/machinery/door/poddoor/shutters/radiation/preopen{
+	id = "engsm";
+	name = "Radiation Chamber Shutters"
+	},
 /turf/open/floor/engine,
 /area/engineering/main/reactor_core)
 "rNU" = (
@@ -115837,9 +115852,6 @@
 	icon_state = "1-2"
 	},
 /obj/machinery/door/firedoor,
-/obj/machinery/door/poddoor/shutters/radiation/preopen{
-	id = nukereactor
-	},
 /turf/open/floor/plasteel/dark{
 	icon_state = "darkfull_whole_alt"
 	},
@@ -143448,11 +143460,11 @@
 	dir = 1
 	},
 /obj/machinery/button/door{
-	id = "nukereactor";
-	name = "Emergency Shutters Control";
-	pixel_x = -23;
-	pixel_y = 26;
-	req_access_txt = "10;24"
+	id = "engsm";
+	name = "Radiation Shutters Control";
+	pixel_y = 24;
+	req_access_txt = "10";
+	pixel_x = -26
 	},
 /turf/open/floor/engine,
 /area/engineering/main/reactor_core)
@@ -145472,6 +145484,10 @@
 /obj/effect/spawner/structure/window/plasma/reinforced,
 /obj/machinery/door/firedoor{
 	dir = 8
+	},
+/obj/machinery/door/poddoor/shutters/radiation/preopen{
+	id = "engsm";
+	name = "Radiation Chamber Shutters"
 	},
 /turf/open/floor/engine,
 /area/engineering/main/reactor_core)
