@@ -1,7 +1,8 @@
-/turf/open/floor/grass/layeniasand
+/turf/open/floor/plating/asteroid/layeniasand
 	gender = PLURAL
 	name = "crimson sand"
 	icon = 'modular_splurt/icons/turf/layeniasand.dmi'
+	baseturfs = /turf/open/floor/plating/asteroid/layeniaredder
 	desc = "Looks cold."
 	icon_state = "mapping"
 	ore_type = /obj/item/stack/sheet/sandblock/twenty
@@ -28,7 +29,7 @@
 	turf_type = /turf/open/floor/plating/asteroid/layenia
 	defer_change = TRUE
 
-/turf/open/floor/grass/layeniaredder
+/turf/open/floor/plating/asteroid/layeniaredder
 	name = "crimson rock"
 	desc = "crimson rocks surrond you."
 	icon = 'modular_splurt/icons/turf/layenia.dmi'
