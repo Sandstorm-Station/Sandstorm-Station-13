@@ -54631,10 +54631,6 @@
 	},
 /turf/open/floor/plasteel/dark,
 /area/cargo/qm)
-"iwm" = (
-/obj/structure/lattice,
-/turf/open/space/basic,
-/area/maintenance/starboard)
 "iwo" = (
 /obj/structure/extinguisher_cabinet{
 	dir = 4;
@@ -66353,10 +66349,6 @@
 	},
 /turf/open/floor/grass,
 /area/service/hydroponics/garden)
-"kgY" = (
-/obj/effect/decal/cleanable/oil,
-/turf/open/floor/plating/asteroid/layeniaredder,
-/area/maintenance/fore)
 "khe" = (
 /obj/effect/turf_decal/loading_area{
 	dir = 5;
@@ -79018,9 +79010,7 @@
 "mbC" = (
 /obj/effect/decal/cleanable/oil,
 /obj/structure/ore_box,
-/turf/open/floor/plating{
-	icon_state = "platingdmg1"
-	},
+/turf/open/floor/plating,
 /area/maintenance/fore)
 "mbN" = (
 /obj/machinery/atmospherics/pipe/simple/orange/visible{
@@ -134996,11 +134986,6 @@
 	icon_state = "darkfull_whole_alt"
 	},
 /area/science/xenobiology)
-"uHt" = (
-/obj/structure/disposalpipe/segment,
-/obj/structure/fans/tiny,
-/turf/open/floor/plating,
-/area/construction)
 "uHx" = (
 /obj/effect/decal/cleanable/generic,
 /turf/closed/mineral/ash_rock/layenia,
@@ -157367,7 +157352,7 @@
 /area/ruin/unpowered/no_grav)
 "xWl" = (
 /obj/structure/lattice,
-/turf/open/openspace,
+/turf/open/floor/plating,
 /area/maintenance/fore)
 "xWo" = (
 /obj/effect/turf_decal/bot,
@@ -241311,15 +241296,15 @@ rMS
 fOu
 ljQ
 ljQ
-nLS
-nLS
-nLS
-nLS
-nLS
-nLS
-nLS
-nLS
-nLS
+ljQ
+ljQ
+ljQ
+ljQ
+ljQ
+ljQ
+ljQ
+ljQ
+ljQ
 ljQ
 hUb
 hkz
@@ -241576,7 +241561,7 @@ lvd
 ttO
 nmh
 nmh
-uHt
+nmh
 vNu
 erW
 hjW
@@ -262922,7 +262907,7 @@ nnm
 lsc
 naP
 nnm
-iwm
+xfv
 xfv
 akY
 nnm
@@ -263112,7 +263097,7 @@ lxn
 peN
 gSl
 rNU
-eKA
+kji
 cJi
 ooL
 xgP
@@ -263369,7 +263354,7 @@ kji
 oqL
 peN
 rNU
-eKA
+kji
 cJi
 xKN
 iZW
@@ -263625,8 +263610,8 @@ rNU
 srR
 qEL
 kji
-eKA
-eKA
+kji
+kji
 cJi
 gjA
 bvt
@@ -263882,8 +263867,8 @@ rNU
 oPG
 dJa
 kji
-qbf
-eKA
+kji
+kji
 cJi
 gjA
 tAC
@@ -264140,7 +264125,7 @@ rNU
 bxl
 qbf
 qbf
-eKA
+kji
 cJi
 kxh
 xqt
@@ -264393,11 +264378,11 @@ nLS
 doZ
 kji
 rNU
-eKA
-eKA
+kji
+kji
 kXH
 qbf
-eKA
+kji
 cJi
 tAg
 xVn
@@ -264650,11 +264635,11 @@ hqx
 nQT
 kji
 rNU
+kji
+kji
+kji
 eKA
-eKA
-eKA
-eKA
-eKA
+kji
 cJi
 pHO
 pHO
@@ -264907,11 +264892,11 @@ nQT
 nQT
 kji
 rNU
-eKA
-eKA
-eKA
-eKA
-eKA
+kji
+kji
+kji
+kji
+kji
 nQT
 eKA
 eKA
@@ -265164,11 +265149,11 @@ kji
 kji
 kji
 rNU
-eKA
+kji
 rNU
 rNU
 rNU
-eKA
+kji
 nQT
 eKA
 eKA
@@ -265421,11 +265406,11 @@ kji
 kji
 bhv
 rNU
-eKA
-eKA
+kji
+kji
 mNg
 jWe
-eKA
+kji
 nQT
 iCd
 eKA
@@ -265676,13 +265661,13 @@ nLS
 doZ
 kji
 kji
-kgY
-eKA
+aXi
+kji
 rNU
 dGm
 bed
 bed
-eKA
+kji
 nQT
 nQT
 nQT
@@ -265934,7 +265919,7 @@ nQT
 nQT
 kji
 rNU
-eKA
+kji
 rNU
 eOv
 cua
@@ -266970,7 +266955,7 @@ aFU
 rjI
 gku
 rNU
-xWl
+kji
 scd
 rNU
 jvw
