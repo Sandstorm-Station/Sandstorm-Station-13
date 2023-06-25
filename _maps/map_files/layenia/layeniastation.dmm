@@ -1223,6 +1223,7 @@
 /area/ruin/unpowered/no_grav)
 "akn" = (
 /obj/effect/landmark/nuclear_waste_spawner,
+/obj/effect/landmark/navigate_destination/techstorage,
 /turf/open/floor/plating,
 /area/engineering/storage/tech)
 "akq" = (
@@ -15901,6 +15902,10 @@
 	icon_state = "floor_plate"
 	},
 /area/cargo/sorting)
+"czm" = (
+/obj/effect/landmark/navigate_destination/dockesc,
+/turf/open/floor/plasteel,
+/area/hallway/secondary/exit)
 "czC" = (
 /obj/structure/cable{
 	icon_state = "1-2"
@@ -21502,10 +21507,6 @@
 	},
 /turf/open/floor/plasteel/dark,
 /area/security/courtroom)
-"dqd" = (
-/obj/structure/lattice,
-/turf/open/space/basic,
-/area/maintenance/fore)
 "dqm" = (
 /obj/machinery/atmospherics/pipe/simple/supply/hidden{
 	dir = 10
@@ -45112,6 +45113,10 @@
 /obj/machinery/atmospherics/pipe/simple/multiz,
 /turf/open/floor/plating,
 /area/maintenance/starboard)
+"gYI" = (
+/obj/effect/landmark/navigate_destination/hop,
+/turf/open/floor/carpet/royalblue,
+/area/command/heads_quarters/hop)
 "gYN" = (
 /obj/effect/spawner/structure/window/reinforced,
 /turf/open/floor/plating,
@@ -58750,6 +58755,7 @@
 /area/security/prison)
 "jbN" = (
 /obj/structure/cable,
+/obj/machinery/power/apc/auto_name/south,
 /turf/open/floor/plating,
 /area/maintenance/starboard)
 "jbU" = (
@@ -97884,6 +97890,13 @@
 	icon_state = "floor_plate"
 	},
 /area/hallway/primary/central)
+"oXo" = (
+/obj/effect/landmark/navigate_destination/hydro,
+/turf/open/floor/plasteel{
+	dir = 8;
+	icon_state = "floor_trim"
+	},
+/area/service/hydroponics)
 "oXU" = (
 /turf/open/floor/plasteel/stairs/medium{
 	dir = 4
@@ -112314,6 +112327,7 @@
 	dir = 5;
 	name = "scrubbers pipe"
 	},
+/obj/effect/landmark/navigate_destination/lawyer,
 /turf/open/floor/wood,
 /area/service/lawoffice)
 "rnt" = (
@@ -124388,6 +124402,13 @@
 /obj/effect/landmark/navigate_destination/atmos,
 /turf/open/floor/plasteel,
 /area/engineering/atmos)
+"tba" = (
+/obj/machinery/atmospherics/pipe/simple/scrubbers/hidden/layer1{
+	name = "scrubbers pipe"
+	},
+/obj/effect/landmark/navigate_destination/disposals,
+/turf/open/floor/plasteel/dark,
+/area/cargo/sorting)
 "tbg" = (
 /obj/effect/turf_decal/stripes/corner{
 	dir = 1
@@ -128908,6 +128929,7 @@
 	dir = 6;
 	name = "scrubbers pipe"
 	},
+/obj/effect/landmark/navigate_destination/aiupload,
 /turf/open/floor/plasteel/dark{
 	icon_state = "darkfull_whole_alt"
 	},
@@ -149391,10 +149413,6 @@
 	},
 /turf/open/floor/plasteel,
 /area/hallway/primary/central)
-"wNy" = (
-/obj/effect/landmark/navigate_destination/techstorage,
-/turf/open/floor/plasteel/dark,
-/area/engineering/storage/tech)
 "wNz" = (
 /obj/effect/turf_decal/loading_area{
 	dir = 8;
@@ -154575,6 +154593,7 @@
 /obj/structure/cable{
 	icon_state = "0-4"
 	},
+/obj/machinery/power/apc/auto_name/north,
 /turf/open/floor/plating,
 /area/maintenance/starboard)
 "xBm" = (
@@ -154653,6 +154672,30 @@
 	icon_state = "darkfull_whole_alt"
 	},
 /area/science/xenobiology)
+"xBH" = (
+/obj/machinery/atmospherics/pipe/simple/supply/hidden/layer3{
+	name = "air supply pipe"
+	},
+/obj/machinery/atmospherics/pipe/simple/scrubbers/hidden/layer1{
+	name = "scrubbers pipe"
+	},
+/obj/structure/cable{
+	icon_state = "1-2"
+	},
+/obj/effect/turf_decal/tile/neutral{
+	dir = 4
+	},
+/obj/effect/turf_decal/tile/neutral{
+	dir = 1
+	},
+/obj/effect/turf_decal/tile/neutral{
+	dir = 8
+	},
+/obj/effect/turf_decal/tile/neutral,
+/obj/structure/disposalpipe/segment,
+/obj/effect/landmark/navigate_destination/dockarrival,
+/turf/open/floor/plasteel,
+/area/hallway/secondary/entry)
 "xBJ" = (
 /obj/effect/baseturf_helper/asteroid/layenia,
 /turf/closed/wall,
@@ -192310,7 +192353,7 @@ xVN
 uwH
 mTP
 tzv
-jux
+tba
 jux
 tTF
 kHQ
@@ -192741,7 +192784,7 @@ aMX
 aMX
 aMX
 bsC
-fNq
+oXo
 pKC
 fNq
 fNq
@@ -194793,7 +194836,7 @@ aEh
 sJB
 jvd
 saP
-wNy
+saP
 hTX
 uSr
 evW
@@ -208175,7 +208218,7 @@ ghk
 cXc
 cXc
 cXc
-cXc
+czm
 cXc
 fIY
 wXV
@@ -248021,7 +248064,7 @@ mbz
 mbz
 mbz
 mbz
-mbz
+xBH
 mbz
 mbz
 mbz
@@ -262936,7 +262979,7 @@ jHE
 dRH
 ohC
 dwz
-cyz
+gYI
 pJh
 dRH
 eVe
@@ -264143,7 +264186,7 @@ kji
 kji
 etU
 nQT
-dqd
+kji
 pqx
 kld
 bwR
