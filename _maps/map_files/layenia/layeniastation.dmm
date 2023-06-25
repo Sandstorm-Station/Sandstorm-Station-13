@@ -1747,7 +1747,6 @@
 /obj/effect/turf_decal/tile/neutral{
 	dir = 6
 	},
-/obj/structure/fans/tiny/invisible,
 /obj/structure/window/reinforced,
 /turf/open/floor/plasteel{
 	icon_state = "floor_plate"
@@ -2169,7 +2168,6 @@
 /obj/effect/turf_decal/tile/neutral{
 	dir = 9
 	},
-/obj/structure/fans/tiny/invisible,
 /obj/structure/window/reinforced{
 	dir = 1
 	},
@@ -8790,6 +8788,20 @@
 	},
 /obj/effect/turf_decal/bot,
 /obj/structure/table,
+/obj/item/gun/ballistic/automatic/m46a1{
+	pixel_y = 4
+	},
+/obj/item/gun/ballistic/automatic/m46a1{
+	pixel_y = -1
+	},
+/obj/item/ammo_box/magazine/regm4mag{
+	pixel_y = -6;
+	pixel_x = -3
+	},
+/obj/item/ammo_box/magazine/regm4mag{
+	pixel_y = -6;
+	pixel_x = -7
+	},
 /turf/open/floor/plasteel,
 /area/ai_monitored/security/armory)
 "bsf" = (
@@ -9588,6 +9600,12 @@
 	},
 /turf/open/floor/plating,
 /area/engineering/atmos)
+"byg" = (
+/obj/structure/railing/corner{
+	dir = 1
+	},
+/turf/open/floor/grass,
+/area/service/hydroponics/garden)
 "byk" = (
 /obj/effect/turf_decal/tile/neutral{
 	dir = 4
@@ -9975,9 +9993,6 @@
 /turf/open/floor/plasteel,
 /area/maintenance/fore)
 "bBY" = (
-/obj/structure/railing{
-	dir = 8
-	},
 /obj/effect/turf_decal/loading_area{
 	icon_state = "steel_panel";
 	name = "steel pannel"
@@ -9987,7 +10002,7 @@
 	name = "scrubbers pipe"
 	},
 /obj/structure/railing{
-	dir = 1
+	dir = 9
 	},
 /turf/open/floor/plasteel{
 	dir = 1;
@@ -24978,7 +24993,6 @@
 /obj/effect/turf_decal/tile/neutral{
 	dir = 8
 	},
-/obj/structure/fans/tiny/invisible,
 /turf/open/floor/plasteel,
 /area/hallway/primary/central)
 "dSi" = (
@@ -45643,6 +45657,13 @@
 	},
 /turf/open/floor/plasteel/dark,
 /area/hallway/secondary/service)
+"hdH" = (
+/obj/effect/turf_decal/tile/neutral,
+/obj/effect/turf_decal/stripes/corner{
+	dir = 2
+	},
+/turf/open/floor/plasteel,
+/area/hallway/primary/central)
 "hdI" = (
 /obj/effect/turf_decal/loading_area{
 	dir = 4;
@@ -52877,6 +52898,15 @@
 	},
 /turf/open/floor/plasteel,
 /area/science/xenobiology)
+"igX" = (
+/obj/effect/turf_decal/tile/neutral{
+	dir = 8
+	},
+/obj/effect/turf_decal/stripes/corner{
+	dir = 1
+	},
+/turf/open/floor/plasteel,
+/area/hallway/primary/central)
 "ihn" = (
 /obj/structure/chair/stool/bar{
 	dir = 1
@@ -56201,7 +56231,6 @@
 /obj/effect/turf_decal/tile/neutral{
 	dir = 9
 	},
-/obj/structure/fans/tiny/invisible,
 /obj/structure/window/reinforced{
 	dir = 1
 	},
@@ -57903,7 +57932,6 @@
 /obj/effect/turf_decal/tile/neutral{
 	dir = 4
 	},
-/obj/structure/fans/tiny/invisible,
 /turf/open/floor/plasteel,
 /area/hallway/primary/central)
 "iVC" = (
@@ -67981,6 +68009,15 @@
 /obj/effect/spawner/structure/window/reinforced,
 /turf/open/floor/plating,
 /area/medical/psychology)
+"kuP" = (
+/obj/effect/turf_decal/tile/neutral{
+	dir = 4
+	},
+/obj/effect/turf_decal/stripes/corner{
+	dir = 8
+	},
+/turf/open/floor/plasteel,
+/area/hallway/primary/central)
 "kuR" = (
 /obj/effect/turf_decal/stripes/corner{
 	dir = 8
@@ -74988,10 +75025,6 @@
 /turf/open/floor/plasteel/freezer,
 /area/maintenance/starboard/aft)
 "lzl" = (
-/obj/structure/railing{
-	dir = 8
-	},
-/obj/structure/railing,
 /obj/effect/turf_decal/loading_area{
 	dir = 4;
 	icon_state = "steel_panel";
@@ -75002,6 +75035,9 @@
 	name = "air supply pipe"
 	},
 /obj/machinery/portable_atmospherics/canister/air,
+/obj/structure/railing{
+	dir = 10
+	},
 /turf/open/floor/plasteel{
 	icon_state = "floor_plate"
 	},
@@ -80164,7 +80200,6 @@
 /area/maintenance/aft)
 "mkn" = (
 /obj/effect/turf_decal/tile/neutral,
-/obj/structure/fans/tiny/invisible,
 /turf/open/floor/plasteel,
 /area/hallway/primary/central)
 "mkp" = (
@@ -108266,7 +108301,6 @@
 /obj/effect/turf_decal/tile/neutral{
 	dir = 6
 	},
-/obj/structure/fans/tiny/invisible,
 /obj/structure/window/reinforced,
 /turf/open/floor/plasteel{
 	icon_state = "floor_plate"
@@ -127464,15 +127498,6 @@
 	},
 /area/service/chapel/main)
 "txt" = (
-/obj/item/gun/ballistic/shotgun/riot{
-	pixel_x = -3;
-	pixel_y = 3
-	},
-/obj/item/gun/ballistic/shotgun/riot,
-/obj/item/gun/ballistic/shotgun/riot{
-	pixel_x = 3;
-	pixel_y = -3
-	},
 /obj/effect/turf_decal/bot,
 /obj/structure/window/reinforced{
 	dir = 1;
@@ -127482,6 +127507,15 @@
 	dir = 8
 	},
 /obj/structure/table,
+/obj/item/gun/ballistic/shotgun/eshotgun{
+	pixel_y = 4;
+	pixel_x = -3
+	},
+/obj/item/gun/ballistic/shotgun/eshotgun,
+/obj/item/gun/ballistic/shotgun/eshotgun{
+	pixel_y = -5;
+	pixel_x = 3
+	},
 /turf/open/floor/plasteel{
 	dir = 1;
 	icon_plating = "floor";
@@ -139728,6 +139762,15 @@
 	icon_state = "floor_plate"
 	},
 /area/science/robotics/lab)
+"vtl" = (
+/obj/structure/railing{
+	dir = 4
+	},
+/obj/structure/railing/corner{
+	dir = 4
+	},
+/turf/open/floor/grass,
+/area/service/hydroponics/garden)
 "vto" = (
 /obj/effect/turf_decal/loading_area{
 	icon_state = "drain";
@@ -140012,10 +140055,7 @@
 /area/service/bar)
 "vvc" = (
 /obj/structure/railing{
-	dir = 1
-	},
-/obj/structure/railing{
-	dir = 4
+	dir = 5
 	},
 /turf/open/floor/grass,
 /area/service/hydroponics/garden)
@@ -144324,10 +144364,7 @@
 /area/security/checkpoint/supply)
 "waY" = (
 /obj/structure/railing{
-	dir = 1
-	},
-/obj/structure/railing{
-	dir = 8
+	dir = 9
 	},
 /turf/open/floor/grass,
 /area/service/hydroponics/garden)
@@ -152305,7 +152342,6 @@
 /obj/effect/turf_decal/tile/neutral{
 	dir = 1
 	},
-/obj/structure/fans/tiny/invisible,
 /turf/open/floor/plasteel,
 /area/hallway/primary/central)
 "xjC" = (
@@ -158772,6 +158808,7 @@
 /obj/structure/cable{
 	icon_state = "0-4"
 	},
+/obj/machinery/power/apc/auto_name/west,
 /turf/open/floor/plasteel/dark{
 	dir = 1;
 	icon_state = "darkfull_whole"
@@ -193184,7 +193221,7 @@ hmJ
 qEY
 hmJ
 hmJ
-sdp
+igX
 vhV
 wfr
 boa
@@ -194720,13 +194757,13 @@ boa
 boa
 dCC
 dGF
-iMR
+kuP
 hmJ
 kGu
 hmJ
 hmJ
 hmJ
-qNN
+hdH
 xzI
 wfr
 boa
@@ -259718,7 +259755,7 @@ wPz
 gZO
 oCH
 vvc
-smD
+vtl
 smD
 meN
 mAN
@@ -260489,7 +260526,7 @@ jNv
 rcl
 oCH
 waY
-sch
+byg
 sch
 aqW
 mAN
