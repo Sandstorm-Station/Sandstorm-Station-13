@@ -5,7 +5,7 @@
 	baseturfs = /turf/open/floor/plating/asteroid/layeniaredder
 	desc = "Looks cold."
 	icon_state = "mapping"
-	ore_type = /obj/item/stack/sheet/sandblock/twenty
+	digResult = /obj/item/stack/ore/glass/basalt
 	planetary_atmos = TRUE
 	floor_tile = null
 	initial_gas_mix = FROZEN_ATMOS
@@ -34,7 +34,6 @@
 	desc = "crimson rocks surrond you."
 	icon = 'modular_splurt/icons/turf/layenia.dmi'
 	icon_state = "layenia"
-	turfverb = "dig up"
 	slowdown = 0
 	footstep = FOOTSTEP_SAND
 	barefootstep = FOOTSTEP_SAND
