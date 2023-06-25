@@ -1405,6 +1405,7 @@
 /obj/structure/cable{
 	icon_state = "4-8"
 	},
+/obj/effect/landmark/navigate_destination/court,
 /turf/open/floor/wood{
 	icon_state = "wood_large";
 	name = "large"
@@ -7077,8 +7078,11 @@
 /area/hallway/primary/port/fore)
 "bgf" = (
 /obj/structure/table,
-/turf/open/floor/plasteel/checker,
-/area/command/meeting_room)
+/turf/open/floor/wood{
+	icon_state = "wood_tile";
+	name = "tile"
+	},
+/area/command/blueshieldoffice)
 "bgh" = (
 /obj/structure/disposalpipe/segment{
 	dir = 5
@@ -7857,12 +7861,6 @@
 	icon_state = "darkfull_whole_alt"
 	},
 /area/engineering/atmos)
-"bkX" = (
-/obj/structure/cable{
-	icon_state = "4-8"
-	},
-/turf/open/floor/plasteel/checker,
-/area/command/meeting_room)
 "blh" = (
 /obj/effect/turf_decal/loading_area{
 	dir = 8;
@@ -8410,6 +8408,7 @@
 	dir = 4;
 	name = "air supply pipe"
 	},
+/obj/effect/landmark/navigate_destination/dorms,
 /turf/open/floor/plasteel,
 /area/commons/dorms)
 "bpp" = (
@@ -10284,6 +10283,10 @@
 	icon_state = "darkfull_trim"
 	},
 /area/security/brig)
+"bDT" = (
+/obj/effect/landmark/navigate_destination/library,
+/turf/open/floor/wood,
+/area/security/prison)
 "bEe" = (
 /obj/machinery/status_display{
 	layer = 4;
@@ -10844,7 +10847,7 @@
 	},
 /obj/effect/spawner/structure/window/reinforced,
 /turf/open/floor/plating,
-/area/command/meeting_room)
+/area/command/blueshieldoffice)
 "bIa" = (
 /obj/structure/table/glass,
 /obj/machinery/light/small{
@@ -13676,6 +13679,18 @@
 /obj/effect/turf_decal/bot,
 /turf/open/floor/plating,
 /area/maintenance/fore)
+"cfM" = (
+/obj/effect/turf_decal/loading_area{
+	color = "#55391A";
+	dir = 4;
+	icon_state = "siding_wood_line";
+	name = "wood"
+	},
+/turf/open/floor/wood{
+	icon_state = "wood_tile";
+	name = "tile"
+	},
+/area/command/blueshieldoffice)
 "cfS" = (
 /obj/machinery/computer/security/hos,
 /obj/structure/cable{
@@ -14445,6 +14460,7 @@
 /obj/machinery/light_switch{
 	pixel_x = 23
 	},
+/obj/machinery/vending/wardrobe/bridgeofficer_wardrobe,
 /turf/open/floor/plasteel,
 /area/command/bridge)
 "cmh" = (
@@ -16292,12 +16308,14 @@
 /obj/structure/cable{
 	icon_state = "1-2"
 	},
+/obj/effect/landmark/navigate_destination/gateway,
 /turf/open/floor/plasteel/stairs,
 /area/command/gateway)
 "cCw" = (
 /obj/structure/disposalpipe/segment{
 	dir = 4
 	},
+/obj/effect/landmark/start/peacekeeper,
 /turf/open/floor/plasteel/dark,
 /area/security/office)
 "cCz" = (
@@ -17929,6 +17947,7 @@
 /obj/structure/cable/yellow{
 	icon_state = "4-8"
 	},
+/obj/effect/landmark/navigate_destination/minisat_access_ai,
 /turf/open/floor/plasteel/dark,
 /area/ai_monitored/turret_protected/aisat/hallway)
 "cPT" = (
@@ -18641,6 +18660,7 @@
 /obj/machinery/atmospherics/components/unary/vent_pump/on/layer3{
 	name = "air vent"
 	},
+/obj/effect/landmark/navigate_destination/cargo,
 /turf/open/floor/plasteel,
 /area/cargo/office)
 "cUJ" = (
@@ -20084,11 +20104,6 @@
 	},
 /obj/effect/turf_decal/tile/red{
 	dir = 4
-	},
-/obj/machinery/quantumpad{
-	map_pad_id = "station_diner";
-	map_pad_link_id = "diner";
-	mapped_quantum_pads = list("station_diner","diner")
 	},
 /turf/open/floor/plasteel/white/corner{
 	dir = 1
@@ -21867,7 +21882,7 @@
 	pixel_y = 28
 	},
 /turf/open/floor/carpet/royalblue,
-/area/command/meeting_room)
+/area/command/blueshieldoffice)
 "dti" = (
 /obj/machinery/light/small{
 	dir = 1;
@@ -23408,6 +23423,7 @@
 /turf/open/floor/plasteel,
 /area/security/brig)
 "dEL" = (
+/obj/effect/landmark/start/bridgeofficer,
 /turf/open/floor/plasteel{
 	dir = 4;
 	icon_state = "floor_plate"
@@ -25292,6 +25308,7 @@
 /obj/effect/turf_decal/stripes/line{
 	dir = 1
 	},
+/obj/effect/landmark/navigate_destination/tools,
 /turf/open/floor/plasteel{
 	icon_state = "floor_plate"
 	},
@@ -25824,6 +25841,7 @@
 /turf/open/floor/plasteel/dark,
 /area/hallway/secondary/service)
 "dYw" = (
+/obj/effect/landmark/start/bridgeofficer,
 /turf/open/floor/plasteel{
 	dir = 8;
 	icon_state = "floor_plate"
@@ -32313,8 +32331,11 @@
 	dir = 8;
 	name = "air vent"
 	},
-/turf/open/floor/plasteel/checker,
-/area/command/meeting_room)
+/turf/open/floor/wood{
+	icon_state = "wood_tile";
+	name = "tile"
+	},
+/area/command/blueshieldoffice)
 "eXk" = (
 /obj/structure/table/wood,
 /obj/item/reagent_containers/food/drinks/shaker,
@@ -33066,8 +33087,11 @@
 "fee" = (
 /obj/item/reagent_containers/food/snacks/benedict,
 /obj/structure/table/reinforced,
-/turf/open/floor/plasteel/checker,
-/area/command/meeting_room)
+/turf/open/floor/wood{
+	icon_state = "wood_tile";
+	name = "tile"
+	},
+/area/command/blueshieldoffice)
 "feu" = (
 /obj/effect/turf_decal/tile/red{
 	dir = 9
@@ -33966,6 +33990,7 @@
 /obj/effect/turf_decal/tile/yellow{
 	dir = 4
 	},
+/obj/effect/landmark/navigate_destination/engineering,
 /turf/open/floor/plasteel,
 /area/hallway/primary/fore)
 "flm" = (
@@ -34212,9 +34237,11 @@
 /obj/structure/cable{
 	icon_state = "4-8"
 	},
-/obj/structure/table,
-/turf/open/floor/plasteel/checker,
-/area/command/meeting_room)
+/turf/open/floor/wood{
+	icon_state = "wood_tile";
+	name = "tile"
+	},
+/area/command/blueshieldoffice)
 "fnI" = (
 /obj/effect/turf_decal/loading_area{
 	dir = 9;
@@ -34993,8 +35020,11 @@
 /area/maintenance/fore)
 "fuG" = (
 /obj/structure/table/reinforced,
-/turf/open/floor/plasteel/checker,
-/area/command/meeting_room)
+/turf/open/floor/wood{
+	icon_state = "wood_tile";
+	name = "tile"
+	},
+/area/command/blueshieldoffice)
 "fuM" = (
 /obj/effect/turf_decal/tile/blue{
 	dir = 6
@@ -35802,15 +35832,15 @@
 	},
 /area/command/bridge)
 "fBc" = (
-/obj/structure/chair/comfy/black{
-	dir = 1
-	},
 /obj/machinery/atmospherics/pipe/simple/scrubbers/hidden/layer1{
 	dir = 5;
 	name = "scrubbers pipe"
 	},
-/turf/open/floor/plasteel/checker,
-/area/command/meeting_room)
+/turf/open/floor/wood{
+	icon_state = "wood_tile";
+	name = "tile"
+	},
+/area/command/blueshieldoffice)
 "fBd" = (
 /obj/machinery/telecomms/bus/preset_two,
 /turf/open/floor/circuit/telecomms/mainframe,
@@ -38003,6 +38033,7 @@
 	icon_state = "steel_panel";
 	name = "steel pannel"
 	},
+/obj/machinery/suit_storage_unit/standard_unit,
 /turf/open/floor/plasteel/dark,
 /area/ai_monitored/command/storage/eva)
 "fSB" = (
@@ -39902,6 +39933,7 @@
 /obj/structure/disposalpipe/segment{
 	dir = 5
 	},
+/obj/effect/landmark/start/peacekeeper,
 /turf/open/floor/plasteel/dark,
 /area/security/office)
 "giN" = (
@@ -40178,7 +40210,7 @@
 	},
 /obj/effect/spawner/structure/window/reinforced,
 /turf/open/floor/plating,
-/area/command/meeting_room)
+/area/command/blueshieldoffice)
 "gkK" = (
 /obj/machinery/atmospherics/pipe/simple/yellow/visible/layer1{
 	dir = 6;
@@ -40227,6 +40259,7 @@
 	dir = 1;
 	sortType = 14
 	},
+/obj/effect/landmark/navigate_destination/research,
 /turf/open/floor/plasteel/white,
 /area/science)
 "glb" = (
@@ -40580,7 +40613,7 @@
 	icon_state = "wood_tile";
 	name = "tile"
 	},
-/area/command/meeting_room)
+/area/command/blueshieldoffice)
 "gnP" = (
 /obj/structure/table/reinforced,
 /obj/machinery/door/poddoor/shutters/preopen{
@@ -40898,6 +40931,7 @@
 /obj/structure/cable{
 	icon_state = "1-4"
 	},
+/obj/effect/landmark/start/peacekeeper,
 /turf/open/floor/plasteel/dark/corner{
 	dir = 8
 	},
@@ -42565,6 +42599,16 @@
 	icon_state = "plaswhite_traction"
 	},
 /area/medical/medbay/central)
+"gDS" = (
+/obj/effect/turf_decal/tile/red{
+	dir = 9
+	},
+/obj/effect/landmark/navigate_destination/sec,
+/turf/open/floor/plasteel/dark{
+	dir = 1;
+	icon_state = "darkfull_plate"
+	},
+/area/security/brig)
 "gDT" = (
 /obj/structure/cable{
 	icon_state = "1-2"
@@ -43766,6 +43810,7 @@
 /obj/structure/cable{
 	icon_state = "1-2"
 	},
+/obj/effect/landmark/start/peacekeeper,
 /turf/open/floor/plasteel/dark,
 /area/security/office)
 "gOq" = (
@@ -43892,6 +43937,16 @@
 /obj/machinery/atmospherics/pipe/simple/scrubbers/hidden,
 /turf/closed/wall/r_wall,
 /area/science/mixing)
+"gPz" = (
+/obj/machinery/atmospherics/pipe/simple/supply/hidden/layer3{
+	name = "air supply pipe"
+	},
+/obj/structure/cable{
+	icon_state = "1-2"
+	},
+/obj/effect/landmark/navigate_destination/teleporter,
+/turf/open/floor/plasteel,
+/area/command/teleporter)
 "gPA" = (
 /obj/machinery/light{
 	dir = 8;
@@ -44961,7 +45016,7 @@
 	name = "wood"
 	},
 /turf/open/floor/carpet/royalblue,
-/area/command/meeting_room)
+/area/command/blueshieldoffice)
 "gYi" = (
 /obj/structure/chair{
 	dir = 4
@@ -49118,6 +49173,13 @@
 /obj/structure/flora/ausbushes/ywflowers,
 /turf/open/floor/grass,
 /area/service/hydroponics/garden)
+"hEF" = (
+/obj/effect/landmark/start/blueshield,
+/turf/open/floor/wood{
+	icon_state = "wood_tile";
+	name = "tile"
+	},
+/area/command/blueshieldoffice)
 "hEN" = (
 /obj/machinery/atmospherics/components/binary/pump{
 	dir = 8
@@ -53190,6 +53252,14 @@
 	},
 /turf/open/floor/grass,
 /area/medical/medbay/central)
+"ilm" = (
+/obj/machinery/atmospherics/pipe/simple/supply/hidden/layer3{
+	name = "air supply pipe"
+	},
+/obj/structure/disposalpipe/segment,
+/obj/effect/landmark/navigate_destination/eva,
+/turf/open/floor/plasteel,
+/area/ai_monitored/command/storage/eva)
 "ilt" = (
 /obj/structure/chair/office/light,
 /obj/effect/landmark/start/research_director,
@@ -58522,6 +58592,7 @@
 	icon_state = "steel_panel";
 	name = "steel pannel"
 	},
+/obj/effect/landmark/navigate_destination/bar,
 /turf/open/floor/plasteel/dark{
 	icon_state = "darkfull_plate"
 	},
@@ -60827,15 +60898,17 @@
 /turf/open/floor/plasteel/dark,
 /area/hallway/secondary/entry)
 "jsJ" = (
-/obj/structure/table,
 /obj/structure/cable{
 	icon_state = "1-4"
 	},
 /obj/machinery/atmospherics/pipe/simple/scrubbers/hidden/layer1{
 	name = "scrubbers pipe"
 	},
-/turf/open/floor/plasteel/checker,
-/area/command/meeting_room)
+/turf/open/floor/wood{
+	icon_state = "wood_tile";
+	name = "tile"
+	},
+/area/command/blueshieldoffice)
 "jsO" = (
 /obj/structure/railing{
 	dir = 4
@@ -61360,6 +61433,7 @@
 	icon_state = "steel_panel";
 	name = "steel pannel"
 	},
+/obj/machinery/suit_storage_unit/standard_unit,
 /turf/open/floor/plasteel/dark,
 /area/ai_monitored/command/storage/eva)
 "jwL" = (
@@ -63841,6 +63915,7 @@
 /obj/structure/cable{
 	icon_state = "4-8"
 	},
+/obj/effect/landmark/navigate_destination/psychologist,
 /turf/open/floor/plasteel/white,
 /area/medical/psychology)
 "jOo" = (
@@ -64098,15 +64173,15 @@
 /turf/open/floor/plasteel/dark,
 /area/security/courtroom)
 "jQr" = (
-/obj/structure/chair/comfy/black{
-	dir = 1
-	},
 /obj/machinery/atmospherics/pipe/simple/scrubbers/hidden/layer1{
 	dir = 4;
 	name = "scrubbers pipe"
 	},
-/turf/open/floor/plasteel/checker,
-/area/command/meeting_room)
+/turf/open/floor/wood{
+	icon_state = "wood_tile";
+	name = "tile"
+	},
+/area/command/blueshieldoffice)
 "jQu" = (
 /obj/effect/turf_decal/loading_area{
 	dir = 8;
@@ -64704,7 +64779,7 @@
 	name = "wood"
 	},
 /turf/open/floor/carpet/royalblue,
-/area/command/meeting_room)
+/area/command/blueshieldoffice)
 "jUz" = (
 /obj/machinery/computer/camera_advanced/xenobio{
 	dir = 1
@@ -66863,6 +66938,7 @@
 /obj/machinery/atmospherics/pipe/simple/supply/hidden/layer3{
 	name = "air supply pipe"
 	},
+/obj/effect/landmark/navigate_destination/sec,
 /turf/open/floor/plasteel{
 	dir = 4;
 	icon_plating = "floor";
@@ -70712,7 +70788,7 @@
 	name = "wood"
 	},
 /turf/open/floor/carpet/royalblue,
-/area/command/meeting_room)
+/area/command/blueshieldoffice)
 "kQs" = (
 /obj/structure/lattice/catwalk,
 /obj/structure/railing{
@@ -71032,8 +71108,14 @@
 	},
 /area/hallway/primary/central)
 "kTk" = (
-/turf/open/floor/plasteel/checker,
-/area/command/meeting_room)
+/obj/structure/closet/secure_closet/blueshield,
+/obj/item/armorkit/blueshield,
+/obj/item/armorkit/blueshield/helmet,
+/turf/open/floor/wood{
+	icon_state = "wood_tile";
+	name = "tile"
+	},
+/area/command/blueshieldoffice)
 "kTo" = (
 /obj/structure/table/reinforced,
 /obj/item/shovel{
@@ -73535,8 +73617,12 @@
 	dir = 8;
 	name = "air supply pipe"
 	},
-/turf/open/floor/plasteel/checker,
-/area/command/meeting_room)
+/obj/effect/landmark/navigate_destination/blueshield,
+/turf/open/floor/wood{
+	icon_state = "wood_tile";
+	name = "tile"
+	},
+/area/command/blueshieldoffice)
 "lof" = (
 /obj/effect/turf_decal/loading_area{
 	dir = 4;
@@ -73905,7 +73991,7 @@
 	name = "wood"
 	},
 /turf/open/floor/carpet/royalblue,
-/area/command/meeting_room)
+/area/command/blueshieldoffice)
 "lqT" = (
 /obj/structure/cable{
 	icon_state = "1-2"
@@ -74342,7 +74428,7 @@
 	},
 /obj/effect/spawner/structure/window/reinforced,
 /turf/open/floor/plating,
-/area/command/meeting_room)
+/area/command/blueshieldoffice)
 "luu" = (
 /obj/effect/turf_decal/stripes/corner{
 	dir = 8
@@ -74853,8 +74939,11 @@
 /obj/machinery/atmospherics/pipe/simple/scrubbers/hidden/layer1{
 	name = "scrubbers pipe"
 	},
-/turf/open/floor/plasteel/checker,
-/area/command/meeting_room)
+/turf/open/floor/wood{
+	icon_state = "wood_tile";
+	name = "tile"
+	},
+/area/command/blueshieldoffice)
 "lzb" = (
 /obj/structure/chair/comfy/plywood,
 /obj/item/instrument/guitar,
@@ -76333,6 +76422,7 @@
 /obj/machinery/atmospherics/pipe/simple/supply/hidden/layer3{
 	name = "air supply pipe"
 	},
+/obj/effect/landmark/navigate_destination/janitor,
 /turf/open/floor/plasteel/dark,
 /area/service/janitor)
 "lKa" = (
@@ -77546,7 +77636,7 @@
 	icon_state = "1-2"
 	},
 /turf/closed/wall/r_wall,
-/area/command/meeting_room)
+/area/command/blueshieldoffice)
 "lSs" = (
 /obj/effect/turf_decal/stripes/line{
 	dir = 5
@@ -78270,6 +78360,7 @@
 /obj/structure/chair/office/light{
 	dir = 8
 	},
+/obj/effect/landmark/start/bridgeofficer,
 /turf/open/floor/plasteel,
 /area/command/bridge)
 "lXF" = (
@@ -78501,11 +78592,6 @@
 	},
 /area/commons/dorms)
 "lZt" = (
-/obj/machinery/quantumpad{
-	map_pad_id = "station";
-	map_pad_link_id = "xenoarch";
-	mapped_quantum_pads = list("station","xenoarch")
-	},
 /turf/open/floor/plasteel{
 	dir = 8;
 	icon_plating = "floor";
@@ -84475,7 +84561,7 @@
 	},
 /obj/effect/spawner/structure/window/reinforced,
 /turf/open/floor/plating,
-/area/command/meeting_room)
+/area/command/blueshieldoffice)
 "mUJ" = (
 /obj/structure/disposalpipe/segment,
 /obj/structure/cable{
@@ -85133,7 +85219,7 @@
 	},
 /obj/effect/spawner/structure/window/reinforced,
 /turf/open/floor/plating,
-/area/command/meeting_room)
+/area/command/blueshieldoffice)
 "mZf" = (
 /obj/effect/turf_decal/stripes/line{
 	dir = 6
@@ -86017,6 +86103,10 @@
 	},
 /turf/open/openspace,
 /area/ruin/unpowered/no_grav)
+"ngz" = (
+/obj/effect/landmark/navigate_destination/janitor,
+/turf/open/floor/plasteel,
+/area/service/janitor)
 "ngE" = (
 /obj/structure/disposalpipe/segment,
 /turf/closed/wall,
@@ -86834,6 +86924,7 @@
 /obj/structure/cable{
 	icon_state = "1-8"
 	},
+/obj/effect/landmark/start/peacekeeper,
 /turf/open/floor/plasteel/dark,
 /area/security/office)
 "nnA" = (
@@ -89161,6 +89252,7 @@
 	icon_state = "0-8"
 	},
 /obj/machinery/power/apc/auto_name/east,
+/obj/structure/closet/secure_closet/bridgesec,
 /turf/open/floor/plasteel,
 /area/command/bridge)
 "nFo" = (
@@ -93367,6 +93459,11 @@
 	icon_state = "floor_plate"
 	},
 /area/hallway/primary/fore)
+"ooE" = (
+/obj/effect/turf_decal/tile/blue,
+/obj/effect/landmark/navigate_destination/med,
+/turf/open/floor/plasteel/white,
+/area/medical/medbay/central)
 "ooH" = (
 /obj/effect/turf_decal/stripes/line{
 	dir = 8
@@ -96516,6 +96613,10 @@
 "oOf" = (
 /turf/open/floor/plasteel,
 /area/medical/medbay/central)
+"oOh" = (
+/obj/effect/landmark/start/detective,
+/turf/open/floor/wood,
+/area/security/detectives_office)
 "oOi" = (
 /obj/machinery/firealarm{
 	pixel_y = -28
@@ -97023,6 +97124,7 @@
 	dir = 9;
 	name = "scrubbers pipe"
 	},
+/obj/effect/landmark/navigate_destination/vault,
 /turf/open/floor/circuit,
 /area/ai_monitored/command/nuke_storage)
 "oSo" = (
@@ -100103,6 +100205,10 @@
 	icon_state = "floor_plate"
 	},
 /area/hallway/primary/fore)
+"prp" = (
+/obj/effect/landmark/navigate_destination/chapel,
+/turf/open/floor/carpet,
+/area/service/chapel/main)
 "prw" = (
 /obj/effect/turf_decal/stripes/corner{
 	dir = 4
@@ -101278,6 +101384,17 @@
 	},
 /turf/open/floor/plasteel,
 /area/hallway/primary/fore)
+"pAV" = (
+/obj/machinery/atmospherics/pipe/simple/scrubbers/hidden/layer1{
+	dir = 4;
+	name = "scrubbers pipe"
+	},
+/obj/structure/cable{
+	icon_state = "4-8"
+	},
+/obj/effect/landmark/navigate_destination/det,
+/turf/open/floor/carpet,
+/area/security/detectives_office)
 "pAW" = (
 /obj/machinery/light{
 	dir = 4;
@@ -102656,6 +102773,10 @@
 /obj/structure/flora/rock/pile,
 /turf/open/floor/grass,
 /area/ruin/unpowered/no_grav)
+"pNi" = (
+/obj/effect/landmark/start/peacekeeper,
+/turf/open/floor/plasteel/dark,
+/area/security/office)
 "pNv" = (
 /turf/open/floor/plasteel/dark{
 	icon_state = "darkfull_whole_alt"
@@ -106503,11 +106624,13 @@
 	icon_state = "siding_wood_line";
 	name = "wood"
 	},
+/obj/structure/bed,
+/obj/item/bedsheet/wiz,
 /turf/open/floor/wood{
 	icon_state = "wood_tile";
 	name = "tile"
 	},
-/area/command/meeting_room)
+/area/command/blueshieldoffice)
 "qtY" = (
 /obj/machinery/light_switch{
 	pixel_x = -24;
@@ -106840,6 +106963,7 @@
 	dir = 1
 	},
 /obj/effect/turf_decal/stripes/corner,
+/obj/effect/landmark/navigate_destination/tcomms,
 /turf/open/floor/plasteel/dark/telecomms,
 /area/tcommsat/server)
 "qwW" = (
@@ -107064,6 +107188,13 @@
 	icon_state = "floor_whole_alt"
 	},
 /area/hallway/secondary/entry)
+"qyv" = (
+/obj/effect/landmark/start/bridgeofficer,
+/obj/effect/landmark/navigate_destination/bridge,
+/turf/open/floor/plasteel{
+	icon_state = "floor_plate"
+	},
+/area/command/bridge)
 "qyA" = (
 /obj/machinery/atmospherics/pipe/simple/supply/hidden/layer3{
 	name = "air supply pipe"
@@ -117752,7 +117883,7 @@
 	pixel_x = -7
 	},
 /turf/open/floor/carpet/royalblue,
-/area/command/meeting_room)
+/area/command/blueshieldoffice)
 "sdd" = (
 /obj/structure/chair/office/light{
 	dir = 8
@@ -120729,6 +120860,20 @@
 /obj/effect/decal/cleanable/dirt,
 /turf/open/floor/plasteel/dark,
 /area/security/courtroom)
+"szG" = (
+/obj/effect/turf_decal/loading_area{
+	dir = 9;
+	icon_state = "steel_panel";
+	name = "steel pannel"
+	},
+/obj/structure/cable{
+	icon_state = "1-2"
+	},
+/obj/effect/landmark/navigate_destination/chemfactory,
+/turf/open/floor/plasteel/white{
+	icon_state = "plaswhite_traction"
+	},
+/area/medical/chemistry)
 "szM" = (
 /obj/structure/table,
 /obj/item/stack/sheet/metal/fifty,
@@ -121145,6 +121290,7 @@
 /obj/structure/cable{
 	icon_state = "1-2"
 	},
+/obj/effect/landmark/start/peacekeeper,
 /turf/open/floor/plasteel/dark,
 /area/security/office)
 "sDE" = (
@@ -122538,8 +122684,11 @@
 	dir = 8;
 	name = "air scrubber"
 	},
-/turf/open/floor/plasteel/checker,
-/area/command/meeting_room)
+/turf/open/floor/wood{
+	icon_state = "wood_tile";
+	name = "tile"
+	},
+/area/command/blueshieldoffice)
 "sNl" = (
 /obj/structure/stairs{
 	dir = 1
@@ -123250,7 +123399,7 @@
 	name = "wood"
 	},
 /turf/open/floor/carpet/royalblue,
-/area/command/meeting_room)
+/area/command/blueshieldoffice)
 "sUq" = (
 /obj/machinery/meter,
 /obj/machinery/atmospherics/pipe/simple/scrubbers/visible{
@@ -124246,6 +124395,7 @@
 /area/service/library)
 "taV" = (
 /obj/effect/landmark/nuclear_waste_spawner,
+/obj/effect/landmark/navigate_destination/atmos,
 /turf/open/floor/plasteel,
 /area/engineering/atmos)
 "tbg" = (
@@ -124393,8 +124543,11 @@
 	dir = 10;
 	name = "scrubbers pipe"
 	},
-/turf/open/floor/plasteel/checker,
-/area/command/meeting_room)
+/turf/open/floor/wood{
+	icon_state = "wood_tile";
+	name = "tile"
+	},
+/area/command/blueshieldoffice)
 "tbJ" = (
 /obj/machinery/atmospherics/pipe/simple/green/visible,
 /obj/machinery/atmospherics/pipe/simple/purple/visible{
@@ -128338,6 +128491,7 @@
 /obj/structure/disposalpipe/segment{
 	dir = 9
 	},
+/obj/effect/landmark/navigate_destination/bar,
 /turf/open/floor/wood{
 	icon_state = "wood_parquet";
 	name = "parquet"
@@ -129636,6 +129790,7 @@
 /obj/structure/cable{
 	icon_state = "1-2"
 	},
+/obj/effect/landmark/start/peacekeeper,
 /turf/open/floor/plasteel/dark,
 /area/security/office)
 "tPB" = (
@@ -133735,7 +133890,7 @@
 /area/engineering/storage/tech)
 "uwQ" = (
 /turf/closed/wall/r_wall,
-/area/command/meeting_room)
+/area/command/blueshieldoffice)
 "uxe" = (
 /obj/structure/sink/kitchen{
 	pixel_y = 28
@@ -134320,6 +134475,7 @@
 /obj/structure/chair/office/light{
 	dir = 4
 	},
+/obj/effect/landmark/start/bridgeofficer,
 /turf/open/floor/plasteel,
 /area/command/bridge)
 "uCQ" = (
@@ -134584,6 +134740,7 @@
 	},
 /area/maintenance/starboard)
 "uEX" = (
+/obj/effect/landmark/start/bridgeofficer,
 /turf/open/floor/plasteel{
 	icon_state = "floor_plate"
 	},
@@ -134903,6 +135060,7 @@
 /obj/structure/cable{
 	icon_state = "4-8"
 	},
+/obj/effect/landmark/start/peacekeeper,
 /turf/open/floor/plasteel/dark/corner,
 /area/security/office)
 "uIo" = (
@@ -135015,28 +135173,6 @@
 	},
 /turf/open/floor/plating,
 /area/maintenance/fore)
-"uJs" = (
-/obj/structure/closet/secure_closet/freezer{
-	name = "fridge"
-	},
-/obj/item/storage/box/donkpockets{
-	pixel_x = 3;
-	pixel_y = 3
-	},
-/obj/item/storage/box/donkpockets,
-/obj/item/reagent_containers/food/snacks/burger/baconburger,
-/obj/item/reagent_containers/food/snacks/burger/baconburger,
-/obj/item/reagent_containers/food/snacks/candy,
-/obj/item/reagent_containers/food/snacks/candy,
-/obj/item/reagent_containers/food/snacks/candy,
-/obj/item/reagent_containers/food/snacks/cakeslice/lime,
-/obj/item/reagent_containers/food/snacks/burrito,
-/obj/machinery/light{
-	dir = 4;
-	pixel_x = 7
-	},
-/turf/open/floor/plasteel/checker,
-/area/command/meeting_room)
 "uJu" = (
 /obj/effect/turf_decal/tile/neutral{
 	dir = 8
@@ -135161,6 +135297,7 @@
 	icon_state = "steel_panel";
 	name = "steel pannel"
 	},
+/obj/machinery/suit_storage_unit/standard_unit,
 /turf/open/floor/plasteel/dark,
 /area/ai_monitored/command/storage/eva)
 "uKy" = (
@@ -141202,10 +141339,6 @@
 /turf/open/floor/plating,
 /area/maintenance/department/electrical)
 "vFK" = (
-/obj/machinery/door/airlock/command/glass{
-	dir = 8;
-	name = "Break Room"
-	},
 /obj/machinery/atmospherics/pipe/simple/scrubbers/hidden/layer1{
 	dir = 4;
 	name = "scrubbers pipe"
@@ -141220,10 +141353,14 @@
 /obj/machinery/door/firedoor{
 	dir = 8
 	},
+/obj/machinery/door/airlock/command/glass{
+	name = "Blueshield";
+	req_access_txt = "72"
+	},
 /turf/open/floor/plasteel/dark{
 	icon_state = "darkfull_whole_alt"
 	},
-/area/command/meeting_room)
+/area/command/blueshieldoffice)
 "vFR" = (
 /obj/effect/turf_decal/tile/red{
 	dir = 5
@@ -144108,6 +144245,7 @@
 	dir = 8;
 	pixel_x = 24
 	},
+/obj/machinery/suit_storage_unit/standard_unit,
 /turf/open/floor/plasteel/dark,
 /area/ai_monitored/command/storage/eva)
 "wbt" = (
@@ -146271,6 +146409,12 @@
 	icon_state = "floor_trim"
 	},
 /area/cargo/warehouse)
+"wqo" = (
+/turf/open/floor/wood{
+	icon_state = "wood_tile";
+	name = "tile"
+	},
+/area/command/blueshieldoffice)
 "wqr" = (
 /obj/structure/sign/poster/random{
 	pixel_y = 32
@@ -149262,6 +149406,10 @@
 	},
 /turf/open/floor/plasteel,
 /area/hallway/primary/central)
+"wNy" = (
+/obj/effect/landmark/navigate_destination/techstorage,
+/turf/open/floor/plasteel/dark,
+/area/engineering/storage/tech)
 "wNz" = (
 /obj/effect/turf_decal/loading_area{
 	dir = 8;
@@ -152939,7 +153087,7 @@
 	},
 /obj/effect/spawner/structure/window/reinforced,
 /turf/open/floor/plating,
-/area/command/meeting_room)
+/area/command/blueshieldoffice)
 "xqs" = (
 /obj/effect/turf_decal/stripes/corner,
 /obj/machinery/atmospherics/pipe/manifold/scrubbers/hidden/layer1{
@@ -153110,6 +153258,13 @@
 	},
 /turf/open/floor/plating,
 /area/medical/psychology)
+"xrN" = (
+/obj/machinery/vending/wardrobe/blueshield_wardrobe,
+/turf/open/floor/wood{
+	icon_state = "wood_tile";
+	name = "tile"
+	},
+/area/command/blueshieldoffice)
 "xrO" = (
 /obj/structure/chair/comfy/black,
 /turf/open/floor/plasteel,
@@ -155492,8 +155647,11 @@
 /obj/structure/cable{
 	icon_state = "4-8"
 	},
-/turf/open/floor/plasteel/checker,
-/area/command/meeting_room)
+/turf/open/floor/wood{
+	icon_state = "wood_tile";
+	name = "tile"
+	},
+/area/command/blueshieldoffice)
 "xKA" = (
 /obj/effect/turf_decal/loading_area{
 	dir = 10;
@@ -156310,8 +156468,11 @@
 	dir = 8;
 	pixel_x = 13
 	},
-/turf/open/floor/plasteel/checker,
-/area/command/meeting_room)
+/turf/open/floor/wood{
+	icon_state = "wood_tile";
+	name = "tile"
+	},
+/area/command/blueshieldoffice)
 "xRh" = (
 /obj/structure/curtain,
 /obj/effect/turf_decal/tile/blue{
@@ -158975,8 +159136,11 @@
 	dir = 4;
 	pixel_x = 7
 	},
-/turf/open/floor/plasteel/checker,
-/area/command/meeting_room)
+/turf/open/floor/wood{
+	icon_state = "wood_tile";
+	name = "tile"
+	},
+/area/command/blueshieldoffice)
 "yjK" = (
 /obj/effect/spawner/structure/window/reinforced,
 /obj/structure/grille/broken,
@@ -188976,7 +189140,7 @@ wrO
 iHK
 uRY
 see
-ssw
+prp
 jOu
 smR
 ssw
@@ -189458,7 +189622,7 @@ oLY
 tJC
 voj
 fNu
-lNR
+pNi
 ajg
 fvU
 pqS
@@ -191865,7 +192029,7 @@ sNX
 nqk
 nGI
 nEa
-sZk
+szG
 sZk
 sZk
 lhe
@@ -192318,7 +192482,7 @@ tKP
 odf
 qiv
 cYj
-fzh
+ngz
 sYl
 fzh
 lmT
@@ -193663,7 +193827,7 @@ xSq
 cbz
 hsc
 mzY
-cID
+ooE
 uvG
 pkP
 vfx
@@ -194644,7 +194808,7 @@ aEh
 sJB
 jvd
 saP
-saP
+wNy
 hTX
 uSr
 evW
@@ -197176,7 +197340,7 @@ rpi
 cWZ
 gga
 fvJ
-fvJ
+bDT
 rEq
 iJJ
 fvU
@@ -205206,7 +205370,7 @@ xsK
 fKb
 sYH
 vrv
-mIX
+gPz
 mIX
 tDM
 xvR
@@ -258851,7 +259015,7 @@ frH
 odp
 odp
 odp
-dHK
+gDS
 pZQ
 pZQ
 oKU
@@ -259184,7 +259348,7 @@ hRN
 tsq
 bqA
 lHq
-uEX
+qyv
 mJP
 nai
 aMq
@@ -264754,10 +264918,10 @@ eKA
 anj
 hUu
 bXg
-bXg
+oOh
 jHZ
 nma
-xVd
+pAV
 xiz
 vsU
 oYy
@@ -265878,11 +266042,11 @@ qPo
 uwQ
 jUw
 sdb
-qtO
+cfM
 gnO
-qtO
-qtO
-qtO
+cfM
+cfM
+cfM
 qtO
 uwQ
 gMu
@@ -266135,7 +266299,7 @@ qec
 uwQ
 dtd
 gYh
-kTk
+wqo
 tbI
 lyZ
 jsJ
@@ -266392,12 +266556,12 @@ nJW
 uwQ
 kQr
 gYh
-kTk
+hEF
 lnW
 bgf
 fnH
 jQr
-kTk
+xrN
 uwQ
 ilc
 drT
@@ -266649,12 +266813,12 @@ dnU
 uwQ
 kQr
 gYh
-kTk
+wqo
 eXg
-kTk
-bkX
+wqo
+fnH
 sNj
-kTk
+wqo
 uwQ
 mkj
 drT
@@ -266911,7 +267075,7 @@ yjI
 fee
 xKz
 fuG
-uJs
+wqo
 uwQ
 ilc
 pKY
@@ -269460,7 +269624,7 @@ cWX
 wxl
 cPy
 jMz
-jMz
+ilm
 kVF
 nIl
 gfG
