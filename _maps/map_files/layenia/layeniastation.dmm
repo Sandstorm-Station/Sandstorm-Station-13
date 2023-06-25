@@ -9985,6 +9985,23 @@
 	icon_state = "darkfull_whole_alt"
 	},
 /area/service/kitchen)
+"bBP" = (
+/obj/structure/table/reinforced,
+/obj/machinery/door/firedoor,
+/obj/item/trash/plate,
+/obj/item/reagent_containers/food/snacks/burger/cumburger{
+	pixel_x = -6
+	},
+/obj/item/reagent_containers/food/snacks/burger/cumburger{
+	pixel_x = 7
+	},
+/obj/item/reagent_containers/food/snacks/burger/cumburger{
+	pixel_y = 7
+	},
+/turf/open/floor/plasteel/dark{
+	icon_state = "darkfull_whole_alt"
+	},
+/area/service/kitchen)
 "bBU" = (
 /obj/structure/cable{
 	icon_state = "4-8"
@@ -82864,6 +82881,7 @@
 	icon_state = "siding_wood_corner";
 	name = "wood corner"
 	},
+/obj/structure/reagent_dispensers/keg/femcum,
 /turf/open/floor/wood{
 	icon_state = "wood_parquet";
 	name = "parquet"
@@ -94558,6 +94576,7 @@
 	icon_state = "siding_wood_line";
 	name = "wood"
 	},
+/obj/structure/reagent_dispensers/keg/semen,
 /turf/open/floor/wood{
 	icon_state = "wood_parquet";
 	name = "parquet"
@@ -190645,7 +190664,7 @@ ulq
 rbr
 kSY
 qbL
-rov
+bBP
 byv
 bZf
 ajO
