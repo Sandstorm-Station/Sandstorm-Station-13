@@ -24747,10 +24747,6 @@
 /obj/effect/turf_decal/tile/green{
 	dir = 8
 	},
-/obj/machinery/atmospherics/pipe/simple/orange/hidden,
-/obj/structure/cable{
-	icon_state = "2-4"
-	},
 /obj/machinery/atmospherics/pipe/simple/cyan/hidden{
 	dir = 4
 	},
@@ -25109,8 +25105,8 @@
 	c_tag = "Bridge - Starboard Quarter";
 	dir = 1
 	},
-/obj/machinery/atmospherics/pipe/manifold/cyan/hidden{
-	dir = 1
+/obj/machinery/atmospherics/pipe/simple/cyan/hidden{
+	dir = 4
 	},
 /turf/open/floor/plasteel,
 /area/command/bridge)
@@ -37665,6 +37661,9 @@
 /obj/effect/turf_decal/stripes/line{
 	dir = 1
 	},
+/obj/structure/cable{
+	icon_state = "1-2"
+	},
 /turf/open/floor/plasteel,
 /area/science/xenobiology)
 "bOH" = (
@@ -37752,6 +37751,7 @@
 /area/science/explab)
 "bOP" = (
 /obj/machinery/shieldwallgen/xenobiologyaccess,
+/obj/structure/cable,
 /turf/open/floor/plating,
 /area/science/xenobiology)
 "bOQ" = (
@@ -46820,6 +46820,9 @@
 /obj/effect/turf_decal/tile/green,
 /obj/structure/cable{
 	icon_state = "4-8"
+	},
+/obj/structure/cable{
+	icon_state = "2-8"
 	},
 /turf/open/floor/plasteel/dark,
 /area/science/xenobiology)
@@ -59585,6 +59588,9 @@
 /obj/machinery/atmospherics/pipe/simple/orange/hidden{
 	dir = 8
 	},
+/obj/structure/cable{
+	icon_state = "2-4"
+	},
 /turf/open/floor/plasteel/dark,
 /area/science/xenobiology)
 "cKA" = (
@@ -62850,6 +62856,13 @@
 	dir = 4
 	},
 /obj/effect/turf_decal/tile/red,
+/obj/machinery/light{
+	dir = 4;
+	light_color = "#c1caff"
+	},
+/obj/machinery/atmospherics/pipe/simple/cyan/hidden{
+	dir = 9
+	},
 /turf/open/floor/plasteel,
 /area/security/brig)
 "eix" = (
@@ -62930,8 +62943,8 @@
 /turf/open/floor/plasteel/dark,
 /area/command/bridge)
 "ewi" = (
-/obj/structure/lattice,
-/turf/closed/wall/r_wall,
+/obj/effect/landmark/start/blueshield,
+/turf/open/floor/carpet/green,
 /area/command/blueshieldoffice)
 "ewS" = (
 /obj/effect/turf_decal/stripes/end{
@@ -63456,14 +63469,14 @@
 /turf/closed/wall/r_wall,
 /area/security/prison/cells)
 "fIU" = (
-/obj/machinery/atmospherics/components/unary/vent_scrubber/on{
-	dir = 8
-	},
 /obj/effect/turf_decal/tile/red{
 	dir = 4
 	},
 /obj/effect/turf_decal/tile/red{
 	dir = 1
+	},
+/obj/machinery/atmospherics/pipe/simple/orange/hidden{
+	dir = 8
 	},
 /turf/open/floor/plasteel,
 /area/security/brig)
@@ -63559,9 +63572,12 @@
 /turf/open/floor/plasteel,
 /area/security/prison/cells)
 "fQR" = (
-/obj/machinery/atmospherics/pipe/simple/orange/hidden,
-/turf/open/floor/plasteel,
-/area/command/bridge)
+/obj/machinery/airalarm/directional/west,
+/obj/machinery/light{
+	dir = 8
+	},
+/turf/open/floor/carpet/green,
+/area/command/blueshieldoffice)
 "fQS" = (
 /obj/machinery/turnstile{
 	dir = 8;
@@ -64427,8 +64443,11 @@
 /turf/open/floor/plasteel/dark,
 /area/tcommsat/computer)
 "hYe" = (
-/obj/machinery/atmospherics/pipe/simple/cyan/hidden,
-/turf/closed/wall/r_wall,
+/obj/structure/table/wood,
+/obj/item/flashlight/lamp,
+/obj/machinery/atmospherics/components/unary/vent_scrubber/on,
+/obj/machinery/light_switch/directional/south,
+/turf/open/floor/carpet/green,
 /area/command/blueshieldoffice)
 "hZl" = (
 /obj/effect/turf_decal/tile/neutral{
@@ -65611,14 +65630,17 @@
 /turf/closed/wall,
 /area/security/prison/cells)
 "lia" = (
-/obj/machinery/light{
-	dir = 1
-	},
 /obj/effect/turf_decal/tile/red{
 	dir = 4
 	},
 /obj/effect/turf_decal/tile/red{
 	dir = 1
+	},
+/obj/structure/cable{
+	icon_state = "1-2"
+	},
+/obj/machinery/atmospherics/components/unary/vent_scrubber/on{
+	dir = 8
 	},
 /turf/open/floor/plasteel,
 /area/security/brig)
@@ -66095,6 +66117,14 @@
 	},
 /turf/open/floor/plating/airless,
 /area/security/brig)
+"moD" = (
+/obj/machinery/power/apc/auto_name/south,
+/obj/structure/cable{
+	icon_state = "0-8"
+	},
+/obj/machinery/atmospherics/components/unary/vent_pump/on,
+/turf/open/floor/carpet/green,
+/area/command/blueshieldoffice)
 "mpQ" = (
 /obj/machinery/conveyor{
 	dir = 4;
@@ -67194,6 +67224,7 @@
 	dir = 1
 	},
 /obj/effect/turf_decal/tile/red,
+/obj/machinery/atmospherics/pipe/simple/cyan/hidden,
 /turf/open/floor/plasteel,
 /area/security/brig)
 "oSI" = (
@@ -67378,14 +67409,20 @@
 /obj/structure/cable{
 	icon_state = "4-8"
 	},
+/obj/structure/cable{
+	icon_state = "1-8"
+	},
+/obj/machinery/atmospherics/pipe/simple/cyan/hidden{
+	dir = 4
+	},
 /turf/open/floor/plasteel,
 /area/security/brig)
 "pwY" = (
 /obj/structure/cable{
 	icon_state = "4-8"
 	},
-/obj/machinery/atmospherics/pipe/simple/cyan/hidden{
-	dir = 10
+/obj/machinery/atmospherics/pipe/manifold/cyan/hidden{
+	dir = 1
 	},
 /turf/open/floor/plasteel,
 /area/security/brig)
@@ -68043,15 +68080,10 @@
 /turf/open/floor/plasteel,
 /area/engineering/atmos)
 "qZm" = (
-/obj/structure/bed,
-/obj/item/bedsheet/hop,
-/obj/machinery/power/apc{
-	name = "Customs APC";
-	pixel_y = -24
-	},
 /obj/structure/cable{
-	icon_state = "0-8"
+	icon_state = "2-4"
 	},
+/obj/effect/landmark/navigate_destination/blueshield,
 /turf/open/floor/carpet/green,
 /area/command/blueshieldoffice)
 "qZA" = (
@@ -68447,6 +68479,7 @@
 /obj/effect/turf_decal/tile/red{
 	dir = 1
 	},
+/obj/machinery/atmospherics/pipe/manifold/orange/hidden,
 /turf/open/floor/plasteel,
 /area/security/brig)
 "spo" = (
@@ -69817,18 +69850,12 @@
 /turf/open/floor/carpet/red,
 /area/maintenance/department/eva)
 "vDh" = (
-/obj/machinery/atmospherics/components/unary/vent_pump/on{
-	dir = 1
-	},
 /obj/machinery/light{
 	dir = 4;
 	light_color = "#e8eaff"
 	},
-/obj/machinery/airalarm{
-	pixel_y = 24
-	},
-/turf/open/floor/carpet/green,
-/area/command/blueshieldoffice)
+/turf/open/space/basic,
+/area/space)
 "vDu" = (
 /obj/machinery/firealarm{
 	dir = 1;
@@ -70754,12 +70781,15 @@
 /turf/open/floor/plasteel,
 /area/security/brig)
 "xPq" = (
-/obj/structure/cable{
-	icon_state = "1-4"
+/obj/machinery/door/airlock/command{
+	name = "Blueshield's Quarters";
+	req_access_txt = "72"
 	},
-/obj/effect/landmark/start/blueshield,
-/turf/open/floor/carpet/green,
-/area/command/blueshieldoffice)
+/obj/structure/cable{
+	icon_state = "1-2"
+	},
+/turf/open/floor/plasteel,
+/area/security/brig)
 "xQE" = (
 /obj/machinery/atmospherics/components/unary/vent_scrubber/on{
 	dir = 1
@@ -70875,25 +70905,16 @@
 /turf/open/floor/plating,
 /area/commons/fitness/cogpool)
 "ycE" = (
-/obj/machinery/atmospherics/components/unary/vent_scrubber/on{
-	dir = 1
-	},
-/obj/structure/cable{
-	icon_state = "1-2"
-	},
-/obj/effect/landmark/navigate_destination/blueshield,
+/obj/structure/bed,
+/obj/item/bedsheet/blue,
 /turf/open/floor/carpet/green,
 /area/command/blueshieldoffice)
 "ydl" = (
-/obj/machinery/atmospherics/pipe/simple/orange/hidden,
-/obj/machinery/door/airlock/command{
-	name = "Blueshield's Quarters";
-	req_access_txt = "72"
+/obj/machinery/light{
+	dir = 4;
+	light_color = "#e8eaff"
 	},
-/obj/structure/cable{
-	icon_state = "1-2"
-	},
-/turf/open/floor/plasteel,
+/turf/open/floor/carpet/green,
 /area/command/blueshieldoffice)
 "yev" = (
 /obj/machinery/airalarm{
@@ -90905,10 +90926,10 @@ aNi
 aSW
 aHM
 gYa
-oYl
-mqr
-tFO
-oYl
+aGq
+aaa
+aaa
+aaa
 aaa
 aaa
 aaU
@@ -91159,13 +91180,13 @@ aHM
 aHM
 sZK
 aHM
-aTf
-fQR
+aSW
+aHM
 bjJ
-ydl
-ycE
-xPq
-ewi
+aGq
+aaa
+aaa
+aaa
 aaa
 aaa
 aaU
@@ -91419,10 +91440,10 @@ aSa
 bbe
 bnG
 bkA
-hYe
+aGq
 vDh
-qZm
-oYl
+aaa
+aaa
 aaa
 aaa
 aaU
@@ -95999,10 +96020,10 @@ aaa
 aaa
 aaa
 aaa
-aaa
-aaa
-aaa
-aaa
+oYl
+oYl
+oYl
+oYl
 anU
 fIU
 pwY
@@ -96256,13 +96277,13 @@ aaa
 aaa
 aaa
 aaa
-aaa
-aaa
-aaa
-aaa
-anU
+oYl
+tFO
+fQR
+hYe
+tnb
 soh
-pwc
+aeM
 anw
 anU
 agD
@@ -96513,11 +96534,11 @@ aaa
 aaa
 aaa
 aaa
-aaa
-aaa
-aaa
-aaa
-anU
+oYl
+mqr
+ewi
+qZm
+xPq
 lia
 pwc
 anw
@@ -96770,11 +96791,11 @@ aaa
 aaa
 aaa
 aaa
-aaa
-aaa
-aaa
-aaa
-anU
+oYl
+ycE
+ydl
+moD
+tXX
 oSv
 eig
 vSZ
@@ -97027,10 +97048,10 @@ aaa
 aaa
 aaa
 aaa
-aaa
-aaa
-aaa
-aaa
+oYl
+oYl
+oYl
+oYl
 anU
 anU
 anU
