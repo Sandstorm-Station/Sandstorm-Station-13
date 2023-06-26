@@ -15,6 +15,7 @@
 	barefootstep = FOOTSTEP_SAND
 	clawfootstep = FOOTSTEP_SAND
 	heavyfootstep = FOOTSTEP_GENERIC_HEAVY
+	floor_variance = 0
 
 /turf/closed/mineral/ash_rock/layenia
 	name = "crimson rock"
@@ -39,3 +40,4 @@
 	barefootstep = FOOTSTEP_SAND
 	clawfootstep = FOOTSTEP_SAND
 	heavyfootstep = FOOTSTEP_GENERIC_HEAVY
+	floor_variance = 0
