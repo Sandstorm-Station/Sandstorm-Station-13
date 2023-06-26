@@ -3,6 +3,7 @@
 	name = "crimson sand"
 	icon = 'modular_splurt/icons/turf/layeniasand.dmi'
 	baseturfs = /turf/open/floor/plating/layeniaredder
+	heat_capacity = INFINITY
 	desc = "Looks cold."
 	icon_state = "mapping"
 	ore_type = /obj/item/stack/ore/glass/basalt
@@ -16,6 +17,15 @@
 	clawfootstep = FOOTSTEP_SAND
 	heavyfootstep = FOOTSTEP_GENERIC_HEAVY
 
+/turf/open/floor/grass/layeniasand/break_tile()
+	return
+
+/turf/open/floor/grass/layeniasand/burn_tile()
+	return
+
+/turf/open/floor/grass/layeniasand/acid_act(acidpwr, acid_volume)
+	acidpwr = min(acidpwr, 50)
+	. = ..()
 
 /turf/closed/mineral/ash_rock/layenia
 	name = "crimson rock"
@@ -35,9 +45,19 @@
 	desc = "crimson rocks surrond you."
 	icon = 'modular_splurt/icons/turf/layenia.dmi'
 	icon_state = "layenia"
+	heat_capacity = INFINITY
 	slowdown = 0
 	footstep = FOOTSTEP_SAND
 	barefootstep = FOOTSTEP_SAND
 	clawfootstep = FOOTSTEP_SAND
 	heavyfootstep = FOOTSTEP_GENERIC_HEAVY
 
+/turf/open/floor/plating/layeniaredder/break_tile()
+	return
+
+/turf/open/floor/plating/layeniaredder/burn_tile()
+	return
+
+/turf/open/floor/plating/layeniaredder/acid_act(acidpwr, acid_volume)
+	acidpwr = min(acidpwr, 50)
+	. = ..()
