@@ -53,6 +53,7 @@
 	icon_state = "prova"
 	lefthand_file = 'modular_splurt/icons/mob/inhands/weapons/melee_lefthand.dmi'
 	righthand_file = 'modular_splurt/icons/mob/inhands/weapons/melee_righthand.dmi'
+	item_state = "prova"
 
 /obj/item/melee/baton/prova/Initialize(mapload)
 	. = ..()
