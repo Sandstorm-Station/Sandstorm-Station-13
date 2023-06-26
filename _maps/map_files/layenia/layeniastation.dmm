@@ -10655,6 +10655,7 @@
 /obj/structure/cable{
 	icon_state = "1-2"
 	},
+/obj/structure/table,
 /turf/open/floor/plasteel/dark,
 /area/command/bridge)
 "bFO" = (
@@ -100309,6 +100310,7 @@
 /obj/structure/window/reinforced{
 	dir = 8
 	},
+/obj/structure/table,
 /turf/open/floor/plasteel/dark,
 /area/command/bridge)
 "plR" = (
@@ -109363,6 +109365,7 @@
 /obj/structure/window/reinforced{
 	dir = 4
 	},
+/obj/structure/table,
 /turf/open/floor/plasteel/dark,
 /area/command/bridge)
 "qHT" = (
@@ -115707,6 +115710,9 @@
 /obj/effect/turf_decal/tile/blue{
 	dir = 8
 	},
+/obj/structure/railing/corner{
+	dir = 8
+	},
 /turf/open/floor/plasteel/dark/side{
 	dir = 4
 	},
@@ -121038,6 +121044,17 @@
 /obj/structure/closet/l3closet/scientist,
 /turf/open/floor/plasteel,
 /area/science/xenobiology)
+"stH" = (
+/obj/effect/turf_decal/tile/blue{
+	dir = 8
+	},
+/obj/structure/railing/corner{
+	dir = 1
+	},
+/turf/open/floor/plasteel/dark/side{
+	dir = 4
+	},
+/area/command/bridge)
 "stL" = (
 /obj/machinery/atmospherics/pipe/simple/supply/hidden/layer3{
 	name = "air supply pipe"
@@ -266377,7 +266394,7 @@ qJh
 ixO
 qJh
 qJh
-juO
+stH
 juO
 stQ
 juO
