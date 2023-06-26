@@ -6197,6 +6197,7 @@
 	dir = 1;
 	pixel_y = -22
 	},
+/obj/structure/railing/corner,
 /turf/open/floor/plasteel{
 	icon_state = "floor_plate"
 	},
@@ -58249,6 +58250,21 @@
 	icon_state = "darkfull_trim"
 	},
 /area/security/brig)
+"iVd" = (
+/obj/effect/turf_decal/tile/neutral{
+	dir = 6
+	},
+/obj/effect/turf_decal/loading_area{
+	icon_state = "drain";
+	name = "drain"
+	},
+/obj/structure/railing/corner{
+	dir = 8
+	},
+/turf/open/floor/plasteel{
+	icon_state = "floor_plate"
+	},
+/area/hallway/primary/fore)
 "iVj" = (
 /obj/structure/toilet{
 	dir = 4
@@ -101305,6 +101321,9 @@
 /obj/structure/extinguisher_cabinet{
 	pixel_y = 30
 	},
+/obj/structure/railing/corner{
+	dir = 4
+	},
 /turf/open/floor/plasteel{
 	dir = 1;
 	icon_state = "floor_plate"
@@ -119689,6 +119708,23 @@
 	name = "dark medium"
 	},
 /area/engineering/atmos)
+"sju" = (
+/obj/effect/turf_decal/tile/neutral{
+	dir = 10
+	},
+/obj/effect/turf_decal/loading_area{
+	dir = 8;
+	icon_state = "drain";
+	name = "drain"
+	},
+/obj/structure/railing/corner{
+	dir = 8
+	},
+/turf/open/floor/plasteel{
+	dir = 8;
+	icon_state = "floor_plate"
+	},
+/area/hallway/primary/fore)
 "sjN" = (
 /obj/effect/turf_decal/tile/brown{
 	dir = 9
@@ -138352,6 +138388,9 @@
 	dir = 4;
 	icon_state = "drain_corner";
 	name = "drain"
+	},
+/obj/structure/railing/corner{
+	dir = 1
 	},
 /turf/open/floor/plasteel,
 /area/hallway/primary/fore)
@@ -256067,7 +256106,7 @@ eFA
 eFA
 pua
 aVn
-iDe
+iVd
 fpF
 gqx
 eRs
@@ -256833,7 +256872,7 @@ qZr
 cRg
 qZr
 qZr
-qZr
+sju
 vnQ
 vnQ
 uZI
