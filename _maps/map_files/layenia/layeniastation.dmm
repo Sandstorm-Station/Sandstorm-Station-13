@@ -1529,6 +1529,24 @@
 	},
 /turf/open/floor/plasteel,
 /area/hallway/primary/starboard)
+"amy" = (
+/obj/machinery/atmospherics/pipe/simple/scrubbers/hidden/layer1{
+	dir = 4;
+	name = "scrubbers pipe"
+	},
+/obj/machinery/atmospherics/pipe/simple/supply/hidden/layer3{
+	dir = 8;
+	name = "air supply pipe"
+	},
+/obj/structure/cable{
+	icon_state = "4-8"
+	},
+/obj/structure/disposalpipe/segment{
+	dir = 4
+	},
+/obj/effect/landmark/start/stowaway,
+/turf/open/floor/plating,
+/area/maintenance/port)
 "amA" = (
 /obj/machinery/vending/snack/random,
 /obj/machinery/light{
@@ -15785,6 +15803,21 @@
 	icon_state = "floor_whole_alt"
 	},
 /area/service/theater)
+"cwz" = (
+/obj/machinery/atmospherics/pipe/simple/supply/hidden/layer3{
+	dir = 8;
+	name = "air supply pipe"
+	},
+/obj/machinery/atmospherics/pipe/simple/scrubbers/hidden/layer1{
+	dir = 4;
+	name = "scrubbers pipe"
+	},
+/obj/structure/cable{
+	icon_state = "4-8"
+	},
+/obj/effect/landmark/start/stowaway,
+/turf/open/floor/plating,
+/area/maintenance/port)
 "cwN" = (
 /obj/effect/turf_decal/stripes/line,
 /obj/structure/disposalpipe/segment{
@@ -21624,6 +21657,10 @@
 	},
 /turf/open/floor/plasteel,
 /area/science/circuit)
+"dqv" = (
+/obj/effect/landmark/start/stowaway,
+/turf/open/floor/plating,
+/area/maintenance/fore/secondary)
 "dqw" = (
 /obj/effect/turf_decal/tile/blue{
 	dir = 5
@@ -22058,6 +22095,13 @@
 	icon_state = "floor_trim"
 	},
 /area/hallway/primary/fore)
+"dtJ" = (
+/obj/structure/cable{
+	icon_state = "4-8"
+	},
+/obj/effect/landmark/start/stowaway,
+/turf/open/floor/plating,
+/area/maintenance/port/fore)
 "dtM" = (
 /obj/effect/turf_decal/tile/blue{
 	dir = 4
@@ -28421,6 +28465,20 @@
 	icon_state = "floor_whole_alt"
 	},
 /area/security/warden)
+"eqU" = (
+/obj/machinery/atmospherics/pipe/simple/supply/hidden/layer3{
+	name = "air supply pipe"
+	},
+/obj/machinery/atmospherics/pipe/simple/scrubbers/hidden/layer1{
+	name = "scrubbers pipe"
+	},
+/obj/structure/cable{
+	icon_state = "1-2"
+	},
+/obj/structure/disposalpipe/segment,
+/obj/effect/landmark/start/stowaway,
+/turf/open/floor/plating,
+/area/maintenance/fore)
 "eqY" = (
 /obj/machinery/door/firedoor{
 	dir = 8
@@ -46428,6 +46486,14 @@
 	icon_state = "floor_whole_alt"
 	},
 /area/hallway/primary/fore)
+"hhc" = (
+/obj/structure/disposalpipe/segment,
+/obj/structure/cable{
+	icon_state = "1-2"
+	},
+/obj/effect/landmark/start/stowaway,
+/turf/open/floor/plating,
+/area/maintenance/starboard)
 "hhd" = (
 /obj/machinery/button/door{
 	id = "arrivals_cargo";
@@ -54335,6 +54401,11 @@
 	},
 /turf/open/floor/plating/layeniaredder,
 /area/ruin/unpowered/no_grav)
+"iqj" = (
+/obj/effect/decal/cleanable/dirt,
+/obj/effect/landmark/start/stowaway,
+/turf/open/floor/plating,
+/area/maintenance/fore)
 "iqu" = (
 /obj/structure/table,
 /obj/item/camera_film,
@@ -78001,6 +78072,13 @@
 	name = "retro floor"
 	},
 /area/commons/arcade)
+"lRy" = (
+/obj/structure/cable{
+	icon_state = "1-2"
+	},
+/obj/effect/landmark/start/stowaway,
+/turf/open/floor/plating,
+/area/maintenance/port)
 "lRz" = (
 /obj/effect/turf_decal/stripes/line{
 	dir = 4
@@ -84083,6 +84161,7 @@
 /obj/structure/cable{
 	icon_state = "4-8"
 	},
+/obj/effect/landmark/start/stowaway,
 /turf/open/floor/plasteel/dark{
 	icon_state = "darkfull_whole_alt"
 	},
@@ -96216,6 +96295,16 @@
 	},
 /turf/open/floor/wood,
 /area/service/lawoffice)
+"oFd" = (
+/obj/structure/cable{
+	icon_state = "4-8"
+	},
+/obj/structure/disposalpipe/segment{
+	dir = 4
+	},
+/obj/effect/landmark/start/stowaway,
+/turf/open/floor/plating,
+/area/maintenance/port/aft)
 "oFg" = (
 /obj/structure/rack,
 /obj/effect/spawner/lootdrop/techstorage/AI,
@@ -97542,6 +97631,24 @@
 	icon_state = "floor_plate"
 	},
 /area/hallway/primary/port)
+"oQl" = (
+/obj/machinery/atmospherics/pipe/simple/supply/hidden/layer3{
+	dir = 8;
+	name = "air supply pipe"
+	},
+/obj/machinery/atmospherics/pipe/simple/scrubbers/hidden/layer1{
+	dir = 4;
+	name = "scrubbers pipe"
+	},
+/obj/structure/cable{
+	icon_state = "4-8"
+	},
+/obj/structure/disposalpipe/segment{
+	dir = 4
+	},
+/obj/effect/landmark/start/stowaway,
+/turf/open/floor/plating,
+/area/maintenance/fore)
 "oQo" = (
 /obj/effect/turf_decal/loading_area/white{
 	dir = 4
@@ -106826,6 +106933,11 @@
 /obj/structure/barricade/wooden,
 /turf/open/floor/plating,
 /area/ruin/unpowered/no_grav)
+"qqc" = (
+/obj/structure/disposalpipe/segment,
+/obj/effect/landmark/start/stowaway,
+/turf/open/floor/plating,
+/area/maintenance/starboard)
 "qqg" = (
 /obj/machinery/atmospherics/components/unary/vent_scrubber/on/layer1{
 	dir = 4;
@@ -123545,6 +123657,11 @@
 	icon_state = "whitehall_plate"
 	},
 /area/hallway/primary/starboard)
+"sNJ" = (
+/obj/effect/decal/cleanable/dirt,
+/obj/effect/landmark/start/stowaway,
+/turf/open/floor/plasteel/grimy,
+/area/maintenance/starboard)
 "sNO" = (
 /obj/effect/turf_decal/tile/neutral,
 /obj/effect/turf_decal/loading_area{
@@ -125543,6 +125660,16 @@
 	dir = 1
 	},
 /area/command/bridge)
+"tds" = (
+/obj/structure/disposalpipe/segment{
+	dir = 4
+	},
+/obj/structure/cable{
+	icon_state = "4-8"
+	},
+/obj/effect/landmark/start/stowaway,
+/turf/open/floor/plating,
+/area/maintenance/starboard)
 "tdy" = (
 /obj/structure/disposalpipe/segment,
 /turf/open/floor/wood,
@@ -139842,6 +139969,10 @@
 /obj/structure/table,
 /turf/open/floor/plasteel/dark,
 /area/engineering/atmos)
+"vnM" = (
+/obj/effect/landmark/start/stowaway,
+/turf/open/floor/plating,
+/area/maintenance/fore)
 "vnP" = (
 /obj/structure/lattice/catwalk,
 /obj/machinery/light{
@@ -149443,6 +149574,10 @@
 	},
 /turf/open/floor/plasteel,
 /area/service/hydroponics)
+"wFE" = (
+/obj/effect/landmark/start/stowaway,
+/turf/open/floor/plating,
+/area/maintenance/starboard)
 "wFI" = (
 /obj/effect/turf_decal/bot,
 /obj/machinery/airalarm{
@@ -155180,6 +155315,10 @@
 	},
 /turf/open/floor/wood,
 /area/command/heads_quarters/ce)
+"xxQ" = (
+/obj/effect/landmark/start/stowaway,
+/turf/open/floor/plating,
+/area/maintenance/port)
 "xyb" = (
 /obj/effect/turf_decal/stripes/line,
 /obj/machinery/atmospherics/pipe/simple/scrubbers/hidden/layer1{
@@ -180840,7 +180979,7 @@ gqx
 gqx
 gqx
 pmb
-pmb
+xxQ
 pmb
 fsC
 nlu
@@ -187234,7 +187373,7 @@ mjc
 rwb
 rwb
 fYt
-xLi
+dtJ
 kLW
 kLW
 kLW
@@ -188051,7 +188190,7 @@ hLQ
 ePW
 vIk
 iHi
-xLM
+amy
 pmb
 qcJ
 sqL
@@ -191399,7 +191538,7 @@ ebu
 aXU
 roK
 xCw
-iPp
+oFd
 giP
 uBY
 ber
@@ -193140,7 +193279,7 @@ weI
 weI
 bUb
 ifh
-weI
+dqv
 kUI
 odf
 pcF
@@ -196996,7 +197135,7 @@ kji
 kji
 kji
 kji
-kji
+vnM
 kji
 kji
 etV
@@ -199807,7 +199946,7 @@ bHT
 bHT
 bHT
 bHT
-bHT
+eqU
 bHT
 ooh
 vbF
@@ -200036,7 +200175,7 @@ cDT
 peN
 kji
 kji
-peN
+iqj
 aET
 peN
 pfF
@@ -203911,7 +204050,7 @@ eAv
 juR
 kji
 kji
-eBu
+oQl
 kji
 lsV
 hks
@@ -247916,7 +248055,7 @@ lFw
 dto
 rja
 pmb
-pmb
+xxQ
 wSC
 rja
 kZE
@@ -249991,7 +250130,7 @@ dZP
 tDS
 wdu
 nIp
-nIp
+lRy
 qqu
 ehN
 ehN
@@ -250005,7 +250144,7 @@ odf
 odf
 rja
 rja
-lNz
+cwz
 aKX
 qmc
 nLS
@@ -265392,7 +265531,7 @@ xfv
 xfv
 xfv
 xfv
-xfv
+wFE
 nnm
 ful
 oxJ
@@ -266886,7 +267025,7 @@ rNU
 rNU
 rNU
 kji
-kji
+vnM
 bRa
 ajy
 dyR
@@ -267693,7 +267832,7 @@ nnm
 nnm
 nnm
 xfv
-ffs
+tds
 kHh
 ait
 pjF
@@ -268461,7 +268600,7 @@ sJB
 jtm
 xfv
 vyz
-xfv
+wFE
 nnm
 xfv
 ffs
@@ -270316,7 +270455,7 @@ wsU
 qJm
 wsU
 wsU
-xfv
+wFE
 wsU
 xda
 wsU
@@ -271825,7 +271964,7 @@ vfB
 qpC
 rYs
 uFm
-cDK
+hhc
 mUJ
 cDK
 cDK
@@ -271854,7 +271993,7 @@ nnm
 cOT
 oTf
 oTf
-oTf
+qqc
 oTf
 oTf
 aQD
@@ -272368,7 +272507,7 @@ bQm
 dbd
 iIy
 haj
-wCX
+sNJ
 wCX
 nnm
 cOT
