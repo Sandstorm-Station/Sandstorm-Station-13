@@ -1,11 +1,11 @@
-/turf/open/floor/plating/asteroid/layeniasand
+/turf/open/floor/grass/layeniasand
 	gender = PLURAL
 	name = "crimson sand"
 	icon = 'modular_splurt/icons/turf/layeniasand.dmi'
-	baseturfs = /turf/open/floor/plating/asteroid/layeniaredder
+	baseturfs = /turf/open/floor/plating/layeniaredder
 	desc = "Looks cold."
 	icon_state = "mapping"
-	digResult = /obj/item/stack/ore/glass/basalt
+	ore_type = /obj/item/stack/ore/glass/basalt
 	planetary_atmos = TRUE
 	floor_tile = null
 	initial_gas_mix = FROZEN_ATMOS
@@ -15,7 +15,7 @@
 	barefootstep = FOOTSTEP_SAND
 	clawfootstep = FOOTSTEP_SAND
 	heavyfootstep = FOOTSTEP_GENERIC_HEAVY
-	floor_variance = 0
+
 
 /turf/closed/mineral/ash_rock/layenia
 	name = "crimson rock"
@@ -24,13 +24,13 @@
 	icon_state = "layenia"
 	smooth = SMOOTH_MORE|SMOOTH_BORDER
 	canSmoothWith = list (/turf/closed)
-	baseturfs = /turf/open/floor/plating/asteroid/layenia
+	baseturfs = /turf/open/floor/plating/layeniaredder
 	initial_gas_mix = LAVALAND_DEFAULT_ATMOS
 	environment_type = "waste"
-	turf_type = /turf/open/floor/plating/asteroid/layenia
+	turf_type = /turf/open/floor/plating/layeniaredder
 	defer_change = TRUE
 
-/turf/open/floor/plating/asteroid/layeniaredder
+/turf/open/floor/plating/layeniaredder
 	name = "crimson rock"
 	desc = "crimson rocks surrond you."
 	icon = 'modular_splurt/icons/turf/layenia.dmi'
@@ -40,4 +40,4 @@
 	barefootstep = FOOTSTEP_SAND
 	clawfootstep = FOOTSTEP_SAND
 	heavyfootstep = FOOTSTEP_GENERIC_HEAVY
-	floor_variance = 0
+

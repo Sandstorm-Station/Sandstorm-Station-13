@@ -507,7 +507,7 @@
 	pixel_x = 7
 	},
 /obj/effect/spawner/lootdrop/maintenance,
-/turf/open/floor/plating/asteroid/layeniaredder,
+/turf/open/floor/plating/layeniaredder,
 /area/ruin/unpowered/no_grav)
 "aed" = (
 /obj/effect/turf_decal/tile/neutral{
@@ -560,7 +560,7 @@
 /area/ai_monitored/command/storage/eva)
 "aen" = (
 /obj/effect/landmark/nuclear_waste_spawner,
-/turf/open/floor/plating/asteroid/layeniaredder,
+/turf/open/floor/plating/layeniaredder,
 /area/ruin/unpowered/no_grav)
 "aeo" = (
 /obj/machinery/light{
@@ -1036,7 +1036,7 @@
 	dir = 1;
 	pixel_y = 19
 	},
-/turf/open/floor/plating/asteroid/layeniaredder,
+/turf/open/floor/plating/layeniaredder,
 /area/ruin/unpowered/no_grav)
 "aiC" = (
 /obj/effect/turf_decal/tile/purple,
@@ -1140,6 +1140,24 @@
 	icon_state = "floor_plate"
 	},
 /area/engineering/break_room)
+"ajG" = (
+/obj/structure/cable{
+	icon_state = "4-8"
+	},
+/obj/effect/turf_decal/stripes/line{
+	dir = 1
+	},
+/obj/effect/turf_decal/stripes/line,
+/obj/machinery/atmospherics/pipe/simple/scrubbers/hidden/layer1{
+	dir = 4;
+	name = "scrubbers pipe"
+	},
+/obj/machinery/atmospherics/pipe/simple/supply/hidden/layer3{
+	dir = 8;
+	name = "air supply pipe"
+	},
+/turf/open/floor/plating,
+/area/ruin/unpowered/no_grav)
 "ajL" = (
 /obj/machinery/camera{
 	c_tag = "Atmospherics Monitoring"
@@ -1368,7 +1386,7 @@
 /area/hallway/secondary/service)
 "alt" = (
 /obj/structure/fence,
-/turf/open/floor/plating/asteroid/layeniaredder{
+/turf/open/floor/plating/layeniaredder{
 	icon_state = "concrete";
 	name = "concrete"
 	},
@@ -1610,6 +1628,9 @@
 "anJ" = (
 /obj/structure/cable{
 	icon_state = "2-8"
+	},
+/obj/machinery/atmospherics/pipe/simple/supply/hidden/layer3{
+	name = "air supply pipe"
 	},
 /turf/open/floor/plating,
 /area/maintenance/solars/port/aft)
@@ -2247,7 +2268,7 @@
 /area/service/hydroponics/garden)
 "atS" = (
 /obj/structure/fence,
-/turf/open/floor/plating/asteroid/layeniaredder,
+/turf/open/floor/plating/layeniaredder,
 /area/ruin/unpowered/no_grav)
 "atV" = (
 /obj/structure/disposalpipe/segment{
@@ -3657,7 +3678,7 @@
 /area/hallway/primary/fore)
 "aEi" = (
 /obj/effect/decal/cleanable/dirt,
-/turf/open/floor/plating/asteroid/layeniaredder{
+/turf/open/floor/plating/layeniaredder{
 	icon_state = "concrete2";
 	name = "concrete"
 	},
@@ -4063,7 +4084,7 @@
 /obj/structure/cable{
 	icon_state = "2-8"
 	},
-/turf/open/floor/plating/asteroid/layeniaredder{
+/turf/open/floor/plating/layeniaredder{
 	icon_state = "concrete2";
 	name = "concrete"
 	},
@@ -4073,6 +4094,13 @@
 	dir = 4
 	},
 /area/science)
+"aGT" = (
+/obj/effect/turf_decal/arrows/red,
+/obj/effect/turf_decal/arrows/red{
+	pixel_y = 13
+	},
+/turf/open/floor/plasteel/dark,
+/area/engineering/lobby)
 "aGX" = (
 /obj/effect/spawner/structure/window/reinforced,
 /obj/machinery/door/firedoor{
@@ -4195,19 +4223,6 @@
 	},
 /turf/open/openspace,
 /area/ruin/unpowered/no_grav)
-"aIq" = (
-/obj/effect/turf_decal/stripes/line{
-	dir = 4
-	},
-/obj/machinery/light{
-	dir = 4;
-	pixel_x = 7
-	},
-/turf/open/floor/plasteel{
-	dir = 8;
-	icon_state = "floor_plate"
-	},
-/area/science)
 "aIs" = (
 /obj/effect/turf_decal/tile/neutral{
 	dir = 4
@@ -4614,7 +4629,7 @@
 	icon_state = "linealt_corner";
 	name = "line"
 	},
-/turf/open/floor/plating/asteroid/layeniaredder{
+/turf/open/floor/plating/layeniaredder{
 	icon_state = "concrete2";
 	name = "concrete"
 	},
@@ -5244,7 +5259,7 @@
 	},
 /area/command/teleporter)
 "aQN" = (
-/turf/open/floor/plating/asteroid/layeniaredder{
+/turf/open/floor/plating/layeniaredder{
 	icon_state = "concrete2";
 	name = "concrete"
 	},
@@ -5823,7 +5838,7 @@
 /area/cargo/miningdock)
 "aWf" = (
 /obj/item/picket_sign,
-/turf/open/floor/plating/asteroid/layeniaredder,
+/turf/open/floor/plating/layeniaredder,
 /area/ruin/unpowered/no_grav)
 "aWn" = (
 /obj/effect/turf_decal/stripes/line{
@@ -5916,15 +5931,14 @@
 /turf/open/floor/plating,
 /area/maintenance/fore)
 "aWY" = (
-/obj/structure/railing,
-/obj/structure/railing{
-	dir = 8
-	},
 /obj/effect/turf_decal/tile/neutral{
 	dir = 9
 	},
 /obj/effect/turf_decal/tile/neutral{
 	dir = 8
+	},
+/obj/structure/railing{
+	dir = 10
 	},
 /turf/open/floor/plasteel/dark{
 	dir = 1;
@@ -5933,7 +5947,7 @@
 /area/maintenance/port)
 "aXa" = (
 /obj/structure/flora/junglebush/large,
-/turf/open/floor/plating/asteroid/layeniaredder,
+/turf/open/floor/plating/layeniaredder,
 /area/ruin/unpowered/no_grav)
 "aXi" = (
 /obj/effect/decal/cleanable/oil,
@@ -6008,7 +6022,7 @@
 /area/engineering/teg)
 "aXL" = (
 /obj/structure/disposalpipe/segment,
-/turf/open/floor/plating/asteroid/layeniaredder{
+/turf/open/floor/plating/layeniaredder{
 	icon_state = "concrete2";
 	name = "concrete"
 	},
@@ -6241,10 +6255,16 @@
 /turf/closed/wall,
 /area/cargo/sorting)
 "aZf" = (
-/obj/structure/window/reinforced{
-	dir = 4
+/obj/effect/turf_decal/loading_area{
+	color = "#55391A";
+	dir = 8;
+	icon_state = "siding_wood_line";
+	name = "wood"
 	},
-/turf/open/openspace,
+/turf/open/floor/wood{
+	icon_state = "wood_parquet";
+	name = "parquet"
+	},
 /area/medical/medbay/central)
 "aZD" = (
 /obj/machinery/atmospherics/pipe/simple/scrubbers/hidden/layer1{
@@ -6256,6 +6276,10 @@
 "aZF" = (
 /obj/structure/cable{
 	icon_state = "0-4"
+	},
+/obj/machinery/atmospherics/components/unary/vent_scrubber/on/layer1{
+	dir = 4;
+	name = "air scrubber"
 	},
 /turf/open/floor/plating,
 /area/maintenance/solars/port/aft)
@@ -6627,7 +6651,7 @@
 /obj/effect/turf_decal/stripes/line,
 /obj/structure/railing,
 /obj/effect/decal/cleanable/dirt,
-/turf/open/floor/plating/asteroid/layeniaredder{
+/turf/open/floor/plating/layeniaredder{
 	icon_state = "concrete2";
 	name = "concrete"
 	},
@@ -6932,6 +6956,20 @@
 /obj/effect/decal/cleanable/dirt,
 /turf/open/floor/plating,
 /area/maintenance/port/aft)
+"beF" = (
+/obj/effect/turf_decal/loading_area{
+	dir = 6;
+	icon_state = "steel_panel";
+	name = "steel pannel"
+	},
+/obj/machinery/atmospherics/pipe/simple/scrubbers/hidden/layer1{
+	name = "scrubbers pipe"
+	},
+/turf/open/floor/wood{
+	icon_state = "wood_large";
+	name = "large"
+	},
+/area/commons/fitness)
 "beO" = (
 /obj/structure/window/reinforced{
 	dir = 8;
@@ -7003,6 +7041,21 @@
 "bfz" = (
 /turf/open/floor/plasteel/dark,
 /area/engineering/atmos)
+"bfB" = (
+/obj/effect/turf_decal/loading_area{
+	dir = 6;
+	icon_state = "steel_panel";
+	name = "steel pannel"
+	},
+/obj/machinery/atmospherics/pipe/simple/scrubbers/hidden/layer1{
+	dir = 9;
+	name = "scrubbers pipe"
+	},
+/turf/open/floor/wood{
+	icon_state = "wood_large";
+	name = "large"
+	},
+/area/commons/fitness)
 "bfC" = (
 /obj/machinery/light/small{
 	dir = 8;
@@ -7209,7 +7262,7 @@
 /obj/structure/cable{
 	icon_state = "1-8"
 	},
-/turf/open/floor/plating/asteroid/layeniaredder{
+/turf/open/floor/plating/layeniaredder{
 	icon_state = "concrete2";
 	name = "concrete"
 	},
@@ -7321,7 +7374,7 @@
 /obj/effect/turf_decal/stripes/white/line{
 	dir = 1
 	},
-/turf/open/floor/plating/asteroid/layeniaredder{
+/turf/open/floor/plating/layeniaredder{
 	icon_state = "concrete2";
 	name = "concrete"
 	},
@@ -7786,7 +7839,7 @@
 	name = "drain"
 	},
 /obj/effect/spawner/lootdrop/maintenance,
-/turf/open/floor/plating/asteroid/layeniaredder,
+/turf/open/floor/plating/layeniaredder,
 /area/security/prison)
 "bkq" = (
 /obj/machinery/atmospherics/pipe/simple/supply/hidden/layer1{
@@ -7900,15 +7953,20 @@
 	pixel_x = 32;
 	pixel_y = 7
 	},
-/obj/item/cigbutt,
 /obj/item/paper/crumpled/bloody{
 	pixel_x = -8;
-	pixel_y = 5
+	pixel_y = 5;
+	info = "Day 32: I've been raped more times than i can remember... in all the despicable ways imaginable... i can't even sit on my ass anymore, and i still feel the taste of cum in my mouth, i don't think i can hold it much longer... h-help me"
 	},
-/obj/effect/decal/cleanable/ash/crematorium,
-/turf/open/floor/plating{
-	icon_state = "panelscorched"
+/obj/effect/decal/cleanable/blood/tracks,
+/obj/effect/decal/cleanable/semendrip,
+/obj/effect/decal/cleanable/semendrip{
+	icon_state = "drip2"
 	},
+/obj/effect/decal/cleanable/semendrip{
+	icon_state = "drip4"
+	},
+/turf/open/floor/plasteel/dark,
 /area/security/prison)
 "blH" = (
 /obj/structure/cable{
@@ -8404,6 +8462,27 @@
 /obj/effect/landmark/navigate_destination/dorms,
 /turf/open/floor/plasteel,
 /area/commons/dorms)
+"bpo" = (
+/obj/structure/cable{
+	icon_state = "4-8"
+	},
+/obj/machinery/door/airlock/external{
+	name = "Solar Maintenance";
+	req_access_txt = "10; 13"
+	},
+/obj/effect/mapping_helpers/airlock/cyclelink_helper{
+	dir = 8
+	},
+/obj/machinery/atmospherics/pipe/simple/scrubbers/hidden/layer1{
+	dir = 4;
+	name = "scrubbers pipe"
+	},
+/obj/machinery/atmospherics/pipe/simple/supply/hidden/layer3{
+	dir = 8;
+	name = "air supply pipe"
+	},
+/turf/open/floor/plating,
+/area/maintenance/solars/aux/port)
 "bpp" = (
 /obj/structure/rack,
 /obj/item/storage/box/teargas{
@@ -9027,7 +9106,7 @@
 /area/hallway/secondary/entry)
 "btK" = (
 /obj/item/reagent_containers/food/snacks/cannedpeaches/maint,
-/turf/open/floor/plating/asteroid/layeniaredder,
+/turf/open/floor/plating/layeniaredder,
 /area/ruin/unpowered/no_grav)
 "btO" = (
 /obj/effect/decal/cleanable/cobweb{
@@ -9164,7 +9243,7 @@
 /obj/effect/turf_decal/stripes/corner{
 	dir = 4
 	},
-/turf/open/floor/plating/asteroid/layeniaredder{
+/turf/open/floor/plating/layeniaredder{
 	icon_state = "concrete2";
 	name = "concrete"
 	},
@@ -9570,7 +9649,7 @@
 /area/maintenance/fore)
 "bxX" = (
 /obj/structure/bonfire,
-/turf/open/floor/plating/asteroid/layeniasand,
+/turf/open/floor/grass/layeniasand,
 /area/ruin/unpowered/no_grav)
 "byb" = (
 /obj/machinery/light{
@@ -9783,6 +9862,10 @@
 /obj/machinery/light{
 	dir = 1;
 	pixel_y = 19
+	},
+/obj/machinery/atmospherics/pipe/simple/scrubbers/hidden/layer1{
+	dir = 4;
+	name = "scrubbers pipe"
 	},
 /turf/open/floor/plasteel/dark{
 	icon_state = "darkfull_whole_alt"
@@ -10140,15 +10223,14 @@
 	},
 /area/service/bar)
 "bCO" = (
-/obj/effect/decal/cleanable/blood/drip{
-	pixel_y = 5
-	},
 /obj/structure/sign/poster/contraband/random{
 	pixel_x = -32;
 	pixel_y = -15
 	},
-/obj/effect/decal/cleanable/dirt,
-/turf/open/floor/plating,
+/obj/effect/decal/cleanable/semen{
+	icon_state = "semen4"
+	},
+/turf/open/floor/plasteel/dark,
 /area/security/prison)
 "bCV" = (
 /obj/machinery/airalarm{
@@ -10519,7 +10601,7 @@
 "bFy" = (
 /obj/structure/closet/crate/coffin,
 /obj/item/reagent_containers/food/snacks/grown/poppy,
-/turf/open/floor/plating/asteroid/layeniaredder,
+/turf/open/floor/plating/layeniaredder,
 /area/ruin/unpowered/no_grav)
 "bFz" = (
 /obj/machinery/computer/monitor{
@@ -10805,10 +10887,6 @@
 	},
 /area/hallway/primary/fore)
 "bHI" = (
-/obj/structure/railing,
-/obj/structure/railing{
-	dir = 8
-	},
 /obj/effect/turf_decal/loading_area{
 	icon_state = "drain";
 	name = "drain"
@@ -10822,6 +10900,9 @@
 	dir = 1;
 	icon_state = "drain_corner";
 	name = "drain"
+	},
+/obj/structure/railing{
+	dir = 10
 	},
 /turf/open/floor/plasteel{
 	dir = 8;
@@ -10881,7 +10962,7 @@
 /obj/structure/window/reinforced{
 	dir = 4
 	},
-/turf/open/floor/plating/asteroid/layeniaredder{
+/turf/open/floor/plating/layeniaredder{
 	icon_state = "layenia_dug_alt"
 	},
 /area/hallway/primary/central)
@@ -10971,7 +11052,7 @@
 	icon_state = "linealt_corner";
 	name = "line"
 	},
-/turf/open/floor/plating/asteroid/layeniaredder{
+/turf/open/floor/plating/layeniaredder{
 	icon_state = "concrete2";
 	name = "concrete"
 	},
@@ -11441,7 +11522,7 @@
 /obj/structure/railing{
 	dir = 10
 	},
-/turf/open/floor/plating/asteroid/layeniaredder,
+/turf/open/floor/plating/layeniaredder,
 /area/ruin/unpowered/no_grav)
 "bMs" = (
 /obj/structure/chair/comfy/black{
@@ -11504,6 +11585,10 @@
 	},
 /obj/structure/cable{
 	icon_state = "4-8"
+	},
+/obj/machinery/atmospherics/pipe/simple/scrubbers/hidden/layer1{
+	dir = 4;
+	name = "scrubbers pipe"
 	},
 /turf/open/floor/plating,
 /area/maintenance/solars/port/aft)
@@ -11861,6 +11946,8 @@
 	dir = 8;
 	pixel_x = -7
 	},
+/obj/structure/table,
+/obj/item/folder/white,
 /turf/open/floor/plasteel{
 	dir = 4;
 	icon_state = "floor_plate"
@@ -12158,7 +12245,7 @@
 /turf/open/floor/plasteel/white,
 /area/medical/medbay/central)
 "bSx" = (
-/turf/open/floor/plating/asteroid/layeniaredder{
+/turf/open/floor/plating/layeniaredder{
 	icon_state = "concrete2";
 	name = "concrete"
 	},
@@ -12536,7 +12623,7 @@
 "bVF" = (
 /obj/effect/turf_decal/stripes/line,
 /obj/effect/turf_decal/caution/stand_clear,
-/turf/open/floor/plating/asteroid/layeniaredder{
+/turf/open/floor/plating/layeniaredder{
 	icon_state = "concrete2";
 	name = "concrete"
 	},
@@ -13505,7 +13592,7 @@
 /obj/structure/fence/cut/medium{
 	dir = 4
 	},
-/turf/open/floor/plating/asteroid/layeniaredder,
+/turf/open/floor/plating/layeniaredder,
 /area/ruin/unpowered/no_grav)
 "cef" = (
 /obj/structure/table,
@@ -14638,7 +14725,7 @@
 	dir = 4
 	},
 /obj/structure/lattice/catwalk,
-/turf/open/floor/plating/asteroid/layeniaredder,
+/turf/open/floor/plating/layeniaredder,
 /area/ruin/unpowered/no_grav)
 "cnN" = (
 /obj/structure/table,
@@ -14797,15 +14884,6 @@
 	dir = 1
 	},
 /area/ruin/unpowered/no_grav)
-"cpt" = (
-/obj/structure/girder,
-/obj/structure/barricade/wooden,
-/obj/effect/turf_decal/sand/plating{
-	icon_state = "sandyplating_red";
-	name = "crimson plating"
-	},
-/turf/open/floor/plating,
-/area/construction)
 "cpv" = (
 /turf/open/floor/plating,
 /area/maintenance/department/electrical)
@@ -15488,7 +15566,7 @@
 /obj/effect/turf_decal/caution/stand_clear{
 	dir = 4
 	},
-/turf/open/floor/plating/asteroid/layeniaredder{
+/turf/open/floor/plating/layeniaredder{
 	icon_state = "concrete2";
 	name = "concrete"
 	},
@@ -16459,7 +16537,7 @@
 	icon_state = "half_stairs";
 	name = "steps"
 	},
-/turf/open/floor/plating/asteroid/layeniaredder,
+/turf/open/floor/plating/layeniaredder,
 /area/ruin/unpowered/no_grav)
 "cDK" = (
 /obj/structure/disposalpipe/segment,
@@ -17041,7 +17119,7 @@
 /area/medical/medbay/central)
 "cII" = (
 /obj/effect/turf_decal/stripes/corner,
-/turf/open/floor/plating/asteroid/layeniaredder,
+/turf/open/floor/plating/layeniaredder,
 /area/ruin/unpowered/no_grav)
 "cIM" = (
 /obj/structure/railing{
@@ -17315,7 +17393,7 @@
 	dir = 8;
 	pixel_x = -7
 	},
-/turf/open/floor/plating/asteroid/layeniaredder,
+/turf/open/floor/plating/layeniaredder,
 /area/ruin/unpowered/no_grav)
 "cKS" = (
 /obj/effect/turf_decal/loading_area{
@@ -17568,8 +17646,9 @@
 	icon_state = "steel_panel";
 	name = "steel pannel"
 	},
-/obj/structure/fence/handrail{
-	pixel_y = 15
+/obj/effect/turf_decal/loading_area{
+	icon_state = "ledge_short";
+	name = "short ledge"
 	},
 /turf/open/floor/plasteel/dark{
 	icon_state = "darkfull_plate"
@@ -17693,14 +17772,9 @@
 	},
 /area/commons/toilet)
 "cNZ" = (
-/obj/structure/table,
 /obj/machinery/atmospherics/pipe/simple/supply/hidden/layer3{
 	dir = 9;
 	name = "air supply pipe"
-	},
-/obj/item/storage/toolbox/emergency{
-	pixel_x = 1;
-	pixel_y = 9
 	},
 /obj/effect/turf_decal/tile/neutral,
 /obj/effect/turf_decal/tile/neutral{
@@ -17779,7 +17853,7 @@
 	dir = 1;
 	name = "visible"
 	},
-/turf/open/floor/plating/asteroid/layeniaredder,
+/turf/open/floor/plating/layeniaredder,
 /area/ruin/unpowered/no_grav)
 "cOK" = (
 /obj/machinery/atmospherics/pipe/manifold/general/visible{
@@ -17853,7 +17927,7 @@
 /area/service/bar)
 "cOZ" = (
 /obj/effect/landmark/carpspawn,
-/turf/open/floor/plating/asteroid/layeniaredder,
+/turf/open/floor/plating/layeniaredder,
 /area/ruin/unpowered/no_grav)
 "cPd" = (
 /obj/structure/table,
@@ -18000,7 +18074,7 @@
 	icon_state = "linealt_corner";
 	name = "line"
 	},
-/turf/open/floor/plating/asteroid/layeniaredder{
+/turf/open/floor/plating/layeniaredder{
 	icon_state = "concrete2";
 	name = "concrete"
 	},
@@ -18467,7 +18541,7 @@
 /area/service/barbershop)
 "cSC" = (
 /obj/item/toy/figure/wizard,
-/turf/open/floor/plating/asteroid/layeniaredder,
+/turf/open/floor/plating/layeniaredder,
 /area/ruin/unpowered/no_grav)
 "cSD" = (
 /obj/effect/turf_decal/tile/red{
@@ -18604,14 +18678,6 @@
 /obj/effect/turf_decal/stripes/line,
 /turf/open/floor/engine,
 /area/engineering/main/reactor_core)
-"cUb" = (
-/obj/structure/lattice/catwalk,
-/obj/structure/railing{
-	dir = 8
-	},
-/obj/structure/railing,
-/turf/open/openspace,
-/area/space)
 "cUc" = (
 /turf/open/floor/wood{
 	icon_state = "wood-broken"
@@ -18662,7 +18728,7 @@
 /obj/structure/railing{
 	dir = 4
 	},
-/turf/open/floor/plating/asteroid/layeniaredder,
+/turf/open/floor/plating/layeniaredder,
 /area/ruin/unpowered/no_grav)
 "cUB" = (
 /obj/effect/turf_decal/stripes/line{
@@ -19131,7 +19197,7 @@
 /obj/structure/fence/end{
 	dir = 8
 	},
-/turf/open/floor/plating/asteroid/layeniaredder{
+/turf/open/floor/plating/layeniaredder{
 	icon_state = "concrete2";
 	name = "concrete"
 	},
@@ -19613,7 +19679,7 @@
 /area/hallway/primary/fore)
 "dbo" = (
 /obj/effect/decal/cleanable/vomit,
-/turf/open/floor/plating/asteroid/layeniasand,
+/turf/open/floor/grass/layeniasand,
 /area/ruin/unpowered/no_grav)
 "dbp" = (
 /obj/effect/landmark/start/janitor,
@@ -19721,6 +19787,12 @@
 	},
 /obj/structure/cable{
 	icon_state = "1-2"
+	},
+/obj/machinery/atmospherics/pipe/simple/scrubbers/hidden/layer1{
+	name = "scrubbers pipe"
+	},
+/obj/machinery/atmospherics/pipe/simple/supply/hidden/layer3{
+	name = "air supply pipe"
 	},
 /turf/open/floor/plasteel/dark{
 	icon_state = "darkfull_whole_alt"
@@ -19869,9 +19941,7 @@
 	pixel_x = 3;
 	pixel_y = 4
 	},
-/turf/open/floor/plating{
-	icon_state = "panelscorched"
-	},
+/turf/open/floor/plasteel/dark,
 /area/security/prison)
 "ddk" = (
 /obj/structure/cable{
@@ -19958,7 +20028,7 @@
 	name = "steel pannel"
 	},
 /obj/effect/turf_decal/stripes/corner,
-/turf/open/floor/plating/asteroid/layeniaredder{
+/turf/open/floor/plating/layeniaredder{
 	icon_state = "concrete2";
 	name = "concrete"
 	},
@@ -20203,7 +20273,7 @@
 /obj/effect/turf_decal/stripes/end{
 	dir = 4
 	},
-/turf/open/floor/plating/asteroid/layeniaredder{
+/turf/open/floor/plating/layeniaredder{
 	icon_state = "concrete";
 	name = "concrete"
 	},
@@ -20889,7 +20959,7 @@
 /area/commons/arcade)
 "dkP" = (
 /obj/effect/turf_decal/stripes/line,
-/turf/open/floor/plating/asteroid/layeniaredder{
+/turf/open/floor/plating/layeniaredder{
 	icon_state = "concrete2";
 	name = "concrete"
 	},
@@ -20901,6 +20971,13 @@
 /obj/effect/decal/cleanable/dirt,
 /turf/open/floor/plating,
 /area/maintenance/fore)
+"dkV" = (
+/obj/machinery/atmospherics/components/unary/vent_pump/on/layer3{
+	dir = 1;
+	name = "air vent"
+	},
+/turf/open/floor/plating,
+/area/maintenance/solars/aux/port)
 "dlb" = (
 /obj/structure/sign/warning/electricshock,
 /turf/closed/wall/r_wall,
@@ -21068,19 +21145,13 @@
 	},
 /area/medical/morgue)
 "dlX" = (
-/obj/machinery/door/airlock/public/glass{
-	dir = 1;
-	name = "Xenoarchaeology Access"
-	},
-/obj/effect/turf_decal/delivery,
-/obj/machinery/door/firedoor,
 /obj/machinery/atmospherics/pipe/simple/supply/hidden/layer3{
 	name = "air supply pipe"
 	},
 /obj/machinery/atmospherics/pipe/simple/scrubbers/hidden/layer1{
 	name = "scrubbers pipe"
 	},
-/turf/open/floor/plasteel/dark,
+/turf/closed/wall/r_wall,
 /area/science)
 "dmb" = (
 /turf/closed/wall,
@@ -21238,7 +21309,7 @@
 	dir = 4
 	},
 /obj/machinery/atmospherics/pipe/simple/orange/hidden,
-/turf/open/floor/plating/asteroid/layeniaredder,
+/turf/open/floor/plating/layeniaredder,
 /area/ruin/unpowered/no_grav)
 "dnD" = (
 /obj/effect/turf_decal/stripes/line{
@@ -21812,7 +21883,7 @@
 /area/service/barbershop)
 "dsv" = (
 /obj/structure/railing/corner,
-/turf/open/floor/plating/asteroid/layeniaredder,
+/turf/open/floor/plating/layeniaredder,
 /area/ruin/unpowered/no_grav)
 "dsw" = (
 /obj/structure/railing{
@@ -22750,7 +22821,7 @@
 /area/cargo/sorting)
 "dzu" = (
 /obj/effect/turf_decal/stripes/box,
-/turf/open/floor/plating/asteroid/layeniaredder{
+/turf/open/floor/plating/layeniaredder{
 	icon_state = "concrete2";
 	name = "concrete"
 	},
@@ -23081,6 +23152,14 @@
 	},
 /turf/open/floor/plasteel/grimy,
 /area/service/chapel/office)
+"dBw" = (
+/obj/machinery/atmospherics/pipe/simple/scrubbers/hidden/layer1{
+	name = "scrubbers pipe"
+	},
+/turf/open/floor/plasteel/dark{
+	icon_state = "darkfull_whole_alt"
+	},
+/area/commons/fitness)
 "dBJ" = (
 /obj/effect/turf_decal/loading_area{
 	dir = 6;
@@ -23228,7 +23307,7 @@
 /obj/effect/turf_decal/stripes/line{
 	dir = 8
 	},
-/turf/open/floor/plating/asteroid/layeniaredder{
+/turf/open/floor/plating/layeniaredder{
 	icon_state = "concrete2";
 	name = "concrete"
 	},
@@ -23471,7 +23550,7 @@
 /area/engineering/main)
 "dFh" = (
 /obj/effect/landmark/carpspawn,
-/turf/open/floor/plating/asteroid/layeniasand,
+/turf/open/floor/grass/layeniasand,
 /area/ruin/unpowered/no_grav)
 "dFi" = (
 /obj/machinery/atmospherics/pipe/simple/supply/hidden/layer3{
@@ -23497,7 +23576,7 @@
 	dir = 1;
 	layer = 2.9
 	},
-/turf/open/floor/plating/asteroid/layeniaredder,
+/turf/open/floor/plating/layeniaredder,
 /area/hallway/primary/central)
 "dFz" = (
 /turf/open/floor/plasteel/dark,
@@ -23568,7 +23647,7 @@
 /obj/effect/turf_decal/stripes/line{
 	dir = 1
 	},
-/turf/open/floor/plating/asteroid/layeniaredder{
+/turf/open/floor/plating/layeniaredder{
 	icon_state = "concrete2";
 	name = "concrete"
 	},
@@ -23932,6 +24011,14 @@
 /obj/effect/mapping_helpers/airlock/cyclelink_helper{
 	dir = 8
 	},
+/obj/machinery/atmospherics/pipe/simple/scrubbers/hidden/layer1{
+	dir = 4;
+	name = "scrubbers pipe"
+	},
+/obj/machinery/atmospherics/pipe/simple/supply/hidden/layer3{
+	dir = 8;
+	name = "air supply pipe"
+	},
 /turf/open/floor/plasteel/dark{
 	icon_state = "darkfull_whole_alt"
 	},
@@ -23989,12 +24076,6 @@
 	},
 /turf/open/floor/plating,
 /area/cargo/sorting)
-"dJj" = (
-/obj/effect/turf_decal/stripes/line{
-	dir = 10
-	},
-/turf/open/floor/plasteel,
-/area/command/gateway)
 "dJk" = (
 /obj/machinery/door/airlock{
 	dir = 4;
@@ -24230,7 +24311,7 @@
 	icon_state = "linealt_corner";
 	name = "line"
 	},
-/turf/open/floor/plating/asteroid/layeniaredder{
+/turf/open/floor/plating/layeniaredder{
 	icon_state = "concrete2";
 	name = "concrete"
 	},
@@ -24869,7 +24950,7 @@
 /obj/effect/turf_decal/stripes/line{
 	dir = 1
 	},
-/turf/open/floor/plating/asteroid/layeniaredder,
+/turf/open/floor/plating/layeniaredder,
 /area/ruin/unpowered/no_grav)
 "dQo" = (
 /turf/open/floor/plasteel/dark{
@@ -26025,7 +26106,7 @@
 /obj/structure/cable{
 	icon_state = "4-8"
 	},
-/turf/open/floor/plating/asteroid/layeniaredder{
+/turf/open/floor/plating/layeniaredder{
 	icon_state = "concrete2";
 	name = "concrete"
 	},
@@ -26050,6 +26131,7 @@
 /obj/effect/turf_decal/stripes/line{
 	dir = 1
 	},
+/obj/effect/spawner/structure/window/plastitanium,
 /turf/open/floor/plasteel{
 	icon_state = "floor_plate"
 	},
@@ -26173,7 +26255,7 @@
 	dir = 1
 	},
 /obj/structure/window/reinforced,
-/turf/open/floor/plating/asteroid/layeniaredder{
+/turf/open/floor/plating/layeniaredder{
 	icon_state = "layenia4"
 	},
 /area/service/bar)
@@ -26408,7 +26490,7 @@
 /obj/structure/railing/corner{
 	dir = 1
 	},
-/turf/open/floor/plating/asteroid/layeniaredder{
+/turf/open/floor/plating/layeniaredder{
 	icon_state = "concrete2";
 	name = "concrete"
 	},
@@ -26516,7 +26598,7 @@
 /obj/machinery/light{
 	pixel_y = -1
 	},
-/turf/open/floor/plating/asteroid/layeniaredder{
+/turf/open/floor/plating/layeniaredder{
 	icon_state = "concrete2";
 	name = "concrete"
 	},
@@ -28199,7 +28281,7 @@
 /obj/structure/railing/corner{
 	dir = 1
 	},
-/turf/open/floor/plating/asteroid/layeniaredder,
+/turf/open/floor/plating/layeniaredder,
 /area/ruin/unpowered/no_grav)
 "epM" = (
 /obj/structure/railing,
@@ -28521,7 +28603,7 @@
 /obj/effect/turf_decal/stripes/line{
 	dir = 8
 	},
-/turf/open/floor/plating/asteroid/layeniaredder{
+/turf/open/floor/plating/layeniaredder{
 	icon_state = "concrete2";
 	name = "concrete"
 	},
@@ -29010,13 +29092,9 @@
 	},
 /area/hallway/primary/starboard)
 "ewL" = (
-/obj/machinery/power/grounding_rod{
-	anchored = 1
-	},
 /obj/machinery/atmospherics/pipe/simple/supply/hidden/layer3{
 	name = "air supply pipe"
 	},
-/obj/effect/turf_decal/delivery,
 /turf/open/floor/plasteel/dark,
 /area/engineering/main)
 "ewN" = (
@@ -29073,7 +29151,7 @@
 	dir = 8;
 	name = "visible"
 	},
-/turf/open/floor/plating/asteroid/layeniaredder,
+/turf/open/floor/plating/layeniaredder,
 /area/ruin/unpowered/no_grav)
 "exu" = (
 /obj/structure/railing{
@@ -30142,7 +30220,7 @@
 /area/hallway/secondary/exit)
 "eGn" = (
 /obj/structure/flora/tree/jungle/small,
-/turf/open/floor/plating/asteroid/layeniaredder,
+/turf/open/floor/plating/layeniaredder,
 /area/ruin/unpowered/no_grav)
 "eGr" = (
 /obj/machinery/holopad,
@@ -30523,7 +30601,7 @@
 /obj/effect/turf_decal/stripes/corner{
 	dir = 8
 	},
-/turf/open/floor/plating/asteroid/layeniaredder{
+/turf/open/floor/plating/layeniaredder{
 	icon_state = "concrete2";
 	name = "concrete"
 	},
@@ -31478,6 +31556,23 @@
 	},
 /turf/open/floor/plasteel,
 /area/science/xenobiology)
+"eQj" = (
+/obj/effect/turf_decal/tile/neutral{
+	dir = 5
+	},
+/obj/effect/turf_decal/loading_area{
+	dir = 4;
+	icon_state = "drain";
+	name = "drain"
+	},
+/obj/structure/railing/corner{
+	dir = 4
+	},
+/turf/open/floor/plasteel{
+	dir = 4;
+	icon_state = "floor_plate"
+	},
+/area/hallway/primary/fore)
 "eQn" = (
 /obj/machinery/atmospherics/pipe/simple/scrubbers/hidden/layer1{
 	dir = 5;
@@ -32160,7 +32255,7 @@
 	},
 /area/hallway/primary/central)
 "eVn" = (
-/obj/machinery/portable_atmospherics/canister/toxins,
+/obj/machinery/atmospherics/miner/toxins,
 /turf/open/floor/engine/plasma,
 /area/engineering/atmos)
 "eVu" = (
@@ -32694,7 +32789,7 @@
 /obj/structure/railing{
 	dir = 9
 	},
-/turf/open/floor/plating/asteroid/layeniaredder{
+/turf/open/floor/plating/layeniaredder{
 	icon_state = "concrete2";
 	name = "concrete"
 	},
@@ -32798,6 +32893,20 @@
 	dir = 8
 	},
 /turf/open/floor/plasteel/dark,
+/area/ruin/unpowered/no_grav)
+"faH" = (
+/obj/effect/turf_decal/stripes/line{
+	dir = 5
+	},
+/obj/machinery/atmospherics/pipe/simple/scrubbers/hidden/layer1{
+	dir = 10;
+	name = "scrubbers pipe"
+	},
+/obj/machinery/atmospherics/pipe/simple/supply/hidden/layer3{
+	dir = 10;
+	name = "air supply pipe"
+	},
+/turf/open/floor/plating,
 /area/ruin/unpowered/no_grav)
 "faM" = (
 /obj/effect/turf_decal/loading_area{
@@ -33004,7 +33113,7 @@
 	icon_state = "line";
 	name = "line"
 	},
-/turf/open/floor/plating/asteroid/layeniaredder{
+/turf/open/floor/plating/layeniaredder{
 	icon_state = "concrete2";
 	name = "concrete"
 	},
@@ -33081,7 +33190,7 @@
 	dir = 1
 	},
 /obj/structure/fans/tiny/invisible,
-/turf/open/floor/plating/asteroid/layeniaredder{
+/turf/open/floor/plating/layeniaredder{
 	icon_state = "layenia4"
 	},
 /area/hallway/primary/central)
@@ -33643,7 +33752,7 @@
 /obj/effect/turf_decal/stripes/line{
 	dir = 1
 	},
-/turf/open/floor/plating/asteroid/layeniaredder{
+/turf/open/floor/plating/layeniaredder{
 	icon_state = "concrete";
 	name = "concrete"
 	},
@@ -33919,7 +34028,7 @@
 	name = "drain"
 	},
 /obj/machinery/pool/controller,
-/turf/open/floor/plating/asteroid/layeniaredder,
+/turf/open/floor/plating/layeniaredder,
 /area/security/prison)
 "fkG" = (
 /obj/structure/girder,
@@ -34039,6 +34148,13 @@
 	icon_state = "plaswhite_traction"
 	},
 /area/security/brig)
+"flu" = (
+/obj/machinery/atmospherics/pipe/simple/supply/hidden/layer3{
+	dir = 1;
+	name = "air supply pipe"
+	},
+/turf/open/floor/plating,
+/area/construction)
 "flz" = (
 /obj/effect/turf_decal/tile/neutral{
 	dir = 5
@@ -34222,7 +34338,7 @@
 	dir = 8;
 	pixel_x = -7
 	},
-/turf/open/floor/plating/asteroid/layeniaredder,
+/turf/open/floor/plating/layeniaredder,
 /area/security/prison)
 "fna" = (
 /obj/effect/turf_decal/delivery,
@@ -34267,7 +34383,7 @@
 	dir = 4
 	},
 /obj/machinery/atmospherics/pipe/simple/orange/hidden,
-/turf/open/floor/plating/asteroid/layeniaredder,
+/turf/open/floor/plating/layeniaredder,
 /area/ruin/unpowered/no_grav)
 "fnH" = (
 /obj/structure/cable{
@@ -34871,7 +34987,7 @@
 	icon_state = "floor5"
 	},
 /obj/effect/turf_decal/stripes/line,
-/turf/open/floor/plating/asteroid/layeniaredder{
+/turf/open/floor/plating/layeniaredder{
 	icon_state = "concrete2";
 	name = "concrete"
 	},
@@ -35009,6 +35125,19 @@
 	icon_state = "darkfull_plate"
 	},
 /area/hallway/primary/starboard)
+"fum" = (
+/obj/effect/turf_decal/loading_area{
+	color = "#55391A";
+	icon_state = "siding_wood_line";
+	name = "wood"
+	},
+/obj/machinery/atmospherics/pipe/simple/scrubbers/hidden/layer1{
+	name = "scrubbers pipe"
+	},
+/turf/open/floor/plasteel/dark{
+	icon_state = "darkfull_whole_alt"
+	},
+/area/commons/fitness)
 "fup" = (
 /obj/effect/turf_decal/tile/blue{
 	dir = 1
@@ -35393,7 +35522,7 @@
 	pixel_x = 7
 	},
 /obj/effect/decal/cleanable/cobweb/cobweb2,
-/turf/open/floor/plating/asteroid/layeniaredder,
+/turf/open/floor/plating/layeniaredder,
 /area/security/prison)
 "fwU" = (
 /obj/machinery/atmospherics/components/unary/vent_pump/on/layer3{
@@ -35430,7 +35559,7 @@
 /area/hallway/primary/fore)
 "fxf" = (
 /obj/effect/decal/cleanable/oil,
-/turf/open/floor/plating/asteroid/layeniaredder{
+/turf/open/floor/plating/layeniaredder{
 	icon_state = "concrete2";
 	name = "concrete"
 	},
@@ -35711,7 +35840,7 @@
 /area/cargo/storage)
 "fzY" = (
 /obj/effect/spawner/lootdrop/maintenance,
-/turf/open/floor/plating/asteroid/layeniaredder,
+/turf/open/floor/plating/layeniaredder,
 /area/ruin/unpowered/no_grav)
 "fAe" = (
 /obj/structure/lattice/catwalk,
@@ -36054,9 +36183,14 @@
 /area/hallway/primary/starboard)
 "fDa" = (
 /obj/item/toy/figure/syndie,
-/turf/open/floor/plating{
-	icon_state = "panelscorched"
+/obj/effect/decal/cleanable/semen{
+	icon_state = "milk1";
+	pixel_x = 6
 	},
+/obj/effect/decal/cleanable/semendrip{
+	icon_state = "drip5"
+	},
+/turf/open/floor/plasteel/dark,
 /area/security/prison)
 "fDb" = (
 /obj/machinery/atmospherics/pipe/manifold/scrubbers/hidden/layer1{
@@ -36200,7 +36334,7 @@
 /area/maintenance/bar)
 "fDQ" = (
 /obj/effect/decal/cleanable/cobweb,
-/turf/open/floor/plating/asteroid/layeniaredder,
+/turf/open/floor/plating/layeniaredder,
 /area/ruin/unpowered/no_grav)
 "fDS" = (
 /obj/effect/turf_decal/loading_area{
@@ -36337,7 +36471,7 @@
 /obj/structure/fence/corner{
 	dir = 4
 	},
-/turf/open/floor/plating/asteroid/layeniaredder{
+/turf/open/floor/plating/layeniaredder{
 	icon_state = "concrete";
 	name = "concrete"
 	},
@@ -36506,7 +36640,7 @@
 /obj/effect/turf_decal/stripes/line{
 	dir = 4
 	},
-/turf/open/floor/plating/asteroid/layeniaredder{
+/turf/open/floor/plating/layeniaredder{
 	icon_state = "concrete2";
 	name = "concrete"
 	},
@@ -37039,7 +37173,7 @@
 	icon_state = "half_stairs_wood";
 	name = "wood steps"
 	},
-/turf/open/floor/plating/asteroid/layeniaredder,
+/turf/open/floor/plating/layeniaredder,
 /area/ruin/unpowered/no_grav)
 "fKm" = (
 /obj/effect/turf_decal/loading_area{
@@ -37376,10 +37510,6 @@
 /turf/open/pool,
 /area/security/prison)
 "fMs" = (
-/obj/machinery/airalarm{
-	dir = 4;
-	pixel_x = -23
-	},
 /obj/effect/turf_decal/tile/neutral,
 /obj/effect/turf_decal/tile/neutral{
 	dir = 4
@@ -37389,6 +37519,10 @@
 	},
 /obj/effect/turf_decal/tile/neutral{
 	dir = 8
+	},
+/obj/machinery/camera{
+	c_tag = "Xenoarchaeology Access";
+	dir = 5
 	},
 /turf/open/floor/plasteel/dark,
 /area/science)
@@ -37639,7 +37773,7 @@
 /area/medical/medbay/central)
 "fOd" = (
 /obj/item/toy/beach_ball/holoball,
-/turf/open/floor/plating/asteroid/layeniaredder{
+/turf/open/floor/plating/layeniaredder{
 	icon_state = "concrete";
 	name = "concrete"
 	},
@@ -37717,7 +37851,7 @@
 "fPs" = (
 /obj/effect/decal/cleanable/dirt,
 /obj/effect/decal/cleanable/oil,
-/turf/open/floor/plating/asteroid/layeniaredder{
+/turf/open/floor/plating/layeniaredder{
 	icon_state = "concrete2";
 	name = "concrete"
 	},
@@ -37809,6 +37943,13 @@
 	},
 /obj/effect/mapping_helpers/airlock/cyclelink_helper,
 /obj/structure/fans/tiny,
+/obj/machinery/atmospherics/pipe/simple/scrubbers/hidden/layer1{
+	name = "scrubbers pipe"
+	},
+/obj/machinery/atmospherics/pipe/simple/supply/hidden/layer3{
+	dir = 1;
+	name = "air supply pipe"
+	},
 /turf/open/floor/plating,
 /area/construction)
 "fQJ" = (
@@ -38112,7 +38253,7 @@
 	icon_state = "line";
 	name = "line"
 	},
-/turf/open/floor/plating/asteroid/layeniaredder{
+/turf/open/floor/plating/layeniaredder{
 	icon_state = "concrete2";
 	name = "concrete"
 	},
@@ -38171,7 +38312,7 @@
 /obj/effect/turf_decal/stripes/white/line{
 	dir = 8
 	},
-/turf/open/floor/plating/asteroid/layeniaredder,
+/turf/open/floor/plating/layeniaredder,
 /area/ruin/unpowered/no_grav)
 "fTm" = (
 /obj/machinery/recycler,
@@ -38491,6 +38632,14 @@
 /obj/effect/turf_decal/stripes/line,
 /obj/effect/turf_decal/stripes/line{
 	dir = 1
+	},
+/obj/machinery/atmospherics/pipe/simple/scrubbers/hidden/layer1{
+	dir = 4;
+	name = "scrubbers pipe"
+	},
+/obj/machinery/atmospherics/pipe/simple/supply/hidden/layer3{
+	dir = 8;
+	name = "air supply pipe"
 	},
 /turf/open/floor/plating,
 /area/ruin/unpowered/no_grav)
@@ -39157,6 +39306,29 @@
 /obj/effect/turf_decal/tile/neutral,
 /turf/open/floor/plasteel,
 /area/hallway/primary/starboard)
+"gbg" = (
+/obj/structure/cable{
+	icon_state = "1-2"
+	},
+/obj/machinery/atmospherics/pipe/simple/scrubbers/hidden/layer1{
+	name = "scrubbers pipe"
+	},
+/obj/machinery/atmospherics/pipe/simple/supply/hidden/layer3{
+	name = "air supply pipe"
+	},
+/turf/open/floor/plating,
+/area/maintenance/port/fore)
+"gbh" = (
+/obj/machinery/atmospherics/pipe/simple/scrubbers/hidden/layer1{
+	dir = 4;
+	name = "scrubbers pipe"
+	},
+/obj/machinery/atmospherics/pipe/simple/supply/hidden/layer3{
+	dir = 8;
+	name = "air supply pipe"
+	},
+/turf/open/floor/plating/layeniaredder,
+/area/ruin/unpowered/no_grav)
 "gbm" = (
 /obj/effect/turf_decal/stripes/line{
 	dir = 8
@@ -39453,7 +39625,7 @@
 /obj/effect/turf_decal/stripes/line{
 	dir = 8
 	},
-/turf/open/floor/plating/asteroid/layeniaredder{
+/turf/open/floor/plating/layeniaredder{
 	icon_state = "concrete2";
 	name = "concrete"
 	},
@@ -39918,7 +40090,7 @@
 	roundstart_template = /datum/map_template/shuttle/arrival/box;
 	width = 7
 	},
-/turf/open/floor/plating/asteroid/layeniaredder{
+/turf/open/floor/plating/layeniaredder{
 	icon_state = "concrete2";
 	name = "concrete"
 	},
@@ -39994,7 +40166,7 @@
 	name = "line"
 	},
 /obj/item/toy/beach_ball/holoball,
-/turf/open/floor/plating/asteroid/layeniaredder{
+/turf/open/floor/plating/layeniaredder{
 	icon_state = "concrete2";
 	name = "concrete"
 	},
@@ -41919,7 +42091,7 @@
 /obj/structure/railing{
 	dir = 5
 	},
-/turf/open/floor/plating/asteroid/layeniaredder,
+/turf/open/floor/plating/layeniaredder,
 /area/ruin/unpowered/no_grav)
 "gyQ" = (
 /obj/machinery/camera/motion{
@@ -42135,7 +42307,7 @@
 	lootcount = 2;
 	name = "2maintenance loot spawner"
 	},
-/turf/open/floor/plating/asteroid/layeniaredder{
+/turf/open/floor/plating/layeniaredder{
 	icon_state = "concrete";
 	name = "concrete"
 	},
@@ -42306,7 +42478,7 @@
 	dir = 10
 	},
 /obj/structure/lattice/catwalk,
-/turf/open/floor/plating/asteroid/layeniaredder,
+/turf/open/floor/plating/layeniaredder,
 /area/ruin/unpowered/no_grav)
 "gBN" = (
 /obj/machinery/atmospherics/pipe/simple/yellow/visible/layer1{
@@ -42490,7 +42662,7 @@
 /obj/effect/decal/cleanable/oil{
 	icon_state = "floor6"
 	},
-/turf/open/floor/plating/asteroid/layeniaredder{
+/turf/open/floor/plating/layeniaredder{
 	icon_state = "concrete2";
 	name = "concrete"
 	},
@@ -43282,7 +43454,7 @@
 	dir = 4;
 	pixel_x = 7
 	},
-/turf/open/floor/plating/asteroid/layeniasand,
+/turf/open/floor/grass/layeniasand,
 /area/ruin/unpowered/no_grav)
 "gJz" = (
 /obj/effect/turf_decal/loading_area{
@@ -43378,7 +43550,7 @@
 /area/cargo/storage)
 "gKa" = (
 /obj/item/stack/sheet/mineral/wood,
-/turf/open/floor/plating/asteroid/layeniaredder,
+/turf/open/floor/plating/layeniaredder,
 /area/ruin/unpowered/no_grav)
 "gKd" = (
 /obj/effect/spawner/structure/window/reinforced,
@@ -43568,7 +43740,7 @@
 /obj/structure/railing{
 	dir = 8
 	},
-/turf/open/floor/plating/asteroid/layeniaredder,
+/turf/open/floor/plating/layeniaredder,
 /area/ruin/unpowered/no_grav)
 "gLF" = (
 /obj/structure/cable{
@@ -43645,7 +43817,7 @@
 /obj/structure/railing{
 	dir = 10
 	},
-/turf/open/floor/plating/asteroid/layeniaredder{
+/turf/open/floor/plating/layeniaredder{
 	icon_state = "concrete2";
 	name = "concrete"
 	},
@@ -43841,7 +44013,7 @@
 /obj/effect/decal/cleanable/oil{
 	icon_state = "floor5"
 	},
-/turf/open/floor/plating/asteroid/layeniaredder{
+/turf/open/floor/plating/layeniaredder{
 	icon_state = "concrete";
 	name = "concrete"
 	},
@@ -44334,7 +44506,7 @@
 /obj/effect/turf_decal/stripes/corner{
 	dir = 8
 	},
-/turf/open/floor/plating/asteroid/layeniaredder{
+/turf/open/floor/plating/layeniaredder{
 	icon_state = "concrete2";
 	name = "concrete"
 	},
@@ -44468,7 +44640,7 @@
 /obj/structure/railing/corner{
 	dir = 4
 	},
-/turf/open/floor/plating/asteroid/layeniaredder,
+/turf/open/floor/plating/layeniaredder,
 /area/ruin/unpowered/no_grav)
 "gSB" = (
 /obj/effect/turf_decal/tile/green{
@@ -44790,7 +44962,7 @@
 	dir = 8;
 	pixel_x = -7
 	},
-/turf/open/floor/plating/asteroid/layeniaredder,
+/turf/open/floor/plating/layeniaredder,
 /area/ruin/unpowered/no_grav)
 "gWv" = (
 /obj/structure/disposalpipe/segment{
@@ -44809,7 +44981,7 @@
 /area/security/prison)
 "gWy" = (
 /obj/effect/decal/cleanable/oil,
-/turf/open/floor/plating/asteroid/layeniaredder,
+/turf/open/floor/plating/layeniaredder,
 /area/ruin/unpowered/no_grav)
 "gWA" = (
 /obj/structure/table,
@@ -46186,7 +46358,7 @@
 /obj/structure/fence{
 	dir = 4
 	},
-/turf/open/floor/plating/asteroid/layeniaredder{
+/turf/open/floor/plating/layeniaredder{
 	icon_state = "concrete";
 	name = "concrete"
 	},
@@ -46434,7 +46606,7 @@
 /obj/structure/railing/corner{
 	dir = 4
 	},
-/turf/open/floor/plating/asteroid/layeniaredder{
+/turf/open/floor/plating/layeniaredder{
 	icon_state = "concrete2";
 	name = "concrete"
 	},
@@ -46620,7 +46792,7 @@
 /turf/open/floor/plasteel,
 /area/engineering/atmos)
 "hjQ" = (
-/turf/open/floor/plating/asteroid/layeniaredder,
+/turf/open/floor/plating/layeniaredder,
 /area/ruin/unpowered/no_grav)
 "hjW" = (
 /obj/effect/turf_decal/tile/brown{
@@ -46745,7 +46917,7 @@
 /area/cargo/office)
 "hkD" = (
 /obj/structure/closet/emcloset,
-/turf/open/floor/plating/asteroid/layeniaredder{
+/turf/open/floor/plating/layeniaredder{
 	icon_state = "concrete";
 	name = "concrete"
 	},
@@ -47266,6 +47438,14 @@
 /obj/effect/turf_decal/stripes/corner{
 	dir = 8
 	},
+/obj/machinery/atmospherics/pipe/simple/scrubbers/hidden/layer1{
+	dir = 4;
+	name = "scrubbers pipe"
+	},
+/obj/machinery/atmospherics/pipe/simple/supply/hidden/layer3{
+	dir = 8;
+	name = "air supply pipe"
+	},
 /turf/open/floor/plating,
 /area/ruin/unpowered/no_grav)
 "hoy" = (
@@ -47567,7 +47747,7 @@
 /obj/machinery/light{
 	pixel_y = -1
 	},
-/turf/open/floor/plating/asteroid/layeniaredder,
+/turf/open/floor/plating/layeniaredder,
 /area/ruin/unpowered/no_grav)
 "hqx" = (
 /obj/machinery/light{
@@ -47932,7 +48112,7 @@
 /area/commons/fitness)
 "hut" = (
 /obj/structure/fans/tiny/invisible,
-/turf/open/floor/plating/asteroid/layeniaredder,
+/turf/open/floor/plating/layeniaredder,
 /area/hallway/primary/port/fore)
 "hux" = (
 /obj/machinery/camera{
@@ -48121,6 +48301,16 @@
 	icon_state = "floor_plate"
 	},
 /area/hallway/primary/central)
+"hvO" = (
+/obj/machinery/atmospherics/pipe/manifold/scrubbers/hidden/layer1{
+	dir = 8;
+	name = "scrubbers pipe"
+	},
+/turf/open/floor/wood{
+	icon_state = "wood_large";
+	name = "large"
+	},
+/area/commons/fitness)
 "hvQ" = (
 /obj/structure/disposalpipe/segment{
 	dir = 4
@@ -48434,7 +48624,7 @@
 /area/construction)
 "hyl" = (
 /obj/effect/decal/cleanable/dirt,
-/turf/open/floor/plating/asteroid/layeniaredder{
+/turf/open/floor/plating/layeniaredder{
 	icon_state = "concrete";
 	name = "concrete"
 	},
@@ -48855,7 +49045,7 @@
 /obj/structure/closet/crate,
 /obj/item/shovel,
 /obj/item/shovel,
-/turf/open/floor/plating/asteroid/layeniaredder,
+/turf/open/floor/plating/layeniaredder,
 /area/ruin/unpowered/no_grav)
 "hBR" = (
 /obj/machinery/atmospherics/components/unary/outlet_injector/on{
@@ -49587,7 +49777,7 @@
 /obj/structure/railing/corner{
 	dir = 8
 	},
-/turf/open/floor/plating/asteroid/layeniaredder{
+/turf/open/floor/plating/layeniaredder{
 	icon_state = "concrete2";
 	name = "concrete"
 	},
@@ -49785,7 +49975,7 @@
 	pixel_y = 19
 	},
 /obj/item/stack/ore/iron,
-/turf/open/floor/plating/asteroid/layeniaredder,
+/turf/open/floor/plating/layeniaredder,
 /area/ruin/unpowered/no_grav)
 "hJa" = (
 /obj/structure/table/wood,
@@ -50168,14 +50358,14 @@
 /obj/effect/turf_decal/stripes/corner{
 	dir = 4
 	},
-/turf/open/floor/plating/asteroid/layeniaredder{
+/turf/open/floor/plating/layeniaredder{
 	icon_state = "concrete2";
 	name = "concrete"
 	},
 /area/ruin/unpowered/no_grav)
 "hLD" = (
 /obj/effect/turf_decal/stripes/end,
-/turf/open/floor/plating/asteroid/layeniaredder{
+/turf/open/floor/plating/layeniaredder{
 	icon_state = "concrete2";
 	name = "concrete"
 	},
@@ -50253,6 +50443,20 @@
 	},
 /turf/open/floor/plating,
 /area/maintenance/port/aft)
+"hMd" = (
+/obj/effect/turf_decal/loading_area{
+	dir = 9;
+	icon_state = "steel_panel";
+	name = "steel pannel"
+	},
+/obj/machinery/atmospherics/pipe/simple/supply/hidden/layer3{
+	name = "air supply pipe"
+	},
+/turf/open/floor/wood{
+	icon_state = "wood_large";
+	name = "large"
+	},
+/area/commons/fitness)
 "hMe" = (
 /obj/machinery/atmospherics/pipe/simple/cyan/hidden{
 	dir = 1;
@@ -50496,6 +50700,12 @@
 	},
 /obj/structure/cable{
 	icon_state = "1-2"
+	},
+/obj/machinery/atmospherics/pipe/simple/scrubbers/hidden/layer1{
+	name = "scrubbers pipe"
+	},
+/obj/machinery/atmospherics/pipe/simple/supply/hidden/layer3{
+	name = "air supply pipe"
 	},
 /turf/open/floor/plating,
 /area/maintenance/port/fore)
@@ -50934,7 +51144,7 @@
 	layer = 4.1;
 	pixel_y = 3
 	},
-/turf/open/floor/plating/asteroid/layeniaredder{
+/turf/open/floor/plating/layeniaredder{
 	icon_state = "concrete2";
 	name = "concrete"
 	},
@@ -50957,7 +51167,7 @@
 /area/command/bridge)
 "hRQ" = (
 /obj/machinery/camera/preset/toxins,
-/turf/open/floor/plating/asteroid/layeniaredder,
+/turf/open/floor/plating/layeniaredder,
 /area/ruin/unpowered/no_grav)
 "hRZ" = (
 /obj/effect/turf_decal/delivery,
@@ -52018,6 +52228,17 @@
 	name = "large"
 	},
 /area/security/brig)
+"hZF" = (
+/obj/machinery/atmospherics/pipe/simple/scrubbers/hidden/layer1{
+	dir = 5;
+	name = "scrubbers pipe"
+	},
+/obj/machinery/atmospherics/pipe/simple/supply/hidden/layer3{
+	dir = 1;
+	name = "air supply pipe"
+	},
+/turf/open/floor/plating,
+/area/construction)
 "hZU" = (
 /obj/machinery/light{
 	dir = 4;
@@ -52049,7 +52270,7 @@
 	dir = 4;
 	pixel_x = 7
 	},
-/turf/open/floor/plating/asteroid/layeniaredder{
+/turf/open/floor/plating/layeniaredder{
 	icon_state = "concrete2";
 	name = "concrete"
 	},
@@ -52317,7 +52538,7 @@
 /obj/structure/railing{
 	dir = 9
 	},
-/turf/open/floor/plating/asteroid/layeniaredder,
+/turf/open/floor/plating/layeniaredder,
 /area/ruin/unpowered/no_grav)
 "ibS" = (
 /obj/structure/table,
@@ -52600,7 +52821,7 @@
 "idZ" = (
 /obj/structure/railing,
 /obj/structure/lattice/catwalk,
-/turf/open/floor/plating/asteroid/layeniaredder,
+/turf/open/floor/plating/layeniaredder,
 /area/ruin/unpowered/no_grav)
 "iee" = (
 /obj/effect/turf_decal/loading_area{
@@ -52686,8 +52907,9 @@
 	icon_state = "steel_panel";
 	name = "steel pannel"
 	},
-/obj/structure/fence/handrail{
-	pixel_y = 15
+/obj/effect/turf_decal/loading_area{
+	icon_state = "ledge_short";
+	name = "short ledge"
 	},
 /turf/open/floor/plasteel/dark{
 	icon_state = "darkfull_plate"
@@ -52971,6 +53193,10 @@
 	icon_state = "floor_whole_alt"
 	},
 /area/commons/storage/tools)
+"ihx" = (
+/obj/structure/fans/tiny/invisible,
+/turf/open/space/basic,
+/area/ruin/unpowered/no_grav)
 "ihA" = (
 /obj/machinery/status_display{
 	pixel_x = -32
@@ -53249,7 +53475,7 @@
 	dir = 4;
 	pixel_x = 7
 	},
-/turf/open/floor/plating/asteroid/layeniaredder,
+/turf/open/floor/plating/layeniaredder,
 /area/ruin/unpowered/no_grav)
 "ikL" = (
 /obj/structure/cable{
@@ -54075,7 +54301,7 @@
 	icon_state = "half_stairs";
 	name = "steps"
 	},
-/turf/open/floor/plating/asteroid/layeniaredder,
+/turf/open/floor/plating/layeniaredder,
 /area/ruin/unpowered/no_grav)
 "iqu" = (
 /obj/structure/table,
@@ -54205,7 +54431,7 @@
 /area/medical/medbay/central)
 "irn" = (
 /obj/effect/turf_decal/caution/stand_clear,
-/turf/open/floor/plating/asteroid/layeniaredder{
+/turf/open/floor/plating/layeniaredder{
 	icon_state = "concrete2";
 	name = "concrete"
 	},
@@ -55096,7 +55322,7 @@
 	roundstart_template = /datum/map_template/shuttle/mining/box;
 	width = 7
 	},
-/turf/open/floor/plating/asteroid/layeniaredder{
+/turf/open/floor/plating/layeniaredder{
 	icon_state = "concrete2";
 	name = "concrete"
 	},
@@ -55373,7 +55599,7 @@
 /obj/structure/closet/crate{
 	icon_state = "crateopen"
 	},
-/turf/open/floor/plating/asteroid/layeniaredder,
+/turf/open/floor/plating/layeniaredder,
 /area/ruin/unpowered/no_grav)
 "iBs" = (
 /obj/effect/turf_decal/loading_area{
@@ -55874,7 +56100,7 @@
 	icon_state = "ledge_short";
 	name = "short ledge"
 	},
-/turf/open/floor/plating/asteroid/layeniaredder,
+/turf/open/floor/plating/layeniaredder,
 /area/ruin/unpowered/no_grav)
 "iFH" = (
 /obj/machinery/door/airlock/maintenance{
@@ -56387,7 +56613,7 @@
 "iJi" = (
 /obj/structure/table,
 /obj/effect/spawner/lootdrop/maintenance,
-/turf/open/floor/plating/asteroid/layeniaredder,
+/turf/open/floor/plating/layeniaredder,
 /area/ruin/unpowered/no_grav)
 "iJt" = (
 /obj/effect/turf_decal/loading_area{
@@ -56404,14 +56630,16 @@
 /turf/open/space/basic,
 /area/space)
 "iJy" = (
-/obj/structure/window/reinforced{
-	dir = 4
+/obj/effect/turf_decal/loading_area{
+	color = "#55391A";
+	dir = 9;
+	icon_state = "siding_wood_line";
+	name = "wood"
 	},
-/obj/structure/window/reinforced{
-	dir = 1;
-	layer = 2.9
+/turf/open/floor/wood{
+	icon_state = "wood_parquet";
+	name = "parquet"
 	},
-/turf/open/openspace,
 /area/medical/medbay/central)
 "iJH" = (
 /obj/structure/chair/sofa,
@@ -56779,8 +57007,17 @@
 /area/cargo/sorting)
 "iMC" = (
 /obj/machinery/space_heater,
-/turf/open/floor/plating/asteroid/layeniaredder,
+/turf/open/floor/plating/layeniaredder,
 /area/security/prison)
+"iMI" = (
+/obj/machinery/atmospherics/pipe/simple/scrubbers/hidden/layer1{
+	name = "scrubbers pipe"
+	},
+/obj/machinery/atmospherics/pipe/simple/supply/hidden/layer3{
+	name = "air supply pipe"
+	},
+/turf/closed/wall,
+/area/maintenance/port)
 "iMM" = (
 /obj/effect/turf_decal/stripes/box,
 /turf/open/floor/plasteel/dark{
@@ -56993,6 +57230,19 @@
 	icon_state = "whitehall_plate"
 	},
 /area/hallway/primary/starboard)
+"iOm" = (
+/obj/effect/turf_decal/stripes/line{
+	dir = 1
+	},
+/obj/machinery/atmospherics/pipe/simple/scrubbers/hidden/layer1{
+	name = "scrubbers pipe"
+	},
+/obj/machinery/atmospherics/pipe/simple/supply/hidden/layer3{
+	dir = 1;
+	name = "air supply pipe"
+	},
+/turf/open/floor/plating,
+/area/ruin/unpowered/no_grav)
 "iOr" = (
 /obj/machinery/atmospherics/pipe/simple/supply/hidden/layer3{
 	dir = 8;
@@ -57150,7 +57400,7 @@
 /obj/structure/railing{
 	dir = 1
 	},
-/turf/open/floor/plating/asteroid/layeniaredder,
+/turf/open/floor/plating/layeniaredder,
 /area/ruin/unpowered/no_grav)
 "iPu" = (
 /obj/structure/disposalpipe/segment{
@@ -57240,7 +57490,7 @@
 	dir = 1;
 	pixel_y = 16
 	},
-/turf/open/floor/plating/asteroid/layeniaredder,
+/turf/open/floor/plating/layeniaredder,
 /area/ruin/unpowered/no_grav)
 "iQn" = (
 /obj/effect/turf_decal/loading_area{
@@ -57253,12 +57503,6 @@
 /turf/open/floor/glass/reinforced,
 /area/space)
 "iQp" = (
-/obj/effect/turf_decal/loading_area{
-	color = "#55391A";
-	dir = 8;
-	icon_state = "siding_wood_line";
-	name = "wood"
-	},
 /obj/structure/easel,
 /turf/open/floor/wood{
 	icon_state = "wood_parquet";
@@ -57696,7 +57940,7 @@
 /obj/structure/railing/corner{
 	dir = 1
 	},
-/turf/open/floor/plating/asteroid/layeniaredder{
+/turf/open/floor/plating/layeniaredder{
 	icon_state = "concrete2";
 	name = "concrete"
 	},
@@ -58442,7 +58686,7 @@
 /obj/structure/railing{
 	dir = 5
 	},
-/turf/open/floor/plating/asteroid/layeniaredder{
+/turf/open/floor/plating/layeniaredder{
 	icon_state = "concrete2";
 	name = "concrete"
 	},
@@ -58950,6 +59194,16 @@
 	},
 /turf/open/floor/plasteel/dark,
 /area/service/hydroponics)
+"jde" = (
+/obj/machinery/atmospherics/pipe/simple/supply/hidden/layer3{
+	dir = 10;
+	name = "air supply pipe"
+	},
+/turf/open/floor/wood{
+	icon_state = "wood_large";
+	name = "large"
+	},
+/area/commons/fitness)
 "jdf" = (
 /obj/machinery/atmospherics/pipe/simple/supply/hidden/layer3{
 	name = "air supply pipe"
@@ -59249,11 +59503,14 @@
 /obj/structure/sign/poster/contraband/rebels_unite{
 	pixel_x = -32
 	},
-/obj/effect/decal/cleanable/blood/old,
-/obj/effect/decal/cleanable/ash/large,
-/turf/open/floor/plating{
-	icon_state = "platingdmg1"
+/obj/item/bdsm_whip/ridingcrop,
+/obj/effect/decal/cleanable/semendrip{
+	icon_state = "drip5"
 	},
+/obj/effect/decal/cleanable/semendrip{
+	icon_state = "drip3"
+	},
+/turf/open/floor/plasteel/dark,
 /area/security/prison)
 "jgW" = (
 /obj/effect/turf_decal/stripes/line{
@@ -59527,7 +59784,7 @@
 	},
 /obj/structure/window/reinforced,
 /obj/structure/fans/tiny/invisible,
-/turf/open/floor/plating/asteroid/layeniaredder{
+/turf/open/floor/plating/layeniaredder{
 	icon_state = "layenia4"
 	},
 /area/hallway/primary/central)
@@ -59636,7 +59893,7 @@
 /obj/structure/railing{
 	dir = 9
 	},
-/turf/open/floor/plating/asteroid/layeniaredder{
+/turf/open/floor/plating/layeniaredder{
 	icon_state = "concrete2";
 	name = "concrete"
 	},
@@ -60271,7 +60528,7 @@
 /area/cargo/sorting)
 "jnL" = (
 /obj/effect/decal/cleanable/dirt,
-/turf/open/floor/plating/asteroid/layeniaredder,
+/turf/open/floor/plating/layeniaredder,
 /area/ruin/unpowered/no_grav)
 "jnR" = (
 /obj/machinery/light{
@@ -60558,7 +60815,7 @@
 /obj/effect/turf_decal/stripes/line{
 	dir = 8
 	},
-/turf/open/floor/plating/asteroid/layeniaredder{
+/turf/open/floor/plating/layeniaredder{
 	icon_state = "concrete2";
 	name = "concrete"
 	},
@@ -61914,9 +62171,8 @@
 /obj/effect/turf_decal/tile/neutral{
 	dir = 8
 	},
-/obj/machinery/camera{
-	c_tag = "Xenoarchaeology Access";
-	dir = 5
+/obj/item/reagent_containers/glass/bowl/mushroom_bowl{
+	pixel_y = -7
 	},
 /turf/open/floor/plasteel/dark,
 /area/science)
@@ -62396,7 +62652,7 @@
 /obj/machinery/light{
 	pixel_y = -1
 	},
-/turf/open/floor/plating/asteroid/layeniaredder,
+/turf/open/floor/plating/layeniaredder,
 /area/ruin/unpowered/no_grav)
 "jCW" = (
 /obj/structure/table,
@@ -62440,6 +62696,10 @@
 /obj/structure/cable{
 	icon_state = "2-8"
 	},
+/obj/machinery/atmospherics/components/unary/vent_pump/on/layer3{
+	dir = 1;
+	name = "air vent"
+	},
 /turf/open/floor/plating,
 /area/maintenance/solars/port/aft)
 "jDh" = (
@@ -62477,7 +62737,7 @@
 	dir = 4
 	},
 /obj/effect/decal/cleanable/dirt,
-/turf/open/floor/plating/asteroid/layeniaredder{
+/turf/open/floor/plating/layeniaredder{
 	icon_state = "concrete2";
 	name = "concrete"
 	},
@@ -62567,8 +62827,8 @@
 	icon_state = "drain";
 	name = "drain"
 	},
-/turf/open/floor/plating/asteroid/layenia{
-	icon_state = "layenia_dug"
+/turf/open/floor/plating/layeniaredder{
+	icon_state = "layenia4"
 	},
 /area/hallway/primary/port/fore)
 "jDS" = (
@@ -63266,7 +63526,7 @@
 	name = "visible"
 	},
 /obj/machinery/atmospherics/pipe/simple/purple/visible,
-/turf/open/floor/plating/asteroid/layeniaredder,
+/turf/open/floor/plating/layeniaredder,
 /area/ruin/unpowered/no_grav)
 "jIs" = (
 /obj/structure/table,
@@ -63607,7 +63867,7 @@
 	icon_state = "1-2"
 	},
 /obj/effect/decal/cleanable/dirt,
-/turf/open/floor/plating/asteroid/layeniaredder{
+/turf/open/floor/plating/layeniaredder{
 	icon_state = "concrete2";
 	name = "concrete"
 	},
@@ -63667,7 +63927,7 @@
 /obj/structure/railing{
 	dir = 6
 	},
-/turf/open/floor/plating/asteroid/layeniaredder{
+/turf/open/floor/plating/layeniaredder{
 	icon_state = "concrete2";
 	name = "concrete"
 	},
@@ -63953,7 +64213,7 @@
 /obj/structure/fence/door{
 	dir = 4
 	},
-/turf/open/floor/plating/asteroid/layeniaredder,
+/turf/open/floor/plating/layeniaredder,
 /area/ruin/unpowered/no_grav)
 "jOc" = (
 /obj/structure/sign/painting/library{
@@ -64866,6 +65126,22 @@
 /obj/effect/decal/cleanable/dirt,
 /turf/open/floor/plating,
 /area/engineering/main)
+"jUI" = (
+/obj/structure/cable{
+	icon_state = "4-8"
+	},
+/obj/machinery/atmospherics/pipe/simple/scrubbers/hidden/layer1{
+	dir = 4;
+	name = "scrubbers pipe"
+	},
+/obj/machinery/atmospherics/pipe/simple/supply/hidden/layer3{
+	dir = 8;
+	name = "air supply pipe"
+	},
+/turf/open/floor/plasteel/stairs/right{
+	dir = 8
+	},
+/area/ruin/unpowered/no_grav)
 "jUJ" = (
 /obj/structure/lattice/catwalk,
 /obj/structure/fans/tiny/invisible,
@@ -65279,7 +65555,7 @@
 	dir = 8;
 	pixel_x = -7
 	},
-/turf/open/floor/plating/asteroid/layeniaredder{
+/turf/open/floor/plating/layeniaredder{
 	icon_state = "concrete2";
 	name = "concrete"
 	},
@@ -65608,7 +65884,7 @@
 /obj/effect/turf_decal/stripes/corner{
 	dir = 1
 	},
-/turf/open/floor/plating/asteroid/layeniaredder,
+/turf/open/floor/plating/layeniaredder,
 /area/ruin/unpowered/no_grav)
 "kag" = (
 /obj/structure/cable{
@@ -65950,7 +66226,7 @@
 /area/security/brig)
 "kcE" = (
 /obj/item/beacon,
-/turf/open/floor/plating/asteroid/layeniaredder,
+/turf/open/floor/plating/layeniaredder,
 /area/ruin/unpowered/no_grav)
 "kcK" = (
 /obj/machinery/atmospherics/pipe/simple/cyan/visible{
@@ -66398,7 +66674,7 @@
 	icon_state = "siding_wood_line";
 	name = "wood"
 	},
-/turf/open/floor/plating/asteroid/layeniaredder,
+/turf/open/floor/plating/layeniaredder,
 /area/ruin/unpowered/no_grav)
 "kgv" = (
 /obj/machinery/atmospherics/components/trinary/filter/atmos/co2{
@@ -66675,14 +66951,14 @@
 /turf/open/floor/plasteel,
 /area/command/bridge)
 "kjs" = (
-/obj/effect/turf_decal/loading_area{
-	color = "#55391A";
-	dir = 9;
-	icon_state = "siding_wood_line";
-	name = "wood"
-	},
 /obj/structure/chair/sofa/corner{
 	dir = 4
+	},
+/obj/effect/turf_decal/loading_area{
+	color = "#55391A";
+	dir = 1;
+	icon_state = "siding_wood_line";
+	name = "wood"
 	},
 /turf/open/floor/wood{
 	icon_state = "wood_parquet";
@@ -67380,7 +67656,7 @@
 	},
 /obj/effect/turf_decal/stripes/line,
 /obj/structure/railing,
-/turf/open/floor/plating/asteroid/layeniaredder{
+/turf/open/floor/plating/layeniaredder{
 	icon_state = "concrete2";
 	name = "concrete"
 	},
@@ -67818,6 +68094,16 @@
 	icon_state = "darkfull_whole_alt"
 	},
 /area/service/janitor)
+"krD" = (
+/obj/machinery/atmospherics/pipe/simple/scrubbers/hidden/layer1{
+	name = "scrubbers pipe"
+	},
+/obj/machinery/atmospherics/pipe/simple/supply/hidden/layer3{
+	dir = 1;
+	name = "air supply pipe"
+	},
+/turf/open/floor/plating,
+/area/construction)
 "krG" = (
 /obj/effect/turf_decal/stripes/line,
 /obj/effect/turf_decal/stripes/line{
@@ -68104,7 +68390,7 @@
 	pixel_y = 16
 	},
 /obj/machinery/atmospherics/pipe/simple/purple/visible,
-/turf/open/floor/plating/asteroid/layeniaredder,
+/turf/open/floor/plating/layeniaredder,
 /area/ruin/unpowered/no_grav)
 "kvl" = (
 /obj/effect/turf_decal/tile/yellow{
@@ -69140,6 +69426,21 @@
 	},
 /turf/open/floor/plasteel,
 /area/ruin/unpowered/no_grav)
+"kBE" = (
+/obj/effect/turf_decal/loading_area{
+	dir = 9;
+	icon_state = "steel_panel";
+	name = "steel pannel"
+	},
+/obj/machinery/atmospherics/pipe/simple/supply/hidden/layer3{
+	dir = 5;
+	name = "air supply pipe"
+	},
+/turf/open/floor/wood{
+	icon_state = "wood_large";
+	name = "large"
+	},
+/area/commons/fitness)
 "kBF" = (
 /obj/effect/turf_decal/tile/neutral,
 /obj/effect/turf_decal/loading_area{
@@ -69834,7 +70135,7 @@
 	dir = 4;
 	pixel_x = 7
 	},
-/turf/open/floor/plating/asteroid/layeniaredder{
+/turf/open/floor/plating/layeniaredder{
 	icon_state = "concrete2";
 	name = "concrete"
 	},
@@ -70232,6 +70533,14 @@
 /obj/effect/turf_decal/stripes/corner{
 	dir = 8
 	},
+/obj/machinery/atmospherics/pipe/simple/supply/hidden/layer3{
+	dir = 5;
+	name = "air supply pipe"
+	},
+/obj/machinery/atmospherics/pipe/simple/scrubbers/hidden/layer1{
+	dir = 5;
+	name = "scrubbers pipe"
+	},
 /turf/open/floor/plating,
 /area/ruin/unpowered/no_grav)
 "kKB" = (
@@ -70271,6 +70580,14 @@
 	dir = 4
 	},
 /obj/structure/fans/tiny,
+/obj/machinery/atmospherics/pipe/simple/scrubbers/hidden/layer1{
+	dir = 4;
+	name = "scrubbers pipe"
+	},
+/obj/machinery/atmospherics/pipe/simple/supply/hidden/layer3{
+	dir = 8;
+	name = "air supply pipe"
+	},
 /turf/open/floor/plasteel/dark{
 	icon_state = "darkfull_whole_alt"
 	},
@@ -70525,7 +70842,7 @@
 /obj/effect/decal/cleanable/oil{
 	icon_state = "floor5"
 	},
-/turf/open/floor/plating/asteroid/layeniaredder{
+/turf/open/floor/plating/layeniaredder{
 	icon_state = "concrete2";
 	name = "concrete"
 	},
@@ -70768,7 +71085,7 @@
 /area/medical/medbay/central)
 "kOW" = (
 /obj/structure/ore_box,
-/turf/open/floor/plating/asteroid/layeniasand,
+/turf/open/floor/grass/layeniasand,
 /area/ruin/unpowered/no_grav)
 "kOX" = (
 /obj/structure/table/wood/fancy,
@@ -71078,7 +71395,7 @@
 /obj/effect/decal/cleanable/oil{
 	icon_state = "floor5"
 	},
-/turf/open/floor/plating/asteroid/layeniaredder{
+/turf/open/floor/plating/layeniaredder{
 	icon_state = "concrete2";
 	name = "concrete"
 	},
@@ -71193,8 +71510,6 @@
 /area/hallway/primary/central)
 "kTk" = (
 /obj/structure/closet/secure_closet/blueshield,
-/obj/item/armorkit/blueshield,
-/obj/item/armorkit/blueshield/helmet,
 /turf/open/floor/wood{
 	icon_state = "wood_tile";
 	name = "tile"
@@ -71244,7 +71559,7 @@
 /turf/open/floor/plasteel/dark,
 /area/hallway/primary/fore)
 "kTJ" = (
-/turf/open/floor/plating/asteroid/layeniaredder{
+/turf/open/floor/plating/layeniaredder{
 	icon_state = "layenia4"
 	},
 /area/ruin/unpowered/no_grav)
@@ -72118,7 +72433,7 @@
 	lootcount = 2;
 	name = "2maintenance loot spawner"
 	},
-/turf/open/floor/plating/asteroid/layeniaredder{
+/turf/open/floor/plating/layeniaredder{
 	icon_state = "concrete";
 	name = "concrete"
 	},
@@ -72401,7 +72716,7 @@
 	dir = 4
 	},
 /obj/structure/railing,
-/turf/open/floor/plating/asteroid/layeniaredder,
+/turf/open/floor/plating/layeniaredder,
 /area/ruin/unpowered/no_grav)
 "lcS" = (
 /obj/machinery/door/poddoor/shutters{
@@ -72641,7 +72956,7 @@
 /obj/structure/cable{
 	icon_state = "1-2"
 	},
-/turf/open/floor/plating/asteroid/layeniaredder{
+/turf/open/floor/plating/layeniaredder{
 	icon_state = "concrete2";
 	name = "concrete"
 	},
@@ -73380,7 +73695,7 @@
 /obj/structure/railing{
 	dir = 5
 	},
-/turf/open/floor/plating/asteroid/layeniaredder,
+/turf/open/floor/plating/layeniaredder,
 /area/ruin/unpowered/no_grav)
 "llv" = (
 /obj/structure/table/wood,
@@ -73804,7 +74119,7 @@
 /obj/structure/railing{
 	dir = 10
 	},
-/turf/open/floor/plating/asteroid/layeniaredder{
+/turf/open/floor/plating/layeniaredder{
 	icon_state = "concrete2";
 	name = "concrete"
 	},
@@ -73847,6 +74162,8 @@
 /obj/effect/turf_decal/stripes/line{
 	dir = 9
 	},
+/obj/machinery/power/apc/auto_name/west,
+/obj/effect/spawner/structure/window/plastitanium,
 /turf/open/floor/plasteel,
 /area/science)
 "lpv" = (
@@ -73869,7 +74186,7 @@
 /obj/structure/fence/corner{
 	dir = 4
 	},
-/turf/open/floor/plating/asteroid/layeniaredder,
+/turf/open/floor/plating/layeniaredder,
 /area/ruin/unpowered/no_grav)
 "lpx" = (
 /obj/machinery/atmospherics/pipe/simple/scrubbers/visible{
@@ -74153,7 +74470,7 @@
 	dir = 8;
 	name = "visible"
 	},
-/turf/open/floor/plating/asteroid/layeniaredder,
+/turf/open/floor/plating/layeniaredder,
 /area/ruin/unpowered/no_grav)
 "lrx" = (
 /obj/structure/table/reinforced,
@@ -74223,7 +74540,7 @@
 	icon_state = "linealt_corner";
 	name = "line"
 	},
-/turf/open/floor/plating/asteroid/layeniaredder{
+/turf/open/floor/plating/layeniaredder{
 	icon_state = "concrete2";
 	name = "concrete"
 	},
@@ -74262,7 +74579,7 @@
 /obj/effect/turf_decal/caution/stand_clear{
 	dir = 1
 	},
-/turf/open/floor/plating/asteroid/layeniaredder{
+/turf/open/floor/plating/layeniaredder{
 	icon_state = "concrete2";
 	name = "concrete"
 	},
@@ -74357,7 +74674,7 @@
 /area/hallway/primary/central)
 "lsP" = (
 /obj/structure/closet/crate,
-/turf/open/floor/plating/asteroid/layeniaredder,
+/turf/open/floor/plating/layeniaredder,
 /area/ruin/unpowered/no_grav)
 "lsV" = (
 /obj/machinery/atmospherics/pipe/simple/cyan/hidden{
@@ -74670,7 +74987,7 @@
 /area/engineering/storage/tech)
 "lvI" = (
 /obj/effect/decal/cleanable/oil,
-/turf/open/floor/plating/asteroid/layeniasand,
+/turf/open/floor/grass/layeniasand,
 /area/ruin/unpowered/no_grav)
 "lvJ" = (
 /obj/effect/turf_decal/tile/neutral{
@@ -74874,7 +75191,7 @@
 /area/service/theater)
 "lxO" = (
 /obj/machinery/light,
-/turf/open/floor/plating/asteroid/layeniaredder,
+/turf/open/floor/plating/layeniaredder,
 /area/ruin/unpowered/no_grav)
 "lxT" = (
 /obj/machinery/light{
@@ -75138,7 +75455,7 @@
 /obj/structure/railing/corner{
 	dir = 8
 	},
-/turf/open/floor/plating/asteroid/layeniaredder{
+/turf/open/floor/plating/layeniaredder{
 	icon_state = "concrete2";
 	name = "concrete"
 	},
@@ -75378,7 +75695,7 @@
 	dir = 8;
 	pixel_x = -7
 	},
-/turf/open/floor/plating/asteroid/layeniaredder,
+/turf/open/floor/plating/layeniaredder,
 /area/service/hydroponics/garden)
 "lBc" = (
 /obj/machinery/atmospherics/pipe/simple/cyan/visible,
@@ -76213,7 +76530,7 @@
 /turf/open/floor/wood,
 /area/service/library)
 "lHn" = (
-/turf/open/floor/plating/asteroid/layeniaredder,
+/turf/open/floor/plating/layeniaredder,
 /area/service/hydroponics/garden)
 "lHq" = (
 /obj/machinery/computer/communications,
@@ -76760,6 +77077,14 @@
 /obj/structure/fans/tiny,
 /obj/structure/cable{
 	icon_state = "4-8"
+	},
+/obj/machinery/atmospherics/pipe/simple/scrubbers/hidden/layer1{
+	dir = 4;
+	name = "scrubbers pipe"
+	},
+/obj/machinery/atmospherics/pipe/simple/supply/hidden/layer3{
+	dir = 8;
+	name = "air supply pipe"
 	},
 /turf/open/floor/plating,
 /area/maintenance/solars/aux/port)
@@ -77904,7 +78229,7 @@
 	dir = 8
 	},
 /obj/structure/lattice/catwalk,
-/turf/open/floor/plating/asteroid/layeniaredder,
+/turf/open/floor/plating/layeniaredder,
 /area/ruin/unpowered/no_grav)
 "lTc" = (
 /obj/structure/chair/stool,
@@ -78091,7 +78416,7 @@
 /obj/structure/railing{
 	dir = 4
 	},
-/turf/open/floor/plating/asteroid/layeniaredder,
+/turf/open/floor/plating/layeniaredder,
 /area/ruin/unpowered/no_grav)
 "lUo" = (
 /obj/structure/chair/office/dark{
@@ -78542,7 +78867,7 @@
 /obj/effect/decal/cleanable/oil{
 	icon_state = "floor6"
 	},
-/turf/open/floor/plating/asteroid/layeniaredder,
+/turf/open/floor/plating/layeniaredder,
 /area/ruin/unpowered/no_grav)
 "lYe" = (
 /obj/structure/table/glass,
@@ -78560,7 +78885,7 @@
 	dir = 1;
 	name = "visible"
 	},
-/turf/open/floor/plating/asteroid/layeniaredder,
+/turf/open/floor/plating/layeniaredder,
 /area/ruin/unpowered/no_grav)
 "lYs" = (
 /obj/effect/decal/cleanable/dirt,
@@ -78612,7 +78937,7 @@
 /obj/effect/turf_decal/stripes/end{
 	dir = 8
 	},
-/turf/open/floor/plating/asteroid/layeniaredder{
+/turf/open/floor/plating/layeniaredder{
 	icon_state = "concrete";
 	name = "concrete"
 	},
@@ -78709,6 +79034,11 @@
 	},
 /area/commons/dorms)
 "lZt" = (
+/obj/structure/table,
+/obj/item/paper_bin{
+	pixel_x = 1;
+	pixel_y = 5
+	},
 /turf/open/floor/plasteel{
 	dir = 8;
 	icon_plating = "floor";
@@ -78862,8 +79192,9 @@
 	name = "steel pannel"
 	},
 /obj/effect/turf_decal/caution/stand_clear,
-/obj/structure/fence/handrail{
-	pixel_y = 15
+/obj/effect/turf_decal/loading_area{
+	icon_state = "ledge_short";
+	name = "short ledge"
 	},
 /turf/open/floor/plasteel/dark{
 	icon_state = "darkfull_trim"
@@ -78912,6 +79243,16 @@
 	},
 /turf/open/floor/plasteel/dark/side,
 /area/command/bridge)
+"maG" = (
+/obj/structure/cable{
+	icon_state = "4-8"
+	},
+/obj/machinery/atmospherics/components/unary/vent_scrubber/on/layer1{
+	dir = 8;
+	name = "air scrubber"
+	},
+/turf/open/floor/plating,
+/area/maintenance/solars/aux/port)
 "maL" = (
 /obj/machinery/atmospherics/pipe/simple/supply/hidden/layer3{
 	dir = 8;
@@ -79153,16 +79494,16 @@
 /obj/structure/cable{
 	icon_state = "4-8"
 	},
-/obj/machinery/atmospherics/pipe/simple/supply/hidden/layer3{
-	dir = 5;
-	name = "air supply pipe"
-	},
-/obj/machinery/atmospherics/pipe/simple/scrubbers/hidden/layer1{
-	dir = 5;
-	name = "scrubbers pipe"
-	},
 /obj/structure/cable{
 	icon_state = "1-4"
+	},
+/obj/machinery/atmospherics/pipe/manifold/scrubbers/hidden/layer1{
+	dir = 8;
+	name = "scrubbers pipe"
+	},
+/obj/machinery/atmospherics/pipe/manifold/supply/hidden/layer3{
+	dir = 8;
+	name = "air supply pipe"
 	},
 /turf/open/floor/plating,
 /area/maintenance/port)
@@ -79371,6 +79712,12 @@
 	},
 /obj/structure/cable{
 	icon_state = "1-2"
+	},
+/obj/machinery/atmospherics/pipe/simple/scrubbers/hidden/layer1{
+	name = "scrubbers pipe"
+	},
+/obj/machinery/atmospherics/pipe/simple/supply/hidden/layer3{
+	name = "air supply pipe"
 	},
 /turf/open/floor/plating,
 /area/maintenance/port/fore)
@@ -79813,7 +80160,7 @@
 	dir = 1
 	},
 /obj/effect/turf_decal/stripes/line,
-/turf/open/floor/plating/asteroid/layeniaredder{
+/turf/open/floor/plating/layeniaredder{
 	icon_state = "concrete2";
 	name = "concrete"
 	},
@@ -80969,7 +81316,7 @@
 /obj/structure/railing{
 	dir = 8
 	},
-/turf/open/floor/plating/asteroid/layeniaredder,
+/turf/open/floor/plating/layeniaredder,
 /area/ruin/unpowered/no_grav)
 "mqm" = (
 /obj/effect/turf_decal/tile/neutral{
@@ -81479,7 +81826,7 @@
 /turf/open/floor/plating,
 /area/cargo/storage)
 "mtB" = (
-/turf/open/floor/plating/asteroid/layeniaredder{
+/turf/open/floor/plating/layeniaredder{
 	icon_state = "layenia4"
 	},
 /area/command/heads_quarters/rd)
@@ -81652,6 +81999,13 @@
 	icon_state = "darkfull_whole_alt"
 	},
 /area/service/theater)
+"mvb" = (
+/obj/structure/sign/directions/science{
+	dir = 4;
+	pixel_y = 8
+	},
+/turf/closed/wall/r_wall,
+/area/hallway/primary/starboard)
 "mvd" = (
 /obj/effect/turf_decal/delivery,
 /turf/open/floor/plasteel/dark{
@@ -81665,6 +82019,15 @@
 	},
 /turf/open/floor/plasteel,
 /area/cargo/office)
+"mvR" = (
+/obj/effect/turf_decal/tile/neutral,
+/obj/effect/turf_decal/loading_area{
+	icon_state = "drain_corner";
+	name = "drain"
+	},
+/obj/structure/railing/corner,
+/turf/open/floor/plasteel,
+/area/hallway/primary/fore)
 "mvV" = (
 /obj/effect/turf_decal/stripes/line{
 	dir = 10
@@ -81852,12 +82215,6 @@
 	icon_state = "floor_plate"
 	},
 /area/science/mixing)
-"mxC" = (
-/obj/effect/turf_decal/stripes/line{
-	dir = 9
-	},
-/turf/open/floor/plasteel,
-/area/command/gateway)
 "mxD" = (
 /obj/structure/table/wood/fancy,
 /obj/item/reagent_containers/food/snacks/grown/poppy,
@@ -82200,6 +82557,10 @@
 	},
 /turf/open/floor/plasteel,
 /area/hallway/primary/central)
+"mAy" = (
+/obj/structure/railing,
+/turf/open/floor/plasteel/dark,
+/area/engineering/main)
 "mAG" = (
 /obj/structure/lattice/catwalk,
 /obj/structure/railing,
@@ -82225,7 +82586,8 @@
 /obj/structure/table,
 /obj/item/paper{
 	info = "Incase you forgot how to put a few rods in some holes there's also a TEG upstairs, thought i doubt you would need to use him, and if by any chance EVERYTHING else fails, there's also the solars systems both on the first and second floor, good luck engineers. -Ass. Alicey Marshall";
-	name = "Note from the Chief Architect"
+	name = "Note from the Chief Architect";
+	pixel_y = 7
 	},
 /turf/open/floor/plasteel{
 	dir = 4;
@@ -82346,7 +82708,7 @@
 	pixel_x = 4;
 	pixel_y = 7
 	},
-/turf/open/floor/plating/asteroid/layeniaredder,
+/turf/open/floor/plating/layeniaredder,
 /area/ruin/unpowered/no_grav)
 "mBO" = (
 /turf/open/floor/plasteel,
@@ -82568,7 +82930,7 @@
 	lootcount = 3;
 	name = "3maintenance loot spawner"
 	},
-/turf/open/floor/plating/asteroid/layeniaredder,
+/turf/open/floor/plating/layeniaredder,
 /area/ruin/unpowered/no_grav)
 "mEd" = (
 /obj/effect/turf_decal/loading_area{
@@ -83017,6 +83379,20 @@
 	icon_state = "floor_plate"
 	},
 /area/hallway/secondary/exit)
+"mHA" = (
+/obj/structure/cable{
+	icon_state = "4-8"
+	},
+/obj/machinery/atmospherics/pipe/simple/scrubbers/hidden/layer1{
+	dir = 9;
+	name = "scrubbers pipe"
+	},
+/obj/machinery/atmospherics/pipe/simple/supply/hidden/layer3{
+	dir = 10;
+	name = "air supply pipe"
+	},
+/turf/open/floor/plating,
+/area/maintenance/solars/aux/port)
 "mHG" = (
 /obj/machinery/atmospherics/pipe/simple/scrubbers/visible,
 /obj/machinery/atmospherics/pipe/simple/scrubbers/hidden/layer1{
@@ -83114,6 +83490,20 @@
 	icon_state = "plaswhite_plate"
 	},
 /area/space)
+"mIJ" = (
+/obj/structure/cable{
+	icon_state = "1-2"
+	},
+/obj/machinery/atmospherics/pipe/simple/scrubbers/hidden/layer1{
+	dir = 6;
+	name = "scrubbers pipe"
+	},
+/obj/machinery/atmospherics/pipe/simple/supply/hidden/layer3{
+	dir = 6;
+	name = "air supply pipe"
+	},
+/turf/open/floor/plating,
+/area/maintenance/port)
 "mIL" = (
 /turf/open/floor/plasteel/dark/side{
 	dir = 10
@@ -83207,7 +83597,7 @@
 	},
 /area/security/brig)
 "mJE" = (
-/turf/open/floor/plating/asteroid/layeniaredder{
+/turf/open/floor/plating/layeniaredder{
 	icon_state = "concrete";
 	name = "concrete"
 	},
@@ -83278,7 +83668,7 @@
 /area/command/bridge)
 "mJR" = (
 /obj/structure/flora/tree/jungle,
-/turf/open/floor/plating/asteroid/layeniaredder,
+/turf/open/floor/plating/layeniaredder,
 /area/ruin/unpowered/no_grav)
 "mJT" = (
 /obj/effect/turf_decal/tile/neutral{
@@ -83549,7 +83939,7 @@
 	icon_state = "drain";
 	name = "drain"
 	},
-/turf/open/floor/plating/asteroid/layeniaredder,
+/turf/open/floor/plating/layeniaredder,
 /area/security/prison)
 "mLZ" = (
 /obj/machinery/light{
@@ -84173,6 +84563,34 @@
 /turf/open/floor/plasteel{
 	dir = 1;
 	icon_state = "floor_plate"
+	},
+/area/hallway/primary/central)
+"mRB" = (
+/obj/effect/turf_decal/loading_area{
+	dir = 1;
+	icon_state = "drain";
+	name = "drain"
+	},
+/obj/machinery/door/poddoor/preopen{
+	dir = 8;
+	id = "primaryshut1";
+	name = "primary blast door"
+	},
+/obj/machinery/door/airlock/public/glass{
+	dir = 4;
+	name = "Central Access"
+	},
+/obj/effect/turf_decal/delivery,
+/obj/machinery/door/firedoor{
+	dir = 8
+	},
+/obj/structure/fans/tiny/invisible,
+/obj/structure/sign/directions/bar{
+	dir = 8;
+	pixel_y = 23
+	},
+/turf/open/floor/plasteel/dark{
+	icon_state = "darkfull_whole_alt"
 	},
 /area/hallway/primary/central)
 "mRD" = (
@@ -84885,7 +85303,7 @@
 /obj/structure/railing{
 	dir = 6
 	},
-/turf/open/floor/plating/asteroid/layeniaredder,
+/turf/open/floor/plating/layeniaredder,
 /area/ruin/unpowered/no_grav)
 "mVL" = (
 /obj/structure/rack,
@@ -84940,7 +85358,7 @@
 /obj/structure/railing{
 	dir = 1
 	},
-/turf/open/floor/plating/asteroid/layeniaredder,
+/turf/open/floor/plating/layeniaredder,
 /area/ruin/unpowered/no_grav)
 "mWn" = (
 /obj/effect/turf_decal/loading_area{
@@ -85893,7 +86311,7 @@
 	dir = 4
 	},
 /obj/structure/sign/nanotrasen,
-/turf/open/floor/plating/asteroid/layeniaredder,
+/turf/open/floor/plating/layeniaredder,
 /area/ruin/unpowered/no_grav)
 "ndP" = (
 /obj/effect/turf_decal/stripes/line,
@@ -85942,10 +86360,6 @@
 	icon_state = "floor_plate"
 	},
 /area/hallway/primary/starboard)
-"nej" = (
-/obj/structure/girder,
-/turf/open/floor/plating,
-/area/construction)
 "neo" = (
 /obj/effect/turf_decal/tile/green,
 /obj/effect/turf_decal/tile/green{
@@ -86015,7 +86429,7 @@
 "ney" = (
 /obj/structure/lattice/catwalk,
 /obj/item/stack/cable_coil/random,
-/turf/open/floor/plating/asteroid/layeniaredder,
+/turf/open/floor/plating/layeniaredder,
 /area/ruin/unpowered/no_grav)
 "neE" = (
 /obj/effect/turf_decal/bot_white,
@@ -86279,7 +86693,7 @@
 	dir = 8
 	},
 /obj/structure/lattice/catwalk,
-/turf/open/floor/plating/asteroid/layeniaredder,
+/turf/open/floor/plating/layeniaredder,
 /area/ruin/unpowered/no_grav)
 "nha" = (
 /obj/structure/closet/secure_closet/miner,
@@ -86460,7 +86874,7 @@
 	name = "drain"
 	},
 /obj/effect/decal/cleanable/vomit,
-/turf/open/floor/plating/asteroid/layeniaredder,
+/turf/open/floor/plating/layeniaredder,
 /area/security/prison)
 "njh" = (
 /obj/effect/turf_decal/tile/red{
@@ -87125,7 +87539,7 @@
 	dir = 8
 	},
 /obj/structure/window/reinforced,
-/turf/open/floor/plating/asteroid/layeniaredder{
+/turf/open/floor/plating/layeniaredder{
 	icon_state = "layenia4"
 	},
 /area/hallway/primary/central)
@@ -87817,7 +88231,7 @@
 	name = "line"
 	},
 /obj/effect/turf_decal/stripes/white/line,
-/turf/open/floor/plating/asteroid/layeniaredder{
+/turf/open/floor/plating/layeniaredder{
 	icon_state = "concrete2";
 	name = "concrete"
 	},
@@ -88463,7 +88877,7 @@
 /obj/structure/window/reinforced{
 	dir = 8
 	},
-/turf/open/floor/plating/asteroid/layeniaredder,
+/turf/open/floor/plating/layeniaredder,
 /area/hallway/primary/central)
 "nyS" = (
 /obj/effect/turf_decal/bot,
@@ -89281,7 +89695,7 @@
 /obj/effect/turf_decal/stripes/line{
 	dir = 9
 	},
-/turf/open/floor/plating/asteroid/layeniaredder{
+/turf/open/floor/plating/layeniaredder{
 	icon_state = "concrete";
 	name = "concrete"
 	},
@@ -89465,7 +89879,7 @@
 /obj/effect/turf_decal/stripes/end{
 	dir = 1
 	},
-/turf/open/floor/plating/asteroid/layeniaredder{
+/turf/open/floor/plating/layeniaredder{
 	icon_state = "concrete2";
 	name = "concrete"
 	},
@@ -89542,7 +89956,7 @@
 /obj/structure/railing{
 	dir = 6
 	},
-/turf/open/floor/plating/asteroid/layeniaredder{
+/turf/open/floor/plating/layeniaredder{
 	icon_state = "concrete2";
 	name = "concrete"
 	},
@@ -89850,7 +90264,7 @@
 /area/command/bridge)
 "nJu" = (
 /obj/machinery/iv_drip,
-/turf/open/floor/plating/asteroid/layeniaredder,
+/turf/open/floor/plating/layeniaredder,
 /area/ruin/unpowered/no_grav)
 "nJC" = (
 /obj/machinery/atmospherics/pipe/simple/supply/hidden/layer1,
@@ -92092,7 +92506,7 @@
 /obj/structure/disposalpipe/segment{
 	dir = 9
 	},
-/turf/open/floor/plating/asteroid/layeniaredder{
+/turf/open/floor/plating/layeniaredder{
 	icon_state = "concrete2";
 	name = "concrete"
 	},
@@ -92367,7 +92781,7 @@
 /area/security/brig)
 "odq" = (
 /obj/structure/window/reinforced,
-/turf/open/floor/plating/asteroid/layeniaredder{
+/turf/open/floor/plating/layeniaredder{
 	icon_state = "layenia_dug_alt"
 	},
 /area/hallway/primary/central)
@@ -92510,7 +92924,7 @@
 	icon_state = "linealt_corner";
 	name = "line"
 	},
-/turf/open/floor/plating/asteroid/layeniaredder{
+/turf/open/floor/plating/layeniaredder{
 	icon_state = "concrete2";
 	name = "concrete"
 	},
@@ -92671,7 +93085,7 @@
 /obj/structure/railing/corner{
 	dir = 8
 	},
-/turf/open/floor/plating/asteroid/layeniaredder,
+/turf/open/floor/plating/layeniaredder,
 /area/ruin/unpowered/no_grav)
 "ofQ" = (
 /obj/structure/closet/secure_closet/RD,
@@ -93451,7 +93865,7 @@
 /obj/structure/railing{
 	dir = 9
 	},
-/turf/open/floor/plating/asteroid/layeniaredder{
+/turf/open/floor/plating/layeniaredder{
 	icon_state = "concrete2";
 	name = "concrete"
 	},
@@ -93929,7 +94343,7 @@
 	},
 /obj/item/banhammer,
 /obj/effect/decal/cleanable/cobweb,
-/turf/open/floor/plating/asteroid/layeniaredder,
+/turf/open/floor/plating/layeniaredder,
 /area/ruin/unpowered/no_grav)
 "orX" = (
 /turf/closed/wall/r_wall,
@@ -93992,7 +94406,7 @@
 /obj/effect/turf_decal/stripes/line{
 	dir = 10
 	},
-/turf/open/floor/plating/asteroid/layeniaredder{
+/turf/open/floor/plating/layeniaredder{
 	icon_state = "concrete2";
 	name = "concrete"
 	},
@@ -94133,7 +94547,7 @@
 	name = "visible"
 	},
 /obj/machinery/atmospherics/pipe/simple/purple/visible,
-/turf/open/floor/plating/asteroid/layeniaredder,
+/turf/open/floor/plating/layeniaredder,
 /area/ruin/unpowered/no_grav)
 "ots" = (
 /obj/machinery/telecomms/processor/preset_two,
@@ -94586,7 +95000,7 @@
 	id = "pod_lavaland2";
 	name = "lavaland"
 	},
-/turf/open/floor/plating/asteroid/layeniaredder{
+/turf/open/floor/plating/layeniaredder{
 	icon_state = "concrete2";
 	name = "concrete"
 	},
@@ -94701,7 +95115,7 @@
 /area/maintenance/port)
 "oxF" = (
 /obj/machinery/atmospherics/pipe/simple/purple/visible,
-/turf/open/floor/plating/asteroid/layeniaredder,
+/turf/open/floor/plating/layeniaredder,
 /area/ruin/unpowered/no_grav)
 "oxG" = (
 /obj/structure/chair/comfy/brown{
@@ -94960,7 +95374,7 @@
 /obj/structure/railing,
 /obj/effect/decal/cleanable/dirt,
 /obj/effect/turf_decal/stripes/line,
-/turf/open/floor/plating/asteroid/layeniaredder{
+/turf/open/floor/plating/layeniaredder{
 	icon_state = "concrete2";
 	name = "concrete"
 	},
@@ -95196,7 +95610,7 @@
 	},
 /area/science/mixing)
 "oBe" = (
-/turf/open/floor/plating/asteroid/layeniaredder{
+/turf/open/floor/plating/layeniaredder{
 	icon_state = "layenia_dug_alt"
 	},
 /area/ruin/unpowered/no_grav)
@@ -95344,7 +95758,7 @@
 /obj/structure/railing/corner{
 	dir = 4
 	},
-/turf/open/floor/plating/asteroid/layeniaredder{
+/turf/open/floor/plating/layeniaredder{
 	icon_state = "concrete2";
 	name = "concrete"
 	},
@@ -95437,7 +95851,7 @@
 	dir = 1
 	},
 /obj/structure/fans/tiny/invisible,
-/turf/open/floor/plating/asteroid/layeniaredder{
+/turf/open/floor/plating/layeniaredder{
 	icon_state = "layenia4"
 	},
 /area/hallway/primary/central)
@@ -95618,7 +96032,7 @@
 	dir = 1;
 	pixel_y = 16
 	},
-/turf/open/floor/plating/asteroid/layeniaredder,
+/turf/open/floor/plating/layeniaredder,
 /area/ruin/unpowered/no_grav)
 "oEB" = (
 /obj/effect/turf_decal/tile/neutral{
@@ -95694,7 +96108,7 @@
 /obj/structure/railing/corner{
 	dir = 1
 	},
-/turf/open/floor/plating/asteroid/layeniaredder{
+/turf/open/floor/plating/layeniaredder{
 	icon_state = "concrete2";
 	name = "concrete"
 	},
@@ -95851,7 +96265,7 @@
 /obj/machinery/atmospherics/pipe/simple/orange/hidden{
 	dir = 9
 	},
-/turf/open/floor/plating/asteroid/layeniaredder,
+/turf/open/floor/plating/layeniaredder,
 /area/ruin/unpowered/no_grav)
 "oGB" = (
 /obj/structure/railing{
@@ -96049,6 +96463,25 @@
 	dir = 8
 	},
 /area/command/bridge)
+"oIz" = (
+/obj/effect/turf_decal/stripes/line{
+	dir = 4
+	},
+/obj/machinery/light{
+	dir = 4;
+	pixel_x = 7
+	},
+/obj/machinery/door/window/southright{
+	dir = 1;
+	name = "Research and Development Desk";
+	req_one_access_txt = "7;29";
+	pixel_y = 2
+	},
+/turf/open/floor/plasteel{
+	dir = 8;
+	icon_state = "floor_plate"
+	},
+/area/science)
 "oIG" = (
 /obj/machinery/atmospherics/pipe/simple/scrubbers/hidden/layer1{
 	dir = 5;
@@ -96415,7 +96848,7 @@
 /obj/effect/turf_decal/stripes/line{
 	dir = 1
 	},
-/turf/open/floor/plating/asteroid/layeniaredder{
+/turf/open/floor/plating/layeniaredder{
 	icon_state = "concrete2";
 	name = "concrete"
 	},
@@ -96579,6 +97012,13 @@
 /obj/effect/mapping_helpers/airlock/cyclelink_helper{
 	dir = 1
 	},
+/obj/machinery/atmospherics/pipe/simple/scrubbers/hidden/layer1{
+	name = "scrubbers pipe"
+	},
+/obj/machinery/atmospherics/pipe/simple/supply/hidden/layer3{
+	dir = 1;
+	name = "air supply pipe"
+	},
 /turf/open/floor/plating,
 /area/construction)
 "oMG" = (
@@ -96667,7 +97107,7 @@
 	},
 /area/space)
 "oNt" = (
-/turf/open/floor/plating/asteroid/layeniaredder{
+/turf/open/floor/plating/layeniaredder{
 	icon_state = "concrete";
 	name = "concrete"
 	},
@@ -96775,7 +97215,7 @@
 	icon_state = "linealt_corner";
 	name = "line"
 	},
-/turf/open/floor/plating/asteroid/layeniaredder{
+/turf/open/floor/plating/layeniaredder{
 	icon_state = "concrete2";
 	name = "concrete"
 	},
@@ -96788,7 +97228,7 @@
 /obj/structure/cable{
 	icon_state = "1-2"
 	},
-/turf/open/floor/plating/asteroid/layeniaredder{
+/turf/open/floor/plating/layeniaredder{
 	icon_state = "concrete2";
 	name = "concrete"
 	},
@@ -97103,6 +97543,14 @@
 /obj/effect/turf_decal/stripes/corner{
 	dir = 8
 	},
+/obj/machinery/atmospherics/pipe/simple/scrubbers/hidden/layer1{
+	dir = 5;
+	name = "scrubbers pipe"
+	},
+/obj/machinery/atmospherics/pipe/simple/supply/hidden/layer3{
+	dir = 5;
+	name = "air supply pipe"
+	},
 /turf/open/floor/plating,
 /area/ruin/unpowered/no_grav)
 "oQX" = (
@@ -97123,7 +97571,7 @@
 /obj/structure/fence/corner{
 	dir = 9
 	},
-/turf/open/floor/plating/asteroid/layeniaredder{
+/turf/open/floor/plating/layeniaredder{
 	icon_state = "concrete";
 	name = "concrete"
 	},
@@ -97283,7 +97731,7 @@
 /obj/structure/fence/corner{
 	dir = 10
 	},
-/turf/open/floor/plating/asteroid/layeniaredder{
+/turf/open/floor/plating/layeniaredder{
 	icon_state = "concrete";
 	name = "concrete"
 	},
@@ -98637,7 +99085,7 @@
 /obj/effect/decal/cleanable/cobweb{
 	icon_state = "cobweb2"
 	},
-/turf/open/floor/plating/asteroid/layeniaredder,
+/turf/open/floor/plating/layeniaredder,
 /area/ruin/unpowered/no_grav)
 "pcN" = (
 /obj/machinery/atmospherics/pipe/simple/general/visible,
@@ -99479,7 +99927,7 @@
 /obj/structure/disposalpipe/segment{
 	dir = 6
 	},
-/turf/open/floor/plating/asteroid/layeniaredder{
+/turf/open/floor/plating/layeniaredder{
 	icon_state = "concrete2";
 	name = "concrete"
 	},
@@ -99675,7 +100123,7 @@
 	dir = 1;
 	pixel_y = 16
 	},
-/turf/open/floor/plating/asteroid/layeniaredder,
+/turf/open/floor/plating/layeniaredder,
 /area/ruin/unpowered/no_grav)
 "pmq" = (
 /obj/machinery/atmospherics/pipe/simple/supply/hidden/layer3{
@@ -99846,7 +100294,7 @@
 	icon_state = "ledge_short";
 	name = "short ledge"
 	},
-/turf/open/floor/plating/asteroid/layeniaredder,
+/turf/open/floor/plating/layeniaredder,
 /area/ruin/unpowered/no_grav)
 "poj" = (
 /turf/open/openspace,
@@ -101248,7 +101696,7 @@
 	dir = 6
 	},
 /obj/structure/lattice/catwalk,
-/turf/open/floor/plating/asteroid/layeniaredder,
+/turf/open/floor/plating/layeniaredder,
 /area/ruin/unpowered/no_grav)
 "pym" = (
 /obj/machinery/disposal/bin,
@@ -102101,7 +102549,7 @@
 /obj/effect/turf_decal/caution/stand_clear{
 	dir = 1
 	},
-/turf/open/floor/plating/asteroid/layeniaredder{
+/turf/open/floor/plating/layeniaredder{
 	icon_state = "concrete2";
 	name = "concrete"
 	},
@@ -102334,7 +102782,7 @@
 	roundstart_template = /datum/map_template/shuttle/escape_pod/default;
 	width = 3
 	},
-/turf/open/floor/plating/asteroid/layeniaredder{
+/turf/open/floor/plating/layeniaredder{
 	icon_state = "concrete2";
 	name = "concrete"
 	},
@@ -102705,6 +103153,13 @@
 /obj/item/screwdriver,
 /turf/open/floor/plasteel/white,
 /area/science/circuit)
+"pLs" = (
+/obj/machinery/atmospherics/pipe/simple/scrubbers/hidden/layer1{
+	dir = 4;
+	name = "scrubbers pipe"
+	},
+/turf/closed/wall/r_wall,
+/area/commons/fitness)
 "pLz" = (
 /obj/structure/railing{
 	dir = 8
@@ -103624,6 +104079,29 @@
 	},
 /turf/open/floor/carpet/black,
 /area/service/bar)
+"pTW" = (
+/obj/machinery/door/poddoor/preopen{
+	dir = 8;
+	id = "primaryshut1";
+	name = "primary blast door"
+	},
+/obj/machinery/door/airlock/public/glass{
+	dir = 4;
+	name = "Central Access"
+	},
+/obj/effect/turf_decal/delivery,
+/obj/machinery/door/firedoor{
+	dir = 8
+	},
+/obj/structure/fans/tiny/invisible,
+/obj/structure/sign/directions/evac{
+	dir = 4;
+	pixel_y = 24
+	},
+/turf/open/floor/plasteel/dark{
+	icon_state = "darkfull_whole_alt"
+	},
+/area/hallway/primary/central)
 "pTY" = (
 /obj/structure/cable{
 	icon_state = "4-8"
@@ -103808,6 +104286,20 @@
 	},
 /turf/open/floor/plasteel,
 /area/science/xenobiology)
+"pVJ" = (
+/obj/structure/cable{
+	icon_state = "4-8"
+	},
+/obj/machinery/atmospherics/pipe/simple/scrubbers/hidden/layer1{
+	dir = 4;
+	name = "scrubbers pipe"
+	},
+/obj/machinery/atmospherics/pipe/simple/supply/hidden/layer3{
+	dir = 8;
+	name = "air supply pipe"
+	},
+/turf/open/floor/plating,
+/area/maintenance/solars/aux/port)
 "pVL" = (
 /obj/effect/turf_decal/loading_area{
 	dir = 1;
@@ -104305,6 +104797,21 @@
 "pZQ" = (
 /turf/open/floor/plasteel/dark,
 /area/security/brig)
+"pZR" = (
+/obj/effect/turf_decal/loading_area{
+	color = "#55391A";
+	dir = 1;
+	icon_state = "siding_wood_line";
+	name = "wood"
+	},
+/obj/machinery/atmospherics/pipe/simple/scrubbers/hidden/layer1{
+	dir = 4;
+	name = "scrubbers pipe"
+	},
+/turf/open/floor/plasteel/dark{
+	icon_state = "darkfull_whole_alt"
+	},
+/area/commons/fitness)
 "pZU" = (
 /turf/open/floor/engine/n2,
 /area/engineering/atmos)
@@ -104564,7 +105071,7 @@
 	},
 /area/security/checkpoint)
 "qbf" = (
-/turf/open/floor/plating/asteroid/layeniaredder,
+/turf/open/floor/plating/layeniaredder,
 /area/maintenance/fore)
 "qbh" = (
 /obj/machinery/light{
@@ -104963,7 +105470,7 @@
 /area/construction/mining/aux_base)
 "qep" = (
 /obj/effect/turf_decal/stripes/line,
-/turf/open/floor/plating/asteroid/layeniaredder,
+/turf/open/floor/plating/layeniaredder,
 /area/ruin/unpowered/no_grav)
 "qeu" = (
 /obj/effect/turf_decal/stripes/corner{
@@ -106064,7 +106571,7 @@
 /obj/structure/railing/corner{
 	dir = 8
 	},
-/turf/open/floor/plating/asteroid/layeniaredder{
+/turf/open/floor/plating/layeniaredder{
 	icon_state = "concrete";
 	name = "concrete"
 	},
@@ -107140,7 +107647,7 @@
 	dir = 1;
 	layer = 2.9
 	},
-/turf/open/floor/plating/asteroid/layeniaredder{
+/turf/open/floor/plating/layeniaredder{
 	icon_state = "layenia4"
 	},
 /area/hallway/primary/central)
@@ -107250,7 +107757,7 @@
 /obj/structure/cable{
 	icon_state = "2-4"
 	},
-/turf/open/floor/plating/asteroid/layeniaredder{
+/turf/open/floor/plating/layeniaredder{
 	icon_state = "concrete2";
 	name = "concrete"
 	},
@@ -107608,6 +108115,13 @@
 	},
 /turf/open/floor/plasteel/dark,
 /area/science/observatory)
+"qAH" = (
+/obj/machinery/atmospherics/pipe/simple/supply/hidden/layer3{
+	dir = 8;
+	name = "air supply pipe"
+	},
+/turf/closed/wall/r_wall,
+/area/commons/fitness)
 "qAI" = (
 /obj/structure/lattice/catwalk,
 /obj/structure/railing{
@@ -108204,15 +108718,13 @@
 /turf/open/floor/wood,
 /area/security/brig)
 "qES" = (
-/obj/effect/decal/cleanable/cobweb/cobweb2,
-/obj/effect/decal/cleanable/dirt,
-/obj/item/reagent_containers/food/snacks/spiderling{
-	pixel_x = 8;
-	pixel_y = 10
+/obj/structure/chair/e_chair,
+/obj/effect/decal/cleanable/blood/old,
+/obj/effect/decal/cleanable/semendrip,
+/obj/effect/decal/cleanable/semendrip{
+	icon_state = "drip4"
 	},
-/turf/open/floor/plating{
-	icon_state = "panelscorched"
-	},
+/turf/open/floor/plasteel/dark,
 /area/security/prison)
 "qEV" = (
 /obj/effect/turf_decal/tile/neutral,
@@ -108410,6 +108922,7 @@
 	name = "drain"
 	},
 /obj/machinery/vending/cola/random,
+/obj/structure/railing/corner,
 /turf/open/floor/plasteel/dark{
 	dir = 4;
 	icon_state = "darkfull_plate"
@@ -108481,7 +108994,7 @@
 	lootcount = 2;
 	name = "2maintenance loot spawner"
 	},
-/turf/open/floor/plating/asteroid/layeniaredder{
+/turf/open/floor/plating/layeniaredder{
 	icon_state = "concrete";
 	name = "concrete"
 	},
@@ -109492,7 +110005,7 @@
 /obj/effect/turf_decal/stripes/line{
 	dir = 1
 	},
-/turf/open/floor/plating/asteroid/layeniaredder{
+/turf/open/floor/plating/layeniaredder{
 	icon_state = "concrete";
 	name = "concrete"
 	},
@@ -109752,7 +110265,7 @@
 	dir = 8
 	},
 /obj/effect/decal/cleanable/oil,
-/turf/open/floor/plating/asteroid/layeniaredder{
+/turf/open/floor/plating/layeniaredder{
 	icon_state = "concrete2";
 	name = "concrete"
 	},
@@ -110154,7 +110667,7 @@
 /obj/structure/railing/corner{
 	dir = 4
 	},
-/turf/open/floor/plating/asteroid/layeniaredder,
+/turf/open/floor/plating/layeniaredder,
 /area/ruin/unpowered/no_grav)
 "qVH" = (
 /obj/effect/turf_decal/tile/red,
@@ -110420,7 +110933,7 @@
 	icon_state = "line";
 	name = "line"
 	},
-/turf/open/floor/plating/asteroid/layeniaredder{
+/turf/open/floor/plating/layeniaredder{
 	icon_state = "concrete2";
 	name = "concrete"
 	},
@@ -110515,7 +111028,7 @@
 	icon_state = "ledge_short";
 	name = "short ledge"
 	},
-/turf/open/floor/plating/asteroid/layeniaredder,
+/turf/open/floor/plating/layeniaredder,
 /area/ruin/unpowered/no_grav)
 "qXJ" = (
 /obj/machinery/computer/arcade/battle{
@@ -111291,7 +111804,7 @@
 /obj/structure/cable{
 	icon_state = "4-8"
 	},
-/turf/open/floor/plating/asteroid/layeniaredder{
+/turf/open/floor/plating/layeniaredder{
 	icon_state = "concrete2";
 	name = "concrete"
 	},
@@ -111627,7 +112140,7 @@
 /obj/effect/turf_decal/caution/stand_clear{
 	dir = 8
 	},
-/turf/open/floor/plating/asteroid/layeniaredder{
+/turf/open/floor/plating/layeniaredder{
 	icon_state = "concrete2";
 	name = "concrete"
 	},
@@ -111771,7 +112284,7 @@
 	dir = 9
 	},
 /obj/structure/lattice/catwalk,
-/turf/open/floor/plating/asteroid/layeniaredder,
+/turf/open/floor/plating/layeniaredder,
 /area/ruin/unpowered/no_grav)
 "rhe" = (
 /obj/effect/turf_decal/loading_area{
@@ -112213,7 +112726,7 @@
 	icon_state = "linealt_corner";
 	name = "line"
 	},
-/turf/open/floor/plating/asteroid/layeniaredder{
+/turf/open/floor/plating/layeniaredder{
 	icon_state = "concrete2";
 	name = "concrete"
 	},
@@ -112723,7 +113236,7 @@
 "rph" = (
 /obj/structure/lattice/catwalk,
 /obj/structure/railing/corner,
-/turf/open/floor/plating/asteroid/layeniaredder,
+/turf/open/floor/plating/layeniaredder,
 /area/ruin/unpowered/no_grav)
 "rpi" = (
 /obj/effect/spawner/structure/window,
@@ -112998,12 +113511,6 @@
 	},
 /area/science)
 "rqZ" = (
-/obj/structure/railing{
-	dir = 1
-	},
-/obj/structure/railing{
-	dir = 4
-	},
 /obj/effect/turf_decal/tile/red{
 	dir = 9
 	},
@@ -113028,6 +113535,9 @@
 	},
 /obj/structure/disposalpipe/segment{
 	dir = 4
+	},
+/obj/structure/railing{
+	dir = 5
 	},
 /turf/open/floor/plasteel{
 	dir = 1;
@@ -113060,7 +113570,7 @@
 	dir = 1
 	},
 /obj/structure/lattice/catwalk,
-/turf/open/floor/plating/asteroid/layeniaredder,
+/turf/open/floor/plating/layeniaredder,
 /area/ruin/unpowered/no_grav)
 "rrg" = (
 /obj/structure/cable/yellow{
@@ -113160,7 +113670,7 @@
 /obj/effect/turf_decal/stripes/line{
 	dir = 10
 	},
-/turf/open/floor/plating/asteroid/layeniaredder{
+/turf/open/floor/plating/layeniaredder{
 	icon_state = "concrete2";
 	name = "concrete"
 	},
@@ -113308,17 +113818,6 @@
 /obj/machinery/smartfridge,
 /turf/closed/wall,
 /area/security/prison)
-"rtp" = (
-/obj/machinery/door/poddoor/shutters{
-	id = "stationxenoarchaeologyawaygate";
-	name = "Xenoarchaeology Access Shutters"
-	},
-/obj/effect/turf_decal/delivery,
-/obj/machinery/door/firedoor,
-/turf/open/floor/plasteel/dark{
-	icon_state = "darkfull_whole_alt"
-	},
-/area/science)
 "rts" = (
 /obj/effect/turf_decal/tile/neutral{
 	dir = 8
@@ -114206,6 +114705,12 @@
 /obj/structure/cable{
 	icon_state = "1-2"
 	},
+/obj/machinery/atmospherics/pipe/simple/scrubbers/hidden/layer1{
+	name = "scrubbers pipe"
+	},
+/obj/machinery/atmospherics/pipe/simple/supply/hidden/layer3{
+	name = "air supply pipe"
+	},
 /turf/open/floor/plasteel{
 	dir = 1;
 	icon_state = "floor_plate"
@@ -114354,7 +114859,7 @@
 	icon_state = "line";
 	name = "line"
 	},
-/turf/open/floor/plating/asteroid/layeniaredder{
+/turf/open/floor/plating/layeniaredder{
 	icon_state = "concrete2";
 	name = "concrete"
 	},
@@ -114391,7 +114896,7 @@
 /area/science/mixing)
 "rBD" = (
 /obj/structure/railing,
-/turf/open/floor/plating/asteroid/layeniaredder,
+/turf/open/floor/plating/layeniaredder,
 /area/ruin/unpowered/no_grav)
 "rBH" = (
 /obj/structure/rack,
@@ -114866,7 +115371,7 @@
 /area/service/library)
 "rFD" = (
 /obj/effect/turf_decal/caution/stand_clear,
-/turf/open/floor/plating/asteroid/layeniaredder{
+/turf/open/floor/plating/layeniaredder{
 	icon_state = "concrete2";
 	name = "concrete"
 	},
@@ -115389,7 +115894,7 @@
 	icon_state = "line";
 	name = "line"
 	},
-/turf/open/floor/plating/asteroid/layeniaredder{
+/turf/open/floor/plating/layeniaredder{
 	icon_state = "concrete2";
 	name = "concrete"
 	},
@@ -115690,7 +116195,7 @@
 /obj/structure/fence/corner{
 	dir = 9
 	},
-/turf/open/floor/plating/asteroid/layeniaredder,
+/turf/open/floor/plating/layeniaredder,
 /area/ruin/unpowered/no_grav)
 "rLh" = (
 /obj/effect/turf_decal/tile/neutral,
@@ -115825,7 +116330,7 @@
 /obj/effect/decal/cleanable/cobweb{
 	icon_state = "cobweb2"
 	},
-/turf/open/floor/plating/asteroid/layeniaredder,
+/turf/open/floor/plating/layeniaredder,
 /area/ruin/unpowered/no_grav)
 "rMB" = (
 /obj/effect/turf_decal/tile/neutral,
@@ -115927,7 +116432,7 @@
 	dir = 8;
 	pixel_x = -7
 	},
-/turf/open/floor/plating/asteroid/layeniaredder,
+/turf/open/floor/plating/layeniaredder,
 /area/ruin/unpowered/no_grav)
 "rMS" = (
 /obj/structure/disposalpipe/broken{
@@ -116780,7 +117285,7 @@
 /obj/effect/turf_decal/stripes/line{
 	dir = 4
 	},
-/turf/open/floor/plating/asteroid/layeniaredder{
+/turf/open/floor/plating/layeniaredder{
 	icon_state = "concrete2";
 	name = "concrete"
 	},
@@ -116823,7 +117328,7 @@
 	icon_state = "ledge_short";
 	name = "short ledge"
 	},
-/turf/open/floor/plating/asteroid/layeniaredder,
+/turf/open/floor/plating/layeniaredder,
 /area/ruin/unpowered/no_grav)
 "rUK" = (
 /obj/structure/closet/crate/critter{
@@ -117086,7 +117591,7 @@
 /obj/structure/railing{
 	dir = 9
 	},
-/turf/open/floor/plating/asteroid/layeniaredder,
+/turf/open/floor/plating/layeniaredder,
 /area/ruin/unpowered/no_grav)
 "rWn" = (
 /obj/structure/flora/tree/jungle/small{
@@ -117404,6 +117909,28 @@
 	},
 /turf/open/floor/grass,
 /area/service/library)
+"rYT" = (
+/obj/structure/cable{
+	icon_state = "4-8"
+	},
+/obj/machinery/door/airlock/external{
+	name = "Solar Maintenance";
+	req_access_txt = "10; 13"
+	},
+/obj/effect/mapping_helpers/airlock/cyclelink_helper{
+	dir = 4
+	},
+/obj/structure/fans/tiny,
+/obj/machinery/atmospherics/pipe/simple/scrubbers/hidden/layer1{
+	dir = 4;
+	name = "scrubbers pipe"
+	},
+/obj/machinery/atmospherics/pipe/simple/supply/hidden/layer3{
+	dir = 8;
+	name = "air supply pipe"
+	},
+/turf/open/floor/plating,
+/area/maintenance/solars/aux/port)
 "rZc" = (
 /turf/open/floor/plasteel{
 	dir = 1;
@@ -117959,13 +118486,9 @@
 	},
 /area/science/mixing)
 "scH" = (
-/obj/machinery/power/grounding_rod{
-	anchored = 1
-	},
 /obj/machinery/atmospherics/pipe/simple/scrubbers/hidden/layer1{
 	name = "scrubbers pipe"
 	},
-/obj/effect/turf_decal/delivery,
 /turf/open/floor/plasteel/dark,
 /area/engineering/main)
 "scI" = (
@@ -118323,7 +118846,7 @@
 	},
 /area/security/brig)
 "sfj" = (
-/turf/open/floor/plating/asteroid/layeniaredder,
+/turf/open/floor/plating/layeniaredder,
 /area/command/bridge)
 "sfo" = (
 /obj/machinery/hydroponics/soil,
@@ -118368,7 +118891,7 @@
 /obj/effect/turf_decal/stripes/line{
 	dir = 8
 	},
-/turf/open/floor/plating/asteroid/layeniaredder{
+/turf/open/floor/plating/layeniaredder{
 	icon_state = "concrete2";
 	name = "concrete"
 	},
@@ -119239,7 +119762,7 @@
 "slR" = (
 /obj/structure/lattice,
 /obj/structure/railing,
-/turf/open/floor/plating/asteroid/layeniaredder,
+/turf/open/floor/plating/layeniaredder,
 /area/ruin/unpowered/no_grav)
 "slT" = (
 /obj/effect/turf_decal/loading_area{
@@ -120176,7 +120699,7 @@
 /obj/effect/turf_decal/stripes/end{
 	dir = 8
 	},
-/turf/open/floor/plating/asteroid/layeniaredder{
+/turf/open/floor/plating/layeniaredder{
 	icon_state = "concrete";
 	name = "concrete"
 	},
@@ -120365,7 +120888,7 @@
 /obj/structure/fence{
 	dir = 4
 	},
-/turf/open/floor/plating/asteroid/layeniaredder{
+/turf/open/floor/plating/layeniaredder{
 	icon_state = "concrete";
 	name = "concrete"
 	},
@@ -120388,7 +120911,7 @@
 /obj/effect/turf_decal/stripes/line{
 	dir = 4
 	},
-/turf/open/floor/plating/asteroid/layeniaredder{
+/turf/open/floor/plating/layeniaredder{
 	icon_state = "concrete2";
 	name = "concrete"
 	},
@@ -120802,7 +121325,7 @@
 /obj/structure/toilet{
 	dir = 1
 	},
-/turf/open/floor/plating/asteroid/layeniaredder,
+/turf/open/floor/plating/layeniaredder,
 /area/ruin/unpowered/no_grav)
 "syc" = (
 /obj/machinery/atmospherics/pipe/simple/cyan/visible/layer1{
@@ -120994,6 +121517,14 @@
 	},
 /obj/effect/turf_decal/stripes/line{
 	dir = 8
+	},
+/obj/machinery/atmospherics/pipe/simple/scrubbers/hidden/layer1{
+	dir = 4;
+	name = "scrubbers pipe"
+	},
+/obj/machinery/atmospherics/pipe/simple/supply/hidden/layer3{
+	dir = 8;
+	name = "air supply pipe"
 	},
 /turf/open/floor/plasteel/dark{
 	icon_state = "darkfull_whole_alt"
@@ -122071,7 +122602,7 @@
 	name = "steel pannel"
 	},
 /obj/effect/turf_decal/stripes/line,
-/turf/open/floor/plating/asteroid/layeniaredder{
+/turf/open/floor/plating/layeniaredder{
 	icon_state = "concrete2";
 	name = "concrete"
 	},
@@ -122451,7 +122982,7 @@
 	icon_state = "drain";
 	name = "drain"
 	},
-/turf/open/floor/plating/asteroid/layeniaredder,
+/turf/open/floor/plating/layeniaredder,
 /area/security/prison)
 "sKd" = (
 /obj/machinery/door/airlock/highsecurity{
@@ -122496,7 +123027,7 @@
 	pixel_x = 7
 	},
 /obj/structure/closet/crate,
-/turf/open/floor/plating/asteroid/layeniaredder,
+/turf/open/floor/plating/layeniaredder,
 /area/ruin/unpowered/no_grav)
 "sKx" = (
 /turf/open/floor/carpet/orange,
@@ -122626,7 +123157,7 @@
 	dir = 8;
 	pixel_x = -7
 	},
-/turf/open/floor/plating/asteroid/layeniaredder,
+/turf/open/floor/plating/layeniaredder,
 /area/hallway/primary/fore)
 "sLR" = (
 /obj/machinery/door/airlock/security/glass{
@@ -122773,6 +123304,20 @@
 	name = "tile"
 	},
 /area/service/barbershop)
+"sMP" = (
+/obj/structure/cable{
+	icon_state = "2-8"
+	},
+/obj/machinery/atmospherics/pipe/simple/supply/hidden/layer3{
+	dir = 10;
+	name = "air supply pipe"
+	},
+/obj/machinery/atmospherics/pipe/simple/scrubbers/hidden/layer1{
+	dir = 10;
+	name = "scrubbers pipe"
+	},
+/turf/open/floor/plating,
+/area/maintenance/port/fore)
 "sMS" = (
 /obj/effect/turf_decal/tile/red{
 	dir = 9
@@ -123520,6 +124065,14 @@
 /obj/structure/cable{
 	icon_state = "1-4"
 	},
+/obj/machinery/atmospherics/pipe/simple/scrubbers/hidden/layer1{
+	dir = 4;
+	name = "scrubbers pipe"
+	},
+/obj/machinery/atmospherics/pipe/simple/supply/hidden/layer3{
+	dir = 8;
+	name = "air supply pipe"
+	},
 /turf/open/floor/plating,
 /area/ruin/unpowered/no_grav)
 "sTW" = (
@@ -123797,7 +124350,7 @@
 	dir = 4
 	},
 /obj/structure/window/reinforced,
-/turf/open/floor/plating/asteroid/layeniaredder{
+/turf/open/floor/plating/layeniaredder{
 	icon_state = "layenia4"
 	},
 /area/hallway/primary/central)
@@ -124158,6 +124711,13 @@
 /obj/structure/cable{
 	icon_state = "1-4"
 	},
+/obj/machinery/atmospherics/pipe/simple/scrubbers/hidden/layer1{
+	dir = 9;
+	name = "scrubbers pipe"
+	},
+/obj/machinery/atmospherics/pipe/simple/supply/hidden/layer3{
+	name = "air supply pipe"
+	},
 /turf/open/floor/plating,
 /area/maintenance/solars/port/aft)
 "sYb" = (
@@ -124275,7 +124835,7 @@
 	dir = 4;
 	pixel_x = 7
 	},
-/turf/open/floor/plating/asteroid/layeniaredder{
+/turf/open/floor/plating/layeniaredder{
 	icon_state = "concrete2";
 	name = "concrete"
 	},
@@ -124422,7 +124982,7 @@
 	name = "Cargo Bay";
 	width = 12
 	},
-/turf/open/floor/plating/asteroid/layeniaredder{
+/turf/open/floor/plating/layeniaredder{
 	icon_state = "concrete2";
 	name = "concrete"
 	},
@@ -124496,7 +125056,7 @@
 	icon_state = "linealt_corner";
 	name = "line"
 	},
-/turf/open/floor/plating/asteroid/layeniaredder{
+/turf/open/floor/plating/layeniaredder{
 	icon_state = "concrete2";
 	name = "concrete"
 	},
@@ -124871,7 +125431,7 @@
 	id = "pod_lavaland1";
 	name = "lavaland"
 	},
-/turf/open/floor/plating/asteroid/layeniaredder{
+/turf/open/floor/plating/layeniaredder{
 	icon_state = "concrete2";
 	name = "concrete"
 	},
@@ -124932,7 +125492,7 @@
 	name = "steel pannel"
 	},
 /obj/effect/turf_decal/stripes/line,
-/turf/open/floor/plating/asteroid/layeniaredder{
+/turf/open/floor/plating/layeniaredder{
 	icon_state = "concrete2";
 	name = "concrete"
 	},
@@ -125676,6 +126236,10 @@
 	icon_state = "steel_panel";
 	name = "steel pannel"
 	},
+/obj/machinery/power/grounding_rod{
+	anchored = 1
+	},
+/obj/effect/turf_decal/delivery,
 /turf/open/floor/plasteel/dark,
 /area/engineering/main)
 "tjC" = (
@@ -126175,7 +126739,7 @@
 	icon_state = "drain";
 	name = "drain"
 	},
-/turf/open/floor/plating/asteroid/layeniaredder,
+/turf/open/floor/plating/layeniaredder,
 /area/space)
 "tnc" = (
 /obj/machinery/airalarm{
@@ -126621,6 +127185,12 @@
 	},
 /obj/structure/cable{
 	icon_state = "1-2"
+	},
+/obj/machinery/atmospherics/pipe/simple/scrubbers/hidden/layer1{
+	name = "scrubbers pipe"
+	},
+/obj/machinery/atmospherics/pipe/simple/supply/hidden/layer3{
+	name = "air supply pipe"
 	},
 /turf/open/floor/plating,
 /area/maintenance/solars/port/aft)
@@ -127512,6 +128082,19 @@
 	icon_state = "darkfull_plate"
 	},
 /area/hallway/primary/port/fore)
+"txg" = (
+/obj/machinery/atmospherics/pipe/simple/scrubbers/hidden/layer1{
+	name = "scrubbers pipe"
+	},
+/obj/machinery/atmospherics/pipe/simple/supply/hidden/layer3{
+	dir = 8;
+	name = "air supply pipe"
+	},
+/turf/open/floor/wood{
+	icon_state = "wood_large";
+	name = "large"
+	},
+/area/commons/fitness)
 "txh" = (
 /obj/effect/turf_decal/tile/green{
 	dir = 5
@@ -127853,7 +128436,7 @@
 	dir = 1
 	},
 /obj/effect/decal/cleanable/dirt,
-/turf/open/floor/plating/asteroid/layeniaredder{
+/turf/open/floor/plating/layeniaredder{
 	icon_state = "concrete2";
 	name = "concrete"
 	},
@@ -127956,7 +128539,7 @@
 /area/hallway/primary/port/fore)
 "tBj" = (
 /obj/item/picket_sign,
-/turf/open/floor/plating/asteroid/layeniasand,
+/turf/open/floor/grass/layeniasand,
 /area/ruin/unpowered/no_grav)
 "tBm" = (
 /obj/effect/turf_decal/tile/blue{
@@ -128002,7 +128585,7 @@
 	dir = 5
 	},
 /obj/structure/lattice/catwalk,
-/turf/open/floor/plating/asteroid/layeniaredder,
+/turf/open/floor/plating/layeniaredder,
 /area/ruin/unpowered/no_grav)
 "tBE" = (
 /obj/machinery/atmospherics/pipe/simple/supply/hidden/layer3{
@@ -128036,6 +128619,14 @@
 	},
 /turf/open/floor/plasteel,
 /area/science/xenobiology)
+"tCa" = (
+/obj/structure/disposalpipe/broken,
+/obj/machinery/atmospherics/pipe/simple/supply/hidden/layer3{
+	dir = 1;
+	name = "air supply pipe"
+	},
+/turf/open/floor/plating,
+/area/construction)
 "tCh" = (
 /obj/machinery/atmospherics/pipe/simple/supply/hidden{
 	dir = 10
@@ -128223,6 +128814,17 @@
 	icon_state = "plaswhite_plate"
 	},
 /area/medical/medbay/central)
+"tDu" = (
+/obj/machinery/atmospherics/pipe/simple/scrubbers/hidden/layer1{
+	dir = 6;
+	name = "scrubbers pipe"
+	},
+/obj/machinery/atmospherics/pipe/simple/supply/hidden/layer3{
+	dir = 6;
+	name = "air supply pipe"
+	},
+/turf/open/floor/plating/layeniaredder,
+/area/ruin/unpowered/no_grav)
 "tDy" = (
 /obj/effect/turf_decal/loading_area{
 	dir = 1;
@@ -129334,7 +129936,7 @@
 "tKp" = (
 /obj/effect/landmark/observer_start,
 /obj/structure/fans/tiny/invisible,
-/turf/open/floor/plating/asteroid/layeniaredder,
+/turf/open/floor/plating/layeniaredder,
 /area/hallway/primary/central)
 "tKx" = (
 /obj/structure/table/wood,
@@ -130340,7 +130942,7 @@
 	icon_state = "drain_corner";
 	name = "drain"
 	},
-/turf/open/floor/plating/asteroid/layeniaredder,
+/turf/open/floor/plating/layeniaredder,
 /area/space)
 "tSJ" = (
 /obj/effect/turf_decal/bot,
@@ -130604,7 +131206,7 @@
 	},
 /obj/structure/window/reinforced,
 /obj/structure/fans/tiny/invisible,
-/turf/open/floor/plating/asteroid/layeniaredder{
+/turf/open/floor/plating/layeniaredder{
 	icon_state = "layenia4"
 	},
 /area/hallway/primary/central)
@@ -131225,12 +131827,6 @@
 /turf/open/floor/plasteel,
 /area/engineering/teg)
 "tZG" = (
-/obj/machinery/button/door{
-	id = "stationxenoarchaeologyawaygate";
-	name = "Xenoarchaeology Access Shutter Control";
-	pixel_x = -7;
-	pixel_y = 27
-	},
 /obj/machinery/atmospherics/components/unary/vent_scrubber/on/layer1{
 	dir = 4;
 	name = "air scrubber"
@@ -131471,6 +132067,24 @@
 	icon_state = "floor_plate"
 	},
 /area/hallway/primary/central)
+"ubo" = (
+/obj/structure/cable{
+	icon_state = "1-2"
+	},
+/obj/effect/turf_decal/stripes/line{
+	dir = 8
+	},
+/obj/effect/turf_decal/stripes/line{
+	dir = 4
+	},
+/obj/machinery/atmospherics/pipe/simple/supply/hidden/layer3{
+	name = "air supply pipe"
+	},
+/obj/machinery/atmospherics/pipe/simple/scrubbers/hidden/layer1{
+	name = "scrubbers pipe"
+	},
+/turf/open/floor/plating,
+/area/ruin/unpowered/no_grav)
 "ubz" = (
 /obj/structure/chair/sofa/right{
 	dir = 4
@@ -132112,7 +132726,7 @@
 /area/science/xenobiology)
 "ugm" = (
 /obj/item/reagent_containers/food/snacks/beans,
-/turf/open/floor/plating/asteroid/layeniaredder,
+/turf/open/floor/plating/layeniaredder,
 /area/ruin/unpowered/no_grav)
 "ugx" = (
 /obj/machinery/door/poddoor/shutters/preopen{
@@ -132344,7 +132958,7 @@
 /obj/effect/turf_decal/stripes/corner{
 	dir = 2
 	},
-/turf/open/floor/plating/asteroid/layeniaredder{
+/turf/open/floor/plating/layeniaredder{
 	icon_state = "concrete2";
 	name = "concrete"
 	},
@@ -132407,7 +133021,7 @@
 	dir = 4;
 	pixel_x = 7
 	},
-/turf/open/floor/plating/asteroid/layeniaredder{
+/turf/open/floor/plating/layeniaredder{
 	icon_state = "concrete2";
 	name = "concrete"
 	},
@@ -132769,7 +133383,7 @@
 /area/engineering/main)
 "und" = (
 /obj/effect/decal/cleanable/oil,
-/turf/open/floor/plating/asteroid/layeniaredder{
+/turf/open/floor/plating/layeniaredder{
 	icon_state = "concrete";
 	name = "concrete"
 	},
@@ -132916,7 +133530,7 @@
 "uoy" = (
 /obj/structure/lattice/catwalk,
 /obj/structure/railing,
-/turf/open/floor/plating/asteroid/layeniaredder,
+/turf/open/floor/plating/layeniaredder,
 /area/ruin/unpowered/no_grav)
 "uoA" = (
 /obj/effect/turf_decal/loading_area{
@@ -132982,13 +133596,13 @@
 /obj/structure/cable{
 	icon_state = "2-8"
 	},
-/obj/machinery/atmospherics/pipe/simple/scrubbers/hidden/layer1{
-	dir = 10;
-	name = "scrubbers pipe"
-	},
-/obj/machinery/atmospherics/pipe/simple/supply/hidden/layer3{
-	dir = 10;
+/obj/machinery/atmospherics/pipe/manifold/supply/hidden/layer3{
+	dir = 4;
 	name = "air supply pipe"
+	},
+/obj/machinery/atmospherics/pipe/manifold/scrubbers/hidden/layer1{
+	dir = 4;
+	name = "scrubbers pipe"
 	},
 /turf/open/floor/plasteel,
 /area/commons/dorms)
@@ -133091,6 +133705,20 @@
 	},
 /turf/closed/wall/r_wall,
 /area/engineering/lobby)
+"upI" = (
+/obj/effect/turf_decal/stripes/line{
+	dir = 5
+	},
+/obj/machinery/airalarm{
+	dir = 8;
+	pixel_x = 24
+	},
+/obj/machinery/door/airlock/research{
+	name = "Containment Room";
+	req_access_txt = "47"
+	},
+/turf/open/floor/plasteel,
+/area/science)
 "upK" = (
 /obj/effect/turf_decal/tile/neutral{
 	dir = 6
@@ -133157,7 +133785,7 @@
 /area/hallway/primary/fore)
 "upU" = (
 /obj/structure/lattice/catwalk,
-/turf/open/floor/plating/asteroid/layeniaredder,
+/turf/open/floor/plating/layeniaredder,
 /area/ruin/unpowered/no_grav)
 "upV" = (
 /obj/structure/window/reinforced{
@@ -133438,7 +134066,7 @@
 /obj/structure/fence/corner{
 	dir = 6
 	},
-/turf/open/floor/plating/asteroid/layeniaredder{
+/turf/open/floor/plating/layeniaredder{
 	icon_state = "concrete";
 	name = "concrete"
 	},
@@ -133599,12 +134227,6 @@
 /obj/structure/chair/sofa/right{
 	dir = 4
 	},
-/obj/effect/turf_decal/loading_area{
-	color = "#55391A";
-	dir = 8;
-	icon_state = "siding_wood_line";
-	name = "wood"
-	},
 /turf/open/floor/wood{
 	icon_state = "wood_parquet";
 	name = "parquet"
@@ -133618,7 +134240,7 @@
 /area/engineering/main/reactor_core)
 "utH" = (
 /obj/machinery/door/airlock/research{
-	name = "Research Division Access";
+	name = "Containment Room";
 	req_access_txt = "47"
 	},
 /obj/effect/mapping_helpers/airlock/cyclelink_helper{
@@ -134032,12 +134654,6 @@
 	icon_state = "floor_plate"
 	},
 /area/hallway/primary/port/fore)
-"uwB" = (
-/obj/effect/turf_decal/stripes/line{
-	dir = 5
-	},
-/turf/open/floor/plasteel,
-/area/science)
 "uwD" = (
 /obj/machinery/door/poddoor{
 	id = "QMLoaddoor";
@@ -134741,7 +135357,7 @@
 	dir = 4;
 	pixel_x = 7
 	},
-/turf/open/floor/plating/asteroid/layeniaredder{
+/turf/open/floor/plating/layeniaredder{
 	icon_state = "concrete2";
 	name = "concrete"
 	},
@@ -135759,7 +136375,7 @@
 /obj/effect/turf_decal/stripes/line{
 	dir = 1
 	},
-/turf/open/floor/plating/asteroid/layeniaredder{
+/turf/open/floor/plating/layeniaredder{
 	icon_state = "concrete2";
 	name = "concrete"
 	},
@@ -135908,7 +136524,7 @@
 /obj/structure/railing{
 	dir = 5
 	},
-/turf/open/floor/plating/asteroid/layeniaredder,
+/turf/open/floor/plating/layeniaredder,
 /area/ruin/unpowered/no_grav)
 "uOb" = (
 /obj/effect/turf_decal/tile/neutral{
@@ -136549,6 +137165,12 @@
 	},
 /turf/open/floor/plasteel,
 /area/cargo/storage)
+"uTQ" = (
+/obj/machinery/atmospherics/components/unary/vent_pump/on/layer3{
+	name = "air vent"
+	},
+/turf/open/floor/plating,
+/area/maintenance/solars/aux/port)
 "uTS" = (
 /obj/effect/turf_decal/tile/purple{
 	dir = 4
@@ -136602,7 +137224,7 @@
 /obj/effect/turf_decal/caution/stand_clear{
 	dir = 1
 	},
-/turf/open/floor/plating/asteroid/layeniaredder{
+/turf/open/floor/plating/layeniaredder{
 	icon_state = "concrete2";
 	name = "concrete"
 	},
@@ -137042,7 +137664,7 @@
 	dir = 8;
 	pixel_x = -7
 	},
-/turf/open/floor/plating/asteroid/layeniaredder,
+/turf/open/floor/plating/layeniaredder,
 /area/command/bridge)
 "uXI" = (
 /obj/structure/railing{
@@ -137460,6 +138082,16 @@
 /obj/machinery/gravity_generator/main/station,
 /turf/open/floor/plasteel/dark,
 /area/engineering/main)
+"uZQ" = (
+/obj/machinery/atmospherics/pipe/simple/scrubbers/hidden/layer1{
+	name = "scrubbers pipe"
+	},
+/obj/machinery/atmospherics/pipe/simple/supply/hidden/layer3{
+	dir = 1;
+	name = "air supply pipe"
+	},
+/turf/open/floor/plating/layeniaredder,
+/area/ruin/unpowered/no_grav)
 "uZW" = (
 /obj/machinery/door/airlock{
 	dir = 1;
@@ -137481,7 +138113,7 @@
 	name = "SS13: Auxiliary Dock, Station-Port";
 	width = 35
 	},
-/turf/open/floor/plating/asteroid/layeniaredder{
+/turf/open/floor/plating/layeniaredder{
 	icon_state = "concrete2";
 	name = "concrete"
 	},
@@ -137557,7 +138189,7 @@
 	dir = 1;
 	layer = 2.9
 	},
-/turf/open/floor/plating/asteroid/layeniaredder{
+/turf/open/floor/plating/layeniaredder{
 	icon_state = "layenia_dug_alt"
 	},
 /area/hallway/primary/central)
@@ -137664,7 +138296,7 @@
 	name = "port bay 2";
 	width = 7
 	},
-/turf/open/floor/plating/asteroid/layeniaredder{
+/turf/open/floor/plating/layeniaredder{
 	icon_state = "concrete";
 	name = "concrete"
 	},
@@ -137839,7 +138471,7 @@
 /area/service/hydroponics/garden)
 "vdB" = (
 /obj/structure/lattice,
-/turf/open/floor/plating/asteroid/layeniaredder,
+/turf/open/floor/plating/layeniaredder,
 /area/ruin/unpowered/no_grav)
 "vdC" = (
 /obj/effect/turf_decal/loading_area{
@@ -138486,7 +139118,7 @@
 	name = "visible"
 	},
 /obj/effect/landmark/nuclear_waste_spawner,
-/turf/open/floor/plating/asteroid/layeniaredder,
+/turf/open/floor/plating/layeniaredder,
 /area/ruin/unpowered/no_grav)
 "viK" = (
 /obj/machinery/light{
@@ -138575,7 +139207,7 @@
 	name = "BoxStation emergency evac bay";
 	width = 32
 	},
-/turf/open/floor/plating/asteroid/layeniaredder{
+/turf/open/floor/plating/layeniaredder{
 	icon_state = "concrete2";
 	name = "concrete"
 	},
@@ -138664,7 +139296,7 @@
 "vku" = (
 /obj/structure/fans/tiny/invisible,
 /obj/structure/fans/tiny/invisible,
-/turf/open/floor/plating/asteroid/layeniaredder{
+/turf/open/floor/plating/layeniaredder{
 	icon_state = "concrete2";
 	name = "concrete"
 	},
@@ -138756,7 +139388,7 @@
 /obj/structure/railing{
 	dir = 1
 	},
-/turf/open/floor/plating/asteroid/layeniaredder,
+/turf/open/floor/plating/layeniaredder,
 /area/ruin/unpowered/no_grav)
 "vkY" = (
 /obj/effect/turf_decal/bot,
@@ -139101,7 +139733,7 @@
 /obj/effect/turf_decal/stripes/line{
 	dir = 1
 	},
-/turf/open/floor/plating/asteroid/layeniaredder{
+/turf/open/floor/plating/layeniaredder{
 	icon_state = "concrete2";
 	name = "concrete"
 	},
@@ -139164,7 +139796,7 @@
 	},
 /area/hallway/primary/port/fore)
 "vnW" = (
-/turf/open/floor/plating/asteroid/layeniaredder,
+/turf/open/floor/plating/layeniaredder,
 /area/security/prison)
 "vnY" = (
 /obj/structure/cable{
@@ -139287,6 +139919,21 @@
 /obj/effect/landmark/start/assistant,
 /turf/open/floor/plasteel/vaporwave,
 /area/commons/arcade)
+"vou" = (
+/obj/effect/turf_decal/loading_area{
+	color = "#55391A";
+	dir = 1;
+	icon_state = "siding_wood_line";
+	name = "wood"
+	},
+/obj/machinery/atmospherics/pipe/simple/scrubbers/hidden/layer1{
+	dir = 10;
+	name = "scrubbers pipe"
+	},
+/turf/open/floor/plasteel/dark{
+	icon_state = "darkfull_whole_alt"
+	},
+/area/commons/fitness)
 "vox" = (
 /obj/machinery/atmospherics/pipe/simple/scrubbers/hidden/layer1,
 /obj/machinery/atmospherics/pipe/simple/supply/hidden/layer3{
@@ -139379,7 +140026,8 @@
 	color = "#55391A";
 	dir = 5;
 	icon_state = "siding_wood_line";
-	name = "wood"
+	name = "wood";
+	pixel_y = 1
 	},
 /obj/structure/chair/comfy/black{
 	dir = 8
@@ -139464,6 +140112,16 @@
 	},
 /turf/open/floor/plasteel,
 /area/hallway/primary/starboard)
+"vpz" = (
+/obj/machinery/light{
+	dir = 8;
+	pixel_x = -7
+	},
+/obj/machinery/atmospherics/components/unary/vent_scrubber/on/layer1{
+	name = "air scrubber"
+	},
+/turf/open/floor/plating,
+/area/maintenance/solars/aux/port)
 "vpF" = (
 /obj/structure/cable{
 	icon_state = "4-8"
@@ -139573,11 +140231,28 @@
 	},
 /turf/open/floor/plasteel,
 /area/engineering/atmos)
+"vqw" = (
+/obj/effect/turf_decal/tile/neutral{
+	dir = 8
+	},
+/obj/effect/turf_decal/tile/neutral,
+/obj/effect/turf_decal/arrows/red{
+	dir = 4
+	},
+/obj/effect/turf_decal/arrows/red{
+	dir = 4;
+	pixel_x = -13
+	},
+/turf/open/floor/plasteel{
+	dir = 1;
+	icon_state = "floor_plate"
+	},
+/area/engineering/lobby)
 "vqB" = (
 /obj/effect/turf_decal/stripes/line{
 	dir = 6
 	},
-/turf/open/floor/plating/asteroid/layeniaredder{
+/turf/open/floor/plating/layeniaredder{
 	icon_state = "concrete2";
 	name = "concrete"
 	},
@@ -139598,12 +140273,12 @@
 /turf/open/floor/plasteel/dark,
 /area/security/checkpoint)
 "vrd" = (
-/obj/effect/decal/cleanable/blood/tracks,
-/obj/effect/decal/cleanable/blood/drip,
-/obj/effect/decal/cleanable/dirt,
-/turf/open/floor/plating{
-	icon_state = "panelscorched"
+/obj/item/melee/baseball_bat,
+/obj/effect/decal/cleanable/semen{
+	icon_state = "milk4";
+	pixel_x = 6
 	},
+/turf/open/floor/plasteel/dark,
 /area/security/prison)
 "vro" = (
 /turf/open/floor/plasteel/stairs/medium{
@@ -139710,7 +140385,7 @@
 "vrP" = (
 /obj/machinery/atmospherics/pipe/heat_exchanging/junction,
 /obj/machinery/atmospherics/pipe/heat_exchanging/junction/layer1,
-/turf/open/floor/plating/asteroid/layeniaredder,
+/turf/open/floor/plating/layeniaredder,
 /area/ruin/unpowered/no_grav)
 "vsj" = (
 /obj/structure/cable{
@@ -140166,7 +140841,7 @@
 /obj/structure/railing{
 	dir = 8
 	},
-/turf/open/floor/plating/asteroid/layeniaredder,
+/turf/open/floor/plating/layeniaredder,
 /area/ruin/unpowered/no_grav)
 "vvN" = (
 /obj/effect/turf_decal/loading_area{
@@ -140567,7 +141242,7 @@
 	},
 /obj/structure/disposaloutlet,
 /obj/effect/turf_decal/stripes/line,
-/turf/open/floor/plating/asteroid/layeniaredder{
+/turf/open/floor/plating/layeniaredder{
 	icon_state = "concrete2";
 	name = "concrete"
 	},
@@ -140747,7 +141422,7 @@
 /obj/effect/turf_decal/stripes/line{
 	dir = 4
 	},
-/turf/open/floor/plating/asteroid/layeniaredder{
+/turf/open/floor/plating/layeniaredder{
 	icon_state = "concrete2";
 	name = "concrete"
 	},
@@ -140771,7 +141446,7 @@
 /obj/structure/railing{
 	dir = 10
 	},
-/turf/open/floor/plating/asteroid/layeniaredder,
+/turf/open/floor/plating/layeniaredder,
 /area/ruin/unpowered/no_grav)
 "vzP" = (
 /obj/machinery/door/airlock/maintenance{
@@ -140885,7 +141560,7 @@
 /area/commons/toilet)
 "vAL" = (
 /obj/structure/flora/junglebush,
-/turf/open/floor/plating/asteroid/layeniaredder,
+/turf/open/floor/plating/layeniaredder,
 /area/ruin/unpowered/no_grav)
 "vAP" = (
 /obj/effect/turf_decal/tile/green{
@@ -140951,7 +141626,7 @@
 /obj/structure/barricade/wooden{
 	dir = 8
 	},
-/turf/open/floor/plating/asteroid/layeniaredder,
+/turf/open/floor/plating/layeniaredder,
 /area/ruin/unpowered/no_grav)
 "vBx" = (
 /obj/effect/turf_decal/loading_area{
@@ -141227,7 +141902,7 @@
 /obj/effect/turf_decal/stripes/white/line{
 	dir = 1
 	},
-/turf/open/floor/plating/asteroid/layeniaredder{
+/turf/open/floor/plating/layeniaredder{
 	icon_state = "concrete2";
 	name = "concrete"
 	},
@@ -141510,7 +142185,7 @@
 /obj/machinery/light{
 	pixel_y = -1
 	},
-/turf/open/floor/plating/asteroid/layeniaredder,
+/turf/open/floor/plating/layeniaredder,
 /area/ruin/unpowered/no_grav)
 "vFo" = (
 /obj/machinery/atmospherics/pipe/simple/supply/hidden/layer3{
@@ -141646,7 +142321,7 @@
 	dir = 4;
 	pixel_x = 7
 	},
-/turf/open/floor/plating/asteroid/layeniaredder{
+/turf/open/floor/plating/layeniaredder{
 	icon_state = "concrete2";
 	name = "concrete"
 	},
@@ -141666,6 +142341,14 @@
 	},
 /obj/structure/cable{
 	icon_state = "2-4"
+	},
+/obj/machinery/atmospherics/pipe/simple/scrubbers/hidden/layer1{
+	dir = 4;
+	name = "scrubbers pipe"
+	},
+/obj/machinery/atmospherics/pipe/simple/supply/hidden/layer3{
+	dir = 9;
+	name = "air supply pipe"
 	},
 /turf/open/floor/plating,
 /area/maintenance/solars/aux/port)
@@ -141815,7 +142498,7 @@
 /obj/effect/turf_decal/stripes/line{
 	dir = 4
 	},
-/turf/open/floor/plating/asteroid/layeniaredder{
+/turf/open/floor/plating/layeniaredder{
 	icon_state = "concrete2";
 	name = "concrete"
 	},
@@ -141992,7 +142675,7 @@
 /obj/effect/turf_decal/stripes/line{
 	dir = 1
 	},
-/turf/open/floor/plating/asteroid/layeniaredder{
+/turf/open/floor/plating/layeniaredder{
 	icon_state = "concrete2";
 	name = "concrete"
 	},
@@ -142230,7 +142913,7 @@
 "vJX" = (
 /obj/structure/girder,
 /obj/structure/lattice/catwalk,
-/turf/open/floor/plating/asteroid/layeniaredder,
+/turf/open/floor/plating/layeniaredder,
 /area/ruin/unpowered/no_grav)
 "vKb" = (
 /obj/structure/lattice/catwalk,
@@ -143012,7 +143695,7 @@
 	dir = 1
 	},
 /obj/effect/turf_decal/stripes/line,
-/turf/open/floor/plating/asteroid/layeniaredder,
+/turf/open/floor/plating/layeniaredder,
 /area/ruin/unpowered/no_grav)
 "vPX" = (
 /obj/structure/reagent_dispensers/fueltank,
@@ -143378,7 +144061,7 @@
 	icon_state = "line";
 	name = "line"
 	},
-/turf/open/floor/plating/asteroid/layeniaredder{
+/turf/open/floor/plating/layeniaredder{
 	icon_state = "concrete2";
 	name = "concrete"
 	},
@@ -143877,7 +144560,7 @@
 /obj/effect/turf_decal/stripes/white/line{
 	dir = 1
 	},
-/turf/open/floor/plating/asteroid/layeniaredder{
+/turf/open/floor/plating/layeniaredder{
 	icon_state = "concrete2";
 	name = "concrete"
 	},
@@ -144137,7 +144820,7 @@
 /obj/effect/decal/cleanable/semendrip{
 	name = "pilk drop"
 	},
-/turf/open/floor/plating/asteroid/layeniaredder,
+/turf/open/floor/plating/layeniaredder,
 /area/ruin/unpowered/no_grav)
 "vYf" = (
 /obj/machinery/atmospherics/pipe/simple/supply/hidden/layer3{
@@ -144357,7 +145040,7 @@
 	},
 /area/medical/medbay/central)
 "wal" = (
-/turf/open/floor/plating/asteroid/layeniasand,
+/turf/open/floor/grass/layeniasand,
 /area/ruin/unpowered/no_grav)
 "wan" = (
 /obj/effect/decal/cleanable/dirt,
@@ -144748,7 +145431,7 @@
 /obj/effect/turf_decal/stripes/line{
 	dir = 4
 	},
-/turf/open/floor/plating/asteroid/layeniaredder{
+/turf/open/floor/plating/layeniaredder{
 	icon_state = "concrete2";
 	name = "concrete"
 	},
@@ -144872,7 +145555,7 @@
 	icon_state = "linealt_corner";
 	name = "line"
 	},
-/turf/open/floor/plating/asteroid/layeniaredder{
+/turf/open/floor/plating/layeniaredder{
 	icon_state = "concrete2";
 	name = "concrete"
 	},
@@ -145382,7 +146065,7 @@
 	},
 /area/engineering/atmos)
 "who" = (
-/turf/open/floor/plating/asteroid/layeniaredder{
+/turf/open/floor/plating/layeniaredder{
 	icon_state = "layenia4"
 	},
 /area/command/bridge)
@@ -145802,7 +146485,8 @@
 	name = "wood corner"
 	},
 /obj/effect/turf_decal/box,
-/obj/machinery/atmospherics/pipe/simple/supply/hidden/layer3{
+/obj/machinery/atmospherics/pipe/manifold/supply/hidden/layer3{
+	dir = 4;
 	name = "air supply pipe"
 	},
 /turf/open/floor/wood{
@@ -145866,7 +146550,7 @@
 	dir = 1;
 	pixel_y = 16
 	},
-/turf/open/floor/plating/asteroid/layeniaredder{
+/turf/open/floor/plating/layeniaredder{
 	icon_state = "concrete2";
 	name = "concrete"
 	},
@@ -146262,14 +146946,14 @@
 	},
 /area/medical/surgery)
 "wnI" = (
-/obj/machinery/door/airlock/research{
-	name = "Research Division Xenoarchaeology Access";
-	req_access_txt = "47"
-	},
 /obj/machinery/door/firedoor,
 /obj/machinery/door/poddoor/preopen{
 	id = "Biohazard";
 	name = "biohazard containment door"
+	},
+/obj/machinery/door/airlock/research{
+	name = "Containment Room";
+	req_access_txt = "47"
 	},
 /turf/open/floor/plasteel{
 	dir = 8;
@@ -146704,7 +147388,7 @@
 /obj/structure/railing/corner{
 	dir = 1
 	},
-/turf/open/floor/plating/asteroid/layeniaredder{
+/turf/open/floor/plating/layeniaredder{
 	icon_state = "concrete2";
 	name = "concrete"
 	},
@@ -146734,7 +147418,7 @@
 	dir = 4;
 	pixel_x = 7
 	},
-/turf/open/floor/plating/asteroid/layeniaredder,
+/turf/open/floor/plating/layeniaredder,
 /area/maintenance/fore)
 "wqQ" = (
 /obj/effect/turf_decal/loading_area{
@@ -147192,7 +147876,7 @@
 	icon_state = "drain_corner";
 	name = "drain"
 	},
-/turf/open/floor/plating/asteroid/layeniaredder,
+/turf/open/floor/plating/layeniaredder,
 /area/space)
 "wui" = (
 /obj/item/crowbar,
@@ -147426,7 +148110,7 @@
 /turf/open/floor/wood,
 /area/service/chapel/main)
 "wvS" = (
-/turf/open/floor/plating/asteroid/layeniaredder,
+/turf/open/floor/plating/layeniaredder,
 /area/hallway/primary/fore)
 "wvV" = (
 /obj/effect/turf_decal/loading_area{
@@ -147729,7 +148413,7 @@
 /obj/effect/turf_decal/stripes/line{
 	dir = 8
 	},
-/turf/open/floor/plating/asteroid/layeniaredder{
+/turf/open/floor/plating/layeniaredder{
 	icon_state = "concrete";
 	name = "concrete"
 	},
@@ -147749,14 +148433,14 @@
 /obj/effect/turf_decal/stripes/corner{
 	dir = 4
 	},
-/turf/open/floor/plating/asteroid/layeniaredder{
+/turf/open/floor/plating/layeniaredder{
 	icon_state = "concrete2";
 	name = "concrete"
 	},
 /area/ruin/unpowered/no_grav)
 "wzg" = (
 /obj/structure/fans/tiny/invisible,
-/turf/open/floor/plating/asteroid/layeniaredder{
+/turf/open/floor/plating/layeniaredder{
 	icon_state = "concrete2";
 	name = "concrete"
 	},
@@ -147782,6 +148466,14 @@
 /obj/effect/turf_decal/stripes/corner,
 /obj/effect/turf_decal/stripes/line{
 	dir = 9
+	},
+/obj/machinery/atmospherics/pipe/simple/supply/hidden/layer3{
+	dir = 6;
+	name = "air supply pipe"
+	},
+/obj/machinery/atmospherics/pipe/simple/scrubbers/hidden/layer1{
+	dir = 6;
+	name = "scrubbers pipe"
 	},
 /turf/open/floor/plating,
 /area/ruin/unpowered/no_grav)
@@ -148354,7 +149046,7 @@
 /obj/machinery/light{
 	pixel_y = -1
 	},
-/turf/open/floor/plating/asteroid/layeniaredder,
+/turf/open/floor/plating/layeniaredder,
 /area/ruin/unpowered/no_grav)
 "wDC" = (
 /obj/effect/turf_decal/tile/neutral{
@@ -148831,7 +149523,7 @@
 /obj/effect/turf_decal/caution/stand_clear{
 	dir = 8
 	},
-/turf/open/floor/plating/asteroid/layeniaredder{
+/turf/open/floor/plating/layeniaredder{
 	icon_state = "concrete2";
 	name = "concrete"
 	},
@@ -148933,7 +149625,7 @@
 	layer = 3.9;
 	pixel_y = -10
 	},
-/turf/open/floor/plating/asteroid/layeniaredder{
+/turf/open/floor/plating/layeniaredder{
 	icon_state = "concrete";
 	name = "concrete"
 	},
@@ -149019,14 +149711,14 @@
 "wHM" = (
 /obj/effect/spawner/lootdrop/maintenance,
 /obj/structure/table,
-/turf/open/floor/plating/asteroid/layeniaredder,
+/turf/open/floor/plating/layeniaredder,
 /area/ruin/unpowered/no_grav)
 "wHP" = (
 /obj/structure/lattice/catwalk,
 /obj/structure/railing{
 	dir = 6
 	},
-/turf/open/floor/plating/asteroid/layeniaredder,
+/turf/open/floor/plating/layeniaredder,
 /area/ruin/unpowered/no_grav)
 "wHR" = (
 /obj/machinery/light{
@@ -149204,6 +149896,21 @@
 /obj/effect/baseturf_helper/asteroid/layenia,
 /turf/closed/wall,
 /area/commons/dorms)
+"wJu" = (
+/obj/structure/lattice/catwalk,
+/obj/structure/railing{
+	dir = 8
+	},
+/obj/machinery/atmospherics/pipe/simple/scrubbers/hidden/layer1{
+	dir = 4;
+	name = "scrubbers pipe"
+	},
+/obj/machinery/atmospherics/pipe/simple/supply/hidden/layer3{
+	dir = 8;
+	name = "air supply pipe"
+	},
+/turf/open/floor/plating/layeniaredder,
+/area/ruin/unpowered/no_grav)
 "wJB" = (
 /obj/effect/turf_decal/stripes/line{
 	dir = 8
@@ -149277,7 +149984,7 @@
 /obj/effect/turf_decal/stripes/line{
 	dir = 8
 	},
-/turf/open/floor/plating/asteroid/layeniaredder{
+/turf/open/floor/plating/layeniaredder{
 	icon_state = "concrete2";
 	name = "concrete"
 	},
@@ -149432,6 +150139,33 @@
 	icon_state = "darkfull_whole_alt"
 	},
 /area/science/mixing)
+"wLm" = (
+/obj/effect/turf_decal/loading_area{
+	icon_state = "drain";
+	name = "drain"
+	},
+/obj/machinery/door/poddoor/preopen{
+	dir = 8;
+	id = "primaryshut1";
+	name = "primary blast door"
+	},
+/obj/machinery/door/airlock/public/glass{
+	dir = 4;
+	name = "Central Access"
+	},
+/obj/effect/turf_decal/delivery,
+/obj/machinery/door/firedoor{
+	dir = 8
+	},
+/obj/structure/fans/tiny/invisible,
+/obj/structure/sign/directions/dormsdirection{
+	dir = 8;
+	pixel_y = -24
+	},
+/turf/open/floor/plasteel/dark{
+	icon_state = "darkfull_whole_alt"
+	},
+/area/hallway/primary/central)
 "wLt" = (
 /obj/effect/turf_decal/tile/green{
 	dir = 6
@@ -149876,7 +150610,7 @@
 /obj/structure/fence{
 	dir = 4
 	},
-/turf/open/floor/plating/asteroid/layeniaredder,
+/turf/open/floor/plating/layeniaredder,
 /area/ruin/unpowered/no_grav)
 "wPs" = (
 /obj/effect/turf_decal/tile/neutral{
@@ -149996,11 +150730,9 @@
 /turf/open/floor/plasteel/dark,
 /area/hallway/primary/port/fore)
 "wQt" = (
-/obj/effect/decal/cleanable/blood/drip,
-/obj/effect/decal/cleanable/dirt,
-/turf/open/floor/plating{
-	icon_state = "panelscorched"
-	},
+/obj/item/clothing/underwear/briefs/strapon,
+/obj/item/dildo/knotted,
+/turf/open/floor/plasteel/dark,
 /area/security/prison)
 "wQw" = (
 /obj/machinery/computer/arcade/battle{
@@ -150019,7 +150751,7 @@
 /obj/effect/turf_decal/stripes/line{
 	dir = 8
 	},
-/turf/open/floor/plating/asteroid/layeniaredder{
+/turf/open/floor/plating/layeniaredder{
 	icon_state = "concrete2";
 	name = "concrete"
 	},
@@ -151544,7 +152276,7 @@
 	roundstart_template = /datum/map_template/shuttle/labour/box;
 	width = 9
 	},
-/turf/open/floor/plating/asteroid/layeniaredder{
+/turf/open/floor/plating/layeniaredder{
 	icon_state = "concrete2";
 	name = "concrete"
 	},
@@ -152161,7 +152893,7 @@
 	dir = 8;
 	name = "Shuttle Maintenance Computer"
 	},
-/turf/open/floor/plating/asteroid/layeniaredder,
+/turf/open/floor/plating/layeniaredder,
 /area/ruin/unpowered/no_grav)
 "xhd" = (
 /obj/machinery/bookbinder,
@@ -153061,7 +153793,7 @@
 /obj/structure/railing{
 	dir = 5
 	},
-/turf/open/floor/plating/asteroid/layeniaredder{
+/turf/open/floor/plating/layeniaredder{
 	icon_state = "concrete2";
 	name = "concrete"
 	},
@@ -153246,12 +153978,19 @@
 	},
 /area/medical/medbay/central)
 "xpS" = (
-/obj/item/cigbutt,
-/obj/effect/decal/cleanable/dirt,
-/obj/effect/decal/cleanable/ash/crematorium,
-/turf/open/floor/plating{
-	icon_state = "platingdmg1"
+/obj/item/cigbutt{
+	pixel_y = -4
 	},
+/obj/effect/decal/cleanable/dirt,
+/obj/effect/decal/cleanable/ash/crematorium{
+	pixel_x = -11
+	},
+/obj/item/reagent_containers/glass/bucket/wood,
+/obj/effect/decal/cleanable/semen,
+/obj/effect/decal/cleanable/semen{
+	icon_state = "semen3"
+	},
+/turf/open/floor/plasteel/dark,
 /area/security/prison)
 "xpV" = (
 /obj/machinery/airalarm{
@@ -153469,6 +154208,14 @@
 /obj/effect/turf_decal/delivery/red,
 /turf/open/floor/engine/vacuum,
 /area/engineering/teg)
+"xrC" = (
+/obj/structure/disposalpipe/segment,
+/obj/machinery/atmospherics/pipe/simple/supply/hidden/layer3{
+	dir = 5;
+	name = "air supply pipe"
+	},
+/turf/open/floor/plating,
+/area/construction)
 "xrD" = (
 /obj/structure/chair/comfy/black{
 	dir = 4
@@ -153668,7 +154415,7 @@
 /obj/structure/railing{
 	dir = 4
 	},
-/turf/open/floor/plating/asteroid/layeniaredder,
+/turf/open/floor/plating/layeniaredder,
 /area/ruin/unpowered/no_grav)
 "xtq" = (
 /obj/effect/turf_decal/tile/green{
@@ -153815,7 +154562,7 @@
 	dir = 8;
 	pixel_x = -7
 	},
-/turf/open/floor/plating/asteroid/layeniasand,
+/turf/open/floor/grass/layeniasand,
 /area/ruin/unpowered/no_grav)
 "xuS" = (
 /obj/structure/lattice/catwalk,
@@ -154054,7 +154801,7 @@
 	icon_state = "line";
 	name = "line"
 	},
-/turf/open/floor/plating/asteroid/layeniaredder{
+/turf/open/floor/plating/layeniaredder{
 	icon_state = "concrete2";
 	name = "concrete"
 	},
@@ -154217,7 +154964,7 @@
 	id = "pod_lavaland3";
 	name = "lavaland"
 	},
-/turf/open/floor/plating/asteroid/layeniaredder{
+/turf/open/floor/plating/layeniaredder{
 	icon_state = "concrete2";
 	name = "concrete"
 	},
@@ -154378,7 +155125,7 @@
 	},
 /obj/structure/railing,
 /obj/effect/turf_decal/stripes/line,
-/turf/open/floor/plating/asteroid/layeniaredder{
+/turf/open/floor/plating/layeniaredder{
 	icon_state = "concrete2";
 	name = "concrete"
 	},
@@ -154520,6 +155267,20 @@
 /obj/effect/turf_decal/box,
 /turf/open/floor/plasteel,
 /area/hallway/primary/central)
+"xzi" = (
+/obj/effect/turf_decal/stripes/line{
+	dir = 8
+	},
+/obj/machinery/atmospherics/pipe/simple/scrubbers/hidden/layer1{
+	dir = 4;
+	name = "scrubbers pipe"
+	},
+/obj/machinery/atmospherics/pipe/simple/supply/hidden/layer3{
+	dir = 8;
+	name = "air supply pipe"
+	},
+/turf/open/floor/plating,
+/area/ruin/unpowered/no_grav)
 "xzq" = (
 /obj/machinery/newscaster{
 	pixel_y = -32
@@ -154532,7 +155293,7 @@
 /obj/structure/fence/corner{
 	dir = 10
 	},
-/turf/open/floor/plating/asteroid/layeniaredder,
+/turf/open/floor/plating/layeniaredder,
 /area/ruin/unpowered/no_grav)
 "xzy" = (
 /obj/effect/turf_decal/tile/neutral{
@@ -154642,7 +155403,7 @@
 /obj/effect/turf_decal/stripes/line{
 	dir = 8
 	},
-/turf/open/floor/plating/asteroid/layeniaredder{
+/turf/open/floor/plating/layeniaredder{
 	icon_state = "concrete2";
 	name = "concrete"
 	},
@@ -155057,7 +155818,7 @@
 /area/hallway/secondary/entry)
 "xCN" = (
 /obj/structure/ore_box,
-/turf/open/floor/plating/asteroid/layeniaredder,
+/turf/open/floor/plating/layeniaredder,
 /area/ruin/unpowered/no_grav)
 "xCS" = (
 /obj/structure/table,
@@ -155179,10 +155940,6 @@
 	icon_state = "floor_trim"
 	},
 /area/security/processing)
-"xEd" = (
-/obj/structure/lattice,
-/turf/open/floor/plating/asteroid/layeniaredder,
-/area/construction)
 "xEi" = (
 /obj/structure/sink/kitchen{
 	pixel_y = 30
@@ -155209,7 +155966,7 @@
 /obj/effect/turf_decal/stripes/line{
 	dir = 8
 	},
-/turf/open/floor/plating/asteroid/layeniaredder,
+/turf/open/floor/plating/layeniaredder,
 /area/ruin/unpowered/no_grav)
 "xEJ" = (
 /obj/machinery/firealarm{
@@ -155417,7 +156174,7 @@
 /obj/structure/cable{
 	icon_state = "4-8"
 	},
-/turf/open/floor/plating/asteroid/layeniaredder,
+/turf/open/floor/plating/layeniaredder,
 /area/security/prison)
 "xGF" = (
 /obj/machinery/light{
@@ -155466,7 +156223,7 @@
 /obj/effect/turf_decal/stripes/line{
 	dir = 1
 	},
-/turf/open/floor/plating/asteroid/layeniaredder{
+/turf/open/floor/plating/layeniaredder{
 	icon_state = "concrete2";
 	name = "concrete"
 	},
@@ -155593,7 +156350,7 @@
 /obj/effect/turf_decal/stripes/line{
 	dir = 10
 	},
-/turf/open/floor/plating/asteroid/layeniaredder{
+/turf/open/floor/plating/layeniaredder{
 	icon_state = "concrete";
 	name = "concrete"
 	},
@@ -155722,7 +156479,7 @@
 /area/commons/fitness/pool)
 "xJk" = (
 /obj/item/shovel,
-/turf/open/floor/plating/asteroid/layeniasand,
+/turf/open/floor/grass/layeniasand,
 /area/ruin/unpowered/no_grav)
 "xJo" = (
 /obj/effect/turf_decal/tile/neutral{
@@ -156210,7 +156967,7 @@
 /obj/structure/fence/end{
 	dir = 4
 	},
-/turf/open/floor/plating/asteroid/layeniaredder{
+/turf/open/floor/plating/layeniaredder{
 	icon_state = "concrete2";
 	name = "concrete"
 	},
@@ -156350,9 +157107,8 @@
 /turf/open/space/basic,
 /area/space)
 "xNs" = (
-/turf/open/floor/plating{
-	icon_state = "panelscorched"
-	},
+/obj/structure/bed/dogbed,
+/turf/open/floor/plasteel/dark,
 /area/security/prison)
 "xNB" = (
 /obj/effect/turf_decal/loading_area{
@@ -156377,7 +157133,7 @@
 	dir = 4
 	},
 /obj/structure/window/reinforced,
-/turf/open/floor/plating/asteroid/layeniaredder{
+/turf/open/floor/plating/layeniaredder{
 	icon_state = "layenia4"
 	},
 /area/service/bar)
@@ -156452,7 +157208,7 @@
 	icon_state = "line";
 	name = "line"
 	},
-/turf/open/floor/plating/asteroid/layeniaredder{
+/turf/open/floor/plating/layeniaredder{
 	icon_state = "concrete2";
 	name = "concrete"
 	},
@@ -156488,6 +157244,26 @@
 /obj/effect/decal/cleanable/cobweb,
 /turf/open/floor/plasteel/dark,
 /area/engineering/main)
+"xOY" = (
+/obj/machinery/atmospherics/pipe/simple/supply/hidden/layer3{
+	dir = 8;
+	name = "air supply pipe"
+	},
+/obj/effect/turf_decal/tile/neutral,
+/obj/effect/turf_decal/tile/neutral{
+	dir = 4
+	},
+/obj/effect/turf_decal/tile/neutral{
+	dir = 1
+	},
+/obj/effect/turf_decal/tile/neutral{
+	dir = 8
+	},
+/obj/item/reagent_containers/glass/bowl/mushroom_bowl{
+	pixel_y = -7
+	},
+/turf/open/floor/plasteel/dark,
+/area/science)
 "xPa" = (
 /obj/effect/turf_decal/stripes/line,
 /obj/effect/turf_decal/stripes/line{
@@ -156904,7 +157680,7 @@
 /obj/effect/turf_decal/stripes/line{
 	dir = 5
 	},
-/turf/open/floor/plating/asteroid/layeniaredder{
+/turf/open/floor/plating/layeniaredder{
 	icon_state = "concrete2";
 	name = "concrete"
 	},
@@ -157319,7 +158095,7 @@
 /obj/effect/turf_decal/stripes/line{
 	dir = 9
 	},
-/turf/open/floor/plating/asteroid/layeniaredder{
+/turf/open/floor/plating/layeniaredder{
 	icon_state = "concrete2";
 	name = "concrete"
 	},
@@ -157385,14 +158161,9 @@
 	},
 /area/commons/dorms)
 "xUN" = (
-/obj/structure/table,
-/obj/machinery/cell_charger{
-	pixel_y = 5
-	},
 /obj/machinery/atmospherics/pipe/simple/supply/hidden/layer3{
 	name = "air supply pipe"
 	},
-/obj/item/stock_parts/cell/high,
 /obj/effect/turf_decal/tile/neutral,
 /obj/effect/turf_decal/tile/neutral{
 	dir = 4
@@ -158280,7 +159051,7 @@
 /turf/open/space/basic,
 /area/command/bridge)
 "ybT" = (
-/turf/open/floor/plating/asteroid/layeniaredder{
+/turf/open/floor/plating/layeniaredder{
 	icon_state = "concrete2";
 	name = "concrete"
 	},
@@ -158822,6 +159593,17 @@
 	icon_state = "darkfull_plate"
 	},
 /area/service/hydroponics/garden)
+"yeW" = (
+/obj/machinery/atmospherics/pipe/simple/scrubbers/hidden/layer1{
+	dir = 9;
+	name = "scrubbers pipe"
+	},
+/obj/machinery/atmospherics/pipe/simple/supply/hidden/layer3{
+	dir = 9;
+	name = "air supply pipe"
+	},
+/turf/open/floor/plating,
+/area/maintenance/port)
 "yfb" = (
 /obj/machinery/atmospherics/pipe/simple/scrubbers/hidden/layer1{
 	name = "scrubbers pipe"
@@ -158902,6 +159684,10 @@
 	dir = 1;
 	icon_state = "drain";
 	name = "drain"
+	},
+/obj/structure/bed/dogbed,
+/obj/item/clothing/neck/petcollar{
+	pixel_y = -6
 	},
 /turf/open/floor/plasteel/dark,
 /area/science)
@@ -159033,7 +159819,7 @@
 /obj/effect/turf_decal/stripes/line{
 	dir = 9
 	},
-/turf/open/floor/plating/asteroid/layeniaredder{
+/turf/open/floor/plating/layeniaredder{
 	icon_state = "concrete2";
 	name = "concrete"
 	},
@@ -159274,7 +160060,7 @@
 /obj/structure/fence/corner{
 	dir = 6
 	},
-/turf/open/floor/plating/asteroid/layeniaredder,
+/turf/open/floor/plating/layeniaredder,
 /area/ruin/unpowered/no_grav)
 "yiU" = (
 /obj/effect/turf_decal/stripes/line,
@@ -159383,7 +160169,7 @@
 	pixel_x = -7
 	},
 /obj/structure/railing,
-/turf/open/floor/plating/asteroid/layeniaredder,
+/turf/open/floor/plating/layeniaredder,
 /area/ruin/unpowered/no_grav)
 "yjI" = (
 /obj/machinery/microwave{
@@ -179364,14 +180150,14 @@ qTV
 rUY
 ncK
 wzq
-qTV
-qTV
-qTV
-qTV
-qTV
-qTV
-qTV
-qTV
+ubo
+ubo
+ubo
+ubo
+ubo
+ubo
+ubo
+ubo
 oQG
 gsE
 wer
@@ -179620,7 +180406,7 @@ upU
 upU
 nmq
 ncK
-nmq
+jUI
 upU
 upU
 upU
@@ -179629,7 +180415,7 @@ upU
 rph
 cUy
 gSs
-vIc
+faH
 kKy
 xvX
 sBx
@@ -179877,7 +180663,7 @@ hjQ
 dqN
 lUP
 hcr
-lUP
+rYT
 dqN
 hjQ
 hjQ
@@ -180134,7 +180920,7 @@ iku
 iIB
 abE
 nFS
-abE
+pVJ
 iIB
 aec
 hjQ
@@ -180391,7 +181177,7 @@ aMP
 hcr
 vdf
 iIB
-vdf
+bpo
 hcr
 hcr
 qIj
@@ -180647,7 +181433,7 @@ wal
 hcr
 bKe
 gTe
-qmC
+uTQ
 vGn
 dmk
 hcr
@@ -180905,7 +181691,7 @@ hcr
 opQ
 kEu
 uUS
-abE
+maG
 pCI
 hcr
 vZb
@@ -184256,8 +185042,8 @@ mnw
 boa
 fYt
 iPy
-taj
-wFP
+sMP
+gbg
 mdG
 hNW
 dcj
@@ -191487,9 +192273,9 @@ vaS
 aaL
 aaL
 oPE
-jls
+mRB
 ygw
-gYv
+wLm
 peT
 peT
 peT
@@ -196627,10 +197413,10 @@ wsU
 wsU
 wsU
 wsU
-ygw
+pTW
 dVo
 ygw
-obz
+mvb
 fjB
 muU
 muU
@@ -200485,7 +201271,7 @@ aiK
 cOQ
 dKg
 eoL
-rtp
+bWa
 yfv
 fMs
 jzQ
@@ -200742,10 +201528,10 @@ lDF
 oxJ
 dKg
 eoL
-rtp
+bWa
 rLh
 sez
-pyY
+xOY
 dZZ
 lZt
 rpp
@@ -201003,9 +201789,9 @@ bWa
 tZG
 sez
 pyY
-uwB
-aIq
-paD
+dZZ
+qsx
+rpp
 bWa
 wiS
 kjB
@@ -201260,10 +202046,10 @@ dlX
 vBL
 xUN
 cNZ
-hnz
-hnz
-hnz
-hnz
+upI
+oIz
+paD
+bWa
 pFE
 fsP
 kHu
@@ -201463,7 +202249,7 @@ una
 tjw
 bbE
 bbE
-bbE
+mAy
 cMV
 vbF
 uGC
@@ -201518,8 +202304,8 @@ hnz
 hnz
 hnz
 hnz
-dzR
-vWw
+hnz
+hnz
 hnz
 kRH
 kjB
@@ -201720,7 +202506,7 @@ una
 fpK
 bbE
 uZO
-bbE
+mAy
 mad
 rVW
 ocg
@@ -201775,8 +202561,8 @@ cjk
 odu
 odu
 nAu
-mxC
-dJj
+dzR
+vWw
 hnz
 mZn
 yiW
@@ -201977,7 +202763,7 @@ una
 tjw
 bbE
 bbE
-bbE
+mAy
 ieG
 vbF
 owm
@@ -204306,7 +205092,7 @@ dCS
 awy
 jqf
 lqZ
-hSs
+vqw
 jez
 djZ
 lfY
@@ -204562,7 +205348,7 @@ pkG
 gMw
 pfa
 vbF
-lqZ
+aGT
 mAK
 eMZ
 iGd
@@ -206823,7 +207609,7 @@ hjQ
 hjQ
 qep
 wzg
-aQN
+ihx
 hnK
 miY
 fIl
@@ -207854,7 +208640,7 @@ hjQ
 hjQ
 lCP
 wzg
-aQN
+ihx
 wzg
 vhT
 hjQ
@@ -240535,9 +241321,9 @@ mnw
 mnw
 jDN
 hjQ
-fOu
-fOu
-nej
+qup
+qup
+qup
 qup
 qup
 qup
@@ -240792,10 +241578,10 @@ mnw
 mnw
 mnw
 hjQ
-nej
-xEd
+qup
 fOu
-lvd
+fOu
+fOu
 ljQ
 nLS
 hFG
@@ -241049,7 +241835,7 @@ mnw
 mnw
 mnw
 hjQ
-cpt
+qup
 fOu
 fOu
 qwi
@@ -241814,17 +242600,17 @@ wVQ
 wVQ
 wVQ
 dVC
-hjQ
-hjQ
-hjQ
-dfX
+tDu
+uZQ
+uZQ
+iOm
 fQF
-fOu
+krD
 oMB
-fOu
-fOu
-ttO
-nmh
+hZF
+flu
+tCa
+xrC
 nmh
 qrq
 nmh
@@ -242071,17 +242857,17 @@ vtF
 vtF
 vtF
 vtF
-hjQ
+gbh
 hjQ
 hjQ
 vIc
 aOc
 aOc
 aOc
+pLs
 aOc
 aOc
-aOc
-aOc
+qAH
 aOc
 aOc
 aOc
@@ -242328,7 +243114,7 @@ hjQ
 hjQ
 hjQ
 hjQ
-hjQ
+gbh
 hjQ
 hjQ
 hjQ
@@ -242338,7 +243124,7 @@ aOc
 bAB
 pOC
 oxs
-ahR
+bUN
 tGK
 ahR
 lwd
@@ -242585,20 +243371,20 @@ hjQ
 hjQ
 ibK
 gLE
-gLE
+wJu
 gLE
 vzO
 hjQ
 hjQ
 boa
 rqL
-aEx
+pZR
 hul
 hGn
-ahR
+bUN
 jEP
 iNA
-iNA
+hvO
 jbX
 iNA
 ggq
@@ -242842,20 +243628,20 @@ upU
 upU
 ney
 ffF
-qim
+xzi
 gLw
 uoy
 hjQ
 hjQ
 hjQ
 rqL
-aEx
-pNv
-hGn
-ahR
-sBT
-sBT
-sBT
+vou
+dBw
+fum
+txg
+beF
+beF
+bfB
 sBT
 sBT
 xQS
@@ -243109,7 +243895,7 @@ rqL
 aEx
 hul
 hGn
-ahR
+bUN
 ozn
 oMu
 oMu
@@ -243165,7 +243951,7 @@ jqv
 tcV
 jqv
 osD
-yfH
+hcu
 nLS
 nLS
 nLS
@@ -243366,7 +244152,7 @@ rqL
 aEx
 pNv
 hGn
-ahR
+bUN
 isC
 lhr
 lhr
@@ -243613,7 +244399,7 @@ hjQ
 hjQ
 uNP
 gSs
-uDg
+ajG
 rph
 wHP
 hjQ
@@ -243623,7 +244409,7 @@ aOc
 hdj
 pNv
 hGn
-ahR
+bUN
 isC
 lhr
 lhr
@@ -243870,7 +244656,7 @@ nLS
 hjQ
 hjQ
 mWl
-uDg
+ajG
 uoy
 hjQ
 hjQ
@@ -243880,7 +244666,7 @@ rqL
 aEx
 pNv
 hGn
-ahR
+bUN
 isC
 lhr
 lhr
@@ -244137,7 +244923,7 @@ rqL
 aEx
 qfY
 hGn
-ahR
+bUN
 iIf
 dVH
 dVH
@@ -244394,10 +245180,10 @@ rqL
 aEx
 pNv
 hGn
-ahR
-sDO
-sDO
-sDO
+jde
+hMd
+hMd
+kBE
 sDO
 sDO
 rnQ
@@ -245668,9 +246454,9 @@ nLS
 nLS
 nLS
 iIB
-nFS
-abE
-qmC
+vpz
+mHA
+dkV
 iIB
 nLS
 nLS
@@ -247528,7 +248314,7 @@ aQN
 aQN
 aQN
 oyE
-qrh
+jsI
 sPC
 pJJ
 hhr
@@ -248048,7 +248834,7 @@ sRQ
 esH
 fRz
 oyE
-xxD
+vmk
 hdW
 xVJ
 hdW
@@ -248060,7 +248846,7 @@ hdW
 hdW
 hdW
 hdW
-cUb
+hcu
 nLS
 nLS
 nLS
@@ -249602,10 +250388,10 @@ pmb
 pmb
 lNz
 aKX
-xxD
+vmk
 hdW
 hdW
-cUb
+hcu
 nLS
 nLS
 nLS
@@ -253725,7 +254511,7 @@ rja
 wdu
 nIp
 nIp
-nIp
+mIJ
 tqf
 sXN
 anJ
@@ -253980,9 +254766,9 @@ msw
 msw
 msw
 mbX
-rja
-rja
-pmb
+iMI
+iMI
+yeW
 eaj
 dgf
 iCD
@@ -256208,11 +256994,11 @@ sLR
 dtF
 fMK
 aVn
-lVs
+mvR
 xjG
 xjG
 xjG
-iSk
+eQj
 iSk
 wMe
 vRs
