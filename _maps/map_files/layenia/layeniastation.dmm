@@ -1786,13 +1786,13 @@
 	},
 /area/medical/medbay/central)
 "aoE" = (
-/obj/structure/chair{
-	dir = 8
-	},
 /obj/effect/turf_decal/tile/neutral{
 	dir = 6
 	},
 /obj/structure/window/reinforced,
+/obj/effect/turf_decal/plaque{
+	icon_state = "L10"
+	},
 /turf/open/floor/plasteel{
 	icon_state = "floor_plate"
 	},
@@ -6616,6 +6616,9 @@
 	},
 /obj/effect/turf_decal/tile/neutral{
 	dir = 4
+	},
+/obj/effect/turf_decal/plaque{
+	icon_state = "L11"
 	},
 /turf/open/floor/plasteel,
 /area/hallway/primary/central)
@@ -25193,6 +25196,9 @@
 /obj/effect/turf_decal/tile/neutral{
 	dir = 8
 	},
+/obj/effect/turf_decal/plaque{
+	icon_state = "L12"
+	},
 /turf/open/floor/plasteel,
 /area/hallway/primary/central)
 "dSi" = (
@@ -41609,6 +41615,22 @@
 /obj/effect/spawner/lootdrop/maintenance,
 /turf/open/floor/plasteel/dark,
 /area/maintenance/fore)
+"gug" = (
+/obj/effect/turf_decal/tile/neutral,
+/obj/effect/turf_decal/tile/neutral{
+	dir = 8
+	},
+/obj/effect/turf_decal/tile/neutral{
+	dir = 1
+	},
+/obj/effect/turf_decal/tile/neutral{
+	dir = 4
+	},
+/obj/effect/turf_decal/plaque{
+	icon_state = "L5"
+	},
+/turf/open/floor/plasteel,
+/area/hallway/primary/central)
 "guh" = (
 /obj/structure/table,
 /obj/item/stack/packageWrap{
@@ -58241,6 +58263,20 @@
 /obj/item/stamp/hos,
 /turf/open/floor/carpet/red,
 /area/command/heads_quarters/hos)
+"iUT" = (
+/obj/effect/turf_decal/tile/neutral,
+/obj/effect/turf_decal/tile/neutral{
+	dir = 8
+	},
+/obj/effect/turf_decal/tile/neutral{
+	dir = 1
+	},
+/obj/effect/turf_decal/tile/neutral{
+	dir = 4
+	},
+/obj/effect/turf_decal/plaque,
+/turf/open/floor/plasteel,
+/area/hallway/primary/central)
 "iVa" = (
 /obj/structure/cable/yellow{
 	icon_state = "4-8"
@@ -62721,6 +62757,22 @@
 	icon_state = "darkfull_whole_alt"
 	},
 /area/ai_monitored/turret_protected/aisat/hallway)
+"jCo" = (
+/obj/effect/turf_decal/tile/neutral,
+/obj/effect/turf_decal/tile/neutral{
+	dir = 8
+	},
+/obj/effect/turf_decal/tile/neutral{
+	dir = 1
+	},
+/obj/effect/turf_decal/tile/neutral{
+	dir = 4
+	},
+/obj/effect/turf_decal/plaque{
+	icon_state = "L3"
+	},
+/turf/open/floor/plasteel,
+/area/hallway/primary/central)
 "jCq" = (
 /obj/effect/turf_decal/stripes/white/line{
 	dir = 1
@@ -64051,6 +64103,18 @@
 	},
 /turf/open/space/basic,
 /area/space)
+"jKK" = (
+/obj/effect/turf_decal/tile/neutral{
+	dir = 1
+	},
+/obj/effect/turf_decal/stripes/corner{
+	dir = 4
+	},
+/obj/effect/turf_decal/plaque{
+	icon_state = "L1"
+	},
+/turf/open/floor/plasteel,
+/area/hallway/primary/central)
 "jKM" = (
 /obj/effect/baseturf_helper/asteroid/layenia,
 /turf/closed/wall,
@@ -68519,6 +68583,9 @@
 	},
 /obj/effect/turf_decal/stripes/corner{
 	dir = 8
+	},
+/obj/effect/turf_decal/plaque{
+	icon_state = "L13"
 	},
 /turf/open/floor/plasteel,
 /area/hallway/primary/central)
@@ -80815,6 +80882,9 @@
 /area/maintenance/aft)
 "mkn" = (
 /obj/effect/turf_decal/tile/neutral,
+/obj/effect/turf_decal/plaque{
+	icon_state = "L4"
+	},
 /turf/open/floor/plasteel,
 /area/hallway/primary/central)
 "mkp" = (
@@ -109131,13 +109201,13 @@
 	},
 /area/hallway/primary/port)
 "qGb" = (
-/obj/structure/chair{
-	dir = 4
-	},
 /obj/effect/turf_decal/tile/neutral{
 	dir = 6
 	},
 /obj/structure/window/reinforced,
+/obj/effect/turf_decal/plaque{
+	icon_state = "L6"
+	},
 /turf/open/floor/plasteel{
 	icon_state = "floor_plate"
 	},
@@ -113366,6 +113436,24 @@
 	icon_state = "darkfull_whole_alt"
 	},
 /area/service/kitchen)
+"row" = (
+/obj/machinery/atmospherics/pipe/simple/scrubbers/hidden/layer1{
+	name = "scrubbers pipe"
+	},
+/obj/effect/turf_decal/tile/neutral{
+	dir = 4
+	},
+/obj/effect/turf_decal/tile/neutral{
+	dir = 1
+	},
+/obj/effect/turf_decal/tile/neutral{
+	dir = 8
+	},
+/obj/effect/turf_decal/tile/neutral,
+/obj/machinery/holopad,
+/obj/effect/turf_decal/box,
+/turf/open/floor/plasteel,
+/area/hallway/primary/central)
 "roC" = (
 /obj/structure/window/reinforced{
 	dir = 8
@@ -124056,6 +124144,24 @@
 	icon_state = "floor_plate"
 	},
 /area/science/mixing)
+"sPU" = (
+/obj/machinery/atmospherics/pipe/simple/scrubbers/hidden/layer1{
+	name = "scrubbers pipe"
+	},
+/obj/effect/turf_decal/tile/neutral,
+/obj/effect/turf_decal/tile/neutral{
+	dir = 8
+	},
+/obj/effect/turf_decal/tile/neutral{
+	dir = 1
+	},
+/obj/effect/turf_decal/tile/neutral{
+	dir = 4
+	},
+/obj/effect/turf_decal/box,
+/obj/machinery/holopad,
+/turf/open/floor/plasteel,
+/area/hallway/primary/central)
 "sPV" = (
 /obj/structure/grille,
 /obj/structure/window/reinforced{
@@ -130310,6 +130416,7 @@
 "tKp" = (
 /obj/effect/landmark/observer_start,
 /obj/structure/fans/tiny/invisible,
+/obj/effect/landmark/xmastree,
 /turf/open/floor/plating/layeniaredder,
 /area/hallway/primary/central)
 "tKx" = (
@@ -130837,13 +130944,14 @@
 	},
 /area/hallway/primary/fore)
 "tOX" = (
-/obj/structure/table,
 /obj/machinery/light,
 /obj/effect/turf_decal/tile/neutral{
 	dir = 6
 	},
-/obj/structure/fans/tiny/invisible,
 /obj/structure/window/reinforced,
+/obj/effect/turf_decal/plaque{
+	icon_state = "L8"
+	},
 /turf/open/floor/plasteel{
 	icon_state = "floor_plate"
 	},
@@ -143054,6 +143162,20 @@
 	icon_state = "floor_plate"
 	},
 /area/commons/dorms)
+"vIN" = (
+/obj/effect/turf_decal/tile/neutral,
+/obj/effect/turf_decal/tile/neutral{
+	dir = 4
+	},
+/obj/effect/turf_decal/tile/neutral{
+	dir = 1
+	},
+/obj/effect/turf_decal/tile/neutral{
+	dir = 8
+	},
+/obj/effect/landmark/xeno_spawn,
+/turf/open/floor/plasteel/dark,
+/area/science)
 "vIU" = (
 /obj/structure/railing{
 	dir = 1
@@ -151456,6 +151578,22 @@
 	},
 /turf/open/floor/plating,
 /area/maintenance/fore)
+"wSv" = (
+/obj/effect/turf_decal/tile/neutral,
+/obj/effect/turf_decal/tile/neutral{
+	dir = 8
+	},
+/obj/effect/turf_decal/tile/neutral{
+	dir = 1
+	},
+/obj/effect/turf_decal/tile/neutral{
+	dir = 4
+	},
+/obj/effect/turf_decal/plaque{
+	icon_state = "L2"
+	},
+/turf/open/floor/plasteel,
+/area/hallway/primary/central)
 "wSx" = (
 /obj/machinery/atmospherics/pipe/simple/yellow/visible/layer1{
 	dir = 1;
@@ -155703,8 +155841,9 @@
 /obj/effect/turf_decal/tile/neutral{
 	dir = 4
 	},
-/obj/machinery/holopad,
-/obj/effect/turf_decal/box,
+/obj/effect/turf_decal/plaque{
+	icon_state = "L7"
+	},
 /turf/open/floor/plasteel,
 /area/hallway/primary/central)
 "xzi" = (
@@ -158142,6 +158281,22 @@
 	},
 /turf/open/floor/plating,
 /area/maintenance/port)
+"xSk" = (
+/obj/effect/turf_decal/tile/neutral,
+/obj/effect/turf_decal/tile/neutral{
+	dir = 8
+	},
+/obj/effect/turf_decal/tile/neutral{
+	dir = 1
+	},
+/obj/effect/turf_decal/tile/neutral{
+	dir = 4
+	},
+/obj/effect/turf_decal/plaque{
+	icon_state = "L9"
+	},
+/turf/open/floor/plasteel,
+/area/hallway/primary/central)
 "xSq" = (
 /obj/machinery/atmospherics/pipe/simple/scrubbers/hidden/layer1{
 	dir = 5;
@@ -194511,8 +194666,8 @@ boa
 boa
 dCC
 wIp
-vDf
-hmJ
+jKK
+wSv
 hmJ
 qEY
 hmJ
@@ -194768,7 +194923,7 @@ ans
 ans
 tkM
 mSH
-hmJ
+jCo
 mkn
 wAp
 eVE
@@ -195025,7 +195180,7 @@ mqs
 mqs
 mqs
 vDf
-hmJ
+gug
 qGb
 qxk
 nyQ
@@ -195280,7 +195435,7 @@ hZe
 wfl
 smd
 oCF
-oCF
+row
 eKV
 xzh
 tOX
@@ -195290,7 +195445,7 @@ odq
 peE
 hmJ
 pSE
-llk
+sPU
 llk
 mCd
 sZj
@@ -195539,7 +195694,7 @@ cSD
 vBS
 cSD
 iMR
-hmJ
+xSk
 aoE
 dFx
 bIg
@@ -196054,7 +196209,7 @@ boa
 dCC
 dGF
 kuP
-hmJ
+iUT
 kGu
 hmJ
 hmJ
@@ -201971,7 +202126,7 @@ dKg
 eoL
 bWa
 rLh
-sez
+vIN
 xOY
 dZZ
 lZt
