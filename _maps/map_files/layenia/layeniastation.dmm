@@ -38640,10 +38640,6 @@
 /obj/effect/landmark/start/assistant,
 /turf/open/floor/plasteel,
 /area/cargo/sorting)
-"fWZ" = (
-/obj/structure/closet/emcloset,
-/turf/open/floor/plating,
-/area/space)
 "fXb" = (
 /obj/effect/turf_decal/loading_area{
 	dir = 4;
@@ -60680,7 +60676,7 @@
 /turf/open/floor/plasteel/dark{
 	icon_state = "darkfull_whole_alt"
 	},
-/area/space)
+/area/maintenance/fore)
 "jrj" = (
 /obj/effect/turf_decal/loading_area{
 	color = "#55391A";
@@ -70262,7 +70258,7 @@
 	req_access_txt = "12;24"
 	},
 /turf/open/floor/plating,
-/area/space)
+/area/maintenance/fore)
 "kKG" = (
 /obj/structure/cable{
 	icon_state = "4-8"
@@ -71728,7 +71724,7 @@
 	dir = 4
 	},
 /turf/open/floor/plating,
-/area/space)
+/area/maintenance/fore)
 "kYT" = (
 /obj/machinery/atmospherics/pipe/simple{
 	dir = 4
@@ -71740,10 +71736,6 @@
 	},
 /turf/closed/wall/r_wall,
 /area/engineering/atmos)
-"kYU" = (
-/obj/structure/lattice,
-/turf/open/openspace,
-/area/maintenance/starboard)
 "kYV" = (
 /obj/structure/table,
 /turf/open/floor/plasteel/dark{
@@ -72297,7 +72289,7 @@
 	},
 /obj/structure/fans/tiny,
 /turf/open/space/basic,
-/area/space)
+/area/maintenance/fore)
 "lbN" = (
 /obj/structure/sign/plaques/kiddie/badger{
 	pixel_y = 32
@@ -157965,6 +157957,14 @@
 	icon_state = "floor_plate"
 	},
 /area/engineering/atmos)
+"xZn" = (
+/obj/effect/turf_decal/stripes/line{
+	dir = 4
+	},
+/turf/open/floor/plasteel/dark{
+	icon_state = "darkfull_whole_alt"
+	},
+/area/maintenance/fore)
 "xZr" = (
 /obj/structure/closet/secure_closet/personal,
 /obj/machinery/light{
@@ -268014,7 +268014,7 @@ kji
 rNU
 nLS
 nLS
-qie
+dwx
 nQT
 pEY
 vRo
@@ -268271,7 +268271,7 @@ kSV
 rNU
 nLS
 nLS
-qie
+dwx
 dJL
 rex
 vRo
@@ -268528,7 +268528,7 @@ nLS
 nLS
 nLS
 nLS
-qie
+dwx
 dJL
 rex
 vRo
@@ -268573,7 +268573,7 @@ xfv
 ffs
 nnm
 vyz
-kYU
+xfv
 kHh
 jkG
 thJ
@@ -268785,7 +268785,7 @@ nLS
 nLS
 nLS
 nLS
-qie
+dwx
 nQT
 rex
 vRo
@@ -269042,7 +269042,7 @@ nLS
 nLS
 nLS
 nLS
-qie
+dwx
 nQT
 rex
 vRo
@@ -269299,7 +269299,7 @@ cYr
 cYr
 cYr
 cYr
-qie
+dwx
 dJL
 rex
 vRo
@@ -269556,7 +269556,7 @@ nLS
 nLS
 nLS
 nLS
-qie
+dwx
 dJL
 rex
 vRo
@@ -269813,7 +269813,7 @@ cYr
 cYr
 cYr
 cYr
-qie
+dwx
 nQT
 rex
 kji
@@ -272130,11 +272130,11 @@ qbK
 xUq
 rex
 kji
-oPE
-nAq
-nAq
-nAq
-oPE
+nQT
+kji
+kji
+kji
+nQT
 nLS
 nLS
 qCx
@@ -272388,10 +272388,10 @@ pOu
 rex
 kji
 kKD
-nAq
-nAq
-nAq
-oPE
+kji
+kji
+kji
+nQT
 nLS
 nLS
 nLS
@@ -272644,11 +272644,11 @@ dAK
 kji
 rex
 kji
-oPE
-nAq
-nAq
-nAq
-oPE
+nQT
+kji
+kji
+kji
+nQT
 nLS
 nLS
 nLS
@@ -272901,11 +272901,11 @@ pAH
 kji
 rex
 kji
-oPE
-oPE
-fWZ
-nAq
-oPE
+nQT
+nQT
+spN
+kji
+nQT
 nLS
 nLS
 nLS
@@ -273159,10 +273159,10 @@ xXE
 ajW
 kji
 kji
-oPE
-oPE
+nQT
+nQT
 kYH
-oPE
+nQT
 nLS
 nLS
 nLS
@@ -273416,10 +273416,10 @@ kji
 kji
 kji
 kji
-oPE
+nQT
 jri
-kqo
-oPE
+xZn
+nQT
 nLS
 nLS
 nLS
@@ -273673,10 +273673,10 @@ doZ
 doZ
 doZ
 nQT
-oPE
-oPE
+nQT
+nQT
 lbM
-oPE
+nQT
 nLS
 nLS
 nLS
