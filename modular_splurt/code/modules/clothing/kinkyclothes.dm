@@ -69,7 +69,7 @@
 /obj/item/clothing/under/centcomdress
 	name = "CentCom Dress Uniform"
 	desc = "A stylish yet revealing dress uniform worn in extravagant black and gold, worthy of those who sit around and watch cameras all day in an office."
-	icon = 'modular_splurt/icons/mob/clothing/uniforms.dmi'
+	icon = 'modular_splurt/icons/obj/clothing/uniforms.dmi'
 	icon_state = "ccdress"
 	mob_overlay_icon = 'modular_splurt/icons/mob/clothing/uniform.dmi'
 	anthro_mob_worn_overlay = 'modular_splurt/icons/mob/clothing/uniform_digi.dmi'
@@ -87,7 +87,7 @@
 /obj/item/clothing/under/centcomdress/vk
 	name = "Virginkiller CentCom Dress Uniform"
 	desc = "This black and gold beauty does not help paperwork get done, it seems."
-	icon_state = "ccdressvk"
+	icon_state = "ccdress"
 
 /obj/item/clothing/under/raccveralls
 	name = "form fitting overalls"
