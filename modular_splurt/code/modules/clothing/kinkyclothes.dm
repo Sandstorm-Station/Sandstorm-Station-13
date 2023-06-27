@@ -69,7 +69,7 @@
 /obj/item/clothing/under/centcomdress
 	name = "CentCom Dress Uniform"
 	desc = "A stylish yet revealing dress uniform worn in extravagant black and gold, worthy of those who sit around and watch cameras all day in an office."
-	icon = 'modular_splurt/icons/obj/clothing/uniforms.dmi'
+	icon = 'modular_splurt/icons/mob/clothing/uniforms.dmi'
 	icon_state = "ccdress"
 	mob_overlay_icon = 'modular_splurt/icons/mob/clothing/uniform.dmi'
 	anthro_mob_worn_overlay = 'modular_splurt/icons/mob/clothing/uniform_digi.dmi'
