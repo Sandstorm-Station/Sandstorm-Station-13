@@ -2937,9 +2937,6 @@
 /turf/open/floor/plating,
 /area/maintenance/department/electrical)
 "azk" = (
-/obj/structure/cable{
-	icon_state = "0-2"
-	},
 /obj/effect/turf_decal/bot_white,
 /obj/effect/turf_decal/tile/neutral{
 	dir = 1
@@ -2951,8 +2948,11 @@
 /obj/effect/turf_decal/tile/neutral{
 	dir = 8
 	},
-/obj/machinery/gateway{
-	pixel_y = -5
+/obj/structure/cable{
+	icon_state = "1-2"
+	},
+/obj/structure/cable{
+	icon_state = "0-2"
 	},
 /turf/open/floor/plasteel/dark,
 /area/command/gateway)
@@ -4288,6 +4288,7 @@
 	name = "scrubbers pipe"
 	},
 /obj/structure/disposalpipe/segment,
+/obj/machinery/vending/wardrobe/hos_wardrobe,
 /turf/open/floor/plasteel/dark,
 /area/command/heads_quarters/hos)
 "aIZ" = (
@@ -23137,6 +23138,7 @@
 	dir = 8
 	},
 /obj/effect/turf_decal/tile/brown,
+/obj/machinery/vending/kink,
 /turf/open/floor/plasteel/dark,
 /area/cargo/qm)
 "dAQ" = (
@@ -25674,6 +25676,15 @@
 	icon_state = "darkfull_whole_alt"
 	},
 /area/hallway/primary/central)
+"dVs" = (
+/obj/structure/table/wood,
+/obj/item/storage/box/deputy,
+/obj/item/storage/box/seccarts{
+	pixel_x = 3;
+	pixel_y = 2
+	},
+/turf/open/floor/plasteel/dark,
+/area/command/heads_quarters/hos)
 "dVt" = (
 /turf/closed/wall/r_wall,
 /area/command/heads_quarters/captain)
@@ -33177,6 +33188,10 @@
 	icon_state = "darkfull_plate"
 	},
 /area/hallway/primary/fore)
+"fcN" = (
+/mob/living/simple_animal/pet/dog/cheems,
+/turf/open/floor/plasteel,
+/area/cargo/storage)
 "fcR" = (
 /obj/effect/turf_decal/tile/neutral{
 	dir = 9
@@ -43864,6 +43879,12 @@
 	},
 /turf/open/floor/plasteel/dark/airless,
 /area/space)
+"gLv" = (
+/obj/effect/decal/cleanable/semendrip{
+	icon_state = "drip4"
+	},
+/turf/closed/wall,
+/area/security/prison)
 "gLw" = (
 /obj/effect/turf_decal/stripes/line{
 	dir = 10
@@ -86739,6 +86760,17 @@
 	pixel_x = -8;
 	pixel_y = 10
 	},
+/obj/effect/decal/cleanable/semendrip{
+	icon_state = "drip2"
+	},
+/obj/effect/decal/cleanable/semendrip{
+	icon_state = "drip2";
+	pixel_y = 7;
+	pixel_x = 6
+	},
+/obj/effect/decal/cleanable/semendrip{
+	pixel_x = -9
+	},
 /turf/open/floor/plasteel/dark{
 	icon_state = "darkfull_whole_alt"
 	},
@@ -92926,6 +92958,10 @@
 /turf/open/floor/plasteel/showroomfloor,
 /area/commons/toilet)
 "ock" = (
+/obj/machinery/gateway/centerstation,
+/obj/structure/cable{
+	icon_state = "0-2"
+	},
 /turf/open/floor/plasteel/dark{
 	icon_state = "darkfull_whole_alt"
 	},
@@ -112869,6 +112905,7 @@
 	icon_state = "4-8"
 	},
 /obj/machinery/atmospherics/pipe/simple/purple/visible,
+/mob/living/simple_animal/opossum/poppy,
 /turf/open/floor/carpet/royalblack,
 /area/engineering/main/reactor_control)
 "rja" = (
@@ -113101,6 +113138,14 @@
 	icon_state = "0-4"
 	},
 /obj/machinery/power/apc/auto_name/west,
+/obj/structure/bed/dogbed{
+	desc = "A comfy-looking pet bed. You can even strap your pet in, in case the gravity turns off.";
+	name = "pet bed"
+	},
+/mob/living/simple_animal/hostile/retaliate/bat/secbat{
+	desc = "An adorable fruit bat with a cute little hat, may or may not have a reputation for biting out eyeballs, or at least that's what the HoS'd tell you.";
+	name = "Colonel Chomps"
+	},
 /turf/open/floor/plasteel/dark,
 /area/command/heads_quarters/hos)
 "rlf" = (
@@ -114132,11 +114177,6 @@
 /obj/effect/spawner/structure/window/reinforced,
 /turf/open/floor/plating,
 /area/command/heads_quarters/captain)
-"rte" = (
-/obj/structure/falsewall,
-/obj/structure/fans/tiny,
-/turf/open/floor/plating,
-/area/security/prison)
 "rtf" = (
 /obj/structure/chair{
 	dir = 8
@@ -124577,6 +124617,13 @@
 	},
 /turf/open/floor/carpet/royalblue,
 /area/command/blueshieldoffice)
+"sUo" = (
+/mob/living/simple_animal/pet/bumbles,
+/turf/open/floor/plasteel{
+	dir = 4;
+	icon_state = "floor_trim"
+	},
+/area/service/hydroponics)
 "sUq" = (
 /obj/machinery/meter,
 /obj/machinery/atmospherics/pipe/simple/scrubbers/visible{
@@ -141584,6 +141631,7 @@
 	icon_state = "siding_wood_corner";
 	name = "wood corner"
 	},
+/mob/living/simple_animal/pet/dog/corgi/Lisa,
 /turf/open/floor/wood{
 	icon_state = "wood_tile";
 	name = "tile"
@@ -150734,6 +150782,7 @@
 	dir = 1
 	},
 /obj/structure/table/reinforced,
+/mob/living/simple_animal/parrot/Polly,
 /turf/open/floor/plasteel,
 /area/command/heads_quarters/ce)
 "wLM" = (
@@ -156566,6 +156615,15 @@
 	dir = 4;
 	icon_state = "ledge";
 	name = "ledge"
+	},
+/obj/structure/table,
+/obj/item/storage/firstaid/regular{
+	pixel_x = -3;
+	pixel_y = -3
+	},
+/obj/item/storage/firstaid/regular{
+	pixel_x = -3;
+	pixel_y = 7
 	},
 /turf/open/floor/plasteel/dark,
 /area/command/gateway)
@@ -187241,7 +187299,7 @@ fGc
 tSJ
 dyb
 fvc
-jfA
+fcN
 jfA
 jfA
 jfA
@@ -190992,7 +191050,7 @@ boa
 boa
 boa
 own
-eVO
+dVs
 cEB
 cZV
 eZP
@@ -193883,7 +193941,7 @@ hlY
 hlY
 xaE
 lzD
-lzD
+sUo
 lzD
 lzD
 whJ
@@ -194875,7 +194933,7 @@ nPG
 nPG
 nPG
 nPG
-nPG
+gLv
 dUt
 fvU
 rAR
@@ -198965,7 +199023,7 @@ sxJ
 mnw
 fvU
 nPG
-rte
+dUt
 nPG
 qfR
 bkg
