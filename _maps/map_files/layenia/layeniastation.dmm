@@ -2027,6 +2027,7 @@
 	lootcount = 2;
 	name = "2maintenance loot spawner"
 	},
+/obj/structure/rack,
 /turf/open/floor/plasteel,
 /area/maintenance/port)
 "arL" = (
@@ -4601,7 +4602,6 @@
 	pixel_y = 23;
 	req_access_txt = "5"
 	},
-/obj/item/book/manual/wiki/security_space_law,
 /obj/effect/turf_decal/tile/red{
 	dir = 1
 	},
@@ -4617,6 +4617,7 @@
 /obj/machinery/newscaster{
 	pixel_x = -30
 	},
+/obj/item/book/manual/splurt_space_law,
 /turf/open/floor/plasteel/dark,
 /area/security/checkpoint/medical)
 "aLo" = (
@@ -7221,7 +7222,9 @@
 /obj/machinery/airalarm{
 	pixel_y = 25
 	},
-/obj/item/book/manual/wiki/security_space_law,
+/obj/item/book/manual/splurt_space_law{
+	pixel_x = 7
+	},
 /turf/open/floor/plasteel/dark,
 /area/security/checkpoint/science)
 "bgH" = (
@@ -11933,6 +11936,7 @@
 	pixel_x = 24
 	},
 /obj/effect/spawner/lootdrop/maintenance,
+/obj/structure/rack,
 /turf/open/floor/plasteel,
 /area/maintenance/port)
 "bPy" = (
@@ -12409,8 +12413,8 @@
 /area/service/bar)
 "bTF" = (
 /obj/structure/table/wood,
-/obj/item/book/manual/wiki/security_space_law,
-/obj/item/book/manual/wiki/security_space_law,
+/obj/item/book/manual/splurt_space_law,
+/obj/item/book/manual/splurt_space_law,
 /turf/open/floor/carpet,
 /area/service/lawoffice)
 "bTG" = (
@@ -13171,6 +13175,7 @@
 /obj/structure/cable{
 	icon_state = "0-4"
 	},
+/obj/machinery/power/apc/auto_name/west,
 /turf/open/floor/plasteel/dark{
 	dir = 8;
 	icon_state = "darkfull_plate"
@@ -15398,6 +15403,7 @@
 	lootcount = 3;
 	name = "3maintenance loot spawner"
 	},
+/obj/structure/rack,
 /turf/open/floor/plasteel,
 /area/maintenance/port)
 "csT" = (
@@ -18302,7 +18308,9 @@
 	icon_state = "siding_wood_line";
 	name = "wood"
 	},
-/obj/item/book/manual/wiki/security_space_law,
+/obj/item/book/manual/splurt_space_law{
+	pixel_x = 7
+	},
 /turf/open/floor/wood{
 	icon_state = "wood_parquet";
 	name = "parquet"
@@ -19923,6 +19931,7 @@
 	pixel_x = 2;
 	pixel_y = -2
 	},
+/obj/structure/rack,
 /turf/open/floor/plasteel/dark,
 /area/security/courtroom)
 "dcO" = (
@@ -31393,7 +31402,9 @@
 /area/engineering/lobby)
 "eNj" = (
 /obj/machinery/door/firedoor,
-/obj/machinery/door/airlock/public/glass,
+/obj/machinery/door/airlock/public/glass{
+	name = "Showers"
+	},
 /obj/machinery/atmospherics/pipe/simple/supply/hidden/layer3{
 	name = "air supply pipe"
 	},
@@ -31432,10 +31443,12 @@
 	dir = 4
 	},
 /obj/effect/turf_decal/tile/red,
-/obj/item/book/manual/wiki/security_space_law,
 /obj/machinery/computer/security/telescreen/engine{
 	dir = 8;
 	pixel_x = 24
+	},
+/obj/item/book/manual/splurt_space_law{
+	pixel_x = 7
 	},
 /turf/open/floor/plasteel/dark,
 /area/security/checkpoint/engineering)
@@ -39943,10 +39956,10 @@
 /area/tcommsat/server)
 "gfx" = (
 /obj/structure/table/wood,
-/obj/item/book/manual/wiki/security_space_law,
 /obj/structure/cable{
 	icon_state = "1-2"
 	},
+/obj/item/book/manual/splurt_space_law,
 /turf/open/floor/carpet/red,
 /area/command/heads_quarters/hos)
 "gfE" = (
@@ -42631,12 +42644,6 @@
 	},
 /turf/open/floor/plasteel,
 /area/hallway/primary/port/fore)
-"gBy" = (
-/obj/structure/cable{
-	icon_state = "0-2"
-	},
-/turf/open/floor/plating,
-/area/maintenance/port/aft)
 "gBM" = (
 /obj/machinery/atmospherics/pipe/heat_exchanging/simple{
 	dir = 10
@@ -48955,7 +48962,9 @@
 	},
 /area/maintenance/fore)
 "hzR" = (
-/obj/machinery/door/airlock/public/glass,
+/obj/machinery/door/airlock/public/glass{
+	name = "Showers"
+	},
 /turf/open/floor/wood{
 	icon_state = "wood_parquet";
 	name = "parquet"
@@ -56683,6 +56692,19 @@
 	icon_state = "darkfull_plate"
 	},
 /area/commons/fitness)
+"iIv" = (
+/obj/machinery/atmospherics/pipe/simple/supply/hidden/layer3{
+	name = "air supply pipe"
+	},
+/obj/machinery/atmospherics/pipe/simple/scrubbers/hidden/layer1{
+	name = "scrubbers pipe"
+	},
+/obj/structure/cable{
+	icon_state = "1-2"
+	},
+/obj/structure/femur_breaker,
+/turf/open/floor/glass/reinforced,
+/area/security/brig)
 "iIy" = (
 /turf/closed/wall/r_wall,
 /area/science/xenobiology)
@@ -59984,6 +60006,7 @@
 	pixel_x = -4;
 	pixel_y = -2
 	},
+/obj/structure/rack,
 /turf/open/floor/plasteel/dark{
 	icon_state = "darkfull_whole_alt"
 	},
@@ -62631,7 +62654,9 @@
 /turf/closed/wall/r_wall,
 /area/command/bridge)
 "jBy" = (
-/obj/machinery/door/airlock/public/glass,
+/obj/machinery/door/airlock/public/glass{
+	name = "Showers"
+	},
 /obj/machinery/door/firedoor,
 /obj/machinery/atmospherics/pipe/simple/scrubbers/hidden/layer1{
 	name = "scrubbers pipe"
@@ -66100,12 +66125,12 @@
 	dir = 1
 	},
 /obj/effect/turf_decal/loading_area{
-	dir = 4;
+	dir = 1;
 	icon_state = "linealt_corner";
 	name = "line"
 	},
 /obj/effect/turf_decal/loading_area{
-	dir = 1;
+	dir = 4;
 	icon_state = "linealt_corner";
 	name = "line"
 	},
@@ -66160,12 +66185,6 @@
 /turf/open/floor/plasteel/dark,
 /area/engineering/engine_smes)
 "kaj" = (
-/obj/structure/railing{
-	dir = 1
-	},
-/obj/structure/railing{
-	dir = 4
-	},
 /obj/structure/cable{
 	icon_state = "0-8"
 	},
@@ -66181,6 +66200,9 @@
 	},
 /obj/machinery/space_heater,
 /obj/machinery/power/apc/auto_name/south,
+/obj/structure/railing{
+	dir = 5
+	},
 /turf/open/floor/plasteel,
 /area/hallway/secondary/service)
 "kaF" = (
@@ -77761,6 +77783,7 @@
 /obj/item/pen/red,
 /obj/item/folder/blue,
 /obj/item/folder/red,
+/obj/structure/rack,
 /turf/open/floor/plasteel/dark,
 /area/security/courtroom)
 "lOD" = (
@@ -78672,6 +78695,7 @@
 /obj/machinery/atmospherics/pipe/simple/scrubbers/hidden/layer1{
 	name = "scrubbers pipe"
 	},
+/obj/structure/railing/corner,
 /turf/open/floor/plasteel/checker,
 /area/service/library/artgallery)
 "lTU" = (
@@ -81896,7 +81920,9 @@
 /area/ai_monitored/turret_protected/ai_upload)
 "msl" = (
 /obj/machinery/door/firedoor,
-/obj/machinery/door/airlock/public/glass,
+/obj/machinery/door/airlock/public/glass{
+	name = "Showers"
+	},
 /turf/open/floor/plasteel,
 /area/security/prison)
 "msn" = (
@@ -96180,7 +96206,8 @@
 /area/engineering/break_room)
 "oDb" = (
 /obj/structure/closet/secure_closet/security{
-	req_access = null
+	req_access = null;
+	name = "peacekeeper's locker"
 	},
 /turf/open/floor/wood,
 /area/security/brig)
@@ -103555,23 +103582,6 @@
 /obj/effect/decal/cleanable/dirt,
 /turf/open/floor/plating,
 /area/maintenance/port/aft)
-"pLE" = (
-/obj/structure/cable{
-	icon_state = "4-8"
-	},
-/obj/machinery/atmospherics/pipe/simple/supply/hidden/layer3{
-	dir = 8;
-	name = "air supply pipe"
-	},
-/obj/machinery/atmospherics/pipe/simple/scrubbers/hidden/layer1{
-	dir = 4;
-	name = "scrubbers pipe"
-	},
-/obj/structure/cable{
-	icon_state = "1-8"
-	},
-/turf/open/floor/plating,
-/area/maintenance/port/aft)
 "pLG" = (
 /obj/structure/lattice/catwalk,
 /obj/structure/railing{
@@ -107359,6 +107369,7 @@
 	dir = 1;
 	pixel_y = 16
 	},
+/obj/structure/rack,
 /turf/open/floor/plasteel,
 /area/maintenance/port)
 "qrT" = (
@@ -117027,14 +117038,14 @@
 /turf/open/floor/plasteel,
 /area/command/bridge)
 "rOB" = (
-/obj/machinery/door/airlock/public{
-	name = "Showers"
-	},
 /obj/machinery/atmospherics/pipe/simple/scrubbers/hidden/layer1{
 	name = "scrubbers pipe"
 	},
 /obj/machinery/atmospherics/pipe/simple/supply/hidden/layer3{
 	name = "air supply pipe"
+	},
+/obj/machinery/door/airlock/public/glass{
+	name = "Showers"
 	},
 /turf/open/floor/plasteel{
 	dir = 8;
@@ -122174,6 +122185,9 @@
 /obj/machinery/light{
 	pixel_y = -1
 	},
+/obj/structure/railing/corner{
+	dir = 8
+	},
 /turf/open/floor/plasteel,
 /area/service/library/artgallery)
 "sAR" = (
@@ -124893,6 +124907,9 @@
 	},
 /obj/machinery/atmospherics/pipe/simple/supply/hidden/layer3{
 	name = "air supply pipe"
+	},
+/obj/structure/railing/corner{
+	dir = 8
 	},
 /turf/open/floor/plasteel/checker,
 /area/service/library/artgallery)
@@ -128285,12 +128302,14 @@
 	pixel_y = 9
 	},
 /obj/item/pen,
-/obj/item/book/manual/wiki/security_space_law,
 /obj/effect/turf_decal/tile/red{
 	dir = 1
 	},
 /obj/effect/turf_decal/tile/red{
 	dir = 8
+	},
+/obj/item/book/manual/splurt_space_law{
+	pixel_x = 7
 	},
 /turf/open/floor/plasteel/dark,
 /area/security/checkpoint/supply)
@@ -128568,10 +128587,12 @@
 /obj/item/storage/box/cups,
 /obj/item/storage/box/cups,
 /obj/item/clipboard,
-/obj/item/book/manual/wiki/security_space_law,
 /obj/item/pen,
 /obj/item/pen,
 /obj/item/storage/briefcase,
+/obj/item/book/manual/splurt_space_law{
+	pixel_x = 7
+	},
 /turf/open/floor/plasteel/dark{
 	icon_state = "darkfull_whole_alt"
 	},
@@ -128829,9 +128850,8 @@
 	pixel_y = 9;
 	req_access_txt = "2"
 	},
-/obj/item/book/manual/wiki/security_space_law{
-	pixel_x = 9;
-	pixel_y = 5
+/obj/item/book/manual/splurt_space_law{
+	pixel_x = 7
 	},
 /turf/open/floor/plasteel/showroomfloor,
 /area/security/warden)
@@ -129844,7 +129864,9 @@
 /area/engineering/atmos)
 "tGj" = (
 /obj/machinery/door/firedoor,
-/obj/machinery/door/airlock/public/glass,
+/obj/machinery/door/airlock/public/glass{
+	name = "Showers"
+	},
 /obj/machinery/atmospherics/pipe/simple/scrubbers/hidden/layer1{
 	name = "scrubbers pipe"
 	},
@@ -130338,7 +130360,7 @@
 	dir = 1
 	},
 /obj/structure/table,
-/obj/item/book/manual/wiki/security_space_law,
+/obj/item/book/manual/splurt_space_law,
 /turf/open/floor/plasteel{
 	dir = 4;
 	icon_state = "floor_plate"
@@ -144808,6 +144830,7 @@
 /area/medical/genetics)
 "vUd" = (
 /obj/structure/table/wood,
+/obj/item/book/manual/splurt_space_law,
 /turf/open/floor/glass/reinforced,
 /area/security/brig)
 "vUe" = (
@@ -147645,6 +147668,7 @@
 	lootcount = 3;
 	name = "3maintenance loot spawner"
 	},
+/obj/structure/rack,
 /turf/open/floor/plasteel,
 /area/maintenance/port)
 "wos" = (
@@ -148150,7 +148174,8 @@
 	pixel_y = 5
 	},
 /obj/item/gavelhammer,
-/obj/item/book/manual/wiki/security_space_law,
+/obj/item/book/manual/splurt_space_law,
+/obj/structure/rack,
 /turf/open/floor/plasteel/dark,
 /area/security/courtroom)
 "wrO" = (
@@ -159532,6 +159557,20 @@
 /obj/machinery/telecomms/server/presets/common,
 /turf/open/floor/circuit/telecomms/mainframe,
 /area/tcommsat/server)
+"yab" = (
+/obj/structure/sign/painting/library{
+	pixel_y = -24
+	},
+/obj/effect/turf_decal/tile/neutral,
+/obj/effect/turf_decal/tile/neutral{
+	dir = 8
+	},
+/obj/structure/railing/corner,
+/turf/open/floor/plasteel{
+	dir = 1;
+	icon_state = "floor_trim"
+	},
+/area/service/library/artgallery)
 "yap" = (
 /obj/machinery/portable_atmospherics/canister/air,
 /turf/open/floor/plating,
@@ -191655,7 +191694,7 @@ jOc
 lTV
 xCw
 jOc
-lTV
+yab
 xCw
 vWG
 xGz
@@ -191909,7 +191948,7 @@ iVG
 rUO
 xCw
 jOc
-lTV
+yab
 xCw
 pio
 cIg
@@ -255932,8 +255971,8 @@ iVs
 rVC
 swl
 ojv
-gBy
-pLE
+dGo
+joT
 dGo
 dGo
 hVT
@@ -257356,7 +257395,7 @@ bAL
 vUd
 hZE
 jpg
-jpg
+iIv
 xCA
 ujR
 rar
