@@ -44,4 +44,3 @@
 #define TRAIT_RAD_FIEND     	"RadFiend"
 #define TRAIT_BODY_MORPHER		"body_morpher"
 #define TRAIT_HALLOWED			"hallowed"
-#define TRAIT_PUSHOVER			"pushover"
