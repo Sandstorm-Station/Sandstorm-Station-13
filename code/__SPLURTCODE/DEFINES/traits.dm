@@ -43,4 +43,3 @@
 #define TRAIT_DUMB_CUM_CRAVE	"dumb_for_cum_need"
 #define TRAIT_RAD_FIEND     	"RadFiend"
 #define TRAIT_BODY_MORPHER		"body_morpher"
-#define TRAIT_PUSHOVER			"pushover"
