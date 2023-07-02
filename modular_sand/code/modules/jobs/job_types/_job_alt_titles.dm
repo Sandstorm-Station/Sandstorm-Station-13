@@ -163,7 +163,7 @@
 
 /datum/job/paramedic
 	alt_titles = list(
-		"Emergency Medical Technician"
+		"Emergency Medical Technician",
 		"Advanced Emergency Medical Technician"
 		)
 
