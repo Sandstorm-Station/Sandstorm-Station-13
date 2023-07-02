@@ -128,7 +128,8 @@
 		"Biomechanical Engineer",
 		"Mechatronic Engineer",
 		"Mechanic",
-		"Robotics Operator"
+		"Robotics Operator",
+		"MODsuit Engineer" // Ported from SPLURT
 		)
 
 /datum/job/scientist
