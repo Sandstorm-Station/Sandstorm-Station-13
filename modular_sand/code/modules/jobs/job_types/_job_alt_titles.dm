@@ -129,7 +129,7 @@
 		"Mechatronic Engineer",
 		"Mechanic",
 		"Robotics Operator",
-		"MODsuit Engineer" // Ported from SPLURT
+		"MODsuit Engineer"
 		)
 
 /datum/job/scientist
