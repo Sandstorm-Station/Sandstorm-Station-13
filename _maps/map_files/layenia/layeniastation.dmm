@@ -2197,6 +2197,9 @@
 	name = "Station Intercom (General)";
 	pixel_y = 23
 	},
+/obj/structure/chair{
+	dir = 8
+	},
 /turf/open/floor/plasteel/dark/side,
 /area/security/courtroom)
 "asN" = (
@@ -20679,8 +20682,8 @@
 	},
 /area/commons/fitness)
 "dhE" = (
-/obj/effect/landmark/secequipment,
 /obj/effect/turf_decal/bot,
+/obj/structure/closet/secure_closet/security/sec,
 /turf/open/floor/plasteel/showroomfloor,
 /area/security)
 "dhG" = (
@@ -34758,12 +34761,12 @@
 	},
 /area/hallway/primary/fore)
 "foi" = (
-/obj/effect/landmark/secequipment,
 /obj/machinery/firealarm{
 	dir = 2;
 	pixel_x = -24
 	},
 /obj/effect/turf_decal/bot,
+/obj/structure/closet/secure_closet/security/sec,
 /turf/open/floor/plasteel/showroomfloor,
 /area/security)
 "fok" = (
@@ -39630,6 +39633,14 @@
 	},
 /turf/open/floor/plasteel/dark,
 /area/command/bridge)
+"gaO" = (
+/obj/structure/chair{
+	dir = 8
+	},
+/turf/open/floor/plasteel/dark/side{
+	dir = 1
+	},
+/area/security/courtroom)
 "gaV" = (
 /obj/structure/cable{
 	icon_state = "4-8"
@@ -45290,6 +45301,9 @@
 /obj/machinery/atmospherics/pipe/simple/scrubbers/hidden/layer1{
 	dir = 6;
 	name = "scrubbers pipe"
+	},
+/obj/structure/chair/office/dark{
+	dir = 8
 	},
 /turf/open/floor/plasteel/dark,
 /area/security)
@@ -52772,6 +52786,12 @@
 	icon_state = "floor_whole_alt"
 	},
 /area/security/prison)
+"iad" = (
+/obj/structure/chair{
+	dir = 8
+	},
+/turf/open/floor/carpet/green,
+/area/security/courtroom)
 "iae" = (
 /obj/machinery/atmospherics/pipe/simple/scrubbers/hidden/layer1{
 	name = "scrubbers pipe"
@@ -78510,7 +78530,6 @@
 	icon_state = "ledge_short";
 	name = "short ledge"
 	},
-/obj/machinery/rnd/production/techfab/department/security,
 /turf/open/floor/plasteel/dark{
 	dir = 1;
 	icon_state = "darkfull_plate"
@@ -82331,6 +82350,9 @@
 /turf/open/floor/grass,
 /area/hallway/primary/port/fore)
 "msb" = (
+/obj/structure/chair{
+	dir = 8
+	},
 /turf/open/floor/plasteel/dark/side,
 /area/security/courtroom)
 "msd" = (
@@ -87646,6 +87668,9 @@
 /obj/machinery/atmospherics/pipe/simple/scrubbers/hidden/layer1{
 	name = "scrubbers pipe"
 	},
+/obj/structure/chair/office/dark{
+	dir = 8
+	},
 /turf/open/floor/plasteel/dark,
 /area/security)
 "nih" = (
@@ -90378,6 +90403,21 @@
 	},
 /turf/open/floor/plasteel/dark,
 /area/command/gateway)
+"nDs" = (
+/obj/effect/turf_decal/tile/red{
+	dir = 10
+	},
+/obj/machinery/atmospherics/components/unary/vent_pump/on/layer3{
+	dir = 4;
+	name = "air vent"
+	},
+/obj/effect/turf_decal/bot,
+/obj/vehicle/ridden/secway,
+/turf/open/floor/plasteel{
+	dir = 8;
+	icon_state = "floor_plate"
+	},
+/area/security/brig)
 "nDu" = (
 /obj/effect/turf_decal/tile/blue{
 	dir = 9
@@ -90455,6 +90495,17 @@
 /obj/item/shovel/spade,
 /turf/open/floor/plasteel/dark,
 /area/hallway/primary/fore)
+"nDY" = (
+/obj/effect/turf_decal/tile/red{
+	dir = 10
+	},
+/obj/effect/turf_decal/bot,
+/obj/vehicle/ridden/secway,
+/turf/open/floor/plasteel{
+	dir = 8;
+	icon_state = "floor_plate"
+	},
+/area/security/brig)
 "nEa" = (
 /obj/effect/turf_decal/loading_area{
 	dir = 8;
@@ -94311,6 +94362,26 @@
 	},
 /turf/open/floor/plasteel,
 /area/engineering/lobby)
+"ojC" = (
+/obj/machinery/atmospherics/pipe/simple/scrubbers/hidden/layer1{
+	dir = 4;
+	name = "scrubbers pipe"
+	},
+/obj/machinery/atmospherics/pipe/simple/supply/hidden/layer3{
+	dir = 8;
+	name = "air supply pipe"
+	},
+/obj/structure/cable{
+	icon_state = "4-8"
+	},
+/obj/structure/chair{
+	dir = 8
+	},
+/turf/open/floor/plasteel/dark{
+	dir = 1;
+	icon_state = "darkfull_trim"
+	},
+/area/security/courtroom)
 "ojK" = (
 /obj/structure/chair/comfy/brown{
 	dir = 8
@@ -98018,11 +98089,11 @@
 	},
 /area/science)
 "oMY" = (
-/obj/effect/landmark/secequipment,
 /obj/effect/turf_decal/bot,
 /obj/machinery/light{
 	pixel_y = -1
 	},
+/obj/structure/closet/secure_closet/security/sec,
 /turf/open/floor/plasteel/showroomfloor,
 /area/security)
 "oNn" = (
@@ -111845,6 +111916,12 @@
 	},
 /turf/open/space/basic,
 /area/ruin/unpowered/no_grav)
+"qWK" = (
+/obj/structure/chair{
+	dir = 4
+	},
+/turf/open/floor/plasteel/dark,
+/area/security)
 "qWQ" = (
 /obj/effect/turf_decal/loading_area{
 	dir = 10;
@@ -122760,6 +122837,9 @@
 /obj/structure/cable{
 	icon_state = "4-8"
 	},
+/obj/structure/chair{
+	dir = 8
+	},
 /turf/open/floor/plasteel/dark/side{
 	dir = 1
 	},
@@ -128490,6 +128570,12 @@
 	},
 /turf/open/floor/plasteel/dark,
 /area/command/heads_quarters/hos)
+"tqZ" = (
+/obj/structure/chair{
+	dir = 8
+	},
+/turf/open/floor/plasteel/dark,
+/area/security/courtroom)
 "trh" = (
 /obj/machinery/light{
 	dir = 4;
@@ -149444,6 +149530,7 @@
 	icon_state = "siding_wood_corner";
 	name = "wood corner"
 	},
+/obj/machinery/vending/wardrobe/det_wardrobe,
 /turf/open/floor/wood,
 /area/security/detectives_office)
 "wwn" = (
@@ -149735,6 +149822,21 @@
 /obj/effect/decal/cleanable/dirt,
 /turf/open/floor/wood,
 /area/maintenance/fore)
+"wza" = (
+/obj/effect/turf_decal/tile/red{
+	dir = 10
+	},
+/obj/machinery/light{
+	dir = 8;
+	pixel_x = -7
+	},
+/obj/effect/turf_decal/bot,
+/obj/vehicle/ridden/secway,
+/turf/open/floor/plasteel{
+	dir = 8;
+	icon_state = "floor_plate"
+	},
+/area/security/brig)
 "wzf" = (
 /obj/effect/decal/cleanable/dirt,
 /obj/effect/turf_decal/loading_area{
@@ -160584,6 +160686,15 @@
 	},
 /turf/open/floor/plasteel/dark,
 /area/maintenance/starboard)
+"ycU" = (
+/obj/machinery/door/poddoor/shutters/preopen{
+	id = "rnd2";
+	name = "research lab shutters"
+	},
+/obj/machinery/door/firedoor,
+/obj/machinery/autolathe,
+/turf/open/floor/plating,
+/area/science/research)
 "ycV" = (
 /obj/machinery/atmospherics/pipe/simple/supply/hidden/layer3{
 	dir = 8;
@@ -188498,11 +188609,11 @@ qCN
 cJi
 kri
 asL
-dFz
-xrP
+tqZ
+gaO
 dDr
 msb
-dFz
+tqZ
 sAK
 nWu
 boa
@@ -189013,11 +189124,11 @@ dlK
 kri
 paG
 jQX
+iad
 jQX
-jQX
-jQX
-jQX
-pZx
+iad
+iad
+ojC
 kri
 hjQ
 hjQ
@@ -189527,10 +189638,10 @@ aEb
 kri
 iEn
 jQX
+iad
 jQX
-jQX
-jQX
-jQX
+iad
+iad
 pZx
 umJ
 hWs
@@ -201933,7 +202044,7 @@ uGu
 bQA
 bsX
 itH
-rxJ
+ycU
 sxc
 nxb
 fmN
@@ -254801,7 +254912,7 @@ qzb
 eZd
 dgZ
 bQj
-bQj
+qWK
 qqg
 pqx
 tHu
@@ -256074,11 +256185,11 @@ xgP
 jnd
 xgP
 cJi
-lLq
-xgP
-jnd
-xgP
-lLq
+wza
+nDY
+nDs
+nDY
+wza
 cxV
 eeK
 dio
