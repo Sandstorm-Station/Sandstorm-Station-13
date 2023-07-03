@@ -1,7 +1,45 @@
 #define LEWD_VERB_PREFIX "/datum/interaction/lewd/"
 
+/mob/living/simple_animal/hostile/deathclaw/funclaw/gentle/newclaw
+	icon = 'modular_splurt/icons/mob/femclaw/newclaws.dmi'
+	icon_state = "newclaw"
+	var/base_state = "newclaw"
+	var/cock_state = "newclaw_cocked"
+	var/cock_shown = FALSE
+
+/mob/living/simple_animal/hostile/deathclaw/funclaw/gentle/newclaw/alphaclaw
+	name = "Alpha Funclaw"
+	icon_state = "alphaclaw"
+	base_state = "alphaclaw"
+	cock_state = "alphaclaw_cocked"
+
+/mob/living/simple_animal/hostile/deathclaw/funclaw/gentle/newclaw/death()
+	..()
+	gib()
+
+/mob/living/simple_animal/hostile/deathclaw/funclaw/gentle/newclaw/proc/show_cock()
+	if (cock_shown)
+		return
+	cock_shown = TRUE
+	icon_state = cock_state
+	visible_message("<font color=purple><b>\The [src]</b>'s cock unsheathes</font>")
+
+/mob/living/simple_animal/hostile/deathclaw/funclaw/gentle/newclaw/proc/hide_cock()
+	if (!cock_shown)
+		return
+	cock_shown = FALSE
+	icon_state = base_state
+	visible_message("<font color=purple><b>\The [src]</b>'s cock slowly retracts back into its sheate</font>")
+
+/mob/living/simple_animal/hostile/deathclaw/funclaw/gentle/newclaw/handle_post_sex(amount, orifice, mob/living/partner)
+	..()
+	if (lust > 0)
+		show_cock()
+	else
+		hide_cock()
+
 /mob/living/simple_animal/hostile/deathclaw/funclaw/femclaw
-	icon = 'modular_splurt/icons/mob/femclaw/femclaw.dmi'
+	icon = 'modular_splurt/icons/mob/femclaw/newclaws.dmi'
 	icon_state = "femclaw"
 	gender = FEMALE
 	has_penis = FALSE
@@ -10,7 +48,6 @@
 	has_anus = TRUE
 	gold_core_spawnable = FRIENDLY_SPAWN // YES.
 	deathclaw_mode = "rape"
-	pixel_x = - 15
 	name = "Breasted Funclaw"
 	desc = "She's large and in charge... and has her eyes on you."
 	maxHealth = 400
@@ -18,10 +55,6 @@
 	armour_penetration = 45
 	var/extra_sexxo = 1
 	var/body_colors = "#847559"
-
-/mob/living/simple_animal/hostile/deathclaw/funclaw/femclaw/death()
-	..()
-	gib()
 
 /mob/living/simple_animal/hostile/deathclaw/funclaw/femclaw/mommyclaw
 	icon_state = "mommyclaw"
@@ -34,6 +67,10 @@
 	melee_damage_lower = 80
 	melee_damage_upper = 80
 	body_colors = "#6790c2"
+
+/mob/living/simple_animal/hostile/deathclaw/funclaw/femclaw/death()
+	..()
+	gib()
 
 /mob/living/simple_animal/hostile/deathclaw/funclaw/femclaw/AttackingTarget()
 	var/mob/living/M = target
