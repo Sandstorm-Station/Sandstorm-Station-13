@@ -772,22 +772,6 @@
 	},
 /turf/open/floor/plating,
 /area/maintenance/starboard)
-"ago" = (
-/obj/effect/turf_decal/loading_area{
-	dir = 6;
-	icon_state = "steel_panel";
-	name = "steel pannel"
-	},
-/obj/effect/turf_decal/loading_area{
-	dir = 9;
-	icon_state = "steel_panel";
-	name = "steel pannel"
-	},
-/obj/effect/turf_decal/stripes/corner{
-	dir = 1
-	},
-/turf/open/space/basic,
-/area/ruin/unpowered/no_grav)
 "agp" = (
 /obj/machinery/light{
 	pixel_y = -1
@@ -1089,7 +1073,10 @@
 	icon_state = "steel_panel";
 	name = "steel pannel"
 	},
-/turf/open/space/basic,
+/turf/open/floor/plating/layeniaredder{
+	icon_state = "concrete2";
+	name = "concrete"
+	},
 /area/ruin/unpowered/no_grav)
 "ajg" = (
 /turf/closed/wall/r_wall,
@@ -17527,7 +17514,10 @@
 /obj/effect/turf_decal/stripes/corner{
 	dir = 4
 	},
-/turf/open/space/basic,
+/turf/open/floor/plating/layeniaredder{
+	icon_state = "concrete2";
+	name = "concrete"
+	},
 /area/ruin/unpowered/no_grav)
 "cKf" = (
 /obj/effect/decal/cleanable/dirt,
@@ -54376,7 +54366,10 @@
 	dir = 4;
 	name = "Unused Auxiliary Construction"
 	},
-/turf/open/floor/plasteel,
+/turf/open/floor/plating/layeniaredder{
+	icon_state = "concrete2";
+	name = "concrete"
+	},
 /area/maintenance/port/aft)
 "ilY" = (
 /obj/effect/turf_decal/loading_area{
@@ -58561,7 +58554,10 @@
 	dir = 1;
 	pixel_y = 19
 	},
-/turf/open/space/basic,
+/turf/open/floor/plating/layeniaredder{
+	icon_state = "concrete2";
+	name = "concrete"
+	},
 /area/ruin/unpowered/no_grav)
 "iSU" = (
 /obj/effect/turf_decal/tile/neutral{
@@ -82851,7 +82847,10 @@
 	dir = 1;
 	pixel_y = 19
 	},
-/turf/open/space/basic,
+/turf/open/floor/plating/layeniaredder{
+	icon_state = "concrete2";
+	name = "concrete"
+	},
 /area/ruin/unpowered/no_grav)
 "mty" = (
 /obj/effect/turf_decal/loading_area{
@@ -89256,7 +89255,10 @@
 	dir = 8
 	},
 /obj/item/stack/ore/iron,
-/turf/open/space/basic,
+/turf/open/floor/plating/layeniaredder{
+	icon_state = "concrete2";
+	name = "concrete"
+	},
 /area/ruin/unpowered/no_grav)
 "ntb" = (
 /obj/effect/turf_decal/delivery,
@@ -116368,22 +116370,6 @@
 	},
 /turf/open/floor/plasteel/white,
 /area/medical/genetics)
-"rCu" = (
-/obj/effect/turf_decal/loading_area{
-	dir = 6;
-	icon_state = "steel_panel";
-	name = "steel pannel"
-	},
-/obj/effect/turf_decal/loading_area{
-	dir = 9;
-	icon_state = "steel_panel";
-	name = "steel pannel"
-	},
-/obj/effect/turf_decal/stripes/line{
-	dir = 8
-	},
-/turf/open/space/basic,
-/area/ruin/unpowered/no_grav)
 "rCw" = (
 /obj/effect/turf_decal/tile/purple,
 /obj/effect/turf_decal/tile/purple{
@@ -147063,7 +147049,10 @@
 	},
 /obj/effect/turf_decal/stripes/line,
 /obj/structure/ore_box,
-/turf/open/space/basic,
+/turf/open/floor/plating/layeniaredder{
+	icon_state = "concrete2";
+	name = "concrete"
+	},
 /area/ruin/unpowered/no_grav)
 "wcm" = (
 /obj/effect/turf_decal/tile/neutral{
@@ -191977,13 +191966,13 @@ rJw
 iVX
 qPU
 lmO
-eQU
-psk
-psk
-psk
-psk
-psk
-tGn
+ddI
+rUe
+rUe
+rUe
+rUe
+rUe
+gRx
 wPn
 xda
 wfk
@@ -192240,7 +192229,7 @@ aQN
 aQN
 aQN
 aQN
-kKY
+xGW
 wPn
 xda
 wfk
@@ -192491,13 +192480,13 @@ wpn
 nRm
 acN
 imo
-bsf
+tdE
 aQN
 aQN
 aQN
 aQN
 aQN
-kKY
+xGW
 wPn
 xda
 wfk
@@ -192754,7 +192743,7 @@ aQN
 aQN
 aQN
 aQN
-kKY
+xGW
 cXQ
 xda
 wfk
@@ -193011,7 +193000,7 @@ aQN
 aQN
 aQN
 aQN
-kKY
+xGW
 mhD
 xda
 wfk
@@ -193268,7 +193257,7 @@ aQN
 aQN
 aQN
 aQN
-kKY
+xGW
 xMn
 xda
 wfk
@@ -193525,7 +193514,7 @@ aQN
 aQN
 aQN
 aQN
-kKY
+xGW
 wPn
 xda
 wfk
@@ -193782,7 +193771,7 @@ aQN
 aQN
 aQN
 aQN
-kKY
+xGW
 wPn
 xda
 wfk
@@ -194033,12 +194022,12 @@ iVX
 iVX
 qPU
 lmO
-ago
+dfv
 nsZ
-rCu
-rCu
-rCu
-rCu
+hEd
+hEd
+hEd
+hEd
 cKc
 wPn
 xda
