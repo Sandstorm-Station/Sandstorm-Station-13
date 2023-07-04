@@ -10674,6 +10674,7 @@
 	dir = 1;
 	pixel_y = 16
 	},
+/obj/structure/railing,
 /turf/open/floor/plasteel/dark,
 /area/maintenance/starboard)
 "bFl" = (
@@ -81340,6 +81341,7 @@
 	dir = 9;
 	name = "air supply pipe"
 	},
+/obj/structure/railing,
 /turf/open/floor/plasteel/dark,
 /area/maintenance/starboard)
 "miv" = (
@@ -108534,10 +108536,6 @@
 /turf/open/floor/plasteel,
 /area/science)
 "qty" = (
-/obj/structure/railing,
-/obj/structure/railing{
-	dir = 4
-	},
 /obj/machinery/atmospherics/pipe/simple/scrubbers/hidden/layer1{
 	dir = 4;
 	name = "scrubbers pipe"
@@ -108545,6 +108543,9 @@
 /obj/machinery/atmospherics/pipe/simple/supply/hidden/layer3{
 	dir = 8;
 	name = "air supply pipe"
+	},
+/obj/structure/railing{
+	dir = 6
 	},
 /turf/open/floor/plasteel/dark,
 /area/maintenance/starboard)
@@ -126629,6 +126630,18 @@
 	name = "concrete"
 	},
 /area/maintenance/port/aft)
+"tax" = (
+/obj/machinery/atmospherics/pipe/simple/supply/hidden/layer3{
+	dir = 8;
+	name = "air supply pipe"
+	},
+/obj/machinery/atmospherics/pipe/simple/scrubbers/hidden/layer1{
+	dir = 4;
+	name = "scrubbers pipe"
+	},
+/obj/structure/railing/corner,
+/turf/open/floor/plasteel/dark,
+/area/maintenance/starboard)
 "taB" = (
 /obj/machinery/atmospherics/pipe/simple/yellow/visible/layer1{
 	dir = 8;
@@ -205781,7 +205794,7 @@ pDQ
 csI
 kpB
 kHh
-jSI
+tax
 qty
 qiQ
 xfv
