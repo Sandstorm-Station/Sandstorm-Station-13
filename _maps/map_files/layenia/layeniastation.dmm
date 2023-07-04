@@ -36598,18 +36598,6 @@
 	icon_state = "floor_plate"
 	},
 /area/commons/dorms)
-"fDj" = (
-/obj/machinery/atmospherics/pipe/simple/supply/hidden/layer3{
-	dir = 8;
-	name = "air supply pipe"
-	},
-/obj/machinery/atmospherics/pipe/simple/scrubbers/hidden/layer1{
-	dir = 4;
-	name = "scrubbers pipe"
-	},
-/obj/structure/railing/corner,
-/turf/open/floor/plasteel/dark,
-/area/maintenance/starboard)
 "fDl" = (
 /obj/machinery/light{
 	dir = 8;
@@ -73598,13 +73586,6 @@
 	icon_state = "floor_plate"
 	},
 /area/security/brig)
-"lcR" = (
-/obj/structure/railing{
-	dir = 4
-	},
-/obj/structure/railing,
-/turf/open/floor/plating/layeniaredder,
-/area/ruin/unpowered/no_grav)
 "lcS" = (
 /obj/machinery/door/poddoor/shutters{
 	dir = 8;
@@ -141061,14 +141042,17 @@
 /turf/open/floor/wood,
 /area/maintenance/fore)
 "vkX" = (
-/obj/structure/railing{
-	dir = 4
+/obj/machinery/atmospherics/pipe/simple/supply/hidden/layer3{
+	dir = 8;
+	name = "air supply pipe"
 	},
-/obj/structure/railing{
-	dir = 1
+/obj/machinery/atmospherics/pipe/simple/scrubbers/hidden/layer1{
+	dir = 4;
+	name = "scrubbers pipe"
 	},
-/turf/open/floor/plating/layeniaredder,
-/area/ruin/unpowered/no_grav)
+/obj/structure/railing/corner,
+/turf/open/floor/plasteel/dark,
+/area/maintenance/starboard)
 "vkY" = (
 /obj/effect/turf_decal/bot,
 /obj/structure/closet{
@@ -142525,13 +142509,6 @@
 	icon_state = "darkfull_trim"
 	},
 /area/security/brig)
-"vvB" = (
-/obj/structure/railing,
-/obj/structure/railing{
-	dir = 8
-	},
-/turf/open/floor/plating/layeniaredder,
-/area/ruin/unpowered/no_grav)
 "vvN" = (
 /obj/effect/turf_decal/loading_area{
 	dir = 1;
@@ -166709,7 +166686,7 @@ mnw
 mnw
 mnw
 mnw
-vvB
+bMp
 boa
 boa
 boa
@@ -167223,8 +167200,8 @@ mnw
 mnw
 mnw
 mnw
-hjQ
-vvB
+ofN
+bMp
 boa
 boa
 boa
@@ -167481,7 +167458,7 @@ mnw
 mnw
 mnw
 mnw
-hjQ
+ofN
 mqf
 mqf
 mqf
@@ -169792,11 +169769,11 @@ mnw
 hjQ
 hjQ
 hjQ
-hjQ
+dsv
 lUj
 lUj
 lUj
-hjQ
+qVE
 hjQ
 hjQ
 mnw
@@ -170042,20 +170019,20 @@ boa
 boa
 boa
 boa
-vkX
+gyB
 xtj
 lUj
 lUj
 lUj
 lUj
 lUj
-lcR
+mVK
 boa
 boa
 boa
-vkX
+gyB
 lUj
-hjQ
+qVE
 hjQ
 mnw
 mnw
@@ -170312,7 +170289,7 @@ boa
 boa
 boa
 boa
-vkX
+gyB
 lUj
 mnw
 mnw
@@ -205757,7 +205734,7 @@ pDQ
 csI
 kpB
 kHh
-fDj
+vkX
 qty
 qiQ
 xfv
