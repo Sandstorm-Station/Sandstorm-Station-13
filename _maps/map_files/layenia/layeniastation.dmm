@@ -9997,10 +9997,7 @@
 /area/medical/medbay/central)
 "bAL" = (
 /obj/structure/pole,
-/turf/open/floor/wood{
-	icon_state = "wood_large";
-	name = "large"
-	},
+/turf/open/floor/plasteel/dark,
 /area/security/brig)
 "bAO" = (
 /obj/structure/table,
@@ -17129,6 +17126,7 @@
 	c_tag = "Armory Motion Sensor";
 	dir = 8
 	},
+/obj/machinery/rnd/production/techfab/department/security,
 /turf/open/floor/plasteel/dark,
 /area/ai_monitored/security/armory)
 "cGH" = (
@@ -19608,6 +19606,32 @@
 	icon_state = "darkfull_plate"
 	},
 /area/maintenance/port)
+"cYW" = (
+/obj/effect/turf_decal/tile/red{
+	dir = 10
+	},
+/obj/machinery/camera/autoname{
+	dir = 4
+	},
+/obj/structure/table,
+/obj/item/key/security,
+/obj/item/key/security{
+	pixel_y = 4
+	},
+/obj/item/key/security{
+	pixel_y = 8
+	},
+/obj/item/key/security{
+	pixel_y = -4
+	},
+/obj/item/key/security{
+	pixel_y = -8
+	},
+/turf/open/floor/plasteel{
+	dir = 8;
+	icon_state = "floor_plate"
+	},
+/area/security/brig)
 "cYX" = (
 /obj/effect/turf_decal/stripes/line,
 /obj/effect/turf_decal/stripes/white/line,
@@ -50223,6 +50247,13 @@
 	},
 /turf/open/floor/plasteel,
 /area/service/library/artgallery)
+"hGh" = (
+/obj/structure/table/wood,
+/turf/open/floor/plasteel/dark{
+	dir = 4;
+	icon_state = "darkfull_plate"
+	},
+/area/security/brig)
 "hGn" = (
 /obj/effect/turf_decal/loading_area{
 	color = "#55391A";
@@ -59112,8 +59143,8 @@
 /area/hallway/primary/starboard)
 "iWP" = (
 /turf/open/floor/plasteel/stairs{
-	icon_state = "stairs_wood";
-	name = "wood stairs"
+	icon_state = "stairs_darkfull";
+	name = "dark steps"
 	},
 /area/security/brig)
 "iWV" = (
@@ -78689,6 +78720,7 @@
 	icon_state = "ledge_short";
 	name = "short ledge"
 	},
+/obj/machinery/autolathe/hacked,
 /turf/open/floor/plasteel/dark{
 	dir = 1;
 	icon_state = "darkfull_plate"
@@ -85181,9 +85213,12 @@
 /turf/open/floor/plasteel/dark,
 /area/command/heads_quarters/ce)
 "mNA" = (
+/obj/structure/disposalpipe/segment{
+	dir = 4
+	},
 /obj/machinery/rnd/production/techfab/department/security,
 /turf/open/floor/plasteel/showroomfloor,
-/area/security/warden)
+/area/security)
 "mNJ" = (
 /obj/effect/spawner/structure/window/reinforced,
 /obj/machinery/door/poddoor/preopen{
@@ -93502,7 +93537,10 @@
 	name = "AP Shutters"
 	},
 /obj/structure/table/wood,
-/turf/open/floor/glass/reinforced,
+/turf/open/floor/plasteel/dark{
+	dir = 4;
+	icon_state = "darkfull_plate"
+	},
 /area/security/brig)
 "oaX" = (
 /obj/machinery/vending/coffee,
@@ -106227,7 +106265,10 @@
 /obj/item/camera_film{
 	pixel_x = 7
 	},
-/turf/open/floor/glass/reinforced,
+/turf/open/floor/plasteel/dark{
+	dir = 8;
+	icon_state = "darkfull_plate"
+	},
 /area/security/brig)
 "qaK" = (
 /obj/machinery/atmospherics/pipe/simple/supply/hidden/layer3{
@@ -109141,7 +109182,6 @@
 /obj/machinery/atmospherics/components/unary/vent_scrubber/on/layer1{
 	name = "air scrubber"
 	},
-/obj/machinery/autolathe/hacked,
 /turf/open/floor/plasteel/dark{
 	dir = 1;
 	icon_state = "darkfull_plate"
@@ -136552,9 +136592,9 @@
 /area/service/chapel/main)
 "uzr" = (
 /obj/structure/table/wood,
-/turf/open/floor/wood{
-	icon_state = "wood_large";
-	name = "large"
+/turf/open/floor/plasteel/dark{
+	dir = 8;
+	icon_state = "darkfull_plate"
 	},
 /area/security/brig)
 "uzs" = (
@@ -145965,7 +146005,9 @@
 "vUd" = (
 /obj/structure/table/wood,
 /obj/item/book/manual/splurt_space_law,
-/turf/open/floor/glass/reinforced,
+/turf/open/floor/plasteel/dark{
+	icon_state = "darkfull_plate"
+	},
 /area/security/brig)
 "vUe" = (
 /obj/structure/table/reinforced,
@@ -156270,6 +156312,10 @@
 	dir = 9;
 	name = "air supply pipe"
 	},
+/obj/item/ammo_box/a543/lethal{
+	pixel_y = 10
+	},
+/obj/item/ammo_box/a543/lethal,
 /turf/open/floor/plasteel/dark,
 /area/ai_monitored/security/armory)
 "xtj" = (
@@ -256578,7 +256624,7 @@ nDY
 nDs
 nDY
 wza
-cxV
+cYW
 eeK
 dio
 xgP
@@ -258381,7 +258427,7 @@ lSG
 oIH
 tzw
 aVe
-mNA
+rrA
 ths
 cDf
 njo
@@ -258869,7 +258915,7 @@ nLS
 nLS
 wZZ
 mhH
-uzr
+hGh
 oaT
 jiT
 odp
@@ -263239,7 +263285,7 @@ nLS
 nKY
 oNn
 hOi
-nLS
+rud
 nLS
 nLS
 nLS
@@ -263496,7 +263542,7 @@ hdW
 gxo
 kqo
 dDL
-nLS
+dku
 nLS
 nLS
 nLS
@@ -263751,9 +263797,9 @@ nQT
 nQT
 nQT
 nQT
-nLS
-nLS
-nLS
+dku
+dku
+dku
 nLS
 nLS
 nLS
@@ -265069,7 +265115,7 @@ owu
 pqx
 dOI
 hPh
-fcH
+mNA
 mLy
 oMY
 pqx
