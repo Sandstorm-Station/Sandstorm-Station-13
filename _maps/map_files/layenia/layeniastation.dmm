@@ -24072,16 +24072,6 @@
 	dir = 1
 	},
 /area/hallway/primary/port/fore)
-"dHm" = (
-/obj/structure/lattice/catwalk,
-/obj/structure/railing{
-	dir = 1
-	},
-/obj/structure/railing{
-	dir = 8
-	},
-/turf/open/space/basic,
-/area/space)
 "dHp" = (
 /obj/effect/spawner/structure/window/reinforced,
 /turf/open/floor/plating,
@@ -33727,6 +33717,7 @@
 /turf/open/floor/plasteel,
 /area/engineering/main)
 "ffa" = (
+/obj/structure/railing/corner,
 /turf/open/floor/plasteel{
 	icon_state = "floor_trim"
 	},
@@ -46189,6 +46180,9 @@
 "hbw" = (
 /obj/effect/turf_decal/tile/red{
 	dir = 4
+	},
+/obj/structure/railing/corner{
+	dir = 8
 	},
 /turf/open/floor/plasteel{
 	icon_state = "floor_trim"
@@ -73964,15 +73958,17 @@
 /turf/open/floor/plating,
 /area/engineering/lobby)
 "lgf" = (
-/obj/structure/lattice/catwalk,
-/obj/structure/railing{
-	dir = 1
+/obj/machinery/atmospherics/pipe/simple/supply/hidden/layer3{
+	dir = 8;
+	name = "air supply pipe"
 	},
-/obj/structure/railing{
-	dir = 4
+/obj/machinery/atmospherics/pipe/simple/scrubbers/hidden/layer1{
+	dir = 4;
+	name = "scrubbers pipe"
 	},
-/turf/open/space/basic,
-/area/space)
+/obj/structure/railing/corner,
+/turf/open/floor/plasteel/dark,
+/area/maintenance/starboard)
 "lgo" = (
 /obj/effect/mapping_helpers/airlock/cyclelink_helper{
 	dir = 4
@@ -126630,18 +126626,6 @@
 	name = "concrete"
 	},
 /area/maintenance/port/aft)
-"tax" = (
-/obj/machinery/atmospherics/pipe/simple/supply/hidden/layer3{
-	dir = 8;
-	name = "air supply pipe"
-	},
-/obj/machinery/atmospherics/pipe/simple/scrubbers/hidden/layer1{
-	dir = 4;
-	name = "scrubbers pipe"
-	},
-/obj/structure/railing/corner,
-/turf/open/floor/plasteel/dark,
-/area/maintenance/starboard)
 "taB" = (
 /obj/machinery/atmospherics/pipe/simple/yellow/visible/layer1{
 	dir = 8;
@@ -201357,7 +201341,7 @@ boa
 boa
 boa
 boa
-dHm
+gNa
 nQT
 rEv
 bUy
@@ -201871,7 +201855,7 @@ boa
 boa
 boa
 boa
-lgf
+cNU
 nQT
 cDT
 peN
@@ -205794,7 +205778,7 @@ pDQ
 csI
 kpB
 kHh
-tax
+lgf
 qty
 qiQ
 xfv
