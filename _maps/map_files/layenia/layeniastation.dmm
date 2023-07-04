@@ -36599,10 +36599,6 @@
 	},
 /area/commons/dorms)
 "fDj" = (
-/obj/effect/turf_decal/stripes/line,
-/obj/effect/turf_decal/stripes/line{
-	dir = 1
-	},
 /obj/machinery/atmospherics/pipe/simple/supply/hidden/layer3{
 	dir = 8;
 	name = "air supply pipe"
@@ -36611,14 +36607,9 @@
 	dir = 4;
 	name = "scrubbers pipe"
 	},
-/obj/structure/cable{
-	icon_state = "4-8"
-	},
-/obj/structure/disposalpipe/segment{
-	dir = 4
-	},
-/turf/open/space/basic,
-/area/space)
+/obj/structure/railing/corner,
+/turf/open/floor/plasteel/dark,
+/area/maintenance/starboard)
 "fDl" = (
 /obj/machinery/light{
 	dir = 8;
@@ -73957,18 +73948,6 @@
 	},
 /turf/open/floor/plating,
 /area/engineering/lobby)
-"lgf" = (
-/obj/machinery/atmospherics/pipe/simple/supply/hidden/layer3{
-	dir = 8;
-	name = "air supply pipe"
-	},
-/obj/machinery/atmospherics/pipe/simple/scrubbers/hidden/layer1{
-	dir = 4;
-	name = "scrubbers pipe"
-	},
-/obj/structure/railing/corner,
-/turf/open/floor/plasteel/dark,
-/area/maintenance/starboard)
 "lgo" = (
 /obj/effect/mapping_helpers/airlock/cyclelink_helper{
 	dir = 4
@@ -199943,7 +199922,7 @@ tdT
 tdT
 tdT
 tdT
-fDj
+xPa
 wfk
 gyt
 gyt
@@ -205778,7 +205757,7 @@ pDQ
 csI
 kpB
 kHh
-lgf
+fDj
 qty
 qiQ
 xfv
