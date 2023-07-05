@@ -15563,15 +15563,6 @@
 	icon_state = "floor_plate"
 	},
 /area/security/brig)
-"ctl" = (
-/obj/effect/turf_decal/stripes/line{
-	dir = 1
-	},
-/obj/effect/turf_decal/stripes/line{
-	dir = 8
-	},
-/turf/open/floor/plasteel,
-/area/commons/fitness)
 "ctv" = (
 /turf/closed/wall,
 /area/engineering/teg)
@@ -20538,15 +20529,6 @@
 "dfU" = (
 /turf/closed/wall,
 /area/engineering/atmos)
-"dfX" = (
-/obj/effect/turf_decal/stripes/line{
-	dir = 1
-	},
-/obj/effect/turf_decal/stripes/line{
-	dir = 4
-	},
-/turf/open/floor/plasteel,
-/area/commons/fitness)
 "dgb" = (
 /obj/effect/turf_decal/tile/blue{
 	dir = 8
@@ -31194,10 +31176,10 @@
 	dir = 4;
 	pixel_x = 7
 	},
-/obj/effect/turf_decal/stripes/line,
-/turf/open/floor/plasteel/dark{
-	icon_state = "darkfull_whole_alt"
+/obj/effect/turf_decal/stripes/line{
+	dir = 4
 	},
+/turf/open/floor/plasteel,
 /area/commons/fitness)
 "eJP" = (
 /obj/effect/turf_decal/loading_area{
@@ -48107,14 +48089,10 @@
 /turf/open/floor/plating,
 /area/maintenance/port)
 "hpp" = (
-/obj/machinery/door/airlock/external{
-	name = "External Access";
-	req_access_txt = "12"
+/obj/effect/turf_decal/stripes/line{
+	dir = 5
 	},
-/obj/effect/mapping_helpers/airlock/cyclelink_helper,
-/turf/open/floor/plasteel/dark{
-	icon_state = "darkfull_whole_alt"
-	},
+/turf/open/floor/plasteel,
 /area/commons/fitness)
 "hpx" = (
 /obj/structure/table/wood,
@@ -66650,9 +66628,16 @@
 	name = "line"
 	},
 /obj/effect/turf_decal/loading_area{
-	dir = 4;
-	icon_state = "linealt_corner";
-	name = "line"
+	dir = 1;
+	icon_state = "linealt";
+	name = "line";
+	pixel_y = 6
+	},
+/obj/effect/turf_decal/loading_area{
+	dir = 8;
+	icon_state = "line";
+	name = "line";
+	pixel_x = 26
 	},
 /turf/open/floor/plasteel{
 	dir = 8;
@@ -103460,17 +103445,10 @@
 	},
 /area/medical/medbay/central)
 "pCA" = (
-/obj/machinery/door/airlock/external{
-	name = "External Access";
-	req_access_txt = "12"
+/obj/effect/turf_decal/stripes/line{
+	dir = 9
 	},
-/obj/effect/mapping_helpers/airlock/cyclelink_helper{
-	dir = 1
-	},
-/obj/structure/fans/tiny,
-/turf/open/floor/plasteel/dark{
-	icon_state = "darkfull_whole_alt"
-	},
+/turf/open/floor/plasteel,
 /area/commons/fitness)
 "pCI" = (
 /obj/machinery/light/small{
@@ -130652,21 +130630,6 @@
 	icon_state = "floor_plate"
 	},
 /area/hallway/primary/starboard)
-"tEu" = (
-/obj/structure/sign/warning/nosmoking{
-	pixel_y = -32
-	},
-/obj/effect/turf_decal/tile/neutral{
-	dir = 6
-	},
-/obj/effect/turf_decal/loading_area{
-	icon_state = "drain";
-	name = "drain"
-	},
-/turf/open/floor/plasteel{
-	icon_state = "floor_plate"
-	},
-/area/commons/fitness)
 "tEw" = (
 /obj/effect/turf_decal/tile/neutral{
 	dir = 8
@@ -137269,15 +137232,6 @@
 	icon_state = "darkfull_whole_alt"
 	},
 /area/service/kitchen)
-"uFj" = (
-/obj/structure/rack,
-/obj/item/clothing/suit/hooded/wintercoat,
-/obj/item/clothing/suit/hooded/wintercoat,
-/obj/effect/turf_decal/stripes/line,
-/turf/open/floor/plasteel/dark{
-	icon_state = "darkfull_whole_alt"
-	},
-/area/commons/fitness)
 "uFm" = (
 /obj/machinery/door/airlock/maintenance{
 	name = "Maintenance Access";
@@ -179573,11 +179527,11 @@ wgi
 gSn
 vKF
 iKk
-tEu
-vfW
-uFj
-aOc
-ctl
+xyi
+pCA
+sTm
+sTm
+sTm
 sTm
 eAE
 ouT
@@ -179833,8 +179787,8 @@ xXI
 xyi
 hpp
 eJG
-pCA
-dfX
+qIL
+qIL
 qIL
 qIL
 dNe
