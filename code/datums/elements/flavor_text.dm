@@ -32,6 +32,8 @@ GLOBAL_LIST_EMPTY(mobs_with_editable_flavor_text) //et tu, hacky code
 		addendum = _addendum
 	show_on_naked = _show_on_naked
 	always_show = _always_show
+	if(flavor_name == "OOC Notes") //SPLURT EDIT make it so ooc notes are always visible
+		always_show = TRUE
 	can_edit = _edit
 	save_key = _save_key
 	examine_no_preview = _examine_no_preview
