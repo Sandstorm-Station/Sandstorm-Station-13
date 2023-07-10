@@ -13,7 +13,7 @@
 	return TRUE
 
 /obj/item/firing_pin
-	pin_removeable = FALSE
+	pin_removeable = TRUE
 
 /obj/item/firing_pin/magic
 	pin_removeable = FALSE
