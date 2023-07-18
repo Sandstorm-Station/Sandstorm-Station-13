@@ -121,7 +121,6 @@
 		return
 
 	examine_list += span_lewd("\nYou can't make eye contact with [quirk_holder.p_them()] before flustering away!")
-	// removes the bug when examining
 	if(!TIMER_COOLDOWN_CHECK(user, COOLDOWN_DOMINANT_EXAMINE))
 		to_chat(quirk_holder, span_notice("\The [user] tries to look at you but immediately turns away with a red face..."))
 		TIMER_COOLDOWN_START(user, COOLDOWN_DOMINANT_EXAMINE, 10 SECONDS)
