@@ -44,17 +44,6 @@
 )
 	SIGNAL_HANDLER
 
-	LAZYSET(context[SCREENTIP_CONTEXT_ALT_LMB], INTENT_ANY, "Pick up")
-	return CONTEXTUAL_SCREENTIP_SET
-
-/datum/element/mob_holder/proc/on_requesting_context_from_item(
-	obj/source,
-	list/context,
-	obj/item/held_item,
-	mob/living/user,
-)
-	SIGNAL_HANDLER
-
 	if(ishuman(user))
 		LAZYSET(context[SCREENTIP_CONTEXT_ALT_LMB], INTENT_ANY, "Pick up")
 		return CONTEXTUAL_SCREENTIP_SET
