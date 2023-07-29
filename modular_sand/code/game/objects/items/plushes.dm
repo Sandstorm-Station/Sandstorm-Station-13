@@ -248,3 +248,4 @@
 	desc = "That's one weird looking plushie."
 	icon = 'modular_sand/icons/obj/plushes.dmi'
 	icon_state = "cube"
+	squeak_override = list('sound/effects/footstep/rustystep1.ogg' = 1)
