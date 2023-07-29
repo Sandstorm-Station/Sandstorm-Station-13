@@ -172,3 +172,23 @@
 /obj/item/clothing/head/mob_holder/micro/attack(mob/living/pred, mob/living/user)
 	user.vore_attack(user, held_mob, pred)
 	return STOP_ATTACK_PROC_CHAIN
+
+/obj/item/clothing/head/mob_holder/micro/GetAccess()
+	. = ..()
+	var/obj/item/held = held_mob.get_active_held_item()
+	if(held)
+		. += held.GetAccess()
+	var/mob/living/carbon/human/human_micro = held_mob
+	if(istype(human_micro))
+		. += human_micro.wear_id?.GetAccess()
+
+/obj/item/clothing/head/mob_holder/micro/GetID()
+	. = ..()
+	if(.)
+		return
+	var/obj/item/held = held_mob.get_active_held_item()
+	if(isidcard(held))
+		return held
+	var/mob/living/carbon/human/human_micro = held_mob
+	if(istype(human_micro) && isidcard(human_micro.wear_id))
+		return human_micro.wear_id
