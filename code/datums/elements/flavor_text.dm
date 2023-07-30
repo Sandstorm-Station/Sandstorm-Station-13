@@ -105,7 +105,7 @@ GLOBAL_LIST_EMPTY(mobs_with_editable_flavor_text) //et tu, hacky code
 				else
 					content += "\n"
 
-				if(L.client.prefs.stomppref == "Yes")
+				if(L.client.prefs.stomppref == TRUE)
 					content += " <b>| Stomping Interactions:</b> [L.client.prefs.stomppref]\n"
 				else
 					content += "\n"
