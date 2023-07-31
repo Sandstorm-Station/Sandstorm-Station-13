@@ -28,6 +28,9 @@
 	if(current_version < 57.01) //a
 		new_character_creator = TRUE
 
+	if(current_version < 58.01) // Stomp pref.
+		stomppref = TRUE
+
 /datum/preferences/update_character(current_version, savefile/S)
 	. = ..()
 	if(current_version < 53.01)
