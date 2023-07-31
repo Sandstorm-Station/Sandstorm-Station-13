@@ -3514,11 +3514,6 @@ GLOBAL_LIST_EMPTY(preferences_datums)
 						if("No")
 							unholypref = "Yes"
 				if("stomppref") // What the fuck is this?
-					switch(stomppref)
-						if(TRUE)
-							stomptext = "No"
-						if(FALSE)
-							stomptext = "Yes"
 					stomppref = !stomppref
 				//Skyrat edit - *someone* offered me actual money for this shit
 				if("extremepref") //i hate myself for doing this
