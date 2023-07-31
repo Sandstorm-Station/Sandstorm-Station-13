@@ -1524,7 +1524,7 @@ GLOBAL_LIST_EMPTY(preferences_datums)
 					dat += "<span style='border-radius: 2px;border:1px dotted white;cursor:help;' title='Enables verbs involving farts, shit and piss.'>?</span> "
 					dat += "<b>Unholy ERP verbs :</b> <a href='?_src_=prefs;preference=unholypref'>[unholypref]</a><br>" //https://www.youtube.com/watch?v=OHKARc-GObU
 					dat += "<span style='border-radius: 2px;border:1px dotted white;cursor:help;' title='Enables macro / micro stepping and stomping interactions.'>?</span> "
-					dat += "<b>Stomping Interactions :</b> <a href='?_src_=prefs;preference=stomppref'>[stomptext]</a><br>"
+					dat += "<b>Stomping Interactions :</b> <a href='?_src_=prefs;preference=stomppref'>[stomppref ? "Yes" : "No"]</a><br>"
 					//END OF SPLURT EDIT
 					//SKYRAT EDIT
 					dat += "<span style='border-radius: 2px;border:1px dotted white;cursor:help;' title='Enables verbs involving ear/brain fucking.'>?</span> " //SPLURT Edit (wow! editception???)
