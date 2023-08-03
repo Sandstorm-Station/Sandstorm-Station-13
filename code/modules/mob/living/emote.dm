@@ -207,7 +207,6 @@
 	if(. && iscarbon(user))
 		var/mob/living/carbon/C = user
 		return !C.silent && (!C.mind || !C.mind.miming)
-	return FALSE
 
 /datum/emote/living/audio_emote/laugh
 	key = "laugh"
