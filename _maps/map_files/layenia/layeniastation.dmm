@@ -29348,6 +29348,32 @@
 	},
 /turf/open/floor/plating,
 /area/tcommsat/server)
+"equ" = (
+/obj/structure/cable{
+	icon_state = "4-8"
+	},
+/obj/machinery/atmospherics/pipe/simple/scrubbers/hidden/layer1{
+	dir = 4;
+	name = "scrubbers pipe"
+	},
+/obj/machinery/atmospherics/pipe/simple/supply/hidden/layer3{
+	dir = 8;
+	name = "air supply pipe"
+	},
+/obj/structure/disposalpipe/segment{
+	dir = 4
+	},
+/obj/effect/turf_decal/tile/yellow{
+	dir = 4
+	},
+/obj/effect/turf_decal/tile/yellow{
+	dir = 8
+	},
+/obj/structure/cable/yellow{
+	icon_state = "1-8"
+	},
+/turf/open/floor/plasteel,
+/area/engineering/lobby)
 "eqO" = (
 /obj/machinery/door/firedoor,
 /obj/machinery/door/window/southleft{
@@ -31927,6 +31953,14 @@
 	},
 /turf/open/floor/plasteel/dark,
 /area/hallway/primary/port/fore)
+"eJU" = (
+/obj/machinery/space_heater,
+/obj/effect/turf_decal/bot,
+/obj/structure/cable{
+	icon_state = "1-4"
+	},
+/turf/open/floor/plating,
+/area/engineering/main)
 "eJX" = (
 /obj/effect/turf_decal/loading_area{
 	dir = 9;
@@ -54953,6 +54987,15 @@
 	},
 /turf/open/floor/plating,
 /area/maintenance/fore/secondary)
+"ifo" = (
+/obj/structure/cable/yellow{
+	icon_state = "1-2"
+	},
+/obj/structure/cable{
+	icon_state = "4-8"
+	},
+/turf/open/floor/plasteel/dark,
+/area/engineering/main)
 "ifs" = (
 /obj/structure/chair/sofa/right{
 	dir = 8
@@ -57198,6 +57241,12 @@
 	},
 /turf/open/floor/plating,
 /area/maintenance/fore)
+"ixm" = (
+/obj/structure/cable{
+	icon_state = "1-8"
+	},
+/turf/open/floor/plasteel/dark,
+/area/engineering/main)
 "ixn" = (
 /obj/machinery/telecomms/broadcaster/preset_left,
 /turf/open/floor/circuit/telecomms/mainframe,
@@ -84688,14 +84737,6 @@
 	},
 /turf/open/floor/plating,
 /area/maintenance/starboard)
-"mse" = (
-/obj/machinery/space_heater,
-/obj/effect/turf_decal/bot,
-/obj/structure/cable{
-	icon_state = "1-4"
-	},
-/turf/open/floor/plating,
-/area/engineering/main)
 "msi" = (
 /obj/structure/bed/double,
 /obj/item/bedsheet/captain/double,
@@ -86233,15 +86274,6 @@
 	},
 /turf/open/floor/plasteel,
 /area/hallway/primary/starboard)
-"mEU" = (
-/obj/structure/cable/yellow{
-	icon_state = "1-2"
-	},
-/obj/structure/cable{
-	icon_state = "4-8"
-	},
-/turf/open/floor/plasteel/dark,
-/area/engineering/main)
 "mFa" = (
 /obj/machinery/door/airlock/public/glass{
 	name = "Cafe"
@@ -88684,6 +88716,22 @@
 	},
 /turf/open/floor/plasteel/yellowsiding,
 /area/commons/fitness/pool)
+"mWB" = (
+/obj/effect/turf_decal/tile/neutral{
+	dir = 8;
+	color = "#FFFFFF"
+	},
+/obj/effect/turf_decal/tile/neutral{
+	color = "#ffffff"
+	},
+/obj/structure/cable/yellow{
+	icon_state = "1-2"
+	},
+/turf/open/floor/plasteel{
+	dir = 1;
+	icon_state = "floor_plate"
+	},
+/area/engineering/lobby)
 "mWK" = (
 /obj/effect/turf_decal/tile/neutral{
 	dir = 1;
@@ -89472,6 +89520,12 @@
 	},
 /turf/open/floor/plating,
 /area/ruin/unpowered/no_grav)
+"ncR" = (
+/obj/structure/cable/yellow{
+	icon_state = "1-2"
+	},
+/turf/open/floor/plasteel/dark,
+/area/engineering/lobby)
 "ncS" = (
 /obj/machinery/light{
 	dir = 1;
@@ -97504,6 +97558,14 @@
 	},
 /turf/closed/wall,
 /area/hallway/secondary/service)
+"onU" = (
+/obj/effect/spawner/structure/window/plasma/reinforced,
+/obj/machinery/door/firedoor,
+/obj/structure/cable/yellow{
+	icon_state = "1-2"
+	},
+/turf/open/floor/plating,
+/area/engineering/main)
 "oob" = (
 /obj/effect/turf_decal/tile/blue{
 	dir = 9
@@ -102324,6 +102386,18 @@
 "oYT" = (
 /turf/open/floor/plasteel/dark,
 /area/command/gateway)
+"oZi" = (
+/obj/effect/turf_decal/stripes/line{
+	dir = 1
+	},
+/obj/structure/cable/yellow{
+	icon_state = "1-2"
+	},
+/turf/open/floor/plasteel{
+	dir = 1;
+	icon_state = "floor_plate"
+	},
+/area/engineering/main)
 "oZj" = (
 /obj/effect/turf_decal/tile/blue{
 	dir = 6
@@ -111020,6 +111094,13 @@
 	icon_state = "darkfull_plate"
 	},
 /area/hallway/primary/fore)
+"qsp" = (
+/obj/effect/decal/cleanable/dirt,
+/obj/structure/cable/yellow{
+	icon_state = "1-2"
+	},
+/turf/open/floor/plating,
+/area/engineering/main)
 "qsx" = (
 /obj/structure/table,
 /turf/open/floor/plasteel{
@@ -125792,12 +125873,6 @@
 	},
 /turf/open/floor/plating/layeniaredder,
 /area/ruin/unpowered/no_grav)
-"sxS" = (
-/obj/structure/cable{
-	icon_state = "1-8"
-	},
-/turf/open/floor/plasteel/dark,
-/area/engineering/main)
 "sxZ" = (
 /obj/effect/decal/cleanable/cobweb,
 /turf/closed/wall/r_wall,
@@ -209465,7 +209540,7 @@ aIO
 nHJ
 sWP
 sWP
-mse
+eJU
 fDt
 hBZ
 ujI
@@ -209722,22 +209797,22 @@ hBZ
 qJn
 xqk
 xqk
-mEU
+ifo
 kAT
 mRM
 nPe
 dzT
 nSM
-vru
-vru
-xVZ
-xVZ
-vru
-phS
-jqf
-lqZ
-hSs
-jez
+nSM
+nSM
+qsp
+qsp
+nSM
+oZi
+onU
+ncR
+mWB
+equ
 djZ
 pHA
 aAW
@@ -209979,7 +210054,7 @@ kAy
 kAy
 kAy
 gDf
-sxS
+ixm
 mfg
 hBZ
 oAs
