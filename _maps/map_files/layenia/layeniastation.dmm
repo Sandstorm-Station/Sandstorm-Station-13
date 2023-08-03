@@ -26800,6 +26800,19 @@
 	dir = 8;
 	name = "air scrubber"
 	},
+/obj/item/stack/sheet/glass/fifty,
+/obj/item/stack/sheet/glass/fifty,
+/obj/item/stack/sheet/glass/fifty,
+/obj/item/stack/sheet/glass/fifty,
+/obj/item/stack/sheet/glass/fifty,
+/obj/item/stack/sheet/glass/fifty,
+/obj/item/stack/sheet/glass/fifty,
+/obj/item/stack/sheet/glass/fifty,
+/obj/item/stack/sheet/glass/fifty,
+/obj/item/stack/sheet/glass/fifty,
+/obj/item/stack/sheet/glass/fifty,
+/obj/item/stack/sheet/glass/fifty,
+/obj/structure/table,
 /turf/open/floor/plating,
 /area/maintenance/solars/starboard/fore)
 "dYp" = (
@@ -32215,6 +32228,12 @@
 /area/ai_monitored/turret_protected/aisat/hallway)
 "eMt" = (
 /obj/structure/table,
+/obj/item/stack/sheet/glass/fifty,
+/obj/item/stack/sheet/glass/fifty,
+/obj/item/stack/sheet/glass/fifty,
+/obj/item/stack/sheet/glass/fifty,
+/obj/item/stack/sheet/glass/fifty,
+/obj/item/stack/sheet/glass/fifty,
 /turf/open/floor/plating,
 /area/maintenance/solars/aux/port)
 "eMy" = (
@@ -44299,6 +44318,9 @@
 "gDf" = (
 /obj/structure/cable{
 	icon_state = "1-4"
+	},
+/obj/structure/cable{
+	icon_state = "1-2"
 	},
 /turf/open/floor/plasteel/dark,
 /area/engineering/main)
@@ -56976,6 +56998,12 @@
 /obj/structure/rack,
 /obj/item/clothing/suit/hooded/wintercoat/engineering,
 /obj/item/clothing/suit/hooded/wintercoat/engineering,
+/obj/item/stack/sheet/glass/fifty,
+/obj/item/stack/sheet/glass/fifty,
+/obj/item/stack/sheet/glass/fifty,
+/obj/item/stack/sheet/glass/fifty,
+/obj/item/stack/sheet/glass/fifty,
+/obj/item/stack/sheet/glass/fifty,
 /turf/open/floor/plating,
 /area/maintenance/solars/port/aft)
 "iwg" = (
@@ -70563,6 +70591,12 @@
 /obj/structure/rack,
 /obj/item/clothing/suit/hooded/wintercoat/engineering,
 /obj/item/clothing/suit/hooded/wintercoat/engineering,
+/obj/item/stack/sheet/glass/fifty,
+/obj/item/stack/sheet/glass/fifty,
+/obj/item/stack/sheet/glass/fifty,
+/obj/item/stack/sheet/glass/fifty,
+/obj/item/stack/sheet/glass/fifty,
+/obj/item/stack/sheet/glass/fifty,
 /turf/open/floor/plating,
 /area/maintenance/solars/port/aft)
 "krr" = (
@@ -71868,6 +71902,9 @@
 "kAT" = (
 /obj/structure/cable/yellow{
 	icon_state = "2-4"
+	},
+/obj/structure/cable/yellow{
+	icon_state = "1-2"
 	},
 /turf/open/floor/plasteel/dark,
 /area/engineering/main)
@@ -84651,6 +84688,14 @@
 	},
 /turf/open/floor/plating,
 /area/maintenance/starboard)
+"mse" = (
+/obj/machinery/space_heater,
+/obj/effect/turf_decal/bot,
+/obj/structure/cable{
+	icon_state = "1-4"
+	},
+/turf/open/floor/plating,
+/area/engineering/main)
 "msi" = (
 /obj/structure/bed/double,
 /obj/item/bedsheet/captain/double,
@@ -86188,6 +86233,15 @@
 	},
 /turf/open/floor/plasteel,
 /area/hallway/primary/starboard)
+"mEU" = (
+/obj/structure/cable/yellow{
+	icon_state = "1-2"
+	},
+/obj/structure/cable{
+	icon_state = "4-8"
+	},
+/turf/open/floor/plasteel/dark,
+/area/engineering/main)
 "mFa" = (
 /obj/machinery/door/airlock/public/glass{
 	name = "Cafe"
@@ -93534,8 +93588,11 @@
 /obj/effect/turf_decal/stripes/line{
 	dir = 1
 	},
-/obj/machinery/power/rad_collector,
 /obj/effect/turf_decal/bot,
+/obj/machinery/power/smes/engineering,
+/obj/structure/cable{
+	icon_state = "0-2"
+	},
 /turf/open/floor/plating,
 /area/engineering/main)
 "nHK" = (
@@ -113320,8 +113377,13 @@
 /obj/effect/turf_decal/stripes/line{
 	dir = 1
 	},
-/obj/machinery/power/rad_collector,
 /obj/effect/turf_decal/bot,
+/obj/machinery/power/terminal{
+	dir = 8
+	},
+/obj/structure/cable/yellow{
+	icon_state = "0-2"
+	},
 /turf/open/floor/plating,
 /area/engineering/main)
 "qJo" = (
@@ -125730,6 +125792,12 @@
 	},
 /turf/open/floor/plating/layeniaredder,
 /area/ruin/unpowered/no_grav)
+"sxS" = (
+/obj/structure/cable{
+	icon_state = "1-8"
+	},
+/turf/open/floor/plasteel/dark,
+/area/engineering/main)
 "sxZ" = (
 /obj/effect/decal/cleanable/cobweb,
 /turf/closed/wall/r_wall,
@@ -128992,7 +129060,13 @@
 /area/security/office)
 "sWP" = (
 /obj/effect/turf_decal/bot,
-/obj/machinery/power/rad_collector,
+/obj/machinery/power/smes/engineering,
+/obj/structure/cable{
+	icon_state = "0-2"
+	},
+/obj/structure/cable{
+	icon_state = "1-2"
+	},
 /turf/open/floor/plating,
 /area/engineering/main)
 "sWV" = (
@@ -159676,8 +159750,16 @@
 	},
 /area/science)
 "xqk" = (
-/obj/machinery/power/rad_collector,
 /obj/effect/turf_decal/bot,
+/obj/machinery/power/terminal{
+	dir = 8
+	},
+/obj/structure/cable/yellow{
+	icon_state = "1-2"
+	},
+/obj/structure/cable/yellow{
+	icon_state = "0-2"
+	},
 /turf/open/floor/plating,
 /area/engineering/main)
 "xql" = (
@@ -209381,9 +209463,9 @@ hBZ
 jFt
 aIO
 nHJ
-xqk
 sWP
-fDt
+sWP
+mse
 fDt
 hBZ
 ujI
@@ -209640,7 +209722,7 @@ hBZ
 qJn
 xqk
 xqk
-bbE
+mEU
 kAT
 mRM
 nPe
@@ -209897,7 +209979,7 @@ kAy
 kAy
 kAy
 gDf
-bbE
+sxS
 mfg
 hBZ
 oAs
