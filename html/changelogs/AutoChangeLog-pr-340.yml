@@ -1,0 +1,9 @@
+author: SandPoot
+delete-after: true
+changes:
+  - refactor: Glory killing has been componentized with (hopefully) better code.
+  - bugfix: Some megafauna will no longer die to lava/storms.
+  - tweak: Redundant code has been removed.
+  - code_imp: Turns out we had some extra tumor bosses that weren't on the pool, they
+      now have been added.
+  - bugfix: Watchers were meant to be glory killable, they are now.
