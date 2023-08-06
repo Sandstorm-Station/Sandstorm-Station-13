@@ -77,7 +77,7 @@
 
 /obj/item/organ/genital/breasts/size_to_state()
 	var/str_size
-	switch(size)
+	switch(round(size))
 		if(0) //flatchested
 			str_size = "flat"
 		if(1 to 8) //modest
