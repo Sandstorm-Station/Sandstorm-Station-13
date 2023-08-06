@@ -1490,7 +1490,7 @@
 
 /datum/action/cosglow/update_glow
 	name = "Modify Glow"
-	desc = "Change your radioactive glow color."
+	desc = "Change your glow color."
 	button_icon_state = "blank"
 
 	// Glow color to use
