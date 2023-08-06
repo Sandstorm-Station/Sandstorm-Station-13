@@ -56,9 +56,6 @@
 	gain_text = span_notice("You feel empowered by Cherenkov's glow.")
 	lose_text = span_notice("You realize that rads aren't so rad.")
 
-	// Variable for the radiation immunity check
-	var/can_gain = TRUE
-
 /datum/quirk/rad_fiend/add()
 	// Define quirk holder mob
 	var/mob/living/carbon/human/quirk_mob = quirk_holder
