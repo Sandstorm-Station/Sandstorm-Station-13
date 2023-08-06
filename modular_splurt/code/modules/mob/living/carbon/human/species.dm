@@ -36,8 +36,8 @@
 
 /datum/species/handle_mutations_and_radiation(mob/living/carbon/human/H)
 	// Check for rad fiend quirk
-	// Check for radiation resist threshold
-	if(HAS_TRAIT(H, TRAIT_RAD_FIEND) && (H.radiation < RAD_BURN_THRESHOLD))
+	// Note: Rad Fiend was readjusted to not need a maximum ceiling on radiation. View the Undead Species as to why.
+	if(HAS_TRAIT(H, TRAIT_RAD_FIEND)) //Note. This proc occurs after the radiation damage proc. Which means above like 1e+06 rads/sec they'll still die.
 		// Return without effects
 		return TRUE
 

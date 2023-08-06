@@ -1537,8 +1537,8 @@
 
 	// Check if range input was given
 	// Reset to stored color when not given input
-	// Input is clamped in the 1-2 range
-	glow_range = (input_range ? clamp(input_range, 1, 2) : glow_range)
+	// Input is clamped in the 1-4 range
+	glow_range = (input_range ? clamp(input_range, 1, 4) : glow_range)
 
 	// Update outline effect
 	action_mob.remove_filter("rad_fiend_glow")
