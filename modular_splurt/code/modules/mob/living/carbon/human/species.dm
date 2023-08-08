@@ -35,9 +35,8 @@
 		H.adjust_thirst(-thirst_rate)
 
 /datum/species/handle_mutations_and_radiation(mob/living/carbon/human/H)
-	// Check for rad fiend quirk
-	// Note: Rad Fiend was readjusted to not need a maximum ceiling on radiation. View the Undead Species as to why.
-	if(HAS_TRAIT(H, TRAIT_RAD_FIEND)) //Note. This proc occurs after the radiation damage proc. Which means above like 1e+06 rads/sec they'll still die.
+	//Note: In the future, we should probably make radfiend assign TRAIT_RADIMMUME, but this is a good balancing aspect for now.
+	if(HAS_TRAIT(H, TRAIT_RAD_FIEND)) //Note. Due to how radiation code works, this does not provide FULL immunity.
 		// Return without effects
 		return TRUE
 
