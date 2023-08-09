@@ -211,7 +211,8 @@
 		"Junior Scientist",
 		"Rack Researcher",
 		"Nanite Programmer",
-		"Tetromino Researcher"
+		"Tetromino Researcher",
+		"Xenoarchaeolgist"
 	)
 	LAZYADD(alt_titles, extra_titles)
 	. = ..()
