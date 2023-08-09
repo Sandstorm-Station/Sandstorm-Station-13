@@ -44,7 +44,7 @@
 	var/list/genitals = list()
 	for(var/obj/item/organ/genital/genital in genital_holder.internal_organs)	//Only get the genitals
 		if(CHECK_BITFIELD(genital.genital_flags, GENITAL_INTERNAL))			//Not those though
-			if(genital.is_exposed) //No siree. No more using this to OOCly metagame character genitals.
+			if(genital.is_exposed()) //No siree. No more using this to OOCly metagame character genitals.
 				continue
 
 		var/list/genital_entry = list()
