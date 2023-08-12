@@ -12,7 +12,6 @@
 /obj/machinery/hydroponics/constructable/automagic/Initialize(mapload)
 	. = ..()
 	START_PROCESSING(SSobj, src)
-	create_reagents(100 , AMOUNT_VISIBLE)
 
 /obj/machinery/hydroponics/constructable/automagic/process()
 	if(dead)
