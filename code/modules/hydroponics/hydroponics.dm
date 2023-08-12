@@ -47,6 +47,12 @@
 	AddComponent(/datum/component/simple_rotation, ROTATION_ALTCLICK | ROTATION_CLOCKWISE | ROTATION_COUNTERCLOCKWISE | ROTATION_VERBS, null, CALLBACK(src, .proc/can_be_rotated))
 	AddComponent(/datum/component/plumbing/simple_demand)
 
+/obj/machinery/hydroponics/constructable/on_construction()
+	. = ..()
+	if(!anchored)
+		var/datum/component/plumbing/plumbing_component = GetComponent(/datum/component/plumbing)
+		plumbing_component.disable()
+
 /obj/machinery/hydroponics/constructable/proc/can_be_rotated(mob/user, rotation_type)
 	return !anchored
 
