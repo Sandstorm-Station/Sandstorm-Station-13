@@ -24,6 +24,7 @@
 		if(!pet_icons)
 			pet_icons = list(
 			"Femclaw" = image(icon = 'modular_splurt/icons/mob/femclaw/newclaws.dmi', icon_state = "femclaw"),
+			"Deathclaw" = image(icon = 'modular_splurt/icons/mob/femclaw/newclaws.dmi', icon_state = "newclaw"),
 			"Carp" = image(icon = 'icons/mob/animal.dmi', icon_state = "carp"),
 			"Spider" = image(icon = 'icons/mob/animal.dmi', icon_state = "guard")
 		)
@@ -31,6 +32,8 @@
 		switch(selected_icon)
 			if("Femclaw")
 				selected_pet = /mob/living/simple_animal/hostile/deathclaw/funclaw/femclaw/pet_femclaw
+			if("Deathclaw")
+				selected_pet = /mob/living/simple_animal/hostile/deathclaw/funclaw/gentle/newclaw/pet_deathclaw
 			if("Carp")
 				selected_pet = /mob/living/simple_animal/hostile/carp/pet_carp
 			if("Spider")
@@ -65,6 +68,10 @@
 		if(istype(stored_pet, /mob/living/simple_animal/hostile/deathclaw/funclaw/femclaw/pet_femclaw))
 			var/mob/living/simple_animal/hostile/deathclaw/funclaw/femclaw/pet_femclaw/ownable = stored_pet
 			ownable.capsule_owner = owner
+		else if(istype(stored_pet,/mob/living/simple_animal/hostile/deathclaw/funclaw/gentle/newclaw/pet_deathclaw))
+			var/mob/living/simple_animal/hostile/deathclaw/funclaw/gentle/newclaw/pet_deathclaw/ownable = stored_pet
+			ownable.capsule_owner = owner
+
 
 	//recall pet
 	else if (open && stored_pet != null)
