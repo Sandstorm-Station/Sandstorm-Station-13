@@ -132,6 +132,44 @@
 		if(initial(species.disliked_food) & ~MEAT)
 			species.disliked_food &= ~MEAT
 
+//Zombies + Cumplus Fix\\
+/datum/quirk/undead
+    name = "Undeath"
+    desc = "Your body, be it anomalous, or just outright refusing to die - has indeed become undead. Due to this you may be more susceptible to burn-based weaponry."
+    value = 0
+    mob_trait = TRAIT_UNDEAD
+    processing_quirk = TRUE
+    var/list/zperks = list(TRAIT_RESISTCOLD,TRAIT_STABLEHEART,TRAIT_EASYDISMEMBER,TRAIT_LIMBATTACHMENT,TRAIT_NOBREATH,TRAIT_VIRUSIMMUNE,TRAIT_RADIMMUNE,TRAIT_FAKEDEATH,TRAIT_NOSOFTCRIT, TRAIT_NOPULSE) //NOTE: Remove the following (TRAIT_RESISTLOWPRESSURE, TRAIT_LIMBATTACHMENT) IN FUTURE BALANCING.
+
+/datum/quirk/undead/add()
+    . = ..()
+    var/mob/living/carbon/human/H = quirk_holder
+    if(H.mob_biotypes == MOB_ROBOTIC)
+        return FALSE //Lol, lmao, even
+    H.mob_biotypes += MOB_UNDEAD
+    for(var/A = 1, A <= zperks.len, A++)
+        ADD_TRAIT(H,zperks[A],ROUNDSTART_TRAIT)
+
+/datum/quirk/undead/remove()
+    . = ..()
+    var/mob/living/carbon/human/H = quirk_holder
+    H.mob_biotypes -= MOB_UNDEAD
+    for(var/A = 1, A <= zperks.len, A++)
+        REMOVE_TRAIT(H,zperks[A], null) //Roundstart traits have a nasty habit of not removing when done this way with ROUNDSTART_TRAIT. Null them instead.
+
+/datum/quirk/undead/on_process()
+    . = ..()
+    var/mob/living/carbon/human/H = quirk_holder
+    H.adjust_nutrition(-0.05)//The Undead are Hungry.
+    H.set_screwyhud(SCREWYHUD_HEALTHY) //just in case of hallucinations
+    H.adjustOxyLoss(-3) //Helps prevent zombie softlocks
+    H.adjustBruteLoss(-0.5) //The undead will only regenerate if not burnt.
+    if(H.getBruteLoss() > 0 && H.getFireLoss() <= 50)
+        H.adjustBruteLoss(-0.5, forced = TRUE)
+        H.adjustFireLoss(-0.15, forced = TRUE)
+    else if (H.getToxLoss() <= 90) //Kinda hard to poison the undead. Still plausible
+        H.adjustToxLoss(-0.3, forced = TRUE)
+
 /datum/quirk/cum_plus
 	name = "Extra-Productive Genitals"
 	desc = "Your genitals produce and hold more than normal."
@@ -139,13 +177,14 @@
 	gain_text = span_notice("You feel pressure in your groin.")
 	lose_text = span_notice("You feel a weight lifted from your groin.")
 	medical_record_text = "Patient exhibits increased production of sexual fluids."
+	var/increasedcum
 
 /datum/quirk/cum_plus/add()
 	var/mob/living/carbon/M = quirk_holder
 	if(M.getorganslot("testicles"))
 		var/obj/item/organ/genital/testicles/T = M.getorganslot("testicles")
-		T.fluid_mult = 1.5 //Base is 1
-		T.fluid_max_volume = 5
+		T.fluid_mult += 0.5 //Base is 1
+		T.fluid_max_volume *= 1.75 //Fixes this.
 
 /datum/quirk/cum_plus/remove()
 	var/mob/living/carbon/M = quirk_holder
@@ -153,16 +192,17 @@
 		return
 	if(quirk_holder.getorganslot("testicles"))
 		var/obj/item/organ/genital/testicles/T = M.getorganslot("testicles")
-		T.fluid_mult = 1 //Base is 1
-		T.fluid_max_volume = 3 //Base is 3
+		T.fluid_mult -= 0.5 //Base is 1
+		T.fluid_max_volume *= 0.25 //Base is 50
 
 /datum/quirk/cum_plus/on_process()
 	var/mob/living/carbon/M = quirk_holder //If you get balls later, then this will still proc
 	if(M.getorganslot("testicles"))
 		var/obj/item/organ/genital/testicles/T = M.getorganslot("testicles")
-		if(T.fluid_max_volume <= 5 || T.fluid_mult <= 0.2) //INVALID EXPRESSION?
+		if(!increasedcum)
 			T.fluid_mult = 1.5 //Base is 0.133
-			T.fluid_max_volume = 5
+			T.fluid_max_volume *= 1.75
+			increasedcum = TRUE
 
 //You are a CIA agent.
 /datum/quirk/cosglow

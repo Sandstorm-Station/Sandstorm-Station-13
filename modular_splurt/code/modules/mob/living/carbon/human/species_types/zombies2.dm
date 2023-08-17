@@ -415,3 +415,17 @@
 	icon_state = "pill5"
 	color = "#830000"
 	list_reagents = list(/datum/reagent/draughtofundeath = 1)
+
+//Contains all the proc disables. Remove this on proper merge & Config changes\\
+
+/datum/species/zombie/check_roundstart_eligible()
+	return FALSE
+
+/datum/species/mammal/undead/check_roundstart_eligible()
+	return FALSE
+
+/datum/species/insect/undead/check_roundstart_eligible()
+	return FALSE
+
+/datum/species/lizard/undead/check_roundstart_eligible()
+	return FALSE

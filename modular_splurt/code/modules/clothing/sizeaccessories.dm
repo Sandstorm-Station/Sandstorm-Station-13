@@ -11,6 +11,12 @@
 	transfer_prints = TRUE
 	strip_delay = 40
 	//These are already defined under the parent ring, but I wanna leave em here for reference purposes
+	var/setreduction = 100
+
+/obj/item/clothing/accessory/ring/syntech/attack_self(mob/living/user)
+	var/maxsize = get_size(user)
+	var/inputreduction = input(user, "How much do you change? Value may range between a 0% Reduction to 120% reduction.", "Select Normalizer Input", setreduction) as num|null //Allows you to adjust how far you normalize, and even grow a little!
+	setreduction = (inputreduction ? clamp(inputreduction, 80, maxsize) : setreduction) //More customisable! 80% minimum (somewhat small) all the way up to your normal size!
 
 //For glove slots
 /obj/item/clothing/accessory/ring/syntech/equipped(mob/living/user, slot)
@@ -21,7 +27,7 @@
 		to_chat(user, span_warning("\The [src] buzzes, being overwritten by another accessory."))
 		playsound(src, 'sound/machines/buzz-sigh.ogg', 50, 1)
 	else
-		user.AddComponent(/datum/component/size_normalized, wear=src)
+		user.AddComponent(/datum/component/size_normalized, wear=src,totalsize=setreduction)
 	. = ..()
 
 /obj/item/clothing/accessory/ring/syntech/dropped(mob/living/user, slot)
@@ -38,6 +44,12 @@
 	mob_overlay_icon = 'modular_splurt/icons/mob/clothing/hands.dmi'
 	icon_state = "wristband"
 	item_state = "syntechband"
+	var/setreduction = 100
+
+/obj/item/clothing/wrists/syntech/attack_self(mob/living/user)
+	var/maxsize = get_size(user)
+	var/inputreduction = input(user, "How much do you change? Value may range between a 0% Reduction to 120% reduction.", "Select Normalizer Input", setreduction) as num|null //Allows you to adjust how far you normalize, and even grow a little!
+	setreduction = (inputreduction ? clamp(inputreduction, 80, maxsize) : setreduction) //More customisable! 80% minimum (somewhat small) all the way up to your normal size!
 
 /obj/item/clothing/wrists/syntech/equipped(mob/user, slot)
 	if(slot != ITEM_SLOT_WRISTS)
@@ -47,7 +59,7 @@
 		to_chat(user, span_warning("\The [src] buzzes, being overwritten by another accessory."))
 		playsound(src, 'sound/machines/buzz-sigh.ogg', 50, 1)
 	else
-		user.AddComponent(/datum/component/size_normalized, wear=src)
+		user.AddComponent(/datum/component/size_normalized, wear=src,totalsize=setreduction)
 	. = ..()
 
 /obj/item/clothing/wrists/syntech/dropped(mob/living/user, slot)
@@ -65,6 +77,12 @@
 	mob_overlay_icon = 'modular_splurt/icons/mob/clothing/neck.dmi'
 	icon_state = "pendant"
 	item_state = "pendant"
+	var/setreduction = 100
+
+/obj/item/clothing/neck/syntech/attack_self(mob/living/user)
+	var/maxsize = get_size(user)
+	var/inputreduction = input(user, "How much do you change? Value may range between a 0% Reduction to 120% reduction.", "Select Normalizer Input", setreduction) as num|null //Allows you to adjust how far you normalize, and even grow a little!
+	setreduction = (inputreduction ? clamp(inputreduction, 80, maxsize) : setreduction) //More customisable! 80% minimum (somewhat small) all the way up to your normal size!
 
 //For neck items
 /obj/item/clothing/neck/syntech/equipped(mob/living/user, slot)
@@ -75,7 +93,7 @@
 		to_chat(user, span_warning("\The [src] buzzes, being overwritten by another accessory."))
 		playsound(src, 'sound/machines/buzz-sigh.ogg', 50, 1)
 	else
-		user.AddComponent(/datum/component/size_normalized, wear=src)
+		user.AddComponent(/datum/component/size_normalized, wear=src,totalsize=setreduction)
 	. = ..()
 
 /obj/item/clothing/neck/syntech/dropped(mob/living/user, slot)

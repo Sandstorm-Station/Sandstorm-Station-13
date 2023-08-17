@@ -1,6 +1,7 @@
 /datum/component/size_normalized
 	dupe_mode = COMPONENT_DUPE_UNIQUE
 	var/obj/item/clothing/attached_wear
+	var/totalsize
 	var/normal_resize = RESIZE_NORMAL
 	var/natural_size //The value of the wearer's body_size var in prefs. Unused for now.
 	var/recorded_size //the user's height prior to equipping
@@ -17,11 +18,11 @@
 	. = ..()
 	var/mob/living/wearer = parent
 	recorded_size = get_size(wearer)
-	if(recorded_size != normal_resize)
+	if(recorded_size != normal_resize || totalsize != normal_resize) //Allows the custom size to work. By default, it is always 100! So should function normally
 		playsound(wearer, 'sound/effects/magic.ogg', 50, 1)
 		wearer.flash_lighting_fx(3, 3, LIGHT_COLOR_PURPLE)
 		wearer.visible_message(span_warning("A flash of purple light engulfs \the [wearer], before [wearer.p_they()] jump[wearer.p_s()] to a more average size!"),span_notice("You feel warm for a moment, before everything scales to your size..."))
-		wearer.update_size(normal_resize)
+		wearer.update_size(totalsize)
 	RegisterSignal(wearer, COMSIG_MOB_RESIZED, .proc/normalize_size)
 
 //Denormalize the mob when the component is destroyed (if needed)
