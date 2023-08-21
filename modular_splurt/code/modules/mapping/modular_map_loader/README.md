@@ -129,4 +129,4 @@ Make sure modules placed adjacent or close to each other have no combination of 
 
 > My map still isn't working and I don't know what's wrong!
 
-Ping Thunder12345#9999 in the #coding-general channel of our discord if you need help with any problems.
+Ping @Maintainer in our coding channels if you need any help or find any problems
