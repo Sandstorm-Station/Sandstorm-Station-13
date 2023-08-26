@@ -220,6 +220,13 @@
 	return ..()
 
 /obj/item/mod/control/MouseDrop(atom/over_object)
+	if(!usr.incapacitated() && (over_object == usr))
+		for(var/obj/item/mod/module/storage/S in modules)
+			if(S.stored)
+				if(!isobserver(usr))
+					playsound(src, "rustle", 50, 1, -5)
+				SEND_SIGNAL(S.stored, COMSIG_TRY_STORAGE_SHOW, usr, TRUE)
+				return
 	if(src != wearer?.back || !istype(over_object, /atom/movable/screen/inventory/hand))
 		return ..()
 	for(var/obj/item/part in mod_parts)
@@ -237,20 +244,27 @@
 	if(seconds_electrified && cell?.charge)
 		if(shock(user))
 			return
-	if(open && loc == user)
-		if(!cell)
-			balloon_alert(user, "no cell!")
+	if(loc == user)
+		if(open)
+			if(!cell)
+				balloon_alert(user, "no cell!")
+				return
+			balloon_alert(user, "removing cell...")
+			if(!do_after(user, 1.5 SECONDS, target = src))
+				balloon_alert(user, "interrupted!")
+				return
+			balloon_alert(user, "cell removed")
+			playsound(src, 'sound/machines/click.ogg', 50, TRUE, SILENCED_SOUND_EXTRARANGE)
+			if(!user.put_in_hands(cell))
+				cell.forceMove(drop_location())
+			update_cell_alert()
 			return
-		balloon_alert(user, "removing cell...")
-		if(!do_after(user, 1.5 SECONDS, target = src))
-			balloon_alert(user, "interrupted!")
-			return
-		balloon_alert(user, "cell removed")
-		playsound(src, 'sound/machines/click.ogg', 50, TRUE, SILENCED_SOUND_EXTRARANGE)
-		if(!user.put_in_hands(cell))
-			cell.forceMove(drop_location())
-		update_cell_alert()
-		return
+		else if(current_equipped_slot == ITEM_SLOT_BACK)
+			for(var/obj/item/mod/module/storage/S in modules)
+				if(S.stored)
+					playsound(user, "rustle", 50, 1, -5)
+					SEND_SIGNAL(S.stored, COMSIG_TRY_STORAGE_SHOW, user, TRUE)
+					return
 	return ..()
 
 /obj/item/mod/control/AltClick(mob/user)
@@ -260,8 +274,8 @@
 	if(!open)
 		for(var/obj/item/mod/module/storage/S in modules)
 			if(S.stored)
-				playsound(user, "rustle", 50, 1, -5)
-				SEND_SIGNAL(S.stored, COMSIG_TRY_STORAGE_SHOW, wearer, TRUE)
+				playsound(src, "rustle", 50, 1, -5)
+				SEND_SIGNAL(S.stored, COMSIG_TRY_STORAGE_SHOW, user, TRUE)
 				return
 	. = ..()
 
@@ -347,6 +361,11 @@
 	else if(open && attacking_item.GetID())
 		update_access(user, attacking_item)
 		return TRUE
+	else if(user.a_intent == INTENT_HELP)
+		for(var/obj/item/mod/module/storage/S in modules)
+			if(S.stored)
+				SEND_SIGNAL(S.stored, COMSIG_PARENT_ATTACKBY, attacking_item, user)
+				return
 	return ..()
 
 /obj/item/mod/control/get_cell()
