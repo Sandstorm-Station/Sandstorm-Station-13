@@ -46,7 +46,7 @@
 	can_trigger = FALSE
 	addtimer(CALLBACK(src, .proc/trigger), trigger_delay)
 
-/obj/item/pressure_plate/proc/Trigger(trigger_flags)
+/obj/item/pressure_plate/proc/trigger()
 	can_trigger = TRUE
 	if(istype(sigdev))
 		sigdev.signal()
