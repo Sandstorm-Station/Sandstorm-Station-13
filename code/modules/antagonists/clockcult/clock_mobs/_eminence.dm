@@ -113,7 +113,7 @@
 	if(LAZYACCESS(modifiers, ALT_CLICK) && istype(A, /turf/closed/wall/clockwork))
 		superheat_wall(A)
 		return
-	if(modifiers["middle"] || LAZYACCESS(modifiers, CTRL_CLICK))
+	if(LAZYACCESS(modifiers, MIDDLE_CLICK) || LAZYACCESS(modifiers, CTRL_CLICK))
 		INVOKE_ASYNC(src, .proc/issue_command, A)
 		return
 	if(GLOB.ark_of_the_clockwork_justiciar == A)

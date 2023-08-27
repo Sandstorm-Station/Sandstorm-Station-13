@@ -17,13 +17,13 @@
 		return
 
 	var/list/modifiers = params2list(params)
-	if(LAZYACCESS(modifiers, SHIFT_CLICK) && modifiers["middle"])
+	if(LAZYACCESS(modifiers, SHIFT_CLICK) && LAZYACCESS(modifiers, MIDDLE_CLICK))
 		ShiftMiddleClickOn(A)
 		return
 	if(LAZYACCESS(modifiers, SHIFT_CLICK) && LAZYACCESS(modifiers, CTRL_CLICK))
 		CtrlShiftClickOn(A)
 		return
-	if(modifiers["middle"])
+	if(LAZYACCESS(modifiers, MIDDLE_CLICK))
 		MiddleClickOn(A)
 		return
 	if(LAZYACCESS(modifiers, SHIFT_CLICK))

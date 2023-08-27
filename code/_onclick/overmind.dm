@@ -3,7 +3,7 @@
 
 /mob/camera/blob/ClickOn(var/atom/A, var/params) //Expand blob
 	var/list/modifiers = params2list(params)
-	if(modifiers["middle"])
+	if(LAZYACCESS(modifiers, MIDDLE_CLICK))
 		MiddleClickOn(A)
 		return
 	if(LAZYACCESS(modifiers, SHIFT_CLICK))

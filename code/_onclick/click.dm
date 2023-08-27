@@ -53,22 +53,22 @@
 		return
 
 	var/list/modifiers = params2list(params)
-	if(LAZYACCESS(modifiers, SHIFT_CLICK) && modifiers["middle"])
+	if(LAZYACCESS(modifiers, SHIFT_CLICK) && LAZYACCESS(modifiers, MIDDLE_CLICK))
 		return ShiftMiddleClickOn(A, params)
 	if(LAZYACCESS(modifiers, SHIFT_CLICK) && LAZYACCESS(modifiers, CTRL_CLICK))
 		return CtrlShiftClickOn(A)
-	if(modifiers["middle"])
+	if(LAZYACCESS(modifiers, MIDDLE_CLICK))
 		return MiddleClickOn(A)
-	if(LAZYACCESS(modifiers, SHIFT_CLICK) && (client && client.show_popup_menus || modifiers["right"])) //CIT CHANGE - makes shift-click examine use right click instead of left click in combat mode
+	if(LAZYACCESS(modifiers, SHIFT_CLICK) && (client && client.show_popup_menus || LAZYACCESS(modifiers, RIGHT_CLICK))) //CIT CHANGE - makes shift-click examine use right click instead of left click in combat mode
 		return ShiftClickOn(A)
 	if(LAZYACCESS(modifiers, ALT_CLICK)) // alt and alt-gr (rightalt)
 		return AltClickOn(A)
-	if(LAZYACCESS(modifiers, CTRL_CLICK) && modifiers["right"]) //CIT CHANGE - right click ctrl for a new form of dropping items
+	if(LAZYACCESS(modifiers, CTRL_CLICK) && LAZYACCESS(modifiers, RIGHT_CLICK)) //CIT CHANGE - right click ctrl for a new form of dropping items
 		return CtrlRightClickOn(A, params) //CIT CHANGE
 	if(LAZYACCESS(modifiers, CTRL_CLICK))
 		return CtrlClickOn(A)
 
-	if(modifiers["right"]) //CIT CHANGE - allows right clicking to perform actions
+	if(LAZYACCESS(modifiers, RIGHT_CLICK)) //CIT CHANGE - allows right clicking to perform actions
 		return RightClickOn(A, params) //CIT CHANGE - ditto
 
 	if(incapacitated(ignore_restraints = 1))
