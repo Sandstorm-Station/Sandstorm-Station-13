@@ -42,7 +42,7 @@
 	desc = "Deploy/Conceal a part of the MODsuit."
 	button_icon_state = "deploy"
 
-/datum/action/item_action/mod/deploy/Trigger()
+/datum/action/item_action/mod/deploy/Trigger(trigger_flags)
 	if(!IsAvailable())
 		return FALSE
 	mod.choose_deploy(usr)
@@ -56,7 +56,7 @@
 	desc = "Activate/Deactivate the MODsuit."
 	button_icon_state = "activate"
 
-/datum/action/item_action/mod/activate/Trigger()
+/datum/action/item_action/mod/activate/Trigger(trigger_flags)
 	if(!IsAvailable())
 		return FALSE
 	mod.toggle_activate(usr)
@@ -70,7 +70,7 @@
 	desc = "Toggle a MODsuit module."
 	button_icon_state = "module"
 
-/datum/action/item_action/mod/module/Trigger()
+/datum/action/item_action/mod/module/Trigger(trigger_flags)
 	if(!IsAvailable())
 		return FALSE
 	mod.quick_module(usr)
@@ -84,7 +84,7 @@
 	desc = "Open the MODsuit's panel."
 	button_icon_state = "panel"
 
-/datum/action/item_action/mod/panel/Trigger()
+/datum/action/item_action/mod/panel/Trigger(trigger_flags)
 	if(!IsAvailable())
 		return FALSE
 	mod.ui_interact(usr)

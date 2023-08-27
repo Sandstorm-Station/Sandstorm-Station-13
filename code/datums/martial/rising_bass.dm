@@ -45,7 +45,7 @@
 	button_icon_state = ""
 	var/movestreak = ""
 
-/datum/action/risingbassmove/Trigger()
+/datum/action/risingbassmove/Trigger(trigger_flags)
 	if(owner.incapacitated())
 		to_chat(owner, "<span class='warning'>You can't use [name] while you're incapacitated.</span>")
 		return

@@ -212,13 +212,13 @@
 	brainholder.set_pin_data(IC_OUTPUT, 3, A)
 	var/list/modifiers = params2list(params)
 
-	if(modifiers["shift"])
+	if(LAZYACCESS(modifiers, SHIFT_CLICK))
 		brainholder.do_work(7)
 		return
-	if(modifiers["alt"])
+	if(LAZYACCESS(modifiers, ALT_CLICK))
 		brainholder.do_work(8)
 		return
-	if(modifiers["ctrl"])
+	if(LAZYACCESS(modifiers, CTRL_CLICK))
 		brainholder.do_work(9)
 		return
 
@@ -341,16 +341,16 @@
 	paiholder.set_pin_data(IC_OUTPUT, 3, A)
 	var/list/modifiers = params2list(params)
 
-	if(modifiers["shift"] && modifiers["ctrl"])
+	if(LAZYACCESS(modifiers, SHIFT_CLICK) && LAZYACCESS(modifiers, CTRL_CLICK))
 		paiholder.do_work(10)
 		return
-	if(modifiers["shift"])
+	if(LAZYACCESS(modifiers, SHIFT_CLICK))
 		paiholder.do_work(7)
 		return
-	if(modifiers["alt"])
+	if(LAZYACCESS(modifiers, ALT_CLICK))
 		paiholder.do_work(8)
 		return
-	if(modifiers["ctrl"])
+	if(LAZYACCESS(modifiers, CTRL_CLICK))
 		paiholder.do_work(9)
 		return
 

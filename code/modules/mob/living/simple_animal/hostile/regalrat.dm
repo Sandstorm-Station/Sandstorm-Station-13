@@ -88,7 +88,7 @@
 	button_icon_state = "coffer"
 	cooldown_time = 50
 
-/datum/action/cooldown/coffer/Trigger()
+/datum/action/cooldown/coffer/Trigger(trigger_flags)
 	. = ..()
 	if(!. || owner.stat != CONSCIOUS)
 		return
@@ -133,7 +133,7 @@
 	cooldown_time = 80
 	///Checks to see if there are any nearby mice. Does not count Rats.
 
-/datum/action/cooldown/riot/Trigger()
+/datum/action/cooldown/riot/Trigger(trigger_flags)
 	. = ..()
 	if(!. || owner.stat != CONSCIOUS)
 		return

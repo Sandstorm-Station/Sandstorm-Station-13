@@ -43,7 +43,7 @@
 	icon_state = "adamantine_cords"
 	decay_factor = 0
 
-/datum/action/item_action/organ_action/use/adamantine_vocal_cords/Trigger()
+/datum/action/item_action/organ_action/use/adamantine_vocal_cords/Trigger(trigger_flags)
 	if(!IsAvailable())
 		return
 	var/message = input(owner, "Resonate a message to all nearby golems.", "Resonate")
@@ -94,7 +94,7 @@
 			return FALSE
 	return TRUE
 
-/datum/action/item_action/organ_action/colossus/Trigger()
+/datum/action/item_action/organ_action/colossus/Trigger(trigger_flags)
 	. = ..()
 	if(!IsAvailable())
 		if(world.time < cords.next_command)
@@ -642,7 +642,7 @@
 /datum/action/item_action/organ_action/velvet/IsAvailable(silent = FALSE)
 	return TRUE
 
-/datum/action/item_action/organ_action/velvet/Trigger()
+/datum/action/item_action/organ_action/velvet/Trigger(trigger_flags)
 	. = ..()
 	var/command = input(owner, "Speak in a sultry tone", "Command")
 	if(QDELETED(src) || QDELETED(owner))

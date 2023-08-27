@@ -87,7 +87,7 @@
 	button_icon_state = "slam"
 	cooldown_time = 45 SECONDS
 
-/datum/action/cooldown/slam/Trigger()
+/datum/action/cooldown/slam/Trigger(trigger_flags)
 	. = ..()
 	if(!.)
 		return

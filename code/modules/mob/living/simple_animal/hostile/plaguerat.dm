@@ -167,7 +167,7 @@ GLOBAL_LIST_EMPTY(plague_rats)
 	button_icon_state = "coffer"
 	cooldown_time = 50
 
-/datum/action/cooldown/scavenge/Trigger()
+/datum/action/cooldown/scavenge/Trigger(trigger_flags)
 	. = ..()
 	if(!.)
 		return

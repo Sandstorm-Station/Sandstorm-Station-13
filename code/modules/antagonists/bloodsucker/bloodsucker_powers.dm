@@ -46,7 +46,7 @@
 // 	click.dm <--- Where we can take over mouse clicks
 //	spells.dm  /add_ranged_ability()  <--- How we take over the mouse click to use a power on a target.
 
-/datum/action/bloodsucker/Trigger()
+/datum/action/bloodsucker/Trigger(trigger_flags)
 	// Active? DEACTIVATE AND END!
 	if(active && CheckCanDeactivate(TRUE))
 		DeactivatePower()
@@ -212,7 +212,7 @@
 	bs_proc_holder.linked_power = src
 
 // Click power: Begin Aim
-/datum/action/bloodsucker/targeted/Trigger()
+/datum/action/bloodsucker/targeted/Trigger(trigger_flags)
 	if(active && CheckCanDeactivate(TRUE))
 		DeactivateRangedAbility()
 		DeactivatePower()

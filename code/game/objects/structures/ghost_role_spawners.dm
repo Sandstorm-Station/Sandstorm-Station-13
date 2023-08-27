@@ -751,7 +751,7 @@
 	name = "Toggle deadchat"
 	desc = "Turn off or on your ability to hear ghosts."
 
-/datum/action/toggle_dead_chat_mob/Trigger()
+/datum/action/toggle_dead_chat_mob/Trigger(trigger_flags)
 	if(!..())
 		return 0
 	var/mob/M = target
@@ -798,7 +798,7 @@
 	))
 
 
-/datum/action/disguise/Trigger()
+/datum/action/disguise/Trigger(trigger_flags)
 	var/mob/living/carbon/human/H = owner
 	if(!currently_disguised)
 		var/user_object_type = input(H, "Disguising as OBJECT or MOB?") as null|anything in list("OBJECT", "MOB")

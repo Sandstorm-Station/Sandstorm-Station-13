@@ -177,7 +177,7 @@ GLOBAL_LIST_EMPTY(antagonists)
 		if(ui_name)
 			to_chat(owner.current, span_big("You are \a [src]."))
 			to_chat(owner.current, span_boldnotice("For more info, read the panel. you can always come back to it using the button in the top left."))
-			info_button.Trigger()
+			info_button.Trigger(trigger_flags)
 	apply_innate_effects()
 	give_antag_moodies()
 	remove_blacklisted_quirks()
@@ -524,7 +524,7 @@ GLOBAL_LIST_EMPTY(antagonists)
 	src.antag_datum = antag_datum
 	name += " [antag_datum.name]"
 
-/datum/action/antag_info/Trigger()
+/datum/action/antag_info/Trigger(trigger_flags)
 	if(antag_datum)
 		antag_datum.ui_interact(owner)
 

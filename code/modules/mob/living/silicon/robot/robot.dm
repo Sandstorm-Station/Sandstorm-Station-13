@@ -1182,7 +1182,7 @@
 	button_icon_state = "ai_core"
 	required_mobility_flags = NONE
 
-/datum/action/innate/undeployment/Trigger()
+/datum/action/innate/undeployment/Trigger(trigger_flags)
 	if(!..())
 		return FALSE
 	var/mob/living/silicon/robot/R = owner
@@ -1197,7 +1197,7 @@
 	button_icon_state = "custom_holoform"
 	required_mobility_flags = NONE
 
-/datum/action/innate/custom_holoform/Trigger()
+/datum/action/innate/custom_holoform/Trigger(trigger_flags)
 	if(!..())
 		return FALSE
 	var/mob/living/silicon/S = owner

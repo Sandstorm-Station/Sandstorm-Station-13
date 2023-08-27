@@ -226,7 +226,7 @@
 	/// The family antagonist datum of the "owner" of this action.
 	var/datum/antagonist/gang/my_gang_datum
 
-/datum/action/cooldown/spawn_induction_package/Trigger()
+/datum/action/cooldown/spawn_induction_package/Trigger(trigger_flags)
 	if(!..())
 		return FALSE
 	if(!IsAvailable())

@@ -222,7 +222,7 @@
 	. = ..()
 	UnregisterSignal(M, COMSIG_MOB_POINTED)
 
-/datum/action/item_action/stickmen/Trigger()
+/datum/action/item_action/stickmen/Trigger(trigger_flags)
 	. = ..()
 	if(!.)
 		return

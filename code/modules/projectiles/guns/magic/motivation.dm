@@ -39,7 +39,7 @@
 	var/judgement_toggled = TRUE
 
 //lets the user know that you toggled them on/off
-/datum/action/judgement_cut/Trigger()
+/datum/action/judgement_cut/Trigger(trigger_flags)
 	judgement_toggled = !judgement_toggled
 	to_chat(owner, "<span class='notice'>You [judgement_toggled ? "enable" : "disable"] Judgement Cuts with Motivation.</span>")
 

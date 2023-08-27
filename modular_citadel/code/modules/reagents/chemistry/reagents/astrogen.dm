@@ -37,7 +37,7 @@ I'd like to point out from my calculations it'll take about 60-80 minutes to die
 	var/mob/living/carbon/origin
 	var/datum/mind/originalmind
 
-/datum/action/chem/astral/Trigger()
+/datum/action/chem/astral/Trigger(trigger_flags)
 	if(origin.mind && origin.mind != originalmind)
 		to_chat(originalmind.current, "<span class='warning'><b><i>There's a foreign presence in your body blocking your return!</b></i></span>")
 		return ..()

@@ -760,7 +760,7 @@
 		var/obj/item/gun/G = target
 		G.zoom(owner, owner.dir, FALSE)
 
-/datum/action/item_action/toggle_scope_zoom/Trigger()
+/datum/action/item_action/toggle_scope_zoom/Trigger(trigger_flags)
 	. = ..()
 	if(.)
 		var/obj/item/gun/G = target

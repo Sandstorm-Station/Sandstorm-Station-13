@@ -72,7 +72,7 @@
 	if(!boss.client && needs_target && !boss.target)
 		return FALSE
 
-/datum/action/boss/Trigger()
+/datum/action/boss/Trigger(trigger_flags)
 	. = ..()
 	if(!.)
 		return
@@ -83,7 +83,7 @@
 
 //Example:
 /*
-/datum/action/boss/selfgib/Trigger()
+/datum/action/boss/selfgib/Trigger(trigger_flags)
 	if(..())
 		boss.gib()
 */

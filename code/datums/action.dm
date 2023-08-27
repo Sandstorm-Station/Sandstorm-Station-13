@@ -89,7 +89,7 @@
 	button.locked = FALSE
 	button.id = null
 
-/datum/action/proc/Trigger()
+/datum/action/proc/Trigger(trigger_flags)
 	if(!IsAvailable())
 		return FALSE
 	if(SEND_SIGNAL(src, COMSIG_ACTION_TRIGGER, target) & COMPONENT_ACTION_BLOCK_TRIGGER)
@@ -177,7 +177,7 @@
 	name = "Ghostize"
 	desc = "Turn into a ghost and freely come back to your body."
 
-/datum/action/ghost/Trigger()
+/datum/action/ghost/Trigger(trigger_flags)
 	if(!..())
 		return 0
 	var/mob/M = target
@@ -208,7 +208,7 @@
 	UNSETEMPTY(I.actions)
 	return ..()
 
-/datum/action/item_action/Trigger()
+/datum/action/item_action/Trigger(trigger_flags)
 	if(!..())
 		return 0
 	if(target)
@@ -280,14 +280,14 @@
 /datum/action/item_action/toggle_welding_screen
 	name = "Toggle Welding Screen"
 
-/datum/action/item_action/toggle_welding_screen/Trigger()
+/datum/action/item_action/toggle_welding_screen/Trigger(trigger_flags)
 	var/obj/item/clothing/head/hardhat/weldhat/H = target
 	if(istype(H))
 		H.toggle_welding_screen(owner)
 
 /datum/action/item_action/toggle_welding_screen/plasmaman
 
-/datum/action/item_action/toggle_welding_screen/plasmaman/Trigger()
+/datum/action/item_action/toggle_welding_screen/plasmaman/Trigger(trigger_flags)
 	var/obj/item/clothing/head/helmet/space/plasmaman/H = target
 	if(istype(H))
 		H.toggle_welding_screen(owner)
@@ -296,7 +296,7 @@
 	name = "Toggle Headphones"
 	desc = "UNTZ UNTZ UNTZ"
 
-/datum/action/item_action/toggle_headphones/Trigger()
+/datum/action/item_action/toggle_headphones/Trigger(trigger_flags)
 	var/obj/item/clothing/ears/headphones/H = target
 	if(istype(H))
 		H.toggle(owner)
@@ -307,7 +307,7 @@
 	icon_icon = 'icons/mob/actions/actions_items.dmi'
 	button_icon_state = "vortex_ff_on"
 
-/datum/action/item_action/toggle_unfriendly_fire/Trigger()
+/datum/action/item_action/toggle_unfriendly_fire/Trigger(trigger_flags)
 	if(..())
 		UpdateButtonIcon()
 
@@ -400,7 +400,7 @@
 	if(istype(Target, /obj/item/picket_sign))
 		S = Target
 
-/datum/action/item_action/nano_picket_sign/Trigger()
+/datum/action/item_action/nano_picket_sign/Trigger(trigger_flags)
 	if(istype(S))
 		S.retext(owner)
 
@@ -456,7 +456,7 @@
 	button_icon_state = "scan_mode"
 	var/active = FALSE
 
-/datum/action/item_action/toggle_research_scanner/Trigger()
+/datum/action/item_action/toggle_research_scanner/Trigger(trigger_flags)
 	if(IsAvailable())
 		active = !active
 		if(active)
@@ -476,7 +476,7 @@
 	name = "Use Instrument"
 	desc = "Use the instrument specified"
 
-/datum/action/item_action/instrument/Trigger()
+/datum/action/item_action/instrument/Trigger(trigger_flags)
 	if(istype(target, /obj/item/instrument))
 		var/obj/item/instrument/I = target
 		I.interact(usr)
@@ -518,7 +518,7 @@
 	else
 		Remove(owner)
 
-/datum/action/item_action/cult_dagger/Trigger()
+/datum/action/item_action/cult_dagger/Trigger(trigger_flags)
 	for(var/obj/item/H in owner.held_items) //In case we were already holding another dagger
 		if(istype(H, /obj/item/melee/cultblade/dagger))
 			H.attack_self(owner)
@@ -543,7 +543,7 @@
 	var/boxtype = /obj/structure/closet/cardboard/agent
 
 //Handles open and closing the box
-/datum/action/item_action/agent_box/Trigger()
+/datum/action/item_action/agent_box/Trigger(trigger_flags)
 	. = ..()
 	if(!.)
 		return FALSE
@@ -568,7 +568,7 @@
 	icon_icon = 'icons/obj/implants.dmi'
 	button_icon_state = "hijackx"
 
-/datum/action/item_action/removeAPCs/Trigger()
+/datum/action/item_action/removeAPCs/Trigger(trigger_flags)
 	var/list/areas = list()
 	for (var/area/a in owner.siliconaccessareas)
 		areas[a.name] = a
@@ -590,7 +590,7 @@
 	icon_icon = 'icons/obj/implants.dmi'
 	button_icon_state = "hijacky"
 
-/datum/action/item_action/accessAPCs/Trigger()
+/datum/action/item_action/accessAPCs/Trigger(trigger_flags)
 	var/list/areas = list()
 	for (var/area/a in owner.siliconaccessareas)
 		areas[a.name] = a
@@ -609,7 +609,7 @@
 	icon_icon = 'icons/obj/implants.dmi'
 	button_icon_state = "hijackz"
 
-/datum/action/item_action/stealthmodetoggle/Trigger()
+/datum/action/item_action/stealthmodetoggle/Trigger(trigger_flags)
 	var/obj/item/implant/hijack/H = target
 	if (!istype(H))
 		return
@@ -650,7 +650,7 @@
 	S.action = null
 	return ..()
 
-/datum/action/spell_action/Trigger()
+/datum/action/spell_action/Trigger(trigger_flags)
 	if(!..())
 		return FALSE
 	if(target)
@@ -691,7 +691,7 @@
 	required_mobility_flags = NONE
 	var/active = 0
 
-/datum/action/innate/Trigger()
+/datum/action/innate/Trigger(trigger_flags)
 	if(!..())
 		return 0
 	if(!active)
@@ -766,7 +766,7 @@
 	button_icon_state = "language_menu"
 	check_flags = 0
 
-/datum/action/language_menu/Trigger()
+/datum/action/language_menu/Trigger(trigger_flags)
 	if(!..())
 		return FALSE
 	if(ismob(owner))
@@ -813,7 +813,7 @@
 /datum/action/small_sprite/megafauna/legion
 	small_icon_state = "mega_legion"
 
-/datum/action/small_sprite/Trigger()
+/datum/action/small_sprite/Trigger(trigger_flags)
 	..()
 	if(!small)
 		var/image/I = image(icon = small_icon, icon_state = small_icon_state, loc = owner)

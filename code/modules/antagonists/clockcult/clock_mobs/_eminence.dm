@@ -107,13 +107,13 @@
 
 /mob/camera/eminence/ClickOn(atom/A, params)
 	var/list/modifiers = params2list(params)
-	if(modifiers["shift"])
+	if(LAZYACCESS(modifiers, SHIFT_CLICK))
 		A.examine(src)
 		return
-	if(modifiers["alt"] && istype(A, /turf/closed/wall/clockwork))
+	if(LAZYACCESS(modifiers, ALT_CLICK) && istype(A, /turf/closed/wall/clockwork))
 		superheat_wall(A)
 		return
-	if(modifiers["middle"] || modifiers["ctrl"])
+	if(modifiers["middle"] || LAZYACCESS(modifiers, CTRL_CLICK))
 		INVOKE_ASYNC(src, .proc/issue_command, A)
 		return
 	if(GLOB.ark_of_the_clockwork_justiciar == A)

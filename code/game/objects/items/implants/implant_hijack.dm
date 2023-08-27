@@ -69,16 +69,16 @@
 		return
 	var/list/modifiers = params2list(params)
 	imp_in.face_atom(object)
-	if (modifiers["shift"] && modifiers["ctrl"])
+	if (LAZYACCESS(modifiers, SHIFT_CLICK) && LAZYACCESS(modifiers, CTRL_CLICK))
 		object.AICtrlShiftClick(imp_in)
 		return TRUE
-	if (modifiers["shift"])
+	if (LAZYACCESS(modifiers, SHIFT_CLICK))
 		object.AIShiftClick(imp_in)
 		return TRUE
-	if (modifiers["ctrl"])
+	if (LAZYACCESS(modifiers, CTRL_CLICK))
 		object.AICtrlClick(imp_in)
 		return TRUE
-	if (modifiers["alt"])
+	if (LAZYACCESS(modifiers, ALT_CLICK))
 		object.AIAltClick(imp_in)
 		return TRUE
 	if (user.get_active_held_item())

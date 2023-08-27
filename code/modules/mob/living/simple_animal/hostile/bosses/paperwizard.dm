@@ -42,7 +42,7 @@
 	var/maximum_stickmen = 6
 	var/stickmen_to_summon = 3
 
-/datum/action/boss/wizard_summon_minions/Trigger()
+/datum/action/boss/wizard_summon_minions/Trigger(trigger_flags)
 	. =..()
 	if(!.)
 		return
@@ -89,7 +89,7 @@
 	req_statuses = list(AI_ON)
 	say_when_triggered = ""
 
-/datum/action/boss/wizard_mimic/Trigger()
+/datum/action/boss/wizard_mimic/Trigger(trigger_flags)
 	. = ..()
 	if(!.)
 		return

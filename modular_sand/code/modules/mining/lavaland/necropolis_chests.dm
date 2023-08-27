@@ -1020,7 +1020,7 @@
 	desc = "Bind the necklaces ember to yourself, so that next time you activate it, it will revive or fully heal you whether dead or knocked out. (Beware of being gibbed)"
 
 //What happens when the user clicks on datum
-/datum/action/item_action/hands_free/necklace_of_the_forsaken/Trigger()
+/datum/action/item_action/hands_free/necklace_of_the_forsaken/Trigger(trigger_flags)
 	var/obj/item/clothing/neck/necklace/necklace_of_the_forsaken/MM = target
 	if(MM.numUses <= 0)//skip if it has already been used up
 		return
