@@ -5,7 +5,7 @@
 	set category = "IC"
 	set src in view(usr.client)
 
-	if(!iscarbon(usr) && !issilicon(usr))
+	if(!iscarbon(usr))
 		return
 	if(!usr.mind) //Mindless boys, honestly just don't, it's better this way
 		return
