@@ -2,3 +2,4 @@
 	name = "wall"
 	icon = 'modular_splurt/icons/obj/objects.dmi'
 	icon_state = "invisible"
+	invisibility = INVISIBILITY_ABSTRACT
