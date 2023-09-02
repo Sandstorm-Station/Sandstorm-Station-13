@@ -45,3 +45,4 @@
 #define TRAIT_COSGLOW			"cosmetic_glow"
 #define TRAIT_BODY_MORPHER		"body_morpher"
 #define TRAIT_HALLOWED			"hallowed"
+#define TRAIT_MESSY				"messy"
