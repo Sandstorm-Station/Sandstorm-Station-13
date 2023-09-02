@@ -55,18 +55,14 @@
 
 	// determine size stage
 	var/length_multiplier = 0
-	to_chat(world, "splash!")
 	if(HAS_TRAIT(owner,TRAIT_MESSY))
 		length_multiplier = 2
-		to_chat(world, "trait got!")
 	else
 		switch(round(length * get_size(owner)))
 			if(16 to 32)
 				length_multiplier = 1
-				to_chat(world, "size1")
 			if(32 to INFINITY)
 				length_multiplier = 2
-				to_chat(world, "size2")
 
 	// get affected objects
 	var/turf/target_turf = owner.loc

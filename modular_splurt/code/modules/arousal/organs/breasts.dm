@@ -60,7 +60,6 @@
 	var/width_multiplier = 0
 	if(HAS_TRAIT(owner,TRAIT_MESSY))
 		width_multiplier = 2
-		to_chat(world, "trait got!")
 	else
 		switch(round(size * get_size(owner)))
 			if(10 to 20)
