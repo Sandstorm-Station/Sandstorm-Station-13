@@ -60,6 +60,8 @@
 			length_multiplier = 1
 		if(32 to INFINITY)
 			length_multiplier = 2
+		if(HAS_TRAIT(owner,TRAIT_MESSY))
+		width_multiplier = 3
 		else
 			return
 

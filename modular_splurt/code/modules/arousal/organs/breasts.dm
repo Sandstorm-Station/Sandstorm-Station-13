@@ -63,6 +63,10 @@
 			width_multiplier = 1
 		if(20 to INFINITY)
 			width_multiplier = 2
+	if(HAS_TRAIT(owner,TRAIT_MESSY))
+		width_multiplier = 3
+
+
 
 	// get affected objects
 	var/turf/target_turf = owner.loc

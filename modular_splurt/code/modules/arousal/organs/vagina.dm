@@ -15,7 +15,7 @@
 	if(!. || !linked_organ)
 		return
 
-	if(get_size(owner) < 1.25)
+	if(get_size(owner) < 1.25 && HAS_TRAIT(owner,TRAIT_MESSY))
 		return
 
 	// get target objects
