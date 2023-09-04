@@ -66,8 +66,8 @@
 				width_multiplier = 1
 			if(20 to INFINITY)
 				width_multiplier = 2
-
-
+			else
+				return
 
 	// get affected objects
 	var/turf/target_turf = owner.loc
