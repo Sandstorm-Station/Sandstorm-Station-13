@@ -63,6 +63,8 @@
 				length_multiplier = 1
 			if(32 to INFINITY)
 				length_multiplier = 2
+			else
+				return
 
 	// get affected objects
 	var/turf/target_turf = owner.loc
