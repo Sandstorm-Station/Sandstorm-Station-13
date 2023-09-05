@@ -956,6 +956,14 @@
 	emote_sound = 'modular_splurt/sound/voice/rizz.ogg'
 	emote_cooldown = 1.43 SECONDS
 
+/datum/emote/living/audio/buff
+	key = "buff"
+	key_third_person = "buffs"
+	message = "shows off their muscles."
+	message_param = "shows off their muscles to %t."
+	emote_sound = 'modular_splurt/sound/voice/buff.ogg'
+	emote_cooldown = 4.77 SECONDS
+
 /datum/emote/living/audio/merowr
 	key = "merowr"
 	key_third_person = "merowrs"
