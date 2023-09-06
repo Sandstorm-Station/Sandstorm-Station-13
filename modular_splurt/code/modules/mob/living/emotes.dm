@@ -963,6 +963,7 @@
 	message_param = "shows off their muscles to %t."
 	emote_sound = 'modular_splurt/sound/voice/buff.ogg'
 	emote_cooldown = 4.77 SECONDS
+	emote_pitch_variance = FALSE
 
 /datum/emote/living/audio/merowr
 	key = "merowr"
