@@ -512,17 +512,6 @@
 	..()
 	gas_max -= GAS_PLASMA
 
-/obj/item/organ/lungs/vox
-	name = "plasma filter"
-	desc = "A spongy rib-shaped mass for filtering plasma from the air."
-	icon_state = "lungs-plasma"
-	breathing_class = BREATH_PLASMA
-	maxHealth = INFINITY//I don't understand how plamamen work, so I'm not going to try t give them special lungs atm
-
-/obj/item/organ/lungs/vox/populate_gas_info()
-	..()
-	gas_max -= GAS_PLASMA
-
 /obj/item/organ/lungs/cybernetic
 	name = "basic cybernetic lungs"
 	desc = "A basic cybernetic version of the lungs found in traditional humanoid entities."
