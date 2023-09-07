@@ -956,6 +956,15 @@
 	emote_sound = 'modular_splurt/sound/voice/rizz.ogg'
 	emote_cooldown = 1.43 SECONDS
 
+/datum/emote/living/audio/buff
+	key = "buff"
+	key_third_person = "buffs"
+	message = "shows off their muscles."
+	message_param = "shows off their muscles to %t."
+	emote_sound = 'modular_splurt/sound/voice/buff.ogg'
+	emote_cooldown = 4.77 SECONDS
+	emote_pitch_variance = FALSE
+
 /datum/emote/living/audio/merowr
 	key = "merowr"
 	key_third_person = "merowrs"
@@ -1063,5 +1072,5 @@
 	emote_pitch_variance = FALSE
 
 /datum/emote/living/audio/scream2/run_emote(mob/user, params)
-	emote_sound = pick('modular_splurt/sound/voice/cscream1.ogg', 'modular_splurt/sound/voice/cscream2.ogg', 'modular_splurt/sound/voice/cscream3.ogg', 'modular_splurt/sound/voice/cscream4.ogg', 'modular_splurt/sound/voice/cscream5.ogg', 'modular_splurt/sound/voice/cscream6.ogg', 'modular_splurt/sound/voice/cscream7.ogg', 'modular_splurt/sound/voice/cscream8.ogg', 'modular_splurt/sound/voice/cscream9.ogg', 'modular_splurt/sound/voice/cscream10.ogg')
+	emote_sound = pick('modular_splurt/sound/voice/cscream1.ogg', 'modular_splurt/sound/voice/cscream2.ogg', 'modular_splurt/sound/voice/cscream3.ogg', 'modular_splurt/sound/voice/cscream4.ogg', 'modular_splurt/sound/voice/cscream5.ogg', 'modular_splurt/sound/voice/cscream6.ogg', 'modular_splurt/sound/voice/cscream7.ogg', 'modular_splurt/sound/voice/cscream8.ogg', 'modular_splurt/sound/voice/cscream9.ogg', 'modular_splurt/sound/voice/cscream10.ogg', 'modular_splurt/sound/voice/cscream11.ogg')
 	. = ..()
