@@ -592,3 +592,9 @@
 	if(!cell)
 		return
 	cell.give(amount)
+
+/obj/item/mod/control/update_atom_colour()
+	. = ..()
+	for(var/obj/item/clothing/armor_piece in mod_parts)
+		armor_piece.atom_colours = atom_colours.Copy()
+		armor_piece.update_atom_colour()

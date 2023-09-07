@@ -30,7 +30,8 @@
 	var/list/allowed_types = list(
 			/obj/item/clothing,
 			/obj/item/storage/backpack,
-			/obj/item/storage/belt
+			/obj/item/storage/belt,
+			/obj/item/mod/control
 			)
 	/// Temporary messages
 	var/temp
