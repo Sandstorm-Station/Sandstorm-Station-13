@@ -565,6 +565,18 @@
 					)
 	crate_name = "yellow trencher outfit crate"
 
+/datum/supply_pack/medical/plaguedoc
+	name = "Plague Doctor Supply Crate"
+	desc = "Survive any Pandemic in style with this authentic Plague Doctor outfit, bag, and cane!"
+	cost = 3500
+	contains = list(/obj/item/clothing/mask/gas/plaguedoctor/red,
+	/obj/item/clothing/suit/bio_suit/plaguedoctorsuit,
+	/obj/item/clothing/head/plaguedoctorhat,
+	/obj/item/storage/backpack/docbag/plague,
+	/obj/item/cane/plague
+	)
+	crate_name = "plague doctor crate"
+
 /datum/supply_pack/randomised/costumes/tesh_cloaks_vr
 	name = "Teshari cloaks"
 
