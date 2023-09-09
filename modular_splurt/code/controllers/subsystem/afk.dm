@@ -7,7 +7,7 @@
 SUBSYSTEM_DEF(auto_cryo)
 	name = "Automated Cryogenics"
 	flags = SS_BACKGROUND
-	wait = 5 MINUTES
+	wait = 2 MINUTES
 
 /datum/controller/subsystem/auto_cryo/Initialize()
 	// Check config before running
