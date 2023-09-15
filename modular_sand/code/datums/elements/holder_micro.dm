@@ -80,7 +80,7 @@
 					span_userdanger("[user] starts picking you up!"))
 	source.balloon_alert(user, "picking up")
 	var/time_required = COMPARE_SIZES(source, user) * 40 //Scale how fast the pickup will be depending on size difference
-	if(!do_after(user, time_required, target = source))
+	if(!do_after(user, time_required, source))
 		return FALSE
 
 	if(user.get_active_held_item())
@@ -115,7 +115,7 @@
 		return
 	var/mob/living/L = loc
 	visible_message(span_warning("[src] begins to squirm in [L]'s grasp!"))
-	if(!do_after(user, 12 SECONDS, target = src, required_mobility_flags = MOBILITY_RESIST))
+	if(!do_after(user, 12 SECONDS, src, IGNORE_TARGET_LOC_CHANGE|IGNORE_HELD_ITEM))
 		if(!user || user.stat != CONSCIOUS || user.loc != src)
 			return
 		to_chat(loc, span_warning("[src] stops resisting."))
