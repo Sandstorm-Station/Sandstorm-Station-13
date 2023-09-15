@@ -114,8 +114,8 @@
 		return
 	var/mob/living/L = get_atom_on_turf(src, /mob/living)
 	visible_message(span_warning("[src] begins to squirm in [L]'s grasp!"))
-	var/time_required = COMPARE_SIZES(L, user) * 4 SECONDS //Scale how fast the pickup will be depending on size difference
-	if(!do_after(user, 12 SECONDS, L, IGNORE_TARGET_LOC_CHANGE|IGNORE_HELD_ITEM))
+	var/time_required = COMPARE_SIZES(L, user) / 4 SECONDS //Scale how fast the resisting will be depending on size difference
+	if(!do_after(user, time_required, L, IGNORE_TARGET_LOC_CHANGE|IGNORE_HELD_ITEM))
 		if(!user || user.stat != CONSCIOUS || user.loc != src)
 			return
 		to_chat(loc, span_warning("[src] stops resisting."))
