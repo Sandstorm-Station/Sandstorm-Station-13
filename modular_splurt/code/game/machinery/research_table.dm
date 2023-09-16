@@ -40,7 +40,7 @@
 	if(user.a_intent == INTENT_HELP)
 		if(panel_open && !slaver_mode) // Do not let slaver version switch to science mode, they should only generate credits.
 			user.visible_message(span_notice("[user] begins changing the generation type on \the [src]."), span_notice("You begin changing the generation type on \the [src]."))
-			if(do_after(user, 5 SECONDS, TRUE, src))
+			if(do_after(user, 5 SECONDS, src))
 				point_type = point_type == POINT_TYPE_SCIENCE ? POINT_TYPE_CARGO : POINT_TYPE_SCIENCE
 				var/generation_message = null
 				switch(point_type)
@@ -54,7 +54,7 @@
 			return STOP_ATTACK_PROC_CHAIN
 		else
 			user.visible_message(span_notice("[user] begins reconfiguring \the [src]."), span_notice("You begin reconfiguring \the [src]."))
-			if(do_after(user, 5 SECONDS, TRUE, src))
+			if(do_after(user, 5 SECONDS, src))
 				configured = !configured
 				user.visible_message(span_notice("[user] finished reconfiguring \the [src]."), span_notice("The research table is now [configured ? "configured" : "not configured"]."))
 			else
@@ -102,7 +102,7 @@
 
 /obj/machinery/research_table/proc/handle_unbuckling(mob/living/buckled_mob, user)
 	if(buckled_mob == user)
-		if(do_after(user, self_unbuckle_time, FALSE, src))
+		if(do_after(user, self_unbuckle_time, src))
 			return TRUE
 		else
 			return FALSE
