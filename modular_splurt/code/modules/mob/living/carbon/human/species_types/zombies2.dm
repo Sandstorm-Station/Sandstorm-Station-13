@@ -415,7 +415,3 @@
 	icon_state = "pill5"
 	color = "#830000"
 	list_reagents = list(/datum/reagent/draughtofundeath = 1)
-
-
-/datum/species/lizard/undead/check_roundstart_eligible()
-	return FALSE
