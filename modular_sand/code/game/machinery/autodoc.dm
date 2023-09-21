@@ -42,8 +42,10 @@
 			. += span_notice("[src] is currently inserting [stored_organ] into [occupant].")
 		else if(stored_organ)
 			. += span_notice("[src] is prepared to insert [stored_organ].")
-	if((obj_flags & EMAGGED) && panel_open)
-		. += span_warning("[src]'s surgery protocols have been corrupted!")
+		if((obj_flags & EMAGGED) && panel_open)
+			. += span_warning("[src]'s surgery protocols have been corrupted!")
+	else
+		. += span_warning("You need to get closer to see more information!")
 
 /obj/machinery/autodoc/close_machine(mob/user)
 	..()
