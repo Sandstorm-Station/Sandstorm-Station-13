@@ -1,0 +1,11 @@
+author: SpaceCheetah
+delete-after: true
+changes:
+  - rscdel: automated hydroponics tray remove_unfasten_wrench override (duplicate
+      behavior, extra messages)
+  - bugfix: prevent unanchored hydroponics trays from accepting plumbing reagents
+  - bugfix: removed a use-after-delete caused by calling create_reagents twice in
+      automated hydroponics trays, which broke plumbing
+  - tweak: allow hydroponics trays to accept plumbing reagents from all directions
+  - rscdel: remove tray rotations (sprite didn't update anyway, and was only necessary
+      for plumbing)
