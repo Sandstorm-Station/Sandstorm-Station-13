@@ -72,9 +72,14 @@
   - refactor: Refactored some autodoc code.
   - balance: You need to get close to see any information about the machine.
 2023-09-23:
+  BongaTheProto:
+  - tweak: makes the autocryo subsystem delete ghosts that have been disconnected
+      for a certain amount of time
   LeChatGuid2:
   - tweak: Hunting rifle can now hold a bayonet
   - imageadd: added new diagonal bayonet overlay
+  SandPoot:
+  - code_imp: Adds signals for sex to be used by coders in the future.
   SpaceCheetah:
   - rscdel: automated hydroponics tray remove_unfasten_wrench override (duplicate
       behavior, extra messages)
@@ -91,5 +96,3 @@
   Zattarra:
   - rscadd: Added stepping preference toggle, which allows or disables macro - micro
       stomping interactions.
-  SandPoot:
-  - code_imp: Adds signals for sex to be used by coders in the future.
