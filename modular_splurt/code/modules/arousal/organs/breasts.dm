@@ -58,11 +58,16 @@
 
 	// determine size stage
 	var/width_multiplier = 0
-	switch(round(size * get_size(owner)))
-		if(10 to 20)
-			width_multiplier = 1
-		if(20 to INFINITY)
-			width_multiplier = 2
+	if(HAS_TRAIT(owner,TRAIT_MESSY))
+		width_multiplier = 2
+	else
+		switch(round(size * get_size(owner)))
+			if(10 to 20)
+				width_multiplier = 1
+			if(20 to INFINITY)
+				width_multiplier = 2
+			else
+				return
 
 	// get affected objects
 	var/turf/target_turf = owner.loc
@@ -74,6 +79,10 @@
 		for(var/object in target_turf.contents)
 			if(isturf(object))
 				continue
+			if(ishuman(object))
+				var/mob/living/carbon/human/H = object
+				if(!(H.client?.prefs.cit_toggles & CUM_ONTO))
+					continue
 			LAZYADD(cumsplashed_items, object)
 		if(cumsplashed_items.len)
 			break

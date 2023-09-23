@@ -15,9 +15,8 @@
 	if(!. || !linked_organ)
 		return
 
-	if(get_size(owner) < 1.25)
+	if(get_size(owner) < 1.25 && !HAS_TRAIT(owner,TRAIT_MESSY))
 		return
-
 	// get target objects
 	var/turf/target_turf = get_turf(owner)
 	if(!istype(target_turf))
@@ -27,4 +26,8 @@
 	for(var/atom/object in target_turf.contents)
 		if(!istype(object) || isturf(object) || object == owner)
 			continue
+		if(ishuman(object))
+			var/mob/living/carbon/human/H = object
+			if(!(H.client?.prefs.cit_toggles & CUM_ONTO))
+				continue
 		object.add_cum_overlay(initial(linked_organ.fluid_id.color), get_size(owner) >= 1.5)

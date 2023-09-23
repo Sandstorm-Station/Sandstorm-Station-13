@@ -76,6 +76,7 @@ type ContentPrefsInfo = {
   chastity_pref: boolean,
   stimulation_pref: boolean,
   edging_pref: boolean,
+  cum_onto_pref: boolean,
 }
 
 export const MobInteraction = (props, context) => {
@@ -510,6 +511,7 @@ const ContentPreferencesTab = (props, context) => {
     chastity_pref,
     stimulation_pref,
     edging_pref,
+    cum_onto_pref,
   } = data;
   return (
     <Table>
@@ -798,6 +800,18 @@ const ContentPreferencesTab = (props, context) => {
           selected={edging_pref}
           onClick={() => act('pref', {
             pref: 'edging_pref',
+          })}
+        />
+      </Table.Row>
+      <Table.Row>
+        <Button
+          fluid
+          mb={0.3}
+          content="Receive Cum Covering"
+          icon={cum_onto_pref ? "toggle-on" : "toggle-off"}
+          selected={cum_onto_pref}
+          onClick={() => act('pref', {
+            pref: 'cum_onto_pref',
           })}
         />
       </Table.Row>
