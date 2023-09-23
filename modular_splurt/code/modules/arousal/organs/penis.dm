@@ -2,13 +2,13 @@
 	. = ..()
 	if(!.)
 		return
-	RegisterSignal(owner, COMSIG_MOB_CAME, .proc/splash_cum)
+	RegisterSignal(owner, COMSIG_MOB_POST_CAME, .proc/splash_cum)
 
 /obj/item/organ/genital/penis/Remove(special)
 	. = ..()
 	var/mob/living/carbon/human/C = .
 	if(!QDELETED(C))
-		UnregisterSignal(C, COMSIG_MOB_CAME)
+		UnregisterSignal(C, COMSIG_MOB_POST_CAME)
 
 /obj/item/organ/genital/penis/get_features(mob/living/carbon/human/H)
 	. = ..()

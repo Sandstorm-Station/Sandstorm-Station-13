@@ -5,13 +5,13 @@
 	. = ..()
 	if(!.)
 		return
-	RegisterSignal(owner, COMSIG_MOB_CAME, .proc/splash_cum)
+	RegisterSignal(owner, COMSIG_MOB_POST_CAME, .proc/splash_cum)
 
 /obj/item/organ/genital/breasts/Remove(special)
 	. = ..()
 	var/mob/living/carbon/human/C = .
 	if(!QDELETED(C))
-		UnregisterSignal(C, COMSIG_MOB_CAME)
+		UnregisterSignal(C, COMSIG_MOB_POST_CAME)
 
 /obj/item/organ/genital/breasts/get_features(mob/living/carbon/human/H)
 	var/datum/dna/D = H.dna

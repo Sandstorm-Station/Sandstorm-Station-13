@@ -2,13 +2,13 @@
 	. = ..()
 	if(!.)
 		return
-	RegisterSignal(owner, COMSIG_MOB_CAME, .proc/splash_cum)
+	RegisterSignal(owner, COMSIG_MOB_POST_CAME, .proc/splash_cum)
 
 /obj/item/organ/genital/vagina/Remove(special)
 	. = ..()
 	var/mob/living/carbon/human/C = .
 	if(!QDELETED(C))
-		UnregisterSignal(C, COMSIG_MOB_CAME)
+		UnregisterSignal(C, COMSIG_MOB_POST_CAME)
 
 /obj/item/organ/genital/vagina/splash_cum(mob/living/carbon/human/orgasming, target_orifice, atom/partner, cumin, genital)
 	. = ..()
