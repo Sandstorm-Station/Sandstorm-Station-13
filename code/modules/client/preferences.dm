@@ -351,6 +351,22 @@ GLOBAL_LIST_EMPTY(preferences_datums)
 			dat += "<HR>"
 
 			dat += "<center>"
+			var/client_file = user.client.Import()
+			var/savefile_name
+			if(client_file)
+				var/savefile/cache_savefile = new(user.client.Import())
+				if(!cache_savefile["deleted"] || savefile_needs_update(cache_savefile) != -2)
+					cache_savefile["real_name"] >> savefile_name
+			dat += "Local storage: [savefile_name ? savefile_name : "Empty"]"
+			dat += "<br />"
+			dat += "<a href='?_src_=prefs;preference=export_slot'>Export current slot</a>"
+			dat += "<a [savefile_name ? "href='?_src_=prefs;preference=import_slot' style='white-space:normal;'" : "class='linkOff'"]>Import into current slot</a>"
+			dat += "<a href='?_src_=prefs;preference=delete_local_copy' style='white-space:normal;background:#eb2e2e;'>Delete locally saved character</a>"
+			dat += "</center>"
+
+			dat += "<HR>"
+
+			dat += "<center>"
 			dat += "<a href='?_src_=prefs;preference=character_tab;tab=[GENERAL_CHAR_TAB]' [character_settings_tab == GENERAL_CHAR_TAB ? "class='linkOn'" : ""]>General</a>"
 			dat += "<a href='?_src_=prefs;preference=character_tab;tab=[APPEARANCE_CHAR_TAB]' [character_settings_tab == APPEARANCE_CHAR_TAB ? "class='linkOn'" : ""]>Appearance</a>"
 			dat += "<a href='?_src_=prefs;preference=character_tab;tab=[MARKINGS_CHAR_TAB]' [character_settings_tab == MARKINGS_CHAR_TAB ? "class='linkOn'" : ""]>Markings</a>"
@@ -3354,6 +3370,31 @@ GLOBAL_LIST_EMPTY(preferences_datums)
 				if("preferences_tab")
 					if(href_list["tab"])
 						preferences_tab = text2num(href_list["tab"])
+
+				if("export_slot")
+					var/savefile/S = save_character(export = TRUE)
+					if(istype(S, /savefile))
+						user.client.Export(S)
+						tgui_alert_async(user, "Successfully saved character slot")
+					else
+						tgui_alert_async(user, "Failed saving character slot")
+						return
+
+				if("import_slot")
+					var/savefile/S = new(user.client.Import())
+					if(istype(S, /savefile))
+						if(load_character(provided = S) == TRUE)
+							tgui_alert_async(user, "Successfully loaded character slot.")
+						else
+							tgui_alert_async(user, "Failed loading character slot")
+							return
+					else
+						tgui_alert_async(user, "Failed loading character slot")
+						return
+
+				if("delete_local_copy")
+					user.client.clear_export()
+					tgui_alert_async(user, "Local save data erased.")
 
 	if(href_list["preference"] == "gear")
 		if(href_list["clear_loadout"])
