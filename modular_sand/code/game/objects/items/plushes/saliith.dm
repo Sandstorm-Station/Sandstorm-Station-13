@@ -6,7 +6,6 @@
 	desc = "He looks like he needs a friend."
 	icon = 'modular_sand/icons/obj/plushes.dmi'
 	icon_state = "saliith"
-	item_state = "saliith"
 	gender = MALE
 	can_random_spawn = FALSE
 	resistance_flags = INDESTRUCTIBLE | LAVA_PROOF | FIRE_PROOF | ACID_PROOF // Protected by a higher power
