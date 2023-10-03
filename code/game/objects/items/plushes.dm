@@ -2,14 +2,10 @@
 	name = "plush"
 	desc = "This is the special coder plush, do not steal."
 	icon = 'icons/obj/plushes.dmi'
-	lefthand_file = 'icons/mob/inhands/misc/plushes-lefthand.dmi'
-	righthand_file = 'icons/mob/inhands/misc/plushes-right.dmi'
 	icon_state = "debug"
-	item_state = "plushie_sus"
 	attack_verb = list("thumped", "whomped", "bumped")
 	w_class = WEIGHT_CLASS_SMALL
 	resistance_flags = FLAMMABLE
-	obj_flags = UNIQUE_RENAME
 	var/list/squeak_override //Weighted list; If you want your plush to have different squeak sounds use this
 	var/stuffed = TRUE //If the plushie has stuffing in it
 	var/unstuffable = FALSE //for plushies that can't be stuffed
@@ -183,9 +179,11 @@
 /obj/item/toy/plush/attack_self(mob/user)
 	. = ..()
 	if(stuffed || grenade)
-		user.visible_message("<span class='notice'>[user] pets [src]. D'awww.</span>", \
-			"<span class='notice'>You pet [src]. D'awww.</span>")
-		new /obj/effect/temp_visual/heart(user.loc)
+		to_chat(user, "<span class='notice'>You pet [src]. D'awww.</span>")
+		visible_message("<span class='notice'>[loc == user ? user : "Someone"] pets [src]. D'awww.</span>", ignored_mobs = user)
+		if(isturf(user.loc) && COOLDOWN_FINISHED(src, petting_heart_cooldown))
+			new /obj/effect/temp_visual/heart(user.loc)
+			COOLDOWN_START(src, petting_heart_cooldown, 5)
 		if(grenade && !grenade.active)
 			if(istype(grenade, /obj/item/grenade/chem_grenade))
 				var/obj/item/grenade/chem_grenade/G = grenade
@@ -199,7 +197,9 @@
 		SEND_SIGNAL(user, COMSIG_ADD_MOOD_EVENT,"plush_nostuffing", /datum/mood_event/plush_nostuffing)
 
 /obj/item/toy/plush/attackby(obj/item/I, mob/living/user, params)
-	if(I.get_sharpness() && !(istype(I, /obj/item/pen)))
+	if(istype(I, /obj/item/pen))
+		return ..()
+	if(I.get_sharpness())
 		if(!grenade)
 			if(unstuffable)
 				to_chat(user, "<span class='notice'>Nothing to do here.</span>")
@@ -490,7 +490,7 @@ GLOBAL_LIST_INIT(valid_plushie_paths, valid_plushie_paths())
 	name = "space carp plushie"
 	desc = "An adorable stuffed toy that resembles a space carp."
 	icon_state = "carpplush"
-	item_state = "carpplush"
+	// item_state = "carp_plushie"
 	attack_verb = list("bitten", "eaten", "fin slapped")
 	squeak_override = list('sound/weapons/bite.ogg'=1)
 
@@ -498,7 +498,6 @@ GLOBAL_LIST_INIT(valid_plushie_paths, valid_plushie_paths())
 	name = "bubblegum plushie"
 	desc = "The friendly red demon that gives good miners gifts."
 	icon_state = "bubbleplush"
-	item_state = "bubbleplush"
 	attack_verb = list("rends")
 	squeak_override = list('sound/magic/demon_attack1.ogg'=1)
 
@@ -506,7 +505,6 @@ GLOBAL_LIST_INIT(valid_plushie_paths, valid_plushie_paths())
 	name = "ratvar plushie"
 	desc = "An adorable plushie of the clockwork justiciar himself with new and improved spring arm action."
 	icon_state = "plushvar"
-	item_state = "plushvar"
 	var/obj/item/toy/plush/narplush/clash_target
 	gender = MALE	//he's a boy, right?
 
@@ -593,7 +591,6 @@ GLOBAL_LIST_INIT(valid_plushie_paths, valid_plushie_paths())
 	name = "\improper Nar'Sie plushie"
 	desc = "A small stuffed doll of the elder goddess Nar'Sie. Who thought this was a good children's toy?"
 	icon_state = "narplush"
-	item_state = "narplush"
 	var/clashing
 	var/is_invoker = TRUE
 	gender = FEMALE	//it's canon if the toy is
@@ -635,20 +632,6 @@ GLOBAL_LIST_INIT(valid_plushie_paths, valid_plushie_paths())
 	item_state = "plushie_nuke"
 	attack_verb = list("shot", "nuked", "detonated")
 	squeak_override = list('sound/effects/hit_punch.ogg' = 1)
-
-/obj/item/toy/plush/nukeplushie/susplushie
-	name = "Suspect Plushie"
-	desc = "A stuffed toy that resembles a red space station employee. The tag claims red employee to be purely fictitious."
-	icon_state = "plushie_sus"
-	item_state = "plushie_sus"
-	attack_verb = list("shot", "eat", "killed")
-
-/obj/item/toy/plush/nukeplushie/minisusplushie
-	name = "Mini Suspect Plushie"
-	desc = "A stuffed toy that resembles a red space station mini employee. The tag claims red employee to be purely fictitious."
-	icon_state = "plushie_minisus"
-	item_state = "plushie_minisus"
-	attack_verb = list("mini-shot", "mini-eat", "mini-killed")
 
 /obj/item/toy/plush/slimeplushie
 	name = "slime plushie"
@@ -879,104 +862,11 @@ GLOBAL_LIST_INIT(valid_plushie_paths, valid_plushie_paths())
 	name = "Hairball"
 	desc = "A bundle of undigested fibers and scales. Yuck."
 	icon_state = "Hairball"
-	item_state = "plushie_sus"
 	unstuffable = TRUE
 	young = TRUE // Your own mouth-baby.
 	squeak_override = list('sound/misc/splort.ogg'=1)
 	attack_verb = list("sploshed", "splorted", "slushed")
 	can_random_spawn = FALSE
-
-/obj/item/toy/plush/shark
-	name = "shark plushie"
-	desc = "A soft shark plushie for soft men. Mostly known as 'Blahaj', but some call it 'The IKEA shark'."
-	icon_state = "blahaj"
-	item_state = "blahaj"
-	attack_verb = list("gnawed", "gnashed", "chewed")
-	squeak_override = list('sound/voice/rawr.ogg' = 1)
-
-/obj/item/toy/plush/rouny
-	name = "rouny plushie"
-	desc = "A plushie depicting a xenomorph runner, made to commemorate the centenary of the Battle of LV-426. Much cuddlier than the real thing."
-	icon_state = "rouny"
-	item_state = "plushie_sus"
-	attack_verb = list("slashed", "bit", "charged")
-
-/obj/item/toy/plush/ada
-	name = "Ada Plushie"
-	desc = "Plush toy of a gray cat with bright, emerald-like eyes. The tongue is attached carelessly. Wings are not included."
-	icon_state = "ada"
-	item_state = "plushie_sus"
-	squeak_override = list('modular_citadel/sound/voice/nya.ogg' = 1)
-
-/obj/item/toy/plush/mammal/fox/emma
-	name = "Emma Plushie"
-	desc = "An adorable stuffed toy resembling a vulp."
-	icon_state = "emma"
-	item_state = "emma"
-
-/obj/item/toy/plush/mammal/fox/emma/shiro
-	name = "shiro plushie"
-	icon_state = "shiro"
-	item_state = "shiro"
-
-/obj/item/toy/plush/mammal/fox/emma/raita
-	name = "raita plushie"
-	icon_state = "raita"
-	item_state = "raita"
-
-/obj/item/toy/plush/mammal/fox/emma/aiko
-	name = "Aiko Plushie"
-	icon_state = "aiko"
-	item_state = "aiko"
-
-/obj/item/toy/plush/nukeplushie/who
-	name = "security officer plushie"
-	desc = "A stuffed toy that resembles a Nanotrasen operative. He smells like burnt cotton."
-	icon_state = "who"
-	item_state = "who"
-	squeak_override = list('sound/voice/plush_1.ogg' = 9, 'sound/voice/plush_2.ogg' = 1)
-
-/obj/item/toy/plush/deer/qm
-	name = "supply chief plushie"
-	desc = "A stuffed toy that resembles a Cargonia Chief. Looks like a fallen economy."
-	icon_state = "qm"
-	item_state = "qm"
-
-/obj/item/toy/plush/sergal/judas
-	name = "yellow shark plushie"
-	desc = "An adorable stuffed plushie that resembles a yellow security shark."
-	icon_state = "judas"
-	item_state = "judas"
-	squeak_override = list('sound/voice/voice_alphys.ogg' = 9)
-
-// Little cute Ninja plushie
-/obj/item/toy/plush/ninja
-	name = "space ninja plushie"
-	desc = "A protagonist of one of the most popular cartoon series on this side of galaxy. \"運命の忍者矢\""
-	icon_state = "ninja_plushie_green"
-	item_state = "ninja_plushie_green"
-	attack_verb = list("shot", "nuked", "detonated")
-	var/cooldown = 0
-
-/obj/item/toy/plush/ninja/attack_self(mob/user as mob)
-	. = ..()
-	if(cooldown < world.time)
-		cooldown = (world.time + 30) //3 second cooldown
-		var/plushie_color = pick("green","blue","red")
-		switch (plushie_color)
-			if("green")
-				icon_state = "ninja_plushie_green"
-				item_state = "ninja_plushie_green"
-				user.visible_message(span_notice("The [name] says \"I am not afraid of the darkness! I am the darkness!\""))
-			if("blue")
-				icon_state = "ninja_plushie_blue"
-				item_state = "ninja_plushie_blue"
-				user.visible_message(span_notice("The [name] says \"Your simple light won't stop me!\""))
-			if("red")
-				icon_state = "ninja_plushie_red"
-				item_state = "ninja_plushie_red"
-				user.visible_message(span_notice("The [name] says \"You can run, but you can't hide!\""))
-	squeak_override = list('sound/effects/hit_punch.ogg' = 1)
 
 /obj/item/toy/plush/plushling
 	name = "peculiar plushie"

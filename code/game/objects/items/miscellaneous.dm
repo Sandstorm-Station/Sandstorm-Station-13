@@ -242,7 +242,8 @@
 /obj/item/choice_beacon/box/plushie/generate_display_names()
 	var/list/plushie_list = list()
 	//plushie set 1: just subtypes of /obj/item/toy/plush
-	var/list/plushies_set_one = subtypesof(/obj/item/toy/plush) - list(/obj/item/toy/plush/narplush, /obj/item/toy/plush/awakenedplushie, /obj/item/toy/plush/random_snowflake, /obj/item/toy/plush/plushling, /obj/item/toy/plush/random, /obj/item/toy/plush/goatplushie, /obj/item/toy/plush/goatplushie/angry, /obj/item/toy/plush/goatplushie/angry/realgoat, /obj/item/toy/plush/realgoat, /obj/item/toy/plush/goatplushie/angry/kinggoat, /obj/item/toy/plush/goatplushie/angry/kinggoat/ascendedkinggoat, /obj/item/toy/plush/goatplushie/angry/guardgoat, /obj/item/toy/plush/goatplushie/angry/guardgoat/masterguardgoat) //don't allow these special ones (you can still get narplush/hugbox)
+	var/list/plushies_set_one = subtypesof(/obj/item/toy/plush)
+	plushies_set_one = remove_bad_plushies(plushies_set_one)
 	for(var/V in plushies_set_one)
 		var/atom/A = V
 		plushie_list[initial(A.name)] = A
@@ -251,6 +252,10 @@
 	for(var/V in plushies_set_two)
 		plushie_list[V] = V //easiest way to do this which works with how selecting options works, despite being snowflakey to have the key equal the value
 	return plushie_list
+
+/obj/item/choice_beacon/box/plushie/proc/remove_bad_plushies(list/plushies)
+	plushies -= list(/obj/item/toy/plush/narplush, /obj/item/toy/plush/awakenedplushie, /obj/item/toy/plush/random_snowflake, /obj/item/toy/plush/plushling, /obj/item/toy/plush/random) //don't allow these special ones (you can still get narplush/hugbox)
+	return plushies
 
 /obj/item/skub
 	desc = "It's skub."
