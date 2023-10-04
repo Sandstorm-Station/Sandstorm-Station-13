@@ -182,6 +182,10 @@
 	. = ..()
 	if(stuffed || grenade)
 		to_chat(user, "<span class='notice'>You pet [src]. D'awww.</span>")
+		visible_message("<span class='notice'>[loc == user ? user : "Someone"] pets [src]. D'awww.</span>", ignored_mobs = user)
+		if(isturf(user.loc) && COOLDOWN_FINISHED(src, petting_heart_cooldown))
+			new /obj/effect/temp_visual/heart(user.loc)
+			COOLDOWN_START(src, petting_heart_cooldown, 5)
 		if(grenade && !grenade.active)
 			if(istype(grenade, /obj/item/grenade/chem_grenade))
 				var/obj/item/grenade/chem_grenade/G = grenade
@@ -195,6 +199,8 @@
 		SEND_SIGNAL(user, COMSIG_ADD_MOOD_EVENT,"plush_nostuffing", /datum/mood_event/plush_nostuffing)
 
 /obj/item/toy/plush/attackby(obj/item/I, mob/living/user, params)
+	if(istype(I, /obj/item/pen))
+		return ..()
 	if(I.get_sharpness())
 		if(!grenade)
 			if(unstuffable)
