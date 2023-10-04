@@ -741,7 +741,7 @@
 					did_anything = FALSE
 			if(did_anything)
 				LAZYADD(obscure_to, src)
-	else //todo: better self cum messages
+	if(!message) //todo: better self cum messages
 		message = "cums all over themselves!"
 	if(gender == MALE)
 		playlewdinteractionsound(loc, pick('modular_sand/sound/interactions/final_m1.ogg',
