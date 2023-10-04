@@ -14,8 +14,6 @@
 	return returned_plushies
 
 /obj/item/toy/plush
-	lefthand_file = 'modular_sand/icons/mob/inhands/misc/plushes_lefthand.dmi'
-	righthand_file = 'modular_sand/icons/mob/inhands/misc/plushes_righthand.dmi'
 	obj_flags = UNIQUE_RENAME
 	COOLDOWN_DECLARE(petting_heart_cooldown)
 
@@ -25,6 +23,8 @@
 	desc = "That's one weird looking plushie."
 	icon = 'modular_sand/icons/obj/plushes.dmi'
 	icon_state = "cube"
+	lefthand_file = 'modular_sand/icons/mob/inhands/misc/plushes_lefthand.dmi'
+	righthand_file = 'modular_sand/icons/mob/inhands/misc/plushes_righthand.dmi'
 	squeak_override = list('sound/effects/footstep/rustystep1.ogg' = 1)
 
 /obj/item/toy/plush/nukeplushie/susplushie
@@ -32,6 +32,8 @@
 	desc = "A stuffed toy that resembles a red space station employee. The tag claims red employee to be purely fictitious."
 	icon = 'modular_sand/icons/obj/plushes.dmi'
 	icon_state = "plushie_sus"
+	lefthand_file = 'modular_sand/icons/mob/inhands/misc/plushes_lefthand.dmi'
+	righthand_file = 'modular_sand/icons/mob/inhands/misc/plushes_righthand.dmi'
 	attack_verb = list("shot", "eat", "killed")
 
 /obj/item/toy/plush/nukeplushie/minisusplushie
@@ -39,6 +41,8 @@
 	desc = "A stuffed toy that resembles a red space station mini employee. The tag claims red employee to be purely fictitious."
 	icon = 'modular_sand/icons/obj/plushes.dmi'
 	icon_state = "plushie_minisus"
+	lefthand_file = 'modular_sand/icons/mob/inhands/misc/plushes_lefthand.dmi'
+	righthand_file = 'modular_sand/icons/mob/inhands/misc/plushes_righthand.dmi'
 	attack_verb = list("mini-shot", "mini-eat", "mini-killed")
 
 /obj/item/toy/plush/shark
@@ -46,6 +50,8 @@
 	desc = "A soft shark plushie for soft men. Mostly known as 'Blahaj', but some call it 'The IKEA shark'."
 	icon = 'modular_sand/icons/obj/plushes.dmi'
 	icon_state = "blahaj"
+	lefthand_file = 'modular_sand/icons/mob/inhands/misc/plushes_lefthand.dmi'
+	righthand_file = 'modular_sand/icons/mob/inhands/misc/plushes_righthand.dmi'
 	attack_verb = list("gnawed", "gnashed", "chewed")
 	squeak_override = list('modular_sand/sound/voice/rawr.ogg' = 1)
 
@@ -54,6 +60,8 @@
 	desc = "A plushie depicting a xenomorph runner, made to commemorate the centenary of the Battle of LV-426. Much cuddlier than the real thing."
 	icon = 'modular_sand/icons/obj/plushes.dmi'
 	icon_state = "rouny"
+	lefthand_file = 'modular_sand/icons/mob/inhands/misc/plushes_lefthand.dmi'
+	righthand_file = 'modular_sand/icons/mob/inhands/misc/plushes_righthand.dmi'
 	attack_verb = list("slashed", "bit", "charged")
 
 /obj/item/toy/plush/ada
@@ -61,11 +69,15 @@
 	desc = "Plush toy of a gray cat with bright, emerald-like eyes. The tongue is attached carelessly. Wings are not included."
 	icon = 'modular_sand/icons/obj/plushes.dmi'
 	icon_state = "ada"
+	lefthand_file = 'modular_sand/icons/mob/inhands/misc/plushes_lefthand.dmi'
+	righthand_file = 'modular_sand/icons/mob/inhands/misc/plushes_righthand.dmi'
 	squeak_override = list('modular_citadel/sound/voice/nya.ogg' = 1)
 
 /obj/item/toy/plush/mammal/fox/vulp
 	desc = "An adorable stuffed toy resembling a vulp."
 	icon = 'modular_sand/icons/obj/plushes.dmi'
+	lefthand_file = 'modular_sand/icons/mob/inhands/misc/plushes_lefthand.dmi'
+	righthand_file = 'modular_sand/icons/mob/inhands/misc/plushes_righthand.dmi'
 
 /obj/item/toy/plush/mammal/fox/vulp/emma
 	name = "Emma Plushie"
@@ -88,6 +100,8 @@
 	desc = "A stuffed toy that resembles a Nanotrasen operative. He smells like burnt cotton."
 	icon = 'modular_sand/icons/obj/plushes.dmi'
 	icon_state = "who"
+	lefthand_file = 'modular_sand/icons/mob/inhands/misc/plushes_lefthand.dmi'
+	righthand_file = 'modular_sand/icons/mob/inhands/misc/plushes_righthand.dmi'
 	squeak_override = list('modular_sand/sound/voice/plush_1.ogg' = 9, 'modular_sand/sound/voice/plush_2.ogg' = 1)
 
 /obj/item/toy/plush/deer/qm
@@ -95,12 +109,16 @@
 	desc = "A stuffed toy that resembles a Cargonia Chief. Looks like a fallen economy."
 	icon = 'modular_sand/icons/obj/plushes.dmi'
 	icon_state = "qm"
+	lefthand_file = 'modular_sand/icons/mob/inhands/misc/plushes_lefthand.dmi'
+	righthand_file = 'modular_sand/icons/mob/inhands/misc/plushes_righthand.dmi'
 
 /obj/item/toy/plush/sergal/judas
 	name = "yellow shark plushie"
 	desc = "An adorable stuffed plushie that resembles a yellow security shark."
 	icon = 'modular_sand/icons/obj/plushes.dmi'
 	icon_state = "judas"
+	lefthand_file = 'modular_sand/icons/mob/inhands/misc/plushes_lefthand.dmi'
+	righthand_file = 'modular_sand/icons/mob/inhands/misc/plushes_righthand.dmi'
 	squeak_override = list('modular_sand/sound/voice/voice_alphys.ogg' = 9)
 
 #define GREEN_NINJA_SKIN "green space ninja plushie"
@@ -113,6 +131,8 @@
 	desc = "A protagonist of one of the most popular cartoon series on this side of galaxy. \"運命の忍者矢\""
 	icon = 'modular_sand/icons/obj/plushes.dmi'
 	icon_state = "ninja_plushie_green"
+	lefthand_file = 'modular_sand/icons/mob/inhands/misc/plushes_lefthand.dmi'
+	righthand_file = 'modular_sand/icons/mob/inhands/misc/plushes_righthand.dmi'
 	attack_verb = list("shot", "nuked", "detonated")
 	squeak_override = list('sound/effects/hit_punch.ogg' = 1)
 	always_reskinnable = TRUE
