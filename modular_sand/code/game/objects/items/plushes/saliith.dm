@@ -12,6 +12,7 @@
 	can_random_spawn = FALSE
 	resistance_flags = INDESTRUCTIBLE | LAVA_PROOF | FIRE_PROOF | ACID_PROOF // Protected by a higher power
 	unstuffable = TRUE // Prevent grenades
+	obj_flags = null // One and only
 
 /obj/item/toy/plush/lizardplushie/saliith/Initialize(mapload, set_snowflake_id)
 	// Check if plush already exists
