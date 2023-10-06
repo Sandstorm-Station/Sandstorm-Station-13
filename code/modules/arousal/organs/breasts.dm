@@ -123,6 +123,8 @@
 		size = breast_values[size]
 	prev_size = cached_size
 	toggle_visibility(D.features["breasts_visibility"], FALSE)
+	if(D.features["breasts_accessible"])
+		toggle_accessibility(TRUE)
 
 #undef BREASTS_ICON_MIN_SIZE
 #undef BREASTS_ICON_MAX_SIZE

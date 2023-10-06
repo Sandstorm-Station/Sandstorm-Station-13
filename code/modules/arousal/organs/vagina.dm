@@ -74,3 +74,5 @@
 		color = "[D.features["vag_color"]]"
 	shape = "[D.features["vag_shape"]]"
 	toggle_visibility(D.features["vag_visibility"], FALSE)
+	if(D.features["vag_accessible"])
+		toggle_accessibility(TRUE)

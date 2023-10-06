@@ -218,6 +218,14 @@
 		"cock_visibility"	= GEN_VISIBLE_NO_UNDIES,
 		"vag_visibility"	= GEN_VISIBLE_NO_UNDIES,
 		"butt_visibility"	= GEN_VISIBLE_NO_UNDIES,
+
+		"breasts_accessible" = FALSE,
+		"cock_accessible" = FALSE,
+		"balls_accessible" = FALSE,
+		"vag_accessible" = FALSE,
+		"butt_accessible" = FALSE,
+		"anus_accessible" = FALSE,
+
 		"ipc_screen"		= snowflake_ipc_antenna_list ? pick(snowflake_ipc_antenna_list) : "None",
 		"ipc_antenna"		= "None",
 		"flavor_text"		= "",
