@@ -97,3 +97,5 @@
 	shape = D.features["cock_shape"]
 	prev_length = length
 	toggle_visibility(D.features["cock_visibility"], FALSE)
+	if(D.features["cock_accessible"])
+		toggle_accessibility(TRUE)

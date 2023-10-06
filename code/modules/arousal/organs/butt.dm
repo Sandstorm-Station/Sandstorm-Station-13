@@ -84,3 +84,5 @@
 	size = D.features["butt_size"]
 	prev_size = size
 	toggle_visibility(D.features["butt_visibility"], FALSE)
+	if(D.features["butt_accessible"])
+		toggle_accessibility(TRUE)
