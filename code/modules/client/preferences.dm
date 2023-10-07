@@ -379,11 +379,14 @@ GLOBAL_LIST_EMPTY(preferences_datums)
 			dat += "<center>"
 			dat += "<table width='100%'>"
 			dat += "<tr>"
-			dat += "<td width=35%>"
-			dat += "Preview:"
+			dat += "<td width=35% style=\"line-height:10px\">"
+			dat += "<center><b>Preview:</b></center><br>"
+			dat += "<center>"
 			dat += "<a href='?_src_=prefs;preference=character_preview;tab=[PREVIEW_PREF_JOB]' [preview_pref == PREVIEW_PREF_JOB ? "class='linkOn'" : ""]>[PREVIEW_PREF_JOB]</a>"
 			dat += "<a href='?_src_=prefs;preference=character_preview;tab=[PREVIEW_PREF_LOADOUT]' [preview_pref == PREVIEW_PREF_LOADOUT ? "class='linkOn'" : ""]>[PREVIEW_PREF_LOADOUT]</a>"
 			dat += "<a href='?_src_=prefs;preference=character_preview;tab=[PREVIEW_PREF_NAKED]' [preview_pref == PREVIEW_PREF_NAKED ? "class='linkOn'" : ""]>[PREVIEW_PREF_NAKED]</a>"
+			dat += "<a href='?_src_=prefs;preference=character_preview;tab=[PREVIEW_PREF_NAKED_AROUSED]' [preview_pref == PREVIEW_PREF_NAKED_AROUSED ? "class='linkOn'" : ""]>[PREVIEW_PREF_NAKED_AROUSED]</a>"
+			dat += "</center>"
 			dat += "</td>"
 			if(character_settings_tab == LOADOUT_CHAR_TAB) //if loadout
 				//calculate your gear points from the chosen item
@@ -399,16 +402,19 @@ GLOBAL_LIST_EMPTY(preferences_datums)
 				else
 					chosen_gear = list()
 
-				dat += "<td width=65%>"
-				dat += "<b><font color='[gear_points == 0 ? "#E62100" : "#CCDDFF"]'>[gear_points]</font> loadout point[gear_points == 1 ? "" : "s"] remaining <a href='?_src_=prefs;preference=gear;clear_loadout=1'>Clear Loadout</a></b>"
+				dat += "<td width=65% style=\"line-height:10px\">"
+				dat += "<center><b><font color='[gear_points == 0 ? "#E62100" : "#CCDDFF"]'>[gear_points]</font> loadout point[gear_points == 1 ? "" : "s"] remaining</center><br>"
+				dat += "<center><a href='?_src_=prefs;preference=gear;clear_loadout=1'>Clear Loadout</a></b></center>"
 				dat += "</td>"
 			else
-				dat += "<td width=35%>"
-				dat += "<b>Mismatched parts:</b> <a href='?_src_=prefs;preference=mismatched_markings;task=input'>[(show_mismatched_markings) ? "Enabled" : "Disabled"]</a>"
+				dat += "<td width=35% style=\"line-height:10px\">"
+				dat += "<center><b>Mismatched parts:</b></center><br>"
+				dat += "<center><a href='?_src_=prefs;preference=mismatched_markings;task=input'>[(show_mismatched_markings) ? "Enabled" : "Disabled"]</a></center>"
 				dat += "</td>"
 
-				dat += "<td width=30%>"
-				dat += "<b> Advanced colors:</b> <a href='?_src_=prefs;preference=color_scheme;task=input'>[(features["color_scheme"] == ADVANCED_CHARACTER_COLORING) ? "Enabled" : "Disabled"]</a>"
+				dat += "<td width=30% style=\"line-height:10px\">"
+				dat += "<center><b>Advanced colors:</b></center><br>"
+				dat += "<center><a href='?_src_=prefs;preference=color_scheme;task=input'>[(features["color_scheme"] == ADVANCED_CHARACTER_COLORING) ? "Enabled" : "Disabled"]</a></center>"
 				dat += "</td>"
 
 			dat += "</tr>"
