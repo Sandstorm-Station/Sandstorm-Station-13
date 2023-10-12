@@ -1103,6 +1103,20 @@ SAVEFILE UPDATING/VERSIONING - 'Simplified', or rather, more coder-friendly ~Car
 
 	all_quirks = SANITIZE_LIST(all_quirks)
 
+	language = SANITIZE_LIST(language)
+
+	if(length(language))
+		var/list/all_possible_languages = length(SSlanguage.languages_by_name) ? SSlanguage.languages_by_name : typesof(/datum/language)
+		var/list/lang_names
+		for(var/datum/language/language_sanitization as anything in all_possible_languages)
+			if(!initial(language_sanitization.key))
+				continue
+			LAZYADD(lang_names, initial(language_sanitization.name))
+		for(var/language_entry in language)
+			if(LAZYFIND(lang_names, language_entry))
+				continue
+			language -= language_entry
+
 	vore_flags = sanitize_integer(vore_flags, 0, MAX_VORE_FLAG, 0)
 	vore_taste = copytext(vore_taste, 1, MAX_TASTE_LEN)
 	vore_smell = copytext(vore_smell, 1, MAX_TASTE_LEN)
