@@ -1106,16 +1106,29 @@ SAVEFILE UPDATING/VERSIONING - 'Simplified', or rather, more coder-friendly ~Car
 	language = SANITIZE_LIST(language)
 
 	if(length(language))
-		var/list/all_possible_languages = length(SSlanguage.languages_by_name) ? SSlanguage.languages_by_name : typesof(/datum/language)
+		// This line, prevents wiping their languages because the subsystem was not ready
+		var/list/all_possible_languages = length(SSlanguage.initialized) ? SSlanguage.languages_by_name : typesof(/datum/language)
 		var/list/lang_names
-		for(var/datum/language/language_sanitization as anything in all_possible_languages)
-			if(!initial(language_sanitization.key))
-				continue
-			LAZYADD(lang_names, initial(language_sanitization.name))
+		// Subsystem ready, let's do it with our cached stuff
+		if(length(SSlanguage.languages_by_name))
+			for(var/language_sanitization in all_possible_languages)
+				var/datum/language/language_sanitization_datum = all_possible_languages[language_sanitization]
+				// Don't check for existance, at this point, if it doesn't exist, we need a runtime.
+				if(!language_sanitization_datum.key)
+					continue
+				LAZYADD(lang_names, language_sanitization_datum.name)
+		// Subsystem NOT ready, let's do it the annoying way.
+		else
+			for(var/datum/language/language_sanitization as anything in all_possible_languages)
+				if(!initial(language_sanitization.key))
+					continue
+				LAZYADD(lang_names, initial(language_sanitization.name))
 		for(var/language_entry in language)
+			// Valid language, just ignore it
 			if(LAZYFIND(lang_names, language_entry))
 				continue
-			language -= language_entry
+			// Remove the entry if the language does not exist in the codebase
+			LAZYREMOVE(language, language_entry)
 
 	vore_flags = sanitize_integer(vore_flags, 0, MAX_VORE_FLAG, 0)
 	vore_taste = copytext(vore_taste, 1, MAX_TASTE_LEN)
