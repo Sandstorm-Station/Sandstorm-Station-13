@@ -280,6 +280,8 @@ GLOBAL_LIST_EMPTY(preferences_datums)
 	var/list/tcg_cards = list()
 	var/list/tcg_decks = list()
 
+	var/silicon_lawset
+
 /datum/preferences/New(client/C)
 	parent = C
 
@@ -463,6 +465,20 @@ GLOBAL_LIST_EMPTY(preferences_datums)
 					dat += "<b>Custom job preferences:</b><BR>"
 					dat += "<a href='?_src_=prefs;preference=ai_core_icon;task=input'><b>Preferred AI Core Display:</b> [preferred_ai_core_display]</a><br>"
 					dat += "<a href='?_src_=prefs;preference=sec_dept;task=input'><b>Preferred Security Department:</b> [prefered_security_department]</a><BR>"
+
+					dat += "<h2>Silicon preferences</h2>"
+					if(!CONFIG_GET(flag/allow_silicon_choosing_laws))
+						dat += "<i>The server has disabled choosing your own laws, you can still choose and save, but it won't do anything in-game.</i><br>"
+					dat += "<b>Starting lawset:</b> <a href='?_src_=prefs;task=input;preference=silicon_lawset'>[silicon_lawset ? silicon_lawset : "Server default"]</a><br>"
+
+					if(silicon_lawset)
+						var/list/config_laws = CONFIG_GET(keyed_list/choosable_laws)
+						var/datum/ai_laws/law_datum = GLOB.all_law_datums[config_laws[silicon_lawset]]
+						if(law_datum)
+							dat += "<i>[law_datum]</i><br>"
+							dat += english_list(law_datum.get_law_list(TRUE),
+								"I was unable to find the laws for your lawset, sorry  <font style='translate: rotate(90deg)'>:(</font>",
+								"<br>", "<br>")
 
 					dat += "</td></tr></table>"
 				//Character background
@@ -2737,6 +2753,12 @@ GLOBAL_LIST_EMPTY(preferences_datums)
 					var/pickedPDASkin = input(user, "Choose your PDA reskin.", "Character Preference", pda_skin) as null|anything in GLOB.pda_reskins
 					if(pickedPDASkin)
 						pda_skin = pickedPDASkin
+				if("silicon_lawset")
+					var/picked_lawset = input(user, "Choose your preferred lawset", "Silicon preference", silicon_lawset) as null|anything in list("None") + CONFIG_GET(keyed_list/choosable_laws)
+					if(picked_lawset)
+						if(picked_lawset == "None")
+							picked_lawset = null
+						silicon_lawset = picked_lawset
 				if ("max_chat_length")
 					var/desiredlength = input(user, "Choose the max character length of shown Runechat messages. Valid range is 1 to [CHAT_MESSAGE_MAX_LENGTH] (default: [initial(max_chat_length)]))", "Character Preference", max_chat_length)  as null|num
 					if (!isnull(desiredlength))
