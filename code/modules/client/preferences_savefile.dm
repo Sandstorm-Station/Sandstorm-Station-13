@@ -1110,7 +1110,7 @@ SAVEFILE UPDATING/VERSIONING - 'Simplified', or rather, more coder-friendly ~Car
 
 	if(length(language))
 		// This line, prevents wiping their languages because the subsystem was not ready
-		var/list/all_possible_languages = length(SSlanguage.initialized) ? SSlanguage.languages_by_name : typesof(/datum/language)
+		var/list/all_possible_languages = SSlanguage.initialized ? SSlanguage.languages_by_name : typesof(/datum/language)
 		var/list/lang_names
 		// Subsystem ready, let's do it with our cached stuff
 		if(length(SSlanguage.languages_by_name))

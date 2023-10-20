@@ -466,37 +466,21 @@ GLOBAL_LIST_EMPTY(preferences_datums)
 					dat += "<a href='?_src_=prefs;preference=ai_core_icon;task=input'><b>Preferred AI Core Display:</b> [preferred_ai_core_display]</a><br>"
 					dat += "<a href='?_src_=prefs;preference=sec_dept;task=input'><b>Preferred Security Department:</b> [prefered_security_department]</a><BR>"
 
-					dat += "<td valign='top'>"
 					dat += "<h2>Silicon preferences</h2>"
 					if(!CONFIG_GET(flag/allow_silicon_choosing_laws))
 						dat += "<i>The server has disabled choosing your own laws, you can still choose and save, but it won't do anything in-game.</i><br>"
-					dat += "<b>Starting lawset:</b> <a href='?_src_=prefs;task=input;preference=silicon_lawset'>[silicon_lawset ? silicon_lawset : "No custom"]</a><br>"
+					dat += "<b>Starting lawset:</b> <a href='?_src_=prefs;task=input;preference=silicon_lawset'>[silicon_lawset ? silicon_lawset : "Server default"]</a><br>"
 
 					if(silicon_lawset)
 						var/list/config_laws = CONFIG_GET(keyed_list/choosable_laws)
-						var/obj/item/aiModule/law_board = GLOB.all_law_boards[text2path(config_laws[silicon_lawset])]
-						if(law_board)
-							var/law_number = 1
-							if(length(law_board.laws))
-								for(var/law_text in law_board.laws)
-									dat += "[law_number]: [law_text]<br>"
-									law_number++
-							else if(istype(law_board, /obj/item/aiModule/core/full))
-								var/obj/item/aiModule/core/full/full_boardtype = law_board
-								for(var/datum/ai_laws/law_prototype in typesof(/datum/ai_laws))
-									if(full_boardtype.law_id != initial(law_prototype.id))
-										continue
-									var/datum/ai_laws/law_datum = new law_prototype
-									for(var/law_text in law_datum.get_law_list(TRUE))
-										dat += "[law_text]<br>"
-									qdel(law_datum) // hiss i hate everything in this else
-									break
-							else
-								dat += "I was unable to find the laws for your lawset, sorry <font style='translate: rotate(90deg)'>:(</font>"
+						var/datum/ai_laws/law_datum = GLOB.all_law_datums[config_laws[silicon_lawset]]
+						if(law_datum)
+							dat += "<i>[law_datum]</i><br>"
+							dat += english_list(law_datum.get_law_list(TRUE),
+								"I was unable to find the laws for your lawset, sorry  <font style='translate: rotate(90deg)'>:(</font>",
+								"<br>", "<br>")
 
-					dat += "</td>"
-
-					dat += "</tr></table>"
+					dat += "</td></tr></table>"
 				//Character background
 				if(BACKGROUND_CHAR_TAB)
 					dat += "<table width='100%'><tr><td width='30%' valign='top'>"
@@ -2770,8 +2754,10 @@ GLOBAL_LIST_EMPTY(preferences_datums)
 					if(pickedPDASkin)
 						pda_skin = pickedPDASkin
 				if("silicon_lawset")
-					var/picked_lawset = input(user, "Choose your preferred lawset", "Silicon preference", silicon_lawset) as null|anything in CONFIG_GET(keyed_list/choosable_laws)
+					var/picked_lawset = input(user, "Choose your preferred lawset", "Silicon preference", silicon_lawset) as null|anything in list("None") + CONFIG_GET(keyed_list/choosable_laws)
 					if(picked_lawset)
+						if(picked_lawset == "None")
+							picked_lawset = null
 						silicon_lawset = picked_lawset
 				if ("max_chat_length")
 					var/desiredlength = input(user, "Choose the max character length of shown Runechat messages. Valid range is 1 to [CHAT_MESSAGE_MAX_LENGTH] (default: [initial(max_chat_length)]))", "Character Preference", max_chat_length)  as null|num
@@ -3810,14 +3796,6 @@ GLOBAL_LIST_EMPTY(preferences_datums)
 	if(unlockable_loadout_data[unlockable_gear.progress_key] >= unlockable_gear.progress_required)
 		return TRUE
 	return FALSE
-
-GLOBAL_LIST_INIT(all_law_boards, initialize_all_law_boards())
-
-/proc/initialize_all_law_boards()
-	var/list/law_boards
-	for(var/law_board in typesof(/obj/item/aiModule))
-		LAZYSET(law_boards, law_board, new law_board())
-	return law_boards
 
 #undef DEFAULT_SLOT_AMT
 #undef HANDS_SLOT_AMT
