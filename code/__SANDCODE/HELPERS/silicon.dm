@@ -1,4 +1,7 @@
 /proc/setup_silicon_law_prefs(mob/living/silicon/Silicon, client/player_client)
+	if(!CONFIG_GET(flag/allow_silicon_choosing_laws))
+		return
+
 	if(!player_client.prefs.silicon_lawset)
 		return
 
