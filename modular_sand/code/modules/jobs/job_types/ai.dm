@@ -4,4 +4,3 @@
 		return
 
 	setup_silicon_law_prefs(AI, player_client)
-	
