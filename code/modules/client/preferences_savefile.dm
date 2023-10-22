@@ -472,7 +472,6 @@ SAVEFILE UPDATING/VERSIONING - 'Simplified', or rather, more coder-friendly ~Car
 	S["pda_style"] >> pda_style
 	S["pda_color"] >> pda_color
 	S["pda_skin"] >> pda_skin
-	S["silicon_lawset"] >> silicon_lawset
 
 	// Custom hotkeys
 	S["key_bindings"] >> key_bindings
@@ -541,7 +540,6 @@ SAVEFILE UPDATING/VERSIONING - 'Simplified', or rather, more coder-friendly ~Car
 	pda_style = sanitize_inlist(pda_style, GLOB.pda_styles, initial(pda_style))
 	pda_color = sanitize_hexcolor(pda_color, 6, 1, initial(pda_color))
 	pda_skin = sanitize_inlist(pda_skin, GLOB.pda_reskins, PDA_SKIN_ALT)
-	silicon_lawset = sanitize_inlist(silicon_lawset, CONFIG_GET(keyed_list/choosable_laws), null)
 	screenshake = sanitize_integer(screenshake, 0, 800, initial(screenshake))
 	damagescreenshake = sanitize_integer(damagescreenshake, 0, 2, initial(damagescreenshake))
 	autostand = sanitize_integer(autostand, 0, 1, initial(autostand))
@@ -663,7 +661,6 @@ SAVEFILE UPDATING/VERSIONING - 'Simplified', or rather, more coder-friendly ~Car
 	WRITE_FILE(S["pda_style"], pda_style)
 	WRITE_FILE(S["pda_color"], pda_color)
 	WRITE_FILE(S["pda_skin"], pda_skin)
-	WRITE_FILE(S["silicon_lawset"], silicon_lawset)
 	WRITE_FILE(S["key_bindings"], key_bindings)
 	WRITE_FILE(S["modless_key_bindings"], modless_key_bindings)
 	WRITE_FILE(S["favorite_outfits"], favorite_outfits)
