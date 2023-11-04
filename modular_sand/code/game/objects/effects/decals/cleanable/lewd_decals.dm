@@ -28,5 +28,4 @@
 
 /obj/effect/decal/cleanable/semendrip/update_icon()
 	. = ..()
-	add_atom_colour(blood_DNA_to_color(), FIXED_COLOUR_PRIORITY)
-	blend_mode = blood_DNA_to_blend()
+	add_atom_colour(mix_color_from_reagents(reagents.reagent_list), FIXED_COLOUR_PRIORITY)

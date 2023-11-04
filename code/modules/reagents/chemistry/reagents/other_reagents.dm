@@ -2507,19 +2507,26 @@
 	nutriment_factor = 0.5 * REAGENTS_METABOLISM
 	var/decal_path = /obj/effect/decal/cleanable/semen
 
-/datum/reagent/consumable/semen/reaction_turf(turf/T, reac_volume)
+/datum/reagent/consumable/semen/reaction_turf(turf/location, reac_volume)
 	..()
-	if(!istype(T))
-		return
-	if(reac_volume < 10)
+	if(!istype(location))
 		return
 
-	var/obj/effect/decal/cleanable/semen/S = locate() in T
-	if(!S)
-		S = new decal_path(T)
-	// Sandstorm edit - cum carries your genetic info (all of it)
-	if(data)
-		S.add_blood_DNA(data)
+	var/obj/effect/decal/cleanable/semen/S = locate(/obj/effect/decal/cleanable/semen) in location
+	if(S)
+		if(S.reagents.add_reagent(type, volume, data))
+			S.update_icon()
+			return
+
+	var/obj/effect/decal/cleanable/semendrip/drip = (locate(/obj/effect/decal/cleanable/semendrip) in location) || new(location)
+	if(drip.reagents.add_reagent(type, volume, data))
+		drip.update_icon()
+		if(drip.reagents.total_volume >= 10)
+			S = new(location)
+			drip.reagents.trans_to(S, drip.reagents.total_volume)
+			S.update_icon()
+			qdel(drip)
+		return
 
 /obj/effect/decal/cleanable/semen
 	name = "semen"
@@ -2550,8 +2557,7 @@
 
 /obj/effect/decal/cleanable/semen/update_icon()
 	. = ..()
-	add_atom_colour(blood_DNA_to_color(), FIXED_COLOUR_PRIORITY)
-	blend_mode = blood_DNA_to_blend()
+	add_atom_colour(mix_color_from_reagents(reagents.reagent_list), FIXED_COLOUR_PRIORITY)
 
 /datum/reagent/consumable/semen/femcum
 	name = "Female Ejaculate"

@@ -72,8 +72,28 @@
 	var/turfing = isturf(target)
 	G.generate_fluid(R)
 	log_message("Climaxed using [G] with [target]", LOG_EMOTE)
-	if(spill && R.total_volume >= 5)
-		R.reaction(turfing ? target : target.loc, TOUCH, 1, 0)
+	if(spill && R.total_volume > 0)
+		var/turf/location = get_turf(target)
+
+		var/obj/effect/decal/cleanable/semen/S = locate(/obj/effect/decal/cleanable/semen) in location
+		if(S)
+			if(R.trans_to(S, R.total_volume))
+				S.blood_DNA |= get_blood_dna_list()
+				S.update_icon()
+				return
+
+		var/obj/effect/decal/cleanable/semendrip/drip = (locate(/obj/effect/decal/cleanable/semendrip) in location) || new(location)
+		if(R.trans_to(drip, R.total_volume))
+			drip.blood_DNA |= get_blood_dna_list()
+			drip.update_icon()
+			if(drip.reagents.total_volume >= 10)
+				S = new(location)
+				drip.reagents.trans_to(S, drip.reagents.total_volume)
+				S.blood_DNA |= drip.blood_DNA
+				S.update_icon()
+				qdel(drip)
+			return
+
 	if(!turfing)
 		// sandstorm edit - advanced cum drip
 		var/amount_to_transfer = R.total_volume * (spill ? G.fluid_transfer_factor : 1)
