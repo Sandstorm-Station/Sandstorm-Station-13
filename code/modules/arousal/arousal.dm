@@ -77,12 +77,15 @@
 	if(!turfing)
 		// sandstorm edit - advanced cum drip
 		var/amount_to_transfer = R.total_volume * (spill ? G.fluid_transfer_factor : 1)
-		R.trans_to(target, amount_to_transfer, log = TRUE)
-		if(ishuman(target))
+		var/mob/living/carbon/human/cummed_on = target
+		if(istype(cummed_on))
+			var/datum/reagents/copy = new()
+			R.copy_to(copy, R.total_volume)
 			// Nope, on the mouth doesn't count.
-			if(!(istype(last_lewd_datum, /datum/interaction/lewd/facefuck) || istype(last_lewd_datum, /datum/interaction/lewd/throatfuck)))
-				var/datum/reagent/consumable/semen/salty_drink = target.reagents.get_reagent(/datum/reagent/consumable/semen)
-				salty_drink.amount_to_drip += amount_to_transfer
+			if(istype(last_genital, /obj/item/organ/genital/penis) && (last_orifice == CUM_TARGET_VAGINA || last_orifice == CUM_TARGET_ANUS))
+				if(copy.total_volume > 0)
+					cummed_on.apply_status_effect(STATUS_EFFECT_DRIPPING_CUM, copy, get_blood_dna_list())
+		R.trans_to(target, amount_to_transfer, log = TRUE)
 		//
 	G.last_orgasmed = world.time
 	R.clear_reagents()
@@ -220,7 +223,7 @@
 			to_chat(src, "<span class='warning'>You need to wait [DisplayTimeText((mb_cd_timer - world.time), TRUE)] before you can do that again!</span>")
 		return
 
-	if(!client?.prefs.arousable || !has_dna())
+	if(!(client?.prefs.arousable || !ckey) || !has_dna())
 		return
 
 	if(HAS_TRAIT(src, TRAIT_NEVERBONER))
