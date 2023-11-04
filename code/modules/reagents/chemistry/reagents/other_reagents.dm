@@ -2530,16 +2530,28 @@
 	icon = 'icons/obj/genitals/effects.dmi'
 	icon_state = "semen1"
 	random_icon_states = list("semen1", "semen2", "semen3", "semen4")
+	var/datum/reagent/my_liquid_type = /datum/reagent/consumable/semen
 
 /obj/effect/decal/cleanable/semen/Initialize(mapload)
 	. = ..()
 	dir = GLOB.cardinals
-	add_blood_DNA(list("Non-human DNA" = "A+"))
+	if(mapload)
+		reagents.add_reagent(/datum/reagent/consumable/semen, 10)
+		add_blood_DNA(list("Non-human DNA" = "A+"))
+	update_icon()
 
 /obj/effect/decal/cleanable/semen/replace_decal(obj/effect/decal/cleanable/semen/S)
-	if(S.blood_DNA)
-		blood_DNA |= S.blood_DNA
+	if(reagents.total_volume > 0)
+		reagents.trans_to(S.reagents, reagents.total_volume)
+	if(blood_DNA)
+		S.blood_DNA |= blood_DNA
+		S.update_icon()
 	return ..()
+
+/obj/effect/decal/cleanable/semen/update_icon()
+	. = ..()
+	add_atom_colour(blood_DNA_to_color(), FIXED_COLOUR_PRIORITY)
+	blend_mode = blood_DNA_to_blend()
 
 /datum/reagent/consumable/semen/femcum
 	name = "Female Ejaculate"
@@ -2554,6 +2566,7 @@
 	random_icon_states = list("fem1", "fem2", "fem3", "fem4")
 	blood_state = null
 	bloodiness = null
+	my_liquid_type = /datum/reagent/consumable/semen/femcum
 
 /datum/reagent/determination
 	name = "Determination"
