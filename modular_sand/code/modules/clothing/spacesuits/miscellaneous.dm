@@ -21,7 +21,8 @@
 
 /obj/item/clothing/head/helmet/space/rad/reskin_obj(mob/user)
 	. = ..()
-	user.update_inv_head()
+	if(user.get_item_by_slot(ITEM_SLOT_HEAD) == src)
+		user.update_inv_head()
 
 /obj/item/clothing/suit/space/rad
 	unique_reskin = list(
@@ -47,4 +48,5 @@
 
 /obj/item/clothing/suit/space/rad/reskin_obj(mob/user)
 	. = ..()
-	user.update_inv_wear_suit()
+	if(user.get_item_by_slot(ITEM_SLOT_OCLOTHING) == src)
+		user.update_inv_wear_suit()
