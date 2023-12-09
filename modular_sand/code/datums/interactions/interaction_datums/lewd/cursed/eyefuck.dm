@@ -1,17 +1,16 @@
 /datum/interaction/lewd/eyefuck
 	description = "Fuck their eye."
 	interaction_sound = null
-	require_user_penis = REQUIRE_EXPOSED
-	require_target_eyes = REQUIRE_EXPOSED
+	required_from_user_exposed = INTERACTION_REQUIRE_PENIS
+	required_from_target_exposed = INTERACTION_REQUIRE_EYES
+	interaction_flags = INTERACTION_FLAG_ADJACENT | INTERACTION_FLAG_OOC_CONSENT | INTERACTION_FLAG_EXTREME_CONTENT
 	max_distance = 1
 	write_log_user = "eyefucked"
 	write_log_target = "had their eye fucked by"
-	extreme = TRUE
 
 /datum/interaction/lewd/eyefuck/eyesocketfuck
 	description = "Fuck their eyesocket."
-	require_target_eyes = null
-	require_target_eyesockets = REQUIRE_EXPOSED
+	required_from_target_exposed = INTERACTION_REQUIRE_EYESOCKETS
 	write_log_user = "eyesocketfucked"
 	write_log_target = "had their eyesocket fucked by"
 
@@ -41,6 +40,6 @@
 
 	playlewdinteractionsound(get_turf(user), pick('modular_sand/sound/interactions/champ1.ogg',
 												'modular_sand/sound/interactions/champ2.ogg'), 50, 1, -1)
-	user.visible_message(span_lewd("<b>\The [user]</b> [message]"), ignored_mobs = user.get_unconsenting(TRUE))
+	user.visible_message(span_lewd("<b>\The [user]</b> [message]"), ignored_mobs = user.get_unconsenting(interaction_flags))
 	user.handle_post_sex(NORMAL_LUST, CUM_TARGET_EYES, partner)
 	partner.handle_post_sex(LOW_LUST, null, user)
