@@ -4,7 +4,6 @@
 	required_from_user_exposed = INTERACTION_REQUIRE_PENIS
 	required_from_target_exposed = INTERACTION_REQUIRE_EYES
 	interaction_flags = INTERACTION_FLAG_ADJACENT | INTERACTION_FLAG_OOC_CONSENT | INTERACTION_FLAG_EXTREME_CONTENT
-	max_distance = 1
 	write_log_user = "eyefucked"
 	write_log_target = "had their eye fucked by"
 

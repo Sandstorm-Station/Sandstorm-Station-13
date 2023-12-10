@@ -3,7 +3,6 @@
 	interaction_sound = null
 	required_from_user_exposed = INTERACTION_REQUIRE_PENIS
 	required_from_target = INTERACTION_REQUIRE_MOUTH
-	max_distance = 1
 	var/fucktarget = "penis"
 
 /datum/interaction/lewd/facefuck/vag
@@ -112,7 +111,6 @@
 	interaction_sound = null
 	required_from_user_exposed = INTERACTION_REQUIRE_PENIS
 	required_from_target = INTERACTION_REQUIRE_MOUTH
-	max_distance = 1
 
 /datum/interaction/lewd/throatfuck/display_interaction(mob/living/user, mob/living/partner)
 	var/message

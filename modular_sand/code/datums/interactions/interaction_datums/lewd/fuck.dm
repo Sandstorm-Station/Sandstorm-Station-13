@@ -91,7 +91,6 @@
 	required_from_target_exposed = INTERACTION_REQUIRE_FEET
 	required_from_target_unexposed = INTERACTION_REQUIRE_FEET
 	require_target_num_feet = 1
-	max_distance = 1
 
 /datum/interaction/lewd/footfuck/display_interaction(mob/living/user, mob/living/partner)
 	var/message
@@ -150,7 +149,6 @@
 	interaction_sound = null
 	required_from_user_exposed = INTERACTION_REQUIRE_VAGINA
 	require_target_num_feet = 1
-	max_distance = 1
 
 /datum/interaction/lewd/footfuck/vag/display_interaction(mob/living/user, mob/living/partner)
 	var/message

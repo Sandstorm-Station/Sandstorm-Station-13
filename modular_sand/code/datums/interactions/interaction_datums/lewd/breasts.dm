@@ -2,7 +2,6 @@
 	description = "Breastfeed them"
 	required_from_user_exposed = INTERACTION_REQUIRE_BREASTS
 	required_from_target = INTERACTION_REQUIRE_MOUTH
-	max_distance = 1
 	write_log_user = "breastfed"
 	write_log_target = "was breastfed by"
 	interaction_sound = null
@@ -55,7 +54,6 @@
 	write_log_user = "groped"
 	write_log_target = "was groped by"
 	interaction_sound = null
-	max_distance = 1
 
 	additional_details = list(
 		list(

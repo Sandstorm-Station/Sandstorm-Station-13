@@ -5,7 +5,6 @@
 	required_from_user_unexposed = INTERACTION_REQUIRE_FEET
 	require_user_num_feet = 1
 	required_from_target = INTERACTION_REQUIRE_MOUTH
-	max_distance = 1
 
 /datum/interaction/lewd/grindface/display_interaction(mob/living/user, mob/living/partner)
 	var/message
@@ -61,7 +60,6 @@
 	required_from_user_unexposed = INTERACTION_REQUIRE_FEET
 	require_user_num_feet = 1
 	required_from_target = INTERACTION_REQUIRE_MOUTH
-	max_distance = 1
 
 /datum/interaction/lewd/grindmouth/display_interaction(mob/living/user, mob/living/partner)
 	var/message
@@ -117,7 +115,6 @@
 	required_from_user_unexposed = INTERACTION_REQUIRE_FEET
 	require_user_num_feet = 1
 	required_from_target_exposed = INTERACTION_REQUIRE_PENIS
-	max_distance = 1
 
 /datum/interaction/lewd/footjob/display_interaction(mob/living/user, mob/living/partner)
 	var/message
