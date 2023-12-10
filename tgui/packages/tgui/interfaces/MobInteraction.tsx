@@ -74,6 +74,17 @@ type ContentPrefsInfo = {
   no_auto_wag: boolean,
 }
 
+const INTERACTION_NORMAL = 0;
+const INTERACTION_LEWD = 1;
+const INTERACTION_EXTREME = 2;
+
+const INTERACTION_FLAG_OOC_CONSENT = (1<<0);
+const INTERACTION_FLAG_ADJACENT = (1<<1);
+const INTERACTION_FLAG_USER_IS_TARGET = (1<<2);
+const INTERACTION_FLAG_USER_NOT_TIRED = (1<<3);
+const INTERACTION_FLAG_TARGET_NOT_TIRED = (1<<4);
+const INTERACTION_FLAG_EXTREME_CONTENT = (1<<5);
+
 export const MobInteraction = (props, context) => {
   const { act, data } = useBackend<HeaderInfo>(context);
   const {
@@ -129,15 +140,15 @@ export const MobInteraction = (props, context) => {
             </Section>
             <Section position="absolute" bottom="10px" right="6px" left="6px" top="188px">
               <Table.Row>
-                <Table.Cell width={isTargetSelf && isNaN(theirLust) ? (innerWidth - 10) + "px"
+                <Table.Cell width={isTargetSelf ? (innerWidth - 10) + "px"
                   : (innerWidth - 220) + "px"} >
                   <ProgressBar fill value={lust} maxValue={maxLust} color="purple"><Icon name="heart" /></ProgressBar>
                 </Table.Cell>
-                {(!isTargetSelf && !isNaN(theirLust)) ? (
+                {(!isTargetSelf && (theirLust !== null) ? (
                   <Table.Cell width={(innerWidth - 220) + "px"}>
                     <ProgressBar value={theirLust} maxValue={theirMaxLust} color="purple"><Icon name="heart" /></ProgressBar>
                   </Table.Cell>
-                ) : (null)}
+                ) : (null))}
               </Table.Row>
             </Section>
           </Table>
@@ -191,7 +202,11 @@ const InteractionsTab = (props, context) => {
     searchText,
     setSearchText,
   ] = useLocalState(context, 'searchText', '');
-  const interactions = sortInteractions(data.interactions, searchText) || [];
+  const interactions = sortInteractions(
+    data.interactions,
+    searchText,
+    data)
+    || [];
   return (
     <Section overflow="auto" position="absolute" right="6px" left="6px" bottom={(364 - innerHeight) + "px"} top="58px">
       <Table>
@@ -202,7 +217,9 @@ const InteractionsTab = (props, context) => {
                 <Button
                   key={interaction.key}
                   content={interaction.desc}
-                  color={interaction.type === 2 ? "red" : interaction.type ? "pink" : "default"}
+                  color={interaction.type === INTERACTION_EXTREME ? "red"
+                    : interaction.type ? "pink"
+                      : "default"}
                   fluid
                   mb={0.3}
                   onClick={() => act('interact', {
@@ -244,14 +261,99 @@ const InteractionsTab = (props, context) => {
 /**
  * Interaction sorter! also search box
  */
-export const sortInteractions = (interactions, searchText = '') => {
+export const sortInteractions = (interactions, searchText = '', data) => {
   const testSearch = createSearch<InteractionData>(searchText,
     interaction => interaction.desc);
+  const {
+    isTargetSelf,
+    verb_consent,
+    extreme_pref,
+    target_has_active_player,
+    theyAllowLewd,
+    theyAllowExtreme,
+
+    max_distance,
+    required_from_user,
+    required_from_user_exposed,
+    required_from_user_unexposed,
+    user_num_feet,
+
+    required_from_target,
+    required_from_target_exposed,
+    required_from_target_unexposed,
+    target_num_feet,
+  } = data;
   return flow([
-    // Optional search term
+    // Optional search term, do before the others so we don't even run the tests
     searchText && filter(testSearch),
-    // Slightly expensive, but way better than sorting in BYOND
+
+    // Filter off interactions depending on pref
+    filter(interaction =>
+      // Regular interaction
+      (interaction.type === INTERACTION_NORMAL ? true
+        // Lewd interaction
+        : interaction.type === INTERACTION_LEWD ? verb_consent
+          // Extreme interaction
+          : verb_consent && extreme_pref)),
+
+    // Filter off interactions depending on target's pref
+    filter(interaction =>
+      // If it's ourself, we've just checked it above, ignore
+      ((isTargetSelf || (target_has_active_player === 0)) ? true
+        // Regular interaction
+        : interaction.type === INTERACTION_NORMAL ? true
+          // Lewd interaction
+          : interaction.type === INTERACTION_LEWD ? theyAllowLewd
+          // Extreme interaction
+            : theyAllowLewd && theyAllowExtreme)),
+
+    // Is self
+    filter(interaction =>
+      (isTargetSelf ? (INTERACTION_FLAG_USER_IS_TARGET
+        & interaction.interactionFlags)
+        : !(INTERACTION_FLAG_USER_IS_TARGET & interaction.interactionFlags))),
+    // Has a player or none at all
+    filter(interaction =>
+      (!isTargetSelf && (target_has_active_player === 1)
+        ? !(INTERACTION_FLAG_OOC_CONSENT
+          & interaction.interactionFlags) : true)),
+    // Distance
+    filter(interaction =>
+      interaction.maxDistance >= max_distance),
+    // User requirements
+    filter(interaction =>
+      interaction.required_from_user
+        ? !!(required_from_user & interaction.required_from_user) : true),
+    // User requires exposed
+    filter(interaction => interaction.required_from_user_exposed
+      ? !!(required_from_user_exposed
+        & interaction.required_from_user_exposed) : true),
+    // User requires unexposed
+    filter(interaction => interaction.required_from_user_unexposed
+      ? !!(required_from_user_unexposed
+        & interaction.required_from_user_unexposed) : true),
+    // User required feet amount
+    filter(interaction => interaction.user_num_feet
+      ? (interaction.user_num_feet <= user_num_feet) : true),
+    // Target requirements
+    filter(interaction => interaction.required_from_target
+      ? !!(required_from_target
+        & interaction.required_from_target) : true),
+    // Target requires exposed
+    filter(interaction => interaction.required_from_target_exposed
+      ? !!(required_from_target_exposed
+        & interaction.required_from_target_exposed) : true),
+    // Target requires unexposed
+    filter(interaction => interaction.required_from_target_unexposed
+      ? !!(required_from_target_unexposed
+        & interaction.required_from_target_unexposed) : true),
+    // Target required feet amount
+    filter(interaction => interaction.target_num_feet
+      ? (interaction.target_num_feet <= target_num_feet) : true),
+
+    // Searching by "desc"
     sortBy(interaction => interaction.desc),
+    // Searching by type
     sortBy(interaction => interaction.type),
   ])(interactions);
 };

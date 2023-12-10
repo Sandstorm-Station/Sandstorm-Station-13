@@ -56,7 +56,8 @@
 	if(ishuman(M) && (M?.client?.prefs?.toggles & VERB_CONSENT))
 		switch(user.zone_selected)
 			if(BODY_ZONE_PRECISE_GROIN)
-				if(M.has_penis(REQUIRE_EXPOSED))
+				var/has_penis = M.has_penis()
+				if(has_penis == TRUE || has_penis == HAS_EXPOSED_GENITAL)
 					message = (user == M) ? pick("pumps [src] on [possessive_verb] penis") : pick("pumps \the [src] on [M]'s penis")
 					lust_amt = NORMAL_LUST
 	if(message)
@@ -110,7 +111,8 @@
 	if(ishuman(M) && (M?.client?.prefs?.toggles & VERB_CONSENT) && useable) // I promise all those checks are worth it!
 		switch(user.zone_selected)
 			if(BODY_ZONE_PRECISE_GROIN)
-				if(M.has_penis(REQUIRE_EXPOSED))
+				var/has_penis = M.has_penis()
+				if(has_penis == TRUE || has_penis == HAS_EXPOSED_GENITAL)
 					message = (user == M) ? pick("fucks into [src]") : pick("forces [M] to fuck into [src]")
 					lust_amt = NORMAL_LUST
 					P = M.getorganslot(ORGAN_SLOT_PENIS)
@@ -122,7 +124,7 @@
 					arouse_only_target = TRUE
 					target = "mouth"
 			if(BODY_ZONE_R_ARM)
-				if(M.has_hand(REQUIRE_ANY))
+				if(M.has_hand())
 					var/can_interact = FALSE
 					for(var/obj/item/bodypart/r_arm/R in M.bodyparts)
 						can_interact = TRUE
@@ -132,7 +134,7 @@
 						arouse_only_target = TRUE
 						target = "hand"
 			if(BODY_ZONE_L_ARM)
-				if(M.has_hand(REQUIRE_ANY))
+				if(M.has_hand())
 					var/can_interact = FALSE
 					for(var/obj/item/bodypart/l_arm/L in M.bodyparts)
 						can_interact = TRUE
@@ -284,11 +286,13 @@
 		var/mob/living/carbon/human/human = M
 		switch(targetting)
 			if("vagina")
-				if(!human.has_vagina(REQUIRE_EXPOSED))
+				var/has_vagina = !human.has_vagina()
+				if(has_vagina == TRUE || has_vagina == HAS_EXPOSED_GENITAL)
 					to_chat(human, span_warning("The vagina is covered or there is none!"))
 					return FALSE
 			if("anus")
-				if(!human.has_anus(REQUIRE_EXPOSED))
+				var/has_anus = !human.has_anus()
+				if(has_anus == TRUE || has_anus == HAS_EXPOSED_GENITAL)
 					to_chat(human, span_warning("The anus is covered or there is none!"))
 					return FALSE
 	return TRUE
