@@ -122,7 +122,7 @@
 			required_from_user_exposed |= INTERACTION_REQUIRE_PENIS
 		if(HAS_UNEXPOSED_GENITAL)
 			required_from_user_unexposed |= INTERACTION_REQUIRE_PENIS
-		if(1)
+		if(TRUE)
 			required_from_user_exposed |= INTERACTION_REQUIRE_PENIS
 			required_from_user_unexposed |= INTERACTION_REQUIRE_PENIS
 
@@ -132,7 +132,7 @@
 			required_from_user_exposed |= INTERACTION_REQUIRE_ANUS
 		if(HAS_UNEXPOSED_GENITAL)
 			required_from_user_unexposed |= INTERACTION_REQUIRE_ANUS
-		if(1)
+		if(TRUE)
 			required_from_user_exposed |= INTERACTION_REQUIRE_ANUS
 			required_from_user_unexposed |= INTERACTION_REQUIRE_ANUS
 
@@ -142,7 +142,7 @@
 			required_from_user_exposed |= INTERACTION_REQUIRE_VAGINA
 		if(HAS_UNEXPOSED_GENITAL)
 			required_from_user_unexposed |= INTERACTION_REQUIRE_VAGINA
-		if(1)
+		if(TRUE)
 			required_from_user_exposed |= INTERACTION_REQUIRE_VAGINA
 			required_from_user_unexposed |= INTERACTION_REQUIRE_VAGINA
 
@@ -152,7 +152,7 @@
 			required_from_user_exposed |= INTERACTION_REQUIRE_BREASTS
 		if(HAS_UNEXPOSED_GENITAL)
 			required_from_user_unexposed |= INTERACTION_REQUIRE_BREASTS
-		if(1)
+		if(TRUE)
 			required_from_user_exposed |= INTERACTION_REQUIRE_BREASTS
 			required_from_user_unexposed |= INTERACTION_REQUIRE_BREASTS
 
@@ -162,7 +162,7 @@
 			required_from_user_exposed |= INTERACTION_REQUIRE_FEET
 		if(HAS_UNEXPOSED_GENITAL)
 			required_from_user_unexposed |= INTERACTION_REQUIRE_FEET
-		if(1)
+		if(TRUE)
 			required_from_user_exposed |= INTERACTION_REQUIRE_FEET
 			required_from_user_unexposed |= INTERACTION_REQUIRE_FEET
 
@@ -172,27 +172,37 @@
 			required_from_user_exposed |= INTERACTION_REQUIRE_BALLS
 		if(HAS_UNEXPOSED_GENITAL)
 			required_from_user_unexposed |= INTERACTION_REQUIRE_BALLS
-		if(1)
+		if(TRUE)
 			required_from_user_exposed |= INTERACTION_REQUIRE_BALLS
 			required_from_user_unexposed |= INTERACTION_REQUIRE_BALLS
 
 	var/user_has_ears = self.has_ears()
-	switch(user_has_ears)
-		if(HAS_EXPOSED_GENITAL)
-			required_from_user_exposed |= INTERACTION_REQUIRE_EARS
-		if(HAS_UNEXPOSED_GENITAL)
-			required_from_user_unexposed |= INTERACTION_REQUIRE_EARS
-		if(FALSE)
-			required_from_user_exposed |= INTERACTION_REQUIRE_EARSOCKETS
+	if(self.getorganslot(ORGAN_SLOT_EARS))
+		switch(user_has_ears)
+			if(HAS_EXPOSED_GENITAL)
+				required_from_user_exposed |= INTERACTION_REQUIRE_EARS
+			if(HAS_UNEXPOSED_GENITAL)
+				required_from_user_unexposed |= INTERACTION_REQUIRE_EARS
+	else
+		switch(user_has_ears)
+			if(HAS_EXPOSED_GENITAL)
+				required_from_user_exposed |= INTERACTION_REQUIRE_EARSOCKETS
+			if(HAS_UNEXPOSED_GENITAL)
+				required_from_user_unexposed |= INTERACTION_REQUIRE_EARSOCKETS
 
 	var/user_has_eyes = self.has_eyes()
-	switch(user_has_eyes)
-		if(HAS_EXPOSED_GENITAL)
-			required_from_user_exposed |= INTERACTION_REQUIRE_EYES
-		if(HAS_UNEXPOSED_GENITAL)
-			required_from_user_unexposed |= INTERACTION_REQUIRE_EYES
-		if(FALSE)
-			required_from_user_exposed |= INTERACTION_REQUIRE_EYESOCKETS
+	if(self.getorganslot(ORGAN_SLOT_EYES))
+		switch(user_has_eyes)
+			if(HAS_EXPOSED_GENITAL)
+				required_from_user_exposed |= INTERACTION_REQUIRE_EYES
+			if(HAS_UNEXPOSED_GENITAL)
+				required_from_user_unexposed |= INTERACTION_REQUIRE_EYES
+	else
+		switch(user_has_eyes)
+			if(HAS_EXPOSED_GENITAL)
+				required_from_user_exposed |= INTERACTION_REQUIRE_EYESOCKETS
+			if(HAS_UNEXPOSED_GENITAL)
+				required_from_user_unexposed |= INTERACTION_REQUIRE_EYESOCKETS
 
 	.["required_from_user_exposed"] = required_from_user_exposed
 	.["required_from_user_unexposed"] = required_from_user_unexposed
@@ -236,7 +246,7 @@
 				required_from_target_exposed |= INTERACTION_REQUIRE_PENIS
 			if(HAS_UNEXPOSED_GENITAL)
 				required_from_target_unexposed |= INTERACTION_REQUIRE_PENIS
-			if(1)
+			if(TRUE)
 				required_from_target_exposed |= INTERACTION_REQUIRE_PENIS
 				required_from_target_unexposed |= INTERACTION_REQUIRE_PENIS
 
@@ -246,7 +256,7 @@
 				required_from_target_exposed |= INTERACTION_REQUIRE_ANUS
 			if(HAS_UNEXPOSED_GENITAL)
 				required_from_target_unexposed |= INTERACTION_REQUIRE_ANUS
-			if(1)
+			if(TRUE)
 				required_from_target_exposed |= INTERACTION_REQUIRE_ANUS
 				required_from_target_unexposed |= INTERACTION_REQUIRE_ANUS
 
@@ -256,7 +266,7 @@
 				required_from_target_exposed |= INTERACTION_REQUIRE_VAGINA
 			if(HAS_UNEXPOSED_GENITAL)
 				required_from_target_unexposed |= INTERACTION_REQUIRE_VAGINA
-			if(1)
+			if(TRUE)
 				required_from_target_exposed |= INTERACTION_REQUIRE_VAGINA
 				required_from_target_unexposed |= INTERACTION_REQUIRE_VAGINA
 
@@ -266,7 +276,7 @@
 				required_from_target_exposed |= INTERACTION_REQUIRE_BREASTS
 			if(HAS_UNEXPOSED_GENITAL)
 				required_from_target_unexposed |= INTERACTION_REQUIRE_BREASTS
-			if(1)
+			if(TRUE)
 				required_from_target_exposed |= INTERACTION_REQUIRE_BREASTS
 				required_from_target_unexposed |= INTERACTION_REQUIRE_BREASTS
 
@@ -276,7 +286,7 @@
 				required_from_target_exposed |= INTERACTION_REQUIRE_FEET
 			if(HAS_UNEXPOSED_GENITAL)
 				required_from_target_unexposed |= INTERACTION_REQUIRE_FEET
-			if(1)
+			if(TRUE)
 				required_from_target_exposed |= INTERACTION_REQUIRE_FEET
 				required_from_target_unexposed |= INTERACTION_REQUIRE_FEET
 
@@ -286,27 +296,37 @@
 				required_from_target_exposed |= INTERACTION_REQUIRE_BALLS
 			if(HAS_UNEXPOSED_GENITAL)
 				required_from_target_unexposed |= INTERACTION_REQUIRE_BALLS
-			if(1)
+			if(TRUE)
 				required_from_target_exposed |= INTERACTION_REQUIRE_BALLS
 				required_from_target_unexposed |= INTERACTION_REQUIRE_BALLS
 
-		var/target_has_eyes = target.has_eyes()
-		switch(target_has_eyes)
-			if(HAS_EXPOSED_GENITAL)
-				required_from_target_exposed |= INTERACTION_REQUIRE_EYES
-			if(HAS_UNEXPOSED_GENITAL)
-				required_from_target_unexposed |= INTERACTION_REQUIRE_EYES
-			if(FALSE)
-				required_from_target_exposed |= INTERACTION_REQUIRE_EYESOCKETS
-
 		var/target_has_ears = target.has_ears()
-		switch(target_has_ears)
-			if(HAS_EXPOSED_GENITAL)
-				required_from_target_exposed |= INTERACTION_REQUIRE_EARS
-			if(HAS_UNEXPOSED_GENITAL)
-				required_from_target_unexposed |= INTERACTION_REQUIRE_EARS
-			if(FALSE)
-				required_from_target_exposed |= INTERACTION_REQUIRE_EARSOCKETS
+		if(target.getorganslot(ORGAN_SLOT_EARS))
+			switch(target_has_ears)
+				if(HAS_EXPOSED_GENITAL)
+					required_from_target_exposed |= INTERACTION_REQUIRE_EARS
+				if(HAS_UNEXPOSED_GENITAL)
+					required_from_target_unexposed |= INTERACTION_REQUIRE_EARS
+		else
+			switch(target_has_ears)
+				if(HAS_EXPOSED_GENITAL)
+					required_from_target_exposed |= INTERACTION_REQUIRE_EARSOCKETS
+				if(HAS_UNEXPOSED_GENITAL)
+					required_from_target_unexposed |= INTERACTION_REQUIRE_EARSOCKETS
+
+		var/target_has_eyes = target.has_eyes()
+		if(target.getorganslot(ORGAN_SLOT_EYES))
+			switch(target_has_eyes)
+				if(HAS_EXPOSED_GENITAL)
+					required_from_target_exposed |= INTERACTION_REQUIRE_EYES
+				if(HAS_UNEXPOSED_GENITAL)
+					required_from_target_unexposed |= INTERACTION_REQUIRE_EYES
+		else
+			switch(target_has_eyes)
+				if(HAS_EXPOSED_GENITAL)
+					required_from_target_exposed |= INTERACTION_REQUIRE_EYESOCKETS
+				if(HAS_UNEXPOSED_GENITAL)
+					required_from_target_unexposed |= INTERACTION_REQUIRE_EYESOCKETS
 
 		.["required_from_target_exposed"] = required_from_target_exposed
 		.["required_from_target_unexposed"] = required_from_target_unexposed
