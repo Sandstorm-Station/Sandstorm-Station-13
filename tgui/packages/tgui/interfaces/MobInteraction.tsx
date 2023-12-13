@@ -20,6 +20,8 @@ type HeaderInfo = {
 
 type ContentInfo = {
   interactions: InteractionData[];
+  user_is_blacklisted: boolean;
+  target_is_blacklisted: boolean;
 }
 
 type InteractionData = {
@@ -207,6 +209,7 @@ const InteractionsTab = (props, context) => {
     searchText,
     data)
     || [];
+  const { user_is_blacklisted, target_is_blacklisted } = data;
   return (
     <Section overflow="auto" position="absolute" right="6px" left="6px" bottom={(364 - innerHeight) + "px"} top="58px">
       <Table>
@@ -244,11 +247,10 @@ const InteractionsTab = (props, context) => {
           ) : (
             <Section align="center">
               {
-                searchText ? (
-                  "No matching results."
-                ) : (
-                  "No interactions available."
-                )
+                user_is_blacklisted || target_is_blacklisted
+                  ? `${user_is_blacklisted ? "Your" : "Their"} mob type is blacklisted from interactions`
+                  : searchText ? "No matching results."
+                    : "No interactions available."
               }
             </Section>
           )
@@ -265,12 +267,15 @@ export const sortInteractions = (interactions, searchText = '', data) => {
   const testSearch = createSearch<InteractionData>(searchText,
     interaction => interaction.desc);
   const {
-    isTargetSelf,
-    verb_consent,
     extreme_pref,
+    isTargetSelf,
     target_has_active_player,
-    theyAllowLewd,
+    target_is_blacklisted,
     theyAllowExtreme,
+    theyAllowLewd,
+    user_is_blacklisted,
+    verb_consent,
+
 
     max_distance,
     required_from_user,
@@ -284,6 +289,10 @@ export const sortInteractions = (interactions, searchText = '', data) => {
     target_num_feet,
   } = data;
   return flow([
+    // Blacklists completely disable any and all interactions
+    filter(interaction =>
+      !user_is_blacklisted && !target_is_blacklisted),
+
     // Optional search term, do before the others so we don't even run the tests
     searchText && filter(testSearch),
 
