@@ -14,3 +14,7 @@
 2023-12-13:
   SandPoot:
   - tweak: Changed some interaction requirements to make more sense.
+2023-12-16:
+  SandPoot:
+  - bugfix: Interactions that allow both exposed and unexposed can be done once again.
+  - code_imp: There are now unit tests for creating interactions incorrectly.
