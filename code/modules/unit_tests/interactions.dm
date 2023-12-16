@@ -3,7 +3,8 @@
 	SSinteractions.prepare_interactions()
 	if(!SSinteractions.interactions || !length(SSinteractions.interactions))
 		Fail("make_interactions() was called but SSinteractions.interactions is empty.")
-	for(var/datum/interaction/interaction as anything in SSinteractions.interactions)
+	for(var/interaction_type in SSinteractions.interactions)
+		var/datum/interaction/interaction = SSinteractions.interactions[interaction_type]
 		if(!interaction.description)
 			Fail("Basetype [interaction.type] located within SSinteractions.interactions")
 		if(interaction.required_from_user_exposed && interaction.required_from_user_unexposed)
