@@ -328,19 +328,33 @@ export const sortInteractions = (interactions, searchText = '', data) => {
           & interaction.interactionFlags) : true)),
     // Distance
     filter(interaction =>
-      interaction.maxDistance >= max_distance),
+      max_distance <= interaction.maxDistance),
     // User requirements
     filter(interaction =>
       interaction.required_from_user
         ? !!(required_from_user & interaction.required_from_user) : true),
-    // User requires exposed
-    filter(interaction => interaction.required_from_user_exposed
-      ? !!(required_from_user_exposed
-        & interaction.required_from_user_exposed) : true),
-    // User requires unexposed
-    filter(interaction => interaction.required_from_user_unexposed
-      ? !!(required_from_user_unexposed
-        & interaction.required_from_user_unexposed) : true),
+
+    filter(interaction => {
+      // User requires exposed
+      const exposed = !interaction.required_from_user_exposed
+      || ((interaction.required_from_user_exposed
+        & required_from_user_exposed)
+          === interaction.required_from_user_exposed);
+      // User requires unexposed
+      const unexposed = !interaction.required_from_user_unexposed
+      || ((interaction.required_from_user_unexposed
+        & required_from_user_unexposed)
+          === interaction.required_from_user_unexposed);
+
+      if (interaction.required_from_user_exposed
+        && interaction.required_from_user_unexposed) {
+        return exposed || unexposed;
+      }
+      else {
+        return exposed && unexposed;
+      }
+    }),
+
     // User required feet amount
     filter(interaction => interaction.user_num_feet
       ? (interaction.user_num_feet <= user_num_feet) : true),
@@ -348,14 +362,26 @@ export const sortInteractions = (interactions, searchText = '', data) => {
     filter(interaction => interaction.required_from_target
       ? !!(required_from_target
         & interaction.required_from_target) : true),
-    // Target requires exposed
-    filter(interaction => interaction.required_from_target_exposed
-      ? !!(required_from_target_exposed
-        & interaction.required_from_target_exposed) : true),
-    // Target requires unexposed
-    filter(interaction => interaction.required_from_target_unexposed
-      ? !!(required_from_target_unexposed
-        & interaction.required_from_target_unexposed) : true),
+    filter(interaction => {
+      // Target requires exposed
+      const exposed = !interaction.required_from_target_exposed
+          || ((interaction.required_from_target_exposed
+            & required_from_target_exposed)
+              === interaction.required_from_target_exposed);
+      // Target requires unexposed
+      const unexposed = !interaction.required_from_target_unexposed
+          || ((interaction.required_from_target_unexposed
+            & required_from_target_unexposed)
+              === interaction.required_from_target_unexposed);
+
+      if (interaction.required_from_target_exposed
+            && interaction.required_from_target_unexposed) {
+        return exposed || unexposed;
+      }
+      else {
+        return exposed && unexposed;
+      }
+    }),
     // Target required feet amount
     filter(interaction => interaction.target_num_feet
       ? (interaction.target_num_feet <= target_num_feet) : true),
