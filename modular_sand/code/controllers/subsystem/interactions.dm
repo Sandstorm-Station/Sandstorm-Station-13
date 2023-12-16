@@ -44,7 +44,7 @@ SUBSYSTEM_DEF(interactions)
 		// Basetype, do not create
 		if(!initial(interaction.description))
 			continue
-		interaction = new()
+		interaction = new interaction()
 		interactions["[interaction.type]"] = interaction
 
 /// Blacklisting!
