@@ -332,7 +332,8 @@ export const sortInteractions = (interactions, searchText = '', data) => {
     // User requirements
     filter(interaction =>
       interaction.required_from_user
-        ? !!(required_from_user & interaction.required_from_user) : true),
+        ? !!((required_from_user & interaction.required_from_user)
+          === interaction.required_from_user) : true),
 
     filter(interaction => {
       // User requires exposed
@@ -360,8 +361,9 @@ export const sortInteractions = (interactions, searchText = '', data) => {
       ? (interaction.user_num_feet <= user_num_feet) : true),
     // Target requirements
     filter(interaction => interaction.required_from_target
-      ? !!(required_from_target
-        & interaction.required_from_target) : true),
+      ? !!((required_from_target
+        & interaction.required_from_target)
+          === interaction.required_from_target) : true),
     filter(interaction => {
       // Target requires exposed
       const exposed = !interaction.required_from_target_exposed
