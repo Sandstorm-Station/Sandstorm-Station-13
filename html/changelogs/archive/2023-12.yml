@@ -18,3 +18,7 @@
   SandPoot:
   - bugfix: Interactions that allow both exposed and unexposed can be done once again.
   - code_imp: There are now unit tests for creating interactions incorrectly.
+2023-12-17:
+  SandPoot:
+  - bugfix: required_from_user & target variables should check your requirements and
+      the interaction's reqs more precisely.
