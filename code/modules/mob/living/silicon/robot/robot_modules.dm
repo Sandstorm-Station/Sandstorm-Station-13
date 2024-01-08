@@ -93,7 +93,7 @@
 
 	return new storage_type(src)
 
-/* /obj/item/robot_module/proc/add_module(obj/item/I, nonstandard, requires_rebuild)
+/obj/item/robot_module/proc/add_module(obj/item/I, nonstandard, requires_rebuild)
 	rad_flags |= RAD_NO_CONTAMINATE
 	var/obj/item/stack/S = I
 	if(istype(I, /obj/item/stack) && !S.is_cyborg) // Now handled in the type itself
@@ -109,7 +109,6 @@
 	if(requires_rebuild)
 		rebuild_modules()
 	return I
-*/ //replaced by the one in modular_sand
 
 //Adds flavoursome dogborg items to dogborg variants optionally without mechanical benefits
 /obj/item/robot_module/proc/dogborg_equip()
