@@ -158,8 +158,8 @@
 /*
 /mob/living/proc/sizeinteractioncheck(mob/living/target)
 	if(abs(get_effective_size()/target.get_effective_size())>=2.0 && get_effective_size()>target.get_effective_size())
-		return 0
+		return FALSE
 	else
-		return 1
+		return TRUE
 */
 //Clothes coming off at different sizes, and health/speed/stam changes as well

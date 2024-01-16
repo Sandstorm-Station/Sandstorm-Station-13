@@ -610,7 +610,7 @@
 		busy = TRUE
 		if(!do_after(user, 4 SECONDS, src))
 			busy = FALSE
-			return 1
+			return TRUE
 		busy = FALSE
 		SEND_SIGNAL(O, COMSIG_COMPONENT_CLEAN_ACT, CLEAN_WEAK)
 		O.clean_blood()
@@ -622,7 +622,7 @@
 		reagents.reaction(O, TOUCH)
 		user.visible_message("<span class='notice'>[user] washes [O] using [src].</span>", \
 							"<span class='notice'>You wash [O] using [src].</span>")
-		return 1
+		return TRUE
 	else
 		return ..()
 

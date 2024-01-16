@@ -75,9 +75,9 @@
 /mob/proc/clear_alert(category, clear_override = FALSE)
 	var/atom/movable/screen/alert/alert = alerts[category]
 	if(!alert)
-		return 0
+		return FALSE
 	if(alert.override_alerts && !clear_override)
-		return 0
+		return FALSE
 
 	alerts -= category
 	if(client && hud_used)
@@ -797,7 +797,7 @@ so as to remain in compliance with the most up-to-date laws."
 	if(!hud_shown)
 		for(var/i = 1, i <= alerts.len, i++)
 			screenmob.client.screen -= alerts[alerts[i]]
-		return 1
+		return TRUE
 	for(var/i = 1, i <= alerts.len, i++)
 		var/atom/movable/screen/alert/alert = alerts[alerts[i]]
 		if(alert.icon_state == "template")
@@ -820,7 +820,7 @@ so as to remain in compliance with the most up-to-date laws."
 	if(!viewmob)
 		for(var/M in mymob.observers)
 			reorganize_alerts(M)
-	return 1
+	return TRUE
 
 /atom/movable/screen/alert/Click(location, control, params)
 	if(!usr || !usr.client)
