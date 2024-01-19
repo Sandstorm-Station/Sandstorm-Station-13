@@ -268,14 +268,14 @@
 		"volume used" = IC_PINTYPE_NUMBER,
 		"self reference" = IC_PINTYPE_SELFREF
 		)
-	activators = list("push ref" = IC_PINTYPE_PULSE_OUT)
+	activators = list("push ref" = IC_PINTYPE_PULSE_IN)
 	spawn_flags = IC_SPAWN_DEFAULT|IC_SPAWN_RESEARCH
 
 /obj/item/integrated_circuit/reagent/storage/Initialize(mapload)
 	. = ..()
 	reagents.reagents_holder_flags |= OPENCONTAINER
 
-/obj/item/integrated_circuit/reagent/storage/do_work()
+/obj/item/integrated_circuit/reagent/storage/do_work(ord)
 	set_pin_data(IC_OUTPUT, 2, WEAKREF(src))
 	push_data()
 
@@ -723,7 +723,7 @@
 	activators = list(
 		"on insert" = IC_PINTYPE_PULSE_OUT,
 		"on remove" = IC_PINTYPE_PULSE_OUT,
-		"push ref" = IC_PINTYPE_PULSE_OUT
+		"push ref" = IC_PINTYPE_PULSE_IN
 		)
 
 	spawn_flags = IC_SPAWN_DEFAULT|IC_SPAWN_RESEARCH
@@ -733,6 +733,11 @@
 
 	var/obj/item/reagent_containers/glass/beaker/current_beaker
 
+/obj/item/integrated_circuit/input/beaker_connector/do_work(ord)
+	switch(ord)
+		if(3)
+			set_pin_data(IC_OUTPUT, 2, WEAKREF(current_beaker))
+			push_data()
 
 /obj/item/integrated_circuit/input/beaker_connector/attackby(var/obj/item/reagent_containers/I, var/mob/living/user)
 	//Check if it truly is a reagent container
@@ -761,7 +766,6 @@
 
 /obj/item/integrated_circuit/input/beaker_connector/ask_for_input(mob/user)
 	attack_self(user)
-
 
 /obj/item/integrated_circuit/input/beaker_connector/attack_self(mob/user)
 	//Check if no beaker attached
