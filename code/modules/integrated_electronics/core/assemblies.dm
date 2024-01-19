@@ -386,7 +386,7 @@
 			if(istype(I))
 				I.melee_attack_chain(usr, component)
 			else
-				component.attack_hand(usr)
+				component.attack_self(usr)
 
 		// Adjust the position
 		if(href_list["change_pos"])
