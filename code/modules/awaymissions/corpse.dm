@@ -61,8 +61,11 @@
 		return
 	var/requested_char = FALSE
 	if(can_load_appearance == TRUE && ispath(mob_type, /mob/living/carbon/human)) // Can't just use if(can_load_appearance), 2 has a different behavior
-		if(alert(user, "Load currently selected slot?", "Play as your character!", "Yes", "No") == "Yes")
-			requested_char = TRUE
+		switch(alert(user, "Load currently selected slot?", "Play as your character!", "Yes", "No", "Actually nevermind"))
+			if("Yes")
+				requested_char = TRUE
+			if("Actually nevermind")
+				return
 	if(QDELETED(src) || QDELETED(user))
 		return
 	if(latejoinercalling)
@@ -367,6 +370,7 @@
 	short_desc = "You are a space doctor!"
 	assignedrole = "Space Doctor"
 	job_description = "Off-station Doctor"
+	can_load_appearance = TRUE
 
 /obj/effect/mob_spawn/human/doctor/alive/equip(mob/living/carbon/human/H)
 	..()
@@ -425,6 +429,7 @@
 	flavour_text = "Time to mix drinks and change lives. Smoking space drugs makes it easier to understand your patrons' odd dialect."
 	assignedrole = "Space Bartender"
 	id_job = "Bartender"
+	can_load_appearance = TRUE
 
 /datum/outfit/spacebartender
 	name = "Space Bartender"
@@ -450,6 +455,7 @@
 	short_desc = "You're a spunky lifeguard!"
 	flavour_text = "It's up to you to make sure nobody drowns or gets eaten by sharks and stuff."
 	assignedrole = "Beach Bum"
+	can_load_appearance = TRUE
 
 /obj/effect/mob_spawn/human/beach/alive/lifeguard
 	flavour_text = "<span class='big bold'>You're a spunky lifeguard!</span><b> It's up to you to make sure nobody drowns or gets eaten by sharks and stuff.</b>"
@@ -458,6 +464,7 @@
 	id_job = "Lifeguard"
 	job_description = "Beach Biodome Lifeguard"
 	uniform = /obj/item/clothing/under/shorts/red
+	can_load_appearance = TRUE
 
 /datum/outfit/beachbum
 	name = "Beach Bum"
@@ -538,6 +545,7 @@
 	icon = 'icons/obj/machines/sleeper.dmi'
 	icon_state = "sleeper"
 	short_desc = "You are a Nanotrasen Commander!"
+	can_load_appearance = TRUE
 
 /obj/effect/mob_spawn/human/nanotrasensoldier/alive
 	death = FALSE
@@ -549,7 +557,7 @@
 	icon_state = "sleeper"
 	faction = "nanotrasenprivate"
 	short_desc = "You are a Nanotrasen Private Security Officer!"
-
+	can_load_appearance = TRUE
 
 /////////////////Spooky Undead//////////////////////
 
@@ -608,6 +616,7 @@
 	outfit = /datum/outfit/spacebartender
 	assignedrole = "Space Bar Patron"
 	job_description = "Space Bar Patron"
+	can_load_appearance = TRUE
 
 /obj/effect/mob_spawn/human/alive/space_bar_patron/on_attack_hand(mob/user, act_intent = user.a_intent, unarmed_attack_flags)
 	var/despawn = alert("Return to cryosleep? (Warning, Your mob will be deleted!)",,"Yes","No")

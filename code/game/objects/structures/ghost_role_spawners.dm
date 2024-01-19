@@ -283,6 +283,7 @@
 	the hostile creatures, and the ash drakes swooping down from the cloudless skies, all you can wish for is the feel of soft grass between your toes and \
 	the fresh air of Earth. These thoughts are dispelled by yet another recollection of how you got here... "
 	assignedrole = "Hermit"
+	can_load_appearance = TRUE
 
 /obj/effect/mob_spawn/human/hermit/Initialize(mapload)
 	. = ..()
@@ -335,6 +336,7 @@
 	you see them right now. So where is \
 	everyone? Where did they go? What happened to the hospital? And is that <i>smoke</i> you smell? You need to find someone else. Maybe they c	everyone's gone. One of the cats scratched you just a few minutes ago. That's why you were in the pod - to heal the scratch. The scabs are still fresh; an tell you what happened."
 	assignedrole = "Translocated Vet"
+	can_load_appearance = TRUE
 
 /obj/effect/mob_spawn/human/doctor/alive/lavaland/Destroy()
 	var/obj/structure/fluff/empty_sleeper/S = new(drop_location())
@@ -356,6 +358,7 @@
 	though fate has other plans for you."
 	flavour_text = "Good. It seems as though your ship crashed. You remember that you were convicted of "
 	assignedrole = "Escaped Prisoner"
+	can_load_appearance = TRUE
 
 /obj/effect/mob_spawn/human/prisoner_transport/special(mob/living/L)
 	L.real_name = "NTP #LL-0[rand(111,999)]" //Nanotrasen Prisoner #Lavaland-(numbers)
@@ -397,6 +400,7 @@
 	flavour_text = "You are a staff member of a top-of-the-line space hotel! Cater to guests and make sure the manager doesn't fire you."
 	important_info = "DON'T leave the hotel"
 	assignedrole = "Hotel Staff"
+	can_load_appearance = TRUE
 
 /datum/outfit/hotelstaff
 	name = "Hotel Staff"
@@ -417,6 +421,7 @@
 		guests and the staff."
 	important_info = "Do NOT leave the hotel, as that is grounds for contract termination."
 	objectives = "Do not leave your assigned hotel. Try and keep the peace between staff and guests, non-lethal force heavily advised if possible."
+	can_load_appearance = TRUE
 
 /datum/outfit/hotelstaff/security
 	name = "Hotel Secuirty"
@@ -450,6 +455,7 @@
 	var/obj/effect/proc_holder/spell/targeted/summon_friend/spell
 	var/datum/mind/owner
 	assignedrole = "SuperFriend"
+	can_load_appearance = TRUE
 
 /obj/effect/mob_spawn/human/demonic_friend/Initialize(mapload, datum/mind/owner_mind, obj/effect/proc_holder/spell/targeted/summon_friend/summoning_spell)
 	. = ..()
@@ -583,6 +589,7 @@
 	l_pocket = /obj/item/assembly/flash/handheld
 	job_description = "Oldstation Crew"
 	assignedrole = "Ancient Crew"
+	can_load_appearance = TRUE
 
 /obj/effect/mob_spawn/human/oldsec/Destroy()
 	new/obj/structure/showcase/machinery/oldpod/used(drop_location())
@@ -610,6 +617,7 @@
 	gloves = /obj/item/clothing/gloves/color/fyellow/old
 	l_pocket = /obj/item/tank/internals/emergency_oxygen
 	assignedrole = "Ancient Crew"
+	can_load_appearance = TRUE
 
 /obj/effect/mob_spawn/human/oldeng/Destroy()
 	new/obj/structure/showcase/machinery/oldpod/used(drop_location())
@@ -636,6 +644,7 @@
 	l_pocket = /obj/item/stack/medical/suture
 	assignedrole = "Ancient Crew"
 	job_description = "Oldstation Crew"
+	can_load_appearance = TRUE
 
 /obj/effect/mob_spawn/human/oldsci/Destroy()
 	new/obj/structure/showcase/machinery/oldpod/used(drop_location())
