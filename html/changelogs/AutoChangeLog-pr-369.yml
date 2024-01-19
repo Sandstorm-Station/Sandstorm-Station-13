@@ -1,0 +1,6 @@
+author: SandPoot
+delete-after: true
+changes:
+  - bugfix: Some of the old push refs on reagent circuits didn't work, they now do.
+  - tweak: MMIs and pAIs circuits have been checked on.
+  - rscadd: Added quick button circuit! It uses actions buttons and are customizable.
