@@ -14,7 +14,7 @@
 	can_be_asked_input = 1
 	inputs = list()
 	outputs = list()
-	activators = list("on pressed" = IC_PINTYPE_PULSE_IN)
+	activators = list("on pressed" = IC_PINTYPE_PULSE_OUT)
 	spawn_flags = IC_SPAWN_DEFAULT|IC_SPAWN_RESEARCH
 
 /obj/item/integrated_circuit/input/button/ask_for_input(mob/user) //Bit misleading name for this specific use.
@@ -29,7 +29,7 @@
 	can_be_asked_input = 1
 	inputs = list()
 	outputs = list("on" = IC_PINTYPE_BOOLEAN)
-	activators = list("on toggle" = IC_PINTYPE_PULSE_IN)
+	activators = list("on toggle" = IC_PINTYPE_PULSE_OUT)
 	spawn_flags = IC_SPAWN_DEFAULT|IC_SPAWN_RESEARCH
 
 /obj/item/integrated_circuit/input/toggle_button/ask_for_input(mob/user) // Ditto.
@@ -46,7 +46,7 @@
 	can_be_asked_input = 1
 	inputs = list()
 	outputs = list("number entered" = IC_PINTYPE_NUMBER)
-	activators = list("on entered" = IC_PINTYPE_PULSE_IN)
+	activators = list("on entered" = IC_PINTYPE_PULSE_OUT)
 	spawn_flags = IC_SPAWN_DEFAULT|IC_SPAWN_RESEARCH
 	power_draw_per_use = 4
 
@@ -65,7 +65,7 @@
 	can_be_asked_input = 1
 	inputs = list()
 	outputs = list("string entered" = IC_PINTYPE_STRING)
-	activators = list("on entered" = IC_PINTYPE_PULSE_IN)
+	activators = list("on entered" = IC_PINTYPE_PULSE_OUT)
 	spawn_flags = IC_SPAWN_DEFAULT|IC_SPAWN_RESEARCH
 	power_draw_per_use = 4
 
@@ -84,7 +84,7 @@
 	can_be_asked_input = 1
 	inputs = list()
 	outputs = list("color entered" = IC_PINTYPE_STRING)
-	activators = list("on entered" = IC_PINTYPE_PULSE_IN)
+	activators = list("on entered" = IC_PINTYPE_PULSE_OUT)
 	spawn_flags = IC_SPAWN_DEFAULT|IC_SPAWN_RESEARCH
 	power_draw_per_use = 4
 
@@ -1255,11 +1255,11 @@
 		"G" = IC_PINTYPE_STRING,
 		"H" = IC_PINTYPE_STRING
 	)
-	activators = list(
-		"on selected" = IC_PINTYPE_PULSE_OUT
-	)
 	outputs = list(
 		"selected" = IC_PINTYPE_STRING
+	)
+	activators = list(
+		"on selected" = IC_PINTYPE_PULSE_OUT
 	)
 
 /obj/item/integrated_circuit/input/selection/ask_for_input(mob/user)
@@ -1288,13 +1288,13 @@
 	inputs = list(
 		"storage" = IC_PINTYPE_REF
 	)
-	activators = list(
-		"examine" = IC_PINTYPE_PULSE_IN,
-		"on examined" = IC_PINTYPE_PULSE_OUT
-	)
 	outputs = list(
 		"item amount" = IC_PINTYPE_NUMBER,
 		"item list" = IC_PINTYPE_LIST
+	)
+	activators = list(
+		"examine" = IC_PINTYPE_PULSE_IN,
+		"on examined" = IC_PINTYPE_PULSE_OUT
 	)
 	power_draw_per_use = 85
 

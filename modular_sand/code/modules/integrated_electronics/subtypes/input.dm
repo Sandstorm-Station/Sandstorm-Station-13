@@ -99,7 +99,7 @@
 		"button name" = IC_PINTYPE_STRING,
 		"button style" = IC_PINTYPE_STRING
 	)
-	activators = list("on pressed" = IC_PINTYPE_PULSE_IN)
+	activators = list("on pressed" = IC_PINTYPE_PULSE_OUT)
 	var/static/list/button_styles = list("blank","one","two","three","four","five","plus","minus","exclamation","question","cross","info","heart","skull","brain","brain_damage","injection","blood","shield","reaction","network","power","radioactive","electricity","magnetism","scan","repair","id","wireless","say","sleep","bomb")
 	var/datum/action/circuit_action/circuit
 
