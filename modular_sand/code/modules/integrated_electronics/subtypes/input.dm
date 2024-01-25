@@ -142,7 +142,7 @@
 	var/mob/user
 	if(istype(user_container, /obj/item/mmi))
 		var/obj/item/mmi/mmi = user_container
-		if(!istype(loc, /obj/item/integrated_circuit/input/mmi_tank)) // Must be inside an MMI tank.
+		if(!istype(mmi.loc, /obj/item/integrated_circuit/input/mmi_tank)) // Must be inside an MMI tank.
 			return
 
 		var/obj/item/integrated_circuit/input/mmi_tank/mmi_tank = mmi.loc
@@ -155,7 +155,7 @@
 		user = mmi.brainmob
 	else if (istype(user_container, /obj/item/paicard))
 		var/obj/item/paicard/paicard = user_container
-		if(!istype(loc, /obj/item/integrated_circuit/input/pAI_connector)) // Must be a pAI connector.
+		if(!istype(paicard.loc, /obj/item/integrated_circuit/input/pAI_connector)) // Must be a pAI connector.
 			return
 
 		var/obj/item/integrated_circuit/input/pAI_connector/pai_connector = paicard.loc
