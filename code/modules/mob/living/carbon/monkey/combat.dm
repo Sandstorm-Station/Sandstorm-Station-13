@@ -74,7 +74,7 @@
 	if(I.force >= best_force)
 		best_force = I.force
 	else
-		addtimer(CALLBACK(src, .proc/pickup_and_wear, I), 5)
+		addtimer(CALLBACK(src, PROC_REF(pickup_and_wear), I), 5)
 
 	return TRUE
 
@@ -131,7 +131,7 @@
 						if(!pickpocketing)
 							pickpocketing = TRUE
 							M.visible_message("[src] starts trying to take [pickupTarget] from [M]", "[src] tries to take [pickupTarget]!")
-							INVOKE_ASYNC(src, .proc/pickpocket, M)
+							INVOKE_ASYNC(src, PROC_REF(pickpocket), M)
 			return TRUE
 
 	switch(mode)
@@ -269,7 +269,7 @@
 
 				if(Adjacent(bodyDisposal))
 					disposing_body = TRUE
-					addtimer(CALLBACK(src, .proc/stuff_mob_in), 5)
+					addtimer(CALLBACK(src, PROC_REF(stuff_mob_in)), 5)
 
 				else
 					var/turf/olddist = get_dist(src, bodyDisposal)

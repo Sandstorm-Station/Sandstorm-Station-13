@@ -109,7 +109,7 @@
 	extended_desc += english_list(button_styles)
 	circuit = new(src)
 	update_button_style()
-	RegisterSignal(circuit, COMSIG_ACTION_TRIGGER, .proc/on_action_trigger)
+	RegisterSignal(circuit, COMSIG_ACTION_TRIGGER, PROC_REF(on_action_trigger))
 
 /obj/item/integrated_circuit/input/quick_button/Destroy()
 	UnregisterSignal(circuit, COMSIG_ACTION_TRIGGER)

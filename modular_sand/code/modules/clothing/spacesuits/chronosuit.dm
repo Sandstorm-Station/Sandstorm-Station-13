@@ -144,7 +144,7 @@
 /obj/item/clothing/suit/space/chronos/proc/phase_4(mob/living/carbon/human/user, turf/to_turf)
 	if(teleporting && activated && user)
 		animate(user, color = "#ffffff", time = 3)
-		phase_timer_id = addtimer(CALLBACK(src, .proc/finish_chronowalk, user, to_turf), 3, TIMER_STOPPABLE)
+		phase_timer_id = addtimer(CALLBACK(src, PROC_REF(finish_chronowalk), user, to_turf), 3, TIMER_STOPPABLE)
 	else
 		finish_chronowalk(user, to_turf)
 

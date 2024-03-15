@@ -307,7 +307,7 @@
 				to_chat(user, span_notice("The panties are not linked to a portal fleshlight."))
 			else
 				update_portal()
-				RegisterSignal(user, COMSIG_PARENT_QDELETING, .proc/drop_out)
+				RegisterSignal(user, COMSIG_PARENT_QDELETING, PROC_REF(drop_out))
 		else
 			update_portal()
 			UnregisterSignal(user, COMSIG_PARENT_QDELETING)

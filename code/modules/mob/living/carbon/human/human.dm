@@ -8,9 +8,9 @@
 /mob/living/carbon/human/Initialize(mapload)
 	add_verb(src, /mob/living/proc/mob_sleep)
 	add_verb(src, /mob/living/proc/lay_down)
-	add_verb(src, /mob/living/carbon/human/verb/underwear_toggle)
-	add_verb(src, /mob/living/verb/subtle)
-	add_verb(src, /mob/living/verb/subtler)
+	add_verb(src, TYPE_VERB_REF(/mob/living/carbon/human, underwear_toggle))
+	add_verb(src, TYPE_VERB_REF(/mob/living, subtle))
+	add_verb(src, TYPE_VERB_REF(/mob/living, subtler))
 	add_verb(src, /mob/living/proc/surrender) // Sandstorm change
 	//initialize limbs first
 	create_bodyparts()
@@ -31,7 +31,7 @@
 	if(CONFIG_GET(flag/disable_stambuffer))
 		enable_intentional_sprint_mode()
 
-	RegisterSignal(src, COMSIG_COMPONENT_CLEAN_ACT, /atom.proc/clean_blood)
+	RegisterSignal(src, COMSIG_COMPONENT_CLEAN_ACT, TYPE_PROC_REF(/atom, clean_blood))
 	GLOB.human_list += src
 
 /mob/living/carbon/human/proc/setup_human_dna()
@@ -48,7 +48,7 @@
 	AddElement(/datum/element/flavor_text/carbon, _name = "Flavor Text", _save_key = "flavor_text")
 	AddElement(/datum/element/flavor_text/carbon/temporary, "", "Set Pose (Temporary Flavor Text)", "This should be used only for things pertaining to the current round!", _save_key = null)
 	AddElement(/datum/element/flavor_text, _name = "OOC Notes", _addendum = "Put information on ERP/vore/lewd-related preferences here. THIS SHOULD NOT CONTAIN REGULAR FLAVORTEXT!!", _save_key = "ooc_notes", _examine_no_preview = TRUE)
-	AddElement(/datum/element/strippable, GLOB.strippable_human_items, /mob/living/carbon/human/.proc/should_strip)
+	AddElement(/datum/element/strippable, GLOB.strippable_human_items, TYPE_PROC_REF(/mob/living/carbon/human, should_strip))
 
 /mob/living/carbon/human/Destroy()
 	QDEL_NULL(physiology)
@@ -575,7 +575,7 @@
 			electrocution_skeleton_anim = mutable_appearance(icon, "electrocuted_base")
 			electrocution_skeleton_anim.appearance_flags |= RESET_COLOR|KEEP_APART
 		add_overlay(electrocution_skeleton_anim)
-		addtimer(CALLBACK(src, .proc/end_electrocution_animation, electrocution_skeleton_anim), anim_duration)
+		addtimer(CALLBACK(src, PROC_REF(end_electrocution_animation), electrocution_skeleton_anim), anim_duration)
 
 	else //or just do a generic animation
 		flick_overlay_view(image(icon,src,"electrocuted_generic",ABOVE_MOB_LAYER), src, anim_duration)

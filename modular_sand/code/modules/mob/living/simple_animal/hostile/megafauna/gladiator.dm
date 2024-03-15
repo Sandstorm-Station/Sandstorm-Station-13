@@ -78,7 +78,7 @@ They deal 35 brute (armor is considered).
 
 /mob/living/simple_animal/hostile/megafauna/gladiator/death()
 	. = ..()
-	addtimer(CALLBACK(src, .proc/deadify), 2.5 SECONDS)
+	addtimer(CALLBACK(src, PROC_REF(deadify)), 2.5 SECONDS)
 
 /mob/living/simple_animal/hostile/megafauna/gladiator/proc/deadify()
 	icon_state = "gladiator_dead"

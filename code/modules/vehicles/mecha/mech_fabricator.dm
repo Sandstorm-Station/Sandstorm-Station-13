@@ -68,7 +68,7 @@
 
 /obj/machinery/mecha_part_fabricator/Initialize(mapload)
 	stored_research = new
-	rmat = AddComponent(/datum/component/remote_materials, "mechfab", mapload && link_on_init, _after_insert=CALLBACK(src, .proc/AfterMaterialInsert))
+	rmat = AddComponent(/datum/component/remote_materials, "mechfab", mapload && link_on_init, _after_insert=CALLBACK(src, PROC_REF(AfterMaterialInsert)))
 
 	RefreshParts() //Recalculating local material sizes if the fab isn't linked
 	return ..()
@@ -646,7 +646,7 @@
 /obj/machinery/mecha_part_fabricator/proc/AfterMaterialInsert(item_inserted, id_inserted, amount_inserted)
 	var/datum/material/M = id_inserted
 	add_overlay("fab-load-[M.name]")
-	addtimer(CALLBACK(src, /atom/proc/cut_overlay, "fab-load-[M.name]"), 10)
+	addtimer(CALLBACK(src, TYPE_PROC_REF(/atom, cut_overlay), "fab-load-[M.name]"), 10)
 
 /obj/machinery/mecha_part_fabricator/screwdriver_act(mob/living/user, obj/item/I)
 	if(..())

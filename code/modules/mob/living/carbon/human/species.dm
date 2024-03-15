@@ -1712,7 +1712,7 @@ GLOBAL_LIST_EMPTY(roundstart_race_names)
 	if(radiation > RAD_MOB_HAIRLOSS)
 		if(prob(15) && !(H.hair_style == "Bald") && (HAIR in species_traits))
 			to_chat(H, "<span class='danger'>Your hair starts to fall out in clumps...</span>")
-			addtimer(CALLBACK(src, .proc/go_bald, H), 50)
+			addtimer(CALLBACK(src, PROC_REF(go_bald), H), 50)
 
 /datum/species/proc/go_bald(mob/living/carbon/human/H)
 	if(QDELETED(H))	//may be called from a timer
@@ -2619,7 +2619,7 @@ GLOBAL_LIST_EMPTY(roundstart_race_names)
 
 	if(flying_species && H.movement_type & FLYING)
 		ToggleFlight(H)
-		INVOKE_ASYNC(src, .proc/flyslip, H)
+		INVOKE_ASYNC(src, PROC_REF(flyslip), H)
 
 	. = stunmod * H.physiology.stun_mod * amount
 
@@ -2766,7 +2766,7 @@ GLOBAL_LIST_EMPTY(roundstart_race_names)
 		buckled_obj.unbuckle_mob(H)
 		step(buckled_obj, olddir)
 	else
-		new /datum/forced_movement(H, get_ranged_target_turf(H, olddir, 4), 1, FALSE, CALLBACK(H, /mob/living/carbon/.proc/spin, 1, 1))
+		new /datum/forced_movement(H, get_ranged_target_turf(H, olddir, 4), 1, FALSE, CALLBACK(H, TYPE_PROC_REF(/mob/living/carbon, spin), 1, 1))
 	return TRUE
 
 //UNSAFE PROC, should only be called through the Activate or other sources that check for CanFly

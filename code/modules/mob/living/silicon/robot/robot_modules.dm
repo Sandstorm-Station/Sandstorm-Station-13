@@ -224,7 +224,7 @@
 	R.module = RM
 	R.update_module_innate()
 	RM.rebuild_modules()
-	INVOKE_ASYNC(RM, .proc/do_transform_animation)
+	INVOKE_ASYNC(RM, PROC_REF(do_transform_animation))
 	if(RM.dogborg || R.dogborg)
 		RM.dogborg_equip()
 		R.typing_indicator_state = /obj/effect/overlay/typing_indicator/machine/dogborg
@@ -375,7 +375,7 @@
 			bad_snowflake.pixel_x = -16
 			med_icons["Alina"] = bad_snowflake
 		med_icons = sort_list(med_icons)
-	var/med_borg_icon = show_radial_menu(R, R , med_icons, custom_check = CALLBACK(src, .proc/check_menu, R), radius = 42, require_near = TRUE)
+	var/med_borg_icon = show_radial_menu(R, R , med_icons, custom_check = CALLBACK(src, PROC_REF(check_menu), R), radius = 42, require_near = TRUE)
 	switch(med_borg_icon)
 		if("Default")
 			cyborg_base_icon = "medical"
@@ -501,7 +501,7 @@
 			bad_snowflake.pixel_x = -16
 			engi_icons["Alina"] = bad_snowflake
 		engi_icons = sort_list(engi_icons)
-	var/engi_borg_icon = show_radial_menu(R, R , engi_icons, custom_check = CALLBACK(src, .proc/check_menu, R), radius = 42, require_near = TRUE)
+	var/engi_borg_icon = show_radial_menu(R, R , engi_icons, custom_check = CALLBACK(src, PROC_REF(check_menu), R), radius = 42, require_near = TRUE)
 	switch(engi_borg_icon)
 		if("Default")
 			cyborg_base_icon = "engineer"
@@ -604,7 +604,7 @@
 			bad_snowflake.pixel_x = -16
 			sec_icons["Alina"] = bad_snowflake
 		sec_icons = sort_list(sec_icons)
-	var/sec_borg_icon = show_radial_menu(R, R , sec_icons, custom_check = CALLBACK(src, .proc/check_menu, R), radius = 42, require_near = TRUE)
+	var/sec_borg_icon = show_radial_menu(R, R , sec_icons, custom_check = CALLBACK(src, PROC_REF(check_menu), R), radius = 42, require_near = TRUE)
 	switch(sec_borg_icon)
 		if("Default")
 			cyborg_base_icon = "sec"
@@ -700,7 +700,7 @@
 		"Spider" = image(icon = 'modular_citadel/icons/mob/robots.dmi', icon_state = "whitespider"),
 		"Drake" = image(icon = 'modular_sand/icons/mob/cyborg/drakemech.dmi', icon_state = "drakepeacebox")
 		))
-	var/peace_borg_icon = show_radial_menu(R, R , peace_icons, custom_check = CALLBACK(src, .proc/check_menu, R), radius = 42, require_near = TRUE)
+	var/peace_borg_icon = show_radial_menu(R, R , peace_icons, custom_check = CALLBACK(src, PROC_REF(check_menu), R), radius = 42, require_near = TRUE)
 	switch(peace_borg_icon)
 		if("Default")
 			cyborg_base_icon = "peace"
@@ -873,7 +873,7 @@
 			bad_snowflake.pixel_x = -16
 			service_icons["Alina"] = bad_snowflake
 		service_icons = sort_list(service_icons)
-	var/service_robot_icon = show_radial_menu(R, R , service_icons, custom_check = CALLBACK(src, .proc/check_menu, R), radius = 42, require_near = TRUE)
+	var/service_robot_icon = show_radial_menu(R, R , service_icons, custom_check = CALLBACK(src, PROC_REF(check_menu), R), radius = 42, require_near = TRUE)
 	switch(service_robot_icon)
 		if("(Service) Waitress")
 			cyborg_base_icon = "service_f"
@@ -993,7 +993,7 @@
 			wide.pixel_x = -16
 			mining_icons[a] = wide
 		mining_icons = sort_list(mining_icons)
-	var/mining_borg_icon = show_radial_menu(R, R , mining_icons, custom_check = CALLBACK(src, .proc/check_menu, R), radius = 42, require_near = TRUE)
+	var/mining_borg_icon = show_radial_menu(R, R , mining_icons, custom_check = CALLBACK(src, PROC_REF(check_menu), R), radius = 42, require_near = TRUE)
 	switch(mining_borg_icon)
 		if("Lavaland")
 			cyborg_base_icon = "miner"

@@ -30,7 +30,7 @@
 
 /datum/action/proc/link_to(Target)
 	target = Target
-	RegisterSignal(Target, COMSIG_ATOM_UPDATED_ICON, .proc/OnUpdatedIcon)
+	RegisterSignal(Target, COMSIG_ATOM_UPDATED_ICON, PROC_REF(OnUpdatedIcon))
 
 /datum/action/Destroy()
 	if(owner)
@@ -48,7 +48,7 @@
 			return
 		Remove(owner)
 	owner = M
-	RegisterSignal(owner, COMSIG_PARENT_QDELETING, .proc/clear_ref, override = TRUE)
+	RegisterSignal(owner, COMSIG_PARENT_QDELETING, PROC_REF(clear_ref), override = TRUE)
 
 	GiveAction(M)
 
@@ -70,7 +70,7 @@
 	if(owner)
 		UnregisterSignal(owner, COMSIG_PARENT_QDELETING)
 		if(target == owner)
-			RegisterSignal(target, COMSIG_PARENT_QDELETING, .proc/clear_ref)
+			RegisterSignal(target, COMSIG_PARENT_QDELETING, PROC_REF(clear_ref))
 		owner = null
 
 /datum/action/proc/Trigger()

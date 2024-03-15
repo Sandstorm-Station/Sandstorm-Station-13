@@ -826,7 +826,7 @@ GLOBAL_LIST(objective_choices)
 			do_edit_objectives_ambitions()
 			return
 		S_TIMER_COOLDOWN_START(src, COOLDOWN_OBJ_ADMIN_PING, ADMIN_PING_COOLDOWN_TIME)
-		RegisterSignal(src, list(COMSIG_CD_STOP(COOLDOWN_OBJ_ADMIN_PING), COMSIG_CD_RESET(COOLDOWN_OBJ_ADMIN_PING)), .proc/on_objectives_request_cd_end)
+		RegisterSignal(src, list(COMSIG_CD_STOP(COOLDOWN_OBJ_ADMIN_PING), COMSIG_CD_RESET(COOLDOWN_OBJ_ADMIN_PING)), PROC_REF(on_objectives_request_cd_end))
 		log_admin("Objectives review request - [key_name(usr)] has requested a review of their objective changes, pinging the admins.")
 		for(var/a in GLOB.admins)
 			var/client/admin_client = a
@@ -1663,7 +1663,7 @@ GLOBAL_LIST(objective_choices)
 				continue
 		S.charge_counter = delay
 		S.UpdateButton()
-		INVOKE_ASYNC(S, /obj/effect/proc_holder/spell.proc/start_recharge)
+		INVOKE_ASYNC(S, TYPE_PROC_REF(/obj/effect/proc_holder/spell, start_recharge))
 
 /datum/mind/proc/get_ghost(even_if_they_cant_reenter)
 	for(var/mob/dead/observer/G in GLOB.dead_mob_list)

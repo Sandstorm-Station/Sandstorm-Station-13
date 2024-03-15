@@ -137,7 +137,7 @@
 
 	burst_size = 1
 
-	sort_list(fire_select_modes, /proc/cmp_numeric_asc)
+	sort_list(fire_select_modes, GLOBAL_PROC_REF(cmp_numeric_asc))
 
 	if(fire_select_modes.len > 1)
 		firemode_action = new(src)
@@ -348,7 +348,7 @@
 				bonus_spread += 24 * G.weapon_weight * G.dualwield_spread_mult
 				loop_counter++
 				var/stam_cost = G.getstamcost(user)
-				addtimer(CALLBACK(G, /obj/item/gun.proc/process_fire, target, user, TRUE, params, null, bonus_spread, stam_cost), loop_counter)
+				addtimer(CALLBACK(G, TYPE_PROC_REF(/obj/item/gun, process_fire), target, user, TRUE, params, null, bonus_spread, stam_cost), loop_counter)
 
 	var/stam_cost = getstamcost(user)
 	process_fire(target, user, TRUE, params, null, bonus_spread, stam_cost)
@@ -788,7 +788,7 @@
 		zoomed = !zoomed
 
 	if(zoomed)
-		RegisterSignal(user, COMSIG_ATOM_DIR_CHANGE, .proc/rotate)
+		RegisterSignal(user, COMSIG_ATOM_DIR_CHANGE, PROC_REF(rotate))
 		user.client.view_size.zoomOut(zoom_out_amt, zoom_amt, direct)
 	else
 		UnregisterSignal(user, COMSIG_ATOM_DIR_CHANGE)

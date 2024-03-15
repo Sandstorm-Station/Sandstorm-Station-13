@@ -118,8 +118,8 @@ GLOBAL_VAR_INIT(observer_default_invisibility, INVISIBILITY_OBSERVER)
 	real_name = name
 
 	if(!fun_verbs)
-		remove_verb(src, /mob/dead/observer/verb/boo)
-		remove_verb(src, /mob/dead/observer/verb/possess)
+		remove_verb(src, TYPE_VERB_REF(/mob/dead/observer, boo))
+		remove_verb(src, TYPE_VERB_REF(/mob/dead/observer, possess))
 
 	animate(src, pixel_z = 2, time = 10, loop = -1, flags = ANIMATION_RELATIVE)
 	animate(pixel_z = -4, time = 10, loop = -1, flags = ANIMATION_RELATIVE)
@@ -146,13 +146,13 @@ GLOBAL_VAR_INIT(observer_default_invisibility, INVISIBILITY_OBSERVER)
 	var/old_color = color
 	color = "#960000"
 	animate(src, color = old_color, time = 10, flags = ANIMATION_PARALLEL)
-	addtimer(CALLBACK(src, /atom/proc/update_atom_colour), 10)
+	addtimer(CALLBACK(src, TYPE_PROC_REF(/atom, update_atom_colour)), 10)
 
 /mob/dead/observer/ratvar_act()
 	var/old_color = color
 	color = "#FAE48C"
 	animate(src, color = old_color, time = 10, flags = ANIMATION_PARALLEL)
-	addtimer(CALLBACK(src, /atom/proc/update_atom_colour), 10)
+	addtimer(CALLBACK(src, TYPE_PROC_REF(/atom, update_atom_colour)), 10)
 
 /mob/dead/observer/Destroy()
 	GLOB.ghost_images_default -= ghostimage_default
@@ -852,11 +852,11 @@ This is the proc mobs get to turn into a ghost. Forked from ghostize due to comp
 			ghostimage_simple.icon_state = icon_state
 		if(NAMEOF(src, fun_verbs))
 			if(fun_verbs)
-				add_verb(src, /mob/dead/observer/verb/boo)
-				add_verb(src, /mob/dead/observer/verb/possess)
+				add_verb(src, TYPE_VERB_REF(/mob/dead/observer, boo))
+				add_verb(src, TYPE_VERB_REF(/mob/dead/observer, possess))
 			else
-				remove_verb(src, /mob/dead/observer/verb/boo)
-				remove_verb(src, /mob/dead/observer/verb/possess)
+				remove_verb(src, TYPE_VERB_REF(/mob/dead/observer, boo))
+				remove_verb(src, TYPE_VERB_REF(/mob/dead/observer, possess))
 
 /mob/dead/observer/reset_perspective(atom/A)
 	if(client)

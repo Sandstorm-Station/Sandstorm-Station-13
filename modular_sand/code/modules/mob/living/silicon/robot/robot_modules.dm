@@ -74,7 +74,7 @@
 		"Medical" = image(icon = 'icons/mob/robots.dmi', icon_state = "synd_medical"),
 		"Assault" = image(icon = 'icons/mob/robots.dmi', icon_state = "synd_sec"),
 		))
-	var/syndiejack_icon = show_radial_menu(R, R , syndicatejack_icons, custom_check = CALLBACK(src, .proc/check_menu, R), radius = 42, require_near = TRUE)
+	var/syndiejack_icon = show_radial_menu(R, R , syndicatejack_icons, custom_check = CALLBACK(src, PROC_REF(check_menu), R), radius = 42, require_near = TRUE)
 	switch(syndiejack_icon)
 		if("Saboteur")
 			cyborg_base_icon = "synd_engi"
