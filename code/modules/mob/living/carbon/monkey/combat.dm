@@ -117,7 +117,7 @@
 				pickupTarget = null
 				pickupTimer = 0
 			else
-				INVOKE_ASYNC(src, .proc/walk2derpless, pickupTarget.loc)
+				INVOKE_ASYNC(src, PROC_REF(walk2derpless), pickupTarget.loc)
 				if(Adjacent(pickupTarget) || Adjacent(pickupTarget.loc)) // next to target
 					drop_all_held_items() // who cares about these items, i want that one!
 					if(isturf(pickupTarget.loc)) // on floor
@@ -167,7 +167,7 @@
 				return TRUE
 
 			if(target != null)
-				INVOKE_ASYNC(src, .proc/walk2derpless, target)
+				INVOKE_ASYNC(src, PROC_REF(walk2derpless), target)
 
 			// pickup any nearby weapon
 			if(!pickupTarget && prob(MONKEY_WEAPON_PROB))
@@ -252,7 +252,7 @@
 
 			if(target.pulledby != src && !istype(target.pulledby, /mob/living/carbon/monkey/))
 
-				INVOKE_ASYNC(src, .proc/walk2derpless, target.loc)
+				INVOKE_ASYNC(src, PROC_REF(walk2derpless), target.loc)
 
 				if(Adjacent(target) && isturf(target.loc))
 					a_intent = INTENT_GRAB
@@ -265,7 +265,7 @@
 						frustration = 0
 
 			else if(!disposing_body)
-				INVOKE_ASYNC(src, .proc/walk2derpless, bodyDisposal.loc)
+				INVOKE_ASYNC(src, PROC_REF(walk2derpless), bodyDisposal.loc)
 
 				if(Adjacent(bodyDisposal))
 					disposing_body = TRUE
