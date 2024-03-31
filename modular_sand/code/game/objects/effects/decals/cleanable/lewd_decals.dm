@@ -10,7 +10,7 @@
 
 /obj/effect/decal/cleanable/semendrip/replace_decal(obj/effect/decal/cleanable/semendrip/C)
 	. = ..()
-	reagents.trans_to(src, C.reagents.total_volume)
+	C.reagents.trans_to(src, C.reagents.total_volume)
 	transfer_blood_dna(C.blood_DNA)
 	var/obj/effect/decal/cleanable/semen/S = (locate(/obj/effect/decal/cleanable/semen) in C.loc)
 	if(S)
