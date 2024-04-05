@@ -1527,7 +1527,7 @@ Traitors and the like can also be revived with the previous role mostly intact.
 				to_chat(usr, "<span class='warning'>[C] is dead!")
 				return
 			else
-				C.pregoodbye(C) //sandstorm punish and ends here.
+				C.goodbye() //sandstorm punish and ends here.
 
 	punish_log(target, punishment)
 

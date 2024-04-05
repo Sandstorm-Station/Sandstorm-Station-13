@@ -23,6 +23,6 @@
 
 /datum/round_event/wizard/possession/start()
 	for(var/mob/dead/observer/G in GLOB.player_list)
-		add_verb(G, TYPE_VERB_REF(/mob/dead/observer, boo))
-		add_verb(G, TYPE_VERB_REF(/mob/dead/observer, possess))
+		add_verb(G, /mob/dead/observer/verb/boo)
+		add_verb(G, /mob/dead/observer/verb/possess)
 		to_chat(G, "You suddenly feel a welling of new spooky powers...")
