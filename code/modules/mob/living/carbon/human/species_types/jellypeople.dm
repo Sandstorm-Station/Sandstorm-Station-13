@@ -321,17 +321,17 @@
 		L["name"] = body.name
 		L["ref"] = "[REF(body)]"
 		L["occupied"] = occupied
-		var/button
+		var/button_state
 		if(occupied == "owner")
-			button = "selected"
+			button_state = "selected"
 		else if(occupied == "stranger")
-			button = "danger"
+			button_state = "danger"
 		else if(can_swap(body))
-			button = null
+			button_state = null
 		else
-			button = "disabled"
+			button_state = "disabled"
 
-		L["swap_button_state"] = button
+		L["swap_button_state"] = button_state
 		L["swappable"] = (occupied == "available") && can_swap(body)
 
 		data["bodies"] += list(L)
@@ -746,9 +746,9 @@
 	background_icon_state = "bg_alien"
 	var/datum/species/jelly/stargazer/species
 
-/datum/action/innate/link_minds/New(_species)
+/datum/action/innate/link_minds/New(species)
 	..()
-	species = _species
+	src.species = species
 
 /datum/action/innate/link_minds/Activate()
 	var/mob/living/carbon/human/H = owner
@@ -772,3 +772,7 @@
 		else
 			to_chat(H, "<span class='warning'>You can't seem to link [target]'s mind...</span>")
 			to_chat(target, "<span class='warning'>The foreign presence leaves your mind.</span>")
+
+/datum/action/innate/link_minds/Destroy()
+	species = null
+	return ..()
