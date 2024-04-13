@@ -100,7 +100,7 @@
 /obj/effect/mob_spawn/proc/special(mob/M)
 	return
 
-/obj/effect/mob_spawn/proc/equip(mob/M)
+/obj/effect/mob_spawn/proc/equip(mob/M, load_character)
 	return
 
 /obj/effect/mob_spawn/proc/create(ckey, name, load_character)
@@ -125,7 +125,7 @@
 		var/mob/living/carbon/human/H = M
 		var/mob/grab = get_mob_by_ckey(ckey)
 		H.load_client_appearance(grab.client)
-	equip(M)
+	equip(M, load_character)
 
 	if(ckey)
 		M.ckey = ckey
@@ -203,32 +203,33 @@
 		outfit = new /datum/outfit
 	return ..()
 
-/obj/effect/mob_spawn/human/equip(mob/living/carbon/human/H)
-	if(mob_species)
+/obj/effect/mob_spawn/human/equip(mob/living/carbon/human/H, load_character)
+	if(!load_character && mob_species)
 		H.set_species(mob_species)
 	if(husk)
 		H.Drain()
 	else //Because for some reason I can't track down, things are getting turned into husks even if husk = false. It's in some damage proc somewhere.
 		H.cure_husk()
-	H.underwear = "Nude"
-	H.undershirt = "Nude"
-	H.socks = "Nude"
-	if(hair_style)
-		H.hair_style = hair_style
-	else
-		H.hair_style = random_hair_style(gender)
-	if(facial_hair_style)
-		H.facial_hair_style = facial_hair_style
-	else
-		H.facial_hair_style = random_facial_hair_style(gender)
-	if(skin_tone)
-		H.skin_tone = skin_tone
-		if(!GLOB.skin_tones[H.skin_tone])
-			H.dna.skin_tone_override = H.skin_tone
-	else
-		H.skin_tone = random_skin_tone()
-	H.update_hair()
-	H.update_body() //update_genitals arg FALSE because these don't quite require/have them most times.
+	if(!load_character)
+		H.underwear = "Nude"
+		H.undershirt = "Nude"
+		H.socks = "Nude"
+		if(hair_style)
+			H.hair_style = hair_style
+		else
+			H.hair_style = random_hair_style(gender)
+		if(facial_hair_style)
+			H.facial_hair_style = facial_hair_style
+		else
+			H.facial_hair_style = random_facial_hair_style(gender)
+		if(skin_tone)
+			H.skin_tone = skin_tone
+			if(!GLOB.skin_tones[H.skin_tone])
+				H.dna.skin_tone_override = H.skin_tone
+		else
+			H.skin_tone = random_skin_tone()
+		H.update_hair()
+		H.update_body() //update_genitals arg FALSE because these don't quite require/have them most times.
 	if(outfit)
 		var/static/list/slots = list("uniform", "r_hand", "l_hand", "suit", "shoes", "gloves", "ears", "glasses", "mask", "head", "belt", "r_pocket", "l_pocket", "back", "id", "neck", "backpack_contents", "suit_store")
 		for(var/slot in slots)
