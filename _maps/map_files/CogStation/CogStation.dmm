@@ -5426,7 +5426,7 @@
 /obj/effect/turf_decal/stripes/line{
 	dir = 8
 	},
-/obj/item/destTagger,
+/obj/item/dest_tagger,
 /obj/machinery/atmospherics/components/unary/vent_scrubber/on{
 	dir = 8
 	},
@@ -7395,7 +7395,7 @@
 	dir = 1;
 	light_color = "#ffc1c1"
 	},
-/obj/item/destTagger,
+/obj/item/dest_tagger,
 /obj/machinery/requests_console{
 	department = "Service Router";
 	name = "Service Router RC";
@@ -21063,7 +21063,7 @@
 /obj/item/stack/packageWrap,
 /obj/item/stack/packageWrap,
 /obj/item/hand_labeler,
-/obj/item/destTagger,
+/obj/item/dest_tagger,
 /obj/machinery/requests_console{
 	department = "Public Router";
 	name = "Public Router RC";
@@ -33424,7 +33424,7 @@
 /obj/structure/table,
 /obj/item/stack/packageWrap,
 /obj/item/hand_labeler,
-/obj/item/destTagger,
+/obj/item/dest_tagger,
 /obj/effect/turf_decal/bot,
 /obj/machinery/requests_console{
 	department = "EVA Router";
@@ -50560,7 +50560,7 @@
 "ceL" = (
 /obj/effect/turf_decal/delivery,
 /obj/structure/table,
-/obj/item/destTagger,
+/obj/item/dest_tagger,
 /obj/machinery/atmospherics/components/unary/vent_pump/on{
 	dir = 4
 	},
@@ -56769,9 +56769,9 @@
 "crd" = (
 /obj/effect/turf_decal/bot,
 /obj/structure/table/reinforced,
-/obj/item/destTagger,
-/obj/item/destTagger,
-/obj/item/destTagger,
+/obj/item/dest_tagger,
+/obj/item/dest_tagger,
+/obj/item/dest_tagger,
 /obj/structure/sign/warning{
 	name = "\improper KEEP CLEAR: HIGH SPEED DELIVERIES";
 	pixel_y = 32
@@ -59026,7 +59026,7 @@
 /area/router/air)
 "cvn" = (
 /obj/structure/table,
-/obj/item/destTagger,
+/obj/item/dest_tagger,
 /obj/machinery/airalarm{
 	pixel_y = 24
 	},
@@ -69225,7 +69225,7 @@
 /obj/structure/table/reinforced,
 /obj/item/stack/packageWrap,
 /obj/item/hand_labeler,
-/obj/item/destTagger,
+/obj/item/dest_tagger,
 /obj/machinery/light,
 /obj/machinery/requests_console{
 	department = "MedSci Router";
