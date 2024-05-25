@@ -181,7 +181,7 @@
 /datum/station_trait/deathrattle_department/cargo
 	trait_flags = NONE
 	weight = 1
-	department_to_apply_to = DEPARTMENT_BITFLAG_CARGO
+	department_to_apply_to = DEPARTMENT_BITFLAG_SUPPLY
 	department_name = "Cargo"
 
 /datum/station_trait/deathrattle_department/engineering
