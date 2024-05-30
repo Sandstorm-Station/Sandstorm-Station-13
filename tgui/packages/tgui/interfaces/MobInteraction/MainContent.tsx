@@ -1,20 +1,19 @@
 import { useLocalState } from '../../backend';
 import { Icon, Input, Section, Tabs, Stack } from '../../components';
 
-import { InteractionsTab } from './tabs/InteractionsTab';
-import { GenitalTab } from './tabs/GenitalTab';
-import { CharacterPrefsTab } from './tabs/CharacterPrefsTab';
-import { ContentPreferencesTab } from './tabs/ContentPreferencesTab';
+import {
+  InteractionsTab,
+  GenitalTab,
+  CharacterPrefsTab,
+  ContentPreferencesTab,
+} from './tabs';
 
 export const MainContent = (props, context) => {
-
   const [
     searchText,
     setSearchText,
   ] = useLocalState(context, 'searchText', '');
-
   const [tabIndex, setTabIndex] = useLocalState(context, 'tabIndex', 0);
-
   return (
     <Section fill>
       <Stack vertical fill>
