@@ -41,29 +41,18 @@ export const InteractionsTab = (props, context) => {
     searchText,
     data)
     || [];
+
   const favorite_interactions = data.favorite_interactions || [];
-  const [
-    tab,
-    setTab,
-  ] = useLocalState(context, 'tab', 0);
+  const [inFavorites, setInFavorites] = useLocalState(context, 'inFavorites', false);
   const valid_favorites = interactions.filter(interaction => favorite_interactions.includes(interaction.key));
-  const interactions_to_display = tab === 1
+  const interactions_to_display = inFavorites
     ? valid_favorites
     : interactions;
-  if (tab === 1 && !favorite_interactions.length) {
-    setTab(0);
-  }
+
   const { user_is_blacklisted, target_is_blacklisted } = data;
+
   return (
     <Stack vertical>
-      {(!!valid_favorites.length || !!tab) && (
-        <Stack.Item>
-          <Tabs fluid textAlign="center">
-            <Tabs.Tab selected={tab === 0} onClick={() => setTab(0)}>Normal</Tabs.Tab>
-            <Tabs.Tab selected={tab === 1} onClick={() => setTab(1)}>Favorites</Tabs.Tab>
-          </Tabs>
-        </Stack.Item>
-      )}
       {
         interactions_to_display.length ? (
           interactions_to_display.map((interaction) => (
@@ -94,6 +83,7 @@ export const InteractionsTab = (props, context) => {
                 <Stack.Item>
                   <Button
                     icon="star"
+                    tooltip={`${favorite_interactions.includes(interaction.key) ? "Remove from" : "Add to"} favorites`}
                     onClick={() => act('favorite', {
                       interaction: interaction.key,
                     })}
@@ -109,7 +99,8 @@ export const InteractionsTab = (props, context) => {
               user_is_blacklisted || target_is_blacklisted
                 ? `${user_is_blacklisted ? "Your" : "Their"} mob type is blacklisted from interactions`
                 : searchText ? "No matching results."
-                  : "No interactions available."
+                  : inFavorites ? favorite_interactions.length ? "No favorites available. Maybe you or your partner lack something your favorites require." : "You have no favorites! Choose some by clicking the star to the right of any interactions!"
+                    : "No interactions available."
             }
           </Section>
         )
