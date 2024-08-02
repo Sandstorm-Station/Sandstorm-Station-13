@@ -39,6 +39,14 @@
 	var/datum/interaction/lewd/last_lewd_datum	//Recording our last lewd datum allows us to do stuff like custom cum messages.
 												//Yes i feel like an idiot writing this.
 	var/cleartimer //Timer for clearing the "last_lewd_datum". This prevents some oddities.
+	/// Enable the 'arousal_multiplier' for calculation instead of lust.
+	var/use_arousal_multiplier = FALSE
+	/// Enable the 'arousal_moaning' to be used as a % chance of moaning instead of default calculation.
+	var/use_moaning_multiplier = FALSE
+	/// A separate arousal multiplier that the user has control of (although we could just tap into lust or replace it.)
+	var/arousal_multiplier = 100
+	/// Chance of moaning during an interaction
+	var/arousal_moaning = 5
 
 /mob/living/proc/clear_lewd_datum()
 	last_partner = null
@@ -260,16 +268,35 @@
 	return TRUE
 
 /mob/living/proc/moan()
-	if(!(prob(get_lust() / get_lust_tolerance() * 65)))
-		return
-	var/moan = rand(1, 7)
-	if(moan == lastmoan)
-		moan--
-	if(!is_muzzled())
-		visible_message(message = span_lewd("<B>\The [src]</B> [pick("moans", "moans in pleasure")]."), ignored_mobs = get_unconsenting())
-	if(is_muzzled())//immursion
+	// If using the multiplier option, do a basic percentage chance.
+	if (use_moaning_multiplier)
+		if (!(prob(arousal_moaning/100)))
+			return
+	else
+		if(!(prob(get_lust() / get_lust_tolerance() * 65)))
+			return
+
+	if(is_muzzled())
 		audible_message(span_lewd("<B>[src]</B> [pick("mimes a pleasured moan","moans in silence")]."))
-	lastmoan = moan
+	else
+		visible_message(message = span_lewd("<B>\The [src]</B> [pick("moans", "moans in pleasure")]."), ignored_mobs = get_unconsenting())
+
+		// Get reference of the list we're using based on gender.
+		var/list/moans
+		if (gender == FEMALE)
+			moans = GLOB.lewd_moans_female
+		else
+			moans = GLOB.lewd_moans_male
+
+		// Pick a sound from the list.
+		var/sound = pick(moans)
+
+		// If the sound is repeated, get a new from a list without it.
+		if (lastmoan == sound)
+			sound = pick(LAZYCOPY(moans) - lastmoan)
+
+		playlewdinteractionsound(loc, sound, 80, 0, 0)
+		lastmoan = sound
 
 /mob/living/proc/cum(mob/living/partner, target_orifice)
 	if(HAS_TRAIT(src, TRAIT_NEVERBONER))
@@ -723,7 +750,10 @@
 		return FALSE
 
 	if(amount)
-		add_lust(amount)
+		if (use_arousal_multiplier)
+			add_lust(amount * (arousal_multiplier/100))
+		else
+			add_lust(amount)
 	var/lust = get_lust()
 	var/lust_tolerance = get_lust_tolerance()
 	if(lust >= lust_tolerance)

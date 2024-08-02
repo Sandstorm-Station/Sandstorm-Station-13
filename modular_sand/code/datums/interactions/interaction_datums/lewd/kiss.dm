@@ -18,3 +18,4 @@
 		user.visible_message(span_lewd("\The <b>[user]</b> gives an intense, lingering kiss to \the <b>[partner]</b>."))
 	else
 		user.visible_message(span_lewd("\The <b>[user]</b> kisses \the <b>[partner]</b> deeply."))
+	playlewdinteractionsound(pick(GLOB.lewd_kiss_sounds), 70, 0, 0)

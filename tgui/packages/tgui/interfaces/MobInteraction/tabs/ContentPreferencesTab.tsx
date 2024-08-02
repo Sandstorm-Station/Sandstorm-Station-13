@@ -22,6 +22,8 @@ type ContentPrefsInfo = {
   no_aphro: boolean,
   no_ass_slap: boolean,
   no_auto_wag: boolean,
+  enable_mood: boolean;
+  enable_moan: boolean;
 }
 
 export const ContentPreferencesTab = (props, context) => {
@@ -47,9 +49,35 @@ export const ContentPreferencesTab = (props, context) => {
     no_aphro,
     no_ass_slap,
     no_auto_wag,
+    enable_mood,
+    enable_moan,
   } = data;
   return (
     <Stack vertical fill>
+      <Stack.Item>
+        <Button
+          fluid
+          mb={-0.7}
+          content="Enable lust gain multiplier"
+          icon={enable_mood ? "toggle-on" : "toggle-off"}
+          selected={enable_mood}
+          onClick={() => act('dynamic', {
+            type: 'enable_mood',
+          })}
+        />
+      </Stack.Item>
+      <Stack.Item>
+        <Button
+          fluid
+          mb={-0.7}
+          content="Enable moaning chance customizaton"
+          icon={enable_moan ? "toggle-on" : "toggle-off"}
+          selected={enable_moan}
+          onClick={() => act('dynamic', {
+            type: 'enable_moan',
+          })}
+        />
+      </Stack.Item>
       <Stack.Item>
         <Button
           fluid

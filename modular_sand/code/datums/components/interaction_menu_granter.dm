@@ -420,6 +420,10 @@
 		.["no_aphro"] = 			!CHECK_BITFIELD(prefs.cit_toggles, NO_APHRO)
 		.["no_ass_slap"] = 			!CHECK_BITFIELD(prefs.cit_toggles, NO_ASS_SLAP)
 		.["no_auto_wag"] = 			!CHECK_BITFIELD(prefs.cit_toggles, NO_AUTO_WAG)
+		.["mood"] = 				self.arousal_multiplier
+		.["moan"] = 				self.arousal_moaning
+		.["enable_mood"] = 			self.use_arousal_multiplier
+		.["enable_moan"] = 			self.use_moaning_multiplier
 
 /datum/component/interaction_menu_granter/ui_static_data(mob/user)
 	. = ..()
@@ -457,7 +461,6 @@
 		interaction["additionalDetails"] = I.additional_details
 		sent_interactions += list(interaction)
 	.["interactions"] = sent_interactions
-
 /proc/num_to_pref(num)
 	switch(num)
 		if(1)
@@ -472,6 +475,17 @@
 		return
 	var/mob/living/parent_mob = parent
 	switch(action)
+		if("dynamic")
+			var/mob/living/carbon/self = parent_mob
+			switch(params["type"])
+				if("multiplier")
+					self.arousal_multiplier = params["amount"]
+				if("moan")
+					self.arousal_moaning = params["amount"]
+				if("enable_mood")
+					self.use_arousal_multiplier = !self.use_arousal_multiplier
+				if("enable_moan")
+					self.use_moaning_multiplier = !self.use_moaning_multiplier
 		if("interact")
 			var/datum/interaction/o = SSinteractions.interactions[params["interaction"]]
 			if(o)
