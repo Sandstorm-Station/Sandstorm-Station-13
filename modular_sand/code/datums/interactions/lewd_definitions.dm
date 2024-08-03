@@ -268,14 +268,6 @@
 	return TRUE
 
 /mob/living/proc/moan()
-	// If using the multiplier option, do a basic percentage chance.
-	if (use_moaning_multiplier)
-		if (!(prob(arousal_moaning/100)))
-			return
-	else
-		if(!(prob(get_lust() / get_lust_tolerance() * 65)))
-			return
-
 	if(is_muzzled())
 		audible_message(span_lewd("<B>[src]</B> [pick("mimes a pleasured moan","moans in silence")]."))
 	else
@@ -756,10 +748,18 @@
 			add_lust(amount)
 	var/lust = get_lust()
 	var/lust_tolerance = get_lust_tolerance()
+
+	var/moaned = FALSE
+	if (use_moaning_multiplier)
+		if(prob(arousal_moaning))
+			moan()
+			moaned = TRUE
+
 	if(lust >= lust_tolerance)
 		if(prob(10))
 			to_chat(src, "<b>You struggle to not orgasm!</b>")
-			moan()
+			if (!moaned)
+				moan()
 			return FALSE
 		if(lust >= (lust_tolerance * 3))
 			if(cum(partner, orifice))
