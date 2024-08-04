@@ -39,14 +39,6 @@
 	var/datum/interaction/lewd/last_lewd_datum	//Recording our last lewd datum allows us to do stuff like custom cum messages.
 												//Yes i feel like an idiot writing this.
 	var/cleartimer //Timer for clearing the "last_lewd_datum". This prevents some oddities.
-	/// Enable the 'arousal_multiplier' for calculation instead of lust.
-	var/use_arousal_multiplier = FALSE
-	/// Enable the 'arousal_moaning' to be used as a % chance of moaning instead of default calculation.
-	var/use_moaning_multiplier = FALSE
-	/// A separate arousal multiplier that the user has control of (although we could just tap into lust or replace it.)
-	var/arousal_multiplier = 100
-	/// Chance of moaning during an interaction
-	var/arousal_moaning = 5
 
 /mob/living/proc/clear_lewd_datum()
 	last_partner = null
@@ -740,6 +732,12 @@
 /mob/living/proc/handle_post_sex(amount, orifice, mob/living/partner)
 	if(stat != CONSCIOUS)
 		return FALSE
+
+	var/datum/preferences/prefs = client?.prefs
+	var/use_arousal_multiplier = NULL_COALESCE(prefs?.use_arousal_multiplier, FALSE)
+	var/use_moaning_multiplier = NULL_COALESCE(prefs?.use_moaning_multiplier, FALSE)
+	var/arousal_moaning = NULL_COALESCE(prefs?.arousal_moaning, 25)
+	var/arousal_multiplier = NULL_COALESCE(prefs?.arousal_multiplier, 100)
 
 	if(amount)
 		if (use_arousal_multiplier)

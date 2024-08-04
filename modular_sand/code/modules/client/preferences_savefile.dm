@@ -29,13 +29,21 @@
 	. = ..()
 	if(!istype(., /savefile))
 		return FALSE
-	WRITE_FILE(.["favorite_interactions"], favorite_interactions)
+	WRITE_FILE(.["favorite_interactions"], 	favorite_interactions)
+	WRITE_FILE(.["use_arousal_multiplier"],	use_arousal_multiplier)
+	WRITE_FILE(.["use_moaning_multiplier"],	use_moaning_multiplier)
+	WRITE_FILE(.["arousal_multiplier"], 	arousal_multiplier)
+	WRITE_FILE(.["arousal_moaning"], 		arousal_moaning)
 
 /datum/preferences/load_preferences(bypass_cooldown)
 	. = ..()
 	if(!istype(., /savefile))
 		return FALSE
-	.["favorite_interactions"] >> favorite_interactions
+	.["favorite_interactions"] >>	favorite_interactions
+	.["use_arousal_multiplier"] >>	use_arousal_multiplier
+	.["use_moaning_multiplier"] >> 	use_moaning_multiplier
+	.["arousal_multiplier"] >> 		arousal_multiplier
+	.["arousal_moaning"] >> 		arousal_moaning
 
 	favorite_interactions = SANITIZE_LIST(favorite_interactions)
 

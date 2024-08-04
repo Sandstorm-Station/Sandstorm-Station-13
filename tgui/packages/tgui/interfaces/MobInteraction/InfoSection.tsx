@@ -10,10 +10,10 @@ type HeaderInfo = {
   theirAttributes: string[];
   theirLust: number;
   theirMaxLust: number;
-  moan: number;
-  mood: number;
-  enable_mood: boolean;
-  enable_moan: boolean;
+  arousal_moaning: number;
+  arousal_multiplier: number;
+  use_arousal_multiplier: boolean;
+  use_moaning_multiplier: boolean;
 }
 
 export const InfoSection = (props, context) => {
@@ -27,10 +27,10 @@ export const InfoSection = (props, context) => {
     theirAttributes,
     theirLust,
     theirMaxLust,
-    moan,
-    mood,
-    enable_mood,
-    enable_moan,
+    arousal_moaning,
+    arousal_multiplier,
+    use_arousal_multiplier,
+    use_moaning_multiplier,
   } = data;
   return (
     <Section title={interactingWith} fill>
@@ -77,33 +77,33 @@ export const InfoSection = (props, context) => {
         </Stack.Item>
         <Stack.Item>
           <Stack fill>
-            {(enable_mood ? (
+            {(use_arousal_multiplier ? (
               <Stack.Item grow>
               <Slider
                 minValue={0}
                 maxValue={300}
                 step={1}
-                value={ mood }
+                value={ arousal_multiplier }
                 unit="%"
                 ranges={{
                   bad: [-Infinity, 25],
                   average: [26, 125],
                   good: [126, Infinity],
                 }}
-                onChange={(_, value) => act("dynamic", {type: 'multiplier', amount: value})}
+                onChange={(_, value) => act("pref", {pref: 'arousal_multiplier', amount: value})}
               >Arousal Multiplier</Slider>
             </Stack.Item>
             ) : (null))}
 
-            {(enable_moan ? (
+            {(use_moaning_multiplier ? (
               <Stack.Item grow>
               <Slider
                 minValue={0}
                 maxValue={100}
                 step={1}
-                value={ moan }
+                value={ arousal_moaning }
                 unit="%"
-                onChange={(_, value) => act("dynamic", {type: 'moan', amount: value})}
+                onChange={(_, value) => act("pref", {pref: 'arousal_moaning', amount: value})}
               >Moaning Chance</Slider>
             </Stack.Item>
             ) : (null))}

@@ -22,8 +22,8 @@ type ContentPrefsInfo = {
   no_aphro: boolean,
   no_ass_slap: boolean,
   no_auto_wag: boolean,
-  enable_mood: boolean;
-  enable_moan: boolean;
+  use_arousal_multiplier: boolean;
+  use_moaning_multiplier: boolean;
 }
 
 export const ContentPreferencesTab = (props, context) => {
@@ -49,8 +49,8 @@ export const ContentPreferencesTab = (props, context) => {
     no_aphro,
     no_ass_slap,
     no_auto_wag,
-    enable_mood,
-    enable_moan,
+    use_arousal_multiplier,
+    use_moaning_multiplier,
   } = data;
   return (
     <Stack vertical fill>
@@ -59,10 +59,10 @@ export const ContentPreferencesTab = (props, context) => {
           fluid
           mb={-0.7}
           content="Enable lust gain multiplier"
-          icon={enable_mood ? "toggle-on" : "toggle-off"}
-          selected={enable_mood}
-          onClick={() => act('dynamic', {
-            type: 'enable_mood',
+          icon={use_arousal_multiplier ? "toggle-on" : "toggle-off"}
+          selected={use_arousal_multiplier}
+          onClick={() => act('pref', {
+            pref: 'use_arousal_multiplier',
           })}
         />
       </Stack.Item>
@@ -71,10 +71,10 @@ export const ContentPreferencesTab = (props, context) => {
           fluid
           mb={-0.7}
           content="Enable moaning chance customizaton"
-          icon={enable_moan ? "toggle-on" : "toggle-off"}
-          selected={enable_moan}
-          onClick={() => act('dynamic', {
-            type: 'enable_moan',
+          icon={use_moaning_multiplier ? "toggle-on" : "toggle-off"}
+          selected={use_moaning_multiplier}
+          onClick={() => act('pref', {
+            pref: 'use_moaning_multiplier',
           })}
         />
       </Stack.Item>
