@@ -389,6 +389,12 @@
 
 	var/datum/preferences/prefs = self?.client.prefs
 	if(prefs)
+	//Lust stuff, appears at the very top
+		.["use_arousal_multiplier"] = 	prefs.use_arousal_multiplier
+		.["arousal_multiplier"] =		prefs.arousal_multiplier
+		.["use_moaning_multiplier"] = 	prefs.use_moaning_multiplier
+		.["moaning_multiplier"] = 		prefs.moaning_multiplier
+
 	//Let's get their favorites!
 		.["favorite_interactions"] = 	SANITIZE_LIST(prefs.favorite_interactions)
 
@@ -420,10 +426,6 @@
 		.["no_aphro"] = 				!CHECK_BITFIELD(prefs.cit_toggles, NO_APHRO)
 		.["no_ass_slap"] = 				!CHECK_BITFIELD(prefs.cit_toggles, NO_ASS_SLAP)
 		.["no_auto_wag"] = 				!CHECK_BITFIELD(prefs.cit_toggles, NO_AUTO_WAG)
-		.["arousal_multiplier"] =		prefs.arousal_multiplier
-		.["arousal_moaning"] = 			prefs.arousal_moaning
-		.["use_arousal_multiplier"] = 	prefs.use_arousal_multiplier
-		.["use_moaning_multiplier"] = 	prefs.use_moaning_multiplier
 
 /datum/component/interaction_menu_granter/ui_static_data(mob/user)
 	. = ..()
@@ -461,6 +463,7 @@
 		interaction["additionalDetails"] = I.additional_details
 		sent_interactions += list(interaction)
 	.["interactions"] = sent_interactions
+
 /proc/num_to_pref(num)
 	switch(num)
 		if(1)
@@ -571,6 +574,15 @@
 		if("pref")
 			var/datum/preferences/prefs = parent_mob.client.prefs
 			switch(params["pref"])
+				if("use_arousal_multiplier")
+					prefs.use_arousal_multiplier = !prefs.use_arousal_multiplier
+				if("arousal_multiplier")
+					prefs.arousal_multiplier = params["amount"]
+				if("use_moaning_multiplier")
+					prefs.use_moaning_multiplier = !prefs.use_moaning_multiplier
+				if("moaning_multiplier")
+					prefs.moaning_multiplier = params["amount"]
+
 				if("verb_consent")
 					TOGGLE_BITFIELD(prefs.toggles, VERB_CONSENT)
 				if("lewd_verb_sounds")
@@ -611,14 +623,6 @@
 					TOGGLE_BITFIELD(prefs.cit_toggles, NO_ASS_SLAP)
 				if("no_auto_wag")
 					TOGGLE_BITFIELD(prefs.cit_toggles, NO_AUTO_WAG)
-				if("arousal_multiplier")
-					prefs.arousal_multiplier = params["amount"]
-				if("arousal_moaning")
-					prefs.arousal_moaning = params["amount"]
-				if("use_arousal_multiplier")
-					prefs.use_arousal_multiplier = !prefs.use_arousal_multiplier
-				if("use_moaning_multiplier")
-					prefs.use_moaning_multiplier = !prefs.use_moaning_multiplier
 				else
 					return FALSE
 			prefs.save_preferences()

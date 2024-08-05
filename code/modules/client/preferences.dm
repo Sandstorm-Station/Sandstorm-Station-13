@@ -124,14 +124,6 @@ GLOBAL_LIST_EMPTY(preferences_datums)
 	var/list/alt_titles_preferences = list()
 	var/lust_tolerance = 100
 	var/sexual_potency = 15
-	/// Enable the 'arousal_multiplier' to be applied to lust amount
-	var/use_arousal_multiplier = FALSE
-	/// Enable the 'arousal_moaning' to be used as a % chance of moaning instead of default calculation.
-	var/use_moaning_multiplier = FALSE
-	/// A separate arousal multiplier that the user has control of (although we could just tap into lust or replace it.)
-	var/arousal_multiplier = 100
-	/// Chance of moaning during an interaction
-	var/arousal_moaning = 5
 	//Sandstorm CHANGES END
 	var/underwear = "Nude"				//underwear type
 	var/undie_color = "FFFFFF"

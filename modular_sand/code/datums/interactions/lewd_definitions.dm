@@ -261,9 +261,9 @@
 
 /mob/living/proc/moan()
 	if(is_muzzled())
-		audible_message(span_lewd("<B>[src]</B> [pick("mimes a pleasured moan","moans in silence")]."))
+		visible_message(span_lewd("<B>[src]</B> [pick("mimes a pleasured moan","moans in silence")]."))
 	else
-		visible_message(message = span_lewd("<B>\The [src]</B> [pick("moans", "moans in pleasure")]."), ignored_mobs = get_unconsenting())
+		visible_message(message = span_lewd("<B>\The [src]</B> [pick("moans", "moans in pleasure")]."), ignored_mobs = get_unconsenting(), omni = TRUE)
 
 		// Get reference of the list we're using based on gender.
 		var/list/moans
@@ -735,9 +735,9 @@
 
 	var/datum/preferences/prefs = client?.prefs
 	var/use_arousal_multiplier = NULL_COALESCE(prefs?.use_arousal_multiplier, FALSE)
-	var/use_moaning_multiplier = NULL_COALESCE(prefs?.use_moaning_multiplier, FALSE)
-	var/arousal_moaning = NULL_COALESCE(prefs?.arousal_moaning, 25)
 	var/arousal_multiplier = NULL_COALESCE(prefs?.arousal_multiplier, 100)
+	var/use_moaning_multiplier = NULL_COALESCE(prefs?.use_moaning_multiplier, FALSE)
+	var/moaning_multiplier = NULL_COALESCE(prefs?.moaning_multiplier, 25)
 
 	if(amount)
 		if (use_arousal_multiplier)
@@ -747,18 +747,17 @@
 	var/lust = get_lust()
 	var/lust_tolerance = get_lust_tolerance()
 
-	var/moaned = FALSE
 	if (use_moaning_multiplier)
-		if(prob(arousal_moaning))
+		if(prob(moaning_multiplier))
 			moan()
-			moaned = TRUE
 
 	if(lust >= lust_tolerance)
-		if(prob(10))
+		if(prob(30))
 			to_chat(src, "<b>You struggle to not orgasm!</b>")
-			if (!moaned)
+		if(!use_moaning_multiplier)
+			// Only when over 65% of your progress
+			if(prob(((lust_tolerance * 3) / lust) * 65))
 				moan()
-			return FALSE
 		if(lust >= (lust_tolerance * 3))
 			if(cum(partner, orifice))
 				return TRUE
