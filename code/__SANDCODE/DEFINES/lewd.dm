@@ -10,6 +10,31 @@ GLOBAL_LIST_INIT(lewd_prefs_choices, list(
 	"No"
 	))
 
+// Moaning Sounds
+GLOBAL_LIST_INIT(lewd_moans_male, list(
+	'modular_sand/sound/interactions/moan_m1.ogg',
+	'modular_sand/sound/interactions/moan_m2.ogg',
+	'modular_sand/sound/interactions/moan_m3.ogg'
+))
+
+GLOBAL_LIST_INIT(lewd_moans_female, list(
+	'modular_sand/sound/interactions/moan_f1.ogg',
+	'modular_sand/sound/interactions/moan_f2.ogg',
+	'modular_sand/sound/interactions/moan_f3.ogg',
+	'modular_sand/sound/interactions/moan_f4.ogg',
+	'modular_sand/sound/interactions/moan_f5.ogg',
+	'modular_sand/sound/interactions/moan_f6.ogg',
+	'modular_sand/sound/interactions/moan_f7.ogg'
+))
+// Kissing sounds
+GLOBAL_LIST_INIT(lewd_kiss_sounds, list(
+	'modular_sand/sound/interactions/kiss1.ogg',
+	'modular_sand/sound/interactions/kiss2.ogg',
+	'modular_sand/sound/interactions/kiss3.ogg',
+	'modular_sand/sound/interactions/kiss4.ogg',
+	'modular_sand/sound/interactions/kiss5.ogg'
+))
+
 #define CUM_TARGET_MOUTH "mouth"
 #define CUM_TARGET_THROAT "throat"
 #define CUM_TARGET_VAGINA "vagina"
