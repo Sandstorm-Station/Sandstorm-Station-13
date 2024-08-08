@@ -744,22 +744,37 @@
 			add_lust(amount * (arousal_multiplier/100))
 		else
 			add_lust(amount)
-	var/lust = get_lust()
-	var/lust_tolerance = get_lust_tolerance()
 
 	if (use_moaning_multiplier)
 		if(prob(moaning_multiplier))
 			moan()
 
-	if(lust >= lust_tolerance)
+	// Below is an overengineered bezier curve based chance of moaning.
+	/// The current lust (arousal) amount.
+	var/lust = get_lust()
+	/// The lust tolerance as defined in preferences.
+	var/lust_tolerance = get_lust_tolerance()
+	/// The arousal limit upon which you climax.
+	var/climax = lust_tolerance * 3
+	/// Threshold where you start moaning.
+	var/threshold = climax/2
+	///Calculation of 't' in bezier quadratic curve. It's a 0 to 1 version of threshold to climax.
+	var/t = percentage_between(lust, threshold, climax, FALSE)
+	// The Y axis value of the point in the bezier curve.
+	var/bezier = 2 * (1 - t) * t * 13.8 + ((t*t) * 100)
+	/// Probability chance resulting from bezier curve.
+	var/chance = clamp(round(bezier),0,100)
+
+	if (lust >= threshold)
 		if(prob(30))
 			to_chat(src, "<b>You struggle to not orgasm!</b>")
-		if(!use_moaning_multiplier)
-			// Only when over 65% of your progress
-			if(prob(((lust_tolerance * 3) / lust) * 65))
+
+		if (!use_moaning_multiplier)
+			if(prob(chance))
 				moan()
-		if(lust >= (lust_tolerance * 3))
-			if(cum(partner, orifice))
+
+		if (lust > climax)
+			if (cum(partner, orifice))
 				return TRUE
 	return FALSE
 
