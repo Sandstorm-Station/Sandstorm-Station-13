@@ -260,27 +260,33 @@
 	return TRUE
 
 /mob/living/proc/moan()
-	if(is_muzzled())
-		visible_message(span_lewd("<B>[src]</B> [pick("mimes a pleasured moan","moans in silence")]."))
+	if(is_muzzled() || (mind?.miming))
+		var/message_to_display = pick("mime%S% a pleasured moan","moan%S% in silence")
+		visible_message(span_lewd("<b>\The [src]</b> [replacetext(message_to_display, "%S%", "s")]."),
+			span_lewd("You [replacetext(message_to_display, "%S%", "")]."))
+		return
+	var/message_to_display = pick("moan%S%", "moan%S% in pleasure")
+	visible_message(span_lewd("<b>\The [src]</b> [replacetext(message_to_display, "%S%", "s")]."),
+		span_lewd("You [replacetext(message_to_display, "%S%", "")]."),
+		span_lewd("You hear some moaning."),
+		ignored_mobs = get_unconsenting(), omni = TRUE)
+
+	// Get reference of the list we're using based on gender.
+	var/list/moans
+	if (gender == FEMALE)
+		moans = GLOB.lewd_moans_female
 	else
-		visible_message(message = span_lewd("<B>\The [src]</B> [pick("moans", "moans in pleasure")]."), ignored_mobs = get_unconsenting(), omni = TRUE)
+		moans = GLOB.lewd_moans_male
 
-		// Get reference of the list we're using based on gender.
-		var/list/moans
-		if (gender == FEMALE)
-			moans = GLOB.lewd_moans_female
-		else
-			moans = GLOB.lewd_moans_male
+	// Pick a sound from the list.
+	var/sound = pick(moans)
 
-		// Pick a sound from the list.
-		var/sound = pick(moans)
+	// If the sound is repeated, get a new from a list without it.
+	if (lastmoan == sound)
+		sound = pick(LAZYCOPY(moans) - lastmoan)
 
-		// If the sound is repeated, get a new from a list without it.
-		if (lastmoan == sound)
-			sound = pick(LAZYCOPY(moans) - lastmoan)
-
-		playlewdinteractionsound(loc, sound, 80, 0, 0)
-		lastmoan = sound
+	playlewdinteractionsound(loc, sound, 80, 0, 0)
+	lastmoan = sound
 
 /mob/living/proc/cum(mob/living/partner, target_orifice)
 	if(HAS_TRAIT(src, TRAIT_NEVERBONER))
