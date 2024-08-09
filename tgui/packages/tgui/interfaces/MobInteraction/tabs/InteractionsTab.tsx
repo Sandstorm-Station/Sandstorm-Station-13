@@ -2,7 +2,7 @@ import { filter, map, sortBy } from 'common/collections';
 import { flow } from 'common/fp';
 import { createSearch } from 'common/string';
 import { useBackend, useLocalState } from '../../../backend';
-import { Button, Icon, Section, Stack, Tabs, Tooltip } from '../../../components';
+import { Button, Icon, Section, Stack, Tooltip } from '../../../components';
 import { Box } from '../../../components';
 
 type ContentInfo = {
