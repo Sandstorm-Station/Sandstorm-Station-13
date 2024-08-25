@@ -557,7 +557,7 @@
 	dir = 4;
 	dwidth = 3;
 	height = 10;
-	id = "mining_home";
+	shuttle_id = "mining_home";
 	name = "mining shuttle bay";
 	roundstart_template = /datum/map_template/shuttle/mining/large;
 	width = 7
@@ -1448,7 +1448,7 @@
 	dir = 8;
 	dwidth = 12;
 	height = 17;
-	id = "syndicate_nw";
+	shuttle_id = "syndicate_nw";
 	name = "northwest of station";
 	width = 23
 	},
@@ -1898,7 +1898,7 @@
 	dir = 2;
 	dwidth = 2;
 	height = 13;
-	id = "ferry_home";
+	shuttle_id = "ferry_home";
 	name = "port bay 2";
 	width = 5
 	},
@@ -2065,7 +2065,7 @@
 /area/security/brig)
 "brr" = (
 /obj/docking_port/stationary/random{
-	id = "pod_lavaland1";
+	shuttle_id = "pod_lavaland1";
 	name = "lavaland"
 	},
 /turf/open/space/basic,
@@ -3630,7 +3630,7 @@
 	dir = 8;
 	dwidth = 3;
 	height = 5;
-	id = "sciout_dock";
+	shuttle_id = "sciout_dock";
 	name = "Science Outpost Shuttle Dock";
 	width = 7
 	},
@@ -3669,7 +3669,7 @@
 	dir = 8;
 	dwidth = 2;
 	height = 5;
-	id = "perma_station";
+	shuttle_id = "perma_station";
 	name = "Station Dock";
 	roundstart_template = /datum/map_template/shuttle/modular_sand/permabrig;
 	width = 8
@@ -9005,7 +9005,7 @@
 	dir = 4;
 	dwidth = 3;
 	height = 5;
-	id = "sciout_station";
+	shuttle_id = "sciout_station";
 	name = "Science Shuttle Dock";
 	roundstart_template = /datum/map_template/shuttle/modular_sand/scioutpost;
 	width = 7
@@ -11056,7 +11056,7 @@
 	dir = 2;
 	dwidth = 3;
 	height = 5;
-	id = "ai_sat";
+	shuttle_id = "ai_sat";
 	name = "AI Access";
 	width = 7
 	},
@@ -11550,7 +11550,7 @@
 	dir = 8;
 	dwidth = 2;
 	height = 5;
-	id = "laborcamp_home";
+	shuttle_id = "laborcamp_home";
 	name = "fore bay 1";
 	roundstart_template = /datum/map_template/shuttle/labour/box;
 	width = 9
@@ -12905,7 +12905,7 @@
 "jvE" = (
 /obj/docking_port/stationary/random{
 	dir = 2;
-	id = "pod_lavaland3";
+	shuttle_id = "pod_lavaland3";
 	name = "lavaland"
 	},
 /turf/open/space/basic,
@@ -15919,7 +15919,7 @@
 	dir = 2;
 	dwidth = 2;
 	height = 16;
-	id = "arrivals_stationary";
+	shuttle_id = "arrivals_stationary";
 	name = "smol arrivals";
 	roundstart_template = /datum/map_template/shuttle/arrival/smol;
 	width = 5
@@ -16066,7 +16066,7 @@
 	dir = 8;
 	dwidth = 12;
 	height = 17;
-	id = "syndicate_ne";
+	shuttle_id = "syndicate_ne";
 	name = "northeast of station";
 	width = 23
 	},
@@ -22170,7 +22170,7 @@
 	dir = 4;
 	dwidth = 11;
 	height = 18;
-	id = "emergency_home";
+	shuttle_id = "emergency_home";
 	name = "OmegaStation emergency evac bay";
 	width = 30
 	},
@@ -22598,7 +22598,7 @@
 /obj/docking_port/stationary{
 	dwidth = 3;
 	height = 5;
-	id = "ai_station";
+	shuttle_id = "ai_station";
 	name = "Station Access";
 	roundstart_template = /datum/map_template/shuttle/modular_sand/satshuttle;
 	width = 7
@@ -22792,7 +22792,7 @@
 "qUm" = (
 /obj/docking_port/stationary/random{
 	dir = 2;
-	id = "pod_lavaland4";
+	shuttle_id = "pod_lavaland4";
 	name = "lavaland"
 	},
 /turf/open/space/basic,
@@ -24187,7 +24187,7 @@
 	dir = 2;
 	dwidth = 2;
 	height = 5;
-	id = "perma_prison";
+	shuttle_id = "perma_prison";
 	name = "Perma Dock";
 	width = 8
 	},
@@ -26452,7 +26452,7 @@
 	dir = 8;
 	dwidth = 12;
 	height = 17;
-	id = "syndicate_sw";
+	shuttle_id = "syndicate_sw";
 	name = "southwest of station";
 	width = 23
 	},
@@ -27975,7 +27975,7 @@
 	dir = 4;
 	dwidth = 9;
 	height = 7;
-	id = "supply_home";
+	shuttle_id = "supply_home";
 	name = "Cargo Bay";
 	width = 20
 	},
@@ -28397,7 +28397,7 @@
 /area/ai_monitored/turret_protected/aisat)
 "vls" = (
 /obj/docking_port/stationary/random{
-	id = "pod_lavaland2";
+	shuttle_id = "pod_lavaland2";
 	name = "lavaland"
 	},
 /turf/open/space/basic,
@@ -29393,7 +29393,7 @@
 	dir = 4;
 	dwidth = 11;
 	height = 22;
-	id = "whiteship_home";
+	shuttle_id = "whiteship_home";
 	name = "SS13: Auxiliary Dock, Station-Port";
 	width = 35
 	},
