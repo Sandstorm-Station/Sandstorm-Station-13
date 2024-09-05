@@ -3467,7 +3467,7 @@ GLOBAL_LIST_EMPTY(preferences_datums)
 				if("import_slot")
 					var/savefile/S = new(user.client.Import())
 					if(istype(S, /savefile))
-						if(istype(load_character(provided = S)), /savefile)
+						if(istype(load_character(provided = S), /savefile))
 							tgui_alert_async(user, "Successfully loaded character slot.")
 						else
 							tgui_alert_async(user, "Failed loading character slot")
