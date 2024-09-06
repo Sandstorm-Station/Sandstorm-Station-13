@@ -17,9 +17,9 @@
 		var/mob/living/living = get_atom_on_turf(micro.loc, /mob/living)
 		if(living && (COMPARE_SIZES(living, micro)) < 2.0)
 			living.visible_message(span_warning("\The [living] drops [micro] as [micro.p_they()] grow\s too big to carry."),
-								span_warning("You drop \The [living] as [living.p_they()] grow\s too big to carry."),
-								target=micro,
-								target_message=span_notice("\The [living] drops you as you grow too big to carry."))
+				span_warning("You drop \The [living] as [living.p_they()] grow\s too big to carry."),
+				target = micro,
+				target_message = span_notice("\The [living] drops you as you grow too big to carry."))
 			holder.release()
 		else if(!istype(living)) // Somehow a inside a mob_holder and the mob_holder isn't inside any livings? release.
 			holder.release()
@@ -56,7 +56,7 @@
 	return
 
 /datum/element/mob_holder/micro/proc/mob_try_pickup_micro(mob/living/carbon/source, mob/living/carbon/user)
-	if(!(user.a_intent == INTENT_GRAB))
+	if(user.a_intent != INTENT_GRAB)
 		return FALSE
 	if(!ishuman(user) || !user.Adjacent(source) || user.incapacitated())
 		return FALSE
@@ -77,7 +77,7 @@
 		source.balloon_alert(user, "buckled to something!")
 		return FALSE
 	source.visible_message(span_warning("[user] starts picking up [source]."), \
-					span_userdanger("[user] starts picking you up!"))
+		span_userdanger("[user] starts picking you up!"))
 	source.balloon_alert(user, "picking up")
 	var/time_required = COMPARE_SIZES(source, user) * 4 SECONDS //Scale how fast the pickup will be depending on size difference
 	if(!do_after(user, time_required, source))
@@ -93,9 +93,9 @@
 		return FALSE
 
 	source.visible_message(span_warning("[user] picks up [source]!"),
-					span_userdanger("[user] picks you up!"),
-					target = user,
-					target_message = span_notice("You pick [source] up."))
+		span_userdanger("[user] picks you up!"),
+		target = user,
+		target_message = span_notice("You pick [source] up."))
 	source.drop_all_held_items()
 	mob_pickup_micro(source, user)
 	return TRUE
@@ -108,57 +108,51 @@
 	slot_flags = ITEM_SLOT_FEET | ITEM_SLOT_HEAD | ITEM_SLOT_ID | ITEM_SLOT_BACK | ITEM_SLOT_NECK
 	w_class = null //handled by their size
 
-/obj/item/clothing/head/mob_holder/micro/container_resist(mob/living/user)
-	if(user.incapacitated())
-		to_chat(user, span_warning("You can't escape while you're restrained like this!"))
+/obj/item/clothing/head/mob_holder/micro/container_resist(mob/living/resisting)
+	if(resisting.incapacitated())
+		to_chat(resisting, span_warning("You can't escape while you're restrained like this!"))
 		return
-	var/mob/living/L = get_atom_on_turf(src, /mob/living)
-	visible_message(span_warning("[src] begins to squirm in [L]'s grasp!"))
-	var/time_required = COMPARE_SIZES(L, user) / 4 SECONDS //Scale how fast the resisting will be depending on size difference
-	if(!do_after(user, time_required, L, IGNORE_TARGET_LOC_CHANGE|IGNORE_HELD_ITEM))
-		if(!user || user.stat != CONSCIOUS || user.loc != src)
-			return
-		to_chat(loc, span_warning("[src] stops resisting."))
+	var/mob/living/carrier = get_atom_on_turf(src, /mob/living)
+	visible_message(span_warning("[resisting] begins to squirm in [carrier]'s grasp!"))
+	var/time_required = COMPARE_SIZES(carrier, resisting) / 4 SECONDS //Scale how fast the resisting will be depending on size difference
+	if(do_after(resisting, time_required, carrier, IGNORE_TARGET_LOC_CHANGE | IGNORE_HELD_ITEM))
+		visible_message(span_warning("[src] escapes [carrier]!"))
+		release()
 		return
-	visible_message("<span class='warning'>[src] escapes [L]!")
-	release()
+	if(QDELETED(resisting) || resisting.loc != src)
+		return
+	visible_message(span_warning("[src] stops resisting."))
 
-/obj/item/clothing/head/mob_holder/micro/MouseDrop(mob/M as mob)
-	..()
-	if(M != usr)
+/obj/item/clothing/head/mob_holder/micro/MouseDrop(mob/living/carbon/human/carrier)
+	. = ..()
+	if(carrier != usr)
 		return
-	if(usr == src)
+	if(usr == held_mob)
 		return
-	if(!Adjacent(usr))
+	if(!(src in carrier.held_items))
 		return
-	if(istype(M,/mob/living/silicon/ai))
-		return
-	var/mob/living/carbon/human/O = held_mob
-	if(istype(O))
-		O.MouseDrop(usr)
+	held_mob.MouseDrop(usr)
 
-/obj/item/clothing/head/mob_holder/micro/attack_self(mob/living/user)
-	if(!user.CheckActionCooldown())
+/obj/item/clothing/head/mob_holder/micro/attack_self(mob/living/carbon/human/bully)
+	if(!bully.CheckActionCooldown())
 		return
-	user.DelayNextAction(CLICK_CD_MELEE, flush = TRUE)
-	var/mob/living/carbon/human/M = held_mob
-	if(istype(M))
-		if(user.a_intent == "harm") //TO:DO, rework all of these interactions to be a lot more in depth
-			visible_message(span_danger("[user] slams their fist down on [M]!"), runechat_popup = TRUE, rune_msg = " slams their fist down on [M]!")
-			playsound(loc, 'sound/weapons/punch1.ogg', 50, 1)
-			M.adjustBruteLoss(5)
-			return
-		if(user.a_intent == "disarm")
-			visible_message(span_danger("[user] pins [M] down with a finger!"), runechat_popup = TRUE, rune_msg = " pins [M] down with a finger!")
-			playsound(loc, 'sound/effects/bodyfall1.ogg', 50, 1)
-			M.adjustStaminaLoss(10)
-			return
-		if(user.a_intent == "grab")
-			visible_message(span_danger("[user] squeezes their fist around [M]!"), runechat_popup = TRUE, rune_msg = " squeezes their fist around [M]!")
-			playsound(loc, 'sound/weapons/thudswoosh.ogg', 50, 1)
-			M.adjustOxyLoss(5)
-			return
-		M.help_shake_act(user)
+	bully.DelayNextAction(CLICK_CD_MELEE, flush = TRUE)
+	var/mob/living/carbon/bullied = held_mob
+	switch(bully.a_intent)
+		if(INTENT_HARM) //TO:DO, rework all of these interactions to be a lot more in depth
+			visible_message(span_danger("[bully] slams their fist down on [bullied]!"), runechat_popup = TRUE, rune_msg = " slams their fist down on [bullied]!")
+			playsound(drop_location(), 'sound/weapons/punch1.ogg', 50, 1)
+			bullied.adjustBruteLoss(5)
+		if(INTENT_DISARM)
+			visible_message(span_danger("[bully] pins [bullied] down with a finger!"), runechat_popup = TRUE, rune_msg = " pins [bullied] down with a finger!")
+			playsound(drop_location(), 'sound/effects/bodyfall1.ogg', 50, 1)
+			bullied.adjustStaminaLoss(10)
+		if(INTENT_GRAB)
+			visible_message(span_danger("[bully] squeezes their fist around [bullied]!"), runechat_popup = TRUE, rune_msg = " squeezes their fist around [bullied]!")
+			playsound(drop_location(), 'sound/weapons/thudswoosh.ogg', 50, 1)
+			bullied.adjustOxyLoss(5)
+		else
+			bullied.help_shake_act(bully)
 
 /obj/item/clothing/head/mob_holder/micro/attacked_by(obj/item/I, mob/living/user)
 	return held_mob?.attacked_by(I, user) || ..()
@@ -172,6 +166,12 @@
 /obj/item/clothing/head/mob_holder/micro/attack(mob/living/pred, mob/living/user)
 	user.vore_attack(user, held_mob, pred)
 	return STOP_ATTACK_PROC_CHAIN
+
+/obj/item/clothing/head/mob_holder/micro/Exited(mob/living/vored, direction)
+	if(istype(vored.loc, /obj/belly))
+		held_mob = null
+		qdel(src)
+	return ..()
 
 /obj/item/clothing/head/mob_holder/micro/GetAccess()
 	. = ..()
