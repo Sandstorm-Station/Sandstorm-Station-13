@@ -3523,6 +3523,9 @@ GLOBAL_LIST_EMPTY(preferences_datums)
 					if(!offer_datum)
 						tgui_alert_async(usr, "This is an invalid code!")
 						return
+					if(offer == offer_datum)
+						tgui_alert_async(usr, "You cannot accept your own offer")
+						return
 					var/savefile/savefile = offer_datum.character_savefile
 					var/mob/living/the_owner = get_mob_by_ckey(offer_datum.owner_ckey)
 					if(savefile_needs_update(savefile) == -2)
@@ -3531,7 +3534,7 @@ GLOBAL_LIST_EMPTY(preferences_datums)
 						qdel(offer_datum)
 						return
 					var/character_name = savefile["real_name"]
-					if(tgui_alert(usr, "You are overwriting the currently selected slot with the character [character_name]", "Are you sure?", buttons = list("Yes, load this character deleting the currently selected slot", "No")) == "No")
+					if(alert(usr, "You are overwriting the currently selected slot with the character [character_name]", "Are you sure?", "Yes, load this character deleting the currently selected slot", "No") == "No")
 						return
 					if(QDELETED(offer_datum))
 						tgui_alert_async(usr, "This character is no longer available, such a shame!")
