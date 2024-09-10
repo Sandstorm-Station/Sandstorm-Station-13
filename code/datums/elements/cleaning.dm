@@ -1,33 +1,36 @@
 /datum/element/cleaning
+	element_flags = ELEMENT_BESPOKE|ELEMENT_DETACH
+	id_arg_index = 2
+	/// Range of cleaning on moving
 	var/range = 0
 
-/datum/element/cleaning/Attach(datum/target, cleaning_range = 0)
+/datum/element/cleaning/Attach(atom/movable/cleaner, cleaning_range)
 	. = ..()
-	if(!ismovable(target))
+	if(!istype(cleaner))
 		return ELEMENT_INCOMPATIBLE
-	range = cleaning_range
-	RegisterSignal(target, COMSIG_MOVABLE_MOVED, PROC_REF(Clean))
+	if(cleaning_range)
+		range = cleaning_range
+	RegisterSignal(cleaner, COMSIG_MOVABLE_MOVED, PROC_REF(Clean))
 
-/datum/element/cleaning/Detach(datum/target)
+/datum/element/cleaning/Detach(atom/movable/cleaner)
 	. = ..()
-	UnregisterSignal(target, COMSIG_MOVABLE_MOVED)
+	UnregisterSignal(cleaner, COMSIG_MOVABLE_MOVED)
 
-/datum/element/cleaning/proc/Clean(datum/source)
-	var/atom/movable/AM = source
-	for (var/turf/T in RANGE_TURFS(range, AM.loc))
-		SEND_SIGNAL(T, COMSIG_COMPONENT_CLEAN_ACT, CLEAN_WEAK)
-		for(var/A in T)
-			if(is_cleanable(A))
-				qdel(A)
-			else if(isitem(A))
-				var/obj/item/cleaned_item = A
+/datum/element/cleaning/proc/Clean(atom/movable/cleaner)
+	for (var/turf/turf in RANGE_TURFS(range, cleaner.loc))
+		SEND_SIGNAL(turf, COMSIG_COMPONENT_CLEAN_ACT, CLEAN_WEAK)
+		for(var/atom/atom as anything in turf)
+			if(is_cleanable(atom))
+				qdel(atom)
+			else if(isitem(atom))
+				var/obj/item/cleaned_item = atom
 				SEND_SIGNAL(cleaned_item, COMSIG_COMPONENT_CLEAN_ACT, CLEAN_WEAK)
 				cleaned_item.clean_blood()
 				if(ismob(cleaned_item.loc))
-					var/mob/M = cleaned_item.loc
-					M.regenerate_icons()
-			else if(ishuman(A))
-				var/mob/living/carbon/human/cleaned_human = A
+					var/mob/mob = cleaned_item.loc
+					mob.regenerate_icons()
+			else if(ishuman(atom))
+				var/mob/living/carbon/human/cleaned_human = atom
 				if(cleaned_human.lying)
 					if(cleaned_human.head)
 						SEND_SIGNAL(cleaned_human.head, COMSIG_COMPONENT_CLEAN_ACT, CLEAN_WEAK)
@@ -67,4 +70,4 @@
 					cleaned_human.clean_blood()
 					cleaned_human.wash_cream()
 					cleaned_human.regenerate_icons()
-					to_chat(cleaned_human, "<span class='danger'>[AM] cleans your face!</span>")
+					to_chat(cleaned_human, span_danger("[cleaner] cleans your face!"))
