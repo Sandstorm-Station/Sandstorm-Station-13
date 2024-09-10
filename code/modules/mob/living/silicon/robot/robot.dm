@@ -937,9 +937,9 @@
 		status_flags &= ~CANPUSH
 
 	if(module.clean_on_move)
-		AddElement(/datum/element/cleaning)
+		AddElement(/datum/element/cleaning, 1)
 	else
-		RemoveElement(/datum/element/cleaning)
+		RemoveElement(/datum/element/cleaning, 1)
 
 	hat_offset = module.hat_offset
 
