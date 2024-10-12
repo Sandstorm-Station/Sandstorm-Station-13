@@ -937,7 +937,7 @@
 		status_flags &= ~CANPUSH
 
 	if(module.clean_on_move)
-		AddElement(/datum/element/cleaning, range = 1)
+		AddElement(/datum/element/cleaning, cleaning_range = 1)
 	else
 		RemoveElement(/datum/element/cleaning)
 
