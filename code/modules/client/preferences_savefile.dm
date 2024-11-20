@@ -937,6 +937,7 @@ SAVEFILE UPDATING/VERSIONING - 'Simplified', or rather, more coder-friendly ~Car
 		if(json_from_file)
 			belly_prefs = json_from_file["belly_prefs"]
 
+	S["alt_titles_preferences"] 		>> alt_titles_preferences
 	//gear loadout
 	if(istext(S["loadout"]))
 		loadout_data = safe_json_decode(S["loadout"])
@@ -1175,6 +1176,13 @@ SAVEFILE UPDATING/VERSIONING - 'Simplified', or rather, more coder-friendly ~Car
 
 	loadout_slot = sanitize_num_clamp(loadout_slot, 1, MAXIMUM_LOADOUT_SAVES, 1, TRUE)
 
+	alt_titles_preferences = SANITIZE_LIST(alt_titles_preferences)
+	if(SSjob)
+		for(var/datum/job/job in SSjob.occupations)
+			if(alt_titles_preferences[job.title])
+				if(!(alt_titles_preferences[job.title] in job.alt_titles))
+					alt_titles_preferences.Remove(job.title)
+
 	cit_character_pref_load(S)
 
 	return S
@@ -1296,6 +1304,8 @@ SAVEFILE UPDATING/VERSIONING - 'Simplified', or rather, more coder-friendly ~Car
 	WRITE_FILE(S["feature_butt_size"], features["butt_size"])
 	WRITE_FILE(S["feature_butt_visibility"], features["butt_visibility"])
 	WRITE_FILE(S["feature_butt_accessible"], features["butt_accessible"])
+
+	WRITE_FILE(S["alt_titles_preferences"], alt_titles_preferences)
 
 	WRITE_FILE(S["feature_ooc_notes"], features["ooc_notes"])
 

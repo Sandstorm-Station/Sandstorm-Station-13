@@ -1,207 +1,204 @@
+// Great, since upstream got titles, we gotta do this differently.
+// If you downstream, got conflicts from this, good, it means
+// you'll know that you need to make changes as well
+// Although, why are you modifying it here, go be doing shit modularly
+
 //Command
-/datum/job/captain
-	alt_titles = list(
+/datum/job/captain/New()
+	alt_titles += list(
 		"Colony Overseer",
 		"Senator",
 		"Consul"
-		)
+	)
+	return ..()
 
-/datum/job/chief_engineer
-	alt_titles = list(
+/datum/job/chief_engineer/New()
+	alt_titles += list(
 		"Senior Engineer"
-		)
+	)
+	return ..()
 
-/datum/job/hop
-	alt_titles = list(
+/datum/job/hop/New()
+	alt_titles += list(
 		"Crew Resource Officer",
 		"Executive Officer"
-		)
+	)
+	return ..()
 
-/datum/job/hos
-	alt_titles = list(
-		"Chief of Security",
-		"Sheriff",
+/datum/job/hos/New()
+	alt_titles += list(
 		"Praetor",
-		"Tarkhan" //If this reference is an issue I will remove it
-		)
+		"Tarkhan"
+	)
+	return ..()
 
-/datum/job/qm
-	alt_titles = list(
+/datum/job/qm/New()
+	alt_titles += list(
 		"Resource Manager",
 		"Logistics Supervisor"
-		)
+	)
+	return ..()
 
-/datum/job/rd
-	alt_titles = list(
+/datum/job/rd/New()
+	alt_titles += list(
 		"Chief Science Officer",
 		"Research Overseer"
-		)
+	)
+	return ..()
 
-//Engineering
-/datum/job/atmos
-	alt_titles = list(
-		"Firefighter",
-		"Life Support Specialist"
-		)
+// Re-enable once we have our unique again
+/*
+/datum/job/atmos/New()
+	alt_titles += list(
+	)
+	return ..()
 
-/datum/job/engineer
-	alt_titles = list(
-		"Maintenance Technician",
-		"Engine Technician",
-		"Electrician"
-		)
+/datum/job/engineer/New()
+	alt_titles += list(
+	)
+	return ..()
+*/
 
-//Service
-/datum/job/assistant
-	alt_titles = list(
-		"Civilian",
-		"Visitor",
-		"Businessman",
-		"Trader",
-		"Entertainer",
+/datum/job/assistant/New()
+	alt_titles += list(
 		"Intern",
-		"Off-Duty Civilian"
-		)
+	)
+	return ..()
 
-/datum/job/bartender
-	alt_titles = list(
+/datum/job/bartender/New()
+	alt_titles += list(
 		"Barista"
-		)
+	)
+	return ..()
 
-/datum/job/chaplain
-	alt_titles = list(
-		"Priest",
+/datum/job/chaplain/New()
+	alt_titles += list(
 		"Cult Leader",
 		"Pope",
-		"Bishop", // How about you actually say something about it instead of crying on a downstream's comments i won't read.
+		"Bishop",
 		"Pontiff"
-		)
+	)
+	return ..()
 
-/datum/job/clown //The most useless role in the game, delet this
-	alt_titles = list(
+/datum/job/clown/New()
+	alt_titles += list(
 		"Entertainer"
-		)
+	)
+	return ..()
 
-/datum/job/cook
-	alt_titles = list(
-		"Culinary Artist",
-		"Butcher",
+/datum/job/cook/New()
+	alt_titles += list(
 		"Chef",
 		"Nutritionist"
-		)
+	)
+	return ..()
 
-/datum/job/curator
-	alt_titles = list(
-		"Journalist",
-		"Librarian"
-		)
+/*
+/datum/job/curator/New()
+	alt_titles += list(
+	)
+	return ..()
+*/
 
-/datum/job/hydro
-	alt_titles = list(
-		"Gardener",
-		"Herbalist",
-		"Botanical Researcher",
+/datum/job/hydro/New()
+	alt_titles += list(
 		"Florist"
-		)
+	)
+	return ..()
 
-/datum/job/janitor
-	alt_titles = list(
-		"Custodian",
-		"Sanitation Technician",
-		"Maid"
-		)
+/*
+/datum/job/janitor/New()
+	alt_titles += list(
+	)
+	return ..()
 
-/datum/job/lawyer
-	alt_titles = list(
-		"Human Resources Agent",
-		"Internal Affairs Agent"
-		)
+/datum/job/lawyer/New()
+	alt_titles += list(
+	)
+	return ..()
 
-/datum/job/mime
-	alt_titles = list(
-		"Performer"
-		)
+/datum/job/mime/New()
+	alt_titles += list(
+	)
+	return ..()
+*/
 
-//Science
-/datum/job/roboticist
-	alt_titles = list(
-		"Biomechanical Engineer",
-		"Mechatronic Engineer",
-		"Mechanic",
+/datum/job/roboticist/New()
+	alt_titles += list(
 		"Robotics Operator",
 		"MODsuit Engineer"
-		)
+	)
+	return ..()
 
-/datum/job/scientist
-	alt_titles = list(
-		"Circuitry Designer",
-		"Xenobiologist",
-		"Xenobotanist",
-		"Chemical Researcher"
-		)
+/*
+/datum/job/scientist/New()
+	alt_titles += list(
+	)
+	return ..()
 
-//Medical
-/datum/job/chemist
-	alt_titles = list(
-		"Pharmacist",
-		"Pharmacologist"
-		)
+/datum/job/chemist/New()
+	alt_titles += list(
+	)
+	return ..()
+*/
 
-/datum/job/doctor
-	alt_titles = list(
-		"Nurse",
-		"Surgeon",
+/datum/job/doctor/New()
+	alt_titles += list(
 		"Medical Secretary",
 		"Emergency Physician",
-		"Field Surgeon" 
-		)
+		"Field Surgeon"
+	)
+	return ..()
 
-/datum/job/geneticist
-	alt_titles = list(
-		"Genetic Therapist",
+/datum/job/geneticist/New()
+	alt_titles += list(
 		"Bioengineer"
-		)
+	)
+	return ..()
 
-/datum/job/paramedic
-	alt_titles = list(
+/datum/job/paramedic/New()
+	alt_titles += list(
 		"Emergency Medical Technician",
 		"Advanced Emergency Medical Technician"
-		)
+	)
+	return ..()
 
-/datum/job/virologist
-	alt_titles = list(
-		"Pathologist"
-		)
+/*
+/datum/job/virologist/New()
+	alt_titles += list(
+	)
+	return ..()
 
-//Security
-/datum/job/detective
-	alt_titles = list(
-		"Forensics Technician",
-		"Private Investigator"
-		)
+/datum/job/detective/New()
+	alt_titles += list(
+	)
+	return ..()
+*/
 
-/datum/job/officer
-	alt_titles = list(
-		"Security Cadet",
-		"Security Guard",
+/datum/job/officer/New()
+	alt_titles += list(
 		"Peacekeeper",
 		"Enforcer"
-		)
+	)
+	return ..()
 
-/datum/job/warden
-	alt_titles = list(
+/datum/job/warden/New()
+	alt_titles += list(
 		"Brig Chief"
-		)
+	)
+	return ..()
 
-//Cargo
-
-/datum/job/cargo_tech
-	alt_titles = list(
+/datum/job/cargo_tech/New()
+	alt_titles += list(
 		"Shipping Specialist",
 		"Delivery Manager"
-		)
+	)
+	return ..()
 
-/datum/job/mining
-	alt_titles = list(
+/*
+/datum/job/mining/New()
+	alt_titles += list(
 		"Explorer"
-		)
+	)
+	return ..()
+*/
