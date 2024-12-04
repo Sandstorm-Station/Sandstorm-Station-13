@@ -732,7 +732,7 @@ What a mess.*/
 				switch(href_list["choice"])
 					if("Change Rank")
 						if(active1)
-							if(GetJobName(href_list["rank"]) != "Unknown") // hi hello you looking, stop trying to exploit html
+							if(GetJobName(href_list["rank"]) != "Unknown" && GetJobName(href_list["rank"]) != "Centcom") // hi hello you looking, stop trying to exploit html
 								active1.fields["rank"] = href_list["rank"]
 								active1.fields["real_rank"] = GetJobName(href_list["rank"])
 
