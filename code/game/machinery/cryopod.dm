@@ -316,7 +316,7 @@ GLOBAL_LIST_EMPTY(cryopod_computers)
 	// Make an announcement and log the person entering storage.
 	if(GLOB.announcement_systems.len)
 		var/obj/machinery/announcement_system/announcer = pick(GLOB.announcement_systems)
-		announcer.announce(tele ? "CRYOSTORAGE_TELE" : "CRYOSTORAGE", mob_occupant.real_name, announce_rank, list())
+		announcer.announce(tele ? "CRYOSTORAGE_TELE" : "CRYOSTORAGE", mob_occupant.real_name, announce_rank, announce_rank, list())
 
 	visible_message(span_notice("\The [src] hums and hisses as it [tele ? "teleports" : "moves"] [mob_occupant.real_name] [tele ? "to centcom" : "into storage"]."))
 	if(tele)
