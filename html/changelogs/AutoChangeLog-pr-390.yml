@@ -1,0 +1,8 @@
+author: SandPoot
+delete-after: true
+changes:
+  - rscadd: Higher staff can now set titles for you on the manifest using the security
+      console.
+  - bugfix: Manifest will no longer have people with null jobs.
+  - bugfix: High security vulnerability, you can no longer set your rank to be anything
+      (see pr for info).
