@@ -295,8 +295,8 @@ GLOBAL_LIST_EMPTY(cryopod_computers)
 		crew_member["job"] = "N/A"
 
 	// Delete them from datacore.
+	var/real_rank
 	var/rank
-	var/display_rank
 	for(var/datum/data/record/medical_record as anything in GLOB.data_core.medical)
 		if(medical_record.fields["name"] == mob_occupant.real_name)
 			qdel(medical_record)
@@ -305,8 +305,8 @@ GLOBAL_LIST_EMPTY(cryopod_computers)
 			qdel(security_record)
 	for(var/datum/data/record/general_record as anything in GLOB.data_core.general)
 		if(general_record.fields["name"] == mob_occupant.real_name)
-			rank = general_record.fields["real_rank"]
-			display_rank = general_record.fields["rank"]
+			real_rank = general_record.fields["real_rank"]
+			rank = general_record.fields["rank"]
 			qdel(general_record)
 
 	var/obj/machinery/computer/cryopod/control_computer = control_computer_weakref?.resolve()
