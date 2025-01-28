@@ -1,4 +1,4 @@
-#define ui_hunger_thirst "EAST-1:28,CENTER+1:51"
+#define ui_hunger_thirst "EAST-1:28,CENTER+1:24"
 
 /atom/movable/screen/hunger
 	name = "hunger"
