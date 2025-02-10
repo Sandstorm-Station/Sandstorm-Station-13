@@ -24,8 +24,7 @@
 	var/dummy_thick = FALSE // is able to hold accessories on its item
 	//SANDSTORM EDIT - Removed the old attached accessory system. We use a list of accessories instead.
 	var/max_accessories = 3
-	var/list/obj/item/clothing/accessory/attached_accessories = list()
-	var/list/mutable_appearance/accessory_overlays = list()
+	var/list/obj/item/clothing/accessory/attached_accessories
 	//SANDSTORM EDIT END
 
 /obj/item/clothing/under/worn_overlays(isinhands = FALSE, icon_file, used_state, style_flags = NONE)
@@ -36,8 +35,12 @@
 		. += mutable_appearance('icons/effects/item_damage.dmi', "damageduniform")
 	if(blood_DNA)
 		. += mutable_appearance('icons/effects/blood.dmi', "uniformblood", color = blood_DNA_to_color(), blend_mode = blood_DNA_to_blend())
-	if(length(accessory_overlays))
-		. += accessory_overlays
+	if(CHECK_BITFIELD(flags_inv, HIDEACCESSORY))
+		return
+	for(var/obj/item/clothing/accessory/attached_accessory as anything in attached_accessories)
+		if(CHECK_BITFIELD(attached_accessory.flags_inv, HIDEACCESSORY))
+			continue
+		. += attached_accessory.build_worn_icon()
 
 /obj/item/clothing/under/attackby(obj/item/I, mob/user, params)
 	if((sensordamage || (has_sensor < HAS_SENSORS && has_sensor != NO_SENSORS)) && istype(I, /obj/item/stack/cable_coil))
@@ -125,68 +128,60 @@
 			body_parts_covered |= CHEST
 
 	// Sandstorm edit
-	for(var/obj/item/clothing/accessory/attached_accessory in attached_accessories)
-		if(attached_accessory && slot != ITEM_SLOT_HANDS && ishuman(user))
-			var/mob/living/carbon/human/H = user
+	var/must_update = FALSE
+	for(var/obj/item/clothing/accessory/attached_accessory as anything in attached_accessories)
+		if(attached_accessory && slot == ITEM_SLOT_ICLOTHING && ishuman(user))
 			attached_accessory.on_uniform_equip(src, user)
-			if(attached_accessory.above_suit)
-				H.update_inv_wear_suit()
+		if(attached_accessory.above_suit)
+			must_update = TRUE
+	if(must_update)
+		user.update_inv_wear_suit()
 	//
 
 /obj/item/clothing/under/dropped(mob/user)
 	// Sandstorm edit
-	for(var/obj/item/clothing/accessory/attached_accessory in attached_accessories)
+	var/must_update = FALSE
+	for(var/obj/item/clothing/accessory/attached_accessory as anything in attached_accessories)
 		attached_accessory.on_uniform_dropped(src, user)
-		if(ishuman(user))
-			var/mob/living/carbon/human/H = user
-			if(attached_accessory.above_suit)
-				H.update_inv_wear_suit()
+		if(attached_accessory.above_suit)
+			must_update = TRUE
+	if(must_update)
+		user.update_inv_wear_suit()
 	//
 	..()
 
-/obj/item/clothing/under/proc/attach_accessory(obj/item/I, mob/user, notifyAttach = 1)
+/obj/item/clothing/under/proc/attach_accessory(obj/item/clothing/accessory/accessory, mob/user, notifyAttach = 1)
 	. = FALSE
-	if(istype(I, /obj/item/clothing/accessory) && !istype(I, /obj/item/clothing/accessory/ring))
-		var/obj/item/clothing/accessory/A = I
-		if(length(attached_accessories) >= max_accessories)
-			if(user)
-				to_chat(user, "<span class='warning'>[src] already has [length(attached_accessories)] accessories.</span>")
-			return
-		if(dummy_thick)
-			if(user)
-				to_chat(user, "<span class='warning'>[src] is too bulky and cannot have accessories attached to it!</span>")
-			return
-		else
-			if(user && !user.temporarilyRemoveItemFromInventory(I))
-				return
-			if(!A.attach(src, user))
-				return
+	if(!istype(accessory))
+		return
+	if(istype(accessory, /obj/item/clothing/accessory/ring))
+		return
+	if(length(attached_accessories) >= max_accessories)
+		if(user)
+			to_chat(user, span_warning("[src] already has [length(attached_accessories)] accessories."))
+		return
+	if(dummy_thick)
+		if(user)
+			to_chat(user, span_warning("[src] is too bulky and cannot have accessories attached to it!"))
+		return
+	if(user && !user.temporarilyRemoveItemFromInventory(accessory))
+		return
+	if(!accessory.attach(src, user))
+		return
 
-			if(user && notifyAttach)
-				to_chat(user, "<span class='notice'>You attach [I] to [src].</span>")
+	if(user && notifyAttach)
+		to_chat(user, span_notice("You attach [accessory] to [src]."))
 
-			if((flags_inv & HIDEACCESSORY) || (A.flags_inv & HIDEACCESSORY))
-				return TRUE
+	if((flags_inv & HIDEACCESSORY) || (accessory.flags_inv & HIDEACCESSORY))
+		return TRUE
 
-			//SANDSTORM EDIT
-			accessory_overlays = list(mutable_appearance('icons/mob/clothing/accessories.dmi', "blank"))
-			for(var/obj/item/clothing/accessory/attached_accessory in attached_accessories)
-				var/datum/element/polychromic/polychromic = LAZYACCESS(attached_accessory.comp_lookup, "item_worn_overlays")
-				if(!polychromic)
-					var/mutable_appearance/accessory_overlay = mutable_appearance(attached_accessory.mob_overlay_icon, attached_accessory.item_state || attached_accessory.icon_state, ABOVE_HUD_LAYER)
-					accessory_overlay.alpha = attached_accessory.alpha
-					accessory_overlay.color = attached_accessory.color
-					accessory_overlays += accessory_overlay
-				else
-					polychromic.apply_worn_overlays(attached_accessory, FALSE, attached_accessory.mob_overlay_icon, attached_accessory.item_state || attached_accessory.icon_state, NONE, accessory_overlays)
-			//SANDSTORM EDIT END
+	if(ishuman(loc))
+		var/mob/living/carbon/human/H = loc
+		H.update_inv_w_uniform()
+		if(accessory.above_suit)
+			H.update_inv_wear_suit()
 
-			if(ishuman(loc))
-				var/mob/living/carbon/human/H = loc
-				H.update_inv_w_uniform()
-				H.update_inv_wear_suit()
-
-			return TRUE
+	return TRUE
 
 /obj/item/clothing/under/proc/remove_accessory(mob/user)
 	if(!isliving(user))
@@ -194,21 +189,20 @@
 	if(!can_use(user))
 		return
 
-	//SKYRAT EDIT
-	if(length(attached_accessories))
-		var/obj/item/clothing/accessory/A = attached_accessories[length(attached_accessories)]
-	//SKYRAT EDIT END
-		A.detach(src, user)
-		if(user.put_in_hands(A))
-			to_chat(user, "<span class='notice'>You detach [A] from [src].</span>")
-		else
-			to_chat(user, "<span class='notice'>You detach [A] from [src] and it falls on the floor.</span>")
+	if(!LAZYLEN(attached_accessories))
+		return
+	var/obj/item/clothing/accessory/accessory = attached_accessories[length(attached_accessories)]
+	accessory.detach(src, user)
+	if(user.put_in_hands(accessory))
+		to_chat(user, span_notice("You detach [accessory] from [src]."))
+	else
+		to_chat(user, span_notice("You detach [accessory] from [src] and it falls on the floor."))
 
-		if(ishuman(loc))
-			var/mob/living/carbon/human/H = loc
-			H.update_inv_w_uniform()
+	if(ishuman(loc))
+		var/mob/living/carbon/human/H = loc
+		H.update_inv_w_uniform()
+		if(accessory.above_suit)
 			H.update_inv_wear_suit()
-
 
 /obj/item/clothing/under/examine(mob/user)
 	. = ..()
@@ -234,10 +228,9 @@
 				. += "Its vital tracker appears to be enabled."
 			if(SENSOR_COORDS)
 				. += "Its vital tracker and tracking beacon appear to be enabled."
-	if(length(attached_accessories))
-		for(var/obj/item/clothing/accessory/attached_accessory in attached_accessories)
-			. += "\A [attached_accessory] is attached to it."
-	//SKYRAT EDIT END
+	for(var/obj/item/clothing/accessory/attached_accessory as anything in attached_accessories)
+		. += "\A [attached_accessory] is attached to it."
+	//SANDSTORM EDIT END
 
 /obj/item/clothing/under/verb/toggle()
 	set name = "Adjust Suit Sensors"

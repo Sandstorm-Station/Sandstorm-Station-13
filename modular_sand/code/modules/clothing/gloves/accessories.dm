@@ -10,6 +10,8 @@
 	icon_state = "ringgold"
 	item_state = "gring"
 	strip_delay = 40
+	/// Here as a reminder, do not add this, unsupported.
+	above_suit = FALSE
 	var/transfer_prints = FALSE
 	var/transfer_blood = 0
 	var/strip_mod = 1

@@ -2,7 +2,7 @@
 	name = "Accessory"
 	desc = "Something has gone wrong!"
 	icon = 'icons/obj/clothing/accessories.dmi'
-	//skyrat edit
+	//sandstorm edit
 	mob_overlay_icon = 'icons/mob/clothing/accessories.dmi'
 	//
 	icon_state = "plasma"
@@ -13,48 +13,41 @@
 	var/above_suit = FALSE
 	var/minimize_when_attached = TRUE // TRUE if shown as a small icon in corner, FALSE if overlayed
 	var/datum/component/storage/detached_pockets
-	//skyrat edit
-	var/current_uniform = null
-	//
 
-/obj/item/clothing/accessory/proc/attach(obj/item/clothing/under/U, user)
+/obj/item/clothing/accessory/proc/attach(obj/item/clothing/under/uniform, user)
 	var/datum/component/storage/storage = GetComponent(/datum/component/storage)
 	if(storage)
-		if(SEND_SIGNAL(U, COMSIG_CONTAINS_STORAGE))
+		if(SEND_SIGNAL(uniform, COMSIG_CONTAINS_STORAGE))
 			return FALSE
-		U.TakeComponent(storage)
+		uniform.TakeComponent(storage)
 		detached_pockets = storage
-	//SKYRAT EDIT
-	U.attached_accessories |= src
-	force_unto(U)
-	current_uniform = U
-	//SKYRAT EDIT END
-	forceMove(U)
+	//SANDSTORM EDIT
+	LAZYADD(uniform.attached_accessories, src)
+	force_unto(uniform)
+	//SANDSTORM EDIT END
+	forceMove(uniform)
 
-	if (islist(U.armor) || isnull(U.armor)) 										// This proc can run before /obj/Initialize has run for U and src,
-		U.armor = getArmor(arglist(U.armor))	// we have to check that the armor list has been transformed into a datum before we try to call a proc on it
+	if (islist(uniform.armor) || isnull(uniform.armor)) 										// This proc can run before /obj/Initialize has run for uniform and src,
+		uniform.armor = getArmor(arglist(uniform.armor))	// we have to check that the armor list has been transformed into a datum before we try to call a proc on it
 																					// This is safe to do as /obj/Initialize only handles setting up the datum if actually needed.
 	if (islist(armor) || isnull(armor))
 		armor = getArmor(arglist(armor))
 
-	U.armor = U.armor.attachArmor(armor)
+	uniform.armor = uniform.armor.attachArmor(armor)
 
 	if(isliving(user))
-		on_uniform_equip(U, user)
+		on_uniform_equip(uniform, user)
 
 	return TRUE
 
-/obj/item/clothing/accessory/proc/detach(obj/item/clothing/under/U, user)
-	if(detached_pockets && detached_pockets.parent == U)
+/obj/item/clothing/accessory/proc/detach(obj/item/clothing/under/uniform, user)
+	if(detached_pockets && detached_pockets.parent == uniform)
 		TakeComponent(detached_pockets)
 
-	U.armor = U.armor.detachArmor(armor)
-	//SANDSTORM EDIT
-	current_uniform = null
-	//SANDSTORM EDIT END
+	uniform.armor = uniform.armor.detachArmor(armor)
 
 	if(isliving(user))
-		on_uniform_dropped(U, user)
+		on_uniform_dropped(uniform, user)
 
 	if(minimize_when_attached)
 		transform *= 2
@@ -62,48 +55,36 @@
 		pixel_y = 0
 	layer = initial(layer)
 	plane = initial(plane)
-	U.cut_overlays()
-	U.attached_accessories -= src
-	U.accessory_overlays = list()
-	if(length(U.attached_accessories))
-		U.accessory_overlays = list(mutable_appearance('icons/mob/clothing/accessories.dmi', "blank"))
-		for(var/obj/item/clothing/accessory/attached_accessory in U.attached_accessories)
-			attached_accessory.force_unto(U)
-			var/datum/element/polychromic/polychromic = LAZYACCESS(attached_accessory.comp_lookup, "item_worn_overlays")
-			if(!polychromic)
-				var/mutable_appearance/accessory_overlay = mutable_appearance(attached_accessory.mob_overlay_icon, attached_accessory.item_state || attached_accessory.icon_state, ABOVE_HUD_LAYER)
-				accessory_overlay.alpha = attached_accessory.alpha
-				accessory_overlay.color = attached_accessory.color
-				U.accessory_overlays += accessory_overlay
-			else
-				polychromic.apply_worn_overlays(attached_accessory, FALSE, attached_accessory.mob_overlay_icon, attached_accessory.item_state || attached_accessory.icon_state, NONE, U.accessory_overlays)
+	uniform.cut_overlays()
+	LAZYREMOVE(uniform.attached_accessories, src)
+	for(var/obj/item/clothing/accessory/attached_accessory as anything in uniform.attached_accessories)
+		uniform.add_overlay(attached_accessory)
 
 //SANDSTORM EDIT
-/obj/item/clothing/accessory/proc/force_unto(obj/item/clothing/under/U)
+/obj/item/clothing/accessory/proc/force_unto(obj/item/clothing/under/uniform)
 	layer = FLOAT_LAYER
 	plane = FLOAT_PLANE
 	if(minimize_when_attached)
-		if(current_uniform != U)
-			transform *= 0.5	//halve the size so it doesn't overpower the under
-			pixel_x += 8
-			pixel_y -= 8
-		if(length(U.attached_accessories) > 1)
-			if(length(U.attached_accessories) <= 3 && !current_uniform)
-				pixel_y += 8 * (length(U.attached_accessories) - 1)
-			else if((length(U.attached_accessories) > 3) && (length(U.attached_accessories) <= 6) && !current_uniform)
-				pixel_x -= 8
-				pixel_y += 8 * (length(U.attached_accessories) - 4)
-			else if((length(U.attached_accessories) > 6) && (length(U.attached_accessories) <= 9) && !current_uniform)
-				pixel_x -= 16
-				pixel_y += 8 * (length(U.attached_accessories) - 7)
-			else
-				if(current_uniform != U)
+		transform *= 0.5	//halve the size so it doesn't overpower the under
+		pixel_x += 8
+		pixel_y -= 8
+		if(length(uniform.attached_accessories) > 1)
+			switch(LAZYLEN(uniform.attached_accessories))
+				if(2 to 3)
+					pixel_y += 8 * (length(uniform.attached_accessories) - 1)
+				if(4 to 6)
+					pixel_x -= 8
+					pixel_y += 8 * (length(uniform.attached_accessories) - 4)
+				if(7 to 9)
+					pixel_x -= 16
+					pixel_y += 8 * (length(uniform.attached_accessories) - 7)
+				else
 					//we ran out of space for accessories, so we just throw shit at the wall
 					pixel_x = 0
 					pixel_y = 0
 					pixel_x += rand(-16, 16)
 					pixel_y += rand(-16, 16)
-	U.add_overlay(src)
+	uniform.add_overlay(src)
 //SANDSTORM EDIT END
 
 /obj/item/clothing/accessory/proc/on_uniform_equip(obj/item/clothing/under/U, user)
@@ -122,9 +103,9 @@
 
 /obj/item/clothing/accessory/examine(mob/user)
 	. = ..()
-	. += "<span class='notice'>\The [src] can be attached to [istype(src, /obj/item/clothing/accessory/ring) ? "gloves" : "a uniform"]. Alt-click to remove it once attached.</span>"
+	. += span_notice("\The [src] can be attached to [istype(src, /obj/item/clothing/accessory/ring) ? "gloves" : "a uniform"]. <b>Alt-click</b> to remove it once attached.")
 	if(initial(above_suit))
-		. += "<span class='notice'>\The [src] can be worn above or below your suit. Ctrl-click to toggle.</span>"
+		. += span_notice("\The [src] can be worn above or below your suit. <b>Ctrl-click</b> to toggle.")
 
 //////////////
 //Waistcoats//
