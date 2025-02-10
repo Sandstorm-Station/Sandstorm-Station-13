@@ -29,7 +29,7 @@
 			//SANDSTORM EDIT
 			if(istype(U) && !CHECK_BITFIELD(U.flags_inv, HIDEACCESSORY))
 				for(var/obj/item/clothing/accessory/attached in U.attached_accessories)
-					if(CHECK_BITFIELD(attached.flags_inv, HIDEACCESSORY) || attached.above_suit)
+					if(CHECK_BITFIELD(attached.flags_inv, HIDEACCESSORY) || !attached.above_suit)
 						continue
 					. += attached.build_worn_icon()
 			//SANDSTORM EDIT END
