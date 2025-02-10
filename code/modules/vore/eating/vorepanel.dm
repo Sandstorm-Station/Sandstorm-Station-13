@@ -369,10 +369,7 @@
 
 	switch(intent)
 		if("Examine") //Examine a mob inside another mob
-			var/list/results = target.examine(host)
-			if(!results || !results.len)
-				results = list("You were unable to examine that. Tell a developer!")
-			to_chat(user, jointext(results, "<br>"))
+			host.examinate(target)
 			return TRUE
 
 		if("Use Hand")
@@ -469,10 +466,7 @@
 	intent = tgui_alert(user, "What would you like to do with [target]?", "Vore Pick", available_options)
 	switch(intent)
 		if("Examine")
-			var/list/results = target.examine(host)
-			if(!results || !results.len)
-				results = list("You were unable to examine that. Tell a developer!")
-			to_chat(user, jointext(results, "<br>"))
+			host.examinate(target)
 			return TRUE
 
 		if("Eject")
