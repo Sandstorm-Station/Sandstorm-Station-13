@@ -50,22 +50,15 @@
 		//accessory
 		var/accessory_msg
 		if(istype(w_uniform, /obj/item/clothing/under))
-			var/obj/item/clothing/under/U = w_uniform
-			if(length(U.attached_accessories) && !(U.flags_inv & HIDEACCESSORY))
-				var/list/weehoo = list()
-				var/dumb_icons = ""
-				for(var/obj/item/clothing/accessory/attached_accessory in U.attached_accessories)
-					if(!(attached_accessory.flags_inv & HIDEACCESSORY))
-						weehoo += "\a [attached_accessory]"
-						dumb_icons = "[dumb_icons][icon2html(attached_accessory, user)]"
-				if(length(weehoo))
-					accessory_msg += " with [dumb_icons]"
-					if(length(U.attached_accessories) >= 2)
-						accessory_msg += jointext(weehoo, ", ", 1, length(weehoo) - 1)
-						accessory_msg += " and [weehoo[length(weehoo)]]"
-					else
-						accessory_msg += weehoo[1]
-
+			var/obj/item/clothing/under/worn_thing = w_uniform
+			if(!CHECK_BITFIELD(worn_thing.flags_inv, HIDEACCESSORY))
+				var/list/accessory_preparation
+				for(var/obj/item/clothing/accessory/attached_accessory as anything in worn_thing.attached_accessories)
+					if(CHECK_BITFIELD(attached_accessory.flags_inv, HIDEACCESSORY))
+						continue
+					LAZYADD(accessory_preparation, "[icon2html(attached_accessory, user)] [attached_accessory]")
+				if(length(accessory_preparation))
+					accessory_msg = " with [english_list(accessory_preparation)]"
 
 		. += "[t_He] [t_is] wearing [w_uniform.get_examine_string(user)][accessory_msg]."
 	//head
@@ -88,7 +81,20 @@
 
 	//gloves
 	if(gloves && !(ITEM_SLOT_GLOVES in obscured))
-		. += "[t_He] [t_has] [gloves.get_examine_string(user)] on [t_his] hands."
+		//accessory
+		var/accessory_msg
+		if(istype(gloves, /obj/item/clothing/gloves))
+			var/obj/item/clothing/gloves/worn_thing = gloves
+			if(!CHECK_BITFIELD(worn_thing.flags_inv, HIDEACCESSORY))
+				var/list/accessory_preparation
+				for(var/obj/item/clothing/accessory/ring/attached_accessory as anything in worn_thing.attached_accessories)
+					if(CHECK_BITFIELD(attached_accessory.flags_inv, HIDEACCESSORY))
+						continue
+					LAZYADD(accessory_preparation, "[icon2html(attached_accessory, user)] [attached_accessory]")
+				if(length(accessory_preparation))
+					accessory_msg = " with [english_list(accessory_preparation)] on [t_his] fingers"
+
+		. += "[t_He] [t_has] [gloves.get_examine_string(user)] on [t_his] hands[accessory_msg]."
 	else if(length(blood_DNA))
 		var/hand_number = get_num_arms(FALSE)
 		if(hand_number)
