@@ -9,12 +9,12 @@
 			var/datum/language/language_datum = LAZYACCESS(SSlanguage.languages_by_name, language)
 			if(language_datum)
 				if(!language_datum.restricted || (language_datum.name in client.prefs.pref_species.languagewhitelist))
-					user.grant_language(language_datum.type, source = LANGUAGE_MULTILINGUAL)
+					user.grant_language(language_datum.type)
 					LAZYADD(valid_languages, language)
 				else
 					for(var/datum/quirk/quirk in client.prefs.all_quirks)
 						if(language_datum.name in quirk.languagewhitelist)
-							user.grant_language(language_datum.type, source = LANGUAGE_MULTILINGUAL)
+							user.grant_language(language_datum.type)
 							LAZYADD(valid_languages, language)
 							continue
 					LAZYADD(invalid_languages, language)
