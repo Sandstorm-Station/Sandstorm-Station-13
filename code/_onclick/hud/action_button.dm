@@ -235,11 +235,12 @@
 
 	var/list/settings = our_hud.get_action_buttons_icons()
 	var/ui_icon = "[settings["bg_icon"]]"
-	var/list/ui_segments = splittext(ui_icon, ".")
-	var/list/ui_paths = splittext(ui_segments[1], "/")
-	var/ui_name = ui_paths[length(ui_paths)]
+	var/static/regex/R
+	if(!R)
+		R = new(@"(screen_.+?)[\./]")
+	R.Find(ui_icon)
 
-	icon_state = "[ui_name]_palette"
+	icon_state = "[R.group[1]]_palette"
 
 /atom/movable/screen/button_palette/MouseEntered(location, control, params)
 	. = ..()

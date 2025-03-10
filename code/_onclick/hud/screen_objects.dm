@@ -156,7 +156,7 @@
 	mouse_over_pointer = MOUSE_HAND_POINTER
 
 /atom/movable/screen/language_menu/Click()
-	usr.get_language_holder().open_language_menu(usr)
+	hud.mymob.get_language_holder().open_language_menu(hud.mymob)
 
 /atom/movable/screen/inventory
 	/// The identifier for the slot. It has nothing to do with ID cards.
@@ -306,26 +306,36 @@
 	mouse_over_pointer = MOUSE_HAND_POINTER
 
 /atom/movable/screen/act_intent/Click(location, control, params)
-	usr.a_intent_change(INTENT_HOTKEY_RIGHT)
+	hud.mymob.a_intent_change(INTENT_HOTKEY_RIGHT)
+
+/atom/movable/screen/act_intent/update_icon_state()
+	icon_state = hud.mymob.a_intent || initial(icon_state)
+
+/atom/movable/screen/act_intent/segmented
+	base_icon_state = "intent"
 
 /atom/movable/screen/act_intent/segmented/Click(location, control, params)
-	if(usr.client.prefs.toggles & INTENT_STYLE)
-		var/_x = text2num(params2list(params)["icon-x"])
-		var/_y = text2num(params2list(params)["icon-y"])
-
-		if(_x<=16 && _y<=16)
-			usr.a_intent_change(INTENT_HARM)
-
-		else if(_x<=16 && _y>=17)
-			usr.a_intent_change(INTENT_HELP)
-
-		else if(_x>=17 && _y<=16)
-			usr.a_intent_change(INTENT_GRAB)
-
-		else if(_x>=17 && _y>=17)
-			usr.a_intent_change(INTENT_DISARM)
-	else
+	if(!(hud.mymob?.client.prefs.toggles & INTENT_STYLE))
 		return ..()
+	var/_x = text2num(params2list(params)["icon-x"])
+	var/_y = text2num(params2list(params)["icon-y"])
+
+	if(_x<=16 && _y<=16)
+		usr.a_intent_change(INTENT_HARM)
+
+	else if(_x<=16 && _y>=17)
+		usr.a_intent_change(INTENT_HELP)
+
+	else if(_x>=17 && _y<=16)
+		usr.a_intent_change(INTENT_GRAB)
+
+	else if(_x>=17 && _y>=17)
+		usr.a_intent_change(INTENT_DISARM)
+
+	update_icon()
+
+/atom/movable/screen/act_intent/segmented/update_icon_state()
+	icon_state = "[base_icon_state]_[hud.mymob.a_intent]"
 
 /atom/movable/screen/act_intent/alien
 	icon = 'icons/mob/screen_alien.dmi'
@@ -427,8 +437,12 @@
 	screen_loc = ui_zonesel
 	mouse_over_pointer = MOUSE_HAND_POINTER
 	var/overlay_icon = 'icons/mob/screen_gen.dmi'
-	var/static/list/hover_overlays_cache = list()
+	var/list/hover_overlays_cache = list()
 	var/hovering
+
+/atom/movable/screen/zone_sel/Destroy()
+	QDEL_LIST_ASSOC(hover_overlays_cache)
+	return ..()
 
 /atom/movable/screen/zone_sel/Click(location, control,params)
 	if(isobserver(usr))
