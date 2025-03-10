@@ -441,7 +441,7 @@
 	var/hovering
 
 /atom/movable/screen/zone_sel/Destroy()
-	QDEL_LIST_ASSOC(hover_overlays_cache)
+	QDEL_LIST_ASSOC_VAL(hover_overlays_cache)
 	return ..()
 
 /atom/movable/screen/zone_sel/Click(location, control,params)
