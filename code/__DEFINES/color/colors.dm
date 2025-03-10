@@ -127,6 +127,7 @@
 #define COLOR_THEME_TRASENKNOX "#3ce375"
 #define COLOR_THEME_DETECTIVE "#c7b08b"
 #define COLOR_THEME_LITEWEB "#226611"
+#define COLOR_THEME_CORRU "#00FFFF"
 
 ///Colors for eigenstates
 #define COLOR_PERIWINKLEE "#9999FF"

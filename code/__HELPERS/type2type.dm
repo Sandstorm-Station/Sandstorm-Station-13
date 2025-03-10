@@ -707,7 +707,9 @@
 			return 'modular_citadel/icons/ui/screen_trasenknox.dmi'
 		if('icons/mob/screen_detective.dmi')
 			return 'modular_citadel/icons/ui/screen_detective.dmi'
-		if('modular_sand/icons/mob/screen_liteweb.dmi')
-			return 'modular_sand/icons/mob/screen_liteweb.dmi'
+		if('modular_sand/icons/hud/screen_liteweb/base.dmi')
+			return 'modular_sand/icons/hud/screen_liteweb/base.dmi'
+		if('modular_sand/icons/hud/screen_corru/base.dmi')
+			return 'modular_sand/icons/hud/screen_corru/base.dmi'
 		else
 			return 'modular_citadel/icons/ui/screen_midnight.dmi'

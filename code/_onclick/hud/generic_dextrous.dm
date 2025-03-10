@@ -34,8 +34,8 @@
 			action_intent = new /atom/movable/screen/act_intent/segmented(null, src)
 		else
 			action_intent = new /atom/movable/screen/act_intent(null, src)
-			action_intent.icon = ui_style
-		action_intent.icon_state = mymob.a_intent
+			action_intent.icon = ui_style_modular(ui_style)
+		action_intent.update_icon()
 		static_inventory += action_intent
 
 

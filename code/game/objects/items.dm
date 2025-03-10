@@ -962,6 +962,8 @@ GLOBAL_VAR_INIT(embedpocalypse, FALSE) // if true, all items will be able to emb
 				outline_color = COLOR_THEME_DETECTIVE
 			if("liteweb")
 				outline_color = COLOR_THEME_LITEWEB
+			if("corru")
+				outline_color = COLOR_THEME_CORRU
 			else //this should never happen, hopefully
 				outline_color = COLOR_WHITE
 	if(color)
