@@ -44,7 +44,13 @@ Notes:
 		owner = C
 		var/datum/asset/stuff = get_asset_datum(/datum/asset/simple/jquery)
 		stuff.send(owner)
-		owner << browse(file2text('code/modules/tooltip/tooltip.html'), "window=[control]")
+		var/datum/asset/simple/namespaced/fonts/fonts = get_asset_datum(/datum/asset/simple/namespaced/fonts)
+		fonts.send(owner)
+		var/static/file2send
+		if(!file2send)
+			file2send = replacetext(file2text('code/modules/tooltip/tooltip.html'), "THE_FONT_GOES_HERE!!!!!!!!!!!!!!!", SSassets.transport.get_asset_url("fonts.css"))
+
+		owner << browse(file2send, "window=[control]")
 
 	..()
 

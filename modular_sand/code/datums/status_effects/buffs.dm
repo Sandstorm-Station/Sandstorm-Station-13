@@ -8,5 +8,5 @@
 /atom/movable/screen/alert/status_effect/argent
 	name = "Argent Energized"
 	desc = "Argent energy rushes through your body! You'll only take 10% damage for the duration of the energy rush!"
-	icon = 'modular_sand/icons/mob/screen_alert.dmi'
+	icon = 'modular_sand/icons/hud/screen_alert.dmi'
 	icon_state = "argent"

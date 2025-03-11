@@ -3,6 +3,7 @@
 
 /atom/movable/screen/human/toggle
 	name = "toggle"
+	base_icon_state = "toggle"
 	icon_state = "toggle"
 	mouse_over_pointer = MOUSE_HAND_POINTER
 
@@ -34,9 +35,19 @@
 	targetmob.hud_used.extra_inventory_update(usr)
 	// Sandstorm edit END
 
+	update_icon()
+
+/atom/movable/screen/human/toggle/update_icon_state()
+	. = ..()
+	icon_state = check_on() ? "[base_icon_state]_on" : "[base_icon_state]"
+
+/atom/movable/screen/human/toggle/proc/check_on()
+	return hud.inventory_shown
+
 // Sandstorm edit
 /atom/movable/screen/human/toggle/extra
 	name = "toggle extra"
+	base_icon_state = "toggle_extra"
 	icon_state = "toggle_extra"
 
 /atom/movable/screen/human/toggle/extra/Click()
@@ -56,7 +67,12 @@
 		usr.client.screen += targetmob.hud_used.extra_inventory
 
 	targetmob.hud_used.extra_inventory_update(usr)
+
+	update_icon()
 //
+
+/atom/movable/screen/human/toggle/extra/check_on()
+	return hud.extra_shown
 
 /atom/movable/screen/human/equip
 	name = "equip"
@@ -240,7 +256,8 @@
 	static_inventory += using
 
 	action_intent = new /atom/movable/screen/act_intent/segmented(null, src)
-	action_intent.icon_state = mymob.a_intent
+	action_intent.icon = ui_style_modular(ui_style)
+	action_intent.icon_state = "[action_intent.base_icon_state]_[mymob.a_intent]"
 	static_inventory += action_intent
 
 	assert_move_intent_ui(owner, TRUE)
@@ -332,7 +349,7 @@
 	inv_box.name = "left pocket"
 	inv_box.icon = ui_style
 	inv_box.icon_state = "pocket"
-	inv_box.icon_full = "template"
+	inv_box.icon_full = "template_small"
 	inv_box.screen_loc = ui_storage1
 	inv_box.slot_id = ITEM_SLOT_LPOCKET
 	static_inventory += inv_box
@@ -341,7 +358,7 @@
 	inv_box.name = "right pocket"
 	inv_box.icon = ui_style
 	inv_box.icon_state = "pocket"
-	inv_box.icon_full = "template"
+	inv_box.icon_full = "template_small"
 	inv_box.screen_loc = ui_storage2
 	inv_box.slot_id = ITEM_SLOT_RPOCKET
 	static_inventory += inv_box
@@ -494,17 +511,21 @@
 	infodisplay += thirst
 
 	healths = new /atom/movable/screen/healths(null, src)
+	healths.icon = ui_style_modular(ui_style, "health")
 	infodisplay += healths
 
 	staminas = new /atom/movable/screen/staminas(null, src)
+	staminas.icon = ui_style_modular(ui_style, "stamina")
 	infodisplay += staminas
 
 	if(!CONFIG_GET(flag/disable_stambuffer))
 		staminabuffer = new /atom/movable/screen/staminabuffer(null, src)
+		staminabuffer.icon = ui_style_modular(ui_style, "stamina")
 		infodisplay += staminabuffer
 	//END OF CIT CHANGES
 
 	healthdoll = new /atom/movable/screen/healthdoll(null, src)
+	healthdoll.icon = ui_style_modular(ui_style, "health")
 	infodisplay += healthdoll
 
 	pull_icon = new /atom/movable/screen/pull(null, src)
@@ -536,6 +557,7 @@
 
 	zone_select =  new /atom/movable/screen/zone_sel(null, src)
 	zone_select.icon = ui_style
+	zone_select.overlay_icon = ui_style_modular(ui_style, "zone")
 	zone_select.update_icon()
 	static_inventory += zone_select
 

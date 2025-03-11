@@ -15,7 +15,8 @@ GLOBAL_LIST_INIT(available_ui_styles, list(
 	"Clockwork" = 'icons/mob/screen_clockwork.dmi',
 	"Trasen-Knox" = 'icons/mob/screen_trasenknox.dmi',
 	"Detective" = 'icons/mob/screen_detective.dmi',
-	"Liteweb" = 'modular_sand/icons/mob/screen_liteweb.dmi'
+	"Liteweb" = 'modular_sand/icons/hud/screen_liteweb/base.dmi',
+	"Corru" = 'modular_sand/icons/hud/screen_corru/base.dmi'
 ))
 
 /proc/ui_style2icon(ui_style)
@@ -44,7 +45,7 @@ GLOBAL_LIST_INIT(available_ui_styles, list(
 	var/atom/movable/screen/synth/coolant_counter/coolant_display
 
 	var/atom/movable/screen/action_intent
-	var/atom/movable/screen/zone_select
+	var/atom/movable/screen/zone_sel/zone_select
 	var/atom/movable/screen/pull_icon
 	var/atom/movable/screen/rest_icon
 	var/atom/movable/screen/throw_icon
