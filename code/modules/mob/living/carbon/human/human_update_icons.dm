@@ -179,6 +179,15 @@ There are several things that need to be remembered:
 				uniform_overlay.pixel_y += dna.species.offset_features[OFFSET_UNIFORM][2]
 			overlays_standing[UNIFORM_LAYER] = uniform_overlay
 
+			// Sandstorm Edit
+			var/list/experimental_overlays = list(/obj/item/clothing/under/latex, /obj/item/clothing/under/latex/half, /obj/item/clothing/under/centcomdress)
+			if(is_type_in_list(U, experimental_overlays))
+				if(has_penis())
+					uniform_overlay.add_overlay(mutable_appearance('modular_sand/icons/mob/clothing/extra.dmi', "[U.icon_state]_penis"))
+				if(has_breasts())
+					uniform_overlay.add_overlay(mutable_appearance('modular_sand/icons/mob/clothing/extra.dmi', "[U.icon_state]_breasts"))
+			// End of Sandstorm Edit
+
 		apply_overlay(UNIFORM_LAYER)
 		update_mutant_bodyparts(block_recursive_calls)
 
