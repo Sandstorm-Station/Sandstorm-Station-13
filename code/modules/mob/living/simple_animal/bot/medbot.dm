@@ -762,6 +762,11 @@
 /obj/machinery/bot_core/medbot
 	req_one_access = list(ACCESS_MEDICAL, ACCESS_ROBOTICS)
 
+/mob/living/simple_animal/bot/medbot/catmedbot
+	name = "\improper MediKitty"
+	desc = "A little medical feline. He meows as he swings his syringe."
+	icon = 'modular_sand/icons/mob/catmedbot.dmi'
+
 #undef MEDBOT_PANIC_NONE
 #undef MEDBOT_PANIC_LOW
 #undef MEDBOT_PANIC_MED
@@ -769,3 +774,4 @@
 #undef MEDBOT_PANIC_FUCK
 #undef MEDBOT_PANIC_ENDING
 #undef MEDBOT_PANIC_END
+
