@@ -79,12 +79,3 @@
 
 /obj/item/clothing/under/misc/latex_catsuit/MouseDrop(atom/over_object)
 
-/obj/item/clothing/under/misc/latex_catsuit/attackby(obj/item/K, mob/user, params)
-	if(istype(K, /obj/item/key/latex))
-		if(seamless != FALSE)
-			to_chat(user, span_warning("The suit suddenly loosens!"))
-			seamless = FALSE
-		else
-			to_chat(user, span_warning("The suit suddenly tighten!"))
-			seamless = TRUE
-	return
