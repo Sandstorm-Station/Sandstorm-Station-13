@@ -8,34 +8,37 @@
 	alt_titles += list(
 		"Colony Overseer",
 		"Senator",
-		"Consul"
+		"Consul",
+		"Death Captain"
 	)
 	return ..()
 
 /datum/job/chief_engineer/New()
 	alt_titles += list(
-		"Senior Engineer"
+		"Senior Engineer",
+		"Super Engineer"
 	)
 	return ..()
 
 /datum/job/hop/New()
 	alt_titles += list(
 		"Crew Resource Officer",
-		"Executive Officer"
+		"Executive Officer",
+		"Democracy Officer"
 	)
 	return ..()
 
 /datum/job/hos/New()
 	alt_titles += list(
-		"Praetor",
-		"Tarkhan"
+		"Truth Enforcer"
 	)
 	return ..()
 
 /datum/job/qm/New()
 	alt_titles += list(
 		"Resource Manager",
-		"Logistics Supervisor"
+		"Logistics Supervisor",
+		"Requisitions Officer"
 	)
 	return ..()
 
@@ -46,28 +49,30 @@
 	)
 	return ..()
 
-// Re-enable once we have our unique again
-/*
 /datum/job/atmos/New()
 	alt_titles += list(
+		"Fire Safety Officer"
 	)
 	return ..()
 
 /datum/job/engineer/New()
 	alt_titles += list(
+		"Super Engineer"
 	)
 	return ..()
-*/
 
 /datum/job/assistant/New()
 	alt_titles += list(
 		"Intern",
+		"Super Pedestrian",
 	)
 	return ..()
 
 /datum/job/bartender/New()
 	alt_titles += list(
-		"Barista"
+		"Barista",
+		"Super Bartender",
+		"Super Barista",
 	)
 	return ..()
 
@@ -76,20 +81,25 @@
 		"Cult Leader",
 		"Pope",
 		"Bishop",
-		"Pontiff"
+		"Pontiff",
+		"Jehovah Witness",
+		"Super Chaplain"
 	)
 	return ..()
 
 /datum/job/clown/New()
 	alt_titles += list(
-		"Entertainer"
+		"Entertainer",
+		"Dissident"
 	)
 	return ..()
 
 /datum/job/cook/New()
 	alt_titles += list(
 		"Chef",
-		"Nutritionist"
+		"Nutritionist",
+		"Super Chef",
+		"Super Cook"
 	)
 	return ..()
 
@@ -111,12 +121,15 @@
 	alt_titles += list(
 	)
 	return ..()
+*/
 
 /datum/job/lawyer/New()
 	alt_titles += list(
+		"Super Attorney"
 	)
 	return ..()
 
+/*
 /datum/job/mime/New()
 	alt_titles += list(
 	)
@@ -130,12 +143,13 @@
 	)
 	return ..()
 
-/*
 /datum/job/scientist/New()
 	alt_titles += list(
+		"Super Scientist"
 	)
 	return ..()
 
+/*
 /datum/job/chemist/New()
 	alt_titles += list(
 	)
@@ -146,20 +160,24 @@
 	alt_titles += list(
 		"Medical Secretary",
 		"Emergency Physician",
-		"Field Surgeon"
+		"Field Surgeon",
+		"Super Doctor",
+		"Super Surgeon"
 	)
 	return ..()
 
 /datum/job/geneticist/New()
 	alt_titles += list(
-		"Bioengineer"
+		"Bioengineer",
+		"Super Geneticist"
 	)
 	return ..()
 
 /datum/job/paramedic/New()
 	alt_titles += list(
 		"Emergency Medical Technician",
-		"Advanced Emergency Medical Technician"
+		"Advanced Emergency Medical Technician",
+		"Super Paramedic"
 	)
 	return ..()
 
@@ -168,37 +186,40 @@
 	alt_titles += list(
 	)
 	return ..()
+*/
 
 /datum/job/detective/New()
 	alt_titles += list(
+		"Super Sheriff"
 	)
 	return ..()
-*/
 
 /datum/job/officer/New()
 	alt_titles += list(
 		"Peacekeeper",
-		"Enforcer"
+		"Peace Officer"
 	)
 	return ..()
 
 /datum/job/warden/New()
 	alt_titles += list(
-		"Brig Chief"
+		"Brig Chief",
+		"Super Executioner"
 	)
 	return ..()
 
 /datum/job/cargo_tech/New()
 	alt_titles += list(
 		"Shipping Specialist",
-		"Delivery Manager"
+		"Delivery Manager",
+		"Super Technician"
 	)
 	return ..()
 
-/*
+
 /datum/job/mining/New()
 	alt_titles += list(
-		"Explorer"
+		"Helldiver"
 	)
 	return ..()
-*/
+
