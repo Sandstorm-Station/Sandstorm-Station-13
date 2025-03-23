@@ -10,30 +10,6 @@
 	clothing_flags = null
 	visor_flags = null
 
-//Main code edits
-/obj/item/clothing/mask/muzzle/attack_hand(mob/user, act_intent, attackchain_flags)
-    if(iscarbon(user))
-        var/mob/living/carbon/C = user
-        if(src == C.wear_mask)
-            if(seamless)
-                to_chat(user, span_warning("You need help taking this off!"))
-                return
-            else
-                if(!do_after(C, 60, target = src))
-                    return
-    ..()
-
-//Own stuff
-
-/* I'm sorry nuke but cit added their own
-/obj/item/clothing/mask/rat/kitsune
-	name = "kitsune mask"
-	desc = "A mask made of soft vinyl and latex, representing the head of a mythical kitsune."
-	icon = 'modular_sand/icons/obj/clothing/masks.dmi'
-	icon_state = "kitsune"
-	item_state = "kitsune"
-*/
-
 /obj/item/clothing/mask/gas/cbrn
 	name = "CBRN gas mask"
 	desc = "Chemical, Biological, Radiological and Nuclear. A heavy duty gas mask design to be worn in hazardous environments. Actually works like a gas mask as well as can be connected to internal air supply."
@@ -51,7 +27,6 @@
 	visor_flags_inv = 0
 	flavor_adjust = FALSE
 	armor = list("melee" = 5, "bullet" = 0, "laser" = 5,"energy" = 5, "bomb" = 0, "bio" = 100, "rad" = 100, "fire" = 40, "acid" = 100)
-	is_edible = 0
 
 /obj/item/clothing/mask/gas/cbrn/mopp
 	name = "MOPP gas mask"
