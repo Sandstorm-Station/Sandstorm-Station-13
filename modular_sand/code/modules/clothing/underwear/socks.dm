@@ -250,3 +250,16 @@
 	name = "thigh-high rainbow stirrups"
 	icon_state = "rainbow_thigh-stir"
 	polychromic = FALSE
+
+/obj/item/clothing/underwear/socks/thigh/fishnet
+	name = "Fishnet tights"
+	desc = "The thickest of thighs will make this net break rather easily"
+	icon_state = "fishnet"
+	icon = 'modular_sand/icons/obj/clothing/underwear.dmi'
+	mob_overlay_icon = 'modular_sand/icons/mob/clothing/underwear.dmi'
+	anthro_mob_worn_overlay = 'modular_sand/icons/mob/clothing/underwear_digi.dmi'
+	body_parts_covered = FEET|LEGS|GROIN
+
+/obj/item/clothing/underwear/socks/thigh/fishnet/white
+	name = "White Fishnet tights"
+	icon_state = "fishnet_w"
