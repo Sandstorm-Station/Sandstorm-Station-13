@@ -135,7 +135,7 @@
 	var/button_style = get_pin_data(IC_INPUT, 3)
 	circuit.name = button_name ? button_name : "Quick button"
 	circuit.button_icon_state = (button_style in button_styles) ? "nanite_[button_style]" : "nanite_power"
-	circuit.UpdateButtons()
+	circuit.build_all_button_icons()
 
 /obj/item/integrated_circuit/input/quick_button/proc/update_button_owner()
 	var/obj/item/user_container = get_pin_data(IC_INPUT, 1)

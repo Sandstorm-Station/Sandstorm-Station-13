@@ -97,7 +97,7 @@
 		if(camera)
 			camera.remove_target_ui()
 			camera.forceMove(user)
-		teleport_now.UpdateButtons()
+		teleport_now.build_all_button_icons()
 
 /obj/item/clothing/suit/space/chronos/proc/chronowalk(atom/location)
 	var/mob/living/carbon/human/user = src.loc
@@ -111,7 +111,7 @@
 		if(camera)
 			camera.remove_target_ui()
 
-		teleport_now.UpdateButtons()
+		teleport_now.build_all_button_icons()
 
 		user.ExtinguishMob()
 
@@ -315,7 +315,7 @@
 	check_flags = AB_CHECK_CONSCIOUS //|AB_CHECK_INSIDE
 	var/obj/item/clothing/suit/space/chronos/chronosuit = null
 
-/datum/action/innate/chrono_teleport/IsAvailable(silent = FALSE)
+/datum/action/innate/chrono_teleport/IsAvailable(feedback)
 	return (chronosuit && chronosuit.activated && chronosuit.camera && !chronosuit.teleporting)
 
 /datum/action/innate/chrono_teleport/Activate()

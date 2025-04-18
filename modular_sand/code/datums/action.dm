@@ -2,7 +2,7 @@
 	small_icon = 'modular_sand/icons/mob/lavaland/drakeling_greyscale.dmi'
 	small_icon_state = "ash_whelp"
 
-/datum/action/item_action/toggle_light/Trigger()
+/datum/action/item_action/toggle_light/Trigger(trigger_flags)
 	if(istype(target, /obj/item/pda))
 		var/obj/item/pda/P = target
 		P.toggle_light(owner)
