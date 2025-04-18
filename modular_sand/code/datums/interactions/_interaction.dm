@@ -42,7 +42,7 @@
 	var/required_from_target_exposed = NONE
 	var/required_from_target_unexposed = NONE
 
-	/// Refuses to accept more than one entry for some reason, fix sometime
+	/// Additional details to be shown in the interaction menu, accepts more than one entry
 	var/list/additional_details
 
 /// Checks if user can do an interaction, action_check is for whether you're actually doing it or not (useful for the menu and not removing the buttons)

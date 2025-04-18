@@ -90,8 +90,21 @@ GLOBAL_LIST_INIT(lewd_kiss_sounds, list(
 #define INTERACTION_FLAG_USER_NOT_TIRED (1<<5)
 
 /// Copy-paste prevention for additional details
+/// Fills containers
 #define INTERACTION_FILLS_CONTAINERS list( \
 	"info" = "You can fill a container if you have it in your active hand or are pulling it", \
 	"icon" = "flask", \
-	"color" = "transparent" \
+	"color" = "white" \
 	)
+/// Can drink from
+#define INTERACTION_MAY_CONTAIN_DRINK list( \
+	"info" = "May contain reagents", \
+	"icon" = "cow", \
+	"color" = "white" \
+)
+/// Causes pregnancies
+#define INTERACTION_MAY_CAUSE_PREGNANCY list( \
+	"info" = "May cause pregnancies", \
+	"icon" = "person-pregnant", \
+	"color" = "white" \
+)

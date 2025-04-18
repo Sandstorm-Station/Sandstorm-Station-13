@@ -74,7 +74,7 @@ export const InteractionsTab = (props, context) => {
                       {interaction.additionalDetails && (
                         interaction.additionalDetails.map(detail => (
                           <Tooltip content={detail.info} key={detail}>
-                            <Icon name={detail.icon} key={detail} />
+                            <Icon name={detail.icon} color={detail.color} key={detail} />
                           </Tooltip>
                         )))}
                     </Box>

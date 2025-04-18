@@ -5,6 +5,13 @@
 	write_log_user = "breastfed"
 	write_log_target = "was breastfed by"
 	interaction_sound = null
+	additional_details = list(
+		list(
+			"info" = "Will feed the target with your breasts' reagents if any",
+			"icon" = "cow",
+			"color" = "white"
+		)
+	)
 
 /datum/interaction/lewd/do_breastfeed/display_interaction(mob/living/user, mob/living/target)
 	var/message
