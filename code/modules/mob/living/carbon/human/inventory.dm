@@ -98,7 +98,7 @@
 	if(look_at)
 		if(looking_for == look_at)
 			return ITEM_SLOT_ICLOTHING
-		if(istype(look_at) && looking_for in look_at.attached_accessories)
+		if(istype(look_at) && (looking_for in look_at.attached_accessories))
 			return ITEM_SLOT_ACCESSORY
 
 	if(looking_for == r_store)
