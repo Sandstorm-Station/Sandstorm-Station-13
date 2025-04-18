@@ -700,7 +700,7 @@
 	desc = "Become immune to lava for a brief period of time."
 	check_flags = AB_CHECK_RESTRAINED|AB_CHECK_STUN|AB_CHECK_CONSCIOUS
 	cooldown_time = 2 MINUTES //two full minutes
-	icon_icon = 'icons/obj/clothing/accessories.dmi'
+	button_icon = 'icons/obj/clothing/accessories.dmi'
 	button_icon_state = "gold"
 
 /obj/item/clothing/accessory/lavawalk/proc/activate(datum/action/cooldown/lavawalk/action, obj/item/clothing/accessory/lavawalk/item)
@@ -1021,7 +1021,7 @@
 	desc = "Bind the necklaces ember to yourself, so that next time you activate it, it will revive or fully heal you whether dead or knocked out. (Beware of being gibbed)"
 
 //What happens when the user clicks on datum
-/datum/action/item_action/hands_free/necklace_of_the_forsaken/Trigger()
+/datum/action/item_action/hands_free/necklace_of_the_forsaken/Trigger(trigger_flags)
 	var/obj/item/clothing/neck/necklace/necklace_of_the_forsaken/MM = target
 	if(MM.numUses <= 0)//skip if it has already been used up
 		return
