@@ -6,6 +6,13 @@
 	interaction_flags = INTERACTION_FLAG_ADJACENT | INTERACTION_FLAG_OOC_CONSENT | INTERACTION_FLAG_EXTREME_CONTENT
 	write_log_user = "eyefucked"
 	write_log_target = "had their eye fucked by"
+	additional_details = list(
+		list(
+			"info" = "With the preference enabled causes slight bleeding, eye and brain damage",
+			"icon" = "eye",
+			"color" = "white"
+		)
+	)
 
 /datum/interaction/lewd/eyefuck/eyesocketfuck
 	description = "Fuck their eyesocket."

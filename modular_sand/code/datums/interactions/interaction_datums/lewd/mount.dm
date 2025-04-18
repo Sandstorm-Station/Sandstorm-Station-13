@@ -3,6 +3,9 @@
 	interaction_sound = null
 	required_from_user_exposed = INTERACTION_REQUIRE_VAGINA
 	required_from_target_exposed = INTERACTION_REQUIRE_PENIS
+	additional_details = list(
+		INTERACTION_MAY_CAUSE_PREGNANCY
+	)
 
 /datum/interaction/lewd/mount/display_interaction(mob/living/user, mob/living/partner)
 	var/message

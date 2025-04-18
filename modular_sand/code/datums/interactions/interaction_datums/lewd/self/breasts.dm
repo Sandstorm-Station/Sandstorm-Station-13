@@ -82,6 +82,9 @@
 	max_distance = 0
 	write_log_user = "sucked their own nips"
 	write_log_target = null
+	additional_details = list(
+		INTERACTION_MAY_CONTAIN_DRINK
+	)
 
 /datum/interaction/lewd/self_nipsuck/display_interaction(mob/living/user, mob/living/target)
 	var/message

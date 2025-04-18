@@ -5,6 +5,9 @@
 	write_log_user = "fucked"
 	write_log_target = "was fucked by"
 	interaction_sound = null
+	additional_details = list(
+		INTERACTION_MAY_CAUSE_PREGNANCY
+	)
 
 /datum/interaction/lewd/fuck/display_interaction(mob/living/user, mob/living/partner)
 	var/message
@@ -30,6 +33,7 @@
 /datum/interaction/lewd/fuck/anal
 	description = "Fuck their ass."
 	required_from_target_exposed = INTERACTION_REQUIRE_ANUS
+	additional_details = null // no pregnancy
 
 /datum/interaction/lewd/fuck/anal/display_interaction(mob/living/user, mob/living/partner)
 	var/message
