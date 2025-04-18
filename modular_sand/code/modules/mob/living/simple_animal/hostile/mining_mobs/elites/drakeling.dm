@@ -55,28 +55,28 @@
 
 /datum/action/innate/elite_attack/lavamoat
 	name = "Lava Moat"
-	icon_icon = 'modular_sand/icons/mob/actions/actions_elites.dmi'
+	button_icon = 'modular_sand/icons/mob/actions/actions_elites.dmi'
 	button_icon_state = "lava_moat"
 	chosen_message = span_boldwarning("You will attempt to create a lava moat around you.")
 	chosen_attack_num = LAVA_MOAT
 
 /datum/action/innate/elite_attack/lavaaround
 	name = "Lava Rivers"
-	icon_icon = 'modular_sand/icons/mob/actions/actions_elites.dmi'
+	button_icon = 'modular_sand/icons/mob/actions/actions_elites.dmi'
 	button_icon_state = "lava_around"
 	chosen_message = span_boldwarning("You will now create lava rivers at your cardinal directions.")
 	chosen_attack_num = LAVA_AROUND
 
 /datum/action/innate/elite_attack/firespew
 	name = "Fire Spew"
-	icon_icon = 'modular_sand/icons/mob/actions/actions_elites.dmi'
+	button_icon = 'modular_sand/icons/mob/actions/actions_elites.dmi'
 	button_icon_state = "fire_spew"
 	chosen_message = span_boldwarning("You will now spew fire at your target.")
 	chosen_attack_num = FIRE_SPEW
 
 /datum/action/innate/elite_attack/firemoat
 	name = "Fire Moat"
-	icon_icon = 'modular_sand/icons/mob/actions/actions_elites.dmi'
+	button_icon = 'modular_sand/icons/mob/actions/actions_elites.dmi'
 	button_icon_state = "fire_moat"
 	chosen_message = span_boldwarning("You will now spew fire at all cardinal directions.")
 	chosen_attack_num = FIRE_MOAT

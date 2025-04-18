@@ -180,5 +180,5 @@
 
 /datum/action/circuit_action
 	name = "Quick button"
-	icon_icon = 'icons/mob/actions/actions_items.dmi'
+	button_icon = 'icons/mob/actions/actions_items.dmi'
 	button_icon_state = "nanite_power"

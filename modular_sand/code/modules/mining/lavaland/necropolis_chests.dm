@@ -700,7 +700,7 @@
 	desc = "Become immune to lava for a brief period of time."
 	check_flags = AB_CHECK_RESTRAINED|AB_CHECK_STUN|AB_CHECK_CONSCIOUS
 	cooldown_time = 2 MINUTES //two full minutes
-	icon_icon = 'icons/obj/clothing/accessories.dmi'
+	button_icon = 'icons/obj/clothing/accessories.dmi'
 	button_icon_state = "gold"
 
 /obj/item/clothing/accessory/lavawalk/proc/activate(datum/action/cooldown/lavawalk/action, obj/item/clothing/accessory/lavawalk/item)
