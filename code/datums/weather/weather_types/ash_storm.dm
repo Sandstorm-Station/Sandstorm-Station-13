@@ -58,10 +58,6 @@ GLOBAL_LIST_EMPTY(ash_storm_sounds)
 	GLOB.ash_storm_sounds += weak_sounds
 	return ..()
 
-/datum/weather/ash_storm/end()
-	GLOB.ash_storm_sounds -= weak_sounds
-	return ..()
-
 /datum/weather/ash_storm/proc/is_ash_immune(atom/L)
 	while (L && !isturf(L))
 		if(ismecha(L)) //Mechs are immune
@@ -87,6 +83,14 @@ GLOBAL_LIST_EMPTY(ash_storm_sounds)
 			L.adjustStaminaLoss(4)
 		return
 	L.adjustFireLoss(4)
+
+/datum/weather/ash_storm/end()
+	GLOB.ash_storm_sounds -= weak_sounds
+	for(var/turf/open/floor/plating/asteroid/basalt/basalt as anything in GLOB.dug_up_basalt)
+		if(!(basalt.loc in impacted_areas) || !(basalt.z in impacted_z_levels))
+			continue
+		basalt.refill_dug()
+	return ..()
 
 //Emberfalls are the result of an ash storm passing by close to the playable area of lavaland. They have a 10% chance to trigger in place of an ash storm.
 /datum/weather/ash_storm/emberfall
