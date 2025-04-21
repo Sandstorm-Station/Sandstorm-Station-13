@@ -15,13 +15,30 @@
 		return
 	menu.open_menu(usr, src)
 
-#define INTERACTION_NORMAL 0
-#define INTERACTION_LEWD 1
-#define INTERACTION_EXTREME 2
-
 /// The menu itself, only var is target which is the mob you are interacting with
 /datum/component/interaction_menu_granter
 	var/mob/living/target
+	var/mob/living/auto_interaction_target
+	var/datum/interaction/currently_active_interaction
+	var/next_interaction_time
+	var/auto_interaction_pace = 1 SECONDS
+
+/datum/component/interaction_menu_granter/process(delta_time)
+	if(!currently_active_interaction)
+		auto_interaction_target = null
+		currently_active_interaction = null
+		return PROCESS_KILL
+	if(QDELETED(auto_interaction_target))
+		auto_interaction_target = null
+		currently_active_interaction = null
+		return PROCESS_KILL
+	if(world.time <= next_interaction_time)
+		return
+	next_interaction_time = world.time + auto_interaction_pace
+	if(!currently_active_interaction.do_action(parent, auto_interaction_target, apply_cooldown = FALSE))
+		auto_interaction_target = null
+		currently_active_interaction = null
+		return PROCESS_KILL
 
 /datum/component/interaction_menu_granter/Initialize(...)
 	if(!ismob(parent))
@@ -29,21 +46,24 @@
 	var/mob/parent_mob = parent
 	if(!parent_mob.client)
 		return COMPONENT_INCOMPATIBLE
-	. = ..()
+	return ..()
 
 /datum/component/interaction_menu_granter/RegisterWithParent()
 	. = ..()
 	RegisterSignal(parent, COMSIG_MOB_CTRLSHIFTCLICKON, PROC_REF(open_menu))
 
 /datum/component/interaction_menu_granter/Destroy(force, ...)
-	target = null
-	. = ..()
+	STOP_PROCESSING(SSinteractions, src)
+	if(target)
+		UnregisterSignal(target, COMSIG_PARENT_QDELETING)
+		target = null
+	auto_interaction_target = null
+	currently_active_interaction = null
+	return ..()
 
 /datum/component/interaction_menu_granter/UnregisterFromParent()
 	UnregisterSignal(parent, COMSIG_MOB_CTRLSHIFTCLICKON)
-	if(target)
-		UnregisterSignal(target, COMSIG_PARENT_QDELETING)
-	. = ..()
+	return ..()
 
 /// The one interacting is clicker, the interacted is clicked.
 /datum/component/interaction_menu_granter/proc/open_menu(mob/clicker, mob/clicked)
@@ -95,8 +115,9 @@
 	//Getting player
 	var/mob/living/self = parent
 	//Getting info
-	.["isTargetSelf"] = target == self
-	.["interactingWith"] = target != self ? "Interacting with \the [target]..." : "Interacting with yourself..."
+	.["isTargetSelf"] = target == self // Why all of these?
+	.["user"] = self // Because people may have the same name
+	.["target"] = target // target == self can distinguish
 	.["selfAttributes"] = self.list_interaction_attributes(self)
 	.["lust"] = self.get_lust()
 	.["maxLust"] = self.get_lust_tolerance() * 3
@@ -340,6 +361,10 @@
 		if(HAS_TRAIT(user, TRAIT_ESTROUS_DETECT))
 			.["theirLust"] = target.get_lust()
 			.["theirMaxLust"] = target.get_lust_tolerance() * 3
+	.["auto_interaction_pace"] = auto_interaction_pace
+	.["is_auto_target_self"] = auto_interaction_target == self
+	.["auto_interaction_target"] = auto_interaction_target
+	.["currently_active_interaction"] = currently_active_interaction?.type
 
 	//Get their genitals
 	var/list/genitals = list()
@@ -463,6 +488,7 @@
 		interaction["additionalDetails"] = I.additional_details
 		sent_interactions += list(interaction)
 	.["interactions"] = sent_interactions
+	.["interaction_speeds"] = GLOB.interaction_speeds
 
 /proc/num_to_pref(num)
 	switch(num)
@@ -480,21 +506,41 @@
 	switch(action)
 		if("interact")
 			var/datum/interaction/o = SSinteractions.interactions[params["interaction"]]
-			if(o)
-				o.do_action(parent_mob, target)
+			if(!o)
+				return FALSE
+			if(o == currently_active_interaction)
+				to_chat(parent_mob, span_notice("This interaction is being automated, sit back, relax or do a different one during it."))
 				return TRUE
-			return FALSE
+			o.do_action(parent_mob, target)
+			return TRUE
+		if("interaction_pace")
+			var/speed = params["speed"]
+			if(!(speed in GLOB.interaction_speeds))
+				return FALSE
+			src.auto_interaction_pace = speed
+			return TRUE
+		if("toggle_auto_interaction")
+			var/datum/interaction/o = SSinteractions.interactions[params["interaction"]]
+			if(!o || (currently_active_interaction == o) && (auto_interaction_target == target))
+				auto_interaction_target = null
+				currently_active_interaction = null
+				STOP_PROCESSING(SSinteractions, src)
+			else
+				auto_interaction_target = target
+				currently_active_interaction = o
+				START_PROCESSING(SSinteractions, src)
+			return TRUE
 		if("favorite")
 			var/datum/interaction/interaction = SSinteractions.interactions[params["interaction"]]
-			if(interaction)
-				var/datum/preferences/prefs = parent_mob.client.prefs
-				if(interaction.type in prefs.favorite_interactions)
-					LAZYREMOVE(prefs.favorite_interactions, interaction.type)
-				else
-					LAZYADD(prefs.favorite_interactions, interaction.type)
-				prefs.save_preferences()
-				return TRUE
-			return FALSE
+			if(!interaction)
+				return FALSE
+			var/datum/preferences/prefs = parent_mob.client.prefs
+			if(interaction.type in prefs.favorite_interactions)
+				LAZYREMOVE(prefs.favorite_interactions, interaction.type)
+			else
+				LAZYADD(prefs.favorite_interactions, interaction.type)
+			prefs.save_preferences()
+			return TRUE
 		if("genital")
 			var/mob/living/carbon/self = parent_mob
 			if("visibility" in params)
@@ -627,7 +673,3 @@
 					return FALSE
 			prefs.save_preferences()
 			return TRUE
-
-#undef INTERACTION_NORMAL
-#undef INTERACTION_LEWD
-#undef INTERACTION_EXTREME

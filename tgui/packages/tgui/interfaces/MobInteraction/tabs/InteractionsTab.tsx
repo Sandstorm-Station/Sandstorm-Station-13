@@ -9,14 +9,24 @@ type ContentInfo = {
   interactions: InteractionData[];
   favorite_interactions: string[];
   user_is_blacklisted: boolean;
+  target: string;
   target_is_blacklisted: boolean;
+  currently_active_interaction: string;
+  is_auto_target_self: boolean;
+  auto_interaction_target: string;
 }
 
 type InteractionData = {
   key: string;
   desc: string;
   type: number;
-  additionalDetails: string[];
+  additionalDetails: additionalDetailsContent[];
+}
+
+type additionalDetailsContent = {
+  info: string;
+  icon: string;
+  color: string;
 }
 
 const INTERACTION_NORMAL = 0;
@@ -49,7 +59,7 @@ export const InteractionsTab = (props, context) => {
     ? valid_favorites
     : interactions;
 
-  const { user_is_blacklisted, target_is_blacklisted } = data;
+  const { auto_interaction_target, currently_active_interaction, is_auto_target_self, user_is_blacklisted, target, target_is_blacklisted } = data;
 
   return (
     <Stack vertical>
@@ -58,6 +68,21 @@ export const InteractionsTab = (props, context) => {
           interactions_to_display.map((interaction) => (
             <Stack.Item key={interaction.key}>
               <Stack fill>
+                {interaction.type !== INTERACTION_NORMAL && (
+                  <Stack.Item>
+                    <Button
+                      key={interaction.key}
+                      icon={(currently_active_interaction === interaction.key) && (auto_interaction_target === target)
+                        ? "stop" : "play"}
+                      selected={(currently_active_interaction === interaction.key) && (auto_interaction_target === target)}
+                      tooltip={(currently_active_interaction === interaction.key) && (auto_interaction_target === target)
+                        ? `Stop interacting with ${is_auto_target_self ? "yourself" : auto_interaction_target}` : "Automatically repeat this interaction"}
+                      onClick={() => act('toggle_auto_interaction', {
+                        interaction: interaction.key,
+                      })}
+                    />
+                  </Stack.Item>
+                )}
                 <Stack.Item grow>
                   <Button
                     key={interaction.key}

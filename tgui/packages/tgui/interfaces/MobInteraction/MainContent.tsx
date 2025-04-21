@@ -1,5 +1,5 @@
-import { useLocalState } from '../../backend';
-import { Button, Icon, Input, Section, Tabs, Stack } from '../../components';
+import { useBackend, useLocalState } from '../../backend';
+import { Button, Icon, Input, Section, Tabs, Stack, Slider } from '../../components';
 
 import {
   InteractionsTab,
@@ -8,13 +8,27 @@ import {
   ContentPreferencesTab,
 } from './tabs';
 
+type MainTypes = {
+  interaction_speeds: number[];
+  currently_active_interaction: string;
+  auto_interaction_pace: number;
+  auto_interaction_target: string;
+  is_auto_target_self: boolean;
+}
+
 export const MainContent = (props, context) => {
+  const { act, data } = useBackend<MainTypes>(context);
   const [
     searchText,
     setSearchText,
   ] = useLocalState(context, 'searchText', '');
   const [tabIndex, setTabIndex] = useLocalState(context, 'tabIndex', 0);
+
   const [inFavorites, setInFavorites] = useLocalState(context, 'inFavorites', false);
+
+  const interaction_speeds = (data.interaction_speeds || []) as number[];
+  const { auto_interaction_pace, auto_interaction_target, currently_active_interaction, is_auto_target_self } = data;
+
   return (
     <Section fill>
       <Stack vertical fill>
@@ -59,7 +73,7 @@ export const MainContent = (props, context) => {
             </Stack.Item>
           </Stack>
         </Stack.Item>
-        <Stack.Item grow basis={0} mb={-2.3}>
+        <Stack.Item grow basis={0} mb={tabIndex === 0 ? -1 : -2.3}>
           <Section overflow="auto" fill>
             {(() => {
               switch (tabIndex) {
@@ -75,6 +89,35 @@ export const MainContent = (props, context) => {
             })()}
           </Section>
         </Stack.Item>
+        {tabIndex === 0 && (
+          <Stack.Item>
+            <Stack fill>
+              {!!currently_active_interaction && (
+                <Stack.Item>
+                  <Button
+                    icon="stop"
+                    selected
+                    tooltip={`Stop interacting with ${is_auto_target_self ? "yourself" : auto_interaction_target}`}
+                    onClick={() => act("toggle_auto_interaction")}
+                  />
+                </Stack.Item>
+              )}
+              <Stack.Item grow>
+                <Slider
+                  fluid
+                  minValue={1}
+                  maxValue={interaction_speeds.length}
+                  value={interaction_speeds.indexOf(auto_interaction_pace) + 1}
+                  format={value => interaction_speeds[value - 1] / 10}
+                  unit="seconds"
+                  stepPixelSize={50}
+                  onChange={(e, value) => act("interaction_pace",
+                    { speed: interaction_speeds[value - 1] })}
+                />
+              </Stack.Item>
+            </Stack>
+          </Stack.Item>
+        )}
       </Stack>
     </Section>
   );
