@@ -20,9 +20,9 @@
 	var/floor_variance = 20
 	attachment_holes = FALSE
 	/// Itemstack to drop when dug by a shovel
-	var/obj/item/stack/digResult = /obj/item/stack/ore/glass/basalt
+	var/obj/item/stack/dig_result = /obj/item/stack/ore/glass/basalt
 	/// Whether the turf has been dug or not
-	var/dug
+	var/dug = FALSE
 	/// Whether to change the turf's icon_state to "[base_icon_state]_dug" when its dugged up
 	postdig_icon_change = TRUE
 
@@ -38,18 +38,31 @@
 
 /// Drops itemstack when dug and changes icon
 /turf/open/floor/plating/asteroid/proc/getDug()
+	if(dug || broken)
+		return
 	dug = TRUE
-	new digResult(src, 5)
+	broken = TRUE
+	new dig_result(src, 5)
+	/* if(prob(worm_chance))
+		new /obj/item/food/bait/worm(src) */
 	if(postdig_icon_change)
 		icon_plating = "[environment_type]_dug"
 		icon_state = "[environment_type]_dug"
 
 /// If the user can dig the turf
 /turf/open/floor/plating/asteroid/proc/can_dig(mob/user)
-	if(!dug)
+	if(!dug && !broken)
 		return TRUE
 	if(user)
-		to_chat(user, "<span class='warning'>Looks like someone has dug here already!</span>")
+		balloon_alert(user, "already excavated!")
+
+///Refills the previously dug tile
+/turf/open/floor/plating/asteroid/proc/refill_dug()
+	dug = FALSE
+	broken = FALSE
+	icon_state = "[environment_type]"
+	if(prob(floor_variance))
+		icon_state = "[environment_type][rand(0,12)]"
 
 /turf/open/floor/plating/asteroid/try_replace_tile(obj/item/stack/tile/T, mob/user, params)
 	return
@@ -66,10 +79,10 @@
 // /turf/open/floor/plating/asteroid/crush()
 // 	return
 
-/turf/open/floor/plating/asteroid/attackby(obj/item/W, mob/user, params)
+/turf/open/floor/plating/asteroid/attackby(obj/item/attack_item, mob/user, params)
 	. = ..()
 	if(!.)
-		if(W.tool_behaviour == TOOL_SHOVEL || W.tool_behaviour == TOOL_MINING)
+		if(attack_item.tool_behaviour == TOOL_SHOVEL || attack_item.tool_behaviour == TOOL_MINING)
 			if(!can_dig(user))
 				return TRUE
 
@@ -78,16 +91,16 @@
 
 			to_chat(user, "<span class='notice'>You start digging...</span>")
 
-			if(W.use_tool(src, user, 40, volume=50))
+			if(attack_item.use_tool(src, user, 4 SECONDS, volume = 50))
 				if(!can_dig(user))
 					return TRUE
 				to_chat(user, "<span class='notice'>You dig a hole.</span>")
 				getDug()
-				SSblackbox.record_feedback("tally", "pick_used_mining", 1, W.type)
+				SSblackbox.record_feedback("tally", "pick_used_mining", 1, attack_item.type)
 				return TRUE
-		else if(istype(W, /obj/item/storage/bag/ore))
-			for(var/obj/item/stack/ore/O in src)
-				SEND_SIGNAL(W, COMSIG_PARENT_ATTACKBY, O)
+		else if(istype(attack_item, /obj/item/storage/bag/ore))
+			for(var/obj/item/stack/ore/dropped_ore in src)
+				SEND_SIGNAL(attack_item, COMSIG_PARENT_ATTACKBY, dropped_ore)
 
 /turf/open/floor/plating/asteroid/ex_act(severity, target, origin)
 	. = SEND_SIGNAL(src, COMSIG_ATOM_EX_ACT, severity, target)
@@ -95,6 +108,9 @@
 
 /turf/open/floor/plating/lavaland_baseturf
 	baseturfs = /turf/open/floor/plating/asteroid/basalt/lava_land_surface
+
+/// Used by ashstorms to replenish basalt tiles that have been dug up without going through all of them.
+GLOBAL_LIST_EMPTY(dug_up_basalt)
 
 /turf/open/floor/plating/asteroid/basalt
 	name = "volcanic floor"
@@ -104,10 +120,21 @@
 	icon_plating = "basalt"
 	environment_type = "basalt"
 	floor_variance = 15
-	digResult = /obj/item/stack/ore/glass/basalt
+	dig_result = /obj/item/stack/ore/glass/basalt
 
-// /turf/open/floor/plating/asteroid/basalt/setup_broken_states()
-// 	return list("basalt_dug")
+/turf/open/floor/plating/asteroid/basalt/getDug()
+	set_light(0)
+	GLOB.dug_up_basalt |= src
+	return ..()
+
+/turf/open/floor/plating/asteroid/basalt/Destroy()
+	GLOB.dug_up_basalt -= src
+	return ..()
+
+/turf/open/floor/plating/asteroid/basalt/refill_dug()
+	. = ..()
+	GLOB.dug_up_basalt -= src
+	set_basalt_light(src)
 
 /turf/open/floor/plating/asteroid/basalt/lava //lava underneath
 	baseturfs = /turf/open/lava/smooth
@@ -119,10 +146,6 @@
 /turf/open/floor/plating/asteroid/basalt/Initialize(mapload)
 	. = ..()
 	set_basalt_light(src)
-
-/turf/open/floor/plating/asteroid/getDug()
-	set_light(0)
-	return ..()
 
 /proc/set_basalt_light(turf/open/floor/B)
 	switch(B.icon_state)
@@ -164,7 +187,7 @@
 	burnt_states = list("snow_dug")
 	bullet_sizzle = TRUE
 	bullet_bounce_sound = null
-	digResult = /obj/item/stack/sheet/mineral/snow
+	dig_result = /obj/item/stack/sheet/mineral/snow
 
 // /turf/open/floor/plating/asteroid/snow/setup_broken_states()
 // 	return list("snow_dug")
