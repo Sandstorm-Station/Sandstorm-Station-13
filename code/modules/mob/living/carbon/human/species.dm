@@ -1641,15 +1641,7 @@ GLOBAL_LIST_EMPTY(roundstart_race_names)
 				H.Jitter(5)
 			hunger_rate = 3 * HUNGER_FACTOR
 		hunger_rate *= H.physiology.hunger_mod
-
-		// SANDSTORM EDIT
-		if (H.client)
-			H.adjust_nutrition(-hunger_rate)
-		else
-			// Do not allow SSD players to get too hungry.
-			if (H.nutrition >= NUTRITION_LEVEL_FED)
-				H.adjust_nutrition(-hunger_rate)
-		// End of sandstorm edit
+		H.adjust_nutrition(-hunger_rate)
 
 
 	if (H.nutrition > NUTRITION_LEVEL_FULL)
