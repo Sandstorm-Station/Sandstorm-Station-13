@@ -12,7 +12,7 @@
 	var/user_refractory_cost
 	var/target_refractory_cost
 
-/datum/interaction/lewd/evaluate_user(mob/living/user, silent = TRUE, action_check = TRUE)
+/datum/interaction/lewd/evaluate_user(mob/living/user, silent = TRUE, apply_cooldown = TRUE)
 	. = ..()
 	if(!.)
 		return FALSE
@@ -45,11 +45,11 @@
 			if(!(has_penis == TRUE))
 				if((user_require_penis_exposed) && has_penis == HAS_UNEXPOSED_GENITAL)
 					if(!silent)
-						to_chat(user, span_warning("Your penis need to be exposed."))
+						to_chat(user, span_warning("Your penis needs to be exposed."))
 					return FALSE
 				if((user_require_penis_unexposed) && has_penis == HAS_EXPOSED_GENITAL)
 					if(!silent)
-						to_chat(user, span_warning("Your penis need to be unexposed."))
+						to_chat(user, span_warning("Your penis needs to be unexposed."))
 					return FALSE
 
 	var/user_require_balls_exposed = !!(required_from_user_exposed & INTERACTION_REQUIRE_BALLS)
@@ -243,8 +243,6 @@
 	if(interaction_flags & INTERACTION_FLAG_OOC_CONSENT)
 		if((!user.ckey) || (user.client && user.client.prefs.toggles & VERB_CONSENT))
 			return TRUE
-		if(action_check)
-			return FALSE
 	return FALSE
 
 /datum/interaction/lewd/evaluate_target(mob/living/user, mob/living/target, silent = TRUE)

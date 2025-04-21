@@ -46,7 +46,7 @@
 	var/list/additional_details
 
 /// Checks if user can do an interaction, action_check is for whether you're actually doing it or not (useful for the menu and not removing the buttons)
-/datum/interaction/proc/evaluate_user(mob/living/user, silent = TRUE, action_check = TRUE)
+/datum/interaction/proc/evaluate_user(mob/living/user, silent = TRUE, apply_cooldown = TRUE)
 	if(SSinteractions.is_blacklisted(user))
 		return FALSE
 
@@ -70,7 +70,7 @@
 	if(COOLDOWN_FINISHED(user, last_interaction_time))
 		return TRUE
 
-	if(action_check)
+	if(apply_cooldown)
 		return FALSE
 	else
 		return TRUE
@@ -106,21 +106,21 @@
 	return TRUE
 
 /// Actually doing the action, has a few checks to see if it's valid, usually overwritten to be make things actually happen and what-not
-/datum/interaction/proc/do_action(mob/living/user, mob/living/target)
+/datum/interaction/proc/do_action(mob/living/user, mob/living/target, apply_cooldown = TRUE)
 	if(!(interaction_flags & INTERACTION_FLAG_USER_IS_TARGET))
 		if(user == target) //tactical href fix
 			to_chat(user, span_warning("You cannot target yourself."))
-			return
+			return FALSE
 	if(get_dist(user, target) > max_distance)
 		to_chat(user, span_warning("They are too far away."))
-		return
+		return FALSE
 	if(interaction_flags & INTERACTION_FLAG_ADJACENT && !(user.Adjacent(target) && target.Adjacent(user)))
 		to_chat(user, span_warning("You cannot get to them."))
-		return
-	if(!evaluate_user(user, silent = FALSE))
-		return
+		return FALSE
+	if(!evaluate_user(user, silent = FALSE, apply_cooldown = apply_cooldown))
+		return FALSE
 	if(!evaluate_target(user, target, silent = FALSE))
-		return
+		return FALSE
 
 	if(write_log_user)
 		user.log_message("[write_log_user] [target]", LOG_ATTACK)
@@ -128,7 +128,8 @@
 		target.log_message("[write_log_target] [user]", LOG_VICTIM, log_globally = FALSE)
 
 	display_interaction(user, target)
-	post_interaction(user, target)
+	post_interaction(user, target, apply_cooldown)
+	return TRUE
 
 /// Display the message
 /datum/interaction/proc/display_interaction(mob/living/user, mob/living/target)
@@ -138,8 +139,9 @@
 		user.visible_message("<span class='[simple_style]'>[capitalize(use_message)]</span>")
 
 /// After the interaction, the base only plays the sound and only if it has one
-/datum/interaction/proc/post_interaction(mob/living/user, mob/living/target)
-	COOLDOWN_START(user, last_interaction_time, 0.6 SECONDS)
+/datum/interaction/proc/post_interaction(mob/living/user, mob/living/target, apply_cooldown = TRUE)
+	if(apply_cooldown)
+		COOLDOWN_START(user, last_interaction_time, 0.5 SECONDS)
 	if(interaction_sound)
 		var/soundfile_to_play
 

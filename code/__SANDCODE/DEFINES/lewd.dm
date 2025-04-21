@@ -34,6 +34,17 @@ GLOBAL_LIST_INIT(lewd_kiss_sounds, list(
 	'modular_sand/sound/interactions/kiss4.ogg',
 	'modular_sand/sound/interactions/kiss5.ogg'
 ))
+GLOBAL_LIST_INIT(interaction_speeds, list(
+	4 SECONDS,
+	2 SECONDS,
+	1 SECONDS,
+	0.8 SECONDS,
+	0.5 SECONDS, // lowest value must always be over or equal to the subsystem wait/cooldown for interaction
+))
+
+#define INTERACTION_NORMAL 0
+#define INTERACTION_LEWD 1
+#define INTERACTION_EXTREME 2
 
 #define CUM_TARGET_MOUTH "mouth"
 #define CUM_TARGET_THROAT "throat"
