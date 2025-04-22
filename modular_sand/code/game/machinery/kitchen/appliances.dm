@@ -6,6 +6,7 @@
 	anchored = TRUE
 	icon = 'icons/obj/kitchen.dmi'
 	icon_state = "griddle1_off"
+	circuit = /obj/item/circuitboard/machine/griddle
 	var/activated = 0
 
 /obj/machinery/griddle/attackby(obj/item/W, mob/user, params)
@@ -42,3 +43,4 @@
 /obj/machinery/griddle/process()
 	if (activated)
 		Cook()
+

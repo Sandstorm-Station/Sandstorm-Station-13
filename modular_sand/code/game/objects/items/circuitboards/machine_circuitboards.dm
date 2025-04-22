@@ -50,3 +50,10 @@
 		/obj/item/stock_parts/manipulator = 2,
 		/obj/item/stack/cable_coil = 1,
 		/obj/item/stock_parts/subspace/filter = 1)
+
+//Placing it here because it is still well within modular_sand
+/obj/item/circuitboard/machine/griddle
+	name = "Griddle (Machine Board)"
+	build_path = /obj/machinery/griddle
+	req_components = list(/obj/item/stock_parts/micro_laser = 1)
+
