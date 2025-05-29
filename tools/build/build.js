@@ -61,6 +61,7 @@ export const DmTarget = new Juke.Target({
     'html/**',
     'icons/**',
     'interface/**',
+    'modular_citadel/**',
     `${DME_NAME}.dme`,
     'modular_citadel/**',
     'modular_sand/**',
