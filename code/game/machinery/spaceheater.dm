@@ -70,21 +70,22 @@
 /obj/machinery/space_heater/process_atmos()
 	if(!on || !is_operational())
 		if (on) // If it's broken, turn it off too
-			on = FALSE
+			toggle_power(FALSE)
 		return PROCESS_KILL
 
 	if(cell && cell.charge > 1 / efficiency)
 		var/turf/L = loc
-		PerformHeating(L)
+		if(!PerformHeating(L))
+			return PROCESS_KILL
 
 		for(var/direction in GLOB.alldirs)
 			L=get_step(src,direction)
 			if(!locate(/turf/closed) in L) // we don't want to heat walls and cause jank
-				PerformHeating(L)
+				if(!PerformHeating(L))
+					return PROCESS_KILL
 
 	else
-		on = FALSE
-		update_icon()
+		toggle_power(FALSE)
 		return PROCESS_KILL
 
 /obj/machinery/space_heater/proc/PerformHeating(turf/L)
@@ -92,7 +93,7 @@
 		if(mode != HEATER_MODE_STANDBY)
 			mode = HEATER_MODE_STANDBY
 			update_icon()
-		return
+		return TRUE
 
 	var/datum/gas_mixture/env = L.return_air()
 
@@ -107,16 +108,16 @@
 		update_icon()
 
 	if(mode == HEATER_MODE_STANDBY)
-		return
+		return TRUE
 
 	var/heat_capacity = env.heat_capacity()
 	var/requiredPower = abs(env.return_temperature() - targetTemperature) * heat_capacity
 	requiredPower = min(requiredPower, heatingPower)
 
 	if(requiredPower < 1 || !cell.use(requiredPower / efficiency))
-		on = FALSE
+		toggle_power(FALSE)
 		update_icon()
-		return
+		return FALSE
 
 	var/deltaTemperature = requiredPower / heat_capacity
 	if(mode == HEATER_MODE_COOL)
@@ -124,6 +125,7 @@
 	if(deltaTemperature)
 		env.set_temperature(env.return_temperature() + deltaTemperature)
 		air_update_turf()
+	return TRUE
 
 /obj/machinery/space_heater/RefreshParts()
 	var/laser = 2
@@ -181,6 +183,7 @@
 	..()
 	default_unfasten_wrench(user, I, 5)
 	return TRUE
+
 /obj/machinery/space_heater/ui_interact(mob/user, datum/tgui/ui)
 	ui = SStgui.try_update_ui(user, src, ui)
 	if(!ui)
@@ -217,12 +220,8 @@
 		return
 	switch(action)
 		if("power")
-			on = !on
-			mode = HEATER_MODE_STANDBY
-			usr.visible_message("<span class='notice'>[usr] switches [on ? "on" : "off"] \the [src].</span>", "<span class='notice'>You switch [on ? "on" : "off"] \the [src].</span>")
-			update_icon()
-			if (on)
-				SSair.start_processing_machine(src)
+			toggle_power()
+			usr.visible_message(span_notice("[usr] switches [on ? "on" : "off"] \the [src]."), span_notice("You switch [on ? "on" : "off"] \the [src]."))
 			. = TRUE
 		if("mode")
 			setMode = params["mode"]
@@ -243,6 +242,17 @@
 				cell.forceMove(drop_location())
 				cell = null
 				. = TRUE
+
+/obj/machinery/space_heater/proc/toggle_power(state = !on)
+	if(state == on)
+		return
+	on = state
+	mode = HEATER_MODE_STANDBY
+	update_icon()
+	if(on)
+		SSair.start_processing_machine(src)
+	else
+		SSair.stop_processing_machine(src)
 
 #undef HEATER_MODE_STANDBY
 #undef HEATER_MODE_HEAT
