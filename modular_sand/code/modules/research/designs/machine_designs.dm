@@ -57,3 +57,13 @@
 	build_path = /obj/item/circuitboard/machine/bluespace_miner
 	category = list("Misc. Machinery")
 	departmental_flags = DEPARTMENTAL_FLAG_SCIENCE | DEPARTMENTAL_FLAG_CARGO | DEPARTMENTAL_FLAG_ENGINEERING
+
+/datum/design/griddle_board
+	name = "Machine Design (Griddle Circuit Board)"
+	desc = "Localized heat, but for your food!"
+	id = "griddle_circuit_board"
+	build_type = AUTOLATHE | PROTOLATHE
+	materials = list(/datum/material/iron = 1000, /datum/material/glass = 2000)
+	build_path = /obj/item/circuitboard/machine/griddle
+	category = list("initial", "Electronics")
+	departmental_flags = DEPARTMENTAL_FLAG_SERVICE
