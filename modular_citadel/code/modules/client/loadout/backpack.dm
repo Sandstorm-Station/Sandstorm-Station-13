@@ -9,8 +9,6 @@
 	path = /obj/item/choice_beacon/box/plushie
 	subcategory = LOADOUT_SUBCATEGORY_BACKPACK_TOYS
 
-/datum/gear/backpack/plushbox/second //for people who want two plushies
-
 /datum/gear/backpack/tennis
 	name = "Polychromic Tennis Ball"
 	path = /obj/item/toy/fluff/tennis_poly
