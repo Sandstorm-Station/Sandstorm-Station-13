@@ -802,6 +802,12 @@ GLOBAL_LIST_INIT(valid_plushie_paths, valid_plushie_paths())
 	attack_verb = list("cuddled", "petpatted", "wigglepurred")
 	squeak_override = list('modular_citadel/sound/voice/merowr.ogg' = 1)
 
+/obj/item/toy/plush/catgirl/fermis/chen
+	name = "securicat plushie"
+	desc = "The official stuffed companion to the medcat plushie!! It resembles a certain securicat. You get the impression she's encouraging you to be brave and protect those you care for."
+	icon_state = "chen"
+	attack_verb = list("snuggles", "meowhuggies", "wigglepurrs")
+
 /obj/item/toy/plush/teddybear
 	name = "teddy"
 	desc = "It's a teddy bear!"
