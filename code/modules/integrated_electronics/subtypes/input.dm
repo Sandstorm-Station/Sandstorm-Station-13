@@ -1122,14 +1122,14 @@
 		return
 	var/datum/component/material_container/scanned_storage = scanned_thing.GetComponent(/datum/component/material_container)
 	if(!scanned_storage) //Invalid input
-		activate_pin(PIN_ACTIVATOR_OUTPUT_NOT_SCANNED)
-		return
+		var/datum/component/remote_materials/remote_storage = scanned_thing.GetComponent(/datum/component/remote_materials)
+		if(QDELETED(remote_storage))
+			activate_pin(PIN_ACTIVATOR_OUTPUT_NOT_SCANNED)
+			return
+		scanned_storage = remote_storage.mat_container
 	if(scanned_thing in view(drop_location())) // This is a camera. It can't examine thngs,that it can't see.
-		for(var/material_iterator in length(mtypes))
-			if(material_iterator in scanned_storage.materials)
-				set_pin_data(IC_OUTPUT, material_iterator, scanned_storage.materials[SSmaterials.GetMaterialRef(mtypes[material_iterator])] || 0)
-			else
-				set_pin_data(IC_OUTPUT, material_iterator, null)
+		for(var/material_iterator in 1 to length(mtypes))
+			set_pin_data(IC_OUTPUT, material_iterator, scanned_storage.materials[SSmaterials.GetMaterialRef(mtypes[material_iterator])] || 0)
 		push_data()
 		activate_pin(PIN_ACTIVATOR_OUTPUT_ON_SCANNED)
 	else

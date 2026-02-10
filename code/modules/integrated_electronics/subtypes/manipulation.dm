@@ -362,11 +362,15 @@
 /obj/item/integrated_circuit/manipulation/matman
 	name = "material manager"
 	desc = "This circuit is designed for automatic storage and distribution of materials."
-	extended_desc = "The first input takes a ref of a machine with a material container. \
-					Second input is used for inserting material stacks into the internal material storage. \
-					Inputs 3-13 are used to transfer materials between target machine and circuit storage. \
-					Positive values will take that number of materials from another machine. \
-					Negative values will fill another machine from internal storage. Outputs show current stored amounts of mats."
+	extended_desc = \
+		"The first input takes a ref of a machine with a material container.<br /> \
+		Second input is used for inserting material stacks into the internal material storage.<br /> \
+		Inputs 3-13 are used to transfer materials between target machine and circuit storage.<br /> \
+		Positive values will take that number of materials from another machine.<br /> \
+		Negative values will fill another machine from internal storage.<br /> \
+		Unless target is null, which will have the machine drop the material on the floor.<br /> \
+		Outputs show current stored amounts of mats.<br /> \
+		Corporate note, %MINERAL_MATERIAL_AMOUNT%cm&sup3; makes a sheet, any less than that cannot be retrieved."
 	icon_state = "grabber"
 	complexity = 16
 	inputs = list(
@@ -425,6 +429,10 @@
 		/datum/material/plastic,
 	)
 
+/obj/item/integrated_circuit/manipulation/matman/Initialize(mapload)
+	. = ..()
+	extended_desc = replacetext(extended_desc, "%MINERAL_MATERIAL_AMOUNT%", MINERAL_MATERIAL_AMOUNT)
+
 /obj/item/integrated_circuit/manipulation/matman/ComponentInitialize()
 	var/datum/component/material_container/materials = AddComponent(/datum/component/material_container, mtypes.Copy(), 100000, FALSE, /obj/item/stack, CALLBACK(src, PROC_REF(is_insertion_ready)), CALLBACK(src, PROC_REF(AfterMaterialInsert)))
 	materials.precise_insertion = TRUE
@@ -444,16 +452,13 @@
 /obj/item/integrated_circuit/manipulation/matman/do_work(activated_input_pin)
 	var/datum/component/material_container/local_storage = GetComponent(/datum/component/material_container)
 	var/atom/movable/scanned_thing = get_pin_data_as_type(IC_INPUT, 1, /atom/movable)
-	if(QDELETED(scanned_thing))
-		activate_pin(PIN_ACTIVATOR_OUTPUT_ON_FAILURE)
-		return
-	if(!check_target(scanned_thing))
-		activate_pin(PIN_ACTIVATOR_OUTPUT_ON_FAILURE)
-		return
 	switch(activated_input_pin)
 		if(PIN_ACTIVATOR_INPUT_INSERT_SHEET)
 			var/obj/item/stack/sheet/sheet = scanned_thing
-			if(QDELETED(sheet))
+			if(QDELETED(sheet) || !istype(sheet))
+				activate_pin(PIN_ACTIVATOR_OUTPUT_ON_FAILURE)
+				return
+			if(!check_target(scanned_thing, exclude_components = TRUE, exclude_self = TRUE))
 				activate_pin(PIN_ACTIVATOR_OUTPUT_ON_FAILURE)
 				return
 			if(local_storage.insert_stack(sheet, clamp(get_pin_data(IC_INPUT, 2),0,100), 1))
@@ -462,7 +467,11 @@
 			else
 				activate_pin(PIN_ACTIVATOR_OUTPUT_ON_FAILURE)
 		if(PIN_ACTIVATOR_INPUT_TRANSFER_MATS)
-			var/datum/component/material_container/scanned_storage = scanned_thing.GetComponent(/datum/component/material_container)
+			var/datum/component/material_container/scanned_storage = scanned_thing?.GetComponent(/datum/component/material_container)
+			if(QDELETED(scanned_storage))
+				var/datum/component/remote_materials/remote_storage = scanned_thing?.GetComponent(/datum/component/remote_materials)
+				if(!QDELETED(remote_storage))
+					scanned_storage = remote_storage.mat_container
 			var/successful_transfer
 			for(var/material_iterator in 1 to length(mtypes))
 				var/datum/material/material_to_transfer = SSmaterials.GetMaterialRef(mtypes[material_iterator])
@@ -470,13 +479,22 @@
 					var/amount = clamp(get_pin_data(IC_INPUT, material_iterator + 2), -100000, 100000)
 					if(!amount)
 						continue
-					if(!scanned_storage) //Invalid input
+					if(isnull(scanned_thing))
 						if(amount > 0)
-							if(local_storage.retrieve_sheets(amount, material_to_transfer, drop_location()))
+							if(local_storage.retrieve_sheets(amount2sheet(amount), material_to_transfer, drop_location()))
 								successful_transfer = TRUE
-					else
+					else if(!QDELETED(scanned_storage))
+						if(QDELETED(scanned_thing))
+							activate_pin(PIN_ACTIVATOR_OUTPUT_ON_FAILURE)
+							return
+						// exclude_contents = FALSE, if someone EVER makes literal tom's storage in SS13, i'm evilly giving you this.
+						if(!check_target(scanned_thing, exclude_components = TRUE, exclude_self = TRUE))
+							activate_pin(PIN_ACTIVATOR_OUTPUT_ON_FAILURE)
+							return
 						if(scanned_storage.transer_amt_to(local_storage, amount, material_to_transfer))
 							successful_transfer = TRUE
+					else
+						activate_pin(PIN_ACTIVATOR_OUTPUT_ON_FAILURE)
 			if(successful_transfer)
 				AfterMaterialInsert()
 				activate_pin(PIN_ACTIVATOR_OUTPUT_ON_SUCCESS)
