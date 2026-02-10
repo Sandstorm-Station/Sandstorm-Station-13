@@ -1068,6 +1068,9 @@
 		push_data()
 		activate_pin(3)
 
+#define PIN_ACTIVATOR_OUTPUT_ON_SCANNED 2
+#define PIN_ACTIVATOR_OUTPUT_NOT_SCANNED 3
+
 /obj/item/integrated_circuit/input/matscan
 	name = "material scanner"
 	desc = "This special module is designed to get information about material containers of different machinery, \
@@ -1086,9 +1089,8 @@
 		"Solid Plasma"			= IC_PINTYPE_NUMBER,
 		"Uranium"				= IC_PINTYPE_NUMBER,
 		"Bananium"				= IC_PINTYPE_NUMBER,
-		"Titanium"		= IC_PINTYPE_NUMBER,
+		"Titanium"				= IC_PINTYPE_NUMBER,
 		"Bluespace Mesh"		= IC_PINTYPE_NUMBER,
-		"Biomass"				= IC_PINTYPE_NUMBER,
 		"Plastic"				= IC_PINTYPE_NUMBER
 		)
 	activators = list(
@@ -1098,25 +1100,43 @@
 		)
 	spawn_flags = IC_SPAWN_RESEARCH
 	power_draw_per_use = 40
-	var/list/mtypes = list(/datum/material/iron, /datum/material/glass, /datum/material/silver, /datum/material/gold, /datum/material/diamond, /datum/material/plasma, /datum/material/uranium, /datum/material/bananium, /datum/material/titanium, /datum/material/bluespace, /datum/material/biomass, /datum/material/plastic)
+	var/list/mtypes = list(
+		/datum/material/iron,
+		/datum/material/glass,
+		/datum/material/silver,
+		/datum/material/gold,
+		/datum/material/diamond,
+		/datum/material/plasma,
+		/datum/material/uranium,
+		/datum/material/bananium,
+		/datum/material/titanium,
+		/datum/material/bluespace,
+		/datum/material/plastic,
+	)
 
 
 /obj/item/integrated_circuit/input/matscan/do_work()
-	var/atom/movable/H = get_pin_data_as_type(IC_INPUT, 1, /atom/movable)
-	var/turf/T = get_turf(src)
-	var/datum/component/material_container/mt = H.GetComponent(/datum/component/material_container)
-	if(!mt) //Invalid input
+	var/atom/movable/scanned_thing = get_pin_data_as_type(IC_INPUT, 1, /atom/movable)
+	if(!scanned_thing)
+		activate_pin(PIN_ACTIVATOR_OUTPUT_NOT_SCANNED)
 		return
-	if(H in view(T)) // This is a camera. It can't examine thngs,that it can't see.
-		for(var/I in mtypes)
-			if(I in mt.materials)
-				set_pin_data(IC_OUTPUT, I, mt.materials[I])
+	var/datum/component/material_container/scanned_storage = scanned_thing.GetComponent(/datum/component/material_container)
+	if(!scanned_storage) //Invalid input
+		activate_pin(PIN_ACTIVATOR_OUTPUT_NOT_SCANNED)
+		return
+	if(scanned_thing in view(drop_location())) // This is a camera. It can't examine thngs,that it can't see.
+		for(var/material_iterator in length(mtypes))
+			if(material_iterator in scanned_storage.materials)
+				set_pin_data(IC_OUTPUT, material_iterator, scanned_storage.materials[SSmaterials.GetMaterialRef(mtypes[material_iterator])] || 0)
 			else
-				set_pin_data(IC_OUTPUT, I, null)
+				set_pin_data(IC_OUTPUT, material_iterator, null)
 		push_data()
-		activate_pin(2)
+		activate_pin(PIN_ACTIVATOR_OUTPUT_ON_SCANNED)
 	else
-		activate_pin(3)
+		activate_pin(PIN_ACTIVATOR_OUTPUT_NOT_SCANNED)
+
+#undef PIN_ACTIVATOR_OUTPUT_ON_SCANNED
+#undef PIN_ACTIVATOR_OUTPUT_NOT_SCANNED
 
 /obj/item/integrated_circuit/input/atmospheric_analyzer
 	name = "atmospheric analyzer"

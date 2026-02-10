@@ -22,16 +22,21 @@
 
 /obj/item/integrated_circuit/proc/set_pin_data(pin_type, pin_number, datum/new_data)
 	if(islist(new_data))
-		for(var/i in 1 to length(new_data))
-			if (istype(new_data) && !isweakref(new_data))
-				new_data[i] = WEAKREF(new_data[i])
-	if (istype(new_data) && !isweakref(new_data))
+		var/list/new_data_list = new_data
+		var/list/output = list()
+		for(var/data_iterator in 1 to length(new_data_list))
+			if (isdatum(new_data_list[data_iterator]) && !isweakref(new_data_list[data_iterator]))
+				output[data_iterator] = WEAKREF(new_data_list[data_iterator])
+		new_data = output
+	else if (isdatum(new_data) && !isweakref(new_data))
 		new_data = WEAKREF(new_data)
 	var/datum/integrated_io/pin = get_pin_ref(pin_type, pin_number)
 	return pin.write_data_to_pin(new_data)
 
 /obj/item/integrated_circuit/proc/get_pin_data(pin_type, pin_number)
 	var/datum/integrated_io/pin = get_pin_ref(pin_type, pin_number)
+	if(QDELETED(pin))
+		return
 	var/data = pin.get_data()
 	if(istext(data))
 		data = sanitize_text(data)
@@ -39,6 +44,8 @@
 
 /obj/item/integrated_circuit/proc/get_pin_data_as_type(pin_type, pin_number, as_type)
 	var/datum/integrated_io/pin = get_pin_ref(pin_type, pin_number)
+	if(QDELETED(pin))
+		return
 	return pin.data_as_type(as_type)
 
 /obj/item/integrated_circuit/proc/activate_pin(pin_number)
@@ -63,10 +70,14 @@
 
 /datum/integrated_io/proc/get_data()
 	if(islist(data))
-		for(var/i in 1 to length(data))
-			if(isweakref(data[i]))
-				data[i] = data[i].resolve()
-	if(isweakref(data))
+		var/list/data_list = data
+		var/list/output = list()
+		for(var/data_iterator in 1 to length(data_list))
+			if(isweakref(data_list[data_iterator]))
+				var/datum/weakref/data_weakref = data_list[data_iterator]
+				output[data_iterator] = data_weakref.resolve()
+		data = output
+	else if(isweakref(data))
 		return data.resolve()
 	return data
 
