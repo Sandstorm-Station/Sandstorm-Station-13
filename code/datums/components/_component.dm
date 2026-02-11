@@ -324,25 +324,26 @@
 
 // The type arg is casted so initial works, you shouldn't be passing a real instance into this
 /**
-  * Return any component assigned to this datum of the exact given type
-  * This will throw an error if it's possible to have more than one component of that type on the parent
-  *
-  * Arguments:
-  * * datum/component/c_type The typepath of the component you want to get a reference to
-  */
+ * Return any component assigned to this datum of the exact given type
+ *
+ * This will throw an error if it's possible to have more than one component of that type on the parent
+ *
+ * Arguments:
+ * * datum/component/c_type The typepath of the component you want to get a reference to
+ */
 /datum/proc/GetExactComponent(datum/component/c_type)
 	RETURN_TYPE(c_type)
-	if(initial(c_type.dupe_mode) == COMPONENT_DUPE_ALLOWED || initial(c_type.dupe_mode) == COMPONENT_DUPE_SELECTIVE)
+	var/initial_type_mode = initial(c_type.dupe_mode)
+	if(initial_type_mode == COMPONENT_DUPE_ALLOWED || initial_type_mode == COMPONENT_DUPE_SELECTIVE)
 		stack_trace("GetComponent was called to get a component of which multiple copies could be on an object. This can easily break and should be changed. Type: \[[c_type]\]")
-	var/list/dc = datum_components
-	if(!dc)
+	var/list/all_components = datum_components
+	if(!all_components)
 		return null
-	var/datum/component/C = dc[c_type]
-	if(C)
-		if(length(C))
-			C = C[1]
-		if(C.type == c_type)
-			return C
+	var/datum/component/potential_component
+	if(length(all_components))
+		potential_component = all_components[c_type]
+	if(potential_component?.type == c_type)
+		return potential_component
 	return null
 
 /**
