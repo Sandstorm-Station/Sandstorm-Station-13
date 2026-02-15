@@ -359,14 +359,25 @@
 	A.throwforce = initial(A.throwforce)
 	A.embedding = initial(A.embedding)
 
+#define PIN_ACTIVATOR_INPUT_INSERT_SHEET 1
+#define PIN_ACTIVATOR_INPUT_TRANSFER_MATS 2
+#define PIN_ACTIVATOR_OUTPUT_ON_SUCCESS 3
+#define PIN_ACTIVATOR_OUTPUT_ON_FAILURE 4
+#define PIN_ACTIVATOR_INPUT_PUSH_REF 5
+#define PIN_ACTIVATOR_OUTPUT_ON_PUSH_REF 6
+
 /obj/item/integrated_circuit/manipulation/matman
 	name = "material manager"
 	desc = "This circuit is designed for automatic storage and distribution of materials."
-	extended_desc = "The first input takes a ref of a machine with a material container. \
-					Second input is used for inserting material stacks into the internal material storage. \
-					Inputs 3-13 are used to transfer materials between target machine and circuit storage. \
-					Positive values will take that number of materials from another machine. \
-					Negative values will fill another machine from internal storage. Outputs show current stored amounts of mats."
+	extended_desc = \
+		"The first input takes a ref of a machine with a material container.<br /> \
+		Second input is used for inserting material stacks into the internal material storage.<br /> \
+		Inputs 3-13 are used to transfer materials between target machine and circuit storage.<br /> \
+		Positive values will take that number of materials from another machine.<br /> \
+		Negative values will fill another machine from internal storage.<br /> \
+		Unless target is null, which will have the machine drop the material on the floor.<br /> \
+		Outputs show current stored amounts of mats.<br /> \
+		Corporate note, %MINERAL_MATERIAL_AMOUNT%cm&sup3; makes a sheet, any less than that cannot be retrieved."
 	icon_state = "grabber"
 	complexity = 16
 	inputs = list(
@@ -377,11 +388,11 @@
 		"Silver"				= IC_PINTYPE_NUMBER,
 		"Gold"					= IC_PINTYPE_NUMBER,
 		"Diamond"				= IC_PINTYPE_NUMBER,
-		"Uranium"				= IC_PINTYPE_NUMBER,
 		"Solid Plasma"			= IC_PINTYPE_NUMBER,
-		"Bluespace Mesh"		= IC_PINTYPE_NUMBER,
+		"Uranium"				= IC_PINTYPE_NUMBER,
 		"Bananium"				= IC_PINTYPE_NUMBER,
 		"Titanium"				= IC_PINTYPE_NUMBER,
+		"Bluespace Mesh"		= IC_PINTYPE_NUMBER,
 		"Plastic"				= IC_PINTYPE_NUMBER
 		)
 	outputs = list(
@@ -392,20 +403,20 @@
 		"Silver"				= IC_PINTYPE_NUMBER,
 		"Gold"					= IC_PINTYPE_NUMBER,
 		"Diamond"				= IC_PINTYPE_NUMBER,
-		"Uranium"				= IC_PINTYPE_NUMBER,
 		"Solid Plasma"			= IC_PINTYPE_NUMBER,
-		"Bluespace Mesh"		= IC_PINTYPE_NUMBER,
+		"Uranium"				= IC_PINTYPE_NUMBER,
 		"Bananium"				= IC_PINTYPE_NUMBER,
 		"Titanium"				= IC_PINTYPE_NUMBER,
+		"Bluespace Mesh"		= IC_PINTYPE_NUMBER,
 		"Plastic"				= IC_PINTYPE_NUMBER
-		)
+	)
 	activators = list(
 		"insert sheet" = IC_PINTYPE_PULSE_IN,
 		"transfer mats" = IC_PINTYPE_PULSE_IN,
 		"on success" = IC_PINTYPE_PULSE_OUT,
 		"on failure" = IC_PINTYPE_PULSE_OUT,
 		"push ref" = IC_PINTYPE_PULSE_IN,
-		"on push ref" = IC_PINTYPE_PULSE_IN
+		"on push ref" = IC_PINTYPE_PULSE_OUT
 		)
 	spawn_flags = IC_SPAWN_RESEARCH
 	power_draw_per_use = 40
@@ -417,81 +428,101 @@
 		/datum/material/silver,
 		/datum/material/gold,
 		/datum/material/diamond,
-		/datum/material/uranium,
 		/datum/material/plasma,
-		/datum/material/bluespace,
+		/datum/material/uranium,
 		/datum/material/bananium,
 		/datum/material/titanium,
-		/datum/material/plastic
-		)
+		/datum/material/bluespace,
+		/datum/material/plastic,
+	)
+
+/obj/item/integrated_circuit/manipulation/matman/Initialize(mapload)
+	. = ..()
+	extended_desc = replacetext(extended_desc, "%MINERAL_MATERIAL_AMOUNT%", MINERAL_MATERIAL_AMOUNT)
 
 /obj/item/integrated_circuit/manipulation/matman/ComponentInitialize()
-	var/datum/component/material_container/materials = AddComponent(/datum/component/material_container, mtypes, 100000, FALSE, /obj/item/stack, CALLBACK(src, PROC_REF(is_insertion_ready)), CALLBACK(src, PROC_REF(AfterMaterialInsert)))
+	var/datum/component/material_container/materials = AddComponent(/datum/component/material_container, mtypes.Copy(), 100000, FALSE, /obj/item/stack, CALLBACK(src, PROC_REF(is_insertion_ready)), CALLBACK(src, PROC_REF(AfterMaterialInsert)))
 	materials.precise_insertion = TRUE
-	.=..()
+	return ..()
 
 /obj/item/integrated_circuit/manipulation/matman/proc/AfterMaterialInsert(type_inserted, id_inserted, amount_inserted)
 	var/datum/component/material_container/materials = GetComponent(/datum/component/material_container)
 	set_pin_data(IC_OUTPUT, 2, materials.total_amount)
-	for(var/I in 1 to mtypes.len)
-		var/datum/material/M = materials.materials[SSmaterials.GetMaterialRef(I)]
-		var/amount = materials[M]
-		if(M)
-			set_pin_data(IC_OUTPUT, I+2, amount)
+	for(var/material_iterator in 1 to length(mtypes))
+		var/amount = materials.materials[SSmaterials.GetMaterialRef(mtypes[material_iterator])]
+		set_pin_data(IC_OUTPUT, material_iterator+2, amount || 0)
 	push_data()
 
 /obj/item/integrated_circuit/manipulation/matman/proc/is_insertion_ready(mob/user)
 	return TRUE
 
-/obj/item/integrated_circuit/manipulation/matman/do_work(ord)
-	var/datum/component/material_container/materials = GetComponent(/datum/component/material_container)
-	var/atom/movable/H = get_pin_data_as_type(IC_INPUT, 1, /atom/movable)
-	if(!check_target(H))
-		activate_pin(4)
-		return
-	var/turf/T = get_turf(H)
-	switch(ord)
-		if(1)
-			var/obj/item/stack/sheet/S = H
-			if(!S)
-				activate_pin(4)
+/obj/item/integrated_circuit/manipulation/matman/do_work(activated_input_pin)
+	var/datum/component/material_container/local_storage = GetComponent(/datum/component/material_container)
+	var/atom/movable/scanned_thing = get_pin_data_as_type(IC_INPUT, 1, /atom/movable)
+	switch(activated_input_pin)
+		if(PIN_ACTIVATOR_INPUT_INSERT_SHEET)
+			var/obj/item/stack/sheet/sheet = scanned_thing
+			if(QDELETED(sheet) || !istype(sheet))
+				activate_pin(PIN_ACTIVATOR_OUTPUT_ON_FAILURE)
 				return
-			if(materials.insert_item(S, clamp(get_pin_data(IC_INPUT, 2),0,100), multiplier = 1) )
+			if(!check_target(scanned_thing, exclude_components = TRUE, exclude_self = TRUE))
+				activate_pin(PIN_ACTIVATOR_OUTPUT_ON_FAILURE)
+				return
+			if(local_storage.insert_stack(sheet, clamp(get_pin_data(IC_INPUT, 2),0,100), 1))
 				AfterMaterialInsert()
-				activate_pin(3)
+				activate_pin(PIN_ACTIVATOR_OUTPUT_ON_SUCCESS)
 			else
-				activate_pin(4)
-		if(2)
-			var/datum/component/material_container/mt = H.GetComponent(/datum/component/material_container)
-			var/suc
-			for(var/I in 1 to mtypes.len)
-				var/datum/material/M = materials.materials[mtypes[I]]
-				if(M)
-					var/U = clamp(get_pin_data(IC_INPUT, I+2),-100000,100000)
-					if(!U)
+				activate_pin(PIN_ACTIVATOR_OUTPUT_ON_FAILURE)
+		if(PIN_ACTIVATOR_INPUT_TRANSFER_MATS)
+			var/datum/component/material_container/scanned_storage = scanned_thing?.GetComponent(/datum/component/material_container)
+			if(QDELETED(scanned_storage))
+				var/datum/component/remote_materials/remote_storage = scanned_thing?.GetComponent(/datum/component/remote_materials)
+				if(!QDELETED(remote_storage))
+					scanned_storage = remote_storage.mat_container
+			var/successful_transfer
+			for(var/material_iterator in 1 to length(mtypes))
+				var/datum/material/material_to_transfer = SSmaterials.GetMaterialRef(mtypes[material_iterator])
+				if(material_to_transfer)
+					var/amount = clamp(get_pin_data(IC_INPUT, material_iterator + 2), -100000, 100000)
+					if(!amount)
 						continue
-					if(!mt) //Invalid input
-						if(U>0)
-							if(materials.retrieve_sheets(U, SSmaterials.GetMaterialRef(mtypes[I]), T))
-								suc = TRUE
+					if(isnull(scanned_thing))
+						if(amount > 0)
+							if(local_storage.retrieve_sheets(amount2sheet(amount), material_to_transfer, drop_location()))
+								successful_transfer = TRUE
+					else if(!QDELETED(scanned_storage))
+						if(QDELETED(scanned_thing))
+							activate_pin(PIN_ACTIVATOR_OUTPUT_ON_FAILURE)
+							return
+						// exclude_contents = FALSE, if someone EVER makes literal tom's storage in SS13, i'm evilly giving you this.
+						if(!check_target(scanned_thing, exclude_components = TRUE, exclude_self = TRUE))
+							activate_pin(PIN_ACTIVATOR_OUTPUT_ON_FAILURE)
+							return
+						if(scanned_storage.transer_amt_to(local_storage, amount, material_to_transfer))
+							successful_transfer = TRUE
 					else
-						if(mt.transer_amt_to(materials, U, mtypes[I]))
-							suc = TRUE
-			if(suc)
+						activate_pin(PIN_ACTIVATOR_OUTPUT_ON_FAILURE)
+			if(successful_transfer)
 				AfterMaterialInsert()
-				activate_pin(3)
+				activate_pin(PIN_ACTIVATOR_OUTPUT_ON_SUCCESS)
 			else
-				activate_pin(4)
-		if(5)
+				activate_pin(PIN_ACTIVATOR_OUTPUT_ON_FAILURE)
+		if(PIN_ACTIVATOR_INPUT_PUSH_REF)
 			set_pin_data(IC_OUTPUT, 1, WEAKREF(src))
 			AfterMaterialInsert()
-			activate_pin(6)
+			activate_pin(PIN_ACTIVATOR_OUTPUT_ON_PUSH_REF)
 
 /obj/item/integrated_circuit/manipulation/matman/Destroy()
 	var/datum/component/material_container/materials = GetComponent(/datum/component/material_container)
 	materials.retrieve_all()
-	.=..()
+	return ..()
 
+#undef PIN_ACTIVATOR_INPUT_INSERT_SHEET
+#undef PIN_ACTIVATOR_INPUT_TRANSFER_MATS
+#undef PIN_ACTIVATOR_OUTPUT_ON_SUCCESS
+#undef PIN_ACTIVATOR_OUTPUT_ON_FAILURE
+#undef PIN_ACTIVATOR_INPUT_PUSH_REF
+#undef PIN_ACTIVATOR_OUTPUT_ON_PUSH_REF
 
 //Hippie Ported Code--------------------------------------------------------------------------------------------------------
 

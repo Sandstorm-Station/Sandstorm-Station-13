@@ -326,7 +326,7 @@
 	return total_amount_save - total_amount
 
 /// For spawning mineral sheets at a specific location. Used by machines to output sheets.
-/datum/component/material_container/proc/retrieve_sheets(sheet_amt, var/datum/material/M, target = null)
+/datum/component/material_container/proc/retrieve_sheets(sheet_amt, datum/material/M, target = null)
 	if(!M.sheet_type)
 		return FALSE //Add greyscale sheet handling here later
 	if(sheet_amt <= 0)
@@ -409,19 +409,6 @@
 		if(materials[mat] >= amount) //we have enough
 			return TRUE
 	return FALSE
-
-/// Turns a material amount into the amount of sheets it should output
-/datum/component/material_container/proc/amount2sheet(amt)
-	if(amt >= MINERAL_MATERIAL_AMOUNT)
-		return round(amt / MINERAL_MATERIAL_AMOUNT)
-	return FALSE
-
-/// Turns an amount of sheets into the amount of material amount it should output
-/datum/component/material_container/proc/sheet2amount(sheet_amt)
-	if(sheet_amt > 0)
-		return sheet_amt * MINERAL_MATERIAL_AMOUNT
-	return FALSE
-
 
 ///returns the amount of material relevant to this container; if this container does not support glass, any glass in 'I' will not be taken into account
 /datum/component/material_container/proc/get_item_material_amount(obj/item/I)
