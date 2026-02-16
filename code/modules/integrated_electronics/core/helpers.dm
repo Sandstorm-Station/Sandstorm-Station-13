@@ -23,14 +23,15 @@
 /obj/item/integrated_circuit/proc/set_pin_data(pin_type, pin_number, datum/new_data)
 	if(islist(new_data))
 		var/list/new_data_list = new_data
-		var/list/output = list()
 		for(var/data_iterator in 1 to length(new_data_list))
 			if (isdatum(new_data_list[data_iterator]) && !isweakref(new_data_list[data_iterator]))
-				output[data_iterator] = WEAKREF(new_data_list[data_iterator])
-		new_data = output
+				new_data_list[data_iterator] = WEAKREF(new_data_list[data_iterator])
+		new_data = new_data_list
 	else if (isdatum(new_data) && !isweakref(new_data))
 		new_data = WEAKREF(new_data)
 	var/datum/integrated_io/pin = get_pin_ref(pin_type, pin_number)
+	if(QDELETED(pin))
+		return
 	return pin.write_data_to_pin(new_data)
 
 /obj/item/integrated_circuit/proc/get_pin_data(pin_type, pin_number)
@@ -50,6 +51,8 @@
 
 /obj/item/integrated_circuit/proc/activate_pin(pin_number)
 	var/datum/integrated_io/activate/A = activators[pin_number]
+	if(QDELETED(A))
+		return
 	A.push_data()
 
 /obj/item/integrated_circuit/proc/get_pin_ref(pin_type, pin_number)
@@ -71,12 +74,11 @@
 /datum/integrated_io/proc/get_data()
 	if(islist(data))
 		var/list/data_list = data
-		var/list/output = list()
 		for(var/data_iterator in 1 to length(data_list))
 			if(isweakref(data_list[data_iterator]))
 				var/datum/weakref/data_weakref = data_list[data_iterator]
-				output[data_iterator] = data_weakref.resolve()
-		data = output
+				data_list[data_iterator] = data_weakref.resolve()
+		data = data_list
 	else if(isweakref(data))
 		return data.resolve()
 	return data
@@ -121,6 +123,8 @@
 		return
 
 	var/obj/item/integrated_circuit/component = components[component_number]
+	if(QDELETED(component))
+		return
 	return component.get_pin_ref(pin_type, pin_number)
 
 
