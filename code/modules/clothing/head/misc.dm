@@ -520,4 +520,3 @@
 	desc = "Hee-ho!"
 	icon_state = "JackFrostHat"
 	item_state = "JackFrostHat"
-
