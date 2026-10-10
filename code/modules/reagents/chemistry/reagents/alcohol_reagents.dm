@@ -63,7 +63,7 @@ All effects don't start immediately, but rather get worse over time; the rate is
 	if(istype(O, /obj/item/book))
 		if(reac_volume >= 5)
 			var/obj/item/book/affectedbook = O
-			affectedbook.dat = null
+			affectedbook.book_data.set_content("")
 			O.visible_message("<span class='notice'>[O]'s writing is washed away by [name]!</span>")
 		else
 			O.visible_message("<span class='warning'>[O]'s ink is smeared by [name], but doesn't wash away!</span>")

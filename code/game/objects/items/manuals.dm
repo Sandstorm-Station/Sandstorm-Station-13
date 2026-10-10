@@ -9,10 +9,10 @@
 /obj/item/book/manual/hydroponics_pod_people
 	name = "The Human Harvest - From seed to market"
 	icon_state ="bookHydroponicsPodPeople"
-	author = "Farmer John" // Whoever wrote the paper or book, can be changed by pen or PC. It is not automatically assigned.
-	title = "The Human Harvest - From seed to market"
+	starting_author = "Farmer John" // Whoever wrote the paper or book, can be changed by pen or PC. It is not automatically assigned.
+	starting_title = "The Human Harvest - From seed to market"
 	//book contents below
-	dat = {"<html>
+	starting_content = {"<html>
 				<head>
 				<meta http-equiv='Content-Type' content='text/html; charset=UTF-8'>
 				<style>
@@ -46,9 +46,9 @@
 /obj/item/book/manual/ripley_build_and_repair
 	name = "APLU \"Ripley\" Construction and Operation Manual"
 	icon_state ="book"
-	author = "Weyland-Yutani Corp"
-	title = "APLU \"Ripley\" Construction and Operation Manual"
-	dat = {"<html>
+	starting_author = "Weyland-Yutani Corp"
+	starting_title = "APLU \"Ripley\" Construction and Operation Manual"
+	starting_content = {"<html>
 				<head>
 				<meta http-equiv='Content-Type' content='text/html; charset=UTF-8'>
 				<style>
@@ -120,9 +120,9 @@
 /obj/item/book/manual/chef_recipes
 	name = "Chef Recipes"
 	icon_state = "cooked_book"
-	author = "Lord Frenrir Cageth"
-	title = "Chef Recipes"
-	dat = {"<html>
+	starting_author = "Lord Frenrir Cageth"
+	starting_title = "Chef Recipes"
+	starting_content = {"<html>
 				<head>
 				<meta http-equiv='Content-Type' content='text/html; charset=UTF-8'>
 				<style>
@@ -202,9 +202,9 @@
 /obj/item/book/manual/nuclear
 	name = "Fission Mailed: Nuclear Sabotage 101"
 	icon_state ="bookNuclear"
-	author = "Syndicate"
-	title = "Fission Mailed: Nuclear Sabotage 101"
-	dat = {"<html>
+	starting_author = "Syndicate"
+	starting_title = "Fission Mailed: Nuclear Sabotage 101"
+	starting_content = {"<html>
 			<head>
 			<meta http-equiv='Content-Type' content='text/html; charset=UTF-8'>
 			</head>
@@ -247,14 +247,14 @@
 	window_size = "970x710"
 
 /obj/item/book/manual/wiki/attack_self()
-	if(!dat)
+	if(!book_data.content)
 		initialize_wikibook()
 	..()
 
 /obj/item/book/manual/wiki/proc/initialize_wikibook()
 	var/wikiurl = CONFIG_GET(string/wikiurltg)
 	if(wikiurl)
-		dat = {"
+		var/wikiinfo = {"
 
 			<html><head>
 			<meta http-equiv='Content-Type' content='text/html; charset=UTF-8'>
@@ -278,19 +278,20 @@
 			</html>
 
 			"}
+		book_data.set_content(wikiinfo, trusted = TRUE)
 
 /obj/item/book/manual/wiki/cit
 	name = "Citadel infobook"
 	icon_state ="book8"
-	author = "Nanotrasen"
-	title = "Citadel infobook"
+	starting_author = "Nanotrasen"
+	starting_title = "Citadel infobook"
 	page_link = ""
 	window_size = "1500x800" //Too squashed otherwise
 
 /obj/item/book/manual/wiki/cit/initialize_wikibook()
 	var/wikiurl = CONFIG_GET(string/wikiurl)
 	if(wikiurl)
-		dat = {"
+		var/wikiinfo = {"
 
 			<html><head>
 			<meta http-equiv='Content-Type' content='text/html; charset=UTF-8'>
@@ -314,26 +315,27 @@
 			</html>
 
 			"}
+		book_data.set_content(wikiinfo, trusted = TRUE)
 
 /obj/item/book/manual/wiki/cit/chemistry
 	name = "Chemistry Textbook"
 	icon_state ="chemistrybook"
-	author = "Nanotrasen"
-	title = "Chemistry Textbook"
+	starting_author = "Nanotrasen"
+	starting_title = "Chemistry Textbook"
 	page_link = "main/guides/guide_chemistry"
 
 /obj/item/book/manual/wiki/cit/chem_recipies
 	name = "Chemistry Recipies"
 	icon_state ="chemrecibook"
-	author = "Chemcat"
-	title = "Chemistry Recipies"
+	starting_author = "Chemcat"
+	starting_title = "Chemistry Recipies"
 	page_link = "main/guides/chem_recipies"
 
 /obj/item/book/manual/wiki/chemistry
 	name = "Outdated Chemistry Textbook"
 	icon_state ="chemistrybook_old"
-	author = "Nanotrasen"
-	title = "Outdated Chemistry Textbook"
+	starting_author = "Nanotrasen"
+	starting_title = "Outdated Chemistry Textbook"
 	page_link = "Guide_to_chemistry"
 
 /obj/item/book/manual/wiki/chemistry/Initialize(mapload)
@@ -344,30 +346,30 @@
 /obj/item/book/manual/wiki/engineering_construction
 	name = "Station Repairs and Construction"
 	icon_state ="bookEngineering"
-	author = "Engineering Encyclopedia"
-	title = "Station Repairs and Construction"
+	starting_author = "Engineering Encyclopedia"
+	starting_title = "Station Repairs and Construction"
 	page_link = "Guide_to_construction"
 
 /obj/item/book/manual/wiki/engineering_guide
 	name = "Engineering Textbook"
 	icon_state ="bookEngineering2"
-	author = "Engineering Encyclopedia"
-	title = "Engineering Textbook"
+	starting_author = "Engineering Encyclopedia"
+	starting_title = "Engineering Textbook"
 	page_link = "Guide_to_engineering"
 
 /obj/item/book/manual/wiki/engineering_singulo_tesla
 	name = "Singularity and Tesla for Dummies"
 	icon_state ="bookEngineeringSingularitySafety"
-	author = "Engineering Encyclopedia"
-	title = "Singularity and Tesla for Dummies"
+	starting_author = "Engineering Encyclopedia"
+	starting_title = "Singularity and Tesla for Dummies"
 	page_link = "Singularity_and_Tesla_engines"
 
 /obj/item/book/manual/wiki/security_space_law
 	name = "Space Law"
 	desc = "A set of Nanotrasen guidelines for keeping law and order on their space stations."
 	icon_state = "bookSpaceLaw"
-	author = "Nanotrasen"
-	title = "Space Law"
+	starting_author = "Nanotrasen"
+	starting_title = "Space Law"
 	page_link = "Space_Law"
 
 /obj/item/book/manual/wiki/security_space_law/suicide_act(mob/living/user)
@@ -377,134 +379,134 @@
 /obj/item/book/manual/wiki/infections
 	name = "Infections - Making your own pandemic!"
 	icon_state = "bookInfections"
-	author = "Infections Encyclopedia"
-	title = "Infections - Making your own pandemic!"
+	starting_author = "Infections Encyclopedia"
+	starting_title = "Infections - Making your own pandemic!"
 	page_link = "Infections"
 
 /obj/item/book/manual/wiki/telescience
 	name = "Teleportation Science - Bluespace for dummies!"
 	icon_state = "book7"
-	author = "University of Bluespace"
-	title = "Teleportation Science - Bluespace for dummies!"
+	starting_author = "University of Bluespace"
+	starting_title = "Teleportation Science - Bluespace for dummies!"
 	page_link = "Guide_to_telescience"
 
 /obj/item/book/manual/wiki/engineering_hacking
 	name = "Hacking"
 	icon_state ="bookHacking"
-	author = "Engineering Encyclopedia"
-	title = "Hacking"
+	starting_author = "Engineering Encyclopedia"
+	starting_title = "Hacking"
 	page_link = "Hacking"
 
 /obj/item/book/manual/wiki/detective
 	name = "The Film Noir: Proper Procedures for Investigations"
 	icon_state ="bookDetective"
-	author = "Nanotrasen"
-	title = "The Film Noir: Proper Procedures for Investigations"
+	starting_author = "Nanotrasen"
+	starting_title = "The Film Noir: Proper Procedures for Investigations"
 	page_link = "Detective"
 
 /obj/item/book/manual/wiki/barman_recipes
 	name = "Barman Recipes: Mixing Drinks and Changing Lives"
 	icon_state = "barbook"
-	author = "Sir John Rose"
-	title = "Barman Recipes: Mixing Drinks and Changing Lives"
+	starting_author = "Sir John Rose"
+	starting_title = "Barman Recipes: Mixing Drinks and Changing Lives"
 	page_link = "Guide_to_food_and_drinks"
 
 /obj/item/book/manual/wiki/robotics_cyborgs
 	name = "Robotics for Dummies"
 	icon_state = "borgbook"
-	author = "XISC"
-	title = "Robotics for Dummies"
+	starting_author = "XISC"
+	starting_title = "Robotics for Dummies"
 	page_link = "Guide_to_robotics"
 
 /obj/item/book/manual/wiki/research_and_development
 	name = "Research and Development 101"
 	icon_state = "rdbook"
-	author = "Dr. L. Ight"
-	title = "Research and Development 101"
+	starting_author = "Dr. L. Ight"
+	starting_title = "Research and Development 101"
 	page_link = "Guide_to_Research_and_Development"
 
 /obj/item/book/manual/wiki/experimentor
 	name = "Mentoring your Experiments"
 	icon_state = "rdbook"
-	author = "Dr. H.P. Kritz"
-	title = "Mentoring your Experiments"
+	starting_author = "Dr. H.P. Kritz"
+	starting_title = "Mentoring your Experiments"
 	page_link = "Experimentor"
 
 /obj/item/book/manual/wiki/medical_cloning
 	name = "Cloning techniques of the 26th century"
 	icon_state ="bookCloning"
-	author = "Medical Journal, volume 3"
-	title = "Cloning techniques of the 26th century"
+	starting_author = "Medical Journal, volume 3"
+	starting_title = "Cloning techniques of the 26th century"
 	page_link = "Guide_to_genetics#Cloning"
 
 /obj/item/book/manual/wiki/cooking_to_serve_man
 	name = "To Serve Man"
 	desc = "It's a cookbook!"
 	icon_state ="cooked_book"
-	author = "the Kanamitan Empire"
-	title = "To Serve Man"
+	starting_author = "the Kanamitan Empire"
+	starting_title = "To Serve Man"
 	page_link = "Guide_to_food_and_drinks"
 
 /obj/item/book/manual/wiki/circuitry
 	name = "Circuitry for Dummies"
 	icon_state = "book1"
-	author = "Dr. Hans Asperger"
-	title = "Circuitry for Dummies"
+	starting_author = "Dr. Hans Asperger"
+	starting_title = "Circuitry for Dummies"
 	page_link = "Guide_to_circuits"
 
 /obj/item/book/manual/wiki/tcomms
 	name = "Subspace Telecommunications And You"
 	icon_state = "book3"
-	author = "Engineering Encyclopedia"
-	title = "Subspace Telecommunications And You"
+	starting_author = "Engineering Encyclopedia"
+	starting_title = "Subspace Telecommunications And You"
 	page_link = "Guide_to_Telecommunications"
 
 /obj/item/book/manual/wiki/atmospherics
 	name = "Lexica Atmosia"
 	icon_state = "book5"
-	author = "the City-state of Atmosia"
-	title = "Lexica Atmosia"
+	starting_author = "the City-state of Atmosia"
+	starting_title = "Lexica Atmosia"
 	page_link = "Guide_to_Atmospherics"
 
 /obj/item/book/manual/wiki/medicine
 	name = "Medical Space Compendium, Volume 638"
 	icon_state = "book8"
-	author = "Medical Journal"
-	title = "Medical Space Compendium, Volume 638"
+	starting_author = "Medical Journal"
+	starting_title = "Medical Space Compendium, Volume 638"
 	page_link = "Guide_to_medicine"
 
 /obj/item/book/manual/wiki/surgery
 	name = "Brain Surgery for Dummies"
 	icon_state = "book4"
-	author = "Dr. F. Fran"
-	title = "Brain Surgery for Dummies"
+	starting_author = "Dr. F. Fran"
+	starting_title = "Brain Surgery for Dummies"
 	page_link = "Surgery"
 
 /obj/item/book/manual/wiki/grenades
 	name = "DIY Chemical Grenades"
 	icon_state = "book2"
-	author = "W. Powell"
-	title = "DIY Chemical Grenades"
+	starting_author = "W. Powell"
+	starting_title = "DIY Chemical Grenades"
 	page_link = "Grenade"
 
 /obj/item/book/manual/wiki/toxins
 	name = "Toxins or: How I Learned to Stop Worrying and Love the Maxcap"
 	icon_state = "book6"
-	author = "Cuban Pete"
-	title = "Toxins or: How I Learned to Stop Worrying and Love the Maxcap"
+	starting_author = "Cuban Pete"
+	starting_title = "Toxins or: How I Learned to Stop Worrying and Love the Maxcap"
 	page_link = "Guide_to_toxins"
 
 /obj/item/book/manual/wiki/rbmk
 	name = "\improper Haynes nuclear reactor owner's manual"
 	icon_state = "bookEngineering2"
-	author = "CogWerk Engineering Reactor Design Department"
-	title = "Haynes nuclear reactor owner's manual"
+	starting_author = "CogWerk Engineering Reactor Design Department"
+	starting_title = "Haynes nuclear reactor owner's manual"
 	page_link = "Guide_to_the_Nuclear_Reactor"
 
 /obj/item/book/manual/wiki/rbmk/initialize_wikibook()
 	var/wikiurl = "https://nsv.beestation13.com/wiki"
 	if(wikiurl)
-		dat = {"
+		starting_content = {"
 			<html><head>
 			<meta http-equiv='Content-Type' content='text/html; charset=UTF-8'>
 			<style>
