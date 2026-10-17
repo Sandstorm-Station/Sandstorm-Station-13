@@ -591,15 +591,6 @@ It's fairly easy to fix if dealing with single letters but not so much with comp
 	SHOULD_BE_PURE(TRUE)
 	return eye_blind ? TRUE : HAS_TRAIT(src, TRAIT_BLIND)
 
-/mob/proc/can_read(obj/O)
-	if(is_blind())
-		to_chat(src, "<span class='warning'>As you are trying to read [O], you suddenly feel very stupid!</span>")
-		return
-	if(!is_literate())
-		to_chat(src, "<span class='notice'>You try to read [O], but can't comprehend any of it.</span>")
-		return
-	return TRUE
-
 /mob/living/carbon/human/proc/load_client_appearance(client/client)
 	if(!client)
 		client = src.client
