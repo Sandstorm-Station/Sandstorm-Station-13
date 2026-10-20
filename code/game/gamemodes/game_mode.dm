@@ -303,9 +303,11 @@
 
 	if(station_goals.len)
 		intercepttext += "<hr><b>Special Orders for [station_name()]:</b>"
-		for(var/datum/station_goal/G in station_goals)
-			G.on_report()
-			intercepttext += G.get_report()
+		var/list/goal_reports = list()
+		for(var/datum/station_goal/station_goal in station_goals)
+			station_goal.on_report()
+			goal_reports += station_goal.get_report()
+		intercepttext += goal_reports.Join("<hr>")
 
 	print_command_report(intercepttext, "Central Command Status Summary", announce=FALSE)
 	priority_announce("A summary has been copied and printed to all communications consoles.", "Enemy communication intercepted. Security level elevated.", "intercept")

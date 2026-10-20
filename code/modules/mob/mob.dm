@@ -963,10 +963,6 @@ GLOBAL_VAR_INIT(exploit_warn_spam_prevention, 0)
 
 /// Can this mob read
 /mob/proc/can_read(obj/O, check_for_light = TRUE)
-	if(is_blind())
-		to_chat(src, span_warning("As you are trying to read [O], you suddenly feel very stupid!"))
-		return
-
 	if(!is_literate())
 		to_chat(src, span_warning("You try to read [O], but can't comprehend any of it."))
 		return FALSE

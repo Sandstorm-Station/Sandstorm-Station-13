@@ -157,13 +157,15 @@
  * * font - The font to use.
  * * color - The font color to use.
  * * bold - Whether this text should be rendered completely bold.
+ * * advanced_html - Boolean that is true when the writer has R_FUN permission, which sanitizes less HTML (such as images) from the new paper_input
  */
-/obj/item/paper/proc/add_raw_text(text, font, color, bold)
+/obj/item/paper/proc/add_raw_text(text, font, color, bold, advanced_html)
 	var/new_input_datum = new /datum/paper_input(
 		text,
 		font,
 		color,
 		bold,
+		advanced_html,
 	)
 
 	input_field_count += get_input_field_count(text)
@@ -263,6 +265,7 @@
 
 	cut_overlays()
 	update_appearance()
+	update_static_data_for_all_viewers()
 
 /obj/item/paper/pickup(user)
 	if(contact_poison && ishuman(user))
@@ -296,7 +299,7 @@
 	if(((loc == usr || istype(loc, /obj/item/clipboard)) && usr.stat == CONSCIOUS))
 		name = "paper[(n_name ? text("- '[n_name]'") : null)]"
 	add_fingerprint(usr)
-	update_static_data()
+	update_static_data_for_all_viewers()
 
 /obj/item/paper/suicide_act(mob/user)
 	user.visible_message(span_suicide("[user] scratches a grid on [user.p_their()] wrist with the paper! It looks like [user.p_theyre()] trying to commit sudoku..."))
@@ -390,10 +393,12 @@
 			add_stamp(writing_stats["stamp_class"], rand(0, 400), rand(0, 500), rand(0, 360), writing_stats["stamp_icon_state"])
 			user.visible_message(span_notice("[user] blindly stamps [src] with \the [attacking_item]!"))
 			to_chat(user, span_notice("You stamp [src] with \the [attacking_item] the best you can!"))
+			update_static_data_for_all_viewers()
 		else if(user.a_intent == INTENT_HARM)
 			add_stamp(writing_stats["stamp_class"], rand(0, 400), rand(0, 500), rand(0, 360), writing_stats["stamp_icon_state"])
 			user.visible_message(span_notice("[user] blindly stamps [src] with \the [attacking_item]!"))
 			to_chat(user, span_notice("You stamp [src] with \the [attacking_item] without looking at it!"))
+			update_static_data_for_all_viewers()
 		else
 			to_chat(user, span_notice("You ready your stamp over the paper!"))
 			ui_interact(user)
@@ -530,7 +535,7 @@
 			user.visible_message(span_notice("[user] stamps [src] with \the [holding.name]!"), span_notice("You stamp [src] with \the [holding.name]!"))
 
 			update_appearance()
-			update_static_data(user, ui)
+			update_static_data_for_all_viewers()
 			return TRUE
 		if("add_text")
 			var/paper_input = params["text"]
@@ -571,12 +576,12 @@
 			// Safe to assume there are writing implement details as user.can_write(...) fails with an invalid writing implement.
 			var/writing_implement_data = holding.get_writing_implement_details()
 
-			add_raw_text(paper_input, writing_implement_data["font"], writing_implement_data["color"], writing_implement_data["use_bold"])
+			add_raw_text(paper_input, writing_implement_data["font"], writing_implement_data["color"], writing_implement_data["use_bold"], check_rights_for(user?.client, R_FUN))
 
 			log_paper("[key_name(user)] wrote to [name]: \"[paper_input]\"")
 			to_chat(user, "You have added to your paper masterpiece!");
 
-			update_static_data(user, ui)
+			update_static_data_for_all_viewers()
 			update_appearance()
 			return TRUE
 		if("fill_input_field")
@@ -617,7 +622,7 @@
 				if(!add_field_input(field_key, field_text, writing_implement_data["font"], writing_implement_data["color"], writing_implement_data["use_bold"], user.real_name))
 					log_paper("[key_name(user)] tried to write to field [field_key] when it already has data, with the following text: [field_text]")
 
-			update_static_data(user, ui)
+			update_static_data_for_all_viewers()
 			return TRUE
 
 /obj/item/paper/proc/get_input_field_count(raw_text)
@@ -651,15 +656,18 @@
 	var/colour = ""
 	/// Whether to render the font bold or not.
 	var/bold = FALSE
+	/// Whether the creator of this input field has the R_FUN permission, thus allowing less sanitization
+	var/advanced_html = FALSE
 
-/datum/paper_input/New(_raw_text, _font, _colour, _bold)
+/datum/paper_input/New(_raw_text, _font, _colour, _bold, _advanced_html)
 	raw_text = _raw_text
 	font = _font
 	colour = _colour
 	bold = _bold
+	advanced_html = _advanced_html
 
 /datum/paper_input/proc/make_copy()
-	return new /datum/paper_input(raw_text, font, colour, bold);
+	return new /datum/paper_input(raw_text, font, colour, bold, advanced_html)
 
 /datum/paper_input/proc/to_list()
 	return list(
@@ -667,7 +675,19 @@
 		font = font,
 		color = colour,
 		bold = bold,
+		advanced_html = advanced_html,
 	)
+
+/// Returns the raw contents of the input as html, with **ZERO SANITIZATION**
+/datum/paper_input/proc/to_raw_html()
+	var/final = raw_text
+	if(font)
+		final = "<font face='[font]'>[final]</font>"
+	if(colour)
+		final = "<font color='[colour]'>[final]</font>"
+	if(bold)
+		final = "<b>[final]</b>"
+	return final
 
 /// A single instance of a saved stamp on paper.
 /datum/paper_stamp

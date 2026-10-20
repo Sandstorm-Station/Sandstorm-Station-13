@@ -272,7 +272,7 @@
 	verb_ask = "beeps"
 	verb_exclaim = "beeps"
 	pass_flags = PASSTABLE
-	circuit = /obj/item/circuitboard/computer/libraryconsole
+	circuit = /obj/item/circuitboard/computer/libraryconsole/bookconsole
 	///Can spawn secret lore item
 	var/can_spawn_lore = TRUE
 	///The screen we're currently on, sent to the ui
@@ -764,12 +764,24 @@
 	icon_state = "binder"
 	desc = "Only intended for binding paper products."
 	density = TRUE
+
+	/// Are we currently binding a book?
 	var/busy = FALSE
+
+	/// Name of the author for the book, set by scanning your ID.
+	var/scanned_name
 
 /obj/machinery/bookbinder/attackby(obj/hitby, mob/user, params)
 	if(istype(hitby, /obj/item/paper))
 		prebind_book(user, hitby)
-		return
+		return TRUE
+
+	if(isidcard(hitby))
+		var/obj/item/card/id/idcard = hitby
+		scanned_name = idcard.registered_name
+		balloon_alert(user, "scanned")
+		return TRUE
+
 	if(default_unfasten_wrench(user, hitby))
 		return TRUE
 	return ..()
@@ -777,11 +789,19 @@
 /obj/machinery/bookbinder/proc/prebind_book(mob/user, obj/item/paper/draw_from)
 	if(machine_stat)
 		return
+
 	if(busy)
 		to_chat(user, span_warning("The book binder is busy. Please wait for completion of previous operation."))
 		return
+
+	if(!scanned_name)
+		scanned_name = "unknown author"
+		say("No ID detected. Please scan your ID if you would like to be credited for this book. Otherwise please enter your paper again.")
+		return
+
 	if(!user.transferItemToLoc(draw_from, src))
 		return
+
 	user.visible_message(span_notice("[user] loads some paper into [src]."), span_notice("You load some paper into [src]."))
 	audible_message(span_hear("[src] begins to hum as it warms up its printing drums."))
 	busy = TRUE
@@ -792,12 +812,17 @@
 	busy = FALSE
 	if(!draw_from) //What the fuck did you do
 		return
+
 	if(machine_stat)
 		draw_from.forceMove(drop_location())
 		return
+
 	visible_message(span_notice("[src] whirs as it prints and binds a new book."))
 	var/obj/item/book/bound_book = new(loc)
 	bound_book.book_data.set_content_using_paper(draw_from)
+	bound_book.book_data.set_author(scanned_name, trusted = FALSE)
 	bound_book.name = "Print Job #" + "[rand(100, 999)]"
 	bound_book.gen_random_icon_state()
+	scanned_name = null
+
 	qdel(draw_from)

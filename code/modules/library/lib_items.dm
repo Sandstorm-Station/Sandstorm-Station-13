@@ -266,11 +266,9 @@
 /datum/book_info/proc/set_content_using_paper(obj/item/paper/paper)
 	// Just the paper's raw data.
 	var/raw_content = ""
-
 	for(var/datum/paper_input/text_input as anything in paper.raw_text_inputs)
-		raw_content += text_input.raw_text
-
-	// Content from paper is never trusted. It it raw, unsanitised, unparsed user input.
+		if(!isnull(text_input.colour))
+			raw_content += text_input.to_raw_html()
 	content = trim(html_encode(raw_content), MAX_PAPER_LENGTH)
 
 /datum/book_info/proc/get_content(default="N/A")
@@ -330,23 +328,44 @@
 	. = ..()
 	book_data = new(starting_title, starting_author, starting_content)
 
-/obj/item/book/proc/on_read(mob/user)
-	if(book_data?.content)
-		user << browse("<meta charset=UTF-8><TT><I>Penned by [book_data.author].</I></TT> <BR>" + "[book_data.content]", "window=book[window_size != null ? ";size=[window_size]" : ""]")
-		onclose(user, "book")
-	else
-		to_chat(user, span_notice("This book is completely blank!"))
+/obj/item/book/ui_static_data(mob/user)
+	var/list/data = list()
+	data["author"] = book_data.get_author()
+	data["title"] = book_data.get_title()
+	data["content"] = book_data.get_content()
+	return data
+
+/obj/item/book/ui_interact(mob/living/user, datum/tgui/ui)
+	if(!length(book_data.get_content()))
+		balloon_alert(user, "this book is blank!")
+		return
+
+	if(istype(user) && !isnull(user.mind))
+		LAZYINITLIST(user.mind.book_titles_read)
+		var/has_not_read_book = !(starting_title in user.mind.book_titles_read)
+		if(has_not_read_book)
+			SEND_SIGNAL(user, COMSIG_ADD_MOOD_EVENT, "book_nerd", /datum/mood_event/book_nerd)
+			user.mind.book_titles_read[starting_title] = TRUE
+
+	ui = SStgui.try_update_ui(user, src, ui)
+	if(!ui)
+		ui = new(user, src, "MarkdownViewer", name)
+		ui.open()
 
 /// Generates a random icon state for the book
 /obj/item/book/proc/gen_random_icon_state()
 	icon_state = "book[rand(1, maximum_book_state)]"
 
 /obj/item/book/attack_self(mob/user)
+	if(user.is_blind())
+		to_chat(user, span_warning("You are blind and can't read anything!"))
+		return
+
 	if(!user.can_read(src))
 		return
+
 	user.visible_message(span_notice("[user] opens a book titled \"[book_data.title]\" and begins reading intently."))
-	SEND_SIGNAL(user, COMSIG_ADD_MOOD_EVENT, "book_nerd", /datum/mood_event/book_nerd)
-	on_read(user)
+	ui_interact(user)
 
 /obj/item/book/attackby(obj/item/I, mob/user, params)
 	if(istype(I, /obj/item/pen))
