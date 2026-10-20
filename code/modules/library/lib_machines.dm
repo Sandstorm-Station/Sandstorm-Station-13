@@ -108,14 +108,14 @@
 			if(!prevent_db_spam())
 				say("Database cables refreshing. Please wait a moment.")
 				return
-			INVOKE_ASYNC(src, .proc/update_db_info)
+			INVOKE_ASYNC(src, PROC_REF(update_db_info))
 			return TRUE
 		if("switch_page")
 			if(!prevent_db_spam())
 				say("Database cables refreshing. Please wait a moment.")
 				return
 			search_page = sanitize_page_input(params["page"], search_page, page_count)
-			INVOKE_ASYNC(src, .proc/update_db_info)
+			INVOKE_ASYNC(src, PROC_REF(update_db_info))
 			return TRUE
 		if("clear_data") //The cap just walked in on your browsing, quick! delete it!
 			if(!prevent_db_spam())
@@ -125,7 +125,7 @@
 			author = initial(author)
 			category = DEFAULT_SEARCH_CATAGORY
 			search_page = 0
-			INVOKE_ASYNC(src, .proc/update_db_info)
+			INVOKE_ASYNC(src, PROC_REF(update_db_info))
 			return TRUE
 
 ///Checks if the machine is alloweed to make another db request yet. TRUE if so, FALSE otherwise
@@ -500,14 +500,14 @@
 			return TRUE
 		if("print_book")
 			var/id = params["book_id"]
-			attempt_print(CALLBACK(src, .proc/print_book, id))
+			attempt_print(CALLBACK(src, PROC_REF(print_book), id))
 			return TRUE
 		if("print_bible")
-			attempt_print(CALLBACK(src, .proc/print_bible))
+			attempt_print(CALLBACK(src, PROC_REF(print_bible)))
 			return TRUE
 		if("print_poster")
 			var/poster_name = params["poster_name"]
-			attempt_print(CALLBACK(src, .proc/print_poster, poster_name))
+			attempt_print(CALLBACK(src, PROC_REF(print_poster), poster_name))
 			return TRUE
 		if("lore_spawn")
 			if(obj_flags & EMAGGED && can_spawn_lore)
