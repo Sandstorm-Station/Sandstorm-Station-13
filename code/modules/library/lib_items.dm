@@ -261,7 +261,7 @@
 	if(trusted)
 		content = _content
 		return
-	content = trim(html_encode(_content), MAX_PAPER_LENGTH)
+	content = trim(html_encode(trim(_content, MAX_PAPER_LENGTH)), MAX_BOOK_LENGTH)
 
 /datum/book_info/proc/set_content_using_paper(obj/item/paper/paper)
 	// Just the paper's raw data.
@@ -269,7 +269,11 @@
 	for(var/datum/paper_input/text_input as anything in paper.raw_text_inputs)
 		if(!isnull(text_input.colour))
 			raw_content += text_input.to_raw_html()
-	content = trim(html_encode(raw_content), MAX_PAPER_LENGTH)
+			raw_content += (text_input.raw_text[length(text_input.raw_text)] == "\n") ? "\n" : "\n\n"
+	// Paper raw inputs should already be trimmed to maximum paper length,
+	// so we don't trim here again to avoid cutting into the expanded html.
+	// We still trim to a more lenient length to avoid abuse.
+	content = trim(html_encode(raw_content), MAX_BOOK_LENGTH)
 
 /datum/book_info/proc/get_content(default="N/A")
 	return html_decode(content) || "N/A"
