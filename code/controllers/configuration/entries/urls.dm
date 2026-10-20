@@ -3,10 +3,10 @@
 /datum/config_entry/string/banappeals
 
 /datum/config_entry/string/wikiurl
-	default = "https://katlin.dog/citadel-wiki"
+	default = "https://citadel-station.dev/wikiMain/index.php?title="
 
 /datum/config_entry/string/wikiurltg
-	default = "http://www.tgstation13.org/wiki"
+	default = "https://wiki.tgstation13.org/"
 
 /datum/config_entry/string/discordurl
 	default = "http://discord.gg"
