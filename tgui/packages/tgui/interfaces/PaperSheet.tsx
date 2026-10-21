@@ -114,6 +114,7 @@ const fieldRegex: RegExp = /\[((?:_+))\]/gi;
 // Handles the ghost stamp when attempting to stamp paper sheets.
 class PaperSheetStamper extends Component<PaperSheetStamperProps> {
   style: null;
+  // eslint-disable-next-line react/state-in-constructor
   state: PaperSheetStamperState = { x: 0, y: 0, rotation: 0, yOffset: 0 };
   scrollableRef: RefObject<HTMLDivElement>;
 
@@ -438,7 +439,7 @@ export class PreviewView extends Component<PreviewViewProps> {
   // super fast on the BYOND/IE js engine.
   parsedDMCache: string = '';
   parsedTextBoxCache: string = '';
-  
+
   constructor(props, context) {
     super(props, context);
     this.configureMarked();
@@ -620,7 +621,6 @@ export class PreviewView extends Component<PreviewViewProps> {
       fieldCount = processingOutput.nextCounter;
     });
 
-
     this.lastDMInputCount = raw_text_input?.length || 0;
     this.lastFieldInputCount = raw_field_input?.length || 0;
     this.lastFieldCount = fieldCount;
@@ -697,7 +697,6 @@ export class PreviewView extends Component<PreviewViewProps> {
           break;
       }
     };
-
 
     // This is an extension for marked defining a complete custom tokenizer.
     // This tokenizer should run before the the non-custom ones, and gives us
