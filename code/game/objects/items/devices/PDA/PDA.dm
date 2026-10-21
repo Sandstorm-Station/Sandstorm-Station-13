@@ -1117,21 +1117,6 @@ GLOBAL_LIST_EMPTY(PDAs)
 		if(PDA_SCANNER_GAS)
 			A.analyzer_act(user, src)
 
-	if (!scanmode && istype(A, /obj/item/paper) && owner)
-		var/obj/item/paper/PP = A
-		if (!PP.info)
-			to_chat(user, "<span class='warning'>Unable to scan! Paper is blank.</span>")
-			return
-		notehtml = PP.info
-		note = replacetext(notehtml, "<BR>", "\[br\]")
-		note = replacetext(note, "<li>", "\[*\]")
-		note = replacetext(note, "<ul>", "\[list\]")
-		note = replacetext(note, "</ul>", "\[/list\]")
-		note = html_encode(note)
-		notescanned = TRUE
-		to_chat(user, "<span class='notice'>Paper scanned. Saved to PDA's notekeeper.</span>" )
-
-
 /obj/item/pda/proc/explode() //This needs tuning.
 	if(!detonatable)
 		return

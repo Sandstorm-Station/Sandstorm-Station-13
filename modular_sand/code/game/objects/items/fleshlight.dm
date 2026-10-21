@@ -355,7 +355,7 @@
 
 /obj/item/paper/fluff/portallight
 	name = "Portal Fleshlight Instructions"
-	info = "Thank you for purchasing the Silver Love Portal Fleshlight!<BR>\
+	default_raw_text = "Thank you for purchasing the Silver Love Portal Fleshlight!<BR>\
 	To use, simply register your new portal fleshlight with the provided underwear to link them together. The ask your lover to wear the underwear.<BR>\
 	Have fun lovers,<BR>\
 	<BR>\

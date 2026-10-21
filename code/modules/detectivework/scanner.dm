@@ -42,21 +42,23 @@
 
 /obj/item/detective_scanner/proc/PrintReport()
 	// Create our paper
-	var/obj/item/paper/P = new(get_turf(src))
+	var/obj/item/paper/report_paper = new(get_turf(src))
 
 	//This could be a global count like sec and med record printouts. See GLOB.data_core.medicalPrintCount AKA datacore.dm
 	var frNum = ++forensicPrintCount
 
-	P.name = text("FR-[] 'Forensic Record'", frNum)
-	P.info = text("<center><B>Forensic Record - (FR-[])</B></center><HR><BR>", frNum)
-	P.info += jointext(log, "<BR>")
-	P.info += "<HR><B>Notes:</B><BR>"
-	P.update_icon()
+	report_paper.name = text("FR-[] 'Forensic Record'", frNum)
+	var/report_text = text("<center><B>Forensic Record - (FR-[])</B></center><HR><BR>", frNum)
+	report_text += jointext(log, "<BR>")
+	report_text += "<HR><B>Notes:</B><BR>"
+
+	report_paper.add_raw_text(report_text)
+	report_paper.update_appearance()
 
 	if(ismob(loc))
 		var/mob/M = loc
-		M.put_in_hands(P)
-		to_chat(M, "<span class='notice'>Report printed. Log cleared.</span>")
+		M.put_in_hands(report_paper)
+		to_chat(M, span_notice("Report printed. Log cleared."))
 
 	// Clear the logs
 	log = list()
@@ -77,7 +79,7 @@
 		scanning = TRUE
 
 		user.visible_message("\The [user] points the [src.name] at \the [A] and performs a forensic scan.")
-		to_chat(user, "<span class='notice'>You scan \the [A]. The scanner is now analysing the results...</span>")
+		to_chat(user, span_notice("You scan \the [A]. The scanner is now analysing the results..."))
 
 
 		// GATHER INFORMATION

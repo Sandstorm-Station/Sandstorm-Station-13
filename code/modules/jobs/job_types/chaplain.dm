@@ -115,7 +115,7 @@
 		if("weeaboo","kawaii")
 			B.name = pick("Fanfiction Compendium","Japanese for Dummies","The Manganomicon","Establishing Your O.T.P")
 		else
-			B.name = "The Holy Book of [new_religion]"
+			B.name = DEFAULT_BIBLE_REPLACE(B.name)
 
 	GLOB.religion = new_religion
 	GLOB.bible_name = B.name

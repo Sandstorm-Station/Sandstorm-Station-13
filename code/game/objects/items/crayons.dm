@@ -474,6 +474,14 @@
 	else
 		..()
 
+/obj/item/toy/crayon/get_writing_implement_details()
+	return list(
+		interaction_mode = MODE_WRITING,
+		font = CRAYON_FONT,
+		color = paint_color,
+		use_bold = TRUE,
+	)
+
 //////////////Gang mode stuff/////////////////
 /obj/item/toy/crayon/proc/can_claim_for_gang(mob/user, atom/target)
 	var/area/A = get_area(target)

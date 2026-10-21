@@ -13,9 +13,9 @@
 	throw_speed = 1
 	throw_range = 10
 	resistance_flags = LAVA_PROOF | FIRE_PROOF | ACID_PROOF
-	author = "Forces beyond your comprehension"
-	unique = 1
-	title = "the Codex Gigas"
+	starting_title = "the Codex Gigas"
+	starting_author = "Forces beyond your comprehension"
+	unique = TRUE
 	var/inUse = 0
 	var/currentName = ""
 	var/currentSection = PRE_TITLE
@@ -32,15 +32,15 @@
 	if(ishuman(user))
 		var/mob/living/carbon/human/U = user
 		if(U.check_acedia())
-			to_chat(user, "<span class='notice'>None of this matters, why are you reading this? You put [title] down.</span>")
+			to_chat(user, "<span class='notice'>None of this matters, why are you reading this? You put [book_data.title] down.</span>")
 			return
-	user.visible_message("<span class='notice'>[user] opens [title] and begins reading intently.</span>")
+	user.visible_message("<span class='notice'>[user] opens [book_data.title] and begins reading intently.</span>")
 	ask_name(user)
 
 
 /obj/item/book/codex_gigas/proc/perform_research(mob/user, devilName)
 	if(!devilName)
-		user.visible_message("<span class='notice'>[user] closes [title] without looking anything up.</span>")
+		user.visible_message("<span class='notice'>[user] closes [book_data.title] without looking anything up.</span>")
 		return
 	inUse = TRUE
 	var/speed = 300
@@ -63,7 +63,7 @@
 	inUse = FALSE
 
 /obj/item/book/codex_gigas/proc/display_devil(datum/antagonist/devil/devil, mob/reader, devilName)
-	reader << browse("Information on [devilName]<br><br><br>[GLOB.lawlorify[LORE][devil.ban]]<br>[GLOB.lawlorify[LORE][devil.bane]]<br>[GLOB.lawlorify[LORE][devil.obligation]]<br>[GLOB.lawlorify[LORE][devil.banish]]<br>[devil.ascendable?"This devil may ascend given enough souls.":""]", "window=book[window_size != null ? ";size=[window_size]" : ""]")
+	reader << browse("Information on [devilName]<br><br><br>[GLOB.lawlorify[LORE][devil.ban]]<br>[GLOB.lawlorify[LORE][devil.bane]]<br>[GLOB.lawlorify[LORE][devil.obligation]]<br>[GLOB.lawlorify[LORE][devil.banish]]<br>[devil.ascendable?"This devil may ascend given enough souls.":""]", "window=book")
 
 /obj/item/book/codex_gigas/proc/ask_name(mob/reader)
 	ui_interact(reader)

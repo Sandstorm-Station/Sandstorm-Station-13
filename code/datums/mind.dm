@@ -87,6 +87,9 @@
 	/// A lazy list of statuses to add next to this mind in the traitor panel
 	var/list/special_statuses
 
+	/// A list to keep track of which books a person has read (to prevent people from reading the same book again and again for positive mood events)
+	var/list/book_titles_read
+
 /datum/mind/New(key)
 	skill_holder = new(src)
 	src.key = key

@@ -7,7 +7,7 @@
 
 /mob/living/carbon/human/AltRangedAttack(atom/A, params)
 	if(isturf(A) || incapacitated()) // pretty annoying to wave your fist at floors and walls. And useless.
-		return 
+		return
 	if(!CheckActionCooldown(CLICK_CD_RANGE))
 		return
 	DelayNextAction()

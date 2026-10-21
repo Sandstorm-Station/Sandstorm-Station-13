@@ -93,7 +93,7 @@
 				to_chat(usr, "<span class='warning'>[src] is currently busy copying something. Please wait until it is finished.</span>")
 				return FALSE
 			if(paper_copy)
-				if(!length(paper_copy.info))
+				if(!paper_copy.get_total_length())
 					to_chat(usr, "<span class='warning'>An error message flashes across [src]'s screen: \"The supplied paper is blank. Aborting.\"</span>")
 					return FALSE
 				// Basic paper
@@ -234,24 +234,15 @@
 /obj/machinery/photocopier/proc/make_paper_copy()
 	if(!paper_copy)
 		return
-	var/obj/item/paper/copied_paper = new(loc)
-	give_pixel_offset(copied_paper)
-	if(toner_cartridge.charges > 10) // Lots of toner, make it dark.
-		copied_paper.info = "<font color = #101010>"
-	else // No toner? shitty copies for you!
-		copied_paper.info = "<font color = #808080>"
 
-	var/copied_info = paper_copy.info
-	copied_info = replacetext(copied_info, "<font face=\"[PEN_FONT]\" color=", "<font face=\"[PEN_FONT]\" nocolor=") //state of the art techniques in action
-	copied_info = replacetext(copied_info, "<font face=\"[CRAYON_FONT]\" color=", "<font face=\"[CRAYON_FONT]\" nocolor=") //This basically just breaks the existing color tag, which we need to do because the innermost tag takes priority.
-	copied_paper.info += copied_info
-	copied_paper.info += "</font>"
+	var/copy_colour = toner_cartridge.charges > 10 ? COLOR_FULL_TONER_BLACK : COLOR_GRAY;
+
+	var/obj/item/paper/copied_paper = paper_copy.copy(/obj/item/paper, loc, FALSE, copy_colour)
+
+	give_pixel_offset(copied_paper)
+
 	copied_paper.name = paper_copy.name
-	copied_paper.update_icon()
-	copied_paper.stamps = paper_copy.stamps
-	if(paper_copy.stamped)
-		copied_paper.stamped = paper_copy.stamped.Copy()
-	copied_paper.copy_overlays(paper_copy, TRUE)
+
 	toner_cartridge.charges -= PAPER_TONER_USE
 
 /**

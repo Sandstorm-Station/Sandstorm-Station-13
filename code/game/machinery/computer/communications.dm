@@ -604,10 +604,10 @@
 		say("Printer on cooldown!")
 		return
 	COOLDOWN_START(src, report_print_cooldown, 30 SECONDS)
-	var/obj/item/paper/P = new /obj/item/paper(loc)
-	P.name = "paper - '[title]'"
-	P.info = message
-	P.update_appearance()
+	var/obj/item/paper/printed_paper = new /obj/item/paper(loc)
+	printed_paper.name = "paper - '[title]'"
+	printed_paper.add_raw_text(message)
+	printed_paper.update_appearance()
 	playsound(src, 'sound/effects/printer.ogg', 50, FALSE)
 
 /datum/comm_message
