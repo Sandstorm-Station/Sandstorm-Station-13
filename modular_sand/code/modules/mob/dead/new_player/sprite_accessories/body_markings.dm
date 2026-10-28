@@ -27,3 +27,12 @@
 	icon = 'modular_sand/icons/mob/mam_markings.dmi'
 	icon_state = "gloss"
 	covered_limbs = list("Chest" = MATRIX_RED, "Right Arm" = MATRIX_RED, "Left Arm" = MATRIX_RED, "Right Leg" = MATRIX_RED, "Left Leg" = MATRIX_RED, "Head" = MATRIX_RED)
+
+/******************************************
+************* Insect Markings *************
+*******************************************/
+
+/datum/sprite_accessory/insect_fluff/woodwork
+	name = "Woodwork"
+	icon = 'modular_sand/icons/mob/wings.dmi'
+	icon_state = "woodwork"
