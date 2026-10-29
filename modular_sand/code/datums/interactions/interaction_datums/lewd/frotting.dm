@@ -10,7 +10,10 @@
 	var/message
 	var/t_His = user.p_their()
 
-	message = "rubs [t_His] penis against [partner]'s."
+	message = "[pick("rubs [t_His] penis against [partner]'s.",
+				"pushes [t_His] cock against [partner]'s.",
+				"[t_His] works themselves against [partner].",
+				"[t_His] meets their hip with [partner]'s as their rods meet together.")]"
 	user.set_is_fucking(partner, CUM_TARGET_PENIS, user.getorganslot(ORGAN_SLOT_PENIS))
 	user.visible_message(span_lewd("<b>\The [user]</b> [message]"), ignored_mobs = user.get_unconsenting())
 	user.handle_post_sex(NORMAL_LUST, CUM_TARGET_PENIS, partner)

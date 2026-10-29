@@ -3,7 +3,7 @@ import { BlockQuote, Button, Icon, ProgressBar, Section, Stack, Slider, Tooltip 
 
 type HeaderInfo = {
   isTargetSelf: boolean;
-  interactingWith: string;
+  target: string;
   lust: number;
   maxLust: number;
   selfAttributes: string[];
@@ -22,7 +22,7 @@ export const InfoSection = (props, context) => {
   const { act, data } = useBackend<HeaderInfo>(context);
   const {
     isTargetSelf,
-    interactingWith,
+    target,
     lust,
     maxLust,
     selfAttributes,
@@ -37,7 +37,7 @@ export const InfoSection = (props, context) => {
     moaning_multiplier,
   } = data;
   return (
-    <Section title={interactingWith} fill>
+    <Section title={`Interacting with ${isTargetSelf ? "yourself" : target}...`} fill>
       <Stack vertical fill>
         <Stack.Item grow basis={0}>
           <Section fill overflow="auto">

@@ -5,6 +5,9 @@
 	write_log_user = "gave head to"
 	write_log_target = "was given head by"
 	interaction_sound = null
+	additional_details = list(
+		INTERACTION_MAY_CONTAIN_DRINK
+	)
 	var/fucktarget = "vagina"
 
 /datum/interaction/lewd/oral/blowjob

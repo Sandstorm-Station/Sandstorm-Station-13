@@ -5,6 +5,13 @@
 	write_log_user = "kissed"
 	write_log_target = "was kissed by"
 	interaction_sound = null
+	additional_details = list(
+		list(
+			"info" = "Sets lust of both to 5 if less than 5",
+			"icon" = "heart",
+			"color" = "red"
+		)
+	)
 
 /datum/interaction/lewd/kiss/post_interaction(mob/living/user, mob/living/partner)
 	. = ..()

@@ -107,10 +107,17 @@
 	user.handle_post_sex(NORMAL_LUST, CUM_TARGET_MOUTH, partner)
 
 /datum/interaction/lewd/throatfuck
-	description = "Fuck their throat. | Does oxy damage."
+	description = "Fuck their throat"
 	interaction_sound = null
 	required_from_user_exposed = INTERACTION_REQUIRE_PENIS
 	required_from_target = INTERACTION_REQUIRE_MOUTH
+	additional_details = list(
+		list(
+			"info" = "Causes oxygen damage",
+			"icon" = "lungs",
+			"color" = "blue"
+		)
+	)
 
 /datum/interaction/lewd/throatfuck/display_interaction(mob/living/user, mob/living/partner)
 	var/message

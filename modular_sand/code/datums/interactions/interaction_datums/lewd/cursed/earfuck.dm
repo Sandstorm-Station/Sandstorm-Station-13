@@ -6,6 +6,13 @@
 	interaction_flags = INTERACTION_FLAG_ADJACENT | INTERACTION_FLAG_OOC_CONSENT | INTERACTION_FLAG_EXTREME_CONTENT
 	write_log_user = "earfucked"
 	write_log_target = "had their ear fucked by"
+	additional_details = list(
+		list(
+			"info" = "With the preference enabled causes slight bleeding, ear and brain damage",
+			"icon" = "ear-deaf",
+			"color" = "white"
+		)
+	)
 
 /datum/interaction/lewd/earfuck/earsocketfuck
 	description = "Fuck their earsocket."

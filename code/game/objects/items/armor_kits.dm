@@ -15,10 +15,10 @@
 	if(isobj(target) && istype(target, /obj/item/clothing/under))
 		var/obj/item/clothing/under/C = target
 		if(C.damaged_clothes)
-			to_chat(user,"<span class='warning'>You should repair the damage done to [C] first.</span>")
+			to_chat(user, span_warning("You should repair the damage done to [C] first."))
 			return
-		if(C.attached_accessories.len)
-			to_chat(user,"<span class='warning'>Kind of hard to sew around [C.attached_accessories.Join(", ")].</span>")
+		if(length(C.attached_accessories))
+			to_chat(user,span_warning("Kind of hard to sew around [english_list(C.attached_accessories)]."))
 			return
 		if(C.armor.getRating(MELEE) < 10)
 			C.armor = C.armor.setRating(MELEE = 10)
@@ -37,14 +37,14 @@
 			used = TRUE
 
 		if(used)
-			user.visible_message("<span class = 'notice'>[user] reinforces [C] with [src].</span>", \
-			"<span class = 'notice'>You reinforce [C] with [src], making it as protective as a durathread jumpsuit.</span>")
+			user.visible_message(span_notice("[user] reinforces [C] with [src]."), \
+			span_notice("You reinforce [C] with [src], making it as protective as a durathread jumpsuit."))
 			C.name = "durathread [C.name]"
 			C.upgrade_prefix = "durathread" // god i hope this works
 			qdel(src)
 			return
 		else
-			to_chat(user, "<span class = 'notice'>You don't need to reinforce [C] any further.")
+			to_chat(user, span_notice("You don't need to reinforce [C] any further."))
 			return
 	else
 		return

@@ -96,7 +96,8 @@ GLOBAL_LIST_INIT(nonreactive_gases, typecacheof(list(GAS_O2, GAS_N2, GAS_CO2, GA
 			visibility[g] = gas.moles_visible
 			overlays[g] = new /list(FACTOR_GAS_VISIBLE_MAX)
 			for(var/i in 1 to FACTOR_GAS_VISIBLE_MAX)
-				var/obj/effect/overlay/gas/overlay = new(gas.gas_overlay)
+				var/obj/effect/overlay/gas/overlay = new
+				overlay.icon_state = gas.gas_overlay
 				overlay.color = gas.color
 				overlay.alpha = i * 255 / FACTOR_GAS_VISIBLE_MAX
 				overlays[g][i] = overlay
@@ -185,7 +186,3 @@ GLOBAL_DATUM_INIT(gas_data, /datum/auxgm, new)
 	layer = FLY_LAYER
 	appearance_flags = TILE_BOUND
 	vis_flags = NONE
-
-/obj/effect/overlay/gas/Initialize(mapload, state)
-	. = ..()
-	icon_state = state

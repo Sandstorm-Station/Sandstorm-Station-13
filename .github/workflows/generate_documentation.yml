@@ -1,12 +1,17 @@
 name: Generate documentation
 on:
-  push:
-    branches:
-    - master
+  schedule:
+  - cron: "44 */6 * * *"
+  workflow_dispatch:
+permissions:
+  contents: read
 jobs:
   generate_documentation:
-    if: "!contains(github.event.head_commit.message, '[ci skip]')"
-    runs-on: ubuntu-20.04
+    permissions:
+      contents: write  # for JamesIves/github-pages-deploy-action to push changes in repo
+    if: ( !contains(github.event.head_commit.message, '[ci skip]') )
+    runs-on: ubuntu-22.04
+    concurrency: gen-docs
     steps:
       - uses: actions/checkout@v4
       - name: Setup cache
@@ -20,12 +25,11 @@ jobs:
         run: |
           ~/dmdoc
           touch dmdoc/.nojekyll
-          echo https://sandstorm-station.github.io/Sandstorm-Station-13/ > dmdoc/CNAME
+          echo https://sandstorm-station.github.io/Sandstorm-Station-13 > dmdoc/CNAME
       - name: Deploy
-        uses: JamesIves/github-pages-deploy-action@3.7.1
+        uses: JamesIves/github-pages-deploy-action@v4.7.3
         with:
-          BRANCH: gh-pages
-          CLEAN: true
-          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
-          SINGLE_COMMIT: true
-          FOLDER: dmdoc
+          branch: gh-pages
+          clean: true
+          single-commit: true
+          folder: dmdoc
