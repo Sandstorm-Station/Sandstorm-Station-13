@@ -58,6 +58,9 @@
 	/// Override job accesses - type = list() - overrides everything else
 	var/list/job_access_override
 
+	/// List of additional areas that count as a part of the library
+	var/library_areas = list()
+
 /proc/load_map_config(filename = "data/next_map.json", default_to_box, delete_after, error_if_missing = TRUE)
 	var/datum/map_config/config = new
 	if (default_to_box)
@@ -245,6 +248,17 @@
 				log_config("map datum [config_filename] failed to validate path [path] in job overrides.")
 				continue
 			job_access_override[type] = json["job_access_override"]
+
+	if("library_areas" in json)
+		if(!islist(json["library_areas"]))
+			log_world("map_config \"library_areas\" field is missing or invalid!")
+			return
+		for(var/path_as_text in json["library_areas"])
+			var/path = text2path(path_as_text)
+			if(!ispath(path, /area))
+				stack_trace("Invalid path in mapping config for additional library areas: \[[path_as_text]\]")
+				continue
+			library_areas += path
 
 	defaulted = FALSE
 	return TRUE

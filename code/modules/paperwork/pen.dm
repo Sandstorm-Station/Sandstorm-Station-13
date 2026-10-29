@@ -29,6 +29,7 @@
 	var/colour = "black" //what colour the ink is!
 	var/degrees = 0
 	var/font = PEN_FONT
+	var/requires_gravity = TRUE // can you use this to write in zero-g
 	embedding = list()
 	sharpness = SHARP_POINTY
 
@@ -74,9 +75,10 @@
 
 /obj/item/pen/fountain
 	name = "fountain pen"
-	desc = "It's a common fountain pen, with a faux wood body."
+	desc = "It's a common fountain pen, with a faux wood body. Rumored to work in zero gravity situations."
 	icon_state = "pen-fountain"
 	font = FOUNTAIN_PEN_FONT
+	requires_gravity = FALSE // fancy spess pens
 
 /obj/item/pen/charcoal
 	name = "charcoal stylus"
@@ -86,6 +88,7 @@
 	font = CHARCOAL_FONT
 	custom_materials = null
 	grind_results = list(/datum/reagent/ash = 5, /datum/reagent/cellulose = 10)
+	requires_gravity = FALSE // this is technically a pencil
 
 /datum/crafting_recipe/charcoal_stylus
 	name = "Charcoal Stylus"
@@ -195,6 +198,14 @@
 				label.apply_label()
 			to_chat(user, "<span class='notice'>You have successfully reset [O]'s name and description.</span>")
 			O.renamedByPlayer = FALSE
+
+/obj/item/pen/get_writing_implement_details()
+	return list(
+		interaction_mode = MODE_WRITING,
+		font = font,
+		color = colour,
+		use_bold = FALSE,
+	)
 
 /*
  * Sleepypens

@@ -38,7 +38,7 @@
 	icon_state = "rolled_contraband"
 
 /obj/item/poster/random_official
-	name = "random official poster"
+	name = "Random Official Poster (ROP)"
 	poster_type = /obj/structure/sign/poster/official/random
 	icon_state = "rolled_legit"
 

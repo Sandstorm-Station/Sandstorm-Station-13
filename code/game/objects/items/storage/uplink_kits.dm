@@ -448,7 +448,7 @@
 	name = "Contractor Guide"
 
 /obj/item/paper/contractor_guide/Initialize(mapload)
-	info = {"<p>Welcome agent, congratulations on your new position as contractor. On top of your already assigned objectives,
+	default_raw_text = {"<p>Welcome agent, congratulations on your new position as contractor. On top of your already assigned objectives,
 			this kit will provide you contracts to take on for TC payments.</p>
 			<p>Provided within, we give your specialist contractor space suit. It's even more compact, being able to fit into a pocket, and faster than the
 			Syndicate space suit available to you on the uplink. We also provide your chameleon jumpsuit and mask, both of which can be changed
@@ -482,7 +482,6 @@
 			from where you sent them off from in several minutes time. You will be paid in TC for your services.</p>
 
 			<p>Good luck agent. You can burn this document with the supplied lighter.</p>"}
-
 	return ..()
 
 /obj/item/storage/box/syndicate/contractor_loadout/PopulateContents()
