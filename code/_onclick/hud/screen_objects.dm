@@ -610,7 +610,7 @@
 	mouse_opacity = MOUSE_OPACITY_TRANSPARENT
 
 /atom/movable/screen/healths/clock
-	icon = 'icons/mob/actions.dmi'
+	icon = 'icons/hud/actions.dmi'
 	icon_state = "bg_clock"
 	screen_loc = ui_health
 	mouse_opacity = MOUSE_OPACITY_TRANSPARENT
@@ -622,7 +622,7 @@
 
 /atom/movable/screen/healths/revenant
 	name = "essence"
-	icon = 'icons/mob/actions.dmi'
+	icon = 'icons/hud/actions.dmi'
 	icon_state = "bg_revenant"
 	screen_loc = ui_health
 	mouse_opacity = MOUSE_OPACITY_TRANSPARENT
